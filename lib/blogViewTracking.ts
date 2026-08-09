@@ -1,4 +1,4 @@
-function getBlogSessionId() {
+export function getBlogSessionId() {
   if (typeof window === "undefined") return "server";
   const key = "bb:blog-session-id";
   const existing = window.localStorage.getItem(key);
@@ -27,5 +27,31 @@ export function trackBlogPageView(articleSlug: string) {
     keepalive: true,
   }).catch((error) => {
     console.error("Blog view tracking failed:", error);
+  });
+}
+
+export type BlogPromoEvent = {
+  eventType: "impression" | "click";
+  promo: string;
+  postSlug: string;
+  slotIndex: number;
+};
+
+export function trackBlogPromoEvent(event: BlogPromoEvent) {
+  if (typeof window === "undefined") return;
+
+  void fetch("/api/blog/track-promo", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      event_type: event.eventType,
+      promo: event.promo,
+      post_slug: event.postSlug,
+      slot_index: event.slotIndex,
+      session_id: getBlogSessionId(),
+    }),
+    keepalive: true,
+  }).catch((error) => {
+    console.error("Blog promo tracking failed:", error);
   });
 }

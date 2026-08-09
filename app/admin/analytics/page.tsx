@@ -647,6 +647,15 @@ type BlogAnalyticsSummary = {
   viewsSeries?: Array<{ label: string; value: number }>;
   visitorsSeries?: Array<{ label: string; value: number }>;
   topArticles?: Array<{ slug: string; title: string; views: number; visitors: number }>;
+  promoFunnel?: {
+    tableMissing?: boolean;
+    impressions: number;
+    clicks: number;
+    ctr: number;
+    signups: number;
+    byBanner: Array<{ promo: string; impressions: number; clicks: number; ctr: number; signups: number }>;
+    byPost: Array<{ slug: string; title: string; impressions: number; clicks: number; ctr: number; signups: number }>;
+  };
   tableMissing?: boolean;
   updatedAt: string;
   error?: string;
@@ -2247,6 +2256,101 @@ function BlogAnalyticsSection({
           </table>
           {!loading && !topArticles.length ? (
             <p className="px-3 py-8 text-center text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">No blog views yet in this timeframe.</p>
+          ) : null}
+        </div>
+      </section>
+
+      {blog?.promoFunnel?.tableMissing ? (
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold text-amber-800">
+          Promo tracking isn&apos;t collecting yet. Run CREATE_BLOG_PROMO_EVENTS.sql in Supabase to start recording impressions and clicks.
+        </div>
+      ) : null}
+
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <SimpleAnalyticsKpiCard
+          title="Promo Impressions"
+          value={loading ? "..." : formatNumber(blog?.promoFunnel?.impressions || 0)}
+          helper="Promo banners scrolled into view"
+          accent="blue"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Promo Clicks"
+          value={loading ? "..." : formatNumber(blog?.promoFunnel?.clicks || 0)}
+          helper="Taps on a promo banner"
+          accent="green"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Promo CTR"
+          value={loading ? "..." : `${blog?.promoFunnel?.ctr ?? 0}%`}
+          helper="Clicks divided by impressions"
+          accent="violet"
+        />
+        <SimpleAnalyticsKpiCard
+          title="Blog Signups"
+          value={loading ? "..." : formatNumber(blog?.promoFunnel?.signups || 0)}
+          helper="Accounts created from blog promos"
+          accent="green"
+        />
+      </div>
+
+      <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-6">
+        <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">Promo Performance By Banner</p>
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full min-w-[480px] border-collapse text-left text-sm">
+            <thead className="text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#64748b)]">
+              <tr>
+                <th className="px-3 py-2">Banner</th>
+                <th className="px-3 py-2">Impressions</th>
+                <th className="px-3 py-2">Clicks</th>
+                <th className="px-3 py-2">CTR</th>
+                <th className="px-3 py-2">Signups</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[var(--bb-card-border,#e5edf5)]">
+              {(blog?.promoFunnel?.byBanner || []).map((row) => (
+                <tr key={row.promo}>
+                  <td className="px-3 py-3 font-bold text-[var(--bb-text-primary,#101827)]">{row.promo}</td>
+                  <td className="px-3 py-3 font-semibold text-[var(--bb-text-secondary,#64748b)]">{formatNumber(row.impressions)}</td>
+                  <td className="px-3 py-3 font-black text-blue-600">{formatNumber(row.clicks)}</td>
+                  <td className="px-3 py-3 font-semibold text-[var(--bb-text-secondary,#64748b)]">{row.ctr}%</td>
+                  <td className="px-3 py-3 font-black text-emerald-600">{formatNumber(row.signups)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {!loading && !(blog?.promoFunnel?.byBanner || []).length ? (
+            <p className="px-3 py-8 text-center text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">No promo activity yet in this timeframe.</p>
+          ) : null}
+        </div>
+      </section>
+
+      <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-6">
+        <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">Promo Performance By Post</p>
+        <div className="mt-4 overflow-x-auto">
+          <table className="w-full min-w-[520px] border-collapse text-left text-sm">
+            <thead className="text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#64748b)]">
+              <tr>
+                <th className="px-3 py-2">Post</th>
+                <th className="px-3 py-2">Impressions</th>
+                <th className="px-3 py-2">Clicks</th>
+                <th className="px-3 py-2">CTR</th>
+                <th className="px-3 py-2">Signups</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-[var(--bb-card-border,#e5edf5)]">
+              {(blog?.promoFunnel?.byPost || []).map((row) => (
+                <tr key={row.slug}>
+                  <td className="max-w-[320px] truncate px-3 py-3 font-bold text-[var(--bb-text-primary,#101827)]">{row.title}</td>
+                  <td className="px-3 py-3 font-semibold text-[var(--bb-text-secondary,#64748b)]">{formatNumber(row.impressions)}</td>
+                  <td className="px-3 py-3 font-black text-blue-600">{formatNumber(row.clicks)}</td>
+                  <td className="px-3 py-3 font-semibold text-[var(--bb-text-secondary,#64748b)]">{row.ctr}%</td>
+                  <td className="px-3 py-3 font-black text-emerald-600">{formatNumber(row.signups)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {!loading && !(blog?.promoFunnel?.byPost || []).length ? (
+            <p className="px-3 py-8 text-center text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">No promo activity yet in this timeframe.</p>
           ) : null}
         </div>
       </section>

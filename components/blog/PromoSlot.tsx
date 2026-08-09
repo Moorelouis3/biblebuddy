@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import { trackBlogPromoEvent } from "@/lib/blogViewTracking";
 
 // The rotation pool. Add new banners here when they land in public/promos/.
 const PROMO_BANNERS = [
@@ -35,15 +39,48 @@ type PromoSlotProps = {
 
 // A full-width signup promo banner for blog posts. The whole image is one
 // link to /signup carrying tracking params so signups can be attributed to
-// the post and the exact banner that converted.
+// the post and the exact banner that converted. Logs an impression the
+// first time it scrolls into view and a click event on tap.
 export default function PromoSlot({ postSlug, slotIndex = 0 }: PromoSlotProps) {
   const file = pickPromoBanner(postSlug, slotIndex);
   const promoName = file.replace(/\.[a-z]+$/, "");
   const href = `/signup?src=blog&promo=${encodeURIComponent(promoName)}&post=${encodeURIComponent(postSlug)}`;
 
+  const containerRef = useRef<HTMLAnchorElement | null>(null);
+  const impressionSent = useRef(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || impressionSent.current) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      // Very old browser: count the render as the impression.
+      impressionSent.current = true;
+      trackBlogPromoEvent({ eventType: "impression", promo: promoName, postSlug, slotIndex });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (impressionSent.current) return;
+        if (entries.some((entry) => entry.isIntersecting)) {
+          impressionSent.current = true;
+          trackBlogPromoEvent({ eventType: "impression", promo: promoName, postSlug, slotIndex });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [promoName, postSlug, slotIndex]);
+
   return (
     <Link
+      ref={containerRef}
       href={href}
+      onClick={() => trackBlogPromoEvent({ eventType: "click", promo: promoName, postSlug, slotIndex })}
       aria-label="Bible Buddy is a free Bible study app. Create your free account."
       className="my-8 block overflow-hidden rounded-[24px] shadow-[0_18px_48px_rgba(15,23,42,0.10)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(0,86,253,0.16)]"
     >

@@ -10,6 +10,32 @@ type BlogPageViewRow = {
   created_at: string;
 };
 
+type BlogPromoEventRow = {
+  event_type: string;
+  promo: string;
+  post_slug: string;
+  slot_index: number;
+  session_id: string;
+  created_at: string;
+};
+
+type BlogSignupRow = {
+  user_id: string | null;
+  signup_source_detail: string | null;
+  created_at: string | null;
+};
+
+// signup_source_detail for blog promo signups looks like
+// "blog:<post-slug>:<promo-name>".
+function parseBlogSignupDetail(detail: string | null) {
+  if (!detail || !detail.startsWith("blog:")) return { post: null as string | null, promo: null as string | null };
+  const parts = detail.split(":");
+  return {
+    post: parts[1] && parts[1] !== "unknown" ? parts[1] : null,
+    promo: parts[2] && parts[2] !== "unknown" ? parts[2] : null,
+  };
+}
+
 function getBlogAnalyticsWindowKey(req: NextRequest): BlogAnalyticsWindowKey {
   const raw = req.nextUrl.searchParams.get("window");
   return raw === "today" ||
@@ -260,6 +286,99 @@ export async function GET(req: NextRequest) {
       .sort((a, b) => b.views - a.views)
       .slice(0, 25);
 
+    // Promo funnel: impressions and clicks from blog_promo_events, signups
+    // from profile_stats rows attributed to the blog. Each part degrades to
+    // empty data if its table/columns are not there yet.
+    let promoRows: BlogPromoEventRow[] = [];
+    let promoTableMissing = false;
+    const promoResult = await supabaseAdmin
+      .from("blog_promo_events")
+      .select("event_type, promo, post_slug, slot_index, session_id, created_at")
+      .gte("created_at", range.start.toISOString())
+      .limit(200000);
+    if (promoResult.error) {
+      if (/blog_promo_events|schema cache|does not exist|could not find the table/i.test(promoResult.error.message || "")) {
+        promoTableMissing = true;
+      } else {
+        throw new Error(promoResult.error.message);
+      }
+    } else {
+      promoRows = ((promoResult.data || []) as BlogPromoEventRow[]).filter((row) =>
+        isWithinRange(new Date(row.created_at), range)
+      );
+    }
+
+    let blogSignups: BlogSignupRow[] = [];
+    const signupResult = await supabaseAdmin
+      .from("profile_stats")
+      .select("user_id, signup_source_detail, created_at")
+      .eq("signup_source", "Blog")
+      .gte("created_at", range.start.toISOString());
+    if (!signupResult.error) {
+      blogSignups = ((signupResult.data || []) as BlogSignupRow[]).filter(
+        (row) => row.created_at && isWithinRange(new Date(row.created_at), range)
+      );
+    }
+
+    const promoImpressions = promoRows.filter((row) => row.event_type === "impression").length;
+    const promoClicks = promoRows.filter((row) => row.event_type === "click").length;
+    const promoCtr = promoImpressions > 0 ? Number(((promoClicks / promoImpressions) * 100).toFixed(1)) : 0;
+
+    const byBannerMap = new Map<string, { impressions: number; clicks: number; signups: number }>();
+    const byPostMap = new Map<string, { impressions: number; clicks: number; signups: number }>();
+    const bump = (
+      map: Map<string, { impressions: number; clicks: number; signups: number }>,
+      key: string,
+      field: "impressions" | "clicks" | "signups"
+    ) => {
+      const entry = map.get(key) || { impressions: 0, clicks: 0, signups: 0 };
+      entry[field] += 1;
+      map.set(key, entry);
+    };
+
+    promoRows.forEach((row) => {
+      const field = row.event_type === "click" ? "clicks" : "impressions";
+      bump(byBannerMap, row.promo, field);
+      bump(byPostMap, row.post_slug, field);
+    });
+    blogSignups.forEach((row) => {
+      const { post, promo } = parseBlogSignupDetail(row.signup_source_detail);
+      if (promo) bump(byBannerMap, promo, "signups");
+      if (post) bump(byPostMap, post, "signups");
+    });
+
+    const promoByBanner = Array.from(byBannerMap.entries())
+      .map(([promo, entry]) => ({
+        promo,
+        impressions: entry.impressions,
+        clicks: entry.clicks,
+        ctr: entry.impressions > 0 ? Number(((entry.clicks / entry.impressions) * 100).toFixed(1)) : 0,
+        signups: entry.signups,
+      }))
+      .sort((a, b) => b.clicks - a.clicks || b.impressions - a.impressions);
+
+    const promoByPost = Array.from(byPostMap.entries())
+      .map(([slug, entry]) => ({
+        slug,
+        title: titleForSlug(`/blog/${slug}`),
+        impressions: entry.impressions,
+        clicks: entry.clicks,
+        ctr: entry.impressions > 0 ? Number(((entry.clicks / entry.impressions) * 100).toFixed(1)) : 0,
+        signups: entry.signups,
+      }))
+      .sort((a, b) => b.signups - a.signups || b.clicks - a.clicks)
+      .slice(0, 25);
+
+    const promoFunnel = {
+      tableMissing: promoTableMissing,
+      impressions: promoImpressions,
+      clicks: promoClicks,
+      ctr: promoCtr,
+      signups: blogSignups.length,
+      byBanner: promoByBanner,
+      byPost: promoByPost,
+    };
+
     return NextResponse.json({
       window: windowKey,
       label: range.label,
@@ -278,6 +397,7 @@ export async function GET(req: NextRequest) {
       viewsSeries: buildViewsSeries(rangeRows, windowKey),
       visitorsSeries: buildVisitorsSeries(rangeRows, windowKey),
       topArticles,
+      promoFunnel,
       updatedAt: new Date().toISOString(),
     });
   } catch (error) {
