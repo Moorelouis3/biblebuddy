@@ -1233,3 +1233,7 @@ Next up: 1 Samuel 7
 ## 2026-08-09T20:56:29Z (hourly chapter notes run)
 Chapter: 1 Samuel 7 | Duration: 12 min | Sections: 8 | Cards: 34 | Status: pass
 Next up: 1 Samuel 8
+
+## 2026-08-09T21:56:30Z (hourly chapter notes run)
+Chapter: 1 Samuel 8 | Duration: 8 min | Sections: 5 | Cards: 43 | Status: pass
+Next up: 1 Samuel 9

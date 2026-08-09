@@ -265,6 +265,7 @@ import { FIRST_SAMUEL_FOUR_PERSONAL_SECTIONS } from "./firstSamuelFourSource";
 import { FIRST_SAMUEL_FIVE_PERSONAL_SECTIONS } from "./firstSamuelFiveSource";
 import { FIRST_SAMUEL_SIX_PERSONAL_SECTIONS } from "./firstSamuelSixSource";
 import { FIRST_SAMUEL_SEVEN_PERSONAL_SECTIONS } from "./firstSamuelSevenSource";
+import { FIRST_SAMUEL_EIGHT_PERSONAL_SECTIONS } from "./firstSamuelEightSource";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
 import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, FIRST_SAMUEL_31_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
 import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
@@ -627,7 +628,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "joshua" && section.chapter >= 1 && section.chapter <= 24) ||
     (normalizeBook(book) === "judges" && section.chapter >= 1 && section.chapter <= 21) ||
     (normalizeBook(book) === "ruth" && section.chapter >= 1 && section.chapter <= 4) ||
-    (normalizeBook(book) === "1 samuel" && section.chapter >= 1 && section.chapter <= 7);
+    (normalizeBook(book) === "1 samuel" && section.chapter >= 1 && section.chapter <= 8);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -9734,6 +9735,12 @@ replaceStudySectionsForBookRange(
   7,
   7,
   FIRST_SAMUEL_SEVEN_PERSONAL_SECTIONS,
+);
+replaceStudySectionsForBookRange(
+  "1 samuel",
+  8,
+  8,
+  FIRST_SAMUEL_EIGHT_PERSONAL_SECTIONS,
 );
 
 for (const section of BIBLE_READER_STUDY_SECTIONS) {
