@@ -737,9 +737,20 @@ const TRAFFIC_SOURCE_COLORS = [
   "from-slate-500/14 to-slate-400/8 text-slate-700 ring-slate-200",
 ];
 
-const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "YouTube", "Email", "Other"] as const;
+const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "YouTube", "Blog", "Email", "Other"] as const;
 
 const TRAFFIC_SOURCE_BRAND: Record<string, { bg: string; fg: string; bar: string; icon: ReactNode }> = {
+  Blog: {
+    bg: "#0056fd",
+    fg: "#ffffff",
+    bar: "#0056fd",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+        <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H12v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z" />
+        <path d="M12 4h6.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H12" />
+      </svg>
+    ),
+  },
   Facebook: {
     bg: "#1877F2",
     fg: "#ffffff",
@@ -845,6 +856,7 @@ type NormalizedMainTrafficSourceRow = {
 
 function normalizeMainTrafficSource(sourceValue: unknown) {
   const raw = typeof sourceValue === "string" ? sourceValue.trim().toLowerCase() : "";
+  if (raw === "blog" || raw.startsWith("blog:")) return "Blog";
   if (raw.includes("facebook") || raw.includes("fbclid") || raw.includes("fb.") || raw === "fb") return "Facebook";
   if (raw.includes("instagram") || raw.includes("igshid") || raw === "ig") return "Instagram";
   if (raw.includes("threads")) return "Threads";

@@ -2221,6 +2221,12 @@ function normalizeTrafficSourceLabel(sourceValue: unknown, referrerValue?: unkno
   const pagePath = typeof pagePathValue === "string" ? pagePathValue.trim() : "";
   const combined = `${source} ${referrer} ${pagePath}`.toLowerCase();
 
+  // Checked before the referrer rules, matching normalizeSignupSource: a blog
+  // promo click sends src=blog, and the Google or Pinterest referrer that led
+  // them to the post must not swallow it. First touch is reported separately
+  // from signup_first_touch_source.
+  if (source.toLowerCase() === "blog" || source.toLowerCase().startsWith("blog:")) return "Blog";
+
   if (combined.includes("facebook") || combined.includes("fbclid") || combined.includes("fb.") || /\bfb\b/.test(combined)) return "Facebook";
   if (combined.includes("instagram") || combined.includes("igshid") || /\big\b/.test(combined)) return "Instagram";
   if (combined.includes("threads")) return "Threads";
