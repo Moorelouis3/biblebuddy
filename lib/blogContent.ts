@@ -5,6 +5,17 @@ export type BlogArticle = {
   category: string;
   categorySlug: string;
   canonicalPath: string;
+  // ISO date (YYYY-MM-DD) the post went live; drives sitemap lastModified
+  // and article schema. New posts must set this to their real publish day.
+  publishedAt: string;
+  // Set only when a post gets a real content overhaul after publishing;
+  // becomes dateModified in the article schema.
+  updatedAt?: string;
+  // The pre-migration URL path (e.g. /bible-study-hub/...). Likes, comments,
+  // and view rows in the database are keyed by this string, so it stays as
+  // the storage key even though readers now see /blog/<slug>. New posts
+  // never set it.
+  legacyPath?: string;
   readTime: string;
   image: string;
   // When present, the blog-group-post cron auto-shares this article into
@@ -62,45 +73,52 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       "Leah was the unloved wife of Jacob - but God saw her. Her story in Genesis 29 is for everyone who has ever felt overlooked, second-best, or unwanted.",
     category: "Character Studies",
     categorySlug: "character-studies",
-    canonicalPath: "/bible-study-hub/character-studies/who-is-leah",
+    canonicalPath: "/blog/who-is-leah",
+    legacyPath: "/bible-study-hub/character-studies/who-is-leah",
+    publishedAt: "2026-08-07",
     readTime: "7 min read",
     image: "/leahbanner.jpg",
     groupPost: {
       title: "Who Is Leah? The Wife Her Husband Didn't Want 📖",
       content:
-        "Some people in the Bible get statues.\n\nLeah got a footnote.\n\nHer wedding was a trick. Her husband loved her sister. Her whole life, she was the one who wasn't chosen.\n\n📌 But God saw her - and the Messiah Himself came through her son, not her sister's.\n\nNew article on the woman who learned to say \"Now will I praise the LORD\" while her heart was still breaking.\n\nRead it here:\nhttps://www.mybiblebuddy.net/bible-study-hub/character-studies/who-is-leah\n\nHave you ever felt overlooked like Leah? What helped you? 🙏",
+        "Some people in the Bible get statues.\n\nLeah got a footnote.\n\nHer wedding was a trick. Her husband loved her sister. Her whole life, she was the one who wasn't chosen.\n\n📌 But God saw her - and the Messiah Himself came through her son, not her sister's.\n\nNew article on the woman who learned to say \"Now will I praise the LORD\" while her heart was still breaking.\n\nRead it here:\nhttps://www.mybiblebuddy.net/blog/who-is-leah\n\nHave you ever felt overlooked like Leah? What helped you? 🙏",
     },
   },
   {
     slug: "who-is-jezebel",
     title: "Who Is Jezebel? The Queen Who Led Israel Into Idol Worship",
     description:
-      "Jezebel was the queen who led Israel into Baal worship, hunted God's prophets, and defied God to the end. Her story is a warning about influence and compromise.",
+      "Jezebel was the queen who led Israel into Baal worship, hunted God's prophets, and defied God to the end. A warning about influence and compromise.",
     category: "Character Studies",
     categorySlug: "character-studies",
-    canonicalPath: "/bible-study-hub/character-studies/who-is-jezebel",
+    canonicalPath: "/blog/who-is-jezebel",
+    legacyPath: "/bible-study-hub/character-studies/who-is-jezebel",
+    publishedAt: "2026-08-05",
     readTime: "7 min read",
     image: "/jezebelbanner.jpg",
     groupPost: {
       title: "Who Is Jezebel? The Queen Who Led Israel Into Idol Worship 📖",
       content:
-        "Her name is still an insult three thousand years later.\n\nBut most people can't tell you what she actually did.\n\n📌 Jezebel wasn't just a wicked queen. She was the most dangerous kind of influence: the kind that makes evil look normal.\n\nNew article on the queen who led a nation into idolatry, the prophet who stood against her, and why Jesus brought her name up again in Revelation.\n\nRead it here:\nhttps://www.mybiblebuddy.net/bible-study-hub/character-studies/who-is-jezebel\n\nWho is influencing you - and who are you influencing? 🙏",
+        "Her name is still an insult three thousand years later.\n\nBut most people can't tell you what she actually did.\n\n📌 Jezebel wasn't just a wicked queen. She was the most dangerous kind of influence: the kind that makes evil look normal.\n\nNew article on the queen who led a nation into idolatry, the prophet who stood against her, and why Jesus brought her name up again in Revelation.\n\nRead it here:\nhttps://www.mybiblebuddy.net/blog/who-is-jezebel\n\nWho is influencing you - and who are you influencing? 🙏",
     },
   },
   {
     slug: "what-does-the-bible-say-about-anxiety",
     title: "What Does the Bible Say About Anxiety?",
     description:
-      "What the Bible actually says about anxiety and worry: what Jesus taught, God's alternative to anxious thoughts, and practical ways to fight anxiety with Scripture.",
+      "What the Bible says about anxiety: what Jesus taught about worry, the top anxiety verses, and honest answers to the questions Christians actually ask.",
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
-    canonicalPath: "/bible-study-hub/christian-foundations/what-does-the-bible-say-about-anxiety",
-    readTime: "7 min read",
+    canonicalPath: "/blog/what-does-the-bible-say-about-anxiety",
+    legacyPath: "/bible-study-hub/christian-foundations/what-does-the-bible-say-about-anxiety",
+    publishedAt: "2026-08-03",
+    updatedAt: "2026-08-09",
+    readTime: "22 min read",
     image: "/anxietyarticlebanner.jpg",
     groupPost: {
       title: "What Does the Bible Say About Anxiety? 📖",
       content:
-        "Anxiety does not knock first.\n\nIt shows up in the middle of the night. Before the doctor calls back. When the bank account is low and the bills are not.\n\n📌 If you struggle with anxious thoughts, you are not a bad Christian. You are a human being.\n\nI just published a new article walking through what God's Word actually says about anxiety — what Jesus taught about worry, the promise in Philippians 4:6-7, and 6 practical ways to fight anxious thoughts with Scripture.\n\nRead it here:\nhttps://www.mybiblebuddy.net/bible-study-hub/christian-foundations/what-does-the-bible-say-about-anxiety\n\nWhich verse helps you most when you feel anxious? Share it below 🙏",
+        "Anxiety does not knock first.\n\nIt shows up in the middle of the night. Before the doctor calls back. When the bank account is low and the bills are not.\n\n📌 If you struggle with anxious thoughts, you are not a bad Christian. You are a human being.\n\nI just published a new article walking through what God's Word actually says about anxiety — what Jesus taught about worry, the promise in Philippians 4:6-7, and 6 practical ways to fight anxious thoughts with Scripture.\n\nRead it here:\nhttps://www.mybiblebuddy.net/blog/what-does-the-bible-say-about-anxiety\n\nWhich verse helps you most when you feel anxious? Share it below 🙏",
     },
   },
   {
@@ -109,7 +127,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "A clear look at five common struggles that quietly pull men away from God and how Scripture calls us to fight back.",
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
-    canonicalPath: "/bible-study-hub/christian-foundations/5-things-holding-men-back-from-god",
+    canonicalPath: "/blog/5-things-holding-men-back-from-god",
+    legacyPath: "/bible-study-hub/christian-foundations/5-things-holding-men-back-from-god",
+    publishedAt: "2026-07-31",
     readTime: "7 min read",
     image: "/5thingsholdingmenback.png",
   },
@@ -119,7 +139,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "How to respond when people say the Bible was changed, written by men, or fake.",
     category: "Bible Insights",
     categorySlug: "bible-insights",
-    canonicalPath: "/bible-study-hub/bible-insights/how-to-defend-the-bible",
+    canonicalPath: "/blog/how-to-defend-the-bible",
+    legacyPath: "/bible-study-hub/bible-insights/how-to-defend-the-bible",
+    publishedAt: "2026-07-29",
     readTime: "8 min read",
     image: "/Defenthebiblebanner.png",
   },
@@ -129,7 +151,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Understand the Bible's origin, structure, authors, and why it matters.",
     category: "Bible Insights",
     categorySlug: "bible-insights",
-    canonicalPath: "/bible-study-hub/bible-insights/what-is-the-bible",
+    canonicalPath: "/blog/what-is-the-bible",
+    legacyPath: "/bible-study-hub/bible-insights/what-is-the-bible",
+    publishedAt: "2026-07-27",
     readTime: "7 min read",
     image: "/Whatisthebiblebanner.png",
   },
@@ -139,7 +163,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "A simple guide to understanding modern Bible versions.",
     category: "Bible Insights",
     categorySlug: "bible-insights",
-    canonicalPath: "/bible-study-hub/bible-insights/why-so-many-bible-translations",
+    canonicalPath: "/blog/why-so-many-bible-translations",
+    legacyPath: "/bible-study-hub/bible-insights/why-so-many-bible-translations",
+    publishedAt: "2026-07-24",
     readTime: "6 min read",
     image: "/Translationsbanner.png",
   },
@@ -149,7 +175,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Five reasons studying the Bible can feel difficult and how to keep going.",
     category: "Bible Study Tips",
     categorySlug: "bible-study-tips",
-    canonicalPath: "/bible-study-tips/why-bible-study-is-hard",
+    canonicalPath: "/blog/why-bible-study-is-hard",
+    legacyPath: "/bible-study-tips/why-bible-study-is-hard",
+    publishedAt: "2026-07-22",
     readTime: "7 min read",
     image: "/Biblestudyhardbanner.png",
   },
@@ -159,7 +187,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "A simple way to read Scripture with understanding instead of just checking a box.",
     category: "Bible Study Tips",
     categorySlug: "bible-study-tips",
-    canonicalPath: "/bible-study-tips/how-to-read-the-bible",
+    canonicalPath: "/blog/how-to-read-the-bible",
+    legacyPath: "/bible-study-tips/how-to-read-the-bible",
+    publishedAt: "2026-07-20",
     readTime: "8 min read",
     image: "/Biblereadingbanner.png",
   },
@@ -169,7 +199,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "How to highlight Scripture with purpose so your notes actually help you study.",
     category: "Bible Study Tips",
     categorySlug: "bible-study-tips",
-    canonicalPath: "/bible-study-tips/a-simple-bible-highlighting-system",
+    canonicalPath: "/blog/a-simple-bible-highlighting-system",
+    legacyPath: "/bible-study-tips/a-simple-bible-highlighting-system",
+    publishedAt: "2026-07-17",
     readTime: "5 min read",
     image: "/Biblehighlightingbanner.png",
   },
@@ -179,7 +211,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "A biblical explanation of hell without confusion or shallow answers.",
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
-    canonicalPath: "/bible-study-hub/christian-foundations/what-is-hell",
+    canonicalPath: "/blog/what-is-hell",
+    legacyPath: "/bible-study-hub/christian-foundations/what-is-hell",
+    publishedAt: "2026-07-15",
     readTime: "8 min read",
     image: "/Whatishell.png",
   },
@@ -189,7 +223,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "A clear look at what the Bible teaches about heaven.",
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
-    canonicalPath: "/bible-study-hub/christian-foundations/what-is-heaven",
+    canonicalPath: "/blog/what-is-heaven",
+    legacyPath: "/bible-study-hub/christian-foundations/what-is-heaven",
+    publishedAt: "2026-07-13",
     readTime: "7 min read",
     image: "/Whatisheaven.png",
   },
@@ -199,7 +235,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Understanding Christian divisions and why so many church traditions exist.",
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
-    canonicalPath: "/bible-study-hub/christian-foundations/why-so-many-denominations",
+    canonicalPath: "/blog/why-so-many-denominations",
+    legacyPath: "/bible-study-hub/christian-foundations/why-so-many-denominations",
+    publishedAt: "2026-07-10",
     readTime: "8 min read",
     image: "/Whydenominations.png",
   },
@@ -209,7 +247,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "1 Corinthians 6:19-20 explained with the history and culture behind Corinth.",
     category: "Verse Breakdowns",
     categorySlug: "verse-breakdowns",
-    canonicalPath: "/bible-study-hub/verse-breakdowns/your-body-is-a-temple",
+    canonicalPath: "/blog/your-body-is-a-temple",
+    legacyPath: "/bible-study-hub/verse-breakdowns/your-body-is-a-temple",
+    publishedAt: "2026-07-08",
     readTime: "12 min read",
     image: "/Bodytemplebanner.png",
   },
@@ -219,7 +259,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Proverbs 25:28 explained for real life and spiritual discipline.",
     category: "Verse Breakdowns",
     categorySlug: "verse-breakdowns",
-    canonicalPath: "/bible-study-hub/verse-breakdowns/building-self-control",
+    canonicalPath: "/blog/building-self-control",
+    legacyPath: "/bible-study-hub/verse-breakdowns/building-self-control",
+    publishedAt: "2026-07-06",
     readTime: "6 min read",
     image: "/Selfcontrolbanner.png",
   },
@@ -229,7 +271,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Matthew 5:13-16 explained in a way that is clear and practical.",
     category: "Verse Breakdowns",
     categorySlug: "verse-breakdowns",
-    canonicalPath: "/bible-study-hub/verse-breakdowns/salt-and-light",
+    canonicalPath: "/blog/salt-and-light",
+    legacyPath: "/bible-study-hub/verse-breakdowns/salt-and-light",
+    publishedAt: "2026-07-03",
     readTime: "6 min read",
     image: "/Saltearthbanner.png",
   },
@@ -239,7 +283,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "The Gentile doctor, Gospel writer, and companion of Paul.",
     category: "Character Studies",
     categorySlug: "character-studies",
-    canonicalPath: "/bible-study-hub/character-studies/luke",
+    canonicalPath: "/blog/luke",
+    legacyPath: "/bible-study-hub/character-studies/luke",
+    publishedAt: "2026-07-01",
     readTime: "7 min read",
     image: "/Lukebanner.png",
   },
@@ -249,7 +295,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "The man God drew out to draw His people out.",
     category: "Character Studies",
     categorySlug: "character-studies",
-    canonicalPath: "/bible-study-hub/character-studies/moses",
+    canonicalPath: "/blog/moses",
+    legacyPath: "/bible-study-hub/character-studies/moses",
+    publishedAt: "2026-06-29",
     readTime: "7 min read",
     image: "/Mosesbanner.png",
   },
@@ -259,7 +307,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "From persecutor to missionary apostle.",
     category: "Character Studies",
     categorySlug: "character-studies",
-    canonicalPath: "/bible-study-hub/character-studies/paul",
+    canonicalPath: "/blog/paul",
+    legacyPath: "/bible-study-hub/character-studies/paul",
+    publishedAt: "2026-06-26",
     readTime: "7 min read",
     image: "/Paulbanner.png",
   },
@@ -269,7 +319,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Constantine and the turning point of the Church.",
     category: "Christian History",
     categorySlug: "christian-history",
-    canonicalPath: "/bible-study-hub/christian-history/the-man-who-legalized-christianity",
+    canonicalPath: "/blog/the-man-who-legalized-christianity",
+    legacyPath: "/bible-study-hub/christian-history/the-man-who-legalized-christianity",
+    publishedAt: "2026-06-24",
     readTime: "8 min read",
     image: "/Legalized.png",
   },
@@ -279,7 +331,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "The story of the man connected with bringing Christianity to Ireland.",
     category: "Christian History",
     categorySlug: "christian-history",
-    canonicalPath: "/bible-study-hub/christian-history/st-patrick",
+    canonicalPath: "/blog/st-patrick",
+    legacyPath: "/bible-study-hub/christian-history/st-patrick",
+    publishedAt: "2026-06-22",
     readTime: "6 min read",
     image: "/Irelandbanner.png",
   },
@@ -289,7 +343,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "The martyr behind the modern holiday.",
     category: "Christian History",
     categorySlug: "christian-history",
-    canonicalPath: "/bible-study-hub/christian-history/st-valentine",
+    canonicalPath: "/blog/st-valentine",
+    legacyPath: "/bible-study-hub/christian-history/st-valentine",
+    publishedAt: "2026-06-19",
     readTime: "6 min read",
     image: "/Valentinebanner.png",
   },
@@ -297,6 +353,48 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 
 export function getBlogArticle(slug: string) {
   return BLOG_ARTICLES.find((article) => article.slug === slug) || null;
+}
+
+// Single source of truth for per-post SEO tags. Every /blog/<slug> page
+// exports `metadata = buildBlogArticleMetadata("<slug>")` so titles,
+// descriptions, canonicals, and share cards can never drift back to the
+// generic site-wide defaults. Overrides are for pages whose on-page title
+// is intentionally richer than the listing title.
+export function buildBlogArticleMetadata(
+  slug: string,
+  overrides?: { title?: string; description?: string },
+) {
+  const article = getBlogArticle(slug);
+  if (!article) return { title: "Blog Article | Bible Buddy" };
+
+  const title = overrides?.title ?? article.title;
+  const description = overrides?.description ?? article.description;
+  const url = `/blog/${article.slug}`;
+
+  return {
+    title: `${title} | Bible Buddy`,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article" as const,
+      images: [{ url: article.image, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title,
+      description,
+      images: [article.image],
+    },
+  };
+}
+
+// Database key for likes/comments/views. Migrated posts keep their old
+// path so existing engagement rows still match; new posts key by /blog URL.
+export function getArticleEngagementKey(article: BlogArticle) {
+  return article.legacyPath ?? `/blog/${article.slug}`;
 }
 
 export function getBlogCategory(slug: string) {

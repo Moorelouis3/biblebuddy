@@ -19,7 +19,9 @@ export async function POST(request: NextRequest) {
   const referrer = typeof body?.referrer === "string" ? body.referrer.slice(0, 1000) : null;
 
   const isTrackablePath =
-    articleSlug.startsWith("/bible-study-hub/") || articleSlug.startsWith("/bible-study-tips/");
+    articleSlug.startsWith("/bible-study-hub/") ||
+    articleSlug.startsWith("/bible-study-tips/") ||
+    articleSlug.startsWith("/blog/");
 
   if (!isTrackablePath || !sessionId) {
     return NextResponse.json({ ok: false, error: "Invalid view payload." }, { status: 400 });

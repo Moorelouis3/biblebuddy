@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 const tipsArticles: { href: string; emoji: string; title: string; desc: string; bg: string; text: string }[] = [
   {
-    href: "/bible-study-tips/why-bible-study-is-hard",
+    href: "/blog/why-bible-study-is-hard",
     emoji: "🧠",
     title: "Why Bible Study Is Hard",
     desc: "5 Reasons Studying the Bible Is Hard",
@@ -15,7 +15,7 @@ const tipsArticles: { href: string; emoji: string; title: string; desc: string; 
     text: "text-yellow-900",
   },
   {
-    href: "/bible-study-tips/how-to-read-the-bible",
+    href: "/blog/how-to-read-the-bible",
     emoji: "📖",
     title: "How to Read the Bible",
     desc: "A Simple Way to Study Scripture",
@@ -23,7 +23,7 @@ const tipsArticles: { href: string; emoji: string; title: string; desc: string; 
     text: "text-yellow-900",
   },
   {
-    href: "/bible-study-tips/a-simple-bible-highlighting-system",
+    href: "/blog/a-simple-bible-highlighting-system",
     emoji: "🖍️",
     title: "A Simple Bible Highlighting System",
     desc: "How to Highlight With Purpose",

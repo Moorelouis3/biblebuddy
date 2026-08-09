@@ -6,19 +6,19 @@ import { useRouter } from "next/navigation";
 
 const articleCards = [
   {
-    href: "/bible-study-hub/verse-breakdowns/your-body-is-a-temple",
+    href: "/blog/your-body-is-a-temple",
     emoji: "🏛️",
     title: "Your Body Is a Temple",
     subtitle: "1 Corinthians 6:19 to 20",
   },
   {
-    href: "/bible-study-hub/verse-breakdowns/building-self-control",
+    href: "/blog/building-self-control",
     emoji: "🧑‍🦱",
     title: "Building Self Control",
     subtitle: "Proverbs 25:28 Explained",
   },
   {
-    href: "/bible-study-hub/verse-breakdowns/salt-and-light",
+    href: "/blog/salt-and-light",
     emoji: "🧂",
     title: "Salt and Light",
     subtitle: "Matthew 5:13 to 16",

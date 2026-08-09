@@ -51,6 +51,10 @@ export function normalizeSignupSource(sourceValue?: unknown, referrerValue?: unk
   const source = clean(sourceValue) || "";
   const referrer = clean(referrerValue) || "";
   const pagePath = clean(pagePathValue) || "";
+  // Explicit src=blog means the visitor clicked a promo or CTA inside our
+  // own blog. Check it first so a Google/Facebook referrer that led them
+  // to the blog does not swallow the blog attribution.
+  if (source.toLowerCase() === "blog" || source.toLowerCase().startsWith("blog:")) return "Blog";
   const combined = `${source} ${referrer} ${pagePath}`.toLowerCase();
 
   if (combined.includes("facebook") || combined.includes("fbclid") || combined.includes("fb.") || /\bfb\b/.test(combined)) return "Facebook";
@@ -91,11 +95,19 @@ export function getSignupAttributionFromBrowser(): SignupAttribution {
   const referrerUrl = storedReferrer || clean(document.referrer);
   const pagePath = `${window.location.pathname}${window.location.search}`;
   const source = normalizeSignupSource(utmSource || landingSource, referrerUrl, pagePath);
-  const sourceDetail = utmSource
-    ? `utm:${utmSource}`
-    : landingSource
-      ? `landing:${landingSource}`
-      : getReferrerHost(referrerUrl);
+  // Blog promo clicks arrive as /signup?src=blog&promo=<banner>&post=<slug>.
+  // Fold promo + post into the stored detail so the blog analytics page can
+  // report signups per post and per banner.
+  const blogPromo = clean(params.get("promo"));
+  const blogPost = clean(params.get("post"));
+  const sourceDetail =
+    source === "Blog" && (blogPromo || blogPost)
+      ? `blog:${blogPost || "unknown"}:${blogPromo || "unknown"}`
+      : utmSource
+        ? `utm:${utmSource}`
+        : landingSource
+          ? `landing:${landingSource}`
+          : getReferrerHost(referrerUrl);
 
   return {
     source,

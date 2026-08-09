@@ -6,19 +6,19 @@ import { useRouter } from "next/navigation";
 
 const articleCards = [
   {
-    href: "/bible-study-hub/christian-history/the-man-who-legalized-christianity",
+    href: "/blog/the-man-who-legalized-christianity",
     emoji: "🏛️",
     title: "The Man Who Legalized Christianity",
     subtitle: "Constantine and the Turning Point of the Church",
   },
   {
-    href: "/bible-study-hub/christian-history/st-patrick",
+    href: "/blog/st-patrick",
     emoji: "🍀",
     title: "St. Patrick",
     subtitle: "He Who Brought Christianity to Ireland",
   },
   {
-    href: "/bible-study-hub/christian-history/st-valentine",
+    href: "/blog/st-valentine",
     emoji: "❤️",
     title: "St. Valentine",
     subtitle: "The Martyr Behind the Modern Holiday",

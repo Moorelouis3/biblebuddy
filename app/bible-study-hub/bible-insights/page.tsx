@@ -7,17 +7,17 @@ import { useRouter } from "next/navigation";
 
 const insights = [
   {
-    href: "/bible-study-hub/bible-insights/how-to-defend-the-bible",
+    href: "/blog/how-to-defend-the-bible",
     title: "🛡️ How to Defend the Bible",
     desc: "How to respond when people say it was changed, written by men, or fake.",
   },
   {
-    href: "/bible-study-hub/bible-insights/what-is-the-bible",
+    href: "/blog/what-is-the-bible",
     title: "📖 What Is the Bible?",
     desc: "Understanding its origin, structure, authors, and why it matters.",
   },
   {
-    href: "/bible-study-hub/bible-insights/why-so-many-bible-translations",
+    href: "/blog/why-so-many-bible-translations",
     title: "📚 Why So Many Bible Translations?",
     desc: "Understanding Your Modern Bible Version",
   },

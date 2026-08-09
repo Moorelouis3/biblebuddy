@@ -130,10 +130,10 @@ function bibleChapterReflectionContext(slug: string) {
 
 const ARTICLE_PATH_BY_SLUG: Record<string, string> = {
   "favorite-book-of-the-bible": "/bible-study-hub/bible-insights/favorite-book-of-the-bible",
-  "how-to-defend-the-bible": "/bible-study-hub/bible-insights/how-to-defend-the-bible",
-  "what-is-the-bible": "/bible-study-hub/bible-insights/what-is-the-bible",
+  "how-to-defend-the-bible": "/blog/how-to-defend-the-bible",
+  "what-is-the-bible": "/blog/what-is-the-bible",
   "which-bible-character-relates": "/bible-study-hub/bible-insights/which-bible-character-relates",
-  "why-so-many-bible-translations": "/bible-study-hub/bible-insights/why-so-many-bible-translations",
+  "why-so-many-bible-translations": "/blog/why-so-many-bible-translations",
   "how-do-you-take-notes": "/bible-study-hub/bible-study-tips/how-do-you-take-notes",
   "what-keeps-you-consistent": "/bible-study-hub/bible-study-tips/what-keeps-you-consistent",
   "whats-your-best-study-tip": "/bible-study-hub/bible-study-tips/whats-your-best-study-tip",
@@ -142,10 +142,10 @@ const ARTICLE_PATH_BY_SLUG: Record<string, string> = {
   "who-do-you-relate-to": "/bible-study-hub/character-studies/who-do-you-relate-to",
   "what-does-being-christian-mean": "/bible-study-hub/christian-foundations/what-does-being-christian-mean",
   "what-does-following-jesus-look-like": "/bible-study-hub/christian-foundations/what-does-following-jesus-look-like",
-  "what-is-heaven": "/bible-study-hub/christian-foundations/what-is-heaven",
-  "what-is-hell": "/bible-study-hub/christian-foundations/what-is-hell",
+  "what-is-heaven": "/blog/what-is-heaven",
+  "what-is-hell": "/blog/what-is-hell",
   "what-is-your-testimony": "/bible-study-hub/christian-foundations/what-is-your-testimony",
-  "why-so-many-denominations": "/bible-study-hub/christian-foundations/why-so-many-denominations",
+  "why-so-many-denominations": "/blog/why-so-many-denominations",
 };
 
 function articleHrefFromSlug(slug: string) {
