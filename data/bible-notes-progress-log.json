@@ -15501,6 +15501,67 @@
           "at": "2026-08-09T08:01:30Z"
         }
       ]
+    },
+    {
+      "book": "Judges",
+      "chapter": 21,
+      "startedAt": "2026-08-09T08:46:19Z",
+      "finishedAt": "2026-08-09T08:58:34Z",
+      "durationMinutes": 12,
+      "sections": 7,
+      "cards": 38,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter (redo backlog confirmed empty, normal forward progress after Judges 20). Found HEAD detached at the exact commit origin/main was already at (recurring detached-HEAD environment bug), fixed with git checkout -B main origin/main, no work lost. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (25 verses). Judges 21 closes the book and the whole civil war arc: Israel's grief over its own Mizpeh oath forbidding marriage into Benjamin now threatening to erase the tribe it just devastated, the earlier death oath catching Jabeshgilead for skipping the war assembly and yielding four hundred (still insufficient) wives, the peace overture to the six hundred survivors at the rock Rimmon, the elders' second math problem over the remaining two hundred unmarried men, the loophole read into the giving-not-taking wording of the marriage curse, and the ambush plan at the yearly Shiloh feast, closing on resettlement and the book's final refrain about everyone doing what was right in their own eyes. Chunked into 7 sections (1-4, 5-7, 8-12, 13-15, 16-18, 19-23, 24-25). Density about 1.52 cards/verse. check_bible_note_style.py found 4 bullet word-count problems on first pass (one caused by a ZWJ family emoji miscounted by the checker), fixed, second run clean. A manual section 13 eye check caught nine lines that were comma splices or used a banned stacked-clause connector, all split or rewritten. Parser check passed exactly (7/7 sections, 38 cards, 25 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies judges range extended from 1-20 to 1-21, new applyPersonalJudgesTwentyOneStudySections() function calling replaceStudySectionsForBookRange(\"judges\", 21, 21, JUDGES_TWENTY_ONE_PERSONAL_SECTIONS), invoked directly after the Judges 20 call and after the old 16-21 placeholder so it correctly overrides. MILESTONE: book of Judges complete, all 21 chapters. Next forward-progress target is Ruth 1.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-09T08:46:19Z"
+        },
+        {
+          "name": "target chapter determined: Judges 21 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-09T08:46:47Z"
+        },
+        {
+          "name": "detached HEAD fixed via git checkout -B main origin/main",
+          "at": "2026-08-09T08:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (Judges 21, 25 verses, aruljohn mirror)",
+          "at": "2026-08-09T08:48:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-09T08:49:00Z"
+        },
+        {
+          "name": "source file written: lib/judgesTwentyOneSource.ts",
+          "at": "2026-08-09T08:52:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 3 fix passes)",
+          "at": "2026-08-09T08:53:30Z"
+        },
+        {
+          "name": "manual section 13 eye check: 9 stacked-clause/comma-splice lines split or rewritten",
+          "at": "2026-08-09T08:55:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalJudgesTwentyOneStudySections)",
+          "at": "2026-08-09T08:55:40Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 38 cards, text verbatim)",
+          "at": "2026-08-09T08:56:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-09T08:57:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md pending SESSION_LOG.md)",
+          "at": "2026-08-09T08:58:34Z"
+        }
+      ]
     }
   ]
 }

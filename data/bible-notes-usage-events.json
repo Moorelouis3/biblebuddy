@@ -138,6 +138,11 @@
       "type": "chapter_count_checkpoint",
       "timestamp": "2026-08-08T21:00:02Z",
       "detail": "Judges 9 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 60 chapters shipped since the last checkpoint at 2026-08-06T07:55:55Z (Deuteronomy 8-34 completing Deuteronomy, all of Joshua 1-24 including the mid-span block/resumed episode about old-style wiring ambiguity, then Judges 1-2 and 4-9), each in its own separate hourly run, with no real usage limit or block hit anywhere in that span (the one block event on 2026-08-07 was a chapter-selection ambiguity, not a usage limit). This checkpoint is overdue against the roughly-every-10-20-chapters guidance, noted honestly rather than guessed away."
+    },
+    {
+      "type": "chapter_count_checkpoint",
+      "timestamp": "2026-08-09T08:58:34Z",
+      "detail": "Judges 21 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 12 chapters shipped since the last checkpoint at 2026-08-08T21:00:02Z (Judges 10 through 21, completing the book of Judges), each in its own separate hourly run, with no usage limit or block hit anywhere in that span."
     }
   ]
 }

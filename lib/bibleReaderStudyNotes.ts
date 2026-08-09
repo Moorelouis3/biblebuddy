@@ -232,6 +232,7 @@ import { JUDGES_SEVENTEEN_PERSONAL_SECTIONS } from "./judgesSeventeenSource";
 import { JUDGES_EIGHTEEN_PERSONAL_SECTIONS } from "./judgesEighteenSource";
 import { JUDGES_NINETEEN_PERSONAL_SECTIONS } from "./judgesNineteenSource";
 import { JUDGES_TWENTY_PERSONAL_SECTIONS } from "./judgesTwentySource";
+import { JUDGES_TWENTY_ONE_PERSONAL_SECTIONS } from "./judgesTwentyOneSource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -612,7 +613,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "numbers" && section.chapter >= 1 && section.chapter <= 36) ||
     (normalizeBook(book) === "deuteronomy" && section.chapter >= 1 && section.chapter <= 34) ||
     (normalizeBook(book) === "joshua" && section.chapter >= 1 && section.chapter <= 24) ||
-    (normalizeBook(book) === "judges" && section.chapter >= 1 && section.chapter <= 20);
+    (normalizeBook(book) === "judges" && section.chapter >= 1 && section.chapter <= 21);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -724,6 +725,10 @@ function applyPersonalJudgesNineteenStudySections() {
 
 function applyPersonalJudgesTwentyStudySections() {
   replaceStudySectionsForBookRange("judges", 20, 20, JUDGES_TWENTY_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJudgesTwentyOneStudySections() {
+  replaceStudySectionsForBookRange("judges", 21, 21, JUDGES_TWENTY_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalRuthOneThroughFourStudySections() {
@@ -8051,6 +8056,7 @@ applyPersonalJudgesSeventeenStudySections();
 applyPersonalJudgesEighteenStudySections();
 applyPersonalJudgesNineteenStudySections();
 applyPersonalJudgesTwentyStudySections();
+applyPersonalJudgesTwentyOneStudySections();
 applyPersonalRuthOneThroughFourStudySections();
 applyPersonalDeuteronomyThirtyThroughThirtyFourStudySections();
 applyPersonalJoshuaOneThroughElevenStudySections();

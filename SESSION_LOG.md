@@ -1163,3 +1163,7 @@ Next up: Judges 20
 ## 2026-08-09T08:00:00Z (hourly chapter notes run)
 Chapter: Judges 20 | Duration: 14 min | Sections: 9 | Cards: 47 | Status: pass
 Next up: Judges 21
+
+## 2026-08-09T08:58:34Z (hourly chapter notes run)
+Chapter: Judges 21 | Duration: 12 min | Sections: 7 | Cards: 38 | Status: pass
+Next up: Ruth 1
