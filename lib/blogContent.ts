@@ -7,6 +7,12 @@ export type BlogArticle = {
   canonicalPath: string;
   readTime: string;
   image: string;
+  // When present, the blog-group-post cron auto-shares this article into
+  // the Bible Buddy Study Group (once per article) with this teaser text.
+  groupPost?: {
+    title: string;
+    content: string;
+  };
 };
 
 export type BlogCategory = {
@@ -49,6 +55,22 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 ];
 
 export const BLOG_ARTICLES: BlogArticle[] = [
+  {
+    slug: "what-does-the-bible-say-about-anxiety",
+    title: "What Does the Bible Say About Anxiety?",
+    description:
+      "What the Bible actually says about anxiety and worry: what Jesus taught, God's alternative to anxious thoughts, and practical ways to fight anxiety with Scripture.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/bible-study-hub/christian-foundations/what-does-the-bible-say-about-anxiety",
+    readTime: "7 min read",
+    image: "/anxietyarticlebanner.jpg",
+    groupPost: {
+      title: "What Does the Bible Say About Anxiety? 📖",
+      content:
+        "Anxiety does not knock first.\n\nIt shows up in the middle of the night. Before the doctor calls back. When the bank account is low and the bills are not.\n\n📌 If you struggle with anxious thoughts, you are not a bad Christian. You are a human being.\n\nI just published a new article walking through what God's Word actually says about anxiety — what Jesus taught about worry, the promise in Philippians 4:6-7, and 6 practical ways to fight anxious thoughts with Scripture.\n\nRead it here:\nhttps://www.mybiblebuddy.net/bible-study-hub/christian-foundations/what-does-the-bible-say-about-anxiety\n\nWhich verse helps you most when you feel anxious? Share it below 🙏",
+    },
+  },
   {
     slug: "5-things-holding-men-back-from-god",
     title: "5 Things Holding Men Back From God",
