@@ -7,19 +7,19 @@ import { useRouter } from "next/navigation";
 
 const articleCards = [
   {
-    href: "/bible-study-hub/character-studies/luke",
+    href: "/blog/luke",
     emoji: "👤",
     title: "Luke",
     subtitle: "The Gentile doctor, Gospel writer, and companion of Paul."
   },
   {
-    href: "/bible-study-hub/character-studies/moses",
+    href: "/blog/moses",
     emoji: "🔥",
     title: "Moses",
     subtitle: "The man God drew out to draw His people out"
   },
   {
-    href: "/bible-study-hub/character-studies/paul",
+    href: "/blog/paul",
     emoji: "🧔",
     title: "Paul",
     subtitle: "From persecutor to missionary apostle."

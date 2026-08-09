@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Leah was the unloved wife of Jacob - but God saw her. Her story in Genesis 29 is for everyone who has ever felt overlooked, second-best, or unwanted.",
   alternates: {
-    canonical: "/bible-study-hub/character-studies/who-is-leah",
+    canonical: "/blog/who-is-leah",
   },
 };
 

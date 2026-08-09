@@ -31,11 +31,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...BLOG_ARTICLES.map((article) => ({
-      url: `${SITE_URL}${article.canonicalPath}`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.65,
-    })),
   ];
 }

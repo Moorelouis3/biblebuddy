@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Jezebel was the queen who led Israel into Baal worship, hunted God's prophets, and defied God to the end. Her story is a warning about influence and compromise.",
   alternates: {
-    canonical: "/bible-study-hub/character-studies/who-is-jezebel",
+    canonical: "/blog/who-is-jezebel",
   },
 };
 

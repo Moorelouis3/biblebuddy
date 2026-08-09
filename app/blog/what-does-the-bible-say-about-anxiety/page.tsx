@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "What the Bible says about anxiety: what Jesus taught about worry, the top 5 anxiety verses, and honest answers to the questions Christians actually ask.",
   alternates: {
-    canonical: "/bible-study-hub/christian-foundations/what-does-the-bible-say-about-anxiety",
+    canonical: "/blog/what-does-the-bible-say-about-anxiety",
   },
 };
 
@@ -187,7 +187,7 @@ export default function WhatDoesTheBibleSayAboutAnxietyPage() {
             </p>
             <p>
               One chapter later, a single threat from{" "}
-              <ArticleLink href="/bible-study-hub/character-studies/who-is-jezebel">Jezebel</ArticleLink>{" "}
+              <ArticleLink href="/blog/who-is-jezebel">Jezebel</ArticleLink>{" "}
               sent him running into the wilderness begging God to let him die.
             </p>
             <p>The spiral came right after the mountaintop.</p>
@@ -244,7 +244,7 @@ export default function WhatDoesTheBibleSayAboutAnxietyPage() {
             <p>He knew His people would battle it.</p>
             <p>
               In the{" "}
-              <ArticleLink href="/bible-study-hub/verse-breakdowns/salt-and-light">
+              <ArticleLink href="/blog/salt-and-light">
                 Sermon on the Mount
               </ArticleLink>
               , He points at the birds:
@@ -544,7 +544,7 @@ export default function WhatDoesTheBibleSayAboutAnxietyPage() {
             <p>Sometimes the most spiritual thing you can do tonight is go to bed.</p>
             <p>
               Your anxiety is not only spiritual. You live in a body. And Scripture says{" "}
-              <ArticleLink href="/bible-study-hub/verse-breakdowns/your-body-is-a-temple">
+              <ArticleLink href="/blog/your-body-is-a-temple">
                 your body is a temple
               </ArticleLink>
               .
@@ -606,7 +606,7 @@ export default function WhatDoesTheBibleSayAboutAnxietyPage() {
             <li>
               <strong>Guard your inputs.</strong> If doomscrolling feeds your anxiety, that is not a
               small thing.{" "}
-              <ArticleLink href="/bible-study-hub/verse-breakdowns/building-self-control">
+              <ArticleLink href="/blog/building-self-control">
                 Self control
               </ArticleLink>{" "}
               over what enters your mind is part of the fight, not a side issue.

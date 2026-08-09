@@ -6,19 +6,19 @@ import { useRouter } from "next/navigation";
 
 const articleCards = [
   {
-    href: "/bible-study-hub/christian-foundations/what-is-hell",
+    href: "/blog/what-is-hell",
     emoji: "🔥",
     title: "What Is Hell",
     subtitle: "Understanding Hell Biblically",
   },
   {
-    href: "/bible-study-hub/christian-foundations/what-is-heaven",
+    href: "/blog/what-is-heaven",
     emoji: "✨",
     title: "What Is Heaven",
     subtitle: "Understanding Heaven Biblically",
   },
   {
-    href: "/bible-study-hub/christian-foundations/why-so-many-denominations",
+    href: "/blog/why-so-many-denominations",
     emoji: "🌎",
     title: "Why So Many Denominations",
     subtitle: "Understanding Christian Divisions",
