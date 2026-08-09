@@ -6,9 +6,19 @@ export type SignupAttribution = {
   utmSource: string | null;
   utmMedium: string | null;
   utmCampaign: string | null;
+  // Where the visitor originally came from, captured on their very first page
+  // view and never overwritten. `source` above is last touch: someone who
+  // arrives from Pinterest, reads a blog post, then clicks a promo signs up
+  // with src=blog, so `source` is "Blog" and this is "Pinterest". Both matter
+  // - one says which channel found them, the other says what converted them.
+  firstTouchSource: string | null;
+  firstTouchReferrer: string | null;
 };
 
 const PENDING_SIGNUP_ATTRIBUTION_KEY = "bb:pending-signup-attribution";
+const FIRST_TOUCH_SOURCE_KEY = "bb:first-touch-source";
+const FIRST_TOUCH_REFERRER_KEY = "bb:first-touch-referrer";
+const LANDING_REFERRER_KEY = "bb:landing-referrer";
 
 function clean(value: unknown) {
   return typeof value === "string" && value.trim() ? value.trim() : null;
@@ -67,6 +77,50 @@ export function normalizeSignupSource(sourceValue?: unknown, referrerValue?: unk
   return "Other";
 }
 
+// Records where this visitor came from on their FIRST page view, whatever page
+// that is. Previously only the landing page stored a source, so anyone who
+// arrived straight onto a blog post from Pinterest had their origin thrown
+// away: by signup time document.referrer is our own blog and the channel is
+// unrecoverable. Writes once and never overwrites, so the original channel
+// survives every later click through the site.
+export function captureFirstTouch() {
+  if (typeof window === "undefined") return;
+
+  const referrer = clean(document.referrer);
+  // An internal referrer means this is not the visit that brought them here.
+  let externalReferrer: string | null = referrer;
+  if (referrer) {
+    try {
+      if (new URL(referrer).hostname === window.location.hostname) externalReferrer = null;
+    } catch {
+      // Unparseable referrer: keep it, it is still a hint.
+    }
+  }
+
+  // Keep the referrer of the entry page around for the existing read in
+  // getSignupAttributionFromBrowser, which had nothing writing it.
+  if (externalReferrer && !safeGet(window.localStorage, LANDING_REFERRER_KEY)) {
+    safeSet(window.localStorage, LANDING_REFERRER_KEY, externalReferrer);
+  }
+
+  if (safeGet(window.localStorage, FIRST_TOUCH_SOURCE_KEY)) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const utmSource = clean(
+    params.get("utm_source") || params.get("source") || params.get("src") || params.get("ref"),
+  );
+  // Deliberately does NOT pass the page path: on a blog page that would match
+  // "blog" and record the blog as the origin, which is the bug being fixed.
+  const source = normalizeSignupSource(utmSource, externalReferrer, null);
+
+  // Nothing to learn from: no campaign tag and no external referrer. Stay
+  // silent so a genuine first touch can still be captured on a later visit.
+  if (source === "Other" && !utmSource && !externalReferrer) return;
+
+  safeSet(window.localStorage, FIRST_TOUCH_SOURCE_KEY, source);
+  if (externalReferrer) safeSet(window.localStorage, FIRST_TOUCH_REFERRER_KEY, externalReferrer);
+}
+
 export function getSignupAttributionFromBrowser(): SignupAttribution {
   if (typeof window === "undefined") {
     return {
@@ -77,6 +131,8 @@ export function getSignupAttributionFromBrowser(): SignupAttribution {
       utmSource: null,
       utmMedium: null,
       utmCampaign: null,
+      firstTouchSource: null,
+      firstTouchReferrer: null,
     };
   }
 
@@ -120,6 +176,8 @@ export function getSignupAttributionFromBrowser(): SignupAttribution {
     utmSource,
     utmMedium,
     utmCampaign,
+    firstTouchSource: clean(safeGet(window.localStorage, FIRST_TOUCH_SOURCE_KEY)),
+    firstTouchReferrer: clean(safeGet(window.localStorage, FIRST_TOUCH_REFERRER_KEY)),
   };
 }
 
@@ -143,6 +201,10 @@ export function readPendingSignupAttribution(): SignupAttribution | null {
       utmSource: clean(parsed.utmSource),
       utmMedium: clean(parsed.utmMedium),
       utmCampaign: clean(parsed.utmCampaign),
+      firstTouchSource:
+        clean(parsed.firstTouchSource) || clean(safeGet(window.localStorage, FIRST_TOUCH_SOURCE_KEY)),
+      firstTouchReferrer:
+        clean(parsed.firstTouchReferrer) || clean(safeGet(window.localStorage, FIRST_TOUCH_REFERRER_KEY)),
     };
   } catch {
     return null;
