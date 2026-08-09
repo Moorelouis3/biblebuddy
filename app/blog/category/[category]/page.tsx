@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import BlogArticleGrid from "@/components/BlogArticleGrid";
 import BlogCategoryNav from "@/components/blog/BlogCategoryNav";
+import BlogTopNav from "@/components/blog/BlogTopNav";
 import { BLOG_CATEGORIES, getArticlesByCategory, getBlogCategory } from "@/lib/blogContent";
 
 type CategoryPageProps = {
@@ -47,17 +48,12 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
   const articles = getArticlesByCategory(category.slug);
 
   return (
-    <main className="min-h-screen bg-[#f7fafc] px-4 py-10 text-slate-950">
+    <main className="min-h-screen bg-[#f7fafc] px-4 py-4 text-slate-950">
+      <BlogTopNav />
       <section className="mx-auto max-w-6xl">
-        <div className="mb-8 flex items-center justify-between gap-4">
+        <div className="mb-8">
           <Link href="/blog" className="text-sm font-black uppercase tracking-[0.18em] text-[#0056fd]">
             Back to Blog
-          </Link>
-          <Link
-            href="/signup"
-            className="rounded-full bg-[#0056fd] px-5 py-3 text-sm font-black text-white shadow-[0_14px_32px_rgba(0,86,253,0.22)]"
-          >
-            Start Free
           </Link>
         </div>
 

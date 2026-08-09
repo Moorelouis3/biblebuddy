@@ -4,6 +4,7 @@ import { Children, cloneElement, isValidElement, type ReactElement, type ReactNo
 import BlogPostingSchema from "@/components/BlogPostingSchema";
 import BlogPostBreaker from "@/components/blog/BlogPostBreaker";
 import BlogPostBottom from "@/components/blog/BlogPostBottom";
+import BlogTopNav from "@/components/blog/BlogTopNav";
 import PromoSlot from "@/components/blog/PromoSlot";
 import { getArticleEngagementKey, getBlogArticle } from "@/lib/blogContent";
 
@@ -166,21 +167,12 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
   const faqPairs = extractFaqPairs(anchoredChildren);
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10">
+    <>
+    <BlogTopNav />
+    <div className="mx-auto max-w-2xl px-4 pb-10 pt-4">
       <BlogPostingSchema slug={slug} />
       <article>
-        <div className="mb-6">
-          <Image
-            src={article.image}
-            alt={`${article.title} banner`}
-            width={1600}
-            height={1000}
-            className="h-auto w-full rounded-[28px] object-cover shadow-[0_18px_48px_rgba(15,23,42,0.10)]"
-            priority
-          />
-        </div>
-
-        <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-slate-500">
+        <nav aria-label="Breadcrumb" className="mb-4 flex flex-wrap items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-slate-500">
           <Link href="/blog" className="text-[#0056fd] transition hover:text-[#0049d8]">
             Home
           </Link>
@@ -191,6 +183,17 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
           <span aria-hidden="true">›</span>
           <span className="min-w-0 flex-1 truncate normal-case tracking-normal">{article.title}</span>
         </nav>
+
+        <div className="mb-6">
+          <Image
+            src={article.image}
+            alt={`${article.title} banner`}
+            width={1600}
+            height={1000}
+            className="h-auto w-full rounded-[28px] object-cover shadow-[0_18px_48px_rgba(15,23,42,0.10)]"
+            priority
+          />
+        </div>
 
         <h1 className="mt-4 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
           {title ?? <>📖 {article.title}</>}
@@ -239,5 +242,6 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
 
       <BlogPostBottom articleSlug={engagementKey} postSlug={article.slug} />
     </div>
+    </>
   );
 }
