@@ -1905,7 +1905,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           <BibleBuddyMark />
           <nav className="flex items-center gap-5 text-sm font-black text-[#07162f] sm:gap-7">
             <a href="#about" className="transition hover:text-[#0f63ff]">About</a>
-            <a href="#faq" className="transition hover:text-[#0f63ff]">FAQ</a>
+            <Link href="/blog" className="transition hover:text-[#0f63ff]">Blog</Link>
             <Link href="/login" className="transition hover:text-[#0f63ff]">Login</Link>
           </nav>
         </header>
