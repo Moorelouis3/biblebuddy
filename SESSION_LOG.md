@@ -1135,3 +1135,7 @@ this host for the environment.
 ## 2026-08-09T00:58:01Z (hourly chapter notes run)
 Chapter: Judges 13 | Duration: 11 min | Sections: 10 | Cards: 40 | Status: pass
 Next up: Judges 14
+
+## 2026-08-09T01:53:14Z (hourly chapter notes run)
+Chapter: Judges 14 | Duration: 9 min | Sections: 5 | Cards: 33 | Status: pass
+Next up: Judges 15
