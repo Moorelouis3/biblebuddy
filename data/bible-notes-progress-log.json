@@ -15961,6 +15961,63 @@
           "at": "2026-08-09T16:00:34Z"
         }
       ]
+    },
+    {
+      "book": "1 Samuel",
+      "chapter": 3,
+      "startedAt": "2026-08-09T16:46:32Z",
+      "finishedAt": "2026-08-09T16:58:44Z",
+      "durationMinutes": 12,
+      "sections": 5,
+      "cards": 31,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty. Normal forward progress: verified directly against lib/bibleReaderStudyNotes.ts that 1 Samuel 1 and 2 each have their own dedicated source files (firstSamuelOneSource.ts, firstSamuelTwoSource.ts) while chapter 3 was still only covered by the old bulk firstSamuelOneToTenPersonalNotes.ts placeholder, confirming this was the correct next target after last run's 1 Samuel 2. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (21 verses). 1 Samuel 3 covers the boy Samuel's first prophetic calling: the chapter opening on how rare a direct word from God had become and Eli's fading eyesight mirroring that spiritual dimness, the LORD calling Samuel three times while the boy mistakes the voice for Eli's own because he does not yet know the LORD personally, Eli finally perceiving what is happening and teaching Samuel to answer 'speak, for thy servant heareth', the LORD's fourth call bringing the actual message, a severe judgment against Eli's house for sons who made themselves vile and a father who knew and did not restrain them, the point that this particular sin could never be purged by sacrifice or offering because it was willful and repeated rather than accidental, Samuel's fear to report the vision balanced against Eli's ancient oath formula demanding the full truth, Samuel telling him every whit and hiding nothing, Eli's submissive close ('it is the LORD, let him do what seemeth him good'), and the chapter's own close naming Samuel established as a prophet from Dan to Beersheba as the LORD begins appearing regularly at Shiloh, a direct answer to the silence named in verse one. Chunked into 5 sections (1-3, 4-9, 10-14, 15-18, 19-21). Density about 1.48 cards/verse (21 verses, 31 cards), a bit lighter than 1 Samuel 2 because verses 4-9 are a deliberately repetitive three-times call-and-response sequence that does not each need two separate cards. scripts/check_bible_note_style.py found 3 problems on first pass (three bullets over the 8 word limit), fixed, second run clean. A manual section 13 eye check found one stacked clause joined by 'but' in a closing line (split into two lines) and confirmed no forbidden opening patterns, no repeated first-line structures within a section, every card opening with one of the four approved moves, and every title an exact KJV substring. Parser check passed exactly via getBibleReaderStudySections('1 samuel', 3) (5/5 sections, 31 cards, 21 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for FIRST_SAMUEL_THREE_PERSONAL_SECTIONS from the new lib/firstSamuelThreeSource.ts, preserveExactPhraseBodies extended from chapter <= 2 to chapter <= 3 for 1 Samuel, and replaceStudySectionsForBookRange('1 samuel', 3, 3, ...) added right after the existing 1 Samuel 2 call. Forward progress resumes at 1 Samuel 4 next run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-09T16:46:32Z"
+        },
+        {
+          "name": "target chapter determined: 1 Samuel 3 (redo backlog empty; verified against lib/bibleReaderStudyNotes.ts that ch1 and ch2 have dedicated files and ch3 does not)",
+          "at": "2026-08-09T16:47:35Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-09T16:47:35Z"
+        },
+        {
+          "name": "KJV text fetched (1 Samuel 3, 21 verses, raw.githubusercontent.com/aruljohn/Bible-kjv)",
+          "at": "2026-08-09T16:47:35Z"
+        },
+        {
+          "name": "source file lib/firstSamuelThreeSource.ts written (31 cards / 5 sections)",
+          "at": "2026-08-09T16:56:36Z"
+        },
+        {
+          "name": "style checker clean (3 fixes: over-length bullets)",
+          "at": "2026-08-09T16:57:12Z"
+        },
+        {
+          "name": "manual section 13 eye check fix (1 stacked 'but' clause split) then re-verified clean",
+          "at": "2026-08-09T16:57:12Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import + preserveExactPhraseBodies range extended to ch3 + replaceStudySectionsForBookRange call)",
+          "at": "2026-08-09T16:57:12Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('1 samuel', 3): 5/5 sections, 31 cards, text verbatim)",
+          "at": "2026-08-09T16:57:12Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-09T16:57:12Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-09T16:58:44Z"
+        }
+      ]
     }
   ]
 }
