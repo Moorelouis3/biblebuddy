@@ -16348,6 +16348,59 @@
           "at": "2026-08-09T22:59:30Z"
         }
       ]
+    },
+    {
+      "book": "1 Samuel",
+      "chapter": 10,
+      "startedAt": "2026-08-09T23:47:00Z",
+      "finishedAt": "2026-08-09T23:56:20Z",
+      "durationMinutes": 9.3,
+      "sections": 8,
+      "cards": 37,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty. Normal forward progress: 1 Samuel 1-9 each already had a dedicated wired-in source file, chapter 10 had none, confirming it as the correct next target. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (27 verses). 1 Samuel 10 covers Samuel's private anointing of Saul with oil and the three confirming signs (the men at Rachel's tomb reporting the found donkeys, the three pilgrims at Bethel with bread, and the company of prophets at the Philistine garrison hill), Saul being turned into another man by the Spirit and prophesying so that it becomes a proverb (Is Saul also among the prophets), Saul concealing the kingship matter from his uncle, Samuel's public rebuke of Israel at Mizpeh for rejecting God by demanding a king, the lot falling on Saul by tribe then family while he hides among the baggage, the crowd's God save the king acclamation, Samuel writing the manner of the kingdom in a book laid up before the LORD, and the chapter closing on the band of men whose hearts God had touched going home with Saul while the children of Belial openly despise him. Chunked into 8 sections (1-2, 3-6, 7-9, 10-13, 14-16, 17-19, 20-24, 25-27). Density about 1.37 cards/verse (27 verses, 37 cards). scripts/check_bible_note_style.py was clean on the first pass, 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, no forbidden filler patterns, no repeated first-line structures within a section, no hyphens/em dashes/semicolons/contractions, and every title an exact phrase or clear identifying fragment from the KJV verse. Parser check passed exactly via getBibleReaderStudySections('1 samuel', 10) (8/8 sections, 37 cards, 27 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for FIRST_SAMUEL_TEN_PERSONAL_SECTIONS, preserveExactPhraseBodies extended from chapter <= 9 to chapter <= 10 for 1 Samuel, and replaceStudySectionsForBookRange(\"1 samuel\", 10, 10, ...) added right after the existing 1 Samuel 9 call. Forward progress resumes at 1 Samuel 11 next run (note: chapters 11-30 currently share a single combined legacy file, FIRST_SAMUEL_11_30_PERSONAL_SECTIONS, wired via applyPersonalFirstSamuelElevenThroughThirtyStudySections -- chapter 11 will need the same per-chapter override treatment used for chapters 1-10 rather than a fresh no-file target).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-09T23:47:00Z"
+        },
+        {
+          "name": "target chapter determined: 1 Samuel 10 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-09T23:47:00Z"
+        },
+        {
+          "name": "style spec + reference implementation read",
+          "at": "2026-08-09T23:47:30Z"
+        },
+        {
+          "name": "KJV text fetched (27 verses, raw.githubusercontent.com aruljohn mirror)",
+          "at": "2026-08-09T23:48:03Z"
+        },
+        {
+          "name": "source file written: lib/firstSamuelTenSource.ts",
+          "at": "2026-08-09T23:53:50Z"
+        },
+        {
+          "name": "style checker clean (37 cards, 0 problems on first pass)",
+          "at": "2026-08-09T23:54:19Z"
+        },
+        {
+          "name": "wired into reader: import + preserveExactPhraseBodies range extended to ch 10 + replaceStudySectionsForBookRange call added",
+          "at": "2026-08-09T23:54:45Z"
+        },
+        {
+          "name": "parser check passed exactly (8/8 sections, 37 cards, 27 verses)",
+          "at": "2026-08-09T23:54:55Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-09T23:56:00Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-09T23:56:20Z"
+        }
+      ]
     }
   ]
 }
