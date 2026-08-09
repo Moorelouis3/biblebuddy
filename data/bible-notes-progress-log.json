@@ -16295,6 +16295,59 @@
           "at": "2026-08-09T21:56:30Z"
         }
       ]
+    },
+    {
+      "book": "1 Samuel",
+      "chapter": 9,
+      "startedAt": "2026-08-09T22:46:20Z",
+      "finishedAt": "2026-08-09T22:59:30Z",
+      "durationMinutes": 13.2,
+      "sections": 8,
+      "cards": 47,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog confirmed empty. Normal forward progress: verified against lib/bibleReaderStudyNotes.ts that 1 Samuel 1-8 each have dedicated source files while chapter 9 had no wired-in file at all, confirming this as the correct next target (matching the \"Forward progress resumes at 1 Samuel 9\" note left at the end of the prior chapter's log entry). Session started on a detached HEAD pointing at the same commit as the freshly force-updated origin/main, while local main was stale at an unrelated older commit (Joshua 24); reset local main to origin/main with no force push or history loss (working tree was already clean). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (27 verses). 1 Samuel 9 covers Saul's introduction: Kish's genealogy and Saul's towering, handsome build, the lost donkeys that send Saul and his servant on a long search through Ephraim, Shalisha, Shalim, and the Benjamite hill country, the servant's suggestion to consult the man of God with the narrator's aside explaining that a prophet used to be called a seer, the maidens at the well directing them to Samuel just as a sacrifice feast is about to begin, the LORD's private word to Samuel a full day earlier naming Saul as the man to anoint captain over Israel against the Philistines, Saul unknowingly asking Samuel himself for directions to the seer's house, Samuel revealing his identity and naming Saul as the desire of all Israel while Saul protests he is from the smallest family of the smallest tribe, the honored seat and reserved shoulder portion at the feast, and the chapter's close on the rooftop conversation and the dawn walk out of the city where Samuel sends the servant ahead to speak the word of God to Saul alone, setting up chapter ten's anointing. Chunked into 8 sections (1-2, 3-5, 6-10, 11-14, 15-17, 18-21, 22-24, 25-27). Density about 1.74 cards/verse (27 verses, 47 cards). scripts/check_bible_note_style.py found 5 problems on first pass (3 titles containing a semicolon carried over from the KJV verse punctuation, 2 bullets one word over the 8 word limit), fixed by shortening the three titles and trimming the two bullets, second run clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves, no forbidden filler patterns, no repeated first-line structures within a section, no hyphens/em dashes/semicolons/contractions, and every title an exact contiguous KJV substring (three using an ellipsis truncation matching the house style seen in genesisThirtyOneSource.ts). Parser check passed exactly via getBibleReaderStudySections('1 Samuel', 9) (8/8 sections, 47 cards, 27 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for FIRST_SAMUEL_NINE_PERSONAL_SECTIONS, preserveExactPhraseBodies extended from chapter <= 8 to chapter <= 9 for 1 Samuel, and replaceStudySectionsForBookRange(\"1 samuel\", 9, 9, ...) added right after the existing 1 Samuel 8 call. Forward progress resumes at 1 Samuel 10 next run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-09T22:47:52Z"
+        },
+        {
+          "name": "target chapter determined: 1 Samuel 9 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-09T22:48:04Z"
+        },
+        {
+          "name": "KJV text fetched (27 verses, raw.githubusercontent.com aruljohn mirror)",
+          "at": "2026-08-09T22:53:58Z"
+        },
+        {
+          "name": "style spec + reference implementation read",
+          "at": "2026-08-09T22:53:58Z"
+        },
+        {
+          "name": "source file written: lib/firstSamuelNineSource.ts",
+          "at": "2026-08-09T22:55:23Z"
+        },
+        {
+          "name": "style checker clean (47 cards, 0 problems on second pass)",
+          "at": "2026-08-09T22:55:44Z"
+        },
+        {
+          "name": "wired into reader: import + preserveExactPhraseBodies range extended to ch 9 + replaceStudySectionsForBookRange call added",
+          "at": "2026-08-09T22:56:21Z"
+        },
+        {
+          "name": "parser check passed exactly (8/8 sections, 47 cards, 27 verses)",
+          "at": "2026-08-09T22:56:21Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-09T22:58:44Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-09T22:59:30Z"
+        }
+      ]
     }
   ]
 }
