@@ -236,7 +236,10 @@ type LandingAnalyticsEvent =
   | "clicked_yes_start_my_journey"
   | "started_guest_journey"
   | "created_account_successfully"
-  | "closed_onboarding";
+  | "closed_onboarding"
+  | "video_played"
+  | "video_progress"
+  | "video_completed";
 
 function getLandingSessionId() {
   if (typeof window === "undefined") return "server";
@@ -1841,6 +1844,30 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
   // would render as a dead black box for real visitors. onError hides the
   // whole section, so this page is safe to deploy before the video lands.
   const [videoAvailable, setVideoAvailable] = useState(true);
+  // Milestones already reported this page load - trackLandingEventOnce
+  // additionally dedupes per session, so refreshes don't double-count.
+  const videoMilestonesRef = useRef<Set<string>>(new Set());
+
+  function trackVideoMilestone(eventName: LandingAnalyticsEvent, stepKey: string, metadata: Record<string, unknown>) {
+    if (videoMilestonesRef.current.has(stepKey)) return;
+    videoMilestonesRef.current.add(stepKey);
+    trackLandingEventOnce(eventName, { stepKey, ...metadata });
+  }
+
+  function handleVideoTimeUpdate(event: React.SyntheticEvent<HTMLVideoElement>) {
+    const el = event.currentTarget;
+    if (!el.duration || !Number.isFinite(el.duration)) return;
+    const percent = (el.currentTime / el.duration) * 100;
+    for (const milestone of [25, 50, 75]) {
+      if (percent >= milestone) {
+        trackVideoMilestone("video_progress", `video-${milestone}`, {
+          percent: milestone,
+          seconds: Math.round(el.currentTime),
+        });
+      }
+    }
+  }
+
   const faqs = [
     {
       q: "Who is Bible Buddy for?",
@@ -1906,6 +1933,14 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
               src="/landing-video.mp4"
               poster="/landing-video-poster.jpg"
               onError={() => setVideoAvailable(false)}
+              onPlay={() => trackVideoMilestone("video_played", "video-play", {})}
+              onTimeUpdate={handleVideoTimeUpdate}
+              onEnded={(event) =>
+                trackVideoMilestone("video_completed", "video-complete", {
+                  percent: 100,
+                  seconds: Math.round(event.currentTarget.duration || 0),
+                })
+              }
               className="aspect-video w-full rounded-[22px] bg-[#0b1220] shadow-[0_30px_80px_rgba(7,22,47,0.18)]"
             >
               Your browser does not support video playback.

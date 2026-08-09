@@ -28,6 +28,9 @@ const ALLOWED_EVENTS = new Set([
   "created_free_account",
   "created_account_successfully",
   "closed_onboarding",
+  "video_played",
+  "video_progress",
+  "video_completed",
 ]);
 
 const MASTER_ACTION_BY_EVENT: Record<string, string> = {

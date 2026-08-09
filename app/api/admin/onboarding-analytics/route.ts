@@ -2379,6 +2379,31 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
     });
   }
 
+  // Landing video engagement: per unique actor, the deepest point reached
+  // (played=1, 25/50/75 from video_progress metadata, completed=100), so a
+  // viewer who rewatches or refreshes never counts twice.
+  const videoDepthByActor = new Map<string, number>();
+  for (const row of rows) {
+    if (row.event_name !== "video_played" && row.event_name !== "video_progress" && row.event_name !== "video_completed") continue;
+    const actorId = getEventActorId(row);
+    if (!actorId) continue;
+    const meta = row.metadata && typeof row.metadata === "object" && !Array.isArray(row.metadata) ? row.metadata : {};
+    const rawPercent = Number((meta as Record<string, unknown>).percent);
+    const depth = row.event_name === "video_completed" ? 100 : row.event_name === "video_progress" && Number.isFinite(rawPercent) ? rawPercent : 1;
+    videoDepthByActor.set(actorId, Math.max(videoDepthByActor.get(actorId) || 0, depth));
+  }
+  const videoDepths = Array.from(videoDepthByActor.values());
+  const videoPlays = videoDepths.length;
+  const video = {
+    plays: videoPlays,
+    reached25: videoDepths.filter((d) => d >= 25).length,
+    reached50: videoDepths.filter((d) => d >= 50).length,
+    reached75: videoDepths.filter((d) => d >= 75).length,
+    completions: videoDepths.filter((d) => d >= 100).length,
+    playRate: percent(videoPlays, firstVisitByActor.size),
+    completionRate: percent(videoDepths.filter((d) => d >= 100).length, videoPlays),
+  };
+
   const totalVisitors = firstVisitByActor.size;
   const sources = Array.from(sourceCounts.entries())
     .map(([source, visitors]) => ({
@@ -2399,6 +2424,7 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
   return {
     totalVisitors,
     sources,
+    video,
   };
 }
 

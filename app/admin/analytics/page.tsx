@@ -500,6 +500,15 @@ type AnalyticsResponse = {
         matchedBy: string;
       }>;
     }>;
+    video?: {
+      plays: number;
+      reached25: number;
+      reached50: number;
+      reached75: number;
+      completions: number;
+      playRate: number;
+      completionRate: number;
+    };
   };
   dataHealth?: Array<{
     key: string;
@@ -4960,6 +4969,30 @@ function TrafficSourcesAnalyticsSection({
           </table>
         </div>
       </div>
+
+      {report?.video ? (
+        <div className="rounded-[26px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
+          <p className="text-lg font-black text-[var(--bb-text-primary,#101827)]">Landing Video</p>
+          <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+            How far unique visitors get through the founder video. Play rate is plays out of all landing visitors.
+          </p>
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-5">
+            {[
+              { label: "Plays", value: report.video.plays, hint: `${report.video.playRate}% of visitors` },
+              { label: "Reached 25%", value: report.video.reached25, hint: null },
+              { label: "Reached 50%", value: report.video.reached50, hint: null },
+              { label: "Reached 75%", value: report.video.reached75, hint: null },
+              { label: "Finished", value: report.video.completions, hint: `${report.video.completionRate}% of plays` },
+            ].map((stat) => (
+              <div key={stat.label} className="rounded-xl border border-[var(--bb-card-border,#e2e8f0)] bg-[var(--bb-surface-soft,#f8fafc)] px-4 py-3">
+                <p className="text-xs font-black uppercase tracking-[0.12em] text-[var(--bb-text-secondary,#64748b)]">{stat.label}</p>
+                <p className="mt-1 text-2xl font-black text-[var(--bb-text-primary,#101827)]">{formatNumber(stat.value)}</p>
+                {stat.hint ? <p className="mt-0.5 text-[11px] font-bold text-[var(--bb-text-secondary,#94a3b8)]">{stat.hint}</p> : null}
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       <div className="rounded-[26px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
         <div className="flex items-center justify-between gap-3">
