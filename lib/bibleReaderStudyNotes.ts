@@ -228,6 +228,7 @@ import { JUDGES_THIRTEEN_PERSONAL_SECTIONS } from "./judgesThirteenSource";
 import { JUDGES_FOURTEEN_PERSONAL_SECTIONS } from "./judgesFourteenSource";
 import { JUDGES_FIFTEEN_PERSONAL_SECTIONS } from "./judgesFifteenSource";
 import { JUDGES_SIXTEEN_PERSONAL_SECTIONS } from "./judgesSixteenSource";
+import { JUDGES_SEVENTEEN_PERSONAL_SECTIONS } from "./judgesSeventeenSource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -608,7 +609,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "numbers" && section.chapter >= 1 && section.chapter <= 36) ||
     (normalizeBook(book) === "deuteronomy" && section.chapter >= 1 && section.chapter <= 34) ||
     (normalizeBook(book) === "joshua" && section.chapter >= 1 && section.chapter <= 24) ||
-    (normalizeBook(book) === "judges" && section.chapter >= 1 && section.chapter <= 16);
+    (normalizeBook(book) === "judges" && section.chapter >= 1 && section.chapter <= 17);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -704,6 +705,10 @@ function applyPersonalJudgesSixteenThroughTwentyOneStudySections() {
 
 function applyPersonalJudgesSixteenStudySections() {
   replaceStudySectionsForBookRange("judges", 16, 16, JUDGES_SIXTEEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJudgesSeventeenStudySections() {
+  replaceStudySectionsForBookRange("judges", 17, 17, JUDGES_SEVENTEEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalRuthOneThroughFourStudySections() {
@@ -8027,6 +8032,7 @@ applyPersonalJudgesFourteenStudySections();
 applyPersonalJudgesFifteenStudySections();
 applyPersonalJudgesSixteenThroughTwentyOneStudySections();
 applyPersonalJudgesSixteenStudySections();
+applyPersonalJudgesSeventeenStudySections();
 applyPersonalRuthOneThroughFourStudySections();
 applyPersonalDeuteronomyThirtyThroughThirtyFourStudySections();
 applyPersonalJoshuaOneThroughElevenStudySections();

@@ -38,3 +38,25 @@ with nothing fixed in between. Until `life-buddy-production.up.railway.app`
 is added to the agent environment's egress allowlist, this agent can never
 pull Louis's Level 2 notes or report completion — it will keep blocking on
 every run. Needs an environment/network-policy fix, not a code fix.
+
+## Stop hook is not catching detached-HEAD unpushed commits, deploy-tagged work is sitting unshipped
+This run started in a repo state with HEAD detached from any branch, 31
+commits ahead of `origin/main` (local `main` itself was stale, still
+pointing at Joshua 24). That backlog included Judges 1-16 study note
+commits and several commits tagged `[deploy]` for real production changes
+(landing page redesign, blog categories work, character study articles) —
+none of it had ever actually reached `origin/main`, so none of it deployed.
+This run fast forwarded local `main` to HEAD and pushed before doing any
+chapter work, and confirmed `origin/main` now matches exactly, so nothing
+was lost this time. But the underlying bug is still there: this is at
+least the second time a scheduled run has found unpushed work sitting on a
+detached HEAD (a smaller instance, 6 commits, was noted and silently
+recovered on 2026-08-01 in the Exodus 8 progress log entry) despite
+CLAUDE.md's claim that `~/.claude/stop-hook-git-check.sh` hard-blocks
+ending a session with unpushed commits. Whatever that hook checks
+(probably the current branch's upstream comparison) does not appear to
+detect the detached-HEAD case, so a run can end "clean" by the hook's
+standard while leaving real commits, including deploy-tagged ones, stranded
+in a container that may not persist. Worth having someone check what the
+stop hook actually inspects and whether it needs a `git status` style
+check that also covers detached HEAD.
