@@ -1,31 +1,22 @@
 
 import React from "react";
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("why-bible-study-is-hard");
 
 
 export default function WhyBibleStudyIsHardPage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="why-bible-study-is-hard" />
-      <article className="max-w-2xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/Biblestudyhardbanner.png"
-            alt="Why Bible Study Is Hard Banner"
-            width={1200}
-            height={600}
-            className="rounded-xl shadow-sm w-full h-auto object-cover"
-            priority
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-2">Why Bible Study Is Hard</h1>
-        <h2 className="text-xl font-semibold mb-8 text-gray-700">5 Reasons Studying the Bible Feels Difficult</h2>
-        <section className="mb-8">
+    <BlogPostShell
+      slug="why-bible-study-is-hard"
+      title={<>Why Bible Study Is Hard</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-8 text-gray-700">5 Reasons Studying the Bible Feels Difficult</h2>
+        </>
+      }
+    >
+      <section className="mb-8">
           <p className="mb-4">If reading the Bible has ever felt frustrating, confusing, or inconsistent, you are not alone.</p>
           <p className="mb-4">Many people want to study Scripture.</p>
           <p className="mb-4">They start with good intentions.<br/>They feel motivated.<br/>They commit to doing better.</p>
@@ -147,7 +138,7 @@ export default function WhyBibleStudyIsHardPage() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-      </article>
-    </BibleStudyHubArticleLayout>
+      
+    </BlogPostShell>
   );
 }

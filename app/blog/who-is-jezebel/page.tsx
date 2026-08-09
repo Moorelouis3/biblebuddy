@@ -1,7 +1,5 @@
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import Image from "next/image";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("who-is-jezebel", {
   title: "Who Is Jezebel in the Bible? The Queen Who Led Israel Into Idolatry",
@@ -20,25 +18,12 @@ function VerseQuote({ text, reference }: { text: string; reference: string }) {
 
 export default function WhoIsJezebelPage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="who-is-jezebel" />
-      <article className="mx-auto max-w-3xl px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/jezebelbanner.jpg"
-            alt="Who Is Jezebel? The queen who led Israel into idol worship - banner"
-            width={1600}
-            height={1067}
-            className="h-auto w-full rounded-[28px] object-cover shadow-[0_18px_48px_rgba(15,23,42,0.10)]"
-            priority
-          />
-        </div>
-
-        <h1 className="text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
-          📖 Who Is Jezebel? The Queen Who Led Israel Into Idol Worship
-        </h1>
-
-        <div className="mt-8 space-y-5 text-lg leading-8 text-slate-700">
+    <BlogPostShell
+      slug="who-is-jezebel"
+      title={<>📖 Who Is Jezebel? The Queen Who Led Israel Into Idol Worship</>}
+      intro={
+        <>
+          <div className="mt-8 space-y-5 text-lg leading-8 text-slate-700">
           <p>Her name is still an insult three thousand years later.</p>
           <p>Call someone &quot;a Jezebel&quot; and everybody knows it is not a compliment.</p>
           <p>But most people could not tell you what she actually did.</p>
@@ -49,8 +34,10 @@ export default function WhoIsJezebelPage() {
           <p>Her story is one of the Bible&apos;s loudest warnings.</p>
           <p>Let&apos;s look at who she really was.</p>
         </div>
-
-        <section className="mt-14">
+        </>
+      }
+    >
+      <section className="mt-14">
           <h2 className="text-3xl font-black tracking-tight text-slate-950">
             👑 A Marriage That Changed a Nation
           </h2>
@@ -229,7 +216,6 @@ export default function WhoIsJezebelPage() {
             <p>May you walk close to God and choose your influences wisely. 🙏</p>
           </div>
         </section>
-      </article>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

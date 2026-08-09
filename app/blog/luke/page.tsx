@@ -1,29 +1,21 @@
 import React from "react";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import Image from "next/image";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("luke");
 
 export default function LukeCharacterStudyPage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="luke" />
-      <article className="max-w-2xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/Lukebanner.png"
-            alt="Luke Character Study Banner"
-            width={1200}
-            height={600}
-            className="rounded-xl shadow-sm w-full h-auto object-cover"
-            priority
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-2">Luke</h1>
-        <h2 className="text-xl font-semibold mb-4 text-gray-700">The Gospel Writer Who Wasn’t One of the Twelve</h2>
-        <section className="mb-8">
+    <BlogPostShell
+      slug="luke"
+      title={<>Luke</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-4 text-gray-700">The Gospel Writer Who Wasn’t One of the Twelve</h2>
+        </>
+      }
+    >
+      <section className="mb-8">
           <p className="mb-4">Luke never walked beside Jesus during His earthly ministry.</p>
           <p className="mb-4">He wasn’t one of the original disciples.</p>
           <p className="mb-4">He wasn’t part of the inner circle.</p>
@@ -170,7 +162,7 @@ export default function LukeCharacterStudyPage() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-      </article>
-    </BibleStudyHubArticleLayout>
+      
+    </BlogPostShell>
   );
 }

@@ -1,29 +1,20 @@
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import Image from "next/image";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("moses");
 
 export default function MosesCharacterStudyPage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="moses" />
-      <article className="max-w-2xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/Mosesbanner.png"
-            alt="Moses Character Study Banner"
-            width={1200}
-            height={600}
-            className="rounded-xl shadow-sm w-full h-auto object-cover"
-            priority
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-2">Moses</h1>
-        <h2 className="text-xl font-semibold mb-4 text-gray-700">The Man God Drew Out</h2>
-
-        <section className="mb-8">
+    <BlogPostShell
+      slug="moses"
+      title={<>Moses</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-4 text-gray-700">The Man God Drew Out</h2>
+        </>
+      }
+    >
+      <section className="mb-8">
           <h2 className="text-lg font-semibold mb-2">Moses enters Scripture in the middle of genocide.</h2>
           <p className="mb-4">Pharaoh has issued a decree:</p>
           <p className="mb-4">📖 Exodus 1:22 — Every Hebrew baby boy must be thrown into the Nile.</p>
@@ -142,7 +133,7 @@ export default function MosesCharacterStudyPage() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-      </article>
-    </BibleStudyHubArticleLayout>
+      
+    </BlogPostShell>
   );
 }

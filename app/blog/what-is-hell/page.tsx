@@ -1,26 +1,16 @@
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("what-is-hell");
 
 export default function WhatIsHell() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="what-is-hell" />
-      <div className="mb-8">
-        <Image
-          src="/Whatishell.png"
-          alt="What Is Hell Banner"
-          width={1200}
-          height={400}
-          className="w-full rounded-xl mb-6"
-          priority
-        />
-      </div>
-      <h1 className="text-3xl font-bold mb-4">What Is Hell</h1>
-      <h2 className="text-xl font-semibold mb-3">Understanding Hell Biblically</h2>
+    <BlogPostShell
+      slug="what-is-hell"
+      title={<>What Is Hell</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-3">Understanding Hell Biblically</h2>
       <p className="mb-4">When most people hear the word hell, they already have a picture in their minds.</p>
       <p className="mb-4">You die.<br />You stand before God.<br />You are either accepted or rejected.</p>
       <p className="mb-4">If you are accepted, you go to heaven.<br />If you are rejected, you go straight to a fiery place of torment forever.</p>
@@ -35,6 +25,9 @@ export default function WhatIsHell() {
       <p className="mb-4">Scripture does not present hell as one simple moment.</p>
       <p className="mb-4">It unfolds in stages.</p>
       <p className="mb-4">And much of the confusion comes from the fact that one English word is used to translate several different biblical ideas.</p>
+        </>
+      }
+    >
       <h2 className="text-xl font-semibold mt-8 mb-3">📖 The Bible Did Not Originally Use the Word Hell</h2>
       <p className="mb-4">The Old Testament was written in Hebrew.</p>
       <p className="mb-4">The New Testament was written in Greek.</p>
@@ -197,6 +190,6 @@ export default function WhatIsHell() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

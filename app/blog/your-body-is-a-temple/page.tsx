@@ -1,31 +1,23 @@
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("your-body-is-a-temple");
 
 export default function YourBodyIsATemple() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="your-body-is-a-temple" />
-      <article className="max-w-2xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/Bodytemplebanner.png"
-            alt="Your Body Is a Temple Banner"
-            width={1200}
-            height={400}
-            className="w-full rounded-xl mb-6"
-            priority
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-4">Your Body Is a Temple</h1>
-        <h2 className="text-xl font-semibold mb-3">1 Corinthians 6:19-20 Explained</h2>
+    <BlogPostShell
+      slug="your-body-is-a-temple"
+      title={<>Your Body Is a Temple</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-3">1 Corinthians 6:19-20 Explained</h2>
         <p className="mb-4">“Do you not know that your body is a temple of the Holy Spirit within you, whom you have from God? You are not your own, for you were bought with a price. So glorify God in your body.”<br />1 Corinthians 6:19-20</p>
         <p className="mb-4">This verse is often quoted in discussions about health, fitness, and self-care.</p>
         <p className="mb-4">But its meaning goes much deeper.</p>
-        <h2 className="text-xl font-semibold mt-8 mb-3">🏛️ What Does It Mean?</h2>
+        </>
+      }
+    >
+      <h2 className="text-xl font-semibold mt-8 mb-3">🏛️ What Does It Mean?</h2>
         <p className="mb-4">Paul is not just talking about physical health.</p>
         <p className="mb-4">He is talking about spiritual reality.</p>
         <p className="mb-4">Your body is a place where God’s Spirit lives.</p>
@@ -190,7 +182,7 @@ export default function YourBodyIsATemple() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-      </article>
-    </BibleStudyHubArticleLayout>
+      
+    </BlogPostShell>
   );
 }

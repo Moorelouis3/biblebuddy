@@ -1,26 +1,16 @@
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("how-to-read-the-bible");
 
 export default function HowToReadTheBible() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="how-to-read-the-bible" />
-      <div className="mb-8">
-        <Image
-          src="/Biblereadingbanner.png"
-          alt="Bible Reading Banner"
-          width={1200}
-          height={400}
-          className="w-full rounded-xl mb-6"
-          priority
-        />
-      </div>
-      <h1 className="text-3xl font-bold mb-4">How to Read the Bible</h1>
-      <h2 className="text-xl font-semibold mb-3">A Simple Way to Study Scripture</h2>
+    <BlogPostShell
+      slug="how-to-read-the-bible"
+      title={<>How to Read the Bible</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-3">A Simple Way to Study Scripture</h2>
       <p className="mb-4">Most people think reading the Bible and studying the Bible are the same thing.</p>
       <p className="mb-4">They are not.</p>
       <p className="mb-4">Many open a passage.<br />Read a chapter.<br />Close the book.<br />Move on.</p>
@@ -32,6 +22,9 @@ export default function HowToReadTheBible() {
       <p className="mb-4">The purpose of reading Scripture is not to check a box.</p>
       <p className="mb-4">It is to understand what God is saying.</p>
       <p className="mb-4">And that requires a different approach.</p>
+        </>
+      }
+    >
       <h2 className="text-xl font-semibold mt-8 mb-3">📖 Reading and Studying Are Not the Same</h2>
       <p className="mb-4">Reading is the first step.</p>
       <p className="mb-4">Studying is what follows.</p>
@@ -100,6 +93,6 @@ export default function HowToReadTheBible() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

@@ -1,8 +1,6 @@
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import Image from "next/image";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import Link from "next/link";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("what-does-the-bible-say-about-anxiety", {
   title: "What Does the Bible Say About Anxiety? A Complete Guide for Christians",
@@ -29,25 +27,12 @@ function ArticleLink({ href, children }: { href: string; children: React.ReactNo
 
 export default function WhatDoesTheBibleSayAboutAnxietyPage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="what-does-the-bible-say-about-anxiety" />
-      <article className="mx-auto max-w-3xl px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/anxietyarticlebanner.jpg"
-            alt="What the Bible Says About Anxiety banner"
-            width={1600}
-            height={1000}
-            className="h-auto w-full rounded-[28px] object-cover shadow-[0_18px_48px_rgba(15,23,42,0.10)]"
-            priority
-          />
-        </div>
-
-        <h1 className="text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
-          📖 What Does the Bible Say About Anxiety? A Complete Guide for Christians
-        </h1>
-
-        <div className="mt-8 space-y-5 text-lg leading-8 text-slate-700">
+    <BlogPostShell
+      slug="what-does-the-bible-say-about-anxiety"
+      title={<>📖 What Does the Bible Say About Anxiety? A Complete Guide for Christians</>}
+      intro={
+        <>
+          <div className="mt-8 space-y-5 text-lg leading-8 text-slate-700">
           <p>Anxiety does not knock first.</p>
           <p>It shows up in the middle of the night.</p>
           <p>It shows up before the doctor calls back.</p>
@@ -102,8 +87,10 @@ export default function WhatDoesTheBibleSayAboutAnxietyPage() {
           <p>Get a cup of coffee. Take a breath.</p>
           <p>Let&apos;s walk through what God&apos;s Word actually says.</p>
         </div>
-
-        <section className="mt-14">
+        </>
+      }
+    >
+      <section className="mt-14">
           <h2 className="text-3xl font-black tracking-tight text-slate-950">
             💙 Why This Matters for Your Faith
           </h2>
@@ -952,7 +939,6 @@ export default function WhatDoesTheBibleSayAboutAnxietyPage() {
             May the peace that passeth all understanding guard your heart and mind tonight. 🙏
           </p>
         </section>
-      </article>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

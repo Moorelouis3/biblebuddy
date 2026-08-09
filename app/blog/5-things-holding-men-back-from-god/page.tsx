@@ -1,31 +1,16 @@
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import Image from "next/image";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("5-things-holding-men-back-from-god");
 
 export default function FiveThingsHoldingMenBackFromGodPage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="5-things-holding-men-back-from-god" />
-      <article className="mx-auto max-w-3xl px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/5thingsholdingmenback.png"
-            alt="5 Things Holding Men Back From God banner"
-            width={1400}
-            height={800}
-            className="h-auto w-full rounded-[28px] object-cover shadow-[0_18px_48px_rgba(15,23,42,0.10)]"
-            priority
-          />
-        </div>
-
-        <h1 className="text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
-          5 Things Holding Men Back From God
-        </h1>
-
-        <div className="mt-8 space-y-5 text-lg leading-8 text-slate-700">
+    <BlogPostShell
+      slug="5-things-holding-men-back-from-god"
+      title={<>5 Things Holding Men Back From God</>}
+      intro={
+        <>
+          <div className="mt-8 space-y-5 text-lg leading-8 text-slate-700">
           <p>Every man wants to become stronger.</p>
           <p>Stronger in his faith.</p>
           <p>Stronger in his discipline.</p>
@@ -45,8 +30,10 @@ export default function FiveThingsHoldingMenBackFromGodPage() {
             us to do about them.
           </p>
         </div>
-
-        <section className="mt-14">
+        </>
+      }
+    >
+      <section className="mt-14">
           <h2 className="text-3xl font-black tracking-tight text-slate-950">
             1. Lust
           </h2>
@@ -403,7 +390,6 @@ export default function FiveThingsHoldingMenBackFromGodPage() {
             </p>
           </div>
         </section>
-      </article>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

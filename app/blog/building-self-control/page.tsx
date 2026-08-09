@@ -1,27 +1,16 @@
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("building-self-control");
 
 export default function BuildingSelfControl() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="building-self-control" />
-      <article className="max-w-2xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/Selfcontrolbanner.png"
-            alt="Building Self Control Banner"
-            width={1200}
-            height={400}
-            className="w-full rounded-xl mb-6"
-            priority
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-4">Building Self Control</h1>
-        <h2 className="text-xl font-semibold mb-3">Proverbs 25:28 Explained</h2>
+    <BlogPostShell
+      slug="building-self-control"
+      title={<>Building Self Control</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-3">Proverbs 25:28 Explained</h2>
         <p className="mb-4">“A man without self control is like a city broken into and left without walls.”<br />Proverbs 25:28</p>
         <p className="mb-4">At first glance, this sounds simple.</p>
         <ul className="mb-4 ml-6 list-none">
@@ -32,7 +21,10 @@ export default function BuildingSelfControl() {
         <p className="mb-4">But Proverbs is not giving surface level advice.</p>
         <p className="mb-4">It is giving a warning.</p>
         <p className="mb-4">And to understand it, you have to understand how ancient cities worked.</p>
-        <h2 className="text-xl font-semibold mt-8 mb-3">🏰 Why Walls Meant Everything</h2>
+        </>
+      }
+    >
+      <h2 className="text-xl font-semibold mt-8 mb-3">🏰 Why Walls Meant Everything</h2>
         <p className="mb-4">In the ancient world, a city without walls was not vulnerable.</p>
         <p className="mb-4">It was finished.</p>
         <p className="mb-4">Walls were not decoration.</p>
@@ -178,7 +170,7 @@ export default function BuildingSelfControl() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-      </article>
-    </BibleStudyHubArticleLayout>
+      
+    </BlogPostShell>
   );
 }

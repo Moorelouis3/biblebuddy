@@ -1,7 +1,5 @@
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import Image from "next/image";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("who-is-leah", {
   title: "Who Is Leah in the Bible? The Wife Her Husband Didn't Want",
@@ -20,25 +18,12 @@ function VerseQuote({ text, reference }: { text: string; reference: string }) {
 
 export default function WhoIsLeahPage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="who-is-leah" />
-      <article className="mx-auto max-w-3xl px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/leahbanner.jpg"
-            alt="Who Is Leah? The wife her husband didn't want - banner"
-            width={1600}
-            height={1067}
-            className="h-auto w-full rounded-[28px] object-cover shadow-[0_18px_48px_rgba(15,23,42,0.10)]"
-            priority
-          />
-        </div>
-
-        <h1 className="text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
-          📖 Who Is Leah? The Wife Her Husband Didn&apos;t Want
-        </h1>
-
-        <div className="mt-8 space-y-5 text-lg leading-8 text-slate-700">
+    <BlogPostShell
+      slug="who-is-leah"
+      title={<>📖 Who Is Leah? The Wife Her Husband Didn&apos;t Want</>}
+      intro={
+        <>
+          <div className="mt-8 space-y-5 text-lg leading-8 text-slate-700">
           <p>Some people in the Bible get statues.</p>
           <p>Leah got a footnote.</p>
           <p>Her own wedding was a trick.</p>
@@ -51,8 +36,10 @@ export default function WhoIsLeahPage() {
           <p>Because the God of the Bible has a habit.</p>
           <p>He sees the person everyone else looks past.</p>
         </div>
-
-        <section className="mt-14">
+        </>
+      }
+    >
+      <section className="mt-14">
           <h2 className="text-3xl font-black tracking-tight text-slate-950">
             💍 A Wedding Built on a Lie
           </h2>
@@ -240,7 +227,6 @@ export default function WhoIsLeahPage() {
             <p>May you know today that you are seen, chosen, and loved by God. 🙏</p>
           </div>
         </section>
-      </article>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

@@ -1,26 +1,16 @@
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("salt-and-light");
 
 export default function SaltAndLight() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="salt-and-light" />
-      <div className="mb-8">
-        <Image
-          src="/Saltearthbanner.png"
-          alt="Salt and Light Banner"
-          width={1200}
-          height={400}
-          className="w-full rounded-xl mb-6"
-          priority
-        />
-      </div>
-      <h1 className="text-3xl font-bold mb-4">Salt and Light</h1>
-      <h2 className="text-xl font-semibold mb-3">Matthew 5:13 to 16 Explained</h2>
+    <BlogPostShell
+      slug="salt-and-light"
+      title={<>Salt and Light</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-3">Matthew 5:13 to 16 Explained</h2>
       <p className="mb-4">Matthew 5:13 to 16 takes place during what we call the Sermon on the Mount.</p>
       <p className="mb-4">Jesus goes up on a mountain, sits down, and begins to teach.</p>
       <p className="mb-4">That detail matters.</p>
@@ -30,6 +20,9 @@ export default function SaltAndLight() {
         <li>🌍 Large crowds are also listening.</li>
       </ul>
       <p className="mb-4">That means this teaching is meant to shape the disciples while showing the watching world what life in the kingdom of God looks like.</p>
+        </>
+      }
+    >
       <h2 className="text-xl font-semibold mt-8 mb-3">What Just Happened Before This</h2>
       <p className="mb-4">Right before this passage, Jesus delivers the Beatitudes.</p>
       <p className="mb-4">He completely redefines what it means to be blessed.</p>
@@ -175,6 +168,6 @@ export default function SaltAndLight() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

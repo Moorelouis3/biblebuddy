@@ -1,26 +1,16 @@
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("the-man-who-legalized-christianity");
 
 export default function TheManWhoLegalizedChristianity() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="the-man-who-legalized-christianity" />
-      <div className="mb-8">
-        <Image
-          src="/Legalized.png"
-          alt="The Man Who Legalized Christianity Banner"
-          width={1200}
-          height={400}
-          className="w-full rounded-xl mb-6"
-          priority
-        />
-      </div>
-      <h1 className="text-3xl font-bold mb-4">The Man Who Legalized Christianity</h1>
-      <h2 className="text-xl font-semibold mb-3">Constantine and the Turning Point of the Church</h2>
+    <BlogPostShell
+      slug="the-man-who-legalized-christianity"
+      title={<>The Man Who Legalized Christianity</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-3">Constantine and the Turning Point of the Church</h2>
       <p className="mb-4">After the resurrection, Jesus gathered His disciples and gave them a command.</p>
       <p className="mb-4">“Go therefore and make disciples of all nations… teaching them to observe all that I have commanded you.”<br />Matthew 28:19 to 20</p>
       <p className="mb-4">No army.</p>
@@ -28,6 +18,9 @@ export default function TheManWhoLegalizedChristianity() {
       <p className="mb-4">No royal backing.</p>
       <p className="mb-4">Just obedience.</p>
       <p className="mb-4">For nearly three hundred years, that obedience often came with persecution.</p>
+        </>
+      }
+    >
       <h2 className="text-xl font-semibold mt-8 mb-3">🔥 Christianity for the First Three Hundred Years</h2>
       <p className="mb-4">From 33 AD to 313 AD, Christianity was not safe.</p>
       <p className="mb-4">Christians were not building cathedrals.</p>
@@ -168,6 +161,6 @@ export default function TheManWhoLegalizedChristianity() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

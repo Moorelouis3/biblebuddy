@@ -1,31 +1,24 @@
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("st-patrick");
 
 export default function StPatrickPage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="st-patrick" />
-      <div className="w-full mb-6">
-        <Image
-          src="/Irelandbanner.png"
-          alt="Ireland Banner"
-          width={1200}
-          height={400}
-          className="w-full h-auto rounded-xl object-cover"
-          priority
-        />
-      </div>
-      <h1 className="text-3xl font-bold mb-2">St. Patrick</h1>
-      <h2 className="text-lg text-orange-900 font-semibold mb-6">He Who Brought Christianity to Ireland</h2>
+    <BlogPostShell
+      slug="st-patrick"
+      title={<>St. Patrick</>}
+      intro={
+        <>
+          <h2 className="text-lg text-orange-900 font-semibold mb-6">He Who Brought Christianity to Ireland</h2>
       <p className="mb-4">For many people today, St. Patrick’s Day means one thing.</p>
       <p className="mb-4">🍀 Wear green<br/>🍺 Celebrate loudly<br/>🎉 Call it Irish culture</p>
       <p className="mb-4">But the day was never meant to begin as a party.</p>
       <p className="mb-4">It began as a story of slavery, faith, obedience, and forgiveness.</p>
       <p className="mb-4">And the man at the center of it was real.</p>
+        </>
+      }
+    >
       <h2 className="text-xl font-bold mt-8 mb-3">👶 Who Was Patrick</h2>
       <p className="mb-4">St. Patrick was born in the late 300s AD in Roman Britain.</p>
       <p className="mb-4">His birth name was likely Maewyn Succat.</p>
@@ -150,6 +143,6 @@ export default function StPatrickPage() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

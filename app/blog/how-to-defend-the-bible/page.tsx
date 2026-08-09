@@ -1,29 +1,20 @@
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import Image from "next/image";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("how-to-defend-the-bible");
 
 export default function HowToDefendTheBiblePage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="how-to-defend-the-bible" />
-      <article className="max-w-2xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/Defenthebiblebanner.png"
-            alt="How to Defend the Bible Banner"
-            width={1200}
-            height={600}
-            className="rounded-xl shadow-sm w-full h-auto object-cover"
-            priority
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-2">How to Defend the Bible</h1>
-        <h2 className="text-xl font-semibold mb-8 text-gray-700">Answering the Three Biggest Attacks Against Scripture</h2>
-
-        <section className="mb-8">
+    <BlogPostShell
+      slug="how-to-defend-the-bible"
+      title={<>How to Defend the Bible</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-8 text-gray-700">Answering the Three Biggest Attacks Against Scripture</h2>
+        </>
+      }
+    >
+      <section className="mb-8">
           <p className="mb-4">When people want to tear down Christianity, they usually start with the Bible.</p>
           <p className="mb-4">If they can discredit Scripture, they think the entire faith collapses.</p>
           <p className="mb-4">So they say things like:</p>
@@ -157,7 +148,7 @@ export default function HowToDefendTheBiblePage() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-      </article>
-    </BibleStudyHubArticleLayout>
+      
+    </BlogPostShell>
   );
 }

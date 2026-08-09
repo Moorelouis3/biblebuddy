@@ -1,26 +1,16 @@
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("what-is-heaven");
 
 export default function WhatIsHeaven() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="what-is-heaven" />
-      <div className="mb-8">
-        <Image
-          src="/Whatisheaven.png"
-          alt="What Is Heaven Banner"
-          width={1200}
-          height={400}
-          className="w-full rounded-xl mb-6"
-          priority
-        />
-      </div>
-      <h1 className="text-3xl font-bold mb-4">What Is Heaven</h1>
-      <h2 className="text-xl font-semibold mb-3">Understanding Heaven Biblically</h2>
+    <BlogPostShell
+      slug="what-is-heaven"
+      title={<>What Is Heaven</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-3">Understanding Heaven Biblically</h2>
       <p className="mb-4">When most people think about heaven, they picture clouds.</p>
       <p className="mb-4">White robes.<br />Golden streets.<br />Wings.<br />Floating.<br />Endless singing.</p>
       <p className="mb-4">Or they imagine something vague.</p>
@@ -31,6 +21,9 @@ export default function WhatIsHeaven() {
       <p className="mb-4">It is presented in stages.</p>
       <p className="mb-4">And just like with hell, confusion often comes from flattening everything into one simple idea.</p>
       <p className="mb-4">So what is heaven, biblically?</p>
+        </>
+      }
+    >
       <h2 className="text-xl font-semibold mt-8 mb-3">☁️ The Bible Uses “Heaven” in More Than One Way</h2>
       <p className="mb-4">The word heaven does not always mean the same thing in Scripture.</p>
       <p className="mb-4">In Hebrew, the word is shamayim.<br />In Greek, it is ouranos.</p>
@@ -195,6 +188,6 @@ export default function WhatIsHeaven() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

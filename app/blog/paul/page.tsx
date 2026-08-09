@@ -1,29 +1,20 @@
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import Image from "next/image";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("paul");
 
 export default function PaulCharacterStudyPage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="paul" />
-      <article className="max-w-2xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/Paulbanner.png"
-            alt="Paul Character Study Banner"
-            width={1200}
-            height={600}
-            className="rounded-xl shadow-sm w-full h-auto object-cover"
-            priority
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-2">Paul</h1>
-        <h2 className="text-xl font-semibold mb-4 text-gray-700">From Persecutor to Preacher</h2>
-
-        <section className="mb-8">
+    <BlogPostShell
+      slug="paul"
+      title={<>Paul</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-4 text-gray-700">From Persecutor to Preacher</h2>
+        </>
+      }
+    >
+      <section className="mb-8">
           <h3 className="text-lg font-semibold mb-2">Before he became the Apostle Paul, he was known as Saul.</h3>
           <p className="mb-4">Not a seeker.<br/>Not curious.<br/>Not confused.</p>
           <p className="mb-4">He was a violent enemy of the Church.</p>
@@ -139,7 +130,7 @@ export default function PaulCharacterStudyPage() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-      </article>
-    </BibleStudyHubArticleLayout>
+      
+    </BlogPostShell>
   );
 }

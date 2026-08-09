@@ -1,31 +1,24 @@
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("st-valentine");
 
 export default function StValentinePage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="st-valentine" />
-      <div className="w-full mb-6">
-        <Image
-          src="/Valentinebanner.png"
-          alt="Valentine Banner"
-          width={1200}
-          height={400}
-          className="w-full h-auto rounded-xl object-cover"
-          priority
-        />
-      </div>
-      <h1 className="text-3xl font-bold mb-2">St. Valentine</h1>
-      <h2 className="text-lg text-orange-900 font-semibold mb-6">The Martyr Behind the Modern Holiday</h2>
+    <BlogPostShell
+      slug="st-valentine"
+      title={<>St. Valentine</>}
+      intro={
+        <>
+          <h2 className="text-lg text-orange-900 font-semibold mb-6">The Martyr Behind the Modern Holiday</h2>
       <p className="mb-4">Most people think Valentine’s Day is about romance.</p>
       <p className="mb-4">❤️ Flowers<br/>🍫 Chocolate<br/>💌 Cards</p>
       <p className="mb-4">But the holiday traces back to a Christian martyr.</p>
       <p className="mb-4">And the original story was not soft.</p>
       <p className="mb-4">It was costly.</p>
+        </>
+      }
+    >
       <h2 className="text-xl font-bold mt-8 mb-3">🏛️ The Roman World in the Third Century</h2>
       <p className="mb-4">To understand Valentine, you have to understand Rome in the 200s AD.</p>
       <p className="mb-4">This was not a peaceful era.</p>
@@ -129,6 +122,6 @@ export default function StValentinePage() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-    </BibleStudyHubArticleLayout>
+    </BlogPostShell>
   );
 }

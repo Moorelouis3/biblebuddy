@@ -11,6 +11,11 @@ export type BlogArticle = {
   // Set only when a post gets a real content overhaul after publishing;
   // becomes dateModified in the article schema.
   updatedAt?: string;
+  // The pre-migration URL path (e.g. /bible-study-hub/...). Likes, comments,
+  // and view rows in the database are keyed by this string, so it stays as
+  // the storage key even though readers now see /blog/<slug>. New posts
+  // never set it.
+  legacyPath?: string;
   readTime: string;
   image: string;
   // When present, the blog-group-post cron auto-shares this article into
@@ -69,6 +74,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Character Studies",
     categorySlug: "character-studies",
     canonicalPath: "/blog/who-is-leah",
+    legacyPath: "/bible-study-hub/character-studies/who-is-leah",
     publishedAt: "2026-08-07",
     readTime: "7 min read",
     image: "/leahbanner.jpg",
@@ -86,6 +92,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Character Studies",
     categorySlug: "character-studies",
     canonicalPath: "/blog/who-is-jezebel",
+    legacyPath: "/bible-study-hub/character-studies/who-is-jezebel",
     publishedAt: "2026-08-05",
     readTime: "7 min read",
     image: "/jezebelbanner.jpg",
@@ -103,6 +110,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
     canonicalPath: "/blog/what-does-the-bible-say-about-anxiety",
+    legacyPath: "/bible-study-hub/christian-foundations/what-does-the-bible-say-about-anxiety",
     publishedAt: "2026-08-03",
     updatedAt: "2026-08-09",
     readTime: "7 min read",
@@ -120,6 +128,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
     canonicalPath: "/blog/5-things-holding-men-back-from-god",
+    legacyPath: "/bible-study-hub/christian-foundations/5-things-holding-men-back-from-god",
     publishedAt: "2026-07-31",
     readTime: "7 min read",
     image: "/5thingsholdingmenback.png",
@@ -131,6 +140,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Bible Insights",
     categorySlug: "bible-insights",
     canonicalPath: "/blog/how-to-defend-the-bible",
+    legacyPath: "/bible-study-hub/bible-insights/how-to-defend-the-bible",
     publishedAt: "2026-07-29",
     readTime: "8 min read",
     image: "/Defenthebiblebanner.png",
@@ -142,6 +152,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Bible Insights",
     categorySlug: "bible-insights",
     canonicalPath: "/blog/what-is-the-bible",
+    legacyPath: "/bible-study-hub/bible-insights/what-is-the-bible",
     publishedAt: "2026-07-27",
     readTime: "7 min read",
     image: "/Whatisthebiblebanner.png",
@@ -153,6 +164,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Bible Insights",
     categorySlug: "bible-insights",
     canonicalPath: "/blog/why-so-many-bible-translations",
+    legacyPath: "/bible-study-hub/bible-insights/why-so-many-bible-translations",
     publishedAt: "2026-07-24",
     readTime: "6 min read",
     image: "/Translationsbanner.png",
@@ -164,6 +176,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Bible Study Tips",
     categorySlug: "bible-study-tips",
     canonicalPath: "/blog/why-bible-study-is-hard",
+    legacyPath: "/bible-study-tips/why-bible-study-is-hard",
     publishedAt: "2026-07-22",
     readTime: "7 min read",
     image: "/Biblestudyhardbanner.png",
@@ -175,6 +188,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Bible Study Tips",
     categorySlug: "bible-study-tips",
     canonicalPath: "/blog/how-to-read-the-bible",
+    legacyPath: "/bible-study-tips/how-to-read-the-bible",
     publishedAt: "2026-07-20",
     readTime: "8 min read",
     image: "/Biblereadingbanner.png",
@@ -186,6 +200,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Bible Study Tips",
     categorySlug: "bible-study-tips",
     canonicalPath: "/blog/a-simple-bible-highlighting-system",
+    legacyPath: "/bible-study-tips/a-simple-bible-highlighting-system",
     publishedAt: "2026-07-17",
     readTime: "5 min read",
     image: "/Biblehighlightingbanner.png",
@@ -197,6 +212,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
     canonicalPath: "/blog/what-is-hell",
+    legacyPath: "/bible-study-hub/christian-foundations/what-is-hell",
     publishedAt: "2026-07-15",
     readTime: "8 min read",
     image: "/Whatishell.png",
@@ -208,6 +224,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
     canonicalPath: "/blog/what-is-heaven",
+    legacyPath: "/bible-study-hub/christian-foundations/what-is-heaven",
     publishedAt: "2026-07-13",
     readTime: "7 min read",
     image: "/Whatisheaven.png",
@@ -219,6 +236,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
     canonicalPath: "/blog/why-so-many-denominations",
+    legacyPath: "/bible-study-hub/christian-foundations/why-so-many-denominations",
     publishedAt: "2026-07-10",
     readTime: "8 min read",
     image: "/Whydenominations.png",
@@ -230,6 +248,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Verse Breakdowns",
     categorySlug: "verse-breakdowns",
     canonicalPath: "/blog/your-body-is-a-temple",
+    legacyPath: "/bible-study-hub/verse-breakdowns/your-body-is-a-temple",
     publishedAt: "2026-07-08",
     readTime: "12 min read",
     image: "/Bodytemplebanner.png",
@@ -241,6 +260,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Verse Breakdowns",
     categorySlug: "verse-breakdowns",
     canonicalPath: "/blog/building-self-control",
+    legacyPath: "/bible-study-hub/verse-breakdowns/building-self-control",
     publishedAt: "2026-07-06",
     readTime: "6 min read",
     image: "/Selfcontrolbanner.png",
@@ -252,6 +272,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Verse Breakdowns",
     categorySlug: "verse-breakdowns",
     canonicalPath: "/blog/salt-and-light",
+    legacyPath: "/bible-study-hub/verse-breakdowns/salt-and-light",
     publishedAt: "2026-07-03",
     readTime: "6 min read",
     image: "/Saltearthbanner.png",
@@ -263,6 +284,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Character Studies",
     categorySlug: "character-studies",
     canonicalPath: "/blog/luke",
+    legacyPath: "/bible-study-hub/character-studies/luke",
     publishedAt: "2026-07-01",
     readTime: "7 min read",
     image: "/Lukebanner.png",
@@ -274,6 +296,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Character Studies",
     categorySlug: "character-studies",
     canonicalPath: "/blog/moses",
+    legacyPath: "/bible-study-hub/character-studies/moses",
     publishedAt: "2026-06-29",
     readTime: "7 min read",
     image: "/Mosesbanner.png",
@@ -285,6 +308,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Character Studies",
     categorySlug: "character-studies",
     canonicalPath: "/blog/paul",
+    legacyPath: "/bible-study-hub/character-studies/paul",
     publishedAt: "2026-06-26",
     readTime: "7 min read",
     image: "/Paulbanner.png",
@@ -296,6 +320,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Christian History",
     categorySlug: "christian-history",
     canonicalPath: "/blog/the-man-who-legalized-christianity",
+    legacyPath: "/bible-study-hub/christian-history/the-man-who-legalized-christianity",
     publishedAt: "2026-06-24",
     readTime: "8 min read",
     image: "/Legalized.png",
@@ -307,6 +332,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Christian History",
     categorySlug: "christian-history",
     canonicalPath: "/blog/st-patrick",
+    legacyPath: "/bible-study-hub/christian-history/st-patrick",
     publishedAt: "2026-06-22",
     readTime: "6 min read",
     image: "/Irelandbanner.png",
@@ -318,6 +344,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     category: "Christian History",
     categorySlug: "christian-history",
     canonicalPath: "/blog/st-valentine",
+    legacyPath: "/bible-study-hub/christian-history/st-valentine",
     publishedAt: "2026-06-19",
     readTime: "6 min read",
     image: "/Valentinebanner.png",
@@ -362,6 +389,12 @@ export function buildBlogArticleMetadata(
       images: [article.image],
     },
   };
+}
+
+// Database key for likes/comments/views. Migrated posts keep their old
+// path so existing engagement rows still match; new posts key by /blog URL.
+export function getArticleEngagementKey(article: BlogArticle) {
+  return article.legacyPath ?? `/blog/${article.slug}`;
 }
 
 export function getBlogCategory(slug: string) {

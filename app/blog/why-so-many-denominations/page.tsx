@@ -1,27 +1,16 @@
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import Image from "next/image";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("why-so-many-denominations");
 
 export default function WhySoManyDenominations() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="why-so-many-denominations" />
-      <article className="max-w-2xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/Whydenominations.png"
-            alt="Why So Many Denominations Banner"
-            width={1200}
-            height={400}
-            className="w-full rounded-xl mb-6"
-            priority
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-4">Why So Many Denominations</h1>
-        <h2 className="text-xl font-semibold mb-3">Understanding Christian Divisions</h2>
+    <BlogPostShell
+      slug="why-so-many-denominations"
+      title={<>Why So Many Denominations</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-3">Understanding Christian Divisions</h2>
         <p className="mb-4">When people begin taking their faith seriously, they often run into something confusing.</p>
         <p className="mb-4">Church labels.</p>
         <p className="mb-4">Baptist.<br />Catholic.<br />Orthodox.<br />Pentecostal.<br />Methodist.<br />Non denominational.</p>
@@ -31,7 +20,10 @@ export default function WhySoManyDenominations() {
         <p className="mb-4">Did the apostles create this?</p>
         <p className="mb-4">Or did something happen along the way?</p>
         <p className="mb-4">To understand why denominations exist today, we have to start at the beginning.</p>
-        <h2 className="text-xl font-semibold mt-8 mb-3">✝️ It Started With Jesus, Not Religion</h2>
+        </>
+      }
+    >
+      <h2 className="text-xl font-semibold mt-8 mb-3">✝️ It Started With Jesus, Not Religion</h2>
         <p className="mb-4">When Jesus gave the Great Commission in Matthew 28:19, He did not say:</p>
         <p className="mb-4">Go and create separate religious systems.</p>
         <p className="mb-4">He said:</p>
@@ -213,7 +205,7 @@ export default function WhySoManyDenominations() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-      </article>
-    </BibleStudyHubArticleLayout>
+      
+    </BlogPostShell>
   );
 }

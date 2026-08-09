@@ -1,29 +1,20 @@
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
-import Image from "next/image";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("why-so-many-bible-translations");
 
 export default function WhySoManyBibleTranslationsPage() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="why-so-many-bible-translations" />
-      <article className="max-w-2xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/Translationsbanner.png"
-            alt="Why So Many Bible Translations Banner"
-            width={1200}
-            height={600}
-            className="rounded-xl shadow-sm w-full h-auto object-cover"
-            priority
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-2">Why So Many Bible Translations?</h1>
-        <h2 className="text-xl font-semibold mb-8 text-gray-700">Understanding Your Modern Bible Version</h2>
-
-        <section className="mb-8">
+    <BlogPostShell
+      slug="why-so-many-bible-translations"
+      title={<>Why So Many Bible Translations?</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-8 text-gray-700">Understanding Your Modern Bible Version</h2>
+        </>
+      }
+    >
+      <section className="mb-8">
           <p className="mb-4">Have you ever wondered why there are so many different Bible translations?</p>
           <p className="mb-4">Maybe you have opened a Bible app and felt overwhelmed.</p>
           <p className="mb-4">ESV.<br/>NIV.<br/>KJV.<br/>NKJV.<br/>NLT.<br/>NASB.</p>
@@ -133,7 +124,7 @@ export default function WhySoManyBibleTranslationsPage() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-      </article>
-    </BibleStudyHubArticleLayout>
+      
+    </BlogPostShell>
   );
 }

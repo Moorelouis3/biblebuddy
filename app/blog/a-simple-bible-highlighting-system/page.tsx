@@ -1,28 +1,17 @@
 import React from "react";
-import Image from "next/image";
-import BibleStudyHubArticleLayout from "@/components/BibleStudyHubArticleLayout";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
-import BlogPostingSchema from "@/components/BlogPostingSchema";
 
 export const metadata = buildBlogArticleMetadata("a-simple-bible-highlighting-system");
 
 export default function Page() {
   return (
-    <BibleStudyHubArticleLayout>
-      <BlogPostingSchema slug="a-simple-bible-highlighting-system" />
-      <article className="max-w-2xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <Image
-            src="/Biblehighlightingbanner.png"
-            alt="Bible Highlighting Banner"
-            width={1200}
-            height={400}
-            className="w-full rounded-xl mb-6"
-            priority
-          />
-        </div>
-        <h1 className="text-3xl font-bold mb-4">A Simple Bible Highlighting System</h1>
-        <h2 className="text-xl font-semibold mb-3">How to Highlight With Purpose</h2>
+    <BlogPostShell
+      slug="a-simple-bible-highlighting-system"
+      title={<>A Simple Bible Highlighting System</>}
+      intro={
+        <>
+          <h2 className="text-xl font-semibold mb-3">How to Highlight With Purpose</h2>
         <p className="mb-4">When many people first begin studying the Bible, highlighting feels automatic.</p>
         <p className="mb-4">Everyone highlights.</p>
         <p className="mb-4">So it must be helpful.</p>
@@ -36,7 +25,10 @@ export default function Page() {
         <p className="mb-4">Highlighting without intention does not create clarity.</p>
         <p className="mb-4">It creates color.</p>
         <p className="mb-4">And color alone does not produce understanding.</p>
-        <h2 className="text-xl font-semibold mt-8 mb-3">🎨 More Colors Is Not the Solution</h2>
+        </>
+      }
+    >
+      <h2 className="text-xl font-semibold mt-8 mb-3">🎨 More Colors Is Not the Solution</h2>
         <p className="mb-4">When simple highlighting feels confusing, the next instinct is often to add more colors.</p>
       <ul className="mb-4 ml-6 list-none">
         <li>🔵 Blue</li>
@@ -208,7 +200,7 @@ export default function Page() {
       <div className="mt-2">
         {/* CommentSection is rendered by layout, so nothing else needed here */}
       </div>
-      </article>
-    </BibleStudyHubArticleLayout>
+      
+    </BlogPostShell>
   );
 }
