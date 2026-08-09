@@ -1194,3 +1194,18 @@ Next up: 1 Samuel 2
 ## 2026-08-09T15:00:01Z (hourly chapter notes run)
 Chapter: Genesis 7 | Duration: 14 min | Sections: 4 | Cards: 41 | Status: pass
 Next up: 1 Samuel 2
+
+## 2026-08-09 (night)
+Time spent: full afternoon session (mobile + laptop)
+Done: Landing CTA pulse shipped. Blog format skill created (docs/blog-post-format.md)
+with Louis's voice/formatting/SEO rules. Anxiety post rewritten as 4,600-word pillar
+guide. Blog moved to /blog/<slug> URLs with 301s. Per-post metadata + OG cards,
+BlogPosting + FAQ schema, honest sitemap dates (Mon/Wed/Fri backdated schedule).
+New post layout (nav, breadcrumb, TOC, read time, share breaker). Promo system MVP:
+5 banners, rotation, impression/click/signup tracking, blog analytics funnel tab,
+login gating. blog_promo_events table created in Supabase. Google Search Console
+verified, sitemap submitted, top 5 URLs requested for indexing. All deployed live.
+Still open: watch Search Console coverage over the next 1-2 weeks; daily blog
+posting can start on the new format spec; promo funnel data starts accumulating.
+Next: first daily post using the format skill; review promo funnel numbers once
+real traffic lands.
