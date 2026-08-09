@@ -1209,3 +1209,7 @@ Still open: watch Search Console coverage over the next 1-2 weeks; daily blog
 posting can start on the new format spec; promo funnel data starts accumulating.
 Next: first daily post using the format skill; review promo funnel numbers once
 real traffic lands.
+
+## 2026-08-09T16:00:34Z (hourly chapter notes run)
+Chapter: 1 Samuel 2 | Duration: 14 min | Sections: 7 | Cards: 56 | Status: pass
+Next up: 1 Samuel 3
