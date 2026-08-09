@@ -1096,7 +1096,7 @@ export default function LandingPage() {
               <Link href="/login" className="rounded-lg px-4 py-3 text-sm font-bold text-[#07162f] transition hover:bg-[#f4eee4]">
                 Login
               </Link>
-              <Link href="/signup" onClick={() => trackStartJourneyClick("header")} className="bb-public-button rounded-lg bg-[#135397] px-6 py-3 text-sm font-black text-white shadow-[0_16px_32px_rgba(19,83,151,0.22)] transition hover:-translate-y-0.5">
+              <Link href="/signup" onClick={() => trackStartJourneyClick("header")} className="bb-public-button bb-join-pulse rounded-lg bg-[#135397] px-6 py-3 text-sm font-black text-white shadow-[0_16px_32px_rgba(19,83,151,0.22)] transition hover:-translate-y-0.5">
                 Create Free Account
               </Link>
             </div>
@@ -1221,7 +1221,7 @@ export default function LandingPage() {
                   <p className="mt-2 text-base font-semibold text-[#07162f]">
                     It only takes 15-30 minutes a day.
                   </p>
-                  <Link href="/signup" onClick={() => trackStartJourneyClick("middle_cta")} className="bb-public-button mt-5 inline-flex w-full max-w-[520px] items-center justify-center gap-3 rounded-full bg-[#7fb6dc] px-6 py-3.5 text-sm font-black text-white shadow-[0_22px_52px_rgba(127,182,220,0.35)] transition hover:-translate-y-0.5 sm:mt-7 sm:px-8 sm:py-4 sm:text-lg">
+                  <Link href="/signup" onClick={() => trackStartJourneyClick("middle_cta")} className="bb-public-button bb-join-pulse mt-5 inline-flex w-full max-w-[520px] items-center justify-center gap-3 rounded-full bg-[#7fb6dc] px-6 py-3.5 text-sm font-black text-white shadow-[0_22px_52px_rgba(127,182,220,0.35)] transition hover:-translate-y-0.5 sm:mt-7 sm:px-8 sm:py-4 sm:text-lg">
                     <span className="text-white">*</span>
                     Create Free Account
                   </Link>
@@ -1365,7 +1365,7 @@ export default function LandingPage() {
                 <div className="mx-auto max-w-3xl">
                   <h2 className="bb-serif text-3xl font-black leading-tight text-[#07162f]">Ready to start your journey?</h2>
                   <p className="mt-2 text-base font-semibold text-[#334762]">It only takes 15-30 minutes a day.</p>
-                  <Link href="/signup" onClick={() => trackStartJourneyClick("bottom_cta")} className="bb-public-button mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#2477f2] px-9 py-4 text-base font-black text-white shadow-[0_22px_48px_rgba(36,119,242,0.26)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[420px]">
+                  <Link href="/signup" onClick={() => trackStartJourneyClick("bottom_cta")} className="bb-public-button bb-join-pulse mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#2477f2] px-9 py-4 text-base font-black text-white shadow-[0_22px_48px_rgba(36,119,242,0.26)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[420px]">
                     <span className="text-[#ffe08a]">*</span>
                     Create Free Account
                   </Link>
@@ -1808,6 +1808,19 @@ function LandingThemeStyles() {
         21% { transform: translate3d(-1px, 0, 0) scale(1.022); box-shadow: 0 24px 48px rgba(19, 83, 151, 0.28); }
         34%, 100% { transform: translate3d(0, 0, 0) scale(1); }
       }
+      .bb-cta-pulse {
+        animation: bb-cta-pulse 2.15s ease-in-out infinite;
+        transform-origin: center;
+      }
+      .bb-cta-pulse:hover {
+        animation-play-state: paused;
+      }
+      @keyframes bb-cta-pulse {
+        0%, 100% { transform: translate3d(0, 0, 0) scale(1); box-shadow: 0 24px 60px rgba(0, 86, 253, 0.25); }
+        11% { transform: translate3d(1px, 0, 0) scale(1.018); }
+        21% { transform: translate3d(-1px, 0, 0) scale(1.022); box-shadow: 0 28px 70px rgba(0, 86, 253, 0.4); }
+        34%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      }
       .bb-modal-yes-shake {
         animation: bb-modal-yes-shake 1.25s ease-in-out infinite;
         transform-origin: center;
@@ -1820,6 +1833,7 @@ function LandingThemeStyles() {
       }
       @media (prefers-reduced-motion: reduce) {
         .bb-join-pulse,
+        .bb-cta-pulse,
         .bb-modal-yes-shake {
           animation: none;
         }
@@ -1957,7 +1971,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             <Link
               href="/signup"
               onClick={() => onStartJourney("video_hero")}
-              className="bb-cta-blue inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
+              className="bb-cta-blue bb-cta-pulse inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
             >
               Create Your Free Account
               <LandingLineIcon name="arrow" light />
@@ -1999,7 +2013,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             <Link
               href="/signup"
               onClick={() => onStartJourney("bottom_cta")}
-              className="bb-cta-blue inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
+              className="bb-cta-blue bb-cta-pulse inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
             >
               Create Your Free Account
               <LandingLineIcon name="arrow" light />
