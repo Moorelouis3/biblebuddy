@@ -236,6 +236,7 @@ import { JUDGES_TWENTY_ONE_PERSONAL_SECTIONS } from "./judgesTwentyOneSource";
 import { RUTH_ONE_PERSONAL_SECTIONS } from "./ruthOneSource";
 import { RUTH_TWO_PERSONAL_SECTIONS } from "./ruthTwoSource";
 import { RUTH_THREE_PERSONAL_SECTIONS } from "./ruthThreeSource";
+import { RUTH_FOUR_PERSONAL_SECTIONS } from "./ruthFourSource";
 import { EXODUS_2_10_PERSONAL_SECTIONS } from "./exodusTwoToTenPersonalNotes";
 import { EXODUS_11_20_PERSONAL_SECTIONS } from "./exodusElevenToTwentyPersonalNotes";
 import { EXODUS_21_30_PERSONAL_SECTIONS } from "./exodusTwentyOneToThirtyPersonalNotes";
@@ -617,7 +618,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "deuteronomy" && section.chapter >= 1 && section.chapter <= 34) ||
     (normalizeBook(book) === "joshua" && section.chapter >= 1 && section.chapter <= 24) ||
     (normalizeBook(book) === "judges" && section.chapter >= 1 && section.chapter <= 21) ||
-    (normalizeBook(book) === "ruth" && section.chapter >= 1 && section.chapter <= 3);
+    (normalizeBook(book) === "ruth" && section.chapter >= 1 && section.chapter <= 4);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -749,6 +750,10 @@ function applyPersonalRuthTwoStudySections() {
 
 function applyPersonalRuthThreeStudySections() {
   replaceStudySectionsForBookRange("ruth", 3, 3, RUTH_THREE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRuthFourStudySections() {
+  replaceStudySectionsForBookRange("ruth", 4, 4, RUTH_FOUR_PERSONAL_SECTIONS);
 }
 
 function applyPersonalDeuteronomyThirtyThroughThirtyFourStudySections() {
@@ -8077,6 +8082,7 @@ applyPersonalRuthOneThroughFourStudySections();
 applyPersonalRuthOneStudySections();
 applyPersonalRuthTwoStudySections();
 applyPersonalRuthThreeStudySections();
+applyPersonalRuthFourStudySections();
 applyPersonalDeuteronomyThirtyThroughThirtyFourStudySections();
 applyPersonalJoshuaOneThroughElevenStudySections();
 applyPersonalJoshuaTwelveThroughNineteenStudySections();

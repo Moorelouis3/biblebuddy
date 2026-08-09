@@ -1182,3 +1182,7 @@ Next up: Ruth 4
 
 ## 2026-08-09T12:24:29Z (level2 upgrade run)
 Status: BLOCKED — could not reach https://life-buddy-production.up.railway.app (proxy returned 403, org egress policy denial per /root/.ccr/README.md, not a queue-empty case). No queue data read, no chapter touched, nothing pushed. Needs env network policy fix to allow this host.
+
+## 2026-08-09T13:01:00Z (hourly chapter notes run)
+Chapter: Ruth 4 | Duration: 15 min | Sections: 6 | Cards: 36 | Status: pass
+Next up: 1 Samuel 1
