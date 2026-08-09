@@ -1143,3 +1143,7 @@ Next up: Judges 15
 ## 2026-08-09T02:55:12Z (hourly chapter notes run)
 Chapter: Judges 15 | Duration: 9 min | Sections: 6 | Cards: 41 | Status: pass
 Next up: Judges 16
+
+## 2026-08-09T03:59:00Z (hourly chapter notes run)
+Chapter: Judges 16 | Duration: 12 min | Sections: 11 | Cards: 56 | Status: pass
+Next up: Judges 17
