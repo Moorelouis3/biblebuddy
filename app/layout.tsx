@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: socialTitle,
   description: socialDescription,
+  verification: {
+    google: "h6_7pgkLpwUqV9yc0v8w1kFAb_Ij9MlFKANXUFNecjw",
+  },
   alternates: {
     canonical: siteUrl.toString(),
   },
