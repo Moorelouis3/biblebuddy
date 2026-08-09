@@ -56,6 +56,38 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-is-leah",
+    title: "Who Is Leah? The Wife Her Husband Didn't Want",
+    description:
+      "Leah was the unloved wife of Jacob - but God saw her. Her story in Genesis 29 is for everyone who has ever felt overlooked, second-best, or unwanted.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/bible-study-hub/character-studies/who-is-leah",
+    readTime: "7 min read",
+    image: "/leahbanner.jpg",
+    groupPost: {
+      title: "Who Is Leah? The Wife Her Husband Didn't Want 📖",
+      content:
+        "Some people in the Bible get statues.\n\nLeah got a footnote.\n\nHer wedding was a trick. Her husband loved her sister. Her whole life, she was the one who wasn't chosen.\n\n📌 But God saw her - and the Messiah Himself came through her son, not her sister's.\n\nNew article on the woman who learned to say \"Now will I praise the LORD\" while her heart was still breaking.\n\nRead it here:\nhttps://www.mybiblebuddy.net/bible-study-hub/character-studies/who-is-leah\n\nHave you ever felt overlooked like Leah? What helped you? 🙏",
+    },
+  },
+  {
+    slug: "who-is-jezebel",
+    title: "Who Is Jezebel? The Queen Who Led Israel Into Idol Worship",
+    description:
+      "Jezebel was the queen who led Israel into Baal worship, hunted God's prophets, and defied God to the end. Her story is a warning about influence and compromise.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/bible-study-hub/character-studies/who-is-jezebel",
+    readTime: "7 min read",
+    image: "/jezebelbanner.jpg",
+    groupPost: {
+      title: "Who Is Jezebel? The Queen Who Led Israel Into Idol Worship 📖",
+      content:
+        "Her name is still an insult three thousand years later.\n\nBut most people can't tell you what she actually did.\n\n📌 Jezebel wasn't just a wicked queen. She was the most dangerous kind of influence: the kind that makes evil look normal.\n\nNew article on the queen who led a nation into idolatry, the prophet who stood against her, and why Jesus brought her name up again in Revelation.\n\nRead it here:\nhttps://www.mybiblebuddy.net/bible-study-hub/character-studies/who-is-jezebel\n\nWho is influencing you - and who are you influencing? 🙏",
+    },
+  },
+  {
     slug: "what-does-the-bible-say-about-anxiety",
     title: "What Does the Bible Say About Anxiety?",
     description:
