@@ -1,0 +1,38 @@
+{
+  "note": "Topic queue for the Daily Blog Writer routine. It takes the FIRST entry each run, writes that article, and removes the entry in the same commit. Louis: add/reorder/delete topics freely - the routine only ever touches the front of the queue. bannerImage is optional; when missing, the routine reuses the fallbackBanner for that category and flags it in MARCUS_HANDOFF.md so a custom banner can be swapped in later.",
+  "categoryFallbackBanners": {
+    "christian-foundations": "/anxietyarticlebanner.jpg",
+    "bible-insights": "/Whatisthebiblebanner.png",
+    "bible-study-tips": "/Biblereadingbanner.png",
+    "verse-breakdowns": "/Whatisthebiblebanner.png",
+    "character-studies": "/5thingsholdingmenback.png",
+    "christian-history": "/Whatisthebiblebanner.png"
+  },
+  "queue": [
+    { "title": "What Does the Bible Say About Fear?", "slug": "what-does-the-bible-say-about-fear", "categorySlug": "christian-foundations", "angle": "Fear vs. faith, 'fear not' appearing constantly in Scripture, Isaiah 41:10, 2 Timothy 1:7, Psalm 56:3." },
+    { "title": "Is Anxiety a Sin?", "slug": "is-anxiety-a-sin", "categorySlug": "christian-foundations", "angle": "Pastoral, non-condemning answer. Distinguish temptation/affliction from sin. Jesus in Gethsemane was in anguish. Links naturally to the anxiety article." },
+    { "title": "What Does Selah Mean in the Bible?", "slug": "what-does-selah-mean", "categorySlug": "bible-insights", "angle": "Appears 74 times, mostly Psalms. Likely a musical/pause marker. Teach the habit of pausing to reflect while reading." },
+    { "title": "Psalm 23 Explained Verse by Verse", "slug": "psalm-23-explained", "categorySlug": "verse-breakdowns", "angle": "The most famous psalm, one verse at a time, KJV text with plain-English explanation of shepherd imagery." },
+    { "title": "What Does the Bible Say About Loneliness?", "slug": "what-does-the-bible-say-about-loneliness", "categorySlug": "christian-foundations", "angle": "Elijah, David in the cave, Jesus deserted by friends. God's nearness to the brokenhearted, Psalm 34:18." },
+    { "title": "How to Pray: A Beginner's Guide", "slug": "how-to-pray-beginners-guide", "categorySlug": "bible-study-tips", "angle": "The Lord's Prayer as a template. Remove intimidation - prayer is talking to God, not performing." },
+    { "title": "Who Was Job? The Man Who Lost Everything", "slug": "who-was-job", "categorySlug": "character-studies", "angle": "Suffering without easy answers, honest lament, God's answer from the whirlwind, restoration." },
+    { "title": "What Does the Bible Say About Forgiveness?", "slug": "what-does-the-bible-say-about-forgiveness", "categorySlug": "christian-foundations", "angle": "Forgiving others vs. being forgiven, seventy times seven, forgiveness is not pretending it didn't hurt." },
+    { "title": "Jeremiah 29:11 Explained", "slug": "jeremiah-29-11-explained", "categorySlug": "verse-breakdowns", "angle": "Beloved but often misused verse - written to exiles facing 70 years in Babylon. Real context makes it stronger, not weaker." },
+    { "title": "What Does the Bible Say About Rest?", "slug": "what-does-the-bible-say-about-rest", "categorySlug": "christian-foundations", "angle": "Sabbath, Jesus sleeping in the storm, 'Come unto me all ye that labour' Matthew 11:28. Rest as trust." },
+    { "title": "How to Memorize Scripture", "slug": "how-to-memorize-scripture", "categorySlug": "bible-study-tips", "angle": "Practical methods: one verse a week, write it out, phone lock screen, review before bed, why hiding the Word in your heart matters (Psalm 119:11)." },
+    { "title": "What Does Amen Actually Mean?", "slug": "what-does-amen-mean", "categorySlug": "bible-insights", "angle": "Hebrew root of truth/firmness, 'so be it', Jesus called the Amen in Revelation 3:14." },
+    { "title": "Who Was Ruth?", "slug": "who-was-ruth", "categorySlug": "character-studies", "angle": "Loyalty, loss, redemption, the kinsman-redeemer, a Moabite in the family line of Jesus." },
+    { "title": "What Does the Bible Say About Depression?", "slug": "what-does-the-bible-say-about-depression", "categorySlug": "christian-foundations", "angle": "Handle with care like the anxiety article: Elijah wanting to die, Psalms of despair, God's gentleness, plus the same professional-help-is-not-weak-faith line." },
+    { "title": "Why Did Jesus Speak in Parables?", "slug": "why-did-jesus-speak-in-parables", "categorySlug": "bible-insights", "angle": "Stories that reveal and conceal, Matthew 13 explanation, why stories stick when lectures don't." },
+    { "title": "Romans 8:28 Explained", "slug": "romans-8-28-explained", "categorySlug": "verse-breakdowns", "angle": "'All things work together for good' - what it promises and what it doesn't. Context of suffering in Romans 8." },
+    { "title": "What Is Grace?", "slug": "what-is-grace", "categorySlug": "christian-foundations", "angle": "Unmerited favor explained simply, grace vs. works, Ephesians 2:8-9, why grace changes how you live." },
+    { "title": "What Is Fasting? A Biblical Beginner's Guide", "slug": "what-is-fasting", "categorySlug": "bible-study-tips", "angle": "What fasting is and isn't, Jesus's assumption 'when ye fast' Matthew 6:16, practical gentle start." },
+    { "title": "Who Was Peter?", "slug": "who-was-peter", "categorySlug": "character-studies", "angle": "Impulsive fisherman, denial, restoration on the beach, Pentecost. Failure is not final." },
+    { "title": "What Does the Bible Say About Patience?", "slug": "what-does-the-bible-say-about-patience", "categorySlug": "christian-foundations", "angle": "Waiting on God, fruit of the Spirit, Joseph's years in prison, James 5:7 farmer imagery." },
+    { "title": "Matthew 6:33 Explained", "slug": "matthew-6-33-explained", "categorySlug": "verse-breakdowns", "angle": "'Seek ye first' - the ordering principle of the whole Christian life, in its Sermon on the Mount worry context." },
+    { "title": "How Long Does It Take to Read the Bible?", "slug": "how-long-does-it-take-to-read-the-bible", "categorySlug": "bible-insights", "angle": "Real numbers: ~70 hours total, minutes per day for a year plan. Makes the goal feel achievable. Natural Bible in One Year tie-in." },
+    { "title": "What Does the Bible Say About Money and Worry?", "slug": "what-does-the-bible-say-about-money-and-worry", "categorySlug": "christian-foundations", "angle": "Treasures in heaven, God and mammon, the birds and lilies passage, generosity as the antidote to money anxiety." },
+    { "title": "Who Was David? A Man After God's Own Heart", "slug": "who-was-david", "categorySlug": "character-studies", "angle": "Shepherd, giant-slayer, king, adulterer, psalmist. Why God called a flawed man 'after mine own heart' - honesty and repentance." },
+    { "title": "Philippians 4:13 Explained", "slug": "philippians-4-13-explained", "categorySlug": "verse-breakdowns", "angle": "'I can do all things' - the contentment context (Paul in prison, learning contentment in plenty and in want), not a sports slogan." }
+  ]
+}

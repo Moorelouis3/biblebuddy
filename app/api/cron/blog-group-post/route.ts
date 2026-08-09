@@ -125,7 +125,10 @@ export async function GET(request: NextRequest) {
           media_url: `${SITE_URL}${article.image}`,
           link_url: `${SITE_URL}${article.canonicalPath}`,
         },
-        { skipInsertNotifications: false },
+        // Same as the other recurring auto-posts: skip insert-time
+        // notification fanout, which reliably statement-times-out on this
+        // table (hit live while posting the anxiety article share).
+        { skipInsertNotifications: true },
       );
       posted.push(article.slug);
     } catch (error) {
