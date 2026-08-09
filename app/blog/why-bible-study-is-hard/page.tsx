@@ -1,5 +1,6 @@
 
 import React from "react";
+import BlogPostShell from "@/components/blog/BlogPostShell";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
 
 export const metadata = buildBlogArticleMetadata("why-bible-study-is-hard");
