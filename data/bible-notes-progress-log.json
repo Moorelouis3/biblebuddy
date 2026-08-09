@@ -15391,6 +15391,59 @@
           "at": "2026-08-09T05:56:32Z"
         }
       ]
+    },
+    {
+      "book": "Judges",
+      "chapter": 19,
+      "startedAt": "2026-08-09T06:46:13Z",
+      "finishedAt": "2026-08-09T07:01:11Z",
+      "durationMinutes": 15,
+      "sections": 6,
+      "cards": 55,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty, Judges 1-18 complete), no existing dedicated wired-in file for chapter 19. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (30 verses). Judges 19 is the Levite and his concubine at Gibeah: the long, repeatedly delayed farewell at the father in law's house in Bethlehemjudah, the late departure that refuses Jebus (unconquered Jebusite Jerusalem) for what is assumed to be safer Israelite territory at Gibeah, the town's total failure of hospitality until one old sojourner from Mount Ephraim takes them in, the Sodom-parallel mob of \"sons of Belial\" demanding to \"know\" the Levite, the host's shocking offer of the women instead, the Levite handing over his concubine and her death by abuse through the night, and the closing horror of her body divided into twelve pieces and sent throughout Israel's territory as a summons that sets up the civil war in chapters 20-21. Chunked into 6 sections (1-4, 5-9, 10-15, 16-21, 22-26, 27-30); the first draft used a single 1-9 section but that exceeded the file's global 8-verse auto-split threshold (enforceStudySectionVerseLimit(8) in lib/bibleReaderStudyNotes.ts), which silently duplicated all 14 cards across two auto-generated \"Part 1\"/\"Part 2\" sections instead of splitting them; caught by inspecting the parser check's own card-count output (67 cards where only 53 were written), fixed by splitting the raw source into two real sections (1-4 and 5-9) so every section in the file stays at or under 8 verses. Density about 1.83 cards/verse (30 verses, 55 cards). scripts/check_bible_note_style.py found 2 problems on first pass (two bullets over the 8 word limit), fixed, second run clean; a later manual eye check also caught and reworded one bullet opening with the forbidden \"This shows\" construction. A manual section 13 eye check confirmed every card opens with one of the four approved moves, closes on meaning rather than mechanics, uses exactly four bullets each ending on 📖 or ➡️ with no repeated emoji within a card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file (only possessives), with all 55 card titles exact KJV substrings verified individually against the fetched text and no duplicates. The chapter's sexual violence (vv22-26) was written factually and without graphic detail, following the same restraint the KJV text itself uses, and named directly as wrong rather than softened or excused. Parser check passed exactly via getBibleReaderStudySections('judges', 19) (6/6 sections, 55 cards, 30 verses of exact, non-overlapping, gap-free coverage, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies judges range extended from chapters 1-18 to 1-19, new applyPersonalJudgesNineteenStudySections() function added calling replaceStudySectionsForBookRange(\"judges\", 19, 19, JUDGES_NINETEEN_PERSONAL_SECTIONS), invoked directly after the existing Judges 18 call (after the old 16-21 range file so the dedicated chapter file correctly overrides it). Next forward-progress target is Judges 20.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-09T06:46:40Z"
+        },
+        {
+          "name": "target chapter determined: Judges 19 (redo backlog empty, forward progress, Judges 1-18 complete)",
+          "at": "2026-08-09T06:47:19Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn/Bible-kjv, Judges.json, 30 verses)",
+          "at": "2026-08-09T06:47:19Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-09T07:00:51Z"
+        },
+        {
+          "name": "source file lib/judgesNineteenSource.ts written (6 sections, 55 cards, after fixing an 8-verse auto-split section)",
+          "at": "2026-08-09T07:00:51Z"
+        },
+        {
+          "name": "style checker clean (check_bible_note_style.py, 2 bullet-length problems fixed)",
+          "at": "2026-08-09T07:00:51Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 19, apply function, call)",
+          "at": "2026-08-09T07:00:51Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('judges', 19): 6 sections, 55 cards)",
+          "at": "2026-08-09T07:00:51Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-09T07:00:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-09T07:02:40Z"
+        }
+      ]
     }
   ]
 }
