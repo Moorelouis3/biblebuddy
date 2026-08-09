@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-does-the-bible-say-about-zodiac-signs",
+    title: "What Does the Bible Say About Zodiac Signs?",
+    description:
+      "What does the Bible say about zodiac signs? The real reason God warns against astrology, and what to do if you love your horoscope.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/what-does-the-bible-say-about-zodiac-signs",
+    publishedAt: "2026-08-09",
+    readTime: "17 min read",
+    image: "/zodiac-banner.png",
+    groupPost: {
+      title: "What Does the Bible Say About Zodiac Signs? 📖",
+      content:
+        "You know your sign.\n\nYou've read your horoscope before your coffee finished brewing. Maybe you check it for fun. Maybe more than that.\n\n📌 Most Christians have never been told this: astrology is one of the only practices Scripture names directly and calls an abomination. Not because God wants you to have less fun - because of where it sends you looking for answers.\n\nNew article on what the Bible actually says about zodiac signs, why the wise men following a star to Jesus is the opposite of astrology, and what to do if you've been into your sign without ever thinking twice about it.\n\nRead it here:\nhttps://www.mybiblebuddy.net/blog/what-does-the-bible-say-about-zodiac-signs\n\nDid you grow up checking your horoscope? What changed for you? 🙏",
+    },
+  },
+  {
     slug: "who-is-leah",
     title: "Who Is Leah? The Wife Her Husband Didn't Want",
     description:

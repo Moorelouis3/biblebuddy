@@ -1237,3 +1237,7 @@ Next up: 1 Samuel 8
 ## 2026-08-09T21:56:30Z (hourly chapter notes run)
 Chapter: 1 Samuel 8 | Duration: 8 min | Sections: 5 | Cards: 43 | Status: pass
 Next up: 1 Samuel 9
+
+## 2026-08-09T22:19:39Z (blog writer run)
+Article: What Does the Bible Say About Zodiac Signs? | Words: ~3486 | Category: Christian Foundations | Status: pass
+Queue remaining: 28
