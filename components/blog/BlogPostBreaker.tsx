@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import BlogArticleEngagementBar from "@/components/blog/BlogArticleEngagementBar";
-import { trackBlogPageView } from "@/lib/blogViewTracking";
+import { logBlogViewToMasterActions, trackBlogPageView } from "@/lib/blogViewTracking";
 
 type BlogPostBreakerProps = {
   // Database key for likes/comments/views (legacy path for migrated posts).
@@ -20,7 +20,8 @@ export default function BlogPostBreaker({ articleSlug, path, title }: BlogPostBr
 
   useEffect(() => {
     trackBlogPageView(articleSlug);
-  }, [articleSlug]);
+    void logBlogViewToMasterActions(articleSlug, title);
+  }, [articleSlug, title]);
 
   const pageUrl = `https://www.mybiblebuddy.net${path}`;
   const shareText = `Check out this Bible Buddy article: ${title}`;
