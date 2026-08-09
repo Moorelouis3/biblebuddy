@@ -51,6 +51,8 @@ tmp-*.txt
 *_decoded.txt
 *_raw_extracted.txt
 *.mp4
+# ...except the landing page founder video, which ships with the site
+!public/landing-video.mp4
 console.log(Object.keys(m)))
 
 # finished media exports - large, live elsewhere, never git

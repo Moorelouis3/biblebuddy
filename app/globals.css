@@ -4571,8 +4571,24 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-hero-gold,
    catch-all above that forces #111827 on every span/heading. */
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-brand-blue,
 .bb-public-landing .bb-brand-blue {
-  color: #0f63ff !important;
-  -webkit-text-fill-color: #0f63ff !important;
+  color: #0056FD !important;
+  -webkit-text-fill-color: #0056FD !important;
+}
+
+/* Brand-blue CTA buttons on the public landing page. bb-public-button
+   forces the old powder-blue (#7BAFD4) background, so the new landing's
+   CTAs use this class instead: real brand blue, white contents. */
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-cta-blue,
+.bb-public-landing .bb-cta-blue {
+  background: #0056FD !important;
+  background-color: #0056FD !important;
+}
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-cta-blue,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-cta-blue *,
+.bb-public-landing .bb-cta-blue,
+.bb-public-landing .bb-cta-blue * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
 }
 
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-force-black,

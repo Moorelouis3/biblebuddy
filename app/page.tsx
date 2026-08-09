@@ -1904,9 +1904,9 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
         <header className="flex items-center justify-between gap-3 py-4">
           <BibleBuddyMark />
           <nav className="flex items-center gap-5 text-sm font-black text-[#07162f] sm:gap-7">
-            <a href="#about" className="transition hover:text-[#0f63ff]">About</a>
-            <Link href="/blog" className="transition hover:text-[#0f63ff]">Blog</Link>
-            <Link href="/login" className="transition hover:text-[#0f63ff]">Login</Link>
+            <a href="#about" className="transition hover:text-[#0056FD]">About</a>
+            <Link href="/blog" className="transition hover:text-[#0056FD]">Blog</Link>
+            <Link href="/login" className="transition hover:text-[#0056FD]">Login</Link>
           </nav>
         </header>
 
@@ -1957,7 +1957,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             <Link
               href="/signup"
               onClick={() => onStartJourney("video_hero")}
-              className="bb-public-button inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0f63ff] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.25)] transition hover:-translate-y-0.5"
+              className="bb-cta-blue inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
             >
               Create Your Free Account
               <LandingLineIcon name="arrow" light />
@@ -1999,7 +1999,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             <Link
               href="/signup"
               onClick={() => onStartJourney("bottom_cta")}
-              className="bb-public-button inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0f63ff] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(15,99,255,0.25)] transition hover:-translate-y-0.5"
+              className="bb-cta-blue inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
             >
               Create Your Free Account
               <LandingLineIcon name="arrow" light />
@@ -2012,12 +2012,12 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
             <BibleBuddyMark small />
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-bold text-[#526075]">
-              <a href="#about" className="transition hover:text-[#0f63ff]">About</a>
-              <a href="#faq" className="transition hover:text-[#0f63ff]">FAQ</a>
-              <Link href="/blog" className="transition hover:text-[#0f63ff]">Blog</Link>
-              <Link href="/contact" className="transition hover:text-[#0f63ff]">Contact</Link>
-              <Link href="/privacy" className="transition hover:text-[#0f63ff]">Privacy</Link>
-              <Link href="/terms" className="transition hover:text-[#0f63ff]">Terms</Link>
+              <a href="#about" className="transition hover:text-[#0056FD]">About</a>
+              <a href="#faq" className="transition hover:text-[#0056FD]">FAQ</a>
+              <Link href="/blog" className="transition hover:text-[#0056FD]">Blog</Link>
+              <Link href="/contact" className="transition hover:text-[#0056FD]">Contact</Link>
+              <Link href="/privacy" className="transition hover:text-[#0056FD]">Privacy</Link>
+              <Link href="/terms" className="transition hover:text-[#0056FD]">Terms</Link>
             </div>
             <p className="text-xs font-bold text-[#6d7789]">&copy; 2026 Bible Buddy</p>
           </div>
@@ -2055,7 +2055,7 @@ function LandingPhoneHome() {
           <div>
             <p className="text-xl font-black">Day 7 of 365</p>
             <p className="mt-1 text-xs font-semibold text-white/60">Genesis 16-17</p>
-            <div className="mt-4 rounded-xl bg-[#0f63ff] px-4 py-2 text-center text-xs font-black">Continue</div>
+            <div className="mt-4 rounded-xl bg-[#0056FD] px-4 py-2 text-center text-xs font-black">Continue</div>
           </div>
           <Image src="/day7cover.png" alt="" width={82} height={82} className="h-[82px] w-[82px] rounded-xl object-cover" />
         </div>
@@ -2063,7 +2063,7 @@ function LandingPhoneHome() {
       <div className="rounded-2xl bg-white/8 p-4">
         <p className="text-xs font-bold text-white/60">Today&apos;s Lesson</p>
         <p className="mt-1 text-lg font-black">The Covenant Promise</p>
-        <div className="mt-3 h-1.5 rounded-full bg-white/10"><div className="h-full w-1/3 rounded-full bg-[#0f63ff]" /></div>
+        <div className="mt-3 h-1.5 rounded-full bg-white/10"><div className="h-full w-1/3 rounded-full bg-[#0056FD]" /></div>
         <div className="mt-4 flex items-center justify-between rounded-xl bg-white/8 px-3 py-3 text-sm font-black">
           <span>Play Audio</span>
           <span>▶</span>
@@ -2113,7 +2113,7 @@ function LandingPhoneProgress() {
       <div className="rounded-2xl bg-white/8 p-4">
         <p className="text-xs font-bold text-white/60">This Week</p>
         <p className="mt-2 text-xl font-black">5/7 Days</p>
-        <div className="mt-4 rounded-xl bg-[#0f63ff] px-4 py-2 text-center text-xs font-black">View Plan</div>
+        <div className="mt-4 rounded-xl bg-[#0056FD] px-4 py-2 text-center text-xs font-black">View Plan</div>
       </div>
       <div className="rounded-2xl bg-white/8 p-4">
         <p className="text-xs font-bold text-white/60">Insights</p>
