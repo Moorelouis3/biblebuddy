@@ -15176,12 +15176,12 @@
       "book": "Judges",
       "chapter": 15,
       "startedAt": "2026-08-09T02:45:56Z",
-      "finishedAt": "2026-08-09T02:55:12Z",
-      "durationMinutes": 9,
+      "finishedAt": "2026-08-09T02:56:23Z",
+      "durationMinutes": 10,
       "sections": 6,
       "cards": 41,
       "verses": 20,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty, Judges 1-14 complete), no dedicated wired-in file existed (still covered by the older judgesOneToFifteenPersonalNotes.ts placeholder). Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv. Style checker found 4 mechanical issues on first pass (2 bullets over word limit, 2 body lines over 20 words), fixed, second run clean. Parser check and tsc --noEmit both clean.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog empty, Judges 1-14 complete), no dedicated wired-in file existed (still covered by the older judgesOneToFifteenPersonalNotes.ts placeholder). Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv. Style checker found 4 mechanical issues on first pass (2 bullets over word limit, 2 body lines over 20 words), fixed, second run clean. Parser check and tsc --noEmit both clean. Commit landed on a detached HEAD (recurring environment quirk, same as prior runs); rebased the single commit onto origin/main (2 unrelated blog commits ahead, clean merge base), reverified tsc clean, fast-forwarded local main, and pushed successfully to origin/main (f24602f). No [deploy] tag per the per-chapter push policy.",
       "steps": [
         {
           "name": "npm install done",
@@ -15222,6 +15222,10 @@
         {
           "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md + progress-log.json)",
           "at": "2026-08-09T02:55:12Z"
+        },
+        {
+          "name": "committed, detached HEAD detected and rebased onto origin/main (2 unrelated blog commits ahead), tsc reverified clean, local main fast-forwarded, pushed to origin/main (f24602f)",
+          "at": "2026-08-09T02:56:23Z"
         }
       ]
     }
