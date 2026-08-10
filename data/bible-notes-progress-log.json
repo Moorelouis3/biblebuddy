@@ -17366,6 +17366,55 @@
           "at": "2026-08-10T16:56:44Z"
         }
       ]
+    },
+    {
+      "book": "1 Samuel",
+      "chapter": 28,
+      "startedAt": "2026-08-10T17:47:26Z",
+      "finishedAt": "2026-08-10T18:19:00Z",
+      "durationMinutes": 32,
+      "sections": 6,
+      "cards": 45,
+      "verses": 25,
+      "notes": "Scheduled hourly run. Saul and the medium at Endor. Achish demands David fight for him and David answers noncommittally, Samuel is confirmed dead and Saul's earlier purge of mediums recalled, Philistines camp at Shunem and Saul at Gilboa (foreshadowing his death there), God is totally silent by dream, Urim, and prophet, Saul disguises himself and visits a medium at Endor by night after swearing a false oath of safety, the woman's shocked cry when Samuel actually appears suggests something genuinely broke through her usual trickery, Samuel's mantle recalls the torn robe from chapter fifteen, and Samuel pronounces a direct death sentence on Saul and his sons for the Amalek disobedience, with Israel's army also to fall to the Philistines. Chapter closes on Saul's collapse and the medium's costly kindness of a hastily baked meal before he walks into the night to face it. Density 1.8 cards/verse. Style checker found 10 minor bullet-length/emoji issues on first pass, fixed, clean on second run. Parser check and tsc --noEmit both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-10T17:47:26Z"
+        },
+        {
+          "name": "target chapter determined: 1 Samuel 28 (redo backlog empty, normal forward progress after 1 Samuel 27)",
+          "at": "2026-08-10T17:47:38Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com/aruljohn/Bible-kjv 1Samuel.json, chapter 28, 25 verses)",
+          "at": "2026-08-10T17:48:30Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-08-10T17:49:30Z"
+        },
+        {
+          "name": "source file written (lib/firstSamuelTwentyEightSource.ts, 6 sections, 45 cards)",
+          "at": "2026-08-10T18:05:00Z"
+        },
+        {
+          "name": "style checker clean (check_bible_note_style.py, zero problems after fixing 4 bullet length issues)",
+          "at": "2026-08-10T18:12:00Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 28, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-10T18:15:00Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 45 cards, 25 verses)",
+          "at": "2026-08-10T18:17:00Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-10T18:19:00Z"
+        }
+      ]
     }
   ]
 }

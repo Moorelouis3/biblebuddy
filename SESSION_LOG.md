@@ -1323,3 +1323,7 @@ Next up: 1 Samuel 27
 ## 2026-08-10T16:56:44Z (hourly chapter notes run)
 Chapter: 1 Samuel 27 | Duration: 10 min | Sections: 4 | Cards: 25 | Status: pass
 Next up: 1 Samuel 28
+
+## 2026-08-10T18:20:00Z (hourly chapter notes run)
+Chapter: 1 Samuel 28 | Duration: 32 min | Sections: 6 | Cards: 45 | Status: pass
+Next up: 1 Samuel 29
