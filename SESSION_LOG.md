@@ -1343,3 +1343,7 @@ Next up: 2 Samuel 1
 ## 2026-08-10T21:57:54Z (hourly chapter notes run)
 Chapter: 2 Samuel 1 | Duration: 12 min | Sections: 7 | Cards: 47 | Status: pass
 Next up: 2 Samuel 2
+
+## 2026-08-10T22:58:01Z (hourly chapter notes run)
+Chapter: 2 Samuel 2 | Duration: 12 min | Sections: 7 | Cards: 49 | Status: pass
+Next up: 2 Samuel 3

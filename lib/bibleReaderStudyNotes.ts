@@ -290,6 +290,7 @@ import { FIRST_SAMUEL_TWENTY_NINE_PERSONAL_SECTIONS } from "./firstSamuelTwentyN
 import { FIRST_SAMUEL_THIRTY_PERSONAL_SECTIONS } from "./firstSamuelThirtySource";
 import { FIRST_SAMUEL_THIRTY_ONE_PERSONAL_SECTIONS } from "./firstSamuelThirtyOneSource";
 import { SECOND_SAMUEL_ONE_PERSONAL_SECTIONS } from "./secondSamuelOneSource";
+import { SECOND_SAMUEL_TWO_PERSONAL_SECTIONS } from "./secondSamuelTwoSource";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
 import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
 import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
@@ -653,7 +654,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "judges" && section.chapter >= 1 && section.chapter <= 21) ||
     (normalizeBook(book) === "ruth" && section.chapter >= 1 && section.chapter <= 4) ||
     (normalizeBook(book) === "1 samuel" && section.chapter >= 1 && section.chapter <= 31) ||
-    (normalizeBook(book) === "2 samuel" && section.chapter >= 1 && section.chapter <= 1);
+    (normalizeBook(book) === "2 samuel" && section.chapter >= 1 && section.chapter <= 2);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -821,6 +822,10 @@ function applyPersonalSecondSamuelOneThroughTwentyFourStudySections() {
 
 function applyPersonalSecondSamuelOneStudySections() {
   replaceStudySectionsForBookRange("2 samuel", 1, 1, SECOND_SAMUEL_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondSamuelTwoStudySections() {
+  replaceStudySectionsForBookRange("2 samuel", 2, 2, SECOND_SAMUEL_TWO_PERSONAL_SECTIONS);
 }
 
 function applyPersonalFirstKingsOneThroughFifteenStudySections() {
@@ -8130,6 +8135,7 @@ applyPersonalFirstSamuelElevenThroughThirtyStudySections();
 applyPersonalFirstSamuelThirtyOneStudySections();
 applyPersonalSecondSamuelOneThroughTwentyFourStudySections();
 applyPersonalSecondSamuelOneStudySections();
+applyPersonalSecondSamuelTwoStudySections();
 applyPersonalFirstKingsOneThroughFifteenStudySections();
 applyPersonalFirstKingsSixteenThroughTwentyTwoStudySections();
 applyPersonalSecondKingsOneThroughTwentyFiveStudySections();
