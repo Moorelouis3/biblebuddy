@@ -1276,3 +1276,7 @@ Next up: 1 Samuel 16
 ## 2026-08-10T06:00:30Z (hourly chapter notes run)
 Chapter: 1 Samuel 16 | Duration: 14 min | Sections: 6 | Cards: 38 | Status: pass
 Next up: 1 Samuel 17
+
+## 2026-08-10T07:00:00Z (hourly chapter notes run)
+Chapter: 1 Samuel 17 | Duration: 13 min | Sections: 16 | Cards: 98 | Status: pass
+Next up: 1 Samuel 18
