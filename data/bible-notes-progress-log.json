@@ -16401,6 +16401,59 @@
           "at": "2026-08-09T23:56:20Z"
         }
       ]
+    },
+    {
+      "book": "1 Samuel",
+      "chapter": 11,
+      "startedAt": "2026-08-10T00:41:12Z",
+      "finishedAt": "2026-08-10T00:55:09Z",
+      "durationMinutes": 14,
+      "sections": 5,
+      "cards": 30,
+      "verses": 15,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog confirmed empty. Normal forward progress: verified against lib/ file listing that 1 Samuel 1-10 each have dedicated source files while chapter 11 had no wired-in file at all, only the old bulk firstSamuelElevenToThirtyPersonalNotes.ts placeholder (matching the note left at the end of the 1 Samuel 10 entry). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (15 verses). 1 Samuel 11 covers Nahash the Ammonite's siege of Jabeshgilead and his cruel eye-gouging surrender terms, the elders' seven day stall for help, Saul hearing the news while still working his own field and the Spirit of God kindling his anger, the oxen-in-pieces summons that produces total national unity through the fear of the LORD, the muster at Bezek (Israel and Judah counted separately, an early hint of the later divide), the tactical night battle in three companies that routs the Ammonites by midday, the people's demand to execute Saul's earlier doubters, Saul's refusal and his crediting the LORD rather than himself for the victory, and the chapter's close renewing the kingdom publicly at Gilgal with peace offerings and national rejoicing. Chunked into 5 sections (1-3, 4-7, 8-11, 12-13, 14-15). Density exactly 2.0 cards/verse (15 verses, 30 cards). scripts/check_bible_note_style.py found 0 problems on first pass. A manual section 13 eye check confirmed every card opens with one of the four approved moves, no forbidden filler patterns, no repeated first-line structures within a section (one near-duplicate 'This was not X' opener caught between the eye-gouging and fear-of-the-LORD cards and reworded before saving), no hyphens/em dashes/semicolons/contractions, and every title an exact contiguous KJV phrase. Parser check passed exactly via getBibleReaderStudySections('1 samuel', 11) (5/5 sections, 30 cards, 15 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for FIRST_SAMUEL_ELEVEN_PERSONAL_SECTIONS, preserveExactPhraseBodies extended from chapter <= 10 to chapter <= 11 for 1 Samuel, and replaceStudySectionsForBookRange(\"1 samuel\", 11, 11, ...) added right after the existing 1 Samuel 10 call so it correctly overrides the old bulk placeholder for this one chapter. Forward progress resumes at 1 Samuel 12 next run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-10T00:41:12Z"
+        },
+        {
+          "name": "target chapter determined: 1 Samuel 11 (normal forward progress, redo backlog empty, no dedicated wired-in file existed, only legacy firstSamuelElevenToThirtyPersonalNotes.ts batch file covered it)",
+          "at": "2026-08-10T00:42:40Z"
+        },
+        {
+          "name": "KJV text fetched (1 Samuel 11, 15 verses, aruljohn mirror)",
+          "at": "2026-08-10T00:43:15Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus firstSamuelTenSource.ts read as same-book parser format reference",
+          "at": "2026-08-10T00:45:30Z"
+        },
+        {
+          "name": "source file written: lib/firstSamuelElevenSource.ts (5 sections, 30 cards)",
+          "at": "2026-08-10T00:50:10Z"
+        },
+        {
+          "name": "style checker clean on first pass (scripts/check_bible_note_style.py)",
+          "at": "2026-08-10T00:50:25Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 11, replaceStudySectionsForBookRange call added after chapter 10)",
+          "at": "2026-08-10T00:51:20Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 30 cards, 15 verses, text verbatim)",
+          "at": "2026-08-10T00:52:05Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-10T00:53:10Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-10T00:55:09Z"
+        }
+      ]
     }
   ]
 }

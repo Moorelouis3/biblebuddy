@@ -1252,3 +1252,7 @@ Next up: 1 Samuel 11
 
 ## 2026-08-10 (level2 upgrade run)
 BLOCKED: could not reach https://life-buddy-production.up.railway.app/api/bible-level2/queue - agent proxy returned 403 (org egress policy denies this host in this environment). No chapter pulled, no changes made. Needs environment network policy fix to allow railway.app or this specific host.
+
+## 2026-08-10T00:55:09Z (hourly chapter notes run)
+Chapter: 1 Samuel 11 | Duration: 14 min | Sections: 5 | Cards: 30 | Status: pass
+Next up: 1 Samuel 12
