@@ -17207,6 +17207,59 @@
           "at": "2026-08-10T14:06:34Z"
         }
       ]
+    },
+    {
+      "book": "1 Samuel",
+      "chapter": 25,
+      "startedAt": "2026-08-10T14:46:19Z",
+      "finishedAt": "2026-08-10T14:57:22Z",
+      "durationMinutes": 11,
+      "sections": 11,
+      "cards": 46,
+      "verses": 44,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty). No existing wired-in file for 1 Samuel 25 (last wired chapter was 24). Built dedicated lib/firstSamuelTwentyFiveSource.ts following the bible-study-note-style.md spec (exact-phrase titles, four to eight body lines with a blank line between every line, four bullets ending in a takeaway with a \ud83d\udcd6 or \u27a1\ufe0f close). Chapter covers Nabal's folly, Abigail's wisdom and intervention, and God striking Nabal down, a strong parallel to chapter 24's restraint theme.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-10T14:46:46Z"
+        },
+        {
+          "name": "target chapter determined: 1 Samuel 25 (redo backlog empty, normal forward progress after 1 Samuel 24)",
+          "at": "2026-08-10T14:56:10Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com/aruljohn/Bible-kjv 1Samuel.json, chapter 25, 44 verses)",
+          "at": "2026-08-10T14:56:10Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-08-10T14:56:10Z"
+        },
+        {
+          "name": "source file written (lib/firstSamuelTwentyFiveSource.ts, 11 sections, 46 cards)",
+          "at": "2026-08-10T14:56:10Z"
+        },
+        {
+          "name": "style checker clean (check_bible_note_style.py, fixed 27 initial findings: last-bullet emoji, bullet word count, broken keycap emoji)",
+          "at": "2026-08-10T14:56:10Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 25, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-10T14:56:10Z"
+        },
+        {
+          "name": "parser check passed (11/11 sections, 46 cards, 44 verses, text verbatim)",
+          "at": "2026-08-10T14:56:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-10T14:56:10Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-10T14:57:22Z"
+        }
+      ]
     }
   ]
 }
