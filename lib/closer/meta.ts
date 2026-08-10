@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import { getCloserCredentials } from "./credentials";
 import type { CloserSendResult } from "./types";
 
 // Every call to Meta lives in this file so there is one place to correct if an
@@ -26,36 +27,40 @@ const THREADS_HOST = "https://graph.threads.net/v1.0";
 
 export function getMetaEnv() {
   return {
-    appSecret: process.env.META_APP_SECRET || "",
     verifyToken: process.env.META_WEBHOOK_VERIFY_TOKEN || "",
-    facebookPageId: process.env.FACEBOOK_PAGE_ID || "",
-    facebookPageToken: process.env.FACEBOOK_PAGE_ACCESS_TOKEN || "",
-    instagramUserId: process.env.INSTAGRAM_BUSINESS_ACCOUNT_ID || "",
-    instagramToken: process.env.INSTAGRAM_ACCESS_TOKEN || process.env.FACEBOOK_PAGE_ACCESS_TOKEN || "",
-    threadsUserId: process.env.THREADS_USER_ID || "",
-    threadsToken: process.env.THREADS_ACCESS_TOKEN || "",
   };
 }
 
-// Which credentials are missing, for the status page and the startup report.
-export function getMissingMetaEnv(): string[] {
-  const env = getMetaEnv();
+// What is still missing, for the status page. The account tokens resolve
+// through Life Buddy, so this reports the outcome of that resolution rather
+// than a bare list of unset env vars.
+export async function getMissingMetaEnv(): Promise<string[]> {
   const missing: string[] = [];
-  if (!env.appSecret) missing.push("META_APP_SECRET");
-  if (!env.verifyToken) missing.push("META_WEBHOOK_VERIFY_TOKEN");
-  if (!env.facebookPageToken) missing.push("FACEBOOK_PAGE_ACCESS_TOKEN");
-  if (!env.facebookPageId) missing.push("FACEBOOK_PAGE_ID");
-  if (!env.instagramUserId) missing.push("INSTAGRAM_BUSINESS_ACCOUNT_ID");
-  if (!env.threadsUserId) missing.push("THREADS_USER_ID");
-  if (!env.threadsToken) missing.push("THREADS_ACCESS_TOKEN");
+  if (!process.env.META_WEBHOOK_VERIFY_TOKEN) missing.push("META_WEBHOOK_VERIFY_TOKEN");
+
+  const credentials = await getCloserCredentials();
+  if (!credentials.appSecret) missing.push("META_APP_SECRET (for webhook signature checks)");
+  if (!credentials.pageAccessToken) missing.push("Facebook page token (expected from Life Buddy)");
+  if (!credentials.facebookPageId) missing.push("Facebook page id (expected from Life Buddy)");
+  if (!credentials.instagramUserId) missing.push("Instagram business account id (expected from Life Buddy)");
+  if (!credentials.threadsUserId) missing.push("Threads user id (expected from Life Buddy)");
+  if (!credentials.threadsToken) missing.push("Threads token (expected from Life Buddy)");
+
+  if (credentials.source === "none" && (!process.env.LIFEBUDDY_API_URL || !process.env.LIFEBUDDY_API_TOKEN)) {
+    missing.push("LIFEBUDDY_API_URL and LIFEBUDDY_API_TOKEN");
+  }
   return missing;
+}
+
+export async function getCredentialSource() {
+  return (await getCloserCredentials()).source;
 }
 
 // Meta signs every webhook body with the app secret. Without this check the
 // endpoint is a public, unauthenticated trigger for sending DMs.
-export function verifyMetaSignature(rawBody: string, signatureHeader: string | null) {
-  const { appSecret } = getMetaEnv();
-  if (!appSecret) return { ok: false, reason: "META_APP_SECRET is not configured" };
+export async function verifyMetaSignature(rawBody: string, signatureHeader: string | null) {
+  const { appSecret } = await getCloserCredentials();
+  if (!appSecret) return { ok: false, reason: "App secret is not configured" };
   if (!signatureHeader) return { ok: false, reason: "Missing X-Hub-Signature-256 header" };
 
   const expected = "sha256=" + crypto.createHmac("sha256", appSecret).update(rawBody, "utf8").digest("hex");
@@ -126,7 +131,9 @@ async function postJson(url: string, payload: unknown, token: string): Promise<C
 }
 
 export async function sendInstagramPrivateReply(commentId: string, message: string): Promise<CloserSendResult> {
-  const { instagramUserId, instagramToken } = getMetaEnv();
+  // Instagram messaging runs on the linked Page's token. There is no separate
+  // Instagram credential to chase, which is why Life Buddy only stores one.
+  const { instagramUserId, pageAccessToken: instagramToken } = await getCloserCredentials();
   if (!instagramUserId || !instagramToken) {
     return { ok: false, permanent: true, detail: "Instagram credentials are not configured" };
   }
@@ -138,7 +145,7 @@ export async function sendInstagramPrivateReply(commentId: string, message: stri
 }
 
 export async function sendFacebookPrivateReply(commentId: string, message: string): Promise<CloserSendResult> {
-  const { facebookPageToken } = getMetaEnv();
+  const { pageAccessToken: facebookPageToken } = await getCloserCredentials();
   if (!facebookPageToken) {
     return { ok: false, permanent: true, detail: "Facebook page token is not configured" };
   }
@@ -151,7 +158,7 @@ export async function sendFacebookPrivateReply(commentId: string, message: strin
 // Public reply under the comment. Used as the fallback when a DM is refused,
 // and as the only option on Threads.
 export async function sendPublicCommentReply(commentId: string, message: string): Promise<CloserSendResult> {
-  const { facebookPageToken } = getMetaEnv();
+  const { pageAccessToken: facebookPageToken } = await getCloserCredentials();
   if (!facebookPageToken) {
     return { ok: false, permanent: true, detail: "Page token is not configured" };
   }
@@ -164,7 +171,7 @@ export async function sendPublicCommentReply(commentId: string, message: string)
 // Threads has no DM API at all, so a public reply is the whole strategy there.
 // Publishing is two steps: build a container, then publish it.
 export async function sendThreadsReply(replyToId: string, message: string): Promise<CloserSendResult> {
-  const { threadsUserId, threadsToken } = getMetaEnv();
+  const { threadsUserId, threadsToken } = await getCloserCredentials();
   if (!threadsUserId || !threadsToken) {
     return { ok: false, permanent: true, detail: "Threads credentials are not configured" };
   }

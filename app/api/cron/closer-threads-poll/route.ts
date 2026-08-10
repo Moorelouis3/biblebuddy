@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCloserSupabase } from "@/lib/closer/config";
-import { getMetaEnv } from "@/lib/closer/meta";
+import { getCloserCredentials } from "@/lib/closer/credentials";
 import { processCommentsSequentially } from "@/lib/closer/process";
 import type { CloserComment } from "@/lib/closer/types";
 
@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
 
-  const { threadsUserId, threadsToken } = getMetaEnv();
+  const { threadsUserId, threadsToken } = await getCloserCredentials();
   if (!threadsUserId || !threadsToken) {
     return NextResponse.json({ ok: false, error: "Threads credentials are not configured." }, { status: 200 });
   }

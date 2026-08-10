@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCloserSupabase, loadCloserConfig } from "@/lib/closer/config";
-import { getMissingMetaEnv } from "@/lib/closer/meta";
+import { getCredentialSource, getMissingMetaEnv } from "@/lib/closer/meta";
 import type { CloserEventRow } from "@/lib/closer/types";
 
 export const runtime = "nodejs";
@@ -57,11 +57,14 @@ export async function GET(request: NextRequest) {
     total: today.length,
   };
 
+  const [missingEnv, credentialSource] = await Promise.all([getMissingMetaEnv(), getCredentialSource()]);
+
   return NextResponse.json({
     events,
     counts,
     config: { dryRun: config.dryRun, hourlyCap: config.hourlyCap, triggerWords: config.triggerWords },
-    missingEnv: getMissingMetaEnv(),
+    missingEnv,
+    credentialSource,
   });
 }
 
