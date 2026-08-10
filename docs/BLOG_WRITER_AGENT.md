@@ -150,7 +150,10 @@ Add a new entry at the **top** of `BLOG_ARTICLES` in `lib/blogContent.ts`:
 
 - `slug`, `title`, `description` (the meta description, under 160
   characters), `category` and `categorySlug` (matching `BLOG_CATEGORIES`),
-  `canonicalPath: "/blog/<slug>"`, `publishedAt` (today's date, `YYYY-MM-DD`),
+  `canonicalPath: "/blog/<slug>"`, `publishedAt` (**the Berlin date, not the
+  UTC date** — `TZ=Europe/Berlin date +%F`. The run fires at 22:00 UTC, which
+  is already the next day in Berlin, so using UTC dates every post a day
+  early: the first run stamped Monday's post `2026-08-09`),
   `readTime` (roughly words ÷ 200, e.g. `"16 min read"`), `image` (the
   banner path).
 - **Never** set `legacyPath`. That field is only for pre-migration posts.
@@ -258,7 +261,7 @@ The steps, summarized (the doc is authoritative where they differ):
 
 4. Every Bible quote must be word-perfect King James Version. If you are not completely certain of the exact wording, fetch https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/<Book>.json and copy it verbatim. That host is reachable from this environment; most Bible sites return 403. Never quote a verse from memory and never approximate one.
 
-5. Add the new entry at the TOP of BLOG_ARTICLES in lib/blogContent.ts, including the groupPost field - that teaser is the short version the site's blog-group-post cron auto-shares into the Bible Buddy Study Group once, deduped by URL. You do NOT post to the group yourself. Never set legacyPath on a new post. Set publishedAt to today's date.
+5. Add the new entry at the TOP of BLOG_ARTICLES in lib/blogContent.ts, including the groupPost field - that teaser is the short version the site's blog-group-post cron auto-shares into the Bible Buddy Study Group once, deduped by URL. You do NOT post to the group yourself. Never set legacyPath on a new post. Set publishedAt to the BERLIN date (`TZ=Europe/Berlin date +%F`), not the UTC date - the run fires at 22:00 UTC, which is already the next day in Berlin, so a UTC date stamps every post a day early.
 
 6. Remove the topic you just wrote from the front of data/blog-topics-queue.json, in the same commit.
 
