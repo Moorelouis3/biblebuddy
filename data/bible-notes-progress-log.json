@@ -16584,6 +16584,59 @@
           "at": "2026-08-10T02:57:49Z"
         }
       ]
+    },
+    {
+      "book": "1 Samuel",
+      "chapter": 14,
+      "startedAt": "2026-08-10T03:45:51Z",
+      "finishedAt": "2026-08-10T03:58:50Z",
+      "durationMinutes": 13,
+      "sections": 11,
+      "cards": 92,
+      "verses": 52,
+      "notes": "Jonathan and his armorbearer take the Philistine garrison alone by faith, sparking a rout Saul joins once he sees the panic. Saul's rash fasting oath nearly costs Jonathan his life after the lot falls on him for eating honey in ignorance of the vow; the people intervene to save him. Closes with a summary of Saul's reign, family, and ongoing wars. Normal forward progress (redo-remaining backlog empty). Style spec compliant, checker clean, tsc clean.",
+      "steps": [
+        {
+          "at": "2026-08-10T03:46:30Z",
+          "name": "npm_install_done"
+        },
+        {
+          "at": "2026-08-10T03:46:49Z",
+          "name": "target_chapter_determined: 1 Samuel 14 (redo-remaining empty, normal forward progress)"
+        },
+        {
+          "at": "2026-08-10T03:47:23Z",
+          "name": "kjv_text_fetched (raw.githubusercontent.com aruljohn/Bible-kjv 1Samuel.json, chapter 14, 52 verses)"
+        },
+        {
+          "at": "2026-08-10T03:46:56Z",
+          "name": "style_spec_read (docs/bible-study-note-style.md, reference implementation lib/genesisThirtyOneSource.ts and lib/firstSamuelThirteenSource.ts, check_bible_note_style.py)"
+        },
+        {
+          "at": "2026-08-10T03:55:10Z",
+          "name": "source_file_written (lib/firstSamuelFourteenSource.ts, 11 sections, 92 cards)"
+        },
+        {
+          "at": "2026-08-10T03:55:55Z",
+          "name": "style_checker_clean (scripts/check_bible_note_style.py, after fixing 7 flagged issues: 1 banned hedge word, 1 overlong body line, 5 overlong bullets)"
+        },
+        {
+          "at": "2026-08-10T03:56:36Z",
+          "name": "wired_into_reader (lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range extended to 14, replaceStudySectionsForBookRange call added after chapter 13)"
+        },
+        {
+          "at": "2026-08-10T03:56:36Z",
+          "name": "parser_check_passed (getBibleReaderStudySections 1 samuel 14: 11 sections, 92 cards)"
+        },
+        {
+          "at": "2026-08-10T03:57:55Z",
+          "name": "tsc_clean (npx tsc --noEmit -p .)"
+        },
+        {
+          "at": "2026-08-10T03:58:50Z",
+          "name": "progress_files_logged"
+        }
+      ]
     }
   ]
 }

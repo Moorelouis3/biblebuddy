@@ -1264,3 +1264,7 @@ Next up: 1 Samuel 13
 ## 2026-08-10T02:56:32Z (hourly chapter notes run)
 Chapter: 1 Samuel 13 | Duration: 10 min | Sections: 6 | Cards: 43 | Status: pass
 Next up: 1 Samuel 14
+
+## 2026-08-10T03:58:50Z (hourly chapter notes run)
+Chapter: 1 Samuel 14 | Duration: 13 min | Sections: 11 | Cards: 92 | Status: pass
+Next up: 1 Samuel 15
