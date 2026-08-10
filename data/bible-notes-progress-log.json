@@ -16804,6 +16804,59 @@
           "at": "2026-08-10T07:00:00Z"
         }
       ]
+    },
+    {
+      "book": "1 Samuel",
+      "chapter": 18,
+      "startedAt": "2026-08-10T07:46:27Z",
+      "finishedAt": "2026-08-10T07:55:24Z",
+      "durationMinutes": 9,
+      "sections": 7,
+      "cards": 36,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Recovered a stale local git ref first: local main was detached/diverged from origin/main with no common ancestor, reset hard to origin/main (working tree was clean, no local work lost). Style redo backlog confirmed empty, no existing wired-in dedicated file for chapter 18 (it was still rendering through the old bulk firstSamuelElevenToThirtyPersonalNotes.ts placeholder covering 1 Samuel 11-30). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (30 verses). 1 Samuel 18 covers Jonathan and David's covenant (the soul-knit bond, the robe and weapons Jonathan gives away as a symbolic transfer of his own royal and warrior identity), the women's victory song that turns Saul's admiration into jealousy, Saul's first open assassination attempt with the javelin, David sent to the front lines under a promotion that is really an attempt to get him killed by the Philistines, the broken promise of Merab, and Michal's love turned into a snare through the Philistine-foreskins dowry, closing with David doubling the requested price and Saul becoming his permanent, settled enemy even as David's own reputation keeps rising. Chunked into 7 sections (1-4, 5-9, 10-12, 13-16, 17-19, 20-25, 26-30). Density 1.2 cards/verse (30 verses, 36 cards). scripts/check_bible_note_style.py found 5 problems on first pass (3 bullets over the 8 word limit, 2 cards with the wrong closing bullet emoji), fixed, second run clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term, closes on meaning rather than mechanics, uses exactly four bullets with no repeated emoji within a card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('1 samuel', 18) (7/7 sections, 36 cards, 30 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for FIRST_SAMUEL_EIGHTEEN_PERSONAL_SECTIONS, preserveExactPhraseBodies extended from chapter <= 17 to chapter <= 18 for 1 Samuel, and replaceStudySectionsForBookRange(\"1 samuel\", 18, 18, ...) added right after the existing 1 Samuel 17 call, overriding the old bulk placeholder content for this chapter. Forward progress resumes at 1 Samuel 19 next run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-10T07:47:24Z"
+        },
+        {
+          "name": "target chapter determined: 1 Samuel 18 (redo backlog empty, next in canonical order, no dedicated wired-in file)",
+          "at": "2026-08-10T07:47:36Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com aruljohn Bible-kjv mirror",
+          "at": "2026-08-10T07:47:50Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill read in full",
+          "at": "2026-08-10T07:47:50Z"
+        },
+        {
+          "name": "source file lib/firstSamuelEighteenSource.ts written (7 sections, 36 cards)",
+          "at": "2026-08-10T07:53:10Z"
+        },
+        {
+          "name": "style checker clean (check_bible_note_style.py, after fixing 5 problems)",
+          "at": "2026-08-10T07:53:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-10T07:53:25Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 36 cards, 30 verses)",
+          "at": "2026-08-10T07:53:42Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-10T07:55:04Z"
+        },
+        {
+          "name": "manual section 13 eye checklist reviewed against rendered output",
+          "at": "2026-08-10T07:55:24Z"
+        }
+      ]
     }
   ]
 }
