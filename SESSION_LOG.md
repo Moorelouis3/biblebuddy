@@ -1249,3 +1249,6 @@ Next up: 1 Samuel 10
 ## 2026-08-09T23:56:20Z (hourly chapter notes run)
 Chapter: 1 Samuel 10 | Duration: 9 min | Sections: 8 | Cards: 37 | Status: pass
 Next up: 1 Samuel 11
+
+## 2026-08-10 (level2 upgrade run)
+BLOCKED: could not reach https://life-buddy-production.up.railway.app/api/bible-level2/queue - agent proxy returned 403 (org egress policy denies this host in this environment). No chapter pulled, no changes made. Needs environment network policy fix to allow railway.app or this specific host.
