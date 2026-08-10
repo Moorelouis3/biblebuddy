@@ -17040,6 +17040,67 @@
           "at": "2026-08-10T10:57:43Z"
         }
       ]
+    },
+    {
+      "book": "1 Samuel",
+      "chapter": 22,
+      "startedAt": "2026-08-10T11:46:23Z",
+      "finishedAt": "2026-08-10T12:05:00Z",
+      "durationMinutes": 19,
+      "sections": 6,
+      "cards": 43,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty, no existing wired-in file for 1 Samuel 22, so this was normal forward progress. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (23 verses). 1 Samuel 22 covers David gathering his first band at the cave Adullam (family plus the distressed/in debt/discontented becoming his first four hundred men), moving his elderly parents to the king of Moab's protection (drawing on the family tie through his great grandmother Ruth) before the prophet Gad's first appearance sends him back into Judah's forest of Hareth, Saul's paranoid speech to his fellow Benjamites under a tree in Ramah with his spear in hand, Doeg the Edomite's report naming David at Nob, Saul's summons and death sentence against Ahimelech and the priestly house descended from Eli (Ahitub traced back to Eli, quietly fulfilling the earlier prophecy of judgment against that house), the Israelite footmen's refusal to lift a hand against the LORD's priests followed by Doeg alone carrying out the massacre of eighty five priests and the destruction of the whole town of Nob including its children, sucklings, and livestock (echoing the Amalek destruction Saul refused to fully carry out back in chapter 15), and the chapter's close on Abiathar's escape to David, David's honest admission of guilt over the cost of his own lie, and his lifelong promise of protection that begins Abiathar's decades as David's priest. Chunked into 6 sections (1-2, 3-5, 6-10, 11-16, 17-19, 20-23). Density about 1.87 cards/verse (23 verses, 43 cards). scripts/check_bible_note_style.py was clean on the first pass, 0 problems found, 43 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, closes on meaning rather than mechanics, uses exactly four bullets ending in the scripture/implication emoji with no repeated emoji within a card, has no duplicate titles anywhere in the file, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file (all numbers spelled out without hyphens, e.g. \"eighty five,\" \"twenty one\"). Parser check passed exactly via getBibleReaderStudySections('1 Samuel', 22) (6/6 sections, 43 cards, 23 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for FIRST_SAMUEL_TWENTY_TWO_PERSONAL_SECTIONS, preserveExactPhraseBodies extended from chapter <= 21 to chapter <= 22 for 1 Samuel, and replaceStudySectionsForBookRange(\"1 samuel\", 22, 22, ...) added right after the existing 1 Samuel 21 call. Forward progress resumes at 1 Samuel 23 next run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-10T11:46:47Z"
+        },
+        {
+          "name": "git HEAD was detached and local main stale; reset local main to origin/main via git checkout -B main origin/main, no work lost",
+          "at": "2026-08-10T11:47:20Z"
+        },
+        {
+          "name": "target chapter determined: 1 Samuel 22 (normal forward progress, redo backlog empty, no existing wired-in file)",
+          "at": "2026-08-10T11:47:44Z"
+        },
+        {
+          "name": "KJV text fetched (1 Samuel 22, 23 verses, aruljohn mirror)",
+          "at": "2026-08-10T11:47:58Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill (SKILL.md) read in full, reference implementations reviewed",
+          "at": "2026-08-10T11:48:01Z"
+        },
+        {
+          "name": "source file written: lib/firstSamuelTwentyTwoSource.ts (6 sections, 43 cards)",
+          "at": "2026-08-10T11:55:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-08-10T11:55:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-10T11:56:10Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 43 cards, 23 verses, text verbatim)",
+          "at": "2026-08-10T11:56:59Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-10T11:58:26Z"
+        },
+        {
+          "name": "manual section 13 eye checklist reviewed, no issues found",
+          "at": "2026-08-10T11:58:38Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-10T12:04:00Z"
+        }
+      ]
     }
   ]
 }
