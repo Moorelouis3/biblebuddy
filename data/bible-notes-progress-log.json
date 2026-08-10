@@ -16916,6 +16916,10 @@
         {
           "name": "manual section 13 eye checklist reviewed, fixed title-restatement opener and 3 banned rather-than stacked clauses, re-verified clean",
           "at": "2026-08-10T08:57:09Z"
+        },
+        {
+          "name": "committed (454bec6) and pushed to origin/main, confirmed via fetch",
+          "at": "2026-08-10T08:59:00Z"
         }
       ]
     }
