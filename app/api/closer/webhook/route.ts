@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
   // to be read as raw text before any JSON parsing.
   const rawBody = await request.text();
 
-  const signature = verifyMetaSignature(rawBody, request.headers.get("x-hub-signature-256"));
+  const signature = await verifyMetaSignature(rawBody, request.headers.get("x-hub-signature-256"));
   if (!signature.ok) {
     // Without this check the endpoint is an open trigger for sending DMs from
     // Louis's accounts to anyone an attacker names.

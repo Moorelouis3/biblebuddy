@@ -110,23 +110,41 @@ You asked me to find the credentials, deploy, and complete the Meta dashboard se
 
 **So there is no live webhook event row to show you.** Section 5 is what produces it.
 
+### Where the credentials actually live (updated after reading Life-Buddy)
+
+Life-Buddy was attached read-only and inspected. The Meta credentials are **not in any file you could have copied** — they are rows in Life-Buddy's SQLite database:
+
+- `facebook_auth` → `page_id`, `page_access_token` (`facebookAuth.js`)
+- `threads_auth` → `access_token`, `user_id` (`threadsAuth.js`)
+
+Two findings changed the design:
+
+1. **There is no separate Instagram credential.** `instagram.js` derives the IG business account from the linked Page and calls the Graph API with that same Page token. One token covers both.
+2. **The Threads token self-refreshes every ~60 days** inside Life-Buddy, off the current token via the `th_refresh_token` grant. A copy pasted into Vercel would go stale silently and Threads replies would stop with no obvious cause.
+
+So The Closer **asks Life-Buddy for the tokens at runtime** rather than holding copies (`lib/closer/credentials.ts`), cached 5 minutes. Direct env vars still take priority, which keeps local testing and an emergency override simple.
+
 ### Environment variables to set in Vercel
 
 | Variable | What it is |
 | --- | --- |
+| `LIFEBUDDY_API_URL` | Life-Buddy's base URL |
+| `LIFEBUDDY_API_TOKEN` | Shared secret for the token endpoint |
 | `META_APP_SECRET` | App secret, for webhook signature verification |
 | `META_WEBHOOK_VERIFY_TOKEN` | Any string you choose; paste the same one into Meta's dashboard |
-| `FACEBOOK_PAGE_ID` | Your page's ID |
-| `FACEBOOK_PAGE_ACCESS_TOKEN` | Page access token |
-| `INSTAGRAM_BUSINESS_ACCOUNT_ID` | IG professional account ID |
-| `INSTAGRAM_ACCESS_TOKEN` | Optional; falls back to the page token |
-| `THREADS_USER_ID` | Threads user ID |
-| `THREADS_ACCESS_TOKEN` | Threads token |
-| `THREADS_USERNAME` | Your handle, so it never replies to itself |
 | `CLOSER_ADMIN_PASSWORD` | Password for `/closer` |
+| `THREADS_USERNAME` | Your handle, so it never replies to itself |
 | `META_GRAPH_API_VERSION` | Optional, defaults to `v21.0` |
 
-The `/closer` page lists any of these that are missing, so you can check without reading logs.
+That is **five values instead of eight**, and none of them is a token that expires.
+
+The override path (`FACEBOOK_PAGE_ID`, `FACEBOOK_PAGE_ACCESS_TOKEN`, `INSTAGRAM_BUSINESS_ACCOUNT_ID`, `THREADS_USER_ID`, `THREADS_ACCESS_TOKEN`) still works if ever needed.
+
+`/closer` lists whatever is still missing and shows whether credentials resolved from `env`, `life-buddy`, or `none`.
+
+### The one thing Life-Buddy needs
+
+Life-Buddy could only be attached read-only, so the endpoint had to be specified rather than written. `docs/LIFEBUDDY_CLOSER_TOKEN_ENDPOINT.md` is a prompt to paste into a Life-Buddy Claude Code session; it adds `GET /api/social/tokens`, gated by a bearer token, returning the current Facebook page token and id, the derived Instagram user id, and a **freshly refreshed** Threads token.
 
 ---
 
