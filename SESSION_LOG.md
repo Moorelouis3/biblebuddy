@@ -1315,3 +1315,7 @@ Next up: 1 Samuel 25
 ## 2026-08-10T14:57:22Z (hourly chapter notes run)
 Chapter: 1 Samuel 25 | Duration: 11 min | Sections: 11 | Cards: 46 | Status: pass
 Next up: 1 Samuel 26
+
+## 2026-08-10T15:54:45Z (hourly chapter notes run)
+Chapter: 1 Samuel 26 | Duration: 8 min | Sections: 6 | Cards: 43 | Status: pass
+Next up: 1 Samuel 27
