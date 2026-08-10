@@ -1288,3 +1288,7 @@ Next up: 1 Samuel 19
 ## 2026-08-10T08:57:09Z (hourly chapter notes run)
 Chapter: 1 Samuel 19 | Duration: 11 min | Sections: 7 | Cards: 34 | Status: pass
 Next up: 1 Samuel 20
+
+## 2026-08-10T09:59:00Z (hourly chapter notes run)
+Chapter: 1 Samuel 20 | Duration: 13 min | Sections: 10 | Cards: 58 | Status: pass
+Next up: 1 Samuel 21
