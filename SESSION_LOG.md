@@ -1335,3 +1335,7 @@ Next up: 1 Samuel 30
 ## 2026-08-10T19:59:45Z (hourly chapter notes run)
 Chapter: 1 Samuel 30 | Duration: 13 min | Sections: 7 | Cards: 50 | Status: pass
 Next up: 1 Samuel 31
+
+## 2026-08-10T21:00:01Z (hourly chapter notes run)
+Chapter: 1 Samuel 31 | Duration: 11 min | Sections: 5 | Cards: 28 | Status: pass
+Next up: 2 Samuel 1

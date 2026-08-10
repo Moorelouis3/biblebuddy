@@ -288,8 +288,9 @@ import { FIRST_SAMUEL_TWENTY_SEVEN_PERSONAL_SECTIONS } from "./firstSamuelTwenty
 import { FIRST_SAMUEL_TWENTY_EIGHT_PERSONAL_SECTIONS } from "./firstSamuelTwentyEightSource";
 import { FIRST_SAMUEL_TWENTY_NINE_PERSONAL_SECTIONS } from "./firstSamuelTwentyNineSource";
 import { FIRST_SAMUEL_THIRTY_PERSONAL_SECTIONS } from "./firstSamuelThirtySource";
+import { FIRST_SAMUEL_THIRTY_ONE_PERSONAL_SECTIONS } from "./firstSamuelThirtyOneSource";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
-import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, FIRST_SAMUEL_31_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
+import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
 import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
 import { FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS, SECOND_CHRONICLES_1_19_PERSONAL_SECTIONS } from "./chroniclesPersonalNotes";
 import { EZRA_1_3_PERSONAL_SECTIONS, SECOND_CHRONICLES_20_36_PERSONAL_SECTIONS } from "./secondChroniclesTwentyToEzraThreePersonalNotes";
@@ -650,7 +651,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "joshua" && section.chapter >= 1 && section.chapter <= 24) ||
     (normalizeBook(book) === "judges" && section.chapter >= 1 && section.chapter <= 21) ||
     (normalizeBook(book) === "ruth" && section.chapter >= 1 && section.chapter <= 4) ||
-    (normalizeBook(book) === "1 samuel" && section.chapter >= 1 && section.chapter <= 30);
+    (normalizeBook(book) === "1 samuel" && section.chapter >= 1 && section.chapter <= 31);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -809,7 +810,7 @@ function applyPersonalFirstSamuelElevenThroughThirtyStudySections() {
 }
 
 function applyPersonalFirstSamuelThirtyOneStudySections() {
-  replaceStudySectionsForBookRange("1 samuel", 31, 31, FIRST_SAMUEL_31_PERSONAL_SECTIONS);
+  replaceStudySectionsForBookRange("1 samuel", 31, 31, FIRST_SAMUEL_THIRTY_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalSecondSamuelOneThroughTwentyFourStudySections() {
@@ -8336,7 +8337,6 @@ function shouldFormatLikeDayOne(section: BibleReaderStudySection) {
   return (
     (section.book === "genesis" && section.chapter >= 1 && section.chapter <= 50) ||
     (section.book === "exodus" && section.chapter >= 1 && section.chapter <= 36) ||
-    (section.book === "1 samuel" && section.chapter >= 31 && section.chapter <= 31) ||
     (section.book === "2 samuel" && section.chapter >= 1 && section.chapter <= 24) ||
     (section.book === "1 kings" && section.chapter >= 1 && section.chapter <= 22) ||
     (section.book === "2 kings" && section.chapter >= 1 && section.chapter <= 25) ||
