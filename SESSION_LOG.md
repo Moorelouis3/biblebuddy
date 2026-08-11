@@ -1370,3 +1370,7 @@ Next up: 2 Samuel 6
 ## 2026-08-11T03:03:27Z (hourly chapter notes run)
 Chapter: 2 Samuel 6 | Duration: 15 min | Sections: 6 | Cards: 43 | Status: pass
 Next up: 2 Samuel 7
+
+## 2026-08-11T03:56:35Z (hourly chapter notes run)
+Chapter: 2 Samuel 7 | Duration: 10 min | Sections: 7 | Cards: 51 | Status: pass
+Next up: 2 Samuel 8

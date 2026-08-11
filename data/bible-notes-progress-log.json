@@ -17920,6 +17920,59 @@
           "at": "2026-08-11T03:05:30Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 7,
+      "startedAt": "2026-08-11T03:46:11Z",
+      "finishedAt": "2026-08-11T03:56:35Z",
+      "durationMinutes": 10,
+      "sections": 7,
+      "cards": 51,
+      "verses": 29,
+      "notes": "Scheduled hourly run. Style redo backlog empty, normal forward progress, first dedicated file for this chapter. The Davidic Covenant chapter: David wants to build the Lord a house of cedar since he now has rest from his enemies, Nathan first approves on his own then is corrected the same night with God's word that flips the plan around, God recounts taking David from the sheepcote to the throne and promises to build David a house (dynasty) instead, the everlasting covenant proper (seed established forever, father and son language later applied to Christ in Hebrews 1, mercy that will not depart as it did from Saul), David's humbled prayer response ('Who am I, O Lord God'), his praise of God's uniqueness and Israel's uniqueness rooted in the Exodus redemption, and his closing petition asking God to confirm and bless the promise forever. Style checker clean after two small bullet fixes (one non-standard emoji swapped, one bullet trimmed to word count), parser check exact (7/7 sections, 51 cards), tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T03:46:49Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 7 (new chapter, forward progress; redo list empty)",
+          "at": "2026-08-11T03:47:22Z"
+        },
+        {
+          "name": "KJV text fetched (2 Samuel 7, 29 verses, GitHub raw mirror)",
+          "at": "2026-08-11T03:47:33Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-08-11T03:47:33Z"
+        },
+        {
+          "name": "source file written (lib/secondSamuelSevenSource.ts, 7 sections, 51 cards)",
+          "at": "2026-08-11T03:54:09Z"
+        },
+        {
+          "name": "style checker clean (51 cards, no problems, after 2 small fixes)",
+          "at": "2026-08-11T03:54:22Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to ch 7, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-11T03:54:35Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 51 cards, no throw)",
+          "at": "2026-08-11T03:54:55Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, exit 0",
+          "at": "2026-08-11T03:56:27Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json entry appended)",
+          "at": "2026-08-11T03:56:35Z"
+        }
+      ]
     }
   ]
 }
