@@ -1406,3 +1406,6 @@ Next up: 2 Samuel 15
 ## 2026-08-11T12:05:00Z (hourly chapter notes run)
 Chapter: 2 Samuel 15 | Duration: 18 min | Sections: 7 | Cards: 59 | Status: pass
 Next up: 2 Samuel 16
+
+## 2026-08-11T12:30:00Z (level2 upgrade run)
+Status: BLOCKED — could not reach https://life-buddy-production.up.railway.app/api/bible-level2/queue. Agent proxy returned 403 (org egress policy denial) on every CONNECT attempt to life-buddy-production.up.railway.app:443. Did not fabricate a "queue empty" result. No chapter taken, no commit, no push, no complete callback.
