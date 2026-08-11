@@ -16,6 +16,20 @@ import {
 import { BIBLE_YEAR_AUDIO_BUCKET } from "../lib/bibleYearAudio";
 import { GENESIS_DAY_ONE_CREATION_LESSON } from "../lib/bibleYearDailyLessons";
 import { buildDayOneSegments } from "../lib/bibleYearDayOneSegments";
+import { buildDaySegments, type BibleYearDayScript } from "../lib/bibleYearDayScript";
+import { BIBLE_YEAR_DAY_TWO_SCRIPT } from "../lib/bibleYearDayTwoScript";
+import {
+  BIBLE_YEAR_DAY_FIVE_SCRIPT,
+  BIBLE_YEAR_DAY_FOUR_SCRIPT,
+  BIBLE_YEAR_DAY_SIX_SCRIPT,
+  BIBLE_YEAR_DAY_THREE_SCRIPT,
+} from "../lib/bibleYearDaysThreeToSixScripts";
+import {
+  BIBLE_YEAR_DAY_EIGHT_SCRIPT,
+  BIBLE_YEAR_DAY_NINE_SCRIPT,
+  BIBLE_YEAR_DAY_SEVEN_SCRIPT,
+  BIBLE_YEAR_DAY_TEN_SCRIPT,
+} from "../lib/bibleYearDaysSevenToTenScripts";
 
 for (const path of [".env.local", ".env"]) {
   if (existsSync(path)) config({ path, override: false, quiet: true });
@@ -40,7 +54,9 @@ const padded = String(day).padStart(3, "0");
 const outDir = join(process.cwd(), "tmp", "bible-in-one-year", `day-${padded}`);
 const MIXED_PATH = join(outDir, `day-${padded}-audio.mp3`);
 const DRY_PATH = join(outDir, `day-${padded}-narrator-only.mp3`);
-const VOICE_CACHE = join(outDir, `day-${padded}-voice.f32`);
+/** Segments are cached individually so re-balancing and re-mixing cost no API calls. */
+const SEGMENT_CACHE = join(outDir, `day-${padded}-segments.f32`);
+const SEGMENT_INDEX = join(outDir, `day-${padded}-segments.json`);
 
 function ensureDir(p: string) {
   mkdirSync(dirname(p), { recursive: true });
@@ -173,6 +189,69 @@ function mixWithBed(voice: Float32Array, bed: Float32Array, gain: number) {
   return out;
 }
 
+/** RMS over voiced samples only, so trailing echo and room tone do not drag it down. */
+function voicedRms(samples: Float32Array, floor = 0.01) {
+  let sum = 0;
+  let count = 0;
+  for (let i = 0; i < samples.length; i += 1) {
+    const v = samples[i];
+    if (Math.abs(v) >= floor) {
+      sum += v * v;
+      count += 1;
+    }
+  }
+  return count ? Math.sqrt(sum / count) : 0;
+}
+
+function median(values: number[]) {
+  if (!values.length) return 0;
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+}
+
+/**
+ * OpenAI's voices do not come out at matched loudness, and loudnorm runs on the
+ * finished episode - it lifts everything evenly, so a quiet character voice stays
+ * quiet next to the narrator. God is worst affected because his compressor and
+ * echo tail pull his average down further.
+ *
+ * Balance per role rather than per segment: match each role's median to the
+ * narrator's, so cross-voice level is even but a narrator who drops to a hush
+ * on one line still drops.
+ */
+/** Level each role sits at relative to the narrator. 1.0 = matched. */
+const ROLE_LEVEL_TARGET: Partial<Record<BibleYearAudioRole, number>> = {
+  god: 1.12,
+};
+
+function roleGains(rendered: Float32Array[], segments: BibleYearAudioSegment[]) {
+  const byRole = new Map<BibleYearAudioRole, number[]>();
+  rendered.forEach((audio, index) => {
+    const role = segments[index].role;
+    if (!byRole.has(role)) byRole.set(role, []);
+    byRole.get(role)!.push(voicedRms(audio));
+  });
+
+  const narratorLevel = median(byRole.get("narrator") || []);
+  const gains = new Map<BibleYearAudioRole, number>();
+
+  for (const [role, levels] of byRole) {
+    const level = median(levels);
+    // God sits deliberately forward of the narrator; flattening him to parity
+    // costs the presence that makes him read as God at all.
+    const target = narratorLevel * (ROLE_LEVEL_TARGET[role] ?? 1);
+    const gain = role === "narrator" || !level || !narratorLevel
+      ? 1
+      : Math.max(0.6, Math.min(2.5, target / level));
+    gains.set(role, gain);
+    console.log(
+      `[day ${padded}] ${role.padEnd(8)} rms ${level.toFixed(4)} -> gain ${gain.toFixed(2)}`,
+    );
+  }
+  return gains;
+}
+
 function normalize(voice: Float32Array) {
   const out = new Float32Array(voice.length);
   let peak = 0;
@@ -259,9 +338,23 @@ async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T, index: nu
 
 // --- day wiring ------------------------------------------------------------
 
-function segmentsForDay(dayNumber: number): BibleYearAudioSegment[] {
+const DAY_SCRIPTS: Record<number, BibleYearDayScript> = {
+  2: BIBLE_YEAR_DAY_TWO_SCRIPT,
+  3: BIBLE_YEAR_DAY_THREE_SCRIPT,
+  4: BIBLE_YEAR_DAY_FOUR_SCRIPT,
+  5: BIBLE_YEAR_DAY_FIVE_SCRIPT,
+  6: BIBLE_YEAR_DAY_SIX_SCRIPT,
+  7: BIBLE_YEAR_DAY_SEVEN_SCRIPT,
+  8: BIBLE_YEAR_DAY_EIGHT_SCRIPT,
+  9: BIBLE_YEAR_DAY_NINE_SCRIPT,
+  10: BIBLE_YEAR_DAY_TEN_SCRIPT,
+};
+
+async function segmentsForDay(dayNumber: number): Promise<BibleYearAudioSegment[]> {
   if (dayNumber === 1) return buildDayOneSegments(GENESIS_DAY_ONE_CREATION_LESSON);
-  throw new Error(`Day ${dayNumber} has no segment script yet. Day 1 is the reference build.`);
+  const script = DAY_SCRIPTS[dayNumber];
+  if (script) return buildDaySegments(script);
+  throw new Error(`Day ${dayNumber} has no segment script yet.`);
 }
 
 async function upload(audio: Buffer) {
@@ -279,15 +372,33 @@ async function upload(audio: Buffer) {
   console.log(`[day ${padded}] uploaded to ${BIBLE_YEAR_AUDIO_BUCKET}/${storagePath}`);
 }
 
-async function main() {
-  let voice: Float32Array;
+type CachedSegment = { role: BibleYearAudioRole; length: number; pauseAfterMs: number };
 
-  if (remixOnly && existsSync(VOICE_CACHE)) {
-    const cached = readFileSync(VOICE_CACHE);
-    voice = new Float32Array(cached.buffer, cached.byteOffset, Math.floor(cached.length / 4));
-    console.log(`[day ${padded}] reusing cached voice track (${(voice.length / SR / 60).toFixed(1)} min)`);
+function loadCachedSegments() {
+  const index = JSON.parse(readFileSync(SEGMENT_INDEX, "utf8")) as CachedSegment[];
+  const blob = readFileSync(SEGMENT_CACHE);
+  const all = new Float32Array(blob.buffer, blob.byteOffset, Math.floor(blob.length / 4));
+
+  const rendered: Float32Array[] = [];
+  let offset = 0;
+  for (const item of index) {
+    rendered.push(all.slice(offset, offset + item.length));
+    offset += item.length;
+  }
+  return { index, rendered };
+}
+
+async function main() {
+  let rendered: Float32Array[];
+  let meta: CachedSegment[];
+
+  if (remixOnly && existsSync(SEGMENT_CACHE) && existsSync(SEGMENT_INDEX)) {
+    const cached = loadCachedSegments();
+    rendered = cached.rendered;
+    meta = cached.index;
+    console.log(`[day ${padded}] reusing ${meta.length} cached segments (no API calls)`);
   } else {
-    const segments = segmentsForDay(day);
+    const segments = await segmentsForDay(day);
     const roleCounts = segments.reduce<Record<string, number>>((acc, s) => {
       acc[s.role] = (acc[s.role] || 0) + 1;
       return acc;
@@ -295,22 +406,39 @@ async function main() {
     console.log(`[day ${padded}] ${segments.length} segments:`, roleCounts);
 
     let done = 0;
-    const rendered = await mapLimit(segments, concurrency, async (item) => {
+    rendered = await mapLimit(segments, concurrency, async (item) => {
       const audio = await renderSegment(item);
       done += 1;
       if (done % 20 === 0) console.log(`[day ${padded}] ${done}/${segments.length} segments`);
       return audio;
     });
 
-    const pieces: Float32Array[] = [];
-    rendered.forEach((audio, index) => {
-      pieces.push(audio, silence(segments[index].pauseAfterMs ?? 380));
-    });
-    voice = concat(pieces);
+    meta = segments.map((item, index) => ({
+      role: item.role,
+      length: rendered[index].length,
+      pauseAfterMs: item.pauseAfterMs ?? 380,
+    }));
 
-    ensureDir(VOICE_CACHE);
-    writeFileSync(VOICE_CACHE, floatToBuffer(voice));
+    ensureDir(SEGMENT_CACHE);
+    writeFileSync(SEGMENT_CACHE, floatToBuffer(concat(rendered)));
+    writeFileSync(SEGMENT_INDEX, JSON.stringify(meta));
   }
+
+  const gains = roleGains(rendered, meta.map((m) => ({ role: m.role })) as BibleYearAudioSegment[]);
+
+  const pieces: Float32Array[] = [];
+  rendered.forEach((audio, index) => {
+    const gain = gains.get(meta[index].role) ?? 1;
+    if (gain === 1) {
+      pieces.push(audio);
+    } else {
+      const scaled = new Float32Array(audio.length);
+      for (let i = 0; i < audio.length; i += 1) scaled[i] = audio[i] * gain;
+      pieces.push(scaled);
+    }
+    pieces.push(silence(meta[index].pauseAfterMs));
+  });
+  const voice = concat(pieces);
 
   const minutes = voice.length / SR / 60;
   console.log(`[day ${padded}] voice track: ${minutes.toFixed(1)} min`);

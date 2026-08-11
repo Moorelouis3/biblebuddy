@@ -16,7 +16,16 @@ import {
  * failure mode is "sounds like today", never "wrong character speaks".
  */
 
-const SPEECH_VERB = "(?:said|saith|answered|replied|spoke|speaketh|called|cried|commanded|blessed|asked|told)";
+/**
+ * Include the participle forms. Genesis introduces most divine speech with
+ * "saying" rather than "said" - "the word of Yahweh came to Abram in a vision,
+ * saying" - and omitting it silently drops God's voice from whole chapters.
+ *
+ * "blessing" and "calling" are deliberately absent: both are common nouns in
+ * these chapters ("the blessing", "a calling") and would match false positives.
+ */
+const SPEECH_VERB =
+  "(?:said|saith|saying|answered|answering|replied|spoke|speaking|speaketh|called|cried|crying|commanded|commanding|blessed|asked|asking|told|telling)";
 
 /** Ordered: first match wins, so specific names beat generic ones. */
 const SPEAKER_PATTERNS: Array<{ test: RegExp; role: BibleYearAudioRole }> = [
@@ -26,7 +35,13 @@ const SPEAKER_PATTERNS: Array<{ test: RegExp; role: BibleYearAudioRole }> = [
   { test: /\b(?:the man|adam)\b/i, role: "adam" },
 ];
 
-const PRONOUN = /^(?:he|she|they|it)$/i;
+const ROLE_GENDER: Record<BibleYearAudioRole, "male" | "female" | "none"> = {
+  narrator: "none",
+  god: "male",
+  adam: "male",
+  serpent: "male",
+  eve: "female",
+};
 
 function roleForSpeaker(subject: string): BibleYearAudioRole | null {
   for (const entry of SPEAKER_PATTERNS) {
@@ -36,12 +51,17 @@ function roleForSpeaker(subject: string): BibleYearAudioRole | null {
 }
 
 type QuoteSpan = { start: number; end: number };
+type QuoteScan = { spans: QuoteSpan[]; openFrom: number | null };
 
 /**
  * Outer-level quoted spans only. A quote inside a quote - the serpent quoting
  * God in Genesis 3:1 - belongs to the outer speaker and must not be split out.
+ *
+ * `openFrom` is set when the verse opens a quote it never closes. WEB routinely
+ * runs one speech across several verses (the serpent in 3:4-5, Eve in 3:2-3),
+ * so the caller carries that speaker into the next verse.
  */
-function findQuoteSpans(text: string): QuoteSpan[] {
+function scanQuotes(text: string): QuoteScan {
   const spans: QuoteSpan[] = [];
   let depth = 0;
   let start = -1;
@@ -69,8 +89,11 @@ function findQuoteSpans(text: string): QuoteSpan[] {
       }
     }
   }
-  return spans;
+
+  return { spans, openFrom: depth > 0 && start >= 0 ? start : null };
 }
+
+const CLOSING_QUOTE = /[”"]/;
 
 function stripQuoteMarks(text: string) {
   return text.replace(/^[\s“"]+/, "").replace(/[\s”"]+$/, "").trim();
@@ -97,60 +120,98 @@ function roleFromAttribution(before: string): BibleYearAudioRole | null {
   const clause = new RegExp(`(.*?)\\b(${SPEECH_VERB})\\b(?![\\s\\S]*\\b${SPEECH_VERB}\\b)`, "i").exec(before);
   if (!clause) return null;
 
-  const head = clause[1];
-  // Words immediately before the speech verb are the grammatical subject.
-  const tail = head.trim().split(/\s+/).slice(-4).join(" ");
-  const lastWord = tail.split(/\s+/).pop() || "";
+  // Drop "to <addressee>" phrases first, so "To the woman he said" cannot read
+  // the woman as the speaker, and "Yahweh said to Cain" still resolves to God.
+  const head = clause[1].replace(/\bto\s+(?:the\s+)?(?:[\w'’]+\s+){0,2}[\w'’]+/gi, " ");
 
-  if (!PRONOUN.test(lastWord)) {
-    // Strip any "to <addressee>" phrase so it cannot be read as the speaker.
-    const subject = tail.replace(/\bto\s+[\w'’ ]+$/i, "").trim();
-    return roleForSpeaker(subject || tail);
-  }
+  // When the clause's own subject is a pronoun, use its gender to filter
+  // candidates. "Adam knew his wife... She... named him Seth, saying" would
+  // otherwise resolve to Adam simply because his name appears first.
+  const lastSentence = head.split(/(?<=[.!?])\s+/).pop() || head;
+  const pronounMatches = lastSentence.match(/\b(he|she)\b/gi);
+  const pronoun = pronounMatches?.[pronounMatches.length - 1]?.toLowerCase();
+  const candidates = pronoun
+    ? SPEAKER_PATTERNS.filter((entry) => ROLE_GENDER[entry.role] === (pronoun === "she" ? "female" : "male"))
+    : SPEAKER_PATTERNS;
 
-  // Pronoun: resolve only against names introduced earlier in this same verse,
-  // ignoring anything that appears as an addressee.
-  const antecedentText = head.replace(/\bto\s+(?:the\s+)?[\w'’]+/gi, " ");
-  let firstRole: BibleYearAudioRole | null = null;
-  let firstIndex = Number.MAX_SAFE_INTEGER;
-  for (const entry of SPEAKER_PATTERNS) {
-    const match = entry.test.exec(antecedentText);
-    if (match && match.index < firstIndex) {
-      firstIndex = match.index;
-      firstRole = entry.role;
+  // The earliest-positioned name wins, not the first pattern in the list -
+  // otherwise "The woman said to Yahweh" would come out as God. This also
+  // handles subjects that sit well before the verb, as in "the word of Yahweh
+  // came to Abram in a vision, saying".
+  let role: BibleYearAudioRole | null = null;
+  let bestIndex = Number.MAX_SAFE_INTEGER;
+  for (const entry of candidates) {
+    const match = entry.test.exec(head);
+    if (match && match.index < bestIndex) {
+      bestIndex = match.index;
+      role = entry.role;
     }
   }
-  return firstRole;
+  return role;
+}
+
+/** Carries a speech that runs past the end of a verse into the next one. */
+export type OpenQuote = { role: BibleYearAudioRole | null };
+
+export function createOpenQuote(): OpenQuote {
+  return { role: null };
 }
 
 export function verseToSegments(
   verseText: string,
   scene: BibleYearSceneTone,
-  minimumQuoteLength = 18,
+  open: OpenQuote = createOpenQuote(),
+  // Low enough to catch short dramatic lines - God calling "Abraham!" in
+  // Genesis 22:1 is eight characters and is the point of the scene.
+  minimumQuoteLength = 8,
 ): BibleYearAudioSegment[] {
-  const spans = findQuoteSpans(verseText).filter(
-    (span) => stripQuoteMarks(verseText.slice(span.start, span.end)).length >= minimumQuoteLength,
+  const out: BibleYearAudioSegment[] = [];
+  let text = verseText;
+
+  // Still inside a speech that began in an earlier verse.
+  if (open.role) {
+    const closeIndex = text.search(CLOSING_QUOTE);
+    if (closeIndex === -1) {
+      return [segment(open.role, scene, stripQuoteMarks(text))];
+    }
+    const continuation = stripQuoteMarks(text.slice(0, closeIndex));
+    if (continuation) out.push(segment(open.role, scene, continuation));
+    open.role = null;
+    text = text.slice(closeIndex + 1);
+  }
+
+  const { spans, openFrom } = scanQuotes(text);
+  const usable = spans.filter(
+    (span) => stripQuoteMarks(text.slice(span.start, span.end)).length >= minimumQuoteLength,
   );
 
-  if (!spans.length) return [segment("narrator", scene, verseText)];
-
-  const out: BibleYearAudioSegment[] = [];
   let cursor = 0;
-
-  for (const span of spans) {
-    const before = verseText.slice(cursor, span.start);
-    const quote = stripQuoteMarks(verseText.slice(span.start, span.end));
+  for (const span of usable) {
+    const before = text.slice(cursor, span.start);
+    const quote = stripQuoteMarks(text.slice(span.start, span.end));
     const role = roleFromAttribution(before);
 
     const leadIn = tidyLeadIn(before);
     if (leadIn) out.push(segment("narrator", scene, leadIn));
     out.push(segment(role || "narrator", scene, quote));
-
     cursor = span.end;
   }
 
-  const tail = verseText.slice(cursor).trim().replace(/^[,\s]+/, "");
+  if (openFrom !== null && openFrom >= cursor) {
+    const before = text.slice(cursor, openFrom);
+    const role = roleFromAttribution(before);
+    const leadIn = tidyLeadIn(before);
+    if (leadIn) out.push(segment("narrator", scene, leadIn));
+
+    const quote = stripQuoteMarks(text.slice(openFrom));
+    if (quote) out.push(segment(role || "narrator", scene, quote));
+    open.role = role;
+    cursor = text.length;
+  }
+
+  const tail = text.slice(cursor).trim().replace(/^[,\s]+/, "");
   if (tail) out.push(segment("narrator", scene, tidyLeadIn(tail)));
 
+  if (!out.length) return [segment("narrator", scene, verseText)];
   return out.filter((item) => item.text.trim().length > 0);
 }
