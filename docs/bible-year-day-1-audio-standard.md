@@ -257,6 +257,41 @@ All resolved by Louis. The v2 pipeline in
 2. **Loudness.** The first Day 1 render peaked at 0.611 - about 4 dB quiet.
    Normalizing to -16 LUFS keeps 364 episodes consistent with each other.
 
+## 6b. Building a new day
+
+1. **Get the reading** from `docs/bible-in-one-year-master-plan.md`. Do not
+   guess it and do not abridge it.
+2. **Write a `BibleYearDayScript`** (see `lib/bibleYearDayTwoScript.ts` for the
+   reference implementation): `opening` and `closing` as `[text, pauseMs]`
+   pairs, and one block per Scripture range with its teaching lines.
+   - Cold open: personal, second person singular, no branding, one
+     "shortest line, longest pause" beat.
+   - Teaching: 4-5 lines on a light day, 1-2 on a heavy one. At least one turn
+     to the listener's real life per block where there is room.
+   - Close: name tomorrow's reading and its emotional turn; final three lines
+     descend in length, last pause ~1200 ms.
+3. **Dry-run before spending anything.** Build the segments and check the
+   projected runtime and the cast list. Rendering a 28-minute day and then
+   discovering it is too long costs real money.
+4. **Run the casting suite** if `bibleYearAutoCast` changed:
+   `npx tsx scripts/test-bible-year-autocast.ts`
+5. **Render**: `npx tsx scripts/render-bible-year-day.ts --day=N`
+   Add `--upload` only when the day is approved. It is off by default.
+6. **Re-mix is free.** Segments are cached individually, so `--remix` re-levels
+   and re-beds with no API calls. Only rewriting the script costs money.
+
+### What automatic casting will and will not do
+
+God always gets God's voice. Adam, Eve and the serpent are cast in the Eden
+chapters. **Every other speaker - Cain, Noah, Abraham, Isaac, Rebekah - reads
+in the narrator's voice**, though they still get their own segment, so the
+`"Cain said."` / pause / line rhythm still works.
+
+Casting is deliberately conservative and will miss lines rather than risk
+getting one wrong. A missed cast sounds like a normal audio Bible; a miscast
+puts Cain's words in God's voice. If a specific verse matters enough to force,
+hand-author it the way `lib/bibleYearDayOneSegments.ts` does.
+
 ### Still open
 
 - **Adam and Eve have not been auditioned.** Adam has one line in Day 1
