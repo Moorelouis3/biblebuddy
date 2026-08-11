@@ -18893,6 +18893,59 @@
           "at": "2026-08-11T19:58:20Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 24,
+      "startedAt": "2026-08-11T20:47:00Z",
+      "finishedAt": "2026-08-11T20:57:06Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 29,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New forward-progress chapter (redo backlog confirmed empty in data/bible-notes-style-redo-remaining.json), no existing dedicated wired-in file for this chapter, and this completes 2 Samuel (chapters 1-23 were already done). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (25 verses). Covers David's census of Israel and Judah against Joab's open objection, the nine month circuit from Aroer to Tyre and back to Beersheba, David's immediate conviction and Gad's three-punishment ultimatum (famine, fleeing enemies, or plague), David choosing to fall into God's hand rather than man's, the seventy thousand dead and the angel stayed at Araunah the Jebusite's threshing floor, and the purchase and sacrifice that stops the plague on the exact ground that later becomes Solomon's temple site. Chunked into 6 sections (1-4, 5-9, 10-14, 15-17, 18-21, 22-25). Density about 1.16 cards per verse (25 verses, 29 cards), close to the density of the hand-written reference file lib/genesisThirtyOneSource.ts (56 cards over 55 verses), with the travel-route and altar-building verses kept leaner per the style spec's guidance on chapters that resist teaching. scripts/check_bible_note_style.py found 3 problems on first pass (three cards whose last bullet did not use the required closing emoji), fixed, second run clean (29 cards). A manual scan for banned punctuation, contractions, and filler words found none, but caught two line-rule violations the mechanical checker does not cover, a stacked 'while' clause and a 'rather than' stacked clause, plus one line with two 'and's, all rewritten into separate short lines. Parser check passed exactly via getBibleReaderStudySections('2 samuel', 24) (6/6 sections, 29 cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for SECOND_SAMUEL_TWENTY_FOUR_PERSONAL_SECTIONS from new secondSamuelTwentyFourSource.ts, preserveExactPhraseBodies extended from '2 samuel' chapter <= 23 to <= 24, replaceStudySectionsForBookRange(\"2 samuel\", 24, 24, SECOND_SAMUEL_TWENTY_FOUR_PERSONAL_SECTIONS) call added directly after the chapter 23 call. This completes all 24 chapters of 2 Samuel. Next up: 1 Kings 1 (note: lib/bibleReaderStudyNotes.ts already has FIRST_KINGS_1_15_PERSONAL_SECTIONS wired for 1 Kings 1-15 via royalHistoryPersonalNotes.ts style legacy content, so the next writer agent should check whether that range counts as already covered or still needs a per-chapter style-spec file before treating 1 Kings 1 as untouched).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T20:47:14Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 24 (normal forward progress, redo backlog empty, completes 2 Samuel)",
+          "at": "2026-08-11T20:47:26Z"
+        },
+        {
+          "name": "KJV text fetched (2 Samuel 24, 25 verses, aruljohn mirror)",
+          "at": "2026-08-11T20:47:37Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-11T20:47:45Z"
+        },
+        {
+          "name": "source file written: lib/secondSamuelTwentyFourSource.ts",
+          "at": "2026-08-11T20:53:33Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 3 last-bullet-emoji issues, then manual scan fixed 1 while clause, 1 rather-than clause, 1 double-and line)",
+          "at": "2026-08-11T20:57:06Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-11T20:54:05Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 29 cards, 25 verses, text verbatim)",
+          "at": "2026-08-11T20:57:06Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-11T20:57:06Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-11T20:57:06Z"
+        }
+      ]
     }
   ]
 }
