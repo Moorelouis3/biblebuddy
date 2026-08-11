@@ -18396,18 +18396,111 @@
       "verses": 37,
       "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty, normal forward progress: 2 Samuel 1-14 each already had a dedicated wired-in lib file, chapter 15 did not (only the generic royalHistoryPersonalNotes.ts batch covered it), so this is the first dedicated file for this chapter. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (37 verses). Absalom's four year (KJV reads forty, noted as a likely copying error) campaign to steal Israel's loyalty at the city gate and his declaration as king in Hebron with Ahithophel's defection, David's decisive flight from Jerusalem leaving ten concubines to keep the house, Ittai the Gittite's Ruth-echoing oath of loyalty despite being offered a clean way out, David sending the ark of the covenant back to the city rather than using it as a good luck charm and submitting his fate to God's favor, the ark bearers Zadok and Abiathar turned into an intelligence relay through their sons Ahimaaz and Jonathan, David's barefoot weeping ascent of Mount Olivet and his targeted prayer against Ahithophel's counsel, and Hushai the Archite sent back into Jerusalem as a counter agent to defeat that same counsel, closing on Absalom taking the capital. Chunked into 7 sections (1-6, 7-12, 13-18, 19-23, 24-29, 30-33, 34-37) matching the chapter's natural scene breaks. Density 1.59 cards/verse (37 verses, 59 cards). scripts/check_bible_note_style.py found 3 problems on first pass (three bullets over the 8 word limit), fixed, second run clean; a manual pass also caught and retitled one card whose KJV-lifted title contained the banned filler word 'indeed' before the checker was even run. Parser check passed exactly via getBibleReaderStudySections('2 samuel', 15) (7/7 sections, 59 cards, 37 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added after secondSamuelFourteenSource, preserveExactPhraseBodies 2 samuel range extended from chapters 1-14 to 1-15, replaceStudySectionsForBookRange(\"2 samuel\", 15, 15, SECOND_SAMUEL_FIFTEEN_PERSONAL_SECTIONS) call added directly after the 2 Samuel 14 call. Next forward-progress target is 2 Samuel 16.",
       "steps": [
-        { "name": "npm install done", "at": "2026-08-11T11:47:10Z" },
-        { "name": "redo backlog checked (data/bible-notes-style-redo-remaining.json), confirmed empty", "at": "2026-08-11T11:47:20Z" },
-        { "name": "target chapter determined: 2 Samuel 15 (normal forward progress, new chapter, no prior dedicated file for chapters 15+ in 2 Samuel)", "at": "2026-08-11T11:48:30Z" },
-        { "name": "KJV text fetched for 2 Samuel 15 (37 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv", "at": "2026-08-11T11:49:15Z" },
-        { "name": "docs/bible-study-note-style.md read in full, lib/genesisThirtyOneSource.ts read as reference implementation", "at": "2026-08-11T11:52:00Z" },
-        { "name": "lib/secondSamuelFifteenSource.ts written (7 sections, 59 cards)", "at": "2026-08-11T11:58:30Z" },
-        { "name": "scripts/check_bible_note_style.py run, 3 bullet-length problems found and fixed, second run clean", "at": "2026-08-11T11:59:50Z" },
-        { "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 15, replaceStudySectionsForBookRange call added)", "at": "2026-08-11T12:00:30Z" },
-        { "name": "parser check passed via getBibleReaderStudySections('2 samuel', 15): 7/7 sections, 59 cards, text verbatim", "at": "2026-08-11T12:01:10Z" },
-        { "name": "npx tsc --noEmit -p . clean, zero errors", "at": "2026-08-11T12:01:50Z" },
-        { "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)", "at": "2026-08-11T12:04:00Z" },
-        { "name": "committed and pushed to origin/main (commit 6db120b), push confirmed via git push output (44ec59d..6db120b main -> main); this run also hit the recurring detached-HEAD environment bug before committing, recovered by confirming local HEAD exactly matched origin/main via git fetch then running git checkout -B main origin/main, no work lost", "at": "2026-08-11T12:06:00Z" }
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T11:47:10Z"
+        },
+        {
+          "name": "redo backlog checked (data/bible-notes-style-redo-remaining.json), confirmed empty",
+          "at": "2026-08-11T11:47:20Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 15 (normal forward progress, new chapter, no prior dedicated file for chapters 15+ in 2 Samuel)",
+          "at": "2026-08-11T11:48:30Z"
+        },
+        {
+          "name": "KJV text fetched for 2 Samuel 15 (37 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-08-11T11:49:15Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full, lib/genesisThirtyOneSource.ts read as reference implementation",
+          "at": "2026-08-11T11:52:00Z"
+        },
+        {
+          "name": "lib/secondSamuelFifteenSource.ts written (7 sections, 59 cards)",
+          "at": "2026-08-11T11:58:30Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py run, 3 bullet-length problems found and fixed, second run clean",
+          "at": "2026-08-11T11:59:50Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 15, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-11T12:00:30Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('2 samuel', 15): 7/7 sections, 59 cards, text verbatim",
+          "at": "2026-08-11T12:01:10Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-11T12:01:50Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-11T12:04:00Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (commit 6db120b), push confirmed via git push output (44ec59d..6db120b main -> main); this run also hit the recurring detached-HEAD environment bug before committing, recovered by confirming local HEAD exactly matched origin/main via git fetch then running git checkout -B main origin/main, no work lost",
+          "at": "2026-08-11T12:06:00Z"
+        }
+      ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 16,
+      "startedAt": "2026-08-11T12:53:38Z",
+      "finishedAt": "2026-08-11T13:02:34Z",
+      "durationMinutes": 9,
+      "sections": 5,
+      "cards": 27,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New forward-progress chapter (redo backlog was empty), the first 2 Samuel chapter after 1-15 to be written directly under docs/bible-study-note-style.md rather than as a redo. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ziba meeting David with provisions on the flight from Jerusalem and his accusation against Mephibosheth, Shimei of the house of Saul cursing and stoning David at Bahurim (bloody man, man of Belial, blaming David for Saul family blood), Abishai wanting to kill Shimei and David refusing and hoping God will requite him good, Absalom entering Jerusalem with Ahithophel while Hushai (David planted spy) talks his way into Absalom trust with a deliberately ambiguous loyalty pledge, and Ahithophel counsel to take David concubines publicly on the rooftop, which the note ties back to Nathan prophecy in chapter twelve. Density about 1.17 cards/verse (23 verses, 27 cards). First pass of scripts/check_bible_note_style.py found 9 problems (5 verse-range hyphen false positives from the two-word book name, 1 banned hedge word roughly, 3 body lines over 20 words); fixed by matching the established SecondSamuel single-token convention already used in lib/secondSamuelFifteenSource.ts for the raw markdown verse-range lines and parser regex (while keeping the actual reference field as the correctly spaced 2 Samuel 16 string, matching that same file), and splitting the long lines. A manual section 13 eye check caught a real content gap: the first draft skipped verses 7 and 8 entirely (Shimei actual curse words), so three more cards were added to cover bloody man, man of Belial, the LORD hath delivered the kingdom into the hand of Absalom, and taken in thy mischief, bringing the file to full verse coverage. Second checker run clean. Parser check passed exactly via getBibleReaderStudySections('2 samuel', 16) (5/5 sections, 27 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range for 2 samuel extended from <=15 to <=16, and a replaceStudySectionsForBookRange(\"2 samuel\", 16, 16, ...) call added after chapter 15 inside applyPersonalSecondSamuelFourteenStudySections.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T12:53:38Z"
+        },
+        {
+          "name": "target chapter determined (2 Samuel 16, forward progress, redo backlog empty)",
+          "at": "2026-08-11T12:54:08Z"
+        },
+        {
+          "name": "KJV text fetched from aruljohn/Bible-kjv mirror",
+          "at": "2026-08-11T12:54:14Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation read",
+          "at": "2026-08-11T12:55:00Z"
+        },
+        {
+          "name": "source file lib/secondSamuelSixteenSource.ts written",
+          "at": "2026-08-11T13:00:59Z"
+        },
+        {
+          "name": "style checker first pass (9 problems found)",
+          "at": "2026-08-11T13:01:10Z"
+        },
+        {
+          "name": "style checker clean after fixes",
+          "at": "2026-08-11T13:01:59Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-11T13:02:00Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, verbatim)",
+          "at": "2026-08-11T13:02:10Z"
+        },
+        {
+          "name": "manual section 13 eye check found missing verses 7-8, cards added, re-verified clean",
+          "at": "2026-08-11T13:02:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-11T13:02:34Z"
+        }
       ]
     }
   ]
