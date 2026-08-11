@@ -1425,3 +1425,8 @@ Next up: 2 Samuel 19
 ## 2026-08-11T16:01:31Z (hourly chapter notes run)
 Chapter: 2 Samuel 19 | Duration: 14 min | Sections: 8 | Cards: 69 | Status: pass
 Next up: 2 Samuel 20
+
+## 2026-08-11 (blog post run)
+Done: Wrote Bible in One Year Day 1 blog post (Creation of the World, Genesis 1-2) at /blog/bible-in-one-year-day-1, plus its BLOG_ARTICLES entry. ~1,300 words, overview + one deep theme (God shapes then fills the empty), reflection question, app CTA, series nav. Video embed renders a placeholder until the YouTube id is set.
+Still open: YOUTUBE_VIDEO_ID in the post is empty; Day 2 post does not exist yet so the "next" link is a placeholder until it ships.
+Next: Day 2 post (The Fall of Man, Genesis 3-4).

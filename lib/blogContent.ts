@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "bible-in-one-year-day-1",
+    title: "Bible in One Year Day 1: Creation of the World (Genesis 1-2)",
+    description:
+      "Bible in One Year Day 1 walks through Genesis 1 and 2. God speaks into the dark, shapes and fills the world, and makes you in His image.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/bible-in-one-year-day-1",
+    publishedAt: "2026-08-11",
+    readTime: "6 min read",
+    image: "/Day1cover.png",
+    groupPost: {
+      title: "Bible in One Year Day 1: Creation of the World 📖",
+      content:
+        "Most people read Genesis 1 as an argument about how the world started.\n\nRead verse 2 again and notice the room God actually walks into. Dark. Shapeless. Nothing living in it.\n\n📌 The first page of the Bible does not start with beauty. It starts with empty. And God does not panic, does not back away, does not wait for better conditions. He speaks.\n\nDay 1 of the Bible in One Year is live on the blog. Genesis 1 and 2, and the one thing this reading shows you about God before anything else in Scripture.\n\nRead it here:\nhttps://www.mybiblebuddy.net/blog/bible-in-one-year-day-1\n\nWhat part of your life still feels like verse 2? 🙏",
+    },
+  },
+  {
     slug: "what-does-the-bible-say-about-zodiac-signs",
     title: "What Does the Bible Say About Zodiac Signs?",
     description:
