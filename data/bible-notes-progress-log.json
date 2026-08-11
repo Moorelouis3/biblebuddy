@@ -17749,6 +17749,59 @@
           "at": "2026-08-11T00:01:30Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 4,
+      "startedAt": "2026-08-11T00:46:36Z",
+      "finishedAt": "2026-08-11T00:57:14Z",
+      "durationMinutes": 10.6,
+      "sections": 3,
+      "cards": 29,
+      "verses": 12,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog confirmed empty. Normal forward progress after 2 Samuel 3. Short 12-verse chapter: Ishbosheth's kingdom loses its nerve at news of Abner's death, the introduction of assassins Rechab and Baanah (Benjamites from Beeroth, so their coming betrayal is from inside Saul's own tribe), the Beeroth aside that also introduces Mephibosheth, Jonathan's crippled five-year-old son planted here for 2 Samuel 9, the noon assassination of Ishbosheth under cover of a wheat errand (echoing the fifth-rib phrasing from Abner's own murder in chapter 3), the assassins' presentation of the head to David expecting reward, and David's execution of them with an explicit callback to his earlier execution of the Amalekite messenger in 2 Samuel 1, closing on Ishbosheth's honorable burial beside Abner. Density about 2.4 cards/verse. Style checker clean on first full run (fixed several comma-stacked body lines while drafting, before ever running the checker). Parser check and tsc --noEmit both clean. Wired into lib/bibleReaderStudyNotes.ts (new applyPersonalSecondSamuelFourStudySections override, preserveExactPhraseBodies extended to chapter 4).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T00:47:10Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 4 (new chapter, canonical order, redo backlog empty)",
+          "at": "2026-08-11T00:47:35Z"
+        },
+        {
+          "name": "KJV text fetched: 2 Samuel 4, 12 verses, from raw.githubusercontent.com aruljohn/Bible-kjv",
+          "at": "2026-08-11T00:47:55Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) and reference file (secondSamuelThreeSource.ts) reviewed",
+          "at": "2026-08-11T00:49:30Z"
+        },
+        {
+          "name": "source file written: lib/secondSamuelFourSource.ts (3 sections, 29 cards)",
+          "at": "2026-08-11T00:54:00Z"
+        },
+        {
+          "name": "style checker clean: 29 cards, no problems",
+          "at": "2026-08-11T00:54:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to chapter 4, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-11T00:54:40Z"
+        },
+        {
+          "name": "parser check passed: 3 sections, 29 cards, matches design",
+          "at": "2026-08-11T00:55:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-11T00:56:05Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md updated (table row), SESSION_LOG.md appended",
+          "at": "2026-08-11T00:57:14Z"
+        }
+      ]
     }
   ]
 }

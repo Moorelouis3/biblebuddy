@@ -1358,3 +1358,7 @@ life-buddy-production.up.railway.app (policy denial, not a transient
 error per /root/.ccr/README.md). Could not reach the queue endpoint at
 all, so could not confirm empty vs. non-empty. No file changes made, no
 commit/push. Flagged in MARCUS_HANDOFF.md.
+
+## 2026-08-11T00:57:14Z (hourly chapter notes run)
+Chapter: 2 Samuel 4 | Duration: 11 min | Sections: 3 | Cards: 29 | Status: pass
+Next up: 2 Samuel 5
