@@ -1390,3 +1390,7 @@ Next up: 2 Samuel 11
 ## 2026-08-11T07:58:00Z (hourly chapter notes run)
 Chapter: 2 Samuel 11 | Duration: 12 min | Sections: 9 | Cards: 30 | Status: pass
 Next up: 2 Samuel 12
+
+## 2026-08-11T09:08:38Z (hourly chapter notes run)
+Chapter: 2 Samuel 12 | Duration: 21 min | Sections: 9 | Cards: 48 | Status: pass
+Next up: 2 Samuel 13
