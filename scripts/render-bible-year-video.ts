@@ -57,26 +57,76 @@ async function segmentTexts(dayNumber: number) {
  * not from transcribing the audio. That means they are exactly right - no
  * misheard names, no drift - and cost nothing to produce.
  */
-function chunkForCaption(text: string, maxWords = 6) {
-  const words = text.split(/\s+/).filter(Boolean);
-  const chunks: string[] = [];
-  let current: string[] = [];
+/** One card never spans two sentences - a card should carry a single thought. */
+function splitSentences(text: string) {
+  return text
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
 
-  for (const word of words) {
-    current.push(word);
-    const longEnough = current.length >= maxWords;
-    const clauseEnd = /[,;:.!?]$/.test(word) && current.length >= 3;
-    if (longEnough || clauseEnd) {
-      chunks.push(current.join(" "));
-      current = [];
+/**
+ * Split an over-long sentence into evenly sized cards rather than filling each
+ * one to the brim. Greedy filling produced "Today is Day 1 of our journey
+ * through the" followed by a stranded "Bible together."; aiming for equal
+ * pieces gives a clean break near the middle instead. Commas are preferred as
+ * break points when they fall close to the target.
+ */
+function splitLongSentence(sentence: string, maxChars: number) {
+  const pieces = Math.ceil(sentence.length / maxChars);
+  const target = Math.ceil(sentence.length / pieces);
+  const words = sentence.split(/\s+/);
+  const out: string[] = [];
+  let current = "";
+
+  for (let i = 0; i < words.length; i += 1) {
+    const word = words[i];
+    current = current ? `${current} ${word}` : word;
+    const remaining = words.slice(i + 1).join(" ");
+    if (!remaining) break;
+
+    const atTarget = current.length >= target;
+    // Break a little early on a comma if we are already close to the target.
+    const commaBreak = /,$/.test(word) && current.length >= target * 0.7;
+    if (atTarget || commaBreak) {
+      out.push(current);
+      current = "";
     }
   }
-  if (current.length) {
-    // Avoid orphaning one or two words on their own card.
-    if (current.length <= 2 && chunks.length) chunks[chunks.length - 1] += " " + current.join(" ");
-    else chunks.push(current.join(" "));
+  if (current) out.push(current);
+  return out.length ? out : [sentence];
+}
+
+function chunkForCaption(text: string, maxChars = 44) {
+  const out: string[] = [];
+  for (const sentence of splitSentences(text)) {
+    if (sentence.length <= maxChars) out.push(sentence);
+    else out.push(...splitLongSentence(sentence, maxChars));
   }
-  return chunks.length ? chunks : [text];
+  return out.length ? out : [text];
+}
+
+/**
+ * Share a segment's duration across its cards by character count, but never let
+ * a card flash. "Hey." is four characters inside a 2.6s segment; by raw
+ * proportion it would show for a third of a second.
+ */
+function shareDuration(chunks: string[], totalSeconds: number, minSeconds = 0.7) {
+  const totalChars = chunks.reduce((n, c) => n + c.length, 0) || 1;
+  let shares = chunks.map((c) => (c.length / totalChars) * totalSeconds);
+
+  if (chunks.length * minSeconds >= totalSeconds) {
+    return chunks.map(() => totalSeconds / chunks.length);
+  }
+
+  const short = shares.map((s) => s < minSeconds);
+  if (short.some(Boolean)) {
+    const fixed = short.reduce((n, isShort, i) => n + (isShort ? minSeconds : 0), 0);
+    const flexibleTotal = shares.reduce((n, s, i) => n + (short[i] ? 0 : s), 0) || 1;
+    const remaining = totalSeconds - fixed;
+    shares = shares.map((s, i) => (short[i] ? minSeconds : (s / flexibleTotal) * remaining));
+  }
+  return shares;
 }
 
 function assTime(seconds: number) {
@@ -111,19 +161,17 @@ async function buildCaptions() {
     const durationSeconds = index[i].length / SR;
     const text = segments[i].text;
     const chunks = chunkForCaption(text);
-    const totalChars = chunks.reduce((n, c) => n + c.length, 0) || 1;
+    const shares = shareDuration(chunks, durationSeconds);
 
     let offset = cursor;
-    for (const chunk of chunks) {
-      // Time is shared out by character count, so long chunks hold longer.
-      const share = (chunk.length / totalChars) * durationSeconds;
+    chunks.forEach((chunk, chunkIndex) => {
       const start = offset;
-      const end = offset + share;
+      const end = offset + shares[chunkIndex];
       lines.push(
         `Dialogue: 0,${assTime(start)},${assTime(end)},Default,,0,0,0,,${escapeAss(chunk)}`,
       );
       offset = end;
-    }
+    });
 
     cursor += durationSeconds + index[i].pauseAfterMs / 1000;
   }
@@ -139,7 +187,7 @@ async function buildCaptions() {
     "[V4+ Styles]",
     "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
     // Alignment 5 = middle centre, matching the existing YouTube videos.
-    "Style: Default,Georgia,34,&H00FFFFFF,&H000000FF,&H00202020,&H80000000,0,0,0,0,100,100,0,0,1,2,1,5,80,80,0,1",
+    "Style: Default,Georgia,46,&H00FFFFFF,&H000000FF,&H00202020,&H80000000,0,0,0,0,100,100,0,0,1,2.5,1.5,5,70,70,0,1",
     "",
     "[Events]",
     "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",
@@ -195,6 +243,7 @@ async function main() {
   const captionEnd = await buildCaptions();
   const seconds = audioSeconds();
   console.log(`[day ${padded}] audio ${seconds.toFixed(1)}s, captions end ${captionEnd.toFixed(1)}s`);
+  if (process.argv.includes("--captions-only")) return;
   renderVideo(seconds);
 }
 
