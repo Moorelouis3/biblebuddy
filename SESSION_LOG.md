@@ -1402,3 +1402,49 @@ in this environment) — so "days 1-105 complete" is unproven. OpenAI TTS cost
 per day is estimated, not measured. B-roll library location unknown.
 Next: awaiting Louis's approval on the plan. Recommended first steps regardless:
 fix the > 300 guard, then run a read-only storage reconciliation for days 1-105.
+## 2026-08-11T07:58:00Z (hourly chapter notes run)
+Chapter: 2 Samuel 11 | Duration: 12 min | Sections: 9 | Cards: 30 | Status: pass
+Next up: 2 Samuel 12
+
+## 2026-08-11T09:08:38Z (hourly chapter notes run)
+Chapter: 2 Samuel 12 | Duration: 21 min | Sections: 9 | Cards: 48 | Status: pass
+Next up: 2 Samuel 13
+
+## 2026-08-11T09:55:27Z (hourly chapter notes run)
+Chapter: 2 Samuel 13 | Duration: 9 min | Sections: 7 | Cards: 43 | Status: pass
+Next up: 2 Samuel 14
+
+## 2026-08-11T10:58:39Z (hourly chapter notes run)
+Chapter: 2 Samuel 14 | Duration: 12 min | Sections: 8 | Cards: 42 | Status: pass
+Next up: 2 Samuel 15
+
+## 2026-08-11T12:05:00Z (hourly chapter notes run)
+Chapter: 2 Samuel 15 | Duration: 18 min | Sections: 7 | Cards: 59 | Status: pass
+Next up: 2 Samuel 16
+
+## 2026-08-11T12:30:00Z (level2 upgrade run)
+Status: BLOCKED — could not reach https://life-buddy-production.up.railway.app/api/bible-level2/queue. Agent proxy returned 403 (org egress policy denial) on every CONNECT attempt to life-buddy-production.up.railway.app:443. Did not fabricate a "queue empty" result. No chapter taken, no commit, no push, no complete callback.
+
+## 2026-08-11T13:02:34Z (hourly chapter notes run)
+Chapter: 2 Samuel 16 | Duration: 9 min | Sections: 5 | Cards: 27 | Status: pass
+Next up: 2 Samuel 17
+
+## 2026-08-11T14:04:01Z (hourly chapter notes run)
+Chapter: 2 Samuel 17 | Duration: 8 min | Sections: 9 | Cards: 50 | Status: pass
+Next up: 2 Samuel 18
+
+## 2026-08-11T14:59:16Z (hourly chapter notes run)
+Chapter: 2 Samuel 18 | Duration: 13 min | Sections: 9 | Cards: 61 | Status: pass
+Next up: 2 Samuel 19
+
+## 2026-08-11T16:01:31Z (hourly chapter notes run)
+Chapter: 2 Samuel 19 | Duration: 14 min | Sections: 8 | Cards: 69 | Status: pass
+Next up: 2 Samuel 20
+
+## 2026-08-11T16:57:25Z (hourly chapter notes run)
+Chapter: 2 Samuel 20 | Duration: 11 min | Sections: 7 | Cards: 48 | Status: pass
+Next up: 2 Samuel 21
+
+## 2026-08-11T17:58:14Z (hourly chapter notes run)
+Chapter: 2 Samuel 21 | Duration: 11 min | Sections: 6 | Cards: 33 | Status: pass
+Next up: 2 Samuel 22
