@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-fruit-of-the-spirit",
+    title: "What Is the Fruit of the Spirit? All 9 Explained",
+    description:
+      "What is the fruit of the Spirit? All 9 parts from Galatians 5:22-23 explained, why it is fruit singular not a menu to pick from, and how it actually grows.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/what-is-the-fruit-of-the-spirit",
+    publishedAt: "2026-08-12",
+    readTime: "16 min read",
+    image: "/fruit-banner.png",
+    groupPost: {
+      title: "What Is the Fruit of the Spirit? All 9 Explained 📖",
+      content:
+        "You know the list.\n\nLove, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self control.\n\n📌 Here's what most people miss: in Galatians 5 it's fruit, singular. One fruit with nine parts, not a menu where you get to pick your favorites and skip the rest.\n\nNew article walking through all 9 parts straight from the King James Version, one at a time, plus how the fruit actually grows in a real, imperfect life (hint: it's not by trying harder).\n\nRead it here:\nhttps://www.mybiblebuddy.net/blog/what-is-the-fruit-of-the-spirit\n\nWhich one of the 9 is hardest for you to grow? 🙏",
+    },
+  },
+  {
     slug: "what-does-the-bible-say-about-zodiac-signs",
     title: "What Does the Bible Say About Zodiac Signs?",
     description:
