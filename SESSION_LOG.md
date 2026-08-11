@@ -1351,3 +1351,10 @@ Next up: 2 Samuel 3
 ## 2026-08-11T00:00:21Z (hourly chapter notes run)
 Chapter: 2 Samuel 3 | Duration: 14 min | Sections: 8 | Cards: 52 | Status: pass
 Next up: 2 Samuel 4
+
+## 2026-08-11T00:24:00Z (level2 upgrade run)
+level2 run: blocked — egress proxy returned 403 for
+life-buddy-production.up.railway.app (policy denial, not a transient
+error per /root/.ccr/README.md). Could not reach the queue endpoint at
+all, so could not confirm empty vs. non-empty. No file changes made, no
+commit/push. Flagged in MARCUS_HANDOFF.md.

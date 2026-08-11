@@ -39,6 +39,12 @@ is added to the agent environment's egress allowlist, this agent can never
 pull Louis's Level 2 notes or report completion — it will keep blocking on
 every run. Needs an environment/network-policy fix, not a code fix.
 
+**Still happening 2026-08-11T00:24Z**: same 403 policy denial, confirmed via
+the agent proxy status endpoint (`kind: connect_rejected`, "gateway answered
+403 to CONNECT"). This is at least the third occurrence across two separate
+days with no fix landed. This run made no file changes and did not attempt
+to report completion, since the queue could not even be checked.
+
 ## Stop hook is not catching detached-HEAD unpushed commits, deploy-tagged work is sitting unshipped
 This run started in a repo state with HEAD detached from any branch, 31
 commits ahead of `origin/main` (local `main` itself was stale, still
