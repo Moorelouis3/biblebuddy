@@ -1,0 +1,460 @@
+{
+  "_note": "18 Threads posts picked by engagement, highest first. `lines` are the on-screen text cards; they stack up as the short plays. Emoji are stripped from on-screen text (libass cannot render colour emoji) but kept in `caption` for the YouTube description.",
+  "shorts": [
+    {
+      "id": "01-life-feels-off",
+      "likes": 889,
+      "posted": "2025-08-27",
+      "title": "Life Feels Off",
+      "lines": [
+        "Anybody else notice how life feels off",
+        "after just a few days of not opening your Bible?"
+      ],
+      "bg": "10.mp4"
+    },
+    {
+      "id": "02-wear-a-cross",
+      "likes": 860,
+      "posted": "2026-07-06",
+      "title": "It's Easy To Wear A Cross",
+      "lines": [
+        "IT'S EASY",
+        "TO WEAR",
+        "A CROSS AROUND",
+        "YOUR NECK",
+        "",
+        "IT'S HARDER",
+        "TO CARRY ONE",
+        "ON YOUR BACK."
+      ],
+      "bg": "03.mp4"
+    },
+    {
+      "id": "03-no-time-to-read",
+      "likes": 259,
+      "posted": "2025-09-08",
+      "title": "You Do Have Time",
+      "lines": [
+        "\"I don't have time to read the Bible.\"",
+        "Yes, you do. Go to bed 30 minutes earlier.",
+        "Wake up 30 minutes earlier.",
+        "That's 30 minutes of peace with God that can change your whole day."
+      ],
+      "bg": "01.mp4"
+    },
+    {
+      "id": "04-jesus-is-my",
+      "likes": 192,
+      "posted": "2026-07-11",
+      "title": "Jesus Is My Everything",
+      "lines": [
+        "Jesus is my Peace.",
+        "Jesus is my Strength.",
+        "Jesus is my Savior.",
+        "Jesus is my Redeemer.",
+        "Jesus is my Shepherd.",
+        "Jesus is my Refuge.",
+        "Jesus is my Hope.",
+        "Jesus is my Provider.",
+        "Jesus is my Lord.",
+        "Jesus is my Everything."
+      ],
+      "bg": "05.mp4"
+    },
+    {
+      "id": "05-louder-the-world-gets",
+      "likes": 153,
+      "posted": "2026-07-06",
+      "title": "The Louder The World Gets",
+      "lines": [
+        "The longer I stay away from my Bible,",
+        "the louder the world gets."
+      ],
+      "bg": "07.mp4"
+    },
+    {
+      "id": "06-be-honest",
+      "likes": 131,
+      "posted": "2026-07-06",
+      "title": "Be Honest",
+      "lines": [
+        "Be honest.",
+        "When was the last time you opened your Bible? 👀"
+      ],
+      "caption": "Be honest, when was the last time you opened your bible 👀",
+      "bg": "12.mp4"
+    },
+    {
+      "id": "07-closed-bibles",
+      "likes": 128,
+      "posted": "2025-09-05",
+      "title": "Closed Bibles",
+      "lines": [
+        "You cannot win a spiritual warfare",
+        "with closed Bibles."
+      ],
+      "bg": "02.mp4"
+    },
+    {
+      "id": "08-god-go-ghost",
+      "likes": 124,
+      "posted": "2026-07-06",
+      "title": "Become A Better Version Of Yourself",
+      "lines": [
+        "God.",
+        "Go ghost.",
+        "Gym.",
+        "Small circle.",
+        "Make more money.",
+        "Accept the past.",
+        "Become a better version of yourself."
+      ],
+      "bg": "11.mp4"
+    },
+    {
+      "id": "09-20-minutes",
+      "likes": 95,
+      "posted": "2026-07-06",
+      "title": "20 Minutes",
+      "lines": [
+        "I don't know who needs to hear this...",
+        "But spending 20 minutes in your Bible",
+        "might do more for your peace",
+        "than 2 hours on your phone."
+      ],
+      "bg": "04.mp4"
+    },
+    {
+      "id": "10-woke-us-up",
+      "likes": 91,
+      "posted": "2026-07-11",
+      "title": "Give Him The Gratitude",
+      "lines": [
+        "Jesus woke us all up this morning.",
+        "Give Him all the gratitude. 🙌"
+      ],
+      "caption": "Jesus woke us all up this morning give him all the gratitude 🙌",
+      "bg": "13.mp4"
+    },
+    {
+      "id": "11-find-yourself",
+      "likes": 86,
+      "posted": "2025-09-02",
+      "title": "Stop Trying To Find Yourself",
+      "lines": [
+        "Instead of trying to find yourself.",
+        "Open up the Bible & find God.",
+        "Then you'll truly know who you are.",
+        "Your identity is found in God."
+      ],
+      "bg": "06.mp4"
+    },
+    {
+      "id": "12-not-accidentally",
+      "likes": 84,
+      "posted": "2026-07-11",
+      "title": "Not By Accident",
+      "lines": [
+        "You don't accidentally grow closer to God.",
+        "You do it by spending time with Him."
+      ],
+      "bg": "08.mp4"
+    },
+    {
+      "id": "13-gods-pen",
+      "likes": 78,
+      "posted": "2026-07-11",
+      "title": "God's Pen",
+      "lines": [
+        "Don't grab the pen out of God's hand.",
+        "The story He writes will always be better",
+        "than the one you would've written."
+      ],
+      "bg": "14.mp4"
+    },
+    {
+      "id": "14-bible-thumper",
+      "likes": 60,
+      "posted": "2025-08-26",
+      "title": "Bible Thumper",
+      "lines": [
+        "When I first came to God,",
+        "I didn't want to be a Bible thumper.",
+        "Now look at me...",
+        "A Bible thumper 😂"
+      ],
+      "caption": "When I first came to God, I didn't want to be a Bible thumper. Now look at me... A Bible thumper 😂",
+      "bg": "09.mp4"
+    },
+    {
+      "id": "15-7-signs-answering",
+      "likes": 58,
+      "posted": "2026-07-15",
+      "title": "7 Signs God Is Answering You",
+      "lines": [
+        "7 Signs God Is Answering You",
+        "🕊 You suddenly have peace",
+        "🚪 Unexpected doors open",
+        "🚫 Wrong doors keep closing",
+        "📖 Scripture feels personal",
+        "👥 God sends the right people",
+        "⏳ Waiting is strengthening you",
+        "🙌 Looking back...",
+        "you realize He already answered"
+      ],
+      "heading": true,
+      "bg": "10.mp4"
+    },
+    {
+      "id": "16-not-your-job",
+      "likes": 50,
+      "posted": "2026-07-17",
+      "title": "Not Your Job",
+      "lines": [
+        "Your job isn't to change people.",
+        "Your job is to tell them about Jesus.",
+        "The Holy Spirit handles the rest."
+      ],
+      "bg": "03.mp4"
+    },
+    {
+      "id": "17-job-8-7",
+      "likes": 47,
+      "posted": "2025-09-10",
+      "title": "Job 8:7",
+      "lines": [
+        "\"And though you started with little,",
+        "you will end with much.\"",
+        "- Job 8:7"
+      ],
+      "bg": "05.mp4"
+    },
+    {
+      "id": "18-stop-venting",
+      "likes": 47,
+      "posted": "2025-09-02",
+      "title": "Stop Venting",
+      "lines": [
+        "Stop venting to people who can't fix it.",
+        "Take it to God."
+      ],
+      "bg": "01.mp4"
+    },
+    {
+      "id": "19-choose-your-hard",
+      "likes": 6600,
+      "posted": "2025-11-19",
+      "title": "Choose Your Hard",
+      "lines": [
+        "Quitting sin is hard.",
+        "",
+        "Hearing 'Depart from me' will be harder.",
+        "",
+        "Choose your hard."
+      ],
+      "bg": "s01.mp4"
+    },
+    {
+      "id": "20-let-go-to-obey",
+      "likes": 2500,
+      "posted": "2025-11-21",
+      "title": "Another Level Of Strength",
+      "lines": [
+        "Having to let go of someone",
+        "you love to obey God",
+        "is another level of strength."
+      ],
+      "bg": "s02.mp4"
+    },
+    {
+      "id": "21-too-seriously",
+      "likes": 810,
+      "posted": "2025-11-22",
+      "title": "Too Seriously",
+      "lines": [
+        "I'd rather hear the world say,",
+        "\"He is taking this Jesus thing too seriously\"",
+        "",
+        "than to hear",
+        "\"Depart from me, I never knew you.\""
+      ],
+      "bg": "s03.mp4"
+    },
+    {
+      "id": "22-ignoring-the-spirit",
+      "likes": 457,
+      "posted": "2025-11-10",
+      "title": "Very Expensive",
+      "lines": [
+        "The price you pay",
+        "for ignoring the Holy Spirit",
+        "is very expensive."
+      ],
+      "bg": "s04.mp4"
+    },
+    {
+      "id": "23-proverbs-threads",
+      "likes": 294,
+      "posted": "2026-01-16",
+      "title": "If God Had Threads",
+      "lines": [
+        "Proverbs feels like what God would post",
+        "if He had a Threads account..."
+      ],
+      "bg": "s06.mp4"
+    },
+    {
+      "id": "24-not-religious",
+      "likes": 284,
+      "posted": "2025-11-21",
+      "title": "Not Religious",
+      "lines": [
+        "I am not religious...",
+        "",
+        "I just follow Jesus."
+      ],
+      "bg": "s07.mp4"
+    },
+    {
+      "id": "25-world-record",
+      "likes": 261,
+      "posted": "2025-11-23",
+      "title": "World Record",
+      "lines": [
+        "Jesus holds the world record",
+        "for most lives saved..."
+      ],
+      "bg": "s08.mp4"
+    },
+    {
+      "id": "26-not-just-quoting",
+      "likes": 181,
+      "posted": "2025-11-22",
+      "title": "Live By It",
+      "lines": [
+        "The Bible isn't just for quoting,",
+        "you have to live by it..."
+      ],
+      "bg": "s09.mp4"
+    },
+    {
+      "id": "27-must-workout",
+      "likes": 148,
+      "posted": "2025-11-10",
+      "title": "Kill Your Flesh",
+      "lines": [
+        "I'm a firm believer that if you are Christian,",
+        "you MUST WORKOUT.",
+        "",
+        "Physical discipline is key",
+        "in helping to kill your flesh."
+      ],
+      "bg": "s10.mp4"
+    },
+    {
+      "id": "28-offensive-to-those",
+      "likes": 141,
+      "posted": "2025-11-12",
+      "title": "Ready To Be Corrected",
+      "lines": [
+        "The Bible is offensive",
+        "to those who aren't ready",
+        "to be corrected."
+      ],
+      "bg": "s11.mp4"
+    },
+    {
+      "id": "29-solomon",
+      "likes": 138,
+      "posted": "2026-01-01",
+      "title": "Knowing Sin Isn't Safety",
+      "lines": [
+        "Solomon wrote Proverbs",
+        "and still fell to the very sins he described.",
+        "",
+        "Knowing sin does not mean",
+        "you are safe from it."
+      ],
+      "bg": "s12.mp4"
+    },
+    {
+      "id": "30-offend-your-flesh",
+      "likes": 123,
+      "posted": "2025-11-19",
+      "title": "Offend Your Flesh",
+      "lines": [
+        "The Bible is supposed",
+        "to offend your flesh."
+      ],
+      "bg": "s13.mp4"
+    },
+    {
+      "id": "31-walk-into-every-room",
+      "likes": 123,
+      "posted": "2025-11-20",
+      "title": "Like God Sent You",
+      "lines": [
+        "Someone told me,",
+        "\"Walk into every room like God sent you.\"",
+        "",
+        "That one sentence changed how I move."
+      ],
+      "bg": "s14.mp4"
+    },
+    {
+      "id": "32-zodiac",
+      "likes": 111,
+      "posted": "2025-12-02",
+      "title": "Not The Stars",
+      "lines": [
+        "Zodiac signs try to define you.",
+        "",
+        "But God says that's His job,",
+        "not the stars."
+      ],
+      "bg": "s15.mp4"
+    },
+    {
+      "id": "33-scratches-the-surface",
+      "likes": 105,
+      "posted": "2025-10-29",
+      "title": "Until You Find Treasure",
+      "lines": [
+        "Reading the Bible scratches the surface.",
+        "",
+        "Studying the Bible digs",
+        "until you find treasure."
+      ],
+      "bg": "s16.mp4"
+    },
+    {
+      "id": "34-they-read-you",
+      "likes": 60,
+      "posted": "2025-10-12",
+      "title": "They Read You",
+      "lines": [
+        "Non-believers don't read the Bible,",
+        "but they read you,",
+        "",
+        "so be a reflection of Christ",
+        "everywhere you go."
+      ],
+      "bg": "02.mp4"
+    },
+    {
+      "id": "35-uncomfortable-truth",
+      "likes": 59,
+      "posted": "2025-11-11",
+      "title": "Uncomfortable Truth",
+      "lines": [
+        "Uncomfortable truth:",
+        "",
+        "The world isn't tired of Jesus.",
+        "",
+        "They're tired of Christians",
+        "who don't look like Him."
+      ],
+      "bg": "04.mp4"
+    }
+  ]
+}
