@@ -57,3 +57,6 @@ console.log(Object.keys(m)))
 
 # finished media exports - large, live elsewhere, never git
 /exports/
+
+# generated cover candidates - reviewed locally, only approved ones are committed
+/public/cover-candidates/

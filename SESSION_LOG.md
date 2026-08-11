@@ -1387,6 +1387,21 @@ Next up: 2 Samuel 10
 Chapter: 2 Samuel 10 | Duration: 10 min | Sections: 4 | Cards: 34 | Status: pass
 Next up: 2 Samuel 11
 
+## 2026-08-11 (Bible-in-One-Year production agent audit)
+Marching orders: audit the existing Bible-in-One-Year system before building any
+production agent. No generation, no production data changes.
+Done: full runtime audit of all 365 days (measured, not estimated). Plan is
+complete 365/365 and matches the master-plan doc exactly. Lesson+audio refs
+exist for days 1-105 (not ~50-75 as assumed); chapter notes cover all 1,189
+chapters, ~390 at gold standard. Found a real bug: the `> 300` guard in
+getReaderAlignedStudyMarkdown hides study notes for days 301-365 even though the
+chapter notes exist. Confirmed no video/ffmpeg/Remotion/YouTube-upload code
+exists anywhere. Wrote docs/BIBLE_YEAR_AGENT_AUDIT.md.
+Still open: could NOT verify Supabase tts-audio bucket contents (no credentials
+in this environment) — so "days 1-105 complete" is unproven. OpenAI TTS cost
+per day is estimated, not measured. B-roll library location unknown.
+Next: awaiting Louis's approval on the plan. Recommended first steps regardless:
+fix the > 300 guard, then run a read-only storage reconciliation for days 1-105.
 ## 2026-08-11T07:58:00Z (hourly chapter notes run)
 Chapter: 2 Samuel 11 | Duration: 12 min | Sections: 9 | Cards: 30 | Status: pass
 Next up: 2 Samuel 12

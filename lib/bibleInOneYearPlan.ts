@@ -1,6 +1,8 @@
 // lib/bibleInOneYearPlan.ts
 // Generates the custom 365-day Bible reading plan used by Bible Buddy.
 
+import { BIBLE_YEAR_APPROVED_COVER_DAYS } from "./bibleYearApprovedCovers";
+
 export type ChapterAssignment = {
   book: string;
   chapter: number;
@@ -44,7 +46,12 @@ export type GenesisBibleYearDay = {
 export const BIBLE_YEAR_FALLBACK_COVER_IMAGE = "/genericcoverforBIOY.png";
 
 function getDefaultBibleYearCoverImage(dayNumber: number) {
-  if (Number.isFinite(dayNumber) && dayNumber >= 1 && dayNumber <= 30) {
+  if (!Number.isFinite(dayNumber) || dayNumber < 1 || dayNumber > 365) {
+    return BIBLE_YEAR_FALLBACK_COVER_IMAGE;
+  }
+  // Days 1-30 were made by hand; everything after is an approved generated
+  // cover. Both land at the same path so the UI needs no special case.
+  if (dayNumber <= 30 || BIBLE_YEAR_APPROVED_COVER_DAYS.includes(dayNumber)) {
     return `/day${dayNumber}cover.png`;
   }
   return BIBLE_YEAR_FALLBACK_COVER_IMAGE;
