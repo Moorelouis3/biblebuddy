@@ -45,6 +45,34 @@ the agent proxy status endpoint (`kind: connect_rejected`, "gateway answered
 days with no fix landed. This run made no file changes and did not attempt
 to report completion, since the queue could not even be checked.
 
+## Blog writer run 2026-08-11: post pushed to a feature branch, not main, so it is NOT live yet
+This session (the Mon/Wed/Fri blog writer routine) came up in an execution
+context (Claude Code Remote / GitHub session) that injected its own hard
+branch policy: "Develop on branch `claude/vibrant-mccarthy-gxfcq5` ... NEVER
+push to a different branch without explicit permission." That directly
+conflicts with `docs/BLOG_WRITER_AGENT.md`'s instruction to push straight to
+`origin main` so Vercel picks up the `[deploy]` tag immediately.
+
+Pushing a `[deploy]`-tagged commit straight to main is a real production
+deploy, and the session's own safety guardrails explicitly forbade pushing
+anywhere but the assigned branch without permission, so this run followed
+the stricter constraint: it wrote, verified (`tsc` clean, verses exact KJV,
+~3,225 words, 5 internal links spread through the body), committed, and
+pushed the new post "What Is the Fruit of the Spirit? All 9 Explained" to
+`claude/vibrant-mccarthy-gxfcq5` (https://github.com/Moorelouis3/biblebuddy/pull/new/claude/vibrant-mccarthy-gxfcq5),
+but did **not** push to `main` and did not open a PR (not explicitly asked
+for one). The topic was still dequeued from `data/blog-topics-queue.json`
+in that same commit, so the queue will not re-serve it, but **the article
+is not live on mybiblebuddy.net** until someone merges that branch into
+main.
+
+Two things worth deciding: (1) merge that branch now so the post ships, and
+(2) whichever behavior is wanted going forward, either fix whatever spawns
+this routine so it stops injecting a feature-branch policy that conflicts
+with the documented direct-to-main workflow, or update
+`docs/BLOG_WRITER_AGENT.md` to route through a branch/PR instead of main.
+Right now the two instruction sets actively disagree.
+
 ## Stop hook is not catching detached-HEAD unpushed commits, deploy-tagged work is sitting unshipped
 This run started in a repo state with HEAD detached from any branch, 31
 commits ahead of `origin/main` (local `main` itself was stale, still
