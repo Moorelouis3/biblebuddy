@@ -18608,6 +18608,59 @@
           "at": "2026-08-11T14:59:16Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 19,
+      "startedAt": "2026-08-11T15:46:35Z",
+      "finishedAt": "2026-08-11T16:00:28Z",
+      "durationMinutes": 14,
+      "sections": 8,
+      "cards": 69,
+      "verses": 43,
+      "notes": "New chapter (forward progress, style-redo backlog was empty). David's grief over Absalom, Joab's rebuke, Shimei and Mephibosheth pardoned, Barzillai's farewell, Israel and Judah's quarrel setting up chapter 20.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T15:46:57Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 19 (new chapter, redo backlog empty)",
+          "at": "2026-08-11T15:46:58Z"
+        },
+        {
+          "name": "KJV text fetched from GitHub raw mirror",
+          "at": "2026-08-11T15:47:05Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-11T15:47:30Z"
+        },
+        {
+          "name": "source file lib/secondSamuelNineteenSource.ts written (69 cards, 8 sections)",
+          "at": "2026-08-11T15:58:30Z"
+        },
+        {
+          "name": "style checker clean (fixed one banned hedge word: fairly)",
+          "at": "2026-08-11T15:59:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange)",
+          "at": "2026-08-11T15:59:20Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 69 cards, no duplication after fixing 8-verse split bug)",
+          "at": "2026-08-11T15:59:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-11T15:59:56Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-11T16:00:28Z"
+        }
+      ]
     }
   ]
 }
