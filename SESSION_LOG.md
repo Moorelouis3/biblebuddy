@@ -1460,3 +1460,7 @@ Next up: 2 Samuel 24
 ## 2026-08-11T20:58:34Z (hourly chapter notes run)
 Chapter: 2 Samuel 24 | Duration: 10 min | Sections: 6 | Cards: 29 | Status: pass
 Next up: 1 Kings 1
+
+## 2026-08-11T22:04:05Z (hourly chapter notes run)
+Chapter: 1 Kings 1 | Duration: 17 min | Sections: 11 | Cards: 70 | Status: pass
+Next up: 1 Kings 2
