@@ -18091,6 +18091,59 @@
           "at": "2026-08-11T05:57:53Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 10,
+      "startedAt": "2026-08-11T06:46:55Z",
+      "finishedAt": "2026-08-11T06:57:13Z",
+      "durationMinutes": 10,
+      "sections": 4,
+      "cards": 34,
+      "verses": 19,
+      "notes": "Scheduled hourly run. Style redo backlog empty, normal forward progress, first dedicated file for this chapter. Hanun succeeds Nahash as king of Ammon and, on bad advice from his princes who suspect David's comforters are spies, shaves half his ambassadors' beards and cuts their garments to the buttocks, a public shame David answers by sheltering the men in Jericho until their beards regrow. Ammon, realizing it has made itself odious, hires about 33,000 Aramean mercenaries from Bethrehob, Zoba, Maacah, and Ishtob/Tob, prompting David to send Joab and the mighty men. Joab, caught between the Syrians in the field and Ammon at Rabbah's gate, splits his forces with his brother Abishai under a mutual aid pact and a God-will-submitted battle speech, routing the Syrians and then the Ammonites, who retreat behind their walls while Joab withdraws to Jerusalem rather than press a siege. Hadarezer (the same king defeated in chapter 8, spelled slightly differently here) regroups with reinforcements from beyond the Euphrates under a named commander, Shobach, only for David to personally lead all Israel across the Jordan to Helam and win a decisive second victory, killing Shobach and driving Hadarezer's vassal kings to make peace, leaving Ammon isolated and setting up the siege of Rabbah in chapters 11-12. Chunked into 4 sections (1-5, 6-8, 9-14, 15-19). Density about 1.79 cards/verse. check_bible_note_style.py was clean on the first run, no problems found. Parser check passed exactly (4/4 sections, 34 cards, 19 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies extended from chapter <= 9 to <= 10, applyPersonalSecondSamuelTenStudySections() override call added. Forward progress resumes at 2 Samuel 11 next run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T06:48:05Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 10 (new chapter, forward progress)",
+          "at": "2026-08-11T06:48:05Z"
+        },
+        {
+          "name": "KJV text fetched (2 Samuel 10, 19 verses)",
+          "at": "2026-08-11T06:48:22Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) + reference implementation reviewed",
+          "at": "2026-08-11T06:48:22Z"
+        },
+        {
+          "name": "source file written: lib/secondSamuelTenSource.ts (4 sections, 34 cards)",
+          "at": "2026-08-11T06:53:41Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 34 cards)",
+          "at": "2026-08-11T06:53:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply call, preserveExactPhraseBodies range extended to 10)",
+          "at": "2026-08-11T06:54:33Z"
+        },
+        {
+          "name": "parser check passed: 4 sections, 34 cards, matches design",
+          "at": "2026-08-11T06:54:33Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-11T06:56:25Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json entry appended, BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals updated)",
+          "at": "2026-08-11T06:57:13Z"
+        }
+      ]
     }
   ]
 }
