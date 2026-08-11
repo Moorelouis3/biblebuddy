@@ -1413,3 +1413,7 @@ Status: BLOCKED — could not reach https://life-buddy-production.up.railway.app
 ## 2026-08-11T13:02:34Z (hourly chapter notes run)
 Chapter: 2 Samuel 16 | Duration: 9 min | Sections: 5 | Cards: 27 | Status: pass
 Next up: 2 Samuel 17
+
+## 2026-08-11T14:04:01Z (hourly chapter notes run)
+Chapter: 2 Samuel 17 | Duration: 8 min | Sections: 9 | Cards: 50 | Status: pass
+Next up: 2 Samuel 18
