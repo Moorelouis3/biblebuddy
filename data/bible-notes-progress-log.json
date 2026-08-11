@@ -18378,6 +18378,10 @@
         {
           "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
           "at": "2026-08-11T10:58:39Z"
+        },
+        {
+          "name": "committed and pushed to origin/main (commit 1a1e18d), push confirmed via git log origin/main; this run also hit the recurring detached-HEAD environment bug at commit time, recovered by checking out and resetting local main onto the new commit (a direct fast-forward child of origin/main, no data at risk) before pushing",
+          "at": "2026-08-11T10:59:40Z"
         }
       ]
     }
