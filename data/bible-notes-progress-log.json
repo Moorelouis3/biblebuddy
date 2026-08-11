@@ -18327,6 +18327,59 @@
           "at": "2026-08-11T09:56:21Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 14,
+      "startedAt": "2026-08-11T10:46:34Z",
+      "finishedAt": "2026-08-11T10:58:39Z",
+      "durationMinutes": 12,
+      "sections": 8,
+      "cards": 42,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog empty, normal forward progress, first dedicated file for this chapter. Confirmed local main matched origin/main exactly before starting (forced fetch update was just a stale FETCH_HEAD ref, no real divergence). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (33 verses). Joab notices David's fading anger toward the banished Absalom and sends for a wise woman of Tekoah, coaching her to feign mourning and present a scripted parable; the widow's fictional case of two sons who fought with none to part them, one slain, and her family demanding the surviving heir's life as the avenger of blood, threatening to quench her last coal and leave no name or remainder; David's early vague promise hardening into a formal oath (not one hair of thy son shall fall to the earth) after she offers to bear any guilt herself; her turn to directly indict David, using the spilt water proverb and the claim that God himself devises means so the banished are not expelled, for not fetching home his own banished son; David guessing correctly that Joab's hand is behind it all, and the woman's honest admission; David's order to bring Absalom back paired immediately with the limiting clause let him not see my face, a homecoming that is only half a reconciliation; Absalom's famous unmatched beauty, the enormous weight of his annually cut hair, and his three unnamed sons and one daughter named Tamar after his sister; and the closing escalation where two full years of continued exclusion and Joab's refusal to answer two summons lead Absalom to burn Joab's barley field to force a meeting, culminating in his all or nothing appeal to David and the king's kiss that closes the chapter without any real conversation about what actually broke. Chunked into 8 sections (1-3, 4-7, 8-11, 12-17, 18-20, 21-24, 25-27, 28-33). Density about 1.27 cards per verse (33 verses, 42 cards). Every card title is a contiguous exact phrase lifted from the KJV verse text, including one case (the he devise means card) where an initially invented God doth devise means opening was caught during drafting and corrected to lift the true KJV wording (yet doth he devise means) before the file was ever written. `scripts/check_bible_note_style.py` was clean on the first run, no problems found. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term or phrase, closes on meaning rather than mechanics, and the file has no hyphens, em dashes, semicolons, or contractions anywhere (only possessives), no banned filler or hedge words, and no repeated first lines across cards in the same section. Parser check passed exactly via `getBibleReaderStudySections('2 samuel', 14)` (8/8 sections, 42 cards, 33 verses, text rendered verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: import added for `SECOND_SAMUEL_FOURTEEN_PERSONAL_SECTIONS` from new `secondSamuelFourteenSource.ts`, `preserveExactPhraseBodies` extended from \"2 samuel\" chapter <= 13 to <= 14, and a new `applyPersonalSecondSamuelFourteenStudySections()` override call added directly after `applyPersonalSecondSamuelThirteenStudySections()`. Forward progress resumes at 2 Samuel 15 next run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T10:47:05Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 14 (redo backlog empty, confirmed local main matched origin/main at 2 Samuel 13, no wired file existed for chapter 14)",
+          "at": "2026-08-11T10:47:15Z"
+        },
+        {
+          "name": "KJV text fetched (2 Samuel 14, 33 verses, aruljohn mirror)",
+          "at": "2026-08-11T10:47:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full; reference implementation lib/secondSamuelThirteenSource.ts read for wiring/voice conventions",
+          "at": "2026-08-11T10:48:30Z"
+        },
+        {
+          "name": "source file written: lib/secondSamuelFourteenSource.ts (8 sections, 42 cards)",
+          "at": "2026-08-11T10:55:30Z"
+        },
+        {
+          "name": "style checker clean on first pass (scripts/check_bible_note_style.py)",
+          "at": "2026-08-11T10:55:50Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 14, applyPersonalSecondSamuelFourteenStudySections call added)",
+          "at": "2026-08-11T10:56:15Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 42 cards, 33 verses, text verbatim)",
+          "at": "2026-08-11T10:56:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-11T10:57:40Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-11T10:58:39Z"
+        }
+      ]
     }
   ]
 }

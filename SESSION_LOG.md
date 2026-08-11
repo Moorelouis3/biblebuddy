@@ -1398,3 +1398,7 @@ Next up: 2 Samuel 13
 ## 2026-08-11T09:55:27Z (hourly chapter notes run)
 Chapter: 2 Samuel 13 | Duration: 9 min | Sections: 7 | Cards: 43 | Status: pass
 Next up: 2 Samuel 14
+
+## 2026-08-11T10:58:39Z (hourly chapter notes run)
+Chapter: 2 Samuel 14 | Duration: 12 min | Sections: 8 | Cards: 42 | Status: pass
+Next up: 2 Samuel 15
