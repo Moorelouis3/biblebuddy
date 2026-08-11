@@ -18661,6 +18661,59 @@
           "at": "2026-08-11T16:00:28Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 20,
+      "startedAt": "2026-08-11T16:46:20Z",
+      "finishedAt": "2026-08-11T16:57:25Z",
+      "durationMinutes": 11,
+      "sections": 7,
+      "cards": 48,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New forward-progress chapter (redo backlog empty), no existing wired-in file for this chapter. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (26 verses). Sheba the Benjamite's secession cry (a man of Belial, every man to his tents, refusing to call David anything but son of Jesse) splitting Israel from Judah right on the heels of chapter nineteen's quarrel, David confining Absalom's ten defiled concubines in permanent guarded widowhood, David testing newly appointed commander Amasa with a three day deadline he misses, David bypassing Amasa to send Abishai and Joab's own forces instead, Joab's treacherous kiss and killing of Amasa at the great stone in Gibeon (echoing his earlier murder of Abner), an unnamed soldier clearing Amasa's body from the highway so the army can keep pursuing Sheba, the wise woman of Abel of Bethmaachah's negotiated surrender invoking the city's old reputation for settling disputes and its identity as a mother city and part of the LORD's inheritance, Sheba's beheading ending the siege with the same trumpet motif that opened the rebellion, and the closing list of David's restored officials (Joab back in full command despite the murder, Benaiah, Adoram whose office later sparks Rehoboam's revolt, Jehoshaphat, Sheva, Zadok and Abiathar, Ira the Jairite). Chunked into 7 sections (1-3, 4-7, 8-10, 11-13, 14-19, 20-22, 23-26). Density about 1.85 cards/verse (26 verses, 48 cards). `scripts/check_bible_note_style.py` was clean on the first run, no problems found (title punctuation was hand checked against the mechanical rules while drafting: semicolons in two KJV-literal titles were swapped for commas, an ellipsis in one title was replaced with the full exact KJV phrase, and a trailing question mark was dropped from one title to match the established no-question-mark convention). Parser check passed exactly via `getBibleReaderStudySections('2 samuel', 20)` (7/7 sections, 48 cards, 26 verses, text rendered verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: import added for `SECOND_SAMUEL_TWENTY_PERSONAL_SECTIONS` from new `secondSamuelTwentySource.ts`, `preserveExactPhraseBodies` extended from \"2 samuel\" chapter <= 19 to <= 20, `replaceStudySectionsForBookRange(\"2 samuel\", 20, 20, SECOND_SAMUEL_TWENTY_PERSONAL_SECTIONS)` call added directly after the chapter 19 call inside `applyPersonalSecondSamuelFourteenStudySections`. This completes 2 Samuel through chapter 20 (24 total). Next up: 2 Samuel 21.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T16:46:20Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 20 (new chapter, redo backlog empty)",
+          "at": "2026-08-11T16:55:03Z"
+        },
+        {
+          "name": "KJV text fetched from GitHub raw mirror (26 verses)",
+          "at": "2026-08-11T16:55:03Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-11T16:55:03Z"
+        },
+        {
+          "name": "source file lib/secondSamuelTwentySource.ts written (48 cards, 7 sections)",
+          "at": "2026-08-11T16:57:25Z"
+        },
+        {
+          "name": "style checker clean on first pass (48 cards, 0 problems)",
+          "at": "2026-08-11T16:57:25Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-11T16:57:25Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 48 cards, verbatim)",
+          "at": "2026-08-11T16:57:25Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-11T16:57:25Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-11T16:58:47Z"
+        }
+      ]
     }
   ]
 }
