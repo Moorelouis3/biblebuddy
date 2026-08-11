@@ -18714,6 +18714,63 @@
           "at": "2026-08-11T16:58:47Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 21,
+      "startedAt": "2026-08-11T17:46:16Z",
+      "finishedAt": "2026-08-11T17:57:11Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 33,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New forward-progress chapter (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing wired-in file for this chapter. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (22 verses). 2 Samuel 21 covers the three year famine and God naming its cause as Saul's bloodguilt against the Gibeonites (an event not recorded elsewhere in Samuel), the Gibeonites' demand for seven of Saul's male descendants to be handed over and hanged at Gibeah, David sparing Jonathan's son Mephibosheth because of his oath while handing over Rizpah's two sons and five grandsons through Merab (the chapter says Michal, almost certainly a copying error since Michal is elsewhere said to be childless, addressed directly in the note), Rizpah's months long vigil guarding the exposed bodies from scavengers until the rains came, David finally burying Saul and Jonathan's bones alongside the executed men in Kish's family tomb which resolves the famine, and the closing battle sequence against four Philistine giants from Gath (Ishbibenob nearly killing an aging David before Abishai saves him, Sibbechai killing Saph, Elhanan killing Goliath's brother with the apparent Chronicles naming discrepancy addressed honestly, and David's own nephew Jonathan son of Shimeah killing the six fingered six toed giant). Chunked into 6 sections (1-4, 5-9, 10-11, 12-14, 15-17, 18-22). Density about 1.5 cards/verse (22 verses, 33 cards). scripts/check_bible_note_style.py found 7 problems on first pass (digit keycap emoji like 7\u20e3/4\u20e3/2\u20e3 as bullet leads were invisible to the checker's unicode range regex so those bullets were not counted at all, one bullet over the 8 word limit, one card's last bullet was not \ud83d\udcd6/\u27a1\ufe0f, one long bullet), fixed by swapping digit emoji for \ud83d\udd22 and reordering/shortening bullets, second run clean. Also did a manual pass to match the most recent chapter's title convention (2 Samuel 20's log entry noted a shift away from ellipsis titles toward full exact contiguous KJV phrases), replacing two ellipsis titles (Abishai and Elhanan cards) with their full verse phrasing. Parser check passed exactly via getBibleReaderStudySections('2 samuel', 21) (6/6 sections, 33 cards, 22 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for SECOND_SAMUEL_TWENTY_ONE_PERSONAL_SECTIONS from new secondSamuelTwentyOneSource.ts, preserveExactPhraseBodies extended from \"2 samuel\" chapter <= 20 to <= 21, replaceStudySectionsForBookRange(\"2 samuel\", 21, 21, SECOND_SAMUEL_TWENTY_ONE_PERSONAL_SECTIONS) call added directly after the chapter 20 call. This completes 2 Samuel through chapter 21 of 24 total chapters (2 Samuel 22-24 remain). Next up: 2 Samuel 22.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T17:46:59Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 21 (new chapter, forward progress)",
+          "at": "2026-08-11T17:46:59Z"
+        },
+        {
+          "name": "KJV text fetched for 2 Samuel 21 (22 verses, GitHub raw mirror)",
+          "at": "2026-08-11T17:47:17Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-08-11T17:47:17Z"
+        },
+        {
+          "name": "source file lib/secondSamuelTwentyOneSource.ts written (6 sections, 34 cards)",
+          "at": "2026-08-11T17:52:34Z"
+        },
+        {
+          "name": "style checker clean (33 cards, 6 sections, 0 problems)",
+          "at": "2026-08-11T17:53:55Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 21, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-11T17:54:10Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 33 cards, matches design)",
+          "at": "2026-08-11T17:54:27Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-11T17:55:50Z"
+        },
+        {
+          "name": "final title convention pass (removed ellipsis titles), style checker and parser re-verified clean",
+          "at": "2026-08-11T17:57:11Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-11T17:57:30Z"
+        }
+      ]
     }
   ]
 }
