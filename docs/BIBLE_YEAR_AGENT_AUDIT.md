@@ -94,17 +94,34 @@ Raising that ceiling to 365 is a one-line change that lights up 65 days of
 already-written content. This is the single highest-value fix in the audit and
 it costs no API spend.
 
-### What I could NOT verify — read this before trusting "1–105 complete"
+### RESOLVED: days 71–105 are broken in the app
 
-**No `.env`, no Supabase credentials in this environment.** Every audio claim
-above is "a reference exists in code," not "an MP3 exists in the bucket." The
-`tts-audio` bucket is private and served through a signed-URL redirect
-(`app/api/tts/bible-year/day/[dayNumber]/route.ts`), which returns 404 when the
-object is missing. Days 1–105 could be fully uploaded or half-empty and this
-audit cannot tell the difference. **First task before any generation work is a
-storage-reconciliation script** — list the bucket, HEAD every expected path,
-compare to the 105 references. Cheap, no API cost, and it converts the biggest
-unknown into a fact.
+The storage reconciliation ran (commit `b072b4c7`,
+`data/bible-year-audio-inventory.json`, 365 records). Result:
+
+| Days | Audio in `tts-audio` bucket | Code references audio |
+|---|---|---|
+| 1–70 | **Yes** — 6.4–26.4 MB, median 14.1 MB | Yes |
+| 71–105 | **No — no folder at all** | **Yes** |
+| 106–365 | No | No |
+
+**Days 71–105 are the worst state in the whole system: they look finished and
+are not.** The day renders, the audio player appears, the user presses play,
+and `/api/tts/bible-year/day/N` returns 404 "Audio lesson is not available yet."
+Days 106–365 at least fail honestly — they show no player.
+
+So the real completion picture is:
+
+| Status | Days | Count |
+|---|---|---|
+| Audio + lesson + custom cover | 1–30 | 30 |
+| Audio + lesson, generic cover | 31–70 | 40 |
+| **Lesson but NO audio — broken player** | **71–105** | **35** |
+| Plan only | 106–365 | 260 |
+
+Fixing 71–105 is now the first production job, ahead of Day 106. The scripts
+already exist for those days, so it is a TTS-and-upload run, not a writing job —
+the cheapest 35 days available and it stops users hitting a dead play button.
 
 ---
 
