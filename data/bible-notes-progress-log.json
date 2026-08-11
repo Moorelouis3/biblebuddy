@@ -18406,7 +18406,8 @@
         { "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 15, replaceStudySectionsForBookRange call added)", "at": "2026-08-11T12:00:30Z" },
         { "name": "parser check passed via getBibleReaderStudySections('2 samuel', 15): 7/7 sections, 59 cards, text verbatim", "at": "2026-08-11T12:01:10Z" },
         { "name": "npx tsc --noEmit -p . clean, zero errors", "at": "2026-08-11T12:01:50Z" },
-        { "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)", "at": "2026-08-11T12:04:00Z" }
+        { "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)", "at": "2026-08-11T12:04:00Z" },
+        { "name": "committed and pushed to origin/main (commit 6db120b), push confirmed via git push output (44ec59d..6db120b main -> main); this run also hit the recurring detached-HEAD environment bug before committing, recovered by confirming local HEAD exactly matched origin/main via git fetch then running git checkout -B main origin/main, no work lost", "at": "2026-08-11T12:06:00Z" }
       ]
     }
   ]
