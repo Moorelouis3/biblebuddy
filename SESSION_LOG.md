@@ -1448,3 +1448,7 @@ Next up: 2 Samuel 21
 ## 2026-08-11T17:58:14Z (hourly chapter notes run)
 Chapter: 2 Samuel 21 | Duration: 11 min | Sections: 6 | Cards: 33 | Status: pass
 Next up: 2 Samuel 22
+
+## 2026-08-11T19:07:14Z (hourly chapter notes run)
+Chapter: 2 Samuel 22 | Duration: 20 min | Sections: 12 | Cards: 94 | Status: pass
+Next up: 2 Samuel 23
