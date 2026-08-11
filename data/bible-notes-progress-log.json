@@ -18555,6 +18555,59 @@
           "at": "2026-08-11T14:04:01Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 18,
+      "startedAt": "2026-08-11T14:46:18Z",
+      "finishedAt": "2026-08-11T14:59:16Z",
+      "durationMinutes": 13,
+      "sections": 9,
+      "cards": 61,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty. Normal forward progress: 2 Samuel 1-17 all had dedicated wired-in lib files, chapter 18 had none, confirming it as the correct next target. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (33 verses). 2 Samuel 18 covers Absalom's death: David splitting his army into three under Joab, Abishai, and Ittai the Gittite and being talked out of fighting personally, his public order to deal gently with Absalom, the battle in the wood of Ephraim where the terrain kills more than the sword (20,000 dead), Absalom's mule running out from under him and his hair catching in an oak, the soldier who refuses Joab's bribe and correctly predicts Joab would betray him, Joab's own direct violation of David's order with three darts plus ten armor bearers finishing the kill, Absalom's shameful pit-and-stone-heap burial contrasted with the vanity pillar he built for himself (with an honest note on the tension with the three sons named for him in chapter 14), the two-messenger sequence (Ahimaaz held back and evasive, Cushi sent and blunt), the watchman scene recognizing Ahimaaz's running style, and the chapter's climax, David's lament 'O my son Absalom, my son, my son Absalom.' Chunked into 9 sections (1-5, 6-8, 9-13, 14-15, 16-18, 19-23, 24-27, 28-30, 31-33). Density about 1.85 cards/verse (33 verses, 61 cards). scripts/check_bible_note_style.py was clean on the first pass, zero problems found (61 cards). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term (numbered, succour, tarry, apace, tumult, moved) in plain language, closes on meaning rather than mechanics, and that no card title or body/bullet line repeats anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('2 samuel', 18) (9/9 sections, 61 cards, 33 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range for 2 samuel extended from <=17 to <=18, and a replaceStudySectionsForBookRange(\"2 samuel\", 18, 18, ...) call added inside applyPersonalSecondSamuelFourteenStudySections (the same function already carrying the chapter 15-17 calls).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T14:46:40Z"
+        },
+        {
+          "name": "target chapter determined (2 Samuel 18, forward progress, redo backlog empty)",
+          "at": "2026-08-11T14:47:00Z"
+        },
+        {
+          "name": "KJV text fetched from aruljohn/Bible-kjv mirror (33 verses)",
+          "at": "2026-08-11T14:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation read",
+          "at": "2026-08-11T14:52:00Z"
+        },
+        {
+          "name": "source file lib/secondSamuelEighteenSource.ts written",
+          "at": "2026-08-11T14:57:00Z"
+        },
+        {
+          "name": "style checker clean on first pass (61 cards, 0 problems)",
+          "at": "2026-08-11T14:57:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-11T14:57:50Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 61 cards, verbatim)",
+          "at": "2026-08-11T14:58:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-11T14:58:30Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-11T14:59:16Z"
+        }
+      ]
     }
   ]
 }

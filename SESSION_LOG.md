@@ -1417,3 +1417,7 @@ Next up: 2 Samuel 17
 ## 2026-08-11T14:04:01Z (hourly chapter notes run)
 Chapter: 2 Samuel 17 | Duration: 8 min | Sections: 9 | Cards: 50 | Status: pass
 Next up: 2 Samuel 18
+
+## 2026-08-11T14:59:16Z (hourly chapter notes run)
+Chapter: 2 Samuel 18 | Duration: 13 min | Sections: 9 | Cards: 61 | Status: pass
+Next up: 2 Samuel 19
