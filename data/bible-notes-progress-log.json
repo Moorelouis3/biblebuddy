@@ -17806,6 +17806,59 @@
           "at": "2026-08-11T00:57:55Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 5,
+      "startedAt": "2026-08-11T01:46:34Z",
+      "finishedAt": "2026-08-11T01:55:30Z",
+      "durationMinutes": 9,
+      "sections": 7,
+      "cards": 49,
+      "verses": 25,
+      "notes": "Scheduled hourly run. Style redo backlog empty, normal forward progress, first dedicated file for this chapter. All Israel crowns David at Hebron, capture of Jerusalem from the Jebusites (Zion, the gutter/water shaft, the blind and lame taunt), palace built with Hiram of Tyre's help, sons born in Jerusalem, and two Philistine campaigns at Baalperazim showing David enquiring of the LORD each time rather than assuming. Style checker clean after 2 fixes, parser check exact, tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T01:47:00Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 5 (redo backlog empty, normal forward progress)",
+          "at": "2026-08-11T01:47:20Z"
+        },
+        {
+          "name": "KJV text fetched for 2 Samuel 5 (25 verses)",
+          "at": "2026-08-11T01:49:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-11T01:50:00Z"
+        },
+        {
+          "name": "source file lib/secondSamuelFiveSource.ts written (7 sections, 49 cards)",
+          "at": "2026-08-11T01:53:30Z"
+        },
+        {
+          "name": "style checker clean (2 problems fixed then 0)",
+          "at": "2026-08-11T01:53:55Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies to <=5, apply function, call site)",
+          "at": "2026-08-11T01:54:05Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 49 cards, text verbatim)",
+          "at": "2026-08-11T01:54:35Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-11T01:54:50Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-11T01:55:30Z"
+        }
+      ]
     }
   ]
 }

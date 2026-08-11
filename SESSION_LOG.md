@@ -1362,3 +1362,7 @@ commit/push. Flagged in MARCUS_HANDOFF.md.
 ## 2026-08-11T00:57:14Z (hourly chapter notes run)
 Chapter: 2 Samuel 4 | Duration: 11 min | Sections: 3 | Cards: 29 | Status: pass
 Next up: 2 Samuel 5
+
+## 2026-08-11T01:55:30Z (hourly chapter notes run)
+Chapter: 2 Samuel 5 | Duration: 9 min | Sections: 7 | Cards: 49 | Status: pass
+Next up: 2 Samuel 6
