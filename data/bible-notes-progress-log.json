@@ -18148,6 +18148,59 @@
           "at": "2026-08-11T06:58:31Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 11,
+      "startedAt": "2026-08-11T07:46:13Z",
+      "finishedAt": "2026-08-11T07:58:00Z",
+      "durationMinutes": 12,
+      "sections": 9,
+      "cards": 30,
+      "verses": 27,
+      "notes": "Scheduled hourly run. Style redo backlog empty, normal forward progress, first dedicated file for this chapter. David stays home from the spring campaign season while Joab besieges Rabbah, sees Bathsheba bathing from the palace roof and sends for her despite the servant naming both her father Eliam (likely one of David's mighty men) and her husband Uriah the Hittite. She conceives, and the note that she was purified from her uncleanness rules out Uriah as the father since he is away at war. David recalls Uriah under cover of a war briefing and twice tries to send him home to his wife (a royal food gift, then getting him drunk), but Uriah sleeps at the palace door out of loyalty to his fellow soldiers and the ark in the field both times. David escalates to murder by proxy, sending Uriah back to Joab carrying his own death order; Joab places him where the city's strongest defenders are and coaches the messenger with the Abimelech/Jerubbesheth callback to Judges 9 in case David objects to the risky tactics. David instead brushes off the report with the proverb about the sword devouring one as well as another once he hears Uriah is dead. The chapter closes with Bathsheba's mourning, David's marriage to her that makes the affair look resolved, undercut by the final sentence naming God's own verdict for the first time in the chapter. Chunked into 9 sections (1, 2-3, 4-5, 6-9, 10-13, 14-17, 18-21, 22-25, 26-27). Density about 1.11 cards/verse (27 verses, 30 cards). check_bible_note_style.py found 2 problems on first pass (two bullets one word over the 8 word limit), fixed, second run clean. Parser check passed exactly (9/9 sections, 30 cards, 27 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies extended from chapter <= 10 to <= 11, applyPersonalSecondSamuelElevenStudySections() override call added. Forward progress resumes at 2 Samuel 12 next run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T07:46:42Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 11 (new chapter, forward progress; redo backlog empty)",
+          "at": "2026-08-11T07:47:53Z"
+        },
+        {
+          "name": "KJV text fetched (2 Samuel 11, 27 verses)",
+          "at": "2026-08-11T07:47:53Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) + reference implementation reviewed",
+          "at": "2026-08-11T07:48:00Z"
+        },
+        {
+          "name": "source file written: lib/secondSamuelElevenSource.ts (9 sections, 30 cards)",
+          "at": "2026-08-11T07:54:28Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 30 cards, after fixing 2 bullet length issues)",
+          "at": "2026-08-11T07:54:39Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply call, preserveExactPhraseBodies range extended to 11)",
+          "at": "2026-08-11T07:54:55Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 30 cards, matches design",
+          "at": "2026-08-11T07:54:55Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-11T07:56:39Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json entry appended, BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals updated, SESSION_LOG.md hourly block appended)",
+          "at": "2026-08-11T07:58:00Z"
+        }
+      ]
     }
   ]
 }
