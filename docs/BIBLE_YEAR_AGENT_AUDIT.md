@@ -19,7 +19,7 @@ scripts to ~50–75, nothing past 75. The reality:
 | Audio reference wired | **1–105** |
 | Narrator script docs (`docs/*.md`) | **8–105** (102 files) |
 | Custom cover art | **1–30** |
-| Chapter study notes | **all 1,189 chapters** have notes |
+| Chapter study notes | all 1,189 wired, but mostly weak legacy notes being rewritten on a separate track — not this agent's scope |
 | Video | **0 days** |
 
 The plan lives in `lib/bibleInOneYearPlan.ts` as a pipe-delimited table
@@ -62,12 +62,19 @@ These matter more than the headline, because "exists" ≠ "good":
   emoji-bullets the fragments. Functional, generic.
 - **Days 94–95 and 359 have 20+ duplicated first explanation lines** — the exact
   filler the workflow doc bans.
-- **Chapter notes are two-tier.** All 1,189 chapters are wired, but only
-  **~390 are at the current gold standard** (Genesis → 2 Samuel 10, per
-  `data/bible-notes-progress-log.json`: 40 pre-existing + 350 logged). The
-  hourly notes agent is advancing this at ~1 chapter/hour. The remaining ~800
-  chapters carry older, broader notes — median 2,469 words/chapter, but the
-  bottom decile is under 891.
+- **Chapter notes: all 1,189 wired, but most are poor.** The legacy notes
+  covering the whole Bible are low quality and are being replaced, not extended.
+  Three tiers:
+  - **Legacy** — the default state for ~800 chapters. Wired and rendering, but
+    weak. Word count is not a quality signal here; ignore the median.
+  - **Level 1** — the hourly agent's rewrite, ~390 chapters done (Genesis →
+    2 Samuel 10), advancing ~1 chapter/hour. Bar is "a reader gets something
+    real from it."
+  - **Level 2** — Louis's own hand-written notes, around Genesis 40. Much
+    slower, and the actual product standard.
+
+  This is out of scope for the BIOY agent and needs nothing from it, but it
+  constrains the plan — see the note in section F.
 
 ### Confirmed bug: 65 days of finished content are invisible
 
@@ -231,11 +238,21 @@ brief.** Don't start at Day 106.
 
 ### On 4–5 days/day
 
-**Reasonable, and the economics are much better than you'd assume** — because
-the expensive part is already done. Days 106–365 already have chapter notes for
-every reading, so the agent does **not** need to write 150 phrase cards per day.
-It needs a lesson script and audio. That's roughly a fifth of the work a
-Day 76–105 build required.
+**Reasonable, and cheaper than a Day 76–105 build** — because the BIOY agent
+does not write chapter notes at all. Days 106–365 already have *something*
+wired for every reading, so the agent produces a lesson script and audio only,
+roughly a fifth of the work. The notes those days display come from the
+separate chapter-notes track and are not this agent's problem.
+
+**But be clear-eyed about what that means.** For most of days 106–365 the
+displayed study notes will be the weak legacy ones until the Level 1 rewrite
+reaches those books — currently 2 Samuel, ~390 of 1,189, at ~1 chapter/hour.
+The BIOY agent should neither wait for that nor try to fix it; the two tracks
+run independently and BIOY days improve automatically as Level 1 advances. The
+only decision this forces is whether a day counts as shippable while its notes
+are still legacy. My read: yes — the lesson and audio are the day's substance,
+and holding 260 days hostage to a notes queue moving at 24 chapters/day would
+cost roughly a year.
 
 The real ceiling isn't cost, it's **review**. 5 days/day × 25 min of audio is
 over 2 hours of narration daily that nobody is listening to. I'd run **3/day**
