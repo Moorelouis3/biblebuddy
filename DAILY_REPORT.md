@@ -1,43 +1,48 @@
-# Daily Report - 2026-08-11T08:18:00Z
+# Daily Report - 2026-08-11T16:23:00Z
 
 ## Latest Conversations
-Since the last report (2026-08-10T16:20:00Z), the hourly chapter-notes
-routine has run continuously and shipped 10 more chapters: 1 Samuel 27
-through 2 Samuel 11 — finishing 1 Samuel (31/31) and moving into 2 Samuel.
-One Level 2 upgrade agent run also fired (00:24 UTC) but stayed blocked on
-the same recurring network issue (see below). No other feature or blog
-work landed in this window.
+Since the last report (2026-08-11T08:18:00Z), the hourly chapter-notes
+routine has run continuously and shipped 8 more chapters: 2 Samuel 12
+through 2 Samuel 19 (David and Bathsheba's child, Amnon and Tamar,
+Absalom's exile and return, Absalom's death, Shimei and Mephibosheth
+pardoned, Barzillai's farewell). One Level 2 upgrade agent run fired
+(12:30 UTC) but stayed blocked on the same recurring network issue (see
+below) — no change since the last report. Louis also made one manual,
+non-routine commit (`b072b4c`, Bible In One Year audio inventory): a
+read-only storage audit of the tts-audio bucket, finding 70 of 365 days
+have audio and days 71-365 have no folder at all. No blog posts or other
+feature work landed in this window.
 
-This report-writing run found the repo in a clean, fully-synced state:
-`HEAD` was detached (the usual environment quirk) but pointed at the exact
-same commit as `origin/main` (`5fb13e9`, the 2 Samuel 11 push-log commit) —
-nothing diverged, nothing needed recovering.
+This report-writing run found the repo in a clean state, though local
+`main` was again stale (still pointing at Joshua 24) while `origin/main`
+had moved on to the current HEAD (`e22c3fe`, 2 Samuel 19). Fetching and
+resetting local `main` to `origin/main` resolved it with nothing lost —
+same recurring quirk noted in the last two reports and in
+`MARCUS_HANDOFF.md`.
 
 ## Unanswered Questions
 1. Does Louis want network access to `life-buddy-production.up.railway.app`
    fixed at the environment egress-policy level? The Level 2 upgrade agent
-   has now been blocked on this same 403 across at least 10 separate
-   scheduled runs since 2026-08-07, most recently today at 00:24 UTC. No
+   has now been blocked on this same 403 across at least 11 separate
+   scheduled runs since 2026-08-07, most recently today at 12:30 UTC. No
    change since the last report.
 2. The Joshua/Judges old-grouped-file redo-backlog question (should
    remaining post-Deuteronomy books still leaning on old aggregate note
    files be added to `data/bible-notes-style-redo-remaining.json`) is
-   still open. That backlog file is currently empty, so nothing is
-   scheduled to address it either way.
+   still open and unaddressed.
 3. What to do with the stale root `bible-notes-progress.json` file — still
    unresolved (see Missed Things).
 
 ## Missed Things
 1. **`bible-notes-progress.json` (repo root) is still stale**, last
    updated 2026-07-27 at Exodus 35. Real progress is tracked continuously
-   in `data/bible-notes-progress-log.json` (351 logged entries, now
-   through 2 Samuel 11 — roughly 243 chapters ahead of what the root file
-   shows). Flagging again so it can be retired or reconciled.
-2. Daily blog posting, which the 2026-08-09 (night) session log named as
-   the next step after the blog format spec shipped, has not continued.
-   Only one article ("What Does the Bible Say About Zodiac Signs?") has
-   gone out since, on 2026-08-09 at 22:19 UTC. No new post has shipped in
-   the two days since, and the queue still shows 28 articles remaining.
+   in `data/bible-notes-progress-log.json` (359 logged entries, now
+   through 2 Samuel 19). Flagging again so it can be retired or
+   reconciled.
+2. Daily blog posting remains stalled. Only one article ("What Does the
+   Bible Say About Zodiac Signs?") has gone out since 2026-08-09 at 22:19
+   UTC — no new post has shipped in over 2.5 days, and the queue still
+   shows 28 articles remaining.
 
 ## Dropped Activities
 1. Daily blog posting appears to have stalled after its first article —
@@ -45,15 +50,12 @@ nothing diverged, nothing needed recovering.
 
 ## Unfinished Jobs
 1. Add `life-buddy-production.up.railway.app` to the agent environment's
-   egress allowlist so the Level 2 upgrade agent can run (blocked 10+ runs
-   running).
+   egress allowlist so the Level 2 upgrade agent can run (blocked 11+
+   runs running).
 2. Decide the Joshua/Judges old-grouped-file redo-backlog question above.
 3. Decide what to do with the stale root `bible-notes-progress.json` file.
-4. Confirm whether `~/.claude/stop-hook-git-check.sh` actually catches a
-   detached-HEAD-with-unpushed-commits state — not an issue this run (HEAD
-   and origin/main already matched), but still unconfirmed as fixed.
-5. Resume daily blog posting, or confirm it's intentionally paused.
-6. Continue forward chapter-notes progress from 2 Samuel 12.
+4. Resume daily blog posting, or confirm it's intentionally paused.
+5. Continue forward chapter-notes progress from 2 Samuel 20.
 
 ## Current Jobs / Current Build
 Chapter notes progress (source: `data/bible-notes-progress-log.json` +
@@ -69,11 +71,12 @@ used for these numbers — see Missed Things), goal 1189 chapters total:
 - Judges: 21/21 complete
 - Ruth: 4/4 complete
 - 1 Samuel: 31/31 complete
-- 2 Samuel: 11/24 — **next up: 2 Samuel 12**
+- 2 Samuel: 19/24 — **next up: 2 Samuel 20**
 
-278 of 1189 chapters (23.4%) shipped to the gold-standard style spec. The
+286 of 1189 chapters (24.1%) shipped to the gold-standard style spec. The
 hourly Bible Note Writer Agent is the main active routine right now and is
-running without gaps. The blog writer routine is nominally active but has
-not produced new output in two days (queue: 28 articles remaining as of
-2026-08-09T22:19 UTC — see Dropped Activities). The Level 2 upgrade agent
-remains blocked on the recurring egress issue (see Unanswered Questions).
+running without gaps (8 chapters this ~8-hour window). The blog writer
+routine is nominally active but has not produced new output in over two
+days (queue: 28 articles remaining as of 2026-08-09T22:19 UTC — see
+Dropped Activities). The Level 2 upgrade agent remains blocked on the
+recurring egress issue (see Unanswered Questions).
