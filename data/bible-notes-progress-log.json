@@ -17977,6 +17977,59 @@
           "at": "2026-08-11T03:58:03Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 8,
+      "startedAt": "2026-08-11T04:45:48Z",
+      "finishedAt": "2026-08-11T04:53:56Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 22,
+      "verses": 18,
+      "notes": "Scheduled hourly run. Style redo backlog empty, normal forward progress, first dedicated file for this chapter. A summary chapter of David's military conquests: Philistines and Moab subdued (the harsh measuring line judgment on Moab, a callback to David once sheltering his own parents there), Hadadezer king of Zobah defeated and his chariot horses houghed per Israel's law against trusting horses, Damascus falls, gold shields and bronze brought to Jerusalem (bronze later used by Solomon for the temple), Toi king of Hamath sends his son Joram with gifts which David dedicates to the LORD alongside spoils from every subdued nation, the valley of salt victory (noted the Syrians/Edom textual discrepancy against the Chronicles parallel), and closes with David's roster of officials (also noted the likely Ahimelech/Abiathar name-order swap, and the chief rulers/priests translation question for David's sons). Style checker clean after fixing one banned hedge word and four last-bullet emoji order issues. Parser check exact (7/7 sections, 22 cards), tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-11T04:46:36Z"
+        },
+        {
+          "name": "target chapter determined: 2 Samuel 8 (new chapter, forward progress; redo list empty)",
+          "at": "2026-08-11T04:50:01Z"
+        },
+        {
+          "name": "KJV text fetched (2 Samuel 8, 18 verses, GitHub raw mirror)",
+          "at": "2026-08-11T04:47:12Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-08-11T04:50:01Z"
+        },
+        {
+          "name": "source file written (lib/secondSamuelEightSource.ts, 7 sections, 22 cards)",
+          "at": "2026-08-11T04:52:07Z"
+        },
+        {
+          "name": "style checker clean (22 cards, no problems, after 5 small fixes)",
+          "at": "2026-08-11T04:52:07Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to ch 8, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-11T04:52:44Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 22 cards, no throw)",
+          "at": "2026-08-11T04:52:44Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, exit 0",
+          "at": "2026-08-11T04:53:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json entry appended, BIBLE_BUDDY_NOTES_PROGRESS.md row added, SESSION_LOG.md hourly block appended)",
+          "at": "2026-08-11T04:54:59Z"
+        }
+      ]
     }
   ]
 }
