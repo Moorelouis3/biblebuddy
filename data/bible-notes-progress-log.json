@@ -18384,6 +18384,30 @@
           "at": "2026-08-11T10:59:40Z"
         }
       ]
+    },
+    {
+      "book": "2 Samuel",
+      "chapter": 15,
+      "startedAt": "2026-08-11T11:47:14Z",
+      "finishedAt": "2026-08-11T12:05:00Z",
+      "durationMinutes": 18,
+      "sections": 7,
+      "cards": 59,
+      "verses": 37,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty, normal forward progress: 2 Samuel 1-14 each already had a dedicated wired-in lib file, chapter 15 did not (only the generic royalHistoryPersonalNotes.ts batch covered it), so this is the first dedicated file for this chapter. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (37 verses). Absalom's four year (KJV reads forty, noted as a likely copying error) campaign to steal Israel's loyalty at the city gate and his declaration as king in Hebron with Ahithophel's defection, David's decisive flight from Jerusalem leaving ten concubines to keep the house, Ittai the Gittite's Ruth-echoing oath of loyalty despite being offered a clean way out, David sending the ark of the covenant back to the city rather than using it as a good luck charm and submitting his fate to God's favor, the ark bearers Zadok and Abiathar turned into an intelligence relay through their sons Ahimaaz and Jonathan, David's barefoot weeping ascent of Mount Olivet and his targeted prayer against Ahithophel's counsel, and Hushai the Archite sent back into Jerusalem as a counter agent to defeat that same counsel, closing on Absalom taking the capital. Chunked into 7 sections (1-6, 7-12, 13-18, 19-23, 24-29, 30-33, 34-37) matching the chapter's natural scene breaks. Density 1.59 cards/verse (37 verses, 59 cards). scripts/check_bible_note_style.py found 3 problems on first pass (three bullets over the 8 word limit), fixed, second run clean; a manual pass also caught and retitled one card whose KJV-lifted title contained the banned filler word 'indeed' before the checker was even run. Parser check passed exactly via getBibleReaderStudySections('2 samuel', 15) (7/7 sections, 59 cards, 37 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added after secondSamuelFourteenSource, preserveExactPhraseBodies 2 samuel range extended from chapters 1-14 to 1-15, replaceStudySectionsForBookRange(\"2 samuel\", 15, 15, SECOND_SAMUEL_FIFTEEN_PERSONAL_SECTIONS) call added directly after the 2 Samuel 14 call. Next forward-progress target is 2 Samuel 16.",
+      "steps": [
+        { "name": "npm install done", "at": "2026-08-11T11:47:10Z" },
+        { "name": "redo backlog checked (data/bible-notes-style-redo-remaining.json), confirmed empty", "at": "2026-08-11T11:47:20Z" },
+        { "name": "target chapter determined: 2 Samuel 15 (normal forward progress, new chapter, no prior dedicated file for chapters 15+ in 2 Samuel)", "at": "2026-08-11T11:48:30Z" },
+        { "name": "KJV text fetched for 2 Samuel 15 (37 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv", "at": "2026-08-11T11:49:15Z" },
+        { "name": "docs/bible-study-note-style.md read in full, lib/genesisThirtyOneSource.ts read as reference implementation", "at": "2026-08-11T11:52:00Z" },
+        { "name": "lib/secondSamuelFifteenSource.ts written (7 sections, 59 cards)", "at": "2026-08-11T11:58:30Z" },
+        { "name": "scripts/check_bible_note_style.py run, 3 bullet-length problems found and fixed, second run clean", "at": "2026-08-11T11:59:50Z" },
+        { "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 15, replaceStudySectionsForBookRange call added)", "at": "2026-08-11T12:00:30Z" },
+        { "name": "parser check passed via getBibleReaderStudySections('2 samuel', 15): 7/7 sections, 59 cards, text verbatim", "at": "2026-08-11T12:01:10Z" },
+        { "name": "npx tsc --noEmit -p . clean, zero errors", "at": "2026-08-11T12:01:50Z" },
+        { "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)", "at": "2026-08-11T12:04:00Z" }
+      ]
     }
   ]
 }

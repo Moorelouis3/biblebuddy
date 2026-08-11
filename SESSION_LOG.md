@@ -1402,3 +1402,7 @@ Next up: 2 Samuel 14
 ## 2026-08-11T10:58:39Z (hourly chapter notes run)
 Chapter: 2 Samuel 14 | Duration: 12 min | Sections: 8 | Cards: 42 | Status: pass
 Next up: 2 Samuel 15
+
+## 2026-08-11T12:05:00Z (hourly chapter notes run)
+Chapter: 2 Samuel 15 | Duration: 18 min | Sections: 7 | Cards: 59 | Status: pass
+Next up: 2 Samuel 16
