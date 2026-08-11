@@ -1464,3 +1464,7 @@ Next up: 1 Kings 1
 ## 2026-08-11T22:04:05Z (hourly chapter notes run)
 Chapter: 1 Kings 1 | Duration: 17 min | Sections: 11 | Cards: 70 | Status: pass
 Next up: 1 Kings 2
+
+## 2026-08-11T22:22:00Z (blog writer run)
+Article: What Is the Fruit of the Spirit? All 9 Explained | Words: ~3225 | Category: Christian Foundations | Status: pass
+Queue remaining: 27
