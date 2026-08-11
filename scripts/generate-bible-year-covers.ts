@@ -20,12 +20,14 @@
 //   --dry-run          build prompts and title overlays, skip the API call
 
 import { config } from "dotenv";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import { join } from "path";
 import sharp from "sharp";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "../lib/bibleInOneYearPlan";
 import { BIBLE_YEAR_APPROVED_COVER_DAYS } from "../lib/bibleYearApprovedCovers";
+import { getCoverBrief } from "../lib/bibleYearCoverBriefs";
 import {
+  BIBLE_YEAR_COVER_API_SIZE,
   BIBLE_YEAR_COVER_SIZE,
   buildBibleYearCoverPrompt,
   buildBibleYearCoverTitleSvg,
@@ -116,7 +118,7 @@ async function generateArtwork(prompt: string, quality: string): Promise<Buffer>
     body: JSON.stringify({
       model: IMAGE_MODEL,
       prompt,
-      size: `${BIBLE_YEAR_COVER_SIZE}x${BIBLE_YEAR_COVER_SIZE}`,
+      size: `${BIBLE_YEAR_COVER_API_SIZE}x${BIBLE_YEAR_COVER_API_SIZE}`,
       quality,
       n: 1,
     }),
@@ -139,10 +141,10 @@ async function generateArtwork(prompt: string, quality: string): Promise<Buffer>
 async function placeholderArtwork(): Promise<Buffer> {
   return sharp({
     create: {
-      width: BIBLE_YEAR_COVER_SIZE,
-      height: BIBLE_YEAR_COVER_SIZE,
+      width: BIBLE_YEAR_COVER_API_SIZE,
+      height: BIBLE_YEAR_COVER_API_SIZE,
       channels: 3,
-      background: { r: 26, g: 18, b: 10 },
+      background: { r: 96, g: 66, b: 30 },
     },
   })
     .png()
@@ -179,6 +181,8 @@ async function main() {
 
   let made = 0;
   let failed = 0;
+  let consecutiveFailures = 0;
+  const blocked: number[] = [];
 
   for (const dayNumber of targets) {
     const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((d) => d.dayNumber === dayNumber);
@@ -200,17 +204,44 @@ async function main() {
     record.title = day.title;
     record.reference = day.reference;
 
-    const prompt = buildBibleYearCoverPrompt({
-      dayNumber,
-      title: day.title,
-      reference: day.reference,
-    });
+    // LAYER 2. Without a brief the model only has a title to work from and
+    // returns generic biblical scenery, so say so loudly rather than quietly
+    // burning an image credit on a cover that will be rejected.
+    const brief = getCoverBrief(dayNumber);
+    if (!brief) {
+      console.warn(
+        `  Day ${dayNumber}: NO CREATIVE BRIEF — run generate-bible-year-cover-briefs.ts --day=${dayNumber} first. Skipping.`,
+      );
+      continue;
+    }
+
+    const prompt = buildBibleYearCoverPrompt(
+      { dayNumber, title: day.title, reference: day.reference },
+      brief,
+    );
 
     for (let variant = 0; variant < variants; variant += 1) {
-      const index = record.candidates.length + 1;
+      // Number from what already exists rather than from the array length:
+      // deleting a rejected PNG would otherwise make the next run reuse a name
+      // and leave two manifest records pointing at the same file.
+      const used = new Set<number>();
+      for (const c of record.candidates) {
+        const n = Number(/candidate-(\d+)\.png$/.exec(c.file)?.[1]);
+        if (Number.isInteger(n)) used.add(n);
+      }
+      for (const f of readdirSync(dir)) {
+        const n = Number(/^candidate-(\d+)\.png$/.exec(f)?.[1]);
+        if (Number.isInteger(n)) used.add(n);
+      }
+      const index = used.size ? Math.max(...used) + 1 : 1;
       const fileName = `candidate-${index}.png`;
       try {
         const artwork = dryRun ? await placeholderArtwork() : await generateArtwork(prompt, quality);
+        // Keep the untitled artwork. The title is composited on top, so without
+        // this every fix to the typography layer means re-buying the image —
+        // which has already happened twice. With it, scripts/recomposite-bible-
+        // year-covers.ts rebuilds every cover for free.
+        if (!dryRun) writeFileSync(join(dir, `artwork-${index}.png`), artwork);
         const cover = await compositeCover(artwork, day);
         writeFileSync(join(dir, fileName), cover);
 
@@ -222,13 +253,28 @@ async function main() {
           status: "pending",
         });
         made += 1;
+        consecutiveFailures = 0;
         console.log(`  Day ${dayNumber} "${day.title}" -> ${fileName}`);
       } catch (error) {
         failed += 1;
-        console.error(`  Day ${dayNumber} FAILED: ${(error as Error).message}`);
+        consecutiveFailures += 1;
+        const message = (error as Error).message;
+        console.error(`  Day ${dayNumber} FAILED: ${message}`);
+
+        // A content block is about THIS day's brief, not the pipeline — the
+        // reading is violent (sacrifice, warfare) and the brief described it
+        // too literally. Note it and keep going; rewrite that brief later.
+        if (/moderation_blocked|safety system/i.test(message)) {
+          blocked.push(dayNumber);
+          consecutiveFailures = 0;
+          break; // further variants of the same brief would block too
+        }
+
         // Stop the whole run rather than burn credits on a systemic failure
         // (bad key, quota, model name) repeated across hundreds of days.
-        if (failed >= 3) {
+        // Consecutive, not cumulative — scattered one-off failures across a
+        // long run are expected and must not kill it.
+        if (consecutiveFailures >= 3) {
           manifest.days[String(dayNumber)] = record;
           writeManifest(manifest);
           throw new Error("Aborting: 3 consecutive image failures.");
@@ -241,6 +287,15 @@ async function main() {
   }
 
   console.log(`\nDone. ${made} candidate(s) written, ${failed} failure(s).`);
+  if (blocked.length) {
+    console.log(
+      `\n${blocked.length} day(s) blocked by content moderation: ${blocked.join(", ")}`,
+    );
+    console.log(
+      "Their briefs describe the violence too literally. Rewrite them to imply " +
+        "rather than depict, then re-run for just those days.",
+    );
+  }
   console.log("Review them at /admin/covers (run the app locally, sign in as admin).");
 }
 
