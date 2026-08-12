@@ -19355,6 +19355,56 @@
           "at": "2026-08-12T03:58:08Z"
         }
       ]
+    },
+    {
+      "date": "2026-08-12",
+      "book": "1 Kings",
+      "chapter": 8,
+      "startedAt": "2026-08-12T04:46:24Z",
+      "finishedAt": "2026-08-12T05:03:49Z",
+      "durationMinutes": 17,
+      "sections": 12,
+      "cards": 70,
+      "verses": 66,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog confirmed empty, last completed chapter was 1 Kings 7 finished just before this run). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (66 verses). Chapter covers the dedication of Solomon's temple: the ark brought up from Zion in the month Ethanim (Tabernacles), the priests placing it in the oracle under the cherubims with only the two stone tablets inside, the cloud/glory of the LORD filling the house so the priests could not minister, Solomon turning to bless the assembly and recount God's promise to David and the temple's fulfillment, his prayer opening on God's uniqueness and the impossibility of containing God even in the heaven of heavens, then the seven petitions (oath at the altar, defeat in battle, drought, famine/pestilence/plague, the foreigner's prayer, battle prayer, and the long captivity/exile petition explicitly praying toward a future Solomon could not have known), Solomon's closing blessing revealing he had been kneeling the whole time, and the closing dedication feast with its huge sacrifice numbers, the expanded court altar, and the fourteen day double feast. Chunked into 12 sections (1-5, 6-9, 10-13, 14-21, 22-26, 27-30, 31-34, 35-40, 41-45, 46-53, 54-61, 62-66), two sections held at 8 verses to stay under the parser's known auto-split threshold. Density about 1.06 cards/verse (70 cards/66 verses), consistent with the post-spec chapters (Genesis 31 and 1 Kings 7). check_bible_note_style.py found 2 problems on first pass (banned filler word 'indeed' inside a card/section title that had to be reworded since it broke the exact-KJV-phrase title rule, and banned hedge word 'fairly' in a bullet), both fixed by rewording, second run clean at 70 cards. Manually re-verified all 70 card titles were exact contiguous KJV substrings per spec section 2 during drafting and caught three that had silently dropped a middle word (fixed before first save, not after: 'in my sight' restored in the throne-succession title, 'and heaven' restored in the heaven-of-heavens title, and the blasting/mildew/locust title trimmed to a genuinely contiguous run instead of skipping 'or if there be'). Parser check passed exactly via getBibleReaderStudySections('1 kings', 8): 12/12 sections, 70 cards, 66 verses, text rendered verbatim. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for FIRST_KINGS_EIGHT_PERSONAL_SECTIONS from new firstKingsEightSource.ts, preserveExactPhraseBodies 1 kings range extended from chapters 1-7 to 1-8, applyPersonalFirstKingsEightStudySections() added calling replaceStudySectionsForBookRange('1 kings', 8, 8, FIRST_KINGS_EIGHT_PERSONAL_SECTIONS), call added directly after applyPersonalFirstKingsSevenStudySections(). Next forward-progress target is 1 Kings 9.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-12T04:47:04Z"
+        },
+        {
+          "name": "target_chapter_determined:1 Kings 8 (redo backlog empty, normal forward progress after 1 Kings 7)",
+          "at": "2026-08-12T04:47:30Z"
+        },
+        {
+          "name": "kjv_text_fetched:1 Kings 8 (66 verses, aruljohn GitHub raw mirror)",
+          "at": "2026-08-12T04:48:00Z"
+        },
+        {
+          "name": "style_spec_read:docs/bible-study-note-style.md and SKILL.md read in full, plus reference files genesisThirtyOneSource.ts and firstKingsSevenSource.ts",
+          "at": "2026-08-12T04:50:30Z"
+        },
+        {
+          "name": "source_file_written:lib/firstKingsEightSource.ts (12 sections, 70 cards)",
+          "at": "2026-08-12T05:00:00Z"
+        },
+        {
+          "name": "style_checker_clean:check_bible_note_style.py (2 problems found and fixed: banned filler 'indeed' in a title reworded to a different exact KJV substring, banned hedge 'fairly' in a bullet reworded, second pass clean)",
+          "at": "2026-08-12T05:01:00Z"
+        },
+        {
+          "name": "wired_into_reader:lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies 1-7 to 1-8, applyPersonalFirstKingsEightStudySections, invocation)",
+          "at": "2026-08-12T05:01:30Z"
+        },
+        {
+          "name": "parser_check_passed:getBibleReaderStudySections('1 kings',8) 12/12 sections, 70 cards, 66 verses, verbatim",
+          "at": "2026-08-12T05:01:45Z"
+        },
+        {
+          "name": "tsc_clean:npx tsc --noEmit -p . zero errors",
+          "at": "2026-08-12T05:03:49Z"
+        }
+      ]
     }
   ]
 }
