@@ -1497,3 +1497,7 @@ Next up: 1 Kings 8
 ## 2026-08-12T05:03:49Z (hourly chapter notes run)
 Chapter: 1 Kings 8 | Duration: 17 min | Sections: 12 | Cards: 70 | Status: pass
 Next up: 1 Kings 9
+
+## 2026-08-12T05:57:41Z (hourly chapter notes run)
+Chapter: 1 Kings 9 | Duration: 11 min | Sections: 7 | Cards: 43 | Status: pass
+Next up: 1 Kings 10
