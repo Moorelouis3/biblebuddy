@@ -20348,6 +20348,63 @@
           "at": "2026-08-12T21:59:50Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 4,
+      "startedAt": "2026-08-12T22:47:23Z",
+      "finishedAt": "2026-08-12T23:10:00Z",
+      "durationMinutes": 23,
+      "sections": 10,
+      "cards": 66,
+      "verses": 44,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress, no existing wired-in file for 2 Kings 4. Session's worker process restarted mid run after KJV fetch and style spec read; resumed cleanly. Widow's oil, Shunammite hospitality and promised son, the child's death and resurrection, death in the pot, and feeding a hundred men. Density 1.5 cards/verse. Style checker, parser check, and tsc all clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-12T22:47:23Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 4 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-12T22:47:23Z"
+        },
+        {
+          "name": "KJV text fetched for 2 Kings 4 (44 verses)",
+          "at": "2026-08-12T22:47:30Z"
+        },
+        {
+          "name": "style spec and reference implementation read",
+          "at": "2026-08-12T22:52:00Z"
+        },
+        {
+          "name": "worker process restarted mid run, resumed from cached research (branch fixed: local main reset to origin/main)",
+          "at": "2026-08-12T22:55:30Z"
+        },
+        {
+          "name": "source file written: lib/secondKingsFourSource.ts (10 sections, 66 cards)",
+          "at": "2026-08-12T22:56:30Z"
+        },
+        {
+          "name": "style checker clean (fixed one keycap emoji bullet-count issue)",
+          "at": "2026-08-12T22:57:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-12T23:02:00Z"
+        },
+        {
+          "name": "parser check passed (10/10 sections, 66 cards, text verbatim)",
+          "at": "2026-08-12T23:03:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-12T23:07:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-12T23:10:00Z"
+        }
+      ]
     }
   ]
 }
