@@ -19664,6 +19664,55 @@
           "at": "2026-08-12T09:58:35Z"
         }
       ]
+    },
+    {
+      "book": "1 Kings",
+      "chapter": 14,
+      "startedAt": "2026-08-12T10:46:19Z",
+      "finishedAt": "2026-08-12T10:59:29Z",
+      "durationMinutes": 13,
+      "sections": 11,
+      "cards": 55,
+      "verses": 31,
+      "notes": "New chapter, normal forward progress (redo backlog empty). Jeroboam's son dies, Ahijah's judgment on Jeroboam's house, Shishak's invasion of Jerusalem under Rehoboam.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-12T10:47:10Z"
+        },
+        {
+          "name": "target chapter determined: 1 Kings 14 (new chapter, redo backlog empty, normal forward progress)",
+          "at": "2026-08-12T10:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for 1 Kings 14 (31 verses)",
+          "at": "2026-08-12T10:47:41Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-12T10:47:41Z"
+        },
+        {
+          "name": "source file lib/firstKingsFourteenSource.ts written (11 sections, 55 cards)",
+          "at": "2026-08-12T10:56:47Z"
+        },
+        {
+          "name": "style checker script clean (55 cards, no problems)",
+          "at": "2026-08-12T10:56:59Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply function, call)",
+          "at": "2026-08-12T10:57:41Z"
+        },
+        {
+          "name": "parser check passed: 11 sections, 55 cards, matches design",
+          "at": "2026-08-12T10:57:41Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-12T10:59:24Z"
+        }
+      ]
     }
   ]
 }
