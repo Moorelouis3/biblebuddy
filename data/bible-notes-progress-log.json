@@ -19301,6 +19301,60 @@
           "at": "2026-08-12T02:59:10Z"
         }
       ]
+    },
+    {
+      "date": "2026-08-12",
+      "book": "1 Kings",
+      "chapter": 7,
+      "startedAt": "2026-08-12T03:46:10Z",
+      "finishedAt": "2026-08-12T03:58:08Z",
+      "durationMinutes": 12,
+      "sections": 11,
+      "cards": 58,
+      "verses": 51,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog confirmed empty, last completed chapter was 1 Kings 6 finished just before this run). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (51 verses). Chapter covers Solomon's own thirteen year palace project (almost double the temple's seven years): the house of the forest of Lebanon with its forty five cedar pillars and tiered windows, the porch of judgment, his own house and a separate house for Pharaoh's daughter, the costly hewed foundation stones and the great court matching the temple's own wall pattern, a second unrelated craftsman also named Hiram (a Naphtali/Tyre widow's son, not the king from chapter five), the two named pillars Jachin and Boaz with their chain work and four hundred pomegranates, the massive molten sea on twelve bronze oxen, the ten wheeled brass bases with their carvings and chariot style wheels, the ten lavers, a formal summary recap of Hiram's brasswork, the casting site in the Jordan valley left unweighed for its volume, and the closing golden vessels (altar, table, ten candlesticks, tools, even the door hinges) with Solomon moving David's collected treasures into the finished house. Chunked into 11 sections (1-6, 7-12, 13-14, 15-22, 23-26, 27-31, 32-37, 38-40, 41-45, 46-48, 49-51), the 15-22 section held at exactly 8 verses to stay under the parser's known auto-split threshold. Density about 1.14 cards/verse, deliberately leaner since large stretches are dimension lists and a literal repeated item summary (41-45), per style spec section 12 guidance. check_bible_note_style.py found 4 problems on first pass (two over length bullets, two cards undercounted at 3 bullets because of digit keycap emoji the checker's regex does not recognize), fixed by rewording and swapping the keycap emoji for recognized ones, second run clean. A manual section 13 eye check caught five separate rather than constructions flagged by the style spec's section 3 line rules as a stacked clause trigger (stricter than what the automated checker enforces) and split each into two clean lines. Parser check passed exactly via getBibleReaderStudySections('1 kings', 7): 11/11 sections, 58 cards, 51 verses, text rendered verbatim, no section over 8 verses. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for FIRST_KINGS_SEVEN_PERSONAL_SECTIONS from new firstKingsSevenSource.ts, preserveExactPhraseBodies 1 kings range extended from chapters 1-6 to 1-7, applyPersonalFirstKingsSevenStudySections() added calling replaceStudySectionsForBookRange('1 kings', 7, 7, FIRST_KINGS_SEVEN_PERSONAL_SECTIONS), call added directly after applyPersonalFirstKingsSixStudySections(). Next forward-progress target is 1 Kings 8.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-12T03:46:23Z"
+        },
+        {
+          "name": "target_chapter_determined:1 Kings 7 (redo backlog empty, normal forward progress after 1 Kings 6)",
+          "at": "2026-08-12T03:47:00Z"
+        },
+        {
+          "name": "kjv_text_fetched:1 Kings 7 (51 verses, aruljohn GitHub raw mirror)",
+          "at": "2026-08-12T03:47:30Z"
+        },
+        {
+          "name": "style_spec_read:docs/bible-study-note-style.md and SKILL.md read in full, plus reference files firstKingsSixSource.ts and genesisThirtyOneSource.ts",
+          "at": "2026-08-12T03:49:00Z"
+        },
+        {
+          "name": "source_file_written:lib/firstKingsSevenSource.ts (11 sections, 58 cards)",
+          "at": "2026-08-12T03:53:00Z"
+        },
+        {
+          "name": "style_checker_clean:check_bible_note_style.py (4 problems found and fixed: 2 over-length bullets, 2 digit-keycap emoji bullet undercounts, second pass clean)",
+          "at": "2026-08-12T03:54:30Z"
+        },
+        {
+          "name": "manual_eye_check:section 13 checklist found and fixed 5 'rather than' stacked-clause constructions per spec section 3",
+          "at": "2026-08-12T03:56:30Z"
+        },
+        {
+          "name": "wired_into_reader:lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies 1-6 to 1-7, applyPersonalFirstKingsSevenStudySections, invocation)",
+          "at": "2026-08-12T03:57:00Z"
+        },
+        {
+          "name": "parser_check_passed:getBibleReaderStudySections('1 kings',7) 11/11 sections, 58 cards, 51 verses, verbatim",
+          "at": "2026-08-12T03:57:30Z"
+        },
+        {
+          "name": "tsc_clean:npx tsc --noEmit -p . zero errors",
+          "at": "2026-08-12T03:58:08Z"
+        }
+      ]
     }
   ]
 }
