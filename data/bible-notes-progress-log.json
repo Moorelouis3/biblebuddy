@@ -19872,6 +19872,59 @@
           "at": "2026-08-12T13:55:14Z"
         }
       ]
+    },
+    {
+      "book": "1 Kings",
+      "chapter": 18,
+      "startedAt": "2026-08-12T14:46:56Z",
+      "finishedAt": "2026-08-12T15:00:29Z",
+      "durationMinutes": 14,
+      "sections": 10,
+      "cards": 52,
+      "verses": 46,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing wired-in file for this chapter, clean new-chapter build per docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (46 verses). 1 Kings 18 covers the famous Mount Carmel showdown: Elijah's third-year return to Ahab amid the ongoing famine, Obadiah's introduction as a God-fearing palace official who had secretly hidden a hundred prophets from Jezebel's purge, the tense roadside meeting between Obadiah and Elijah and Obadiah's real fear of being blamed if Elijah vanished again, Elijah's oath to appear before Ahab that same day, Ahab and Elijah's confrontation over who really troubled Israel, the public gathering of all Israel and 850 pagan prophets to Mount Carmel, Elijah's challenge to the people to stop wavering between two gods, the contest terms (two bullocks, no fire, the God who answers by fire is God), the prophets of Baal's failed all-day ritual including their ecstatic self-cutting, Elijah's mocking taunt at noon, Elijah's rebuilding of the broken-down altar of the LORD with twelve stones for the twelve tribes and the drenching of the sacrifice with twelve barrels of scarce water, the fire falling from heaven and consuming everything including the water in the trench, the people's confession that the LORD is God, the execution of the false prophets at the brook Kishon, and the chapter's close with Elijah's persistent prayer for rain, the servant's seventh trip producing the small cloud like a man's hand, the storm breaking, and Elijah's supernatural run ahead of Ahab's chariot to Jezreel. Chunked into 10 sections (1-4, 5-7, 8-12, 13-16, 17-19, 20-24, 25-29, 30-35, 36-40, 41-46) matching the chapter's natural scene breaks (famine and Obadiah's introduction, the search for grass, the roadside meeting, Obadiah's fear and Elijah's oath, Ahab's accusation, the Carmel challenge, Baal's prophets failing, Elijah rebuilding the altar, the fire falling, and the rain returning). Density about 1.13 cards/verse (46 verses, 52 cards), in the normal recent range, occasionally on the leaner side for a long narrative chapter with several longer connective verses. scripts/check_bible_note_style.py found zero problems on the first pass. A manual section 13 eye check confirmed every note opens with one of the four approved moves, every title is an exact contiguous KJV phrase (verified against the fetched verse text word by word, deliberately avoiding the verse's own semicolons inside titles, e.g. using a single instance of 'The LORD, He Is The God' rather than the full repeated KJV clause), no duplicate or near-duplicate titles or opening lines, and every close lands on meaning rather than mechanics. Parser check passed exactly via getBibleReaderStudySections('1 kings', 18) (10/10 sections, 52 cards, 46 verses, preserveExactPhraseFormatting true). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 1 kings range extended from chapters 1-17 to 1-18, applyPersonalFirstKingsEighteenStudySections() function added and called directly after the 1 Kings 17 call. Next forward-progress target is 1 Kings 19.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-12T14:47:50Z"
+        },
+        {
+          "name": "target chapter determined: 1 Kings 18 (new chapter, forward progress)",
+          "at": "2026-08-12T14:48:21Z"
+        },
+        {
+          "name": "KJV text fetched: 1 Kings 18 (46 verses)",
+          "at": "2026-08-12T14:48:39Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-12T14:48:45Z"
+        },
+        {
+          "name": "source file written: lib/firstKingsEighteenSource.ts (10 sections, 52 cards)",
+          "at": "2026-08-12T14:58:10Z"
+        },
+        {
+          "name": "style checker clean on first pass (52 cards, 0 problems)",
+          "at": "2026-08-12T14:58:13Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, applyPersonalFirstKingsEighteenStudySections call)",
+          "at": "2026-08-12T14:58:32Z"
+        },
+        {
+          "name": "parser check passed (10 sections, 52 cards, verbatim text confirmed)",
+          "at": "2026-08-12T14:58:54Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-12T15:00:07Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-12T15:00:29Z"
+        }
+      ]
     }
   ]
 }

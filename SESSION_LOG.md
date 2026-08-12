@@ -1536,3 +1536,7 @@ Next up: 1 Kings 17
 ## 2026-08-12T13:55:14Z (hourly chapter notes run)
 Chapter: 1 Kings 17 | Duration: 8 min | Sections: 7 | Cards: 32 | Status: pass
 Next up: 1 Kings 18
+
+## 2026-08-12T15:00:29Z (hourly chapter notes run)
+Chapter: 1 Kings 18 | Duration: 14 min | Sections: 10 | Cards: 52 | Status: pass
+Next up: 1 Kings 19
