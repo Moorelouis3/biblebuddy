@@ -45,6 +45,16 @@ the agent proxy status endpoint (`kind: connect_rejected`, "gateway answered
 days with no fix landed. This run made no file changes and did not attempt
 to report completion, since the queue could not even be checked.
 
+**Still happening 2026-08-12T12:30Z**: same 403 policy denial on the CONNECT
+tunnel to `life-buddy-production.up.railway.app`, confirmed again via the
+proxy status endpoint. Per SESSION_LOG.md this is now roughly the 9th
+blocked run since 2026-08-08 (2026-08-08 x2, 2026-08-09 x2, 2026-08-10 x2,
+2026-08-11 x2, 2026-08-12 x2 including this one) — five full days with no
+fix. This entry has been sitting in this file the whole time, which suggests
+whatever is supposed to clear it into a tracked Problem may not be working
+either. Flagging directly to Louis via push notification this run since the
+handoff-file path alone hasn't produced a fix.
+
 ## Stop hook is not catching detached-HEAD unpushed commits, deploy-tagged work is sitting unshipped
 This run started in a repo state with HEAD detached from any branch, 31
 commits ahead of `origin/main` (local `main` itself was stale, still
