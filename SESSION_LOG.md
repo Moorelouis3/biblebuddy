@@ -1552,3 +1552,7 @@ Next up: 1 Kings 21
 ## 2026-08-12T17:59:48Z (hourly chapter notes run)
 Chapter: 1 Kings 21 | Duration: 11 min | Sections: 9 | Cards: 33 | Status: pass
 Next up: 1 Kings 22
+
+## 2026-08-12T18:55:12Z (hourly chapter notes run)
+Chapter: 1 Kings 22 | Duration: 9 min | Sections: 13 | Cards: 45 | Status: pass
+Next up: 2 Kings 1

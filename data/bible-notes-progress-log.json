@@ -20104,6 +20104,63 @@
           "at": "2026-08-12T18:01:56Z"
         }
       ]
+    },
+    {
+      "book": "1 Kings",
+      "chapter": 22,
+      "startedAt": "2026-08-12T18:46:18Z",
+      "finishedAt": "2026-08-12T18:55:12Z",
+      "durationMinutes": 9.0,
+      "sections": 13,
+      "cards": 45,
+      "verses": 53,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog confirmed empty (data/bible-notes-style-redo-remaining.json). Normal forward progress, next chapter after 1 Kings 21 (no existing lib/firstKingsTwentyTwoSource.ts) -- also the final chapter of 1 Kings. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (53 verses). 1 Kings 22 covers Jehoshaphat's alliance with Ahab to retake Ramothgilead, the four hundred false court prophets versus Micaiah's true and costly word, the divine council vision with the lying spirit, Ahab's death by a random arrow fulfilling Elijah's earlier judgment (dogs licking his blood), and closing summaries of both Ahab's and Jehoshaphat's reigns plus Ahaziah's evil beginning. Written to docs/bible-study-note-style.md spec, matching lib/genesisThirtyOneSource.ts reference format and the firstKingsTwentyOneSource.ts naming convention (raw text label uses the FirstKingsTwentyTwo/22 parser marker, consistent with the other 1 Kings files). First pass of the style checker found 24 mechanical problems, all over-20-word body lines or over-8-word bullets -- fixed every one by splitting lines, none were punctuation/banned-word violations. Second pass clean: 45 cards, no problems. Parser verified 13/13 sections, 45 cards, 53 verses, text verbatim. tsc --noEmit -p . clean. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range for 1 kings extended <= 21 to <= 22, replaceStudySectionsForBookRange('1 kings', 22, 22, ...) call added inside applyPersonalFirstKingsTwentyStudySections() right after the chapter 21 call. Next chapter: 2 Kings 1 (start of 2 Kings).",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-12T18:46:44Z"
+        },
+        {
+          "name": "target_chapter_determined_1_kings_22_new_chapter_final_chapter_of_book",
+          "at": "2026-08-12T18:46:50Z"
+        },
+        {
+          "name": "kjv_text_fetched_from_github_raw_53_verses",
+          "at": "2026-08-12T18:47:05Z"
+        },
+        {
+          "name": "style_spec_and_reference_implementation_read_in_full",
+          "at": "2026-08-12T18:49:00Z"
+        },
+        {
+          "name": "source_file_written_lib_firstKingsTwentyTwoSource_ts",
+          "at": "2026-08-12T18:51:30Z"
+        },
+        {
+          "name": "style_checker_first_pass_24_problems_all_line_bullet_length",
+          "at": "2026-08-12T18:52:30Z"
+        },
+        {
+          "name": "style_checker_clean_no_problems_45_cards",
+          "at": "2026-08-12T18:53:50Z"
+        },
+        {
+          "name": "wired_into_reader_bibleReaderStudyNotes_ts",
+          "at": "2026-08-12T18:54:10Z"
+        },
+        {
+          "name": "parser_check_passed_13_sections_45_cards_53_verses",
+          "at": "2026-08-12T18:54:37Z"
+        },
+        {
+          "name": "tsc_noEmit_clean",
+          "at": "2026-08-12T18:54:50Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-08-12T18:55:12Z"
+        }
+      ]
     }
   ]
 }
