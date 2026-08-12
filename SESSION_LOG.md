@@ -1525,3 +1525,6 @@ Next up: 1 Kings 15
 ## 2026-08-12T11:56:56Z (hourly chapter notes run)
 Chapter: 1 Kings 15 | Duration: 10 min | Sections: 8 | Cards: 47 | Status: pass
 Next up: 1 Kings 16
+
+## 2026-08-12 (level2 upgrade run)
+Blocked: agent proxy denied egress to life-buddy-production.up.railway.app (403 policy denial on CONNECT). Could not fetch queue or report completion. No code changes made. Needs environment network policy allowlisting for this host.
