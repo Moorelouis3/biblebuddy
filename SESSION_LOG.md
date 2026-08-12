@@ -1564,3 +1564,7 @@ Next up: 2 Kings 2
 ## 2026-08-12T20:58:49Z (hourly chapter notes run)
 Chapter: 2 Kings 2 | Duration: 13 min | Sections: 9 | Cards: 44 | Status: pass
 Next up: 2 Kings 3
+
+## 2026-08-12T21:58:49Z (hourly chapter notes run)
+Chapter: 2 Kings 3 | Duration: 12 min | Sections: 7 | Cards: 49 | Status: pass
+Next up: 2 Kings 4

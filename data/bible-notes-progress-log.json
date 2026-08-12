@@ -20287,6 +20287,59 @@
           "at": "2026-08-12T21:00:24Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 3,
+      "startedAt": "2026-08-12T21:46:51Z",
+      "finishedAt": "2026-08-12T21:58:49Z",
+      "durationMinutes": 12.0,
+      "sections": 7,
+      "cards": 49,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Third chapter of 2 Kings, normal forward progress (redo backlog confirmed empty via data/bible-notes-style-redo-remaining.json, last completed chapter was 2 Kings 2, no existing lib/secondKingsThreeSource.ts). Session started with HEAD detached at the same commit origin/main was already at (the recurring benign detached-HEAD environment issue seen in many prior entries), fixed by checking out and resetting local main to origin/main with no work at risk. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (27 verses). Chapter covers Jehoram of Israel's mixed reign (partial reform removing Ahab's Baal image, but still clinging to Jeroboam's golden calves), Moab's rebellion under Mesha the sheepmaster after Ahab's death (with a note on the real Moabite Stone inscription), the three-king coalition of Israel, Judah, and Edom formed by an alliance vow that echoes Jehoshaphat's earlier vow to Ahab in First Kings twenty two, the water crisis on the desert route through Edom, Jehoshaphat's instinct to seek a true prophet where Jehoram has none, Elisha's open hostility to Jehoram tempered only by respect for Jehoshaphat, the minstrel and the hand of the LORD coming upon Elisha, the ditches prophecy promising both water and total victory over Moab, the destructive scorched earth commands (addressed against the Deuteronomy fruit tree law), the sunrise-red-water illusion that lures overconfident Moab into an ambush, Israel's total devastation of Moab's cities and siege of the capital Kirharaseth, and the chapter's disturbing close where Mesha's failed breakout ends in the public child sacrifice of his own heir to Chemosh, with real great indignation against Israel of debated meaning. Chunked into 7 sections (1-3, 4-8, 9-12, 13-15, 16-19, 20-25, 26-27). Density about 1.81 cards/verse (27 verses, 49 cards). scripts/check_bible_note_style.py ran clean on the first pass, zero problems, 49 cards. A manual section 13 checklist pass confirmed no hyphens, em dashes, semicolons, contractions, banned filler/hedge words, lines over 20 words, or duplicate titles/opening lines anywhere in the file, and every card opens with one of the four spec moves and closes on meaning rather than mechanics. Parser check passed exactly via getBibleReaderStudySections('2 kings', 3) (7/7 sections, 49 cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for SECOND_KINGS_THREE_PERSONAL_SECTIONS from new secondKingsThreeSource.ts, preserveExactPhraseBodies extended from 2 kings chapter <= 2 to <= 3, new applyPersonalSecondKingsThreeStudySections() calling replaceStudySectionsForBookRange('2 kings', 3, 3, SECOND_KINGS_THREE_PERSONAL_SECTIONS) added directly after applyPersonalSecondKingsTwoStudySections() so the new dedicated chapter overrides the old SECOND_KINGS_1_25_PERSONAL_SECTIONS placeholder for chapter 3 only, leaving chapters 4-25 on the old placeholder untouched. Next forward-progress target is 2 Kings 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-12T21:46:51Z"
+        },
+        {
+          "name": "detached HEAD fixed (reset local main to origin/main, no work at risk)",
+          "at": "2026-08-12T21:47:58Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 3 (normal forward progress, redo backlog empty, last done chapter was 2 Kings 2, confirmed no secondKingsThreeSource.ts exists)",
+          "at": "2026-08-12T21:47:58Z"
+        },
+        {
+          "name": "KJV text fetched (2 Kings 3, 27 verses, aruljohn mirror)",
+          "at": "2026-08-12T21:48:12Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, reference implementation lib/secondKingsTwoSource.ts and wiring conventions reviewed",
+          "at": "2026-08-12T21:49:00Z"
+        },
+        {
+          "name": "source file written: lib/secondKingsThreeSource.ts (7 sections, 49 cards)",
+          "at": "2026-08-12T21:57:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, clean on first pass, 49 cards, zero problems)",
+          "at": "2026-08-12T21:57:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 2 kings chapter 3, new applyPersonalSecondKingsThreeStudySections call added after the chapter 2 call)",
+          "at": "2026-08-12T21:57:45Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 49 cards, 27 verses, text verbatim)",
+          "at": "2026-08-12T21:58:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-12T21:58:49Z"
+        }
+      ]
     }
   ]
 }
