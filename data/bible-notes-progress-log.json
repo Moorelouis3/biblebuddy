@@ -19995,8 +19995,8 @@
       "book": "1 Kings",
       "chapter": 20,
       "startedAt": "2026-08-12T16:46:32Z",
-      "finishedAt": "2026-08-12T16:59:04Z",
-      "durationMinutes": 12.5,
+      "finishedAt": "2026-08-12T17:00:54Z",
+      "durationMinutes": 14.4,
       "sections": 10,
       "cards": 46,
       "verses": 43,
@@ -20041,6 +20041,10 @@
         {
           "name": "progress_files_logged",
           "at": "2026-08-12T16:59:04Z"
+        },
+        {
+          "name": "pushed_confirmed_1628bfb_9567b39",
+          "at": "2026-08-12T17:00:54Z"
         }
       ]
     }
