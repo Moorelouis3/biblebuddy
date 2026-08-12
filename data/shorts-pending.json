@@ -15,7 +15,8 @@
     ],
     "bg": "01.mp4",
     "preview": "t-8ca3d81f-a6e0-4331-8e8f-3540177b1bae.jpg",
-    "status": "pending"
+    "status": "scheduled",
+    "scheduledFor": "2026-08-19 02:00"
   },
   {
     "id": "t-f0bf3335-bba6-4f47-939c-660cc8157173",
@@ -70,6 +71,1067 @@
     ],
     "bg": "04.mp4",
     "preview": "t-c85a71eb-055b-4acf-87ef-0a0e4d453573.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-8dd9aae9-30eb-4138-9dea-03ed48925092",
+    "sourceId": "8dd9aae9-30eb-4138-9dea-03ed48925092",
+    "score": 1933,
+    "posted": "2026-07-06",
+    "sourceText": "IT'S EASY\nTO WEAR\nA CROSS AROUND \nYOUR NECK\n\nIT'S HARDER\nTO CARRY ONE\nON YOUR BACK.",
+    "title": "Wearing vs. Carrying",
+    "lines": [
+      "IT'S EASY TO WEAR A CROSS AROUND YOUR NECK",
+      "",
+      "IT'S HARDER TO CARRY ONE ON YOUR BACK."
+    ],
+    "bg": "05.mp4",
+    "preview": "t-8dd9aae9-30eb-4138-9dea-03ed48925092.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-162be581-add0-4481-8b12-30af9eda9c6f",
+    "sourceId": "162be581-add0-4481-8b12-30af9eda9c6f",
+    "score": 1856,
+    "posted": "2026-07-12",
+    "sourceText": "Some prayers aren't long.\n\nSometimes they're just...\n\n\"God...\n\nI need You.\"",
+    "title": "Short Prayers",
+    "lines": [
+      "Some prayers aren't long.",
+      "",
+      "Sometimes they're just...",
+      "",
+      "God...",
+      "",
+      "I need You."
+    ],
+    "bg": "06.mp4",
+    "preview": "t-162be581-add0-4481-8b12-30af9eda9c6f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-f5f1343a-057c-45b6-a3b3-8e396f4f5463",
+    "sourceId": "f5f1343a-057c-45b6-a3b3-8e396f4f5463",
+    "score": 1569,
+    "posted": "2026-07-06",
+    "sourceText": "Be honest, when was the last time you opened your bible 👀",
+    "title": "Open Your Bible",
+    "lines": [
+      "BE HONEST",
+      "when was the last time",
+      "you opened your bible"
+    ],
+    "bg": "07.mp4",
+    "preview": "t-f5f1343a-057c-45b6-a3b3-8e396f4f5463.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-613c6bdc-5f08-49eb-9117-471b6aed8ee0",
+    "sourceId": "613c6bdc-5f08-49eb-9117-471b6aed8ee0",
+    "score": 1435,
+    "posted": "2026-07-09",
+    "sourceText": "Anybody else notice how life feels heavier…\n\nafter just a few days of not opening your Bible?",
+    "title": "The Weight We Carry",
+    "lines": [
+      "Anybody else notice how life feels heavier",
+      "after just a few days of not opening your Bible?"
+    ],
+    "bg": "08.mp4",
+    "preview": "t-613c6bdc-5f08-49eb-9117-471b6aed8ee0.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-962e332e-860b-43f1-a29b-bffa45034b32",
+    "sourceId": "962e332e-860b-43f1-a29b-bffa45034b32",
+    "score": 1429,
+    "posted": "2026-06-12",
+    "sourceText": "One of my biggest issues with atheists on this platform is how rude some of y’all are.\n\nYou can disagree with Christianity all day long.\n\nYou can question God.\n\nYou can question the Bible.\n\nBut why does every conversation have to turn into insults, mockery, and calling people names?",
+    "title": "Disagreement Without Disrespect",
+    "lines": [
+      "One of my biggest issues with atheists on this platform is how rude some of y'all are.",
+      "",
+      "You can disagree with Christianity all day long.",
+      "You can question God.",
+      "You can question the Bible.",
+      "",
+      "But why does every conversation have to turn into insults, mockery, and calling people names?"
+    ],
+    "bg": "09.mp4",
+    "preview": "t-962e332e-860b-43f1-a29b-bffa45034b32.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-1eea010d-682d-41aa-8128-0d729bb8fc97",
+    "sourceId": "1eea010d-682d-41aa-8128-0d729bb8fc97",
+    "score": 1351,
+    "posted": "2026-06-18",
+    "sourceText": "Question for atheists:\n\nAre there any of you who enjoy respectful conversations about faith?\n\nBecause most of the atheist accounts I encounter seem more interested in insults than discussion.",
+    "title": "A Question For Atheists",
+    "lines": [
+      "QUESTION FOR ATHEISTS:",
+      "Are there any of you who enjoy respectful conversations about faith?",
+      "",
+      "Most of the atheist accounts I encounter seem more interested in insults than discussion."
+    ],
+    "bg": "10.mp4",
+    "preview": "t-1eea010d-682d-41aa-8128-0d729bb8fc97.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-32ac2bb4-e088-4561-8cbb-dd2130899e04",
+    "sourceId": "32ac2bb4-e088-4561-8cbb-dd2130899e04",
+    "score": 1339,
+    "posted": "2026-06-27",
+    "sourceText": "Just finished studying Genesis 1 again and noticed something I completely missed the first time.\n\nGod doesn’t just create things.\n\nHe creates a place for them first.\n\n🧵",
+    "title": "God Creates Places First",
+    "lines": [
+      "Just finished studying Genesis 1 again",
+      "and noticed something I completely missed",
+      "the first time.",
+      "",
+      "God doesn't just create things.",
+      "",
+      "He creates a place for them first."
+    ],
+    "bg": "11.mp4",
+    "preview": "t-32ac2bb4-e088-4561-8cbb-dd2130899e04.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-45c451d3-4384-4cde-bf39-6b2ffc45262c",
+    "sourceId": "45c451d3-4384-4cde-bf39-6b2ffc45262c",
+    "score": 1306,
+    "posted": "2026-07-03",
+    "sourceText": "Just got done studying Genesis 2, and I had to slow down and really dig into the Garden of Eden and its rivers.\n\nHere’s what I found.",
+    "title": "Eden's Rivers",
+    "lines": [
+      "Just got done studying Genesis 2",
+      "had to slow down and really dig into the Garden of Eden and its rivers",
+      "",
+      "Here's what I found."
+    ],
+    "bg": "12.mp4",
+    "preview": "t-45c451d3-4384-4cde-bf39-6b2ffc45262c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6c28474c-c0f2-4940-ba6b-8d5b47477b68",
+    "sourceId": "6c28474c-c0f2-4940-ba6b-8d5b47477b68",
+    "score": 1106,
+    "posted": "2026-06-06",
+    "sourceText": "7 ways God heals a broken heart\n\n1. He slows you down\n2. He removes unhealthy distractions\n3. He exposes what’s hurting you\n4. He teaches you patience\n5. He replaces lies with truth\n6. He humbles your pride\n7. He gives peace little by little\n\nHealing usually happens in layers.",
+    "title": "Seven Ways Healing",
+    "lines": [
+      "God slows you down",
+      "removes unhealthy distractions",
+      "exposes what's hurting you",
+      "",
+      "He teaches you patience",
+      "replaces lies with truth",
+      "humbles your pride",
+      "",
+      "Healing usually happens in layers"
+    ],
+    "bg": "13.mp4",
+    "preview": "t-6c28474c-c0f2-4940-ba6b-8d5b47477b68.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-015d84ea-d97f-496e-9a4f-767d1d56c6c3",
+    "sourceId": "015d84ea-d97f-496e-9a4f-767d1d56c6c3",
+    "score": 1002,
+    "posted": "2026-07-06",
+    "sourceText": "The Bible really is the manual for living…",
+    "title": "The Living Manual",
+    "lines": [
+      "The Bible really is the manual for living…"
+    ],
+    "bg": "14.mp4",
+    "preview": "t-015d84ea-d97f-496e-9a4f-767d1d56c6c3.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2f866632-6d2c-4aad-9774-826a44d1afbb",
+    "sourceId": "2f866632-6d2c-4aad-9774-826a44d1afbb",
+    "score": 811,
+    "posted": "2026-06-28",
+    "sourceText": "The Bible isn’t hard to understand…\n\nif you actually open it.",
+    "title": "Open The Bible",
+    "lines": [
+      "THE BIBLE ISN'T HARD TO UNDERSTAND",
+      "",
+      "if you actually open it."
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-2f866632-6d2c-4aad-9774-826a44d1afbb.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-8da4a570-60f8-4c98-a206-9526909098d2",
+    "sourceId": "8da4a570-60f8-4c98-a206-9526909098d2",
+    "score": 765,
+    "posted": "2026-06-09",
+    "sourceText": "WHAT SHOULD YOU DO AFTER YOU SIN?\n\nMost Christians know what to do before they sin.\n\nPray.\n\nRead the Bible.\n\nAvoid temptation.\n\nBut what should you do after you’ve already messed up?\n\nAfter the temptation won.\n\nAfter the mistake.\n\nAfter the regret.\n\nWhat does the Bible say?",
+    "title": "After You Sin",
+    "lines": [
+      "MOST CHRISTIANS KNOW WHAT TO DO BEFORE THEY SIN",
+      "Pray. Read the Bible. Avoid temptation.",
+      "",
+      "But what should you do after you've already messed up?",
+      "After the temptation won.",
+      "After the mistake.",
+      "What does the Bible say?"
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-8da4a570-60f8-4c98-a206-9526909098d2.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-68561144-21ac-48bf-9786-7ee7827dd77c",
+    "sourceId": "68561144-21ac-48bf-9786-7ee7827dd77c",
+    "score": 728,
+    "posted": "2026-06-27",
+    "sourceText": "Saw a someone post: \n\n“You can’t be the salt of the earth if you sugar coat the gospel.” \n\n😣",
+    "title": "Salt Of The Earth",
+    "lines": [
+      "You can't be the salt of the earth",
+      "if you sugar coat the gospel."
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-68561144-21ac-48bf-9786-7ee7827dd77c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-16ef4932-ba4c-41af-ad71-1dc7485acce4",
+    "sourceId": "16ef4932-ba4c-41af-ad71-1dc7485acce4",
+    "score": 718,
+    "posted": "2026-06-15",
+    "sourceText": "I’m not a Christian because I want to go to heaven. \n\nI’m not a Christian because I’m running from hell. \n\nI am a Christian because Jesus is Lord and His character is so compelling to me that I want to spend my life following Him, embodying Him, and sharing His Gospel.",
+    "title": "Why I Follow",
+    "lines": [
+      "I'm not a Christian because I want to go to heaven.",
+      "I'm not a Christian because I'm running from hell.",
+      "",
+      "I am a Christian because Jesus is Lord",
+      "and His character is so compelling to me",
+      "that I want to spend my life following Him,",
+      "embodying Him, and sharing His Gospel."
+    ],
+    "bg": "s04.mp4",
+    "preview": "t-16ef4932-ba4c-41af-ad71-1dc7485acce4.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-4620b1e3-2500-47c9-a774-7c140cf6a515",
+    "sourceId": "4620b1e3-2500-47c9-a774-7c140cf6a515",
+    "score": 665,
+    "posted": "2026-07-01",
+    "sourceText": "I've noticed something...\n\nWhenever I stop reading my Bible, I slowly start depending on my own understanding again.",
+    "title": "Bible And Understanding",
+    "lines": [
+      "Whenever I stop reading my Bible,",
+      "I slowly start depending on my own understanding again."
+    ],
+    "bg": "s06.mp4",
+    "preview": "t-4620b1e3-2500-47c9-a774-7c140cf6a515.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-ca2b155b-09e1-4e25-b324-cb12a78ac6a2",
+    "sourceId": "ca2b155b-09e1-4e25-b324-cb12a78ac6a2",
+    "score": 533,
+    "posted": "2026-06-06",
+    "sourceText": "You cannot live a Godly life with a closed Bible…",
+    "title": "Open Bible, Godly Life",
+    "lines": [
+      "You cannot live a Godly life",
+      "with a closed Bible."
+    ],
+    "bg": "s07.mp4",
+    "preview": "t-ca2b155b-09e1-4e25-b324-cb12a78ac6a2.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-a25b39aa-fe37-4cee-9c0c-b56396c08eb0",
+    "sourceId": "a25b39aa-fe37-4cee-9c0c-b56396c08eb0",
+    "score": 530,
+    "posted": "2026-07-03",
+    "sourceText": "How do y’all read the Bible without taking notes?\n\nDo y’all understand everything?",
+    "title": "Bible Reading Notes",
+    "lines": [
+      "How do y'all read the Bible",
+      "without taking notes?",
+      "",
+      "Do y'all understand everything?"
+    ],
+    "bg": "s08.mp4",
+    "preview": "t-a25b39aa-fe37-4cee-9c0c-b56396c08eb0.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-77afba9d-9959-42fd-880b-f3faddef4a3b",
+    "sourceId": "77afba9d-9959-42fd-880b-f3faddef4a3b",
+    "score": 486,
+    "posted": "2026-07-06",
+    "sourceText": "The longer I stay away from my Bible, the louder the world gets.",
+    "title": "The World Gets Louder",
+    "lines": [
+      "The longer I stay away from my Bible,",
+      "the louder the world gets."
+    ],
+    "bg": "s09.mp4",
+    "preview": "t-77afba9d-9959-42fd-880b-f3faddef4a3b.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-a7ef4144-3e0d-4b87-961e-3e976679699d",
+    "sourceId": "a7ef4144-3e0d-4b87-961e-3e976679699d",
+    "score": 468,
+    "posted": "2026-07-11",
+    "sourceText": "The healing is supposed to feel\nlike it's killing you\n\nbecause God is killing the version\nof you the world created",
+    "title": "The Healing Process",
+    "lines": [
+      "The healing is supposed to feel",
+      "like it's killing you",
+      "",
+      "because God is killing the version",
+      "of you the world created"
+    ],
+    "bg": "s10.mp4",
+    "preview": "t-a7ef4144-3e0d-4b87-961e-3e976679699d.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-ab81fab8-f34a-4876-af17-8501cb1fe98c",
+    "sourceId": "ab81fab8-f34a-4876-af17-8501cb1fe98c",
+    "score": 465,
+    "posted": "2026-06-29",
+    "sourceText": "6 things I wish I started doing when I first began studying the Bible.\n\n#4 completely changed the way I read Scripture.",
+    "title": "Six Bible Study Habits",
+    "lines": [
+      "6 things I wish I started doing",
+      "when I first began studying the Bible.",
+      "",
+      "#4 completely changed",
+      "the way I read Scripture."
+    ],
+    "bg": "s11.mp4",
+    "preview": "t-ab81fab8-f34a-4876-af17-8501cb1fe98c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-468c974c-0828-464e-b38e-8d40c14ecc83",
+    "sourceId": "468c974c-0828-464e-b38e-8d40c14ecc83",
+    "score": 452,
+    "posted": "2026-06-29",
+    "sourceText": "Question for the Christians….\n\nY’all still be cussing? 👀",
+    "title": "Christians Cussing",
+    "lines": [
+      "QUESTION FOR THE CHRISTIANS",
+      "",
+      "Y'all still be cussing?"
+    ],
+    "bg": "s12.mp4",
+    "preview": "t-468c974c-0828-464e-b38e-8d40c14ecc83.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-37ac0b28-20f1-49ee-8c87-3603b2c5b69d",
+    "sourceId": "37ac0b28-20f1-49ee-8c87-3603b2c5b69d",
+    "score": 430,
+    "posted": "2026-07-13",
+    "sourceText": "The more you study the bible, the more you realize how much satan has deceived the world..",
+    "title": "Satan's Deceptions",
+    "lines": [
+      "The more you study the bible,",
+      "the more you realize",
+      "how much satan has deceived the world."
+    ],
+    "bg": "s13.mp4",
+    "preview": "t-37ac0b28-20f1-49ee-8c87-3603b2c5b69d.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-376ca06c-ffb6-47e0-bc65-5a65cfaac2cf",
+    "sourceId": "376ca06c-ffb6-47e0-bc65-5a65cfaac2cf",
+    "score": 423,
+    "posted": "2026-07-05",
+    "sourceText": "The more I read the Bible the stronger my faith grows… 🙏🏾",
+    "title": "Growing Faith",
+    "lines": [
+      "The more I read the Bible",
+      "the stronger my faith grows"
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-376ca06c-ffb6-47e0-bc65-5a65cfaac2cf.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-4d4921fb-1180-4ce1-988f-b9ba1df1c030",
+    "sourceId": "4d4921fb-1180-4ce1-988f-b9ba1df1c030",
+    "score": 402,
+    "posted": "2026-07-12",
+    "sourceText": "Don’t play with God. \n\nHe can flip your whole story overnight.",
+    "title": "Don't Play With God",
+    "lines": [
+      "DON'T PLAY WITH GOD.",
+      "",
+      "He can flip your whole story overnight."
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-4d4921fb-1180-4ce1-988f-b9ba1df1c030.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6dfb47d3-1e6d-40aa-ba72-9b2f08a129a5",
+    "sourceId": "6dfb47d3-1e6d-40aa-ba72-9b2f08a129a5",
+    "score": 383,
+    "posted": "2026-07-13",
+    "sourceText": "Jesus woke us all up this morning give him all the gratitude 🙌🏾",
+    "title": "Morning Gratitude",
+    "lines": [
+      "Jesus woke us all up this morning",
+      "",
+      "give him all the gratitude"
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-6dfb47d3-1e6d-40aa-ba72-9b2f08a129a5.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-9eab2ccc-91ad-4b12-969a-c37b696634fc",
+    "sourceId": "9eab2ccc-91ad-4b12-969a-c37b696634fc",
+    "score": 376,
+    "posted": "2026-07-03",
+    "sourceText": "5 signs your relationship with God is getting stronger\n\n1. You think before reacting\n2. Conviction comes quicker\n3. Sin feels heavier now\n4. You desire peace more than attention\n5. You care more about obedience than appearances\n\nGrowth is usually quiet at first.",
+    "title": "Five Signs Of Growth",
+    "lines": [
+      "You think before reacting",
+      "Conviction comes quicker",
+      "Sin feels heavier now",
+      "",
+      "You desire peace more than attention",
+      "You care more about obedience than appearances",
+      "",
+      "Growth is usually quiet at first."
+    ],
+    "bg": "01.mp4",
+    "preview": "t-9eab2ccc-91ad-4b12-969a-c37b696634fc.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-4cb51e86-ebb0-45a6-aaa0-593e4cc02949",
+    "sourceId": "4cb51e86-ebb0-45a6-aaa0-593e4cc02949",
+    "score": 370,
+    "posted": "2026-07-18",
+    "sourceText": "Learning to STUDY the Bible instead of just reading it is on another level!!!!",
+    "title": "Study vs Read",
+    "lines": [
+      "Learning to STUDY the Bible",
+      "instead of just reading it",
+      "",
+      "is on another level!!!!"
+    ],
+    "bg": "02.mp4",
+    "preview": "t-4cb51e86-ebb0-45a6-aaa0-593e4cc02949.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-a3922d21-0560-4cdc-ab5b-065aab359e4e",
+    "sourceId": "a3922d21-0560-4cdc-ab5b-065aab359e4e",
+    "score": 358,
+    "posted": "2026-07-21",
+    "sourceText": "Most Christians own a Bible.\n\nVery few actually open it…",
+    "title": "Open Your Bible",
+    "lines": [
+      "Most Christians own a Bible.",
+      "",
+      "Very few actually open it…"
+    ],
+    "bg": "03.mp4",
+    "preview": "t-a3922d21-0560-4cdc-ab5b-065aab359e4e.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-3aace8fc-08e7-4841-981d-8f06a748abe5",
+    "sourceId": "3aace8fc-08e7-4841-981d-8f06a748abe5",
+    "score": 337,
+    "posted": "2026-06-29",
+    "sourceText": "Anybody else notice how life feels off after just a few days of not opening your Bible?",
+    "title": "Life Feels Off",
+    "lines": [
+      "ANYBODY ELSE NOTICE HOW LIFE FEELS OFF",
+      "after just a few days",
+      "of not opening your Bible?"
+    ],
+    "bg": "04.mp4",
+    "preview": "t-3aace8fc-08e7-4841-981d-8f06a748abe5.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-c703cca3-22d7-4c2a-bc5d-3c5dc421e5d9",
+    "sourceId": "c703cca3-22d7-4c2a-bc5d-3c5dc421e5d9",
+    "score": 329,
+    "posted": "2026-07-11",
+    "sourceText": "You don’t accidentally grow closer to God.\n\nYou do it by spending time with Him.",
+    "title": "Growing Closer to God",
+    "lines": [
+      "You don't accidentally grow closer to God.",
+      "",
+      "You do it by spending time with Him."
+    ],
+    "bg": "05.mp4",
+    "preview": "t-c703cca3-22d7-4c2a-bc5d-3c5dc421e5d9.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-dd52249c-52ff-4999-8851-e21d70c73449",
+    "sourceId": "dd52249c-52ff-4999-8851-e21d70c73449",
+    "score": 326,
+    "posted": "2026-06-05",
+    "sourceText": "IS DOING\n\nYOGA\n\nA SIN?\n\nMany Christians say yes.\n\nMany Christians say no.\n\nSo what does the Bible actually say?",
+    "title": "What The Bible Says",
+    "lines": [
+      "IS DOING YOGA A SIN?",
+      "",
+      "Many Christians say yes.",
+      "Many Christians say no.",
+      "",
+      "So what does the Bible actually say?"
+    ],
+    "bg": "06.mp4",
+    "preview": "t-dd52249c-52ff-4999-8851-e21d70c73449.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-42e2c6f2-a37c-4d3c-a00b-d3abeb7b3f8a",
+    "sourceId": "42e2c6f2-a37c-4d3c-a00b-d3abeb7b3f8a",
+    "score": 317,
+    "posted": "2026-06-28",
+    "sourceText": "Anybody else notice how life feels heavier…\n\nafter just a few days of not opening your Bible?",
+    "title": "The Weight of Absence",
+    "lines": [
+      "Anybody else notice how life feels heavier",
+      "",
+      "after just a few days of not opening your Bible?"
+    ],
+    "bg": "07.mp4",
+    "preview": "t-42e2c6f2-a37c-4d3c-a00b-d3abeb7b3f8a.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-b281e4f0-06ab-48bc-b74d-e1464e547b98",
+    "sourceId": "b281e4f0-06ab-48bc-b74d-e1464e547b98",
+    "score": 316,
+    "posted": "2026-07-12",
+    "sourceText": "Anxiety says,\n\n\"What if everything goes wrong?\"\n\nJesus says,\n\n\"I'll be with you no matter what.\"",
+    "title": "What If Everything",
+    "lines": [
+      "Anxiety says,",
+      "\"What if everything goes wrong?\"",
+      "",
+      "Jesus says,",
+      "\"I'll be with you no matter what.\""
+    ],
+    "bg": "08.mp4",
+    "preview": "t-b281e4f0-06ab-48bc-b74d-e1464e547b98.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-c92e7397-517f-42ff-bc87-35fa73e37fb5",
+    "sourceId": "c92e7397-517f-42ff-bc87-35fa73e37fb5",
+    "score": 312,
+    "posted": "2026-07-06",
+    "sourceText": "Most people think the story of Sodom and Gomorrah is about God's judgment.\n\nBut, I actually think it's one of the greatest pictures of God's mercy in the entire Bible.\n\nHere's why. 👀",
+    "title": "Sodom's Hidden Mercy",
+    "lines": [
+      "Most people think the story of Sodom and Gomorrah is about God's judgment.",
+      "",
+      "But I actually think it's one of the greatest pictures of God's mercy in the entire Bible.",
+      "",
+      "Here's why."
+    ],
+    "bg": "09.mp4",
+    "preview": "t-c92e7397-517f-42ff-bc87-35fa73e37fb5.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2a3dfeeb-3bf3-480b-bd5b-c6f8c5e1a56f",
+    "sourceId": "2a3dfeeb-3bf3-480b-bd5b-c6f8c5e1a56f",
+    "score": 308,
+    "posted": "2026-07-20",
+    "sourceText": "13 things I wish I knew before becoming a Christian\n\n1. You can’t earn your way into heaven.\n\n2. Reading your Bible matters more than winning arguments.\n\n3. Your relationship with God is between you and God.\n\n4. God wants your heart before He wants your habits.\n\n5. Every Christian struggles with sin.\n\n6. Someone will always tell you you’re following Jesus wrong.\n\n7. Faith isn’t built on feelings.\n\n8. Prayer changes you as much as it changes ur situation.\n\n9. Obedience matters more than comfort.",
+    "title": "Thirteen Christian Truths",
+    "lines": [
+      "You can't earn your way into heaven.",
+      "",
+      "Reading your Bible matters more than winning arguments.",
+      "",
+      "God wants your heart before He wants your habits.",
+      "",
+      "Every Christian struggles with sin.",
+      "",
+      "Someone will always tell you you're following Jesus wrong.",
+      "",
+      "Faith isn't built on feelings.",
+      "",
+      "Prayer changes you as much as it changes your situation."
+    ],
+    "bg": "10.mp4",
+    "preview": "t-2a3dfeeb-3bf3-480b-bd5b-c6f8c5e1a56f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-c4be1f48-1956-4459-8b7a-0a551f717804",
+    "sourceId": "c4be1f48-1956-4459-8b7a-0a551f717804",
+    "score": 303,
+    "posted": "2026-06-15",
+    "sourceText": "SPIRITUAL WARFARE IS REAL.\n\nBut for it to be a war, there has to be a fight.\n\nSome people blame the devil for battles they never even try to win.\n\nBefore we blame Satan for everything that goes wrong in our lives, we need to understand what spiritual warfare actually is.",
+    "title": "The Real Battle",
+    "lines": [
+      "SPIRITUAL WARFARE IS REAL.",
+      "",
+      "But for it to be a war,",
+      "there has to be a fight.",
+      "",
+      "Some people blame the devil",
+      "for battles they never even try to win.",
+      "",
+      "Before we blame Satan for everything,",
+      "we need to understand what spiritual warfare actually is."
+    ],
+    "bg": "11.mp4",
+    "preview": "t-c4be1f48-1956-4459-8b7a-0a551f717804.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-39f3e3ac-96fe-4521-b259-3cd655c35d35",
+    "sourceId": "39f3e3ac-96fe-4521-b259-3cd655c35d35",
+    "score": 288,
+    "posted": "2026-06-24",
+    "sourceText": "Mocking the Lord for an entire 42 likes is wild work 😑",
+    "title": "Mocking The Lord",
+    "lines": [
+      "MOCKING THE LORD FOR AN ENTIRE 42 LIKES IS WILD WORK",
+      "",
+      "That's it. That's the post."
+    ],
+    "bg": "12.mp4",
+    "preview": "t-39f3e3ac-96fe-4521-b259-3cd655c35d35.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-ecdfe732-cc73-4168-b273-34d47aae1c85",
+    "sourceId": "ecdfe732-cc73-4168-b273-34d47aae1c85",
+    "score": 283,
+    "posted": "2026-07-11",
+    "sourceText": "Jesus woke us all up this morning give him all the gratitude 🙌🏾",
+    "title": "Morning Gratitude",
+    "lines": [
+      "Jesus woke us all up this morning",
+      "",
+      "give him all the gratitude"
+    ],
+    "bg": "13.mp4",
+    "preview": "t-ecdfe732-cc73-4168-b273-34d47aae1c85.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-25700337-cb86-450c-9afd-597e43f0b736",
+    "sourceId": "25700337-cb86-450c-9afd-597e43f0b736",
+    "score": 278,
+    "posted": "2026-07-06",
+    "sourceText": "God.\nGo ghost.\nGym.\nSmall circle.\nMake more money.\nAccept the past.\nBecome a better version of yourself.",
+    "title": "Three Pillars",
+    "lines": [
+      "God.",
+      "Go ghost.",
+      "Gym.",
+      "",
+      "Small circle.",
+      "Make more money.",
+      "Accept the past.",
+      "",
+      "Become a better version of yourself."
+    ],
+    "bg": "14.mp4",
+    "preview": "t-25700337-cb86-450c-9afd-597e43f0b736.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2f15324e-df17-483c-a10e-f1d3e8b12aff",
+    "sourceId": "2f15324e-df17-483c-a10e-f1d3e8b12aff",
+    "score": 275,
+    "posted": "2026-07-07",
+    "sourceText": "One of the biggest mistakes people make when reading the Bible is assuming that if it happened, God must have approved of it.\n\nThe Bible records human history, including humanity at its worst.\n\nDescription is not the same as approval.",
+    "title": "Description vs Approval",
+    "lines": [
+      "ONE OF THE BIGGEST MISTAKES PEOPLE MAKE WHEN READING THE BIBLE IS ASSUMING THAT IF IT HAPPENED, GOD MUST HAVE APPROVED OF IT.",
+      "",
+      "The Bible records human history,",
+      "including humanity at its worst.",
+      "",
+      "Description is not the same as approval."
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-2f15324e-df17-483c-a10e-f1d3e8b12aff.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-79b29108-7dd2-4a63-bd6f-193aefb67f24",
+    "sourceId": "79b29108-7dd2-4a63-bd6f-193aefb67f24",
+    "score": 274,
+    "posted": "2026-07-06",
+    "sourceText": "You don’t need to be perfect to follow God. You just need to be willing.",
+    "title": "Willing Is Enough",
+    "lines": [
+      "You don't need to be perfect",
+      "to follow God.",
+      "",
+      "You just need to be willing."
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-79b29108-7dd2-4a63-bd6f-193aefb67f24.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-e5827675-f9b6-4df7-9c03-9bf629fcdf7c",
+    "sourceId": "e5827675-f9b6-4df7-9c03-9bf629fcdf7c",
+    "score": 268,
+    "posted": "2026-06-10",
+    "sourceText": "You cannot live a Godly life with a closed Bible...",
+    "title": "Open Bible",
+    "lines": [
+      "You cannot live a Godly life",
+      "with a closed Bible"
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-e5827675-f9b6-4df7-9c03-9bf629fcdf7c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-f493765f-f48a-4441-8e8e-6aadefe254ba",
+    "sourceId": "f493765f-f48a-4441-8e8e-6aadefe254ba",
+    "score": 267,
+    "posted": "2026-07-26",
+    "sourceText": "non-believers don’t read the Bible, but they read you, so be a reflection of Christ everywhere you go.",
+    "title": "Be The Reflection",
+    "lines": [
+      "Non-believers don't read the Bible,",
+      "but they read you.",
+      "",
+      "So be a reflection of Christ",
+      "everywhere you go."
+    ],
+    "bg": "s04.mp4",
+    "preview": "t-f493765f-f48a-4441-8e8e-6aadefe254ba.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-c26f70c9-a651-4294-b6a1-4e4b04d67e12",
+    "sourceId": "c26f70c9-a651-4294-b6a1-4e4b04d67e12",
+    "score": 262,
+    "posted": "2026-06-28",
+    "sourceText": "Jesus is THE ONLY WAY to everlasting life!",
+    "title": "The Only Way",
+    "lines": [
+      "JESUS IS THE ONLY WAY",
+      "to everlasting life!"
+    ],
+    "bg": "s06.mp4",
+    "preview": "t-c26f70c9-a651-4294-b6a1-4e4b04d67e12.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-77b1ce39-2272-4b9b-a56f-7c5ebe7c192e",
+    "sourceId": "77b1ce39-2272-4b9b-a56f-7c5ebe7c192e",
+    "score": 260,
+    "posted": "2026-07-10",
+    "sourceText": "You don’t accidentally grow closer to God.\n\nYou do it by spending time with Him.",
+    "title": "Growing Closer to God",
+    "lines": [
+      "You don't accidentally grow closer to God.",
+      "",
+      "You do it by spending time with Him."
+    ],
+    "bg": "s07.mp4",
+    "preview": "t-77b1ce39-2272-4b9b-a56f-7c5ebe7c192e.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-97a1422f-42fd-4946-9309-e0b4a6887eb1",
+    "sourceId": "97a1422f-42fd-4946-9309-e0b4a6887eb1",
+    "score": 254,
+    "posted": "2026-07-06",
+    "sourceText": "Anybody else notice how life feels heavier…\n\nafter just a few days of not opening your Bible?",
+    "title": "The Weight Of Distance",
+    "lines": [
+      "Anybody else notice how life feels heavier",
+      "",
+      "after just a few days of not opening your Bible?"
+    ],
+    "bg": "s08.mp4",
+    "preview": "t-97a1422f-42fd-4946-9309-e0b4a6887eb1.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-436fe3f0-ef8f-4fd8-b4bf-fa000a0712e2",
+    "sourceId": "436fe3f0-ef8f-4fd8-b4bf-fa000a0712e2",
+    "score": 251,
+    "posted": "2026-06-12",
+    "sourceText": "5 SIGNS IT’S GOD’S VOICE… NOT YOU OVERTHINKING\n\n1. It aligns with Scripture\n2. It brings conviction, not chaos\n3. It calls you higher, not easier\n4. It stays consistent over time\n5. It leads to peace, not pressure\n\nGod’s voice won’t confuse you.\n\nIt will guide you.",
+    "title": "God's Voice Not Overthinking",
+    "lines": [
+      "5 SIGNS IT'S GOD'S VOICE… NOT YOU OVERTHINKING",
+      "",
+      "It aligns with Scripture",
+      "It brings conviction, not chaos",
+      "It calls you higher, not easier",
+      "",
+      "God's voice won't confuse you.",
+      "It will guide you."
+    ],
+    "bg": "s09.mp4",
+    "preview": "t-436fe3f0-ef8f-4fd8-b4bf-fa000a0712e2.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-fe8566f4-3d63-41da-affe-58c158d89587",
+    "sourceId": "fe8566f4-3d63-41da-affe-58c158d89587",
+    "score": 246,
+    "posted": "2026-06-20",
+    "sourceText": "7 things blocking your spiritual growth\n\n1. Constant distraction\n2. Pride\n3. Isolation\n4. Feeding the flesh daily\n5. Laziness\n6. Negative influences\n7. Lack of consistency\n\nYou cannot grow spiritually while starving your spirit.",
+    "title": "Spiritual Growth Blockers",
+    "lines": [
+      "7 THINGS BLOCKING YOUR SPIRITUAL GROWTH",
+      "",
+      "Constant distraction",
+      "Pride",
+      "Isolation",
+      "Feeding the flesh daily",
+      "Laziness",
+      "Negative influences",
+      "Lack of consistency",
+      "",
+      "You cannot grow spiritually",
+      "while starving your spirit."
+    ],
+    "bg": "s10.mp4",
+    "preview": "t-fe8566f4-3d63-41da-affe-58c158d89587.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-eda14144-7736-48c3-b215-1b47ad196c65",
+    "sourceId": "eda14144-7736-48c3-b215-1b47ad196c65",
+    "score": 238,
+    "posted": "2026-07-08",
+    "sourceText": "It’s so crazy how many people talk about what the Bible says while never reading the Bible",
+    "title": "The Bible Problem",
+    "lines": [
+      "It's so crazy how many people talk about what the Bible says",
+      "while never reading the Bible"
+    ],
+    "bg": "s11.mp4",
+    "preview": "t-eda14144-7736-48c3-b215-1b47ad196c65.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-04bc7a6e-ad32-419f-a962-15a2ab162092",
+    "sourceId": "04bc7a6e-ad32-419f-a962-15a2ab162092",
+    "score": 233,
+    "posted": "2026-07-06",
+    "sourceText": "I don't know who needs to hear this...\n\nBut spending 20 minutes in your Bible might do more for your peace than 2 hours on your phone.",
+    "title": "Bible Over Phone",
+    "lines": [
+      "I don't know who needs to hear this...",
+      "",
+      "But spending 20 minutes in your Bible",
+      "might do more for your peace",
+      "than 2 hours on your phone."
+    ],
+    "bg": "s12.mp4",
+    "preview": "t-04bc7a6e-ad32-419f-a962-15a2ab162092.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-7f143d7f-0a18-4313-83ba-180f4fac6c78",
+    "sourceId": "7f143d7f-0a18-4313-83ba-180f4fac6c78",
+    "score": 224,
+    "posted": "2026-06-05",
+    "sourceText": "Is it hard being a Christian? \n\nAsking for a friend 🤔",
+    "title": "The Real Question",
+    "lines": [
+      "Is it hard being a Christian?",
+      "",
+      "Asking for a friend"
+    ],
+    "bg": "s13.mp4",
+    "preview": "t-7f143d7f-0a18-4313-83ba-180f4fac6c78.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-a88e33b7-3c22-4c08-9b60-0d6a9fb6df74",
+    "sourceId": "a88e33b7-3c22-4c08-9b60-0d6a9fb6df74",
+    "score": 219,
+    "posted": "2026-07-21",
+    "sourceText": "6 Things that changed when I started reading my Bible every day\n\n📖 I worried less\n🙏 I prayed more naturally\n❤️ I became more patient\n🕊️ I found more peace\n🧠 I thought differently\n🌱 My faith became stronger\n\n✝️ Jesus became more real to me",
+    "title": "Daily Bible Changes",
+    "lines": [
+      "I worried less",
+      "I prayed more naturally",
+      "I became more patient",
+      "",
+      "I found more peace",
+      "I thought differently",
+      "My faith became stronger",
+      "",
+      "Jesus became more real to me"
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-a88e33b7-3c22-4c08-9b60-0d6a9fb6df74.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-a8edd6f6-a647-4acc-8445-0a70728c9065",
+    "sourceId": "a8edd6f6-a647-4acc-8445-0a70728c9065",
+    "score": 218,
+    "posted": "2026-06-17",
+    "sourceText": "Sometimes the answer is reading your Bible.",
+    "title": "Read Your Bible",
+    "lines": [
+      "Sometimes the answer is reading your Bible."
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-a8edd6f6-a647-4acc-8445-0a70728c9065.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-5f4ab21a-d1c9-401b-ac90-e774e681e313",
+    "sourceId": "5f4ab21a-d1c9-401b-ac90-e774e681e313",
+    "score": 218,
+    "posted": "2026-07-05",
+    "sourceText": "Question for the atheists on Threads…\n\nIf you truly believe God isn’t real…\n\nWhy spend so much time talking about Him?\n\nWhy come onto Christian pages just to argue with strangers?\n\nThere are thousands of topics online. Thousands of communities.\n\nWhy choose one you don’t even believe in?\n\nI’m not asking to be disrespectful.\n\nI’m genuinely trying to understand the mindset.",
+    "title": "A Genuine Question",
+    "lines": [
+      "If you truly believe God isn't real…",
+      "Why spend so much time talking about Him?",
+      "",
+      "Why come onto Christian pages just to argue with strangers?",
+      "",
+      "There are thousands of topics online. Thousands of communities.",
+      "Why choose one you don't even believe in?"
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-5f4ab21a-d1c9-401b-ac90-e774e681e313.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-1b8f48bc-9b4e-4047-b8eb-9e93734b8ba5",
+    "sourceId": "1b8f48bc-9b4e-4047-b8eb-9e93734b8ba5",
+    "score": 217,
+    "posted": "2026-06-04",
+    "sourceText": "Everything flows from your relationship with Jesus…",
+    "title": "Everything Flows",
+    "lines": [
+      "Everything flows from your relationship with Jesus"
+    ],
+    "bg": "01.mp4",
+    "preview": "t-1b8f48bc-9b4e-4047-b8eb-9e93734b8ba5.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-0371f464-662c-4c56-a10a-06a1fa3fa890",
+    "sourceId": "0371f464-662c-4c56-a10a-06a1fa3fa890",
+    "score": 212,
+    "posted": "2026-07-18",
+    "sourceText": "Reading a few verses a day is still better than reading none…",
+    "title": "Better Than None",
+    "lines": [
+      "Reading a few verses a day",
+      "is still better than reading none"
+    ],
+    "bg": "02.mp4",
+    "preview": "t-0371f464-662c-4c56-a10a-06a1fa3fa890.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-df0669dc-8b5a-4c05-be66-abbcf4a96d31",
+    "sourceId": "df0669dc-8b5a-4c05-be66-abbcf4a96d31",
+    "score": 212,
+    "posted": "2026-06-13",
+    "sourceText": "5 SIGNS GOD SHOWS YOU’RE ON THE RIGHT PATH\n\n1. You have peace even when it’s hard\n2. You’re growing, not just comfortable\n3. Doors open at the right time\n4. You feel conviction, not confusion\n5. You’re becoming more disciplined",
+    "title": "Five Signs You're Right",
+    "lines": [
+      "5 SIGNS GOD SHOWS YOU'RE ON THE RIGHT PATH",
+      "",
+      "You have peace even when it's hard",
+      "You're growing, not just comfortable",
+      "Doors open at the right time",
+      "",
+      "You feel conviction, not confusion",
+      "You're becoming more disciplined"
+    ],
+    "bg": "03.mp4",
+    "preview": "t-df0669dc-8b5a-4c05-be66-abbcf4a96d31.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-876c1eb7-716b-4b8b-a853-47d00670c941",
+    "sourceId": "876c1eb7-716b-4b8b-a853-47d00670c941",
+    "score": 209,
+    "posted": "2026-06-16",
+    "sourceText": "6 signs God is growing you in private\n\n1. You feel separated from old habits \n2. Your circle is getting smaller \n3. You’re becoming more disciplined \n4. Temporary comfort doesn’t satisfy you anymore \n5. God keeps correcting your heart \n6. You’re learning patience the hard way \n\nGrowth with God usually happens in hidden seasons first.\n\nBefore elevation comes preparation.",
+    "title": "God's Private Growth",
+    "lines": [
+      "You feel separated from old habits",
+      "Your circle is getting smaller",
+      "You're becoming more disciplined",
+      "",
+      "Temporary comfort doesn't satisfy you anymore",
+      "God keeps correcting your heart",
+      "You're learning patience the hard way",
+      "",
+      "Growth with God usually happens in hidden seasons first",
+      "Before elevation comes preparation"
+    ],
+    "bg": "04.mp4",
+    "preview": "t-876c1eb7-716b-4b8b-a853-47d00670c941.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-607eaeaa-0bed-464f-8dea-725426168c6f",
+    "sourceId": "607eaeaa-0bed-464f-8dea-725426168c6f",
+    "score": 206,
+    "posted": "2026-07-05",
+    "sourceText": "Genesis 1:2 says the earth was “without form and void.”\n\nHave you ever stopped to think about what that actually means? 🧵",
+    "title": "Formless and Void",
+    "lines": [
+      "Genesis 1:2 says the earth was",
+      "without form and void.",
+      "",
+      "Have you ever stopped to think",
+      "about what that actually means?"
+    ],
+    "bg": "05.mp4",
+    "preview": "t-607eaeaa-0bed-464f-8dea-725426168c6f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6b25bbc7-84f4-482c-9c2a-78b8571c700e",
+    "sourceId": "6b25bbc7-84f4-482c-9c2a-78b8571c700e",
+    "score": 205,
+    "posted": "2026-07-09",
+    "sourceText": "Most people think Jacob's story is about waiting 14 years for Rachel.\n\nBut the part that changed Jacob's life happened during the next 6 years.\n\nHere's why… 👀",
+    "title": "Jacob's Real Test",
+    "lines": [
+      "Most people think Jacob's story is about waiting 14 years for Rachel.",
+      "",
+      "But the part that changed Jacob's life happened during the next 6 years.",
+      "",
+      "Here's why…"
+    ],
+    "bg": "06.mp4",
+    "preview": "t-6b25bbc7-84f4-482c-9c2a-78b8571c700e.jpg",
     "status": "pending"
   }
 ]
