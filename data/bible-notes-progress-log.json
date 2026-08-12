@@ -19990,6 +19990,59 @@
           "at": "2026-08-12T16:00:20Z"
         }
       ]
+    },
+    {
+      "book": "1 Kings",
+      "chapter": 20,
+      "startedAt": "2026-08-12T16:46:32Z",
+      "finishedAt": "2026-08-12T16:59:04Z",
+      "durationMinutes": 12.5,
+      "sections": 10,
+      "cards": 46,
+      "verses": 43,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog confirmed empty (data/bible-notes-style-redo-remaining.json). Normal forward progress, next chapter after 1 Kings 19 (no existing lib/firstKingsTwentySource.ts). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (43 verses). 1 Kings 20 covers Benhadad's two failed campaigns against Ahab, ending in the prophet's parable pronouncing judgment on Ahab for sparing a man devoted to destruction. Written to docs/bible-study-note-style.md spec, matching lib/genesisThirtyOneSource.ts / lib/firstKingsNineteenSource.ts reference format. Style checker found 1 problem on first pass (repeated emoji across one card's bullets), fixed, second run clean (46 cards). Parser verified 10/10 sections, 46 cards, 43 verses, text verbatim. tsc --noEmit -p . clean. Wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range for 1 kings extended <= 19 to <= 20, new applyPersonalFirstKingsTwentyStudySections() call added after the 1 Kings 19 call (after the legacy 16-22 batch call so this dedicated file correctly overrides it for chapter 20). Next chapter: 1 Kings 21.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-12T16:47:18Z"
+        },
+        {
+          "name": "target_chapter_determined_1_kings_20_new_chapter",
+          "at": "2026-08-12T16:47:27Z"
+        },
+        {
+          "name": "kjv_text_fetched_from_github_raw",
+          "at": "2026-08-12T16:47:40Z"
+        },
+        {
+          "name": "style_spec_read_in_full",
+          "at": "2026-08-12T16:48:15Z"
+        },
+        {
+          "name": "source_file_written_lib_firstKingsTwentySource_ts",
+          "at": "2026-08-12T16:56:50Z"
+        },
+        {
+          "name": "style_checker_clean_no_problems",
+          "at": "2026-08-12T16:57:05Z"
+        },
+        {
+          "name": "wired_into_reader_bibleReaderStudyNotes_ts",
+          "at": "2026-08-12T16:57:40Z"
+        },
+        {
+          "name": "parser_check_passed_10_sections_46_cards",
+          "at": "2026-08-12T16:58:20Z"
+        },
+        {
+          "name": "tsc_noEmit_clean",
+          "at": "2026-08-12T16:58:49Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-08-12T16:59:04Z"
+        }
+      ]
     }
   ]
 }
