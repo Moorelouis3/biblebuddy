@@ -20047,6 +20047,59 @@
           "at": "2026-08-12T17:00:54Z"
         }
       ]
+    },
+    {
+      "book": "1 Kings",
+      "chapter": 21,
+      "startedAt": "2026-08-12T17:49:16Z",
+      "finishedAt": "2026-08-12T17:59:48Z",
+      "durationMinutes": 10.5,
+      "sections": 9,
+      "cards": 33,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog confirmed empty (data/bible-notes-style-redo-remaining.json). Normal forward progress, next chapter after 1 Kings 20 (no existing lib/firstKingsTwentyOneSource.ts). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (29 verses). 1 Kings 21 is the Naboth's vineyard story: Ahab wants Naboth's ancestral vineyard, Naboth refuses to sell inherited land, Jezebel forges letters to have Naboth falsely accused of blasphemy and stoned, Ahab takes possession, Elijah confronts him with a sentence of total destruction on his house and a specific fate for Jezebel, and Ahab's genuine (if temporary) repentance delays the judgment to his son's days. Written to docs/bible-study-note-style.md spec, matching lib/genesisThirtyOneSource.ts reference format and lib/firstKingsTwentySource.ts naming convention. Style checker clean on first pass (33 cards, no problems). Parser verified 9/9 sections, 33 cards, 29 verses, text verbatim. tsc --noEmit -p . clean. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range for 1 kings extended <= 20 to <= 21, replaceStudySectionsForBookRange('1 kings', 21, 21, ...) call added right after the chapter 20 call. Next chapter: 1 Kings 22.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-12T17:49:16Z"
+        },
+        {
+          "name": "target_chapter_determined_1_kings_21_new_chapter",
+          "at": "2026-08-12T17:49:16Z"
+        },
+        {
+          "name": "kjv_text_fetched_from_github_raw",
+          "at": "2026-08-12T17:49:20Z"
+        },
+        {
+          "name": "style_spec_read_in_full",
+          "at": "2026-08-12T17:51:00Z"
+        },
+        {
+          "name": "source_file_written_lib_firstKingsTwentyOneSource_ts",
+          "at": "2026-08-12T17:57:30Z"
+        },
+        {
+          "name": "style_checker_clean_no_problems",
+          "at": "2026-08-12T17:57:45Z"
+        },
+        {
+          "name": "wired_into_reader_bibleReaderStudyNotes_ts",
+          "at": "2026-08-12T17:58:00Z"
+        },
+        {
+          "name": "parser_check_passed_9_sections_33_cards",
+          "at": "2026-08-12T17:58:40Z"
+        },
+        {
+          "name": "tsc_noEmit_clean",
+          "at": "2026-08-12T17:59:15Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-08-12T17:59:48Z"
+        }
+      ]
     }
   ]
 }
