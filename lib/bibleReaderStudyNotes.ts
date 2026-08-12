@@ -324,6 +324,7 @@ import { FIRST_KINGS_EIGHT_PERSONAL_SECTIONS } from "./firstKingsEightSource";
 import { FIRST_KINGS_NINE_PERSONAL_SECTIONS } from "./firstKingsNineSource";
 import { FIRST_KINGS_TEN_PERSONAL_SECTIONS } from "./firstKingsTenSource";
 import { FIRST_KINGS_ELEVEN_PERSONAL_SECTIONS } from "./firstKingsElevenSource";
+import { FIRST_KINGS_TWELVE_PERSONAL_SECTIONS } from "./firstKingsTwelveSource";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
 import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
 import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
@@ -966,6 +967,10 @@ function applyPersonalFirstKingsTenStudySections() {
 
 function applyPersonalFirstKingsElevenStudySections() {
   replaceStudySectionsForBookRange("1 kings", 11, 11, FIRST_KINGS_ELEVEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstKingsTwelveStudySections() {
+  replaceStudySectionsForBookRange("1 kings", 12, 12, FIRST_KINGS_TWELVE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalFirstKingsSixteenThroughTwentyTwoStudySections() {
@@ -8296,6 +8301,7 @@ applyPersonalFirstKingsEightStudySections();
 applyPersonalFirstKingsNineStudySections();
 applyPersonalFirstKingsTenStudySections();
 applyPersonalFirstKingsElevenStudySections();
+applyPersonalFirstKingsTwelveStudySections();
 applyPersonalFirstKingsSixteenThroughTwentyTwoStudySections();
 applyPersonalSecondKingsOneThroughTwentyFiveStudySections();
 applyPersonalFirstChroniclesOneThroughEightStudySections();

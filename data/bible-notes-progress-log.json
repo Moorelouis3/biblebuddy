@@ -19558,6 +19558,59 @@
           "at": "2026-08-12T07:58:34Z"
         }
       ]
+    },
+    {
+      "book": "1 Kings",
+      "chapter": 12,
+      "startedAt": "2026-08-12T08:46:43Z",
+      "finishedAt": "2026-08-12T08:56:20Z",
+      "durationMinutes": 9.6,
+      "sections": 9,
+      "cards": 40,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog confirmed empty via data/bible-notes-style-redo-remaining.json, last completed chapter was 1 Kings 11 finished just before this run). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (33 verses). Chapter covers the kingdom's split: Rehoboam meeting the assembly at Shechem, Jeroboam's return from Egypt, the old men's counsel to serve the people versus the young men's boast about the little finger and scorpion whips, Rehoboam's harsh answer explicitly attributed to the LORD fulfilling His word to Ahijah, Israel's rejection cry \"to your tents, O Israel,\" Adoram's stoning and Rehoboam's flight to Jerusalem, the near civil war stopped by Shemaiah's prophecy, Jeroboam's fear driving him to build the two golden calves at Bethel and Dan echoing the Exodus 32 sin, and the counterfeit priesthood and feast closing the chapter. Chunked into 9 sections (1-5, 6-11, 12-15, 16-17, 18-19, 20-24, 25-27, 28-30, 31-33). Density about 1.21 cards/verse. check_bible_note_style.py found 2 problems on first pass (banned hedge word \"roughly\" in a card title and a section title, since the KJV verse itself uses that word, plus one bullet one word over the 8 word limit), fixed by retitling to different exact KJV phrasing and trimming the bullet, second run clean. Parser check passed exactly (9/9 sections, 40 cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wiring added: import, new applyPersonalFirstKingsTwelveStudySections function, call added after chapter 11. preserveExactPhraseBodies range for 1 kings (1-22) already covered this chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-12T08:47:07Z"
+        },
+        {
+          "name": "target chapter determined: 1 Kings 12 (redo backlog empty, normal forward progress)",
+          "at": "2026-08-12T08:47:37Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com/aruljohn/Bible-kjv (33 verses)",
+          "at": "2026-08-12T08:47:45Z"
+        },
+        {
+          "name": "style spec docs/bible-study-note-style.md read in full",
+          "at": "2026-08-12T08:48:10Z"
+        },
+        {
+          "name": "source file lib/firstKingsTwelveSource.ts written (9 sections, 40 cards)",
+          "at": "2026-08-12T08:52:26Z"
+        },
+        {
+          "name": "style checker clean (2 problems found and fixed, then zero)",
+          "at": "2026-08-12T08:54:37Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call site)",
+          "at": "2026-08-12T08:54:52Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 40 cards, verbatim)",
+          "at": "2026-08-12T08:55:07Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-12T08:56:20Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-12T08:56:20Z"
+        }
+      ]
     }
   ]
 }
