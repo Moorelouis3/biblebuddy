@@ -30,6 +30,8 @@ const QUEUE = join(ROOT, "data", "shorts-queue.json");
 const SCHEDULE = join(ROOT, "data", "shorts-schedule.json");
 const PREVIEW_DIR = join(ROOT, "tmp", "shorts", "previews");
 const UPLOAD_LOG = "C:/Users/Moore/Desktop/youtube-shorts-automation/data/bible-shorts-uploaded.json";
+const TRACKER = "C:/Users/Moore/Desktop/youtube-shorts-automation/data/youtube-tracker.json";
+const SNAPSHOTS = "C:/Users/Moore/Desktop/youtube-shorts-automation/data/youtube-snapshots.json";
 const PORT = 4400;
 
 /** Berlin local times, five a day. */
@@ -289,6 +291,86 @@ fetch('/api/schedule').then(function(r){return r.json()}).then(function(d){
 });
 </script></body></html>`;
 
+const TRACKER_PAGE = `<!doctype html><html><head><meta charset="utf-8">
+<title>YouTube tracker</title><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>${STYLE}
+.wrap{padding:20px;max-width:1080px}
+.verdict{background:#15151b;border:1px solid #26262f;border-left:3px solid #7fb2ff;border-radius:9px;
+  padding:14px 16px;margin-bottom:10px;font-size:15.5px;line-height:1.55}
+h2{font-size:13px;color:#9a9aa8;margin:26px 0 10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.stat{background:#15151b;border:1px solid #26262f;border-radius:9px;padding:14px 16px}
+.stat .k{color:#9a9aa8;font-size:12.5px}
+.stat .v{font-size:25px;font-weight:600;margin-top:3px}
+.stat .s{color:#9a9aa8;font-size:12px;margin-top:3px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;color:#9a9aa8;font-weight:600;padding:7px 10px;border-bottom:1px solid #26262f}
+td{padding:7px 10px;border-bottom:1px solid #1c1c24}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.up{color:#63d69b}.down{color:#ff8f8f}
+.note{color:#9a9aa8;font-size:12.5px;margin-top:8px;line-height:1.5}
+</style></head><body>
+<header><h1>YouTube tracker</h1><span class="count" id="taken"></span>
+<a href="/"><button>Approve queue</button></a>
+<a href="/schedule"><button>Schedule board</button></a></header>
+<div class="wrap" id="wrap">loading...</div>
+<script>
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function n(v){return Number(v||0).toLocaleString();}
+fetch('/api/tracker').then(function(r){return r.json()}).then(function(d){
+  if(d.error){document.getElementById('wrap').textContent=d.error;return;}
+  var t=d.tracker, h=d.history||[];
+  document.getElementById('taken').textContent='updated '+t.takenAt.slice(0,16).replace('T',' ');
+  var out='';
+  out+=t.verdicts.map(function(v){return '<div class="verdict">'+esc(v)+'</div>'}).join('');
+
+  out+='<h2>Channel</h2><div class="cards">'
+    +'<div class="stat"><div class="k">Subscribers</div><div class="v">'+n(t.channel.subscribers)+'</div></div>'
+    +'<div class="stat"><div class="k">Total views</div><div class="v">'+n(t.channel.totalViews)+'</div></div>'
+    +'<div class="stat"><div class="k">Videos</div><div class="v">'+n(t.channel.videoCount)+'</div></div>'
+    +'</div>';
+
+  out+='<h2>Your normal &mdash; last 365 days</h2><div class="cards">'
+    +'<div class="stat"><div class="k">Typical Short</div><div class="v">'+n(t.baseline.short.medianViews)+'</div>'
+      +'<div class="s">views &middot; avg '+n(t.baseline.short.meanViews)+' &middot; '+t.baseline.short.count+' posted</div></div>'
+    +'<div class="stat"><div class="k">Typical long-form</div><div class="v">'+n(t.baseline.long.medianViews)+'</div>'
+      +'<div class="s">views &middot; avg '+n(t.baseline.long.meanViews)+' &middot; '+t.baseline.long.count+' posted</div></div>'
+    +'<div class="stat"><div class="k">Short engagement</div><div class="v">'+t.baseline.short.engagementPct+'%</div>'
+      +'<div class="s">likes + comments per view</div></div>'
+    +'<div class="stat"><div class="k">Long engagement</div><div class="v">'+t.baseline.long.engagementPct+'%</div>'
+      +'<div class="s">likes + comments per view</div></div>'
+    +'</div>';
+
+  out+='<h2>How views build with age</h2><table><tr><th>Age</th><th class="n">Shorts</th><th class="n">Typical views</th><th class="n">Long-form</th><th class="n">Typical views</th></tr>'
+    +t.ageCurve.map(function(a){return '<tr><td>'+a.band+'</td><td class="n">'+a.shortCount+'</td><td class="n">'+n(a.shortMedian)
+      +'</td><td class="n">'+a.longCount+'</td><td class="n">'+n(a.longMedian)+'</td></tr>'}).join('')+'</table>'
+    +'<div class="note">Read a new video against its own age band, not against the year. A Short two weeks old is not supposed to match one that has been up for six months.</div>';
+
+  out+='<h2>Month by month</h2><table><tr><th>Month</th><th class="n">Shorts</th><th class="n">Typical views</th><th class="n">Long-form</th><th class="n">Typical views</th></tr>'
+    +t.months.map(function(m){return '<tr><td>'+m.month+'</td><td class="n">'+m.shorts+'</td><td class="n">'+n(m.shortMedian)
+      +'</td><td class="n">'+m.longs+'</td><td class="n">'+n(m.longMedian)+'</td></tr>'}).join('')+'</table>';
+
+  out+='<h2>Best Shorts this year</h2><table><tr><th>Title</th><th class="n">Views</th><th class="n">Likes</th><th>Posted</th></tr>'
+    +t.topShorts.map(function(v){return '<tr><td><a href="'+v.url+'" target="_blank">'+esc(v.title.slice(0,64))+'</a></td>'
+      +'<td class="n">'+n(v.views)+'</td><td class="n">'+n(v.likes)+'</td><td>'+v.published.slice(0,10)+'</td></tr>'}).join('')+'</table>';
+
+  out+='<h2>Best long-form this year</h2><table><tr><th>Title</th><th class="n">Views</th><th class="n">Likes</th><th>Posted</th></tr>'
+    +t.topLongs.map(function(v){return '<tr><td><a href="'+v.url+'" target="_blank">'+esc(v.title.slice(0,64))+'</a></td>'
+      +'<td class="n">'+n(v.views)+'</td><td class="n">'+n(v.likes)+'</td><td>'+v.published.slice(0,10)+'</td></tr>'}).join('')+'</table>';
+
+  if(h.length>1){
+    out+='<h2>Tracked over time</h2><table><tr><th>Checked</th><th class="n">Subs</th><th class="n">Total views</th><th class="n">Short median</th></tr>'
+      +h.slice(-14).reverse().map(function(s){return '<tr><td>'+s.takenAt.slice(0,10)+'</td><td class="n">'+n(s.subscribers)
+        +'</td><td class="n">'+n(s.totalViews)+'</td><td class="n">'+n(s.shortMedian28)+'</td></tr>'}).join('')+'</table>';
+  } else {
+    out+='<div class="note" style="margin-top:22px">Only one snapshot so far. Run the tracker again in a few days and a trend column appears here.</div>';
+  }
+
+  out+='<div class="note" style="margin-top:22px"><b>What this cannot show:</b> impressions, click-through rate and watch time come from the YouTube Analytics API, which this login does not have permission for. Those stay in Studio until that scope is added.</div>';
+  document.getElementById('wrap').innerHTML=out;
+});
+</script></body></html>`;
+
 createServer(async (req, res) => {
   const url = new URL(req.url || "/", `http://localhost:${PORT}`);
   const send = (code: number, type: string, body: string | Buffer) => {
@@ -298,6 +380,19 @@ createServer(async (req, res) => {
 
   if (url.pathname === "/") return send(200, "text/html; charset=utf-8", APPROVE_PAGE);
   if (url.pathname === "/schedule") return send(200, "text/html; charset=utf-8", SCHEDULE_PAGE);
+  if (url.pathname === "/youtube") return send(200, "text/html; charset=utf-8", TRACKER_PAGE);
+
+  if (url.pathname === "/api/tracker") {
+    if (!existsSync(TRACKER)) {
+      return send(200, "application/json", JSON.stringify({
+        error: "No snapshot yet. Run: cd C:/Users/Moore/Desktop/youtube-shorts-automation && node track-youtube.mjs",
+      }));
+    }
+    return send(200, "application/json", JSON.stringify({
+      tracker: readJson<unknown>(TRACKER, null),
+      history: readJson<unknown[]>(SNAPSHOTS, []),
+    }));
+  }
 
   if (url.pathname === "/api/pending") {
     // Previews go inline as data URIs: a browser extension on this machine
