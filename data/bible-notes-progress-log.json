@@ -19925,6 +19925,55 @@
           "at": "2026-08-12T15:00:29Z"
         }
       ]
+    },
+    {
+      "book": "1 Kings",
+      "chapter": 19,
+      "startedAt": "2026-08-12T15:47:17Z",
+      "finishedAt": "2026-08-12T15:57:35Z",
+      "durationMinutes": 10.3,
+      "sections": 5,
+      "cards": 28,
+      "verses": 21,
+      "notes": "New chapter, normal forward progress (redo backlog empty). Elijah at Horeb: flight from Jezebel, the juniper tree, the still small voice, the new commission (Hazael/Jehu/Elisha), the calling of Elisha. Written to docs/bible-study-note-style.md spec, matching lib/genesisThirtyOneSource.ts reference format (title emoji, blank line between every body line and bullet). Style checker clean, parser verified 5 sections / 28 cards, tsc --noEmit clean.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-12T15:47:17Z"
+        },
+        {
+          "name": "target_chapter_determined_1_kings_19_new_chapter",
+          "at": "2026-08-12T15:47:20Z"
+        },
+        {
+          "name": "kjv_text_fetched_from_github_raw",
+          "at": "2026-08-12T15:47:45Z"
+        },
+        {
+          "name": "style_spec_read_in_full",
+          "at": "2026-08-12T15:48:30Z"
+        },
+        {
+          "name": "source_file_written_lib_firstKingsNineteenSource_ts",
+          "at": "2026-08-12T15:54:35Z"
+        },
+        {
+          "name": "style_checker_clean_no_problems",
+          "at": "2026-08-12T15:54:50Z"
+        },
+        {
+          "name": "wired_into_reader_bibleReaderStudyNotes_ts",
+          "at": "2026-08-12T15:55:30Z"
+        },
+        {
+          "name": "parser_check_passed_5_sections_28_cards",
+          "at": "2026-08-12T15:56:10Z"
+        },
+        {
+          "name": "tsc_noEmit_clean",
+          "at": "2026-08-12T15:56:40Z"
+        }
+      ]
     }
   ]
 }
