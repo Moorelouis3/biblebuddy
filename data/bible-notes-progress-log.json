@@ -19243,6 +19243,56 @@
           "at": "2026-08-12T02:01:54Z"
         }
       ]
+    },
+    {
+      "date": "2026-08-12",
+      "book": "1 Kings",
+      "chapter": 6,
+      "startedAt": "2026-08-12T02:47:27Z",
+      "finishedAt": "2026-08-12T02:57:41Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 55,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog confirmed empty, last completed chapter was 1 Kings 5 finished just before this run). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (38 verses). Solomon's temple construction begins in his fourth year, four hundred eighty years after the exodus, with the house's basic dimensions (sixty by twenty by thirty cubits) and its porch, the three story side chambers built on stepped wall ledges so no beam was driven into the temple's own walls, the famous silent construction detail (no hammer, axe, or iron tool heard at the site since every stone arrived pre cut from the quarry), God's direct conditional word to Solomon mid build tying the temple to obedience and to His earlier promise to David, the cedar and fir interior paneling and flooring, the twenty cubit cube oracle (the Most Holy Place) built to hold the ark, the room by room progression of gold overlay across the oracle, the whole house, and the altar, the two colossal fifteen foot olive wood cherubim with wings spanning wall to wall over the ark, the repeated cherubim/palm tree/open flower carving pattern spreading from the oracle to the whole house (within and without), the olive wood oracle doors versus the fir outer doors sized to their room's proportion (a fifth part of the wall versus a fourth), and the closing note that construction ran seven full years, from the fourth year in the month Zif to the eleventh year in the month Bul. Chunked into 8 sections (1-4, 5-10, 11-14, 15-18, 19-22, 23-30, 31-35, 36-38). Density about 1.45 cards/verse (38 verses, 55 cards), in line with the similarly dimension heavy 1 Kings 4 and 5 redos, following spec section 12's guidance that dimension lists still need real teaching (cubit sizes translated to modern feet, the architectural reasoning behind the stepped chamber ledges, the meaning of oracle/most holy place, why iron tools were kept off site) rather than restated measurements. `scripts/check_bible_note_style.py` found 4 problems on first pass (one body line over 20 words, one bullet over the 8 word limit, two cards whose last bullet was not \ud83d\udcd6 or \u27a1\ufe0f), fixed, second run clean, 55 cards, zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, and closes on meaning rather than mechanics, with no hyphens, em dashes, banned filler, or contractions, and title punctuation (semicolons, colons, mid-title periods) trimmed down to a single clean KJV clause per title throughout. Parser check passed exactly via `getBibleReaderStudySections('1 kings', 6)` (8/8 sections, 55 cards, 38 verses, text rendered verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: import added for `FIRST_KINGS_SIX_PERSONAL_SECTIONS` from new `firstKingsSixSource.ts`, `preserveExactPhraseBodies` 1 kings range extended from chapters 1-5 to 1-6, `applyPersonalFirstKingsSixStudySections()` added calling `replaceStudySectionsForBookRange(\"1 kings\", 6, 6, FIRST_KINGS_SIX_PERSONAL_SECTIONS)`, call added directly after `applyPersonalFirstKingsFiveStudySections()`. Session started with git HEAD detached at the exact commit origin/main already sat at (the recurring benign environment quirk noted in many prior entries), fixed with `git checkout -B main origin/main`, no work lost. Next forward-progress target is 1 Kings 7.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-12T02:47:24Z"
+        },
+        {
+          "name": "target_chapter_determined:1 Kings 6 (new chapter, forward progress, redo backlog empty)",
+          "at": "2026-08-12T02:47:27Z"
+        },
+        {
+          "name": "kjv_text_fetched:1 Kings 6 (38 verses)",
+          "at": "2026-08-12T02:48:03Z"
+        },
+        {
+          "name": "style_spec_read:docs/bible-study-note-style.md",
+          "at": "2026-08-12T02:48:03Z"
+        },
+        {
+          "name": "source_file_written:lib/firstKingsSixSource.ts (8 sections, 55 cards)",
+          "at": "2026-08-12T02:53:13Z"
+        },
+        {
+          "name": "style_checker_clean:check_bible_note_style.py (4 problems fixed, then clean)",
+          "at": "2026-08-12T02:56:10Z"
+        },
+        {
+          "name": "wired_into_reader:lib/bibleReaderStudyNotes.ts (import, apply fn+call, preserveExactPhraseBodies 1-5 to 1-6)",
+          "at": "2026-08-12T02:56:40Z"
+        },
+        {
+          "name": "parser_check_passed:getBibleReaderStudySections('1 kings',6) 8/8 sections, 55 cards, verbatim",
+          "at": "2026-08-12T02:57:00Z"
+        },
+        {
+          "name": "tsc_clean:npx tsc --noEmit -p . zero errors",
+          "at": "2026-08-12T02:57:41Z"
+        }
+      ]
     }
   ]
 }
