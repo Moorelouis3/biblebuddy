@@ -1481,3 +1481,7 @@ Next: retry next scheduled run; if the host remains blocked, the egress allowlis
 ## 2026-08-12T01:04:00Z (hourly chapter notes run)
 Chapter: 1 Kings 4 | Duration: 18 min | Sections: 6 | Cards: 50 | Status: pass
 Next up: 1 Kings 5
+
+## 2026-08-12T02:01:02Z (hourly chapter notes run)
+Chapter: 1 Kings 5 | Duration: 13 min | Sections: 6 | Cards: 30 | Status: pass
+Next up: 1 Kings 6
