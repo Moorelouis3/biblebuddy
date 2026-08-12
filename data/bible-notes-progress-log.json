@@ -20165,6 +20165,59 @@
           "at": "2026-08-12T18:56:30Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 1,
+      "startedAt": "2026-08-12T19:48:30Z",
+      "finishedAt": "2026-08-12T19:58:44Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 30,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. First chapter of 2 Kings. Normal forward progress (redo backlog confirmed empty, last completed chapter was 1 Kings 22, the final chapter of 1 Kings). Chapter 1 was still covered only by the old generic SECOND_KINGS_1_25_PERSONAL_SECTIONS placeholder from kingdomDeclinePersonalNotes.ts, no dedicated chapter file existed. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (18 verses). Chapter covers Moab's rebellion opening the book, Ahaziah's fall through a lattice in his rooftop chamber and his choice to consult Baalzebub the god of Ekron instead of the LORD, the angel of the LORD dispatching Elijah the Tishbite to intercept the king's messengers, the death sentence delivered on the sickbed Ahaziah never left, Elijah identified by his hairy garment and leather girdle (the same description later applied to John the Baptist), two captains of fifty consumed by fire from heaven after arrogant demands, the third captain's contrasting humility that spares him and his fifty, Elijah repeating the verdict to the king's face, Ahaziah's death fulfilling the word exactly, his brother Jehoram succeeding him sideways since he had no son, and the closing pointer to the lost book of the chronicles of the kings of Israel. Chunked into 6 sections (1-2, 3-6, 7-8, 9-12, 13-15, 16-18). Density about 1.67 cards/verse (18 verses, 30 cards). scripts/check_bible_note_style.py found 15 problems on first pass (14 cards ending on a bullet other than the required closing emoji, one bullet count short from a digit-keycap emoji the checker's regex does not recognize), fixed, second run clean with 30 cards and zero problems. A manual scan confirmed no hyphens, em dashes, semicolons, contractions, banned filler/hedge words, lines over 20 words, or duplicate opening lines anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('2 kings', 1) (6/6 sections, 30 cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for SECOND_KINGS_ONE_PERSONAL_SECTIONS from new secondKingsOneSource.ts, preserveExactPhraseBodies extended to cover 2 kings chapter 1, new applyPersonalSecondKingsOneStudySections() calling replaceStudySectionsForBookRange('2 kings', 1, 1, SECOND_KINGS_ONE_PERSONAL_SECTIONS) added directly after applyPersonalSecondKingsOneThroughTwentyFiveStudySections() so the new dedicated chapter overrides the old placeholder for chapter 1 only, leaving chapters 2-25 on the old placeholder untouched. Next forward-progress target is 2 Kings 2.",
+      "steps": [
+        {
+          "name": "npm install done (used --ignore-scripts to work around an unrelated ffmpeg-static postinstall download failure, network blocked)",
+          "at": "2026-08-12T19:49:33Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 1 (normal forward progress, redo backlog empty, last done chapter was 1 Kings 22)",
+          "at": "2026-08-12T19:49:33Z"
+        },
+        {
+          "name": "KJV text fetched (2 Kings 1, 18 verses, aruljohn mirror)",
+          "at": "2026-08-12T19:50:11Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full, reference implementation and wiring conventions reviewed",
+          "at": "2026-08-12T19:53:57Z"
+        },
+        {
+          "name": "source file written: lib/secondKingsOneSource.ts",
+          "at": "2026-08-12T19:53:57Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 passes: 15 problems fixed then clean)",
+          "at": "2026-08-12T19:57:41Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 2 kings 1, new applyPersonalSecondKingsOneStudySections call added after the old placeholder call)",
+          "at": "2026-08-12T19:57:41Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 30 cards, 18 verses, text verbatim)",
+          "at": "2026-08-12T19:57:41Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-12T19:57:41Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-12T19:58:44Z"
+        }
+      ]
     }
   ]
 }
