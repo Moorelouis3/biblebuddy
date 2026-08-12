@@ -19713,6 +19713,59 @@
           "at": "2026-08-12T10:59:24Z"
         }
       ]
+    },
+    {
+      "book": "1 Kings",
+      "chapter": 15,
+      "startedAt": "2026-08-12T11:46:38Z",
+      "finishedAt": "2026-08-12T11:56:56Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 47,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Session started with git HEAD detached at the exact commit origin/main was already at (the recurring detached-HEAD environment bug seen in many prior runs), fixed with git fetch origin main && git checkout -B main origin/main, no work lost. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing wired-in file for 1 Kings 15 (last completed chapter was 1 Kings 14). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (34 verses). 1 Kings 15 covers Abijam's brief three year reign walking in Rehoboam's sins yet kept on the throne only for David's sake, Asa's forty one year reign and reforms (removing shrine prostitutes and his fathers' idols, deposing his own grandmother Maachah as queen mother for her Asherah pole, though the high places persisted), Asa stripping the temple and palace treasuries to bribe Benhadad of Syria into breaking his treaty with Baasha of Israel, Baasha's forced retreat from his Ramah blockade and Asa's reuse of the abandoned stone to fortify Geba and Mizpah, Asa's old age foot disease and death, and the parallel account of Baasha's own rise to Israel's throne by assassinating Nadab at Gibbethon and exterminating Jeroboam's entire house in fulfillment of Ahijah's prophecy, only to repeat Jeroboam's own golden calf sin as the chapter closes. Chunked into 8 sections (1-8, 9-15, 16-19, 20-22, 23-24, 25-28, 29-32, 33-34) matching the chapter's natural narrative breaks between Abijam, Asa's reforms, the Syria alliance, Asa's death, and the Nadab/Baasha succession in Israel. Density about 1.38 cards/verse (34 verses, 47 cards), in the normal recent range. scripts/check_bible_note_style.py found 5 problems on first pass (2 cards ending on a bullet other than \ud83d\udcd6/\u27a1\ufe0f, 2 bullets one word over the 8 word limit, 1 repeated emoji within a card), fixed, second run clean. A manual section 13 eye check confirmed all four opening moves used correctly, no banned words/contractions/hyphens/em dashes/semicolons (confirmed by grep), and caught that the Baasha named at verse 16 (Asa's rival) is the same Baasha whose rise to power is narrated at verse 27, not a second man of the same name, so the card for verse 27 explains that explicitly instead of implying a coincidence. Parser check passed exactly via getBibleReaderStudySections('1 kings', 15) (8/8 sections, 47 cards, 34 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 1 kings range extended from chapters 1-14 to 1-15, new applyPersonalFirstKingsFifteenStudySections() calling replaceStudySectionsForBookRange(\"1 kings\", 15, 15, FIRST_KINGS_FIFTEEN_PERSONAL_SECTIONS) added directly after applyPersonalFirstKingsFourteenStudySections() and before the existing applyPersonalFirstKingsSixteenThroughTwentyTwoStudySections() call. Next forward-progress target is 1 Kings 16.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-12T11:47:07Z"
+        },
+        {
+          "name": "target chapter determined: 1 Kings 15 (redo backlog empty, normal forward progress after 1 Kings 14)",
+          "at": "2026-08-12T11:47:34Z"
+        },
+        {
+          "name": "KJV text fetched (1 Kings 15, 34 verses, aruljohn mirror)",
+          "at": "2026-08-12T11:47:34Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-12T11:47:34Z"
+        },
+        {
+          "name": "source file written: lib/firstKingsFifteenSource.ts",
+          "at": "2026-08-12T11:53:52Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes)",
+          "at": "2026-08-12T11:53:52Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalFirstKingsFifteenStudySections)",
+          "at": "2026-08-12T11:55:48Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 47 cards, text verbatim)",
+          "at": "2026-08-12T11:55:48Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-12T11:56:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-12T11:56:56Z"
+        }
+      ]
     }
   ]
 }

@@ -1521,3 +1521,7 @@ Next up: 1 Kings 14
 ## 2026-08-12T11:00:34Z (hourly chapter notes run)
 Chapter: 1 Kings 14 | Duration: 13 min | Sections: 11 | Cards: 55 | Status: pass
 Next up: 1 Kings 15
+
+## 2026-08-12T11:56:56Z (hourly chapter notes run)
+Chapter: 1 Kings 15 | Duration: 10 min | Sections: 8 | Cards: 47 | Status: pass
+Next up: 1 Kings 16
