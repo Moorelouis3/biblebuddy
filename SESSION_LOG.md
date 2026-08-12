@@ -1477,3 +1477,7 @@ Next up: 1 Kings 4
 Status: BLOCKED — network egress denied.
 Detail: curl to https://life-buddy-production.up.railway.app/api/bible-level2/queue failed at the agent proxy layer (CONNECT to life-buddy-production.up.railway.app:443 answered 403, "policy denial or upstream failure", confirmed twice via proxy status endpoint). Per proxy README, 403s are organization policy denials — not retried, not routed around. Could not read the queue at all, so this is NOT the documented "queue empty" stop condition; it is a failed run. No chapter content touched, no commit beyond this log line.
 Next: retry next scheduled run; if the host remains blocked, the egress allowlist needs life-buddy-production.up.railway.app added.
+
+## 2026-08-12T01:04:00Z (hourly chapter notes run)
+Chapter: 1 Kings 4 | Duration: 18 min | Sections: 6 | Cards: 50 | Status: pass
+Next up: 1 Kings 5
