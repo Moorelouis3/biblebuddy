@@ -19611,6 +19611,59 @@
           "at": "2026-08-12T08:56:20Z"
         }
       ]
+    },
+    {
+      "book": "1 Kings",
+      "chapter": 13,
+      "startedAt": "2026-08-12T09:46:55Z",
+      "finishedAt": "2026-08-12T09:58:35Z",
+      "durationMinutes": 11.7,
+      "sections": 10,
+      "cards": 54,
+      "verses": 34,
+      "notes": "New chapter, forward progress after 1 Kings 12. Man of God from Judah vs Jeroboam's altar, the old prophet's deception, and the lion on the road. Written fresh to docs/bible-study-note-style.md. Also fixed a pre-existing wiring gap: preserveExactPhraseBodies range for 1 Kings was capped at chapter 11, leaving chapter 12 (already spec-compliant) unmarked; extended range to chapter 13 to cover both.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-12T09:46:55Z"
+        },
+        {
+          "name": "target_chapter_determined: 1 Kings 13 (new chapter, forward progress)",
+          "at": "2026-08-12T09:47:17Z"
+        },
+        {
+          "name": "kjv_text_fetched: 34 verses via raw.githubusercontent.com aruljohn Bible-kjv",
+          "at": "2026-08-12T09:47:23Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-08-12T09:47:30Z"
+        },
+        {
+          "name": "source_file_written: lib/firstKingsThirteenSource.ts",
+          "at": "2026-08-12T09:56:29Z"
+        },
+        {
+          "name": "style_checker_clean: 54 cards, 0 problems",
+          "at": "2026-08-12T09:56:32Z"
+        },
+        {
+          "name": "wiring_done: import + preserveExactPhraseBodies range + apply call",
+          "at": "2026-08-12T09:57:17Z"
+        },
+        {
+          "name": "parser_check_passed: 10 sections, 54 cards",
+          "at": "2026-08-12T09:57:17Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-08-12T09:58:31Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-08-12T09:58:35Z"
+        }
+      ]
     }
   ]
 }
