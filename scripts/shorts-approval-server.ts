@@ -40,7 +40,7 @@ const TARGET_DAYS_AHEAD = 14;
 type Candidate = {
   id: string; sourceId: string; score: number; posted: string; sourceText: string;
   title: string; lines: string[]; bg: string; preview: string;
-  status: "pending" | "approved" | "rejected" | "scheduled" | "failed";
+  status: "pending" | "approved" | "rejected" | "scheduled" | "failed" | "picked";
   scheduledFor?: string; error?: string;
 };
 type Slot = { date: string; time: string };
@@ -120,9 +120,19 @@ function pumpRenderQueue() {
 /** Books the slot and writes the files. Render is queued, not awaited. */
 function approve(id: string) {
   const rows = loadPending();
-  const row = rows.find((r) => r.id === id);
+  const row = rows.find((r) => r.id === id) as (Candidate & { origin?: string }) | undefined;
   if (!row) return { ok: false, error: "unknown id" };
   if (row.status !== "pending") return { ok: false, error: `already ${row.status}` };
+
+  // Old YouTube shorts arrive with no script - the text still has to be lifted
+  // off the video. Approving one records the pick; the script and render happen
+  // afterwards, so no time is spent on shorts that were never wanted.
+  if (!row.lines || row.lines.length === 0) {
+    row.status = "picked";
+    savePending(rows);
+    const picked = rows.filter((r) => r.status === "picked").length;
+    return { ok: true, slot: `picked (${picked} waiting to be built)`, daysAhead: daysAhead() };
+  }
 
   const slot = bookSlot();
 
@@ -325,7 +335,19 @@ createServer(async (req, res) => {
 
   send(404, "text/plain", "not found");
 }).listen(PORT, () => {
-  const pending = loadPending().filter((r) => r.status === "pending").length;
+  const rows = loadPending();
+  const pending = rows.filter((r) => r.status === "pending").length;
   console.log(`Shorts approval  http://localhost:${PORT}       (${pending} waiting)`);
   console.log(`Schedule board   http://localhost:${PORT}/schedule  (${daysAhead()} days ahead)`);
+
+  // The render queue lives in memory, so a restart strands anything approved
+  // but not yet rendered. Pick those back up rather than leaving a booked slot
+  // with no video behind it.
+  const orphans = rows.filter((r) =>
+    r.status === "approved" && r.lines?.length && !existsSync(join(ROOT, "tmp", "shorts", "out", `${r.id}.mp4`)));
+  if (orphans.length) {
+    console.log(`resuming ${orphans.length} unrendered short(s) from a previous run`);
+    for (const row of orphans) renderQueue.push(row.id);
+    pumpRenderQueue();
+  }
 });
