@@ -1501,3 +1501,7 @@ Next up: 1 Kings 9
 ## 2026-08-12T05:57:41Z (hourly chapter notes run)
 Chapter: 1 Kings 9 | Duration: 11 min | Sections: 7 | Cards: 43 | Status: pass
 Next up: 1 Kings 10
+
+## 2026-08-12T06:58:25Z (hourly chapter notes run)
+Chapter: 1 Kings 10 | Duration: 11 min | Sections: 8 | Cards: 40 | Status: pass
+Next up: 1 Kings 11
