@@ -1532,3 +1532,7 @@ Blocked: agent proxy denied egress to life-buddy-production.up.railway.app (403 
 ## 2026-08-12T13:00:46Z (hourly chapter notes run)
 Chapter: 1 Kings 16 | Duration: 13 min | Sections: 6 | Cards: 50 | Status: pass
 Next up: 1 Kings 17
+
+## 2026-08-12T13:55:14Z (hourly chapter notes run)
+Chapter: 1 Kings 17 | Duration: 8 min | Sections: 7 | Cards: 32 | Status: pass
+Next up: 1 Kings 18
