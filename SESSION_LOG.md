@@ -1585,3 +1585,7 @@ files changed, no completion reported. Status: blocked, not shipped.
 ## 2026-08-13T01:01:27Z (hourly chapter notes run)
 Chapter: 2 Kings 6 | Duration: 9 min | Sections: 7 | Cards: 48 | Status: pass
 Next up: 2 Kings 7
+
+## 2026-08-13T01:55:25Z (hourly chapter notes run)
+Chapter: 2 Kings 7 | Duration: 8 min | Sections: 8 | Cards: 38 | Status: pass
+Next up: 2 Kings 8
