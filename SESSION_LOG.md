@@ -1601,3 +1601,7 @@ Next up: 2 Kings 10
 ## 2026-08-13T04:55:03Z (hourly chapter notes run)
 Chapter: 2 Kings 10 | Duration: 8 min | Sections: 10 | Cards: 37 | Status: pass
 Next up: 2 Kings 11
+
+## 2026-08-13T05:54:35Z (hourly chapter notes run)
+Chapter: 2 Kings 11 | Duration: 8 min | Sections: 6 | Cards: 38 | Status: pass
+Next up: 2 Kings 12
