@@ -1589,3 +1589,7 @@ Next up: 2 Kings 7
 ## 2026-08-13T01:55:25Z (hourly chapter notes run)
 Chapter: 2 Kings 7 | Duration: 8 min | Sections: 8 | Cards: 38 | Status: pass
 Next up: 2 Kings 8
+
+## 2026-08-13T02:56:44Z (hourly chapter notes run)
+Chapter: 2 Kings 8 | Duration: 9 min | Sections: 8 | Cards: 44 | Status: pass
+Next up: 2 Kings 9

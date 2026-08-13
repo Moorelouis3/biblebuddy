@@ -20580,6 +20580,67 @@
           "at": "2026-08-13T01:56:59Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 8,
+      "startedAt": "2026-08-13T02:47:21Z",
+      "finishedAt": "2026-08-13T02:56:44Z",
+      "durationMinutes": 9,
+      "sections": 8,
+      "cards": 44,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty, last completed chapter was 2 Kings 7 finished just before this run). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (29 verses). Chapter covers the Shunammite woman's seven year sojourn in Philistine territory during a LORD-called famine and the providential timing of her return just as Gehazi is retelling her son's resurrection to the king (with an honest note that Gehazi's healthy presence at court, given his chapter 5 leprosy, likely means this scene happened earlier and Kings is not always in strict chronological order), Elisha's trip to Damascus where a sick Benhadad sends Hazael with forty camels of gifts to ask if he will recover, Elisha's answer separating the illness from the true cause of death, Elisha weeping over the atrocities he foresees Hazael committing and the dog idiom Hazael uses to deny it, Hazael's assassination of Benhadad by a wet cloth and his rise to the Syrian throne fulfilling the old 1 Kings 19 assignment first given to Elijah, Jehoram of Judah's reign beginning under Jehoshaphat's shadow with his marriage into Ahab's house (Athaliah, though not yet named) and the Davidic covenant reason Judah is preserved anyway, Edom and Libnah's revolts against Judah, the closing regnal formula naming the lost source book of the chronicles of the kings of Judah, and Ahaziah of Judah's short reign beginning with Athaliah finally named as his mother and his fatal decision to visit the wounded Joram in Jezreel, setting up chapter 9. Chunked into 8 sections (1-6, 7-10, 11-13, 14-15, 16-19, 20-22, 23-24, 25-29) matching the chapter's natural scene breaks. Density about 1.5 cards per verse (29 verses, 44 cards). scripts/check_bible_note_style.py found 1 problem on first pass (one body line over the 20 word limit), fixed by splitting it into two lines, second run clean. A manual eye check and a targeted grep for banned filler words, soft hedges, hyphens, em dashes, semicolons, and contractions across the note content confirmed none were present, and confirmed every card title is an exact KJV phrase substring with no duplicate titles. Parser check passed exactly via getBibleReaderStudySections('2 kings', 8) (8/8 sections, 44 cards, 29 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range for 2 kings extended from chapter 7 to chapter 8, and a new applyPersonalSecondKingsEightStudySections() call added in reading order after 2 Kings 7. Git was found detached from refs/heads/main at session start (the same recurring environment issue noted in many prior entries); confirmed via git fetch that origin/main already matched local HEAD exactly (no divergence, no work at risk), then restored a proper tracking branch with git checkout -B main origin/main before starting any new work.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-13T02:47:21Z"
+        },
+        {
+          "name": "redo backlog confirmed empty (data/bible-notes-style-redo-remaining.json)",
+          "at": "2026-08-13T02:47:30Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 8 (normal forward progress after 2 Kings 7)",
+          "at": "2026-08-13T02:47:40Z"
+        },
+        {
+          "name": "git repo state anomaly found and resolved (detached HEAD, confirmed origin/main matched via git fetch, restored tracking branch with git checkout -B main origin/main)",
+          "at": "2026-08-13T02:48:10Z"
+        },
+        {
+          "name": "KJV text fetched for 2 Kings 8 (raw.githubusercontent.com/aruljohn/Bible-kjv mirror, 29 verses)",
+          "at": "2026-08-13T02:48:40Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, in full)",
+          "at": "2026-08-13T02:49:30Z"
+        },
+        {
+          "name": "source file written (lib/secondKingsEightSource.ts, 8 sections, 44 cards)",
+          "at": "2026-08-13T02:53:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 passes, 1 over-length body line fixed)",
+          "at": "2026-08-13T02:54:10Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to ch 8, applyPersonalSecondKingsEightStudySections call added)",
+          "at": "2026-08-13T02:54:40Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 44 cards, 29 verses, text verbatim)",
+          "at": "2026-08-13T02:55:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-13T02:55:50Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-13T02:56:44Z"
+        }
+      ]
     }
   ]
 }
