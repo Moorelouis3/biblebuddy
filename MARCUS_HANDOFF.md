@@ -130,3 +130,30 @@ Joshua 24 that this branch doesn't already contain) or investigate further
 before the hourly job resumes writing new chapters — until this is
 resolved, the hourly job risks either duplicating chapters or writing on
 top of the wrong base.
+
+**Correction, same run, minutes later: the above was a false alarm, exactly
+like the 2026-08-13T00:25Z entry above it.** I never ran `git fetch`
+before trusting the local `refs/remotes/origin/main` ref — I should have
+read the rest of this file first, since it documents this precise trap.
+After a real `git fetch origin main`, `origin/main` was already at
+`6c96722` (2 Kings 5 plus that same prior run's fix commit), not
+`bfe17e5`/Joshua 24. That prior run (00:25-00:28Z) had already confirmed
+via `git fetch --unshallow` that everything through 2 Kings 5 was safely
+on GitHub and had almost certainly pushed `6c96722` itself per the
+stop-hook push requirement; my local checkout just had a stale cached
+`origin/main` ref left over from container state. Nothing was ever
+actually at risk. The `rescue/unpushed-bible-notes-2026-08-13` branch I
+pushed is redundant (every commit on it is now also reachable from main)
+but harmless — attempted to delete it and got a 403 from the git proxy,
+so it's just left in place; safe to ignore or delete manually. The one
+real change I made to origin/main this run is this handoff commit itself,
+which was a valid fast-forward.
+
+This is now at least three sessions in a row (2026-08-11-ish, 00:25Z
+today, and this run) that have started with a detached HEAD and a stale
+local `origin/main` tracking ref, and this is the second time it produced
+a full false-alarm writeup instead of a one-line "confirmed already
+pushed, fixed pointer" note. Worth someone checking why sessions keep
+starting in this state, and possibly adding "always `git fetch origin
+main` before reasoning about ahead/behind" to this project's git
+instructions so it stops costing a full investigation every time.
