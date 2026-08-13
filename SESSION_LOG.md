@@ -1636,3 +1636,7 @@ on life-buddy-production.up.railway.app confirmed via proxy status
 (kind: connect_rejected). No queue data seen, no files changed, no
 completion reported. See MARCUS_HANDOFF.md for full history (blocked daily
 since 2026-08-08).
+
+## 2026-08-13T13:02:14Z (hourly chapter notes run)
+Chapter: 2 Kings 18 | Duration: 13 min | Sections: 11 | Cards: 60 | Status: pass
+Next up: 2 Kings 19

@@ -21146,6 +21146,59 @@
           "at": "2026-08-13T12:06:04Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 18,
+      "startedAt": "2026-08-13T12:49:35Z",
+      "finishedAt": "2026-08-13T13:02:14Z",
+      "durationMinutes": 13,
+      "sections": 11,
+      "cards": 60,
+      "verses": 37,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing dedicated wired-in file for this chapter, clean new-chapter build per docs/bible-study-note-style.md. Session started with git HEAD detached at the exact commit origin/main was already at (the recurring detached-HEAD environment bug seen in prior runs), fixed with git checkout -B main origin/main, no work lost. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (37 verses). 2 Kings 18 covers Hezekiah's reign summary and reforms (removing the high places, breaking the images and groves, destroying the brasen serpent Nehushtan), his trust in the LORD and rebellion against Assyria, a recap of Samaria's earlier fall under Shalmaneser tying back into chapter 17, Sennacherib's invasion of Judah and Hezekiah's massive tribute payment stripping the temple's gold, the arrival of Tartan, Rabsaris, and Rabshakeh at Jerusalem's water conduit, Rabshakeh's propaganda speech mocking Hezekiah's trust in the LORD and in Egypt (the bruised reed), his crude threat about siege starvation, his public proclamation in Hebrew offering a false peace disguised in promised-land language, his blasphemous comparison of the LORD to the defeated gods of conquered nations, and the chapter's close on the people's disciplined silence and the officials reporting back to Hezekiah with their clothes torn. Chunked into 11 sections (1-4, 5-8, 9-12, 13-16, 17-18, 19-21, 22-25, 26-27, 28-32, 33-35, 36-37) matching the chapter's natural scene breaks between narrative summary and Rabshakeh's speech. Density about 1.62 cards/verse (37 verses, 60 cards), in the normal range for the current style spec. scripts/check_bible_note_style.py found zero problems on first run after several bullet word count fixes were made during drafting (one banned hedge word 'quite' caught and removed before saving, several bullets trimmed to stay within the 3 to 8 word range). A manual section 13 eye check confirmed each card opens with one of the four approved moves, no duplicate or near duplicate opening lines across the chapter's 60 cards, and the close of the chapter (torn clothes, report reaching Hezekiah) lands on meaning rather than mechanics. Parser check passed exactly via getBibleReaderStudySections('2 kings', 18) (11/11 sections, 60 cards, 37 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 kings range extended from chapters 1-17 to 1-18, applyPersonalSecondKingsEighteenStudySections() calling replaceStudySectionsForBookRange(\"2 kings\", 18, 18, SECOND_KINGS_EIGHTEEN_PERSONAL_SECTIONS) added directly after applyPersonalSecondKingsSeventeenStudySections(). Next forward-progress target is 2 Kings 19.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-13T12:49:35Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 18 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-13T12:49:55Z"
+        },
+        {
+          "name": "KJV text fetched (2 Kings 18, 37 verses, aruljohn mirror)",
+          "at": "2026-08-13T13:02:14Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-13T13:02:14Z"
+        },
+        {
+          "name": "source file written: lib/secondKingsEighteenSource.ts",
+          "at": "2026-08-13T13:02:14Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, clean on first pass)",
+          "at": "2026-08-13T13:02:14Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalSecondKingsEighteenStudySections call)",
+          "at": "2026-08-13T13:02:14Z"
+        },
+        {
+          "name": "parser check passed (11/11 sections, 60 cards, 37 verses, text verbatim)",
+          "at": "2026-08-13T13:02:14Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-13T13:02:14Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-13T13:03:39Z"
+        }
+      ]
     }
   ]
 }
