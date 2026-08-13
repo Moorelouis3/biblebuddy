@@ -1576,3 +1576,8 @@ Next up: 2 Kings 5
 ## 2026-08-12T23:57:27Z (hourly chapter notes run)
 Chapter: 2 Kings 5 | Duration: 10 min | Sections: 7 | Cards: 41 | Status: pass
 Next up: 2 Kings 6
+
+## 2026-08-13T00:25:22Z (level2 upgrade run)
+Blocked: egress proxy 403 on CONNECT to life-buddy-production.up.railway.app
+(confirmed via WebFetch too: EGRESS_BLOCKED). Could not pull queue. No
+files changed, no completion reported. Status: blocked, not shipped.

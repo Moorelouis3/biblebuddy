@@ -55,6 +55,16 @@ whatever is supposed to clear it into a tracked Problem may not be working
 either. Flagging directly to Louis via push notification this run since the
 handoff-file path alone hasn't produced a fix.
 
+**Still happening 2026-08-13T00:25Z**: same 403 policy denial on the CONNECT
+tunnel to `life-buddy-production.up.railway.app`, confirmed via both curl
+and WebFetch (WebFetch returned `EGRESS_BLOCKED` directly). This is at
+least the 10th blocked run since 2026-08-08 — six full days now with no
+fix, despite a direct push notification already sent on 2026-08-12 flagging
+that the handoff-file path alone wasn't producing a fix. This entry is
+still sitting unprocessed in this file from that run, which continues to
+suggest the automatic pickup into a tracked Problem is not working. No
+file changes made, no completion reported.
+
 ## Stop hook is not catching detached-HEAD unpushed commits, deploy-tagged work is sitting unshipped
 This run started in a repo state with HEAD detached from any branch, 31
 commits ahead of `origin/main` (local `main` itself was stale, still
@@ -76,3 +86,19 @@ standard while leaving real commits, including deploy-tagged ones, stranded
 in a container that may not persist. Worth having someone check what the
 stop hook actually inspects and whether it needs a `git status` style
 check that also covers detached HEAD.
+
+**2026-08-13T00:25Z — this time a false alarm, but worth a note**: this run
+also started in detached HEAD, with local `main` stale at Joshua 24
+(bfe17e5) and HEAD 52 commits ahead at 2 Kings 5. Initial `git log
+origin/main..HEAD` comparisons made it look like 52 commits including three
+`[deploy]`-tagged ones were stranded unpushed, mirroring the incident above.
+It turned out to be a stale shallow-clone artifact: the local
+`origin/main` ref just hadn't been updated since the shallow checkout, and
+`git fetch --unshallow` showed the real `origin/main` on GitHub already
+matched HEAD exactly (`c8f8a294`) — everything had actually shipped. Fixed
+the local branch pointer (`git branch -f main HEAD`) so the session isn't
+sitting on a detached HEAD going forward. No data was ever at risk, but
+this is the third session in a row to start detached, which keeps pointing
+at the same open question above: something about how this environment
+checks out the repo (or the stop hook's git check) isn't leaving sessions
+on a proper branch.
