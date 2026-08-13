@@ -1581,3 +1581,7 @@ Next up: 2 Kings 6
 Blocked: egress proxy 403 on CONNECT to life-buddy-production.up.railway.app
 (confirmed via WebFetch too: EGRESS_BLOCKED). Could not pull queue. No
 files changed, no completion reported. Status: blocked, not shipped.
+
+## 2026-08-13T01:01:27Z (hourly chapter notes run)
+Chapter: 2 Kings 6 | Duration: 9 min | Sections: 7 | Cards: 48 | Status: pass
+Next up: 2 Kings 7
