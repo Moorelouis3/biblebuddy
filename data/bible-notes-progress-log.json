@@ -20991,6 +20991,55 @@
           "at": "2026-08-13T08:58:04Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 15,
+      "startedAt": "2026-08-13T09:46:24Z",
+      "finishedAt": "2026-08-13T09:54:02Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 43,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing dedicated wired-in file for this chapter. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (38 verses). 2 Kings 15 covers six kings across two kingdoms: Azariah/Uzziah's 52 year reign in Judah cut short by leprosy after his temple overreach (2 Kings itself is silent on the cause, explained via 2 Chronicles), Jotham stepping in as co regent, Zachariah's six month reign closing Jehu's dynasty at exactly the fourth generation promised in chapter 10, Shallum's one month reign and Menahem's brutal capture of Tiphsah, Menahem buying off Pul/Tiglathpileser with a thousand talents of silver (Israel's first recorded tribute to Assyria), Pekahiah murdered by his own captain Pekah, Pekah's reign and Tiglathpileser's first real territorial conquest of Israel's north including the first mass deportation to Assyria, Hoshea's conspiracy setting up Israel's last king, and Jotham's own steady reign in Judah building the temple's higher gate while the Syria-Israel alliance under Rezin and Pekah begins pressuring Judah. Chunked into 7 sections (1-7, 8-12, 13-16, 17-22, 23-26, 27-31, 32-38). Density about 1.13 cards/verse. scripts/check_bible_note_style.py found 6 problems on first pass (one banned hedge word 'somewhat', five cards whose last bullet did not end in the required takeaway emoji), fixed, second run clean at 43 cards. A manual section 13 eye check confirmed the reordered bullets still read coherently and no duplicate opening lines. Parser check passed exactly via getBibleReaderStudySections('2 kings', 15) (7/7 sections, 43 cards, 38 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range for 2 kings extended from chapter <= 14 to <= 15, new applyPersonalSecondKingsFifteenStudySections() call added directly after applyPersonalSecondKingsFourteenStudySections(). Next forward-progress target is 2 Kings 16.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-13T09:46:24Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 15 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-13T09:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (2 Kings 15, 38 verses, aruljohn mirror)",
+          "at": "2026-08-13T09:47:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-13T09:47:10Z"
+        },
+        {
+          "name": "source file written: lib/secondKingsFifteenSource.ts",
+          "at": "2026-08-13T09:53:06Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes)",
+          "at": "2026-08-13T09:53:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalSecondKingsFifteenStudySections)",
+          "at": "2026-08-13T09:53:45Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 43 cards, 38 verses, text verbatim)",
+          "at": "2026-08-13T09:53:45Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-13T09:54:02Z"
+        }
+      ]
     }
   ]
 }
