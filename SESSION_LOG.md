@@ -1629,3 +1629,10 @@ Next up: 2 Kings 17
 ## 2026-08-13T12:06:04Z (hourly chapter notes run)
 Chapter: 2 Kings 17 | Duration: 18 min | Sections: 10 | Cards: 74 | Status: pass
 Next up: 2 Kings 18
+
+## 2026-08-13T12:34:07Z (level2 upgrade run)
+Status: BLOCKED — queue endpoint unreachable, same 403 egress policy denial
+on life-buddy-production.up.railway.app confirmed via proxy status
+(kind: connect_rejected). No queue data seen, no files changed, no
+completion reported. See MARCUS_HANDOFF.md for full history (blocked daily
+since 2026-08-08).

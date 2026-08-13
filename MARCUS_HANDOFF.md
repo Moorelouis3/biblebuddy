@@ -157,3 +157,16 @@ pushed, fixed pointer" note. Worth someone checking why sessions keep
 starting in this state, and possibly adding "always `git fetch origin
 main` before reasoning about ahead/behind" to this project's git
 instructions so it stops costing a full investigation every time.
+
+## Level 2 upgrade agent recurring network block
+**Still happening 2026-08-13T12:34Z**: same 403 policy denial on the CONNECT
+tunnel to `life-buddy-production.up.railway.app`, confirmed via the agent
+proxy status endpoint (`kind: connect_rejected`, "gateway answered 403 to
+CONNECT"). This is at least the 12th blocked run since 2026-08-08 — six
+full days with no fix, and this is the second blocked run today alone
+(00:25Z and now 12:34Z). No file changes made, no completion reported.
+This entry keeps needing to be re-appended because the ones before it are
+still sitting unprocessed in this file, reinforcing the earlier note that
+the automatic Marcus pickup for this recurring entry may not be working.
+Sending a direct push notification again this run since it's been a full
+day since the last one (2026-08-12) and the block is still unresolved.
