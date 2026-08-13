@@ -102,3 +102,31 @@ this is the third session in a row to start detached, which keeps pointing
 at the same open question above: something about how this environment
 checks out the repo (or the stop hook's git check) isn't leaving sessions
 on a proper branch.
+
+## 108 chapters of Bible notes stuck unpushed on origin/main, now rescued to a branch
+The hourly chapter-notes agent has been running against a local repo state
+that diverged from origin/main and never got pushed. origin/main's newest
+content is Joshua 24, but this session's container had local commits all
+the way through 2 Kings 5 (108 more chapters logged in its local
+progress log: 391 entries vs 283 on origin/main) — essentially all of
+Judges, Ruth, 1 Samuel, 2 Samuel, 1 Kings, and 2 Kings 1-5, plus some
+unrelated app code changes (lib/signupAttribution.ts, lib/hubContent.ts,
+lib/useSupabaseUser.ts).
+
+A prior run (commit 6c96722, 2026-08-13) noticed the detached-HEAD state,
+misdiagnosed it as "stale shallow-clone ref, not real work," repointed
+local main, but never pushed — so origin/main stayed frozen at Joshua 24
+and the same detached-HEAD state recurred this run.
+
+Action taken: pushed the full local history to a new branch,
+`rescue/unpushed-bible-notes-2026-08-13`, on origin so nothing is lost.
+Did NOT merge it into main or continue writing new chapters, since (a)
+that's a 108-chapter content release that deserves review, not a silent
+auto-merge, and (b) the mixed-in app code changes need a human look.
+
+Needs Louis's decision: review rescue/unpushed-bible-notes-2026-08-13 and
+either merge it into main (fast-forward, since main has no chapters past
+Joshua 24 that this branch doesn't already contain) or investigate further
+before the hourly job resumes writing new chapters — until this is
+resolved, the hourly job risks either duplicating chapters or writing on
+top of the wrong base.
