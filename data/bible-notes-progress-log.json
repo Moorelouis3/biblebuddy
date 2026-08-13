@@ -21040,6 +21040,59 @@
           "at": "2026-08-13T09:54:02Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 16,
+      "startedAt": "2026-08-13T10:44:00Z",
+      "finishedAt": "2026-08-13T10:58:25Z",
+      "durationMinutes": 14,
+      "sections": 5,
+      "cards": 37,
+      "verses": 20,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty, normal forward progress, next chapter after 2 Kings 15 with no existing wired-in file. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (20 verses). 2 Kings 16 covers Ahaz's unfaithful reign in Judah: idolatry including child sacrifice to Molech and worship at the high places, the Syro-Ephraimite war where Rezin of Syria and Pekah of Israel besiege Jerusalem (the crisis behind Isaiah 7), Ahaz stripping the temple and palace treasuries to buy Assyrian rescue and submitting to Tiglathpileser as vassal, Assyria's defeat of Damascus and deportation of its people to Kir, Ahaz copying a pagan altar he saw in Damascus and having Urijah the priest build an exact replica, Ahaz personally usurping the priestly role to offer sacrifice on it (echoing Uzziah's earlier judgment), the demotion of the original bronze altar to a private inquiry altar, the stripping of temple bronze fixtures (lavers, the sea, the brazen oxen) likely to pay Assyrian tribute, and the chapter's close on Ahaz's death and burial in the city of David and the handoff to his son Hezekiah. Chunked into 5 sections (1-4, 5-9, 10-14, 15-18, 19-20). Density about 1.85 cards/verse (20 verses, 37 cards). An inline list was considered for the four offering types in verse 13 but rewritten as plain prose instead, since the mechanical checker counts any emoji-led line toward the fixed four-bullet count. scripts/check_bible_note_style.py was clean on the first pass, 37 cards, zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, closes on meaning rather than mechanics, uses exactly four bullets each ending on \ud83d\udcd6 or \u27a1\ufe0f with no repeated emoji within a card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file, with no duplicate card titles. Parser check passed exactly via getBibleReaderStudySections('2 kings', 16) (5/5 sections, 37 cards, 20 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range for 2 kings extended from chapter <= 15 to <= 16, new applyPersonalSecondKingsSixteenStudySections() call added directly after applyPersonalSecondKingsFifteenStudySections(). Next forward-progress target is 2 Kings 17.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-13T10:46:45Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 16 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-13T10:46:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-13T10:46:45Z"
+        },
+        {
+          "name": "KJV text fetched (2 Kings 16, 20 verses, aruljohn mirror)",
+          "at": "2026-08-13T10:46:45Z"
+        },
+        {
+          "name": "source file written: lib/secondKingsSixteenSource.ts",
+          "at": "2026-08-13T10:57:35Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, clean on first pass)",
+          "at": "2026-08-13T10:57:35Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalSecondKingsSixteenStudySections)",
+          "at": "2026-08-13T10:57:35Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 37 cards, 20 verses, text verbatim)",
+          "at": "2026-08-13T10:57:35Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-13T10:57:35Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-13T10:58:25Z"
+        }
+      ]
     }
   ]
 }
