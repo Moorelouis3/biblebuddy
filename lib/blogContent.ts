@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "can-you-lose-your-salvation",
+    title: "Can You Lose Your Salvation? What the Bible Says",
+    description:
+      "Can you lose your salvation? The Bible verses on both sides explained honestly, where sincere Christians disagree, and how to find real assurance in Christ.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/can-you-lose-your-salvation",
+    publishedAt: "2026-08-15",
+    readTime: "23 min read",
+    image: "/salvation-banner.png",
+    groupPost: {
+      title: "Can You Lose Your Salvation? What the Bible Says 📖",
+      content:
+        "You did the thing again.\n\nThe sin you promised God you were done with. And now there's a voice asking: can you lose your salvation over this?\n\n📌 Here's the honest truth: sincere, Bible believing Christians read the same verses and land in different places on this one. I'm not going to pretend otherwise.\n\nNew article walking through the promises (John 10:28-29, Romans 8:38-39), the warnings (Hebrews 6:4-6, Hebrews 10:26-27), where good Christians honestly disagree, and where your assurance is actually supposed to rest.\n\nRead it here:\nhttps://www.mybiblebuddy.net/blog/can-you-lose-your-salvation\n\nWhere do you land on this one, and why? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-fruit-of-the-spirit",
     title: "What Is the Fruit of the Spirit? All 9 Explained",
     description:
