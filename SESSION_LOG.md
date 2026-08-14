@@ -1677,3 +1677,7 @@ Queue remaining: 26
 ## 2026-08-14T22:57:21Z (hourly chapter notes run)
 Chapter: 2 Kings 24 | Duration: 11 min | Sections: 9 | Cards: 41 | Status: pass
 Next up: 2 Kings 25
+
+## 2026-08-14T23:59:13Z (hourly chapter notes run)
+Chapter: 2 Kings 25 | Duration: 13 min | Sections: 9 | Cards: 62 | Status: pass
+Next up: 1 Chronicles (verify against progress log / redo backlog first, 2 Kings now complete)
