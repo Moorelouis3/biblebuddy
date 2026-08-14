@@ -1640,6 +1640,13 @@ since 2026-08-08).
 ## 2026-08-13T13:02:14Z (hourly chapter notes run)
 Chapter: 2 Kings 18 | Duration: 13 min | Sections: 11 | Cards: 60 | Status: pass
 Next up: 2 Kings 19
+
+## 2026-08-14T12:38:45Z (level2 upgrade run)
+Status: BLOCKED — queue endpoint unreachable, same 403 egress policy denial
+on life-buddy-production.up.railway.app confirmed via both curl (proxy
+status: kind connect_rejected) and WebFetch (EGRESS_BLOCKED). No queue data
+seen, no files changed, no completion reported. At least a week straight of
+blocked runs now (since 2026-08-08); see MARCUS_HANDOFF.md.
 ## 2026-08-11T22:22:00Z (blog writer run)
 Article: What Is the Fruit of the Spirit? All 9 Explained | Words: ~3225 | Category: Christian Foundations | Status: pass
 Queue remaining: 27

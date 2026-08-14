@@ -170,3 +170,13 @@ still sitting unprocessed in this file, reinforcing the earlier note that
 the automatic Marcus pickup for this recurring entry may not be working.
 Sending a direct push notification again this run since it's been a full
 day since the last one (2026-08-12) and the block is still unresolved.
+
+**Still happening 2026-08-14T12:38Z**: same 403 policy denial, confirmed via
+both curl (proxy status `kind: connect_rejected`) and WebFetch
+(`EGRESS_BLOCKED` directly). This is at least a full week blocked
+(2026-08-08 through 2026-08-14, roughly 13+ scheduled runs) with no fix
+landed, despite push notifications already sent on 2026-08-12 and now
+again today. No file changes made, no completion reported. Louis or
+whoever administers this agent environment needs to add
+`life-buddy-production.up.railway.app` to the egress allowlist — this
+cannot be fixed from inside the repo.
