@@ -6,6 +6,19 @@ const nextConfig: NextConfig = {
     parallelServerCompiles: false,
     parallelServerBuildTraces: false,
   },
+  // These two admin routes build paths from process.cwd() and touch public/,
+  // so Next's file tracer cannot tell which files they need and bundles the
+  // whole directory. public/ is 1.3GB of audio, video and images, which took
+  // api/admin/covers to 931MB against Vercel's 250MB function limit and broke
+  // every production build from 11 August onward.
+  //
+  // Excluding public/ is safe for both: they only do real work on a writable
+  // filesystem, which Vercel's is not. Serving public/ as static assets is
+  // unaffected - this only controls what gets copied into the function bundle.
+  outputFileTracingExcludes: {
+    "/api/admin/covers": ["public/**"],
+    "/api/admin/bible-notes-progress": ["public/**"],
+  },
   async redirects() {
     // Old article URLs (pre "blog lives at /blog/<slug>" migration).
     // 301s so old links, Pinterest pins, and any indexed URLs pass on to
