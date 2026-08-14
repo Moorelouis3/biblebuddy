@@ -180,3 +180,43 @@ again today. No file changes made, no completion reported. Louis or
 whoever administers this agent environment needs to add
 `life-buddy-production.up.railway.app` to the egress allowlist — this
 cannot be fixed from inside the repo.
+
+## enforceStudySectionVerseLimit(8) duplicates cards instead of splitting them, and it is already live in 21 shipped files
+While writing 2 Kings 19, I drafted one section covering 9 verses (19:20-28,
+inside the skill's own stated "3-9 verses per section" guidance). The parser
+check (`getBibleReaderStudySections`) showed it rendering as two sections,
+"...Part 1" and "...Part 2", each reporting the SAME full card count as the
+original undivided section, instead of a real split. Traced it to
+`enforceStudySectionVerseLimit(8)` in `lib/bibleReaderStudyNotes.ts` (around
+line 4507), called once at startup with `maxVerses = 8`. For any section
+longer than 8 verses, it slices the section by verse range into multiple
+parts, but only overrides `startVerse`/`endVerse`/`reference`/`title` on each
+part — it spreads the ORIGINAL section's full `categories` (all phrase cards)
+onto every part unfiltered. A reader on any chapter with a 9+ verse section
+sees the same set of phrase cards duplicated across two (or more) section
+cards in the UI, mislabeled "Part 1"/"Part 2". There is also a smaller
+cosmetic bug in the same function: the auto-generated reference string only
+uppercases the book name's first character (`section.book.charAt(0)...`),
+which does nothing for multi-word book names starting with a digit like
+"2 kings", so a split section's reference renders as "2 kings 19:20-27"
+instead of "2 Kings 19:20-27".
+
+This run worked around it for 2 Kings 19 by manually splitting that section
+into two real sections (19:20-25 and 19:26-28) with the cards properly
+divided between them, so the shipped chapter is unaffected. I did NOT fix
+the underlying function or touch any other file, since that is out of scope
+for a single-chapter run.
+
+Checked how widespread this already is: 21 already-shipped `lib/*Source.ts`
+files contain 39 section headers with a verse span over 8 (spread across
+Genesis, Exodus, Leviticus, Numbers, Deuteronomy, and Joshua — e.g.
+`genesisTwentyFourSource.ts` has an 18-verse section, `numbersThirtyThreeSource.ts`
+has a 19-verse one). Every one of those will hit this same duplication bug
+live in the app right now if any of those chapters have actually been
+deployed (recall `[deploy]`-tagged commits are the only ones Vercel builds,
+so the live-vs-not status of each depends on deploy history I did not audit
+here). This needs either a real fix to `enforceStudySectionVerseLimit` (split
+the phrase cards proportionally across parts, not just the verse range) or a
+policy of never authoring a section over 8 verses going forward plus a sweep
+to fix the 21 files that already do. Flagging for a decision rather than
+guessing which fix Louis wants for a function this central.
