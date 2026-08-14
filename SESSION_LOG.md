@@ -1653,3 +1653,7 @@ Queue remaining: 27
 ## 2026-08-14T18:01:10Z (hourly chapter notes run)
 Chapter: 2 Kings 19 | Duration: 15 min | Sections: 9 | Cards: 62 | Status: pass
 Next up: 2 Kings 20
+
+## 2026-08-14T18:57:13Z (hourly chapter notes run)
+Chapter: 2 Kings 20 | Duration: 9 min | Sections: 6 | Cards: 36 | Status: pass
+Next up: 2 Kings 21
