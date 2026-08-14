@@ -21431,6 +21431,55 @@
           "at": "2026-08-14T20:55:53Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 23,
+      "startedAt": "2026-08-14T21:46:16Z",
+      "finishedAt": "2026-08-14T22:02:19Z",
+      "durationMinutes": 16,
+      "sections": 12,
+      "cards": 65,
+      "verses": 37,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty, last completed chapter was 2 Kings 22, no wired lib file existed yet for 2 Kings 23). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (37 verses). 2 Kings 23 covers Josiah reading the rediscovered book of the covenant aloud to the whole assembly and the nation publicly recommitting, the systematic purge of Baal and Asherah vessels and idolatrous priests (Chemarim) from the temple, the shrine areas tied to Canaanite ritual practice by the temple, defiling every high place from Geba to Beersheba including Topheth in the valley of Hinnom where child sacrifice to Molech had taken place, removing the sun horses and chariots and Ahaz's and Manasseh's altars, defiling Solomon's centuries old high places on the Mount of Corruption built for Ashtoreth, Chemosh, and Milcom, destroying Jeroboam's altar at Bethel and burning bones on it in exact fulfillment of the First Kings 13 prophecy while sparing the bones of the man of God and the old prophet from Samaria, extending the purge into the ruins of Samaria and executing its high place priests, the greatest passover kept since the days of the judges, the sweeping verdict that no king before or after Josiah matched him, the LORD's wrath against Judah still not turned away because of Manasseh's provocations despite Josiah's personal reform, Josiah's death at Megiddo intercepting Pharaohnechoh's march to help a collapsing Assyria, and the chapter's close on Jehoahaz's three month reign, deposal, and exile, followed by Necho installing and renaming Eliakim as Jehoiakim and taxing the land to pay Egypt's tribute. Chunked into 12 sections (1-3, 4-7, 8-10, 11-14, 15-18, 19-20, 21-23, 24-25, 26-27, 28-30, 31-33, 34-37). Density 1.76 cards per verse (37 verses, 65 cards). scripts/check_bible_note_style.py found 3 problems on first pass (one banned hedge word 'quite', two bullets at 9 words), fixed, second run clean. Parser check passed exactly (12/12 sections, 65 cards, 37 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range for 2 kings extended from chapter <= 22 to <= 23, new applyPersonalSecondKingsTwentyThreeStudySections() calling replaceStudySectionsForBookRange(\"2 kings\", 23, 23, SECOND_KINGS_TWENTY_THREE_PERSONAL_SECTIONS) added directly after applyPersonalSecondKingsTwentyTwoStudySections(). Next forward-progress target is 2 Kings 24.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-14T21:47:01Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 23 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-14T21:47:13Z"
+        },
+        {
+          "name": "KJV text fetched (2 Kings 23, 37 verses, aruljohn mirror)",
+          "at": "2026-08-14T21:47:29Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-14T21:47:34Z"
+        },
+        {
+          "name": "source file written: lib/secondKingsTwentyThreeSource.ts (12 sections, 65 cards)",
+          "at": "2026-08-14T22:00:04Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py; 3 problems fixed on first pass, second run clean, 65 cards)",
+          "at": "2026-08-14T22:00:17Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to <= 23, applyPersonalSecondKingsTwentyThreeStudySections call)",
+          "at": "2026-08-14T22:00:34Z"
+        },
+        {
+          "name": "parser check passed (12/12 sections, 65 cards, 37 verses, text verbatim)",
+          "at": "2026-08-14T22:00:51Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-14T22:02:13Z"
+        }
+      ]
     }
   ]
 }
