@@ -1,82 +1,105 @@
-# Daily Report - 2026-08-13T08:20:00Z
+# Daily Report - 2026-08-14T17:53:00Z
 
 ## Latest Conversations
-Since the last report (2026-08-12T16:25 UTC), the hourly chapter-notes
-routine ran continuously with no gaps: shipped **1 Kings 20, 21, 22**
-(completing 1 Kings — Naboth's vineyard, Micaiah, Ahab's death) and then
-**2 Kings 1 through 13** (12 chapters — Elijah taken up, Elisha's
-succession and miracles, the Moab campaign, Naaman healed, the famine
-and siege of Samaria, Jehu's purge, Jezebel's death, Jehoahaz/Jehoash,
-and Elisha's death). 15 chapters shipped total this period.
+Since the last report (2026-08-13 08:20 UTC, commit d3399bd):
 
-One Level 2 upgrade agent run fired (~00:25 UTC) and stayed blocked on
-the same recurring network issue — see Unfinished Jobs.
-
-A run around 00:25 UTC also re-investigated a detached-HEAD git state
-(same recurring quirk as prior reports), confirmed it was a stale local
-ref rather than real data loss, and fixed the local branch pointer. This
-report's own session started in the *same* detached-HEAD state again
-(local `main` still stale at Joshua 24, HEAD correctly matching
-`origin/main` at 2 Kings 13) — confirming the underlying cause is still
-unfixed; see Missed Things.
+1. **Bible chapter notes:** 2 Kings 13-18 written (6 chapters) via the
+   hourly Bible Note Writer Agent routine on 2026-08-13, each shipped as a
+   real individual per-chapter file with its own wiring override. 2 Kings
+   is now at 18/25 chapters; next up is 2 Kings 19.
+2. **The stranded "Fruit of the Spirit" blog article got merged and
+   deployed.** The last report flagged it as stuck for ~2 days on an
+   orphaned branch (`claude/vibrant-mccarthy-gxfcq5`), never reaching
+   `main`. It's now on `origin/main` as commit `99c1122`, tagged
+   `[deploy]`, committed today (~12:18 UTC) — resolved.
+3. **More non-Bible feature work landed today** alongside that merge (all
+   committed ~12:18 UTC): a Shorts approval pipeline (generate candidates,
+   review, approve-to-schedule page, a fix for an approval crash, a
+   schedule board), a rebuild of 240 previously-picked Shorts using their
+   own on-screen text, a restyle of Shorts text to match Louis's own
+   voice, and a new YouTube tracker page with age-matched baselines.
+4. **Level 2 upgrade agent still fully blocked.** Every scheduled run
+   since 2026-08-08 (13+ runs, a full week straight) has hit the same 403
+   policy denial trying to reach `life-buddy-production.up.railway.app`.
+   Two direct push notifications already sent (2026-08-12, 2026-08-14)
+   with no fix landed yet.
+5. **This session started on a stale local `main` branch again**
+   (pointing at Joshua 24, six days behind) — the same recurring
+   detached-HEAD / stale-ref pattern documented repeatedly in
+   `MARCUS_HANDOFF.md`. Fixed by fetching and resetting to `origin/main`
+   before doing anything else; nothing was lost — everything through
+   2 Kings 18 and today's feature work was already safely on GitHub.
 
 ## Unanswered Questions
-1. Does Louis want network access to `life-buddy-production.up.railway.app`
-   fixed at the environment egress-policy level? The Level 2 upgrade
-   agent remains blocked on the same 403 — at least 10 scheduled runs
-   blocked since 2026-08-08, six full days running.
-2. A finished blog article ("What Is the Fruit of the Spirit? All 9
-   Explained," written 2026-08-11) is still sitting on an orphaned
-   branch (`claude/vibrant-mccarthy-gxfcq5`), never merged to `main`, so
-   it is still not live. Does Louis want it merged?
-3. Joshua 2-24 (and possibly other post-Deuteronomy books) still render
-   from old thin grouped-note files instead of full per-chapter notes.
-   Should these be queued for a proper redo like the Genesis-Deuteronomy
-   backlog?
-4. Is Louis aware of, and does he approve of, the Bible-in-One-Year
-   production tooling audited on 2026-08-11? Still no logged go-ahead.
-5. What should happen to the stale root `bible-notes-progress.json` file
-   (last real update: Exodus 35, from ~2026-07-27)? It has not tracked
-   real progress in over two weeks and is actively misleading if anyone
-   reads it as current status.
+1. **Level 2 upgrade queue access** — needs an admin to add
+   `life-buddy-production.up.railway.app` to this environment's egress
+   allowlist. This cannot be fixed from inside the repo, and it has now
+   blocked every single scheduled Level 2 run for a full week.
+2. **Root cause of sessions repeatedly starting on a stale/detached local
+   `main`** is still unfixed — this is at least the fifth time it's
+   happened (documented across several MARCUS_HANDOFF.md entries plus
+   this run). No data has been lost any of those times because `origin/main`
+   is always checked before acting, but it costs real investigation time
+   every occurrence.
+3. **Stale MARCUS_HANDOFF.md question about Joshua/Judges grouped note
+   files** (originally raised 2026-08-07) is moot in practice now — Joshua
+   (24/24) and Judges (21/21) are both fully complete with real
+   individual per-chapter files, confirmed in
+   `data/bible-notes-progress-log.json`. The entry was never cleared, so
+   it still reads as open even though ongoing forward progress already
+   answered it.
 
 ## Missed Things
-1. The "Fruit of the Spirit" blog article (see above) has now been stuck
-   unmerged for roughly 2 days with no follow-up action taken.
-2. The detached-HEAD / stale-local-`main` git quirk flagged in
-   MARCUS_HANDOFF.md is still recurring — this reporting session itself
-   started detached again this run, the same symptom noted at least four
-   times now (2026-08-11-ish, 2026-08-13T00:25Z twice, and now). No
-   environment-level fix has landed.
-3. `bible-notes-progress.json` remains frozen at Exodus 35 while real
-   shipped progress (per SESSION_LOG.md and git history) is now through
-   2 Kings 13 — this gap has been flagged in multiple prior reports with
-   no resolution.
+1. **`MARCUS_HANDOFF.md` is not being cleared.** CLAUDE.md says Life Buddy
+   checks this file "every few minutes" and clears it after turning
+   entries into tracked Problems, but entries dating back to at least
+   2026-08-07 (Joshua grouped-file question) and 2026-08-08 (first Level 2
+   block) are still sitting in the file today — new entries only ever get
+   appended on top, nothing gets removed. Worth checking whether the
+   automatic pickup is actually running.
+2. **Root `bible-notes-progress.json` (repo root) is still frozen** at
+   Genesis 50/50 + Exodus 35/40, last real content update 2026-07-27 — now
+   flagged across at least five consecutive daily reports with no fix. The
+   canonical, current source is `data/bible-notes-progress-log.json`
+   (current through 2 Kings 18, 404 logged entries).
 
 ## Dropped Activities
-None new this period. (The `rescue/unpushed-bible-notes-2026-08-13`
-branch created during the 00:25Z false-alarm investigation is redundant
-— every commit on it is already reachable from `main` — and was left in
-place harmlessly after a delete attempt was rejected by the git proxy.)
+None noticed this run.
 
 ## Unfinished Jobs
-- Level 2 upgrade agent: blocked on network egress policy, needs an
-  environment fix, not a code fix.
-- Merge decision needed on the stranded "Fruit of the Spirit" blog post.
-- Decision needed on redoing Joshua 2-24 (and similar old-format books)
-  as full per-chapter notes.
-- Root-cause fix needed for sessions starting on a detached HEAD with a
-  stale local `main` ref.
-- Decision needed on retiring or fixing `bible-notes-progress.json`.
+- Fix the Level 2 upgrade agent's network egress block to
+  `life-buddy-production.up.railway.app` (see Unanswered Questions #1).
+- Root-cause fix needed for sessions repeatedly starting on a stale
+  detached/local `main` ref (see Unanswered Questions #2).
+- Clear or update the stale entries in `MARCUS_HANDOFF.md` — the
+  Joshua/Judges grouped-file question (resolved in practice) and the
+  now-repetitive Level 2 block entries (see Missed Things #1).
+- Reconcile or retire the stale root `bible-notes-progress.json` in favor
+  of `data/bible-notes-progress-log.json` (see Missed Things #2).
 
 ## Current Jobs / Current Build
-The hourly chapter-notes routine is actively working forward through the
-Bible in canonical order. Per SESSION_LOG.md and git history (the
-authoritative source right now, since `bible-notes-progress.json` is
-stale): last chapter shipped was **2 Kings 13**, next up is **2 Kings
-14**. Running total of full per-chapter notes shipped since Genesis 1:
-Genesis (50), Exodus (40), Leviticus (27), Numbers (36), Deuteronomy
-(34), Joshua (24, though 2-24 use old thin grouped files per the open
-question above), Judges (21), Ruth (4), 1 Samuel (31), 2 Samuel (24),
-1 Kings (22), 2 Kings (13 of 25) — 326 chapters worth of forward
-progress logged, well past the halfway point of the Old Testament.
+Chapter-notes pipeline is actively running hourly on genuine forward
+progress — the style-redo backlog (`data/bible-notes-style-redo-remaining.json`)
+is confirmed empty again this run.
+
+Per `data/bible-notes-progress-log.json` (canonical, current source, 404
+logged entries):
+- **Genesis 50/50, Exodus 40/40, Leviticus 27/27, Numbers 36/36,
+  Deuteronomy 34/34 — full Pentateuch complete.**
+- **Joshua 24/24, Judges 21/21, Ruth 4/4, 1 Samuel 31/31, 2 Samuel 24/24,
+  1 Kings 22/22 — all complete.**
+- **2 Kings 18/25** — next up 2 Kings 19.
+- Total chapters with real notes so far: 331 / 1,189 goal total (~27.8%).
+
+Root `bible-notes-progress.json` (stale, do not use for progress
+tracking): still stuck at Genesis 50/50 + Exodus 35/40, last real update
+2026-07-27 (see Missed Things #2).
+
+**Deploy note:** the last `[deploy]`-tagged commit already on
+`origin/main` is `99c1122` ("Add blog article: What Is the Fruit of the
+Spirit?"), committed today ~12:18 UTC — its build already includes every
+Bible chapter through 2 Kings 18 plus all of today's Shorts/YouTube
+tracker work. Only one commit has landed since (this routine's own
+level2-block log entry, no content change), so there is no undeployed
+content backlog right now. This report's push still carries `[deploy]`
+per the mandatory twice-daily rule.
