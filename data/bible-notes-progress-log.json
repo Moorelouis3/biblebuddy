@@ -21488,6 +21488,55 @@
           "at": "2026-08-14T22:04:19Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 24,
+      "startedAt": "2026-08-14T22:46:00Z",
+      "finishedAt": "2026-08-14T22:57:21Z",
+      "durationMinutes": 11,
+      "sections": 9,
+      "cards": 41,
+      "verses": 20,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty, last completed chapter was 2 Kings 23, no wired lib file existed yet for 2 Kings 24). Session started with HEAD detached and a stale local origin/main tracking ref showing the branch far behind (looked initially like 50 commits of unpushed work through 2 Kings 23 and a blog post, but a git fetch origin main resolved it: origin/main was just stale locally and already matched the detached HEAD exactly, so no data was ever at risk). Fixed with git checkout -B main origin/main after fetching. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (20 verses). 2 Kings 24 covers Jehoiakim's submission and rebellion against Nebuchadnezzar and the raiding bands of Chaldees, Syrians, Moabites, and Ammonites sent against Judah in fulfillment of prophetic warning, the explicit theological framing that this judgment traces back to Manasseh's idolatry and innocent bloodshed which the LORD would not pardon despite Manasseh's own later repentance, Jehoiakim's unrecorded death and Jehoiachin's succession, Pharaohnecho's defeat at Carchemish ending Egypt's regional reach, Jehoiachin's brief eighteen-year-old three month reign that exactly mirrors his uncle Jehoahaz's earlier three month reign, Nebuchadnezzar personally besieging Jerusalem this time rather than sending only raiding bands, Jehoiachin's surrender with his whole household in the eighth year of Nebuchadnezzar's reign, the temple plundered exactly as the LORD had told Hezekiah it would be (Solomon's own gold vessels cut in pieces), the mass deportation (ten thousand captives, then a further seven thousand men of might and a thousand craftsmen and smiths, read as overlapping totals) leaving only the poorest behind, Mattaniah renamed Zedekiah as a puppet king (Jehoiachin's uncle, not his son, and Jehoahaz's full brother through their shared mother Hamutal), and the chapter's close on Zedekiah repeating Jehoiakim's evil and finally rebelling against Babylon under the LORD's anger, setting up the final siege in the next chapter. Chunked into 9 sections (1-2, 3-4, 5-7, 8-9, 10-12, 13-14, 15-16, 17-18, 19-20) matching the chapter's natural scene breaks across three successive kings. Density about 2.05 cards/verse (20 verses, 41 cards), in the normal recent range. scripts/check_bible_note_style.py found 3 problems on first pass (a banned hedge word 'sort of' embedded in a KJV-verbatim title, two bullets one word over the 8 word limit), fixed by shortening the title before the offending KJV phrase and trimming the two bullets, second run clean. A manual section 13 eye check also caught and split several stacked 'but' clauses and one 'rather than' construction in body lines before finalizing. Parser check passed exactly via getBibleReaderStudySections('2 kings', 24) (9/9 sections, 41 cards, 20 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 kings range extended from chapters 1-23 to 1-24, replaceStudySectionsForBookRange(\"2 kings\", 24, 24, SECOND_KINGS_TWENTY_FOUR_PERSONAL_SECTIONS) call added directly after the 2 Kings 23 call. Next forward-progress target is 2 Kings 25.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-14T22:47:58Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 24 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-14T22:47:58Z"
+        },
+        {
+          "name": "KJV text fetched (2 Kings 24, 20 verses, aruljohn mirror)",
+          "at": "2026-08-14T22:47:58Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-14T22:54:08Z"
+        },
+        {
+          "name": "source file written: lib/secondKingsTwentyFourSource.ts",
+          "at": "2026-08-14T22:56:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes)",
+          "at": "2026-08-14T22:56:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-14T22:56:45Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 41 cards, text verbatim)",
+          "at": "2026-08-14T22:57:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-14T22:57:21Z"
+        }
+      ]
     }
   ]
 }

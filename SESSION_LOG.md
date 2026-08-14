@@ -1673,3 +1673,7 @@ Next up: 2 Kings 24
 ## 2026-08-14T22:19:42Z (blog writer run)
 Article: Can You Lose Your Salvation? What the Bible Says | Words: ~4500 | Category: Christian Foundations | Status: pass
 Queue remaining: 26
+
+## 2026-08-14T22:57:21Z (hourly chapter notes run)
+Chapter: 2 Kings 24 | Duration: 11 min | Sections: 9 | Cards: 41 | Status: pass
+Next up: 2 Kings 25
