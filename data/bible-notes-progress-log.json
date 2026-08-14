@@ -21309,6 +21309,63 @@
           "at": "2026-08-14T18:57:13Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 21,
+      "startedAt": "2026-08-14T19:46:59Z",
+      "finishedAt": "2026-08-14T19:58:05Z",
+      "durationMinutes": 11,
+      "sections": 7,
+      "cards": 39,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty, normal forward progress, next chapter after 2 Kings 20 with no existing wired-in file. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (26 verses). Session started with git HEAD detached at the exact commit origin/main was already at (the same recurring benign detached HEAD environment bug seen in prior entries), fixed by checking out and resetting local main to origin/main before any work began, no data at risk. 2 Kings 21 covers Manasseh's fifty five year reign, the longest and most wicked of any king of Judah: rebuilding the high places Hezekiah destroyed, altars to Baal and an Asherah grove copying Ahab, worship of the host of heaven, altars built inside the temple courts and the temple building itself, child sacrifice through the fire, divination and consulting familiar spirits and wizards, and a carved Asherah image placed directly in the house where God had promised His name would dwell forever. God's conditional land promise to Israel through Moses is restated and then broken by Manasseh leading Judah into sin worse than the Amorites God originally removed. A prophetic judgment speech follows: Jerusalem measured by the same line and plummet used against Samaria and Ahab's house, wiped like a dish turned upside down, forsaken as an inheritance and handed to enemies as prey and spoil, judgment tracing all the way back to the exodus. The chapter then covers Manasseh's innocent bloodshed (noted with the honest hedge that Jewish tradition connects this to Isaiah's death, not stated directly in the text), his death and unusual burial in his own palace garden rather than the City of David, and the short two year reign of his son Amon, who copied only his father's early evil (contrasted against Manasseh's later repentance recorded in 2 Chronicles 33 but absent from Kings), was assassinated by his own servants in a palace conspiracy, and was succeeded by Josiah after the people of the land executed the conspirators. Chunked into 7 sections (1-3, 4-7, 8-9, 10-15, 16-18, 19-22, 23-26). Density about 1.5 cards per verse (26 verses, 39 cards). scripts/check_bible_note_style.py was clean on the first automated pass, 39 cards, zero problems. A manual section 13 and Part 3 line-rules eye check (which the automated checker does not cover) caught two 'rather than' stacked-clause violations during drafting, both rewritten into separate lines before the file was ever saved, so no rework was needed after the fact. Parser check passed exactly via getBibleReaderStudySections('2 Kings', 21) (7/7 sections, 39 cards, 26 verses, text rendered verbatim with no duplication, spot checked first and last cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range for 2 kings extended from chapter <= 20 to <= 21, new applyPersonalSecondKingsTwentyOneStudySections() calling replaceStudySectionsForBookRange(\"2 kings\", 21, 21, SECOND_KINGS_TWENTY_ONE_PERSONAL_SECTIONS) added directly after applyPersonalSecondKingsTwentyStudySections(). Next forward-progress target is 2 Kings 22.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-14T19:47:44Z"
+        },
+        {
+          "name": "detached HEAD environment bug found and fixed (checked out and reset local main to origin/main, no work lost)",
+          "at": "2026-08-14T19:47:15Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 21 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-14T19:47:58Z"
+        },
+        {
+          "name": "KJV text fetched (2 Kings 21, 26 verses, aruljohn mirror)",
+          "at": "2026-08-14T19:48:50Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-14T19:49:30Z"
+        },
+        {
+          "name": "source file written: lib/secondKingsTwentyOneSource.ts",
+          "at": "2026-08-14T19:55:20Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py; clean on first automated pass, 39 cards, zero problems)",
+          "at": "2026-08-14T19:55:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to <= 21, applyPersonalSecondKingsTwentyOneStudySections call)",
+          "at": "2026-08-14T19:56:10Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 39 cards, 26 verses, text verbatim)",
+          "at": "2026-08-14T19:56:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-14T19:57:20Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-14T19:58:05Z"
+        }
+      ]
     }
   ]
 }
