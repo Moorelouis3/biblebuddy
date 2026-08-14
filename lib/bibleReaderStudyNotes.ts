@@ -353,6 +353,7 @@ import { SECOND_KINGS_FIFTEEN_PERSONAL_SECTIONS } from "./secondKingsFifteenSour
 import { SECOND_KINGS_SIXTEEN_PERSONAL_SECTIONS } from "./secondKingsSixteenSource";
 import { SECOND_KINGS_SEVENTEEN_PERSONAL_SECTIONS } from "./secondKingsSeventeenSource";
 import { SECOND_KINGS_EIGHTEEN_PERSONAL_SECTIONS } from "./secondKingsEighteenSource";
+import { SECOND_KINGS_NINETEEN_PERSONAL_SECTIONS } from "./secondKingsNineteenSource";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
 import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
 import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
@@ -718,7 +719,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "1 samuel" && section.chapter >= 1 && section.chapter <= 31) ||
     (normalizeBook(book) === "2 samuel" && section.chapter >= 1 && section.chapter <= 24) ||
     (normalizeBook(book) === "1 kings" && section.chapter >= 1 && section.chapter <= 22) ||
-    (normalizeBook(book) === "2 kings" && section.chapter >= 1 && section.chapter <= 18);
+    (normalizeBook(book) === "2 kings" && section.chapter >= 1 && section.chapter <= 19);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1114,6 +1115,10 @@ function applyPersonalSecondKingsSeventeenStudySections() {
 
 function applyPersonalSecondKingsEighteenStudySections() {
   replaceStudySectionsForBookRange("2 kings", 18, 18, SECOND_KINGS_EIGHTEEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondKingsNineteenStudySections() {
+  replaceStudySectionsForBookRange("2 kings", 19, 19, SECOND_KINGS_NINETEEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalFirstChroniclesOneThroughEightStudySections() {
@@ -8465,6 +8470,7 @@ applyPersonalSecondKingsFifteenStudySections();
 applyPersonalSecondKingsSixteenStudySections();
 applyPersonalSecondKingsSeventeenStudySections();
 applyPersonalSecondKingsEighteenStudySections();
+applyPersonalSecondKingsNineteenStudySections();
 applyPersonalFirstChroniclesOneThroughEightStudySections();
 applyPersonalFirstChroniclesNineThroughTwentyNineStudySections();
 applyPersonalSecondChroniclesOneThroughNineteenStudySections();
