@@ -21370,6 +21370,59 @@
           "at": "2026-08-14T19:59:36Z"
         }
       ]
+    },
+    {
+      "book": "2 Kings",
+      "chapter": 22,
+      "startedAt": "2026-08-14T20:47:23Z",
+      "finishedAt": "2026-08-14T20:54:13Z",
+      "durationMinutes": 7,
+      "sections": 6,
+      "cards": 35,
+      "verses": 20,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty, last completed chapter was 2 Kings 21, per that entry's own note the next forward-progress target was 2 Kings 22). Session started with local main detached and, worse this time, the local main branch ref itself stale at an old Joshua-era commit (diverged 60 commits local-only vs 50 origin-only from origin/main) -- the same recurring environment bug seen in many prior runs, just a more severe instance of it. Verified origin/main's unique commits were the real continuous history (ending at the 2 Kings 21 push) and local main's 60 unique commits were a frozen stale snapshot with nothing new, then fixed with git checkout main && git reset --hard origin/main. No work lost. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (20 verses). 2 Kings 22 covers young Josiah's introduction and his unqualified 'right in the sight of the LORD' verdict, the eighteenth-year temple repair funded by silver the door keepers collected and handled by workers trusted without a formal audit (echoing Joash's repair generations earlier), Hilkiah's discovery of the long lost book of the law (likely Deuteronomy) misplaced during Manasseh's reign, Shaphan reading it aloud to the king only after his routine financial report, Josiah tearing his clothes in grief, the delegation sent to Huldah the prophetess (with Ahikam, whose own son Gedaliah later governs Judah) despite Jeremiah and Zephaniah being active at the same time, Huldah's confirmation of the book's authenticity and pronouncement of coming judgment on Judah for forsaking God for other gods, and the chapter's close on personal mercy promised to Josiah specifically because his heart was tender and he humbled himself, sparing him from seeing Jerusalem's fall. Chunked into 6 sections (1-2, 3-7, 8-11, 12-14, 15-17, 18-20). Density 1.75 cards per verse (20 verses, 35 cards). scripts/check_bible_note_style.py found 2 problems on first pass (a repeated emoji across one card's bullets, one bullet at 9 words), fixed, second run clean. Parser check passed exactly (6/6 sections, 35 cards, 20 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range for 2 kings extended from chapter <= 21 to <= 22, new applyPersonalSecondKingsTwentyTwoStudySections() calling replaceStudySectionsForBookRange(\"2 kings\", 22, 22, SECOND_KINGS_TWENTY_TWO_PERSONAL_SECTIONS) added directly after applyPersonalSecondKingsTwentyOneStudySections(). Next forward-progress target is 2 Kings 23.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-14T20:47:23Z"
+        },
+        {
+          "name": "detached HEAD and stale local main branch bug found and fixed (git checkout main && git reset --hard origin/main, verified origin/main held the real continuous history, no work lost)",
+          "at": "2026-08-14T20:48:10Z"
+        },
+        {
+          "name": "target chapter determined: 2 Kings 22 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-14T20:48:40Z"
+        },
+        {
+          "name": "KJV text fetched (2 Kings 22, 20 verses, aruljohn mirror)",
+          "at": "2026-08-14T20:49:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-14T20:49:40Z"
+        },
+        {
+          "name": "source file written: lib/secondKingsTwentyTwoSource.ts",
+          "at": "2026-08-14T20:52:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py; 2 problems fixed on first pass, second run clean, 35 cards)",
+          "at": "2026-08-14T20:52:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to <= 22, applyPersonalSecondKingsTwentyTwoStudySections call)",
+          "at": "2026-08-14T20:53:10Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 35 cards, 20 verses, text verbatim)",
+          "at": "2026-08-14T20:53:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-14T20:54:13Z"
+        }
+      ]
     }
   ]
 }
