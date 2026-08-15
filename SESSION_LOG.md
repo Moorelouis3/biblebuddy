@@ -1783,3 +1783,18 @@ Next up: 1 Chronicles 23
 ## 2026-08-15T22:13:52Z (blog writer run)
 Article: How to Spend 1 Hour With God: A Simple Guide | Words: ~3,119 | Category: Bible Study Tips | Status: pass
 Queue remaining: 25
+
+## 2026-08-15 (night)
+Time spent: ~1 session
+Done: Produced the Bible Buddy Free Platform Migration Audit
+(docs/BIBLE_BUDDY_FREE_PLATFORM_MIGRATION_AUDIT.md). Full inspection of
+access control, payments, devotionals, BIOY, blog, community, analytics
+and email. Key findings: three independent paywall layers (credits,
+is_paid locks, one-free-devotional 24h drip); anonymous auth already
+built and lossless; Stripe webhook only handles checkout.session.completed
+so every past payer already has permanent access — but the app cannot see
+who Stripe is still billing; 26 devotional assets exist, not ~10.
+Still open: no migration changes made, by design. Phase 0 (Stripe
+subscription audit, verify Supabase anon sign-in, check duplicate
+Tempting-of-Jesus rows) needs Louis before any code ships.
+Next: Louis reviews the audit and approves the phase sequence.
