@@ -22413,6 +22413,59 @@
           "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 16,
+      "startedAt": "2026-08-15T15:46:13Z",
+      "finishedAt": "2026-08-15T15:57:08Z",
+      "durationMinutes": 11,
+      "sections": 9,
+      "cards": 37,
+      "verses": 43,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. On startup found local main 3 commits ahead of origin/main (1 Chronicles 13, 14, 15) left unpushed by earlier runs in this same persisted container; verified fast forward safety with git merge-base --is-ancestor, moved local main to that HEAD, and pushed it before starting any new work, no work lost. Redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty, normal forward progress after 1 Chronicles 15, first dedicated file for this chapter. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (43 verses). 1 Chronicles 16 covers the ark settled in David's tent with sacrifices and a gift to all Israel, the Levites appointed to minister and Asaph named chief, then the full thanksgiving psalm David hands to Asaph's family, a composite matching parts of Psalms 105, 96, and 106, closing with Asaph's family left ministering before the ark continually in Jerusalem while Zadok's priests keep the twice daily offering going at the older tabernacle site at Gibeon, and David returning home, a scene Chronicles cuts short of the Michal confrontation 2 Samuel records. Chunked into 9 sections (1-3, 4-7, 8-13, 14-19, 20-22, 23-27, 28-33, 34-36, 37-43); the original 14-22 covenant section was split into 14-19 and 20-22 at the parser check step after the app's enforceStudySectionVerseLimit(8) auto splitter silently turned its 9 verse span into spurious 'Part 1'/'Part 2' entries, so a new card was written for the 20-21 'reproved kings' clause to give the new second section real content instead of leaving it a single thin card. Density about 0.86 cards/verse (43 verses, 37 cards), lower than recent chapters since about half this chapter is a single continuous psalm rather than distinct narrative beats. scripts/check_bible_note_style.py found 1 problem on first pass (one bullet at 9 words on the Asaph The Chief card), fixed by shortening it, second run clean, 37 cards, zero problems. Parser check passed via getBibleReaderStudySections('1 chronicles', 16) (9/9 sections, 37 cards, 43 verses of exact non overlapping gap free coverage, text rendered verbatim). npx tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies for 1 chronicles extended from chapters 1-15 to chapters 1-16, new applyPersonalFirstChroniclesSixteenStudySections() calling replaceStudySectionsForBookRange(\"1 chronicles\", 16, 16, FIRST_CHRONICLES_SIXTEEN_PERSONAL_SECTIONS) added directly after applyPersonalFirstChroniclesFifteenStudySections(). Next forward-progress target is 1 Chronicles 17.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T15:46:45Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 16 (normal forward progress, redo backlog empty; also fast forwarded local main to origin/main, 3 commits behind from unpushed prior runs, no work lost)",
+          "at": "2026-08-15T15:47:36Z"
+        },
+        {
+          "name": "KJV text fetched (1 Chronicles 16, 43 verses, aruljohn mirror)",
+          "at": "2026-08-15T15:48:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-15T15:50:00Z"
+        },
+        {
+          "name": "source file written: lib/firstChroniclesSixteenSource.ts",
+          "at": "2026-08-15T15:53:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 passes, fixed 1 bullet word count issue)",
+          "at": "2026-08-15T15:54:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 16, applyPersonalFirstChroniclesSixteenStudySections)",
+          "at": "2026-08-15T15:54:45Z"
+        },
+        {
+          "name": "parser check passed (found and fixed enforceStudySectionVerseLimit(8) auto split by restructuring the 14-22 section into 14-19 and 20-22 with a new card; final 9/9 sections, 37 cards)",
+          "at": "2026-08-15T15:56:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-15T15:56:45Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-15T15:57:08Z"
+        }
+      ]
     }
   ]
 }
