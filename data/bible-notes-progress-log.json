@@ -22099,6 +22099,59 @@
           "at": "2026-08-15T08:55:45Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 10,
+      "startedAt": "2026-08-15T09:46:19Z",
+      "finishedAt": "2026-08-15T09:55:25Z",
+      "durationMinutes": 9,
+      "sections": 5,
+      "cards": 29,
+      "verses": 14,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing dedicated wired-in file for this chapter (only the old bulk firstChroniclesNineThroughTwentyNine range covered it generically). Session started with git HEAD detached one commit ahead of the locally cached origin/main ref (the recurring detached-HEAD environment bug seen in many prior runs, this time made to look worse by a stale shallow-clone ref). Ran git fetch --unshallow and confirmed origin/main on GitHub already matched local HEAD exactly (1 Chronicles 9 commit) -- no data was actually unpushed, just a stale cached ref -- then fixed with git checkout -B main origin/main, no work lost. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (14 verses). 1 Chronicles 10 covers Saul's death on Mount Gilboa: Israel's rout and the deaths of Jonathan, Abinadab, and Malchishua, Saul's own suicide by the sword after his armourbearer refuses to kill him, the Philistines stripping and displaying Saul's head and armor in the temple of Dagon (an ironic callback to 1 Samuel 5), Jabeshgilead's valiant night rescue of the bodies repaying Saul's very first act as king from 1 Samuel 11, and the Chronicler's own added verdict in verses 13-14 naming Saul's specific covenant failures (the unauthorized sacrifice of 1 Samuel 13, sparing Amalekite plunder in 1 Samuel 15, and consulting the familiar spirit at Endor) as the reason the kingdom turned to David. Chunked into 5 sections (1-3, 4-6, 7-10, 11-12, 13-14) matching the chapter's natural scene breaks (the battle, the suicide, the trophy display, the rescue, the theological verdict). Density about 2.07 cards/verse (14 verses, 29 cards), in the normal recent range. scripts/check_bible_note_style.py found 3 problems on first pass (a repeated emoji across one card's bullets, two cards whose last bullet did not use the required closing emoji), fixed, second run clean. A manual section 13 eye check confirmed no duplicate or near-duplicate opening lines across the chapter's 29 cards and that the closing card (Turned The Kingdom Unto David) lands the whole chapter's meaning rather than ending on mechanics. Parser check passed exactly via getBibleReaderStudySections('1 chronicles', 10) (5/5 sections, 29 cards, 14 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 1 Chronicles range extended from chapters 1-9 to 1-10, applyPersonalFirstChroniclesTenStudySections() function added and its call placed directly after the chapter 9 call (after the old bulk 9-29 call, so it correctly overrides). Next forward-progress target is 1 Chronicles 11.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T09:46:51Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 10 (normal forward progress, redo backlog empty; detached-HEAD/stale-ref issue investigated and fixed first, no data lost)",
+          "at": "2026-08-15T09:48:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (lib/genesisThirtyOneSource.ts, lib/firstChroniclesNineSource.ts) read",
+          "at": "2026-08-15T09:48:17Z"
+        },
+        {
+          "name": "KJV text fetched (1 Chronicles 10, 14 verses, aruljohn mirror)",
+          "at": "2026-08-15T09:48:57Z"
+        },
+        {
+          "name": "source file written: lib/firstChroniclesTenSource.ts (5 sections, 29 cards)",
+          "at": "2026-08-15T09:51:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes)",
+          "at": "2026-08-15T09:52:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to ch10, dedicated call added after chapter 9 call)",
+          "at": "2026-08-15T09:52:30Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 29 cards, 14 verses, text verbatim)",
+          "at": "2026-08-15T09:52:50Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p .)",
+          "at": "2026-08-15T09:53:27Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-15T09:55:25Z"
+        }
+      ]
     }
   ]
 }
