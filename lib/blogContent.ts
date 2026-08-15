@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "how-to-spend-1-hour-with-god",
+    title: "How to Spend 1 Hour With God: A Simple Guide",
+    description:
+      "A simple hour-by-hour plan for spending real time with God: settle your heart, worship, read Scripture, pray and listen, then close in gratitude.",
+    category: "Bible Study Tips",
+    categorySlug: "bible-study-tips",
+    canonicalPath: "/blog/how-to-spend-1-hour-with-god",
+    publishedAt: "2026-08-16",
+    readTime: "16 min read",
+    image: "/one-hour-banner.png",
+    groupPost: {
+      title: "How to Spend 1 Hour With God: A Simple Guide 📖",
+      content:
+        "You want to spend time with God. You just don't know what that hour is supposed to look like once you sit down.\n\n📌 New article breaks it into 5 simple parts for one full hour: settle your heart, worship, read the Word, pray and listen, then close in gratitude.\n\nEach part comes with the verses behind it and exactly how many minutes to spend there.\n\nRead it here:\nhttps://www.mybiblebuddy.net/blog/how-to-spend-1-hour-with-god\n\nWhich part of spending time with God is hardest for you to stick with? 🙏",
+    },
+  },
+  {
     slug: "can-you-lose-your-salvation",
     title: "Can You Lose Your Salvation? What the Bible Says",
     description:
