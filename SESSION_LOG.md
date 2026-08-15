@@ -1771,3 +1771,7 @@ Next up: 1 Chronicles 20
 ## 2026-08-15T19:54:30Z (hourly chapter notes run)
 Chapter: 1 Chronicles 20 | Duration: 8 min | Sections: 4 | Cards: 22 | Status: pass
 Next up: 1 Chronicles 21
+
+## 2026-08-15T20:57:00Z (hourly chapter notes run)
+Chapter: 1 Chronicles 21 | Duration: 11 min | Sections: 8 | Cards: 47 | Status: pass
+Next up: 1 Chronicles 22

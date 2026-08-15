@@ -22698,6 +22698,55 @@
           "at": "2026-08-15T19:55:00Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 21,
+      "startedAt": "2026-08-15T20:46:27Z",
+      "finishedAt": "2026-08-15T20:57:00Z",
+      "durationMinutes": 11,
+      "sections": 8,
+      "cards": 47,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress chapter (style redo backlog empty). Satan provokes David to number Israel (2 Samuel 24:1 credits the LORD instead, both statements held together honestly), Joab objects but is overruled, the count comes in at 1,100,000 for Israel and 470,000 for Judah with Levi and Benjamin left out, God is displeased and smites Israel, David confesses immediately and without excuse (contrasted with Saul), Gad the seer offers three judgments (famine, fleeing enemies, or three days of pestilence) and David chooses to fall into God's hand rather than man's, 70,000 die before the LORD relents and stops the angel mid strike over Jerusalem, Gad sends David to Ornan the Jebusite's threshingfloor, David refuses Ornan's free gift of oxen, threshing tools, and wheat and insists on paying full price (600 shekels of gold, reconciled honestly against 2 Samuel 24's 50 shekels of silver as likely covering a smaller portion), and fire falls from heaven onto the new altar, ending with the quiet, human detail that David's fear of the drawn sword (not any grand plan) is what keeps worship centered at this spot instead of the Mosaic tabernacle still standing at Gibeon, foreshadowing the Temple site. Density 1.57 cards/verse (30 verses, 47 cards), on the lower end of the recent 1.5 to 2.75 range for this book but was deliberately not padded past what each phrase actually teaches. scripts/check_bible_note_style.py found 12 mechanical problems on the first pass (two repeated bullet emoji, five over length body lines, two bullet word counts over 8, one last bullet not landing on takeaway) and all 12 were fixed and reverified clean. Parser check passed exactly (8/8 sections, 47 cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. New chapter, so wiring added: import, preserveExactPhraseBodies range extended from <=20 to <=21, applyPersonalFirstChroniclesTwentyOneStudySections function added and called in reading order right after chapter 20.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T20:47:24Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 21 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-15T20:47:24Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn Bible-kjv mirror, 30 verses)",
+          "at": "2026-08-15T20:47:42Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) + reference implementation read",
+          "at": "2026-08-15T20:47:42Z"
+        },
+        {
+          "name": "source file written: lib/firstChroniclesTwentyOneSource.ts (8 sections, 47 cards)",
+          "at": "2026-08-15T20:53:53Z"
+        },
+        {
+          "name": "style checker clean (47 cards, no problems after 12 mechanical fixes)",
+          "at": "2026-08-15T20:54:36Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 21, apply function + call added)",
+          "at": "2026-08-15T20:55:04Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 47 cards, text verbatim)",
+          "at": "2026-08-15T20:55:19Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-15T20:56:31Z"
+        }
+      ]
     }
   ]
 }
