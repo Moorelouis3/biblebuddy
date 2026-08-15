@@ -21645,6 +21645,10 @@
         {
           "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json)",
           "at": "2026-08-15T01:04:17Z"
+        },
+        {
+          "name": "committed and pushed to origin main (c8af530), resolved recurring stale-local-main-ref bug via git fetch + checkout -B main origin/main + ff-merge, no data lost",
+          "at": "2026-08-15T01:04:17Z"
         }
       ]
     }
