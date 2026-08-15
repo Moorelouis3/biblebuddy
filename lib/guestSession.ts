@@ -117,6 +117,88 @@ export async function ensureGuestSession(options?: { source?: string }): Promise
   return inFlight;
 }
 
+function localDateKey(date = new Date()) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(
+    date.getDate(),
+  ).padStart(2, "0")}`;
+}
+
+/**
+ * Landing page "Start studying now" — guest account straight into Bible in One
+ * Year Day 1, with no questionnaire and no signup form.
+ *
+ * The profile is written with `bible_year_started_at`, `bible_year_launch_seen_at`
+ * and `onboarding_completed` already set, because AppShell shows the first-login
+ * onboarding modal when those are missing. Setting them here is what makes the
+ * journey land on Day 1 instead of on a welcome wall.
+ *
+ * Day 1 progress is seeded too, matching what AppShell would have created.
+ */
+export async function startGuestBibleYearJourney(options?: {
+  source?: string;
+}): Promise<GuestSessionResult> {
+  const guest = await ensureGuestSession({ source: options?.source || "landing_start_studying" });
+  if (!guest.ok) return guest;
+
+  const nowIso = new Date().toISOString();
+  const todayKey = localDateKey();
+
+  const fullProfile = {
+    user_id: guest.userId,
+    onboarding_completed: true,
+    app_theme: "light",
+    preferred_study_mode: "bible_year",
+    bible_year_started_at: todayKey,
+    bible_year_launch_seen_at: nowIso,
+    louis_primary_devotional_day: 1,
+    updated_at: nowIso,
+  };
+
+  const { error } = await supabase
+    .from("profile_stats")
+    .upsert(fullProfile, { onConflict: "user_id" });
+
+  if (error) {
+    // Older databases may not have every column. Fall back to the minimum that
+    // still skips the onboarding modal.
+    if (/column|preferred_study_mode|bible_year_|louis_primary|app_theme|updated_at/i.test(error.message || "")) {
+      await supabase
+        .from("profile_stats")
+        .upsert({ user_id: guest.userId, onboarding_completed: true }, { onConflict: "user_id" });
+    } else {
+      console.error("[GUEST] Could not set up Bible in One Year journey:", error.message);
+    }
+  }
+
+  // Seed Day 1 so the dashboard has something to show immediately.
+  const { error: dayError } = await supabase.from("bible_year_day_progress").upsert(
+    {
+      user_id: guest.userId,
+      day_number: 1,
+      reading_completed: false,
+      study_notes_completed: false,
+      trivia_completed: false,
+      reflection_completed: false,
+    },
+    { onConflict: "user_id,day_number" },
+  );
+
+  if (dayError && /study_notes_completed|column/i.test(dayError.message || "")) {
+    await supabase.from("bible_year_day_progress").upsert(
+      {
+        user_id: guest.userId,
+        day_number: 1,
+        reading_completed: false,
+        trivia_completed: false,
+        reflection_completed: false,
+      },
+      { onConflict: "user_id,day_number" },
+    );
+  }
+
+  return guest;
+}
+
 /** Current user id without creating anything. */
 export async function getCurrentUserId(): Promise<string | null> {
   const { data } = await supabase.auth.getUser();

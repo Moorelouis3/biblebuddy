@@ -1835,3 +1835,21 @@ Anonymous sign-ins in Supabase, and run the migration. Guests hitting
 community actions still fail silently (needs a friendly prompt).
 26 blog articles still have no study CTA - copy work.
 Next: enable anon auth, run migration, test the blog -> study path.
+
+## 2026-08-15 (night, part 4)
+Time spent: ~1 session
+Done: Landing page now starts a guest journey instead of sending people
+to a signup form. Both CTAs on MinimalLandingPage (the real landing
+page - the large one below it is dead code behind an early return) now
+say "Start Studying Now" and drop straight into Bible in One Year Day 1.
+Added startGuestBibleYearJourney() which seeds the profile with
+bible_year_started_at / launch_seen_at / onboarding_completed so
+AppShell does not show the first-login onboarding modal, plus a day 1
+bible_year_day_progress row. Falls back to /signup if anonymous auth is
+off. Updated the FAQ that still promised a Pro upgrade and the
+"create your free account" copy.
+Still open: NOT DEPLOYED - no [deploy] tag on any of these commits.
+Anonymous sign-ins still need enabling in Supabase and
+BLOCK_ANONYMOUS_COMMUNITY_WRITES.sql still needs running, or the button
+falls back to the signup form.
+Next: enable anon auth, run the migration, test locally, then deploy.
