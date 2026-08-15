@@ -22519,6 +22519,63 @@
           "at": "2026-08-15T16:55:03Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 18,
+      "startedAt": "2026-08-15T17:46:12Z",
+      "finishedAt": "2026-08-15T17:54:30Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 33,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty, so this is normal forward progress: first dedicated file for this chapter (confirmed no existing firstChroniclesEighteenSource.ts; chapters 9-29 currently fall back to the generic FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS block). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (17 verses). 1 Chronicles 18 is David's military summary chapter (parallel to 2 Samuel 8): subduing the Philistines (including Gath) and Moab, the defeat of Hadarezer king of Zobah and his push to establish dominion at the Euphrates, houghing the captured chariot horses instead of building a chariot army, the Syrians of Damascus arriving to help Zobah and being defeated and garrisoned in turn, the gold shields and brass plunder brought to Jerusalem that Solomon later uses for the brasen sea and temple pillars, Tou king of Hamath sending his son Hadoram to congratulate David over their shared rival's fall, David dedicating all the plunder to the LORD rather than his own treasury, Abishai's victory over Edom in the valley of salt, the repeated inclusio line 'thus the LORD preserved David whithersoever he went' (verses 6 and 13) explained as deliberate emphasis rather than duplicated by accident, and the closing list of David's officials (Joab over the army, Jehoshaphat the recorder, Zadok and Abimelech as a rare dual priesthood, Shavsha the scribe, Benaiah over the foreign Cherethite and Pelethite bodyguard, and David's own sons in a position 2 Samuel calls chief rulers rather than priests). Chunked into 6 sections (1-2, 3-6, 7-8, 9-11, 12-13, 14-17). Density about 1.94 cards/verse (17 verses, 33 cards). scripts/check_bible_note_style.py found 6 problems on first pass (one over-length bullet, an inline list written with repeated-emoji lines that the checker counted as extra bullets on the nations-list card, one duplicate-title risk avoided by only using the 'thus the LORD preserved' refrain once as a closing inclusio card instead of twice, and two more over-length bullets), fixed, second run clean. A manual section 13 eye check also caught and rewrote a body line using the word 'shows' generically, three lines using the line-rule-banned 'rather than' construction, one comma-spliced sentence, and one 'while' stacked clause, splitting each into separate one-idea lines. Parser check passed exactly via getBibleReaderStudySections('1 chronicles', 18) (6/6 sections, 33 cards, 17 verses, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: added the import, extended preserveExactPhraseBodies for 1 chronicles from chapter 17 to chapter 18, added applyPersonalFirstChroniclesEighteenStudySections() calling replaceStudySectionsForBookRange('1 chronicles', 18, 18, ...), and placed its call after applyPersonalFirstChroniclesNineThroughTwentyNineStudySections() so it overrides the generic 9-29 block for this one chapter, matching the existing pattern used for chapters 9-17. Next chapter in canonical order with no wired file is 1 Chronicles 19.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T17:46:12Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 18 (redo backlog empty, forward progress, no existing wired file)",
+          "at": "2026-08-15T17:47:02Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com/aruljohn/Bible-kjv (17 verses)",
+          "at": "2026-08-15T17:48:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-15T17:48:50Z"
+        },
+        {
+          "name": "source file lib/firstChroniclesEighteenSource.ts written (6 sections, 33 cards)",
+          "at": "2026-08-15T17:51:30Z"
+        },
+        {
+          "name": "style checker clean (fixed 6 problems on first pass, second run clean)",
+          "at": "2026-08-15T17:52:10Z"
+        },
+        {
+          "name": "manual section 13 eye check pass, fixed stacked-clause and forbidden-pattern lines",
+          "at": "2026-08-15T17:52:50Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 18, replaceStudySectionsForBookRange call placed after generic 9-29 range)",
+          "at": "2026-08-15T17:53:00Z"
+        },
+        {
+          "name": "parser check passed exactly (6/6 sections, 33 cards, text verbatim)",
+          "at": "2026-08-15T17:53:20Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-15T17:53:42Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-15T17:54:30Z"
+        }
+      ]
     }
   ]
 }
