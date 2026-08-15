@@ -22466,6 +22466,59 @@
           "at": "2026-08-15T15:57:08Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 17,
+      "startedAt": "2026-08-15T16:46:35Z",
+      "finishedAt": "2026-08-15T16:55:03Z",
+      "durationMinutes": 8,
+      "sections": 9,
+      "cards": 41,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty. Normal forward progress after 1 Chronicles 16, first dedicated file for this chapter (confirmed no existing firstChroniclesSeventeenSource.ts). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (27 verses). 1 Chronicles 17 is the Davidic covenant chapter (parallel to 2 Samuel 7): David's wish to build God a temple, Nathan's unchecked yes followed by God's same-night correction through Nathan, God's recap of bringing Israel from tent to tent since the Exodus and never commanding any judge to build Him a house, the wordplay pivot where God flips David's offer to build Him a house into a promise to build David a house (a dynasty), the promise that David's own son (Solomon) will build the temple and have an established throne, the father-son covenant language extended to Solomon with an explicit contrast to God's earlier rejection of Saul (noting Chronicles omits the future-discipline clause 2 Samuel 7:14 includes), David's humbled response sitting before the LORD ('who am I, O LORD God'), and David's closing prayer declaring God's uniqueness, Israel's uniqueness, and asking God to keep His own word and bless David's house forever. Chunked into 9 sections (1-2, 3-6, 7-10, 11-12, 13-14, 15-19, 20-22, 23-25, 26-27). Density about 1.52 cards/verse (27 verses, 41 cards). scripts/check_bible_note_style.py found 1 problem on first pass (one bullet at 9 words on the 'Neither Shall The Children Of Wickedness' card), fixed by shortening it, second run clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, and closes on meaning, with no hyphens, em dashes, semicolons, contractions, or banned filler/hedge words anywhere in the file, and no duplicate card titles. Parser check passed exactly via getBibleReaderStudySections('1 chronicles', 17) (9/9 sections, 41 cards, 27 verses of exact non overlapping gap free coverage, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies for 1 chronicles extended from chapters 1-16 to chapters 1-17, new applyPersonalFirstChroniclesSeventeenStudySections() calling replaceStudySectionsForBookRange('1 chronicles', 17, 17, FIRST_CHRONICLES_SEVENTEEN_PERSONAL_SECTIONS) added directly after applyPersonalFirstChroniclesSixteenStudySections(), which itself runs after the legacy applyPersonalFirstChroniclesNineThroughTwentyNineStudySections() call so this new file correctly overrides that older block for chapter 17. Next forward-progress target is 1 Chronicles 18.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T16:46:56Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 17 (normal forward progress, redo backlog empty, no existing lib file)",
+          "at": "2026-08-15T16:47:22Z"
+        },
+        {
+          "name": "KJV text fetched (1 Chronicles 17, 27 verses, aruljohn mirror)",
+          "at": "2026-08-15T16:47:22Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-15T16:52:07Z"
+        },
+        {
+          "name": "source file written: lib/firstChroniclesSeventeenSource.ts",
+          "at": "2026-08-15T16:53:27Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 passes, fixed 1 bullet word count issue)",
+          "at": "2026-08-15T16:53:27Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 17, applyPersonalFirstChroniclesSeventeenStudySections)",
+          "at": "2026-08-15T16:54:20Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 41 cards, exact match to design)",
+          "at": "2026-08-15T16:54:58Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-15T16:54:58Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-15T16:55:03Z"
+        }
+      ]
     }
   ]
 }

@@ -1755,3 +1755,7 @@ Next up: 1 Chronicles 16
 ## 2026-08-15T15:57:08Z (hourly chapter notes run)
 Chapter: 1 Chronicles 16 | Duration: 11 min | Sections: 9 | Cards: 37 | Status: pass
 Next up: 1 Chronicles 17
+
+## 2026-08-15T16:55:03Z (hourly chapter notes run)
+Chapter: 1 Chronicles 17 | Duration: 8 min | Sections: 9 | Cards: 41 | Status: pass
+Next up: 1 Chronicles 18
