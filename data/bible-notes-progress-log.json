@@ -21651,6 +21651,71 @@
           "at": "2026-08-15T01:04:17Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 2,
+      "startedAt": "2026-08-15T01:46:36Z",
+      "finishedAt": "2026-08-15T02:04:06Z",
+      "durationMinutes": 18,
+      "sections": 13,
+      "cards": 59,
+      "verses": 55,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty. 1 Chronicles 1 was the last logged chapter, so canonical forward progress pointed to 1 Chronicles 2, which only had generic old-style batch coverage (FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, no dedicated per-chapter file). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (55 verses). 1 Chronicles 2 covers the twelve sons of Israel, Judah's line through Tamar's twins Pharez and Zerah, Achar/Achan the troubler of Israel, Hezron's line down through Ram, Nahshon, Salma, and Boaz to Jesse and David (the seventh of seven sons named here versus eight in 1 Samuel 16), Caleb son of Hezron's family including Bezaleel the tabernacle craftsman, Hezron's late marriage into Machir's family and Jair's twenty three cities in Gilead, the sons of Jerahmeel (Hezron's actual firstborn) down through Sheshan giving his daughter to his Egyptian servant Jarha to preserve the line, a second Caleb list touching Ziph and Maon (both places tied to David hiding from Saul), Caleb's concubines Ephah and Maachah including the daughter Achsa, and the closing section tracing Caleb's line through Hur to Bethlehem (Salma) and the Kenites descended from Hemath, father of the house of Rechab. Initially drafted as 12 sections including one 25-33 span (9 verses); running the parser check surfaced the same enforceStudySectionVerseLimit(8) auto-split behavior already documented in the 1 Chronicles 1 entry, which had duplicated all 5 of that section's cards into Part 1/Part 2 clones, and while investigating it also caught a real content bug: that 9-verse section had skipped verses 28-29 (Onam's sons and Abishur's wife Abihail) entirely and had misattributed a Sheshan-had-no-sons card to verse 33 when that line is actually verse 34, belonging to the next section. Fixed by splitting into a proper 25-29 and 30-33 section pair, writing two new cards for the skipped verses, writing three new cards for verses 31-33, and moving the corrected card to open the 34-41 section where verse 34 actually belongs. Final chunking: 13 sections (1-2, 3-4, 5-8, 9-12, 13-17, 18-20, 21-24, 25-29, 30-33, 34-41, 42-45, 46-49, 50-55), all at or under the 8-verse render limit. Density about 1.07 cards/verse (55 verses, 59 cards). scripts/check_bible_note_style.py found 1 problem on first pass (one bullet one word over the 8 word limit), fixed, second run clean, 59 cards, zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves (including an honest hedge on the disputed identity of Achsa, since Achsah in Joshua is explicitly the daughter of a different Caleb, son of Jephunneh), closes on meaning, uses exactly four bullets each ending on a book/arrow emoji with no repeated emoji within a card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('1 chronicles', 2) (13/13 sections, 59 cards, 55 verses of exact non-overlapping gap-free coverage, text rendered verbatim, no Part 1/2 duplication). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies for 1 chronicles extended from chapter === 1 to chapters 1-2, new applyPersonalFirstChroniclesTwoStudySections() calling replaceStudySectionsForBookRange(\"1 chronicles\", 2, 2, FIRST_CHRONICLES_TWO_PERSONAL_SECTIONS) added directly after applyPersonalFirstChroniclesOneStudySections() and before the 9-29 batch call, overriding the old batch content for chapter 2 only. Next forward-progress target is 1 Chronicles 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T01:46:36Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 2 (redo backlog empty, normal forward progress after 1 Chronicles 1)",
+          "at": "2026-08-15T01:47:20Z"
+        },
+        {
+          "name": "KJV text fetched (1 Chronicles 2, 55 verses, aruljohn mirror)",
+          "at": "2026-08-15T01:47:33Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-08-15T01:49:00Z"
+        },
+        {
+          "name": "source file written: lib/firstChroniclesTwoSource.ts (12 sections, 54 cards)",
+          "at": "2026-08-15T01:53:00Z"
+        },
+        {
+          "name": "style checker clean, first revision (scripts/check_bible_note_style.py, fixed 1 bullet-length problem)",
+          "at": "2026-08-15T01:54:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange after 1 Chronicles 1 call)",
+          "at": "2026-08-15T01:55:54Z"
+        },
+        {
+          "name": "parser check on first revision surfaced enforceStudySectionVerseLimit(8) auto-split duplicating the 25-33 Jerahmeel section into Part 1/Part 2, plus a real content gap (verses 28-29 skipped) and a misattributed verse-34 card",
+          "at": "2026-08-15T01:58:00Z"
+        },
+        {
+          "name": "source file restructured: split 25-33 into 25-29 and 30-33, added 5 new cards to cover verses 28-29 and 31-33, moved the corrected Sheshan-had-no-sons card to open 34-41 (13 sections, 59 cards)",
+          "at": "2026-08-15T02:01:05Z"
+        },
+        {
+          "name": "style checker clean, final revision (59 cards, zero problems)",
+          "at": "2026-08-15T02:01:20Z"
+        },
+        {
+          "name": "parser check passed exactly (13/13 sections, 59 cards, 55 verses, text verbatim, no Part 1/2 duplication)",
+          "at": "2026-08-15T02:02:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-15T02:03:02Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json)",
+          "at": "2026-08-15T02:04:06Z"
+        }
+      ]
     }
   ]
 }
