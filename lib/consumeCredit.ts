@@ -2,6 +2,7 @@ import "server-only";
 
 import { createClient } from "@supabase/supabase-js";
 import type { ActionType } from "./actionTypes";
+import { CORE_STUDY_IS_FREE } from "./accessPolicy";
 
 interface ProfileStatsRow {
   is_paid: boolean | null;
@@ -114,7 +115,10 @@ export async function consumeCredit(
     }
   }
 
-  if (profileStats.is_paid) {
+  // Core Bible study is free: everyone takes the unlimited path. The action is
+  // still recorded in master_actions — this function is the instrumentation for
+  // study analytics as well as the old gate, and that must not regress.
+  if (CORE_STUDY_IS_FREE || profileStats.is_paid) {
     const insertData: {
       user_id: string;
       action_type: ActionType;
@@ -255,7 +259,7 @@ export async function previewCredit(userId: string): Promise<ConsumeCreditResult
     return { ok: false, reason: "missing_profile" };
   }
 
-  if (profileStats.is_paid) {
+  if (CORE_STUDY_IS_FREE || profileStats.is_paid) {
     return { ok: true, isPaid: true };
   }
 

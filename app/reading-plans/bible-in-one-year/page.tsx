@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
+import { CORE_STUDY_IS_FREE } from "../../../lib/accessPolicy";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
 import { getCompletedChapters, isChapterCompleted } from "../../../lib/readingProgress";
 import { dispatchLouisMoment } from "../../../lib/louisMoments";
@@ -152,7 +153,9 @@ export default function BibleInOneYearPage() {
 
         setFeatureTours(normalizeFeatureTours(profileStats?.feature_tours));
         setFeatureToursLoaded(true);
-        setIsPaidProfile(profileStats?.is_paid === true);
+        // Free platform: treat everyone as having full access, which also
+        // stops the "credits reset in" countdown from rendering.
+        setIsPaidProfile(CORE_STUDY_IS_FREE || profileStats?.is_paid === true);
         setDailyCredits(profileStats?.daily_credits ?? null);
         setLastCreditReset(profileStats?.last_credit_reset ?? null);
 
@@ -416,7 +419,7 @@ export default function BibleInOneYearPage() {
     };
   }, [isPaidProfile, dailyCredits, lastCreditReset]);
 
-  const isCreditLocked = !isPaidProfile && dailyCredits !== null && dailyCredits <= 0;
+  const isCreditLocked = !CORE_STUDY_IS_FREE && !isPaidProfile && dailyCredits !== null && dailyCredits <= 0;
 
   const isDayUnlocked = (dayNumber: number): boolean => {
     if (dayNumber === 1) return !isCreditLocked;

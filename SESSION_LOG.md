@@ -1798,3 +1798,21 @@ Still open: no migration changes made, by design. Phase 0 (Stripe
 subscription audit, verify Supabase anon sign-in, check duplicate
 Tempting-of-Jesus rows) needs Louis before any code ships.
 Next: Louis reviews the audit and approves the phase sequence.
+
+## 2026-08-15 (night, part 2)
+Time spent: ~1 session
+Done: Removed the paywalls. Phases 1-4 of the free migration audit.
+Added lib/accessPolicy.ts with CORE_STUDY_IS_FREE (defaults to free;
+set NEXT_PUBLIC_CORE_STUDY_FREE=false to revert). Credits neutered at
+the server in consumeCredit.ts so all 17 call sites are covered while
+master_actions logging is preserved. Devotional 24h drip and
+one-free-plan wall removed. Trivia, Scrambled, reading plans, Bible in
+One Year, study-group series notes and Bible Buddy TV notes all opened.
+/upgrade rewritten as a "Bible Buddy is free" page (Stripe infra kept
+for future physical products). Louis is handling the 16 active Stripe
+subscriptions manually in the dashboard.
+Still open: not deployed (no [deploy] tag). Not run against a live
+build - no node_modules in the audit environment, so only syntax was
+verified. Phase 5 (anonymous deep links) and Phase 11 (dead code
+removal) not started.
+Next: run it locally, click through, then ship.

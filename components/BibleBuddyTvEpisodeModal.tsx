@@ -10,6 +10,7 @@ import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { ensureBibleEntityLearned } from "../lib/bibleEntityProgress";
 import { consumeCreditAction } from "../lib/creditClient";
+import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import CreditLimitModal from "./CreditLimitModal";
 import ReactMarkdown from "react-markdown";
@@ -123,7 +124,7 @@ export default function BibleBuddyTvEpisodeModal({
   const [selectedNotes, setSelectedNotes] = useState<string | null>(null);
   const [loadingSelectedNotes, setLoadingSelectedNotes] = useState(false);
   const [notesCreditBlocked, setNotesCreditBlocked] = useState(false);
-  const [isPaidUser, setIsPaidUser] = useState(false);
+  const [isPaidUser, setIsPaidUser] = useState(CORE_STUDY_IS_FREE);
   const [personCreditBlocked, setPersonCreditBlocked] = useState(false);
   const [placeCreditBlocked, setPlaceCreditBlocked] = useState(false);
   const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
@@ -143,7 +144,7 @@ export default function BibleBuddyTvEpisodeModal({
       const { data: { user } } = await supabase.auth.getUser();
       setUserId(user?.id ?? null);
       if (!user?.id) {
-        setIsPaidUser(false);
+        setIsPaidUser(CORE_STUDY_IS_FREE);
         setCompletedPeople(new Set());
         setCompletedPlaces(new Set());
         setCompletedKeywords(new Set());
@@ -155,7 +156,7 @@ export default function BibleBuddyTvEpisodeModal({
         supabase.from("places_progress").select("place_name").eq("user_id", user.id),
         supabase.from("keywords_progress").select("keyword").eq("user_id", user.id),
       ]);
-      setIsPaidUser(Boolean(profileRes.data?.is_paid));
+      setIsPaidUser(CORE_STUDY_IS_FREE || Boolean(profileRes.data?.is_paid));
       setCompletedPeople(new Set((peopleRes.data || []).map((row: any) => String(row.person_name || "").toLowerCase().trim()).filter(Boolean)));
       setCompletedPlaces(new Set((placesRes.data || []).map((row: any) => String(row.place_name || "").toLowerCase().trim()).filter(Boolean)));
       setCompletedKeywords(new Set((keywordsRes.data || []).map((row: any) => String(row.keyword || "").toLowerCase().trim()).filter(Boolean)));

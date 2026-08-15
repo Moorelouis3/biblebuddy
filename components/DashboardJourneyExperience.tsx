@@ -30,6 +30,7 @@ import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
 import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
+import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, getCompletedChaptersByBooks, markChapterDone } from "../lib/readingProgress";
@@ -2866,7 +2867,9 @@ export default function DashboardJourneyExperience({
   const chatTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "buddy";
   const inviteTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "share";
   const analyticsTabActive = !bibleYearDashboardActive && !bibleYearSeriesActive && activePageKey === "analytics";
-  const isPaidUser = profile?.is_paid === true || membershipStatus === "pro";
+  // Core Bible study is free, so everyone gets the unrestricted dashboard path
+  // (no credit gates, no free-plan chapter locks, no upgrade prompts).
+  const isPaidUser = CORE_STUDY_IS_FREE || profile?.is_paid === true || membershipStatus === "pro";
 
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
   const visibleTasks = shouldShowBibleBuddy3ModeGate ? [] : checklistData?.tasks ?? [];

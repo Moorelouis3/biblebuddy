@@ -12,6 +12,7 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 import type { TriviaChapterPack } from "@/lib/triviaGameData";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
 import { FREE_TRIVIA_BOOK_KEYS } from "@/lib/bibleStudyGameCatalog";
+import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { dispatchLouisMoment } from "@/lib/louisMoments";
 
@@ -76,7 +77,8 @@ export default function TriviaGamePlayer({
   }, [bookSlug]);
 
   const isFreeBook = FREE_TRIVIA_BOOK_KEYS.has(bookKey);
-  const shouldGateUpgrade = !skipUpgradeGate && !isFreeBook;
+  // All trivia books are free for everyone.
+  const shouldGateUpgrade = !CORE_STUDY_IS_FREE && !skipUpgradeGate && !isFreeBook;
 
   const questions = chapter?.questions ?? [];
   const currentQuestion = questions[currentQuestionIndex] ?? null;

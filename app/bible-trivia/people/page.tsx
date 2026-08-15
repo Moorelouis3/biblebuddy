@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
+import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { BIBLE_GAME_ITEMS_PER_PAGE, BIBLE_GAME_PEOPLE, FREE_TRIVIA_PERSON_KEYS } from "@/lib/bibleStudyGameCatalog";
@@ -122,7 +123,8 @@ export default function PeopleOfTheBiblePage() {
           <div className="space-y-4">
             <div className="grid grid-cols-3 gap-3 mt-2 md:grid-cols-4">
               {visiblePeople.map((person) => {
-                const isLocked = isPaid === false && !FREE_TRIVIA_PERSON_KEYS.has(person.key);
+                const isLocked =
+                  !CORE_STUDY_IS_FREE && isPaid === false && !FREE_TRIVIA_PERSON_KEYS.has(person.key);
                 const label = loading
                   ? "Loading..."
                   : `${progress[person.key] ?? PERSON_TOTALS[person.key]} questions remaining`;

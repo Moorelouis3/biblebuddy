@@ -8,6 +8,7 @@ import {
   FREE_SCRAMBLED_PERSON_KEYS,
 } from "@/lib/bibleStudyGameCatalog";
 import { supabase } from "@/lib/supabaseClient";
+import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 
 type ScrambledUpgradeGateProps = {
   bookSlug: string;
@@ -22,8 +23,11 @@ export default function ScrambledUpgradeGate({
   const [isPaid, setIsPaid] = useState<boolean>(false);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
 
+  // Every book and every person is playable by everyone.
   const isFreePack =
-    FREE_SCRAMBLED_BOOK_KEYS.has(bookSlug) || FREE_SCRAMBLED_PERSON_KEYS.has(bookSlug);
+    CORE_STUDY_IS_FREE ||
+    FREE_SCRAMBLED_BOOK_KEYS.has(bookSlug) ||
+    FREE_SCRAMBLED_PERSON_KEYS.has(bookSlug);
 
   useEffect(() => {
     let isMounted = true;

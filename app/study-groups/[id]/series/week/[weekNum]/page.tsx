@@ -14,6 +14,7 @@ import { requestAutoReplyDraft } from "@/lib/requestAutoReplyDraft";
 import { resolveBibleReference } from "@/lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "@/lib/bibleNotes";
 import { consumeCreditAction } from "@/lib/creditClient";
+import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import CreditLimitModal from "@/components/CreditLimitModal";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import UserBadge from "@/components/UserBadge";
@@ -1848,7 +1849,8 @@ export default function WeekLessonPage({
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [displayName, setDisplayName] = useState("");
   const [profileImageUrl, setProfileImageUrl] = useState<string | null>(null);
-  const [isPaid, setIsPaid] = useState(false);
+  // Study notes are free for everyone.
+  const [isPaid, setIsPaid] = useState(CORE_STUDY_IS_FREE);
   const [memberBadge, setMemberBadge] = useState<string | null>(null);
   const [currentGroupRole, setCurrentGroupRole] = useState<string | null>(null);
   const [seriesId, setSeriesId] = useState<string | null>(null);
@@ -2033,7 +2035,7 @@ export default function WeekLessonPage({
       if (profileRes.data) {
         setDisplayName(profileRes.data.display_name || profileRes.data.username || "");
         setProfileImageUrl(profileRes.data.profile_image_url || null);
-        setIsPaid(profileRes.data.is_paid === true);
+        setIsPaid(CORE_STUDY_IS_FREE || profileRes.data.is_paid === true);
         setMemberBadge(profileRes.data.member_badge || null);
       }
 

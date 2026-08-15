@@ -95,6 +95,7 @@ import TriviaGamePlayer from "../../../components/TriviaGamePlayer";
 import BrowserTtsButton from "../../../components/BrowserTtsButton";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
+import { CORE_STUDY_IS_FREE } from "../../../lib/accessPolicy";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../lib/triviaCatalog";
 import { getTriviaChapter } from "../../../lib/triviaGameData";
@@ -827,7 +828,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const remainingUnits = Math.max(totalUnits - completedDays, 0);
   const isWisdomOfProverbs = isWisdomOfProverbsTitle(devotional?.title);
   const isModernStudyPlan = isModernStudyPlanTitle(devotional?.title);
-  const isFreePlanUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
+  // Core Bible study is free — nobody is a restricted "free plan user" any more.
+  const isFreePlanUser = !CORE_STUDY_IS_FREE && profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
   const freeDevotionalCompletionStorageKey =
     userId && devotionalId ? `bb:free-devotional-day-completed:${userId}:${devotionalId}` : null;
 
@@ -854,6 +856,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   };
 
   const shouldBlockFreeWisdomDay = (dayNumber: number) => {
+    // Study as much as you want, whenever you want. No 24-hour drip.
+    if (CORE_STUDY_IS_FREE) return false;
     if (!isModernStudyPlan || !isFreePlanUser || dayNumber <= 1) return false;
 
     const currentProgress = chapterTaskProgress.get(dayNumber);
@@ -1057,7 +1061,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       }).catch((error) => console.error("[NAV] Failed to track devotional day click:", error));
     }
 
-    const isFreeUser = profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
+    // Every plan is open to everyone. Skips the claim-one-plan / upgrade-wall
+    // branch entirely and falls through to opening the day.
+    const isFreeUser = !CORE_STUDY_IS_FREE && profileStats?.is_paid !== true && userEmail !== "moorelouis3@gmail.com";
     const shouldSetStudyDashboard = isChapterJourneyStudyTitle(devotional?.title);
     const openDay = async () => {
       if (
@@ -1659,7 +1665,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
   // Pro lock for specific devotional
   const PRO_DEVOTIONAL_UUID = "20b36b11-73df-4863-a4c3-8371a5ff511a";
-  const isProLocked = devotional?.id === PRO_DEVOTIONAL_UUID && profileStats?.is_paid === false;
+  const isProLocked =
+    !CORE_STUDY_IS_FREE && devotional?.id === PRO_DEVOTIONAL_UUID && profileStats?.is_paid === false;
 
   useEffect(() => {
     if (isProLocked) setShowProModal(true);
