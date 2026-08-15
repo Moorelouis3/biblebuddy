@@ -22152,6 +22152,59 @@
           "at": "2026-08-15T09:55:25Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 11,
+      "startedAt": "2026-08-15T10:46:48Z",
+      "finishedAt": "2026-08-15T10:57:00Z",
+      "durationMinutes": 10,
+      "sections": 11,
+      "cards": 51,
+      "verses": 47,
+      "notes": "Style redo backlog confirmed empty; normal forward progress after 1 Chronicles 10. First dedicated file for this chapter (previously rendered via the old bulk FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS range). All Israel anoints David king at Hebron, capture of Jerusalem/Jebus and Joab's rise, David's building projects, the mighty men (Jashobeam, Eleazar's barley field stand, the three who broke through for water from Bethlehem's well, Abishai and Benaiah), and the closing Thirty name lists including Uriah the Hittite and two other loyal foreigners (Zelek the Ammonite, Ithmah the Moabite). Style checker clean on second pass (fixed a banned hedge word, a last-bullet emoji issue, and an over-length body line). Parser check and tsc both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T10:47:17Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 11 (redo backlog empty, normal forward progress after 1 Chronicles 10)",
+          "at": "2026-08-15T10:48:30Z"
+        },
+        {
+          "name": "KJV text fetched",
+          "at": "2026-08-15T10:49:10Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-08-15T10:50:00Z"
+        },
+        {
+          "name": "source file written (lib/firstChroniclesElevenSource.ts, 11 sections, 51 cards)",
+          "at": "2026-08-15T10:52:30Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-15T10:53:40Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range, applyPersonalFirstChroniclesElevenStudySections)",
+          "at": "2026-08-15T10:54:00Z"
+        },
+        {
+          "name": "parser check passed (11/11 sections, 51 cards, 47 verses)",
+          "at": "2026-08-15T10:54:35Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-15T10:54:50Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-15T10:57:00Z"
+        }
+      ]
     }
   ]
 }

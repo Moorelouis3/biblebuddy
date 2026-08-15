@@ -1728,3 +1728,7 @@ Next up: 1 Chronicles 10
 ## 2026-08-15T09:55:25Z (hourly chapter notes run)
 Chapter: 1 Chronicles 10 | Duration: 9 min | Sections: 5 | Cards: 29 | Status: pass
 Next up: 1 Chronicles 11
+
+## 2026-08-15T10:57:00Z (hourly chapter notes run)
+Chapter: 1 Chronicles 11 | Duration: 10 min | Sections: 11 | Cards: 51 | Status: pass
+Next up: 1 Chronicles 12
