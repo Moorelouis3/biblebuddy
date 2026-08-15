@@ -22205,6 +22205,59 @@
           "at": "2026-08-15T10:57:00Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 12,
+      "startedAt": "2026-08-15T11:47:16Z",
+      "finishedAt": "2026-08-15T12:01:05Z",
+      "durationMinutes": 14,
+      "sections": 7,
+      "cards": 42,
+      "verses": 40,
+      "notes": "1 Chronicles 12 progress after 1 Chronicles 11. First dedicated file for this chapter (previously rendered via the old bulk FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS range). Covers the ambidextrous Benjamite archers (Saul's own kinsmen) joining David at Ziklag, the lion faced Gadite warriors crossing the flooded Jordan, Amasai's Spirit given loyalty pledge, the Manasseh captains defecting from the Philistine army, and the full tribal muster at Hebron crowning David with a three day feast closing on real national joy. Style checker clean on first pass. Parser check and tsc both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T11:47:16Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 12 (redo backlog empty, normal forward progress after 1 Chronicles 11)",
+          "at": "2026-08-15T11:48:02Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md and SKILL.md)",
+          "at": "2026-08-15T11:48:07Z"
+        },
+        {
+          "name": "KJV text fetched (1 Chronicles 12, 40 verses)",
+          "at": "2026-08-15T11:48:11Z"
+        },
+        {
+          "name": "source file written (lib/firstChroniclesTwelveSource.ts, 7 sections, 42 cards)",
+          "at": "2026-08-15T11:57:09Z"
+        },
+        {
+          "name": "style checker clean (42 cards, zero problems on first pass)",
+          "at": "2026-08-15T11:57:13Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 12, applyPersonalFirstChroniclesTwelveStudySections added)",
+          "at": "2026-08-15T11:57:23Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 42 cards, 40 verses)",
+          "at": "2026-08-15T11:57:38Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-15T11:59:06Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-15T12:01:05Z"
+        }
+      ]
     }
   ]
 }
