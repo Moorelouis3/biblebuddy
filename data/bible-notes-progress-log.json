@@ -22258,6 +22258,55 @@
           "at": "2026-08-15T12:01:05Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 13,
+      "startedAt": "2026-08-15T12:46:35Z",
+      "finishedAt": "2026-08-15T13:04:00Z",
+      "durationMinutes": 17,
+      "sections": 5,
+      "cards": 25,
+      "verses": 14,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing dedicated wired-in file for this chapter (only the old batch firstChroniclesNineToTwentyNinePersonalNotes.ts covered it generically), clean new-chapter build per docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (14 verses). 1 Chronicles 13 covers David consulting the captains and the whole congregation before acting (unlike Saul, who never enquired of the ark), the geographic sweep of gathering all Israel from Shihor of Egypt to the entering of Hemath, the ark being fetched from Kirjathjearim on a new cart in violation of the law requiring Levites to carry it on poles, the full instrumental celebration, Uzza reaching out to steady the ark at the threshingfloor of Chidon and being struck dead for touching it, the naming of Perezuzza, David's fear and unresolved question about how to bring the ark home, and the ark resting three months at the house of Obededom the Gittite whose household is blessed instead of judged. Chunked into 5 sections (1-4, 5-8, 9-10, 11-12, 13-14) matching the chapter's natural scene breaks (the proposal, the failed transport, the death, the aftermath, the resolution at Obededom's house). Density about 1.79 cards/verse (14 verses, 25 cards), in the normal recent range. scripts/check_bible_note_style.py found 23 problems on first pass (1 banned hedge word 'roughly', several bullets over the 8 word limit, several body lines over 20 words, and one card written with an inline instrument list that produced 10 emoji lines against the fixed 4 bullet rule), fixed by shortening lines, splitting stacked clauses, and rewriting the instruments card to keep exactly 4 bullets, second run clean. A manual section 13 eye check also confirmed no duplicate or near-duplicate opening lines across the 25 cards and that every closing bullet lands on meaning. Parser check passed exactly via getBibleReaderStudySections('1 chronicles', 13) (5/5 sections, 25 cards, 14 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 1 chronicles range extended from chapters 1-12 to 1-13, applyPersonalFirstChroniclesThirteenStudySections() function added and called directly after the Chapter 12 call. Next forward-progress target is 1 Chronicles 14.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T12:46:35Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 13 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-15T12:46:35Z"
+        },
+        {
+          "name": "KJV text fetched (1 Chronicles 13, 14 verses, aruljohn mirror)",
+          "at": "2026-08-15T12:47:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-15T12:48:00Z"
+        },
+        {
+          "name": "source file written: lib/firstChroniclesThirteenSource.ts",
+          "at": "2026-08-15T12:56:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 3 fix passes)",
+          "at": "2026-08-15T13:00:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalFirstChroniclesThirteenStudySections)",
+          "at": "2026-08-15T13:01:15Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 25 cards, text verbatim)",
+          "at": "2026-08-15T13:02:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-15T13:02:30Z"
+        }
+      ]
     }
   ]
 }
