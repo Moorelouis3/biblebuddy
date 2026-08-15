@@ -1816,3 +1816,22 @@ build - no node_modules in the audit environment, so only syntax was
 verified. Phase 5 (anonymous deep links) and Phase 11 (dead code
 removal) not started.
 Next: run it locally, click through, then ship.
+
+## 2026-08-15 (night, part 3)
+Time spent: ~1 session
+Done: Phase 5 - guest study and blog deep links. Added
+lib/guestSession.ts (ensureGuestSession, callable anywhere, creates a
+guest only on a real study action), app/study/[slug] readable-slug
+resolver so blog links never hardcode a devotional UUID, and
+components/StudyCta.tsx. Wired guest provisioning into the devotional
+day click and the Bible reader study cards. Added CTAs to the Leah and
+self-control articles. Found and closed a real hole: Supabase anonymous
+users hold the authenticated role, so community write policies accepted
+guests - added BLOCK_ANONYMOUS_COMMUNITY_WRITES.sql (restrictive
+policies, additive, does not touch existing ones, service-role crons
+unaffected).
+Still open: two things must happen before this works live - enable
+Anonymous sign-ins in Supabase, and run the migration. Guests hitting
+community actions still fail silently (needs a friendly prompt).
+26 blog articles still have no study CTA - copy work.
+Next: enable anon auth, run migration, test the blog -> study path.

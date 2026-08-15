@@ -96,6 +96,7 @@ import BrowserTtsButton from "../../../components/BrowserTtsButton";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
 import { CORE_STUDY_IS_FREE } from "../../../lib/accessPolicy";
+import { ensureGuestSession } from "../../../lib/guestSession";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../lib/triviaCatalog";
 import { getTriviaChapter } from "../../../lib/triviaGameData";
@@ -1122,7 +1123,6 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       return;
     }
 
-    // Paid user (or owner) — existing consume-credit logic
     const dayProgress = progress.get(day.day_number);
     const dayTaskProgress = chapterTaskProgress.get(day.day_number);
     const isCompleted = shouldSetStudyDashboard
@@ -1135,13 +1135,26 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       return;
     }
 
-    const creditResult = await consumeCreditAction(ACTION_TYPE.devotional_day_viewed, { userId });
-    if (creditResult.ok === false) {
-      setShowCreditBlocked(true);
+    // Someone arriving from a blog post or shared link has no session yet.
+    // Create a guest account at the moment they actually start studying, so
+    // their progress is saved and they can claim it later by signing up.
+    let activeUserId = userId;
+    if (!activeUserId) {
+      const guest = await ensureGuestSession({ source: "devotional_deep_link" });
+      if (guest.ok) {
+        activeUserId = guest.userId;
+        setUserId(guest.userId);
+      }
+    }
+
+    // Without a session there is nothing to record, but reading must still work.
+    if (!activeUserId) {
+      setShowCreditBlocked(false);
       await openDay();
       return;
     }
 
+    await consumeCreditAction(ACTION_TYPE.devotional_day_viewed, { userId: activeUserId });
     setShowCreditBlocked(false);
     await openDay();
   };

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BlogPostShell from "@/components/blog/BlogPostShell";
+import StudyCta from "@/components/StudyCta";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
 
 export const metadata = buildBlogArticleMetadata("who-is-leah", {
@@ -573,14 +574,20 @@ export default function WhoIsLeahPage() {
           <li>🤝 A community of believers walking the same road</li>
         </ul>
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
-          <p>It is free to start. No pressure, no credit card.</p>
+          <p>It is completely free. No pressure, no credit card, no account needed to begin.</p>
           <p>Just you, God&apos;s Word, and a little help understanding it.</p>
           <p>
             Thousands of Christians are already reading this way, one day at a time. There is room
             for you.
           </p>
-          <p>Sign up by clicking the button below. 👇</p>
         </div>
+
+        <StudyCta
+          slug="women-of-the-bible"
+          title="Women of the Bible"
+          days={21}
+          description="Leah's story is one of many. This 21-day study walks through the women whose lives shaped Scripture — what they faced, what God did, and what it means for you."
+        />
       </section>
     </BlogPostShell>
   );
