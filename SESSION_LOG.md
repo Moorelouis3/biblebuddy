@@ -1681,3 +1681,10 @@ Next up: 2 Kings 25
 ## 2026-08-14T23:59:13Z (hourly chapter notes run)
 Chapter: 2 Kings 25 | Duration: 13 min | Sections: 9 | Cards: 62 | Status: pass
 Next up: 1 Chronicles (verify against progress log / redo backlog first, 2 Kings now complete)
+
+## 2026-08-15T00:24:36Z (level2 upgrade run)
+Status: BLOCKED — could not reach https://life-buddy-production.up.railway.app/api/bible-level2/queue.
+Both curl (via agent proxy) and WebFetch returned EGRESS_BLOCKED / 403 policy denial for host
+life-buddy-production.up.railway.app. Per proxy README this is an org egress-policy denial, not
+retried or routed around. No chapter taken, nothing shipped. Needs environment network policy fix
+to allow this host before Level 2 runs can work again.
