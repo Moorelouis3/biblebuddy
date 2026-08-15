@@ -149,6 +149,12 @@
       "timestamp": "2026-08-12T15:57:35Z",
       "chaptersCompletedSoFarTonight": 79,
       "detail": "1 Kings 19 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 79 chapters shipped since the last checkpoint at 2026-08-09T08:58:34Z (Ruth 1-4, all of 1 Samuel, all of 2 Samuel, and 1 Kings 1-19), each in its own separate hourly run, with no usage limit or block hit anywhere in that span. This checkpoint is well overdue against the roughly-every-10-20-chapters guidance, noted honestly rather than guessed away -- no prior run in this long stretch logged an intermediate checkpoint."
+    },
+    {
+      "timestamp": "2026-08-15T06:02:29Z",
+      "type": "chapter_count_checkpoint",
+      "chaptersCompletedSoFarTonight": 34,
+      "detail": "1 Chronicles 6 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 34 chapters shipped since the last checkpoint at 2026-08-12T15:57:35Z (the rest of 1 Kings, all of 2 Kings, and 1 Chronicles 1-6), each in its own separate hourly run, with no usage limit or block hit anywhere in that span. This checkpoint is again overdue against the roughly-every-10-20-chapters guidance since no prior run in this stretch logged an intermediate checkpoint, noted honestly rather than guessed away."
     }
   ]
 }

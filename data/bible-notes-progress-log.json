@@ -21883,6 +21883,59 @@
           "at": "2026-08-15T04:58:05Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 6,
+      "startedAt": "2026-08-15T05:46:24Z",
+      "finishedAt": "2026-08-15T06:02:29Z",
+      "durationMinutes": 16,
+      "sections": 15,
+      "cards": 83,
+      "verses": 81,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog confirmed empty, normal forward progress after 1 Chronicles 5, first dedicated file for this chapter (previously rendered only through the old bulk FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS range). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (81 verses, the longest 1 Chronicles chapter yet handled under this log). 1 Chronicles 6 is the Levite genealogy chapter: the Aaronic high priest chain from Eleazar all the way to Jehozadak's Babylonian captivity (with a parenthetical marking which Azariah actually served in Solomon's temple, and Hilkiah's line pointing forward to his 2 Kings 22 discovery of the Book of the Law), a second restart of the Levite family record (Gershom/Kohath/Merari again, this time organizing by family unit rather than father-to-son succession), Korah's line surviving his Numbers 16 rebellion per Numbers 26:11 and resurfacing generations later as the ancestry of the chief musician Heman, the family trail confirming Heman as the prophet Samuel's own grandson (Shemuel/Samuel) including the Vashni/Joel textual crux in verse 28 (honestly hedged per spec section 9's allowed-hedge guidance as a likely copying gap rather than invented certainty), David's three-man temple music leadership (Heman center, Asaph right hand, Ethan/Jeduthun left hand) each drawn from a different one of Levi's three sons, the sharp Aaronic priest versus ordinary Levite division in verses 48-49, the priestly line retold a second time stopping deliberately at Ahimaaz instead of the exile to set up the land grants, and the closing Levite city lists (48 cities total matching Numbers 35:7 exactly) scattered across nearly every tribe's territory, including all six cities of refuge (Hebron, Shechem, Golan, Kedesh in Galilee, Bezer, Ramoth in Gilead) named piece by piece across the record. Chunked into 15 sections (1-3, 4-8, 9-15, 16-19, 20-24, 25-30, 31-38, 39-43, 44-49, 50-53, 54-60, 61-65, 66-70, 71-76, 77-81), all at or under the 8-verse enforceStudySectionVerseLimit render threshold, so no Part 1/Part 2 auto-split risk despite the chapter's length. Density about 1.02 cards/verse (81 verses, 83 cards), on the leaner end for this log's 1 Chronicles chapters (1-5 ranged 1.07-1.49) since this chapter is almost entirely 'begat' chains and city-suburb lists, the hardest chapter type per style spec section 12, so density leaned on teaching what each name or place pointed to (Phinehas's covenant, Zadok's future, Korah's reversal, the cities of refuge) rather than padding thin genealogy lines. scripts/check_bible_note_style.py found 7 problems on first pass (1 banned hedge word 'fairly', 3 bullet word-count overruns, and 3 bullet-count-mismatch false negatives caused by digit-keycap emoji (8⃣/5⃣/6⃣) the checker's regex does not recognize, the same known issue documented in the Numbers 6 redo entry above), fixed by rewording the hedge word, trimming the long bullets, and swapping every digit-keycap emoji for a plain numeric emoji, second run clean, 83 cards, zero problems. A manual section 13 eye check also confirmed no duplicate card titles, no forbidden opening phrases, no hyphens/em dashes/semicolons/contractions in the raw notes text, and no body lines over 20 words. Parser check passed exactly via the standalone module (15/15 sections, 83 cards, 81 verses of exact non-overlapping gap-free coverage) and again through getBibleReaderStudySections('1 chronicles', 6) after wiring (identical counts, text rendered verbatim, no Part 1/2 duplication). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies for 1 chronicles extended from chapters 1-5 to chapters 1-6, new applyPersonalFirstChroniclesSixStudySections() calling replaceStudySectionsForBookRange(\"1 chronicles\", 6, 6, FIRST_CHRONICLES_SIX_PERSONAL_SECTIONS) added directly after applyPersonalFirstChroniclesFiveStudySections(), overriding the old FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS batch content for chapter 6 only. Next forward-progress target is 1 Chronicles 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T05:46:24Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 6 (normal forward progress, redo backlog confirmed empty)",
+          "at": "2026-08-15T05:46:31Z"
+        },
+        {
+          "name": "KJV text fetched (1 Chronicles 6, 81 verses, aruljohn mirror)",
+          "at": "2026-08-15T05:46:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-15T05:47:10Z"
+        },
+        {
+          "name": "source file written: lib/firstChroniclesSixSource.ts (15 sections, 83 cards)",
+          "at": "2026-08-15T05:56:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 7 problems: 1 banned hedge word, 3 long bullets, 3 digit-keycap emoji bullet-count issues)",
+          "at": "2026-08-15T05:58:45Z"
+        },
+        {
+          "name": "parser check passed standalone (15/15 sections, 83 cards, 81/81 verses, text verbatim)",
+          "at": "2026-08-15T05:59:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, apply function, call site)",
+          "at": "2026-08-15T06:00:30Z"
+        },
+        {
+          "name": "wired parser check passed via getBibleReaderStudySections (15/15 sections, 83 cards)",
+          "at": "2026-08-15T06:01:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-15T06:02:01Z"
+        }
+      ]
     }
   ]
 }
