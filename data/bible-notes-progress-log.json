@@ -22307,6 +22307,59 @@
           "at": "2026-08-15T13:02:30Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 14,
+      "startedAt": "2026-08-15T13:46:02Z",
+      "finishedAt": "2026-08-15T13:56:24Z",
+      "durationMinutes": 10,
+      "sections": 4,
+      "cards": 32,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog confirmed empty, normal forward progress after 1 Chronicles 13, first dedicated file for this chapter (previously rendered only through the old bulk FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS range). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (17 verses). 1 Chronicles 14 covers Hiram of Tyre building David a palace and David perceiving it as confirmation his kingdom was established; David's growing family in Jerusalem (more wives despite the law's warning against kings multiplying wives, and the sons born there, including Nathan and Solomon, whose two separate lines both appear in Jesus's genealogy in Luke and Matthew, plus the Beeliada/Eliada name variant reflecting scribal caution around the word Baal); the first Philistine attack at the valley of Rephaim, where David enquires of God before acting (the opposite of Saul's pattern and of David's own ark mistake in chapter 13), wins at Baalperazim, and burns the abandoned Philistine idols per the law; and the second Philistine attack, where David enquires again rather than repeating the first plan, executes a flanking ambush cued by a sound in the mulberry trees, and routs the army from Gibeon to Gazer, closing on David's fame spreading to all nations. Chunked into 4 sections (1-2, 3-7, 8-12, 13-17). Density about 1.88 cards/verse (17 verses, 32 cards). scripts/check_bible_note_style.py found 1 problem on first pass (one bullet over the 8 word limit), fixed, second run clean, 32 cards, zero problems. Parser check passed exactly via getBibleReaderStudySections('1 chronicles', 14) (4/4 sections, 32 cards, 17 verses of exact non-overlapping gap-free coverage, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies for 1 chronicles extended from chapters 1-13 to chapters 1-14, new applyPersonalFirstChroniclesFourteenStudySections() calling replaceStudySectionsForBookRange(\"1 chronicles\", 14, 14, FIRST_CHRONICLES_FOURTEEN_PERSONAL_SECTIONS) added directly after applyPersonalFirstChroniclesThirteenStudySections(), overriding the old bulk FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS content for chapter 14 only. Next forward-progress target is 1 Chronicles 15.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-15T13:46:31Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 14 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-15T13:46:33Z"
+        },
+        {
+          "name": "KJV text fetched (1 Chronicles 14, 17 verses, aruljohn mirror)",
+          "at": "2026-08-15T13:46:47Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-15T13:46:52Z"
+        },
+        {
+          "name": "source file written: lib/firstChroniclesFourteenSource.ts",
+          "at": "2026-08-15T13:54:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 passes)",
+          "at": "2026-08-15T13:54:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalFirstChroniclesFourteenStudySections)",
+          "at": "2026-08-15T13:54:50Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 32 cards, text verbatim)",
+          "at": "2026-08-15T13:55:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-15T13:55:30Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-15T13:56:24Z"
+        }
+      ]
     }
   ]
 }
