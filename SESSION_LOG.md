@@ -1736,3 +1736,6 @@ Next up: 1 Chronicles 12
 ## 2026-08-15T12:01:05Z (hourly chapter notes run)
 Chapter: 1 Chronicles 12 | Duration: 14 min | Sections: 7 | Cards: 42 | Status: pass
 Next up: 1 Chronicles 13
+
+## 2026-08-15T12:26:00Z (level2 upgrade run)
+level2 run: BLOCKED — egress proxy denies life-buddy-production.up.railway.app (403 on curl CONNECT and WebFetch alike). Could not reach queue endpoint at all. No chapter taken, no files touched, no push. Flagged to Marcus.
