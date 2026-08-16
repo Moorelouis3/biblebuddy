@@ -1,36 +1,57 @@
-# Daily Report - 2026-08-15T16:10:00Z
+# Daily Report - 2026-08-16T08:15:00Z
 
 ## Latest Conversations
-Since the last report (2026-08-15 08:14 UTC):
+Since the last report (2026-08-15 16:10 UTC):
 
 1. **Bible chapter notes kept running hourly, nonstop.** 1 Chronicles
-   9-16 were all written and shipped (dedicated per-chapter files
-   replacing the old generic bulk placeholder content). Next up is
-   1 Chronicles 17.
-2. **Level 2 upgrade agent stayed fully blocked.** The 2026-08-15T12:26
-   run hit the same 403 egress denial to
+   23-29 shipped, finishing 1 Chronicles (29/29 complete), then 2
+   Chronicles 1-2 shipped. Next up is 2 Chronicles 3.
+2. **Free platform migration went live.** The paywall-removal work
+   (credits, is_paid locks, devotional drip all opened) was merged
+   into main and deployed. A real deploy bug was caught and fixed
+   this morning: merging the tagged release created an untagged merge
+   commit, so Vercel silently skipped the rebuild — code was on main
+   but the old paid bundle was still serving. A fresh `[deploy]`
+   commit at 07:22 UTC forced the real rebuild.
+3. **New first-login flow shipped.** The old 10-step onboarding was
+   replaced with a single "how would you like to read the Bible?"
+   chooser (devotional / Bible in One Year / just the Bible), wired
+   for both guests and email signups.
+4. **Guest gate added.** Guests trying to comment, like, or post now
+   see an explanation ("Only Bible Buddy members can comment") and a
+   create-account prompt instead of a silent database rejection.
+   Backed by a new anonymous-write-block migration across the last
+   several community tables.
+5. **Blog:** "How to Spend 1 Hour With God" published 2026-08-15
+   22:13 UTC. 25 articles remain in the queue.
+6. **Level 2 upgrade agent stayed fully blocked.** The 2026-08-16
+   00:24 run hit the same 403 egress denial to
    `life-buddy-production.up.railway.app` as every run since
-   2026-08-08 — 8 days straight now with no fix landed.
-3. No other project work (no admin/feature changes) happened today —
-   this was a pure chapter-notes + level2-attempt day.
+   2026-08-08 — 9 days straight now with no fix landed.
 
 ## Unanswered Questions
-1. **Level 2 upgrade queue access** — still needs an admin to add
+1. **Have Louis's three manual activation steps for the free-platform
+   release actually happened yet?** Enable Supabase anonymous
+   sign-ins, run `BLOCK_ANONYMOUS_COMMUNITY_WRITES.sql`, and cancel
+   the 16 active Stripe subscriptions. Nothing in git history confirms
+   these — until they're done, guest CTAs (landing page, deep links)
+   fall back to the signup form instead of starting a guest session.
+2. **Level 2 upgrade queue access** — still needs an admin to add
    `life-buddy-production.up.railway.app` to this environment's egress
    allowlist. Unfixable from inside the repo; blocked every scheduled
-   run for over a week now.
-2. **Louis should read "Can You Lose Your Salvation? What the Bible
+   run for 9 days now.
+3. **Louis should read "Can You Lose Your Salvation? What the Bible
    Says"** (published 2026-08-14) himself — it touches contested
    doctrine (eternal security vs. conditional security) and shipped
    unreviewed, per the standing flag in `MARCUS_HANDOFF.md`.
 
 ## Missed Things
-1. Root `bible-notes-progress.json` (repo root file) is still frozen at
-   Genesis 50/Exodus 35, last touched 2026-07-27 — nearly three weeks
+1. Root `bible-notes-progress.json` (repo root file) is still frozen
+   at Genesis 50/Exodus 35, last touched 2026-07-27 — three weeks
    stale. The canonical, current source is
    `data/bible-notes-progress-log.json`.
 2. Level 2 upgrade queue processing has been blocked every single
-   scheduled run since 2026-08-08 (8 consecutive days) with no
+   scheduled run since 2026-08-08 (9 consecutive days) with no
    environment fix yet, despite repeated flags in prior reports and
    `MARCUS_HANDOFF.md`.
 
@@ -43,29 +64,35 @@ None noticed this run.
   change, not a code fix).
 - Reconcile or retire the stale root `bible-notes-progress.json` in
   favor of `data/bible-notes-progress-log.json`.
-- Continue forward chapter-note progress from 1 Chronicles 17 onward.
+- Louis's three manual steps to fully activate the free-platform
+  release: enable Supabase anonymous sign-ins, run
+  `BLOCK_ANONYMOUS_COMMUNITY_WRITES.sql`, cancel the 16 Stripe
+  subscriptions.
+- Extend the guest gate to DM send and buddy requests (still fail
+  silently for guests) and the blog article like bar (not gated yet).
+- Continue forward chapter-note progress from 2 Chronicles 3 onward.
 
 ## Current Jobs / Current Build
 Chapter-notes pipeline is running hourly on genuine forward progress;
 the style-redo backlog (`data/bible-notes-style-redo-remaining.json`)
 is confirmed empty.
 
-Per `data/bible-notes-progress-log.json` (canonical source, 431 logged
-entries, 325 unique chapters + 40 pre-existing gold-standard Genesis
-chapters):
+Per `data/bible-notes-progress-log.json` (canonical source, 442 logged
+entries):
 - **Genesis, Exodus, Leviticus, Numbers, Deuteronomy, Joshua, Judges,
-  Ruth, 1 Samuel, 2 Samuel, 1 Kings, 2 Kings — all fully complete.**
-- **1 Chronicles: 16/29** — next up 1 Chronicles 17.
-- Total chapters with real notes so far: **365 / 1,189 goal (~30.7%)**.
+  Ruth, 1 Samuel, 2 Samuel, 1 Kings, 2 Kings, 1 Chronicles — all fully
+  complete.**
+- **2 Chronicles: 2/36** — next up 2 Chronicles 3.
+- Total chapters with real notes so far: **369 / 1,189 goal (~31.0%)**.
 
 Root `bible-notes-progress.json` (stale, do not use for progress
 tracking): still stuck at Genesis 50/50 + Exodus 35/40, last real
 update 2026-07-27.
 
-Blog writer: 26 articles remaining in the queue as of the last run
-(2026-08-14 22:19 UTC, no new blog run since).
+Blog writer: 25 articles remaining in the queue as of the last run
+(2026-08-15 22:13 UTC).
 
 **Deploy note:** this report's push carries `[deploy]` per the
 mandatory twice-daily rule. The last `[deploy]`-tagged commit before
-this one was the daily report at ~08:14 UTC today, so this build also
-publishes 1 Chronicles 9-16 written since then.
+this one was at ~08:01 UTC today (the guest-gate release), so this
+build mainly re-confirms that state and publishes 2 Chronicles 1-2.
