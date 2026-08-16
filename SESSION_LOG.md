@@ -1871,3 +1871,17 @@ migration still unrun. Verified with placeholder credentials only, so
 no real data path (guest creation, devotional lookup) has been exercised
 end to end.
 Next: Louis enables anon auth + runs migration, then deploy.
+
+## 2026-08-15 (night, part 6)
+Time spent: ~1 session
+Done: Tagged the free-platform release with [deploy] and pushed to the
+designated branch. Added docs/free-platform-release-notes.md with the
+before/after, the revert flag, the three manual steps and the two gates
+that nearly shipped.
+Still open: this is on claude/bible-buddy-free-audit-5tbtau, not main.
+Vercel builds production from main, so this push produces a preview
+build only - it does NOT make the change live for users. Merging to
+main is Louis's call and has not been done.
+Next: Louis merges to main (or tells me to), enables Supabase anonymous
+sign-ins, runs BLOCK_ANONYMOUS_COMMUNITY_WRITES.sql, and cancels the 16
+Stripe subscriptions.
