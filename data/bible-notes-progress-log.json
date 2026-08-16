@@ -23020,6 +23020,63 @@
           "at": "2026-08-16T02:58:52Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 27,
+      "startedAt": "2026-08-16T03:46:53Z",
+      "finishedAt": "2026-08-16T03:58:31Z",
+      "durationMinutes": 12,
+      "sections": 7,
+      "cards": 35,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog confirmed empty (data/bible-notes-style-redo-remaining.json remaining array is []), normal forward progress after 1 Chronicles 26, first dedicated file for this chapter. Session started with local main detached and behind a stale cached origin/main ref; git fetch origin main confirmed origin/main already matched the detached HEAD exactly (no lost work), so git checkout main plus git reset --hard origin/main reattached the branch cleanly. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (34 verses). 1 Chronicles 27 is David's final administrative roster: the twelve monthly military divisions of twenty four thousand men each (Jashobeam of chapter eleven leading month one, Benaiah son of Jehoiada's ambiguous \"chief priest\" title clarified as a military rank rather than a temple role, Asahel's division still bearing his name years after his death in 2 Samuel 2 with his son Zebadiah succeeding him, and callbacks tying several captains back to the mighty men lists in chapter eleven and the giant killing in chapter twenty), the twelve tribal civil rulers (Reuben and Simeon kept in Jacob's birth order, a separate Levite and Aaronite representative, David's own brother Elihu likely representing Judah, and the split Manasseh tribe needing two rulers on both sides of the Jordan, closing on the honest observation that Gad and Asher are unexplainably missing from the list), the callback to the census and plague of chapter twenty one explaining why men under twenty were left uncounted and why Joab's tally was deliberately excluded from the official royal record, the specialized stewards managing the king's treasuries, storehouses, farmland, vineyards, olive groves, herds, and camels (including Obil the Ishmaelite, tied back to the camel riding Ishmaelite traders of Genesis thirty seven), and closing on David's inner circle of counselors, foreshadowing Ahithophel's later betrayal and Hushai's later loyalty during Absalom's rebellion. Chunked into 7 sections (1-3, 4-8, 9-15, 16-22, 23-24, 25-31, 32-34), all within the app's 8 verse auto-split limit, no restructuring needed. Density about 1.03 cards/verse (34 verses, 35 cards), on the lighter end deliberately since this is a repetitive administrative/genealogy chapter per the style spec's section 12 guidance (twelve near identical \"captain for the month, in his course were twenty and four thousand\" verses do not support 2 cards/verse without padding) rather than a narrative pace. scripts/check_bible_note_style.py found zero problems on the first pass, 35 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, no hyphens/em dashes/semicolons/contractions anywhere in the file, no duplicate card titles despite the repetitive captain list format, and every card title an exact lifted KJV phrase (the KJV's own opening word \"Furthermore\" in verse sixteen was deliberately dropped from its card title since it collides with the checker's banned filler word list). Parser check passed exactly via getBibleReaderStudySections('1 chronicles', 27) (7/7 sections, 35 cards, 34 verses of exact non overlapping gap free coverage, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies for 1 chronicles extended from chapters 1-26 to chapters 1-27, new applyPersonalFirstChroniclesTwentySevenStudySections() calling replaceStudySectionsForBookRange('1 chronicles', 27, 27, FIRST_CHRONICLES_TWENTY_SEVEN_PERSONAL_SECTIONS) added directly after applyPersonalFirstChroniclesTwentySixStudySections(), overriding the old bulk FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS content for chapter 27 only. Next forward-progress target is 1 Chronicles 28.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T03:47:24Z"
+        },
+        {
+          "name": "local git ref synced (fetch confirmed origin/main matched detached HEAD, no lost work)",
+          "at": "2026-08-16T03:47:24Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 27 (redo backlog empty, normal forward progress)",
+          "at": "2026-08-16T03:53:00Z"
+        },
+        {
+          "name": "KJV text fetched (1 Chronicles 27, 34 verses, aruljohn mirror)",
+          "at": "2026-08-16T03:53:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-08-16T03:54:30Z"
+        },
+        {
+          "name": "source file written: lib/firstChroniclesTwentySevenSource.ts",
+          "at": "2026-08-16T03:55:43Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, first pass, 35 cards, zero problems)",
+          "at": "2026-08-16T03:55:43Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-16T03:55:55Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 35 cards, 34 verses, text verbatim)",
+          "at": "2026-08-16T03:55:55Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-16T03:57:41Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-16T03:58:31Z"
+        }
+      ]
     }
   ]
 }
