@@ -2164,3 +2164,28 @@ Chapter: Genesis 39 | Cards: 43 | Status: shipped + reported
 ## 2026-08-16T12:57:26Z (hourly chapter notes run)
 Chapter: 2 Chronicles 7 | Duration: 11 min | Sections: 6 | Cards: 42 | Status: pass
 Next up: 2 Chronicles 8
+
+## 2026-08-16 (dashboard pass 6: no freestanding pages)
+Done: Louis was right that pass 5 fixed the wrong thing - narrowing the
+standalone devotional page was cosmetic. The page should not exist. Everything
+in the app happens inside the shell, with the top bar and the bottom menu.
+Root cause of the earlier failed attempt: openPlansPage() calls
+clearBibleYearViews(), which DELETES the view param. So linking to
+?view=bible_studies set a param that the very function being called then wiped,
+the effect re-ran with no view, and it fell back to Home. openPlansPage now
+stamps the param after clearing, so the Devotionals tab is linkable and
+survives a reload.
+/devotionals, /plans, /bible-studies and /devotionals/<id> now redirect into
+the Devotionals tab. The route components render null while redirecting rather
+than flashing a freestanding page. ?study=<id> opens that devotional inside the
+tab. Nothing deleted - the same component still renders embedded, as before.
+Verified: /devotionals lands on slide 4 with 6 bottom-menu items and covers at
+the embedded size; /devotionals/<uuid> opens The Wisdom of Proverbs inside the
+app on the same tab.
+Still open: the migration ran (Louis ran it), so "Just the Bible" should save
+now - NOT yet verified end to end.
+Next, and the current ask: the devotional middle should mirror Bible in One
+Year exactly - a Day 1/Day 2 map with days locked until unlocked, then per day
+an audio player (OpenAI TTS reading that day's overview, same approach as the
+chapter TTS), then that chapter's study notes, then that chapter's trivia, then
+that day's discussion. All on the dashboard.
