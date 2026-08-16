@@ -12576,9 +12576,87 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         </div>
 
+        <div className="mt-4">
+          <button
+            type="button"
+            onClick={() => void completeDevotionalDay(day)}
+            className={`inline-flex w-full items-center justify-center gap-2 rounded-[18px] px-5 py-3.5 text-[15px] font-black shadow-[0_18px_38px_rgba(47,127,232,0.24)] transition ${
+              readingComplete
+                ? "border border-emerald-300 bg-emerald-50 text-emerald-700"
+                : "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-105"
+            }`}
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="m5 12 4 4L19 6" />
+            </svg>
+            {readingComplete
+              ? nextDay
+                ? `Continue to Day ${nextDay.day_number}`
+                : "Day Completed"
+              : "Mark as Complete"}
+          </button>
+        </div>
+
         {renderDevotionalSupportCards(day)}
       </article>
     );
+  }
+
+  /**
+   * Finish a devotional day and move to the next one.
+   *
+   * Same behaviour as Bible in One Year: completing the day unlocks and opens
+   * the next one. No panel, no popup, no confirmation - Day 1 leads to Day 2.
+   */
+  async function completeDevotionalDay(day: CurrentStudyChapter) {
+    if (!userId || !currentDevotionalId) return;
+
+    const nextDay = currentStudyChapters.find((item) => item.day_number === day.day_number + 1) || null;
+    const alreadyComplete = Boolean(dashboardTaskSource.find((task) => task.kind === "reading")?.done);
+
+    // Already done - this is the "Continue to Day N" press.
+    if (alreadyComplete && nextDay?.bible_reading_book && nextDay.bible_reading_chapter) {
+      void loadEmbeddedBibleStudyChapter({
+        devotionalId: currentDevotionalId,
+        devotionalTitle: currentDevotionalTitle || "Your devotional",
+        dayNumber: nextDay.day_number,
+        book: String(nextDay.bible_reading_book),
+        chapter: Number(nextDay.bible_reading_chapter),
+      });
+      return;
+    }
+
+    try {
+      await supabase.from("devotional_progress").upsert(
+        {
+          user_id: userId,
+          devotional_id: currentDevotionalId,
+          day_number: day.day_number,
+          is_completed: true,
+          reading_completed: true,
+          completed_at: new Date().toISOString(),
+        },
+        { onConflict: "user_id,devotional_id,day_number" },
+      );
+
+      if (day.bible_reading_book && day.bible_reading_chapter) {
+        await markChapterDone(userId, String(day.bible_reading_book), Number(day.bible_reading_chapter));
+      }
+
+      if (nextDay?.bible_reading_book && nextDay.bible_reading_chapter) {
+        void loadEmbeddedBibleStudyChapter({
+          devotionalId: currentDevotionalId,
+          devotionalTitle: currentDevotionalTitle || "Your devotional",
+          dayNumber: nextDay.day_number,
+          book: String(nextDay.bible_reading_book),
+          chapter: Number(nextDay.bible_reading_chapter),
+        });
+      } else {
+        onDevotionalChanged();
+      }
+    } catch (error) {
+      console.error("[DASHBOARD] Could not complete devotional day:", error);
+    }
   }
 
   /**
