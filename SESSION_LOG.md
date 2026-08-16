@@ -2127,3 +2127,34 @@ stays dormant. I could not apply it - no DB or Supabase dashboard access from
 this session. This is the one blocker.
 Next: run that migration, then confirm the Bible middle on a real account.
 Devotional audio is still content work, not shell work.
+
+## 2026-08-16 (dashboard pass 5: give the dashboard real content)
+Done: Louis pushed back hard, correctly - the dashboard had nothing in it and
+there were effectively three devotional pages. Both were real.
+1. The dashboard was fed a hardcoded constant. BibleYearJourneyDashboard
+   passed checklistData={bibleYearChecklistData}, a literal with tasks: [].
+   That is why it showed "Choose Your Bible Study", "Your Chapter" and 0/5 -
+   there was no devotional data reaching it at all. It now calls
+   fetchLouisDailyChecklistData (the same function the daily-tasks modal and
+   the devotional detail page use) whenever the mode is not bible_year. Bible
+   in One Year still gets the old placeholder and builds its own tasks, so it
+   is untouched. The dashboard now shows the real devotional, day and tasks.
+2. The three devotional pages were one component all along.
+   /devotionals, /plans and /bible-studies all render app/devotionals/page,
+   and the bottom-menu tab renders the same component embedded. Standalone it
+   stretched to max-w-6xl, embedded it inherited the dashboard's max-w-3xl -
+   which is the whole reason it looked huge and wrong on a laptop. Standalone
+   is now max-w-3xl too, so it is one page wherever you reach it from. Cover
+   art went from ballooning to 206px at a 1280 viewport.
+   Tried routing /start into the dashboard tab first via ?view=bible_studies;
+   the router kept stripping the param, and fixing the width was simpler and
+   lower risk, so that attempt was reverted rather than left as dead code.
+3. Fixed visible mojibake on the dashboard - the book emoji and five chevrons
+   were rendering as "Ã°Å¸â€œâ€“" and "Ã¢â‚¬Âº". The file has a lot more of
+   this corruption; only the ones on the dashboard home were fixed.
+Verified: dashboard shows "DAY 1 / The Tempting of Jesus / 1 John 2" with the
+real task list and time estimates, emoji rendering correctly.
+Still open: FIX_PREFERRED_STUDY_MODE_ALLOW_BIBLE.sql still not run, so "Just
+the Bible" still cannot save and the Bible middle stays dormant. Unchanged
+blocker - no DB access from here.
+Next: run that migration. Then the remaining mojibake is worth a sweep.
