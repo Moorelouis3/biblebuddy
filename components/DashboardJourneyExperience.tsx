@@ -6009,7 +6009,7 @@ export default function DashboardJourneyExperience({
               className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#2f7fe8] px-5 py-3 text-sm font-black text-white shadow-sm transition hover:bg-[#256fd1]"
             >
               Open {card.title}
-              <span className="ml-2" aria-hidden="true">Ã¢â‚¬Âº</span>
+              <span className="ml-2" aria-hidden="true">{"›"}</span>
             </Link>
           </div>
         </div>
@@ -6686,7 +6686,7 @@ export default function DashboardJourneyExperience({
                 {currentStudyCover ? (
                   <img src={currentStudyCover} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain" />
                 ) : (
-                  <span className="grid h-full w-full place-items-center text-xl" aria-hidden="true">Ã°Å¸â€œâ€“</span>
+                  <span className="grid h-full w-full place-items-center text-xl" aria-hidden="true">{"📖"}</span>
                 )}
               </span>
               <span className="min-w-0 flex-1">
@@ -12827,7 +12827,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             </div>
           </div>
           {!isCardDisabled && !isActiveInlineTask ? (
-            <span className="mt-5 shrink-0 text-xl leading-none text-[var(--bb-text-muted,#9ca3af)]" aria-hidden="true">Ã¢â‚¬Âº</span>
+            <span className="mt-5 shrink-0 text-xl leading-none text-[var(--bb-text-muted,#9ca3af)]" aria-hidden="true">{"›"}</span>
           ) : null}
         </div>
         {isCelebrating ? (
@@ -16586,7 +16586,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <p className="truncate text-sm font-black text-gray-950">{activeChapterLabel}</p>
                   <p className="mt-0.5 text-xs font-semibold leading-5 text-gray-500">{studyProgressMotivation}</p>
                 </div>
-                <span className="text-xl text-gray-400" aria-hidden="true">Ã¢â‚¬Âº</span>
+                <span className="text-xl text-gray-400" aria-hidden="true">{"›"}</span>
               </div>
               {false ? (
                 <div className="hidden">
@@ -17060,7 +17060,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                         <div className="h-7 w-16 rounded-full bg-[#dfeafe]" />
                         <div className="h-3 w-16 rounded-full bg-[#edf1f7]" />
                       </div>
-                      <span className="text-xl leading-none text-gray-300" aria-hidden="true">Ã¢â‚¬Âº</span>
+                      <span className="text-xl leading-none text-gray-300" aria-hidden="true">{"›"}</span>
                     </div>
                   </div>
                 </div>
@@ -17339,7 +17339,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       </div>
                     </div>
                     {!isCardDisabled && !isActiveInlineTask ? (
-                      <span className="mt-5 shrink-0 text-xl leading-none text-gray-400" aria-hidden="true">Ã¢â‚¬Âº</span>
+                      <span className="mt-5 shrink-0 text-xl leading-none text-gray-400" aria-hidden="true">{"›"}</span>
                     ) : null}
                   </div>
                   {isCelebrating ? (

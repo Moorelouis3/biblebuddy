@@ -540,7 +540,13 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
 
   return (
     <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
-      <div className={`${embedded ? "px-0 py-0" : "px-4 py-5 md:py-8"} max-w-6xl mx-auto`}>
+      {/* One devotional page. This same component is the Devotionals tab in the
+          bottom menu and the /devotionals, /plans and /bible-studies routes.
+          Embedded it inherits the dashboard's max-w-3xl; standalone it used to
+          stretch to max-w-6xl, which is why the covers ballooned on a laptop
+          and it looked like a different page. Same width now, so it is one
+          page wherever you reach it from. */}
+      <div className={`${embedded ? "px-0 py-0 max-w-6xl" : "px-4 py-5 md:py-8 max-w-3xl"} mx-auto`}>
         <div className="bb-bible-studies-hero mb-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm md:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>

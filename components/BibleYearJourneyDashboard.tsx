@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import DashboardJourneyExperience from "./DashboardJourneyExperience";
 import { reconcileInstallPromptState } from "./HomeInstallBanner";
 import AppLoadingScreen from "./AppLoadingScreen";
-import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
+import { fetchLouisDailyChecklistData, type ChecklistData, type TaskState } from "./LouisDailyTasksModal";
+import { normalizeStudyMode } from "../lib/studyMode";
 import { supabase } from "../lib/supabaseClient";
 
 type DashboardProfile = {
@@ -82,6 +83,11 @@ export default function BibleYearJourneyDashboard() {
   const [userName, setUserName] = useState("Bible Buddy");
   const [profile, setProfile] = useState<DashboardProfile | null>(null);
   const [loading, setLoading] = useState(true);
+  // The real devotional checklist - the same data the devotional detail page
+  // shows. Bible in One Year builds its own tasks from the year plan, so it
+  // keeps using the empty placeholder below and is untouched by this.
+  const [devotionalChecklist, setDevotionalChecklist] = useState<ChecklistData | null>(null);
+  const [isLoadingDevotionalChecklist, setIsLoadingDevotionalChecklist] = useState(false);
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
 
   const loadDashboardUser = useCallback(async () => {
@@ -177,6 +183,36 @@ export default function BibleYearJourneyDashboard() {
     void loadDashboardUser();
   }, [loadDashboardUser]);
 
+  // Load the devotional the reader actually picked, so the dashboard shows
+  // their real day and its tasks instead of an empty "Choose Your Bible Study".
+  useEffect(() => {
+    const mode = normalizeStudyMode(profile?.preferred_study_mode);
+    if (!userId || !profile?.preferred_study_mode || mode === "bible_year") {
+      setDevotionalChecklist(null);
+      return;
+    }
+
+    let cancelled = false;
+    setIsLoadingDevotionalChecklist(true);
+
+    void (async () => {
+      try {
+        const today = new Date().toISOString().slice(0, 10);
+        const data = await fetchLouisDailyChecklistData(userId, profile.current_streak ?? 0, today);
+        if (!cancelled) setDevotionalChecklist(data);
+      } catch (error) {
+        console.error("[DASHBOARD] Could not load the devotional checklist:", error);
+        if (!cancelled) setDevotionalChecklist(null);
+      } finally {
+        if (!cancelled) setIsLoadingDevotionalChecklist(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, profile?.preferred_study_mode, profile?.current_streak]);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     window.dispatchEvent(
@@ -200,8 +236,8 @@ export default function BibleYearJourneyDashboard() {
           profile={profile}
           levelInfo={null}
           primaryRecommendation={null}
-          checklistData={bibleYearChecklistData}
-          isLoadingChecklist={false}
+          checklistData={devotionalChecklist ?? bibleYearChecklistData}
+          isLoadingChecklist={isLoadingDevotionalChecklist}
           dailyTaskTimeLeftLabel={null}
           membershipStatus={profile?.is_paid ? "pro" : "free"}
           daysRemaining={null}
