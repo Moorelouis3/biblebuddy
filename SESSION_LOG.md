@@ -2158,3 +2158,9 @@ Still open: FIX_PREFERRED_STUDY_MODE_ALLOW_BIBLE.sql still not run, so "Just
 the Bible" still cannot save and the Bible middle stays dormant. Unchanged
 blocker - no DB access from here.
 Next: run that migration. Then the remaining mojibake is worth a sweep.
+## 2026-08-16 (level2 upgrade run)
+Chapter: Genesis 39 | Cards: 43 | Status: shipped + reported
+
+## 2026-08-16T12:57:26Z (hourly chapter notes run)
+Chapter: 2 Chronicles 7 | Duration: 11 min | Sections: 6 | Cards: 42 | Status: pass
+Next up: 2 Chronicles 8
