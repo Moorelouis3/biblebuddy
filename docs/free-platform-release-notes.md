@@ -1,6 +1,15 @@
 # Bible Buddy is free — release notes
 
 **Released:** 2026-08-15
+**Production build triggered:** 2026-08-16
+
+> **Deploy gotcha, recorded so it does not happen again.** Vercel only builds
+> when the newest commit message contains `[deploy]`. The release commit had the
+> tag, but merging it into `main` produced an untagged merge commit, and two
+> untagged follow-up commits landed on top. Vercel therefore saw an untagged
+> head and skipped the build: the code was on `main` while production kept
+> serving the old bundle. **When merging a tagged release, the merge commit
+> itself needs `[deploy]` — or push a tagged commit afterwards.**
 **Branch:** `claude/bible-buddy-free-audit-5tbtau`
 **Revert:** set `NEXT_PUBLIC_CORE_STUDY_FREE=false` in Vercel and redeploy.
 No code revert needed.

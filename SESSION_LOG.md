@@ -1923,3 +1923,12 @@ Next up: 2 Chronicles 1
 ## 2026-08-16T06:55:30Z (hourly chapter notes run)
 Chapter: 2 Chronicles 1 | Duration: 9 min | Sections: 3 | Cards: 21 | Status: pass
 Next up: 2 Chronicles 2
+
+## 2026-08-16 (deploy fix)
+Done: Production had never actually rebuilt. The release commit carried
+[deploy], but merging into main created an untagged merge commit and two
+untagged SQL commits landed after it, so Vercel saw an untagged head and
+skipped the build - code on main, old bundle still live. Pushed a
+[deploy]-tagged commit to main to trigger the production build.
+Lesson recorded in the release notes: when merging a tagged release, the
+merge commit itself needs the tag.
