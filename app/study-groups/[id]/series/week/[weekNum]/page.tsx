@@ -5,7 +5,6 @@ import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import { supabase } from "@/lib/supabaseClient";
-import { useGuestGate } from "@/components/GuestAccountPrompt";
 import { getSeriesWeekLesson, SeriesWeekLesson, SeriesTriviaQuestion } from "@/lib/seriesContent";
 import { hasLazySeriesNotes, loadSeriesNotesContent, type SeriesNotesContent } from "@/lib/seriesNotes";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
@@ -1345,7 +1344,6 @@ function ReflectionSection({
   const [reflections, setReflections] = useState<ReflectionEntry[]>([]);
   const [loadingReflections, setLoadingReflections] = useState(true);
   const [reflectionError, setReflectionError] = useState<string | null>(null);
-  const { blockIfGuest, guestPrompt } = useGuestGate();
   const [replyingToId, setReplyingToId] = useState<string | null>(null);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editingText, setEditingText] = useState("");
@@ -1445,7 +1443,6 @@ function ReflectionSection({
   async function handleSubmit(parentId: string | null = null) {
     const content = (parentId ? replyText : text).trim();
     if (!content || submitting) return;
-    if (await blockIfGuest("post")) return;
     setSubmitting(true);
     setReflectionError(null);
     const { error } = await supabase.from("series_reflections").insert({
@@ -1670,7 +1667,6 @@ function ReflectionSection({
 
   return (
     <div>
-      {guestPrompt}
       <div className="bg-amber-50 border border-amber-100 rounded-xl px-4 py-3 mb-4">
         <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-1">This Week's Reflection</p>
         <p className="text-sm text-amber-900 leading-relaxed">{lesson.reflectionQuestion}</p>
