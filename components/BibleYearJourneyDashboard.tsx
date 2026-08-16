@@ -88,6 +88,8 @@ export default function BibleYearJourneyDashboard() {
   // keeps using the empty placeholder below and is untouched by this.
   const [devotionalChecklist, setDevotionalChecklist] = useState<ChecklistData | null>(null);
   const [isLoadingDevotionalChecklist, setIsLoadingDevotionalChecklist] = useState(false);
+  // Bumped whenever the current day changes, to force the checklist to refetch.
+  const [devotionalRefreshNonce, setDevotionalRefreshNonce] = useState(0);
   // Stable per-day key for the daily task cycle. Shared by the checklist fetch
   // and the dashboard, which needs it to remember the next chapter when you
   // press Continue.
@@ -218,7 +220,7 @@ export default function BibleYearJourneyDashboard() {
     return () => {
       cancelled = true;
     };
-  }, [userId, profile?.preferred_study_mode, profile?.current_streak]);
+  }, [userId, profile?.preferred_study_mode, profile?.current_streak, devotionalRefreshNonce]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -267,6 +269,11 @@ export default function BibleYearJourneyDashboard() {
           onDashboardPageChange={() => {}}
           onDevotionalChanged={() => {
             void loadDashboardUser();
+            // Reloading the profile is not enough: the checklist effect keys off
+            // the study mode and streak, which do not change when you move to
+            // the next day, so it never refetched and the dashboard stayed on
+            // the old day. This forces it.
+            setDevotionalRefreshNonce((value) => value + 1);
           }}
           isOwnerDashboard={isOwnerDashboard}
           bibleYearReport={null}

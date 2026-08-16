@@ -12410,8 +12410,9 @@ Before we understand redemption, we need to understand what God made humanity fo
                 const dayNumber = studyChapter.day_number;
                 const isCurrent = dayNumber === currentDayNumber;
                 const isComplete = dayNumber < currentDayNumber;
-                // Owner sees everything, same as the year plan.
-                const isLocked = !isOwnerDashboard && dayNumber > currentDayNumber;
+                // Future days are locked for everyone, owner included, so the
+                // map reads the way a reader actually sees it.
+                const isLocked = dayNumber > currentDayNumber;
                 const chapterLabel =
                   studyChapter.bible_reading_book && studyChapter.bible_reading_chapter
                     ? `${studyChapter.bible_reading_book} ${studyChapter.bible_reading_chapter}`
