@@ -5,7 +5,18 @@ import Link from "next/link";
 import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { supabase } from "../../../../lib/supabaseClient";
 import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters, isBookComplete } from "../../../../lib/readingProgress";
-import confetti from "canvas-confetti";
+import ChapterReaderSkeleton from "../../../../components/ChapterReaderSkeleton";
+
+/** Confetti is only needed on a celebration, so it is fetched on demand. */
+async function confetti(options: Record<string, unknown>) {
+  try {
+    const mod = await import("canvas-confetti");
+    (mod.default as (opts: Record<string, unknown>) => void)(options);
+  } catch {
+    /* a missing celebration is not worth breaking the page over */
+  }
+}
+
 import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../../../../lib/featuredCharacters";
 import { FeaturedCharacterModal } from "../../../../components/FeaturedCharacterModal";
 import { useFeaturedCharacters } from "../../../../hooks/useFeaturedCharacters";
@@ -23,7 +34,7 @@ import { triggerPoints } from "../../../../components/PointsPop";
 import { ensureBibleEntityLearned } from "../../../../lib/bibleEntityProgress";
 import { dispatchLouisMoment } from "../../../../lib/louisMoments";
 import CreditLimitModal from "../../../../components/CreditLimitModal";
-import CommentSection from "../../../../components/comments/CommentSection";
+const CommentSection = dynamic(() => import("../../../../components/comments/CommentSection"), { ssr: false });
 import { LEVEL_DEFINITIONS } from "../../../../lib/levelSystem";
 import {
   buildPersistedFeatureTours,
@@ -2264,15 +2275,9 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
   }, [gamesMenuOpen]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 py-8 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center py-20">
-            <p className="text-gray-600">Loading chapter...</p>
-          </div>
-        </div>
-      </div>
-    );
+    // Same skeleton the route's loading.tsx shows, so the handover from "page
+    // JavaScript arriving" to "chapter text arriving" is seamless.
+    return <ChapterReaderSkeleton />;
   }
 
   if (error) {
