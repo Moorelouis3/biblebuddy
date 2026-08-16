@@ -234,7 +234,7 @@ type VerseSegment = {
 };
 
 /**
- * Bring a revealed phrase card and the verse it belongs to onto the screen.
+ * Bring a revealed Insight Card and the verse it belongs to onto the screen.
  *
  * The verse is what the reader just tapped, so it is the anchor: it is placed
  * near the top of the view with the card opening underneath it. Positions are
@@ -311,7 +311,7 @@ function scrollPhraseCardIntoView(card: HTMLElement | null) {
   }, 60);
 }
 
-/** Stable identity for one phrase card, used as the open/closed key. */
+/** Stable identity for one Insight Card, used as the open/closed key. */
 function getGenesisOnePhraseKey(phrase: GenesisOnePhrase) {
   return `${phrase.verse}:${phrase.noteTitle}`;
 }
@@ -445,7 +445,7 @@ function dropPreviewEcho(paragraphs: string[], preview: string) {
   return start && start < paragraphs.length ? paragraphs.slice(start) : paragraphs;
 }
 
-function GenesisOneStudyCard({
+function GenesisOneInsightCard({
   phrase,
   colorIndex,
   icon,
@@ -556,7 +556,7 @@ function GenesisOneStudyCard({
             </div>
           ) : (
             <div className="animate-pulse space-y-2 pt-1" aria-live="polite">
-              <span className="sr-only">Loading this insight</span>
+              <span className="sr-only">Loading this Insight Card</span>
               <div className="h-3 w-11/12 rounded bg-black/10" />
               <div className="h-3 w-9/12 rounded bg-black/10" />
               <div className="h-3 w-10/12 rounded bg-black/10" />
@@ -1310,7 +1310,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [genesisOneNotesLoading, setGenesisOneNotesLoading] = useState(false);
   const genesisOneNotesLoadingRef = useRef(false);
   const [openGenesisOnePhrase, setOpenGenesisOnePhrase] = useState<string | null>(null);
-  // How far down the chapter the phrase cards have been mounted so far.
+  // How far down the chapter the Insight Cards have been mounted so far.
   const [genesisOneCardCeiling, setGenesisOneCardCeiling] = useState(6);
   const shareVerse = null as { number: number; text: string } | null;
   const shareContent = "";
@@ -1769,7 +1769,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
 
   /**
    * Study Mode shows the same paid notes the section boxes show, so opening a
-   * phrase card charges the section the same way opening its box does — once,
+   * Insight Card charges the section the same way opening its box does — once,
    * and not again if the reader already unlocked it.
    */
   async function ensureStudySectionUnlocked(studySection: BibleReaderStudySection) {
@@ -2038,7 +2038,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
                 ? "Click to view this note"
                 : "Click to add a note, change color, or remove this highlight"
               : opensPhraseCard
-                ? getPhraseDisplayTitle(underline!.phrase)
+                ? `Open the ${getPhraseDisplayTitle(underline!.phrase)} Insight Card`
                 : undefined
           }
           onClick={
@@ -2157,7 +2157,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
           const resolved = genesisOnePhraseNotes.get(phraseKey);
 
           return (
-            <GenesisOneStudyCard
+            <GenesisOneInsightCard
               key={phraseKey}
               phrase={phrase}
               colorIndex={colorIndex}

@@ -29,7 +29,7 @@ export type GenesisOnePhrase = {
   verse: number;
   /** Phrase title as written in the existing notes, used to find the full note. */
   noteTitle: string;
-  /** Emoji from the note, kept here so a card needs nothing else to render. */
+  /** Emoji from the note, kept here so an Insight Card needs nothing else to render. */
   icon: string;
   /** Exact KJV text in that verse to underline. Must match the verse exactly. */
   underline: string;
@@ -37,7 +37,7 @@ export type GenesisOnePhrase = {
   preview: string;
 };
 
-/** Pastel colours, rotated in order. Underline and card share a colour. */
+/** Pastel colours, rotated in order. Underline and Insight Card share a colour. */
 export const GENESIS_ONE_PHRASE_COLORS = [
   { key: "amber", underline: "#d9a441", cardBg: "#fdf6e6", cardBorder: "#f0dfb8" },
   { key: "green", underline: "#5aa06a", cardBg: "#eef7ef", cardBorder: "#cfe6d4" },
@@ -52,7 +52,7 @@ export function getGenesisOnePhraseColor(index: number) {
 }
 
 /**
- * Every phrase in Genesis 1 that has a note, in reading order.
+ * Every phrase in Genesis 1 that has an Insight Card, in reading order.
  *
  * `underline` is quoted from the KJV verse text exactly as it appears, so the
  * reader can find it without guessing.
@@ -670,7 +670,7 @@ export const GENESIS_ONE_PHRASES: GenesisOnePhrase[] = [
 ];
 
 /**
- * The card title, built from the verse's own words so it can never drift from
+ * The Insight Card title, built from the verse's own words so it can never drift from
  * the KJV.
  *
  * The notes were written with their own headings - "Formless And Empty" while
