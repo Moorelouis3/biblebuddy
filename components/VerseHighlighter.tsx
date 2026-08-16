@@ -79,7 +79,7 @@ function scrollStudyAccordionHeaderIntoView(element: HTMLElement | null) {
       }
 
       const top = element.getBoundingClientRect().top + window.scrollY - 12;
-      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
     });
   });
 }
@@ -244,8 +244,11 @@ type VerseSegment = {
 function scrollPhraseCardIntoView(card: HTMLElement | null) {
   if (!card || typeof window === "undefined") return;
 
-  window.requestAnimationFrame(() => {
-    window.requestAnimationFrame(() => {
+  // A timer, not requestAnimationFrame: rAF is paused whenever the tab is not
+  // visible, which left the card sitting off screen. The delay lets the card
+  // finish laying out before anything is measured.
+  window.setTimeout(() => {
+    {
       // The verse row is a sibling of the card's wrapper, not of the card, so
       // climb until a preceding .verse-line turns up.
       let node: HTMLElement | null = card;
@@ -257,22 +260,55 @@ function scrollPhraseCardIntoView(card: HTMLElement | null) {
       }
 
       const anchor = verseRow || card;
-      const container = getNearestScrollContainer(anchor);
       const anchorRect = anchor.getBoundingClientRect();
 
-      if (container) {
-        const containerRect = container.getBoundingClientRect();
-        const offset = Math.max(16, container.clientHeight * 0.18);
-        const top = container.scrollTop + (anchorRect.top - containerRect.top) - offset;
-        container.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      // In the dashboard the reader lives in an iframe that the parent sizes
+      // to full content height, so this document never scrolls and scrolling
+      // it does nothing. Ask the parent to scroll instead.
+      let inIframe = false;
+      try {
+        inIframe = window.self !== window.top;
+      } catch {
+        inIframe = true;
+      }
+
+      if (inIframe) {
+        const cardRect = card.getBoundingClientRect();
+        window.parent?.postMessage(
+          {
+            type: "bb-bible-reader-scroll-to",
+            top: Math.max(0, anchorRect.top + window.scrollY),
+            blockHeight: Math.ceil(cardRect.bottom - anchorRect.top),
+          },
+          window.location.origin,
+        );
         return;
       }
 
-      const offset = Math.max(16, window.innerHeight * 0.18);
-      const top = anchorRect.top + window.scrollY - offset;
-      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-    });
-  });
+      // html and body report as scrollable, but scrolling them directly does
+      // not move the viewport. Those cases have to go through window.
+      const nearest = getNearestScrollContainer(anchor);
+      const container =
+        nearest && nearest !== document.body && nearest !== document.documentElement ? nearest : null;
+      const cardRect = card.getBoundingClientRect();
+      const blockHeight = cardRect.bottom - anchorRect.top;
+
+      // Centre the verse and its card together when they fit, otherwise pin
+      // the verse near the top so the card runs down from it.
+      const spareFor = (viewportHeight: number) =>
+        Math.max(16, blockHeight < viewportHeight ? (viewportHeight - blockHeight) / 2 : viewportHeight * 0.12);
+
+      if (container) {
+        const containerRect = container.getBoundingClientRect();
+        const top = container.scrollTop + (anchorRect.top - containerRect.top) - spareFor(container.clientHeight);
+        container.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+        return;
+      }
+
+      const top = anchorRect.top + window.scrollY - spareFor(window.innerHeight);
+      window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
+    }
+  }, 60);
 }
 
 /** Stable identity for one phrase card, used as the open/closed key. */
@@ -429,12 +465,21 @@ function GenesisOneStudyCard({
   const color = getGenesisOnePhraseColor(colorIndex);
   const title = getPhraseDisplayTitle(phrase);
   const cardRef = useRef<HTMLDivElement>(null);
+  const scrolledForRef = useRef<string | null>(null);
 
   // A card summoned by tapping the verse can land half off screen, so bring it
   // and the verse above it into view. Only for the tap-to-open card; the
   // listed cards must not move the page around as they expand.
   useEffect(() => {
-    if (!onClose || !isOpen || typeof window === "undefined") return;
+    if (!onClose || !isOpen || typeof window === "undefined") {
+      if (!isOpen) scrolledForRef.current = null;
+      return;
+    }
+
+    // onClose is a fresh closure each render, so without this the effect would
+    // re-fire and keep yanking the page while the card is open.
+    if (scrolledForRef.current === phrase.noteTitle) return;
+    scrolledForRef.current = phrase.noteTitle;
 
     const node = cardRef.current;
     if (!node) return;

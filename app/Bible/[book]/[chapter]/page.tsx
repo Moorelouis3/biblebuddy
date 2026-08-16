@@ -287,11 +287,20 @@ export default function BibleChapterPage() {
     if (!isDashboardEmbed || typeof window === "undefined") return;
 
     const postHeight = () => {
-      const height = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.offsetHeight,
+      // Measure the content, not the document.
+      //
+      // The parent sizes this iframe to whatever height we report, and the
+      // app's root wrapper carries min-h-screen. Inside an iframe 100vh IS the
+      // iframe's height, so documentElement.scrollHeight could never fall
+      // below the height already set. It ratcheted up and never came back
+      // down, leaving a screen or more of dead space under the content once
+      // anything shrank, such as turning Study Mode off.
+      const contentRoot = document.querySelector("main") || document.body;
+      const contentBottom = contentRoot.getBoundingClientRect().bottom + window.scrollY;
+      const height = Math.ceil(
+        contentBottom > 0
+          ? contentBottom
+          : Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
       );
 
       window.parent?.postMessage(
@@ -3079,7 +3088,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                     type="button"
                     onClick={() => setGenesisOneTab(tab.id)}
                     aria-current={active ? "page" : undefined}
-                    className={`flex flex-1 items-center justify-center gap-1.5 border-b-2 px-2 py-3 text-sm font-black transition ${
+                    className={`flex min-w-0 flex-1 items-center justify-center gap-1 border-b-2 px-1 py-3 text-xs font-black transition sm:gap-1.5 sm:px-2 sm:text-sm ${
                       active
                         ? "border-sky-500 text-sky-600"
                         : "border-transparent text-slate-500 hover:text-slate-800"

@@ -2961,6 +2961,42 @@ export default function DashboardJourneyExperience({
     return () => window.removeEventListener("message", handleBibleReaderHeight);
   }, [dashboardBibleSelectedBook, dashboardBibleSelectedChapter]);
 
+  /**
+   * The reader iframe is sized to its full content, so it never scrolls
+   * itself. When it opens a phrase card it asks us to bring that spot into
+   * view, and we scroll the dashboard to the matching position.
+   */
+  useEffect(() => {
+    function handleBibleReaderScrollTo(event: MessageEvent) {
+      const payload = event.data;
+      if (!payload || payload.type !== "bb-bible-reader-scroll-to") return;
+
+      const innerTop = Number(payload.top);
+      if (!Number.isFinite(innerTop)) return;
+
+      const frame = document.querySelector<HTMLIFrameElement>(
+        'iframe[src*="dashboardEmbed=1"]',
+      );
+      if (!frame) return;
+
+      const frameTop = frame.getBoundingClientRect().top + window.scrollY;
+      const blockHeight = Number(payload.blockHeight);
+      // Leave the tapped verse a little clear of the top, and pull up further
+      // when the verse plus its card would otherwise run off the bottom.
+      const spare = Math.max(
+        16,
+        Number.isFinite(blockHeight) && blockHeight < window.innerHeight
+          ? (window.innerHeight - blockHeight) / 2
+          : window.innerHeight * 0.12,
+      );
+
+      window.scrollTo({ top: Math.max(0, frameTop + innerTop - spare), behavior: "smooth" });
+    }
+
+    window.addEventListener("message", handleBibleReaderScrollTo);
+    return () => window.removeEventListener("message", handleBibleReaderScrollTo);
+  }, []);
+
   useEffect(() => {
     function handleCommunityEmbedHeight(event: MessageEvent) {
       const payload = event.data;

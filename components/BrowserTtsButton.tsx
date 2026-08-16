@@ -399,10 +399,10 @@ export default function BrowserTtsButton({
     const playing = audioIsSpeaking && !audioIsPaused;
     const canSeek = canUseAudioSrc;
     const roundButton =
-      "grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40";
+      "grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 sm:h-10 sm:w-10";
 
     return (
-      <div className={`mb-4 flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-2.5 py-2 shadow-sm ${className}`}>
+      <div className={`mb-4 flex flex-wrap items-center gap-x-1.5 gap-y-2 rounded-2xl border border-slate-200 bg-white px-2 py-2 shadow-sm sm:gap-x-2 sm:px-2.5 ${className}`}>
         <button
           type="button"
           onClick={() => seekAudioBy(-10)}
@@ -475,13 +475,13 @@ export default function BrowserTtsButton({
         </div>
 
         {canUseAudioSrc ? (
-          <div className="flex shrink-0 items-center gap-1" aria-label="Playback speed">
+          <div className="ml-auto flex shrink-0 items-center gap-0.5 sm:gap-1" aria-label="Playback speed">
             {speedOptions.map((rate) => (
               <button
                 key={rate}
                 type="button"
                 onClick={() => changePlaybackRate(rate)}
-                className={`min-h-8 rounded-lg px-2 text-[11px] font-black transition ${
+                className={`min-h-8 rounded-lg px-1.5 text-[11px] font-black transition sm:px-2 ${
                   activePlaybackRate === rate
                     ? "bg-sky-500 text-white"
                     : "text-slate-500 hover:bg-slate-100"
