@@ -450,6 +450,7 @@ function GenesisOneStudyCard({
   colorIndex,
   icon,
   paragraphs,
+  loadingNote = false,
   isOpen,
   onToggle,
   onClose,
@@ -458,6 +459,7 @@ function GenesisOneStudyCard({
   colorIndex: number;
   icon: string;
   paragraphs: string[];
+  loadingNote?: boolean;
   isOpen: boolean;
   onToggle: () => void;
   onClose?: () => void;
@@ -488,7 +490,8 @@ function GenesisOneStudyCard({
   }, [isOpen, onClose, phrase.noteTitle]);
   // A phrase whose note has not been written yet still earns its underline and
   // its preview, but it does not pretend to open onto anything.
-  const hasNote = paragraphs.length > 0;
+  // Openable while the notes are still on their way, so a tap never feels dead.
+  const hasNote = paragraphs.length > 0 || loadingNote;
 
   const head = (
     <>
@@ -526,7 +529,7 @@ function GenesisOneStudyCard({
         <button
           type="button"
           onClick={onClose}
-          aria-label="Close this phrase"
+          aria-label="Close this Insight Card"
           className="absolute right-2 top-2 z-10 grid h-7 w-7 place-items-center rounded-full bg-white/70 text-base font-black leading-none text-slate-500 transition hover:bg-white hover:text-slate-800"
         >
           ×
@@ -547,9 +550,18 @@ function GenesisOneStudyCard({
 
       {hasNote && isOpen ? (
         <div className="px-3.5 pb-3.5 pl-[3.4rem]">
-          <div className="text-slate-700">
-            <ChapterNotesMarkdown compactMobile>{paragraphs.join("\n\n")}</ChapterNotesMarkdown>
-          </div>
+          {paragraphs.length ? (
+            <div className="text-slate-700">
+              <ChapterNotesMarkdown compactMobile>{paragraphs.join("\n\n")}</ChapterNotesMarkdown>
+            </div>
+          ) : (
+            <div className="animate-pulse space-y-2 pt-1" aria-live="polite">
+              <span className="sr-only">Loading this insight</span>
+              <div className="h-3 w-11/12 rounded bg-black/10" />
+              <div className="h-3 w-9/12 rounded bg-black/10" />
+              <div className="h-3 w-10/12 rounded bg-black/10" />
+            </div>
+          )}
         </div>
       ) : null}
     </div>
@@ -1292,7 +1304,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [studyCreditUnlockedSections, setStudyCreditUnlockedSections] = useState<Record<string, boolean>>({});
   const [backgroundStudySections, setBackgroundStudySections] = useState<BibleReaderStudySection[]>([]);
   const [studyNotesCreditPreview, setStudyNotesCreditPreview] = useState<CreditClientResult | null>(null);
-  const [genesisOneStudyModeOn, setGenesisOneStudyModeOn] = useState(true);
+  // Off by default: the chapter opens as plain Scripture with quiet
+  // underlines, and an Insight Card appears only when one is tapped.
+  const [genesisOneStudyModeOn, setGenesisOneStudyModeOn] = useState(false);
+  const [genesisOneNotesLoading, setGenesisOneNotesLoading] = useState(false);
+  const genesisOneNotesLoadingRef = useRef(false);
   const [openGenesisOnePhrase, setOpenGenesisOnePhrase] = useState<string | null>(null);
   // How far down the chapter the phrase cards have been mounted so far.
   const [genesisOneCardCeiling, setGenesisOneCardCeiling] = useState(6);
@@ -1349,6 +1365,18 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
 
   useEffect(() => {
     if (studySections || plainTextMode || hideStudySections) {
+      setBackgroundStudySections([]);
+      return;
+    }
+
+    // Genesis 1 does not preload the notes at all.
+    //
+    // lib/bibleReaderStudyNotes pulls in 482 note files, about 650,000 lines
+    // and 35 MB of source, for every chapter in the Bible. The reader only
+    // needs it to fill in the body of a card that has actually been opened,
+    // and the card's icon, title and preview all come from the small phrase
+    // map. So it is fetched on the first tap instead of on arrival.
+    if (isGenesisOneStudyModeChapter(book, chapter)) {
       setBackgroundStudySections([]);
       return;
     }
@@ -1775,10 +1803,33 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     return true;
   }
 
+  /** Fetch the notes the first time an Insight Card is opened. */
+  async function ensureGenesisOneNotesLoaded() {
+    if (resolvedStudySections.length || genesisOneNotesLoadingRef.current) return;
+    genesisOneNotesLoadingRef.current = true;
+    setGenesisOneNotesLoading(true);
+
+    try {
+      const module = await import("../lib/bibleReaderStudyNotes");
+      setBackgroundStudySections(module.getBibleReaderStudySections(book, chapter));
+    } catch (error) {
+      console.warn("[BIBLE_READER_NOTES] Could not load study sections:", error);
+      genesisOneNotesLoadingRef.current = false;
+    } finally {
+      setGenesisOneNotesLoading(false);
+    }
+  }
+
   async function handleToggleGenesisOnePhrase(phrase: GenesisOnePhrase, phraseKey: string) {
     if (openGenesisOnePhrase === phraseKey) {
       setOpenGenesisOnePhrase(null);
       return;
+    }
+
+    // Open straight away; the body drops in when the notes arrive.
+    if (genesisOneStudyAvailable) {
+      setOpenGenesisOnePhrase(phraseKey);
+      void ensureGenesisOneNotesLoaded();
     }
 
     const { section: studySection, entries } = resolveGenesisOnePhraseNote(phrase);
@@ -2110,8 +2161,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
               key={phraseKey}
               phrase={phrase}
               colorIndex={colorIndex}
-              icon={resolved?.icon || getNestedStudyItemIcon("key-phrases", getPhraseDisplayTitle(phrase))}
+              // Straight from the phrase map, so a card is complete without
+              // the notes having loaded.
+              icon={phrase.icon || resolved?.icon || getNestedStudyItemIcon("key-phrases", getPhraseDisplayTitle(phrase))}
               paragraphs={resolved?.paragraphs || []}
+              loadingNote={genesisOneNotesLoading && !resolved}
               isOpen={openGenesisOnePhrase === phraseKey}
               onToggle={() => {
                 void handleToggleGenesisOnePhrase(phrase, phraseKey);
@@ -2141,8 +2195,8 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
             <span className="block text-[0.95rem] font-black leading-5 text-slate-900">Study Mode</span>
             <span className="mt-0.5 block text-xs font-semibold leading-5 text-slate-500">
               {genesisOneStudyModeOn
-                ? "Every phrase card is listed under its verse."
-                : "Tap any underlined phrase to open its card."}
+                ? "Every Insight Card is listed under its verse."
+                : "Tap any underlined phrase below to open its Insight Card."}
             </span>
           </span>
           <button
