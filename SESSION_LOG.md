@@ -2127,3 +2127,6 @@ stays dormant. I could not apply it - no DB or Supabase dashboard access from
 this session. This is the one blocker.
 Next: run that migration, then confirm the Bible middle on a real account.
 Devotional audio is still content work, not shell work.
+
+## 2026-08-16 (level2 upgrade run)
+Chapter: Genesis 39 | Cards: 43 | Status: shipped + reported
