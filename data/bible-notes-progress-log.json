@@ -22910,6 +22910,59 @@
           "at": "2026-08-16T01:02:59Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 25,
+      "startedAt": "2026-08-16T01:46:28Z",
+      "finishedAt": "2026-08-16T01:57:10Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 26,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog confirmed empty, normal forward progress after 1 Chronicles 24, first dedicated file for this chapter. Session started with local main detached from a stale cached origin/main ref (23 commits behind, the same recurring environment issue seen in many prior runs); git checkout -B main origin/main briefly looked like it discarded that unpushed work, but git fetch origin main confirmed origin/main on GitHub already had all 23 commits (stale local ref, not real data loss), and local main was restored to match origin exactly with nothing lost. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (31 verses). 1 Chronicles 25 organizes David's temple musicians (the families of Asaph, Heman, and Jeduthun) into 24 service courses by the same fair lot process chapter 24 used for the priests: military captains of the host put in charge of organizing worship, prophesy defined as Spirit led worship through music rather than prediction, a likely lost sixth name in verse 3 (the Greek Old Testament supplies Shimei), the tradition that the last nine of Heman's fourteen sons form a Hebrew prayer sentence (have mercy upon me LORD, have mercy), lift up the horn explained as an idiom for strength, the small as the great, the teacher as the scholar fairness line, two spelling variant names (Izri/Zeri, Jesharelah/Asarelah) matched back to verses 2-3, two same name different man notes (Shimei, Shubael) distinguishing these musicians from unrelated same named figures elsewhere in scripture, and a closing card on the final lot (Romamtiezer, one of Heman's own sons) completing the count of 24 and closing the loop back to the chapter's opening military framing. Chunked into 6 sections (1-3, 4-7, 8, 9-15, 16-23, 24-31). Density about 0.84 cards/verse (31 verses, 26 cards), matching chapter 24's precedent for this same lot casting list structure rather than forcing 2 cards/verse onto 22 near identical he his sons and his brethren were twelve refrain verses. scripts/check_bible_note_style.py found 1 problem on first pass (one bullet over the 8 word limit), fixed, second run clean, 26 cards, zero problems. A manual eye check confirmed no forbidden filler phrases and every card title an exact lifted KJV phrase. Parser check passed exactly via getBibleReaderStudySections('1 chronicles', 25) (6/6 sections, 26 cards, 31 verses of exact non overlapping gap free coverage, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies for 1 chronicles extended from chapters 1-24 to chapters 1-25, new applyPersonalFirstChroniclesTwentyFiveStudySections() calling replaceStudySectionsForBookRange('1 chronicles', 25, 25, FIRST_CHRONICLES_TWENTY_FIVE_PERSONAL_SECTIONS) added directly after applyPersonalFirstChroniclesTwentyFourStudySections(), overriding the old bulk FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS content for chapter 25 only. Next forward-progress target is 1 Chronicles 26.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T01:46:28Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 25 (redo backlog empty, normal forward progress)",
+          "at": "2026-08-16T01:47:48Z"
+        },
+        {
+          "name": "KJV text fetched (1 Chronicles 25, 31 verses, aruljohn mirror)",
+          "at": "2026-08-16T01:47:48Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-16T01:47:48Z"
+        },
+        {
+          "name": "source file written: lib/firstChroniclesTwentyFiveSource.ts",
+          "at": "2026-08-16T01:54:18Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 fix pass)",
+          "at": "2026-08-16T01:54:18Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-16T01:54:18Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 26 cards, 31 verses, text verbatim)",
+          "at": "2026-08-16T01:54:18Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-16T01:55:04Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-16T01:57:10Z"
+        }
+      ]
     }
   ]
 }

@@ -1899,3 +1899,7 @@ Stripe subscriptions.
 ## 2026-08-16T01:03:14Z (hourly chapter notes run)
 Chapter: 1 Chronicles 24 | Duration: 16 min | Sections: 5 | Cards: 28 | Status: pass
 Next up: 1 Chronicles 25
+
+## 2026-08-16T01:58:05Z (hourly chapter notes run)
+Chapter: 1 Chronicles 25 | Duration: 11 min | Sections: 6 | Cards: 26 | Status: pass
+Next up: 1 Chronicles 26
