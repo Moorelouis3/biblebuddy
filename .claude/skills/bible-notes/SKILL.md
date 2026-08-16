@@ -30,22 +30,35 @@ titles — it cannot judge whether a note actually teaches something instead
 of reciting the verse, so also run the checklist in the spec's section 13
 by eye).
 
-### Which chapter is next — check the redo backlog first
+### Which chapter is next — check the priority queue, then the redo backlog
 
-Before doing the normal "find the next uncovered chapter" lookup below,
-read `data/bible-notes-style-redo-remaining.json`. If its `remaining` array
-is non-empty, your target chapter is the FIRST entry in that array, not
-whatever the normal canonical-order lookup would find. These are chapters
-that already have an old-style file wired in (written before this spec
-existed) and need to be regenerated from scratch to match it — overwrite
-the existing file's content entirely, keeping the same exported type,
-function, and const names so nothing else needs to change (do not touch
-the wiring in `lib/bibleReaderStudyNotes.ts` for one of these — it is
-already correct). Once you finish and verify that chapter, remove its
-entry from the front of the `remaining` array as part of the same commit.
+Before anything else, read `data/bible-notes-priority-queue.json`. If its
+`remaining` array is non-empty, your target chapter is the FIRST entry in
+that array — this is a Louis-requested, out-of-canonical-order detour (for
+example, "skip ahead and write all of Proverbs now"). Write it as a normal
+brand new chapter (fetch KJV, write the source file, wire it into
+`lib/bibleReaderStudyNotes.ts`, verify, log). Once verified and pushed,
+remove its entry from the front of `remaining` as part of the same commit.
+Leave the redo backlog and normal forward progress alone while this queue
+has entries — no extra bookkeeping is needed to resume normal forward
+progress afterward, since the canonical-order scan described below always
+starts again from Genesis 1 and will land on whatever chapter was actually
+next before the detour started.
+
+Only once that queue is empty, read `data/bible-notes-style-redo-remaining.json`.
+If its `remaining` array is non-empty, your target chapter is the FIRST
+entry in that array, not whatever the normal canonical-order lookup would
+find. These are chapters that already have an old-style file wired in
+(written before this spec existed) and need to be regenerated from scratch
+to match it — overwrite the existing file's content entirely, keeping the
+same exported type, function, and const names so nothing else needs to
+change (do not touch the wiring in `lib/bibleReaderStudyNotes.ts` for one
+of these — it is already correct). Once you finish and verify that
+chapter, remove its entry from the front of the `remaining` array as part
+of the same commit.
 
 Only fall back to the normal "first chapter in canonical order with no
-existing wired-in file" lookup once `remaining` is empty.
+existing wired-in file" lookup once both of the above are empty.
 
 ## Quick summary (read this first, details follow)
 
