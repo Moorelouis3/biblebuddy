@@ -5061,6 +5061,16 @@ export default function DashboardJourneyExperience({
         setBibleYearSeriesDetailDay(null);
       }
       setActivePage(0);
+    } else if (view === "bible_studies") {
+      // Devotionals is a tab inside the app, never a standalone page. The
+      // /devotionals, /plans and /bible-studies routes all redirect here so
+      // there is one Devotionals page and it always has the top bar and the
+      // bottom menu around it.
+      openPlansPage();
+      // ?study=<id> opens that devotional inside the tab, so a direct link to
+      // one lands in the app rather than on a freestanding detail page.
+      const studyId = params.get("study");
+      if (studyId) setEmbeddedBibleStudyId(studyId);
     } else if (view === "devotional") {
       setBibleYearDashboardActive(false);
       setBibleYearSeriesActive(false);
@@ -5255,6 +5265,16 @@ export default function DashboardJourneyExperience({
     clearBibleYearViews();
     setDashboardMenuOpen(false);
     snapToPage(plansIndex);
+    // Stamp the tab into the URL so Devotionals is linkable and survives a
+    // reload. This has to come AFTER clearBibleYearViews, which deletes the
+    // view param - that deletion is why linking to this tab silently bounced
+    // people back to Home.
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", "bible_studies");
+      url.searchParams.delete("day");
+      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
   }
 
   function openProgressPage() {

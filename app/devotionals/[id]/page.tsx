@@ -1686,6 +1686,17 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     else setShowProModal(false);
   }, [isProLocked]);
 
+  // A devotional opens inside the app, on the Devotionals tab, with the top bar
+  // and the bottom menu around it - never as a freestanding page. Reached as a
+  // route, hand off to the tab and let it open this study.
+  useEffect(() => {
+    if (embedded || !devotionalId) return;
+    router.replace(`/dashboard?view=bible_studies&study=${encodeURIComponent(devotionalId)}`);
+  }, [embedded, devotionalId, router]);
+
+  // On its way to the tab - render nothing rather than flash a standalone page.
+  if (!embedded) return null;
+
   if (loading) {
     return (
       <div className={embedded ? "bg-transparent" : "min-h-screen bg-gray-50"}>

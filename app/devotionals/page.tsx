@@ -129,6 +129,18 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   const [username, setUsername] = useState<string | null>(null);
   const [progressByDevotional, setProgressByDevotional] = useState<Record<string, StudyProgressSummary>>({});
 
+  // Devotionals is a tab inside the app, not a page of its own.
+  //
+  // This one component is both the Devotionals tab (embedded, with the top bar
+  // and the bottom menu around it) and the /devotionals, /plans and
+  // /bible-studies routes. Rendered as a route it came up freestanding - no
+  // bottom menu, no Home or Group or Share - which is not how the app works.
+  // Anything reaching those routes now goes to the real tab instead.
+  useEffect(() => {
+    if (embedded) return;
+    router.replace("/dashboard?view=bible_studies");
+  }, [embedded, router]);
+
   // Load "Don't show again" preference from localStorage
   useEffect(() => {
     const savedPreference = localStorage.getItem("devotional-instructions-dont-show-again");
@@ -526,6 +538,10 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     };
   }, [userId, visibleDevotionals]);
 
+
+  // Hit as a route, this is on its way to /dashboard?view=bible_studies.
+  // Render nothing rather than flash a freestanding page during the redirect.
+  if (!embedded) return null;
 
   if (loading) {
     return (
