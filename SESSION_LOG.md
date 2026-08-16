@@ -2000,3 +2000,19 @@ timeout so a blocked Cloudflare never hangs the button.
 Still open: Louis needs to get free Turnstile keys, put the site key in Vercel
 FIRST, then enable captcha in Supabase with the secret key. Doing it in the
 other order breaks guest sign-in in between. Steps in docs/captcha-setup.md.
+
+## 2026-08-16 (user count model)
+Done: Fixed /api/admin/total-users so the headline numbers add up:
+TOTAL = registered + guests, counted from Supabase Auth. Previously
+registeredUsers only counted people with a profile_stats row AND a
+display name, which dropped ~700 real users and meant the two never
+summed to the total. Profile completeness is still reported, as
+profilesCompleted, separate from the headline. Also added newLast24h
+and newLast7d.
+Real numbers today: 4,879 total (4,821 registered, 58 guests).
+FOUND A BUG worth flagging: none of the guest columns the app writes -
+account_type, guest_started_at, registered_at, converted_from_guest_at -
+actually exist on profile_stats. Those writes silently fall back, so the
+guest label is lost in the app's own table. Auth's is_anonymous is the
+only reliable marker and is what this route now uses. Adding the columns
+needs DDL, which the REST API cannot do.
