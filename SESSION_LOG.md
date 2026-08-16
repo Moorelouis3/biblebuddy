@@ -2189,3 +2189,28 @@ Year exactly - a Day 1/Day 2 map with days locked until unlocked, then per day
 an audio player (OpenAI TTS reading that day's overview, same approach as the
 chapter TTS), then that chapter's study notes, then that chapter's trivia, then
 that day's discussion. All on the dashboard.
+
+## 2026-08-16 (dashboard pass 7: devotional day map)
+Done: Added the devotional day map to the dashboard - the same shape as the
+Bible in One Year strip. Every day of the plan, past days Done, today Current,
+future days Locked, each showing its chapter. Tapping an unlocked day calls
+loadEmbeddedBibleStudyChapter, the same function the Devotionals tab uses, so
+there is one way to start a day.
+The devotional_days loader was gated behind the expanded Current Study list; it
+now also loads when the devotional middle is showing.
+Ran down "clicking Start just goes back to the dashboard": that is by design.
+The embedded path (loadEmbeddedBibleStudyChapter) does write
+free_devotional_id, louis_primary_devotional_id and the day, then snapToPage(0).
+So starting DOES stick - it only looked broken because the dashboard showed
+nothing when you landed back on it, which pass 5 fixed.
+Worth knowing: the non-embedded path (setChapterOnStudyDashboard) is now
+unreachable from the UI since every devotional route redirects into the tab.
+Left in place, not deleted, but it is dead from the UI's point of view.
+Verified: 21 days render for The Tempting of Jesus, Day 1 Current on 1 John 2,
+Day 2+ Locked.
+Still open, and the rest of Louis's ask: per-day audio (OpenAI TTS reading the
+day's overview, same pattern as the chapter TTS - needs a new API route), then
+that chapter's study notes, that chapter's trivia, and that day's discussion,
+stacked under the map exactly like Bible in One Year.
+Also unverified: whether "Just the Bible" now saves after Louis ran the
+migration.
