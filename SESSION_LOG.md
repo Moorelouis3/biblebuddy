@@ -2095,3 +2095,35 @@ stack, once Louis has looked at the devotional one.
 ## 2026-08-16T11:58:33Z (hourly chapter notes run)
 Chapter: 2 Chronicles 6 | Duration: 12 min | Sections: 14 | Cards: 54 | Status: pass
 Next up: 2 Chronicles 7
+
+## 2026-08-16 (dashboard pass 4: why the three middles never worked)
+Done: Found the real reason the three-middle dashboard could not work, which
+was nothing to do with the middles themselves.
+1. BibleYearJourneyDashboard never selected preferred_study_mode from
+   profile_stats, then hardcoded it to "bible_year" when building the profile
+   object. Every reader looked like a Bible in One Year reader to the
+   dashboard regardless of what they chose. Both new middles were dead on
+   arrival - mine and the earlier session's label work.
+2. The dashboard also read the mode before the profile row loaded, defaulted
+   to bible_year, and a second effect wrote ?view=bible-year into the URL.
+   Once that param existed the mode branch never ran again, so the guess
+   stuck for the session. Now it waits for the row, the placeholder claims no
+   mode, the URL is only stamped for real year-plan readers, and a stale
+   param gets cleared.
+3. "Just the Bible" could never save: the DB check constraint only allowed
+   ('bible_year','devotional'). Picking it threw
+   profile_stats_preferred_study_mode_check and silently kept the old mode.
+Also built the Bible middle: same shell and streak hero, middle is the
+chapter you are on plus the chapter audio that already exists, reusing the
+Bible in One Year player so it looks identical. Confirmed the TTS endpoint
+returns real audio (3.2MB audio/mpeg, Genesis 3).
+Fixed showHelpfulPoll being ignored on one of the audio player's two render
+paths (defaults true, so BIOY unchanged).
+Verified on a real account this time, not a forced local override: devotional
+mode shows the streak hero and "Day 1" on a clean URL.
+Still open: supabase/migrations/FIX_PREFERRED_STUDY_MODE_ALLOW_BIBLE.sql has
+NOT been run. Until it is, "Just the Bible" cannot save and the Bible middle
+stays dormant. I could not apply it - no DB or Supabase dashboard access from
+this session. This is the one blocker.
+Next: run that migration, then confirm the Bible middle on a real account.
+Devotional audio is still content work, not shell work.
