@@ -26,6 +26,11 @@ type DashboardProfile = {
   preferred_study_mode?: string | null;
 };
 
+/** The profile_stats columns this dashboard actually reads. */
+type ProfileStatsRow = DashboardProfile & {
+  install_prompt_state?: string | null;
+};
+
 const bibleYearChecklistData: ChecklistData = {
   title: "Bible in One Year",
   streakLine: "",
@@ -113,18 +118,28 @@ export default function BibleYearJourneyDashboard() {
       created_at: null,
       bible_year_started_at: null,
       bible_year_plan_reset_at: null,
-      preferred_study_mode: "bible_year",
+      // Deliberately unknown until the real row loads. Claiming "bible_year"
+      // here made the dashboard stamp ?view=bible-year into the URL before the
+      // real mode arrived, which then locked the reader into the wrong middle.
+      preferred_study_mode: null,
     });
-    setLoading(false);
 
     void (async () => {
-      const { data } = await supabase
-        .from("profile_stats")
-        .select(
-          "is_paid,daily_credits,last_active_date,verse_of_the_day_shown,current_streak,selected_streak_flame,selected_buddy_avatar,profile_image_url,display_name,username,created_at,bible_year_started_at,bible_year_plan_reset_at,install_prompt_state,install_prompt_last_shown",
-        )
-        .eq("user_id", user.id)
-        .maybeSingle();
+      let data: ProfileStatsRow | null = null;
+      try {
+        const result = await supabase
+          .from("profile_stats")
+          .select(
+            "is_paid,daily_credits,last_active_date,verse_of_the_day_shown,current_streak,selected_streak_flame,selected_buddy_avatar,profile_image_url,display_name,username,created_at,bible_year_started_at,bible_year_plan_reset_at,preferred_study_mode,install_prompt_state,install_prompt_last_shown",
+          )
+          .eq("user_id", user.id)
+          .maybeSingle();
+        data = (result.data as ProfileStatsRow | null) ?? null;
+      } catch (error) {
+        // Never strand someone on the loading screen because their profile row
+        // could not be read. They fall back to Bible in One Year below.
+        console.error("[DASHBOARD] Could not load profile stats:", error);
+      }
 
       const displayName = data?.display_name || data?.username || fallbackName || "Bible Buddy";
       setUserName(String(displayName));
@@ -143,11 +158,18 @@ export default function BibleYearJourneyDashboard() {
         created_at: data?.created_at ?? null,
         bible_year_started_at: data?.bible_year_started_at ?? null,
         bible_year_plan_reset_at: data?.bible_year_plan_reset_at ?? null,
-        preferred_study_mode: "bible_year",
+        // Was hardcoded to "bible_year" here, and the column was not even in
+        // the select above - so every reader looked like a Bible in One Year
+        // reader to the dashboard, whatever they picked at /start.
+        preferred_study_mode: data?.preferred_study_mode ?? "bible_year",
       });
       reconcileInstallPromptState(
         (data as { install_prompt_state?: string | null } | null)?.install_prompt_state ?? null,
       );
+      // Only now. The dashboard decides which of the three middles to show from
+      // preferred_study_mode, so mounting it before this row lands made it
+      // guess "Bible in One Year" and write that guess into the URL.
+      setLoading(false);
     })();
   }, [router]);
 

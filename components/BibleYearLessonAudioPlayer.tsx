@@ -1026,7 +1026,7 @@ export default function BibleYearLessonAudioPlayer({
             ) : null}
           </div>
       </div>
-      {!controlsLocked ? (
+      {!controlsLocked && showHelpfulPoll ? (
         <VideoHelpfulPoll
           userId={userId}
           videoId={`audio:${videoId || audioSrc || title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}

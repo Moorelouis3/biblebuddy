@@ -32,6 +32,7 @@ import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
 import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
 import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import { normalizeStudyMode, studyUnitLabel, usesUnifiedStudyShell, type StudyMode } from "@/lib/studyMode";
+import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, getCompletedChaptersByBooks, markChapterDone } from "../lib/readingProgress";
@@ -3177,14 +3178,19 @@ export default function DashboardJourneyExperience({
   const currentDevotionalTask = visibleTasks.find((task) => task.kind === "devotional") ?? null;
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
   const currentDevotionalTitle = currentDevotionalTask?.devotionalTitle || null;
+  // The shared shell for the two newer middles. The streak hero and the Bible
+  // progress bar belong to everyone, so this deliberately does NOT wait for a
+  // devotional to be picked - a reader with nothing started still owns their
+  // streak.
+  const unifiedShellActive =
+    studyShellUnified &&
+    studyMode !== "bible_year" &&
+    !bibleYearDashboardActive &&
+    !bibleYearSeriesActive;
   // The devotional middle: same shell as Bible in One Year, counting the days
   // of THEIR devotional instead of the days of the year plan.
   const devotionalDashboardActive =
-    studyShellUnified &&
-    studyMode === "devotional" &&
-    !bibleYearDashboardActive &&
-    !bibleYearSeriesActive &&
-    Boolean(currentDevotionalTask);
+    unifiedShellActive && studyMode === "devotional" && Boolean(currentDevotionalTask);
   const currentStudyCover = getDashboardStudyCover(currentDevotionalTitle);
   const nextStudyHandoff = getBibleJourneyHandoff(currentDevotionalTitle);
   const dashboardCompletedTasks = bibleYearDashboardTasks ? bibleYearDashboardTasks.filter((task) => task.done).length : completedTasks;
@@ -3291,6 +3297,15 @@ export default function DashboardJourneyExperience({
       : chapterTask?.chapterLabel ||
     visibleTasks.find((task) => task.chapterLabel)?.chapterLabel ||
     "Your Chapter";
+  // The Bible middle: same shell again, but the middle is the chapter they are
+  // actually on, with the chapter audio that already exists.
+  const bibleChapterDashboardBook = chapterTask?.book ? String(chapterTask.book) : null;
+  const bibleChapterDashboardChapter = Number(chapterTask?.chapter || 0);
+  const bibleChapterDashboardActive =
+    unifiedShellActive &&
+    studyMode === "bible" &&
+    Boolean(bibleChapterDashboardBook) &&
+    bibleChapterDashboardChapter > 0;
   const currentChapterUnlockTarget: FreeChapterUnlockTarget | null =
     currentDevotionalId && currentDevotionalTask?.devotionalDayNumber
       ? {
@@ -4993,6 +5008,21 @@ export default function DashboardJourneyExperience({
     }
     setDashboardGroupDeepLinkPostId(null);
     setDashboardGroupDeepLinkCommentId(null);
+    // A stale ?view=bible-year can outlive a mode change (it used to get
+    // stamped in before the real mode loaded). Drop it rather than send a
+    // devotional or plain-Bible reader back into the year plan.
+    if (view === "bible-year" && profile?.preferred_study_mode && profile.preferred_study_mode !== "bible_year") {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("view");
+      url.searchParams.delete("day");
+      window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+      setBibleYearDashboardActive(false);
+      setBibleYearSeriesActive(false);
+      setSelectedBibleYearSeriesDay(null);
+      setManualBibleYearStudyDayNumber(null);
+      setActivePage(0);
+      return;
+    }
     if (view === "bible-year") {
       const dayNumber = Number(params.get("day") || 0);
       const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === dayNumber);
@@ -5045,13 +5075,13 @@ export default function DashboardJourneyExperience({
       // plain-Bible reader landing here was being dumped into Day 1 of a plan
       // they never started.
       //
-      // TODO: this is still binary. The real shape is one dashboard shell with
-      // three middles (BIOY days / devotional days / Bible chapters). Until that
-      // exists, anything that is not bible_year falls through to the tabbed app
-      // rather than the wrong plan.
-      setBibleYearDashboardActive(
-        (profile?.preferred_study_mode ?? "bible_year") === "bible_year",
-      );
+      // Wait until the profile row has actually loaded. It is null only while
+      // loading (the loader resolves it to a concrete mode afterwards), and
+      // guessing "bible_year" here made a second effect stamp ?view=bible-year
+      // into the URL, which locked the reader out of their own middle for the
+      // rest of the session.
+      if (!profile?.preferred_study_mode) return;
+      setBibleYearDashboardActive(profile.preferred_study_mode === "bible_year");
       setBibleYearSeriesActive(false);
       setBibleYearSeriesDetailDay(null);
       setBibleYearJourneyPreviewDay(null);
@@ -5095,6 +5125,11 @@ export default function DashboardJourneyExperience({
 
   useEffect(() => {
     if (!bibleYearProgressLoaded || !bibleYearDashboardActive || !activeBibleYearDashboardDay) return;
+    // This effect writes ?view=bible-year into the URL. Only do that for people
+    // actually reading Bible in One Year - bibleYearDashboardActive starts true
+    // before the profile loads, and stamping the URL on that assumption locked
+    // devotional and plain-Bible readers into the wrong middle.
+    if (profile?.preferred_study_mode && profile.preferred_study_mode !== "bible_year") return;
     clearStoredBibleYearDashboardDayNumber(userId);
     const targetDay = activeBibleYearDashboardDay;
 
@@ -12258,6 +12293,49 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
+  /**
+   * The Bible middle.
+   *
+   * Same shape as the Bible in One Year middle - the unit label, the chapter
+   * being read, then the audio - except the unit is a chapter and the audio is
+   * the per-chapter narration that already exists. The scripture, notes, trivia
+   * and discussion sit underneath in the task cards, as they do for a devotional.
+   */
+  function renderBibleChapterMiddle(book: string, chapter: number) {
+    const audioSrc = getBibleChapterTtsSrc(book, chapter, bibleYearReaderTranslation);
+    const chapterLabel = `${book} ${chapter}`;
+
+    return (
+      <section
+        data-bb-dashboard-bible-middle="1"
+        className="w-full overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-4 text-[var(--bb-text-primary,#111827)] shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:px-5"
+      >
+        <div className="mx-auto flex max-w-3xl flex-col gap-3">
+          <div className="text-center">
+            <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
+              {studyUnitLabel("bible", chapter)}
+            </p>
+            <h2 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
+              {chapterLabel}
+            </h2>
+          </div>
+
+          {audioSrc ? (
+            <BibleYearLessonAudioPlayer
+              audioSrc={audioSrc}
+              title={chapterLabel}
+              durationLabel=""
+              userId={userId}
+              showHeader={false}
+              showHelpfulPoll={false}
+              compactMediaControls
+            />
+          ) : null}
+        </div>
+      </section>
+    );
+  }
+
   function renderDashboardSectionIntro(title: string, subtitle: string, className = "") {
     return (
       <div className={`px-1 py-1 ${className}`}>
@@ -16446,7 +16524,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             {!homePanelOverride && !deepStudyFocusActive && !showOfficialHomeMission && !bibleYearDashboardActive ? (
               <>
               <HomeInstallBanner />
-              <div className={`mx-auto w-full max-w-xl px-1 ${devotionalDashboardActive ? "text-center" : ""}`}>
+              <div className={`mx-auto w-full max-w-xl px-1 ${unifiedShellActive ? "text-center" : ""}`}>
                 <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
                   {dashboardGreeting}, {getFirstDashboardName(profile?.display_name || profile?.username || userName)}
                 </h1>
@@ -16454,7 +16532,10 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
               {/* Same streak + Bible progress hero the Bible in One Year middle
                   gets. Identical for everyone; only the middle below differs. */}
-              {devotionalDashboardActive && !shouldShowCompletionPanel ? renderStudyProgressSnapshot() : null}
+              {unifiedShellActive && !shouldShowCompletionPanel ? renderStudyProgressSnapshot() : null}
+              {bibleChapterDashboardActive && !shouldShowCompletionPanel && bibleChapterDashboardBook
+                ? renderBibleChapterMiddle(bibleChapterDashboardBook, bibleChapterDashboardChapter)
+                : null}
               </>
             ) : null}
             {isAnonymousGuest && !CORE_STUDY_IS_FREE && !homePanelOverride && !deepStudyFocusActive ? (
