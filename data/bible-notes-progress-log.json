@@ -23982,6 +23982,59 @@
           "at": "2026-08-16T20:55:17Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 6,
+      "startedAt": "2026-08-16T22:47:10Z",
+      "finishedAt": "2026-08-16T22:58:00Z",
+      "durationMinutes": 11,
+      "sections": 7,
+      "cards": 63,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue detour (data/bible-notes-priority-queue.json, Louis's live request to skip ahead and write all of Proverbs), second entry in the queue after Proverbs 5. Redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty first. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (35 verses). Proverbs 6 covers Solomon's warning against standing surety for a stranger's debt and the urgent, animal-imagery escape he demands (roe from a hunter, bird from a fowler), the ant as a self-motivated teacher for the sluggard with its three-times-repeated 'yet a little sleep' self-deception, the wicked man's silent body-language scheming (winking eyes, signaling feet and fingers) ending in sudden unremediable ruin, the seven things the LORD hates as a Hebrew numerical proverb (x, x+1 pattern), the father's and mother's teaching pictured as a bound heart-ornament and a worn neck-cord plus the lamp/light pairing of immediate versus broad guidance, the fire-in-the-bosom and hot-coals rhetorical questions applied directly to adultery with a neighbour's wife, and the closing contrast between a hungry thief's fully payable sevenfold restitution and a jealous husband's unpayable rage that no ransom or gift can satisfy. Chunked into 7 sections (6:1-5, 6:6-11, 6:12-15, 6:16-19, 6:20-24, 6:25-29, 6:30-35) matching the chapter's natural topic breaks. Density about 1.8 cards/verse (35 verses, 63 cards), in line with the Proverbs 5 reference implementation. scripts/check_bible_note_style.py found 8 problems on first pass (1 wrong last-bullet emoji, 7 bullets over the 8 word limit), fixed, second run clean. Split one card in half (The Commandment Is A Lamp / The Law Is Light) to avoid a semicolon carried over from the raw KJV verse text landing in a card title, which also raised the card count. Avoided digit-keycap emoji (1⃣, 7⃣) that the checker's regex does not recognize as emoji, using 🥇 and 🔢 instead. Parser check passed exactly via getBibleReaderStudySections('proverbs', 6) (7/7 sections, 63 cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added after the Proverbs 5 import, preserveExactPhraseBodies proverbs range extended from chapters 1-5 to 1-6, applyPersonalProverbsSixStudySections() function added and called directly after the Proverbs 5 call. Session started with git HEAD detached (the recurring detached-HEAD environment bug seen in many prior runs) and origin/main had moved ahead with two unrelated doc commits since this container's clone; fixed with git checkout -B main origin/main after confirming no conflicting files, no work lost. Proverbs 6 entry popped from the front of data/bible-notes-priority-queue.json; next queue target is Proverbs 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T22:47:10Z"
+        },
+        {
+          "name": "target chapter determined: Proverbs 6 (priority queue detour, first entry, redo backlog empty)",
+          "at": "2026-08-16T22:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (Proverbs 6, 35 verses, aruljohn mirror)",
+          "at": "2026-08-16T22:48:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-16T22:49:00Z"
+        },
+        {
+          "name": "source file written (lib/proverbsSixSource.ts, 7 sections, 63 cards)",
+          "at": "2026-08-16T22:52:30Z"
+        },
+        {
+          "name": "style checker clean (8 problems found and fixed across two passes)",
+          "at": "2026-08-16T22:54:10Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range 1-6, applyPersonalProverbsSixStudySections call)",
+          "at": "2026-08-16T22:55:00Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 63 cards, verbatim)",
+          "at": "2026-08-16T22:55:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-16T22:56:10Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, priority-queue.json popped)",
+          "at": "2026-08-16T22:58:00Z"
+        }
+      ]
     }
   ]
 }
