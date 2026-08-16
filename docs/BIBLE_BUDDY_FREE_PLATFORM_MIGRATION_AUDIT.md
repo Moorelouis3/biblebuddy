@@ -36,7 +36,17 @@ Six things matter more than everything else in this document:
 | Analytics | Vercel Analytics + custom `master_actions` event table |
 | Schema | 223 `.sql` files at repo root + `supabase/migrations/` |
 
-**There is no `middleware.ts`.** No edge-level route protection exists. Every access decision is made either client-side inside a React component or server-side inside an individual API route. This is important for the migration: there is no single chokepoint to flip, but there is also no hidden gate outside the files listed below.
+> **CORRECTION (added after a real build run).** An earlier version of this
+> audit stated there was no middleware. That was wrong: Next 16 renames
+> `middleware.ts` to **`proxy.ts`**, and this repo has one. It enforces a real
+> **server-side paywall** — non-paying users are redirected away from trivia
+> decks outside Genesis/Exodus/Leviticus/Numbers and from
+> `/reading-plans/bible-buddy`. It also bounces logged-out users off
+> `/dashboard`, `/reading-plans`, `/notes`, `/profile` and `/bible-trivia`.
+> Removing only the client-side gates would have left this in place and silently
+> undone the migration. Fixed in `proxy.ts`.
+
+`proxy.ts` is the one edge-level chokepoint. Every other access decision is made client-side inside a React component or server-side inside an individual API route.
 
 ### Access control
 Access is decided by `profile_stats`, which is the de-facto entitlement table:

@@ -1853,3 +1853,21 @@ Anonymous sign-ins still need enabling in Supabase and
 BLOCK_ANONYMOUS_COMMUNITY_WRITES.sql still needs running, or the button
 falls back to the signup form.
 Next: enable anon auth, run the migration, test locally, then deploy.
+
+## 2026-08-15 (night, part 5)
+Time spent: ~1 session
+Done: Installed deps and actually built the app for the first time.
+tsc --noEmit clean, next build exit 0, server boots, all key pages 200.
+Found two real paywalls the earlier client-side-only sweep missed:
+(1) proxy.ts - Next 16 renames middleware.ts to proxy.ts, so the earlier
+audit wrongly said there was no middleware. It enforced a SERVER-SIDE
+paywall redirecting non-paid users away from most trivia decks and
+/reading-plans/bible-buddy. This would have shipped broken - pages would
+look unlocked then redirect. (2) dailyRecommendation.ts still had Louis
+pitching Pro to engaged users. Both fixed and gated on
+CORE_STUDY_IS_FREE. Corrected the audit doc.
+Still open: NOT DEPLOYED. Supabase anon sign-ins still off, community
+migration still unrun. Verified with placeholder credentials only, so
+no real data path (guest creation, devotional lookup) has been exercised
+end to end.
+Next: Louis enables anon auth + runs migration, then deploy.

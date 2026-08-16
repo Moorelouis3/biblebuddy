@@ -10,6 +10,7 @@
 import { SCRAMBLED_BOOKS } from "./scrambledGameData";
 import { isSeriesWeekComplete, toSeriesWeekProgressState } from "./seriesWeekProgress";
 import { supabase } from "./supabaseClient";
+import { CORE_STUDY_IS_FREE } from "./accessPolicy";
 import { getBookTotalChapters } from "./readingProgress";
 
 const BIBLE_BOOK_ORDER = [
@@ -910,7 +911,9 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       ]));
     }
 
-    if (profile.is_paid !== true && (loginActions.length >= 10 || streak >= 7 || (allActions.length >= 25 && daysSinceActive !== null && daysSinceActive <= 7))) {
+    // There is no Pro to upsell any more — Bible Buddy is free. Without this
+    // guard Louis would still pitch an upgrade to the most engaged users.
+    if (!CORE_STUDY_IS_FREE && profile.is_paid !== true && (loginActions.length >= 10 || streak >= 7 || (allActions.length >= 25 && daysSinceActive !== null && daysSinceActive <= 7))) {
       candidates.push(withLouisCard(createRecommendation({
         priority: 61,
         greeting,

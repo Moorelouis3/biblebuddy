@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 
 function hasSupabaseAuthCookie(req: NextRequest) {
   return req.cookies
@@ -127,7 +128,12 @@ export async function proxy(req: NextRequest) {
     (!isTriviaPeopleDeck && FREE_TRIVIA_BOOK_SLUGS.has(triviaSlug));
 
   const isBibleBuddyPlan = pathname.startsWith("/reading-plans/bible-buddy");
-  const needsPaidCheck = isBibleBuddyPlan || (isTriviaDeck && !isFreeTriviaDeck);
+
+  // Core Bible study is free. This edge paywall used to bounce non-paying users
+  // away from trivia decks outside Genesis/Exodus/Leviticus/Numbers and from the
+  // Bible Buddy reading plan, which would silently undo the client-side changes.
+  const needsPaidCheck =
+    !CORE_STUDY_IS_FREE && (isBibleBuddyPlan || (isTriviaDeck && !isFreeTriviaDeck));
 
   if (needsPaidCheck) {
     const { data: profileStats } = await supabase
