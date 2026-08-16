@@ -903,6 +903,25 @@ const STUDY_SWITCHER_ORDER_INDEX = new Map(
   STUDY_SWITCHER_ORDER.map((title, index) => [title, index]),
 );
 
+/**
+ * A cover for one day of a devotional.
+ *
+ * Bible in One Year has its own art per day, so devotionals can too. Drop a
+ * file in /public and name it here. Anything without its own day cover falls
+ * back to the devotional's cover, and a missing file falls back at render time
+ * as well, so a wrong name never shows a broken image.
+ */
+function getDevotionalDayCover(title: string | null | undefined, dayNumber: number) {
+  if (title === "The Wisdom of Proverbs") {
+    const proverbsDayCovers: Record<number, string> = {
+      1: "/proverbs-day-1.png",
+      2: "/proverbs-day-2.png",
+    };
+    return proverbsDayCovers[dayNumber] || null;
+  }
+  return null;
+}
+
 function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Creation of the World") return "/Day1cover.png";
   if (title === "The Fall of Man") return "/thefallofman.png";
@@ -12490,7 +12509,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       day.bible_reading_book && day.bible_reading_chapter
         ? `${day.bible_reading_book} ${day.bible_reading_chapter}`
         : currentDevotionalTitle || "";
-    const cover = currentStudyCover;
+    const cover = getDevotionalDayCover(currentDevotionalTitle, day.day_number) || currentStudyCover;
     const readingComplete = Boolean(dashboardTaskSource.find((task) => task.kind === "reading")?.done);
     const overview = String(day.devotional_text || "").replace(/<[^>]+>/g, " ").trim();
     const audioSrc = `/api/tts/devotional-overview?devotionalId=${encodeURIComponent(currentDevotionalId)}&day=${day.day_number}`;
@@ -12533,7 +12552,21 @@ Before we understand redemption, we need to understand what God made humanity fo
           }`}>
             <div className="aspect-square w-full overflow-hidden rounded-[20px] bg-[var(--bb-surface-soft,#f4f8ff)]">
               {cover ? (
-                <img src={cover} alt="" loading="eager" decoding="async" className="h-full w-full object-contain object-center" />
+                <img
+                  src={cover}
+                  alt=""
+                  loading="eager"
+                  decoding="async"
+                  onError={(event) => {
+                    // Day cover missing or misnamed - fall back to the
+                    // devotional's cover rather than show a broken image.
+                    const image = event.currentTarget;
+                    if (currentStudyCover && image.src !== currentStudyCover) {
+                      image.src = currentStudyCover;
+                    }
+                  }}
+                  className="h-full w-full object-contain object-center"
+                />
               ) : null}
             </div>
           </div>
