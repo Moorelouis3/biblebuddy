@@ -23401,7 +23401,7 @@
       "sections": 6,
       "cards": 27,
       "verses": 14,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing dedicated wired-in file for this chapter, clean new-chapter build per docs/bible-study-note-style.md. Session started with git HEAD detached at a commit ahead of the local stale remote-tracking ref (the recurring detached-HEAD environment issue seen in prior runs), fixed with git fetch origin main && git checkout main && git reset --hard origin/main, no work lost, confirmed clean tree before starting. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (14 verses). 2 Chronicles 5 covers Solomon finishing the temple and depositing David's dedicated war spoils into its treasuries, assembling Israel's elders and leaders to bring the ark up from the City of David timed to land inside the Feast of Tabernacles in the seventh month, the Levites carrying the ark by the law this time (unlike the cart disaster in 1 Chronicles 13), the priests and Levites also relocating the original wilderness tabernacle and its vessels from Gibeon (retiring that whole older system), an uncountable sacrifice of sheep and oxen, the ark placed in the oracle (Most Holy Place) beneath the two large carved cherubim from chapter 3 with their wings covering the ark and its staves, the staves visible only from just inside the oracle and the narrator's aside 'unto this day' (an authorship/dating clue), the ark by this point holding only the two tables of the law from Horeb, every priest sanctifying himself and setting aside the normal course rotation for the occasion, the massed Levitical singers (Asaph, Heman, Jeduthun's families) in white linen with instruments plus 120 trumpeting priests, the unified sound and the Psalm 136 refrain 'his mercy endureth for ever', and the chapter's climax where the glory cloud fills the house so completely the priests cannot continue ministering, echoing the tabernacle's dedication in Exodus 40. Chunked into 6 sections (1, 2-3, 4-6, 7-10, 11-12, 13-14) matching the chapter's natural scene breaks (dedication of treasure, gathering for the feast, moving the ark, the ark's placement, the assembled priests and singers, the glory cloud). Density about 1.93 cards/verse (14 verses, 27 cards), in the target range. scripts/check_bible_note_style.py was clean on the first pass, no problems found. A manual section 13 eye check confirmed no duplicate or near-duplicate card titles across all 27 cards, no forbidden opening phrases ('this verse/passage shows/explains/teaches', 'here we see', etc), every body line under 20 words, exactly 4 bullets per card each ending on 📖 or ➡️. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 5) (6/6 sections, 27 cards, 14 verses, text rendered verbatim, spot checked first card). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 chronicles range extended from chapters 1-4 to 1-5, replaceStudySectionsForBookRange('2 chronicles', 5, 5, SECOND_CHRONICLES_FIVE_PERSONAL_SECTIONS) call and its wrapper function added directly after the Chapter 4 call. Next forward-progress target is 2 Chronicles 6.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing dedicated wired-in file for this chapter, clean new-chapter build per docs/bible-study-note-style.md. Session started with git HEAD detached at a commit ahead of the local stale remote-tracking ref (the recurring detached-HEAD environment issue seen in prior runs), fixed with git fetch origin main && git checkout main && git reset --hard origin/main, no work lost, confirmed clean tree before starting. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (14 verses). 2 Chronicles 5 covers Solomon finishing the temple and depositing David's dedicated war spoils into its treasuries, assembling Israel's elders and leaders to bring the ark up from the City of David timed to land inside the Feast of Tabernacles in the seventh month, the Levites carrying the ark by the law this time (unlike the cart disaster in 1 Chronicles 13), the priests and Levites also relocating the original wilderness tabernacle and its vessels from Gibeon (retiring that whole older system), an uncountable sacrifice of sheep and oxen, the ark placed in the oracle (Most Holy Place) beneath the two large carved cherubim from chapter 3 with their wings covering the ark and its staves, the staves visible only from just inside the oracle and the narrator's aside 'unto this day' (an authorship/dating clue), the ark by this point holding only the two tables of the law from Horeb, every priest sanctifying himself and setting aside the normal course rotation for the occasion, the massed Levitical singers (Asaph, Heman, Jeduthun's families) in white linen with instruments plus 120 trumpeting priests, the unified sound and the Psalm 136 refrain 'his mercy endureth for ever', and the chapter's climax where the glory cloud fills the house so completely the priests cannot continue ministering, echoing the tabernacle's dedication in Exodus 40. Chunked into 6 sections (1, 2-3, 4-6, 7-10, 11-12, 13-14) matching the chapter's natural scene breaks (dedication of treasure, gathering for the feast, moving the ark, the ark's placement, the assembled priests and singers, the glory cloud). Density about 1.93 cards/verse (14 verses, 27 cards), in the target range. scripts/check_bible_note_style.py was clean on the first pass, no problems found. A manual section 13 eye check confirmed no duplicate or near-duplicate card titles across all 27 cards, no forbidden opening phrases ('this verse/passage shows/explains/teaches', 'here we see', etc), every body line under 20 words, exactly 4 bullets per card each ending on \ud83d\udcd6 or \u27a1\ufe0f. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 5) (6/6 sections, 27 cards, 14 verses, text rendered verbatim, spot checked first card). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 chronicles range extended from chapters 1-4 to 1-5, replaceStudySectionsForBookRange('2 chronicles', 5, 5, SECOND_CHRONICLES_FIVE_PERSONAL_SECTIONS) call and its wrapper function added directly after the Chapter 4 call. Next forward-progress target is 2 Chronicles 6.",
       "steps": [
         {
           "name": "npm install done",
@@ -23442,6 +23442,59 @@
         {
           "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
           "at": "2026-08-16T10:56:54Z"
+        }
+      ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 6,
+      "startedAt": "2026-08-16T11:46:10Z",
+      "finishedAt": "2026-08-16T11:58:00Z",
+      "durationMinutes": 12,
+      "sections": 14,
+      "cards": 54,
+      "verses": 42,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing dedicated wired-in file for 2 Chronicles 6, clean new-chapter build per docs/bible-study-note-style.md. Session started with git HEAD detached one commit ahead of the local main ref; fetched origin/main fresh (it had moved further forward with other merged work that already included the orphaned commit) and reset local main to match origin/main before starting, no work lost. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (42 verses). 2 Chronicles 6 is Solomon's temple dedication speech and prayer: he opens noting the LORD dwells in thick darkness (echoing Sinai and the glory cloud that just filled the temple in chapter 5), blesses the assembled congregation and recounts God choosing Jerusalem and David, honors David's original desire to build the temple even though God assigned the actual building to Solomon, stands on a purpose built bronze platform and kneels before the whole assembly with hands spread toward heaven, then prays at length: praising God's uniqueness and covenant loyalty, acknowledging no building can contain God, and running through seven hypothetical scenarios (an oath dispute, defeat in battle, drought, famine/plague/siege, a foreign stranger's prayer, war, and exile) each asking God to hear from heaven and forgive, closing with a direct plea (quoting Psalm 132 language) for God to arise into His resting place and remember His mercy to David. Chunked into 14 sections matching the natural movements of the speech and each numbered petition. Density about 1.29 cards/verse (42 verses, 54 cards) which is lower than the ~2x target described in SKILL.md, judged deliberately for this chapter: verses 22 through 39 repeat the same 'if they sin... then hear thou from heaven, and forgive' refrain seven times, and the style spec explicitly forbids repeating the same sentence, opening line, or structure across cards, so each repetition of the refrain itself was only explained in depth once (verses 18-21) and every other petition card focuses only on what is genuinely new in that scenario (the oath, the siege, the stranger, the exile, etc) rather than re-explaining the same refrain language seven separate times. scripts/check_bible_note_style.py caught 12 mechanical issues on the first pass (one banned hedge word 'fairly', eleven bullets one word over the 8 word cap) which were fixed and it was clean on the second pass. A manual section 13 eye check confirmed no duplicate or near-duplicate card titles across all 54 cards, no forbidden opening phrases, every body line under 20 words (most well under 12), exactly 4 bullets per card each ending on \ud83d\udcd6 or \u27a1\ufe0f, no hyphens/em dashes/semicolons/contractions. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 6) (14/14 sections, 54 cards, 42 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 chronicles range extended from chapters 1-5 to 1-6, replaceStudySectionsForBookRange('2 chronicles', 6, 6, SECOND_CHRONICLES_SIX_PERSONAL_SECTIONS) call and its wrapper function added directly after the Chapter 5 call, in reading order before the existing chapters 20-36 block. Next forward-progress target is 2 Chronicles 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T11:46:55Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 6 (new chapter, forward progress)",
+          "at": "2026-08-16T11:47:25Z"
+        },
+        {
+          "name": "KJV text fetched for 2 Chronicles 6 (42 verses)",
+          "at": "2026-08-16T11:53:04Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-08-16T11:53:04Z"
+        },
+        {
+          "name": "source file lib/secondChroniclesSixSource.ts written (14 sections, 54 cards)",
+          "at": "2026-08-16T11:53:04Z"
+        },
+        {
+          "name": "style checker clean (python3 scripts/check_bible_note_style.py)",
+          "at": "2026-08-16T11:55:14Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-16T11:55:40Z"
+        },
+        {
+          "name": "parser check passed (14 sections, 54 cards)",
+          "at": "2026-08-16T11:55:55Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-16T11:57:16Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-16T11:58:00Z"
         }
       ]
     }

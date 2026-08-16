@@ -2091,3 +2091,7 @@ Still open: the Bible (chapter) middle - the second half of the job.
 Devotional audio does not exist yet and is content work, not shell work.
 Next: the Bible middle, wiring the existing chapter audio into the same
 stack, once Louis has looked at the devotional one.
+
+## 2026-08-16T11:58:33Z (hourly chapter notes run)
+Chapter: 2 Chronicles 6 | Duration: 12 min | Sections: 14 | Cards: 54 | Status: pass
+Next up: 2 Chronicles 7
