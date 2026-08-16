@@ -33,6 +33,8 @@ import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient
 import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import { normalizeStudyMode, studyUnitLabel, usesUnifiedStudyShell, type StudyMode } from "@/lib/studyMode";
 import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
+import { getTriviaBook } from "../lib/triviaGameData";
+import TriviaGamePlayer from "./TriviaGamePlayer";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, getCompletedChaptersByBooks, markChapterDone } from "../lib/readingProgress";
@@ -12690,8 +12692,15 @@ Before we understand redemption, we need to understand what God made humanity fo
 
     const noteSections = getBibleReaderStudySections(book, chapter);
     const chapterLabel = `${book} ${chapter}`;
-    const triviaHref = `/bible-trivia/${book.toLowerCase().replace(/\s+/g, "-")}/${chapter}`;
-    const discussionSlug = `devotional-${currentDevotionalId}-day-${day.day_number}`;
+    // The discussion the devotional already has, not a new empty one. Same slug
+    // the devotional day page uses, so the existing comments come with it.
+    const discussionSlug = `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
+    const triviaBookKey = (() => {
+      const raw = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
+      return raw === "songofsolomon" ? "songofsongs" : raw;
+    })();
+    const triviaBook = getTriviaBook(triviaBookKey);
+    const triviaChapter = getTriviaChapter(triviaBookKey, chapter);
 
     const cards: Array<{ key: "notes" | "trivia" | "discussion"; title: string; body: string; icon: ReactNode }> = [
       {
@@ -12785,22 +12794,40 @@ Before we understand redemption, we need to understand what God made humanity fo
                     ) : null}
 
                     {card.key === "trivia" ? (
-                      <Link
-                        href={triviaHref}
-                        className="inline-flex w-full items-center justify-center rounded-[16px] bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-105"
-                      >
-                        Play {chapterLabel} Trivia
-                      </Link>
+                      // Plays here, in the dashboard. It used to link out to a
+                      // separate trivia page, which threw you out of the app.
+                      triviaBook && triviaChapter ? (
+                        <TriviaGamePlayer
+                          bookName={triviaBook.name}
+                          bookSlug={triviaBook.routeSlug}
+                          chapter={triviaChapter}
+                          compact
+                        />
+                      ) : (
+                        <p className="text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+                          Trivia for {chapterLabel} is coming soon.
+                        </p>
+                      )
                     ) : null}
 
                     {card.key === "discussion" ? (
-                      <CommentSection
-                        articleSlug={discussionSlug}
-                        headingText=""
-                        placeholderText={`Share what stood out in ${chapterLabel}.`}
-                        submitButtonText="Send"
-                        variant="plain"
-                      />
+                      <>
+                        <div className="rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-surface-soft,#f8fbff)] p-4">
+                          <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Discussion Question</p>
+                          <p className="mt-2 text-base font-black leading-6 text-[var(--bb-text-primary,#111827)]">
+                            What stood out to you most in {chapterLabel}?
+                          </p>
+                        </div>
+                        <div className="mt-4">
+                          <CommentSection
+                            articleSlug={discussionSlug}
+                            headingText=""
+                            placeholderText="Start Typing Here"
+                            submitButtonText="Send"
+                            variant="plain"
+                          />
+                        </div>
+                      </>
                     ) : null}
                   </div>
                 ) : null}
