@@ -2270,6 +2270,7 @@ export default function DashboardJourneyExperience({
   const [progressCelebrationKey, setProgressCelebrationKey] = useState(0);
   const [showCompletionPanel, setShowCompletionPanel] = useState(false);
   const completionPanelDismissedRef = useRef(false);
+  const [devotionalOpenSupportCard, setDevotionalOpenSupportCard] = useState<"notes" | "trivia" | "discussion" | null>(null);
   const [suppressCompletionPanelForLoadedChapter, setSuppressCompletionPanelForLoadedChapter] = useState(false);
   const [completedTasksExpanded, setCompletedTasksExpanded] = useState(false);
   const [isLoadingNextChapter, setIsLoadingNextChapter] = useState(false);
@@ -3401,6 +3402,11 @@ export default function DashboardJourneyExperience({
       .map((task, index) => getTaskCardCopy(task, index).title),
   };
   const shouldShowCompletionPanel =
+    // Bible in One Year has no "Congratulations, continue to the next one"
+    // panel - Day 1 simply leads to Day 2. The devotional middle is a carbon
+    // copy of Bible in One Year, so this old devotional popup has no place in
+    // it. Nothing here is brought over except the days and their content.
+    !devotionalDashboardActive &&
     !isChecklistSyncing &&
     !selectedBibleYearSeriesDay &&
     allDone &&
@@ -12557,11 +12563,154 @@ Before we understand redemption, we need to understand what God made humanity fo
           readingComplete ? "border-emerald-200 bg-emerald-50/80" : "border-[var(--bb-card-border,#dbe7f4)] bg-white"
         }`}>
           <p className={`text-[12px] font-black uppercase tracking-[0.22em] ${readingComplete ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>Today&apos;s Lesson</p>
-          <p className="mx-auto mt-2 max-w-[34rem] text-[15px] font-medium leading-6 text-[#20345f] sm:text-[16px] sm:leading-7">
-            {overview || "Today's lesson is being prepared."}
-          </p>
+          {/* Rendered through the same markdown component the devotional page
+              uses. Dumping the raw text made it unreadable. */}
+          <div className="mx-auto mt-2 max-w-[34rem] text-left text-[15px] font-medium leading-7 text-[#20345f] sm:text-[16px]">
+            {overview ? (
+              <ChapterNotesMarkdown compactMobile databaseTermMode="light">
+                {overview}
+              </ChapterNotesMarkdown>
+            ) : (
+              <p className="text-center">Today&apos;s lesson is being prepared.</p>
+            )}
+          </div>
         </div>
+
+        {renderDevotionalSupportCards(day)}
       </article>
+    );
+  }
+
+  /**
+   * EXTRA BIBLE STUDY HELP for the devotional, matching Bible in One Year:
+   * study notes, trivia and discussion for the day's chapter.
+   */
+  function renderDevotionalSupportCards(day: CurrentStudyChapter) {
+    const book = day.bible_reading_book ? String(day.bible_reading_book) : null;
+    const chapter = Number(day.bible_reading_chapter || 0);
+    if (!book || chapter <= 0) return null;
+
+    const noteSections = getBibleReaderStudySections(book, chapter);
+    const chapterLabel = `${book} ${chapter}`;
+    const triviaHref = `/bible-trivia/${book.toLowerCase().replace(/\s+/g, "-")}/${chapter}`;
+    const discussionSlug = `devotional-${currentDevotionalId}-day-${day.day_number}`;
+
+    const cards: Array<{ key: "notes" | "trivia" | "discussion"; title: string; body: string; icon: ReactNode }> = [
+      {
+        key: "notes",
+        title: "Study Notes",
+        body: `Key insights and takeaways from ${chapterLabel}.`,
+        icon: (
+          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z" />
+          </svg>
+        ),
+      },
+      {
+        key: "trivia",
+        title: "Trivia",
+        body: `Test your understanding of ${chapterLabel}.`,
+        icon: (
+          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M9.3 9a3 3 0 1 1 5.4 1.8c-.7.9-1.7 1.3-2.2 2.2" />
+            <path d="M12 17h.01" />
+          </svg>
+        ),
+      },
+      {
+        key: "discussion",
+        title: "Discussion",
+        body: "Join the conversation and share your thoughts.",
+        icon: (
+          <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        ),
+      },
+    ];
+
+    return (
+      <div className="mt-5">
+        <p className="text-center text-[13px] font-black uppercase tracking-[0.24em] text-[var(--bb-accent,#2f7fe8)]">
+          Extra Bible Study Help
+        </p>
+        <div className="mt-3 grid gap-3">
+          {cards.map((card) => {
+            const isOpen = devotionalOpenSupportCard === card.key;
+            return (
+              <div
+                key={card.key}
+                className="overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-white shadow-[0_12px_24px_rgba(38,63,99,0.08)]"
+              >
+                <button
+                  type="button"
+                  onClick={() => setDevotionalOpenSupportCard(isOpen ? null : card.key)}
+                  className="flex w-full items-center gap-3 px-4 py-3.5 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                  aria-expanded={isOpen}
+                >
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-accent-soft,#f2f7ff)] text-[var(--bb-accent,#2f7fe8)]">
+                    {card.icon}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-[15px] font-black text-[var(--bb-text-primary,#111827)]">{card.title}</span>
+                    <span className="mt-0.5 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">{card.body}</span>
+                  </span>
+                  <span className="shrink-0 text-[var(--bb-accent,#2f7fe8)]" aria-hidden="true">{isOpen ? "−" : "+"}</span>
+                </button>
+
+                {isOpen ? (
+                  <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
+                    {card.key === "notes" ? (
+                      noteSections.length ? (
+                        <div className="grid gap-4">
+                          {noteSections.map((section) => (
+                            <div key={`${section.reference}-${section.title}`}>
+                              <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+                                {section.reference}
+                              </p>
+                              <p className="mt-1 text-[15px] font-black text-[var(--bb-text-primary,#111827)]">
+                                {section.icon} {section.title}
+                              </p>
+                              <p className="mt-1 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+                                {section.summary}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+                          Study notes for {chapterLabel} are being written.
+                        </p>
+                      )
+                    ) : null}
+
+                    {card.key === "trivia" ? (
+                      <Link
+                        href={triviaHref}
+                        className="inline-flex w-full items-center justify-center rounded-[16px] bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-105"
+                      >
+                        Play {chapterLabel} Trivia
+                      </Link>
+                    ) : null}
+
+                    {card.key === "discussion" ? (
+                      <CommentSection
+                        articleSlug={discussionSlug}
+                        headingText=""
+                        placeholderText={`Share what stood out in ${chapterLabel}.`}
+                        submitButtonText="Send"
+                        variant="plain"
+                      />
+                    ) : null}
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+      </div>
     );
   }
 
@@ -18494,8 +18643,10 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
       </ModalShell>
 
+      {/* Old devotional popup. Bible in One Year does not interrupt you when a
+          day is set, so the devotional middle does not either. */}
       <ModalShell
-        isOpen={studyDashboardHandoffModal !== null}
+        isOpen={studyDashboardHandoffModal !== null && !devotionalDashboardActive}
         onClose={() => setStudyDashboardHandoffModal(null)}
         backdropColor="bg-black/45"
         scrollable={false}
