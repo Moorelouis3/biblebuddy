@@ -188,6 +188,17 @@ export default function BibleChapterPage() {
   const hideEmbedControls = searchParams.get("hideEmbedControls") === "1";
   const hideDiscussion = searchParams.get("hideDiscussion") === "1";
 
+  /* ── Genesis 1 prototype ─────────────────────────────────────────────────
+     Genesis 1 is the testing ground for the new Study Mode, so it gets a
+     stripped back reader shell: a chapter and translation row, three tabs,
+     and one content area underneath. Every other chapter, and every embed,
+     keeps the existing layout exactly as it was. */
+  const isGenesisOnePrototype =
+    book.trim().toLowerCase() === "genesis" &&
+    chapter === 1 &&
+    !hideReaderChrome &&
+    !isChapterTextEmbed;
+
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -257,6 +268,15 @@ export default function BibleChapterPage() {
   const [reviewDone, setReviewDone] = useState(false);
   const [triviaDone, setTriviaDone] = useState(false);
   const [scrambledDone, setScrambledDone] = useState(false);
+  const [genesisOneTab, setGenesisOneTab] = useState<"play" | "trivia" | "scrambled">("play");
+  const [genesisOneChapterMenuOpen, setGenesisOneChapterMenuOpen] = useState(false);
+  // The chapter dropdown navigates books and chapters in place rather than
+  // handing off to the full books modal.
+  const [genesisOneMenuBook, setGenesisOneMenuBook] = useState<string | null>(null);
+  const [genesisOneMenuShowBooks, setGenesisOneMenuShowBooks] = useState(false);
+  const [genesisOneTranslationMenuOpen, setGenesisOneTranslationMenuOpen] = useState(false);
+  const genesisOneChapterMenuRef = useRef<HTMLDivElement | null>(null);
+  const genesisOneTranslationMenuRef = useRef<HTMLDivElement | null>(null);
   const [showBooksModal, setShowBooksModal] = useState(false);
   const [booksModalSelectedBook, setBooksModalSelectedBook] = useState<string | null>(null);
   const reflectionSectionRef = useRef<HTMLDivElement | null>(null);
@@ -1632,10 +1652,15 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
   const chapterReflectionQuestion = useMemo(
     () =>
-      studyReflectionQuestion ||
-      getBibleStudyReflectionQuestion(bookDisplayName, chapter) ||
-      buildChapterReflectionQuestion(bookDisplayName, chapter, chapterSummary),
-    [studyReflectionQuestion, bookDisplayName, chapter, chapterSummary]
+      // The stored questions are matched on chapter number alone, so an
+      // unrelated devotional can land on this chapter. The prototype asks one
+      // plain question anyone can answer straight after reading.
+      isGenesisOnePrototype
+        ? `After reading ${bookDisplayName} ${chapter}, what is the one thing that stood out to you most, or that you learned about God in this chapter?`
+        : studyReflectionQuestion ||
+          getBibleStudyReflectionQuestion(bookDisplayName, chapter) ||
+          buildChapterReflectionQuestion(bookDisplayName, chapter, chapterSummary),
+    [isGenesisOnePrototype, studyReflectionQuestion, bookDisplayName, chapter, chapterSummary]
   );
 
   useEffect(() => {
@@ -2173,6 +2198,23 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
   // Translation menu click-outside handler - must be before any early returns
   useEffect(() => {
+    if (!genesisOneChapterMenuOpen && !genesisOneTranslationMenuOpen) return;
+
+    function handlePointerDown(event: MouseEvent | TouchEvent) {
+      const target = event.target as Node;
+      if (!genesisOneChapterMenuRef.current?.contains(target)) setGenesisOneChapterMenuOpen(false);
+      if (!genesisOneTranslationMenuRef.current?.contains(target)) setGenesisOneTranslationMenuOpen(false);
+    }
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+    };
+  }, [genesisOneChapterMenuOpen, genesisOneTranslationMenuOpen]);
+
+  useEffect(() => {
     if (!translationMenuOpen) return;
 
     function onDocPointerDown(e: PointerEvent) {
@@ -2331,10 +2373,18 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
   }
 
   return (
-    <div className={isDashboardEmbed ? "dashboard-bible-reader-embed bg-[var(--bb-card,#ffffff)] px-0 py-0" : "min-h-screen bg-gray-50 py-8 px-4"}>
+    <div className={
+      isDashboardEmbed
+        ? "dashboard-bible-reader-embed bg-[var(--bb-card,#ffffff)] px-0 py-0"
+        : isGenesisOnePrototype
+          // The breadcrumb above already supplies the top spacing, so the
+          // prototype does not add another 2rem on top of it.
+          ? "min-h-screen bg-gray-50 px-4 pt-0 pb-8"
+          : "min-h-screen bg-gray-50 py-8 px-4"
+    }>
       <div className={isDashboardEmbed ? "mx-auto max-w-4xl px-2 py-3 text-[var(--bb-text-primary,#111827)] sm:px-4 sm:py-4" : "max-w-4xl mx-auto"}>
         {/* BACK LINK */}
-        {!isDashboardEmbed ? (
+        {!isDashboardEmbed && !isGenesisOnePrototype ? (
           <div className="mb-4 text-xs sm:text-sm text-blue-600">
             <Link href={backLink} className="hover:underline">
               {backText}
@@ -2343,7 +2393,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         ) : null}
 
         {/* PAGE HEADER */}
-        {!hideReaderChrome ? (
+        {!hideReaderChrome && !isGenesisOnePrototype ? (
           <div className="mb-1 flex items-start justify-between gap-3">
             <h1 className="text-3xl font-bold">
               {bookDisplayName} {chapter}
@@ -2352,7 +2402,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         ) : null}
 
         {/* LOUIS INSTRUCTION - above the control bar */}
-        {!hideReaderChrome ? <div className="mb-4 flex items-start gap-3">
+        {!hideReaderChrome && !isGenesisOnePrototype ? <div className="mb-4 flex items-start gap-3">
           <LouisAvatar mood="bible" size={40} />
           <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
             <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
@@ -2372,7 +2422,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         </div> : null}
 
         {/* READER CONTROL BAR */}
-        {!hideReaderChrome ? <div className="relative z-20 mb-5">
+        {!hideReaderChrome && !isGenesisOnePrototype ? <div className="relative z-20 mb-5">
           <div className="rounded-[26px] border-0 bg-transparent px-0 py-0 shadow-none backdrop-blur md:border md:border-blue-100 md:bg-white/90 md:px-3 md:py-2.5 md:shadow-sm">
             <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
               {/* Left: Previous + Book */}
@@ -2856,8 +2906,250 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           </div>
         ) : null}
 
+        {/* GENESIS 1 PROTOTYPE HEADER: chapter + translation, then the tabs */}
+        {isGenesisOnePrototype ? (
+          <div className="relative z-30 mb-4 overflow-visible rounded-[20px] border border-slate-200 bg-white shadow-sm">
+            <div className="flex items-center justify-between gap-3 border-b border-slate-200 px-3 py-2.5">
+              <div className="relative" ref={genesisOneChapterMenuRef}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setGenesisOneChapterMenuOpen((open) => {
+                      if (open) return false;
+                      // Always reopen on the current book's chapters.
+                      setGenesisOneMenuShowBooks(false);
+                      setGenesisOneMenuBook(null);
+                      return true;
+                    });
+                    setGenesisOneTranslationMenuOpen(false);
+                  }}
+                  aria-expanded={genesisOneChapterMenuOpen}
+                  className="flex items-center gap-1.5 rounded-xl px-2 py-1.5 text-lg font-black text-slate-900 transition hover:bg-slate-100"
+                >
+                  {bookDisplayName} {chapter}
+                  <span aria-hidden="true" className="text-xs text-slate-400">▼</span>
+                </button>
+
+                {genesisOneChapterMenuOpen ? (() => {
+                  const menuBook = genesisOneMenuBook || bookDisplayName;
+                  return (
+                    <div className="absolute left-0 top-full z-50 mt-2 w-[17rem] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.18)]">
+                      {genesisOneMenuShowBooks ? (
+                        <>
+                          <div className="flex items-center justify-between border-b border-slate-200 px-3 py-2">
+                            <span className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">
+                              Books
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setGenesisOneMenuShowBooks(false)}
+                              className="rounded-lg px-2 py-1 text-xs font-black text-sky-600 transition hover:bg-slate-50"
+                            >
+                              Back
+                            </button>
+                          </div>
+                          <div className="max-h-[16rem] overflow-y-auto p-2">
+                            {ALL_BIBLE_BOOKS_SORTED.map((b) => (
+                              <button
+                                key={b}
+                                type="button"
+                                onClick={() => {
+                                  setGenesisOneMenuBook(b);
+                                  setGenesisOneMenuShowBooks(false);
+                                }}
+                                className={`block w-full rounded-lg px-3 py-2 text-left text-sm font-bold transition hover:bg-sky-50 ${
+                                  b === menuBook ? "text-sky-600" : "text-slate-700"
+                                }`}
+                              >
+                                {b}
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex items-center justify-between border-b border-slate-200 px-3 py-2">
+                            <span className="min-w-0 truncate text-xs font-black uppercase tracking-[0.14em] text-slate-500">
+                              {menuBook}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setGenesisOneMenuShowBooks(true)}
+                              className="shrink-0 rounded-lg px-2 py-1 text-xs font-black text-sky-600 transition hover:bg-slate-50"
+                            >
+                              All books
+                            </button>
+                          </div>
+                          <div className="max-h-[16rem] overflow-y-auto p-2">
+                            <div className="grid grid-cols-6 gap-1.5">
+                              {Array.from({ length: getBookTotalChapters(menuBook) }, (_, i) => i + 1).map((ch) => {
+                                const isCurrent = menuBook === bookDisplayName && ch === chapter;
+                                return (
+                                  <button
+                                    key={ch}
+                                    type="button"
+                                    onClick={() => {
+                                      setGenesisOneChapterMenuOpen(false);
+                                      setGenesisOneMenuShowBooks(false);
+                                      setGenesisOneMenuBook(null);
+                                      if (!isCurrent) router.push(chapterReaderHref(menuBook, ch));
+                                    }}
+                                    className={`rounded-lg px-1 py-1.5 text-xs font-black transition ${
+                                      isCurrent
+                                        ? "bg-sky-500 text-white"
+                                        : "bg-slate-50 text-slate-700 hover:bg-sky-50"
+                                    }`}
+                                  >
+                                    {ch}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  );
+                })() : null}
+              </div>
+
+              <div className="relative" ref={genesisOneTranslationMenuRef}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setGenesisOneTranslationMenuOpen((open) => !open);
+                    setGenesisOneChapterMenuOpen(false);
+                  }}
+                  aria-expanded={genesisOneTranslationMenuOpen}
+                  className="flex items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-black text-slate-800 transition hover:bg-slate-50"
+                >
+                  {translation.toUpperCase()}
+                  <span aria-hidden="true" className="text-xs text-slate-400">▼</span>
+                </button>
+
+                {genesisOneTranslationMenuOpen ? (
+                  <div className="absolute right-0 top-full z-50 mt-2 w-32 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.18)]">
+                    {([
+                      { value: "kjv", label: "KJV" },
+                      { value: "asv", label: "ASV" },
+                      { value: "web", label: "WEB" },
+                    ] as const).map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => {
+                          setTranslation(option.value);
+                          setGenesisOneTranslationMenuOpen(false);
+                        }}
+                        className={`flex w-full items-center justify-between px-4 py-2.5 text-sm font-black transition ${
+                          translation === option.value
+                            ? "bg-sky-500 text-white"
+                            : "text-slate-700 hover:bg-slate-50"
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </div>
+
+            <div className="flex">
+              {([
+                { id: "play", icon: "📖", label: "Scripture" },
+                { id: "trivia", icon: "❓", label: "Trivia" },
+                { id: "scrambled", icon: "🧩", label: "Scrambled" },
+              ] as const).map((tab) => {
+                const active = genesisOneTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setGenesisOneTab(tab.id)}
+                    aria-current={active ? "page" : undefined}
+                    className={`flex flex-1 items-center justify-center gap-1.5 border-b-2 px-2 py-3 text-sm font-black transition ${
+                      active
+                        ? "border-sky-500 text-sky-600"
+                        : "border-transparent text-slate-500 hover:text-slate-800"
+                    }`}
+                  >
+                    <span aria-hidden="true">{tab.icon}</span>
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
+
+        {/* GENESIS 1 PROTOTYPE: trivia and scrambled render inside the same
+            frame rather than sending the reader off to another page. */}
+        {isGenesisOnePrototype && genesisOneTab === "trivia" ? (
+          <div className="mb-6 overflow-hidden rounded-[20px] border border-slate-200 bg-gray-50">
+            {triviaChapterPack ? (
+              <TriviaGamePlayer
+                bookName={bookDisplayName}
+                bookSlug={triviaRouteSlug}
+                chapter={triviaChapterPack}
+                compact
+                hideSkipButton
+                onClose={() => setGenesisOneTab("play")}
+                onComplete={() => {
+                  if (!userId) return;
+                  const chapterLabel = `${bookDisplayName} ${chapter}`;
+                  supabase
+                    .from("master_actions")
+                    .select("id")
+                    .eq("user_id", userId)
+                    .eq("action_type", ACTION_TYPE.trivia_chapter_completed)
+                    .ilike("action_label", `${chapterLabel}%`)
+                    .limit(1)
+                    .maybeSingle()
+                    .then(({ data }) => setTriviaDone(!!data));
+                }}
+              />
+            ) : (
+              <p className="px-4 py-8 text-center text-sm font-semibold text-slate-500">
+                Trivia is not available for this chapter yet.
+              </p>
+            )}
+          </div>
+        ) : null}
+
+        {isGenesisOnePrototype && genesisOneTab === "scrambled" ? (
+          <div className="mb-6 overflow-hidden rounded-[20px] border border-slate-200 bg-[#f5f7fb]">
+            {scrambledChapterPack ? (
+              <ScrambledGamePlayer
+                bookName={bookDisplayName}
+                bookSlug={triviaRouteSlug}
+                chapter={scrambledChapterPack}
+                compact
+                onClose={() => setGenesisOneTab("play")}
+                onComplete={() => {
+                  if (!userId) return;
+                  const chapterLabel = `${bookDisplayName} ${chapter}`;
+                  supabase
+                    .from("master_actions")
+                    .select("id")
+                    .eq("user_id", userId)
+                    .eq("action_type", ACTION_TYPE.scrambled_chapter_completed)
+                    .ilike("action_label", `${chapterLabel}%`)
+                    .limit(1)
+                    .maybeSingle()
+                    .then(({ data }) => setScrambledDone(!!data));
+                }}
+              />
+            ) : (
+              <p className="px-4 py-8 text-center text-sm font-semibold text-slate-500">
+                Scrambled is not available for this chapter yet.
+              </p>
+            )}
+          </div>
+        ) : null}
+
         {/* VERSE BLOCK */}
-        <div
+        {isGenesisOnePrototype && genesisOneTab !== "play" ? null : <div
           ref={verseContainerRef}
           className={`bg-[var(--bb-card,#ffffff)] mb-6 ${
             hideReaderChrome
@@ -2873,14 +3165,19 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             audioSrc={chapterAudioSrc}
             backgroundMusicSrcs={getBibleReadingBackgroundTracks(bookDisplayName, chapter)}
             backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
-            aiDisclosure={Boolean(chapterAudioSrc)}
+            aiDisclosure={isGenesisOnePrototype ? false : Boolean(chapterAudioSrc)}
+            variant={isGenesisOnePrototype ? "transport" : "default"}
           />
           {sections.map((section) => (
             <div key={section.id} className="mb-8 last:mb-0">
-              <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                {section.emoji ? <span className="text-2xl">{section.emoji}</span> : null}
-                <span>{section.title}</span>
-              </h2>
+              {/* The prototype header already names the chapter, so the
+                  section title would just repeat it. */}
+              {isGenesisOnePrototype ? null : (
+                <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  {section.emoji ? <span className="text-2xl">{section.emoji}</span> : null}
+                  <span>{section.title}</span>
+                </h2>
+              )}
               <div className="space-y-5">
                 {/* Always use VerseHighlighter for all chapters */}
                 {section.verses && section.verses.length > 0 && (
@@ -2915,17 +3212,38 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               </div>
             </div>
           ))}
-        </div>
+        </div>}
 
+        {/* GENESIS 1 PROTOTYPE: Mark Complete kept, but as one slim button
+            under the Scripture rather than a block above it. */}
+        {isGenesisOnePrototype && genesisOneTab === "play" ? (
+          <button
+            type="button"
+            onClick={() => {
+              if (isSaving || isCompleted) return;
+              void handleMarkFinished();
+            }}
+            disabled={isSaving || isCompleted}
+            className={`mb-6 w-full rounded-2xl border px-4 py-3 text-sm font-black transition ${
+              isCompleted
+                ? "border-emerald-300 bg-emerald-50 text-emerald-800"
+                : isSaving
+                  ? "cursor-not-allowed border-sky-200 bg-sky-200 text-white"
+                  : "border-sky-500 bg-sky-500 text-white hover:bg-sky-400"
+            }`}
+          >
+            {isCompleted ? "Chapter Completed" : isSaving ? "Saving..." : "Mark Chapter Completed"}
+          </button>
+        ) : null}
 
-        {!hideDiscussion ? <div className="mb-10" ref={reflectionSectionRef}>
+        {!hideDiscussion && (!isGenesisOnePrototype || genesisOneTab === "play") ? <div className="mb-10" ref={reflectionSectionRef}>
           <div className={`mx-auto mb-4 max-w-2xl rounded-2xl border bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm transition-all duration-500 ${
             highlightReflectionSection
               ? "border-blue-400 ring-4 ring-blue-200 shadow-[0_0_0_6px_rgba(191,219,254,0.55)]"
               : "border-blue-100"
           }`}>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
-              Chapter Reflection
+              {isGenesisOnePrototype ? "Chapter Discussion" : "Chapter Reflection"}
             </p>
             <p className="mt-3 text-xl font-black leading-snug text-gray-950">
               {chapterReflectionQuestion}
@@ -2937,9 +3255,13 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           }`}>
             <CommentSection
               articleSlug={chapterDiscussionSlug}
-              headingText={`${bookDisplayName} ${chapter} Reflection Answers`}
+              headingText={
+                isGenesisOnePrototype
+                  ? `${bookDisplayName} ${chapter} Discussion`
+                  : `${bookDisplayName} ${chapter} Reflection Answers`
+              }
               placeholderText="Start Typing Here"
-              submitButtonText="Post Reflection"
+              submitButtonText={isGenesisOnePrototype ? "Post Comment" : "Post Reflection"}
             />
           </div>
         </div> : null}

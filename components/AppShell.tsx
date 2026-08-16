@@ -2371,9 +2371,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && !pathname.startsWith("/dashboard");
   const breadcrumbItems = buildBreadcrumbs(pathname);
+  // Genesis 1 is the clean-reader prototype and supplies its own chapter
+  // navigation, so it opts out of the breadcrumb row. Genesis 1 only.
+  const isGenesisOneReader = /^\/Bible\/genesis\/1\/?$/i.test(pathname || "");
   const shouldShowBreadcrumbs =
     isLoggedIn &&
     !isBarePage &&
+    !isGenesisOneReader &&
     !pathname?.startsWith("/study-groups") &&
     breadcrumbItems.length > 0;
   const showDashboardStatusButtons = false;

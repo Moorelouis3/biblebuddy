@@ -1,11 +1,17 @@
 /**
  * Genesis 1 Study Mode - prototype only.
  *
- * The existing study notes are stored per verse RANGE (Genesis 1:1-5) with the
- * phrase notes as free text inside them. Nothing in that data says which verse
- * a phrase belongs to, and the phrase titles do not match the KJV wording
- * ("Formless And Empty" vs "without form, and void"), so the phrases cannot be
- * matched to verses automatically.
+ * The existing study notes are stored per verse RANGE (Genesis 1:1-2, 1:3-5,
+ * and so on, parsed out of lib/genesisOneSource.ts) with the phrase notes as
+ * free text inside them. Nothing in that data says which verse a phrase
+ * belongs to, and the phrase titles do not match the KJV wording ("Without
+ * Form And Void" is one note but "Darkness Was Upon The Face Of The Deep" is
+ * another), so the phrases cannot be matched to verses automatically.
+ *
+ * `noteTitle` therefore has to be the heading EXACTLY as it is written in
+ * lib/genesisOneSource.ts, minus its emoji. If a heading is reworded there,
+ * the matching noteTitle here has to be reworded with it or the card loses its
+ * note.
  *
  * This file supplies the missing link for Genesis 1 and nothing else:
  *   - which verse each phrase sits under
@@ -58,165 +64,519 @@ export const GENESIS_ONE_PHRASES: GenesisOnePhrase[] = [
   },
   {
     verse: 1,
-    noteTitle: "God Created",
-    underline: "God created",
-    preview: "Creating from nothing is a power that belongs to God alone.",
-  },
-  {
-    verse: 1,
-    noteTitle: "The Heavens And The Earth",
-    underline: "the heaven and the earth",
-    preview: "A Bible way of saying everything - the skies above and the ground below.",
+    noteTitle: "Created The Heaven And The Earth",
+    underline: "created the heaven and the earth",
+    preview: "This is the Bible’s summary statement for creation.",
   },
   {
     verse: 2,
-    noteTitle: "Formless And Empty",
+    noteTitle: "Without Form And Void",
     underline: "without form, and void",
-    preview: "The earth was not ruined, just not yet arranged for life. What is formless, God will form.",
+    preview: "The earth already existed, but it was not yet ready for life.",
   },
   {
     verse: 2,
-    noteTitle: "The Deep",
-    underline: "the face of the deep",
-    preview: "Deep water meant danger and chaos to ancient readers - and it is already under God's rule.",
+    noteTitle: "Darkness Was Upon The Face Of The Deep",
+    underline: "darkness was upon the face of the deep",
+    preview: "Before God spoke light into existence, darkness covered the world.",
   },
   {
     verse: 2,
-    noteTitle: "The Spirit Of God Was Hovering",
+    noteTitle: "The Spirit Of God Moved",
     underline: "the Spirit of God moved",
-    preview: "The world is unfinished, but it is not abandoned. God is already present over it.",
+    preview: "God was never absent from His creation.",
+  },
+  {
+    verse: 2,
+    noteTitle: "Upon The Face Of The Waters",
+    underline: "upon the face of the waters",
+    preview: "“The face of the waters” simply means the surface of the water.",
   },
   {
     verse: 3,
     noteTitle: "Let There Be Light",
     underline: "Let there be light",
-    preview: "God's first recorded words - and light arrives before the sun exists.",
+    preview: "These are the first recorded words God speaks in the Bible.",
+  },
+  {
+    verse: 3,
+    noteTitle: "And There Was Light",
+    underline: "and there was light",
+    preview: "God does not struggle, search for materials, or build with tools.",
   },
   {
     verse: 4,
     noteTitle: "God Saw That It Was Good",
     underline: "God saw the light, that it was good",
-    preview: "Good means fitting and working as intended, not simply pretty.",
+    preview: "When God calls something “good,” He means it perfectly fulfills the purpose for which He created it.",
+  },
+  {
+    verse: 4,
+    noteTitle: "Divided The Light From The Darkness",
+    underline: "God divided the light from the darkness",
+    preview: "God separates light from darkness.",
   },
   {
     verse: 5,
-    noteTitle: "Evening And Morning",
-    underline: "the evening and the morning",
-    preview: "Darkness first, then light. From page one, darkness does not get the final word.",
+    noteTitle: "Called The Light Day",
+    underline: "God called the light Day",
+    preview: "God gives the light a name.",
+  },
+  {
+    verse: 5,
+    noteTitle: "Called The Darkness Night",
+    underline: "the darkness he called Night",
+    preview: "God also gives darkness a name.",
+  },
+  {
+    verse: 5,
+    noteTitle: "Evening And Morning: The First Day",
+    underline: "the evening and the morning were the first day",
+    preview: "This marks the completion of the first day of creation.",
   },
   {
     verse: 6,
-    noteTitle: "Let There Be An Expanse",
+    noteTitle: "Let There Be A Firmament",
     underline: "Let there be a firmament",
-    preview: "God makes the sky before filling it with birds. He prepares places before filling them.",
+    preview: "The word “firmament” refers to the great expanse or sky above the earth.",
   },
   {
     verse: 6,
-    noteTitle: "Let It Divide",
+    noteTitle: "In The Midst Of The Waters",
+    underline: "in the midst of the waters",
+    preview: "The phrase “in the midst” means in the middle.",
+  },
+  {
+    verse: 6,
+    noteTitle: "Divide The Waters From The Waters",
     underline: "let it divide the waters from the waters",
-    preview: "Dividing here is order, not damage. Life needs boundaries.",
+    preview: "God continues His work of separation.",
+  },
+  {
+    verse: 7,
+    noteTitle: "And God Made The Firmament",
+    underline: "And God made the firmament",
+    preview: "Verse 6 records what God said.",
+  },
+  {
+    verse: 7,
+    noteTitle: "Divided The Waters Which Were Under The Firmament From The Waters Which Were Above The Firmament",
+    underline: "divided the waters which were under the firmament from the waters which were above the firmament",
+    preview: "Water now sits in two places.",
+  },
+  {
+    verse: 7,
+    noteTitle: "And It Was So",
+    underline: "and it was so",
+    preview: "This short phrase carries enormous weight.",
+  },
+  {
+    verse: 8,
+    noteTitle: "Called The Firmament Heaven",
+    underline: "God called the firmament Heaven",
+    preview: "God names the firmament Heaven.",
+  },
+  {
+    verse: 8,
+    noteTitle: "Evening And Morning: The Second Day",
+    underline: "the evening and the morning were the second day",
+    preview: "The second day comes to an end.",
   },
   {
     verse: 9,
-    noteTitle: "Let The Waters Be Gathered",
+    noteTitle: "Let The Waters Be Gathered Together",
     underline: "Let the waters under the heaven be gathered together",
-    preview: "The sea does not choose its own place. What feels overwhelming answers to God.",
+    preview: "Until this point, the earth is described as being covered with water.",
   },
   {
     verse: 9,
     noteTitle: "Let The Dry Land Appear",
     underline: "let the dry land appear",
-    preview: "Dry land means stability - God making a home before placing life in it.",
+    preview: "As the waters are gathered, dry land rises into view.",
+  },
+  {
+    verse: 10,
+    noteTitle: "Called The Dry Land Earth",
+    underline: "God called the dry land Earth",
+    preview: "God gives the dry land a name: Earth.",
+  },
+  {
+    verse: 10,
+    noteTitle: "Called The Gathering Of Waters Seas",
+    underline: "the gathering together of the waters called he Seas",
+    preview: "The gathered waters are now called Seas.",
   },
   {
     verse: 11,
-    noteTitle: "Let The Earth Sprout Vegetation",
+    noteTitle: "Let The Earth Bring Forth Grass",
     underline: "Let the earth bring forth grass",
-    preview: "The earth answers God's word by becoming fruitful. The physical world matters to Him.",
+    preview: "For the first time, living things appear in creation.",
   },
   {
     verse: 11,
-    noteTitle: "Seed",
+    noteTitle: "Herb Yielding Seed",
+    underline: "the herb yielding seed",
+    preview: "God creates plants that can reproduce.",
+  },
+  {
+    verse: 11,
+    noteTitle: "Fruit Tree Yielding Fruit",
+    underline: "the fruit tree yielding fruit",
+    preview: "God creates trees that produce fruit.",
+  },
+  {
+    verse: 11,
+    noteTitle: "Whose Seed Is In Itself",
     underline: "whose seed is in itself",
-    preview: "A small word with a long future - Genesis keeps returning to offspring and promise.",
+    preview: "God did not make plants that need replanting by hand.",
+  },
+  {
+    verse: 12,
+    noteTitle: "And The Earth Brought Forth Grass",
+    underline: "And the earth brought forth grass",
+    preview: "In verse 11 God gave the command.",
+  },
+  {
+    verse: 12,
+    noteTitle: "Herb Yielding Seed After His Kind",
+    underline: "herb yielding seed after his kind",
+    preview: "“After his kind” means each plant produces its own type.",
+  },
+  {
+    verse: 12,
+    noteTitle: "And The Tree Yielding Fruit, Whose Seed Was In Itself, After His Kind",
+    underline: "the tree yielding fruit, whose seed was in itself, after his kind",
+    preview: "Trees get their own mention, separate from grass and herbs.",
+  },
+  {
+    verse: 12,
+    noteTitle: "God Saw That It Was Good",
+    underline: "God saw that it was good",
+    preview: "God looks at the land, seas, plants, and trees and calls them good.",
+  },
+  {
+    verse: 13,
+    noteTitle: "Evening And Morning: The Third Day",
+    underline: "the evening and the morning were the third day",
+    preview: "The third day comes to an end.",
   },
   {
     verse: 14,
-    noteTitle: "Lights In The Expanse",
-    underline: "lights in the firmament",
-    preview: "God fills the sky He made on day two. He prepares a place, then fills it.",
+    noteTitle: "Let There Be Lights In The Firmament Of The Heaven",
+    underline: "Let there be lights in the firmament of the heaven",
+    preview: "On Day One, God created light.",
   },
   {
     verse: 14,
-    noteTitle: "For Signs And For Seasons",
-    underline: "for signs, and for seasons",
-    preview: "Sun, moon and stars are given a job - marking time. They are servants, not gods.",
+    noteTitle: "To Divide The Day From The Night",
+    underline: "to divide the day from the night",
+    preview: "Light and darkness were already separated on Day One.",
+  },
+  {
+    verse: 14,
+    noteTitle: "For Signs, Seasons, Days, And Years",
+    underline: "for signs, and for seasons, and for days, and years",
+    preview: "The heavenly lights do much more than simply shine.",
+  },
+  {
+    verse: 15,
+    noteTitle: "Let Them Be For Lights In The Firmament Of The Heaven",
+    underline: "let them be for lights in the firmament of the heaven",
+    preview: "The word behind “lights” means lamp.",
+  },
+  {
+    verse: 15,
+    noteTitle: "To Give Light Upon The Earth",
+    underline: "to give light upon the earth",
+    preview: "Every lamp in the sky is given a job.",
+  },
+  {
+    verse: 16,
+    noteTitle: "The Greater Light",
+    underline: "the greater light to rule the day",
+    preview: "The greater light is the sun.",
+  },
+  {
+    verse: 16,
+    noteTitle: "The Lesser Light",
+    underline: "the lesser light to rule the night",
+    preview: "The lesser light is the moon.",
+  },
+  {
+    verse: 16,
+    noteTitle: "He Made The Stars Also",
+    underline: "he made the stars also",
+    preview: "Moses mentions the stars in only a few words.",
   },
   {
     verse: 17,
-    noteTitle: "God Set Them",
-    underline: "God set them in the firmament",
-    preview: "God places them. Nations worshipped these lights; Genesis says God put them there.",
+    noteTitle: "God Set Them In The Firmament Of The Heaven",
+    underline: "God set them in the firmament of the heaven",
+    preview: "God not only created the heavenly lights.",
+  },
+  {
+    verse: 18,
+    noteTitle: "To Rule Over The Day And Over The Night",
+    underline: "to rule over the day and over the night",
+    preview: "The sun and moon are given authority to govern time.",
+  },
+  {
+    verse: 18,
+    noteTitle: "God Saw That It Was Good",
+    underline: "God saw that it was good",
+    preview: "God looks at the lights He has created and calls them good.",
+  },
+  {
+    verse: 19,
+    noteTitle: "Evening And Morning: The Fourth Day",
+    underline: "the evening and the morning were the fourth day",
+    preview: "The fourth day comes to an end.",
   },
   {
     verse: 20,
-    noteTitle: "Let The Waters Swarm",
+    noteTitle: "Let The Waters Bring Forth Abundantly",
     underline: "Let the waters bring forth abundantly",
-    preview: "The waters that felt empty and frightening now teem with life at God's word.",
+    preview: "God now begins filling the waters He prepared on Day Two.",
+  },
+  {
+    verse: 20,
+    noteTitle: "The Moving Creature That Hath Life",
+    underline: "the moving creature that hath life",
+    preview: "“Hath” is older English for has.",
+  },
+  {
+    verse: 20,
+    noteTitle: "Let Fowls Fly Above The Earth",
+    underline: "fowl that may fly above the earth",
+    preview: "God now fills the sky He created on Day Two.",
+  },
+  {
+    verse: 20,
+    noteTitle: "In The Open Firmament Of Heaven",
+    underline: "in the open firmament of heaven",
+    preview: "“The open firmament of heaven” means the open sky.",
   },
   {
     verse: 21,
-    noteTitle: "According To Their Kinds",
+    noteTitle: "Great Whales",
+    underline: "God created great whales",
+    preview: "The phrase “great whales” refers to the large creatures of the sea.",
+  },
+  {
+    verse: 21,
+    noteTitle: "And Every Living Creature That Moveth",
+    underline: "every living creature that moveth",
+    preview: "“Moveth” is older English for moves.",
+  },
+  {
+    verse: 21,
+    noteTitle: "Which The Waters Brought Forth Abundantly",
+    underline: "which the waters brought forth abundantly",
+    preview: "This does not mean the sea produced life on its own.",
+  },
+  {
+    verse: 21,
+    noteTitle: "After Their Kind",
     underline: "after their kind",
-    preview: "Creation has order and boundaries built in, not random sameness.",
+    preview: "This phrase means each creature reproduces according to its own kind.",
+  },
+  {
+    verse: 21,
+    noteTitle: "And Every Winged Fowl After His Kind",
+    underline: "every winged fowl after his kind",
+    preview: "“Fowl” is the King James word for bird.",
   },
   {
     verse: 22,
-    noteTitle: "God Blessed Them",
+    noteTitle: "And God Blessed Them",
     underline: "God blessed them",
-    preview: "The first blessing in the Bible goes to creatures - God delights in life multiplying.",
+    preview: "This is the first time God blesses living creatures in Genesis.",
+  },
+  {
+    verse: 22,
+    noteTitle: "Be Fruitful And Multiply",
+    underline: "Be fruitful, and multiply",
+    preview: "God commands the creatures to increase in number.",
+  },
+  {
+    verse: 22,
+    noteTitle: "Fill The Waters In The Seas",
+    underline: "fill the waters in the seas",
+    preview: "God does not only permit the creatures to multiply.",
+  },
+  {
+    verse: 23,
+    noteTitle: "Evening And Morning: The Fifth Day",
+    underline: "the evening and the morning were the fifth day",
+    preview: "The fifth day comes to an end.",
+  },
+  {
+    verse: 24,
+    noteTitle: "Let The Earth Bring Forth The Living Creature After His Kind",
+    underline: "Let the earth bring forth the living creature after his kind",
+    preview: "Day six opens the same way day three did.",
+  },
+  {
+    verse: 24,
+    noteTitle: "Cattle",
+    underline: "cattle",
+    preview: "“Cattle” in the King James Version does not only mean cows.",
+  },
+  {
+    verse: 24,
+    noteTitle: "And Creeping Thing",
+    underline: "creeping thing",
+    preview: "“Creeping thing” describes the small creatures that move close to the ground.",
+  },
+  {
+    verse: 24,
+    noteTitle: "And Beast Of The Earth",
+    underline: "beast of the earth after his kind",
+    preview: "“Beast of the earth” means the wild animals.",
+  },
+  {
+    verse: 25,
+    noteTitle: "And God Made The Beast Of The Earth After His Kind",
+    underline: "God made the beast of the earth after his kind",
+    preview: "Verse 24 records the command.",
+  },
+  {
+    verse: 25,
+    noteTitle: "And Cattle After Their Kind",
+    underline: "cattle after their kind",
+    preview: "The livestock are named separately from the wild animals.",
+  },
+  {
+    verse: 25,
+    noteTitle: "And Every Thing That Creepeth Upon The Earth",
+    underline: "every thing that creepeth upon the earth",
+    preview: "“Creepeth” is older English for creeps.",
   },
   {
     verse: 26,
-    noteTitle: "Let Us Make",
+    noteTitle: "Let Us Make Man",
     underline: "Let us make man",
-    preview: "The rhythm changes. God pauses and speaks differently before making people.",
+    preview: "For the first time in Genesis, God’s words slow down.",
   },
   {
     verse: 26,
     noteTitle: "In Our Image",
     underline: "in our image",
-    preview: "Human worth is not earned or assigned by others. It is given by God at creation.",
+    preview: "Nothing else in creation is described this way.",
   },
   {
     verse: 26,
     noteTitle: "After Our Likeness",
     underline: "after our likeness",
-    preview: "People are made to resemble God and represent Him in the world He made.",
+    preview: "The words “image” and “likeness” work together.",
   },
   {
     verse: 26,
-    noteTitle: "Have Dominion",
-    underline: "have dominion",
-    preview: "Care and responsibility over creation, not permission to exploit it.",
+    noteTitle: "Let Them Have Dominion",
+    underline: "let them have dominion",
+    preview: "Dominion means authority with responsibility.",
   },
   {
     verse: 27,
-    noteTitle: "Male And Female",
-    underline: "male and female",
-    preview: "Both carry God's image fully. Neither is an afterthought.",
+    noteTitle: "So God Created Man In His Own Image",
+    underline: "So God created man in his own image",
+    preview: "This is the line the whole chapter has been building toward.",
+  },
+  {
+    verse: 27,
+    noteTitle: "In The Image Of God Created He Him",
+    underline: "in the image of God created he him",
+    preview: "Genesis says the same thing twice in one verse.",
+  },
+  {
+    verse: 27,
+    noteTitle: "Male And Female Created He Them",
+    underline: "male and female created he them",
+    preview: "God creates humanity as both male and female.",
+  },
+  {
+    verse: 28,
+    noteTitle: "God Blessed Them",
+    underline: "God blessed them",
+    preview: "Before giving mankind responsibilities, God first blesses them.",
   },
   {
     verse: 28,
     noteTitle: "Be Fruitful And Multiply",
     underline: "Be fruitful, and multiply",
-    preview: "The first words God speaks to people are a blessing and a commission.",
+    preview: "God commands mankind to have children and fill the earth.",
+  },
+  {
+    verse: 28,
+    noteTitle: "Fill The Earth",
+    underline: "replenish the earth",
+    preview: "The earth was created to be inhabited.",
+  },
+  {
+    verse: 28,
+    noteTitle: "Subdue It",
+    underline: "subdue it",
+    preview: "To subdue means to bring under wise management.",
+  },
+  {
+    verse: 28,
+    noteTitle: "Have Dominion Over Every Living Thing",
+    underline: "have dominion over the fish of the sea",
+    preview: "God repeats mankind’s responsibility over creation.",
+  },
+  {
+    verse: 29,
+    noteTitle: "Herb Yielding Seed",
+    underline: "every herb bearing seed",
+    preview: "God now tells mankind what they are to eat.",
+  },
+  {
+    verse: 29,
+    noteTitle: "Fruit Tree Yielding Fruit",
+    underline: "the fruit of a tree yielding seed",
+    preview: "God also provides fruit from the trees.",
+  },
+  {
+    verse: 29,
+    noteTitle: "To You It Shall Be For Meat",
+    underline: "to you it shall be for meat",
+    preview: "In the King James Version, the word “meat” simply means food.",
+  },
+  {
+    verse: 30,
+    noteTitle: "To Every Beast Of The Earth, And To Every Fowl Of The Air, And To Every Thing That Creepeth Upon The Earth",
+    underline: "to every beast of the earth, and to every fowl of the air, and to every thing that creepeth upon the earth",
+    preview: "God names the same three groups He made on days five and six.",
+  },
+  {
+    verse: 30,
+    noteTitle: "Wherein There Is Life",
+    underline: "wherein there is life",
+    preview: "“Wherein” is older English for in which.",
+  },
+  {
+    verse: 30,
+    noteTitle: "Food For Every Living Creature",
+    underline: "I have given every green herb for meat",
+    preview: "God’s care extends beyond mankind.",
   },
   {
     verse: 31,
-    noteTitle: "Very Good",
-    underline: "it was very good",
-    preview: "Not just good now, but very good - creation complete, with people in it.",
+    noteTitle: "God Saw Everything That He Had Made",
+    underline: "God saw every thing that he had made",
+    preview: "Earlier in Genesis, God looked at individual parts of creation and called them good.",
+  },
+  {
+    verse: 31,
+    noteTitle: "And Behold, It Was Very Good",
+    underline: "behold, it was very good",
+    preview: "This is the only time in Genesis 1 that God says “very good.”",
+  },
+  {
+    verse: 31,
+    noteTitle: "Evening And Morning: The Sixth Day",
+    underline: "the evening and the morning were the sixth day",
+    preview: "The sixth day brings Creation Week to its completion.",
   },
 ];
 
@@ -232,7 +592,10 @@ export const GENESIS_ONE_PHRASES: GenesisOnePhrase[] = [
  * to find the matching note.
  */
 export function getPhraseDisplayTitle(phrase: GenesisOnePhrase): string {
-  const smallWords = new Set(["and", "the", "of", "a", "an", "in", "on", "upon", "was", "is", "be", "that", "it", "from", "under", "there", "let"]);
+  const smallWords = new Set([
+    "and", "the", "of", "a", "an", "in", "on", "upon", "was", "is", "be", "that", "it", "from",
+    "under", "there", "let", "to", "for", "so", "he", "were", "which", "above",
+  ]);
 
   return phrase.underline
     .replace(/[,;:]+$/g, "")
@@ -256,6 +619,37 @@ export function isGenesisOneStudyModeChapter(book: string | null | undefined, ch
 }
 
 /**
+ * Reduce a stored heading to bare words so it can be compared to a noteTitle.
+ *
+ * By the time the notes reach the reader they have been through the shared
+ * phrase formatter, which prefixes the title with an emoji, so the stored line
+ * reads 🌅 "In The Beginning" rather than the plain title this file records.
+ * The emoji and the quotes both have to come off before comparing.
+ */
+const LEADING_EMOJI_RUN = /^(?:[\p{Extended_Pictographic}️‍]+\s*)+/u;
+const LEADING_EMOJI = /^([\p{Extended_Pictographic}](?:️|‍[\p{Extended_Pictographic}]️?)*)/u;
+
+function normalizePhraseHeading(line: string): string {
+  return String(line || "")
+    .replace(LEADING_EMOJI_RUN, "")
+    .replace(/^["“”']+|["“”']+$/g, "")
+    .trim()
+    .toLowerCase();
+}
+
+/** The raw stored note entry for a phrase, title line included, or null. */
+export function findPhraseNoteEntry(keyPhraseEntries: string[], noteTitle: string): string | null {
+  const wanted = normalizePhraseHeading(noteTitle);
+
+  for (const entry of keyPhraseEntries) {
+    const [firstLine] = String(entry || "").split("\n");
+    if (normalizePhraseHeading(firstLine) === wanted) return String(entry || "");
+  }
+
+  return null;
+}
+
+/**
  * Pull the full note for a phrase out of the existing notes.
  *
  * Phrase notes are stored as strings that begin with the quoted title, e.g.
@@ -263,15 +657,19 @@ export function isGenesisOneStudyModeChapter(book: string | null | undefined, ch
  * so the title line is matched and the rest returned as the body.
  */
 export function extractPhraseNote(keyPhraseEntries: string[], noteTitle: string): string[] {
-  const wanted = noteTitle.trim().toLowerCase();
+  const entry = findPhraseNoteEntry(keyPhraseEntries, noteTitle);
+  if (entry === null) return [];
 
-  for (const entry of keyPhraseEntries) {
-    const [firstLine, ...rest] = String(entry || "").split("\n");
-    const heading = firstLine.replace(/^["“”']+|["“”']+$/g, "").trim().toLowerCase();
-    if (heading === wanted) {
-      return rest.map((line) => line.trim()).filter(Boolean);
-    }
-  }
+  const [, ...rest] = entry.split("\n");
+  return rest.map((line) => line.trim()).filter(Boolean);
+}
 
-  return [];
+/** The emoji the formatter put on the note's title line, if there is one. */
+export function getPhraseNoteIcon(keyPhraseEntries: string[], noteTitle: string): string | null {
+  const entry = findPhraseNoteEntry(keyPhraseEntries, noteTitle);
+  if (entry === null) return null;
+
+  const [firstLine] = entry.split("\n");
+  const match = firstLine.trim().match(LEADING_EMOJI);
+  return match?.[1] || null;
 }

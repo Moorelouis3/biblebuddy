@@ -14,6 +14,12 @@ type BrowserTtsButtonProps = {
   backgroundMusicSrcs?: string[];
   backgroundMusicVolume?: number;
   aiDisclosure?: boolean;
+  /**
+   * "transport" renders a compact player row (back 10, play/pause, stop,
+   * forward 10, speed) instead of the large Play block. Opt in only, so
+   * every existing caller keeps the layout it already had.
+   */
+  variant?: "default" | "transport";
 };
 
 function chunkSpeechText(text: string) {
@@ -48,6 +54,7 @@ export default function BrowserTtsButton({
   backgroundMusicSrcs,
   backgroundMusicVolume,
   aiDisclosure = false,
+  variant = "default",
 }: BrowserTtsButtonProps) {
   const [supported, setSupported] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -387,6 +394,108 @@ export default function BrowserTtsButton({
 
   const showAudioControls = canUseAudioSrc && audioIsSpeaking;
   const speedOptions = [1, 1.25, 1.5, 2];
+
+  if (variant === "transport") {
+    const playing = audioIsSpeaking && !audioIsPaused;
+    const canSeek = canUseAudioSrc;
+    const roundButton =
+      "grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40";
+
+    return (
+      <div className={`mb-4 flex items-center gap-2 rounded-2xl border border-slate-200 bg-white px-2.5 py-2 shadow-sm ${className}`}>
+        <button
+          type="button"
+          onClick={() => seekAudioBy(-10)}
+          disabled={!canSeek || !audioIsSpeaking}
+          className={roundButton}
+          aria-label="Go back 10 seconds"
+          title="Back 10 seconds"
+        >
+          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <polygon points="11 19 2 12 11 5" fill="currentColor" stroke="none" />
+            <polygon points="22 19 13 12 22 5" fill="currentColor" stroke="none" />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          onClick={canUseAudioSrc ? toggleAudio : toggleSpeech}
+          disabled={audioIsLoading}
+          className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-sky-500 text-white shadow-[0_6px_16px_rgba(14,165,233,0.35)] transition hover:bg-sky-400 disabled:opacity-60"
+          aria-label={playing ? `Pause ${label}` : `Play ${label}`}
+          title={playing ? "Pause" : "Play"}
+        >
+          {audioIsLoading ? (
+            <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
+          ) : playing ? (
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+              <rect x="6" y="5" width="4" height="14" rx="1" />
+              <rect x="14" y="5" width="4" height="14" rx="1" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5" fill="currentColor" aria-hidden="true">
+              <polygon points="7 4 20 12 7 20" />
+            </svg>
+          )}
+        </button>
+
+        <button
+          type="button"
+          onClick={canUseAudioSrc ? stopAudio : stopSpeech}
+          disabled={!audioIsSpeaking}
+          className={roundButton}
+          aria-label="Stop audio"
+          title="Stop"
+        >
+          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
+            <rect x="5" y="5" width="14" height="14" rx="2" />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => seekAudioBy(10)}
+          disabled={!canSeek || !audioIsSpeaking}
+          className={roundButton}
+          aria-label="Go forward 10 seconds"
+          title="Forward 10 seconds"
+        >
+          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <polygon points="13 19 22 12 13 5" fill="currentColor" stroke="none" />
+            <polygon points="2 19 11 12 2 5" fill="currentColor" stroke="none" />
+          </svg>
+        </button>
+
+        <div className="min-w-0 flex-1 px-1 text-right">
+          {audioHasError ? (
+            <p className="text-xs font-black text-red-600">Audio unavailable</p>
+          ) : !audioIsSpeaking && savedPosition > 2 ? (
+            <p className="text-xs font-bold text-slate-500">Saved at {formatTime(savedPosition)}</p>
+          ) : null}
+        </div>
+
+        {canUseAudioSrc ? (
+          <div className="flex shrink-0 items-center gap-1" aria-label="Playback speed">
+            {speedOptions.map((rate) => (
+              <button
+                key={rate}
+                type="button"
+                onClick={() => changePlaybackRate(rate)}
+                className={`min-h-8 rounded-lg px-2 text-[11px] font-black transition ${
+                  activePlaybackRate === rate
+                    ? "bg-sky-500 text-white"
+                    : "text-slate-500 hover:bg-slate-100"
+                }`}
+                aria-pressed={activePlaybackRate === rate}
+              >
+                {rate}x
+              </button>
+            ))}
+          </div>
+        ) : null}
+      </div>
+    );
+  }
 
   return (
     <div className={`mb-4 flex items-center gap-2 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 shadow-sm ${className}`}>

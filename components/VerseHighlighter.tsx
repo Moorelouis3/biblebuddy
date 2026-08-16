@@ -20,6 +20,17 @@ import type {
   BibleReaderStudyNoteCategory,
   BibleReaderStudySection,
 } from "../lib/bibleReaderStudyNotes";
+import {
+  GENESIS_ONE_PHRASES,
+  extractPhraseNote,
+  findPhraseNoteEntry,
+  getGenesisOnePhraseColor,
+  getGenesisOnePhrasesForVerse,
+  getPhraseDisplayTitle,
+  getPhraseNoteIcon,
+  isGenesisOneStudyModeChapter,
+  type GenesisOnePhrase,
+} from "../lib/genesisOneStudyMode";
 
 interface VerseHighlighterProps {
   book: string;
@@ -184,6 +195,255 @@ function groupRangesByVerse(ranges: VerseHighlightRange[]) {
 
 function rangesOverlap(startA: number, endA: number, startB: number, endB: number) {
   return startA < endB && endA > startB;
+}
+
+/* ── Genesis 1 Study Mode ──────────────────────────────────────────────────
+   Genesis 1 only. Everything below is reached only when the chapter is
+   Genesis 1 and the reader has Study Mode switched on; every other chapter
+   renders exactly as it did before.
+
+   The one rule that governs all of it: a saved highlight is a pair of
+   character offsets into the verse's visible text, so the dotted underlines
+   have to be drawn by splitting that same text into spans. Nothing may add,
+   remove, or reorder a single character of it. That is why the underlines are
+   resolved to offsets first and merged with the highlight offsets into one
+   segment list, rather than being wrapped around matched substrings. */
+
+/** Where each phrase sits in reading order, which is what picks its colour. */
+const GENESIS_ONE_PHRASE_ORDER = new Map<GenesisOnePhrase, number>(
+  GENESIS_ONE_PHRASES.map((phrase, index) => [phrase, index] as const),
+);
+
+type GenesisOneMark = {
+  start: number;
+  end: number;
+  color: string;
+  phrase: GenesisOnePhrase;
+  phraseKey: string;
+};
+
+type VerseSegment = {
+  start: number;
+  end: number;
+  range: VerseHighlightRange | null;
+  underline: GenesisOneMark | null;
+  isRangeEnd: boolean;
+};
+
+/** Stable identity for one phrase card, used as the open/closed key. */
+function getGenesisOnePhraseKey(phrase: GenesisOnePhrase) {
+  return `${phrase.verse}:${phrase.noteTitle}`;
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/**
+ * Locate the phrase's exact words inside the verse text.
+ *
+ * The quoted words come from the KJV, so a plain match is the normal case. The
+ * looser passes only exist so that a stray difference in case or spacing costs
+ * an underline rather than breaking the verse.
+ */
+function findUnderlineOffsets(text: string, underline: string) {
+  const exact = text.indexOf(underline);
+  if (exact >= 0) return { start: exact, end: exact + underline.length };
+
+  const caseInsensitive = text.toLowerCase().indexOf(underline.toLowerCase());
+  if (caseInsensitive >= 0) return { start: caseInsensitive, end: caseInsensitive + underline.length };
+
+  const words = underline.trim().split(/\s+/).filter(Boolean);
+  if (!words.length) return null;
+
+  const match = new RegExp(words.map(escapeRegExp).join("\\s+"), "i").exec(text);
+  return match ? { start: match.index, end: match.index + match[0].length } : null;
+}
+
+function getGenesisOneMarks(visibleText: string, verse: number): GenesisOneMark[] {
+  const marks: GenesisOneMark[] = [];
+
+  getGenesisOnePhrasesForVerse(verse).forEach((phrase) => {
+    const offsets = findUnderlineOffsets(visibleText, phrase.underline);
+    if (!offsets) return;
+
+    const color = getGenesisOnePhraseColor(GENESIS_ONE_PHRASE_ORDER.get(phrase) ?? 0);
+    marks.push({ ...offsets, color: color.underline, phrase, phraseKey: getGenesisOnePhraseKey(phrase) });
+  });
+
+  // Two underlines cannot share a character, so a later one that runs into an
+  // earlier one is dropped rather than drawn on top of it.
+  return marks
+    .sort((a, b) => a.start - b.start)
+    .filter((mark, index, sorted) => index === 0 || mark.start >= sorted[index - 1].end);
+}
+
+/**
+ * Cut the verse text at every highlight and underline boundary.
+ *
+ * The pieces are joined back together in order and cover the text exactly
+ * once, so the rendered element's textContent still equals the text the
+ * highlight offsets were measured against.
+ */
+function buildVerseSegments(
+  textLength: number,
+  ranges: VerseHighlightRange[],
+  marks: GenesisOneMark[],
+): VerseSegment[] {
+  const boundaries = new Set<number>([0, textLength]);
+  ranges.forEach((range) => {
+    boundaries.add(range.start_offset);
+    boundaries.add(range.end_offset);
+  });
+  marks.forEach((mark) => {
+    boundaries.add(mark.start);
+    boundaries.add(mark.end);
+  });
+
+  const cuts = Array.from(boundaries)
+    .filter((cut) => cut >= 0 && cut <= textLength)
+    .sort((a, b) => a - b);
+
+  const segments: VerseSegment[] = [];
+
+  for (let index = 0; index < cuts.length - 1; index += 1) {
+    const start = cuts[index];
+    const end = cuts[index + 1];
+    if (end <= start) continue;
+
+    const range = ranges.find((candidate) => candidate.start_offset <= start && candidate.end_offset >= end) || null;
+    const mark = marks.find((candidate) => candidate.start <= start && candidate.end >= end) || null;
+
+    segments.push({
+      start,
+      end,
+      range,
+      underline: mark,
+      isRangeEnd: Boolean(range && range.end_offset === end),
+    });
+  }
+
+  return segments;
+}
+
+function normalizeForPreviewMatch(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function isPreviewEcho(paragraph: string, preview: string) {
+  const written = normalizeForPreviewMatch(paragraph);
+  const shown = normalizeForPreviewMatch(preview);
+  if (!written || !shown) return false;
+  if (written === shown) return true;
+
+  // Allow for a preview that was trimmed or lightly repunctuated, but not for a
+  // short line that merely happens to start the same way.
+  const [shorter, longer] = written.length < shown.length ? [written, shown] : [shown, written];
+  return longer.startsWith(shorter) && shorter.length >= longer.length * 0.6;
+}
+
+/**
+ * The previews were written from the opening line of each note, so without
+ * this an expanded card would repeat the sentence sitting directly above it.
+ * The card header keeps that line; the body picks up from the next one.
+ */
+function dropPreviewEcho(paragraphs: string[], preview: string) {
+  let start = 0;
+  while (start < paragraphs.length && isPreviewEcho(paragraphs[start], preview)) start += 1;
+
+  // Never blank the note out entirely — if the echo is all there is, keep it.
+  return start && start < paragraphs.length ? paragraphs.slice(start) : paragraphs;
+}
+
+function GenesisOneStudyCard({
+  phrase,
+  colorIndex,
+  icon,
+  paragraphs,
+  isOpen,
+  onToggle,
+  onClose,
+}: {
+  phrase: GenesisOnePhrase;
+  colorIndex: number;
+  icon: string;
+  paragraphs: string[];
+  isOpen: boolean;
+  onToggle: () => void;
+  onClose?: () => void;
+}) {
+  const color = getGenesisOnePhraseColor(colorIndex);
+  const title = getPhraseDisplayTitle(phrase);
+  // A phrase whose note has not been written yet still earns its underline and
+  // its preview, but it does not pretend to open onto anything.
+  const hasNote = paragraphs.length > 0;
+
+  const head = (
+    <>
+      <span className="text-lg leading-tight" aria-hidden="true">
+        {icon}
+      </span>
+      <span className="min-w-0">
+        <span className="block text-[0.95rem] font-black leading-5 tracking-[-0.005em] text-slate-900">{title}</span>
+        <span className="mt-1 block text-[0.86rem] font-semibold leading-[1.55] text-slate-600">{phrase.preview}</span>
+      </span>
+      {onClose ? (
+        <span aria-hidden="true" className="text-base leading-tight text-transparent">
+          ›
+        </span>
+      ) : (
+        <span
+          aria-hidden="true"
+          className={`text-base leading-tight transition-transform ${
+            hasNote ? "text-slate-400" : "text-transparent"
+          } ${isOpen ? "rotate-90" : ""}`}
+        >
+          ›
+        </span>
+      )}
+    </>
+  );
+
+  return (
+    <div
+      className="relative overflow-hidden rounded-[14px] border"
+      style={{ backgroundColor: color.cardBg, borderColor: color.cardBorder }}
+    >
+      {onClose ? (
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close this phrase"
+          className="absolute right-2 top-2 z-10 grid h-7 w-7 place-items-center rounded-full bg-white/70 text-base font-black leading-none text-slate-500 transition hover:bg-white hover:text-slate-800"
+        >
+          ×
+        </button>
+      ) : null}
+      {hasNote ? (
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-expanded={isOpen}
+          className="grid w-full grid-cols-[auto_1fr_auto] items-start gap-3 px-3.5 py-3 text-left"
+        >
+          {head}
+        </button>
+      ) : (
+        <div className="grid w-full grid-cols-[auto_1fr_auto] items-start gap-3 px-3.5 py-3 text-left">{head}</div>
+      )}
+
+      {hasNote && isOpen ? (
+        <div className="px-3.5 pb-3.5 pl-[3.4rem]">
+          <div className="text-slate-700">
+            <ChapterNotesMarkdown compactMobile>{paragraphs.join("\n\n")}</ChapterNotesMarkdown>
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 function HighlightActionMenu({
@@ -922,6 +1182,8 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [studyCreditUnlockedSections, setStudyCreditUnlockedSections] = useState<Record<string, boolean>>({});
   const [backgroundStudySections, setBackgroundStudySections] = useState<BibleReaderStudySection[]>([]);
   const [studyNotesCreditPreview, setStudyNotesCreditPreview] = useState<CreditClientResult | null>(null);
+  const [genesisOneStudyModeOn, setGenesisOneStudyModeOn] = useState(true);
+  const [openGenesisOnePhrase, setOpenGenesisOnePhrase] = useState<string | null>(null);
   const shareVerse = null as { number: number; text: string } | null;
   const shareContent = "";
   const shareSubmitting = false;
@@ -1310,6 +1572,100 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     {},
   );
 
+  // Genesis 1 only. `available` decides whether the switch is offered at all;
+  // `active` decides whether this render uses Study Mode instead of the
+  // ordinary section boxes.
+  const genesisOneStudyAvailable =
+    !plainTextMode && !hideStudySections && isGenesisOneStudyModeChapter(book, chapter);
+
+  function getStudySectionForVerse(verse: number) {
+    return (
+      resolvedStudySections.find((section) => verse >= section.startVerse && verse <= section.endVerse) || null
+    );
+  }
+
+  function getKeyPhraseEntries(studySection: BibleReaderStudySection | null) {
+    if (!studySection) return [];
+    return studySection.categories.find((category) => category.id === "key-phrases")?.content || [];
+  }
+
+  /**
+   * Find the section holding a phrase's note.
+   *
+   * Normally that is the section covering the verse. It is searched first so
+   * that a title used more than once in the chapter ("God Saw That It Was
+   * Good", "Be Fruitful And Multiply") resolves to the right day's note. The
+   * sweep over the other sections is a safety net for verses no section covers
+   * — Genesis 1:29-31 currently sits inside the 1:26-28 section because its
+   * heading in lib/genesisOneSource.ts is missing the leading "#".
+   */
+  function resolveGenesisOnePhraseNote(phrase: GenesisOnePhrase) {
+    const ownSection = getStudySectionForVerse(phrase.verse);
+    const ordered = ownSection
+      ? [ownSection, ...resolvedStudySections.filter((section) => section !== ownSection)]
+      : resolvedStudySections;
+
+    for (const section of ordered) {
+      const entries = getKeyPhraseEntries(section);
+      if (findPhraseNoteEntry(entries, phrase.noteTitle) !== null) return { section, entries };
+    }
+
+    return { section: ownSection, entries: getKeyPhraseEntries(ownSection) };
+  }
+
+  /**
+   * Study Mode shows the same paid notes the section boxes show, so opening a
+   * phrase card charges the section the same way opening its box does — once,
+   * and not again if the reader already unlocked it.
+   */
+  async function ensureStudySectionUnlocked(studySection: BibleReaderStudySection) {
+    if (!user) return true;
+    if (studyCreditUnlockedSections[studySection.reference]) return true;
+
+    const creditResult = await consumeCreditAction(ACTION_TYPE.study_notes_section_opened, {
+      userId: user.id,
+      actionLabel: `opened ${getStudySectionAnalyticsSlug(studySection.reference)} notes opened`,
+    });
+
+    if (!creditResult.ok) {
+      if (isCreditActionCanceled(creditResult)) return false;
+      if (onStudyNotesCreditBlocked) {
+        onStudyNotesCreditBlocked();
+      } else {
+        setCreditBlocked(true);
+      }
+      return false;
+    }
+
+    setStudyCreditUnlockedSections((current) => ({ ...current, [studySection.reference]: true }));
+    if (typeof creditResult.dailyCredits === "number") {
+      setStudyNotesCreditPreview((current) => ({
+        ...(current || { ok: true }),
+        ok: true,
+        dailyCredits: creditResult.dailyCredits,
+        isPaid: false,
+      }));
+    }
+    return true;
+  }
+
+  async function handleToggleGenesisOnePhrase(phrase: GenesisOnePhrase, phraseKey: string) {
+    if (openGenesisOnePhrase === phraseKey) {
+      setOpenGenesisOnePhrase(null);
+      return;
+    }
+
+    const { section: studySection, entries } = resolveGenesisOnePhraseNote(phrase);
+    if (studySection && !(await ensureStudySectionUnlocked(studySection))) return;
+
+    setOpenGenesisOnePhrase(phraseKey);
+
+    if (studySection) {
+      const itemIndex = entries.findIndex((entry) => findPhraseNoteEntry([entry], phrase.noteTitle) !== null);
+      if (itemIndex >= 0) void trackStudyPhraseOpened(studySection, "key-phrases", itemIndex);
+    }
+  }
+
   function getInitialOpenStudyCategory(studySection: BibleReaderStudySection) {
     const visibleCategories = studySection.categories.filter(
       (category) => category.id !== "key-truths" && category.content.some((item) => item.trim().length > 0),
@@ -1434,7 +1790,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       .filter((range) => range.start_offset >= 0 && range.end_offset <= visibleText.length && range.end_offset > range.start_offset)
       .sort((a, b) => a.start_offset - b.start_offset);
 
-    if (!ranges.length) {
+    // The underlines stay on with Study Mode off. Off just means the cards are
+    // not listed out; tapping an underlined phrase opens that one card.
+    const marks = genesisOneStudyAvailable ? getGenesisOneMarks(visibleText, v.number) : [];
+
+    if (!ranges.length && !marks.length) {
       return (
         <span
           className="verse-text-content"
@@ -1453,39 +1813,71 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       );
     }
 
-    const pieces: React.ReactNode[] = [];
-    let cursor = 0;
+    // One span per stretch of text that shares a highlight and an underline.
+    // Concatenated, they reproduce visibleText character for character.
+    const pieces: React.ReactNode[] = buildVerseSegments(visibleText.length, ranges, marks).map((segment) => {
+      const content = visibleText.slice(segment.start, segment.end);
+      if (!segment.range && !segment.underline) return content;
 
-    ranges.forEach((range) => {
-      const start = Math.max(cursor, range.start_offset);
-      const end = Math.max(start, range.end_offset);
-      if (start > cursor) pieces.push(visibleText.slice(cursor, start));
-      if (end > start) {
-        pieces.push(
-          <span
-            key={range.id}
-            className="rounded-[3px] px-0.5"
-            style={{ backgroundColor: getColorCode(range.color, surface) }}
-            title={range.note_text ? "Click to view this note" : "Click to add a note, change color, or remove this highlight"}
-            onClick={(event) => handleRangeClick(range, event)}
-          >
-            {visibleText.slice(start, end)}
-            {range.note_text ? (
-              <sup
-                data-highlight-note-indicator="true"
-                contentEditable={false}
-                className="ml-0.5 inline-grid h-4 min-w-4 translate-y-[-1px] select-none place-items-center rounded-full bg-sky-500 px-1 text-[9px] font-black leading-none text-white"
-              >
-                📝
-              </sup>
-            ) : null}
-          </span>,
-        );
-      }
-      cursor = Math.max(cursor, end);
+      const range = segment.range;
+      const underline = segment.underline;
+      // A saved highlight owns the click, so the existing note and colour
+      // actions keep working. Otherwise an underlined phrase opens its card.
+      const opensPhraseCard = Boolean(underline && !range);
+
+      return (
+        <span
+          key={`${segment.start}-${segment.end}`}
+          className={`${range ? "rounded-[3px]" : ""}${opensPhraseCard ? " cursor-pointer" : ""}`.trim() || undefined}
+          style={{
+            backgroundColor: range ? getColorCode(range.color, surface) : undefined,
+            // The 2px sits on the outside edges of a highlight only, so a
+            // highlight split by an underline boundary still looks like one
+            // continuous block rather than gaining a gap in the middle.
+            paddingLeft: range && segment.start === range.start_offset ? 2 : undefined,
+            paddingRight: range && segment.end === range.end_offset ? 2 : undefined,
+            // Read mode keeps the underlines as a quiet hint rather than a
+            // marked up page, so they drop to about a third of their strength.
+            borderBottom: underline
+              ? `${genesisOneStudyModeOn ? "2px" : "1px"} dotted ${underline.color}${genesisOneStudyModeOn ? "" : "59"}`
+              : undefined,
+            paddingBottom: underline ? 1 : undefined,
+          }}
+          title={
+            range
+              ? range.note_text
+                ? "Click to view this note"
+                : "Click to add a note, change color, or remove this highlight"
+              : opensPhraseCard
+                ? getPhraseDisplayTitle(underline!.phrase)
+                : undefined
+          }
+          onClick={
+            range
+              ? (event) => handleRangeClick(range, event)
+              : opensPhraseCard
+                ? (event) => {
+                    // A drag that selected text is a highlight gesture, not a tap.
+                    if (!window.getSelection()?.isCollapsed) return;
+                    event.stopPropagation();
+                    void handleToggleGenesisOnePhrase(underline!.phrase, underline!.phraseKey);
+                  }
+                : undefined
+          }
+        >
+          {content}
+          {range && segment.isRangeEnd && range.note_text ? (
+            <sup
+              data-highlight-note-indicator="true"
+              contentEditable={false}
+              className="ml-0.5 inline-grid h-4 min-w-4 translate-y-[-1px] select-none place-items-center rounded-full bg-sky-500 px-1 text-[9px] font-black leading-none text-white"
+            >
+              📝
+            </sup>
+          ) : null}
+        </span>
+      );
     });
-
-    if (cursor < visibleText.length) pieces.push(visibleText.slice(cursor));
 
     return (
       <span
@@ -1505,6 +1897,46 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     );
   }
 
+  function renderGenesisOnePhraseCards(verse: number) {
+    const allPhrases = getGenesisOnePhrasesForVerse(verse);
+    // Study Mode on lists every card under the verse. Off shows nothing until
+    // the reader taps an underlined phrase, then just that one card.
+    const phrases = genesisOneStudyModeOn
+      ? allPhrases
+      : allPhrases.filter((phrase) => getGenesisOnePhraseKey(phrase) === openGenesisOnePhrase);
+    if (!phrases.length) return null;
+
+    return (
+      <div className="mb-4 mt-3 flex flex-col gap-2.5">
+        {phrases.map((phrase) => {
+          const phraseKey = getGenesisOnePhraseKey(phrase);
+          const colorIndex = GENESIS_ONE_PHRASE_ORDER.get(phrase) ?? 0;
+          const { entries: keyPhraseEntries } = resolveGenesisOnePhraseNote(phrase);
+
+          return (
+            <GenesisOneStudyCard
+              key={phraseKey}
+              phrase={phrase}
+              colorIndex={colorIndex}
+              icon={
+                getPhraseNoteIcon(keyPhraseEntries, phrase.noteTitle) ||
+                getNestedStudyItemIcon("key-phrases", getPhraseDisplayTitle(phrase))
+              }
+              paragraphs={dropPreviewEcho(extractPhraseNote(keyPhraseEntries, phrase.noteTitle), phrase.preview)}
+              isOpen={openGenesisOnePhrase === phraseKey}
+              onToggle={() => {
+                void handleToggleGenesisOnePhrase(phrase, phraseKey);
+              }}
+              // With Study Mode off the card was summoned by tapping the verse,
+              // so it needs its own way out.
+              onClose={genesisOneStudyModeOn ? undefined : () => setOpenGenesisOnePhrase(null)}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div>
       <style>{`
@@ -1513,9 +1945,43 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
           touch-action: manipulation;
         }
       `}</style>
+
+      {genesisOneStudyAvailable ? (
+        <div className="mb-4 flex items-center justify-between gap-3 rounded-[14px] border border-slate-200 bg-white px-3.5 py-3">
+          <span className="min-w-0">
+            <span className="block text-[0.95rem] font-black leading-5 text-slate-900">Study Mode</span>
+            <span className="mt-0.5 block text-xs font-semibold leading-5 text-slate-500">
+              {genesisOneStudyModeOn
+                ? "Every phrase card is listed under its verse."
+                : "Tap any underlined phrase to open its card."}
+            </span>
+          </span>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={genesisOneStudyModeOn}
+            aria-label="Study Mode"
+            onClick={() => {
+              setGenesisOneStudyModeOn((on) => !on);
+              setOpenGenesisOnePhrase(null);
+            }}
+            className={`relative h-[30px] w-[52px] shrink-0 rounded-full transition-colors ${
+              genesisOneStudyModeOn ? "bg-emerald-500" : "bg-slate-300"
+            }`}
+          >
+            <span
+              aria-hidden="true"
+              className={`absolute left-[3px] top-[3px] h-6 w-6 rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.25)] transition-transform ${
+                genesisOneStudyModeOn ? "translate-x-[22px]" : ""
+              }`}
+            />
+          </button>
+        </div>
+      ) : null}
+
       {verses.map((v) => (
         <React.Fragment key={v.number}>
-          {plainTextMode || hideStudySections ? null : studySectionPlacement === "start" ? (studySectionsByVerse[v.number] || []).map((studySection) => (
+          {plainTextMode || hideStudySections || genesisOneStudyAvailable ? null : studySectionPlacement === "start" ? (studySectionsByVerse[v.number] || []).map((studySection) => (
             <InlineStudySection
               key={`inline-study-${studySection.reference}`}
               section={studySection}
@@ -1553,37 +2019,72 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
               }}
             />
           )) : null}
-          <div
-            className="mb-2 flex items-baseline gap-2 group verse-line"
-            style={{
-              backgroundColor: !plainTextMode && highlightMap[v.number] ? getColorCode(highlightMap[v.number], surface) : "transparent",
-              borderRadius: !plainTextMode && highlightMap[v.number] ? 4 : 0,
-              transition: "background-color 0.3s",
-            }}
-          >
-            <button
-              type="button"
-              className="shrink-0 select-none cursor-pointer rounded-md bg-blue-100 px-2 py-0.5 text-lg font-bold shadow-sm hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              style={{ minWidth: 32 }}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (!plainTextMode) handleVerseClick(v.number, e);
+          {genesisOneStudyAvailable ? (
+            /* Study Mode runs the number inline with the text rather than in
+               its own column. The number stays a sibling of the text span, not
+               a child of it, so it never enters the offsets a highlight is
+               measured in. */
+            <div
+              // With the cards listed out they already separate the verses.
+              // In read mode the verses run back to back, so they need the gap.
+              className={`group verse-line ${genesisOneStudyModeOn ? "mb-1.5" : "mb-4"}`}
+              style={{
+                backgroundColor: highlightMap[v.number] ? getColorCode(highlightMap[v.number], surface) : "transparent",
+                borderRadius: highlightMap[v.number] ? 4 : 0,
+                transition: "background-color 0.3s",
               }}
-              title={`Highlight verse ${v.number}`}
-              tabIndex={0}
             >
-              {getNumberEmoji(v.number)}
-            </button>
-            {/* Render enriched HTML for this verse, fallback to plain text */}
-            <span
-              className="verse-text bible-selectable-text min-w-0 flex-1 break-words text-base leading-relaxed selection:bg-sky-200 selection:text-slate-950 [&_p]:inline"
+              <button
+                type="button"
+                className="mr-1.5 inline select-none cursor-pointer rounded-md px-1 align-baseline text-[0.95rem] font-black text-sky-600 tabular-nums hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-400"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleVerseClick(v.number, e);
+                }}
+                title={`Highlight verse ${v.number}`}
+                tabIndex={0}
+              >
+                {v.number}
+              </button>
+              <span className="verse-text bible-selectable-text break-words text-[1.06rem] leading-[1.75] text-slate-900 selection:bg-sky-200 selection:text-slate-950 [&_p]:inline">
+                {renderVerseText(v)}
+              </span>
+            </div>
+          ) : (
+            <div
+              className="mb-2 flex items-baseline gap-2 group verse-line"
+              style={{
+                backgroundColor: !plainTextMode && highlightMap[v.number] ? getColorCode(highlightMap[v.number], surface) : "transparent",
+                borderRadius: !plainTextMode && highlightMap[v.number] ? 4 : 0,
+                transition: "background-color 0.3s",
+              }}
             >
-              {renderVerseText(v)}
-            </span>
-            {/* Share to Feed button — visible on row hover */}
-          </div>
-          {plainTextMode || hideStudySections ? null : studySectionPlacement === "end" ? (studySectionsByVerse[v.number] || []).map((studySection) => (
+              <button
+                type="button"
+                className="shrink-0 select-none cursor-pointer rounded-md bg-blue-100 px-2 py-0.5 text-lg font-bold shadow-sm hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                style={{ minWidth: 32 }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (!plainTextMode) handleVerseClick(v.number, e);
+                }}
+                title={`Highlight verse ${v.number}`}
+                tabIndex={0}
+              >
+                {getNumberEmoji(v.number)}
+              </button>
+              {/* Render enriched HTML for this verse, fallback to plain text */}
+              <span
+                className="verse-text bible-selectable-text min-w-0 flex-1 break-words text-base leading-relaxed selection:bg-sky-200 selection:text-slate-950 [&_p]:inline"
+              >
+                {renderVerseText(v)}
+              </span>
+              {/* Share to Feed button — visible on row hover */}
+            </div>
+          )}
+          {genesisOneStudyAvailable ? renderGenesisOnePhraseCards(v.number) : null}
+          {plainTextMode || hideStudySections || genesisOneStudyAvailable ? null : studySectionPlacement === "end" ? (studySectionsByVerse[v.number] || []).map((studySection) => (
             <InlineStudySection
               key={`inline-study-${studySection.reference}`}
               section={studySection}
