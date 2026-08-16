@@ -31,13 +31,15 @@ import {
   normalizeFeatureTours,
   type FeatureToursState,
 } from "../../../../lib/featureTours";
+import dynamic from "next/dynamic";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../../lib/triviaCatalog";
-import { getTriviaChapter } from "../../../../lib/triviaGameData";
-import { getScrambledChapter } from "../../../../lib/scrambledGameData";
+// The trivia and scrambled question banks are tens of thousands of lines
+// between them, and the players are only needed once a game is opened.
+// Importing them statically put all of it in the chapter page's first load.
 import type { TriviaChapterPack } from "../../../../lib/triviaGameData";
 import type { ScrambledChapterPack } from "../../../../lib/scrambledGameData";
-import TriviaGamePlayer from "../../../../components/TriviaGamePlayer";
-import ScrambledGamePlayer from "../../../../components/ScrambledGamePlayer";
+const TriviaGamePlayer = dynamic(() => import("../../../../components/TriviaGamePlayer"), { ssr: false });
+const ScrambledGamePlayer = dynamic(() => import("../../../../components/ScrambledGamePlayer"), { ssr: false });
 import { awardDiamonds } from "../../../../lib/diamondWallet";
 import { DIAMOND_REWARDS, TASK_REWARD_LABELS, TASK_XP } from "../../../../lib/progressionRewards";
 import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../../../../lib/chapterNotesOffline";
@@ -1517,11 +1519,21 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     const routeEntry = CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((e) => e.key === resolvedKey);
     const routeSlug = routeEntry?.routeSlug ?? resolvedKey;
 
-    const trivia = getTriviaChapter(resolvedKey, chapter);
-    if (trivia) setTriviaChapterPack(trivia);
-
-    const scrambled = getScrambledChapter(resolvedKey, chapter);
-    if (scrambled) setScrambledChapterPack(scrambled);
+    // Pulled in after paint so the question banks stay out of the first load.
+    void (async () => {
+      try {
+        const [{ getTriviaChapter }, { getScrambledChapter }] = await Promise.all([
+          import("../../../../lib/triviaGameData"),
+          import("../../../../lib/scrambledGameData"),
+        ]);
+        const trivia = getTriviaChapter(resolvedKey, chapter);
+        if (trivia) setTriviaChapterPack(trivia);
+        const scrambled = getScrambledChapter(resolvedKey, chapter);
+        if (scrambled) setScrambledChapterPack(scrambled);
+      } catch (error) {
+        console.warn("[BIBLE_READER] Could not load game packs:", error);
+      }
+    })();
 
     // Check completion state from master_actions
     async function checkDone() {

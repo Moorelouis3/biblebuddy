@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { ColorPicker } from "./ColorPicker";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
@@ -219,6 +219,8 @@ type GenesisOneMark = {
   start: number;
   end: number;
   color: string;
+  /** Card fill, painted behind the words while that card is open. */
+  activeBg: string;
   phrase: GenesisOnePhrase;
   phraseKey: string;
 };
@@ -230,6 +232,48 @@ type VerseSegment = {
   underline: GenesisOneMark | null;
   isRangeEnd: boolean;
 };
+
+/**
+ * Bring a revealed phrase card and the verse it belongs to onto the screen.
+ *
+ * The verse is what the reader just tapped, so it is the anchor: it is placed
+ * near the top of the view with the card opening underneath it. Positions are
+ * computed rather than left to scrollIntoView, which does nothing at all in
+ * some states and cannot bias towards the verse above.
+ */
+function scrollPhraseCardIntoView(card: HTMLElement | null) {
+  if (!card || typeof window === "undefined") return;
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      // The verse row is a sibling of the card's wrapper, not of the card, so
+      // climb until a preceding .verse-line turns up.
+      let node: HTMLElement | null = card;
+      let verseRow: HTMLElement | null = null;
+      while (node && !verseRow) {
+        const previous = node.previousElementSibling as HTMLElement | null;
+        if (previous?.classList?.contains("verse-line")) verseRow = previous;
+        node = node.parentElement;
+      }
+
+      const anchor = verseRow || card;
+      const container = getNearestScrollContainer(anchor);
+      const anchorRect = anchor.getBoundingClientRect();
+
+      if (container) {
+        const containerRect = container.getBoundingClientRect();
+        const offset = Math.max(16, container.clientHeight * 0.18);
+        const top = container.scrollTop + (anchorRect.top - containerRect.top) - offset;
+        container.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+        return;
+      }
+
+      const offset = Math.max(16, window.innerHeight * 0.18);
+      const top = anchorRect.top + window.scrollY - offset;
+      window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+    });
+  });
+}
 
 /** Stable identity for one phrase card, used as the open/closed key. */
 function getGenesisOnePhraseKey(phrase: GenesisOnePhrase) {
@@ -269,7 +313,13 @@ function getGenesisOneMarks(visibleText: string, verse: number): GenesisOneMark[
     if (!offsets) return;
 
     const color = getGenesisOnePhraseColor(GENESIS_ONE_PHRASE_ORDER.get(phrase) ?? 0);
-    marks.push({ ...offsets, color: color.underline, phrase, phraseKey: getGenesisOnePhraseKey(phrase) });
+    marks.push({
+      ...offsets,
+      color: color.underline,
+      activeBg: color.cardBg,
+      phrase,
+      phraseKey: getGenesisOnePhraseKey(phrase),
+    });
   });
 
   // Two underlines cannot share a character, so a later one that runs into an
@@ -378,6 +428,19 @@ function GenesisOneStudyCard({
 }) {
   const color = getGenesisOnePhraseColor(colorIndex);
   const title = getPhraseDisplayTitle(phrase);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // A card summoned by tapping the verse can land half off screen, so bring it
+  // and the verse above it into view. Only for the tap-to-open card; the
+  // listed cards must not move the page around as they expand.
+  useEffect(() => {
+    if (!onClose || !isOpen || typeof window === "undefined") return;
+
+    const node = cardRef.current;
+    if (!node) return;
+
+    scrollPhraseCardIntoView(node);
+  }, [isOpen, onClose, phrase.noteTitle]);
   // A phrase whose note has not been written yet still earns its underline and
   // its preview, but it does not pretend to open onto anything.
   const hasNote = paragraphs.length > 0;
@@ -410,7 +473,8 @@ function GenesisOneStudyCard({
 
   return (
     <div
-      className="relative overflow-hidden rounded-[14px] border"
+      ref={cardRef}
+      className="relative overflow-hidden rounded-[14px] border scroll-mt-24"
       style={{ backgroundColor: color.cardBg, borderColor: color.cardBorder }}
     >
       {onClose ? (
@@ -1185,6 +1249,8 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [studyNotesCreditPreview, setStudyNotesCreditPreview] = useState<CreditClientResult | null>(null);
   const [genesisOneStudyModeOn, setGenesisOneStudyModeOn] = useState(true);
   const [openGenesisOnePhrase, setOpenGenesisOnePhrase] = useState<string | null>(null);
+  // How far down the chapter the phrase cards have been mounted so far.
+  const [genesisOneCardCeiling, setGenesisOneCardCeiling] = useState(6);
   const shareVerse = null as { number: number; text: string } | null;
   const shareContent = "";
   const shareSubmitting = false;
@@ -1839,13 +1905,21 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       // A saved highlight owns the click, so the existing note and colour
       // actions keep working. Otherwise an underlined phrase opens its card.
       const opensPhraseCard = Boolean(underline && !range);
+      // While a phrase's card is open its words carry the card's own colour,
+      // so it is obvious at a glance which part of the verse was tapped.
+      const phraseIsOpen = Boolean(underline && openGenesisOnePhrase === underline.phraseKey);
 
       return (
         <span
           key={`${segment.start}-${segment.end}`}
-          className={`${range ? "rounded-[3px]" : ""}${opensPhraseCard ? " cursor-pointer" : ""}`.trim() || undefined}
+          className={`${range || phraseIsOpen ? "rounded-[3px]" : ""}${opensPhraseCard ? " cursor-pointer" : ""}`.trim() || undefined}
           style={{
-            backgroundColor: range ? getColorCode(range.color, surface) : undefined,
+            backgroundColor: range
+              ? getColorCode(range.color, surface)
+              : phraseIsOpen
+                ? underline!.activeBg
+                : undefined,
+            transition: "background-color 0.18s",
             // The 2px sits on the outside edges of a highlight only, so a
             // highlight split by an underline boundary still looks like one
             // continuous block rather than gaining a gap in the middle.
@@ -1853,8 +1927,12 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
             paddingRight: range && segment.end === range.end_offset ? 2 : undefined,
             // Read mode keeps the underlines as a quiet hint rather than a
             // marked up page, so they drop to about a third of their strength.
+            // Faded in read mode, but the open phrase comes back to full
+            // strength so it reads as the one you are looking at.
             borderBottom: underline
-              ? `${genesisOneStudyModeOn ? "2px" : "1px"} dotted ${underline.color}${genesisOneStudyModeOn ? "" : "59"}`
+              ? `${genesisOneStudyModeOn || phraseIsOpen ? "2px" : "1px"} dotted ${underline.color}${
+                  genesisOneStudyModeOn || phraseIsOpen ? "" : "59"
+                }`
               : undefined,
             paddingBottom: underline ? 1 : undefined,
           }}
@@ -1912,6 +1990,53 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     );
   }
 
+  /**
+   * Resolve every phrase's icon and note body once per notes load.
+   *
+   * This used to run per card, per render: 87 cards each scanning every
+   * section and splitting strings again. Doing it once and reading from a map
+   * is the difference between the reader feeling instant and feeling stuck.
+   */
+  const genesisOnePhraseNotes = useMemo(() => {
+    const map = new Map<string, { icon: string; paragraphs: string[] }>();
+    if (!genesisOneStudyAvailable || !resolvedStudySections.length) return map;
+
+    GENESIS_ONE_PHRASES.forEach((phrase) => {
+      const { entries } = resolveGenesisOnePhraseNote(phrase);
+      map.set(getGenesisOnePhraseKey(phrase), {
+        icon:
+          getPhraseNoteIcon(entries, phrase.noteTitle) ||
+          getNestedStudyItemIcon("key-phrases", getPhraseDisplayTitle(phrase)),
+        paragraphs: dropPreviewEcho(extractPhraseNote(entries, phrase.noteTitle), phrase.preview),
+      });
+    });
+
+    return map;
+  }, [genesisOneStudyAvailable, resolvedStudySections]);
+
+  /**
+   * Scripture paints immediately; the cards fill in behind it a few verses at
+   * a time during idle frames, rather than mounting all 87 at once.
+   */
+  useEffect(() => {
+    if (!genesisOneStudyAvailable || !genesisOneStudyModeOn) return;
+    if (genesisOneCardCeiling >= verses.length) return;
+    if (typeof window === "undefined") return;
+
+    let cancelled = false;
+    const bump = () => {
+      if (!cancelled) setGenesisOneCardCeiling((current) => Math.min(current + 6, verses.length));
+    };
+
+    // A timer rather than requestIdleCallback: idle callbacks are starved
+    // while the tab is in the background, which left the chapter half filled.
+    const timeoutId = window.setTimeout(bump, 50);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
+  }, [genesisOneStudyAvailable, genesisOneStudyModeOn, genesisOneCardCeiling, verses.length]);
+
   function renderGenesisOnePhraseCards(verse: number) {
     const allPhrases = getGenesisOnePhrasesForVerse(verse);
     // Study Mode on lists every card under the verse. Off shows nothing until
@@ -1921,23 +2046,27 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       : allPhrases.filter((phrase) => getGenesisOnePhraseKey(phrase) === openGenesisOnePhrase);
     if (!phrases.length) return null;
 
+    // Verses past the ceiling have not been reached by the background fill
+    // yet. A tapped card always renders, wherever it is.
+    if (genesisOneStudyModeOn && verse > genesisOneCardCeiling) return null;
+
     return (
       <div className="mb-4 mt-3 flex flex-col gap-2.5">
         {phrases.map((phrase) => {
           const phraseKey = getGenesisOnePhraseKey(phrase);
           const colorIndex = GENESIS_ONE_PHRASE_ORDER.get(phrase) ?? 0;
-          const { entries: keyPhraseEntries } = resolveGenesisOnePhraseNote(phrase);
+          // Title and preview come from the phrase map and are ready straight
+          // away. The note body arrives with the notes and only matters once
+          // the card is opened.
+          const resolved = genesisOnePhraseNotes.get(phraseKey);
 
           return (
             <GenesisOneStudyCard
               key={phraseKey}
               phrase={phrase}
               colorIndex={colorIndex}
-              icon={
-                getPhraseNoteIcon(keyPhraseEntries, phrase.noteTitle) ||
-                getNestedStudyItemIcon("key-phrases", getPhraseDisplayTitle(phrase))
-              }
-              paragraphs={dropPreviewEcho(extractPhraseNote(keyPhraseEntries, phrase.noteTitle), phrase.preview)}
+              icon={resolved?.icon || getNestedStudyItemIcon("key-phrases", getPhraseDisplayTitle(phrase))}
+              paragraphs={resolved?.paragraphs || []}
               isOpen={openGenesisOnePhrase === phraseKey}
               onToggle={() => {
                 void handleToggleGenesisOnePhrase(phrase, phraseKey);
