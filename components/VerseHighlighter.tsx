@@ -16,6 +16,7 @@ import { ACTION_TYPE } from "../lib/actionTypes";
 import CreditLimitModal from "./CreditLimitModal";
 import { supabase } from "../lib/supabaseClient";
 import { consumeCreditAction, isCreditActionCanceled, previewCreditAction, type CreditClientResult } from "../lib/creditClient";
+import { CORE_STUDY_IS_FREE } from "../lib/accessPolicy";
 import type {
   BibleReaderStudyNoteCategory,
   BibleReaderStudySection,
@@ -1217,7 +1218,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   }, [user, book, chapter]);
 
   useEffect(() => {
-    if (!user || plainTextMode || hideStudySections) {
+    if (CORE_STUDY_IS_FREE || !user || plainTextMode || hideStudySections) {
       setStudyNotesCreditPreview(null);
       return;
     }
@@ -1273,6 +1274,20 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       if (idleId !== null && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
     };
   }, [book, chapter, hideStudySections, plainTextMode, studySections]);
+
+
+  /**
+   * Credits are only spent when the free-study policy is switched off. Under
+   * the default policy nothing is consumed and nothing can block the reader,
+   * so the upgrade modal never appears for reading, highlighting or notes.
+   */
+  async function spendCredit(
+    actionType: string,
+    options?: { userId?: string; actionLabel?: string },
+  ): Promise<CreditClientResult> {
+    if (CORE_STUDY_IS_FREE) return { ok: true } as CreditClientResult;
+    return consumeCreditAction(actionType as never, options as never);
+  }
 
   const handleVerseClick = (verse: number, e: React.MouseEvent) => {
     console.log('[VerseHighlighter] handleVerseClick fired', { verse, user });
@@ -1387,9 +1402,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       } as VerseHighlightRange;
     }
 
-    const creditResult = await consumeCreditAction(ACTION_TYPE.verse_highlighted, { userId: user.id });
+    const creditResult = await spendCredit(ACTION_TYPE.verse_highlighted, { userId: user.id });
     if (!creditResult.ok) {
-      setCreditBlocked(true);
+      if (!CORE_STUDY_IS_FREE) setCreditBlocked(true);
       return null;
     }
 
@@ -1509,9 +1524,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       }
 
       if (color) {
-        const creditResult = await consumeCreditAction(ACTION_TYPE.verse_highlighted, { userId: user.id });
+        const creditResult = await spendCredit(ACTION_TYPE.verse_highlighted, { userId: user.id });
         if (!creditResult.ok) {
-          setCreditBlocked(true);
+          if (!CORE_STUDY_IS_FREE) setCreditBlocked(true);
           return;
         }
 
@@ -1545,9 +1560,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       await deleteHighlight(book, chapter, verse);
     } else if (color) {
       // --- ADD highlight ---
-      const creditResult = await consumeCreditAction(ACTION_TYPE.verse_highlighted, { userId: user.id });
+      const creditResult = await spendCredit(ACTION_TYPE.verse_highlighted, { userId: user.id });
       if (!creditResult.ok) {
-        setCreditBlocked(true);
+        if (!CORE_STUDY_IS_FREE) setCreditBlocked(true);
         return;
       }
       setHighlightMap((m) => ({ ...m, [verse]: color }));
@@ -1622,7 +1637,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     if (!user) return true;
     if (studyCreditUnlockedSections[studySection.reference]) return true;
 
-    const creditResult = await consumeCreditAction(ACTION_TYPE.study_notes_section_opened, {
+    const creditResult = await spendCredit(ACTION_TYPE.study_notes_section_opened, {
       userId: user.id,
       actionLabel: `opened ${getStudySectionAnalyticsSlug(studySection.reference)} notes opened`,
     });
@@ -1632,7 +1647,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       if (onStudyNotesCreditBlocked) {
         onStudyNotesCreditBlocked();
       } else {
-        setCreditBlocked(true);
+        if (!CORE_STUDY_IS_FREE) setCreditBlocked(true);
       }
       return false;
     }
@@ -1751,7 +1766,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: initialOpenCategory }));
     }
 
-    const creditResult = await consumeCreditAction(ACTION_TYPE.study_notes_section_opened, {
+    const creditResult = await spendCredit(ACTION_TYPE.study_notes_section_opened, {
       userId: user.id,
       actionLabel: `opened ${getStudySectionAnalyticsSlug(studySection.reference)} notes opened`,
     });
@@ -2015,7 +2030,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
                   onStudyNotesCreditBlocked();
                   return;
                 }
-                setCreditBlocked(true);
+                if (!CORE_STUDY_IS_FREE) setCreditBlocked(true);
               }}
             />
           )) : null}
@@ -2118,7 +2133,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
                   onStudyNotesCreditBlocked();
                   return;
                 }
-                setCreditBlocked(true);
+                if (!CORE_STUDY_IS_FREE) setCreditBlocked(true);
               }}
             />
           )) : null}

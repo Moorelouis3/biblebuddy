@@ -2845,13 +2845,12 @@ export default function DashboardJourneyExperience({
   }, [profile?.selected_buddy_avatar]);
 
   const selectedBuddy = liveSelectedBuddyId ? getBuddyAvatar(liveSelectedBuddyId) : null;
-  const shouldShowBibleBuddy3ModeGate =
-    isOwnerDashboard &&
-    !studyModeGateDismissed &&
-    safeActivePage === 0 &&
-    !bibleYearDashboardActive &&
-    !bibleYearSeriesActive &&
-    !homePanelOverride;
+  // Retired. The "Bible Buddy 3.0 is now live" mode gate had no way out other
+  // than picking an option, and its choice only persisted once a userId had
+  // loaded, so it could reappear every visit and block the dashboard. Nothing
+  // should stand between someone and the app.
+  const shouldShowBibleBuddy3ModeGate = false;
+  void studyModeGateDismissed;
   const dashboardNavItems: Array<{
     key: DashboardPageKey;
     label: string;

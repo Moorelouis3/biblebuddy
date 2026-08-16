@@ -193,11 +193,10 @@ export default function BibleChapterPage() {
      stripped back reader shell: a chapter and translation row, three tabs,
      and one content area underneath. Every other chapter, and every embed,
      keeps the existing layout exactly as it was. */
+  // Applies in the dashboard embed too, which is how the app shows the Bible
+  // on mobile. Only the raw chapter-text embed is left alone.
   const isGenesisOnePrototype =
-    book.trim().toLowerCase() === "genesis" &&
-    chapter === 1 &&
-    !hideReaderChrome &&
-    !isChapterTextEmbed;
+    book.trim().toLowerCase() === "genesis" && chapter === 1 && !isChapterTextEmbed;
 
   const [sections, setSections] = useState<Section[]>([]);
   const [loading, setLoading] = useState(true);
@@ -2771,7 +2770,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           </div>
         </div> : null}
 
-        {hideReaderChrome && !hideEmbedControls ? (
+        {hideReaderChrome && !hideEmbedControls && !isGenesisOnePrototype ? (
           <div className="relative z-20 mb-3" ref={gamesMenuRef}>
             <div className="grid grid-cols-2 gap-2">
               <button
