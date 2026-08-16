@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { startGuestBibleYearJourney } from "@/lib/guestSession";
+import { ensureGuestSession } from "@/lib/guestSession";
 
 /**
  * Landing page primary CTA.
@@ -35,13 +35,12 @@ export default function StartStudyingButton({
     onTrack?.(clickedFrom);
 
     try {
-      const result = await startGuestBibleYearJourney({
-        source: `landing_${clickedFrom}`,
-      });
+      const result = await ensureGuestSession({ source: `landing_${clickedFrom}` });
 
       if (result.ok) {
-        // Full reload so AppShell boots cleanly with the new session.
-        window.location.href = "/dashboard";
+        // One question, then straight into studying. The chooser saves the mode
+        // and routes; nothing else stands between the click and Scripture.
+        window.location.href = "/start";
         return;
       }
 

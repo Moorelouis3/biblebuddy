@@ -837,6 +837,28 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   async function checkOnboardingStatus(currentUserId: string) {
     try {
+      // Guests get the "How would you like to read the Bible?" chooser at /start
+      // instead of the 10-step first-login onboarding.
+      //
+      // This has to be decided here rather than by writing onboarding_completed
+      // on the guest profile: signInAnonymously() fires the auth listener
+      // immediately, so this function can race ahead of the guest profile write,
+      // find no row, create one with onboarding_completed false, and show the
+      // modal anyway. Checking who the user IS has no race to lose.
+      const { data: authData } = await supabase.auth.getUser();
+      const authUser = authData?.user;
+      const isAnonymous = Boolean(
+        authUser &&
+          ((authUser as unknown as { is_anonymous?: boolean }).is_anonymous ||
+            !authUser.email ||
+            authUser.identities?.length === 0),
+      );
+
+      if (isAnonymous) {
+        setShowFirstLoginOnboarding(false);
+        return;
+      }
+
       let { data: profileStats, error: profileStatsError } = await supabase
         .from("profile_stats")
         .select("onboarding_completed, traffic_source, bible_experience_level, display_name, username, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at, preferred_study_mode")

@@ -1932,3 +1932,21 @@ skipped the build - code on main, old bundle still live. Pushed a
 [deploy]-tagged commit to main to trigger the production build.
 Lesson recorded in the release notes: when merging a tagged release, the
 merge commit itself needs the tag.
+
+## 2026-08-16 (start chooser)
+Done: Replaced the 10-step first-login onboarding for new users with a
+single question - "How would you like to read the Bible?" - and three
+options that actually route: a devotional (/devotionals), Bible in One
+Year (/dashboard?view=bible-year&day=1), or just the Bible (/bible).
+Built app/start. Landing button now goes there instead of straight to
+Day 1. Found why the earlier onboarding skip failed: signInAnonymously
+fires AppShell's auth listener before the guest profile write lands, so
+checkOnboardingStatus found no row, created one with
+onboarding_completed false and showed the modal. Fixed by checking
+whether the user is anonymous rather than racing the write.
+Worth noting: of the four things the old onboarding asked,
+onboarding_study_focus, onboarding_time_commitment and
+onboarding_difficulty are written and never read anywhere. Only
+bible_experience_level is read, once, by ChatLouis.
+Still open: registered signups still get the 10-step onboarding - only
+guests are diverted. Not yet deployed.
