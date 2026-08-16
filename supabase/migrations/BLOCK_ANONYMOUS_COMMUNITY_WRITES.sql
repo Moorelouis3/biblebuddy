@@ -52,7 +52,22 @@ DECLARE
     'group_series_comment_likes',
     'article_likes',
     'blog_article_likes',
-    'series_reflection_likes'
+    'series_reflection_likes',
+    -- Added 2026-08-16 from a discovery sweep of every community-shaped table
+    -- that had no policy yet. All six are INSERT-blocked only:
+    --   feed_posts / feed_post_reactions   - guests must not create feed content
+    --   group_series_posts, weekly_group_series_posts,
+    --   group_recurring_post_overrides     - cron/admin written via service role,
+    --                                        which bypasses RLS, so unaffected
+    --   louis_inbox_messages               - inserted only by service-role routes;
+    --                                        ChatLouis only UPDATEs consumed_at,
+    --                                        so guest Louis chat still works
+    'feed_posts',
+    'feed_post_reactions',
+    'group_series_posts',
+    'weekly_group_series_posts',
+    'group_recurring_post_overrides',
+    'louis_inbox_messages'
   ];
 BEGIN
   FOREACH t IN ARRAY community_tables LOOP
