@@ -6,6 +6,7 @@ import { LouisAvatar } from "../../../../components/LouisAvatar";
 import { supabase } from "../../../../lib/supabaseClient";
 import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters, isBookComplete } from "../../../../lib/readingProgress";
 import ChapterReaderSkeleton from "../../../../components/ChapterReaderSkeleton";
+import { GENESIS_ONE_KJV, isGenesisOneKjv } from "../../../../lib/genesisOneText";
 
 /** Confetti is only needed on a celebration, so it is fetched on demand. */
 async function confetti(options: Record<string, unknown>) {
@@ -211,8 +212,22 @@ export default function BibleChapterPage() {
   const isGenesisOnePrototype =
     book.trim().toLowerCase() === "genesis" && chapter === 1 && !isChapterTextEmbed;
 
-  const [sections, setSections] = useState<Section[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Genesis 1 KJV starts with its text already in hand, so the very first
+  // render is the Scripture rather than a skeleton waiting on a fetch.
+  const genesisOneIsBundled = isGenesisOneKjv(bookParam, Number(params.chapter), "kjv");
+  const [sections, setSections] = useState<Section[]>(() =>
+    genesisOneIsBundled
+      ? [
+          {
+            id: "verses",
+            emoji: "",
+            title: `${bookDisplayName} ${Number(params.chapter)}`,
+            verses: GENESIS_ONE_KJV.map((v) => ({ num: v.verse, text: v.text })),
+          },
+        ]
+      : [],
+  );
+  const [loading, setLoading] = useState(!genesisOneIsBundled);
   const [error, setError] = useState<string | null>(null);
   const chapterRequestRef = useRef(0);
   const [isSaving, setIsSaving] = useState(false);
@@ -878,6 +893,30 @@ RULES:
 
     async function loadChapter() {
       const isCurrentRequest = () => !cancelled && chapterRequestRef.current === requestId;
+
+      // Genesis 1 in KJV is bundled, so it paints immediately instead of
+      // waiting on a network request that cannot start until this code has
+      // downloaded. Enrichment still arrives afterwards.
+      if (isGenesisOneKjv(book, chapter, translation)) {
+        setError(null);
+        setEnrichedContent(null);
+        setSections(convertToSections(GENESIS_ONE_KJV, bookDisplayName));
+        setLoading(false);
+
+        // Enrichment supplies the tappable people, places and keywords. The
+        // chapter reads perfectly without it, so it follows on behind rather
+        // than holding up the text.
+        void (async () => {
+          try {
+            const enriched = await enrichBibleVerses(GENESIS_ONE_KJV);
+            if (isCurrentRequest()) setEnrichedContent(enriched);
+          } catch (enrichError) {
+            console.warn("[CHAPTER_LOADING] Genesis 1 enrichment skipped:", enrichError);
+          }
+        })();
+
+        return;
+      }
 
       try {
         console.log("[CHAPTER_LOADING] start", { book, chapter, translation });
