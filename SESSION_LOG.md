@@ -2246,3 +2246,26 @@ Next up: Proverbs 5
 ## 2026-08-16T20:55:17Z (hourly chapter notes run)
 Chapter: Proverbs 5 | Duration: 9 min | Sections: 6 | Cards: 48 | Status: pass
 Next up: Proverbs 6
+
+## 2026-08-16 (night)
+Time spent: long session, roughly eight hours.
+Done: Built the Genesis 1 Study Mode prototype end to end. 87 Insight Cards
+across all 31 verses, driven by lib/genesisOneStudyMode.ts with bodies read
+from Louis's own notes. Wrote 27 missing phrase notes (verses 7, 12, 15, 24,
+25, 27, 30 had none) and added the Genesis 1:24-25 section, which did not
+exist. Fixed a missing # that was hiding the 1:29-31 notes. New reader shell:
+chapter and translation dropdowns, Scripture / Trivia / Scrambled tabs in one
+frame, transport style player, Chapter Discussion. Study Mode now defaults
+off, with faint underlines and tap to open one card.
+Performance: Genesis 1 was loading a 32 MB JavaScript chunk, the whole-Bible
+study notes, before a verse could show. Gave Genesis 1 its own reader
+component so the route loads only what it uses. Initial JS went from about
+33,000 KB to 1,810 KB, measured on a clean production build.
+Still open: the app registers a service worker that served stale HTML during
+testing and cost hours of false readings. Worth reviewing how it caches
+across deploys. The dedicated Genesis 1 reader deliberately drops featured
+characters, person and place popups, level ups and the daily checklist; add
+back only if Louis wants them there. Louis reported a stuck loading screen on
+laptop once, never reproduced.
+Next: Genesis 2, same pattern as Genesis 1. See the saved memory note for the
+approved approach.
