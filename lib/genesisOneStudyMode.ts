@@ -31,12 +31,12 @@ export type GenesisOnePhrase = {
 
 /** Pastel colours, rotated in order. Underline and card share a colour. */
 export const GENESIS_ONE_PHRASE_COLORS = [
-  { key: "amber", underline: "#cfa863", cardBg: "#fefcf7", cardBorder: "#f1ebdd" },
-  { key: "green", underline: "#7fb08c", cardBg: "#f8fcf9", cardBorder: "#e2eee6" },
-  { key: "purple", underline: "#a595d9", cardBg: "#fbfafe", cardBorder: "#e8e3f3" },
-  { key: "orange", underline: "#dda57c", cardBg: "#fefaf6", cardBorder: "#f3e6da" },
-  { key: "teal", underline: "#7fb2bc", cardBg: "#f7fbfc", cardBorder: "#dfebee" },
-  { key: "rose", underline: "#d295a5", cardBg: "#fdfafb", cardBorder: "#f0e3e7" },
+  { key: "amber", underline: "#d9a441", cardBg: "#fdf6e6", cardBorder: "#f0dfb8" },
+  { key: "green", underline: "#5aa06a", cardBg: "#eef7ef", cardBorder: "#cfe6d4" },
+  { key: "purple", underline: "#8b6fd0", cardBg: "#f4f0fd", cardBorder: "#ddd2f5" },
+  { key: "orange", underline: "#dd8a4e", cardBg: "#fdf1e8", cardBorder: "#f5dcc6" },
+  { key: "teal", underline: "#4c9aa8", cardBg: "#ecf6f8", cardBorder: "#c9e4ea" },
+  { key: "rose", underline: "#c86b86", cardBg: "#fcf0f3", cardBorder: "#f2d3dc" },
 ] as const;
 
 export function getGenesisOnePhraseColor(index: number) {
@@ -139,6 +139,84 @@ export const GENESIS_ONE_PHRASES: GenesisOnePhrase[] = [
     noteTitle: "Seed",
     underline: "whose seed is in itself",
     preview: "A small word with a long future - Genesis keeps returning to offspring and promise.",
+  },
+  {
+    verse: 14,
+    noteTitle: "Lights In The Expanse",
+    underline: "lights in the firmament",
+    preview: "God fills the sky He made on day two. He prepares a place, then fills it.",
+  },
+  {
+    verse: 14,
+    noteTitle: "For Signs And For Seasons",
+    underline: "for signs, and for seasons",
+    preview: "Sun, moon and stars are given a job - marking time. They are servants, not gods.",
+  },
+  {
+    verse: 17,
+    noteTitle: "God Set Them",
+    underline: "God set them in the firmament",
+    preview: "God places them. Nations worshipped these lights; Genesis says God put them there.",
+  },
+  {
+    verse: 20,
+    noteTitle: "Let The Waters Swarm",
+    underline: "Let the waters bring forth abundantly",
+    preview: "The waters that felt empty and frightening now teem with life at God's word.",
+  },
+  {
+    verse: 21,
+    noteTitle: "According To Their Kinds",
+    underline: "after their kind",
+    preview: "Creation has order and boundaries built in, not random sameness.",
+  },
+  {
+    verse: 22,
+    noteTitle: "God Blessed Them",
+    underline: "God blessed them",
+    preview: "The first blessing in the Bible goes to creatures - God delights in life multiplying.",
+  },
+  {
+    verse: 26,
+    noteTitle: "Let Us Make",
+    underline: "Let us make man",
+    preview: "The rhythm changes. God pauses and speaks differently before making people.",
+  },
+  {
+    verse: 26,
+    noteTitle: "In Our Image",
+    underline: "in our image",
+    preview: "Human worth is not earned or assigned by others. It is given by God at creation.",
+  },
+  {
+    verse: 26,
+    noteTitle: "After Our Likeness",
+    underline: "after our likeness",
+    preview: "People are made to resemble God and represent Him in the world He made.",
+  },
+  {
+    verse: 26,
+    noteTitle: "Have Dominion",
+    underline: "have dominion",
+    preview: "Care and responsibility over creation, not permission to exploit it.",
+  },
+  {
+    verse: 27,
+    noteTitle: "Male And Female",
+    underline: "male and female",
+    preview: "Both carry God's image fully. Neither is an afterthought.",
+  },
+  {
+    verse: 28,
+    noteTitle: "Be Fruitful And Multiply",
+    underline: "Be fruitful, and multiply",
+    preview: "The first words God speaks to people are a blessing and a commission.",
+  },
+  {
+    verse: 31,
+    noteTitle: "Very Good",
+    underline: "it was very good",
+    preview: "Not just good now, but very good - creation complete, with people in it.",
   },
 ];
 
