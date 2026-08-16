@@ -1,5 +1,8 @@
 // app/api/chat/route.ts
 import OpenAI from "openai";
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
+import { checkLouisRateLimit, louisLimitMessage } from "@/lib/server/louisRateLimit";
 import { buildBuddyVoiceSystemPrompt, getBuddyAvatar } from "@/lib/buddyAvatars";
 
 if (!process.env.OPENAI_API_KEY) {
@@ -49,6 +52,56 @@ export async function POST(req: Request) {
         headers: { "Content-Type": "application/json" },
       }
     );
+  }
+
+  // Safety net. /api/chat previously had no authentication at all - no token,
+  // no user id - so anyone with the URL could spend the project's OpenAI
+  // credit. Identify the caller from their Supabase cookies and apply a
+  // generous daily ceiling. See lib/server/louisRateLimit.ts.
+  let isGuestCaller = false;
+  try {
+    const cookieStore = await cookies();
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value;
+          },
+          set() {},
+          remove() {},
+        },
+      },
+    );
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    isGuestCaller = Boolean(
+      user &&
+        ((user as unknown as { is_anonymous?: boolean }).is_anonymous ||
+          !user.email ||
+          user.identities?.length === 0),
+    );
+
+    const rate = await checkLouisRateLimit(user?.id ?? null, isGuestCaller);
+
+    if (!rate.allowed) {
+      const reply =
+        rate.reason === "no_session"
+          ? "Open Bible Buddy and start studying, then I can chat with you here."
+          : louisLimitMessage(isGuestCaller);
+
+      return new Response(JSON.stringify({ reply, limited: true }), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+  } catch (limitErr) {
+    // Never take the chat away because the check itself broke.
+    console.error("[CHAT] Rate limit check failed, allowing through:", limitErr);
   }
 
   try {

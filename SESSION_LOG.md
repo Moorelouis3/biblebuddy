@@ -1968,3 +1968,21 @@ silently for guests. Blog article like bar not gated either.
 ## 2026-08-16T07:53:30Z (hourly chapter notes run)
 Chapter: 2 Chronicles 2 | Duration: 12 min | Sections: 6 | Cards: 37 | Status: pass
 Next up: 2 Chronicles 3
+
+## 2026-08-16 (Louis AI safety net)
+Done: Got Supabase access working (network policy opened + NODE_EXTRA_CA_CERTS
+for the proxy CA) and pulled the real Louis usage. 30 days: 272 messages from
+19 people out of 4,171 accounts. Three users are two thirds of it. Cost is
+roughly a dollar a month on gpt-4o-mini - so no paid AI tier, no removal, no
+product limit.
+Found the actual risk instead: /api/chat had NO authentication at all. No
+token, no user id. Anyone with the URL could spend the OpenAI credit.
+Added lib/server/louisRateLimit.ts - identifies the caller from Supabase
+cookies and applies a daily ceiling: 75 registered, 30 guest. Set from the
+data, not guessed: busiest human day in 90 days was 35 messages. Fails open
+on any error so the chat is never lost to a broken check.
+Skipped prompt caching deliberately: the system prompt is rewritten per buddy
+via replaceAll, so caching would need restructuring a 1,000-line prompt and
+risk changing how Louis talks, to save part of a dollar.
+Still open: captcha on anonymous sign-ins (Supabase setting + code), Stripe
+subscriptions, Supabase invoice.
