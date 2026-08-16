@@ -12,6 +12,7 @@ import { createPortal } from "react-dom";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../../../lib/supabaseClient";
+import { useGuestGate } from "@/components/GuestAccountPrompt";
 import { HOME_FEED_COVER_MARKER } from "@/lib/groupFeedCarouselScheduler";
 import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
@@ -1853,6 +1854,7 @@ export default function GroupChatPage() {
 
   // Composer media state
   const [composerMode, setComposerMode] = useState<"text" | "photo" | "video">("text");
+  const { blockIfGuest, guestPrompt } = useGuestGate();
   const [composerPhotoFile, setComposerPhotoFile] = useState<File | null>(null);
   const [composerPhotoPreview, setComposerPhotoPreview] = useState<string | null>(null);
   const [composerVideoFile, setComposerVideoFile] = useState<File | null>(null);
@@ -4057,6 +4059,7 @@ export default function GroupChatPage() {
   }
 
   async function handleSubmitPost() {
+    if (await blockIfGuest("post")) return;
     const editorHtml = postEditor?.getHTML() ?? "";
     let normalizedContent = editorHtml === "<p></p>" ? "" : editorHtml;
     const hasContent = stripHtml(normalizedContent).length > 0;
@@ -6551,6 +6554,8 @@ export default function GroupChatPage() {
         isOpen={showDevotionalUpgradeModal}
         onClose={() => setShowDevotionalUpgradeModal(false)}
       />
+
+      {guestPrompt}
 
       {showPastStudyProModal && (
         <div

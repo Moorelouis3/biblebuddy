@@ -1950,3 +1950,17 @@ onboarding_difficulty are written and never read anywhere. Only
 bible_experience_level is read, once, by ChatLouis.
 Still open: registered signups still get the 10-step onboarding - only
 guests are diverted. Not yet deployed.
+
+## 2026-08-16 (guest gate + signup chooser)
+Done: Email signups now get the /start chooser too, not just guests -
+AppShell redirects anyone who has not completed onboarding, with a
+pathname guard so /start cannot loop. /signup already captures the name
+the old modal collected, so nothing is lost.
+Added components/GuestAccountPrompt.tsx with a useGuestGate() hook and
+wired it into blog comments and likes (CommentSection), series
+reflections and study group posts. Guests trying to take part now see
+"Only Bible Buddy members can comment" with a create-account button,
+instead of a silent RLS rejection. The database policy is still the
+real enforcement; this is the explanation.
+Still open: DM send and buddy requests are not gated yet - those fail
+silently for guests. Blog article like bar not gated either.

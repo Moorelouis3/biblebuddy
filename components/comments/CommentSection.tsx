@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import { useGuestGate } from "@/components/GuestAccountPrompt";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import { triggerToast } from "@/components/AppToast";
 import { ModalShell } from "@/components/ModalShell";
@@ -109,6 +110,7 @@ export default function CommentSection({
   onUserHasPosted,
 }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
+  const { blockIfGuest, guestPrompt } = useGuestGate();
   const [user, setUser] = useState<{ id: string; name: string } | null>(null);
   const [content, setContent] = useState("");
   const [replyTo, setReplyTo] = useState<string | null>(null);
@@ -374,6 +376,8 @@ export default function CommentSection({
   const handlePost = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || !content.trim()) return;
+    // Guests can study everything, but taking part needs an account.
+    if (await blockIfGuest("comment")) return;
     if (!currentUserCanPost) {
       setProfileCompletionError(null);
       const nameParts = splitFullName(hasRequiredFullName(user.name) ? user.name : "");
@@ -616,6 +620,7 @@ export default function CommentSection({
 
   async function handleToggleLike(comment: Comment) {
     if (!user || likeLoadingIds.has(comment.id)) return;
+    if (await blockIfGuest("like")) return;
 
     const wasLiked = comment.liked === true;
     setLikeLoadingIds((prev) => new Set(prev).add(comment.id));
@@ -1082,6 +1087,7 @@ export default function CommentSection({
           )}
         </div>
       </ModalShell>
+      {guestPrompt}
     </section>
   );
 }
