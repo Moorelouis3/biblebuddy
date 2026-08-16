@@ -32,7 +32,8 @@ plans, no Pro tier.
 | Bible in One Year credit-gated | Open |
 | Study-group series notes: Pro only | Open |
 | Bible Buddy TV notes: Pro only | Open |
-| Landing page → signup form | "Start Studying Now" → Bible in One Year Day 1 |
+| Landing page → signup form | "Start Studying Now" → one question, then studying |
+| 10-step first-login onboarding | One screen: devotional, Bible in One Year, or just the Bible |
 | Blog → "create an account" | Blog → deep link into the relevant free study |
 
 ## Environment flags
