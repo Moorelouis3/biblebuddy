@@ -913,9 +913,10 @@ const STUDY_SWITCHER_ORDER_INDEX = new Map(
  */
 function getDevotionalDayCover(title: string | null | undefined, dayNumber: number) {
   if (title === "The Wisdom of Proverbs") {
+    // Filenames exactly as they are in /public - "Wisom", not "Wisdom".
     const proverbsDayCovers: Record<number, string> = {
-      1: "/proverbs-day-1.png",
-      2: "/proverbs-day-2.png",
+      1: "/WisomofProverbsDay1.png",
+      2: "/WisomofProverbsDay2.png",
     };
     return proverbsDayCovers[dayNumber] || null;
   }
