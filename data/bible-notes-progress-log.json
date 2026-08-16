@@ -23603,6 +23603,59 @@
           "at": "2026-08-16T13:54:57Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 9,
+      "startedAt": "2026-08-16T14:46:07Z",
+      "finishedAt": "2026-08-16T15:00:09Z",
+      "durationMinutes": 14,
+      "sections": 9,
+      "cards": 59,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing wired-in file for this chapter, clean new-chapter build per docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (31 verses). 2 Chronicles 9 covers the queen of Sheba testing Solomon with hard questions and being left speechless by his wisdom and his kingdom, the gift exchange (her hundred and twenty talents of gold and unmatched spices against Solomons matching generosity), Ophir gold and algum wood used for temple terraces and instruments, Solomons staggering yearly gold income plus separate merchant and tribute income, the gold targets and shields housed in the House of the Forest of Lebanon, the great ivory throne with its lion-flanked steps, silver and cedar becoming as common as stones and sycamore, the three-year Tarshish voyages, the chapter summary that Solomon passed every king of the earth in riches and wisdom, the four thousand chariot stalls (a manuscript variant against 1 Kings 4s forty thousand) and the Deuteronomy 17 tension in his own horse buildup out of Egypt, and the close naming the now-lost source records before Solomons forty year reign ends and Rehoboam succeeds him. Chunked into 9 sections (1-4, 5-8, 9-12, 13-16, 17-19, 20-21, 22-24, 25-28, 29-31). Density about 1.90 cards/verse (31 verses, 59 cards). scripts/check_bible_note_style.py found 3 problems on first pass (one banned hedge word, two overlong bullets), fixed, second run clean. A manual section 13 eye check caught and rewrote two rather than stacked-clause constructions the automated checker does not scan for. Parser check passed exactly via getBibleReaderStudySections(2 chronicles, 9) (9/9 sections, 59 cards, 31 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 chronicles range extended from chapters 1-8 to 1-9, replaceStudySectionsForBookRange(2 chronicles, 9, 9, SECOND_CHRONICLES_NINE_PERSONAL_SECTIONS) call added directly after the Chapter 8 call. Next forward-progress target is 2 Chronicles 10.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T14:46:07Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 9 (redo backlog empty, normal forward progress after 2 Chronicles 8)",
+          "at": "2026-08-16T14:47:01Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 9, 31 verses, aruljohn mirror)",
+          "at": "2026-08-16T14:47:01Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-16T14:47:01Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesNineSource.ts (9 sections, 59 cards)",
+          "at": "2026-08-16T14:57:13Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 1 banned hedge word, 2 overlong bullets, 1 stacked clause)",
+          "at": "2026-08-16T14:57:32Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-16T14:58:15Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 59 cards, text verbatim)",
+          "at": "2026-08-16T14:58:15Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-16T14:58:15Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-16T15:00:09Z"
+        }
+      ]
     }
   ]
 }
