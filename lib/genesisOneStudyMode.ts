@@ -31,12 +31,12 @@ export type GenesisOnePhrase = {
 
 /** Pastel colours, rotated in order. Underline and card share a colour. */
 export const GENESIS_ONE_PHRASE_COLORS = [
-  { key: "amber", underline: "#d9a441", cardBg: "#fdf6e6", cardBorder: "#f0dfb8" },
-  { key: "green", underline: "#5aa06a", cardBg: "#eef7ef", cardBorder: "#cfe6d4" },
-  { key: "purple", underline: "#8b6fd0", cardBg: "#f4f0fd", cardBorder: "#ddd2f5" },
-  { key: "orange", underline: "#dd8a4e", cardBg: "#fdf1e8", cardBorder: "#f5dcc6" },
-  { key: "teal", underline: "#4c9aa8", cardBg: "#ecf6f8", cardBorder: "#c9e4ea" },
-  { key: "rose", underline: "#c86b86", cardBg: "#fcf0f3", cardBorder: "#f2d3dc" },
+  { key: "amber", underline: "#cfa863", cardBg: "#fefcf7", cardBorder: "#f1ebdd" },
+  { key: "green", underline: "#7fb08c", cardBg: "#f8fcf9", cardBorder: "#e2eee6" },
+  { key: "purple", underline: "#a595d9", cardBg: "#fbfafe", cardBorder: "#e8e3f3" },
+  { key: "orange", underline: "#dda57c", cardBg: "#fefaf6", cardBorder: "#f3e6da" },
+  { key: "teal", underline: "#7fb2bc", cardBg: "#f7fbfc", cardBorder: "#dfebee" },
+  { key: "rose", underline: "#d295a5", cardBg: "#fdfafb", cardBorder: "#f0e3e7" },
 ] as const;
 
 export function getGenesisOnePhraseColor(index: number) {
@@ -141,6 +141,31 @@ export const GENESIS_ONE_PHRASES: GenesisOnePhrase[] = [
     preview: "A small word with a long future - Genesis keeps returning to offspring and promise.",
   },
 ];
+
+/**
+ * The card title, built from the verse's own words so it can never drift from
+ * the KJV.
+ *
+ * The notes were written with their own headings - "Formless And Empty" while
+ * the verse reads "without form, and void", "The Spirit Of God Was Hovering"
+ * while the verse reads "the Spirit of God moved". Reading a card titled one
+ * thing while looking at a verse that says another is confusing, so the title
+ * shown is the underlined words themselves, title-cased. noteTitle is kept only
+ * to find the matching note.
+ */
+export function getPhraseDisplayTitle(phrase: GenesisOnePhrase): string {
+  const smallWords = new Set(["and", "the", "of", "a", "an", "in", "on", "upon", "was", "is", "be", "that", "it", "from", "under", "there", "let"]);
+
+  return phrase.underline
+    .replace(/[,;:]+$/g, "")
+    .split(/\s+/)
+    .map((word, index) => {
+      const lower = word.toLowerCase();
+      if (index > 0 && smallWords.has(lower)) return lower;
+      return lower.charAt(0).toUpperCase() + lower.slice(1);
+    })
+    .join(" ");
+}
 
 /** Phrases for one verse, in order. */
 export function getGenesisOnePhrasesForVerse(verse: number) {
