@@ -135,6 +135,12 @@ export default function BibleYearJourneyDashboard() {
       // real mode arrived, which then locked the reader into the wrong middle.
       preferred_study_mode: null,
     });
+    // Mount straight away. This used to wait for the profile fetch below so the
+    // study mode was known before rendering, but a slow or stalled request then
+    // left people stuck on "Loading Bible Buddy" forever. The mode is still
+    // never guessed: the placeholder above leaves it null, and the dashboard
+    // waits for a real value before deciding which middle to show.
+    setLoading(false);
 
     void (async () => {
       let data: ProfileStatsRow | null = null;
@@ -178,9 +184,7 @@ export default function BibleYearJourneyDashboard() {
       reconcileInstallPromptState(
         (data as { install_prompt_state?: string | null } | null)?.install_prompt_state ?? null,
       );
-      // Only now. The dashboard decides which of the three middles to show from
-      // preferred_study_mode, so mounting it before this row lands made it
-      // guess "Bible in One Year" and write that guess into the URL.
+      // Belt and braces - the dashboard has already mounted above.
       setLoading(false);
     })();
   }, [router]);
