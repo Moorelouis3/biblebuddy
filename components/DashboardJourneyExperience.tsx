@@ -851,6 +851,8 @@ type CurrentStudyChapter = {
   day_title: string | null;
   bible_reading_book: string | null;
   bible_reading_chapter: number | null;
+  // The day's overview. This is what the audio lesson reads out.
+  devotional_text?: string | null;
 };
 
 type NextStudyRecommendation = {
@@ -3236,7 +3238,7 @@ export default function DashboardJourneyExperience({
 
       const { data, error } = await supabase
         .from("devotional_days")
-        .select("day_number, day_title, bible_reading_book, bible_reading_chapter")
+        .select("day_number, day_title, bible_reading_book, bible_reading_chapter, devotional_text")
         .eq("devotional_id", currentDevotionalId)
         .order("day_number", { ascending: true });
 
@@ -12456,6 +12458,113 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
+  /**
+   * The devotional study area.
+   *
+   * Bible in One Year is the standard. This is the same block in the same
+   * order with the same styling - Day badge, reading reference, title, cover,
+   * AUDIO PLAYER, TODAY'S LESSON, Mark as Complete - with the devotional's day
+   * in it instead of the year plan's. The audio is the day's overview read by
+   * OpenAI text to speech, generated once and cached.
+   */
+  function renderDevotionalDashboardStudyArea() {
+    if (!currentDevotionalId || !currentStudyChapters.length) return null;
+
+    const dayNumber = currentDevotionalTask?.devotionalDayNumber ?? 1;
+    const day = currentStudyChapters.find((item) => item.day_number === dayNumber) || currentStudyChapters[0];
+    if (!day) return null;
+
+    const readingSummary =
+      day.bible_reading_book && day.bible_reading_chapter
+        ? `${day.bible_reading_book} ${day.bible_reading_chapter}`
+        : currentDevotionalTitle || "";
+    const cover = currentStudyCover;
+    const readingComplete = Boolean(dashboardTaskSource.find((task) => task.kind === "reading")?.done);
+    const overview = String(day.devotional_text || "").replace(/<[^>]+>/g, " ").trim();
+    const audioSrc = `/api/tts/devotional-overview?devotionalId=${encodeURIComponent(currentDevotionalId)}&day=${day.day_number}`;
+    const previousDay = currentStudyChapters.find((item) => item.day_number === day.day_number - 1) || null;
+    const nextDay = currentStudyChapters.find((item) => item.day_number === day.day_number + 1) || null;
+
+    const openDevotionalDay = (target: CurrentStudyChapter | null) => {
+      if (!target?.bible_reading_book || !target.bible_reading_chapter) return;
+      void loadEmbeddedBibleStudyChapter({
+        devotionalId: currentDevotionalId,
+        devotionalTitle: currentDevotionalTitle || "Your devotional",
+        dayNumber: target.day_number,
+        book: String(target.bible_reading_book),
+        chapter: Number(target.bible_reading_chapter),
+      });
+    };
+
+    return (
+      <article className="overflow-hidden rounded-[26px] border border-[var(--bb-card-border,#dbe7f4)] bg-[linear-gradient(180deg,#f7faff_0%,#ffffff_58%)] px-4 py-5 shadow-[0_18px_44px_rgba(38,63,99,0.12)] sm:px-5">
+        <div className="text-center">
+          <div className="mx-auto inline-flex rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-5 py-2 text-[13px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)] shadow-[0_10px_22px_rgba(38,63,99,0.06)]">
+            Day {day.day_number}
+          </div>
+          <p className="mt-3 text-[13px] font-bold uppercase tracking-[0.24em] text-[#42557f]">
+            {readingSummary}
+          </p>
+          <h3 className="mt-2 text-[28px] font-black leading-tight tracking-[-0.03em] text-[#10224b] sm:text-[34px]">
+            {day.day_title || currentDevotionalTitle}
+          </h3>
+          <div className="mt-4 flex items-center gap-3 text-[#8fb0ef]" aria-hidden="true">
+            <div className="h-px flex-1 bg-[#a6c2ff]" />
+            <svg viewBox="0 0 20 20" className="h-4 w-4 fill-current"><path d="M10 2l2.2 5.8L18 10l-5.8 2.2L10 18l-2.2-5.8L2 10l5.8-2.2L10 2Z" /></svg>
+            <div className="h-px flex-1 bg-[#a6c2ff]" />
+          </div>
+        </div>
+
+        <div className="mt-4 flex flex-col items-center text-center">
+          <div className={`w-full max-w-[320px] overflow-hidden rounded-[24px] border bg-white p-1.5 shadow-[0_14px_28px_rgba(14,26,58,0.14)] ${
+            readingComplete ? "border-emerald-200" : "border-[var(--bb-card-border,#dbe7f4)]"
+          }`}>
+            <div className="aspect-square w-full overflow-hidden rounded-[20px] bg-[var(--bb-surface-soft,#f4f8ff)]">
+              {cover ? (
+                <img src={cover} alt="" loading="eager" decoding="async" className="h-full w-full object-contain object-center" />
+              ) : null}
+            </div>
+          </div>
+        </div>
+
+        <div className={`mt-4 overflow-hidden rounded-[22px] border px-4 py-3.5 shadow-[0_12px_24px_rgba(38,63,99,0.08)] ${
+          readingComplete ? "border-emerald-200 bg-emerald-50/80" : "border-[var(--bb-card-border,#dbe7f4)] bg-white"
+        }`}>
+          <div className="grid gap-2 text-center">
+            <div className="min-w-0">
+              <p className={`text-[12px] font-black uppercase tracking-[0.22em] ${readingComplete ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>Audio Player</p>
+              <div className="mt-1.5">
+                <BibleYearLessonAudioPlayer
+                  audioSrc={audioSrc}
+                  title={`${readingSummary} - ${day.day_title || ""}`.trim()}
+                  durationLabel=""
+                  userId={userId}
+                  videoId={`devotional-${currentDevotionalId}-day-${day.day_number}`}
+                  previousLessonLabel={previousDay ? `Open Day ${previousDay.day_number}` : "No previous day"}
+                  nextLessonLabel={nextDay ? `Open Day ${nextDay.day_number}` : "No next day"}
+                  onPreviousLesson={previousDay ? () => openDevotionalDay(previousDay) : undefined}
+                  onNextLesson={nextDay ? () => openDevotionalDay(nextDay) : undefined}
+                  showHeader={false}
+                  audiobookMode
+                  showHelpfulPoll={false}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={`mt-4 rounded-[22px] border px-4 py-4 text-center shadow-[0_12px_24px_rgba(38,63,99,0.08)] ${
+          readingComplete ? "border-emerald-200 bg-emerald-50/80" : "border-[var(--bb-card-border,#dbe7f4)] bg-white"
+        }`}>
+          <p className={`text-[12px] font-black uppercase tracking-[0.22em] ${readingComplete ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>Today&apos;s Lesson</p>
+          <p className="mx-auto mt-2 max-w-[34rem] text-[15px] font-medium leading-6 text-[#20345f] sm:text-[16px] sm:leading-7">
+            {overview || "Today's lesson is being prepared."}
+          </p>
+        </div>
+      </article>
+    );
+  }
+
   function renderDashboardSectionIntro(title: string, subtitle: string, className = "") {
     return (
       <div className={`px-1 py-1 ${className}`}>
@@ -16654,6 +16763,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   gets. Identical for everyone; only the middle below differs. */}
               {unifiedShellActive && !shouldShowCompletionPanel ? renderStudyProgressSnapshot() : null}
               {devotionalDashboardActive && !shouldShowCompletionPanel ? renderDevotionalDayMap() : null}
+              {devotionalDashboardActive && !shouldShowCompletionPanel ? renderDevotionalDashboardStudyArea() : null}
               {bibleChapterDashboardActive && !shouldShowCompletionPanel && bibleChapterDashboardBook
                 ? renderBibleChapterMiddle(bibleChapterDashboardBook, bibleChapterDashboardChapter)
                 : null}
@@ -16677,7 +16787,10 @@ Before we understand redemption, we need to understand what God made humanity fo
             {homePanelOverride ? (
               <div className="dashboard-inline-task">{homePanelOverride}</div>
             ) : null}
-            {!homePanelOverride && !deepStudyFocusActive && !bibleYearDashboardActive && !shouldShowCompletionPanel && !selectedBibleYearSeriesDay ? renderCurrentStudyHeader() : null}
+            {/* The devotional middle follows Bible in One Year, which has no
+                "Choose Your Bible Study / Change Study" card - the day map and
+                the study area carry it instead. */}
+            {!homePanelOverride && !deepStudyFocusActive && !bibleYearDashboardActive && !devotionalDashboardActive && !shouldShowCompletionPanel && !selectedBibleYearSeriesDay ? renderCurrentStudyHeader() : null}
             {!homePanelOverride && !deepStudyFocusActive && !bibleYearDashboardActive && !shouldShowCompletionPanel && !shouldHideCompletedChapterProgressCard && !selectedBibleYearSeriesDay ? (
             <div
               className="bb-skin-glow-card rounded-[22px] border border-[#dbe7f4] bg-white p-3 shadow-[0_10px_28px_rgba(38,63,99,0.08)] transition"
@@ -17279,7 +17392,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
             ) : homePanelOverride ? null : (
               <>
-              {suppressCompletionPanelForLoadedChapter && allDone ? (
+              {suppressCompletionPanelForLoadedChapter && allDone && !devotionalDashboardActive ? (
                 <div className="completion-panel-enter rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
                   <div className="flex items-start gap-3">
                     <div className="-ml-2 shrink-0">
@@ -17301,7 +17414,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               ) : null}
               {bibleYearDashboardActive && activeBibleYearDashboardDay ? (
                 renderBibleYearDashboardStudyArea(activeBibleYearDashboardDay, displayTasks)
-              ) : !bibleYearDashboardActive ? (
+              ) : devotionalDashboardActive ? null : !bibleYearDashboardActive ? (
                 <>
               {displayTasks.map((task, index) => {
                 const originalTaskIndex = displayTasks.findIndex((visibleTask) => visibleTask.kind === task.kind);
