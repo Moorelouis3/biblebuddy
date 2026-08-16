@@ -6645,7 +6645,9 @@ export default function DashboardJourneyExperience({
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
-                  {bibleYearDashboardActive ? currentDashboardDayLabel : "Current Study"}
+                  {bibleYearDashboardActive || studyMode !== "bible_year"
+                    ? currentDashboardDayLabel
+                    : "Current Study"}
                 </span>
                 <span className="mt-0.5 block truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
                   {currentDevotionalTitle || "Choose Your Bible Study"}
@@ -16438,7 +16440,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
               </>
             ) : null}
-            {isAnonymousGuest && !homePanelOverride && !deepStudyFocusActive ? (
+            {isAnonymousGuest && !CORE_STUDY_IS_FREE && !homePanelOverride && !deepStudyFocusActive ? (
               <button
                 type="button"
                 onClick={() => setGuestProPromptOpen(true)}

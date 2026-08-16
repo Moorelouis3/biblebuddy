@@ -2036,3 +2036,24 @@ wrong - the sandbox browser could not reach Supabase, so no data loaded.
 Louis confirmed his dashboard renders fine. Not a bug.
 Still open: pass 2 (devotional middle), pass 3 (Bible middle). The
 middles themselves are still Bible-in-One-Year shaped.
+
+## 2026-08-16 (dashboard pass 2: partial)
+Done: Found and fixed a real leak from today's free migration - anonymous
+guests were still being shown "Go deeper with Bible Buddy Pro / Unlock
+deeper study notes" on the dashboard. Now gated on CORE_STUDY_IS_FREE, so
+it never renders. Swept the rest of the dashboard's Pro pitches: all the
+others are already unreachable (gated on !isPaidUser, which is always
+false now, or hardcoded isOpen={false}).
+Also fixed devotional readers seeing a generic "Current Study" label
+instead of their actual day number.
+Structural finding for the three-middles work: the shell is already more
+mode-agnostic than expected. dashboardTaskSource already falls back from
+Bible-in-One-Year tasks to devotional-driven visibleTasks, the dashboard
+already loads devotional_days in four places, and there is already a
+separate non-BIOY home panel with renderCurrentStudyHeader(). The gap is
+that showOfficialHomeMission (the good BIOY middle) requires
+bibleYearDashboardActive, so devotional and Bible readers get the plainer
+panel instead of the same one.
+Still open: the actual devotional and Bible middles. That means making
+the mission panel render from devotional/chapter data, which is the
+biggest remaining piece and the one I cannot visually verify from here.
