@@ -2242,3 +2242,7 @@ Next up: Proverbs 4
 ## 2026-08-16T19:55:27Z (hourly chapter notes run)
 Chapter: Proverbs 4 | Duration: 8 min | Sections: 7 | Cards: 52 | Status: pass
 Next up: Proverbs 5
+
+## 2026-08-16T20:55:17Z (hourly chapter notes run)
+Chapter: Proverbs 5 | Duration: 9 min | Sections: 6 | Cards: 48 | Status: pass
+Next up: Proverbs 6
