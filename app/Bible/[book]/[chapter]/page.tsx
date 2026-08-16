@@ -58,7 +58,10 @@ import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKe
 import BrowserTtsButton from "../../../../components/BrowserTtsButton";
 import { getBibleChapterTtsSrc } from "../../../../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../../../../lib/bibleReadingBackgroundMusic";
-import { getApprovedBibleYearDeepStudyMarkdownForChapter } from "../../../../lib/bibleYearApprovedDeepStudy";
+// NOT a static import. This helper reaches bibleYearDayOneDeepStudy, which
+// reaches bibleReaderStudyNotes, which pulls in all 482 note files: a 5.95 MB
+// chunk that was landing on every chapter before a single verse could show.
+// It is only needed while building a chapter summary, so it is fetched there.
 
 type Verse = {
   num: number;
@@ -1393,6 +1396,9 @@ RULES:
     summaryLoadingRef.current = true;
 
     try {
+      const { getApprovedBibleYearDeepStudyMarkdownForChapter } = await import(
+        "../../../../lib/bibleYearApprovedDeepStudy"
+      );
       const approvedBibleYearMarkdown = getApprovedBibleYearDeepStudyMarkdownForChapter(bookName, chapterNum);
       if (approvedBibleYearMarkdown.trim()) {
         return extractBigIdeaSummary(approvedBibleYearMarkdown) || "This chapter is part of the approved Bible in One Year study notes.";

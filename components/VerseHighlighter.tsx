@@ -1,5 +1,11 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
+import dynamic from "next/dynamic";
 import { createPortal } from "react-dom";
+
+// Rendered only for chapters that need the whole-Bible notes. Keeping it
+// behind next/dynamic, and behind a condition, is what stops Genesis 1
+// downloading a 33 MB chunk it never reads from.
+const BibleStudySectionsLoader = dynamic(() => import("./BibleStudySectionsLoader"), { ssr: false });
 import { ColorPicker } from "./ColorPicker";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import {
@@ -1303,6 +1309,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [studyCreditLockedSections, setStudyCreditLockedSections] = useState<Record<string, boolean>>({});
   const [studyCreditUnlockedSections, setStudyCreditUnlockedSections] = useState<Record<string, boolean>>({});
   const [backgroundStudySections, setBackgroundStudySections] = useState<BibleReaderStudySection[]>([]);
+  const [needsAggregatedStudySections, setNeedsAggregatedStudySections] = useState(false);
   const [studyNotesCreditPreview, setStudyNotesCreditPreview] = useState<CreditClientResult | null>(null);
   // Off by default: the chapter opens as plain Scripture with quiet
   // underlines, and an Insight Card appears only when one is tapped.
@@ -1381,37 +1388,13 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       return;
     }
 
-    let canceled = false;
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-    let idleId: number | null = null;
+    // Everything else is handled by <BibleStudySectionsLoader />, which is
+    // only rendered for chapters that need the whole-Bible aggregator. Doing
+    // it there rather than with an import() here is what keeps that 33 MB
+    // chunk out of Genesis 1's graph entirely.
+    setNeedsAggregatedStudySections(true);
 
-    const loadStudySections = async () => {
-      try {
-        const module = await import("../lib/bibleReaderStudyNotes");
-        if (!canceled) {
-          setBackgroundStudySections(module.getBibleReaderStudySections(book, chapter));
-        }
-      } catch (error) {
-        console.warn("[BIBLE_READER_NOTES] Could not preload study sections:", error);
-        if (!canceled) setBackgroundStudySections([]);
-      }
-    };
-
-    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-      idleId = window.requestIdleCallback(() => {
-        void loadStudySections();
-      }, { timeout: 900 });
-    } else {
-      timeoutId = setTimeout(() => {
-        void loadStudySections();
-      }, 0);
-    }
-
-    return () => {
-      canceled = true;
-      if (timeoutId !== null) clearTimeout(timeoutId);
-      if (idleId !== null && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
-    };
+    return () => setNeedsAggregatedStudySections(false);
   }, [book, chapter, hideStudySections, plainTextMode, studySections]);
 
 
@@ -1810,8 +1793,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     setGenesisOneNotesLoading(true);
 
     try {
-      const module = await import("../lib/bibleReaderStudyNotes");
-      setBackgroundStudySections(module.getBibleReaderStudySections(book, chapter));
+      // Genesis 1's own notes, not the whole-Bible aggregator.
+      const module = await import("../lib/genesisOneStudySections");
+      setBackgroundStudySections(module.getGenesisOneStudySections());
     } catch (error) {
       console.warn("[BIBLE_READER_NOTES] Could not load study sections:", error);
       genesisOneNotesLoadingRef.current = false;
@@ -2182,6 +2166,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
 
   return (
     <div>
+      {needsAggregatedStudySections ? (
+        <BibleStudySectionsLoader book={book} chapter={chapter} onLoaded={setBackgroundStudySections} />
+      ) : null}
       <style>{`
         .bible-selectable-text {
           -webkit-touch-callout: none;
