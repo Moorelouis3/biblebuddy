@@ -23550,6 +23550,59 @@
           "at": "2026-08-16T12:57:26Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 8,
+      "startedAt": "2026-08-16T13:46:03Z",
+      "finishedAt": "2026-08-16T13:54:57Z",
+      "durationMinutes": 9,
+      "sections": 7,
+      "cards": 37,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing wired-in file for this chapter, clean new-chapter build per docs/bible-study-note-style.md. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (18 verses). 2 Chronicles 8 covers Solomon's twenty year building program (temple plus palace), the cities Huram restored to him and Solomon's resettlement of them, his campaign to Hamathzobah, Tadmor and the store/chariot/horsemen cities built across his kingdom, the surviving Canaanite peoples pressed into tribute labor versus Israelites serving as soldiers and officers, Pharaoh's daughter moved out of the City of David because of the ark's former presence there, the fixed daily and festival sacrifice calendar following the law of Moses, the priest/Levite/porter rotation system set up under David and carried out to the letter, the temple's completion, and the Red Sea trading fleet to Ophir built with Huram's sailors that brought back four hundred fifty talents of gold. Chunked into 7 sections (1-3, 4-6, 7-10, 11, 12-13, 14-16, 17-18) matching the chapter's natural scene breaks. Density about 2.06 cards/verse (18 verses, 37 cards), at the top of the normal target range. scripts/check_bible_note_style.py ran clean on the first pass (37 cards, no problems). A manual section 13 eye check confirmed no duplicate opening lines, no banned filler or hedge words, no hyphens/em dashes/semicolons/contractions, and that each card's bullets stand alone from its body. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 8) (7/7 sections, 37 cards, 18 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 chronicles range extended from chapters 1-7 to 1-8, replaceStudySectionsForBookRange('2 chronicles', 8, 8, SECOND_CHRONICLES_EIGHT_PERSONAL_SECTIONS) call added directly after the Chapter 7 call. Next forward-progress target is 2 Chronicles 9.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T13:46:03Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 8 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-16T13:46:03Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 8, 18 verses, aruljohn mirror)",
+          "at": "2026-08-16T13:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-16T13:48:00Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesEightSource.ts",
+          "at": "2026-08-16T13:52:38Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, first pass)",
+          "at": "2026-08-16T13:53:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-16T13:52:54Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 37 cards, text verbatim)",
+          "at": "2026-08-16T13:53:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-16T13:54:27Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-16T13:54:57Z"
+        }
+      ]
     }
   ]
 }
