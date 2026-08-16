@@ -419,6 +419,7 @@ import { BIBLE_YEAR_DAY_THREE_DEEP_NOTES } from "./bibleYearDayThreeDeepNotes";
 import { PSALMS_127_150_PERSONAL_SECTIONS } from "./psalmsOneTwentySevenToOneFiftyPersonalNotes";
 import { PROVERBS_1_6_PERSONAL_SECTIONS } from "./proverbsOneToSixPersonalNotes";
 import { PROVERBS_7_31_PERSONAL_SECTIONS } from "./proverbsSevenToThirtyOnePersonalNotes";
+import { PROVERBS_ONE_PERSONAL_SECTIONS } from "./proverbsOneSource";
 import { ECCLESIASTES_1_5_PERSONAL_SECTIONS } from "./ecclesiastesOneToFivePersonalNotes";
 import { ECCLESIASTES_6_12_PERSONAL_SECTIONS } from "./ecclesiastesSixToTwelvePersonalNotes";
 import { SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS } from "./songOfSolomonOneToEightPersonalNotes";
@@ -766,7 +767,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "1 kings" && section.chapter >= 1 && section.chapter <= 22) ||
     (normalizeBook(book) === "2 kings" && section.chapter >= 1 && section.chapter <= 25) ||
     (normalizeBook(book) === "1 chronicles" && section.chapter >= 1 && section.chapter <= 29) ||
-    (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 10);
+    (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 10) ||
+    (normalizeBook(book) === "proverbs" && section.chapter === 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1418,6 +1420,10 @@ function applyPersonalProverbsOneThroughSixStudySections() {
 
 function applyPersonalProverbsSevenThroughThirtyOneStudySections() {
   replaceStudySectionsForBookRange("proverbs", 7, 31, PROVERBS_7_31_PERSONAL_SECTIONS);
+}
+
+function applyPersonalProverbsOneStudySections() {
+  replaceStudySectionsForBookRange("proverbs", 1, 1, PROVERBS_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalEcclesiastesOneThroughFiveStudySections() {
@@ -8748,6 +8754,7 @@ applyPersonalPsalmsNinetySevenThroughOneTwentySixStudySections();
 applyPersonalPsalmsOneTwentySevenThroughOneFiftyStudySections();
 applyPersonalProverbsOneThroughSixStudySections();
 applyPersonalProverbsSevenThroughThirtyOneStudySections();
+applyPersonalProverbsOneStudySections();
 applyPersonalEcclesiastesOneThroughFiveStudySections();
 applyPersonalEcclesiastesSixThroughTwelveStudySections();
 applyPersonalSongOfSolomonOneThroughEightStudySections();
