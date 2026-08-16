@@ -2020,3 +2020,19 @@ needs DDL, which the REST API cannot do.
 ## 2026-08-16T09:58:10Z (hourly chapter notes run)
 Chapter: 2 Chronicles 4 | Duration: 10 min | Sections: 8 | Cards: 38 | Status: pass
 Next up: 2 Chronicles 5
+
+## 2026-08-16 (dashboard pass 1: the shell)
+Done: Started the one-dashboard-three-middles work Louis asked for.
+Added lib/studyMode.ts - the three modes (bible_year, devotional, bible)
+with unit labels, so the shell stops assuming everything is measured in
+"Days". Wired into DashboardJourneyExperience: the mode is derived once
+from profile_stats.preferred_study_mode, and currentDashboardDayLabel now
+uses it. Bible in One Year and devotionals are unchanged ("Day N");
+plain-Bible readers now see "Chapter N" instead of being told they are on
+"Day 4" while sitting on Genesis 4.
+Correction worth recording: an earlier note in this session flagged an
+"empty dashboard middle for new guests" as a possible bug. That was
+wrong - the sandbox browser could not reach Supabase, so no data loaded.
+Louis confirmed his dashboard renders fine. Not a bug.
+Still open: pass 2 (devotional middle), pass 3 (Bible middle). The
+middles themselves are still Bible-in-One-Year shaped.

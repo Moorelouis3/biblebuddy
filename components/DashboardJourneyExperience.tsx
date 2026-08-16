@@ -31,6 +31,7 @@ import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
 import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
 import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
+import { normalizeStudyMode, studyUnitLabel, type StudyMode } from "@/lib/studyMode";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, getCompletedChaptersByBooks, markChapterDone } from "../lib/readingProgress";
@@ -2871,6 +2872,10 @@ export default function DashboardJourneyExperience({
   // (no credit gates, no free-plan chapter locks, no upgrade prompts).
   const isPaidUser = CORE_STUDY_IS_FREE || profile?.is_paid === true || membershipStatus === "pro";
 
+  // How this person chose to read. The shell is identical for all three; only
+  // the middle differs. See lib/studyMode.ts.
+  const studyMode: StudyMode = normalizeStudyMode(profile?.preferred_study_mode);
+
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
   const visibleTasks = shouldShowBibleBuddy3ModeGate ? [] : checklistData?.tasks ?? [];
   const totalTasks = visibleTasks.length || 5;
@@ -3284,9 +3289,12 @@ export default function DashboardJourneyExperience({
         }
       : null;
   const currentStudySummary = getDashboardStudySummary(currentDevotionalTitle, null);
+  // Was hardcoded to "Day N" for everyone, so someone reading Genesis 4 in
+  // plain-Bible mode was told they were on "Day 4". Bible in One Year and
+  // devotionals still read "Day N" exactly as before.
   const currentDashboardDayLabel = activeBibleYearDashboardDay
-    ? `Day ${activeBibleYearDashboardDay.dayNumber}`
-    : `Day ${currentDevotionalTask?.devotionalDayNumber || 1}`;
+    ? studyUnitLabel(studyMode, activeBibleYearDashboardDay.dayNumber)
+    : studyUnitLabel(studyMode, currentDevotionalTask?.devotionalDayNumber || 1);
   const queueTasks = dashboardTaskSource.filter((task) => !task.done || celebratingTasks[task.kind]);
   const completedTrackerTasks = dashboardTaskSource.filter((task) => task.done && !celebratingTasks[task.kind]);
   const activeCompletedTrackerTask = activeTask
