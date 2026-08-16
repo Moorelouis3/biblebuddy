@@ -22853,6 +22853,63 @@
           "at": "2026-08-15T23:56:30Z"
         }
       ]
+    },
+    {
+      "book": "1 Chronicles",
+      "chapter": 24,
+      "startedAt": "2026-08-16T00:46:42Z",
+      "finishedAt": "2026-08-16T01:02:59Z",
+      "durationMinutes": 16.3,
+      "sections": 5,
+      "cards": 28,
+      "verses": 31,
+      "notes": "Organizes Aaron priestly line into 24 rotating lot-based service courses (16 vs 8 chief-men imbalance, likely scribal name reversal in Ahimelech son of Abiathar, Jehoiarib/Harim/Abijah forward pointers incl. Luke 1:5 course of Abia), then the wider non-priestly Levite families casting the same fair lot. Density 0.9 cards/verse, deliberately on the lighter end per style spec section 12 guidance for a genealogy/list chapter. Initial single 20-31 section was manually split into two (20-25, 26-31) after discovering the app auto-splits any section over 8 verses into duplicated Part 1/2 chunks.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T00:46:42Z"
+        },
+        {
+          "name": "target chapter determined: 1 Chronicles 24 (new chapter, redo backlog empty, normal forward progress after 1 Chronicles 23)",
+          "at": "2026-08-16T00:47:13Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-08-16T00:47:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation read",
+          "at": "2026-08-16T00:47:13Z"
+        },
+        {
+          "name": "source file lib/firstChroniclesTwentyFourSource.ts written",
+          "at": "2026-08-16T00:57:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes)",
+          "at": "2026-08-16T00:58:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalFirstChroniclesTwentyFourStudySections call)",
+          "at": "2026-08-16T00:57:28Z"
+        },
+        {
+          "name": "parser check found app auto-split artifact on the 20-31 section, split into two real sections and re-verified, style checker clean again",
+          "at": "2026-08-16T01:00:00Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 28 cards, 31 verses exact coverage)",
+          "at": "2026-08-16T01:00:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-16T01:01:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-16T01:02:59Z"
+        }
+      ]
     }
   ]
 }
