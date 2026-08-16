@@ -4,6 +4,7 @@ import { type ReactNode, useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import CreditLimitModal from "@/components/CreditLimitModal";
+import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 
 type TriviaCreditGateProps = {
   children: ReactNode;
@@ -19,6 +20,12 @@ export default function TriviaCreditGate({ children }: TriviaCreditGateProps) {
     let cancelled = false;
 
     const loadCreditState = async () => {
+      // Trivia is free and unlimited — never bounce anyone out of the section.
+      if (CORE_STUDY_IS_FREE) {
+        setShowCreditBlocked(false);
+        return;
+      }
+
       const {
         data: { user },
       } = await supabase.auth.getUser();

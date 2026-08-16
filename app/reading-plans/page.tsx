@@ -7,6 +7,7 @@ import { supabase } from "../../lib/supabaseClient";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import UpgradeRequiredModal from "../../components/UpgradeRequiredModal";
+import { CORE_STUDY_IS_FREE } from "../../lib/accessPolicy";
 
 interface ReadingPlan {
   id: string;
@@ -105,7 +106,7 @@ export default function ReadingPlansPage() {
               {ACTIVE_PLANS.map((plan) => (
                 plan.id === "bible-buddy" ? (
                   (() => {
-                    const isLocked = isPaid === false;
+                    const isLocked = !CORE_STUDY_IS_FREE && isPaid === false;
                     const cardClasses = `relative bg-white border border-gray-200 rounded-xl shadow-sm p-4 transition-all duration-200 cursor-pointer ${
                       isLocked
                         ? "cursor-not-allowed"
@@ -208,7 +209,7 @@ export default function ReadingPlansPage() {
               {ACTIVE_PLANS.map((plan) => (
                 plan.id === "bible-buddy" ? (
                   (() => {
-                    const isLocked = isPaid === false;
+                    const isLocked = !CORE_STUDY_IS_FREE && isPaid === false;
                     const cardClasses = `relative bg-white border border-gray-200 rounded-xl shadow-sm p-5 transition-all duration-200 cursor-pointer ${
                       isLocked
                         ? "cursor-not-allowed"

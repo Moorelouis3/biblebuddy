@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import StartStudyingButton from "@/components/StartStudyingButton";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import { supabase } from "@/lib/supabaseClient";
@@ -1889,7 +1890,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
     },
     {
       q: "Is Bible Buddy really free?",
-      a: "Yes. Creating an account is free and you can study every day without paying anything. There's an optional Pro upgrade (one payment, yours for life) that unlocks everything, but you don't need it to start.",
+      a: "Yes - completely free. Every chapter, every study note, every devotional, all the audio and all the trivia. There is no Pro tier, no credits and no daily limit. You do not even need an account to start; create one when you want Bible Buddy to remember your progress across devices.",
     },
     {
       q: "What Bible translation do you use?",
@@ -1968,15 +1969,15 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             Join over 5,000 Christians who are growing in their faith every day.
           </p>
           <div className="mt-5">
-            <Link
-              href="/signup"
-              onClick={() => onStartJourney("video_hero")}
+            <StartStudyingButton
+              clickedFrom="video_hero"
+              onTrack={onStartJourney}
               className="bb-cta-blue bb-cta-pulse inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
             >
-              Create Your Free Account
+              Start Studying Now
               <LandingLineIcon name="arrow" light />
-            </Link>
-            <p className="mt-3 text-xs font-bold text-[#6d7789]">No credit card required.</p>
+            </StartStudyingButton>
+            <p className="mt-3 text-xs font-bold text-[#6d7789]">No account needed. Completely free.</p>
           </div>
         </section>
 
@@ -2007,18 +2008,18 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
         <section className="mt-14 text-center">
           <h2 className="text-2xl font-black sm:text-3xl">Ready to Understand God&apos;s Word?</h2>
           <p className="mt-2 text-sm font-semibold text-[#40516b] sm:text-base">
-            Create your free account and start your Bible study journey today.
+            Start studying in seconds. No account, no payment, no catch.
           </p>
           <div className="mt-5">
-            <Link
-              href="/signup"
-              onClick={() => onStartJourney("bottom_cta")}
+            <StartStudyingButton
+              clickedFrom="bottom_cta"
+              onTrack={onStartJourney}
               className="bb-cta-blue bb-cta-pulse inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
             >
-              Create Your Free Account
+              Start Studying Now
               <LandingLineIcon name="arrow" light />
-            </Link>
-            <p className="mt-3 text-xs font-bold text-[#6d7789]">No credit card required.</p>
+            </StartStudyingButton>
+            <p className="mt-3 text-xs font-bold text-[#6d7789]">No account needed. Completely free.</p>
           </div>
         </section>
 

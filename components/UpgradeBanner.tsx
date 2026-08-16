@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../lib/supabaseClient";
+import { CORE_STUDY_IS_FREE } from "../lib/accessPolicy";
 
 export function UpgradeBanner() {
   const router = useRouter();
@@ -11,6 +12,9 @@ export function UpgradeBanner() {
 
   useEffect(() => {
     async function checkMembership() {
+      // Nothing to upgrade to — Bible Buddy is free.
+      if (CORE_STUDY_IS_FREE) return;
+
       try {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) {

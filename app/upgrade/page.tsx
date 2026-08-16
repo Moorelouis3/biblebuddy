@@ -1,422 +1,82 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { supabase } from "../../lib/supabaseClient";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
+/**
+ * Bible Buddy is free.
+ *
+ * This route used to be the Pro pricing page. It is kept (rather than deleted)
+ * so every existing link, bookmark, email and in-app button that points at
+ * /upgrade lands somewhere sensible instead of a 404.
+ *
+ * The Stripe checkout infrastructure it used to call is intentionally left in
+ * place elsewhere in the codebase — it will be needed for physical books,
+ * donations and bulk church orders. It is simply no longer used to sell access
+ * to Bible study.
+ *
+ * The previous paid version of this page is in git history.
+ */
 export default function UpgradePage() {
-  const [mounted, setMounted] = useState(false);
-  const [isLoading, setIsLoading] = useState<string | null>(null);
-  const [showLifetimeInfo, setShowLifetimeInfo] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleCheckout = async (planType: "yearly") => {
-    try {
-      setIsLoading(planType);
-
-      // Check if user is authenticated
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      if (!session) {
-        alert("Please log in to upgrade to Pro.");
-        router.push("/login");
-        setIsLoading(null);
-        return;
-      }
-
-      // Create checkout session
-      const response = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${session.access_token}`,
-        },
-        body: JSON.stringify({ plan: planType }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to create checkout session");
-      }
-
-      // Redirect to Stripe Checkout
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error("No checkout URL returned");
-      }
-    } catch (error: any) {
-      console.error("Checkout error:", error);
-      alert(error.message || "Something went wrong. Please try again.");
-      setIsLoading(null);
-    }
-  };
-
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-2">Upgrade to BibleBuddy Pro</h1>
-      <p className="text-gray-600 mb-8">
-        Unlock unlimited access to deep Bible study tools.
-      </p>
-
-      <div className="grid md:grid-cols-2 gap-6 mb-12">
-        {/* Free Plan */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <h2 className="text-2xl font-semibold mb-2">Free</h2>
-          <p className="text-gray-600 mb-4">Perfect for getting started</p>
-          <ul className="space-y-2 text-gray-700 mb-6">
-            <li>✓ Full Bible reading</li>
-            <li>✓ Notes and progress tracking</li>
-            <li>✓ Levels and streaks</li>
-            <li>✓ 5 study credits per day</li>
-          </ul>
-          <div className="text-2xl font-bold mb-2">$0</div>
-          <p className="text-sm text-gray-500">Forever free</p>
-        </div>
-
-        {/* Pro Plan */}
-        <div className="bg-blue-50 border-2 border-blue-500 rounded-xl p-6">
-          <div className="flex items-center gap-2 mb-2">
-            <h2 className="text-2xl font-semibold">Pro</h2>
-            <span className="px-2 py-1 bg-blue-600 text-white text-xs font-semibold rounded">
-              RECOMMENDED
-            </span>
-          </div>
-          <p className="text-gray-600 mb-4">Unlimited Bible study</p>
-          <ul className="space-y-2 text-gray-700 mb-6">
-            <li>✓ Everything in Free</li>
-            <li>✓ Unlimited people, places, and keywords</li>
-            <li>✓ Unlimited trivia questions</li>
-            <li>✓ All Bible study guides, Bible studies, and reading plans</li>
-          </ul>
-
-          {/* Visual Direction Toward Pricing */}
-          <div className="mb-4 flex items-center gap-2 text-sm text-gray-600">
-            <span
-              className={`inline-block transition-transform duration-300 ${
-                mounted ? "animate-arrow-nudge" : ""
-              }`}
-            >
-              ↓
-            </span>
-            <span>Unlock unlimited access to deep Bible study tools.</span>
-          </div>
-
-          {/* Pricing Buttons */}
-          <div className="flex flex-col gap-3">
-            {/* Full access one-time button */}
-            <button
-              className="relative w-full px-6 py-3 bg-white border-2 border-blue-500 rounded-lg font-semibold hover:shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
-              onClick={(e) => {
-                e.preventDefault();
-                handleCheckout("yearly");
-              }}
-              disabled={isLoading !== null}
-              style={{ color: "#2563eb" }}
-            >
-              {/* Gold Best Value Banner */}
-              <div
-                className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-500 transform rotate-45 translate-x-8 -translate-y-8 flex items-end justify-center pb-1 ${
-                  mounted ? "animate-banner-shimmer" : ""
-                }`}
-                style={{
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                }}
-              >
-                <span className="text-[10px] font-bold text-white transform -rotate-45 translate-x-1 translate-y-1">
-                  ONE TIME
-                </span>
-              </div>
-              <span className="text-lg relative z-10" style={{ color: "#2563eb" }}>
-                {isLoading === "yearly" ? "Loading..." : "$50 Full Access"}
-              </span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowLifetimeInfo(true)}
-              className="w-full rounded-lg border border-amber-200 bg-amber-50 px-4 py-2 text-sm font-bold text-amber-800 transition hover:bg-amber-100"
-            >
-              What is lifetime?
-            </button>
-          </div>
-        </div>
+    <div className="mx-auto max-w-2xl px-4 py-12">
+      <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-indigo-50 p-8 text-center shadow-sm md:p-10">
+        <p className="text-xs font-black uppercase tracking-[0.18em] text-blue-700">
+          Good news
+        </p>
+        <h1 className="mt-3 text-3xl font-bold text-gray-950 md:text-4xl">
+          Bible Buddy is completely free
+        </h1>
+        <p className="mt-4 text-lg leading-7 text-gray-700">
+          There is nothing to upgrade to any more. The full Bible-study
+          experience is free for everyone — no credits, no daily limits, no
+          locked plans.
+        </p>
       </div>
 
-      {showLifetimeInfo ? (
-        <div className="fixed inset-0 z-50 grid place-items-center bg-black/55 px-4">
-          <div className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-amber-700">What is lifetime?</p>
-            <h2 className="mt-2 text-2xl font-black text-gray-950">$50 full access for life</h2>
-            <p className="mt-3 text-sm font-semibold leading-6 text-gray-600">
-              This is a Founder Buddy price. Bible Buddy is a new Bible reading app, and we depend on the support of early users to keep growing.
-            </p>
-            <p className="mt-3 text-sm font-semibold leading-6 text-gray-600">
-              In return, we are offering one $50 payment for full access to Bible Buddy for life. No yearly renewal. You keep Pro study notes, guided tools, and Bible journey features as Bible Buddy grows.
-            </p>
-            <button
-              type="button"
-              onClick={() => setShowLifetimeInfo(false)}
-              className="mt-5 w-full rounded-xl bg-blue-600 px-5 py-3 text-sm font-black text-white transition hover:bg-blue-700"
-            >
-              Got it
-            </button>
-          </div>
-        </div>
-      ) : null}
-
-      {/* Animated Section Header */}
-      <div
-        className={`text-center mb-8 transition-all duration-400 ease-out ${
-          mounted
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-2.5"
-        }`}
-        style={{
-          transitionDuration: "400ms",
-          transitionTimingFunction: "ease-out",
-        }}
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-3">
-          What You Unlock With BibleBuddy Pro
+      <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-8">
+        <h2 className="text-xl font-bold text-gray-900">
+          What that includes
         </h2>
-        <p className="text-lg text-gray-600"></p>
+        <ul className="mt-4 space-y-3 text-gray-700">
+          <li>✓ The whole Bible, with study notes on every chapter</li>
+          <li>✓ Every devotional and study plan — start as many as you like</li>
+          <li>✓ Bible in One Year, with audio</li>
+          <li>✓ People, places and keyword studies — unlimited</li>
+          <li>✓ All trivia and Bible study games</li>
+          <li>✓ Progress, streaks, saved notes and community</li>
+        </ul>
+        <p className="mt-6 text-sm leading-6 text-gray-600">
+          Study as much as you want, for as long as you want. If you want to
+          spend a whole Saturday going through fifteen chapters of Genesis,
+          Bible Buddy will never stop you and ask for money.
+        </p>
       </div>
 
-      {/* Pro Feature Card */}
-      <div
-        className={`bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-10 mb-12 shadow-lg border border-blue-100 transition-all duration-200 ease-out hover:scale-[1.01] hover:shadow-xl ${
-          mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
-        style={{
-          transitionDelay: mounted ? "100ms" : "0ms",
-          transitionDuration: "400ms",
-          transitionTimingFunction: "ease-out",
-        }}
-      >
-        <h3 className="text-2xl md:text-3xl font-bold mb-8 text-center">
-          What You Unlock With BibleBuddy Pro
-        </h3>
-
-        <div className="space-y-8">
-          {/* Feature 1: Unlimited Study Notes Views */}
-          <div
-            className={`transition-all duration-400 ease-out ${
-              mounted
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-4"
-            }`}
-            style={{
-              transitionDelay: mounted ? "200ms" : "0ms",
-            }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="text-3xl flex-shrink-0">🔓</div>
-              <div>
-                <h4 className="text-xl font-bold mb-3">
-                  Unlimited Study Notes Views
-                </h4>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>Unlimited access to People in the Bible</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>Unlimited access to Places in the Bible</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>Unlimited access to Keywords in the Bible</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>No daily limits or study caps</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature 2: Bible Study Guides & Plans */}
-          <div>
-            <div className="flex items-start gap-4">
-              <div className="text-3xl flex-shrink-0">📘</div>
-              <div>
-                <h4 className="text-xl font-bold mb-3">
-                  Bible Study Guides & Plans
-                </h4>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>
-                      In-depth Bible study guides that explain Scripture clearly and simply
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>
-                      Guided Bible reading plans designed to help you understand the Bible in the easiest way
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>
-                      Daily Bible studies covering major stories and key themes throughout the Bible
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature 2: Over 6,000 Trivia Questions */}
-          <div
-            className={`transition-all duration-400 ease-out ${
-              mounted
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-4"
-            }`}
-            style={{
-              transitionDelay: mounted ? "280ms" : "0ms",
-            }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="text-3xl flex-shrink-0">🎯</div>
-              <div>
-                <h4 className="text-xl font-bold mb-3">
-                  Over 6,000 Trivia Questions
-                </h4>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>All Bible books trivia questions</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>All People of the Bible trivia questions</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>More added monthly</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature 3: Unlimited Little Louis (AI) Messages */}
-          <div
-            className={`transition-all duration-400 ease-out ${
-              mounted
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-4"
-            }`}
-            style={{
-              transitionDelay: mounted ? "360ms" : "0ms",
-            }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full overflow-hidden shadow-md hover:scale-105 transition-transform duration-300">
-                <Image
-                  src="/Newlouiswave.png"
-                  alt="Little Louis"
-                  width={48}
-                  height={48}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div>
-                <h4 className="text-xl font-bold mb-3">
-                  <span
-                    className={`inline-block ${
-                      mounted ? "animate-subtle-pulse" : ""
-                    }`}
-                  >
-                    Unlimited
-                  </span>{" "}
-                  Little Louis (AI) Messages
-                </h4>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>Ask Bible study questions anytime</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>
-                      Get Scripture explanations, summaries, and guidance
-                    </span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>No daily message limits</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>
-                      Designed to help you understand Scripture, not replace it
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature 4: Study Without Interruptions */}
-          <div
-            className={`transition-all duration-400 ease-out ${
-              mounted
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-4"
-            }`}
-            style={{
-              transitionDelay: mounted ? "440ms" : "0ms",
-            }}
-          >
-            <div className="flex items-start gap-4">
-              <div className="text-3xl flex-shrink-0">🧠</div>
-              <div>
-                <h4 className="text-xl font-bold mb-3">
-                  Study Without Interruptions
-                </h4>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>No "daily limit reached" messages</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>No lockouts while studying</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-600 mt-1">•</span>
-                    <span>Read, explore, and connect Scripture freely</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-        </div>
+      <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-6 md:p-8">
+        <h2 className="text-lg font-bold text-amber-900">
+          If you already supported Bible Buddy
+        </h2>
+        <p className="mt-3 text-sm font-medium leading-6 text-amber-900/90">
+          Thank you — genuinely. Bible Buddy got here because people paid for it
+          when it was not free. You keep everything you have, and you will not
+          be charged again.
+        </p>
       </div>
 
-      <div className="text-center">
-        <button
-          onClick={() => window.history.back()}
-          className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+      <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
         >
-          Go Back
-        </button>
+          Start studying
+        </Link>
+        <Link
+          href="/plans"
+          className="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
+        >
+          Browse study plans
+        </Link>
       </div>
-
     </div>
   );
 }

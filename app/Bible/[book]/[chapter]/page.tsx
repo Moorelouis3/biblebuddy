@@ -15,6 +15,7 @@ import { logStudyView } from "../../../../lib/studyViewLimit";
 import { ACTION_TYPE } from "../../../../lib/actionTypes";
 import { resolveBibleReference } from "../../../../lib/bibleTermResolver";
 import { consumeCreditAction, isCreditActionCanceled } from "../../../../lib/creditClient";
+import { ensureGuestSession } from "../../../../lib/guestSession";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../../../../lib/bibleNotes";
 import { requestLouisNotes } from "../../../../lib/requestLouisNotes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
@@ -458,6 +459,25 @@ export default function BibleChapterPage() {
     const userScope = userId || "guest";
     return `bb:louis:chapter-intro:${userScope}:${bookDisplayName}:${chapter}`;
   }
+
+  // A visitor arriving from a blog post or search result has no session. When
+  // they open a person/place/keyword study card — a real study action, not just
+  // a page view — give them a guest account so their progress is recorded.
+  // Setting userId re-runs the tracking effects below, which depend on it.
+  useEffect(() => {
+    if (userId) return;
+    if (!selectedPerson && !selectedPlace && !selectedKeyword) return;
+
+    let cancelled = false;
+    void (async () => {
+      const guest = await ensureGuestSession({ source: "bible_reader_deep_link" });
+      if (!cancelled && guest.ok) setUserId(guest.userId);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, selectedPerson, selectedPlace, selectedKeyword]);
 
   // Load notes for selected person (reuse same logic as People page)
   useEffect(() => {

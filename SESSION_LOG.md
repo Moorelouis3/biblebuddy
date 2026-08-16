@@ -1793,3 +1793,105 @@ level2 run: could not reach queue — network egress proxy blocks
 life-buddy-production.up.railway.app with a 403 policy denial (confirmed
 via curl and WebFetch). Same issue already flagged in MARCUS_HANDOFF.md on
 2026-08-15; still unresolved. No chapter pulled, nothing shipped.
+
+## 2026-08-15 (night)
+Time spent: ~1 session
+Done: Produced the Bible Buddy Free Platform Migration Audit
+(docs/BIBLE_BUDDY_FREE_PLATFORM_MIGRATION_AUDIT.md). Full inspection of
+access control, payments, devotionals, BIOY, blog, community, analytics
+and email. Key findings: three independent paywall layers (credits,
+is_paid locks, one-free-devotional 24h drip); anonymous auth already
+built and lossless; Stripe webhook only handles checkout.session.completed
+so every past payer already has permanent access — but the app cannot see
+who Stripe is still billing; 26 devotional assets exist, not ~10.
+Still open: no migration changes made, by design. Phase 0 (Stripe
+subscription audit, verify Supabase anon sign-in, check duplicate
+Tempting-of-Jesus rows) needs Louis before any code ships.
+Next: Louis reviews the audit and approves the phase sequence.
+
+## 2026-08-15 (night, part 2)
+Time spent: ~1 session
+Done: Removed the paywalls. Phases 1-4 of the free migration audit.
+Added lib/accessPolicy.ts with CORE_STUDY_IS_FREE (defaults to free;
+set NEXT_PUBLIC_CORE_STUDY_FREE=false to revert). Credits neutered at
+the server in consumeCredit.ts so all 17 call sites are covered while
+master_actions logging is preserved. Devotional 24h drip and
+one-free-plan wall removed. Trivia, Scrambled, reading plans, Bible in
+One Year, study-group series notes and Bible Buddy TV notes all opened.
+/upgrade rewritten as a "Bible Buddy is free" page (Stripe infra kept
+for future physical products). Louis is handling the 16 active Stripe
+subscriptions manually in the dashboard.
+Still open: not deployed (no [deploy] tag). Not run against a live
+build - no node_modules in the audit environment, so only syntax was
+verified. Phase 5 (anonymous deep links) and Phase 11 (dead code
+removal) not started.
+Next: run it locally, click through, then ship.
+
+## 2026-08-15 (night, part 3)
+Time spent: ~1 session
+Done: Phase 5 - guest study and blog deep links. Added
+lib/guestSession.ts (ensureGuestSession, callable anywhere, creates a
+guest only on a real study action), app/study/[slug] readable-slug
+resolver so blog links never hardcode a devotional UUID, and
+components/StudyCta.tsx. Wired guest provisioning into the devotional
+day click and the Bible reader study cards. Added CTAs to the Leah and
+self-control articles. Found and closed a real hole: Supabase anonymous
+users hold the authenticated role, so community write policies accepted
+guests - added BLOCK_ANONYMOUS_COMMUNITY_WRITES.sql (restrictive
+policies, additive, does not touch existing ones, service-role crons
+unaffected).
+Still open: two things must happen before this works live - enable
+Anonymous sign-ins in Supabase, and run the migration. Guests hitting
+community actions still fail silently (needs a friendly prompt).
+26 blog articles still have no study CTA - copy work.
+Next: enable anon auth, run migration, test the blog -> study path.
+
+## 2026-08-15 (night, part 4)
+Time spent: ~1 session
+Done: Landing page now starts a guest journey instead of sending people
+to a signup form. Both CTAs on MinimalLandingPage (the real landing
+page - the large one below it is dead code behind an early return) now
+say "Start Studying Now" and drop straight into Bible in One Year Day 1.
+Added startGuestBibleYearJourney() which seeds the profile with
+bible_year_started_at / launch_seen_at / onboarding_completed so
+AppShell does not show the first-login onboarding modal, plus a day 1
+bible_year_day_progress row. Falls back to /signup if anonymous auth is
+off. Updated the FAQ that still promised a Pro upgrade and the
+"create your free account" copy.
+Still open: NOT DEPLOYED - no [deploy] tag on any of these commits.
+Anonymous sign-ins still need enabling in Supabase and
+BLOCK_ANONYMOUS_COMMUNITY_WRITES.sql still needs running, or the button
+falls back to the signup form.
+Next: enable anon auth, run the migration, test locally, then deploy.
+
+## 2026-08-15 (night, part 5)
+Time spent: ~1 session
+Done: Installed deps and actually built the app for the first time.
+tsc --noEmit clean, next build exit 0, server boots, all key pages 200.
+Found two real paywalls the earlier client-side-only sweep missed:
+(1) proxy.ts - Next 16 renames middleware.ts to proxy.ts, so the earlier
+audit wrongly said there was no middleware. It enforced a SERVER-SIDE
+paywall redirecting non-paid users away from most trivia decks and
+/reading-plans/bible-buddy. This would have shipped broken - pages would
+look unlocked then redirect. (2) dailyRecommendation.ts still had Louis
+pitching Pro to engaged users. Both fixed and gated on
+CORE_STUDY_IS_FREE. Corrected the audit doc.
+Still open: NOT DEPLOYED. Supabase anon sign-ins still off, community
+migration still unrun. Verified with placeholder credentials only, so
+no real data path (guest creation, devotional lookup) has been exercised
+end to end.
+Next: Louis enables anon auth + runs migration, then deploy.
+
+## 2026-08-15 (night, part 6)
+Time spent: ~1 session
+Done: Tagged the free-platform release with [deploy] and pushed to the
+designated branch. Added docs/free-platform-release-notes.md with the
+before/after, the revert flag, the three manual steps and the two gates
+that nearly shipped.
+Still open: this is on claude/bible-buddy-free-audit-5tbtau, not main.
+Vercel builds production from main, so this push produces a preview
+build only - it does NOT make the change live for users. Merging to
+main is Louis's call and has not been done.
+Next: Louis merges to main (or tells me to), enables Supabase anonymous
+sign-ins, runs BLOCK_ANONYMOUS_COMMUNITY_WRITES.sql, and cancels the 16
+Stripe subscriptions.

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import UpgradeRequiredModal from "@/components/UpgradeRequiredModal";
+import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import {
@@ -191,7 +192,8 @@ export default function BooksOfTheBiblePage() {
           <div className="space-y-4">
             <div className="grid grid-cols-3 gap-3 mt-2 md:grid-cols-4">
               {visibleBooks.map((book) => {
-                const isLocked = isPaid === false && !FREE_TRIVIA_BOOK_KEYS.has(book.key);
+                const isLocked =
+                  !CORE_STUDY_IS_FREE && isPaid === false && !FREE_TRIVIA_BOOK_KEYS.has(book.key);
                 const label = loading
                   ? "Loading..."
                   : `${progress[book.key] ?? BOOK_TOTALS[book.key] ?? 100} questions remaining`;
