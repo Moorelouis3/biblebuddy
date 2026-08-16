@@ -31,7 +31,7 @@ import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
 import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
 import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
-import { getStudyUnitLabel, resolveStudyMode, usesUnifiedStudyShell } from "@/lib/studyMode";
+import { normalizeStudyMode, studyUnitLabel, usesUnifiedStudyShell, type StudyMode } from "@/lib/studyMode";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, getCompletedChaptersByBooks, markChapterDone } from "../lib/readingProgress";
@@ -2872,6 +2872,10 @@ export default function DashboardJourneyExperience({
   // (no credit gates, no free-plan chapter locks, no upgrade prompts).
   const isPaidUser = CORE_STUDY_IS_FREE || profile?.is_paid === true || membershipStatus === "pro";
 
+  // How this person chose to read. The shell is identical for all three; only
+  // the middle differs. See lib/studyMode.ts.
+  const studyMode: StudyMode = normalizeStudyMode(profile?.preferred_study_mode);
+
   const isChecklistSyncing = isLoadingChecklist || !checklistData;
   const visibleTasks = shouldShowBibleBuddy3ModeGate ? [] : checklistData?.tasks ?? [];
   const totalTasks = visibleTasks.length || 5;
@@ -2879,8 +2883,7 @@ export default function DashboardJourneyExperience({
   const allDone = checklistData?.allDone ?? false;
   const canFreeUserChooseNewStudy = !isPaidUser && allDone && !checklistData?.nextJourneyTarget;
 
-  // How this person chose to read. One shell, three middles - see lib/studyMode.ts.
-  const studyMode = resolveStudyMode(profile?.preferred_study_mode);
+  // Whether this mode gets the full dashboard shell or the older plain panel.
   const studyShellUnified = usesUnifiedStudyShell(studyMode);
 
   const getReferralDisplayName = useCallback((referral: ShareRewardsReferral | null) => {
@@ -3297,9 +3300,12 @@ export default function DashboardJourneyExperience({
         }
       : null;
   const currentStudySummary = getDashboardStudySummary(currentDevotionalTitle, null);
+  // Was hardcoded to "Day N" for everyone, so someone reading Genesis 4 in
+  // plain-Bible mode was told they were on "Day 4". Bible in One Year and
+  // devotionals still read "Day N" exactly as before.
   const currentDashboardDayLabel = activeBibleYearDashboardDay
-    ? getStudyUnitLabel("bible_year", activeBibleYearDashboardDay.dayNumber)
-    : getStudyUnitLabel(studyMode, currentDevotionalTask?.devotionalDayNumber || 1);
+    ? studyUnitLabel(studyMode, activeBibleYearDashboardDay.dayNumber)
+    : studyUnitLabel(studyMode, currentDevotionalTask?.devotionalDayNumber || 1);
   const queueTasks = dashboardTaskSource.filter((task) => !task.done || celebratingTasks[task.kind]);
   const completedTrackerTasks = dashboardTaskSource.filter((task) => task.done && !celebratingTasks[task.kind]);
   const activeCompletedTrackerTask = activeTask
@@ -6650,7 +6656,9 @@ export default function DashboardJourneyExperience({
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
-                  {bibleYearDashboardActive || devotionalDashboardActive ? currentDashboardDayLabel : "Current Study"}
+                  {bibleYearDashboardActive || studyMode !== "bible_year"
+                    ? currentDashboardDayLabel
+                    : "Current Study"}
                 </span>
                 <span className="mt-0.5 block truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
                   {currentDevotionalTitle || "Choose Your Bible Study"}
@@ -16449,7 +16457,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               {devotionalDashboardActive && !shouldShowCompletionPanel ? renderStudyProgressSnapshot() : null}
               </>
             ) : null}
-            {isAnonymousGuest && !homePanelOverride && !deepStudyFocusActive ? (
+            {isAnonymousGuest && !CORE_STUDY_IS_FREE && !homePanelOverride && !deepStudyFocusActive ? (
               <button
                 type="button"
                 onClick={() => setGuestProPromptOpen(true)}
