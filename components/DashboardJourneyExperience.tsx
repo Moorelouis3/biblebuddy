@@ -3225,8 +3225,11 @@ export default function DashboardJourneyExperience({
     let cancelled = false;
 
     async function loadCurrentStudyChapters() {
-      if (!currentDevotionalId || !showCurrentStudyDetails) {
-        if (!showCurrentStudyDetails) setCurrentStudyChapters([]);
+      // The devotional day map on the dashboard needs these days too, not just
+      // the expanded Current Study list, so load them whenever that middle is
+      // showing.
+      if (!currentDevotionalId || (!showCurrentStudyDetails && !devotionalDashboardActive)) {
+        if (!showCurrentStudyDetails && !devotionalDashboardActive) setCurrentStudyChapters([]);
         return;
       }
 
@@ -3251,7 +3254,7 @@ export default function DashboardJourneyExperience({
     return () => {
       cancelled = true;
     };
-  }, [currentDevotionalId, showCurrentStudyDetails]);
+  }, [currentDevotionalId, showCurrentStudyDetails, devotionalDashboardActive]);
 
   const completedChapterLabel =
     visibleTasks.find((task) => task.kind === "reading")?.chapterLabel ||
@@ -12356,6 +12359,95 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
+  /**
+   * The devotional day map.
+   *
+   * The same idea as the Bible in One Year strip: every day of the plan laid
+   * out, past days done, today active, future days locked until you get there.
+   * Tapping an unlocked day makes it the current day, which is the same call
+   * the Devotionals tab makes, so there is one way to start a day.
+   */
+  function renderDevotionalDayMap() {
+    if (!currentStudyChapters.length || !currentDevotionalId) return null;
+
+    const currentDayNumber = currentDevotionalTask?.devotionalDayNumber ?? 1;
+
+    return (
+      <section
+        data-bb-dashboard-devotional-map="1"
+        className="w-full overflow-hidden rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-4 shadow-[0_14px_36px_rgba(38,63,99,0.10)] sm:px-5"
+      >
+        <div className="mx-auto max-w-3xl">
+          <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2f7fe8)]">
+            {currentDevotionalTitle || "Your devotional"}
+          </p>
+          <p className="mt-1 text-[15px] font-black text-[var(--bb-text-primary,#111827)]">
+            Day {currentDayNumber} of {currentStudyChapters.length}
+          </p>
+
+          <div className="bible-year-journey-scroll mt-3 overflow-x-auto pb-2">
+            <div className="flex min-w-max items-start gap-2">
+              {currentStudyChapters.map((studyChapter) => {
+                const dayNumber = studyChapter.day_number;
+                const isCurrent = dayNumber === currentDayNumber;
+                const isComplete = dayNumber < currentDayNumber;
+                // Owner sees everything, same as the year plan.
+                const isLocked = !isOwnerDashboard && dayNumber > currentDayNumber;
+                const chapterLabel =
+                  studyChapter.bible_reading_book && studyChapter.bible_reading_chapter
+                    ? `${studyChapter.bible_reading_book} ${studyChapter.bible_reading_chapter}`
+                    : studyChapter.day_title || "";
+
+                return (
+                  <button
+                    key={dayNumber}
+                    type="button"
+                    disabled={isLocked || switchingStudyChapter === dayNumber}
+                    onClick={() => {
+                      if (isLocked) return;
+                      if (!studyChapter.bible_reading_book || !studyChapter.bible_reading_chapter) return;
+                      void loadEmbeddedBibleStudyChapter({
+                        devotionalId: currentDevotionalId,
+                        devotionalTitle: currentDevotionalTitle || "Your devotional",
+                        dayNumber,
+                        book: String(studyChapter.bible_reading_book),
+                        chapter: Number(studyChapter.bible_reading_chapter),
+                      });
+                    }}
+                    className={`w-[86px] shrink-0 rounded-[15px] border px-2 py-2 text-center transition ${
+                      isCurrent
+                        ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#f2f7ff)] shadow-[0_0_20px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_28%,transparent)]"
+                        : isComplete
+                          ? "border-sky-300 bg-[var(--bb-surface-soft,#f4f8ff)]"
+                          : isLocked
+                            ? "cursor-not-allowed border-[var(--bb-card-border,#dbe7f4)] opacity-70"
+                            : "border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_40%,var(--bb-card-border,#dbe7f4))] hover:border-[var(--bb-accent,#2f7fe8)]"
+                    }`}
+                    aria-label={`Day ${dayNumber}${chapterLabel ? `, ${chapterLabel}` : ""}${
+                      isLocked ? ", locked" : isCurrent ? ", current day" : isComplete ? ", complete" : ""
+                    }`}
+                  >
+                    <span className="block text-[13px] font-black text-[var(--bb-text-primary,#111827)]">
+                      Day {dayNumber}
+                    </span>
+                    {chapterLabel ? (
+                      <span className="mt-0.5 block truncate text-[10px] font-bold text-[var(--bb-text-secondary,#4b5563)]">
+                        {chapterLabel}
+                      </span>
+                    ) : null}
+                    <span className="mt-1 block text-[10px] font-black text-[var(--bb-text-muted,#6b7280)]">
+                      {isComplete ? "Done" : isCurrent ? "Current" : isLocked ? "Locked" : "Open"}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   function renderDashboardSectionIntro(title: string, subtitle: string, className = "") {
     return (
       <div className={`px-1 py-1 ${className}`}>
@@ -16553,6 +16645,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               {/* Same streak + Bible progress hero the Bible in One Year middle
                   gets. Identical for everyone; only the middle below differs. */}
               {unifiedShellActive && !shouldShowCompletionPanel ? renderStudyProgressSnapshot() : null}
+              {devotionalDashboardActive && !shouldShowCompletionPanel ? renderDevotionalDayMap() : null}
               {bibleChapterDashboardActive && !shouldShowCompletionPanel && bibleChapterDashboardBook
                 ? renderBibleChapterMiddle(bibleChapterDashboardBook, bibleChapterDashboardChapter)
                 : null}
