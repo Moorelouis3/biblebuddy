@@ -1964,3 +1964,7 @@ instead of a silent RLS rejection. The database policy is still the
 real enforcement; this is the explanation.
 Still open: DM send and buddy requests are not gated yet - those fail
 silently for guests. Blog article like bar not gated either.
+
+## 2026-08-16T07:53:30Z (hourly chapter notes run)
+Chapter: 2 Chronicles 2 | Duration: 12 min | Sections: 6 | Cards: 37 | Status: pass
+Next up: 2 Chronicles 3
