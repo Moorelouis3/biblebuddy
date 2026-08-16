@@ -44,7 +44,15 @@ DECLARE
     'series_reflections',
     'messages',
     'conversations',
-    'buddy_requests'
+    'buddy_requests',
+    -- Added 2026-08-16 after checking the live schema. The first run covered
+    -- only 9 of 10 names; article_comment_likes does not exist, and these five
+    -- like/comment tables were never in the list at all.
+    'group_series_post_likes',
+    'group_series_comment_likes',
+    'article_likes',
+    'blog_article_likes',
+    'series_reflection_likes'
   ];
 BEGIN
   FOREACH t IN ARRAY community_tables LOOP
