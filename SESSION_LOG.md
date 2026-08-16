@@ -2061,3 +2061,33 @@ biggest remaining piece and the one I cannot visually verify from here.
 ## 2026-08-16T10:58:27Z (hourly chapter notes run)
 Chapter: 2 Chronicles 5 | Duration: 11 min | Sections: 6 | Cards: 27 | Status: pass
 Next up: 2 Chronicles 6
+
+## 2026-08-16 (dashboard pass 3: devotional middle shipped)
+Time spent: ~1 session
+Done: Shipped the first of the three middles. Devotional readers now get the
+same streak hero Bible in One Year gets - same flame, same streak line, same
+"% of the Bible" bar - instead of a plainer panel with no streak at all.
+Behind NEXT_PUBLIC_UNIFIED_STUDY_SHELL (defaults on, set false to revert
+instantly).
+Key finding that made this small: the streak hero was never actually
+Bible-in-One-Year-specific. renderBibleYearHomeProgressSnapshot took a BIOY
+day object and never used it - it reads the user's completed_chapters table,
+so it was already correct for every mode. Renamed to
+renderStudyProgressSnapshot and shared.
+Verified in the browser: BIOY still renders Day 1 with audio, lesson, notes,
+trivia and discussion unchanged; the shared hero renders in the non-BIOY
+shell.
+Louis clarified the target: BIOY is the reference build and the other two
+should match it exactly, not get lighter versions. Devotional should
+eventually get its own 10-12 min audio with the text underneath; plain-Bible
+should use the chapter audio that already exists (getBibleChapterTtsSrc),
+keyed by chapter, with scripture and notes underneath. Written into
+lib/studyMode.ts so the next session builds toward it.
+Note: two sessions were editing DashboardJourneyExperience.tsx at once today
+and collided. Main's lib/studyMode.ts is the better module (it covers
+plain-Bible readers too) and won the merge; only the shell flag and the
+shared hero were kept from this branch.
+Still open: the Bible (chapter) middle - the second half of the job.
+Devotional audio does not exist yet and is content work, not shell work.
+Next: the Bible middle, wiring the existing chapter audio into the same
+stack, once Louis has looked at the devotional one.
