@@ -2057,3 +2057,7 @@ panel instead of the same one.
 Still open: the actual devotional and Bible middles. That means making
 the mission panel render from devotional/chapter data, which is the
 biggest remaining piece and the one I cannot visually verify from here.
+
+## 2026-08-16T10:58:27Z (hourly chapter notes run)
+Chapter: 2 Chronicles 5 | Duration: 11 min | Sections: 6 | Cards: 27 | Status: pass
+Next up: 2 Chronicles 6

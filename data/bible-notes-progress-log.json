@@ -23391,6 +23391,59 @@
           "at": "2026-08-16T09:57:05Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 5,
+      "startedAt": "2026-08-16T10:45:59Z",
+      "finishedAt": "2026-08-16T10:56:54Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 27,
+      "verses": 14,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (redo backlog in data/bible-notes-style-redo-remaining.json confirmed empty), no existing dedicated wired-in file for this chapter, clean new-chapter build per docs/bible-study-note-style.md. Session started with git HEAD detached at a commit ahead of the local stale remote-tracking ref (the recurring detached-HEAD environment issue seen in prior runs), fixed with git fetch origin main && git checkout main && git reset --hard origin/main, no work lost, confirmed clean tree before starting. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (14 verses). 2 Chronicles 5 covers Solomon finishing the temple and depositing David's dedicated war spoils into its treasuries, assembling Israel's elders and leaders to bring the ark up from the City of David timed to land inside the Feast of Tabernacles in the seventh month, the Levites carrying the ark by the law this time (unlike the cart disaster in 1 Chronicles 13), the priests and Levites also relocating the original wilderness tabernacle and its vessels from Gibeon (retiring that whole older system), an uncountable sacrifice of sheep and oxen, the ark placed in the oracle (Most Holy Place) beneath the two large carved cherubim from chapter 3 with their wings covering the ark and its staves, the staves visible only from just inside the oracle and the narrator's aside 'unto this day' (an authorship/dating clue), the ark by this point holding only the two tables of the law from Horeb, every priest sanctifying himself and setting aside the normal course rotation for the occasion, the massed Levitical singers (Asaph, Heman, Jeduthun's families) in white linen with instruments plus 120 trumpeting priests, the unified sound and the Psalm 136 refrain 'his mercy endureth for ever', and the chapter's climax where the glory cloud fills the house so completely the priests cannot continue ministering, echoing the tabernacle's dedication in Exodus 40. Chunked into 6 sections (1, 2-3, 4-6, 7-10, 11-12, 13-14) matching the chapter's natural scene breaks (dedication of treasure, gathering for the feast, moving the ark, the ark's placement, the assembled priests and singers, the glory cloud). Density about 1.93 cards/verse (14 verses, 27 cards), in the target range. scripts/check_bible_note_style.py was clean on the first pass, no problems found. A manual section 13 eye check confirmed no duplicate or near-duplicate card titles across all 27 cards, no forbidden opening phrases ('this verse/passage shows/explains/teaches', 'here we see', etc), every body line under 20 words, exactly 4 bullets per card each ending on 📖 or ➡️. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 5) (6/6 sections, 27 cards, 14 verses, text rendered verbatim, spot checked first card). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 chronicles range extended from chapters 1-4 to 1-5, replaceStudySectionsForBookRange('2 chronicles', 5, 5, SECOND_CHRONICLES_FIVE_PERSONAL_SECTIONS) call and its wrapper function added directly after the Chapter 4 call. Next forward-progress target is 2 Chronicles 6.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T10:45:59Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 5 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-16T10:46:57Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 5, 14 verses, aruljohn mirror)",
+          "at": "2026-08-16T10:46:57Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-16T10:56:28Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesFiveSource.ts",
+          "at": "2026-08-16T10:56:28Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, first pass, no fixes needed)",
+          "at": "2026-08-16T10:56:28Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-16T10:56:28Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 27 cards, 14 verses, text verbatim)",
+          "at": "2026-08-16T10:56:28Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-16T10:56:28Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-16T10:56:54Z"
+        }
+      ]
     }
   ]
 }
