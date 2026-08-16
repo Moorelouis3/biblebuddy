@@ -1,0 +1,4316 @@
+"use client";
+import { useEffect, useState, useRef, useMemo } from "react";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { LouisAvatar } from "./LouisAvatar";
+import { supabase } from "../lib/supabaseClient";
+import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters, isBookComplete } from "../lib/readingProgress";
+import ChapterReaderSkeleton from "./ChapterReaderSkeleton";
+import { GENESIS_ONE_KJV, isGenesisOneKjv } from "../lib/genesisOneText";
+
+/** Confetti is only needed on a celebration, so it is fetched on demand. */
+async function confetti(options: Record<string, unknown>) {
+  try {
+    const mod = await import("canvas-confetti");
+    (mod.default as (opts: Record<string, unknown>) => void)(options);
+  } catch {
+    /* a missing celebration is not worth breaking the page over */
+  }
+}
+
+import { getFeaturedCharactersForMatthew, FeaturedCharacter } from "../lib/featuredCharacters";
+import { FeaturedCharacterModal } from "./FeaturedCharacterModal";
+import { useFeaturedCharacters } from "../hooks/useFeaturedCharacters";
+import ReactMarkdown from "react-markdown";
+import { BIBLE_HIGHLIGHTING_VERSION_MARKER, enrichBibleVerses } from "../lib/bibleHighlighting";
+import { logStudyView } from "../lib/studyViewLimit";
+import { ACTION_TYPE } from "../lib/actionTypes";
+import { resolveBibleReference } from "../lib/bibleTermResolver";
+import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
+import { ensureGuestSession } from "../lib/guestSession";
+import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
+import { requestLouisNotes } from "../lib/requestLouisNotes";
+import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
+import { triggerPoints } from "./PointsPop";
+import { ensureBibleEntityLearned } from "../lib/bibleEntityProgress";
+import { dispatchLouisMoment } from "../lib/louisMoments";
+import CreditLimitModal from "./CreditLimitModal";
+const CommentSection = dynamic(() => import("./comments/CommentSection"), { ssr: false });
+import { LEVEL_DEFINITIONS } from "../lib/levelSystem";
+import {
+  buildPersistedFeatureTours,
+  DEFAULT_FEATURE_TOURS,
+  normalizeFeatureTours,
+  type FeatureToursState,
+} from "../lib/featureTours";
+import dynamic from "next/dynamic";
+import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../lib/triviaCatalog";
+// The trivia and scrambled question banks are tens of thousands of lines
+// between them, and the players are only needed once a game is opened.
+// Importing them statically put all of it in the chapter page's first load.
+import type { TriviaChapterPack } from "../lib/triviaGameData";
+import type { ScrambledChapterPack } from "../lib/scrambledGameData";
+const TriviaGamePlayer = dynamic(() => import("./TriviaGamePlayer"), { ssr: false });
+const ScrambledGamePlayer = dynamic(() => import("./ScrambledGamePlayer"), { ssr: false });
+import { awardDiamonds } from "../lib/diamondWallet";
+import { DIAMOND_REWARDS, TASK_REWARD_LABELS, TASK_XP } from "../lib/progressionRewards";
+import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKey, getOfflineChapterNotes } from "../lib/chapterNotesOffline";
+import BrowserTtsButton from "./BrowserTtsButton";
+import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
+import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
+// NOT a static import. This helper reaches bibleYearDayOneDeepStudy, which
+// reaches bibleReaderStudyNotes, which pulls in all 482 note files: a 5.95 MB
+// chunk that was landing on every chapter before a single verse could show.
+// It is only needed while building a chapter summary, so it is fetched there.
+
+type Verse = {
+  num: number;
+  text: string;
+};
+
+type Section = {
+  id: string;
+  emoji: string;
+  title: string;
+  verses: Verse[];
+};
+
+type BibleApiVerse = {
+  verse: number;
+  text: string;
+};
+
+type BibleApiResponse = {
+  reference: string;
+  verses: BibleApiVerse[];
+  text: string;
+  translation_id: string;
+  translation_name: string;
+  translation_note: string;
+};
+
+const WISDOM_OF_PROVERBS_REFLECTION_QUESTIONS: Record<number, string> = {
+  1: "What does the Fear of the Lord mean to you?",
+  2: "What would change in your habits if you treated wisdom like treasure instead of background information?",
+  3: "What part of your life is hardest to entrust to God, and what would acknowledging Him there actually look like today?",
+  4: "What has been shaping your heart lately, and is it leading you toward life or away from it?",
+  5: "Where do you need wisdom to help you see the end of a path, not just the appeal of the first step?",
+  6: "Which warning in Proverbs 6 feels most personally relevant right now, and why?",
+  7: "Where are you walking too close to something you already know can pull you away from God?",
+  8: "What is wisdom already saying to you that you have been slow to receive?",
+  9: "Which invitation has been louder in your life lately: wisdom's call or folly's shortcut?",
+  10: "Which contrast in Proverbs 10 best describes a choice in front of you right now?",
+  11: "Where is God inviting you to become more honest, generous, or humble?",
+  12: "What do your recent words reveal about the condition of your heart?",
+  13: "Where are you choosing short-term ease over long-term wisdom?",
+  14: "What is one area where you need God's wisdom to challenge what simply seems right to you?",
+  15: "Where would a gentle answer change the atmosphere around you today?",
+  16: "What plan do you need to hold with open hands before the Lord?",
+  17: "Which relationship needs more wisdom from you right now: patience, honesty, restraint, or courage?",
+  18: "Are your words lately giving life, taking life, or simply escaping without wisdom?",
+  19: "Where would slowing down help you obey God more clearly?",
+  20: "Where do you need the Lord's lamp to search your motives or habits?",
+  21: "Where might God be asking for obedience instead of religious appearance?",
+  22: "What kind of name are your repeated choices building?",
+  23: "What desire has been discipling you more than wisdom has?",
+  24: "Where are you tempted to admire a path that Scripture warns you not to follow?",
+  25: "Where do you need more restraint or better timing in how you speak?",
+  26: "Where do you need discernment to know whether to speak, stay silent, engage, or walk away?",
+  27: "Who has permission to sharpen you, and how do you usually respond when they do?",
+  28: "What would it look like to stop covering and start walking in mercy?",
+  29: "Where has fear of people been stronger than trust in the Lord?",
+  30: "Do you know your weaknesses well enough to ask God for the kind of provision that protects your soul?",
+  31: "After walking through Proverbs, what kind of wise life is God calling you to practice, not just admire?",
+};
+
+const ALL_BIBLE_BOOKS_SORTED = [
+  "1 Chronicles","1 Corinthians","1 John","1 Kings","1 Peter",
+  "1 Samuel","1 Thessalonians","1 Timothy","2 Chronicles",
+  "2 Corinthians","2 John","2 Kings","2 Peter","2 Samuel",
+  "2 Thessalonians","2 Timothy","3 John","Acts","Amos",
+  "Colossians","Daniel","Deuteronomy","Ecclesiastes","Ephesians",
+  "Esther","Exodus","Ezekiel","Ezra","Galatians","Genesis",
+  "Habakkuk","Haggai","Hebrews","Hosea","Isaiah","James",
+  "Jeremiah","Job","Joel","John","Jonah","Joshua","Jude",
+  "Judges","Lamentations","Leviticus","Luke","Malachi","Mark",
+  "Matthew","Micah","Nahum","Nehemiah","Numbers","Obadiah",
+  "Philemon","Philippians","Proverbs","Psalms","Revelation",
+  "Romans","Ruth","Song of Solomon","Titus","Zechariah","Zephaniah",
+];
+
+const BIBLE_BOOKS_IN_ORDER = [
+  "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+  "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+  "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms",
+  "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations",
+  "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum",
+  "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi",
+  "Matthew", "Mark", "Luke", "John", "Acts", "Romans", "1 Corinthians", "2 Corinthians",
+  "Galatians", "Ephesians", "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+  "1 Timothy", "2 Timothy", "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter",
+  "1 John", "2 John", "3 John", "Jude", "Revelation",
+];
+
+// Ã¢â€â‚¬Ã¢â€â‚¬ Louis loading skeleton for database word overlays Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+function LouisLoadingCard({ name }: { name: string }) {
+  return (
+    <div className="flex flex-col items-center py-10 gap-5">
+      <div style={{ animation: "bounce 1s infinite" }}>
+        <LouisAvatar mood="think" size={72} />
+      </div>
+      <div className="w-full space-y-3 px-2">
+        <div className="h-3.5 bg-gray-100 rounded-full animate-pulse" />
+        <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-5/6" />
+        <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-3/4" />
+        <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-4/5" />
+        <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-2/3" />
+      </div>
+      <p className="text-sm text-gray-400 italic animate-pulse">{name} is loadingÃ¢â‚¬Â¦</p>
+    </div>
+  );
+}
+
+function LoadingDots() {
+  const [dotCount, setDotCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDotCount((prev) => (prev + 1) % 4);
+    }, 400);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <p className="mt-6 text-center text-sm font-medium text-gray-500">
+      Loading{".".repeat(dotCount)}
+    </p>
+  );
+}
+
+export default function BibleChapterPage() {
+  const params = useParams();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const bookParam = decodeURIComponent(String(params.book));
+  const book = bookParam;
+  const chapter = Number(params.chapter);
+  const bookDisplayName = book
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+  const isChapterTextEmbed = searchParams.get("embedded") === "chapter-text";
+  const isDashboardEmbed = searchParams.get("dashboardEmbed") === "1";
+  const hideReaderChrome = isDashboardEmbed || searchParams.get("hideReaderChrome") === "1";
+  const hideEmbedControls = searchParams.get("hideEmbedControls") === "1";
+  const hideDiscussion = searchParams.get("hideDiscussion") === "1";
+
+  /* ── Genesis 1 prototype ─────────────────────────────────────────────────
+     Genesis 1 is the testing ground for the new Study Mode, so it gets a
+     stripped back reader shell: a chapter and translation row, three tabs,
+     and one content area underneath. Every other chapter, and every embed,
+     keeps the existing layout exactly as it was. */
+  // Applies in the dashboard embed too, which is how the app shows the Bible
+  // on mobile. Only the raw chapter-text embed is left alone.
+  const isGenesisOnePrototype =
+    book.trim().toLowerCase() === "genesis" && chapter === 1 && !isChapterTextEmbed;
+
+  // Genesis 1 KJV starts with its text already in hand, so the very first
+  // render is the Scripture rather than a skeleton waiting on a fetch.
+  const genesisOneIsBundled = isGenesisOneKjv(bookParam, Number(params.chapter), "kjv");
+  const [sections, setSections] = useState<Section[]>(() =>
+    genesisOneIsBundled
+      ? [
+          {
+            id: "verses",
+            emoji: "",
+            title: `${bookDisplayName} ${Number(params.chapter)}`,
+            verses: GENESIS_ONE_KJV.map((v) => ({ num: v.verse, text: v.text })),
+          },
+        ]
+      : [],
+  );
+  const [loading, setLoading] = useState(!genesisOneIsBundled);
+  const [error, setError] = useState<string | null>(null);
+  const chapterRequestRef = useRef(0);
+  const [isSaving, setIsSaving] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [chapterSummary, setChapterSummary] = useState<string>("");
+  const summaryLoadingRef = useRef(false);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
+  const [levelInfoForModal, setLevelInfoForModal] = useState<{
+    level: number;
+    chaptersNeededForNext: number;
+    nextLevel: number;
+    leveledUp: boolean;
+  } | null>(null);
+  
+  // Featured Characters state (Matthew only)
+  const [featuredCharacters, setFeaturedCharacters] = useState<FeaturedCharacter[]>([]);
+  const [selectedCharacter, setSelectedCharacter] = useState<FeaturedCharacter | null>(null);
+  const verseContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Enriched content (pre-highlighted HTML)
+  const [enrichedContent, setEnrichedContent] = useState<string | null>(null);
+  
+  // Overlay modals state (reuse same pattern as People/Places/Keywords pages)
+  const [selectedPerson, setSelectedPerson] = useState<{ name: string } | null>(null);
+  const [selectedPlace, setSelectedPlace] = useState<{ name: string } | null>(null);
+  const [selectedKeyword, setSelectedKeyword] = useState<{ name: string } | null>(null);
+  const selectedKeywordNameRef = useRef<string | null>(null);
+  const generatingKeywordNotesRef = useRef<Set<string>>(new Set());
+  const [personNotes, setPersonNotes] = useState<string | null>(null);
+  const [placeNotes, setPlaceNotes] = useState<string | null>(null);
+  const [keywordNotes, setKeywordNotes] = useState<string | null>(null);
+  const [keywordNotesError, setKeywordNotesError] = useState<string | null>(null);
+  const [loadingNotes, setLoadingNotes] = useState(false);
+  const [personCreditBlocked, setPersonCreditBlocked] = useState(false);
+  const [viewedPeople, setViewedPeople] = useState<Set<string>>(new Set());
+  const [placeCreditBlocked, setPlaceCreditBlocked] = useState(false);
+  const [viewedPlaces, setViewedPlaces] = useState<Set<string>>(new Set());
+  const [keywordCreditBlocked, setKeywordCreditBlocked] = useState(false);
+  const [viewedKeywords, setViewedKeywords] = useState<Set<string>>(new Set());
+  const [translation, setTranslation] = useState<"web" | "asv" | "kjv">("kjv");
+  const [translationMenuOpen, setTranslationMenuOpen] = useState(false);
+  const [plainTextMode, setPlainTextMode] = useState(false);
+  const translationMenuRef = useRef<HTMLDivElement | null>(null);
+  const [gamesMenuOpen, setGamesMenuOpen] = useState(false);
+  const gamesMenuRef = useRef<HTMLDivElement | null>(null);
+  const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
+  const [featureToursLoaded, setFeatureToursLoaded] = useState(false);
+  const [chapterSummaryLoaded, setChapterSummaryLoaded] = useState(false);
+  
+  // Completion tracking state (same as database pages)
+  const [completedPeople, setCompletedPeople] = useState<Set<string>>(new Set());
+  const [completedPlaces, setCompletedPlaces] = useState<Set<string>>(new Set());
+  const [completedKeywords, setCompletedKeywords] = useState<Set<string>>(new Set());
+  const [loadingProgress, setLoadingProgress] = useState(true);
+  const [isAnimatingPerson, setIsAnimatingPerson] = useState(false);
+  const [isAnimatingPlace, setIsAnimatingPlace] = useState(false);
+  const [isAnimatingKeyword, setIsAnimatingKeyword] = useState(false);
+  const [learnedToast, setLearnedToast] = useState<string | null>(null);
+  const [fromReadingPlan, setFromReadingPlan] = useState(false);
+  const [showTriviaModal, setShowTriviaModal] = useState(false);
+  const [showScrambledModal, setShowScrambledModal] = useState(false);
+  const [triviaChapterPack, setTriviaChapterPack] = useState<TriviaChapterPack | null>(null);
+  const [scrambledChapterPack, setScrambledChapterPack] = useState<ScrambledChapterPack | null>(null);
+  const [reviewDone, setReviewDone] = useState(false);
+  const [triviaDone, setTriviaDone] = useState(false);
+  const [scrambledDone, setScrambledDone] = useState(false);
+  const [genesisOneTab, setGenesisOneTab] = useState<"play" | "trivia" | "scrambled">("play");
+  const [genesisOneChapterMenuOpen, setGenesisOneChapterMenuOpen] = useState(false);
+  // The chapter dropdown navigates books and chapters in place rather than
+  // handing off to the full books modal.
+  const [genesisOneMenuBook, setGenesisOneMenuBook] = useState<string | null>(null);
+  const [genesisOneMenuShowBooks, setGenesisOneMenuShowBooks] = useState(false);
+  const [genesisOneTranslationMenuOpen, setGenesisOneTranslationMenuOpen] = useState(false);
+  const genesisOneChapterMenuRef = useRef<HTMLDivElement | null>(null);
+  const genesisOneTranslationMenuRef = useRef<HTMLDivElement | null>(null);
+  const [showBooksModal, setShowBooksModal] = useState(false);
+  const [booksModalSelectedBook, setBooksModalSelectedBook] = useState<string | null>(null);
+  const reflectionSectionRef = useRef<HTMLDivElement | null>(null);
+  const [highlightReflectionSection, setHighlightReflectionSection] = useState(false);
+
+  useEffect(() => {
+    if (!isDashboardEmbed || typeof window === "undefined") return;
+
+    const postHeight = () => {
+      // Measure the content, not the document.
+      //
+      // The parent sizes this iframe to whatever height we report, and the
+      // app's root wrapper carries min-h-screen. Inside an iframe 100vh IS the
+      // iframe's height, so documentElement.scrollHeight could never fall
+      // below the height already set. It ratcheted up and never came back
+      // down, leaving a screen or more of dead space under the content once
+      // anything shrank, such as turning Study Mode off.
+      const contentRoot = document.querySelector("main") || document.body;
+      const contentBottom = contentRoot.getBoundingClientRect().bottom + window.scrollY;
+      const height = Math.ceil(
+        contentBottom > 0
+          ? contentBottom
+          : Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
+      );
+
+      window.parent?.postMessage(
+        {
+          type: "bb-dashboard-bible-reader-height",
+          book: bookDisplayName,
+          chapter,
+          height,
+        },
+        window.location.origin,
+      );
+    };
+
+    const frame = window.requestAnimationFrame(postHeight);
+    const resizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(() => postHeight()) : null;
+    resizeObserver?.observe(document.body);
+    resizeObserver?.observe(document.documentElement);
+    window.addEventListener("load", postHeight);
+    window.addEventListener("resize", postHeight);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      resizeObserver?.disconnect();
+      window.removeEventListener("load", postHeight);
+      window.removeEventListener("resize", postHeight);
+    };
+  }, [bookDisplayName, chapter, isDashboardEmbed, sections.length, enrichedContent, gamesMenuOpen, translationMenuOpen, plainTextMode, isCompleted]);
+  const [studyReflectionQuestion, setStudyReflectionQuestion] = useState<string | null>(null);
+  const autoOpenedNotesRef = useRef(false);
+  const louisChapterPromptRef = useRef<string | null>(null);
+  const bibleGuideShownThisVisitRef = useRef(false);
+  const chapterStudyNotesActionPrefix = useMemo(() => {
+    const normalizedBook = bookDisplayName.toLowerCase().replace(/[^a-z0-9]+/g, "");
+    return `opened ${normalizedBook}${chapter}-`;
+  }, [bookDisplayName, chapter]);
+  const chapterSpeechText = useMemo(
+    () =>
+      sections
+        .flatMap((section) => section.verses.map((verse) => verse.text))
+        .join(" "),
+    [sections],
+  );
+  const chapterAudioSrc = useMemo(
+    () => getBibleChapterTtsSrc(bookDisplayName, chapter, translation),
+    [bookDisplayName, chapter, translation],
+  );
+
+  function openInlineStudyNotes() {
+    setGamesMenuOpen(false);
+    window.setTimeout(() => {
+      verseContainerRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 80);
+  }
+
+  function stripPopupIntro(markdown: string): string {
+    return markdown
+      .replace(/^Hey friend,\s*Little Louis here\s*[Ã¢â‚¬â€-]\s*/i, "")
+      .replace(/^Hey friend,\s*Little Louis here\s*/i, "")
+      .replace(/^Hey friend,\s*/i, "")
+      .replace(/^Little Louis here\s*[Ã¢â‚¬â€-]\s*/i, "")
+      .replace(/^Little Louis here\s*/i, "")
+      .replace(/^Hey, quick one about [^.]+\.\s*/i, "")
+      .replace(/^Hey, here's the quick meaning of [^.]+\.\s*/i, "")
+      .trim();
+  }
+
+  // Normalize markdown functions (reused from People/Places/Keywords pages)
+  function normalizePersonMarkdown(markdown: string): string {
+    return stripPopupIntro(markdown)
+      .replace(/^\s*[-Ã¢â‚¬Â¢*]\s+/gm, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  function normalizePlaceMarkdown(markdown: string): string {
+    return stripPopupIntro(markdown)
+      .replace(/^\s*[-Ã¢â‚¬Â¢*]\s+/gm, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  function normalizeKeywordMarkdown(markdown: string): string {
+    return markdown
+      .replace(/^\s*[-Ã¢â‚¬Â¢*]\s+/gm, "")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
+  useEffect(() => {
+    selectedKeywordNameRef.current = selectedKeyword?.name.toLowerCase().trim() || null;
+  }, [selectedKeyword]);
+
+  // Normalize book name for API (e.g., "1 Samuel" -> "1samuel", "Matthew" -> "matthew")
+  function normalizeBookName(bookName: string): string {
+    // Remove spaces and convert to lowercase
+    // The API expects: matthew, mark, luke, john, acts, romans, etc.
+    return bookName.toLowerCase().replace(/\s+/g, "");
+  }
+
+  // Convert Bible API response to sections format
+  function convertToSections(verses: BibleApiVerse[], bookDisplay: string): Section[] {
+    // For now, we'll create a single section with all verses
+    // You can enhance this later to split into multiple sections based on content
+    return [
+      {
+        id: "verses",
+        emoji: "",
+        title: `${bookDisplay} ${chapter}`,
+        verses: verses.map((v) => ({
+          num: v.verse,
+          text: v.text,
+        })),
+      },
+    ];
+  }
+
+  // Event delegation for click handlers on enriched content
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      const el = e.target as HTMLElement;
+      if (!el.classList.contains("bible-highlight")) return;
+
+      const type = el.dataset.type;
+      const term = el.dataset.term;
+      if (!type || !term) return;
+
+      if (type === "people") {
+        setSelectedPerson({ name: resolveBibleReference("people", term) });
+        setSelectedPlace(null);
+        setSelectedKeyword(null);
+      } else if (type === "places") {
+        setSelectedPlace({ name: resolveBibleReference("places", term) });
+        setSelectedPerson(null);
+        setSelectedKeyword(null);
+      } else if (type === "keywords") {
+        setSelectedKeyword({ name: resolveBibleReference("keywords", term) });
+        setSelectedPerson(null);
+        setSelectedPlace(null);
+      }
+    };
+
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, []);
+
+  async function markBibleFeatureSeen(featureKey: keyof FeatureToursState) {
+    if (!userId || featureTours[featureKey] === true) return;
+
+    const mergedFeatureTours = {
+      ...featureTours,
+      [featureKey]: true,
+    };
+
+    const { error: updateError } = await supabase
+      .from("profile_stats")
+      .update({
+        feature_tours: buildPersistedFeatureTours(mergedFeatureTours),
+      })
+      .eq("user_id", userId);
+
+    if (updateError) {
+      console.error("[FEATURE_TOURS] Error saving Bible reader guide state:", updateError);
+      return;
+    }
+
+    setFeatureTours(mergedFeatureTours);
+  }
+
+  function hashLouisSeed(input: string) {
+    let hash = 0;
+    for (let index = 0; index < input.length; index += 1) {
+      hash = (hash * 31 + input.charCodeAt(index)) >>> 0;
+    }
+    return hash;
+  }
+
+  function pickLouisVariant(seed: string, options: string[]) {
+    if (options.length === 0) return "";
+    return options[hashLouisSeed(seed) % options.length];
+  }
+
+  function buildChapterIntroSeenKey() {
+    const userScope = userId || "guest";
+    return `bb:louis:chapter-intro:${userScope}:${bookDisplayName}:${chapter}`;
+  }
+
+  // A visitor arriving from a blog post or search result has no session. When
+  // they open a person/place/keyword study card — a real study action, not just
+  // a page view — give them a guest account so their progress is recorded.
+  // Setting userId re-runs the tracking effects below, which depend on it.
+  useEffect(() => {
+    if (userId) return;
+    if (!selectedPerson && !selectedPlace && !selectedKeyword) return;
+
+    let cancelled = false;
+    void (async () => {
+      const guest = await ensureGuestSession({ source: "bible_reader_deep_link" });
+      if (!cancelled && guest.ok) setUserId(guest.userId);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, selectedPerson, selectedPlace, selectedKeyword]);
+
+  // Load notes for selected person (reuse same logic as People page)
+  useEffect(() => {
+    if (!selectedPerson) {
+      setPersonNotes(null);
+      setPersonCreditBlocked(false);
+      return;
+    }
+
+    async function generateNotes() {
+      setLoadingNotes(true);
+      setPersonNotes(null);
+      setPersonCreditBlocked(false);
+
+      try {
+        if (!selectedPerson) return;
+        const personName = selectedPerson.name;
+        const personNameKey = personName.toLowerCase().trim();
+
+        if (userId) {
+          const creditResult = await consumeCreditAction(ACTION_TYPE.person_viewed, {
+            userId,
+            actionLabel: personName,
+          });
+          if (!creditResult.ok) {
+            if (isCreditActionCanceled(creditResult)) {
+              setSelectedPerson(null);
+              return;
+            }
+            setPersonCreditBlocked(true);
+            return;
+          }
+
+          setViewedPeople((prev) => {
+            const next = new Set(prev);
+            next.add(personNameKey);
+            return next;
+          });
+
+          if (!completedPeople.has(personNameKey)) {
+            const result = await ensureBibleEntityLearned({ kind: "people", name: personName, userId });
+            if (result.inserted) {
+              triggerPoints(1);
+              setCompletedPeople((prev) => new Set(prev).add(result.normalizedKey));
+            }
+          }
+        }
+
+        const notesText = await getPersonPopupNotes(personName);
+        setPersonNotes(notesText);
+      } catch (err: any) {
+        console.error("Error loading person notes:", err);
+      } finally {
+        setLoadingNotes(false);
+      }
+    }
+
+    generateNotes();
+  }, [selectedPerson, userId]);
+
+  // Load notes for selected place (reuse same logic as Places page)
+  useEffect(() => {
+    if (!selectedPlace) {
+      setPlaceNotes(null);
+      setPlaceCreditBlocked(false);
+      return;
+    }
+
+    async function generateNotes() {
+      setLoadingNotes(true);
+      setPlaceNotes(null);
+      setPlaceCreditBlocked(false);
+
+      try {
+        if (!selectedPlace) return;
+        const normalizedPlace = selectedPlace!.name.toLowerCase().trim().replace(/\s+/g, "_");
+
+        if (userId) {
+          const creditResult = await consumeCreditAction(ACTION_TYPE.place_viewed, {
+            userId,
+            actionLabel: selectedPlace!.name,
+          });
+          if (!creditResult.ok) {
+            if (isCreditActionCanceled(creditResult)) {
+              setSelectedPlace(null);
+              return;
+            }
+            setPlaceCreditBlocked(true);
+            return;
+          }
+
+          if (!completedPlaces.has(normalizedPlace)) {
+            const result = await ensureBibleEntityLearned({ kind: "places", name: selectedPlace!.name, userId });
+            if (result.inserted) {
+              triggerPoints(1);
+              setCompletedPlaces((prev) => new Set(prev).add(result.normalizedKey));
+            }
+          }
+        }
+        setPlaceNotes(await getPlacePopupNotes(selectedPlace!.name));
+        return;
+
+        const existingNotes = await findPlaceNotes(normalizedPlace);
+        if (existingNotes) {
+          setPlaceNotes(existingNotes);
+          setLoadingNotes(false);
+          return;
+        }
+
+        // STEP 2: Generate notes using ChatGPT (same as Places page)
+        const prompt = `You are Little Louis.
+
+Generate beginner friendly Bible notes about the PLACE: ${selectedPlace!.name}.
+
+Follow this EXACT markdown template and rules.
+
+TEMPLATE:
+
+# Ã°Å¸Â§Â­ What This Place Is
+
+(two short paragraphs)
+
+
+
+
+# Ã°Å¸â€”ÂºÃ¯Â¸Â Where It Appears in the Story
+
+(two to three short paragraphs)
+
+
+
+
+# Ã°Å¸â€â€˜ Key Moments Connected to This Place
+
+Ã°Å¸â€Â¥ sentence  
+
+Ã°Å¸â€Â¥ sentence  
+
+Ã°Å¸â€Â¥ sentence  
+
+Ã°Å¸â€Â¥ sentence  
+
+
+
+
+# Ã°Å¸â€œâ€“ Where You Find It in Scripture
+
+Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
+
+Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
+
+Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
+
+
+
+
+# Ã°Å¸Å’Â± Why This Place Matters
+
+(two to three short paragraphs)
+
+
+
+RULES:
+- Use # for all section headers
+- Double line breaks between sections
+- No hyphens anywhere
+- Use emoji bullets only
+- No lists with dashes
+- No meta commentary
+- No deep theology
+- Cinematic but simple
+- Total length about 200Ã¢â‚¬â€œ300 words
+- Do NOT include the place name as a header`;
+        
+        const generated = await requestLouisNotes(prompt);
+
+        const notesText = await savePlaceNotes(normalizedPlace, generated);
+        setPlaceNotes(notesText);
+      } catch (err: any) {
+        console.error("Error loading place notes:", err);
+      } finally {
+        setLoadingNotes(false);
+      }
+    }
+
+    generateNotes();
+  }, [selectedPlace, userId, completedPlaces, viewedPlaces]);
+
+  // Load notes for selected keyword (reuse same logic as Keywords page)
+  useEffect(() => {
+    if (!selectedKeyword) {
+      setKeywordNotes(null);
+      setKeywordNotesError(null);
+      setKeywordCreditBlocked(false);
+      return;
+    }
+
+    async function generateNotes() {
+      setLoadingNotes(true);
+      setKeywordNotes(null);
+      setKeywordNotesError(null);
+      setKeywordCreditBlocked(false);
+
+      try {
+        if (!selectedKeyword) return;
+        const keywordKey = selectedKeyword!.name.toLowerCase().trim();
+
+        if (userId) {
+          const isCompleted = completedKeywords.has(keywordKey);
+
+          if (!isCompleted) {
+            const isViewed = viewedKeywords.has(keywordKey);
+
+            if (!isViewed) {
+              const creditResult = await consumeCreditAction(ACTION_TYPE.keyword_viewed, {
+                userId,
+                actionLabel: selectedKeyword!.name,
+              });
+              if (!creditResult.ok) {
+                if (isCreditActionCanceled(creditResult)) {
+                  setSelectedKeyword(null);
+                  return;
+                }
+                setKeywordCreditBlocked(true);
+                return;
+              }
+
+              setViewedKeywords((prev) => {
+                const next = new Set(prev);
+                next.add(keywordKey);
+                return next;
+              });
+
+              const result = await ensureBibleEntityLearned({ kind: "keywords", name: selectedKeyword!.name, userId });
+              if (result.inserted) {
+                triggerPoints(1);
+                setCompletedKeywords((prev) => new Set(prev).add(result.normalizedKey));
+              }
+            }
+          }
+        }
+
+        setKeywordNotes(await getKeywordPopupNotes(selectedKeyword!.name));
+        setKeywordNotesError(null);
+        return;
+
+        const existingNotes = await findKeywordNotes(selectedKeyword!.name);
+        if (existingNotes) {
+          setKeywordNotes(existingNotes);
+          setLoadingNotes(false);
+          return;
+        }
+
+        // STEP 2: Generate notes using ChatGPT (same as Keywords page)
+        const prompt = `You are Little Louis.
+
+Generate beginner friendly Bible notes about the KEYWORD: ${selectedKeyword!.name}.
+
+Follow this EXACT markdown template and rules.
+
+TEMPLATE:
+
+# Ã°Å¸â€œâ€“ What This Keyword Means
+
+(two short paragraphs)
+
+
+
+
+# Ã°Å¸â€Â Where It Appears in Scripture
+
+(two to three short paragraphs)
+
+
+
+
+# Ã°Å¸â€â€˜ Key Verses Using This Keyword
+
+Ã°Å¸â€Â¥ sentence  
+
+Ã°Å¸â€Â¥ sentence  
+
+Ã°Å¸â€Â¥ sentence  
+
+Ã°Å¸â€Â¥ sentence  
+
+
+
+
+# Ã°Å¸â€œÅ¡ Where You Find It in the Bible
+
+Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
+
+Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
+
+Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
+
+
+
+
+# Ã°Å¸Å’Â± Why This Keyword Matters
+
+(two to three short paragraphs)
+
+
+
+RULES:
+- Use # for all section headers
+- Double line breaks between sections
+- No hyphens anywhere
+- Use emoji bullets only
+- No lists with dashes
+- No meta commentary
+- No deep theology
+- Cinematic but simple
+- Total length about 200Ã¢â‚¬â€œ300 words
+- Do NOT include the keyword name as a header`;
+        
+        setKeywordNotes(await getKeywordPopupNotes(selectedKeyword!.name));
+        setKeywordNotesError(null);
+
+        if (!generatingKeywordNotesRef.current.has(keywordKey)) {
+          generatingKeywordNotesRef.current.add(keywordKey);
+
+          void (async () => {
+            try {
+              const generated = await requestLouisNotes(prompt);
+              const notesText = await saveKeywordNotes(selectedKeyword!.name, generated);
+
+              if (selectedKeywordNameRef.current === keywordKey) {
+                setKeywordNotes(notesText);
+                setKeywordNotesError(null);
+              }
+            } catch (backgroundError) {
+              console.error("Error generating keyword notes in background:", backgroundError);
+            } finally {
+              generatingKeywordNotesRef.current.delete(keywordKey);
+            }
+          })();
+        }
+      } catch (err: any) {
+        console.error("Error loading keyword notes:", err);
+        setKeywordNotesError("Couldn't load this keyword yet.");
+      } finally {
+        setLoadingNotes(false);
+      }
+    }
+
+    generateNotes();
+  }, [selectedKeyword, userId, completedKeywords, viewedKeywords]);
+
+
+  useEffect(() => {
+    const requestId = chapterRequestRef.current + 1;
+    chapterRequestRef.current = requestId;
+    let cancelled = false;
+
+    async function loadChapter() {
+      const isCurrentRequest = () => !cancelled && chapterRequestRef.current === requestId;
+
+      // Genesis 1 in KJV is bundled, so it paints immediately instead of
+      // waiting on a network request that cannot start until this code has
+      // downloaded. Enrichment still arrives afterwards.
+      if (isGenesisOneKjv(book, chapter, translation)) {
+        setError(null);
+        setEnrichedContent(null);
+        setSections(convertToSections(GENESIS_ONE_KJV, bookDisplayName));
+        setLoading(false);
+
+        // Enrichment supplies the tappable people, places and keywords. The
+        // chapter reads perfectly without it, so it follows on behind rather
+        // than holding up the text.
+        void (async () => {
+          try {
+            const enriched = await enrichBibleVerses(GENESIS_ONE_KJV);
+            if (isCurrentRequest()) setEnrichedContent(enriched);
+          } catch (enrichError) {
+            console.warn("[CHAPTER_LOADING] Genesis 1 enrichment skipped:", enrichError);
+          }
+        })();
+
+        return;
+      }
+
+      try {
+        console.log("[CHAPTER_LOADING] start", { book, chapter, translation });
+        setLoading(true);
+        setError(null);
+        setSections([]);
+        setEnrichedContent(null);
+
+        const shouldUseSupabaseCache = translation === "web";
+
+        // Step A: Check Supabase table bible_chapters FIRST (WEB only)
+        const { data: supabaseData, error: supabaseError } = shouldUseSupabaseCache
+          ? await supabase
+              .from("bible_chapters")
+              .select("content_json, enriched_content")
+              .eq("book", book)
+              .eq("chapter", chapter)
+              .maybeSingle()
+          : { data: null, error: null };
+
+        if (supabaseData && !supabaseError) {
+          // Step B: If enriched_content exists, use it directly when it matches the current highlighting version
+          if (supabaseData.enriched_content) {
+            const hasCurrentHighlightVersion = supabaseData.enriched_content.includes(BIBLE_HIGHLIGHTING_VERSION_MARKER);
+
+            if (hasCurrentHighlightVersion) {
+              if (!isCurrentRequest()) return;
+              setEnrichedContent(supabaseData.enriched_content);
+              const content = supabaseData.content_json as any;
+              if (content && content.verses) {
+                const verses = content.verses as BibleApiVerse[];
+                const bookDisplay = book
+                  .split(" ")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                  .join(" ");
+                setSections(convertToSections(verses, bookDisplay));
+              }
+              setLoading(false);
+              return;
+            }
+
+            const content = supabaseData.content_json as any;
+            if (content && content.verses) {
+              const verses = content.verses as BibleApiVerse[];
+              const bookDisplay = book
+                .split(" ")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(" ");
+              setSections(convertToSections(verses, bookDisplay));
+
+              const regeneratedEnrichedContent = await enrichBibleVerses(verses);
+              if (!isCurrentRequest()) return;
+              setEnrichedContent(regeneratedEnrichedContent);
+
+              await supabase
+                .from("bible_chapters")
+                .update({ enriched_content: regeneratedEnrichedContent })
+                .eq("book", book)
+                .eq("chapter", chapter);
+
+              if (!isCurrentRequest()) return;
+              setLoading(false);
+              return;
+            }
+
+            // Stale enriched_content exists but no cached verses available to regenerate.
+            // Fall through to API fetch so we can rebuild highlights with current rules.
+          }
+          
+          // Step C: If content_json exists but no enriched_content, use it and generate enriched_content
+          if (supabaseData.content_json) {
+            const content = supabaseData.content_json as any;
+            if (content && content.verses) {
+              const verses = content.verses as BibleApiVerse[];
+              const bookDisplay = book
+                .split(" ")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+                .join(" ");
+              setSections(convertToSections(verses, bookDisplay));
+              
+              // Generate enriched_content and save it
+              const enriched = await enrichBibleVerses(verses);
+              if (!isCurrentRequest()) return;
+              setEnrichedContent(enriched);
+              
+              // Update database with enriched_content
+              await supabase
+                .from("bible_chapters")
+                .update({ enriched_content: enriched })
+                .eq("book", book)
+                .eq("chapter", chapter);
+              
+              if (!isCurrentRequest()) return;
+              setLoading(false);
+              return;
+            }
+          }
+        }
+
+        // Step C: If NOT found in Supabase (or non-WEB translation), fetch from bible-api.com
+        const normalizedBook = normalizeBookName(book);
+        const apiUrl = `https://bible-api.com/${normalizedBook}+${chapter}?translation=${translation}`;
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 12000);
+        const response = await fetch(apiUrl, { signal: controller.signal });
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.statusText}`);
+        }
+
+        const apiData: BibleApiResponse = await response.json();
+
+        // Step D: Generate enriched_content from verses
+        const enriched = await enrichBibleVerses(apiData.verses);
+        if (!isCurrentRequest()) return;
+        setEnrichedContent(enriched);
+
+        // Step E: Save to Supabase ONCE - check first to prevent duplicates (WEB only)
+        if (shouldUseSupabaseCache) {
+          const { data: existingCheck } = await supabase
+            .from("bible_chapters")
+            .select("id")
+            .eq("book", book)
+            .eq("chapter", chapter)
+            .maybeSingle();
+
+          if (!existingCheck) {
+            // Only insert if it doesn't exist
+            const { error: insertError } = await supabase
+              .from("bible_chapters")
+              .insert([
+                {
+                  book: book,
+                  chapter: chapter,
+                  content_json: apiData,
+                  enriched_content: enriched,
+                },
+              ]);
+
+            if (insertError) {
+              console.error("Error saving to Supabase:", insertError);
+              // Continue anyway - we have the data
+            }
+          }
+        }
+
+        // Render verses
+        const bookDisplay = book
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join(" ");
+        if (!isCurrentRequest()) return;
+        setSections(convertToSections(apiData.verses, bookDisplay));
+        console.log("[CHAPTER_LOADING] success", { book, chapter, translation, source: "bible-api" });
+      } catch (err) {
+        if (!isCurrentRequest()) return;
+        console.error("Error loading chapter:", err);
+        const errMessage = err instanceof Error ? err.message : "Failed to load chapter";
+        setError(
+          errMessage.includes("aborted") || errMessage.includes("AbortError")
+            ? "Chapter request timed out. Please refresh and try again."
+            : errMessage
+        );
+      } finally {
+        if (!isCurrentRequest()) return;
+        console.log("[CHAPTER_LOADING] end", { book, chapter, translation, hasError: !!error });
+        setLoading(false);
+      }
+    }
+
+    if (book && Number.isFinite(chapter) && chapter > 0) {
+      void loadChapter();
+    } else {
+      setError("Invalid chapter route.");
+      setLoading(false);
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [book, chapter, translation]);
+
+  // Get user ID and load completion progress (same as database pages)
+  useEffect(() => {
+    async function loadUserAndProgress() {
+      try {
+        setLoadingProgress(true);
+        const { data: { user } } = await supabase.auth.getUser();
+        
+        if (!user) {
+          return;
+        }
+
+        setUserId(user.id);
+        
+        // Extract username from user metadata
+        const meta: any = user.user_metadata || {};
+        const extractedUsername =
+          meta.firstName ||
+          meta.first_name ||
+          (user.email ? user.email.split("@")[0] : null) ||
+          "User";
+        setUsername(extractedUsername);
+
+        const { data: profileStats, error: profileStatsError } = await supabase
+          .from("profile_stats")
+          .select("feature_tours")
+          .eq("user_id", user.id)
+          .maybeSingle();
+
+        if (profileStatsError) {
+          console.error("[FEATURE_TOURS] Error loading Bible reader tour:", profileStatsError);
+        } else if (!profileStats) {
+          const { error: upsertError } = await supabase
+            .from("profile_stats")
+            .upsert(
+              {
+                user_id: user.id,
+                feature_tours: buildPersistedFeatureTours(),
+              },
+              { onConflict: "user_id" }
+            );
+
+          if (upsertError) {
+            console.error("[FEATURE_TOURS] Error creating Bible reader tour profile row:", upsertError);
+          } else {
+            setFeatureTours({ ...DEFAULT_FEATURE_TOURS });
+          }
+        } else {
+          const normalizedTours = normalizeFeatureTours(profileStats.feature_tours);
+          setFeatureTours(normalizedTours);
+        }
+
+        // Fetch all completed people for this user (batch query)
+        const { data: peopleData, error: peopleError } = await supabase
+          .from("people_progress")
+          .select("person_name")
+          .eq("user_id", user.id);
+
+        if (peopleError) {
+          console.error("Error loading people progress:", peopleError);
+        } else {
+          const completedPeopleSet = new Set<string>();
+          peopleData?.forEach((row) => {
+            // Store normalized name (lowercase, trimmed) for matching
+            completedPeopleSet.add(row.person_name.toLowerCase().trim());
+          });
+          setCompletedPeople(completedPeopleSet);
+        }
+
+        // Fetch all completed places for this user
+        const { data: placesData, error: placesError } = await supabase
+          .from("places_progress")
+          .select("place_name")
+          .eq("user_id", user.id);
+
+        if (placesError) {
+          console.error("Error loading places progress:", placesError);
+        } else {
+          const completedPlacesSet = new Set<string>();
+          placesData?.forEach((row) => {
+            // Store normalized name (lowercase, spaces to underscores) for matching
+            completedPlacesSet.add(row.place_name.toLowerCase().trim());
+          });
+          setCompletedPlaces(completedPlacesSet);
+        }
+
+        // Fetch all completed keywords for this user
+        const { data: keywordsData, error: keywordsError } = await supabase
+          .from("keywords_progress")
+          .select("keyword_name")
+          .eq("user_id", user.id);
+
+        if (keywordsError) {
+          console.error("Error loading keywords progress:", keywordsError);
+        } else {
+          const completedKeywordsSet = new Set<string>();
+          keywordsData?.forEach((row) => {
+            // Store normalized name (lowercase, trimmed) for matching
+            completedKeywordsSet.add(row.keyword_name.toLowerCase().trim());
+          });
+          setCompletedKeywords(completedKeywordsSet);
+        }
+      } catch (err) {
+        console.error("Error loading user and progress:", err);
+      } finally {
+        setFeatureToursLoaded(true);
+        setLoadingProgress(false);
+      }
+    }
+    loadUserAndProgress();
+  }, []);
+
+  useEffect(() => {
+    if (!userId || !chapter) return;
+
+    void trackNavigationActionOnce({
+      userId,
+      username,
+      actionType: ACTION_TYPE.bible_chapter_viewed,
+      actionLabel: `${book} ${chapter}`,
+      dedupeKey: `bible-chapter-viewed:${book.toLowerCase()}:${chapter}`,
+    }).catch((error) => {
+      console.error("[NAV] Failed to track Bible chapter view:", error);
+    });
+  }, [book, chapter, userId, username]);
+
+  // Load featured characters for Matthew only
+  useEffect(() => {
+    async function loadFeaturedCharacters() {
+      // Only load for Matthew book
+      const bookLower = book.toLowerCase().trim();
+      if (bookLower !== "matthew") {
+        return;
+      }
+
+      try {
+        const characters = await getFeaturedCharactersForMatthew();
+        setFeaturedCharacters(characters);
+      } catch (err) {
+        console.error("[BIBLE_CHAPTER] Error loading featured characters:", err);
+        // Fail silently - feature is optional
+      }
+    }
+
+    loadFeaturedCharacters();
+  }, [book]);
+
+  // Apply featured character highlighting via DOM manipulation (Matthew only)
+  const bookLower = book.toLowerCase().trim();
+  useFeaturedCharacters({
+    characters: featuredCharacters,
+    containerRef: verseContainerRef,
+    enabled: bookLower === "matthew" && featuredCharacters.length > 0,
+    onCharacterClick: (character) => setSelectedCharacter(character),
+  });
+
+  // Check if chapter is already completed
+  useEffect(() => {
+    async function checkCompleted() {
+      if (book && chapter && userId) {
+        const completed = await isChapterCompleted(userId, book, chapter);
+        setIsCompleted(completed);
+      }
+    }
+    checkCompleted();
+  }, [book, chapter, userId]);
+
+  // Extract Big Idea summary from notes text
+  function extractBigIdeaSummary(notesText: string): string {
+    if (!notesText || !notesText.trim()) {
+      return "";
+    }
+
+    // Find the "Ã°Å¸Â§Â  **Big Idea of the Chapter**" section
+    // Match variations: "Ã°Å¸Â§Â  **Big Idea of the Chapter**" or "Ã°Å¸Â§Â  Big Idea of the Chapter"
+    // Extract text until the next emoji header (Ã°Å¸Å½Â¬, Ã°Å¸â€œÅ’, Ã°Å¸â€â€”, Ã°Å¸â„¢Å’, Ã°Å¸ÂÂ)
+    const patterns = [
+      /Ã°Å¸Â§Â \s*\*\*Big Idea of the Chapter\*\*\s*\n([\s\S]*?)(?=\n#\s*Ã°Å¸Å½Â¬|\n#\s*Ã°Å¸â€œÅ’|\n#\s*Ã°Å¸â€â€”|\n#\s*Ã°Å¸â„¢Å’|\n#\s*Ã°Å¸ÂÂ|Ã°Å¸Å½Â¬|Ã°Å¸â€œÅ’|Ã°Å¸â€â€”|Ã°Å¸â„¢Å’|Ã°Å¸ÂÂ|$)/i,
+      /Ã°Å¸Â§Â \s*Big Idea of the Chapter\s*\n([\s\S]*?)(?=\n#\s*Ã°Å¸Å½Â¬|\n#\s*Ã°Å¸â€œÅ’|\n#\s*Ã°Å¸â€â€”|\n#\s*Ã°Å¸â„¢Å’|\n#\s*Ã°Å¸ÂÂ|Ã°Å¸Å½Â¬|Ã°Å¸â€œÅ’|Ã°Å¸â€â€”|Ã°Å¸â„¢Å’|Ã°Å¸ÂÂ|$)/i,
+      /\*\*Ã°Å¸Â§Â \s*Big Idea of the Chapter\*\*\s*\n([\s\S]*?)(?=\n#\s*Ã°Å¸Å½Â¬|\n#\s*Ã°Å¸â€œÅ’|\n#\s*Ã°Å¸â€â€”|\n#\s*Ã°Å¸â„¢Å’|\n#\s*Ã°Å¸ÂÂ|Ã°Å¸Å½Â¬|Ã°Å¸â€œÅ’|Ã°Å¸â€â€”|Ã°Å¸â„¢Å’|Ã°Å¸ÂÂ|$)/i,
+      /Big Idea of the Chapter\s*\n([\s\S]*?)(?=\n#\s*Ã°Å¸Å½Â¬|\n#\s*Ã°Å¸â€œÅ’|\n#\s*Ã°Å¸â€â€”|\n#\s*Ã°Å¸â„¢Å’|\n#\s*Ã°Å¸ÂÂ|Ã°Å¸Å½Â¬|Ã°Å¸â€œÅ’|Ã°Å¸â€â€”|Ã°Å¸â„¢Å’|Ã°Å¸ÂÂ|$)/i,
+    ];
+
+    let summary = "";
+    for (const pattern of patterns) {
+      const match = notesText.match(pattern);
+      if (match && match[1]) {
+        summary = match[1].trim();
+        break;
+      }
+    }
+
+    if (!summary) {
+      const introBlock = notesText
+        .split(/\n## Why\s+/i)[0]
+        .split(/\n# Deep Chapter Notes/i)[0];
+      const introParagraphs = introBlock
+        .split(/\n{2,}/)
+        .map((paragraph) =>
+          paragraph
+            .replace(/^#{1,6}\s+/gm, "")
+            .replace(/^>\s?.*$/gm, "")
+            .replace(/\*\*(.*?)\*\*/g, "$1")
+            .replace(/\*(.*?)\*/g, "$1")
+            .replace(/`(.*?)`/g, "$1")
+            .replace(/^\s*[-*+]\s+/gm, "")
+            .replace(/\s+/g, " ")
+            .trim(),
+        )
+        .filter(Boolean)
+        .filter((paragraph) => !/^(?:[1-3]\s+)?[A-Za-z ]+\s+\d+$/.test(paragraph))
+        .filter((paragraph) => paragraph.length > 35);
+
+      summary = introParagraphs.slice(0, 3).join(" ").trim();
+
+      if (!summary) {
+        return "";
+      }
+    }
+
+    // Strip markdown formatting
+    summary = summary
+      .replace(/#{1,6}\s+/g, "") // Remove markdown headers
+      .replace(/\*\*(.*?)\*\*/g, "$1") // Remove bold
+      .replace(/\*(.*?)\*/g, "$1") // Remove italic
+      .replace(/\[(.*?)\]\(.*?\)/g, "$1") // Remove links
+      .replace(/`(.*?)`/g, "$1") // Remove code
+      .replace(/^\s*[-*+]\s+/gm, "") // Remove list markers
+      .replace(/^\s*\d+\.\s+/gm, "") // Remove numbered list markers
+      .replace(/Ã°Å¸Â§Â /g, "") // Remove emoji if present
+      .replace(/Big Idea of the Chapter/gi, "") // Remove header text if present
+      .trim();
+
+    // Extract first 3 sentences so the Louis chapter box feels more complete
+    const sentences = summary.match(/[^.!?]+[.!?]+/g) || [];
+    if (sentences.length > 0) {
+      const selectedSentences = sentences.slice(0, 3);
+      summary = selectedSentences.join(" ").trim();
+    } else if (summary.length > 0) {
+      summary = summary.substring(0, 320).trim();
+    }
+
+    return summary || "";
+  }
+
+  function buildChapterReflectionQuestion(bookName: string, chapterNum: number, summary: string): string {
+    const fallback = "What stands out to you most in this chapter?";
+    const cleanedSummary = summary.replace(/\s+/g, " ").trim();
+    if (!cleanedSummary) {
+      return fallback;
+    }
+
+    let topic = cleanedSummary
+      .replace(/^this chapter\s+(shows|is about|highlights|focuses on|emphasizes|reveals)\s+/i, "")
+      .replace(/^in this chapter,\s*/i, "")
+      .replace(/^we\s+(see|watch|follow)\s+/i, "")
+      .replace(/^the chapter\s+(shows|highlights|focuses on|emphasizes)\s+/i, "")
+      .split(/[.!?]/)[0]
+      .split(/\s+(while|as|and then|leading to|which leads to)\s+/i)[0]
+      .split(/\s*,\s*/)[0]
+      .trim()
+      .replace(/^[,;:\-Ã¢â‚¬â€œÃ¢â‚¬â€\s]+/, "")
+      .replace(/[,;:\-Ã¢â‚¬â€œÃ¢â‚¬â€\s]+$/, "");
+
+    if (!topic) {
+      return fallback;
+    }
+
+    if (topic.length > 90) {
+      topic = `${topic.slice(0, 87).trim()}...`;
+    }
+
+    const normalizedTopic = topic.charAt(0).toLowerCase() + topic.slice(1);
+    return `What stands out to you most about ${normalizedTopic}?`;
+  }
+
+  function getBibleStudyReflectionQuestion(bookName: string, chapterNum: number): string | null {
+    const normalizedBook = bookName.toLowerCase().trim();
+    if (normalizedBook === "proverbs") {
+      return WISDOM_OF_PROVERBS_REFLECTION_QUESTIONS[chapterNum] ?? null;
+    }
+
+    return null;
+  }
+
+  // Get chapter summary from notes (generate if needed)
+  async function getChapterSummary(bookName: string, chapterNum: number): Promise<string> {
+    if (summaryLoadingRef.current) {
+      return "";
+    }
+    summaryLoadingRef.current = true;
+
+    try {
+      // Fetched, not imported. Importing it reaches the whole-Bible notes and
+      // drags a 33 MB chunk onto every chapter of the reader.
+      let approvedBibleYearMarkdown = "";
+      try {
+        const deepStudyResponse = await fetch(
+          `/api/chapter-deep-study?book=${encodeURIComponent(bookName)}&chapter=${chapterNum}`,
+        );
+        if (deepStudyResponse.ok) {
+          approvedBibleYearMarkdown = ((await deepStudyResponse.json()) as { markdown?: string }).markdown || "";
+        }
+      } catch (deepStudyError) {
+        console.warn("[CHAPTER_SUMMARY] Could not load approved deep study:", deepStudyError);
+      }
+      if (approvedBibleYearMarkdown.trim()) {
+        return extractBigIdeaSummary(approvedBibleYearMarkdown) || "This chapter is part of the approved Bible in One Year study notes.";
+      }
+
+      // CRITICAL: Check if notes exist in Supabase FIRST (BEFORE any ChatGPT call)
+      // This is the ONLY source of truth - if notes exist, we MUST use them
+      const bookKey = getCanonicalBibleNotesBookKey(bookName);
+      
+      console.log(`[bible_notes] Checking for existing notes: book="${bookKey}", chapter=${chapterNum}`);
+      
+      const { data: existing, error: existingError } = await fetchBibleChapterNotes(supabase, bookName, chapterNum);
+
+      if (existingError && existingError.code !== 'PGRST116') {
+        console.error("[bible_notes] Error checking bible_notes:", existingError);
+      }
+
+      // MANDATORY SHORT-CIRCUIT: If notes exist, return immediately
+      // DO NOT continue to generation - this prevents duplicate ChatGPT calls
+      if (existing?.notes_text && existing.notes_text.trim().length > 0) {
+        console.log(`[bible_notes] Found existing notes for ${bookKey} chapter ${chapterNum}, returning immediately (ChatGPT will NOT be called)`);
+        const summary = extractBigIdeaSummary(existing.notes_text);
+        return summary || "";
+      }
+
+      const offlineNotes = await getOfflineChapterNotes(bookName, chapterNum);
+      if (offlineNotes) {
+        cacheChapterNotes(bookName, chapterNum, offlineNotes);
+        const summary = extractBigIdeaSummary(offlineNotes);
+        return summary || "";
+      }
+
+      // GUARANTEE: If we reach here, notes do NOT exist in database
+      // This is the ONLY path where ChatGPT should be called
+      let notesText = "";
+      
+      // Notes don't exist - generate them
+      const bookDisplayName = bookName
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join(" ");
+
+        const prompt = `
+You are Little Louis. Generate beginner friendly notes for ${bookDisplayName} chapter ${chapterNum} using this exact template and rules.
+
+TEMPLATE
+# Ã°Å¸Â§Â  Big Idea of the Chapter
+One short paragraph explaining the heart of the chapter in simple English.
+
+# Ã°Å¸Å½Â¬ What's HappeningÃ¢â‚¬Â¦
+Include three or four cinematic story movements. Each movement follows:
+[Emoji] **Story Moment Title** (ALWAYS bold the story moment title with **)
+A short paragraph of three to four sentences explaining what happens and why it matters. Smooth, simple, friendly language. Do not use hyphens. Do not break the story into too many pieces. Keep it beginner friendly and emotional.
+IMPORTANT: Every subsection title under "What's Happening" MUST be wrapped in **bold** markdown. Example: Ã°Å¸Å’Â³ **Family Tree of Jesus** (not just Ã°Å¸Å’Â³ Family Tree of Jesus).
+
+# Ã°Å¸â€œÅ’ Key Themes
+List two or three themes. Each theme is one short sentence.
+
+# Ã°Å¸â€â€” Connections to the Bigger Story
+List one or two simple connections to prophecy, covenant, or Jesus mission. Extremely beginner friendly.
+
+# Ã°Å¸â„¢Å’ Simple Life Application
+A short paragraph of three to four sentences explaining what this chapter shows about God, about Jesus, and about what the reader is invited to believe or do.
+
+# Ã°Å¸ÂÂ One Sentence Summary
+A final strong sentence that captures the message.
+
+RULES
+DO NOT include a top-level header like "${bookDisplayName} Chapter ${chapterNum} Notes" or any chapter title at the beginning. Start directly with "# Ã°Å¸Â§Â  Big Idea of the Chapter".
+Keep emojis in the headers. Use proper markdown formatting:
+- "Big Idea of the Chapter" should be formatted as # (h1)
+- "What's Happening" should be formatted as # (h1)
+- "Key Themes" should be formatted as # (h1)
+- "Connections to the Bigger Story" should be formatted as # (h1)
+- "Simple Life Application" should be formatted as # (h1)
+- "One Sentence Summary" should be formatted as # (h1)
+No numbers in section headers. No hyphens anywhere in the text. No images. No Greek or Hebrew words. No deep theological commentary. Keep it cinematic, warm, simple. Do not overwhelm beginners.
+        `;
+
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            messages: [
+              {
+                role: "user",
+                content: prompt,
+              },
+            ],
+          }),
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error("API response error:", errorText);
+          throw new Error(`Failed to generate notes: ${response.statusText}`);
+        }
+
+        const json = await response.json();
+        let generated = (json?.reply as string) ?? "";
+
+        if (!generated || generated.trim().length === 0) {
+          throw new Error("Generated notes are empty.");
+        }
+
+        // Enforce the no-hyphen rule
+        generated = generated.replace(/-/g, " ");
+
+        // CRITICAL: Before saving, check ONE MORE TIME if row exists (race condition protection)
+        // Another request might have created it while we were generating
+        const { data: existingCheck, error: checkError } = await fetchBibleChapterNotes(supabase, bookName, chapterNum);
+
+        if (checkError && checkError.code !== 'PGRST116') {
+          console.error("[bible_notes] Error checking for duplicates:", checkError);
+        }
+
+        // MANDATORY: If row exists now, use it and DO NOT save (another request created it)
+        if (existingCheck?.notes_text && existingCheck.notes_text.trim().length > 0) {
+          console.log(`[bible_notes] Notes were created by another request for ${bookKey} chapter ${chapterNum}, using existing (skipping save)`);
+          notesText = existingCheck.notes_text;
+        } else {
+          // No row exists - upsert to handle race conditions gracefully
+          console.log(`[bible_notes] Upserting notes for ${bookKey} chapter ${chapterNum}`);
+          const { error: upsertError } = await supabase
+            .from("bible_notes")
+            .upsert(
+              {
+                book: bookKey,
+                chapter: chapterNum,
+                notes_text: generated,
+              },
+              {
+                onConflict: "book,chapter",
+              }
+            );
+
+          if (upsertError) {
+            console.error("[bible_notes] Error upserting notes to bible_notes:", upsertError);
+          }
+
+          // MANDATORY: Always re-read from database after upsert
+          // NEVER use in-memory generated text - database is single source of truth
+          const { data: savedRow, error: fetchError } = await fetchBibleChapterNotes(supabase, bookName, chapterNum);
+
+          if (fetchError && fetchError.code !== 'PGRST116') {
+            console.error("[bible_notes] Error re-fetching notes after upsert:", fetchError);
+          }
+
+          if (savedRow?.notes_text && savedRow.notes_text.trim().length > 0) {
+            notesText = savedRow.notes_text;
+            console.log(`[bible_notes] Successfully loaded notes from database for ${bookKey} chapter ${chapterNum}`);
+          } else {
+            // This should never happen - log as error
+            console.error(`[bible_notes] CRITICAL: Row not found in database after upsert`, { book: bookKey, chapter: chapterNum });
+            // Do NOT use generated text - return empty string to indicate failure
+            notesText = "";
+          }
+        }
+
+      // Extract Big Idea summary
+      const summary = extractBigIdeaSummary(notesText);
+      if (!summary) {
+        console.warn(`Could not extract Big Idea summary from notes for ${bookKey} chapter ${chapterNum}`);
+        console.warn("Notes text preview:", notesText.substring(0, 200));
+      } else {
+        console.log(`Successfully extracted summary for ${bookKey} chapter ${chapterNum}`);
+      }
+      return summary;
+    } catch (err: any) {
+      console.error("Error getting chapter summary:", err);
+      return "";
+    } finally {
+      summaryLoadingRef.current = false;
+    }
+  }
+
+  // Load game chapter packs + completion state
+  useEffect(() => {
+    const bookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
+    const resolvedKey = bookKey === "songofsolomon" ? "songofsongs" : bookKey;
+    const routeEntry = CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((e) => e.key === resolvedKey);
+    const routeSlug = routeEntry?.routeSlug ?? resolvedKey;
+
+    // Pulled in after paint so the question banks stay out of the first load.
+    void (async () => {
+      try {
+        const [{ getTriviaChapter }, { getScrambledChapter }] = await Promise.all([
+          import("../lib/triviaGameData"),
+          import("../lib/scrambledGameData"),
+        ]);
+        const trivia = getTriviaChapter(resolvedKey, chapter);
+        if (trivia) setTriviaChapterPack(trivia);
+        const scrambled = getScrambledChapter(resolvedKey, chapter);
+        if (scrambled) setScrambledChapterPack(scrambled);
+      } catch (error) {
+        console.warn("[BIBLE_READER] Could not load game packs:", error);
+      }
+    })();
+
+    // Check completion state from master_actions
+    async function checkDone() {
+      if (!userId) return;
+      const chapterLabelBase = `${book.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" ")} ${chapter}`;
+      const reviewOpenedLabel = `${chapterLabelBase} Review Opened`;
+      const [reviewRes, studyNotesSectionRes, triviaRes, scrambledRes] = await Promise.all([
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.chapter_notes_viewed).eq("action_label", reviewOpenedLabel).limit(1).maybeSingle(),
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.study_notes_section_opened).like("action_label", `${chapterStudyNotesActionPrefix}%`).limit(1).maybeSingle(),
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.trivia_chapter_completed).ilike("action_label", `${chapterLabelBase}%`).limit(1).maybeSingle(),
+        supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.scrambled_chapter_completed).ilike("action_label", `${chapterLabelBase}%`).limit(1).maybeSingle(),
+      ]);
+      setReviewDone(!!reviewRes.data || !!studyNotesSectionRes.data);
+      setTriviaDone(!!triviaRes.data);
+      setScrambledDone(!!scrambledRes.data);
+    }
+    checkDone();
+  }, [book, chapter, userId, chapterStudyNotesActionPrefix]);
+
+  // Load chapter summary
+  useEffect(() => {
+    async function loadSummary() {
+      setChapterSummaryLoaded(false);
+      if (book && chapter) {
+        const summary = await getChapterSummary(book, chapter);
+        setChapterSummary(summary);
+      }
+      setChapterSummaryLoaded(true);
+    }
+    loadSummary();
+  }, [book, chapter]);
+
+
+  // Detect if this chapter was opened from a reading plan or devotional
+  const [sourceContext, setSourceContext] = useState<{
+    type: "reading-plan" | "devotional" | null;
+    id: string | null;
+    backLink: string | null;
+    backText: string | null;
+  }>({ type: null, id: null, backLink: null, backText: null });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const source = window.sessionStorage.getItem("bbFromReadingPlan");
+    
+    if (source) {
+      // Parse the source to determine where to go back
+      if (source === "bible-buddy") {
+        setSourceContext({
+          type: "reading-plan",
+          id: "bible-buddy",
+          backLink: "/reading-plans/bible-buddy",
+          backText: "Back to The Bible Buddy Reading Plan",
+        });
+        setFromReadingPlan(true); // Keep for backward compatibility
+      } else if (source === "bible-in-one-year") {
+        setSourceContext({
+          type: "reading-plan",
+          id: "bible-in-one-year",
+          backLink: "/reading-plans/bible-in-one-year",
+          backText: "Back to Bible in One Year",
+        });
+        setFromReadingPlan(true);
+      } else if (source.startsWith("devotional:")) {
+        const devotionalId = source.replace("devotional:", "");
+        setSourceContext({
+          type: "devotional",
+          id: devotionalId,
+          backLink: `/bible-studies/${devotionalId}`,
+          backText: "Back to Devotional",
+        });
+        setFromReadingPlan(true);
+      } else if (source === "true") {
+        // Legacy: just "true" means Bible Buddy
+        setSourceContext({
+          type: "reading-plan",
+          id: "bible-buddy",
+          backLink: "/reading-plans/bible-buddy",
+          backText: "Back to The Bible Buddy Reading Plan",
+        });
+        setFromReadingPlan(true);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    const bookKey = normalizeBookName(bookDisplayName);
+
+    async function loadStudyReflectionQuestion() {
+      setStudyReflectionQuestion(null);
+
+      try {
+        const { data, error } = await supabase
+          .from("devotional_days")
+          .select("bible_reading_book, reflection_question")
+          .eq("bible_reading_chapter", chapter)
+          .not("reflection_question", "is", null)
+          .limit(50);
+
+        if (cancelled) return;
+
+        if (error) {
+          console.warn("[chapter_reflection] Could not load study reflection question:", error.message);
+          return;
+        }
+
+        const match = (data || []).find((row: any) => {
+          const rowBook = typeof row?.bible_reading_book === "string" ? row.bible_reading_book : "";
+          return normalizeBookName(rowBook) === bookKey;
+        });
+        const question = typeof match?.reflection_question === "string" ? match.reflection_question.trim() : "";
+        setStudyReflectionQuestion(question || null);
+      } catch (err) {
+        if (!cancelled) {
+          console.warn("[chapter_reflection] Could not load study reflection question:", err);
+        }
+      }
+    }
+
+    void loadStudyReflectionQuestion();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [bookDisplayName, chapter]);
+
+  const chapterReflectionQuestion = useMemo(
+    () =>
+      // The stored questions are matched on chapter number alone, so an
+      // unrelated devotional can land on this chapter. The prototype asks one
+      // plain question anyone can answer straight after reading.
+      isGenesisOnePrototype
+        ? `After reading ${bookDisplayName} ${chapter}, what is the one thing that stood out to you most, or that you learned about God in this chapter?`
+        : studyReflectionQuestion ||
+          getBibleStudyReflectionQuestion(bookDisplayName, chapter) ||
+          buildChapterReflectionQuestion(bookDisplayName, chapter, chapterSummary),
+    [isGenesisOnePrototype, studyReflectionQuestion, bookDisplayName, chapter, chapterSummary]
+  );
+
+  useEffect(() => {
+    return;
+    if (!featureToursLoaded) return;
+    if (!chapterSummaryLoaded) return;
+
+    const openedFromDailyTaskNotes =
+      searchParams.get("from") === "louis-daily-task" && searchParams.get("notes") === "1";
+
+    if (openedFromDailyTaskNotes) return;
+
+    const chapterIntroSeenKey = buildChapterIntroSeenKey();
+    const chapterIntroAlreadySeen =
+      typeof window !== "undefined" && window.localStorage.getItem(chapterIntroSeenKey) === "1";
+
+    const promptKey = `${bookDisplayName}:${chapter}:${featureTours.bible_chapter_main === true ? "chapter" : "guide"}:${chapterSummaryLoaded ? chapterSummary : "pending"}`;
+    if (louisChapterPromptRef.current === promptKey) return;
+    if (chapterIntroAlreadySeen) return;
+
+    const markChapterIntroSeen = () => {
+      if (typeof window === "undefined") return;
+      window.localStorage.setItem(chapterIntroSeenKey, "1");
+    };
+
+    if (featureTours.bible_chapter_main !== true) {
+      louisChapterPromptRef.current = promptKey;
+      bibleGuideShownThisVisitRef.current = true;
+      markChapterIntroSeen();
+      dispatchLouisMoment({
+        openMode: "badge",
+        message: [
+          `youÃ¢â‚¬â„¢re reading ${bookDisplayName} ${chapter} now`,
+          chapterSummary || "This chapter moves the story forward and shows you something important about God, people, and what happens next.",
+          "read this chapter slowly and pay attention to what stands out",
+          "you can tap any person, place, or word you donÃ¢â‚¬â„¢t understand to get more context",
+          "if you have any questions while you read, IÃ¢â‚¬â„¢m here to help",
+          "when youÃ¢â‚¬â„¢re done, mark the chapter as complete so we can reflect on it",
+        ].join("\n\n"),
+      });
+      void markBibleFeatureSeen("bible_chapter_main");
+      return;
+    }
+
+    if (featureTours.bible_chapter_tools !== true) {
+      louisChapterPromptRef.current = promptKey;
+      bibleGuideShownThisVisitRef.current = true;
+      markChapterIntroSeen();
+      dispatchLouisMoment({
+        openMode: "badge",
+        message: [
+          "quick tip",
+          "you can change the Bible translation anytime between King James, ASV, and WEB",
+          "you can also open study notes for a deeper breakdown or test yourself with trivia and scrambled",
+          "you can tap any verse number to highlight it",
+          "use these tools to go deeper, not just read",
+        ].join("\n\n"),
+      });
+      void markBibleFeatureSeen("bible_chapter_tools");
+      return;
+    }
+
+    if (bibleGuideShownThisVisitRef.current) return;
+
+    const introLine = pickLouisVariant(`${bookDisplayName}:${chapter}:intro`, [
+      `Hey, you are about to read ${bookDisplayName} ${chapter}.`,
+      `Good choice. You are about to read ${bookDisplayName} ${chapter}.`,
+      `Alright, you are stepping into ${bookDisplayName} ${chapter} now.`,
+      `LetÃ¢â‚¬â„¢s get into ${bookDisplayName} ${chapter}.`,
+      `You are opening ${bookDisplayName} ${chapter} now.`,
+    ]);
+
+    const summaryLine = chapterSummary || pickLouisVariant(`${bookDisplayName}:${chapter}:summary-fallback`, [
+      "Read closely and look for what God is showing, what people are doing, and what changes by the end of the chapter.",
+      "As you read, pay attention to the tension, the response, and what this chapter reveals about God.",
+      "Look for the main movement in the chapter and what truth rises to the surface as you read.",
+    ]);
+
+    const studyLine = pickLouisVariant(`${bookDisplayName}:${chapter}:study`, [
+      "Read the chapter slowly, take notes on what stands out, and click any people, places, or keywords that need more context.",
+      "Take your time with this chapter, notice what stands out, and use the study tools if anything needs more explanation.",
+      "Slow down in this chapter, watch for what stands out, and use the built in study tools whenever you need help.",
+    ]);
+
+    const completionLine = pickLouisVariant(`${bookDisplayName}:${chapter}:complete`, [
+      "When you finish, mark the chapter complete so I know you are done and can guide you to the next step.",
+      "After you finish reading, mark the chapter complete so I know you are ready for whatever comes next.",
+      "Once you are done, mark the chapter complete so I can keep moving you forward.",
+    ]);
+
+    louisChapterPromptRef.current = promptKey;
+    markChapterIntroSeen();
+    dispatchLouisMoment({
+      openMode: "badge",
+      message: [
+        introLine,
+        summaryLine,
+        studyLine,
+        "If you have any questions while you read, I am here to help.",
+        completionLine,
+      ].join("\n\n"),
+    });
+  }, [
+    bookDisplayName,
+    chapter,
+    chapterSummary,
+    chapterSummaryLoaded,
+    featureTours.bible_chapter_main,
+    featureTours.bible_chapter_tools,
+    featureToursLoaded,
+    searchParams,
+    userId,
+  ]);
+
+  function openReflectionSection() {
+    setHighlightReflectionSection(true);
+
+    window.setTimeout(() => {
+      reflectionSectionRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 120);
+
+    window.setTimeout(() => {
+      setHighlightReflectionSection(false);
+    }, 2600);
+  }
+
+  useEffect(() => {
+    if (searchParams.get("notes") !== "1") {
+      autoOpenedNotesRef.current = false;
+      return;
+    }
+
+    if (autoOpenedNotesRef.current) return;
+    autoOpenedNotesRef.current = true;
+    openInlineStudyNotes();
+  }, [searchParams, book, chapter, userId]);
+
+  function sendChapterLouisMoment(type: "completed" | "checklist") {
+    const chapterDisplayLabel = `${bookDisplayName} ${chapter}`;
+    const recommendation = (() => {
+      if (!triviaDone && triviaChapterPack) {
+        return {
+          message:
+            type === "completed"
+              ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nThe best next move is trivia for this chapter.\n\nThat will show you what actually stuck while it is still fresh.\n\nDo you want to do that now?`
+              : `You already finished ${chapterDisplayLabel}.\n\nThe best next move now is trivia for this chapter.\n\nThat is the easiest way to see what you really remember.\n\nDo you want to do that now?`,
+          yesHref: `/bible-trivia/${triviaRouteSlug}/${chapter}`,
+        };
+      }
+
+      if (!scrambledDone && scrambledChapterPack) {
+        return {
+          message:
+            type === "completed"
+              ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nA good next move is Scrambled for this chapter.\n\nThat helps lock the key words and ideas in better.\n\nDo you want to do that now?`
+              : `You already finished ${chapterDisplayLabel}.\n\nA good next move now is Scrambled for this chapter.\n\nThat helps lock the key words and ideas in better.\n\nDo you want to do that now?`,
+          yesHref: `/bible-study-games/scrambled/${_resolvedTriviaBookKey}/${chapter}`,
+        };
+      }
+
+      if (!reviewDone) {
+        return {
+          message:
+            type === "completed"
+              ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nI would go into the study notes next.\n\nThat is where you slow down and really see what this chapter is saying.\n\nDo you want to do that now?`
+              : `You already finished ${chapterDisplayLabel}.\n\nI would go into the study notes next.\n\nThat is the best way to go deeper before you move on.\n\nDo you want to do that now?`,
+          yesMessage:
+            "Tap Study Notes on this page and start there. That is the best next move if you want to understand the chapter better.",
+        };
+      }
+
+      return {
+        message:
+          type === "completed"
+            ? `Hey, you just completed ${chapterDisplayLabel}. Great job.\n\nBefore you leave, answer the reflection question for this chapter.\n\nThat keeps this from becoming something you read and forget.\n\nDo you want to do that now?`
+            : `You already finished ${chapterDisplayLabel}.\n\nBefore you move on, answer the reflection question for this chapter.\n\nThat is how you slow down and make it personal.\n\nDo you want to do that now?`,
+        yesMessage:
+          "Scroll down to the reflection section on this page and answer the chapter reflection question before you move on.",
+      };
+    })();
+
+    dispatchLouisMoment({
+      message: recommendation.message,
+      openMode: "badge",
+      replies: [
+        recommendation.yesHref
+          ? {
+              id: `chapter-next-yes-${book}-${chapter}`,
+              label: "Yes",
+              href: recommendation.yesHref,
+            }
+          : {
+              id: `chapter-next-yes-${book}-${chapter}`,
+              label: "Yes",
+              message: recommendation.yesMessage,
+            },
+        {
+          id: `chapter-next-no-${book}-${chapter}`,
+          label: "No",
+          message: "That is fine. I am here if you want me to help you with the next step.",
+        },
+      ],
+    });
+    return;
+
+    const chapterLabel = `${book} chapter ${chapter}`;
+    const notesLine =
+      "I'd start with the study notes. If you're on the free plan, opening a section will use 1 credit from your day.";
+    const triviaLine = triviaDone
+      ? "Ã°Å¸Å½Â¯ Trivia for this chapter is already done."
+      : "Ã°Å¸Å½Â¯ After that, try the trivia for this chapter and see what actually stuck.";
+    const scrambledLine = scrambledDone
+      ? "Ã°Å¸â€â‚¬ Scrambled for this chapter is already done too."
+      : "Ã°Å¸â€â‚¬ Then hit Scrambled if you want to lock the key words in better.";
+
+    dispatchLouisMoment({
+      message:
+        type === "completed"
+          ? `Nice work. You just completed ${chapterLabel}.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}\n\nÃ°Å¸â€™Â­ And before you leave, drop a reflection so this chapter does not just pass by you.`
+          : `You already finished ${chapterLabel}.\n\nHereÃ¢â‚¬â„¢s the checklist IÃ¢â‚¬â„¢d point you back to.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}`,
+      replies: [
+        {
+          id: `chapter-notes-${book}-${chapter}`,
+          label: "How do I open the notes?",
+          message: "Tap Study Notes on this page and start there. That's the best next move if you want to understand the chapter better.",
+        },
+        !triviaDone
+          ? {
+              id: `chapter-trivia-${book}-${chapter}`,
+              label: "Open trivia",
+              href: `/bible-trivia/${triviaRouteSlug}/${chapter}`,
+            }
+          : null,
+        !scrambledDone
+          ? {
+              id: `chapter-scrambled-${book}-${chapter}`,
+              label: "Open scrambled",
+              href: `/bible-study-games/scrambled/${_resolvedTriviaBookKey}/${chapter}`,
+            }
+          : null,
+        {
+          id: `chapter-reflection-${book}-${chapter}`,
+          label: "Where should I reflect?",
+          message: "Scroll down to the reflection section on this chapter page and write one honest thought before you move on.",
+        },
+      ].filter(Boolean) as Array<{
+        id: string;
+        label: string;
+        href?: string;
+        message?: string;
+      }>,
+    });
+  }
+
+  // Trivia/scrambled route slug for the current book
+  const _triviaBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
+  const _resolvedTriviaBookKey = _triviaBookKey === "songofsolomon" ? "songofsongs" : _triviaBookKey;
+  const triviaRouteSlug = CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((e) => e.key === _resolvedTriviaBookKey)?.routeSlug ?? _resolvedTriviaBookKey;
+
+  // Determine back link:
+  // - If opened from a reading plan or devotional, send users back there.
+  // - Otherwise, send them to the normal book overview page.
+  const backLink = sourceContext.backLink || `/reading/books/${encodeURIComponent(book.toLowerCase())}`;
+  const backText = sourceContext.backText || `Back to ${bookDisplayName} overview`;
+
+  const chapterDiscussionSlug = `bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${chapter}`;
+
+  function triggerConfetti() {
+    const duration = 1000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 99999 };
+
+    // Style confetti canvas to appear above everything
+    const styleConfettiCanvas = (canvas: HTMLCanvasElement) => {
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.zIndex = '99999';
+      canvas.style.pointerEvents = 'none';
+    };
+
+    // Use MutationObserver to catch new canvas elements as they're created
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeName === 'CANVAS') {
+            styleConfettiCanvas(node as HTMLCanvasElement);
+          }
+        });
+      });
+    });
+
+    // Start observing the document body for new canvas elements
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Also style any existing canvases
+    document.querySelectorAll('canvas').forEach(styleConfettiCanvas);
+
+    function randomInRange(min: number, max: number) {
+      return Math.random() * (max - min) + min;
+    }
+
+    const interval: NodeJS.Timeout = setInterval(function() {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        // Stop observing
+        observer.disconnect();
+        
+        // Clean up canvas after animation ends
+        setTimeout(() => {
+          document.querySelectorAll('canvas').forEach((canvas) => {
+            const htmlCanvas = canvas as HTMLCanvasElement;
+            // Only remove confetti canvases (those with our z-index)
+            if (htmlCanvas.style.zIndex === '99999') {
+              // Fade out and remove
+              htmlCanvas.style.opacity = '0';
+              htmlCanvas.style.transition = 'opacity 0.5s';
+              setTimeout(() => {
+                htmlCanvas.remove();
+              }, 500);
+            }
+          });
+        }, 500);
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+      
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+      });
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+      });
+    }, 250);
+  }
+
+  async function handleMarkFinished() {
+    if (isSaving || isCompleted) return;
+
+    if (!userId) {
+      console.error("User ID not available");
+      return;
+    }
+
+    setIsSaving(true);
+
+    try {
+      // Mark chapter as done in database - this will unlock the next chapter
+      console.log(`[MARK_FINISHED] Attempting to mark ${book} chapter ${chapter} as done for user ${userId}`);
+      
+      await markChapterDone(userId, book, chapter);
+      console.log(`[MARK_FINISHED] Successfully marked ${book} chapter ${chapter} as done`);
+
+      setIsCompleted(true);
+      triggerPoints(TASK_XP.reading);
+      setIsSaving(false);
+
+      // Trigger confetti animation
+      triggerConfetti();
+
+      // ACTION TRACKING: Do this asynchronously after UI updates (fire-and-forget)
+      // This doesn't block the UI from updating
+      (async () => {
+        try {
+          // Insert into master_actions
+          const { data: { user: authUser } } = await supabase.auth.getUser();
+          let actionUsername = "User";
+          
+          if (authUser) {
+            const meta: any = authUser.user_metadata || {};
+            actionUsername =
+              meta.firstName ||
+              meta.first_name ||
+              (authUser.email ? authUser.email.split("@")[0] : null) ||
+              "User";
+          }
+
+          // Format book name for action_label (capitalize properly)
+          const formatBookName = (bookName: string): string => {
+            return bookName.split(' ').map(word => {
+              // Handle numbered books like "1 Samuel" -> "1 Samuel"
+              if (/^\d+$/.test(word)) return word;
+              return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            }).join(' ');
+          };
+
+          const bookDisplayName = formatBookName(book);
+          const actionLabel = `${bookDisplayName} ${chapter}`;
+
+          // Insert into master_actions with action_label
+          console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.chapter_completed, action_label: actionLabel });
+          const { error: actionError } = await supabase
+            .from("master_actions")
+            .insert({
+              user_id: userId,
+              username: actionUsername ?? null,
+              action_type: ACTION_TYPE.chapter_completed,
+              action_label: actionLabel,
+            });
+
+          if (actionError) {
+            console.error("Error logging action to master_actions:", actionError);
+          } else {
+            void awardDiamonds(userId, DIAMOND_REWARDS.fullChapter);
+          }
+
+          // If this chapter was opened from a reading plan, also log reading_plan_chapter_completed
+          if (sourceContext.type === "reading-plan" && sourceContext.id) {
+            const readingPlanLabel = sourceContext.id === "bible-buddy" 
+              ? "The Bible Buddy Reading Plan"
+              : sourceContext.id === "bible-in-one-year"
+              ? "Bible in One Year"
+              : sourceContext.id;
+            
+            console.log("[MASTER_ACTIONS] inserting reading plan completion:", { 
+              action_type: ACTION_TYPE.reading_plan_chapter_completed, 
+              action_label: `${readingPlanLabel}: ${actionLabel}` 
+            });
+            const { error: readingPlanActionError } = await supabase
+              .from("master_actions")
+              .insert({
+                user_id: userId,
+                username: actionUsername ?? null,
+                action_type: ACTION_TYPE.reading_plan_chapter_completed,
+                action_label: `${readingPlanLabel}: ${actionLabel}`,
+              });
+
+            if (readingPlanActionError) {
+              console.error("Error logging reading plan action to master_actions:", readingPlanActionError);
+            }
+          }
+
+          // Check if book is now complete and log book_completed action
+          try {
+            const bookIsComplete = await isBookComplete(userId, book);
+            if (bookIsComplete) {
+              // Book is complete - log book_completed action
+              console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.book_completed, action_label: bookDisplayName });
+              const { error: bookActionError } = await supabase
+                .from("master_actions")
+                .insert({
+                  user_id: userId,
+                  username: actionUsername ?? null,
+                  action_type: ACTION_TYPE.book_completed,
+                  action_label: bookDisplayName,
+                });
+
+              if (bookActionError) {
+                console.error("Error logging book_completed action to master_actions:", bookActionError);
+              } else {
+                console.log(`[MASTER_ACTIONS] Successfully logged book_completed: ${bookDisplayName}`);
+                void awardDiamonds(userId, DIAMOND_REWARDS.fullBook);
+              }
+            }
+          } catch (bookCheckError) {
+            console.error("Error checking book completion:", bookCheckError);
+            // Don't block - continue with profile stats update
+          }
+
+          // UPDATE profile_stats: Count from completed_chapters table
+          let statsUsername = username;
+          if (!statsUsername && userId) {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+              const meta: any = user.user_metadata || {};
+              statsUsername =
+                meta.firstName ||
+                meta.first_name ||
+                (user.email ? user.email.split("@")[0] : null) ||
+                "User";
+            }
+          }
+
+          const { count, error: countError } = await supabase
+            .from("completed_chapters")
+            .select("*", { count: "exact", head: true })
+            .eq("user_id", userId);
+
+          if (!countError && count !== null) {
+            const { data: currentStats } = await supabase
+              .from("profile_stats")
+              .select("username, notes_created_count, people_learned_count, places_discovered_count, keywords_mastered_count")
+              .eq("user_id", userId)
+              .maybeSingle();
+
+            const finalUsername = currentStats?.username || statsUsername || "User";
+            
+            // Calculate total_actions as sum of all counts
+            const totalActions = 
+              (count || 0) +
+              (currentStats?.notes_created_count || 0) +
+              (currentStats?.people_learned_count || 0) +
+              (currentStats?.places_discovered_count || 0) +
+              (currentStats?.keywords_mastered_count || 0);
+
+            await supabase
+              .from("profile_stats")
+              .upsert(
+                {
+                  user_id: userId,
+                  chapters_completed_count: count || 0,
+                  total_actions: totalActions,
+                  username: finalUsername,
+                  updated_at: new Date().toISOString(),
+                },
+                {
+                  onConflict: "user_id",
+                }
+              );
+          }
+        } catch (err) {
+          console.error("Error in chapter tracking (non-blocking):", err);
+        }
+      })();
+    } catch (err: any) {
+      console.error(`[MARK_FINISHED] Error marking ${bookDisplayName} ${chapter} finished:`, err);
+      const errorMessage = err?.message || err?.error?.message || JSON.stringify(err) || 'Unknown error';
+      console.error(`[MARK_FINISHED] Full error details:`, JSON.stringify(err, null, 2));
+      alert(`Failed to mark chapter as finished. Please try again. Error: ${errorMessage}`);
+      setIsSaving(false);
+    }
+  }
+
+
+  // Translation menu click-outside handler - must be before any early returns
+  useEffect(() => {
+    if (!genesisOneChapterMenuOpen && !genesisOneTranslationMenuOpen) return;
+
+    function handlePointerDown(event: MouseEvent | TouchEvent) {
+      const target = event.target as Node;
+      if (!genesisOneChapterMenuRef.current?.contains(target)) setGenesisOneChapterMenuOpen(false);
+      if (!genesisOneTranslationMenuRef.current?.contains(target)) setGenesisOneTranslationMenuOpen(false);
+    }
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+    };
+  }, [genesisOneChapterMenuOpen, genesisOneTranslationMenuOpen]);
+
+  useEffect(() => {
+    if (!translationMenuOpen) return;
+
+    function onDocPointerDown(e: PointerEvent) {
+      const target = e.target as Node | null;
+      if (!target) return;
+      if (!translationMenuRef.current?.contains(target)) {
+        setTranslationMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", onDocPointerDown, true);
+    return () => document.removeEventListener("pointerdown", onDocPointerDown, true);
+  }, [translationMenuOpen]);
+
+  // Games menu click-outside handler - must be before any early returns
+  useEffect(() => {
+    if (!gamesMenuOpen) return;
+    function onDocPointerDown(e: PointerEvent) {
+      const target = e.target as Node | null;
+      if (!target) return;
+      if (!gamesMenuRef.current?.contains(target)) {
+        setGamesMenuOpen(false);
+      }
+    }
+    document.addEventListener("pointerdown", onDocPointerDown, true);
+    return () => document.removeEventListener("pointerdown", onDocPointerDown, true);
+  }, [gamesMenuOpen]);
+
+  if (loading) {
+    // Same skeleton the route's loading.tsx shows, so the handover from "page
+    // JavaScript arriving" to "chapter text arriving" is seamless.
+    return <ChapterReaderSkeleton />;
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center py-20">
+            <p className="text-red-600">Error: {error}</p>
+            <Link
+              href={backLink}
+              className="text-blue-600 hover:underline mt-4 inline-block"
+            >
+              ? Back to {bookDisplayName}
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isChapterTextEmbed) {
+    return (
+      <div className="h-screen overflow-y-auto bg-white px-4 py-5 sm:px-6 sm:py-6">
+        <div
+          ref={verseContainerRef}
+          className={`mx-auto max-w-3xl bg-white pb-8 pr-10 ${plainTextMode ? "plain-text-mode" : ""}`}
+        >
+          <BrowserTtsButton
+            text={chapterSpeechText}
+            label={`Listen to ${bookDisplayName} ${chapter}`}
+            audioSrc={chapterAudioSrc}
+            backgroundMusicSrcs={getBibleReadingBackgroundTracks(bookDisplayName, chapter)}
+            backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+            aiDisclosure={Boolean(chapterAudioSrc)}
+          />
+          {sections.map((section) => (
+            <div key={section.id} className="mb-8 last:mb-0">
+              <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold">
+                {section.emoji ? <span className="text-2xl">{section.emoji}</span> : null}
+                <span>{section.title}</span>
+              </h2>
+              <div className="space-y-5">
+                {section.verses && section.verses.length > 0 ? (
+                  <>
+                    {(() => {
+                      const VerseHighlighter = require("./VerseHighlighter").VerseHighlighter;
+                      let enrichedPerVerse: Record<number, string> = {};
+                      if (enrichedContent) {
+                        const html = enrichedContent.replace(/<!--.*?-->/, "").trim();
+                        const verseBlocks = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g));
+                        verseBlocks.forEach((block, idx) => {
+                          const badgeMatch = block[1].match(/<span[^>]*>(\d+)<\/span>/);
+                          const verseNum = badgeMatch ? parseInt(badgeMatch[1], 10) : idx + 1;
+                          enrichedPerVerse[verseNum] = `<p>${block[1]}</p>`;
+                        });
+                      }
+                      return (
+                        <VerseHighlighter
+                          book={book}
+                          chapter={chapter}
+                          plainTextMode={plainTextMode}
+                          verses={section.verses.map((v) => ({
+                            number: v.num,
+                            text: v.text,
+                            enrichedHtml: enrichedPerVerse[v.num],
+                          }))}
+                        />
+                      );
+                    })()}
+                  </>
+                ) : null}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  const totalChaptersInBook = getBookTotalChapters(book);
+  const chapterReaderHref = (targetBook: string, targetChapter: number) =>
+    `/Bible/${encodeURIComponent(targetBook.toLowerCase())}/${targetChapter}${isDashboardEmbed ? "?dashboardEmbed=1&hideReaderChrome=1" : ""}`;
+
+  function goPrevChapter() {
+    if (chapter <= 1) return;
+    router.push(chapterReaderHref(book, chapter - 1));
+  }
+
+  function goNextChapter() {
+    if (chapter < totalChaptersInBook) {
+      router.push(chapterReaderHref(book, chapter + 1));
+      return;
+    }
+
+    // Next book in biblical order (fallback to same book if already last).
+    const BOOKS_ORDER = [
+      "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+      "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+      "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther",
+      "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon",
+      "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
+      "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
+      "Zephaniah", "Haggai", "Zechariah", "Malachi",
+      "Matthew", "Mark", "Luke", "John", "Acts",
+      "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+      "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+      "1 Timothy", "2 Timothy", "Titus", "Philemon",
+      "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude",
+      "Revelation",
+    ];
+    const currentIndex = BOOKS_ORDER.findIndex((b) => b.toLowerCase() === book.toLowerCase());
+    const nextBook =
+      currentIndex >= 0 && currentIndex < BOOKS_ORDER.length - 1
+        ? BOOKS_ORDER[currentIndex + 1]
+        : bookDisplayName;
+
+    router.push(chapterReaderHref(nextBook, 1));
+  }
+
+  return (
+    <div className={
+      isDashboardEmbed
+        ? "dashboard-bible-reader-embed bg-[var(--bb-card,#ffffff)] px-0 py-0"
+        : isGenesisOnePrototype
+          // The breadcrumb above already supplies the top spacing, so the
+          // prototype does not add another 2rem on top of it.
+          ? "min-h-screen bg-gray-50 px-4 pt-0 pb-8"
+          : "min-h-screen bg-gray-50 py-8 px-4"
+    }>
+      <div className={isDashboardEmbed ? "mx-auto max-w-4xl px-2 py-3 text-[var(--bb-text-primary,#111827)] sm:px-4 sm:py-4" : "max-w-4xl mx-auto"}>
+        {/* BACK LINK */}
+        {!isDashboardEmbed && !isGenesisOnePrototype ? (
+          <div className="mb-4 text-xs sm:text-sm text-blue-600">
+            <Link href={backLink} className="hover:underline">
+              {backText}
+            </Link>
+          </div>
+        ) : null}
+
+        {/* PAGE HEADER */}
+        {!hideReaderChrome && !isGenesisOnePrototype ? (
+          <div className="mb-1 flex items-start justify-between gap-3">
+            <h1 className="text-3xl font-bold">
+              {bookDisplayName} {chapter}
+            </h1>
+          </div>
+        ) : null}
+
+        {/* LOUIS INSTRUCTION - above the control bar */}
+        {!hideReaderChrome && !isGenesisOnePrototype ? <div className="mb-4 flex items-start gap-3">
+          <LouisAvatar mood="bible" size={40} />
+          <div className="relative bg-white border border-gray-200 rounded-2xl px-4 py-3 shadow-sm text-sm text-gray-800">
+            <div className="absolute -left-2 top-5 w-3 h-3 bg-white border-l border-b border-gray-200 rotate-45" />
+            <p className="mb-2 font-semibold">
+              Now let us read {bookDisplayName} chapter {chapter}.
+            </p>
+            {chapterSummary ? (
+              <p className="text-[13px] leading-relaxed">
+                {chapterSummary}
+              </p>
+            ) : (
+              <p className="text-[13px] leading-relaxed text-gray-500 italic">
+                Loading chapter summary...
+              </p>
+            )}
+          </div>
+        </div> : null}
+
+        {/* READER CONTROL BAR */}
+        {!hideReaderChrome && !isGenesisOnePrototype ? <div className="relative z-20 mb-5">
+          <div className="rounded-[26px] border-0 bg-transparent px-0 py-0 shadow-none backdrop-blur md:border md:border-blue-100 md:bg-white/90 md:px-3 md:py-2.5 md:shadow-sm">
+            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              {/* Left: Previous + Book */}
+              <div className="hidden md:flex items-center justify-between gap-2 md:justify-start">
+                <div className="flex items-center gap-1.5">
+                  <div className="group relative">
+                    <button
+                      type="button"
+                      onClick={goPrevChapter}
+                      disabled={chapter <= 1}
+                      aria-label="Previous chapter"
+                      className={`flex items-center justify-center rounded-xl border px-2.5 py-1.5 transition ${
+                        chapter <= 1
+                          ? "cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400"
+                          : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
+                      }`}
+                    >
+                      <span className="text-xs font-semibold">Prev</span>
+                    </button>
+                    <div className="pointer-events-none absolute left-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                      Previous chapter
+                    </div>
+                  </div>
+
+                  <div className="group relative">
+                    <button
+                      type="button"
+                      onClick={() => setShowBooksModal(true)}
+                      aria-label="Browse all Bible books"
+                      className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
+                    >
+                      <span className="text-xs font-semibold">Books</span>
+                    </button>
+                    <div className="pointer-events-none absolute left-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                      Browse all Bible books
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right-side on mobile: Next */}
+                <div className="md:hidden group relative">
+                  <button
+                    type="button"
+                    onClick={goNextChapter}
+                    aria-label="Next chapter"
+                    className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
+                  >
+                    <span className="text-xs font-semibold">Next</span>
+                  </button>
+                  <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                    Next chapter
+                  </div>
+                </div>
+              </div>
+
+              {/* Center: Plain text toggle + Mark finished */}
+              <div className="hidden md:flex items-center justify-center gap-2">
+                <label className="flex cursor-pointer items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 transition hover:bg-blue-50 hover:border-blue-200 select-none">
+                  <input
+                    type="checkbox"
+                    checked={plainTextMode}
+                    onChange={(e) => setPlainTextMode(e.target.checked)}
+                    className="h-3.5 w-3.5 accent-blue-600"
+                  />
+                  <span className="text-xs font-semibold text-gray-800">Plain text</span>
+                </label>
+                <div className="group relative">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (isSaving) return;
+                      if (isCompleted) {
+                        return;
+                      }
+                      void handleMarkFinished();
+                    }}
+                    aria-label={isCompleted ? "Chapter completed" : "Mark chapter completed"}
+                    className={`relative flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-bold transition ${
+                      isCompleted
+                        ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                        : isSaving
+                          ? "bg-blue-300 text-white cursor-not-allowed"
+                          : "bg-blue-600 text-white hover:bg-blue-700 bb-mark-pulse"
+                    }`}
+                  >
+                    <span className="text-xs font-bold">
+                      {isCompleted ? "Chapter Completed" : "Mark Chapter Completed"}
+                    </span>
+                  </button>
+                  <div className="pointer-events-none absolute left-1/2 top-full mt-2 z-50 hidden -translate-x-1/2 w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                    {isCompleted ? "This chapter is completed" : "Mark this chapter as completed"}
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: Translation + Review + Trivia + Next */}
+              <div className="hidden md:flex items-center justify-end gap-1.5">
+                <div ref={translationMenuRef} className="group relative">
+                  <button
+                    type="button"
+                    onClick={() => setTranslationMenuOpen((value) => !value)}
+                    aria-haspopup="menu"
+                    aria-expanded={translationMenuOpen}
+                    className="flex items-center justify-center rounded-xl border bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
+                  >
+                    <span className="text-xs font-semibold">{translation.toUpperCase()}</span>
+                  </button>
+                  {!translationMenuOpen && (
+                    <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                      Translation
+                    </div>
+                  )}
+
+                  {translationMenuOpen ? (
+                    <div
+                      role="menu"
+                      className="absolute right-0 top-full mt-2 z-50 w-40 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl"
+                    >
+                      {([
+                        { value: "kjv", label: "KJV" },
+                        { value: "web", label: "WEB" },
+                        { value: "asv", label: "ASV" },
+                      ] as const).map((option) => (
+                        <button
+                          key={option.value}
+                          type="button"
+                          role="menuitem"
+                          onClick={() => {
+                            setTranslation(option.value);
+                            setTranslationMenuOpen(false);
+                          }}
+                          className={`flex w-full items-center justify-between px-4 py-2.5 text-sm font-semibold transition ${
+                            translation === option.value ? "bg-blue-600 text-white" : "text-gray-800 hover:bg-blue-50"
+                          }`}
+                        >
+                          <span>{option.label}</span>
+                          {translation === option.value ? <span>Selected</span> : null}
+                        </button>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+
+                <div className="group relative">
+                  <button
+                    type="button"
+                    onClick={openInlineStudyNotes}
+                    aria-label="Chapter notes"
+                    className={`flex items-center justify-center rounded-xl border px-2.5 py-1.5 transition ${
+                      reviewDone
+                        ? "border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+                        : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
+                    }`}
+                  >
+                    <span className="text-xs font-semibold">Notes</span>
+                  </button>
+                  <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                    {reviewDone ? "Notes done" : "Chapter notes"}
+                  </div>
+                </div>
+
+                {triviaChapterPack && (
+                  <div className="group relative">
+                    <button
+                      type="button"
+                      onClick={() => setShowTriviaModal(true)}
+                      aria-label="Trivia"
+                      className={`flex items-center justify-center rounded-xl border px-2.5 py-1.5 transition ${
+                        triviaDone
+                          ? "border-emerald-300 bg-emerald-50 text-emerald-700 hover:bg-emerald-100"
+                          : "border-gray-200 bg-white text-gray-800 hover:bg-blue-50 hover:border-blue-200"
+                      }`}
+                    >
+                      <span className="text-xs font-semibold">Trivia</span>
+                    </button>
+                    <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                      {triviaDone ? "Trivia done" : "Chapter trivia"}
+                    </div>
+
+                  </div>
+                )}
+
+                <div className="group relative">
+                  <button
+                    type="button"
+                    onClick={goNextChapter}
+                    aria-label="Next chapter"
+                    className="flex items-center justify-center rounded-xl border border-gray-200 bg-white px-2.5 py-1.5 text-gray-800 transition hover:bg-blue-50 hover:border-blue-200"
+                  >
+                    <span className="text-xs font-semibold">Next</span>
+                  </button>
+                  <div className="pointer-events-none absolute right-0 top-full mt-2 z-50 hidden w-max rounded-lg border border-yellow-200 bg-yellow-50 px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-md group-hover:block">
+                    Next chapter
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile quick actions */}
+            <div className="mt-3 md:hidden" ref={gamesMenuRef}>
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (isSaving) return;
+                    if (isCompleted) {
+                      return;
+                    }
+                    void handleMarkFinished();
+                  }}
+                  aria-label={isCompleted ? "Chapter completed" : "Mark chapter completed"}
+                  className={`flex min-h-[5.5rem] w-full items-center justify-between rounded-2xl border px-4 py-4 text-left text-white shadow-lg transition ${
+                    isCompleted
+                      ? "border-emerald-300 bg-emerald-50 text-emerald-800 shadow-emerald-100 hover:bg-emerald-100"
+                      : isSaving
+                        ? "border-blue-300 bg-blue-300 cursor-not-allowed shadow-blue-100"
+                        : "border-blue-500 bg-blue-600 shadow-blue-200 hover:bg-blue-700 bb-mark-pulse"
+                  }`}
+                  >
+                    <div className="flex flex-col">
+                      <span className="text-sm font-extrabold uppercase tracking-[0.08em]">
+                        {isCompleted ? "Completed" : "Mark Complete"}
+                      </span>
+                      <span className={`mt-1 text-xs font-medium ${isCompleted ? "text-emerald-700" : "text-blue-100"}`}>
+                        {isCompleted ? "This chapter is finished" : "Finish this chapter"}
+                      </span>
+                    </div>
+                    <span className="text-lg font-bold">{isCompleted ? "?" : "?"}</span>
+                  </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setGamesMenuOpen((value) => !value);
+                    setTranslationMenuOpen(false);
+                  }}
+                  aria-expanded={gamesMenuOpen}
+                  aria-label="Bible menu, click here"
+                  className="flex w-full items-center justify-between rounded-2xl border border-gray-300 bg-gray-100 px-4 py-3 text-left text-gray-800 shadow-sm transition hover:border-gray-400 hover:bg-gray-200"
+                >
+                  <div className="flex flex-col">
+                    <span className="text-sm font-extrabold uppercase tracking-[0.14em]">Bible Menu</span>
+                    <span className="text-xs font-medium text-gray-500">Click here</span>
+                  </div>
+                  <span className="text-xl font-bold">{gamesMenuOpen ? "-" : "+"}</span>
+                </button>
+              </div>
+
+              {gamesMenuOpen && (
+                <div className="relative z-50 mt-2 overflow-hidden rounded-3xl border border-blue-100 bg-white shadow-xl shadow-blue-100">
+                  <div className="border-b border-blue-50 bg-gradient-to-r from-blue-50 to-sky-50 px-4 py-3">
+                    <p className="text-sm font-semibold text-gray-900">Chapter tools</p>
+                    <p className="text-xs text-gray-600">Browse books and chapters, switch translations, or jump into chapter tools.</p>
+                  </div>
+
+                  <div className="space-y-2 p-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowBooksModal(true);
+                        setGamesMenuOpen(false);
+                      }}
+                      className="flex w-full items-center justify-between rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+                    >
+                      <span>Browse Books and Chapters</span>
+                      <span>Open</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        openInlineStudyNotes();
+                        setGamesMenuOpen(false);
+                      }}
+                      className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${reviewDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:border-blue-200 hover:bg-blue-50"}`}
+                    >
+                      <span>Study Notes</span>
+                      <span>{reviewDone ? "Done" : "Open"}</span>
+                    </button>
+
+                    <div className="rounded-2xl border border-gray-200 bg-white" ref={translationMenuRef}>
+                      <button
+                        type="button"
+                        onClick={() => setTranslationMenuOpen((value) => !value)}
+                        aria-expanded={translationMenuOpen}
+                        className="flex w-full items-center justify-between px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+                      >
+                        <span>Translation</span>
+                        <span>{translation.toUpperCase()}</span>
+                      </button>
+
+                      {translationMenuOpen ? (
+                        <div className="border-t border-gray-100">
+                        {([
+                            { value: "kjv", label: "KJV" },
+                            { value: "web", label: "WEB" },
+                            { value: "asv", label: "ASV" },
+                          ] as const).map((option) => (
+                            <button
+                              key={option.value}
+                              type="button"
+                              onClick={() => {
+                                setTranslation(option.value);
+                                setTranslationMenuOpen(false);
+                                setGamesMenuOpen(false);
+                              }}
+                              className={`flex w-full items-center justify-between px-4 py-3 text-sm font-semibold transition ${
+                                translation === option.value ? "bg-blue-600 text-white" : "text-gray-800 hover:bg-blue-50"
+                              }`}
+                            >
+                              <span>{option.label}</span>
+                              {translation === option.value ? <span>Selected</span> : null}
+                            </button>
+                          ))}
+                        </div>
+                      ) : null}
+                    </div>
+
+                    {triviaChapterPack ? (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowTriviaModal(true);
+                          setGamesMenuOpen(false);
+                        }}
+                        className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${triviaDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-gray-200 bg-white text-gray-800 hover:border-blue-200 hover:bg-blue-50"}`}
+                      >
+                        <span>Trivia Quiz</span>
+                        <span>{triviaDone ? "Done" : "Play"}</span>
+                      </button>
+                    ) : null}
+
+                    <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-800 transition hover:border-blue-200 hover:bg-blue-50 select-none">
+                      <span>Plain Text Mode</span>
+                      <input
+                        type="checkbox"
+                        checked={plainTextMode}
+                        onChange={(e) => setPlainTextMode(e.target.checked)}
+                        className="h-5 w-5 accent-blue-600"
+                      />
+                    </label>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div> : null}
+
+        {hideReaderChrome && !hideEmbedControls && !isGenesisOnePrototype ? (
+          <div className="relative z-20 mb-3" ref={gamesMenuRef}>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  if (isSaving) return;
+                  if (isCompleted) return;
+                  void handleMarkFinished();
+                }}
+                aria-label={isCompleted ? "Chapter completed" : "Mark chapter completed"}
+                className={`flex min-h-[3.5rem] w-full items-center justify-center rounded-2xl border px-4 py-3 text-center text-sm font-black shadow-sm transition ${
+                  isCompleted
+                    ? "border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100"
+                    : isSaving
+                      ? "cursor-not-allowed border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_42%,transparent)] bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_54%,var(--bb-card,#ffffff))] text-[var(--bb-button-text,#ffffff)]"
+                      : "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)] hover:brightness-95 bb-mark-pulse"
+                }`}
+              >
+                {isCompleted ? "Completed" : "Mark Complete"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setGamesMenuOpen((value) => !value);
+                  setTranslationMenuOpen(false);
+                }}
+                aria-expanded={gamesMenuOpen}
+                aria-label="Bible menu"
+                className="flex min-h-[3.5rem] w-full items-center justify-center rounded-2xl border border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] px-4 py-3 text-center text-sm font-black text-[var(--bb-text-primary,#1f2937)] shadow-sm transition hover:brightness-95"
+              >
+                {gamesMenuOpen ? "Close Menu" : "Menu"}
+              </button>
+            </div>
+
+            {gamesMenuOpen ? (
+              <div className="relative z-50 mt-2 overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-xl">
+                <div className="border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-3">
+                  <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">Chapter tools</p>
+                  <p className="text-xs text-[var(--bb-text-secondary,#4b5563)]">Books, notes, translation, games, and reader settings.</p>
+                </div>
+
+                <div className="space-y-2 p-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowBooksModal(true);
+                      setGamesMenuOpen(false);
+                    }}
+                    className="flex w-full items-center justify-between rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:brightness-95"
+                  >
+                    <span>Browse Books and Chapters</span>
+                    <span>Open</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      openInlineStudyNotes();
+                      setGamesMenuOpen(false);
+                    }}
+                    className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${reviewDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:brightness-95"}`}
+                  >
+                    <span>Study Notes</span>
+                    <span>{reviewDone ? "Done" : "Open"}</span>
+                  </button>
+
+                  <div className="rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)]" ref={translationMenuRef}>
+                    <button
+                      type="button"
+                      onClick={() => setTranslationMenuOpen((value) => !value)}
+                      aria-expanded={translationMenuOpen}
+                      className="flex w-full items-center justify-between px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:brightness-95"
+                    >
+                      <span>Translation</span>
+                      <span>{translation.toUpperCase()}</span>
+                    </button>
+
+                    {translationMenuOpen ? (
+                      <div className="border-t border-[var(--bb-card-border,#e5e7eb)]">
+                        {([
+                          { value: "kjv", label: "KJV" },
+                          { value: "web", label: "WEB" },
+                          { value: "asv", label: "ASV" },
+                        ] as const).map((option) => (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => {
+                              setTranslation(option.value);
+                              setTranslationMenuOpen(false);
+                              setGamesMenuOpen(false);
+                            }}
+                            className={`flex w-full items-center justify-between px-4 py-3 text-sm font-semibold transition ${
+                              translation === option.value ? "bg-[var(--bb-button,#2f7fe8)] text-[var(--bb-button-text,#ffffff)]" : "text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-surface-soft,#f8fbff)]"
+                            }`}
+                          >
+                            <span>{option.label}</span>
+                            {translation === option.value ? <span>Selected</span> : null}
+                          </button>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+
+                  {triviaChapterPack ? (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowTriviaModal(true);
+                        setGamesMenuOpen(false);
+                      }}
+                      className={`flex w-full items-center justify-between rounded-2xl border px-4 py-3 text-sm font-semibold transition ${triviaDone ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] hover:brightness-95"}`}
+                    >
+                      <span>Trivia Quiz</span>
+                      <span>{triviaDone ? "Done" : "Play"}</span>
+                    </button>
+                  ) : null}
+
+                  <label className="flex cursor-pointer items-center justify-between rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 select-none">
+                    <span>Plain Text Mode</span>
+                    <input
+                      type="checkbox"
+                      checked={plainTextMode}
+                      onChange={(e) => setPlainTextMode(e.target.checked)}
+                      className="h-5 w-5 accent-blue-600"
+                    />
+                  </label>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+
+        {/* GENESIS 1 PROTOTYPE HEADER: chapter + translation, then the tabs */}
+        {isGenesisOnePrototype ? (
+          <div className="relative z-30 mb-4 overflow-visible rounded-[20px] border border-slate-200 bg-white shadow-sm">
+            <div className="flex items-center justify-between gap-3 border-b border-slate-200 px-3 py-2.5">
+              <div className="relative" ref={genesisOneChapterMenuRef}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setGenesisOneChapterMenuOpen((open) => {
+                      if (open) return false;
+                      // Always reopen on the current book's chapters.
+                      setGenesisOneMenuShowBooks(false);
+                      setGenesisOneMenuBook(null);
+                      return true;
+                    });
+                    setGenesisOneTranslationMenuOpen(false);
+                  }}
+                  aria-expanded={genesisOneChapterMenuOpen}
+                  className="flex items-center gap-1.5 rounded-xl px-2 py-1.5 text-lg font-black text-slate-900 transition hover:bg-slate-100"
+                >
+                  {bookDisplayName} {chapter}
+                  <span aria-hidden="true" className="text-xs text-slate-400">▼</span>
+                </button>
+
+                {genesisOneChapterMenuOpen ? (() => {
+                  const menuBook = genesisOneMenuBook || bookDisplayName;
+                  return (
+                    <div className="absolute left-0 top-full z-50 mt-2 w-[17rem] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.18)]">
+                      {genesisOneMenuShowBooks ? (
+                        <>
+                          <div className="flex items-center justify-between border-b border-slate-200 px-3 py-2">
+                            <span className="text-xs font-black uppercase tracking-[0.14em] text-slate-500">
+                              Books
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setGenesisOneMenuShowBooks(false)}
+                              className="rounded-lg px-2 py-1 text-xs font-black text-sky-600 transition hover:bg-slate-50"
+                            >
+                              Back
+                            </button>
+                          </div>
+                          <div className="max-h-[16rem] overflow-y-auto p-2">
+                            {ALL_BIBLE_BOOKS_SORTED.map((b) => (
+                              <button
+                                key={b}
+                                type="button"
+                                onClick={() => {
+                                  setGenesisOneMenuBook(b);
+                                  setGenesisOneMenuShowBooks(false);
+                                }}
+                                className={`block w-full rounded-lg px-3 py-2 text-left text-sm font-bold transition hover:bg-sky-50 ${
+                                  b === menuBook ? "text-sky-600" : "text-slate-700"
+                                }`}
+                              >
+                                {b}
+                              </button>
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="flex items-center justify-between border-b border-slate-200 px-3 py-2">
+                            <span className="min-w-0 truncate text-xs font-black uppercase tracking-[0.14em] text-slate-500">
+                              {menuBook}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => setGenesisOneMenuShowBooks(true)}
+                              className="shrink-0 rounded-lg px-2 py-1 text-xs font-black text-sky-600 transition hover:bg-slate-50"
+                            >
+                              All books
+                            </button>
+                          </div>
+                          <div className="max-h-[16rem] overflow-y-auto p-2">
+                            <div className="grid grid-cols-6 gap-1.5">
+                              {Array.from({ length: getBookTotalChapters(menuBook) }, (_, i) => i + 1).map((ch) => {
+                                const isCurrent = menuBook === bookDisplayName && ch === chapter;
+                                return (
+                                  <button
+                                    key={ch}
+                                    type="button"
+                                    onClick={() => {
+                                      setGenesisOneChapterMenuOpen(false);
+                                      setGenesisOneMenuShowBooks(false);
+                                      setGenesisOneMenuBook(null);
+                                      if (!isCurrent) router.push(chapterReaderHref(menuBook, ch));
+                                    }}
+                                    className={`rounded-lg px-1 py-1.5 text-xs font-black transition ${
+                                      isCurrent
+                                        ? "bg-sky-500 text-white"
+                                        : "bg-slate-50 text-slate-700 hover:bg-sky-50"
+                                    }`}
+                                  >
+                                    {ch}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  );
+                })() : null}
+              </div>
+
+              <div className="relative" ref={genesisOneTranslationMenuRef}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setGenesisOneTranslationMenuOpen((open) => !open);
+                    setGenesisOneChapterMenuOpen(false);
+                  }}
+                  aria-expanded={genesisOneTranslationMenuOpen}
+                  className="flex items-center gap-1.5 rounded-xl border border-slate-200 px-3 py-1.5 text-sm font-black text-slate-800 transition hover:bg-slate-50"
+                >
+                  {translation.toUpperCase()}
+                  <span aria-hidden="true" className="text-xs text-slate-400">▼</span>
+                </button>
+
+                {genesisOneTranslationMenuOpen ? (
+                  <div className="absolute right-0 top-full z-50 mt-2 w-32 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.18)]">
+                    {([
+                      { value: "kjv", label: "KJV" },
+                      { value: "asv", label: "ASV" },
+                      { value: "web", label: "WEB" },
+                    ] as const).map((option) => (
+                      <button
+                        key={option.value}
+                        type="button"
+                        onClick={() => {
+                          setTranslation(option.value);
+                          setGenesisOneTranslationMenuOpen(false);
+                        }}
+                        className={`flex w-full items-center justify-between px-4 py-2.5 text-sm font-black transition ${
+                          translation === option.value
+                            ? "bg-sky-500 text-white"
+                            : "text-slate-700 hover:bg-slate-50"
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            </div>
+
+            <div className="flex">
+              {([
+                { id: "play", icon: "📖", label: "Scripture" },
+                { id: "trivia", icon: "❓", label: "Trivia" },
+                { id: "scrambled", icon: "🧩", label: "Scrambled" },
+              ] as const).map((tab) => {
+                const active = genesisOneTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setGenesisOneTab(tab.id)}
+                    aria-current={active ? "page" : undefined}
+                    className={`flex min-w-0 flex-1 items-center justify-center gap-1 border-b-2 px-1 py-3 text-xs font-black transition sm:gap-1.5 sm:px-2 sm:text-sm ${
+                      active
+                        ? "border-sky-500 text-sky-600"
+                        : "border-transparent text-slate-500 hover:text-slate-800"
+                    }`}
+                  >
+                    <span aria-hidden="true">{tab.icon}</span>
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ) : null}
+
+        {/* GENESIS 1 PROTOTYPE: trivia and scrambled render inside the same
+            frame rather than sending the reader off to another page. */}
+        {isGenesisOnePrototype && genesisOneTab === "trivia" ? (
+          <div className="mb-6 overflow-hidden rounded-[20px] border border-slate-200 bg-gray-50">
+            {triviaChapterPack ? (
+              <TriviaGamePlayer
+                bookName={bookDisplayName}
+                bookSlug={triviaRouteSlug}
+                chapter={triviaChapterPack}
+                compact
+                hideSkipButton
+                onClose={() => setGenesisOneTab("play")}
+                onComplete={() => {
+                  if (!userId) return;
+                  const chapterLabel = `${bookDisplayName} ${chapter}`;
+                  supabase
+                    .from("master_actions")
+                    .select("id")
+                    .eq("user_id", userId)
+                    .eq("action_type", ACTION_TYPE.trivia_chapter_completed)
+                    .ilike("action_label", `${chapterLabel}%`)
+                    .limit(1)
+                    .maybeSingle()
+                    .then(({ data }) => setTriviaDone(!!data));
+                }}
+              />
+            ) : (
+              <p className="px-4 py-8 text-center text-sm font-semibold text-slate-500">
+                Trivia is not available for this chapter yet.
+              </p>
+            )}
+          </div>
+        ) : null}
+
+        {isGenesisOnePrototype && genesisOneTab === "scrambled" ? (
+          <div className="mb-6 overflow-hidden rounded-[20px] border border-slate-200 bg-[#f5f7fb]">
+            {scrambledChapterPack ? (
+              <ScrambledGamePlayer
+                bookName={bookDisplayName}
+                bookSlug={triviaRouteSlug}
+                chapter={scrambledChapterPack}
+                compact
+                onClose={() => setGenesisOneTab("play")}
+                onComplete={() => {
+                  if (!userId) return;
+                  const chapterLabel = `${bookDisplayName} ${chapter}`;
+                  supabase
+                    .from("master_actions")
+                    .select("id")
+                    .eq("user_id", userId)
+                    .eq("action_type", ACTION_TYPE.scrambled_chapter_completed)
+                    .ilike("action_label", `${chapterLabel}%`)
+                    .limit(1)
+                    .maybeSingle()
+                    .then(({ data }) => setScrambledDone(!!data));
+                }}
+              />
+            ) : (
+              <p className="px-4 py-8 text-center text-sm font-semibold text-slate-500">
+                Scrambled is not available for this chapter yet.
+              </p>
+            )}
+          </div>
+        ) : null}
+
+        {/* VERSE BLOCK */}
+        {isGenesisOnePrototype && genesisOneTab !== "play" ? null : <div
+          ref={verseContainerRef}
+          className={`bg-[var(--bb-card,#ffffff)] mb-6 ${
+            hideReaderChrome
+              ? "overflow-visible rounded-none border-0 p-0 shadow-none"
+              : "overflow-visible rounded-2xl border border-[var(--bb-card-border,#e5e7eb)] p-6 shadow-sm md:max-h-[60vh] md:overflow-y-auto md:p-8"
+          } ${
+            plainTextMode ? "plain-text-mode" : ""
+          }`}
+        >
+          <BrowserTtsButton
+            text={chapterSpeechText}
+            label={`Listen to ${bookDisplayName} ${chapter}`}
+            audioSrc={chapterAudioSrc}
+            backgroundMusicSrcs={getBibleReadingBackgroundTracks(bookDisplayName, chapter)}
+            backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+            aiDisclosure={isGenesisOnePrototype ? false : Boolean(chapterAudioSrc)}
+            variant={isGenesisOnePrototype ? "transport" : "default"}
+          />
+          {sections.map((section) => (
+            <div key={section.id} className="mb-8 last:mb-0">
+              {/* The prototype header already names the chapter, so the
+                  section title would just repeat it. */}
+              {isGenesisOnePrototype ? null : (
+                <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                  {section.emoji ? <span className="text-2xl">{section.emoji}</span> : null}
+                  <span>{section.title}</span>
+                </h2>
+              )}
+              <div className="space-y-5">
+                {/* Always use VerseHighlighter for all chapters */}
+                {section.verses && section.verses.length > 0 && (
+                  <>
+                    {(() => {
+                      const VerseHighlighter = require("./VerseHighlighter").VerseHighlighter;
+                      let enrichedPerVerse: Record<number, string> = {};
+                      if (enrichedContent) {
+                        const html = enrichedContent.replace(/<!--.*?-->/, "").trim();
+                        const verseBlocks = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g));
+                        verseBlocks.forEach((block, idx) => {
+                          const badgeMatch = block[1].match(/<span[^>]*>(\d+)<\/span>/);
+                          const verseNum = badgeMatch ? parseInt(badgeMatch[1], 10) : idx + 1;
+                          enrichedPerVerse[verseNum] = `<p>${block[1]}</p>`;
+                        });
+                      }
+                      return (
+                        <VerseHighlighter
+                          book={book}
+                          chapter={chapter}
+                          plainTextMode={plainTextMode}
+                          verses={section.verses.map((v) => ({
+                            number: v.num,
+                            text: v.text,
+                            enrichedHtml: enrichedPerVerse[v.num],
+                          }))}
+                        />
+                      );
+                    })()}
+                  </>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>}
+
+        {/* GENESIS 1 PROTOTYPE: Mark Complete kept, but as one slim button
+            under the Scripture rather than a block above it. */}
+        {isGenesisOnePrototype && genesisOneTab === "play" ? (
+          <button
+            type="button"
+            onClick={() => {
+              if (isSaving || isCompleted) return;
+              void handleMarkFinished();
+            }}
+            disabled={isSaving || isCompleted}
+            className={`mb-6 w-full rounded-2xl border px-4 py-3 text-sm font-black transition ${
+              isCompleted
+                ? "border-emerald-300 bg-emerald-50 text-emerald-800"
+                : isSaving
+                  ? "cursor-not-allowed border-sky-200 bg-sky-200 text-white"
+                  : "border-sky-500 bg-sky-500 text-white hover:bg-sky-400"
+            }`}
+          >
+            {isCompleted ? "Chapter Completed" : isSaving ? "Saving..." : "Mark Chapter Completed"}
+          </button>
+        ) : null}
+
+        {!hideDiscussion && (!isGenesisOnePrototype || genesisOneTab === "play") ? <div className="mb-10" ref={reflectionSectionRef}>
+          <div className={`mx-auto mb-4 max-w-2xl rounded-2xl border bg-gradient-to-br from-white via-blue-50 to-sky-50 p-5 shadow-sm transition-all duration-500 ${
+            highlightReflectionSection
+              ? "border-blue-400 ring-4 ring-blue-200 shadow-[0_0_0_6px_rgba(191,219,254,0.55)]"
+              : "border-blue-100"
+          }`}>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
+              {isGenesisOnePrototype ? "Chapter Discussion" : "Chapter Reflection"}
+            </p>
+            <p className="mt-3 text-xl font-black leading-snug text-gray-950">
+              {chapterReflectionQuestion}
+            </p>
+          </div>
+
+          <div className={`rounded-2xl transition-all duration-500 ${
+            highlightReflectionSection ? "ring-4 ring-blue-200/80" : ""
+          }`}>
+            <CommentSection
+              articleSlug={chapterDiscussionSlug}
+              headingText={
+                isGenesisOnePrototype
+                  ? `${bookDisplayName} ${chapter} Discussion`
+                  : `${bookDisplayName} ${chapter} Reflection Answers`
+              }
+              placeholderText="Start Typing Here"
+              submitButtonText={isGenesisOnePrototype ? "Post Comment" : "Post Reflection"}
+            />
+          </div>
+        </div> : null}
+      </div>
+
+
+      {/* TRIVIA MODAL */}
+      {showTriviaModal && triviaChapterPack && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
+        >
+          <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl bg-gray-50 shadow-2xl">
+            <button
+              type="button"
+              onClick={() => setShowTriviaModal(false)}
+              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300"
+              aria-label="Close trivia"
+            >
+              ×
+            </button>
+            <TriviaGamePlayer
+              bookName={bookDisplayName}
+              bookSlug={triviaRouteSlug}
+              chapter={triviaChapterPack}
+              onClose={() => {
+                setShowTriviaModal(false);
+                // Refresh trivia done state
+                if (userId) {
+                  const chapterLabel = `${bookDisplayName} ${chapter}`;
+                  supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.trivia_chapter_completed).ilike("action_label", `${chapterLabel}%`).limit(1).maybeSingle().then(({ data }) => setTriviaDone(!!data));
+                }
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* SCRAMBLED MODAL */}
+      {showScrambledModal && scrambledChapterPack && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
+        >
+          <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#f5f7fb] shadow-2xl">
+            <button
+              type="button"
+              onClick={() => {
+                setShowScrambledModal(false);
+                // Refresh scrambled done state
+                if (userId) {
+                  const chapterLabel = `${bookDisplayName} ${chapter}`;
+                  supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.scrambled_chapter_completed).ilike("action_label", `${chapterLabel}%`).limit(1).maybeSingle().then(({ data }) => setScrambledDone(!!data));
+                }
+              }}
+              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300"
+              aria-label="Close scrambled"
+            >
+              ?
+            </button>
+            <ScrambledGamePlayer
+              bookName={bookDisplayName}
+              bookSlug={triviaRouteSlug}
+              chapter={scrambledChapterPack}
+              onClose={() => {
+                setShowScrambledModal(false);
+                if (userId) {
+                  const chapterLabel = `${bookDisplayName} ${chapter}`;
+                  supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", ACTION_TYPE.scrambled_chapter_completed).ilike("action_label", `${chapterLabel}%`).limit(1).maybeSingle().then(({ data }) => setScrambledDone(!!data));
+                }
+              }}
+            />
+          </div>
+        </div>
+      )}
+      {/* FEATURED CHARACTER MODAL */}
+      <FeaturedCharacterModal
+        character={selectedCharacter}
+        onClose={() => setSelectedCharacter(null)}
+      />
+
+      {/* PERSON OVERLAY MODAL */}
+      {selectedPerson && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedPerson(null);
+                setPersonNotes(null);
+              }}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
+            >
+              &times;
+            </button>
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h2 className="mb-4 text-center text-3xl font-bold">{selectedPerson.name}</h2>
+            {personCreditBlocked ? null : loadingNotes && !personNotes ? (
+              <div className="py-8">
+                <div className="space-y-4">
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-3/4 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-2/3 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                </div>
+                <LoadingDots />
+              </div>
+            ) : (
+              <div>
+                <ReactMarkdown
+                  components={{
+                    h1: ({ ...props }) => (
+                      <h1 className="mt-3 mb-3 text-lg font-bold text-gray-900 md:text-xl" {...props} />
+                    ),
+                    p: ({ ...props }) => (
+                      <p className="mb-4 text-[15px] leading-relaxed text-gray-700" {...props} />
+                    ),
+                    strong: ({ ...props }) => (
+                      <strong className="font-bold" {...props} />
+                    ),
+                  }}
+                >
+                  {normalizePersonMarkdown(personNotes ?? "")}
+                </ReactMarkdown>
+
+                
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* PLACE OVERLAY MODAL */}
+      {selectedPlace && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedPlace(null);
+                setPlaceNotes(null);
+              }}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
+            >
+              &times;
+            </button>
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h2 className="mb-4 text-center text-3xl font-bold">{selectedPlace.name}</h2>
+            {placeCreditBlocked ? null : !placeNotes ? (
+              <LouisLoadingCard name={selectedPlace.name} />
+            ) : (
+              <div>
+                <ReactMarkdown
+                  components={{
+                    h1: ({ ...props }) => (
+                      <h1 className="mt-3 mb-3 text-lg font-bold text-gray-900 md:text-xl" {...props} />
+                    ),
+                    p: ({ ...props }) => (
+                      <p className="mb-4 text-[15px] leading-relaxed text-gray-700" {...props} />
+                    ),
+                    strong: ({ ...props }) => (
+                      <strong className="font-bold" {...props} />
+                    ),
+                  }}
+                >
+                  {normalizePlaceMarkdown(placeNotes)}
+                </ReactMarkdown>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* KEYWORD OVERLAY MODAL */}
+      {selectedKeyword && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 my-8">
+            <button
+              type="button"
+              onClick={() => {
+                setSelectedKeyword(null);
+                setKeywordNotes(null);
+                setKeywordNotesError(null);
+              }}
+              className="absolute right-4 top-4 text-gray-500 hover:text-gray-800 text-xl"
+            >
+              &times;
+            </button>
+            <div className="mb-4 flex justify-center">
+              <LouisAvatar mood="wave" size={64} />
+            </div>
+            <h2 className="mb-4 text-center text-3xl font-bold">{selectedKeyword.name}</h2>
+            {keywordCreditBlocked ? null : loadingNotes && !keywordNotes ? (
+              <div className="py-8">
+                <div className="space-y-4">
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-3/4 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-2/3 rounded-full bg-gray-100" />
+                  <div className="mx-auto h-4 w-4/5 rounded-full bg-gray-100" />
+                </div>
+                <p className="pt-6 text-center text-sm italic text-gray-500">Loading...</p>
+              </div>
+            ) : !keywordNotes ? (
+              <div className="py-8 text-center">
+                <p className="text-sm text-gray-500 mb-4">{keywordNotesError || "Couldn't load this keyword yet."}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setKeywordNotes(null);
+                    setKeywordNotesError(null);
+                    setSelectedKeyword({ name: selectedKeyword.name });
+                  }}
+                  className="inline-flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
+                >
+                  Retry
+                </button>
+              </div>
+            ) : (
+              <div>
+                <ReactMarkdown
+                  components={{
+                    h1: ({ ...props }) => (
+                      <h1 className="mt-3 mb-3 text-lg font-bold text-gray-900 md:text-xl" {...props} />
+                    ),
+                    p: ({ ...props }) => (
+                      <p className="mb-4 text-[15px] leading-relaxed text-gray-700" {...props} />
+                    ),
+                    strong: ({ ...props }) => (
+                      <strong className="font-bold" {...props} />
+                    ),
+                  }}
+                >
+                  {normalizeKeywordMarkdown(keywordNotes)}
+                </ReactMarkdown>
+
+                {selectedKeyword && false && userId && (
+                  <div className="mt-8 pt-6 border-t border-gray-200">
+                    {(() => {
+                      const keywordKey = (selectedKeyword?.name ?? "").toLowerCase().trim();
+                      const isCompleted = completedKeywords.has(keywordKey);
+                      const kwDisplayName = (selectedKeyword?.name ?? "").split(" ").map((w) => {
+                        if (/^\d+$/.test(w)) return w;
+                        return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+                      }).join(" ");
+                      return (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            if (!userId || isCompleted) return;
+
+                            setIsAnimatingKeyword(true);
+                            setTimeout(() => {
+                              setSelectedKeyword(null); setKeywordNotes(null); setIsAnimatingKeyword(false);
+                              setLearnedToast(`${kwDisplayName} has been learned! Ã°Å¸â„¢Å’`);
+                              setTimeout(() => setLearnedToast(null), 3500);
+                            }, 250);
+
+                            (async () => {
+                              try {
+                                const { error } = await supabase.from("keywords_progress").upsert(
+                                  { user_id: userId, keyword_name: keywordKey }, { onConflict: "user_id,keyword_name" }
+                                );
+                                if (!error) {
+                                  setCompletedKeywords((prev) => { const n = new Set(prev); n.add(keywordKey); return n; });
+                                  const { data: { user: authUser } } = await supabase.auth.getUser();
+                                  const meta: any = authUser?.user_metadata || {};
+                                  const actionUsername = meta.firstName || meta.first_name || (authUser?.email?.split("@")[0]) || "User";
+                                  await supabase.from("master_actions").insert({
+                                    user_id: userId, username: actionUsername,
+                                    action_type: ACTION_TYPE.keyword_mastered, action_label: kwDisplayName,
+                                  });
+                                  const { count } = await supabase.from("keywords_progress").select("*", { count: "exact", head: true }).eq("user_id", userId);
+                                  if (count !== null) {
+                                    const { data: stats } = await supabase.from("profile_stats").select("username, chapters_completed_count, notes_created_count, people_learned_count, places_discovered_count").eq("user_id", userId).maybeSingle();
+                                    await supabase.from("profile_stats").upsert({
+                                      user_id: userId, username: stats?.username || actionUsername,
+                                      keywords_mastered_count: count,
+                                      total_actions: (stats?.chapters_completed_count || 0) + (stats?.notes_created_count || 0) + (stats?.people_learned_count || 0) + (stats?.places_discovered_count || 0) + count,
+                                      updated_at: new Date().toISOString(),
+                                    }, { onConflict: "user_id" });
+                                  }
+                                }
+                              } catch (err) { console.error("Error saving keyword progress:", err); }
+                            })();
+                          }}
+                          className={`w-full px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
+                            isCompleted ? "bg-green-100 text-green-700 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700 active:scale-95"
+                          }`}
+                          style={isAnimatingKeyword ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
+                        >
+                          {isCompleted ? `Ã¢Å“â€œ ${selectedKeyword?.name ?? ""} learned` : `Mark ${selectedKeyword?.name ?? ""} as Learned`}
+                        </button>
+                      );
+                    })()}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <CreditLimitModal
+        open={personCreditBlocked}
+        userId={userId}
+        zIndexClassName="z-[80]"
+        onClose={() => {
+          setPersonCreditBlocked(false);
+          setSelectedPerson(null);
+          setPersonNotes(null);
+        }}
+      />
+
+      <CreditLimitModal
+        open={placeCreditBlocked}
+        userId={userId}
+        zIndexClassName="z-[80]"
+        onClose={() => {
+          setPlaceCreditBlocked(false);
+          setSelectedPlace(null);
+          setPlaceNotes(null);
+        }}
+      />
+
+      <CreditLimitModal
+        open={keywordCreditBlocked}
+        userId={userId}
+        zIndexClassName="z-[80]"
+        onClose={() => {
+          setKeywordCreditBlocked(false);
+          setSelectedKeyword(null);
+          setKeywordNotes(null);
+        }}
+      />
+
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Louis "learned" toast Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {learnedToast && (
+        <div
+          className="fixed bottom-24 left-1/2 z-50 flex items-center gap-3 bg-white border border-green-200 rounded-2xl shadow-2xl px-4 py-3"
+          style={{ transform: "translateX(-50%)", animation: "slideUp 0.3s ease-out" }}
+        >
+          <LouisAvatar mood="stareyes" size={44} />
+          <p className="text-sm font-semibold text-gray-800 whitespace-nowrap">{learnedToast}</p>
+        </div>
+      )}
+
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Books modal Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {showBooksModal && (
+        <div className="fixed inset-0 z-[60] bg-black/70 flex items-start justify-center overflow-y-auto p-4 py-8">
+          <div className="relative w-full max-w-2xl rounded-3xl bg-white shadow-2xl p-6">
+            <button
+              type="button"
+              onClick={() => { setShowBooksModal(false); setBooksModalSelectedBook(null); }}
+              className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200"
+            >Ã¢Å“â€¢</button>
+
+            {!booksModalSelectedBook ? (
+              <>
+                <h2 className="text-xl font-bold text-gray-900 mb-4">Select a Book</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                  {ALL_BIBLE_BOOKS_SORTED.map((b) => (
+                    <button
+                      key={b}
+                      type="button"
+                      onClick={() => setBooksModalSelectedBook(b)}
+                      className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm font-semibold text-gray-800 text-left transition hover:bg-blue-50 hover:border-blue-300"
+                    >
+                      {b}
+                    </button>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex items-center gap-3 mb-4">
+                  <button
+                    type="button"
+                    onClick={() => setBooksModalSelectedBook(null)}
+                    className="text-sm font-semibold text-blue-600 hover:underline"
+                  >Ã¢â€ Â Books</button>
+                  <h2 className="text-xl font-bold text-gray-900">{booksModalSelectedBook}</h2>
+                </div>
+                <div className="grid grid-cols-7 gap-2">
+                  {Array.from({ length: getBookTotalChapters(booksModalSelectedBook) }, (_, i) => i + 1).map((ch) => (
+                    <button
+                      key={ch}
+                      type="button"
+                      onClick={() => {
+                        setShowBooksModal(false);
+                        setBooksModalSelectedBook(null);
+                        router.push(chapterReaderHref(booksModalSelectedBook, ch));
+                      }}
+                      className="aspect-square rounded-xl border border-gray-200 bg-gray-50 text-sm font-bold text-gray-800 transition hover:bg-blue-600 hover:text-white hover:border-blue-600 flex items-center justify-center"
+                    >
+                      {ch}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+}
+
+// Separate component to trigger confetti when modal mounts
+function CongratsModalWithConfetti({
+  levelInfo,
+  withConfetti = true,
+  onRequestClose,
+  onOpenReview,
+  onOpenTrivia,
+  onOpenScrambled,
+  onOpenReflection,
+  reviewDone,
+  triviaDone,
+  scrambledDone,
+}: {
+  levelInfo?: {
+    level: number;
+    chaptersNeededForNext: number;
+    nextLevel: number;
+    leveledUp: boolean;
+  };
+  withConfetti?: boolean;
+  onRequestClose?: () => void;
+  onOpenReview?: () => void;
+  onOpenTrivia?: () => void;
+  onOpenScrambled?: () => void;
+  onOpenReflection?: () => void;
+  reviewDone?: boolean;
+  triviaDone?: boolean;
+  scrambledDone?: boolean;
+}) {
+  const params = useParams();
+  const router = useRouter();
+  const book = String(params.book);
+  const chapter = Number(params.chapter);
+
+  const bookDisplayName = book
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+
+  const backLink = "/Bible";
+
+  const [showLevelUpModal, setShowLevelUpModal] = useState(false);
+  const [showModal, setShowModal] = useState(true);
+
+  function closeModal() {
+    setShowModal(false);
+    onRequestClose?.();
+  }
+
+  // Show level-up overlay when levelInfo indicates a level up
+  useEffect(() => {
+    if (levelInfo?.leveledUp) {
+      setShowLevelUpModal(true);
+    }
+  }, [levelInfo?.leveledUp]);
+
+  // All 66 books for next book detection
+  const BOOKS = [
+    "Matthew", "Mark", "Luke", "John", "Acts",
+    "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
+    "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
+    "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther",
+    "Job", "Psalms", "Proverbs", "Ecclesiastes", "Song of Solomon",
+    "Isaiah", "Jeremiah", "Lamentations", "Ezekiel", "Daniel",
+    "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum", "Habakkuk",
+    "Zephaniah", "Haggai", "Zechariah", "Malachi",
+    "Romans", "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians",
+    "Philippians", "Colossians", "1 Thessalonians", "2 Thessalonians",
+    "1 Timothy", "2 Timothy", "Titus", "Philemon",
+    "Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude",
+    "Revelation",
+  ];
+
+  // Chapter completion messages that drive the next step (Trivia).
+  const motivationalMessages = [
+    "Now that you read {chapterLabel}, let's test your understanding with a quick trivia quiz.",
+    "Great job finishing {chapterLabel}. Want to take the trivia quiz for this chapter?",
+    "You just finished {chapterLabel}. Ready to test what you remember with trivia?",
+    "Nice work on {chapterLabel}. Let's lock it in with a quick trivia quiz.",
+  ];
+
+  // Calculate random message using props (instant, no async delay)
+  const randomMessage = useMemo(() => {
+    if (!levelInfo) {
+      return "Great job Ã¢â‚¬â€ your consistency is paying off!";
+    }
+    const topLevel = LEVEL_DEFINITIONS[LEVEL_DEFINITIONS.length - 1]?.level ?? 20;
+    if (levelInfo.level >= topLevel) {
+      return "Great job Ã¢â‚¬â€ your consistency is paying off!";
+    }
+    const template = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
+    return template.replace("{chapterLabel}", `${bookDisplayName} ${chapter}`);
+  }, [levelInfo]);
+
+  // Trigger confetti when component mounts (only for the "just finished" moment).
+  useEffect(() => {
+    if (!withConfetti) {
+      return;
+    }
+
+    function triggerConfetti() {
+      const duration = 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 99999 };
+
+      // Style confetti canvas to appear above everything
+      const styleConfettiCanvas = (canvas: HTMLCanvasElement) => {
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.zIndex = '99999';
+        canvas.style.pointerEvents = 'none';
+      };
+
+      // Use MutationObserver to catch new canvas elements as they're created
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeName === 'CANVAS') {
+              styleConfettiCanvas(node as HTMLCanvasElement);
+            }
+          });
+        });
+      });
+
+      // Start observing the document body for new canvas elements
+      observer.observe(document.body, { childList: true, subtree: true });
+
+      // Also style any existing canvases
+      document.querySelectorAll('canvas').forEach(styleConfettiCanvas);
+
+      function randomInRange(min: number, max: number) {
+        return Math.random() * (max - min) + min;
+      }
+
+      const interval: NodeJS.Timeout = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+          // Stop observing
+          observer.disconnect();
+          
+          // Clean up canvas after animation ends
+          setTimeout(() => {
+            document.querySelectorAll('canvas').forEach((canvas) => {
+              const htmlCanvas = canvas as HTMLCanvasElement;
+              // Only remove confetti canvases (those with our z-index)
+              if (htmlCanvas.style.zIndex === '99999') {
+                // Fade out and remove
+                htmlCanvas.style.opacity = '0';
+                htmlCanvas.style.transition = 'opacity 0.5s';
+                setTimeout(() => {
+                  htmlCanvas.remove();
+                }, 500);
+              }
+            });
+          }, 500);
+          return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+        
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+        });
+        confetti({
+          ...defaults,
+          particleCount,
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+        });
+      }, 250);
+    }
+
+    triggerConfetti();
+  }, [withConfetti]);
+
+  const [modalUserId, setModalUserId] = useState<string | null>(null);
+  const [checklist, setChecklist] = useState<{
+    notesReviewed: boolean;
+    triviaDone: boolean;
+    scrambledDone: boolean;
+  }>({
+    notesReviewed: false,
+    triviaDone: false,
+    scrambledDone: false,
+  });
+  const effectiveChecklist = {
+    notesReviewed: reviewDone ?? checklist.notesReviewed,
+    triviaDone: triviaDone ?? checklist.triviaDone,
+    scrambledDone: scrambledDone ?? checklist.scrambledDone,
+  };
+  const [loadingChecklist, setLoadingChecklist] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    void supabase.auth.getUser().then(({ data }) => {
+      if (cancelled) return;
+      setModalUserId(data.user?.id ?? null);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const triviaBookKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
+  const resolvedTriviaBookKey = triviaBookKey === "songofsolomon" ? "songofsongs" : triviaBookKey;
+  const chapterStudyNotesPrefix = `opened ${book.toLowerCase().replace(/[^a-z0-9]+/g, "")}${chapter}-`;
+  const triviaRouteSlug =
+    CHAPTER_BASED_TRIVIA_BOOK_CONFIG.find((entry) => entry.key === resolvedTriviaBookKey)?.routeSlug ?? resolvedTriviaBookKey;
+
+  async function refreshChecklist() {
+    if (!modalUserId) {
+      return;
+    }
+
+    setLoadingChecklist(true);
+
+    try {
+      const chapterLabel = `${bookDisplayName} ${chapter} Review Opened`;
+
+      const [notesRes, studyNotesSectionRes, triviaRes, scrambledRes] = await Promise.all([
+        supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", modalUserId)
+          .eq("action_type", ACTION_TYPE.chapter_notes_viewed)
+          .eq("action_label", chapterLabel)
+          .limit(1)
+          .maybeSingle(),
+        supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", modalUserId)
+          .eq("action_type", ACTION_TYPE.study_notes_section_opened)
+          .like("action_label", `${chapterStudyNotesPrefix}%`)
+          .limit(1)
+          .maybeSingle(),
+        supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", modalUserId)
+          .eq("action_type", ACTION_TYPE.trivia_chapter_completed)
+          .ilike("action_label", `${bookDisplayName} ${chapter}%`)
+          .limit(1)
+          .maybeSingle(),
+        supabase
+          .from("master_actions")
+          .select("id")
+          .eq("user_id", modalUserId)
+          .eq("action_type", ACTION_TYPE.scrambled_chapter_completed)
+          .ilike("action_label", `${bookDisplayName} ${chapter}%`)
+          .limit(1)
+          .maybeSingle(),
+      ]);
+
+      setChecklist({
+        notesReviewed: !!notesRes.data || !!studyNotesSectionRes.data,
+        triviaDone: !!triviaRes.data,
+        scrambledDone: !!scrambledRes.data,
+      });
+    } finally {
+      setLoadingChecklist(false);
+    }
+  }
+
+  useEffect(() => {
+    if (!showModal || !modalUserId) {
+      return;
+    }
+
+    void refreshChecklist();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showModal, modalUserId, bookDisplayName, chapter]);
+
+  function handleContinueToNextChapter() {
+    onOpenTrivia?.();
+    closeModal();
+  }
+
+  function handleReadNotes() {
+    closeModal();
+    window.setTimeout(() => {
+      onOpenReview?.();
+    }, 40);
+  }
+
+  function handlePlayScrambled() {
+    onOpenScrambled?.();
+    closeModal();
+  }
+
+  function handleOpenReflection() {
+    onOpenReflection?.();
+    closeModal();
+  }
+
+  function handleTakeNotes() {
+    router.push(`/notes?book=${book}&chapter=${chapter}`);
+    closeModal();
+  }
+
+  function handleGoHome() {
+    router.push("/dashboard");
+    closeModal();
+  }
+
+  if (!showModal) return null;
+
+  return (
+    <>
+      {/* LEVEL UP OVERLAY */}
+      {showLevelUpModal && levelInfo && (
+        <LevelUpOverlay
+          level={levelInfo.level}
+          onClose={() => setShowLevelUpModal(false)}
+        />
+      )}
+
+      {/* CONGRATULATIONS MODAL */}
+      <div className="fixed inset-0 z-50 bg-black/70 flex items-start justify-center overflow-y-auto p-4 py-10">
+        <div className="relative w-full max-w-3xl md:max-w-4xl rounded-[32px] bg-white shadow-2xl shadow-black/30 ring-1 ring-black/10 p-2 md:p-3 mb-10 mt-10">
+          {/* Close button */}
+          <button
+            onClick={closeModal}
+            className="absolute right-4 top-3 text-sm text-gray-500 hover:text-gray-800"
+          >
+            Ã¢Å“â€¢
+          </button>
+
+          {/* Inner light blue column */}
+          <div className="rounded-3xl bg-blue-50 px-4 md:px-6 py-5 md:py-7">
+            {/* Header with Louis */}
+            <div className="flex flex-col items-center mb-6">
+              <LouisAvatar mood="stareyes" size={80} />
+              <h1 className="text-2xl md:text-3xl font-bold mt-4 text-center text-gray-900">
+                Congratulations! You just finished {bookDisplayName} {chapter}!
+              </h1>
+              <p className="text-base md:text-lg text-gray-700 mt-3 text-center">
+                {levelInfo ? randomMessage : `Now that you read ${bookDisplayName} ${chapter}, let's test your understanding with a quick trivia quiz.`}
+              </p>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="mb-6">
+              <div className="mx-auto max-w-2xl rounded-3xl border border-blue-100 bg-white/80 p-4 md:p-5 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-blue-700">
+                  Next Steps (Earn Points)
+                </p>
+                <p className="mt-2 text-sm text-gray-700">
+                  Pick any of these to lock in what you just read. Each one moves your level forward.
+                </p>
+
+                <div className="mt-4 grid grid-cols-1 gap-3">
+                  <button
+                    type="button"
+                    onClick={handleReadNotes}
+                    className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
+                      effectiveChecklist.notesReviewed
+                        ? "border-green-200 bg-green-50"
+                        : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-base font-bold text-gray-900">
+                          Open Study Notes for {bookDisplayName} {chapter}
+                        </p>
+                        <p className="mt-1 text-sm text-gray-700">
+                          See the section cards and go deeper without leaving the reader.
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
+                          {TASK_REWARD_LABELS.notes}
+                        </span>
+                        <span className={`text-xs font-semibold ${effectiveChecklist.notesReviewed ? "text-emerald-700" : "text-gray-500"}`}>
+                          {effectiveChecklist.notesReviewed ? "Completed" : "Not done"}
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleContinueToNextChapter}
+                    className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
+                      effectiveChecklist.triviaDone
+                        ? "border-green-200 bg-green-50"
+                        : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-base font-bold text-gray-900">Take the Trivia Quiz</p>
+                        <p className="mt-1 text-sm text-gray-700">
+                          Earn up to {TASK_XP.triviaPerfect} XP based on how many you get right.
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
+                          {TASK_REWARD_LABELS.trivia}
+                        </span>
+                        <span className={`text-xs font-semibold ${effectiveChecklist.triviaDone ? "text-emerald-700" : "text-gray-500"}`}>
+                          {effectiveChecklist.triviaDone ? "Completed" : "Not done"}
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handlePlayScrambled}
+                    className={`w-full rounded-2xl border px-4 py-4 text-left transition ${
+                      effectiveChecklist.scrambledDone
+                        ? "border-green-200 bg-green-50"
+                        : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-base font-bold text-gray-900">Play Scrambled</p>
+                        <p className="mt-1 text-sm text-gray-700">
+                          Earn up to {TASK_XP.scrambledPerfect} XP by solving the chapter words.
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
+                          {TASK_REWARD_LABELS.scrambled}
+                        </span>
+                        <span className={`text-xs font-semibold ${effectiveChecklist.scrambledDone ? "text-emerald-700" : "text-gray-500"}`}>
+                          {effectiveChecklist.scrambledDone ? "Completed" : "Not done"}
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleOpenReflection}
+                    className="w-full rounded-2xl border border-gray-200 bg-white px-4 py-4 text-left transition hover:border-blue-200 hover:bg-blue-50"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-base font-bold text-gray-900">Post a Reflection</p>
+                        <p className="mt-1 text-sm text-gray-700">
+                          Scroll to this chapter's reflection question and answer it below.
+                        </p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
+                          Open
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+
+                {loadingChecklist ? (
+                  <p className="mt-3 text-xs text-gray-500">Checking your progress...</p>
+                ) : null}
+              </div>
+            </div>
+
+            {/* Go Back Home Button */}
+            <div className="flex justify-center">
+              <button
+                type="button"
+                onClick={handleGoHome}
+                className="text-sm md:text-base font-medium text-blue-700 hover:underline"
+              >
+                Go Back Home
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+// Full-screen level-up overlay component
+function LevelUpOverlay({
+  level,
+  onClose,
+}: {
+  level: number;
+  onClose: () => void;
+}) {
+  const levelDefinition = LEVEL_DEFINITIONS.find((definition) => definition.level === level);
+
+  useEffect(() => {
+    const duration = 2000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 99999 };
+
+    function randomInRange(min: number, max: number) {
+      return Math.random() * (max - min) + min;
+    }
+
+    const interval: NodeJS.Timeout = setInterval(function () {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      });
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      });
+    }, 250);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4">
+      <div className="relative text-center text-white">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white text-xl font-bold transition"
+          aria-label="Close"
+        >
+          Ã¢ÂÅ’
+        </button>
+
+        {/* Level Up Content */}
+        <div className="animate-in zoom-in duration-700">
+          <h2 className="text-6xl md:text-7xl font-extrabold mb-4 animate-in zoom-in duration-1000">
+            Level {level} Unlocked! Ã°Å¸Å½â€°
+          </h2>
+          {levelDefinition ? (
+            <p className="text-2xl md:text-3xl font-semibold text-white">
+              {levelDefinition.levelName}
+            </p>
+          ) : null}
+          <div className="text-2xl md:text-3xl font-semibold text-blue-300 animate-pulse">
+            {levelDefinition?.identityText ?? "Amazing progress!"}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
