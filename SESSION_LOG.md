@@ -1787,3 +1787,9 @@ Queue remaining: 25
 ## 2026-08-15T23:56:30Z (hourly chapter notes run)
 Chapter: 1 Chronicles 23 | Duration: 8 min | Sections: 7 | Cards: 36 | Status: pass
 Next up: 1 Chronicles 24
+
+## 2026-08-16T00:24:00Z (level2 upgrade run)
+level2 run: could not reach queue — network egress proxy blocks
+life-buddy-production.up.railway.app with a 403 policy denial (confirmed
+via curl and WebFetch). Same issue already flagged in MARCUS_HANDOFF.md on
+2026-08-15; still unresolved. No chapter pulled, nothing shipped.
