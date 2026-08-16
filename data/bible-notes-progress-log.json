@@ -23770,6 +23770,63 @@
           "at": "2026-08-16T16:56:51Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 2,
+      "startedAt": "2026-08-16T17:44:00Z",
+      "finishedAt": "2026-08-16T17:58:22Z",
+      "durationMinutes": 14,
+      "sections": 6,
+      "cards": 29,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Louis's priority queue detour (data/bible-notes-priority-queue.json, live chat 2026-08-16: skip ahead and write all of Proverbs now) still had entries, so this run continued it rather than jumping to normal forward progress: data/bible-notes-style-redo-remaining.json was empty, and the priority queue's remaining array had 'Proverbs 2' as the first entry (right after Proverbs 1 from the prior run). Built lib/proverbsTwoSource.ts from scratch following the lib/proverbsOneSource.ts and lib/genesisThirtyOneSource.ts pattern. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (22 verses). Proverbs 2 is one long conditional argument (if you seek wisdom this hard, then these things follow): the call to actively pursue wisdom like buried treasure, wisdom as a gift from the LORD who acts as a buckler and guards the paths of judgment, wisdom entering the heart as discretion and understanding that preserve a person, and two matched deliverances, from the froward man who walks in darkness and from the strange woman who has forsaken her marriage covenant, ending on the contrast between the upright who dwell in the land and the wicked who are cut off and rooted out. Chunked into 6 sections (1-4, 5-8, 9-11, 12-15, 16-19, 20-22) following the chapter's own if/then structure. Extended the proverbs preserveExactPhraseBodies condition in makePersonalPhraseSectionForBook from chapter 1 only to chapters 1 through 2, and wired a replaceStudySectionsForBookRange(\"proverbs\", 2, 2, PROVERBS_TWO_PERSONAL_SECTIONS) call after the existing Proverbs 1 call, so chapters 3-31 remain on the old bulk lib/proverbsOneToSixPersonalNotes.ts / lib/proverbsSevenToThirtyOnePersonalNotes.ts files until their own runs redo them. Density 29 cards for 22 verses (about 1.3 cards per verse), a step up from Proverbs 1's 1x density since the chapter's repeated Hebrew parallelism (the same idea said two ways) gave real material for extra cards explaining the poetic device itself, not just padding. scripts/check_bible_note_style.py was clean on the first run, no problems found. Manual section 13 eye check confirmed no repeated opening lines or structures across the 29 cards, all titles are exact KJV substrings in full title case, no hyphens/em dashes/semicolons/contractions, no banned filler or hedge words, exactly four bullets per card each landing on a distinct idea. Parser check passed via getBibleReaderStudySections('proverbs', 2) (6/6 sections, 29 cards, 22 verses, text rendered verbatim, no formatting artifacts). npx tsc --noEmit -p . clean with zero errors. Priority queue entry 'Proverbs 2' popped from the front of data/bible-notes-priority-queue.json remaining array as part of this commit. Next queue target is Proverbs 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T17:44:00Z"
+        },
+        {
+          "name": "priority queue checked (redo backlog empty), target chapter determined: Proverbs 2 (Louis priority detour, first entry in remaining)",
+          "at": "2026-08-16T17:48:49Z"
+        },
+        {
+          "name": "KJV text fetched for Proverbs 2 (22 verses) from raw.githubusercontent.com aruljohn/Bible-kjv mirror",
+          "at": "2026-08-16T17:49:06Z"
+        },
+        {
+          "name": "style spec docs/bible-study-note-style.md read in full",
+          "at": "2026-08-16T17:49:12Z"
+        },
+        {
+          "name": "reference files lib/proverbsOneSource.ts and lib/genesisThirtyOneSource.ts read for exact pattern",
+          "at": "2026-08-16T17:53:00Z"
+        },
+        {
+          "name": "source file lib/proverbsTwoSource.ts written (6 sections, 29 cards)",
+          "at": "2026-08-16T17:55:00Z"
+        },
+        {
+          "name": "style checker run, clean on first pass, no problems found",
+          "at": "2026-08-16T17:55:56Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 2, replaceStudySectionsForBookRange call added after Proverbs 1 call)",
+          "at": "2026-08-16T17:56:00Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('proverbs', 2): 6 sections, 29 cards)",
+          "at": "2026-08-16T17:56:32Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-16T17:58:08Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, priority-queue.json popped, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-16T17:58:22Z"
+        }
+      ]
     }
   ]
 }
