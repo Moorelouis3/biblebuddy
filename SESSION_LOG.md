@@ -1950,3 +1950,7 @@ onboarding_difficulty are written and never read anywhere. Only
 bible_experience_level is read, once, by ChatLouis.
 Still open: registered signups still get the 10-step onboarding - only
 guests are diverted. Not yet deployed.
+
+## 2026-08-16T07:53:30Z (hourly chapter notes run)
+Chapter: 2 Chronicles 2 | Duration: 12 min | Sections: 6 | Cards: 37 | Status: pass
+Next up: 2 Chronicles 3
