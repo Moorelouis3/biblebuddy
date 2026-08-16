@@ -421,6 +421,7 @@ import { PROVERBS_1_6_PERSONAL_SECTIONS } from "./proverbsOneToSixPersonalNotes"
 import { PROVERBS_7_31_PERSONAL_SECTIONS } from "./proverbsSevenToThirtyOnePersonalNotes";
 import { PROVERBS_ONE_PERSONAL_SECTIONS } from "./proverbsOneSource";
 import { PROVERBS_TWO_PERSONAL_SECTIONS } from "./proverbsTwoSource";
+import { PROVERBS_THREE_PERSONAL_SECTIONS } from "./proverbsThreeSource";
 import { ECCLESIASTES_1_5_PERSONAL_SECTIONS } from "./ecclesiastesOneToFivePersonalNotes";
 import { ECCLESIASTES_6_12_PERSONAL_SECTIONS } from "./ecclesiastesSixToTwelvePersonalNotes";
 import { SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS } from "./songOfSolomonOneToEightPersonalNotes";
@@ -769,7 +770,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 kings" && section.chapter >= 1 && section.chapter <= 25) ||
     (normalizeBook(book) === "1 chronicles" && section.chapter >= 1 && section.chapter <= 29) ||
     (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 10) ||
-    (normalizeBook(book) === "proverbs" && section.chapter >= 1 && section.chapter <= 2);
+    (normalizeBook(book) === "proverbs" && section.chapter >= 1 && section.chapter <= 3);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1429,6 +1430,10 @@ function applyPersonalProverbsOneStudySections() {
 
 function applyPersonalProverbsTwoStudySections() {
   replaceStudySectionsForBookRange("proverbs", 2, 2, PROVERBS_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalProverbsThreeStudySections() {
+  replaceStudySectionsForBookRange("proverbs", 3, 3, PROVERBS_THREE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalEcclesiastesOneThroughFiveStudySections() {
@@ -8761,6 +8766,7 @@ applyPersonalProverbsOneThroughSixStudySections();
 applyPersonalProverbsSevenThroughThirtyOneStudySections();
 applyPersonalProverbsOneStudySections();
 applyPersonalProverbsTwoStudySections();
+applyPersonalProverbsThreeStudySections();
 applyPersonalEcclesiastesOneThroughFiveStudySections();
 applyPersonalEcclesiastesSixThroughTwelveStudySections();
 applyPersonalSongOfSolomonOneThroughEightStudySections();
