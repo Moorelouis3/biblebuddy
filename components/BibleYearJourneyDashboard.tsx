@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import DashboardJourneyExperience from "./DashboardJourneyExperience";
 import { reconcileInstallPromptState } from "./HomeInstallBanner";
@@ -88,6 +88,10 @@ export default function BibleYearJourneyDashboard() {
   // keeps using the empty placeholder below and is untouched by this.
   const [devotionalChecklist, setDevotionalChecklist] = useState<ChecklistData | null>(null);
   const [isLoadingDevotionalChecklist, setIsLoadingDevotionalChecklist] = useState(false);
+  // Stable per-day key for the daily task cycle. Shared by the checklist fetch
+  // and the dashboard, which needs it to remember the next chapter when you
+  // press Continue.
+  const dashboardCycleStartedAt = useMemo(() => new Date().toISOString().slice(0, 10), []);
   const [isOwnerDashboard, setIsOwnerDashboard] = useState(false);
 
   const loadDashboardUser = useCallback(async () => {
@@ -197,8 +201,11 @@ export default function BibleYearJourneyDashboard() {
 
     void (async () => {
       try {
-        const today = new Date().toISOString().slice(0, 10);
-        const data = await fetchLouisDailyChecklistData(userId, profile.current_streak ?? 0, today);
+        const data = await fetchLouisDailyChecklistData(
+          userId,
+          profile.current_streak ?? 0,
+          dashboardCycleStartedAt,
+        );
         if (!cancelled) setDevotionalChecklist(data);
       } catch (error) {
         console.error("[DASHBOARD] Could not load the devotional checklist:", error);
@@ -249,7 +256,11 @@ export default function BibleYearJourneyDashboard() {
           activeTask={null as TaskState | null}
           onActiveTaskClose={() => {}}
           onActiveTaskProgressUpdated={() => {}}
-          cycleStartedAt={null}
+          // Was null, which silently disabled the Continue button on the
+          // "You completed <chapter>" panel - both branches of
+          // handleCompletedStudyAction require it - so finishing a chapter
+          // trapped you on that panel with no way forward.
+          cycleStartedAt={dashboardCycleStartedAt}
           suppressCompletedTasksPanel
           onHomeReset={() => {}}
           onOpenStore={() => {}}

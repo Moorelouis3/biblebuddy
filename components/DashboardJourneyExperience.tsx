@@ -2267,6 +2267,7 @@ export default function DashboardJourneyExperience({
   const [clearedDoneTaskKinds, setClearedDoneTaskKinds] = useState<Record<string, boolean>>({});
   const [progressCelebrationKey, setProgressCelebrationKey] = useState(0);
   const [showCompletionPanel, setShowCompletionPanel] = useState(false);
+  const completionPanelDismissedRef = useRef(false);
   const [suppressCompletionPanelForLoadedChapter, setSuppressCompletionPanelForLoadedChapter] = useState(false);
   const [completedTasksExpanded, setCompletedTasksExpanded] = useState(false);
   const [isLoadingNextChapter, setIsLoadingNextChapter] = useState(false);
@@ -3961,9 +3962,16 @@ export default function DashboardJourneyExperience({
 
   useEffect(() => {
     if (isChecklistSyncing || !allDone || queueTasks.length > 0 || isLoadingNextChapter) {
+      // Back to unfinished work - the panel is welcome again next time.
+      completionPanelDismissedRef.current = false;
       setShowCompletionPanel(false);
       return;
     }
+
+    // Once dismissed, stay dismissed for this chapter. Otherwise any re-render
+    // that touched these deps put the panel straight back and the dashboard
+    // became unusable.
+    if (completionPanelDismissedRef.current) return;
 
     const timer = window.setTimeout(() => {
       setShowCompletionPanel(true);
@@ -17240,7 +17248,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   </>
                 ) : (
                   <>
-                    <p className="relative mt-4 text-2xl font-black text-gray-950">Ã°Å¸Å½â€° Congratulations!</p>
+                    <p className="relative mt-4 text-2xl font-black text-gray-950">{"🎉"} Congratulations!</p>
                     <p className="mt-2 text-base font-bold text-gray-800">You completed {completedChapterLabel}.</p>
                     <p className="mt-1 text-sm font-medium leading-6 text-gray-500">
                       Ready to continue to {nextChapterLabel}?
@@ -17253,6 +17261,20 @@ Before we understand redemption, we need to understand what God made humanity fo
                   className="mt-5 inline-flex min-w-40 justify-center rounded-full bg-[#7BAFD4] px-6 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc] focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]/35"
                 >
                   {preloadedNextStudy ? `Start ${preloadedNextStudy.title}` : "Continue"}
+                </button>
+                {/* Always an exit. This panel shows itself whenever every task
+                    is done, and if Continue cannot work out a next chapter it
+                    used to sit there with no way past it, which locked people
+                    out of their own dashboard. */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    completionPanelDismissedRef.current = true;
+                    setShowCompletionPanel(false);
+                  }}
+                  className="mt-3 block w-full text-center text-xs font-bold text-gray-500 underline underline-offset-2 transition hover:text-gray-700"
+                >
+                  Back to my dashboard
                 </button>
               </div>
             ) : homePanelOverride ? null : (
