@@ -1,20 +1,16 @@
 "use client";
 
 import { useEffect } from "react";
-import { getBibleReaderStudySections, type BibleReaderStudySection } from "../lib/bibleReaderStudyNotes";
+import type { BibleReaderStudySection } from "../lib/bibleReaderStudyNotes";
 
 /**
- * Loads the whole-Bible study notes for a chapter.
+ * Fetches a chapter's study notes from the server.
  *
- * This exists purely to keep `lib/bibleReaderStudyNotes` out of the reader's
- * module graph. That aggregator pulls in 482 note files and builds a 33 MB
- * chunk, and the bundler preloads it for any route whose code references it,
- * even behind a dynamic import. Genesis 1 was paying for every other
- * chapter's notes before it could show a single verse.
- *
- * The reader pulls this component in with next/dynamic and only renders it
- * for chapters that actually need the aggregator, so Genesis 1, which reads
- * from its own small notes file, never requests the chunk at all.
+ * Nothing here imports lib/bibleReaderStudyNotes for its value, only its
+ * type, which is erased at build time. That is the whole point: importing it
+ * put all 482 note files, about 33 MB, into a JavaScript chunk that the
+ * bundler preloaded on every chapter of the reader, before a single verse
+ * could appear. The notes are data, so they come over the wire as data.
  */
 export default function BibleStudySectionsLoader({
   book,
@@ -26,7 +22,26 @@ export default function BibleStudySectionsLoader({
   onLoaded: (sections: BibleReaderStudySection[]) => void;
 }) {
   useEffect(() => {
-    onLoaded(getBibleReaderStudySections(book, chapter));
+    let cancelled = false;
+
+    void (async () => {
+      try {
+        const response = await fetch(
+          `/api/study-notes?book=${encodeURIComponent(book)}&chapter=${chapter}`,
+        );
+        if (!response.ok) throw new Error(`study notes responded ${response.status}`);
+
+        const data = (await response.json()) as { sections?: BibleReaderStudySection[] };
+        if (!cancelled) onLoaded(data.sections || []);
+      } catch (error) {
+        console.warn("[BIBLE_READER_NOTES] Could not load study sections:", error);
+        if (!cancelled) onLoaded([]);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
     // onLoaded is a fresh closure each render; the chapter is what matters.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [book, chapter]);

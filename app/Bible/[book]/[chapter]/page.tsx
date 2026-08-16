@@ -1396,10 +1396,19 @@ RULES:
     summaryLoadingRef.current = true;
 
     try {
-      const { getApprovedBibleYearDeepStudyMarkdownForChapter } = await import(
-        "../../../../lib/bibleYearApprovedDeepStudy"
-      );
-      const approvedBibleYearMarkdown = getApprovedBibleYearDeepStudyMarkdownForChapter(bookName, chapterNum);
+      // Fetched, not imported. Importing it reaches the whole-Bible notes and
+      // drags a 33 MB chunk onto every chapter of the reader.
+      let approvedBibleYearMarkdown = "";
+      try {
+        const deepStudyResponse = await fetch(
+          `/api/chapter-deep-study?book=${encodeURIComponent(bookName)}&chapter=${chapterNum}`,
+        );
+        if (deepStudyResponse.ok) {
+          approvedBibleYearMarkdown = ((await deepStudyResponse.json()) as { markdown?: string }).markdown || "";
+        }
+      } catch (deepStudyError) {
+        console.warn("[CHAPTER_SUMMARY] Could not load approved deep study:", deepStudyError);
+      }
       if (approvedBibleYearMarkdown.trim()) {
         return extractBigIdeaSummary(approvedBibleYearMarkdown) || "This chapter is part of the approved Bible in One Year study notes.";
       }
