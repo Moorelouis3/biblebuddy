@@ -2036,3 +2036,7 @@ wrong - the sandbox browser could not reach Supabase, so no data loaded.
 Louis confirmed his dashboard renders fine. Not a bug.
 Still open: pass 2 (devotional middle), pass 3 (Bible middle). The
 middles themselves are still Bible-in-One-Year shaped.
+
+## 2026-08-16T10:58:27Z (hourly chapter notes run)
+Chapter: 2 Chronicles 5 | Duration: 11 min | Sections: 6 | Cards: 27 | Status: pass
+Next up: 2 Chronicles 6
