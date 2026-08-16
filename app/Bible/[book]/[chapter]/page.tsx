@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import dynamic from "next/dynamic";
+import { hasInsightCards } from "../../../../lib/insightCards";
 
 /**
  * Chapter route.
@@ -19,7 +20,7 @@ import dynamic from "next/dynamic";
  * only the code it actually uses.
  */
 
-const GenesisOneReader = dynamic(() => import("../../../../components/GenesisOneReader"), {
+const ChapterInsightReader = dynamic(() => import("../../../../components/ChapterInsightReader"), {
   ssr: false,
   loading: () => <ChapterLoadingShell />,
 });
@@ -42,6 +43,8 @@ export default function ChapterPage() {
   const book = decodeURIComponent(String(params.book || "")).trim().toLowerCase();
   const chapter = Number(params.chapter);
 
-  if (book === "genesis" && chapter === 1) return <GenesisOneReader />;
+  // Any chapter with a phrase map gets the Insight Card reader. Everything
+  // else keeps the full reader, unchanged.
+  if (hasInsightCards(book, chapter)) return <ChapterInsightReader book={book} chapter={chapter} />;
   return <FullChapterReader />;
 }

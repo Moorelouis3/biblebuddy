@@ -28,16 +28,14 @@ import type {
   BibleReaderStudySection,
 } from "../lib/bibleReaderStudyNotes";
 import {
-  GENESIS_ONE_PHRASES,
   extractPhraseNote,
   findPhraseNoteEntry,
-  getGenesisOnePhraseColor,
-  getGenesisOnePhrasesForVerse,
-  getPhraseDisplayTitle,
+  getInsightCardColor,
+  getInsightCardTitle,
   getPhraseNoteIcon,
-  isGenesisOneStudyModeChapter,
-  type GenesisOnePhrase,
-} from "../lib/genesisOneStudyMode";
+  insightCardKey,
+  type InsightCardPhrase,
+} from "../lib/insightCards";
 
 interface VerseHighlighterProps {
   book: string;
@@ -49,6 +47,12 @@ interface VerseHighlighterProps {
   hideStudySections?: boolean;
   studySections?: BibleReaderStudySection[];
   onStudyNotesCreditBlocked?: () => void;
+  /**
+   * The chapter's Insight Card phrases. Supplied by the reader, so this
+   * component never needs to know which book or chapter has cards. Empty, or
+   * absent, means the chapter simply has no cards yet.
+   */
+  insightPhrases?: InsightCardPhrase[];
 }
 
 function getNearestScrollContainer(element: HTMLElement | null) {
@@ -216,10 +220,8 @@ function rangesOverlap(startA: number, endA: number, startB: number, endB: numbe
    resolved to offsets first and merged with the highlight offsets into one
    segment list, rather than being wrapped around matched substrings. */
 
-/** Where each phrase sits in reading order, which is what picks its colour. */
-const GENESIS_ONE_PHRASE_ORDER = new Map<GenesisOnePhrase, number>(
-  GENESIS_ONE_PHRASES.map((phrase, index) => [phrase, index] as const),
-);
+/** Stable identity, so the default prop never triggers a re-render. */
+const EMPTY_INSIGHT_PHRASES: InsightCardPhrase[] = [];
 
 type GenesisOneMark = {
   start: number;
@@ -227,7 +229,7 @@ type GenesisOneMark = {
   color: string;
   /** Card fill, painted behind the words while that card is open. */
   activeBg: string;
-  phrase: GenesisOnePhrase;
+  phrase: InsightCardPhrase;
   phraseKey: string;
 };
 
@@ -318,9 +320,6 @@ function scrollPhraseCardIntoView(card: HTMLElement | null) {
 }
 
 /** Stable identity for one Insight Card, used as the open/closed key. */
-function getGenesisOnePhraseKey(phrase: GenesisOnePhrase) {
-  return `${phrase.verse}:${phrase.noteTitle}`;
-}
 
 function escapeRegExp(value: string) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -347,20 +346,24 @@ function findUnderlineOffsets(text: string, underline: string) {
   return match ? { start: match.index, end: match.index + match[0].length } : null;
 }
 
-function getGenesisOneMarks(visibleText: string, verse: number): GenesisOneMark[] {
+function getInsightMarks(
+  visibleText: string,
+  versePhrases: InsightCardPhrase[],
+  orderOf: (phrase: InsightCardPhrase) => number,
+): GenesisOneMark[] {
   const marks: GenesisOneMark[] = [];
 
-  getGenesisOnePhrasesForVerse(verse).forEach((phrase) => {
+  versePhrases.forEach((phrase) => {
     const offsets = findUnderlineOffsets(visibleText, phrase.underline);
     if (!offsets) return;
 
-    const color = getGenesisOnePhraseColor(GENESIS_ONE_PHRASE_ORDER.get(phrase) ?? 0);
+    const color = getInsightCardColor(orderOf(phrase));
     marks.push({
       ...offsets,
       color: color.underline,
       activeBg: color.cardBg,
       phrase,
-      phraseKey: getGenesisOnePhraseKey(phrase),
+      phraseKey: insightCardKey(phrase),
     });
   });
 
@@ -461,7 +464,7 @@ function GenesisOneInsightCard({
   onToggle,
   onClose,
 }: {
-  phrase: GenesisOnePhrase;
+  phrase: InsightCardPhrase;
   colorIndex: number;
   icon: string;
   paragraphs: string[];
@@ -470,8 +473,8 @@ function GenesisOneInsightCard({
   onToggle: () => void;
   onClose?: () => void;
 }) {
-  const color = getGenesisOnePhraseColor(colorIndex);
-  const title = getPhraseDisplayTitle(phrase);
+  const color = getInsightCardColor(colorIndex);
+  const title = getInsightCardTitle(phrase);
   const cardRef = useRef<HTMLDivElement>(null);
   const scrolledForRef = useRef<string | null>(null);
 
@@ -1292,6 +1295,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   hideStudySections = false,
   studySections,
   onStudyNotesCreditBlocked,
+  insightPhrases = EMPTY_INSIGHT_PHRASES,
 }) => {
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [rangeMap, setRangeMap] = useState<Record<number, VerseHighlightRange[]>>({});
@@ -1313,12 +1317,12 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [studyNotesCreditPreview, setStudyNotesCreditPreview] = useState<CreditClientResult | null>(null);
   // Off by default: the chapter opens as plain Scripture with quiet
   // underlines, and an Insight Card appears only when one is tapped.
-  const [genesisOneStudyModeOn, setGenesisOneStudyModeOn] = useState(false);
-  const [genesisOneNotesLoading, setGenesisOneNotesLoading] = useState(false);
-  const genesisOneNotesLoadingRef = useRef(false);
-  const [openGenesisOnePhrase, setOpenGenesisOnePhrase] = useState<string | null>(null);
+  const [studyModeOn, setStudyModeOn] = useState(false);
+  const [insightNotesLoading, setInsightNotesLoading] = useState(false);
+  const insightNotesLoadingRef = useRef(false);
+  const [openInsightCard, setOpenInsightCard] = useState<string | null>(null);
   // How far down the chapter the Insight Cards have been mounted so far.
-  const [genesisOneCardCeiling, setGenesisOneCardCeiling] = useState(6);
+  const [insightCardCeiling, setInsightCardCeiling] = useState(6);
   const shareVerse = null as { number: number; text: string } | null;
   const shareContent = "";
   const shareSubmitting = false;
@@ -1376,14 +1380,13 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       return;
     }
 
-    // Genesis 1 does not preload the notes at all.
+    // A chapter with Insight Cards does not preload notes at all.
     //
-    // lib/bibleReaderStudyNotes pulls in 482 note files, about 650,000 lines
-    // and 35 MB of source, for every chapter in the Bible. The reader only
-    // needs it to fill in the body of a card that has actually been opened,
-    // and the card's icon, title and preview all come from the small phrase
-    // map. So it is fetched on the first tap instead of on arrival.
-    if (isGenesisOneStudyModeChapter(book, chapter)) {
+    // The whole-Bible notes are 482 files and about 35 MB of source. A card
+    // only needs them to fill in its body once it has been opened, and its
+    // icon, title and preview all come from the small phrase map. So they are
+    // fetched on the first tap instead of on arrival.
+    if (insightPhrases.length) {
       setBackgroundStudySections([]);
       return;
     }
@@ -1395,7 +1398,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     setNeedsAggregatedStudySections(true);
 
     return () => setNeedsAggregatedStudySections(false);
-  }, [book, chapter, hideStudySections, plainTextMode, studySections]);
+  }, [book, chapter, hideStudySections, plainTextMode, studySections, insightPhrases]);
 
 
   /**
@@ -1709,11 +1712,17 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     {},
   );
 
-  // Genesis 1 only. `available` decides whether the switch is offered at all;
-  // `active` decides whether this render uses Study Mode instead of the
-  // ordinary section boxes.
-  const genesisOneStudyAvailable =
-    !plainTextMode && !hideStudySections && isGenesisOneStudyModeChapter(book, chapter);
+  // A chapter has Insight Cards when the reader hands us its phrases. That is
+  // the only thing that decides it; no book or chapter is named here.
+  const insightCardsAvailable = !plainTextMode && !hideStudySections && insightPhrases.length > 0;
+
+  /** Reading order picks each card's colour. */
+  const insightCardOrder = useMemo(
+    () => new Map(insightPhrases.map((phrase, index) => [phrase, index] as const)),
+    [insightPhrases],
+  );
+  const orderOfInsightCard = (phrase: InsightCardPhrase) => insightCardOrder.get(phrase) ?? 0;
+  const insightPhrasesForVerse = (verse: number) => insightPhrases.filter((phrase) => phrase.verse === verse);
 
   function getStudySectionForVerse(verse: number) {
     return (
@@ -1736,7 +1745,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
    * — Genesis 1:29-31 currently sits inside the 1:26-28 section because its
    * heading in lib/genesisOneSource.ts is missing the leading "#".
    */
-  function resolveGenesisOnePhraseNote(phrase: GenesisOnePhrase) {
+  function resolveInsightCardNote(phrase: InsightCardPhrase) {
     const ownSection = getStudySectionForVerse(phrase.verse);
     const ordered = ownSection
       ? [ownSection, ...resolvedStudySections.filter((section) => section !== ownSection)]
@@ -1787,39 +1796,43 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   }
 
   /** Fetch the notes the first time an Insight Card is opened. */
-  async function ensureGenesisOneNotesLoaded() {
-    if (resolvedStudySections.length || genesisOneNotesLoadingRef.current) return;
-    genesisOneNotesLoadingRef.current = true;
-    setGenesisOneNotesLoading(true);
+  async function ensureInsightNotesLoaded() {
+    if (resolvedStudySections.length || insightNotesLoadingRef.current) return;
+    insightNotesLoadingRef.current = true;
+    setInsightNotesLoading(true);
 
     try {
-      // Genesis 1's own notes, not the whole-Bible aggregator.
-      const module = await import("../lib/genesisOneStudySections");
-      setBackgroundStudySections(module.getGenesisOneStudySections());
+      // Fetched as data, so the whole-Bible notes never enter the bundle.
+      const response = await fetch(
+        `/api/study-notes?book=${encodeURIComponent(book)}&chapter=${chapter}`,
+      );
+      if (!response.ok) throw new Error(`study notes responded ${response.status}`);
+      const data = (await response.json()) as { sections?: BibleReaderStudySection[] };
+      setBackgroundStudySections(data.sections || []);
     } catch (error) {
       console.warn("[BIBLE_READER_NOTES] Could not load study sections:", error);
-      genesisOneNotesLoadingRef.current = false;
+      insightNotesLoadingRef.current = false;
     } finally {
-      setGenesisOneNotesLoading(false);
+      setInsightNotesLoading(false);
     }
   }
 
-  async function handleToggleGenesisOnePhrase(phrase: GenesisOnePhrase, phraseKey: string) {
-    if (openGenesisOnePhrase === phraseKey) {
-      setOpenGenesisOnePhrase(null);
+  async function handleToggleInsightCard(phrase: InsightCardPhrase, phraseKey: string) {
+    if (openInsightCard === phraseKey) {
+      setOpenInsightCard(null);
       return;
     }
 
     // Open straight away; the body drops in when the notes arrive.
-    if (genesisOneStudyAvailable) {
-      setOpenGenesisOnePhrase(phraseKey);
-      void ensureGenesisOneNotesLoaded();
+    if (insightCardsAvailable) {
+      setOpenInsightCard(phraseKey);
+      void ensureInsightNotesLoaded();
     }
 
-    const { section: studySection, entries } = resolveGenesisOnePhraseNote(phrase);
+    const { section: studySection, entries } = resolveInsightCardNote(phrase);
     if (studySection && !(await ensureStudySectionUnlocked(studySection))) return;
 
-    setOpenGenesisOnePhrase(phraseKey);
+    setOpenInsightCard(phraseKey);
 
     if (studySection) {
       const itemIndex = entries.findIndex((entry) => findPhraseNoteEntry([entry], phrase.noteTitle) !== null);
@@ -1953,7 +1966,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
 
     // The underlines stay on with Study Mode off. Off just means the cards are
     // not listed out; tapping an underlined phrase opens that one card.
-    const marks = genesisOneStudyAvailable ? getGenesisOneMarks(visibleText, v.number) : [];
+    const marks = insightCardsAvailable
+      ? getInsightMarks(visibleText, insightPhrasesForVerse(v.number), orderOfInsightCard)
+      : [];
 
     if (!ranges.length && !marks.length) {
       return (
@@ -1987,7 +2002,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       const opensPhraseCard = Boolean(underline && !range);
       // While a phrase's card is open its words carry the card's own colour,
       // so it is obvious at a glance which part of the verse was tapped.
-      const phraseIsOpen = Boolean(underline && openGenesisOnePhrase === underline.phraseKey);
+      const phraseIsOpen = Boolean(underline && openInsightCard === underline.phraseKey);
 
       return (
         <span
@@ -2010,8 +2025,8 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
             // Faded in read mode, but the open phrase comes back to full
             // strength so it reads as the one you are looking at.
             borderBottom: underline
-              ? `${genesisOneStudyModeOn || phraseIsOpen ? "2px" : "1px"} dotted ${underline.color}${
-                  genesisOneStudyModeOn || phraseIsOpen ? "" : "59"
+              ? `${studyModeOn || phraseIsOpen ? "2px" : "1px"} dotted ${underline.color}${
+                  studyModeOn || phraseIsOpen ? "" : "59"
                 }`
               : undefined,
             paddingBottom: underline ? 1 : undefined,
@@ -2022,7 +2037,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
                 ? "Click to view this note"
                 : "Click to add a note, change color, or remove this highlight"
               : opensPhraseCard
-                ? `Open the ${getPhraseDisplayTitle(underline!.phrase)} Insight Card`
+                ? `Open the ${getInsightCardTitle(underline!.phrase)} Insight Card`
                 : undefined
           }
           onClick={
@@ -2033,7 +2048,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
                     // A drag that selected text is a highlight gesture, not a tap.
                     if (!window.getSelection()?.isCollapsed) return;
                     event.stopPropagation();
-                    void handleToggleGenesisOnePhrase(underline!.phrase, underline!.phraseKey);
+                    void handleToggleInsightCard(underline!.phrase, underline!.phraseKey);
                   }
                 : undefined
           }
@@ -2077,35 +2092,35 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
    * section and splitting strings again. Doing it once and reading from a map
    * is the difference between the reader feeling instant and feeling stuck.
    */
-  const genesisOnePhraseNotes = useMemo(() => {
+  const insightCardNotes = useMemo(() => {
     const map = new Map<string, { icon: string; paragraphs: string[] }>();
-    if (!genesisOneStudyAvailable || !resolvedStudySections.length) return map;
+    if (!insightCardsAvailable || !resolvedStudySections.length) return map;
 
-    GENESIS_ONE_PHRASES.forEach((phrase) => {
-      const { entries } = resolveGenesisOnePhraseNote(phrase);
-      map.set(getGenesisOnePhraseKey(phrase), {
+    insightPhrases.forEach((phrase) => {
+      const { entries } = resolveInsightCardNote(phrase);
+      map.set(insightCardKey(phrase), {
         icon:
           getPhraseNoteIcon(entries, phrase.noteTitle) ||
-          getNestedStudyItemIcon("key-phrases", getPhraseDisplayTitle(phrase)),
+          getNestedStudyItemIcon("key-phrases", getInsightCardTitle(phrase)),
         paragraphs: dropPreviewEcho(extractPhraseNote(entries, phrase.noteTitle), phrase.preview),
       });
     });
 
     return map;
-  }, [genesisOneStudyAvailable, resolvedStudySections]);
+  }, [insightCardsAvailable, resolvedStudySections]);
 
   /**
    * Scripture paints immediately; the cards fill in behind it a few verses at
    * a time during idle frames, rather than mounting all 87 at once.
    */
   useEffect(() => {
-    if (!genesisOneStudyAvailable || !genesisOneStudyModeOn) return;
-    if (genesisOneCardCeiling >= verses.length) return;
+    if (!insightCardsAvailable || !studyModeOn) return;
+    if (insightCardCeiling >= verses.length) return;
     if (typeof window === "undefined") return;
 
     let cancelled = false;
     const bump = () => {
-      if (!cancelled) setGenesisOneCardCeiling((current) => Math.min(current + 6, verses.length));
+      if (!cancelled) setInsightCardCeiling((current) => Math.min(current + 6, verses.length));
     };
 
     // A timer rather than requestIdleCallback: idle callbacks are starved
@@ -2115,30 +2130,30 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       cancelled = true;
       window.clearTimeout(timeoutId);
     };
-  }, [genesisOneStudyAvailable, genesisOneStudyModeOn, genesisOneCardCeiling, verses.length]);
+  }, [insightCardsAvailable, studyModeOn, insightCardCeiling, verses.length]);
 
-  function renderGenesisOnePhraseCards(verse: number) {
-    const allPhrases = getGenesisOnePhrasesForVerse(verse);
+  function renderInsightCards(verse: number) {
+    const allPhrases = insightPhrasesForVerse(verse);
     // Study Mode on lists every card under the verse. Off shows nothing until
     // the reader taps an underlined phrase, then just that one card.
-    const phrases = genesisOneStudyModeOn
+    const phrases = studyModeOn
       ? allPhrases
-      : allPhrases.filter((phrase) => getGenesisOnePhraseKey(phrase) === openGenesisOnePhrase);
+      : allPhrases.filter((phrase) => insightCardKey(phrase) === openInsightCard);
     if (!phrases.length) return null;
 
     // Verses past the ceiling have not been reached by the background fill
     // yet. A tapped card always renders, wherever it is.
-    if (genesisOneStudyModeOn && verse > genesisOneCardCeiling) return null;
+    if (studyModeOn && verse > insightCardCeiling) return null;
 
     return (
       <div className="mb-4 mt-3 flex flex-col gap-2.5">
         {phrases.map((phrase) => {
-          const phraseKey = getGenesisOnePhraseKey(phrase);
-          const colorIndex = GENESIS_ONE_PHRASE_ORDER.get(phrase) ?? 0;
+          const phraseKey = insightCardKey(phrase);
+          const colorIndex = orderOfInsightCard(phrase);
           // Title and preview come from the phrase map and are ready straight
           // away. The note body arrives with the notes and only matters once
           // the card is opened.
-          const resolved = genesisOnePhraseNotes.get(phraseKey);
+          const resolved = insightCardNotes.get(phraseKey);
 
           return (
             <GenesisOneInsightCard
@@ -2147,16 +2162,16 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
               colorIndex={colorIndex}
               // Straight from the phrase map, so a card is complete without
               // the notes having loaded.
-              icon={phrase.icon || resolved?.icon || getNestedStudyItemIcon("key-phrases", getPhraseDisplayTitle(phrase))}
+              icon={phrase.icon || resolved?.icon || getNestedStudyItemIcon("key-phrases", getInsightCardTitle(phrase))}
               paragraphs={resolved?.paragraphs || []}
-              loadingNote={genesisOneNotesLoading && !resolved}
-              isOpen={openGenesisOnePhrase === phraseKey}
+              loadingNote={insightNotesLoading && !resolved}
+              isOpen={openInsightCard === phraseKey}
               onToggle={() => {
-                void handleToggleGenesisOnePhrase(phrase, phraseKey);
+                void handleToggleInsightCard(phrase, phraseKey);
               }}
               // With Study Mode off the card was summoned by tapping the verse,
               // so it needs its own way out.
-              onClose={genesisOneStudyModeOn ? undefined : () => setOpenGenesisOnePhrase(null)}
+              onClose={studyModeOn ? undefined : () => setOpenInsightCard(null)}
             />
           );
         })}
@@ -2176,12 +2191,12 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
         }
       `}</style>
 
-      {genesisOneStudyAvailable ? (
+      {insightCardsAvailable ? (
         <div className="mb-4 flex items-center justify-between gap-3 rounded-[14px] border border-slate-200 bg-white px-3.5 py-3">
           <span className="min-w-0">
             <span className="block text-[0.95rem] font-black leading-5 text-slate-900">Study Mode</span>
             <span className="mt-0.5 block text-xs font-semibold leading-5 text-slate-500">
-              {genesisOneStudyModeOn
+              {studyModeOn
                 ? "Every Insight Card is listed under its verse."
                 : "Tap any underlined phrase below to open its Insight Card."}
             </span>
@@ -2189,20 +2204,20 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
           <button
             type="button"
             role="switch"
-            aria-checked={genesisOneStudyModeOn}
+            aria-checked={studyModeOn}
             aria-label="Study Mode"
             onClick={() => {
-              setGenesisOneStudyModeOn((on) => !on);
-              setOpenGenesisOnePhrase(null);
+              setStudyModeOn((on) => !on);
+              setOpenInsightCard(null);
             }}
             className={`relative h-[30px] w-[52px] shrink-0 rounded-full transition-colors ${
-              genesisOneStudyModeOn ? "bg-emerald-500" : "bg-slate-300"
+              studyModeOn ? "bg-emerald-500" : "bg-slate-300"
             }`}
           >
             <span
               aria-hidden="true"
               className={`absolute left-[3px] top-[3px] h-6 w-6 rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.25)] transition-transform ${
-                genesisOneStudyModeOn ? "translate-x-[22px]" : ""
+                studyModeOn ? "translate-x-[22px]" : ""
               }`}
             />
           </button>
@@ -2211,7 +2226,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
 
       {verses.map((v) => (
         <React.Fragment key={v.number}>
-          {plainTextMode || hideStudySections || genesisOneStudyAvailable ? null : studySectionPlacement === "start" ? (studySectionsByVerse[v.number] || []).map((studySection) => (
+          {plainTextMode || hideStudySections || insightCardsAvailable ? null : studySectionPlacement === "start" ? (studySectionsByVerse[v.number] || []).map((studySection) => (
             <InlineStudySection
               key={`inline-study-${studySection.reference}`}
               section={studySection}
@@ -2249,7 +2264,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
               }}
             />
           )) : null}
-          {genesisOneStudyAvailable ? (
+          {insightCardsAvailable ? (
             /* Study Mode runs the number inline with the text rather than in
                its own column. The number stays a sibling of the text span, not
                a child of it, so it never enters the offsets a highlight is
@@ -2257,7 +2272,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
             <div
               // With the cards listed out they already separate the verses.
               // In read mode the verses run back to back, so they need the gap.
-              className={`group verse-line ${genesisOneStudyModeOn ? "mb-1.5" : "mb-4"}`}
+              className={`group verse-line ${studyModeOn ? "mb-1.5" : "mb-4"}`}
               style={{
                 backgroundColor: highlightMap[v.number] ? getColorCode(highlightMap[v.number], surface) : "transparent",
                 borderRadius: highlightMap[v.number] ? 4 : 0,
@@ -2313,8 +2328,8 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
               {/* Share to Feed button — visible on row hover */}
             </div>
           )}
-          {genesisOneStudyAvailable ? renderGenesisOnePhraseCards(v.number) : null}
-          {plainTextMode || hideStudySections || genesisOneStudyAvailable ? null : studySectionPlacement === "end" ? (studySectionsByVerse[v.number] || []).map((studySection) => (
+          {insightCardsAvailable ? renderInsightCards(v.number) : null}
+          {plainTextMode || hideStudySections || insightCardsAvailable ? null : studySectionPlacement === "end" ? (studySectionsByVerse[v.number] || []).map((studySection) => (
             <InlineStudySection
               key={`inline-study-${studySection.reference}`}
               section={studySection}

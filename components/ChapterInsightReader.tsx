@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { VerseHighlighter } from "./VerseHighlighter";
 import BrowserTtsButton from "./BrowserTtsButton";
-import { GENESIS_ONE_KJV } from "../lib/genesisOneText";
+import { getBundledChapter } from "../lib/bundledChapterText";
+import { loadInsightCards, type InsightCardPhrase } from "../lib/insightCards";
 import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
 import { getBookTotalChapters, isChapterCompleted, markChapterDone } from "../lib/readingProgress";
@@ -30,8 +31,6 @@ const TriviaGamePlayer = dynamic(() => import("./TriviaGamePlayer"), { ssr: fals
 const ScrambledGamePlayer = dynamic(() => import("./ScrambledGamePlayer"), { ssr: false });
 const CommentSection = dynamic(() => import("./comments/CommentSection"), { ssr: false });
 
-const BOOK = "Genesis";
-const CHAPTER = 1;
 
 type Verse = { number: number; text: string };
 type Translation = "kjv" | "asv" | "web";
@@ -49,14 +48,22 @@ const ALL_BIBLE_BOOKS = [
   "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation",
 ];
 
-export default function GenesisOneReader() {
+export default function ChapterInsightReader({ book, chapter }: { book: string; chapter: number }) {
   const router = useRouter();
+
+  // Display casing, so "genesis" out of a URL still reads as "Genesis".
+  const BOOK = useMemo(
+    () => book.split(" ").map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(" "),
+    [book],
+  );
+  const CHAPTER = chapter;
+  /** Slug the games and trivia catalogue use, e.g. "1 Samuel" -> "1samuel". */
+  const bookSlug = useMemo(() => book.toLowerCase().replace(/\s+/g, ""), [book]);
 
   const [tab, setTab] = useState<Tab>("scripture");
   const [translation, setTranslation] = useState<Translation>("kjv");
-  const [verses, setVerses] = useState<Verse[]>(() =>
-    GENESIS_ONE_KJV.map((v) => ({ number: v.verse, text: v.text })),
-  );
+  const [verses, setVerses] = useState<Verse[]>(() => getBundledChapter(book, chapter));
+  const [insightPhrases, setInsightPhrases] = useState<InsightCardPhrase[]>([]);
 
   const [chapterMenuOpen, setChapterMenuOpen] = useState(false);
   const [translationMenuOpen, setTranslationMenuOpen] = useState(false);
@@ -74,15 +81,17 @@ export default function GenesisOneReader() {
 
   // Other translations are not bundled, so they are fetched. KJV is instant.
   useEffect(() => {
-    if (translation === "kjv") {
-      setVerses(GENESIS_ONE_KJV.map((v) => ({ number: v.verse, text: v.text })));
+    const bundled = translation === "kjv" ? getBundledChapter(book, chapter) : [];
+    if (bundled.length) {
+      setVerses(bundled);
       return;
     }
 
     let cancelled = false;
     void (async () => {
       try {
-        const response = await fetch(`https://bible-api.com/genesis+1?translation=${translation}`);
+        const reference = `${book.toLowerCase().replace(/\s+/g, "+")}+${chapter}`;
+        const response = await fetch(`https://bible-api.com/${reference}?translation=${translation}`);
         if (!response.ok) throw new Error(`bible-api responded ${response.status}`);
         const data = (await response.json()) as { verses?: Array<{ verse: number; text: string }> };
         if (!cancelled && data.verses?.length) {
@@ -96,7 +105,20 @@ export default function GenesisOneReader() {
     return () => {
       cancelled = true;
     };
-  }, [translation]);
+  }, [translation, book, chapter]);
+
+  // This chapter's Insight Cards, loaded on their own so adding chapters never
+  // grows what any single chapter downloads.
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      const phrases = await loadInsightCards(book, chapter);
+      if (!cancelled) setInsightPhrases(phrases);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [book, chapter]);
 
   useEffect(() => {
     void (async () => {
@@ -105,7 +127,7 @@ export default function GenesisOneReader() {
       setUserId(id);
       if (id) setCompleted(await isChapterCompleted(id, BOOK, CHAPTER));
     })();
-  }, []);
+  }, [BOOK, CHAPTER]);
 
   // The games are only needed once their tab is opened.
   useEffect(() => {
@@ -116,11 +138,11 @@ export default function GenesisOneReader() {
       try {
         if (tab === "trivia" && !triviaPack) {
           const { getTriviaChapter } = await import("../lib/triviaGameData");
-          if (!cancelled) setTriviaPack(getTriviaChapter("genesis", CHAPTER));
+          if (!cancelled) setTriviaPack(getTriviaChapter(book.toLowerCase().replace(/\s+/g, ""), CHAPTER));
         }
         if (tab === "scrambled" && !scrambledPack) {
           const { getScrambledChapter } = await import("../lib/scrambledGameData");
-          if (!cancelled) setScrambledPack(getScrambledChapter("genesis", CHAPTER));
+          if (!cancelled) setScrambledPack(getScrambledChapter(book.toLowerCase().replace(/\s+/g, ""), CHAPTER));
         }
       } catch (error) {
         console.warn("[GENESIS_ONE] Could not load game pack:", error);
@@ -347,7 +369,7 @@ export default function GenesisOneReader() {
                 backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
                 variant="transport"
               />
-              <VerseHighlighter book={BOOK} chapter={CHAPTER} verses={verses} />
+              <VerseHighlighter book={BOOK} chapter={CHAPTER} verses={verses} insightPhrases={insightPhrases} />
             </div>
 
             <button
@@ -375,7 +397,7 @@ export default function GenesisOneReader() {
               </div>
 
               <CommentSection
-                articleSlug={`bible-chapter-genesis-${CHAPTER}`}
+                articleSlug={`bible-chapter-${book.toLowerCase().replace(/\s+/g, "-")}-${CHAPTER}`}
                 headingText={`${BOOK} ${CHAPTER} Discussion`}
                 placeholderText="Start Typing Here"
                 submitButtonText="Post Comment"
@@ -389,7 +411,7 @@ export default function GenesisOneReader() {
             {triviaPack ? (
               <TriviaGamePlayer
                 bookName={BOOK}
-                bookSlug="genesis"
+                bookSlug={bookSlug}
                 chapter={triviaPack}
                 compact
                 hideSkipButton
@@ -406,7 +428,7 @@ export default function GenesisOneReader() {
             {scrambledPack ? (
               <ScrambledGamePlayer
                 bookName={BOOK}
-                bookSlug="genesis"
+                bookSlug={bookSlug}
                 chapter={scrambledPack}
                 compact
                 onClose={() => setTab("scripture")}
