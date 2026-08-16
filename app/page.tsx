@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import StartStudyingButton from "@/components/StartStudyingButton";
+import { getCaptchaToken } from "@/lib/captcha";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import { supabase } from "@/lib/supabaseClient";
@@ -780,8 +781,10 @@ export default function LandingPage() {
       const { data: currentSessionData } = await supabase.auth.getSession();
       let guestUserId = currentSessionData.session?.user?.id || null;
       if (!guestUserId) {
+        const landingCaptchaToken = await getCaptchaToken();
         const { data: anonymousData, error: anonymousError } = await supabase.auth.signInAnonymously({
           options: {
+            ...(landingCaptchaToken ? { captchaToken: landingCaptchaToken } : {}),
             data: {
               display_name: guestName,
               landing_questionnaire: onboardingPayload,

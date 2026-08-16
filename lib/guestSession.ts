@@ -1,6 +1,7 @@
 "use client";
 
 import { supabase } from "./supabaseClient";
+import { getCaptchaToken } from "./captcha";
 
 /**
  * Guest sessions — study without signing up.
@@ -76,8 +77,15 @@ async function createGuest(source: string): Promise<GuestSessionResult> {
     return { ok: true, userId: existingId, created: false };
   }
 
+  // Bot protection. Returns undefined when Turnstile is not configured, in
+  // which case this behaves exactly as before.
+  const captchaToken = await getCaptchaToken();
+
   const { data, error } = await supabase.auth.signInAnonymously({
-    options: { data: { guest_entry_source: source } },
+    options: {
+      data: { guest_entry_source: source },
+      ...(captchaToken ? { captchaToken } : {}),
+    },
   });
 
   if (error) {

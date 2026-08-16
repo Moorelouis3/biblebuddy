@@ -1990,3 +1990,13 @@ subscriptions, Supabase invoice.
 ## 2026-08-16T08:57:14Z (hourly chapter notes run)
 Chapter: 2 Chronicles 3 | Duration: 11 min | Sections: 7 | Cards: 33 | Status: pass
 Next up: 2 Chronicles 4
+
+## 2026-08-16 (captcha)
+Done: Added Cloudflare Turnstile support for guest sign-ins (lib/captcha.ts),
+wired into both guest creation paths. Ships INERT - with no
+NEXT_PUBLIC_TURNSTILE_SITE_KEY it returns undefined and sign-in is unchanged,
+so this cannot break anything before the keys exist. Fails open with an 8s
+timeout so a blocked Cloudflare never hangs the button.
+Still open: Louis needs to get free Turnstile keys, put the site key in Vercel
+FIRST, then enable captcha in Supabase with the secret key. Doing it in the
+other order breaks guest sign-in in between. Steps in docs/captcha-setup.md.
