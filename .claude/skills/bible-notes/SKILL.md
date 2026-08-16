@@ -5,6 +5,20 @@ description: The complete Bible Buddy process for writing chapter study notes (s
 
 # Bible Notes — the Bible Buddy process
 
+## ⚠️ FORMAT UPDATE (2026-08-17) — read this first
+
+Genesis 1 is now the standard for every chapter. Chapters are no longer built
+as a few section boxes of phrase notes. They are built as **Insight Cards**:
+two to three per verse, eighty or more per chapter, each tied to the exact KJV
+words it explains.
+
+Read **`docs/INSIGHT_CARDS_STANDARD.md`** in full before building or rewriting
+any chapter. It covers the coverage bar, how to reuse notes that already
+exist, where to write the ones that are missing, the per chapter data files,
+and the two rules that must never be broken.
+
+The note voice is still governed by `docs/bible-study-note-style.md`.
+
 ## ⚠️ STYLE UPDATE (2026-07-31) — read this before anything else below
 
 Louis replaced the card-writing style with a stricter, hand-written spec:
