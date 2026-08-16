@@ -2271,6 +2271,9 @@ export default function DashboardJourneyExperience({
   const [showCompletionPanel, setShowCompletionPanel] = useState(false);
   const completionPanelDismissedRef = useRef(false);
   const [devotionalOpenSupportCard, setDevotionalOpenSupportCard] = useState<"notes" | "trivia" | "discussion" | null>(null);
+  // Today's Lesson is a drop-down, closed until you open it. The audio is the
+  // lesson; the text is there if you want to read along.
+  const [devotionalLessonOpen, setDevotionalLessonOpen] = useState(false);
   const [suppressCompletionPanelForLoadedChapter, setSuppressCompletionPanelForLoadedChapter] = useState(false);
   const [completedTasksExpanded, setCompletedTasksExpanded] = useState(false);
   const [isLoadingNextChapter, setIsLoadingNextChapter] = useState(false);
@@ -12562,18 +12565,34 @@ Before we understand redemption, we need to understand what God made humanity fo
         <div className={`mt-4 rounded-[22px] border px-4 py-4 text-center shadow-[0_12px_24px_rgba(38,63,99,0.08)] ${
           readingComplete ? "border-emerald-200 bg-emerald-50/80" : "border-[var(--bb-card-border,#dbe7f4)] bg-white"
         }`}>
-          <p className={`text-[12px] font-black uppercase tracking-[0.22em] ${readingComplete ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>Today&apos;s Lesson</p>
+          <button
+            type="button"
+            onClick={() => setDevotionalLessonOpen((open) => !open)}
+            className="flex w-full items-center justify-center gap-2"
+            aria-expanded={devotionalLessonOpen}
+          >
+            <span className={`text-[12px] font-black uppercase tracking-[0.22em] ${readingComplete ? "text-emerald-700" : "text-[var(--bb-accent,#2f7fe8)]"}`}>
+              Today&apos;s Lesson
+            </span>
+            <span className={`text-[var(--bb-accent,#2f7fe8)] transition-transform ${devotionalLessonOpen ? "rotate-180" : ""}`} aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </span>
+          </button>
           {/* Rendered through the same markdown component the devotional page
               uses. Dumping the raw text made it unreadable. */}
-          <div className="mx-auto mt-2 max-w-[34rem] text-left text-[15px] font-medium leading-7 text-[#20345f] sm:text-[16px]">
-            {overview ? (
-              <ChapterNotesMarkdown compactMobile databaseTermMode="light">
-                {overview}
-              </ChapterNotesMarkdown>
-            ) : (
-              <p className="text-center">Today&apos;s lesson is being prepared.</p>
-            )}
-          </div>
+          {devotionalLessonOpen ? (
+            <div className="mx-auto mt-3 max-w-[34rem] text-left text-[15px] font-medium leading-7 text-[#20345f] sm:text-[16px]">
+              {overview ? (
+                <ChapterNotesMarkdown compactMobile databaseTermMode="light">
+                  {overview}
+                </ChapterNotesMarkdown>
+              ) : (
+                <p className="text-center">Today&apos;s lesson is being prepared.</p>
+              )}
+            </div>
+          ) : null}
         </div>
 
         <div className="mt-4">
