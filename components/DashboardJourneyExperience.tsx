@@ -31,6 +31,7 @@ import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
 import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
 import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
+import { getStudyUnitLabel, resolveStudyMode, usesUnifiedStudyShell } from "@/lib/studyMode";
 import { trackDeepStudyInterestOnce, trackStudyNotesSectionOpened, trackStudyNotesViewed } from "../lib/deepStudyInterestTracking";
 import { getBibleBuddyLocalDayKey, rememberLouisDailyTaskTarget } from "../lib/louisDailyFlow";
 import { getBookTotalChapters, getCompletedChapters, getCompletedChaptersByBooks, markChapterDone } from "../lib/readingProgress";
@@ -2878,6 +2879,10 @@ export default function DashboardJourneyExperience({
   const allDone = checklistData?.allDone ?? false;
   const canFreeUserChooseNewStudy = !isPaidUser && allDone && !checklistData?.nextJourneyTarget;
 
+  // How this person chose to read. One shell, three middles - see lib/studyMode.ts.
+  const studyMode = resolveStudyMode(profile?.preferred_study_mode);
+  const studyShellUnified = usesUnifiedStudyShell(studyMode);
+
   const getReferralDisplayName = useCallback((referral: ShareRewardsReferral | null) => {
     return referral?.display_name || referral?.username || "Your friend";
   }, []);
@@ -3169,6 +3174,14 @@ export default function DashboardJourneyExperience({
   const currentDevotionalTask = visibleTasks.find((task) => task.kind === "devotional") ?? null;
   const currentDevotionalId = currentDevotionalTask?.devotionalId || "";
   const currentDevotionalTitle = currentDevotionalTask?.devotionalTitle || null;
+  // The devotional middle: same shell as Bible in One Year, counting the days
+  // of THEIR devotional instead of the days of the year plan.
+  const devotionalDashboardActive =
+    studyShellUnified &&
+    studyMode === "devotional" &&
+    !bibleYearDashboardActive &&
+    !bibleYearSeriesActive &&
+    Boolean(currentDevotionalTask);
   const currentStudyCover = getDashboardStudyCover(currentDevotionalTitle);
   const nextStudyHandoff = getBibleJourneyHandoff(currentDevotionalTitle);
   const dashboardCompletedTasks = bibleYearDashboardTasks ? bibleYearDashboardTasks.filter((task) => task.done).length : completedTasks;
@@ -3285,8 +3298,8 @@ export default function DashboardJourneyExperience({
       : null;
   const currentStudySummary = getDashboardStudySummary(currentDevotionalTitle, null);
   const currentDashboardDayLabel = activeBibleYearDashboardDay
-    ? `Day ${activeBibleYearDashboardDay.dayNumber}`
-    : `Day ${currentDevotionalTask?.devotionalDayNumber || 1}`;
+    ? getStudyUnitLabel("bible_year", activeBibleYearDashboardDay.dayNumber)
+    : getStudyUnitLabel(studyMode, currentDevotionalTask?.devotionalDayNumber || 1);
   const queueTasks = dashboardTaskSource.filter((task) => !task.done || celebratingTasks[task.kind]);
   const completedTrackerTasks = dashboardTaskSource.filter((task) => task.done && !celebratingTasks[task.kind]);
   const activeCompletedTrackerTask = activeTask
@@ -6637,7 +6650,7 @@ export default function DashboardJourneyExperience({
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block text-[10px] font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
-                  {bibleYearDashboardActive ? currentDashboardDayLabel : "Current Study"}
+                  {bibleYearDashboardActive || devotionalDashboardActive ? currentDashboardDayLabel : "Current Study"}
                 </span>
                 <span className="mt-0.5 block truncate text-sm font-black text-[var(--bb-text-primary,#111827)]">
                   {currentDevotionalTitle || "Choose Your Bible Study"}
@@ -12188,7 +12201,10 @@ Before we understand redemption, we need to understand what God made humanity fo
     );
   }
 
-  function renderBibleYearHomeProgressSnapshot(day: GenesisBibleYearDay) {
+  // Shared by every study mode. The streak and the "% of the Bible" bar come
+  // from the user's completed_chapters, not from the Bible in One Year plan,
+  // so this reads correctly for devotional and chapter readers too.
+  function renderStudyProgressSnapshot() {
     const report = effectiveBibleYearReport;
     const overallPercent = report?.overallPercent ?? 0;
     const currentStreak = report?.currentStreak ?? Math.max(0, profile?.current_streak ?? 0);
@@ -16422,12 +16438,15 @@ Before we understand redemption, we need to understand what God made humanity fo
             {!homePanelOverride && !deepStudyFocusActive && !showOfficialHomeMission && !bibleYearDashboardActive ? (
               <>
               <HomeInstallBanner />
-              <div className="mx-auto w-full max-w-xl px-1">
+              <div className={`mx-auto w-full max-w-xl px-1 ${devotionalDashboardActive ? "text-center" : ""}`}>
                 <h1 className="text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-3xl">
                   {dashboardGreeting}, {getFirstDashboardName(profile?.display_name || profile?.username || userName)}
                 </h1>
                 <div className="mt-3">{renderOwnerOnboardingControls()}</div>
               </div>
+              {/* Same streak + Bible progress hero the Bible in One Year middle
+                  gets. Identical for everyone; only the middle below differs. */}
+              {devotionalDashboardActive && !shouldShowCompletionPanel ? renderStudyProgressSnapshot() : null}
               </>
             ) : null}
             {isAnonymousGuest && !homePanelOverride && !deepStudyFocusActive ? (
@@ -16547,7 +16566,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     {dashboardGreeting}, {getFirstDashboardName(profile?.display_name || profile?.username || userName)}
                   </h1>
                 </div>
-                {renderBibleYearHomeProgressSnapshot(activeBibleYearDashboardDay)}
+                {renderStudyProgressSnapshot()}
                 <section data-bb-dashboard-tour-disabled="journey-map" className="dashboard-inline-task hidden mb-3 overflow-hidden rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent)_32%,transparent)] bg-[color-mix(in_srgb,var(--bb-card)_82%,transparent)] text-[var(--bb-text-primary)] shadow-[0_14px_34px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-xl">
                   <button
                     type="button"
