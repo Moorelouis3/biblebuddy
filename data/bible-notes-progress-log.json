@@ -23880,6 +23880,55 @@
           "at": "2026-08-16T18:57:14Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 4,
+      "startedAt": "2026-08-16T19:47:09Z",
+      "finishedAt": "2026-08-16T19:55:27Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 52,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Checked data/bible-notes-priority-queue.json first per the current bible-notes SKILL.md ordering: Louis live-chat detour (skip ahead and write all of Proverbs now) still had entries, with Proverbs 4 first (right after Proverbs 3 from the prior run). data/bible-notes-style-redo-remaining.json was empty, so this stayed a normal new-chapter write, not a redo. Built lib/proverbsFourSource.ts from scratch following the lib/proverbsThreeSource.ts and lib/genesisThirtyOneSource.ts pattern. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (27 verses). Proverbs 4 moves through Solomon recalling his own father David teaching him as a boy (get wisdom, wear her crown), a return to direct singular address promising steady steps that will not stumble, a warning against the path of the wicked who cannot sleep without doing harm, a short two verse contrast of the just path as growing light against the wicked way as darkness, the central command to guard the heart above everything since out of it are the issues of life, and a closing section watching mouth, eyes, and feet. Chunked into 7 sections (1-3, 4-9, 10-13, 14-17, 18-19, 20-23, 24-27) following those natural movements, keeping the light versus darkness image (18-19) as its own short section the way Proverbs 3 kept its creation aside (19-20) separate rather than folding it into a longer block. Extended the proverbs preserveExactPhraseBodies condition in makePersonalPhraseSectionForBook from chapters 1-3 to chapters 1-4, and wired a replaceStudySectionsForBookRange(\"proverbs\", 4, 4, PROVERBS_FOUR_PERSONAL_SECTIONS) call after the existing Proverbs 3 call, so chapters 5-31 remain on the old bulk lib/proverbsOneToSixPersonalNotes.ts / lib/proverbsSevenToThirtyOnePersonalNotes.ts files until their own runs redo them. Style checker flagged 2 over-length bullets (9 words, over the 3-8 word cap) on the first pass, trimmed both to fit and reran clean. Parser check and tsc --noEmit -p . both passed clean. Popped Proverbs 4 from the front of data/bible-notes-priority-queue.json remaining array as part of this same commit; Proverbs 5 is now first.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T19:47:09Z"
+        },
+        {
+          "name": "target chapter determined: Proverbs 4 (priority queue detour, first entry in data/bible-notes-priority-queue.json remaining array; style-redo backlog empty)",
+          "at": "2026-08-16T19:47:15Z"
+        },
+        {
+          "name": "real KJV text fetched for Proverbs 4 (27 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-08-16T19:48:10Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full",
+          "at": "2026-08-16T19:48:50Z"
+        },
+        {
+          "name": "source file lib/proverbsFourSource.ts written (7 sections, 52 cards)",
+          "at": "2026-08-16T19:53:30Z"
+        },
+        {
+          "name": "style checker run: 2 bullet-length problems found, fixed, reran clean",
+          "at": "2026-08-16T19:54:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 4, replaceStudySectionsForBookRange call added after Proverbs 3 call)",
+          "at": "2026-08-16T19:54:30Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('proverbs', 4): 7 sections, 52 cards)",
+          "at": "2026-08-16T19:55:12Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-16T19:55:27Z"
+        }
+      ]
     }
   ]
 }
