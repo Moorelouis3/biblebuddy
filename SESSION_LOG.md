@@ -1986,3 +1986,7 @@ via replaceAll, so caching would need restructuring a 1,000-line prompt and
 risk changing how Louis talks, to save part of a dollar.
 Still open: captcha on anonymous sign-ins (Supabase setting + code), Stripe
 subscriptions, Supabase invoice.
+
+## 2026-08-16T08:57:14Z (hourly chapter notes run)
+Chapter: 2 Chronicles 3 | Duration: 11 min | Sections: 7 | Cards: 33 | Status: pass
+Next up: 2 Chronicles 4
