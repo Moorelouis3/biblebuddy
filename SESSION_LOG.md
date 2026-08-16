@@ -2016,3 +2016,7 @@ actually exist on profile_stats. Those writes silently fall back, so the
 guest label is lost in the app's own table. Auth's is_anonymous is the
 only reliable marker and is what this route now uses. Adding the columns
 needs DDL, which the REST API cannot do.
+
+## 2026-08-16T09:58:10Z (hourly chapter notes run)
+Chapter: 2 Chronicles 4 | Duration: 10 min | Sections: 8 | Cards: 38 | Status: pass
+Next up: 2 Chronicles 5

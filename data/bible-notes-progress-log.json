@@ -23342,6 +23342,55 @@
           "at": "2026-08-16T08:57:14Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 4,
+      "startedAt": "2026-08-16T09:46:56Z",
+      "finishedAt": "2026-08-16T09:57:05Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 38,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty, normal forward progress after 2 Chronicles 3, no existing dedicated wired-in file for 2 Chronicles 4 (only the old bulk secondChroniclesOneThroughNineteenPersonalNotes covered it generically, already superseded within the 1-3 preserveExactPhraseBodies range). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (22 verses). 2 Chronicles 4 lists the temple's bronze and gold furnishings: the twenty by twenty by ten cubit brazen altar in the outer court, the molten sea (ten cubits across, thirty cubits circumference, cast on twelve oxen facing the four directions, holding three thousand baths, with an honest note that the stated circumference is a rounded figure rather than an exact geometric one), the ten lavers for washing burnt offering pieces versus the sea reserved for the priests' own washing, ten golden candlesticks and ten tables replacing the tabernacle's single candlestick and single table, the hundred gold basons, the court of the priests versus the great court, the sea's placement at the southeast corner between the altar and the temple door, Huram the craftsman's bronze work (pots, shovels, basons, the pillars' pommels and chapiters, the chain wreaths, four hundred pomegranates), the bases and wheeled lavers, a summary recap of the sea and instruments, the fleshhooks, the honorary 'his father' title explained for Huram, bright (polished) brass, the Jordan valley clay ground casting site, the unmeasured total weight of bronze, and finally the golden furnishings inside the house itself (the incense altar, the shewbread tables, the candlesticks before the oracle, the flowers/lamps/tongs, snuffers/basons/spoons/censers, and the gold inner doors) closing on the same total extravagance theme as chapter three. Chunked into 8 sections (1, 2-5, 6, 7-9, 10, 11-14, 15-18, 19-22). Density about 1.73 cards/verse (22 verses, 38 cards), consistent with the style spec's guidance in section 12 that dimension and inventory heavy chapters still get real, non-padded notes. scripts/check_bible_note_style.py passed clean on the first run, 38 cards, zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves (mostly Move 1 term definitions and Move 3 vague-reference identification, e.g. clarifying which Huram, which pillars, which oracle), defines its key term or number in plain language, closes on meaning rather than mechanics, exactly four bullets each ending on \ud83d\udcd6 or \u27a1\ufe0f with no repeated emoji inside any card, no duplicate card titles across all 38 cards, and no hyphens/em dashes/semicolons/contractions/banned filler or hedge words anywhere in the file (deliberately avoided quoting the KJV words 'moreover' and 'furthermore' verbatim as card titles since both are on the checker's banned filler list). Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 4) (8/8 sections, 38 cards, 22 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies for 2 chronicles extended from chapters 1-3 to 1-4, replaceStudySectionsForBookRange('2 chronicles', 4, 4, SECOND_CHRONICLES_FOUR_PERSONAL_SECTIONS) call and its wrapper function added directly after the Chapter 3 call. Next forward-progress target is 2 Chronicles 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-16T09:47:25Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 4 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-16T09:47:50Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 4, 22 verses, aruljohn mirror)",
+          "at": "2026-08-16T09:48:20Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-16T09:49:00Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesFourSource.ts",
+          "at": "2026-08-16T09:55:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, first pass)",
+          "at": "2026-08-16T09:55:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-16T09:56:00Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 38 cards, 22 verses, text verbatim)",
+          "at": "2026-08-16T09:56:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-16T09:57:05Z"
+        }
+      ]
     }
   ]
 }
