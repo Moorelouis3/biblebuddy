@@ -5021,7 +5021,18 @@ export default function DashboardJourneyExperience({
       setManualBibleYearStudyDayNumber(null);
       setActivePage(0);
     } else {
-      setBibleYearDashboardActive(profile?.preferred_study_mode === "devotional" ? false : true);
+      // Home must return you to YOUR thing. Bible in One Year is only the
+      // default for people actually doing Bible in One Year - a devotional or
+      // plain-Bible reader landing here was being dumped into Day 1 of a plan
+      // they never started.
+      //
+      // TODO: this is still binary. The real shape is one dashboard shell with
+      // three middles (BIOY days / devotional days / Bible chapters). Until that
+      // exists, anything that is not bible_year falls through to the tabbed app
+      // rather than the wrong plan.
+      setBibleYearDashboardActive(
+        (profile?.preferred_study_mode ?? "bible_year") === "bible_year",
+      );
       setBibleYearSeriesActive(false);
       setBibleYearSeriesDetailDay(null);
       setBibleYearJourneyPreviewDay(null);
