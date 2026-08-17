@@ -24165,6 +24165,79 @@
           "at": "2026-08-17T01:58:54Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 9,
+      "startedAt": "2026-08-17T02:46:19Z",
+      "finishedAt": "2026-08-17T03:03:32Z",
+      "durationMinutes": 17,
+      "sections": 6,
+      "cards": 33,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Continued Louis's priority queue detour (data/bible-notes-priority-queue.json): style-redo backlog confirmed empty, and \"Proverbs 9\" was the first entry in the priority queue's remaining array, right after Proverbs 8 from the prior run. Built under the docs/INSIGHT_CARDS_STANDARD.md pipeline established by Proverbs 7-8. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (18 verses), cross-checked against the live bible-api.com/proverbs+9?translation=kjv response the reader actually fetches at runtime, which embeds internal newlines inside several verses at the KJV's traditional supplied-word italics. Proverbs 9 is the chapter's closing contrast between Wisdom and Folly, both pictured as women issuing the same invitation: Wisdom building a seven-pillared house, preparing a real feast, then sending servants and personally crying out from the city's highest points to invite the simple in to eat and live; a short block on correction landing differently on a scorner than on a wise man; the chapter's theological center, \"the fear of the LORD is the beginning of wisdom\"; then Folly, who does none of Wisdom's real work, sits at her door on the same high seat, borrows Wisdom's exact opening line word for word, and offers stolen water and secret bread whose guests do not realize they are already in Sheol. Built lib/proverbsNineSource.ts, chunked into 6 sections (1-3, 4-6, 7-9, 10-12, 13-15, 16-18). Density about 1.83 cards/verse (18 verses, 33 cards). One card title in section 6 was renamed to \"...Too\" to keep it textually distinct from the identical-wording card under verse 4 (verse 16 genuinely repeats verse 4's KJV wording since Folly is copying Wisdom's own call), since the Insight Cards noteTitle lookup matches on title text and needs to resolve to the correct verse's note. scripts/check_bible_note_style.py found 1 problem on first pass (a digit-keycap emoji the checker's regex does not recognize), fixed, second run clean, 33 cards, zero problems. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended from proverbs 1-8 to 1-9, replaceStudySectionsForBookRange call), built lib/proverbsNineStudyMode.ts (33 phrase entries) and lib/proverbsNineStudySections.ts (mirrors lib/proverbsEightStudySections.ts), and registered \"proverbs:9\" in lib/insightCards.ts's INSIGHT_CARD_LOADERS. Verification: (a) style checker clean; (b) parser check via getBibleReaderStudySections('proverbs', 9) passed exactly (6/6 sections, 33 cards, 18 verses, text rendered verbatim); (c) npx tsc --noEmit -p . clean with zero errors; (d) hasInsightCards('proverbs', 9) returns true and loadInsightCards resolves all 33 phrases, every noteTitle resolving to a real note via findPhraseNoteEntry (0 misses); (e) a script cross-checked all 33 underline strings occur in the live bible-api.com KJV verse text via the same exact/case-insensitive/word-regex fallback chain VerseHighlighter.tsx uses (0 misses, 20 exact matches, 13 needing the whitespace-tolerant fallback); (f) checked no two underlines within the same verse overlap (0 overlaps) and no duplicate verse+title keys (0 duplicates); (g) confirmed every preview field is character-for-character identical to its note's real opening body line (0 mismatches). Priority queue entry \"Proverbs 9\" popped from the front of data/bible-notes-priority-queue.json remaining array as part of this commit. Next queue target is Proverbs 10.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-17T02:46:43Z"
+        },
+        {
+          "name": "priority queue checked: style-redo backlog empty, target chapter determined: Proverbs 9 (priority queue detour, front of remaining array)",
+          "at": "2026-08-17T02:46:43Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md read in full, lib/genesisThirtyOneSource.ts reviewed as reference",
+          "at": "2026-08-17T02:46:43Z"
+        },
+        {
+          "name": "KJV text fetched (Proverbs 9, 18 verses, aruljohn mirror)",
+          "at": "2026-08-17T02:46:43Z"
+        },
+        {
+          "name": "source file written: lib/proverbsNineSource.ts (6 sections, 33 cards)",
+          "at": "2026-08-17T02:53:58Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 fix pass: digit-keycap emoji swapped for 🔢)",
+          "at": "2026-08-17T02:53:58Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies 1-8 to 1-9, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-17T02:53:58Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 33 cards, 18 verses, text verbatim)",
+          "at": "2026-08-17T02:53:58Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors (notes source + wiring)",
+          "at": "2026-08-17T02:53:58Z"
+        },
+        {
+          "name": "fetched live bible-api.com/proverbs+9?translation=kjv (the reader's actual runtime verse-text source) to verify underlines against",
+          "at": "2026-08-17T03:02:25Z"
+        },
+        {
+          "name": "built lib/proverbsNineStudyMode.ts (33 phrase entries: verse, noteTitle, icon, underline, preview)",
+          "at": "2026-08-17T03:02:25Z"
+        },
+        {
+          "name": "built lib/proverbsNineStudySections.ts and registered proverbs:9 in lib/insightCards.ts",
+          "at": "2026-08-17T03:02:25Z"
+        },
+        {
+          "name": "tsc --noEmit clean again after Insight Cards files added",
+          "at": "2026-08-17T03:02:25Z"
+        },
+        {
+          "name": "verified underline exactness (33/33 via exact/case-insensitive/fallback-regex chain matching VerseHighlighter.tsx), no overlaps, noteTitle matches (33/33), no duplicate verse+title keys, preview lines match note first lines exactly (33/33), hasInsightCards true",
+          "at": "2026-08-17T03:02:25Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals rolled forward, data/bible-notes-priority-queue.json entry popped)",
+          "at": "2026-08-17T03:03:32Z"
+        }
+      ]
     }
   ]
 }
