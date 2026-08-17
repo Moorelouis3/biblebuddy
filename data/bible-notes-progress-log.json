@@ -24441,6 +24441,63 @@
           "at": "2026-08-17T06:03:36Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 13,
+      "startedAt": "2026-08-17T06:48:46Z",
+      "finishedAt": "2026-08-17T07:00:33Z",
+      "durationMinutes": 12,
+      "sections": 5,
+      "cards": 50,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Continued Louis's priority queue detour (data/bible-notes-priority-queue.json): style-redo backlog confirmed empty, and \"Proverbs 13\" was the first entry in the priority queue's remaining array, right after Proverbs 12 from the prior run (also matched the plain next-in-canonical-order lookup, since Proverbs 12 was the last entry in this progress log). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (25 verses). Built lib/proverbsThirteenSource.ts following the lib/proverbsTwelveSource.ts pattern exactly, chunked into 5 sections (1-4, 5-9, 10-14, 15-19, 20-25), density exactly 2.0 cards/verse (25 verses, 50 cards, one card per half-verse antithetical clause). scripts/check_bible_note_style.py found 12 problems on first pass (twelve bullets over the 3-8 word cap), all fixed, second run clean. A manual eye check caught one forbidden crutch phrase (\"This shows...\") used mid-body and in a bullet, rewritten to a direct statement; full scan afterward confirmed no duplicate titles, no duplicate opening lines, no hyphens/em dashes/semicolons/contractions, and every card ending its bullets on 📖. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to proverbs 1-13, replaceStudySectionsForBookRange call). Built lib/proverbsThirteenStudyMode.ts (50 phrase entries) and lib/proverbsThirteenStudySections.ts, registered proverbs:13 in lib/insightCards.ts. Verification: style checker clean; parser check via getBibleReaderStudySections('proverbs', 13) passed exactly (5/5 sections, 50 cards, 25 verses, text rendered verbatim); npx tsc --noEmit -p . clean with zero errors; hasInsightCards('proverbs', 13) returns true and loadInsightCards resolves all 50 phrases; a script cross-checked all 50 underline strings occur character-for-character in the fetched KJV verse text (0 misses) and confirmed no two underlines within the same verse overlap (0 overlaps), with all 25 verses covered by at least one card. Priority queue entry \"Proverbs 13\" popped from the front of data/bible-notes-priority-queue.json remaining array as part of this commit. Next queue target is Proverbs 14.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-17T06:49:11Z"
+        },
+        {
+          "name": "priority queue and redo backlog checked: style-redo backlog empty, priority queue non-empty, target chapter determined: Proverbs 13 (priority queue detour, front of remaining array; also next in canonical order)",
+          "at": "2026-08-17T06:49:22Z"
+        },
+        {
+          "name": "KJV text fetched (Proverbs 13, 25 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-08-17T06:49:41Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md and .claude/skills/bible-notes/SKILL.md read in full, lib/proverbsTwelveSource.ts reviewed as reference",
+          "at": "2026-08-17T06:49:41Z"
+        },
+        {
+          "name": "source file written: lib/proverbsThirteenSource.ts (5 sections, 50 cards)",
+          "at": "2026-08-17T06:56:17Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 12 over-length bullets)",
+          "at": "2026-08-17T06:56:17Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to proverbs 1-13, replaceStudySectionsForBookRange call), parser check passed (5/5 sections, 50 cards)",
+          "at": "2026-08-17T06:56:17Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-17T06:56:17Z"
+        },
+        {
+          "name": "built lib/proverbsThirteenStudyMode.ts (50 phrase entries, underlines verified character-for-character against fetched KJV text, 0 misses, 0 overlaps) and lib/proverbsThirteenStudySections.ts, registered proverbs:13 in lib/insightCards.ts",
+          "at": "2026-08-17T06:56:47Z"
+        },
+        {
+          "name": "manual section 13/Part 5 eye check found and fixed one forbidden crutch phrase, second style checker and tsc run confirmed clean",
+          "at": "2026-08-17T07:00:33Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md table row + running totals, data/bible-notes-progress-log.json entry, data/bible-notes-priority-queue.json entry popped",
+          "at": "2026-08-17T07:00:33Z"
+        }
+      ]
     }
   ]
 }
