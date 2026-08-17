@@ -2291,3 +2291,7 @@ Next up: Proverbs 10
 ## 2026-08-17T04:02:33Z (hourly chapter notes run)
 Chapter: Proverbs 10 | Duration: 17 min | Sections: 8 | Cards: 63 | Status: pass
 Next up: Proverbs 11
+
+## 2026-08-17T05:05:42Z (hourly chapter notes run)
+Chapter: Proverbs 11 | Duration: 20 min | Sections: 8 | Cards: 62 | Status: pass
+Next up: Proverbs 12
