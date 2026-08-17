@@ -432,6 +432,7 @@ import { PROVERBS_TEN_PERSONAL_SECTIONS } from "./proverbsTenSource";
 import { PROVERBS_ELEVEN_PERSONAL_SECTIONS } from "./proverbsElevenSource";
 import { PROVERBS_TWELVE_PERSONAL_SECTIONS } from "./proverbsTwelveSource";
 import { PROVERBS_THIRTEEN_PERSONAL_SECTIONS } from "./proverbsThirteenSource";
+import { PROVERBS_FOURTEEN_PERSONAL_SECTIONS } from "./proverbsFourteenSource";
 import { ECCLESIASTES_1_5_PERSONAL_SECTIONS } from "./ecclesiastesOneToFivePersonalNotes";
 import { ECCLESIASTES_6_12_PERSONAL_SECTIONS } from "./ecclesiastesSixToTwelvePersonalNotes";
 import { SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS } from "./songOfSolomonOneToEightPersonalNotes";
@@ -780,7 +781,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 kings" && section.chapter >= 1 && section.chapter <= 25) ||
     (normalizeBook(book) === "1 chronicles" && section.chapter >= 1 && section.chapter <= 29) ||
     (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 10) ||
-    (normalizeBook(book) === "proverbs" && section.chapter >= 1 && section.chapter <= 13);
+    (normalizeBook(book) === "proverbs" && section.chapter >= 1 && section.chapter <= 14);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1475,6 +1476,7 @@ function applyPersonalProverbsTenStudySections() {
   replaceStudySectionsForBookRange("proverbs", 11, 11, PROVERBS_ELEVEN_PERSONAL_SECTIONS);
   replaceStudySectionsForBookRange("proverbs", 12, 12, PROVERBS_TWELVE_PERSONAL_SECTIONS);
   replaceStudySectionsForBookRange("proverbs", 13, 13, PROVERBS_THIRTEEN_PERSONAL_SECTIONS);
+  replaceStudySectionsForBookRange("proverbs", 14, 14, PROVERBS_FOURTEEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalEcclesiastesOneThroughFiveStudySections() {

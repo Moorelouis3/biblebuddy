@@ -35,6 +35,7 @@ const INSIGHT_CARD_LOADERS: Record<string, () => Promise<InsightCardPhrase[]>> =
   "proverbs:11": () => import("./proverbsElevenStudyMode").then((m) => m.PROVERBS_ELEVEN_PHRASES),
   "proverbs:12": () => import("./proverbsTwelveStudyMode").then((m) => m.PROVERBS_TWELVE_PHRASES),
   "proverbs:13": () => import("./proverbsThirteenStudyMode").then((m) => m.PROVERBS_THIRTEEN_PHRASES),
+  "proverbs:14": () => import("./proverbsFourteenStudyMode").then((m) => m.PROVERBS_FOURTEEN_PHRASES),
 };
 
 /** Cheap synchronous check, so a route can pick a reader without loading data. */
