@@ -24567,6 +24567,67 @@
           "at": "2026-08-17T08:00:21Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 15,
+      "startedAt": "2026-08-17T08:46:29Z",
+      "finishedAt": "2026-08-17T09:00:30Z",
+      "durationMinutes": 14,
+      "sections": 7,
+      "cards": 66,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. data/bible-notes-priority-queue.json was non-empty (Louis's Proverbs detour); \"Proverbs 15\" was the first entry in its remaining array, written as a normal brand new chapter (style-redo backlog already empty). Fetched real KJV text for Proverbs 15 (33 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror via a direct curl/JSON parse (not just the WebFetch summary) so the Insight Card underline strings could be checked as exact substrings programmatically. Read docs/bible-study-note-style.md in full plus docs/INSIGHT_CARDS_STANDARD.md, and reviewed lib/proverbsFourteenSource.ts plus its commit diff (30b3674) as the reference for both note voice and the exact wiring pattern. Built lib/proverbsFifteenSource.ts chunked into 7 sections of 5/5/5/5/5/5/3 verses, one card per antithetical half verse (or per natural half where a verse has no \"but\"), density exactly 2.0 cards/verse (33 verses, 66 cards). scripts/check_bible_note_style.py found 1 problem on first pass (one 9 word bullet), fixed, second run clean with 66 cards and no problems. Generated lib/proverbsFifteenStudyMode.ts programmatically from the parsed card headings/openers paired with a hand built verse/underline list, then verified all 66 underlines as exact substrings of the fetched KJV verse text before writing the file (0 mismatches). Built lib/proverbsFifteenStudySections.ts mirroring lib/proverbsFourteenStudySections.ts. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended from proverbs<=14 to proverbs<=15, replaceStudySectionsForBookRange call added) and registered proverbs:15 in lib/insightCards.ts. Verification: style checker clean; parser check via getBibleReaderStudySections('proverbs', 15) passed exactly (7/7 sections, 66 cards, verse ranges 1-5/6-10/11-15/16-20/21-25/26-30/31-33 with no gaps); npx tsc --noEmit clean with zero errors; loadInsightCards('proverbs', 15) resolved all 66 phrase entries correctly, first and last checked by hand.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-17T08:46:29Z"
+        },
+        {
+          "name": "target chapter determined: priority queue non-empty (data/bible-notes-priority-queue.json), Proverbs 15 is first entry (new chapter mode)",
+          "at": "2026-08-17T08:46:29Z"
+        },
+        {
+          "name": "fetched real KJV text for Proverbs 15 from raw.githubusercontent.com/aruljohn/Bible-kjv mirror (33 verses), cross-checked WebFetch extraction against a direct curl/JSON parse",
+          "at": "2026-08-17T08:54:23Z"
+        },
+        {
+          "name": "read docs/bible-study-note-style.md and docs/INSIGHT_CARDS_STANDARD.md in full, reviewed lib/proverbsFourteenSource.ts and its wiring diff as reference",
+          "at": "2026-08-17T08:54:23Z"
+        },
+        {
+          "name": "wrote lib/proverbsFifteenSource.ts (7 sections, 33 verses, 66 cards)",
+          "at": "2026-08-17T08:57:00Z"
+        },
+        {
+          "name": "style checker first pass found 1 over-length bullet, fixed; second run clean (66 cards, no problems)",
+          "at": "2026-08-17T08:58:00Z"
+        },
+        {
+          "name": "generated lib/proverbsFifteenStudyMode.ts programmatically and verified all 66 underlines as exact substrings of the fetched KJV text (0 mismatches)",
+          "at": "2026-08-17T08:58:30Z"
+        },
+        {
+          "name": "wrote lib/proverbsFifteenStudySections.ts and wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to proverbs<=15, replaceStudySectionsForBookRange call) and lib/insightCards.ts (registered proverbs:15)",
+          "at": "2026-08-17T08:59:00Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('proverbs', 15): 7/7 sections, 66 cards, verses 1-33 with no gaps",
+          "at": "2026-08-17T08:59:39Z"
+        },
+        {
+          "name": "tsc --noEmit clean with zero errors",
+          "at": "2026-08-17T08:59:39Z"
+        },
+        {
+          "name": "loadInsightCards('proverbs', 15) verified resolving all 66 phrase entries correctly",
+          "at": "2026-08-17T08:59:57Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md table row + running totals, data/bible-notes-progress-log.json entry, data/bible-notes-priority-queue.json entry popped",
+          "at": "2026-08-17T09:00:30Z"
+        }
+      ]
     }
   ]
 }
