@@ -24628,6 +24628,67 @@
           "at": "2026-08-17T09:00:30Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 16,
+      "startedAt": "2026-08-21T12:46:26Z",
+      "finishedAt": "2026-08-21T12:59:44Z",
+      "durationMinutes": 13,
+      "sections": 7,
+      "cards": 66,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Louis-requested priority detour (data/bible-notes-priority-queue.json), continuing the Proverbs skip-ahead after Proverbs 15. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (33 verses). Proverbs 16 covers the heart's plans versus the LORD weighing the spirit and directing the steps, the LORD's ownership of honest weights and balances, the king's ideal role (divine sentence in his lips, wrath as messengers of death, favour as the latter rain), wisdom and understanding valued above gold and silver, pride going before a fall, the sweetness of the lips and a wellspring of understanding versus a way that seems right but ends in death, the working mouth versus the froward/whisperer/violent troublemakers, and the closing triad of the hoary head as a crown of glory, ruling one's own spirit outranking a military conquest, and the lot cast into the lap whose disposing belongs to the LORD. Chunked into 7 sections (1-5, 6-10, 11-15, 16-20, 21-25, 26-30, 31-33), matching the Proverbs 15 precedent exactly. Density exactly 2 cards/verse (33 verses, 66 cards). scripts/check_bible_note_style.py found 1 problem on first pass (a banned hedge word, 'fairly'), fixed, second run clean with 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, closes on meaning, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file, with no duplicate card titles. All 66 card titles verified as exact KJV substrings by hand against the fetched text. Parser check passed exactly via getBibleReaderStudySections('proverbs', 16) (7/7 sections, 66 cards, verse ranges 1-5/6-10/11-15/16-20/21-25/26-30/31-33 with no gaps). npx tsc --noEmit -p . clean with zero errors. Built lib/proverbsSixteenStudyMode.ts (66 phrase entries) programmatically from the source file and cross-checked every underline as an exact substring of the fetched KJV text (0 mismatches, apostrophe style normalized for matching then restored to the original curly form). Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended from proverbs<=15 to proverbs<=16, replaceStudySectionsForBookRange call added) and registered proverbs:16 in lib/insightCards.ts. loadInsightCards('proverbs', 16) resolved all 66 phrase entries correctly, first and last checked by hand. Next entry in the priority queue is Proverbs 17.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-21T12:46:53Z"
+        },
+        {
+          "name": "target chapter determined: Proverbs 16 (priority queue non-empty, data/bible-notes-priority-queue.json, first entry, redo backlog confirmed empty)",
+          "at": "2026-08-21T12:47:10Z"
+        },
+        {
+          "name": "fetched real KJV text for Proverbs 16 from raw.githubusercontent.com/aruljohn/Bible-kjv mirror (33 verses)",
+          "at": "2026-08-21T12:47:40Z"
+        },
+        {
+          "name": "read docs/bible-study-note-style.md and .claude/skills/bible-notes/SKILL.md in full, reviewed lib/proverbsFifteenSource.ts as structural reference",
+          "at": "2026-08-21T12:48:30Z"
+        },
+        {
+          "name": "wrote lib/proverbsSixteenSource.ts (7 sections, 33 verses, 66 cards)",
+          "at": "2026-08-21T12:56:00Z"
+        },
+        {
+          "name": "style checker first pass found 1 problem (banned hedge word 'fairly'), fixed; second run clean (66 cards, no problems)",
+          "at": "2026-08-21T12:57:05Z"
+        },
+        {
+          "name": "built lib/proverbsSixteenStudyMode.ts (66 underline/preview entries) and verified all underlines as exact substrings of the fetched KJV text (0 mismatches)",
+          "at": "2026-08-21T12:57:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to proverbs<=16, replaceStudySectionsForBookRange call) and lib/insightCards.ts (registered proverbs:16)",
+          "at": "2026-08-21T12:58:05Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('proverbs', 16): 7/7 sections, 66 cards, verses 1-33 with no gaps",
+          "at": "2026-08-21T12:58:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-21T12:58:35Z"
+        },
+        {
+          "name": "loadInsightCards('proverbs', 16) verified resolving all 66 phrase entries correctly",
+          "at": "2026-08-21T12:58:50Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md table row + running totals, data/bible-notes-progress-log.json entry, data/bible-notes-priority-queue.json entry popped",
+          "at": "2026-08-21T12:59:44Z"
+        }
+      ]
     }
   ]
 }
