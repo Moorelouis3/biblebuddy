@@ -74,7 +74,6 @@ import { BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME } from "../lib/bibleYearDayOneDeep
 import { getBibleReaderStudySections, type BibleReaderStudySection } from "../lib/bibleReaderStudyNotes";
 import { clearLegacyBibleYearOfflineStorage } from "../lib/bibleYearOfflinePack";
 import { BIBLE_YEAR_GENESIS_WEB_VERSES } from "../lib/bibleYearGenesisVerses";
-import { enrichBibleVerses } from "../lib/bibleHighlighting";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from "../lib/bibleNotes";
 import { preloadAdminAnalytics } from "../lib/adminAnalyticsPreload";
@@ -118,22 +117,6 @@ function getBibleYearLocalChapterVerses(book: string, chapter: number): BibleYea
 function getBibleYearBookFromReference(reference: string) {
   const match = reference.match(/^(.+?)\s+\d+:/);
   return match?.[1]?.trim() || "Genesis";
-}
-
-function splitEnrichedVerseHtmlByNumber(enrichedContent: string) {
-  const html = enrichedContent.replace(/<!--.*?-->/, "").trim();
-  const verseBlocks = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g));
-  const enrichedByVerse: Record<number, string> = {};
-
-  verseBlocks.forEach((block, index) => {
-    const badgeMatch = block[1].match(/<span[^>]*>(\d+)<\/span>/);
-    const verseNumber = badgeMatch ? Number.parseInt(badgeMatch[1], 10) : index + 1;
-    if (Number.isFinite(verseNumber)) {
-      enrichedByVerse[verseNumber] = `<p>${block[1]}</p>`;
-    }
-  });
-
-  return enrichedByVerse;
 }
 
 function getBibleYearDashboardDayStorageKey(userId?: string | null) {
@@ -2413,7 +2396,6 @@ export default function DashboardJourneyExperience({
   const [bibleYearFollowAlongOpenByDay, setBibleYearFollowAlongOpenByDay] = useState<Record<number, boolean>>({});
   const [bibleYearUnlockedStudyNoteSectionsByDay, setBibleYearUnlockedStudyNoteSectionsByDay] = useState<Record<number, Record<string, true>>>({});
   const [bibleYearUnlockedTriviaByDay, setBibleYearUnlockedTriviaByDay] = useState<Record<number, true>>({});
-  const [bibleYearFollowAlongEnrichedHtmlByChapter, setBibleYearFollowAlongEnrichedHtmlByChapter] = useState<Record<string, Record<number, string>>>({});
   const [bibleYearReaderTranslation, setBibleYearReaderTranslation] = useState<BibleYearReaderTranslation>("kjv");
   const [bibleYearReaderPlainText, setBibleYearReaderPlainText] = useState(false);
   const [bibleYearReaderTranslatedVersesByChapter, setBibleYearReaderTranslatedVersesByChapter] = useState<Record<string, BibleYearReaderVerse[]>>({});
@@ -7052,70 +7034,6 @@ export default function DashboardJourneyExperience({
   useEffect(() => {
     let cancelled = false;
 
-    async function loadFollowAlongDatabaseOverlays() {
-      const openDayNumbers = Object.entries(bibleYearFollowAlongOpenByDay)
-        .filter(([, isOpen]) => isOpen)
-        .map(([dayNumber]) => Number(dayNumber))
-        .filter((dayNumber) => Number.isFinite(dayNumber));
-
-      const chaptersToLoad = new Map<string, { book: string; chapter: number; verses: Array<{ verse: number; text: string }> }>();
-
-      openDayNumbers.forEach((dayNumber) => {
-        const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber);
-        if (!day) return;
-
-        getBibleYearFollowAlongChapters(day).forEach((chapter) => {
-          if (!chapter.verses.length) return;
-          const key = getBibleYearFollowAlongChapterKey(chapter.book, chapter.chapter, bibleYearReaderTranslation);
-          if (bibleYearFollowAlongEnrichedHtmlByChapter[key]) return;
-          chaptersToLoad.set(key, {
-            book: chapter.book,
-            chapter: chapter.chapter,
-            verses: chapter.verses.map((verse) => ({ verse: verse.verse, text: verse.text })),
-          });
-        });
-      });
-
-      if (!chaptersToLoad.size) return;
-
-      const loadedEntries = await Promise.all(
-        Array.from(chaptersToLoad.entries()).map(async ([key, chapter]) => {
-          try {
-            const enriched = await enrichBibleVerses(chapter.verses);
-            return [key, splitEnrichedVerseHtmlByNumber(enriched)] as const;
-          } catch (error) {
-            console.error("[BIBLE_YEAR_FOLLOW_ALONG] Could not load database overlays:", error);
-            return [key, {}] as const;
-          }
-        }),
-      );
-
-      if (cancelled) return;
-
-      setBibleYearFollowAlongEnrichedHtmlByChapter((current) => {
-        const next = { ...current };
-        loadedEntries.forEach(([key, value]) => {
-          next[key] = value;
-        });
-        return next;
-      });
-    }
-
-    void loadFollowAlongDatabaseOverlays();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [
-    bibleYearFollowAlongOpenByDay,
-    bibleYearFollowAlongEnrichedHtmlByChapter,
-    bibleYearReaderTranslation,
-    bibleYearReaderTranslatedVersesByChapter,
-  ]);
-
-  useEffect(() => {
-    let cancelled = false;
-
     async function loadBibleYearTermNotes() {
       if (!bibleYearSelectedTerm) return;
       setBibleYearTermLoading(true);
@@ -11159,9 +11077,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                     verses={chapter.verses.map((verse) => ({
                       number: verse.verse,
                       text: verse.text,
-                      enrichedHtml: bibleYearFollowAlongEnrichedHtmlByChapter[
-                        getBibleYearFollowAlongChapterKey(chapter.book, chapter.chapter, bibleYearReaderTranslation)
-                      ]?.[verse.verse],
                     }))}
                   />
                 </div>
