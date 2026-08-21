@@ -24876,6 +24876,55 @@
           "at": "2026-08-21T15:58:52Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 20,
+      "startedAt": "2026-08-21T16:47:17Z",
+      "finishedAt": "2026-08-21T16:56:38Z",
+      "durationMinutes": 9.4,
+      "sections": 8,
+      "cards": 59,
+      "verses": 30,
+      "notes": "Louis-requested priority detour (data/bible-notes-priority-queue.json), continuing the Proverbs skip-ahead after Proverbs 19. Brand new chapter, not a style redo. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (30 verses). Proverbs 20 covers wine and strong drink as mockers that deceive the drinker, a king's wrath compared again to a lion's roar (callback to Proverbs 19:12), honour in avoiding strife against a fool's compulsive meddling, the sluggard who will not plow because of cold and begs at harvest, counsel in a man's heart as deep water a wise man draws out, the rarity of a truly faithful man against common self praise, the just man's integrity blessing his children after him, a king's discerning eyes scattering evil from his court, the rhetorical question exposing anyone who claims a clean heart, the dishonest divers weights and measures named an abomination (repeated later in verse 23), a child known by his doings and the two-part test of pure and right work, hearing ear and seeing eye both credited to the LORD, the warning against loving sleep paired with the promise of bread for the diligent, the buyer's haggling trick of complaining then boasting, wisdom's lips ranked above gold and rubies, the risk of standing surety for a stranger or for a strange woman, bread of deceit turning to gravel in the mouth, counsel needed for both ordinary purpose and war, the talebearer and the flatterer treated as the same danger, cursing a parent and the lamp of legacy put out in darkness, hasty inheritance ending unblessed, leaving vengeance to the LORD instead of taking it personally, the repeated false balance warning, God's sovereignty over a man's steps against the limits of self understanding, the snare of a rash vow made to God, a wise king's threshing wheel over the wicked, the spirit of man as the LORD's candle searching the inward parts, mercy upholding a king's throne, youth's strength against age's grey head, and the closing image of painful stripes reaching the inward parts to cleanse away evil. Chunked into 8 sections (1-4, 5-8, 9-12, 13-16, 17-19, 20-22, 23-25, 26-30). Density 1.97 cards per verse (30 verses, 59 cards). scripts/check_bible_note_style.py found 2 problems on first pass (two bullets over the 8 word limit), fixed both, second run clean with 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, closes on meaning, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file, with no duplicate card titles and no forbidden opening phrases. Parser check passed exactly via getBibleReaderStudySections('proverbs', 20) (8/8 sections, 59 cards, verse ranges 1-4/5-8/9-12/13-16/17-19/20-22/23-25/26-30 with no gaps). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended from proverbs<=19 to proverbs<=20, replaceStudySectionsForBookRange call added). Priority queue entry for Proverbs 20 removed as part of this commit. Next entry in the priority queue is Proverbs 21.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-21T16:47:17Z"
+        },
+        {
+          "name": "target chapter determined: Proverbs 20 (priority queue, brand new chapter)",
+          "at": "2026-08-21T16:48:00Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn mirror, Proverbs.json, 30 verses)",
+          "at": "2026-08-21T16:49:00Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-21T16:50:00Z"
+        },
+        {
+          "name": "source file written (lib/proverbsTwentySource.ts, 8 sections, 59 cards)",
+          "at": "2026-08-21T16:55:00Z"
+        },
+        {
+          "name": "style checker clean (2 bullet word count issues found and fixed, second run clean)",
+          "at": "2026-08-21T16:56:00Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range extended to 20, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-21T16:56:15Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 59 cards, verse ranges 1-4/5-8/9-12/13-16/17-19/20-22/23-25/26-30, no gaps)",
+          "at": "2026-08-21T16:56:30Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p ., zero errors)",
+          "at": "2026-08-21T16:56:38Z"
+        }
+      ]
     }
   ]
 }
