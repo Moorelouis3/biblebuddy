@@ -2378,16 +2378,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                   <>
                     {(() => {
                       const VerseHighlighter = require("./VerseHighlighter").VerseHighlighter;
-                      let enrichedPerVerse: Record<number, string> = {};
-                      if (enrichedContent) {
-                        const html = enrichedContent.replace(/<!--.*?-->/, "").trim();
-                        const verseBlocks = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g));
-                        verseBlocks.forEach((block, idx) => {
-                          const badgeMatch = block[1].match(/<span[^>]*>(\d+)<\/span>/);
-                          const verseNum = badgeMatch ? parseInt(badgeMatch[1], 10) : idx + 1;
-                          enrichedPerVerse[verseNum] = `<p>${block[1]}</p>`;
-                        });
-                      }
                       return (
                         <VerseHighlighter
                           book={book}
@@ -2396,7 +2386,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                           verses={section.verses.map((v) => ({
                             number: v.num,
                             text: v.text,
-                            enrichedHtml: enrichedPerVerse[v.num],
                           }))}
                         />
                       );
@@ -3263,16 +3252,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                   <>
                     {(() => {
                       const VerseHighlighter = require("./VerseHighlighter").VerseHighlighter;
-                      let enrichedPerVerse: Record<number, string> = {};
-                      if (enrichedContent) {
-                        const html = enrichedContent.replace(/<!--.*?-->/, "").trim();
-                        const verseBlocks = Array.from(html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g));
-                        verseBlocks.forEach((block, idx) => {
-                          const badgeMatch = block[1].match(/<span[^>]*>(\d+)<\/span>/);
-                          const verseNum = badgeMatch ? parseInt(badgeMatch[1], 10) : idx + 1;
-                          enrichedPerVerse[verseNum] = `<p>${block[1]}</p>`;
-                        });
-                      }
                       return (
                         <VerseHighlighter
                           book={book}
@@ -3281,7 +3260,6 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                           verses={section.verses.map((v) => ({
                             number: v.num,
                             text: v.text,
-                            enrichedHtml: enrichedPerVerse[v.num],
                           }))}
                         />
                       );

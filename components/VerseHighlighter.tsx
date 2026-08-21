@@ -40,7 +40,16 @@ import {
 interface VerseHighlighterProps {
   book: string;
   chapter: number;
-  verses: Array<{ number: number; text: string; enrichedHtml?: string }>;
+  /**
+   * The chapter's verses as plain text.
+   *
+   * Verses used to accept pre-enriched HTML as well, which wrapped every
+   * person, place and keyword the app knows about in a tappable span. Those
+   * popups competed with Insight Card phrases for the same words, so the
+   * phrase is now the only thing in a verse a reader can tap. The people,
+   * place and keyword libraries are unchanged and still have their own pages.
+   */
+  verses: Array<{ number: number; text: string }>;
   plainTextMode?: boolean;
   surface?: "default" | "dashboard";
   studySectionPlacement?: "end" | "start";
@@ -117,20 +126,6 @@ type HighlightNoteViewerState = {
   anchor: { x: number; y: number };
 };
 
-// Utility to extract the inner HTML for a verse from enriched HTML
-function getEnrichedHtmlForVerse(enrichedHtml: string | undefined, fallback: string) {
-  if (!enrichedHtml) return fallback;
-  // Remove any outer <p> tags if present
-  let html = enrichedHtml.trim();
-  if (html.startsWith('<p') && html.endsWith('</p>')) {
-    // Remove the opening <p ...> and closing </p>
-    html = html.replace(/^<p[^>]*>/, '').replace(/<\/p>$/, '');
-    // Remove the leading verse number badge if present
-    html = html.replace(/^<span[^>]*>.*?<\/span>/, '').trim();
-  }
-  return html;
-}
-
 function decodeHtmlEntities(text: string) {
   return text
     .replace(/&#(\d+);/g, (_match, code) => String.fromCharCode(Number(code)))
@@ -143,11 +138,25 @@ function decodeHtmlEntities(text: string) {
     .replace(/&amp;/g, "&");
 }
 
-function getVisibleVerseText(v: { text: string; enrichedHtml?: string }, plainTextMode: boolean) {
-  if (plainTextMode || !v.enrichedHtml) return v.text;
-
+/**
+ * The verse exactly as the reader sees it.
+ *
+ * This one string is the whole contract. Saved highlights are character
+ * offsets into it, and Insight Card underlines are resolved to offsets in it,
+ * so it has to be computed the same way for every chapter on every surface.
+ *
+ * It used to depend on whether the caller happened to supply enriched HTML:
+ * with it, the text was stripped of tags, decoded and whitespace collapsed;
+ * without it, the raw string was used. The two do not agree, so the same
+ * chapter could measure a reader's highlights against two different strings
+ * depending on which reader opened it. There is only one definition now.
+ *
+ * Tags are still stripped rather than assumed absent, so a caller that passes
+ * markup cannot silently shift every offset in the chapter.
+ */
+function getVisibleVerseText(v: { text: string }) {
   return decodeHtmlEntities(
-    getEnrichedHtmlForVerse(v.enrichedHtml, v.text)
+    String(v.text || "")
       .replace(/<[^>]*>/g, "")
       .replace(/\s+/g, " ")
       .trim(),
@@ -1958,8 +1967,8 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     setOpenStudyCategories((current) => ({ ...current, [studySection.reference]: initialOpenCategory }));
   }
 
-  function renderVerseText(v: { number: number; text: string; enrichedHtml?: string }) {
-    const visibleText = getVisibleVerseText(v, plainTextMode);
+  function renderVerseText(v: { number: number; text: string }) {
+    const visibleText = getVisibleVerseText(v);
     const ranges = plainTextMode ? [] : (rangeMap[v.number] || [])
       .filter((range) => range.start_offset >= 0 && range.end_offset <= visibleText.length && range.end_offset > range.start_offset)
       .sort((a, b) => a.start_offset - b.start_offset);
@@ -1983,9 +1992,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
             const root = event.currentTarget;
             window.setTimeout(() => handlePartialSelection(v.number, v.text, root), 0);
           }}
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: trusted HTML from server-side enrichment
-          dangerouslySetInnerHTML={{ __html: plainTextMode ? v.text : getEnrichedHtmlForVerse(v.enrichedHtml, v.text) }}
-        />
+        >
+          {visibleText}
+        </span>
       );
     }
 
