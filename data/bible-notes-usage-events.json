@@ -165,6 +165,11 @@
       "timestamp": "2026-08-21T16:56:38Z",
       "type": "chapter_count_checkpoint",
       "detail": "Proverbs 20 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 28 chapters shipped since the last checkpoint at 2026-08-16T07:53:30Z (2 Chronicles 3 through 10 completing that book, then the Louis-requested priority detour into Proverbs 1 through 20), each in its own separate hourly run, with no usage limit or block hit anywhere in that span. This checkpoint is again overdue against the roughly-every-10-20-chapters guidance since no prior run in this stretch logged an intermediate checkpoint, noted honestly rather than guessed away."
+    },
+    {
+      "timestamp": "2026-08-21T20:50:00Z",
+      "type": "environment_anomaly",
+      "detail": "During the Proverbs 23 run, after the initial `npm install` and reading the redo-remaining/progress-log files, `git status` showed HEAD detached at the commit origin/main already pointed to (the known recurring detached-HEAD environment bug). Ran `git checkout -B main origin/main`, which reported success and briefly showed the correct commit. Moments later, with no git command run in between, `git rev-parse HEAD` returned a completely different, heavily diverged commit (60 commits not on origin, including unrelated product feature work like a guest lifecycle migration and Turnstile captcha, and missing 51 commits that were on origin including all of Proverbs 8-22). A second `git fetch origin main` plus `git checkout -B main origin/main` resolved it cleanly, confirmed stable across two checks a few seconds apart, and work proceeded normally from there with no data lost and nothing pushed during the unstable window. Logging this as a real anomaly rather than the ordinary detached-HEAD bug, since the second HEAD state was not simply detached at origin/main, it was a full checkout onto a different, older, already-existing local branch state that this session did not create, implying some other process touched this same working directory's git refs mid-session. No chapter work or push happened before this stabilized, so no damage occurred, but a future run hitting this same anomaly right before a push could be more serious."
     }
   ]
 }

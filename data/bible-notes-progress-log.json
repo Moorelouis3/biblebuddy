@@ -25027,6 +25027,63 @@
           "at": "2026-08-21T18:54:58Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 23,
+      "startedAt": "2026-08-21T20:47:06Z",
+      "finishedAt": "2026-08-21T21:01:25Z",
+      "durationMinutes": 14,
+      "sections": 9,
+      "cards": 76,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Louis-requested priority detour (data/bible-notes-priority-queue.json), continuing the Proverbs skip-ahead after Proverbs 22. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (35 verses). Chunked into 9 sections (1-3, 4-5, 6-8, 9-12, 13-16, 17-21, 22-25, 26-28, 29-35), with the 7 verse closing drunkard passage given the densest coverage (18 cards) as the chapter's climax. Density 2.17 cards/verse. check_bible_note_style.py found 6 problems on first pass (bullets over the 8 word limit), fixed, second run clean. Parser check passed exactly (9/9 sections, 76 cards, verse ranges with no gaps). npx tsc --noEmit -p . clean. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to proverbs<=23, replaceStudySectionsForBookRange call added). Priority queue entry popped. Also rolled Proverbs 22 (missed by the prior run) and Proverbs 23 into the docs/BIBLE_BUDDY_NOTES_PROGRESS.md running totals block. Session recovered from a one-time local git ref anomaly early on (local HEAD flipped to a stale, heavily diverged commit right after an initial git checkout -B main origin/main, before any file was written or pushed; a repeat fetch/checkout stabilized cleanly onto origin/main's real tip, confirmed stable across two checks). Logged as an environment_anomaly event in data/bible-notes-usage-events.json. Next entry in the priority queue is Proverbs 24.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-21T20:47:06Z"
+        },
+        {
+          "name": "checked redo-remaining (empty) and priority queue (Proverbs 23 next); recovered from a one-time git HEAD divergence anomaly, stabilized on origin/main",
+          "at": "2026-08-21T20:50:00Z"
+        },
+        {
+          "name": "target chapter determined: Proverbs 23 (priority queue detour, matches normal forward progress after Proverbs 22)",
+          "at": "2026-08-21T20:50:00Z"
+        },
+        {
+          "name": "KJV text fetched (Proverbs 23, 35 verses, aruljohn mirror)",
+          "at": "2026-08-21T20:50:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-08-21T20:52:00Z"
+        },
+        {
+          "name": "source file written: lib/proverbsTwentyThreeSource.ts (76 cards, 9 sections)",
+          "at": "2026-08-21T20:59:49Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes, 6 bullet-length problems fixed)",
+          "at": "2026-08-21T21:00:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-21T21:00:40Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 76 cards, text verbatim)",
+          "at": "2026-08-21T21:00:55Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-21T21:01:10Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md incl. running totals, priority-queue.json popped, usage-events.json anomaly logged)",
+          "at": "2026-08-21T21:01:25Z"
+        }
+      ]
     }
   ]
 }
