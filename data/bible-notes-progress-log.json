@@ -24754,6 +24754,75 @@
           "at": "2026-08-21T14:00:30Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 18,
+      "startedAt": "2026-08-21T14:47:28Z",
+      "finishedAt": "2026-08-21T15:04:26Z",
+      "durationMinutes": 17,
+      "sections": 6,
+      "cards": 48,
+      "verses": 24,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Louis-requested priority detour (data/bible-notes-priority-queue.json), continuing the Proverbs skip-ahead after Proverbs 17. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (24 verses). Proverbs 18 covers the selfish, quarrelsome loner who separates himself and picks fights with wisdom instead of seeking it, the fool who talks instead of learning, contempt following the wicked, words as deep waters against wisdom as a flowing brook, favoritism overthrowing justice, a fool's lips inviting strokes and his own mouth becoming his destruction and snare, gossip as swallowed wounds, the lazy man as kin to a destroyer, the LORD's name as a strong tower against the rich man's wealth as a strong city built only in his own conceit, pride before a fall and humility before honor, answering before hearing as folly, a wounded spirit harder to bear than infirmity, the prudent heart and the wise ear both actively pursuing knowledge, a gift opening room before great men, the danger of hearing only one side of a dispute, the lot ending contentions even between the mighty, an offended brother harder to win than a strong city, words as fruit a man eats himself, death and life in the power of the tongue, finding a wife as favor from the LORD, the poor's pleading against the rich's hard answer, and the closing pair on being friendly to have friends and the friend who sticks closer than a brother. Chunked into 6 sections (1-4, 5-9, 10-13, 14-17, 18-21, 22-24). Density exactly 2.0 cards/verse (24 verses, 48 cards, two cards per verse throughout). scripts/check_bible_note_style.py found 4 problems on first pass (a banned hedge word, 'roughly', used in a title and body; three bullets over the 8 word limit), fixed all four (reworded the roughly card as 'But The Rich Answereth' without losing the teaching), second run clean with 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, closes on meaning, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file, with no duplicate card titles. All 48 underline halves were verified programmatically as exact substrings of the fetched KJV verse text before the phrase map file was written (0 mismatches). Parser check passed exactly via getBibleReaderStudySections('proverbs', 18) (6/6 sections, 48 cards, verse ranges 1-4/5-9/10-13/14-17/18-21/22-24 with no gaps). npx tsc --noEmit -p . clean with zero errors. Built lib/proverbsEighteenStudyMode.ts (48 phrase entries) programmatically from the source file's card titles and first body lines, paired with the pre-verified underline halves. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended from proverbs<=17 to proverbs<=18, replaceStudySectionsForBookRange call added) and registered proverbs:18 in lib/insightCards.ts. loadInsightCards('proverbs', 18) resolved all 48 phrase entries correctly, first and last checked by hand. Next entry in the priority queue is Proverbs 19.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-21T14:47:28Z"
+        },
+        {
+          "name": "target chapter determined: Proverbs 18 (priority queue non-empty, data/bible-notes-priority-queue.json, first entry)",
+          "at": "2026-08-21T14:47:28Z"
+        },
+        {
+          "name": "fetched real KJV text for Proverbs 18 from raw.githubusercontent.com/aruljohn/Bible-kjv mirror (24 verses)",
+          "at": "2026-08-21T14:47:39Z"
+        },
+        {
+          "name": "read docs/bible-study-note-style.md in full",
+          "at": "2026-08-21T14:47:39Z"
+        },
+        {
+          "name": "reviewed reference implementation lib/genesisThirtyOneSource.ts and lib/proverbsSeventeenSource.ts, and scripts/check_bible_note_style.py",
+          "at": "2026-08-21T14:47:43Z"
+        },
+        {
+          "name": "wrote lib/proverbsEighteenSource.ts (6 sections, 24 verses, 48 cards)",
+          "at": "2026-08-21T14:57:37Z"
+        },
+        {
+          "name": "style checker first pass found 4 problems (banned hedge word 'roughly', 3 overlength bullets), fixed all four; second run clean (48 cards, no problems)",
+          "at": "2026-08-21T14:57:37Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to proverbs<=18, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-21T14:57:37Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('proverbs', 18): 6/6 sections, 48 cards, verses 1-24 with no gaps",
+          "at": "2026-08-21T14:58:02Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean with zero errors (first pass)",
+          "at": "2026-08-21T14:58:02Z"
+        },
+        {
+          "name": "verified all 48 underline halves as exact substrings of the fetched KJV text, then built lib/proverbsEighteenStudyMode.ts (48 phrase entries) programmatically",
+          "at": "2026-08-21T14:59:26Z"
+        },
+        {
+          "name": "registered proverbs:18 in lib/insightCards.ts and verified loadInsightCards('proverbs', 18) resolves all 48 phrase entries correctly, first and last checked by hand",
+          "at": "2026-08-21T15:01:48Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean with zero errors (final pass after insight cards wiring)",
+          "at": "2026-08-21T15:01:48Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md table row + running totals, data/bible-notes-progress-log.json entry, data/bible-notes-priority-queue.json entry popped",
+          "at": "2026-08-21T15:03:04Z"
+        }
+      ]
     }
   ]
 }
