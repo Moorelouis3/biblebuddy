@@ -2343,3 +2343,7 @@ Next up: Proverbs 23
 ## 2026-08-21T21:01:25Z (hourly chapter notes run)
 Chapter: Proverbs 23 | Duration: 14 min | Sections: 9 | Cards: 76 | Status: pass
 Next up: Proverbs 24
+
+## 2026-08-21T22:13:00Z (blog writer run)
+Article: What Does the Bible Say About Fear? | Words: ~3163 | Category: Christian Foundations | Status: pass
+Queue remaining: 24

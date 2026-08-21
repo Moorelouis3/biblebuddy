@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-does-the-bible-say-about-fear",
+    title: "What Does the Bible Say About Fear?",
+    description:
+      "What does the Bible say about fear? Why God repeats fear not so often, the difference between fear and faith, and the top Bible verses about fear.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/what-does-the-bible-say-about-fear",
+    publishedAt: "2026-08-22",
+    readTime: "16 min read",
+    image: "/anxietyarticlebanner.jpg",
+    groupPost: {
+      title: "What Does the Bible Say About Fear? 📖",
+      content:
+        "Fear does not knock first.\n\nIt shows up when the phone rings at the wrong hour. In the waiting room. In the middle of the night when nothing is technically wrong.\n\n📌 Here's something worth remembering: the Bible does not scold the afraid. Moses was afraid. The disciples were afraid in the storm. Even Peter was afraid with his feet still on the water.\n\nNew article on why fear not is one of God's most repeated commands, the real difference between fear and faith, and the verses to hold onto when fear is loudest.\n\nRead it here:\nhttps://www.mybiblebuddy.net/blog/what-does-the-bible-say-about-fear\n\nWhat's the verse that helps you most when you're afraid? 🙏",
+    },
+  },
+  {
     slug: "how-to-spend-1-hour-with-god",
     title: "How to Spend 1 Hour With God: A Simple Guide",
     description:

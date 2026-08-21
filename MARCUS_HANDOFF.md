@@ -9,6 +9,13 @@ conditional security) without preaching one as settled fact, per the
 format spec's doctrinal-sensitivity rule. Louis should read it himself
 since this ships unreviewed.
 
+## New blog post on fallback banner: What Does the Bible Say About Fear?
+The blog writer agent just published "What Does the Bible Say About Fear?"
+(/blog/what-does-the-bible-say-about-fear). Its topics-queue.json entry
+had no `bannerImage`, so it reused the christian-foundations category
+fallback (`/anxietyarticlebanner.jpg`, same banner as the anxiety post).
+Louis may want to swap in a custom banner for this one later.
+
 ## Level 2 upgrade agent can't reach Life Buddy's API
 The scheduled Level 2 upgrade run at 2026-08-15 12:26 UTC couldn't pull the
 queue at all — the container's network egress proxy blocks
