@@ -2315,3 +2315,7 @@ Next up: Proverbs 16
 ## 2026-08-21T12:59:44Z (hourly chapter notes run)
 Chapter: Proverbs 16 | Duration: 13 min | Sections: 7 | Cards: 66 | Status: pass
 Next up: Proverbs 17
+
+## 2026-08-21T14:00:30Z (hourly chapter notes run)
+Chapter: Proverbs 17 | Duration: 14 min | Sections: 6 | Cards: 56 | Status: pass
+Next up: Proverbs 18

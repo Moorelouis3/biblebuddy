@@ -24689,6 +24689,71 @@
           "at": "2026-08-21T12:59:44Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 17,
+      "startedAt": "2026-08-21T13:46:26Z",
+      "finishedAt": "2026-08-21T14:00:30Z",
+      "durationMinutes": 14,
+      "sections": 6,
+      "cards": 56,
+      "verses": 28,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Louis-requested priority detour (data/bible-notes-priority-queue.json), continuing the Proverbs skip-ahead after Proverbs 16. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (28 verses). Chunked into 6 sections (1-5, 6-10, 11-14, 15-19, 20-24, 25-28), density exactly 2.0 cards/verse (28 verses, 56 cards, one card per natural half of each verse). scripts/check_bible_note_style.py found 1 problem on first pass (banned hedge word 'fairly', used twice), fixed, second run clean with 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, closes on meaning, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file, with no duplicate card titles. All 56 underlines verified programmatically as exact substrings of the fetched KJV text before the phrase map was written (0 mismatches). Parser check passed exactly via getBibleReaderStudySections('proverbs', 17) (6/6 sections, 56 cards, verse ranges 1-5/6-10/11-14/15-19/20-24/25-28 with no gaps). npx tsc --noEmit -p . clean with zero errors. Built lib/proverbsSeventeenStudyMode.ts (56 phrase entries) programmatically. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to proverbs<=17, replaceStudySectionsForBookRange call) and registered proverbs:17 in lib/insightCards.ts. loadInsightCards('proverbs', 17) resolved all 56 phrase entries correctly, first and last checked by hand. Priority queue entry 'Proverbs 17' popped from the front of data/bible-notes-priority-queue.json remaining array as part of this commit. Next entry in the priority queue is Proverbs 18.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-21T13:46:53Z"
+        },
+        {
+          "name": "target chapter determined: Proverbs 17 (priority queue non-empty, data/bible-notes-priority-queue.json, first entry, redo backlog confirmed empty)",
+          "at": "2026-08-21T13:47:10Z"
+        },
+        {
+          "name": "fetched real KJV text for Proverbs 17 from raw.githubusercontent.com/aruljohn/Bible-kjv mirror (28 verses)",
+          "at": "2026-08-21T13:47:11Z"
+        },
+        {
+          "name": "read docs/bible-study-note-style.md in full, reviewed lib/proverbsSixteenSource.ts and its wiring diff as reference",
+          "at": "2026-08-21T13:53:00Z"
+        },
+        {
+          "name": "wrote lib/proverbsSeventeenSource.ts (6 sections, 28 verses, 56 cards)",
+          "at": "2026-08-21T13:54:30Z"
+        },
+        {
+          "name": "style checker first pass found 1 problem (banned hedge word 'fairly', used twice), fixed; second run clean (56 cards, no problems)",
+          "at": "2026-08-21T13:55:20Z"
+        },
+        {
+          "name": "verified all 56 underline halves as exact substrings of the fetched KJV text before writing the phrase map (0 mismatches)",
+          "at": "2026-08-21T13:56:10Z"
+        },
+        {
+          "name": "built lib/proverbsSeventeenStudyMode.ts (56 phrase entries) generated programmatically from the source file's titles/body lines",
+          "at": "2026-08-21T13:56:50Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to proverbs<=17, replaceStudySectionsForBookRange call) and lib/insightCards.ts (registered proverbs:17)",
+          "at": "2026-08-21T13:57:00Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('proverbs', 17): 6/6 sections, 56 cards, verses 1-28 with no gaps",
+          "at": "2026-08-21T13:58:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean with zero errors",
+          "at": "2026-08-21T13:58:40Z"
+        },
+        {
+          "name": "loadInsightCards('proverbs', 17) verified resolving all 56 phrase entries correctly",
+          "at": "2026-08-21T13:59:37Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md table row + running totals, data/bible-notes-progress-log.json entry, data/bible-notes-priority-queue.json entry popped",
+          "at": "2026-08-21T14:00:30Z"
+        }
+      ]
     }
   ]
 }
