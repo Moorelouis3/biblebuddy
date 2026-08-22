@@ -385,6 +385,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [userId, setUserId] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [profileStats, setProfileStats] = useState<any>(null);
+  const [currentPlan, setCurrentPlan] = useState<{ mode: string | null; devotionalId: string | null } | null>(null);
+  const [settingReadingPlan, setSettingReadingPlan] = useState(false);
   const [selectedDay, setSelectedDay] = useState<DevotionalDay | null>(null);
   const [selectedBibleReading, setSelectedBibleReading] = useState<{ book: string; chapter: number } | null>(null);
   const [expandedDayNumber, setExpandedDayNumber] = useState<number | null>(null);
@@ -420,10 +422,14 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       if (user?.id) {
         const { data: stats } = await supabase
           .from("profile_stats")
-          .select("is_paid, free_devotional_id, feature_tours")
+          .select("is_paid, free_devotional_id, feature_tours, preferred_study_mode, louis_primary_devotional_id")
           .eq("user_id", user.id)
           .maybeSingle();
         setProfileStats(stats);
+        setCurrentPlan({
+          mode: (stats as any)?.preferred_study_mode ?? null,
+          devotionalId: (stats as any)?.louis_primary_devotional_id ?? null,
+        });
         setFreeDevotionalId((stats as any)?.free_devotional_id ?? null);
         setFeatureTours(normalizeFeatureTours((stats as any)?.feature_tours));
         setFeatureToursLoaded(true);
@@ -954,6 +960,39 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       next.set(dayNumber, { completed, total: WISDOM_TASK_TOTAL });
       return next;
     });
+  };
+
+  // Make this devotional the reader's plan: the dashboard opens on it from
+  // the first unfinished day. Same fields the dashboard's own picker writes.
+  const isCurrentReadingPlan = Boolean(currentPlan && currentPlan.mode === "devotional" && currentPlan.devotionalId === devotionalId);
+  const makeThisMyReadingPlan = async () => {
+    if (!userId || !devotional || settingReadingPlan) return;
+    setSettingReadingPlan(true);
+    try {
+      let nextDay = 1;
+      for (let dayNumber = 1; dayNumber <= Math.max(1, devotional.total_days); dayNumber += 1) {
+        if (!progress.get(dayNumber)?.is_completed) { nextDay = dayNumber; break; }
+        nextDay = Math.min(dayNumber + 1, Math.max(1, devotional.total_days));
+      }
+      const { error } = await supabase
+        .from("profile_stats")
+        .upsert(
+          {
+            user_id: userId,
+            free_devotional_id: devotionalId,
+            louis_primary_devotional_id: devotionalId,
+            louis_primary_devotional_day: nextDay,
+            preferred_study_mode: "devotional",
+          },
+          { onConflict: "user_id" },
+        );
+      if (error) throw error;
+      setCurrentPlan({ mode: "devotional", devotionalId });
+      router.push("/dashboard");
+    } catch (error) {
+      console.error("[BIBLE_STUDY] Could not set reading plan:", error);
+      setSettingReadingPlan(false);
+    }
   };
 
   const setChapterOnStudyDashboard = async (day: DevotionalDay) => {
@@ -1736,11 +1775,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           <div className="text-gray-500">Plan not found.</div>
           {embedded ? (
             <button type="button" onClick={onBack} className="text-blue-600 hover:underline mt-4 inline-block">
-              Back to Devotionals
+              Back to Reading Plans
             </button>
           ) : (
           <Link href="/plans" className="text-blue-600 hover:underline mt-4 inline-block">
-            ← Back to Devotionals
+            ← Back to Reading Plans
           </Link>
           )}
         </div>
@@ -1761,13 +1800,31 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         {/* HEADER */}
         {embedded ? (
           <button type="button" onClick={onBack} className="mb-4 inline-flex rounded-full bg-blue-50 px-4 py-2 text-sm font-black text-blue-700 transition hover:bg-blue-100">
-            Back to Devotionals
+            Back to Reading Plans
           </button>
         ) : (
         <Link href="/plans" className="text-blue-600 hover:underline mb-4 inline-block">
-          ← Back to Devotionals
+          ← Back to Reading Plans
         </Link>
         )}
+
+        {userId && !isCurrentReadingPlan ? (
+          <div className="mb-4 flex flex-col gap-3 rounded-[22px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_30%,var(--bb-card-border,#dbe7f4))] bg-[var(--bb-accent-soft,#eaf5ff)] px-4 py-3.5 sm:flex-row sm:items-center sm:justify-between">
+            <div className="min-w-0">
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Reading plan</p>
+              <p className="mt-0.5 text-sm font-black text-[var(--bb-text-primary,#111827)]">This is not your current reading plan.</p>
+              <p className="text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">Set it as your plan and your dashboard opens on {devotional.title} every day.</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => void makeThisMyReadingPlan()}
+              disabled={settingReadingPlan}
+              className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-105 disabled:opacity-60"
+            >
+              {settingReadingPlan ? "Setting..." : "Set as my reading plan"}
+            </button>
+          </div>
+        ) : null}
 
         <section className="overflow-hidden rounded-[30px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(180deg,var(--bb-card,#ffffff),color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_58%,var(--bb-card,#ffffff)))] p-4 shadow-[0_18px_48px_rgba(38,63,99,0.14)] sm:p-5">
           <div className="grid gap-5 md:grid-cols-[190px_1fr] md:items-center">
@@ -2581,7 +2638,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             >
               ✕
             </button>
-            <h2 className="text-xl font-bold text-gray-900 mb-3">Unlock All Devotionals</h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-3">Unlock All Reading Plans</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
               You've already started your free plan. Upgrade to Bible Buddy Pro to unlock every plan — including this one — plus all future releases.
             </p>
