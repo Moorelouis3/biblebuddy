@@ -700,6 +700,8 @@ type DashboardGroupPost = {
   parent_post_id: string | null;
   is_pinned: boolean | null;
   created_at: string;
+  media_url?: string | null;
+  link_url?: string | null;
 };
 
 function decodeBasicHtmlEntities(value: string) {
@@ -5468,7 +5470,7 @@ export default function DashboardJourneyExperience({
 
       const { data: posts, error: postsError } = await supabase
         .from("group_posts")
-        .select("id, group_id, user_id, display_name, category, title, content, like_count, parent_post_id, is_pinned, created_at")
+        .select("id, group_id, user_id, display_name, category, title, content, like_count, parent_post_id, is_pinned, created_at, media_url, link_url")
         .eq("group_id", group.id)
         .is("parent_post_id", null)
         .order("is_pinned", { ascending: false })
@@ -5549,7 +5551,7 @@ export default function DashboardJourneyExperience({
     try {
       const { data, error } = await supabase
         .from("group_posts")
-        .select("id, group_id, user_id, display_name, category, title, content, like_count, parent_post_id, is_pinned, created_at")
+        .select("id, group_id, user_id, display_name, category, title, content, like_count, parent_post_id, is_pinned, created_at, media_url, link_url")
         .eq("group_id", dashboardGroup.id)
         .eq("parent_post_id", postId)
         .order("created_at", { ascending: true })
