@@ -20,6 +20,9 @@ type BrowserTtsButtonProps = {
    * every existing caller keeps the layout it already had.
    */
   variant?: "default" | "transport";
+  /** Transport variant only: jump to the previous / next chapter. */
+  onPrevious?: () => void;
+  onNext?: () => void;
 };
 
 function chunkSpeechText(text: string) {
@@ -55,6 +58,8 @@ export default function BrowserTtsButton({
   backgroundMusicVolume,
   aiDisclosure = false,
   variant = "default",
+  onPrevious,
+  onNext,
 }: BrowserTtsButtonProps) {
   const [supported, setSupported] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -62,6 +67,20 @@ export default function BrowserTtsButton({
   const [loading, setLoading] = useState(false);
   const [audioError, setAudioError] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
+  const [speedMenuOpen, setSpeedMenuOpen] = useState(false);
+  const speedMenuRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (!speedMenuOpen) return;
+    function handlePointerDown(event: MouseEvent | TouchEvent) {
+      if (!speedMenuRef.current?.contains(event.target as Node)) setSpeedMenuOpen(false);
+    }
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+    };
+  }, [speedMenuOpen]);
   const globalAudio = useGlobalAudioPlayer();
   const chunks = useMemo(() => chunkSpeechText(text || ""), [text]);
   const chunksRef = useRef<string[]>([]);
@@ -399,99 +418,145 @@ export default function BrowserTtsButton({
     const playing = audioIsSpeaking && !audioIsPaused;
     const canSeek = canUseAudioSrc;
     const roundButton =
-      "grid h-9 w-9 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 sm:h-10 sm:w-10";
+      "grid h-12 w-12 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-[0_1px_2px_rgba(15,23,42,0.06)] transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40 sm:h-[52px] sm:w-[52px]";
+    const skipIcon = (direction: "back" | "forward") => (
+      <span className="relative grid h-7 w-7 place-items-center" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          className={`absolute inset-0 h-7 w-7 ${direction === "back" ? "" : "-scale-x-100"}`}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.9"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3" />
+          <polyline points="4 3.5 4 8.5 9 8.5" />
+        </svg>
+        <span className="relative text-[9px] font-black leading-none">15</span>
+      </span>
+    );
 
     return (
-      <div className={`mb-4 flex flex-wrap items-center gap-x-1.5 gap-y-2 rounded-2xl border border-slate-200 bg-white px-2 py-2 shadow-sm sm:gap-x-2 sm:px-2.5 ${className}`}>
-        <button
-          type="button"
-          onClick={() => seekAudioBy(-10)}
-          disabled={!canSeek || !audioIsSpeaking}
-          className={roundButton}
-          aria-label="Go back 10 seconds"
-          title="Back 10 seconds"
-        >
-          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <polygon points="11 19 2 12 11 5" fill="currentColor" stroke="none" />
-            <polygon points="22 19 13 12 22 5" fill="currentColor" stroke="none" />
-          </svg>
-        </button>
+      <div className={`relative ${className}`}>
+        <div className="flex items-center justify-between gap-1.5 sm:gap-2">
+          <button
+            type="button"
+            onClick={() => seekAudioBy(-15)}
+            disabled={!canSeek || !audioIsSpeaking}
+            className={roundButton}
+            aria-label="Go back 15 seconds"
+            title="Back 15 seconds"
+          >
+            {skipIcon("back")}
+          </button>
 
-        <button
-          type="button"
-          onClick={canUseAudioSrc ? toggleAudio : toggleSpeech}
-          disabled={audioIsLoading}
-          className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-sky-500 text-white shadow-[0_6px_16px_rgba(14,165,233,0.35)] transition hover:bg-sky-400 disabled:opacity-60"
-          aria-label={playing ? `Pause ${label}` : `Play ${label}`}
-          title={playing ? "Pause" : "Play"}
-        >
-          {audioIsLoading ? (
-            <span className="h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
-          ) : playing ? (
+          <button
+            type="button"
+            onClick={onPrevious}
+            disabled={!onPrevious}
+            className={roundButton}
+            aria-label="Previous chapter"
+            title="Previous chapter"
+          >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
-              <rect x="6" y="5" width="4" height="14" rx="1" />
-              <rect x="14" y="5" width="4" height="14" rx="1" />
+              <rect x="5" y="5" width="2.5" height="14" rx="1" />
+              <polygon points="19 5 9 12 19 19" />
             </svg>
-          ) : (
-            <svg viewBox="0 0 24 24" className="ml-0.5 h-5 w-5" fill="currentColor" aria-hidden="true">
-              <polygon points="7 4 20 12 7 20" />
+          </button>
+
+          <button
+            type="button"
+            onClick={canUseAudioSrc ? toggleAudio : toggleSpeech}
+            disabled={audioIsLoading}
+            className="grid h-[68px] w-[68px] shrink-0 place-items-center rounded-full bg-[#0056fd] text-white shadow-[0_8px_20px_rgba(0,86,253,0.35)] transition hover:bg-[#003bb0] disabled:opacity-60 sm:h-[76px] sm:w-[76px]"
+            aria-label={playing ? `Pause ${label}` : `Play ${label}`}
+            title={playing ? "Pause" : "Play"}
+          >
+            {audioIsLoading ? (
+              <span className="h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden="true" />
+            ) : playing ? (
+              <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor" aria-hidden="true">
+                <rect x="6" y="5" width="4" height="14" rx="1" />
+                <rect x="14" y="5" width="4" height="14" rx="1" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7" fill="currentColor" aria-hidden="true">
+                <polygon points="7 4 20 12 7 20" />
+              </svg>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={onNext}
+            disabled={!onNext}
+            className={roundButton}
+            aria-label="Next chapter"
+            title="Next chapter"
+          >
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
+              <polygon points="5 5 15 12 5 19" />
+              <rect x="16.5" y="5" width="2.5" height="14" rx="1" />
             </svg>
-          )}
-        </button>
+          </button>
 
-        <button
-          type="button"
-          onClick={canUseAudioSrc ? stopAudio : stopSpeech}
-          disabled={!audioIsSpeaking}
-          className={roundButton}
-          aria-label="Stop audio"
-          title="Stop"
-        >
-          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
-            <rect x="5" y="5" width="14" height="14" rx="2" />
-          </svg>
-        </button>
+          <button
+            type="button"
+            onClick={() => seekAudioBy(15)}
+            disabled={!canSeek || !audioIsSpeaking}
+            className={roundButton}
+            aria-label="Go forward 15 seconds"
+            title="Forward 15 seconds"
+          >
+            {skipIcon("forward")}
+          </button>
 
-        <button
-          type="button"
-          onClick={() => seekAudioBy(10)}
-          disabled={!canSeek || !audioIsSpeaking}
-          className={roundButton}
-          aria-label="Go forward 10 seconds"
-          title="Forward 10 seconds"
-        >
-          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <polygon points="13 19 22 12 13 5" fill="currentColor" stroke="none" />
-            <polygon points="2 19 11 12 2 5" fill="currentColor" stroke="none" />
-          </svg>
-        </button>
-
-        <div className="min-w-0 flex-1 px-1 text-right">
-          {audioHasError ? (
-            <p className="text-xs font-black text-red-600">Audio unavailable</p>
-          ) : !audioIsSpeaking && savedPosition > 2 ? (
-            <p className="text-xs font-bold text-slate-500">Saved at {formatTime(savedPosition)}</p>
+          {canUseAudioSrc ? (
+            <div className="relative shrink-0" ref={speedMenuRef}>
+              <button
+                type="button"
+                onClick={() => setSpeedMenuOpen((open) => !open)}
+                aria-haspopup="listbox"
+                aria-expanded={speedMenuOpen}
+                className="flex h-12 min-w-[64px] items-center justify-center gap-1 rounded-full border border-slate-200 bg-white px-3 text-sm font-black text-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.06)] transition hover:bg-slate-50 sm:h-[52px]"
+              >
+                {activePlaybackRate}x
+                <span className="text-[10px] text-slate-400" aria-hidden="true">▼</span>
+              </button>
+              {speedMenuOpen ? (
+                <div
+                  role="listbox"
+                  aria-label="Playback speed"
+                  className="absolute right-0 top-full z-40 mt-2 w-24 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.18)]"
+                >
+                  {speedOptions.map((rate) => (
+                    <button
+                      key={rate}
+                      type="button"
+                      role="option"
+                      aria-selected={activePlaybackRate === rate}
+                      onClick={() => {
+                        changePlaybackRate(rate);
+                        setSpeedMenuOpen(false);
+                      }}
+                      className={`flex w-full items-center justify-center px-3 py-2.5 text-sm font-black transition ${
+                        activePlaybackRate === rate ? "bg-[#0056fd] text-white" : "text-slate-700 hover:bg-slate-50"
+                      }`}
+                    >
+                      {rate}x
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           ) : null}
         </div>
 
-        {canUseAudioSrc ? (
-          <div className="ml-auto flex shrink-0 items-center gap-0.5 sm:gap-1" aria-label="Playback speed">
-            {speedOptions.map((rate) => (
-              <button
-                key={rate}
-                type="button"
-                onClick={() => changePlaybackRate(rate)}
-                className={`min-h-8 rounded-lg px-1.5 text-[11px] font-black transition sm:px-2 ${
-                  activePlaybackRate === rate
-                    ? "bg-sky-500 text-white"
-                    : "text-slate-500 hover:bg-slate-100"
-                }`}
-                aria-pressed={activePlaybackRate === rate}
-              >
-                {rate}x
-              </button>
-            ))}
-          </div>
+        {audioHasError ? (
+          <p className="mt-2 text-center text-xs font-black text-red-600">Audio unavailable</p>
+        ) : !audioIsSpeaking && savedPosition > 2 ? (
+          <p className="mt-2 text-center text-xs font-bold text-slate-500">Saved at {formatTime(savedPosition)}</p>
         ) : null}
       </div>
     );

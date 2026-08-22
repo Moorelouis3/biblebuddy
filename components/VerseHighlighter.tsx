@@ -62,6 +62,11 @@ interface VerseHighlighterProps {
    * absent, means the chapter simply has no cards yet.
    */
   insightPhrases?: InsightCardPhrase[];
+  /** Study Mode, when the reader owns the switch (to place it in the player card). */
+  studyModeOn?: boolean;
+  onStudyModeChange?: (on: boolean) => void;
+  /** Hide the built-in Study Mode header because the reader renders its own. */
+  hideStudyModeHeader?: boolean;
 }
 
 function getNearestScrollContainer(element: HTMLElement | null) {
@@ -1305,6 +1310,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   studySections,
   onStudyNotesCreditBlocked,
   insightPhrases = EMPTY_INSIGHT_PHRASES,
+  studyModeOn: studyModeOnProp,
+  onStudyModeChange,
+  hideStudyModeHeader = false,
 }) => {
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [rangeMap, setRangeMap] = useState<Record<number, VerseHighlightRange[]>>({});
@@ -1326,7 +1334,13 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [studyNotesCreditPreview, setStudyNotesCreditPreview] = useState<CreditClientResult | null>(null);
   // Off by default: the chapter opens as plain Scripture with quiet
   // underlines, and an Insight Card appears only when one is tapped.
-  const [studyModeOn, setStudyModeOn] = useState(false);
+  const [studyModeOnInternal, setStudyModeOnInternal] = useState(false);
+  const studyModeOn = studyModeOnProp ?? studyModeOnInternal;
+  const setStudyModeOn = (next: boolean | ((on: boolean) => boolean)) => {
+    const value = typeof next === "function" ? next(studyModeOn) : next;
+    setStudyModeOnInternal(value);
+    onStudyModeChange?.(value);
+  };
   const [insightNotesLoading, setInsightNotesLoading] = useState(false);
   const insightNotesLoadingRef = useRef(false);
   const [openInsightCard, setOpenInsightCard] = useState<string | null>(null);
@@ -2200,7 +2214,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
         }
       `}</style>
 
-      {insightCardsAvailable ? (
+      {insightCardsAvailable && !hideStudyModeHeader ? (
         <div className="mb-4 flex items-center justify-between gap-3 rounded-[14px] border border-slate-200 bg-white px-3.5 py-3">
           <span className="min-w-0">
             <span className="block text-[0.95rem] font-black leading-5 text-slate-900">Study Mode</span>

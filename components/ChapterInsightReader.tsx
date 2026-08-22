@@ -245,6 +245,13 @@ export default function ChapterInsightReader({
 
   const menuBookName = menuBook || BOOK;
 
+  // Study Mode lives in the player card, so the reader owns the switch.
+  const [studyModeOn, setStudyModeOn] = useState(false);
+  const totalChapters = getBookTotalChapters(BOOK);
+  const goToChapter = (target: number) => {
+    router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${target}`);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 px-4 pb-8 pt-2">
       <div className="mx-auto max-w-4xl">
@@ -414,20 +421,63 @@ export default function ChapterInsightReader({
         {tab === "scripture" ? (
           <>
             <div className="mb-6 rounded-2xl border border-slate-200 bg-white p-4 sm:p-6">
-              <BrowserTtsButton
-                text={speechText}
-                label={`Listen to ${BOOK} ${CHAPTER}`}
-                audioSrc={audioSrc}
-                backgroundMusicSrcs={getBibleReadingBackgroundTracks(BOOK, CHAPTER)}
-                backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
-                variant="transport"
-              />
+              {/* Player card: transport row, then the Study Mode switch under a divider. */}
+              <div className="mb-5 rounded-[26px] border border-slate-200 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
+                <div className="px-3 pb-3 pt-4 sm:px-5">
+                  <BrowserTtsButton
+                    text={speechText}
+                    label={`Listen to ${BOOK} ${CHAPTER}`}
+                    audioSrc={audioSrc}
+                    backgroundMusicSrcs={getBibleReadingBackgroundTracks(BOOK, CHAPTER)}
+                    backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
+                    variant="transport"
+                    onPrevious={CHAPTER > 1 ? () => goToChapter(CHAPTER - 1) : undefined}
+                    onNext={CHAPTER < totalChapters ? () => goToChapter(CHAPTER + 1) : undefined}
+                  />
+                </div>
+                {insightPhrases.length ? (
+                  <>
+                    <div className="mx-4 h-px bg-slate-200 sm:mx-5" />
+                    <div className="flex items-center justify-between gap-3 px-4 py-2 sm:px-5">
+                      <span className="flex min-w-0 items-center gap-2.5">
+                        <span className="text-lg leading-none" aria-hidden="true">📖</span>
+                        <span className="min-w-0">
+                          <span className="block text-[0.95rem] font-black leading-5 text-slate-900">Study Mode</span>
+                          <span className="block truncate text-xs font-semibold leading-4 text-slate-500">
+                            {studyModeOn ? "Every Insight Card is listed under its verse." : "Tap highlighted words to explore deeper"}
+                          </span>
+                        </span>
+                      </span>
+                      <button
+                        type="button"
+                        role="switch"
+                        aria-checked={studyModeOn}
+                        aria-label="Study Mode"
+                        onClick={() => setStudyModeOn((on) => !on)}
+                        className={`relative h-[30px] w-[52px] shrink-0 rounded-full transition-colors ${
+                          studyModeOn ? "bg-[#0056fd]" : "bg-slate-300"
+                        }`}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={`absolute left-[3px] top-[3px] h-6 w-6 rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.25)] transition-transform ${
+                            studyModeOn ? "translate-x-[22px]" : ""
+                          }`}
+                        />
+                      </button>
+                    </div>
+                  </>
+                ) : null}
+              </div>
               <VerseHighlighter
                 book={BOOK}
                 chapter={CHAPTER}
                 verses={verses}
                 insightPhrases={insightPhrases}
                 studySections={studySections ?? undefined}
+                studyModeOn={studyModeOn}
+                onStudyModeChange={setStudyModeOn}
+                hideStudyModeHeader
               />
             </div>
 
