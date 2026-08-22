@@ -82,9 +82,24 @@ Per chapter, mirroring Genesis 1:
 * Verify each `underline` really occurs in the verse before shipping. A
   generator that checks this is worth more than careful reading.
 
-## Before this can be rolled out
+## How every chapter gets the Genesis 1 look (since 2026-08-22)
 
-The reader currently recognises Genesis 1 and nothing else
-(`isGenesisOneStudyModeChapter`). Generalising it so that **any chapter with a
-phrase map** gets Insight Cards is one job, done once, that serves every
-chapter. It has to happen before per chapter data is worth producing.
+The reader no longer waits for a hand-built phrase map. The chapter route
+sends **every chapter that has study notes** to the Insight Card reader:
+
+* A chapter in the `lib/insightCards.ts` registry uses its hand-built map.
+* Every other chapter with notes has its map **derived at read time** by
+  `deriveInsightCards()` in `lib/insightCards.ts`: each phrase note's heading
+  (minus emoji) is searched for in the chapter's KJV verses, the matching
+  words become the `underline`, the verse it was found in becomes `verse`,
+  the note's emoji is the `icon`, and its opening line is the `preview`.
+  Headings that do not match whole are matched on shorter word runs (down to
+  three words) so punctuation and small wording differences still land.
+* Only a chapter with no notes at all still opens in the old full reader.
+
+What this means for writing notes: **the phrase heading must be the KJV
+words of the phrase, in Title Case, exactly as they appear in the verse.**
+That is what the derivation searches for. A heading that paraphrases the
+verse will not underline. Hand-building `lib/<book><chapter>StudyMode.ts` is
+now optional — do it only when the derived map needs correcting (for
+example a phrase that occurs twice in a verse and must point at the second).

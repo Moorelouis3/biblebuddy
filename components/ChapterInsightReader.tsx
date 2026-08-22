@@ -6,7 +6,8 @@ import dynamic from "next/dynamic";
 import { VerseHighlighter } from "./VerseHighlighter";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getBundledChapter } from "../lib/bundledChapterText";
-import { loadInsightCards, type InsightCardPhrase } from "../lib/insightCards";
+import { deriveInsightCards, loadInsightCards, type InsightCardPhrase } from "../lib/insightCards";
+import type { BibleReaderStudySection } from "../lib/bibleReaderStudyNotes";
 import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
 import { getBookTotalChapters, isChapterCompleted, markChapterDone } from "../lib/readingProgress";
@@ -48,7 +49,16 @@ const ALL_BIBLE_BOOKS = [
   "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude", "Revelation",
 ];
 
-export default function ChapterInsightReader({ book, chapter }: { book: string; chapter: number }) {
+export default function ChapterInsightReader({
+  book,
+  chapter,
+  initialSections,
+}: {
+  book: string;
+  chapter: number;
+  /** The chapter's study sections, when the route already fetched them. */
+  initialSections?: BibleReaderStudySection[];
+}) {
   const router = useRouter();
 
   // Display casing, so "genesis" out of a URL still reads as "Genesis".
@@ -107,18 +117,42 @@ export default function ChapterInsightReader({ book, chapter }: { book: string; 
     };
   }, [translation, book, chapter]);
 
-  // This chapter's Insight Cards, loaded on their own so adding chapters never
-  // grows what any single chapter downloads.
+  // This chapter's Insight Cards. A hand-built phrase map wins when one exists.
+  // Otherwise the map is derived from the chapter's own notes and its KJV text,
+  // so every chapter that has notes gets the Genesis 1 treatment. Derivation
+  // waits for the KJV verses because the underlines are cut from them.
+  const [studySections, setStudySections] = useState<BibleReaderStudySection[] | null>(initialSections ?? null);
   useEffect(() => {
     let cancelled = false;
     void (async () => {
       const phrases = await loadInsightCards(book, chapter);
-      if (!cancelled) setInsightPhrases(phrases);
+      if (cancelled) return;
+      if (phrases.length) {
+        setInsightPhrases(phrases);
+        return;
+      }
+      if (studySections) return;
+      try {
+        const response = await fetch(`/api/study-notes?book=${encodeURIComponent(book)}&chapter=${chapter}`);
+        const data = (await response.json()) as { sections?: BibleReaderStudySection[] };
+        if (!cancelled) setStudySections(Array.isArray(data.sections) ? data.sections : []);
+      } catch (error) {
+        console.warn("[INSIGHT_CARDS] Could not load study sections:", error);
+        if (!cancelled) setStudySections([]);
+      }
     })();
     return () => {
       cancelled = true;
     };
   }, [book, chapter]);
+
+  const derivedPhrases = useMemo(() => {
+    if (!studySections?.length || translation !== "kjv" || !verses.length) return null;
+    return deriveInsightCards(studySections, verses);
+  }, [studySections, translation, verses]);
+  useEffect(() => {
+    if (derivedPhrases) setInsightPhrases((current) => (current.length ? current : derivedPhrases));
+  }, [derivedPhrases]);
 
   useEffect(() => {
     void (async () => {
