@@ -125,6 +125,23 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   const [dontShowAgain, setDontShowAgain] = useState(false);
   const [tempDontShowAgain, setTempDontShowAgain] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
+  const [settingBibleYear, setSettingBibleYear] = useState(false);
+
+  // Make the Bible in One Year the reader's plan and open it on the dashboard.
+  async function setBibleYearAsPlan() {
+    if (settingBibleYear) return;
+    setSettingBibleYear(true);
+    try {
+      if (userId) {
+        const { error } = await supabase
+          .from("profile_stats")
+          .upsert({ user_id: userId, preferred_study_mode: "bible_year" }, { onConflict: "user_id" });
+        if (error) console.error("[PLANS] Could not set the Bible in One Year:", error.message);
+      }
+    } finally {
+      window.location.assign("/dashboard?view=bible-year");
+    }
+  }
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [progressByDevotional, setProgressByDevotional] = useState<Record<string, StudyProgressSummary>>({});
@@ -566,9 +583,9 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
         <div className="bb-bible-studies-hero mb-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm md:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Devotionals</h1>
+              <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Plans</h1>
               <p className="mt-2 max-w-2xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
-                Pick a focused devotional and move through it at your own pace.
+                Pick the plan you want on your dashboard: the Bible in One Year, or a focused devotional.
               </p>
             </div>
           </div>
@@ -724,6 +741,38 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
         ) : (
           <div>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
+            {studyFilter === "all" ? (
+              <div
+                role="link"
+                tabIndex={0}
+                className="block w-full cursor-pointer"
+                onClick={() => void setBibleYearAsPlan()}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    void setBibleYearAsPlan();
+                  }
+                }}
+              >
+                <div className="bb-bible-study-card group flex h-full flex-col rounded-[18px] border border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-card,#ffffff)] p-2.5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl sm:p-3">
+                  <div className="relative">
+                    <div className="aspect-square w-full overflow-hidden rounded-[14px] bg-[var(--bb-surface-soft,#f4f8ff)]">
+                      <img src="/Day1cover.png" alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                    </div>
+                    <span className="absolute right-2 top-2 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] shadow-sm">
+                      Plan
+                    </span>
+                  </div>
+                  <div className="flex flex-1 flex-col px-1 pb-1 pt-3 text-center">
+                    <h3 className="text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-base md:text-lg">The Bible in One Year</h3>
+                    <p className="mt-1 text-[11px] font-bold leading-tight text-[var(--bb-text-muted,#6b7280)] sm:text-xs">Genesis to Revelation, one day at a time</p>
+                    <div className="mt-auto pt-3">
+                      <p className="text-xs font-black text-[var(--bb-accent,#2f7fe8)]">{settingBibleYear ? "Setting..." : "Set as my plan"}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : null}
             {filteredDevotionals.map((devotional) => {
               const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
               const isComplete = progress.isComplete;
