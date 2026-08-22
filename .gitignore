@@ -60,3 +60,6 @@ console.log(Object.keys(m)))
 
 # generated cover candidates - reviewed locally, only approved ones are committed
 /public/cover-candidates/
+
+# generated on every build by scripts/generate-study-notes-static.ts
+/public/study-notes/

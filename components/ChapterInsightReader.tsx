@@ -7,6 +7,7 @@ import { VerseHighlighter } from "./VerseHighlighter";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getBundledChapter } from "../lib/bundledChapterText";
 import { deriveInsightCards, loadInsightCards, type InsightCardPhrase } from "../lib/insightCards";
+import { fetchStaticJson, kjvStaticUrl, studyNotesStaticUrl } from "../lib/chapterStaticData";
 import type { BibleReaderStudySection } from "../lib/bibleReaderStudyNotes";
 import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
@@ -89,7 +90,10 @@ export default function ChapterInsightReader({
   const [triviaPack, setTriviaPack] = useState<TriviaChapterPack | null>(null);
   const [scrambledPack, setScrambledPack] = useState<ScrambledChapterPack | null>(null);
 
-  // Other translations are not bundled, so they are fetched. KJV is instant.
+  // KJV comes from the bundle (Genesis 1) or a static JSON file on the CDN,
+  // written from the same bible-api.com text the reader used to fetch live so
+  // saved highlight offsets are unchanged. Other translations, and any KJV
+  // chapter whose file is missing, are fetched live as before.
   useEffect(() => {
     const bundled = translation === "kjv" ? getBundledChapter(book, chapter) : [];
     if (bundled.length) {
@@ -99,6 +103,14 @@ export default function ChapterInsightReader({
 
     let cancelled = false;
     void (async () => {
+      if (translation === "kjv") {
+        const cached = await fetchStaticJson<Verse[]>(kjvStaticUrl(book, chapter));
+        if (cancelled) return;
+        if (cached?.length) {
+          setVerses(cached);
+          return;
+        }
+      }
       try {
         const reference = `${book.toLowerCase().replace(/\s+/g, "+")}+${chapter}`;
         const response = await fetch(`https://bible-api.com/${reference}?translation=${translation}`);
@@ -132,6 +144,13 @@ export default function ChapterInsightReader({
         return;
       }
       if (studySections) return;
+      // Static file first (CDN, no server function), live API as the fallback.
+      const cached = await fetchStaticJson<{ sections?: BibleReaderStudySection[] }>(studyNotesStaticUrl(book, chapter));
+      if (cancelled) return;
+      if (Array.isArray(cached?.sections)) {
+        setStudySections(cached.sections);
+        return;
+      }
       try {
         const response = await fetch(`/api/study-notes?book=${encodeURIComponent(book)}&chapter=${chapter}`);
         const data = (await response.json()) as { sections?: BibleReaderStudySection[] };
@@ -403,7 +422,13 @@ export default function ChapterInsightReader({
                 backgroundMusicVolume={BIBLE_READING_BACKGROUND_VOLUME}
                 variant="transport"
               />
-              <VerseHighlighter book={BOOK} chapter={CHAPTER} verses={verses} insightPhrases={insightPhrases} />
+              <VerseHighlighter
+                book={BOOK}
+                chapter={CHAPTER}
+                verses={verses}
+                insightPhrases={insightPhrases}
+                studySections={studySections ?? undefined}
+              />
             </div>
 
             <button
