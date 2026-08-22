@@ -2395,3 +2395,7 @@ Next up: 2 Chronicles 14
 ## 2026-08-22T20:55:55Z (hourly chapter notes run)
 Chapter: 2 Chronicles 14 | Duration: 9 min | Sections: 4 | Cards: 34 | Status: pass
 Next up: 2 Chronicles 15
+
+## 2026-08-22T22:08:58Z (blog writer run)
+Article: Is Anxiety a Sin? What the Bible Actually Teaches | Words: ~3200 | Category: Christian Foundations | Status: pass
+Queue remaining: 23

@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "is-anxiety-a-sin",
+    title: "Is Anxiety a Sin? What the Bible Actually Teaches",
+    description:
+      "Is anxiety a sin? A pastoral, Bible based answer that separates temptation from sin, including what Jesus felt in Gethsemane, and where anxiety can actually cross a line.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/is-anxiety-a-sin",
+    publishedAt: "2026-08-23",
+    readTime: "15 min read",
+    image: "/anxietyarticlebanner.jpg",
+    groupPost: {
+      title: "Is Anxiety a Sin? 📖",
+      content:
+        "Somebody told you anxiety is a sin.\nNow you're carrying the fear, plus the guilt for having it.\n\n📌 Here's the truth: a feeling is not the same as a sin.\n\n📖 Jesus was in anguish in Gethsemane.\n📖 His sweat fell like drops of blood.\n📖 Scripture calls Him without sin the whole time.\n\nNew article on:\n🟢 the real **difference between temptation and sin**\n🟢 where anxiety can actually **cross a line**\n🟢 what God asks of you instead of **shame**\n\nHave you ever been told anxiety means weak faith? 🙏",
+    },
+  },
+  {
     slug: "what-does-the-bible-say-about-fear",
     title: "What Does the Bible Say About Fear?",
     description:
