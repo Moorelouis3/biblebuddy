@@ -44,6 +44,34 @@ async function resolveLouisUserId(supabaseAdmin: SupabaseClient) {
   throw new Error("Could not resolve Louis's user id for the group post author.");
 }
 
+function escapeHtml(value: string) {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+// Posts written in the app are stored as HTML paragraphs (<p>..</p>, with an
+// empty <p></p> for a blank line). The teasers in blogContent.ts are plain
+// text with newlines, which the opened-post view collapses into one block.
+// Convert: every line becomes its own <p>, blank lines become spacer <p>s,
+// **bold** becomes <strong>. Content that is already HTML is left alone.
+function teaserToHtml(content: string) {
+  const trimmed = content.trim();
+  if (/^\s*<(p|div|h[1-6]|ul|ol|blockquote)[\s>]/i.test(trimmed)) return trimmed;
+  const lines = trimmed.split("\n").map((line) => line.trim());
+  const html: string[] = [];
+  let pendingBlank = false;
+  for (const line of lines) {
+    if (!line) {
+      pendingBlank = true;
+      continue;
+    }
+    if (pendingBlank && html.length) html.push("<p></p>");
+    pendingBlank = false;
+    const withBold = escapeHtml(line).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    html.push(`<p>${withBold}</p>`);
+  }
+  return html.join("");
+}
+
 function stripArticleUrlLine(content: string, articleUrl: string) {
   const lines = content.split("\n");
   const kept: string[] = [];
@@ -157,7 +185,7 @@ export async function GET(request: NextRequest) {
           category: "general",
           // The feed renders a "Read the full post" button from link_url, so a
           // bare "Read it here: <url>" line in the teaser is just clutter.
-          content: stripArticleUrlLine(article.groupPost!.content, `${SITE_URL}${article.canonicalPath}`),
+          content: teaserToHtml(stripArticleUrlLine(article.groupPost!.content, `${SITE_URL}${article.canonicalPath}`)),
           media_url: `${SITE_URL}${article.image}`,
           link_url: `${SITE_URL}${article.canonicalPath}`,
         },

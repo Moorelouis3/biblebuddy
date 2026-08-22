@@ -158,12 +158,17 @@ Add a new entry at the **top** of `BLOG_ARTICLES` in `lib/blogContent.ts`:
   banner path).
 - **Never** set `legacyPath`. That field is only for pre-migration posts.
 - `groupPost` — **this is the short version that goes out to the study
-  group.** Five to eight short lines in Louis's style: a hook line, one
-  📌 line carrying the main point, one or two lines on what the post
-  covers, then `Read it here:` followed by the full
-  `https://www.mybiblebuddy.net/blog/<slug>` URL, then a question
-  inviting group members to reply, ending with 🙏. The existing anxiety
-  and Jezebel entries are the model.
+  group.** It must follow Louis's Marcus formatting rules: scannable, one
+  idea per line, never a paragraph. Shape, top to bottom: a one-line
+  hook, one more short line, blank line, one 📌 line carrying the main
+  point, blank line, two or three 📖 lines (one fact each), blank line,
+  `New article on:` followed by two or three 🟢 bullet lines saying what
+  the post covers (bold the key term in each with `**like this**`), blank
+  line, then a closing question inviting replies, ending with 🙏. Keep
+  every line under about 12 words. No hyphens or dashes. Do NOT put the
+  article URL in the teaser: the feed renders a "Read the full post"
+  button from the link automatically. The Fear entry
+  (`what-does-the-bible-say-about-fear`) is the model.
 
 You do **not** post to the group yourself. `/api/cron/blog-group-post`
 runs daily at 15:30 UTC, picks up any article carrying a `groupPost`, and
