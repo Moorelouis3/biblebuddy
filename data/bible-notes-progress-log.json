@@ -25552,6 +25552,59 @@
           "at": "2026-08-22T12:59:13Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 11,
+      "startedAt": "2026-08-22T14:45:52Z",
+      "finishedAt": "2026-08-22T14:56:31Z",
+      "durationMinutes": 10.65,
+      "sections": 8,
+      "cards": 30,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, normal forward progress resumed at 2 Chronicles 11 (previously covered only by the legacy bulk chroniclesPersonalNotes.ts chapters 1-19 file, no dedicated per-chapter file existed). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (23 verses). 2 Chronicles 11 covers Rehoboam raising an army to retake the north, God stopping the civil war through Shemaiah, Rehoboam fortifying fifteen cities around Jerusalem, stocking those strongholds, the priest and Levite migration out of the north after Jeroboams golden calf religion, faithful Israelites strengthening Judah for three years, Rehoboams wives and large family, and his choice of Abijah as successor with wise dispersal of his other sons. Chunked into 8 sections (1-4, 5-10, 11-12, 13-15, 16-17, 18-19, 20-21, 22-23). Density about 1.30 cards/verse (23 verses, 30 cards), in line with the established range for list and genealogy heavy chapters in this book. check_bible_note_style.py found 2 problems on first pass (two bullets one word over the 8 word limit), fixed both, second run clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file, with no duplicate card titles. Parser check passed exactly via getBibleReaderStudySections(2 chronicles, 11) (8/8 sections, 30 cards, 23 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 chronicles range extended from chapters 1-10 to 1-11, replaceStudySectionsForBookRange(2 chronicles, 11, 11, SECOND_CHRONICLES_ELEVEN_PERSONAL_SECTIONS) call added directly after the Chapter 7-10 call. Next forward-progress target is 2 Chronicles 12.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-22T14:45:52Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 11 (priority queue and redo backlog both empty, normal forward progress after 2 Chronicles 10 / Proverbs complete)",
+          "at": "2026-08-22T14:47:30Z"
+        },
+        {
+          "name": "KJV text fetched for 2 Chronicles 11 (23 verses, aruljohn mirror)",
+          "at": "2026-08-22T14:48:10Z"
+        },
+        {
+          "name": "style spec docs/bible-study-note-style.md read in full",
+          "at": "2026-08-22T14:48:40Z"
+        },
+        {
+          "name": "source file lib/secondChroniclesElevenSource.ts written (8 sections, 30 cards)",
+          "at": "2026-08-22T14:53:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 fixes then 0 problems)",
+          "at": "2026-08-22T14:53:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, applyPersonalSecondChroniclesElevenStudySections call)",
+          "at": "2026-08-22T14:54:10Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 30 cards, 23 verses, verbatim)",
+          "at": "2026-08-22T14:54:40Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-08-22T14:55:20Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals, data/bible-notes-progress-log.json)",
+          "at": "2026-08-22T14:56:31Z"
+        }
+      ]
     }
   ]
 }

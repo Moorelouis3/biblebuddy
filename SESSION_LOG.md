@@ -2379,3 +2379,7 @@ Next up: Proverbs 31
 ## 2026-08-22T12:55:52Z (hourly chapter notes run)
 Chapter: Proverbs 31 | Duration: 9 min | Sections: 10 | Cards: 35 | Status: pass
 Next up: 2 Chronicles 11
+
+## 2026-08-22T14:56:31Z (hourly chapter notes run)
+Chapter: 2 Chronicles 11 | Duration: 11 min | Sections: 8 | Cards: 30 | Status: pass
+Next up: 2 Chronicles 12
