@@ -25145,6 +25145,59 @@
           "at": "2026-08-21T22:59:29Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 25,
+      "startedAt": "2026-08-22T00:53:10Z",
+      "finishedAt": "2026-08-22T01:01:40Z",
+      "durationMinutes": 8.5,
+      "sections": 8,
+      "cards": 52,
+      "verses": 28,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Louis-requested priority detour (data/bible-notes-priority-queue.json), continuing the Proverbs skip-ahead after Proverbs 24. Redo backlog (data/bible-notes-style-redo-remaining.json) was checked first and confirmed empty, then the priority queue was checked and was non-empty with Proverbs 25 as the first entry, so this was written as a normal brand new chapter (fetch, write, wire, verify) per the queue's own instructions, not a redo. Fetched real KJV text for Proverbs 25 from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (28 verses). Chunked into 8 sections (1-3, 4-7, 8-10, 11-14, 15-17, 18-20, 21-24, 25-28) at about 1.86 cards per verse. check_bible_note_style.py found 4 problems on first pass (one banned hedge word roughly, two over length bullets, one 21 word body line), fixed all four, second run clean with 0 problems (52 cards). Parser check passed exactly via getBibleReaderStudySections('proverbs', 25) (8/8 sections, 52 cards, verse ranges 1-3/4-7/8-10/11-14/15-17/18-20/21-24/25-28 with no gaps, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended from proverbs<=24 to proverbs<=25, replaceStudySectionsForBookRange call added). Priority queue entry for Proverbs 25 removed as part of this commit; Proverbs 26 is now next in that queue.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-22T00:53:35Z"
+        },
+        {
+          "name": "target chapter determined: redo backlog empty, priority queue non-empty, target is Proverbs 25 (new chapter, not a redo)",
+          "at": "2026-08-22T00:53:51Z"
+        },
+        {
+          "name": "KJV text fetched for Proverbs 25 (28 verses, aruljohn mirror)",
+          "at": "2026-08-22T00:54:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-22T00:54:45Z"
+        },
+        {
+          "name": "source file written: lib/proverbsTwentyFiveSource.ts (52 cards, 8 sections)",
+          "at": "2026-08-22T00:59:00Z"
+        },
+        {
+          "name": "style checker clean on second pass after fixing 4 problems (scripts/check_bible_note_style.py, 0 problems)",
+          "at": "2026-08-22T01:00:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to <=25, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-22T01:00:20Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections (8/8 sections, 52 cards, text verbatim)",
+          "at": "2026-08-22T01:00:45Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-22T01:01:10Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md incl. running totals, priority-queue.json popped)",
+          "at": "2026-08-22T01:01:40Z"
+        }
+      ]
     }
   ]
 }

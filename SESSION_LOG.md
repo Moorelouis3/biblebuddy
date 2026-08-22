@@ -2351,3 +2351,7 @@ Queue remaining: 24
 ## 2026-08-21T22:59:29Z (hourly chapter notes run)
 Chapter: Proverbs 24 | Duration: 13 min | Sections: 11 | Cards: 67 | Status: pass
 Next up: Proverbs 25
+
+## 2026-08-22T01:01:40Z (hourly chapter notes run)
+Chapter: Proverbs 25 | Duration: 8.5 min | Sections: 8 | Cards: 52 | Status: pass
+Next up: Proverbs 26
