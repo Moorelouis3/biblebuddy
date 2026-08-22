@@ -25495,6 +25495,59 @@
           "at": "2026-08-22T11:01:48Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 31,
+      "startedAt": "2026-08-22T12:46:46Z",
+      "finishedAt": "2026-08-22T12:55:52Z",
+      "durationMinutes": 9,
+      "sections": 10,
+      "cards": 35,
+      "verses": 31,
+      "notes": "New chapter, written via the Louis-requested priority queue detour (skip ahead to finish Proverbs). Closes out the book of Proverbs. Poetry/wisdom chapter: King Lemuel's mother's charge (1-9) plus the acrostic virtuous woman poem (10-31).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-22T12:46:46Z"
+        },
+        {
+          "name": "target chapter determined: Proverbs 31 (priority queue detour, new chapter)",
+          "at": "2026-08-22T12:46:46Z"
+        },
+        {
+          "name": "KJV text fetched from GitHub raw mirror",
+          "at": "2026-08-22T12:46:46Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-22T12:46:46Z"
+        },
+        {
+          "name": "source file lib/proverbsThirtyOneSource.ts written (35 cards, 10 sections)",
+          "at": "2026-08-22T12:55:52Z"
+        },
+        {
+          "name": "style checker clean (python3 scripts/check_bible_note_style.py)",
+          "at": "2026-08-22T12:55:52Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 31, replaceStudySectionsForBookRange added)",
+          "at": "2026-08-22T12:55:52Z"
+        },
+        {
+          "name": "parser check passed (10 sections, 35 cards, matches design)",
+          "at": "2026-08-22T12:55:52Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-08-22T12:55:52Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-22T12:56:05Z"
+        }
+      ]
     }
   ]
 }
