@@ -25373,6 +25373,67 @@
           "at": "2026-08-22T06:58:11Z"
         }
       ]
+    },
+    {
+      "book": "Proverbs",
+      "chapter": 29,
+      "startedAt": "2026-08-22T08:45:48Z",
+      "finishedAt": "2026-08-22T08:57:16Z",
+      "durationMinutes": 11.5,
+      "sections": 9,
+      "cards": 40,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and normal canonical-order forward progress both pointed at Proverbs 29. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (27 verses). Chunked into 9 sections of 3 verses each (1-3, 4-6, 7-9, 10-12, 13-15, 16-18, 19-21, 22-24, 25-27), 40 cards total (1.48 cards/verse), splitting most verses along their natural KJV antithetic parallelism into two cards. check_bible_note_style.py found 5 problems on first pass (a banned hedge word, three overlength bullets, one overlength body line), fixed all five, second pass clean. Manual section 13 eye check passed. Parser check passed exactly (9/9 sections, 40 cards, verse ranges with no gaps). npx tsc --noEmit -p . clean. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to proverbs<=29, replaceStudySectionsForBookRange call added). Priority queue entry for Proverbs 29 removed as part of this commit.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-22T08:45:48Z"
+        },
+        {
+          "name": "target_chapter_determined_proverbs_29_new_chapter",
+          "at": "2026-08-22T08:46:59Z"
+        },
+        {
+          "name": "kjv_text_fetched_proverbs_29_27_verses",
+          "at": "2026-08-22T08:46:59Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-08-22T08:46:59Z"
+        },
+        {
+          "name": "source_file_written_proverbsTwentyNineSource_ts",
+          "at": "2026-08-22T08:53:50Z"
+        },
+        {
+          "name": "style_checker_clean_second_pass_0_problems",
+          "at": "2026-08-22T08:53:50Z"
+        },
+        {
+          "name": "wired_into_reader_bibleReaderStudyNotes_ts",
+          "at": "2026-08-22T08:54:20Z"
+        },
+        {
+          "name": "parser_check_passed_9_sections_40_cards",
+          "at": "2026-08-22T08:54:20Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-08-22T08:55:39Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-08-22T08:57:04Z"
+        },
+        {
+          "name": "committed",
+          "at": "2026-08-22T08:57:16Z"
+        },
+        {
+          "name": "pushed",
+          "at": "2026-08-22T08:57:16Z"
+        }
+      ]
     }
   ]
 }
