@@ -2359,3 +2359,7 @@ Next up: Proverbs 26
 ## 2026-08-22T02:57:19Z (hourly chapter notes run)
 Chapter: Proverbs 26 | Duration: 11.1 min | Sections: 9 | Cards: 49 | Status: pass
 Next up: Proverbs 27
+
+## 2026-08-22T04:55:53Z (hourly chapter notes run)
+Chapter: Proverbs 27 | Duration: 8.7 min | Sections: 9 | Cards: 39 | Status: pass
+Next up: Proverbs 28
