@@ -2844,7 +2844,7 @@ export default function DashboardJourneyExperience({
   }> = [
     { key: "home", label: "Home", icon: "\u2302", href: "/dashboard" },
     { key: "bible", label: "Bible", icon: <BibleBookIcon />, href: "/reading" },
-    { key: "bible_studies", label: "Plans", icon: "\uD83C\uDF05", href: "/plans" },
+    { key: "bible_studies", label: "Devotionals", icon: "\uD83C\uDF05", href: "/plans" },
     { key: "bible_topics", label: "Bible Topics", icon: "\uD83D\uDCDA", href: "#bible-topics" },
     { key: "share", label: "Invite", icon: "\u2197", href: dashboardPageLinks.share?.href || "#share-bible-buddy", onClick: dashboardPageLinks.share?.onClick },
     { key: "group", label: "Group", icon: "\uD83D\uDC65", href: "/dashboard?view=group" },
@@ -3665,56 +3665,8 @@ export default function DashboardJourneyExperience({
     };
   }, [showDevotionalSettings, embeddedBibleBookSearchOpen, bibleYearSeriesActive, currentDevotionalId]);
 
-  // The Bible in One Year is offered in the same picker as the devotionals,
-  // so a reader can move between the two plans from the dashboard.
-  const BIBLE_YEAR_PLAN_ID = "bible_year";
-  function renderBibleYearPlanOption() {
-    const selected = selectedDevotionalId === BIBLE_YEAR_PLAN_ID;
-    return (
-      <button
-        type="button"
-        onClick={() => setSelectedDevotionalId(BIBLE_YEAR_PLAN_ID)}
-        className={`flex w-full items-center gap-3 rounded-2xl border p-2 text-left transition ${
-          selected ? "border-[#7BAFD4] bg-[#eef7ff] shadow-sm" : "border-gray-200 bg-white hover:border-[#b8d9ef] hover:bg-[#f7fbff]"
-        }`}
-      >
-        <div className="h-14 w-11 shrink-0 overflow-hidden rounded-lg bg-gray-100 shadow-sm">
-          <img src="/Day1cover.png" alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
-        </div>
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-black text-gray-950">The Bible in One Year</p>
-          <p className="mt-0.5 line-clamp-2 text-[11px] font-medium leading-4 text-gray-500">
-            Read the whole Bible one day at a time, with audio, study notes and trivia.
-          </p>
-        </div>
-      </button>
-    );
-  }
-
   async function handleSaveDevotionalSetting() {
     if (!userId || !selectedDevotionalId) return;
-    if (selectedDevotionalId === BIBLE_YEAR_PLAN_ID) {
-      setIsSavingDevotional(true);
-      setDevotionalSettingsMessage(null);
-      try {
-        const { error } = await supabase
-          .from("profile_stats")
-          .upsert({ user_id: userId, preferred_study_mode: "bible_year" }, { onConflict: "user_id" });
-        if (error) throw error;
-        setDevotionalSettingsMessage("The Bible in One Year is now your plan.");
-        onDevotionalChanged();
-        window.setTimeout(() => {
-          setShowDevotionalSettings(false);
-          window.location.assign("/dashboard?view=bible-year");
-        }, 650);
-      } catch (error) {
-        console.error("[DASHBOARD] Could not switch to the Bible in One Year:", error);
-        setDevotionalSettingsMessage("Louis could not switch plans. Try again in a moment.");
-      } finally {
-        setIsSavingDevotional(false);
-      }
-      return;
-    }
     if (!isPaidUser && !canFreeUserChooseNewStudy && selectedDevotionalId !== currentDevotionalId) {
       setShowDevotionalSettings(false);
       setFreePlanGate({ kind: "study" });
@@ -12469,20 +12421,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                       isLocked ? ", locked" : isCurrent ? ", current day" : isComplete ? ", complete" : ""
                     }`}
                   >
-                    {/* The day's cover, like the Bible in One Year journey map. */}
-                    <span className="relative mx-auto mb-1.5 block h-[64px] w-[64px] overflow-hidden rounded-[12px] bg-[var(--bb-surface-soft,#f4f8ff)]">
-                      <img
-                        src={getDevotionalDayCover(currentDevotionalTitle, dayNumber) || currentStudyCover || undefined}
-                        alt=""
-                        loading="lazy"
-                        decoding="async"
-                        onError={(event) => {
-                          const image = event.currentTarget;
-                          if (currentStudyCover && image.src !== currentStudyCover) image.src = currentStudyCover;
-                        }}
-                        className={`h-full w-full object-cover ${isLocked ? "opacity-60" : ""}`}
-                      />
-                    </span>
                     <span className="block text-[13px] font-black text-[var(--bb-text-primary,#111827)]">
                       Day {dayNumber}
                     </span>
@@ -14197,19 +14135,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                       aria-label="Share my progress"
                     >
                       <span>Share my Progress</span>
-                      <span aria-hidden="true" className="text-xs text-[var(--bb-text-secondary,#4b5563)]">&gt;</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setBibleYearPlanMenuOpen(false);
-                        setSelectedDevotionalId(BIBLE_YEAR_PLAN_ID);
-                        setShowDevotionalSettings(true);
-                      }}
-                      className="mt-1 flex w-full items-center justify-between rounded-xl px-3 py-2 text-sm font-black text-black transition hover:bg-black/5"
-                      aria-label="Switch plan"
-                    >
-                      <span>Switch Plan</span>
                       <span aria-hidden="true" className="text-xs text-[var(--bb-text-secondary,#4b5563)]">&gt;</span>
                     </button>
                     {bibleYearPlanMessage ? (
@@ -17506,9 +17431,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                             Loading Bible studies...
                           </div>
                         ) : (
-                          <>
-                          {renderBibleYearPlanOption()}
-                          {devotionalOptions.map((devotional) => {
+                          devotionalOptions.map((devotional) => {
                             const cover = getDashboardStudyCover(devotional.title);
                             const selected = selectedDevotionalId === devotional.id;
                             return (
@@ -17537,8 +17460,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                                 </div>
                               </button>
                             );
-                          })}
-                          </>
+                          })
                         )}
                       </div>
                       <p className="text-xs leading-5 text-gray-500">
@@ -18383,7 +18305,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                   : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))]"
               }`}
-              aria-label="Open Plans"
+              aria-label="Open Devotionals"
               data-dashboard-nav-key="bible_studies"
             >
               <span className={`grid h-7 w-7 place-items-center rounded-full ${plansTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
@@ -18395,7 +18317,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <path d="M10 16h4" />
                 </svg>
               </span>
-              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Plans</span>
+              <span className="mt-0.5 text-[9px] leading-none sm:mt-0 sm:text-[10px]">Devotionals</span>
             </button>
 
             <button
@@ -18752,9 +18674,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   No Bible studies found yet.
                 </div>
               ) : (
-                <>
-                {renderBibleYearPlanOption()}
-                {devotionalOptions.map((devotional) => {
+                devotionalOptions.map((devotional) => {
                   const cover = getDashboardStudyCover(devotional.title);
                   const selected = selectedDevotionalId === devotional.id;
                   return (
@@ -18783,8 +18703,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       </div>
                     </button>
                   );
-                })}
-                </>
+                })
               )}
             </div>
             <p className="text-xs leading-5 text-gray-500">
