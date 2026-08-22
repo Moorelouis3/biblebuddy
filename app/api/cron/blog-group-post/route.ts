@@ -44,6 +44,25 @@ async function resolveLouisUserId(supabaseAdmin: SupabaseClient) {
   throw new Error("Could not resolve Louis's user id for the group post author.");
 }
 
+function stripArticleUrlLine(content: string, articleUrl: string) {
+  const lines = content.split("\n");
+  const kept: string[] = [];
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i].trim();
+    const isUrlLine = line === articleUrl || line === `${articleUrl}/`;
+    if (isUrlLine) {
+      // Drop a "Read it here:" style lead-in directly above the URL too.
+      const prev = kept.length ? kept[kept.length - 1].trim() : "";
+      if (/^(read (it|more|the (full )?(post|article)) here|read here|full (post|article)( here)?)\s*[:\-–—]?$/i.test(prev)) {
+        kept.pop();
+      }
+      continue;
+    }
+    kept.push(lines[i]);
+  }
+  return kept.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
 // Shares each blog article carrying a groupPost teaser into the Bible Buddy
 // Study Group exactly once. Dedup is by link_url match against existing
 // root posts, so re-runs (or redeploys) never double-post.
@@ -62,9 +81,20 @@ export async function GET(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  const pendingArticles = BLOG_ARTICLES.filter((article) => article.groupPost);
+  // Only articles published in the last few days are candidates. Older
+  // articles were already shared when they went live; re-sharing them (which
+  // happened once when the anxiety article's URL moved from
+  // /bible-study-hub/... to /blog/... and slipped past the URL dedupe) just
+  // spams the group with content everyone has seen.
+  const RECENT_WINDOW_DAYS = 4;
+  const cutoff = Date.now() - RECENT_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+  const pendingArticles = BLOG_ARTICLES.filter((article) => {
+    if (!article.groupPost) return false;
+    const publishedAt = Date.parse(article.publishedAt);
+    return Number.isNaN(publishedAt) ? false : publishedAt >= cutoff;
+  });
   if (!pendingArticles.length) {
-    return NextResponse.json({ ok: true, posted: [], note: "No articles carry a groupPost teaser." });
+    return NextResponse.json({ ok: true, posted: [], note: "No recent articles carry a groupPost teaser." });
   }
 
   const { data: group, error: groupError } = await supabaseAdmin
@@ -83,7 +113,13 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Official study group not found." }, { status: 404 });
   }
 
-  const articleUrls = pendingArticles.map((article) => `${SITE_URL}${article.canonicalPath}`);
+  // Dedupe against BOTH the canonical and any legacy URL, so an article whose
+  // path moved is still recognised as already shared.
+  const urlsFor = (article: (typeof pendingArticles)[number]) =>
+    [article.canonicalPath, article.legacyPath]
+      .filter((path): path is string => Boolean(path))
+      .map((path) => `${SITE_URL}${path}`);
+  const articleUrls = pendingArticles.flatMap(urlsFor);
   const { data: existingPosts, error: existingError } = await supabaseAdmin
     .from("group_posts")
     .select("link_url")
@@ -94,9 +130,7 @@ export async function GET(request: NextRequest) {
   }
   const alreadyPosted = new Set((existingPosts || []).map((row) => row.link_url));
 
-  const toPost = pendingArticles.filter(
-    (article) => !alreadyPosted.has(`${SITE_URL}${article.canonicalPath}`),
-  );
+  const toPost = pendingArticles.filter((article) => !urlsFor(article).some((url) => alreadyPosted.has(url)));
   if (!toPost.length) {
     return NextResponse.json({ ok: true, posted: [], note: "All article group posts already exist." });
   }
@@ -121,7 +155,9 @@ export async function GET(request: NextRequest) {
           display_name: displayName,
           title: article.groupPost!.title,
           category: "general",
-          content: article.groupPost!.content,
+          // The feed renders a "Read the full post" button from link_url, so a
+          // bare "Read it here: <url>" line in the teaser is just clutter.
+          content: stripArticleUrlLine(article.groupPost!.content, `${SITE_URL}${article.canonicalPath}`),
           media_url: `${SITE_URL}${article.image}`,
           link_url: `${SITE_URL}${article.canonicalPath}`,
         },

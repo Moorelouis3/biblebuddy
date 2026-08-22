@@ -872,7 +872,19 @@ function mergePostsPreservingMedia<T extends { id: string; media_url?: string | 
 }
 
 function getRenderablePostContent(html: string): string {
-  return linkBibleReferencesInHtml(html.replace(HOME_FEED_COVER_MARKER, "").trim());
+  return linkBareUrlsInHtml(linkBibleReferencesInHtml(html.replace(HOME_FEED_COVER_MARKER, "").trim()));
+}
+
+// Turns bare http(s) URLs in post text into real links. Skips anything that is
+// already inside an attribute or tag (preceded by a quote, '=' or '>') so
+// existing anchors are left alone. Internal Bible Buddy links open in the same
+// tab; everything else opens in a new one.
+function linkBareUrlsInHtml(html: string) {
+  return html.replace(/(^|[^"'=>\w])(https?:\/\/[^\s<]+?)([.,!?)]*)(?=\s|<|$)/g, (_match, lead: string, url: string, trail: string) => {
+    const isInternal = /^https?:\/\/(www\.)?mybiblebuddy\.net(\/|$)/i.test(url);
+    const target = isInternal ? "" : ' target="_blank" rel="noopener noreferrer"';
+    return `${lead}<a href="${escapeHtmlAttribute(url)}"${target} class="font-semibold text-[var(--bb-accent,#1d4ed8)] underline underline-offset-2 break-all" onclick="event.stopPropagation()">${url}</a>${trail}`;
+  });
 }
 
 function escapeHtmlAttribute(value: string) {
@@ -5157,6 +5169,11 @@ export default function GroupChatPage() {
   const activeFeedScrambledShare = activeFeedPost ? isScrambledScoreShare(activeFeedPost) : false;
   const activeFeedScrambledPromo = activeFeedPost ? isScrambledPromoPost(activeFeedPost) : false;
   const activeFeedBibleBuddyTvShare = activeFeedPost ? isBibleBuddyTvSharePost(activeFeedPost) : false;
+  const activeFeedBlogArticlePath = activeFeedPost ? parseBlogArticlePath(activeFeedPost.link_url) : null;
+  const activeFeedPlainLinkUrl =
+    activeFeedPost?.link_url && !activeFeedBlogArticlePath && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare
+      ? activeFeedPost.link_url
+      : null;
   const modalTopBuddies = topBuddies;
   const isLeader = userRole === "leader";
   const isLeaderOrMod = userRole === "leader" || userRole === "moderator";
@@ -7543,6 +7560,26 @@ export default function GroupChatPage() {
             >
               <img src={activeFeedPost.media_url} alt="Post image" className="w-full rounded-2xl object-contain" style={{ maxHeight: "520px", objectPosition: "center" }} />
             </button>
+          )}
+
+          {activeFeedBlogArticlePath && (
+            <Link
+              href={activeFeedBlogArticlePath}
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#0056fd] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#003bb0]"
+            >
+              📖 Read the full post
+            </Link>
+          )}
+
+          {activeFeedPlainLinkUrl && (
+            <a
+              href={activeFeedPlainLinkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#0056fd] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#003bb0]"
+            >
+              🔗 Open link
+            </a>
           )}
 
           {activeFeedCoverPost && activeFeedPost.title && (
