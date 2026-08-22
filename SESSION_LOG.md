@@ -2391,3 +2391,7 @@ Next up: 2 Chronicles 13
 ## 2026-08-22T19:04:50Z (hourly chapter notes run)
 Chapter: 2 Chronicles 13 | Duration: 18 min | Sections: 5 | Cards: 34 | Status: pass
 Next up: 2 Chronicles 14
+
+## 2026-08-22T20:55:55Z (hourly chapter notes run)
+Chapter: 2 Chronicles 14 | Duration: 9 min | Sections: 4 | Cards: 34 | Status: pass
+Next up: 2 Chronicles 15
