@@ -25662,6 +25662,83 @@
           "at": "2026-08-22T16:54:30Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 13,
+      "startedAt": "2026-08-22T18:46:21Z",
+      "finishedAt": "2026-08-22T19:04:50Z",
+      "durationMinutes": 18,
+      "sections": 5,
+      "cards": 34,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog confirmed empty, normal forward progress after 2 Chronicles 12. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. 2 Chronicles 13 covers Abijah's short reign and his one recorded battle against Jeroboam: the cross kingdom dating system and Abijah's mother named two different ways between Chronicles and Kings, the huge and lopsided army numbers (four hundred thousand against eight hundred thousand), Abijah's speech from Mount Zemaraim built on the covenant of salt with David's line, Jeroboam reframed as a rebellious former servant egged on by worthless men while a genuinely inexperienced Rehoboam could not hold the kingdom together, the golden calves and the illegitimate priesthood open to anyone with a bullock and seven rams contrasted against Judah's real Aaronic priests keeping the shewbread and the candlestick and sounding the priestly trumpets, Jeroboam's ambush sprung mid speech, Judah's cry to the LORD and shout of faith echoing Jericho, the LORD's own credited victory with Israel's staggering five hundred thousand dead, and the aftermath where Abijah captures Bethel itself (one of the two golden calf shrines), Jeroboam never recovers and is struck dead by the LORD, and the chapter closes on Abijah's own fourteen wives and thirty eight children before pointing to the now lost writings of the prophet Iddo. Chunked into 5 sections (1-3, 4-9, 10-12, 13-18, 19-22). Density about 1.55 cards/verse (22 verses, 34 cards), a dense speech and battle narrative. `scripts/check_bible_note_style.py` passed clean on the first run, 34 cards, zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, closes on meaning rather than mechanics, uses exactly four bullets each ending on \ud83d\udcd6 or \u27a1\ufe0f with no repeated emoji inside any card, no duplicate card titles or opening lines across all 34 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file (two KJV verses that contain semicolons in the source text, verses 10 and 12, had their card titles trimmed to a shorter exact substring that excludes the semicolon, since the checker and spec ban the character anywhere in the file including titles). Parser check passed exactly via `getBibleReaderStudySections('2 chronicles', 13)` (5/5 sections, 34 cards, 22 verses of exact non-overlapping gap-free coverage, text rendered verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: import added (`lib/secondChroniclesThirteenSource.ts`), `preserveExactPhraseBodies` for 2 chronicles extended from chapters 1-12 to chapters 1-13, new `applyPersonalSecondChroniclesThirteenStudySections()` calling `replaceStudySectionsForBookRange(\"2 chronicles\", 13, 13, SECOND_CHRONICLES_THIRTEEN_PERSONAL_SECTIONS)` added directly after the chapter 12 apply function call. This run also hit the known recurring stale-local-main environment bug (documented in four prior anomaly events) in its worst form yet: local main started frozen at b2230be, 50 commits behind origin/main, and a full chapter was written against the wrong target (2 Chronicles 4, which already existed on origin with different content) before the rejected push caught it. Recovered with no data lost by tagging the stale commit as backup-stale-2chron4-2bac488, resetting local main to origin/main, and rebuilding this chapter correctly against the real base. Full detail logged in data/bible-notes-usage-events.json. Next forward-progress target is 2 Chronicles 14.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-22T18:46:21Z"
+        },
+        {
+          "name": "initial (incorrect) target chapter determined: 2 Chronicles 4, from a stale local main",
+          "at": "2026-08-22T18:52:44Z"
+        },
+        {
+          "name": "2 Chronicles 4 written, style-checked clean, wired, parser-verified, tsc clean (all against stale base)",
+          "at": "2026-08-22T18:54:24Z"
+        },
+        {
+          "name": "git push rejected as non-fast-forward, revealing local main was 50 commits stale",
+          "at": "2026-08-22T18:57:00Z"
+        },
+        {
+          "name": "environment anomaly diagnosed: confirmed 2 Chronicles 4 already exists on origin with different content, redo backlog empty on origin too",
+          "at": "2026-08-22T18:58:00Z"
+        },
+        {
+          "name": "stale commit tagged backup-stale-2chron4-2bac488, local main reset to origin/main",
+          "at": "2026-08-22T18:58:47Z"
+        },
+        {
+          "name": "correct target chapter determined: 2 Chronicles 13 (chapters 1-12 confirmed present on origin, 13 absent)",
+          "at": "2026-08-22T18:58:47Z"
+        },
+        {
+          "name": "KJV text fetched for 2 Chronicles 13 from raw.githubusercontent.com/aruljohn/Bible-kjv/master/2Chronicles.json",
+          "at": "2026-08-22T18:58:47Z"
+        },
+        {
+          "name": "style spec re-confirmed unchanged between stale and real origin/main (diffed docs/bible-study-note-style.md and scripts/check_bible_note_style.py)",
+          "at": "2026-08-22T18:59:01Z"
+        },
+        {
+          "name": "source file written (lib/secondChroniclesThirteenSource.ts, 5 sections / 34 cards)",
+          "at": "2026-08-22T19:02:12Z"
+        },
+        {
+          "name": "style checker clean (check_bible_note_style.py, no problems found on first pass)",
+          "at": "2026-08-22T19:03:19Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 13, replaceStudySectionsForBookRange call added)",
+          "at": "2026-08-22T19:03:46Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 34 cards, text verbatim)",
+          "at": "2026-08-22T19:03:46Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-22T19:03:54Z"
+        },
+        {
+          "name": "environment anomaly logged to data/bible-notes-usage-events.json",
+          "at": "2026-08-22T19:04:50Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-22T19:04:50Z"
+        }
+      ]
     }
   ]
 }
