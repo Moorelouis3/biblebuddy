@@ -2371,3 +2371,7 @@ Next up: Proverbs 29
 ## 2026-08-22T08:57:04Z (hourly chapter notes run)
 Chapter: Proverbs 29 | Duration: 11.5 min | Sections: 9 | Cards: 40 | Status: pass
 Next up: Proverbs 30
+
+## 2026-08-22T11:00:28Z (hourly chapter notes run)
+Chapter: Proverbs 30 | Duration: 14 min | Sections: 11 | Cards: 46 | Status: pass
+Next up: Proverbs 31
