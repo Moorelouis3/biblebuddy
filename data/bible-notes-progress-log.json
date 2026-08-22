@@ -25605,6 +25605,63 @@
           "at": "2026-08-22T14:56:31Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 12,
+      "startedAt": "2026-08-22T16:46:27Z",
+      "finishedAt": "2026-08-22T16:53:25Z",
+      "durationMinutes": 7,
+      "sections": 7,
+      "cards": 27,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty, so normal forward progress continued at 2 Chronicles 12 (no existing dedicated wired-in file). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (16 verses). 2 Chronicles 12 covers Rehoboam forsaking the law right after his kingdom was finally secure, Shishak of Egypt invading in Rehoboam's fifth year with a huge army as direct judgment for that unfaithfulness, Shemaiah the prophet naming the invasion as God's own hand and the king and princes humbling themselves and calling God righteous, God granting partial deliverance instead of total destruction while still letting Judah serve Shishak as a lesson, Shishak stripping Solomon's golden shields from the temple and Rehoboam replacing them with ceremonially guarded brass ones, the wrath turning away because of that one humbled moment even though the losses were never undone, Rehoboam's reign summary including his Ammonite mother Naamah and the root diagnosis that he never prepared his heart to seek the LORD, and the closing notice of continual low grade war with Jeroboam, Rehoboam's death, and Abijah succeeding him as already promised in chapter eleven. Chunked into 7 sections (1, 2-4, 5-8, 9-11, 12, 13-14, 15-16) matching the chapter's scene breaks. Density about 1.7 cards/verse (16 verses, 27 cards). scripts/check_bible_note_style.py found 0 problems on the first pass. A manual section 13 eye check confirmed all titles are exact KJV phrases, every bullet set is internally unique with a scripture or implication closer, and no note simply restates its verse. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 12) (7/7 sections, 27 cards, 16 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 chronicles range extended from chapters 1-11 to 1-12, replaceStudySectionsForBookRange('2 chronicles', 12, 12, SECOND_CHRONICLES_TWELVE_PERSONAL_SECTIONS) call added directly after the Chapter 11 call. Next forward-progress target is 2 Chronicles 13.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-22T16:46:27Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 12 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-22T16:47:09Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 12, 16 verses, aruljohn mirror)",
+          "at": "2026-08-22T16:47:20Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-22T16:47:20Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesTwelveSource.ts",
+          "at": "2026-08-22T16:51:10Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 pass, 0 problems)",
+          "at": "2026-08-22T16:52:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-22T16:52:40Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 27 cards, 16 verses, text verbatim)",
+          "at": "2026-08-22T16:52:55Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-22T16:53:25Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-22T16:54:00Z"
+        },
+        {
+          "name": "SESSION_LOG.md appended (hourly chapter notes run block)",
+          "at": "2026-08-22T16:54:30Z"
+        }
+      ]
     }
   ]
 }

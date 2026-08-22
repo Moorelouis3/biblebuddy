@@ -2383,3 +2383,7 @@ Next up: 2 Chronicles 11
 ## 2026-08-22T14:56:31Z (hourly chapter notes run)
 Chapter: 2 Chronicles 11 | Duration: 11 min | Sections: 8 | Cards: 30 | Status: pass
 Next up: 2 Chronicles 12
+
+## 2026-08-22T16:54:15Z (hourly chapter notes run)
+Chapter: 2 Chronicles 12 | Duration: 7 min | Sections: 7 | Cards: 27 | Status: pass
+Next up: 2 Chronicles 13
