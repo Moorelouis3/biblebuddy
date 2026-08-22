@@ -443,7 +443,7 @@ export default function BrowserTtsButton({
           <button
             type="button"
             onClick={() => seekAudioBy(-15)}
-            disabled={!canSeek || !audioIsSpeaking}
+            disabled={!canSeek}
             className={roundButton}
             aria-label="Go back 15 seconds"
             title="Back 15 seconds"
@@ -504,7 +504,7 @@ export default function BrowserTtsButton({
           <button
             type="button"
             onClick={() => seekAudioBy(15)}
-            disabled={!canSeek || !audioIsSpeaking}
+            disabled={!canSeek}
             className={roundButton}
             aria-label="Go forward 15 seconds"
             title="Forward 15 seconds"

@@ -56,7 +56,7 @@ async function main() {
   let done = 0;
   let skipped = 0;
   const failures: string[] = [];
-  const CONCURRENCY = 3;
+  const CONCURRENCY = 1;
   let cursor = 0;
   async function worker() {
     while (cursor < jobs.length) {
@@ -73,7 +73,7 @@ async function main() {
       } catch (error) {
         failures.push(`${book} ${chapter}: ${error instanceof Error ? error.message : String(error)}`);
       }
-      await new Promise((r) => setTimeout(r, 120));
+      await new Promise((r) => setTimeout(r, 2100)); // bible-api.com allows ~15 requests per 30s
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
