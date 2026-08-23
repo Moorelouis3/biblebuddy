@@ -14,16 +14,46 @@
       "verses": 19,
       "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, normal forward progress after 2 Chronicles 16 (no existing dedicated wired-in file). Session started with local HEAD detached at the same commit as a stale-cached origin/main; a git fetch origin main confirmed origin actually already matched local HEAD (a forced-update line appeared in the fetch output), so git checkout -B main origin/main resolved it cleanly with nothing lost, the same recurring environment ref anomaly logged in many prior runs. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (19 verses). Chunked into 4 sections (1-6 Jehoshaphat follows David's ways, 7-9 teachers sent throughout Judah, 10-11 peace and tribute from the nations, 12-19 Jehoshaphat's growing military strength) matching the chapter's own scene breaks. Density about 1.95 cards/verse (19 verses, 37 cards). scripts/check_bible_note_style.py found 14 problems on first pass (several over-length bullets, several card bodies short of the 3-line floor), fixed all fourteen, second run clean with 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language (stead, stablished, waxed, fourscore, valour, and more), closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji ending on the scripture emoji, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file, with no duplicate card titles across all 37 cards. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 17) (4/4 sections, 37 cards, 19 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies 2 chronicles range extended from chapters 1-16 to 1-17, replaceStudySectionsForBookRange(\"2 chronicles\", 17, 17, SECOND_CHRONICLES_SEVENTEEN_PERSONAL_SECTIONS) call added inside the existing chapter 14-16 wiring function. Next forward-progress target is 2 Chronicles 18.",
       "steps": [
-        { "name": "npm install done", "at": "2026-08-23T02:47:19Z" },
-        { "name": "target chapter determined: 2 Chronicles 17 (normal forward progress, priority queue and redo backlog both empty)", "at": "2026-08-23T02:47:25Z" },
-        { "name": "KJV text fetched (2 Chronicles 17, 19 verses, aruljohn mirror)", "at": "2026-08-23T02:47:35Z" },
-        { "name": "style spec (docs/bible-study-note-style.md) and skill file read in full", "at": "2026-08-23T02:48:30Z" },
-        { "name": "source file written: lib/secondChroniclesSeventeenSource.ts", "at": "2026-08-23T02:50:00Z" },
-        { "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes, 14 problems fixed)", "at": "2026-08-23T02:51:30Z" },
-        { "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)", "at": "2026-08-23T02:52:00Z" },
-        { "name": "parser check passed (4/4 sections, 37 cards, text verbatim)", "at": "2026-08-23T02:52:20Z" },
-        { "name": "tsc --noEmit clean, zero errors", "at": "2026-08-23T02:52:50Z" },
-        { "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)", "at": "2026-08-23T02:54:54Z" }
+        {
+          "name": "npm install done",
+          "at": "2026-08-23T02:47:19Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 17 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-08-23T02:47:25Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 17, 19 verses, aruljohn mirror)",
+          "at": "2026-08-23T02:47:35Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill file read in full",
+          "at": "2026-08-23T02:48:30Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesSeventeenSource.ts",
+          "at": "2026-08-23T02:50:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes, 14 problems fixed)",
+          "at": "2026-08-23T02:51:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-08-23T02:52:00Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 37 cards, text verbatim)",
+          "at": "2026-08-23T02:52:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-23T02:52:50Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-23T02:54:54Z"
+        }
       ]
     },
     {
@@ -25927,6 +25957,59 @@
         {
           "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
           "at": "2026-08-23T00:56:00Z"
+        }
+      ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 18,
+      "startedAt": "2026-08-23T04:45:58Z",
+      "finishedAt": "2026-08-23T04:54:54Z",
+      "durationMinutes": 9,
+      "sections": 9,
+      "cards": 35,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty. Normal forward progress: canonical-order scan of the progress log found 2 Chronicles 1-17 all logged, so 2 Chronicles 18 (no existing dedicated wired-in file, only covered before this run by the legacy SECOND_CHRONICLES_1_19_PERSONAL_SECTIONS batch call for chapters 1-19) is the next chapter. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (34 verses). 2 Chronicles 18 covers Jehoshaphat's marriage alliance with Ahab, the 400 false court prophets promising victory at Ramoth Gilead, Micaiah being sent for and his sarcastic mimicry of the false prophets, his true vision of Israel scattered like sheep without a shepherd and of the heavenly throne room where a lying spirit is permitted into the mouths of Ahab's prophets, Zedekiah striking Micaiah and Micaiah's prison sentence and public prophetic wager, Ahab's disguise and Jehoshaphat nearly being killed in Ahab's place, and Ahab's death from a bow drawn at a venture exactly as prophesied. Chunked into 9 sections (1-3, 4-8, 9-11, 12-14, 15-17, 18-22, 23-27, 28-31, 32-34) matching the chapter's own scene breaks. Density about 1.03 cards/verse (34 verses, 35 cards), matching the reference implementation lib/genesisThirtyOneSource.ts (56 cards/55 verses, about 1.02 cards/verse). scripts/check_bible_note_style.py found 5 bullet word count problems on first run (all final bullets running 9 words), fixed by trimming each to 3-8 words, then passed clean with zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language (affinity, adjure, entice, host of heaven, at a venture, harness), closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji ending on 📖 or ➡️, no duplicate card titles across all 35 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 18) (9/9 sections, verse ranges 1-3/4-8/9-11/12-14/15-17/18-22/23-27/28-31/32-34 with no gaps, text rendered verbatim, 35 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/secondChroniclesEighteenSource.ts), preserveExactPhraseBodies for 2 chronicles extended from chapters 1-17 to 1-18, replaceStudySectionsForBookRange(\"2 chronicles\", 18, 18, SECOND_CHRONICLES_EIGHTEEN_PERSONAL_SECTIONS) call added directly after the chapter 17 call, overriding the old generic 1-19 batch coverage for this chapter. Next forward-progress target is 2 Chronicles 19.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-23T04:45:58Z"
+        },
+        {
+          "name": "priority queue and redo backlog confirmed empty; target chapter determined: 2 Chronicles 18 (normal forward progress, new chapter)",
+          "at": "2026-08-23T04:47:37Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) and reference implementation reviewed (lib/genesisThirtyOneSource.ts)",
+          "at": "2026-08-23T04:47:37Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 18, 34 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-08-23T04:48:00Z"
+        },
+        {
+          "name": "source file written (lib/secondChroniclesEighteenSource.ts, 35 cards / 9 sections)",
+          "at": "2026-08-23T04:52:52Z"
+        },
+        {
+          "name": "style checker clean (5 bullet word count issues found and fixed)",
+          "at": "2026-08-23T04:53:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-17 to 1-18, replaceStudySectionsForBookRange call added after chapter 17)",
+          "at": "2026-08-23T04:53:30Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('2 chronicles', 18) returned 9/9 sections, 35 cards)",
+          "at": "2026-08-23T04:53:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-23T04:54:43Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-23T04:54:54Z"
         }
       ]
     }
