@@ -26175,6 +26175,63 @@
           "at": "2026-08-23T10:56:54Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 22,
+      "startedAt": "2026-08-23T14:46:00Z",
+      "finishedAt": "2026-08-23T14:54:40Z",
+      "durationMinutes": 9,
+      "sections": 4,
+      "cards": 23,
+      "verses": 12,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty. Normal forward progress after 2 Chronicles 21: chapter 22 had no dedicated wired-in file. Session started with local HEAD detached and one commit (2 Chronicles 21) ahead of a stale-cached origin/main; a git fetch origin main confirmed origin actually already had that commit (the local git checkout was just stale from container creation), so git checkout main plus git merge --ff-only resolved it cleanly with nothing lost or re-pushed. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (12 verses). 2 Chronicles 22 covers Ahaziah becoming king only because raiders in the previous chapter had killed all his older brothers, the textual crux of his age given as forty and two though his own father died at forty (many scholars believe this is a copyist error for twenty and two, matching 2 Kings 8:26), his mother Athaliah's evil counsel and his one year reign, joining Joram of Israel in the war against Hazael at Ramoth-gilead, the second textual crux of him being called Azariah in verse 6 (almost certainly the same person as Ahaziah), his fatal visit to the wounded Joram at Jezreel which God used to place him directly in Jehu's path, Jehu's purge of Ahab's house catching Ahaziah and Judah's princes, Ahaziah's burial granted only because of his grandfather Jehoshaphat's reputation, Athaliah's massacre of the entire royal seed after her son's death, and Jehoshabeath and Jehoiada the priest hiding the infant Joash in the temple for six years while Athaliah usurped the throne. Chunked into 4 sections matching the chapter's own scene breaks (1-2 Ahaziah made king, 3-6 following Ahab's house into war, 7-9 Jehu's judgment catches up, 10-12 Athaliah's massacre and Joash's rescue). Density about 1.92 cards per verse (12 verses, 23 cards). scripts/check_bible_note_style.py passed clean with zero problems on the first run. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (counsellor, seed royal, house of God), corrects the two real textual misreadings honestly with an allowed hedge (many scholars believe) rather than inventing false certainty, closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji per card ending on \ud83d\udcd6, no duplicate card titles across all 23 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 22) (4/4 sections, verse ranges 1-2/3-6/7-9/10-12 with no gaps, text rendered verbatim, 23 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/secondChroniclesTwentyTwoSource.ts), preserveExactPhraseBodies for 2 chronicles extended from chapters 1-21 to 1-22, a new applyPersonalSecondChroniclesTwentyTwoStudySections() function added calling replaceStudySectionsForBookRange(\"2 chronicles\", 22, 22, SECOND_CHRONICLES_TWENTY_TWO_PERSONAL_SECTIONS), and its invocation placed directly after the chapter 21 call. Next forward-progress target is 2 Chronicles 23.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-23T14:46:23Z"
+        },
+        {
+          "name": "recovered a stranded local commit (2 Chronicles 21) that was one commit ahead of a stale-cached origin/main ref; git fetch confirmed origin already had it, git checkout main + merge --ff-only resolved cleanly, nothing lost",
+          "at": "2026-08-23T14:47:30Z"
+        },
+        {
+          "name": "priority queue and redo backlog confirmed empty; target chapter determined: 2 Chronicles 22 (normal forward progress, new chapter)",
+          "at": "2026-08-23T14:48:30Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 22, 12 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-08-23T14:49:10Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md), style checker script read, reference implementations reviewed (lib/genesisThirtyOneSource.ts, lib/secondChroniclesTwentyOneSource.ts)",
+          "at": "2026-08-23T14:51:50Z"
+        },
+        {
+          "name": "source file written (lib/secondChroniclesTwentyTwoSource.ts, 23 cards / 4 sections)",
+          "at": "2026-08-23T14:53:10Z"
+        },
+        {
+          "name": "style checker clean (zero problems on first run)",
+          "at": "2026-08-23T14:53:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-21 to 1-22, new apply function and replaceStudySectionsForBookRange call added after the chapter 21 call)",
+          "at": "2026-08-23T14:53:50Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('2 chronicles', 22) returned 4/4 sections, 23 cards)",
+          "at": "2026-08-23T14:54:04Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-23T14:54:04Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-23T14:54:40Z"
+        }
+      ]
     }
   ]
 }
