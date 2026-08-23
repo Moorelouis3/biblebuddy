@@ -2423,3 +2423,7 @@ Next up: 2 Chronicles 20
 ## 2026-08-23T08:58:45Z (hourly chapter notes run)
 Chapter: 2 Chronicles 20 | Duration: 13 min | Sections: 9 | Cards: 41 | Status: pass
 Next up: 2 Chronicles 21
+
+## 2026-08-23T10:56:54Z (hourly chapter notes run)
+Chapter: 2 Chronicles 21 | Duration: 10 min | Sections: 6 | Cards: 30 | Status: pass
+Next up: 2 Chronicles 22
