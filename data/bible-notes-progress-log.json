@@ -26069,6 +26069,59 @@
           "at": "2026-08-23T06:56:00Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 20,
+      "startedAt": "2026-08-23T08:45:54Z",
+      "finishedAt": "2026-08-23T08:58:45Z",
+      "durationMinutes": 13,
+      "sections": 9,
+      "cards": 41,
+      "verses": 37,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty. Normal forward progress after 2 Chronicles 19: chapter 20 had no dedicated wired-in file, only the legacy SECOND_CHRONICLES_20_36_PERSONAL_SECTIONS bulk batch call (lib/secondChroniclesTwentyToEzraThreePersonalNotes.ts) covering chapters 20-36, the same pre-project scaffolding pattern every prior chapter in this book has superseded on its own turn. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (37 verses). 2 Chronicles 20 covers the Moabite/Ammonite/Meunite coalition marching on Judah, Jehoshaphat's public prayer in the temple's new court invoking God's covenant with Abraham and Solomon's dedication prayer, Jahaziel's Spirit-given prophecy that the battle belongs to God, Judah's worship response and early morning march to Tekoa led by singers instead of soldiers, the coalition destroying itself before Judah ever fights, the three days gathering spoil in the valley renamed Berachah, the joyful return to Jerusalem, a summary of Jehoshaphat's reign including the unresolved high places, and his failed shipbuilding alliance with wicked King Ahaziah of Israel. Chunked into 9 sections matching the chapter's own scene breaks (1-4 the threat, 5-9 and 10-13 the prayer, 14-17 the prophecy, 18-21 worship before the battle, 22-23 the ambush, 24-30 the spoil and return, 31-34 the reign summary, 35-37 the failed alliance). Density about 1.11 cards per verse (37 verses, 41 cards), in the same range as the reference implementation lib/genesisThirtyOneSource.ts (56 cards/55 verses, about 1.02 cards/verse) and recent chapters in this book (2 Chronicles 18 at 1.03, 2 Chronicles 19 at 1.36). scripts/check_bible_note_style.py flagged one bullet at 9 words on first run (over the 3-8 word limit); trimmed it and the checker passed clean with zero problems on the second run. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language (heathen, sanctuary, ambushments, spoil, Berachah, psaltery, high places, howbeit), closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji ending on 📖 or ➡️, no duplicate card titles across all 41 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 20) (9/9 sections, verse ranges 1-4/5-9/10-13/14-17/18-21/22-23/24-30/31-34/35-37 with no gaps, text rendered verbatim, 41 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/secondChroniclesTwentySource.ts), preserveExactPhraseBodies for 2 chronicles extended from chapters 1-19 to 1-20, a new applyPersonalSecondChroniclesTwentyStudySections() function added calling replaceStudySectionsForBookRange(\"2 chronicles\", 20, 20, SECOND_CHRONICLES_TWENTY_PERSONAL_SECTIONS), and its invocation placed directly after the existing bulk 20-36 call so this dedicated chapter file overrides just chapter 20 while chapters 21-36 remain on the legacy bulk file until their own turn. Next forward-progress target is 2 Chronicles 21.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-23T08:46:22Z"
+        },
+        {
+          "name": "priority queue and redo backlog confirmed empty; target chapter determined: 2 Chronicles 20 (normal forward progress, new chapter, superseding legacy bulk 20-36 file)",
+          "at": "2026-08-23T08:48:25Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 20, 37 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-08-23T08:48:25Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementation reviewed (lib/genesisThirtyOneSource.ts, lib/secondChroniclesNineteenSource.ts)",
+          "at": "2026-08-23T08:55:21Z"
+        },
+        {
+          "name": "source file written (lib/secondChroniclesTwentySource.ts, 41 cards / 9 sections)",
+          "at": "2026-08-23T08:56:34Z"
+        },
+        {
+          "name": "style checker clean (one bullet word count fixed after first run)",
+          "at": "2026-08-23T08:56:41Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-19 to 1-20, new apply function and replaceStudySectionsForBookRange call added after the legacy 20-36 bulk call)",
+          "at": "2026-08-23T08:57:00Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('2 chronicles', 20) returned 9/9 sections, 41 cards)",
+          "at": "2026-08-23T08:57:17Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-23T08:58:34Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-23T08:58:45Z"
+        }
+      ]
     }
   ]
 }
