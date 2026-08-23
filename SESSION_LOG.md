@@ -2407,3 +2407,7 @@ Next up: 2 Chronicles 16
 ## 2026-08-23T00:56:00Z (hourly chapter notes run)
 Chapter: 2 Chronicles 16 | Duration: 10 min | Sections: 3 | Cards: 31 | Status: pass
 Next up: 2 Chronicles 17
+
+## 2026-08-23T02:54:36Z (hourly chapter notes run)
+Chapter: 2 Chronicles 17 | Duration: 8 min | Sections: 4 | Cards: 37 | Status: pass
+Next up: 2 Chronicles 18
