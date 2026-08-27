@@ -2443,3 +2443,7 @@ Next up: 2 Chronicles 25
 ## 2026-08-27T02:59:52Z (blog writer run)
 Article: What Does Selah Mean in the Bible? | Words: ~3189 | Category: Bible Insights | Status: pass
 Queue remaining: 22
+
+## 2026-08-27T03:01:00Z (hourly chapter notes run)
+Chapter: 2 Chronicles 25 | Duration: 9 min | Sections: 8 | Cards: 28 | Status: pass
+Next up: 2 Chronicles 26

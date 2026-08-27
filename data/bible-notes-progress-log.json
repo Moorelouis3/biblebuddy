@@ -26338,6 +26338,59 @@
           "at": "2026-08-23T18:58:00Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 25,
+      "startedAt": "2026-08-27T02:52:32Z",
+      "finishedAt": "2026-08-27T03:01:00Z",
+      "durationMinutes": 9,
+      "sections": 8,
+      "cards": 28,
+      "verses": 28,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, normal forward progress after 2 Chronicles 24 (no existing dedicated wired-in file). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (28 verses). 2 Chronicles 25 covers Amaziah doing right but not with a perfect heart, executing his father's murderers but sparing their children per the law of individual responsibility in the book of Moses, numbering a 300,000 man army and hiring 100,000 Israelite mercenaries for a hundred talents of silver, a man of God warning him the LORD is not with Ephraim and Amaziah's sunk cost worry over the silver already paid, his victory over Edom at the Valley of Salt and the brutal execution of 10,000 captives thrown from the rock, the dismissed mercenaries raiding Judah's own cities on their way home, Amaziah's bizarre choice to worship the gods of Seir he had just defeated, a prophet's rebuke and Amaziah's threat against him, Joash of Israel's fable of the thistle and the cedar warning Amaziah his pride would be his downfall, the crushing defeat at Bethshemesh with 400 cubits of Jerusalem's wall torn down and the temple treasury plundered, and Amaziah's eventual assassination and flight to Lachish traced directly back to his earlier apostasy, closing with his burial among his fathers despite his disgraced end. Chunked into 8 sections matching the chapter's own scene breaks (1-4, 5-6, 7-10, 11-13, 14-16, 17-19, 20-24, 25-28). Density about 1.0 cards/verse (28 verses, 28 cards), matching the reference implementation lib/genesisThirtyOneSource.ts (56 cards/55 verses, about 1.02 cards/verse). scripts/check_bible_note_style.py passed clean with zero problems on the first run. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (perfect heart, talent, Ephraim as shorthand for Israel, Sela/the rock, Seir, forbear, Bethshemesh, cubit, Obededom, Lachish), closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji ending on 📖 or ➡️, no duplicate card titles across all 28 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 25) (8/8 sections, verse ranges 1-4/5-6/7-10/11-13/14-16/17-19/20-24/25-28 with no gaps, text rendered verbatim, 28 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/secondChroniclesTwentyFiveSource.ts), preserveExactPhraseBodies for 2 chronicles extended from chapters 1-24 to 1-25, new applyPersonalSecondChroniclesTwentyFiveStudySections() function added and called directly after the chapter 24 call. Next forward-progress target is 2 Chronicles 26.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-27T02:52:32Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 25 (normal forward progress, mode: new chapter, priority queue and redo backlog both empty)",
+          "at": "2026-08-27T02:53:16Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 25, 28 verses, aruljohn mirror)",
+          "at": "2026-08-27T02:53:22Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill file read in full",
+          "at": "2026-08-27T02:54:00Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesTwentyFiveSource.ts (28 cards, 8 sections)",
+          "at": "2026-08-27T02:58:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, passed on first run)",
+          "at": "2026-08-27T02:58:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies 1-24 to 1-25, applyPersonalSecondChroniclesTwentyFiveStudySections call)",
+          "at": "2026-08-27T02:59:13Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 28 cards, verse ranges 1-4/5-6/7-10/11-13/14-16/17-19/20-24/25-28, text verbatim)",
+          "at": "2026-08-27T02:59:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-27T03:01:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-27T03:02:01Z"
+        }
+      ]
     }
   ]
 }
