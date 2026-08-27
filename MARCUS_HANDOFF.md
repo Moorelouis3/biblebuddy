@@ -25,3 +25,10 @@ Level 2 pipeline is fully stuck: no chapter can be pulled, converted, or
 reported complete until this environment's egress allowlist includes that
 Railway domain. Needs an admin to add it to the session/environment's egress
 policy.
+
+## New blog post on fallback banner: What Does Selah Mean in the Bible?
+The blog writer agent just published "What Does Selah Mean in the Bible?"
+(/blog/what-does-selah-mean). Its topics-queue.json entry had no
+`bannerImage`, so it reused the bible-insights category fallback
+(`/Whatisthebiblebanner.png`). Louis may want to swap in a custom banner
+for this one later.

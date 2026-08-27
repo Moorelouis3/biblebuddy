@@ -2439,3 +2439,7 @@ Next up: 2 Chronicles 24
 ## 2026-08-23T18:58:00Z (hourly chapter notes run)
 Chapter: 2 Chronicles 24 | Duration: 12 min | Sections: 6 | Cards: 44 | Status: pass
 Next up: 2 Chronicles 25
+
+## 2026-08-27T02:59:52Z (blog writer run)
+Article: What Does Selah Mean in the Bible? | Words: ~3189 | Category: Bible Insights | Status: pass
+Queue remaining: 22

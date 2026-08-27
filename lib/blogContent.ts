@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-does-selah-mean",
+    title: "What Does Selah Mean in the Bible?",
+    description:
+      "What does Selah mean in the Bible? Why it appears 74 times in Psalms, what it likely means, and how it teaches you to pause and reflect as you read.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/what-does-selah-mean",
+    publishedAt: "2026-08-27",
+    readTime: "16 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "What Does Selah Mean in the Bible? 📖",
+      content:
+        "You're reading the Psalms.\nThen you hit it. Selah.\nNo explanation. So you skip it.\n\n📌 That word shows up 74 times, and it's not filler.\n\n📖 It only appears in worship and prayer.\n📖 It likely means pause, or lift up.\n📖 It marks the exact spot to stop and feel the verse.\n\nNew article on:\n🟢 what **Selah** most likely means\n🟢 why it shows up right where **David** was most honest\n🟢 how to build the **pause** into your own reading\n\nDo you usually skip over words like this when you read? 🙏",
+    },
+  },
+  {
     slug: "is-anxiety-a-sin",
     title: "Is Anxiety a Sin? What the Bible Actually Teaches",
     description:
