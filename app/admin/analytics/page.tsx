@@ -682,7 +682,7 @@ const WINDOW_OPTIONS: Array<{ key: JourneyWindow; label: string }> = [
 const SIMPLE_METRIC_OPTIONS: Array<{ key: SimpleAnalyticsMetric; label: string }> = [
   { key: "overview", label: "Overview" },
   { key: "revenue", label: "Revenue" },
-  { key: "signups", label: "Signups" },
+  { key: "signups", label: "New Users" },
   { key: "upgrades", label: "Upgrades" },
   { key: "traffic_sources", label: "Traffic Sources" },
   { key: "completion_popup", label: "Completion Popup" },
@@ -1256,7 +1256,7 @@ function getSimpleMetricTotal(
 
 function getSimpleMetricTitle(metric: Exclude<SimpleAnalyticsMetric, "overview">) {
   if (metric === "revenue") return "Revenue";
-  if (metric === "signups") return "Signups";
+  if (metric === "signups") return "New Users";
   if (metric === "traffic_sources") return "Traffic Sources";
   if (metric === "completion_popup") return "Completion Popup";
   if (metric === "app_installs") return "App Installs";
@@ -1521,7 +1521,7 @@ function AnalyticsDrilldownPanel({
   const config = {
     active_users: { title: "Active Users", subtitle: "Everyone with at least one tracked action in this timeframe." },
     actions: { title: "Master Actions", subtitle: "The complete tracked activity feed for this timeframe." },
-    signups: { title: "Signups", subtitle: "Who joined, where they came from, and where they are now." },
+    signups: { title: "New Users", subtitle: "Who started using Bible Buddy, where they came from, and where they are now. Includes guests - an account with no email is still a real user." },
     days_completed: { title: "Days Completed", subtitle: "Every Bible in One Year completion recorded in this timeframe." },
   }[kind];
   const rowCount = kind === "active_users" ? data?.activeUsers.length : kind === "actions" ? data?.actions.length : kind === "signups" ? data?.signups.length : data?.daysCompleted.length;
@@ -1782,7 +1782,7 @@ function SignupBarChart({
   points,
   loading,
   loadingLabel = "Loading signups...",
-  ariaLabel = "Signup history by period",
+  ariaLabel = "New user history by period",
   tooltipNoun = "signups",
 }: {
   points: Array<{ label: string; value: number }>;
@@ -2040,7 +2040,7 @@ function SignupAnalyticsSection({
     <section className="rounded-[28px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_18px_46px_rgba(15,23,42,0.08)] sm:p-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">Signups</p>
+          <p className="text-sm font-bold text-[var(--bb-text-secondary,#64748b)]">New Users</p>
           <div className="mt-2 flex flex-wrap items-center gap-3">
             <p className="text-[44px] font-black leading-none tracking-tight text-[var(--bb-text-primary,#101827)]">
               {loading ? "..." : value}
@@ -2315,7 +2315,7 @@ function BlogAnalyticsSection({
                 <th className="px-3 py-2">Impressions</th>
                 <th className="px-3 py-2">Clicks</th>
                 <th className="px-3 py-2">CTR</th>
-                <th className="px-3 py-2">Signups</th>
+                <th className="px-3 py-2">New Users</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[var(--bb-card-border,#e5edf5)]">
@@ -2346,7 +2346,7 @@ function BlogAnalyticsSection({
                 <th className="px-3 py-2">Impressions</th>
                 <th className="px-3 py-2">Clicks</th>
                 <th className="px-3 py-2">CTR</th>
-                <th className="px-3 py-2">Signups</th>
+                <th className="px-3 py-2">New Users</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[var(--bb-card-border,#e5edf5)]">
@@ -2495,7 +2495,7 @@ function AppInstallsAnalyticsSection({
         <div className="mt-5 rounded-[24px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-4 shadow-[0_16px_40px_rgba(15,23,42,0.06)]">
           <div className="mb-3 flex items-center justify-between gap-3">
             <div>
-              <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Installs vs Signups</p>
+              <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">Installs vs New Users</p>
               <p className="text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">{activeOption.helper}</p>
             </div>
             <div className="flex flex-wrap items-center justify-end gap-3">
@@ -3189,7 +3189,7 @@ function MobileAnalyticsHighlights({
           />
           <OverviewMetricCard
             icon={<Icon name="user" />}
-            title="Signups"
+            title="New Users"
             value={signupsLabel}
             color="#059669"
             comparison={windowKey === "lifetime" ? null : signupComparison}
@@ -3345,7 +3345,7 @@ function MobileAnalyticsHighlights({
           {simpleMetric !== "completion_popup" && simpleMetric !== "app_installs" && simpleMetric !== "revenue" && simpleMetric !== "study_plans" && simpleMetric !== "traffic_sources" ? (
             <div className="grid grid-cols-3 gap-3">
               <SimpleAnalyticsKpiCard
-                title="Signups"
+                title="New Users"
                 value={signupsLabel}
                 helper={windowKey === "lifetime" ? "All signups" : comparisonLabel}
                 accent="green"
@@ -4609,7 +4609,7 @@ function AudioJourneyFunnel({
 }) {
   const steps = [
     { label: "Landing Page Visitors", value: landingVisitors },
-    { label: "Signups Completed", value: signups },
+    { label: "New Users", value: signups },
     { label: "Day 1 Plays", value: dayOnePlays },
   ];
   return (
@@ -5240,7 +5240,7 @@ function TrafficSourcesView({ report }: { report?: AnalyticsResponse["trafficSou
                 </div>
                 <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-black text-slate-700">
                   <div className="rounded-lg bg-white/70 px-3 py-2 ring-1 ring-slate-200">
-                    <p className="uppercase tracking-[0.12em] text-slate-500">Signup Rate</p>
+                    <p className="uppercase tracking-[0.12em] text-slate-500">Start Rate</p>
                     <p className="mt-1 text-base text-slate-950">{source.signupRate}%</p>
                   </div>
                   <div className="rounded-lg bg-white/70 px-3 py-2 ring-1 ring-slate-200">
@@ -6182,7 +6182,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                   />
                   <OverviewMetricCard
                     icon={<Icon name="user" />}
-                    title="Signups"
+                    title="New Users"
                     value={loading ? "..." : signupsLabel}
                     color="#059669"
                     comparison={windowKey === "lifetime" ? null : signupComparison}
