@@ -83,9 +83,13 @@ const NOT_A_PERSON = new Set([
   "stone", "oath", "gift", "flock", "sheep", "camels", "cattle", "field",
   "sword", "ark", "rain", "flood", "seed", "name", "day", "night", "morning",
 
-  // More place names, including the ones Genesis coins mid-story.
+  // More place names, including the ones Genesis coins mid-story. These are
+  // the worst offenders, because the verse that names them reads exactly like
+  // an attribution: "therefore he called it Mizpah, for he said...".
   "rehoboth", "beersheba", "sitnah", "esek", "luz", "paddan", "mahanaim",
   "peniel", "succoth", "goshen", "ararat", "salem", "machpelah", "ephron",
+  "mizpah", "galeed", "jegar", "bethuel", "gilead", "moreh", "bochim",
+  "massah", "meribah", "marah", "elim", "rephidim", "kadesh", "ebenezer",
 
   "baal", "asherah", "molech", "dagon",
   "lord", "god", "yahweh", "spirit", "heaven", "earth", "father", "son",
