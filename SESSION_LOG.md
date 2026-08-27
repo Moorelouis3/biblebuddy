@@ -2483,3 +2483,7 @@ Next up: 2 Chronicles 33
 ## 2026-08-27T19:20:00Z (bible year day writer run)
 Day: 13 — Jacob Wrestles With God (Genesis 32-33) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 14
+
+## 2026-08-27T19:40:00Z (bible year day writer run)
+Day: 14 — Esau's Line (Genesis 34-36) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 15 (run stops here — 2-day-per-run limit reached)
