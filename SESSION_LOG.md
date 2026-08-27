@@ -2479,3 +2479,7 @@ Next up: 2 Chronicles 32
 ## 2026-08-27T18:59:00Z (hourly chapter notes run)
 Chapter: 2 Chronicles 32 | Duration: 13 min | Sections: 8 | Cards: 69 | Status: pass
 Next up: 2 Chronicles 33
+
+## 2026-08-27T19:20:00Z (bible year day writer run)
+Day: 13 — Jacob Wrestles With God (Genesis 32-33) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 14
