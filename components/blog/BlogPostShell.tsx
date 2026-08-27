@@ -170,21 +170,19 @@ function leadingEmoji(text: string) {
  * FAQ (its answers earn the rich result), and the closing CTA.
  */
 function toSectionCards(children: ReactNode): ReactNode[] {
+  const out: ReactNode[] = [];
   let sectionIndex = 0;
+  // The heading whose card is still collecting its body, for flat posts.
+  let openHeading: ReactElement<{ id?: string; className?: string; children?: ReactNode }> | null = null;
+  let openBody: ReactNode[] = [];
 
-  return Children.toArray(children).map((node) => {
-    if (!isValidElement(node)) return node;
-    const props = node.props as { children?: ReactNode };
-    const kids = Children.toArray(props.children);
-    const headingIndex = kids.findIndex((kid) => isValidElement(kid) && kid.type === "h2");
-    if (headingIndex < 0) return node;
-
-    const heading = kids[headingIndex] as ReactElement<{ id?: string; className?: string; children?: ReactNode }>;
+  function card(
+    heading: ReactElement<{ id?: string; className?: string; children?: ReactNode }>,
+    body: ReactNode[],
+  ) {
     const headingText = textContent(heading);
     const label = cleanHeadingLabel(headingText);
     const icon = leadingEmoji(headingText);
-    const body = kids.filter((_, i) => i !== headingIndex);
-
     const isFaq = /frequently asked questions/i.test(headingText);
     const isCta = /keep growing/i.test(headingText);
     const isFirst = sectionIndex === 0;
@@ -192,7 +190,7 @@ function toSectionCards(children: ReactNode): ReactNode[] {
 
     return (
       <details
-        key={heading.props.id || label}
+        key={heading.props.id || label || `section-${sectionIndex}`}
         open={isFirst || isFaq || isCta}
         className="group mt-3 overflow-hidden rounded-[24px] border border-[#DCE8FF] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
       >
@@ -222,9 +220,51 @@ function toSectionCards(children: ReactNode): ReactNode[] {
         <div className="border-t border-[#eef3fb] px-4 pb-5 pt-1">{body}</div>
       </details>
     );
-  });
-}
+  }
 
+  function flush() {
+    if (!openHeading) return;
+    out.push(card(openHeading, openBody));
+    openHeading = null;
+    openBody = [];
+  }
+
+  Children.toArray(children).forEach((node) => {
+    if (!isValidElement(node)) {
+      if (openHeading) openBody.push(node);
+      else out.push(node);
+      return;
+    }
+
+    // Flat posts: a bare H2 starts a card that runs to the next heading.
+    if (node.type === "h2") {
+      flush();
+      openHeading = node as ReactElement<{ id?: string; className?: string; children?: ReactNode }>;
+      return;
+    }
+
+    // Newer posts: a <section> that carries its own H2 becomes one card.
+    const props = node.props as { children?: ReactNode };
+    const kids = Children.toArray(props.children);
+    const headingIndex = kids.findIndex((kid) => isValidElement(kid) && kid.type === "h2");
+    if (headingIndex >= 0) {
+      flush();
+      out.push(
+        card(
+          kids[headingIndex] as ReactElement<{ id?: string; className?: string; children?: ReactNode }>,
+          kids.filter((_, i) => i !== headingIndex),
+        ),
+      );
+      return;
+    }
+
+    if (openHeading) openBody.push(node);
+    else out.push(node);
+  });
+
+  flush();
+  return out;
+}
 type BlogPostShellProps = {
   slug: string;
   // The on-page H1. Defaults to the listing title with the 📖 prefix.
