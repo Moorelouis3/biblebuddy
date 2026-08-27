@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import { ensureGuestSession } from "@/lib/guestSession";
+import { ensureGuestSession, recordNewUser } from "@/lib/guestSession";
 
 /**
  * "How would you like to read the Bible?"
@@ -59,7 +59,10 @@ export default function StartPage() {
   const router = useRouter();
   const [choosing, setChoosing] = useState<string | null>(null);
 
-  // Someone may land here directly from a shared link with no session.
+  // Someone may land here directly from a shared link with no session. The
+  // guest is created now so the page works, but it is NOT counted as a new
+  // user yet - arriving here is not the same as deciding to study. That is
+  // recorded in choose(), below.
   useEffect(() => {
     void ensureGuestSession({ source: "start_chooser" });
   }, []);
@@ -70,6 +73,8 @@ export default function StartPage() {
 
     try {
       const guest = await ensureGuestSession({ source: "start_chooser" });
+      // They picked a plan: this is the moment someone became a user.
+      if (guest.ok && guest.userId) recordNewUser(guest.userId, `plan_${choice.mode}`);
 
       if (guest.ok) {
         const nowIso = new Date().toISOString();

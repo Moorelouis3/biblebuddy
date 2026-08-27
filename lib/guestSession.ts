@@ -71,18 +71,33 @@ async function ensureGuestProfile(userId: string, source: string) {
 }
 
 /**
- * Log the guest account as a signup.
+ * Record a new user, once, when they choose to study.
  *
- * Entering the app IS the signup - there is no account to create and an
- * email is an optional extra later. Analytics only counted
- * created_free_account, which only the email form fires, so every reader
- * who came from Instagram or the blog and started studying was invisible:
- * traffic sources showed the visit and then nothing.
+ * Using the app IS the conversion. Bible Buddy is free and earns through
+ * in-app promos, so a guest who studies daily and never gives an email has
+ * completed the funnel. Analytics used to count only created_free_account,
+ * which just the email form fires, so those people were invisible.
+ *
+ * Deliberately NOT called when a guest account is created. /start makes a
+ * guest the moment the page loads, so counting creation counted arrivals,
+ * bounces included. This is called from the places where someone actually
+ * chose to study: picking a reading plan, or opening a devotional day or a
+ * chapter directly.
+ *
+ * Fires at most once per user, so the paths cannot double count.
  *
  * Fire and forget. A failed analytics call must never stop someone reading.
  */
-function recordGuestSignup(userId: string, source: string) {
+export function recordNewUser(userId: string, source: string) {
   if (typeof window === "undefined") return;
+
+  const flag = `bb:new-user-logged:${userId}`;
+  try {
+    if (window.localStorage.getItem(flag)) return;
+    window.localStorage.setItem(flag, "1");
+  } catch {
+    // Storage blocked: fall through and log. A duplicate beats a silent miss.
+  }
 
   try {
     const landingSource = window.sessionStorage.getItem("bb:landing-source") || null;
@@ -139,7 +154,6 @@ async function createGuest(source: string): Promise<GuestSessionResult> {
   if (!userId) return { ok: false, reason: "error", message: "No user returned" };
 
   await ensureGuestProfile(userId, source);
-  recordGuestSignup(userId, source);
   return { ok: true, userId, created: true };
 }
 

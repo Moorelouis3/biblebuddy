@@ -96,7 +96,7 @@ import BrowserTtsButton from "../../../components/BrowserTtsButton";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { consumeCreditAction } from "../../../lib/creditClient";
 import { CORE_STUDY_IS_FREE } from "../../../lib/accessPolicy";
-import { ensureGuestSession } from "../../../lib/guestSession";
+import { ensureGuestSession, recordNewUser } from "../../../lib/guestSession";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../lib/triviaCatalog";
 import { getTriviaChapter } from "../../../lib/triviaGameData";
@@ -1180,6 +1180,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     let activeUserId = userId;
     if (!activeUserId) {
       const guest = await ensureGuestSession({ source: "devotional_deep_link" });
+      // Opening a devotional day is a decision to study, so it counts.
+      if (guest.ok && guest.userId) recordNewUser(guest.userId, "devotional_deep_link");
       if (guest.ok) {
         activeUserId = guest.userId;
         setUserId(guest.userId);

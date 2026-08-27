@@ -27,7 +27,7 @@ import { logStudyView } from "../lib/studyViewLimit";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { resolveBibleReference } from "../lib/bibleTermResolver";
 import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
-import { ensureGuestSession } from "../lib/guestSession";
+import { ensureGuestSession, recordNewUser } from "../lib/guestSession";
 import { findKeywordNotes, findPersonNotes, findPlaceNotes, getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes, saveKeywordNotes, savePersonNotes, savePlaceNotes } from "../lib/bibleNotes";
 import { requestLouisNotes } from "../lib/requestLouisNotes";
 import { trackNavigationActionOnce } from "../lib/navigationActionTracker";
@@ -530,6 +530,8 @@ export default function BibleChapterPage() {
     let cancelled = false;
     void (async () => {
       const guest = await ensureGuestSession({ source: "bible_reader_deep_link" });
+      // Opening a chapter is a decision to study, so it counts.
+      if (guest.ok && guest.userId) recordNewUser(guest.userId, "bible_reader_deep_link");
       if (!cancelled && guest.ok) setUserId(guest.userId);
     })();
 
