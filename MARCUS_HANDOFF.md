@@ -32,3 +32,13 @@ The blog writer agent just published "What Does Selah Mean in the Bible?"
 `bannerImage`, so it reused the bible-insights category fallback
 (`/Whatisthebiblebanner.png`). Louis may want to swap in a custom banner
 for this one later.
+
+## Bible in One Year Day 12 needs a local audio render
+The Bible in One Year day writer agent wrote and wired in Day 12's script
+(lib/bibleYearDayTwelveScript.ts, Genesis 30-31, "Jacob Leaves Laban"),
+verified it with `tsc --noEmit`, and confirmed the block/teaching structure
+offline. It could not render or upload the audio: this environment has no
+OPENAI_API_KEY and no Supabase service credentials. Someone needs to run
+`npx tsx scripts/render-bible-year-day.ts --day=12 --upload` locally, check
+the printed cast line for any non-person names (add offenders to
+NOT_A_PERSON in lib/bibleYearAutoCast.ts if so), and re-render if needed.
