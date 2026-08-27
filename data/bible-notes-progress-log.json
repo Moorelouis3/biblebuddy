@@ -26440,6 +26440,59 @@
           "at": "2026-08-27T04:55:02Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 27,
+      "startedAt": "2026-08-27T08:46:57Z",
+      "finishedAt": "2026-08-27T08:54:33Z",
+      "durationMinutes": 8,
+      "sections": 3,
+      "cards": 18,
+      "verses": 9,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, normal forward progress after 2 Chronicles 26 (no existing dedicated wired-in file). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (9 verses). 2 Chronicles 27 covers Jotham beginning to reign at twenty five (nine years older than Uzziah at his own start, having already run the kingdom during Uzziah's leprosy years), his mother Jerushah daughter of Zadok, the repeated \"according to all that his father Uzziah did\" formula and its irony given how Uzziah's story ended, Jotham deliberately never entering the temple the way his father illegally did, the people still worshipping corruptly despite a good king, his building projects (the high gate, the wall of Ophel, hill country cities, forest castles and towers), his decisive war with Ammon and the massive silver/wheat/barley tribute paid for three straight years, the chapter's thesis line tying his strength to preparing his ways before the LORD (mirroring but not repeating Uzziah's fall), the citation to the lost book of the kings of Israel and Judah, the deliberate repetition of his opening reign stats as a closing frame, the idiom \"slept with his fathers\" for a natural death (denied to the murdered Amaziah), his full royal burial in the city of David in contrast to Uzziah's leprosy restricted burial, and the closing handoff to Ahaz foreshadowing one of Judah's worst kings. Chunked into 3 sections matching the chapter's own scene breaks (1-2, 3-6, 7-9). Density exactly 2.0 cards/verse (9 verses, 18 cards). scripts/check_bible_note_style.py found 2 problems on first pass (a banned hedge word 'roughly' and one card's last bullet not ending on 📖/➡️), fixed both, second run clean with 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (howbeit, castles as fortified outposts, talent of silver, measure/cor, slept with his fathers, in his stead), closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji ending on 📖 or ➡️, no duplicate card titles across all 18 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 27) (3/3 sections, verse ranges 1-2/3-6/7-9 with no gaps, text rendered verbatim, 18 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/secondChroniclesTwentySevenSource.ts), preserveExactPhraseBodies for 2 chronicles extended from chapters 1-26 to 1-27, new applyPersonalSecondChroniclesTwentySevenStudySections() function added and called directly after the chapter 26 call. Next forward-progress target is 2 Chronicles 28.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-27T08:46:57Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 27 (new chapter)",
+          "at": "2026-08-27T08:47:30Z"
+        },
+        {
+          "name": "KJV text fetched: 2 Chronicles 27 (9 verses)",
+          "at": "2026-08-27T08:47:37Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-08-27T08:47:44Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesTwentySevenSource.ts",
+          "at": "2026-08-27T08:51:26Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-27T08:51:49Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts",
+          "at": "2026-08-27T08:52:25Z"
+        },
+        {
+          "name": "parser check passed: 3 sections, 18 cards",
+          "at": "2026-08-27T08:52:43Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-27T08:54:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-27T08:54:33Z"
+        }
+      ]
     }
   ]
 }

@@ -2451,3 +2451,7 @@ Next up: 2 Chronicles 26
 ## 2026-08-27T04:56:10Z (hourly chapter notes run)
 Chapter: 2 Chronicles 26 | Duration: 8 min | Sections: 7 | Cards: 22 | Status: pass
 Next up: 2 Chronicles 27
+
+## 2026-08-27T08:55:00Z (hourly chapter notes run)
+Chapter: 2 Chronicles 27 | Duration: 8 min | Sections: 3 | Cards: 18 | Status: pass
+Next up: 2 Chronicles 28
