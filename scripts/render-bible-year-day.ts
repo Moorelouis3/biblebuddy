@@ -5,7 +5,8 @@ import { dirname, join } from "path";
 import { createClient } from "@supabase/supabase-js";
 import ffmpegPath from "ffmpeg-static";
 import {
-  BIBLE_YEAR_CAST,
+  assignEpisodeVoices,
+  castFor,
   BIBLE_YEAR_MAX_TTS_CHUNK_LENGTH,
   BIBLE_YEAR_MP3_KBPS,
   BIBLE_YEAR_SAMPLE_RATE as SR,
@@ -222,6 +223,12 @@ function median(values: number[]) {
  * on one line still drops.
  */
 /** Level each role sits at relative to the narrator. 1.0 = matched. */
+/**
+ * Which voice each speaker uses in this episode. Set once the segments are
+ * known, so two characters in the same day never share a voice.
+ */
+let episodeVoices = new Map<string, string>();
+
 const ROLE_LEVEL_TARGET: Partial<Record<BibleYearAudioRole, number>> = {
   // Was 1.12, which stacked on top of the old filter and made God boom over
   // everything. Just above the narrator is enough to feel set apart.
@@ -294,14 +301,15 @@ function chunkText(text: string) {
 async function speak(text: string, role: BibleYearAudioRole) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error("OPENAI_API_KEY is not configured.");
-  const entry = BIBLE_YEAR_CAST[role];
+  const entry = castFor(role);
+  const voice = episodeVoices.get(role) || entry.voice;
 
   const response = await fetch("https://api.openai.com/v1/audio/speech", {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       model: BIBLE_YEAR_TTS_MODEL,
-      voice: entry.voice,
+      voice,
       input: text,
       instructions: entry.instructions,
       response_format: "pcm",
@@ -309,7 +317,7 @@ async function speak(text: string, role: BibleYearAudioRole) {
   });
 
   if (!response.ok) {
-    throw new Error(`TTS failed for ${role}/${entry.voice}: ${await response.text()}`);
+    throw new Error(`TTS failed for ${role}/${voice}: ${await response.text()}`);
   }
   return pcmToFloat32(Buffer.from(await response.arrayBuffer()));
 }
@@ -319,7 +327,7 @@ async function renderSegment(item: BibleYearAudioSegment) {
   for (const chunk of chunkText(item.text)) parts.push(await speak(chunk, item.role));
   let voice = trimSilence(concat(parts));
 
-  const filter = BIBLE_YEAR_CAST[item.role].filter;
+  const filter = castFor(item.role).filter;
   if (filter) voice = trimSilence(runFilter(voice, filter));
 
   return voice;
@@ -403,6 +411,13 @@ async function main() {
     console.log(`[day ${padded}] reusing ${meta.length} cached segments (no API calls)`);
   } else {
     const segments = await segmentsForDay(day);
+    episodeVoices = assignEpisodeVoices(segments.map((item) => item.role));
+    const spokenCast = [...episodeVoices].filter(([role]) => role !== "narrator");
+    if (spokenCast.length) {
+      console.log(
+        `[day ${padded}] cast: ` + spokenCast.map(([role, voice]) => `${role}/${voice}`).join(", "),
+      );
+    }
     const roleCounts = segments.reduce<Record<string, number>>((acc, s) => {
       acc[s.role] = (acc[s.role] || 0) + 1;
       return acc;

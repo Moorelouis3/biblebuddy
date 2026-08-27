@@ -1,4 +1,6 @@
 import {
+  BIBLE_YEAR_CAST,
+  genderForRole,
   segment,
   type BibleYearAudioRole,
   type BibleYearAudioSegment,
@@ -40,7 +42,9 @@ const SPEAKER_PATTERNS: Array<{ test: RegExp; role: BibleYearAudioRole }> = [
   { test: /\bsara(?:i|h)\b/i, role: "sarah" },
   { test: /\bisaac\b/i, role: "isaac" },
   { test: /\brebekah\b/i, role: "rebekah" },
-  { test: /\b(?:jacob|israel)\b/i, role: "jacob" },
+  // Not "israel": from Exodus on it is the nation in nearly every clause,
+  // which cast whole chapters of Moses and David as Jacob.
+  { test: /\bjacob\b/i, role: "jacob" },
   { test: /\besau\b/i, role: "esau" },
   { test: /\blaban\b/i, role: "laban" },
   { test: /\brachel\b/i, role: "rachel" },
@@ -51,31 +55,74 @@ const SPEAKER_PATTERNS: Array<{ test: RegExp; role: BibleYearAudioRole }> = [
   { test: /\b(?:the man|adam)\b/i, role: "adam" },
 ];
 
-const ROLE_GENDER: Record<BibleYearAudioRole, "male" | "female" | "none"> = {
-  narrator: "none",
-  god: "male",
-  adam: "male",
-  serpent: "male",
-  eve: "female",
-  abraham: "male",
-  sarah: "female",
-  isaac: "male",
-  rebekah: "female",
-  jacob: "male",
-  esau: "male",
-  laban: "male",
-  rachel: "female",
-  leah: "female",
-  hagar: "female",
-  angel: "male",
-  pharaoh: "male",
-};
+
+/**
+ * Capitalised words that are not people. Place names are the real risk: the
+ * attribution clause has already had "to <addressee>" removed, so what is
+ * left is usually the speaker, but a stray place name would otherwise become
+ * a character with a voice of its own.
+ */
+const NOT_A_PERSON = new Set([
+  // Sentence starters and function words. Every verse begins with a capital,
+  // so without these "Then he said" yields a character called Then.
+  "and", "but", "so", "then", "now", "when", "after", "before", "behold",
+  "therefore", "moreover", "again", "also", "thus", "yet", "for", "if", "as",
+  "at", "on", "in", "it", "he", "she", "they", "them", "their", "there",
+  "this", "that", "these", "those", "all", "every", "one", "two", "three",
+  "who", "what", "why", "how", "where", "which", "while", "until", "upon",
+  "unto", "with", "from", "into", "out", "over", "under", "about", "against",
+  "among", "because", "since", "though", "although", "however", "indeed",
+  "surely", "truly", "verily", "the", "his", "her", "its", "you", "your",
+  "we", "our", "she's", "afterward", "immediately", "meanwhile",
+
+  // Titles and common nouns that are not a specific person.
+  "baal", "asherah", "molech", "dagon",
+  "lord", "god", "yahweh", "spirit", "heaven", "earth", "father", "son",
+  "king", "queen", "priest", "prophet", "servant", "man", "woman", "men",
+  "women", "people", "children", "sons", "daughters", "brother", "sister",
+  "wife", "husband", "angel", "angels", "disciples", "elders", "scribes",
+  "pharisees", "sadducees", "crowd", "multitude", "jews", "gentiles",
+
+  // Nations, peoples and places. These sit inside attribution clauses
+  // constantly ("the God of Israel said"), and Israel in particular cast
+  // whole chapters of Moses and David as a character of its own.
+  "israel", "egypt", "canaan", "judah", "samaria", "galilee", "jerusalem",
+  "babylon", "assyria", "moab", "edom", "midian", "amalek", "ammon", "syria",
+  "bethel", "haran", "sodom", "gomorrah", "jordan", "eden", "babel", "ur",
+  "moriah", "gerar", "shechem", "hebron", "seir", "sinai", "horeb", "zion",
+  "nazareth", "capernaum", "bethlehem", "jericho", "philistines", "egyptians",
+  "israelites", "hebrews", "chaldeans", "romans",
+]);
+
+/**
+ * A speaker the curated list does not know still gets a role id, so they get
+ * their own voice rather than the narrator's. The id is the name itself, so
+ * "Moses said" produces "moses" in every episode Moses ever speaks in.
+ */
+/** Names the cast knows, so a real one ending in -ing is still allowed. */
+const CURATED_SPEAKERS = new Set(Object.keys(BIBLE_YEAR_CAST));
+
+function roleFromName(subject: string): BibleYearAudioRole | null {
+  const names = subject.match(/\b[A-Z][a-z\u2019'\-]{2,}\b/g);
+  if (!names) return null;
+
+  // The subject sits closest to the speech verb, which is at the end.
+  for (let i = names.length - 1; i >= 0; i -= 1) {
+    const id = names[i].toLowerCase().replace(/[\u2019']/g, "");
+    if (NOT_A_PERSON.has(id)) continue;
+    // Sentence-initial participles look exactly like names once capitalised:
+    // "Laying his hands on him, he said" produced a character called Laying.
+    if (id.endsWith("ing") && !CURATED_SPEAKERS.has(id)) continue;
+    return id;
+  }
+  return null;
+}
 
 function roleForSpeaker(subject: string): BibleYearAudioRole | null {
   for (const entry of SPEAKER_PATTERNS) {
     if (entry.test.test(subject)) return entry.role;
   }
-  return null;
+  return roleFromName(subject);
 }
 
 type QuoteSpan = { start: number; end: number };
@@ -159,7 +206,7 @@ function roleFromAttribution(before: string): BibleYearAudioRole | null {
   const pronounMatches = lastSentence.match(/\b(he|she)\b/gi);
   const pronoun = pronounMatches?.[pronounMatches.length - 1]?.toLowerCase();
   const candidates = pronoun
-    ? SPEAKER_PATTERNS.filter((entry) => ROLE_GENDER[entry.role] === (pronoun === "she" ? "female" : "male"))
+    ? SPEAKER_PATTERNS.filter((entry) => genderForRole(entry.role) === (pronoun === "she" ? "female" : "male"))
     : SPEAKER_PATTERNS;
 
   // The earliest-positioned name wins, not the first pattern in the list -
@@ -175,6 +222,16 @@ function roleFromAttribution(before: string): BibleYearAudioRole | null {
       role = entry.role;
     }
   }
+  // Nobody curated matched, so fall back to the name in the clause. This is
+  // what lets Moses, David, Saul, Peter and everyone else speak as themselves
+  // instead of as the narrator. Curated patterns still win when they match,
+  // so God and the angel can never be displaced by a stray proper noun.
+  if (!role) {
+    const derived = roleFromName(head);
+    const wantedGender = pronoun === "she" ? "female" : "male";
+    if (derived && (!pronoun || genderForRole(derived) === wantedGender)) role = derived;
+  }
+
   return role;
 }
 
