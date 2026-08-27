@@ -222,7 +222,9 @@ function median(values: number[]) {
  */
 /** Level each role sits at relative to the narrator. 1.0 = matched. */
 const ROLE_LEVEL_TARGET: Partial<Record<BibleYearAudioRole, number>> = {
-  god: 1.12,
+  // Was 1.12, which stacked on top of the old filter and made God boom over
+  // everything. Just above the narrator is enough to feel set apart.
+  god: 1.02,
 };
 
 function roleGains(rendered: Float32Array[], segments: BibleYearAudioSegment[]) {

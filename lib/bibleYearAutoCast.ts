@@ -30,8 +30,24 @@ const SPEECH_VERB =
 /** Ordered: first match wins, so specific names beat generic ones. */
 const SPEAKER_PATTERNS: Array<{ test: RegExp; role: BibleYearAudioRole }> = [
   { test: /\bserpent\b/i, role: "serpent" },
+  // The angel speaks for God but is not God, so it has to be tested first:
+  // "the angel of Yahweh" contains "Yahweh" and would otherwise cast as God.
+  { test: /\bangel\b/i, role: "angel" },
   { test: /\b(?:yahweh|the lord|god)\b/i, role: "god" },
   { test: /\b(?:the woman|eve)\b/i, role: "eve" },
+  // Abram/Abraham and Sarai/Sarah are the same people either side of Genesis 17.
+  { test: /\babra(?:m|ham)\b/i, role: "abraham" },
+  { test: /\bsara(?:i|h)\b/i, role: "sarah" },
+  { test: /\bisaac\b/i, role: "isaac" },
+  { test: /\brebekah\b/i, role: "rebekah" },
+  { test: /\b(?:jacob|israel)\b/i, role: "jacob" },
+  { test: /\besau\b/i, role: "esau" },
+  { test: /\blaban\b/i, role: "laban" },
+  { test: /\brachel\b/i, role: "rachel" },
+  { test: /\bleah\b/i, role: "leah" },
+  { test: /\bhagar\b/i, role: "hagar" },
+  { test: /\bpharaoh\b/i, role: "pharaoh" },
+  // Kept last: "the man" is generic and would otherwise swallow named speakers.
   { test: /\b(?:the man|adam)\b/i, role: "adam" },
 ];
 
@@ -41,6 +57,18 @@ const ROLE_GENDER: Record<BibleYearAudioRole, "male" | "female" | "none"> = {
   adam: "male",
   serpent: "male",
   eve: "female",
+  abraham: "male",
+  sarah: "female",
+  isaac: "male",
+  rebekah: "female",
+  jacob: "male",
+  esau: "male",
+  laban: "male",
+  rachel: "female",
+  leah: "female",
+  hagar: "female",
+  angel: "male",
+  pharaoh: "male",
 };
 
 function roleForSpeaker(subject: string): BibleYearAudioRole | null {
