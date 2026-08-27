@@ -418,6 +418,7 @@ import { SECOND_CHRONICLES_TWENTY_SIX_PERSONAL_SECTIONS } from "./secondChronicl
 import { SECOND_CHRONICLES_TWENTY_SEVEN_PERSONAL_SECTIONS } from "./secondChroniclesTwentySevenSource";
 import { SECOND_CHRONICLES_TWENTY_EIGHT_PERSONAL_SECTIONS } from "./secondChroniclesTwentyEightSource";
 import { SECOND_CHRONICLES_TWENTY_NINE_PERSONAL_SECTIONS } from "./secondChroniclesTwentyNineSource";
+import { SECOND_CHRONICLES_THIRTY_PERSONAL_SECTIONS } from "./secondChroniclesThirtySource";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
 import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
 import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
@@ -816,7 +817,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "1 kings" && section.chapter >= 1 && section.chapter <= 22) ||
     (normalizeBook(book) === "2 kings" && section.chapter >= 1 && section.chapter <= 25) ||
     (normalizeBook(book) === "1 chronicles" && section.chapter >= 1 && section.chapter <= 29) ||
-    (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 29) ||
+    (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 30) ||
     (normalizeBook(book) === "proverbs" && section.chapter >= 1 && section.chapter <= 31);
   const icon = repairMojibake(section.icon);
   return {
@@ -1456,6 +1457,7 @@ function applyPersonalSecondChroniclesTwentySevenStudySections() {
   replaceStudySectionsForBookRange("2 chronicles", 27, 27, SECOND_CHRONICLES_TWENTY_SEVEN_PERSONAL_SECTIONS);
   replaceStudySectionsForBookRange("2 chronicles", 28, 28, SECOND_CHRONICLES_TWENTY_EIGHT_PERSONAL_SECTIONS);
   replaceStudySectionsForBookRange("2 chronicles", 29, 29, SECOND_CHRONICLES_TWENTY_NINE_PERSONAL_SECTIONS);
+  replaceStudySectionsForBookRange("2 chronicles", 30, 30, SECOND_CHRONICLES_THIRTY_PERSONAL_SECTIONS);
 }
 
 function applyPersonalEzraOneThroughThreeStudySections() {

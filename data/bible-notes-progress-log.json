@@ -26599,6 +26599,59 @@
           "at": "2026-08-27T13:00:10Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 30,
+      "startedAt": "2026-08-27T14:46:10Z",
+      "finishedAt": "2026-08-27T14:54:00Z",
+      "durationMinutes": 8,
+      "sections": 5,
+      "cards": 29,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, normal forward progress after 2 Chronicles 29 (no existing dedicated wired-in file for chapter 30). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (27 verses). 2 Chronicles 30 covers Hezekiah's decree sent to all Israel and Judah (including Ephraim and Manasseh in the fallen northern kingdom) to keep a late Passover in the second month since the priests were not yet fully sanctified and the people had not gathered in time, the letter carried by royal posts urging the nation to turn again to the God of Abraham, Isaac, and Israel and not be stiffnecked like their fathers, the mixed reception (mockery from most of the north, but a divinely given one heart of unity in Judah), the assembly tearing down Jerusalem's altars into the brook Kidron, the priests and Levites shamed into sanctifying themselves by the people's own zeal, the Levites killing the passovers for those who were not clean (an emergency provision, not the ordinary rule), the honest admission that many still ate the Passover unclean and Hezekiah's prayer for the good Lord to pardon them, the Lord hearkening to Hezekiah and healing the people, the seven day feast of unleavened bread with great gladness, Hezekiah speaking comfortably to the Levites who taught the good knowledge of the Lord, the whole assembly's spontaneous decision to keep seven more days funded by the king and princes' enormous offerings, the strangers from the fallen north joining in, the comparison to Solomon's own celebration as the greatest since his time, and the closing benediction with the priests' prayer rising to God's holy dwelling place in heaven. Style checker was clean after one fix (a repeated compass emoji across two bullets in one card). Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 30) (5/5 sections, verse ranges 1-5/6-12/13-19/20-22/23-27 with no gaps, text rendered verbatim, 29 total cards). npx tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/secondChroniclesThirtySource.ts), preserveExactPhraseBodies for 2 chronicles extended from chapters 1-29 to 1-30, replaceStudySectionsForBookRange('2 chronicles', 30, 30, ...) call added directly after the chapter 29 call inside applyPersonalSecondChroniclesTwentySevenStudySections(). Next forward-progress target is 2 Chronicles 31.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-27T14:46:56Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 30 (new chapter, priority queue and style-redo backlog both empty)",
+          "at": "2026-08-27T14:46:56Z"
+        },
+        {
+          "name": "KJV text fetched: 2 Chronicles 30 (27 verses)",
+          "at": "2026-08-27T14:49:00Z"
+        },
+        {
+          "name": "style spec and skill pipeline read in full",
+          "at": "2026-08-27T14:51:00Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesThirtySource.ts",
+          "at": "2026-08-27T14:51:53Z"
+        },
+        {
+          "name": "style checker clean (29 cards, zero problems after 1 emoji fix)",
+          "at": "2026-08-27T14:52:01Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts",
+          "at": "2026-08-27T14:52:13Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 29 cards, no gaps",
+          "at": "2026-08-27T14:52:30Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-27T14:53:48Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-27T14:54:00Z"
+        }
+      ]
     }
   ]
 }
