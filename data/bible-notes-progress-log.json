@@ -26758,6 +26758,59 @@
           "at": "2026-08-27T18:59:00Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 33,
+      "startedAt": "2026-08-27T20:47:54Z",
+      "finishedAt": "2026-08-27T20:59:28Z",
+      "durationMinutes": 11.6,
+      "sections": 7,
+      "cards": 43,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, normal forward progress after 2 Chronicles 32 (no existing dedicated wired-in file for chapter 33). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (25 verses). Covers Manasseh reversing Hezekiah's reforms and filling the temple itself with pagan altars and a carved idol, child sacrifice and occult practices, his capture and exile to Babylon by Assyria, his genuine repentance and restoration, his partial (incomplete) reversal of the damage, his death and unusual burial in his own house, and Amon's short two year reign that copied his father's sin without ever copying his repentance, ending in Amon's assassination and Josiah's installation as king. Style checker clean on first pass, parser check passed (7 sections, 43 cards), tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-27T20:47:54Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 33 (normal forward progress, both queues empty)",
+          "at": "2026-08-27T20:47:54Z"
+        },
+        {
+          "name": "KJV text fetched (25 verses)",
+          "at": "2026-08-27T20:48:01Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-08-27T20:56:33Z"
+        },
+        {
+          "name": "source file written (lib/secondChroniclesThirtyThreeSource.ts, 7 sections, 43 cards)",
+          "at": "2026-08-27T20:56:33Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-08-27T20:56:36Z"
+        },
+        {
+          "name": "wired into reader (import, apply function, replaceStudySectionsForBookRange call, preserveExactPhraseBodies range extended to 33)",
+          "at": "2026-08-27T20:56:50Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 43 cards, matches design)",
+          "at": "2026-08-27T20:57:08Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-27T20:58:38Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-27T20:59:28Z"
+        }
+      ]
     }
   ]
 }
