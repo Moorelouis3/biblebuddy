@@ -416,6 +416,7 @@ import { SECOND_CHRONICLES_TWENTY_FOUR_PERSONAL_SECTIONS } from "./secondChronic
 import { SECOND_CHRONICLES_TWENTY_FIVE_PERSONAL_SECTIONS } from "./secondChroniclesTwentyFiveSource";
 import { SECOND_CHRONICLES_TWENTY_SIX_PERSONAL_SECTIONS } from "./secondChroniclesTwentySixSource";
 import { SECOND_CHRONICLES_TWENTY_SEVEN_PERSONAL_SECTIONS } from "./secondChroniclesTwentySevenSource";
+import { SECOND_CHRONICLES_TWENTY_EIGHT_PERSONAL_SECTIONS } from "./secondChroniclesTwentyEightSource";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
 import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
 import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
@@ -814,7 +815,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "1 kings" && section.chapter >= 1 && section.chapter <= 22) ||
     (normalizeBook(book) === "2 kings" && section.chapter >= 1 && section.chapter <= 25) ||
     (normalizeBook(book) === "1 chronicles" && section.chapter >= 1 && section.chapter <= 29) ||
-    (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 27) ||
+    (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 28) ||
     (normalizeBook(book) === "proverbs" && section.chapter >= 1 && section.chapter <= 31);
   const icon = repairMojibake(section.icon);
   return {
@@ -1452,6 +1453,7 @@ function applyPersonalSecondChroniclesTwentySixStudySections() {
 
 function applyPersonalSecondChroniclesTwentySevenStudySections() {
   replaceStudySectionsForBookRange("2 chronicles", 27, 27, SECOND_CHRONICLES_TWENTY_SEVEN_PERSONAL_SECTIONS);
+  replaceStudySectionsForBookRange("2 chronicles", 28, 28, SECOND_CHRONICLES_TWENTY_EIGHT_PERSONAL_SECTIONS);
 }
 
 function applyPersonalEzraOneThroughThreeStudySections() {
