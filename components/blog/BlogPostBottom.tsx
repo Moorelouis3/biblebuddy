@@ -13,10 +13,9 @@ type BlogPostBottomProps = {
 };
 
 // Everything below the article body, gated by login state:
-// - Logged out: signup CTA card, then the landing-page style
-//   "Create Your Free Account" button as the very last element.
-//   No comment section at all.
-// - Logged in: the comment section. No signup CTAs.
+// - Logged out: promo card, then the landing-page style "Start Studying Now"
+//   button as the very last element. No comment section at all.
+// - Logged in: the comment section. No promos.
 export default function BlogPostBottom({ articleSlug, postSlug }: BlogPostBottomProps) {
   const { loading, userId } = useSupabaseUser();
 
@@ -39,7 +38,10 @@ export default function BlogPostBottom({ articleSlug, postSlug }: BlogPostBottom
     );
   }
 
-  const endCtaHref = `/signup?src=blog&promo=end-cta&post=${encodeURIComponent(postSlug)}`;
+  // Into the app, not a signup form. There is no account to create: /start
+  // makes a guest and drops the reader straight into studying. Sending blog
+  // readers to /signup asked them for an email the product does not need.
+  const endCtaHref = `/start?src=blog&promo=end-cta&post=${encodeURIComponent(postSlug)}`;
 
   return (
     <div className="mt-10 text-center">
@@ -50,9 +52,9 @@ export default function BlogPostBottom({ articleSlug, postSlug }: BlogPostBottom
         }
         className="inline-flex w-full items-center justify-center rounded-2xl bg-[#0056fd] px-8 py-4 text-base font-black uppercase tracking-wide text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[340px]"
       >
-        Create Your Free Account
+        Start Studying Now
       </Link>
-      <p className="mt-3 text-sm font-bold text-[#40516b]">It&apos;s free. It&apos;s easy. It&apos;s for you. 🤍</p>
+      <p className="mt-3 text-sm font-bold text-[#40516b]">No account needed. Completely free. 🤍</p>
     </div>
   );
 }

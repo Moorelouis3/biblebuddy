@@ -99,10 +99,10 @@ on-page headline is intentionally richer than the listing title.
 
 `BlogPostShell` already renders the banner image, breadcrumb, table of
 contents, read time, promo slots, article schema, engagement bar, and the
-single **Create Your Free Account** button at the very end. So:
+single **Start Studying Now** button at the very end. So:
 
 - **Do not** add a banner `<Image>` yourself.
-- **Do not** add a signup button or any closing line after the CTA
+- **Do not** add a CTA button or any closing line after the CTA
   section. The button is the last element on the page and nothing follows
   it.
 
@@ -124,7 +124,7 @@ Markup conventions to match:
 
 The last two sections are always `🔑 Final Thoughts` and
 `🚀 Keep Growing With Bible Buddy`, and the CTA section ends with
-"There is room for you." followed by "Sign up by clicking the button
+"There is room for you." followed by "Start studying by clicking the button
 below. 👇" — exactly as the spec requires.
 
 **Scripture is non-negotiable.** Every quote must be word-perfect King
@@ -262,7 +262,7 @@ The steps, summarized (the doc is authoritative where they differ):
 
 2. Read docs/blog-post-format.md IN FULL. It is the standard: voice, formatting, length, the nine sections in order, and the SEO checklist. It has a standard structure and a Character Study Variant for posts about a person - pick the right one for your topic. Then read app/blog/what-does-the-bible-say-about-anxiety/page.tsx (reference implementation, standard post), app/blog/who-is-jezebel/page.tsx (reference implementation, character study), and lib/blogContent.ts.
 
-3. Write app/blog/<slug>/page.tsx. Posts live FLAT under app/blog/<slug>/ - there is no category directory. Anything under app/bible-study-hub/ is pre-migration and is NOT the pattern to copy. Use the BlogPostShell wrapper; it already renders the banner image, breadcrumb, table of contents, promo slots, article schema, and the single Create Your Free Account button at the very end, so do not add a banner Image, a signup button, or any closing line after the CTA section yourself.
+3. Write app/blog/<slug>/page.tsx. Posts live FLAT under app/blog/<slug>/ - there is no category directory. Anything under app/bible-study-hub/ is pre-migration and is NOT the pattern to copy. Use the BlogPostShell wrapper; it already renders the banner image, breadcrumb, table of contents, promo slots, article schema, and the single Start Studying Now button at the very end, so do not add a banner Image, a CTA button, or any closing line after the CTA section yourself.
 
 4. Every Bible quote must be word-perfect King James Version. If you are not completely certain of the exact wording, fetch https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/<Book>.json and copy it verbatim. That host is reachable from this environment; most Bible sites return 403. Never quote a verse from memory and never approximate one.
 

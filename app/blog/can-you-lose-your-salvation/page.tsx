@@ -753,7 +753,7 @@ export default function CanYouLoseYourSalvationPage() {
             Thousands of Christians are already reading this way, one day at a time. There is room for
             you.
           </p>
-          <p>Sign up by clicking the button below. 👇</p>
+          <p>Start studying by clicking the button below. 👇</p>
         </div>
       </section>
     </BlogPostShell>

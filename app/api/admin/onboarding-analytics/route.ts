@@ -2288,8 +2288,17 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
   const landingRows = rows
     .filter((row) => row.event_name === "landing_page_visit" || row.event_name === "landing_page_visited")
     .sort((a, b) => new Date(a.created_at || 0).getTime() - new Date(b.created_at || 0).getTime());
+  // A signup is a user account existing, which includes guests: someone who
+  // comes from Instagram, taps Start Studying and lands in the app has
+  // signed up, whether or not they ever give an email. Counting only the
+  // email events reported zero conversions for the entire guest flow.
   const signupRows = rows
-    .filter((row) => row.event_name === "created_free_account" || row.event_name === "created_account_successfully")
+    .filter(
+      (row) =>
+        row.event_name === "created_free_account" ||
+        row.event_name === "created_account_successfully" ||
+        row.event_name === "guest_account_created",
+    )
     .sort((a, b) => new Date(a.created_at || 0).getTime() - new Date(b.created_at || 0).getTime());
   const firstVisitByActor = new Map<string, LandingEventRow>();
   const firstVisitBySession = new Map<string, LandingEventRow>();

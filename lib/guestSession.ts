@@ -70,6 +70,41 @@ async function ensureGuestProfile(userId: string, source: string) {
   console.error("[GUEST] Could not create guest profile:", error.message);
 }
 
+/**
+ * Log the guest account as a signup.
+ *
+ * Entering the app IS the signup - there is no account to create and an
+ * email is an optional extra later. Analytics only counted
+ * created_free_account, which only the email form fires, so every reader
+ * who came from Instagram or the blog and started studying was invisible:
+ * traffic sources showed the visit and then nothing.
+ *
+ * Fire and forget. A failed analytics call must never stop someone reading.
+ */
+function recordGuestSignup(userId: string, source: string) {
+  if (typeof window === "undefined") return;
+
+  try {
+    const landingSource = window.sessionStorage.getItem("bb:landing-source") || null;
+    void fetch("/api/landing-analytics", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event_name: "guest_account_created",
+        session_id: window.sessionStorage.getItem("bb:landing-session") || undefined,
+        user_id: userId,
+        source: landingSource || undefined,
+        referrer: document.referrer || null,
+        page_path: `${window.location.pathname}${window.location.search}`,
+        metadata: { guest_entry_source: source },
+      }),
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    // Storage blocked or similar - not worth breaking the session over.
+  }
+}
+
 async function createGuest(source: string): Promise<GuestSessionResult> {
   const { data: sessionData } = await supabase.auth.getSession();
   const existingId = sessionData.session?.user?.id;
@@ -104,6 +139,7 @@ async function createGuest(source: string): Promise<GuestSessionResult> {
   if (!userId) return { ok: false, reason: "error", message: "No user returned" };
 
   await ensureGuestProfile(userId, source);
+  recordGuestSignup(userId, source);
   return { ok: true, userId, created: true };
 }
 

@@ -27,6 +27,8 @@ const ALLOWED_EVENTS = new Set([
   "opened_create_account_modal",
   "created_free_account",
   "created_account_successfully",
+  // A guest entering the app. This IS a signup - see recordGuestSignup.
+  "guest_account_created",
   "closed_onboarding",
   "video_played",
   "video_progress",

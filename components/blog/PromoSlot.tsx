@@ -38,15 +38,17 @@ type PromoSlotProps = {
   slotIndex?: number;
 };
 
-// A full-width signup promo banner for blog posts. The whole image is one
-// link to /signup carrying tracking params so signups can be attributed to
-// the post and the exact banner that converted. Logs an impression the
+// A full-width promo banner for blog posts. The whole image is one link to
+// /start - which creates a guest and goes straight into the app - carrying
+// tracking params so entries can be attributed to the post and the exact
+// banner that converted. It used to point at /signup, which asked readers for
+// an email before letting them read anything. Logs an impression the
 // first time it scrolls into view and a click event on tap.
 export default function PromoSlot({ postSlug, slotIndex = 0 }: PromoSlotProps) {
   const { loading: authLoading, userId } = useSupabaseUser();
   const file = pickPromoBanner(postSlug, slotIndex);
   const promoName = file.replace(/\.[a-z]+$/, "");
-  const href = `/signup?src=blog&promo=${encodeURIComponent(promoName)}&post=${encodeURIComponent(postSlug)}`;
+  const href = `/start?src=blog&promo=${encodeURIComponent(promoName)}&post=${encodeURIComponent(postSlug)}`;
 
   const containerRef = useRef<HTMLAnchorElement | null>(null);
   const impressionSent = useRef(false);

@@ -9,7 +9,8 @@ import { supabase } from "@/lib/supabaseClient";
  * The blog's top menu.
  *
  * The blog is where strangers arrive from search, so a signed-out visitor
- * keeps the landing page's menu and its Sign Up path. Someone already signed
+ * gets the way in: Start Studying, which creates a guest and opens the app.
+ * There is no account to sign up for. Someone already signed
  * in is inside the product, so they get the app's destinations instead of an
  * invitation to make an account they already have.
  *
@@ -70,7 +71,12 @@ export default function BlogTopNav() {
           <>
             <a href="/#about" className="transition hover:text-[#0056fd]">About</a>
             <Link href="/blog" className="transition hover:text-[#0056fd]">Blog</Link>
-            <Link href="/signup" className="transition hover:text-[#0056fd]">Sign&nbsp;Up</Link>
+            <Link
+              href="/start?src=blog&promo=nav"
+              className="rounded-full bg-[#0056fd] px-3.5 py-1.5 text-white transition hover:bg-[#0049d8]"
+            >
+              Start&nbsp;Studying
+            </Link>
             <Link href="/login" className="transition hover:text-[#0056fd]">Login</Link>
           </>
         )}
