@@ -76,6 +76,17 @@ const NOT_A_PERSON = new Set([
   "we", "our", "she's", "afterward", "immediately", "meanwhile",
 
   // Titles and common nouns that are not a specific person.
+  // Objects and abstractions. Genesis 9 produced a character called Food
+  // and Genesis 26 one called Rehoboth, which is a well.
+  "food", "water", "bread", "wine", "well", "wells", "land", "city", "tent",
+  "altar", "covenant", "blessing", "birthright", "famine", "dream", "ladder",
+  "stone", "oath", "gift", "flock", "sheep", "camels", "cattle", "field",
+  "sword", "ark", "rain", "flood", "seed", "name", "day", "night", "morning",
+
+  // More place names, including the ones Genesis coins mid-story.
+  "rehoboth", "beersheba", "sitnah", "esek", "luz", "paddan", "mahanaim",
+  "peniel", "succoth", "goshen", "ararat", "salem", "machpelah", "ephron",
+
   "baal", "asherah", "molech", "dagon",
   "lord", "god", "yahweh", "spirit", "heaven", "earth", "father", "son",
   "king", "queen", "priest", "prophet", "servant", "man", "woman", "men",

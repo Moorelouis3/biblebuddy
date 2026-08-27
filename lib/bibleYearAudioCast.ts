@@ -148,7 +148,9 @@ export const BIBLE_YEAR_CAST: Record<string, BibleYearCastEntry> = {
       "Speak as the angel of the LORD: clear, calm and utterly without doubt, delivering words that are not his own. Bright and steady rather than deep. Urgent when he calls a name, never frightening.",
   },
   pharaoh: {
-    voice: "ash",
+    // Not ash: Abraham is ash and they share Genesis 12, which moved
+    // Abraham onto a different voice for that one episode.
+    voice: "ballad",
     instructions:
       "Speak as Pharaoh: a ruler who has never been contradicted, courteous and absolutely used to being obeyed. Controlled and even, with the authority sitting underneath rather than on top. Never a shouting tyrant.",
   },
@@ -236,6 +238,31 @@ export const BIBLE_YEAR_CAST: Record<string, BibleYearCastEntry> = {
     voice: "nova",
     instructions:
       "Speak as Mary: young, thoughtful and steady beyond her years. Astonished but not hysterical, holding more than she says.",
+  },
+  // Recurring supporting cast. Curated purely so their voice cannot drift
+  // between the days they appear in.
+  noah: {
+    voice: "ash",
+    instructions:
+      "Speak as Noah: a plain, weathered man who says very little. Steady and obedient, without ceremony.",
+  },
+  lot: {
+    voice: "fable",
+    instructions:
+      "Speak as Lot: anxious, hesitant and always negotiating for a little more comfort. Decent but weak, easily talked into things.",
+  },
+  abimelech: {
+    // Not echo: Esau is echo and they share Genesis 26, which moved
+    // Abimelech onto a third voice for that one day. ballad is free in every
+    // episode he appears in (Genesis 20, 21 and 26).
+    voice: "ballad",
+    instructions:
+      "Speak as Abimelech: a local king, formal and fair-minded, genuinely offended at being put in the wrong. Courteous authority, not menace.",
+  },
+  cain: {
+    voice: "ash",
+    instructions:
+      "Speak as Cain: resentful and defensive, then hollowed out by what he has done. Sullen rather than shouting.",
   },
 };
 
