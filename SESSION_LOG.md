@@ -2471,3 +2471,7 @@ Next up: 2 Chronicles 31
 ## 2026-08-27T16:37:43Z (bible year day writer run)
 Day: 12 — Jacob Leaves Laban (Genesis 30-31) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 13
+
+## 2026-08-27T16:54:45Z (hourly chapter notes run)
+Chapter: 2 Chronicles 31 | Duration: 8 min | Sections: 7 | Cards: 28 | Status: pass
+Next up: 2 Chronicles 32

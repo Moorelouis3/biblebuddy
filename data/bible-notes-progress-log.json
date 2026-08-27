@@ -26652,6 +26652,59 @@
           "at": "2026-08-27T14:54:00Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 31,
+      "startedAt": "2026-08-27T16:46:43Z",
+      "finishedAt": "2026-08-27T16:54:45Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 28,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, normal forward progress after 2 Chronicles 30 (no existing dedicated wired-in file for chapter 31). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (21 verses). 2 Chronicles 31 covers the nationwide cleanup after the Passover in chapter 30 (Israel, including worshippers from Ephraim and Manasseh in the north, smashing idols, cutting down Asherah groves, and tearing down high places and altars before everyone returned home), Hezekiah restoring David's rotating course system for priests and Levites, personally funding the regular offerings from his own royal wealth, and commanding the people to give the priestly portion so the priests could stay devoted to the law, the people's overwhelming response of firstfruits and tithes piling into literal heaps over a four month span from the third to the seventh month, Azariah the chief priest of Zadok's line reporting abundant surplus, Hezekiah preparing storage chambers and appointing Cononiah, Shimei, and ten named overseers to manage distribution, Kore's oversight of the freewill offerings and the courses system extended to cover distribution as well as duty, the genealogical registration (age three and up for general household support, age twenty and up for Levites, a lowered age from the earlier standard of thirty) that determined who qualified for support regardless of rank, and the closing summary crediting Hezekiah's good, right, and true reform, done with his whole heart, with the prosperity that followed. Chunked into 7 sections matching the chapter's own scene breaks (1, 2-4, 5-8, 9-10, 11-13, 14-19, 20-21). Density about 1.33 cards/verse (21 verses, 28 cards), in range with the reference implementation lib/genesisThirtyOneSource.ts (about 1.6 cards/verse) and recent chapters in this book. scripts/check_bible_note_style.py passed clean on the first run, 28 cards, zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (images, groves, high places, courses, king's portion, new moons, set feasts, firstfruits, tithe, chambers, freewill offerings, genealogy), closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji ending on 📖 or ➡️, no duplicate card titles across all 28 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 31) (7/7 sections, verse ranges 1/2-4/5-8/9-10/11-13/14-19/20-21 with no gaps, text rendered verbatim, 28 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/secondChroniclesThirtyOneSource.ts), preserveExactPhraseBodies for 2 chronicles extended from chapters 1-30 to 1-31, new applyPersonalSecondChroniclesThirtyOneStudySections() function added and called directly after applyPersonalSecondChroniclesTwentySevenStudySections() (which covers chapters 27-30). Next forward-progress target is 2 Chronicles 32.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-27T16:47:10Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 31 (new chapter, priority queue and style-redo backlog both empty)",
+          "at": "2026-08-27T16:47:50Z"
+        },
+        {
+          "name": "KJV text fetched: 2 Chronicles 31 (21 verses)",
+          "at": "2026-08-27T16:48:10Z"
+        },
+        {
+          "name": "style spec and skill pipeline read in full",
+          "at": "2026-08-27T16:49:30Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesThirtyOneSource.ts",
+          "at": "2026-08-27T16:52:40Z"
+        },
+        {
+          "name": "style checker clean (28 cards, zero problems)",
+          "at": "2026-08-27T16:52:55Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts",
+          "at": "2026-08-27T16:53:05Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 28 cards, no gaps",
+          "at": "2026-08-27T16:53:15Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-27T16:53:23Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-27T16:54:45Z"
+        }
+      ]
     }
   ]
 }
