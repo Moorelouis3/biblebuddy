@@ -140,6 +140,91 @@ function withPromoSlots(children: ReactNode, postSlug: string): ReactNode[] {
   return out;
 }
 
+// Bible quotes in the body, so the meta row can say how many there are.
+// VerseQuote is declared per post, so it is matched by its props rather
+// than by identity: a component taking both text and reference is a verse.
+function countVerses(node: unknown): number {
+  if (Array.isArray(node)) return node.reduce((sum: number, child) => sum + countVerses(child), 0);
+  if (!isValidElement(node)) return 0;
+  const props = node.props as { children?: ReactNode; text?: unknown; reference?: unknown };
+  const isVerse = typeof props.text === "string" && typeof props.reference === "string";
+  return (isVerse ? 1 : 0) + countVerses(props.children);
+}
+
+// The emoji a section heading opens with, used as the card's icon.
+function leadingEmoji(text: string) {
+  const match = text.trim().match(/^([\p{Extended_Pictographic}](?:\uFE0F|\u200D[\p{Extended_Pictographic}]\uFE0F?)*)/u);
+  return match?.[1] || null;
+}
+
+/**
+ * Turn each H2 section into a collapsible card.
+ *
+ * The app shows a devotional as a stack of day cards you open one at a
+ * time; a post reads the same way instead of as one long scroll. Native
+ * <details> does the opening, so there is no JavaScript, nothing to
+ * hydrate, and the whole article is still in the HTML for search engines
+ * — the collapsed sections are hidden by the browser, not withheld.
+ *
+ * Open by default: the first section (so the page never looks empty), the
+ * FAQ (its answers earn the rich result), and the closing CTA.
+ */
+function toSectionCards(children: ReactNode): ReactNode[] {
+  let sectionIndex = 0;
+
+  return Children.toArray(children).map((node) => {
+    if (!isValidElement(node)) return node;
+    const props = node.props as { children?: ReactNode };
+    const kids = Children.toArray(props.children);
+    const headingIndex = kids.findIndex((kid) => isValidElement(kid) && kid.type === "h2");
+    if (headingIndex < 0) return node;
+
+    const heading = kids[headingIndex] as ReactElement<{ id?: string; className?: string; children?: ReactNode }>;
+    const headingText = textContent(heading);
+    const label = cleanHeadingLabel(headingText);
+    const icon = leadingEmoji(headingText);
+    const body = kids.filter((_, i) => i !== headingIndex);
+
+    const isFaq = /frequently asked questions/i.test(headingText);
+    const isCta = /keep growing/i.test(headingText);
+    const isFirst = sectionIndex === 0;
+    sectionIndex += 1;
+
+    return (
+      <details
+        key={heading.props.id || label}
+        open={isFirst || isFaq || isCta}
+        className="group mt-3 overflow-hidden rounded-[24px] border border-[#DCE8FF] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
+      >
+        <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-4 transition hover:bg-[#f7faff] [&::-webkit-details-marker]:hidden">
+          {icon ? (
+            <span aria-hidden="true" className="grid h-10 w-10 shrink-0 place-items-center rounded-[14px] bg-[#eaf2ff] text-xl">
+              {icon}
+            </span>
+          ) : null}
+          {cloneElement(heading, {
+            className: "min-w-0 flex-1 text-lg font-black leading-snug tracking-tight text-slate-950 sm:text-xl",
+            children: label,
+          })}
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 24 24"
+            className="h-5 w-5 shrink-0 text-[#0056fd] transition-transform group-open:rotate-180"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </summary>
+        <div className="border-t border-[#eef3fb] px-4 pb-5 pt-1">{body}</div>
+      </details>
+    );
+  });
+}
+
 type BlogPostShellProps = {
   slug: string;
   // The on-page H1. Defaults to the listing title with the 📖 prefix.
@@ -163,7 +248,7 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
   const anchoredChildren = addHeadingAnchors(children, tocEntries);
   const totalWords = countWords(intro) + countWords(anchoredChildren);
   const readMinutes = Math.max(1, Math.round(totalWords / 200));
-  const showToc = totalWords > 1500 && tocEntries.length >= 2;
+  const verseCount = countVerses(anchoredChildren);
   const faqPairs = extractFaqPairs(anchoredChildren);
 
   return (
@@ -199,28 +284,22 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
           {title ?? <>📖 {article.title}</>}
         </h1>
 
-        <p className="mt-3 text-sm font-bold text-[#6d7789]">⏱️ {readMinutes} min read</p>
-
-        {showToc ? (
-          <nav aria-label="Table of contents" className="mt-6 rounded-[22px] border border-[#DCE8FF] bg-[#f7faff] p-5">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#0056fd]">In this guide</p>
-            <ul className="mt-3 space-y-2 text-sm font-bold">
-              {tocEntries.map((entry) => (
-                <li key={entry.id}>
-                  <a href={`#${entry.id}`} className="text-slate-700 transition hover:text-[#0056fd]">
-                    {entry.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        ) : null}
+        {/* The same meta row a devotional or a Bible in One Year day carries. */}
+        <div className="mt-4 flex flex-wrap items-center gap-2 text-sm font-bold text-[#41506b]">
+          <span className="rounded-full bg-[#f2f7ff] px-3 py-1.5">⏱️ {readMinutes} min read</span>
+          {tocEntries.length >= 2 ? (
+            <span className="rounded-full bg-[#f2f7ff] px-3 py-1.5">📑 {tocEntries.length} sections</span>
+          ) : null}
+          {verseCount > 0 ? (
+            <span className="rounded-full bg-[#f2f7ff] px-3 py-1.5">📖 {verseCount} verses</span>
+          ) : null}
+        </div>
 
         {intro}
 
         <BlogPostBreaker articleSlug={engagementKey} path={path} title={article.title} />
 
-        {withPromoSlots(anchoredChildren, article.slug)}
+        {withPromoSlots(toSectionCards(anchoredChildren), article.slug)}
 
         {faqPairs.length >= 2 ? (
           <script
