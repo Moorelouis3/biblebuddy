@@ -7,7 +7,7 @@ This file is the complete job description. The trigger prompt is deliberately
 short and points here, so the real instructions live in git where they can be
 reviewed and corrected.
 
-**Schedule:** hourly, until days 12-30 are done. It then idles.
+**Schedule:** hourly, until days 12 onward are done. It then idles.
 
 **Output per run:** as many days as you can finish properly, in order,
 **committing and pushing after each one**.
@@ -17,7 +17,7 @@ half way through must leave every finished day safely pushed — otherwise the
 work is lost and the next run repeats it. This is the single most important
 rule in this file.
 
-Keep going until days 12-30 all exist, or until you are running low on room,
+Keep going until days 12 onward all exist, or until you are running low on room,
 whichever comes first. Quality does not drop for the later days in a run: if
 you cannot give a day the same care as Day 11, stop and let the next run take
 it. A short run that pushed three good days beats a long one that pushed ten
