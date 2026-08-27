@@ -2447,3 +2447,7 @@ Queue remaining: 22
 ## 2026-08-27T03:01:00Z (hourly chapter notes run)
 Chapter: 2 Chronicles 25 | Duration: 9 min | Sections: 8 | Cards: 28 | Status: pass
 Next up: 2 Chronicles 26
+
+## 2026-08-27T04:56:10Z (hourly chapter notes run)
+Chapter: 2 Chronicles 26 | Duration: 8 min | Sections: 7 | Cards: 22 | Status: pass
+Next up: 2 Chronicles 27

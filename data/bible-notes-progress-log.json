@@ -26391,6 +26391,55 @@
           "at": "2026-08-27T03:02:01Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 26,
+      "startedAt": "2026-08-27T04:46:39Z",
+      "finishedAt": "2026-08-27T04:55:02Z",
+      "durationMinutes": 8,
+      "sections": 7,
+      "cards": 22,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, normal forward progress after 2 Chronicles 25 (no existing dedicated wired-in file). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (23 verses). 2 Chronicles 26 covers Uzziah's rise as a sixteen year old king who rebuilt Eloth, sought God under Zechariah's guidance and prospered as long as he did, defeated the Philistines and tore down the walls of Gath, Jabneh, and Ashdod, received tribute from the Ammonites and fame reaching toward Egypt, fortified Jerusalem's towers and gates, loved husbandry and dug wells in the desert, built and organized a massive standing army of over 307,000 men with officers, armor, and early siege engines invented by cunning men, then turned to pride once he was strong, illegally burned incense in the temple against eighty valiant priests led by Azariah, was struck with leprosy on the spot before the priests and hurried out himself once he realized the LORD had smitten him, lived out his life excluded from the temple in a separate house with his son Jotham ruling in his place, and closing with Isaiah the prophet recording his acts and his burial near but not inside the royal tombs because he was a leper. Chunked into 7 sections matching the chapter's own scene breaks (1-4, 5-8, 9-10, 11-15, 16-18, 19-21, 22-23). Density about 0.96 cards/verse (23 verses, 22 cards), matching the reference implementation lib/genesisThirtyOneSource.ts (56 cards/55 verses, about 1.02 cards/verse) and the immediately prior chapter lib/secondChroniclesTwentyFiveSource.ts (28 cards/28 verses, 1.0 cards/verse). scripts/check_bible_note_style.py found 2 problems on first pass (a banned hedge word 'quite' and one bullet one word over the eight word ceiling), fixed both, second run clean with 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (in the room of, Eloth, husbandry, host, habergeon, fourscore, wroth, a several house, cunning men), closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji ending on 📖 or ➡️, no duplicate card titles across all 22 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('2 chronicles', 26) (7/7 sections, verse ranges 1-4/5-8/9-10/11-15/16-18/19-21/22-23 with no gaps, text rendered verbatim, 22 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/secondChroniclesTwentySixSource.ts), preserveExactPhraseBodies for 2 chronicles extended from chapters 1-25 to 1-26, new applyPersonalSecondChroniclesTwentySixStudySections() function added and called directly after the chapter 25 call. Next forward-progress target is 2 Chronicles 27.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-27T04:47:27Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 26 (normal forward progress, mode: new chapter, priority queue and redo backlog both empty)",
+          "at": "2026-08-27T04:47:27Z"
+        },
+        {
+          "name": "KJV text fetched (2 Chronicles 26, 23 verses, aruljohn mirror)",
+          "at": "2026-08-27T04:47:56Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill file read in full",
+          "at": "2026-08-27T04:47:56Z"
+        },
+        {
+          "name": "source file written: lib/secondChroniclesTwentySixSource.ts (22 cards, 7 sections)",
+          "at": "2026-08-27T04:52:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes, 2 problems fixed)",
+          "at": "2026-08-27T04:53:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies 1-25 to 1-26, applyPersonalSecondChroniclesTwentySixStudySections call)",
+          "at": "2026-08-27T04:53:45Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 22 cards, verse ranges 1-4/5-8/9-10/11-15/16-18/19-21/22-23, text verbatim)",
+          "at": "2026-08-27T04:54:16Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-27T04:55:02Z"
+        }
+      ]
     }
   ]
 }
