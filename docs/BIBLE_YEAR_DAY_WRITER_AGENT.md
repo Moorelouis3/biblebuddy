@@ -7,15 +7,21 @@ This file is the complete job description. The trigger prompt is deliberately
 short and points here, so the real instructions live in git where they can be
 reviewed and corrected.
 
-**Schedule:** once a day.
+**Schedule:** hourly, until days 12-30 are done. It then idles.
 
-**Output per run:** exactly one day — script written, audio rendered and
-uploaded, committed and pushed.
+**Output per run:** as many days as you can finish properly, in order,
+**committing and pushing after each one**.
 
-**Why one a day:** writing a day well costs real model budget, and Louis has a
-weekly limit that the hourly note writer already eats into. One day per run
-spreads it out. **Never write two days in one run, even if you have budget
-left.**
+**Commit after every single day.** Not at the end of the run. A run that dies
+half way through must leave every finished day safely pushed — otherwise the
+work is lost and the next run repeats it. This is the single most important
+rule in this file.
+
+Keep going until days 12-30 all exist, or until you are running low on room,
+whichever comes first. Quality does not drop for the later days in a run: if
+you cannot give a day the same care as Day 11, stop and let the next run take
+it. A short run that pushed three good days beats a long one that pushed ten
+rushed ones.
 
 ---
 
@@ -106,27 +112,37 @@ In `scripts/render-bible-year-day.ts`: import the new script and add it to
 
 Then `npx tsc --noEmit` must be clean before you go any further.
 
-## Step 6 — Render and upload the audio
+## Step 6 — The audio
+
+**This environment has no `OPENAI_API_KEY` and no Supabase service key**, so
+you cannot render or upload. That is expected, not a failure. Do not try to
+work around it, do not install anything, and do not spend a run debugging it.
+The audio is rendered on a machine that has the keys, in one batch, with:
 
 ```
-npx tsx scripts/render-bible-year-day.ts --day=<N> --upload
+npx tsx scripts/render-pending-bible-year-days.ts
 ```
 
-This needs `OPENAI_API_KEY` and the Supabase service credentials. If either is
-missing in this environment, **do not fake it and do not skip silently**:
-finish everything else, append a note to `MARCUS_HANDOFF.md` saying day N's
-script is written but the audio still needs a local render, and say so in the
-session log.
+So: skip the render, and make sure `MARCUS_HANDOFF.md` carries **one** line
+saying which days are waiting on a local render. Update that single entry as
+you add days rather than appending a new block per day.
+
+If the keys ever do appear in this environment, render each day as you write
+it with `npx tsx scripts/render-bible-year-day.ts --day=<N> --upload`, and
+then the cast check below is yours to do.
+
+### The cast check (whoever renders)
 
 The render prints the cast, e.g.
 `[day 012] cast: jacob/alloy, laban/verse, rachel/sage, god/onyx`.
 
-**Check that line every run.** Every name in it must be a person who actually
-speaks in those chapters. The caster derives speakers from the text, so it can
-occasionally invent one from a capitalised word — past runs produced
-characters called `food`, `Rehoboth` (a well) and `Laying`. If you see
-anything that is not a person, add the offending word to `NOT_A_PERSON` in
-`lib/bibleYearAutoCast.ts` and render again.
+**Every name in it must be a person who actually speaks in those chapters.**
+The caster derives speakers from the text, so it invents one from a
+capitalised word now and then. Real examples it has produced: `food`,
+`Rehoboth` (a well), `Laying` (a participle) and `mizpah` (the watchtower in
+Genesis 31:49 — the verse that names a place reads exactly like an
+attribution). Fix by adding the word to `NOT_A_PERSON` in
+`lib/bibleYearAutoCast.ts` and rendering again.
 
 Two rules the cast has to keep, both already enforced in code — just do not
 work around them:
@@ -158,7 +174,7 @@ Then stop. One day per run.
 
 ## Hard limits
 
-- One day per run, no exceptions.
+- Commit and push after every day, before starting the next.
 - Never touch a day that already has a script.
 - Never invent Scripture, and never write about chapters outside the day's
   reading.
