@@ -2495,3 +2495,7 @@ Next up: 2 Chronicles 34
 ## 2026-08-27T22:58:16Z (hourly chapter notes run)
 Chapter: 2 Chronicles 34 | Duration: 12 min | Sections: 7 | Cards: 54 | Status: pass
 Next up: 2 Chronicles 35
+
+## 2026-08-28T00:24:17Z (bible year day writer run)
+Day: 15 — Joseph Is Betrayed (Genesis 37-38) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 16
