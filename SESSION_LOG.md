@@ -2523,3 +2523,7 @@ Next up: Day 19 (run stops here — 2-day-per-run limit reached)
 ## 2026-08-28T04:55:00Z (hourly chapter notes run)
 Chapter: Ezra 1 | Duration: 8 min | Sections: 3 | Cards: 11 | Status: pass
 Next up: Ezra 2
+
+## 2026-08-28T06:55:51Z (hourly chapter notes run)
+Chapter: Ezra 2 | Duration: 10 min | Sections: 15 | Cards: 36 | Status: pass
+Next up: Ezra 3
