@@ -2507,3 +2507,7 @@ Next up: Day 17 (run stops here — 2-day-per-run limit reached)
 ## 2026-08-28T00:59:53Z (hourly chapter notes run)
 Chapter: 2 Chronicles 35 | Duration: 14 min | Sections: 6 | Cards: 48 | Status: pass
 Next up: 2 Chronicles 36
+
+## 2026-08-28T02:53:00Z (hourly chapter notes run)
+Chapter: 2 Chronicles 36 | Duration: 6 min | Sections: 6 | Cards: 22 | Status: pass
+Next up: Ezra 1

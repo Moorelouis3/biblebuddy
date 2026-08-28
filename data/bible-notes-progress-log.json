@@ -26917,6 +26917,59 @@
           "at": "2026-08-28T00:59:53Z"
         }
       ]
+    },
+    {
+      "book": "2 Chronicles",
+      "chapter": 36,
+      "startedAt": "2026-08-28T02:46:20Z",
+      "finishedAt": "2026-08-28T02:52:35Z",
+      "durationMinutes": 6.2,
+      "sections": 6,
+      "cards": 22,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, normal forward progress after 2 Chronicles 35 (no existing dedicated wired-in file). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (23 verses). Closes out 2 Chronicles: the last four kings of Judah (Jehoahaz, Jehoiakim, Jehoiachin, Zedekiah), the escalating rejection of God's messengers, the destruction of Jerusalem and the temple, the seventy year exile tied to the land's missed sabbath years, and Cyrus's decree ending the exile. Chunked into 6 sections (1-4, 5-8, 9-10, 11-14, 15-21, 22-23), all within the 8-verse hard cap. Style checker found 5 problems on first pass, fixed, second run clean. Parser check and tsc both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-28T02:46:20Z"
+        },
+        {
+          "name": "target chapter determined: 2 Chronicles 36 (normal forward progress, redo backlog empty)",
+          "at": "2026-08-28T02:46:57Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn mirror, 23 verses)",
+          "at": "2026-08-28T02:46:57Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-28T02:46:57Z"
+        },
+        {
+          "name": "source file written (lib/secondChroniclesThirtySixSource.ts, 6 sections, 22 cards)",
+          "at": "2026-08-28T02:50:00Z"
+        },
+        {
+          "name": "style checker clean (0 problems after fixing 5)",
+          "at": "2026-08-28T02:51:05Z"
+        },
+        {
+          "name": "wired into reader (import, apply function, replaceStudySectionsForBookRange call, preserveExactPhraseBodies range extended to 36)",
+          "at": "2026-08-28T02:51:10Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 22 cards, verbatim)",
+          "at": "2026-08-28T02:51:18Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-28T02:51:32Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-28T02:52:35Z"
+        }
+      ]
     }
   ]
 }
