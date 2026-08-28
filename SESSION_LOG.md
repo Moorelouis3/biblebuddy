@@ -2591,3 +2591,7 @@ Next up: Ezra 10
 ## 2026-08-28T22:22:48Z (blog writer run)
 Article: How to Defend Your Faith in Jesus | Words: ~4,540 | Category: Christian Foundations | Status: pass
 Queue remaining: 41
+
+## 2026-08-28T23:05:00Z (hourly chapter notes run)
+Chapter: Ezra 10 | Duration: 19 min | Sections: 12 | Cards: 36 | Status: pass
+Next up: Nehemiah 1

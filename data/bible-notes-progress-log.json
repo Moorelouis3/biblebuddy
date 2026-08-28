@@ -27471,6 +27471,67 @@
           "at": "2026-08-28T20:55:27Z"
         }
       ]
+    },
+    {
+      "book": "Ezra",
+      "chapter": 10,
+      "startedAt": "2026-08-28T22:46:03Z",
+      "finishedAt": "2026-08-28T23:05:00Z",
+      "durationMinutes": 19,
+      "sections": 12,
+      "cards": 36,
+      "verses": 44,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty. Normal forward progress after Ezra 9 (no existing dedicated wired-in file for chapter 10). Local main was HEAD-detached at session start (same recurring stale-git-ref anomaly noted in earlier runs); reset local main to origin/main before starting, no data loss, confirmed via git log comparison. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (44 verses). Ezra 10 closes the book: the congregation gathers in tears around Ezra's prayer, Shechaniah (whose own father Jehiel turns out to be named later among the guilty men of Elam's family in verse 26) proposes a covenant to put away the foreign wives, Ezra swears the leaders to it and fasts in grief, a proclamation gives three days notice with property forfeiture as the penalty, the whole assembly gathers trembling in the ninth month's cold rain, Ezra charges them to separate from the strange wives, the crowd asks for a staged process by city given the weather and the number of people involved (with a likely note, per honest scholarly hedge, of two men who opposed the plan), a small committee investigates for about three months, and the chapter closes with the actual list of 113 guilty men by family, priests first, then Levites, singers, and porters, then the laity family by family, including a Meremoth in verse 36 many believe is the same man who later weighed the temple treasure in Ezra 8 and helped repair Jerusalem's wall in Nehemiah 3, ending on the sober note that some of these marriages had already produced children. Chunked into 11 authored sections (1-2, 3-4, 5-6, 7-8, 9-12, 13-15, 16-17, 18-24, 25-29, 30-33, 34-40, 41-44). Found during the parser check: the app's chunking utility duplicates all cards into both halves when an authored section exceeds its per-section verse cap, so the original single 34-44 genealogy section (11 verses) got rendered as two sections each showing the same 4 cards twice. Fixed by manually splitting that section into 34-40 and 41-44 in the source file, assigning each of the 4 cards to whichever half its verse actually falls in, before finishing verification. Density about 0.8 cards per verse (44 verses, 36 cards), lower than narrative chapters on purpose per style spec section 12, since 27 of the 44 verses are an unbroken guilty-men name list; those cards teach through family sizes, repeated family names, and forward hinges like Meremoth rather than restating each individual name. scripts/check_bible_note_style.py passed clean on the first run, 36 cards, zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (proclamation, substance, affinity-style concepts covered as separate, trespass, guilt offering, chief of the fathers), closes on meaning rather than mechanics, uses exactly four bullets each with a distinct emoji ending on the scripture-point emoji, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file, with no duplicate card titles across all 36 cards. Parser check passed exactly via getBibleReaderStudySections('ezra', 10) (12 rendered sections after the manual split, 36 total cards, all 44 verses covered with no gaps and no duplicated cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies ezra range extended from chapters 1-9 to 1-10, applyPersonalEzraTenStudySections() function added and called right after applyPersonalEzraNineStudySections(), replaceStudySectionsForBookRange(\"ezra\", 10, 10, EZRA_TEN_PERSONAL_SECTIONS) call added, which now overrides the generic EZRA_4_10_PERSONAL_SECTIONS fallback for chapter 10 specifically. This is also the last chapter of Ezra. Next forward-progress target is Nehemiah 1, which currently falls under the generic NEHEMIAH_1_13_PERSONAL_SECTIONS fallback file and has no dedicated wired-in file of its own yet.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-28T22:47:00Z"
+        },
+        {
+          "name": "fixed stale detached-HEAD git state (local main reset to origin/main, no data loss confirmed)",
+          "at": "2026-08-28T22:46:59Z"
+        },
+        {
+          "name": "target chapter determined: Ezra 10 (normal forward progress, priority queue and redo backlog both empty, no existing ezraTenSource.ts)",
+          "at": "2026-08-28T22:46:59Z"
+        },
+        {
+          "name": "KJV text fetched (Ezra 10, 44 verses, aruljohn mirror)",
+          "at": "2026-08-28T22:47:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill file read in full",
+          "at": "2026-08-28T22:48:30Z"
+        },
+        {
+          "name": "source file written: lib/ezraTenSource.ts (11 authored sections, 36 cards)",
+          "at": "2026-08-28T22:56:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, clean on first pass, 36 cards, 0 problems)",
+          "at": "2026-08-28T22:57:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 10, applyPersonalEzraTenStudySections, replaceStudySectionsForBookRange)",
+          "at": "2026-08-28T22:57:30Z"
+        },
+        {
+          "name": "parser check found card-duplication bug from an oversized authored section (34-44); fixed by manually splitting into 34-40 and 41-44",
+          "at": "2026-08-28T22:58:30Z"
+        },
+        {
+          "name": "parser check passed clean after fix (12 rendered sections, 36 cards, all 44 verses covered, no duplicates, text verbatim)",
+          "at": "2026-08-28T22:59:00Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-28T22:59:30Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-28T23:05:00Z"
+        }
+      ]
     }
   ]
 }
