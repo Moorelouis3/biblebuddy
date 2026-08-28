@@ -27304,6 +27304,59 @@
           "at": "2026-08-28T14:59:39Z"
         }
       ]
+    },
+    {
+      "book": "Ezra",
+      "chapter": 7,
+      "startedAt": "2026-08-28T16:52:47Z",
+      "finishedAt": "2026-08-28T16:56:00Z",
+      "durationMinutes": 9,
+      "sections": 6,
+      "cards": 44,
+      "verses": 28,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, normal forward progress after Ezra 6 (no existing dedicated wired-in file). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (28 verses). Chunked into 6 sections (1-6 Ezra genealogy and calling, 7-10 the journey to Jerusalem, 11-14 the king letter begins, 15-20 silver gold and vessels, 21-26 the king full decree, 27-28 Ezra blesses the Lord). Density about 1.6 cards/verse (28 verses, 44 cards). scripts/check_bible_note_style.py found 7 problems on first pass (banned hedge word fairly used twice, six bullets over the 8 word cap), fixed all seven, second run clean with 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language (habitation, decree, talents, baths, magistrates, banishment, freewill, and more), closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji ending on 📖 or ➡️, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file, with no duplicate card titles across all 44 cards. Parser check passed exactly via getBibleReaderStudySections('ezra', 7) (6/6 sections, 44 cards, 28 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies ezra range extended from chapters 1-6 to 1-7, applyPersonalEzraSevenStudySections() function added and called, replaceStudySectionsForBookRange(\"ezra\", 7, 7, EZRA_SEVEN_PERSONAL_SECTIONS) call added. Next forward-progress target is Ezra 8.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-28T16:46:31Z"
+        },
+        {
+          "name": "target chapter determined: Ezra 7 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-08-28T16:52:16Z"
+        },
+        {
+          "name": "KJV text fetched (Ezra 7, 28 verses, aruljohn mirror)",
+          "at": "2026-08-28T16:46:46Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill file read in full",
+          "at": "2026-08-28T16:47:00Z"
+        },
+        {
+          "name": "source file written: lib/ezraSevenSource.ts",
+          "at": "2026-08-28T16:51:55Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 fix passes, 8 problems fixed)",
+          "at": "2026-08-28T16:52:12Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalEzraSevenStudySections, replaceStudySectionsForBookRange)",
+          "at": "2026-08-28T16:52:16Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 44 cards, text verbatim)",
+          "at": "2026-08-28T16:52:27Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-28T16:52:47Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-28T16:56:00Z"
+        }
+      ]
     }
   ]
 }

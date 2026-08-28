@@ -2567,3 +2567,7 @@ Next up: Day 24
 ## 2026-08-28T16:29:38Z (bible year day writer run)
 Day: 24 — Passover (Exodus 9-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 25 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-28T16:56:00Z (hourly chapter notes run)
+Chapter: Ezra 7 | Duration: 9 min | Sections: 6 | Cards: 44 | Status: pass
+Next up: Ezra 8
