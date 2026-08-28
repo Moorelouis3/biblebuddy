@@ -200,6 +200,11 @@
       "timestamp": "2026-08-27T13:01:00Z",
       "type": "environment_anomaly",
       "detail": "Same recurring stale-local-git-ref bug hit again during this run's push. Local main branch ref was stale at fd8fc76 (Add 2 Chronicles 20 study notes), 8 commits behind the real origin/main tip d57e785. The chapter commit itself was made cleanly in detached HEAD state on top of the correct current tip (d57e785, matching origin/main confirmed via git fetch origin main before committing), so no wrong chapter was written and no data was at risk. Resolved with git checkout -B main (rebuilding local main to point at the detached HEAD commit, which already carried d57e785 as its parent) followed by git push -u origin main, which succeeded cleanly (d57e785..955a472 main -> main) and left origin/main and local HEAD both at 955a472. Logging again per the standing instruction to always log this pattern."
+    },
+    {
+      "timestamp": "2026-08-28T12:34:36Z",
+      "type": "environment_anomaly",
+      "detail": "Same recurring stale-local-git-ref bug hit again, this time on a Bible in One Year day writer run rather than a chapter notes run. Session started with HEAD detached at a30ba81 (this run's own Day 21 commit, made cleanly on top of the correct current tip 7a09285) but the cached local main and origin/main refs were both stale at fd8fc76 (Add 2 Chronicles 20 study notes), 44 commits behind, giving a false 'ahead by 44 commits' reading on git status. Caught before any push: ran git fetch origin main, which corrected the cached origin/main ref to 7a09285 and confirmed the detached HEAD's parent matched it exactly, so all 44 apparently-unpushed commits were already safely on origin and only the new Day 21 commit was actually ahead. Resolved with git checkout -B main (rebuilding local main from the verified detached HEAD) followed by git push -u origin main, which fast-forwarded cleanly (7a09285..a30ba81 main -> main). No wrong work was done and nothing was overwritten. Logging again per the standing instruction to always log this pattern; now confirmed to affect every scheduled-agent workflow in this repo, not just the chapter notes runs."
     }
   ]
 }
