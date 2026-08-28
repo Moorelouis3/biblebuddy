@@ -2511,3 +2511,7 @@ Next up: 2 Chronicles 36
 ## 2026-08-28T02:53:00Z (hourly chapter notes run)
 Chapter: 2 Chronicles 36 | Duration: 6 min | Sections: 6 | Cards: 22 | Status: pass
 Next up: Ezra 1
+
+## 2026-08-28T04:25:23Z (bible year day writer run)
+Day: 17 — Joseph Rises to Power (Genesis 41-42) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 18
