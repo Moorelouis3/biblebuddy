@@ -2571,3 +2571,7 @@ Next up: Day 25 (run stops here — 2-day-per-run limit reached)
 ## 2026-08-28T16:56:00Z (hourly chapter notes run)
 Chapter: Ezra 7 | Duration: 9 min | Sections: 6 | Cards: 44 | Status: pass
 Next up: Ezra 8
+
+## 2026-08-28T18:59:19Z (hourly chapter notes run)
+Chapter: Ezra 8 | Duration: 13 min | Sections: 7 | Cards: 36 | Status: pass
+Next up: Ezra 9

@@ -432,6 +432,7 @@ import { EZRA_FOUR_PERSONAL_SECTIONS } from "./ezraFourSource";
 import { EZRA_FIVE_PERSONAL_SECTIONS } from "./ezraFiveSource";
 import { EZRA_SIX_PERSONAL_SECTIONS } from "./ezraSixSource";
 import { EZRA_SEVEN_PERSONAL_SECTIONS } from "./ezraSevenSource";
+import { EZRA_EIGHT_PERSONAL_SECTIONS } from "./ezraEightSource";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
 import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
 import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
@@ -832,7 +833,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "1 chronicles" && section.chapter >= 1 && section.chapter <= 29) ||
     (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 36) ||
     (normalizeBook(book) === "proverbs" && section.chapter >= 1 && section.chapter <= 31) ||
-    (normalizeBook(book) === "ezra" && section.chapter >= 1 && section.chapter <= 7);
+    (normalizeBook(book) === "ezra" && section.chapter >= 1 && section.chapter <= 8);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1526,6 +1527,10 @@ function applyPersonalEzraSixStudySections() {
 
 function applyPersonalEzraSevenStudySections() {
   replaceStudySectionsForBookRange("ezra", 7, 7, EZRA_SEVEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEzraEightStudySections() {
+  replaceStudySectionsForBookRange("ezra", 8, 8, EZRA_EIGHT_PERSONAL_SECTIONS);
 }
 
 function applyPersonalNehemiahOneThroughThirteenStudySections() {
@@ -8985,6 +8990,7 @@ applyPersonalEzraFourStudySections();
 applyPersonalEzraFiveStudySections();
 applyPersonalEzraSixStudySections();
 applyPersonalEzraSevenStudySections();
+applyPersonalEzraEightStudySections();
 applyPersonalNehemiahOneThroughThirteenStudySections();
 applyPersonalEstherOneThroughTenStudySections();
 applyPersonalJobOneThroughTenStudySections();
