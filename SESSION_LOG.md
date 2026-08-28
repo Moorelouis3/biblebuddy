@@ -2499,3 +2499,7 @@ Next up: 2 Chronicles 35
 ## 2026-08-28T00:24:17Z (bible year day writer run)
 Day: 15 — Joseph Is Betrayed (Genesis 37-38) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 16
+
+## 2026-08-28T00:25:31Z (bible year day writer run)
+Day: 16 — Joseph in Egypt (Genesis 39-40) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 17 (run stops here — 2-day-per-run limit reached)
