@@ -35,10 +35,11 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 20 (lib/bibleYearDayTwentyScript.ts, Genesis 47-48, "Jacob
-Blesses Joseph's Sons" — most recent), each verified with `tsc --noEmit`. None of
-them have been rendered or uploaded from this environment: it has no
-OPENAI_API_KEY and no Supabase service credentials, by design. Run
+through Day 21 (lib/bibleYearDayTwentyOneScript.ts, Genesis 49-50,
+"Genesis Ends With Hope" — most recent, and the last day of Genesis),
+each verified with `tsc --noEmit`. None of them have been rendered or
+uploaded from this environment: it has no OPENAI_API_KEY and no Supabase
+service credentials, by design. Run
 `npx tsx scripts/render-pending-bible-year-days.ts` locally (it checks
 storage and only renders what is actually missing, so it's safe to re-run
 any time). Check each printed cast line for any non-person names (add

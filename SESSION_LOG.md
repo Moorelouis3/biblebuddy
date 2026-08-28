@@ -2543,3 +2543,7 @@ Next up: Ezra 4
 ## 2026-08-28T10:58:54Z (hourly chapter notes run)
 Chapter: Ezra 4 | Duration: 10 min | Sections: 7 | Cards: 41 | Status: pass
 Next up: Ezra 5
+
+## 2026-08-28T12:34:36Z (bible year day writer run)
+Day: 21 — Genesis Ends With Hope (Genesis 49-50) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 22
