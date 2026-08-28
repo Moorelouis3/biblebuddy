@@ -2563,3 +2563,7 @@ Next up: Ezra 7
 ## 2026-08-28T16:28:44Z (bible year day writer run)
 Day: 23 — Pharaoh Resists God's Word (Exodus 5-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 24
+
+## 2026-08-28T16:29:38Z (bible year day writer run)
+Day: 24 — Passover (Exodus 9-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 25 (run stops here — 2-day-per-run limit reached)
