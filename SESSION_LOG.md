@@ -2575,3 +2575,7 @@ Next up: Ezra 8
 ## 2026-08-28T18:59:19Z (hourly chapter notes run)
 Chapter: Ezra 8 | Duration: 13 min | Sections: 7 | Cards: 36 | Status: pass
 Next up: Ezra 9
+
+## 2026-08-28T19:15:00Z (bible year day writer run)
+Day: 25 — Into the Wilderness (Exodus 13-16) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 26
