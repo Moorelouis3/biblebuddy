@@ -2535,3 +2535,7 @@ Next up: Day 20
 ## 2026-08-28T08:27:31Z (bible year day writer run)
 Day: 20 — Jacob Blesses Joseph's Sons (Genesis 47-48) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 21 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-28T08:54:47Z (hourly chapter notes run)
+Chapter: Ezra 3 | Duration: 8 min | Sections: 6 | Cards: 28 | Status: pass
+Next up: Ezra 4

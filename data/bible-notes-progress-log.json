@@ -27076,6 +27076,59 @@
           "at": "2026-08-28T06:55:51Z"
         }
       ]
+    },
+    {
+      "book": "Ezra",
+      "chapter": 3,
+      "startedAt": "2026-08-28T08:46:57Z",
+      "finishedAt": "2026-08-28T08:54:47Z",
+      "durationMinutes": 7.83,
+      "sections": 6,
+      "cards": 28,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty. Normal forward progress after Ezra 2 (Ezra 3 was still only covered by the legacy EZRA_1_3_PERSONAL_SECTIONS bulk file, no dedicated wired-in file existed yet). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (13 verses). Ezra 3 covers the altar rebuilt before the temple foundation, the resumed feasts (Tabernacles, daily and continual burnt offerings, new moons, freewill offerings), funding the construction (masons, carpenters, cedar from Lebanon via Zidon and Tyre under Cyrus's grant), the Levites appointed at a lowered minimum age of twenty, the foundation laid with trumpets and cymbals after David's ordinance, and the mixed weeping and shouting of those who remembered Solomon's first temple versus those who did not. Chunked into 6 sections of 2-3 verses each, averaging just over 2 cards per verse (28 cards across 13 verses). Wrote a dedicated lib/ezraThreeSource.ts and layered replaceStudySectionsForBookRange(\"ezra\", 3, 3, EZRA_THREE_PERSONAL_SECTIONS) after the Ezra 1 and Ezra 2 overrides, extending preserveExactPhraseBodies for ezra to chapters 1-3. Style checker caught one problem on first pass (a repeated final-bullet emoji within one note), fixed, clean on second pass (28 cards, 0 problems). Parser check passed (6 sections, 28 cards, all 13 verses covered, no gaps or overlaps, verbatim). npx tsc --noEmit -p . clean. Next forward-progress target is Ezra 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-28T08:46:00Z"
+        },
+        {
+          "name": "target chapter determined: Ezra 3 (normal forward progress, priority queue and style-redo backlog both empty, Ezra 3 still only covered by legacy EZRA_1_3_PERSONAL_SECTIONS bulk file)",
+          "at": "2026-08-28T08:46:57Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn/Bible-kjv mirror, 13 verses)",
+          "at": "2026-08-28T08:47:04Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-28T08:47:07Z"
+        },
+        {
+          "name": "source file written (lib/ezraThreeSource.ts, 6 sections, 28 cards)",
+          "at": "2026-08-28T08:51:56Z"
+        },
+        {
+          "name": "style checker clean on second pass (28 cards, 0 problems, after fixing one repeated final-bullet emoji)",
+          "at": "2026-08-28T08:52:20Z"
+        },
+        {
+          "name": "wired into reader (import EZRA_THREE_PERSONAL_SECTIONS, preserveExactPhraseBodies extended to ezra chapters 1-3, replaceStudySectionsForBookRange call added after Ezra 1 and Ezra 2)",
+          "at": "2026-08-28T08:52:40Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 28 cards, all 13 verses covered, no gaps or overlaps, verbatim)",
+          "at": "2026-08-28T08:53:01Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-28T08:54:47Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-28T08:55:21Z"
+        }
+      ]
     }
   ]
 }
