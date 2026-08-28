@@ -2527,3 +2527,7 @@ Next up: Ezra 2
 ## 2026-08-28T06:55:51Z (hourly chapter notes run)
 Chapter: Ezra 2 | Duration: 10 min | Sections: 15 | Cards: 36 | Status: pass
 Next up: Ezra 3
+
+## 2026-08-28T08:25:25Z (bible year day writer run)
+Day: 19 — Joseph Reveals Himself (Genesis 45-46) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 20
