@@ -2503,3 +2503,7 @@ Next up: Day 16
 ## 2026-08-28T00:25:31Z (bible year day writer run)
 Day: 16 — Joseph in Egypt (Genesis 39-40) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 17 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-28T00:59:53Z (hourly chapter notes run)
+Chapter: 2 Chronicles 35 | Duration: 14 min | Sections: 6 | Cards: 48 | Status: pass
+Next up: 2 Chronicles 36

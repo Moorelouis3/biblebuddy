@@ -423,6 +423,7 @@ import { SECOND_CHRONICLES_THIRTY_ONE_PERSONAL_SECTIONS } from "./secondChronicl
 import { SECOND_CHRONICLES_THIRTY_TWO_PERSONAL_SECTIONS } from "./secondChroniclesThirtyTwoSource";
 import { SECOND_CHRONICLES_THIRTY_THREE_PERSONAL_SECTIONS } from "./secondChroniclesThirtyThreeSource";
 import { SECOND_CHRONICLES_THIRTY_FOUR_PERSONAL_SECTIONS } from "./secondChroniclesThirtyFourSource";
+import { SECOND_CHRONICLES_THIRTY_FIVE_PERSONAL_SECTIONS } from "./secondChroniclesThirtyFiveSource";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
 import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
 import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
@@ -821,7 +822,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "1 kings" && section.chapter >= 1 && section.chapter <= 22) ||
     (normalizeBook(book) === "2 kings" && section.chapter >= 1 && section.chapter <= 25) ||
     (normalizeBook(book) === "1 chronicles" && section.chapter >= 1 && section.chapter <= 29) ||
-    (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 34) ||
+    (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 35) ||
     (normalizeBook(book) === "proverbs" && section.chapter >= 1 && section.chapter <= 31);
   const icon = repairMojibake(section.icon);
   return {
@@ -1478,6 +1479,10 @@ function applyPersonalSecondChroniclesThirtyThreeStudySections() {
 
 function applyPersonalSecondChroniclesThirtyFourStudySections() {
   replaceStudySectionsForBookRange("2 chronicles", 34, 34, SECOND_CHRONICLES_THIRTY_FOUR_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondChroniclesThirtyFiveStudySections() {
+  replaceStudySectionsForBookRange("2 chronicles", 35, 35, SECOND_CHRONICLES_THIRTY_FIVE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalEzraOneThroughThreeStudySections() {
@@ -8936,6 +8941,7 @@ applyPersonalSecondChroniclesThirtyOneStudySections();
 applyPersonalSecondChroniclesThirtyTwoStudySections();
 applyPersonalSecondChroniclesThirtyThreeStudySections();
 applyPersonalSecondChroniclesThirtyFourStudySections();
+applyPersonalSecondChroniclesThirtyFiveStudySections();
 applyPersonalEzraOneThroughThreeStudySections();
 applyPersonalEzraFourThroughTenStudySections();
 applyPersonalNehemiahOneThroughThirteenStudySections();
