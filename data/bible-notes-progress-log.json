@@ -27129,6 +27129,59 @@
           "at": "2026-08-28T08:55:21Z"
         }
       ]
+    },
+    {
+      "book": "Ezra",
+      "chapter": 4,
+      "startedAt": "2026-08-28T10:48:24Z",
+      "finishedAt": "2026-08-28T10:58:12Z",
+      "durationMinutes": 9.8,
+      "sections": 7,
+      "cards": 41,
+      "verses": 24,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty. Normal forward progress after Ezra 3 (Ezra 4 was still only covered by the legacy EZRA_4_10_PERSONAL_SECTIONS bulk placeholder file, no dedicated wired-in file existed yet). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (24 verses). Ezra 4 covers the adversaries' deceptive offer to help build the temple (\"we seek your God, as ye do\", exposed as syncretism traceable to Esarhaddon's resettlement policy), Zerubbabel's refusal citing Cyrus's decree as sole legitimacy, the bribery and discouragement campaign spanning Cyrus to Darius, and the chapter's well known chronological aside: verses 6-23 jump forward past Darius into Ahasuerus and Artaxerxes to record a second, later letter about the city walls (a Nehemiah era concern), quoted in full, before verse 24 snaps the narrative back to close the loop opened in verse 5. Chunked into 7 sections (1-3, 4-5, 6-7, 8-10, 11-16, 17-22, 23-24). Density about 1.71 cards/verse. scripts/check_bible_note_style.py passed clean on the first run, 41 cards, 0 problems. Manually caught and fixed three instances of the banned hedge word roughly and two rather than stacked clauses not caught by the automated checker. Parser check passed (7 sections, 41 cards, all 24 verses covered, no gaps or overlaps, verbatim). npx tsc --noEmit -p . clean. Next forward-progress target is Ezra 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-28T10:47:26Z"
+        },
+        {
+          "name": "target chapter determined: Ezra 4 (normal forward progress, priority queue and style-redo backlog both empty, Ezra 4 still only covered by legacy EZRA_4_10_PERSONAL_SECTIONS bulk placeholder file)",
+          "at": "2026-08-28T10:48:24Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn/Bible-kjv mirror, 24 verses)",
+          "at": "2026-08-28T10:48:24Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-28T10:55:40Z"
+        },
+        {
+          "name": "source file written (lib/ezraFourSource.ts, 7 sections, 41 cards)",
+          "at": "2026-08-28T10:55:40Z"
+        },
+        {
+          "name": "style checker clean (41 cards, 0 problems) plus manual eye check fixing 3 banned hedge words and 2 rather than stacked clauses",
+          "at": "2026-08-28T10:55:45Z"
+        },
+        {
+          "name": "wired into reader (import EZRA_FOUR_PERSONAL_SECTIONS, preserveExactPhraseBodies extended to ezra chapters 1-4, new applyPersonalEzraFourStudySections() called after applyPersonalEzraFourThroughTenStudySections())",
+          "at": "2026-08-28T10:56:05Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 41 cards, all 24 verses covered, no gaps or overlaps, verbatim)",
+          "at": "2026-08-28T10:56:25Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-28T10:58:12Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-08-28T10:58:54Z"
+        }
+      ]
     }
   ]
 }
