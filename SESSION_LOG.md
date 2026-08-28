@@ -2579,3 +2579,7 @@ Next up: Ezra 9
 ## 2026-08-28T19:15:00Z (bible year day writer run)
 Day: 25 — Into the Wilderness (Exodus 13-16) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 26
+
+## 2026-08-28T19:30:00Z (bible year day writer run)
+Day: 26 — The Ten Commandments (Exodus 17-20) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 27 (run stops here — 2-day-per-run limit reached)
