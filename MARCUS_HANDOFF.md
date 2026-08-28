@@ -49,3 +49,10 @@ any time). Check each printed cast line for any non-person names (add
 offenders to NOT_A_PERSON in lib/bibleYearAutoCast.ts and re-render if so).
 This entry will keep being updated in place as later days get written —
 it is not meant to grow a new block per day.
+
+## New blog post on fallback banner: How to Defend Your Faith in Jesus
+The blog writer agent just published "How to Defend Your Faith in Jesus"
+(/blog/how-to-defend-your-faith-in-jesus). Its topics-queue.json entry had
+no `bannerImage`, so it reused the christian-foundations category fallback
+(`/anxietyarticlebanner.jpg`, same banner as the anxiety and fear posts).
+Louis may want to swap in a custom banner for this one later.

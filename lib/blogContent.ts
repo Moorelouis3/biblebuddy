@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "how-to-defend-your-faith-in-jesus",
+    title: "How to Defend Your Faith in Jesus",
+    description:
+      "How to defend your faith in Jesus: the resurrection evidence in 1 Corinthians 15, why the first witnesses were women, and 1 Peter 3:15.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/how-to-defend-your-faith-in-jesus",
+    publishedAt: "2026-08-29",
+    readTime: "23 min read",
+    image: "/anxietyarticlebanner.jpg",
+    groupPost: {
+      title: "How to Defend Your Faith in Jesus 📖",
+      content:
+        "Someone asks why you believe in Jesus.\nAnd you freeze.\n\n📌 Faith is not blind. It is built on real evidence.\n\n📖 Over 500 people saw Jesus alive after the resurrection.\n📖 The first witnesses were women, who couldn't testify in court.\n📖 Frightened disciples became bold enough to die for what they saw.\n\nNew article on:\n🟢 how to explain the **resurrection evidence**\n🟢 why 1 Peter 3:15 is your **whole game plan**\n🟢 how to answer hard questions with **gentleness**\n\nHave you ever frozen when someone asked why you believe? 🙏",
+    },
+  },
+  {
     slug: "what-does-selah-mean",
     title: "What Does Selah Mean in the Bible?",
     description:

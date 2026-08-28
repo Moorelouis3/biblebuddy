@@ -2587,3 +2587,7 @@ Next up: Day 27 (run stops here — 2-day-per-run limit reached)
 ## 2026-08-28T20:54:34Z (hourly chapter notes run)
 Chapter: Ezra 9 | Duration: 8 min | Sections: 6 | Cards: 24 | Status: pass
 Next up: Ezra 10
+
+## 2026-08-28T22:22:48Z (blog writer run)
+Article: How to Defend Your Faith in Jesus | Words: ~4,540 | Category: Christian Foundations | Status: pass
+Queue remaining: 41
