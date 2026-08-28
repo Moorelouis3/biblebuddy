@@ -2559,3 +2559,7 @@ Next up: Ezra 6
 ## 2026-08-28T14:58:24Z (hourly chapter notes run)
 Chapter: Ezra 6 | Duration: 12 min | Sections: 5 | Cards: 31 | Status: pass
 Next up: Ezra 7
+
+## 2026-08-28T16:28:44Z (bible year day writer run)
+Day: 23 — Pharaoh Resists God's Word (Exodus 5-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 24

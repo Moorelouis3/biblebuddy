@@ -35,9 +35,10 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 22 (lib/bibleYearDayTwentyTwoScript.ts, Exodus 1-4, "God
-Hears Israel's Cry" — most recent; Day 21 closed out Genesis), each
-verified with `tsc --noEmit`. None of them have been rendered or
+through Day 23 (lib/bibleYearDayTwentyThreeScript.ts, Exodus 5-8,
+"Pharaoh Resists God's Word" — most recent; Day 22 opened Exodus, Day 21
+closed out Genesis), each verified with `tsc --noEmit`. None of them have
+been rendered or
 uploaded from this environment: it has no OPENAI_API_KEY and no Supabase
 service credentials, by design. Run
 `npx tsx scripts/render-pending-bible-year-days.ts` locally (it checks
