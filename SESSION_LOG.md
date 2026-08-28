@@ -2547,3 +2547,7 @@ Next up: Ezra 5
 ## 2026-08-28T12:34:36Z (bible year day writer run)
 Day: 21 — Genesis Ends With Hope (Genesis 49-50) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 22
+
+## 2026-08-28T12:36:21Z (bible year day writer run)
+Day: 22 — God Hears Israel's Cry (Exodus 1-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 23 (run stops here — 2-day-per-run limit reached)
