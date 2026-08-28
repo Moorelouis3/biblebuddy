@@ -27182,6 +27182,59 @@
           "at": "2026-08-28T10:58:54Z"
         }
       ]
+    },
+    {
+      "book": "Ezra",
+      "chapter": 5,
+      "startedAt": "2026-08-28T12:48:59Z",
+      "finishedAt": "2026-08-28T13:00:36Z",
+      "durationMinutes": 11.6,
+      "sections": 5,
+      "cards": 39,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty. Normal forward progress after Ezra 4 (Ezra 5 was still only covered by the legacy EZRA_4_10_PERSONAL_SECTIONS bulk placeholder file, no dedicated wired-in file existed yet). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (17 verses). Ezra 5 covers Haggai and Zechariah restarting the stalled temple work through preaching alone (no new royal decree), Zerubbabel and Jeshua resuming construction, Tatnai's official (not hostile) investigation contrasted with chapter four's adversarial letter, \"the eye of their God was upon the elders\" protecting the work mid investigation, Tatnai's surprisingly fair report to Darius quoting the elders' own defense (the God of heaven and earth, Solomon's original temple, honest admission that their own fathers' sin caused the exile, Nebuchadnezzar and the Chaldean dynasty, Cyrus's original decree and the temple vessels entrusted to Sheshbazzar), and the elders' closing request that Darius search the royal archives at Babylon to confirm Cyrus's decree. Chunked into 5 sections (1-2, 3-5, 6-10, 11-13, 14-17). Density about 2.29 cards/verse. scripts/check_bible_note_style.py found 1 problem on first pass (banned hedge word roughly/fairly), fixed, second run clean, 39 cards, 0 problems. Parser check passed (5 sections, 39 cards, all 17 verses covered, no gaps or overlaps, verbatim). npx tsc --noEmit -p . clean. Next forward-progress target is Ezra 6.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-28T12:48:59Z"
+        },
+        {
+          "name": "target chapter determined: Ezra 5 (normal forward progress, priority queue and style-redo backlog both empty, Ezra 5 still only covered by legacy EZRA_4_10_PERSONAL_SECTIONS bulk placeholder file)",
+          "at": "2026-08-28T12:49:00Z"
+        },
+        {
+          "name": "KJV text fetched: Ezra 5, 17 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-08-28T12:49:13Z"
+        },
+        {
+          "name": "style spec read: docs/bible-study-note-style.md in full",
+          "at": "2026-08-28T12:49:13Z"
+        },
+        {
+          "name": "source file written: lib/ezraFiveSource.ts (39 cards / 5 sections)",
+          "at": "2026-08-28T12:56:32Z"
+        },
+        {
+          "name": "style checker clean: scripts/check_bible_note_style.py, 1 problem found (banned hedge word) and fixed, second run 0 problems",
+          "at": "2026-08-28T12:58:30Z"
+        },
+        {
+          "name": "wired into reader: lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 5, applyPersonalEzraFiveStudySections call added)",
+          "at": "2026-08-28T12:56:56Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('ezra', 5) returned 5 sections / 39 cards verbatim",
+          "at": "2026-08-28T12:58:45Z"
+        },
+        {
+          "name": "tsc clean: npx tsc --noEmit -p . zero errors",
+          "at": "2026-08-28T12:59:00Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json and docs/BIBLE_BUDDY_NOTES_PROGRESS.md updated",
+          "at": "2026-08-28T13:00:36Z"
+        }
+      ]
     }
   ]
 }

@@ -205,6 +205,11 @@
       "timestamp": "2026-08-28T12:34:36Z",
       "type": "environment_anomaly",
       "detail": "Same recurring stale-local-git-ref bug hit again, this time on a Bible in One Year day writer run rather than a chapter notes run. Session started with HEAD detached at a30ba81 (this run's own Day 21 commit, made cleanly on top of the correct current tip 7a09285) but the cached local main and origin/main refs were both stale at fd8fc76 (Add 2 Chronicles 20 study notes), 44 commits behind, giving a false 'ahead by 44 commits' reading on git status. Caught before any push: ran git fetch origin main, which corrected the cached origin/main ref to 7a09285 and confirmed the detached HEAD's parent matched it exactly, so all 44 apparently-unpushed commits were already safely on origin and only the new Day 21 commit was actually ahead. Resolved with git checkout -B main (rebuilding local main from the verified detached HEAD) followed by git push -u origin main, which fast-forwarded cleanly (7a09285..a30ba81 main -> main). No wrong work was done and nothing was overwritten. Logging again per the standing instruction to always log this pattern; now confirmed to affect every scheduled-agent workflow in this repo, not just the chapter notes runs."
+    },
+    {
+      "timestamp": "2026-08-28T13:00:36Z",
+      "type": "chapter_count_checkpoint",
+      "detail": "Ezra 5 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 42 chapters shipped since the last checkpoint at 2026-08-21T16:56:38Z (Proverbs 21-31 completing that priority detour, all of 2 Chronicles 11-36 completing that book, and Ezra 1-5), each in its own separate hourly run, with no usage limit or block hit anywhere in that span. This checkpoint is well overdue against the roughly-every-10-20-chapters guidance since no prior run in this stretch logged an intermediate checkpoint, noted honestly rather than guessed away."
     }
   ]
 }

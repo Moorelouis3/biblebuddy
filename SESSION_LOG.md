@@ -2551,3 +2551,7 @@ Next up: Day 22
 ## 2026-08-28T12:36:21Z (bible year day writer run)
 Day: 22 — God Hears Israel's Cry (Exodus 1-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 23 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-28T13:00:36Z (hourly chapter notes run)
+Chapter: Ezra 5 | Duration: 12 min | Sections: 5 | Cards: 39 | Status: pass
+Next up: Ezra 6
