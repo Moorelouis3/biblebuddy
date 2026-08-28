@@ -210,6 +210,11 @@
       "timestamp": "2026-08-28T13:00:36Z",
       "type": "chapter_count_checkpoint",
       "detail": "Ezra 5 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 42 chapters shipped since the last checkpoint at 2026-08-21T16:56:38Z (Proverbs 21-31 completing that priority detour, all of 2 Chronicles 11-36 completing that book, and Ezra 1-5), each in its own separate hourly run, with no usage limit or block hit anywhere in that span. This checkpoint is well overdue against the roughly-every-10-20-chapters guidance since no prior run in this stretch logged an intermediate checkpoint, noted honestly rather than guessed away."
+    },
+    {
+      "timestamp": "2026-08-28T14:59:39Z",
+      "type": "environment_anomaly",
+      "detail": "Same recurring stale-local-git-ref bug hit again during this run's push (Ezra 6). The chapter commit was made cleanly in detached HEAD state on top of the correct current tip a6daca5 (Add Ezra 5 study notes), but local main and the cached origin/main remote-tracking ref were both stale at fd8fc76 (Add 2 Chronicles 20 study notes), 47 commits behind. No wrong chapter was written and no data was at risk. Resolved with git fetch origin main (corrected origin/main to a6daca5, confirmed via git merge-base that it matched the detached HEAD's parent exactly), then git checkout -B main (rebuilding local main from the verified detached HEAD) followed by git push -u origin main, which fast-forwarded cleanly (a6daca5..d10a828 main -> main). Confirmed with a follow-up git fetch that origin/main now matches. Logging again per the standing instruction to always log this pattern."
     }
   ]
 }
