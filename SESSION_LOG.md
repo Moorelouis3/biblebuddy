@@ -2531,3 +2531,7 @@ Next up: Ezra 3
 ## 2026-08-28T08:25:25Z (bible year day writer run)
 Day: 19 — Joseph Reveals Himself (Genesis 45-46) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 20
+
+## 2026-08-28T08:27:31Z (bible year day writer run)
+Day: 20 — Jacob Blesses Joseph's Sons (Genesis 47-48) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 21 (run stops here — 2-day-per-run limit reached)
