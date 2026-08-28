@@ -2583,3 +2583,7 @@ Next up: Day 26
 ## 2026-08-28T19:30:00Z (bible year day writer run)
 Day: 26 — The Ten Commandments (Exodus 17-20) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 27 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-28T20:54:34Z (hourly chapter notes run)
+Chapter: Ezra 9 | Duration: 8 min | Sections: 6 | Cards: 24 | Status: pass
+Next up: Ezra 10
