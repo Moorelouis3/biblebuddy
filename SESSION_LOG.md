@@ -2515,3 +2515,7 @@ Next up: Ezra 1
 ## 2026-08-28T04:25:23Z (bible year day writer run)
 Day: 17 — Joseph Rises to Power (Genesis 41-42) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 18
+
+## 2026-08-28T04:27:03Z (bible year day writer run)
+Day: 18 — Judah Defends Benjamin (Genesis 43-44) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 19 (run stops here — 2-day-per-run limit reached)
