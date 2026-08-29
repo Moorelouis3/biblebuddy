@@ -2599,3 +2599,7 @@ Next up: Nehemiah 1
 ## 2026-08-29T00:25:19Z (bible year day writer run)
 Day: 27 — The Covenant Law (Exodus 21-24) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 28
+
+## 2026-08-29T00:45:00Z (bible year day writer run)
+Day: 28 — The Tabernacle (Exodus 25-28) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 29 (run stops here — 2-day-per-run limit reached)

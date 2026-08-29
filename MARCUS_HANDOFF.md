@@ -35,12 +35,12 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 27 (lib/bibleYearDayTwentySevenScript.ts, Exodus 21-24,
-"The Covenant Law" — most recent; Day 26 covered the Ten Commandments,
-Day 25 covered the sea crossing through the manna, Day 24 covered
-Passover and the final plagues, Day 23 covered Pharaoh's first refusal
-and the first three plagues, Day 22 opened Exodus, Day 21 closed out
-Genesis),
+through Day 28 (lib/bibleYearDayTwentyEightScript.ts, Exodus 25-28,
+"The Tabernacle" — most recent; Day 27 covered the covenant law and its
+sealing in blood, Day 26 covered the Ten Commandments, Day 25 covered
+the sea crossing through the manna, Day 24 covered Passover and the
+final plagues, Day 23 covered Pharaoh's first refusal and the first
+three plagues, Day 22 opened Exodus, Day 21 closed out Genesis),
 each verified with `tsc --noEmit`. None of them have been rendered or
 uploaded from this environment: it has no OPENAI_API_KEY and no Supabase
 service credentials, by design. Run
