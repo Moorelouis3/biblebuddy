@@ -35,9 +35,10 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 31 (lib/bibleYearDayThirtyOneScript.ts, Exodus 37-40, "The
-Tabernacle Is Finished" — most recent, closes out Exodus; Day 30 covered
-Exodus 33-36, "God's Presence Is Enough"; Day 29 covered Aaron's
+through Day 32 (lib/bibleYearDayThirtyTwoScript.ts, Leviticus 1-4,
+"Offerings and Atonement" — most recent, opens Leviticus; Day 31 covered
+Exodus 37-40, "The Tabernacle Is Finished," closing out Exodus; Day 30
+covered Exodus 33-36, "God's Presence Is Enough"; Day 29 covered Aaron's
 ordination and the golden calf, Day 28 covered the tabernacle
 instructions, Day 27 covered the covenant law and its sealing in blood,
 Day 26 covered the Ten Commandments, Day 25 covered the sea crossing
