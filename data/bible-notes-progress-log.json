@@ -27699,6 +27699,59 @@
           "at": "2026-08-29T04:56:01Z"
         }
       ]
+    },
+    {
+      "book": "Nehemiah",
+      "chapter": 4,
+      "startedAt": "2026-08-29T06:47:37Z",
+      "finishedAt": "2026-08-29T06:53:54Z",
+      "durationMinutes": 6.3,
+      "sections": 6,
+      "cards": 20,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-style-redo-remaining.json) and style-redo backlog both empty; normal forward progress after Nehemiah 3. Chapter 4 covers Sanballat and Tobiah's mockery, the conspiracy to attack, Nehemiah's prayer and armed watch, and the half-build half-guard system. Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv (23 verses). Style checker clean after one fix (banned hedge word 'fairly'), tsc clean, parser check exact (6 sections, 20 cards, no throw). Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies nehemiah range extended 1-3 to 1-4, applyPersonalNehemiahFourStudySections() added and called after applyPersonalNehemiahThreeStudySections(), replaceStudySectionsForBookRange('nehemiah', 4, 4, NEHEMIAH_FOUR_PERSONAL_SECTIONS) call added. Next forward-progress target is Nehemiah 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-29T06:47:37Z"
+        },
+        {
+          "name": "target chapter determined: Nehemiah 4 (new chapter, forward progress)",
+          "at": "2026-08-29T06:47:37Z"
+        },
+        {
+          "name": "KJV text fetched (Nehemiah 4, 23 verses)",
+          "at": "2026-08-29T06:47:45Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-08-29T06:47:50Z"
+        },
+        {
+          "name": "source file written (lib/nehemiahFourSource.ts, 6 sections, 20 phrase cards)",
+          "at": "2026-08-29T06:51:29Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-29T06:51:29Z"
+        },
+        {
+          "name": "wired into reader (import, apply function, call site, preserveExactPhraseBodies range extended to nehemiah 4)",
+          "at": "2026-08-29T06:52:04Z"
+        },
+        {
+          "name": "parser check passed (6 sections, no throw)",
+          "at": "2026-08-29T06:52:04Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-29T06:53:41Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-29T06:53:54Z"
+        }
+      ]
     }
   ]
 }

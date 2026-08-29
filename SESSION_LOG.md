@@ -2623,3 +2623,7 @@ Next up: Day 31 (run stops here — 2-day-per-run limit reached)
 ## 2026-08-29T04:55:20Z (hourly chapter notes run)
 Chapter: Nehemiah 3 | Duration: 8 min | Sections: 7 | Cards: 33 | Status: pass
 Next up: Nehemiah 4
+
+## 2026-08-29T06:54:17Z (hourly chapter notes run)
+Chapter: Nehemiah 4 | Duration: 6 min | Sections: 6 | Cards: 20 | Status: pass
+Next up: Nehemiah 5
