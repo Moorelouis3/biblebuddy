@@ -35,12 +35,20 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 37 (lib/bibleYearDayThirtySevenScript.ts, Leviticus 21-24,
-"Priests, Feasts, and Sacred Order" — most recent, priestly holiness and
-the blemish rules for who may serve at the altar, the sacred calendar
-(Sabbath, Passover, Firstfruits, Weeks, Trumpets, the Day of Atonement,
-Tabernacles), the lamp and showbread, and the blasphemer stoned with the
-"eye for eye" ceiling on punishment; Day 36 covered Leviticus 17-20,
+through Day 38 (lib/bibleYearDayThirtyEightScript.ts, Leviticus 25-27;
+Numbers 1, "Jubilee, Covenant, and Israel Counted" — most recent, the
+sabbath year and the Jubilee reset, blessing and curse, vows and
+valuations, then Numbers opens with the tribe-by-tribe census and the
+Levites set apart from it. Note: this day's four assigned chapters run
+unusually long in raw text (~26k characters of scripture alone, mostly
+the census numbers in Numbers 1), so expect its runtime to land well
+above the other 4-chapter days — that's the fixed reading, not a
+mistake, and scripture was not trimmed to compensate; Day 37 covered
+Leviticus 21-24, "Priests, Feasts, and Sacred Order," priestly holiness
+and the blemish rules for who may serve at the altar, the sacred
+calendar (Sabbath, Passover, Firstfruits, Weeks, Trumpets, the Day of
+Atonement, Tabernacles), the lamp and showbread, and the blasphemer
+stoned with the "eye for eye" ceiling on punishment; Day 36 covered Leviticus 17-20,
 "Holy Living Before a Holy God," the holiness code: where blood belongs,
 sexual and family boundaries, love your neighbor as yourself, honest
 weights, and the penalties chapter enforcing it all; Day 35 covered
