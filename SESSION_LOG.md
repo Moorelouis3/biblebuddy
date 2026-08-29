@@ -2659,3 +2659,7 @@ Next up: Nehemiah 8
 ## 2026-08-29T15:00:00Z (hourly chapter notes run)
 Chapter: Nehemiah 8 | Duration: 13 min | Sections: 6 | Cards: 38 | Status: pass
 Next up: Nehemiah 9
+
+## 2026-08-29T16:25:40Z (bible year day writer run)
+Day: 35 — The Day of Atonement (Leviticus 13-16) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 36
