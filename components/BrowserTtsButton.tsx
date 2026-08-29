@@ -66,21 +66,6 @@ export default function BrowserTtsButton({
   const [paused, setPaused] = useState(false);
   const [loading, setLoading] = useState(false);
   const [audioError, setAudioError] = useState(false);
-  const [playbackRate, setPlaybackRate] = useState(1);
-  const [speedMenuOpen, setSpeedMenuOpen] = useState(false);
-  const speedMenuRef = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    if (!speedMenuOpen) return;
-    function handlePointerDown(event: MouseEvent | TouchEvent) {
-      if (!speedMenuRef.current?.contains(event.target as Node)) setSpeedMenuOpen(false);
-    }
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("touchstart", handlePointerDown);
-    return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("touchstart", handlePointerDown);
-    };
-  }, [speedMenuOpen]);
   const globalAudio = useGlobalAudioPlayer();
   const chunks = useMemo(() => chunkSpeechText(text || ""), [text]);
   const chunksRef = useRef<string[]>([]);
@@ -101,7 +86,6 @@ export default function BrowserTtsButton({
   const audioIsSpeaking = isGlobalTrack ? globalAudio?.playing === true : speaking;
   const audioIsPaused = isGlobalTrack ? globalAudio?.paused === true : paused;
   const audioHasError = isGlobalTrack ? globalAudio?.error === true : audioError;
-  const activePlaybackRate = isGlobalTrack ? globalAudio?.playbackRate || 1 : playbackRate;
 
   useEffect(() => {
     setSupported(typeof window !== "undefined" && "speechSynthesis" in window && "SpeechSynthesisUtterance" in window);
@@ -250,18 +234,6 @@ export default function BrowserTtsButton({
     notifyAudioProgress(audioRef.current, speaking && !paused, { force: true });
   }
 
-  function changePlaybackRate(rate: number) {
-    const safeRate = [1, 1.25, 1.5, 2].includes(rate) ? rate : 1;
-    setPlaybackRate(safeRate);
-    if (isGlobalTrack && globalAudio) {
-      globalAudio.setPlaybackRate(safeRate);
-      return;
-    }
-    if (audioRef.current) {
-      audioRef.current.playbackRate = safeRate;
-    }
-  }
-
   function speakChunk(startIndex = 0) {
     if (typeof window === "undefined" || !("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) return;
     const nextText = chunksRef.current[startIndex];
@@ -358,7 +330,6 @@ export default function BrowserTtsButton({
     try {
       const audio = new Audio(audioSrc);
       audio.preload = "auto";
-      audio.playbackRate = playbackRate;
       audioRef.current = audio;
       audio.onloadedmetadata = () => {
         applySavedAudioProgress(audio);
@@ -412,7 +383,6 @@ export default function BrowserTtsButton({
   if (!canUseAudioSrc && (!supported || chunks.length === 0)) return null;
 
   const showAudioControls = canUseAudioSrc && audioIsSpeaking;
-  const speedOptions = [1, 1.25, 1.5, 2];
 
   if (variant === "transport") {
     const playing = audioIsSpeaking && !audioIsPaused;
@@ -512,45 +482,6 @@ export default function BrowserTtsButton({
             {skipIcon("forward")}
           </button>
 
-          {canUseAudioSrc ? (
-            <div className="relative shrink-0" ref={speedMenuRef}>
-              <button
-                type="button"
-                onClick={() => setSpeedMenuOpen((open) => !open)}
-                aria-haspopup="listbox"
-                aria-expanded={speedMenuOpen}
-                className="flex h-12 min-w-[64px] items-center justify-center gap-1 rounded-full border border-slate-200 bg-white px-3 text-sm font-black text-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.06)] transition hover:bg-slate-50 sm:h-[52px]"
-              >
-                {activePlaybackRate}x
-                <span className="text-[10px] text-slate-400" aria-hidden="true">▼</span>
-              </button>
-              {speedMenuOpen ? (
-                <div
-                  role="listbox"
-                  aria-label="Playback speed"
-                  className="absolute right-0 top-full z-40 mt-2 w-24 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.18)]"
-                >
-                  {speedOptions.map((rate) => (
-                    <button
-                      key={rate}
-                      type="button"
-                      role="option"
-                      aria-selected={activePlaybackRate === rate}
-                      onClick={() => {
-                        changePlaybackRate(rate);
-                        setSpeedMenuOpen(false);
-                      }}
-                      className={`flex w-full items-center justify-center px-3 py-2.5 text-sm font-black transition ${
-                        activePlaybackRate === rate ? "bg-[#0056fd] text-white" : "text-slate-700 hover:bg-slate-50"
-                      }`}
-                    >
-                      {rate}x
-                    </button>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          ) : null}
         </div>
 
         {audioHasError ? (
@@ -607,23 +538,6 @@ export default function BrowserTtsButton({
             >
               +10s
             </button>
-            <div className="ml-1 flex flex-wrap items-center gap-1" aria-label="Playback speed">
-              {speedOptions.map((rate) => (
-                <button
-                  key={rate}
-                  type="button"
-                  onClick={() => changePlaybackRate(rate)}
-                  className={`min-h-9 rounded-lg border px-2.5 text-xs font-black transition hover:brightness-95 ${
-                    activePlaybackRate === rate
-                      ? "border-[var(--bb-button,#2563eb)] bg-[var(--bb-button,#2563eb)] text-[var(--bb-button-text,#ffffff)]"
-                      : "border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#f3f4f6)] text-[var(--bb-text-primary,#1f2937)]"
-                  }`}
-                  aria-pressed={activePlaybackRate === rate}
-                >
-                  {rate}x
-                </button>
-              ))}
-            </div>
           </div>
         ) : null}
         {audioHasError ? <p className="px-1 text-xs font-bold text-red-600">Audio unavailable. Try again.</p> : null}
