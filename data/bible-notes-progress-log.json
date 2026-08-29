@@ -27642,6 +27642,59 @@
           "at": "2026-08-29T02:57:30Z"
         }
       ]
+    },
+    {
+      "book": "Nehemiah",
+      "chapter": 3,
+      "startedAt": "2026-08-29T04:46:58Z",
+      "finishedAt": "2026-08-29T04:55:08Z",
+      "durationMinutes": 8.2,
+      "sections": 7,
+      "cards": 33,
+      "verses": 32,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both empty; normal forward progress after Nehemiah 2. Chapter 3 is the wall-builders roster (genealogy/list type per style spec section 12), kept near 1 card/verse instead of padded to 2x. Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv (32 verses). Style checker clean first pass, tsc clean, parser check exact (7 sections, 33 cards, 32 verses, verbatim). Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies nehemiah range extended 1-2 to 1-3, applyPersonalNehemiahThreeStudySections() added and called after applyPersonalNehemiahTwoStudySections(), replaceStudySectionsForBookRange('nehemiah', 3, 3, NEHEMIAH_THREE_PERSONAL_SECTIONS) call added. Next forward-progress target is Nehemiah 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-29T04:46:58Z"
+        },
+        {
+          "name": "target chapter determined: Nehemiah 3 (new chapter, forward progress; priority queue and redo queue both empty)",
+          "at": "2026-08-29T04:47:46Z"
+        },
+        {
+          "name": "KJV text fetched: Nehemiah 3, 32 verses, from aruljohn/Bible-kjv raw mirror",
+          "at": "2026-08-29T04:50:20Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, full)",
+          "at": "2026-08-29T04:51:11Z"
+        },
+        {
+          "name": "source file written: lib/nehemiahThreeSource.ts (7 sections, 33 cards, drafted per genealogy/list chapter guidance in style spec section 12)",
+          "at": "2026-08-29T04:52:47Z"
+        },
+        {
+          "name": "style checker clean (33 cards, 0 problems, first pass)",
+          "at": "2026-08-29T04:52:52Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range 1-3, apply function, call site)",
+          "at": "2026-08-29T04:54:00Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 33 cards, verbatim)",
+          "at": "2026-08-29T04:54:20Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p ., exit 0, zero errors)",
+          "at": "2026-08-29T04:54:44Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-29T04:55:08Z"
+        }
+      ]
     }
   ]
 }
