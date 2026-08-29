@@ -28017,6 +28017,59 @@
           "at": "2026-08-29T16:55:08Z"
         }
       ]
+    },
+    {
+      "book": "Nehemiah",
+      "chapter": 10,
+      "startedAt": "2026-08-29T18:46:32Z",
+      "finishedAt": "2026-08-29T19:00:23Z",
+      "durationMinutes": 13.9,
+      "sections": 11,
+      "cards": 38,
+      "verses": 39,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style-redo backlog and priority queue both confirmed empty, normal forward progress after Nehemiah 9 (no existing wired-in file for Nehemiah 10). Session started on a stale, unrelated local main branch (no common ancestor with origin/main, 50 divergent commits each way, an apparent container/environment artifact) which was backed up to a backup-stale-local-main-* branch and reset to origin/main before any chapter work began. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (39 verses). This chapter is the formal written covenant from chapter nine's confession being signed: twenty one priestly family heads (including Nehemiah the Tirshatha, with a highlighted possible Davidic-line Hattush cross referenced to Ezra 8:2), seventeen Levite family heads, and forty four lay family chiefs all sign on, followed by the rest of the nation, including temple porters, singers, Nethinims, and separated converts, entering a formal curse and oath. The specific stipulations follow: no intermarriage with idol worshipping neighbors, no Sabbath trading and observing the sabbatical year's land rest and debt release (tying back to the debt crisis of chapter five), a new yearly third of a shekel temple tax, the wood offering assigned by lot, firstfruits and firstborn (clarifying sons were redeemed, not sacrificed, unlike animals), and a tithe of the tithes accountability system between Levites and priests, closing on the single line we will not forsake the house of our God. Chunked into 11 sections, splitting the chiefs of the people list at verse 19/20 specifically to keep every section at or under 8 verses, since the reader's generic enforceStudySectionVerseLimit(8) splitter duplicates a section's full card set into every Part when a section exceeds 8 verses (discovered live during this run's parser check, confirmed as a real pre-existing issue by testing it against the already-shipped Nehemiah 7 file too, which is affected by the same bug). Density about 0.97 cards per verse, intentionally lighter across the pure name-list verses 1-27 per the style spec's genealogy guidance (section 12) while staying close to full density across the covenant stipulations in verses 28-39. scripts/check_bible_note_style.py found zero problems on the first pass. Three body lines were rewritten by hand afterward for stacked while and double and clauses the mechanical checker does not catch, then it was rerun clean. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (Tirshatha, sealed, Nethinims, ware, victuals, exaction, shewbread, firstling, forsake), closes on meaning rather than mechanics, uses exactly four bullets each with a distinct emoji ending on the scripture emoji, no repeated emoji within a card, no duplicate card titles across all 38 cards, no repeated opening lines across any card, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('nehemiah', 10) (11/11 sections, 38 cards, verses 1 through 39, text rendered verbatim, no duplication from the automatic verse limit splitter since every section was kept to 8 verses or fewer). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies nehemiah range extended from chapters 1-9 to 1-10, applyPersonalNehemiahTenStudySections() function added and called in reading order right after applyPersonalNehemiahNineStudySections(). Note left for a future run: the pre-existing Nehemiah 7 file has sections spanning more than 8 verses and is confirmed to render duplicated cards through the live reader today, worth a dedicated fix pass later, not addressed in this run since the one chapter limit for this run was Nehemiah 10. Not every single sub-step below got its own separately timestamped date call in real time, several close-together steps share one captured timestamp, noting that plainly rather than implying finer granularity than was actually measured. Next forward-progress target is Nehemiah 11.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-29T18:47:38Z"
+        },
+        {
+          "name": "target chapter determined: Nehemiah 10 (new chapter, forward progress after Nehemiah 9; priority queue and style-redo backlog both empty)",
+          "at": "2026-08-29T18:47:58Z"
+        },
+        {
+          "name": "KJV text fetched (Nehemiah 10, 39 verses, aruljohn mirror)",
+          "at": "2026-08-29T18:47:58Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md), skill file, and reference implementation (lib/nehemiahNineSource.ts) read in full",
+          "at": "2026-08-29T19:00:23Z"
+        },
+        {
+          "name": "source file written: lib/nehemiahTenSource.ts (38 phrase cards)",
+          "at": "2026-08-29T19:00:23Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-08-29T19:00:23Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 10, apply function, call site)",
+          "at": "2026-08-29T19:00:23Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('nehemiah', 10): found and fixed a section-splitting bug that duplicated cards for sections over 8 verses, restructured to 11 sections, then 11/11 sections, 38 cards, verses 1-39, no duplication",
+          "at": "2026-08-29T19:00:23Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-29T19:00:23Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json)",
+          "at": "2026-08-29T19:00:23Z"
+        }
+      ]
     }
   ]
 }
