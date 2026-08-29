@@ -2687,3 +2687,7 @@ Next up: Day 39 (run stops here — 2-day-per-run limit reached)
 ## 2026-08-29T20:58:25Z (hourly chapter notes run)
 Chapter: Nehemiah 11 | Duration: 10 min | Sections: 10 | Cards: 23 | Status: pass
 Next up: Nehemiah 12
+
+## 2026-08-29T23:00:10Z (hourly chapter notes run)
+Chapter: Nehemiah 12 | Duration: 14 min | Sections: 10 | Cards: 48 | Status: pass
+Next up: Nehemiah 13
