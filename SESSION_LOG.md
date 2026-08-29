@@ -2611,3 +2611,7 @@ Next up: Nehemiah 2
 ## 2026-08-29T02:57:30Z (hourly chapter notes run)
 Chapter: Nehemiah 2 | Duration: 10 min | Sections: 8 | Cards: 43 | Status: pass
 Next up: Nehemiah 3
+
+## 2026-08-29T04:25:58Z (bible year day writer run)
+Day: 29 — The Golden Calf (Exodus 29-32) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 30
