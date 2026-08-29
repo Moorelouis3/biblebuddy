@@ -2675,3 +2675,7 @@ Next up: Nehemiah 10
 ## 2026-08-29T19:00:23Z (hourly chapter notes run)
 Chapter: Nehemiah 10 | Duration: 14 min | Sections: 11 | Cards: 38 | Status: pass
 Next up: Nehemiah 11
+
+## 2026-08-29T20:27:02Z (bible year day writer run)
+Day: 37 — Priests, Feasts, and Sacred Order (Leviticus 21-24) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 38

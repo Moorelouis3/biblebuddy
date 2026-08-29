@@ -35,13 +35,18 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 36 (lib/bibleYearDayThirtySixScript.ts, Leviticus 17-20,
-"Holy Living Before a Holy God" — most recent, the holiness code: where
-blood belongs, sexual and family boundaries, love your neighbor as
-yourself, honest weights, and the penalties chapter enforcing it all;
-Day 35 covered Leviticus 13-16, "The Day of Atonement," leprosy
-diagnosis and cleansing, house mildew, bodily discharges, and the two
-goats; Day 34 covered Leviticus 9-12, "Worship, Holiness, and Clean Living,"
+through Day 37 (lib/bibleYearDayThirtySevenScript.ts, Leviticus 21-24,
+"Priests, Feasts, and Sacred Order" — most recent, priestly holiness and
+the blemish rules for who may serve at the altar, the sacred calendar
+(Sabbath, Passover, Firstfruits, Weeks, Trumpets, the Day of Atonement,
+Tabernacles), the lamp and showbread, and the blasphemer stoned with the
+"eye for eye" ceiling on punishment; Day 36 covered Leviticus 17-20,
+"Holy Living Before a Holy God," the holiness code: where blood belongs,
+sexual and family boundaries, love your neighbor as yourself, honest
+weights, and the penalties chapter enforcing it all; Day 35 covered
+Leviticus 13-16, "The Day of Atonement," leprosy diagnosis and cleansing,
+house mildew, bodily discharges, and the two goats; Day 34 covered
+Leviticus 9-12, "Worship, Holiness, and Clean Living,"
 Aaron's first day serving, Nadab and Abihu's death, clean/unclean laws,
 and childbirth purification; Day 33 covered Leviticus 5-8, "Guilt,
 Consecration, and Priests," the sliding-scale guilt offering and
