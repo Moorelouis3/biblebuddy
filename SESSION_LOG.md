@@ -2651,3 +2651,7 @@ Next up: Day 34
 ## 2026-08-29T12:28:36Z (bible year day writer run)
 Day: 34 — Worship, Holiness, and Clean Living (Leviticus 9-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 35 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-29T12:55:31Z (hourly chapter notes run)
+Chapter: Nehemiah 7 | Duration: 9 min | Sections: 13 | Cards: 19 | Status: pass
+Next up: Nehemiah 8
