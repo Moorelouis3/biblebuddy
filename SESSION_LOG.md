@@ -2615,3 +2615,7 @@ Next up: Nehemiah 3
 ## 2026-08-29T04:25:58Z (bible year day writer run)
 Day: 29 — The Golden Calf (Exodus 29-32) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 30
+
+## 2026-08-29T04:28:50Z (bible year day writer run)
+Day: 30 — God's Presence Is Enough (Exodus 33-36) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 31 (run stops here — 2-day-per-run limit reached)
