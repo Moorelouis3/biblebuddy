@@ -7,6 +7,8 @@ export const BIBLE_CHAPTER_TTS_BUCKET = "tts-audio";
 export const BIBLE_CHAPTER_TTS_CACHE_VERSION = "v2";
 export const BIBLE_CHAPTER_TTS_VOICE = "onyx";
 export const BIBLE_CHAPTER_TTS_KIND = "verses";
+export const BIBLE_CHAPTER_MUSIC_SUFFIX = "music";
+const BIBLE_CHAPTER_SIGNED_URL_TTL_SECONDS = 60 * 60 * 6;
 
 const MAX_TTS_CHUNK_LENGTH = 3400;
 type SupabaseAdmin = any;
@@ -212,6 +214,59 @@ export async function uploadCachedBibleChapterAudio(supabase: SupabaseAdmin, pat
     contentType: "audio/mpeg",
     upsert: true,
   });
+}
+
+/**
+ * The music-mixed sibling of a plain narration file. Built offline by
+ * scripts/mix-bible-chapter-music.ts, never by the app - a missing music file
+ * must fall back to the plain narration, never trigger a paid regeneration.
+ */
+export function getBibleChapterTtsMusicPath(basePath: string) {
+  return basePath.replace(/\.mp3$/, `-${BIBLE_CHAPTER_MUSIC_SUFFIX}.mp3`);
+}
+
+/**
+ * Resolve a playable URL for a chapter, preferring the music mix.
+ *
+ * Returns a signed Supabase URL whenever the audio already exists so the
+ * browser streams straight from storage instead of pulling every megabyte
+ * through a serverless function on each play. Only a genuine cache miss
+ * falls back to generating (and returning) bytes.
+ */
+export async function resolveBibleChapterTtsAudio(
+  book: string,
+  chapter: number,
+  translation: BibleChapterTtsTranslation,
+  supabase: SupabaseAdmin,
+) {
+  const text = await getBibleChapterSpeechText(book, chapter, translation, supabase);
+  const path = getBibleChapterTtsPath(book, chapter, translation, text);
+  const musicPath = getBibleChapterTtsMusicPath(path);
+
+  for (const [candidate, source] of [
+    [musicPath, 'cache-music'],
+    [path, 'cache'],
+  ] as const) {
+    const signed = await supabase.storage
+      .from(BIBLE_CHAPTER_TTS_BUCKET)
+      .createSignedUrl(candidate, BIBLE_CHAPTER_SIGNED_URL_TTL_SECONDS);
+    if (!signed.error && signed.data?.signedUrl) {
+      return { url: signed.data.signedUrl as string, path: candidate, source };
+    }
+  }
+
+  const audio = await generateOpenAiSpeech(text);
+  await uploadCachedBibleChapterAudio(supabase, path, audio);
+
+  const signed = await supabase.storage
+    .from(BIBLE_CHAPTER_TTS_BUCKET)
+    .createSignedUrl(path, BIBLE_CHAPTER_SIGNED_URL_TTL_SECONDS);
+  if (!signed.error && signed.data?.signedUrl) {
+    return { url: signed.data.signedUrl as string, path, source: 'generated' as const };
+  }
+
+  // Signing failed but the audio is good - hand back the bytes this once.
+  return { audio, path, source: 'generated' as const };
 }
 
 export async function ensureBibleChapterTtsAudio(
