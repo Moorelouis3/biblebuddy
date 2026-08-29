@@ -52,7 +52,12 @@ const SPEAKER_PATTERNS: Array<{ test: RegExp; role: BibleYearAudioRole }> = [
   { test: /\bhagar\b/i, role: "hagar" },
   { test: /\bpharaoh\b/i, role: "pharaoh" },
   // Kept last: "the man" is generic and would otherwise swallow named speakers.
-  { test: /\b(?:the man|adam)\b/i, role: "adam" },
+  // Name only. "the man" used to match here, which was right for Genesis 3 but
+  // handed Adam's voice to every anonymous man in Scripture - the one who
+  // wrestles Jacob in Genesis 32, the stranger who directs Joseph in Genesis 37.
+  // Adam speaks in a single chapter while "the man" recurs throughout, so losing
+  // his lines to the narrator costs far less than miscasting everyone else.
+  { test: /\badam\b/i, role: "adam" },
 ];
 
 
@@ -65,6 +70,9 @@ const SPEAKER_PATTERNS: Array<{ test: RegExp; role: BibleYearAudioRole }> = [
 const NOT_A_PERSON = new Set([
   // Sentence starters and function words. Every verse begins with a capital,
   // so without these "Then he said" yields a character called Then.
+  // Threshingfloor of Atad (Genesis 50:11) - a place, and the Canaanites are
+  // the ones speaking there.
+  "atad",
   "and", "but", "so", "then", "now", "when", "after", "before", "behold",
   "therefore", "moreover", "again", "also", "thus", "yet", "for", "if", "as",
   "at", "on", "in", "it", "he", "she", "they", "them", "their", "there",
@@ -121,8 +129,11 @@ function roleFromName(subject: string): BibleYearAudioRole | null {
   const names = subject.match(/\b[A-Z][a-z\u2019'\-]{2,}\b/g);
   if (!names) return null;
 
-  // The subject sits closest to the speech verb, which is at the end.
-  for (let i = names.length - 1; i >= 0; i -= 1) {
+  // Earliest name wins, matching the curated path above. Reading backwards from
+  // the verb looks right, but the name nearest the verb is usually the object:
+  // "When Joseph saw Benjamin with them, he said" is Joseph speaking. Addressees
+  // are already stripped by the caller, so the leading name is the subject.
+  for (let i = 0; i < names.length; i += 1) {
     const id = names[i].toLowerCase().replace(/[\u2019']/g, "");
     if (NOT_A_PERSON.has(id)) continue;
     // Sentence-initial participles look exactly like names once capitalised:
@@ -212,7 +223,19 @@ function roleFromAttribution(before: string): BibleYearAudioRole | null {
 
   // Drop "to <addressee>" phrases first, so "To the woman he said" cannot read
   // the woman as the speaker, and "Yahweh said to Cain" still resolves to God.
-  const head = clause[1].replace(/\bto\s+(?:the\s+)?(?:[\w'’]+\s+){0,2}[\w'’]+/gi, " ");
+  const head = clause[1]
+    .replace(/\bto\s+(?:the\s+)?(?:[\w'’]+\s+){0,2}[\w'’]+/gi, " ")
+    // A possessive names whose someone is, never who is talking. "Israel saw
+    // Joseph's sons, and said" is Israel speaking, and "When Joseph's brothers
+    // saw" is the brothers - both used to come out as Joseph.
+    .replace(/\b[\w]+['’]s\b/gi, " ")
+    // Naming formulas put the child's or place's name right before the verb:
+    // "he called his name Gershom, for he said" is Moses speaking, not Gershom,
+    // and "called the firstborn Manasseh, for God has made me forget" is Joseph.
+    .replace(/\b(?:call(?:ed|s|ing)?|nam(?:ed|es|ing))\s+(?:the\s+name\s+of\s+)?(?:him|her|it|them|his\s+name|her\s+name|the\s+name|the\s+place|the\s+firstborn|the\s+second)?\s*[\w'’]+/gi, " ")
+    // The same formula written the other way round: "the name of the other was
+    // Eliezer, for he said" is Moses explaining the name, not Eliezer speaking.
+    .replace(/\bthe\s+name\s+of\s+(?:the\s+)?[\w'’]+\s+was\s+[\w'’]+/gi, " ");
 
   // When the clause's own subject is a pronoun, use its gender to filter
   // candidates. "Adam knew his wife... She... named him Seth, saying" would
