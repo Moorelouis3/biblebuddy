@@ -76,7 +76,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/how-to-defend-your-faith-in-jesus",
     publishedAt: "2026-08-29",
     readTime: "23 min read",
-    image: "/anxietyarticlebanner.jpg",
+    image: "/defend-your-faith-banner.png",
     groupPost: {
       title: "How to Defend Your Faith in Jesus 📖",
       content:
