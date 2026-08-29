@@ -445,6 +445,7 @@ import { NEHEMIAH_SEVEN_PERSONAL_SECTIONS } from "./nehemiahSevenSource";
 import { NEHEMIAH_EIGHT_PERSONAL_SECTIONS } from "./nehemiahEightSource";
 import { NEHEMIAH_NINE_PERSONAL_SECTIONS } from "./nehemiahNineSource";
 import { NEHEMIAH_TEN_PERSONAL_SECTIONS } from "./nehemiahTenSource";
+import { NEHEMIAH_ELEVEN_PERSONAL_SECTIONS } from "./nehemiahElevenSource";
 import { FIRST_SAMUEL_11_30_PERSONAL_SECTIONS } from "./firstSamuelElevenToThirtyPersonalNotes";
 import { FIRST_KINGS_1_15_PERSONAL_SECTIONS, SECOND_SAMUEL_1_24_PERSONAL_SECTIONS } from "./royalHistoryPersonalNotes";
 import { FIRST_CHRONICLES_1_8_PERSONAL_SECTIONS, FIRST_KINGS_16_22_PERSONAL_SECTIONS, SECOND_KINGS_1_25_PERSONAL_SECTIONS } from "./kingdomDeclinePersonalNotes";
@@ -846,7 +847,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 chronicles" && section.chapter >= 1 && section.chapter <= 36) ||
     (normalizeBook(book) === "proverbs" && section.chapter >= 1 && section.chapter <= 31) ||
     (normalizeBook(book) === "ezra" && section.chapter >= 1 && section.chapter <= 10) ||
-    (normalizeBook(book) === "nehemiah" && section.chapter >= 1 && section.chapter <= 10);
+    (normalizeBook(book) === "nehemiah" && section.chapter >= 1 && section.chapter <= 11);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1592,6 +1593,10 @@ function applyPersonalNehemiahNineStudySections() {
 
 function applyPersonalNehemiahTenStudySections() {
   replaceStudySectionsForBookRange("nehemiah", 10, 10, NEHEMIAH_TEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalNehemiahElevenStudySections() {
+  replaceStudySectionsForBookRange("nehemiah", 11, 11, NEHEMIAH_ELEVEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalNehemiahOneThroughThirteenStudySections() {
@@ -9065,6 +9070,7 @@ applyPersonalNehemiahSevenStudySections();
 applyPersonalNehemiahEightStudySections();
 applyPersonalNehemiahNineStudySections();
 applyPersonalNehemiahTenStudySections();
+applyPersonalNehemiahElevenStudySections();
 applyPersonalEstherOneThroughTenStudySections();
 applyPersonalJobOneThroughTenStudySections();
 applyPersonalJobElevenThroughThirtyStudySections();

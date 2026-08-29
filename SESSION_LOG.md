@@ -2683,3 +2683,7 @@ Next up: Day 38
 ## 2026-08-29T20:29:45Z (bible year day writer run)
 Day: 38 — Jubilee, Covenant, and Israel Counted (Leviticus 25-27; Numbers 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 39 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-29T20:58:25Z (hourly chapter notes run)
+Chapter: Nehemiah 11 | Duration: 10 min | Sections: 10 | Cards: 23 | Status: pass
+Next up: Nehemiah 12
