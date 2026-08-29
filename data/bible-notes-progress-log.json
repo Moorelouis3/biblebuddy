@@ -27752,6 +27752,59 @@
           "at": "2026-08-29T06:53:54Z"
         }
       ]
+    },
+    {
+      "book": "Nehemiah",
+      "chapter": 5,
+      "startedAt": "2026-08-29T08:46:53Z",
+      "finishedAt": "2026-08-29T08:54:15Z",
+      "durationMinutes": 7.4,
+      "sections": 5,
+      "cards": 19,
+      "verses": 19,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both empty; normal forward progress after Nehemiah 4. Chapter 5 covers the internal economic crisis during the wall project: the people's cry against their own wealthier brethren over food debt, mortgaged land, and the king's tribute, families selling their own children into bondage, Nehemiah's anger and public rebuke of the nobles for usury, his own admission that he had also lent money, the demand to restore lands and interest and the oath sworn before the priests, the shaking-out-the-lap gesture and the assembly's Amen, Nehemiah's twelve years refusing the governor's food allowance unlike his predecessors, his refusal to buy land while working the wall himself, the costly daily open table feeding about 150 people, and the closing personal prayer asking God to remember him for good. Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv (19 verses). Style checker clean after one fix (two bullets one word over the 8-word limit), tsc clean, parser check exact (5 sections, 19 cards, no throw). Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies nehemiah range extended 1-4 to 1-5, applyPersonalNehemiahFiveStudySections() added and called after applyPersonalNehemiahFourStudySections(), replaceStudySectionsForBookRange('nehemiah', 5, 5, NEHEMIAH_FIVE_PERSONAL_SECTIONS) call added. Next forward-progress target is Nehemiah 6.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-29T08:46:53Z"
+        },
+        {
+          "name": "target chapter determined: Nehemiah 5 (new chapter, forward progress)",
+          "at": "2026-08-29T08:46:58Z"
+        },
+        {
+          "name": "KJV text fetched (Nehemiah 5, 19 verses)",
+          "at": "2026-08-29T08:47:06Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-08-29T08:47:50Z"
+        },
+        {
+          "name": "source file written (lib/nehemiahFiveSource.ts, 5 sections, 19 phrase cards)",
+          "at": "2026-08-29T08:50:30Z"
+        },
+        {
+          "name": "style checker clean (fixed two over-length bullets)",
+          "at": "2026-08-29T08:51:40Z"
+        },
+        {
+          "name": "wired into reader (import, apply function, call site, preserveExactPhraseBodies range extended to nehemiah 5)",
+          "at": "2026-08-29T08:52:00Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 19 cards, no throw)",
+          "at": "2026-08-29T08:52:15Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-29T08:53:52Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-08-29T08:54:15Z"
+        }
+      ]
     }
   ]
 }

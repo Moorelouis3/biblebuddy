@@ -215,6 +215,11 @@
       "timestamp": "2026-08-28T14:59:39Z",
       "type": "environment_anomaly",
       "detail": "Same recurring stale-local-git-ref bug hit again during this run's push (Ezra 6). The chapter commit was made cleanly in detached HEAD state on top of the correct current tip a6daca5 (Add Ezra 5 study notes), but local main and the cached origin/main remote-tracking ref were both stale at fd8fc76 (Add 2 Chronicles 20 study notes), 47 commits behind. No wrong chapter was written and no data was at risk. Resolved with git fetch origin main (corrected origin/main to a6daca5, confirmed via git merge-base that it matched the detached HEAD's parent exactly), then git checkout -B main (rebuilding local main from the verified detached HEAD) followed by git push -u origin main, which fast-forwarded cleanly (a6daca5..d10a828 main -> main). Confirmed with a follow-up git fetch that origin/main now matches. Logging again per the standing instruction to always log this pattern."
+    },
+    {
+      "timestamp": "2026-08-29T08:55:00Z",
+      "type": "environment_anomaly",
+      "detail": "Same recurring stale-local-git-ref bug hit again during this run's push (Nehemiah 5). The chapter commit staging was prepared cleanly in detached HEAD state on top of the correct current tip df4bc29 (Add Louis's banners for blog posts 13-24), but the cached origin/main remote-tracking ref was stale at fd8fc76 (Add 2 Chronicles 20 study notes) before an explicit fetch. No wrong chapter was written and no data was at risk. Resolved with git fetch origin main (corrected origin/main to df4bc29, confirmed via git merge-base that it matched the detached HEAD exactly), then rebuilding local main from the verified detached HEAD before pushing. Logging again per the standing instruction to always log this pattern."
     }
   ]
 }

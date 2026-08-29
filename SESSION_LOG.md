@@ -2635,3 +2635,7 @@ Next up: Day 32
 ## 2026-08-29T08:26:34Z (bible year day writer run)
 Day: 32 — Offerings and Atonement (Leviticus 1-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 33 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-29T08:54:15Z (hourly chapter notes run)
+Chapter: Nehemiah 5 | Duration: 7 min | Sections: 5 | Cards: 19 | Status: pass
+Next up: Nehemiah 6
