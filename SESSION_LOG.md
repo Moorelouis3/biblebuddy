@@ -2667,3 +2667,7 @@ Next up: Day 36
 ## 2026-08-29T16:28:28Z (bible year day writer run)
 Day: 36 — Holy Living Before a Holy God (Leviticus 17-20) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 37 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-29T16:55:45Z (hourly chapter notes run)
+Chapter: Nehemiah 9 | Duration: 9 min | Sections: 12 | Cards: 68 | Status: pass
+Next up: Nehemiah 10
