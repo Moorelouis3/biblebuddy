@@ -2603,3 +2603,7 @@ Next up: Day 28
 ## 2026-08-29T00:45:00Z (bible year day writer run)
 Day: 28 — The Tabernacle (Exodus 25-28) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 29 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-29T01:05:00Z (hourly chapter notes run)
+Chapter: Nehemiah 1 | Duration: 19 min | Sections: 4 | Cards: 23 | Status: pass
+Next up: Nehemiah 2
