@@ -2627,3 +2627,7 @@ Next up: Nehemiah 4
 ## 2026-08-29T06:54:17Z (hourly chapter notes run)
 Chapter: Nehemiah 4 | Duration: 6 min | Sections: 6 | Cards: 20 | Status: pass
 Next up: Nehemiah 5
+
+## 2026-08-29T08:24:45Z (bible year day writer run)
+Day: 31 — The Tabernacle Is Finished (Exodus 37-40) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 32
