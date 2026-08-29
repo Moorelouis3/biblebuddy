@@ -2595,3 +2595,7 @@ Queue remaining: 41
 ## 2026-08-28T23:05:00Z (hourly chapter notes run)
 Chapter: Ezra 10 | Duration: 19 min | Sections: 12 | Cards: 36 | Status: pass
 Next up: Nehemiah 1
+
+## 2026-08-29T00:25:19Z (bible year day writer run)
+Day: 27 — The Covenant Law (Exodus 21-24) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 28
