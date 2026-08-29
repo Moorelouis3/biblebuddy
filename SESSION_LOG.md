@@ -2639,3 +2639,7 @@ Next up: Day 33 (run stops here — 2-day-per-run limit reached)
 ## 2026-08-29T08:54:15Z (hourly chapter notes run)
 Chapter: Nehemiah 5 | Duration: 7 min | Sections: 5 | Cards: 19 | Status: pass
 Next up: Nehemiah 6
+
+## 2026-08-29T10:56:29Z (hourly chapter notes run)
+Chapter: Nehemiah 6 | Duration: 10 min | Sections: 5 | Cards: 22 | Status: pass
+Next up: Nehemiah 7

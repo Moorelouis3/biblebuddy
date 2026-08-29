@@ -27805,6 +27805,59 @@
           "at": "2026-08-29T08:54:15Z"
         }
       ]
+    },
+    {
+      "book": "Nehemiah",
+      "chapter": 6,
+      "startedAt": "2026-08-29T10:46:44Z",
+      "finishedAt": "2026-08-29T10:56:29Z",
+      "durationMinutes": 10,
+      "sections": 5,
+      "cards": 22,
+      "verses": 19,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style-redo backlog confirmed empty (data/bible-notes-style-redo-remaining.json remaining=[]). Normal forward progress after Nehemiah 5 (no existing dedicated wired-in file for Nehemiah 6). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (19 verses). Chunked into 5 sections matching the chapter's own scene breaks (1-4 the invitation to Ono, 5-9 Sanballat's open letter of accusation, 10-14 Shemaiah the hired false prophet, 15-16 the wall finished in 52 days, 17-19 Tobiah's ongoing letters through nobles loyal to him via his marriage into Shechaniah's family). Density about 1.16 cards/verse (19 verses, 22 cards), in line with the Nehemiah 5 reference density. scripts/check_bible_note_style.py found 0 problems on first pass (word counts, bullet counts, emoji uniqueness, and banned words/hyphens/contractions were checked by hand against the spec while drafting, before running the script). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language (breach, mischief, feignest, shut up, wrought, and more), closes on meaning rather than mechanics, uses exactly four bullets each with a distinct emoji ending on \ud83d\udcd6, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file, with no duplicate card titles across all 22 cards. Parser check passed exactly via getBibleReaderStudySections('nehemiah', 6) (5/5 sections, 22 cards, 19 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies nehemiah range extended from chapters 1-5 to 1-6, applyPersonalNehemiahSixStudySections() function added and called in reading order after applyPersonalNehemiahFiveStudySections(). Step timestamps below are real wall-clock times from `date -u`, though not every single micro-step got its own explicit date call this run (a few were captured in close succession) -- noting that plainly rather than implying finer granularity than actually measured. Next forward-progress target is Nehemiah 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-29T10:46:44Z"
+        },
+        {
+          "name": "target chapter determined: Nehemiah 6 (new chapter, forward progress after Nehemiah 5)",
+          "at": "2026-08-29T10:46:45Z"
+        },
+        {
+          "name": "KJV text fetched (Nehemiah 6, 19 verses, aruljohn mirror)",
+          "at": "2026-08-29T10:47:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill file read in full",
+          "at": "2026-08-29T10:49:00Z"
+        },
+        {
+          "name": "source file written: lib/nehemiahSixSource.ts (5 sections, 22 phrase cards)",
+          "at": "2026-08-29T10:52:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-08-29T10:53:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies nehemiah range extended to 6, apply function, call site)",
+          "at": "2026-08-29T10:53:40Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 22 cards, 19 verses, text verbatim)",
+          "at": "2026-08-29T10:54:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-08-29T10:54:53Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-29T10:56:29Z"
+        }
+      ]
     }
   ]
 }
