@@ -35,16 +35,20 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 32 (lib/bibleYearDayThirtyTwoScript.ts, Leviticus 1-4,
-"Offerings and Atonement" — most recent, opens Leviticus; Day 31 covered
-Exodus 37-40, "The Tabernacle Is Finished," closing out Exodus; Day 30
-covered Exodus 33-36, "God's Presence Is Enough"; Day 29 covered Aaron's
-ordination and the golden calf, Day 28 covered the tabernacle
-instructions, Day 27 covered the covenant law and its sealing in blood,
-Day 26 covered the Ten Commandments, Day 25 covered the sea crossing
-through the manna, Day 24 covered Passover and the final plagues, Day 23
-covered Pharaoh's first refusal and the first three plagues, Day 22
-opened Exodus, Day 21 closed out Genesis),
+through Day 34 (lib/bibleYearDayThirtyFourScript.ts, Leviticus 9-12,
+"Worship, Holiness, and Clean Living" — most recent, Aaron's first day
+serving, Nadab and Abihu's death, clean/unclean laws, and childbirth
+purification; Day 33 covered Leviticus 5-8, "Guilt, Consecration, and
+Priests," the sliding-scale guilt offering and Aaron's consecration;
+Day 32 covered Leviticus 1-4, "Offerings and Atonement," opening
+Leviticus; Day 31 covered Exodus 37-40, "The Tabernacle Is Finished,"
+closing out Exodus; Day 30 covered Exodus 33-36, "God's Presence Is
+Enough"; Day 29 covered Aaron's ordination and the golden calf, Day 28
+covered the tabernacle instructions, Day 27 covered the covenant law and
+its sealing in blood, Day 26 covered the Ten Commandments, Day 25
+covered the sea crossing through the manna, Day 24 covered Passover and
+the final plagues, Day 23 covered Pharaoh's first refusal and the first
+three plagues, Day 22 opened Exodus, Day 21 closed out Genesis),
 each verified with `tsc --noEmit`. None of them have been rendered or
 uploaded from this environment: it has no OPENAI_API_KEY and no Supabase
 service credentials, by design. Run

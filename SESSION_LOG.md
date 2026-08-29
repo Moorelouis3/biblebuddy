@@ -2643,3 +2643,11 @@ Next up: Nehemiah 6
 ## 2026-08-29T10:56:29Z (hourly chapter notes run)
 Chapter: Nehemiah 6 | Duration: 10 min | Sections: 5 | Cards: 22 | Status: pass
 Next up: Nehemiah 7
+
+## 2026-08-29T12:20:00Z (bible year day writer run)
+Day: 33 — Guilt, Consecration, and Priests (Leviticus 5-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 34
+
+## 2026-08-29T12:28:36Z (bible year day writer run)
+Day: 34 — Worship, Holiness, and Clean Living (Leviticus 9-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 35 (run stops here — 2-day-per-run limit reached)
