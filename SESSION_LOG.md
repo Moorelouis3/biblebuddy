@@ -2739,3 +2739,7 @@ Next up: Esther 5
 ## 2026-08-30T10:54:45Z (hourly chapter notes run)
 Chapter: Esther 5 | Duration: 8 min | Sections: 5 | Cards: 19 | Status: pass
 Next up: Esther 6
+
+## 2026-08-30T12:27:28Z (bible year day writer run)
+Day: 45 — A New Generation Counted (Numbers 26-29) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 46

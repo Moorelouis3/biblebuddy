@@ -35,8 +35,20 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 44 (lib/bibleYearDayFortyFourScript.ts, Numbers 22-25,
-"Balaam, Blessing, and Compromise" — most recent: Balak hires Balaam to
+through Day 45 (lib/bibleYearDayFortyFiveScript.ts, Numbers 26-29, "A
+New Generation Counted" — most recent: the second census after the
+Baal-Peor plague shows almost the same total as the first census forty
+years earlier despite every man from that first count now dead except
+Caleb and Joshua, Zelophehad's five daughters get the inheritance law
+changed in their favor, Moses learns he will die outside the land and
+asks God for a shepherd for the people rather than a pardon for
+himself, Joshua is publicly commissioned, and the chapter closes with
+the fixed calendar of daily, monthly, and feast offerings including
+Tabernacles' descending 70-bull count. Note: like Day 38, this day's four
+chapters run long in raw scripture (~20.6k characters), so expect its
+runtime above the other days — that's the fixed reading, not a mistake);
+Day 44 (lib/bibleYearDayFortyFourScript.ts, Numbers 22-25,
+"Balaam, Blessing, and Compromise" — Balak hires Balaam to
 curse Israel, Balaam's donkey sees the angel of the Lord before the
 prophet does, four oracles that turn every attempted curse into a
 blessing and end with the messianic "Star out of Jacob" prophecy, and
