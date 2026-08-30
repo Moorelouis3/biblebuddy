@@ -35,11 +35,16 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 39 (lib/bibleYearDayThirtyNineScript.ts, Numbers 2-5, "Camp
-Order and Purity" — most recent: the tribes camp in a fixed order around
-the tabernacle, the Levites are numbered and split into three carrying
-families in place of Israel's firstborn, then the camp gets laws for
-purity, restitution, and the test for a suspected wife; Day 38 covered
+through Day 40 (lib/bibleYearDayFortyScript.ts, Numbers 6-9, "Blessing,
+Dedication, and Passover" — most recent: the Nazirite vow, the priestly
+blessing, twelve days of identical tribal offerings at the tabernacle's
+dedication, the Levites publicly set apart in place of the firstborn,
+and a second Passover made for anyone unclean or far off on the first
+one; Day 39 covered Numbers 2-5, "Camp Order and Purity" — the tribes
+camp in a fixed order around the tabernacle, the Levites are numbered
+and split into three carrying families in place of Israel's firstborn,
+then the camp gets laws for purity, restitution, and the test for a
+suspected wife; Day 38 covered
 Leviticus 25-27; Numbers 1, "Jubilee, Covenant, and Israel Counted" — the
 sabbath year and the Jubilee reset, blessing and curse, vows and
 valuations, then Numbers opens with the tribe-by-tribe census and the

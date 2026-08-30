@@ -2695,3 +2695,7 @@ Next up: Nehemiah 13
 ## 2026-08-30T00:24:17Z (bible year day writer run)
 Day: 39 — Camp Order and Purity (Numbers 2-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 40
+
+## 2026-08-30T00:41:00Z (bible year day writer run)
+Day: 40 — Blessing, Dedication, and Passover (Numbers 6-9) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 41 (run stops here — 2-day-per-run limit reached)
