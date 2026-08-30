@@ -2731,3 +2731,7 @@ Next up: Day 44
 ## 2026-08-30T08:40:00Z (bible year day writer run)
 Day: 44 — Balaam, Blessing, and Compromise (Numbers 22-25) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 45 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-30T08:59:59Z (hourly chapter notes run)
+Chapter: Esther 4 | Duration: 14 min | Sections: 5 | Cards: 18 | Status: pass
+Next up: Esther 5
