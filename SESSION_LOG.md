@@ -2751,3 +2751,7 @@ Next up: Day 47 (run stops here — 2-day-per-run limit reached)
 ## 2026-08-30T12:54:30Z (hourly chapter notes run)
 Chapter: Esther 6 | Duration: 9 min | Sections: 5 | Cards: 23 | Status: pass
 Next up: Esther 7
+
+## 2026-08-30T14:55:36Z (hourly chapter notes run)
+Chapter: Esther 7 | Duration: 9 min | Sections: 5 | Cards: 21 | Status: pass
+Next up: Esther 8
