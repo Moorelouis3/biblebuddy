@@ -35,8 +35,14 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 40 (lib/bibleYearDayFortyScript.ts, Numbers 6-9, "Blessing,
-Dedication, and Passover" — most recent: the Nazirite vow, the priestly
+through Day 41 (lib/bibleYearDayFortyOneScript.ts, Numbers 10-13,
+"Journey, Complaints, and Spies" — most recent: the trumpets, the cloud
+finally lifting off Sinai after nearly a year camped there, then Israel
+unraveling fast — complaining at Taberah, craving quail at
+Kibroth-hattaavah, Miriam and Aaron turning on Moses over the Cushite
+wife, and the twelve spies bringing back two opposite reports of the
+same land; Day 40 covered Numbers 6-9, "Blessing,
+Dedication, and Passover" — the Nazirite vow, the priestly
 blessing, twelve days of identical tribal offerings at the tabernacle's
 dedication, the Levites publicly set apart in place of the firstborn,
 and a second Passover made for anyone unclean or far off on the first

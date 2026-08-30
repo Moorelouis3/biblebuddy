@@ -2707,3 +2707,7 @@ Next up: Esther 1
 ## 2026-08-30T02:59:30Z (hourly chapter notes run)
 Chapter: Esther 1 | Duration: 13 min | Sections: 6 | Cards: 33 | Status: pass
 Next up: Esther 2
+
+## 2026-08-30T03:15:00Z (bible year day writer run)
+Day: 41 — Journey, Complaints, and Spies (Numbers 10-13) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 42
