@@ -35,8 +35,17 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 48 (lib/bibleYearDayFortyEightScript.ts, Deuteronomy 2-5,
-"Remembering the Journey and the Covenant" — most recent: the thirty-eight
+through Day 49 (lib/bibleYearDayFortyNineScript.ts, Deuteronomy 6-9,
+"Love God and Remember Grace" — most recent: the Shema and the command to
+love God with everything, the warning about forgetting him once the
+houses are built and the stomachs are full, why Israel was chosen at all
+(not because they were many, but because God loved them and kept a
+promise), the wilderness testing and the manna ("man doth not live by
+bread only"), and Moses retelling the golden calf and his forty-day
+intercession from the inside — the only reason, he says, there is anyone
+left to be reading this today; Day 48
+(lib/bibleYearDayFortyEightScript.ts, Deuteronomy 2-5,
+"Remembering the Journey and the Covenant" — the thirty-eight
 wilderness years recapped, Edom and Moab spared on purpose while Sihon is
 destroyed after refusing peace, Og of Bashan and his nine-cubit iron bed
 frame, Moses's request to cross the Jordan refused with Joshua charged to
