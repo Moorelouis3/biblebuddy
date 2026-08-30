@@ -2763,3 +2763,7 @@ Next up: Day 48
 ## 2026-08-30T16:28:59Z (bible year day writer run)
 Day: 48 — Remembering the Journey and the Covenant (Deuteronomy 2-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 49 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-30T16:52:07Z (hourly chapter notes run)
+Chapter: Esther 8 | Duration: 5 min | Sections: 5 | Cards: 18 | Status: pass
+Next up: Esther 9
