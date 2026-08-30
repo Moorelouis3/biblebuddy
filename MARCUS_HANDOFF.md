@@ -35,19 +35,30 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 45 (lib/bibleYearDayFortyFiveScript.ts, Numbers 26-29, "A
-New Generation Counted" — most recent: the second census after the
-Baal-Peor plague shows almost the same total as the first census forty
-years earlier despite every man from that first count now dead except
-Caleb and Joshua, Zelophehad's five daughters get the inheritance law
-changed in their favor, Moses learns he will die outside the land and
-asks God for a shepherd for the people rather than a pardon for
-himself, Joshua is publicly commissioned, and the chapter closes with
-the fixed calendar of daily, monthly, and feast offerings including
-Tabernacles' descending 70-bull count. Note: like Day 38, this day's four
-chapters run long in raw scripture (~20.6k characters), so expect its
-runtime above the other days — that's the fixed reading, not a mistake);
-Day 44 (lib/bibleYearDayFortyFourScript.ts, Numbers 22-25,
+through Day 46 (lib/bibleYearDayFortySixScript.ts, Numbers 30-33,
+"Vows, Victory, and the Journey Reviewed" — most recent: the law on
+binding vows and when a father or husband can void a woman's, the war
+of vengeance on Midian that kills Balaam and closes Moses's public
+life (including the hard passage where Moses orders the complicit
+women and boys killed and only the virgin girls spared — read plainly,
+not softened), the officers' report that not one Israelite soldier was
+lost, Reuben and Gad's request to settle east of the Jordan and Moses's
+Kadesh-barnea rebuke before he agrees to their compromise, and the
+forty-two-station itinerary of the whole wilderness journey that Moses
+wrote down himself, with Aaron's death folded into the list without a
+pause. Note: like Days 38 and 45, this day's four chapters run long in
+raw scripture (~19.7k characters), so expect its runtime above the
+other days — that's the fixed reading, not a mistake; Day 45
+(lib/bibleYearDayFortyFiveScript.ts, Numbers 26-29, "A New Generation
+Counted" — the second census after the Baal-Peor plague shows almost
+the same total as the first census forty years earlier despite every
+man from that first count now dead except Caleb and Joshua,
+Zelophehad's five daughters get the inheritance law changed in their
+favor, Moses learns he will die outside the land and asks God for a
+shepherd for the people rather than a pardon for himself, Joshua is
+publicly commissioned, and the chapter closes with the fixed calendar
+of daily, monthly, and feast offerings including Tabernacles'
+descending 70-bull count); Day 44 (lib/bibleYearDayFortyFourScript.ts, Numbers 22-25,
 "Balaam, Blessing, and Compromise" — Balak hires Balaam to
 curse Israel, Balaam's donkey sees the angel of the Lord before the
 prophet does, four oracles that turn every attempted curse into a
