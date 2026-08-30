@@ -2755,3 +2755,7 @@ Next up: Esther 7
 ## 2026-08-30T14:55:36Z (hourly chapter notes run)
 Chapter: Esther 7 | Duration: 9 min | Sections: 5 | Cards: 21 | Status: pass
 Next up: Esther 8
+
+## 2026-08-30T16:26:52Z (bible year day writer run)
+Day: 47 — Land Boundaries and Moses Looks Back (Numbers 34-36; Deuteronomy 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 48

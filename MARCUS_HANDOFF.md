@@ -35,8 +35,18 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 46 (lib/bibleYearDayFortySixScript.ts, Numbers 30-33,
-"Vows, Victory, and the Journey Reviewed" — most recent: the law on
+through Day 47 (lib/bibleYearDayFortySevenScript.ts, Numbers 34-36;
+Deuteronomy 1, "Land Boundaries and Moses Looks Back" — most recent: the
+land's border drawn out point by point, Eleazar and Joshua plus one named
+leader per tribe appointed to divide it, the Levites' forty-eight
+scattered cities including the six cities of refuge, the law separating
+murder from accidental killing (no ransom either way, blood pollutes the
+land), Zelophehad's daughters ruled to marry within their own tribe so
+Manasseh keeps its land — closing the book of Numbers — and then
+Deuteronomy opens with Moses himself retelling the journey and the spies
+in his own voice, owning his exclusion from the land while laying the
+blame on the people who caused it; Day 46 (lib/bibleYearDayFortySixScript.ts, Numbers 30-33,
+"Vows, Victory, and the Journey Reviewed" — the law on
 binding vows and when a father or husband can void a woman's, the war
 of vengeance on Midian that kills Balaam and closes Moses's public
 life (including the hard passage where Moses orders the complicit
