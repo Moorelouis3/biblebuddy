@@ -2715,3 +2715,7 @@ Next up: Day 42
 ## 2026-08-30T03:35:00Z (bible year day writer run)
 Day: 42 — Rebellion and God's Chosen Priesthood (Numbers 14-17) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 43 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-30T04:55:14Z (hourly chapter notes run)
+Chapter: Esther 2 | Duration: 8 min | Sections: 6 | Cards: 35 | Status: pass
+Next up: Esther 3
