@@ -35,8 +35,17 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 47 (lib/bibleYearDayFortySevenScript.ts, Numbers 34-36;
-Deuteronomy 1, "Land Boundaries and Moses Looks Back" — most recent: the
+through Day 48 (lib/bibleYearDayFortyEightScript.ts, Deuteronomy 2-5,
+"Remembering the Journey and the Covenant" — most recent: the thirty-eight
+wilderness years recapped, Edom and Moab spared on purpose while Sihon is
+destroyed after refusing peace, Og of Bashan and his nine-cubit iron bed
+frame, Moses's request to cross the Jordan refused with Joshua charged to
+finish the job instead, the warning against idolatry paired with a promise
+that God can still be found after exile, and the covenant at Horeb retold
+with the Ten Commandments restated almost word for word (the Sabbath's
+reasoning now tied to the Egypt deliverance rather than creation); Day 47
+(lib/bibleYearDayFortySevenScript.ts, Numbers 34-36;
+Deuteronomy 1, "Land Boundaries and Moses Looks Back" — the
 land's border drawn out point by point, Eleazar and Joshua plus one named
 leader per tribe appointed to divide it, the Levites' forty-eight
 scattered cities including the six cities of refuge, the law separating

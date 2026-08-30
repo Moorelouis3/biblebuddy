@@ -2759,3 +2759,7 @@ Next up: Esther 8
 ## 2026-08-30T16:26:52Z (bible year day writer run)
 Day: 47 — Land Boundaries and Moses Looks Back (Numbers 34-36; Deuteronomy 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 48
+
+## 2026-08-30T16:28:59Z (bible year day writer run)
+Day: 48 — Remembering the Journey and the Covenant (Deuteronomy 2-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 49 (run stops here — 2-day-per-run limit reached)
