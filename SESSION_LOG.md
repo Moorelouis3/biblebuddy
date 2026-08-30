@@ -2747,3 +2747,7 @@ Next up: Day 46
 ## 2026-08-30T12:45:00Z (bible year day writer run)
 Day: 46 — Vows, Victory, and the Journey Reviewed (Numbers 30-33) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 47 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-30T12:54:30Z (hourly chapter notes run)
+Chapter: Esther 6 | Duration: 9 min | Sections: 5 | Cards: 23 | Status: pass
+Next up: Esther 7
