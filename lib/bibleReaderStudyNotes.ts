@@ -465,6 +465,7 @@ import { FIRST_CHRONICLES_9_29_PERSONAL_SECTIONS, SECOND_CHRONICLES_1_19_PERSONA
 import { EZRA_1_3_PERSONAL_SECTIONS, SECOND_CHRONICLES_20_36_PERSONAL_SECTIONS } from "./secondChroniclesTwentyToEzraThreePersonalNotes";
 import { EZRA_4_10_PERSONAL_SECTIONS, NEHEMIAH_1_13_PERSONAL_SECTIONS } from "./ezraFourToNehemiahThirteenPersonalNotes";
 import { ESTHER_1_10_PERSONAL_SECTIONS, JOB_1_10_PERSONAL_SECTIONS } from "./estherOneToJobTenPersonalNotes";
+import { JOB_ONE_PERSONAL_SECTIONS } from "./jobOneSource";
 import { JOB_11_30_PERSONAL_SECTIONS } from "./jobElevenToThirtyPersonalNotes";
 import { JOB_31_42_PERSONAL_SECTIONS } from "./jobThirtyOneToFortyTwoPersonalNotes";
 import { PSALMS_1_6_PERSONAL_SECTIONS } from "./psalmsOneToSixPersonalNotes";
@@ -860,7 +861,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "proverbs" && section.chapter >= 1 && section.chapter <= 31) ||
     (normalizeBook(book) === "ezra" && section.chapter >= 1 && section.chapter <= 10) ||
     (normalizeBook(book) === "nehemiah" && section.chapter >= 1 && section.chapter <= 13) ||
-    (normalizeBook(book) === "esther" && section.chapter >= 1 && section.chapter <= 10);
+    (normalizeBook(book) === "esther" && section.chapter >= 1 && section.chapter <= 10) ||
+    (normalizeBook(book) === "job" && section.chapter >= 1 && section.chapter <= 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1670,6 +1672,10 @@ function applyPersonalEstherOneThroughTenStudySections() {
 
 function applyPersonalJobOneThroughTenStudySections() {
   replaceStudySectionsForBookRange("job", 1, 10, JOB_1_10_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJobOneChapterStudySections() {
+  replaceStudySectionsForBookRange("job", 1, 1, JOB_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJobElevenThroughThirtyStudySections() {
@@ -9146,6 +9152,7 @@ applyPersonalEstherEightChapterStudySections();
 applyPersonalEstherNineChapterStudySections();
 applyPersonalEstherTenChapterStudySections();
 applyPersonalJobOneThroughTenStudySections();
+applyPersonalJobOneChapterStudySections();
 applyPersonalJobElevenThroughThirtyStudySections();
 applyPersonalJobThirtyOneThroughFortyTwoStudySections();
 applyPersonalPsalmsOneThroughSixStudySections();
