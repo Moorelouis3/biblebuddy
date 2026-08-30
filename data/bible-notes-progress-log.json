@@ -28457,6 +28457,63 @@
           "at": "2026-08-30T08:59:59Z"
         }
       ]
+    },
+    {
+      "book": "Esther",
+      "chapter": 5,
+      "startedAt": "2026-08-30T10:46:52Z",
+      "finishedAt": "2026-08-30T10:54:45Z",
+      "durationMinutes": 8,
+      "sections": 5,
+      "cards": 19,
+      "verses": 14,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. This run again hit the recurring stale local main/origin main git ref bug at startup (same family logged across many prior runs in data/bible-notes-usage-events.json): git status at session start showed HEAD detached from refs/heads/main at 1882930 (Add Esther 4 study notes), and running git checkout main silently landed on a stale cached ref at fd8fc76 (Add 2 Chronicles 20 study notes), 50 commits behind the real origin/main tip and reporting a full divergence (50 local-only vs 50 remote-only commits, no shared merge base found by git). This time the anomaly was caught before any chapter work was done: git fetch origin main confirmed the real tip was already at Esther 4 (matching the detached HEAD seen at session start), so git checkout -B main origin/main was used to reset local main to the verified real tip before touching any files. No duplicate work was written or lost. Confirmed via data/bible-notes-progress-log.json at the real tip that Esther 4 was the last finished chapter and data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json both have empty remaining arrays, so normal forward progress applies. Esther 5 has no dedicated wired-in file (only the legacy ESTHER_1_10_PERSONAL_SECTIONS bulk batch call covering chapters 1-10), so it is the next chapter in canonical order. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (14 verses). Esther 5 covers Esther approaching the king uninvited and receiving the golden sceptre, her first banquet invitation where she asks only for a dinner instead of revealing her real request, the second banquet invitation the next day, Haman's joy at being singled out curdling into rage the moment he sees Mordecai refuse to stand at the gate, his boasting to Zeresh and his friends about his wealth, his many sons, his promotions, and his exclusive invitations, admitting none of it satisfies him while Mordecai remains unbowed, and closing on Zeresh's advice to build a seventy five foot gallows for Mordeci, which Haman happily orders built that same night. Chunked into 5 sections matching the chapter's own scene breaks (1-2 Esther risking the inner court, 3-5 the first invitation, 6-8 the second invitation, 9-13 Haman's joy turning to rage, 14 Zeresh's advice). Density about 1.36 cards/verse (14 verses, 19 cards), in the same range as the reference implementation lib/genesisThirtyOneSource.ts (56 cards/55 verses, about 1.02 cards/verse) and comfortably above the floor. scripts/check_bible_note_style.py passed clean on the first run with zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (the golden sceptre, banquet of wine, indignation, availeth, cubits), closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji ending on a book emoji or an arrow emoji, no duplicate card titles across all 19 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file (one KJV verse itself contains a semicolon, so the phrase heading for that card was trimmed to a sub-phrase without it, per the title rule of lifting an exact phrase rather than the full verse). Parser check passed exactly via getBibleReaderStudySections('esther', 5) (5/5 sections, verse ranges 1-2/3-5/6-8/9-13/14 with no gaps, text rendered verbatim, 19 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/estherFiveSource.ts), preserveExactPhraseBodies for esther extended from chapters 1-4 to 1-5, applyPersonalEstherFiveChapterStudySections() call added directly after the chapter 4 call, overriding the legacy bulk 1-10 coverage for this chapter only. Next forward-progress target is Esther 6.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-30T10:47:15Z"
+        },
+        {
+          "name": "recurring stale local main/origin main git ref anomaly hit at session start (HEAD detached at 1882930/Esther 4, git checkout main landed on stale fd8fc76/2 Chronicles 20, 50 commits behind with a false divergence); caught before any chapter work via git fetch origin main, resolved with git checkout -B main origin/main, no duplicate work written",
+          "at": "2026-08-30T10:47:45Z"
+        },
+        {
+          "name": "target chapter determined: Esther 5 (new chapter, forward progress mode; priority queue and style-redo backlog both confirmed empty at the verified real tip)",
+          "at": "2026-08-30T10:48:10Z"
+        },
+        {
+          "name": "KJV text fetched (Esther 5, 14 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-08-30T10:48:33Z"
+        },
+        {
+          "name": "style spec re-read in full (docs/bible-study-note-style.md) and reference implementation reviewed (lib/genesisThirtyOneSource.ts, lib/estherFourSource.ts)",
+          "at": "2026-08-30T10:49:30Z"
+        },
+        {
+          "name": "source file written (lib/estherFiveSource.ts, 19 cards / 5 sections)",
+          "at": "2026-08-30T10:52:00Z"
+        },
+        {
+          "name": "style checker clean on first run",
+          "at": "2026-08-30T10:52:19Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-4 to 1-5, new apply function and replaceStudySectionsForBookRange call added after the chapter 4 call)",
+          "at": "2026-08-30T10:52:35Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('esther', 5) returned 5/5 sections, 19 cards, verbatim text)",
+          "at": "2026-08-30T10:52:46Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-30T10:53:01Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, usage-events.json anomaly entry)",
+          "at": "2026-08-30T10:54:45Z"
+        }
+      ]
     }
   ]
 }
