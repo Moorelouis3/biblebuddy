@@ -2727,3 +2727,7 @@ Next up: Esther 4
 ## 2026-08-30T08:26:30Z (bible year day writer run)
 Day: 43 — Provision, Judgment, and the Bronze Serpent (Numbers 18-21) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 44
+
+## 2026-08-30T08:40:00Z (bible year day writer run)
+Day: 44 — Balaam, Blessing, and Compromise (Numbers 22-25) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 45 (run stops here — 2-day-per-run limit reached)

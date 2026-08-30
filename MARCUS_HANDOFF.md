@@ -35,8 +35,15 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 43 (lib/bibleYearDayFortyThreeScript.ts, Numbers 18-21,
-"Provision, Judgment, and the Bronze Serpent" — most recent: priestly and
+through Day 44 (lib/bibleYearDayFortyFourScript.ts, Numbers 22-25,
+"Balaam, Blessing, and Compromise" — most recent: Balak hires Balaam to
+curse Israel, Balaam's donkey sees the angel of the Lord before the
+prophet does, four oracles that turn every attempted curse into a
+blessing and end with the messianic "Star out of Jacob" prophecy, and
+the Baal-Peor apostasy that costs 24,000 lives until Phinehas stops the
+plague — Balaam later advised that very seduction once he found out he
+could not curse Israel outright; Day 43 covered Numbers 18-21,
+"Provision, Judgment, and the Bronze Serpent" — priestly and
 Levite duties spelled out right after Korah, the red heifer ordinance for
 cleansing from death, Miriam's death and Moses striking the rock instead
 of speaking to it at Meribah, Edom refusing passage and Aaron dying on
