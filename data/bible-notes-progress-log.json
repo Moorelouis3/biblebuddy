@@ -28180,6 +28180,59 @@
           "at": "2026-08-29T23:00:10Z"
         }
       ]
+    },
+    {
+      "book": "Nehemiah",
+      "chapter": 13,
+      "startedAt": "2026-08-30T00:46:50Z",
+      "finishedAt": "2026-08-30T00:58:00Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 40,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, normal forward progress after Nehemiah 12 (no existing wired-in file for Nehemiah 13, the final chapter of the book). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (31 verses). Chunked into 6 sections matching the chapter's own scene breaks (1-3 separation from Ammon and Moab over the old Balaam history, 4-9 Nehemiah personally clearing Tobiah's belongings out of the temple chamber Eliashib had handed him, 10-14 restoring the Levites' tithe portions and naming trustworthy treasurers, 15-22 shutting the city gates to enforce the sabbath against Tyrian merchants, 23-29 confronting the mixed marriages with Solomon's own failure as the historical warning and Sanballat's family tie reaching into the high priesthood through Eliashib's grandson, and 30-31 Nehemiah's closing summary and final one line prayer, the last words of the book). Density about 1.3 cards per verse. scripts/check_bible_note_style.py found 1 problem on first pass (banned hedge word 'fairly' describing how treasurers distributed the tithes), fixed by rewording to 'honestly', second run clean with 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (leave, sore, lading, testified, outlandish, defiled), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji ending on the scripture or implication emoji, no repeated emoji within a card, no duplicate card titles across all 40 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('nehemiah', 13) (6/6 sections, 40 cards, 31 verses, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies nehemiah range extended from chapters 1-12 to 1-13, applyPersonalNehemiahThirteenStudySections() function added and called right after applyPersonalNehemiahTwelveStudySections(); shouldFormatLikeDayOne already returns false whenever preserveExactPhraseFormatting is set, so no change was needed there. This completes the book of Nehemiah end to end (chapters 1-13 all style-spec compliant). Next forward-progress target is Esther 1.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-30T00:46:50Z"
+        },
+        {
+          "name": "target chapter determined: Nehemiah 13 (normal forward progress, priority queue and redo backlog both empty, final chapter of Nehemiah)",
+          "at": "2026-08-30T00:46:55Z"
+        },
+        {
+          "name": "KJV text fetched (Nehemiah 13, 31 verses, aruljohn mirror)",
+          "at": "2026-08-30T00:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill file read in full",
+          "at": "2026-08-30T00:51:00Z"
+        },
+        {
+          "name": "source file written: lib/nehemiahThirteenSource.ts",
+          "at": "2026-08-30T00:51:41Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 fix pass, banned hedge word 'fairly' removed)",
+          "at": "2026-08-30T00:53:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range 1-13, applyPersonalNehemiahThirteenStudySections)",
+          "at": "2026-08-30T00:54:20Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 40 cards, text verbatim)",
+          "at": "2026-08-30T00:55:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-08-30T00:55:45Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-30T00:56:42Z"
+        }
+      ]
     }
   ]
 }

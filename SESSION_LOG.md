@@ -2699,3 +2699,7 @@ Next up: Day 40
 ## 2026-08-30T00:41:00Z (bible year day writer run)
 Day: 40 — Blessing, Dedication, and Passover (Numbers 6-9) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 41 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-30T00:58:00Z (hourly chapter notes run)
+Chapter: Nehemiah 13 | Duration: 11 min | Sections: 6 | Cards: 40 | Status: pass
+Next up: Esther 1
