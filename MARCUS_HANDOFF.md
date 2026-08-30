@@ -35,8 +35,15 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 42 (lib/bibleYearDayFortyTwoScript.ts, Numbers 14-17,
-"Rebellion and God's Chosen Priesthood" — most recent: the nation refuses
+through Day 43 (lib/bibleYearDayFortyThreeScript.ts, Numbers 18-21,
+"Provision, Judgment, and the Bronze Serpent" — most recent: priestly and
+Levite duties spelled out right after Korah, the red heifer ordinance for
+cleansing from death, Miriam's death and Moses striking the rock instead
+of speaking to it at Meribah, Edom refusing passage and Aaron dying on
+Mount Hor, the fiery serpents and the bronze serpent lifted up on a pole,
+and victories over Sihon and Og opening the road east of the Jordan;
+Day 42 covered Numbers 14-17,
+"Rebellion and God's Chosen Priesthood" — the nation refuses
 to go up after the spies' report, God sentences that generation to forty
 years, laws for offerings "in the land" are given anyway as proof the
 promise still stands, Korah's rebellion is swallowed and burned, and

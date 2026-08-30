@@ -2723,3 +2723,7 @@ Next up: Esther 3
 ## 2026-08-30T06:53:33Z (hourly chapter notes run)
 Chapter: Esther 3 | Duration: 6 min | Sections: 6 | Cards: 29 | Status: pass
 Next up: Esther 4
+
+## 2026-08-30T08:26:30Z (bible year day writer run)
+Day: 43 — Provision, Judgment, and the Bronze Serpent (Numbers 18-21) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 44
