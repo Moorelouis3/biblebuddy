@@ -2711,3 +2711,7 @@ Next up: Esther 2
 ## 2026-08-30T03:15:00Z (bible year day writer run)
 Day: 41 — Journey, Complaints, and Spies (Numbers 10-13) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 42
+
+## 2026-08-30T03:35:00Z (bible year day writer run)
+Day: 42 — Rebellion and God's Chosen Priesthood (Numbers 14-17) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 43 (run stops here — 2-day-per-run limit reached)

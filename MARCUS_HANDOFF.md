@@ -35,8 +35,14 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 41 (lib/bibleYearDayFortyOneScript.ts, Numbers 10-13,
-"Journey, Complaints, and Spies" — most recent: the trumpets, the cloud
+through Day 42 (lib/bibleYearDayFortyTwoScript.ts, Numbers 14-17,
+"Rebellion and God's Chosen Priesthood" — most recent: the nation refuses
+to go up after the spies' report, God sentences that generation to forty
+years, laws for offerings "in the land" are given anyway as proof the
+promise still stands, Korah's rebellion is swallowed and burned, and
+Aaron's rod buds overnight to settle the priesthood question for good;
+Day 41 covered Numbers 10-13,
+"Journey, Complaints, and Spies" — the trumpets, the cloud
 finally lifting off Sinai after nearly a year camped there, then Israel
 unraveling fast — complaining at Taberah, craving quail at
 Kibroth-hattaavah, Miriam and Aaron turning on Moses over the Cushite
