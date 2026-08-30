@@ -35,11 +35,15 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 38 (lib/bibleYearDayThirtyEightScript.ts, Leviticus 25-27;
-Numbers 1, "Jubilee, Covenant, and Israel Counted" — most recent, the
+through Day 39 (lib/bibleYearDayThirtyNineScript.ts, Numbers 2-5, "Camp
+Order and Purity" — most recent: the tribes camp in a fixed order around
+the tabernacle, the Levites are numbered and split into three carrying
+families in place of Israel's firstborn, then the camp gets laws for
+purity, restitution, and the test for a suspected wife; Day 38 covered
+Leviticus 25-27; Numbers 1, "Jubilee, Covenant, and Israel Counted" — the
 sabbath year and the Jubilee reset, blessing and curse, vows and
 valuations, then Numbers opens with the tribe-by-tribe census and the
-Levites set apart from it. Note: this day's four assigned chapters run
+Levites set apart from it. Note: Day 38's four assigned chapters run
 unusually long in raw text (~26k characters of scripture alone, mostly
 the census numbers in Numbers 1), so expect its runtime to land well
 above the other 4-chapter days — that's the fixed reading, not a

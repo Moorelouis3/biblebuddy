@@ -2691,3 +2691,7 @@ Next up: Nehemiah 12
 ## 2026-08-29T23:00:10Z (hourly chapter notes run)
 Chapter: Nehemiah 12 | Duration: 14 min | Sections: 10 | Cards: 48 | Status: pass
 Next up: Nehemiah 13
+
+## 2026-08-30T00:24:17Z (bible year day writer run)
+Day: 39 — Camp Order and Purity (Numbers 2-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 40
