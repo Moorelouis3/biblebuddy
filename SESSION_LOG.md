@@ -2775,3 +2775,7 @@ Next up: Esther 10
 ## 2026-08-30T20:26:14Z (bible year day writer run)
 Day: 49 — Love God and Remember Grace (Deuteronomy 6-9) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 50
+
+## 2026-08-30T20:29:06Z (bible year day writer run)
+Day: 50 — Covenant Loyalty From the Heart (Deuteronomy 10-13) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 51 (run stops here — 2-day-per-run limit reached)

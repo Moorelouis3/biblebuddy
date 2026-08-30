@@ -35,8 +35,17 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 49 (lib/bibleYearDayFortyNineScript.ts, Deuteronomy 6-9,
-"Love God and Remember Grace" — most recent: the Shema and the command to
+through Day 50 (lib/bibleYearDayFiftyScript.ts, Deuteronomy 10-13,
+"Covenant Loyalty From the Heart" — most recent: new tablets carried in
+an ark, the Levites set apart with God himself as their only inheritance,
+Moses's summary question ("what does the Lord your God require of you?"),
+circumcising the heart, the blessing and curse set on Mount Gerizim and
+Mount Ebal, tearing down the land's old worship sites in favor of one
+chosen place, the everyday-meat-versus-sacrifice distinction and the
+blood prohibition, and the warning against a real sign attached to a
+false god, even from a prophet, a brother, a wife, or a whole city; Day
+49 (lib/bibleYearDayFortyNineScript.ts, Deuteronomy 6-9, "Love God and
+Remember Grace" — the Shema and the command to
 love God with everything, the warning about forgetting him once the
 houses are built and the stomachs are full, why Israel was chosen at all
 (not because they were many, but because God loved them and kept a
