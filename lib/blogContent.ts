@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "how-do-you-know-you-are-saved",
+    title: "How Do You Know You Are Saved?",
+    description:
+      "How do you know you are saved? 6 biblical signs from Scripture that reveal real, saving faith, and honest answers for anyone who doubts.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/how-do-you-know-you-are-saved",
+    publishedAt: "2026-09-01",
+    readTime: "23 min read",
+    image: "/how-do-you-know-you-are-saved-banner.png",
+    groupPost: {
+      title: "How Do You Know You Are Saved? 📖",
+      content:
+        "It's late. The house is quiet.\nAnd one question won't let you sleep. Am I really saved?\n\n📌 Real faith always leaves evidence, even when you can't feel it.\n\n📖 Salvation is a gift, not a wage you earn.\n📖 Struggling with sin isn't the same as being ruled by it.\n📖 Six biblical signs reveal what God is already doing in you.\n\nNew article on:\n🟢 the **six signs** your faith is real\n🟢 what it means to have a **new heart**\n🟢 honest answers for anyone who **doubts their salvation**\n\nDo you ever lie awake wondering if you're really saved? 🙏",
+    },
+  },
+  {
     slug: "how-to-defend-your-faith-in-jesus",
     title: "How to Defend Your Faith in Jesus",
     description:
