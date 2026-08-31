@@ -2875,3 +2875,7 @@ Next up: Day 62
 ## 2026-08-31T20:28:26Z (bible year day writer run)
 Day: 62 — Covenant Choice and Israel's Drift (Joshua 24; Judges 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 63 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-31T20:57:23Z (hourly chapter notes run)
+Chapter: Job 12 | Duration: 11 min | Sections: 7 | Cards: 42 | Status: pass
+Next up: Job 13
