@@ -2847,3 +2847,7 @@ Next up: Day 59 (run stops here — 2-day-per-run limit reached)
 ## 2026-08-31T12:57:30Z (hourly chapter notes run)
 Chapter: Job 8 | Duration: 11 min | Sections: 6 | Cards: 30 | Status: pass
 Next up: Job 9
+
+## 2026-08-31T14:58:50Z (hourly chapter notes run)
+Chapter: Job 9 | Duration: 13 min | Sections: 7 | Cards: 60 | Status: pass
+Next up: Job 10

@@ -29215,6 +29215,55 @@
           "at": "2026-08-31T12:57:30Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 9,
+      "startedAt": "2026-08-31T14:46:30Z",
+      "finishedAt": "2026-08-31T14:58:50Z",
+      "durationMinutes": 13,
+      "sections": 7,
+      "cards": 60,
+      "verses": 35,
+      "notes": "New chapter, normal forward progress after Job 8. Job replies to Bildad: no man can be just with God, God's unanswerable power over creation (mountains, sun, stars, sea), no daysman/mediator between Job and God, closing on Job's admission that fear keeps him from speaking freely. Session start hit the recurring stale-local-git-ref anomaly (documented repeatedly in data/bible-notes-usage-events.json since Esther 8): git status showed HEAD detached 37 commits ahead of a stale cached origin/main. Resolved per the hardened routine by running git fetch origin main before trusting any local ref, which confirmed the detached HEAD matched the real origin/main tip exactly (through Job 8). No data was at risk and no chapter time was lost.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-31T14:47:35Z"
+        },
+        {
+          "name": "resolved recurring stale git ref anomaly, target chapter determined (Job 9, new chapter, normal forward progress)",
+          "at": "2026-08-31T14:49:00Z"
+        },
+        {
+          "name": "KJV text fetched (Job 9, 35 verses, raw.githubusercontent.com/aruljohn/Bible-kjv)",
+          "at": "2026-08-31T14:49:20Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-31T14:50:30Z"
+        },
+        {
+          "name": "source file written (lib/jobNineSource.ts, 7 sections, 60 cards)",
+          "at": "2026-08-31T14:56:00Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-08-31T14:56:40Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range extended to 9, replaceStudySectionsForBookRange call)",
+          "at": "2026-08-31T14:56:55Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 60 cards confirmed)",
+          "at": "2026-08-31T14:57:05Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-31T14:57:24Z"
+        }
+      ]
     }
   ]
 }

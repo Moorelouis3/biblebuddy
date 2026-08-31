@@ -235,6 +235,11 @@
       "timestamp": "2026-08-30T16:52:07Z",
       "type": "environment_anomaly",
       "detail": "Same recurring stale-local-git-ref bug hit again during this run's commit/push (Esther 8). The chapter commit was made cleanly in detached HEAD state on top of the correct current tip 52e4a74 (Bible in One Year: Day 48 script), but after committing, `git status` reported \"HEAD detached from refs/heads/main\" with local main and the cached origin/main remote-tracking ref both stale at ebdd3da (Add Esther 5 study notes), 5 commits behind. No wrong chapter was written and no data was at risk, since the commit's parent was already the real tip. Resolved with `git fetch origin main` (corrected origin/main to 52e4a74, confirmed via `git merge-base` that it matched the detached HEAD's parent exactly), then `git checkout -B main HEAD` (rebuilding local main from the verified detached HEAD) followed by `git push -u origin main`, which fast-forwarded cleanly (52e4a74..3dcf7ec main -> main). Logging again per the standing instruction to always log this pattern."
+    },
+    {
+      "timestamp": "2026-08-31T14:46:30Z",
+      "type": "environment_anomaly",
+      "detail": "Same recurring stale-local-git-ref bug hit again at session start, same family as many prior logged occurrences. git status showed HEAD detached from refs/heads/main at 3b77723 (Add Job 8 study notes), with local main and the initial cached origin/main both stale at ebdd3da (Add Esther 5 study notes), 37 commits behind, spanning Esther 6-10, Job 1-8, home screen redesign work, and multiple Bible in One Year day scripts. Followed the now-standard hardened startup routine: ran git fetch origin main before doing anything else or trusting git status, which updated origin/main to 3b77723 and confirmed it matched the detached HEAD exactly (git merge-base --is-ancestor origin/main HEAD succeeded). No data was at risk and nothing was overwritten. Resolved with git checkout -B main origin/main to rebuild local main at the verified real tip, which matched the working tree exactly (nothing to commit, clean) before any chapter work began. Logging again per the standing instruction to always log this pattern."
     }
   ]
 }
