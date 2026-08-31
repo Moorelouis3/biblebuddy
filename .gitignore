@@ -63,3 +63,4 @@ console.log(Object.keys(m)))
 
 # generated on every build by scripts/generate-study-notes-static.ts
 /public/study-notes/
+tmp/bible-year-watch/
