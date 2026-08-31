@@ -83,6 +83,9 @@ export default function BottomNav() {
               <Link
                 key={link.href}
                 href={link.href}
+                // Closing on pathname change misses Study Group, whose href
+                // only changes the query string - close on the tap itself.
+                onClick={() => setMoreOpen(false)}
                 className="flex min-h-12 items-center gap-3 rounded-xl px-3 text-sm font-black text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
               >
                 <span aria-hidden="true">{link.icon}</span>
