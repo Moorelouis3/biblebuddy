@@ -2823,3 +2823,7 @@ Next up: Job 6
 ## 2026-08-31T08:27:31Z (bible year day writer run)
 Day: 55 — Choose Life and Receive Moses' Blessing (Deuteronomy 30-33) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 56
+
+## 2026-08-31T08:29:39Z (bible year day writer run)
+Day: 56 — Moses Dies and Joshua Leads (Deuteronomy 34; Joshua 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 57 (run stops here — 2-day-per-run limit reached)

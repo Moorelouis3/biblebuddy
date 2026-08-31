@@ -35,7 +35,19 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 55 (lib/bibleYearDayFiftyFiveScript.ts, Deuteronomy 30-33,
+through Day 56 (lib/bibleYearDayFiftySixScript.ts, Deuteronomy 34;
+Joshua 1-3, "Moses Dies and Joshua Leads" — Moses viewing the whole land
+from Pisgah and dying there, buried by God himself in a grave nobody has
+ever found ("no man knoweth of his sepulchre unto this day"); Joshua's
+book opening with no pause to grieve ("Moses my servant is dead; now
+therefore arise") and God repeating Moses's own promise back to him word
+for word ("as I was with Moses, so I will be with thee"); the two and a
+half tribes east of the Jordan pledging loyalty before Joshua has led
+anything yet; Rahab hiding the two spies in Jericho and confessing faith
+in the God of Israel before Israel has even arrived at her gate; and
+Israel crossing the Jordan on dry ground behind the ark, the priests
+stepping into the flooded river before the water stops rather than
+after; Day 55 (lib/bibleYearDayFiftyFiveScript.ts, Deuteronomy 30-33,
 "Choose Life and Receive Moses' Blessing" — the restoration promise if
 Israel returns after exile ("the LORD thy God will circumcise thine
 heart"), the "choose life" passage where Moses insists the command is not
