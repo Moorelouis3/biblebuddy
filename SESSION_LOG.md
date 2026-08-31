@@ -2867,3 +2867,7 @@ Next up: Job 11
 ## 2026-08-31T18:56:30Z (hourly chapter notes run)
 Chapter: Job 11 | Duration: 8 min | Sections: 5 | Cards: 29 | Status: pass
 Next up: Job 12
+
+## 2026-08-31T20:26:26Z (bible year day writer run)
+Day: 61 — Refuge, Rest, and Joshua's Warning (Joshua 20-23) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 62
