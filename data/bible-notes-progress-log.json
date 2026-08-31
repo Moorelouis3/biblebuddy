@@ -29052,6 +29052,63 @@
           "at": "2026-08-31T06:55:44Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 6,
+      "startedAt": "2026-08-31T08:46:29Z",
+      "finishedAt": "2026-08-31T08:53:59Z",
+      "durationMinutes": 8,
+      "sections": 5,
+      "cards": 36,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty. Normal forward progress after Job 5, writing Job 6 (no dedicated wired-in file existed for this chapter, only the legacy bulk JOB_1_10_PERSONAL_SECTIONS batch covered it before). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (30 verses). Job 6 is Job's first reply to Eliphaz: he wishes his grief could be weighed on a merchant's scale since it outweighs the sand of the sea, describes feeling struck by God's own poisoned arrows and surrounded by terror arrayed for battle, defends his complaining with the wild donkey and ox who only cry out when something is wrong, wishes God would simply let loose His hand and end his life while insisting he has never hidden or rejected God's words, admits he has no strength or inner reserve left, compares his friends to a desert wadi that looks full of promise in winter ice melt but vanishes exactly when hot season travelers from Tema and Sheba need it most, turns that image directly on his friends as having become nothing, clarifies he never once asked them for money or rescue from an enemy, then closes by inviting them to actually prove him wrong instead of just arguing, accusing them of overwhelming the fatherless and digging a pit for a friend, and insisting he can tell right from wrong as surely as a tongue can taste. Chunked into 5 sections matching the speech's own movements (1-7 Job's grief outweighs the sand, 8-13 a longing for death, 14-20 friends like a dry streambed, 21-23 Job never asked for money, 24-30 Job demands honest correction). Density about 1.2 cards/verse (30 verses, 36 cards). scripts/check_bible_note_style.py found 3 problems on first pass (three bullets one word over the eight word cap), fixed all three, second run clean with 0 problems across all 36 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (throughly, shewed, brethren, confounded, reprove, iniquity, forcible, and the wadi/caravan background behind the deceitful brook image), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji ending on \ud83d\udcd6, no repeated emoji within a card, no duplicate card titles across all 36 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file. Parser check passed exactly via getBibleReaderStudySections('job', 6) (5/5 sections, verse ranges 1-7/8-13/14-20/21-23/24-30 with no gaps, text rendered verbatim, 36 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/jobSixSource.ts), preserveExactPhraseBodies for job extended from chapters 1-5 to 1-6, applyPersonalJobSixChapterStudySections() call added directly after applyPersonalJobFiveChapterStudySections() so it overrides the legacy bulk 1-10 coverage for chapter 6 only. Next forward-progress target is Job 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-31T08:46:29Z"
+        },
+        {
+          "name": "target chapter determined: Job 6 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-08-31T08:46:29Z"
+        },
+        {
+          "name": "KJV text fetched (Job 6, 30 verses, aruljohn mirror)",
+          "at": "2026-08-31T08:47:06Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill file read in full",
+          "at": "2026-08-31T08:47:06Z"
+        },
+        {
+          "name": "source file written: lib/jobSixSource.ts (5 sections, 36 cards)",
+          "at": "2026-08-31T08:53:04Z"
+        },
+        {
+          "name": "style checker first pass: 3 problems found (bullet word counts over the 8 word cap)",
+          "at": "2026-08-31T08:53:04Z"
+        },
+        {
+          "name": "style checker clean after fixes: 0 problems, 36 cards",
+          "at": "2026-08-31T08:53:04Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range 1-6, applyPersonalJobSixChapterStudySections call)",
+          "at": "2026-08-31T08:53:04Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('job', 6): 5 sections, 36 cards)",
+          "at": "2026-08-31T08:53:04Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-08-31T08:53:04Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-31T08:53:59Z"
+        }
+      ]
     }
   ]
 }

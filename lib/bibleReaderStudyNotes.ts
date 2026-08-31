@@ -470,6 +470,7 @@ import { JOB_TWO_PERSONAL_SECTIONS } from "./jobTwoSource";
 import { JOB_THREE_PERSONAL_SECTIONS } from "./jobThreeSource";
 import { JOB_FOUR_PERSONAL_SECTIONS } from "./jobFourSource";
 import { JOB_FIVE_PERSONAL_SECTIONS } from "./jobFiveSource";
+import { JOB_SIX_PERSONAL_SECTIONS } from "./jobSixSource";
 import { JOB_11_30_PERSONAL_SECTIONS } from "./jobElevenToThirtyPersonalNotes";
 import { JOB_31_42_PERSONAL_SECTIONS } from "./jobThirtyOneToFortyTwoPersonalNotes";
 import { PSALMS_1_6_PERSONAL_SECTIONS } from "./psalmsOneToSixPersonalNotes";
@@ -866,7 +867,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "ezra" && section.chapter >= 1 && section.chapter <= 10) ||
     (normalizeBook(book) === "nehemiah" && section.chapter >= 1 && section.chapter <= 13) ||
     (normalizeBook(book) === "esther" && section.chapter >= 1 && section.chapter <= 10) ||
-    (normalizeBook(book) === "job" && section.chapter >= 1 && section.chapter <= 5);
+    (normalizeBook(book) === "job" && section.chapter >= 1 && section.chapter <= 6);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1696,6 +1697,10 @@ function applyPersonalJobFourChapterStudySections() {
 
 function applyPersonalJobFiveChapterStudySections() {
   replaceStudySectionsForBookRange("job", 5, 5, JOB_FIVE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJobSixChapterStudySections() {
+  replaceStudySectionsForBookRange("job", 6, 6, JOB_SIX_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJobElevenThroughThirtyStudySections() {
@@ -9177,6 +9182,7 @@ applyPersonalJobTwoChapterStudySections();
 applyPersonalJobThreeChapterStudySections();
 applyPersonalJobFourChapterStudySections();
 applyPersonalJobFiveChapterStudySections();
+applyPersonalJobSixChapterStudySections();
 applyPersonalJobElevenThroughThirtyStudySections();
 applyPersonalJobThirtyOneThroughFortyTwoStudySections();
 applyPersonalPsalmsOneThroughSixStudySections();

@@ -2827,3 +2827,7 @@ Next up: Day 56
 ## 2026-08-31T08:29:39Z (bible year day writer run)
 Day: 56 — Moses Dies and Joshua Leads (Deuteronomy 34; Joshua 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 57 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-31T08:54:19Z (hourly chapter notes run)
+Chapter: Job 6 | Duration: 8 min | Sections: 5 | Cards: 36 | Status: pass
+Next up: Job 7
