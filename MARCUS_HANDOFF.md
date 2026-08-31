@@ -35,7 +35,23 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 59 (lib/bibleYearDayFiftyNineScript.ts, Joshua 12-15,
+through Day 60 (lib/bibleYearDaySixtyScript.ts, Joshua 16-19,
+"Inheritance for the Tribes" — Ephraim and Manasseh's territory with the
+same "did not drive them out" line showing up twice, once for the
+Canaanites at Gezer and once for the iron-chariot valley cities;
+Zelophehad's five daughters actually receiving the inheritance Moses
+promised them; Joseph's tribe complaining about its "one lot" and Joshua
+daring them to go clear the forest country themselves instead of getting
+more land handed to them; the Shiloh assembly where Joshua rebukes seven
+tribes for being "slack to go possess" land already given, then sends
+surveyors to map it before casting lots; Benjamin's border running past
+Jebusite-held Jerusalem; Simeon settling inside Judah's excess territory,
+which is Jacob's Genesis 49 "scatter them in Israel" verdict on Simeon
+playing out generations later; and the closing lots where Dan's
+territory runs out too small so they go take a city called Leshem and
+rename it Dan, followed by Joshua receiving his own city, Timnath-serah,
+dead last on the list after every other tribe is settled); Day 59
+(lib/bibleYearDayFiftyNineScript.ts, Joshua 12-15,
 "The Land Is Distributed" — the thirty-one-king receipt of everyone
 defeated on both sides of the Jordan; Joshua told plainly that "there
 remaineth yet very much land to be possessed" even as he's ordered to

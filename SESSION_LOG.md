@@ -2855,3 +2855,7 @@ Next up: Job 10
 ## 2026-08-31T16:31:05Z (bible year day writer run)
 Day: 59 — The Land Is Distributed (Joshua 12-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 60
+
+## 2026-08-31T16:32:44Z (bible year day writer run)
+Day: 60 — Inheritance for the Tribes (Joshua 16-19) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 61 (run stops here — 2-day-per-run limit reached)
