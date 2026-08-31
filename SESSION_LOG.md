@@ -2819,3 +2819,7 @@ Next up: Job 5
 ## 2026-08-31T06:56:25Z (hourly chapter notes run)
 Chapter: Job 5 | Duration: 9 min | Sections: 5 | Cards: 37 | Status: pass
 Next up: Job 6
+
+## 2026-08-31T08:27:31Z (bible year day writer run)
+Day: 55 — Choose Life and Receive Moses' Blessing (Deuteronomy 30-33) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 56

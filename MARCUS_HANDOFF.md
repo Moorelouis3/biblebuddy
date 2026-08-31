@@ -35,7 +35,21 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 54 (lib/bibleYearDayFiftyFourScript.ts, Deuteronomy 26-29,
+through Day 55 (lib/bibleYearDayFiftyFiveScript.ts, Deuteronomy 30-33,
+"Choose Life and Receive Moses' Blessing" — the restoration promise if
+Israel returns after exile ("the LORD thy God will circumcise thine
+heart"), the "choose life" passage where Moses insists the command is not
+in heaven or beyond the sea but near enough to touch, Moses at a hundred
+and twenty handing Joshua the charge in public and ordering the law read
+aloud every seven years at Tabernacles, God telling Moses plainly (before
+Israel has even crossed the Jordan) that they will fall into idolatry and
+having him write the Song of Moses as future testimony against them, the
+Song itself (the Rock, the eagle and the apple of the eye, Jeshurun
+growing fat and kicking, the vengeance and healing that belong to God
+alone, and Moses sent up Nebo to see the land but not enter it because of
+Meribah), and Moses blessing every tribe by name before he dies, closing
+on "underneath are the everlasting arms"; Day 54
+(lib/bibleYearDayFiftyFourScript.ts, Deuteronomy 26-29,
 "Blessing, Curse, and Covenant Renewal" — most recent: the firstfruits
 basket with its recited creed ("A Syrian ready to perish was my father"),
 the third-year tithe and the mutual "avouching" between Israel and God,
