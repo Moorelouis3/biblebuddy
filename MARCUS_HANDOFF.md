@@ -35,7 +35,24 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 57 (lib/bibleYearDayFiftySevenScript.ts, Joshua 4-7,
+through Day 58 (lib/bibleYearDayFiftyEightScript.ts, Joshua 8-11,
+"Conquest and Covenant Obedience" — Ai retaken cleanly right after
+Achan's sin cost the first attempt; Joshua stopping the whole campaign to
+build an altar on Mount Ebal and read the entire law, blessings and
+curses, aloud to every man, woman, child, and stranger; the Gibeonites
+tricking Israel into a peace treaty with moldy bread and worn sandals,
+and Israel keeping the oath even after the deception is exposed because
+it was sworn in the LORD's name; the five-king battle at Gibeon where
+hailstones kill more than the sword and Joshua asks the sun to stand
+still over Gibeon and the moon over Ajalon; the southern campaign's city
+list (Makkedah, Libnah, Lachish, Eglon, Hebron, Debir) falling in the
+same complete-obedience pattern Achan's shortcut had broken; the northern
+coalition under Jabin of Hazor with horses and chariots "as the sand upon
+the sea shore," broken at the waters of Merom with only Hazor itself
+burned; and the chapter closing on "the land rested from war," with a
+throwaway mention that Anakim giants survive in Gaza, Gath, and Ashdod —
+the cities that raise Goliath later); Day 57
+(lib/bibleYearDayFiftySevenScript.ts, Joshua 4-7,
 "Memorial Stones, Jericho, and Achan" — the twelve memorial stones taken
 from the Jordan riverbed and set up at Gilgal so a child years later would
 ask what they mean and get a true answer; the whole wilderness-born
