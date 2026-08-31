@@ -43,6 +43,24 @@ declare global {
   }
 }
 
+/**
+ * Warm YouTube up before anyone presses play. The player used to start cold:
+ * click an episode, THEN download the iframe API, THEN build the iframe, THEN
+ * fetch the video - a several-second chain on a phone. Calling this when the
+ * TV surface mounts moves the first two steps to page load.
+ */
+export function warmUpYouTube() {
+  if (typeof window === "undefined") return;
+  for (const origin of ["https://www.youtube.com", "https://i.ytimg.com", "https://www.google.com"]) {
+    if (document.querySelector(`link[rel=preconnect][href="${origin}"]`)) continue;
+    const link = document.createElement("link");
+    link.rel = "preconnect";
+    link.href = origin;
+    document.head.appendChild(link);
+  }
+  void loadYouTubeIframeApi();
+}
+
 function loadYouTubeIframeApi() {
   if (typeof window === "undefined") {
     return Promise.resolve();

@@ -224,6 +224,12 @@ export default function HomeScreen() {
         </section>
       ) : null}
 
+      <section className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f0ff)] p-4">
+        <p className="text-xs font-black uppercase tracking-wide text-[#7c3aed]">Verse of the Day</p>
+        <p className="mt-1 text-base font-black leading-snug text-[var(--bb-text-primary,#111827)]">{verse.text}</p>
+        <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">{verse.reference} · KJV</p>
+      </section>
+
       <section>
         <SectionHeading label="Featured on Bible Buddy TV" href="/biblebuddy-tv" />
         <div className="grid grid-cols-3 gap-2">
@@ -247,28 +253,26 @@ export default function HomeScreen() {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f0ff)] p-4">
-        <p className="text-xs font-black uppercase tracking-wide text-[#7c3aed]">Verse of the Day</p>
-        <p className="mt-1 text-base font-black leading-snug text-[var(--bb-text-primary,#111827)]">{verse.text}</p>
-        <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">{verse.reference} · KJV</p>
-      </section>
-
       <section>
         <SectionHeading label="Recommended Reading" href="/blog" />
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+        {/* Full banners with the title underneath - the blog banners are wide
+            poster art, so a thumbnail strip wasted them and looked empty. */}
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {recommended.map((article) => (
-            <Link
-              key={article.slug}
-              href={article.canonicalPath}
-              className="flex items-center gap-3 overflow-hidden rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
-            >
-              <div className="relative h-16 w-20 shrink-0 bg-[var(--bb-surface-soft,#eef2f7)]">
-                <Image src={article.image} alt="" fill className="object-cover" sizes="80px" />
+            <Link key={article.slug} href={article.canonicalPath} className="block">
+              <div className="relative aspect-[1728/910] overflow-hidden rounded-xl bg-[var(--bb-surface-soft,#eef2f7)]">
+                <Image
+                  src={article.image}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, 360px"
+                />
               </div>
-              <div className="min-w-0 py-2 pr-3">
-                <p className="line-clamp-2 text-sm font-black text-[var(--bb-text-primary,#111827)]">{article.title}</p>
-                <p className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">{article.readTime}</p>
-              </div>
+              <p className="mt-1.5 line-clamp-2 text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                {article.title}
+              </p>
+              <p className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">{article.readTime}</p>
             </Link>
           ))}
         </div>

@@ -2370,7 +2370,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const shouldHideShellChrome = Boolean(pathname?.startsWith("/dashboard")) && dashboardFullscreenLoading;
   const shouldShowOnlyLoadingScreen = Boolean(pathname?.startsWith("/dashboard")) && appShellBooting;
 
-  const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && !pathname.startsWith("/dashboard");
+  // The bottom tab bar is the app's one menu now. The old header dropdown
+  // stays in the code but never renders - Louis wants one menu, not two.
+  const shouldShowNavMenu = false;
   // Unlike the header dropdown this DOES show on the dashboard, because the
   // dashboard is now the home tab.
   const showBottomNav = Boolean(isLoggedIn && !isBarePage);

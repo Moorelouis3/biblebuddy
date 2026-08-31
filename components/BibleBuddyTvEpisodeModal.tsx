@@ -15,6 +15,7 @@ import { getKeywordPopupNotes, getPersonPopupNotes, getPlacePopupNotes } from ".
 import CreditLimitModal from "./CreditLimitModal";
 import ReactMarkdown from "react-markdown";
 import { LouisAvatar } from "./LouisAvatar";
+import { warmUpYouTube } from "./YouTubeTrackedPlayer";
 import YouTubeTrackedPlayer from "./YouTubeTrackedPlayer";
 
 const CAROLINA_BLUE = "#4B9CD3";
@@ -202,6 +203,9 @@ export default function BibleBuddyTvEpisodeModal({
   useEffect(() => {
     if (!isOpen) return;
     setPlayerLoading(Boolean(episode?.youtubeUrl));
+    // Start fetching the YouTube API the moment the modal opens, not when the
+    // player mounts - shaves the coldest part of the load chain.
+    if (episode?.youtubeUrl) warmUpYouTube();
   }, [episode?.youtubeUrl, isOpen]);
 
   useEffect(() => {
