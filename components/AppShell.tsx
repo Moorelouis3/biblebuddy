@@ -22,6 +22,7 @@ import { normalizeCustomMemberBadge } from "../lib/userBadges";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profileName";
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
+import BottomNav from "./BottomNav";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import {
   applyAppThemeToDocument,
@@ -2370,6 +2371,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const shouldShowOnlyLoadingScreen = Boolean(pathname?.startsWith("/dashboard")) && appShellBooting;
 
   const shouldShowNavMenu = isLoggedIn && !isBarePage && pathname && !pathname.startsWith("/dashboard");
+  // Unlike the header dropdown this DOES show on the dashboard, because the
+  // dashboard is now the home tab.
+  const showBottomNav = Boolean(isLoggedIn && !isBarePage);
   const breadcrumbItems = buildBreadcrumbs(pathname);
   // Genesis 1 is the clean-reader prototype and supplies its own chapter
   // navigation, so it opts out of the breadcrumb row. Genesis 1 only.
@@ -3507,7 +3511,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       )}
 
       {/* PAGE CONTENT */}
-      <main className={!isBarePage ? `min-h-screen bg-[var(--bb-background,#eef4fb)] ${shouldHideShellChrome ? "" : "pt-2 pb-2"}` : ""}>
+      <main
+        className={
+          !isBarePage
+            ? `min-h-screen bg-[var(--bb-background,#eef4fb)] ${shouldHideShellChrome ? "" : "pt-2 pb-2"} ${
+                // Reserve the bar's height so it never covers the last thing
+                // on a page.
+                showBottomNav ? "pb-[76px]" : ""
+              }`
+            : ""
+        }
+      >
         {shouldShowBreadcrumbs && (
           <div className="max-w-5xl mx-auto px-4 pt-2">
             <BibleStudyBreadcrumb items={breadcrumbItems} className="mb-2" />
@@ -3515,6 +3529,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         )}
         {children}
       </main>
+
+      {/* The way in to TV, the games, invite, chat and notes, none of which
+          anything linked to before. Hidden on bare pages - blog, public
+          profiles, embeds - which are not the app. */}
+      {showBottomNav ? <BottomNav /> : null}
 
       <FirstLoginOnboardingModal
         isOpen={showFirstLoginOnboarding && isLoggedIn}

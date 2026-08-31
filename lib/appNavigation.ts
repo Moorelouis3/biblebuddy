@@ -42,7 +42,7 @@ export const APP_NAV_ITEMS: AppNavItem[] = [
     hoverClasses: "text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 active:scale-[0.98]",
   },
   {
-    label: "Devotionals",
+    label: "Plans",
     href: "/plans",
     activePrefixes: ["/guided-studies", "/plans", "/reading-plans", "/bible-studies", "/devotionals", "/bible-study-hub", "/bible-study-tips", "/bible-study-guides"],
     activeExact: ["/bible-references"],
