@@ -2843,3 +2843,7 @@ Next up: Day 58
 ## 2026-08-31T12:47:00Z (bible year day writer run)
 Day: 58 — Conquest and Covenant Obedience (Joshua 8-11) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 59 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-31T12:57:30Z (hourly chapter notes run)
+Chapter: Job 8 | Duration: 11 min | Sections: 6 | Cards: 30 | Status: pass
+Next up: Job 9
