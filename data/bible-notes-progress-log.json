@@ -28942,6 +28942,59 @@
           "at": "2026-08-31T02:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 4,
+      "startedAt": "2026-08-31T04:47:07Z",
+      "finishedAt": "2026-08-31T04:52:45Z",
+      "durationMinutes": 6,
+      "sections": 4,
+      "cards": 27,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue file does not exist in this repo; data/bible-notes-style-redo-remaining.json confirmed empty (remaining=[]). Session started with HEAD detached from refs/heads/main and a stale cached origin/main ref that appeared far behind (showing Esther-era commits); git fetch origin main refreshed that cache and confirmed origin/main actually matched local HEAD exactly (ea18c42, a Bible in One Year script commit sitting on top of the Job 3 notes commit), so git checkout -B main origin/main reset local main to it with nothing lost, the same recurring stale-ref pattern seen in prior runs. Normal forward progress after Job 3, writing Job 4 (no dedicated wired-in file existed for this chapter, only the legacy bulk JOB_1_10_PERSONAL_SECTIONS batch covered it before). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (21 verses). Job 4 opens Eliphaz the Temanite's first speech: he asks permission to speak, reminds Job that Job himself used to strengthen the weak and fainting, turns that same standard back on Job now that Job is the one struggling, states his core retribution theology that the truly innocent are never destroyed and the wicked reap what they sow (developed through lion imagery), then recounts a private night vision, a spirit passing before his face, hair standing on end, and a voice asking whether mortal man can be more just than God, closing with the vision's argument that even angels are imperfect and human bodies are as fragile as houses of clay, crushed as easily as by a moth, dying suddenly and being forgotten. Chunked into 4 sections matching the speech's own movement (1-6 Eliphaz introduced and his opening appeal, 7-11 his theory that suffering follows sin, 12-16 the night vision itself, 17-21 the vision's message on human fragility). Density about 1.29 cards per verse (21 verses, 27 cards). scripts/check_bible_note_style.py flagged five bullets one word over the eight word limit and one closing bullet using the wrong emoji (⚠️ instead of 📖/➡️) on the first pass, all six fixed and the checker was clean on rerun across all 27 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (Temanite, assay, commune, withhold, plow iniquity, houses of clay, excellency), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji ending on 📖 or ➡️, no repeated emoji within a card, no duplicate card titles across all 27 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('job', 4) (4/4 sections, verse ranges 1-6/7-11/12-16/17-21 with no gaps, text rendered verbatim, 27 total cards). npx tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/jobFourSource.ts), preserveExactPhraseBodies for job extended from chapters 1-3 to 1-4, applyPersonalJobFourChapterStudySections() call added directly after applyPersonalJobThreeChapterStudySections() so it overrides the legacy bulk 1-10 coverage for chapter 4 only. Next forward-progress target is Job 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-08-31T04:47:07Z"
+        },
+        {
+          "name": "target chapter determined: Job 4 (normal forward progress, priority queue file absent, style-redo backlog empty)",
+          "at": "2026-08-31T04:47:07Z"
+        },
+        {
+          "name": "KJV text fetched (Job 4, 21 verses, aruljohn mirror)",
+          "at": "2026-08-31T04:47:07Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-08-31T04:47:07Z"
+        },
+        {
+          "name": "source file written (lib/jobFourSource.ts)",
+          "at": "2026-08-31T04:49:49Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 27 cards, 0 problems)",
+          "at": "2026-08-31T04:49:49Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, applyPersonalJobFourChapterStudySections, preserveExactPhraseBodies extended to job 1-4)",
+          "at": "2026-08-31T04:49:49Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('job', 4), 4 sections, 27 cards)",
+          "at": "2026-08-31T04:51:40Z"
+        },
+        {
+          "name": "npx tsc --noEmit clean",
+          "at": "2026-08-31T04:51:40Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-31T04:52:45Z"
+        }
+      ]
     }
   ]
 }
