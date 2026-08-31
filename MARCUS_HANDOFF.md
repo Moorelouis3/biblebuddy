@@ -35,8 +35,27 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 52 (lib/bibleYearDayFiftyTwoScript.ts, Deuteronomy 18-21,
-"Prophets, Cities, and Justice" — most recent: the Levites' portion and
+through Day 54 (lib/bibleYearDayFiftyFourScript.ts, Deuteronomy 26-29,
+"Blessing, Curse, and Covenant Renewal" — most recent: the firstfruits
+basket with its recited creed ("A Syrian ready to perish was my father"),
+the third-year tithe and the mutual "avouching" between Israel and God,
+the law stones plastered and written on Mount Ebal, the twelve curses
+recited antiphonally between Gerizim and Ebal with the whole nation
+answering amen, the full blessings-and-curses of chapter 28 (its 68-verse
+curse half echoing Leviticus 26 from Day 38, now aimed at the generation
+about to actually live it), and Moses renewing the covenant in Moab with
+the line "the secret things belong unto the Lord our God, but those
+things which are revealed belong unto us and to our children"; Day 53
+(lib/bibleYearDayFiftyThreeScript.ts, Deuteronomy 22-25, "Everyday
+Faithfulness" — the lost-property and roof-battlement laws, the
+virginity-tokens dispute, who is excluded from the assembly and the
+Ammonite/Moabite exclusion that gets revisited once Ruth's story arrives,
+the escaped-servant and usury laws, divorce and the newly married man's
+year off from war, gleaning tied to "remember you were a slave in Egypt,"
+and the closing set — forty stripes, the unmuzzled ox, levirate marriage
+and the shoe-loosing ceremony, honest weights, and the command to
+remember Amalek; Day 52 (lib/bibleYearDayFiftyTwoScript.ts, Deuteronomy
+18-21, "Prophets, Cities, and Justice" — the Levites' portion and
 the promise of a prophet like Moses in place of divination and magic,
 cities of refuge set apart for someone who kills by accident, the
 two-or-three-witness rule and the "eye for eye" ceiling that caps

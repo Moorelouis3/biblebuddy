@@ -2806,4 +2806,8 @@ Next up: Job 4
 
 ## 2026-08-31T04:25:48Z (bible year day writer run)
 Day: 53 — Everyday Faithfulness (Deuteronomy 22-25) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
-Next up: Day 54 (run stops here — 2-day-per-run limit reached)
+Next up: Day 54
+
+## 2026-08-31T04:47:00Z (bible year day writer run)
+Day: 54 — Blessing, Curse, and Covenant Renewal (Deuteronomy 26-29) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 55 (run stops here — 2-day-per-run limit reached)
