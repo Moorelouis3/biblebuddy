@@ -2787,3 +2787,7 @@ Next up: Job 1
 ## 2026-08-30T22:54:55Z (hourly chapter notes run)
 Chapter: Job 1 | Duration: 8 min | Sections: 8 | Cards: 41 | Status: pass
 Next up: Job 2
+
+## 2026-08-31T00:26:21Z (bible year day writer run)
+Day: 51 — Worship, Justice, and Leadership (Deuteronomy 14-17) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 52

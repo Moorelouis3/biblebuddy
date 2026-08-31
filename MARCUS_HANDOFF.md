@@ -35,8 +35,19 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 50 (lib/bibleYearDayFiftyScript.ts, Deuteronomy 10-13,
-"Covenant Loyalty From the Heart" — most recent: new tablets carried in
+through Day 51 (lib/bibleYearDayFiftyOneScript.ts, Deuteronomy 14-17,
+"Worship, Justice, and Leadership" — most recent: clean and unclean food
+as a daily marker of identity, the third-year tithe for the Levite,
+stranger, fatherless, and widow, the seven-year release of debt and the
+warning against watching the calendar to avoid lending, a servant who
+stays by choice with his ear pierced to the doorpost, the firstborn
+animals set apart, the three pilgrim feasts (Passover, Weeks,
+Tabernacles) with giving scaled to what each person actually has, judges
+warned against bribes paired with a warning against imitation worship at
+the altar, and a law for a king Israel has not asked for yet — no
+multiplying horses, wives, or gold, and a lifelong requirement to read
+his own copy of the law; Day 50 (lib/bibleYearDayFiftyScript.ts,
+Deuteronomy 10-13, "Covenant Loyalty From the Heart" — new tablets carried in
 an ark, the Levites set apart with God himself as their only inheritance,
 Moses's summary question ("what does the Lord your God require of you?"),
 circumcising the heart, the blessing and curse set on Mount Gerizim and
