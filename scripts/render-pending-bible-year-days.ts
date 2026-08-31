@@ -122,14 +122,31 @@ async function main() {
     return;
   }
 
+  // Keep going when a day fails. Day 41 threw "No Scripture found for numbers
+  // 13" and took days 42-54 down with it, so a single data gap cost thirteen
+  // days of audio. Failures are collected and reported at the end instead.
+  const failures: Array<{ day: number; message: string }> = [];
+
   for (const { day } of pending) {
     console.log(`\n--- day ${day} ---`);
-    execFileSync("npx", ["tsx", RENDERER, `--day=${day}`, "--upload"], {
-      stdio: "inherit",
-      shell: process.platform === "win32",
-    });
+    try {
+      execFileSync("npx", ["tsx", RENDERER, `--day=${day}`, "--upload"], {
+        stdio: "inherit",
+        shell: process.platform === "win32",
+      });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      failures.push({ day, message });
+      console.log(`  day ${day} FAILED, continuing: ${message.split("\n")[0]}`);
+    }
   }
-  console.log(`\nDone. Published ${pending.length} day(s).`);
+
+  console.log(`\nDone. Published ${pending.length - failures.length} of ${pending.length} day(s).`);
+  if (failures.length) {
+    console.log("Failed:");
+    for (const f of failures) console.log(`  day ${f.day}: ${f.message.split("\n")[0]}`);
+    process.exitCode = 1;
+  }
 }
 
 void main();
