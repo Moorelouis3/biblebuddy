@@ -1,55 +1,55 @@
 import type { VerseOfTheDayEntry } from "./verseOfTheDay";
 
 const RAW_EXTRA_VERSES = `
-John 16:7|212|But very truly I tell you, it is for your good that I am going away. Unless I go away, the Advocate will not come to you; but if I go, I will send him to you.
-1 Peter 3:18|213|For Christ also suffered once for sins, the righteous for the unrighteous, to bring you to God. He was put to death in the body but made alive in the Spirit.
-Hebrews 10:25|214|Not giving up meeting together, as some are in the habit of doing, but encouraging one another - and all the more as you see the Day approaching.
-John 2:2|215|And Jesus and his disciples had also been invited to the wedding.
-Matthew 7:8|216|For everyone who asks receives; those who seek find; and to those who knock, the door will be opened.
-Matthew 5:13|217|"You are the salt of the earth. But if the salt loses its saltiness, how can it be made salty again? It is no longer good for anything, except to be thrown out and trampled underfoot."
-James 4:7|218|Submit yourselves, then, to God. Resist the devil, and he will flee from you.
-John 10:11|219|"I am the good shepherd. The good shepherd lays down his life for the sheep."
-John 4:8|220|(His disciples had gone into the town to buy food.)
-1 Peter 2:24|221|"He himself bore our sins" in his body on the cross, so that we might die to sins and live for righteousness; "by his wounds you have been healed."
-John 14:27|222|Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.
-John 6:37|223|All whom the Father gives me will come to me, and whoever comes to me I will never drive away.
-Acts 6:1|224|In those days when the number of disciples was increasing, the Hellenistic Jews among them complained against the Hebraic Jews because their widows were being overlooked in the daily distribution of food.
-Romans 8:26|225|In the same way, the Spirit helps us in our weakness. We do not know what we ought to pray for, but the Spirit himself intercedes for us through wordless groans.
-John 20:1|226|Early on the first day of the week, while it was still dark, Mary Magdalene went to the tomb and saw that the stone had been removed from the entrance.
-John 6:7|227|Philip answered him, "It would take almost a year's wages to buy enough bread for each one to have a bite!"
-Luke 14:1|228|One Sabbath, when Jesus went to eat in the house of a prominent Pharisee, he was being carefully watched.
-Romans 8:29|229|For those God foreknew he also predestined to be conformed to the image of his Son, that he might be the firstborn among many brothers and sisters.
-John 5:19|230|Jesus gave them this answer: "Very truly I tell you, the Son can do nothing by himself; he can do only what he sees his Father doing, because whatever the Father does the Son also does."
-Jeremiah 17:9|231|The heart is deceitful above all things and beyond cure. Who can understand it?
-1 John 4:7|232|Dear friends, let us love one another, for love comes from God. Everyone who loves has been born of God and knows God.
-Exodus 1:5|233|The descendants of Jacob numbered seventy in all; Joseph was already in Egypt.
-1 John 2:15|234|Do not love the world or anything in the world. If you love the world, love for the Father is not in you.
-2 Peter 1:20|235|Above all, you must understand that no prophecy of Scripture came about by the prophet's own interpretation of things.
-Colossians 3:12|236|Therefore, as God's chosen people, holy and dearly loved, clothe yourselves with compassion, kindness, humility, gentleness and patience.
-John 15:26|237|"When the Advocate comes, whom I will send to you from the Father - the Spirit of truth who goes out from the Father - he will testify about me."
-John 17:20|238|"My prayer is not for them alone. I pray also for those who will believe in me through their message,"
-1 John 3:1|239|See what great love the Father has lavished on us, that we should be called children of God! And that is what we are!
-Acts 10:34|240|Then Peter began to speak: "I now realize how true it is that God does not show favoritism"
-Luke 4:16|241|He went to Nazareth, where he had been brought up, and on the Sabbath day he went into the synagogue, as was his custom. He stood up to read.
-Matthew 2:1|242|After Jesus was born in Bethlehem in Judea, during the time of King Herod, Magi from the east came to Jerusalem.
-Titus 1:5|243|The reason I left you in Crete was that you might put in order what was left unfinished and appoint elders in every town, as I directed you.
-Acts 17:10|244|As soon as it was night, the believers sent Paul and Silas away to Berea. On arriving there, they went to the Jewish synagogue.
-Luke 9:23|245|Then he said to them all: "Whoever wants to be my disciple must deny themselves and take up their cross daily and follow me."
-Galatians 3:26|246|So in Christ Jesus you are all children of God through faith.
-1 John 2:1|247|My dear children, I write this to you so that you will not sin. But if anybody does sin, we have an advocate with the Father - Jesus Christ, the Righteous One.
-1 Peter 5:8|248|Be alert and of sober mind. Your enemy the devil prowls around like a roaring lion looking for someone to devour.
-2 Corinthians 1:2|249|Grace and peace to you from God our Father and the Lord Jesus Christ.
-1 John 5:7|250|For there are three that testify:
-Hebrews 4:15|251|For we do not have a high priest who is unable to empathize with our weaknesses, but we have one who has been tempted in every way, just as we are - yet he did not sin.
-Hebrews 1:3|252|The Son is the radiance of God's glory and the exact representation of his being, sustaining all things by his powerful word.
-Acts 1:1|253|In my former book, Theophilus, I wrote about all that Jesus began to do and to teach.
-Galatians 5:1|254|It is for freedom that Christ has set us free. Stand firm, then, and do not let yourselves be burdened again by a yoke of slavery.
-John 4:10|255|Jesus answered her, "If you knew the gift of God and who it is that asks you for a drink, you would have asked him and he would have given you living water."
-John 5:14|256|Later Jesus found him at the temple and said to him, "See, you are well again. Stop sinning or something worse may happen to you."
-Luke 2:3|257|And everyone went to their own town to register.
-Isaiah 14:12|258|How you have fallen from heaven, morning star, son of the dawn! You have been cast down to the earth, you who once laid low the nations!
-Hebrews 13:8|259|Jesus Christ is the same yesterday and today and forever.
-Galatians 3:4|260|Have you experienced so much in vain - if it really was in vain?
+John 16:7|212|Nevertheless I tell you the truth; It is expedient for you that I go away: for if I go not away, the Comforter will not come unto you; but if I depart, I will send him unto you.
+1 Peter 3:18|213|For Christ also hath once suffered for sins, the just for the unjust, that he might bring us to God, being put to death in the flesh, but quickened by the Spirit:
+Hebrews 10:25|214|Not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another: and so much the more, as ye see the day approaching.
+John 2:2|215|And both Jesus was called, and his disciples, to the marriage.
+Matthew 7:8|216|For every one that asketh receiveth; and he that seeketh findeth; and to him that knocketh it shall be opened.
+Matthew 5:13|217|Ye are the salt of the earth: but if the salt have lost his savour, wherewith shall it be salted? it is thenceforth good for nothing, but to be cast out, and to be trodden under foot of men.
+James 4:7|218|Submit yourselves therefore to God. Resist the devil, and he will flee from you.
+John 10:11|219|I am the good shepherd: the good shepherd giveth his life for the sheep.
+John 4:8|220|(For his disciples were gone away unto the city to buy meat.)
+1 Peter 2:24|221|Who his own self bare our sins in his own body on the tree, that we, being dead to sins, should live unto righteousness: by whose stripes ye were healed.
+John 14:27|222|Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid.
+John 6:37|223|All that the Father giveth me shall come to me; and him that cometh to me I will in no wise cast out.
+Acts 6:1|224|And in those days, when the number of the disciples was multiplied, there arose a murmuring of the Grecians against the Hebrews, because their widows were neglected in the daily ministration.
+Romans 8:26|225|Likewise the Spirit also helpeth our infirmities: for we know not what we should pray for as we ought: but the Spirit itself maketh intercession for us with groanings which cannot be uttered.
+John 20:1|226|The first day of the week cometh Mary Magdalene early, when it was yet dark, unto the sepulchre, and seeth the stone taken away from the sepulchre.
+John 6:7|227|Philip answered him, Two hundred pennyworth of bread is not sufficient for them, that every one of them may take a little.
+Luke 14:1|228|And it came to pass, as he went into the house of one of the chief Pharisees to eat bread on the sabbath day, that they watched him.
+Romans 8:29|229|For whom he did foreknow, he also did predestinate to be conformed to the image of his Son, that he might be the firstborn among many brethren.
+John 5:19|230|Then answered Jesus and said unto them, Verily, verily, I say unto you, The Son can do nothing of himself, but what he seeth the Father do: for what things soever he doeth, these also doeth the Son likewise.
+Jeremiah 17:9|231|The heart is deceitful above all things, and desperately wicked: who can know it?
+1 John 4:7|232|Beloved, let us love one another: for love is of God; and every one that loveth is born of God, and knoweth God.
+Exodus 1:5|233|And all the souls that came out of the loins of Jacob were seventy souls: for Joseph was in Egypt already.
+1 John 2:15|234|Love not the world, neither the things that are in the world. If any man love the world, the love of the Father is not in him.
+2 Peter 1:20|235|Knowing this first, that no prophecy of the scripture is of any private interpretation.
+Colossians 3:12|236|Put on therefore, as the elect of God, holy and beloved, bowels of mercies, kindness, humbleness of mind, meekness, longsuffering;
+John 15:26|237|But when the Comforter is come, whom I will send unto you from the Father, even the Spirit of truth, which proceedeth from the Father, he shall testify of me:
+John 17:20|238|Neither pray I for these alone, but for them also which shall believe on me through their word;
+1 John 3:1|239|Behold, what manner of love the Father hath bestowed upon us, that we should be called the sons of God: therefore the world knoweth us not, because it knew him not.
+Acts 10:34|240|Then Peter opened his mouth, and said, Of a truth I perceive that God is no respecter of persons:
+Luke 4:16|241|And he came to Nazareth, where he had been brought up: and, as his custom was, he went into the synagogue on the sabbath day, and stood up for to read.
+Matthew 2:1|242|Now when Jesus was born in Bethlehem of Judaea in the days of Herod the king, behold, there came wise men from the east to Jerusalem,
+Titus 1:5|243|For this cause left I thee in Crete, that thou shouldest set in order the things that are wanting, and ordain elders in every city, as I had appointed thee:
+Acts 17:10|244|And the brethren immediately sent away Paul and Silas by night unto Berea: who coming thither went into the synagogue of the Jews.
+Luke 9:23|245|And he said to them all, If any man will come after me, let him deny himself, and take up his cross daily, and follow me.
+Galatians 3:26|246|For ye are all the children of God by faith in Christ Jesus.
+1 John 2:1|247|My little children, these things write I unto you, that ye sin not. And if any man sin, we have an advocate with the Father, Jesus Christ the righteous:
+1 Peter 5:8|248|Be sober, be vigilant; because your adversary the devil, as a roaring lion, walketh about, seeking whom he may devour:
+2 Corinthians 1:2|249|Grace be to you and peace from God our Father, and from the Lord Jesus Christ.
+1 John 5:7|250|For there are three that bear record in heaven, the Father, the Word, and the Holy Ghost: and these three are one.
+Hebrews 4:15|251|For we have not an high priest which cannot be touched with the feeling of our infirmities; but was in all points tempted like as we are, yet without sin.
+Hebrews 1:3|252|Who being the brightness of his glory, and the express image of his person, and upholding all things by the word of his power, when he had by himself purged our sins, sat down on the right hand of the Majesty on high;
+Acts 1:1|253|The former treatise have I made, O Theophilus, of all that Jesus began both to do and teach,
+Galatians 5:1|254|Stand fast therefore in the liberty wherewith Christ hath made us free, and be not entangled again with the yoke of bondage.
+John 4:10|255|Jesus answered and said unto her, If thou knewest the gift of God, and who it is that saith to thee, Give me to drink; thou wouldest have asked of him, and he would have given thee living water.
+John 5:14|256|Afterward Jesus findeth him in the temple, and said unto him, Behold, thou art made whole: sin no more, lest a worse thing come unto thee.
+Luke 2:3|257|And all went to be taxed, every one into his own city.
+Isaiah 14:12|258|How art thou fallen from heaven, O Lucifer, son of the morning! how art thou cut down to the ground, which didst weaken the nations!
+Hebrews 13:8|259|Jesus Christ the same yesterday, and to day, and for ever.
+Galatians 3:4|260|Have ye suffered so many things in vain? if it be yet in vain.
 `;
 
 function toId(reference: string): string {

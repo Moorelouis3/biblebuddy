@@ -51,7 +51,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-119-105",
     reference: "Psalm 119:105",
-    text: "Your word is a lamp to my feet and a light to my path.",
+    text: "Thy word is a lamp unto my feet, and a light unto my path.",
     subtitle: "God's Word guides one step at a time.",
     explanationSections: [
       { heading: "Who Wrote It", body: "David or another psalmist reflected on the steady guidance found in God's Word." },
@@ -63,7 +63,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-119-130",
     reference: "Psalm 119:130",
-    text: "The unfolding of your words gives light; it imparts understanding to the simple.",
+    text: "The entrance of thy words giveth light; it giveth understanding unto the simple.",
     subtitle: "Understanding begins when Scripture opens.",
     explanationSections: [
       { heading: "Who Wrote It", body: "A psalmist celebrated how God's Word teaches ordinary people." },
@@ -75,7 +75,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-1-1-2",
     reference: "Psalm 1:1-2",
-    text: "Blessed is the man who walks not in the counsel of the wicked... but his delight is in the law of the Lord.",
+    text: "Blessed is the man that walketh not in the counsel of the ungodly, nor standeth in the way of sinners, nor sitteth in the seat of the scornful. But his delight is in the law of the LORD; and in his law doth he meditate day and night.",
     subtitle: "Joy grows where Scripture is loved.",
     explanationSections: [
       { heading: "Who Wrote It", body: "Psalm 1 opens the Psalms by contrasting two ways to live." },
@@ -87,7 +87,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "2-timothy-3-16",
     reference: "2 Timothy 3:16",
-    text: "All Scripture is breathed out by God and profitable for teaching, for reproof, for correction, and for training in righteousness.",
+    text: "All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness:",
     subtitle: "Every page has purpose.",
     explanationSections: [
       { heading: "Who Wrote It", body: "Paul wrote this near the end of his life while urging Timothy to stay rooted in truth." },
@@ -99,7 +99,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "james-1-22",
     reference: "James 1:22",
-    text: "Be doers of the word, and not hearers only, deceiving yourselves.",
+    text: "But be ye doers of the word, and not hearers only, deceiving your own selves.",
     subtitle: "Study transforms when it becomes action.",
     explanationSections: [
       { heading: "Who Wrote It", body: "James wrote to believers under pressure who needed practical faith." },
@@ -111,7 +111,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "colossians-3-16",
     reference: "Colossians 3:16",
-    text: "Let the word of Christ dwell in you richly.",
+    text: "Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord.",
     subtitle: "Scripture was meant to live in you.",
     explanationSections: [
       { heading: "Who Wrote It", body: "Paul wrote this to a church that needed to stay centered on Christ." },
@@ -123,7 +123,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-119-11",
     reference: "Psalm 119:11",
-    text: "I have stored up your word in my heart, that I might not sin against you.",
+    text: "Thy word have I hid in mine heart, that I might not sin against thee.",
     subtitle: "What you store shapes who you become.",
     explanationSections: [
       { heading: "Who Wrote It", body: "A psalmist described the protective power of hiding God's Word within." },
@@ -135,7 +135,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "john-6-63",
     reference: "John 6:63",
-    text: "The words that I have spoken to you are spirit and life.",
+    text: "It is the spirit that quickeneth; the flesh profiteth nothing: the words that I speak unto you, they are spirit, and they are life.",
     subtitle: "God's Word carries life itself.",
     explanationSections: [
       { heading: "Who Wrote It", body: "John recorded Jesus saying this after difficult teaching that many struggled to accept." },
@@ -147,7 +147,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "romans-10-17",
     reference: "Romans 10:17",
-    text: "So faith comes from hearing, and hearing through the word of Christ.",
+    text: "So then faith cometh by hearing, and hearing by the word of God.",
     subtitle: "Faith grows through exposure to truth.",
     explanationSections: [
       { heading: "Who Wrote It", body: "Paul wrote to believers in Rome about salvation and the spread of the gospel." },
@@ -159,7 +159,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-119-18",
     reference: "Psalm 119:18",
-    text: "Open my eyes, that I may behold wondrous things out of your law.",
+    text: "Open thou mine eyes, that I may behold wondrous things out of thy law.",
     subtitle: "Ask God to help you see more.",
     explanationSections: [
       { heading: "Who Wrote It", body: "A psalmist prayed with humility before God's Word." },
@@ -171,7 +171,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-19-7",
     reference: "Psalm 19:7",
-    text: "The law of the Lord is perfect, reviving the soul.",
+    text: "The law of the LORD is perfect, converting the soul: the testimony of the LORD is sure, making wise the simple.",
     subtitle: "Scripture refreshes the weary heart.",
     explanationSections: [
       { heading: "Who Wrote It", body: "David praised both God's creation and God's Word." },
@@ -183,7 +183,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "matthew-4-4",
     reference: "Matthew 4:4",
-    text: "Man shall not live by bread alone, but by every word that comes from the mouth of God.",
+    text: "But he answered and said, It is written, Man shall not live by bread alone, but by every word that proceedeth out of the mouth of God.",
     subtitle: "Spiritual hunger needs spiritual food.",
     explanationSections: [
       { heading: "Who Said It", body: "Jesus said this while being tempted in the wilderness." },
@@ -195,7 +195,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "john-17-17",
     reference: "John 17:17",
-    text: "Sanctify them in the truth; your word is truth.",
+    text: "Sanctify them through thy truth: thy word is truth.",
     subtitle: "Truth shapes identity.",
     explanationSections: [
       { heading: "Who Said It", body: "Jesus prayed this over His followers before the cross." },
@@ -207,7 +207,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-119-33",
     reference: "Psalm 119:33",
-    text: "Teach me, O Lord, the way of your statutes.",
+    text: "Teach me, O LORD, the way of thy statutes; and I shall keep it unto the end.",
     subtitle: "Study begins with humility.",
     explanationSections: [
       { heading: "Who Wrote It", body: "A psalmist prayed like a student before God." },
@@ -219,7 +219,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "deuteronomy-6-6",
     reference: "Deuteronomy 6:6",
-    text: "And these words that I command you today shall be on your heart.",
+    text: "And these words, which I command thee this day, shall be in thine heart:",
     subtitle: "Scripture belongs in everyday life.",
     explanationSections: [
       { heading: "Who Wrote It", body: "Moses spoke this to Israel as they prepared to enter the promised land." },
@@ -231,7 +231,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "ezra-7-10",
     reference: "Ezra 7:10",
-    text: "Ezra had set his heart to study the Law of the Lord.",
+    text: "For Ezra had prepared his heart to seek the law of the LORD, and to do it, and to teach in Israel statutes and judgments.",
     subtitle: "Intentional study changes generations.",
     explanationSections: [
       { heading: "Who Wrote It", body: "Ezra is introduced as a leader deeply committed to God's Word." },
@@ -243,7 +243,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-119-24",
     reference: "Psalm 119:24",
-    text: "Your testimonies are my delight; they are my counselors.",
+    text: "Thy testimonies also are my delight and my counsellors.",
     subtitle: "The Bible gives wisdom for decisions.",
     explanationSections: [
       { heading: "Who Wrote It", body: "A psalmist described Scripture as both joy and guidance." },
@@ -255,7 +255,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-119-36",
     reference: "Psalm 119:36",
-    text: "Incline my heart to your testimonies.",
+    text: "Incline my heart unto thy testimonies, and not to covetousness.",
     subtitle: "Ask God to shape your desires.",
     explanationSections: [
       { heading: "Who Wrote It", body: "A psalmist prayed for inward change, not just outward obedience." },
@@ -267,7 +267,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "2-timothy-3-14",
     reference: "2 Timothy 3:14",
-    text: "But as for you, continue in what you have learned.",
+    text: "But continue thou in the things which thou hast learned and hast been assured of, knowing of whom thou hast learned them;",
     subtitle: "Growth comes from consistency.",
     explanationSections: [
       { heading: "Who Wrote It", body: "Paul urged Timothy to stay grounded in what he had already received." },
@@ -279,7 +279,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "hosea-6-3",
     reference: "Hosea 6:3",
-    text: "Let us know; let us press on to know the Lord.",
+    text: "Then shall we know, if we follow on to know the LORD: his going forth is prepared as the morning; and he shall come unto us as the rain, as the latter and former rain unto the earth.",
     subtitle: "Keep pressing forward.",
     explanationSections: [
       { heading: "Who Wrote It", body: "Hosea called a drifting people back to genuine relationship with God." },
@@ -291,7 +291,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "proverbs-9-10",
     reference: "Proverbs 9:10",
-    text: "The fear of the Lord is the beginning of wisdom.",
+    text: "The fear of the LORD is the beginning of wisdom: and the knowledge of the holy is understanding.",
     subtitle: "Wisdom begins with reverence.",
     explanationSections: [
       { heading: "Who Wrote It", body: "This proverb is part of the Bible's wisdom tradition, often associated with Solomon." },
@@ -303,7 +303,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "john-5-39",
     reference: "John 5:39",
-    text: "You search the Scriptures because you think that in them you have eternal life; and it is they that bear witness about me.",
+    text: "Search the scriptures; for in them ye think ye have eternal life: and they are they which testify of me.",
     subtitle: "Seek, don't skim.",
     explanationSections: [
       { heading: "Who Said It", body: "Jesus said this to religious leaders who knew Scripture but resisted Him." },
@@ -315,7 +315,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-119-165",
     reference: "Psalm 119:165",
-    text: "Great peace have those who love your law; nothing can make them stumble.",
+    text: "Great peace have they which love thy law: and nothing shall offend them.",
     subtitle: "Scripture brings stability.",
     explanationSections: [
       { heading: "Who Wrote It", body: "A psalmist described the peace found in loving God's ways." },
@@ -327,7 +327,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "luke-11-28",
     reference: "Luke 11:28",
-    text: "Blessed rather are those who hear the word of God and keep it.",
+    text: "But he said, Yea rather, blessed are they that hear the word of God, and keep it.",
     subtitle: "Hearing is the beginning, not the end.",
     explanationSections: [
       { heading: "Who Said It", body: "Jesus said this while redirecting attention to obedience." },
@@ -339,7 +339,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-119-140",
     reference: "Psalm 119:140",
-    text: "Your promise is well tried, and your servant loves it.",
+    text: "Thy word is very pure: therefore thy servant loveth it.",
     subtitle: "God's Word stands uncorrupted.",
     explanationSections: [
       { heading: "Who Wrote It", body: "A psalmist praised the purity and reliability of God's promises." },
@@ -351,7 +351,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "joshua-1-8",
     reference: "Joshua 1:8",
-    text: "This Book of the Law shall not depart from your mouth, but you shall meditate on it day and night.",
+    text: "This book of the law shall not depart out of thy mouth; but thou shalt meditate therein day and night, that thou mayest observe to do according to all that is written therein: for then thou shalt make thy way prosperous, and then thou shalt have good success.",
     subtitle: "Depth comes from reflection.",
     explanationSections: [
       { heading: "Who Said It", body: "God spoke this to Joshua as he stepped into leadership after Moses." },
@@ -363,7 +363,7 @@ const CORE_VERSE_OF_THE_DAY_POOL: VerseOfTheDayEntry[] = [
   {
     id: "psalm-27-11",
     reference: "Psalm 27:11",
-    text: "Teach me your way, O Lord, and lead me on a level path.",
+    text: "Teach me thy way, O LORD, and lead me in a plain path, because of mine enemies.",
     subtitle: "Learning is a lifelong journey.",
     explanationSections: [
       { heading: "Who Wrote It", body: "David prayed this in the middle of fear and opposition." },
