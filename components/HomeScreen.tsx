@@ -105,6 +105,14 @@ export default function HomeScreen() {
   }, [userId]);
 
   const greetingName = stats.displayName || "friend";
+  // Matches the dashboard, which greets by time of day rather than always
+  // saying morning.
+  const greeting = useMemo(() => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good morning";
+    if (hour < 18) return "Good afternoon";
+    return "Good evening";
+  }, []);
   const planEntry = stats.planDay
     ? GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((d) => d.dayNumber === stats.planDay)
     : null;
@@ -123,7 +131,7 @@ export default function HomeScreen() {
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-5 px-4 pb-28 pt-4">
       <header>
-        <h1 className="text-3xl font-black text-[var(--bb-text-primary,#111827)]">Good morning, {greetingName}</h1>
+        <h1 className="text-3xl font-black text-[var(--bb-text-primary,#111827)]">{greeting}, {greetingName}</h1>
         <p className="mt-1 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
           Let&apos;s grow closer to God today.
         </p>
