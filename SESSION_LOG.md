@@ -2795,3 +2795,7 @@ Next up: Day 52
 ## 2026-08-31T00:28:26Z (bible year day writer run)
 Day: 52 — Prophets, Cities, and Justice (Deuteronomy 18-21) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 53 (run stops here — 2-day-per-run limit reached)
+
+## 2026-08-31T00:54:30Z (hourly chapter notes run)
+Chapter: Job 2 | Duration: 8 min | Sections: 4 | Cards: 31 | Status: pass
+Next up: Job 3
