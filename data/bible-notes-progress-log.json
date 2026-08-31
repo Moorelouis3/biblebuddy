@@ -29317,6 +29317,71 @@
           "at": "2026-08-31T16:55:19Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 11,
+      "startedAt": "2026-08-31T18:48:24Z",
+      "finishedAt": "2026-08-31T18:56:30Z",
+      "durationMinutes": 8,
+      "sections": 5,
+      "cards": 29,
+      "verses": 20,
+      "notes": "New chapter, normal forward progress after Job 10. Job 11 is Zophar's first speech: he rebukes Job for the volume of his words, accuses him of claiming a purity he never actually stated, wishes God would speak directly against him, then argues God is already exacting less than Job's guilt deserves. He turns to God's unsearchable greatness (higher than heaven, deeper than Sheol, longer than the earth, broader than the sea), argues no one can hinder God and that God sees through empty men, compares a foolish man wanting to seem wise to an untamed wild donkey's colt, then lays out a conditional path (prepare the heart, put away iniquity) leading to a promised reward (a restored face, forgotten misery, security, safety), closing with a warning that the wicked's hope amounts to nothing but death. Style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty before starting, so this was normal canonical-order forward progress, not a redo. Session also opened with the known recurring stale local git ref bug (local main/origin/main cached 15 commits behind at Esther 5 while detached HEAD and the real GitHub tip were already at Job 10); git fetch confirmed no data was lost, just a stale local cache, resolved with git checkout -B main origin/main before any chapter work began.",
+      "steps": [
+        {
+          "name": "session start: detected stale local git ref (main/origin/main cached 15 commits behind at Esther 5 while detached HEAD was already at Job 10)",
+          "at": "2026-08-31T18:46:19Z"
+        },
+        {
+          "name": "git fetch origin main confirmed origin/main already at Job 10 commit (99202e1), no data lost, just stale local cache",
+          "at": "2026-08-31T18:48:17Z"
+        },
+        {
+          "name": "rebuilt local main with git checkout -B main origin/main",
+          "at": "2026-08-31T18:48:17Z"
+        },
+        {
+          "name": "npm install done",
+          "at": "2026-08-31T18:48:17Z"
+        },
+        {
+          "name": "target chapter determined (Job 11, new chapter, normal forward progress; redo backlog empty)",
+          "at": "2026-08-31T18:48:24Z"
+        },
+        {
+          "name": "KJV text fetched (Job 11, 20 verses, raw.githubusercontent.com/aruljohn/Bible-kjv)",
+          "at": "2026-08-31T18:48:30Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-08-31T18:48:34Z"
+        },
+        {
+          "name": "source file written (lib/jobElevenSource.ts, 5 sections, 29 cards)",
+          "at": "2026-08-31T18:53:23Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-08-31T18:53:23Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range extended to 11, applyPersonalJobElevenChapterStudySections call added after the legacy 11-30 placeholder)",
+          "at": "2026-08-31T18:53:23Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 29 cards confirmed)",
+          "at": "2026-08-31T18:53:39Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-08-31T18:53:58Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-08-31T18:56:30Z"
+        }
+      ]
     }
   ]
 }

@@ -475,6 +475,7 @@ import { JOB_SEVEN_PERSONAL_SECTIONS } from "./jobSevenSource";
 import { JOB_EIGHT_PERSONAL_SECTIONS } from "./jobEightSource";
 import { JOB_NINE_PERSONAL_SECTIONS } from "./jobNineSource";
 import { JOB_TEN_PERSONAL_SECTIONS } from "./jobTenSource";
+import { JOB_ELEVEN_PERSONAL_SECTIONS } from "./jobElevenSource";
 import { JOB_11_30_PERSONAL_SECTIONS } from "./jobElevenToThirtyPersonalNotes";
 import { JOB_31_42_PERSONAL_SECTIONS } from "./jobThirtyOneToFortyTwoPersonalNotes";
 import { PSALMS_1_6_PERSONAL_SECTIONS } from "./psalmsOneToSixPersonalNotes";
@@ -871,7 +872,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "ezra" && section.chapter >= 1 && section.chapter <= 10) ||
     (normalizeBook(book) === "nehemiah" && section.chapter >= 1 && section.chapter <= 13) ||
     (normalizeBook(book) === "esther" && section.chapter >= 1 && section.chapter <= 10) ||
-    (normalizeBook(book) === "job" && section.chapter >= 1 && section.chapter <= 10);
+    (normalizeBook(book) === "job" && section.chapter >= 1 && section.chapter <= 11);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1725,6 +1726,10 @@ function applyPersonalJobTenChapterStudySections() {
 
 function applyPersonalJobElevenThroughThirtyStudySections() {
   replaceStudySectionsForBookRange("job", 11, 30, JOB_11_30_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJobElevenChapterStudySections() {
+  replaceStudySectionsForBookRange("job", 11, 11, JOB_ELEVEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJobThirtyOneThroughFortyTwoStudySections() {
@@ -9208,6 +9213,7 @@ applyPersonalJobEightChapterStudySections();
 applyPersonalJobNineChapterStudySections();
 applyPersonalJobTenChapterStudySections();
 applyPersonalJobElevenThroughThirtyStudySections();
+applyPersonalJobElevenChapterStudySections();
 applyPersonalJobThirtyOneThroughFortyTwoStudySections();
 applyPersonalPsalmsOneThroughSixStudySections();
 applyPersonalPsalmsSevenThroughTwentyOneStudySections();
