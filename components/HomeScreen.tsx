@@ -184,7 +184,7 @@ export default function HomeScreen() {
               return (
                 <Link
                   key={day.dayNumber}
-                  href={`/dashboard?view=bible-year&day=${day.dayNumber}`}
+                  href={`/plan?view=bible-year&day=${day.dayNumber}`}
                   className="w-[104px] shrink-0 snap-start"
                 >
                   <div
