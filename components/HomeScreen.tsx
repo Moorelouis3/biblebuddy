@@ -21,7 +21,8 @@ import { useSupabaseUser } from "../lib/useSupabaseUser";
 import { getVerseOfTheDay } from "../lib/verseOfTheDay";
 import { bibleBuddyTvTitles } from "../lib/bibleBuddyTvContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
-import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "../lib/bibleInOneYearPlan";
+import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES, getBibleYearDayCoverImage } from "../lib/bibleInOneYearPlan";
+import StreakFlameEmoji from "./StreakFlameEmoji";
 
 /** Chapters in the Protestant canon, so progress is a real fraction. */
 const TOTAL_BIBLE_CHAPTERS = 1189;
@@ -30,7 +31,9 @@ type HomeStats = {
   streak: number | null;
   chaptersRead: number | null;
   planDay: number | null;
+  lastCompletedDay: number | null;
   displayName: string | null;
+  flameId: string | null;
 };
 
 function SectionHeading({ label, href }: { label: string; href?: string }) {
@@ -52,7 +55,9 @@ export default function HomeScreen() {
     streak: null,
     chaptersRead: null,
     planDay: null,
+    lastCompletedDay: null,
     displayName: null,
+    flameId: null,
   });
 
   const verse = useMemo(() => getVerseOfTheDay(), []);
@@ -67,7 +72,7 @@ export default function HomeScreen() {
       const [profileResult, chapterResult, planResult] = await Promise.allSettled([
         supabase
           .from("profile_stats")
-          .select("current_streak,display_name,username")
+          .select("current_streak,display_name,username,selected_streak_flame")
           .eq("user_id", userId)
           .maybeSingle(),
         supabase
@@ -92,7 +97,9 @@ export default function HomeScreen() {
         chaptersRead: typeof chapterCount === "number" ? chapterCount : null,
         // The day they are on is the one after the last one finished.
         planDay: typeof lastDay === "number" ? Math.min(365, lastDay + 1) : null,
+        lastCompletedDay: typeof lastDay === "number" ? lastDay : null,
         displayName: profile?.display_name || profile?.username || null,
+        flameId: profile?.selected_streak_flame ?? null,
       });
     })();
   }, [userId]);
@@ -101,6 +108,15 @@ export default function HomeScreen() {
   const planEntry = stats.planDay
     ? GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((d) => d.dayNumber === stats.planDay)
     : null;
+  // A window around the current day, so the strip opens showing where they
+  // are rather than at Day 1.
+  const journeyDays = useMemo(() => {
+    if (!stats.planDay) return [];
+    const start = Math.max(1, stats.planDay - 3);
+    return GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter(
+      (d) => d.dayNumber >= start && d.dayNumber <= start + 6,
+    );
+  }, [stats.planDay]);
   const biblePercent =
     stats.chaptersRead === null ? null : Math.round((stats.chaptersRead / TOTAL_BIBLE_CHAPTERS) * 100);
 
@@ -114,56 +130,88 @@ export default function HomeScreen() {
       </header>
 
       {stats.streak !== null ? (
-        <div className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
-          <span className="text-3xl" aria-hidden="true">
-            🔥
-          </span>
-          <div>
-            <p className="text-2xl font-black leading-none text-[var(--bb-text-primary,#111827)]">{stats.streak}</p>
-            <p className="text-sm font-bold text-[#f97316]">Day Streak</p>
-          </div>
-        </div>
-      ) : null}
-
-      {biblePercent !== null ? (
         <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
-          <div className="flex items-baseline justify-between">
-            <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Bible Progress</p>
-            <p className="text-sm font-black text-[var(--bb-accent,#2f7fe8)]">{biblePercent}%</p>
-          </div>
-          <p className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-            You have finished {biblePercent}% of the Bible.
-          </p>
-          <div className="mt-2 h-2 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef2f7)]">
-            <div
-              className="h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] transition-all duration-300"
-              style={{ width: `${biblePercent}%` }}
+          <div className="flex items-center justify-center gap-3">
+            <StreakFlameEmoji
+              flameId={stats.flameId}
+              currentStreak={stats.streak}
+              size={38}
+              title={`${stats.streak} day streak`}
             />
+            <p className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">
+              {stats.streak} Day Bible Study Streak
+            </p>
           </div>
+          {biblePercent !== null ? (
+            <>
+              <div className="mt-3 h-6 overflow-hidden rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-progress-track,#dbe7f4)] shadow-[inset_0_1px_3px_rgba(38,63,99,0.16)]">
+                <div
+                  className="h-full rounded-full bg-[var(--bb-progress-fill,#2f7fe8)] transition-all duration-500"
+                  style={{ width: `${Math.max(3, Math.min(100, biblePercent))}%` }}
+                />
+              </div>
+              <p className="mt-3 text-center text-[13px] font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+                You have finished {biblePercent}% of the Bible.
+              </p>
+            </>
+          ) : null}
         </div>
       ) : null}
 
       {planEntry ? (
         <section className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm">
-          <p className="text-xs font-black uppercase tracking-wide text-[var(--bb-accent,#2f7fe8)]">
-            Your plan · Bible in One Year
+          <p className="text-center text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
+            Bible in One Year
           </p>
-          <p className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">
+          {/*
+            A preview of where they are, not the plan itself. Tapping any cover
+            opens the full plan dashboard on that day - the screen this used to
+            be. Days past the current one stay greyed and locked, same as there.
+          */}
+          <div className="mt-3 flex snap-x gap-3 overflow-x-auto pb-2">
+            {journeyDays.map((day) => {
+              const isComplete = stats.lastCompletedDay !== null && day.dayNumber <= stats.lastCompletedDay;
+              const isCurrent = day.dayNumber === planEntry.dayNumber;
+              const isLocked = !isComplete && !isCurrent;
+              return (
+                <Link
+                  key={day.dayNumber}
+                  href={`/dashboard?view=bible-year&day=${day.dayNumber}`}
+                  className="w-[104px] shrink-0 snap-start"
+                >
+                  <div
+                    className={`relative aspect-[3/4] overflow-hidden rounded-xl border-2 ${
+                      isCurrent ? "border-[var(--bb-accent,#2f7fe8)]" : "border-transparent"
+                    }`}
+                  >
+                    <Image
+                      src={getBibleYearDayCoverImage(day)}
+                      alt=""
+                      fill
+                      className={`object-cover ${isLocked ? "opacity-65 grayscale" : ""}`}
+                      sizes="104px"
+                    />
+                  </div>
+                  <p className="mt-1 text-center text-xs font-black text-[var(--bb-text-primary,#111827)]">
+                    Day {day.dayNumber}
+                  </p>
+                  <p
+                    className={`text-center text-[11px] font-bold ${
+                      isCurrent
+                        ? "text-[var(--bb-accent,#2f7fe8)]"
+                        : isComplete
+                          ? "text-[var(--bb-text-secondary,#4b5563)]"
+                          : "text-[var(--bb-text-muted,#9ca3af)]"
+                    }`}
+                  >
+                    {isComplete ? "Completed" : isCurrent ? "Current" : "Locked"}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+          <p className="mt-1 text-center text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
             Day {planEntry.dayNumber} — {planEntry.title}
-          </p>
-          <p className="mt-0.5 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">{planEntry.reference}</p>
-          <Link
-            href={`/dashboard?view=bible-year&day=${planEntry.dayNumber}`}
-            className="mt-3 flex min-h-12 items-center justify-center rounded-xl bg-[var(--bb-button,#2563eb)] px-4 text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95"
-          >
-            Continue Plan
-          </Link>
-          <p className="mt-2 text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-            You can only have one active plan at a time. Change or switch plans in{" "}
-            <Link href="/devotionals" className="text-[var(--bb-accent,#2f7fe8)]">
-              Plans
-            </Link>
-            .
           </p>
         </section>
       ) : null}
