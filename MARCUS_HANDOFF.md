@@ -35,7 +35,20 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 58 (lib/bibleYearDayFiftyEightScript.ts, Joshua 8-11,
+through Day 59 (lib/bibleYearDayFiftyNineScript.ts, Joshua 12-15,
+"The Land Is Distributed" — the thirty-one-king receipt of everyone
+defeated on both sides of the Jordan; Joshua told plainly that "there
+remaineth yet very much land to be possessed" even as he's ordered to
+divide it anyway by lot; the eastern tribes' inheritance with Balaam
+counted among the slain and Levi's repeated portion being the LORD
+Himself rather than land; Caleb at eighty-five holding Joshua to a
+forty-five-year-old promise from Kadesh-barnea and asking for Hebron's
+giant-filled hill country instead of rest; Achsah asking her father
+Caleb for springs of water on top of the land she was already given,
+after Othniel wins her hand by taking Kirjath-sepher; and Judah's
+border and city lists closing on the one loose thread the "land rested
+from war" victory didn't tie off — the Jebusites still holding
+Jerusalem "unto this day"); Day 58 (lib/bibleYearDayFiftyEightScript.ts, Joshua 8-11,
 "Conquest and Covenant Obedience" — Ai retaken cleanly right after
 Achan's sin cost the first attempt; Joshua stopping the whole campaign to
 build an altar on Mount Ebal and read the entire law, blessings and

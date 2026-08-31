@@ -2851,3 +2851,7 @@ Next up: Job 9
 ## 2026-08-31T14:58:50Z (hourly chapter notes run)
 Chapter: Job 9 | Duration: 13 min | Sections: 7 | Cards: 60 | Status: pass
 Next up: Job 10
+
+## 2026-08-31T16:31:05Z (bible year day writer run)
+Day: 59 — The Land Is Distributed (Joshua 12-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 60
