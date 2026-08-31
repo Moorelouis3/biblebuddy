@@ -71,8 +71,12 @@ const NOT_A_PERSON = new Set([
   // Sentence starters and function words. Every verse begins with a capital,
   // so without these "Then he said" yields a character called Then.
   // Threshingfloor of Atad (Genesis 50:11) - a place, and the Canaanites are
-  // the ones speaking there.
-  "atad",
+  // the ones speaking there. "the Kenite" in Numbers 24:21 is who Balaam is
+  // looking at, not who is talking. "Beware" is an imperative that only looks
+  // like a name because every verse starts with a capital.
+  // "which is by the River" (Numbers 22:5) capitalises the Euphrates, so it
+  // reads as a name sitting right where a speaker would be.
+  "atad", "kenite", "beware", "river",
   "and", "but", "so", "then", "now", "when", "after", "before", "behold",
   "therefore", "moreover", "again", "also", "thus", "yet", "for", "if", "as",
   "at", "on", "in", "it", "he", "she", "they", "them", "their", "there",
@@ -224,6 +228,12 @@ function roleFromAttribution(before: string): BibleYearAudioRole | null {
   // Drop "to <addressee>" phrases first, so "To the woman he said" cannot read
   // the woman as the speaker, and "Yahweh said to Cain" still resolves to God.
   const head = clause[1]
+    // A patronymic identifies a man by his father, who is not in the scene:
+    // "Balak sent messengers to Balaam the son of Beor... saying" is Balak, but
+    // came out as Beor. Singular only - "the children of Gad... spoke" really is
+    // the Gadites talking, and that group voice is worth keeping. This has to
+    // run before the addressee strip below, which would eat the word "son".
+    .replace(/\b(?:son|daughter)\s+of\s+[\w'’]+/gi, " ")
     .replace(/\bto\s+(?:the\s+)?(?:[\w'’]+\s+){0,2}[\w'’]+/gi, " ")
     // A possessive names whose someone is, never who is talking. "Israel saw
     // Joseph's sons, and said" is Israel speaking, and "When Joseph's brothers
