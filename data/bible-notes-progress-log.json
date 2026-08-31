@@ -29109,6 +29109,55 @@
           "at": "2026-08-31T08:53:59Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 7,
+      "startedAt": "2026-08-31T10:45:58Z",
+      "finishedAt": "2026-08-31T10:55:00Z",
+      "durationMinutes": 9,
+      "sections": 4,
+      "cards": 32,
+      "verses": 21,
+      "notes": "New chapter, normal forward progress after Job 6. Job's reply continues: comparing life to a hireling's shift, longing for death, refusing to stay silent, and asking why God watches him so closely (echoes Psalm 8's 'what is man' in a bitter key).",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-08-31T10:46:54Z"
+        },
+        {
+          "name": "target_chapter_determined_job_7_new_chapter",
+          "at": "2026-08-31T10:47:10Z"
+        },
+        {
+          "name": "kjv_text_fetched_job_7",
+          "at": "2026-08-31T10:47:25Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-08-31T10:47:40Z"
+        },
+        {
+          "name": "source_file_written_jobSevenSource_ts",
+          "at": "2026-08-31T10:54:10Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-08-31T10:54:20Z"
+        },
+        {
+          "name": "wired_into_reader_bibleReaderStudyNotes_ts",
+          "at": "2026-08-31T10:54:40Z"
+        },
+        {
+          "name": "parser_check_passed_4_sections_32_cards",
+          "at": "2026-08-31T10:54:55Z"
+        },
+        {
+          "name": "tsc_noemit_clean",
+          "at": "2026-08-31T10:55:00Z"
+        }
+      ]
     }
   ]
 }
