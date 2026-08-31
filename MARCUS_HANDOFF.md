@@ -35,18 +35,29 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 51 (lib/bibleYearDayFiftyOneScript.ts, Deuteronomy 14-17,
-"Worship, Justice, and Leadership" — most recent: clean and unclean food
-as a daily marker of identity, the third-year tithe for the Levite,
-stranger, fatherless, and widow, the seven-year release of debt and the
-warning against watching the calendar to avoid lending, a servant who
-stays by choice with his ear pierced to the doorpost, the firstborn
-animals set apart, the three pilgrim feasts (Passover, Weeks,
-Tabernacles) with giving scaled to what each person actually has, judges
-warned against bribes paired with a warning against imitation worship at
-the altar, and a law for a king Israel has not asked for yet — no
-multiplying horses, wives, or gold, and a lifelong requirement to read
-his own copy of the law; Day 50 (lib/bibleYearDayFiftyScript.ts,
+through Day 52 (lib/bibleYearDayFiftyTwoScript.ts, Deuteronomy 18-21,
+"Prophets, Cities, and Justice" — most recent: the Levites' portion and
+the promise of a prophet like Moses in place of divination and magic,
+cities of refuge set apart for someone who kills by accident, the
+two-or-three-witness rule and the "eye for eye" ceiling that caps
+punishment rather than expanding it, the laws of war and their real
+exemptions (a new house, an unharvested vineyard, an unfinished
+engagement, even plain fear), the unsolved-murder heifer ritual, the
+captive woman's required month of mourning before anything else, the
+unloved wife's firstborn kept from being passed over, the rebellious son,
+and the law that a hanged body cannot stay up past sundown — the line
+Paul later quotes to describe the cross; Day 51
+(lib/bibleYearDayFiftyOneScript.ts, Deuteronomy 14-17, "Worship, Justice,
+and Leadership" — clean and unclean food as a daily marker of identity,
+the third-year tithe for the Levite, stranger, fatherless, and widow, the
+seven-year release of debt and the warning against watching the calendar
+to avoid lending, a servant who stays by choice with his ear pierced to
+the doorpost, the firstborn animals set apart, the three pilgrim feasts
+(Passover, Weeks, Tabernacles) with giving scaled to what each person
+actually has, judges warned against bribes paired with a warning against
+imitation worship at the altar, and a law for a king Israel has not asked
+for yet — no multiplying horses, wives, or gold, and a lifelong
+requirement to read his own copy of the law; Day 50 (lib/bibleYearDayFiftyScript.ts,
 Deuteronomy 10-13, "Covenant Loyalty From the Heart" — new tablets carried in
 an ark, the Levites set apart with God himself as their only inheritance,
 Moses's summary question ("what does the Lord your God require of you?"),
