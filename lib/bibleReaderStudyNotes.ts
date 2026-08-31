@@ -467,6 +467,7 @@ import { EZRA_4_10_PERSONAL_SECTIONS, NEHEMIAH_1_13_PERSONAL_SECTIONS } from "./
 import { ESTHER_1_10_PERSONAL_SECTIONS, JOB_1_10_PERSONAL_SECTIONS } from "./estherOneToJobTenPersonalNotes";
 import { JOB_ONE_PERSONAL_SECTIONS } from "./jobOneSource";
 import { JOB_TWO_PERSONAL_SECTIONS } from "./jobTwoSource";
+import { JOB_THREE_PERSONAL_SECTIONS } from "./jobThreeSource";
 import { JOB_11_30_PERSONAL_SECTIONS } from "./jobElevenToThirtyPersonalNotes";
 import { JOB_31_42_PERSONAL_SECTIONS } from "./jobThirtyOneToFortyTwoPersonalNotes";
 import { PSALMS_1_6_PERSONAL_SECTIONS } from "./psalmsOneToSixPersonalNotes";
@@ -863,7 +864,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "ezra" && section.chapter >= 1 && section.chapter <= 10) ||
     (normalizeBook(book) === "nehemiah" && section.chapter >= 1 && section.chapter <= 13) ||
     (normalizeBook(book) === "esther" && section.chapter >= 1 && section.chapter <= 10) ||
-    (normalizeBook(book) === "job" && section.chapter >= 1 && section.chapter <= 2);
+    (normalizeBook(book) === "job" && section.chapter >= 1 && section.chapter <= 3);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1681,6 +1682,10 @@ function applyPersonalJobOneChapterStudySections() {
 
 function applyPersonalJobTwoChapterStudySections() {
   replaceStudySectionsForBookRange("job", 2, 2, JOB_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJobThreeChapterStudySections() {
+  replaceStudySectionsForBookRange("job", 3, 3, JOB_THREE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJobElevenThroughThirtyStudySections() {
@@ -9159,6 +9164,7 @@ applyPersonalEstherTenChapterStudySections();
 applyPersonalJobOneThroughTenStudySections();
 applyPersonalJobOneChapterStudySections();
 applyPersonalJobTwoChapterStudySections();
+applyPersonalJobThreeChapterStudySections();
 applyPersonalJobElevenThroughThirtyStudySections();
 applyPersonalJobThirtyOneThroughFortyTwoStudySections();
 applyPersonalPsalmsOneThroughSixStudySections();
