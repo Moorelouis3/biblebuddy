@@ -35,7 +35,21 @@ for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
 The Bible in One Year day writer agent has written and wired in scripts
-through Day 56 (lib/bibleYearDayFiftySixScript.ts, Deuteronomy 34;
+through Day 57 (lib/bibleYearDayFiftySevenScript.ts, Joshua 4-7,
+"Memorial Stones, Jericho, and Achan" — the twelve memorial stones taken
+from the Jordan riverbed and set up at Gilgal so a child years later would
+ask what they mean and get a true answer; the whole wilderness-born
+generation circumcised on enemy soil before any fighting starts, and
+Gilgal named for God "rolling away the reproach of Egypt"; manna ceasing
+the morning after Israel first eats the land's produce; the captain of
+the LORD's host meeting Joshua outside Jericho and telling him to remove
+his sandals, echoing Moses at the burning bush; Jericho's wall falling
+after seven silent days of marching and one shout, with Rahab's household
+pulled out safe and the city's silver and gold devoted to the LORD's
+treasury rather than looted; and Achan's hidden theft from Jericho's
+plunder costing Israel thirty-six lives at Ai before he is exposed by lot
+and confesses exactly what he took and where he buried it); Day 56
+(lib/bibleYearDayFiftySixScript.ts, Deuteronomy 34;
 Joshua 1-3, "Moses Dies and Joshua Leads" — Moses viewing the whole land
 from Pisgah and dying there, buried by God himself in a grave nobody has
 ever found ("no man knoweth of his sepulchre unto this day"); Joshua's
