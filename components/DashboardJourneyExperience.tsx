@@ -18203,7 +18203,10 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
       ) : null}
 
-      {!shouldShowBibleBuddy3ModeGate && !deepStudyFocusActive ? (
+      {/* The app-wide bottom tab bar took over as the one menu. This internal
+          menu predates it and now only double-stacks bars on the plan page, so
+          it never renders. */}
+      {false && !shouldShowBibleBuddy3ModeGate && !deepStudyFocusActive ? (
       <nav data-bb-dashboard-tour="bottom-menu" className="fixed inset-x-0 bottom-0 z-[90] h-[64px] overflow-hidden border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-0 pb-0 pt-0 sm:h-auto sm:overflow-visible sm:border-t-0 sm:bg-[color-mix(in_srgb,var(--bb-background,#0e1218)_86%,transparent)] sm:px-3 sm:pt-2 sm:backdrop-blur-xl">
         {dashboardMenuOpen ? (
           <div className="mb-0 w-full rounded-none border-x-0 border-b-0 border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-3 pb-3 pt-3 shadow-none sm:mx-auto sm:mb-2 sm:max-w-xl sm:rounded-[24px] sm:border sm:bg-[var(--bb-card,#ffffff)]/95 sm:p-2.5 sm:shadow-[0_18px_46px_rgba(15,35,60,0.22)] sm:backdrop-blur">

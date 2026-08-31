@@ -64,6 +64,15 @@ export default function HomeScreen() {
   const featuredTv = useMemo(() => bibleBuddyTvTitles.slice(0, 3), []);
   const recommended = useMemo(() => BLOG_ARTICLES.slice(0, 4), []);
 
+  // AppShell hides the whole top header on /dashboard until the dashboard
+  // reports itself loaded - a contract written for the old 19k-line dashboard
+  // and its splash screen. This screen paints immediately, so report loaded
+  // immediately; without this the logo, alerts, messages and profile picture
+  // never come back.
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("bb:dashboard-loader-state", { detail: { loading: false } }));
+  }, []);
+
   useEffect(() => {
     if (!userId) return;
 
