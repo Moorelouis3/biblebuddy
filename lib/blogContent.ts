@@ -67,6 +67,193 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "could-you-sacrifice-your-isaac",
+    title: "Could You Sacrifice Your Isaac?",
+    description:
+      "God asked Abraham to sacrifice the son He promised him. The full story of Abraham and Isaac, and the question it asks every believer.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/could-you-sacrifice-your-isaac",
+    publishedAt: "2026-09-01",
+    readTime: "23 min read",
+    image: "/could-you-sacrifice-your-isaac-banner.png",
+    groupPost: {
+      title: "Could You Sacrifice Your Isaac? 📖",
+      content:
+        "God asked Abraham to sacrifice the son he prayed decades for.\nNot a stranger. His only son, the one God Himself had promised.\n\n📌 Faith isn't knowing what God will do. It's trusting what He already said.\n\n📖 Abraham got the command with no explanation attached.\n📖 He walked three full days before he ever reached the mountain.\n📖 God provided a ram at the exact last second, not a moment before.\n\nNew article on:\n🟢 the part of the story everyone skips: the **three day walk**\n🟢 how God's promise and God's command seemed to contradict each other\n🟢 the question this story leaves you with: could you sacrifice **your Isaac**?\n\nWhat is the one thing you'd struggle to hand back to God? 🙏",
+    },
+  },
+  {
+    slug: "how-god-heals-a-lust-damaged-heart",
+    title: "6 Ways God Heals a Lust-Damaged Heart",
+    description:
+      "How to overcome lust: 6 biblical ways God heals a lust-damaged heart, renews your mind, and restores what shame and secrecy took.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/how-god-heals-a-lust-damaged-heart",
+    publishedAt: "2026-09-01",
+    readTime: "23 min read",
+    image: "/how-god-heals-a-lust-damaged-heart-banner.png",
+    groupPost: {
+      title: "6 Ways God Heals a Lust-Damaged Heart 📖",
+      content:
+        "Lust does not just tempt you once.\nIt reshapes what your heart wants.\n\n📌 God does not just forgive you. He restores you.\n\n📖 David prayed for a clean heart after his worst failure.\n📖 Jesus said cut off whatever keeps pulling you back.\n📖 James promised God draws near the moment you take one step toward Him.\n\nNew article on:\n🟢 6 ways **God heals** a lust damaged heart\n🟢 why **self control** is something the Spirit grows, not something you force\n🟢 how to cut off what feeds temptation without any shame\n\nWhat verse helps you most when the old pattern shows back up? 🙏",
+    },
+  },
+  {
+    slug: "genesis-1-1-2-explained",
+    title: "Genesis 1:1-2 Explained",
+    description:
+      "Genesis 1:1-2 explained verse by verse: what without form and void, the deep, and the Spirit hovering over the waters actually mean before day one.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-1-1-2-explained",
+    publishedAt: "2026-09-01",
+    readTime: "23 min read",
+    image: "/genesis-1-1-2-explained-banner.png",
+    groupPost: {
+      title: "Genesis 1:1-2 Explained 📖",
+      content:
+        "Genesis 1:1-2 might only be two verses.\nBut before the first light, there is a whole world unformed and dark.\n\n📌 Darkness in Genesis 1:2 never meant God had lost control.\n\n📖 The earth was without form, and void.\n📖 The deep was covered in darkness.\n📖 The Spirit of God was already hovering over the waters.\n\nNew article on:\n🟢 what **without form and void** actually means\n🟢 why **the deep** is not a symbol of chaos\n🟢 what it means that the **Spirit moved** upon the waters\n\nWhere in your own story are you still waiting on verse three? 🙏",
+    },
+  },
+  {
+    slug: "is-wanting-money-a-sin",
+    title: "Is Wanting Money a Sin?",
+    description:
+      "Is wanting money a sin? See what 1 Timothy 6:10 really means in Greek and context, and why God calls you to stewardship, not poverty.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/is-wanting-money-a-sin",
+    publishedAt: "2026-09-01",
+    readTime: "23 min read",
+    image: "/is-wanting-money-a-sin-banner.png",
+    groupPost: {
+      title: "Is Wanting Money a Sin? 📖",
+      content:
+        "\"For the love of money is the root of all evil.\"\nEveryone quotes it. Almost nobody quotes it right.\n\n📌 Paul was warning a young pastor about greedy false teachers, not banning wanting more.\n\n📖 Abraham was very rich, and Scripture never apologizes for it.\n📖 Job ended richer than he started.\n📖 Jesus said whoever is faithful with little gets trusted with much.\n\nNew article on:\n🟢 what the Greek word behind **love of money** actually means\n🟢 the difference between **wanting** money and **loving** it\n🟢 why God cares about your **stewardship**, not your poverty\n\nHave you ever felt guilty for wanting to provide? 🙏",
+    },
+  },
+  {
+    slug: "why-does-god-allow-suffering",
+    title: "Why Does God Allow Suffering?",
+    description:
+      "An honest, biblical answer to why God allows suffering: free will, a groaning creation, the cross, Job, and Jesus weeping at Lazarus's tomb.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/why-does-god-allow-suffering",
+    publishedAt: "2026-09-01",
+    readTime: "22 min read",
+    image: "/why-does-god-allow-suffering-banner.png",
+    groupPost: {
+      title: "Why Does God Allow Suffering? 📖",
+      content:
+        "Some suffering has no explanation.\nNot now. Maybe not ever, this side of heaven.\n\n📌 \"Everything happens for a reason\" is not a Bible verse.\n\n📖 Job never got his answer. He got God instead.\n📖 The cross is not God watching you suffer. It's God suffering.\n📖 Jesus wept at a tomb, seconds before He was going to raise it.\n\nNew article on:\n🟢 what the Bible actually says about **why God allows suffering**\n🟢 free will, a **groaning creation**, and the honest cost of both\n🟢 why your grief is never an inconvenience to Him\n\nWhat verse has carried you through your hardest season? 🙏",
+    },
+  },
+  {
+    slug: "how-do-we-know-the-bible-is-true",
+    title: "How Do We Know the Bible Is True?",
+    description:
+      "Manuscripts, fulfilled prophecy, archaeology, and the Bible's own honesty about its heroes. The real evidence for a trustworthy Bible, explained plainly.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/how-do-we-know-the-bible-is-true",
+    publishedAt: "2026-09-01",
+    readTime: "23 min read",
+    image: "/how-do-we-know-the-bible-is-true-banner.png",
+    groupPost: {
+      title: "How Do We Know the Bible Is True? 📖",
+      content:
+        "The evidence for the Bible is stronger than most people realize.\nManuscripts. Prophecy. Archaeology. Honesty.\n\n📌 Evidence can prove the Bible trustworthy. Only trust can make it faith.\n\n📖 The New Testament has more manuscript copies than any other ancient book, by far.\n📖 Bethlehem was named as the Messiah's birthplace 700 years early.\n📖 The Bible records David's worst sin and Peter's denial, in full.\n\nNew article on:\n🟢 how the **manuscript count** compares to Homer and Caesar\n🟢 **fulfilled prophecy** written centuries in advance\n🟢 what evidence can and cannot do for your faith\n\nWhat convinced you the Bible is trustworthy? 🙏",
+    },
+  },
+  {
+    slug: "is-jesus-the-only-way-to-god",
+    title: "Is Jesus Really the Only Way to God?",
+    description:
+      "Is Jesus really the only way to God? An honest look at John 14:6 and Acts 4:12, and why exclusive does not mean arrogant.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/is-jesus-the-only-way-to-god",
+    publishedAt: "2026-09-01",
+    readTime: "23 min read",
+    image: "/is-jesus-the-only-way-to-god-banner.png",
+    groupPost: {
+      title: "Is Jesus Really the Only Way to God? 📖",
+      content:
+        "Is Jesus the only way to God?\nIt is the most narrow sounding claim in the whole Bible.\n\n📌 Jesus did not offer a way. He claimed to be the way.\n\n📖 John 14:6 says it plainly, on the last night of His life.\n📖 Peter repeated it to the men who crucified Jesus.\n📖 A merely good teacher does not say things like this.\n\nNew article on:\n🟢 why **exclusive does not mean arrogant**\n🟢 the honest logic behind Jesus's claim\n🟢 how to hold this warmly around people you love who don't believe it\n\nWho comes to mind when you read this? 🙏",
+    },
+  },
+  {
+    slug: "are-there-contradictions-in-the-bible",
+    title: "Are There Contradictions in the Bible?",
+    description:
+      "Genesis 1 and 2, the resurrection accounts, and Jesus's two genealogies, examined honestly. A practical method for handling any hard Bible passage.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/are-there-contradictions-in-the-bible",
+    publishedAt: "2026-09-01",
+    readTime: "25 min read",
+    image: "/are-there-contradictions-in-the-bible-banner.png",
+    groupPost: {
+      title: "Are There Contradictions in the Bible? 📖",
+      content:
+        "Somebody said the Bible contradicts itself.\nAnd you did not have an answer ready.\n\n📌 Most apparent contradictions dissolve the moment you check the context.\n\n📖 Genesis 1 and 2 are one story told at two distances, not two rivals.\n📖 The four resurrection accounts are independent eyewitness testimony, and that strengthens them.\n📖 The two genealogies of Jesus serve two honest, different purposes.\n\nNew article on:\n🟢 how to test whether something is a real **contradiction** or just a **difference**\n🟢 the honest scholarly debate behind Jesus's **two genealogies**\n🟢 why a few open questions do not undo a **mountain of evidence**\n\nWhich hard passage has thrown you off the most? 🙏",
+    },
+  },
+  {
+    slug: "christian-and-science",
+    title: "Can You Be a Christian and Believe in Science?",
+    description:
+      "Can a Christian believe in science? Yes. See why the faith vs. science conflict is newer than you think, and how sincere Christians view creation.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/christian-and-science",
+    publishedAt: "2026-09-01",
+    readTime: "17 min read",
+    image: "/christian-and-science-banner.png",
+    groupPost: {
+      title: "Can You Be a Christian and Believe in Science? 📖",
+      content:
+        "You were never supposed to choose.\nNot your faith. Not your field.\n\n📌 Yes, you can be a Christian and believe in science.\n\n📖 Newton wrote more theology than physics.\n📖 Kepler called his discoveries \"thinking God's thoughts after Him.\"\n📖 Francis Collins led the Human Genome Project as a believer.\n\nNew article on:\n🟢 why the **faith vs science** war is newer than you think\n🟢 how to read **Genesis honestly**\n🟢 the three real Christian views on **creation**, with no winner picked\n\nWhich camp did you grow up in? 🙏",
+    },
+  },
+  {
+    slug: "people-who-never-heard-of-jesus",
+    title: "What Happens to People Who Never Heard of Jesus?",
+    description:
+      "What happens to those who never heard of Jesus? An honest look at Romans 1-2, general revelation, conscience, and trusting God's character.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/people-who-never-heard-of-jesus",
+    publishedAt: "2026-09-01",
+    readTime: "17 min read",
+    image: "/people-who-never-heard-of-jesus-banner.png",
+    groupPost: {
+      title: "What Happens to People Who Never Heard of Jesus? 📖",
+      content:
+        "This question has a face, not just a theory.\nA grandfather. A friend. Someone who died before you ever got to share the gospel.\n\n📌 Scripture does not give a full, certain answer here.\n\n📖 Creation itself testifies to God, so no one has zero witness.\n📖 Even without the law, conscience shows its work within us.\n📖 Abraham asked God the same question you're asking.\n\nNew article on:\n🟢 what **general revelation** actually means\n🟢 why **Genesis 18:25** is the anchor, not a formula\n🟢 why this question makes **missions** more urgent, not less\n\nWho came to mind when you read this question? 🙏",
+    },
+  },
+  {
+    slug: "why-does-god-feel-silent",
+    title: "Why Does God Feel Silent?",
+    description:
+      "Why is God silent? See what Scripture says about David's laments, the 400 silent years, and Jesus at Gethsemane and the cross.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/why-does-god-feel-silent",
+    publishedAt: "2026-09-01",
+    readTime: "18 min read",
+    image: "/why-does-god-feel-silent-banner.png",
+    groupPost: {
+      title: "Why Does God Feel Silent? 📖",
+      content:
+        "God's silence is not a scolding.\nIt shows up next to the most faithful people in the whole Bible.\n\n📌 Silence is not the same thing as absence.\n\n📖 David asked \"how long, O Lord\" out loud.\n📖 God's people waited 400 years between Malachi and Matthew.\n📖 Jesus felt forsaken on the cross and it was still the plan.\n\nNew article on:\n🟢 the wrong assumption almost everyone makes about **silent seasons**\n🟢 why obedience with no felt reward counts for **more, not less**\n🟢 what to actually do while you wait on **God to speak**\n\nWhat do you do when heaven feels quiet? 🙏",
+    },
+  },
+  {
     slug: "did-jesus-really-exist",
     title: "Did Jesus Really Exist? The Evidence Outside the Bible",
     description:

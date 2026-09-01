@@ -33,6 +33,35 @@ The blog writer agent just published "What Does Selah Mean in the Bible?"
 (`/Whatisthebiblebanner.png`). Louis may want to swap in a custom banner
 for this one later.
 
+## Blog writer ran on the wrong queue for part of today's batch request
+Louis asked (in chat, not via IDEAS.md) for 13 blog posts written today.
+The agent initially pulled from content-buddy's `blog/topics-queue.json`
+(the regular backlog) and wrote 11 posts from its front before realizing,
+partway through, that Louis actually meant the 13-post Pinterest funnel
+batch that another session had just added to `data/blog-topics-queue.json`
+in this repo (see the "Pinterest funnel batch" commit, 2026-09-01). The
+11 wrong-queue posts are real, fully verified, published content (KJV
+checked, tsc/lint clean) - not wasted, just not the urgent batch. The
+correct 13 Pinterest posts are being written now in the same session.
+One of the 11, "The Armor of God Explained" (the-armor-of-god-explained,
+pillar length), duplicates the topic of the Pinterest batch's own
+"armor-of-god-explained" (focused length) - it was written and verified
+but held back, NOT published, to avoid two near-duplicate Armor of God
+posts live at once. It sits on disk if Louis wants it published later
+under a different angle, or it can be discarded.
+
+## New blog post touches contested doctrine: Christianity and science
+"Can You Be a Christian and Believe in Science?" (/blog/christian-and-science)
+presents young earth, old earth, and evolutionary creation neutrally, states
+explicitly that sincere Christians land in different places, and does not
+pick a winner. Flagging per the format spec's doctrinal-sensitivity rule.
+
+## New blog post touches contested doctrine: what happens to those who never heard of Jesus
+"What Happens to People Who Never Heard of Jesus?" (/blog/people-who-never-heard-of-jesus)
+states plainly that Scripture does not give a complete, certain answer and
+that claiming full certainty either way goes beyond the text. Flagging per
+the format spec's doctrinal-sensitivity rule so Louis can read it himself.
+
 ## Bible in One Year days waiting on local audio render
 Scripts through Day 68 are written and pushed, but none of them have been
 rendered — this environment has no OPENAI_API_KEY or Supabase service key.

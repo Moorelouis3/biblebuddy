@@ -2939,3 +2939,9 @@ Next up: Job 20
 ## 2026-09-01T12:26:39Z (blog writer run, Louis requested 13-post batch)
 Article: Did Jesus Really Exist? The Evidence Outside the Bible | Words: ~3085 | Category: Bible Insights | Status: pass
 Queue remaining: 39
+
+## 2026-09-01T12:35:55Z (blog writer batch run, content-buddy queue)
+Articles: Could You Sacrifice Your Isaac?, 6 Ways God Heals a Lust-Damaged Heart, Genesis 1:1-2 Explained, Is Wanting Money a Sin?, Why Does God Allow Suffering?, How Do We Know the Bible Is True?, Is Jesus Really the Only Way to God?, Are There Contradictions in the Bible?, Can You Be a Christian and Believe in Science?, What Happens to People Who Never Heard of Jesus?, Why Does God Feel Silent? | 11 posts | Status: pass
+Note: this batch ran against content-buddy/blog/topics-queue.json before discovering Louis's actual request was the Pinterest funnel batch in data/blog-topics-queue.json (a separate queue). These 11 are real, verified, published content from the regular backlog, just not the urgent batch - see MARCUS_HANDOFF.md.
+Held back: The Armor of God Explained (the-armor-of-god-explained, pillar) - written and verified but NOT published, to avoid duplicate content with the focused Pinterest post armor-of-god-explained. Awaiting Louis's call.
+Queue remaining (content-buddy): 28
