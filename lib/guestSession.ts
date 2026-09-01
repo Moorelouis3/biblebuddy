@@ -100,7 +100,17 @@ export function recordNewUser(userId: string, source: string) {
   }
 
   try {
-    const landingSource = window.sessionStorage.getItem("bb:landing-source") || null;
+    // The original channel, captured on whatever page they first arrived at
+    // (TrafficSourceCapture in the root layout). The landing page's own
+    // sessionStorage value only exists when they came through the landing
+    // page this session, so it is the fallback, not the answer.
+    let firstTouch: string | null = null;
+    let firstTouchReferrer: string | null = null;
+    try {
+      firstTouch = window.localStorage.getItem("bb:first-touch-source");
+      firstTouchReferrer = window.localStorage.getItem("bb:first-touch-referrer");
+    } catch { /* storage blocked */ }
+    const landingSource = firstTouch || window.sessionStorage.getItem("bb:landing-source") || null;
     void fetch("/api/landing-analytics", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -111,7 +121,7 @@ export function recordNewUser(userId: string, source: string) {
         source: landingSource || undefined,
         referrer: document.referrer || null,
         page_path: `${window.location.pathname}${window.location.search}`,
-        metadata: { guest_entry_source: source },
+        metadata: { guest_entry_source: source, first_touch_referrer: firstTouchReferrer || undefined },
       }),
       keepalive: true,
     }).catch(() => {});
