@@ -67,6 +67,40 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-was-joseph",
+    title: "Who Was Joseph? From the Pit to the Palace",
+    description:
+      "Joseph's story from Genesis: sold into slavery by his own brothers, falsely accused, forgotten in prison, then raised to save the nation that betrayed him.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-joseph",
+    publishedAt: "2026-09-01",
+    readTime: "9 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Joseph? From the Pit to the Palace 📖",
+      content:
+        "His own brothers sold him into slavery.\nYears later, he had the power to destroy every one of them.\n\n📌 God meant it unto good, even when people meant it for evil.\n\n📖 Joseph was thrown in a pit before he was ever thrown in prison.\n📖 He stayed faithful in Potiphar's house and paid for it anyway.\n📖 Pharaoh raised him from prisoner to ruler in a single day.\n\nNew article on:\n🟢 how **God's providence** worked through every unfair turn\n🟢 what real **forgiveness** looked like when Joseph had all the power\n🟢 the verse the whole story was written to deliver\n\nHave you ever seen God use your worst season for good? 🙏",
+    },
+  },
+  {
+    slug: "names-of-god-meanings",
+    title: "The Names of God and What They Mean",
+    description:
+      "What do Elohim, Yahweh, El Shaddai, El Elyon, and Adonai actually mean? A clear, accurate guide to the names of God in Scripture and what they reveal.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/names-of-god-meanings",
+    publishedAt: "2026-09-01",
+    readTime: "9 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "The Names of God and What They Mean 📖",
+      content:
+        "God has a lot of names in the Bible.\nNot one of them is decoration.\n\n📌 Every name of God is a promise with His character attached.\n\n📖 Elohim spoke a universe into being.\n📖 El Shaddai kept a promise Abraham thought was impossible.\n📖 Gideon named an altar Jehovah Shalom after God calmed his fear.\n\nNew article on:\n🟢 what **Yahweh**, **Elohim**, and **El Shaddai** actually mean\n🟢 the honest truth about the popular **Jehovah names**\n🟢 why the King James Bible mostly says **LORD**, not Yahweh\n\nWhich name of God do you need to remember today? 🙏",
+    },
+  },
+  {
     slug: "armor-of-god-explained",
     title: "The Armor of God Explained",
     description:

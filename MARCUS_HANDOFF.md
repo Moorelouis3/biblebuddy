@@ -1,3 +1,34 @@
+## data/blog-topics-queue.json: the "existing 27" behind the Pinterest batch includes already-published slugs
+Now that all 13 Pinterest posts are dequeued, the front of that queue is
+can-you-lose-your-salvation, how-to-spend-1-hour-with-god, and
+what-does-the-bible-say-about-fear - all three already live on the site
+(published weeks ago, under lib/blogContent.ts). Worth checking the rest
+of that "existing 27" for other duplicates before the routine works
+through it next, or a future run may try to recreate a slug that already
+exists.
+
+## Held back and discarded: duplicate Armor of God post
+While processing today's batch, the agent wrote a second "Armor of God"
+post (the-armor-of-god-explained, pillar length, 4,500+ words) from
+content-buddy's separate queue before realizing the Pinterest batch's
+own armor-of-god-explained (focused, ~1,700 words) covers the same
+topic. To avoid two near-duplicate Armor of God posts live at once, and
+because the session's stop hook blocks ending with untracked files, the
+longer draft was deleted rather than left sitting unpublished
+indefinitely. If Louis wants a deeper pillar-length Armor of God piece
+later, it can be rewritten fresh under a different angle/slug.
+
+## New blog post touches contested doctrine: names of God
+"The Names of God and What They Mean" (/blog/names-of-god-meanings) is
+careful to separate the formal divine names Scripture actually
+attributes to God (Elohim, YHWH/I AM, El Shaddai, El Elyon, Adonai) from
+the popular compound "Jehovah-X" titles - only Jehovah Jireh, Jehovah
+Nissi, and Jehovah Shalom actually appear as compound words in the KJV
+text (as memorial place names, not self-descriptions), while Jehovah
+Rapha, Rohi, and Tsidkenu are later titles drawn from descriptive
+phrases and never appear as compound words in the KJV. Please review for
+doctrinal accuracy before wide promotion.
+
 ## New blog post touches contested doctrine: biblical numbers
 "Biblical Numbers and Their Meanings" (/blog/biblical-numbers-meanings)
 draws a hard line between numeric patterns Scripture actually repeats
