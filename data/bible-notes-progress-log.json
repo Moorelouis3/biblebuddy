@@ -29993,6 +29993,59 @@
           "at": "2026-09-01T19:00:03Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 23,
+      "startedAt": "2026-09-01T20:47:00Z",
+      "finishedAt": "2026-09-01T20:54:32Z",
+      "durationMinutes": 8,
+      "sections": 4,
+      "cards": 30,
+      "verses": 17,
+      "notes": "Job's reply to Eliphaz's third speech: opens with his complaint bitter, longing to find God and lay his case before His seat, imagines a fair hearing where God would put strength in him rather than crush him, turns to God's felt hiddenness searched in every direction, pivots at verse ten to the famous 'I shall come forth as gold' declaration of confidence in his own integrity, lists his faithfulness to God's word above his necessary food, then closes with real terror at God's unchangeable will and raw power, ending on the darkness covering his face. New chapter, forward progress, style spec applied throughout.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-01T20:47:00Z"
+        },
+        {
+          "name": "target chapter determined: Job 23 (priority queue empty, redo-remaining empty, next after Job 22)",
+          "at": "2026-09-01T20:47:30Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, .claude/skills/bible-notes/SKILL.md, plus lib/jobTwentyTwoSource.ts and lib/genesisThirtyOneSource.ts as reference)",
+          "at": "2026-09-01T20:47:59Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn/Bible-kjv Job.json, 17 verses)",
+          "at": "2026-09-01T20:48:20Z"
+        },
+        {
+          "name": "source file written (lib/jobTwentyThreeSource.ts, 4 sections, 30 cards)",
+          "at": "2026-09-01T20:51:00Z"
+        },
+        {
+          "name": "style checker clean (check_bible_note_style.py, fixed 2 problems on first pass, 0 problems on second)",
+          "at": "2026-09-01T20:52:10Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts import, function, call, preserveExactPhraseBodies range extended to 23)",
+          "at": "2026-09-01T20:52:40Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections job 23: 4 sections, 30 cards)",
+          "at": "2026-09-01T20:53:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-01T20:53:50Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-01T20:54:32Z"
+        }
+      ]
     }
   ]
 }
