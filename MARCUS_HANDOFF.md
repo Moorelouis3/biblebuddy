@@ -32,13 +32,3 @@ The blog writer agent just published "What Does Selah Mean in the Bible?"
 `bannerImage`, so it reused the bible-insights category fallback
 (`/Whatisthebiblebanner.png`). Louis may want to swap in a custom banner
 for this one later.
-
-## Bible in One Year: scripted days waiting on a local audio render
-Days 2-66 are scripted and wired into DAY_SCRIPTS, each verified with
-`tsc --noEmit`, but none are rendered or uploaded — this environment has
-no OPENAI_API_KEY and no Supabase service key, by design. Run
-`npx tsx scripts/render-pending-bible-year-days.ts` locally (it checks
-storage and only renders what's actually missing). Check each printed
-cast line for non-person names and add offenders to NOT_A_PERSON in
-lib/bibleYearAutoCast.ts if any turn up. This single entry gets updated
-in place as later days are written — it does not grow a new block per day.

@@ -1,6 +1,8 @@
 import { config } from "dotenv";
 import { execFileSync } from "child_process";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "fs";
+import { createRequire } from "module";
+const requireTs = createRequire(__filename);
 import { join } from "path";
 import ffmpegPath from "ffmpeg-static";
 import { BIBLE_YEAR_SAMPLE_RATE as SR, type BibleYearAudioRole } from "../lib/bibleYearAudioCast";
@@ -12,6 +14,7 @@ import {
   BIBLE_YEAR_DAY_FIVE_SCRIPT, BIBLE_YEAR_DAY_FOUR_SCRIPT,
   BIBLE_YEAR_DAY_SIX_SCRIPT, BIBLE_YEAR_DAY_THREE_SCRIPT,
 } from "../lib/bibleYearDaysThreeToSixScripts";
+import { BIBLE_YEAR_DAY_ELEVEN_SCRIPT } from "../lib/bibleYearDayElevenScript";
 import {
   BIBLE_YEAR_DAY_EIGHT_SCRIPT, BIBLE_YEAR_DAY_NINE_SCRIPT,
   BIBLE_YEAR_DAY_SEVEN_SCRIPT, BIBLE_YEAR_DAY_TEN_SCRIPT,
@@ -43,12 +46,94 @@ const DAY_SCRIPTS: Record<number, BibleYearDayScript> = {
   2: BIBLE_YEAR_DAY_TWO_SCRIPT, 3: BIBLE_YEAR_DAY_THREE_SCRIPT, 4: BIBLE_YEAR_DAY_FOUR_SCRIPT,
   5: BIBLE_YEAR_DAY_FIVE_SCRIPT, 6: BIBLE_YEAR_DAY_SIX_SCRIPT, 7: BIBLE_YEAR_DAY_SEVEN_SCRIPT,
   8: BIBLE_YEAR_DAY_EIGHT_SCRIPT, 9: BIBLE_YEAR_DAY_NINE_SCRIPT, 10: BIBLE_YEAR_DAY_TEN_SCRIPT,
+  11: BIBLE_YEAR_DAY_ELEVEN_SCRIPT,
 };
+
+/**
+ * Finds a day's script without this file needing to be edited first.
+ *
+ * DAY_SCRIPTS above is a hand-written list of imports, so every new day needed
+ * a code change before it could be rendered. Fine for eleven days, impossible
+ * for three hundred and sixty five, and the thing that stopped the unattended
+ * run dead on day 12 with "Day 12 has no script" while
+ * lib/bibleYearDayTwelveScript.ts was sitting right there.
+ *
+ * The scripts follow one naming rule, BIBLE_YEAR_DAY_<NUMBER IN WORDS>_SCRIPT,
+ * so lib is searched for exports with that shape and the words are turned back
+ * into a number. Single file or grouped file, it gets found either way.
+ */
+const NUMBER_WORDS: Record<string, number> = {
+  ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5, SIX: 6, SEVEN: 7, EIGHT: 8, NINE: 9,
+  TEN: 10, ELEVEN: 11, TWELVE: 12, THIRTEEN: 13, FOURTEEN: 14, FIFTEEN: 15,
+  SIXTEEN: 16, SEVENTEEN: 17, EIGHTEEN: 18, NINETEEN: 19, TWENTY: 20, THIRTY: 30,
+  FORTY: 40, FIFTY: 50, SIXTY: 60, SEVENTY: 70, EIGHTY: 80, NINETY: 90, HUNDRED: 100,
+};
+
+/** "TWENTY_ONE", "TWENTYONE" and "ONE_HUNDRED_FIVE" all resolve. */
+function wordsToNumber(words: string): number | null {
+  const parts: string[] = [];
+  for (const chunk of words.split("_")) {
+    if (chunk in NUMBER_WORDS) { parts.push(chunk); continue; }
+    let rest = chunk;
+    let guard = 0;
+    while (rest && guard++ < 8) {
+      const hit = Object.keys(NUMBER_WORDS)
+        .filter((w) => rest.startsWith(w))
+        .sort((x, y) => y.length - x.length)[0];
+      if (!hit) return null;
+      parts.push(hit);
+      rest = rest.slice(hit.length);
+    }
+    if (rest) return null;
+  }
+  let current = 0;
+  for (const p of parts) {
+    const v = NUMBER_WORDS[p];
+    if (v === 100) current = (current || 1) * 100;
+    else current += v;
+  }
+  return current || null;
+}
+
+let discovered: Map<number, BibleYearDayScript> | null = null;
+async function discoverScripts() {
+  if (discovered) return discovered;
+  discovered = new Map();
+  const libDir = join(process.cwd(), "lib");
+  let names: string[] = [];
+  try { names = readdirSync(libDir); } catch { return discovered; }
+  for (const name of names) {
+    if (!name.endsWith(".ts")) continue;
+    let source = "";
+    try { source = readFileSync(join(libDir, name), "utf8"); } catch { continue; }
+    // matchAll, not a shared exec loop. A /g/ regex carries lastIndex between
+    // calls, so after matching in one file it resumed part-way through the
+    // next and missed it: day 11 was found and day 12, the very next file
+    // alphabetically, silently was not.
+    const found: Array<[number, string]> = [];
+    for (const m of source.matchAll(/export const BIBLE_YEAR_DAY_([A-Z_]+?)_SCRIPT/g)) {
+      const day = wordsToNumber(m[1]);
+      if (day) found.push([day, `BIBLE_YEAR_DAY_${m[1]}_SCRIPT`]);
+    }
+    if (!found.length) continue;
+    // require, not import(): tsx compiles this file to CommonJS, where a
+    // dynamic import of a .ts path does not resolve, while require is hooked.
+    let mod: Record<string, unknown>;
+    try { mod = requireTs(join(libDir, name)) as Record<string, unknown>; }
+    catch (e) { console.warn(`[scripts] skipped ${name}: ${(e as Error).message.slice(0, 120)}`); continue; }
+    for (const [day, exportName] of found) {
+      const value = mod[exportName];
+      if (value && !discovered.has(day)) discovered.set(day, value as BibleYearDayScript);
+    }
+  }
+  return discovered;
+}
 
 async function segmentTexts(dayNumber: number) {
   if (dayNumber === 1) return buildDayOneSegments(GENESIS_DAY_ONE_CREATION_LESSON);
-  const script = DAY_SCRIPTS[dayNumber];
-  if (!script) throw new Error(`Day ${dayNumber} has no script.`);
+  let script: BibleYearDayScript | undefined = DAY_SCRIPTS[dayNumber];
+  if (!script) script = (await discoverScripts()).get(dayNumber);
+  if (!script) throw new Error(`Day ${dayNumber} has no script, and lib/ has no BIBLE_YEAR_DAY_..._SCRIPT export for it.`);
   return buildDaySegments(script);
 }
 
