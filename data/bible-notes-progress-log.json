@@ -29724,6 +29724,55 @@
           "at": "2026-09-01T06:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 18,
+      "startedAt": "2026-09-01T08:45:55Z",
+      "finishedAt": "2026-09-01T08:56:51Z",
+      "durationMinutes": 11,
+      "sections": 5,
+      "cards": 40,
+      "verses": 21,
+      "notes": "Normal forward progress after Job 17 (priority queue and style-redo backlog both empty). Bildad's second speech: rebuke, the wicked man's light put out, hunting-trap imagery, terror/king of terrors imagery, closing tree/no-remembrance imagery. Density about 1.9 cards/verse. Style checker, parser check, and tsc all clean on first pass. Steps array included with real wall-clock timestamps.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-01T08:46:35Z"
+        },
+        {
+          "name": "target chapter determined: Job 18 (forward progress, redo-remaining empty)",
+          "at": "2026-09-01T08:46:35Z"
+        },
+        {
+          "name": "KJV text fetched for Job 18 (21 verses, aruljohn/Bible-kjv mirror)",
+          "at": "2026-09-01T08:46:42Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-09-01T08:52:32Z"
+        },
+        {
+          "name": "source file written (lib/jobEighteenSource.ts, 40 cards, 5 sections)",
+          "at": "2026-09-01T08:53:48Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-09-01T08:53:48Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 18, replaceStudySectionsForBookRange call)",
+          "at": "2026-09-01T08:54:09Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 40 cards, verbatim text confirmed)",
+          "at": "2026-09-01T08:54:25Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-01T08:55:43Z"
+        }
+      ]
     }
   ]
 }
