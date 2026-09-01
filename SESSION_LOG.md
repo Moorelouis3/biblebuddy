@@ -2967,3 +2967,11 @@ Next up: Job 21
 ## 2026-09-01T13:05:00Z (bible year day writer run)
 Day: 70 — Israel Asks for a King (1 Samuel 7-10) | Runtime: ~7 min teaching/opening/closing (4 chapters, 6 blocks) | Cast: not rendered (no keys in this environment)
 Next up: Day 71
+
+## 2026-09-01 (bible year day writer run)
+Day: 71 — Saul's Rise and Early Failure (1 Samuel 11-14) | Runtime: ~6 min teaching/opening/closing (4 chapters, 6 blocks) | Cast: not rendered (no keys in this environment)
+Next up: Day 72
+
+## 2026-09-01 (bible year day writer run)
+Day: 72 — Saul Is Rejected and David Appears (1 Samuel 15-18) | Runtime: ~7-8 min teaching/opening/closing (4 chapters, 7 blocks — heavier reading) | Cast: not rendered (no keys in this environment)
+Two days written this run (hard limit). Next up: Day 73
