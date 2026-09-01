@@ -30046,6 +30046,59 @@
           "at": "2026-09-01T20:54:32Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 24,
+      "startedAt": "2026-09-01T22:47:55Z",
+      "finishedAt": "2026-09-01T23:00:02Z",
+      "durationMinutes": 12.1,
+      "sections": 6,
+      "cards": 45,
+      "verses": 25,
+      "notes": "New chapter, forward progress. Job's speech on unpunished injustice: the poor oppressed by landmark thieves and pledge takers, evildoers who work in darkness (murderer, adulterer, thief), and the wicked who are 'cut off as the tops of the ears of corn.' Style spec followed exactly (docs/bible-study-note-style.md); style checker clean on first pass.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-01T22:47:55Z"
+        },
+        {
+          "name": "target chapter determined: Job 24 (new chapter, forward progress)",
+          "at": "2026-09-01T22:47:55Z"
+        },
+        {
+          "name": "KJV text fetched: Job 24 (25 verses) via GitHub raw JSON mirror",
+          "at": "2026-09-01T22:48:08Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (jobTwentyThreeSource.ts) read",
+          "at": "2026-09-01T22:48:35Z"
+        },
+        {
+          "name": "source file written: lib/jobTwentyFourSource.ts (6 sections, 45 phrase cards)",
+          "at": "2026-09-01T22:57:00Z"
+        },
+        {
+          "name": "style checker clean on first run: python3 scripts/check_bible_note_style.py lib/jobTwentyFourSource.ts -> No problems found",
+          "at": "2026-09-01T22:57:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, applyPersonalJobTwentyFourChapterStudySections, call site, preserveExactPhraseBodies range extended to job chapter 24",
+          "at": "2026-09-01T22:57:45Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('job', 24) -> 6 sections, 45 cards total",
+          "at": "2026-09-01T22:58:15Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-01T22:58:51Z"
+        },
+        {
+          "name": "verified again after fixing 3 stacked-clause ('while') prose lines by eye per section 13 checklist: style checker clean, parser check clean, tsc clean",
+          "at": "2026-09-01T23:00:02Z"
+        }
+      ]
     }
   ]
 }
