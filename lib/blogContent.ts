@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "did-jesus-really-exist",
+    title: "Did Jesus Really Exist? The Evidence Outside the Bible",
+    description:
+      "Did Jesus really exist? See what Tacitus, Josephus, Pliny, and the Talmud say, plus why historians agree He lived and died on a Roman cross.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/did-jesus-really-exist",
+    publishedAt: "2026-09-01",
+    readTime: "15 min read",
+    image: "/did-jesus-really-exist-banner.png",
+    groupPost: {
+      title: "Did Jesus Really Exist? 📖",
+      content:
+        "Someone told you Jesus never existed.\nRome wrote otherwise.\n\n📌 Almost no serious historian, believer or not, denies a man named Jesus lived and died on a cross.\n\n📖 A Roman historian who hated Christianity recorded His execution under Pilate.\n📖 A Jewish historian mentioned Him as a known public figure.\n📖 Even hostile rabbis never denied He lived.\n\nNew article on:\n🟢 what **Tacitus, Josephus, and Pliny** actually wrote about Jesus\n🟢 why the real debate is **who He was**, not whether He existed\n🟢 the next question every skeptic has to answer: the empty tomb\n\nDo you know the history behind what you believe? 🙏",
+    },
+  },
+  {
     slug: "how-do-you-know-you-are-saved",
     title: "How Do You Know You Are Saved?",
     description:

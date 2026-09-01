@@ -2935,3 +2935,7 @@ Next up: Job 19
 ## 2026-09-01T10:58:33Z (hourly chapter notes run)
 Chapter: Job 19 | Duration: 12 min | Sections: 5 | Cards: 51 | Status: pass
 Next up: Job 20
+
+## 2026-09-01T12:26:39Z (blog writer run, Louis requested 13-post batch)
+Article: Did Jesus Really Exist? The Evidence Outside the Bible | Words: ~3085 | Category: Bible Insights | Status: pass
+Queue remaining: 39
