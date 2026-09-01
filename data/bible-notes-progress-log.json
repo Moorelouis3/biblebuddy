@@ -29561,6 +29561,55 @@
           "at": "2026-09-01T00:58:45Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 15,
+      "startedAt": "2026-09-01T02:46:15Z",
+      "finishedAt": "2026-09-01T03:00:00Z",
+      "durationMinutes": 14,
+      "sections": 8,
+      "cards": 58,
+      "verses": 35,
+      "notes": "New chapter, forward progress after Job 14. Eliphaz's second speech. Style redo backlog and priority queue both empty at start of run.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-01T02:47:25Z"
+        },
+        {
+          "name": "target chapter determined: Job 15 (new chapter, forward progress, style-redo-remaining and priority-queue both empty)",
+          "at": "2026-09-01T02:47:39Z"
+        },
+        {
+          "name": "KJV text fetched: Job 15 (raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-09-01T02:47:49Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-09-01T02:47:55Z"
+        },
+        {
+          "name": "source file written: lib/jobFifteenSource.ts (8 sections, 58 cards)",
+          "at": "2026-09-01T02:57:36Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 58 cards, 0 problems)",
+          "at": "2026-09-01T02:58:03Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call, preserveExactPhraseBodies range extended to 15)",
+          "at": "2026-09-01T02:58:24Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 58 cards via getBibleReaderStudySections('job', 15)",
+          "at": "2026-09-01T02:58:39Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-01T02:59:41Z"
+        }
+      ]
     }
   ]
 }
