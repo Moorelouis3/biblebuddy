@@ -2959,3 +2959,7 @@ Queue remaining (Pinterest/existing backlog combined, data/blog-topics-queue.jso
 ## 2026-09-01T12:49:18Z (bible year day writer run)
 Day: 69 — Samuel Hears God and the Ark Is Taken (1 Samuel 3-6) | Runtime: ~7 min teaching/opening/closing (4 chapters, 6 blocks) | Cast: not rendered (no keys in this environment)
 Next up: Day 70
+
+## 2026-09-01T13:05:00Z (bible year day writer run)
+Day: 70 — Israel Asks for a King (1 Samuel 7-10) | Runtime: ~7 min teaching/opening/closing (4 chapters, 6 blocks) | Cast: not rendered (no keys in this environment)
+Next up: Day 71
