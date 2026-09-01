@@ -2915,3 +2915,7 @@ Next up: Day 67 (run stops here — 2-day-per-run limit reached)
 ## 2026-09-01T04:58:30Z (hourly chapter notes run)
 Chapter: Job 16 | Duration: 11 min | Sections: 6 | Cards: 46 | Status: pass
 Next up: Job 17
+
+## 2026-09-01T06:56:30Z (hourly chapter notes run)
+Chapter: Job 17 | Duration: 8 min | Sections: 5 | Cards: 32 | Status: pass
+Next up: Job 18

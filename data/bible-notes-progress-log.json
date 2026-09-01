@@ -29667,6 +29667,63 @@
           "at": "2026-09-01T04:57:30Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 17,
+      "startedAt": "2026-09-01T06:46:41Z",
+      "finishedAt": "2026-09-01T06:55:00Z",
+      "durationMinutes": 8,
+      "sections": 5,
+      "cards": 32,
+      "verses": 16,
+      "notes": "New chapter, normal forward progress after Job 16. Job answers his friends amid mockery and despair: the surety/strike-hands legal imagery, the byword and tabret reversal, the righteous holding their way, and Job resigning himself to the grave as kin (corruption as father, the worm as mother and sister).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-01T06:47:06Z"
+        },
+        {
+          "name": "target chapter determined: Job 17 (new chapter, redo backlog and priority queue both empty)",
+          "at": "2026-09-01T06:48:08Z"
+        },
+        {
+          "name": "KJV text fetched (Job 17, 16 verses)",
+          "at": "2026-09-01T06:47:59Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-09-01T06:48:08Z"
+        },
+        {
+          "name": "reviewed reference implementation and wiring pattern (jobSixteenSource.ts, genesisThirtyOneSource.ts)",
+          "at": "2026-09-01T06:48:20Z"
+        },
+        {
+          "name": "source file written (lib/jobSeventeenSource.ts, 5 sections, 32 cards)",
+          "at": "2026-09-01T06:53:30Z"
+        },
+        {
+          "name": "style checker clean (32 cards, 0 problems)",
+          "at": "2026-09-01T06:53:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 17, replaceStudySectionsForBookRange)",
+          "at": "2026-09-01T06:54:10Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 32 cards)",
+          "at": "2026-09-01T06:54:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-01T06:55:00Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-01T06:56:00Z"
+        }
+      ]
     }
   ]
 }
