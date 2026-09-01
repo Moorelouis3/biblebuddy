@@ -2956,6 +2956,14 @@ Articles: Who Was Joseph? From the Pit to the Palace, The Names of God and What 
 All 13 Pinterest funnel posts are now live. Discarded the held-back duplicate Armor of God pillar post (the-armor-of-god-explained) - see MARCUS_HANDOFF.md.
 Queue remaining (Pinterest/existing backlog combined, data/blog-topics-queue.json): 27
 
+## 2026-09-01T12:49:18Z (bible year day writer run)
+Day: 69 — Samuel Hears God and the Ark Is Taken (1 Samuel 3-6) | Runtime: ~7 min teaching/opening/closing (4 chapters, 6 blocks) | Cast: not rendered (no keys in this environment)
+Next up: Day 70
+
 ## 2026-09-01T12:59:50Z (hourly chapter notes run)
 Chapter: Job 20 | Duration: 9 min | Sections: 6 | Cards: 57 | Status: pass
 Next up: Job 21
+
+## 2026-09-01T13:05:00Z (bible year day writer run)
+Day: 70 — Israel Asks for a King (1 Samuel 7-10) | Runtime: ~7 min teaching/opening/closing (4 chapters, 6 blocks) | Cast: not rendered (no keys in this environment)
+Next up: Day 71
