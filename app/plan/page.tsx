@@ -2,7 +2,10 @@
 
 export const dynamic = "force-dynamic";
 
+import { useEffect } from "react";
 import BibleYearJourneyDashboard from "../../components/BibleYearJourneyDashboard";
+import { useSupabaseUser } from "../../lib/useSupabaseUser";
+import { recordNewUser } from "../../lib/guestSession";
 import AdminAnalyticsPreloader from "../../components/AdminAnalyticsPreloader";
 
 /**
@@ -13,6 +16,12 @@ import AdminAnalyticsPreloader from "../../components/AdminAnalyticsPreloader";
  * /dashboard?view=... deep links still land on the same component.
  */
 export default function PlanPage() {
+  const { userId } = useSupabaseUser();
+  // Opening a plan day is real engagement, so it counts as a new user - the
+  // once-per-user flag inside recordNewUser makes repeat visits free.
+  useEffect(() => {
+    if (userId) recordNewUser(userId, "plan_day_opened");
+  }, [userId]);
   return (
     <>
       <AdminAnalyticsPreloader />

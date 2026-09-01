@@ -18,6 +18,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useSupabaseUser } from "../lib/useSupabaseUser";
+import { recordNewUser } from "../lib/guestSession";
 import { getVerseOfTheDay } from "../lib/verseOfTheDay";
 import { bibleBuddyTvTitles } from "../lib/bibleBuddyTvContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
@@ -228,7 +229,10 @@ export default function HomeScreen() {
                 <button
                   type="button"
                   key={day.dayNumber}
-                  onClick={() => setOpenDay(day.dayNumber)}
+                  onClick={() => {
+                    if (userId) recordNewUser(userId, "plan_day_opened");
+                    setOpenDay(day.dayNumber);
+                  }}
                   className="w-[104px] shrink-0 snap-start text-left"
                 >
                   <div

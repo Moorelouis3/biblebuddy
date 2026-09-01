@@ -263,6 +263,7 @@ function normalizeLandingSource(value: string | null) {
   if (source.includes("youtube") || source.includes("youtu.be")) return "YouTube";
   if (source.includes("facebook")) return "Facebook";
   if (source.includes("tiktok")) return "TikTok";
+  if (source.includes("pinterest") || source.includes("pin.it")) return "Pinterest";
   if (source.includes("google")) return "Google";
   return value ? "Other" : "Direct";
 }
