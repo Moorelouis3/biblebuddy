@@ -12,6 +12,7 @@
  */
 
 import Link from "next/link";
+import { BIBLE_STUDY_GROUP_ID } from "../lib/bibleStudiesCatalog";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -42,7 +43,10 @@ const TABS: Tab[] = [
 
 const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
   { label: "Bible Buddy TV", href: "/biblebuddy-tv", icon: "📺" },
-  { label: "Study Group", href: "/dashboard?view=group", icon: "👥" },
+  // Straight to the group page. The old /dashboard?view=group deep link only
+  // worked through the old dashboard's slide logic, which the plan view
+  // suppresses - so it silently landed people on their plan instead.
+  { label: "Bible Study Group", href: `/study-groups/${BIBLE_STUDY_GROUP_ID}`, icon: "👥" },
   { label: "Invite a Buddy", href: "/ambassador", icon: "💌" },
   { label: "BB Chat", href: "/chat", icon: "💬" },
   { label: "Notes", href: "/notes", icon: "📝" },
