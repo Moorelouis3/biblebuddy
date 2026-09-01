@@ -76,7 +76,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-joseph",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/who-was-joseph-banner.png",
     groupPost: {
       title: "Who Was Joseph? From the Pit to the Palace 📖",
       content:
@@ -93,7 +93,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/names-of-god-meanings",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/names-of-god-meanings-banner.png",
     groupPost: {
       title: "The Names of God and What They Mean 📖",
       content:
@@ -110,7 +110,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/armor-of-god-explained",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/armor-of-god-explained-banner.png",
     groupPost: {
       title: "The Armor of God Explained 📖",
       content:
@@ -127,7 +127,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/genesis-1-explained",
     publishedAt: "2026-09-01",
     readTime: "8 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/genesis-1-explained-banner.png",
     groupPost: {
       title: "Genesis 1 Explained 📖",
       content:
@@ -144,7 +144,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-adam",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/who-was-adam-banner.png",
     groupPost: {
       title: "Who Was Adam? 📖",
       content:
@@ -161,7 +161,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-eve",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/who-was-eve-banner.png",
     groupPost: {
       title: "Who Was Eve? 📖",
       content:
@@ -178,7 +178,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/genesis-2-explained",
     publishedAt: "2026-09-01",
     readTime: "8 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/genesis-2-explained-banner.png",
     groupPost: {
       title: "Genesis 2 Explained 📖",
       content:
@@ -195,7 +195,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/garden-of-eden-four-rivers",
     publishedAt: "2026-09-01",
     readTime: "8 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/garden-of-eden-four-rivers-banner.png",
     groupPost: {
       title: "The Garden of Eden & the Four Rivers Explained 📖",
       content:
@@ -212,7 +212,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/biblical-numbers-meanings",
     publishedAt: "2026-09-01",
     readTime: "10 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/biblical-numbers-meanings-banner.png",
     groupPost: {
       title: "Biblical Numbers and Their Meanings 📖",
       content:
@@ -229,7 +229,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-is-god-as-a-father",
     publishedAt: "2026-09-01",
     readTime: "6 min read",
-    image: "/anxietyarticlebanner.jpg",
+    image: "/who-is-god-as-a-father-banner.png",
     groupPost: {
       title: "Who Is God as a Father? 📖",
       content:
@@ -246,7 +246,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/men-who-walked-with-god",
     publishedAt: "2026-09-01",
     readTime: "8 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/men-who-walked-with-god-banner.png",
     groupPost: {
       title: "Every Man Who Walked With God in the Bible 📖",
       content:
@@ -263,7 +263,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/lessons-from-the-life-of-jesus",
     publishedAt: "2026-09-01",
     readTime: "7 min read",
-    image: "/anxietyarticlebanner.jpg",
+    image: "/lessons-from-the-life-of-jesus-banner.png",
     groupPost: {
       title: "15 Lessons From the Life of Jesus 📖",
       content:
@@ -280,7 +280,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/inspiring-biblical-characters",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/inspiring-biblical-characters-banner.png",
     groupPost: {
       title: "Inspiring Biblical Characters 📖",
       content:
