@@ -2903,3 +2903,7 @@ Next up: Job 15
 ## 2026-09-01T03:00:00Z (hourly chapter notes run)
 Chapter: Job 15 | Duration: 14 min | Sections: 8 | Cards: 58 | Status: pass
 Next up: Job 16
+
+## 2026-09-01 (bible year day writer run)
+Day: 65 — Samson Begins His Troubled Calling (Judges 12-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 66
