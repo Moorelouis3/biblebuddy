@@ -34,7 +34,7 @@ The blog writer agent just published "What Does Selah Mean in the Bible?"
 for this one later.
 
 ## Bible in One Year: scripted days waiting on a local audio render
-Days 2-65 are scripted and wired into DAY_SCRIPTS, each verified with
+Days 2-66 are scripted and wired into DAY_SCRIPTS, each verified with
 `tsc --noEmit`, but none are rendered or uploaded — this environment has
 no OPENAI_API_KEY and no Supabase service key, by design. Run
 `npx tsx scripts/render-pending-bible-year-days.ts` locally (it checks

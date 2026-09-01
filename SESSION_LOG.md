@@ -2907,3 +2907,7 @@ Next up: Job 16
 ## 2026-09-01 (bible year day writer run)
 Day: 65 — Samson Begins His Troubled Calling (Judges 12-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 66
+
+## 2026-09-01 (bible year day writer run)
+Day: 66 — Samson Falls and Israel Unravels (Judges 16-19) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 67 (run stops here — 2-day-per-run limit reached)
