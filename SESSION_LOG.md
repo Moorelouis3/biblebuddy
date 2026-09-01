@@ -2919,3 +2919,7 @@ Next up: Job 17
 ## 2026-09-01T06:56:30Z (hourly chapter notes run)
 Chapter: Job 17 | Duration: 8 min | Sections: 5 | Cards: 32 | Status: pass
 Next up: Job 18
+
+## 2026-09-01T08:27:09Z (bible year day writer run)
+Day: 67 — Civil War and Ruth's Loyal Love (Judges 20-21; Ruth 1-2) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 68

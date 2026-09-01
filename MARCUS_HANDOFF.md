@@ -32,3 +32,11 @@ The blog writer agent just published "What Does Selah Mean in the Bible?"
 `bannerImage`, so it reused the bible-insights category fallback
 (`/Whatisthebiblebanner.png`). Louis may want to swap in a custom banner
 for this one later.
+
+## Bible in One Year days waiting on local audio render
+Scripts through Day 67 are written and pushed, but none of them have been
+rendered — this environment has no OPENAI_API_KEY or Supabase service key.
+Run `npx tsx scripts/render-pending-bible-year-days.ts` on a machine that
+has those keys; it auto-detects every day with a script but no current
+audio and renders/uploads them in one batch. This line will be updated as
+the day writer keeps going rather than getting a new entry per day.
