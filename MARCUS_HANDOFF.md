@@ -1,3 +1,27 @@
+## New blog post touches contested doctrine: biblical numbers
+"Biblical Numbers and Their Meanings" (/blog/biblical-numbers-meanings)
+draws a hard line between numeric patterns Scripture actually repeats
+with real citations (7 = completion, 40 = testing, 12 = God's people,
+3 = resurrection, 666 = Revelation 13:18's literal claim) versus popular
+numerology with no textual support (5 = grace, 66 books as
+"meaningful") - it explicitly states the second group has no scriptural
+backing rather than presenting it as established fact. Please review
+where that line is drawn before it gets wide promotion, since numerology
+is an area where readers push back hard in either direction.
+
+## New blog posts on fallback banners: Pinterest funnel batch
+11 posts from the 2026-09-01 Pinterest funnel batch had no `bannerImage`
+in data/blog-topics-queue.json, so each reused its category's fallback
+banner: armor-of-god-explained, genesis-1-explained, genesis-2-explained,
+garden-of-eden-four-rivers, biblical-numbers-meanings, and
+men-who-walked-with-god are on /Whatisthebiblebanner.png (bible-insights
+or verse-breakdowns); who-was-adam, who-was-eve, and
+inspiring-biblical-characters are on /5thingsholdingmenback.png
+(character-studies); who-is-god-as-a-father and
+lessons-from-the-life-of-jesus are on /anxietyarticlebanner.jpg
+(christian-foundations). Louis may want custom Pinterest-matched banners
+for these since they are the pin-facing posts.
+
 ## New blog post touches contested doctrine: eternal security
 The blog writer agent just published "Can You Lose Your Salvation? What
 the Bible Says" (/blog/can-you-lose-your-salvation). This covers eternal

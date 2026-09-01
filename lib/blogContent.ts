@@ -67,6 +67,193 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "armor-of-god-explained",
+    title: "The Armor of God Explained",
+    description:
+      "The Armor of God from Ephesians 6:10 to 18 explained piece by piece: the belt of truth, breastplate, shield of faith, sword of the Spirit, and prayer.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/armor-of-god-explained",
+    publishedAt: "2026-09-01",
+    readTime: "9 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "The Armor of God Explained 📖",
+      content:
+        "The armor of God is not a costume.\nIt is six real pieces for a real fight.\n\n📌 Paul names the fight before he names the gear, and it is not against people.\n\n📖 The belt of truth holds everything else together.\n📖 The shield of faith quenches fiery darts before they land.\n📖 Paul does not stop at the sword. He ends with prayer.\n\nNew article on:\n🟢 what each piece of the **armor of God** actually represents\n🟢 why the real battle is not against **flesh and blood**\n🟢 why prayer, not the sword, finishes the passage\n\nWhich piece of the armor do you need most today? 🙏",
+    },
+  },
+  {
+    slug: "genesis-1-explained",
+    title: "Genesis 1 Explained: The Creation of the World",
+    description:
+      "A plain overview of Genesis 1: the six days of creation in order, humanity made in God's image, and God's authority as Creator.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-1-explained",
+    publishedAt: "2026-09-01",
+    readTime: "8 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Genesis 1 Explained 📖",
+      content:
+        "Genesis 1 is not just ancient history.\nIt is the account of how everything you can see got here.\n\n📌 God speaks, and it happens exactly as He said, every single time.\n\n📖 Light shows up on day one, the sun not until day four.\n📖 Humans alone are called made in God's image.\n📖 The seventh day rest actually opens Genesis 2, not chapter 1.\n\nNew article on:\n🟢 the real order of the **six days of creation**\n🟢 what being made in **God's image** actually means\n🟢 the one detail most graphics get wrong about **day seven**\n\nWhich day of creation surprises you most? 🙏",
+    },
+  },
+  {
+    slug: "who-was-adam",
+    title: "Who Was Adam?",
+    description:
+      "Who was Adam in the Bible? His creation from the dust, life in Eden, the Fall, and why Paul calls Jesus the last Adam. A complete overview.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-adam",
+    publishedAt: "2026-09-01",
+    readTime: "9 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Adam? 📖",
+      content:
+        "He was formed from dust, and given a name people still call insults today.\n\n📌 Adam's story is not really about how far back history goes.\n\n📖 God formed him from the dust and breathed life into him.\n📖 He worked in paradise before sin ever touched anything.\n📖 One bad choice broke it all, and God still came looking for him.\n\nNew article on:\n🟢 what **being made in God's image** actually means\n🟢 the popular details about the Fall that are not really in the Bible\n🟢 why Paul calls Jesus the **last Adam**\n\nWhere do you see yourself in Adam's story? 🙏",
+    },
+  },
+  {
+    slug: "who-was-eve",
+    title: "Who Was Eve?",
+    description:
+      "Who was Eve in the Bible? Her creation, the serpent, the Fall, and the promise God gave her before her sentence, from Genesis 2 to 4.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-eve",
+    publishedAt: "2026-09-01",
+    readTime: "9 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Eve? 📖",
+      content:
+        "Eve gets blamed for the worst chapter in the Bible.\nMost people have never read the rest of her story.\n\n📌 God named her hope in the same breath He judged her.\n\n📖 Eve was formed because God called something not good.\n📖 The fruit was never called an apple in the text.\n📖 Adam was with her the whole time, not off somewhere else.\n\nNew article on:\n🟢 what actually happened at the **forbidden tree**\n🟢 the promise God gave Eve before her **punishment**\n🟢 why Adam named his wife **hope** right after the fall\n\nDoes one failure feel like it defines you too? 🙏",
+    },
+  },
+  {
+    slug: "genesis-2-explained",
+    title: "Genesis 2 Explained: Eden, Adam, Eve & God's Design",
+    description:
+      "A clear walkthrough of Genesis 2: God forming Adam from dust, Eden, the one command about the tree, and the creation of Eve and marriage.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-2-explained",
+    publishedAt: "2026-09-01",
+    readTime: "8 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Genesis 2 Explained 📖",
+      content:
+        "God did not speak the first man into being from a distance.\nHe knelt in the dust and breathed.\n\n📌 Genesis 2 is where creation gets personal.\n\n📖 Adam was given work before anything ever went wrong.\n📖 One tree, out of a whole garden, was off limits.\n📖 God called being alone the first not good thing in the Bible.\n\nNew article on:\n🟢 how **Genesis 1 and 2** fit together, not contradict\n🟢 the real meaning of **help meet**\n🟢 what the garden actually asked of Adam\n\nWhat stands out most to you in Genesis 2? 🙏",
+    },
+  },
+  {
+    slug: "garden-of-eden-four-rivers",
+    title: "The Garden of Eden & the Four Rivers Explained",
+    description:
+      "Genesis 2 names four rivers flowing out of Eden. See what is confirmed, what is still debated, and what the Bible actually says about the garden.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/garden-of-eden-four-rivers",
+    publishedAt: "2026-09-01",
+    readTime: "8 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "The Garden of Eden & the Four Rivers Explained 📖",
+      content:
+        "Four rivers flowed out of one garden.\nOnly two of them can be found on a map today.\n\n📌 Genesis is far more specific about Eden than most graphics ever show you.\n\n📖 Adam had a real job in the garden, before sin ever entered.\n📖 The command not to eat was given to Adam alone, before Eve was formed.\n📖 Two rivers, the Tigris and Euphrates, still flow today.\n\nNew article on:\n🟢 what Genesis actually says about Eden's **four rivers**\n🟢 the two trees, and why they are not the same tree\n🟢 where the text stops and the guesswork begins\n\nWhich detail about Eden surprised you most? 🙏",
+    },
+  },
+  {
+    slug: "biblical-numbers-meanings",
+    title: "Biblical Numbers and Their Meanings",
+    description:
+      "What do biblical numbers like 7, 12, 40, and 666 really mean? A clear guide that separates real Bible patterns from popular numerology myths.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/biblical-numbers-meanings",
+    publishedAt: "2026-09-01",
+    readTime: "10 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Biblical Numbers and Their Meanings 📖",
+      content:
+        "Numbers are not random in the Bible.\nSome of them show up again and again, on purpose.\n\n📌 Scripture uses numbers with real intention, not hidden codes.\n\n📖 Seven marks something finished.\n📖 Forty marks a season of testing.\n📖 Twelve marks God's own people.\n\nNew article on:\n🟢 which numbers Scripture actually repeats on purpose\n🟢 what **666** really says, straight from Revelation\n🟢 the popular numerology claims that do not hold up\n\nWhich number in the Bible surprises you most? 🙏",
+    },
+  },
+  {
+    slug: "who-is-god-as-a-father",
+    title: "Who Is God as a Father?",
+    description:
+      "What does it mean that God is a Father? See what Scripture says about His compassion, provision, discipline, and adoption, even if your earthly father let you down.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/who-is-god-as-a-father",
+    publishedAt: "2026-09-01",
+    readTime: "6 min read",
+    image: "/anxietyarticlebanner.jpg",
+    groupPost: {
+      title: "Who Is God as a Father? 📖",
+      content:
+        "Father is not a safe word for everyone.\nFor some it means absence. For some it means fear.\n\n📌 Scripture says God as Father is not bound by what your earthly father was.\n\n📖 The Bible ties His discipline directly to His love.\n📖 Paul says believers are legally adopted, crying \"Abba, Father.\"\n📖 Psalm 68:5 calls Him a father to the fatherless.\n\nNew article on:\n🟢 what it really means that God is **compassionate**\n🟢 the truth behind **Abba Father** and what it actually says\n🟢 how **adoption** changes your standing with God\n\nWhat part of God's fatherhood is hardest for you to believe? 🙏",
+    },
+  },
+  {
+    slug: "men-who-walked-with-god",
+    title: "Every Man Who Walked With God in the Bible",
+    description:
+      "Only two men in the Bible are described as walking with God: Enoch and Noah. See what the phrase means and who else lived that out.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/men-who-walked-with-god",
+    publishedAt: "2026-09-01",
+    readTime: "8 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Every Man Who Walked With God in the Bible 📖",
+      content:
+        "Scripture only names two men this way.\nEnoch and Noah both walked with God, but almost everyone else gets grouped in with them.\n\n📌 Walking with God means ongoing, close, obedient closeness, not one good day.\n\n📖 Enoch walked with God for three hundred years before God took him.\n📖 Noah kept walking with God while his whole generation had stopped.\n📖 Abraham is called God's friend instead, in different words entirely.\n\nNew article on:\n🟢 the only two men Scripture calls **walked with God**\n🟢 why **Abraham and Moses** get different wording, not the same title\n🟢 what Micah 6:8 asks of every one of us today\n\nWho in the Bible do you most want to walk like? 🙏",
+    },
+  },
+  {
+    slug: "lessons-from-the-life-of-jesus",
+    title: "15 Lessons From the Life of Jesus",
+    description:
+      "Fifteen practical lessons from the life of Jesus, each grounded in a real Gospel moment, from loving enemies to facing the cross.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/lessons-from-the-life-of-jesus",
+    publishedAt: "2026-09-01",
+    readTime: "7 min read",
+    image: "/anxietyarticlebanner.jpg",
+    groupPost: {
+      title: "15 Lessons From the Life of Jesus 📖",
+      content:
+        "A pretty Pinterest graphic gives you a list.\nThe Bible gives you the actual moments behind it.\n\n📌 Jesus did not just teach these things. He lived them under real pressure.\n\n📖 He washed His disciples' feet the night before He died.\n📖 He forgave His executioners while still on the cross.\n📖 He faced the devil in the wilderness with nothing but Scripture.\n\nNew article on:\n🟢 fifteen lessons from the life of Jesus, each tied to a real Gospel moment\n🟢 the difference between **quote graphics** and what actually happened\n🟢 where to read each story for yourself, verse by verse\n\nWhich of these fifteen do you need most this week? 🙏",
+    },
+  },
+  {
+    slug: "inspiring-biblical-characters",
+    title: "Inspiring Biblical Characters and What We Can Learn From Them",
+    description:
+      "The real stories of Noah, David, Esther, Daniel, Ruth, Jonah, Mary, and Paul, and the one lesson in faith each of them actually teaches.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/inspiring-biblical-characters",
+    publishedAt: "2026-09-01",
+    readTime: "9 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Inspiring Biblical Characters 📖",
+      content:
+        "Most Bible characters were not superheroes.\nThey were ordinary people God used anyway.\n\n📌 Eight different lives, eight different struggles, one faithful God.\n\n📖 Noah obeyed for decades before it ever rained.\n📖 Esther risked her life with no promise of the outcome.\n📖 Paul went from persecutor to preacher overnight.\n\nNew article on:\n🟢 the real stories behind 8 **inspiring biblical characters**\n🟢 the one detail in each story pop culture usually gets wrong\n🟢 which face of faith matches where you are right now\n\nWhich one sounds the most like your story right now? 🙏",
+    },
+  },
+  {
     slug: "could-you-sacrifice-your-isaac",
     title: "Could You Sacrifice Your Isaac?",
     description:

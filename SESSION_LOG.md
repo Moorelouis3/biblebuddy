@@ -2945,3 +2945,8 @@ Articles: Could You Sacrifice Your Isaac?, 6 Ways God Heals a Lust-Damaged Heart
 Note: this batch ran against content-buddy/blog/topics-queue.json before discovering Louis's actual request was the Pinterest funnel batch in data/blog-topics-queue.json (a separate queue). These 11 are real, verified, published content from the regular backlog, just not the urgent batch - see MARCUS_HANDOFF.md.
 Held back: The Armor of God Explained (the-armor-of-god-explained, pillar) - written and verified but NOT published, to avoid duplicate content with the focused Pinterest post armor-of-god-explained. Awaiting Louis's call.
 Queue remaining (content-buddy): 28
+
+## 2026-09-01T12:39:21Z (blog writer batch run, Pinterest funnel queue)
+Articles: The Armor of God Explained (armor-of-god-explained), Genesis 1 Explained, Who Was Adam?, Who Was Eve?, Genesis 2 Explained, The Garden of Eden & the Four Rivers Explained, Biblical Numbers and Their Meanings, Who Is God as a Father?, Every Man Who Walked With God in the Bible, 15 Lessons From the Life of Jesus, Inspiring Biblical Characters and What We Can Learn From Them | 11 posts, focused length (~1,300-2,050 words each) | Status: pass
+This is the actual batch Louis asked for. 2 of 13 still in progress (Who Was Joseph?, The Names of God and What They Mean).
+Queue remaining (Pinterest, data/blog-topics-queue.json): 29

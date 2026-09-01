@@ -1,285 +1,197 @@
 {
- "note": "Topic queue for the Blog Writer agent. It takes the FIRST entry each run, writes that article to docs/blog-post-format.md, ships it live, and removes the entry in the same commit. Louis: add/reorder/delete topics freely - the agent only ever touches the front of the queue. Required per entry: title, slug, categorySlug, angle (the brief: what the post says and who it is for). Optional: keyword (main SEO keyword, derived from the title when absent), length ('focused' about 1000-1600 and led by the subject, 'standard' 3000-3500, or 'pillar' 4500-5000; defaults to standard), bannerImage (when missing, the agent reuses the fallback banner for that category and flags it in MARCUS_HANDOFF.md so a custom banner can be swapped in later). The agent's full job description is docs/BLOG_WRITER_AGENT.md. CURRENT PRIORITY (Louis, 2026-09-01): the first 13 entries are the Pinterest funnel batch, written at roughly two a day until they are done. They correspond to Pinterest content already publishing, so a pin about Genesis 1 lands on the Genesis 1 article rather than a generic page. The previous queue resumes underneath them, unchanged.",
- "categoryFallbackBanners": {
-  "christian-foundations": "/anxietyarticlebanner.jpg",
-  "bible-insights": "/Whatisthebiblebanner.png",
-  "bible-study-tips": "/Biblereadingbanner.png",
-  "verse-breakdowns": "/Whatisthebiblebanner.png",
-  "character-studies": "/5thingsholdingmenback.png",
-  "christian-history": "/Whatisthebiblebanner.png"
- },
- "queue": [
-  {
-   "title": "The Armor of God Explained",
-   "slug": "armor-of-god-explained",
-   "categorySlug": "verse-breakdowns",
-   "keyword": "armor of god explained",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. Explain the Armor of God from Ephesians 6:10-18 and what each piece represents: the Belt of Truth, Breastplate of Righteousness, Shoes of the Gospel of Peace, Shield of Faith, Helmet of Salvation, Sword of the Spirit, and prayer. Explain the larger idea of spiritual warfare and what Paul is actually teaching Christians about standing firm. Keep it practical and biblical rather than sensational - no dramatising of demons, and no turning the armour into a formula or a chant."
+  "note": "Topic queue for the Blog Writer agent. It takes the FIRST entry each run, writes that article to docs/blog-post-format.md, ships it live, and removes the entry in the same commit. Louis: add/reorder/delete topics freely - the agent only ever touches the front of the queue. Required per entry: title, slug, categorySlug, angle (the brief: what the post says and who it is for). Optional: keyword (main SEO keyword, derived from the title when absent), length ('focused' about 1000-1600 and led by the subject, 'standard' 3000-3500, or 'pillar' 4500-5000; defaults to standard), bannerImage (when missing, the agent reuses the fallback banner for that category and flags it in MARCUS_HANDOFF.md so a custom banner can be swapped in later). The agent's full job description is docs/BLOG_WRITER_AGENT.md. CURRENT PRIORITY (Louis, 2026-09-01): the first 13 entries are the Pinterest funnel batch, written at roughly two a day until they are done. They correspond to Pinterest content already publishing, so a pin about Genesis 1 lands on the Genesis 1 article rather than a generic page. The previous queue resumes underneath them, unchanged.",
+  "categoryFallbackBanners": {
+    "christian-foundations": "/anxietyarticlebanner.jpg",
+    "bible-insights": "/Whatisthebiblebanner.png",
+    "bible-study-tips": "/Biblereadingbanner.png",
+    "verse-breakdowns": "/Whatisthebiblebanner.png",
+    "character-studies": "/5thingsholdingmenback.png",
+    "christian-history": "/Whatisthebiblebanner.png"
   },
-  {
-   "title": "Genesis 1 Explained: The Creation of the World",
-   "slug": "genesis-1-explained",
-   "categorySlug": "verse-breakdowns",
-   "keyword": "genesis 1 explained",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. A clear overview of Genesis 1 and the creation account: the structure of the creation days, the order and intention in creation, humanity made in God's image, God's authority as Creator, and the major themes someone should carry away from the chapter. This is an OVERVIEW, NOT a verse-by-verse commentary - do not recreate Bible Buddy's verse notes here. The CTA invites readers who want to go deeper to study Genesis 1 verse by verse inside Bible Buddy."
-  },
-  {
-   "title": "Who Was Adam?",
-   "slug": "who-was-adam",
-   "categorySlug": "character-studies",
-   "keyword": "who was adam in the bible",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. A complete but accessible character overview of Adam: who he was, his creation from the dust, life in Eden, being made in God's image, his relationship with God, the creation of Eve, his responsibility in the Garden, the Fall, the consequences of his disobedience, his family, and why Adam matters across the rest of the biblical story. Connect him to the larger message of redemption without turning it into a technical theological essay."
-  },
-  {
-   "title": "Who Was Eve?",
-   "slug": "who-was-eve",
-   "categorySlug": "character-studies",
-   "keyword": "who was eve in the bible",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. Eve's complete story: her creation, why God created her, her relationship with Adam, life in Eden, the serpent and the temptation, her decision at the forbidden tree, the Fall and its consequences, her children, and what Christians can learn from her. Do NOT reduce Eve's whole identity to her mistake - show her place at the beginning of humanity and in God's continuing plan."
-  },
-  {
-   "title": "Genesis 2 Explained: Eden, Adam, Eve & God's Design",
-   "slug": "genesis-2-explained",
-   "categorySlug": "verse-breakdowns",
-   "keyword": "genesis 2 explained",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. An overall explanation of Genesis 2 and how it expands the creation of humanity introduced in Genesis 1: God forming Adam and breathing life into him, the Garden of Eden, Adam's responsibility, the command about the Tree of the Knowledge of Good and Evil, the creation of Eve, marriage, and the chapter's major themes. Overview rather than verse-by-verse commentary; the verse-by-verse belongs in Bible Buddy."
-  },
-  {
-   "title": "The Garden of Eden & the Four Rivers Explained",
-   "slug": "garden-of-eden-four-rivers",
-   "categorySlug": "bible-insights",
-   "keyword": "garden of eden four rivers",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. What Genesis actually tells us about Eden: the Garden, the Tree of Life, the Tree of the Knowledge of Good and Evil, Adam's responsibility there, and the four rivers named in Genesis 2 - Pishon, Gihon, Hiddekel/Tigris and Euphrates. Explain what is known, what remains uncertain, and why Eden matters biblically. Do NOT present speculation about Eden's modern location as established fact; say clearly where Scripture stops and where theory begins."
-  },
-  {
-   "title": "Biblical Numbers and Their Meanings",
-   "slug": "biblical-numbers-meanings",
-   "categorySlug": "bible-insights",
-   "keyword": "biblical numbers and their meanings",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. The numbers most discussed in Scripture and the patterns associated with them - 1, 3, 5, 6, 7, 10, 12, 40, 50, 66 and 666 where appropriate. This one needs particular care: it must NOT turn biblical numerology into superstition. Distinguish explicitly between patterns Scripture actually supports and meanings Christians commonly assign without strong biblical evidence, and say which is which as you go. Doctrinally sensitive - flag it in MARCUS_HANDOFF.md so Louis reads it himself."
-  },
-  {
-   "title": "Who Is God as a Father?",
-   "slug": "who-is-god-as-a-father",
-   "categorySlug": "christian-foundations",
-   "keyword": "god as a father",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. What Scripture means when it describes God as Father: His protection, compassion, provision, presence, discipline, love, faithfulness, forgiveness, and the adoption of believers into His family. Help the reader understand that God's fatherhood describes both His relationship with His people and aspects of His character. Ground every point in Scripture rather than producing a motivational list. Be aware many readers arrive with a difficult picture of fatherhood; handle that honestly and gently."
-  },
-  {
-   "title": "Who Was Joseph? From the Pit to the Palace",
-   "slug": "who-was-joseph",
-   "categorySlug": "character-studies",
-   "keyword": "who was joseph in the bible",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. Joseph's story told as an engaging biblical narrative: his dreams, his brothers' jealousy, being sold into slavery, Potiphar's house, the false accusation and prison, interpreting dreams, Pharaoh raising him to authority, the famine, the reunion with his brothers, forgiveness, restoration, and Genesis 50:20. The central thread is how God's providence works through suffering and how Joseph stayed faithful through radically changing circumstances."
-  },
-  {
-   "title": "Every Man Who Walked With God in the Bible",
-   "slug": "men-who-walked-with-god",
-   "categorySlug": "bible-insights",
-   "keyword": "who walked with god in the bible",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. The biblical language of walking with God. Pay particular attention to Enoch and Noah, because Scripture explicitly uses that wording of them, and CAREFULLY distinguish the explicit wording from broader examples of faithful men whose lives demonstrate the same idea - do not present the second group as though Scripture used the phrase about them. Explain what \"walking with God\" actually means and what Christians can learn from these lives."
-  },
-  {
-   "title": "The Names of God and What They Mean",
-   "slug": "names-of-god-meanings",
-   "categorySlug": "bible-insights",
-   "keyword": "names of god and their meanings",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. A strong reference article on the major biblical names and titles for God and what they reveal about His character: Yahweh/YHWH, Elohim, El Shaddai, El Elyon, Adonai and other significant biblical titles where appropriate. Be careful with the popular compound \"Jehovah\" names - explain their biblical context accurately rather than presenting every name on the usual Christian name-lists as though each appears in Scripture as a formal divine name. The purpose is helping readers know God better through how Scripture reveals Him. Doctrinally sensitive - flag it in MARCUS_HANDOFF.md."
-  },
-  {
-   "title": "15 Lessons From the Life of Jesus",
-   "slug": "lessons-from-the-life-of-jesus",
-   "categorySlug": "christian-foundations",
-   "keyword": "lessons from the life of jesus",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. Fifteen practical, biblical lessons drawn from Jesus' life and teaching - themes such as unconditional love, forgiveness, trusting God, humility, prayer, compassion, obedience, resisting temptation, patience, faith over fear, truth spoken in love, gratitude, mercy, perseverance and eternal hope. EVERY lesson must be grounded in something Jesus actually taught or demonstrated in Scripture, with the passage named. Generic inspirational advice with a verse bolted on does not count. Fifteen short grounded lessons, not fifteen padded sections."
-  },
-  {
-   "title": "Inspiring Biblical Characters and What We Can Learn From Them",
-   "slug": "inspiring-biblical-characters",
-   "categorySlug": "character-studies",
-   "keyword": "inspiring biblical characters",
-   "length": "focused",
-   "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. Major biblical characters - Noah, David, Esther, Daniel, Ruth, Jonah, Mary and Paul - each showing a different face of faith: courage, obedience, repentance, loyalty, prayer, humility, transformation, perseverance. Give enough of each person's ACTUAL story that the reader understands why the lesson applies. This must not read as eight inspirational quotes with Bible names attached. Link to the existing Bible Buddy character studies where they exist rather than retelling them in full."
-  },
-  {
-   "title": "Can You Lose Your Salvation? What the Bible Says",
-   "slug": "can-you-lose-your-salvation",
-   "categorySlug": "christian-foundations",
-   "keyword": "can you lose your salvation",
-   "length": "pillar",
-   "bannerImage": "/salvation-banner.png",
-   "angle": "The question on so many minds. What Scripture says about eternal security, the verses on BOTH sides presented honestly (John 10:28-29 and Romans 8:38-39 alongside Hebrews 6:4-6 and Hebrews 10:26-27), and how a believer can have assurance. Doctrinally sensitive: sincere Christians land in different places on this, say so plainly, do not preach one camp as settled fact, and flag it in MARCUS_HANDOFF.md so Louis reads it himself."
-  },
-  {
-   "title": "How to Spend 1 Hour With God: A Simple Guide",
-   "slug": "how-to-spend-1-hour-with-god",
-   "categorySlug": "bible-study-tips",
-   "keyword": "how to spend time with God",
-   "length": "standard",
-   "bannerImage": "/one-hour-banner.png",
-   "angle": "A practical hour with God, using this exact time plan as the core teaching sections: 0:00-0:10 Settle Your Heart, 0:10-0:25 Worship and Praise, 0:25-0:45 Read the Bible, 0:45-0:55 Pray and Listen, 0:55-1:00 Close in Gratitude. For the person who wants time with God but does not know how to structure it. The plan is on the banner, so the sections must match it exactly."
-  },
-  {
-   "title": "What Does the Bible Say About Fear?",
-   "slug": "what-does-the-bible-say-about-fear",
-   "categorySlug": "christian-foundations",
-   "angle": "Fear vs. faith, 'fear not' appearing constantly in Scripture, Isaiah 41:10, 2 Timothy 1:7, Psalm 56:3."
-  },
-  {
-   "title": "Is Anxiety a Sin?",
-   "slug": "is-anxiety-a-sin",
-   "categorySlug": "christian-foundations",
-   "angle": "Pastoral, non-condemning answer. Distinguish temptation/affliction from sin. Jesus in Gethsemane was in anguish. Links naturally to the anxiety article."
-  },
-  {
-   "title": "What Does Selah Mean in the Bible?",
-   "slug": "what-does-selah-mean",
-   "categorySlug": "bible-insights",
-   "angle": "Appears 74 times, mostly Psalms. Likely a musical/pause marker. Teach the habit of pausing to reflect while reading."
-  },
-  {
-   "title": "Psalm 23 Explained Verse by Verse",
-   "slug": "psalm-23-explained",
-   "categorySlug": "verse-breakdowns",
-   "angle": "The most famous psalm, one verse at a time, KJV text with plain-English explanation of shepherd imagery."
-  },
-  {
-   "title": "What Does the Bible Say About Loneliness?",
-   "slug": "what-does-the-bible-say-about-loneliness",
-   "categorySlug": "christian-foundations",
-   "angle": "Elijah, David in the cave, Jesus deserted by friends. God's nearness to the brokenhearted, Psalm 34:18."
-  },
-  {
-   "title": "How to Pray: A Beginner's Guide",
-   "slug": "how-to-pray-beginners-guide",
-   "categorySlug": "bible-study-tips",
-   "angle": "The Lord's Prayer as a template. Remove intimidation - prayer is talking to God, not performing."
-  },
-  {
-   "title": "Who Was Job? The Man Who Lost Everything",
-   "slug": "who-was-job",
-   "categorySlug": "character-studies",
-   "angle": "Suffering without easy answers, honest lament, God's answer from the whirlwind, restoration."
-  },
-  {
-   "title": "What Does the Bible Say About Forgiveness?",
-   "slug": "what-does-the-bible-say-about-forgiveness",
-   "categorySlug": "christian-foundations",
-   "angle": "Forgiving others vs. being forgiven, seventy times seven, forgiveness is not pretending it didn't hurt."
-  },
-  {
-   "title": "Jeremiah 29:11 Explained",
-   "slug": "jeremiah-29-11-explained",
-   "categorySlug": "verse-breakdowns",
-   "angle": "Beloved but often misused verse - written to exiles facing 70 years in Babylon. Real context makes it stronger, not weaker."
-  },
-  {
-   "title": "What Does the Bible Say About Rest?",
-   "slug": "what-does-the-bible-say-about-rest",
-   "categorySlug": "christian-foundations",
-   "angle": "Sabbath, Jesus sleeping in the storm, 'Come unto me all ye that labour' Matthew 11:28. Rest as trust."
-  },
-  {
-   "title": "How to Memorize Scripture",
-   "slug": "how-to-memorize-scripture",
-   "categorySlug": "bible-study-tips",
-   "angle": "Practical methods: one verse a week, write it out, phone lock screen, review before bed, why hiding the Word in your heart matters (Psalm 119:11)."
-  },
-  {
-   "title": "What Does Amen Actually Mean?",
-   "slug": "what-does-amen-mean",
-   "categorySlug": "bible-insights",
-   "angle": "Hebrew root of truth/firmness, 'so be it', Jesus called the Amen in Revelation 3:14."
-  },
-  {
-   "title": "Who Was Ruth?",
-   "slug": "who-was-ruth",
-   "categorySlug": "character-studies",
-   "angle": "Loyalty, loss, redemption, the kinsman-redeemer, a Moabite in the family line of Jesus."
-  },
-  {
-   "title": "What Does the Bible Say About Depression?",
-   "slug": "what-does-the-bible-say-about-depression",
-   "categorySlug": "christian-foundations",
-   "angle": "Handle with care like the anxiety article: Elijah wanting to die, Psalms of despair, God's gentleness, plus the same professional-help-is-not-weak-faith line."
-  },
-  {
-   "title": "Why Did Jesus Speak in Parables?",
-   "slug": "why-did-jesus-speak-in-parables",
-   "categorySlug": "bible-insights",
-   "angle": "Stories that reveal and conceal, Matthew 13 explanation, why stories stick when lectures don't."
-  },
-  {
-   "title": "Romans 8:28 Explained",
-   "slug": "romans-8-28-explained",
-   "categorySlug": "verse-breakdowns",
-   "angle": "'All things work together for good' - what it promises and what it doesn't. Context of suffering in Romans 8."
-  },
-  {
-   "title": "What Is Grace?",
-   "slug": "what-is-grace",
-   "categorySlug": "christian-foundations",
-   "angle": "Unmerited favor explained simply, grace vs. works, Ephesians 2:8-9, why grace changes how you live."
-  },
-  {
-   "title": "What Is Fasting? A Biblical Beginner's Guide",
-   "slug": "what-is-fasting",
-   "categorySlug": "bible-study-tips",
-   "angle": "What fasting is and isn't, Jesus's assumption 'when ye fast' Matthew 6:16, practical gentle start."
-  },
-  {
-   "title": "Who Was Peter?",
-   "slug": "who-was-peter",
-   "categorySlug": "character-studies",
-   "angle": "Impulsive fisherman, denial, restoration on the beach, Pentecost. Failure is not final."
-  },
-  {
-   "title": "What Does the Bible Say About Patience?",
-   "slug": "what-does-the-bible-say-about-patience",
-   "categorySlug": "christian-foundations",
-   "angle": "Waiting on God, fruit of the Spirit, Joseph's years in prison, James 5:7 farmer imagery."
-  },
-  {
-   "title": "Matthew 6:33 Explained",
-   "slug": "matthew-6-33-explained",
-   "categorySlug": "verse-breakdowns",
-   "angle": "'Seek ye first' - the ordering principle of the whole Christian life, in its Sermon on the Mount worry context."
-  },
-  {
-   "title": "How Long Does It Take to Read the Bible?",
-   "slug": "how-long-does-it-take-to-read-the-bible",
-   "categorySlug": "bible-insights",
-   "angle": "Real numbers: ~70 hours total, minutes per day for a year plan. Makes the goal feel achievable. Natural Bible in One Year tie-in."
-  },
-  {
-   "title": "What Does the Bible Say About Money and Worry?",
-   "slug": "what-does-the-bible-say-about-money-and-worry",
-   "categorySlug": "christian-foundations",
-   "angle": "Treasures in heaven, God and mammon, the birds and lilies passage, generosity as the antidote to money anxiety."
-  },
-  {
-   "title": "Who Was David? A Man After God's Own Heart",
-   "slug": "who-was-david",
-   "categorySlug": "character-studies",
-   "angle": "Shepherd, giant-slayer, king, adulterer, psalmist. Why God called a flawed man 'after mine own heart' - honesty and repentance."
-  },
-  {
-   "title": "Philippians 4:13 Explained",
-   "slug": "philippians-4-13-explained",
-   "categorySlug": "verse-breakdowns",
-   "angle": "'I can do all things' - the contentment context (Paul in prison, learning contentment in plenty and in want), not a sports slogan."
-  }
- ]
+  "queue": [
+    {
+      "title": "Who Was Joseph? From the Pit to the Palace",
+      "slug": "who-was-joseph",
+      "categorySlug": "character-studies",
+      "keyword": "who was joseph in the bible",
+      "length": "focused",
+      "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. Joseph's story told as an engaging biblical narrative: his dreams, his brothers' jealousy, being sold into slavery, Potiphar's house, the false accusation and prison, interpreting dreams, Pharaoh raising him to authority, the famine, the reunion with his brothers, forgiveness, restoration, and Genesis 50:20. The central thread is how God's providence works through suffering and how Joseph stayed faithful through radically changing circumstances."
+    },
+    {
+      "title": "The Names of God and What They Mean",
+      "slug": "names-of-god-meanings",
+      "categorySlug": "bible-insights",
+      "keyword": "names of god and their meanings",
+      "length": "focused",
+      "angle": "PINTEREST FUNNEL BATCH. This article is the middle of Pinterest pin -> article -> Bible Buddy. Someone clicked a pin on this exact subject, so the article must fully satisfy that click on its own and be worth finding through Google by someone who has never heard of Bible Buddy. Introduce Bible Buddy naturally where it fits: the article gives the overview and understanding, Bible Buddy is where they study it verse by verse. Say plainly that it is free, so there is no barrier to continuing. The Pinterest graphic is the STARTING POINT AND NOT THE AUTHORITY: verify every reference, name, quotation, date and claim against Scripture before writing, and correct anything the graphic simplified or got wrong rather than repeating it. A strong reference article on the major biblical names and titles for God and what they reveal about His character: Yahweh/YHWH, Elohim, El Shaddai, El Elyon, Adonai and other significant biblical titles where appropriate. Be careful with the popular compound \"Jehovah\" names - explain their biblical context accurately rather than presenting every name on the usual Christian name-lists as though each appears in Scripture as a formal divine name. The purpose is helping readers know God better through how Scripture reveals Him. Doctrinally sensitive - flag it in MARCUS_HANDOFF.md."
+    },
+    {
+      "title": "Can You Lose Your Salvation? What the Bible Says",
+      "slug": "can-you-lose-your-salvation",
+      "categorySlug": "christian-foundations",
+      "keyword": "can you lose your salvation",
+      "length": "pillar",
+      "bannerImage": "/salvation-banner.png",
+      "angle": "The question on so many minds. What Scripture says about eternal security, the verses on BOTH sides presented honestly (John 10:28-29 and Romans 8:38-39 alongside Hebrews 6:4-6 and Hebrews 10:26-27), and how a believer can have assurance. Doctrinally sensitive: sincere Christians land in different places on this, say so plainly, do not preach one camp as settled fact, and flag it in MARCUS_HANDOFF.md so Louis reads it himself."
+    },
+    {
+      "title": "How to Spend 1 Hour With God: A Simple Guide",
+      "slug": "how-to-spend-1-hour-with-god",
+      "categorySlug": "bible-study-tips",
+      "keyword": "how to spend time with God",
+      "length": "standard",
+      "bannerImage": "/one-hour-banner.png",
+      "angle": "A practical hour with God, using this exact time plan as the core teaching sections: 0:00-0:10 Settle Your Heart, 0:10-0:25 Worship and Praise, 0:25-0:45 Read the Bible, 0:45-0:55 Pray and Listen, 0:55-1:00 Close in Gratitude. For the person who wants time with God but does not know how to structure it. The plan is on the banner, so the sections must match it exactly."
+    },
+    {
+      "title": "What Does the Bible Say About Fear?",
+      "slug": "what-does-the-bible-say-about-fear",
+      "categorySlug": "christian-foundations",
+      "angle": "Fear vs. faith, 'fear not' appearing constantly in Scripture, Isaiah 41:10, 2 Timothy 1:7, Psalm 56:3."
+    },
+    {
+      "title": "Is Anxiety a Sin?",
+      "slug": "is-anxiety-a-sin",
+      "categorySlug": "christian-foundations",
+      "angle": "Pastoral, non-condemning answer. Distinguish temptation/affliction from sin. Jesus in Gethsemane was in anguish. Links naturally to the anxiety article."
+    },
+    {
+      "title": "What Does Selah Mean in the Bible?",
+      "slug": "what-does-selah-mean",
+      "categorySlug": "bible-insights",
+      "angle": "Appears 74 times, mostly Psalms. Likely a musical/pause marker. Teach the habit of pausing to reflect while reading."
+    },
+    {
+      "title": "Psalm 23 Explained Verse by Verse",
+      "slug": "psalm-23-explained",
+      "categorySlug": "verse-breakdowns",
+      "angle": "The most famous psalm, one verse at a time, KJV text with plain-English explanation of shepherd imagery."
+    },
+    {
+      "title": "What Does the Bible Say About Loneliness?",
+      "slug": "what-does-the-bible-say-about-loneliness",
+      "categorySlug": "christian-foundations",
+      "angle": "Elijah, David in the cave, Jesus deserted by friends. God's nearness to the brokenhearted, Psalm 34:18."
+    },
+    {
+      "title": "How to Pray: A Beginner's Guide",
+      "slug": "how-to-pray-beginners-guide",
+      "categorySlug": "bible-study-tips",
+      "angle": "The Lord's Prayer as a template. Remove intimidation - prayer is talking to God, not performing."
+    },
+    {
+      "title": "Who Was Job? The Man Who Lost Everything",
+      "slug": "who-was-job",
+      "categorySlug": "character-studies",
+      "angle": "Suffering without easy answers, honest lament, God's answer from the whirlwind, restoration."
+    },
+    {
+      "title": "What Does the Bible Say About Forgiveness?",
+      "slug": "what-does-the-bible-say-about-forgiveness",
+      "categorySlug": "christian-foundations",
+      "angle": "Forgiving others vs. being forgiven, seventy times seven, forgiveness is not pretending it didn't hurt."
+    },
+    {
+      "title": "Jeremiah 29:11 Explained",
+      "slug": "jeremiah-29-11-explained",
+      "categorySlug": "verse-breakdowns",
+      "angle": "Beloved but often misused verse - written to exiles facing 70 years in Babylon. Real context makes it stronger, not weaker."
+    },
+    {
+      "title": "What Does the Bible Say About Rest?",
+      "slug": "what-does-the-bible-say-about-rest",
+      "categorySlug": "christian-foundations",
+      "angle": "Sabbath, Jesus sleeping in the storm, 'Come unto me all ye that labour' Matthew 11:28. Rest as trust."
+    },
+    {
+      "title": "How to Memorize Scripture",
+      "slug": "how-to-memorize-scripture",
+      "categorySlug": "bible-study-tips",
+      "angle": "Practical methods: one verse a week, write it out, phone lock screen, review before bed, why hiding the Word in your heart matters (Psalm 119:11)."
+    },
+    {
+      "title": "What Does Amen Actually Mean?",
+      "slug": "what-does-amen-mean",
+      "categorySlug": "bible-insights",
+      "angle": "Hebrew root of truth/firmness, 'so be it', Jesus called the Amen in Revelation 3:14."
+    },
+    {
+      "title": "Who Was Ruth?",
+      "slug": "who-was-ruth",
+      "categorySlug": "character-studies",
+      "angle": "Loyalty, loss, redemption, the kinsman-redeemer, a Moabite in the family line of Jesus."
+    },
+    {
+      "title": "What Does the Bible Say About Depression?",
+      "slug": "what-does-the-bible-say-about-depression",
+      "categorySlug": "christian-foundations",
+      "angle": "Handle with care like the anxiety article: Elijah wanting to die, Psalms of despair, God's gentleness, plus the same professional-help-is-not-weak-faith line."
+    },
+    {
+      "title": "Why Did Jesus Speak in Parables?",
+      "slug": "why-did-jesus-speak-in-parables",
+      "categorySlug": "bible-insights",
+      "angle": "Stories that reveal and conceal, Matthew 13 explanation, why stories stick when lectures don't."
+    },
+    {
+      "title": "Romans 8:28 Explained",
+      "slug": "romans-8-28-explained",
+      "categorySlug": "verse-breakdowns",
+      "angle": "'All things work together for good' - what it promises and what it doesn't. Context of suffering in Romans 8."
+    },
+    {
+      "title": "What Is Grace?",
+      "slug": "what-is-grace",
+      "categorySlug": "christian-foundations",
+      "angle": "Unmerited favor explained simply, grace vs. works, Ephesians 2:8-9, why grace changes how you live."
+    },
+    {
+      "title": "What Is Fasting? A Biblical Beginner's Guide",
+      "slug": "what-is-fasting",
+      "categorySlug": "bible-study-tips",
+      "angle": "What fasting is and isn't, Jesus's assumption 'when ye fast' Matthew 6:16, practical gentle start."
+    },
+    {
+      "title": "Who Was Peter?",
+      "slug": "who-was-peter",
+      "categorySlug": "character-studies",
+      "angle": "Impulsive fisherman, denial, restoration on the beach, Pentecost. Failure is not final."
+    },
+    {
+      "title": "What Does the Bible Say About Patience?",
+      "slug": "what-does-the-bible-say-about-patience",
+      "categorySlug": "christian-foundations",
+      "angle": "Waiting on God, fruit of the Spirit, Joseph's years in prison, James 5:7 farmer imagery."
+    },
+    {
+      "title": "Matthew 6:33 Explained",
+      "slug": "matthew-6-33-explained",
+      "categorySlug": "verse-breakdowns",
+      "angle": "'Seek ye first' - the ordering principle of the whole Christian life, in its Sermon on the Mount worry context."
+    },
+    {
+      "title": "How Long Does It Take to Read the Bible?",
+      "slug": "how-long-does-it-take-to-read-the-bible",
+      "categorySlug": "bible-insights",
+      "angle": "Real numbers: ~70 hours total, minutes per day for a year plan. Makes the goal feel achievable. Natural Bible in One Year tie-in."
+    },
+    {
+      "title": "What Does the Bible Say About Money and Worry?",
+      "slug": "what-does-the-bible-say-about-money-and-worry",
+      "categorySlug": "christian-foundations",
+      "angle": "Treasures in heaven, God and mammon, the birds and lilies passage, generosity as the antidote to money anxiety."
+    },
+    {
+      "title": "Who Was David? A Man After God's Own Heart",
+      "slug": "who-was-david",
+      "categorySlug": "character-studies",
+      "angle": "Shepherd, giant-slayer, king, adulterer, psalmist. Why God called a flawed man 'after mine own heart' - honesty and repentance."
+    },
+    {
+      "title": "Philippians 4:13 Explained",
+      "slug": "philippians-4-13-explained",
+      "categorySlug": "verse-breakdowns",
+      "angle": "'I can do all things' - the contentment context (Paul in prison, learning contentment in plenty and in want), not a sports slogan."
+    }
+  ]
 }
