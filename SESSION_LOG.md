@@ -2891,3 +2891,7 @@ Next up: Job 14
 ## 2026-09-01T00:26:11Z (bible year day writer run)
 Day: 63 — Deborah, Gideon, and Deliverance (Judges 4-7) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 64
+
+## 2026-09-01T00:28:01Z (bible year day writer run)
+Day: 64 — Gideon's Failure and Jephthah's Vow (Judges 8-11) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 65 (run stops here — 2-day-per-run limit reached)
