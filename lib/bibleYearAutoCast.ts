@@ -36,7 +36,9 @@ const SPEAKER_PATTERNS: Array<{ test: RegExp; role: BibleYearAudioRole }> = [
   // "the angel of Yahweh" contains "Yahweh" and would otherwise cast as God.
   { test: /\bangel\b/i, role: "angel" },
   { test: /\b(?:yahweh|the lord|god)\b/i, role: "god" },
-  { test: /\b(?:the woman|eve)\b/i, role: "eve" },
+  // Name only, same reasoning as Adam above: "the woman" gave Eve's voice to
+  // every unnamed woman in Scripture - Manoah's wife spent Judges 13 as Eve.
+  { test: /\beve\b/i, role: "eve" },
   // Abram/Abraham and Sarai/Sarah are the same people either side of Genesis 17.
   { test: /\babra(?:m|ham)\b/i, role: "abraham" },
   { test: /\bsara(?:i|h)\b/i, role: "sarah" },
@@ -77,6 +79,10 @@ const NOT_A_PERSON = new Set([
   // "which is by the River" (Numbers 22:5) capitalises the Euphrates, so it
   // reads as a name sitting right where a speaker would be.
   "atad", "kenite", "beware", "river",
+  // "Please" opening a quoted request reads as a capitalised name. Mount
+  // Gerizim gave Jotham's whole parable of the trees to a character called
+  // Mount; Jebus, Laish and Zorah are towns in Judges.
+  "please", "mount", "gerizim", "jebus", "laish", "zorah",
   "and", "but", "so", "then", "now", "when", "after", "before", "behold",
   "therefore", "moreover", "again", "also", "thus", "yet", "for", "if", "as",
   "at", "on", "in", "it", "he", "she", "they", "them", "their", "there",

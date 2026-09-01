@@ -31,11 +31,28 @@ Write-Log "--- watch run starting ---"
 # PowerShell would otherwise treat as a terminating error.
 $ErrorActionPreference = "Continue"
 
+# A stuck rebase or merge from an earlier failure blocks every future pull -
+# exactly this jammed the task for hours on 2026-09-01 over a
+# MARCUS_HANDOFF.md conflict. Aborting is safe: it returns to the pre-pull
+# state, and the renderer needs a clean tree, not that conflicted file.
+& git rebase --abort 2>$null
+& git merge --abort 2>$null
+
 # Autostash so a dirty working tree never blocks the pull.
 $pull = (& git pull --rebase --autostash origin main) | Out-String
 if ($LASTEXITCODE -ne 0) {
-    Write-Log ("git pull FAILED (exit " + $LASTEXITCODE + "): " + $pull.Trim())
-    exit 1
+    # One retry after clearing any conflict the pull itself just created:
+    # MARCUS_HANDOFF.md ping-pongs between Life Buddy clearing it and cloud
+    # agents appending, so take origin's side of that one file and move on.
+    Write-Log ("git pull failed once, clearing and retrying: " + $pull.Trim())
+    & git rebase --abort 2>$null
+    & git checkout origin/main -- MARCUS_HANDOFF.md 2>$null
+    & git add MARCUS_HANDOFF.md 2>$null
+    $pull = (& git pull --rebase --autostash origin main) | Out-String
+    if ($LASTEXITCODE -ne 0) {
+        Write-Log ("git pull FAILED after retry (exit " + $LASTEXITCODE + "): " + $pull.Trim())
+        exit 1
+    }
 }
 Write-Log ("git pull: " + $pull.Trim())
 
