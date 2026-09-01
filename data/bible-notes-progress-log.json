@@ -29940,6 +29940,59 @@
           "at": "2026-09-01T16:58:13Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 22,
+      "startedAt": "2026-09-01T18:47:16Z",
+      "finishedAt": "2026-09-01T19:00:03Z",
+      "durationMinutes": 13,
+      "sections": 6,
+      "cards": 55,
+      "verses": 30,
+      "notes": "Eliphaz's third and final speech: opens arguing human righteousness cannot profit God, turns to accuse Job of specific sins (pledges, stripping the poor, withholding water/bread, favoring the powerful, widows, the fatherless), claims Job's troubles are the consequence, accuses him of believing God is too far off to see, appeals to the old way the wicked walked (echoing the flood), quotes back Job's own words from chapter 21, then pivots at v21 into a warm call to reconcile with a full restoration promise. New chapter, forward progress, style spec applied throughout.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-01T18:48:03Z"
+        },
+        {
+          "name": "target chapter determined: Job 22 (priority queue empty, redo-remaining empty, next after Job 21)",
+          "at": "2026-09-01T18:48:20Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn/Bible-kjv Job.json, 30 verses)",
+          "at": "2026-09-01T18:48:50Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, plus lib/genesisThirtyOneSource.ts and lib/jobTwentyOneSource.ts as reference)",
+          "at": "2026-09-01T18:52:00Z"
+        },
+        {
+          "name": "source file written (lib/jobTwentyTwoSource.ts, 6 sections, 55 cards)",
+          "at": "2026-09-01T18:56:29Z"
+        },
+        {
+          "name": "style checker clean (check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-09-01T18:56:36Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts import, function, call, preserveExactPhraseBodies range extended to 22)",
+          "at": "2026-09-01T18:56:45Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections job 22: 6 sections, 55 cards)",
+          "at": "2026-09-01T18:57:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-01T18:58:40Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-01T19:00:03Z"
+        }
+      ]
     }
   ]
 }
