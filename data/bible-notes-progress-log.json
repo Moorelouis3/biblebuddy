@@ -29508,6 +29508,59 @@
           "at": "2026-08-31T22:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 14,
+      "startedAt": "2026-09-01T00:47:18Z",
+      "finishedAt": "2026-09-01T00:58:48Z",
+      "durationMinutes": 11.5,
+      "sections": 7,
+      "cards": 49,
+      "verses": 22,
+      "notes": "New chapter, normal forward progress after Job 13. Job 14 continues Job's reply, meditating on the shortness and hopelessness of human life (man born of woman, few days, full of trouble, flower cut down, shadow that flees), asks why God fixes His gaze on so fragile a creature, argues no clean thing comes from an unclean source, and notes his days and months are already bounded by God. Builds an extended contrast between a felled tree, which can bud again at even the scent of water, and a man, who lies down and does not rise. Emotional center is Job's plea that God hide him in the grave until His wrath passes and appoint him a set time to remember him, the famous open question if a man die, shall he live again, and Job resolving to wait out his appointed time until his change comes. Closes on erosion images (falling mountain, rock removed, waters wearing stones) applied to the hope of man, and Job's uncertainty whether his own sons rise to honor or fall low, his flesh in pain and soul in mourning. Priority queue (data/bible-notes-priority-queue.json) and style redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty before starting. Session opened with the same recurring stale local git ref anomaly noted on prior runs: detached HEAD was one commit ahead of the locally cached main/origin/main, and git fetch origin main confirmed origin/main already matched HEAD exactly (bc21f32), so git checkout -B main origin/main rebuilt local main from the verified tip with nothing lost. Density about 2.2 cards/verse, above the reference implementation's density, justified by the theological weight of verses 13-22.",
+      "steps": [
+        {
+          "name": "session start: HEAD detached one commit ahead of stale local main/origin/main; git fetch origin main confirmed origin/main already matched HEAD (bc21f32); rebuilt local main with git checkout -B main origin/main",
+          "at": "2026-09-01T00:47:18Z"
+        },
+        {
+          "name": "npm install done",
+          "at": "2026-09-01T00:47:18Z"
+        },
+        {
+          "name": "priority queue and style-redo backlog both confirmed empty; target chapter determined: Job 14 (new chapter, normal forward progress after Job 13)",
+          "at": "2026-09-01T00:47:30Z"
+        },
+        {
+          "name": "KJV text fetched (Job 14, 22 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-01T00:47:41Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-01T00:47:45Z"
+        },
+        {
+          "name": "source file written: lib/jobFourteenSource.ts (7 sections, 49 cards)",
+          "at": "2026-09-01T00:54:46Z"
+        },
+        {
+          "name": "style checker clean: scripts/check_bible_note_style.py, 49 cards, 0 problems on first pass",
+          "at": "2026-09-01T00:56:07Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies Job range extended 1-13 to 1-14, applyPersonalJobFourteenChapterStudySections() added and invoked",
+          "at": "2026-09-01T00:56:23Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('job', 14) returned 7 sections, 49 cards, text verbatim",
+          "at": "2026-09-01T00:56:45Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, exit code 0",
+          "at": "2026-09-01T00:58:45Z"
+        }
+      ]
     }
   ]
 }
