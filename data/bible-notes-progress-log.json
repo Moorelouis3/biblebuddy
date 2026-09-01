@@ -29838,6 +29838,55 @@
           "at": "2026-09-01T10:58:55Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 20,
+      "startedAt": "2026-09-01T12:50:01Z",
+      "finishedAt": "2026-09-01T12:58:48Z",
+      "durationMinutes": 9,
+      "sections": 6,
+      "cards": 57,
+      "verses": 29,
+      "notes": "Zophar's second speech (his third overall). New chapter, forward progress, style spec applied throughout.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-01T12:50:01Z"
+        },
+        {
+          "name": "target chapter determined: Job 20 (redo-remaining empty, next after Job 19)",
+          "at": "2026-09-01T12:50:01Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn/Bible-kjv Job.json)",
+          "at": "2026-09-01T12:50:01Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-01T12:50:01Z"
+        },
+        {
+          "name": "source file written (lib/jobTwentySource.ts, 6 sections, 57 cards)",
+          "at": "2026-09-01T12:58:48Z"
+        },
+        {
+          "name": "style checker clean (check_bible_note_style.py)",
+          "at": "2026-09-01T12:58:48Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts import, function, call, preserveExactPhraseBodies range extended to 20)",
+          "at": "2026-09-01T12:58:48Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections job 20: 6 sections, 57 cards)",
+          "at": "2026-09-01T12:58:48Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-01T12:58:48Z"
+        }
+      ]
     }
   ]
 }

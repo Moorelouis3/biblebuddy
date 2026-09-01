@@ -2955,3 +2955,7 @@ Queue remaining (Pinterest, data/blog-topics-queue.json): 29
 Articles: Who Was Joseph? From the Pit to the Palace, The Names of God and What They Mean | 2 posts | Status: pass
 All 13 Pinterest funnel posts are now live. Discarded the held-back duplicate Armor of God pillar post (the-armor-of-god-explained) - see MARCUS_HANDOFF.md.
 Queue remaining (Pinterest/existing backlog combined, data/blog-topics-queue.json): 27
+
+## 2026-09-01T12:59:50Z (hourly chapter notes run)
+Chapter: Job 20 | Duration: 9 min | Sections: 6 | Cards: 57 | Status: pass
+Next up: Job 21
