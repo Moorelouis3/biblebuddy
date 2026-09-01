@@ -29887,6 +29887,59 @@
           "at": "2026-09-01T12:58:48Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 21,
+      "startedAt": "2026-09-01T16:46:41Z",
+      "finishedAt": "2026-09-01T16:58:13Z",
+      "durationMinutes": 12,
+      "sections": 7,
+      "cards": 65,
+      "verses": 34,
+      "notes": "Job's reply to Zophar's second speech, rebutting the friends' retribution theology with the observation that the wicked often prosper and die peacefully. New chapter, forward progress, style spec applied throughout.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-01T16:47:36Z"
+        },
+        {
+          "name": "target chapter determined: Job 21 (priority queue empty, redo-remaining empty, next after Job 20)",
+          "at": "2026-09-01T16:47:36Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn/Bible-kjv Job.json, 34 verses)",
+          "at": "2026-09-01T16:48:17Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-01T16:52:11Z"
+        },
+        {
+          "name": "source file written (lib/jobTwentyOneSource.ts, 7 sections, 65 cards)",
+          "at": "2026-09-01T16:54:03Z"
+        },
+        {
+          "name": "style checker clean (check_bible_note_style.py, plus manual fix of 6 body lines using banned while/rather-than stacked clauses)",
+          "at": "2026-09-01T16:54:34Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts import, function, call, preserveExactPhraseBodies range extended to 21)",
+          "at": "2026-09-01T16:55:03Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections job 21: 7 sections, 65 cards)",
+          "at": "2026-09-01T16:55:03Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-01T16:55:26Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-01T16:58:13Z"
+        }
+      ]
     }
   ]
 }
