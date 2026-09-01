@@ -34,9 +34,15 @@ The blog writer agent just published "What Does Selah Mean in the Bible?"
 for this one later.
 
 ## Bible in One Year days waiting on local audio render
-Scripts through Day 67 are written and pushed, but none of them have been
+Scripts through Day 68 are written and pushed, but none of them have been
 rendered — this environment has no OPENAI_API_KEY or Supabase service key.
 Run `npx tsx scripts/render-pending-bible-year-days.ts` on a machine that
 has those keys; it auto-detects every day with a script but no current
 audio and renders/uploads them in one batch. This line will be updated as
 the day writer keeps going rather than getting a new entry per day.
+Also: Louis flagged Day 65's rendered audio as sounding very short. The
+Day 65 script itself is normal length (4 chapters, 6 blocks, ~7 min of
+teaching/opening/closing text, in line with other 4-chapter days), so this
+can't be checked from the day-writer environment (no keys to inspect the
+actual stored file) — worth a listen/re-render check on the machine that
+has the keys.
