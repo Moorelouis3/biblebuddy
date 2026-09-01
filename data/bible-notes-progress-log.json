@@ -29610,6 +29610,63 @@
           "at": "2026-09-01T02:59:41Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 16,
+      "startedAt": "2026-09-01T04:46:26Z",
+      "finishedAt": "2026-09-01T04:57:30Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 46,
+      "verses": 22,
+      "notes": "New chapter, normal forward progress after Job 15. Job's reply to Eliphaz's second speech: miserable comforters, God pictured as an attacker, sackcloth mourning, and Job's hope for a heavenly witness/mediator (points toward Job 19).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-01T04:47:31Z"
+        },
+        {
+          "name": "target chapter determined: Job 16 (new chapter)",
+          "at": "2026-09-01T04:47:49Z"
+        },
+        {
+          "name": "KJV text fetched (Job 16, 22 verses)",
+          "at": "2026-09-01T04:47:57Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-09-01T04:48:02Z"
+        },
+        {
+          "name": "reviewed reference implementation and wiring pattern",
+          "at": "2026-09-01T04:48:28Z"
+        },
+        {
+          "name": "source file written (lib/jobSixteenSource.ts, 6 sections, 46 cards)",
+          "at": "2026-09-01T04:54:27Z"
+        },
+        {
+          "name": "style checker clean (46 cards, 0 problems)",
+          "at": "2026-09-01T04:54:34Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange)",
+          "at": "2026-09-01T04:54:50Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 46 cards)",
+          "at": "2026-09-01T04:55:13Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-01T04:56:54Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-01T04:57:30Z"
+        }
+      ]
     }
   ]
 }
