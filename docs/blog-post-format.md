@@ -22,10 +22,12 @@ Every Bible Buddy blog post follows this structure. Do not skip sections. Do not
 
 ## Length
 
+- Focused posts: about 1,000 to 1,600 words, and the subject decides. Louis, 2026-09-01: "Do not artificially force articles to 2,000 words. Use the shortest length necessary to make the article genuinely useful, complete, engaging, and strong for search." This is a guide, not a target: a topic that is properly finished at 1,100 words stops at 1,100, and one that genuinely needs 1,900 takes them. Used for the Pinterest funnel batch, where the article sits between a pin and the app and must satisfy the click without repeating what Bible Buddy does verse by verse.
 - Standard posts: 3,000 to 3,500 words.
 - Pillar topics (anxiety, fear, forgiveness, prayer, purpose): 4,500 to 5,000 words.
 - On pillar posts, the core teaching may run up to 2,200 words (use the full 7 sections). The per section ranges below are sized for standard posts.
-- Never pad. Every section must earn its length. If a section is thin, cut it, do not stretch it.
+- Never pad. Every section must earn its length. If a section is thin, cut it, do not stretch it. On a focused post this outranks the word range entirely: being short is not a defect, being padded is.
+- The per section ranges below are sized for standard posts. On a focused post, keep the same section ORDER and cut each one to what the topic actually needs; a section with nothing real to say is dropped, not filled.
 
 ## Structure (in this exact order)
 

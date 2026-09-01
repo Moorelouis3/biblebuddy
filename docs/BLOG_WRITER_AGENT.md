@@ -39,7 +39,7 @@ Each entry gives you:
   Treat it as the outline seed and the promise the post has to keep.
 - `keyword` — the main SEO keyword, when present. If absent, derive it
   from the title.
-- `length` — `standard` or `pillar`, when present. Defaults to standard.
+- `length` — `focused`, `standard` or `pillar`, when present. Defaults to standard.
 - `bannerImage` — when present, use it. When absent, use the category's
   entry in `categoryFallbackBanners` and append a note to
   `MARCUS_HANDOFF.md` saying this post is on a fallback banner Louis may
@@ -185,9 +185,12 @@ Remove the topic you just wrote from the front of
 - `npx next lint` passes for the new file, or at minimum no unescaped
   entity errors.
 - Every verse quote matches KJV exactly.
-- The post hits the word count its `length` calls for: 3,000–3,500
-  standard, 4,500–5,000 pillar. Count the body text. If you are short,
-  the teaching is thin — deepen it, do not pad it.
+- The post hits the word count its `length` calls for: about 1,000–1,600
+  focused, 3,000–3,500 standard, 4,500–5,000 pillar. Count the body text.
+  On standard and pillar, being short means the teaching is thin — deepen
+  it, do not pad it. On `focused` the range is a GUIDE and the subject
+  decides: finish the topic properly and stop. Never stretch a focused
+  post to reach 1,000, and never cut a real point to stay under 1,600.
 - Every item on the format spec's SEO checklist is satisfied, especially
   4 to 6 internal links to other Bible Buddy posts, woven into sentences
   through the body and never clustered at the end.
@@ -270,7 +273,7 @@ The steps, summarized (the doc is authoritative where they differ):
 
 6. Remove the topic you just wrote from the front of data/blog-topics-queue.json, in the same commit.
 
-7. Verify before committing: `npx tsc --noEmit` clean, every verse exact KJV, word count meets the length the entry calls for (3,000-3,500 standard, 4,500-5,000 pillar), and 4-6 internal links to other Bible Buddy posts woven into sentences through the body rather than clustered at the end. If tsc fails and you cannot fix it, do NOT commit broken code - log the block to MARCUS_HANDOFF.md, commit only that, and stop.
+7. Verify before committing: `npx tsc --noEmit` clean, every verse exact KJV, word count meets the length the entry calls for (about 1,000-1,600 focused and led by the subject, 3,000-3,500 standard, 4,500-5,000 pillar), and 4-6 internal links to other Bible Buddy posts woven into sentences through the body rather than clustered at the end. If tsc fails and you cannot fix it, do NOT commit broken code - log the block to MARCUS_HANDOFF.md, commit only that, and stop.
 
 8. Append a "(blog writer run)" entry to SESSION_LOG.md, then commit every changed file with the message 'Add blog article: <title> [deploy]'. The [deploy] tag is REQUIRED here - Vercel only builds tagged commits and these posts must be live the moment the run finishes. This is the documented exception to the usual no-[deploy] rule in CLAUDE.md. Push to origin main and CONFIRM the push succeeded before finishing.
 
