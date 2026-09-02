@@ -1,3 +1,21 @@
+## Blog writer run 2026-09-02: duplicate Armor of God topic dequeued, zero posts written this run
+Today's run took the front of content-buddy's blog/topics-queue.json,
+which was still "The Armor of God Explained" (the-armor-of-god-explained,
+pillar length). This is the same duplicate a previous run already found
+and discarded (see the "Held back and discarded: duplicate Armor of God
+post" entry below) - it duplicates the already-published
+/blog/armor-of-god-explained (2026-09-01). That earlier run deleted its
+draft but never removed the topic from content-buddy's queue, so it sat
+at the front and would have forced every future run into the same dead
+end.
+
+Rather than write a third near-duplicate Armor of God post, this run
+removed that entry from content-buddy's queue (no biblebuddy commit
+needed since nothing was published) and is stopping cleanly with no post
+written this run, per the queue-empty handling in the job description.
+The queue's real next topic, "Is It a Sin to Doubt God?", is now at the
+front for the next run.
+
 ## data/blog-topics-queue.json: the "existing 27" behind the Pinterest batch includes already-published slugs
 Now that all 13 Pinterest posts are dequeued, the front of that queue is
 can-you-lose-your-salvation, how-to-spend-1-hour-with-god, and

@@ -3103,3 +3103,8 @@ Next up: Day 87
 ## 2026-09-02T20:57:05Z (hourly chapter notes run)
 Chapter: Job 34 | Duration: 11 min | Sections: 8 | Cards: 40 | Status: pass
 Next up: Job 35
+
+## 2026-09-02T22:11:41Z (blog writer run)
+Article: none - front-of-queue topic "The Armor of God Explained" duplicated the already-published /blog/armor-of-god-explained | Status: blocked, resolved by dequeue
+Action: removed the stale duplicate entry from content-buddy's blog/topics-queue.json (a prior run had discarded its draft but left the queue entry in place); logged details to MARCUS_HANDOFF.md; wrote no new post this run
+Queue remaining: 27, next up "Is It a Sin to Doubt God?"
