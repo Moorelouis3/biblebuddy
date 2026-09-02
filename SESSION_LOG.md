@@ -3075,3 +3075,19 @@ Two days written this run (hard limit). Next up: Day 85
 ## 2026-09-02T16:56:47Z (hourly chapter notes run)
 Chapter: Job 33 | Duration: 10.6 min | Sections: 7 | Cards: 51 | Status: pass
 Next up: Job 34
+
+## 2026-09-02 (night)
+Time spent: full day session
+Done: Restored the standalone Scrambled pages (were redirect stubs since May);
+brought back all 9 color app themes with a settings picker grid; built the
+complete Verse of the Day system (30 hand-written breakdowns seeded Sep 2-Oct 1,
+DB tables applied live, homepage card + breakdown popup + share URLs
+/verse-of-the-day/DATE, admin at /admin/verse-of-the-day, queue-low cron
+alerts); redesigned the homepage to the approved daily-dashboard mockup
+(compact stats, Continue Your Journey card, 3-across articles, real group
+activity). All pushed, one [deploy] build.
+Still open: purple-sunrise VOTD background is a placeholder (real file never
+arrived); Content Buddy Pinterest tabs rework still parked; Proverbs phase 2
+(daily discussion cron, reminders, admin view) unbuilt.
+Next: verify production after the build; replace placeholder art when Louis
+sends it; Content Buddy Pinterest screen rework.
