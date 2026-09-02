@@ -4,49 +4,46 @@ export const dynamic = "force-dynamic";
 
 import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import BibleYearJourneyDashboard from "../../components/BibleYearJourneyDashboard";
-import AdminAnalyticsPreloader from "../../components/AdminAnalyticsPreloader";
 import HomeScreen from "../../components/HomeScreen";
 import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
 
 /**
- * /dashboard is the app's home screen now.
+ * /dashboard IS the home screen - there is no other dashboard. Louis,
+ * 2026-09-02: "there is no old dashboard!!! the home screen is the only
+ * dashboard". The old journey dashboard survives only as the plan content
+ * behind /plan, reached through the Plans tab or the day pop-up on home.
  *
- * The old journey dashboard became the Selected Plan page, and it is still
- * reached through this route so that none of the deep links pointing here have
- * to change - there are around 17 of them carrying ?view=, ?day=, ?study= or a
- * ?comment= anchor, against 121 plain /dashboard links that all mean "go home".
- * A bare /dashboard is home; /dashboard with any of those params is the plan
- * page. /plan is the tidy alias to link to from Plans.
+ * Old deep links are forwarded to where their content lives now instead of
+ * resurrecting the old dashboard here:
+ *   ?view=group (with or without post/comment) -> the group feed, which
+ *     handles those params natively - the old group tab was only ever an
+ *     iframe of that page passing them along
+ *   anything plan-shaped (?view=, ?day=, ?study=) -> /plan, same query
  */
-const PLAN_PAGE_PARAMS = ["view", "day", "study", "post", "comment"];
-
 function DashboardRouter() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const wantsPlanPage = PLAN_PAGE_PARAMS.some((key) => searchParams.has(key));
 
-  // A plain ?view=group goes straight to the study group feed. Leaving it to
-  // the old dashboard used to work, but opening the group there strips ?view
-  // from the URL, which this router reads as "go home" - so the group opened
-  // for a frame and vanished. Post/comment deep links still go through the
-  // old dashboard, whose notification flow knows how to scroll to them.
-  const plainGroupOpen =
-    searchParams.get("view") === "group" && !searchParams.has("post") && !searchParams.has("comment");
+  const isGroup = searchParams.get("view") === "group" || searchParams.has("post") || searchParams.has("comment");
+  const isPlan = !isGroup && (searchParams.has("view") || searchParams.has("day") || searchParams.has("study"));
+
   useEffect(() => {
-    if (plainGroupOpen) router.replace(`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`);
-  }, [plainGroupOpen, router]);
-  if (plainGroupOpen) return null;
+    if (isGroup) {
+      const forward = new URLSearchParams();
+      const post = searchParams.get("post");
+      const comment = searchParams.get("comment");
+      if (post) forward.set("post", post);
+      if (comment) forward.set("comment", comment);
+      const query = forward.toString();
+      router.replace(`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat${query ? `?${query}` : ""}`);
+      return;
+    }
+    if (isPlan) {
+      router.replace(`/plan?${searchParams.toString()}`);
+    }
+  }, [isGroup, isPlan, router, searchParams]);
 
-  if (wantsPlanPage) {
-    return (
-      <>
-        <AdminAnalyticsPreloader />
-        <BibleYearJourneyDashboard />
-      </>
-    );
-  }
-
+  if (isGroup || isPlan) return null;
   return <HomeScreen />;
 }
 
