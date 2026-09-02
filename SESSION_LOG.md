@@ -3007,3 +3007,7 @@ Next up: Day 76
 ## 2026-09-02T00:40:00Z (bible year day writer run)
 Day: 76 — Saul Falls and David's Kingdom Begins (1 Samuel 31; 2 Samuel 1-3) | Runtime: ~6.5k teaching/opening/closing chars over 7 blocks, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
 Two days written this run (hard limit). Next up: Day 77
+
+## 2026-09-02T00:56:00Z (hourly chapter notes run)
+Chapter: Job 25 | Duration: 10 min | Sections: 2 | Cards: 11 | Status: pass
+Next up: Job 26

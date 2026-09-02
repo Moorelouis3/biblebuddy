@@ -30099,6 +30099,59 @@
           "at": "2026-09-01T23:00:02Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 25,
+      "startedAt": "2026-09-02T00:46:18Z",
+      "finishedAt": "2026-09-02T00:56:00Z",
+      "durationMinutes": 9.7,
+      "sections": 2,
+      "cards": 11,
+      "verses": 6,
+      "notes": "New chapter, forward progress. Bildad's third and final (and shortest) speech in Job: God's dominion, fear, and uncountable heavenly armies, then the pivot that if even the moon and stars are not pure before God, man (a worm) certainly is not. Style spec followed exactly (docs/bible-study-note-style.md); style checker clean on first pass; this is the last time any of Job's three friends speaks in the book.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-02T00:47:35Z"
+        },
+        {
+          "name": "target chapter determined: Job 25 (new chapter, forward progress; both priority queue and style-redo backlog empty)",
+          "at": "2026-09-02T00:48:00Z"
+        },
+        {
+          "name": "KJV text fetched: Job 25 (6 verses) via GitHub raw JSON mirror",
+          "at": "2026-09-02T00:48:36Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (jobTwentyFourSource.ts) read",
+          "at": "2026-09-02T00:50:00Z"
+        },
+        {
+          "name": "source file written: lib/jobTwentyFiveSource.ts (2 sections, 11 phrase cards)",
+          "at": "2026-09-02T00:52:30Z"
+        },
+        {
+          "name": "style checker clean on first run: python3 scripts/check_bible_note_style.py lib/jobTwentyFiveSource.ts -> No problems found",
+          "at": "2026-09-02T00:52:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, applyPersonalJobTwentyFiveChapterStudySections, call site, preserveExactPhraseBodies range extended to job chapter 25",
+          "at": "2026-09-02T00:53:00Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('job', 25) -> 2 sections, 11 cards total",
+          "at": "2026-09-02T00:53:20Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-02T00:53:33Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json and docs/BIBLE_BUDDY_NOTES_PROGRESS.md",
+          "at": "2026-09-02T00:56:00Z"
+        }
+      ]
     }
   ]
 }
