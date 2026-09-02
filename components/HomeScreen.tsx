@@ -53,11 +53,6 @@ function SectionHeading({ label, href }: { label: string; href?: string }) {
 
 export default function HomeScreen() {
   const { userId } = useSupabaseUser();
-  // Which plan day is open in the pop-up container, if any. The container
-  // loads /plan in an iframe: AppShell drops its whole shell when it detects
-  // it is inside a frame, so what shows is just the day - art, player, notes -
-  // with none of the app chrome doubled up.
-  const [openDay, setOpenDay] = useState<number | null>(null);
   const [stats, setStats] = useState<HomeStats>({
     streak: null,
     chaptersRead: null,
@@ -146,34 +141,6 @@ export default function HomeScreen() {
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-5 px-4 pb-28 pt-4">
-      {openDay !== null ? (
-        <div className="fixed inset-0 z-[95] flex items-end justify-center bg-black/55 p-0 sm:items-center sm:p-6">
-          <button
-            type="button"
-            aria-label="Close day"
-            onClick={() => setOpenDay(null)}
-            className="absolute inset-0"
-          />
-          <div className="relative flex h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-2xl bg-[var(--bb-background,#eef4fb)] shadow-2xl sm:h-[88dvh] sm:rounded-2xl">
-            <div className="flex items-center justify-between border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-2.5">
-              <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Day {openDay}</p>
-              <button
-                type="button"
-                onClick={() => setOpenDay(null)}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef2f7)] text-lg font-black text-[var(--bb-text-primary,#111827)]"
-                aria-label="Close"
-              >
-                ×
-              </button>
-            </div>
-            <iframe
-              src={`/plan?view=bible-year&day=${openDay}&solo=1`}
-              title={`Day ${openDay}`}
-              className="h-full w-full flex-1 border-0"
-            />
-          </div>
-        </div>
-      ) : null}
       <header>
         <h1 className="text-3xl font-black text-[var(--bb-text-primary,#111827)]">{greeting}, {greetingName}</h1>
         <p className="mt-1 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
@@ -226,12 +193,11 @@ export default function HomeScreen() {
               const isCurrent = day.dayNumber === planEntry.dayNumber;
               const isLocked = !isComplete && !isCurrent;
               return (
-                <button
-                  type="button"
+                <Link
                   key={day.dayNumber}
+                  href={`/plan?view=bible-year&day=${day.dayNumber}&solo=1`}
                   onClick={() => {
                     if (userId) recordNewUser(userId, "plan_day_opened");
-                    setOpenDay(day.dayNumber);
                   }}
                   className="w-[104px] shrink-0 snap-start text-left"
                 >
@@ -262,7 +228,7 @@ export default function HomeScreen() {
                   >
                     {isComplete ? "Completed" : isCurrent ? "Current" : "Locked"}
                   </p>
-                </button>
+                </Link>
               );
             })}
           </div>

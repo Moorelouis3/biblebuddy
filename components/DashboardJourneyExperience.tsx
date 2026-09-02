@@ -5154,6 +5154,7 @@ export default function DashboardJourneyExperience({
       const shouldHonorRequestedDay = day
         ? canOpenBibleYearDayInJourneyOrder(day) &&
           (
+            soloStudyView ||
             day.dayNumber === bibleYearResolvedCurrentDayNumber ||
             shouldKeepJustCompletedRequestedDay
           )
@@ -14159,7 +14160,7 @@ Before we understand redemption, we need to understand what God made humanity fo
 
         {!showCompletionMoment ? renderPaidSupportCards() : null}
 
-        <section data-bb-dashboard-tour="journey-map" className="order-2 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl">
+        <section data-bb-dashboard-tour="journey-map" className={`${soloStudyView ? "hidden " : ""}order-2 overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-[0_16px_42px_rgba(38,63,99,0.12),inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-xl`}>
           <button type="button" onClick={openBibleYearSeriesDashboard} className="hidden w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition hover:bg-[var(--bb-surface-soft,#f8fbff)]">
             <span>
               <span className="block text-[17px] font-bold text-[var(--bb-text-primary,#111827)]">Journey Map</span>
