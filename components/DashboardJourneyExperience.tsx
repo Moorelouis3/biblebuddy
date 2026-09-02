@@ -3230,6 +3230,15 @@ export default function DashboardJourneyExperience({
   // progress bar belong to everyone, so this deliberately does NOT wait for a
   // devotional to be picked - a reader with nothing started still owns their
   // streak.
+  // Solo study view: the pop-ups on the home screen load /plan?...&solo=1 in
+  // a frame and want only the day's own block - thumbnail, player, notes,
+  // trivia, next-day flow. Home already shows the greeting, the streak and the
+  // journey map, so drawing them again inside the frame doubles everything.
+  const [soloStudyView] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return new URLSearchParams(window.location.search).get("solo") === "1";
+  });
+
   const unifiedShellActive =
     studyShellUnified &&
     studyMode !== "bible_year" &&
@@ -17085,7 +17094,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               renderBibleYearReadingArticlePage(selectedBibleYearSeriesDay)
             ) : (
               <>
-            {!homePanelOverride && !deepStudyFocusActive && !showOfficialHomeMission && !bibleYearDashboardActive ? (
+            {!homePanelOverride && !deepStudyFocusActive && !showOfficialHomeMission && !bibleYearDashboardActive && !soloStudyView ? (
               <>
               <HomeInstallBanner />
               <div className={`mx-auto w-full max-w-xl px-1 ${unifiedShellActive ? "text-center" : ""}`}>
@@ -17096,8 +17105,8 @@ Before we understand redemption, we need to understand what God made humanity fo
               </div>
               {/* Same streak + Bible progress hero the Bible in One Year middle
                   gets. Identical for everyone; only the middle below differs. */}
-              {unifiedShellActive && !shouldShowCompletionPanel ? renderStudyProgressSnapshot() : null}
-              {devotionalDashboardActive && !shouldShowCompletionPanel ? renderDevotionalDayMap() : null}
+              {unifiedShellActive && !shouldShowCompletionPanel && !soloStudyView ? renderStudyProgressSnapshot() : null}
+              {devotionalDashboardActive && !shouldShowCompletionPanel && !soloStudyView ? renderDevotionalDayMap() : null}
               {devotionalDashboardActive && !shouldShowCompletionPanel ? renderDevotionalDashboardStudyArea() : null}
               {bibleChapterDashboardActive && !shouldShowCompletionPanel && bibleChapterDashboardBook
                 ? renderBibleChapterMiddle(bibleChapterDashboardBook, bibleChapterDashboardChapter)
@@ -17215,7 +17224,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             {!bibleYearDashboardActive && !homePanelOverride && !shouldShowCompletionPanel && deepStudyNode ? (
               <div className="dashboard-inline-deep-study mb-3 sm:mb-4">{deepStudyNode}</div>
             ) : null}
-            {bibleYearDashboardActive && activeBibleYearDashboardDay && !homePanelOverride && !shouldShowCompletionPanel ? (
+            {bibleYearDashboardActive && activeBibleYearDashboardDay && !homePanelOverride && !shouldShowCompletionPanel && !soloStudyView ? (
               <>
                 <HomeInstallBanner />
                 {renderOwnerOnboardingControls()}

@@ -167,7 +167,7 @@ export default function HomeScreen() {
               </button>
             </div>
             <iframe
-              src={`/plan?view=bible-year&day=${openDay}`}
+              src={`/plan?view=bible-year&day=${openDay}&solo=1`}
               title={`Day ${openDay}`}
               className="h-full w-full flex-1 border-0"
             />

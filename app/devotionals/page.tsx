@@ -119,6 +119,11 @@ type DevotionalsPageProps = {
 export default function DevotionalsPage({ embedded = false, onStudySelect }: DevotionalsPageProps = {}) {
   const router = useRouter();
   const [devotionals, setDevotionals] = useState<Devotional[]>([]);
+  // The devotional opens in a pop-up container over the catalog, the same
+  // pattern as a plan day on the home screen: an iframe of the study page,
+  // which drops all app chrome when framed. One way of opening study content
+  // everywhere - Louis, 2026-09-02.
+  const [openStudy, setOpenStudy] = useState<{ id: string; title: string } | null>(null);
   const [studyFilter, setStudyFilter] = useState<StudyFilter>("all");
   const [loading, setLoading] = useState(true);
   const [isInstructionsExpanded, setIsInstructionsExpanded] = useState(false);
@@ -572,6 +577,19 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   }
 
   return (
+    <>
+    {openStudy ? (
+      <div className="fixed inset-0 z-[95] flex items-end justify-center bg-black/55 p-0 sm:items-center sm:p-6">
+        <button type="button" aria-label="Close study" onClick={() => setOpenStudy(null)} className="absolute inset-0" />
+        <div className="relative flex h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-2xl bg-[var(--bb-background,#eef4fb)] shadow-2xl sm:h-[88dvh] sm:rounded-2xl">
+          <div className="flex items-center justify-between border-b border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-2.5">
+            <p className="truncate pr-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">{openStudy.title}</p>
+            <button type="button" onClick={() => setOpenStudy(null)} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef2f7)] text-lg font-black text-[var(--bb-text-primary,#111827)]" aria-label="Close">×</button>
+          </div>
+          <iframe src={`/bible-studies/${openStudy.id}`} title={openStudy.title} className="h-full w-full flex-1 border-0" />
+        </div>
+      </div>
+    ) : null}
     <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
       {/* One devotional page. This same component is the Devotionals tab in the
           bottom menu and the /devotionals, /plans and /bible-studies routes.
@@ -843,7 +861,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                     if (embedded && onStudySelect) {
                       onStudySelect(devotional.id);
                     } else {
-                      router.push(`/plans/${devotional.id}`);
+                      setOpenStudy({ id: devotional.id, title: devotional.title });
                     }
                   }}
                   onKeyDown={(event) => {
@@ -862,7 +880,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                       if (embedded && onStudySelect) {
                         onStudySelect(devotional.id);
                       } else {
-                        router.push(`/plans/${devotional.id}`);
+                        setOpenStudy({ id: devotional.id, title: devotional.title });
                       }
                     }
                   }}
@@ -876,5 +894,6 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
         )}
       </div>
     </div>
+    </>
   );
 }
