@@ -4,17 +4,18 @@ export const dynamic = "force-dynamic";
 
 /**
  * The community event page - sign-up and information for The Wisdom of
- * Proverbs, and any community devotional after it. Everything on it is driven
- * by lib/communityEvents.ts, so the next event is a config entry.
+ * Proverbs, and any community devotional after it. Driven by
+ * lib/communityEvents.ts so the next event is a config entry.
  *
- * Reuses the systems that already exist: the devotional and its 31 days,
- * devotional_progress for personal progress, the solo day view for study,
- * the group feed for discussion, and landing-analytics for tracking.
+ * The community grid reuses the devotional's own participant system:
+ * profile_stats for photo + name, the same initials fallback, the same
+ * /profile links. Only real enrollees appear and only real counts show -
+ * nothing is invented while loading or on failure.
  */
 
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { useSupabaseUser } from "../../../lib/useSupabaseUser";
 import { recordNewUser } from "../../../lib/guestSession";
@@ -24,6 +25,14 @@ import {
   isCommunityEventDayUnlocked,
 } from "../../../lib/communityEvents";
 import { BIBLE_STUDY_GROUP_ID } from "../../../lib/bibleStudiesCatalog";
+
+const GRID_PAGE_SIZE = 24;
+
+type Participant = {
+  user_id: string;
+  display_name: string;
+  profile_image_url: string | null;
+};
 
 function track(eventName: string, metadata: Record<string, unknown> = {}) {
   try {
@@ -43,16 +52,9 @@ function track(eventName: string, metadata: Record<string, unknown> = {}) {
   }
 }
 
-const HOW_IT_WORKS: Array<{ title: string; body: string; icon: string }> = [
-  { icon: "🎧", title: "Read or listen", body: "Read or listen to that day's Wisdom of Proverbs devotional." },
-  { icon: "📖", title: "Read the chapter", body: "Read the corresponding chapter of Proverbs inside Bible Buddy." },
-  { icon: "🧠", title: "Test what you learned", body: "Complete the trivia for that day." },
-  {
-    icon: "💬",
-    title: "Join the discussion",
-    body: "Answer the daily discussion question, then read and reply to other Bible Buddies if you would like to continue the conversation.",
-  },
-];
+function firstName(name: string) {
+  return (name || "Buddy").trim().split(/\s+/)[0];
+}
 
 export default function CommunityEventPage() {
   const params = useParams();
@@ -65,7 +67,13 @@ export default function CommunityEventPage() {
   const [joining, setJoining] = useState(false);
   const [justJoined, setJustJoined] = useState(false);
   const [reminders, setReminders] = useState(false);
-  const [participants, setParticipants] = useState<number | null>(null);
+  const [howOpen, setHowOpen] = useState(false);
+
+  const [participants, setParticipants] = useState<Participant[]>([]);
+  const [totalMembers, setTotalMembers] = useState<number | null>(null);
+  const [membersLoading, setMembersLoading] = useState(true);
+  const [membersFailed, setMembersFailed] = useState(false);
+
   const [completedDays, setCompletedDays] = useState<Set<number>>(new Set());
   const [streak, setStreak] = useState<number | null>(null);
 
@@ -75,11 +83,74 @@ export default function CommunityEventPage() {
     if (event) track("community_event_page_view", { event: event.slug });
   }, [event]);
 
+  const loadMembers = useCallback(
+    async (offset: number) => {
+      if (!event) return;
+      setMembersLoading(true);
+      setMembersFailed(false);
+      try {
+        const { count } = await supabase
+          .from("community_event_members")
+          .select("*", { count: "exact", head: true })
+          .eq("event_slug", event.slug);
+        if (typeof count === "number") setTotalMembers(count);
+
+        const { data: memberRows, error } = await supabase
+          .from("community_event_members")
+          .select("user_id")
+          .eq("event_slug", event.slug)
+          .order("joined_at", { ascending: true })
+          .range(offset, offset + GRID_PAGE_SIZE - 1);
+        if (error) throw error;
+
+        const ids = (memberRows || []).map((row: { user_id: string }) => row.user_id);
+        if (!ids.length) {
+          setMembersLoading(false);
+          return;
+        }
+
+        // Same profile source, fallback and privacy surface as the devotional
+        // "Buddies who started this devotional" section.
+        const { data: profiles } = await supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url")
+          .in("user_id", ids);
+
+        const byId = new Map(
+          (profiles || []).map((row: any) => [
+            row.user_id,
+            {
+              user_id: row.user_id,
+              display_name: row.display_name || row.username || "Bible Buddy",
+              profile_image_url: row.profile_image_url || null,
+            },
+          ]),
+        );
+        const page = ids.map(
+          (id) => byId.get(id) || { user_id: id, display_name: "Bible Buddy", profile_image_url: null },
+        );
+        setParticipants((current) => {
+          const seen = new Set(current.map((p) => p.user_id));
+          return [...current, ...page.filter((p) => !seen.has(p.user_id))];
+        });
+      } catch {
+        setMembersFailed(true);
+      } finally {
+        setMembersLoading(false);
+      }
+    },
+    [event],
+  );
+
+  useEffect(() => {
+    void loadMembers(0);
+  }, [loadMembers]);
+
   useEffect(() => {
     if (!event || !userId) return;
     void (async () => {
       try {
-        const [memberResult, progressResult, profileResult, countResult] = await Promise.allSettled([
+        const [memberResult, progressResult, profileResult] = await Promise.allSettled([
           supabase
             .from("community_event_members")
             .select("reminders")
@@ -92,10 +163,6 @@ export default function CommunityEventPage() {
             .eq("user_id", userId)
             .eq("devotional_id", event.devotionalId),
           supabase.from("profile_stats").select("current_streak").eq("user_id", userId).maybeSingle(),
-          supabase
-            .from("community_event_members")
-            .select("*", { count: "exact", head: true })
-            .eq("event_slug", event.slug),
         ]);
 
         if (memberResult.status === "fulfilled" && memberResult.value.data) {
@@ -111,11 +178,8 @@ export default function CommunityEventPage() {
           const s = (profileResult.value.data as { current_streak?: number } | null)?.current_streak;
           if (typeof s === "number") setStreak(s);
         }
-        if (countResult.status === "fulfilled" && typeof countResult.value.count === "number" && countResult.value.count > 0) {
-          setParticipants(countResult.value.count);
-        }
       } catch {
-        /* every section degrades independently */
+        /* each section degrades on its own */
       }
     })();
   }, [event, userId]);
@@ -132,11 +196,11 @@ export default function CommunityEventPage() {
     Array.from({ length: event.totalDays }, (_, i) => i + 1).find((d) => !completedDays.has(d)) || event.totalDays;
   const nextOpenDay = isCommunityEventDayUnlocked(event, nextDay) ? nextDay : null;
 
+  // One enrollment action for both buttons, as specified.
   async function join() {
-    if (!event || joining) return;
+    if (!event || joining || joined) return;
     track("community_event_join_click", { event: event.slug });
     if (!userId) {
-      // Existing auth flow, back to this page afterwards.
       router.push(`/login?next=${encodeURIComponent(`/events/${event.slug}`)}`);
       return;
     }
@@ -144,13 +208,39 @@ export default function CommunityEventPage() {
     try {
       const { error } = await supabase
         .from("community_event_members")
-        .upsert({ event_slug: event.slug, user_id: userId }, { onConflict: "event_slug,user_id", ignoreDuplicates: true });
+        .upsert(
+          { event_slug: event.slug, user_id: userId, reminders },
+          { onConflict: "event_slug,user_id", ignoreDuplicates: true },
+        );
       if (!error) {
         setJoined(true);
         setJustJoined(true);
-        setParticipants((count) => (count === null ? 1 : count + 1));
+        setTotalMembers((count) => (count === null ? 1 : count + 1));
         track("community_event_joined", { event: event.slug });
+        if (reminders) track("community_event_reminder_optin", { event: event.slug });
         recordNewUser(userId, `community_event_${event.slug}`);
+        // Straight into the grid with their own photo and first name.
+        try {
+          const { data: me } = await supabase
+            .from("profile_stats")
+            .select("user_id, display_name, username, profile_image_url")
+            .eq("user_id", userId)
+            .maybeSingle();
+          setParticipants((current) =>
+            current.some((p) => p.user_id === userId)
+              ? current
+              : [
+                  ...current,
+                  {
+                    user_id: userId,
+                    display_name: (me as any)?.display_name || (me as any)?.username || "Bible Buddy",
+                    profile_image_url: (me as any)?.profile_image_url || null,
+                  },
+                ],
+          );
+        } catch {
+          /* the grid refreshes on next load either way */
+        }
       }
     } finally {
       setJoining(false);
@@ -158,8 +248,8 @@ export default function CommunityEventPage() {
   }
 
   async function toggleReminders(on: boolean) {
-    if (!event || !userId) return;
     setReminders(on);
+    if (!event || !userId || !joined) return;
     await supabase
       .from("community_event_members")
       .update({ reminders: on })
@@ -172,6 +262,31 @@ export default function CommunityEventPage() {
     track("community_event_day_started", { event: event!.slug, day });
     router.push(`/devotionals/${event!.devotionalId}/day/${day}`);
   }
+
+  const joinLabel = joining ? "JOINING…" : joined ? "YOU'RE IN — VIEW THE STUDY" : "JOIN THE 31-DAY STUDY";
+  const joinButtonProps = {
+    onClick: () => {
+      if (joined) {
+        document.getElementById("event-progress")?.scrollIntoView({ behavior: "smooth" });
+      } else {
+        void join();
+      }
+    },
+    disabled: joining || authLoading,
+  };
+
+  const remaining = totalMembers !== null ? Math.max(0, totalMembers - participants.length) : 0;
+
+  const joinButton = (
+    <button
+      type="button"
+      {...joinButtonProps}
+      className="min-h-12 w-full rounded-xl px-5 text-sm font-black tracking-wide text-[#221503] transition hover:brightness-95 disabled:opacity-70"
+      style={{ background: "linear-gradient(180deg, #f0d489 0%, #cfa147 100%)" }}
+    >
+      {joinLabel}
+    </button>
+  );
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-5 px-4 pb-28 pt-4">
@@ -212,66 +327,136 @@ export default function CommunityEventPage() {
         </div>
       ) : null}
 
-      {!joined ? (
+      {joinButton}
+
+      {/* How it works, folded into one compact accordion. */}
+      <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]">
         <button
           type="button"
-          onClick={() => void join()}
-          disabled={joining || authLoading}
-          className="min-h-12 rounded-xl px-5 text-sm font-black tracking-wide text-[#221503] transition hover:brightness-95 disabled:opacity-70"
-          style={{ background: "linear-gradient(180deg, #f0d489 0%, #cfa147 100%)" }}
+          onClick={() => setHowOpen((open) => !open)}
+          aria-expanded={howOpen}
+          className="flex min-h-12 w-full items-center justify-between gap-3 px-5 py-3.5 text-left"
         >
-          {joining ? "JOINING…" : "JOIN THE 31-DAY STUDY"}
+          <span className="text-sm font-black tracking-wide text-[var(--bb-text-primary,#111827)]">
+            HOW DOES THE COMMUNITY STUDY WORK?
+          </span>
+          <span
+            aria-hidden="true"
+            className={`text-[var(--bb-text-muted,#6b7280)] transition-transform ${howOpen ? "rotate-180" : ""}`}
+          >
+            ⌄
+          </span>
         </button>
-      ) : (
-        <label className="flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
+        {howOpen ? (
+          <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-5 py-4">
+            <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
+              A new devotional unlocks each day. Read or listen, read the matching chapter of Proverbs, take the
+              trivia, and answer the daily discussion question—whenever you have time.
+            </p>
+            <p className="mt-3 text-sm font-black leading-6 text-[var(--bb-text-primary,#111827)]">
+              We study the same chapter each day and meet in the discussion afterward.
+            </p>
+          </div>
+        ) : null}
+      </div>
+
+      {/* The community: the real people who joined this event. */}
+      <section className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5">
+        <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Community</p>
+        <h2 className="mt-1 text-lg font-black text-[var(--bb-text-primary,#111827)]">JOIN THESE BIBLE BUDDIES</h2>
+        {totalMembers !== null && totalMembers > 0 ? (
+          <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+            {totalMembers} Bible Buddies have already signed up to study Proverbs together.
+          </p>
+        ) : null}
+
+        {membersFailed ? (
+          <div className="mt-4 text-center">
+            <p className="text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
+              The community list could not load.
+            </p>
+            <button
+              type="button"
+              onClick={() => void loadMembers(participants.length)}
+              className="mt-2 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-4 py-2 text-sm font-black text-[var(--bb-text-primary,#111827)]"
+            >
+              Try again
+            </button>
+          </div>
+        ) : membersLoading && participants.length === 0 ? (
+          <div className="mt-4 grid grid-cols-4 gap-4 sm:grid-cols-6 md:grid-cols-8">
+            {Array.from({ length: 16 }, (_, i) => (
+              <div key={i} className="flex flex-col items-center gap-1.5">
+                <div className="h-14 w-14 animate-pulse rounded-full bg-[var(--bb-surface-soft,#eef2f7)]" />
+                <div className="h-3 w-10 animate-pulse rounded bg-[var(--bb-surface-soft,#eef2f7)]" />
+              </div>
+            ))}
+          </div>
+        ) : participants.length === 0 ? (
+          <p className="mt-4 text-center text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
+            Be the first Bible Buddy to join the journey.
+          </p>
+        ) : (
+          <>
+            <div className="mt-4 grid grid-cols-4 gap-x-2 gap-y-4 sm:grid-cols-6 md:grid-cols-8">
+              {participants.map((buddy) => (
+                <Link
+                  key={buddy.user_id}
+                  href={`/profile/${buddy.user_id}`}
+                  className="flex min-w-0 flex-col items-center gap-1.5"
+                  title={buddy.display_name}
+                >
+                  <span className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#eef4f8)] text-sm font-black text-[var(--bb-text-primary,#111827)]">
+                    {buddy.profile_image_url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={buddy.profile_image_url}
+                        alt={buddy.display_name}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      buddy.display_name.slice(0, 1).toUpperCase()
+                    )}
+                  </span>
+                  <span className="w-full truncate text-center text-xs font-bold text-[var(--bb-text-primary,#111827)]">
+                    {firstName(buddy.display_name)}
+                  </span>
+                </Link>
+              ))}
+            </div>
+            {remaining > 0 ? (
+              <button
+                type="button"
+                onClick={() => void loadMembers(participants.length)}
+                disabled={membersLoading}
+                className="mt-4 w-full text-center text-sm font-black text-[var(--bb-accent,#2f7fe8)] disabled:opacity-60"
+              >
+                {membersLoading ? "Loading…" : `+${remaining} more Bible Buddies`}
+              </button>
+            ) : null}
+          </>
+        )}
+
+        <div className="mt-5">{joinButton}</div>
+        <label className="mt-3 flex items-center justify-center gap-2">
           <input
             type="checkbox"
             checked={reminders}
             onChange={(e) => void toggleReminders(e.target.checked)}
-            className="h-5 w-5 accent-[#cfa147]"
+            className="h-4 w-4 accent-[#cfa147]"
           />
-          <span className="text-sm font-bold text-[var(--bb-text-primary,#111827)]">Remind me each day in October</span>
+          <span className="text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+            Remind me when each new day unlocks
+          </span>
         </label>
-      )}
-
-      {participants !== null ? (
-        <p className="text-center text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-          {participants} Bible Buddies have joined
-        </p>
-      ) : null}
-
-      <section>
-        <h2 className="mb-2 text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">
-          How it works
-        </h2>
-        <div className="flex flex-col gap-2">
-          {HOW_IT_WORKS.map((step, index) => (
-            <div
-              key={step.title}
-              className="flex items-start gap-3 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4"
-            >
-              <span className="text-xl" aria-hidden="true">
-                {step.icon}
-              </span>
-              <span>
-                <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">
-                  {index + 1}. {step.title}
-                </span>
-                <span className="mt-0.5 block text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
-                  {step.body}
-                </span>
-              </span>
-            </div>
-          ))}
-        </div>
-        <p className="mt-2 text-xs font-semibold italic leading-5 text-[var(--bb-text-muted,#6b7280)]">
-          We are not meeting at one particular time. We are studying the same chapter on the same day—and meeting
-          in the discussion afterward.
+        <p className="mt-2 text-center text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
+          Free inside Bible Buddy · October 1–31
         </p>
       </section>
 
       {joined ? (
-        <section>
+        <section id="event-progress">
           <h2 className="mb-2 text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">
             Your progress
           </h2>
