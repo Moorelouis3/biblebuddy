@@ -3047,3 +3047,7 @@ Next up: Job 30
 ## 2026-09-02T10:58:14Z (hourly chapter notes run)
 Chapter: Job 30 | Duration: 10 min | Sections: 7 | Cards: 63 | Status: pass
 Next up: Job 31
+
+## 2026-09-02T12:29:34Z (bible year day writer run)
+Day: 81 — David's Later Reign and Mighty Men (2 Samuel 20-23) | Runtime: 7 blocks, 4 chapters (heavier reading, includes David's song in ch. 22) | Cast: not rendered (no keys in this environment)
+Next up: Day 82
