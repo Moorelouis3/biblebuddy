@@ -2999,3 +2999,7 @@ Next up: Job 24
 ## 2026-09-01T23:00:02Z (hourly chapter notes run)
 Chapter: Job 24 | Duration: 12 min | Sections: 6 | Cards: 45 | Status: pass
 Next up: Job 25
+
+## 2026-09-02T00:27:02Z (bible year day writer run)
+Day: 75 — David in Exile (1 Samuel 27-30) | Runtime: ~5.6k teaching/opening/closing chars over 6 blocks, 4 chapters (heavier reading, in line with Days 72-74) | Cast: not rendered (no keys in this environment)
+Next up: Day 76
