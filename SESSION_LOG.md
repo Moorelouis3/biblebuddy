@@ -3091,3 +3091,7 @@ arrived); Content Buddy Pinterest tabs rework still parked; Proverbs phase 2
 (daily discussion cron, reminders, admin view) unbuilt.
 Next: verify production after the build; replace placeholder art when Louis
 sends it; Content Buddy Pinterest screen rework.
+
+## 2026-09-02T21:00:00Z (bible year day writer run)
+Day: 85 — The Kingdom Divides (1 Kings 12-15) | Runtime: audio not rendered (no keys in this env) | Cast: no render yet
+Next up: Day 86
