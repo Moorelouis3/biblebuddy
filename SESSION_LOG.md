@@ -3067,3 +3067,7 @@ Next up: Job 33
 ## 2026-09-02T16:27:03Z (bible year day writer run)
 Day: 83 — Solomon's Wisdom and Temple Preparations (1 Kings 4-7) | Runtime: ~6.5k teaching/opening/closing chars over 7 blocks, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
 Next up: Day 84
+
+## 2026-09-02T16:29:34Z (bible year day writer run)
+Day: 84 — Temple Glory and Solomon's Fall (1 Kings 8-11) | Runtime: ~7.4k teaching/opening/closing chars over 7 blocks, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
+Two days written this run (hard limit). Next up: Day 85
