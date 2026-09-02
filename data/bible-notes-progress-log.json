@@ -30584,6 +30584,59 @@
           "at": "2026-09-02T16:55:57Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 34,
+      "startedAt": "2026-09-02T20:47:01Z",
+      "finishedAt": "2026-09-02T20:58:00Z",
+      "durationMinutes": 11,
+      "sections": 8,
+      "cards": 40,
+      "verses": 37,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty (redo-remaining's remaining array was already empty), so this was normal forward progress after Job 33, the single next chapter in canonical order with no existing wired-in file. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (37 verses). Job 34 is Elihu's second speech: he widens his audience from Job alone to the other wise men present, quotes Job's claims of innocence and complaint back to him, then rebuts them by arguing God's authority was never delegated and He cannot pervert judgment, that no king or prince escapes His impartial judgment, that His eyes are on every path with no darkness to hide in, that the cry of the poor and afflicted reaches Him directly, and that He restrains rulers so hypocrites cannot gain lasting power over a people, closing with a model of honest repentance and Elihu's harshest verdict yet that Job has spoken without knowledge. Chunked into 8 sections matching the chapter's own argument beats (1-4, 5-9, 10-15, 16-20, 21-25, 26-30, 31-33, 34-37). Density about 1.08 cards per verse (37 verses, 40 cards). scripts/check_bible_note_style.py found 0 problems on the first pass. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language (trieth, transgression, render, pervert, recompense, chastisement, and more), closes on meaning rather than mechanics, uses exactly four bullets each with a unique matched emoji and the final bullet landing on the scripture-point emoji, and avoids hyphens, em dashes, semicolons, contractions, and banned filler or hedge words. Built lib/jobThirtyFourSource.ts following the lib/jobThirtyThreeSource.ts parser and file structure exactly (same type/parser/regex shape, chapter 34, 8-section safety check). Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies job range extended from 33 to 34, applyPersonalJobThirtyFourChapterStudySections function added and called in reading order after Job 33. Parser check via npx tsx confirmed 8 sections and 40 cards, reference/title/card-count printed matched design, no throw. npx tsc --noEmit -p . came back clean with zero errors. Committed and pushed to origin main without the [deploy] tag per the deploy cadence rule (per-chapter commits are pushed but never tagged; only twice-daily reports, explicit releases, or Level 2 upgrades get [deploy]).",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-09-02T20:47:05Z"
+        },
+        {
+          "name": "target_chapter_determined: Job 34 (new chapter, normal forward progress after Job 33)",
+          "at": "2026-09-02T20:47:21Z"
+        },
+        {
+          "name": "kjv_text_fetched: Job 34 (37 verses) from raw.githubusercontent.com aruljohn Bible-kjv",
+          "at": "2026-09-02T20:47:31Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-09-02T20:47:36Z"
+        },
+        {
+          "name": "source_file_written: lib/jobThirtyFourSource.ts (8 sections, 40 cards)",
+          "at": "2026-09-02T20:53:21Z"
+        },
+        {
+          "name": "style_checker_clean: 40 cards, 0 problems (first pass)",
+          "at": "2026-09-02T20:53:24Z"
+        },
+        {
+          "name": "wired_into_reader: import, preserveExactPhraseBodies range extended to 34, apply function + call added",
+          "at": "2026-09-02T20:53:50Z"
+        },
+        {
+          "name": "parser_check_passed: 8 sections, 40 cards, no throw",
+          "at": "2026-09-02T20:54:08Z"
+        },
+        {
+          "name": "tsc_clean: npx tsc --noEmit -p . zero errors",
+          "at": "2026-09-02T20:55:56Z"
+        },
+        {
+          "name": "progress_files_logged: data/bible-notes-progress-log.json + docs/BIBLE_BUDDY_NOTES_PROGRESS.md",
+          "at": "2026-09-02T20:57:02Z"
+        }
+      ]
     }
   ]
 }
