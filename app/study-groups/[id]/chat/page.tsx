@@ -11,6 +11,7 @@ import { useEffect, useMemo, useState, useRef, useCallback, type CSSProperties, 
 import { createPortal } from "react-dom";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import CommunityEventBanner from "@/components/CommunityEventBanner";
 import { supabase } from "../../../../lib/supabaseClient";
 import { HOME_FEED_COVER_MARKER } from "@/lib/groupFeedCarouselScheduler";
 import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
@@ -5191,7 +5192,8 @@ export default function GroupChatPage() {
       {!isDashboardEmbed ? (
         <div className="bb-community-header relative z-20" style={{ backgroundColor: coverColor }}>
           <div className="max-w-2xl mx-auto px-4 pt-4 pb-2">
-            <div className="bb-community-hero-card rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
+            {!selectedSeries && !selectedPost ? <CommunityEventBanner userId={userId} /> : null}
+            <div className={`bb-community-hero-card ${!selectedSeries && !selectedPost ? "hidden" : ""} rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm`}>
               <div className="flex items-center gap-1 text-xs text-[var(--bb-text-secondary,#5f6368)] font-medium mb-3 flex-wrap">
                 <Link href="/dashboard" className="hover:text-[var(--bb-text-primary,#111827)] hover:underline transition">
                   Dashboard

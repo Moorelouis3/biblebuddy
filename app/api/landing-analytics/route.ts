@@ -2,6 +2,16 @@ import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
 const ALLOWED_EVENTS = new Set([
+  // Community devotional events (Wisdom of Proverbs and successors).
+  "community_event_banner_impression",
+  "community_event_banner_click",
+  "community_event_page_view",
+  "community_event_join_click",
+  "community_event_joined",
+  "community_event_reminder_optin",
+  "community_event_day_started",
+  "community_event_day_completed",
+  "community_event_book_click",
   "landing_page_visit",
   "clicked_start_journey",
   "started_onboarding",
