@@ -92,23 +92,33 @@ export default function HomeScreen() {
           .eq("user_id", userId),
         supabase
           .from("bible_year_day_progress")
-          .select("day_number")
+          .select("day_number, reading_completed")
           .eq("user_id", userId)
-          .order("day_number", { ascending: false })
-          .limit(1),
+          .limit(500),
       ]);
 
       const profile = profileResult.status === "fulfilled" ? (profileResult.value.data as any) : null;
       const chapterCount = chapterResult.status === "fulfilled" ? chapterResult.value.count : null;
-      const lastDay =
-        planResult.status === "fulfilled" ? (planResult.value.data as any[])?.[0]?.day_number ?? null : null;
+      // The plan's own rule, copied exactly: the current day is the FIRST day
+      // in the series whose reading is not done. Home used to say last row +1,
+      // which ran a day ahead whenever a day had a progress row but an
+      // unfinished reading - so home said Day 38 while the plan opened Day 37.
+      let planDay: number | null = null;
+      if (planResult.status === "fulfilled" && Array.isArray(planResult.value.data)) {
+        const readDays = new Set(
+          (planResult.value.data as any[])
+            .filter((row) => row.reading_completed === true)
+            .map((row) => Number(row.day_number)),
+        );
+        const firstUnread = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((d) => !readDays.has(d.dayNumber));
+        planDay = firstUnread ? firstUnread.dayNumber : 365;
+      }
 
       setStats({
         streak: typeof profile?.current_streak === "number" ? profile.current_streak : null,
         chaptersRead: typeof chapterCount === "number" ? chapterCount : null,
-        // The day they are on is the one after the last one finished.
-        planDay: typeof lastDay === "number" ? Math.min(365, lastDay + 1) : null,
-        lastCompletedDay: typeof lastDay === "number" ? lastDay : null,
+        planDay,
+        lastCompletedDay: planDay !== null ? planDay - 1 : null,
         displayName: profile?.display_name || profile?.username || null,
         flameId: profile?.selected_streak_flame ?? null,
       });
