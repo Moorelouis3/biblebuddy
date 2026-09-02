@@ -43,7 +43,6 @@ export default function CommunityEventBanner({ userId }: { userId?: string | nul
   const event = getActiveCommunityEvent();
   const [joined, setJoined] = useState(false);
   const [participants, setParticipants] = useState<number | null>(null);
-  const [personalDay, setPersonalDay] = useState<number | null>(null);
 
   // Re-evaluated each minute so the countdown flips to live at Berlin
   // midnight without a reload left open overnight showing yesterday.
@@ -81,15 +80,6 @@ export default function CommunityEventBanner({ userId }: { userId?: string | nul
             .maybeSingle();
           if (data) setJoined(true);
 
-          const { data: progress } = await supabase
-            .from("devotional_progress")
-            .select("day_number")
-            .eq("user_id", userId)
-            .eq("devotional_id", event.devotionalId)
-            .order("day_number", { ascending: false })
-            .limit(1);
-          const last = (progress as Array<{ day_number: number }> | null)?.[0]?.day_number;
-          if (typeof last === "number") setPersonalDay(Math.min(event.totalDays, last + 1));
         }
       } catch {
         // Leave the banner in its stateless form.
@@ -98,9 +88,6 @@ export default function CommunityEventBanner({ userId }: { userId?: string | nul
   }, [event, userId]);
 
   if (!event || !state) return null;
-
-  const behind =
-    state.phase === "live" && joined && personalDay !== null && personalDay < state.communityDay;
 
   const pill =
     state.phase === "countdown"
@@ -119,19 +106,9 @@ export default function CommunityEventBanner({ userId }: { userId?: string | nul
         ? `Today: Proverbs ${state.communityDay}`
         : "Grow in wisdom one chapter at a time.";
 
-  const cta = joined
-    ? state.phase === "countdown"
-      ? "YOU'RE IN — VIEW STUDY"
-      : behind
-        ? `CONTINUE WITH DAY ${personalDay}`
-        : state.phase === "live"
-          ? state.communityDay === 1
-            ? "START TODAY'S DEVOTIONAL"
-            : "CONTINUE THE JOURNEY"
-          : "CONTINUE THE JOURNEY"
-    : state.phase === "evergreen"
-      ? "START THE 31-DAY JOURNEY"
-      : "JOIN THE STUDY";
+  // The study itself is still being built, so members just see that they are
+  // in - nothing to view yet. Louis, 2026-09-02.
+  const cta = joined ? "YOU'RE IN ✓" : state.phase === "evergreen" ? "START THE 31-DAY JOURNEY" : "JOIN THE STUDY";
 
   return (
     <Link

@@ -19,12 +19,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { useSupabaseUser } from "../../../lib/useSupabaseUser";
 import { recordNewUser } from "../../../lib/guestSession";
-import {
-  getCommunityEvent,
-  getCommunityEventState,
-  isCommunityEventDayUnlocked,
-} from "../../../lib/communityEvents";
-import { BIBLE_STUDY_GROUP_ID } from "../../../lib/bibleStudiesCatalog";
+import { getCommunityEvent, getCommunityEventState } from "../../../lib/communityEvents";
 
 const GRID_PAGE_SIZE = 24;
 
@@ -74,8 +69,6 @@ export default function CommunityEventPage() {
   const [membersLoading, setMembersLoading] = useState(true);
   const [membersFailed, setMembersFailed] = useState(false);
 
-  const [completedDays, setCompletedDays] = useState<Set<number>>(new Set());
-  const [streak, setStreak] = useState<number | null>(null);
 
   const state = useMemo(() => (event ? getCommunityEventState(event) : null), [event]);
 
@@ -150,33 +143,16 @@ export default function CommunityEventPage() {
     if (!event || !userId) return;
     void (async () => {
       try {
-        const [memberResult, progressResult, profileResult] = await Promise.allSettled([
-          supabase
-            .from("community_event_members")
-            .select("reminders")
-            .eq("event_slug", event.slug)
-            .eq("user_id", userId)
-            .maybeSingle(),
-          supabase
-            .from("devotional_progress")
-            .select("day_number")
-            .eq("user_id", userId)
-            .eq("devotional_id", event.devotionalId),
-          supabase.from("profile_stats").select("current_streak").eq("user_id", userId).maybeSingle(),
-        ]);
+        const memberResult = await supabase
+          .from("community_event_members")
+          .select("reminders")
+          .eq("event_slug", event.slug)
+          .eq("user_id", userId)
+          .maybeSingle();
 
-        if (memberResult.status === "fulfilled" && memberResult.value.data) {
+        if (memberResult.data) {
           setJoined(true);
-          setReminders(Boolean((memberResult.value.data as { reminders?: boolean }).reminders));
-        }
-        if (progressResult.status === "fulfilled" && Array.isArray(progressResult.value.data)) {
-          setCompletedDays(
-            new Set((progressResult.value.data as Array<{ day_number: number }>).map((row) => row.day_number)),
-          );
-        }
-        if (profileResult.status === "fulfilled") {
-          const s = (profileResult.value.data as { current_streak?: number } | null)?.current_streak;
-          if (typeof s === "number") setStreak(s);
+          setReminders(Boolean((memberResult.data as { reminders?: boolean }).reminders));
         }
       } catch {
         /* each section degrades on its own */
@@ -192,9 +168,6 @@ export default function CommunityEventPage() {
     );
   }
 
-  const nextDay =
-    Array.from({ length: event.totalDays }, (_, i) => i + 1).find((d) => !completedDays.has(d)) || event.totalDays;
-  const nextOpenDay = isCommunityEventDayUnlocked(event, nextDay) ? nextDay : null;
 
   // One enrollment action for both buttons, as specified.
   async function join() {
@@ -258,29 +231,18 @@ export default function CommunityEventPage() {
     if (on) track("community_event_reminder_optin", { event: event.slug });
   }
 
-  function openDay(day: number) {
-    track("community_event_day_started", { event: event!.slug, day });
-    router.push(`/devotionals/${event!.devotionalId}/day/${day}`);
-  }
 
-  const joinLabel = joining ? "JOINING…" : joined ? "YOU'RE IN — VIEW THE STUDY" : "JOIN THE 31-DAY STUDY";
-  const joinButtonProps = {
-    onClick: () => {
-      if (joined) {
-        document.getElementById("event-progress")?.scrollIntoView({ behavior: "smooth" });
-      } else {
-        void join();
-      }
-    },
-    disabled: joining || authLoading,
-  };
+  const joinLabel = joining ? "JOINING…" : "JOIN THE 31-DAY STUDY";
 
   const remaining = totalMembers !== null ? Math.max(0, totalMembers - participants.length) : 0;
 
-  const joinButton = (
+  // Once someone is in, the buttons disappear - this is a sign-up page for a
+  // study that is still being built, so there is nothing to view yet.
+  const joinButton = joined ? null : (
     <button
       type="button"
-      {...joinButtonProps}
+      onClick={() => void join()}
+      disabled={joining || authLoading}
       className="min-h-12 w-full rounded-xl px-5 text-sm font-black tracking-wide text-[#221503] transition hover:brightness-95 disabled:opacity-70"
       style={{ background: "linear-gradient(180deg, #f0d489 0%, #cfa147 100%)" }}
     >
@@ -318,11 +280,11 @@ export default function CommunityEventPage() {
         fits your schedule, then meet the community in the daily discussion.
       </p>
 
-      {justJoined ? (
-        <div className="rounded-2xl border border-[#cfe5cf] bg-[#eefaf0] p-4">
-          <p className="text-sm font-black text-[#14532d]">You&apos;re in! The journey begins October 1.</p>
-          <p className="mt-0.5 text-xs font-semibold text-[#3f6212]">
-            We&apos;ll remind you when Day 1 becomes available.
+      {joined ? (
+        <div className="rounded-2xl border border-[#cfe5cf] bg-[#eefaf0] p-4 text-center">
+          <p className="text-base font-black text-[#14532d]">Welcome — you&apos;re signed up! 🎉</p>
+          <p className="mt-1 text-sm font-semibold text-[#3f6212]">
+            The journey begins October 1. We&apos;ll let you know when Day 1 is ready.
           </p>
         </div>
       ) : null}
@@ -366,7 +328,7 @@ export default function CommunityEventPage() {
         <h2 className="mt-1 text-lg font-black text-[var(--bb-text-primary,#111827)]">JOIN THESE BIBLE BUDDIES</h2>
         {totalMembers !== null && totalMembers > 0 ? (
           <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-            {totalMembers} Bible Buddies have already signed up to study Proverbs together.
+            {totalMembers} Bible {totalMembers === 1 ? "Buddy has" : "Buddies have"} already signed up to study Proverbs together.
           </p>
         ) : null}
 
@@ -438,7 +400,7 @@ export default function CommunityEventPage() {
           </>
         )}
 
-        <div className="mt-5">{joinButton}</div>
+        {joinButton ? <div className="mt-5">{joinButton}</div> : null}
         <label className="mt-3 flex items-center justify-center gap-2">
           <input
             type="checkbox"
@@ -454,67 +416,6 @@ export default function CommunityEventPage() {
           Free inside Bible Buddy · October 1–31
         </p>
       </section>
-
-      {joined ? (
-        <section id="event-progress">
-          <h2 className="mb-2 text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">
-            Your progress
-          </h2>
-          <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">
-              {state?.phase === "live" ? <span>Community: Day {state.communityDay}</span> : null}
-              <span>
-                You: {completedDays.size} of {event.totalDays} days done
-              </span>
-              {streak !== null ? <span>🔥 {streak} day streak</span> : null}
-            </div>
-            <div className="mt-3 grid grid-cols-7 gap-1.5 sm:gap-2">
-              {Array.from({ length: event.totalDays }, (_, i) => i + 1).map((day) => {
-                const done = completedDays.has(day);
-                const unlocked = isCommunityEventDayUnlocked(event, day);
-                return (
-                  <button
-                    key={day}
-                    type="button"
-                    disabled={!unlocked}
-                    onClick={() => openDay(day)}
-                    title={done ? `Day ${day} - completed` : unlocked ? `Open Day ${day}` : `Day ${day} unlocks later`}
-                    className={`grid aspect-square place-items-center rounded-lg text-[11px] font-black transition ${
-                      done
-                        ? "bg-[#e8c877] text-[#221503]"
-                        : unlocked
-                          ? "border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-primary,#111827)] hover:border-[#cfa147]"
-                          : "border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f4f8ff)] text-[var(--bb-text-muted,#9ca3af)] opacity-60"
-                    }`}
-                  >
-                    {done ? "✓" : unlocked ? day : "🔒"}
-                  </button>
-                );
-              })}
-            </div>
-            {nextOpenDay ? (
-              <button
-                type="button"
-                onClick={() => openDay(nextOpenDay)}
-                className="mt-4 flex min-h-11 w-full items-center justify-center rounded-xl px-4 text-sm font-black text-[#221503] transition hover:brightness-95"
-                style={{ background: "linear-gradient(180deg, #f0d489 0%, #cfa147 100%)" }}
-              >
-                CONTINUE WITH DAY {nextOpenDay}
-              </button>
-            ) : state?.phase === "countdown" ? (
-              <p className="mt-4 text-center text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                Day 1 unlocks October 1.
-              </p>
-            ) : null}
-          </div>
-          <Link
-            href={`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`}
-            className="mt-2 block text-center text-sm font-bold text-[var(--bb-accent,#2f7fe8)]"
-          >
-            Open the daily discussion in the Study Group
-          </Link>
-        </section>
-      ) : null}
 
       {/* Book and journal promo: built, hidden until a real link exists. */}
       {event.bookUrl ? (
