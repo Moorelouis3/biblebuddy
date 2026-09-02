@@ -30535,6 +30535,55 @@
           "at": "2026-09-02T14:57:00Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 33,
+      "startedAt": "2026-09-02T16:45:56Z",
+      "finishedAt": "2026-09-02T16:56:30Z",
+      "durationMinutes": 10.6,
+      "sections": 7,
+      "cards": 51,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Session found local HEAD detached but matching a stale cached origin/main ref; git fetch origin main confirmed the detached tip was the true up to date state, rebuilt local main from it before starting, no lost work. Priority queue and style-redo backlog both confirmed empty. Normal forward progress after Job 32, writing Job 33, Elihu's opening speech directly to Job: shared humanity from clay and the same Spirit, quoting Job's own complaints back to him, the first rebuttal that God is greater than man, the two ways God speaks (dreams/visions and pain/sickness), the heavenly messenger and ransom that delivers a soul from the pit, restoration and confession, and Elihu's closing invitation for Job to answer or be taught. Chunked into 7 sections matching the chapter's own movements (1-7, 8-11, 12-14, 15-18, 19-22, 23-28, 29-33). Density about 1.55 cards/verse (33 verses, 51 cards). scripts/check_bible_note_style.py found 2 problems on first pass (two bullets one word over the eight word cap), fixed both, second run clean; a manual pass also caught one banned stacked-clause phrase (\"rather than\") in a body line outside the checker's scope and rewrote it. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji ending on 📖 or ➡️, no repeated emoji within a card, no duplicate card titles across all 51 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('job', 33) (7/7 sections, verse ranges 1-7/8-11/12-14/15-18/19-22/23-28/29-33 with no gaps, text rendered verbatim, 51 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/jobThirtyThreeSource.ts), preserveExactPhraseBodies for job extended from chapters 1-32 to 1-33, new applyPersonalJobThirtyThreeChapterStudySections() function calling replaceStudySectionsForBookRange(\"job\", 33, 33, JOB_THIRTY_THREE_PERSONAL_SECTIONS), invoked right after the Job 32 call. Next forward-progress target is Job 34.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-02T16:46:49Z"
+        },
+        {
+          "name": "target chapter determined: Job 33 (new chapter, forward progress after Job 32; redo backlog empty)",
+          "at": "2026-09-02T16:46:57Z"
+        },
+        {
+          "name": "KJV text fetched (Job 33, 33 verses, aruljohn mirror)",
+          "at": "2026-09-02T16:47:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-02T16:47:06Z"
+        },
+        {
+          "name": "source file written: lib/jobThirtyThreeSource.ts (7 sections, 51 cards)",
+          "at": "2026-09-02T16:52:33Z"
+        },
+        {
+          "name": "style checker clean (2 bullet length issues fixed, then a manual 'rather than' fix, second/third passes 0 problems)",
+          "at": "2026-09-02T16:52:44Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-09-02T16:53:15Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 51 cards, verse ranges verified, no throw)",
+          "at": "2026-09-02T16:53:57Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-09-02T16:55:57Z"
+        }
+      ]
     }
   ]
 }
