@@ -3039,3 +3039,7 @@ Next up: Day 80
 ## 2026-09-02T08:40:00Z (bible year day writer run)
 Day: 80 — Absalom's Rebellion and David's Grief (2 Samuel 16-19) | Runtime: ~9.9k teaching/opening/closing chars over 7 blocks, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
 Two days written this run (hard limit). Next up: Day 81
+
+## 2026-09-02T08:52:20Z (hourly chapter notes run)
+Chapter: Job 29 | Duration: 6 min | Sections: 7 | Cards: 43 | Status: pass
+Next up: Job 30
