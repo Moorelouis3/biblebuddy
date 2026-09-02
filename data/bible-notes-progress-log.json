@@ -30209,6 +30209,63 @@
           "at": "2026-09-02T02:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 27,
+      "startedAt": "2026-09-02T04:46:17Z",
+      "finishedAt": "2026-09-02T04:55:43Z",
+      "durationMinutes": 9,
+      "sections": 5,
+      "cards": 42,
+      "verses": 23,
+      "notes": "New chapter, normal forward progress after Job 26. Priority queue and style-redo backlog both empty. Style checker clean after two fixes (one over-length bullet, one over-length body line). Parser check and tsc both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-02T04:46:49Z"
+        },
+        {
+          "name": "detached HEAD reconciled (fetch confirmed origin/main matched HEAD, checked out and reset local main)",
+          "at": "2026-09-02T04:46:35Z"
+        },
+        {
+          "name": "target chapter determined: Job 27 (priority queue empty, redo backlog empty, normal forward progress after Job 26)",
+          "at": "2026-09-02T04:47:40Z"
+        },
+        {
+          "name": "KJV text fetched for Job 27 (23 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-02T04:47:55Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-09-02T04:49:30Z"
+        },
+        {
+          "name": "source file lib/jobTwentySevenSource.ts written (5 sections, 42 cards)",
+          "at": "2026-09-02T04:53:00Z"
+        },
+        {
+          "name": "style checker clean (2 problems found and fixed: an over-length bullet, an over-length body line, then 0 problems)",
+          "at": "2026-09-02T04:54:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to job 27, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-02T04:54:35Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('job', 27): 5 sections, 42 cards)",
+          "at": "2026-09-02T04:54:55Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-02T04:55:13Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-02T04:55:43Z"
+        }
+      ]
     }
   ]
 }
