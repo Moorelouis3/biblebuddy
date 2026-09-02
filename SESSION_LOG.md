@@ -3051,3 +3051,7 @@ Next up: Job 31
 ## 2026-09-02T12:29:34Z (bible year day writer run)
 Day: 81 — David's Later Reign and Mighty Men (2 Samuel 20-23) | Runtime: 7 blocks, 4 chapters (heavier reading, includes David's song in ch. 22) | Cast: not rendered (no keys in this environment)
 Next up: Day 82
+
+## 2026-09-02T12:37:00Z (bible year day writer run)
+Day: 82 — David's Census and Solomon's Wisdom (2 Samuel 24; 1 Kings 1-3) | Runtime: 7 blocks across two books, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
+Two days written this run (hard limit). Next up: Day 83
