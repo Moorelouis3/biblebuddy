@@ -5161,7 +5161,9 @@ export default function GroupChatPage() {
     );
   }
 
-  const coverColor = isDashboardEmbed ? "var(--bb-card)" : group.cover_color || "var(--bb-card)";
+  // Louis, 2026-09-02: the colored band behind the header goes away - the
+  // page ground shows through instead.
+  const coverColor = "transparent";
   const activeFeedPost = selectedFeedPost ? (posts.find((post) => post.id === selectedFeedPost.id) ?? selectedFeedPost) : null;
   const activeFeedPollSet = activeFeedPost ? weeklyPollByPostId[activeFeedPost.id] : undefined;
   const activeFeedTriviaSet = activeFeedPost ? weeklyTriviaByPostId[activeFeedPost.id] : undefined;
@@ -5192,8 +5194,7 @@ export default function GroupChatPage() {
       {!isDashboardEmbed ? (
         <div className="bb-community-header relative z-20" style={{ backgroundColor: coverColor }}>
           <div className="max-w-2xl mx-auto px-4 pt-4 pb-2">
-            {!selectedSeries && !selectedPost ? <CommunityEventBanner userId={userId} /> : null}
-            <div className={`bb-community-hero-card ${!selectedSeries && !selectedPost ? "hidden" : ""} rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm`}>
+            <div className="bb-community-hero-card rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm">
               <div className="flex items-center gap-1 text-xs text-[var(--bb-text-secondary,#5f6368)] font-medium mb-3 flex-wrap">
                 <Link href="/dashboard" className="hover:text-[var(--bb-text-primary,#111827)] hover:underline transition">
                   Dashboard
@@ -5234,7 +5235,7 @@ export default function GroupChatPage() {
                 <div className="flex-1 min-w-0">
                   <div>
                     <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">{displayGroupName}</p>
-                    <h1 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Group</h1>
+                    <h1 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Study Group</h1>
                     <p className="mt-1 max-w-xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
                       Connect with Bible Buddies across the world.
                     </p>
@@ -5269,8 +5270,9 @@ export default function GroupChatPage() {
               </div>
             </div>
           </div>
-          {/* Header navigation */}
-          <div className="hidden md:block max-w-2xl mx-auto px-4 pb-4">
+          {/* Header navigation - retired 2026-09-02, Louis wants a clean
+              header with the event banner living in the feed instead. */}
+          <div className="hidden max-w-2xl mx-auto px-4 pb-4">
           {(() => {
             const primaryTabs = [
               { key: "home", label: "Home", isHub: false },
@@ -5350,7 +5352,7 @@ export default function GroupChatPage() {
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#4a9b6f)]">{displayGroupName}</p>
-                  <h1 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Group</h1>
+                  <h1 className="mt-1 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Study Group</h1>
                   <p className="mt-1 max-w-xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
                     Connect with Bible Buddies across the world.
                   </p>
@@ -7708,6 +7710,11 @@ export default function GroupChatPage() {
             <div className="px-1">
               <p className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#1d4ed8)]">Feed</p>
               <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#6b7280)]">Fresh conversations from your Bible Buddies.</p>
+            </div>
+
+            {/* The community event, sitting in the feed like a post. */}
+            <div className="mt-4">
+              <CommunityEventBanner userId={userId} />
             </div>
           </>
         )}
