@@ -1,12 +1,37 @@
 "use client";
 
+/**
+ * /verse-of-the-day now forwards to today's dated entry
+ * (/verse-of-the-day/YYYY-MM-DD) so old links land on the new breakdown
+ * system. If today has no approved entry, the legacy deterministic verse
+ * view renders instead - this page never dead-ends.
+ */
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { ModalShell } from "../../components/ModalShell";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import { getVerseOfTheDay } from "../../lib/verseOfTheDay";
+import { fetchVotdEntryByDate, getVotdLocalDayKey } from "../../lib/verseOfTheDayContent";
 
 export default function VerseOfTheDayPage() {
+  const router = useRouter();
+  const [useLegacy, setUseLegacy] = useState(false);
   const verse = getVerseOfTheDay();
+
+  useEffect(() => {
+    const todayKey = getVotdLocalDayKey();
+    void fetchVotdEntryByDate(todayKey).then((entry) => {
+      if (entry) {
+        router.replace(`/verse-of-the-day/${todayKey}`);
+      } else {
+        setUseLegacy(true);
+      }
+    });
+  }, [router]);
+
+  if (!useLegacy) return null;
 
   return (
     <ModalShell isOpen={true} backdropColor="bg-black/45" scrollable={true}>

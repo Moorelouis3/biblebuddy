@@ -19,7 +19,7 @@ import { useEffect, useMemo, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useSupabaseUser } from "../lib/useSupabaseUser";
 import { recordNewUser } from "../lib/guestSession";
-import { getVerseOfTheDay } from "../lib/verseOfTheDay";
+import VerseOfTheDayCard from "./VerseOfTheDayCard";
 import { BLOG_ARTICLES } from "../lib/blogContent";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES, getBibleYearDayCoverImage } from "../lib/bibleInOneYearPlan";
 import { BIBLE_STUDY_GROUP_ID } from "../lib/bibleStudiesCatalog";
@@ -61,7 +61,6 @@ export default function HomeScreen() {
     flameId: null,
   });
 
-  const verse = useMemo(() => getVerseOfTheDay(), []);
   const recommended = useMemo(() => BLOG_ARTICLES.slice(0, 4), []);
 
   // AppShell hides the whole top header on /dashboard until the dashboard
@@ -246,11 +245,7 @@ export default function HomeScreen() {
         </section>
       ) : null}
 
-      <section className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f3f0ff)] p-4">
-        <p className="text-xs font-black uppercase tracking-wide text-[#7c3aed]">Verse of the Day</p>
-        <p className="mt-1 text-base font-black leading-snug text-[var(--bb-text-primary,#111827)]">{verse.text}</p>
-        <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">{verse.reference} · KJV</p>
-      </section>
+      <VerseOfTheDayCard userId={userId} />
 
 
       <section>
