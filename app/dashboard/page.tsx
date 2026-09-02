@@ -2,11 +2,12 @@
 
 export const dynamic = "force-dynamic";
 
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import BibleYearJourneyDashboard from "../../components/BibleYearJourneyDashboard";
 import AdminAnalyticsPreloader from "../../components/AdminAnalyticsPreloader";
 import HomeScreen from "../../components/HomeScreen";
+import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
 
 /**
  * /dashboard is the app's home screen now.
@@ -22,7 +23,20 @@ const PLAN_PAGE_PARAMS = ["view", "day", "study", "post", "comment"];
 
 function DashboardRouter() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const wantsPlanPage = PLAN_PAGE_PARAMS.some((key) => searchParams.has(key));
+
+  // A plain ?view=group goes straight to the study group feed. Leaving it to
+  // the old dashboard used to work, but opening the group there strips ?view
+  // from the URL, which this router reads as "go home" - so the group opened
+  // for a frame and vanished. Post/comment deep links still go through the
+  // old dashboard, whose notification flow knows how to scroll to them.
+  const plainGroupOpen =
+    searchParams.get("view") === "group" && !searchParams.has("post") && !searchParams.has("comment");
+  useEffect(() => {
+    if (plainGroupOpen) router.replace(`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`);
+  }, [plainGroupOpen, router]);
+  if (plainGroupOpen) return null;
 
   if (wantsPlanPage) {
     return (

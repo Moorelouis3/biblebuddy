@@ -363,13 +363,13 @@ export default function HomeScreen() {
       <section>
         <SectionHeading label="From Your Groups" />
         <Link
-          href={`/study-groups/${BIBLE_STUDY_GROUP_ID}`}
+          href={`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`}
           className="flex items-center gap-3 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3"
         >
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#dbeafe] text-lg" aria-hidden="true">
             👥
           </span>
-          <span className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Bible Study Group</span>
+          <span className="text-sm font-black text-[var(--bb-text-primary,#111827)]">Study Group</span>
         </Link>
       </section>
     </div>

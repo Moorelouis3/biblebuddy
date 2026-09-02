@@ -46,7 +46,7 @@ const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
   // Straight to the group page. The old /dashboard?view=group deep link only
   // worked through the old dashboard's slide logic, which the plan view
   // suppresses - so it silently landed people on their plan instead.
-  { label: "Bible Study Group", href: `/study-groups/${BIBLE_STUDY_GROUP_ID}`, icon: "👥" },
+  { label: "Study Group", href: `/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`, icon: "👥" },
   { label: "Invite a Buddy", href: "/ambassador", icon: "💌" },
   { label: "BB Chat", href: "/chat", icon: "💬" },
   { label: "Notes", href: "/notes", icon: "📝" },

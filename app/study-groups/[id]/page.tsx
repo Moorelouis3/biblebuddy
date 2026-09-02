@@ -10,7 +10,7 @@ export default function GroupDetailPage() {
 
   useEffect(() => {
     if (!groupId) return;
-    router.replace(`/dashboard?view=group`);
+    router.replace(`/study-groups/${groupId}/chat`);
   }, [groupId, router]);
 
   return (
