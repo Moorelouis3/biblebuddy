@@ -102,6 +102,7 @@ export default function HomeScreen() {
     displayName: null,
     flameId: null,
   });
+  const [communityEventJoined, setCommunityEventJoined] = useState(false);
   const [group, setGroup] = useState<GroupActivity>({
     loaded: false,
     postsToday: null,
@@ -516,16 +517,20 @@ export default function HomeScreen() {
       {/* 5b. Upcoming Community Study - the EXACT banner from the group page.
           One component, one event config, one signup page; only the
           analytics source differs, so both spots stay in sync by
-          construction. */}
-      <section aria-labelledby="home-community-study-heading">
-        <h2
-          id="home-community-study-heading"
-          className="mb-2 text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]"
-        >
-          Upcoming Community Study
-        </h2>
-        <CommunityEventBanner userId={userId} source="homepage" />
-      </section>
+          construction. The section disappears for anyone already signed up -
+          the homepage banner exists to recruit, the group page keeps
+          showing the joined state. */}
+      {!communityEventJoined ? (
+        <section aria-labelledby="home-community-study-heading">
+          <h2
+            id="home-community-study-heading"
+            className="mb-2 text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]"
+          >
+            Upcoming Community Study
+          </h2>
+          <CommunityEventBanner userId={userId} source="homepage" onJoinedChange={setCommunityEventJoined} />
+        </section>
+      ) : null}
 
       {/* 6. Recommended For You */}
       <section aria-labelledby="home-recommended-heading">

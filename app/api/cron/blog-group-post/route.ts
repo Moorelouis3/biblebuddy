@@ -115,7 +115,13 @@ export async function GET(request: NextRequest) {
   // /bible-study-hub/... to /blog/... and slipped past the URL dedupe) just
   // spams the group with content everyone has seen.
   const RECENT_WINDOW_DAYS = 4;
-  const cutoff = Date.now() - RECENT_WINDOW_DAYS * 24 * 60 * 60 * 1000;
+  // The 2026-09-01 Pinterest-funnel batch was dumped and then deleted on
+  // Louis's request (one promo kept). Deleting the posts also deleted the
+  // link_url rows the dedupe relies on, so without this floor the cron
+  // would happily re-share that batch. Nothing published before this date
+  // may ever be promoted again.
+  const EARLIEST_SHAREABLE_PUBLISH_MS = Date.parse("2026-09-03T00:00:00Z");
+  const cutoff = Math.max(Date.now() - RECENT_WINDOW_DAYS * 24 * 60 * 60 * 1000, EARLIEST_SHAREABLE_PUBLISH_MS);
   const pendingArticles = BLOG_ARTICLES.filter((article) => {
     if (!article.groupPost) return false;
     const publishedAt = Date.parse(article.publishedAt);
@@ -158,7 +164,13 @@ export async function GET(request: NextRequest) {
   }
   const alreadyPosted = new Set((existingPosts || []).map((row) => row.link_url));
 
-  const toPost = pendingArticles.filter((article) => !urlsFor(article).some((url) => alreadyPosted.has(url)));
+  // ONE promo per run, oldest unshared first. On 2026-09-01 a batch of 25
+  // Pinterest-funnel articles landed at once and this cron dumped all their
+  // promos into the group in eight seconds - Louis had to have 24 deleted.
+  // The cron runs daily, so a backlog still drains, one post per night.
+  const toPost = pendingArticles
+    .filter((article) => !urlsFor(article).some((url) => alreadyPosted.has(url)))
+    .slice(0, 1);
   if (!toPost.length) {
     return NextResponse.json({ ok: true, posted: [], note: "All article group posts already exist." });
   }

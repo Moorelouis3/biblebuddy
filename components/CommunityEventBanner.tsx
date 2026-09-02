@@ -42,11 +42,16 @@ function trackEvent(eventName: string, metadata: Record<string, unknown> = {}) {
 export default function CommunityEventBanner({
   userId,
   source = "group_page",
+  onJoinedChange,
 }: {
   userId?: string | null;
   /** Where this banner instance lives - the homepage and the group page share
       the component and event; analytics tell them apart by this. */
   source?: "group_page" | "homepage";
+  /** Lets a parent react to the enrollment state - the homepage hides its
+      whole section once the user has joined (Louis, 2026-09-02: the home
+      banner is only for people who have not joined yet). */
+  onJoinedChange?: (joined: boolean) => void;
 }) {
   const event = getActiveCommunityEvent();
   const [joined, setJoined] = useState(false);
@@ -86,8 +91,10 @@ export default function CommunityEventBanner({
             .eq("event_slug", event.slug)
             .eq("user_id", userId)
             .maybeSingle();
-          if (data) setJoined(true);
-
+          if (data) {
+            setJoined(true);
+            onJoinedChange?.(true);
+          }
         }
       } catch {
         // Leave the banner in its stateless form.
