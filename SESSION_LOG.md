@@ -3035,3 +3035,7 @@ Next up: Job 29
 ## 2026-09-02T08:26:00Z (bible year day writer run)
 Day: 79 — Consequences in David's House (2 Samuel 12-15) | Runtime: ~7.9k teaching/opening/closing chars over 6 blocks, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
 Next up: Day 80
+
+## 2026-09-02T08:40:00Z (bible year day writer run)
+Day: 80 — Absalom's Rebellion and David's Grief (2 Samuel 16-19) | Runtime: ~9.9k teaching/opening/closing chars over 7 blocks, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
+Two days written this run (hard limit). Next up: Day 81
