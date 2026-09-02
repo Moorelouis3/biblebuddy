@@ -243,6 +243,20 @@ export default function HomeScreen() {
   const biblePercent =
     stats.chaptersRead === null ? null : Math.round((stats.chaptersRead / TOTAL_BIBLE_CHAPTERS) * 100);
   const planHref = stats.planDay ? `/plan?view=bible-year&day=${stats.planDay}&solo=1` : "/plans";
+  const completedDays = stats.lastCompletedDay ?? 0;
+  const planPercent = Math.round((completedDays / PLAN_TOTAL_DAYS) * 100);
+  const continueLabel = stats.planFinished
+    ? "View Completed Plan"
+    : completedDays === 0
+      ? `Start Day ${stats.planDay ?? 1}`
+      : `Continue Day ${stats.planDay}`;
+
+  function scrollRail(direction: 1 | -1) {
+    const strip = journeyStripRef.current;
+    if (!strip) return;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    strip.scrollBy({ left: direction * strip.clientWidth * 0.8, behavior: reduceMotion ? "auto" : "smooth" });
+  }
 
   function openPlanDay(source: "home_continue_plan_click" | "home_nearby_day_click", day: number) {
     trackHomeEvent(source, { day });
@@ -302,144 +316,118 @@ export default function HomeScreen() {
         </h2>
         {planEntry ? (
           <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-stretch">
-              <Link
-                href={planHref}
-                onClick={() => openPlanDay("home_continue_plan_click", planEntry.dayNumber)}
-                className="relative mx-auto block w-[168px] shrink-0 sm:mx-0 sm:w-[184px]"
-                aria-label={`Open Day ${planEntry.dayNumber} - ${planEntry.title}`}
-              >
-                <div className="relative aspect-[3/4] overflow-hidden rounded-xl border-2 border-[var(--bb-accent,#2f7fe8)]">
-                  <Image
-                    src={getBibleYearDayCoverImage(planEntry)}
-                    alt={`Day ${planEntry.dayNumber} cover - ${planEntry.title}`}
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="184px"
-                  />
-                  <span className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full bg-[var(--bb-accent,#2f7fe8)] px-3 py-1 text-[11px] font-black text-white">
-                    Current
-                  </span>
-                </div>
-              </Link>
-              {/* The info column owns the full remaining width - the day
-                  summary and the stretched progress row keep the right side
-                  of the card from sitting empty (Louis, 2026-09-02). */}
-              <div className="flex min-w-0 flex-1 flex-col justify-center">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
-                  Bible in One Year
-                </p>
-                <p className="mt-1.5 text-2xl font-black leading-none text-[var(--bb-text-primary,#111827)] sm:text-3xl">
-                  Day {planEntry.dayNumber}
-                </p>
-                <p className="mt-1.5 text-lg font-black leading-snug text-[var(--bb-text-primary,#111827)]">
-                  {planEntry.title}
-                </p>
-                {planEntry.reference ? (
-                  <p className="mt-0.5 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
-                    {planEntry.reference}
-                  </p>
-                ) : null}
-                {planEntry.summary ? (
-                  <p className="mt-2 line-clamp-2 max-w-prose text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#4b5563)]">
-                    {planEntry.summary}
-                  </p>
-                ) : null}
-                <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <Link
-                    href={planHref}
-                    onClick={() => openPlanDay("home_continue_plan_click", planEntry.dayNumber)}
-                    className="w-fit shrink-0 rounded-xl bg-[var(--bb-button,#2f7fe8)] px-6 py-3 text-sm font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
-                  >
-                    {stats.planFinished ? "Review the plan" : `Continue Day ${planEntry.dayNumber}`}
-                  </Link>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">
-                      <span>{stats.lastCompletedDay ?? 0} of {PLAN_TOTAL_DAYS} days</span>
-                      <span>{Math.round(((stats.lastCompletedDay ?? 0) / PLAN_TOTAL_DAYS) * 100)}%</span>
-                    </div>
-                    <div className="mt-1 h-2 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)]">
-                      <div
-                        className="h-full rounded-full bg-[var(--bb-progress-fill,#2f7fe8)] transition-all duration-500"
-                        style={{
-                          width: `${Math.max(1, Math.min(100, Math.round(((stats.lastCompletedDay ?? 0) / PLAN_TOTAL_DAYS) * 100)))}%`,
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Day Rail (approved Option 3, 2026-09-02): plan progress ->
+                nearby days -> one Continue button. The old duplicated
+                current-day cover, lesson title, passage and summary are gone
+                on purpose - readers see those inside the day itself. */}
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
+                Bible in One Year
+              </p>
+              <p className="text-xs font-black text-[var(--bb-text-secondary,#4b5563)]">
+                {completedDays} of {PLAN_TOTAL_DAYS} · {planPercent}%
+              </p>
             </div>
 
-            {/* All 365 days, horizontally scrollable, parked on the current
-                day. Images are lazy, so only tiles scrolled into view load. */}
-            <div
-              ref={journeyStripRef}
-              className="mt-4 flex snap-x gap-2.5 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-              role="list"
-              aria-label="All plan days"
-            >
-              {journeyDays.map((day) => {
-                const isComplete = stats.lastCompletedDay !== null && day.dayNumber <= stats.lastCompletedDay;
-                const isCurrent = day.dayNumber === planEntry.dayNumber;
-                const isLocked = !isComplete && !isCurrent;
-                return (
-                  <Link
-                    key={day.dayNumber}
-                    role="listitem"
-                    data-day={day.dayNumber}
-                    href={`/plan?view=bible-year&day=${day.dayNumber}&solo=1`}
-                    onClick={() => openPlanDay("home_nearby_day_click", day.dayNumber)}
-                    className="w-[88px] shrink-0 snap-start text-left"
-                  >
-                    <div
-                      className={`relative aspect-[3/4] overflow-hidden rounded-lg border-2 ${
-                        isCurrent ? "border-[var(--bb-accent,#2f7fe8)]" : "border-transparent"
-                      }`}
+            <div className="relative mt-3">
+              <div
+                ref={journeyStripRef}
+                className="flex snap-x gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                role="list"
+                aria-label="Plan days"
+              >
+                {journeyDays.map((day) => {
+                  const isComplete = stats.lastCompletedDay !== null && day.dayNumber <= stats.lastCompletedDay;
+                  const isCurrent = day.dayNumber === planEntry.dayNumber;
+                  const isLocked = !isComplete && !isCurrent;
+                  return (
+                    <Link
+                      key={day.dayNumber}
+                      role="listitem"
+                      data-day={day.dayNumber}
+                      href={`/plan?view=bible-year&day=${day.dayNumber}&solo=1`}
+                      onClick={() => openPlanDay("home_nearby_day_click", day.dayNumber)}
+                      aria-label={`Day ${day.dayNumber}, ${isComplete ? "completed" : isCurrent ? "current day" : "locked"}`}
+                      className="w-[104px] shrink-0 snap-start text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] sm:w-[141px]"
                     >
-                      <Image
-                        src={getBibleYearDayCoverImage(day)}
-                        alt=""
-                        fill
-                        loading="lazy"
-                        className={`object-cover ${isLocked ? "opacity-60 grayscale" : ""}`}
-                        sizes="88px"
-                      />
-                      {isComplete ? (
-                        <span
-                          className="absolute right-1 top-1 grid h-5 w-5 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-[10px] font-black text-white"
-                          aria-hidden="true"
-                        >
-                          ✓
-                        </span>
-                      ) : isLocked ? (
-                        <span
-                          className="absolute right-1 top-1 grid h-5 w-5 place-items-center rounded-full bg-black/55 text-[10px] text-white"
-                          aria-hidden="true"
-                        >
-                          🔒
-                        </span>
-                      ) : null}
-                    </div>
-                    <p className="mt-1 text-center text-[11px] font-black text-[var(--bb-text-primary,#111827)]">
-                      Day {day.dayNumber}
-                    </p>
-                    <p
-                      className={`text-center text-[10px] font-bold ${
-                        isCurrent
-                          ? "text-[var(--bb-accent,#2f7fe8)]"
-                          : isComplete
-                            ? "text-[var(--bb-text-secondary,#4b5563)]"
-                            : "text-[var(--bb-text-muted,#9ca3af)]"
-                      }`}
-                    >
-                      {isComplete ? "Completed" : isCurrent ? "Current" : "Locked"}
-                    </p>
-                  </Link>
-                );
-              })}
+                      {/* Strict square: the day art IS square (1254x1254) -
+                          the old 3:4 portrait frame was cropping its sides. */}
+                      <div
+                        className={`relative m-0.5 aspect-square overflow-hidden rounded-xl ${
+                          isCurrent
+                            ? "ring-2 ring-[var(--bb-accent,#2f7fe8)] ring-offset-2 ring-offset-[var(--bb-card,#ffffff)]"
+                            : ""
+                        }`}
+                      >
+                        <Image
+                          src={getBibleYearDayCoverImage(day)}
+                          alt=""
+                          fill
+                          loading="lazy"
+                          className={`object-cover ${isLocked ? "opacity-60 grayscale" : ""}`}
+                          sizes="(max-width: 640px) 104px, 141px"
+                        />
+                        {isComplete ? (
+                          <span
+                            className="absolute right-1.5 top-1.5 grid h-5 w-5 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-[10px] font-black text-white"
+                            aria-hidden="true"
+                          >
+                            ✓
+                          </span>
+                        ) : isLocked ? (
+                          <span
+                            className="absolute right-1.5 top-1.5 grid h-5 w-5 place-items-center rounded-full bg-black/55 text-[10px] text-white"
+                            aria-hidden="true"
+                          >
+                            🔒
+                          </span>
+                        ) : null}
+                      </div>
+                      <p className="mt-1.5 text-center text-[12px] font-black text-[var(--bb-text-primary,#111827)]">
+                        Day {day.dayNumber}
+                      </p>
+                      <p
+                        className={`text-center text-[11px] font-bold ${
+                          isCurrent
+                            ? "text-[var(--bb-accent,#2f7fe8)]"
+                            : isComplete
+                              ? "text-[var(--bb-text-secondary,#4b5563)]"
+                              : "text-[var(--bb-text-muted,#9ca3af)]"
+                        }`}
+                      >
+                        {isComplete ? "Completed" : isCurrent ? "Current" : "Locked"}
+                      </p>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Desktop paging controls - phones and tablets just swipe */}
+              <button
+                type="button"
+                aria-label="Show earlier days"
+                onClick={() => scrollRail(-1)}
+                className="absolute -left-2 top-[35%] z-10 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-lg font-black text-[var(--bb-accent,#2f7fe8)] shadow-md transition hover:brightness-95 active:scale-95 sm:grid"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                aria-label="Show later days"
+                onClick={() => scrollRail(1)}
+                className="absolute -right-2 top-[35%] z-10 hidden h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-lg font-black text-[var(--bb-accent,#2f7fe8)] shadow-md transition hover:brightness-95 active:scale-95 sm:grid"
+              >
+                ›
+              </button>
             </div>
+
+            <Link
+              href={planHref}
+              onClick={() => openPlanDay("home_continue_plan_click", planEntry.dayNumber)}
+              className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-[var(--bb-button,#2f7fe8)] px-6 text-sm font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.99]"
+            >
+              {continueLabel}
+            </Link>
           </div>
         ) : stats.loaded ? (
           <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-6 text-center shadow-sm">
@@ -454,7 +442,18 @@ export default function HomeScreen() {
             </Link>
           </div>
         ) : (
-          <div className="h-[260px] animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />
+          <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
+            <div className="h-4 w-44 animate-pulse rounded bg-[var(--bb-surface-soft,#eef2f7)]" />
+            <div className="mt-3 flex gap-3 overflow-hidden">
+              {[0, 1, 2, 3, 4, 5].map((i) => (
+                <div key={i} className="w-[104px] shrink-0 sm:w-[141px]">
+                  <div className="aspect-square animate-pulse rounded-xl bg-[var(--bb-surface-soft,#eef2f7)]" />
+                  <div className="mx-auto mt-1.5 h-3 w-14 animate-pulse rounded bg-[var(--bb-surface-soft,#eef2f7)]" />
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 h-12 w-full animate-pulse rounded-xl bg-[var(--bb-surface-soft,#eef2f7)]" />
+          </div>
         )}
       </section>
 

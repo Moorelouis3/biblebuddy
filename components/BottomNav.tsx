@@ -7,8 +7,8 @@
  * nothing linked to them - the only navigation was a "Navigation" dropdown in
  * the header, and it listed five of them at most. This is the way in.
  *
- * Five tabs, per Louis: Home, Bible, Plans, Games, More. Everything else lives
- * behind More rather than crowding the bar on a phone.
+ * Six tabs, per Louis (2026-09-02): Home, Bible, Plans, Games, Group, More.
+ * Everything else lives behind More rather than crowding the bar on a phone.
  */
 
 import Link from "next/link";
@@ -39,15 +39,20 @@ const TABS: Tab[] = [
     icon: "🎮",
     prefixes: ["/bible-study-games", "/bible-trivia"],
   },
+  // Straight to the group page. The old /dashboard?view=group deep link only
+  // worked through the old dashboard's slide logic, which the plan view
+  // suppresses - so it silently landed people on their plan instead.
+  {
+    label: "Group",
+    href: `/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`,
+    icon: "👥",
+    prefixes: ["/study-groups"],
+  },
 ];
 
 const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
   // Bible Buddy TV pulled from the UI 2026-09-02 - too buggy for now. The
   // routes still exist; it just has no doors until it is fixed.
-  // Straight to the group page. The old /dashboard?view=group deep link only
-  // worked through the old dashboard's slide logic, which the plan view
-  // suppresses - so it silently landed people on their plan instead.
-  { label: "Study Group", href: `/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`, icon: "👥" },
   { label: "Invite a Buddy", href: "/ambassador", icon: "💌" },
   { label: "BB Chat", href: "/chat", icon: "💬" },
   { label: "Notes", href: "/notes", icon: "📝" },
@@ -88,8 +93,8 @@ export default function BottomNav() {
               <Link
                 key={link.href}
                 href={link.href}
-                // Closing on pathname change misses Study Group, whose href
-                // only changes the query string - close on the tap itself.
+                // Closing on pathname change misses query-only navigations -
+                // close on the tap itself.
                 onClick={() => setMoreOpen(false)}
                 className="flex min-h-12 items-center gap-3 rounded-xl px-3 text-sm font-black text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
               >
