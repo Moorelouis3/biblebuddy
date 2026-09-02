@@ -22,6 +22,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useSupabaseUser } from "../lib/useSupabaseUser";
 import { recordNewUser } from "../lib/guestSession";
 import VerseOfTheDayCard from "./VerseOfTheDayCard";
+import CommunityEventBanner from "./CommunityEventBanner";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES, getBibleYearDayCoverImage } from "../lib/bibleInOneYearPlan";
@@ -47,6 +48,10 @@ type GroupActivity = {
   loaded: boolean;
   postsToday: number | null;
   avatars: Array<{ userId: string; name: string; image: string | null }>;
+  /** How many recent posters exist beyond the shown avatars, for the +N badge. */
+  extraCount: number;
+  /** The newest real conversation opener, or null when nothing usable. */
+  preview: string | null;
 };
 
 function SectionHeading({ label, href, onSeeAll }: { label: string; href?: string; onSeeAll?: () => void }) {
@@ -97,7 +102,13 @@ export default function HomeScreen() {
     displayName: null,
     flameId: null,
   });
-  const [group, setGroup] = useState<GroupActivity>({ loaded: false, postsToday: null, avatars: [] });
+  const [group, setGroup] = useState<GroupActivity>({
+    loaded: false,
+    postsToday: null,
+    avatars: [],
+    extraCount: 0,
+    preview: null,
+  });
 
   const recommended = useMemo(() => BLOG_ARTICLES.slice(0, 3), []);
 
@@ -173,7 +184,7 @@ export default function HomeScreen() {
         todayStart.setHours(0, 0, 0, 0);
         const { data: posts, error } = await supabase
           .from("group_posts")
-          .select("user_id, created_at")
+          .select("user_id, created_at, content, parent_post_id")
           .eq("group_id", BIBLE_STUDY_GROUP_ID)
           .order("created_at", { ascending: false })
           .limit(60);
@@ -181,10 +192,27 @@ export default function HomeScreen() {
         const postsToday = (posts || []).filter(
           (row) => new Date(row.created_at as string).getTime() >= todayStart.getTime(),
         ).length;
+        // The newest real conversation opener as a one-line preview.
+        const previewPost = (posts || []).find(
+          (row) => !row.parent_post_id && typeof row.content === "string" && row.content.trim().length > 0,
+        );
+        // Posts are stored as HTML - strip to plain text for the one-liner.
+        const preview = previewPost
+          ? (previewPost.content as string)
+              .replace(/<[^>]*>/g, " ")
+              .replace(/&nbsp;/gi, " ")
+              .replace(/&amp;/gi, "&")
+              .replace(/&quot;/gi, '"')
+              .replace(/&#39;|&apos;/gi, "'")
+              .replace(/\s+/g, " ")
+              .trim()
+              .slice(0, 90) || null
+          : null;
+        const allPosterIds = new Set((posts || []).map((row) => row.user_id).filter(Boolean));
         const recentIds: string[] = [];
         for (const row of posts || []) {
           if (row.user_id && !recentIds.includes(row.user_id)) recentIds.push(row.user_id);
-          if (recentIds.length >= 4) break;
+          if (recentIds.length >= 6) break;
         }
         let avatars: GroupActivity["avatars"] = [];
         if (recentIds.length) {
@@ -204,9 +232,15 @@ export default function HomeScreen() {
             })
             .filter(Boolean) as GroupActivity["avatars"];
         }
-        setGroup({ loaded: true, postsToday, avatars });
+        setGroup({
+          loaded: true,
+          postsToday,
+          avatars,
+          extraCount: Math.max(0, allPosterIds.size - avatars.length),
+          preview,
+        });
       } catch {
-        setGroup({ loaded: true, postsToday: null, avatars: [] });
+        setGroup({ loaded: true, postsToday: null, avatars: [], extraCount: 0, preview: null });
       }
     })();
   }, []);
@@ -250,6 +284,25 @@ export default function HomeScreen() {
     : completedDays === 0
       ? `Start Day ${stats.planDay ?? 1}`
       : `Continue Day ${stats.planDay}`;
+
+  // Bottom-card impressions, fired once when that part of the page is
+  // actually scrolled into view - a render alone is not a view.
+  const knowledgeSectionRef = useRef<HTMLElement | null>(null);
+  const impressionsSent = useRef(false);
+  useEffect(() => {
+    const target = knowledgeSectionRef.current;
+    if (!target || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting) || impressionsSent.current) return;
+      impressionsSent.current = true;
+      trackHomeEvent("home_trivia_impression", {});
+      trackHomeEvent("home_scrambled_impression", {});
+      trackHomeEvent("home_group_impression", { postsToday: group.postsToday });
+      observer.disconnect();
+    });
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [group.postsToday]);
 
   function scrollRail(direction: 1 | -1) {
     const strip = journeyStripRef.current;
@@ -460,6 +513,20 @@ export default function HomeScreen() {
       {/* 5. Verse of the Day */}
       <VerseOfTheDayCard userId={userId} />
 
+      {/* 5b. Upcoming Community Study - the EXACT banner from the group page.
+          One component, one event config, one signup page; only the
+          analytics source differs, so both spots stay in sync by
+          construction. */}
+      <section aria-labelledby="home-community-study-heading">
+        <h2
+          id="home-community-study-heading"
+          className="mb-2 text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]"
+        >
+          Upcoming Community Study
+        </h2>
+        <CommunityEventBanner userId={userId} source="homepage" />
+      </section>
+
       {/* 6. Recommended For You */}
       <section aria-labelledby="home-recommended-heading">
         <SectionHeading label="Recommended For You" href="/blog" onSeeAll={() => trackHomeEvent("home_see_all_click", { section: "recommended" })} />
@@ -490,70 +557,147 @@ export default function HomeScreen() {
         </div>
       </section>
 
-      {/* 7. Test Your Knowledge */}
-      <section aria-labelledby="home-knowledge-heading">
+      {/* 7. Test Your Knowledge - the approved Option 2 colorful pair.
+          Decorative art is CSS/emoji, never baked text. No "daily challenge"
+          claims: neither game has a daily system, so the copy stays honest. */}
+      <section aria-labelledby="home-knowledge-heading" ref={knowledgeSectionRef}>
         <SectionHeading label="Test Your Knowledge" />
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <Link
             href="/bible-trivia"
             onClick={() => trackHomeEvent("home_trivia_click", {})}
-            className="flex min-h-[64px] items-center gap-3 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3.5 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99]"
+            aria-label="Bible Trivia - test your Bible knowledge"
+            className="relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#f4dcc8] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
+            style={{ background: "linear-gradient(120deg, #fff8ee 0%, #ffeadd 100%)" }}
           >
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#fce7f3] text-lg" aria-hidden="true">
-              ❓
+            <span
+              className="pointer-events-none absolute -right-8 -top-10 h-32 w-32 rounded-full opacity-60"
+              style={{ background: "radial-gradient(circle, #ffd9c4 0%, transparent 70%)" }}
+              aria-hidden="true"
+            />
+            <span className="pointer-events-none absolute right-5 top-3 text-sm text-[#f0a875]" aria-hidden="true">
+              ✦
             </span>
-            <span className="min-w-0 flex-1">
-              <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Bible Trivia</span>
-              <span className="block text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-                How well do you know the Bible?
+            <span className="pointer-events-none absolute bottom-3 right-16 text-[10px] text-[#f0b98a]" aria-hidden="true">
+              ✦
+            </span>
+            <span
+              className="grid h-20 w-20 shrink-0 place-items-center rounded-full text-4xl font-black text-white shadow-[0_6px_16px_rgba(240,130,90,0.35)]"
+              style={{ background: "linear-gradient(160deg, #ff9d7e 0%, #f2708a 100%)" }}
+              aria-hidden="true"
+            >
+              ?
+            </span>
+            <span className="relative z-10 min-w-0 flex-1">
+              <span className="block text-lg font-black text-[#3d2417]">Bible Trivia</span>
+              <span className="mt-0.5 block text-xs font-semibold text-[#8a5c40]">
+                Books and people · Test your Bible knowledge
+              </span>
+              <span className="mt-2 inline-block rounded-full bg-[#ffe1d2] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#c1543a]">
+                🔥 CHALLENGE YOURSELF
+              </span>
+              <span className="mt-2.5 block">
+                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[var(--bb-button,#2f7fe8)] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)]">
+                  Start →
+                </span>
               </span>
             </span>
-            <span className="text-lg font-black text-[var(--bb-text-muted,#9ca3af)]" aria-hidden="true">
-              ›
-            </span>
           </Link>
+
           <Link
             href="/bible-study-games/scrambled"
             onClick={() => trackHomeEvent("home_scrambled_click", {})}
-            className="flex min-h-[64px] items-center gap-3 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3.5 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99]"
+            aria-label="Scrambled - unscramble the verse"
+            className="relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#cde9dc] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
+            style={{ background: "linear-gradient(120deg, #eefaf3 0%, #e3f4fb 100%)" }}
           >
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#dcfce7] text-lg" aria-hidden="true">
-              🔤
+            <span
+              className="pointer-events-none absolute -left-8 -bottom-10 h-32 w-32 rounded-full opacity-60"
+              style={{ background: "radial-gradient(circle, #c9ecd9 0%, transparent 70%)" }}
+              aria-hidden="true"
+            />
+            <span className="pointer-events-none absolute right-4 top-3 text-sm text-[#7cc7a5]" aria-hidden="true">
+              🌿
             </span>
-            <span className="min-w-0 flex-1">
-              <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Scrambled</span>
-              <span className="block text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-                Today&apos;s word challenge
+            <span className="grid w-20 shrink-0 grid-cols-3 gap-1" aria-hidden="true">
+              {["B", "I", "B", "L", "E"].map((letter, index) => (
+                <span
+                  key={index}
+                  className={`grid h-6 w-6 place-items-center rounded-md bg-white text-xs font-black text-[#1e7f63] shadow-sm ${
+                    index === 3 ? "col-start-1" : ""
+                  } ${index >= 3 ? "translate-x-3" : ""}`}
+                >
+                  {letter}
+                </span>
+              ))}
+            </span>
+            <span className="relative z-10 min-w-0 flex-1">
+              <span className="block text-lg font-black text-[#123f30]">Scrambled</span>
+              <span className="mt-0.5 block text-xs font-semibold text-[#3f7a63]">
+                Unscramble the verse before the hints run out
               </span>
-            </span>
-            <span className="text-lg font-black text-[var(--bb-text-muted,#9ca3af)]" aria-hidden="true">
-              ›
+              <span className="mt-2 inline-block rounded-full bg-[#d8f2e4] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#1e7f63]">
+                ⭐ EVERY CHAPTER
+              </span>
+              <span className="mt-2.5 block">
+                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[var(--bb-button,#2f7fe8)] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)]">
+                  Play →
+                </span>
+              </span>
             </span>
           </Link>
         </div>
       </section>
 
-      {/* 8. From Your Groups - real activity, real faces, or a plain link */}
+      {/* 8. From Your Groups - the approved lavender community card. Real
+          count, real faces, real latest conversation; a failed query falls
+          back to the plain link copy, never fake activity. */}
       <section aria-labelledby="home-groups-heading">
         <SectionHeading label="From Your Groups" />
         <Link
           href={`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`}
           onClick={() => trackHomeEvent("home_group_click", { postsToday: group.postsToday })}
-          className="flex items-center gap-3 rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3.5 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99]"
+          aria-label={`Study Group${group.postsToday ? ` - ${group.postsToday} new conversations today` : ""}`}
+          className="relative flex flex-col gap-3 overflow-hidden rounded-2xl border border-[#ddd6f3] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:flex-row sm:items-center sm:p-5"
+          style={{ background: "linear-gradient(120deg, #f5f2ff 0%, #ebe6fa 100%)" }}
         >
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#dbeafe] text-lg" aria-hidden="true">
-            👥
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Study Group</span>
-            <span className="block text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-              {group.postsToday
-                ? `${group.postsToday} new conversation${group.postsToday === 1 ? "" : "s"} today`
-                : "See what your Bible Buddies are discussing."}
+          <span
+            className="pointer-events-none absolute -right-10 -top-12 h-36 w-36 rounded-full opacity-60"
+            style={{ background: "radial-gradient(circle, #ded4f7 0%, transparent 70%)" }}
+            aria-hidden="true"
+          />
+          <span className="flex items-center gap-4">
+            <span
+              className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-white text-3xl shadow-[0_6px_16px_rgba(124,104,180,0.25)]"
+              aria-hidden="true"
+            >
+              👥
+            </span>
+            <span className="min-w-0 sm:hidden">
+              <span className="block text-lg font-black text-[#2b2150]">Study Group</span>
+              <span className="block text-xs font-bold text-[#6a5aa8]">
+                {group.postsToday
+                  ? `${group.postsToday} new conversation${group.postsToday === 1 ? "" : "s"} today`
+                  : "See what your Bible Buddies are discussing."}
+              </span>
             </span>
           </span>
+          <span className="relative z-10 min-w-0 flex-1">
+            <span className="hidden text-lg font-black text-[#2b2150] sm:block">Study Group</span>
+            <span className="hidden text-xs font-bold text-[#6a5aa8] sm:block">
+              {group.postsToday
+                ? `● ${group.postsToday} new conversation${group.postsToday === 1 ? "" : "s"} today`
+                : "See what your Bible Buddies are discussing."}
+            </span>
+            {group.preview ? (
+              <span className="mt-1.5 flex items-start gap-1.5 text-xs font-semibold text-[#4c3f80]">
+                <span aria-hidden="true">💬</span>
+                <span className="line-clamp-1">{group.preview}</span>
+              </span>
+            ) : null}
+          </span>
           {group.avatars.length ? (
-            <span className="flex shrink-0 -space-x-2" aria-hidden="true">
+            <span className="flex shrink-0 items-center -space-x-2" aria-hidden="true">
               {group.avatars.map((avatar) =>
                 avatar.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -561,20 +705,25 @@ export default function HomeScreen() {
                     key={avatar.userId}
                     src={avatar.image}
                     alt=""
-                    className="h-8 w-8 rounded-full border-2 border-[var(--bb-card,#ffffff)] object-cover"
+                    className="h-9 w-9 rounded-full border-2 border-white object-cover"
                   />
                 ) : (
                   <span
                     key={avatar.userId}
-                    className="grid h-8 w-8 place-items-center rounded-full border-2 border-[var(--bb-card,#ffffff)] bg-[var(--bb-accent-soft,#eaf2ff)] text-[11px] font-black text-[var(--bb-accent,#2f7fe8)]"
+                    className="grid h-9 w-9 place-items-center rounded-full border-2 border-white bg-[#e3ddfa] text-[11px] font-black text-[#5b4a9e]"
                   >
                     {avatar.name.charAt(0).toUpperCase()}
                   </span>
                 ),
               )}
+              {group.extraCount > 0 ? (
+                <span className="grid h-9 w-9 place-items-center rounded-full border-2 border-white bg-[#5b4a9e] text-[10px] font-black text-white">
+                  +{group.extraCount}
+                </span>
+              ) : null}
             </span>
           ) : null}
-          <span className="hidden text-xs font-black uppercase tracking-wide text-[var(--bb-accent,#2f7fe8)] sm:block">
+          <span className="relative z-10 flex min-h-[44px] shrink-0 items-center justify-center rounded-lg bg-[var(--bb-button,#2f7fe8)] px-5 text-xs font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] sm:min-h-[40px]">
             Visit Group →
           </span>
         </Link>

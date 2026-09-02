@@ -39,7 +39,15 @@ function trackEvent(eventName: string, metadata: Record<string, unknown> = {}) {
   }
 }
 
-export default function CommunityEventBanner({ userId }: { userId?: string | null }) {
+export default function CommunityEventBanner({
+  userId,
+  source = "group_page",
+}: {
+  userId?: string | null;
+  /** Where this banner instance lives - the homepage and the group page share
+      the component and event; analytics tell them apart by this. */
+  source?: "group_page" | "homepage";
+}) {
   const event = getActiveCommunityEvent();
   const [joined, setJoined] = useState(false);
   const [participants, setParticipants] = useState<number | null>(null);
@@ -56,8 +64,8 @@ export default function CommunityEventBanner({ userId }: { userId?: string | nul
 
   useEffect(() => {
     if (!event) return;
-    trackEvent("community_event_banner_impression", { event: event.slug });
-  }, [event]);
+    trackEvent("community_event_banner_impression", { event: event.slug, source });
+  }, [event, source]);
 
   useEffect(() => {
     if (!event) return;
@@ -113,7 +121,7 @@ export default function CommunityEventBanner({ userId }: { userId?: string | nul
   return (
     <Link
       href={`/events/${event.slug}`}
-      onClick={() => trackEvent("community_event_banner_click", { event: event.slug, phase: state.phase })}
+      onClick={() => trackEvent("community_event_banner_click", { event: event.slug, phase: state.phase, source })}
       className="bb-community-event-banner block overflow-hidden rounded-[28px] border border-[#3a2c14] shadow-sm"
       style={{ background: "linear-gradient(105deg, #0c0804 0%, #17100a 58%, #241708 100%)" }}
       aria-label={`${event.title} - open the event page`}
