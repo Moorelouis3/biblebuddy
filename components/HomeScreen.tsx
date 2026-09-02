@@ -17,7 +17,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useSupabaseUser } from "../lib/useSupabaseUser";
 import { recordNewUser } from "../lib/guestSession";
@@ -223,12 +223,22 @@ export default function HomeScreen() {
   const planEntry = stats.planDay
     ? GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((d) => d.dayNumber === stats.planDay)
     : null;
-  // Three completed days behind, the current day, and the next three - the
-  // compact strip from the mockup, replacing the old oversized carousel.
-  const journeyDays = useMemo(() => {
-    if (!stats.planDay) return [];
-    const start = Math.max(1, stats.planDay - 3);
-    return GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((d) => d.dayNumber >= start && d.dayNumber <= start + 6);
+  // ALL 365 days, not a window - Louis, 2026-09-02: "its 365 of them...
+  // the days should reach all the way across". The strip scrolls the whole
+  // year; an effect below parks it on the current day, and lazy images mean
+  // only the tiles actually scrolled into view ever download.
+  const journeyDays = stats.planDay ? GENESIS_BIBLE_IN_ONE_YEAR_SERIES : [];
+
+  // Park the year strip on the current day (a few completed days visible to
+  // its left), instead of opening the scroll at Day 1.
+  const journeyStripRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const strip = journeyStripRef.current;
+    if (!strip || !stats.planDay) return;
+    const tile = strip.querySelector<HTMLElement>(`[data-day="${stats.planDay}"]`);
+    if (tile) {
+      strip.scrollLeft = Math.max(0, tile.offsetLeft - strip.clientWidth / 2 + tile.clientWidth / 2);
+    }
   }, [stats.planDay]);
   const biblePercent =
     stats.chaptersRead === null ? null : Math.round((stats.chaptersRead / TOTAL_BIBLE_CHAPTERS) * 100);
@@ -313,6 +323,9 @@ export default function HomeScreen() {
                   </span>
                 </div>
               </Link>
+              {/* The info column owns the full remaining width - the day
+                  summary and the stretched progress row keep the right side
+                  of the card from sitting empty (Louis, 2026-09-02). */}
               <div className="flex min-w-0 flex-1 flex-col justify-center">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">
                   Bible in One Year
@@ -328,32 +341,44 @@ export default function HomeScreen() {
                     {planEntry.reference}
                   </p>
                 ) : null}
-                <Link
-                  href={planHref}
-                  onClick={() => openPlanDay("home_continue_plan_click", planEntry.dayNumber)}
-                  className="mt-3 w-fit rounded-xl bg-[var(--bb-button,#2f7fe8)] px-6 py-3 text-sm font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
-                >
-                  {stats.planFinished ? "Review the plan" : `Continue Day ${planEntry.dayNumber}`}
-                </Link>
-                <p className="mt-3 text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">
-                  {stats.lastCompletedDay ?? 0} of {PLAN_TOTAL_DAYS} days
-                </p>
-                <div className="mt-1 h-2 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)]">
-                  <div
-                    className="h-full rounded-full bg-[var(--bb-progress-fill,#2f7fe8)] transition-all duration-500"
-                    style={{
-                      width: `${Math.max(1, Math.min(100, Math.round(((stats.lastCompletedDay ?? 0) / PLAN_TOTAL_DAYS) * 100)))}%`,
-                    }}
-                  />
+                {planEntry.summary ? (
+                  <p className="mt-2 line-clamp-2 max-w-prose text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#4b5563)]">
+                    {planEntry.summary}
+                  </p>
+                ) : null}
+                <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <Link
+                    href={planHref}
+                    onClick={() => openPlanDay("home_continue_plan_click", planEntry.dayNumber)}
+                    className="w-fit shrink-0 rounded-xl bg-[var(--bb-button,#2f7fe8)] px-6 py-3 text-sm font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.98]"
+                  >
+                    {stats.planFinished ? "Review the plan" : `Continue Day ${planEntry.dayNumber}`}
+                  </Link>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between text-xs font-bold text-[var(--bb-text-secondary,#4b5563)]">
+                      <span>{stats.lastCompletedDay ?? 0} of {PLAN_TOTAL_DAYS} days</span>
+                      <span>{Math.round(((stats.lastCompletedDay ?? 0) / PLAN_TOTAL_DAYS) * 100)}%</span>
+                    </div>
+                    <div className="mt-1 h-2 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)]">
+                      <div
+                        className="h-full rounded-full bg-[var(--bb-progress-fill,#2f7fe8)] transition-all duration-500"
+                        style={{
+                          width: `${Math.max(1, Math.min(100, Math.round(((stats.lastCompletedDay ?? 0) / PLAN_TOTAL_DAYS) * 100)))}%`,
+                        }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Nearby plan days - compact, horizontally scrollable, no page overflow */}
+            {/* All 365 days, horizontally scrollable, parked on the current
+                day. Images are lazy, so only tiles scrolled into view load. */}
             <div
+              ref={journeyStripRef}
               className="mt-4 flex snap-x gap-2.5 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
               role="list"
-              aria-label="Nearby plan days"
+              aria-label="All plan days"
             >
               {journeyDays.map((day) => {
                 const isComplete = stats.lastCompletedDay !== null && day.dayNumber <= stats.lastCompletedDay;
@@ -363,6 +388,7 @@ export default function HomeScreen() {
                   <Link
                     key={day.dayNumber}
                     role="listitem"
+                    data-day={day.dayNumber}
                     href={`/plan?view=bible-year&day=${day.dayNumber}&solo=1`}
                     onClick={() => openPlanDay("home_nearby_day_click", day.dayNumber)}
                     className="w-[88px] shrink-0 snap-start text-left"
