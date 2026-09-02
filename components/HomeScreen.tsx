@@ -568,19 +568,13 @@ export default function HomeScreen() {
             onClick={() => trackHomeEvent("home_trivia_click", {})}
             aria-label="Bible Trivia - test your Bible knowledge"
             className="relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#f4dcc8] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
-            style={{ background: "linear-gradient(120deg, #fff8ee 0%, #ffeadd 100%)" }}
+            style={{
+              backgroundColor: "#fff3e6",
+              backgroundImage: "url(/home-cards/bg-trivia.jpg)",
+              backgroundSize: "cover",
+              backgroundPosition: "center bottom",
+            }}
           >
-            <span
-              className="pointer-events-none absolute -right-8 -top-10 h-32 w-32 rounded-full opacity-60"
-              style={{ background: "radial-gradient(circle, #ffd9c4 0%, transparent 70%)" }}
-              aria-hidden="true"
-            />
-            <span className="pointer-events-none absolute right-5 top-3 text-sm text-[#f0a875]" aria-hidden="true">
-              ✦
-            </span>
-            <span className="pointer-events-none absolute bottom-3 right-16 text-[10px] text-[#f0b98a]" aria-hidden="true">
-              ✦
-            </span>
             <span
               className="grid h-20 w-20 shrink-0 place-items-center rounded-full text-4xl font-black text-white shadow-[0_6px_16px_rgba(240,130,90,0.35)]"
               style={{ background: "linear-gradient(160deg, #ff9d7e 0%, #f2708a 100%)" }}
@@ -609,16 +603,13 @@ export default function HomeScreen() {
             onClick={() => trackHomeEvent("home_scrambled_click", {})}
             aria-label="Scrambled - unscramble the verse"
             className="relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#cde9dc] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
-            style={{ background: "linear-gradient(120deg, #eefaf3 0%, #e3f4fb 100%)" }}
+            style={{
+              backgroundColor: "#eefaf3",
+              backgroundImage: "url(/home-cards/bg-scrambled.jpg)",
+              backgroundSize: "cover",
+              backgroundPosition: "center bottom",
+            }}
           >
-            <span
-              className="pointer-events-none absolute -left-8 -bottom-10 h-32 w-32 rounded-full opacity-60"
-              style={{ background: "radial-gradient(circle, #c9ecd9 0%, transparent 70%)" }}
-              aria-hidden="true"
-            />
-            <span className="pointer-events-none absolute right-4 top-3 text-sm text-[#7cc7a5]" aria-hidden="true">
-              🌿
-            </span>
             <span className="grid w-20 shrink-0 grid-cols-3 gap-1" aria-hidden="true">
               {["B", "I", "B", "L", "E"].map((letter, index) => (
                 <span
@@ -659,13 +650,13 @@ export default function HomeScreen() {
           onClick={() => trackHomeEvent("home_group_click", { postsToday: group.postsToday })}
           aria-label={`Study Group${group.postsToday ? ` - ${group.postsToday} new conversations today` : ""}`}
           className="relative flex flex-col gap-3 overflow-hidden rounded-2xl border border-[#ddd6f3] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:flex-row sm:items-center sm:p-5"
-          style={{ background: "linear-gradient(120deg, #f5f2ff 0%, #ebe6fa 100%)" }}
+          style={{
+            backgroundColor: "#f5f2ff",
+            backgroundImage: "url(/home-cards/bg-group.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "left bottom",
+          }}
         >
-          <span
-            className="pointer-events-none absolute -right-10 -top-12 h-36 w-36 rounded-full opacity-60"
-            style={{ background: "radial-gradient(circle, #ded4f7 0%, transparent 70%)" }}
-            aria-hidden="true"
-          />
           <span className="flex items-center gap-4">
             <span
               className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-white text-3xl shadow-[0_6px_16px_rgba(124,104,180,0.25)]"
