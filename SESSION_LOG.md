@@ -3019,3 +3019,7 @@ Next up: Job 27
 ## 2026-09-02T04:26:00Z (bible year day writer run)
 Day: 77 — David's Throne and God's Promise (2 Samuel 4-7) | Runtime: ~6.1k teaching/opening/closing chars over 7 blocks, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
 Next up: Day 78
+
+## 2026-09-02T04:40:00Z (bible year day writer run)
+Day: 78 — David's Victories and David's Sin (2 Samuel 8-11) | Runtime: ~6.5k teaching/opening/closing chars over 6 blocks, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
+Two days written this run (hard limit). Next up: Day 79
