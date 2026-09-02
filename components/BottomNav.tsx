@@ -42,7 +42,8 @@ const TABS: Tab[] = [
 ];
 
 const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
-  { label: "Bible Buddy TV", href: "/biblebuddy-tv", icon: "📺" },
+  // Bible Buddy TV pulled from the UI 2026-09-02 - too buggy for now. The
+  // routes still exist; it just has no doors until it is fixed.
   // Straight to the group page. The old /dashboard?view=group deep link only
   // worked through the old dashboard's slide logic, which the plan view
   // suppresses - so it silently landed people on their plan instead.

@@ -20,7 +20,6 @@ import { supabase } from "../lib/supabaseClient";
 import { useSupabaseUser } from "../lib/useSupabaseUser";
 import { recordNewUser } from "../lib/guestSession";
 import { getVerseOfTheDay } from "../lib/verseOfTheDay";
-import { bibleBuddyTvTitles } from "../lib/bibleBuddyTvContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES, getBibleYearDayCoverImage } from "../lib/bibleInOneYearPlan";
 import { BIBLE_STUDY_GROUP_ID } from "../lib/bibleStudiesCatalog";
@@ -63,7 +62,6 @@ export default function HomeScreen() {
   });
 
   const verse = useMemo(() => getVerseOfTheDay(), []);
-  const featuredTv = useMemo(() => bibleBuddyTvTitles.slice(0, 3), []);
   const recommended = useMemo(() => BLOG_ARTICLES.slice(0, 4), []);
 
   // AppShell hides the whole top header on /dashboard until the dashboard
@@ -254,28 +252,6 @@ export default function HomeScreen() {
         <p className="mt-1 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">{verse.reference} · KJV</p>
       </section>
 
-      <section>
-        <SectionHeading label="Featured on Bible Buddy TV" href="/biblebuddy-tv" />
-        <div className="grid grid-cols-3 gap-2">
-          {featuredTv.map((title, index) => (
-            <Link key={title.slug} href={`/biblebuddy-tv/shows/${title.slug}`} className="block">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-[var(--bb-surface-soft,#eef2f7)]">
-                <Image
-                  src={title.poster}
-                  alt={title.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 33vw, 240px"
-                  // The first row is above the fold on every phone, so it must
-                  // not wait for lazy-loading and arrive as an empty box.
-                  priority={index === 0}
-                />
-              </div>
-              <p className="mt-1 line-clamp-2 text-xs font-bold text-[var(--bb-text-primary,#111827)]">{title.title}</p>
-            </Link>
-          ))}
-        </div>
-      </section>
 
       <section>
         <SectionHeading label="Recommended Reading" href="/blog" />

@@ -49,13 +49,6 @@ export const APP_NAV_ITEMS: AppNavItem[] = [
     activeClasses: "bg-orange-50 text-orange-700 font-medium cursor-not-allowed",
     hoverClasses: "text-gray-700 hover:bg-orange-50 hover:text-orange-600 active:scale-[0.98]",
   },
-  {
-    label: "Bible Buddy TV",
-    href: "/biblebuddy-tv",
-    activePrefixes: ["/biblebuddy-tv"],
-    activeClasses: "bg-violet-50 text-violet-700 font-medium cursor-not-allowed",
-    hoverClasses: "text-gray-700 hover:bg-violet-50 hover:text-violet-600 active:scale-[0.98]",
-  },
 ];
 
 const BREADCRUMB_LABELS: Record<string, string> = {
