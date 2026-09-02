@@ -5,6 +5,7 @@ import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import {
+  APP_THEMES,
   applyAppThemeToDocument,
   cacheAppThemeForUser,
   clearPendingAppThemeSync,
@@ -665,41 +666,45 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           </div>
         ) : null}
 
-        {/* Display Mode Section */}
+        {/* App Theme Section - the full color catalog came back 2026-09-02 */}
         <div className="mb-6 rounded-xl bg-[var(--bb-card,#ffffff)] p-6 text-[var(--bb-text-primary,#111827)] shadow-sm">
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <h2 className="text-xl font-semibold">Dark mode</h2>
-              <p className="mt-1 text-sm text-[var(--bb-text-secondary,#4b5563)]">
-                Switch between standard light and dark mode.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              role="switch"
-              aria-checked={selectedTheme === "dark"}
-              onClick={() => void handleThemeSelect(selectedTheme === "dark" ? "light" : "dark")}
-              disabled={themeSaving !== null}
-              className={`relative h-8 w-14 shrink-0 rounded-full border transition ${
-                selectedTheme === "dark"
-                  ? "border-[var(--bb-accent,#5dd6ff)] bg-[var(--bb-accent,#5dd6ff)]"
-                  : "border-[var(--bb-card-border,#d1d5db)] bg-[var(--bb-surface-soft,#eef4f8)]"
-              } disabled:cursor-wait disabled:opacity-60`}
-            >
-              <span
-                className={`absolute top-1 grid h-6 w-6 place-items-center rounded-full bg-white text-[11px] font-black shadow-sm transition ${
-                  selectedTheme === "dark" ? "left-7 text-[#06101d]" : "left-1 text-[#2f7fe8]"
-                }`}
-                aria-hidden="true"
-              >
-                {selectedTheme === "dark" ? "D" : "L"}
-              </span>
-            </button>
-          </div>
-          <p className="mt-3 text-xs font-semibold text-[var(--bb-text-muted,#64748b)]">
-            {themeSaving ? "Saving display mode..." : selectedTheme === "dark" ? "Dark mode is on." : "Light mode is on."}
+          <h2 className="text-xl font-semibold">App theme</h2>
+          <p className="mt-1 text-sm text-[var(--bb-text-secondary,#4b5563)]">
+            Pick the color Bible Buddy wears everywhere - it saves to your account.
           </p>
+          <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
+            {APP_THEMES.map((theme) => {
+              const active = selectedTheme === theme.id;
+              return (
+                <button
+                  key={theme.id}
+                  type="button"
+                  onClick={() => void handleThemeSelect(theme.id)}
+                  disabled={themeSaving !== null}
+                  aria-pressed={active}
+                  className={`flex flex-col items-center gap-2 rounded-2xl border-2 p-3 transition active:scale-[0.97] disabled:cursor-wait disabled:opacity-60 ${
+                    active
+                      ? "border-[var(--bb-accent,#2563eb)] bg-[var(--bb-accent-soft,#eaf2ff)]"
+                      : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#ffffff)] hover:brightness-95"
+                  }`}
+                >
+                  <span
+                    className="grid h-12 w-12 place-items-center rounded-full border shadow-sm"
+                    style={{ background: theme.background, borderColor: theme.cardBorder }}
+                    aria-hidden="true"
+                  >
+                    <span className="h-6 w-6 rounded-full" style={{ background: theme.accent }} />
+                  </span>
+                  <span className="text-xs font-black">{theme.name}</span>
+                  {active ? (
+                    <span className="text-[10px] font-black text-[var(--bb-accent,#2563eb)]">
+                      {themeSaving === theme.id ? "Saving..." : "Selected"}
+                    </span>
+                  ) : null}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Bible Buddy Section */}

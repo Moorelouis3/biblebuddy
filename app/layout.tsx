@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 import AppShell from "@/components/AppShell";
+import { APP_THEMES } from "@/lib/appThemes";
 import { SmokeDeleteEffect } from "@/components/SmokeDeleteEffect";
 import TrafficSourceCapture from "@/components/TrafficSourceCapture";
 import { PostSuccessEffect } from "@/components/PostSuccessEffect";
@@ -77,24 +78,24 @@ export const viewport: Viewport = {
   themeColor: "#F7FAFC",
 };
 
+// The palettes are generated from the real theme catalog at build time, so
+// the pre-hydration script always knows every theme (all 11 came back on
+// 2026-09-02) and a saved color theme paints before React without a blue flash.
+const appThemeFirstPaintPalettes = JSON.stringify(
+  Object.fromEntries(
+    APP_THEMES.map((theme) => {
+      const { id, name, isLocked, unlockRequirement, ...tokens } = theme;
+      return [id, tokens];
+    }),
+  ),
+);
+
 const appThemeFirstPaintScript = `
 (function () {
   try {
-    var themeId = window.localStorage.getItem("bb:app-theme") === "dark" ? "dark" : "light";
-    var palettes = {
-      light: {
-        background: "#F7FAFC", surface: "#FFFFFF", surfaceSoft: "#EEF4F8", card: "#FFFFFF", cardBorder: "#D8E3EC",
-        textPrimary: "#101827", textSecondary: "#334155", textMuted: "#64748B", accent: "#0056FD", accentSoft: "#EAF2FF",
-        button: "#0056FD", buttonText: "#FFFFFF", navBackground: "#FFFFFF", navActive: "#0056FD", navInactive: "#64748B",
-        progressTrack: "#D8E3EC", progressFill: "#0056FD"
-      },
-      dark: {
-        background: "#07111F", surface: "#0D1826", surfaceSoft: "#132234", card: "#0F1C2B", cardBorder: "#23344A",
-        textPrimary: "#F8FAFC", textSecondary: "#CBD5E1", textMuted: "#94A3B8", accent: "#5DD6FF", accentSoft: "#123348",
-        button: "#5DD6FF", buttonText: "#06101D", navBackground: "#0B1725", navActive: "#5DD6FF", navInactive: "#94A3B8",
-        progressTrack: "#26364B", progressFill: "#5DD6FF"
-      }
-    };
+    var palettes = ${appThemeFirstPaintPalettes};
+    var themeId = window.localStorage.getItem("bb:app-theme");
+    if (!themeId || !palettes[themeId]) themeId = "light";
     var root = document.documentElement;
     var style = root.style;
     var palette = palettes[themeId];
