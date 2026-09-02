@@ -3003,3 +3003,7 @@ Next up: Job 25
 ## 2026-09-02T00:27:02Z (bible year day writer run)
 Day: 75 — David in Exile (1 Samuel 27-30) | Runtime: ~5.6k teaching/opening/closing chars over 6 blocks, 4 chapters (heavier reading, in line with Days 72-74) | Cast: not rendered (no keys in this environment)
 Next up: Day 76
+
+## 2026-09-02T00:40:00Z (bible year day writer run)
+Day: 76 — Saul Falls and David's Kingdom Begins (1 Samuel 31; 2 Samuel 1-3) | Runtime: ~6.5k teaching/opening/closing chars over 7 blocks, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
+Two days written this run (hard limit). Next up: Day 77
