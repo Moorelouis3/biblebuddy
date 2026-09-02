@@ -3031,3 +3031,7 @@ Next up: Job 28
 ## 2026-09-02T06:58:40Z (hourly chapter notes run)
 Chapter: Job 28 | Duration: 12 min | Sections: 6 | Cards: 53 | Status: pass
 Next up: Job 29
+
+## 2026-09-02T08:26:00Z (bible year day writer run)
+Day: 79 — Consequences in David's House (2 Samuel 12-15) | Runtime: ~7.9k teaching/opening/closing chars over 6 blocks, 4 chapters (heavier reading) | Cast: not rendered (no keys in this environment)
+Next up: Day 80
