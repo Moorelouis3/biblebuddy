@@ -30425,6 +30425,59 @@
           "at": "2026-09-02T10:58:14Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 31,
+      "startedAt": "2026-09-02T12:47:37Z",
+      "finishedAt": "2026-09-02T12:58:09Z",
+      "durationMinutes": 10.5,
+      "sections": 11,
+      "cards": 81,
+      "verses": 40,
+      "notes": "New chapter, forward progress (priority queue and style-redo backlog both empty). Job's final oath of innocence, 11 sections / 81 cards. Style checker clean after fixing 8 mechanical issues, parser check confirmed 11 sections and 81 cards, tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-02T12:47:37Z"
+        },
+        {
+          "name": "target chapter determined: Job 31 (new chapter, forward progress; priority queue and redo backlog both empty)",
+          "at": "2026-09-02T12:47:37Z"
+        },
+        {
+          "name": "KJV text fetched (Job 31, 40 verses)",
+          "at": "2026-09-02T12:47:45Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-09-02T12:54:50Z"
+        },
+        {
+          "name": "source file written (81 cards, 11 sections)",
+          "at": "2026-09-02T12:55:17Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-09-02T12:55:17Z"
+        },
+        {
+          "name": "wired into reader (import + preserveExactPhraseBodies range + replaceStudySectionsForBookRange call after bulk override)",
+          "at": "2026-09-02T12:55:53Z"
+        },
+        {
+          "name": "parser check passed (11 sections, 81 cards, text verbatim)",
+          "at": "2026-09-02T12:56:07Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-02T12:57:08Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md + bible-notes-progress-log.json)",
+          "at": "2026-09-02T12:58:06Z"
+        }
+      ]
     }
   ]
 }
