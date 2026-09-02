@@ -3108,3 +3108,7 @@ Next up: Job 35
 Article: none - front-of-queue topic "The Armor of God Explained" duplicated the already-published /blog/armor-of-god-explained | Status: blocked, resolved by dequeue
 Action: removed the stale duplicate entry from content-buddy's blog/topics-queue.json (a prior run had discarded its draft but left the queue entry in place); logged details to MARCUS_HANDOFF.md; wrote no new post this run
 Queue remaining: 27, next up "Is It a Sin to Doubt God?"
+
+## 2026-09-02T22:58:30Z (hourly chapter notes run)
+Chapter: Job 35 | Duration: 11 min | Sections: 4 | Cards: 17 | Status: pass
+Next up: Job 36
