@@ -123,7 +123,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   // pattern as a plan day on the home screen: an iframe of the study page,
   // which drops all app chrome when framed. One way of opening study content
   // everywhere - Louis, 2026-09-02.
-  const [openStudy, setOpenStudy] = useState<{ id: string; title: string } | null>(null);
+  const [openStudy, setOpenStudy] = useState<{ src: string; title: string } | null>(null);
   const [studyFilter, setStudyFilter] = useState<StudyFilter>("all");
   const [loading, setLoading] = useState(true);
   const [isInstructionsExpanded, setIsInstructionsExpanded] = useState(false);
@@ -144,7 +144,10 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
         if (error) console.error("[PLANS] Could not set the Bible in One Year:", error.message);
       }
     } finally {
-      window.location.assign("/dashboard?view=bible-year");
+      // Reset before opening: the old code navigated away, so it never
+      // needed to - now the card stays on screen behind the pop-up.
+      setSettingBibleYear(false);
+      setOpenStudy({ src: "/plan?view=bible-year-series&solo=1", title: "The Bible in One Year" });
     }
   }
   const [userEmail, setUserEmail] = useState<string | null>(null);
@@ -586,7 +589,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
             <p className="truncate pr-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">{openStudy.title}</p>
             <button type="button" onClick={() => setOpenStudy(null)} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--bb-surface-soft,#eef2f7)] text-lg font-black text-[var(--bb-text-primary,#111827)]" aria-label="Close">×</button>
           </div>
-          <iframe src={`/bible-studies/${openStudy.id}`} title={openStudy.title} className="h-full w-full flex-1 border-0" />
+          <iframe src={openStudy.src} title={openStudy.title} className="h-full w-full flex-1 border-0" />
         </div>
       </div>
     ) : null}
@@ -785,7 +788,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                     <h3 className="text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-base md:text-lg">The Bible in One Year</h3>
                     <p className="mt-1 text-[11px] font-bold leading-tight text-[var(--bb-text-muted,#6b7280)] sm:text-xs">Genesis to Revelation, one day at a time</p>
                     <div className="mt-auto pt-3">
-                      <p className="text-xs font-black text-[var(--bb-accent,#2f7fe8)]">{settingBibleYear ? "Setting..." : "Set as my plan"}</p>
+                      <p className="text-xs font-black text-[var(--bb-accent,#2f7fe8)]">{settingBibleYear ? "Opening..." : "Open the plan"}</p>
                     </div>
                   </div>
                 </div>
@@ -861,7 +864,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                     if (embedded && onStudySelect) {
                       onStudySelect(devotional.id);
                     } else {
-                      setOpenStudy({ id: devotional.id, title: devotional.title });
+                      setOpenStudy({ src: `/bible-studies/${devotional.id}`, title: devotional.title });
                     }
                   }}
                   onKeyDown={(event) => {
@@ -880,7 +883,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                       if (embedded && onStudySelect) {
                         onStudySelect(devotional.id);
                       } else {
-                        setOpenStudy({ id: devotional.id, title: devotional.title });
+                        setOpenStudy({ src: `/bible-studies/${devotional.id}`, title: devotional.title });
                       }
                     }
                   }}
