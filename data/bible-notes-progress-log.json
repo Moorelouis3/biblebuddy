@@ -30266,6 +30266,63 @@
           "at": "2026-09-02T04:55:43Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 28,
+      "startedAt": "2026-09-02T06:46:29Z",
+      "finishedAt": "2026-09-02T06:58:40Z",
+      "durationMinutes": 12,
+      "sections": 6,
+      "cards": 53,
+      "verses": 28,
+      "notes": "New chapter, normal forward progress after Job 27. Priority queue and style-redo backlog both empty. Style checker clean on first save. Parser check and tsc both clean. Renamed one card title (verse 20 repeats verse 12's exact phrase) to avoid a duplicate-title problem while staying an exact KJV phrase.",
+      "steps": [
+        {
+          "name": "session started, stale detached HEAD reconciled against verified origin/main",
+          "at": "2026-09-02T06:46:29Z"
+        },
+        {
+          "name": "npm install done",
+          "at": "2026-09-02T06:47:16Z"
+        },
+        {
+          "name": "target chapter determined: Job 28 (priority queue empty, redo backlog empty, normal forward progress after Job 27, confirmed no wired-in lib file existed)",
+          "at": "2026-09-02T06:47:16Z"
+        },
+        {
+          "name": "KJV text fetched for Job 28 (28 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-02T06:47:29Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-09-02T06:50:00Z"
+        },
+        {
+          "name": "source file lib/jobTwentyEightSource.ts written (6 sections, 53 cards)",
+          "at": "2026-09-02T06:53:00Z"
+        },
+        {
+          "name": "style checker clean (0 problems on first save)",
+          "at": "2026-09-02T06:54:36Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to job 28, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-02T06:56:00Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('job', 28): 6 sections, 53 cards)",
+          "at": "2026-09-02T06:56:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-02T06:57:43Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-02T06:58:40Z"
+        }
+      ]
     }
   ]
 }
