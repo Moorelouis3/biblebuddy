@@ -389,12 +389,12 @@ export default function HomeScreen() {
           Continue Your Journey
         </h2>
         {planEntry ? (
-          /* Lavender, same family as the Study Group card below */
+          /* Light lavender journey path - the group art read too dark here */
           <div
             className="rounded-2xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
             style={{
               backgroundColor: "#f5f2ff",
-              backgroundImage: "url(/home-cards/bg-group.jpg)",
+              backgroundImage: "url(/home-cards/bg-journey.jpg)",
               backgroundSize: "cover",
               backgroundPosition: "left bottom",
               backgroundRepeat: "no-repeat",
