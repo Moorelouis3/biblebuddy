@@ -3148,3 +3148,7 @@ Next up: Job 40
 ## 2026-09-03T08:29:49Z (bible year day writer run)
 Day: 91 — Israel Falls to Assyria (2 Kings 14-17) | Runtime: audio not rendered (no keys in this env) | Cast: no render yet
 Next up: Day 92
+
+## 2026-09-03T08:34:39Z (bible year day writer run)
+Day: 92 — Hezekiah's Faith and Manasseh's Evil (2 Kings 18-21) | Runtime: audio not rendered (no keys in this env) | Cast: no render yet
+Next up: Day 93
