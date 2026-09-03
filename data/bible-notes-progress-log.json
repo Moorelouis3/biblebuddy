@@ -30751,6 +30751,59 @@
           "at": "2026-09-03T00:55:33Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 37,
+      "startedAt": "2026-09-03T02:46:16Z",
+      "finishedAt": "2026-09-03T02:56:30Z",
+      "durationMinutes": 10,
+      "sections": 5,
+      "cards": 27,
+      "verses": 24,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, so this was normal forward progress after Job 36, the single next chapter in canonical order with no existing wired-in file. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (24 verses). Job 37 is Elihu's closing meditation before God speaks directly in chapter 38: he reacts with trembling awe to an actual storm building as he talks, describes thunder and lightning as God's voice and hand reaching under the whole heaven, walks through snow, rain, whirlwind, and frost as things God speaks into being and uses to seal up human labor for a season, describes clouds turned about by God's own counsels for correction, provision, or mercy, commands Job to stand still and consider wonders he cannot explain (the balancings of the clouds, the warmth of his own garments, the sky pictured as a molten looking glass), then closes by admitting that even Elihu himself cannot order his speech before God, that no one can fully search out the Almighty, and that the right response to all of it is plain fear and reverence, a deliberate setup for the whirlwind speech two chapters later. Chunked into 5 sections matching the chapter's own argument beats (1-5 thunder is the voice of God, 6-10 God commands the weather, 11-13 clouds obey his counsels, 14-18 stand still and consider, 19-24 we cannot find him out). Density about 1.13 cards per verse (24 verses, 27 cards). scripts/check_bible_note_style.py passed clean on the first save, zero problems across all 27 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (trembleth, sealeth up, wearieth, counsels, disposed, balancings, straitened, distil), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji ending on the scripture-point emoji, no repeated emoji within a card, no duplicate card titles across all 27 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file. Parser check passed exactly via getBibleReaderStudySections('job', 37) (5/5 sections, verse ranges 1-5/6-10/11-13/14-18/19-24 with no gaps, text rendered verbatim, 27 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/jobThirtySevenSource.ts), preserveExactPhraseBodies for job extended from chapters 1-36 to 1-37, new applyPersonalJobThirtySevenChapterStudySections() function calling replaceStudySectionsForBookRange('job', 37, 37, JOB_THIRTY_SEVEN_PERSONAL_SECTIONS), invoked right after the Job 36 call. Next forward-progress target is Job 38.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-03T02:46:16Z"
+        },
+        {
+          "name": "target chapter determined: Job 37 (new chapter, forward progress)",
+          "at": "2026-09-03T02:46:54Z"
+        },
+        {
+          "name": "KJV text fetched for Job 37 (24 verses)",
+          "at": "2026-09-03T02:47:10Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-09-03T02:47:10Z"
+        },
+        {
+          "name": "source file written: lib/jobThirtySevenSource.ts",
+          "at": "2026-09-03T02:52:51Z"
+        },
+        {
+          "name": "style checker clean (27 cards, 0 problems)",
+          "at": "2026-09-03T02:52:51Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply function, call)",
+          "at": "2026-09-03T02:53:08Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 27 cards, 24 verses, no gaps)",
+          "at": "2026-09-03T02:53:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-03T02:54:54Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, bible-notes-progress-log.json)",
+          "at": "2026-09-03T02:56:30Z"
+        }
+      ]
     }
   ]
 }
