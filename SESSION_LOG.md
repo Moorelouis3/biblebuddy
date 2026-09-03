@@ -3116,3 +3116,7 @@ Next up: Job 36
 ## 2026-09-03T00:26:04Z (bible year day writer run)
 Day: 87 — Ahab's Fall and Elijah's Final Warnings (1 Kings 20-22; 2 Kings 1) | Runtime: audio not rendered (no keys in this env) | Cast: no render yet
 Next up: Day 88
+
+## 2026-09-03T00:29:11Z (bible year day writer run)
+Day: 88 — Elisha's Ministry Begins (2 Kings 2-5) | Runtime: audio not rendered (no keys in this env) | Cast: no render yet
+Next up: Day 89
