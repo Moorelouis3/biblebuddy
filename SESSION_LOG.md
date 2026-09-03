@@ -3192,3 +3192,7 @@ Next up: Psalms 3
 ## 2026-09-03T19:07:00Z (hourly chapter notes run)
 Chapter: Psalms 3 | Duration: 21 min | Sections: 4 | Cards: 16 | Status: pass
 Next up: Psalms 4
+
+## 2026-09-03T20:26:58Z (bible year day writer run)
+Day: 97 — The Ark Comes to Jerusalem (1 Chronicles 13-16) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 98
