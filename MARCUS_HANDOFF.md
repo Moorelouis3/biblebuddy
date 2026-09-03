@@ -111,3 +111,39 @@ any time). Check each printed cast line for any non-person names (add
 offenders to NOT_A_PERSON in lib/bibleYearAutoCast.ts and re-render if so).
 This entry will keep being updated in place as later days get written —
 it is not meant to grow a new block per day.
+
+## Bible Note Writer session started on ~50 commits of real work orphaned from origin/main, now on a rescue branch
+The 2026-09-03 hourly chapter run started detached at commit `333e1e1`,
+with local `main` sitting at `ebdd3da` (Esther 5). This is the same
+recurring stale-local-main bug flagged three times before in this file,
+but a worse variant: `git merge-base` between the detached HEAD and
+`origin/main` found no common ancestor at all — two genuinely unrelated
+histories, not one branch just being behind the other. The detached HEAD
+held real, previously verified work that does not exist anywhere on
+`origin/main`: individual Psalms 1 and 2 chapter files
+(`lib/psalmsOneSource.ts`, `lib/psalmsTwoSource.ts`) and nine individual
+Job chapter files (Job 30 through 42, one file per chapter, matching the
+current per-chapter style spec), plus an analytics dashboard change.
+`origin/main` instead still has only the old bulk
+`lib/jobThirtyOneToFortyTwoPersonalNotes.ts` for that range, so this
+looks like two parallel Bible Buddy content pipelines that forked at
+some point and never reconciled, not just a lagging ref.
+To make sure that work is not lost if this container gets reclaimed, it
+has been pushed as is, unmodified, to a new branch:
+`rescue/unpushed-bible-notes-2026-09-03` (pushed straight from the
+detached HEAD, `333e1e1`). This agent did not attempt to merge or
+reconcile the two histories itself — that is a real judgment call
+(which Psalms/Job content is the version to keep, whether the analytics
+dashboard change on that branch is still wanted) that should not be made
+unilaterally by an automated chapter-writing run. `origin/main` was left
+completely untouched; this run's own local `main` was simply reset to it
+(`git checkout -B main origin/main`) so this run's own new chapter work
+lines up with what other sessions actually push to and what Vercel
+deploys from.
+Needs a person (or a session with more context) to look at
+`rescue/unpushed-bible-notes-2026-09-03` and decide whether/how to merge
+its unique Psalms and Job chapters, and the analytics dashboard commits,
+into `origin/main`. Also worth root causing why this environment keeps
+seeding fresh sessions with a stale/wrong local `main` ref at all — this
+is now the fourth logged occurrence of that family of bug, and this one
+was the most serious by far.

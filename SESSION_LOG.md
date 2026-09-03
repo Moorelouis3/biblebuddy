@@ -2739,3 +2739,7 @@ Next up: Esther 5
 ## 2026-08-30T10:54:45Z (hourly chapter notes run)
 Chapter: Esther 5 | Duration: 8 min | Sections: 5 | Cards: 19 | Status: pass
 Next up: Esther 6
+
+## 2026-09-03T18:58:00Z (hourly chapter notes run)
+Chapter: Esther 6 | Duration: 12 min | Sections: 5 | Cards: 19 | Status: pass
+Next up: Esther 7

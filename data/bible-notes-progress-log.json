@@ -28514,6 +28514,71 @@
           "at": "2026-08-30T10:54:45Z"
         }
       ]
+    },
+    {
+      "book": "Esther",
+      "chapter": 6,
+      "startedAt": "2026-09-03T18:46:01Z",
+      "finishedAt": "2026-09-03T18:58:00Z",
+      "durationMinutes": 12,
+      "sections": 5,
+      "cards": 19,
+      "verses": 14,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. This run hit the recurring stale local main/origin main divergence at startup, but a strictly worse variant than any prior logged occurrence: the session started on a detached HEAD (333e1e1) that had NO common ancestor with origin/main (git merge-base found none), not merely a lagging ref. That detached HEAD held about 50 real, previously verified commits never pushed to origin (individual Psalms 1 and 2 chapter files, nine individual Job chapter files for Job 30 through 42, and an analytics dashboard pass), confirmed missing from origin/main's actual file tree (origin/main still only has the old bulk lib/jobThirtyOneToFortyTwoPersonalNotes.ts for that range). To avoid losing that work if the container were reclaimed, it was pushed intact and unmodified to a new branch (rescue/unpushed-bible-notes-2026-09-03) before anything else this run, then flagged in MARCUS_HANDOFF.md for a human merge decision rather than reconciled unilaterally. Local main was reset to the verified origin/main tip (git checkout -B main origin/main) and this run's own chapter work proceeded from there, matching the branch other sessions push to and Vercel deploys from. Also logged as an environment_anomaly event in data/bible-notes-usage-events.json (fourth logged occurrence of this git-ref family, most severe so far). Priority queue (data/bible-notes-priority-queue.json) and style redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty on the verified origin/main tip. Normal forward progress after Esther 5: Esther 6 had no dedicated wired-in file. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (14 verses). Esther 6 covers the king's providential sleepless night and the reading of the chronicles that surfaces Mordecai's forgotten, unrewarded warning; Haman arriving to request Mordecai's execution at the exact moment the king is asking how to honor him; Haman's prideful assumption that he himself is the man the king means to honor; his own design for the ultimate public honor (royal apparel, the king's horse, the crown royal, a noble prince as herald); the king's reversal ordering Haman to carry out that exact ceremony for Mordecai; Haman's public humiliation and covered head mourning; and Zeresh and his friends reversing their own gallows advice from chapter 5 to predict his fall. Chunked into 5 sections matching the chapter's own scene breaks (1-3 the chronicles, 4-6 Haman's assumption, 7-9 Haman's proposal, 10-12 the reversal, 13-14 Zeresh's prediction). Density about 1.36 cards/verse (14 verses, 19 cards), matching Esther 5's own density (19 cards/14 verses) as the closest same-book precedent. scripts/check_bible_note_style.py passed clean on the first mechanical pass. A manual section 13 eye check then caught three cards opening with a near restatement of the verse instead of one of the four approved moves (\"There Is Nothing Done For Him,\" \"Let Him Come In,\" \"Haman Hasted To His House Mourning\"); those were rewritten to open on an interpretive point instead, and the style checker was re-run clean. Confirmed every card defines its key terms in plain language (chronicles, chamberlains, keepers of the door, outward court, royal apparel, seed of the Jews), closes on meaning rather than mechanics, uses exactly four bullets each with distinct emoji ending on a book emoji or an arrow emoji, no duplicate card titles across all 19 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file. Parser check passed exactly via getBibleReaderStudySections('esther', 6) (5/5 sections, verse ranges 1-3/4-6/7-9/10-12/13-14 with no gaps, text rendered verbatim, 19 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/estherSixSource.ts), preserveExactPhraseBodies for esther extended from chapters 1-5 to 1-6, applyPersonalEstherSixChapterStudySections() call added directly after the chapter 5 call. Next forward-progress target is Esther 7.",
+      "steps": [
+        {
+          "name": "session start git anomaly: detached HEAD (333e1e1) had no common ancestor with origin/main; confirmed ~50 commits of real unpushed work (Psalms 1-2, Job 30-42 individually, analytics dashboard) missing from origin/main; pushed intact to rescue/unpushed-bible-notes-2026-09-03 before touching anything; reset local main to origin/main (git checkout -B main origin/main) to work from the real shared tip",
+          "at": "2026-09-03T18:46:30Z"
+        },
+        {
+          "name": "npm install done",
+          "at": "2026-09-03T18:48:05Z"
+        },
+        {
+          "name": "target chapter determined: Esther 6 (new chapter, forward progress; redo-remaining empty)",
+          "at": "2026-09-03T18:48:05Z"
+        },
+        {
+          "name": "KJV text fetched (Esther 6, 14 verses)",
+          "at": "2026-09-03T18:48:14Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-09-03T18:48:20Z"
+        },
+        {
+          "name": "source file written (lib/estherSixSource.ts, 5 sections, 19 cards)",
+          "at": "2026-09-03T18:52:20Z"
+        },
+        {
+          "name": "style checker clean (19 cards, 0 problems)",
+          "at": "2026-09-03T18:52:23Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-09-03T18:53:36Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 19 cards)",
+          "at": "2026-09-03T18:53:54Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-03T18:55:16Z"
+        },
+        {
+          "name": "section 13 eye check found 3 cards opening too close to a verse restatement; rewrote openings, re-ran style checker clean",
+          "at": "2026-09-03T18:56:41Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, usage-events.json anomaly entry, MARCUS_HANDOFF.md)",
+          "at": "2026-09-03T18:56:41Z"
+        },
+        {
+          "name": "committed and pushed",
+          "at": "2026-09-03T18:58:30Z"
+        }
+      ]
     }
   ]
 }
