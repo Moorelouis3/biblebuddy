@@ -31109,6 +31109,59 @@
           "at": "2026-09-03T12:58:21Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 1,
+      "startedAt": "2026-09-03T14:48:12Z",
+      "finishedAt": "2026-09-03T14:59:27Z",
+      "durationMinutes": 13,
+      "sections": 2,
+      "cards": 16,
+      "verses": 6,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Session again found local main detached and stale (cached tip Esther 5) while the real current tip (Job 42) sat on origin; git fetch origin main plus git reset --hard origin/main rebuilt main cleanly with nothing lost. This time the fetch also showed zero shared commits and no merge base between the old local main and origin/main, which looked alarming until git rev-parse --is-shallow-repository confirmed this is a shallow clone (~50 commit depth): the two tips simply fell outside each other's shallow window, it was not a history rewrite. Worth flagging so a future run does not mistake this for real divergence. Priority queue and style-redo backlog were both confirmed empty. Job is now fully complete, so canonical forward progress moved to Psalms 1, the first chapter of the next book. Unlike a normal forward-progress chapter, Psalms 1 already had an old pre-project wired file (lib/psalmsOneToSixPersonalNotes.ts, covering chapters 1-6 in the old non-spec voice, run through the legacy auto-formatter rather than hand-written prose) that is not tracked in this progress log and was never entered in the style-redo backlog. Treated this as forward progress: wrote a brand new lib/psalmsOneSource.ts to the full docs/bible-study-note-style.md spec, then wired it to override only chapter 1 within the existing range using the same splice-by-chapter mechanic already used elsewhere in this file for partial overrides (for example Judges 10-14 overriding within the Judges 1-15 range): replaceStudySectionsForBookRange('psalms', 1, 1, PSALMS_ONE_PERSONAL_SECTIONS) is called immediately after the legacy applyPersonalPsalmsOneThroughSixStudySections() call, so it removes and replaces only the chapter 1 sections and leaves chapters 2-6 of the old file untouched (verified directly: getBibleReaderStudySections for psalms chapter 2 still returns its original 3 legacy sections unchanged). Also extended the preserveExactPhraseBodies allowlist to include psalms chapter 1 so its hand-written bodies render verbatim instead of passing through the legacy auto-formatter. Fetched real KJV text for Psalms 1 (6 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 1 is a wisdom psalm contrasting the blessed man, who avoids the ungodly's counsel, way, and seat and instead delights in and meditates on God's law like a tree planted by a steady water supply (1-3), with the ungodly, who are like windblown chaff that cannot stand in the judgment or belong in the righteous congregation, closing on the LORD's intimate knowledge of the righteous path against the ungodly path that simply perishes (4-6). Chunked into 2 sections. Density about 2.67 cards per verse (6 verses, 16 cards), on the richer end since a short, image-dense wisdom psalm gave many distinct teachable phrases. scripts/check_bible_note_style.py was clean on the first run, 0 problems across all 16 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (blessed, counsel, meditate, chaff, congregation, knoweth, perish), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words ending on the scripture or arrow emoji, no repeated emoji within a card, no duplicate card titles across all 16 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file. Parser check passed exactly via getBibleReaderStudySections('psalms', 1) (2/2 sections, verse ranges 1-3/4-6 with no gaps, text rendered verbatim, 16 total cards), and a second check on chapter 2 confirmed the legacy chapters 2-6 sections were left fully intact. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/psalmsOneSource.ts), preserveExactPhraseBodies extended with a new psalms chapter 1 to chapter 1 clause, new applyPersonalPsalmsOneChapterStudySections() function calling replaceStudySectionsForBookRange('psalms', 1, 1, PSALMS_ONE_PERSONAL_SECTIONS), invoked right after the legacy applyPersonalPsalmsOneThroughSixStudySections() call so it overrides only chapter 1. This starts the book of Psalms; Psalms 2 is the next forward-progress target. Flagging for Louis: Psalms 2 through 150 all still carry old pre-project wired notes (in the legacy PersonalNotes range files) that this project has not yet regenerated to the new spec, the same situation chapter 1 was just in. Forward progress will keep catching them one chapter at a time as it reaches each range boundary, but Louis may prefer to add the rest of Psalms to data/bible-notes-style-redo-remaining.json instead so they get prioritized deliberately rather than incidentally.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-03T14:48:12Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 1 (new chapter, forward progress; priority queue and style-redo backlog both empty; Job now complete; overrides chapter 1 within existing legacy Psalms 1-6 range using the Judges 10-14 style override pattern)",
+          "at": "2026-09-03T14:50:00Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 1 (6 verses)",
+          "at": "2026-09-03T14:50:12Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline doc read in full",
+          "at": "2026-09-03T14:52:30Z"
+        },
+        {
+          "name": "source file written: lib/psalmsOneSource.ts",
+          "at": "2026-09-03T14:56:05Z"
+        },
+        {
+          "name": "style checker clean (16 cards, 0 problems, clean on first pass)",
+          "at": "2026-09-03T14:56:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to psalms chapter 1, new apply function, call added right after legacy Psalms 1-6 range call)",
+          "at": "2026-09-03T14:57:05Z"
+        },
+        {
+          "name": "parser check passed (2 sections, 16 cards, 6 verses, no gaps; confirmed Psalms 2 legacy sections untouched)",
+          "at": "2026-09-03T14:57:25Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-03T14:57:45Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, bible-notes-progress-log.json)",
+          "at": "2026-09-03T14:59:40Z"
+        }
+      ]
     }
   ]
 }
