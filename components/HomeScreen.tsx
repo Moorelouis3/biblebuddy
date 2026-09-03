@@ -331,7 +331,17 @@ export default function HomeScreen() {
         </div>
         <div className="grid grid-cols-2 gap-3 sm:w-auto sm:shrink-0 sm:grid-cols-2">
           {stats.streak !== null ? (
-            <div className="flex min-w-[132px] items-center gap-2.5 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 shadow-sm">
+            // Peach, same family as the Bible Trivia card below
+            <div
+              className="flex min-w-[132px] items-center gap-2.5 rounded-2xl border border-[#f4dcc8] px-4 py-3 shadow-sm"
+              style={{
+                backgroundColor: "#fff3e6",
+                backgroundImage: "url(/home-cards/bg-trivia.jpg)",
+                backgroundSize: "cover",
+                backgroundPosition: "center bottom",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
               <StreakFlameEmoji
                 flameId={stats.flameId}
                 currentStreak={stats.streak}
@@ -339,19 +349,29 @@ export default function HomeScreen() {
                 title={`${stats.streak} day streak`}
               />
               <div>
-                <p className="text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">{stats.streak}</p>
-                <p className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">Day Streak</p>
+                <p className="text-xl font-black leading-tight text-[#3d2417]">{stats.streak}</p>
+                <p className="text-[11px] font-bold text-[#8a5c40]">Day Streak</p>
               </div>
             </div>
           ) : !stats.loaded && userId ? (
             <div className="h-[64px] min-w-[132px] animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />
           ) : null}
           {biblePercent !== null ? (
-            <div className="flex min-w-[132px] items-center gap-2.5 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 shadow-sm">
+            // Mint, same family as the Scrambled card below
+            <div
+              className="flex min-w-[132px] items-center gap-2.5 rounded-2xl border border-[#cde9dc] px-4 py-3 shadow-sm"
+              style={{
+                backgroundColor: "#eefaf3",
+                backgroundImage: "url(/home-cards/bg-scrambled.jpg)",
+                backgroundSize: "cover",
+                backgroundPosition: "center bottom",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
               <BibleProgressRing percent={biblePercent} />
               <div>
-                <p className="text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">{biblePercent}%</p>
-                <p className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">of Bible</p>
+                <p className="text-xl font-black leading-tight text-[#123f30]">{biblePercent}%</p>
+                <p className="text-[11px] font-bold text-[#3f7a63]">of Bible</p>
               </div>
             </div>
           ) : !stats.loaded && userId ? (
@@ -369,7 +389,17 @@ export default function HomeScreen() {
           Continue Your Journey
         </h2>
         {planEntry ? (
-          <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
+          /* Lavender, same family as the Study Group card below */
+          <div
+            className="rounded-2xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
+            style={{
+              backgroundColor: "#f5f2ff",
+              backgroundImage: "url(/home-cards/bg-group.jpg)",
+              backgroundSize: "cover",
+              backgroundPosition: "left bottom",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
             {/* Day Rail (approved Option 3, 2026-09-02): plan progress ->
                 nearby days -> one Continue button. The old duplicated
                 current-day cover, lesson title, passage and summary are gone
@@ -409,7 +439,7 @@ export default function HomeScreen() {
                       <div
                         className={`relative m-0.5 aspect-square overflow-hidden rounded-xl ${
                           isCurrent
-                            ? "ring-2 ring-[var(--bb-accent,#2f7fe8)] ring-offset-2 ring-offset-[var(--bb-card,#ffffff)]"
+                            ? "ring-2 ring-[var(--bb-accent,#2f7fe8)]"
                             : ""
                         }`}
                       >
