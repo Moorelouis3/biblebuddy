@@ -24,6 +24,19 @@ But this is now two occurrences in a row for this same routine, so the
 environment-seeding question above is worth prioritizing rather than
 trusting each run to catch it by hand.
 
+Third occurrence, same run type (2026-09-03, Day 95): this time local
+`main` was stale but not divergent — `git merge-base` found a real common
+ancestor, and the stale local branch happened to be several commits
+*behind* a detached HEAD that already had this run's new commit stacked
+correctly on top of the true origin/main tip. `git push origin main` still
+failed (it pushes the stale local ref, not HEAD, while detached).
+`git push origin HEAD:main` pushed the correct commit with no data lost,
+then `git checkout -B main origin/main` re-synced the local branch. Three
+for three now on this routine alone — worth fixing at the environment
+level (make sure each fresh session's local `main` actually starts at
+current origin/main) rather than relying on every run to diagnose it by
+hand.
+
 ## Blog writer run 2026-09-02: duplicate Armor of God topic dequeued, zero posts written this run
 Today's run took the front of content-buddy's blog/topics-queue.json,
 which was still "The Armor of God Explained" (the-armor-of-god-explained,
