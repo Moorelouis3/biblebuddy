@@ -30808,6 +30808,59 @@
           "at": "2026-09-03T02:56:47Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 38,
+      "startedAt": "2026-09-03T04:46:31Z",
+      "finishedAt": "2026-09-03T04:57:31Z",
+      "durationMinutes": 11,
+      "sections": 11,
+      "cards": 42,
+      "verses": 41,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, so this was normal forward progress after Job 37, the single next chapter in canonical order with no existing wired-in file (confirmed no jobThirtyEightSource.ts existed and no reference to it in lib/bibleReaderStudyNotes.ts before this run). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (41 verses). Job 38 is the opening of the LORD's whirlwind speech, the turning point of the whole book: God answers Job directly for the first time, opens with a rebuke and a role reversal (Job wanted to question God, now God questions him), then walks through a long sweep of creation questions Job cannot answer, laying the earth's foundations and cornerstone while the morning stars sang, shutting the sea behind doors and swaddling it like a newborn, commanding the dawn and exposing the wicked with daylight, the unreached springs of the sea and gates of death, the dwelling places of light and darkness, the storehouses of snow and hail reserved for judgment, rain and ice and frost with no father but God, the constellations Pleiades, Orion, Mazzaroth, and Arcturus obeying God's fixed laws, God's voice commanding clouds and lightning and placing wisdom in the human mind, and closing with God personally providing for the lion in its den and the raven's starving chicks. Chunked into 11 sections following the chapter's own question groupings (1-3 the whirlwind and the challenge, 4-7 the foundations, 8-11 the sea locked behind doors, 12-15 commanding the dawn, 16-18 the springs of the sea, 19-21 light and darkness's dwelling, 22-24 storehouses of snow and hail, 25-30 rain ice and frost without a father, 31-33 the stars and their laws, 34-38 voice wisdom and the bottles of heaven, 39-41 feeding the lion and the raven). Density about 1.02 cards per verse (41 verses, 42 cards), matching the density of the reference implementation lib/genesisThirtyOneSource.ts (56 cards over 55 verses). scripts/check_bible_note_style.py passed clean on the first save, zero problems across all 42 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key archaic or unfamiliar terms in plain language (darkeneth, gird up thy loins, dayspring, swaddlingband, decreed, hitherto, covert, gendered, Mazzaroth), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji ending on the scripture-point or implication emoji, no repeated emoji within a card, no duplicate card titles across all 42 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file. Parser check passed exactly via getBibleReaderStudySections('job', 38) (11/11 sections, verse ranges 1-3/4-7/8-11/12-15/16-18/19-21/22-24/25-30/31-33/34-38/39-41 with no gaps, text rendered verbatim, 42 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/jobThirtyEightSource.ts), preserveExactPhraseBodies for job extended from chapters 1-37 to 1-38, new applyPersonalJobThirtyEightChapterStudySections() function calling replaceStudySectionsForBookRange('job', 38, 38, JOB_THIRTY_EIGHT_PERSONAL_SECTIONS), invoked right after the Job 37 call. Next forward-progress target is Job 39.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-03T04:47:15Z"
+        },
+        {
+          "name": "target chapter determined: Job 38 (new chapter, forward progress)",
+          "at": "2026-09-03T04:47:42Z"
+        },
+        {
+          "name": "KJV text fetched for Job 38 (41 verses)",
+          "at": "2026-09-03T04:52:30Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-09-03T04:53:44Z"
+        },
+        {
+          "name": "source file written: lib/jobThirtyEightSource.ts",
+          "at": "2026-09-03T04:54:30Z"
+        },
+        {
+          "name": "style checker clean (42 cards, 0 problems)",
+          "at": "2026-09-03T04:55:01Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply function, call)",
+          "at": "2026-09-03T04:55:17Z"
+        },
+        {
+          "name": "parser check passed (11 sections, 42 cards, 41 verses, no gaps)",
+          "at": "2026-09-03T04:55:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-03T04:57:31Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, bible-notes-progress-log.json)",
+          "at": "2026-09-03T04:58:00Z"
+        }
+      ]
     }
   ]
 }
