@@ -3180,3 +3180,7 @@ Next up: Psalms 2
 ## 2026-09-03T16:27:46Z (bible year day writer run)
 Day: 95 — Tribes, Genealogies, and Identity (1 Chronicles 5-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 96
+
+## 2026-09-03T16:30:44Z (bible year day writer run)
+Day: 96 — Return, Saul, and David's Supporters (1 Chronicles 9-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 97 (run stops here — 2-day-per-run limit reached)
