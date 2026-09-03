@@ -3164,3 +3164,7 @@ Next up: Job 42
 ## 2026-09-03T12:39:56Z (bible year day writer run)
 Day: 93 — Josiah's Reform and Judah's Fall (2 Kings 22-25) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 94 (run stops here — 2-day-per-run limit reached; Day 45's earlier draft this run was superseded by an already-published upstream version, see MARCUS_HANDOFF.md)
+
+## 2026-09-03T12:42:54Z (bible year day writer run)
+Day: 94 — The Family Line of God's People (1 Chronicles 1-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 95 (run stops here — 2-day-per-run limit reached)
