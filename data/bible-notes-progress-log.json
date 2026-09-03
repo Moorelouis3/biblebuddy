@@ -30865,6 +30865,67 @@
           "at": "2026-09-03T04:58:41Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 39,
+      "startedAt": "2026-09-03T06:46:26Z",
+      "finishedAt": "2026-09-03T06:55:23Z",
+      "durationMinutes": 9,
+      "sections": 7,
+      "cards": 30,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, so this was normal forward progress after Job 38, the single next chapter in canonical order with no existing wired-in file (confirmed no jobThirtyNineSource.ts existed and no reference to it in lib/bibleReaderStudyNotes.ts before this run). Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (30 verses). Job 39 continues the LORD's whirlwind speech, moving from the cosmic questions of chapter 38 down to a catalog of wild creatures God alone knows and provides for: the wild goats and hinds giving birth unseen in the rocks, the wild ass set free from any harness, the untamable wild ox (unicorn) that will never serve a farmer, the ostrich left without ordinary wisdom yet able to outrun a horse, the war horse's fearless charge into battle, and the hawk and eagle nesting on inaccessible cliffs by pure instinct, closing on the eagle feeding her young from the kill. Chunked into 7 sections by creature and beat (1-4 wild goats and hinds, 5-8 the wild ass, 9-12 the wild ox, 13-18 the ostrich, 19-21 the horse's strength, 22-25 the horse in battle, 26-30 the hawk and eagle). Density exactly 1.0 card per verse (30 verses, 30 cards), matching the density set by the immediately preceding chapter, lib/jobThirtyEightSource.ts (42 cards over 41 verses, about 1.02). scripts/check_bible_note_style.py passed clean. A manual section 13 eye check caught six opening lines leaning on a 'This question asks' or 'Verse four says' crutch (a direct restatement of the verse, banned by spec section 4) and rewrote each to open with one of the four approved moves instead, then re-ran the checker and the parser check to confirm nothing broke. Every card defines its key archaic or unfamiliar terms in plain language (hinds, bands, crib, unicorn, furrow, harrow, quiver, terrible, affrighted, crag), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji ending on the scripture-point or implication emoji, no repeated emoji within a card, no duplicate card titles across all 30 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file. Parser check passed via getBibleReaderStudySections('job', 39) (7/7 sections, verse ranges 1-4/5-8/9-12/13-18/19-21/22-25/26-30 with no gaps, text rendered verbatim, 30 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/jobThirtyNineSource.ts), preserveExactPhraseBodies for job extended from chapters 1-38 to 1-39, new applyPersonalJobThirtyNineChapterStudySections() function calling replaceStudySectionsForBookRange('job', 39, 39, JOB_THIRTY_NINE_PERSONAL_SECTIONS), invoked right after the Job 38 call. Next forward-progress target is Job 40.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-03T06:47:00Z"
+        },
+        {
+          "name": "target chapter determined: Job 39 (new chapter, forward progress)",
+          "at": "2026-09-03T06:47:30Z"
+        },
+        {
+          "name": "KJV text fetched for Job 39 (30 verses)",
+          "at": "2026-09-03T06:47:45Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-09-03T06:50:58Z"
+        },
+        {
+          "name": "source file written: lib/jobThirtyNineSource.ts",
+          "at": "2026-09-03T06:52:10Z"
+        },
+        {
+          "name": "style checker clean (30 cards, 0 problems)",
+          "at": "2026-09-03T06:52:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply function, call)",
+          "at": "2026-09-03T06:52:45Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 30 cards, 30 verses, no gaps)",
+          "at": "2026-09-03T06:53:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-03T06:53:44Z"
+        },
+        {
+          "name": "section 13 eye check found and fixed 6 restatement-style openings",
+          "at": "2026-09-03T06:54:30Z"
+        },
+        {
+          "name": "re-verified: style checker, parser check, and tsc all clean after fixes",
+          "at": "2026-09-03T06:55:23Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, bible-notes-progress-log.json)",
+          "at": "2026-09-03T06:56:00Z"
+        }
+      ]
     }
   ]
 }
