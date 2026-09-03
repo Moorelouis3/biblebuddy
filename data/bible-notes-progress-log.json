@@ -30926,6 +30926,59 @@
           "at": "2026-09-03T06:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 40,
+      "startedAt": "2026-09-03T08:47:53Z",
+      "finishedAt": "2026-09-03T09:00:02Z",
+      "durationMinutes": 12,
+      "sections": 5,
+      "cards": 25,
+      "verses": 24,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Session started with a fresh clone whose local main branch pointed at a stale cached snapshot (Esther 5) while HEAD was actually checked out on the true current tip (2 Kings/Bible-year Day 92, matching a prior run's self flagged git anomaly); git fetch origin --prune showed origin/main had since been force updated to that same tip, so git checkout -B main <tip> rebuilt local main cleanly with nothing lost. Priority queue and style-redo backlog both confirmed empty, so this was normal forward progress after Job 39, the single next chapter in canonical order with no existing wired-in file. Fetched real KJV text for Job 40 (24 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Job 40 closes the LORD's first whirlwind speech with Job's brief, humbled reply (I am vile, I will lay mine hand upon my mouth), then opens a second whirlwind speech repeating the gird up thy loins challenge from chapter 38 before shifting into a sarcastic invitation for Job to try administering perfect justice himself, and closes with the first half of the behemoth description. Chunked into 5 sections (1-5 Job chooses silence, 6-9 the second whirlwind speech begins, 10-14 array thyself with glory and beauty, 15-19 behold now behemoth, 20-24 behemoth's fearless confidence). Density about 1.04 cards per verse (24 verses, 25 cards), verse 4 split into two cards since it carries two separate teachable moments (vile, and laying a hand on the mouth). scripts/check_bible_note_style.py passed clean on the first save, zero problems across all 25 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (contendeth, reproveth, vile, disannul, arm, cast abroad, abase, behemoth, loins, sinews of his stones, covert, fens, compass him about, snares), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji ending on the scripture emoji, no repeated emoji within a card, no duplicate card titles across all 25 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file (the word moreover was deliberately dropped from the verse 1 title since it is a banned filler word under spec section 9, keeping the rest of the KJV phrase intact). Parser check passed exactly via getBibleReaderStudySections('job', 40) (5/5 sections, verse ranges 1-5/6-9/10-14/15-19/20-24 with no gaps, text rendered verbatim, 25 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/jobFortySource.ts), preserveExactPhraseBodies for job extended from chapters 1-39 to 1-40, new applyPersonalJobFortyChapterStudySections() function calling replaceStudySectionsForBookRange(\"job\", 40, 40, JOB_FORTY_PERSONAL_SECTIONS), invoked right after the Job 39 call. Next forward-progress target is Job 41.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-03T08:48:32Z"
+        },
+        {
+          "name": "target chapter determined: Job 40 (new chapter, forward progress; priority queue and style-redo backlog both empty)",
+          "at": "2026-09-03T08:49:00Z"
+        },
+        {
+          "name": "KJV text fetched for Job 40 (24 verses)",
+          "at": "2026-09-03T08:49:15Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline doc read in full",
+          "at": "2026-09-03T08:52:00Z"
+        },
+        {
+          "name": "source file written: lib/jobFortySource.ts",
+          "at": "2026-09-03T08:56:00Z"
+        },
+        {
+          "name": "style checker clean (25 cards, 0 problems)",
+          "at": "2026-09-03T08:56:34Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 40, apply function, call)",
+          "at": "2026-09-03T08:56:50Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 25 cards, 24 verses, no gaps)",
+          "at": "2026-09-03T08:57:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-03T08:57:18Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, bible-notes-progress-log.json)",
+          "at": "2026-09-03T09:00:02Z"
+        }
+      ]
     }
   ]
 }
