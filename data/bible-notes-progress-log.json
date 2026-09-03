@@ -30694,6 +30694,63 @@
           "at": "2026-09-02T22:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Job",
+      "chapter": 36,
+      "startedAt": "2026-09-03T00:46:40Z",
+      "finishedAt": "2026-09-03T00:55:33Z",
+      "durationMinutes": 9,
+      "sections": 7,
+      "cards": 34,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, so this was normal forward progress after Job 35, the single next chapter in canonical order with no existing wired-in file. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (33 verses). Job 36 is the fourth and final movement of Elihu's speech, building straight into the storm imagery that opens chapter 37 and God's own answer in chapter 38: Elihu resumes by claiming complete knowledge and promising to speak on God's behalf, describes a God who is mighty yet never despises anyone, who withholds nothing from the righteous while using affliction itself to expose the wicked's sin and open the ear to discipline, warns Job directly that his complaints have started to sound like the wicked he just described and that no ransom could buy off real judgment, urges Job not to desire death as an escape and to return to worship instead of complaint, then pivots into an extended nature meditation on God's greatness, tracing the water cycle (small drops of water rising as vapor and falling again as rain), the thunder Elihu calls the noise of his tabernacle, and closes with the storm visibly building, lightning, clouds blocking the light, and even cattle sensing the coming weather before people do, a detail that quietly sets up the whirlwind speech two chapters later. Chunked into 7 sections matching the chapter's own argument beats (1-4, 5-9, 10-14, 15-19, 20-25, 26-29, 30-33). Density about 1.03 cards per verse (33 verses, 34 cards). scripts/check_bible_note_style.py found 1 problem on the first pass (one card title carrying a semicolon straight from the KJV's poetic parallelism in verse 25), fixed by retitling that card to keep only the first clause, second pass clean with 0 problems across all 34 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key term in plain language, closes on meaning rather than mechanics, uses exactly four bullets each with a unique matched emoji and the final bullet landing on the scripture-point or implication emoji, and avoids hyphens, em dashes, semicolons, contractions, and banned filler or hedge words. Parser check passed exactly via getBibleReaderStudySections('job', 36) (7/7 sections, verse ranges 1-4/5-9/10-14/15-19/20-25/26-29/30-33 with no gaps, text rendered verbatim, 34 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/jobThirtySixSource.ts), preserveExactPhraseBodies for job extended from chapters 1-35 to 1-36, new applyPersonalJobThirtySixChapterStudySections() function calling replaceStudySectionsForBookRange('job', 36, 36, JOB_THIRTY_SIX_PERSONAL_SECTIONS), invoked right after the Job 35 call. Next forward-progress target is Job 37.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-03T00:46:40Z"
+        },
+        {
+          "name": "target chapter determined: Job 36 (new chapter, forward progress)",
+          "at": "2026-09-03T00:46:57Z"
+        },
+        {
+          "name": "KJV text fetched for Job 36 (33 verses)",
+          "at": "2026-09-03T00:47:10Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-09-03T00:47:15Z"
+        },
+        {
+          "name": "reference implementation and skill pipeline reviewed (jobThirtyFiveSource.ts, genesisThirtyOneSource.ts)",
+          "at": "2026-09-03T00:50:09Z"
+        },
+        {
+          "name": "source file written: lib/jobThirtySixSource.ts",
+          "at": "2026-09-03T00:51:27Z"
+        },
+        {
+          "name": "style checker clean (34 cards, 0 problems)",
+          "at": "2026-09-03T00:51:41Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply function, call)",
+          "at": "2026-09-03T00:51:57Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 34 cards, verbatim text confirmed)",
+          "at": "2026-09-03T00:52:17Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-03T00:54:04Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, bible-notes-progress-log.json)",
+          "at": "2026-09-03T00:55:33Z"
+        }
+      ]
     }
   ]
 }
