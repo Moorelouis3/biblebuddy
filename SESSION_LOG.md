@@ -3132,3 +3132,7 @@ Next up: Job 38
 ## 2026-09-03T04:27:08Z (bible year day writer run)
 Day: 89 — Rescue, Siege, and Jehu's Judgment (2 Kings 6-9) | Runtime: audio not rendered (no keys in this env) | Cast: no render yet
 Next up: Day 90
+
+## 2026-09-03T04:28:58Z (bible year day writer run)
+Day: 90 — Jehu's Reform and Israel's Decline (2 Kings 10-13) | Runtime: audio not rendered (no keys in this env) | Cast: no render yet
+Next up: Day 91
