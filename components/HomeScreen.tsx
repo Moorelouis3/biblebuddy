@@ -508,7 +508,10 @@ export default function HomeScreen() {
             <Link
               href={planHref}
               onClick={() => openPlanDay("home_continue_plan_click", planEntry.dayNumber)}
-              className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-[var(--bb-button,#2f7fe8)] px-6 text-sm font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95 active:scale-[0.99]"
+              className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-[#111827] px-6 text-sm font-black uppercase tracking-wide text-white shadow-sm transition hover:brightness-95 active:scale-[0.99]"
+              // Inline color because the global "a { color: inherit }" rule is
+              // unlayered and beats every Tailwind text utility on anchors.
+              style={{ color: "#ffffff" }}
             >
               {continueLabel}
             </Link>
@@ -520,7 +523,8 @@ export default function HomeScreen() {
             </p>
             <Link
               href="/plans"
-              className="mt-3 inline-block rounded-xl bg-[var(--bb-button,#2f7fe8)] px-6 py-3 text-sm font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)]"
+              className="mt-3 inline-block rounded-xl bg-[#111827] px-6 py-3 text-sm font-black uppercase tracking-wide text-white"
+              style={{ color: "#ffffff" }}
             >
               Explore Plans
             </Link>
@@ -626,7 +630,7 @@ export default function HomeScreen() {
                 🔥 CHALLENGE YOURSELF
               </span>
               <span className="mt-2.5 block">
-                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[var(--bb-button,#2f7fe8)] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)]">
+                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
                   Start →
                 </span>
               </span>
@@ -666,7 +670,7 @@ export default function HomeScreen() {
                 ⭐ EVERY CHAPTER
               </span>
               <span className="mt-2.5 block">
-                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[var(--bb-button,#2f7fe8)] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)]">
+                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
                   Play →
                 </span>
               </span>
@@ -749,7 +753,7 @@ export default function HomeScreen() {
               ) : null}
             </span>
           ) : null}
-          <span className="relative z-10 flex min-h-[44px] shrink-0 items-center justify-center rounded-lg bg-[var(--bb-button,#2f7fe8)] px-5 text-xs font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] sm:min-h-[40px]">
+          <span className="relative z-10 flex min-h-[44px] shrink-0 items-center justify-center rounded-lg bg-[#111827] px-5 text-xs font-black uppercase tracking-wide text-white sm:min-h-[40px]">
             Visit Group →
           </span>
         </Link>
