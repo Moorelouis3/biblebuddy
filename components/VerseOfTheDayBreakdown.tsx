@@ -128,19 +128,27 @@ export default function VerseOfTheDayBreakdown({
 
   return (
     <div className="overflow-hidden rounded-[28px] bg-[var(--bb-card,#ffffff)] shadow-xl">
-      {/* Hero - same art as the homepage card so the popup feels connected */}
+      {/* Hero - same pastel art as the homepage card so the popup feels
+          connected; light wash and dark text, never a dark overlay. */}
       <div className="relative">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${background.src})` }}
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/70" aria-hidden="true" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.22) 55%, rgba(255,255,255,0) 100%)",
+          }}
+          aria-hidden="true"
+        />
         <div className="relative z-10 px-5 py-6 sm:px-7 sm:py-8">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#e3c27c]">Verse of the Day</p>
-              <p className="mt-1 text-[11px] font-bold tracking-wide text-[#f0e6d2]/80">
+              <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#1f2937]">Verse of the Day</p>
+              <p className="mt-1 text-[11px] font-bold tracking-wide text-[#334155]">
                 {formatVotdDateLabel(entry.scheduled_date)}
               </p>
             </div>
@@ -149,16 +157,16 @@ export default function VerseOfTheDayBreakdown({
                 type="button"
                 onClick={onClose}
                 aria-label="Close"
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-black/40 text-lg font-black text-white transition hover:bg-black/60"
+                className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[rgba(15,23,42,0.12)] bg-white/65 text-lg font-black text-[#1f2937] backdrop-blur-sm transition hover:bg-white"
               >
                 ✕
               </button>
             ) : null}
           </div>
-          <p className="mt-4 font-serif text-xl font-bold leading-snug text-[#f7efdf] sm:text-2xl">
+          <p className="mt-4 font-serif text-xl font-bold leading-snug text-[#111827] sm:text-2xl">
             {entry.verse_text}
           </p>
-          <p className="mt-3 text-sm font-black text-[#e3c27c]">
+          <p className="mt-3 text-sm font-black text-[#334155]">
             {entry.reference} · {entry.translation}
           </p>
         </div>

@@ -42,6 +42,7 @@ export type VerseOfTheDayEntry = {
 export const VOTD_ENTRY_COLUMNS =
   "id, reference, book, chapter, verse_start, verse_end, translation, verse_text, scheduled_date, background_theme, title, author_section, context_section, meaning_section, application_section, takeaway, reflection_question, prayer";
 
+/** Legacy dark art, kept only so the admin page's theme selector compiles. */
 export const VOTD_BACKGROUNDS: Record<VotdBackgroundTheme, string> = {
   "purple-sunrise": "/verse-of-the-day/bg-purple-sunrise.jpg",
   "blue-sunrise": "/verse-of-the-day/bg-blue-sunrise.jpg",
@@ -49,12 +50,19 @@ export const VOTD_BACKGROUNDS: Record<VotdBackgroundTheme, string> = {
   "orange-night": "/verse-of-the-day/bg-orange-night.jpg",
 };
 
-const BACKGROUND_ROTATION: VotdBackgroundTheme[] = [
-  "purple-sunrise",
-  "blue-sunrise",
-  "green-mountains",
-  "orange-night",
-];
+/**
+ * The pastel set (2026-09-03) - light skies designed for dark text, matching
+ * the homepage's peach/mint/lavender system. Rotation is dayOfYear % 5 from
+ * the entry's scheduled date, so everyone sees the same background all day
+ * and it never shuffles on refresh.
+ */
+export const VOTD_PASTEL_BACKGROUNDS = [
+  { name: "lavender-sunrise", src: "/verse-of-the-day/verse-bg-01-lavender-sunrise.jpg" },
+  { name: "blue-morning", src: "/verse-of-the-day/verse-bg-02-blue-morning.jpg" },
+  { name: "peach-dawn", src: "/verse-of-the-day/verse-bg-03-peach-dawn.jpg" },
+  { name: "sage-mountains", src: "/verse-of-the-day/verse-bg-04-sage-mountains.jpg" },
+  { name: "cream-gold-clouds", src: "/verse-of-the-day/verse-bg-05-cream-gold-clouds.jpg" },
+] as const;
 
 /** The user's local calendar date as YYYY-MM-DD. */
 export function getVotdLocalDayKey(now = new Date()) {
@@ -62,17 +70,17 @@ export function getVotdLocalDayKey(now = new Date()) {
 }
 
 /**
- * Background for an entry: the scheduled theme, or a rotation derived from
- * the date so it stays identical all day for everyone even with no theme set.
+ * Background for an entry: dayOfYear % 5 into the pastel set, from the
+ * entry's scheduled date - deterministic, stable for the whole day, same for
+ * every viewer. (The per-entry background_theme column referred to the
+ * retired dark set and is intentionally ignored since the 2026-09-03 pastel
+ * redesign.)
  */
 export function getVotdBackground(entry: Pick<VerseOfTheDayEntry, "background_theme" | "scheduled_date">) {
-  if (entry.background_theme && VOTD_BACKGROUNDS[entry.background_theme]) {
-    return { theme: entry.background_theme, src: VOTD_BACKGROUNDS[entry.background_theme] };
-  }
   const [y, m, d] = entry.scheduled_date.split("-").map(Number);
-  const dayNumber = Math.floor(Date.UTC(y, (m || 1) - 1, d || 1) / 86_400_000);
-  const theme = BACKGROUND_ROTATION[((dayNumber % 4) + 4) % 4];
-  return { theme, src: VOTD_BACKGROUNDS[theme] };
+  const dayOfYear = Math.floor((Date.UTC(y, (m || 1) - 1, d || 1) - Date.UTC(y, 0, 1)) / 86_400_000) + 1;
+  const background = VOTD_PASTEL_BACKGROUNDS[dayOfYear % VOTD_PASTEL_BACKGROUNDS.length];
+  return { theme: background.name, src: background.src };
 }
 
 /** "TODAY · SEP 2" / "SEP 2" for archived days. */

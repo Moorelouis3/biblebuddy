@@ -126,40 +126,44 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
           }
         }}
         aria-label={`Verse of the Day - ${entry.reference}. Read the breakdown.`}
-        className="relative cursor-pointer overflow-hidden rounded-[24px] border border-black/30 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[#e3c27c] active:scale-[0.995]"
+        className="relative cursor-pointer overflow-hidden rounded-[24px] border border-[rgba(15,23,42,0.12)] shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.995]"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${background.src})` }}
           aria-hidden="true"
         />
-        {/* Left-to-right scrim keeps the words readable over any art */}
+        {/* Light left-to-right wash so dark text stays readable over the sky
+            art - never a dark overlay on the pastel set. */}
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(95deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.25) 100%)" }}
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.18) 55%, rgba(255,255,255,0) 100%)",
+          }}
           aria-hidden="true"
         />
 
         <div className="relative z-10 flex flex-col gap-2.5 px-5 py-5 sm:px-6 sm:py-6">
           <div className="flex items-center justify-between gap-3">
-            <p className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.22em] text-[#e3c27c]">
+            <p className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.22em] text-[#1f2937]">
               📖 Verse of the Day
               {alreadyRead ? (
-                <span className="rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-black tracking-normal text-[#f0e6d2]">
+                <span className="rounded-full border border-[rgba(15,23,42,0.12)] bg-white/65 px-2 py-0.5 text-[10px] font-black tracking-normal text-[#1f2937] backdrop-blur-sm">
                   ✓ Read
                 </span>
               ) : null}
             </p>
-            <span className="rounded-full border border-[#e3c27c]/60 px-3 py-1 text-[10px] font-black tracking-[0.12em] text-[#f0e6d2]">
+            <span className="rounded-full border border-[rgba(15,23,42,0.12)] bg-white/65 px-3 py-1 text-[10px] font-black tracking-[0.12em] text-[#1f2937] backdrop-blur-sm">
               {formatVotdDateLabel(entry.scheduled_date)}
             </span>
           </div>
 
-          <p className="max-w-[46rem] font-serif text-lg font-bold leading-snug text-[#f7efdf] sm:text-2xl">
+          <p className="max-w-[46rem] font-serif text-lg font-bold leading-snug text-[#111827] sm:text-2xl">
             {entry.verse_text}
           </p>
 
-          <p className="text-[13px] font-black text-[#e3c27c]">
+          <p className="text-[13px] font-black text-[#334155]">
             {entry.reference} · {entry.translation}
           </p>
 
@@ -170,9 +174,9 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
                 event.stopPropagation();
                 openBreakdown("votd_read_breakdown_click");
               }}
-              className="text-[12px] font-black uppercase tracking-[0.14em] text-[#e3c27c] transition hover:brightness-110"
+              className="text-[12px] font-black uppercase tracking-[0.14em] text-[#1f2937] transition hover:opacity-70"
             >
-              Read the Breakdown →
+              Read the Breakdown <span className="text-[var(--bb-accent,#2f7fe8)]">→</span>
             </button>
             <div className="flex items-center gap-1.5">
               {userId ? (
@@ -181,8 +185,8 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
                   onClick={(event) => void handleBookmark(event)}
                   aria-pressed={bookmarked}
                   aria-label={bookmarked ? "Remove bookmark" : "Bookmark this verse"}
-                  className={`grid h-9 w-9 place-items-center rounded-full text-base transition hover:bg-white/20 active:scale-95 ${
-                    bookmarked ? "bg-[#e3c27c]/25" : "bg-white/10"
+                  className={`grid h-9 w-9 place-items-center rounded-full border border-[rgba(15,23,42,0.12)] text-base text-[#1f2937] backdrop-blur-sm transition hover:bg-white active:scale-95 ${
+                    bookmarked ? "bg-white/90" : "bg-white/65"
                   }`}
                 >
                   {bookmarked ? "🔖" : "🏷️"}
@@ -192,7 +196,7 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
                 type="button"
                 onClick={(event) => void handleShare(event)}
                 aria-label="Share this verse"
-                className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-base transition hover:bg-white/20 active:scale-95"
+                className="grid h-9 w-9 place-items-center rounded-full border border-[rgba(15,23,42,0.12)] bg-white/65 text-base text-[#1f2937] backdrop-blur-sm transition hover:bg-white active:scale-95"
               >
                 {shareCopied ? "✓" : "↗"}
               </button>
