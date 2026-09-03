@@ -135,7 +135,7 @@ export default function AdminAnalyticsOverviewPage() {
               {sources.length ? (
                 sources.map(([source, counts]) => (
                   <p key={source} className="flex justify-between text-sm font-bold text-gray-700">
-                    <span className="capitalize">{source}</span>
+                    <span className="capitalize">{source === "direct" ? "Untracked*" : source}</span>
                     <span>
                       {counts.today} today · {counts.week} wk
                     </span>
@@ -144,6 +144,11 @@ export default function AdminAnalyticsOverviewPage() {
               ) : (
                 <p className="text-sm font-semibold text-gray-400">No signups in the window.</p>
               )}
+              <p className="mt-2 text-[11px] font-semibold leading-4 text-gray-400">
+                *Untracked = the browser sent no referrer and the link had no tag. Pinterest and
+                Facebook in-app browsers do this, so much of it is really them. Pins are UTM-tagged
+                as of Sep 3 - watch Pinterest climb out of this bucket.
+              </p>
             </div>
           </Card>
 
