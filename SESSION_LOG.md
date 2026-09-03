@@ -3176,3 +3176,7 @@ Next up: Psalms 1
 ## 2026-09-03T14:59:27Z (hourly chapter notes run)
 Chapter: Psalms 1 | Duration: 13 min | Sections: 2 | Cards: 16 | Status: pass
 Next up: Psalms 2
+
+## 2026-09-03T16:27:46Z (bible year day writer run)
+Day: 95 — Tribes, Genealogies, and Identity (1 Chronicles 5-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 96
