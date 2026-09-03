@@ -3128,3 +3128,7 @@ Next up: Job 37
 ## 2026-09-03T02:56:30Z (hourly chapter notes run)
 Chapter: Job 37 | Duration: 10 min | Sections: 5 | Cards: 27 | Status: pass
 Next up: Job 38
+
+## 2026-09-03T04:27:08Z (bible year day writer run)
+Day: 89 — Rescue, Siege, and Jehu's Judgment (2 Kings 6-9) | Runtime: audio not rendered (no keys in this env) | Cast: no render yet
+Next up: Day 90
