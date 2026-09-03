@@ -3144,3 +3144,7 @@ Next up: Job 39
 ## 2026-09-03T06:56:00Z (hourly chapter notes run)
 Chapter: Job 39 | Duration: 9 min | Sections: 7 | Cards: 30 | Status: pass
 Next up: Job 40
+
+## 2026-09-03T08:29:49Z (bible year day writer run)
+Day: 91 — Israel Falls to Assyria (2 Kings 14-17) | Runtime: audio not rendered (no keys in this env) | Cast: no render yet
+Next up: Day 92
