@@ -31223,6 +31223,123 @@
           "at": "2026-09-03T16:55:38Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 3,
+      "startedAt": "2026-09-03T18:46:01Z",
+      "finishedAt": "2026-09-03T19:07:30Z",
+      "durationMinutes": 21,
+      "sections": 4,
+      "cards": 16,
+      "verses": 8,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. This run hit the most serious git anomaly logged for this routine so far, in two stages. Stage one at session start: detached HEAD (333e1e1) had no common ancestor with the then-current origin/main (ebdd3da). Confirmed the detached HEAD held real, previously verified work missing from that origin/main (individual Psalms 1-2 and Job 30-42 chapter files, an analytics dashboard change), pushed it intact to rescue/unpushed-bible-notes-2026-09-03, reset local main to that origin/main, then wrote and fully verified an Esther 6 chapter against it (style checker clean, parser check passed, tsc clean) and committed locally. Stage two on git push: rejected as non fast forward. git fetch showed origin/main had been force pushed, mid run, to 333e1e1 exactly, discarding the ebdd3da line as the branch tip. That line, including this run's own local Esther 6 commit, was pushed intact to a second rescue branch (rescue/pre-force-push-line-2026-09-03) before anything else was touched. The new real origin/main tip already had its own estherSixSource.ts and had progressed through all of Job and into Psalms 1-2, making the Esther 6 chapter redundant there. Local main was reset again to the verified new tip and the full pipeline was re-run from scratch for the actual next chapter on that line. Both incident stages logged in MARCUS_HANDOFF.md (flagging a possible concurrent-run root cause) and as a single combined environment_anomaly event in data/bible-notes-usage-events.json. Priority queue and style-redo backlog both confirmed empty on the real tip. Normal forward progress after Psalms 2: Psalms 3 had no dedicated wired-in file. Fetched real KJV text for Psalms 3 (8 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 3 is traditionally headed as David's psalm from the days of Absalom's rebellion (2 Samuel 15-18): the scale of the uprising and the enemies' claim God has abandoned him (1-2, including a card on the KJV's deliberate Lord versus LORD capitalization marking Adonai versus the divine name YHWH), David's confident answer that the LORD is his shield and the lifter of his head, heard from God's holy hill even while fleeing Jerusalem (3-4), his calm in sleeping and waking safely mid rebellion, unafraid of overwhelming numbers (5-6), and his closing prayer for God to rise and strike his enemies, ending on the psalm's theme in one line, salvation belongs to the LORD (7-8). Chunked into 4 sections close to the psalm's own three Selah markers. Density 2.0 cards/verse (8 verses, 16 cards). scripts/check_bible_note_style.py passed clean on the first run, 16 cards, zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (Adonai/LORD, shield, glory as the lifter of the head, holy hill, sustained, cheek bone, ungodly, belongeth), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji ending on a book or arrow emoji, no duplicate card titles across all 16 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the file (one KJV verse contains a semicolon, so its phrase heading was split into two separate sub-phrase cards, matching the precedent already set for that exact situation). Parser check passed exactly via getBibleReaderStudySections('psalms', 3) (4/4 sections, verse ranges 1-2/3-4/5-6/7-8 with no gaps, 16 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added (lib/psalmsThreeSource.ts), preserveExactPhraseBodies extended from psalms chapter 2 to chapter 3, new applyPersonalPsalmsThreeStudySections() function added and called right after applyPersonalPsalmsTwoStudySections(). Next forward-progress target is Psalms 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-03T18:48:05Z"
+        },
+        {
+          "name": "session start git anomaly stage 1: detached HEAD (333e1e1) had no common ancestor with then-current origin/main (ebdd3da); confirmed ~50 commits of real unpushed work (Psalms 1-2, Job 30-42 individually, analytics dashboard) missing from that origin/main; pushed intact to rescue/unpushed-bible-notes-2026-09-03 before touching anything; reset local main to that origin/main to work from the shared tip",
+          "at": "2026-09-03T18:46:30Z"
+        },
+        {
+          "name": "target chapter determined: Esther 6 (new chapter, forward progress; redo-remaining empty)",
+          "at": "2026-09-03T18:48:05Z"
+        },
+        {
+          "name": "KJV text fetched (Esther 6, 14 verses)",
+          "at": "2026-09-03T18:48:14Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-09-03T18:48:20Z"
+        },
+        {
+          "name": "source file written (lib/estherSixSource.ts, 5 sections, 19 cards)",
+          "at": "2026-09-03T18:52:20Z"
+        },
+        {
+          "name": "style checker clean (19 cards, 0 problems)",
+          "at": "2026-09-03T18:52:23Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-09-03T18:53:36Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 19 cards)",
+          "at": "2026-09-03T18:53:54Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-03T18:55:16Z"
+        },
+        {
+          "name": "section 13 eye check found 3 cards opening too close to a verse restatement; rewrote openings, re-ran style checker clean",
+          "at": "2026-09-03T18:56:41Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, usage-events.json anomaly entry, MARCUS_HANDOFF.md)",
+          "at": "2026-09-03T18:56:41Z"
+        },
+        {
+          "name": "Esther 6 chapter fully written and verified against ebdd3da base, committed locally",
+          "at": "2026-09-03T18:58:30Z"
+        },
+        {
+          "name": "git push rejected as non fast forward; git fetch revealed origin/main had been force pushed mid run to 333e1e1 (a different, more advanced fork already containing Esther 1-10, all of Job, and Psalms 1-2); Esther 6 work now redundant there",
+          "at": "2026-09-03T18:59:00Z"
+        },
+        {
+          "name": "rescued the ebdd3da line plus this run's local Esther 6 commit to rescue/pre-force-push-line-2026-09-03; flagged incident in MARCUS_HANDOFF.md; reset local main to the verified new origin/main tip",
+          "at": "2026-09-03T18:59:53Z"
+        },
+        {
+          "name": "origin/main force pushed mid run to a different, more advanced fork (333e1e1); Esther 6 work no longer applicable there (already exists); rescued local main line to rescue/pre-force-push-line-2026-09-03, reset to real origin/main, redetermined target chapter",
+          "at": "2026-09-03T18:59:53Z"
+        },
+        {
+          "name": "target chapter redetermined: Psalms 3 (new chapter, forward progress on the real origin/main; redo-remaining and priority-queue both empty)",
+          "at": "2026-09-03T18:59:53Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 3, verses confirmed)",
+          "at": "2026-09-03T18:59:53Z"
+        },
+        {
+          "name": "style spec re-confirmed (already read this run); reference implementation reviewed for Psalms specifically (lib/psalmsTwoSource.ts)",
+          "at": "2026-09-03T19:02:05Z"
+        },
+        {
+          "name": "source file written (lib/psalmsThreeSource.ts, 4 sections, 16 cards)",
+          "at": "2026-09-03T19:02:42Z"
+        },
+        {
+          "name": "style checker clean (16 cards, 0 problems)",
+          "at": "2026-09-03T19:02:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range 1-2 to 1-3, replaceStudySectionsForBookRange call after Psalms Two)",
+          "at": "2026-09-03T19:03:13Z"
+        },
+        {
+          "name": "parser check passed (4 sections, 16 cards)",
+          "at": "2026-09-03T19:03:23Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-03T19:04:53Z"
+        },
+        {
+          "name": "section 13 eye check passed by inspection (all 16 cards open on one of the four approved moves, no verse restatement)",
+          "at": "2026-09-03T19:06:49Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, usage-events.json anomaly entry, MARCUS_HANDOFF.md)",
+          "at": "2026-09-03T19:06:49Z"
+        }
+      ]
     }
   ]
 }

@@ -187,3 +187,38 @@ teaching/opening/closing text, in line with other 4-chapter days), so this
 can't be checked from the day-writer environment (no keys to inspect the
 actual stored file) — worth a listen/re-render check on the machine that
 has the keys.
+
+## Urgent: origin/main was force pushed mid run today, replacing the whole shared branch history
+This 2026-09-03 hourly chapter run started on a detached HEAD (`333e1e1`)
+that had no common ancestor with `origin/main` (`ebdd3da`, the "Esther 5"
+line) — the same divergence family flagged at the top of this file
+several times before, but the worst variant yet: two genuinely separate,
+independently verified forks of this entire project, one having reached
+Job 1-42 and Psalms 1-2, the other having reached Esther 1-5, Nehemiah
+6-13, and various Bible in One Year scripts through Day 96.
+To be safe, the `ebdd3da` line's unique detached HEAD content was pushed
+intact to `rescue/unpushed-bible-notes-2026-09-03` early in this run, a
+full Esther 6 chapter was written and verified against that line, and it
+was committed locally. Partway through logging that chapter, `git push
+origin main` was rejected as non fast forward. `git fetch origin main`
+then showed `origin/main` had been force pushed (`ebdd3da...333e1e1
+main -> origin/main (forced update)`) to the `333e1e1` line, discarding
+the `ebdd3da` line as the branch tip entirely. That line, including this
+run's own local commit on top of it (the Esther 6 work, which turned out
+to be unnecessary anyway since the `333e1e1` line already has its own
+`estherSixSource.ts`), was pushed intact to a second rescue branch,
+`rescue/pre-force-push-line-2026-09-03`, before anything else was
+touched. `origin/main` itself was never written to during any of this,
+so nothing on the live branch was damaged, but a force push that discards
+an entire branch's history like this is exactly the outcome the earlier
+entries in this file warned was a risk of the environment repeatedly
+seeding fresh sessions with a stale or wrong local `main` ref. This
+deserves a look from a person, not just another automated log: confirm
+the force push to `origin/main` was intentional (and by whom or what), and
+decide whether anything unique to the `ebdd3da` line (its own Esther 1-5
+chapters, Nehemiah 6-13, the Bible in One Year scripts through Day 96) is
+still wanted, since it now only exists on `rescue/pre-force-push-line-2026-09-03`
+and would otherwise sit there indefinitely. This run reset its own local
+`main` to the verified new `origin/main` tip and continued with normal
+forward progress from there (next chapter after Psalms 2), rather than
+attempting to resolve the force push itself.
