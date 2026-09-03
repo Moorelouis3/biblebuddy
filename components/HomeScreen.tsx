@@ -318,7 +318,10 @@ export default function HomeScreen() {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-[960px] flex-col gap-6 px-4 pb-28 pt-5">
+    // pb stays small: AppShell already reserves the bottom bar's height and
+    // renders the Report a Problem card right below this - pb-28 left a big
+    // hole between the group card and the reporter (Louis, 2026-09-03).
+    <div className="mx-auto flex w-full max-w-[960px] flex-col gap-6 px-4 pb-2 pt-5">
       {/* 1-2. Greeting left, compact stat cards right */}
       <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
