@@ -3184,3 +3184,7 @@ Next up: Day 96
 ## 2026-09-03T16:30:44Z (bible year day writer run)
 Day: 96 — Return, Saul, and David's Supporters (1 Chronicles 9-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 97 (run stops here — 2-day-per-run limit reached)
+
+## 2026-09-03T16:56:01Z (hourly chapter notes run)
+Chapter: Psalms 2 | Duration: 9 min | Sections: 4 | Cards: 27 | Status: pass
+Next up: Psalms 3
