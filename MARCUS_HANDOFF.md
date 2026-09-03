@@ -1,3 +1,18 @@
+## Session started with a stale local main branch, unrelated history from origin
+This run's fresh checkout had a local `main` branch pointing at an old commit
+("Add Esther 5 study notes" / Day 44 era) while the actual work happened on a
+detached HEAD sitting on the real, current origin/main (Day 90 / Job 39 era).
+`git merge-base` between the two found no common ancestor at all — genuinely
+unrelated histories, not just "behind." A plain `git fetch` confirmed
+origin/main really is the Day 90/Job 39 tip; the stale local `main` was fixed
+with `git checkout -B main origin/main` before committing and pushing, so
+nothing was lost. This is the same class of problem the
+`rescue/unpushed-bible-notes-2026-08-13` branch was created for before —
+worth a look at how this environment seeds/updates the local `main` ref on
+each fresh session, since a future run that pushes without noticing the
+divergence risks either a rejected push or, worse, someone reaching for
+`--force` on it.
+
 ## Blog writer run 2026-09-02: duplicate Armor of God topic dequeued, zero posts written this run
 Today's run took the front of content-buddy's blog/topics-queue.json,
 which was still "The Armor of God Explained" (the-armor-of-god-explained,
