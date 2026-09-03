@@ -3112,3 +3112,7 @@ Queue remaining: 27, next up "Is It a Sin to Doubt God?"
 ## 2026-09-02T22:58:30Z (hourly chapter notes run)
 Chapter: Job 35 | Duration: 11 min | Sections: 4 | Cards: 17 | Status: pass
 Next up: Job 36
+
+## 2026-09-03T00:26:04Z (bible year day writer run)
+Day: 87 — Ahab's Fall and Elijah's Final Warnings (1 Kings 20-22; 2 Kings 1) | Runtime: audio not rendered (no keys in this env) | Cast: no render yet
+Next up: Day 88
