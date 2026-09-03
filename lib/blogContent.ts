@@ -76,7 +76,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-joseph",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/who-was-joseph-banner.png",
+    image: "/who-was-joseph-banner-v2.jpg",
     groupPost: {
       title: "Who Was Joseph? From the Pit to the Palace 📖",
       content:
@@ -93,7 +93,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/names-of-god-meanings",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/names-of-god-meanings-banner.png",
+    image: "/names-of-god-meanings-banner-v2.jpg",
     groupPost: {
       title: "The Names of God and What They Mean 📖",
       content:
@@ -110,7 +110,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/armor-of-god-explained",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/armor-of-god-explained-banner.png",
+    image: "/armor-of-god-explained-banner-v2.jpg",
     groupPost: {
       title: "The Armor of God Explained 📖",
       content:
