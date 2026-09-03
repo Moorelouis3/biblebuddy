@@ -3160,3 +3160,7 @@ Next up: Job 41
 ## 2026-09-03T10:56:09Z (hourly chapter notes run)
 Chapter: Job 41 | Duration: 9 min | Sections: 8 | Cards: 34 | Status: pass
 Next up: Job 42
+
+## 2026-09-03T12:39:56Z (bible year day writer run)
+Day: 93 — Josiah's Reform and Judah's Fall (2 Kings 22-25) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 94 (run stops here — 2-day-per-run limit reached; Day 45's earlier draft this run was superseded by an already-published upstream version, see MARCUS_HANDOFF.md)

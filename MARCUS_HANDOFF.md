@@ -13,6 +13,17 @@ each fresh session, since a future run that pushes without noticing the
 divergence risks either a rejected push or, worse, someone reaching for
 `--force` on it.
 
+Recurred in the very next Bible in One Year day writer run (2026-09-03,
+Day 93 era): local `main` was again stale (Day 44 era) against the real
+origin/main (Day 92 era). This run wrote a Day 45 script against the stale
+base, then discovered on `git push` that Day 45 already existed upstream
+(scripts run through Day 92). No data was lost — the stale local commit
+was this run's own unpushed work, safely discarded with `git reset --hard
+origin/main`, and the run re-targeted the actual next missing day (93).
+But this is now two occurrences in a row for this same routine, so the
+environment-seeding question above is worth prioritizing rather than
+trusting each run to catch it by hand.
+
 ## Blog writer run 2026-09-02: duplicate Armor of God topic dequeued, zero posts written this run
 Today's run took the front of content-buddy's blog/topics-queue.json,
 which was still "The Armor of God Explained" (the-armor-of-god-explained,
@@ -151,7 +162,7 @@ that claiming full certainty either way goes beyond the text. Flagging per
 the format spec's doctrinal-sensitivity rule so Louis can read it himself.
 
 ## Bible in One Year days waiting on local audio render
-Scripts through Day 92 are written and pushed, but none of them have been
+Scripts through Day 93 are written and pushed, but none of them have been
 rendered — this environment has no OPENAI_API_KEY or Supabase service key.
 Run `npx tsx scripts/render-pending-bible-year-days.ts` on a machine that
 has those keys; it auto-detects every day with a script but no current
