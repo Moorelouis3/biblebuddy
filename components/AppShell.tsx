@@ -23,6 +23,7 @@ import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profil
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import BottomNav from "./BottomNav";
+import ReportProblemCard from "./ReportProblemCard";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import {
   applyAppThemeToDocument,
@@ -3530,6 +3531,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         )}
         {children}
+        {/* Report a Problem lives at the bottom of EVERY app page (Louis,
+            2026-09-03) so people report from the page where the issue
+            happened - the report captures the current page itself. */}
+        {showBottomNav ? <ReportProblemCard /> : null}
       </main>
 
       {/* The way in to TV, the games, invite, chat and notes, none of which
