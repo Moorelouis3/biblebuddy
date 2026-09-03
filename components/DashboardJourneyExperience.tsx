@@ -83,7 +83,7 @@ import { buildPersistedFeatureTours, normalizeFeatureTours } from "../lib/featur
 import { getTriviaChapter } from "../lib/triviaGameData";
 
 const EmbeddedSettingsPage = dynamic(() => import("../app/settings/page"), { ssr: false });
-const EmbeddedAdminAnalyticsPage = dynamic(() => import("../app/admin/analytics/page"), { ssr: false });
+const EmbeddedAdminAnalyticsPage = dynamic(() => import("../app/admin/analytics/full/page"), { ssr: false });
 
 const BIBLE_BUDDY_3_MODE_GATE_STORAGE_KEY = "bb:3-study-mode-selected";
 const BIBLE_BUDDY_3_EXISTING_USER_CUTOFF_MS = Date.parse("2026-05-17T00:00:00.000Z");
