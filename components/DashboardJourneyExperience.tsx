@@ -11,6 +11,7 @@ import BibleReadingModal from "./BibleReadingModal";
 import DashboardDailyTaskCallout, { DatabaseTermTakeover, type BibleDatabaseTerm } from "./DashboardDailyTaskCallout";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import BibleYearDeepStudySectionCards from "./BibleYearDeepStudySectionCards";
+import EmbeddedStudyNotesReader from "./EmbeddedStudyNotesReader";
 import BibleYearLessonAudioPlayer from "./BibleYearLessonAudioPlayer";
 import YouTubeTrackedPlayer from "./YouTubeTrackedPlayer";
 import { VerseHighlighter } from "./VerseHighlighter";
@@ -11245,6 +11246,13 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearSummaryTask(day: GenesisBibleYearDay) {
+    // Summary cards retired 2026-09-03 - the day's Study Notes are the
+    // assigned Scripture in the embedded reader everywhere in the plan.
+    return renderBibleYearScriptureNotesTask(day);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function renderBibleYearSummaryTaskLegacy(day: GenesisBibleYearDay) {
     const { markdown: deepNotesMarkdown, sections: deepStudySections } = getBibleYearDayDeepNotes(day.dayNumber);
     const trackSummaryStudyNotesSection = (section: BibleYearDeepStudySection) => {
       void trackStudyNotesSectionOpened({
@@ -11553,6 +11561,35 @@ Before we understand redemption, we need to understand what God made humanity fo
   }
 
   function renderBibleYearScriptureNotesTask(day: GenesisBibleYearDay) {
+    // The approved 2026-09-03 design: no more summary cards - Study Notes IS
+    // the day's assigned Scripture, read in the same embedded reader the main
+    // Bible uses (same KJV text, same underlines, same Insight Cards). The
+    // chapters come straight from the plan's own reading list.
+    return (
+      <div className="p-2 sm:p-3">
+        <EmbeddedStudyNotesReader
+          chapters={day.readings.map((reading) => ({ book: reading.book, chapter: reading.chapter }))}
+          onFirstInteraction={() => {
+            void trackStudyNotesViewed({
+              userId,
+              username: userName,
+              source: "bible_in_one_year",
+              sourceLabel: "Bible in One Year",
+              itemKey: `day-${day.dayNumber}`,
+              itemTitle: day.title,
+              contentLabel: `Day ${day.dayNumber} - ${day.title}`,
+            });
+            if (bibleYearCompletedCardsByDay[day.dayNumber]?.study_notes !== true) {
+              markBibleYearDayCardComplete(day, "study_notes");
+            }
+          }}
+        />
+      </div>
+    );
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function renderBibleYearScriptureNotesTaskLegacy(day: GenesisBibleYearDay) {
     const sections = getBibleYearScriptureNoteSections(day);
     const canOpenPhraseExplanation = isPaidUser || isOwnerDashboard;
 
@@ -13705,7 +13742,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         key: "scripture",
         eyebrow: "Study Notes",
         title: "Study Notes",
-        body: "Key insights and takeaways from today's lesson.",
+        body: "Read the passage and tap underlined phrases",
         done: studyNotesComplete,
         badge: null,
         icon: (
@@ -15788,19 +15825,11 @@ Before we understand redemption, we need to understand what God made humanity fo
                 </button>
               </div>
               <div className="px-2 py-3 sm:px-4 sm:py-5" data-bible-year-deep-notes-scroll={`day-${day.dayNumber}`}>
-                {deepStudySections ? (
-                  <BibleYearDeepStudySectionCards
-                    sections={deepStudySections || []}
-                    activeReference={bibleYearOpenVerseBreakdownKey}
-                    onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
-                    onSectionOpen={trackBibleYearStudyNotesSection}
-                    intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
-                    closing={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
-                    topId={`bible-year-day-${day.dayNumber}-deep-study-top`}
-                  />
-                ) : (
-                  <ChapterNotesMarkdown>{deepNotesMarkdown || ""}</ChapterNotesMarkdown>
-                )}
+                {/* Summary cards retired 2026-09-03: the day's Scripture in
+                    the same embedded reader the main Bible uses. */}
+                <EmbeddedStudyNotesReader
+                  chapters={day.readings.map((reading) => ({ book: reading.book, chapter: reading.chapter }))}
+                />
               </div>
             </div>
           ) : null}
@@ -16005,19 +16034,11 @@ Before we understand redemption, we need to understand what God made humanity fo
               </button>
             </div>
             <div className="bible-year-study-notes-scroll h-[calc(100%-68px)] overflow-y-auto px-4 py-5" data-bible-year-deep-notes-scroll="day-one">
-              {deepStudySections ? (
-                <BibleYearDeepStudySectionCards
-                  sections={deepStudySections || []}
-                  activeReference={bibleYearOpenVerseBreakdownKey}
-                  onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
-                  onSectionOpen={trackBibleYearStudyNotesSection}
-                  intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
-                  closing={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
-                  topId={`bible-year-day-${day.dayNumber}-deep-study-top`}
-                />
-              ) : (
-                <ChapterNotesMarkdown>{deepNotesMarkdown}</ChapterNotesMarkdown>
-              )}
+              {/* Summary cards retired 2026-09-03: the day's Scripture in the
+                  same embedded reader the main Bible uses. */}
+              <EmbeddedStudyNotesReader
+                chapters={day.readings.map((reading) => ({ book: reading.book, chapter: reading.chapter }))}
+              />
             </div>
           </div>
         ) : null}
