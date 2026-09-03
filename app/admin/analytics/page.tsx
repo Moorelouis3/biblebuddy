@@ -6111,7 +6111,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                   </div>
                   <div>
                     <h1 className="text-[42px] font-black leading-none tracking-tight text-[var(--bb-text-primary,#101827)] sm:text-[48px]">Analytics</h1>
-                    <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">Users, signups, revenue, and upgrades at a glance.</p>
+                    <p className="mt-2 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">Users, signups, and upgrades at a glance.</p>
                   </div>
                 </div>
               </div>
