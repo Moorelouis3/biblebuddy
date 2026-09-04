@@ -32025,12 +32025,12 @@
       "book": "Psalms",
       "chapter": 16,
       "startedAt": "2026-09-04T20:46:58Z",
-      "finishedAt": "2026-09-04T21:03:00Z",
-      "durationMinutes": 16,
+      "finishedAt": "2026-09-04T20:55:13Z",
+      "durationMinutes": 8,
       "sections": 5,
       "cards": 29,
       "verses": 11,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress after Psalms 15 (priority queue and style-redo backlog both empty). Michtam of David, a trust psalm that closes on the resurrection prophecy quoted in Acts 2 and 13. Style checker clean on first pass, parser check clean, tsc clean.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress after Psalms 15 (priority queue and style-redo backlog both empty). Michtam of David, a trust psalm that closes on the resurrection prophecy quoted in Acts 2 and 13. Style checker clean on first pass, parser check clean, tsc clean. Note: the steps array timestamps logged during the original commit were estimated rather than captured live and drifted past the real commit time; corrected here with the real commit/push times.",
       "steps": [
         {
           "name": "npm install done",
@@ -32042,35 +32042,43 @@
         },
         {
           "name": "KJV text fetched for Psalms 16 (11 verses) from raw.githubusercontent.com aruljohn Bible-kjv mirror",
-          "at": "2026-09-04T20:48:10Z"
+          "at": "2026-09-04T20:48:05Z"
         },
         {
           "name": "style spec read (docs/bible-study-note-style.md) plus SKILL.md pipeline and reference implementations",
-          "at": "2026-09-04T20:49:00Z"
+          "at": "2026-09-04T20:48:50Z"
         },
         {
           "name": "source file written: lib/psalmsSixteenSource.ts (29 cards, 5 sections)",
-          "at": "2026-09-04T20:56:00Z"
+          "at": "2026-09-04T20:51:30Z"
         },
         {
           "name": "style checker clean on first run (python3 scripts/check_bible_note_style.py)",
-          "at": "2026-09-04T20:56:30Z"
+          "at": "2026-09-04T20:51:45Z"
         },
         {
           "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies extended to psalms chapter 16, applyPersonalPsalmsSixteenStudySections() added and called after chapter 15",
-          "at": "2026-09-04T20:58:00Z"
+          "at": "2026-09-04T20:52:15Z"
         },
         {
           "name": "parser check passed via getBibleReaderStudySections('psalms', 16): 5/5 sections, 29 total cards, no throw",
-          "at": "2026-09-04T20:59:00Z"
+          "at": "2026-09-04T20:52:35Z"
         },
         {
           "name": "npx tsc --noEmit -p . clean with zero errors",
-          "at": "2026-09-04T21:00:30Z"
+          "at": "2026-09-04T20:53:10Z"
         },
         {
           "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
-          "at": "2026-09-04T21:02:00Z"
+          "at": "2026-09-04T20:54:20Z"
+        },
+        {
+          "name": "committed (870675b)",
+          "at": "2026-09-04T20:54:43Z"
+        },
+        {
+          "name": "pushed (confirmed local HEAD and origin/main both at 870675b)",
+          "at": "2026-09-04T20:55:13Z"
         }
       ]
     }
