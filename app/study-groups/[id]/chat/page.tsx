@@ -8,6 +8,7 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import ReactMarkdown from "react-markdown";
 import { useEffect, useMemo, useState, useRef, useCallback, type CSSProperties, type MouseEvent } from "react";
+import { useAccountGate } from "@/components/AccountRequiredModal";
 import { createPortal } from "react-dom";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -959,6 +960,7 @@ function GroupCommentSection({
   targetCommentId?: string | null;
   mentionItems?: MentionCatalogItem[];
 }) {
+  const { ensureFullAccount, accountGateModal } = useAccountGate("comment in the group");
   const [comments, setComments] = useState<GroupFeedComment[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -1162,6 +1164,8 @@ function GroupCommentSection({
 
   async function submitComment(content: string, parentId: string | null) {
     if (!content.trim() || submitting) return;
+    // Replying requires a real account - name, email, profile picture.
+    if (!(await ensureFullAccount())) return;
     setSubmitting(true);
     setSubmitError(null);
     const text = content.trim();
@@ -1561,6 +1565,7 @@ function GroupCommentSection({
 
   return (
     <div className="mt-4 border-t border-[var(--bb-card-border,#efe5d9)] pt-4">
+      {accountGateModal}
       {loading ? (
         <p className="py-2 text-center text-xs text-[var(--bb-text-muted,#9ca3af)]">Loading comments...</p>
       ) : topLevelComments.length === 0 ? (
@@ -2468,6 +2473,7 @@ export default function GroupChatPage() {
   const [submittingNewSeriesPost, setSubmittingNewSeriesPost] = useState(false);
 
   const feedRef = useRef<HTMLDivElement>(null);
+  const { ensureFullAccount, accountGateModal } = useAccountGate("post in the group");
   const communityRootRef = useRef<HTMLDivElement>(null);
   const postEditor = useEditor({
     extensions: [
@@ -4070,6 +4076,8 @@ export default function GroupChatPage() {
   }
 
   async function handleSubmitPost() {
+    // Posting requires a real account - name, email, profile picture.
+    if (!(await ensureFullAccount())) return;
     const editorHtml = postEditor?.getHTML() ?? "";
     let normalizedContent = editorHtml === "<p></p>" ? "" : editorHtml;
     const hasContent = stripHtml(normalizedContent).length > 0;
@@ -5189,6 +5197,7 @@ export default function GroupChatPage() {
   // â”€â”€ Render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   return (
     <div ref={communityRootRef} className={`bb-community-page ${isDashboardEmbed ? "bb-community-embedded" : "min-h-screen"} text-[var(--bb-text-primary,#111827)]`}>
+      {accountGateModal}
 
       {/* â”€â”€ Header banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {!isDashboardEmbed ? (

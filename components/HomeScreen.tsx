@@ -514,7 +514,7 @@ export default function HomeScreen() {
             <Link
               href={planHref}
               onClick={() => openPlanDay("home_continue_plan_click", planEntry.dayNumber)}
-              className="mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-[#111827] px-6 text-sm font-black uppercase tracking-wide text-white shadow-sm transition hover:brightness-95 active:scale-[0.99]"
+              className="bb-continue-pulse mt-4 flex min-h-[48px] w-full items-center justify-center rounded-xl bg-[#111827] px-6 text-sm font-black uppercase tracking-wide text-white shadow-sm transition hover:brightness-95 active:scale-[0.99]"
               // Inline color because the global "a { color: inherit }" rule is
               // unlayered and beats every Tailwind text utility on anchors.
               style={{ color: "#ffffff" }}

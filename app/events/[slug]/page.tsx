@@ -14,6 +14,7 @@ export const dynamic = "force-dynamic";
  */
 
 import Link from "next/link";
+import { useAccountGate } from "../../../components/AccountRequiredModal";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
@@ -59,6 +60,7 @@ export default function CommunityEventPage() {
   const { userId, loading: authLoading } = useSupabaseUser();
 
   const [joined, setJoined] = useState(false);
+  const { ensureFullAccount, accountGateModal } = useAccountGate("join the study");
   const [joining, setJoining] = useState(false);
   const [justJoined, setJustJoined] = useState(false);
   const [reminders, setReminders] = useState(false);
@@ -177,6 +179,9 @@ export default function CommunityEventPage() {
       router.push(`/login?next=${encodeURIComponent(`/events/${event.slug}`)}`);
       return;
     }
+    // Joining requires a real account - name, email, profile picture - so
+    // the community grid shows real people (Louis, 2026-09-04).
+    if (!(await ensureFullAccount())) return;
     setJoining(true);
     try {
       const { error } = await supabase
@@ -252,6 +257,7 @@ export default function CommunityEventPage() {
 
   return (
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-5 px-4 pb-28 pt-4">
+      {accountGateModal}
       <header
         className="overflow-hidden rounded-[28px] border border-[#3a2c14] p-6 text-center"
         style={{

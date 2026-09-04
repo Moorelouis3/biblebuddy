@@ -5048,3 +5048,13 @@ body.bb-modal-scroll-locked {
 .dashboard-shell .overflow-x-auto {
   touch-action: pan-x pan-y;
 }
+
+/* Continue-button pulse on the home Day Rail (Louis, 2026-09-04). */
+@keyframes bb-continue-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(17, 24, 39, 0.35); }
+  50% { transform: scale(1.015); box-shadow: 0 0 0 10px rgba(17, 24, 39, 0); }
+}
+.bb-continue-pulse { animation: bb-continue-pulse 2.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .bb-continue-pulse { animation: none; }
+}
