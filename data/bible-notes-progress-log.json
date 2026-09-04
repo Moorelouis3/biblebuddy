@@ -31507,6 +31507,59 @@
           "at": "2026-09-04T00:56:23Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 7,
+      "startedAt": "2026-09-04T02:46:22Z",
+      "finishedAt": "2026-09-04T02:58:00Z",
+      "durationMinutes": 12,
+      "sections": 7,
+      "cards": 23,
+      "verses": 17,
+      "notes": "New chapter, forward progress mode (priority queue and style-redo backlog both empty; only the legacy PSALMS_7_21_PERSONAL_SECTIONS bulk placeholder covered this chapter before). Psalms 7 is headed a Shiggaion of David concerning the words of Cush the Benjamite: David trusts God against an enemy pictured as a lion (1-2), swears an oath of innocence covering friends and enemies alike (3-5), calls God to arise and hold open court before the congregation (6-8), names God as the one who tries the heart and reins with a constant, not moody, anger toward evil (9-11), pictures judgment prepared like a sharpened sword and bent bow (12-13), describes the wicked man falling into the very pit he dug for someone else (14-16), and closes with praise to the LORD Most High, a deliberate shift in scale from the single named enemy at the opening. The psalm's Shiggaion/Cush the Benjamite heading (not itself a numbered verse in the KJV mirror used for fetching) was woven into the first card's body rather than given its own invented title, following the precedent in lib/psalmsThreeSource.ts for the Absalom heading. Density 1.35 cards/verse, on the leaner end of the recent Psalms run since a few verses combine naturally into one card (the sword/bow pair in verse 12). Style checker ran clean on the first pass, zero problems. Parser check and tsc both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-04T02:46:52Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 7 (new chapter, forward progress mode)",
+          "at": "2026-09-04T02:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 7 (17 verses)",
+          "at": "2026-09-04T02:47:35Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-09-04T02:49:20Z"
+        },
+        {
+          "name": "source file lib/psalmsSevenSource.ts written",
+          "at": "2026-09-04T02:53:40Z"
+        },
+        {
+          "name": "style checker clean (23 cards, 0 problems)",
+          "at": "2026-09-04T02:54:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply function, replaceStudySectionsForBookRange call after the bulk 7-21 range)",
+          "at": "2026-09-04T02:54:35Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 23 cards)",
+          "at": "2026-09-04T02:55:05Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-04T02:55:31Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json + docs/BIBLE_BUDDY_NOTES_PROGRESS.md + SESSION_LOG.md)",
+          "at": "2026-09-04T02:57:15Z"
+        }
+      ]
     }
   ]
 }
