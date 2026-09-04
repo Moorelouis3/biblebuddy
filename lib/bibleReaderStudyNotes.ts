@@ -525,6 +525,7 @@ import { PSALMS_THIRTEEN_PERSONAL_SECTIONS } from "./psalmsThirteenSource";
 import { PSALMS_FOURTEEN_PERSONAL_SECTIONS } from "./psalmsFourteenSource";
 import { PSALMS_FIFTEEN_PERSONAL_SECTIONS } from "./psalmsFifteenSource";
 import { PSALMS_SIXTEEN_PERSONAL_SECTIONS } from "./psalmsSixteenSource";
+import { PSALMS_SEVENTEEN_PERSONAL_SECTIONS } from "./psalmsSeventeenSource";
 import { PSALMS_1_6_PERSONAL_SECTIONS } from "./psalmsOneToSixPersonalNotes";
 import { PSALMS_7_21_PERSONAL_SECTIONS } from "./psalmsSevenToTwentyOnePersonalNotes";
 import { PSALMS_22_36_PERSONAL_SECTIONS } from "./psalmsTwentyTwoToThirtySixPersonalNotes";
@@ -920,7 +921,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "nehemiah" && section.chapter >= 1 && section.chapter <= 13) ||
     (normalizeBook(book) === "esther" && section.chapter >= 1 && section.chapter <= 10) ||
     (normalizeBook(book) === "job" && section.chapter >= 1 && section.chapter <= 42) ||
-    (normalizeBook(book) === "psalms" && section.chapter >= 1 && section.chapter <= 16);
+    (normalizeBook(book) === "psalms" && section.chapter >= 1 && section.chapter <= 17);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1963,6 +1964,10 @@ function applyPersonalPsalmsFifteenStudySections() {
 
 function applyPersonalPsalmsSixteenStudySections() {
   replaceStudySectionsForBookRange("psalms", 16, 16, PSALMS_SIXTEEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPsalmsSeventeenStudySections() {
+  replaceStudySectionsForBookRange("psalms", 17, 17, PSALMS_SEVENTEEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalPsalmsTwentyTwoThroughThirtySixStudySections() {
@@ -9480,6 +9485,7 @@ applyPersonalPsalmsThirteenStudySections();
 applyPersonalPsalmsFourteenStudySections();
 applyPersonalPsalmsFifteenStudySections();
 applyPersonalPsalmsSixteenStudySections();
+applyPersonalPsalmsSeventeenStudySections();
 applyPersonalPsalmsTwentyTwoThroughThirtySixStudySections();
 applyPersonalPsalmsThirtySevenThroughFiftyOneStudySections();
 applyPersonalPsalmsFiftyTwoThroughSixtySixStudySections();

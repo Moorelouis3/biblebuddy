@@ -3304,3 +3304,7 @@ Next up: Psalms 17
 ## 2026-09-04T22:16:43Z (blog writer run)
 Article: Is It a Sin to Doubt God? | Words: ~3300 | Category: Christian Foundations | Status: pass
 Queue remaining: 26
+
+## 2026-09-04T22:58:00Z (hourly chapter notes run)
+Chapter: Psalms 17 | Duration: 11 min | Sections: 5 | Cards: 35 | Status: pass
+Next up: Psalms 18
