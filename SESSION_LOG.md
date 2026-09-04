@@ -3300,3 +3300,7 @@ Next up: Day 111 (run stops here — 2-day-per-run limit reached)
 ## 2026-09-04T20:55:13Z (hourly chapter notes run)
 Chapter: Psalms 16 | Duration: 8 min | Sections: 5 | Cards: 29 | Status: pass
 Next up: Psalms 17
+
+## 2026-09-04T22:16:43Z (blog writer run)
+Article: Is It a Sin to Doubt God? | Words: ~3300 | Category: Christian Foundations | Status: pass
+Queue remaining: 26

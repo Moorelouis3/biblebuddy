@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "is-it-a-sin-to-doubt-god",
+    title: "Is It a Sin to Doubt God?",
+    description:
+      "Is it a sin to doubt God? See what Thomas, John the Baptist, and the father in Mark 9 teach about honest doubt, and how it differs from unbelief.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/is-it-a-sin-to-doubt-god",
+    publishedAt: "2026-09-05",
+    readTime: "16 min read",
+    image: "/is-it-a-sin-to-doubt-god-banner.png",
+    groupPost: {
+      title: "Is It a Sin to Doubt God? 📖",
+      content:
+        "You typed a question into your phone at night.\nIs it a sin to doubt God.\n\n📌 Doubt is not the same thing as unbelief.\n\n📖 Thomas said he would not believe until he saw the nails.\n📖 John the Baptist doubted from inside a prison cell.\n📖 A desperate father said Lord I believe, help my unbelief.\n\nNew article on:\n🟢 the real difference between **doubt** and **unbelief**\n🟢 why Jesus never shamed a single honest question\n🟢 what to do the next time doubt shows up\n\nHave you ever been afraid to say your doubts out loud? 🙏",
+    },
+  },
+  {
     slug: "who-was-joseph",
     title: "Who Was Joseph? From the Pit to the Palace",
     description:
