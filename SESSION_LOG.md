@@ -3227,4 +3227,8 @@ Next up: Psalms 8
 
 ## 2026-09-04T04:28:54Z (bible year day writer run)
 Day: 101 — David's Offering and Solomon's Temple (1 Chronicles 29; 2 Chronicles 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
-Next up: Day 102 (run stops here — 2-day-per-run limit reached)
+Next up: Day 102
+
+## 2026-09-04T04:45:00Z (bible year day writer run)
+Day: 102 — Temple Dedication and God's Glory (2 Chronicles 4-7) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 103 (run stops here — 2-day-per-run limit reached)
