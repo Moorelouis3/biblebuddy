@@ -3292,3 +3292,7 @@ Next up: Psalms 16
 ## 2026-09-04T19:15:00Z (bible year day writer run)
 Day: 109 — Hezekiah, Manasseh, and Josiah (2 Chronicles 32-35) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 110
+
+## 2026-09-04T19:35:00Z (bible year day writer run)
+Day: 110 — Exile Ends and Worship Returns (2 Chronicles 36; Ezra 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 111 (run stops here — 2-day-per-run limit reached)
