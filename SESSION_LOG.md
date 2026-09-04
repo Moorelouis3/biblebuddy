@@ -3212,3 +3212,7 @@ Next up: Psalms 6
 ## 2026-09-04T00:32:06Z (bible year day writer run)
 Day: 99 — The Temple Site and Priestly Order (1 Chronicles 21-24) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 100
+
+## 2026-09-04T01:05:00Z (bible year day writer run)
+Day: 100 — Worship Teams and Temple Plans (1 Chronicles 25-28) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 101 (run stops here — 2-day-per-run limit reached)
