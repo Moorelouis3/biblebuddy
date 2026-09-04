@@ -3272,3 +3272,7 @@ Next up: Psalms 13
 ## 2026-09-04T14:55:16Z (hourly chapter notes run)
 Chapter: Psalms 13 | Duration: 8 min | Sections: 3 | Cards: 13 | Status: pass
 Next up: Psalms 14
+
+## 2026-09-04T15:10:00Z (bible year day writer run)
+Day: 107 — Faithfulness and Forgetting God (2 Chronicles 24-27) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 108

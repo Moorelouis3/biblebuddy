@@ -190,7 +190,7 @@ that claiming full certainty either way goes beyond the text. Flagging per
 the format spec's doctrinal-sensitivity rule so Louis can read it himself.
 
 ## Bible in One Year days waiting on local audio render
-Scripts through Day 106 are written and pushed, but none of them have been
+Scripts through Day 107 are written and pushed, but none of them have been
 rendered — this environment has no OPENAI_API_KEY or Supabase service key.
 Run `npx tsx scripts/render-pending-bible-year-days.ts` on a machine that
 has those keys; it auto-detects every day with a script but no current
