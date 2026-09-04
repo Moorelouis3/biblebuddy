@@ -31613,6 +31613,63 @@
           "at": "2026-09-04T04:47:31Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 9,
+      "startedAt": "2026-09-04T06:52:38Z",
+      "finishedAt": "2026-09-04T07:02:24Z",
+      "durationMinutes": 10,
+      "sections": 10,
+      "cards": 41,
+      "verses": 20,
+      "notes": "New chapter, forward progress mode (priority queue and style-redo backlog both confirmed empty, last logged chapter was Psalms 8, no existing wired file of any kind for Psalms 9). Psalms 9 is a psalm of praise for God as righteous judge: David praises with his whole heart for God's marvellous works and enemies turned back (1-2), credits God with maintaining his right and cause from a seated throne of judgment (3-4), describes the heathen rebuked and their name and memorial erased forever, contrasted with the LORD who endures forever on a throne prepared for judgment over the whole world in righteousness (5-8), turns to God as a refuge for the oppressed known by those who know his name and are never forsaken (9-10), calls the reader to sing praises to the LORD who dwells in Zion and remembers the cry of the humble and the blood of the innocent (11-12), shifts to David's own personal plea for mercy and rescue from the gates of death so he can praise God publicly at the gates of the daughter of Zion (13-14), describes the heathen trapped by their own pit and net, with the Higgaion Selah markers explained as musical or liturgical pause instructions (15-16), warns that the wicked and nations who forget God face Sheol while the needy and poor are never forgotten (17-18), and closes with David's plea for God to arise, judge the heathen, and put them in fear so the nations know themselves to be only men (19-20). Chunked into 10 sections of two verses each, matching the tight parallelism of Hebrew poetry and the precedent set by lib/psalmsEightSource.ts. Density 2.05 cards/verse. Style checker found 1 problem on first pass (one 9 word bullet), fixed, second run clean with 0 problems across all 41 cards. Parser check and tsc both clean. Session also hit the same recurring stale-local-git-ref environment anomaly reported in many prior runs (local main branch cached stale at the Esther 5 tip, actual current tip at Psalms 8 confirmed via git fetch origin main); resolved via git checkout -B main origin/main before any chapter work began, no data at risk.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-04T06:52:38Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 9 (new chapter, forward progress mode; priority queue and style-redo backlog both confirmed empty, last logged chapter was Psalms 8, no existing wired file for Psalms 9)",
+          "at": "2026-09-04T06:52:38Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 9, 20 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-09-04T06:52:42Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementation reviewed (lib/psalmsEightSource.ts)",
+          "at": "2026-09-04T06:58:30Z"
+        },
+        {
+          "name": "source file written (lib/psalmsNineSource.ts, 41 cards / 10 sections)",
+          "at": "2026-09-04T06:58:30Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed on first pass, second run 0 problems across 41 cards)",
+          "at": "2026-09-04T06:59:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-8 to 1-9, new applyPersonalPsalmsNineStudySections function and call added after the chapter 8 call)",
+          "at": "2026-09-04T06:58:45Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('psalms', 9) returned 10/10 sections, 41 cards, no throw)",
+          "at": "2026-09-04T07:00:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-04T07:01:30Z"
+        },
+        {
+          "name": "environment anomaly logged (stale local git ref at session start, resolved via git fetch origin main + git checkout -B main origin/main before any chapter work; see data/bible-notes-usage-events.json)",
+          "at": "2026-09-04T06:52:00Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-04T07:02:24Z"
+        }
+      ]
     }
   ]
 }
