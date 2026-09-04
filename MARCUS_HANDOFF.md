@@ -1,3 +1,18 @@
+## Stale local main recurred again (2026-09-04, Psalms 6 run) — still unfixed at the environment level
+Same class of issue as every entry below this one: this run's fresh checkout
+had local `main` cached at the old "Esther 5" tip while `git fetch origin
+main` immediately showed the real `origin/main` already at the current
+"Psalms 5 / Bible in One Year Day 100" tip. Fixed the same way as before
+(`git checkout -B main origin/main`) before touching any files, so nothing
+was at risk this time. Noting only because this is now at least a fifth
+occurrence across this routine and the Bible in One Year day writer, all
+traceable to the same root cause flagged repeatedly below: whatever seeds
+or caches the local `main` ref for a fresh session is not starting it at
+the true current `origin/main`. Low severity this run (a plain fast
+forward mismatch, not a force push or divergent history), but the pattern
+itself is the thing worth fixing so a future run does not have to catch it
+by hand every single time.
+
 ## Session started with a stale local main branch, unrelated history from origin
 This run's fresh checkout had a local `main` branch pointing at an old commit
 ("Add Esther 5 study notes" / Day 44 era) while the actual work happened on a

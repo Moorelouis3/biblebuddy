@@ -514,6 +514,7 @@ import { PSALMS_TWO_PERSONAL_SECTIONS } from "./psalmsTwoSource";
 import { PSALMS_THREE_PERSONAL_SECTIONS } from "./psalmsThreeSource";
 import { PSALMS_FOUR_PERSONAL_SECTIONS } from "./psalmsFourSource";
 import { PSALMS_FIVE_PERSONAL_SECTIONS } from "./psalmsFiveSource";
+import { PSALMS_SIX_PERSONAL_SECTIONS } from "./psalmsSixSource";
 import { PSALMS_1_6_PERSONAL_SECTIONS } from "./psalmsOneToSixPersonalNotes";
 import { PSALMS_7_21_PERSONAL_SECTIONS } from "./psalmsSevenToTwentyOnePersonalNotes";
 import { PSALMS_22_36_PERSONAL_SECTIONS } from "./psalmsTwentyTwoToThirtySixPersonalNotes";
@@ -909,7 +910,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "nehemiah" && section.chapter >= 1 && section.chapter <= 13) ||
     (normalizeBook(book) === "esther" && section.chapter >= 1 && section.chapter <= 10) ||
     (normalizeBook(book) === "job" && section.chapter >= 1 && section.chapter <= 42) ||
-    (normalizeBook(book) === "psalms" && section.chapter >= 1 && section.chapter <= 5);
+    (normalizeBook(book) === "psalms" && section.chapter >= 1 && section.chapter <= 6);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -1904,6 +1905,10 @@ function applyPersonalPsalmsFourStudySections() {
 
 function applyPersonalPsalmsFiveStudySections() {
   replaceStudySectionsForBookRange("psalms", 5, 5, PSALMS_FIVE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPsalmsSixStudySections() {
+  replaceStudySectionsForBookRange("psalms", 6, 6, PSALMS_SIX_PERSONAL_SECTIONS);
 }
 
 function applyPersonalPsalmsSevenThroughTwentyOneStudySections() {
@@ -9413,6 +9418,7 @@ applyPersonalPsalmsTwoStudySections();
 applyPersonalPsalmsThreeStudySections();
 applyPersonalPsalmsFourStudySections();
 applyPersonalPsalmsFiveStudySections();
+applyPersonalPsalmsSixStudySections();
 applyPersonalPsalmsSevenThroughTwentyOneStudySections();
 applyPersonalPsalmsTwentyTwoThroughThirtySixStudySections();
 applyPersonalPsalmsThirtySevenThroughFiftyOneStudySections();
