@@ -3296,3 +3296,7 @@ Next up: Day 110
 ## 2026-09-04T19:35:00Z (bible year day writer run)
 Day: 110 — Exile Ends and Worship Returns (2 Chronicles 36; Ezra 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 111 (run stops here — 2-day-per-run limit reached)
+
+## 2026-09-04T21:03:00Z (hourly chapter notes run)
+Chapter: Psalms 16 | Duration: 16 min | Sections: 5 | Cards: 29 | Status: pass
+Next up: Psalms 17
