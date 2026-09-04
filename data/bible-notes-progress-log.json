@@ -31670,6 +31670,59 @@
           "at": "2026-09-04T07:02:24Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 10,
+      "startedAt": "2026-09-04T08:46:13Z",
+      "finishedAt": "2026-09-04T09:03:00Z",
+      "durationMinutes": 17,
+      "sections": 9,
+      "cards": 36,
+      "verses": 18,
+      "notes": "New chapter, forward progress. No pre-existing wired file. Chunked into 9 two-verse sections at ~2 cards/verse, matching lib/psalmsNineSource.ts precedent.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-04T08:53:20Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 10 (new chapter, forward progress)",
+          "at": "2026-09-04T08:53:45Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 10, 18 verses)",
+          "at": "2026-09-04T08:53:52Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-09-04T08:58:02Z"
+        },
+        {
+          "name": "source file lib/psalmsTenSource.ts written",
+          "at": "2026-09-04T08:58:50Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed, then 0)",
+          "at": "2026-09-04T08:59:19Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply call)",
+          "at": "2026-09-04T09:01:19Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 36 cards)",
+          "at": "2026-09-04T09:01:19Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-04T09:01:19Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-04T09:03:00Z"
+        }
+      ]
     }
   ]
 }

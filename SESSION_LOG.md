@@ -3248,3 +3248,7 @@ Next up: Day 104
 ## 2026-09-04T08:30:10Z (bible year day writer run)
 Day: 104 — Kings, Reform, and Returning to God (2 Chronicles 12-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 105 (run stops here — 2-day-per-run limit reached)
+
+## 2026-09-04T09:03:00Z (hourly chapter notes run)
+Chapter: Psalms 10 | Duration: 17 min | Sections: 9 | Cards: 36 | Status: pass
+Next up: Psalms 11
