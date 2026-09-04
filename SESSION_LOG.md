@@ -3208,3 +3208,7 @@ Next up: Psalms 5
 ## 2026-09-03T22:58:00Z (hourly chapter notes run)
 Chapter: Psalms 5 | Duration: 12 min | Sections: 5 | Cards: 30 | Status: pass
 Next up: Psalms 6
+
+## 2026-09-04T00:32:06Z (bible year day writer run)
+Day: 99 — The Temple Site and Priestly Order (1 Chronicles 21-24) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 100
