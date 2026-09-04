@@ -383,7 +383,10 @@ export default function HomeScreen() {
         </div>
       </header>
 
-      {/* 3-4. Continue Your Journey */}
+      {/* Verse of the Day leads - moved above the journey (Louis, 2026-09-04) */}
+      <VerseOfTheDayCard userId={userId} />
+
+      {/* Continue Your Journey */}
       <section aria-labelledby="home-journey-heading">
         <h2
           id="home-journey-heading"
@@ -547,9 +550,6 @@ export default function HomeScreen() {
           </div>
         )}
       </section>
-
-      {/* 5. Verse of the Day */}
-      <VerseOfTheDayCard userId={userId} />
 
       {/* 5b. Upcoming Community Study - the EXACT banner from the group page.
           One component, one event config, one signup page; only the
