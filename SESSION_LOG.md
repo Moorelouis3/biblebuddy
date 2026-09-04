@@ -3232,3 +3232,7 @@ Next up: Day 102
 ## 2026-09-04T04:45:00Z (bible year day writer run)
 Day: 102 — Temple Dedication and God's Glory (2 Chronicles 4-7) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 103 (run stops here — 2-day-per-run limit reached)
+
+## 2026-09-04T04:58:00Z (hourly chapter notes run)
+Chapter: Psalms 8 | Duration: 11 min | Sections: 4 | Cards: 16 | Status: pass
+Next up: Psalms 9

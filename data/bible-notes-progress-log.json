@@ -31560,6 +31560,59 @@
           "at": "2026-09-04T02:57:15Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 8,
+      "startedAt": "2026-09-04T04:46:52Z",
+      "finishedAt": "2026-09-04T04:58:00Z",
+      "durationMinutes": 11,
+      "sections": 4,
+      "cards": 16,
+      "verses": 9,
+      "notes": "New chapter, forward progress mode (style-redo backlog empty, no prior wired file for this chapter). Psalms 8 is a short, unified psalm of David bracketed by the same repeated line at its opening and closing (an inclusio): O LORD our Lord, how excellent is thy name in all the earth. Section 1 (1-2) covers that opening praise and the strength God ordains out of the mouths of babes and sucklings to still the enemy and the avenger. Section 2 (3-4) covers David considering the heavens and asking what is man that God is mindful of him, the son of man that God visits him. Section 3 (5-6) covers humanity made a little lower than the angels, crowned with glory and honour, and given dominion over the works of God's hands with all things put under his feet. Section 4 (7-9) lists that dominion concretely, sheep and oxen, beasts of the field, fowl of the air, fish of the sea, whatsoever passeth through the paths of the seas, then closes on the exact same praise line the psalm opened with (verse 9 omits the comma verse 1 has after LORD, so the two title cards are distinct exact-phrase strings), with its own card teaching the inclusio device rather than repeating card one's content. Density 1.78 cards/verse. Style checker ran clean on the first pass, zero problems. Parser check and tsc both clean. Session also hit the same recurring stale-local-git-ref environment anomaly reported in prior runs (this time the cached local main was stale relative to a further-ahead origin/main, the mirror image of the last occurrence); caught and resolved via git fetch origin main before any chapter work was done, logged in full in data/bible-notes-usage-events.json.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-04T04:49:09Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 8 (new chapter, forward progress mode; style-redo backlog confirmed empty, last logged chapter was Psalms 7, no existing wired lib file for Psalms 8)",
+          "at": "2026-09-04T04:49:15Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 8, 9 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-09-04T04:49:24Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementation reviewed (lib/psalmsSevenSource.ts)",
+          "at": "2026-09-04T04:50:30Z"
+        },
+        {
+          "name": "source file written (lib/psalmsEightSource.ts, 16 cards / 4 sections)",
+          "at": "2026-09-04T04:53:45Z"
+        },
+        {
+          "name": "style checker clean on first run (16 cards, 0 problems)",
+          "at": "2026-09-04T04:53:52Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended 1-7 to 1-8, new apply function and replaceStudySectionsForBookRange call added after the chapter 7 call)",
+          "at": "2026-09-04T04:54:00Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('psalms', 8) returned 4/4 sections, 16 cards, verbatim text)",
+          "at": "2026-09-04T04:54:07Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-04T04:55:45Z"
+        },
+        {
+          "name": "environment anomaly logged (stale local git ref at session start, resolved via git fetch + git checkout -B main origin/main before any chapter work; see data/bible-notes-usage-events.json)",
+          "at": "2026-09-04T04:47:31Z"
+        }
+      ]
     }
   ]
 }
