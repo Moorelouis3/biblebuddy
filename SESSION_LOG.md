@@ -3288,3 +3288,7 @@ Next up: Psalms 15
 ## 2026-09-04T18:53:46Z (hourly chapter notes run)
 Chapter: Psalms 15 | Duration: 7 min | Sections: 3 | Cards: 14 | Status: pass
 Next up: Psalms 16
+
+## 2026-09-04T19:15:00Z (bible year day writer run)
+Day: 109 — Hezekiah, Manasseh, and Josiah (2 Chronicles 32-35) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 110
