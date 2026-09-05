@@ -3308,3 +3308,7 @@ Queue remaining: 26
 ## 2026-09-04T22:58:00Z (hourly chapter notes run)
 Chapter: Psalms 17 | Duration: 11 min | Sections: 5 | Cards: 35 | Status: pass
 Next up: Psalms 18
+
+## 2026-09-05T00:25:45Z (bible year day writer run)
+Day: 111 — Opposition and Renewed Teaching (Ezra 4-7) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 112
