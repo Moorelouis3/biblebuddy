@@ -3380,3 +3380,7 @@ Next up: Day 120
 ## 2026-09-05T20:27:54Z (bible year day writer run, second day this run)
 Day: 120 — Job Pleads With God (Job 7-10) | Runtime: ~20-25 min (est.) | Cast: narrator only
 Next up: Day 121. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-05T20:54:39Z (hourly chapter notes run)
+Chapter: Psalms 26 | Duration: 8 min | Sections: 5 | Cards: 25 | Status: pass
+Next up: Psalms 27
