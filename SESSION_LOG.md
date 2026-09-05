@@ -3340,3 +3340,7 @@ Next up: Psalms 21
 ## 2026-09-05T06:56:00Z (hourly chapter notes run)
 Chapter: Psalms 21 | Duration: 9 min | Sections: 4 | Cards: 27 | Status: pass
 Next up: Psalms 22
+
+## 2026-09-05T12:29:30Z (bible year day writer run)
+Day: 115 — Covenant Renewal and Reform (Nehemiah 10-13) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 116
