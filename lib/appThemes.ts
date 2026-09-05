@@ -9,7 +9,13 @@ export type AppThemeId =
   | "pink"
   | "orange"
   | "gray"
-  | "black";
+  | "black"
+  | "pastel-rose"
+  | "pastel-lavender"
+  | "pastel-mint"
+  | "pastel-sky"
+  | "pastel-peach"
+  | "pastel-butter";
 
 export type AppThemeTokens = {
   background: string;
@@ -304,6 +310,153 @@ export const blackTheme: AppTheme = {
   progressFill: "#202327",
 };
 
+// The pastel set (relaunched 2026-09-05): the calm, low-saturation themes
+// from the early app - plain color tokens like every other theme here, no
+// animations or extra assets, so they cost nothing to ship or render.
+export const pastelRoseTheme: AppTheme = {
+  id: "pastel-rose",
+  name: "Rose",
+  isLocked: false,
+  unlockRequirement: null,
+  background: "#FDF2F4",
+  surface: "#FFFFFF",
+  surfaceSoft: "#F9E4E9",
+  card: "#FFFFFF",
+  cardBorder: "#EFCDD6",
+  textPrimary: "#43242D",
+  textSecondary: "#7C4453",
+  textMuted: "#A2707E",
+  accent: "#B96A80",
+  accentSoft: "#F9E4E9",
+  button: "#B96A80",
+  buttonText: "#FFFFFF",
+  navBackground: "#FFFFFF",
+  navActive: "#B96A80",
+  navInactive: "#A2707E",
+  progressTrack: "#F0D4DC",
+  progressFill: "#B96A80",
+};
+
+export const pastelLavenderTheme: AppTheme = {
+  id: "pastel-lavender",
+  name: "Lavender",
+  isLocked: false,
+  unlockRequirement: null,
+  background: "#F5F2FB",
+  surface: "#FFFFFF",
+  surfaceSoft: "#EAE4F6",
+  card: "#FFFFFF",
+  cardBorder: "#D6CCEC",
+  textPrimary: "#2F2745",
+  textSecondary: "#584A7E",
+  textMuted: "#8578A6",
+  accent: "#8B7BB8",
+  accentSoft: "#EAE4F6",
+  button: "#8B7BB8",
+  buttonText: "#FFFFFF",
+  navBackground: "#FFFFFF",
+  navActive: "#8B7BB8",
+  navInactive: "#8578A6",
+  progressTrack: "#DDD4EF",
+  progressFill: "#8B7BB8",
+};
+
+export const pastelMintTheme: AppTheme = {
+  id: "pastel-mint",
+  name: "Mint",
+  isLocked: false,
+  unlockRequirement: null,
+  background: "#F0F8F3",
+  surface: "#FFFFFF",
+  surfaceSoft: "#DFF0E6",
+  card: "#FFFFFF",
+  cardBorder: "#C4E0D0",
+  textPrimary: "#1F3A2C",
+  textSecondary: "#3E6B52",
+  textMuted: "#6D9480",
+  accent: "#5E9678",
+  accentSoft: "#DFF0E6",
+  button: "#5E9678",
+  buttonText: "#FFFFFF",
+  navBackground: "#FFFFFF",
+  navActive: "#5E9678",
+  navInactive: "#6D9480",
+  progressTrack: "#CDE6D8",
+  progressFill: "#5E9678",
+};
+
+export const pastelSkyTheme: AppTheme = {
+  id: "pastel-sky",
+  name: "Sky",
+  isLocked: false,
+  unlockRequirement: null,
+  background: "#F0F6FB",
+  surface: "#FFFFFF",
+  surfaceSoft: "#DFECF6",
+  card: "#FFFFFF",
+  cardBorder: "#C4DBEB",
+  textPrimary: "#1F3348",
+  textSecondary: "#3F607E",
+  textMuted: "#6E8CA6",
+  accent: "#6592B8",
+  accentSoft: "#DFECF6",
+  button: "#6592B8",
+  buttonText: "#FFFFFF",
+  navBackground: "#FFFFFF",
+  navActive: "#6592B8",
+  navInactive: "#6E8CA6",
+  progressTrack: "#CFE1EF",
+  progressFill: "#6592B8",
+};
+
+export const pastelPeachTheme: AppTheme = {
+  id: "pastel-peach",
+  name: "Peach",
+  isLocked: false,
+  unlockRequirement: null,
+  background: "#FDF5EE",
+  surface: "#FFFFFF",
+  surfaceSoft: "#F8E7D8",
+  card: "#FFFFFF",
+  cardBorder: "#EED3BC",
+  textPrimary: "#42291A",
+  textSecondary: "#7B4E31",
+  textMuted: "#A4795A",
+  accent: "#C08052",
+  accentSoft: "#F8E7D8",
+  button: "#C08052",
+  buttonText: "#FFFFFF",
+  navBackground: "#FFFFFF",
+  navActive: "#C08052",
+  navInactive: "#A4795A",
+  progressTrack: "#F0DAC6",
+  progressFill: "#C08052",
+};
+
+export const pastelButterTheme: AppTheme = {
+  id: "pastel-butter",
+  name: "Butter",
+  isLocked: false,
+  unlockRequirement: null,
+  background: "#FBF7EA",
+  surface: "#FFFFFF",
+  surfaceSoft: "#F4ECD3",
+  card: "#FFFFFF",
+  cardBorder: "#E5D8AF",
+  textPrimary: "#3B3116",
+  textSecondary: "#6E5D2B",
+  textMuted: "#96854E",
+  accent: "#A98E3C",
+  accentSoft: "#F4ECD3",
+  button: "#A98E3C",
+  buttonText: "#FFFFFF",
+  navBackground: "#FFFFFF",
+  navActive: "#A98E3C",
+  navInactive: "#96854E",
+  progressTrack: "#EBE0BE",
+  progressFill: "#A98E3C",
+};
+
 export const APP_THEMES: AppTheme[] = [
   lightTheme,
   darkTheme,
@@ -316,6 +469,12 @@ export const APP_THEMES: AppTheme[] = [
   orangeTheme,
   grayTheme,
   blackTheme,
+  pastelRoseTheme,
+  pastelLavenderTheme,
+  pastelMintTheme,
+  pastelSkyTheme,
+  pastelPeachTheme,
+  pastelButterTheme,
 ];
 export const APP_THEME_BY_ID = new Map(APP_THEMES.map((theme) => [theme.id, theme]));
 export const APP_THEME_STORAGE_KEY = "bb:app-theme";
