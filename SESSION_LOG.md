@@ -3384,3 +3384,7 @@ Next up: Day 121. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-05T20:54:39Z (hourly chapter notes run)
 Chapter: Psalms 26 | Duration: 8 min | Sections: 5 | Cards: 25 | Status: pass
 Next up: Psalms 27
+
+## 2026-09-05T22:52:58Z (hourly chapter notes run)
+Chapter: Psalms 27 | Duration: 7 min | Sections: 4 | Cards: 21 | Status: pass
+Next up: Psalms 28
