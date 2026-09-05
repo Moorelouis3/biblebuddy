@@ -3368,3 +3368,7 @@ Next up: Day 119 (run stops here — 2-day-per-run limit reached)
 ## 2026-09-05T16:56:01Z (hourly chapter notes run)
 Chapter: Psalms 24 | Duration: 9 min | Sections: 3 | Cards: 20 | Status: pass
 Next up: Psalms 25
+
+## 2026-09-05T18:56:53Z (hourly chapter notes run)
+Chapter: Psalms 25 | Duration: 10 min | Sections: 6 | Cards: 41 | Status: pass
+Next up: Psalms 26
