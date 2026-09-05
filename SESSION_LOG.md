@@ -3372,3 +3372,7 @@ Next up: Psalms 25
 ## 2026-09-05T18:56:53Z (hourly chapter notes run)
 Chapter: Psalms 25 | Duration: 10 min | Sections: 6 | Cards: 41 | Status: pass
 Next up: Psalms 26
+
+## 2026-09-05T20:27:54Z (bible year day writer run)
+Day: 119 — Job Laments His Suffering (Job 3-6) | Runtime: ~20-25 min (est.) | Cast: narrator only (no named speaker cast in these chapters beyond Job/Eliphaz, read narrator-voice)
+Next up: Day 120
