@@ -3356,3 +3356,7 @@ Next up: Psalms 23
 ## 2026-09-05T14:54:36Z (hourly chapter notes run)
 Chapter: Psalms 23 | Duration: 9 min | Sections: 3 | Cards: 14 | Status: pass
 Next up: Psalms 24
+
+## 2026-09-05T15:00:00Z (bible year day writer run)
+Day: 117 — Reversal and Deliverance (Esther 5-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 118
