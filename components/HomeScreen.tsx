@@ -28,6 +28,7 @@ import { BLOG_ARTICLES } from "../lib/blogContent";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES, getBibleYearDayCoverImage } from "../lib/bibleInOneYearPlan";
 import { BIBLE_STUDY_GROUP_ID } from "../lib/bibleStudiesCatalog";
 import StreakFlameEmoji from "./StreakFlameEmoji";
+import LevelProgressCard from "./LevelProgressCard";
 
 /** Chapters in the Protestant canon, so progress is a real fraction. */
 const TOTAL_BIBLE_CHAPTERS = 1189;
@@ -332,7 +333,7 @@ export default function HomeScreen() {
             Let&apos;s grow closer to God today.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:w-auto sm:shrink-0 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-3 sm:w-auto sm:shrink-0 sm:grid-cols-3">
           {stats.streak !== null ? (
             // Peach, same family as the Bible Trivia card below
             <div
@@ -380,6 +381,10 @@ export default function HomeScreen() {
           ) : !stats.loaded && userId ? (
             <div className="h-[64px] min-w-[132px] animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />
           ) : null}
+          {/* Points & levels relaunch (2026-09-05): purple level card, same
+              family as the two beside it. The level-up celebration modal
+              lives inside this component too. */}
+          <LevelProgressCard />
         </div>
       </header>
 

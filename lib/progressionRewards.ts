@@ -1,11 +1,15 @@
+// Relaunched 2026-09-05: points and levels are back. These are the XP values
+// each study task awards. Points are always derived from master_actions by
+// lib/pointsEngine.ts (with dedupe + daily caps), so changing a number here
+// re-scores everyone on the next recompute - no stored balances to drift.
 export const TASK_XP = {
-  intro: 0,
-  reading: 0,
-  notes: 0,
-  triviaPerfect: 0,
-  scrambledPerfect: 0,
-  reflection: 0,
-  chapterBonus: 0,
+  intro: 10,
+  reading: 25,
+  notes: 10,
+  triviaPerfect: 15,
+  scrambledPerfect: 10,
+  reflection: 15,
+  chapterBonus: 25,
 } as const;
 
 export const DIAMOND_REWARDS = {
