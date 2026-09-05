@@ -976,7 +976,10 @@ export default function ProverbsStudyDayPage() {
             <BrowserTtsButton
               text={day.devotional_text}
               label="Listen to intro"
-              audioSrc={getGenesisOneTtsSrc("intro", day.bible_reading_book, day.bible_reading_chapter)}
+              audioSrc={
+                getGenesisOneTtsSrc("intro", day.bible_reading_book, day.bible_reading_chapter) ??
+                `/api/tts/devotional-overview?devotionalId=${encodeURIComponent(devotionalId)}&day=${dayNumber}`
+              }
             />
             <div className="text-gray-700" style={{ fontSize: "1rem" }}>
               {devotionalBlocks.map((block) => {
