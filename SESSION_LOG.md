@@ -3348,3 +3348,7 @@ Next up: Day 116
 ## 2026-09-05T12:32:20Z (bible year day writer run)
 Day: 116 — Esther Rises for Such a Time (Esther 1-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 117 (run stops here — 2-day-per-run limit reached)
+
+## 2026-09-05T12:59:00Z (hourly chapter notes run)
+Chapter: Psalms 22 | Duration: 12 min | Sections: 7 | Cards: 67 | Status: pass
+Next up: Psalms 23

@@ -32370,6 +32370,55 @@
           "at": "2026-09-05T06:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 22,
+      "startedAt": "2026-09-05T12:47:05Z",
+      "finishedAt": "2026-09-05T12:59:00Z",
+      "durationMinutes": 12,
+      "sections": 7,
+      "cards": 67,
+      "verses": 31,
+      "notes": "New chapter, normal forward progress (priority queue and redo-remaining both empty). The forsaken sufferer psalm, most directly messianic in the Psalter (My God my God why hast thou forsaken me, they pierced my hands and my feet, parted my garments and cast lots). 67 phrase cards across 7 sections, density about 2.16 cards/verse, on the richer end given how many distinct prophetic and cultural details verses 12-26 pack in.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-05T12:47:51Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 22 (new chapter, forward progress)",
+          "at": "2026-09-05T12:47:51Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Bible-kjv Psalms.json)",
+          "at": "2026-09-05T12:48:11Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-05T12:48:11Z"
+        },
+        {
+          "name": "source file written (lib/psalmsTwentyTwoSource.ts, 67 cards, 7 sections)",
+          "at": "2026-09-05T12:55:54Z"
+        },
+        {
+          "name": "style checker clean (0 problems after 6 fixes, 67 cards)",
+          "at": "2026-09-05T12:59:00Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 22, replaceStudySectionsForBookRange call added after legacy 22-36 call)",
+          "at": "2026-09-05T12:56:25Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 67 cards)",
+          "at": "2026-09-05T12:56:48Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-05T12:58:32Z"
+        }
+      ]
     }
   ]
 }
