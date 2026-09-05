@@ -150,6 +150,11 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   const [settingBibleYear, setSettingBibleYear] = useState(false);
   const [plansSection, setPlansSection] = useState<PlansSection>("bible-year");
   const [bibleYearFilter, setBibleYearFilter] = useState<BibleYearTestamentFilter>("all");
+  // The day list is windowed (Louis, 2026-09-05: "10 days at a time...
+  // loading all 365 days is wild"), anchored on the reader's current day so
+  // day 67 is the first row for someone on day 67.
+  const [bibleYearDaysBefore, setBibleYearDaysBefore] = useState(0);
+  const [bibleYearDaysAfter, setBibleYearDaysAfter] = useState(10);
   const [lengthFilter, setLengthFilter] = useState<DevotionalLengthFilter>("all");
   const [articleCategory, setArticleCategory] = useState<string>("all");
   const [bibleYearCompletedByDay, setBibleYearCompletedByDay] = useState<Record<number, boolean>>({});
@@ -709,12 +714,16 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
       { icon: "🎧", title: "Audio Included", text: "Listen while you read or on the go." },
       { icon: "📊", title: "Track Your Progress", text: "Stay consistent with your personal tracker." },
     ];
-    const completedCount = Object.keys(bibleYearCompletedByDay).length;
-    const ctaLabel = settingBibleYear
-      ? "Opening..."
-      : bibleYearStarted
-        ? "Continue Bible in One Year"
-        : "Start Bible in One Year";
+    // Window the day list around the reader's current day: their day is the
+    // first row, ten days show at a time, and the buttons extend the window.
+    const anchorDay = bibleYearCurrentDay ?? 1;
+    const anchorIndex = Math.max(
+      0,
+      filteredBibleYearDays.findIndex((day) => day.dayNumber >= anchorDay),
+    );
+    const windowStart = Math.max(0, anchorIndex - bibleYearDaysBefore);
+    const windowEnd = Math.min(filteredBibleYearDays.length, anchorIndex + bibleYearDaysAfter);
+    const visibleBibleYearDays = filteredBibleYearDays.slice(windowStart, windowEnd);
 
     return (
       <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
@@ -736,18 +745,6 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                   </div>
                 ))}
               </div>
-              <button
-                type="button"
-                onClick={() => void setBibleYearAsPlan(bibleYearStarted ? bibleYearCurrentDay ?? undefined : undefined)}
-                className="mt-4 w-full rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:opacity-90"
-              >
-                {ctaLabel}
-              </button>
-              {bibleYearStarted ? (
-                <p className="mt-2 text-center text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                  {completedCount} of 365 days completed{bibleYearCurrentDay ? ` · Up next: Day ${bibleYearCurrentDay}` : ""}
-                </p>
-              ) : null}
             </div>
           </div>
 
@@ -761,7 +758,11 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                 <button
                   key={value}
                   type="button"
-                  onClick={() => setBibleYearFilter(value)}
+                  onClick={() => {
+                    setBibleYearFilter(value);
+                    setBibleYearDaysBefore(0);
+                    setBibleYearDaysAfter(10);
+                  }}
                   className={`rounded-2xl px-2 py-2 text-[11px] font-black uppercase tracking-wide transition sm:text-xs ${
                     bibleYearFilter === value
                       ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
@@ -775,7 +776,16 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
           </div>
 
           <div className="mt-3 flex flex-col gap-2 pb-6">
-            {filteredBibleYearDays.map((day) => {
+            {windowStart > 0 ? (
+              <button
+                type="button"
+                onClick={() => setBibleYearDaysBefore((value) => value + 10)}
+                className="rounded-[18px] border border-dashed border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-2.5 text-xs font-black text-[var(--bb-accent,#2f7fe8)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+              >
+                ↑ Show earlier days
+              </button>
+            ) : null}
+            {visibleBibleYearDays.map((day) => {
               const isDone = bibleYearCompletedByDay[day.dayNumber] === true;
               const isCurrent = bibleYearCurrentDay === day.dayNumber;
               return (
@@ -809,6 +819,15 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                 </button>
               );
             })}
+            {windowEnd < filteredBibleYearDays.length ? (
+              <button
+                type="button"
+                onClick={() => setBibleYearDaysAfter((value) => value + 10)}
+                className="rounded-[18px] border border-dashed border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-2.5 text-xs font-black text-[var(--bb-accent,#2f7fe8)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+              >
+                Show more days ↓
+              </button>
+            ) : null}
           </div>
         </div>
       </div>
@@ -833,32 +852,24 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
             </div>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => setArticleCategory("all")}
-              className={`rounded-full px-3.5 py-2 text-xs font-black transition ${
-                articleCategory === "all"
-                  ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
-                  : "bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-sm hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
-              }`}
+          {/* Category picker is a dropdown (Louis, 2026-09-05). */}
+          <div className="mt-4">
+            <label htmlFor="plans-article-category" className="mb-1.5 block text-[11px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">
+              Category
+            </label>
+            <select
+              id="plans-article-category"
+              value={articleCategory}
+              onChange={(event) => setArticleCategory(event.target.value)}
+              className="w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm outline-none transition focus:border-[var(--bb-accent,#2f7fe8)]"
             >
-              All Articles
-            </button>
-            {BLOG_CATEGORIES.map((category) => (
-              <button
-                key={category.slug}
-                type="button"
-                onClick={() => setArticleCategory(category.slug)}
-                className={`rounded-full px-3.5 py-2 text-xs font-black transition ${
-                  articleCategory === category.slug
-                    ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
-                    : "bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-sm hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
+              <option value="all">All Articles</option>
+              {BLOG_CATEGORIES.map((category) => (
+                <option key={category.slug} value={category.slug}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="mt-4 grid grid-cols-1 gap-4 pb-6 sm:grid-cols-2">
