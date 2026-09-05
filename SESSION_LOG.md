@@ -3316,3 +3316,7 @@ Next up: Day 112
 ## 2026-09-05T00:27:40Z (bible year day writer run)
 Day: 112 — Return, Repentance, and Nehemiah's Burden (Ezra 8-10; Nehemiah 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 113 (run stops here — 2-day-per-run limit reached)
+
+## 2026-09-05T01:06:37Z (hourly chapter notes run)
+Chapter: Psalms 18 | Duration: 20.4 min | Sections: 15 | Cards: 89 | Status: pass
+Next up: Psalms 19

@@ -32130,6 +32130,63 @@
           "at": "2026-09-04T22:55:51Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 18,
+      "startedAt": "2026-09-05T00:46:12Z",
+      "finishedAt": "2026-09-05T01:06:37Z",
+      "durationMinutes": 20.4,
+      "sections": 15,
+      "cards": 89,
+      "verses": 50,
+      "notes": "New chapter, forward progress. Royal thanksgiving psalm, high card density (89 cards / 50 verses) due to verse 2 and other verses containing many distinct titles/phrases for God worth separate cards.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-05T00:46:49Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 18 (forward progress, new chapter)",
+          "at": "2026-09-05T00:47:08Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com Bible-kjv Psalms.json",
+          "at": "2026-09-05T00:47:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-05T00:47:45Z"
+        },
+        {
+          "name": "source file lib/psalmsEighteenSource.ts written (89 cards, 15 sections)",
+          "at": "2026-09-05T01:02:16Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py)",
+          "at": "2026-09-05T01:02:46Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 18, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-05T01:03:08Z"
+        },
+        {
+          "name": "parser check passed (15 sections, 89 cards)",
+          "at": "2026-09-05T01:03:31Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-09-05T01:05:16Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-05T01:06:32Z"
+        },
+        {
+          "name": "SESSION_LOG.md hourly chapter notes run block appended",
+          "at": "2026-09-05T01:06:56Z"
+        }
+      ]
     }
   ]
 }
