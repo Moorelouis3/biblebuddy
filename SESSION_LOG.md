@@ -3344,3 +3344,7 @@ Next up: Psalms 22
 ## 2026-09-05T12:29:30Z (bible year day writer run)
 Day: 115 — Covenant Renewal and Reform (Nehemiah 10-13) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 116
+
+## 2026-09-05T12:32:20Z (bible year day writer run)
+Day: 116 — Esther Rises for Such a Time (Esther 1-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 117 (run stops here — 2-day-per-run limit reached)
