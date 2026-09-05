@@ -33,7 +33,10 @@ export async function POST(request: NextRequest) {
     // Check if user has ever answered this question before (correct or incorrect)
     const { data: existing, error: selectError } = await supabase
       .from('trivia_question_progress')
-      .select('id, is_correct')
+      // The live table has no id column (older shape than the SQL file in
+      // the repo) - selecting it made every answer 500 and killed progress
+      // tracking. The natural key is (user_id, book, question_id).
+      .select('is_correct')
       .eq('user_id', userId)
       .eq('book', book)
       .eq('question_id', questionId)
@@ -96,7 +99,9 @@ export async function POST(request: NextRequest) {
           is_correct: existing.is_correct === true || isCorrect === true,
           answered_at: new Date().toISOString()
         })
-        .eq('id', existing.id);
+        .eq('user_id', userId)
+        .eq('book', book)
+        .eq('question_id', questionId);
       progressError = error;
     } else {
       // First time answering this question
