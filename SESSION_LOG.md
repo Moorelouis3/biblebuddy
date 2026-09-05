@@ -3312,3 +3312,7 @@ Next up: Psalms 18
 ## 2026-09-05T00:25:45Z (bible year day writer run)
 Day: 111 — Opposition and Renewed Teaching (Ezra 4-7) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
 Next up: Day 112
+
+## 2026-09-05T00:27:40Z (bible year day writer run)
+Day: 112 — Return, Repentance, and Nehemiah's Burden (Ezra 8-10; Nehemiah 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: not yet rendered
+Next up: Day 113 (run stops here — 2-day-per-run limit reached)
