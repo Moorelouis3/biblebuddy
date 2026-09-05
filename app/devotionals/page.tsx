@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
+import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "../../lib/bibleInOneYearPlan";
+import { BLOG_ARTICLES, BLOG_CATEGORIES } from "../../lib/blogContent";
 
 interface Devotional {
   id: string;
@@ -31,6 +33,27 @@ type StudyProgressSummary = {
 };
 
 type StudyFilter = "all" | "done" | "started";
+
+// The Plans tab is one organized hub: a landing page with three sections
+// (Bible in One Year, Devotionals, Articles from the Blog) instead of one
+// long mixed list. Sub-navigation is internal state so the dashboard shell
+// (header + bottom menu) stays around every screen.
+type PlansSection = "hub" | "bible-year" | "devotionals" | "articles";
+type BibleYearTestamentFilter = "all" | "old" | "new";
+type DevotionalLengthFilter = "all" | "21" | "31" | "coming-soon";
+
+const NEW_TESTAMENT_BOOKS = new Set([
+  "Matthew", "Mark", "Luke", "John", "Acts", "Romans",
+  "1 Corinthians", "2 Corinthians", "Galatians", "Ephesians", "Philippians",
+  "Colossians", "1 Thessalonians", "2 Thessalonians", "1 Timothy", "2 Timothy",
+  "Titus", "Philemon", "Hebrews", "James", "1 Peter", "2 Peter",
+  "1 John", "2 John", "3 John", "Jude", "Revelation",
+]);
+
+function isNewTestamentDay(day: (typeof GENESIS_BIBLE_IN_ONE_YEAR_SERIES)[number]) {
+  const firstBook = day.readings[0]?.book;
+  return firstBook ? NEW_TESTAMENT_BOOKS.has(firstBook) : false;
+}
 
 const FEATURED_STUDY_ORDER = [
   "The Wisdom of Proverbs",
@@ -126,9 +149,55 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   const [tempDontShowAgain, setTempDontShowAgain] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [settingBibleYear, setSettingBibleYear] = useState(false);
+  const [plansSection, setPlansSection] = useState<PlansSection>("hub");
+  const [bibleYearFilter, setBibleYearFilter] = useState<BibleYearTestamentFilter>("all");
+  const [lengthFilter, setLengthFilter] = useState<DevotionalLengthFilter>("all");
+  const [articleCategory, setArticleCategory] = useState<string>("all");
+  const [bibleYearCompletedByDay, setBibleYearCompletedByDay] = useState<Record<number, boolean>>({});
+  const [bibleYearCurrentDay, setBibleYearCurrentDay] = useState<number | null>(null);
+  const [bibleYearStarted, setBibleYearStarted] = useState(false);
+
+  // Existing Bible in One Year progress - same API the dashboard uses, so the
+  // section's Start/Continue button and day checkmarks match the real plan.
+  useEffect(() => {
+    let cancelled = false;
+    async function loadBibleYearProgress() {
+      try {
+        const sessionData = await supabase.auth.getSession();
+        const accessToken = sessionData.data.session?.access_token;
+        if (!accessToken) return;
+        const response = await fetch("/api/bible-year/progress", {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        });
+        if (!response.ok) return;
+        const payload = await response.json().catch(() => ({}));
+        if (cancelled) return;
+        const completedCards = payload.completedCardsByDay || {};
+        const completedByDay: Record<number, boolean> = {};
+        let anyProgress = false;
+        Object.entries(completedCards).forEach(([dayNumber, cards]: [string, any]) => {
+          const complete = cards?.reading === true;
+          if (complete) completedByDay[Number(dayNumber)] = true;
+          if (cards && (cards.reading || cards.notes || cards.trivia || cards.reflection)) anyProgress = true;
+        });
+        setBibleYearCompletedByDay(completedByDay);
+        const currentDay = Number(payload.resolvedCurrentDayNumber || payload.authoritativeCurrentDayNumber || 1);
+        setBibleYearCurrentDay(Number.isFinite(currentDay) ? currentDay : 1);
+        setBibleYearStarted(anyProgress || currentDay > 1);
+      } catch (error) {
+        console.error("[PLANS] Could not load Bible in One Year progress:", error);
+      }
+    }
+    void loadBibleYearProgress();
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
 
   // Make the Bible in One Year the reader's plan and open it on the dashboard.
-  async function setBibleYearAsPlan() {
+  // With a day number it deep-links straight into that day (Continue / day
+  // rows); without one it opens the plan's own day list, same as before.
+  async function setBibleYearAsPlan(dayNumber?: number) {
     if (settingBibleYear) return;
     setSettingBibleYear(true);
     try {
@@ -141,7 +210,11 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     } finally {
       // The plan's day list, as a page in the middle column - the same way a
       // devotional opens. Days tapped there load solo, like everywhere else.
-      router.push("/plan?view=bible-year-series&solo=1");
+      if (dayNumber && Number.isFinite(dayNumber)) {
+        router.push(`/plan?view=bible-year&day=${dayNumber}&solo=1`);
+      } else {
+        router.push("/plan?view=bible-year-series&solo=1");
+      }
     }
   }
   const [userEmail, setUserEmail] = useState<string | null>(null);
@@ -370,15 +443,40 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     };
   }, [progressByDevotional, visibleDevotionals]);
 
-  const filteredDevotionals = useMemo(() => {
-    if (studyFilter === "all") return visibleDevotionals;
+  // Which studies are actually playable today - same rule the cards use.
+  const isPlanAvailableFor = (title: string) => {
+    const isOwnerUser = userEmail?.toLowerCase() === OWNER_EMAIL;
+    return title === "The Wisdom of Proverbs" || (title === "Women of the Bible" && isOwnerUser);
+  };
 
-    return visibleDevotionals.filter((study) => {
-      const progress = progressByDevotional[study.id] ?? buildEmptyProgress(study);
-      if (studyFilter === "done") return progress.isComplete;
-      return progress.percent > 0 && !progress.isComplete;
-    });
-  }, [progressByDevotional, studyFilter, visibleDevotionals]);
+  const filteredDevotionals = useMemo(() => {
+    let list = visibleDevotionals;
+
+    if (studyFilter !== "all") {
+      list = list.filter((study) => {
+        const progress = progressByDevotional[study.id] ?? buildEmptyProgress(study);
+        if (studyFilter === "done") return progress.isComplete;
+        return progress.percent > 0 && !progress.isComplete;
+      });
+    }
+
+    if (lengthFilter === "21") list = list.filter((study) => study.total_days === 21);
+    else if (lengthFilter === "31") list = list.filter((study) => study.total_days === 31);
+    else if (lengthFilter === "coming-soon") list = list.filter((study) => !isPlanAvailableFor(study.title));
+
+    return list;
+  }, [progressByDevotional, studyFilter, lengthFilter, visibleDevotionals, userEmail]);
+
+  const filteredBibleYearDays = useMemo(() => {
+    if (bibleYearFilter === "all") return GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
+    if (bibleYearFilter === "new") return GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => isNewTestamentDay(day));
+    return GENESIS_BIBLE_IN_ONE_YEAR_SERIES.filter((day) => !isNewTestamentDay(day));
+  }, [bibleYearFilter]);
+
+  const filteredArticles = useMemo(() => {
+    if (articleCategory === "all") return BLOG_ARTICLES;
+    return BLOG_ARTICLES.filter((article) => article.categorySlug === articleCategory);
+  }, [articleCategory]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -573,6 +671,272 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     );
   }
 
+  const plansBackButton = (
+    <button
+      type="button"
+      onClick={() => setPlansSection("hub")}
+      className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-[var(--bb-card,#ffffff)] px-4 py-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+    >
+      <span aria-hidden>‹</span> Plans
+    </button>
+  );
+
+  // ---- PLANS HUB - the landing page for the tab ----
+  if (plansSection === "hub") {
+    const hubCards: Array<{ key: PlansSection; banner: string; title: string; subtitle: string }> = [
+      {
+        key: "bible-year",
+        banner: "/plans/bible-in-one-year-banner.png",
+        title: "Bible in One Year",
+        subtitle: "Read the entire Bible in 365 days with daily readings, notes, and more.",
+      },
+      {
+        key: "devotionals",
+        banner: "/plans/devotionals-banner.png",
+        title: "Devotionals",
+        subtitle: "Focused studies on key topics, books, and themes.",
+      },
+      {
+        key: "articles",
+        banner: "/plans/blog-articles-banner.png",
+        title: "Articles from the Blog",
+        subtitle: "Bible insights, study tips, character studies, and more.",
+      },
+    ];
+
+    return (
+      <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
+        <div className={`${embedded ? "px-0 py-0 max-w-6xl" : "px-4 py-5 md:py-8 max-w-3xl"} mx-auto`}>
+          <div className="mb-4">
+            <h1 className="text-3xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Plans</h1>
+            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">Read. Study. Grow. All in one place.</p>
+          </div>
+          <div className="flex flex-col gap-4">
+            {hubCards.map((card) => (
+              <button
+                key={card.key}
+                type="button"
+                onClick={() => setPlansSection(card.key)}
+                className="group overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="aspect-[16/9] w-full overflow-hidden bg-[var(--bb-surface-soft,#f4f8ff)]">
+                  <img
+                    src={card.banner}
+                    alt={`${card.title} banner`}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <div className="flex items-center gap-3 px-5 py-4">
+                  <div className="min-w-0 flex-1">
+                    <h2 className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">{card.title}</h2>
+                    <p className="mt-0.5 text-xs font-bold leading-snug text-[var(--bb-text-muted,#6b7280)]">{card.subtitle}</p>
+                  </div>
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-lg font-black text-[var(--bb-accent,#2f7fe8)] transition group-hover:bg-[var(--bb-accent,#2f7fe8)] group-hover:text-white" aria-hidden>
+                    ›
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ---- BIBLE IN ONE YEAR SECTION ----
+  if (plansSection === "bible-year") {
+    const features: Array<{ icon: string; title: string; text: string }> = [
+      { icon: "📅", title: "Daily Readings", text: "A clear plan to read the entire Bible in one year." },
+      { icon: "📖", title: "Verse-by-Verse Notes", text: "Simple explanations to help you understand what you are reading." },
+      { icon: "🎧", title: "Audio Included", text: "Listen while you read or on the go." },
+      { icon: "📊", title: "Track Your Progress", text: "Stay consistent with your personal tracker." },
+    ];
+    const completedCount = Object.keys(bibleYearCompletedByDay).length;
+    const ctaLabel = settingBibleYear
+      ? "Opening..."
+      : bibleYearStarted
+        ? "Continue Bible in One Year"
+        : "Start Bible in One Year";
+
+    return (
+      <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
+        <div className={`${embedded ? "px-0 py-0 max-w-6xl" : "px-4 py-5 md:py-8 max-w-3xl"} mx-auto`}>
+          {plansBackButton}
+          <div className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+            <div className="aspect-[16/9] w-full bg-[var(--bb-surface-soft,#f4f8ff)]">
+              <img src="/plans/bible-in-one-year-banner.png" alt="The Bible in One Year" className="h-full w-full object-cover" />
+            </div>
+            <div className="px-5 py-4">
+              <div className="flex flex-col gap-3">
+                {features.map((feature) => (
+                  <div key={feature.title} className="flex items-start gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[var(--bb-accent-soft,#eaf5ff)] text-base" aria-hidden>{feature.icon}</span>
+                    <div>
+                      <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{feature.title}</p>
+                      <p className="text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">{feature.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => void setBibleYearAsPlan(bibleYearStarted ? bibleYearCurrentDay ?? undefined : undefined)}
+                className="mt-4 w-full rounded-2xl bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:opacity-90"
+              >
+                {ctaLabel}
+              </button>
+              {bibleYearStarted ? (
+                <p className="mt-2 text-center text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                  {completedCount} of 365 days completed{bibleYearCurrentDay ? ` · Up next: Day ${bibleYearCurrentDay}` : ""}
+                </p>
+              ) : null}
+            </div>
+          </div>
+
+          <div className="mt-4 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 shadow-sm">
+            <div className="grid grid-cols-3 gap-2 text-center">
+              {([
+                ["all", "All Days"],
+                ["old", "Old Testament"],
+                ["new", "New Testament"],
+              ] as Array<[BibleYearTestamentFilter, string]>).map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => setBibleYearFilter(value)}
+                  className={`rounded-2xl px-2 py-2 text-[11px] font-black uppercase tracking-wide transition sm:text-xs ${
+                    bibleYearFilter === value
+                      ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
+                      : "bg-[var(--bb-surface-soft,#f8fbff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-3 flex flex-col gap-2 pb-6">
+            {filteredBibleYearDays.map((day) => {
+              const isDone = bibleYearCompletedByDay[day.dayNumber] === true;
+              const isCurrent = bibleYearCurrentDay === day.dayNumber;
+              return (
+                <button
+                  key={day.dayNumber}
+                  type="button"
+                  onClick={() => void setBibleYearAsPlan(day.dayNumber)}
+                  className={`flex items-center gap-3 rounded-[18px] border p-2.5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md ${
+                    isCurrent
+                      ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]"
+                      : isDone
+                        ? "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
+                        : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
+                  }`}
+                >
+                  <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-[var(--bb-surface-soft,#f4f8ff)]">
+                    <img src={day.coverImage} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]">Day {day.dayNumber}</p>
+                    <p className="truncate text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">{day.title}</p>
+                    <p className="truncate text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">{day.reference}</p>
+                  </div>
+                  {isDone ? (
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-sm font-black text-white" aria-label="Completed">✓</span>
+                  ) : isCurrent ? (
+                    <span className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)]">Up Next</span>
+                  ) : (
+                    <span className="shrink-0 text-lg font-black text-[var(--bb-text-muted,#6b7280)]" aria-hidden>›</span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ---- ARTICLES FROM THE BLOG SECTION ----
+  if (plansSection === "articles") {
+    return (
+      <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
+        <div className={`${embedded ? "px-0 py-0 max-w-6xl" : "px-4 py-5 md:py-8 max-w-3xl"} mx-auto`}>
+          {plansBackButton}
+          <div className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+            <div className="aspect-[16/9] w-full bg-[var(--bb-surface-soft,#f4f8ff)]">
+              <img src="/plans/blog-articles-banner.png" alt="Articles from the Blog" className="h-full w-full object-cover" />
+            </div>
+            <div className="px-5 py-4">
+              <h2 className="text-lg font-black text-[var(--bb-text-primary,#111827)]">Articles from the Blog</h2>
+              <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                Explore studies, insights, and practical guidance to help you understand God&apos;s Word and apply it to your everyday life.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => setArticleCategory("all")}
+              className={`rounded-full px-3.5 py-2 text-xs font-black transition ${
+                articleCategory === "all"
+                  ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
+                  : "bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-sm hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+              }`}
+            >
+              All Articles
+            </button>
+            {BLOG_CATEGORIES.map((category) => (
+              <button
+                key={category.slug}
+                type="button"
+                onClick={() => setArticleCategory(category.slug)}
+                className={`rounded-full px-3.5 py-2 text-xs font-black transition ${
+                  articleCategory === category.slug
+                    ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
+                    : "bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-sm hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+                }`}
+              >
+                {category.name}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-4 grid grid-cols-1 gap-4 pb-6 sm:grid-cols-2">
+            {filteredArticles.map((article) => (
+              <a
+                key={article.slug}
+                href={article.canonicalPath}
+                className="group overflow-hidden rounded-[20px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
+              >
+                <div className="aspect-[16/9] w-full overflow-hidden bg-[var(--bb-surface-soft,#f4f8ff)]">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="px-4 py-3">
+                  <p className="text-[10px] font-black uppercase tracking-wide text-[var(--bb-accent,#2f7fe8)]">{article.category}</p>
+                  <h3 className="mt-1 text-sm font-black leading-snug text-[var(--bb-text-primary,#111827)]">{article.title}</h3>
+                  <p className="mt-1 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">{article.readTime}</p>
+                </div>
+              </a>
+            ))}
+            {filteredArticles.length === 0 ? (
+              <p className="text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">No articles in this category yet.</p>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
       {/* One devotional page. This same component is the Devotionals tab in the
@@ -582,13 +946,27 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
           and it looked like a different page. Same width now, so it is one
           page wherever you reach it from. */}
       <div className={`${embedded ? "px-0 py-0 max-w-6xl" : "px-4 py-5 md:py-8 max-w-3xl"} mx-auto`}>
-        <div className="bb-bible-studies-hero mb-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-5 py-4 shadow-sm md:px-6">
-          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Reading Plans</h1>
-              <p className="mt-2 max-w-2xl text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
-                Pick the plan you want on your dashboard: the Bible in One Year, or a focused devotional.
-              </p>
+        {plansBackButton}
+        <div className="mb-3 overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
+          <div className="aspect-[16/9] w-full bg-[var(--bb-surface-soft,#f4f8ff)]">
+            <img src="/plans/devotionals-banner.png" alt="Devotionals" className="h-full w-full object-cover" />
+          </div>
+          <div className="px-5 py-4">
+            <div className="flex flex-col gap-3">
+              {([
+                ["📖", "Topic-Based Studies", "Explore key books, people, and themes."],
+                ["🗓️", "Short & Focused", "Multi-day studies designed to be completed one day at a time."],
+                ["🌱", "Practical Application", "Real-life insights for everyday faith."],
+                ["❤️", "Grow Closer to God", "Build a stronger, more consistent walk."],
+              ] as Array<[string, string, string]>).map(([icon, title, text]) => (
+                <div key={title} className="flex items-start gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[var(--bb-accent-soft,#eaf5ff)] text-base" aria-hidden>{icon}</span>
+                  <div>
+                    <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">{title}</p>
+                    <p className="text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">{text}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -734,47 +1112,37 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
           )}
         </div>
 
+        <div className="mb-4 flex flex-wrap gap-2">
+          {([
+            ["all", "All"],
+            ["21", "21 Days"],
+            ["31", "31 Days"],
+            ["coming-soon", "Coming Soon"],
+          ] as Array<[DevotionalLengthFilter, string]>).map(([value, label]) => (
+            <button
+              key={value}
+              type="button"
+              onClick={() => setLengthFilter(value)}
+              className={`rounded-full px-3.5 py-2 text-xs font-black transition ${
+                lengthFilter === value
+                  ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
+                  : "bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-sm hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
         {filteredDevotionals.length === 0 ? (
           <div className="text-gray-500">
             {studyFilter === "all"
-              ? "No devotionals available yet. Check back soon!"
+              ? "No devotionals match this filter yet. Check back soon!"
               : `No ${studyFilter === "done" ? "done" : "started"} devotionals yet.`}
           </div>
         ) : (
           <div>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
-            {studyFilter === "all" ? (
-              <div
-                role="link"
-                tabIndex={0}
-                className="block w-full cursor-pointer"
-                onClick={() => void setBibleYearAsPlan()}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    void setBibleYearAsPlan();
-                  }
-                }}
-              >
-                <div className="bb-bible-study-card group flex h-full flex-col rounded-[18px] border border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-card,#ffffff)] p-2.5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl sm:p-3">
-                  <div className="relative">
-                    <div className="aspect-square w-full overflow-hidden rounded-[14px] bg-[var(--bb-surface-soft,#f4f8ff)]">
-                      <img src="/Day1cover.png" alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
-                    </div>
-                    <span className="absolute right-2 top-2 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[var(--bb-button-text,#ffffff)] shadow-sm">
-                      Plan
-                    </span>
-                  </div>
-                  <div className="flex flex-1 flex-col px-1 pb-1 pt-3 text-center">
-                    <h3 className="text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-base md:text-lg">The Bible in One Year</h3>
-                    <p className="mt-1 text-[11px] font-bold leading-tight text-[var(--bb-text-muted,#6b7280)] sm:text-xs">Genesis to Revelation, one day at a time</p>
-                    <div className="mt-auto pt-3">
-                      <p className="text-xs font-black text-[var(--bb-accent,#2f7fe8)]">{settingBibleYear ? "Opening..." : "Open the plan"}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ) : null}
             {filteredDevotionals.map((devotional) => {
               const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
               const isComplete = progress.isComplete;
