@@ -11447,7 +11447,16 @@ Before we understand redemption, we need to understand what God made humanity fo
                       <button
                         key={option}
                         type="button"
-                        onClick={() => setBibleYearTriviaAnswers((current) => ({ ...current, [currentQuestion.id]: option }))}
+                        onClick={() => {
+                          setBibleYearTriviaAnswers((current) => ({ ...current, [currentQuestion.id]: option }));
+                          // The explanation pushes Next off phone screens -
+                          // bring the action row into view (report, 2026-09-05).
+                          window.setTimeout(() => {
+                            document.getElementById(`bible-year-trivia-actions-${day.dayNumber}`)?.scrollIntoView({
+                              block: "end",
+                            });
+                          }, 80);
+                        }}
                         disabled={Boolean(selectedAnswer)}
                         className={`rounded-2xl border px-3 py-3 text-left text-sm font-bold transition ${
                           isCorrect
@@ -11482,7 +11491,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 ) : null}
               </div>
             ) : null}
-            <div className="mt-4 flex items-center justify-between gap-3">
+            <div id={`bible-year-trivia-actions-${day.dayNumber}`} className="mt-4 flex items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={() =>

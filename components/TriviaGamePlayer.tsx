@@ -60,6 +60,18 @@ export default function TriviaGamePlayer({
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  // The result panel (and its Next button) appears BELOW the options, off
+  // screen on phones - a reader reported not being able to continue. Bring
+  // the button into view the moment an answer lands.
+  const nextButtonRef = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    if (!selectedAnswer) return;
+    window.setTimeout(() => {
+      nextButtonRef.current?.scrollIntoView({
+        block: "end",
+      });
+    }, 80);
+  }, [selectedAnswer]);
   const [correctCount, setCorrectCount] = useState(0);
   const [earnedCorrectCount, setEarnedCorrectCount] = useState(0);
   const [showResults, setShowResults] = useState(false);
@@ -585,6 +597,7 @@ export default function TriviaGamePlayer({
               <p className="mt-3 text-sm leading-6 text-gray-700">{currentQuestion.explanation}</p>
               <button
                 type="button"
+                ref={nextButtonRef}
                 onClick={handleNext}
                 className="mt-5 rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition hover:bg-blue-700"
               >

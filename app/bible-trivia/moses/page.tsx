@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
@@ -152,6 +152,18 @@ export default function MosesTriviaPage() {
   const [correctCount, setCorrectCount] = useState(0);
   const [earnedCorrectCount, setEarnedCorrectCount] = useState(0);
   const [showResults, setShowResults] = useState(false);
+  // Bring the Next button into view when an answer lands - it renders below
+  // the options and sat off screen on phones (user report, 2026-09-05).
+  const nextButtonRef = useRef<HTMLButtonElement | null>(null);
+  useEffect(() => {
+    if (!selectedAnswer) return;
+    const timer = window.setTimeout(() => {
+      nextButtonRef.current?.scrollIntoView({
+        block: "end",
+      });
+    }, 80);
+    return () => window.clearTimeout(timer);
+  }, [selectedAnswer]);
   const [userId, setUserId] = useState<string | null>(null);
   const [loadingVerseText, setLoadingVerseText] = useState(false);
 
@@ -444,6 +456,7 @@ const meta: any = user.user_metadata || {};
                 </div>
               </div>
               <button
+                ref={nextButtonRef}
                 onClick={handleNext}
                 className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
               >
