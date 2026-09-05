@@ -34,11 +34,10 @@ type StudyProgressSummary = {
 
 type StudyFilter = "all" | "done" | "started";
 
-// The Plans tab is one organized hub: a landing page with three sections
-// (Bible in One Year, Devotionals, Articles from the Blog) instead of one
-// long mixed list. Sub-navigation is internal state so the dashboard shell
-// (header + bottom menu) stays around every screen.
-type PlansSection = "hub" | "bible-year" | "devotionals" | "articles";
+// The Plans tab is one page with three tabs - Bible in One Year,
+// Devotionals, Articles from the Blog - switched inline (Louis, 2026-09-05:
+// "everything is there but just different tabs, not 50 different pages").
+type PlansSection = "bible-year" | "devotionals" | "articles";
 type BibleYearTestamentFilter = "all" | "old" | "new";
 type DevotionalLengthFilter = "all" | "21" | "31" | "coming-soon";
 
@@ -149,7 +148,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   const [tempDontShowAgain, setTempDontShowAgain] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [settingBibleYear, setSettingBibleYear] = useState(false);
-  const [plansSection, setPlansSection] = useState<PlansSection>("hub");
+  const [plansSection, setPlansSection] = useState<PlansSection>("bible-year");
   const [bibleYearFilter, setBibleYearFilter] = useState<BibleYearTestamentFilter>("all");
   const [lengthFilter, setLengthFilter] = useState<DevotionalLengthFilter>("all");
   const [articleCategory, setArticleCategory] = useState<string>("all");
@@ -671,79 +670,36 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     );
   }
 
-  const plansBackButton = (
-    <button
-      type="button"
-      onClick={() => setPlansSection("hub")}
-      className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-[var(--bb-card,#ffffff)] px-4 py-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)] shadow-sm transition hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
-    >
-      <span aria-hidden>‹</span> Plans
-    </button>
-  );
-
-  // ---- PLANS HUB - the landing page for the tab ----
-  if (plansSection === "hub") {
-    const hubCards: Array<{ key: PlansSection; banner: string; title: string; subtitle: string }> = [
-      {
-        key: "bible-year",
-        banner: "/plans/bible-in-one-year-banner.png",
-        title: "Bible in One Year",
-        subtitle: "Read the entire Bible in 365 days with daily readings, notes, and more.",
-      },
-      {
-        key: "devotionals",
-        banner: "/plans/devotionals-banner.png",
-        title: "Devotionals",
-        subtitle: "Focused studies on key topics, books, and themes.",
-      },
-      {
-        key: "articles",
-        banner: "/plans/blog-articles-banner.png",
-        title: "Articles from the Blog",
-        subtitle: "Bible insights, study tips, character studies, and more.",
-      },
-    ];
-
-    return (
-      <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
-        <div className={`${embedded ? "px-0 py-0 max-w-6xl" : "px-4 py-5 md:py-8 max-w-3xl"} mx-auto`}>
-          <div className="mb-4">
-            <h1 className="text-3xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Plans</h1>
-            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">Read. Study. Grow. All in one place.</p>
-          </div>
-          <div className="flex flex-col gap-4">
-            {hubCards.map((card) => (
-              <button
-                key={card.key}
-                type="button"
-                onClick={() => setPlansSection(card.key)}
-                className="group overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl"
-              >
-                <div className="aspect-[16/9] w-full overflow-hidden bg-[var(--bb-surface-soft,#f4f8ff)]">
-                  <img
-                    src={card.banner}
-                    alt={`${card.title} banner`}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-                  />
-                </div>
-                <div className="flex items-center gap-3 px-5 py-4">
-                  <div className="min-w-0 flex-1">
-                    <h2 className="text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">{card.title}</h2>
-                    <p className="mt-0.5 text-xs font-bold leading-snug text-[var(--bb-text-muted,#6b7280)]">{card.subtitle}</p>
-                  </div>
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] text-lg font-black text-[var(--bb-accent,#2f7fe8)] transition group-hover:bg-[var(--bb-accent,#2f7fe8)] group-hover:text-white" aria-hidden>
-                    ›
-                  </span>
-                </div>
-              </button>
-            ))}
-          </div>
+  // One page, three tabs. This header (title + tab bar) stays on screen for
+  // every tab; the content below switches inline.
+  const plansHeader = (
+    <div className="mb-4">
+      <h1 className="text-3xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Plans</h1>
+      <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">Read. Study. Grow. All in one place.</p>
+      <div className="mt-3 rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 shadow-sm">
+        <div className="grid grid-cols-3 gap-2 text-center">
+          {([
+            ["bible-year", "Bible in One Year"],
+            ["devotionals", "Devotionals"],
+            ["articles", "Articles"],
+          ] as Array<[PlansSection, string]>).map(([value, label]) => (
+            <button
+              key={value}
+              type="button"
+              onClick={() => setPlansSection(value)}
+              className={`rounded-2xl px-2 py-2.5 text-[11px] font-black uppercase tracking-wide transition sm:text-xs ${
+                plansSection === value
+                  ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
+                  : "bg-[var(--bb-surface-soft,#f8fbff)] text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 
   // ---- BIBLE IN ONE YEAR SECTION ----
   if (plansSection === "bible-year") {
@@ -763,7 +719,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     return (
       <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
         <div className={`${embedded ? "px-0 py-0 max-w-6xl" : "px-4 py-5 md:py-8 max-w-3xl"} mx-auto`}>
-          {plansBackButton}
+          {plansHeader}
           <div className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
             <div className="aspect-[16/9] w-full bg-[var(--bb-surface-soft,#f4f8ff)]">
               <img src="/plans/bible-in-one-year-banner.png" alt="The Bible in One Year" className="h-full w-full object-cover" />
@@ -864,7 +820,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     return (
       <div className={`${embedded ? "" : "min-h-screen"} bb-bible-studies-page bg-[var(--bb-background,#f4f8ff)] text-[var(--bb-text-primary,#111827)]`}>
         <div className={`${embedded ? "px-0 py-0 max-w-6xl" : "px-4 py-5 md:py-8 max-w-3xl"} mx-auto`}>
-          {plansBackButton}
+          {plansHeader}
           <div className="overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
             <div className="aspect-[16/9] w-full bg-[var(--bb-surface-soft,#f4f8ff)]">
               <img src="/plans/blog-articles-banner.png" alt="Articles from the Blog" className="h-full w-full object-cover" />
@@ -946,7 +902,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
           and it looked like a different page. Same width now, so it is one
           page wherever you reach it from. */}
       <div className={`${embedded ? "px-0 py-0 max-w-6xl" : "px-4 py-5 md:py-8 max-w-3xl"} mx-auto`}>
-        {plansBackButton}
+        {plansHeader}
         <div className="mb-3 overflow-hidden rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-sm">
           <div className="aspect-[16/9] w-full bg-[var(--bb-surface-soft,#f4f8ff)]">
             <img src="/plans/devotionals-banner.png" alt="Devotionals" className="h-full w-full object-cover" />

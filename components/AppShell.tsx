@@ -2386,6 +2386,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     !isBarePage &&
     !isGenesisOneReader &&
     !pathname?.startsWith("/study-groups") &&
+    // The Plans experience navigates with its own tabs (Louis, 2026-09-05),
+    // so the breadcrumb row is just noise there.
+    !pathname?.startsWith("/plan") &&
     breadcrumbItems.length > 0;
   const showDashboardStatusButtons = false;
   const shouldBlendHeaderIntoPage = Boolean(pathname?.startsWith("/dashboard"));
