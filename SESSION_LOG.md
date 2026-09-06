@@ -3438,3 +3438,15 @@ Next up: Day 127. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-06T09:50:00Z (hourly chapter notes run)
 Chapter: Psalms 32 | Duration: 9 min | Sections: 6 | Cards: 24 | Status: pass
 Next up: Psalms 33
+
+## 2026-09-06 (Women of the Bible series, delegated blog job)
+Expanded who-was-eve to the full character study standard (~3,550 words,
+Women of the Bible CTA added). Wrote and shipped all 18 remaining Women
+of the Bible posts: Mary the mother of Jesus, Mary Magdalene, Esther,
+Ruth, Sarah, Delilah, Bathsheba, Rahab, Deborah, Hannah, Rebekah, Rachel,
+Hagar, Miriam, Tamar, Martha and Mary of Bethany, Elizabeth, and the
+Samaritan woman. All KJV verified, tsc/lint clean, on the character
+studies fallback banner pending real artwork (see MARCUS_HANDOFF.md).
+Built a 6 week promotion calendar in content-buddy/blog/CONTENT_CALENDAR.md
+and dequeued the now redundant who-was-mary-magdalene topic from
+content-buddy's standard queue.
