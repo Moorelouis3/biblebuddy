@@ -14,11 +14,11 @@ import {
 // The moderator engagement heartbeat. Runs hourly in the cloud (Vercel
 // cron, no laptop needed). Each run: scores recent community activity,
 // auto-likes a couple of the highest-priority posts under per-moderator
-// daily caps, and DRAFTS at most one moderator comment into the review
-// queue at /moderator-admin. Comments only auto-post when a moderator's
-// auto_comments setting is on - and never for vulnerability-flagged posts,
-// which always wait for human review. Roughly a third of runs deliberately
-// do nothing so activity never looks metronomic.
+// daily caps, and posts at most one persona comment automatically - Louis
+// reviews AFTER the fact at /moderator-admin, where he can edit, delete,
+// rate, or pause any moderator. A comment only lands in the queue when
+// generation failed and there is no text to post. Roughly a third of runs
+// deliberately do nothing so activity never looks metronomic.
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -135,10 +135,11 @@ export async function GET(request: NextRequest) {
           modSettings.personality,
           modSettings.prohibited_topics,
         );
-        // Vulnerable posts ALWAYS wait for human review, whatever the
-        // auto_comments setting says.
-        const autoPost = Boolean(modSettings.auto_comments) && !commentCandidate.isVulnerable && Boolean(generation.text);
-        let status = generation.text ? "queued" : "queued";
+        // Comments post automatically (Louis reviews after the fact from
+        // the dashboard - edit or delete there). A draft only lands in the
+        // queue when generation failed and there is no text to post.
+        const autoPost = Boolean(modSettings.auto_comments) && Boolean(generation.text);
+        let status = "queued";
         let resultPostId: string | null = null;
         let postedAt: string | null = null;
         if (autoPost && generation.text) {

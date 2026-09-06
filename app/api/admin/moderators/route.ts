@@ -159,6 +159,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true });
     }
 
+    if (op === "edit_comment") {
+      const actionId = String(body.actionId || "");
+      const newText = typeof body.text === "string" ? body.text.trim() : "";
+      if (!newText) return NextResponse.json({ error: "Edited text is empty." }, { status: 400 });
+      const { data: action } = await supabase
+        .from("moderator_actions")
+        .select("id, result_post_id")
+        .eq("id", actionId)
+        .maybeSingle();
+      if (!action?.result_post_id) return NextResponse.json({ error: "No posted comment on this action." }, { status: 404 });
+      const { error } = await supabase.from("group_posts").update({ content: newText }).eq("id", action.result_post_id);
+      if (error) throw new Error(error.message);
+      await supabase.from("moderator_actions").update({ final_text: newText }).eq("id", actionId);
+      return NextResponse.json({ ok: true });
+    }
+
     if (op === "delete_comment") {
       const actionId = String(body.actionId || "");
       const { data: action } = await supabase

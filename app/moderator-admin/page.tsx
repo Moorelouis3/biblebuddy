@@ -114,8 +114,9 @@ export default function ModeratorAdminPage() {
     <main className="mx-auto min-h-screen max-w-4xl px-4 py-8 text-gray-950">
       <h1 className="text-2xl font-black">Moderator Engagement</h1>
       <p className="mt-1 text-sm font-semibold text-gray-500">
-        Review drafted comments, watch outcomes, and control each moderator. Likes run automatically under the caps;
-        comments wait here for your approval unless auto-post is on.
+        Moderators like and comment automatically under the caps. Review what they posted below - edit, delete, or
+        rate anything, and pause a moderator (or everything) anytime. Items only wait here when a draft failed to
+        generate and needs text.
       </p>
       {error ? <p className="mt-4 rounded-xl bg-red-50 p-3 text-sm font-bold text-red-700">{error}</p> : null}
       {notice ? <p className="mt-4 rounded-xl bg-emerald-50 p-3 text-sm font-bold text-emerald-700">{notice}</p> : null}
@@ -138,9 +139,9 @@ export default function ModeratorAdminPage() {
           </section>
 
           <section className="mt-6">
-            <h2 className="text-lg font-black">Review queue ({payload.queue.length})</h2>
+            <h2 className="text-lg font-black">Needs text ({payload.queue.length})</h2>
             {payload.queue.length === 0 ? (
-              <p className="mt-2 text-sm font-semibold text-gray-500">Nothing waiting for review.</p>
+              <p className="mt-2 text-sm font-semibold text-gray-500">Nothing waiting - all drafts posted on their own.</p>
             ) : (
               payload.queue.map((action) => (
                 <div key={action.id} className="mt-3 rounded-2xl border border-amber-200 bg-amber-50/60 p-4">
@@ -236,7 +237,7 @@ export default function ModeratorAdminPage() {
                         defaultChecked={settings.auto_comments}
                         onChange={(event) => updateSetting(mod.key, { autoComments: event.target.checked })}
                       />
-                      Auto-post comments (vulnerable posts still wait for review)
+                      Auto-post comments (off = drafts wait for approval instead)
                     </label>
                     <textarea
                       className="mt-2 w-full rounded-lg border border-gray-300 p-2 text-xs font-medium"
@@ -278,7 +279,28 @@ export default function ModeratorAdminPage() {
                     <span className="text-gray-400">{new Date(action.created_at).toLocaleString()}</span>
                   </div>
                   <p className="mt-1 font-semibold text-gray-600">On: {action.target_preview}</p>
-                  {action.final_text ? <p className="mt-1 font-medium text-gray-800">&ldquo;{action.final_text}&rdquo;</p> : null}
+                  {action.final_text && action.status === "posted" && action.action_type === "comment" && action.result_post_id ? (
+                    <div className="mt-1">
+                      <textarea
+                        className="w-full rounded-lg border border-gray-200 p-2 font-medium text-gray-800"
+                        rows={2}
+                        defaultValue={action.final_text}
+                        onChange={(event) => setEdits((prev) => ({ ...prev, [action.id]: event.target.value }))}
+                      />
+                      {edits[action.id] !== undefined && edits[action.id] !== action.final_text ? (
+                        <button
+                          type="button"
+                          disabled={busy === `edit-${action.id}`}
+                          onClick={() => post({ op: "edit_comment", actionId: action.id, text: edits[action.id] }, `edit-${action.id}`)}
+                          className="mt-1 rounded-lg bg-indigo-600 px-3 py-1 text-xs font-black text-white"
+                        >
+                          Save edit
+                        </button>
+                      ) : null}
+                    </div>
+                  ) : action.final_text ? (
+                    <p className="mt-1 font-medium text-gray-800">&ldquo;{action.final_text}&rdquo;</p>
+                  ) : null}
                   <p className="mt-1 text-xs font-semibold text-gray-500">Why: {action.reason}</p>
                   {outcome ? (
                     <p className="mt-1 text-xs font-black text-indigo-600">

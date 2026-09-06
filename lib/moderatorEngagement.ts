@@ -105,7 +105,10 @@ function hashString(value: string) {
 }
 
 export async function loadModeratorSettings(supabase: SupabaseClient) {
-  const defaults = { enabled: true, auto_comments: false, max_likes_per_day: 10, max_comments_per_day: 3, min_delay_minutes: 25 };
+  // auto_comments defaults ON (Louis, 2026-09-06: no review queue - the
+  // moderators post automatically and he adjusts afterwards from the
+  // dashboard). The queue only catches drafts whose generation failed.
+  const defaults = { enabled: true, auto_comments: true, max_likes_per_day: 10, max_comments_per_day: 3, min_delay_minutes: 25 };
   const { data } = await supabase.from("moderator_settings").select("*");
   const byKey = new Map((data || []).map((row: any) => [row.moderator_key, row]));
   const missing = ["global", ...MODERATORS.map((m) => m.key)].filter((key) => !byKey.has(key));
