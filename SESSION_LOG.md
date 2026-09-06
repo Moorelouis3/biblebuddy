@@ -3470,3 +3470,7 @@ Next up: Psalms 35
 ## 2026-09-06T14:59:06Z (hourly chapter notes run)
 Chapter: Psalms 35 | Duration: 11 min | Sections: 7 | Cards: 54 | Status: pass
 Next up: Psalms 36
+
+## 2026-09-06T15:30:00Z (bible year day writer run)
+Day: 129 — The Blessed Way and Trust in Trouble (Psalms 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 130
