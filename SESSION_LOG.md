@@ -3400,3 +3400,7 @@ Next up: Day 123. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-06T00:54:10Z (hourly chapter notes run)
 Chapter: Psalms 28 | Duration: 8 min | Sections: 3 | Cards: 15 | Status: pass
 Next up: Psalms 29
+
+## 2026-09-06T02:53:00Z (hourly chapter notes run)
+Chapter: Psalms 29 | Duration: 7 min | Sections: 3 | Cards: 21 | Status: pass
+Next up: Psalms 30

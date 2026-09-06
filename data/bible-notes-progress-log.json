@@ -32737,6 +32737,59 @@
           "at": "2026-09-06T00:54:10Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 29,
+      "startedAt": "2026-09-06T02:46:00Z",
+      "finishedAt": "2026-09-06T02:53:00Z",
+      "durationMinutes": 7,
+      "sections": 3,
+      "cards": 21,
+      "verses": 11,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (not a style redo, priority queue and redo backlog both confirmed empty). Psalms 24-28 already had dedicated wired-in files; Psalms 29 was the first chapter still covered only by the legacy PSALMS_22_36_PERSONAL_SECTIONS bulk range file. Fetched real KJV text for Psalms 29 (11 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Chunked into 3 sections (1-2 ascribing glory and strength to the LORD, 3-9 the sevenfold voice of the LORD in the storm, 10-11 the LORD enthroned as King for ever giving strength and peace). 21 cards across 11 verses, about 1.9 cards per verse. scripts/check_bible_note_style.py passed clean on the first run, 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves (word definitions for mighty, beauty of holiness, unicorn, Sirion, discovereth, for ever; identifying Kadesh as a real place without overclaiming which Kadesh is meant), titles are exact KJV phrases in title case, no bullet restates a body line, and the closing bullets land on meaning rather than mechanics. Parser check passed (3 sections, 21 cards, matches design). npx tsc --noEmit clean. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/psalmsTwentyNineSource.ts, new function applyPersonalPsalmsTwentyNineStudySections added and called right after applyPersonalPsalmsTwentyEightStudySections(), preserveExactPhraseBodies psalms range extended from chapters 1-28 to 1-29, correctly overriding the legacy bulk file for chapter 29 only. Next forward-progress target is Psalms 30.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-06T02:46:12Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 29 (normal forward progress, redo/priority queues empty)",
+          "at": "2026-09-06T02:47:30Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 29 (11 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-06T02:47:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-06T02:48:10Z"
+        },
+        {
+          "name": "source file lib/psalmsTwentyNineSource.ts written (3 sections, 21 cards)",
+          "at": "2026-09-06T02:49:48Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 21 cards)",
+          "at": "2026-09-06T02:50:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call site, preserveExactPhraseBodies range extended to 29)",
+          "at": "2026-09-06T02:50:40Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('psalms', 29) returns 3 sections, 21 cards)",
+          "at": "2026-09-06T02:51:05Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-06T02:51:25Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-06T02:53:00Z"
+        }
+      ]
     }
   ]
 }
