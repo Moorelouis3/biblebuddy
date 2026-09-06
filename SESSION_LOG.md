@@ -3454,3 +3454,7 @@ content-buddy's standard queue.
 ## 2026-09-06T10:58:15Z (hourly chapter notes run)
 Chapter: Psalms 33 | Duration: 12 min | Sections: 6 | Cards: 40 | Status: pass
 Next up: Psalms 34
+
+## 2026-09-06T12:27:06Z (bible year day writer run)
+Day: 127 — God Answers From the Storm (Job 35-38) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 128
