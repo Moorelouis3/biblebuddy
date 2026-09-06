@@ -295,3 +295,20 @@ local `main` to `origin/main` and continued normal forward progress. This
 is now at least a sixth occurrence of this exact class of bug across this
 routine — worth fixing at the environment level rather than each run
 catching it by hand.
+
+## Stale local main / detached HEAD recurred again (2026-09-06, Psalms 36 hourly chapter run) — still unfixed at the environment level
+Same root cause as every entry above, at least a seventh occurrence.
+Session started with HEAD detached at a commit 54 commits ahead of what
+local `main`'s cached ref showed (stuck at the old "Day 108 / Psalms 13"
+tip), including Psalms 24-35 study notes and many other already-shipped
+`[deploy]`-tagged commits. A fresh `git fetch origin main` confirmed
+`origin/main` had already advanced to match the detached tip exactly, so
+nothing was actually at risk of loss this time, but the recovery still
+took real time and judgment calls (verifying ancestry with
+`git merge-base --is-ancestor`, since `git merge`/`git branch -v` were
+themselves confused and reported "unrelated histories" and false
+divergence, apparently a shallow-clone artifact) before any of the actual
+chapter-writing task could start. Flagging again because this keeps
+costing a chunk of every run's budget on git archaeology instead of Bible
+notes, and because a future occurrence might not be as clean a
+fast-forward as this one and could actually risk losing real work.

@@ -3478,3 +3478,7 @@ Next up: Day 130
 ## 2026-09-06T15:45:00Z (bible year day writer run, second day this run)
 Day: 130 — Prayer in Distress (Psalms 4-6) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 131. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-06T16:57:04Z (hourly chapter notes run)
+Chapter: Psalms 36 | Duration: 8 min | Sections: 3 | Cards: 25 | Status: pass
+Next up: Psalms 37
