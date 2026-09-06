@@ -10,6 +10,8 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { supabase } from "../lib/supabaseClient";
+import { useAccountGate } from "./AccountRequiredModal";
 import {
   fetchVotdEngagement,
   getVotdBackground,
@@ -19,6 +21,182 @@ import {
   upsertVotdEngagement,
   type VerseOfTheDayEntry,
 } from "../lib/verseOfTheDayContent";
+
+type VotdComment = {
+  id: string;
+  user_id: string;
+  display_name: string | null;
+  content: string;
+  created_at: string;
+  profile_image_url?: string | null;
+};
+
+/**
+ * The day's reflection discussion - the SAME rows as the real group post for
+ * this verse (2026-09-06). Answers written here appear in the group thread
+ * and answers written in the group appear here.
+ */
+function VotdDiscussion({ entry, userId }: { entry: VerseOfTheDayEntry; userId: string | null | undefined }) {
+  const [postId, setPostId] = useState<string | null>(null);
+  const [groupId, setGroupId] = useState<string | null>(null);
+  const [comments, setComments] = useState<VotdComment[]>([]);
+  const [draft, setDraft] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const { ensureFullAccount, accountGateModal } = useAccountGate("share your reflection");
+
+  useEffect(() => {
+    let cancelled = false;
+    async function load() {
+      try {
+        const response = await fetch(`/api/verse-of-the-day/discussion?date=${entry.scheduled_date}`);
+        if (!response.ok) return;
+        const payload = (await response.json()) as { postId?: string; groupId?: string };
+        if (cancelled || !payload.postId) return;
+        setPostId(payload.postId);
+        setGroupId(payload.groupId ?? null);
+
+        const { data: rows, error } = await supabase
+          .from("group_posts")
+          .select("id, user_id, display_name, content, created_at")
+          .eq("parent_post_id", payload.postId)
+          .order("created_at", { ascending: true })
+          .limit(200);
+        if (error || cancelled) return;
+        const list = (rows as VotdComment[]) || [];
+
+        const userIds = Array.from(new Set(list.map((row) => row.user_id).filter(Boolean)));
+        if (userIds.length > 0) {
+          const { data: profiles } = await supabase
+            .from("profile_stats")
+            .select("user_id, profile_image_url")
+            .in("user_id", userIds);
+          const imageByUser = new Map((profiles || []).map((row: any) => [row.user_id, row.profile_image_url]));
+          list.forEach((row) => {
+            row.profile_image_url = imageByUser.get(row.user_id) ?? null;
+          });
+        }
+        if (!cancelled) setComments(list);
+      } catch (error) {
+        console.error("[VOTD] Could not load the discussion:", error);
+      }
+    }
+    void load();
+    return () => {
+      cancelled = true;
+    };
+  }, [entry.scheduled_date]);
+
+  async function submitReflection() {
+    const text = draft.trim();
+    if (!text || submitting || !postId || !groupId) return;
+    if (!userId) {
+      setSubmitError("Sign in to share your reflection.");
+      return;
+    }
+    // Answering requires a real account - same rule as posting in the group.
+    if (!(await ensureFullAccount())) return;
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      const { data: profile } = await supabase
+        .from("profile_stats")
+        .select("display_name, username, profile_image_url")
+        .eq("user_id", userId)
+        .maybeSingle();
+      const displayName = profile?.display_name || profile?.username || "Bible Buddy Member";
+
+      const { data: inserted, error } = await supabase
+        .from("group_posts")
+        .insert({
+          group_id: groupId,
+          user_id: userId,
+          display_name: displayName,
+          category: "general",
+          content: text,
+          parent_post_id: postId,
+        })
+        .select("id")
+        .single();
+      if (error) throw new Error(error.message);
+
+      trackVotdEvent("votd_reflection_posted", { date: entry.scheduled_date, reference: entry.reference });
+      setComments((prev) => [
+        ...prev,
+        {
+          id: inserted?.id ?? crypto.randomUUID(),
+          user_id: userId,
+          display_name: displayName,
+          content: text,
+          created_at: new Date().toISOString(),
+          profile_image_url: profile?.profile_image_url ?? null,
+        },
+      ]);
+      setDraft("");
+    } catch (error: any) {
+      setSubmitError(error?.message || "Could not post your reflection.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  if (!postId) return null;
+
+  return (
+    <section>
+      <SectionHeading>💬 Share Your Reflection</SectionHeading>
+      {comments.length > 0 ? (
+        <div className="mb-4 space-y-3">
+          {comments.map((comment) => (
+            <div key={comment.id} className="flex items-start gap-2.5">
+              {comment.profile_image_url ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={comment.profile_image_url} alt="" className="h-8 w-8 shrink-0 rounded-full object-cover" />
+              ) : (
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--bb-accent-soft,#eaf2ff)] text-xs font-black text-[var(--bb-accent,#2563eb)]">
+                  {(comment.display_name || "B").slice(0, 1).toUpperCase()}
+                </span>
+              )}
+              <div className="min-w-0 rounded-2xl bg-[var(--bb-surface-soft,#f4f8ff)] px-3.5 py-2.5">
+                <p className="text-xs font-black text-[var(--bb-text-primary,#111827)]">{comment.display_name || "Bible Buddy Member"}</p>
+                <p className="mt-0.5 whitespace-pre-wrap text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#374151)]">{comment.content}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="mb-3 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">Be the first to answer today&apos;s question.</p>
+      )}
+      <textarea
+        value={draft}
+        onChange={(event) => setDraft(event.target.value)}
+        rows={2}
+        placeholder="Write your answer..."
+        className="w-full rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-semibold text-[var(--bb-text-primary,#111827)] outline-none transition focus:border-[var(--bb-accent,#2563eb)]"
+      />
+      {submitError ? <p className="mt-1 text-xs font-bold text-red-500">{submitError}</p> : null}
+      <div className="mt-2 flex items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={() => void submitReflection()}
+          disabled={submitting || !draft.trim()}
+          className="rounded-full bg-[var(--bb-button,#2563eb)] px-5 py-2.5 text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95 disabled:opacity-50"
+        >
+          {submitting ? "Posting..." : "Post Reflection"}
+        </button>
+        {groupId ? (
+          <Link
+            href={`/study-groups/${groupId}/chat?post=${postId}`}
+            className="text-xs font-black text-[var(--bb-accent,#2563eb)] hover:underline"
+          >
+            View in the Group →
+          </Link>
+        ) : null}
+      </div>
+      {accountGateModal}
+    </section>
+  );
+}
 
 function SectionBody({ text }: { text: string }) {
   return (
@@ -204,6 +382,9 @@ export default function VerseOfTheDayBreakdown({
               💭 {entry.reflection_question}
             </p>
           </section>
+
+          {/* The reflection discussion - the same thread as the group post. */}
+          <VotdDiscussion entry={entry} userId={userId} />
 
           {entry.prayer ? (
             <section>
