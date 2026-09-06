@@ -3431,3 +3431,7 @@ Next up: Psalms 32
 Day: 125 — Wisdom and Deep Distress (Job 27-30) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 126
 
+## 2026-09-06T09:49:24Z (bible year day writer run, second day this run)
+Day: 126 — Job's Integrity and Elihu Speaks (Job 31-34) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 127. Stopping here — two-day budget cap for this run reached.
+
