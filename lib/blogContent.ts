@@ -67,6 +67,295 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-was-mary-mother-of-jesus",
+    title: "Who Was Mary, the Mother of Jesus? The Woman God Chose to Carry His Son",
+    description:
+      "A teenage girl said yes to carrying the Son of God. The full story of Mary, from the angel Gabriel to the cross, told in order from Scripture.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-mary-mother-of-jesus",
+    publishedAt: "2026-09-06",
+    readTime: "14 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Mary, the Mother of Jesus? 📖",
+      content:
+        "A teenage girl got the hardest assignment in history.\nShe said yes before she had any of the answers.\n\n📌 Her yes cost her socially, then it cost her at the cross.\n\n📖 An angel visits a poor girl from Nazareth.\n📖 Simeon warns her a sword will pierce her soul.\n📖 She stands at the cross and watches her son die.\n\nNew article on:\n🟢 The full story of **Mary**, told in order from Luke to Acts.\n🟢 What the Bible actually says about her, and what tradition added.\n🟢 What her yes still asks of us today.\n\nHave you ever said yes to something before you had any answers? 🙏",
+    },
+  },
+  {
+    slug: "who-was-mary-magdalene",
+    title: "Who Was Mary Magdalene in the Bible? The First Person to See Jesus Risen",
+    description:
+      "Mary Magdalene was not a prostitute. Discover the real Bible story of the woman Jesus healed and the first person to see Him risen from the dead.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-mary-magdalene",
+    publishedAt: "2026-09-06",
+    readTime: "17 min read",
+    image: "/who-was-mary-magdalene-banner.png",
+    groupPost: {
+      title: "Who Was Mary Magdalene in the Bible? 📖",
+      content:
+        "She was called a prostitute for centuries.\n\nThe Bible never once says it.\n\n📌 Jesus healed her, and she was first to see Him risen.\n\n📖 She helped fund Jesus's ministry after He healed her.\n📖 She stayed at the cross when His own disciples fled.\n📖 She was the very first witness of the resurrection.\n\nNew article on:\n🟢 Where the **prostitute myth** actually came from\n🟢 Her real story from **all four Gospels**, verse by verse\n🟢 What Jesus calling her by name still means for you\n\nWere you ever taught the myth about her too? 🙏",
+    },
+  },
+  {
+    slug: "who-was-esther",
+    title: "Who Was Esther in the Bible? The Queen Who Risked Her Life to Save Her People",
+    description:
+      "Esther's full story from orphan to queen, the plot against her people, and the courage it took to say if I perish, I perish.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-esther",
+    publishedAt: "2026-09-06",
+    readTime: "12 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Esther in the Bible? 📖",
+      content:
+        "An orphan girl became queen overnight.\nThen her whole people got a death sentence.\n\n📌 She had to risk her life to save them, knowing she might die for speaking up.\n\n📖 Mordecai raised her and told her to hide she was Jewish.\n📖 Haman built gallows for the man who would not bow to him.\n📖 God's name never appears once in the whole book.\n\nNew article on:\n🟢 How an **orphan** became queen of Persia\n🟢 What **for such a time as this** really means\n🟢 Why hidden moments still count as **faith**\n\nEver had to choose between staying quiet and doing the scary right thing? 🙏",
+    },
+  },
+  {
+    slug: "who-was-ruth",
+    title: "Who Was Ruth in the Bible? The Widow Who Refused to Leave",
+    description:
+      "Ruth was a poor Moabite widow who chose loyalty over safety, gleaned in a stranger's field, and became King David's great grandmother.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-ruth",
+    publishedAt: "2026-09-06",
+    readTime: "12 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Ruth in the Bible? 📖",
+      content:
+        "A foreign widow with nothing left.\nShe still chose loyalty over safety.\n\n📌 Ruth gave up her own people and her own gods for Naomi's God.\n\n📖 She gleaned grain in a stranger's field to survive.\n📖 That field belonged to a man named Boaz.\n📖 Her great grandson became King David.\n\nNew article on:\n🟢 The full story of **Ruth**, in order from Scripture\n🟢 What a **kinsman redeemer** actually was\n🟢 How Ruth ends up in the family line of **Jesus**\n\nEver had to choose loyalty when leaving would have been easier? 🙏",
+    },
+  },
+  {
+    slug: "who-was-sarah",
+    title: "Who Was Sarah in the Bible? The Woman Who Laughed at God",
+    description:
+      "Sarah waited decades for God's promise, laughed when it seemed impossible, and became the mother of a nation. Her full story, verse by verse.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-sarah",
+    publishedAt: "2026-09-06",
+    readTime: "13 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Sarah in the Bible? 📖",
+      content:
+        "She waited decades for a promise that seemed impossible.\nThen she laughed when God said it was finally time.\n\n📌 Her story shows faith and doubt can live together.\n\n📖 She was barren for most of her life.\n📖 She once let fear talk her into a lie in Egypt.\n📖 She held her promised son at ninety years old.\n\nNew article on:\n🟢 Sarah's long **wait** on God's promise.\n🟢 The **laugh** that started in disbelief.\n🟢 What her story teaches about **faith**.\n\nHave you ever laughed at a promise from God? 🙏",
+    },
+  },
+  {
+    slug: "who-was-delilah",
+    title: "Who Was Delilah in the Bible? The Woman Who Betrayed the Strongest Man Alive",
+    description:
+      "Who was Delilah in the Bible? The full story of the woman who betrayed Samson, told in order from Judges 16, with lessons for who you let close.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-delilah",
+    publishedAt: "2026-09-06",
+    readTime: "14 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Delilah in the Bible? 📖",
+      content:
+        "She never fought Samson with an army.\nShe just kept asking one question.\n\n📌 She wore him down daily until he told her the truth.\n\n📖 Philistine lords bribed her with silver to find his secret.\n📖 Samson lied to her three times before finally telling her.\n📖 He woke up and did not know the LORD had left him.\n\nNew article on:\n🟢 The **three lies** Samson told before the truth came out\n🟢 What his **Nazarite vow** actually meant\n🟢 Why God still answered his **final prayer**\n\nHave you ever ignored a warning sign because someone felt too close to walk away from? 🙏",
+    },
+  },
+  {
+    slug: "who-was-hannah",
+    title: "Who Was Hannah in the Bible? The Mother Who Gave Her Son Back to God",
+    description:
+      "Hannah waited years for a child while a rival wife mocked her every year. See her full story: the vow, the prayer mistaken for drunkenness, and Samuel's birth.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-hannah",
+    publishedAt: "2026-09-06",
+    readTime: "16 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Hannah in the Bible? 📖",
+      content:
+        "Years of waiting for a child.\nA rival wife who mocked her every single year.\n\n📌 Hannah poured out her pain to God, then gave her answered prayer right back to Him.\n\n📖 She wept so hard a priest thought she was drunk.\n📖 She vowed to give her future son to the LORD forever.\n📖 She got five more children after keeping that promise.\n\nNew article on:\n🟢 How **Hannah's vow** shaped her whole story\n🟢 What **pouring out your soul** in prayer really looks like\n🟢 The **prayer of praise** that echoes all the way to Mary\n\nHave you ever prayed through years of waiting? What kept you going? 🙏",
+    },
+  },
+  {
+    slug: "who-was-bathsheba",
+    title: "Who Was Bathsheba in the Bible? The Woman a King Killed For",
+    description:
+      "The true story of Bathsheba: what David did, what it cost Uriah, and why Scripture blames the king, not her.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-bathsheba",
+    publishedAt: "2026-09-06",
+    readTime: "14 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Bathsheba in the Bible? 📖",
+      content:
+        "A king saw her from his roof.\nHer whole life changed after that.\n\n📌 Scripture blames David for what happened, not her.\n\n📖 David sent for her, then tried to hide the pregnancy.\n📖 He had her husband Uriah killed in battle to cover it up.\n📖 Years later she spoke up and helped her son Solomon become king.\n\nNew article on:\n🟢 The full story of **Bathsheba**, told in order from 2 Samuel.\n🟢 Why **Nathan** told David \"Thou art the man.\"\n🟢 How grace showed up even in her family line to **Jesus**.\n\nHave you ever been blamed for something someone else did to you? 🙏",
+    },
+  },
+  {
+    slug: "who-was-deborah",
+    title: "Who Was Deborah in the Bible? The Woman Who Led a Nation to War",
+    description:
+      "Deborah led Israel out of twenty years of oppression. Discover her full story, from the palm tree of judgment to the battle and the Song of Deborah.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-deborah",
+    publishedAt: "2026-09-06",
+    readTime: "13 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Deborah in the Bible? 📖",
+      content:
+        "Israel suffered twenty years under a cruel king.\nNo man would step up to fight.\n\n📌 A woman named Deborah finally led the war herself.\n\n📖 She was a prophetess who judged Israel under a palm tree.\n📖 A general refused to fight unless she went too.\n📖 Another woman, Jael, finished the battle in her own tent.\n\nNew article on:\n🟢 How **Deborah** led an army when no man would.\n🟢 Why **Barak** needed her beside him to go to war.\n🟢 What **Jael** did that fulfilled Deborah's prophecy.\n\nHave you ever had to lead when nobody else would step up? 🙏",
+    },
+  },
+  {
+    slug: "who-was-rebekah",
+    title: "Who Was Rebekah in the Bible? The Mother Who Tricked Her Own Husband",
+    description:
+      "Rebekah said yes to a stranger's marriage proposal in one word, then years later lied to secure God's own promise about her sons.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-rebekah",
+    publishedAt: "2026-09-06",
+    readTime: "14 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Rebekah in the Bible? 📖",
+      content:
+        "She said yes to a total stranger's proposal.\nThen years later she lied to her own husband.\n\n📌 She believed God's promise but would not wait on His timing.\n\n📖 She watered ten camels for a stranger at a well.\n📖 God told her before birth that her younger son would lead.\n📖 She dressed Jacob in goat skins to steal his father's blessing.\n\nNew article on:\n🟢 The **well test** that changed her whole future\n🟢 The **twin sons** who fought before they were even born\n🟢 The **stolen blessing** that cost her twenty years with Jacob\n\nHave you ever tried to force a promise instead of waiting on it? 🙏",
+    },
+  },
+  {
+    slug: "who-was-rahab",
+    title: "Who Was Rahab in the Bible? The Harlot in the Family Line of Jesus",
+    description:
+      "Rahab was a harlot in Jericho who hid two spies and became an ancestor of Jesus. Her full story, in order, from Joshua to Matthew.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-rahab",
+    publishedAt: "2026-09-06",
+    readTime: "12 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Rahab in the Bible? 📖",
+      content:
+        "She ran a house built into Jericho's wall.\nOne brave choice changed everything for her.\n\n📌 Faith moved her to act, not just believe.\n\n📖 She hid two spies and lied to protect them.\n📖 She hung a scarlet cord in her window as a sign.\n📖 She is named as an ancestor of Jesus in Matthew 1.\n\nNew article on:\n🟢 How **one honest choice** can change your whole story.\n🟢 What the **scarlet cord** in her window really meant.\n🟢 Why her past never got the final word.\n\nEver felt like your past disqualifies you? Reply and let's talk 🙏",
+    },
+  },
+  {
+    slug: "who-was-rachel",
+    title: "Who Was Rachel in the Bible? The Woman Jacob Worked Fourteen Years For",
+    description:
+      "The full story of Rachel in the Bible: fourteen years of love, years of longing, the birth of Joseph, stolen idols, and her death near Bethlehem.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-rachel",
+    publishedAt: "2026-09-06",
+    readTime: "16 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Rachel in the Bible? 📖",
+      content:
+        "Everyone wanted Rachel. Jacob worked 14 years for her.\n\nBut love never gave her peace.\n\n📌 Having what everyone envies did not mean she had what she needed.\n\n📖 She envied her sister Leah for years over children.\n📖 God finally opened her womb and gave her Joseph.\n📖 She died in childbirth on the road, naming her son 'son of my sorrow.'\n\nNew article on:\n🟢 The **wedding night** that betrayed her without her ever agreeing to it\n🟢 Why she stole her father's **household idols** and hid them\n🟢 What her death says about beauty, love, and never finding peace\n\nHave you ever gotten the thing you wanted most, only to find it didn't fix what you thought it would? 🙏",
+    },
+  },
+  {
+    slug: "who-was-hagar",
+    title: "Who Was Hagar in the Bible? The Slave Girl Who Gave God a Name",
+    description:
+      "Hagar was a slave used by Sarai and Abram, then cast into the wilderness twice. See how God found her both times and what her story means for you.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-hagar",
+    publishedAt: "2026-09-06",
+    readTime: "12 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Hagar in the Bible? 📖",
+      content:
+        "She was a slave with no say over her own life.\nHer owners used her, then threw her away twice.\n\n📌 Both times she was cast out, God found her first.\n\n📖 Sarai gave her to Abram to have a child.\n📖 She fled to the desert and an angel met her there.\n📖 She named God herself, the first person in the Bible to do it.\n\nNew article on:\n🟢 How Hagar became a **surrogate**, then was driven away.\n🟢 The **wilderness** meeting that changed her whole story.\n🟢 What God did the second time she was cast out.\n\nEver felt used by people who were supposed to care for you? 🙏",
+    },
+  },
+  {
+    slug: "who-was-tamar",
+    title: "Who Was Tamar in the Bible? The Widow Judah Called More Righteous",
+    description:
+      "Tamar was denied the family she was legally owed, so she took a bold risk to force out the truth. See how her story ends in the family line of Jesus.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-tamar",
+    publishedAt: "2026-09-06",
+    readTime: "14 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Tamar in the Bible? 📖",
+      content:
+        "Tamar buried two husbands before she got justice.\nJudah promised her a third one, then never kept it.\n\n📌 She was denied what she was legally owed by the man who should have protected her.\n\n📖 Her two husbands died for their own sin, not hers.\n📖 She waited years on a broken promise from Judah.\n📖 She took a huge risk to force the truth into the open.\n\nNew article on:\n🟢 Why **Judah** called her more righteous than himself.\n🟢 How her son **Pharez** ends up in the family line of Jesus.\n🟢 What it means to fight for justice inside a broken system.\n\nHave you ever been denied what you were rightfully owed by someone who should have protected you? 🙏",
+    },
+  },
+  {
+    slug: "who-were-martha-and-mary",
+    title: "Who Were Martha and Mary of Bethany? The Sisters Who Saw Jesus Cry",
+    description:
+      "Martha served. Mary listened. Both grieved their brother Lazarus and watched Jesus weep before He raised him from the dead.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-were-martha-and-mary",
+    publishedAt: "2026-09-06",
+    readTime: "16 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Were Martha and Mary of Bethany? 📖",
+      content:
+        "Two sisters loved Jesus in totally different ways.\nOne served. One sat and listened.\n\n📌 Jesus loved them both, and He wept before He worked the miracle.\n\n📖 Martha welcomed Jesus into her home while Mary sat at His feet.\n📖 Their brother Lazarus died, and Jesus waited two days anyway.\n📖 Mary anointed Jesus with costly perfume before His burial.\n\nNew article on:\n🟢 Whether **serving** God can crowd out sitting with Him\n🟢 Why **Jesus wept** even knowing a miracle was coming\n🟢 What Mary's costly gift teaches about quiet devotion\n\nWhich sister do you relate to more, Martha or Mary? 🙏",
+    },
+  },
+  {
+    slug: "who-was-the-samaritan-woman",
+    title: "Who Was the Samaritan Woman? Five Husbands and One Savior",
+    description:
+      "The Samaritan woman came to draw water alone at noon to avoid people. See her full story from John 4 and what Jesus told her that changed everything.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-the-samaritan-woman",
+    publishedAt: "2026-09-06",
+    readTime: "17 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was the Samaritan Woman? 📖",
+      content:
+        "She came to the well alone at noon.\nThe hottest hour, so nobody would see her.\n\n📌 A tired stranger spoke to her anyway, and He already knew everything about her.\n\n📖 Jesus asked a Samaritan woman for a drink of water.\n📖 He knew about her five husbands without her saying a word.\n📖 She ran into town and told everyone about Him.\n\nNew article on:\n🟢 What **living water** actually means.\n🟢 Why Jews and Samaritans avoided each other.\n🟢 What it looks like to stop hiding from people.\n\nHave you ever avoided people because of your past? 🙏",
+    },
+  },
+  {
+    slug: "who-was-elizabeth",
+    title: "Who Was Elizabeth in the Bible? The Woman Who Waited a Lifetime for a Miracle",
+    description:
+      "Elizabeth waited decades for a child in a culture that measured her worth by it. See her full story from Luke 1 and the miracle that finally came.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-elizabeth",
+    publishedAt: "2026-09-06",
+    readTime: "17 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Elizabeth in the Bible? 📖",
+      content:
+        "She waited decades for a child that never came.\nThen God answered in the most surprising way.\n\n📌 Her miracle arrived at the exact same time as an even bigger one.\n\n📖 An angel struck her husband silent in the temple.\n📖 Her baby leaped inside her when Mary greeted her.\n📖 She insisted on the name John against her whole family.\n\nNew article on:\n🟢 What it felt like to carry a hope that long.\n🟢 Why her cousin **Mary's** visit mattered so much.\n🟢 What her story says about waiting on God's timing.\n\nHave you ever waited on a hope you almost gave up on? 🙏",
+    },
+  },
+  {
     slug: "is-it-a-sin-to-doubt-god",
     title: "Is It a Sin to Doubt God?",
     description:

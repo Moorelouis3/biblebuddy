@@ -252,3 +252,32 @@ and would otherwise sit there indefinitely. This run reset its own local
 `main` to the verified new `origin/main` tip and continued with normal
 forward progress from there (next chapter after Psalms 2), rather than
 attempting to resolve the force push itself.
+
+## Women of the Bible series (18 posts): all on the fallback character studies banner
+Louis's delegated Women of the Bible job (2026-09-06) shipped 18 new
+character study posts plus the expanded Eve rewrite. Real custom banners
+are being made separately and were not ready yet, so all 18 are live on
+the category fallback (`/5thingsholdingmenback.png`), except
+who-was-mary-magdalene which already had a real banner from an earlier
+queue entry (`/who-was-mary-magdalene-banner.png`). Swap the fallback
+image in each post's `lib/blogContent.ts` entry (the `image` field) as
+real banners arrive: who-was-mary-mother-of-jesus, who-was-esther,
+who-was-ruth, who-was-sarah, who-was-delilah, who-was-bathsheba,
+who-was-rahab, who-was-deborah, who-was-hannah, who-was-rebekah,
+who-was-rachel, who-was-hagar, who-was-miriam, who-was-tamar,
+who-were-martha-and-mary, who-was-elizabeth, who-was-the-samaritan-woman.
+
+## Women of the Bible series: technical reality on the 6 week publishing calendar
+Louis's brief asked for a 6 week publishing calendar spreading the 18
+Women of the Bible posts across Tuesday/Thursday/Saturday/Sunday slots.
+The codebase has no scheduled or draft publishing mechanism — a post in
+`lib/blogContent.ts` is live immediately, there is no gate on
+`publishedAt`. Holding 17 of the 18 files unmerged for five weeks was not
+realistic in a single session with no future automation to drip them out.
+So all 18 were written, verified, and published today (2026-09-06), and
+the calendar (`content-buddy/blog/CONTENT_CALENDAR.md`) instead tracks
+when to *promote* each one on Pinterest and Instagram, which is what the
+brief said these posts are actually for. If Louis wants genuine scheduled
+publishing for a future series, that needs a small feature (filter
+`BLOG_ARTICLES` by `publishedAt <= today` in the blog index and the
+per post route) before it can work the way the calendar implies.
