@@ -1,3 +1,18 @@
+## Unresolved git conflict markers found committed in SESSION_LOG.md
+This run (2026-09-06, Psalms 31) found literal, unresolved `<<<<<<< HEAD` /
+`=======` conflict markers already committed inside SESSION_LOG.md, wrapped
+around the previous run's own "hourly chapter notes run" entry for Psalms
+30. There was no closing `>>>>>>>` marker at all, so a merge had clearly
+been left half-resolved (both sides' content were fully present, nothing
+was lost, just the markers themselves). This run stripped the two marker
+lines and kept both blocks in place before appending its own entry, so the
+file is clean again as of this push, but the underlying cause is the same
+family of issue flagged repeatedly below (fresh sessions occasionally
+starting from a divergent or stale local `main`, forcing a merge that
+apparently was not always finished by hand afterward). Worth checking
+whether other files in this repo carry the same kind of stray, committed
+conflict markers from an earlier botched resolution.
+
 ## Stale local main recurred again (2026-09-04, Psalms 6 run) — still unfixed at the environment level
 Same class of issue as every entry below this one: this run's fresh checkout
 had local `main` cached at the old "Esther 5" tip while `git fetch origin

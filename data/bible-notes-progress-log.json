@@ -32843,6 +32843,59 @@
           "at": "2026-09-06T04:57:00Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 31,
+      "startedAt": "2026-09-06T06:46:35Z",
+      "finishedAt": "2026-09-06T06:58:34Z",
+      "durationMinutes": 12,
+      "sections": 6,
+      "cards": 46,
+      "verses": 24,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (not a style redo, priority queue and redo backlog both confirmed empty). Psalms 30 was the last chapter with a dedicated wired-in file. Fetched real KJV text for Psalms 31 (24 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Chunked into 6 sections (1-4 trust and the request for rescue, 5-8 committing his spirit and rejecting false idols, 9-13 the darkest complaint of the psalm, grief, reproach, and a plot on his life, 14-18 trust renewed in the middle of the pain, 19-20 wonder at God's stored up goodness and shelter, 21-24 praise, an honest admission of panic, and the closing call to courage). 46 cards across 24 verses, about 1.9 cards per verse. scripts/check_bible_note_style.py passed clean on the first run, 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves (word definitions for privily, redeemed, lying vanities, mercy, reproach, vessel, slander, supplication, persecute, shewed; correcting the misreading that David's own righteousness earned deliverance, or that the pit in verse 13 was a new threat rather than the earlier grave-picture repeated in Hebrew parallelism, or that hiding in God's presence in verse 20 meant disappearing rather than nearness); titles are exact KJV phrases in title case; no bullet restates a body line; and the closing bullets land on meaning rather than mechanics. Parser check passed (6 sections, 46 cards, matches design). npx tsc --noEmit clean. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/psalmsThirtyOneSource.ts, new function applyPersonalPsalmsThirtyOneStudySections added and called right after applyPersonalPsalmsThirtyStudySections(), preserveExactPhraseBodies psalms range extended from chapters 1-30 to 1-31. Next forward-progress target is Psalms 32.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-06T06:46:35Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 31 (normal forward progress, redo/priority queues empty)",
+          "at": "2026-09-06T06:47:31Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 31 (24 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-06T06:47:31Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-06T06:48:27Z"
+        },
+        {
+          "name": "source file lib/psalmsThirtyOneSource.ts written (6 sections, 46 cards)",
+          "at": "2026-09-06T06:56:19Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 46 cards)",
+          "at": "2026-09-06T06:56:19Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call site, preserveExactPhraseBodies range extended to 31)",
+          "at": "2026-09-06T06:56:57Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('psalms', 31) returns 6 sections, 46 cards)",
+          "at": "2026-09-06T06:56:57Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-06T06:58:25Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-06T06:58:34Z"
+        }
+      ]
     }
   ]
 }
