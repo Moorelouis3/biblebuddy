@@ -3458,3 +3458,7 @@ Next up: Psalms 34
 ## 2026-09-06T12:27:06Z (bible year day writer run)
 Day: 127 — God Answers From the Storm (Job 35-38) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 128
+
+## 2026-09-06T12:34:00Z (bible year day writer run, second day this run)
+Day: 128 — God Restores Job (Job 39-42) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 129. Stopping here — two-day budget cap for this run reached.
