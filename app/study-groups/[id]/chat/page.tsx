@@ -40,7 +40,7 @@ import { consumeCreditAction } from "@/lib/creditClient";
 import { countCompletedSeriesWeekSections, isSeriesWeekComplete, SERIES_WEEK_TOTAL_SECTIONS, toSeriesWeekProgressState } from "@/lib/seriesWeekProgress";
 import { isSeriesWeekNotesActionEvent, parseSeriesWeekNotesWeekNumber } from "@/lib/seriesWeekNotesTracking";
 import { hasLazySeriesNotes } from "@/lib/seriesNotes";
-import { clearGroupFeedCache, readGroupFeedCache, writeGroupFeedCache } from "@/lib/groupFeedCache";
+import { clearGroupFeedCache, readGroupFeedCacheAllowStale, writeGroupFeedCache } from "@/lib/groupFeedCache";
 import {
   extractMentionedItemsFromText,
   linkMentionItemsInHtml,
@@ -3694,8 +3694,12 @@ export default function GroupChatPage() {
     if (shouldAppend) setLoadingMorePosts(true);
     else setPostsHasMore(false);
     const postCategory = getGroupPostCategory(activeTab);
-    const cachedFeed =
-      !options?.bypassCache && !shouldAppend && page === 0 ? readGroupFeedCache(group.id, activeTab) : null;
+    // Stale-while-revalidate (2026-09-06): any cached feed paints
+    // immediately; only a FRESH one skips the network. A stale one keeps
+    // going to fetch in the background and quietly replaces itself.
+    const cachedEntry =
+      !options?.bypassCache && !shouldAppend && page === 0 ? readGroupFeedCacheAllowStale(group.id, activeTab) : null;
+    const cachedFeed = cachedEntry?.payload ?? null;
 
     if (cachedFeed) {
       try {
@@ -3718,7 +3722,9 @@ export default function GroupChatPage() {
         setPostsHasMore(cachedFeed.hasMore);
         if (!shouldAppend) setLoadingPosts(false);
         if (shouldAppend) setLoadingMorePosts(false);
-        return;
+        if (!cachedEntry?.isStale) return;
+        // Stale: the reader is already looking at the cached feed - continue
+        // below to fetch fresh rows without any loading spinner.
       } catch {
         // Fall through to a normal network fetch if cached data fails to hydrate.
       }

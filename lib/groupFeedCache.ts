@@ -13,6 +13,10 @@ type GroupFeedCachePayload = {
 
 const GROUP_FEED_CACHE_PREFIX = "bb:group-feed-cache:v2";
 const GROUP_FEED_CACHE_TTL_MS = 20 * 60 * 1000;
+// Stale-while-revalidate (2026-09-06): a feed older than the TTL still
+// paints instantly while a background refresh replaces it - the spinner
+// only appears on a truly first visit. Entries are dropped after a day.
+const GROUP_FEED_CACHE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 const GROUP_FEED_PRELOAD_LIMIT = 10;
 
 function isBrowser() {
@@ -24,6 +28,16 @@ function cacheKey(groupId: string, tab: string) {
 }
 
 export function readGroupFeedCache(groupId: string, tab = "home") {
+  const entry = readGroupFeedCacheAllowStale(groupId, tab);
+  return entry && !entry.isStale ? entry.payload : null;
+}
+
+/**
+ * Like readGroupFeedCache, but stale entries (past the TTL, within the max
+ * age) come back too with isStale set, so the feed can paint immediately
+ * and refresh in the background instead of showing a spinner.
+ */
+export function readGroupFeedCacheAllowStale(groupId: string, tab = "home") {
   if (!isBrowser()) return null;
   try {
     const raw = window.sessionStorage.getItem(cacheKey(groupId, tab));
@@ -31,11 +45,12 @@ export function readGroupFeedCache(groupId: string, tab = "home") {
     const parsed = JSON.parse(raw) as GroupFeedCachePayload;
     if (!parsed?.groupId || parsed.groupId !== groupId) return null;
     if (!parsed?.tab || parsed.tab !== tab) return null;
-    if (!parsed?.fetchedAt || Date.now() - parsed.fetchedAt > GROUP_FEED_CACHE_TTL_MS) {
+    const age = parsed?.fetchedAt ? Date.now() - parsed.fetchedAt : Number.POSITIVE_INFINITY;
+    if (age > GROUP_FEED_CACHE_MAX_AGE_MS) {
       window.sessionStorage.removeItem(cacheKey(groupId, tab));
       return null;
     }
-    return parsed;
+    return { payload: parsed, isStale: age > GROUP_FEED_CACHE_TTL_MS };
   } catch {
     return null;
   }

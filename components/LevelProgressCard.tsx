@@ -22,6 +22,8 @@ type PointsSummary = {
   leveledUp: boolean;
 };
 
+const LEVEL_SNAPSHOT_PREFIX = "bb:level-summary:v1";
+
 export default function LevelProgressCard() {
   const [summary, setSummary] = useState<PointsSummary | null>(null);
   const [celebrating, setCelebrating] = useState(false);
@@ -32,7 +34,25 @@ export default function LevelProgressCard() {
       try {
         const sessionData = await supabase.auth.getSession();
         const accessToken = sessionData.data.session?.access_token;
-        if (!accessToken) return;
+        const sessionUserId = sessionData.data.session?.user?.id;
+        if (!accessToken || !sessionUserId) return;
+
+        // Paint instantly from the last computed summary; the fresh numbers
+        // replace it quietly when the API answers (Louis, 2026-09-06:
+        // "at least get the card to load from last level saved").
+        const snapshotKey = `${LEVEL_SNAPSHOT_PREFIX}:${sessionUserId}`;
+        try {
+          const raw = window.localStorage.getItem(snapshotKey);
+          if (raw) {
+            const cached = JSON.parse(raw) as PointsSummary;
+            if (cached && typeof cached.level === "number" && !cancelled) {
+              setSummary({ ...cached, leveledUp: false });
+            }
+          }
+        } catch {
+          // A broken snapshot just means we wait for the API like before.
+        }
+
         const response = await fetch("/api/points/summary", {
           headers: { Authorization: `Bearer ${accessToken}` },
         });
@@ -41,6 +61,11 @@ export default function LevelProgressCard() {
         if (cancelled) return;
         setSummary(payload);
         if (payload.leveledUp) setCelebrating(true);
+        try {
+          window.localStorage.setItem(snapshotKey, JSON.stringify({ ...payload, leveledUp: false }));
+        } catch {
+          // Storage full or blocked - fine, next load just waits again.
+        }
       } catch (error) {
         console.error("[LEVEL] Could not load points summary:", error);
       }
