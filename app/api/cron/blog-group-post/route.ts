@@ -118,9 +118,7 @@ export async function GET(request: NextRequest) {
   // which is what let the deleted 2026-09-01 batch threaten a re-share
   // under the old link_url-only dedupe. Articles without a hand-written
   // teaser share with a simple description-based one.
-  const pendingArticles = BLOG_ARTICLES.slice().sort(
-    (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
-  );
+  const pendingArticles = BLOG_ARTICLES.slice();
 
   const { data: group, error: groupError } = await supabaseAdmin
     .from("study_groups")
@@ -179,16 +177,24 @@ export async function GET(request: NextRequest) {
   const unshared = pendingArticles.filter(
     (article) => !rememberedSlugs.has(article.slug) && !urlsFor(article).some((url) => alreadyPosted.has(url)),
   );
+  // Random, not in order (Louis, 2026-09-06: "i dont need all women to be
+  // in order"). Seeded by the UTC date so the whole day - retries, dry
+  // runs, the real 23:00 run - agrees on tonight's pick, but consecutive
+  // nights jump around the catalog instead of draining one series.
+  const dayKey = new Date().toISOString().slice(0, 10);
+  let seed = 0;
+  for (const char of dayKey) seed = (seed * 31 + char.charCodeAt(0)) >>> 0;
+  const tonight = unshared.length ? unshared[seed % unshared.length] : null;
   if (request.nextUrl.searchParams.get("dryRun")) {
     return NextResponse.json({
       ok: true,
       dryRun: true,
-      wouldPostTonight: unshared[0]?.slug ?? null,
-      queue: unshared.map((article) => article.slug),
+      wouldPostTonight: tonight?.slug ?? null,
+      remaining: unshared.map((article) => article.slug),
       alreadyShared: rememberedSlugs.size,
     });
   }
-  const toPost = unshared.slice(0, 1);
+  const toPost = tonight ? [tonight] : [];
   if (!toPost.length) {
     return NextResponse.json({ ok: true, posted: [], note: "All article group posts already exist." });
   }
