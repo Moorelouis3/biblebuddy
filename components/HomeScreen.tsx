@@ -333,11 +333,11 @@ export default function HomeScreen() {
             Let&apos;s grow closer to God today.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:w-auto sm:shrink-0 sm:grid-cols-3">
+        <div className="grid grid-cols-3 gap-2 sm:w-auto sm:shrink-0 sm:gap-3">
           {stats.streak !== null ? (
             // Peach, same family as the Bible Trivia card below
             <div
-              className="flex min-w-[132px] items-center gap-2.5 rounded-2xl border border-[#f4dcc8] px-4 py-3 shadow-sm"
+              className="flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#f4dcc8] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
               style={{
                 backgroundColor: "#fff3e6",
                 backgroundImage: "url(/home-cards/bg-trivia.jpg)",
@@ -353,17 +353,17 @@ export default function HomeScreen() {
                 title={`${stats.streak} day streak`}
               />
               <div>
-                <p className="text-xl font-black leading-tight text-[#3d2417]">{stats.streak}</p>
-                <p className="text-[11px] font-bold text-[#8a5c40]">Day Streak</p>
+                <p className="text-base font-black leading-tight text-[#3d2417] sm:text-xl">{stats.streak}</p>
+                <p className="text-[10px] font-bold text-[#8a5c40] sm:text-[11px]">Day Streak</p>
               </div>
             </div>
           ) : !stats.loaded && userId ? (
-            <div className="h-[64px] min-w-[132px] animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />
+            <div className="h-[64px] min-w-0 animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />
           ) : null}
           {biblePercent !== null ? (
             // Mint, same family as the Scrambled card below
             <div
-              className="flex min-w-[132px] items-center gap-2.5 rounded-2xl border border-[#cde9dc] px-4 py-3 shadow-sm"
+              className="flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#cde9dc] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
               style={{
                 backgroundColor: "#eefaf3",
                 backgroundImage: "url(/home-cards/bg-scrambled.jpg)",
@@ -374,12 +374,12 @@ export default function HomeScreen() {
             >
               <BibleProgressRing percent={biblePercent} />
               <div>
-                <p className="text-xl font-black leading-tight text-[#123f30]">{biblePercent}%</p>
-                <p className="text-[11px] font-bold text-[#3f7a63]">of Bible</p>
+                <p className="text-base font-black leading-tight text-[#123f30] sm:text-xl">{biblePercent}%</p>
+                <p className="text-[10px] font-bold text-[#3f7a63] sm:text-[11px]">of Bible</p>
               </div>
             </div>
           ) : !stats.loaded && userId ? (
-            <div className="h-[64px] min-w-[132px] animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />
+            <div className="h-[64px] min-w-0 animate-pulse rounded-2xl bg-[var(--bb-surface-soft,#eef2f7)]" />
           ) : null}
           {/* Points & levels relaunch (2026-09-05): purple level card, same
               family as the two beside it. The level-up celebration modal

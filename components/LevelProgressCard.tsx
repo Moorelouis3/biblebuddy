@@ -55,9 +55,10 @@ export default function LevelProgressCard() {
 
   return (
     <>
-      {/* Purple, same family as the Study Group card below */}
+      {/* Purple, same family as the Study Group card below. Compact enough
+          that all three stat cards share one row on a phone. */}
       <div
-        className="flex min-w-[132px] items-center gap-2.5 rounded-2xl border border-[#ddd6f3] px-4 py-3 shadow-sm"
+        className="flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#ddd6f3] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
         style={{
           backgroundColor: "#f5f2ff",
           backgroundImage: "url(/home-cards/bg-group.jpg)",
@@ -67,13 +68,13 @@ export default function LevelProgressCard() {
         }}
         title={`Level ${summary.level} - ${summary.levelName} · ${summary.totalPoints.toLocaleString()} points`}
       >
-        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#6d5bd0] text-[11px] font-black text-white shadow-sm">
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#6d5bd0] text-[10px] font-black text-white shadow-sm sm:h-7 sm:w-7 sm:text-[11px]">
           L{summary.level}
         </span>
         <div className="min-w-0">
-          <p className="truncate text-xl font-black leading-tight text-[#2b2150]">{summary.levelName}</p>
-          <p className="truncate text-[11px] font-bold text-[#7c68b4]">
-            {summary.nextLevelName ? `${summary.pointsToNextLevel.toLocaleString()} pts to next` : "Top level!"}
+          <p className="truncate text-sm font-black leading-tight text-[#2b2150] sm:text-xl">{summary.levelName}</p>
+          <p className="truncate text-[10px] font-bold text-[#7c68b4] sm:text-[11px]">
+            {summary.nextLevelName ? `${summary.pointsToNextLevel.toLocaleString()} to next` : "Top level!"}
           </p>
         </div>
       </div>
