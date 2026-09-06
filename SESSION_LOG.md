@@ -3396,3 +3396,7 @@ Next up: Day 122
 ## 2026-09-06T00:32:00Z (bible year day writer run, second day this run)
 Day: 122 — Friends Accuse, Job Suffers (Job 15-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 123. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-06T00:54:10Z (hourly chapter notes run)
+Chapter: Psalms 28 | Duration: 8 min | Sections: 3 | Cards: 15 | Status: pass
+Next up: Psalms 29
