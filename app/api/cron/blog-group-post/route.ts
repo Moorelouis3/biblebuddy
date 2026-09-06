@@ -91,9 +91,10 @@ function stripArticleUrlLine(content: string, articleUrl: string) {
   return kept.join("\n").replace(/\n{3,}/g, "\n\n").trim();
 }
 
-// Shares each blog article carrying a groupPost teaser into the Bible Buddy
-// Study Group exactly once. Dedup is by link_url match against existing
-// root posts, so re-runs (or redeploys) never double-post.
+// Shares every blog article into the Bible Buddy Study Group exactly once,
+// one per nightly run, newest first. Dedup is the blog_article_shares
+// memory table plus a link_url match against existing root posts, so
+// re-runs, redeploys, and even deleted shares never double-post.
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
@@ -109,31 +110,17 @@ export async function GET(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  // Only articles published in the last few days are candidates. Older
-  // articles were already shared when they went live; re-sharing them (which
-  // happened once when the anxiety article's URL moved from
-  // /bible-study-hub/... to /blog/... and slipped past the URL dedupe) just
-  // spams the group with content everyone has seen.
-  // Widened from 4 to 30 on 2026-09-06: the Women of the Bible series (18
-  // posts) published in one batch, and at one promo per night the drain
-  // takes 18 nights - a 4-day window would silently strand 14 of them.
-  // The EARLIEST_SHAREABLE floor below still protects the deleted batch.
-  const RECENT_WINDOW_DAYS = 30;
-  // The 2026-09-01 Pinterest-funnel batch was dumped and then deleted on
-  // Louis's request (one promo kept). Deleting the posts also deleted the
-  // link_url rows the dedupe relies on, so without this floor the cron
-  // would happily re-share that batch. Nothing published before this date
-  // may ever be promoted again.
-  const EARLIEST_SHAREABLE_PUBLISH_MS = Date.parse("2026-09-03T00:00:00Z");
-  const cutoff = Math.max(Date.now() - RECENT_WINDOW_DAYS * 24 * 60 * 60 * 1000, EARLIEST_SHAREABLE_PUBLISH_MS);
-  const pendingArticles = BLOG_ARTICLES.filter((article) => {
-    if (!article.groupPost) return false;
-    const publishedAt = Date.parse(article.publishedAt);
-    return Number.isNaN(publishedAt) ? false : publishedAt >= cutoff;
-  });
-  if (!pendingArticles.length) {
-    return NextResponse.json({ ok: true, posted: [], note: "No recent articles carry a groupPost teaser." });
-  }
+  // Every blog post is a candidate (Louis, 2026-09-06: "the nightly drip
+  // should cover all the blog posts, not just these 18 new ones"). The
+  // one-promo-per-night limit below is what makes that safe, and the
+  // blog_article_shares memory table is what makes it terminal: an article
+  // shares exactly once, ever, even if its group post is later deleted -
+  // which is what let the deleted 2026-09-01 batch threaten a re-share
+  // under the old link_url-only dedupe. Articles without a hand-written
+  // teaser share with a simple description-based one.
+  const pendingArticles = BLOG_ARTICLES.slice().sort(
+    (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
+  );
 
   const { data: group, error: groupError } = await supabaseAdmin
     .from("study_groups")
@@ -151,8 +138,17 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Official study group not found." }, { status: 404 });
   }
 
-  // Dedupe against BOTH the canonical and any legacy URL, so an article whose
-  // path moved is still recognised as already shared.
+  // Two dedupe layers: the durable blog_article_shares memory (an article
+  // shares once, ever), plus the live link_url check - which also backfills
+  // memory rows for articles shared before the table existed.
+  const { data: memoryRows, error: memoryError } = await supabaseAdmin
+    .from("blog_article_shares")
+    .select("slug");
+  if (memoryError) {
+    return NextResponse.json({ error: memoryError.message }, { status: 500 });
+  }
+  const rememberedSlugs = new Set((memoryRows || []).map((row) => row.slug));
+
   const urlsFor = (article: (typeof pendingArticles)[number]) =>
     [article.canonicalPath, article.legacyPath]
       .filter((path): path is string => Boolean(path))
@@ -168,13 +164,31 @@ export async function GET(request: NextRequest) {
   }
   const alreadyPosted = new Set((existingPosts || []).map((row) => row.link_url));
 
-  // ONE promo per run, oldest unshared first. On 2026-09-01 a batch of 25
+  const backfill = pendingArticles
+    .filter((article) => !rememberedSlugs.has(article.slug) && urlsFor(article).some((url) => alreadyPosted.has(url)))
+    .map((article) => ({ slug: article.slug }));
+  if (backfill.length) {
+    await supabaseAdmin.from("blog_article_shares").upsert(backfill, { onConflict: "slug" });
+    backfill.forEach((row) => rememberedSlugs.add(row.slug));
+  }
+
+  // ONE promo per run, newest unshared first. On 2026-09-01 a batch of 25
   // Pinterest-funnel articles landed at once and this cron dumped all their
   // promos into the group in eight seconds - Louis had to have 24 deleted.
-  // The cron runs daily, so a backlog still drains, one post per night.
-  const toPost = pendingArticles
-    .filter((article) => !urlsFor(article).some((url) => alreadyPosted.has(url)))
-    .slice(0, 1);
+  // The cron runs daily, so the backlog drains one post per night.
+  const unshared = pendingArticles.filter(
+    (article) => !rememberedSlugs.has(article.slug) && !urlsFor(article).some((url) => alreadyPosted.has(url)),
+  );
+  if (request.nextUrl.searchParams.get("dryRun")) {
+    return NextResponse.json({
+      ok: true,
+      dryRun: true,
+      wouldPostTonight: unshared[0]?.slug ?? null,
+      queue: unshared.map((article) => article.slug),
+      alreadyShared: rememberedSlugs.size,
+    });
+  }
+  const toPost = unshared.slice(0, 1);
   if (!toPost.length) {
     return NextResponse.json({ ok: true, posted: [], note: "All article group posts already exist." });
   }
@@ -191,17 +205,23 @@ export async function GET(request: NextRequest) {
   const failed: Array<{ slug: string; error: string }> = [];
   for (const article of toPost) {
     try {
-      await insertGroupPostWithRetry(
+      // Older posts predate the hand-written teasers; they share with a
+      // simple description-based one so the drip really covers everything.
+      const teaser = article.groupPost ?? {
+        title: `📖 ${article.title}`,
+        content: `${article.description}\n\nRead the full post below and drop your thoughts in the comments 👇`,
+      };
+      const postId = await insertGroupPostWithRetry(
         supabaseAdmin,
         {
           group_id: targetGroup.id,
           user_id: louisUserId,
           display_name: displayName,
-          title: article.groupPost!.title,
+          title: teaser.title,
           category: "general",
           // The feed renders a "Read the full post" button from link_url, so a
           // bare "Read it here: <url>" line in the teaser is just clutter.
-          content: teaserToHtml(stripArticleUrlLine(article.groupPost!.content, `${SITE_URL}${article.canonicalPath}`)),
+          content: teaserToHtml(stripArticleUrlLine(teaser.content, `${SITE_URL}${article.canonicalPath}`)),
           media_url: `${SITE_URL}${article.image}`,
           link_url: `${SITE_URL}${article.canonicalPath}`,
         },
@@ -210,6 +230,9 @@ export async function GET(request: NextRequest) {
         // table (hit live while posting the anxiety article share).
         { skipInsertNotifications: true },
       );
+      await supabaseAdmin
+        .from("blog_article_shares")
+        .upsert({ slug: article.slug, post_id: postId }, { onConflict: "slug" });
       posted.push(article.slug);
     } catch (error) {
       failed.push({ slug: article.slug, error: error instanceof Error ? error.message : "unknown" });
