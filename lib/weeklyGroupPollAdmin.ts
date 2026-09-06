@@ -1,5 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { buildWeeklyGroupPoll } from "./groupWeeklyPoll";
+import { buildWeeklyGroupPoll, getPollWeekKey } from "./groupWeeklyPoll";
 import {
   normalizeRecurringOverridePayload,
   type RecurringPollOverridePayload,
@@ -7,6 +7,27 @@ import {
 import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
 import { insertGroupPostWithRetry } from "./groupPostInsert";
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
+
+// The durable memory for the 52-poll rotation: every published Opinion
+// Wednesday poll is recorded in weekly_group_polls with its poll_key, so
+// reading the recent keys (newest first) tells us which poll ran last -
+// and therefore which is next - regardless of restarts or deployments.
+async function loadRecentPollKeys(
+  supabaseAdmin: SupabaseClient,
+  groupId: string,
+  beforeWeekKey: string,
+) {
+  const { data, error } = await supabaseAdmin
+    .from("weekly_group_polls")
+    .select("poll_key, week_key")
+    .eq("group_id", groupId)
+    .lt("week_key", beforeWeekKey)
+    .order("week_key", { ascending: false })
+    .limit(80);
+
+  if (error) throw new Error(error.message || "Could not load past weekly polls.");
+  return (data || []).map((row) => row.poll_key).filter((key): key is string => Boolean(key));
+}
 
 async function resolveDisplayName(supabaseAdmin: SupabaseClient, userId: string) {
   const { data } = await supabaseAdmin
@@ -124,7 +145,10 @@ export async function ensureWeeklyGroupPollPost(
     return { ok: true, skipped: true as const, reason: "before_release_time" };
   }
 
-  const poll = buildWeeklyGroupPoll(now);
+  const poll = buildWeeklyGroupPoll(
+    now,
+    await loadRecentPollKeys(supabaseAdmin, groupId, getPollWeekKey(now)),
+  );
   const { data: overrideRow } = await supabaseAdmin
     .from("group_recurring_post_overrides")
     .select("override_payload")

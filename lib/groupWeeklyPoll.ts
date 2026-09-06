@@ -1,3 +1,5 @@
+import { WEEKLY_POLL_BANK, getNextWeeklyPollIndex } from "./weeklyPollBank";
+
 export type WeeklyGroupPollOption = {
   key: string;
   text: string;
@@ -24,56 +26,6 @@ export type WeeklyGroupPollRecord = {
   created_at: string;
 };
 
-const THEMES: WeeklyGroupPollTheme[] = [
-  {
-    key: "reading_frequency",
-    subjectTitle: "Bible Reading Habits",
-    question: "How many days a week do you usually read the Bible?",
-    intro: null,
-    options: [
-      { key: "six_seven", text: "6 to 7 days a week" },
-      { key: "four_five", text: "4 to 5 days a week" },
-      { key: "two_three", text: "2 to 3 days a week" },
-      { key: "maybe_once", text: "Maybe once a week" },
-    ],
-  },
-  {
-    key: "jesus_is_god",
-    subjectTitle: "Jesus and Identity",
-    question: "Do you believe Jesus is God?",
-    intro: null,
-    options: [
-      { key: "yes", text: "Yes" },
-      { key: "no", text: "No" },
-      { key: "learning", text: "I am still learning" },
-    ],
-  },
-  {
-    key: "favorite_translation",
-    subjectTitle: "Bible Translation Preference",
-    question: "What Bible translation do you use the most right now?",
-    intro: null,
-    options: [
-      { key: "niv", text: "NIV" },
-      { key: "esv", text: "ESV" },
-      { key: "kjv", text: "KJV" },
-      { key: "other", text: "Another one" },
-    ],
-  },
-  {
-    key: "morning_or_night",
-    subjectTitle: "Bible Routine",
-    question: "When are you most likely to read the Bible?",
-    intro: null,
-    options: [
-      { key: "morning", text: "Morning" },
-      { key: "afternoon", text: "Afternoon" },
-      { key: "night", text: "Night" },
-      { key: "varies", text: "It changes a lot" },
-    ],
-  },
-];
-
 function pad(value: number) {
   return String(value).padStart(2, "0");
 }
@@ -91,14 +43,40 @@ export function getPollWeekKey(date = new Date()): string {
   return `${weekStart.getUTCFullYear()}-${pad(weekStart.getUTCMonth() + 1)}-${pad(weekStart.getUTCDate())}`;
 }
 
-export function getWeeklyGroupPollTheme(date = new Date()): WeeklyGroupPollTheme {
-  const weekStart = getPollWeekStart(date);
-  const seed = Math.floor(weekStart.getTime() / (7 * 24 * 60 * 60 * 1000));
-  return THEMES[((seed % THEMES.length) + THEMES.length) % THEMES.length];
+function getPollWeekSeed(date: Date) {
+  return Math.floor(getPollWeekStart(date).getTime() / (7 * 24 * 60 * 60 * 1000));
 }
 
-export function buildWeeklyGroupPoll(date = new Date()) {
-  const theme = getWeeklyGroupPollTheme(date);
+// The 52-poll rotation is anchored so the week of 2026-09-02 = Poll #1
+// (the old cycle's reading-frequency poll, which is the same question).
+// That makes date-only previews line up with the history-based publisher:
+// 2026-09-09 is Poll #2 and so on through all 52 before any repeat.
+const POLL_ROTATION_ANCHOR_SEED = Math.floor(Date.UTC(2026, 8, 2) / (7 * 24 * 60 * 60 * 1000));
+
+/**
+ * Opinion Wednesday - a 52-week rotation over the approved poll bank.
+ *
+ * Pass `recentPollKeysNewestFirst` (past poll_key values from
+ * weekly_group_polls) to get the authoritative pick: the poll after the
+ * most recently published one, so no poll repeats until all 52 have been
+ * used and a redeploy never resets the rotation. Without history
+ * (scheduler previews, analytics) the pick falls back to anchored date
+ * math, which matches the history-based pick as long as no Wednesday is
+ * skipped.
+ */
+export function getWeeklyGroupPollTheme(
+  date = new Date(),
+  recentPollKeysNewestFirst?: string[],
+): WeeklyGroupPollTheme {
+  const total = WEEKLY_POLL_BANK.length;
+  const index = recentPollKeysNewestFirst
+    ? getNextWeeklyPollIndex(recentPollKeysNewestFirst)
+    : (((getPollWeekSeed(date) - POLL_ROTATION_ANCHOR_SEED) % total) + total) % total;
+  return WEEKLY_POLL_BANK[index];
+}
+
+export function buildWeeklyGroupPoll(date = new Date(), recentPollKeysNewestFirst?: string[]) {
+  const theme = getWeeklyGroupPollTheme(date, recentPollKeysNewestFirst);
   return {
     weekKey: getPollWeekKey(date),
     pollKey: theme.key,
