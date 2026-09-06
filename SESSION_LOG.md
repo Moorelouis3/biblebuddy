@@ -3408,3 +3408,7 @@ Next up: Psalms 30
 ## 2026-09-06T04:25:57Z (bible year day writer run)
 Day: 123 — Job's Redeemer and Continued Accusation (Job 19-22) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 124
+
+## 2026-09-06T04:34:00Z (bible year day writer run, second day this run)
+Day: 124 — Job Searches for God (Job 23-26) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 125. Stopping here — two-day budget cap for this run reached.
