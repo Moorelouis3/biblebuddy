@@ -76,7 +76,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/is-it-a-sin-to-doubt-god",
     publishedAt: "2026-09-05",
     readTime: "16 min read",
-    image: "/is-it-a-sin-to-doubt-god-banner.png",
+    image: "/blog-banners/is-it-a-sin-to-doubt-god.jpg",
     groupPost: {
       title: "Is It a Sin to Doubt God? 📖",
       content:
@@ -144,7 +144,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/genesis-1-explained",
     publishedAt: "2026-09-01",
     readTime: "8 min read",
-    image: "/genesis-1-explained-banner.png",
+    image: "/blog-banners/genesis-1-explained.jpg",
     groupPost: {
       title: "Genesis 1 Explained 📖",
       content:
@@ -161,7 +161,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-adam",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/who-was-adam-banner.png",
+    image: "/blog-banners/who-was-adam.jpg",
     groupPost: {
       title: "Who Was Adam? 📖",
       content:
@@ -179,7 +179,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: "2026-09-01",
     updatedAt: "2026-09-06",
     readTime: "18 min read",
-    image: "/who-was-eve-banner.png",
+    image: "/blog-banners/who-was-eve.jpg",
     groupPost: {
       title: "Who Was Eve in the Bible? 📖",
       content:
@@ -196,7 +196,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/genesis-2-explained",
     publishedAt: "2026-09-01",
     readTime: "8 min read",
-    image: "/genesis-2-explained-banner.png",
+    image: "/blog-banners/genesis-2-explained.jpg",
     groupPost: {
       title: "Genesis 2 Explained 📖",
       content:
@@ -213,7 +213,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/garden-of-eden-four-rivers",
     publishedAt: "2026-09-01",
     readTime: "8 min read",
-    image: "/garden-of-eden-four-rivers-banner.png",
+    image: "/blog-banners/garden-of-eden-four-rivers.jpg",
     groupPost: {
       title: "The Garden of Eden & the Four Rivers Explained 📖",
       content:
@@ -230,7 +230,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/biblical-numbers-meanings",
     publishedAt: "2026-09-01",
     readTime: "10 min read",
-    image: "/biblical-numbers-meanings-banner.png",
+    image: "/blog-banners/biblical-numbers-meanings.jpg",
     groupPost: {
       title: "Biblical Numbers and Their Meanings 📖",
       content:
@@ -247,7 +247,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-is-god-as-a-father",
     publishedAt: "2026-09-01",
     readTime: "6 min read",
-    image: "/who-is-god-as-a-father-banner.png",
+    image: "/blog-banners/who-is-god-as-a-father.jpg",
     groupPost: {
       title: "Who Is God as a Father? 📖",
       content:
@@ -264,7 +264,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/men-who-walked-with-god",
     publishedAt: "2026-09-01",
     readTime: "8 min read",
-    image: "/men-who-walked-with-god-banner.png",
+    image: "/blog-banners/men-who-walked-with-god.jpg",
     groupPost: {
       title: "Every Man Who Walked With God in the Bible 📖",
       content:
@@ -281,7 +281,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/lessons-from-the-life-of-jesus",
     publishedAt: "2026-09-01",
     readTime: "7 min read",
-    image: "/lessons-from-the-life-of-jesus-banner.png",
+    image: "/blog-banners/lessons-from-the-life-of-jesus.jpg",
     groupPost: {
       title: "15 Lessons From the Life of Jesus 📖",
       content:
@@ -298,7 +298,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/inspiring-biblical-characters",
     publishedAt: "2026-09-01",
     readTime: "9 min read",
-    image: "/inspiring-biblical-characters-banner.png",
+    image: "/blog-banners/inspiring-biblical-characters.jpg",
     groupPost: {
       title: "Inspiring Biblical Characters 📖",
       content:
@@ -315,7 +315,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/could-you-sacrifice-your-isaac",
     publishedAt: "2026-09-01",
     readTime: "23 min read",
-    image: "/could-you-sacrifice-your-isaac-banner.png",
+    image: "/blog-banners/could-you-sacrifice-your-isaac.jpg",
     groupPost: {
       title: "Could You Sacrifice Your Isaac? 📖",
       content:
@@ -332,7 +332,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/how-god-heals-a-lust-damaged-heart",
     publishedAt: "2026-09-01",
     readTime: "23 min read",
-    image: "/how-god-heals-a-lust-damaged-heart-banner.png",
+    image: "/blog-banners/how-god-heals-a-lust-damaged-heart.jpg",
     groupPost: {
       title: "6 Ways God Heals a Lust-Damaged Heart 📖",
       content:
@@ -349,7 +349,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/genesis-1-1-2-explained",
     publishedAt: "2026-09-01",
     readTime: "23 min read",
-    image: "/genesis-1-1-2-explained-banner.png",
+    image: "/blog-banners/genesis-1-1-2-explained.jpg",
     groupPost: {
       title: "Genesis 1:1-2 Explained 📖",
       content:
@@ -366,7 +366,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/is-wanting-money-a-sin",
     publishedAt: "2026-09-01",
     readTime: "23 min read",
-    image: "/is-wanting-money-a-sin-banner.png",
+    image: "/blog-banners/is-wanting-money-a-sin.jpg",
     groupPost: {
       title: "Is Wanting Money a Sin? 📖",
       content:
@@ -383,7 +383,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/why-does-god-allow-suffering",
     publishedAt: "2026-09-01",
     readTime: "22 min read",
-    image: "/why-does-god-allow-suffering-banner.png",
+    image: "/blog-banners/why-does-god-allow-suffering.jpg",
     groupPost: {
       title: "Why Does God Allow Suffering? 📖",
       content:
@@ -400,7 +400,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/how-do-we-know-the-bible-is-true",
     publishedAt: "2026-09-01",
     readTime: "23 min read",
-    image: "/how-do-we-know-the-bible-is-true-banner.png",
+    image: "/blog-banners/how-do-we-know-the-bible-is-true.jpg",
     groupPost: {
       title: "How Do We Know the Bible Is True? 📖",
       content:
@@ -417,7 +417,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/is-jesus-the-only-way-to-god",
     publishedAt: "2026-09-01",
     readTime: "23 min read",
-    image: "/is-jesus-the-only-way-to-god-banner.png",
+    image: "/blog-banners/is-jesus-the-only-way-to-god.jpg",
     groupPost: {
       title: "Is Jesus Really the Only Way to God? 📖",
       content:
@@ -434,7 +434,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/are-there-contradictions-in-the-bible",
     publishedAt: "2026-09-01",
     readTime: "25 min read",
-    image: "/are-there-contradictions-in-the-bible-banner.png",
+    image: "/blog-banners/are-there-contradictions-in-the-bible.jpg",
     groupPost: {
       title: "Are There Contradictions in the Bible? 📖",
       content:
@@ -451,7 +451,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/christian-and-science",
     publishedAt: "2026-09-01",
     readTime: "17 min read",
-    image: "/christian-and-science-banner.png",
+    image: "/blog-banners/christian-and-science.jpg",
     groupPost: {
       title: "Can You Be a Christian and Believe in Science? 📖",
       content:
@@ -468,7 +468,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/people-who-never-heard-of-jesus",
     publishedAt: "2026-09-01",
     readTime: "17 min read",
-    image: "/people-who-never-heard-of-jesus-banner.png",
+    image: "/blog-banners/people-who-never-heard-of-jesus.jpg",
     groupPost: {
       title: "What Happens to People Who Never Heard of Jesus? 📖",
       content:
@@ -485,7 +485,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/why-does-god-feel-silent",
     publishedAt: "2026-09-01",
     readTime: "18 min read",
-    image: "/why-does-god-feel-silent-banner.png",
+    image: "/blog-banners/why-does-god-feel-silent.jpg",
     groupPost: {
       title: "Why Does God Feel Silent? 📖",
       content:
@@ -502,7 +502,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/did-jesus-really-exist",
     publishedAt: "2026-09-01",
     readTime: "15 min read",
-    image: "/did-jesus-really-exist-banner.png",
+    image: "/blog-banners/did-jesus-really-exist.jpg",
     groupPost: {
       title: "Did Jesus Really Exist? 📖",
       content:
@@ -519,7 +519,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/how-do-you-know-you-are-saved",
     publishedAt: "2026-09-01",
     readTime: "23 min read",
-    image: "/how-do-you-know-you-are-saved-banner.png",
+    image: "/blog-banners/how-do-you-know-you-are-saved.jpg",
     groupPost: {
       title: "How Do You Know You Are Saved? 📖",
       content:
@@ -536,7 +536,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/how-to-defend-your-faith-in-jesus",
     publishedAt: "2026-08-29",
     readTime: "23 min read",
-    image: "/defend-your-faith-banner.png",
+    image: "/blog-banners/how-to-defend-your-faith-in-jesus.jpg",
     groupPost: {
       title: "How to Defend Your Faith in Jesus 📖",
       content:
@@ -553,7 +553,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/what-does-selah-mean",
     publishedAt: "2026-08-27",
     readTime: "16 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/what-does-selah-mean.jpg",
     groupPost: {
       title: "What Does Selah Mean in the Bible? 📖",
       content:
@@ -570,7 +570,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/is-anxiety-a-sin",
     publishedAt: "2026-08-23",
     readTime: "15 min read",
-    image: "/anxietyarticlebanner.jpg",
+    image: "/blog-banners/is-anxiety-a-sin.jpg",
     groupPost: {
       title: "Is Anxiety a Sin? 📖",
       content:
@@ -587,7 +587,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/what-does-the-bible-say-about-fear",
     publishedAt: "2026-08-22",
     readTime: "16 min read",
-    image: "/fear-banner.png",
+    image: "/blog-banners/what-does-the-bible-say-about-fear.jpg",
     groupPost: {
       title: "What Does the Bible Say About Fear? 📖",
       content:
@@ -604,7 +604,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/how-to-spend-1-hour-with-god",
     publishedAt: "2026-08-16",
     readTime: "16 min read",
-    image: "/one-hour-banner.png",
+    image: "/blog-banners/how-to-spend-1-hour-with-god.jpg",
     groupPost: {
       title: "How to Spend 1 Hour With God: A Simple Guide 📖",
       content:
@@ -621,7 +621,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/can-you-lose-your-salvation",
     publishedAt: "2026-08-15",
     readTime: "23 min read",
-    image: "/salvation-banner.png",
+    image: "/blog-banners/can-you-lose-your-salvation.jpg",
     groupPost: {
       title: "Can You Lose Your Salvation? What the Bible Says 📖",
       content:
@@ -638,7 +638,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/what-is-the-fruit-of-the-spirit",
     publishedAt: "2026-08-12",
     readTime: "16 min read",
-    image: "/fruit-banner.png",
+    image: "/blog-banners/what-is-the-fruit-of-the-spirit.jpg",
     groupPost: {
       title: "What Is the Fruit of the Spirit? All 9 Explained 📖",
       content:
@@ -655,7 +655,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/what-does-the-bible-say-about-zodiac-signs",
     publishedAt: "2026-08-09",
     readTime: "17 min read",
-    image: "/zodiac-banner.png",
+    image: "/blog-banners/what-does-the-bible-say-about-zodiac-signs.jpg",
     groupPost: {
       title: "What Does the Bible Say About Zodiac Signs? 📖",
       content:
@@ -673,7 +673,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/character-studies/who-is-leah",
     publishedAt: "2026-08-07",
     readTime: "7 min read",
-    image: "/leahbanner.jpg",
+    image: "/blog-banners/who-is-leah.jpg",
     groupPost: {
       title: "Who Is Leah? The Wife Her Husband Didn't Want 📖",
       content:
@@ -691,7 +691,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/character-studies/who-is-jezebel",
     publishedAt: "2026-08-05",
     readTime: "7 min read",
-    image: "/jezebelbanner.jpg",
+    image: "/blog-banners/who-is-jezebel.jpg",
     groupPost: {
       title: "Who Is Jezebel? The Queen Who Led Israel Into Idol Worship 📖",
       content:
@@ -710,7 +710,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     publishedAt: "2026-08-03",
     updatedAt: "2026-08-09",
     readTime: "22 min read",
-    image: "/anxietyarticlebanner.jpg",
+    image: "/blog-banners/what-does-the-bible-say-about-anxiety.jpg",
     groupPost: {
       title: "What Does the Bible Say About Anxiety? 📖",
       content:
@@ -727,7 +727,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/christian-foundations/5-things-holding-men-back-from-god",
     publishedAt: "2026-07-31",
     readTime: "7 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/5-things-holding-men-back-from-god.jpg",
   },
   {
     slug: "how-to-defend-the-bible",
@@ -739,7 +739,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/bible-insights/how-to-defend-the-bible",
     publishedAt: "2026-07-29",
     readTime: "8 min read",
-    image: "/Defenthebiblebanner.png",
+    image: "/blog-banners/how-to-defend-the-bible.jpg",
   },
   {
     slug: "what-is-the-bible",
@@ -751,7 +751,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/bible-insights/what-is-the-bible",
     publishedAt: "2026-07-27",
     readTime: "7 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/what-is-the-bible.jpg",
   },
   {
     slug: "why-so-many-bible-translations",
@@ -763,7 +763,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/bible-insights/why-so-many-bible-translations",
     publishedAt: "2026-07-24",
     readTime: "6 min read",
-    image: "/Translationsbanner.png",
+    image: "/blog-banners/why-so-many-bible-translations.jpg",
   },
   {
     slug: "why-bible-study-is-hard",
@@ -775,7 +775,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-tips/why-bible-study-is-hard",
     publishedAt: "2026-07-22",
     readTime: "7 min read",
-    image: "/Biblestudyhardbanner.png",
+    image: "/blog-banners/why-bible-study-is-hard.jpg",
   },
   {
     slug: "how-to-read-the-bible",
@@ -787,7 +787,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-tips/how-to-read-the-bible",
     publishedAt: "2026-07-20",
     readTime: "8 min read",
-    image: "/Biblereadingbanner.png",
+    image: "/blog-banners/how-to-read-the-bible.jpg",
   },
   {
     slug: "a-simple-bible-highlighting-system",
@@ -799,7 +799,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-tips/a-simple-bible-highlighting-system",
     publishedAt: "2026-07-17",
     readTime: "5 min read",
-    image: "/Biblehighlightingbanner.png",
+    image: "/blog-banners/a-simple-bible-highlighting-system.jpg",
   },
   {
     slug: "what-is-hell",
@@ -811,7 +811,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/christian-foundations/what-is-hell",
     publishedAt: "2026-07-15",
     readTime: "8 min read",
-    image: "/Whatishell.png",
+    image: "/blog-banners/what-is-hell.jpg",
   },
   {
     slug: "what-is-heaven",
@@ -823,7 +823,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/christian-foundations/what-is-heaven",
     publishedAt: "2026-07-13",
     readTime: "7 min read",
-    image: "/Whatisheaven.png",
+    image: "/blog-banners/what-is-heaven.jpg",
   },
   {
     slug: "why-so-many-denominations",
@@ -835,7 +835,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/christian-foundations/why-so-many-denominations",
     publishedAt: "2026-07-10",
     readTime: "8 min read",
-    image: "/Whydenominations.png",
+    image: "/blog-banners/why-so-many-denominations.jpg",
   },
   {
     slug: "your-body-is-a-temple",
@@ -847,7 +847,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/verse-breakdowns/your-body-is-a-temple",
     publishedAt: "2026-07-08",
     readTime: "12 min read",
-    image: "/Bodytemplebanner.png",
+    image: "/blog-banners/your-body-is-a-temple.jpg",
   },
   {
     slug: "building-self-control",
@@ -859,7 +859,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/verse-breakdowns/building-self-control",
     publishedAt: "2026-07-06",
     readTime: "6 min read",
-    image: "/Selfcontrolbanner.png",
+    image: "/blog-banners/building-self-control.jpg",
   },
   {
     slug: "salt-and-light",
@@ -871,7 +871,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/verse-breakdowns/salt-and-light",
     publishedAt: "2026-07-03",
     readTime: "6 min read",
-    image: "/Saltearthbanner.png",
+    image: "/blog-banners/salt-and-light.jpg",
   },
   {
     slug: "luke",
@@ -883,7 +883,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/character-studies/luke",
     publishedAt: "2026-07-01",
     readTime: "7 min read",
-    image: "/Lukebanner.png",
+    image: "/blog-banners/luke.jpg",
   },
   {
     slug: "moses",
@@ -895,7 +895,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/character-studies/moses",
     publishedAt: "2026-06-29",
     readTime: "7 min read",
-    image: "/Mosesbanner.png",
+    image: "/blog-banners/moses.jpg",
   },
   {
     slug: "paul",
@@ -907,7 +907,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/character-studies/paul",
     publishedAt: "2026-06-26",
     readTime: "7 min read",
-    image: "/Paulbanner.png",
+    image: "/blog-banners/paul.jpg",
   },
   {
     slug: "the-man-who-legalized-christianity",
@@ -919,7 +919,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/christian-history/the-man-who-legalized-christianity",
     publishedAt: "2026-06-24",
     readTime: "8 min read",
-    image: "/Legalized.png",
+    image: "/blog-banners/the-man-who-legalized-christianity.jpg",
   },
   {
     slug: "st-patrick",
@@ -931,7 +931,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/christian-history/st-patrick",
     publishedAt: "2026-06-22",
     readTime: "6 min read",
-    image: "/Irelandbanner.png",
+    image: "/blog-banners/st-patrick.jpg",
   },
   {
     slug: "st-valentine",
@@ -943,7 +943,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     legacyPath: "/bible-study-hub/christian-history/st-valentine",
     publishedAt: "2026-06-19",
     readTime: "6 min read",
-    image: "/Valentinebanner.png",
+    image: "/blog-banners/st-valentine.jpg",
   },
 ];
 
