@@ -76,7 +76,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-mary-mother-of-jesus",
     publishedAt: "2026-09-06",
     readTime: "14 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-mary.jpg",
     groupPost: {
       title: "Who Was Mary, the Mother of Jesus? 📖",
       content:
@@ -93,7 +93,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-mary-magdalene",
     publishedAt: "2026-09-06",
     readTime: "17 min read",
-    image: "/who-was-mary-magdalene-banner.png",
+    image: "/blog-banners/who-was-mary-magdalene.jpg",
     groupPost: {
       title: "Who Was Mary Magdalene in the Bible? 📖",
       content:
@@ -110,7 +110,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-esther",
     publishedAt: "2026-09-06",
     readTime: "12 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-esther.jpg",
     groupPost: {
       title: "Who Was Esther in the Bible? 📖",
       content:
@@ -127,7 +127,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-ruth",
     publishedAt: "2026-09-06",
     readTime: "12 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-ruth.jpg",
     groupPost: {
       title: "Who Was Ruth in the Bible? 📖",
       content:
@@ -144,7 +144,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-sarah",
     publishedAt: "2026-09-06",
     readTime: "13 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-sarah.jpg",
     groupPost: {
       title: "Who Was Sarah in the Bible? 📖",
       content:
@@ -161,7 +161,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-delilah",
     publishedAt: "2026-09-06",
     readTime: "14 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-delilah.jpg",
     groupPost: {
       title: "Who Was Delilah in the Bible? 📖",
       content:
@@ -178,7 +178,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-hannah",
     publishedAt: "2026-09-06",
     readTime: "16 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-hannah.jpg",
     groupPost: {
       title: "Who Was Hannah in the Bible? 📖",
       content:
@@ -195,7 +195,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-bathsheba",
     publishedAt: "2026-09-06",
     readTime: "14 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-bathsheba.jpg",
     groupPost: {
       title: "Who Was Bathsheba in the Bible? 📖",
       content:
@@ -212,7 +212,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-deborah",
     publishedAt: "2026-09-06",
     readTime: "13 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-deborah.jpg",
     groupPost: {
       title: "Who Was Deborah in the Bible? 📖",
       content:
@@ -229,7 +229,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-rebekah",
     publishedAt: "2026-09-06",
     readTime: "14 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-rebekah.jpg",
     groupPost: {
       title: "Who Was Rebekah in the Bible? 📖",
       content:
@@ -246,7 +246,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-rahab",
     publishedAt: "2026-09-06",
     readTime: "12 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-rahab.jpg",
     groupPost: {
       title: "Who Was Rahab in the Bible? 📖",
       content:
@@ -263,7 +263,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-rachel",
     publishedAt: "2026-09-06",
     readTime: "16 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-rachel.jpg",
     groupPost: {
       title: "Who Was Rachel in the Bible? 📖",
       content:
@@ -280,7 +280,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-hagar",
     publishedAt: "2026-09-06",
     readTime: "12 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-hagar.jpg",
     groupPost: {
       title: "Who Was Hagar in the Bible? 📖",
       content:
@@ -297,7 +297,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-tamar",
     publishedAt: "2026-09-06",
     readTime: "14 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-tamar.jpg",
     groupPost: {
       title: "Who Was Tamar in the Bible? 📖",
       content:
@@ -314,7 +314,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-were-martha-and-mary",
     publishedAt: "2026-09-06",
     readTime: "16 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-martha-and-mary.jpg",
     groupPost: {
       title: "Who Were Martha and Mary of Bethany? 📖",
       content:
@@ -331,7 +331,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-the-samaritan-woman",
     publishedAt: "2026-09-06",
     readTime: "17 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-the-samaritan-woman.jpg",
     groupPost: {
       title: "Who Was the Samaritan Woman? 📖",
       content:
@@ -348,7 +348,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-elizabeth",
     publishedAt: "2026-09-06",
     readTime: "17 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-elizabeth.jpg",
     groupPost: {
       title: "Who Was Elizabeth in the Bible? 📖",
       content:
@@ -365,7 +365,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/who-was-miriam",
     publishedAt: "2026-09-06",
     readTime: "17 min read",
-    image: "/5thingsholdingmenback.png",
+    image: "/blog-banners/who-was-miriam.jpg",
     groupPost: {
       title: "Who Was Miriam in the Bible? 📖",
       content:

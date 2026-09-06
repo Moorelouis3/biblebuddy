@@ -114,7 +114,11 @@ export async function GET(request: NextRequest) {
   // happened once when the anxiety article's URL moved from
   // /bible-study-hub/... to /blog/... and slipped past the URL dedupe) just
   // spams the group with content everyone has seen.
-  const RECENT_WINDOW_DAYS = 4;
+  // Widened from 4 to 30 on 2026-09-06: the Women of the Bible series (18
+  // posts) published in one batch, and at one promo per night the drain
+  // takes 18 nights - a 4-day window would silently strand 14 of them.
+  // The EARLIEST_SHAREABLE floor below still protects the deleted batch.
+  const RECENT_WINDOW_DAYS = 30;
   // The 2026-09-01 Pinterest-funnel batch was dumped and then deleted on
   // Louis's request (one promo kept). Deleting the posts also deleted the
   // link_url rows the dedupe relies on, so without this floor the cron
