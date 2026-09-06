@@ -3486,3 +3486,7 @@ Next up: Psalms 37
 ## 2026-09-06T19:03:00Z (hourly chapter notes run)
 Chapter: Psalms 37 | Duration: 17 min | Sections: 8 | Cards: 70 | Status: pass
 Next up: Psalms 38
+
+## 2026-09-06T19:30:00Z (bible year day writer run)
+Day: 131 — God Judges Righteously (Psalms 7-9) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 132. Stopping here — two-day budget cap for this run reached.
