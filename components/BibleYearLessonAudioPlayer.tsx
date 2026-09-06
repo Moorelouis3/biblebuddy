@@ -72,6 +72,9 @@ export default function BibleYearLessonAudioPlayer({
   const isScrubbingRef = useRef(false);
   const manualSeekInProgressRef = useRef(false);
   const resumeAfterSeekRef = useRef(false);
+  const recoveryAttemptsRef = useRef(0);
+  const lastRecoveryPositionRef = useRef(0);
+  const stallRecoveryTimerRef = useRef<number | null>(null);
   const [isScrubbing, setIsScrubbing] = useState(false);
   const [scrubTime, setScrubTime] = useState(0);
 
@@ -197,6 +200,9 @@ export default function BibleYearLessonAudioPlayer({
     lastSavedSecondRef.current = -1;
     playTrackedRef.current = false;
     lastTrackedProgressSecondRef.current = 0;
+    clearStallRecoveryTimer();
+    recoveryAttemptsRef.current = 0;
+    lastRecoveryPositionRef.current = 0;
 
     return () => {
       if (resetTimer !== null) window.clearTimeout(resetTimer);
@@ -242,6 +248,7 @@ export default function BibleYearLessonAudioPlayer({
         saveProgress(audio);
         audio.pause();
       }
+      clearStallRecoveryTimer();
       stopBackgroundMusic();
     };
   }, []);
@@ -325,7 +332,59 @@ export default function BibleYearLessonAudioPlayer({
     savedPositionAppliedRef.current = true;
   }
 
+  function clearStallRecoveryTimer() {
+    if (stallRecoveryTimerRef.current !== null) {
+      window.clearTimeout(stallRecoveryTimerRef.current);
+      stallRecoveryTimerRef.current = null;
+    }
+  }
+
+  // A lesson is a ~12MB, 15-minute-plus stream, and the API source is a
+  // redirect to a signed storage URL that expires after an hour. On a weak
+  // connection the audio element can stall mid-play with no way back - and
+  // a resume attempt after the expiry can only fail (users report it as
+  // "it blocks halfway", 2026-09-06). Recovery: save the spot, reload the
+  // source through the API for a fresh signed URL, seek back, keep
+  // playing. Three failed attempts without progress = show the error.
+  function attemptStreamRecovery(audio: HTMLAudioElement) {
+    clearStallRecoveryTimer();
+    const position = Math.max(audio.currentTime || 0, getSavedPosition());
+    if (position - lastRecoveryPositionRef.current > 15) recoveryAttemptsRef.current = 0;
+    if (recoveryAttemptsRef.current >= 3) {
+      setError(true);
+      setLoading(false);
+      setPlaying(false);
+      pauseBackgroundMusic();
+      return;
+    }
+    recoveryAttemptsRef.current += 1;
+    lastRecoveryPositionRef.current = position;
+    saveProgress(audio);
+    pendingSeekRef.current = position;
+    savedPositionAppliedRef.current = false;
+    setError(false);
+    setLoading(true);
+    const separator = audioSrc.includes("?") ? "&" : "?";
+    audio.src = `${audioSrc}${separator}reload=${Date.now()}`;
+    audio.load();
+    audio.play().catch(() => {
+      setError(true);
+      setLoading(false);
+      setPlaying(false);
+    });
+  }
+
   function wireAudioEvents(audio: HTMLAudioElement) {
+    const scheduleStallRecovery = () => {
+      if (stallRecoveryTimerRef.current !== null) return;
+      stallRecoveryTimerRef.current = window.setTimeout(() => {
+        stallRecoveryTimerRef.current = null;
+        if (audioRef.current !== audio) return;
+        if (audio.paused || audio.readyState >= 3) return;
+        attemptStreamRecovery(audio);
+      }, 12000);
+    };
+
     audio.onloadedmetadata = () => {
       if (Number.isFinite(audio.duration) && audio.duration > 0) {
         setDuration(audio.duration);
@@ -373,12 +432,15 @@ export default function BibleYearLessonAudioPlayer({
     };
     audio.onstalled = () => {
       saveProgress(audio);
+      if (!audio.paused) scheduleStallRecovery();
     };
     audio.onwaiting = () => {
       saveProgress(audio);
       if (!manualSeekInProgressRef.current) setLoading(true);
+      if (!audio.paused) scheduleStallRecovery();
     };
     audio.onplaying = () => {
+      clearStallRecoveryTimer();
       setLoading(false);
       setPlaying(true);
       void startBackgroundMusic(audio);
@@ -404,10 +466,22 @@ export default function BibleYearLessonAudioPlayer({
       onEnded?.();
     };
     audio.onerror = () => {
+      // The [audioSrc] reset effect clears src on the old audio object,
+      // which fires a spurious error - ignore anything from a torn-down
+      // player.
+      if (audioRef.current !== audio) return;
+      pauseBackgroundMusic();
+      // Mid-lesson errors (dropped connection, expired signed URL) get the
+      // reload-and-resume treatment; only a failure right at the start is
+      // a real "audio unavailable".
+      const position = Math.max(audio.currentTime || 0, getSavedPosition());
+      if (position > 2) {
+        attemptStreamRecovery(audio);
+        return;
+      }
       setError(true);
       setPlaying(false);
       setLoading(false);
-      pauseBackgroundMusic();
     };
   }
 
@@ -440,8 +514,10 @@ export default function BibleYearLessonAudioPlayer({
         await audioRef.current.play();
         await startBackgroundMusic(audioRef.current);
       } catch {
-        setError(true);
-        setLoading(false);
+        // Resuming an old source can fail once its signed URL has expired
+        // (the tab sat open past the hour) - reload through the API and
+        // pick up where they left off instead of dead-ending.
+        attemptStreamRecovery(audioRef.current);
       }
       return;
     }
