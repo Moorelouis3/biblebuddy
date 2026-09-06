@@ -3388,3 +3388,7 @@ Next up: Psalms 27
 ## 2026-09-05T22:52:58Z (hourly chapter notes run)
 Chapter: Psalms 27 | Duration: 7 min | Sections: 4 | Cards: 21 | Status: pass
 Next up: Psalms 28
+
+## 2026-09-06T00:25:09Z (bible year day writer run)
+Day: 121 — Human Frailty and Hope (Job 11-14) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 122
