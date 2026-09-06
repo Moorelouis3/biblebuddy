@@ -2007,6 +2007,13 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             Bible Buddy is currently in beta &bull; a free web app built by one person with one mission: helping people understand God&apos;s Word. New features are added every week. iPhone and Android apps are coming after beta.
           </p>
           <p className="mt-3 text-sm font-black text-[#07162f]">&mdash; Louis, founder of Bible Buddy</p>
+          <p className="mt-5 border-t border-[#dce7f5] pt-5 text-xs font-semibold leading-6 text-[#6d7789]">
+            Profiles marked with the Moderator badge are part of the Bible Buddy moderation and community team.
+            Moderator accounts help welcome members, encourage discussion, respond to posts, and keep the community
+            active and supportive. Multiple moderator profiles may sometimes be operated or assisted by the same
+            Bible Buddy team member, including through automated tools. All moderator activity remains subject to
+            human review and quality checks.
+          </p>
         </section>
 
         <section className="mt-14 text-center">
