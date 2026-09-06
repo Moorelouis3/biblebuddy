@@ -3412,3 +3412,7 @@ Next up: Day 124
 ## 2026-09-06T04:34:00Z (bible year day writer run, second day this run)
 Day: 124 — Job Searches for God (Job 23-26) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 125. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-06T04:57:09Z (hourly chapter notes run)
+Chapter: Psalms 30 | Duration: 9 min | Sections: 4 | Cards: 23 | Status: pass
+Next up: Psalms 31
