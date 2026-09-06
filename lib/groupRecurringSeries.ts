@@ -1,3 +1,8 @@
+import {
+  FRIDAY_CHARACTER_STUDIES,
+  buildFridayCharacterStudyTemplate,
+  getNextFridayCharacterIndex,
+} from "./fridayCharacterStudies";
 import { GROUP_SCHEDULE_TIME_ZONE } from "./groupScheduleTimeZone";
 import { getSeriesTotalWeeks, getSeriesWeekLesson } from "./seriesContent";
 const WEEK_IN_MS = 7 * 24 * 60 * 60 * 1000;
@@ -346,70 +351,6 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
   },
 ];
 
-const FRIDAY_FEATURES: RecurringSeriesTemplate[] = [
-  {
-    title: "Who was Judah in the Bible?",
-    description: "This week's Who Was This Friday looks at Judah, his failures, his turning point, and why his story matters more than most people realize.",
-    contentHtml:
-      "<p><strong>This week we are looking at Judah.</strong></p>" +
-      "<p>Judah is one of those people in Scripture whose story starts messy and then becomes surprisingly important. He was one of Joseph's brothers, so he was right in the middle of the jealousy, betrayal, and pain that tore that family apart.</p>" +
-      "<h2>Why Judah matters</h2>" +
-      "<ul><li>🔥 He shows how ugly sin can get when envy is left unchecked.</li><li>📖 He later steps up with real responsibility instead of empty words.</li><li>👑 His story matters even more because the line of Jesus comes through Judah.</li></ul>" +
-      "<p>That turn in Judah's life is what makes him worth studying. He is not introduced like a hero. He is part of the problem. But later, when the family faces another crisis, Judah becomes the one willing to stand in the gap for Benjamin. That is growth. That is repentance with action.</p>" +
-      "<h2>Where to read it in the Bible</h2>" +
-      "<ul><li>📍 Genesis 37:26-27</li><li>📍 Genesis 38:1-26</li><li>📍 Genesis 44:18-34</li><li>📍 Matthew 1:2-3</li></ul>" +
-      "<h2>The real takeaway</h2>" +
-      "<p>Judah reminds us that God does not need a clean backstory to do something powerful with a person. Scripture does not hide his failures, but it also does not end there. God can confront what is broken, reshape a heart, and still bring redemption out of a life that looked messy.</p>" +
-      "<p><strong>Drop into the comments after you read:</strong> What stands out to you most about Judah's change?</p>",
-  },
-  {
-    title: "Who was Gabriel in the Bible?",
-    description: "This week's Who Was This Friday looks at Gabriel and the moments where he shows up carrying messages that change the story.",
-    contentHtml:
-      "<p><strong>This week we are looking at Gabriel.</strong></p>" +
-      "<p>Gabriel is one of the clearest reminders in Scripture that when God speaks, history moves. He does not appear often, but when he does, the moment is never small.</p>" +
-      "<h2>Why Gabriel matters</h2>" +
-      "<ul><li>🕊️ He shows up in moments where God is revealing something major.</li><li>📣 He announces things that change the direction of the story.</li><li>✨ He reminds us that heaven is active even when life on earth feels uncertain.</li></ul>" +
-      "<p>In Daniel, Gabriel helps explain visions that would have been overwhelming without God's help. In Luke, he announces the births of John the Baptist and Jesus. Those are turning-point moments. Gabriel's role reminds us that God is never scrambling. He is moving with purpose.</p>" +
-      "<h2>Where to read it in the Bible</h2>" +
-      "<ul><li>📍 Daniel 8:15-17</li><li>📍 Daniel 9:21-27</li><li>📍 Luke 1:11-20</li><li>📍 Luke 1:26-38</li></ul>" +
-      "<h2>The real takeaway</h2>" +
-      "<p>Gabriel points us back to the faithfulness of God. His presence keeps saying the same thing: what God promised is still moving forward. Even when people hesitate, struggle, or need time to understand, God is still accomplishing His word.</p>" +
-      "<p><strong>Drop into the comments after you read:</strong> What part of Gabriel's role stands out to you most?</p>",
-  },
-  {
-    title: "Who was Andrew in the Bible?",
-    description: "This week's Who Was This Friday looks at Andrew and why quiet faithfulness still matters in the story of Jesus.",
-    contentHtml:
-      "<h1>Andrew: The Disciple Who Kept Bringing People to Jesus</h1>" +
-      "<p><strong>This week we are looking at Andrew.</strong></p>" +
-      "<p>Andrew was one of the first men Jesus called, and before that he had been a disciple of John the Baptist. He was Peter's brother, but Scripture keeps showing that Andrew had his own steady kind of faith long before he is remembered as standing near louder people. The first thing Andrew did after meeting Jesus was go find Peter and bring him to the Lord. That tells you a lot about him right away: Andrew was not trying to build his own name, he wanted other people to meet Jesus too. He may not be the loudest disciple in the story, but he is one of the clearest pictures of quiet faithfulness and humble evangelism.</p>" +
-      "<h2>Why Andrew matters</h2>" +
-      "<ul><li>&#129309; He keeps bringing people to Jesus.</li><li>&#128205; He shows that influence does not have to be loud to be powerful.</li><li>&#128161; He reminds us that helping others get closer to Christ is real ministry.</li></ul>" +
-      "<p>Andrew brings Peter. He helps bring the boy with the loaves and fish. He keeps showing up as someone willing to connect people to Jesus without needing the spotlight for himself.</p>" +
-      "<h2>Where to read it in the Bible</h2>" +
-      "<ul><li>&#128214; John 1:35-42</li><li>&#128214; John 6:8-9</li><li>&#128214; John 12:20-22</li><li>&#128214; Matthew 4:18-20</li></ul>" +
-      "<h2>The real takeaway</h2>" +
-      "<p>Andrew reminds us that some of the strongest kingdom work happens quietly. Not every calling looks dramatic from the outside. Some people are builders, introducers, and faithful connectors. Heaven notices that kind of obedience.</p>" +
-      "<p><strong>Drop into the comments after you read:</strong> Do you relate more to loud leadership or quiet faithfulness?</p>",
-  },
-  {
-    title: "Who was Barnabas in the Bible?",
-    description: "This week's Who Was This Friday looks at Barnabas and how encouragement became part of his calling.",
-    contentHtml:
-      "<p><strong>This week we are looking at Barnabas.</strong></p>" +
-      "<p>Barnabas is one of the clearest examples in the New Testament of what real encouragement looks like. Not shallow positivity. Real spiritual encouragement that helps people grow.</p>" +
-      "<h2>Why Barnabas matters</h2>" +
-      "<ul><li>🙌 He saw God's work in people before others were fully ready to trust it.</li><li>🛡️ He stood beside Paul when many believers were still afraid of him.</li><li>🌱 He made room for growth instead of writing people off too quickly.</li></ul>" +
-      "<p>That kind of person is rare. Barnabas was willing to recognize God's grace at work in people and protect that growth while it was still fragile. Later, he also gives John Mark another chance when others were ready to move on.</p>" +
-      "<h2>Where to read it in the Bible</h2>" +
-      "<ul><li>📍 Acts 4:36-37</li><li>📍 Acts 9:26-27</li><li>📍 Acts 11:22-26</li><li>📍 Acts 15:36-39</li></ul>" +
-      "<h2>The real takeaway</h2>" +
-      "<p>Barnabas shows us that encouragement can be a ministry, not just a personality trait. The right encourager helps people keep going, helps protect new growth, and can impact more lives than they may ever fully see.</p>" +
-      "<p><strong>Drop into the comments after you read:</strong> Who has been a Barnabas in your life?</p>",
-  },
-];
-
 const SATURDAY_FEATURES: RecurringSeriesTemplate[] = [
   {
     title: "Bible Study Saturday: Slow down and study one section deeply",
@@ -527,8 +468,39 @@ export function buildUpdateMondayPost(date = new Date()) {
   return buildFromTemplate("update_monday", MONDAY_FEATURES, date);
 }
 
-export function buildWhoWasThisFridayPost(date = new Date()) {
-  return buildFromTemplate("who_was_this_friday", FRIDAY_FEATURES, date);
+// The 20-character rotation is anchored so 2026-09-04 = Gabriel (the last
+// post of the old 4-character cycle), which makes date-only previews line
+// up with the history-based publisher: 09-11 Abraham, 09-18 Sarah, and so
+// on through all 20 before any repeat.
+const FRIDAY_ROTATION_ANCHOR_SEED = getBerlinSeed(new Date("2026-09-04T12:00:00Z"));
+
+/**
+ * Who Was This Friday - a 20-week character rotation.
+ *
+ * Pass `recentTitlesNewestFirst` (past Friday post titles from
+ * weekly_group_series_posts) to get the authoritative pick: the character
+ * after the most recently posted one, so no character repeats until all 20
+ * have been used and a redeploy never resets the rotation. Without history
+ * (scheduler previews, analytics) the pick falls back to anchored date
+ * math, which matches the history-based pick as long as no Friday is
+ * skipped.
+ */
+export function buildWhoWasThisFridayPost(date = new Date(), recentTitlesNewestFirst?: string[]) {
+  const total = FRIDAY_CHARACTER_STUDIES.length;
+  const index = recentTitlesNewestFirst
+    ? getNextFridayCharacterIndex(recentTitlesNewestFirst)
+    : (((getBerlinSeed(date) - FRIDAY_ROTATION_ANCHOR_SEED) % total) + total) % total;
+  const character = FRIDAY_CHARACTER_STUDIES[index];
+  const template = buildFridayCharacterStudyTemplate(character);
+
+  return {
+    seriesKey: "who_was_this_friday",
+    weekKey: getBerlinDateKey(date),
+    characterName: character.name,
+    title: template.title,
+    description: template.description,
+    contentHtml: template.contentHtml,
+  };
 }
 
 export function buildBibleStudySaturdayPost(

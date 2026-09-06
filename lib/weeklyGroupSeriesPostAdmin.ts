@@ -99,6 +99,28 @@ async function loadBibleStudySeriesSnapshot(
   };
 }
 
+// The durable memory for the Friday character rotation: every published
+// Friday post is recorded in weekly_group_series_posts, so reading the
+// recent titles (newest first) tells us which character posted last - and
+// therefore which one is next - regardless of restarts or deployments.
+async function loadRecentFridayTitles(
+  supabaseAdmin: SupabaseClient,
+  groupId: string,
+  beforeWeekKey: string,
+) {
+  const { data, error } = await supabaseAdmin
+    .from("weekly_group_series_posts")
+    .select("title, week_key")
+    .eq("group_id", groupId)
+    .eq("series_key", "who_was_this_friday")
+    .lt("week_key", beforeWeekKey)
+    .order("week_key", { ascending: false })
+    .limit(40);
+
+  if (error) throw new Error(error.message || "Could not load past Friday character posts.");
+  return (data || []).map((row) => row.title).filter((title): title is string => Boolean(title));
+}
+
 async function resolveDisplayName(supabaseAdmin: SupabaseClient, userId: string) {
   const { data } = await supabaseAdmin
     .from("profile_stats")
@@ -254,11 +276,13 @@ export async function ensureWeeklyGroupSeriesPost(
       ? await loadBibleStudySeriesSnapshot(supabaseAdmin, groupId)
       : null;
 
+  const weekKey = getBerlinDateKey(now);
   const series =
     seriesKey === "bible_study_saturday"
       ? buildBibleStudySaturdayPost(now, bibleStudySnapshot)
-      : SERIES_CONFIG[seriesKey].builder(now);
-  const weekKey = getBerlinDateKey(now);
+      : seriesKey === "who_was_this_friday"
+        ? buildWhoWasThisFridayPost(now, await loadRecentFridayTitles(supabaseAdmin, groupId, weekKey))
+        : SERIES_CONFIG[seriesKey].builder(now);
   const { data: overrideRow } = await supabaseAdmin
     .from("group_recurring_post_overrides")
     .select("override_payload")
