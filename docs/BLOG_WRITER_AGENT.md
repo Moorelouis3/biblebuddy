@@ -281,3 +281,39 @@ Louis does NOT review these posts before they publish. The format spec is the ag
 
 HARD LIMITS: one post per run, even with time and budget left over. Never touch files unrelated to the post, lib/blogContent.ts, the topic queue, SESSION_LOG.md, or MARCUS_HANDOFF.md. Never change an existing post's slug or publishedAt. Never skip the KJV verification. Never commit code that fails tsc. If anything blocks (rate limit, network, npm failure), log it to MARCUS_HANDOFF.md and stop cleanly instead of retrying forever.
 ```
+
+---
+
+## Women of the Bible banners (ready as of 2026-09-06)
+
+The real banners for the Women of the Bible series are already committed
+to this repo under `public/blog-banners/`. When you write one of these
+posts, set its `image` in `BLOG_ARTICLES` to the matching path below -
+do NOT use the category fallback banner and do NOT note a missing banner
+in MARCUS_HANDOFF.md for these. If one of these posts already published
+with a fallback banner, swap in the real path in your next run's commit.
+
+| Woman | Banner path |
+| --- | --- |
+| Mary, mother of Jesus | /blog-banners/who-was-mary.jpg |
+| Mary Magdalene | /blog-banners/who-was-mary-magdalene.jpg |
+| Esther | /blog-banners/who-was-esther.jpg |
+| Ruth | /blog-banners/who-was-ruth.jpg |
+| Sarah | /blog-banners/who-was-sarah.jpg |
+| Delilah | /blog-banners/who-was-delilah.jpg |
+| Bathsheba | /blog-banners/who-was-bathsheba.jpg |
+| Rahab | /blog-banners/who-was-rahab.jpg |
+| Deborah | /blog-banners/who-was-deborah.jpg |
+| Hannah | /blog-banners/who-was-hannah.jpg |
+| Rebekah | /blog-banners/who-was-rebekah.jpg |
+| Rachel | /blog-banners/who-was-rachel.jpg |
+| Hagar | /blog-banners/who-was-hagar.jpg |
+| Miriam | /blog-banners/who-was-miriam.jpg |
+| Tamar | /blog-banners/who-was-tamar.jpg |
+| Martha and Mary of Bethany | /blog-banners/who-was-martha-and-mary.jpg |
+| Elizabeth | /blog-banners/who-was-elizabeth.jpg |
+| The Samaritan Woman | /blog-banners/who-was-the-samaritan-woman.jpg |
+
+These paths are fixed regardless of the slug you choose for the post.
+The regular queue's `who-was-ruth` entry now carries this banner too, so
+whichever schedule reaches Ruth first uses the same art.
