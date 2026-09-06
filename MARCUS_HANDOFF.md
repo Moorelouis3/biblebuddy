@@ -281,3 +281,17 @@ brief said these posts are actually for. If Louis wants genuine scheduled
 publishing for a future series, that needs a small feature (filter
 `BLOG_ARTICLES` by `publishedAt <= today` in the blog index and the
 per post route) before it can work the way the calendar implies.
+
+## Stale local main recurred again (2026-09-06, hourly chapter run) — still unfixed at the environment level
+Same root cause as every entry above: fresh checkout's local `main` was
+stuck at the old "Day 108 / Psalms 13" tip while `origin/main` was already
+at "Psalms 34 / moderator engagement system." Verified origin/main fully
+supersedes local's unique content (psalmsOneSource.ts through
+psalmsThirtyFourSource.ts already exist on origin, versus local's 1-13),
+except three Bible in One Year narrator scripts (days 106-108) which don't
+appear to exist yet on origin. Pushed the stale local tip intact to
+`rescue/stale-local-main-2026-09-06` before touching anything, then reset
+local `main` to `origin/main` and continued normal forward progress. This
+is now at least a sixth occurrence of this exact class of bug across this
+routine — worth fixing at the environment level rather than each run
+catching it by hand.
