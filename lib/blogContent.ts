@@ -356,6 +356,23 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     },
   },
   {
+    slug: "who-was-miriam",
+    title: "Who Was Miriam in the Bible? The Sister Who Saved Moses",
+    description:
+      "Miriam saved baby Moses, led Israel in worship as a prophetess, then stumbled badly with jealousy. Her full story from Exodus and Numbers.",
+    category: "Character Studies",
+    categorySlug: "character-studies",
+    canonicalPath: "/blog/who-was-miriam",
+    publishedAt: "2026-09-06",
+    readTime: "17 min read",
+    image: "/5thingsholdingmenback.png",
+    groupPost: {
+      title: "Who Was Miriam in the Bible? 📖",
+      content:
+        "A young girl saved her baby brother's life.\nShe grew up to lead a nation in worship.\n\n📌 Years of faithful service did not stop one bitter mistake.\n\n📖 She watched over baby Moses hidden in a basket.\n📖 She led the women in song after the Red Sea.\n📖 She was struck with disease after speaking against Moses.\n\nNew article on:\n🟢 How **Miriam** protected her brother as a young girl.\n🟢 Why she is called a **prophetess** in Exodus 15.\n🟢 What her fall teaches about pride and jealousy.\n\nHave you ever stumbled badly after years of faithful service? 🙏",
+    },
+  },
+  {
     slug: "is-it-a-sin-to-doubt-god",
     title: "Is It a Sin to Doubt God?",
     description:
