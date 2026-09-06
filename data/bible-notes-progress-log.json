@@ -33181,6 +33181,59 @@
           "at": "2026-09-06T16:58:49Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 37,
+      "startedAt": "2026-09-06T18:46:21Z",
+      "finishedAt": "2026-09-06T19:03:00Z",
+      "durationMinutes": 17,
+      "sections": 8,
+      "cards": 70,
+      "verses": 40,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both empty, normal forward progress after Psalms 36. Fetched real KJV text (40 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Chunked into 8 sections of 5 verses each. Density 1.75 cards/verse (70 cards). Style checker found 1 problem on first pass (banned hedge word 'fairly'), fixed, clean on second pass. Parser check passed (8/8 sections, 70 cards, no gaps). tsc clean. Wired new individual psalmsThirtySevenSource.ts file, called after the existing bulk psalmsThirtySevenToFiftyOnePersonalNotes range call so it takes precedence for chapter 37. Next forward-progress target is Psalms 38.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-06T18:47:09Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 37 (priority queue and style-redo backlog both empty, normal forward progress after Psalms 36)",
+          "at": "2026-09-06T18:53:59Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 37 (40 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-09-06T18:47:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-06T18:48:30Z"
+        },
+        {
+          "name": "source file lib/psalmsThirtySevenSource.ts written (8 sections, 70 cards)",
+          "at": "2026-09-06T18:58:00Z"
+        },
+        {
+          "name": "style checker found 1 problem (banned hedge word 'fairly'), fixed, second run clean",
+          "at": "2026-09-06T18:59:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 37, applyPersonalPsalmsThirtySevenStudySections added and called after the bulk 37-51 call)",
+          "at": "2026-09-06T19:00:30Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('psalms', 37): 8 sections, 70 cards",
+          "at": "2026-09-06T19:01:00Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-06T19:01:20Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-06T19:03:00Z"
+        }
+      ]
     }
   ]
 }

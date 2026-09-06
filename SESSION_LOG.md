@@ -3482,3 +3482,7 @@ Next up: Day 131. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-06T16:57:04Z (hourly chapter notes run)
 Chapter: Psalms 36 | Duration: 8 min | Sections: 3 | Cards: 25 | Status: pass
 Next up: Psalms 37
+
+## 2026-09-06T19:03:00Z (hourly chapter notes run)
+Chapter: Psalms 37 | Duration: 17 min | Sections: 8 | Cards: 70 | Status: pass
+Next up: Psalms 38
