@@ -3392,3 +3392,7 @@ Next up: Psalms 28
 ## 2026-09-06T00:25:09Z (bible year day writer run)
 Day: 121 — Human Frailty and Hope (Job 11-14) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 122
+
+## 2026-09-06T00:32:00Z (bible year day writer run, second day this run)
+Day: 122 — Friends Accuse, Job Suffers (Job 15-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 123. Stopping here — two-day budget cap for this run reached.
