@@ -3450,3 +3450,7 @@ studies fallback banner pending real artwork (see MARCUS_HANDOFF.md).
 Built a 6 week promotion calendar in content-buddy/blog/CONTENT_CALENDAR.md
 and dequeued the now redundant who-was-mary-magdalene topic from
 content-buddy's standard queue.
+
+## 2026-09-06T10:58:15Z (hourly chapter notes run)
+Chapter: Psalms 33 | Duration: 12 min | Sections: 6 | Cards: 40 | Status: pass
+Next up: Psalms 34
