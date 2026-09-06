@@ -72,7 +72,7 @@ export default function LevelProgressCard() {
           L{summary.level}
         </span>
         <div className="min-w-0">
-          <p className="truncate text-sm font-black leading-tight text-[#2b2150] sm:text-xl">{summary.levelName}</p>
+          <p className="truncate text-sm font-black leading-tight text-[#2b2150] sm:text-xl">Level {summary.level}</p>
           <p className="truncate text-[10px] font-bold text-[#7c68b4] sm:text-[11px]">
             {summary.nextLevelName ? `${summary.pointsToNextLevel.toLocaleString()} to next` : "Top level!"}
           </p>
