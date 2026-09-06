@@ -112,7 +112,18 @@ export default function HomeScreen() {
     preview: null,
   });
 
-  const recommended = useMemo(() => BLOG_ARTICLES.slice(0, 3), []);
+  // Five random posts per visit (Louis, 2026-09-06: shuffled, five
+  // scrollable banners). SSR and the first client paint use the newest
+  // five so hydration matches; the shuffle lands right after mount.
+  const [recommended, setRecommended] = useState(() => BLOG_ARTICLES.slice(0, 5));
+  useEffect(() => {
+    const shuffled = BLOG_ARTICLES.slice();
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setRecommended(shuffled.slice(0, 5));
+  }, []);
 
   // AppShell hides the whole top header on /dashboard until the dashboard
   // reports itself loaded - a contract written for the old 19k-line dashboard
@@ -577,13 +588,13 @@ export default function HomeScreen() {
       {/* 6. Recommended For You */}
       <section aria-labelledby="home-recommended-heading">
         <SectionHeading label="Recommended For You" href="/blog" onSeeAll={() => trackHomeEvent("home_see_all_click", { section: "recommended" })} />
-        <div className="flex snap-x gap-3 overflow-x-auto pb-1 sm:grid sm:grid-cols-3 sm:overflow-visible [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex snap-x gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {recommended.map((article) => (
             <Link
               key={article.slug}
               href={article.canonicalPath}
               onClick={() => trackHomeEvent("home_article_click", { slug: article.slug })}
-              className="block w-[240px] shrink-0 snap-start rounded-xl outline-none transition hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] sm:w-auto"
+              className="block w-[240px] shrink-0 snap-start rounded-xl outline-none transition hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] sm:w-[280px]"
             >
               <div className="relative aspect-[1728/910] overflow-hidden rounded-xl bg-[var(--bb-surface-soft,#eef2f7)]">
                 <Image
