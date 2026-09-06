@@ -3413,6 +3413,14 @@ Next up: Day 124
 Day: 124 — Job Searches for God (Job 23-26) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 125. Stopping here — two-day budget cap for this run reached.
 
+<<<<<<< HEAD
 ## 2026-09-06T04:57:09Z (hourly chapter notes run)
 Chapter: Psalms 30 | Duration: 9 min | Sections: 4 | Cards: 23 | Status: pass
 Next up: Psalms 31
+=======
+## 2026-09-06 (night)
+Time spent: long overnight session (Sept 5 evening - Sept 6 morning)
+Done: Proverbs devotional fully transplanted from the new book (31 days, app format, softened questions, new cover); KDP Companion Journal draft + proof requested; Plans tab rebuilt as one tabbed page (BiOY windowed around current day, Articles dropdown); points & levels relaunched (derived engine, 4,788 users backfilled, home level card, XP pops); 6 pastel themes; daily reading reminder cron + push opt-in modal; VOTD reflections now share one thread with a real daily group post. SQLs run via Chrome (pastel constraint, total_points, votd group_post_id). Blog check: 271 views last 7d, search engines ~46 visits/mo, 27 pages indexed.
+Still open: OpenAI credits (blocks 31 Proverbs audios + live TTS); KDP proof checkout email (Louis clicks); YouTube 76-100 thumbnails; Day 40 PAssover typo; MaJor Warren chat error report; watch VOTD post reply rate + group feed automation balance.
+Next: OpenAI top-up then run Proverbs audio; Phase 2 weekly Top Buddies leaderboard; GSC 404 fixes + Leah/Moses title tuning.
+
