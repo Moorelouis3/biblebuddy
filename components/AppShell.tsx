@@ -623,6 +623,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [pushLoading, setPushLoading] = useState(false);
   const [pushError, setPushError] = useState<string | null>(null);
   const [showPushPrompt, setShowPushPrompt] = useState(false);
+  // Post-completion push ask (2026-09-06): finishing a Bible in One Year
+  // reading is the moment the daily reminder is an easy yes. Re-asks at
+  // most every few days, even if the bell-dropdown prompt was dismissed.
+  const [completionPushDay, setCompletionPushDay] = useState<number | null>(null);
   const [pushPromptClosing, setPushPromptClosing] = useState(false);
   const [headerCurrentLevel, setHeaderCurrentLevel] = useState<number>(1);
   const [headerCurrentStreak, setHeaderCurrentStreak] = useState<number>(0);
@@ -1678,6 +1682,24 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const dismissed = window.localStorage.getItem(getPushPromptDismissKey(userId)) === "1";
     const enabled = pushPermission === "granted" && pushSubscribed;
     setShowPushPrompt(!dismissed && !enabled);
+  }, [pushSupported, pushPermission, pushSubscribed, userId]);
+
+  // Finishing a day's reading -> offer the daily reminder (throttled).
+  useEffect(() => {
+    if (!pushSupported || !userId || typeof window === "undefined") return;
+
+    function onDayCompleted(event: Event) {
+      const detail = (event as CustomEvent).detail as { nextDay?: number } | undefined;
+      if (pushPermission === "granted" && pushSubscribed) return;
+      const throttleKey = `bb:push-completion-asked:${userId}`;
+      const lastAsked = Number(window.localStorage.getItem(throttleKey) || 0);
+      if (Date.now() - lastAsked < 3 * 24 * 60 * 60 * 1000) return;
+      window.localStorage.setItem(throttleKey, String(Date.now()));
+      setCompletionPushDay(detail?.nextDay ?? null);
+    }
+
+    window.addEventListener("bb:bible-day-completed", onDayCompleted);
+    return () => window.removeEventListener("bb:bible-day-completed", onDayCompleted);
   }, [pushPermission, pushSubscribed, pushSupported, userId]);
 
   useEffect(() => {
@@ -3571,6 +3593,39 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           externalId={openConversationId}
           onExternalClose={() => setOpenConversationId(null)}
         />
+      )}
+
+      {/* POST-COMPLETION PUSH ASK — a finished reading is the easy-yes moment */}
+      {completionPushDay !== null && !(pushPermission === "granted" && pushSubscribed) && (
+        <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/60 px-6" role="dialog" aria-modal="true" aria-label="Daily reminder">
+          <div className="w-full max-w-sm rounded-[28px] bg-white p-6 text-center shadow-2xl">
+            <div className="text-4xl" aria-hidden>🎉</div>
+            <h2 className="mt-2 text-xl font-black text-gray-950">Reading done - nice work!</h2>
+            <p className="mt-2 text-sm font-semibold text-gray-600">
+              Want a reminder when Day {completionPushDay} is ready tomorrow? One tap, and your streak takes care of itself.
+            </p>
+            {pushError && <p className="mt-2 text-xs font-bold text-red-500">{pushError}</p>}
+            <button
+              type="button"
+              disabled={pushLoading}
+              onClick={async () => {
+                await handleEnablePushAlerts();
+                setCompletionPushDay(null);
+              }}
+              className="mt-4 w-full rounded-2xl px-5 py-3 text-sm font-black transition hover:opacity-90 disabled:opacity-60"
+              style={{ backgroundColor: "var(--bb-button, #2f7fe8)", color: "var(--bb-button-text, #ffffff)" }}
+            >
+              {pushLoading ? "Turning on..." : "Remind me tomorrow"}
+            </button>
+            <button
+              type="button"
+              onClick={() => setCompletionPushDay(null)}
+              className="mt-2 w-full rounded-2xl px-5 py-2.5 text-sm font-bold text-gray-500 transition hover:text-gray-700"
+            >
+              Not now
+            </button>
+          </div>
+        </div>
       )}
         </>
       )}

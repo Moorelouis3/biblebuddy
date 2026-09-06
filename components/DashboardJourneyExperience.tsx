@@ -10585,6 +10585,13 @@ Before we understand redemption, we need to understand what God made humanity fo
     if (newlyCompletedCards.length > 0) {
       startBibleYearCompletionAnimation(day.dayNumber, newlyCompletedCards[0]);
     }
+    // A finished reading is the best moment to ask about push reminders -
+    // AppShell listens and offers "remind me when Day N+1 is ready".
+    if (newlyCompletedCards.includes("reading") && typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("bb:bible-day-completed", { detail: { completedDay: day.dayNumber, nextDay: Math.min(365, day.dayNumber + 1) } }),
+      );
+    }
     if (dayWillBeFullyComplete) {
       setBibleYearCompletedTasksExpandedDay(null);
     }
