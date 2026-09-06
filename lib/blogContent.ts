@@ -170,19 +170,20 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "who-was-eve",
-    title: "Who Was Eve?",
+    title: "Who Was Eve in the Bible? The Woman Who Lost Paradise",
     description:
-      "Who was Eve in the Bible? Her creation, the serpent, the Fall, and the promise God gave her before her sentence, from Genesis 2 to 4.",
+      "Who was Eve in the Bible? Her creation, the serpent's three moves, the fall, the promise of a Savior, and how she trusted God again after losing both her sons.",
     category: "Character Studies",
     categorySlug: "character-studies",
     canonicalPath: "/blog/who-was-eve",
     publishedAt: "2026-09-01",
-    readTime: "9 min read",
+    updatedAt: "2026-09-06",
+    readTime: "18 min read",
     image: "/who-was-eve-banner.png",
     groupPost: {
-      title: "Who Was Eve? 📖",
+      title: "Who Was Eve in the Bible? 📖",
       content:
-        "Eve gets blamed for the worst chapter in the Bible.\nMost people have never read the rest of her story.\n\n📌 God named her hope in the same breath He judged her.\n\n📖 Eve was formed because God called something not good.\n📖 The fruit was never called an apple in the text.\n📖 Adam was with her the whole time, not off somewhere else.\n\nNew article on:\n🟢 what actually happened at the **forbidden tree**\n🟢 the promise God gave Eve before her **punishment**\n🟢 why Adam named his wife **hope** right after the fall\n\nDoes one failure feel like it defines you too? 🙏",
+        "Eve gets blamed for the worst chapter in the Bible.\nMost people have never read the rest of her story.\n\n📌 God promised her a rescuer before He ever announced her punishment.\n\n📖 The serpent used three moves, not one lie.\n📖 Adam stood right beside her the whole time and said nothing.\n📖 She lost one son to murder and one to exile in a single day.\n\nNew article on:\n🟢 the serpent's **three moves** against Eve\n🟢 why the **coats of skins** were the first sacrifice in the Bible\n🟢 how Eve trusted God again after losing **Abel and Cain**\n\nDoes one failure feel like it defines you too? 🙏",
     },
   },
   {
