@@ -3427,3 +3427,7 @@ Next: OpenAI top-up then run Proverbs audio; Phase 2 weekly Top Buddies leaderbo
 Chapter: Psalms 31 | Duration: 12 min | Sections: 6 | Cards: 46 | Status: pass
 Next up: Psalms 32
 
+## 2026-09-06T09:45:51Z (bible year day writer run)
+Day: 125 — Wisdom and Deep Distress (Job 27-30) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 126
+
