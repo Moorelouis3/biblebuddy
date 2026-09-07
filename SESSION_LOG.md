@@ -3566,3 +3566,7 @@ Next up: Psalms 47
 ## 2026-09-07T14:57:45Z (hourly chapter notes run)
 Chapter: Psalms 47 | Duration: 12 min | Sections: 3 | Cards: 20 | Status: pass
 Next up: Psalms 48
+
+## 2026-09-07T15:30:00Z (bible year day writer run)
+Day: 141 — Waiting, Wisdom, and Frailty (Psalms 37-39) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 142
