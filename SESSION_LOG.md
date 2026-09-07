@@ -3510,3 +3510,7 @@ Next up: Day 134
 ## 2026-09-07T00:15:00Z (bible year day writer run, second day this run)
 Day: 134 — Refuge, Resurrection Hope, and Deliverance (Psalms 16-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 135. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-07T00:54:57Z (hourly chapter notes run)
+Chapter: Psalms 40 | Duration: 8 min | Sections: 6 | Cards: 30 | Status: pass
+Next up: Psalms 41
