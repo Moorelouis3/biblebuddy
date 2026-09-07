@@ -3542,3 +3542,7 @@ Next up: Day 138
 ## 2026-09-07T08:28:33Z (bible year day writer run, second day this run)
 Day: 138 — Help, Strength, and Joy (Psalms 28-30) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 139. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-07T09:02:16Z (hourly chapter notes run)
+Chapter: Psalms 44 | Duration: 15 min | Sections: 5 | Cards: 42 | Status: pass
+Next up: Psalms 45
