@@ -3534,3 +3534,7 @@ Next up: Psalms 43
 ## 2026-09-07T06:56:06Z (hourly chapter notes run)
 Chapter: Psalms 43 | Duration: 10 min | Sections: 3 | Cards: 12 | Status: pass
 Next up: Psalms 44
+
+## 2026-09-07T08:26:48Z (bible year day writer run)
+Day: 137 — Guidance, Forgiveness, and Courage (Psalms 25-27) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 138
