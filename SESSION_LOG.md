@@ -3570,3 +3570,7 @@ Next up: Psalms 48
 ## 2026-09-07T15:30:00Z (bible year day writer run)
 Day: 141 — Waiting, Wisdom, and Frailty (Psalms 37-39) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 142
+
+## 2026-09-07T16:30:00Z (bible year day writer run, second day this run)
+Day: 142 — Rescue, Obedience, and Thirst for God (Psalms 40-42) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 143. Stopping here — two-day budget cap for this run reached.
