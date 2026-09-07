@@ -3526,3 +3526,7 @@ Next up: Day 136
 ## 2026-09-07T04:45:00Z (bible year day writer run, second day this run)
 Day: 136 — Suffering, Shepherd, and Glory (Psalms 22-24) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 137. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-07T04:54:40Z (hourly chapter notes run)
+Chapter: Psalms 42 | Duration: 9 min | Sections: 6 | Cards: 22 | Status: pass
+Next up: Psalms 43
