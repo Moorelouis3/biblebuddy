@@ -294,6 +294,9 @@ export async function generateModeratorComment(
   const context =
     `Community post by ${candidate.authorName}` +
     (candidate.isFirstPost ? " (their FIRST post here - welcome them)" : "") +
+    (candidate.isAutomated
+      ? " (this is an OFFICIAL Bible Buddy post - do NOT address the poster by name; speak to the whole community and invite them into the discussion)"
+      : "") +
     (candidate.isVotd ? " (this is today's Verse of the Day discussion post)" : "") +
     `:\nTitle: ${candidate.title || "(none)"}\nContent: ${candidate.content}\n\nWhy you are engaging: ${candidate.reason}`;
   try {
