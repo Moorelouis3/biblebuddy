@@ -3502,3 +3502,7 @@ Next up: Psalms 39
 ## 2026-09-06T22:56:04Z (hourly chapter notes run)
 Chapter: Psalms 39 | Duration: 10 min | Sections: 5 | Cards: 25 | Status: pass
 Next up: Psalms 40
+
+## 2026-09-07T00:00:00Z (bible year day writer run)
+Day: 133 — Lament, Trust, and Integrity (Psalms 13-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 134
