@@ -3558,3 +3558,7 @@ Next up: Day 140
 ## 2026-09-07T12:30:04Z (bible year day writer run, second day this run)
 Day: 140 — Taste and See God's Goodness (Psalms 34-36) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 141. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-07T12:57:34Z (hourly chapter notes run)
+Chapter: Psalms 46 | Duration: 11 min | Sections: 3 | Cards: 22 | Status: pass
+Next up: Psalms 47
