@@ -33755,6 +33755,55 @@
           "at": "2026-09-07T12:59:24Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 47,
+      "startedAt": "2026-09-07T14:46:08Z",
+      "finishedAt": "2026-09-07T14:57:45Z",
+      "durationMinutes": 12,
+      "sections": 3,
+      "cards": 20,
+      "verses": 9,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Session started on a detached HEAD that matched origin/main exactly, but `git checkout main` revealed a local `main` branch ref cached from an unrelated, disconnected history (git merge-base found no common ancestor at all) -- the same documented recurring environment artifact noted in MARCUS_HANDOFF.md across at least eight prior runs. Reconciled with `git checkout -B main origin/main` before touching any files; nothing was lost since the working tree was clean and the detached HEAD already matched origin/main's tip (9a2c1c8, Psalms 46). Ran `npm install` first since this was a fresh clone with no node_modules. Priority queue and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) both confirmed empty, so this was normal forward progress after Psalms 46. Fetched real KJV text for Psalms 47 (9 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 47 is a short enthronement psalm: it opens calling all people to clap and shout in triumph, naming the LORD Most High as a great and terrible King over all the earth who subdues nations under Israel's feet and chose their inheritance, the excellency of Jacob, closing the section on Selah (1-4); it pictures God going up with a shout and a trumpet blast, repeats \"sing praises\" four times and \"God is the King of all the earth\" as a deliberate callback to verse two, and calls for praise sung with real understanding, not just noise (5-7); and it closes naming God's reign over the heathen from a throne of holiness, picturing the princes of the nations gathering as the people of the God of Abraham, calling earth's rulers themselves shields owned by God, and ending on His exaltation (8-9). Chunked into 3 sections matching the psalm's own natural movements. Density exactly 2.2 cards per verse (9 verses, 20 cards); no card title repeats anywhere in the file. scripts/check_bible_note_style.py found zero problems on the first full pass (20 cards). A manual section 13 eye check afterward caught two card openings (A Great King Over All The Earth, The Nations Under Our Feet) that led with setup rather than one of the four approved opening moves; both were rewritten to open with a direct definition or misreading correction, then the checker, parser check, and tsc were all re-run clean. Confirmed every card defines its key terms in plain language (triumph, terrible, Most High, subdue, inheritance, excellency, Selah, shofar, understanding, heathen, holiness, princes, shields, exalted), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card ending on the scripture emoji, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file. Parser check passed exactly via getBibleReaderStudySections('psalms', 47): 3 sections, 20 cards, text rendering verbatim, verse ranges 1-4/5-7/8-9 with no gaps. npx tsc --noEmit -p . clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies Psalms range extended from 46 to 47, and a replaceStudySectionsForBookRange('psalms', 47, 47, ...) call added right after the existing Psalms 46 wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-07T14:47:25Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 47 (new chapter, forward progress, redo list empty)",
+          "at": "2026-09-07T14:47:48Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 47 (9 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-09-07T14:48:04Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, full)",
+          "at": "2026-09-07T14:48:10Z"
+        },
+        {
+          "name": "source file written: lib/psalmsFortySevenSource.ts (3 sections, 20 cards)",
+          "at": "2026-09-07T14:53:35Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 20 cards found)",
+          "at": "2026-09-07T14:53:35Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 47, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-07T14:53:59Z"
+        },
+        {
+          "name": "parser check passed (3 sections, 20 cards, matches design)",
+          "at": "2026-09-07T14:54:22Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (zero errors)",
+          "at": "2026-09-07T14:55:35Z"
+        }
+      ]
     }
   ]
 }
