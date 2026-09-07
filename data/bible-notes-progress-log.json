@@ -33979,6 +33979,59 @@
           "at": "2026-09-07T20:58:45Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 51,
+      "startedAt": "2026-09-07T22:46:20Z",
+      "finishedAt": "2026-09-07T23:02:00Z",
+      "durationMinutes": 15.7,
+      "sections": 4,
+      "cards": 33,
+      "verses": 19,
+      "notes": "New chapter, normal forward progress after Psalms 50 (style-redo backlog empty). Psalms 51 previously had no dedicated wired-in file, only coverage from the old-style psalmsThirtySevenToFiftyOnePersonalNotes.ts batch file. Fetched real KJV text from raw.githubusercontent.com aruljohn Bible-kjv mirror. Wrote lib/psalmsFiftyOneSource.ts following docs/bible-study-note-style.md exactly (4 opening moves, 4 bullets ending in \ud83d\udcd6 or \u27a1\ufe0f, no hyphens/em dashes/semicolons/contractions/banned words). check_bible_note_style.py found ten bullets over the 8 word limit on first pass, fixed, clean on second pass. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to <= 51, replaceStudySectionsForBookRange call added inside applyPersonalPsalmsFortyOneStudySections, which runs after the old 37-51 batch call so the new file wins). Parser check confirmed 4 sections / 33 cards with no duplication. npx tsc --noEmit -p . clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-07T22:46:20Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 51 (new chapter, forward progress, redo backlog empty)",
+          "at": "2026-09-07T22:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 51, 19 verses, aruljohn/Bible-kjv raw mirror)",
+          "at": "2026-09-07T22:47:35Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) and SKILL.md pipeline read",
+          "at": "2026-09-07T22:48:30Z"
+        },
+        {
+          "name": "source file written: lib/psalmsFiftyOneSource.ts (4 sections, 33 cards)",
+          "at": "2026-09-07T22:56:00Z"
+        },
+        {
+          "name": "style checker clean (0 problems after fixing 10 over-length bullets)",
+          "at": "2026-09-07T22:58:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies <= 51, replaceStudySectionsForBookRange call)",
+          "at": "2026-09-07T22:58:45Z"
+        },
+        {
+          "name": "parser check passed: 4 sections / 33 cards, no duplication",
+          "at": "2026-09-07T22:59:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-07T23:00:10Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-07T23:02:00Z"
+        }
+      ]
     }
   ]
 }
