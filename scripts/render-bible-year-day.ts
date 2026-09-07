@@ -164,6 +164,7 @@ import { BIBLE_YEAR_DAY_ONE_HUNDRED_FORTY_SCRIPT } from "../lib/bibleYearDayOneH
 import { BIBLE_YEAR_DAY_ONE_HUNDRED_FORTY_ONE_SCRIPT } from "../lib/bibleYearDayOneHundredFortyOneScript";
 import { BIBLE_YEAR_DAY_ONE_HUNDRED_FORTY_TWO_SCRIPT } from "../lib/bibleYearDayOneHundredFortyTwoScript";
 import { BIBLE_YEAR_DAY_ONE_HUNDRED_FORTY_THREE_SCRIPT } from "../lib/bibleYearDayOneHundredFortyThreeScript";
+import { BIBLE_YEAR_DAY_ONE_HUNDRED_FORTY_FOUR_SCRIPT } from "../lib/bibleYearDayOneHundredFortyFourScript";
 
 for (const path of [".env.local", ".env"]) {
   if (existsSync(path)) config({ path, override: false, quiet: true });
@@ -624,6 +625,7 @@ const DAY_SCRIPTS: Record<number, BibleYearDayScript> = {
   141: BIBLE_YEAR_DAY_ONE_HUNDRED_FORTY_ONE_SCRIPT,
   142: BIBLE_YEAR_DAY_ONE_HUNDRED_FORTY_TWO_SCRIPT,
   143: BIBLE_YEAR_DAY_ONE_HUNDRED_FORTY_THREE_SCRIPT,
+  144: BIBLE_YEAR_DAY_ONE_HUNDRED_FORTY_FOUR_SCRIPT,
 };
 
 async function segmentsForDay(dayNumber: number): Promise<BibleYearAudioSegment[]> {
