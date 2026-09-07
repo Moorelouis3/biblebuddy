@@ -3590,3 +3590,7 @@ Next up: Day 144
 ## 2026-09-07T20:35:00Z (bible year day writer run, second day this run)
 Day: 144 — God Is Our Refuge (Psalms 46-48) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 145. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-07T20:57:26Z (hourly chapter notes run)
+Chapter: Psalms 50 | Duration: 11 min | Sections: 5 | Cards: 45 | Status: pass
+Next up: Psalms 51

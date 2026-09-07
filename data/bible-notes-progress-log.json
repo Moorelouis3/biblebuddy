@@ -33922,6 +33922,63 @@
           "at": "2026-09-07T18:58:21Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 50,
+      "startedAt": "2026-09-07T20:46:40Z",
+      "finishedAt": "2026-09-07T20:57:26Z",
+      "durationMinutes": 10.8,
+      "sections": 5,
+      "cards": 45,
+      "verses": 23,
+      "notes": "New chapter, normal forward progress after Psalms 49 (priority queue and redo-remaining both empty). Fetched real KJV text from raw.githubusercontent.com aruljohn Bible-kjv mirror. Wrote lib/psalmsFiftySource.ts following docs/bible-study-note-style.md exactly (4 opening moves, 4 bullets ending in \ud83d\udcd6, no hyphens/em dashes/semicolons/contractions/banned words). check_bible_note_style.py found one bullet over the 8 word limit on first pass, fixed, clean on second pass. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to <= 50, replaceStudySectionsForBookRange call). First parser check revealed the raw 7-15 block spanned 9 verses, over the reader's internal 8-verse split limit, which silently duplicated all cards from that section into two Part 1/Part 2 sections instead of dividing them; fixed by splitting that block into two real sections (7-9 and 10-15) at the source. Final parser check confirmed 5 sections / 45 cards with no duplication. npx tsc --noEmit -p . clean.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-09-07T20:46:55Z"
+        },
+        {
+          "name": "target_chapter_determined: Psalms 50 (new chapter, forward progress, redo-remaining and priority queue empty)",
+          "at": "2026-09-07T20:46:57Z"
+        },
+        {
+          "name": "kjv_text_fetched",
+          "at": "2026-09-07T20:47:00Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-09-07T20:47:30Z"
+        },
+        {
+          "name": "source_file_written",
+          "at": "2026-09-07T20:54:08Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-09-07T20:54:19Z"
+        },
+        {
+          "name": "wiring_done",
+          "at": "2026-09-07T20:54:31Z"
+        },
+        {
+          "name": "parser_bug_found_and_fixed: 7-15 section exceeded 8-verse split limit, caused silent card duplication, split into 7-9 and 10-15",
+          "at": "2026-09-07T20:55:44Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-09-07T20:55:54Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-09-07T20:57:26Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-09-07T20:58:45Z"
+        }
+      ]
     }
   ]
 }
