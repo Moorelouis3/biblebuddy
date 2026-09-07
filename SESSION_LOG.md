@@ -3594,3 +3594,7 @@ Next up: Day 145. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-07T20:57:26Z (hourly chapter notes run)
 Chapter: Psalms 50 | Duration: 11 min | Sections: 5 | Cards: 45 | Status: pass
 Next up: Psalms 51
+
+## 2026-09-07T22:00:00Z (blog writer run)
+Article: What to Do When You Don't Feel God Anymore | Words: ~3040 | Category: Christian Foundations | Status: pass
+Queue remaining: 24

@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "when-you-dont-feel-god-anymore",
+    title: "What to Do When You Don't Feel God Anymore",
+    description:
+      "You don't feel God anymore, and it scares you. See what the Bible actually says about dry seasons of faith, why they happen, and what to do while you wait.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/when-you-dont-feel-god-anymore",
+    publishedAt: "2026-09-08",
+    readTime: "16 min read",
+    image: "/when-you-dont-feel-god-anymore-banner.png",
+    groupPost: {
+      title: "What to Do When You Don't Feel God Anymore 📖",
+      content:
+        "You used to feel Him.\nNow you pray and it hits the ceiling.\n\n📌 Feeling nothing does not mean God left.\n\n📖 David wrote whole psalms from inside this.\n📖 Job searched every direction and found nothing.\n📖 Jesus cried \"why hast thou forsaken me\" on the cross.\n\nNew article on:\n🟢 why **feelings** were never the measure of faith\n🟢 the ordinary causes nobody names, like **exhaustion and grief**\n🟢 what to actually do while you **wait on God**\n\nHave you ever gone through a dry season like this? 🙏",
+    },
+  },
+  {
     slug: "who-was-mary-mother-of-jesus",
     title: "Who Was Mary, the Mother of Jesus? The Woman God Chose to Carry His Son",
     description:
