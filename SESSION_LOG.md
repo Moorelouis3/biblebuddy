@@ -3690,3 +3690,7 @@ Next up: Day 156
 ## 2026-09-08T20:30:00Z (bible year day writer run)
 Day: 156 — Justice and Longing for God's House (Psalms 82-84) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 157. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-08T20:54:42Z (hourly chapter notes run)
+Chapter: Psalms 62 | Duration: 8 min | Sections: 3 | Cards: 26 | Status: pass
+Next up: Psalms 63
