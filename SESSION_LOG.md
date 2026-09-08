@@ -3606,3 +3606,7 @@ Next up: Psalms 52
 ## 2026-09-08T00:00:00Z (bible year day writer run)
 Day: 145 — Wealth, Judgment, and Repentance (Psalms 49-51) | Runtime: ~12 min est. | Cast: narrator only
 Next up: Day 146
+
+## 2026-09-08T00:05:00Z (bible year day writer run)
+Day: 146 — God Sustains the Faithful (Psalms 52-54) | Runtime: ~9 min est. | Cast: narrator only
+Next up: Day 147
