@@ -3682,3 +3682,7 @@ Next up: Psalms 61
 ## 2026-09-08T18:54:08Z (hourly chapter notes run)
 Chapter: Psalms 61 | Duration: 8 min | Sections: 2 | Cards: 17 | Status: pass
 Next up: Psalms 62
+
+## 2026-09-08T20:15:00Z (bible year day writer run)
+Day: 155 — Judgment, Restoration, and Listening (Psalms 79-81) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 156
