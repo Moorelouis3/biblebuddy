@@ -1,3 +1,24 @@
+## Stale local main / detached HEAD recurred again (2026-09-08, Psalms 54 hourly chapter run) — still unfixed at the environment level
+Same root cause as every entry below, at least a ninth occurrence. Session
+started with HEAD detached 50 commits ahead of local `main`'s cached ref
+(stuck at "Day 108 / 2 Chronicles 28-31"), including Psalms 35-53 study
+notes and many other already-shipped commits. `git fetch origin main`
+confirmed `origin/main` had already advanced to match the detached tip
+exactly, so this was a clean fast forward and nothing was at risk of loss.
+Fixed the usual way (`git checkout -B main origin/main`) before touching
+any files. Also found three small tracked junk files in the repo root
+this run, not previously flagged: `e --abort`, `et --hard 2fc9ef0`, and
+`et --hard 70b4649`, containing raw terminal output (colored `git log`/
+`git diff` text) from some earlier run's shell command that appears to
+have gotten mis-split and its output redirected into files literally
+named after the tail end of a `git rebase --abort` / `git reset --hard
+<sha>` command. They were committed as far back as `d175d60` (Psalms 35).
+Harmless (not imported by any code, do not affect tsc/build) but worth a
+cleanup pass and, more importantly, worth checking whatever tooling
+produced them, since it points at the same class of shell/tool
+flakiness as the stale-main issue above. Left them in place this run to
+stay inside the one-chapter scope.
+
 ## Unresolved git conflict markers found committed in SESSION_LOG.md
 This run (2026-09-06, Psalms 31) found literal, unresolved `<<<<<<< HEAD` /
 `=======` conflict markers already committed inside SESSION_LOG.md, wrapped
