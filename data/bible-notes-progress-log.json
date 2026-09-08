@@ -34508,6 +34508,55 @@
           "at": "2026-09-08T15:00:18Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 60,
+      "startedAt": "2026-09-08T16:47:39Z",
+      "finishedAt": "2026-09-08T16:57:07Z",
+      "durationMinutes": 10,
+      "sections": 3,
+      "cards": 25,
+      "verses": 12,
+      "notes": "New chapter, normal forward progress after Psalms 59. Poetry/lament with a divine oracle over the land (v6-8) naming Shechem, Succoth, Gilead, Manasseh, Ephraim, Judah, Moab, Edom, Philistia -- treated as a real teaching opportunity per section 12 of the style spec rather than a flat list. Style checker clean on first pass, parser check clean (3 sections, 25 cards), tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-08T16:48:29Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 60 (new chapter, forward progress)",
+          "at": "2026-09-08T16:48:29Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 60, 12 verses)",
+          "at": "2026-09-08T16:48:37Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-08T16:54:27Z"
+        },
+        {
+          "name": "source file written: lib/psalmsSixtySource.ts",
+          "at": "2026-09-08T16:54:27Z"
+        },
+        {
+          "name": "style checker clean (25 cards, 0 problems)",
+          "at": "2026-09-08T16:54:32Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply fn, call site)",
+          "at": "2026-09-08T16:54:52Z"
+        },
+        {
+          "name": "parser check passed (3 sections, 25 cards, verified verbatim)",
+          "at": "2026-09-08T16:55:16Z"
+        },
+        {
+          "name": "tsc --noEmit clean, 0 errors",
+          "at": "2026-09-08T16:56:56Z"
+        }
+      ]
     }
   ]
 }

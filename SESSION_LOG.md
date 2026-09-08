@@ -3674,3 +3674,7 @@ Next up: Day 154
 ## 2026-09-08T16:28:59Z (bible year day writer run)
 Day: 154 — God's Power and Israel's Memory (Psalms 76-78) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 155. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-08T16:57:07Z (hourly chapter notes run)
+Chapter: Psalms 60 | Duration: 10 min | Sections: 3 | Cards: 25 | Status: pass
+Next up: Psalms 61
