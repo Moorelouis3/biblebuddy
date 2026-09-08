@@ -3618,3 +3618,7 @@ Next up: Psalms 53
 ## 2026-09-08T02:54:30Z (hourly chapter notes run)
 Chapter: Psalms 53 | Duration: 7 min | Sections: 2 | Cards: 11 | Status: pass
 Next up: Psalms 54
+
+## 2026-09-08T00:00:00Z (bible year day writer run)
+Day: 147 — Betrayal, Fear, and Mercy (Psalms 55-57) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 148
