@@ -3670,3 +3670,7 @@ Next up: Psalms 60
 ## 2026-09-08T16:28:14Z (bible year day writer run)
 Day: 153 — Worship When Life Feels Unfair (Psalms 73-75) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 154
+
+## 2026-09-08T16:28:59Z (bible year day writer run)
+Day: 154 — God's Power and Israel's Memory (Psalms 76-78) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 155. Stopping here — two-day budget cap for this run reached.
