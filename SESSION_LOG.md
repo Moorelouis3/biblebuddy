@@ -3634,3 +3634,7 @@ Next up: Psalms 55
 ## 2026-09-08T07:01:16Z (hourly chapter notes run)
 Chapter: Psalms 55 | Duration: 15 min | Sections: 6 | Cards: 31 | Status: pass
 Next up: Psalms 56
+
+## 2026-09-08T08:27:18Z (bible year day writer run)
+Day: 149 — Longing for God's Presence (Psalms 61-63) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 150
