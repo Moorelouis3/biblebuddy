@@ -34447,6 +34447,63 @@
           "at": "2026-09-08T12:57:06Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 59,
+      "startedAt": "2026-09-08T14:47:29Z",
+      "finishedAt": "2026-09-08T14:58:01Z",
+      "durationMinutes": 11,
+      "sections": 4,
+      "cards": 35,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json, remaining=[]) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) both confirmed empty, so this was normal forward progress after Psalms 58. Repo state note: this fresh container's local main branch was again stale, this time a genuinely unrelated history (git merge-base found no common ancestor at all) sitting at a4cebb3 (Bible in One Year Day 108 / Psalms 13 era) while true origin/main (verified via a fresh git fetch origin main) was actually already at 895316c (Psalms 58 / Day 152 era). This is the same recurring stale-local-main environment bug logged repeatedly in MARCUS_HANDOFF.md, now at least an eighth or ninth occurrence. No unique local work existed to lose (working tree was clean, and local main's early content was identical, just an older disconnected snapshot), so it was resolved the same established way, git checkout -B main origin/main, before touching any files. Ran npm install first since this was a fresh clone with no node_modules. Fetched real KJV text for Psalms 59 (17 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 59 is an imprecatory psalm of David written, per its KJV superscription (not present in the fetched verse-only JSON, so supplied from 1 Samuel 19 as background context in the first card rather than invented from memory), while Saul's men watched David's house to kill him. It opens pleading for rescue from bloody men and workers of iniquity while protesting his innocence (1-5), moves into the psalm's central dog imagery, enemies prowling and mocking the city at evening while David contrasts their noise with his own patient trust that God is his defence (6-10), turns to an unusual prayer asking God to expose and scatter the wicked publicly rather than kill them quickly and quietly, so Israel remembers the lesson, closing on God alone as the one who truly rules (11-13), then repeats the evening/dog refrain almost verbatim before pivoting to morning praise, closing on the same defence/strength language that opened the psalm's trust (14-17). Chunked into 4 sections along those natural turns (1-5, 6-10, 11-13, 14-17), landing at 35 phrase cards across 17 verses (about 2.06 cards/verse), each following docs/bible-study-note-style.md exactly: title lifted verbatim from the KJV in title case, 4 line bodies opening with one of the four approved moves, exactly 4 emoji bullets per card ending in the scripture emoji (one card ending in the implication arrow instead), distinct emoji within each card, no hyphens/em dashes/semicolons/contractions/banned filler or hedge words. python3 scripts/check_bible_note_style.py lib/psalmsFiftyNineSource.ts caught one bullet over the 8 word limit on the first pass (the Consume Them In Wrath card), fixed immediately, then came back clean with 0 problems across all 35 cards. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/psalmsFiftyNineSource.ts, extended the Psalms preserveExactPhraseBodies range from <=58 to <=59, added a new applyPersonalPsalmsFiftyNineStudySections function calling replaceStudySectionsForBookRange(\"psalms\", 59, 59, PSALMS_FIFTY_NINE_PERSONAL_SECTIONS), called immediately after applyPersonalPsalmsFiftyEightStudySections(). Parser check via getBibleReaderStudySections('Psalms', 59) confirmed 4/4 sections, 35 total cards, no duplication. npx tsc --noEmit -p . clean with zero errors. Next forward-progress target is Psalms 60.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-08T14:47:20Z"
+        },
+        {
+          "name": "local main branch re-synced to true origin/main (git checkout -B main origin/main) after detecting a genuinely unrelated stale local history, no unique local work lost",
+          "at": "2026-09-08T14:49:00Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 59 (normal forward progress, priority queue and redo backlog both empty, confirmed via progress log tail and wiring check showing Psalms 58 as the last wired chapter)",
+          "at": "2026-09-08T14:49:54Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 59, 17 verses, aruljohn mirror)",
+          "at": "2026-09-08T14:58:01Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-09-08T14:58:01Z"
+        },
+        {
+          "name": "source file written: lib/psalmsFiftyNineSource.ts (35 cards, 4 sections)",
+          "at": "2026-09-08T14:58:01Z"
+        },
+        {
+          "name": "style checker: 1 problem found (bullet over 8 word limit), fixed, then clean on re-run",
+          "at": "2026-09-08T14:58:01Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies <=59, applyPersonalPsalmsFiftyNineStudySections)",
+          "at": "2026-09-08T14:58:01Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 35 cards, text verbatim)",
+          "at": "2026-09-08T14:58:01Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-09-08T14:58:01Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, MARCUS_HANDOFF.md stale-main recurrence note)",
+          "at": "2026-09-08T14:59:56Z"
+        }
+      ]
     }
   ]
 }

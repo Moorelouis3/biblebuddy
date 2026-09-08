@@ -1,3 +1,23 @@
+## Stale local main recurred again (2026-09-08, Psalms 59 run) — unrelated-history variant, still unfixed at the environment level
+Same root cause as every entry below, but the more serious variant: this
+run's fresh container had local `main` at `a4cebb3` (Bible in One Year Day
+108 / Psalms 13 era), and `git merge-base main origin/main` found no common
+ancestor at all, genuinely unrelated histories, not just "behind." A fresh
+`git fetch origin main` confirmed the real `origin/main` was already at
+`895316c` (Psalms 58 / Day 152 era, 50 commits deep on its own root).
+Checked carefully before touching anything: working tree was clean, and
+diffing file trees between the two lines showed identical content for the
+chapters they shared (for example `psalmsOneSource.ts` byte for byte the
+same), so the stale local line was just an older disconnected snapshot with
+nothing unique to rescue, not real independent work. Fixed the same
+established way, `git checkout -B main origin/main`, before writing
+anything. This is now at least a tenth occurrence of this exact class of
+bug across this routine and the Bible in One Year day writer, and the
+second time it has shown up as the more dangerous "no common ancestor"
+form rather than a plain fast-forward gap. Worth prioritizing a real fix at
+the environment/container-seeding level rather than continuing to rely on
+every run catching and diagnosing it by hand.
+
 ## Stale local main / detached HEAD recurred again (2026-09-08, Psalms 54 hourly chapter run) — still unfixed at the environment level
 Same root cause as every entry below, at least a ninth occurrence. Session
 started with HEAD detached 50 commits ahead of local `main`'s cached ref
