@@ -3666,3 +3666,7 @@ Next up: Psalms 59
 ## 2026-09-08T14:58:01Z (hourly chapter notes run)
 Chapter: Psalms 59 | Duration: 11 min | Sections: 4 | Cards: 35 | Status: pass
 Next up: Psalms 60
+
+## 2026-09-08T16:28:14Z (bible year day writer run)
+Day: 153 — Worship When Life Feels Unfair (Psalms 73-75) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 154
