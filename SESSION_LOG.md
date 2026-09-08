@@ -3658,3 +3658,7 @@ Next up: Day 152
 ## 2026-09-08T12:40:00Z (bible year day writer run)
 Day: 152 — Help, Aging, and the Righteous King (Psalms 70-72) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 153. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-08T12:56:00Z (hourly chapter notes run)
+Chapter: Psalms 58 | Duration: 10 min | Sections: 2 | Cards: 21 | Status: pass
+Next up: Psalms 59

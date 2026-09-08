@@ -333,3 +333,16 @@ chapter-writing task could start. Flagging again because this keeps
 costing a chunk of every run's budget on git archaeology instead of Bible
 notes, and because a future occurrence might not be as clean a
 fast-forward as this one and could actually risk losing real work.
+
+## Stale local main recurred again (2026-09-08, Psalms 58 hourly chapter run) — still unfixed at the environment level
+Same root cause as every entry above, at least an eighth occurrence.
+Session started with local `main` stuck at an old commit (a4cebb3, "Day
+108 / 2 Chronicles 28-31" era) while `origin/main` was already at the true
+current tip (a4d9952, "Bible in One Year Day 152 script"). This time the
+detached-HEAD starting point was itself already correct and matched
+origin/main exactly, so the only issue was the cached local `main` branch
+ref lagging behind. Fixed cleanly with `git checkout -B main origin/main`
+before any new work began, no commits lost, no rescue branch needed. Still
+worth fixing at the environment level (seed each fresh session's local
+`main` from current `origin/main` at container start) since this keeps
+costing real setup time on every run of this routine.

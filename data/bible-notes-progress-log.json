@@ -34382,6 +34382,67 @@
           "at": "2026-09-08T10:54:43Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 58,
+      "startedAt": "2026-09-08T12:46:19Z",
+      "finishedAt": "2026-09-08T12:56:00Z",
+      "durationMinutes": 10,
+      "sections": 2,
+      "cards": 21,
+      "verses": 11,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json, remaining=[]) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) both confirmed empty, so this was normal forward progress after Psalms 57, confirmed by the wiring in lib/bibleReaderStudyNotes.ts (Psalms 1-57 all had dedicated calls, Psalms 58 did not) and by no psalmsFiftyEightSource.ts file existing yet. Repo state note: local main branch was stale (pointing at an old commit, a4cebb3) while origin/main and the prior session's detached HEAD both sat at a4d9952 with no unmerged local commits, the same recurring stale-branch issue already logged three times before in MARCUS_HANDOFF.md, this time resolved cleanly with git checkout -B main origin/main before any new work began, no commits lost. Ran npm install first since this was a fresh clone with no node_modules. Fetched real KJV text for Psalms 58 (11 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 58 is an imprecatory psalm of David confronting corrupt human judges, opening with a rhetorical accusation that their rulings are premeditated violence rather than justice, moving through serpent imagery (poison, the deaf adder that cannot be charmed) to picture judges who are both dangerous and beyond correction (1-5), then shifting to a prayer asking God to strip their power to harm (breaking teeth), followed by a string of ancient Near Eastern images for sudden and total disappearance (water soaking into dry ground, a dissolving snail, a stillbirth, a whirlwind, a pot that never even gets to heat), and closing on the psalm's real point, that human courts can fail but God is the judge who does not (6-11). Chunked into 2 sections along that natural turn from accusation to prayer (1-5, 6-11), landing at 21 phrase cards across 11 verses (about 1.9 cards/verse), each following docs/bible-study-note-style.md exactly: title lifted verbatim from the KJV in title case, 4 to 6 line bodies opening with one of the four approved moves, exactly 4 emoji bullets per card ending in the scripture emoji, distinct emoji within each card, no hyphens/em dashes/semicolons/contractions/banned filler words. python3 scripts/check_bible_note_style.py lib/psalmsFiftyEightSource.ts caught one banned hedge word (fairly, used twice in the closing card) on the first pass, fixed immediately, then came back clean with 0 problems. A manual section 13 eye check also caught four cards in the second section that all opened with the same This is... sentence shape, a real Part 5 forbidden-pattern violation (repeated structure across a section) the mechanical checker cannot catch, so those four openings were rewritten for variety before finalizing (Move 2 corrections instead of flat Move 4 restatements in three of the four cases). The verse 7 bow and arrows line, genuinely difficult Hebrew, was hedged honestly with many scholars believe rather than invented certainty. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/psalmsFiftyEightSource.ts, extended the Psalms preserveExactPhraseBodies range from <=57 to <=58, added a new applyPersonalPsalmsFiftyEightStudySections function calling replaceStudySectionsForBookRange(\"psalms\", 58, 58, PSALMS_FIFTY_EIGHT_PERSONAL_SECTIONS), called immediately after applyPersonalPsalmsFiftySevenStudySections(). Parser check via getBibleReaderStudySections('psalms', 58) confirmed 2/2 sections, 21 total cards, no duplication. npx tsc --noEmit -p . clean with zero errors. Next forward-progress target is Psalms 59.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-08T12:46:45Z"
+        },
+        {
+          "name": "local main branch re-synced to origin/main (git checkout -B main origin/main) after detecting the recurring stale-branch issue, no commits lost",
+          "at": "2026-09-08T12:47:15Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 58 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-09-08T12:47:15Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 58, 11 verses, aruljohn mirror)",
+          "at": "2026-09-08T12:47:20Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-09-08T12:48:00Z"
+        },
+        {
+          "name": "source file written: lib/psalmsFiftyEightSource.ts (21 cards, 2 sections)",
+          "at": "2026-09-08T12:52:30Z"
+        },
+        {
+          "name": "style checker: 1 problem found (banned hedge 'fairly'), fixed, then clean on re-run",
+          "at": "2026-09-08T12:53:10Z"
+        },
+        {
+          "name": "manual section 13 eye check: rewrote 4 repeated 'This is...' openings in section 2 for voice variety",
+          "at": "2026-09-08T12:54:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies <=58, applyPersonalPsalmsFiftyEightStudySections)",
+          "at": "2026-09-08T12:54:20Z"
+        },
+        {
+          "name": "parser check passed (2/2 sections, 21 cards, text verbatim)",
+          "at": "2026-09-08T12:54:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-09-08T12:55:16Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-08T12:56:00Z"
+        }
+      ]
     }
   ]
 }
