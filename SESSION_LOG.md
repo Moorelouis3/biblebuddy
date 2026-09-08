@@ -3686,3 +3686,7 @@ Next up: Psalms 62
 ## 2026-09-08T20:15:00Z (bible year day writer run)
 Day: 155 — Judgment, Restoration, and Listening (Psalms 79-81) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 156
+
+## 2026-09-08T20:30:00Z (bible year day writer run)
+Day: 156 — Justice and Longing for God's House (Psalms 82-84) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 157. Stopping here — two-day budget cap for this run reached.
