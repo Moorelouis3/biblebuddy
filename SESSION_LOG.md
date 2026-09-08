@@ -3650,3 +3650,7 @@ Next up: Psalms 57
 ## 2026-09-08T10:54:43Z (hourly chapter notes run)
 Chapter: Psalms 57 | Duration: 8 min | Sections: 2 | Cards: 19 | Status: pass
 Next up: Psalms 58
+
+## 2026-09-08T12:31:02Z (bible year day writer run)
+Day: 151 — Blessing for the Nations and Suffering (Psalms 67-69) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 152
