@@ -34032,6 +34032,67 @@
           "at": "2026-09-07T23:02:00Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 52,
+      "startedAt": "2026-09-08T00:47:30Z",
+      "finishedAt": "2026-09-08T00:57:13Z",
+      "durationMinutes": 9.7,
+      "sections": 3,
+      "cards": 14,
+      "verses": 9,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Ran npm install first since this was a fresh clone with no node_modules. Redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) confirmed empty, so this was normal forward progress after Psalms 51; Psalms 52 had no dedicated wired-in file, only coverage from the old-style psalmsFiftyTwoToSixtySixPersonalNotes.ts batch file. Fetched real KJV text for Psalms 52 (9 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 52 is David's response to Doeg the Edomite, the herdsman whose report to Saul led to the massacre of the priests at Nob: David names the mighty man's boasting and razor sharp deceit and sets it against God's goodness that endures regardless (1-4); he pronounces God's coming judgment on Doeg using the same uprooting language Doeg used to destroy Ahimelech's household, and contrasts the onlookers' reaction with Doeg's misplaced trust in wealth (5-7); and he closes by picturing himself as a green olive tree planted in God's house instead of uprooted, trusting God's mercy instead of riches, and committing to praise God publicly among the saints the same way Doeg used words to destroy a community, David uses words to build one up (8-9). Chunked into 3 sections (1-4, 5-7, 8-9), landing at 14 phrase cards across 9 verses (1.56 cards/verse), each following docs/bible-study-note-style.md exactly: title lifted from the KJV in title case, 4 to 6 line bodies opening with one of the four approved moves, defined terms wrapped in quotation marks matching the established convention in lib/genesisThirtyOneSource.ts and lib/psalmsFiftyOneSource.ts, exactly 4 emoji bullets ending in \ud83d\udcd6, no hyphens/em dashes/semicolons/contractions/banned filler or hedge words. python3 scripts/check_bible_note_style.py lib/psalmsFiftyTwoSource.ts came back clean with 0 problems on the first pass; on eye review against the spec's section 13 checklist, added quotation marks around several defined terms (mischief, continually, deviseth, devouring, likewise, for ever, pluck out, dwelling place, land of the living, the righteous, fear, strength, house of God, mercy, wait on thy name, saints) to match the bolded-term convention used in every reference file, then reran the checker clean again. Wired into lib/bibleReaderStudyNotes.ts: new import, extended the Psalms preserveExactPhraseBodies range from <= 51 to <= 52, added a new applyPersonalPsalmsFiftyTwoStudySections function calling replaceStudySectionsForBookRange(\"psalms\", 52, 52, PSALMS_FIFTY_TWO_PERSONAL_SECTIONS), and placed its call immediately after applyPersonalPsalmsFiftyTwoThroughSixtySixStudySections() (the old 52-66 batch call) rather than inside applyPersonalPsalmsFortyOneStudySections, since that batch call runs later in the call order and would otherwise overwrite chapter 52 back to the old style. Parser check confirmed 3 sections / 14 cards with no duplication, matching the design exactly. npx tsc --noEmit clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-08T00:47:30Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 52 (new chapter, forward progress, redo backlog empty)",
+          "at": "2026-09-08T00:47:46Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 52, 9 verses, aruljohn/Bible-kjv raw mirror)",
+          "at": "2026-09-08T00:48:08Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) in full",
+          "at": "2026-09-08T00:48:15Z"
+        },
+        {
+          "name": "reference implementation and style checker script read",
+          "at": "2026-09-08T00:52:30Z"
+        },
+        {
+          "name": "source file written: lib/psalmsFiftyTwoSource.ts (3 sections, 14 cards)",
+          "at": "2026-09-08T00:53:07Z"
+        },
+        {
+          "name": "style checker clean (0 problems, first pass)",
+          "at": "2026-09-08T00:53:10Z"
+        },
+        {
+          "name": "style checker clean after adding quoted-term convention (0 problems, final)",
+          "at": "2026-09-08T00:54:17Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies <= 52, new applyPersonalPsalmsFiftyTwoStudySections call placed after old 52-66 batch call so it wins)",
+          "at": "2026-09-08T00:54:39Z"
+        },
+        {
+          "name": "parser check passed: 3 sections / 14 cards, no duplication",
+          "at": "2026-09-08T00:55:05Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-08T00:56:34Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-08T00:57:13Z"
+        }
+      ]
     }
   ]
 }
