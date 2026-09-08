@@ -34329,6 +34329,59 @@
           "at": "2026-09-08T09:01:30Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 57,
+      "startedAt": "2026-09-08T10:46:16Z",
+      "finishedAt": "2026-09-08T10:54:43Z",
+      "durationMinutes": 8,
+      "sections": 2,
+      "cards": 19,
+      "verses": 11,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json, not present in this repo) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) both confirmed empty, so this was normal forward progress after Psalms 56, confirmed both by the wiring in lib/bibleReaderStudyNotes.ts (Psalms 1-56 all had dedicated calls, Psalms 57 did not) and by docs/BIBLE_BUDDY_NOTES_PROGRESS.md's own running note that Psalms 57 was next. Ran npm install first since this was a fresh clone with no node_modules. Fetched real KJV text for Psalms 57 (11 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 57 is David's prayer traditionally tied to hiding from Saul in a cave (per the psalm's traditional title, First Samuel 22 and 24 both record him hiding in caves from Saul), built around a refrain repeated verbatim in verse 5 and verse 11 (Be thou exalted, O God, above the heavens, let thy glory be above all the earth) that splits the psalm cleanly into two halves: a cry for mercy and refuge under the shadow of God's wings while surrounded by enemies pictured as lions with spears and swords for teeth, closing the first half by answering that danger with praise instead of fear (1-5); and a second half opening on the enemies' own trap backfiring on them, moving through David's heart being fixed and settled enough to wake his own soul and instruments to praise before dawn, praising publicly among the nations, and closing on the same exalting refrain as a deliberate bookend (6-11). Chunked into 2 sections along that refrain (1-5, 6-11), both at or under the reader's 8 verse internal section split limit, landing at 19 phrase cards across 11 verses (about 1.73 cards/verse), each following docs/bible-study-note-style.md exactly: title lifted verbatim from the KJV in title case, 4 to 6 line bodies opening with one of the four approved moves, exactly 4 emoji bullets per card ending in the scripture emoji, all 19 card titles using distinct emoji, no hyphens/em dashes/semicolons/contractions/banned filler or hedge words. python3 scripts/check_bible_note_style.py lib/psalmsFiftySevenSource.ts came back clean with 0 problems on the first pass across all 19 cards. A manual section 13 eye check confirmed every card teaches something beyond the verse text (defining reproach, Selah, performeth, psaltery, and the net/pit imagery), closes on meaning rather than mechanics, and has no duplicate or near-duplicate card titles. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/psalmsFiftySevenSource.ts, extended the Psalms preserveExactPhraseBodies range from <=56 to <=57, added a new applyPersonalPsalmsFiftySevenStudySections function calling replaceStudySectionsForBookRange(\"psalms\", 57, 57, PSALMS_FIFTY_SEVEN_PERSONAL_SECTIONS), called immediately after applyPersonalPsalmsFiftySixStudySections() and before the old 67-96 batch call, so it correctly overrides the legacy PSALMS_52_66_PERSONAL_SECTIONS bulk file for chapter 57 only, chapters 58-66 of that legacy file left untouched. Parser check via getBibleReaderStudySections('psalms', 57) confirmed 2/2 sections, 19 total cards, no duplication. npx tsc --noEmit -p . clean with zero errors. Next forward-progress target is Psalms 58.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-08T10:46:46Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 57 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-09-08T10:47:34Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 57, 11 verses, aruljohn mirror)",
+          "at": "2026-09-08T10:47:46Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-09-08T10:49:30Z"
+        },
+        {
+          "name": "source file written: lib/psalmsFiftySevenSource.ts (19 cards, 2 sections)",
+          "at": "2026-09-08T10:52:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-09-08T10:52:22Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies <=57, applyPersonalPsalmsFiftySevenStudySections)",
+          "at": "2026-09-08T10:52:45Z"
+        },
+        {
+          "name": "parser check passed (2/2 sections, 19 cards, text verbatim)",
+          "at": "2026-09-08T10:53:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-09-08T10:53:07Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-08T10:54:43Z"
+        }
+      ]
     }
   ]
 }
