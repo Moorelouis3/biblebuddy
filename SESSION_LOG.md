@@ -3702,3 +3702,7 @@ Next up: Psalms 64
 ## 2026-09-09T00:00:00Z (bible year day writer run)
 Day: 157 — Revival and Zion's Hope (Psalms 85-87) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 158
+
+## 2026-09-09T00:15:00Z (bible year day writer run)
+Day: 158 — Darkness, Covenant, and Numbering Days (Psalms 88-90) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 159. Stopping here — two-day budget cap for this run reached.
