@@ -3722,3 +3722,7 @@ Next up: Day 160
 ## 2026-09-09T04:28:53Z (bible year day writer run)
 Day: 160 — Justice and Worship (Psalms 94-96) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 161. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-09T04:59:10Z (hourly chapter notes run)
+Chapter: Psalms 66 | Duration: 12 min | Sections: 5 | Cards: 40 | Status: pass
+Next up: Psalms 67
