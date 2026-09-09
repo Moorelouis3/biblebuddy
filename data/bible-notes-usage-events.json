@@ -265,6 +265,11 @@
       "timestamp": "2026-09-04T06:52:00Z",
       "type": "environment_anomaly",
       "detail": "Same recurring stale-local-git-ref bug hit again at session start. Session started HEAD detached from refs/heads/main at 5a257b3 (Add Psalms 8 study notes), with the local main branch cached stale at ebdd3da (Add Esther 5 study notes). git fetch origin main confirmed origin/main had since force updated forward to 5a257b3, matching the detached HEAD exactly, so this was a stale local cache, not real divergence. Resolved cleanly via git checkout -B main origin/main before touching any chapter files, nothing lost."
+    },
+    {
+      "timestamp": "2026-09-09T00:47:40Z",
+      "type": "environment_anomaly",
+      "detail": "Recurring stale-local-git-ref bug, worse variant this time: session started HEAD detached from refs/heads/main at 44c5a8e (Add Bible in One Year Day 158 script). git checkout main landed on a local main branch that was not just stale but had a completely different, unrelated 50-commit history from origin/main (local tip a4cebb3 Add Bible in One Year Day 108 script, oldest commit 6237fb9 Job 40; origin/main tip 44c5a8e, oldest commit in its own last-50 558a744 Psalms 45), so git merge-base main origin/main found no common ancestor at all and git pull refused with a divergent-branches error. Working tree was clean (git status confirmed before touching anything), so resolved with git reset --hard origin/main to align local main with the verified remote tip, no data lost since nothing was uncommitted and origin/main is the source of truth. Logging per the standing instruction to track every occurrence of this environment anomaly, even though it did not block or delay chapter work this run."
     }
   ]
 }

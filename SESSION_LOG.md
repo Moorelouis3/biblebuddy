@@ -3706,3 +3706,7 @@ Next up: Day 158
 ## 2026-09-09T00:15:00Z (bible year day writer run)
 Day: 158 — Darkness, Covenant, and Numbering Days (Psalms 88-90) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 159. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-09T00:54:40Z (hourly chapter notes run)
+Chapter: Psalms 64 | Duration: 7 min | Sections: 3 | Cards: 22 | Status: pass
+Next up: Psalms 65
