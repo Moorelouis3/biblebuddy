@@ -3714,3 +3714,7 @@ Next up: Psalms 65
 ## 2026-09-09T02:55:26Z (hourly chapter notes run)
 Chapter: Psalms 65 | Duration: 9 min | Sections: 3 | Cards: 29 | Status: pass
 Next up: Psalms 66
+
+## 2026-09-09T04:26:46Z (bible year day writer run)
+Day: 159 — Refuge and the Lord Reigns (Psalms 91-93) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 160
