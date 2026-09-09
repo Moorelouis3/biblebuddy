@@ -3734,3 +3734,12 @@ Next up: Psalms 68
 ## 2026-09-09T08:27:29Z (bible year day writer run)
 Day: 161 — The Holy King Reigns (Psalms 97-99) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 162. Stopping here — Louis asked to pause the Bible in One Year day writer until he says continue.
+
+## 2026-09-09T09:30:00Z (bible year day writer run)
+Skipped: found Louis's pause request in the Day 161 entry above (pause
+the Bible in One Year day writer until he says continue). Drafted Day 162
+(Psalms 100-102) to be ready, then reverted it uncommitted rather than
+shipping it, since the pause is still in effect. Flagged in
+MARCUS_HANDOFF.md that the schedule itself should be disabled until Louis
+resumes it, rather than relying on each run to notice the pause by hand.
+Next up: Day 162, whenever Louis says continue.

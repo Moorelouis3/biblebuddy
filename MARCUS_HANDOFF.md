@@ -1,3 +1,16 @@
+## Bible in One Year day writer's schedule fired despite Louis's pause request
+The Day 161 run (2026-09-09T08:27:29Z) logged in SESSION_LOG.md that Louis
+asked to pause the Bible in One Year day writer until he says continue.
+Today's scheduled trigger fired anyway (the stored prompt has no way to know
+about a pause requested after it was written) and started Day 162 before
+this run caught the pause note in SESSION_LOG.md, drafted the Day 162
+script, and reverted it uncommitted rather than shipping it. Nothing was
+committed or pushed. The routine's schedule itself needs to be disabled (or
+told the pause is in effect) at the trigger/environment level so it stops
+firing until Louis actually says continue — a future run relying on catching
+this by hand in SESSION_LOG.md is not a reliable substitute for pausing the
+schedule.
+
 ## Stale local main recurred again (2026-09-08, Psalms 59 run) — unrelated-history variant, still unfixed at the environment level
 Same root cause as every entry below, but the more serious variant: this
 run's fresh container had local `main` at `a4cebb3` (Bible in One Year Day
