@@ -2296,7 +2296,10 @@ function getTrafficSourceForLandingEvent(row: LandingEventRow) {
 }
 
 function getLandingEventPagePath(row: LandingEventRow) {
-  return row.page_path || getLandingMetadataText(row.metadata, ["page_path", "pathname", "path", "landing_path", "url", "landing_url"]) || "/";
+  const raw = row.page_path || getLandingMetadataText(row.metadata, ["page_path", "pathname", "path", "landing_path", "url", "landing_url"]) || "/";
+  // Tracking parameters (utm_*, fbclid, ...) are machine junk glued on by
+  // the referring app - nobody reading the dashboard should ever see them.
+  return raw.split("?")[0].replace(/\/{2,}/g, "/") || "/";
 }
 
 function getLandingEventReferrer(row: LandingEventRow) {
@@ -2400,7 +2403,10 @@ function summarizeTrafficSources(rows: LandingEventRow[], blogVisits: BlogVisitR
     const referrer = typeof visit.referrer === "string" ? visit.referrer.trim() : "";
     if (referrer && isInternalReferrer(referrer)) continue;
     const source = normalizeTrafficSourceLabel("", referrer, "");
-    const pagePath = `/blog/${visit.article_slug || ""}`;
+    // article_slug sometimes stores a full legacy path ("/bible-study-hub/...")
+    // rather than a bare slug - prefixing those produced "/blog//blog/..".
+    const slug = visit.article_slug || "";
+    const pagePath = slug.startsWith("/") ? slug : `/blog/${slug}`;
     sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
     viaBlogCounts.set(source, (viaBlogCounts.get(source) || 0) + 1);
     if (!visitorsBySource.has(source)) visitorsBySource.set(source, []);
@@ -2513,7 +2519,7 @@ function summarizeTrafficSources(rows: LandingEventRow[], blogVisits: BlogVisitR
         percent: percent(visitors, totalVisitors),
         visitorRows: rowsForSource
           .sort((a, b) => (b.firstSeenAt || "").localeCompare(a.firstSeenAt || ""))
-          .slice(0, 100),
+          .slice(0, 300),
         signupRows: (signupsBySource.get(source) || [])
           .sort((a, b) => (b.signedUpAt || "").localeCompare(a.signedUpAt || ""))
           .slice(0, 100),

@@ -4929,6 +4929,41 @@ function TrafficSourceSummaryCard({
   );
 }
 
+// Turn raw referrer URLs and paths into words a human reads. Nobody should
+// ever see "m.facebook.com" or "/?utm_source=commenter-threads&fbclid=..."
+// on this page - that is machine junk from the referring app.
+function friendlyReferrerLabel(referrer: string | null | undefined) {
+  if (!referrer) return "typed the address or used a saved icon";
+  let host = referrer;
+  try {
+    host = new URL(referrer).hostname.replace(/^www\./, "");
+  } catch {
+    // keep raw
+  }
+  if (host === "m.facebook.com") return "Facebook (mobile app)";
+  if (host.endsWith("facebook.com")) return "Facebook";
+  if (host.endsWith("instagram.com")) return "Instagram";
+  if (host.includes("threads")) return "Threads";
+  if (host.endsWith("pinterest.com") || host === "pin.it") return "Pinterest";
+  if (host.endsWith("youtube.com") || host === "youtu.be") return "YouTube";
+  if (host.includes("google")) return "Google";
+  if (host === "t.co" || host.endsWith("twitter.com") || host.endsWith("x.com")) return "X (Twitter)";
+  if (host.endsWith("tiktok.com")) return "TikTok";
+  return host;
+}
+
+function friendlyPageLabel(path: string | null | undefined) {
+  const clean = (path || "/").split("?")[0].replace(/\/{2,}/g, "/") || "/";
+  if (clean === "/") return "the landing page";
+  if (clean.startsWith("/start")) return "the Start Studying page";
+  if (clean.startsWith("/signup")) return "the signup page";
+  const parts = clean.split("/").filter(Boolean);
+  if (["blog", "bible-study-hub", "bible-study-tips"].includes(parts[0] || "")) {
+    return `the blog post "${(parts[parts.length - 1] || "").replace(/-/g, " ")}"`;
+  }
+  return clean;
+}
+
 function TrafficSourcesAnalyticsSection({
   report,
   loading,
@@ -4946,6 +4981,7 @@ function TrafficSourcesAnalyticsSection({
   // studying, ...). Louis, 2026-09-09: "I need to know what these people
   // are doing."
   const [expandedSource, setExpandedSource] = useState<string | null>(null);
+  const [showAllVisitors, setShowAllVisitors] = useState<Record<string, boolean>>({});
   const [journeys, setJourneys] = useState<Record<string, { loading: boolean; error?: string; steps?: Array<{ at: string; label: string; detail: string | null; link: string | null }>; visitorLabel?: string; becameUser?: boolean }>>({});
 
   async function loadJourney(actorId: string) {
@@ -5098,7 +5134,7 @@ function TrafficSourcesAnalyticsSection({
                           <span className="font-black text-[var(--bb-text-primary,#101827)]">{source.source}</span>
                           {source.viaBlog > 0 ? (
                             <p className="text-[11px] font-bold text-[var(--bb-text-secondary,#94a3b8)]">
-                              {formatNumber(source.viaBlog)} came in through the blog
+                              {formatNumber(Math.max(0, source.visitors - source.viaBlog))} → landing page · {formatNumber(source.viaBlog)} → blog
                             </p>
                           ) : null}
                           {source.source === "Other" && source.topReferrers.length ? (
@@ -5141,31 +5177,33 @@ function TrafficSourcesAnalyticsSection({
                           </p>
                         ) : (
                           <div className="space-y-2">
-                            {source.visitorRows.slice(0, 12).map((visitor) => {
+                            {source.visitorRows
+                              .slice(0, showAllVisitors[source.source] ? undefined : 15)
+                              .map((visitor) => {
                               const journey = journeys[visitor.actorId];
+                              const referrerLabel = friendlyReferrerLabel(visitor.referrer);
                               return (
                                 <div key={`${visitor.actorId}-${visitor.firstSeenAt}`} className="rounded-xl border border-[var(--bb-card-border,#e2e8f0)] bg-white p-3">
                                   <div className="flex flex-wrap items-center gap-2 text-xs font-bold">
-                                    <span className="font-black text-[var(--bb-text-primary,#101827)]">{visitor.visitorLabel}</span>
+                                    <span className="text-sm font-semibold text-[var(--bb-text-primary,#101827)]">
+                                      Came from{" "}
+                                      {visitor.referrer ? (
+                                        <a
+                                          href={visitor.referrer}
+                                          target="_blank"
+                                          rel="noreferrer"
+                                          onClick={(event) => event.stopPropagation()}
+                                          className="font-black text-blue-600 underline"
+                                        >
+                                          {referrerLabel}
+                                        </a>
+                                      ) : (
+                                        <span className="font-black">{referrerLabel}</span>
+                                      )}
+                                      {" → "}
+                                      <span className="font-black">{friendlyPageLabel(visitor.pagePath)}</span>
+                                    </span>
                                     <span className="text-[var(--bb-text-secondary,#94a3b8)]">{relativeTimeFromNow(visitor.firstSeenAt)}</span>
-                                    {(visitor as { via?: string }).via === "blog" ? (
-                                      <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-black text-blue-700">via blog</span>
-                                    ) : null}
-                                    {visitor.referrer ? (
-                                      <a
-                                        href={visitor.referrer}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        onClick={(event) => event.stopPropagation()}
-                                        className="truncate text-blue-600 underline"
-                                        style={{ maxWidth: 260 }}
-                                      >
-                                        {visitor.referrer.replace(/^https?:\/\/(www\.)?/, "").slice(0, 60)}
-                                      </a>
-                                    ) : (
-                                      <span className="text-[var(--bb-text-secondary,#94a3b8)]">no referrer</span>
-                                    )}
-                                    <span className="text-[var(--bb-text-secondary,#94a3b8)]">landed on {visitor.pagePath}</span>
                                     <button
                                       type="button"
                                       onClick={(event) => {
@@ -5174,7 +5212,7 @@ function TrafficSourcesAnalyticsSection({
                                       }}
                                       className="ml-auto rounded-lg bg-[#0056fd] px-3 py-1 text-[11px] font-black text-white"
                                     >
-                                      {journey?.steps ? "Hide journey" : journey?.loading ? "Loading..." : "Journey →"}
+                                      {journey?.steps ? "Hide journey" : journey?.loading ? "Loading..." : "What did they do? →"}
                                     </button>
                                   </div>
                                   {journey?.error ? (
@@ -5190,7 +5228,9 @@ function TrafficSourcesAnalyticsSection({
                                             <span className="ml-1 text-[var(--bb-text-secondary,#94a3b8)]">
                                               {step.link ? (
                                                 <a href={step.link} target="_blank" rel="noreferrer" className="underline" onClick={(event) => event.stopPropagation()}>
-                                                  {step.detail.slice(0, 70)}
+                                                  {step.detail.startsWith("came from ")
+                                                    ? `came from ${friendlyReferrerLabel(step.link)}`
+                                                    : step.detail.slice(0, 70)}
                                                 </a>
                                               ) : (
                                                 step.detail.slice(0, 70)
@@ -5213,6 +5253,23 @@ function TrafficSourcesAnalyticsSection({
                                 </div>
                               );
                             })}
+                            {source.visitorRows.length > 15 && !showAllVisitors[source.source] ? (
+                              <button
+                                type="button"
+                                onClick={(event) => {
+                                  event.stopPropagation();
+                                  setShowAllVisitors((prev) => ({ ...prev, [source.source]: true }));
+                                }}
+                                className="w-full rounded-xl border border-[var(--bb-card-border,#e2e8f0)] bg-white py-2 text-sm font-black text-blue-600"
+                              >
+                                Show all {source.visitorRows.length} visitors
+                              </button>
+                            ) : null}
+                            {source.visitors > source.visitorRows.length ? (
+                              <p className="text-[11px] font-semibold text-[var(--bb-text-secondary,#94a3b8)]">
+                                Showing the {source.visitorRows.length} most recent of {formatNumber(source.visitors)} visitors in this timeframe.
+                              </p>
+                            ) : null}
                           </div>
                         )}
                       </td>

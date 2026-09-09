@@ -151,10 +151,11 @@ export async function GET(request: NextRequest) {
       const at = row.created_at || "";
       if (row.event_name === "landing_page_visit" || row.event_name === "landing_page_visited") {
         const referrer = row.referrer || metadataText(row.metadata, ["referrer", "document_referrer", "initial_referrer"]);
+        const cleanPath = (row.page_path || "/").split("?")[0].replace(/\/{2,}/g, "/") || "/";
         steps.push({
           at,
-          label: `Arrived on ${row.page_path || "the landing page"}`,
-          detail: referrer ? `came from ${referrer}` : "no referrer (direct)",
+          label: cleanPath === "/" ? "Arrived on the landing page" : `Arrived on ${cleanPath}`,
+          detail: referrer ? `came from ${referrer}` : "typed the address / no referrer",
           link: referrer || null,
         });
       } else if (row.event_name === "video_played") {
@@ -170,11 +171,15 @@ export async function GET(request: NextRequest) {
       }
     }
     for (const row of blogRows) {
+      // article_slug may be a bare slug or a full legacy path.
+      const rawSlug = row.article_slug || "unknown";
+      const path = rawSlug.startsWith("/") ? rawSlug : `/blog/${rawSlug}`;
+      const postName = (path.split("/").filter(Boolean).pop() || "unknown").replace(/-/g, " ");
       steps.push({
         at: row.created_at || "",
-        label: `Read blog post: ${row.article_slug || "unknown"}`,
+        label: `Read blog post: ${postName}`,
         detail: row.referrer && !/mybiblebuddy/i.test(row.referrer) ? `came from ${row.referrer}` : null,
-        link: `https://www.mybiblebuddy.net/blog/${row.article_slug || ""}`,
+        link: `https://www.mybiblebuddy.net${path}`,
       });
     }
     for (const row of actionRows) {
