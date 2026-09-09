@@ -3743,3 +3743,12 @@ shipping it, since the pause is still in effect. Flagged in
 MARCUS_HANDOFF.md that the schedule itself should be disabled until Louis
 resumes it, rather than relying on each run to notice the pause by hand.
 Next up: Day 162, whenever Louis says continue.
+
+## 2026-09-09T09:45:00Z (bible year day writer run)
+Checked before writing anything: Louis's pause request (logged in the Day
+161 entry and reconfirmed by the previous run) is still in effect — no
+"continue" from Louis anywhere since. Stood down again, wrote nothing.
+Also fixed the recurring stale-local-`main` ref bug (local `main` was
+cached at the old Day 108 tip; `origin/main` and detached HEAD already
+matched at the true current tip, so `git checkout -B main origin/main`
+was a clean, lossless fix). Next up: Day 162, whenever Louis says continue.
