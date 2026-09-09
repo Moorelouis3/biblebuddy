@@ -2250,6 +2250,18 @@ function normalizeTrafficSourceLabel(sourceValue: unknown, referrerValue?: unkno
   // from signup_first_touch_source.
   if (source.toLowerCase() === "blog" || source.toLowerCase().startsWith("blog:")) return "Blog";
 
+  // Email, checked before everything else. Systeme.io rewrites every link in
+  // our funnel emails for click tracking, which strips utm_source=email and
+  // leaves only its own ?sc=<hash> - so those arrivals were landing in
+  // Direct. And a tap from the Gmail app refers as android-app://
+  // com.google.android.gm, which the Google rule below was swallowing as
+  // search traffic. Both are email clicks (2026-09-09).
+  if (/[?&]sc=/.test(pagePath) || combined.includes("systeme.io")) return "Email";
+  if (/android-app:\/\/com\.google\.android\.gm|android-app:\/\/com\.(microsoft\.office\.outlook|yahoo\.mobile\.client\.android\.mail)|mail\.google\.com|outlook\.(live|office)\.com|mail\.yahoo\.com/.test(combined)) {
+    return "Email";
+  }
+  if (combined.includes("utm_source=email") || combined.includes("utm_medium=email")) return "Email";
+
   if (combined.includes("facebook") || combined.includes("fbclid") || combined.includes("fb.") || /\bfb\b/.test(combined)) return "Facebook";
   if (combined.includes("instagram") || combined.includes("igshid") || /\big\b/.test(combined)) return "Instagram";
   if (combined.includes("threads")) return "Threads";

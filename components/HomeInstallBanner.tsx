@@ -141,6 +141,29 @@ export function reconcileInstallPromptState(dbState: string | null) {
   }
 }
 
+/**
+ * Shared "the app got installed" bookkeeping for surfaces outside this
+ * banner (the post-day-completion install ask in AppShell): local state,
+ * the profile columns, and the once-per-device analytics event.
+ */
+export function recordAppInstalled(source: string) {
+  writeLocalInstallState("installed");
+  void writeInstallPromptColumns({ install_prompt_state: "installed" });
+  if (claimInstallEventLog()) {
+    void logInstallBannerEvent("install_banner_installed", "App installed", { source });
+  }
+  try {
+    window.dispatchEvent(new CustomEvent(SYNC_EVENT));
+  } catch {
+    // ignore
+  }
+}
+
+/** Throttle bookkeeping for non-banner install asks. */
+export function recordInstallAskShown() {
+  void writeInstallPromptColumns({ install_prompt_last_shown: new Date().toISOString() });
+}
+
 export default function HomeInstallBanner() {
   const [visible, setVisible] = useState<boolean>(() => shouldShowInstallBanner());
   const [sheetOpen, setSheetOpen] = useState(false);

@@ -10,6 +10,10 @@ import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 // Side-effect import: registers the beforeinstallprompt/appinstalled listeners
 // at bundle load, before React hydrates, so the early Chrome event isn't missed.
 import "../hooks/useInstallPrompt";
+import { clearCapturedInstallPrompt, useInstallPrompt } from "../hooks/useInstallPrompt";
+import { recordAppInstalled, recordInstallAskShown, shouldShowInstallBanner } from "./HomeInstallBanner";
+import { getInstallEnvironment } from "../lib/installEnvironment";
+import InstallIOSSheet from "./InstallIOSSheet";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
@@ -629,6 +633,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // reading is the moment the daily reminder is an easy yes. Re-asks at
   // most every few days, even if the bell-dropdown prompt was dismissed.
   const [completionPushDay, setCompletionPushDay] = useState<number | null>(null);
+  // Post-completion "put Bible Buddy on your phone" ask (2026-09-09): only
+  // ~1 in 10 users has the icon installed, and the ones without it mostly
+  // never find their way back - the biggest retention leak. One prompt per
+  // completion at most: push reminder first if eligible, else this.
+  const [completionInstallDay, setCompletionInstallDay] = useState<number | null>(null);
+  const [completionInstallSheetOpen, setCompletionInstallSheetOpen] = useState(false);
+  const [completionInstallBlocked, setCompletionInstallBlocked] = useState<string | null>(null);
+  const { promptEvent: installPromptEvent } = useInstallPrompt();
   const [pushPromptClosing, setPushPromptClosing] = useState(false);
   const [headerCurrentLevel, setHeaderCurrentLevel] = useState<number>(1);
   const [headerCurrentStreak, setHeaderCurrentStreak] = useState<number>(0);
@@ -1686,18 +1698,40 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setShowPushPrompt(!dismissed && !enabled);
   }, [pushSupported, pushPermission, pushSubscribed, userId]);
 
-  // Finishing a day's reading -> offer the daily reminder (throttled).
+  // Finishing a day's reading is the easy-yes moment. ONE ask per
+  // completion, in priority order: the push reminder (when eligible),
+  // otherwise the Add to Home Screen ask - the icon on the phone is what
+  // separates the users who come back from the ones who google their way
+  // back or never return. Both are throttled to once every 3 days.
   useEffect(() => {
-    if (!pushSupported || !userId || typeof window === "undefined") return;
+    if (!userId || typeof window === "undefined") return;
 
     function onDayCompleted(event: Event) {
-      const detail = (event as CustomEvent).detail as { nextDay?: number } | undefined;
-      if (pushPermission === "granted" && pushSubscribed) return;
-      const throttleKey = `bb:push-completion-asked:${userId}`;
-      const lastAsked = Number(window.localStorage.getItem(throttleKey) || 0);
-      if (Date.now() - lastAsked < 3 * 24 * 60 * 60 * 1000) return;
-      window.localStorage.setItem(throttleKey, String(Date.now()));
-      setCompletionPushDay(detail?.nextDay ?? null);
+      const detail = (event as CustomEvent).detail as { nextDay?: number; completedDay?: number } | undefined;
+
+      if (pushSupported && !(pushPermission === "granted" && pushSubscribed)) {
+        const throttleKey = `bb:push-completion-asked:${userId}`;
+        const lastAsked = Number(window.localStorage.getItem(throttleKey) || 0);
+        if (Date.now() - lastAsked >= 3 * 24 * 60 * 60 * 1000) {
+          window.localStorage.setItem(throttleKey, String(Date.now()));
+          setCompletionPushDay(detail?.nextDay ?? null);
+          return;
+        }
+      }
+
+      // Push settled (enabled, unsupported, or recently asked) -> install ask.
+      try {
+        if (!shouldShowInstallBanner()) return;
+      } catch {
+        return;
+      }
+      const installKey = `bb:install-completion-asked:${userId}`;
+      const lastInstallAsk = Number(window.localStorage.getItem(installKey) || 0);
+      if (Date.now() - lastInstallAsk < 3 * 24 * 60 * 60 * 1000) return;
+      window.localStorage.setItem(installKey, String(Date.now()));
+      recordInstallAskShown();
+      setCompletionInstallBlocked(null);
+      setCompletionInstallDay(detail?.completedDay ?? null);
     }
 
     window.addEventListener("bb:bible-day-completed", onDayCompleted);
@@ -3629,6 +3663,68 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       )}
+
+      {/* POST-COMPLETION INSTALL ASK — the icon on the phone is the way back */}
+      {completionInstallDay !== null && (
+        <div className="fixed inset-0 z-[10001] flex items-center justify-center bg-black/60 px-6" role="dialog" aria-modal="true" aria-label="Add to home screen">
+          <div className="w-full max-w-sm rounded-[28px] bg-white p-6 text-center shadow-2xl">
+            <div className="text-4xl" aria-hidden>📱</div>
+            <h2 className="mt-2 text-xl font-black text-gray-950">
+              {completionInstallDay ? `Day ${completionInstallDay} done - nice work!` : "Reading done - nice work!"}
+            </h2>
+            <p className="mt-2 text-sm font-semibold text-gray-600">
+              {completionInstallBlocked ||
+                "Put Bible Buddy on your phone so tomorrow is one tap away - no searching, no typing, just your icon."}
+            </p>
+            {!completionInstallBlocked ? (
+              <button
+                type="button"
+                onClick={async () => {
+                  const env = getInstallEnvironment();
+                  if (env.isInAppBrowser) {
+                    setCompletionInstallBlocked(
+                      "This in-app browser can't install apps. Open mybiblebuddy.net in Safari or Chrome, then tap Add to Home Screen.",
+                    );
+                    return;
+                  }
+                  if (env.isIOS) {
+                    setCompletionInstallDay(null);
+                    setCompletionInstallSheetOpen(true);
+                    return;
+                  }
+                  if (installPromptEvent) {
+                    try {
+                      await installPromptEvent.prompt();
+                      const choice = await installPromptEvent.userChoice;
+                      clearCapturedInstallPrompt();
+                      if (choice.outcome === "accepted") {
+                        recordAppInstalled("completion_prompt_accepted");
+                      }
+                    } catch {
+                      clearCapturedInstallPrompt();
+                    }
+                    setCompletionInstallDay(null);
+                    return;
+                  }
+                  setCompletionInstallBlocked("Install isn't available in this browser. Open Bible Buddy in Chrome to add it to your home screen.");
+                }}
+                className="mt-4 w-full rounded-2xl px-5 py-3 text-sm font-black transition hover:opacity-90"
+                style={{ backgroundColor: "var(--bb-button, #2f7fe8)", color: "var(--bb-button-text, #ffffff)" }}
+              >
+                Add to Home Screen
+              </button>
+            ) : null}
+            <button
+              type="button"
+              onClick={() => setCompletionInstallDay(null)}
+              className="mt-2 w-full rounded-2xl px-5 py-2.5 text-sm font-bold text-gray-500 transition hover:text-gray-700"
+            >
+              {completionInstallBlocked ? "Got it" : "Not now"}
+            </button>
+          </div>
+        </div>
+      )}
+      <InstallIOSSheet isOpen={completionInstallSheetOpen} onClose={() => setCompletionInstallSheetOpen(false)} />
         </>
       )}
     </FeatureRenderPriorityProvider>
