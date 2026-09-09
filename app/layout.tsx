@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: siteUrl.toString(),
+    // Lets browsers, Feedly and other readers auto-discover the blog feed.
+    types: {
+      "application/rss+xml": [{ url: "/feed.xml", title: "Bible Buddy Blog" }],
+    },
   },
   icons: {
     icon: "/TherealiconforBB.png",

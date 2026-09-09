@@ -2,11 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Children, cloneElement, isValidElement, type ReactElement, type ReactNode } from "react";
 import BlogPostingSchema from "@/components/BlogPostingSchema";
+import RelatedPosts from "./RelatedPosts";
+import BlogAuthorBox from "./BlogAuthorBox";
 import BlogPostBreaker from "@/components/blog/BlogPostBreaker";
 import BlogPostBottom from "@/components/blog/BlogPostBottom";
 import BlogTopNav from "@/components/blog/BlogTopNav";
 import PromoSlot from "@/components/blog/PromoSlot";
 import { getArticleEngagementKey, getBlogArticle } from "@/lib/blogContent";
+
+const SITE_URL = "https://www.mybiblebuddy.net";
 
 // Words inside a rendered node, counting text children and the text prop
 // that VerseQuote-style components take. Used to space promo slots.
@@ -158,16 +162,15 @@ function leadingEmoji(text: string) {
 }
 
 /**
- * Turn each H2 section into a collapsible card.
+ * Turn each H2 section into a card - always open, never collapsed.
  *
- * The app shows a devotional as a stack of day cards you open one at a
- * time; a post reads the same way instead of as one long scroll. Native
- * <details> does the opening, so there is no JavaScript, nothing to
- * hydrate, and the whole article is still in the HTML for search engines
- * — the collapsed sections are hidden by the browser, not withheld.
- *
- * Open by default: the first section (so the page never looks empty), the
- * FAQ (its answers earn the rich result), and the closing CTA.
+ * These were <details> cards you tapped open one at a time, mirroring the
+ * devotional day stack. Louis, 2026-09-09: the blog is the funnel now, so
+ * every post reads as one flat scroll. (The collapsed version was already
+ * fully crawlable - native <details> keeps its text in the HTML - but a
+ * reader arriving from Google should never have to tap to start reading,
+ * and bounce is what actually costs rankings.) The card framing stays:
+ * the heading row with its emoji, body below.
  */
 function toSectionCards(children: ReactNode): ReactNode[] {
   const out: ReactNode[] = [];
@@ -183,18 +186,14 @@ function toSectionCards(children: ReactNode): ReactNode[] {
     const headingText = textContent(heading);
     const label = cleanHeadingLabel(headingText);
     const icon = leadingEmoji(headingText);
-    const isFaq = /frequently asked questions/i.test(headingText);
-    const isCta = /keep growing/i.test(headingText);
-    const isFirst = sectionIndex === 0;
     sectionIndex += 1;
 
     return (
-      <details
+      <section
         key={heading.props.id || label || `section-${sectionIndex}`}
-        open={isFirst || isFaq || isCta}
-        className="group mt-3 overflow-hidden rounded-[24px] border border-[#DCE8FF] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
+        className="mt-3 overflow-hidden rounded-[24px] border border-[#DCE8FF] bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]"
       >
-        <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-4 transition hover:bg-[#f7faff] [&::-webkit-details-marker]:hidden">
+        <div className="flex items-center gap-3 px-4 pb-3 pt-4">
           {icon ? (
             <span aria-hidden="true" className="grid h-10 w-10 shrink-0 place-items-center rounded-[14px] bg-[#eaf2ff] text-xl">
               {icon}
@@ -204,21 +203,9 @@ function toSectionCards(children: ReactNode): ReactNode[] {
             className: "min-w-0 flex-1 text-lg font-black leading-snug tracking-tight text-slate-950 sm:text-xl",
             children: label,
           })}
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-            className="h-5 w-5 shrink-0 text-[#0056fd] transition-transform group-open:rotate-180"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="m6 9 6 6 6-6" />
-          </svg>
-        </summary>
-        <div className="border-t border-[#eef3fb] px-4 pb-5 pt-1">{body}</div>
-      </details>
+        </div>
+        <div className="border-t border-[#eef3fb] px-4 pb-5 pt-3">{body}</div>
+      </section>
     );
   }
 
@@ -357,7 +344,33 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
             }}
           />
         ) : null}
+
+        {/* BreadcrumbList: turns the bare URL in a Google result into
+            "Bible Buddy > Character Studies > Who Was Jezebel", which is
+            both clearer and measurably better for click-through. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Blog", item: `${SITE_URL}/blog` },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: article.category,
+                  item: `${SITE_URL}/blog/category/${article.categorySlug}`,
+                },
+                { "@type": "ListItem", position: 3, name: article.title, item: `${SITE_URL}${path}` },
+              ],
+            }),
+          }}
+        />
       </article>
+
+      <BlogAuthorBox />
+      <RelatedPosts slug={article.slug} />
 
       <BlogPostBottom articleSlug={engagementKey} postSlug={article.slug} />
     </div>
