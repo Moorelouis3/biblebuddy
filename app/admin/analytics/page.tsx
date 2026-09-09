@@ -476,6 +476,9 @@ type AnalyticsResponse = {
     sources: Array<{
       source: string;
       visitors: number;
+      viaBlog?: number;
+      viaLanding?: number;
+      topReferrers?: Array<{ host: string; count: number }>;
       signups: number;
       signupRate: number;
       percent: number;
@@ -738,9 +741,24 @@ const TRAFFIC_SOURCE_COLORS = [
   "from-slate-500/14 to-slate-400/8 text-slate-700 ring-slate-200",
 ];
 
-const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "YouTube", "Blog", "Email", "Other"] as const;
+// Channels only - places people come FROM. The blog is one of our own pages,
+// so it is never a source row; blog arrivals count under the channel that
+// brought them there, with a "via blog" note on the row. Direct = typed the
+// address / saved icon / app that hides the referrer.
+const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "YouTube", "TikTok", "Email", "Direct", "Other"] as const;
 
 const TRAFFIC_SOURCE_BRAND: Record<string, { bg: string; fg: string; bar: string; icon: ReactNode }> = {
+  Direct: {
+    bg: "#475569",
+    fg: "#ffffff",
+    bar: "#475569",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+        <path d="M12 3v18" />
+        <path d="m6 9 6-6 6 6" />
+      </svg>
+    ),
+  },
   Blog: {
     bg: "#0056fd",
     fg: "#ffffff",
@@ -848,6 +866,8 @@ type MainTrafficSourceSignupRow = NonNullable<MainTrafficSourceReport["sources"]
 type NormalizedMainTrafficSourceRow = {
   source: string;
   visitors: number;
+  viaBlog: number;
+  topReferrers: Array<{ host: string; count: number }>;
   signups: number;
   signupRate: number;
   percent: number;
@@ -857,14 +877,19 @@ type NormalizedMainTrafficSourceRow = {
 
 function normalizeMainTrafficSource(sourceValue: unknown) {
   const raw = typeof sourceValue === "string" ? sourceValue.trim().toLowerCase() : "";
-  if (raw === "blog" || raw.startsWith("blog:")) return "Blog";
+  // "Blog" from older data means "converted through the blog, channel
+  // unknown" - the blog is our own page, not a channel, so it lands in
+  // Direct rather than pretending to be a place people come from.
+  if (raw === "blog" || raw.startsWith("blog:")) return "Direct";
   if (raw.includes("facebook") || raw.includes("fbclid") || raw.includes("fb.") || raw === "fb") return "Facebook";
   if (raw.includes("instagram") || raw.includes("igshid") || raw === "ig") return "Instagram";
   if (raw.includes("threads")) return "Threads";
   if (raw.includes("pinterest") || raw.includes("pin.it")) return "Pinterest";
   if (raw.includes("youtube") || raw.includes("youtu.be") || raw.includes("youtu")) return "YouTube";
   if (raw.includes("google") || raw.includes("gclid")) return "Google";
+  if (raw.includes("tiktok")) return "TikTok";
   if (raw.includes("utm_source=email") || /\bemail\b/.test(raw)) return "Email";
+  if (raw === "direct") return "Direct";
   return "Other";
 }
 
@@ -875,6 +900,8 @@ function getNormalizedMainTrafficSources(report?: AnalyticsResponse["trafficSour
     buckets.set(source, {
       source,
       visitors: 0,
+      viaBlog: 0,
+      topReferrers: [],
       signups: 0,
       signupRate: 0,
       percent: 0,
@@ -888,6 +915,8 @@ function getNormalizedMainTrafficSources(report?: AnalyticsResponse["trafficSour
     const current = buckets.get(source) || {
       source,
       visitors: 0,
+      viaBlog: 0,
+      topReferrers: [],
       signups: 0,
       signupRate: 0,
       percent: 0,
@@ -897,6 +926,8 @@ function getNormalizedMainTrafficSources(report?: AnalyticsResponse["trafficSour
     buckets.set(source, {
       ...current,
       visitors: current.visitors + Number(row.visitors || 0),
+      viaBlog: current.viaBlog + Number(row.viaBlog || 0),
+      topReferrers: [...current.topReferrers, ...(row.topReferrers || [])].slice(0, 3),
       signups: current.signups + Number(row.signups || 0),
       visitorRows: [...current.visitorRows, ...(row.visitorRows || [])].slice(0, 100),
       signupRows: [...current.signupRows, ...(row.signupRows || [])].slice(0, 100),
@@ -4978,7 +5009,7 @@ function TrafficSourcesAnalyticsSection({
         />
         <TrafficSourceSummaryCard
           icon={<Icon name="user" />}
-          title="Total Sign-ups"
+          title="New Users"
           value={totalSignups}
           points={signupTrend}
           color="#059669"
@@ -5008,7 +5039,7 @@ function TrafficSourcesAnalyticsSection({
                 <th className="pb-3 pr-3 font-black">Source</th>
                 <th className="px-3 pb-3 font-black">% of Visitors</th>
                 <th className="px-3 pb-3 text-right font-black">Visitors</th>
-                <th className="px-3 pb-3 text-right font-black">Sign-ups</th>
+                <th className="px-3 pb-3 text-right font-black">New Users</th>
                 <th className="pb-3 pl-3 text-right font-black">Conversion Rate</th>
               </tr>
             </thead>
@@ -5029,7 +5060,19 @@ function TrafficSourcesAnalyticsSection({
                         >
                           {brand.icon}
                         </span>
-                        <span className="font-black text-[var(--bb-text-primary,#101827)]">{source.source}</span>
+                        <div className="min-w-0">
+                          <span className="font-black text-[var(--bb-text-primary,#101827)]">{source.source}</span>
+                          {source.viaBlog > 0 ? (
+                            <p className="text-[11px] font-bold text-[var(--bb-text-secondary,#94a3b8)]">
+                              {formatNumber(source.viaBlog)} came in through the blog
+                            </p>
+                          ) : null}
+                          {source.source === "Other" && source.topReferrers.length ? (
+                            <p className="truncate text-[11px] font-bold text-[var(--bb-text-secondary,#94a3b8)]">
+                              from {source.topReferrers.map((referrer) => referrer.host).join(", ")}
+                            </p>
+                          ) : null}
+                        </div>
                       </div>
                     </td>
                     <td className="px-3 py-3">
@@ -5131,7 +5174,7 @@ function TrafficSourcesAnalyticsSection({
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-black text-[var(--bb-text-primary,#101827)]">
-                      {row.source === "Other" ? "Visited Direct" : `Visited from ${row.source}`}
+                      {row.source === "Direct" ? "Visited directly" : `Visited from ${row.source}`}
                     </p>
                     <p className="truncate text-xs font-semibold text-[var(--bb-text-secondary,#94a3b8)]">mybiblebuddy.net</p>
                   </div>

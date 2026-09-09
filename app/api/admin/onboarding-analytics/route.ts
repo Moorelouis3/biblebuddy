@@ -503,6 +503,16 @@ type ProfileSignupAttributionRow = {
   display_name?: string | null;
   username?: string | null;
   traffic_source?: string | null;
+  signup_source?: string | null;
+  signup_first_touch_source?: string | null;
+  created_at?: string | null;
+};
+
+type BlogVisitRow = {
+  session_id?: string | null;
+  user_id?: string | null;
+  referrer?: string | null;
+  article_slug?: string | null;
   created_at?: string | null;
 };
 
@@ -2215,9 +2225,21 @@ function summarizeSources(rows: Record<string, unknown>[]) {
     .sort((a, b) => b.signups - a.signups);
 }
 
+// Channels are places people come FROM - our own blog is a page of ours, not
+// a channel, so it never appears as a source row (Louis, 2026-09-09). A blog
+// arrival is attributed to whatever brought them to the post (Google,
+// Pinterest, ...), and "via blog" is reported separately as the door they
+// entered through. "Direct" = no referrer and no campaign tag: they typed
+// the address, used a saved icon, or came from an app that strips referrers.
+// "Other" = a real referrer we don't recognize (its domain is listed).
+function isInternalReferrer(referrer: string) {
+  return /mybiblebuddy\.(net|com)/i.test(referrer);
+}
+
 function normalizeTrafficSourceLabel(sourceValue: unknown, referrerValue?: unknown, pagePathValue?: unknown) {
   const source = typeof sourceValue === "string" ? sourceValue.trim() : "";
-  const referrer = typeof referrerValue === "string" ? referrerValue.trim() : "";
+  let referrer = typeof referrerValue === "string" ? referrerValue.trim() : "";
+  if (referrer && isInternalReferrer(referrer)) referrer = "";
   const pagePath = typeof pagePathValue === "string" ? pagePathValue.trim() : "";
   const combined = `${source} ${referrer} ${pagePath}`.toLowerCase();
 
@@ -2233,8 +2255,10 @@ function normalizeTrafficSourceLabel(sourceValue: unknown, referrerValue?: unkno
   if (combined.includes("pinterest") || combined.includes("pin.it")) return "Pinterest";
   if (combined.includes("youtube") || combined.includes("youtu.be") || combined.includes("youtu")) return "YouTube";
   if (combined.includes("google") || combined.includes("gclid")) return "Google";
+  if (combined.includes("tiktok")) return "TikTok";
   if (combined.includes("utm_source=email") || /\bemail\b/.test(combined)) return "Email";
 
+  if (!referrer) return "Direct";
   return "Other";
 }
 
@@ -2284,7 +2308,7 @@ function getLandingUrlFromPath(pagePath: string) {
   return pagePath.startsWith("http") ? pagePath : `https://mybiblebuddy.net${pagePath.startsWith("/") ? pagePath : `/${pagePath}`}`;
 }
 
-function summarizeTrafficSources(rows: LandingEventRow[]) {
+function summarizeTrafficSources(rows: LandingEventRow[], blogVisits: BlogVisitRow[] = []) {
   const landingRows = rows
     .filter((row) => row.event_name === "landing_page_visit" || row.event_name === "landing_page_visited")
     .sort((a, b) => new Date(a.created_at || 0).getTime() - new Date(b.created_at || 0).getTime());
@@ -2318,6 +2342,7 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
 
   const sourceCounts = new Map<string, number>();
   const signupCounts = new Map<string, number>();
+  const viaBlogCounts = new Map<string, number>();
   const visitorsBySource = new Map<string, Array<{
     actorId: string;
     visitorLabel: string;
@@ -2325,6 +2350,7 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
     pagePath: string;
     landingUrl: string;
     firstSeenAt: string | null;
+    via?: "landing" | "blog";
   }>>();
   const signupsBySource = new Map<string, Array<{
     actorId: string;
@@ -2353,6 +2379,39 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
       pagePath,
       landingUrl,
       firstSeenAt: row.created_at || null,
+      via: "landing",
+    });
+  }
+
+  // Blog arrivals are visitors too (Louis, 2026-09-09: someone who lands on a
+  // blog post from Pinterest never touches the landing page, so they were
+  // invisible here and their later signup looked like it came from nowhere).
+  // One visitor per blog session, attributed to the referrer that brought
+  // them; a first view referred by our own site is an existing visitor
+  // browsing, not new traffic, and is skipped.
+  const seenBlogSessions = new Set<string>();
+  const sortedBlogVisits = [...blogVisits].sort(
+    (a, b) => new Date(a.created_at || 0).getTime() - new Date(b.created_at || 0).getTime(),
+  );
+  for (const visit of sortedBlogVisits) {
+    const sessionKey = visit.session_id || visit.user_id || "";
+    if (!sessionKey || seenBlogSessions.has(sessionKey)) continue;
+    seenBlogSessions.add(sessionKey);
+    const referrer = typeof visit.referrer === "string" ? visit.referrer.trim() : "";
+    if (referrer && isInternalReferrer(referrer)) continue;
+    const source = normalizeTrafficSourceLabel("", referrer, "");
+    const pagePath = `/blog/${visit.article_slug || ""}`;
+    sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
+    viaBlogCounts.set(source, (viaBlogCounts.get(source) || 0) + 1);
+    if (!visitorsBySource.has(source)) visitorsBySource.set(source, []);
+    visitorsBySource.get(source)?.push({
+      actorId: sessionKey,
+      visitorLabel: visit.user_id ? `User ${shortId(visit.user_id)}` : `Session ${shortId(sessionKey)}`,
+      referrer: referrer || null,
+      pagePath,
+      landingUrl: getLandingUrlFromPath(pagePath),
+      firstSeenAt: visit.created_at || null,
+      via: "blog",
     });
   }
 
@@ -2419,21 +2478,47 @@ function summarizeTrafficSources(rows: LandingEventRow[]) {
     completionRate: percent(videoDepths.filter((d) => d >= 100).length, videoPlays),
   };
 
-  const totalVisitors = firstVisitByActor.size;
+  // Every standard channel appears even at zero, so "is YouTube doing
+  // anything?" is answered by a 0 instead of a missing row.
+  const STANDARD_CHANNELS = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "YouTube", "TikTok", "Email", "Direct", "Other"];
+  for (const channel of STANDARD_CHANNELS) {
+    if (!sourceCounts.has(channel)) sourceCounts.set(channel, 0);
+  }
+
+  const totalVisitors = Array.from(sourceCounts.values()).reduce((sum, count) => sum + count, 0);
   const sources = Array.from(sourceCounts.entries())
-    .map(([source, visitors]) => ({
-      source,
-      visitors,
-      signups: signupCounts.get(source) || 0,
-      signupRate: percent(signupCounts.get(source) || 0, visitors),
-      percent: percent(visitors, totalVisitors),
-      visitorRows: (visitorsBySource.get(source) || [])
-        .sort((a, b) => (b.firstSeenAt || "").localeCompare(a.firstSeenAt || ""))
-        .slice(0, 100),
-      signupRows: (signupsBySource.get(source) || [])
-        .sort((a, b) => (b.signedUpAt || "").localeCompare(a.signedUpAt || ""))
-        .slice(0, 100),
-    }))
+    .map(([source, visitors]) => {
+      const rowsForSource = visitorsBySource.get(source) || [];
+      const referrerHostCounts = new Map<string, number>();
+      for (const row of rowsForSource) {
+        if (!row.referrer) continue;
+        try {
+          const host = new URL(row.referrer).hostname.replace(/^www\./, "");
+          if (host) referrerHostCounts.set(host, (referrerHostCounts.get(host) || 0) + 1);
+        } catch {
+          referrerHostCounts.set(row.referrer.slice(0, 40), (referrerHostCounts.get(row.referrer.slice(0, 40)) || 0) + 1);
+        }
+      }
+      return {
+        source,
+        visitors,
+        viaBlog: viaBlogCounts.get(source) || 0,
+        viaLanding: visitors - (viaBlogCounts.get(source) || 0),
+        topReferrers: Array.from(referrerHostCounts.entries())
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 3)
+          .map(([host, count]) => ({ host, count })),
+        signups: signupCounts.get(source) || 0,
+        signupRate: percent(signupCounts.get(source) || 0, visitors),
+        percent: percent(visitors, totalVisitors),
+        visitorRows: rowsForSource
+          .sort((a, b) => (b.firstSeenAt || "").localeCompare(a.firstSeenAt || ""))
+          .slice(0, 100),
+        signupRows: (signupsBySource.get(source) || [])
+          .sort((a, b) => (b.signedUpAt || "").localeCompare(a.signedUpAt || ""))
+          .slice(0, 100),
+      };
+    })
     .sort((a, b) => b.visitors - a.visitors || a.source.localeCompare(b.source));
 
   return {
@@ -2452,7 +2537,19 @@ function isTimestampInAnalyticsWindow(timestamp: string | null | undefined, star
 }
 
 function normalizeProfileSignupSource(row: ProfileSignupAttributionRow) {
-  return normalizeTrafficSourceLabel(row.traffic_source || "Other", "", "");
+  // Channel priority: the first-touch channel that found this person, then
+  // the recorded signup channel, then traffic_source (which is often just a
+  // button label like "landing_video_hero" - an unknown channel, so it
+  // normalizes to Direct rather than piling into Other). A signup_source of
+  // "Blog" means the blog converted them; the CHANNEL is their first touch,
+  // or Direct when they arrived at the blog with no referrer.
+  const firstTouch = normalizeTrafficSourceLabel(row.signup_first_touch_source || "", "", "");
+  if (firstTouch !== "Direct" && firstTouch !== "Other" && firstTouch !== "Blog") return firstTouch;
+  const signupSource = normalizeTrafficSourceLabel(row.signup_source || "", "", "");
+  if (signupSource !== "Direct" && signupSource !== "Other" && signupSource !== "Blog") return signupSource;
+  const traffic = normalizeTrafficSourceLabel(row.traffic_source || "", "", "");
+  if (traffic !== "Other" && traffic !== "Blog") return traffic;
+  return "Direct";
 }
 
 function mergeProfileSignupAttributionIntoTrafficSources(
@@ -2489,6 +2586,9 @@ function mergeProfileSignupAttributionIntoTrafficSources(
     const existing = sourcesByName.get(source) || {
       source,
       visitors: 0,
+      viaBlog: 0,
+      viaLanding: 0,
+      topReferrers: [] as Array<{ host: string; count: number }>,
       signups: 0,
       signupRate: 0,
       percent: 0,
@@ -2503,6 +2603,8 @@ function mergeProfileSignupAttributionIntoTrafficSources(
     // signup can't happen without a visit first, so count them as one too —
     // otherwise a source can show more signups than visitors.
     existing.visitors += 1;
+    if ((profile.signup_source || "").toLowerCase() === "blog") existing.viaBlog += 1;
+    else existing.viaLanding += 1;
     existing.visitorRows.push({
       actorId: userId,
       visitorLabel: userLabel,
@@ -5250,7 +5352,7 @@ export async function GET(request: Request) {
 
     const { data: profileSignupRows, error: profileSignupError } = await adminSupabase
       .from("profile_stats")
-      .select("user_id, display_name, username, traffic_source, created_at")
+      .select("user_id, display_name, username, traffic_source, signup_source, signup_first_touch_source, created_at")
       .in("user_id", userIds);
 
     if (profileSignupError) {
@@ -5281,8 +5383,26 @@ export async function GET(request: Request) {
   const bibleBuddyFunnelStages = buildBibleBuddyFunnelStages(validLandingEventRows, masterFunnelRows, windowBibleYearProgressRows, dayThreeUpgrade, daySevenUpgrade);
   const funnel = summarizeFunnel(validEventRows);
   const sources = summarizeSources(validEventRows);
+  // Blog arrivals for the same window, so traffic sources count people who
+  // entered through a blog post, not only the landing page.
+  let blogVisitRows: BlogVisitRow[] = [];
+  {
+    let blogVisitQuery = adminSupabase
+      .from("blog_page_views")
+      .select("session_id, user_id, referrer, article_slug, created_at")
+      .gte("created_at", journeySinceIso)
+      .order("created_at", { ascending: true })
+      .limit(20000);
+    if (journeyBeforeIso) blogVisitQuery = blogVisitQuery.lt("created_at", journeyBeforeIso);
+    const { data: blogVisitData, error: blogVisitError } = await blogVisitQuery;
+    if (blogVisitError) {
+      console.error("[ONBOARDING_ANALYTICS] blog_page_views lookup failed:", blogVisitError.message);
+    } else {
+      blogVisitRows = (blogVisitData || []) as BlogVisitRow[];
+    }
+  }
   const trafficSources = mergeProfileSignupAttributionIntoTrafficSources(
-    summarizeTrafficSources(validLandingEventRows),
+    summarizeTrafficSources(validLandingEventRows, blogVisitRows),
     profileSignupAttributionRows,
     validSimpleAuthUsers,
     journeySinceIso,
