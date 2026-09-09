@@ -3718,3 +3718,7 @@ Next up: Psalms 66
 ## 2026-09-09T04:26:46Z (bible year day writer run)
 Day: 159 — Refuge and the Lord Reigns (Psalms 91-93) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 160
+
+## 2026-09-09T04:28:53Z (bible year day writer run)
+Day: 160 — Justice and Worship (Psalms 94-96) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 161. Stopping here — two-day budget cap for this run reached.
