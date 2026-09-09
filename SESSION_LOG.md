@@ -3730,3 +3730,7 @@ Next up: Psalms 67
 ## 2026-09-09T06:56:23Z (hourly chapter notes run)
 Chapter: Psalms 67 | Duration: 9 min | Sections: 4 | Cards: 14 | Status: pass
 Next up: Psalms 68
+
+## 2026-09-09T08:27:29Z (bible year day writer run)
+Day: 161 — The Holy King Reigns (Psalms 97-99) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 162. Stopping here — Louis asked to pause the Bible in One Year day writer until he says continue.
