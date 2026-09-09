@@ -32,7 +32,15 @@ export async function GET(request: NextRequest) {
   try {
     const now = new Date();
     const results: Record<string, any> = {};
-    const daysToProcess = [1, 2, 3, 5, 6, 7]; // Skip 4 and 8 (conditional)
+    // Welcome email only (Louis, 2026-09-09). Emails 2-8 were written for
+    // the subscription model - "You are a pro, literally", "ready to
+    // commit?" - which is not the business any more: the app is free and
+    // the blog is the funnel. The ongoing contact is now a twice-weekly
+    // note about new studies, sent from the blog RSS feed, not an
+    // 8-step onboarding sequence. Nothing is deleted: the templates and
+    // the day 4/8 conditional routes stay in the repo, they just have no
+    // sender pointed at them.
+    const daysToProcess = [1];
 
     for (const day of daysToProcess) {
       const hoursSinceSignupMin = (day - 1) * 24;
