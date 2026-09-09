@@ -2233,7 +2233,8 @@ function summarizeSources(rows: Record<string, unknown>[]) {
 // the address, used a saved icon, or came from an app that strips referrers.
 // "Other" = a real referrer we don't recognize (its domain is listed).
 function isInternalReferrer(referrer: string) {
-  return /mybiblebuddy\.(net|com)/i.test(referrer);
+  // localhost = Louis/agents testing against the live DB, not a visitor.
+  return /mybiblebuddy\.(net|com)|localhost|127\.0\.0\.1/i.test(referrer);
 }
 
 function normalizeTrafficSourceLabel(sourceValue: unknown, referrerValue?: unknown, pagePathValue?: unknown) {
@@ -2257,6 +2258,8 @@ function normalizeTrafficSourceLabel(sourceValue: unknown, referrerValue?: unkno
   if (combined.includes("google") || combined.includes("gclid")) return "Google";
   if (combined.includes("tiktok")) return "TikTok";
   if (combined.includes("utm_source=email") || /\bemail\b/.test(combined)) return "Email";
+  // The non-Google search engines, together: Bing, DuckDuckGo, Yahoo, ...
+  if (combined.includes("bing.com") || combined.includes("duckduckgo") || combined.includes("yahoo.")) return "Other Search";
 
   if (!referrer) return "Direct";
   return "Other";
@@ -2486,7 +2489,7 @@ function summarizeTrafficSources(rows: LandingEventRow[], blogVisits: BlogVisitR
 
   // Every standard channel appears even at zero, so "is YouTube doing
   // anything?" is answered by a 0 instead of a missing row.
-  const STANDARD_CHANNELS = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "YouTube", "TikTok", "Email", "Direct", "Other"];
+  const STANDARD_CHANNELS = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "Other Search", "YouTube", "TikTok", "Email", "Direct", "Other"];
   for (const channel of STANDARD_CHANNELS) {
     if (!sourceCounts.has(channel)) sourceCounts.set(channel, 0);
   }

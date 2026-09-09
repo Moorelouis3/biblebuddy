@@ -745,7 +745,7 @@ const TRAFFIC_SOURCE_COLORS = [
 // so it is never a source row; blog arrivals count under the channel that
 // brought them there, with a "via blog" note on the row. Direct = typed the
 // address / saved icon / app that hides the referrer.
-const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "YouTube", "TikTok", "Email", "Direct", "Other"] as const;
+const MAIN_TRAFFIC_SOURCE_ORDER = ["Facebook", "Instagram", "Threads", "Pinterest", "Google", "Other Search", "YouTube", "TikTok", "Email", "Direct", "Other"] as const;
 
 const TRAFFIC_SOURCE_BRAND: Record<string, { bg: string; fg: string; bar: string; icon: ReactNode }> = {
   Direct: {
@@ -889,6 +889,7 @@ function normalizeMainTrafficSource(sourceValue: unknown) {
   if (raw.includes("google") || raw.includes("gclid")) return "Google";
   if (raw.includes("tiktok")) return "TikTok";
   if (raw.includes("utm_source=email") || /\bemail\b/.test(raw)) return "Email";
+  if (raw === "other search" || raw.includes("bing") || raw.includes("duckduckgo") || raw.includes("yahoo")) return "Other Search";
   if (raw === "direct") return "Direct";
   return "Other";
 }
@@ -4949,6 +4950,10 @@ function friendlyReferrerLabel(referrer: string | null | undefined) {
   if (host.includes("google")) return "Google";
   if (host === "t.co" || host.endsWith("twitter.com") || host.endsWith("x.com")) return "X (Twitter)";
   if (host.endsWith("tiktok.com")) return "TikTok";
+  if (host.endsWith("bing.com")) return "Bing search";
+  if (host.includes("duckduckgo")) return "DuckDuckGo search";
+  if (host.includes("yahoo")) return "Yahoo search";
+  if (host.includes("reddit")) return "Reddit";
   return host;
 }
 
