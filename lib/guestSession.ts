@@ -2,6 +2,7 @@
 
 import { supabase } from "./supabaseClient";
 import { getCaptchaToken } from "./captcha";
+import { getSignupAttributionFromBrowser } from "./signupAttribution";
 
 /**
  * Guest sessions — study without signing up.
@@ -45,6 +46,20 @@ function isAnonymousDisabled(message: string | undefined) {
 async function ensureGuestProfile(userId: string, source: string) {
   const nowIso = new Date().toISOString();
 
+  // Channel attribution for NEW USERS, not just registered signups (Louis,
+  // 2026-09-09: the main data point is people who arrive from a blog promo
+  // and start using the app - most never create a username account). A
+  // blog promo lands on /start?src=blog&promo=..&post=.., so reading the
+  // URL here catches it; sourceDetail becomes "blog:<post>:<promo>" for
+  // the per-post breakdown in blog analytics. `source` (the button they
+  // pressed) stays in traffic_source unchanged.
+  let attribution: ReturnType<typeof getSignupAttributionFromBrowser> | null = null;
+  try {
+    attribution = getSignupAttributionFromBrowser();
+  } catch {
+    // Attribution must never block guest creation.
+  }
+
   const { error } = await supabase.from("profile_stats").upsert(
     {
       user_id: userId,
@@ -52,6 +67,16 @@ async function ensureGuestProfile(userId: string, source: string) {
       guest_started_at: nowIso,
       traffic_source: source,
       onboarding_completed: false,
+      ...(attribution
+        ? {
+            signup_source: attribution.source,
+            signup_source_detail: attribution.sourceDetail,
+            signup_referrer_url: attribution.referrerUrl,
+            signup_first_touch_source: attribution.firstTouchSource,
+            signup_first_touch_referrer: attribution.firstTouchReferrer,
+            signup_source_recorded_at: nowIso,
+          }
+        : {}),
     },
     { onConflict: "user_id" },
   );

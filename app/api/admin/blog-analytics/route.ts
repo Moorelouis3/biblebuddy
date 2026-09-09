@@ -308,6 +308,12 @@ export async function GET(req: NextRequest) {
       );
     }
 
+    // "Signups" here = NEW USERS from the blog: anyone whose profile was
+    // created with Blog attribution, guests included - most blog arrivals
+    // study as guests and never make a username account (Louis, 2026-09-09).
+    // Guest attribution started 2026-09-09 when the signup_* columns were
+    // added and guest creation began writing them; earlier arrivals are
+    // only visible as promo clicks above.
     let blogSignups: BlogSignupRow[] = [];
     const signupResult = await supabaseAdmin
       .from("profile_stats")

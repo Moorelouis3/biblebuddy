@@ -122,6 +122,8 @@ async function saveSignupAttributionForUser(
     signup_utm_source: attribution.utmSource,
     signup_utm_medium: attribution.utmMedium,
     signup_utm_campaign: attribution.utmCampaign,
+    signup_first_touch_source: attribution.firstTouchSource,
+    signup_first_touch_referrer: attribution.firstTouchReferrer,
     signup_source_recorded_at: nowIso,
   };
 

@@ -2299,9 +2299,9 @@ function BlogAnalyticsSection({
           accent="violet"
         />
         <SimpleAnalyticsKpiCard
-          title="Blog Signups"
+          title="New Users From Blog"
           value={loading ? "..." : formatNumber(blog?.promoFunnel?.signups || 0)}
-          helper="Accounts created from blog promos"
+          helper="People who entered the app from a blog promo (guest or account)"
           accent="green"
         />
       </div>
