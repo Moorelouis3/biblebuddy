@@ -3698,3 +3698,7 @@ Next up: Psalms 63
 ## 2026-09-08T22:55:43Z (hourly chapter notes run)
 Chapter: Psalms 63 | Duration: 8 min | Sections: 3 | Cards: 25 | Status: pass
 Next up: Psalms 64
+
+## 2026-09-09T00:00:00Z (bible year day writer run)
+Day: 157 — Revival and Zion's Hope (Psalms 85-87) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 158
