@@ -4941,6 +4941,38 @@ function TrafficSourcesAnalyticsSection({
   signupsComparison?: number | null;
 }) {
   const sources = getNormalizedMainTrafficSources(report);
+  // Click a source row to open its visitor list; click a visitor's Journey
+  // to see their step-by-step story (arrived from X, read a post, started
+  // studying, ...). Louis, 2026-09-09: "I need to know what these people
+  // are doing."
+  const [expandedSource, setExpandedSource] = useState<string | null>(null);
+  const [journeys, setJourneys] = useState<Record<string, { loading: boolean; error?: string; steps?: Array<{ at: string; label: string; detail: string | null; link: string | null }>; visitorLabel?: string; becameUser?: boolean }>>({});
+
+  async function loadJourney(actorId: string) {
+    if (journeys[actorId]?.steps) {
+      // Second click closes the journey again.
+      setJourneys((prev) => {
+        const next = { ...prev };
+        delete next[actorId];
+        return next;
+      });
+      return;
+    }
+    if (journeys[actorId]?.loading) return;
+    setJourneys((prev) => ({ ...prev, [actorId]: { loading: true } }));
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const token = sessionData.session?.access_token;
+      const response = await fetch(`/api/admin/visitor-journey?id=${encodeURIComponent(actorId)}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload?.error || "Could not load journey.");
+      setJourneys((prev) => ({ ...prev, [actorId]: { loading: false, ...payload } }));
+    } catch (err) {
+      setJourneys((prev) => ({ ...prev, [actorId]: { loading: false, error: err instanceof Error ? err.message : "Failed." } }));
+    }
+  }
   const totalVisitors = sources.reduce((sum, source) => sum + source.visitors, 0);
   const totalSignups = sources.reduce((sum, source) => sum + source.signups, 0);
   const conversionRate = totalVisitors > 0 ? Math.min(100, Number(((totalSignups / totalVisitors) * 100).toFixed(1))) : 0;
@@ -5046,11 +5078,13 @@ function TrafficSourcesAnalyticsSection({
             <tbody>
               {sources.map((source) => {
                 const brand = TRAFFIC_SOURCE_BRAND[source.source] || TRAFFIC_SOURCE_BRAND.Other;
+                const isExpanded = expandedSource === source.source;
                 return (
+                  <Fragment key={source.source}>
                   <tr
-                    key={source.source}
                     ref={flipRef(source.source)}
-                    className="border-t border-[var(--bb-card-border,#eef2f7)] will-change-transform"
+                    onClick={() => setExpandedSource(isExpanded ? null : source.source)}
+                    className="cursor-pointer border-t border-[var(--bb-card-border,#eef2f7)] will-change-transform hover:bg-[var(--bb-surface-soft,#f8fbff)]"
                   >
                     <td className="py-3 pr-3">
                       <div className="flex items-center gap-3">
@@ -5098,6 +5132,93 @@ function TrafficSourcesAnalyticsSection({
                       {source.signupRate}%
                     </td>
                   </tr>
+                  {isExpanded ? (
+                    <tr className="border-t border-[var(--bb-card-border,#eef2f7)] bg-[var(--bb-surface-soft,#f8fbff)]">
+                      <td colSpan={5} className="px-3 py-3">
+                        {source.visitorRows.length === 0 ? (
+                          <p className="text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
+                            No individual visitors recorded for this source in this timeframe.
+                          </p>
+                        ) : (
+                          <div className="space-y-2">
+                            {source.visitorRows.slice(0, 12).map((visitor) => {
+                              const journey = journeys[visitor.actorId];
+                              return (
+                                <div key={`${visitor.actorId}-${visitor.firstSeenAt}`} className="rounded-xl border border-[var(--bb-card-border,#e2e8f0)] bg-white p-3">
+                                  <div className="flex flex-wrap items-center gap-2 text-xs font-bold">
+                                    <span className="font-black text-[var(--bb-text-primary,#101827)]">{visitor.visitorLabel}</span>
+                                    <span className="text-[var(--bb-text-secondary,#94a3b8)]">{relativeTimeFromNow(visitor.firstSeenAt)}</span>
+                                    {(visitor as { via?: string }).via === "blog" ? (
+                                      <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-black text-blue-700">via blog</span>
+                                    ) : null}
+                                    {visitor.referrer ? (
+                                      <a
+                                        href={visitor.referrer}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        onClick={(event) => event.stopPropagation()}
+                                        className="truncate text-blue-600 underline"
+                                        style={{ maxWidth: 260 }}
+                                      >
+                                        {visitor.referrer.replace(/^https?:\/\/(www\.)?/, "").slice(0, 60)}
+                                      </a>
+                                    ) : (
+                                      <span className="text-[var(--bb-text-secondary,#94a3b8)]">no referrer</span>
+                                    )}
+                                    <span className="text-[var(--bb-text-secondary,#94a3b8)]">landed on {visitor.pagePath}</span>
+                                    <button
+                                      type="button"
+                                      onClick={(event) => {
+                                        event.stopPropagation();
+                                        void loadJourney(visitor.actorId);
+                                      }}
+                                      className="ml-auto rounded-lg bg-[#0056fd] px-3 py-1 text-[11px] font-black text-white"
+                                    >
+                                      {journey?.steps ? "Hide journey" : journey?.loading ? "Loading..." : "Journey →"}
+                                    </button>
+                                  </div>
+                                  {journey?.error ? (
+                                    <p className="mt-2 text-xs font-bold text-red-600">{journey.error}</p>
+                                  ) : null}
+                                  {journey?.steps ? (
+                                    <ol className="mt-3 space-y-1.5 border-l-2 border-blue-100 pl-4">
+                                      {journey.steps.map((step, index) => (
+                                        <li key={`${step.at}-${index}`} className="text-xs font-semibold text-[var(--bb-text-primary,#101827)]">
+                                          <span className="mr-2 font-black text-blue-600">{index + 1}.</span>
+                                          {step.label}
+                                          {step.detail ? (
+                                            <span className="ml-1 text-[var(--bb-text-secondary,#94a3b8)]">
+                                              {step.link ? (
+                                                <a href={step.link} target="_blank" rel="noreferrer" className="underline" onClick={(event) => event.stopPropagation()}>
+                                                  {step.detail.slice(0, 70)}
+                                                </a>
+                                              ) : (
+                                                step.detail.slice(0, 70)
+                                              )}
+                                            </span>
+                                          ) : null}
+                                          <span className="ml-2 text-[10px] font-bold text-[var(--bb-text-secondary,#c0c8d4)]">
+                                            {relativeTimeFromNow(step.at)}
+                                          </span>
+                                        </li>
+                                      ))}
+                                      {!journey.becameUser ? (
+                                        <li className="text-xs font-semibold text-[var(--bb-text-secondary,#94a3b8)]">
+                                          <span className="mr-2 font-black text-slate-400">→</span>
+                                          Left without becoming a user
+                                        </li>
+                                      ) : null}
+                                    </ol>
+                                  ) : null}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  ) : null}
+                  </Fragment>
                 );
               })}
             </tbody>
