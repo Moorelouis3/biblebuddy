@@ -12,6 +12,7 @@ type Broadcast = {
   intro: string | null;
   post_slugs: string[];
   body_html: string | null;
+  body_text: string | null;
   status: string;
   recipient_count: number | null;
   send_error: string | null;
@@ -55,6 +56,16 @@ export default function EmailBroadcastsPage() {
     void load();
   }, [load]);
 
+  async function copy(text: string, message: string) {
+    try {
+      await navigator.clipboard.writeText(text);
+      setNotice(message);
+      setError(null);
+    } catch {
+      setError("Could not reach the clipboard. Select the preview text and copy it by hand.");
+    }
+  }
+
   async function act(op: string, id: string, extra: Record<string, unknown> = {}) {
     setBusy(id + op);
     setNotice(null);
@@ -89,18 +100,20 @@ export default function EmailBroadcastsPage() {
     <main className="mx-auto min-h-screen max-w-3xl px-4 py-8 text-slate-950">
       <h1 className="text-2xl font-black">New Studies Email</h1>
       <p className="mt-1 text-sm font-semibold text-gray-500">
-        Drafted automatically every Tuesday and Friday from what went up on the blog. Nothing sends until you press
-        send.
+        Drafted automatically every Tuesday and Friday from what went up on the blog. Read it, edit it, then copy it
+        into Systeme.io and send. Nothing goes out from here.
       </p>
+      <ol className="mt-3 rounded-xl bg-blue-50 p-3 text-sm font-semibold text-blue-900">
+        <li>1. Check the subject and opening line below, edit if you want, hit Save.</li>
+        <li>2. Press Copy for Systeme (HTML) - or Copy plain text if you prefer their normal editor.</li>
+        <li>3. In Systeme.io: Emails &rarr; Newsletters &rarr; new campaign, paste, send.</li>
+        <li>4. Come back and press Mark as sent so it moves out of your queue.</li>
+      </ol>
 
       {data ? (
         <p className="mt-3 rounded-xl bg-slate-50 p-3 text-sm font-bold text-slate-700">
-          {data.recipientCount.toLocaleString()} people would receive this · from {data.from}
-          {!data.senderReady ? (
-            <span className="mt-1 block font-black text-amber-700">
-              Sending is not switched on yet: add RESEND_API_KEY in Vercel, then redeploy. Drafts still appear here.
-            </span>
-          ) : null}
+          Systeme.io holds your list and handles unsubscribes. For reference, {data.recipientCount.toLocaleString()}{" "}
+          people have signed up through the app.
         </p>
       ) : null}
 
@@ -165,24 +178,36 @@ export default function EmailBroadcastsPage() {
                 </button>
                 <button
                   type="button"
-                  disabled={busy === draft.id + "test"}
-                  onClick={() => act("test", draft.id)}
+                  onClick={() => copy(draft.body_html || "", "HTML copied. Paste it into a Systeme.io newsletter.")}
                   className="rounded-xl bg-blue-600 px-4 py-2 text-sm font-black text-white"
                 >
-                  Send test to me
+                  Copy for Systeme (HTML)
                 </button>
                 <button
                   type="button"
-                  disabled={busy === draft.id + "send"}
+                  onClick={() => copy(draft.body_text || "", "Plain text copied.")}
+                  className="rounded-xl bg-slate-600 px-4 py-2 text-sm font-black text-white"
+                >
+                  Copy plain text
+                </button>
+                <button
+                  type="button"
+                  onClick={() => copy(edits[draft.id]?.subject ?? draft.subject, "Subject copied.")}
+                  className="rounded-xl bg-slate-500 px-4 py-2 text-sm font-black text-white"
+                >
+                  Copy subject
+                </button>
+                <button
+                  type="button"
+                  disabled={busy === draft.id + "sent"}
                   onClick={() => {
-                    const count = data?.recipientCount ?? 0;
-                    if (window.confirm(`Send to ${count} people? This cannot be undone.`)) {
-                      void act("send", draft.id);
+                    if (window.confirm("Mark this as sent? Do this after you have sent it from Systeme.io.")) {
+                      void act("sent", draft.id);
                     }
                   }}
                   className="rounded-xl bg-emerald-600 px-4 py-2 text-sm font-black text-white"
                 >
-                  {busy === draft.id + "send" ? "Sending..." : "Send to everyone"}
+                  Mark as sent
                 </button>
                 <button
                   type="button"

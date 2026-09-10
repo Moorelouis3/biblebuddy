@@ -138,3 +138,29 @@ export async function loadRecipients(supabase: SupabaseClient) {
 
   return Array.from(emails);
 }
+
+/**
+ * Plain-text version, for pasting into Systeme.io's email composer.
+ * Systeme has no API for sending campaigns - contacts and tags only - so
+ * the send happens in their tool, and our job is to hand over finished
+ * copy rather than half a template.
+ */
+export function renderBroadcastText(subjectIntro: string, slugs: string[]) {
+  const posts = slugs
+    .map((slug) => BLOG_ARTICLES.find((post) => post.slug === slug))
+    .filter((post): post is (typeof BLOG_ARTICLES)[number] => Boolean(post));
+
+  const blocks = posts.map((post) => {
+    const url = `${SITE_URL}${post.canonicalPath}?utm_source=email&utm_medium=broadcast`;
+    return [post.title, post.description, `Read it: ${url}`].join("\n");
+  });
+
+  return [
+    subjectIntro,
+    "",
+    blocks.join("\n\n"),
+    "",
+    "Everything in Bible Buddy is free.",
+    SITE_URL,
+  ].join("\n");
+}

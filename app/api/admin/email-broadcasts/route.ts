@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { loadRecipients, renderBroadcastHtml, unsubscribeUrl } from "@/lib/blogBroadcast";
+import { loadRecipients, renderBroadcastHtml, renderBroadcastText, unsubscribeUrl } from "@/lib/blogBroadcast";
 
 // Louis's control over the twice-weekly studies email: read the drafts,
 // edit them, send a test to himself, then send for real. Sending is the
@@ -70,8 +70,13 @@ export async function GET(request: NextRequest) {
     // Count is informational; never block the page on it.
   }
 
+  const withText = (broadcasts || []).map((row: any) => ({
+    ...row,
+    body_text: renderBroadcastText(row.intro || "", row.post_slugs || []),
+  }));
+
   return NextResponse.json({
-    broadcasts: broadcasts || [],
+    broadcasts: withText,
     recipientCount,
     senderReady: Boolean(process.env.RESEND_API_KEY),
     from: FROM,
@@ -101,6 +106,19 @@ export async function POST(request: NextRequest) {
           body_html: renderBroadcastHtml(intro, slugs),
           updated_at: new Date().toISOString(),
         })
+        .eq("id", id)
+        .eq("status", "draft");
+      if (error) throw new Error(error.message);
+      return NextResponse.json({ ok: true });
+    }
+
+    // Louis sends the campaign from Systeme.io (their API cannot send one),
+    // then marks it here so it leaves his queue and the next draft can be
+    // scoped to posts published after this point.
+    if (op === "sent") {
+      const { error } = await supabase
+        .from("blog_email_broadcasts")
+        .update({ status: "sent", sent_at: new Date().toISOString() })
         .eq("id", id)
         .eq("status", "draft");
       if (error) throw new Error(error.message);
