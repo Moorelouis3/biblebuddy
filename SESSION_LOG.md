@@ -3826,3 +3826,11 @@ main origin/main`, a clean fast-forward since origin/main and the
 detached HEAD already matched. MARCUS_HANDOFF.md already flags both the
 pause-enforcement gap and the duplicate-trigger issue, so no new entry
 added there. Next up: Day 162, whenever Louis says continue.
+
+## 2026-09-10T13:15:00Z (bible year day writer run)
+Louis said "you can start again" in chat — the resume signal every stood-down
+run since Day 161 was waiting for. Resumed at Day 162.
+Day: 162 — Thanksgiving and Mercy (Psalms 100-102) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only
+Next up: Day 163
