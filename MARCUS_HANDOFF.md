@@ -11,6 +11,18 @@ firing until Louis actually says continue — a future run relying on catching
 this by hand in SESSION_LOG.md is not a reliable substitute for pausing the
 schedule.
 
+## A second, separately-configured Bible in One Year day writer trigger also needs disabling
+Today's run (2026-09-10T12:25:17Z) fired from a trigger whose stored prompt
+is a stale, older version of this job — it describes the task as targeting
+"days 12 to 30" with Day 11 as the quality-bar example, dating from when
+the series was brand new. Real progress is at Day 161 (paused there per
+the entry above), so this is evidently a second, separate scheduled
+trigger for the same routine, distinct from the hourly one that reached
+Day 161 and already needs disabling. Both need to be found and disabled
+(or updated) at the trigger/environment level, not just one, or this
+older trigger will keep firing hourly forever finding "nothing to do" in
+an already-finished range while the real pause sits unenforced.
+
 ## Stale local main recurred again (2026-09-08, Psalms 59 run) — unrelated-history variant, still unfixed at the environment level
 Same root cause as every entry below, but the more serious variant: this
 run's fresh container had local `main` at `a4cebb3` (Bible in One Year Day
