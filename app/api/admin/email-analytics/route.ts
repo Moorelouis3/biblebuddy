@@ -99,7 +99,11 @@ export async function GET(request: NextRequest) {
     const opens = events.filter((e) => e.event_type === "opened");
     const clicks = events.filter((e) => e.event_type === "clicked");
 
-    const days = Array.from({ length: 8 }, (_, i) => i + 1).map((day) => {
+    // Only the welcome email is still running. Emails 2-8 were retired on
+    // 2026-09-09 - they were written to sell a subscription that no longer
+    // exists - so showing eight rows of dead funnel just made the page lie
+    // about what is live. Their history stays in email_funnel_sends.
+        const days = [1].map((day) => {
       const daySends = sends.filter((s) => s.email_day === day);
       const dayOpens = new Set(opens.filter((e) => e.email_day === day).map((e) => e.user_id)).size;
       const dayClicks = new Set(clicks.filter((e) => e.email_day === day).map((e) => e.user_id)).size;
@@ -134,6 +138,27 @@ export async function GET(request: NextRequest) {
       });
     }
 
+    // Broadcast newsletters sent from Systeme.io. Opens come from their
+    // dashboard (no stats API exists); siteVisits is measured from our own
+    // traffic by the email-stats-sync cron.
+    const { data: newsletterRows } = await supabaseAdmin
+      .from("email_campaign_stats")
+      .select("*")
+      .order("sent_at", { ascending: false })
+      .limit(30);
+    const newsletters = (newsletterRows || []).map((row: any) => ({
+      id: row.id,
+      name: row.name,
+      sentAt: row.sent_at,
+      recipients: row.recipients || 0,
+      opens: row.opens || 0,
+      clicks: row.clicks || 0,
+      siteVisits: row.site_visits || 0,
+      checkedAt: row.checked_at,
+      openRate: row.recipients ? Math.round((row.opens / row.recipients) * 1000) / 10 : 0,
+      clickRate: row.recipients ? Math.round((row.clicks / row.recipients) * 1000) / 10 : 0,
+    }));
+
     return NextResponse.json({
       totals: {
         totalSent: sends.length,
@@ -146,6 +171,7 @@ export async function GET(request: NextRequest) {
         clickRate: sends.length ? Math.round((uniqueClickers / sends.length) * 1000) / 10 : 0,
       },
       days,
+      newsletters,
       sendsByDate,
       openClickTrackingLive: events.length > 0,
     });

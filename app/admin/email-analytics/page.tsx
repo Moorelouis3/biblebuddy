@@ -30,6 +30,18 @@ type ApiResponse = {
     clickRate: number;
   };
   days: DayStats[];
+  newsletters?: Array<{
+    id: string;
+    name: string;
+    sentAt: string | null;
+    recipients: number;
+    opens: number;
+    clicks: number;
+    siteVisits: number;
+    checkedAt: string | null;
+    openRate: number;
+    clickRate: number;
+  }>;
   sendsByDate: Array<{ date: string; count: number }>;
   openClickTrackingLive: boolean;
 };
@@ -176,7 +188,49 @@ export default function EmailAnalyticsPage() {
       </section>
 
       <section className="mt-6 space-y-3">
-        <h2 className="text-sm font-black uppercase tracking-wide text-slate-500">Funnel days</h2>
+        <h2 className="text-sm font-black uppercase tracking-wide text-slate-500">Newsletters</h2>
+        {(data?.newsletters || []).length === 0 ? (
+          <p className="rounded-2xl bg-white p-4 text-sm font-semibold text-slate-500 shadow-sm ring-1 ring-slate-100">
+            No newsletters recorded yet.
+          </p>
+        ) : (
+          (data?.newsletters || []).map((n) => (
+            <div key={n.id} className="rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-100">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <p className="font-black text-slate-900">{n.name}</p>
+                <p className="text-xs font-bold text-slate-400">
+                  {n.sentAt ? new Date(n.sentAt).toLocaleString() : "not sent"}
+                </p>
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <div>
+                  <p className="text-lg font-black text-slate-900">{formatNumber(n.recipients)}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wide text-slate-400">Sent to</p>
+                </div>
+                <div>
+                  <p className="text-lg font-black text-slate-900">{formatNumber(n.opens)}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wide text-slate-400">Opens · {n.openRate}%</p>
+                </div>
+                <div>
+                  <p className="text-lg font-black text-slate-900">{formatNumber(n.clicks)}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wide text-slate-400">Clicks · {n.clickRate}%</p>
+                </div>
+                <div>
+                  <p className="text-lg font-black text-emerald-600">{formatNumber(n.siteVisits)}</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wide text-slate-400">Came to the site</p>
+                </div>
+              </div>
+              <p className="mt-2 text-[11px] font-semibold text-slate-400">
+                Opens and clicks come from Systeme.io. &ldquo;Came to the site&rdquo; is measured here and refreshes every 6 hours
+                {n.checkedAt ? ` · last checked ${new Date(n.checkedAt).toLocaleString()}` : ""}.
+              </p>
+            </div>
+          ))
+        )}
+      </section>
+
+      <section className="mt-6 space-y-3">
+        <h2 className="text-sm font-black uppercase tracking-wide text-slate-500">Welcome email</h2>
         {(data?.days || []).map((day) => {
           const expanded = openDay === day.day;
           return (
