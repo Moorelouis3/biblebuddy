@@ -17,9 +17,12 @@ const DAILY_BATCH_SIZE = 500;
 
 // Total new enrollments this campaign is allowed to add to Systeme.io,
 // separate from the day1-3/backfill enrollments that came before it.
-// Systeme.io's plan caps total contacts at 5,000; as of 2026-08-03 that had
-// ~1,099 used, so 3,000 new leaves ~900 slots free for organic signups.
-const CAMPAIGN_CAP = 3000;
+// Raised 3000 -> 4800 on 2026-09-11: the original 3,000 was exhausted, which
+// silently throttled the backfill to a couple of people a day and left ~1,200
+// older signups (Dec 2025 - Mar 2026) unreachable. The real guard is the
+// contact ceiling below, not this counter; this only exists so a runaway loop
+// cannot empty the plan in one night.
+const CAMPAIGN_CAP = 4800;
 // Marker stamped into email_funnel_sends.template_version for rows this
 // route creates, so we can count "how many has this campaign enrolled" by
 // querying that marker directly -- NOT by signup_timestamp, which organic
