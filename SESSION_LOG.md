@@ -3901,3 +3901,9 @@ Day: 170 — Rescue and Restoration (Psalms 124-126) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only
 Next up: Day 171
+
+## 2026-09-11T08:27:12Z (bible year day writer run)
+Day: 171 — Home, Labor, and Perseverance (Psalms 127-129) | Runtime: audio
+not rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only
+Next up: Day 172. Stopping here — two-day budget cap for this run reached.
