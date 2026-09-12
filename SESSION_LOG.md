@@ -3978,3 +3978,7 @@ Next up: Day 183
 ## 2026-09-12T08:15:00Z (bible year day writer run)
 Day: 183 — Discipline, Speech, and the Heart (Proverbs 13-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 184. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-12T12:00:00Z (bible year day writer run)
+Day: 184 — Plans, Pride, and Wise Words (Proverbs 16-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 185
