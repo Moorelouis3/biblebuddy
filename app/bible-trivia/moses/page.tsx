@@ -364,14 +364,14 @@ const meta: any = user.user_metadata || {};
 
         <div className="relative mb-8" style={{ perspective: "1000px" }}>
           <div
-            className="relative w-full transition-transform duration-500"
+            className="grid w-full transition-transform duration-500"
             style={{
               transformStyle: "preserve-3d",
               transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"
             }}
           >
             <div
-              className="w-full bg-white rounded-2xl shadow-lg p-8"
+              className="w-full bg-white rounded-2xl shadow-lg p-8 [grid-area:1/1]"
               style={{
                 backfaceVisibility: "hidden",
                 WebkitBackfaceVisibility: "hidden",
@@ -398,7 +398,7 @@ const meta: any = user.user_metadata || {};
             </div>
 
             <div
-              className="w-full bg-white rounded-2xl shadow-lg p-8 absolute top-0 left-0"
+              className="w-full bg-white rounded-2xl shadow-lg p-8 [grid-area:1/1]"
               style={{
                 backfaceVisibility: "hidden",
                 WebkitBackfaceVisibility: "hidden",

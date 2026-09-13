@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { recordBugReport } from "@/lib/bugReports";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -223,6 +224,25 @@ export async function POST(request: NextRequest) {
       last_message_preview: preview,
     })
     .eq("id", conversationId);
+
+  // Also into the bug tracker, so reports are worked and followed up
+  // instead of sitting in DMs. Never fail the report over it.
+  try {
+    await recordBugReport(supabaseAdmin, {
+      source: "problem_card",
+      category,
+      area,
+      page: currentUrl,
+      message: [dayNumber ? `Day ${dayNumber}${dayTitle ? ` - ${dayTitle}` : ""}` : null, reference, message]
+        .filter(Boolean)
+        .join("\n"),
+      reporterUserId: currentUser.id,
+      reporterName: reporterProfile?.display_name || reporterProfile?.username || null,
+      conversationId,
+    });
+  } catch (trackerError) {
+    console.warn("[SUPPORT_REPORT] bug tracker insert failed", trackerError);
+  }
 
   const senderName =
     reporterProfile?.display_name?.trim() ||
