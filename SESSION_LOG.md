@@ -4045,3 +4045,7 @@ quietly reloading. Added the missing pattern in lib/crashRecovery.ts
 ## 2026-09-13T16:26:23Z (bible year day writer run)
 Day: 198 — Immanuel and the Coming King (Isaiah 7-9) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 199
+
+## 2026-09-13T16:27:38Z (bible year day writer run)
+Day: 199 — Judgment, Remnant, and Salvation (Isaiah 10-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 200. Stopping here — two-day budget cap for this run reached.
