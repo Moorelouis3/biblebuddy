@@ -14,7 +14,7 @@ const RELOAD_KEY = "bb-crash-auto-reload-at";
 
 export function isStaleChunkError(error: Error) {
   const text = `${error?.name || ""} ${error?.message || ""}`;
-  return /ChunkLoadError|Loading chunk|Loading CSS chunk|dynamically imported module|Importing a module script failed|error loading dynamically/i.test(
+  return /ChunkLoadError|Loading chunk|Loading CSS chunk|Failed to load chunk|dynamically imported module|Importing a module script failed|error loading dynamically/i.test(
     text,
   );
 }
