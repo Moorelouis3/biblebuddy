@@ -4053,3 +4053,7 @@ Next up: Day 200. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-13T20:25:31Z (bible year day writer run)
 Day: 200 — Nations Under God's Judgment (Isaiah 13-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 201
+
+## 2026-09-13T20:27:29Z (bible year day writer run)
+Day: 201 — Pride, Refuge, and the Nations (Isaiah 16-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 202. Stopping here — two-day budget cap for this run reached.
