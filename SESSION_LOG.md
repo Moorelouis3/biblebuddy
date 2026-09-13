@@ -4034,3 +4034,10 @@ Next up: Day 197
 ## 2026-09-13T12:28:27Z (bible year day writer run)
 Day: 197 — Holiness and Isaiah's Call (Isaiah 4-6) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 198. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-13 (bug fixer run)
+Fixed: crash "Failed to load chunk ... from module" (a1a0b5b3) — the
+stale-chunk auto-reload only recognized webpack's error wording and
+missed Turbopack's phrasing, so it showed the crash screen instead of
+quietly reloading. Added the missing pattern in lib/crashRecovery.ts
+(commit 56260ef).
