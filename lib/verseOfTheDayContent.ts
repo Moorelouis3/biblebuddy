@@ -106,15 +106,15 @@ export async function fetchVotdEntryByDate(dateKey: string): Promise<VerseOfTheD
   }
 }
 
-/** Past entries, newest first, for the archive list. */
-export async function fetchVotdArchive(beforeOrOnDateKey: string, limit = 30): Promise<VerseOfTheDayEntry[]> {
+/** Past entries, newest first, for the archive list (paged by offset). */
+export async function fetchVotdArchive(beforeOrOnDateKey: string, limit = 30, offset = 0): Promise<VerseOfTheDayEntry[]> {
   try {
     const { data, error } = await supabase
       .from("verse_of_the_day_entries")
       .select(VOTD_ENTRY_COLUMNS)
       .lte("scheduled_date", beforeOrOnDateKey)
       .order("scheduled_date", { ascending: false })
-      .limit(limit);
+      .range(offset, offset + limit - 1);
     if (error) return [];
     return (data as VerseOfTheDayEntry[]) || [];
   } catch {
@@ -128,6 +128,17 @@ export type VotdEngagement = {
   bookmarked: boolean;
   shared_at: string | null;
 };
+
+export async function fetchVotdEntriesByIds(ids: string[]): Promise<VerseOfTheDayEntry[]> {
+  if (!ids.length) return [];
+  try {
+    const { data, error } = await supabase.from("verse_of_the_day_entries").select(VOTD_ENTRY_COLUMNS).in("id", ids);
+    if (error) return [];
+    return (data as VerseOfTheDayEntry[]) || [];
+  } catch {
+    return [];
+  }
+}
 
 export async function fetchVotdEngagement(userId: string, entryId: string): Promise<VotdEngagement | null> {
   try {
@@ -159,7 +170,7 @@ export async function upsertVotdEngagement(
 }
 
 /** Fire-and-forget analytics through the existing landing-analytics pipe. */
-export function trackVotdEvent(eventName: string, metadata: Record<string, unknown> = {}) {
+export function trackVotdEvent(eventName: string, metadata: Record<string, unknown> = {}, userId?: string | null) {
   try {
     void fetch("/api/landing-analytics", {
       method: "POST",
@@ -169,6 +180,7 @@ export function trackVotdEvent(eventName: string, metadata: Record<string, unkno
         page_path: `${window.location.pathname}${window.location.search}`,
         referrer: document.referrer || null,
         metadata,
+        user_id: userId || undefined,
       }),
       keepalive: true,
     }).catch(() => {});

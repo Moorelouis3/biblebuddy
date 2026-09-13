@@ -27,6 +27,7 @@ import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profil
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import BottomNav from "./BottomNav";
+import WisdomProverbsPopup from "./WisdomProverbsPopup";
 import ReportProblemCard from "./ReportProblemCard";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import {
@@ -3411,6 +3412,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       Notes
                     </Link>
 
+                    <Link
+                      href="/bookmarks"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className={`block px-4 py-2 text-sm ${
+                        pathname?.startsWith("/bookmarks")
+                          ? "bg-sky-100 text-black font-medium"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      🔖 Bookmarks
+                    </Link>
+
                     {/* SETTINGS */}
                     <Link
                       href="/dashboard"
@@ -3602,6 +3615,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           anything linked to before. Hidden on bare pages - blog, public
           profiles, embeds - which are not the app. */}
       {showBottomNav ? <BottomNav /> : null}
+
+      {/* One-time Wisdom of Proverbs promo - it decides eligibility itself
+          (not a member, never shown) and waits for a quiet moment. */}
+      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
+        <WisdomProverbsPopup
+          userId={userId}
+          pathname={pathname}
+          blocked={Boolean(
+            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
+          )}
+        />
+      ) : null}
 
       <FirstLoginOnboardingModal
         isOpen={showFirstLoginOnboarding && isLoggedIn}

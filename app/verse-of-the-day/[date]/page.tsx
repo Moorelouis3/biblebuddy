@@ -41,7 +41,7 @@ export default function VerseOfTheDayDatePage() {
   return (
     <div className="mx-auto w-full max-w-2xl px-4 pb-28 pt-6">
       {entry ? (
-        <VerseOfTheDayBreakdown entry={entry} userId={userId} surface="page" />
+        <VerseOfTheDayBreakdown entry={entry} userId={userId} surface="page" source="link" />
       ) : loaded ? (
         <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-8 text-center">
           <p className="text-lg font-black text-[var(--bb-text-primary,#111827)]">

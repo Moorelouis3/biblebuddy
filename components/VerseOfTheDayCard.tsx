@@ -13,8 +13,8 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ModalShell } from "./ModalShell";
-import VerseOfTheDayBreakdown from "./VerseOfTheDayBreakdown";
+import VerseOfTheDayModal from "./VerseOfTheDayModal";
+import { useDailyVerseBookmark } from "../lib/useDailyVerseBookmark";
 import { getVerseOfTheDay } from "../lib/verseOfTheDay";
 import {
   fetchVotdEngagement,
@@ -33,10 +33,10 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
   const [entry, setEntry] = useState<VerseOfTheDayEntry | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
   const [alreadyRead, setAlreadyRead] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
   const impressionSent = useRef(false);
+  const { bookmarked, toggle: toggleBookmark } = useDailyVerseBookmark(userId, entry, "today");
 
   const legacyVerse = useMemo(() => getVerseOfTheDay(), []);
 
@@ -55,7 +55,6 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
       }
       if (row && userId) {
         const engagement = await fetchVotdEngagement(userId, row.id);
-        if (engagement?.bookmarked) setBookmarked(true);
         if (engagement?.opened_at) setAlreadyRead(true);
       }
     })();
@@ -87,10 +86,7 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
   async function handleBookmark(event: React.MouseEvent) {
     event.stopPropagation();
     if (!entry || !userId) return;
-    const next = !bookmarked;
-    setBookmarked(next);
-    trackVotdEvent("votd_bookmark", { ...meta, bookmarked: next });
-    await upsertVotdEngagement(userId, entry.id, { bookmarked: next, bookmarked_at: new Date().toISOString() });
+    await toggleBookmark();
   }
 
   async function handleShare(event: React.MouseEvent) {
@@ -205,11 +201,7 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
         </div>
       </section>
 
-      <ModalShell isOpen={isOpen} onClose={() => setIsOpen(false)} scrollable>
-        <div className="w-full max-w-2xl">
-          <VerseOfTheDayBreakdown entry={entry} userId={userId} surface="popup" onClose={() => setIsOpen(false)} />
-        </div>
-      </ModalShell>
+      <VerseOfTheDayModal entry={isOpen ? entry : null} userId={userId} source="today" onClose={() => setIsOpen(false)} />
     </>
   );
 }

@@ -23,6 +23,20 @@ const ALLOWED_EVENTS = new Set([
   "votd_share",
   "votd_open_in_bible",
   "votd_page_view",
+  "votd_reflection_posted",
+  // Daily Verse archive + Bookmarks (2026-09-13). Metadata: {daily_verse_id, date, source}.
+  "daily_verse_archive_opened",
+  "daily_verse_previous_opened",
+  "daily_verse_bookmarked",
+  "daily_verse_unbookmarked",
+  "bookmarks_page_opened",
+  "bookmark_opened",
+  // Wisdom of Proverbs one-time promo popup (2026-09-13). Metadata: {promotion_id, event_slug, source}.
+  "wisdom_proverbs_popup_impression",
+  "wisdom_proverbs_popup_dismissed",
+  "wisdom_proverbs_popup_join_clicked",
+  "wisdom_proverbs_popup_join_success",
+  "wisdom_proverbs_popup_join_failed",
   // Homepage redesign (2026-09-02) - section click-throughs.
   "home_continue_plan_click",
   "home_nearby_day_click",

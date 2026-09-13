@@ -12,8 +12,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useAccountGate } from "./AccountRequiredModal";
+import { useDailyVerseBookmark, type DailyVerseSource } from "../lib/useDailyVerseBookmark";
 import {
-  fetchVotdEngagement,
   getVotdBackground,
   getVotdShareUrl,
   formatVotdDateLabel,
@@ -225,30 +225,46 @@ export default function VerseOfTheDayBreakdown({
   userId,
   onClose,
   surface,
+  source = "today",
+  onPrevious,
+  onNext,
+  onViewArchive,
 }: {
   entry: VerseOfTheDayEntry;
   userId: string | null | undefined;
   /** Present in the popup; absent on the standalone page. */
   onClose?: () => void;
   surface: "popup" | "page";
+  /** Where the reader opened this verse from - for analytics. */
+  source?: DailyVerseSource;
+  /** Step to the neighbouring day's verse, when opened from a list. */
+  onPrevious?: { label: string; onClick: () => void } | null;
+  onNext?: { label: string; onClick: () => void } | null;
+  /** Overrides the "View Previous Daily Verses" link (e.g. already on the archive). */
+  onViewArchive?: () => void;
 }) {
   const background = getVotdBackground(entry);
-  const [bookmarked, setBookmarked] = useState(false);
+  const { bookmarked, toggle: toggleBookmark } = useDailyVerseBookmark(userId, entry, source);
   const [shareState, setShareState] = useState<"idle" | "copied" | "error">("idle");
   const completedRef = useRef(false);
   const endMarkerRef = useRef<HTMLDivElement | null>(null);
 
-  const meta = { date: entry.scheduled_date, reference: entry.reference, background: background.theme };
+  const meta = {
+    date: entry.scheduled_date,
+    reference: entry.reference,
+    background: background.theme,
+    daily_verse_id: entry.id,
+    source,
+  };
 
   // Opening the breakdown counts as reading it starting - saved per user so
   // the card can show "read", plus the analytics event per surface.
   useEffect(() => {
-    trackVotdEvent(surface === "popup" ? "votd_breakdown_open" : "votd_page_view", meta);
+    trackVotdEvent(surface === "popup" ? "votd_breakdown_open" : "votd_page_view", meta, userId);
+    if (source === "archive") trackVotdEvent("daily_verse_previous_opened", meta, userId);
+    if (source === "bookmarks") trackVotdEvent("bookmark_opened", { ...meta, content_type: "daily_verse" }, userId);
     if (userId) {
       void upsertVotdEngagement(userId, entry.id, { opened_at: new Date().toISOString() });
-      void fetchVotdEngagement(userId, entry.id).then((row) => {
-        if (row?.bookmarked) setBookmarked(true);
-      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entry.id, userId, surface]);
@@ -275,13 +291,7 @@ export default function VerseOfTheDayBreakdown({
       window.location.href = "/";
       return;
     }
-    const next = !bookmarked;
-    setBookmarked(next);
-    trackVotdEvent("votd_bookmark", { ...meta, bookmarked: next });
-    await upsertVotdEngagement(userId, entry.id, {
-      bookmarked: next,
-      bookmarked_at: new Date().toISOString(),
-    });
+    await toggleBookmark();
   }
 
   async function handleShare() {
@@ -423,6 +433,49 @@ export default function VerseOfTheDayBreakdown({
           >
             {shareState === "copied" ? "✓ Link copied" : "↗ Share"}
           </button>
+        </div>
+
+        {/* Quiet secondary links - the verse stays the focus. */}
+        <div className="mt-6 border-t border-[var(--bb-card-border,#dbe7f4)] pt-4">
+          {onPrevious || onNext ? (
+            <div className="mb-3 flex items-center justify-between gap-3 text-sm font-black">
+              {onPrevious ? (
+                <button
+                  type="button"
+                  onClick={onPrevious.onClick}
+                  className="text-[var(--bb-text-secondary,#374151)] transition hover:text-[var(--bb-accent,#2563eb)]"
+                >
+                  ← {onPrevious.label}
+                </button>
+              ) : (
+                <span />
+              )}
+              {onNext ? (
+                <button
+                  type="button"
+                  onClick={onNext.onClick}
+                  className="text-[var(--bb-text-secondary,#374151)] transition hover:text-[var(--bb-accent,#2563eb)]"
+                >
+                  {onNext.label} →
+                </button>
+              ) : null}
+            </div>
+          ) : null}
+          <div className="text-center">
+            {onViewArchive ? (
+              <button
+                type="button"
+                onClick={onViewArchive}
+                className="text-sm font-bold text-[var(--bb-accent,#2563eb)] hover:underline"
+              >
+                View Previous Daily Verses
+              </button>
+            ) : (
+              <Link href="/daily-verses" className="text-sm font-bold text-[var(--bb-accent,#2563eb)] hover:underline">
+                View Previous Daily Verses
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>

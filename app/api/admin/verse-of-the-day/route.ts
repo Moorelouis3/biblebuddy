@@ -116,7 +116,15 @@ export async function GET(request: NextRequest) {
       const bucket = (byEntry[row.entry_id] = byEntry[row.entry_id] || { opens: 0, completes: 0, bookmarks: 0 });
       if (row.opened_at) bucket.opens += 1;
       if (row.completed_at) bucket.completes += 1;
-      if (row.bookmarked) bucket.bookmarks += 1;
+    }
+    // Bookmarks moved to the generic user_bookmarks table on 2026-09-13.
+    const { data: saved } = await admin
+      .from("user_bookmarks")
+      .select("content_id")
+      .eq("content_type", "daily_verse");
+    for (const row of saved || []) {
+      const bucket = (byEntry[row.content_id] = byEntry[row.content_id] || { opens: 0, completes: 0, bookmarks: 0 });
+      bucket.bookmarks += 1;
     }
     return NextResponse.json({ byDate, byEntry });
   }

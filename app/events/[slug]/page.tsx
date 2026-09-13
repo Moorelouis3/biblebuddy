@@ -19,7 +19,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { useSupabaseUser } from "../../../lib/useSupabaseUser";
-import { recordNewUser } from "../../../lib/guestSession";
+import { joinCommunityEvent } from "../../../lib/communityEventJoin";
 import { getCommunityEvent, getCommunityEventState } from "../../../lib/communityEvents";
 
 const GRID_PAGE_SIZE = 24;
@@ -184,19 +184,15 @@ export default function CommunityEventPage() {
     if (!(await ensureFullAccount())) return;
     setJoining(true);
     try {
-      const { error } = await supabase
-        .from("community_event_members")
-        .upsert(
-          { event_slug: event.slug, user_id: userId, reminders },
-          { onConflict: "event_slug,user_id", ignoreDuplicates: true },
-        );
-      if (!error) {
+      const result = await joinCommunityEvent(userId, event.slug, { reminders, source: "event_page" });
+      if (result.ok && result.alreadyJoined) {
+        setJoined(true);
+      } else if (result.ok) {
         setJoined(true);
         setJustJoined(true);
         setTotalMembers((count) => (count === null ? 1 : count + 1));
         track("community_event_joined", { event: event.slug });
         if (reminders) track("community_event_reminder_optin", { event: event.slug });
-        recordNewUser(userId, `community_event_${event.slug}`);
         // Straight into the grid with their own photo and first name.
         try {
           const { data: me } = await supabase
