@@ -4026,3 +4026,7 @@ Next up: Day 195
 ## 2026-09-13T08:27:56Z (bible year day writer run)
 Day: 195 — Love Is Strong as Death (Song of Solomon 6-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 196. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-13T12:27:26Z (bible year day writer run)
+Day: 196 — Rebellion, Judgment, and Hope (Isaiah 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
+Next up: Day 197
