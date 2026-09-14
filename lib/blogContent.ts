@@ -530,12 +530,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "garden-of-eden-four-rivers",
     title: "The Garden of Eden & the Four Rivers Explained",
     description:
-      "Genesis 2 names four rivers flowing out of Eden. See what is confirmed, what is still debated, and what the Bible actually says about the garden.",
+      "Genesis 2 names four rivers flowing out of Eden. See what is confirmed, what is still debated, and how the tree of life reappears in Revelation 22.",
     category: "Bible Insights",
     categorySlug: "bible-insights",
     canonicalPath: "/blog/garden-of-eden-four-rivers",
     publishedAt: "2026-09-01",
-    readTime: "8 min read",
+    readTime: "15 min read",
     image: "/blog-banners/garden-of-eden-four-rivers.jpg",
     groupPost: {
       title: "The Garden of Eden & the Four Rivers Explained 📖",
@@ -1152,13 +1152,13 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "why-so-many-denominations",
     title: "Why So Many Denominations?",
-    description: "Understanding Christian divisions and why so many church traditions exist.",
+    description: "The real history behind Christian denominations, why they split, and how to choose a church home without picking a fight.",
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
     canonicalPath: "/blog/why-so-many-denominations",
     legacyPath: "/bible-study-hub/christian-foundations/why-so-many-denominations",
     publishedAt: "2026-07-10",
-    readTime: "8 min read",
+    readTime: "16 min read",
     image: "/blog-banners/why-so-many-denominations.jpg",
   },
   {

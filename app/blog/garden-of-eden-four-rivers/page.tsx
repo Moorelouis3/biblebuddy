@@ -49,9 +49,22 @@ export default function GardenOfEdenFourRiversPage() {
               past details it actually does.
             </p>
             <p>
-              This guide walks through what Scripture actually says about Eden, the two trees, Adam&apos;s
-              job there, and all four rivers by name. And it will be honest with you about where the
-              text stops talking and where guesswork begins.
+              Most graphics stop right after the four rivers. They never show you what happened
+              next. The cherubim. The flaming sword. The tree of life, guarded and out of reach.
+            </p>
+            <p>
+              Maybe you landed here because a sermon mentioned Eden and you wanted the real verses,
+              not just the summary. Or maybe you just want to know if any of this is still true
+              today, in an actual place, on an actual map.
+            </p>
+            <p>
+              This guide walks through what Scripture actually says about Eden, the two trees,
+              Adam&apos;s job there, all four rivers by name, and what happened to the garden after
+              Adam and Eve were sent out.
+            </p>
+            <p>
+              And it will be honest with you about where the text stops talking and where guesswork
+              begins.
             </p>
             <p>Let&apos;s open Genesis and look for ourselves.</p>
           </div>
@@ -80,7 +93,18 @@ export default function GardenOfEdenFourRiversPage() {
             meant to look like. Work without frustration. A clear command instead of confusion.
             Close, unhidden fellowship with God.
           </p>
-          <p>Everything that goes wrong later in Scripture is measured against what was true here first.</p>
+          <p>
+            Everything that goes wrong later in Scripture is measured against what was true here
+            first.
+          </p>
+          <p>
+            ⚠️ <strong>And Eden is not just where the story starts. It is where the Bible tells you
+            what was lost, and what will one day be given back.</strong>
+          </p>
+          <p>
+            That is why this passage deserves a slow, careful read instead of a five second glance
+            at a graphic.
+          </p>
         </div>
       </section>
 
@@ -117,6 +141,10 @@ export default function GardenOfEdenFourRiversPage() {
           <p>
             Two different trees, two different roles in the story. Popular retellings sometimes
             blur them into one tree. Genesis keeps them distinct.
+          </p>
+          <p>
+            💡 <strong>Keep that tree of life in mind.</strong> It shows up one more time before
+            this guide is done, and not in Genesis.
           </p>
         </div>
 
@@ -236,18 +264,74 @@ export default function GardenOfEdenFourRiversPage() {
             <strong>Bible Buddy</strong>, brings out details like this that a summary always flattens.
           </p>
         </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
+          5. The Cherubim, the Sword, and the Tree of Life&apos;s Return
+        </h3>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Look again at what got left behind at the door of Eden.</p>
+          <p>Not a locked gate. Not a wall.</p>
+          <p>
+            <strong>Cherubims</strong>, and a flaming sword that turned every way.
+          </p>
+          <p>
+            Cherubim show up again and again in Scripture as guardians of God&apos;s holy presence.
+            You find them woven into the curtains of the tabernacle. You find them stationed over
+            the mercy seat in the holy of holies. Here, at the very start, they are already doing the
+            same job. Standing where sinful people cannot casually walk back into unguarded access to
+            God.
+          </p>
+          <p>
+            📌 <strong>The flaming sword was not cruelty. It was mercy in disguise.</strong> Eating
+            from the tree of life while carrying sin would have locked humanity into an endless
+            fallen state. God closed the door to protect a future, not just to punish a mistake.
+          </p>
+          <p>
+            ⚠️ This is the thread most graphics leave out completely. They show you four rivers and
+            call it done. They never follow the tree of life to see where it goes next.
+          </p>
+          <p>
+            Because it does go somewhere. All the way to the last chapter of the Bible.
+          </p>
+        </div>
+        <VerseQuote
+          text="Blessed are they that do his commandments, that they may have right to the tree of life, and may enter in through the gates into the city."
+          reference="Revelation 22:14"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            💡 <strong>Read that against Genesis 3:24.</strong> There, the way to the tree was guarded
+            and shut. Here, there is a right to enter, through open gates, into a city.
+          </p>
+          <p>
+            No cherubim blocking the road this time. No flaming sword turning every way. The gates
+            stand open to anyone whose sin has been dealt with.
+          </p>
+          <p>
+            If you want to walk through the whole chapter that sets this thread in motion, in order,
+            verse by verse, <ArticleLink href="/blog/genesis-2-explained">Genesis 2 explained</ArticleLink>{" "}
+            covers it start to finish.
+          </p>
+          <p>
+            📌 <strong>What sin closed in a garden, Christ reopens in a city.</strong> That is not a
+            coincidence Genesis and Revelation share. It is the whole Bible telling one story.
+          </p>
+        </div>
       </section>
 
       <section className="mt-14">
         <h2 className="text-3xl font-black tracking-tight text-slate-950">
           ✅ How to Read This Passage Well
         </h2>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Genesis 2 rewards slow readers, not skimmers.</p>
+          <p>Here are seven ways to actually dig into it this week.</p>
+        </div>
         <ol className="mt-4 list-decimal space-y-4 pl-6 text-lg leading-8 text-slate-700">
           <li>
-            <strong>Read Genesis 2 itself, not just a summary of it.</strong> Learning{" "}
-            <ArticleLink href="/blog/how-to-read-the-bible">how to read the Bible</ArticleLink>{" "}
-            slowly pays off here. Five minutes with the actual text beats scrolling ten graphics
-            about it.
+            <strong>Read Genesis 2 itself, not just a summary of it.</strong> Learning how to read
+            the Bible slowly pays off here. Five minutes with the actual text beats scrolling ten
+            graphics about it.
           </li>
           <li>
             <strong>Hold the location question loosely.</strong> Enjoy the puzzle of the Tigris and
@@ -255,8 +339,9 @@ export default function GardenOfEdenFourRiversPage() {
           </li>
           <li>
             <strong>Notice that work came before sin.</strong> Adam tended a garden in a perfect
-            world. Your work, done for God, is not a consequence of the fall. It is part of the
-            original design.
+            world before sin ever entered the picture. Reading{" "}
+            <ArticleLink href="/blog/who-was-adam">who Adam was</ArticleLink> in Scripture shows he
+            was a caretaker and a namer first, not just the man who fell.
           </li>
           <li>
             <strong>Mark the passage for yourself.</strong> A simple{" "}
@@ -265,43 +350,108 @@ export default function GardenOfEdenFourRiversPage() {
             </ArticleLink>{" "}
             makes it easy to come back to Genesis 2 later and see the whole picture at a glance.
           </li>
+          <li>
+            <strong>Trace the four rivers on a modern map.</strong> Open a map and find the Tigris
+            and Euphrates for yourself. Then notice how much harder Havilah and Cush are to pin down.
+            Seeing the real geography makes the honest mystery feel less abstract.
+          </li>
+          <li>
+            <strong>Look up Havilah and Cush in a Bible dictionary.</strong> A good Bible dictionary
+            will show you every other place those names appear in Scripture. That wider view is more
+            useful than any single map graphic, because it shows you the debate instead of hiding it.
+          </li>
+          <li>
+            <strong>Read Genesis 2 alongside Revelation 22, then journal it.</strong> Put the two
+            chapters side by side. Write down what &quot;very good&quot; meant before the fall, and
+            what gets restored in Revelation. Seeing the beginning and the end together is one of the
+            clearest ways to see the whole Bible as one story.
+          </li>
         </ol>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>None of these take more than a few minutes.</p>
+          <p>Pick two to start this week. Not all seven.</p>
+        </div>
       </section>
 
       <section className="mt-14">
         <h2 className="text-3xl font-black tracking-tight text-slate-950">
           📖 Key Verses on the Garden of Eden
         </h2>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>You could study this chapter for weeks. Start with these four.</p>
+        </div>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">Genesis 2:9</h3>
         <VerseQuote
           text="And out of the ground made the LORD God to grow every tree that is pleasant to the sight, and good for food; the tree of life also in the midst of the garden, and the tree of knowledge of good and evil."
           reference="Genesis 2:9"
         />
-        <p className="mt-5 text-lg leading-8 text-slate-700">
-          The center of the garden held a choice, not just beauty. Everything pleasant to look at
-          surrounded one tree that would define the rest of human history.
-        </p>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            The center of the garden held a choice, not just beauty. Everything pleasant to look at
+            surrounded one tree that would define the rest of human history.
+          </p>
+          <p>Two trees, side by side, both named on purpose.</p>
+          <p>
+            📌 <strong>God did not hide the tree of knowledge in a corner.</strong> He put it right
+            where Adam and Eve would see it every day. The boundary was never about distance. It was
+            about trust.
+          </p>
+        </div>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">Genesis 2:15</h3>
         <VerseQuote
           text="And the LORD God took the man, and put him into the garden of Eden to dress it and to keep it."
           reference="Genesis 2:15"
         />
-        <p className="mt-5 text-lg leading-8 text-slate-700">
-          Two verbs, dress and keep, describe purposeful, meaningful labor. God placed Adam there on
-          purpose, with a job, not just a view.
-        </p>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            Two verbs, dress and keep, describe purposeful, meaningful labor. God placed Adam there
+            on purpose, with a job, not just a view.
+          </p>
+          <p>
+            💡 <strong>Your work is not a side effect of the fall.</strong> It is part of how God
+            designed people from the very beginning, before anything went wrong.
+          </p>
+          <p>That should change how you see your own Monday morning.</p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">Genesis 3:24</h3>
+        <VerseQuote
+          text="So he drove out the man; and he placed at the east of the garden of Eden Cherubims, and a flaming sword which turned every way, to keep the way of the tree of life."
+          reference="Genesis 3:24"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>This is the verse the graphics skip.</p>
+          <p>
+            The tree of life did not disappear. It stayed exactly where it was. What changed was
+            access.
+          </p>
+          <p>
+            ⚠️ <strong>Cherubim and a flaming sword are not decoration.</strong> They mark a real,
+            guarded boundary between sinful people and unrestricted access to life with God.
+          </p>
+          <p>Read this verse before you read Revelation 22. It makes the ending land much harder.</p>
+        </div>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">Revelation 22:1 and 2</h3>
         <VerseQuote
           text="And he shewed me a pure river of water of life, clear as crystal, proceeding out of the throne of God and of the Lamb. In the midst of the street of it, and on either side of the river, was there the tree of life, which bare twelve manner of fruits, and yielded her fruit every month: and the leaves of the tree were for the healing of the nations."
           reference="Revelation 22:1 and 2"
         />
-        <p className="mt-5 text-lg leading-8 text-slate-700">
-          💡 <strong>The Bible ends where it began.</strong> A river. A tree of life. Access restored.
-          What sin closed off in Genesis 3, Revelation shows opened again for good.
-        </p>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            💡 <strong>The Bible ends where it began.</strong> A river. A tree of life. Access
+            restored. What sin closed off in Genesis 3, Revelation shows opened again for good.
+          </p>
+          <p>
+            No cherubim guarding this river. No flaming sword. Just water flowing straight from the
+            throne of God, and a tree bearing fruit every single month.
+          </p>
+          <p>
+            ✅ <strong>That is not a different garden. It is the same promise, finished.</strong>
+          </p>
+        </div>
       </section>
 
       <section className="mt-14">
@@ -325,10 +475,8 @@ export default function GardenOfEdenFourRiversPage() {
         <p className="mt-4 text-lg leading-8 text-slate-700">
           Genesis describes it with the same kind of real world detail used for actual geography
           elsewhere in Scripture, naming rivers, regions, and minerals. It is written and treated as
-          a real place, even though its exact site is not known to us today. If questions like this
-          make you want firmer footing on{" "}
-          <ArticleLink href="/blog/how-to-defend-the-bible">why the Bible can be trusted</ArticleLink>,
-          that is worth exploring too.
+          a real place, even though its exact site is not known to us today. The text simply does
+          not read like a fable, and that detail matters when you weigh how seriously to take it.
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">
@@ -351,6 +499,26 @@ export default function GardenOfEdenFourRiversPage() {
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">
+          Could the Garden of Eden still exist today?
+        </h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          Scripture never says the garden was destroyed, but it also never says where it stands now.
+          Thousands of years of floods, war, and shifting rivers make any modern claim to have found
+          it unreliable. The honest answer is that we simply do not know, and Genesis does not ask
+          you to know. What it does promise is that the tree of life was not lost forever.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
+          What do the cherubim and flaming sword mean?
+        </h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          They mark a guarded boundary, not a random obstacle. Cherubim appear elsewhere in Scripture
+          guarding the presence of God, including over the mercy seat in the tabernacle. The flaming
+          sword that &quot;turned every way&quot; made the tree of life impossible to sneak past. It
+          was God protecting people from an endless fallen state, not simply punishing them.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
           Were the tree of life and the tree of knowledge the same tree?
         </h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
@@ -358,12 +526,30 @@ export default function GardenOfEdenFourRiversPage() {
           life stood in the middle of the garden, and the tree of knowledge of good and evil is
           named right alongside it as a distinct tree with its own role in the story.
         </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">Is Havilah a real place?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          Havilah is named as a real region in Genesis, tied to gold, bdellium, and onyx stone, and
+          the name shows up again later in the Old Testament. But its exact location has not been
+          confidently identified by modern scholars. It is treated in Scripture as a genuine place,
+          just one whose location has been lost to time rather than one that was ever fictional.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
+          Does the tree of life appear again anywhere in the Bible?
+        </h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          Yes, in the very last chapter of Revelation. It stands beside a river flowing from the
+          throne of God, bearing fruit every month, and its leaves are for the healing of the
+          nations. What cherubim and a flaming sword guarded in Genesis 3, Revelation shows made
+          freely available again, this time through gates that stand open.
+        </p>
       </section>
 
       <section className="mt-14">
         <h2 className="text-3xl font-black tracking-tight text-slate-950">🔑 Final Thoughts</h2>
         <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
-          <p>Strip away the graphics and the guesswork, and here is what actually stands in Genesis 2.</p>
+          <p>Strip away the graphics and the guesswork, and here is what actually stands in Genesis 2 and 3.</p>
           <p>
             📌 <strong>A real garden, planted by God, with two named trees and one clear command.</strong>
           </p>
@@ -375,6 +561,11 @@ export default function GardenOfEdenFourRiversPage() {
             📌 <strong>Work and responsibility, given to Adam before sin ever entered the picture.</strong>
           </p>
           <p>
+            📌 <strong>A guarded door, and a promise it would not stay guarded forever.</strong>{" "}
+            Cherubim and a flaming sword closed the way to the tree of life. Revelation shows that
+            same tree standing again, with gates thrown open.
+          </p>
+          <p>
             The location is worth understanding. The relationship it pictures is worth wanting back.
           </p>
           <p>
@@ -383,7 +574,7 @@ export default function GardenOfEdenFourRiversPage() {
             promises, a garden opened again, a tree of life within reach, for anyone who trusts
             God&apos;s Son.
           </p>
-          <p>Read Genesis 2 for yourself this week. Slowly. Verse by verse.</p>
+          <p>Read Genesis 2 and Revelation 22 for yourself this week. Slowly. Verse by verse.</p>
           <p>You will notice details a graphic never had room for.</p>
         </div>
       </section>
