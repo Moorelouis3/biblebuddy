@@ -4057,3 +4057,14 @@ Next up: Day 201
 ## 2026-09-13T20:27:29Z (bible year day writer run)
 Day: 201 — Pride, Refuge, and the Nations (Isaiah 16-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only
 Next up: Day 202. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-14T00:00:00Z (bible year day writer run)
+Local `main` was a stale ref again on this fresh container (detached HEAD
+matched true origin/main tip at Day 201 exactly); fixed with
+`git checkout -B main origin/main`, clean fast-forward, no rescue branch
+needed. Plan entry for Day 202 already existed in
+`ADDITIONAL_BIBLE_YEAR_SCHEDULE_RAW`, so no plan edits were needed.
+Day: 202 — Egypt, Babylon, and Trust (Isaiah 19-21) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only
+Next up: Day 203
