@@ -4100,3 +4100,9 @@ Day: 206 — Woe, Rescue, and the Coming King (Isaiah 31-33) | Runtime: audio
 not rendered (no API/Supabase credentials in this environment) | Cast:
 narrator only
 Next up: Day 207
+
+## 2026-09-14T01:10:00Z (bible year day writer run)
+Day: 207 — Judgment and Assyria's Threat (Isaiah 34-36) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only
+Next up: Day 208. Stopping here — two-day budget cap for this run reached.
