@@ -4133,3 +4133,9 @@ Day: 209 — Comfort and the Servant (Isaiah 40-42) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only
 Next up: Day 210. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-14T00:00:00Z (bible year day writer run)
+Day: 210 — God Redeems and Names Cyrus (Isaiah 43-45) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only
+Next up: Day 211
