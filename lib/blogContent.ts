@@ -1049,7 +1049,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/5-things-holding-men-back-from-god",
     legacyPath: "/bible-study-hub/christian-foundations/5-things-holding-men-back-from-god",
     publishedAt: "2026-07-31",
-    readTime: "7 min read",
+    readTime: "16 min read",
     image: "/blog-banners/5-things-holding-men-back-from-god.jpg",
   },
   {
