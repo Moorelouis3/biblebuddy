@@ -1,195 +1,553 @@
 import BlogPostShell from "@/components/blog/BlogPostShell";
+import Link from "next/link";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
 
-export const metadata = buildBlogArticleMetadata("what-is-hell");
+export const metadata = buildBlogArticleMetadata("what-is-hell", {
+  title: "What Is Hell? What the Bible Actually Says About Sheol, Hades, and the Lake of Fire",
+});
+
+function VerseQuote({ text, reference }: { text: string; reference: string }) {
+  return (
+    <blockquote className="mt-5 rounded-2xl border border-[#d7e5ff] bg-[#f7faff] px-6 py-5 text-lg italic leading-8 text-slate-700">
+      <p>&quot;{text}&quot;</p>
+      <footer className="mt-3 text-sm font-bold uppercase tracking-[0.16em] text-[#0056fd]">
+        {reference}
+      </footer>
+    </blockquote>
+  );
+}
+
+function ArticleLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link href={href} className="font-bold text-[#0056fd] underline decoration-2 underline-offset-2 transition hover:text-[#003bb0]">
+      {children}
+    </Link>
+  );
+}
 
 export default function WhatIsHell() {
   return (
     <BlogPostShell
       slug="what-is-hell"
-      title={<>What Is Hell</>}
+      title={<>🔥 What Is Hell? What the Bible Actually Says</>}
       intro={
         <>
-          <h2 className="text-xl font-semibold mb-3">Understanding Hell Biblically</h2>
-      <p className="mb-4">When most people hear the word hell, they already have a picture in their minds.</p>
-      <p className="mb-4">You die.<br />You stand before God.<br />You are either accepted or rejected.</p>
-      <p className="mb-4">If you are accepted, you go to heaven.<br />If you are rejected, you go straight to a fiery place of torment forever.</p>
-      <p className="mb-4">That is the common image.</p>
-      <ul className="mb-4 ml-6 list-none">
-        <li>🔥 Underground</li>
-        <li>🔥 Fire</li>
-        <li>🔥 Screaming</li>
-        <li>🔥 Immediate punishment</li>
-      </ul>
-      <p className="mb-4">But when we actually open the Bible, the picture is more layered than that.</p>
-      <p className="mb-4">Scripture does not present hell as one simple moment.</p>
-      <p className="mb-4">It unfolds in stages.</p>
-      <p className="mb-4">And much of the confusion comes from the fact that one English word is used to translate several different biblical ideas.</p>
+          <div className="mt-8 space-y-5 text-lg leading-8 text-slate-700">
+            <p>Maybe someone you love died and you do not know if they knew Jesus.</p>
+            <p>Maybe you grew up scared of a cartoon devil with a pitchfork and you are not sure how much of that is actually in the Bible.</p>
+            <p>Maybe you are just tired of vague answers and you want to know what Scripture really says about hell.</p>
+            <p>Whatever brought you here, you are asking the right question in the right place.</p>
+            <p>
+              📌 <strong>Hell is one of the most misunderstood topics in the whole Bible, and also one of the most serious.</strong>
+            </p>
+            <p>Most of what people believe about hell did not come from Scripture.</p>
+            <p>It came from movies. From medieval paintings. From jokes about pitchforks and red suits.</p>
+            <p>The real picture in the Bible is different. It is more careful. It unfolds in stages instead of arriving all at once.</p>
+            <p>
+              And the Bible uses several different words that our English translations often flatten into one word: hell. Sheol. Hades. Gehenna. The lake of fire.
+            </p>
+            <p>Each one means something a little different, and the differences actually matter.</p>
+            <p>This guide will walk you through what each word means, what the Bible says happens after death, why this doctrine matters for your faith, and honest answers to the hard questions people actually ask.</p>
+            <p>Including whether hell lasts forever. Including what happens to people who never heard the gospel. Including what to say to someone grieving a loved one who may not have known the Lord.</p>
+            <p>This is heavy ground. Take it slow.</p>
+            <p>Let&apos;s open the Word and look at what is actually there.</p>
+          </div>
         </>
       }
     >
-      <h2 className="text-xl font-semibold mt-8 mb-3">📖 The Bible Did Not Originally Use the Word Hell</h2>
-      <p className="mb-4">The Old Testament was written in Hebrew.</p>
-      <p className="mb-4">The New Testament was written in Greek.</p>
-      <p className="mb-4">Neither language originally used the English word hell.</p>
-      <p className="mb-4">In the Old Testament, the word most often used is:</p>
-      <p className="mb-4">📜 Sheol</p>
-      <p className="mb-4">In the New Testament, the primary word is:</p>
-      <p className="mb-4">📜 Hades</p>
-      <p className="mb-4">Jesus also uses another word:</p>
-      <p className="mb-4">📜 Gehenna</p>
-      <p className="mb-4">When the King James Bible was translated in the early 1600s, the translators frequently used the single English word hell to translate all three.</p>
-      <ul className="mb-4 ml-6 list-none">
-        <li>🔥 Sheol</li>
-        <li>🔥 Hades</li>
-        <li>🔥 Gehenna</li>
-      </ul>
-      <p className="mb-4">Three different concepts became one English word.</p>
-      <p className="mb-4">That blending shaped how many people think about the afterlife today.</p>
-      <p className="mb-4">But the Bible itself distinguishes between them.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">🌑 Sheol in the Old Testament</h2>
-      <p className="mb-4">The first clear reference appears in Genesis 37.</p>
-      <p className="mb-4">Jacob believes his son Joseph has died.</p>
-      <p className="mb-4">He says:</p>
-      <p className="mb-4">Genesis 37:35<br />“I shall go down to Sheol to my son, mourning.”</p>
-      <p className="mb-4">Jacob is not describing a lake of fire.</p>
-      <p className="mb-4">He is not describing final judgment.</p>
-      <p className="mb-4">In the Old Testament, Sheol refers to the realm of the dead.</p>
-      <ul className="mb-4 ml-6 list-none">
-        <li>⚰️ The grave</li>
-        <li>☠️ Death</li>
-        <li>🌑 The place where the dead go</li>
-      </ul>
-      <p className="mb-4">It is not fully described.</p>
-      <p className="mb-4">It is not mapped out in detail.</p>
-      <p className="mb-4">But it is presented as the destination of both the righteous and the wicked after death.</p>
-      <p className="mb-4">David speaks of Sheol.</p>
-      <p className="mb-4">Psalm 16:10<br />“For you will not abandon my soul to Sheol.”</p>
-      <p className="mb-4">Job speaks of Sheol.</p>
-      <p className="mb-4">Job 14:13<br />“Oh that you would hide me in Sheol.”</p>
-      <p className="mb-4">The Old Testament establishes the foundation.</p>
-      <p className="mb-4">Death leads somewhere.</p>
-      <p className="mb-4">But the details are limited.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">🌍 Hades in the New Testament</h2>
-      <p className="mb-4">When we move into the New Testament, the language shifts from Hebrew to Greek.</p>
-      <p className="mb-4">Sheol becomes Hades.</p>
-      <p className="mb-4">The idea remains similar.</p>
-      <p className="mb-4">But the New Testament provides more clarity.</p>
-      <p className="mb-4">The clearest teaching comes from Jesus Himself.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">👑 Jesus and the Rich Man and Lazarus</h2>
-      <p className="mb-4">In Luke 16, Jesus tells the story of a rich man and a poor man named Lazarus.</p>
-      <p className="mb-4">Luke 16:22 to 23<br />“The poor man died and was carried by the angels to Abraham’s bosom. The rich man also died and was buried, and in Hades, being in torment…”</p>
-      <p className="mb-4">Notice something important.</p>
-      <p className="mb-4">Both men die.</p>
-      <p className="mb-4">Both enter Hades.</p>
-      <p className="mb-4">But their experiences are different.</p>
-      <ul className="mb-4 ml-6 list-none">
-        <li>🔥 One is in torment</li>
-        <li>🤍 One is comforted</li>
-      </ul>
-      <p className="mb-4">Jesus describes a great chasm between them.</p>
-      <p className="mb-4">Luke 16:26<br />“A great chasm has been fixed.”</p>
-      <p className="mb-4">This reveals something crucial.</p>
-      <p className="mb-4">Hades is not one single undivided experience.</p>
-      <p className="mb-4">It contains separation.</p>
-      <p className="mb-4">One side is comfort.</p>
-      <p className="mb-4">One side is anguish.</p>
-      <p className="mb-4">The realm is shared.</p>
-      <p className="mb-4">The experience is not.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">🤍 What Is Abraham’s Bosom</h2>
-      <p className="mb-4">Jesus calls the place of comfort Abraham’s bosom.</p>
-      <p className="mb-4">In the ancient world, people reclined at meals.</p>
-      <p className="mb-4">To rest against someone’s chest represented closeness and acceptance.</p>
-      <ul className="mb-4 ml-6 list-none">
-        <li>🛡️ Safety</li>
-        <li>🕊️ Peace</li>
-        <li>🤍 Covenant belonging</li>
-      </ul>
-      <p className="mb-4">Abraham is used because he represents the covenant promise.</p>
-      <p className="mb-4">The righteous are pictured as resting in comfort within that promise.</p>
-      <p className="mb-4">This is not yet heaven as later described.</p>
-      <p className="mb-4">It is still within Hades.</p>
-      <p className="mb-4">But it is a place of peace.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">✝️ What Changed After Jesus</h2>
-      <p className="mb-4">After Jesus was crucified and buried, Scripture indicates that He descended to proclaim victory.</p>
-      <p className="mb-4">1 Peter 3:18 to 19<br />“He went and proclaimed to the spirits in prison.”</p>
-      <p className="mb-4">Ephesians 4:9<br />“He descended into the lower regions.”</p>
-      <p className="mb-4">After the resurrection, believers are described differently.</p>
-      <p className="mb-4">2 Corinthians 5:8<br />“To be away from the body is to be at home with the Lord.”</p>
-      <p className="mb-4">This suggests a shift.</p>
-      <p className="mb-4">Now, when believers die:</p>
-      <ul className="mb-4 ml-6 list-none">
-        <li>🕊️ They go to be with the Lord</li>
-      </ul>
-      <p className="mb-4">Hades remains.</p>
-      <p className="mb-4">But it functions as a temporary holding place for the wicked awaiting judgment.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">🔥 Gehenna and Final Judgment</h2>
-      <p className="mb-4">When Jesus warns about final punishment, He often uses the word Gehenna.</p>
-      <p className="mb-4">Gehenna was a real valley outside Jerusalem.</p>
-      <p className="mb-4">In the Old Testament, it was associated with child sacrifice and idolatry.</p>
-      <p className="mb-4">Later, it became a burning dump.</p>
-      <ul className="mb-4 ml-6 list-none">
-        <li>🗑️ Waste</li>
-        <li>🔥 Continuous fire</li>
-        <li>⚠️ A place associated with judgment</li>
-      </ul>
-      <p className="mb-4">Jeremiah 7:31 condemns what happened there.</p>
-      <p className="mb-4">When Jesus uses Gehenna, He is drawing on a vivid image His listeners understood.</p>
-      <p className="mb-4">Matthew 10:28<br />“Fear him who can destroy both soul and body in Gehenna.”</p>
-      <p className="mb-4">Gehenna represents final destruction and judgment.</p>
-      <p className="mb-4">It is not the temporary realm of Hades.</p>
-      <p className="mb-4">It points forward to something ultimate.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">🔚 The Lake of Fire</h2>
-      <p className="mb-4">Revelation clarifies what happens at the final judgment.</p>
-      <p className="mb-4">Revelation 20:13<br />“Death and Hades gave up the dead who were in them.”</p>
-      <p className="mb-4">Revelation 20:14<br />“Death and Hades were thrown into the lake of fire.”</p>
-      <p className="mb-4">Revelation 20:15<br />“If anyone’s name was not found written in the book of life, he was thrown into the lake of fire.”</p>
-      <p className="mb-4">This reveals a sequence.</p>
-      <ul className="mb-4 ml-6 list-none">
-        <li>☠️ Death</li>
-        <li>🌑 Hades</li>
-        <li>⚖️ Judgment</li>
-        <li>🔥 The lake of fire</li>
-      </ul>
-      <p className="mb-4">Hades is temporary.</p>
-      <p className="mb-4">The lake of fire is final.</p>
-      <p className="mb-4">Even Death itself is destroyed.</p>
-      <p className="mb-4">No more graves.</p>
-      <p className="mb-4">No more waiting.</p>
-      <p className="mb-4">Only final judgment.</p>
-      <h2 className="text-xl font-semibold mt-8 mb-3">📌 So What Is Hell</h2>
-      <p className="mb-4">Biblically, hell is not one single idea.</p>
-      <p className="mb-4">It is a process.</p>
-      <ul className="mb-4 ml-6 list-none">
-        <li>☠️ Physical death</li>
-        <li>🌑 Sheol or Hades</li>
-        <li>⏳ Waiting</li>
-        <li>⚖️ Judgment</li>
-        <li>🔥 The lake of fire</li>
-      </ul>
-      <p className="mb-4">The confusion comes from using one English word to describe multiple biblical concepts.</p>
-      <p className="mb-4">Scripture is more detailed than our modern assumptions.</p>
-      <p className="mb-4">Understanding these distinctions does not remove the seriousness of judgment.</p>
-      <p className="mb-4">It clarifies it.</p>
-      <p className="mb-4">The Bible presents a structured unfolding of events.</p>
-      <p className="mb-4">Not a simplistic picture.</p>
-      <p className="mb-4">And clarity matters.</p>
-      <p className="mb-4">Because when we understand what Scripture actually says, we are better equipped to respond to it with seriousness, humility, and truth.</p>
-      {/* Reflection Section */}
-      <div className="mt-8 mb-4 flex flex-col items-center">
-        <hr className="w-2/3 mb-2 border-blue-200" />
-        <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-900 mb-1">Reflection Question</h2>
-        <div className="text-lg md:text-xl font-semibold text-center text-gray-700 mb-1">
-          Before reading this, how did you personally understand Hell?
+      <section className="mt-14">
+        <h2 className="text-3xl font-black tracking-tight text-slate-950">
+          💙 Why This Matters for Your Faith
+        </h2>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>It would be easier to skip this topic.</p>
+          <p>Hell is not a comfortable subject. It is not the kind of thing you bring up at dinner.</p>
+          <p>But Jesus talked about hell more than almost anyone else in Scripture.</p>
+          <p>
+            📌 <strong>He did not talk about it to scare people for no reason. He talked about it because He loves people, and eternity is real.</strong>
+          </p>
+          <p>If hell is not real, none of this matters much.</p>
+          <p>But if it is real, then it is the single most urgent fact about the world you have ever heard.</p>
+          <p>
+            It changes how you see the people around you who do not know Jesus. It changes how you pray for them. It changes how you live your own life today, not just how you plan for the life to come.
+          </p>
+          <p>
+            This is also where a lot of people quietly wrestle with{" "}
+            <ArticleLink href="/blog/why-does-god-allow-suffering">
+              why a good and loving God would allow judgment at all
+            </ArticleLink>
+            . That question deserves a real answer, not a dismissal, and part of the answer starts with understanding what hell actually is and is not.
+          </p>
+          <p>The world&apos;s answer to hell is usually one of two extremes.</p>
+          <p>Either laugh it off as a fairy tale invented to control people. Or picture it so cartoonishly that it stops feeling real at all.</p>
+          <p>Scripture does neither.</p>
+          <p>
+            💡 <strong>The Bible treats hell with total seriousness, and it treats the cross with even more seriousness, because the cross is God&apos;s answer to hell.</strong>
+          </p>
+          <p>The stakes here are not abstract theology.</p>
+          <p>The stakes are the people you know who do not yet know Jesus.</p>
+          <p>That is why this matters, and that is why it is worth doing the hard work of getting it right.</p>
         </div>
-        <div className="text-sm italic text-gray-500 text-center mt-0 mb-0">
-          Share your thoughts below and join the conversation.
+      </section>
+
+      <section className="mt-14">
+        <h2 className="text-3xl font-black tracking-tight text-slate-950">
+          📖 What the Bible Actually Teaches About Hell
+        </h2>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
+          1. One English Word Covers Several Biblical Ideas
+        </h3>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>The Old Testament was written in Hebrew. The New Testament was written in Greek.</p>
+          <p>Neither language has a single word that matches everything English speakers mean by hell.</p>
+          <p>Instead, Scripture uses several different words.</p>
         </div>
-      </div>
-      {/* CommentSection wrapper with minimal top margin */}
-      <div className="mt-2">
-        {/* CommentSection is rendered by layout, so nothing else needed here */}
-      </div>
+        <ul className="mt-4 space-y-3 text-lg leading-8 text-slate-700">
+          <li>📜 <strong>Sheol</strong>, a Hebrew word for the realm of the dead</li>
+          <li>📜 <strong>Hades</strong>, the Greek word the New Testament uses in the same way</li>
+          <li>📜 <strong>Gehenna</strong>, a word Jesus used for final judgment</li>
+          <li>🔥 The <strong>lake of fire</strong>, described in Revelation as hell&apos;s final and permanent form</li>
+        </ul>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            Here is something that surprises a lot of people. The King James Bible never actually prints the words Sheol or Hades on the page. Instead, the translators rendered those Hebrew and Greek words as grave, pit, or hell depending on the context.
+          </p>
+          <p>So when you read the word hell in an old English Bible, it might be translating any one of these different ideas. That blending is exactly where most of the confusion comes from.</p>
+          <p>📌 <strong>The Bible is more precise than the English translations sometimes let on.</strong> Let&apos;s take each idea one at a time, in the order Scripture reveals them.</p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
+          2. Sheol: The Realm of the Dead in the Old Testament
+        </h3>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>The first clear reference to Sheol comes in Genesis 37.</p>
+          <p>Jacob believes his son Joseph is dead, torn apart by a wild animal. Listen to his grief.</p>
+        </div>
+        <VerseQuote
+          text="And all his sons and all his daughters rose up to comfort him; but he refused to be comforted; and he said, For I will go down into the grave unto my son mourning. Thus his father wept for him."
+          reference="Genesis 37:35"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            The King James renders the Hebrew word here as grave. But the underlying Hebrew word is Sheol, and it shows up again and again across the Old Testament.
+          </p>
+          <p>Jacob is not describing a lake of fire. He is not describing final judgment.</p>
+          <p>He is describing the place the dead go. Simply that.</p>
+        </div>
+        <ul className="mt-4 space-y-3 text-lg leading-8 text-slate-700">
+          <li>⚰️ The grave</li>
+          <li>☠️ Death itself</li>
+          <li>🌑 The unseen realm where the dead rest</li>
+        </ul>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Sheol is not mapped out in fine detail in the Old Testament. But it is presented as the destination of the righteous and the wicked alike after death.</p>
+          <p>David speaks of it with hope, trusting God even there.</p>
+        </div>
+        <VerseQuote
+          text="For thou wilt not leave my soul in hell; neither wilt thou suffer thine Holy One to see corruption."
+          reference="Psalm 16:10"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Here the King James actually uses the word hell, translating that same Hebrew word Sheol. Job speaks of it too, longing for rest in the middle of his suffering.</p>
+        </div>
+        <VerseQuote
+          text="O that thou wouldest hide me in the grave, that thou wouldest keep me secret, until thy wrath be past, that thou wouldest appoint me a set time, and remember me!"
+          reference="Job 14:13"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>💡 <strong>Grave, hell, pit. All three English words translate that same Hebrew word Sheol. The Old Testament establishes that death leads somewhere, but the details stay limited.</strong></p>
+          <p>The New Testament is where the picture sharpens.</p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
+          3. Hades and the Rich Man Who Was in Torment
+        </h3>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>When the language shifts from Hebrew to Greek in the New Testament, Sheol becomes Hades.</p>
+          <p>The clearest teaching comes straight from Jesus, in His story of a rich man and a beggar named Lazarus.</p>
+        </div>
+        <VerseQuote
+          text="And it came to pass, that the beggar died, and was carried by the angels into Abraham's bosom: the rich man also died, and was buried; And in hell he lift up his eyes, being in torments, and seeth Abraham afar off, and Lazarus in his bosom."
+          reference="Luke 16:22 to 23"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>The King James translates the Greek word Hades as hell in verse 23. Both men enter the same realm, but their experiences are opposite.</p>
+        </div>
+        <ul className="mt-4 space-y-3 text-lg leading-8 text-slate-700">
+          <li>🔥 One man is in torment</li>
+          <li>🤍 One man is comforted, resting in Abraham&apos;s bosom</li>
+        </ul>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Resting against someone&apos;s chest at a meal pictured closeness in that culture, so being at Abraham&apos;s side pictures the righteous resting safely within the covenant promise he represents.</p>
+          <p>Jesus describes an uncrossable line between the two men.</p>
+        </div>
+        <VerseQuote
+          text="And beside all this, between us and you there is a great gulf fixed: so that they which would pass from hence to you cannot; neither can they pass to us, that would come from thence."
+          reference="Luke 16:26"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>The rich man begs for even a drop of water on his tongue.</p>
+        </div>
+        <VerseQuote
+          text="And he cried and said, Father Abraham, have mercy on me, and send Lazarus, that he may dip the tip of his finger in water, and cool my tongue; for I am tormented in this flame."
+          reference="Luke 16:24"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>He cannot get it. The chasm is fixed. It will not move.</p>
+          <p>⚠️ <strong>Jesus tells this story to make one thing unmistakably clear: the choices you make in this life echo into the next one, and there is no undoing them afterward.</strong></p>
+          <p>Hades is not one shared experience. It contains real separation, comfort on one side and anguish on the other, and Jesus taught this Himself, in plain language, to real listeners.</p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
+          4. What Changed for Believers After the Resurrection
+        </h3>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Scripture indicates that after Jesus died, He proclaimed victory in that realm of the dead.</p>
+        </div>
+        <VerseQuote
+          text="For Christ also hath once suffered for sins, the just for the unjust, that he might bring us to God, being put to death in the flesh, but quickened by the Spirit: By which also he went and preached unto the spirits in prison"
+          reference="1 Peter 3:18 to 19"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>After the resurrection, the New Testament describes a believer&apos;s death differently than the Old Testament described Sheol.</p>
+        </div>
+        <VerseQuote
+          text="We are confident, I say, and willing rather to be absent from the body, and to be present with the Lord."
+          reference="2 Corinthians 5:8"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Paul does not say absence from the body means waiting quietly somewhere. He says it means being at home with the Lord, immediately.</p>
+          <p>✅ <strong>For those who belong to Jesus, death is no longer a holding place. It is the doorway straight into His presence.</strong></p>
+          <p>Hades still exists in Scripture&apos;s picture of things, but now it functions as a temporary place for the wicked, waiting for a final judgment that has not happened yet.</p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
+          5. Gehenna: The Word Jesus Used for Final Judgment
+        </h3>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>When Jesus warns about final punishment, He most often uses a different word entirely: Gehenna.</p>
+          <p>Gehenna was a real valley outside Jerusalem, and every listener knew exactly what it meant.</p>
+          <p>Israel&apos;s kings once burned their own children there in idol worship, an evil so dark that Jeremiah pronounced God&apos;s judgment on the place by name.</p>
+        </div>
+        <VerseQuote
+          text="And they have built the high places of Tophet, which is in the valley of the son of Hinnom, to burn their sons and their daughters in the fire; which I commanded them not, neither came it into my heart."
+          reference="Jeremiah 7:31"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Later, the same valley became Jerusalem&apos;s burning garbage dump, a place of waste and fire that never fully went out.</p>
+          <p>When Jesus reached for a word to describe final judgment, He reached for a place His listeners could already picture.</p>
+        </div>
+        <VerseQuote
+          text="And fear not them which kill the body, but are not able to kill the soul: but rather fear him which is able to destroy both soul and body in hell."
+          reference="Matthew 10:28"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>The King James renders Gehenna as hell here again.</p>
+          <p>📌 <strong>Gehenna is not the temporary waiting place of Hades. It points forward to something final.</strong></p>
+          <p>Which brings us to the last stage the Bible describes.</p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
+          6. The Lake of Fire: Hell&apos;s Final Form
+        </h3>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Revelation shows what happens at the very end of the story, after every other stage.</p>
+        </div>
+        <VerseQuote
+          text="And the sea gave up the dead which were in it; and death and hell delivered up the dead which were in them: and they were judged every man according to their works."
+          reference="Revelation 20:13"
+        />
+        <VerseQuote
+          text="And death and hell were cast into the lake of fire. This is the second death."
+          reference="Revelation 20:14"
+        />
+        <VerseQuote
+          text="And whosoever was not found written in the book of life was cast into the lake of fire."
+          reference="Revelation 20:15"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Notice the sequence Scripture lays out from beginning to end.</p>
+        </div>
+        <ul className="mt-4 space-y-3 text-lg leading-8 text-slate-700">
+          <li>☠️ Physical death</li>
+          <li>🌑 Sheol or Hades, the realm of the dead</li>
+          <li>⏳ A period of waiting</li>
+          <li>⚖️ Final judgment before God</li>
+          <li>🔥 The lake of fire</li>
+        </ul>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Even death and hell itself are thrown into the lake of fire in that passage. Nothing about this stage is temporary or in between.</p>
+          <p>Jesus describes this same final place in His own words about the judgment.</p>
+        </div>
+        <VerseQuote
+          text="Then shall he say also unto them on the left hand, Depart from me, ye cursed, into everlasting fire, prepared for the devil and his angels"
+          reference="Matthew 25:41"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            📌 <strong>That single line matters. Scripture says this fire was prepared for the devil and his angels, not originally for people.</strong> Hell was never God&apos;s desired ending for a single human being.
+          </p>
+          <p>
+            That is why understanding{" "}
+            <ArticleLink href="/blog/what-is-heaven">what the Bible says heaven actually is</ArticleLink>{" "}
+            matters just as much as understanding hell. Scripture never presents these as equal, opposite destinations that God is neutral toward. One is what He built for you. The other is what people choose by refusing Him.
+          </p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">
+          7. Is Hell Eternal? Where Faithful Christians Disagree
+        </h3>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>This is worth answering honestly, including the part where good, Bible believing Christians land in different places.</p>
+          <p>The majority view across church history is called eternal conscious torment. It holds that the lake of fire is unending suffering, forever.</p>
+        </div>
+        <VerseQuote
+          text="And these shall go away into everlasting punishment: but the righteous into life eternal."
+          reference="Matthew 25:46"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            The same Greek word for everlasting describes the punishment and the life in that verse. If life eternal never ends, this view says, the punishment does not either.
+          </p>
+          <p>
+            A smaller number of faithful Christians hold a different view, called conditional immortality or annihilationism. They point to language of death and destruction rather than unending consciousness.
+          </p>
+        </div>
+        <VerseQuote
+          text="Who shall be punished with everlasting destruction from the presence of the Lord, and from the glory of his power"
+          reference="2 Thessalonians 1:9"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            In this view, the wicked are ultimately destroyed rather than kept alive to suffer without end, and the everlasting part is that the destruction is never reversed.
+          </p>
+          <p>
+            Both views take hell with total seriousness. Both agree hell is real, hell is just, and hell is exactly what Jesus died on the cross to save you from.
+          </p>
+          <p>
+            💡 <strong>You do not have to settle every detail of hell to settle the one thing that actually determines where you spend eternity.</strong> That question is not about Sheol or Gehenna. It is about whether you belong to Jesus.
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-14">
+        <h2 className="text-3xl font-black tracking-tight text-slate-950">
+          ✅ How This Should Change the Way You Live
+        </h2>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Doctrine about hell was never meant to stay in your head.</p>
+          <p>It is meant to shape how you love people, how you pray, and how you live today.</p>
+          <p>Here are eight ways to let it.</p>
+        </div>
+        <ol className="mt-4 list-decimal space-y-4 pl-6 text-lg leading-8 text-slate-700">
+          <li>
+            <strong>Let it give your evangelism real urgency.</strong> If hell is real, then sharing Jesus is not a hobby for extra spiritual people. It is the most loving thing you can do for someone you care about.
+          </li>
+          <li>
+            <strong>Pray by name for the people you love who do not know Christ.</strong> Do not just worry about them quietly. Bring their names to God on purpose, regularly, and ask Him to open their eyes.
+          </li>
+          <li>
+            <strong>Rest in your own assurance instead of fear.</strong> If you belong to Jesus, this doctrine is not meant to make you anxious about your own soul.{" "}
+            <ArticleLink href="/blog/how-do-you-know-you-are-saved">
+              You can actually know you are saved
+            </ArticleLink>
+            , and that certainty is a gift, not arrogance.
+          </li>
+          <li>
+            <strong>Comfort grieving people with truth, not with guesses.</strong> If someone lost a loved one whose faith was unclear, do not promise them a certainty the Bible does not give you. Point them to God&apos;s justice and mercy, both of which are more perfect than yours.
+          </li>
+          <li>
+            <strong>Never use hell to manipulate or humiliate anyone.</strong> Jesus warned about hell out of love. If you ever use it to win an argument or shame someone into behaving, you are handling something sacred carelessly.
+          </li>
+          <li>
+            <strong>Let it deepen your gratitude for the cross.</strong> Every time you read about judgment, remember that Jesus took the weight of it Himself so you would not have to. That is not a small thing to walk past quickly.
+          </li>
+          <li>
+            <strong>Teach children the truth at an age they can carry it.</strong> You do not need to terrify a five year old with fire and smoke. You can teach that sin separates us from God and that Jesus makes a way back, and build from there as they grow.
+          </li>
+          <li>
+            <strong>Do not build your own security on being a good person.</strong> The rich man in Luke 16 likely thought his life looked successful. Scripture is clear that what saves you is trusting Christ, not comparing yourself to people who seem worse than you.
+          </li>
+        </ol>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>None of these habits require you to have every question about hell fully resolved.</p>
+          <p>They just require you to take what you already know seriously.</p>
+          <p>Pick one and start there this week.</p>
+        </div>
+      </section>
+
+      <section className="mt-14">
+        <h2 className="text-3xl font-black tracking-tight text-slate-950">
+          📖 Top Bible Verses About Hell
+        </h2>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>If you only remember a handful of verses from this whole guide, remember these.</p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">1. John 3:16</h3>
+        <VerseQuote
+          text="For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
+          reference="John 3:16"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>This is the verse that has to sit beside every conversation about hell.</p>
+          <p>Notice the word perish. Scripture assumes there is a real alternative to everlasting life, and it is not a neutral one.</p>
+          <p>But look at what drives the whole verse: love. God did not send Jesus reluctantly. He sent Him because He loved the world, including you.</p>
+          <p>The cross is not God working around His love to satisfy His justice. The cross is His love and His justice meeting in the same place.</p>
+          <p>If you take nothing else from this guide, take this one.</p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">2. Romans 6:23</h3>
+        <VerseQuote
+          text="For the wages of sin is death; but the gift of God is eternal life through Jesus Christ our Lord."
+          reference="Romans 6:23"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Wages are what you earn. A gift is what you cannot earn.</p>
+          <p>This verse draws the line as plainly as Scripture ever draws it. What sin earns is death, in the fullest sense the Bible means by that word.</p>
+          <p>What God offers instead is not something you work for. It is a gift, paid for by Christ.</p>
+          <p>Hell, in the end, is simply receiving what was earned instead of receiving the gift that was offered.</p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">3. Matthew 25:46</h3>
+        <VerseQuote
+          text="And these shall go away into everlasting punishment: but the righteous into life eternal."
+          reference="Matthew 25:46"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>This verse closes Jesus&apos;s teaching on the final judgment, and it is one of the clearest statements about hell&apos;s seriousness in all of Scripture.</p>
+          <p>Jesus puts two destinations side by side in one sentence, with no third option offered anywhere.</p>
+          <p>He is not vague here. He is not speaking in riddles. He speaks plainly because the stakes are real.</p>
+          <p>This is the verse to sit with if you have ever been tempted to think hell is just an old fashioned idea nobody really taught. Jesus taught it, in these exact words.</p>
+        </div>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">4. 2 Peter 3:9</h3>
+        <VerseQuote
+          text="The Lord is not slack concerning his promise, as some men count slackness; but is longsuffering to us-ward, not willing that any should perish, but that all should come to repentance."
+          reference="2 Peter 3:9"
+        />
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>This verse is the heart behind every hard truth in this guide.</p>
+          <p>God is not eager for anyone to face judgment. He is patient, on purpose, giving people time to turn to Him.</p>
+          <p>Every day someone you love has not yet turned to Christ is a day this verse is still true of them.</p>
+          <p>That patience is not permission to wait forever. It is an invitation to respond while there is still time.</p>
+        </div>
+      </section>
+
+      <section className="mt-14">
+        <h2 className="text-3xl font-black tracking-tight text-slate-950">
+          ❓ Frequently Asked Questions About Hell
+        </h2>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">Is hell a real place or just symbolic?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          The Bible speaks of hell as a real and personal destination, not merely a metaphor for a bad feeling. Jesus described it using concrete language, fire, torment, and a real chasm between the rich man and Lazarus. Some of the imagery, like fire and worms, is likely symbolic of a reality that is worse than the picture, not less real than it. Either way, Scripture never treats hell as make believe.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">Is hell eternal, or will it end?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          Most Christians throughout history have held that hell is everlasting, based on verses like Matthew 25:46 and Revelation 14:11. A smaller number of faithful believers hold that the wicked are ultimately destroyed rather than kept alive forever, pointing to language like everlasting destruction in 2 Thessalonians 1:9. Both views affirm that hell is real and final. What Scripture is fully clear on is that there is no exit from it once the final judgment happens.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">What about people who never heard about Jesus?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          Scripture says everyone has some knowledge of God through creation, so that no one is entirely without excuse. Christians genuinely disagree on the details of how God judges someone who never heard the gospel preached. What Scripture is emphatic about is the church&apos;s responsibility to actually take the gospel to{" "}
+          <ArticleLink href="/blog/people-who-never-heard-of-jesus">
+            people who have never heard
+          </ArticleLink>
+          , rather than resting on speculation about their fate. That urgency is the point, not a loophole to relax about.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">Do all religions believe in hell?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          Many world religions have some concept of punishment after death, but the details differ enormously from what the Bible describes. Some picture temporary purification rather than final judgment. Others describe endless cycles rather than one decisive verdict. The Bible&apos;s picture is unique in tying the outcome directly to a person&apos;s response to Jesus Christ, not to a scale of good and bad deeds.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">Will there be a second chance after death?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          Scripture does not offer that hope. The story of the rich man and Lazarus shows a chasm that cannot be crossed once someone has died. Hebrews says it is appointed for people to die once, and after that comes judgment. That is exactly why the Bible pushes so hard for a decision now, today, rather than later.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">What is the difference between Sheol, Hades, Gehenna, and the lake of fire?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          Sheol and Hades both describe the realm of the dead in general, the Hebrew and Greek words for the same basic idea. Gehenna is the word Jesus used most often for final punishment, drawing on a real valley outside Jerusalem tied to judgment. The lake of fire, described in Revelation, is the final and permanent form of judgment after death, Hades, and everything temporary is done away with.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">Why would a loving God send anyone to hell?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          God does not delight in anyone&apos;s judgment. Ezekiel says plainly that He has no pleasure in the death of the wicked and would rather see them turn and live. Hell is what people choose when they refuse the rescue God offers through{" "}
+          <ArticleLink href="/blog/is-jesus-the-only-way-to-god">
+            Jesus as the only way to God
+          </ArticleLink>
+          , not something He forces on people who wanted Him. The cross is proof of how far God went to keep people out of it.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">Can a Christian who still sins end up in hell?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          No true believer ends up in hell because of remaining sin they are still fighting. Salvation rests on trusting Christ, not on achieving sinless perfection. Scripture does warn that a life with no real change and no real faith is a serious warning sign, not a small detail to ignore. The question is never whether you still sin. The question is whether you belong to Jesus.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">What happens to babies or people who could not understand the gospel?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          The Bible does not give a single direct verse addressing this exact question, and Christians hold their answers with real humility here. Many point to God&apos;s consistent character throughout Scripture, a God who is more merciful and more just than we are, as reason for confidence in how He handles these cases. What Scripture does clearly reveal is God&apos;s heart, and that heart is not eager to condemn anyone who could not respond.
+        </p>
+
+        <h3 className="mt-8 text-2xl font-black text-slate-950">How can I know I am not going to hell?</h3>
+        <p className="mt-4 text-lg leading-8 text-slate-700">
+          Trust in Jesus Christ, not in your own record. Scripture says whosoever calls on the name of the Lord shall be saved, no exceptions and no extra requirements attached. If you have never done that honestly, you can do it right now, in your own words, telling God you need what Jesus did for you. That decision, not a feeling and not a performance afterward, is what settles the question for good.
+        </p>
+      </section>
+
+      <section className="mt-14">
+        <h2 className="text-3xl font-black tracking-tight text-slate-950">🔑 Final Thoughts</h2>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>If you remember nothing else from this guide, remember these three things.</p>
+          <p>
+            📌 <strong>The Bible describes hell in stages, not one simple picture.</strong> Sheol, Hades, Gehenna, and the lake of fire each mean something specific, and understanding them clears up confusion instead of removing the seriousness.
+          </p>
+          <p>
+            📌 <strong>Hell was never God&apos;s desired ending for you.</strong> The fire in Matthew 25 was prepared for the devil and his angels. God&apos;s whole heart, shown fully at the cross, is to rescue people from it.
+          </p>
+          <p>
+            📌 <strong>The way out was never in question. It is Jesus.</strong> Not being a good enough person. Not hoping you land on the right side of some invisible scale. Just Jesus.
+          </p>
+          <p>You may still have questions this guide did not fully answer.</p>
+          <p>That is honest. Some of these details are genuinely hard, and Scripture leaves a few of them open.</p>
+          <p>But the most important question in the whole topic is not open at all.</p>
+          <p>Have you trusted Jesus with your own soul?</p>
+          <p>If you have, you can rest. Not because the topic stopped being serious, but because your name is already written down.</p>
+          <p>If you have not, there is no better moment than the one you are in right now.</p>
+        </div>
+      </section>
+
+      <section className="mt-14">
+        <h2 className="text-3xl font-black tracking-tight text-slate-950">
+          🚀 Keep Growing With Bible Buddy
+        </h2>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            Heavy topics like this one are easier to work through when you are not doing it alone with a search bar.
+          </p>
+          <p>
+            Inside <strong>Bible Buddy</strong>, you will find:
+          </p>
+        </div>
+        <ul className="mt-4 space-y-3 text-lg leading-8 text-slate-700">
+          <li>📖 Verse by verse explanations in plain English</li>
+          <li>🌱 Daily devotionals that meet you where you are</li>
+          <li>🔥 A reading streak that keeps you coming back one day at a time</li>
+          <li>🤝 A community of believers walking the same road</li>
+        </ul>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>It is free to start. No pressure, no credit card.</p>
+          <p>Just you, God&apos;s Word, and a little help understanding it.</p>
+          <p>
+            Thousands of Christians are already reading this way, one day at a time. There is room for you.
+          </p>
+          <p>Start studying by clicking the button below. 👇</p>
+        </div>
+      </section>
     </BlogPostShell>
   );
 }

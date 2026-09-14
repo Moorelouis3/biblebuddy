@@ -1128,13 +1128,14 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "what-is-hell",
     title: "What Is Hell?",
-    description: "A biblical explanation of hell without confusion or shallow answers.",
+    description:
+      "What the Bible actually says about Sheol, Hades, Gehenna, and the lake of fire, and how it should change the way you live.",
     category: "Christian Foundations",
     categorySlug: "christian-foundations",
     canonicalPath: "/blog/what-is-hell",
     legacyPath: "/bible-study-hub/christian-foundations/what-is-hell",
     publishedAt: "2026-07-15",
-    readTime: "8 min read",
+    readTime: "22 min read",
     image: "/blog-banners/what-is-hell.jpg",
   },
   {
