@@ -2431,6 +2431,21 @@ export default function DashboardJourneyExperience({
   const bibleYearCompletionUpgradeResolverRef = useRef<(() => void) | null>(null);
   const bibleYearCompletionUpgradeDayRef = useRef<number | null>(null);
   const bibleYearJustCompletedDayRef = useRef<number | null>(null);
+  // A day asked for by the link (?day=6) that is about to be applied. The
+  // "snap to current day" effect runs in the same pass with stale state and
+  // used to overwrite it - tapping Day 6 on home opened Day 37 (Louis,
+  // 2026-09-14). A ref is visible to it immediately, state is not.
+  const bibleYearPendingUrlDayRef = useRef<number | null>(null);
+  // The day a solo link asked for, used for the very first draw so the
+  // current day never flashes up before the tapped one. Cleared as soon as
+  // the URL effect applies (or rejects) it.
+  const [linkedBibleYearDayNumber, setLinkedBibleYearDayNumber] = useState<number | null>(() => {
+    if (typeof window === "undefined") return null;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("solo") !== "1" || params.get("view") !== "bible-year") return null;
+    const dayNumber = Number(params.get("day") || 0);
+    return Number.isInteger(dayNumber) && dayNumber > 0 ? dayNumber : null;
+  });
   const [bibleYearInlineCompletionUpgradeDay, setBibleYearInlineCompletionUpgradeDay] = useState<number | null>(null);
   const bibleYearInlineCompletionUpgradeRef = useRef<HTMLElement | null>(null);
   const bibleYearTermTakeoverRef = useRef<HTMLDivElement | null>(null);
@@ -3080,9 +3095,16 @@ export default function DashboardJourneyExperience({
           canOpenBibleYearDayInJourneyOrder(selectedBibleYearSeriesDay),
         );
 
-        return shouldKeepJustCompletedDay || shouldUseManualSelectedDay
-          ? selectedBibleYearSeriesDay
-          : currentBibleYearDay;
+        if (shouldKeepJustCompletedDay || shouldUseManualSelectedDay) return selectedBibleYearSeriesDay;
+
+        // First draw from a solo link, before the URL effect has run.
+        const linkedDay =
+          linkedBibleYearDayNumber !== null && !selectedBibleYearSeriesDay
+            ? builtBibleYearDays.find((day) => day.dayNumber === linkedBibleYearDayNumber) || null
+            : null;
+        if (linkedDay && canOpenBibleYearDayInJourneyOrder(linkedDay)) return linkedDay;
+
+        return currentBibleYearDay;
       })()
     : null;
   const bibleYearDashboardTasks = activeBibleYearDashboardDay
@@ -4865,6 +4887,7 @@ export default function DashboardJourneyExperience({
 
   function resetBibleYearDashboardToCurrentDay() {
     bibleYearJustCompletedDayRef.current = null;
+    bibleYearPendingUrlDayRef.current = null;
     autoOpenedCompletedBibleYearDayRef.current = null;
     setBibleYearDashboardActive(true);
     setBibleYearSeriesActive(false);
@@ -5122,6 +5145,8 @@ export default function DashboardJourneyExperience({
     const params = new URLSearchParams(window.location.search);
     const view = params.get("view");
     if ((!bibleYearProgressLoaded || !bibleYearProgressResolved) && (view === "bible-year" || view === "bible-year-series" || !view)) return;
+    // From here the URL decides for real, so the first-draw stand-in retires.
+    setLinkedBibleYearDayNumber(null);
     if (view === "group") {
       setDashboardGroupDeepLinkPostId(params.get("post"));
       setDashboardGroupDeepLinkCommentId(params.get("comment"));
@@ -5161,6 +5186,7 @@ export default function DashboardJourneyExperience({
           )
         : false;
       if (day && shouldHonorRequestedDay) {
+        bibleYearPendingUrlDayRef.current = day.dayNumber;
         setBibleYearDashboardActive(true);
         setBibleYearSeriesActive(false);
         setBibleYearSeriesDetailDay(null);
@@ -5264,6 +5290,13 @@ export default function DashboardJourneyExperience({
     if (profile?.preferred_study_mode && profile.preferred_study_mode !== "bible_year") return;
     clearStoredBibleYearDashboardDayNumber(userId);
     const targetDay = activeBibleYearDashboardDay;
+
+    // The link's day is still being applied - don't snap over it.
+    const pendingUrlDay = bibleYearPendingUrlDayRef.current;
+    if (pendingUrlDay !== null) {
+      if (selectedBibleYearSeriesDay?.dayNumber !== pendingUrlDay) return;
+      bibleYearPendingUrlDayRef.current = null;
+    }
 
     if (selectedBibleYearSeriesDay?.dayNumber === targetDay.dayNumber) return;
     const shouldKeepManualSelectedDay = Boolean(

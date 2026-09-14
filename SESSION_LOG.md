@@ -4106,3 +4106,12 @@ Day: 207 — Judgment and Assyria's Threat (Isaiah 34-36) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only
 Next up: Day 208. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-13 (night)
+Time spent: ~3h
+Done: Bug DMs triaged + answered (trivia Next button fixed, crash screen with auto-recovery, Elsie confirmed still subscribed, Trent install help, Bree told Lil Louis fixed this week). New bug tracker: bug_reports + /admin/bugs + Bug Fixer cloud routine (6:30/14:30 UTC) + auto replies after deploys. Daily Verse archive (/daily-verses), generic Bookmarks (/bookmarks, profile menu), one-time Wisdom of Proverbs popup.
+Still open: OpenAI account out of credits (Lil Louis, moderator comments, audio down) - Louis must top up. ~1,100 addresses Systeme rejects.
+Next: watch first Bug Fixer run; popup impressions/joins in landing_page_events.
+
+## 2026-09-14
+Done: Bible in One Year - tapping an earlier day on the home strip (e.g. Day 6 while on Day 37) opened the current day instead. Two effects raced on load; fixed, plus no flash of the current day first. Verified before/after locally.
