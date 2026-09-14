@@ -4145,3 +4145,9 @@ Day: 211 — Idols Fall, God Carries (Isaiah 46-48) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only
 Next up: Day 212. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-14T20:25:00Z (bible year day writer run)
+Day: 212 — The Servant Restores Zion (Isaiah 49-51) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only
+Next up: Day 213
