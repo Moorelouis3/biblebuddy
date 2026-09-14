@@ -4121,3 +4121,15 @@ Day: 208 — Hezekiah's Prayer and Warning (Isaiah 37-39) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only
 Next up: Day 209
+
+## 2026-09-14T02:15:00Z (bible year day writer run)
+Pushing the Day 208 commit above hit the same recurring bug logged
+throughout MARCUS_HANDOFF.md: HEAD was detached one commit ahead of true
+origin/main, so `git push origin main` pushed the stale local branch ref
+and was rejected non-fast-forward. Verified `origin/main` was a clean
+ancestor of HEAD first, then fixed with `git checkout -B main HEAD` before
+retrying; nothing lost, Day 208 pushed clean right after.
+Day: 209 — Comfort and the Servant (Isaiah 40-42) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only
+Next up: Day 210. Stopping here — two-day budget cap for this run reached.
