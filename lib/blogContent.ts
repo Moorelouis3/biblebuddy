@@ -603,7 +603,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "christian-foundations",
     canonicalPath: "/blog/lessons-from-the-life-of-jesus",
     publishedAt: "2026-09-01",
-    readTime: "7 min read",
+    readTime: "13 min read",
     image: "/blog-banners/lessons-from-the-life-of-jesus.jpg",
     groupPost: {
       title: "15 Lessons From the Life of Jesus 📖",
