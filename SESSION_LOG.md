@@ -4139,3 +4139,9 @@ Day: 210 — God Redeems and Names Cyrus (Isaiah 43-45) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only
 Next up: Day 211
+
+## 2026-09-14T00:20:00Z (bible year day writer run)
+Day: 211 — Idols Fall, God Carries (Isaiah 46-48) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only
+Next up: Day 212. Stopping here — two-day budget cap for this run reached.
