@@ -5296,8 +5296,8 @@ function TrafficSourcesAnalyticsSection({
               <tr className="border-t-2 border-[var(--bb-card-border,#e2e8f0)] font-black text-[var(--bb-text-primary,#101827)]">
                 <td className="py-3 pr-3">Total</td>
                 <td className="px-3 py-3">100%</td>
-                <td className="px-3 py-3 text-right">{formatNumber(totalVisitors)}</td>
                 <td className="px-3 py-3 text-right">{formatNumber(totalSignups)}</td>
+                <td className="px-3 py-3 text-right">{formatNumber(totalVisitors)}</td>
                 <td className="py-3 pl-3 text-right">{conversionRate}%</td>
               </tr>
             </tfoot>
