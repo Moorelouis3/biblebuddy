@@ -148,6 +148,29 @@ export default function StPatrickPage() {
           <li>⛪ Training under church leaders</li>
         </ul>
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Training for the priesthood in the fifth century followed a strict order.</p>
+          <p>A man served first as a reader, then a deacon, then a priest.</p>
+          <p>Only after years in each role could he be raised to bishop.</p>
+          <p>
+            Every step meant more time under an older bishop, memorizing the Latin Psalms, learning
+            church law, and learning the rites of baptism and teaching.
+          </p>
+          <p>
+            💡 There was no shortcut. The Church did not hand authority to strangers, even one this
+            determined.
+          </p>
+          <p>
+            Later tradition says he studied for years at a place called Auxerre in Gaul, under a
+            bishop named Germanus.
+          </p>
+          <p>
+            ⚠️ Be honest about where that detail comes from. It is from a biography written
+            centuries after Patrick died, not from Patrick himself.
+          </p>
+          <p>His own Confessio never names the place or the man who trained him.</p>
+          <p>He only says, more than once, that his education was poor and that he is ashamed of his rough Latin.</p>
+        </div>
+        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
           <p>Eventually he was ordained as a bishop.</p>
           <p>
             ⏳ <strong>Nearly forty years passed between his capture as a teenager and his return to
@@ -178,6 +201,20 @@ export default function StPatrickPage() {
             him.</strong>
           </p>
           <p>He said in his Confessio that he was compelled by the Spirit to go.</p>
+          <p>He described a vision that helped push him toward that decision.</p>
+          <p>A man named Victoricus came to him in a dream, carrying more letters than he could count, all from Ireland.</p>
+          <p>
+            He read one, and as he read it he heard the voices of people from the very woods near
+            where he had been a slave, calling out together as one voice:
+          </p>
+          <p>
+            <em>&quot;We beg you, holy boy, to come and walk again among us.&quot;</em>
+          </p>
+          <p>It touched him so deeply that he could not keep reading. Then he woke up.</p>
+          <p>
+            📌 The same country that stole his freedom was the one calling him back, in a dream,
+            years later.
+          </p>
           <p>Read that and then think about the person you are still angry at.</p>
           <p>❓ Would you go back for them?</p>
           <p>That is not a rhetorical question. It is the entire point of his life.</p>
@@ -188,7 +225,22 @@ export default function StPatrickPage() {
           <p>Understand what he was walking into.</p>
           <p>Fifth century Ireland was not part of the Roman Empire.</p>
           <p>It was tribal and pagan.</p>
+          <p>Ireland had no single king and no central government.</p>
+          <p>It was split into dozens of small kingdoms called tuatha, each ruled by its own king.</p>
+          <p>
+            Tradition placed a high king over them all, seated at the hill of Tara, though real
+            power stayed scattered among the local rulers.
+          </p>
           <p>Druid priests held the spiritual authority.</p>
+          <p>
+            They served the kings as priests, judges, and advisors, and they guarded that role
+            closely.
+          </p>
+          <p>
+            They kept the old stories, read omens, and set the terms of worship at sacred wells,
+            trees, and hilltops.
+          </p>
+          <p>A new religion with a different priesthood was not just unfamiliar. It threatened the whole system of power.</p>
           <p>Worship centered on nature, many gods, and ritual.</p>
           <p>Christianity was almost unknown there.</p>
           <p>He had no Roman law to protect him and no local status.</p>
@@ -205,11 +257,29 @@ export default function StPatrickPage() {
           <p>And over years, whole communities turned to Christ.</p>
           <p>He baptized thousands. He ordained local leaders.</p>
           <p>He worked with the tribal system rather than against it.</p>
+          <p>He preached to them in the language he had first learned as a slave, herding sheep on their hills.</p>
           <p>He went to chieftains first, and when a chief believed, his people listened.</p>
           <p>He gave gifts to local kings for safe passage rather than demanding protection.</p>
           <p>
             💡 He was not naive. He was strategic, and he paid his own way through danger for
             decades.
+          </p>
+          <p>
+            One story about that danger comes from a biography written centuries after Patrick
+            died, not from his own hand.
+          </p>
+          <p>
+            It says the high king at Tara had ordered that no fire be lit anywhere nearby until his
+            own ceremonial fire was lit first.
+          </p>
+          <p>Patrick is said to have lit an Easter fire on a nearby hill anyway, in plain defiance of the order.</p>
+          <p>
+            ⚠️ Treat that one as tradition, not confirmed history. It comes from a Life of Patrick
+            written by a monk named Muirchú roughly two hundred years after Patrick lived.
+          </p>
+          <p>
+            💡 True in every detail or not, it captures something real about him. His whole mission
+            was a quiet refusal to bow to the old order.
           </p>
           <p>
             Compare that to what happened when Christianity later gained political power under{" "}
@@ -271,7 +341,28 @@ export default function StPatrickPage() {
           <p>The Confessio is not a victory lap.</p>
           <p>It is a defense written by an old man who was being criticized.</p>
           <p>He calls himself a sinner, unlearned, and the least of all believers.</p>
+          <p>He put it in his own words, and they are worth reading exactly as he wrote them:</p>
+          <p>
+            <em>
+              &quot;My name is Patrick. I am a sinner, a simple country person, and the least of all
+              believers. I am looked down upon by many.&quot;
+            </em>
+          </p>
+          <p>That is not false humility written for effect. He meant it.</p>
           <p>He apologizes for his poor Latin, because slavery cost him his education.</p>
+          <p>He also described, in his own words, the prayer life that grew in him as a slave:</p>
+          <p>
+            <em>
+              &quot;I prayed frequently during the day. More and more the love of God increased,
+              and my sense of awe before God. In one day I would pray up to one hundred times, and
+              at night perhaps the same. I would rise to pray before dawn in snow and ice and
+              rain.&quot;
+            </em>
+          </p>
+          <p>
+            📌 That is not poetic exaggeration. That is a description of an actual daily life,
+            written by the man who lived it.
+          </p>
           <p>He gives God credit for everything and takes almost none of it.</p>
           <p>He also wrote about the fear he lived with.</p>
           <p>He expected to be murdered or enslaved again, and said so plainly.</p>

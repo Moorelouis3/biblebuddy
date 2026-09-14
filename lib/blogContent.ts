@@ -444,12 +444,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "armor-of-god-explained",
     title: "The Armor of God Explained",
     description:
-      "The Armor of God from Ephesians 6:10 to 18 explained piece by piece: the belt of truth, breastplate, shield of faith, sword of the Spirit, and prayer.",
+      "The Armor of God from Ephesians 6:10 to 18 explained piece by piece: the belt of truth, breastplate of righteousness, shoes of peace, shield of faith, helmet of salvation, sword of the Spirit, and prayer.",
     category: "Verse Breakdowns",
     categorySlug: "verse-breakdowns",
     canonicalPath: "/blog/armor-of-god-explained",
     publishedAt: "2026-09-01",
-    readTime: "9 min read",
+    readTime: "16 min read",
     image: "/armor-of-god-explained-banner-v2.jpg",
     groupPost: {
       title: "The Armor of God Explained 📖",
@@ -1254,7 +1254,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/st-patrick",
     legacyPath: "/bible-study-hub/christian-history/st-patrick",
     publishedAt: "2026-06-22",
-    readTime: "6 min read",
+    readTime: "8 min read",
     image: "/blog-banners/st-patrick.jpg",
   },
   {
