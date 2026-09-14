@@ -80,8 +80,8 @@ export async function GET(request: NextRequest) {
 
     const userIds = [...new Set(sends.map((s) => s.user_id))];
     const emailByUser = new Map<string, string>();
-    for (let i = 0; i < userIds.length; i += 500) {
-      const chunk = userIds.slice(i, i + 500);
+    for (let i = 0; i < userIds.length; i += 200) {
+      const chunk = userIds.slice(i, i + 200); // >~350 ids in .in() overflows the URL
       const { data: signups } = await supabaseAdmin
         .from("user_signups")
         .select("user_id, email")

@@ -2326,7 +2326,13 @@ function getLandingUrlFromPath(pagePath: string) {
   return pagePath.startsWith("http") ? pagePath : `https://mybiblebuddy.net${pagePath.startsWith("/") ? pagePath : `/${pagePath}`}`;
 }
 
-function summarizeTrafficSources(rows: LandingEventRow[], blogVisits: BlogVisitRow[] = []) {
+/**
+ * newUserIds: accounts created in this window. When given, a sign-up event
+ * only counts if its user is one of them - a guest who upgrades to a full
+ * account fires a sign-up event too but is not a new user, and counting it
+ * made this total disagree with the Overview's New Users.
+ */
+function summarizeTrafficSources(rows: LandingEventRow[], blogVisits: BlogVisitRow[] = [], newUserIds?: Set<string>) {
   const landingRows = rows
     .filter((row) => row.event_name === "landing_page_visit" || row.event_name === "landing_page_visited")
     .sort((a, b) => new Date(a.created_at || 0).getTime() - new Date(b.created_at || 0).getTime());
@@ -2437,9 +2443,12 @@ function summarizeTrafficSources(rows: LandingEventRow[], blogVisits: BlogVisitR
   }
 
   const signedUpActors = new Set<string>();
+  // Every counted user, unlike signupRows which is capped per source.
+  const countedSignupUserIds = new Set<string>();
   for (const row of signupRows) {
     const actorId = getEventActorId(row);
     if (!actorId || signedUpActors.has(actorId)) continue;
+    if (newUserIds && typeof row.user_id === "string" && row.user_id && !newUserIds.has(row.user_id)) continue;
     signedUpActors.add(actorId);
 
     const sessionId = typeof row.session_id === "string" ? row.session_id : "";
@@ -2452,6 +2461,7 @@ function summarizeTrafficSources(rows: LandingEventRow[], blogVisits: BlogVisitR
     const attributionRow = firstVisit || row;
     const pagePath = getLandingEventPagePath(attributionRow);
     signupCounts.set(source, (signupCounts.get(source) || 0) + 1);
+    if (userId) countedSignupUserIds.add(userId);
     if (!sourceCounts.has(source)) sourceCounts.set(source, 0);
     if (!signupsBySource.has(source)) signupsBySource.set(source, []);
     signupsBySource.get(source)?.push({
@@ -2540,12 +2550,13 @@ function summarizeTrafficSources(rows: LandingEventRow[], blogVisits: BlogVisitR
           .slice(0, 100),
       };
     })
-    .sort((a, b) => b.visitors - a.visitors || a.source.localeCompare(b.source));
+    .sort((a, b) => b.signups - a.signups || b.visitors - a.visitors || a.source.localeCompare(b.source));
 
   return {
     totalVisitors,
     sources,
     video,
+    countedSignupUserIds,
   };
 }
 
@@ -2587,14 +2598,8 @@ function mergeProfileSignupAttributionIntoTrafficSources(
     visitorRows: [...source.visitorRows],
     signupRows: [...source.signupRows],
   }]));
-  const countedSignupUserIds = new Set<string>();
+  const countedSignupUserIds = new Set<string>(summary.countedSignupUserIds);
   let extraVisitors = 0;
-
-  for (const source of summary.sources) {
-    for (const signup of source.signupRows) {
-      if (signup.userId) countedSignupUserIds.add(signup.userId);
-    }
-  }
 
   for (const profile of profileRows) {
     const userId = typeof profile.user_id === "string" ? profile.user_id : "";
@@ -2663,7 +2668,7 @@ function mergeProfileSignupAttributionIntoTrafficSources(
         .sort((a, b) => (b.signedUpAt || "").localeCompare(a.signedUpAt || ""))
         .slice(0, 100),
     }))
-    .sort((a, b) => b.visitors - a.visitors || b.signups - a.signups || a.source.localeCompare(b.source));
+    .sort((a, b) => b.signups - a.signups || b.visitors - a.visitors || a.source.localeCompare(b.source));
 
   return {
     ...summary,
@@ -4625,8 +4630,8 @@ async function buildRegisteredUserAnalytics(
   const profilesByUserId = new Map<string, { displayName: string; accountType: string | null }>();
   const userIds = authUsers.map((user) => user.id).filter(Boolean);
 
-  for (let index = 0; index < userIds.length; index += 500) {
-    const batch = userIds.slice(index, index + 500);
+  for (let index = 0; index < userIds.length; index += 200) {
+    const batch = userIds.slice(index, index + 200); // >~350 ids in .in() overflows the URL
     const { data: profiles } = await adminSupabase
       .from("profile_stats")
       .select("user_id, display_name, username, account_type")
@@ -5367,8 +5372,11 @@ export async function GET(request: Request) {
   const validSimpleAuthUsers = allAuthUsers.filter((user) => !isOwnerAuthUser(user.id, allAuthSummaryByUserId));
   const validSimpleAuthUserIds = validSimpleAuthUsers.map((user) => user.id).filter(Boolean);
   const profileSignupAttributionRows: ProfileSignupAttributionRow[] = [];
-  for (let index = 0; index < validSimpleAuthUserIds.length; index += 1000) {
-    const userIds = validSimpleAuthUserIds.slice(index, index + 1000);
+  // 200 per request: .in() puts every id in the URL, and ~350+ uuids makes
+  // PostgREST reject it - at 1000 this silently dropped every profile and
+  // Traffic Sources showed half the real new users (2026-09-14).
+  for (let index = 0; index < validSimpleAuthUserIds.length; index += 200) {
+    const userIds = validSimpleAuthUserIds.slice(index, index + 200);
     if (userIds.length === 0) continue;
 
     const { data: profileSignupRows, error: profileSignupError } = await adminSupabase
@@ -5423,7 +5431,15 @@ export async function GET(request: Request) {
     }
   }
   const trafficSources = mergeProfileSignupAttributionIntoTrafficSources(
-    summarizeTrafficSources(validLandingEventRows, blogVisitRows),
+    summarizeTrafficSources(
+      validLandingEventRows,
+      blogVisitRows,
+      new Set(
+        validSimpleAuthUsers
+          .filter((user) => isTimestampInAnalyticsWindow(user.createdAt, journeySinceIso, journeyBeforeIso))
+          .map((user) => user.id),
+      ),
+    ),
     profileSignupAttributionRows,
     validSimpleAuthUsers,
     journeySinceIso,

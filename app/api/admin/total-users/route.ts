@@ -105,8 +105,8 @@ export async function GET() {
       auth: { autoRefreshToken: false, persistSession: false },
     });
 
-    for (let i = 0; i < registeredIds.length; i += 500) {
-      const batch = registeredIds.slice(i, i + 500);
+    for (let i = 0; i < registeredIds.length; i += 200) {
+      const batch = registeredIds.slice(i, i + 200); // >~350 ids in .in() overflows the URL
       const { data: profiles } = await admin
         .from("profile_stats")
         .select("user_id, display_name, username, is_paid")

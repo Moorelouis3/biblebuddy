@@ -871,6 +871,8 @@ type NormalizedMainTrafficSourceRow = {
   signups: number;
   signupRate: number;
   percent: number;
+  /** Share of all new users - the number the table is ranked by. */
+  signupPercent: number;
   visitorRows: MainTrafficSourceVisitorRow[];
   signupRows: MainTrafficSourceSignupRow[];
 };
@@ -906,6 +908,7 @@ function getNormalizedMainTrafficSources(report?: AnalyticsResponse["trafficSour
       signups: 0,
       signupRate: 0,
       percent: 0,
+      signupPercent: 0,
       visitorRows: [],
       signupRows: [],
     });
@@ -921,6 +924,7 @@ function getNormalizedMainTrafficSources(report?: AnalyticsResponse["trafficSour
       signups: 0,
       signupRate: 0,
       percent: 0,
+      signupPercent: 0,
       visitorRows: [],
       signupRows: [],
     };
@@ -939,14 +943,18 @@ function getNormalizedMainTrafficSources(report?: AnalyticsResponse["trafficSour
     .map((source) => buckets.get(source))
     .filter(Boolean) as NormalizedMainTrafficSourceRow[];
   const totalVisitors = rows.reduce((sum, row) => sum + row.visitors, 0);
+  const totalSignups = rows.reduce((sum, row) => sum + row.signups, 0);
 
+  // Ranked by new users, not visitors (Louis, 2026-09-14): a source with half
+  // the traffic but a quarter of the sign-ups should not sit on top.
   return rows
     .map((row) => ({
       ...row,
       percent: totalVisitors > 0 ? Number(((row.visitors / totalVisitors) * 100).toFixed(1)) : 0,
+      signupPercent: totalSignups > 0 ? Number(((row.signups / totalSignups) * 100).toFixed(1)) : 0,
       signupRate: row.visitors > 0 ? Math.min(100, Number(((row.signups / row.visitors) * 100).toFixed(1))) : 0,
     }))
-    .sort((a, b) => b.visitors - a.visitors || b.signups - a.signups || a.source.localeCompare(b.source));
+    .sort((a, b) => b.signups - a.signups || b.visitors - a.visitors || a.source.localeCompare(b.source));
 }
 
 function formatNumber(value: number) {
@@ -5100,9 +5108,9 @@ function TrafficSourcesAnalyticsSection({
       </div>
 
       <div className="rounded-[26px] border border-[var(--bb-card-border,#d8e3ec)] bg-[var(--bb-card,#ffffff)] p-5 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
-        <p className="text-lg font-black text-[var(--bb-text-primary,#101827)]">Visitors by Source</p>
+        <p className="text-lg font-black text-[var(--bb-text-primary,#101827)]">New Users by Source</p>
         <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
-          Breakdown of your visitors and sign-ups by traffic source.
+          Where your new users come from, best source first.
         </p>
 
         <div className="mt-4 overflow-x-auto">
@@ -5110,9 +5118,9 @@ function TrafficSourcesAnalyticsSection({
             <thead>
               <tr className="text-xs font-black uppercase tracking-[0.1em] text-[var(--bb-text-secondary,#94a3b8)]">
                 <th className="pb-3 pr-3 font-black">Source</th>
-                <th className="px-3 pb-3 font-black">% of Visitors</th>
-                <th className="px-3 pb-3 text-right font-black">Visitors</th>
+                <th className="px-3 pb-3 font-black">% of New Users</th>
                 <th className="px-3 pb-3 text-right font-black">New Users</th>
+                <th className="px-3 pb-3 text-right font-black">Visitors</th>
                 <th className="pb-3 pl-3 text-right font-black">Conversion Rate</th>
               </tr>
             </thead>
@@ -5153,21 +5161,21 @@ function TrafficSourcesAnalyticsSection({
                     <td className="px-3 py-3">
                       <div className="flex items-center gap-2">
                         <span className="w-10 shrink-0 text-xs font-bold text-[var(--bb-text-secondary,#64748b)]">
-                          {source.percent}%
+                          {source.signupPercent}%
                         </span>
                         <div className="h-2 w-24 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef2f7)] sm:w-32">
                           <div
                             className="h-full rounded-full transition-[width] duration-500 ease-out"
-                            style={{ width: `${Math.max(2, source.percent)}%`, background: brand.bar }}
+                            style={{ width: `${Math.max(2, source.signupPercent)}%`, background: brand.bar }}
                           />
                         </div>
                       </div>
                     </td>
                     <td className="px-3 py-3 text-right font-black text-[var(--bb-text-primary,#101827)]">
-                      {formatNumber(source.visitors)}
-                    </td>
-                    <td className="px-3 py-3 text-right font-black text-[var(--bb-text-primary,#101827)]">
                       {formatNumber(source.signups)}
+                    </td>
+                    <td className="px-3 py-3 text-right font-bold text-[var(--bb-text-secondary,#64748b)]">
+                      {formatNumber(source.visitors)}
                     </td>
                     <td className="py-3 pl-3 text-right font-bold text-[var(--bb-text-secondary,#64748b)]">
                       {source.signupRate}%

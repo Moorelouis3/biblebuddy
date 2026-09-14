@@ -379,8 +379,8 @@ export async function GET(request: Request) {
   }>();
   const currentDays = new Map<string, number>();
 
-  for (let index = 0; index < userIds.length; index += 500) {
-    const batch = userIds.slice(index, index + 500);
+  for (let index = 0; index < userIds.length; index += 200) {
+    const batch = userIds.slice(index, index + 200); // >~350 ids in .in() overflows the URL
     const [{ data: profileRows }, { data: progressRows }] = await Promise.all([
       admin
         .from("profile_stats")
