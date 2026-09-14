@@ -1135,7 +1135,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/what-is-hell",
     legacyPath: "/bible-study-hub/christian-foundations/what-is-hell",
     publishedAt: "2026-07-15",
-    readTime: "22 min read",
+    readTime: "18 min read",
     image: "/blog-banners/what-is-hell.jpg",
   },
   {

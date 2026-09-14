@@ -66,27 +66,22 @@ export default function WhatIsHell() {
           <p>
             📌 <strong>He did not talk about it to scare people for no reason. He talked about it because He loves people, and eternity is real.</strong>
           </p>
-          <p>If hell is not real, none of this matters much.</p>
-          <p>But if it is real, then it is the single most urgent fact about the world you have ever heard.</p>
+          <p>If hell is not real, none of this matters much. But if it is real, it is the single most urgent fact about the world you have ever heard.</p>
           <p>
-            It changes how you see the people around you who do not know Jesus. It changes how you pray for them. It changes how you live your own life today, not just how you plan for the life to come.
+            It changes how you see the people around you who do not know Jesus. It changes how you pray for them and how you live your own life today.
           </p>
           <p>
             This is also where a lot of people quietly wrestle with{" "}
             <ArticleLink href="/blog/why-does-god-allow-suffering">
               why a good and loving God would allow judgment at all
             </ArticleLink>
-            . That question deserves a real answer, not a dismissal, and part of the answer starts with understanding what hell actually is and is not.
+            , and part of the answer starts with understanding what hell actually is and is not.
           </p>
-          <p>The world&apos;s answer to hell is usually one of two extremes.</p>
-          <p>Either laugh it off as a fairy tale invented to control people. Or picture it so cartoonishly that it stops feeling real at all.</p>
-          <p>Scripture does neither.</p>
+          <p>The world&apos;s answer to hell is usually one of two extremes. Either laugh it off as a fairy tale, or picture it so cartoonishly it stops feeling real.</p>
           <p>
-            💡 <strong>The Bible treats hell with total seriousness, and it treats the cross with even more seriousness, because the cross is God&apos;s answer to hell.</strong>
+            💡 <strong>Scripture does neither. The Bible treats hell with total seriousness, and it treats the cross with even more seriousness, because the cross is God&apos;s answer to hell.</strong>
           </p>
-          <p>The stakes here are not abstract theology.</p>
-          <p>The stakes are the people you know who do not yet know Jesus.</p>
-          <p>That is why this matters, and that is why it is worth doing the hard work of getting it right.</p>
+          <p>The stakes here are not abstract theology. The stakes are the people you know who do not yet know Jesus.</p>
         </div>
       </section>
 
@@ -149,13 +144,7 @@ export default function WhatIsHell() {
           reference="Psalm 16:10"
         />
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
-          <p>Here the King James actually uses the word hell, translating that same Hebrew word Sheol. Job speaks of it too, longing for rest in the middle of his suffering.</p>
-        </div>
-        <VerseQuote
-          text="O that thou wouldest hide me in the grave, that thou wouldest keep me secret, until thy wrath be past, that thou wouldest appoint me a set time, and remember me!"
-          reference="Job 14:13"
-        />
-        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+          <p>Here the King James actually uses the word hell, translating that same Hebrew word Sheol.</p>
           <p>💡 <strong>Grave, hell, pit. All three English words translate that same Hebrew word Sheol. The Old Testament establishes that death leads somewhere, but the details stay limited.</strong></p>
           <p>The New Testament is where the picture sharpens.</p>
         </div>
@@ -187,16 +176,9 @@ export default function WhatIsHell() {
           reference="Luke 16:26"
         />
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
-          <p>The rich man begs for even a drop of water on his tongue.</p>
-        </div>
-        <VerseQuote
-          text="And he cried and said, Father Abraham, have mercy on me, and send Lazarus, that he may dip the tip of his finger in water, and cool my tongue; for I am tormented in this flame."
-          reference="Luke 16:24"
-        />
-        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
-          <p>He cannot get it. The chasm is fixed. It will not move.</p>
+          <p>The chasm is fixed. It will not move.</p>
           <p>⚠️ <strong>Jesus tells this story to make one thing unmistakably clear: the choices you make in this life echo into the next one, and there is no undoing them afterward.</strong></p>
-          <p>Hades is not one shared experience. It contains real separation, comfort on one side and anguish on the other, and Jesus taught this Himself, in plain language, to real listeners.</p>
+          <p>Hades is not one shared experience. It contains real separation, comfort on one side and anguish on the other, and Jesus taught this Himself, in plain language.</p>
         </div>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">
@@ -227,8 +209,7 @@ export default function WhatIsHell() {
         </h3>
         <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
           <p>When Jesus warns about final punishment, He most often uses a different word entirely: Gehenna.</p>
-          <p>Gehenna was a real valley outside Jerusalem, and every listener knew exactly what it meant.</p>
-          <p>Israel&apos;s kings once burned their own children there in idol worship, an evil so dark that Jeremiah pronounced God&apos;s judgment on the place by name.</p>
+          <p>Gehenna was a real valley outside Jerusalem, and every listener knew what it meant. Israel&apos;s kings once burned their own children there in idol worship, an evil so dark Jeremiah pronounced God&apos;s judgment on the place by name.</p>
         </div>
         <VerseQuote
           text="And they have built the high places of Tophet, which is in the valley of the son of Hinnom, to burn their sons and their daughters in the fire; which I commanded them not, neither came it into my heart."
@@ -267,7 +248,7 @@ export default function WhatIsHell() {
           reference="Revelation 20:15"
         />
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
-          <p>Notice the sequence Scripture lays out from beginning to end.</p>
+          <p>Notice the sequence.</p>
         </div>
         <ul className="mt-4 space-y-3 text-lg leading-8 text-slate-700">
           <li>☠️ Physical death</li>
@@ -277,8 +258,7 @@ export default function WhatIsHell() {
           <li>🔥 The lake of fire</li>
         </ul>
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
-          <p>Even death and hell itself are thrown into the lake of fire in that passage. Nothing about this stage is temporary or in between.</p>
-          <p>Jesus describes this same final place in His own words about the judgment.</p>
+          <p>Even death and hell itself are thrown into the lake of fire. Nothing about this stage is temporary. Jesus describes this same final place in His own words.</p>
         </div>
         <VerseQuote
           text="Then shall he say also unto them on the left hand, Depart from me, ye cursed, into everlasting fire, prepared for the devil and his angels"
@@ -286,12 +266,9 @@ export default function WhatIsHell() {
         />
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
           <p>
-            📌 <strong>That single line matters. Scripture says this fire was prepared for the devil and his angels, not originally for people.</strong> Hell was never God&apos;s desired ending for a single human being.
-          </p>
-          <p>
-            That is why understanding{" "}
+            📌 <strong>That single line matters. Scripture says this fire was prepared for the devil and his angels, not originally for people.</strong> Hell was never God&apos;s desired ending for you, which is why{" "}
             <ArticleLink href="/blog/what-is-heaven">what the Bible says heaven actually is</ArticleLink>{" "}
-            matters just as much as understanding hell. Scripture never presents these as equal, opposite destinations that God is neutral toward. One is what He built for you. The other is what people choose by refusing Him.
+            matters just as much as understanding hell. One is what He built for you. The other is what people choose by refusing Him.
           </p>
         </div>
 
@@ -300,7 +277,7 @@ export default function WhatIsHell() {
         </h3>
         <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
           <p>This is worth answering honestly, including the part where good, Bible believing Christians land in different places.</p>
-          <p>The majority view across church history is called eternal conscious torment. It holds that the lake of fire is unending suffering, forever.</p>
+          <p>The majority view across church history is eternal conscious torment, unending suffering forever.</p>
         </div>
         <VerseQuote
           text="And these shall go away into everlasting punishment: but the righteous into life eternal."
@@ -308,10 +285,10 @@ export default function WhatIsHell() {
         />
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
           <p>
-            The same Greek word for everlasting describes the punishment and the life in that verse. If life eternal never ends, this view says, the punishment does not either.
+            The same Greek word for everlasting describes the punishment and the life in that verse. If life eternal never ends, this view says, neither does the punishment.
           </p>
           <p>
-            A smaller number of faithful Christians hold a different view, called conditional immortality or annihilationism. They point to language of death and destruction rather than unending consciousness.
+            A smaller number of faithful Christians hold a different view, called annihilationism. They point to language of death and destruction rather than unending consciousness.
           </p>
         </div>
         <VerseQuote
@@ -320,13 +297,10 @@ export default function WhatIsHell() {
         />
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
           <p>
-            In this view, the wicked are ultimately destroyed rather than kept alive to suffer without end, and the everlasting part is that the destruction is never reversed.
+            In this view, the wicked are ultimately destroyed rather than kept alive to suffer without end.
           </p>
           <p>
-            Both views take hell with total seriousness. Both agree hell is real, hell is just, and hell is exactly what Jesus died on the cross to save you from.
-          </p>
-          <p>
-            💡 <strong>You do not have to settle every detail of hell to settle the one thing that actually determines where you spend eternity.</strong> That question is not about Sheol or Gehenna. It is about whether you belong to Jesus.
+            💡 <strong>Both views take hell with total seriousness, and both agree it is exactly what Jesus died on the cross to save you from.</strong> You do not have to settle every detail to settle the one thing that determines your eternity: whether you belong to Jesus.
           </p>
         </div>
       </section>
@@ -355,19 +329,19 @@ export default function WhatIsHell() {
             , and that certainty is a gift, not arrogance.
           </li>
           <li>
-            <strong>Comfort grieving people with truth, not with guesses.</strong> If someone lost a loved one whose faith was unclear, do not promise them a certainty the Bible does not give you. Point them to God&apos;s justice and mercy, both of which are more perfect than yours.
+            <strong>Comfort grieving people with truth, not with guesses.</strong> If someone lost a loved one whose faith was unclear, do not promise a certainty the Bible does not give you. Point them to God&apos;s justice and mercy, both more perfect than yours.
           </li>
           <li>
-            <strong>Never use hell to manipulate or humiliate anyone.</strong> Jesus warned about hell out of love. If you ever use it to win an argument or shame someone into behaving, you are handling something sacred carelessly.
+            <strong>Never use hell to manipulate or humiliate anyone.</strong> Jesus warned about hell out of love. Using it to win an argument or shame someone handles something sacred carelessly.
           </li>
           <li>
-            <strong>Let it deepen your gratitude for the cross.</strong> Every time you read about judgment, remember that Jesus took the weight of it Himself so you would not have to. That is not a small thing to walk past quickly.
+            <strong>Let it deepen your gratitude for the cross.</strong> Every time you read about judgment, remember that Jesus took the weight of it Himself so you would not have to.
           </li>
           <li>
-            <strong>Teach children the truth at an age they can carry it.</strong> You do not need to terrify a five year old with fire and smoke. You can teach that sin separates us from God and that Jesus makes a way back, and build from there as they grow.
+            <strong>Teach children the truth at an age they can carry it.</strong> You do not need to terrify a five year old with fire and smoke. Teach that sin separates us from God and Jesus makes a way back, then build from there as they grow.
           </li>
           <li>
-            <strong>Do not build your own security on being a good person.</strong> The rich man in Luke 16 likely thought his life looked successful. Scripture is clear that what saves you is trusting Christ, not comparing yourself to people who seem worse than you.
+            <strong>Do not build your own security on being a good person.</strong> The rich man in Luke 16 likely thought his life looked successful. What saves you is trusting Christ, not comparing yourself to people who seem worse than you.
           </li>
         </ol>
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
@@ -393,9 +367,7 @@ export default function WhatIsHell() {
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
           <p>This is the verse that has to sit beside every conversation about hell.</p>
           <p>Notice the word perish. Scripture assumes there is a real alternative to everlasting life, and it is not a neutral one.</p>
-          <p>But look at what drives the whole verse: love. God did not send Jesus reluctantly. He sent Him because He loved the world, including you.</p>
-          <p>The cross is not God working around His love to satisfy His justice. The cross is His love and His justice meeting in the same place.</p>
-          <p>If you take nothing else from this guide, take this one.</p>
+          <p>But look at what drives the whole verse: love. God sent Jesus because He loved the world, including you. The cross is His love and His justice meeting in the same place.</p>
         </div>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">2. Romans 6:23</h3>
@@ -405,8 +377,7 @@ export default function WhatIsHell() {
         />
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
           <p>Wages are what you earn. A gift is what you cannot earn.</p>
-          <p>This verse draws the line as plainly as Scripture ever draws it. What sin earns is death, in the fullest sense the Bible means by that word.</p>
-          <p>What God offers instead is not something you work for. It is a gift, paid for by Christ.</p>
+          <p>What sin earns is death, in the fullest sense the Bible means by that word. What God offers instead is a gift, paid for by Christ.</p>
           <p>Hell, in the end, is simply receiving what was earned instead of receiving the gift that was offered.</p>
         </div>
 
@@ -417,9 +388,8 @@ export default function WhatIsHell() {
         />
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
           <p>This verse closes Jesus&apos;s teaching on the final judgment, and it is one of the clearest statements about hell&apos;s seriousness in all of Scripture.</p>
-          <p>Jesus puts two destinations side by side in one sentence, with no third option offered anywhere.</p>
-          <p>He is not vague here. He is not speaking in riddles. He speaks plainly because the stakes are real.</p>
-          <p>This is the verse to sit with if you have ever been tempted to think hell is just an old fashioned idea nobody really taught. Jesus taught it, in these exact words.</p>
+          <p>Jesus puts two destinations side by side in one sentence, with no third option offered anywhere. He is not speaking in riddles here. He speaks plainly because the stakes are real.</p>
+          <p>This is the verse to sit with if you have ever been tempted to think hell is just an old idea nobody really taught. Jesus taught it, in these exact words.</p>
         </div>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">4. 2 Peter 3:9</h3>
@@ -430,7 +400,6 @@ export default function WhatIsHell() {
         <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
           <p>This verse is the heart behind every hard truth in this guide.</p>
           <p>God is not eager for anyone to face judgment. He is patient, on purpose, giving people time to turn to Him.</p>
-          <p>Every day someone you love has not yet turned to Christ is a day this verse is still true of them.</p>
           <p>That patience is not permission to wait forever. It is an invitation to respond while there is still time.</p>
         </div>
       </section>
@@ -442,60 +411,60 @@ export default function WhatIsHell() {
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">Is hell a real place or just symbolic?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          The Bible speaks of hell as a real and personal destination, not merely a metaphor for a bad feeling. Jesus described it using concrete language, fire, torment, and a real chasm between the rich man and Lazarus. Some of the imagery, like fire and worms, is likely symbolic of a reality that is worse than the picture, not less real than it. Either way, Scripture never treats hell as make believe.
+          The Bible speaks of hell as a real destination, not just a metaphor. Jesus described it with concrete language, fire, torment, and a real chasm between the rich man and Lazarus. Some of the imagery may be symbolic of something worse than the picture, not less real than it.
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">Is hell eternal, or will it end?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          Most Christians throughout history have held that hell is everlasting, based on verses like Matthew 25:46 and Revelation 14:11. A smaller number of faithful believers hold that the wicked are ultimately destroyed rather than kept alive forever, pointing to language like everlasting destruction in 2 Thessalonians 1:9. Both views affirm that hell is real and final. What Scripture is fully clear on is that there is no exit from it once the final judgment happens.
+          Most Christians throughout history have held that hell is everlasting, based on verses like Matthew 25:46. A smaller number of faithful believers hold that the wicked are ultimately destroyed rather than kept alive forever, pointing to language like everlasting destruction in 2 Thessalonians 1:9. Both views agree there is no exit from it once final judgment happens.
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">What about people who never heard about Jesus?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          Scripture says everyone has some knowledge of God through creation, so that no one is entirely without excuse. Christians genuinely disagree on the details of how God judges someone who never heard the gospel preached. What Scripture is emphatic about is the church&apos;s responsibility to actually take the gospel to{" "}
+          Scripture says everyone has some knowledge of God through creation, so no one is entirely without excuse. Christians genuinely disagree on the details of how God judges someone who never heard the gospel preached. What Scripture is emphatic about is the church&apos;s responsibility to take the gospel to{" "}
           <ArticleLink href="/blog/people-who-never-heard-of-jesus">
             people who have never heard
           </ArticleLink>
-          , rather than resting on speculation about their fate. That urgency is the point, not a loophole to relax about.
+          , rather than resting on speculation about their fate.
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">Do all religions believe in hell?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          Many world religions have some concept of punishment after death, but the details differ enormously from what the Bible describes. Some picture temporary purification rather than final judgment. Others describe endless cycles rather than one decisive verdict. The Bible&apos;s picture is unique in tying the outcome directly to a person&apos;s response to Jesus Christ, not to a scale of good and bad deeds.
+          Many religions have some concept of punishment after death, but the details differ enormously from Scripture. The Bible ties the outcome directly to a person&apos;s response to Jesus, not to a scale of good and bad deeds.
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">Will there be a second chance after death?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          Scripture does not offer that hope. The story of the rich man and Lazarus shows a chasm that cannot be crossed once someone has died. Hebrews says it is appointed for people to die once, and after that comes judgment. That is exactly why the Bible pushes so hard for a decision now, today, rather than later.
+          Scripture does not offer that hope. The rich man and Lazarus show a chasm that cannot be crossed once someone has died. It is appointed for people to die once, and after that comes judgment, which is why the Bible pushes so hard for a decision now.
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">What is the difference between Sheol, Hades, Gehenna, and the lake of fire?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          Sheol and Hades both describe the realm of the dead in general, the Hebrew and Greek words for the same basic idea. Gehenna is the word Jesus used most often for final punishment, drawing on a real valley outside Jerusalem tied to judgment. The lake of fire, described in Revelation, is the final and permanent form of judgment after death, Hades, and everything temporary is done away with.
+          Sheol and Hades both describe the realm of the dead, the Hebrew and Greek words for the same idea. Gehenna is the word Jesus used most for final punishment, drawing on a real valley tied to judgment. The lake of fire is the final, permanent form of judgment, after everything temporary is done away with.
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">Why would a loving God send anyone to hell?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          God does not delight in anyone&apos;s judgment. Ezekiel says plainly that He has no pleasure in the death of the wicked and would rather see them turn and live. Hell is what people choose when they refuse the rescue God offers through{" "}
+          God does not delight in anyone&apos;s judgment. Ezekiel says plainly He has no pleasure in the death of the wicked and would rather see them turn and live. Hell is what people choose when they refuse the rescue God offers through{" "}
           <ArticleLink href="/blog/is-jesus-the-only-way-to-god">
             Jesus as the only way to God
           </ArticleLink>
-          , not something He forces on people who wanted Him. The cross is proof of how far God went to keep people out of it.
+          , not something forced on people who wanted Him.
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">Can a Christian who still sins end up in hell?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          No true believer ends up in hell because of remaining sin they are still fighting. Salvation rests on trusting Christ, not on achieving sinless perfection. Scripture does warn that a life with no real change and no real faith is a serious warning sign, not a small detail to ignore. The question is never whether you still sin. The question is whether you belong to Jesus.
+          No true believer ends up in hell because of remaining sin they are still fighting. Salvation rests on trusting Christ, not on sinless perfection. The question is never whether you still sin. The question is whether you belong to Jesus.
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">What happens to babies or people who could not understand the gospel?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          The Bible does not give a single direct verse addressing this exact question, and Christians hold their answers with real humility here. Many point to God&apos;s consistent character throughout Scripture, a God who is more merciful and more just than we are, as reason for confidence in how He handles these cases. What Scripture does clearly reveal is God&apos;s heart, and that heart is not eager to condemn anyone who could not respond.
+          Scripture does not give a single direct verse on this, and Christians hold their answers with real humility here. Many point to God&apos;s consistent character, a God more merciful and more just than we are, as reason for confidence in how He handles these cases.
         </p>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">How can I know I am not going to hell?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          Trust in Jesus Christ, not in your own record. Scripture says whosoever calls on the name of the Lord shall be saved, no exceptions and no extra requirements attached. If you have never done that honestly, you can do it right now, in your own words, telling God you need what Jesus did for you. That decision, not a feeling and not a performance afterward, is what settles the question for good.
+          Trust in Jesus Christ, not your own record. Scripture says whosoever calls on the name of the Lord shall be saved, no exceptions attached. If you have never done that honestly, you can do it right now, in your own words. That decision, not a feeling afterward, is what settles the question for good.
         </p>
       </section>
 
