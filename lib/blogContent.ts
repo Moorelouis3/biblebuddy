@@ -427,12 +427,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "names-of-god-meanings",
     title: "The Names of God and What They Mean",
     description:
-      "What do Elohim, Yahweh, El Shaddai, El Elyon, and Adonai actually mean? A clear, accurate guide to the names of God in Scripture and what they reveal.",
+      "What do Elohim, Yahweh, El Shaddai, El Elyon, El Roi, and Adonai actually mean? A clear, accurate guide to every major name of God in Scripture.",
     category: "Bible Insights",
     categorySlug: "bible-insights",
     canonicalPath: "/blog/names-of-god-meanings",
     publishedAt: "2026-09-01",
-    readTime: "9 min read",
+    readTime: "16 min read",
     image: "/names-of-god-meanings-banner-v2.jpg",
     groupPost: {
       title: "The Names of God and What They Mean 📖",
@@ -1115,13 +1115,14 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "a-simple-bible-highlighting-system",
     title: "A Simple Bible Highlighting System",
-    description: "How to highlight Scripture with purpose so your notes actually help you study.",
+    description:
+      "A simple four color Bible highlighting system, with a real verse by verse walkthrough of John 3:16 and Psalm 23, so your highlights actually mean something later.",
     category: "Bible Study Tips",
     categorySlug: "bible-study-tips",
     canonicalPath: "/blog/a-simple-bible-highlighting-system",
     legacyPath: "/bible-study-tips/a-simple-bible-highlighting-system",
     publishedAt: "2026-07-17",
-    readTime: "5 min read",
+    readTime: "17 min read",
     image: "/blog-banners/a-simple-bible-highlighting-system.jpg",
   },
   {
