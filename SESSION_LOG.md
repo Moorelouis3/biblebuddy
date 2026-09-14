@@ -4151,3 +4151,9 @@ Day: 212 — The Servant Restores Zion (Isaiah 49-51) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only
 Next up: Day 213
+
+## 2026-09-14T20:45:00Z (bible year day writer run)
+Day: 213 — The Suffering Servant (Isaiah 52-54) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only
+Next up: Day 214. Stopping here — two-day budget cap for this run reached.
