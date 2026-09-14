@@ -4074,3 +4074,14 @@ Day: 203 — Jerusalem, Leaders, and World Judgment (Isaiah 22-24) | Runtime:
 audio not rendered (no API/Supabase credentials in this environment) |
 Cast: narrator only
 Next up: Day 204. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-14T00:30:00Z (bible year day writer run)
+Fresh container again had the same recurring stale-local-`main` bug logged
+repeatedly in MARCUS_HANDOFF.md: detached HEAD matched the true
+origin/main tip exactly, but the local `main` ref was stale. Fixed with
+`git checkout -B main origin/main` before touching anything; clean
+fast-forward, nothing lost.
+Day: 204 — Feast, Resurrection, and Restoration (Isaiah 25-27) | Runtime:
+audio not rendered (no API/Supabase credentials in this environment) |
+Cast: narrator only
+Next up: Day 205
