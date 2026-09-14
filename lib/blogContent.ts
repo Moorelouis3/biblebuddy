@@ -1260,13 +1260,14 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "st-valentine",
     title: "St. Valentine",
-    description: "The martyr behind the modern holiday.",
+    description:
+      "Was St. Valentine a real person? The honest history behind Valentine's Day: what is verified, what is legend, and what his martyrdom says about love that costs something.",
     category: "Christian History",
     categorySlug: "christian-history",
     canonicalPath: "/blog/st-valentine",
     legacyPath: "/bible-study-hub/christian-history/st-valentine",
     publishedAt: "2026-06-19",
-    readTime: "6 min read",
+    readTime: "15 min read",
     image: "/blog-banners/st-valentine.jpg",
   },
 ];
