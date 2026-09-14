@@ -1079,13 +1079,13 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: "why-so-many-bible-translations",
     title: "Why So Many Bible Translations?",
-    description: "A simple guide to understanding modern Bible versions.",
+    description: "Why the Bible has so many translations, what KJV, NIV, ESV, and NLT really mean, and how to pick one.",
     category: "Bible Insights",
     categorySlug: "bible-insights",
     canonicalPath: "/blog/why-so-many-bible-translations",
     legacyPath: "/bible-study-hub/bible-insights/why-so-many-bible-translations",
     publishedAt: "2026-07-24",
-    readTime: "6 min read",
+    readTime: "15 min read",
     image: "/blog-banners/why-so-many-bible-translations.jpg",
   },
   {
