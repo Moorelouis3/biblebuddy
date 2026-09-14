@@ -461,12 +461,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "genesis-1-explained",
     title: "Genesis 1 Explained: The Creation of the World",
     description:
-      "A plain overview of Genesis 1: the six days of creation in order, humanity made in God's image, and God's authority as Creator.",
+      "Genesis 1 explained in plain English: the six days of creation, humanity made in God's image, top Bible verses, and common FAQs answered.",
     category: "Verse Breakdowns",
     categorySlug: "verse-breakdowns",
     canonicalPath: "/blog/genesis-1-explained",
     publishedAt: "2026-09-01",
-    readTime: "8 min read",
+    readTime: "17 min read",
     image: "/blog-banners/genesis-1-explained.jpg",
     groupPost: {
       title: "Genesis 1 Explained 📖",
