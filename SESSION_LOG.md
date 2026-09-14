@@ -4068,3 +4068,9 @@ Day: 202 — Egypt, Babylon, and Trust (Isaiah 19-21) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast:
 narrator only
 Next up: Day 203
+
+## 2026-09-14T00:15:00Z (bible year day writer run)
+Day: 203 — Jerusalem, Leaders, and World Judgment (Isaiah 22-24) | Runtime:
+audio not rendered (no API/Supabase credentials in this environment) |
+Cast: narrator only
+Next up: Day 204. Stopping here — two-day budget cap for this run reached.
