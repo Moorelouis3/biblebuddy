@@ -4115,3 +4115,9 @@ Next: watch first Bug Fixer run; popup impressions/joins in landing_page_events.
 
 ## 2026-09-14
 Done: Bible in One Year - tapping an earlier day on the home strip (e.g. Day 6 while on Day 37) opened the current day instead. Two effects raced on load; fixed, plus no flash of the current day first. Verified before/after locally.
+
+## 2026-09-14T02:00:00Z (bible year day writer run)
+Day: 208 — Hezekiah's Prayer and Warning (Isaiah 37-39) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only
+Next up: Day 209
