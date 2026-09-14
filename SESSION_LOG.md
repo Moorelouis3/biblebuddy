@@ -4085,3 +4085,9 @@ Day: 204 — Feast, Resurrection, and Restoration (Isaiah 25-27) | Runtime:
 audio not rendered (no API/Supabase credentials in this environment) |
 Cast: narrator only
 Next up: Day 205
+
+## 2026-09-14T00:45:00Z (bible year day writer run)
+Day: 205 — False Security and True Rest (Isaiah 28-30) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only
+Next up: Day 206. Stopping here — two-day budget cap for this run reached.
