@@ -4091,3 +4091,12 @@ Day: 205 — False Security and True Rest (Isaiah 28-30) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast:
 narrator only
 Next up: Day 206. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-14T01:00:00Z (bible year day writer run)
+Fresh container again had local `main` detached, matching the true
+origin/main tip exactly (Day 205 era). Fixed with `git checkout -B main
+origin/main` before touching anything; clean fast-forward, nothing lost.
+Day: 206 — Woe, Rescue, and the Coming King (Isaiah 31-33) | Runtime: audio
+not rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only
+Next up: Day 207
