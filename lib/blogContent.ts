@@ -415,7 +415,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     categorySlug: "character-studies",
     canonicalPath: "/blog/who-was-joseph",
     publishedAt: "2026-09-01",
-    readTime: "9 min read",
+    readTime: "14 min read",
     image: "/who-was-joseph-banner-v2.jpg",
     groupPost: {
       title: "Who Was Joseph? From the Pit to the Palace 📖",
@@ -513,12 +513,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     slug: "genesis-2-explained",
     title: "Genesis 2 Explained: Eden, Adam, Eve & God's Design",
     description:
-      "A clear walkthrough of Genesis 2: God forming Adam from dust, Eden, the one command about the tree, and the creation of Eve and marriage.",
+      "A full walkthrough of Genesis 2: God forming Adam from dust, the one command about the tree, Adam naming the animals, and God's design for marriage in Eve's creation.",
     category: "Verse Breakdowns",
     categorySlug: "verse-breakdowns",
     canonicalPath: "/blog/genesis-2-explained",
     publishedAt: "2026-09-01",
-    readTime: "8 min read",
+    readTime: "17 min read",
     image: "/blog-banners/genesis-2-explained.jpg",
     groupPost: {
       title: "Genesis 2 Explained 📖",
