@@ -4186,3 +4186,10 @@ Day: 216 — Good News and the Day of Vengeance (Isaiah 61-63) | Runtime:
 audio not rendered (no API/Supabase credentials in this environment) |
 Cast: narrator only
 Next up: Day 217
+
+## 2026-09-15T04:40:00Z (bible year day writer run)
+Day: 217 — New Creation and Final Worship (Isaiah 64-66) | Runtime: audio
+not rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only. This closes out Isaiah; tomorrow's Day 218 starts Jeremiah
+(plan entry already exists).
+Next up: Day 218. Stopping here — two-day budget cap for this run reached.
