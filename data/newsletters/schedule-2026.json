@@ -1,39 +1,209 @@
 {
-  "note": "Twice-weekly Bible Buddy newsletter (Tue/Fri) through the new year. Order = most-read blog posts first (blog_page_views visitors, 2026-09-15), with seasonal swaps. Sent from Systeme.io to tag bb-day1-welcome, sender 'Bible Buddy'. Louis approves each before it goes out.",
+  "note": "Twice-weekly Bible Buddy newsletter (Tue/Fri) through the new year. Order = most-read blog posts first (blog_page_views visitors, 2026-09-15), with seasonal swaps. Sent from Systeme.io to tag bb-day1-welcome, sender 'Bible Buddy'. Louis approves each before it goes out. Drafts already exist in Systeme (systemeDraftId). To send: open the draft from the Systeme newsletter list, Save draft dropdown, Save and send.",
   "sent": [
-    { "date": "2026-09-11", "slug": "when-you-dont-feel-god-anymore", "subject": "What to Do When You Don't Feel God Anymore", "systemeId": 5281123 },
-    { "date": "2026-09-15", "slug": "a-simple-bible-highlighting-system", "subject": "Why is this verse yellow?", "systemeId": 5301376 }
+    {
+      "date": "2026-09-11",
+      "slug": "when-you-dont-feel-god-anymore",
+      "subject": "What to Do When You Don't Feel God Anymore",
+      "systemeId": 5281123
+    },
+    {
+      "date": "2026-09-15",
+      "slug": "a-simple-bible-highlighting-system",
+      "subject": "Why is this verse yellow?",
+      "systemeId": 5301376
+    }
   ],
   "upcoming": [
-    { "date": "2026-09-18", "slug": "garden-of-eden-four-rivers" },
-    { "date": "2026-09-22", "slug": "names-of-god-meanings" },
-    { "date": "2026-09-25", "slug": "moses" },
-    { "date": "2026-09-29", "slug": "wisdom-of-proverbs", "special": "Wisdom of Proverbs community study starts Oct 1 - join link /events/wisdom-of-proverbs" },
-    { "date": "2026-10-02", "slug": "is-anxiety-a-sin" },
-    { "date": "2026-10-06", "slug": "who-is-leah" },
-    { "date": "2026-10-09", "slug": "who-is-jezebel" },
-    { "date": "2026-10-13", "slug": "armor-of-god-explained" },
-    { "date": "2026-10-16", "slug": "5-things-holding-men-back-from-god" },
-    { "date": "2026-10-20", "slug": "how-do-you-know-you-are-saved" },
-    { "date": "2026-10-23", "slug": "genesis-1-explained" },
-    { "date": "2026-10-27", "slug": "what-is-hell" },
-    { "date": "2026-10-30", "slug": "what-does-the-bible-say-about-zodiac-signs", "special": "Halloween weekend" },
-    { "date": "2026-11-03", "slug": "how-to-defend-your-faith-in-jesus" },
-    { "date": "2026-11-06", "slug": "men-who-walked-with-god" },
-    { "date": "2026-11-10", "slug": "can-you-lose-your-salvation" },
-    { "date": "2026-11-13", "slug": "what-is-the-fruit-of-the-spirit" },
-    { "date": "2026-11-17", "slug": "who-was-joseph" },
-    { "date": "2026-11-20", "slug": "genesis-2-explained" },
-    { "date": "2026-11-24", "slug": "why-so-many-denominations", "special": "Thanksgiving week" },
-    { "date": "2026-11-27", "slug": "why-so-many-bible-translations", "special": "Black Friday - people shopping for Bibles as gifts" },
-    { "date": "2026-12-01", "slug": "people-who-never-heard-of-jesus" },
-    { "date": "2026-12-04", "slug": "biblical-numbers-meanings" },
-    { "date": "2026-12-08", "slug": "what-does-the-bible-say-about-anxiety", "special": "Holiday stress season" },
-    { "date": "2026-12-11", "slug": "what-is-the-bible" },
-    { "date": "2026-12-15", "slug": "what-is-heaven", "special": "Holidays are hard for people missing loved ones" },
-    { "date": "2026-12-18", "slug": "who-was-elizabeth", "special": "Advent - the woman who waited a lifetime for a miracle" },
-    { "date": "2026-12-22", "slug": "who-was-mary-mother-of-jesus", "special": "Christmas week" },
-    { "date": "2026-12-25", "slug": "lessons-from-the-life-of-jesus", "special": "Christmas Day - short and warm, Merry Christmas from Louis" },
-    { "date": "2026-12-29", "slug": "how-to-read-the-bible", "special": "New Year - start the Bible in One Year on Jan 1" }
+    {
+      "date": "2026-09-18",
+      "slug": "garden-of-eden-four-rivers",
+      "systemeDraftId": 5302978,
+      "subject": "Two of Eden's rivers still flow today"
+    },
+    {
+      "date": "2026-09-22",
+      "slug": "names-of-god-meanings",
+      "systemeDraftId": 5302996,
+      "subject": "What do you call God when you pray?"
+    },
+    {
+      "date": "2026-09-25",
+      "slug": "moses",
+      "systemeDraftId": 5302997,
+      "subject": "Please send somebody else"
+    },
+    {
+      "date": "2026-09-29",
+      "slug": "wisdom-of-proverbs",
+      "special": "Wisdom of Proverbs community study starts Oct 1 - join link /events/wisdom-of-proverbs",
+      "systemeDraftId": 5302998,
+      "subject": "31 days in Proverbs, together"
+    },
+    {
+      "date": "2026-10-02",
+      "slug": "is-anxiety-a-sin",
+      "systemeDraftId": 5302999,
+      "subject": "Is feeling anxious a sin?"
+    },
+    {
+      "date": "2026-10-06",
+      "slug": "who-is-leah",
+      "systemeDraftId": 5303000,
+      "subject": "Ever feel like the second choice?"
+    },
+    {
+      "date": "2026-10-09",
+      "slug": "who-is-jezebel",
+      "systemeDraftId": 5303001,
+      "subject": "Nobody drifts from God all at once"
+    },
+    {
+      "date": "2026-10-13",
+      "slug": "armor-of-god-explained",
+      "systemeDraftId": 5303002,
+      "subject": "Can you name all six pieces?"
+    },
+    {
+      "date": "2026-10-16",
+      "slug": "5-things-holding-men-back-from-god",
+      "systemeDraftId": 5303007,
+      "subject": "What is quietly pulling you from God?"
+    },
+    {
+      "date": "2026-10-20",
+      "slug": "how-do-you-know-you-are-saved",
+      "systemeDraftId": 5303008,
+      "subject": "What if I am not really saved?"
+    },
+    {
+      "date": "2026-10-23",
+      "slug": "genesis-1-explained",
+      "systemeDraftId": 5303009,
+      "subject": "Why is there light before the sun?"
+    },
+    {
+      "date": "2026-10-27",
+      "slug": "what-is-hell",
+      "systemeDraftId": 5303010,
+      "subject": "Where did the pitchfork come from?"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "what-does-the-bible-say-about-zodiac-signs",
+      "special": "Halloween weekend",
+      "systemeDraftId": 5303011,
+      "subject": "Who gave the stars their names?"
+    },
+    {
+      "date": "2026-11-03",
+      "slug": "how-to-defend-your-faith-in-jesus",
+      "systemeDraftId": 5303012,
+      "subject": "What would you say if they asked?"
+    },
+    {
+      "date": "2026-11-06",
+      "slug": "men-who-walked-with-god",
+      "systemeDraftId": 5303014,
+      "subject": "Only two men got this description"
+    },
+    {
+      "date": "2026-11-10",
+      "slug": "can-you-lose-your-salvation",
+      "systemeDraftId": 5303027,
+      "subject": "What if one more sin is too many?"
+    },
+    {
+      "date": "2026-11-13",
+      "slug": "what-is-the-fruit-of-the-spirit",
+      "systemeDraftId": 5303028,
+      "subject": "Why Paul said fruit, not fruits"
+    },
+    {
+      "date": "2026-11-17",
+      "slug": "who-was-joseph",
+      "systemeDraftId": 5303029,
+      "subject": "When someone you trusted turns on you"
+    },
+    {
+      "date": "2026-11-20",
+      "slug": "genesis-2-explained",
+      "systemeDraftId": 5303030,
+      "subject": "The first thing God called not good"
+    },
+    {
+      "date": "2026-11-24",
+      "slug": "why-so-many-denominations",
+      "special": "Thanksgiving week",
+      "systemeDraftId": 5303031,
+      "subject": "Different churches, one table"
+    },
+    {
+      "date": "2026-11-27",
+      "slug": "why-so-many-bible-translations",
+      "special": "Black Friday - people shopping for Bibles as gifts",
+      "systemeDraftId": 5303032,
+      "subject": "KJV, NIV, ESV, NLT. Which one?"
+    },
+    {
+      "date": "2026-12-01",
+      "slug": "people-who-never-heard-of-jesus",
+      "systemeDraftId": 5303033,
+      "subject": "What about the ones who never heard?"
+    },
+    {
+      "date": "2026-12-04",
+      "slug": "biblical-numbers-meanings",
+      "systemeDraftId": 5303034,
+      "subject": "Does 7 really mean something?"
+    },
+    {
+      "date": "2026-12-08",
+      "slug": "what-does-the-bible-say-about-anxiety",
+      "special": "Holiday stress season",
+      "systemeDraftId": 5303035,
+      "subject": "Anxiety does not knock first"
+    },
+    {
+      "date": "2026-12-11",
+      "slug": "what-is-the-bible",
+      "systemeDraftId": 5303036,
+      "subject": "It is not just a book"
+    },
+    {
+      "date": "2026-12-15",
+      "slug": "what-is-heaven",
+      "special": "Holidays are hard for people missing loved ones",
+      "systemeDraftId": 5303037,
+      "subject": "What heaven is really like"
+    },
+    {
+      "date": "2026-12-18",
+      "slug": "who-was-elizabeth",
+      "special": "Advent - the woman who waited a lifetime for a miracle",
+      "systemeDraftId": 5303038,
+      "subject": "She waited a lifetime for this"
+    },
+    {
+      "date": "2026-12-22",
+      "slug": "who-was-mary-mother-of-jesus",
+      "special": "Christmas week",
+      "systemeDraftId": 5303039,
+      "subject": "She was probably a teenager"
+    },
+    {
+      "date": "2026-12-25",
+      "slug": "lessons-from-the-life-of-jesus",
+      "special": "Christmas Day - short and warm, Merry Christmas from Louis",
+      "systemeDraftId": 5303040,
+      "subject": "Merry Christmas from Louis"
+    },
+    {
+      "date": "2026-12-29",
+      "slug": "how-to-read-the-bible",
+      "special": "New Year - start the Bible in One Year on Jan 1",
+      "systemeDraftId": 5303041,
+      "subject": "Read the whole Bible in 2027?"
+    }
   ]
 }
