@@ -4211,3 +4211,15 @@ Next up: Day 219.
 Day: 219 — Coming Judgment (Jeremiah 4-6) | Runtime: audio not rendered (no
 API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 220. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-15T12:26:40Z (bible year day writer run)
+Local `main` was detached from a stale ref again (cached at the old
+"Analytics: Traffic Sources" tip while the detached HEAD and origin/main
+already matched at Day 219); fixed the usual way with `git checkout -B
+main origin/main` before writing anything. Plan entries for Day 220 and
+221 already existed in `ADDITIONAL_BIBLE_YEAR_SCHEDULE_RAW`, so no plan
+edits needed.
+Day: 220 — Temple Trust and Tears (Jeremiah 7-9) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only.
+Next up: Day 221.
