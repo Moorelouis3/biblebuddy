@@ -134,8 +134,9 @@ export default function CommentSection({
   const [profileImagePreview, setProfileImagePreview] = useState<string | null>(null);
   const [profileSaving, setProfileSaving] = useState(false);
   const [profileCompletionError, setProfileCompletionError] = useState<string | null>(null);
+  const [currentUserHasValidName, setCurrentUserHasValidName] = useState(false);
 
-  const currentUserCanPost = Boolean(user && hasRequiredFullName(user.name) && currentUserProfileImage);
+  const currentUserCanPost = Boolean(user && currentUserHasValidName && currentUserProfileImage);
 
   const hydrateUser = useCallback(async (userId?: string | null, email?: string | null) => {
     if (!userId) {
@@ -143,6 +144,7 @@ export default function CommentSection({
       setCurrentUserBadge(null);
       setCurrentUserProfileImage(null);
       setCurrentUserIsAdmin(false);
+      setCurrentUserHasValidName(false);
       return;
     }
 
@@ -156,11 +158,14 @@ export default function CommentSection({
         .maybeSingle();
       const authProfileName = "";
       const candidateName = profile?.display_name?.trim() || authProfileName;
-      displayName = hasRequiredFullName(candidateName) ? candidateName : "";
+      const isValidName = hasRequiredFullName(candidateName);
+      displayName = isValidName ? candidateName : "";
+      setCurrentUserHasValidName(isValidName);
       profileImageUrl = profile?.profile_image_url || null;
       setCurrentUserBadge(profile?.member_badge ?? null);
     } catch (err) {
       console.error("[CommentSection] Error fetching profile:", err);
+      setCurrentUserHasValidName(false);
     }
 
     try {
@@ -376,7 +381,7 @@ export default function CommentSection({
     if (!user || !content.trim()) return;
     if (!currentUserCanPost) {
       setProfileCompletionError(null);
-      const nameParts = splitFullName(hasRequiredFullName(user.name) ? user.name : "");
+      const nameParts = splitFullName(currentUserHasValidName ? user.name : "");
       setProfileFirstName(nameParts.firstName);
       setProfileLastName(nameParts.lastName);
       setProfileImagePreview(currentUserProfileImage);
@@ -479,6 +484,7 @@ export default function CommentSection({
       });
 
       setUser({ id: user.id, name: fullName });
+      setCurrentUserHasValidName(true);
       setCurrentUserProfileImage(imageUrl);
       setProfileImageFile(null);
       setProfileImagePreview(imageUrl);
