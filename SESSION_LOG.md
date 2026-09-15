@@ -4206,3 +4206,8 @@ Day: 218 — Jeremiah's Call and Israel's Unfaithfulness (Jeremiah 1-3) |
 Runtime: audio not rendered (no API/Supabase credentials in this
 environment) | Cast: narrator only. First day of Jeremiah.
 Next up: Day 219.
+
+## 2026-09-15T08:29:46Z (bible year day writer run)
+Day: 219 — Coming Judgment (Jeremiah 4-6) | Runtime: audio not rendered (no
+API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 220. Stopping here — two-day budget cap for this run reached.
