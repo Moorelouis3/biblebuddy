@@ -4258,3 +4258,9 @@ Day: 224 — Broken Jar and Jerusalem Warned (Jeremiah 19-21) | Runtime:
 audio not rendered (no API/Supabase credentials in this environment) |
 Cast: narrator only.
 Next up: Day 225.
+
+## 2026-09-15T14:20:00Z (bible year day writer run)
+Day: 225 — Kings, Exile, and Good Figs (Jeremiah 22-24) | Runtime: audio
+not rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only.
+Next up: Day 226. Stopping here — two-day budget cap for this run reached.
