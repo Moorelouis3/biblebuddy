@@ -4229,3 +4229,14 @@ Day: 221 — Idols, Covenant, and Complaint (Jeremiah 10-12) | Runtime:
 audio not rendered (no API/Supabase credentials in this environment) |
 Cast: narrator only.
 Next up: Day 222. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-15 (bug fixer agent run)
+Bug fix: comments/CommentSection.tsx — a placeholder display name
+("Bible Buddy Member") was passing the "real full name" check used to
+gate posting a comment/reflection, which could post under the placeholder
+name or garble the complete-your-profile popup. Now name-completeness is
+tracked from real profile data instead of the display fallback string.
+Commit 4460023, pushed to main (no [deploy] tag).
+Left open: a recurring "removeChild" crash on the home page (2
+occurrences, no reporter, looks like a browser extension/translate
+widget interfering, not app code) — reaffirmed diagnosis, no fix pushed.
