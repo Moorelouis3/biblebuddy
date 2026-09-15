@@ -4240,3 +4240,9 @@ Commit 4460023, pushed to main (no [deploy] tag).
 Left open: a recurring "removeChild" crash on the home page (2
 occurrences, no reporter, looks like a browser extension/translate
 widget interfering, not app code) — reaffirmed diagnosis, no fix pushed.
+
+## 2026-09-15T13:10:00Z (bible year day writer run)
+Day: 222 — Pride, Drought, and Intercession (Jeremiah 13-15) | Runtime:
+audio not rendered (no API/Supabase credentials in this environment) |
+Cast: narrator only.
+Next up: Day 223.
