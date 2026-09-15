@@ -29,9 +29,11 @@ export async function GET(request: NextRequest) {
   const results: Array<{ window: string; mode: string; status: number | string; seconds: number }> = [];
 
   // One timeframe at a time (overview + full together) so the database is not
-  // hit with every heavy query at once.
-  for (const window of windows) {
-    await Promise.all(
+  // hit with every heavy query at once - except the long group: 90 Days and
+  // All Time take minutes each, and back to back they would pass the 5-minute
+  // limit on this function.
+  const buildWindow = (window: string) =>
+    Promise.all(
       ["overview", "full"].map(async (mode) => {
         const started = Date.now();
         const params = new URLSearchParams({ window, fresh: "1" });
@@ -54,6 +56,10 @@ export async function GET(request: NextRequest) {
         }
       }),
     );
+  if (group === "long") {
+    await Promise.all(windows.map(buildWindow));
+  } else {
+    for (const window of windows) await buildWindow(window);
   }
 
   return NextResponse.json({ ok: results.every((row) => row.status === 200), group, results });
