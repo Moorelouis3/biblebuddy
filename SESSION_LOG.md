@@ -4157,3 +4157,15 @@ Day: 213 — The Suffering Servant (Isaiah 52-54) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only
 Next up: Day 214. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-15T00:26:19Z (bible year day writer run)
+Fixed the recurring stale-local-`main` bug before writing anything: fresh
+container had local `main` cached at an old tip ("Email analytics" era)
+while the detached HEAD was already at Day 213, matching origin/main
+exactly. `git checkout -B main origin/main` was a clean, lossless
+fast-forward. Plan entry for Day 214 already existed in
+`ADDITIONAL_BIBLE_YEAR_SCHEDULE_RAW`, so no plan edits needed.
+Day: 214 — Invitation, Mercy, and Peace (Isaiah 55-57) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only
+Next up: Day 215
