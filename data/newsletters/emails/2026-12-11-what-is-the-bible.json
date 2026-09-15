@@ -1,0 +1,33 @@
+{
+  "date": "2026-12-11",
+  "slug": "what-is-the-bible",
+  "subject": "It is not just a book",
+  "preview": "66 books, over 40 authors, 1,500 years, and somehow one story.",
+  "linkUrl": "https://www.mybiblebuddy.net/blog/what-is-the-bible",
+  "linkText": "What Is the Bible?",
+  "blocks": [
+    { "type": "bold", "text": "Most of us have held a Bible without ever asking what it actually is." },
+    { "type": "p", "text": "It sits on a shelf. Or in an app on your phone." },
+    { "type": "p", "text": "It looks like one book." },
+    { "type": "bold", "text": "But the Bible is not just a book. It is a library." },
+    { "type": "p", "text": "📚 Sixty six books" },
+    { "type": "p", "text": "✍️ Written by over forty authors" },
+    { "type": "p", "text": "🌍 In three languages, across three continents" },
+    { "type": "p", "text": "🕰️ Over roughly 1,500 years" },
+    { "type": "p", "text": "Empires rose and fell while it was being written. Languages shifted. Cultures changed." },
+    { "type": "bold", "text": "Think about who wrote it." },
+    { "type": "p", "text": "A king. A shepherd. A fisherman. A tax collector. A physician. A man who used to persecute Christians." },
+    { "type": "p", "text": "Different backgrounds. Different personalities." },
+    { "type": "p", "text": "And yet the central message never changed." },
+    { "type": "bold", "text": "Here is what I want you to understand." },
+    { "type": "heading", "text": "The Bible is one story. Not about people reaching up to God, but about God reaching down to us." },
+    { "type": "p", "text": "Genesis plants the seed. Micah names Bethlehem. Psalm 22 paints the crucifixion before crucifixion existed." },
+    { "type": "p", "text": "A tree in Genesis. A cross in the Gospels. A tree of life again in Revelation." },
+    { "type": "p", "text": "That is not random. That is design." },
+    { "type": "p", "text": "And once you understand how the Bible is put together, a lot of the confusion starts to fade." },
+    { "type": "p", "text": "In the full article I walk through the Old and New Testaments, the seven kinds of writing inside the Bible, and the people God used to write it." },
+    { "type": "p", "text": "It is a good one to read before the new year, or to share with someone who is curious about the Bible for the first time." },
+    { "type": "p", "text": "You can read it here:" }
+  ],
+  "closing": "It is completely free, just like everything else inside Bible Buddy."
+}

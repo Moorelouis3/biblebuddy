@@ -1,0 +1,39 @@
+{
+  "note": "Twice-weekly Bible Buddy newsletter (Tue/Fri) through the new year. Order = most-read blog posts first (blog_page_views visitors, 2026-09-15), with seasonal swaps. Sent from Systeme.io to tag bb-day1-welcome, sender 'Bible Buddy'. Louis approves each before it goes out.",
+  "sent": [
+    { "date": "2026-09-11", "slug": "when-you-dont-feel-god-anymore", "subject": "What to Do When You Don't Feel God Anymore", "systemeId": 5281123 },
+    { "date": "2026-09-15", "slug": "a-simple-bible-highlighting-system", "subject": "Why is this verse yellow?", "systemeId": 5301376 }
+  ],
+  "upcoming": [
+    { "date": "2026-09-18", "slug": "garden-of-eden-four-rivers" },
+    { "date": "2026-09-22", "slug": "names-of-god-meanings" },
+    { "date": "2026-09-25", "slug": "moses" },
+    { "date": "2026-09-29", "slug": "wisdom-of-proverbs", "special": "Wisdom of Proverbs community study starts Oct 1 - join link /events/wisdom-of-proverbs" },
+    { "date": "2026-10-02", "slug": "is-anxiety-a-sin" },
+    { "date": "2026-10-06", "slug": "who-is-leah" },
+    { "date": "2026-10-09", "slug": "who-is-jezebel" },
+    { "date": "2026-10-13", "slug": "armor-of-god-explained" },
+    { "date": "2026-10-16", "slug": "5-things-holding-men-back-from-god" },
+    { "date": "2026-10-20", "slug": "how-do-you-know-you-are-saved" },
+    { "date": "2026-10-23", "slug": "genesis-1-explained" },
+    { "date": "2026-10-27", "slug": "what-is-hell" },
+    { "date": "2026-10-30", "slug": "what-does-the-bible-say-about-zodiac-signs", "special": "Halloween weekend" },
+    { "date": "2026-11-03", "slug": "how-to-defend-your-faith-in-jesus" },
+    { "date": "2026-11-06", "slug": "men-who-walked-with-god" },
+    { "date": "2026-11-10", "slug": "can-you-lose-your-salvation" },
+    { "date": "2026-11-13", "slug": "what-is-the-fruit-of-the-spirit" },
+    { "date": "2026-11-17", "slug": "who-was-joseph" },
+    { "date": "2026-11-20", "slug": "genesis-2-explained" },
+    { "date": "2026-11-24", "slug": "why-so-many-denominations", "special": "Thanksgiving week" },
+    { "date": "2026-11-27", "slug": "why-so-many-bible-translations", "special": "Black Friday - people shopping for Bibles as gifts" },
+    { "date": "2026-12-01", "slug": "people-who-never-heard-of-jesus" },
+    { "date": "2026-12-04", "slug": "biblical-numbers-meanings" },
+    { "date": "2026-12-08", "slug": "what-does-the-bible-say-about-anxiety", "special": "Holiday stress season" },
+    { "date": "2026-12-11", "slug": "what-is-the-bible" },
+    { "date": "2026-12-15", "slug": "what-is-heaven", "special": "Holidays are hard for people missing loved ones" },
+    { "date": "2026-12-18", "slug": "who-was-elizabeth", "special": "Advent - the woman who waited a lifetime for a miracle" },
+    { "date": "2026-12-22", "slug": "who-was-mary-mother-of-jesus", "special": "Christmas week" },
+    { "date": "2026-12-25", "slug": "lessons-from-the-life-of-jesus", "special": "Christmas Day - short and warm, Merry Christmas from Louis" },
+    { "date": "2026-12-29", "slug": "how-to-read-the-bible", "special": "New Year - start the Bible in One Year on Jan 1" }
+  ]
+}
