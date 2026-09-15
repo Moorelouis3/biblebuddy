@@ -4169,3 +4169,9 @@ Day: 214 — Invitation, Mercy, and Peace (Isaiah 55-57) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only
 Next up: Day 215
+
+## 2026-09-15T00:35:00Z (bible year day writer run)
+Day: 215 — True Worship and Future Glory (Isaiah 58-60) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only
+Next up: Day 216. Stopping here — two-day budget cap for this run reached.
