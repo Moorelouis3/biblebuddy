@@ -4246,3 +4246,9 @@ Day: 222 — Pride, Drought, and Intercession (Jeremiah 13-15) | Runtime:
 audio not rendered (no API/Supabase credentials in this environment) |
 Cast: narrator only.
 Next up: Day 223.
+
+## 2026-09-15T13:25:00Z (bible year day writer run)
+Day: 223 — Signs, Sin, and the Potter (Jeremiah 16-18) | Runtime: audio
+not rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only.
+Next up: Day 224. Stopping here — two-day budget cap for this run reached.
