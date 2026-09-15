@@ -50,21 +50,28 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ ok: true, updated: 0, note: "No campaigns recorded yet." });
     }
 
-    // One pull of recent landing traffic covers every campaign window.
-    const oldest = campaigns[campaigns.length - 1].sent_at as string;
-    const since = new Date(Math.max(Date.parse(oldest), Date.now() - 90 * 24 * 60 * 60 * 1000)).toISOString();
-    let landing: any[] = [];
-    for (let page = 0; page < 12; page += 1) {
-      const { data } = await supabase
-        .from("landing_page_events")
-        .select("session_id, user_id, page_path, referrer, source, created_at")
-        .gte("created_at", since)
-        .range(page * 1000, page * 1000 + 999);
-      if (!data?.length) break;
-      landing = landing.concat(data);
-      if (data.length < 1000) break;
+    // Paged in created_at order inside each campaign's own window. The old
+    // version pulled up to 12k unordered rows for 90 days at once; with more
+    // traffic than that it never saw the days after a send, so every
+    // campaign showed 0 site visits (found 2026-09-15). Blog arrivals from a
+    // mail app count too.
+    async function pageAll(table: string, columns: string, startIso: string, endIso: string) {
+      const rows: any[] = [];
+      for (let page = 0; page < 50; page += 1) {
+        const { data, error: pageError } = await supabase
+          .from(table)
+          .select(columns)
+          .gte("created_at", startIso)
+          .lt("created_at", endIso)
+          .order("created_at", { ascending: true })
+          .range(page * 1000, page * 1000 + 999);
+        if (pageError) throw new Error(pageError.message);
+        if (!data?.length) break;
+        rows.push(...data);
+        if (data.length < 1000) break;
+      }
+      return rows;
     }
-    const emailArrivals = landing.filter(isEmailArrival);
 
     const updated: Array<{ name: string; siteVisits: number }> = [];
     for (const campaign of campaigns) {
@@ -72,13 +79,15 @@ export async function GET(request: NextRequest) {
       // out - long enough for slow readers, short enough not to bleed into
       // the next send.
       const start = Date.parse(campaign.sent_at as string);
-      const end = start + 7 * 24 * 60 * 60 * 1000;
+      const startIso = new Date(start).toISOString();
+      const endIso = new Date(Math.min(start + 7 * 24 * 60 * 60 * 1000, Date.now())).toISOString();
+      if (startIso >= endIso) continue;
+      const [landing, blog] = await Promise.all([
+        pageAll("landing_page_events", "session_id, user_id, page_path, referrer, source, created_at", startIso, endIso),
+        pageAll("blog_page_views", "session_id, user_id, referrer, created_at", startIso, endIso),
+      ]);
       const people = new Set(
-        emailArrivals
-          .filter((row) => {
-            const at = Date.parse(row.created_at);
-            return at >= start && at < end;
-          })
+        [...landing.filter(isEmailArrival), ...blog.filter((row) => MAIL_REFERRER.test(row.referrer || ""))]
           .map((row) => row.user_id || row.session_id)
           .filter(Boolean),
       );
