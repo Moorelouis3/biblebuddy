@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { readAnalyticsSnapshot, writeAnalyticsSnapshot } from "@/lib/adminAnalyticsSnapshots";
+
+// Long timeframes take over a minute to compute live, and the snapshot cron
+// calls this route for each one - it must not be cut off.
+export const maxDuration = 300;
 
 const ANALYTICS_RESPONSE_CACHE_TTL_MS = 45 * 1000;
 const NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS = 14;
@@ -5031,16 +5036,48 @@ async function buildOverviewAnalyticsResponse(
 }
 
 export async function GET(request: Request) {
-  const owner = await verifyOwner(request);
-  if (!owner) {
+  // The snapshot cron authenticates with CRON_SECRET, Louis with his login.
+  const cronSecret = process.env.CRON_SECRET;
+  const isSnapshotCron = Boolean(cronSecret) && request.headers.get("authorization") === `Bearer ${cronSecret}`;
+  if (!isSnapshotCron && !(await verifyOwner(request))) {
     return NextResponse.json({ error: "Owner analytics only." }, { status: 403 });
   }
 
+  const requestUrl = new URL(request.url);
+  const mode = requestUrl.searchParams.get("mode") === "overview" ? "overview" : "full";
+  const snapshotKey = `${mode}:${getJourneyWindowKey(request)}`;
+  // fresh=1 comes from the refresh button and the cron: compute live, re-save.
+  const wantsFresh = requestUrl.searchParams.get("fresh") === "1";
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const snapshotClient =
+    serviceKey && url ? createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } }) : null;
+
+  if (!wantsFresh && snapshotClient) {
+    const snapshot = await readAnalyticsSnapshot(snapshotClient, snapshotKey);
+    if (snapshot) {
+      return NextResponse.json(snapshot, {
+        headers: { "Cache-Control": "private, no-store", "X-BibleBuddy-Analytics-Cache": "snapshot" },
+      });
+    }
+  }
+
+  const live = await computeAnalyticsResponse(request, wantsFresh);
+  if (!live.ok || !snapshotClient) return live;
+  const body: Record<string, unknown> = { ...((await live.json()) as Record<string, unknown>), snapshotAt: new Date().toISOString() };
+  // A partial body (e.g. the missing-table fallback) is not worth keeping.
+  if (!body.error) await writeAnalyticsSnapshot(snapshotClient, snapshotKey, body);
+  return NextResponse.json(body, {
+    headers: { "Cache-Control": "private, no-store", "X-BibleBuddy-Analytics-Cache": "live" },
+  });
+}
+
+async function computeAnalyticsResponse(request: Request, skipMemoryCache: boolean) {
   const journeyWindow = getJourneyWindowKey(request);
   const requestUrl = new URL(request.url);
   const mode = requestUrl.searchParams.get("mode") === "overview" ? "overview" : "full";
   const cacheKey = `onboarding:${mode}:${journeyWindow}`;
-  const cachedResponse = getCachedAnalyticsResponse(cacheKey);
+  const cachedResponse = skipMemoryCache ? null : getCachedAnalyticsResponse(cacheKey);
   if (cachedResponse) {
     return NextResponse.json(cachedResponse, {
       headers: {

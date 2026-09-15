@@ -36,17 +36,19 @@ export function getCachedAdminAnalyticsOverview<T>(windowKey: AdminAnalyticsWind
 export async function loadAdminAnalytics<T>(
   windowKey: AdminAnalyticsWindow,
   token: string,
-  options: { force?: boolean; mode?: "full" | "overview" } = {},
+  /** fresh: skip the pre-built snapshot and compute live (the refresh button). */
+  options: { force?: boolean; mode?: "full" | "overview"; fresh?: boolean } = {},
 ) {
   const mode = options.mode || "full";
   const entry = getEntry(windowKey, mode);
   const isFresh = entry.data && Date.now() - entry.updatedAt < CACHE_TTL_MS;
 
-  if (!options.force && isFresh) return entry.data as T;
-  if (!options.force && entry.promise) return entry.promise as Promise<T>;
+  if (!options.force && !options.fresh && isFresh) return entry.data as T;
+  if (!options.force && !options.fresh && entry.promise) return entry.promise as Promise<T>;
 
   const params = new URLSearchParams({ window: windowKey });
   if (mode === "overview") params.set("mode", "overview");
+  if (options.fresh) params.set("fresh", "1");
   const promise = fetch(`/api/admin/onboarding-analytics?${params.toString()}`, {
     cache: "no-store",
     headers: { Authorization: `Bearer ${token}` },

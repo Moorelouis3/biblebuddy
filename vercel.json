@@ -87,6 +87,18 @@
     {
       "path": "/api/cron/bug-replies",
       "schedule": "45 8,16 * * *"
+    },
+    {
+      "path": "/api/cron/analytics-snapshots?group=today",
+      "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/analytics-snapshots?group=recent",
+      "schedule": "10 * * * *"
+    },
+    {
+      "path": "/api/cron/analytics-snapshots?group=long",
+      "schedule": "40 */3 * * *"
     }
   ],
   "headers": [

@@ -323,6 +323,8 @@ type AudioHelpfulnessAnalytics = {
 
 type AnalyticsResponse = {
   partial?: boolean;
+  /** When the server built these numbers (pre-built snapshot or live). */
+  snapshotAt?: string;
   simpleSeries?: {
     signups: Array<{ label: string; value: number }>;
     upgrades: Array<{ label: string; value: number }>;
@@ -5883,6 +5885,9 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
   const [blogAnalyticsLoading, setBlogAnalyticsLoading] = useState(false);
   const [blogAnalyticsError, setBlogAnalyticsError] = useState<string | null>(null);
   const [refreshTick, setRefreshTick] = useState(0);
+  // A changed tick means the refresh button was pressed: skip the pre-built
+  // snapshot once and compute live numbers.
+  const lastRefreshTickRef = useRef(0);
   const [search, setSearch] = useState("");
   const [sourceFilter, setSourceFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState<VisitorJourneyStatus | "all">("all");
@@ -5943,7 +5948,9 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
           const { data: sessionData } = await supabase.auth.getSession();
           const token = sessionData.session?.access_token;
           if (!token) throw new Error("Owner session expired. Please sign in again.");
-          const json = await loadAdminAnalytics<AnalyticsResponse>(windowKey, token);
+          const fresh = refreshTick !== lastRefreshTickRef.current;
+          lastRefreshTickRef.current = refreshTick;
+          const json = await loadAdminAnalytics<AnalyticsResponse>(windowKey, token, { fresh });
           setData(json);
         } catch (loadError) {
           setError(loadError instanceof Error ? loadError.message : "Could not load analytics.");
@@ -6391,6 +6398,11 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                   <Icon name="refresh" />
                 </button>
               </div>
+              {data?.snapshotAt ? (
+                <p className="-mt-1 text-right text-xs font-semibold text-[var(--bb-text-secondary,#64748b)]">
+                  {detailsLoading || loading ? "Getting live numbers..." : `Numbers updated ${relativeTimeFromNow(data.snapshotAt).toLowerCase()} · tap ↻ for live`}
+                </p>
+              ) : null}
 
               {simpleMetric === "overview" ? (
                 <>
