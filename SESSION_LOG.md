@@ -4223,3 +4223,9 @@ Day: 220 — Temple Trust and Tears (Jeremiah 7-9) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast:
 narrator only.
 Next up: Day 221.
+
+## 2026-09-15T12:35:00Z (bible year day writer run)
+Day: 221 — Idols, Covenant, and Complaint (Jeremiah 10-12) | Runtime:
+audio not rendered (no API/Supabase credentials in this environment) |
+Cast: narrator only.
+Next up: Day 222. Stopping here — two-day budget cap for this run reached.
