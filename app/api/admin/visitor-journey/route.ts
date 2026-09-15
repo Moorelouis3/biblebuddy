@@ -152,18 +152,20 @@ export async function GET(request: NextRequest) {
       if (row.event_name === "landing_page_visit" || row.event_name === "landing_page_visited") {
         const referrer = row.referrer || metadataText(row.metadata, ["referrer", "document_referrer", "initial_referrer"]);
         const cleanPath = (row.page_path || "/").split("?")[0].replace(/\/{2,}/g, "/") || "/";
+        void referrer;
         steps.push({
           at,
-          label: cleanPath === "/" ? "Arrived on the landing page" : `Arrived on ${cleanPath}`,
-          detail: referrer ? `came from ${referrer}` : "typed the address / no referrer",
-          link: referrer || null,
+          label: cleanPath === "/" ? "Visited the home page" : cleanPath.startsWith("/start") ? "Opened the choose-a-path page" : `Visited ${cleanPath}`,
         });
       } else if (row.event_name === "video_played") {
         steps.push({ at, label: "Started the landing video" });
       } else if (row.event_name === "video_completed") {
         steps.push({ at, label: "Watched the landing video to the end" });
       } else if (row.event_name === "guest_account_created") {
-        steps.push({ at, label: "Became a new user (started studying as guest)" });
+        const entry = metadataText(row.metadata, ["guest_entry_source"]);
+        const picked =
+          entry === "plan_bible_year" ? "Bible in One Year" : entry === "plan_devotional" ? "a devotional" : entry === "plan_bible" ? "Just the Bible" : "";
+        steps.push({ at, label: picked ? `Picked ${picked} - became a new user` : "Came inside Bible Buddy - became a new user" });
       } else if (row.event_name === "created_free_account" || row.event_name === "created_account_successfully") {
         steps.push({ at, label: "Created a full account" });
       } else if (row.event_name === "start_button_clicked" || row.event_name === "cta_clicked") {
@@ -177,17 +179,28 @@ export async function GET(request: NextRequest) {
       const postName = (path.split("/").filter(Boolean).pop() || "unknown").replace(/-/g, " ");
       steps.push({
         at: row.created_at || "",
-        label: `Read blog post: ${postName}`,
-        detail: row.referrer && !/mybiblebuddy/i.test(row.referrer) ? `came from ${row.referrer}` : null,
+        label: `Read the blog post "${postName}"`,
         link: `https://www.mybiblebuddy.net${path}`,
       });
     }
+    // Account creation logs user_signup and user_login in the same second;
+    // that login is not a return visit, so it is dropped.
+    const signupAt = actionRows.find((row) => row.action_type === "user_signup")?.created_at;
     for (const row of actionRows) {
-      steps.push({
-        at: row.created_at,
-        label: prettifyAction(row.action_type),
-        detail: row.action_label && row.action_label.length < 90 ? row.action_label : null,
-      });
+      if (row.action_type === "user_signup") {
+        steps.push({ at: row.created_at, label: "Account created" });
+        continue;
+      }
+      if (
+        row.action_type === "user_login" &&
+        signupAt &&
+        Math.abs(new Date(row.created_at).getTime() - new Date(signupAt).getTime()) < 10 * 60 * 1000
+      ) {
+        continue;
+      }
+      // The recorded label ("Completed Genesis 5") already reads like a sentence.
+      const label = row.action_label && row.action_label.length < 90 ? row.action_label : prettifyAction(row.action_type);
+      steps.push({ at: row.created_at, label });
     }
 
     steps.sort((a, b) => (a.at || "").localeCompare(b.at || ""));
@@ -211,7 +224,7 @@ export async function GET(request: NextRequest) {
       userId,
       steps: collapsed.slice(0, 60).map((step) => ({
         at: step.at,
-        label: step.count > 1 ? `${step.label} (x${step.count})` : step.label,
+        label: step.count > 1 ? `${step.label} (${step.count} times)` : step.label,
         detail: step.detail || null,
         link: step.link || null,
       })),

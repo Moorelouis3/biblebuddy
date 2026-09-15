@@ -90,6 +90,7 @@ export default function PromoSlot({ postSlug, slotIndex = 0 }: PromoSlotProps) {
     <Link
       ref={containerRef}
       href={href}
+      rel="nofollow"
       onClick={() => trackBlogPromoEvent({ eventType: "click", promo: promoName, postSlug, slotIndex })}
       aria-label="Bible Buddy is a free Bible study app. Create your free account."
       className="my-8 block overflow-hidden rounded-[24px] shadow-[0_18px_48px_rgba(15,23,42,0.10)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(0,86,253,0.16)]"

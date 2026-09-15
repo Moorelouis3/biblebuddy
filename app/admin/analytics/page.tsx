@@ -501,6 +501,7 @@ type AnalyticsResponse = {
         signupUrl: string;
         signedUpAt: string | null;
         matchedBy: string;
+        studyMode?: string | null;
       }>;
     }>;
     video?: {
@@ -4965,6 +4966,29 @@ function friendlyReferrerLabel(referrer: string | null | undefined) {
   return host;
 }
 
+/** "Read the blog post \"who was ruth\"" / "Came to the home page". */
+function friendlyEntryLabel(path: string | null | undefined) {
+  const clean = (path || "/").split("?")[0].replace(/\/{2,}/g, "/") || "/";
+  const parts = clean.split("/").filter(Boolean);
+  if (["blog", "bible-study-hub", "bible-study-tips"].includes(parts[0] || "") && parts.length > 1) {
+    return `Read the blog post "${(parts[parts.length - 1] || "").replace(/-/g, " ")}"`;
+  }
+  return "Came to the home page";
+}
+
+function studyModeLabel(mode: string | null | undefined) {
+  if (mode === "bible_year") return "Bible in One Year";
+  if (mode === "devotional") return "a devotional";
+  if (mode === "bible") return "Just the Bible";
+  return "a study path";
+}
+
+/** Guests show up as "User 1a2b3c4d" - say what that is. */
+function friendlyNewUserName(label: string | null | undefined) {
+  if (!label || /^(User|Session) [0-9a-f]{6,}$/i.test(label.trim())) return "A guest (no name yet)";
+  return label;
+}
+
 function friendlyPageLabel(path: string | null | undefined) {
   const clean = (path || "/").split("?")[0].replace(/\/{2,}/g, "/") || "/";
   if (clean === "/") return "the landing page";
@@ -5184,48 +5208,46 @@ function TrafficSourcesAnalyticsSection({
                   {isExpanded ? (
                     <tr className="border-t border-[var(--bb-card-border,#eef2f7)] bg-[var(--bb-surface-soft,#f8fbff)]">
                       <td colSpan={5} className="px-3 py-3">
-                        {source.visitorRows.length === 0 ? (
+                        {/* Only the people who became new users - they picked a
+                            study path. Visitors who read and left are just the
+                            Visitors number (Louis, 2026-09-15). */}
+                        {source.signupRows.length === 0 ? (
                           <p className="text-sm font-semibold text-[var(--bb-text-secondary,#64748b)]">
-                            No individual visitors recorded for this source in this timeframe.
+                            No new users from {source.source} in this timeframe.
                           </p>
                         ) : (
                           <div className="space-y-2">
-                            {source.visitorRows
+                            {source.signupRows
                               .slice(0, showAllVisitors[source.source] ? undefined : 15)
-                              .map((visitor) => {
-                              const journey = journeys[visitor.actorId];
-                              const referrerLabel = friendlyReferrerLabel(visitor.referrer);
+                              .map((signup) => {
+                              const journeyKey = signup.userId || signup.actorId;
+                              const journey = journeys[journeyKey];
                               return (
-                                <div key={`${visitor.actorId}-${visitor.firstSeenAt}`} className="rounded-xl border border-[var(--bb-card-border,#e2e8f0)] bg-white p-3">
-                                  <div className="flex flex-wrap items-center gap-2 text-xs font-bold">
-                                    <span className="text-sm font-semibold text-[var(--bb-text-primary,#101827)]">
-                                      Came from{" "}
-                                      {visitor.referrer ? (
-                                        <a
-                                          href={visitor.referrer}
-                                          target="_blank"
-                                          rel="noreferrer"
-                                          onClick={(event) => event.stopPropagation()}
-                                          className="font-black text-blue-600 underline"
-                                        >
-                                          {referrerLabel}
-                                        </a>
-                                      ) : (
-                                        <span className="font-black">{referrerLabel}</span>
-                                      )}
-                                      {" → "}
-                                      <span className="font-black">{friendlyPageLabel(visitor.pagePath)}</span>
-                                    </span>
-                                    <span className="text-[var(--bb-text-secondary,#94a3b8)]">{relativeTimeFromNow(visitor.firstSeenAt)}</span>
+                                <div key={`${signup.actorId}-${signup.signedUpAt}`} className="rounded-xl border border-[var(--bb-card-border,#e2e8f0)] bg-white p-3">
+                                  <div className="flex flex-wrap items-center gap-2">
+                                    <div className="min-w-0 flex-1">
+                                      <p className="text-sm font-black text-[var(--bb-text-primary,#101827)]">
+                                        {friendlyNewUserName(signup.userLabel)}
+                                        <span className="ml-2 text-xs font-bold text-[var(--bb-text-secondary,#94a3b8)]">
+                                          {relativeTimeFromNow(signup.signedUpAt)}
+                                        </span>
+                                      </p>
+                                      <p className="mt-0.5 text-sm font-semibold text-[var(--bb-text-secondary,#475569)]">
+                                        {friendlyEntryLabel(signup.pagePath)} → picked{" "}
+                                        <span className="font-black text-[var(--bb-text-primary,#101827)]">
+                                          {studyModeLabel(signup.studyMode)}
+                                        </span>
+                                      </p>
+                                    </div>
                                     <button
                                       type="button"
                                       onClick={(event) => {
                                         event.stopPropagation();
-                                        void loadJourney(visitor.actorId);
+                                        void loadJourney(journeyKey);
                                       }}
-                                      className="ml-auto rounded-lg bg-[#0056fd] px-3 py-1 text-[11px] font-black text-white"
+                                      className="rounded-lg bg-[#0056fd] px-3 py-1 text-[11px] font-black text-white"
                                     >
-                                      {journey?.steps ? "Hide journey" : journey?.loading ? "Loading..." : "What did they do? →"}
+                                      {journey?.steps ? "Hide" : journey?.loading ? "Loading..." : "What did they do? →"}
                                     </button>
                                   </div>
                                   {journey?.error ? (
@@ -5237,36 +5259,17 @@ function TrafficSourcesAnalyticsSection({
                                         <li key={`${step.at}-${index}`} className="text-xs font-semibold text-[var(--bb-text-primary,#101827)]">
                                           <span className="mr-2 font-black text-blue-600">{index + 1}.</span>
                                           {step.label}
-                                          {step.detail ? (
-                                            <span className="ml-1 text-[var(--bb-text-secondary,#94a3b8)]">
-                                              {step.link ? (
-                                                <a href={step.link} target="_blank" rel="noreferrer" className="underline" onClick={(event) => event.stopPropagation()}>
-                                                  {step.detail.startsWith("came from ")
-                                                    ? `came from ${friendlyReferrerLabel(step.link)}`
-                                                    : step.detail.slice(0, 70)}
-                                                </a>
-                                              ) : (
-                                                step.detail.slice(0, 70)
-                                              )}
-                                            </span>
-                                          ) : null}
                                           <span className="ml-2 text-[10px] font-bold text-[var(--bb-text-secondary,#c0c8d4)]">
                                             {relativeTimeFromNow(step.at)}
                                           </span>
                                         </li>
                                       ))}
-                                      {!journey.becameUser ? (
-                                        <li className="text-xs font-semibold text-[var(--bb-text-secondary,#94a3b8)]">
-                                          <span className="mr-2 font-black text-slate-400">→</span>
-                                          Left without becoming a user
-                                        </li>
-                                      ) : null}
                                     </ol>
                                   ) : null}
                                 </div>
                               );
                             })}
-                            {source.visitorRows.length > 15 && !showAllVisitors[source.source] ? (
+                            {source.signupRows.length > 15 && !showAllVisitors[source.source] ? (
                               <button
                                 type="button"
                                 onClick={(event) => {
@@ -5275,12 +5278,12 @@ function TrafficSourcesAnalyticsSection({
                                 }}
                                 className="w-full rounded-xl border border-[var(--bb-card-border,#e2e8f0)] bg-white py-2 text-sm font-black text-blue-600"
                               >
-                                Show all {source.visitorRows.length} visitors
+                                Show all {source.signupRows.length} new users
                               </button>
                             ) : null}
-                            {source.visitors > source.visitorRows.length ? (
+                            {source.signups > source.signupRows.length ? (
                               <p className="text-[11px] font-semibold text-[var(--bb-text-secondary,#94a3b8)]">
-                                Showing the {source.visitorRows.length} most recent of {formatNumber(source.visitors)} visitors in this timeframe.
+                                Showing the {source.signupRows.length} most recent of {formatNumber(source.signups)} new users in this timeframe.
                               </p>
                             ) : null}
                           </div>

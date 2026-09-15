@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { ensureGuestSession, recordNewUser } from "@/lib/guestSession";
@@ -59,13 +59,10 @@ export default function StartPage() {
   const router = useRouter();
   const [choosing, setChoosing] = useState<string | null>(null);
 
-  // Someone may land here directly from a shared link with no session. The
-  // guest is created now so the page works, but it is NOT counted as a new
-  // user yet - arriving here is not the same as deciding to study. That is
-  // recorded in choose(), below.
-  useEffect(() => {
-    void ensureGuestSession({ source: "start_chooser" });
-  }, []);
+  // No account is created on arrival any more (2026-09-15). Blog banners link
+  // here, crawlers follow those links and run the page, and each visit made an
+  // empty guest account - 46 in one morning. choose() creates the guest at the
+  // moment someone actually picks a path.
 
   async function choose(choice: StudyChoice) {
     if (choosing) return;

@@ -505,6 +505,8 @@ type ProfileSignupAttributionRow = {
   traffic_source?: string | null;
   signup_source?: string | null;
   signup_first_touch_source?: string | null;
+  signup_source_detail?: string | null;
+  preferred_study_mode?: string | null;
   created_at?: string | null;
 };
 
@@ -2058,6 +2060,46 @@ function buildUpgradeChartSeries(rows: UpgradeActionRow[]) {
   };
 }
 
+/**
+ * Who counts as a New User (Louis, 2026-09-15): someone who actually came
+ * inside and picked a study path - not an account made by a page load.
+ * Blog banners link to /start, which used to create a guest on arrival, so
+ * crawlers following those links made dozens of empty accounts a day.
+ *
+ * Guests (no email) count only once profile_stats.bible_year_launch_seen_at
+ * is set - /start's choose() writes it for every mode. Accounts with an email
+ * filled in a sign-up form and always count; older ones predate the chooser
+ * and never had that column written. On a lookup error nothing is dropped.
+ */
+async function keepUsersWhoPickedAPath(
+  adminSupabase: SupabaseClient,
+  users: AuthUserSummary[],
+  sinceIso: string | null,
+) {
+  const since = sinceIso ? new Date(sinceIso).getTime() : 0;
+  const guestIds = users
+    .filter((user) => !user.email && user.createdAt && new Date(user.createdAt).getTime() >= since)
+    .map((user) => user.id);
+  const picked = new Set<string>();
+  for (let index = 0; index < guestIds.length; index += 200) {
+    const { data, error } = await adminSupabase
+      .from("profile_stats")
+      .select("user_id")
+      .in("user_id", guestIds.slice(index, index + 200))
+      .not("bible_year_launch_seen_at", "is", null);
+    if (error) {
+      console.error("[ONBOARDING_ANALYTICS] picked-a-path lookup failed:", error.message);
+      return users;
+    }
+    for (const row of data || []) picked.add(row.user_id as string);
+  }
+  return users.filter((user) => {
+    if (user.email) return true;
+    if (!user.createdAt || new Date(user.createdAt).getTime() < since) return false;
+    return picked.has(user.id);
+  });
+}
+
 function collectSignupTimestampsFromAuthUsers(
   users: AuthUserSummary[],
   startIso: string,
@@ -2387,6 +2429,7 @@ function summarizeTrafficSources(rows: LandingEventRow[], blogVisits: BlogVisitR
     signupUrl: string;
     signedUpAt: string | null;
     matchedBy: string;
+    studyMode?: string | null;
   }>>();
   for (const row of firstVisitByActor.values()) {
     const source = getTrafficSourceForLandingEvent(row);
@@ -2605,6 +2648,8 @@ function mergeProfileSignupAttributionIntoTrafficSources(
     const userId = typeof profile.user_id === "string" ? profile.user_id : "";
     if (!userId || countedSignupUserIds.has(userId)) continue;
 
+    // authUsers is only real new users; anyone else is not counted here.
+    if (!authCreatedAtByUserId.has(userId)) continue;
     const signedUpAt = authCreatedAtByUserId.get(userId) || profile.created_at || null;
     if (!isTimestampInAnalyticsWindow(signedUpAt, startIso, endIso)) continue;
 
@@ -2659,6 +2704,11 @@ function mergeProfileSignupAttributionIntoTrafficSources(
   }
 
   const totalVisitors = summary.totalVisitors + extraVisitors;
+  // Plain-English drill-down (2026-09-15): for each new user, the path they
+  // picked and the blog post they entered from when a banner brought them.
+  const profileRowByUserId = new Map(
+    profileRows.filter((row) => typeof row.user_id === "string").map((row) => [row.user_id as string, row]),
+  );
   const sources = Array.from(sourcesByName.values())
     .map((source) => ({
       ...source,
@@ -2666,7 +2716,16 @@ function mergeProfileSignupAttributionIntoTrafficSources(
       percent: percent(source.visitors, totalVisitors),
       signupRows: source.signupRows
         .sort((a, b) => (b.signedUpAt || "").localeCompare(a.signedUpAt || ""))
-        .slice(0, 100),
+        .slice(0, 100)
+        .map((signup) => {
+          const profile = signup.userId ? profileRowByUserId.get(signup.userId) : undefined;
+          const blogSlug = (profile?.signup_source_detail || "").match(/^blog:([^:]+)/)?.[1];
+          return {
+            ...signup,
+            studyMode: profile?.preferred_study_mode || null,
+            pagePath: blogSlug ? `/blog/${blogSlug}` : signup.pagePath,
+          };
+        }),
     }))
     .sort((a, b) => b.signups - a.signups || b.visitors - a.visitors || a.source.localeCompare(b.source));
 
@@ -4764,6 +4823,7 @@ async function buildOverviewAnalyticsResponse(
       }),
     );
   const validAuthUsers = allAuthUsers.filter((user) => !isOwnerAuthUser(user.id, allAuthSummaryByUserId));
+  const newUserAuthUsers = await keepUsersWhoPickedAPath(adminSupabase, validAuthUsers, null);
   const { data: allUpgradeActionData } = await adminSupabase
     .from("master_actions")
     .select("user_id, action_label, event_metadata, created_at")
@@ -4856,13 +4916,13 @@ async function buildOverviewAnalyticsResponse(
   })).filter(
     (row) => !isOwnerAuthUser(row.user_id || null, allAuthSummaryByUserId),
   );
-  const signupTimestamps = collectSignupTimestampsFromAuthUsers(validAuthUsers, startIso, endIso);
+  const signupTimestamps = collectSignupTimestampsFromAuthUsers(newUserAuthUsers, startIso, endIso);
   const signupSeries = buildSimpleMetricSeries(signupTimestamps, journeyWindow);
-  const signupChartSeries = buildSignupChartSeries(validAuthUsers.map((user) => user.createdAt));
+  const signupChartSeries = buildSignupChartSeries(newUserAuthUsers.map((user) => user.createdAt));
   const upgradeChartSeries = buildUpgradeChartSeries(allUpgradeRows);
   const currentSignups = signupSeries.reduce((sum, point) => sum + point.value, 0);
   const previousSignups = previousRange
-    ? collectSignupTimestampsFromAuthUsers(validAuthUsers, previousRange.startIso, previousRange.endIso).length
+    ? collectSignupTimestampsFromAuthUsers(newUserAuthUsers, previousRange.startIso, previousRange.endIso).length
     : 0;
   const firstThreeDaysSinceIso = new Date(Date.now() - NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
   const { data: firstThreeDaysData } = await adminSupabase
@@ -5370,6 +5430,8 @@ export async function GET(request: Request) {
   }
 
   const validSimpleAuthUsers = allAuthUsers.filter((user) => !isOwnerAuthUser(user.id, allAuthSummaryByUserId));
+  // New Users = picked a study path, not just an account (see keepUsersWhoPickedAPath).
+  const newUserAuthUsers = await keepUsersWhoPickedAPath(adminSupabase, validSimpleAuthUsers, null);
   const validSimpleAuthUserIds = validSimpleAuthUsers.map((user) => user.id).filter(Boolean);
   const profileSignupAttributionRows: ProfileSignupAttributionRow[] = [];
   // 200 per request: .in() puts every id in the URL, and ~350+ uuids makes
@@ -5381,7 +5443,7 @@ export async function GET(request: Request) {
 
     const { data: profileSignupRows, error: profileSignupError } = await adminSupabase
       .from("profile_stats")
-      .select("user_id, display_name, username, traffic_source, signup_source, signup_first_touch_source, created_at")
+      .select("user_id, display_name, username, traffic_source, signup_source, signup_first_touch_source, signup_source_detail, preferred_study_mode, created_at")
       .in("user_id", userIds);
 
     if (profileSignupError) {
@@ -5435,13 +5497,13 @@ export async function GET(request: Request) {
       validLandingEventRows,
       blogVisitRows,
       new Set(
-        validSimpleAuthUsers
+        newUserAuthUsers
           .filter((user) => isTimestampInAnalyticsWindow(user.createdAt, journeySinceIso, journeyBeforeIso))
           .map((user) => user.id),
       ),
     ),
     profileSignupAttributionRows,
-    validSimpleAuthUsers,
+    newUserAuthUsers,
     journeySinceIso,
     journeyBeforeIso,
     profileByUserId,
@@ -5467,12 +5529,12 @@ export async function GET(request: Request) {
   );
   const paidUpgradeTimestamps = collectFirstPaidUpgradeTimestamps(upgradeRows, journeySinceIso, journeyBeforeIso);
   const proUpgrades = paidUpgradeTimestamps.length;
-  const signupTimestamps = collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, journeySinceIso, journeyBeforeIso);
+  const signupTimestamps = collectSignupTimestampsFromAuthUsers(newUserAuthUsers, journeySinceIso, journeyBeforeIso);
   const signupSeries = buildSimpleMetricSeries(signupTimestamps, journeyWindow);
-  const signupChartSeries = buildSignupChartSeries(validSimpleAuthUsers.map((user) => user.createdAt));
+  const signupChartSeries = buildSignupChartSeries(newUserAuthUsers.map((user) => user.createdAt));
   const upgradeChartSeries = buildUpgradeChartSeries(upgradeRows);
   const previousSignups = previousRange
-    ? collectSignupTimestampsFromAuthUsers(validSimpleAuthUsers, previousRange.startIso, previousRange.endIso).length
+    ? collectSignupTimestampsFromAuthUsers(newUserAuthUsers, previousRange.startIso, previousRange.endIso).length
     : 0;
   const upgradeSeries = buildSimpleMetricSeries(
     paidUpgradeTimestamps,
