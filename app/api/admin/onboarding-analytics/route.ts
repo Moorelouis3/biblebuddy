@@ -2635,7 +2635,6 @@ function mergeProfileSignupAttributionIntoTrafficSources(
   endIso: string | null,
   profileByUserId: Map<string, string>,
 ) {
-  const authCreatedAtByUserId = new Map(authUsers.map((user) => [user.id, user.createdAt]));
   const sourcesByName = new Map(summary.sources.map((source) => [source.source, {
     ...source,
     visitorRows: [...source.visitorRows],
@@ -2644,13 +2643,17 @@ function mergeProfileSignupAttributionIntoTrafficSources(
   const countedSignupUserIds = new Set<string>(summary.countedSignupUserIds);
   let extraVisitors = 0;
 
-  for (const profile of profileRows) {
-    const userId = typeof profile.user_id === "string" ? profile.user_id : "";
+  // Walk the new users themselves, not profile rows: an account whose
+  // profile_stats row has not been written yet still counts (as Direct), so
+  // this total always equals the Overview New Users.
+  const profileByUser = new Map(
+    profileRows.filter((row) => typeof row.user_id === "string").map((row) => [row.user_id as string, row]),
+  );
+  for (const authUser of authUsers) {
+    const userId = authUser.id;
     if (!userId || countedSignupUserIds.has(userId)) continue;
-
-    // authUsers is only real new users; anyone else is not counted here.
-    if (!authCreatedAtByUserId.has(userId)) continue;
-    const signedUpAt = authCreatedAtByUserId.get(userId) || profile.created_at || null;
+    const profile: ProfileSignupAttributionRow = profileByUser.get(userId) || { user_id: userId };
+    const signedUpAt = authUser.createdAt || profile.created_at || null;
     if (!isTimestampInAnalyticsWindow(signedUpAt, startIso, endIso)) continue;
 
     const source = normalizeProfileSignupSource(profile);
