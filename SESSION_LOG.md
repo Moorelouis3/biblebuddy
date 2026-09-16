@@ -4270,3 +4270,9 @@ Day: 226 — Seventy Years and the Yoke (Jeremiah 25-27) | Runtime: audio
 not rendered (no API/Supabase credentials in this environment) | Cast:
 narrator only.
 Next up: Day 227.
+
+## 2026-09-16T00:45:00Z (bible year day writer run)
+Day: 227 — False Hope and Promised Restoration (Jeremiah 28-30) | Runtime:
+audio not rendered (no API/Supabase credentials in this environment) |
+Cast: narrator only.
+Next up: Day 228. Stopping here — two-day budget cap for this run reached.
