@@ -4264,3 +4264,9 @@ Day: 225 — Kings, Exile, and Good Figs (Jeremiah 22-24) | Runtime: audio
 not rendered (no API/Supabase credentials in this environment) | Cast:
 narrator only.
 Next up: Day 226. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-16T00:26:19Z (bible year day writer run)
+Day: 226 — Seventy Years and the Yoke (Jeremiah 25-27) | Runtime: audio
+not rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only.
+Next up: Day 227.
