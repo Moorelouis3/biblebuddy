@@ -4298,3 +4298,8 @@ crashed the entire page instead of just using the defaults. Commit
 load chunk" crash reports confirmed as already self-healed (no fix
 needed); one recurring, non-reproducible Android crash left open with
 an updated diagnosis.
+
+## 2026-09-16T08:27:10Z (bible year day writer run)
+Day: 230 — Jerusalem Falls (Jeremiah 37-39) | Runtime: audio not rendered
+(no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 231.
