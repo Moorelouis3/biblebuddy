@@ -4282,3 +4282,9 @@ Day: 228 — New Covenant and Future Hope (Jeremiah 31-33) | Runtime: audio
 not rendered (no API/Supabase credentials in this environment) | Cast:
 narrator only.
 Next up: Day 229.
+
+## 2026-09-16T04:32:50Z (bible year day writer run)
+Day: 229 — Broken Promises and God's Written Word (Jeremiah 34-36) |
+Runtime: audio not rendered (no API/Supabase credentials in this
+environment) | Cast: narrator only.
+Next up: Day 230. Stopping here — two-day budget cap for this run reached.
