@@ -4327,3 +4327,9 @@ Day: 234 — Babylon Will Fall (Jeremiah 49-51) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only.
 Next up: Day 235.
+
+## 2026-09-16T16:33:50Z (bible year day writer run)
+Day: 235 — Jerusalem's Ruin and Grief (Jeremiah 52; Lamentations 1-2) |
+Runtime: audio not rendered (no API/Supabase credentials in this
+environment) | Cast: narrator only.
+Next up: Day 236. Stopping here — two-day budget cap for this run reached.
