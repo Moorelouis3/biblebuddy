@@ -4303,3 +4303,9 @@ an updated diagnosis.
 Day: 230 — Jerusalem Falls (Jeremiah 37-39) | Runtime: audio not rendered
 (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 231.
+
+## 2026-09-16T08:29:17Z (bible year day writer run)
+Day: 231 — The Remnant After the Fall (Jeremiah 40-42) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only.
+Next up: Day 232. Stopping here — two-day budget cap for this run reached.
