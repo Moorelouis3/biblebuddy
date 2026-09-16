@@ -4276,3 +4276,9 @@ Day: 227 — False Hope and Promised Restoration (Jeremiah 28-30) | Runtime:
 audio not rendered (no API/Supabase credentials in this environment) |
 Cast: narrator only.
 Next up: Day 228. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-16T04:30:01Z (bible year day writer run)
+Day: 228 — New Covenant and Future Hope (Jeremiah 31-33) | Runtime: audio
+not rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only.
+Next up: Day 229.
