@@ -4288,3 +4288,13 @@ Day: 229 — Broken Promises and God's Written Word (Jeremiah 34-36) |
 Runtime: audio not rendered (no API/Supabase credentials in this
 environment) | Cast: narrator only.
 Next up: Day 230. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-16 (bug fixer run)
+Fixed: whole-app crash on page load when the browser blocks storage
+(iOS Safari Private Browsing etc.) - reading the saved theme/streak
+flame from localStorage during first render had no fallback, so it
+crashed the entire page instead of just using the defaults. Commit
+422a6e0. Two crash reports closed by this fix; two more "failed to
+load chunk" crash reports confirmed as already self-healed (no fix
+needed); one recurring, non-reproducible Android crash left open with
+an updated diagnosis.
