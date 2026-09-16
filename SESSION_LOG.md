@@ -4315,3 +4315,9 @@ Day: 232 — Egypt, Warning, and Baruch (Jeremiah 43-45) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only.
 Next up: Day 233.
+
+## 2026-09-16T12:27:07Z (bible year day writer run)
+Day: 233 — Judgment on the Nations (Jeremiah 46-48) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only.
+Next up: Day 234. Stopping here — two-day budget cap for this run reached.
