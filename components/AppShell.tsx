@@ -361,7 +361,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     function loadSelectedBuddy(event?: Event) {
       if (typeof window === "undefined") return;
       const detailBuddyId = (event as CustomEvent<{ buddyId?: string }> | undefined)?.detail?.buddyId;
-      const storedBuddyId = window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY);
+      let storedBuddyId: string | null = null;
+      try {
+        storedBuddyId = window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY);
+      } catch {
+        // Storage blocked (e.g. private browsing) - fall back to no stored buddy.
+      }
       if (detailBuddyId || storedBuddyId) {
         const buddyId = normalizeBuddyAvatarId(detailBuddyId || storedBuddyId);
         setSelectedBuddyId(buddyId);
@@ -426,7 +431,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const resolvedTheme = readCachedAppTheme(userId);
     setAppThemeId(resolvedTheme);
     applyAppThemeToDocument(resolvedTheme);
-    preloadImage(getBuddyAvatar(normalizeBuddyAvatarId(window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY))).profileImage, "high");
+    let storedBuddyIdForPreload: string | null = null;
+    try {
+      storedBuddyIdForPreload = window.localStorage.getItem(SELECTED_BUDDY_STORAGE_KEY);
+    } catch {
+      // Storage blocked (e.g. private browsing) - fall back to the default buddy.
+    }
+    preloadImage(getBuddyAvatar(normalizeBuddyAvatarId(storedBuddyIdForPreload)).profileImage, "high");
     syncPerformanceModeToDocument();
 
     const handleVisibilityChange = () => syncPerformanceModeToDocument();
@@ -445,8 +456,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     function handleStreakFlameChanged(event: Event) {
       const customEvent = event as CustomEvent<{ flameId?: string }>;
       const skinLockedFlame = getLocalSkinLockedFlame();
+      let storedFlameId: string | null = null;
+      try {
+        storedFlameId = window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY);
+      } catch {
+        // Storage blocked (e.g. private browsing) - fall back to no stored flame.
+      }
       const nextFlameId = skinLockedFlame ?? normalizeFlameCosmeticId(
-        customEvent.detail?.flameId || window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY),
+        customEvent.detail?.flameId || storedFlameId,
       );
       persistActiveStreakFlame(nextFlameId);
       setHeaderSelectedFlame(nextFlameId);
@@ -648,7 +665,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [headerGraceDays, setHeaderGraceDays] = useState<number>(0);
   const [headerSelectedFlame, setHeaderSelectedFlame] = useState<FlameCosmeticId>(() => {
     if (typeof window === "undefined") return "default";
-    return getLocalSkinLockedFlame() ?? normalizeFlameCosmeticId(window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY));
+    let storedFlameId: string | null = null;
+    try {
+      storedFlameId = window.localStorage.getItem(ACTIVE_STREAK_FLAME_STORAGE_KEY);
+    } catch {
+      // Storage blocked (e.g. private browsing) - fall back to no stored flame.
+    }
+    return getLocalSkinLockedFlame() ?? normalizeFlameCosmeticId(storedFlameId);
   });
   const [headerProfileImageUrl, setHeaderProfileImageUrl] = useState<string | null>(null);
   const [headerProfileName, setHeaderProfileName] = useState<string>("You");

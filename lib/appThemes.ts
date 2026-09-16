@@ -502,26 +502,39 @@ export function getAppThemePendingSyncKey(userId: string | null | undefined) {
   return userId ? `${APP_THEME_PENDING_SYNC_KEY}:${userId}` : APP_THEME_PENDING_SYNC_KEY;
 }
 
+// Some browsing contexts (iOS Safari Private Browsing, storage fully
+// disabled) throw a SecurityError on every localStorage call. These run
+// unconditionally on every page load (useState initializers in AppShell),
+// so a throw here used to crash the whole app instead of just skipping the
+// cached theme.
+function safeGetLocalStorageItem(key: string): string | null {
+  try {
+    return window.localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
 export function readCachedAppTheme(userId: string | null | undefined): AppThemeId {
   if (typeof window === "undefined") return "light";
   return normalizeAppThemeId(
-    (userId ? window.localStorage.getItem(getAppThemeStorageKey(userId)) : null) ||
-      window.localStorage.getItem(APP_THEME_STORAGE_KEY),
+    (userId ? safeGetLocalStorageItem(getAppThemeStorageKey(userId)) : null) ||
+      safeGetLocalStorageItem(APP_THEME_STORAGE_KEY),
   );
 }
 
 export function readCachedAppThemeUpdatedAtMs(userId: string | null | undefined) {
   if (typeof window === "undefined") return 0;
   const raw =
-    (userId ? window.localStorage.getItem(getAppThemeStorageTimestampKey(userId)) : null) ||
-    window.localStorage.getItem(APP_THEME_STORAGE_TIMESTAMP_KEY);
+    (userId ? safeGetLocalStorageItem(getAppThemeStorageTimestampKey(userId)) : null) ||
+    safeGetLocalStorageItem(APP_THEME_STORAGE_TIMESTAMP_KEY);
   const updatedAt = Number(raw);
   return Number.isFinite(updatedAt) ? updatedAt : 0;
 }
 
 export function readPendingAppThemeSync(userId: string | null | undefined) {
   if (typeof window === "undefined" || !userId) return null;
-  const raw = window.localStorage.getItem(getAppThemePendingSyncKey(userId));
+  const raw = safeGetLocalStorageItem(getAppThemePendingSyncKey(userId));
   if (!raw) return null;
   try {
     const parsed = JSON.parse(raw) as { themeId?: unknown; startedAt?: unknown };
