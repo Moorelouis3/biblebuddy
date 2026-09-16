@@ -4339,3 +4339,9 @@ Day: 236 — Mercy in the Middle of Lament (Lamentations 3-5) | Runtime: audio
 not rendered (no API/Supabase credentials in this environment) | Cast:
 narrator only.
 Next up: Day 237.
+
+## 2026-09-16T20:31:00Z (bible year day writer run)
+Day: 237 — Ezekiel Sees God's Glory (Ezekiel 1-3) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only.
+Next up: Day 238. Stopping here — two-day budget cap for this run reached.
