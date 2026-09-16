@@ -4333,3 +4333,9 @@ Day: 235 — Jerusalem's Ruin and Grief (Jeremiah 52; Lamentations 1-2) |
 Runtime: audio not rendered (no API/Supabase credentials in this
 environment) | Cast: narrator only.
 Next up: Day 236. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-16T20:25:08Z (bible year day writer run)
+Day: 236 — Mercy in the Middle of Lament (Lamentations 3-5) | Runtime: audio
+not rendered (no API/Supabase credentials in this environment) | Cast:
+narrator only.
+Next up: Day 237.
