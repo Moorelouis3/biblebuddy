@@ -4309,3 +4309,9 @@ Day: 231 — The Remnant After the Fall (Jeremiah 40-42) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only.
 Next up: Day 232. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-16T12:26:05Z (bible year day writer run)
+Day: 232 — Egypt, Warning, and Baruch (Jeremiah 43-45) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only.
+Next up: Day 233.
