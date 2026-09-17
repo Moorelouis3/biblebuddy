@@ -4435,3 +4435,7 @@ Next up: Psalms 70
 ## 2026-09-17T15:26:07Z (bible year day writer run)
 Day: 250 — Vision of a Restored Temple (Ezekiel 40-42) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 251.
+
+## 2026-09-17T15:27:06Z (bible year day writer run)
+Day: 251 — Glory Returns and Worship Is Ordered (Ezekiel 43-45) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 252. Stopping here — two-day budget cap for this run reached.
