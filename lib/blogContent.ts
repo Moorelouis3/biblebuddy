@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-6-explained",
+    title: "Genesis 6 Explained: Wickedness, Noah, and the Ark",
+    description:
+      "Genesis 6 explained verse by verse: the sons of God, the Nephilim, God's grief over human wickedness, and the grace that saved Noah before the flood.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-6-explained",
+    publishedAt: "2026-09-17",
+    readTime: "14 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Genesis 6 Explained 📖",
+      content:
+        "The world goes fully dark in this chapter.\nOne family stays right side up.\n\n📌 Grace shows up before the flood does, not after.\n\n📖 Every thought of man's heart was only evil, continually.\n📖 Noah walked with God, the same words used for Enoch.\n📖 God gives Noah exact blueprints for the ark.\n\nNew article on:\n🟢 who the mysterious **sons of God** actually were\n🟢 why God says He **regretted** making mankind\n🟢 the **covenant** God made before a drop of rain fell\n\nWhat stands out most to you about Noah's obedience? 🙏",
+    },
+  },
+  {
     slug: "genesis-5-explained",
     title: "Genesis 5 Explained: The Genealogy From Adam to Noah",
     description:
