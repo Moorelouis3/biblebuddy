@@ -1,5 +1,5 @@
 {
-  "note": "Twice-weekly Bible Buddy newsletter (Tue/Fri) through the new year. Order = most-read blog posts first (blog_page_views visitors, 2026-09-15), with seasonal swaps. Sent from Systeme.io to tag bb-day1-welcome, sender 'Bible Buddy'. Louis approves each before it goes out. Drafts already exist in Systeme (systemeDraftId). To send: open the draft from the Systeme newsletter list, Save draft dropdown, Save and send.",
+  "note": "Twice-weekly Bible Buddy newsletter (Tue/Fri) through the new year. Order = most-read blog posts first (blog_page_views visitors, 2026-09-15), with seasonal swaps. Sent from Systeme.io to tag bb-day1-welcome, sender 'Bible Buddy'. Louis approves each before it goes out. Drafts already exist in Systeme (systemeDraftId). To send: open the draft from the Systeme newsletter list, Save draft dropdown, Save and send. Rescheduled 2026-09-17: every 4 days after the Sep 15 send, all auto-scheduled in Systeme at 15:00 Berlin (9am US Eastern).",
   "sent": [
     {
       "date": "2026-09-11",
@@ -16,194 +16,224 @@
   ],
   "upcoming": [
     {
-      "date": "2026-09-18",
+      "date": "2026-09-19",
       "slug": "garden-of-eden-four-rivers",
       "systemeDraftId": 5302978,
-      "subject": "Two of Eden's rivers still flow today"
+      "subject": "Two of Eden's rivers still flow today",
+      "scheduledInSysteme": "2026-09-19 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-09-22",
+      "date": "2026-09-23",
       "slug": "names-of-god-meanings",
       "systemeDraftId": 5302996,
-      "subject": "What do you call God when you pray?"
+      "subject": "What do you call God when you pray?",
+      "scheduledInSysteme": "2026-09-23 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-09-25",
-      "slug": "moses",
-      "systemeDraftId": 5302997,
-      "subject": "Please send somebody else"
-    },
-    {
-      "date": "2026-09-29",
+      "date": "2026-09-27",
       "slug": "wisdom-of-proverbs",
       "special": "Wisdom of Proverbs community study starts Oct 1 - join link /events/wisdom-of-proverbs",
       "systemeDraftId": 5302998,
-      "subject": "31 days in Proverbs, together"
+      "subject": "31 days in Proverbs, together",
+      "scheduledInSysteme": "2026-09-27 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-10-02",
+      "date": "2026-10-01",
+      "slug": "moses",
+      "systemeDraftId": 5302997,
+      "subject": "Please send somebody else",
+      "scheduledInSysteme": "2026-10-01 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2026-10-05",
       "slug": "is-anxiety-a-sin",
       "systemeDraftId": 5302999,
-      "subject": "Is feeling anxious a sin?"
-    },
-    {
-      "date": "2026-10-06",
-      "slug": "who-is-leah",
-      "systemeDraftId": 5303000,
-      "subject": "Ever feel like the second choice?"
+      "subject": "Is feeling anxious a sin?",
+      "scheduledInSysteme": "2026-10-05 15:00 Europe/Berlin"
     },
     {
       "date": "2026-10-09",
-      "slug": "who-is-jezebel",
-      "systemeDraftId": 5303001,
-      "subject": "Nobody drifts from God all at once"
+      "slug": "who-is-leah",
+      "systemeDraftId": 5303000,
+      "subject": "Ever feel like the second choice?",
+      "scheduledInSysteme": "2026-10-09 15:00 Europe/Berlin"
     },
     {
       "date": "2026-10-13",
+      "slug": "who-is-jezebel",
+      "systemeDraftId": 5303001,
+      "subject": "Nobody drifts from God all at once",
+      "scheduledInSysteme": "2026-10-13 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2026-10-17",
       "slug": "armor-of-god-explained",
       "systemeDraftId": 5303002,
-      "subject": "Can you name all six pieces?"
+      "subject": "Can you name all six pieces?",
+      "scheduledInSysteme": "2026-10-17 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-10-16",
+      "date": "2026-10-21",
       "slug": "5-things-holding-men-back-from-god",
       "systemeDraftId": 5303007,
-      "subject": "What is quietly pulling you from God?"
+      "subject": "What is quietly pulling you from God?",
+      "scheduledInSysteme": "2026-10-21 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-10-20",
-      "slug": "how-do-you-know-you-are-saved",
-      "systemeDraftId": 5303008,
-      "subject": "What if I am not really saved?"
-    },
-    {
-      "date": "2026-10-23",
-      "slug": "genesis-1-explained",
-      "systemeDraftId": 5303009,
-      "subject": "Why is there light before the sun?"
-    },
-    {
-      "date": "2026-10-27",
+      "date": "2026-10-25",
       "slug": "what-is-hell",
       "systemeDraftId": 5303010,
-      "subject": "Where did the pitchfork come from?"
+      "subject": "Where did the pitchfork come from?",
+      "scheduledInSysteme": "2026-10-25 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-10-30",
+      "date": "2026-10-29",
       "slug": "what-does-the-bible-say-about-zodiac-signs",
       "special": "Halloween weekend",
       "systemeDraftId": 5303011,
-      "subject": "Who gave the stars their names?"
+      "subject": "Who gave the stars their names?",
+      "scheduledInSysteme": "2026-10-29 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-11-03",
-      "slug": "how-to-defend-your-faith-in-jesus",
-      "systemeDraftId": 5303012,
-      "subject": "What would you say if they asked?"
+      "date": "2026-11-02",
+      "slug": "how-do-you-know-you-are-saved",
+      "systemeDraftId": 5303008,
+      "subject": "What if I am not really saved?",
+      "scheduledInSysteme": "2026-11-02 15:00 Europe/Berlin"
     },
     {
       "date": "2026-11-06",
-      "slug": "men-who-walked-with-god",
-      "systemeDraftId": 5303014,
-      "subject": "Only two men got this description"
+      "slug": "genesis-1-explained",
+      "systemeDraftId": 5303009,
+      "subject": "Why is there light before the sun?",
+      "scheduledInSysteme": "2026-11-06 15:00 Europe/Berlin"
     },
     {
       "date": "2026-11-10",
+      "slug": "how-to-defend-your-faith-in-jesus",
+      "systemeDraftId": 5303012,
+      "subject": "What would you say if they asked?",
+      "scheduledInSysteme": "2026-11-10 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2026-11-14",
+      "slug": "men-who-walked-with-god",
+      "systemeDraftId": 5303014,
+      "subject": "Only two men got this description",
+      "scheduledInSysteme": "2026-11-14 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2026-11-18",
       "slug": "can-you-lose-your-salvation",
       "systemeDraftId": 5303027,
-      "subject": "What if one more sin is too many?"
+      "subject": "What if one more sin is too many?",
+      "scheduledInSysteme": "2026-11-18 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-11-13",
-      "slug": "what-is-the-fruit-of-the-spirit",
-      "systemeDraftId": 5303028,
-      "subject": "Why Paul said fruit, not fruits"
-    },
-    {
-      "date": "2026-11-17",
-      "slug": "who-was-joseph",
-      "systemeDraftId": 5303029,
-      "subject": "When someone you trusted turns on you"
-    },
-    {
-      "date": "2026-11-20",
-      "slug": "genesis-2-explained",
-      "systemeDraftId": 5303030,
-      "subject": "The first thing God called not good"
-    },
-    {
-      "date": "2026-11-24",
+      "date": "2026-11-22",
       "slug": "why-so-many-denominations",
       "special": "Thanksgiving week",
       "systemeDraftId": 5303031,
-      "subject": "Different churches, one table"
+      "subject": "Different churches, one table",
+      "scheduledInSysteme": "2026-11-22 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-11-27",
+      "date": "2026-11-26",
       "slug": "why-so-many-bible-translations",
       "special": "Black Friday - people shopping for Bibles as gifts",
       "systemeDraftId": 5303032,
-      "subject": "KJV, NIV, ESV, NLT. Which one?"
+      "subject": "KJV, NIV, ESV, NLT. Which one?",
+      "scheduledInSysteme": "2026-11-26 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-12-01",
-      "slug": "people-who-never-heard-of-jesus",
-      "systemeDraftId": 5303033,
-      "subject": "What about the ones who never heard?"
+      "date": "2026-11-30",
+      "slug": "what-is-the-fruit-of-the-spirit",
+      "systemeDraftId": 5303028,
+      "subject": "Why Paul said fruit, not fruits",
+      "scheduledInSysteme": "2026-11-30 15:00 Europe/Berlin"
     },
     {
       "date": "2026-12-04",
-      "slug": "biblical-numbers-meanings",
-      "systemeDraftId": 5303034,
-      "subject": "Does 7 really mean something?"
+      "slug": "who-was-joseph",
+      "systemeDraftId": 5303029,
+      "subject": "When someone you trusted turns on you",
+      "scheduledInSysteme": "2026-12-04 15:00 Europe/Berlin"
     },
     {
       "date": "2026-12-08",
-      "slug": "what-does-the-bible-say-about-anxiety",
-      "special": "Holiday stress season",
-      "systemeDraftId": 5303035,
-      "subject": "Anxiety does not knock first"
-    },
-    {
-      "date": "2026-12-11",
       "slug": "what-is-the-bible",
       "systemeDraftId": 5303036,
-      "subject": "It is not just a book"
+      "subject": "It is not just a book",
+      "scheduledInSysteme": "2026-12-08 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-12-15",
+      "date": "2026-12-12",
       "slug": "what-is-heaven",
       "special": "Holidays are hard for people missing loved ones",
       "systemeDraftId": 5303037,
-      "subject": "What heaven is really like"
+      "subject": "What heaven is really like",
+      "scheduledInSysteme": "2026-12-12 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-12-18",
+      "date": "2026-12-16",
       "slug": "who-was-elizabeth",
       "special": "Advent - the woman who waited a lifetime for a miracle",
       "systemeDraftId": 5303038,
-      "subject": "She waited a lifetime for this"
+      "subject": "She waited a lifetime for this",
+      "scheduledInSysteme": "2026-12-16 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-12-22",
+      "date": "2026-12-20",
       "slug": "who-was-mary-mother-of-jesus",
       "special": "Christmas week",
       "systemeDraftId": 5303039,
-      "subject": "She was probably a teenager"
+      "subject": "She was probably a teenager",
+      "scheduledInSysteme": "2026-12-20 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-12-25",
+      "date": "2026-12-24",
       "slug": "lessons-from-the-life-of-jesus",
       "special": "Christmas Day - short and warm, Merry Christmas from Louis",
       "systemeDraftId": 5303040,
-      "subject": "Merry Christmas from Louis"
+      "subject": "Merry Christmas from Louis",
+      "scheduledInSysteme": "2026-12-24 15:00 Europe/Berlin"
     },
     {
-      "date": "2026-12-29",
+      "date": "2026-12-28",
       "slug": "how-to-read-the-bible",
       "special": "New Year - start the Bible in One Year on Jan 1",
       "systemeDraftId": 5303041,
-      "subject": "Read the whole Bible in 2027?"
+      "subject": "Read the whole Bible in 2027?",
+      "scheduledInSysteme": "2026-12-28 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2027-01-01",
+      "slug": "genesis-2-explained",
+      "systemeDraftId": 5303030,
+      "subject": "The first thing God called not good",
+      "scheduledInSysteme": "2027-01-01 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2027-01-05",
+      "slug": "people-who-never-heard-of-jesus",
+      "systemeDraftId": 5303033,
+      "subject": "What about the ones who never heard?",
+      "scheduledInSysteme": "2027-01-05 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2027-01-09",
+      "slug": "biblical-numbers-meanings",
+      "systemeDraftId": 5303034,
+      "subject": "Does 7 really mean something?",
+      "scheduledInSysteme": "2027-01-09 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2027-01-13",
+      "slug": "what-does-the-bible-say-about-anxiety",
+      "special": "Holiday stress season",
+      "systemeDraftId": 5303035,
+      "subject": "Anxiety does not knock first",
+      "scheduledInSysteme": "2027-01-13 15:00 Europe/Berlin"
     }
   ]
 }
