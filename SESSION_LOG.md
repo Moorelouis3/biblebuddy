@@ -4351,3 +4351,8 @@ Day: 238 — Signs of Jerusalem's Judgment (Ezekiel 4-6) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only.
 Next up: Day 239.
+
+## 2026-09-17T00:29:27Z (bible year day writer run)
+Day: 239 — The End Comes (Ezekiel 7-9) | Runtime: audio not rendered (no
+API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 240. Stopping here — two-day budget cap for this run reached.
