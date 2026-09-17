@@ -4507,3 +4507,7 @@ Next up: Psalms 76
 ## 2026-09-17T21:27:23Z (bible year day writer run)
 Day: 262 — The Day of the Lord Begins (Joel 2-3; Amos 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 263.
+
+## 2026-09-17T21:28:42Z (bible year day writer run)
+Day: 263 — Justice and Accountability (Amos 2-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 264. Stopping here — two-day budget cap for this run reached.
