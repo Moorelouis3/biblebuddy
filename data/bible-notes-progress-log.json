@@ -35208,6 +35208,63 @@
           "at": "2026-09-17T16:54:51Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 72,
+      "startedAt": "2026-09-17T17:46:15Z",
+      "finishedAt": "2026-09-17T17:57:06Z",
+      "durationMinutes": 11,
+      "sections": 8,
+      "cards": 38,
+      "verses": 20,
+      "notes": "New chapter, forward progress after Psalms 71. Priority queue and style-redo backlog both confirmed empty (remaining: []). Session started on a detached HEAD one commit behind origin/main; git fetch showed origin/main had been force-updated to match that same detached HEAD exactly, so no history was lost, but the local main branch ref was stale and unrelated (diverged, no merge base), so work stayed on detached HEAD and was pushed straight to origin main rather than touching that stale ref. Psalms 72 is the royal psalm traditionally linked to Solomon, a prayer for a king whose justice for the poor, dominion from sea to sea, and blessing to all nations echoes the Abrahamic promise and closes with the editorial note that the prayers of David the son of Jesse are ended, marking the close of Book II of the Psalms. Fetched real KJV text for Psalms 72 (20 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror.",
+      "steps": [
+        {
+          "name": "git state resolved (detached HEAD confirmed to match origin/main exactly after fetch; stayed on detached HEAD rather than resetting the stale, unrelated local main ref)",
+          "at": "2026-09-17T17:46:15Z"
+        },
+        {
+          "name": "npm install done",
+          "at": "2026-09-17T17:49:24Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 72 (normal forward progress, priority queue and redo backlog both empty, confirmed against progress log, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, and lib/ for no existing psalmsSeventyTwo* file or wiring)",
+          "at": "2026-09-17T17:49:24Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Psalms.json, 20 verses)",
+          "at": "2026-09-17T17:49:24Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) and skill pipeline read (.claude/skills/bible-notes/SKILL.md), reference implementation lib/psalmsSeventyOneSource.ts reviewed for format",
+          "at": "2026-09-17T17:50:00Z"
+        },
+        {
+          "name": "source file written (lib/psalmsSeventyTwoSource.ts, 8 sections, 38 cards)",
+          "at": "2026-09-17T17:55:00Z"
+        },
+        {
+          "name": "style checker: 3 problems on first pass (1 banned hedge word, 1 over-length bullet, 1 card with unrecognized keycap emoji counted as 3 bullets), fixed, second run clean",
+          "at": "2026-09-17T17:55:40Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, applyPersonalPsalmsSeventyTwoStudySections function and call, preserveExactPhraseBodies range extended to 72)",
+          "at": "2026-09-17T17:56:00Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 38 cards, no throw)",
+          "at": "2026-09-17T17:56:30Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-17T17:56:43Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-17T17:57:06Z"
+        }
+      ]
     }
   ]
 }

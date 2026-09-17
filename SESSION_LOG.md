@@ -4463,3 +4463,7 @@ Next up: Day 255.
 ## 2026-09-17T17:28:20Z (bible year day writer run)
 Day: 255 — Kingdoms, Son of Man, and Prayer (Daniel 7-9) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 256. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-17T17:58:16Z (hourly chapter notes run)
+Chapter: Psalms 72 | Duration: 11 min | Sections: 8 | Cards: 38 | Status: pass
+Next up: Psalms 73
