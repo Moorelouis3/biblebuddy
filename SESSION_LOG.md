@@ -4531,3 +4531,7 @@ Next up: Psalms 78
 ## 2026-09-17T23:05:00Z (bible year day writer run)
 Day: 266 — Running, Mercy, and Repentance (Jonah 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 267.
+
+## 2026-09-17T23:20:00Z (bible year day writer run)
+Day: 267 — God's Compassion and Israel's Sin (Jonah 4; Micah 1-2) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 268. Stopping here — two-day budget cap for this run reached.
