@@ -4459,3 +4459,7 @@ Next up: Psalms 72
 ## 2026-09-17T17:26:19Z (bible year day writer run)
 Day: 254 — Proud Kings and the Lions' Den (Daniel 4-6) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 255.
+
+## 2026-09-17T17:28:20Z (bible year day writer run)
+Day: 255 — Kingdoms, Son of Man, and Prayer (Daniel 7-9) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 256. Stopping here — two-day budget cap for this run reached.
