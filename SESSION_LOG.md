@@ -4443,3 +4443,7 @@ Next up: Day 252. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-17T15:53:25Z (hourly chapter notes run)
 Chapter: Psalms 70 | Duration: 7 min | Sections: 3 | Cards: 10 | Status: pass
 Next up: Psalms 71
+
+## 2026-09-17T16:26:49Z (bible year day writer run)
+Day: 252 — Living Water and Restored Inheritance (Ezekiel 46-48) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 253.
