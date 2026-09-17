@@ -4398,5 +4398,5 @@ Day: 243 — Lament and Sword (Ezekiel 19-21) | Runtime: audio not rendered (no 
 Next up: Day 244. Stopping here — two-day budget cap for this run reached.
 
 ## 2026-09-17T12:31:19Z (bible year day writer run)
-Day: 244 — The Bloody City and the Sign (Ezekiel 22-24) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Day: 244 — Corruption and the Siege Sign (Ezekiel 22-24) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 245.

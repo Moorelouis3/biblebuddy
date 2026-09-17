@@ -20,7 +20,7 @@ const ez = (chapter: number, startVerse: number, endVerse: number, teaching: str
 
 export const BIBLE_YEAR_DAY_TWO_HUNDRED_FORTY_FOUR_SCRIPT: BibleYearDayScript = {
   dayNumber: 244,
-  title: "The Bloody City and the Sign",
+  title: "Corruption and the Siege Sign",
   opening: [
     ["Hey. Welcome back.", 700],
     ["Day 244. The phrase 'bloody city' gets used twice today, about the same city.", 750],
