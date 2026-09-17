@@ -4503,3 +4503,7 @@ Next up: Day 262. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-17T20:56:30Z (hourly chapter notes run)
 Chapter: Psalms 75 | Duration: 10 min | Sections: 5 | Cards: 18 | Status: pass
 Next up: Psalms 76
+
+## 2026-09-17T21:27:23Z (bible year day writer run)
+Day: 262 — The Day of the Lord Begins (Joel 2-3; Amos 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 263.
