@@ -4345,3 +4345,9 @@ Day: 237 — Ezekiel Sees God's Glory (Ezekiel 1-3) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only.
 Next up: Day 238. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-17T00:27:48Z (bible year day writer run)
+Day: 238 — Signs of Jerusalem's Judgment (Ezekiel 4-6) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only.
+Next up: Day 239.
