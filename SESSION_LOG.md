@@ -4527,3 +4527,7 @@ Next up: Day 266. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-17T22:56:00Z (hourly chapter notes run)
 Chapter: Psalms 77 | Duration: 9 min | Sections: 6 | Cards: 35 | Status: pass
 Next up: Psalms 78
+
+## 2026-09-17T23:05:00Z (bible year day writer run)
+Day: 266 — Running, Mercy, and Repentance (Jonah 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 267.
