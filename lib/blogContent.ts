@@ -76,7 +76,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/genesis-6-explained",
     publishedAt: "2026-09-17",
     readTime: "14 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/genesis-6-explained.jpg",
     groupPost: {
       title: "Genesis 6 Explained 📖",
       content:
@@ -93,7 +93,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/genesis-5-explained",
     publishedAt: "2026-09-17",
     readTime: "11 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/genesis-5-explained.jpg",
     groupPost: {
       title: "Genesis 5 Explained 📖",
       content:
@@ -110,7 +110,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/genesis-4-explained",
     publishedAt: "2026-09-17",
     readTime: "15 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/genesis-4-explained.jpg",
     groupPost: {
       title: "Genesis 4 Explained 📖",
       content:
@@ -127,7 +127,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/genesis-3-explained",
     publishedAt: "2026-09-17",
     readTime: "15 min read",
-    image: "/Whatisthebiblebanner.png",
+    image: "/blog-banners/genesis-3-explained.jpg",
     groupPost: {
       title: "Genesis 3 Explained 📖",
       content:

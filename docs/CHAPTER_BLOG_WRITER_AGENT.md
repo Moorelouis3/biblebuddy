@@ -157,7 +157,11 @@ Add an entry at the **top** of `BLOG_ARTICLES` in `lib/blogContent.ts`:
 - `category: "Verse Breakdowns"`, `categorySlug: "verse-breakdowns"`
 - `publishedAt`: the Berlin date, `TZ=Europe/Berlin date +%F`
 - `readTime`: words ÷ 200, e.g. `"12 min read"`
-- `image: "/Whatisthebiblebanner.png"` (the verse-breakdowns fallback until Louis supplies chapter banners; do not re-flag this per chapter)
+- `image`: use `"/blog-banners/<slug>.jpg"` when `public/blog-banners/<slug>.jpg`
+  exists (Louis supplied Genesis 1 to 20 on 2026-09-17). Check with `ls`.
+  Otherwise use the verse-breakdowns fallback `"/Whatisthebiblebanner.png"`, and
+  keep ONE line in `MARCUS_HANDOFF.md` listing the chapters waiting on a real
+  banner, updating that same line rather than adding a block per chapter.
 - `groupPost`: follow the rules in `docs/BLOG_WRITER_AGENT.md` Step 4. The
   group cron shares at most one article a night, so this never floods the group.
 
