@@ -369,7 +369,7 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
         />
       </article>
 
-      <BlogAuthorBox />
+      <BlogAuthorBox postSlug={article.slug} />
       <RelatedPosts slug={article.slug} />
 
       <BlogPostBottom articleSlug={engagementKey} postSlug={article.slug} />
