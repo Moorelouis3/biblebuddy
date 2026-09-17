@@ -100,13 +100,13 @@ export default function BottomNav() {
             type="button"
             aria-label="Close menu"
             onClick={() => setMoreOpen(false)}
-            className="fixed inset-0 z-40 bg-black/40"
+            className="fixed inset-0 z-[29] bg-black/40"
           />
           {/* The sheet scrolls itself. Without max-height + overflow, a long
               menu ran under the tab bar and swiping scrolled the page behind
               it instead, so Notes could never be reached. overscroll-contain
               keeps the swipe inside the sheet. */}
-          <div className="fixed inset-x-0 bottom-[60px] z-50 mx-auto max-h-[min(60vh,480px)] max-w-3xl overflow-y-auto overscroll-contain rounded-t-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 pb-[max(8px,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(15,23,42,0.18)]">
+          <div className="fixed inset-x-0 bottom-[60px] z-[31] mx-auto max-h-[min(60vh,480px)] max-w-3xl overflow-y-auto overscroll-contain rounded-t-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 pb-[max(8px,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(15,23,42,0.18)]">
             {MORE_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -124,10 +124,13 @@ export default function BottomNav() {
         </>
       ) : null}
 
+      {/* z-30: above page content, below every popup. At z-50 it was drawn
+          after (so on top of) the pages' z-40/z-50 popups and covered their
+          bottom buttons, e.g. Post to Group (Louis, 2026-09-17). */}
       <nav
         ref={navRef}
         aria-label="Main"
-        className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
+        className="fixed inset-x-0 bottom-0 z-30 border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
         <div className="mx-auto flex max-w-3xl items-stretch">

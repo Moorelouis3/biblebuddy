@@ -6590,7 +6590,7 @@ export default function GroupChatPage() {
 
       {showPastStudyProModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
           onClick={() => setShowPastStudyProModal(false)}
         >
           <div
@@ -6802,7 +6802,7 @@ export default function GroupChatPage() {
 
       {showHubLikesFor && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
           onClick={() => setShowHubLikesFor(null)}
         >
           <div
@@ -6857,7 +6857,7 @@ export default function GroupChatPage() {
 
       {showPostLikesFor && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
           onClick={() => setShowPostLikesFor(null)}
         >
           <div
@@ -6916,7 +6916,7 @@ export default function GroupChatPage() {
       {activeTab !== "members" && activeTab !== "bible_studies" && !hubCategories.some((c) => c.id === activeTab) && !selectedPost && (
         <>
           {showPostComposerModal && (
-            <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 px-4 py-4 modal-backdrop-in sm:py-8" onClick={() => setShowPostComposerModal(false)}>
+            <div className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-black/40 px-4 pb-24 pt-4 modal-backdrop-in sm:pt-8" onClick={() => setShowPostComposerModal(false)}>
               <div className="mt-0 w-full max-w-2xl overflow-y-auto rounded-3xl bg-white shadow-xl modal-panel-in max-h-[calc(100vh-2rem)] sm:max-h-[92vh]" onClick={(e) => e.stopPropagation()}>
                 <div className="flex items-center justify-between px-6 py-5 border-b border-[#efe5d9]">
                   <div>
@@ -7149,7 +7149,7 @@ export default function GroupChatPage() {
 
       {/* â”€â”€ New Series Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {showNewSeriesModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4 modal-backdrop-in">
           <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h2 className="text-base font-bold text-gray-900">New Series</h2>
@@ -7205,7 +7205,7 @@ export default function GroupChatPage() {
 
       {/* â”€â”€ New Post Modal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {showNewPostModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4 modal-backdrop-in">
           <div className="bg-white rounded-2xl shadow-xl w-full sm:max-w-md max-h-[90vh] overflow-y-auto modal-panel-in">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h2 className="text-base font-bold text-gray-900">Add Week Post Â· Week {seriesPosts.length + 1}</h2>
@@ -7262,7 +7262,7 @@ export default function GroupChatPage() {
 
       {showTopBuddiesModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
           onClick={() => setShowTopBuddiesModal(false)}
         >
           <div
@@ -7339,7 +7339,7 @@ export default function GroupChatPage() {
 
       {showGroupInfoModal && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
           onClick={() => setShowGroupInfoModal(false)}
         >
           <div
@@ -7406,7 +7406,7 @@ export default function GroupChatPage() {
       )}
 
       {deletePostId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 modal-backdrop-in" onClick={() => setDeletePostId(null)}>
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4 modal-backdrop-in" onClick={() => setDeletePostId(null)}>
           <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full modal-panel-in" onClick={(e) => e.stopPropagation()}>
             <h3 className="font-bold text-gray-900 text-lg mb-2">Delete this post?</h3>
             <p className="text-sm text-gray-500 mb-5">This will remove the post and its replies from the group feed.</p>
@@ -7438,7 +7438,7 @@ export default function GroupChatPage() {
 
     return (
       <div
-        className={`bb-community-active-post animate-fade-in-up overflow-hidden bg-[var(--bb-card,#ffffff)] ${
+        className={`bb-community-active-post animate-fade-in-up overflow-clip bg-[var(--bb-card,#ffffff)] ${
           isDashboardEmbed
             ? "rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] shadow-sm"
             : "rounded-[28px] border border-[var(--bb-card-border,#e5e7eb)] shadow-sm"
