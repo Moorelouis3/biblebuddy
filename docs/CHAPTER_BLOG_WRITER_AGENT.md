@@ -185,6 +185,10 @@ Then do your own read-through against this list:
 - Any repeated paragraph or idea? Any lesson said twice?
 - Any detail that belongs to a different chapter?
 - Any claim (history, language, geography, dates) you are not sure of? Remove it.
+- **Every number and count you state about the chapter** ("repeats eight times",
+  "ten generations", ages, years, how many names): recount it from the KJV JSON
+  with a quick script, not by eye. Genesis 5's first draft said "and he died"
+  appears nine times; it appears eight.
 - Any quote not taken from the KJV JSON? Replace it.
 - Does the intro or ending sound like the previous chapters? Rewrite it.
 

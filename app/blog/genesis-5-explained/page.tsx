@@ -33,7 +33,7 @@ export default function GenesisFiveExplainedPage() {
       intro={
         <>
           <div className="mt-8 space-y-5 text-lg leading-8 text-slate-700">
-            <p>Ten names. Ten lifespans. Nine deaths.</p>
+            <p>Ten names. Eight deaths. One man who never died at all.</p>
             <p>
               <strong>Genesis 5 explained</strong> is a family tree, the line from Adam down to
               Noah, and most readers skim past it looking for the next story.
@@ -43,7 +43,7 @@ export default function GenesisFiveExplainedPage() {
           <ul className="mt-4 space-y-3 text-lg leading-8 text-slate-700">
             <li>❓ Did people in this chapter really live over 900 years?</li>
             <li>❓ Why does one man in the list never die at all?</li>
-            <li>❓ And why does the exact same word show up nine separate times?</li>
+            <li>❓ And why does the exact same word show up eight separate times?</li>
           </ul>
           <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
             <p>
@@ -153,7 +153,7 @@ export default function GenesisFiveExplainedPage() {
         </div>
 
         <h3 className="mt-8 text-2xl font-black text-slate-950">
-          3. The Word That Repeats Nine Times (the whole chapter)
+          3. The Word That Repeats Eight Times (the whole chapter)
         </h3>
         <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
           <p>
@@ -418,7 +418,7 @@ export default function GenesisFiveExplainedPage() {
         <h3 className="mt-8 text-2xl font-black text-slate-950">Why does Genesis 5 repeat &quot;and he died&quot; so many times?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
           It carries out the sentence God gave Adam in Genesis 3:19, that he would return to dust.
-          Nine names in this chapter end that same way, showing the curse reaching every
+          Eight names in this chapter end that same way, showing the curse reaching every
           generation regardless of how long each life lasted.
         </p>
 
@@ -456,7 +456,7 @@ export default function GenesisFiveExplainedPage() {
         <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
           <p>Genesis 5 looks like a list. It reads like a sentence carried out.</p>
           <p>
-            📌 <strong>Nine times this chapter says &quot;and he died,&quot; carrying out exactly
+            📌 <strong>Eight times this chapter says &quot;and he died,&quot; carrying out exactly
             what God told Adam back in Eden.</strong> No lifespan, however long, bought anyone a
             way around it.
           </p>
