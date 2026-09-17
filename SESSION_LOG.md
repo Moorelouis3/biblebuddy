@@ -4416,3 +4416,7 @@ Next up: Day 248. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-17T13:59:56Z (hourly chapter notes run)
 Chapter: Psalms 68 | Duration: 12 min | Sections: 8 | Cards: 38 | Status: pass
 Next up: Psalms 69
+
+## 2026-09-17T14:26:47Z (bible year day writer run)
+Day: 248 — Shepherds, New Heart, and Restoration (Ezekiel 34-36) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 249.
