@@ -1578,7 +1578,7 @@ function GroupCommentSection({
         </div>
       )}
 
-      <div className="sticky bottom-0 z-10 mt-3 flex items-end gap-2 border-t border-[var(--bb-card-border)] bg-[var(--bb-card)]/95 pt-3 backdrop-blur">
+      <div className="sticky bottom-[var(--bb-bottom-nav-h,0px)] z-10 mt-3 flex items-end gap-2 border-t border-[var(--bb-card-border)] bg-[var(--bb-card)]/95 pb-2 pt-3 backdrop-blur">
         {userProfileImage ? (
           <img src={userProfileImage} alt={displayName} className="w-7 h-7 rounded-full object-cover flex-shrink-0" />
         ) : (
@@ -7082,7 +7082,7 @@ export default function GroupChatPage() {
       )}
       {/* â”€â”€ Comment input bar (post view) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {activeTab === "bible_studies" && selectedPost && (
-        <div className="fixed bottom-0 left-0 right-0 z-20 bg-white border-t border-gray-200 px-4 py-3">
+        <div className="fixed bottom-[var(--bb-bottom-nav-h,0px)] left-0 right-0 z-20 bg-white border-t border-gray-200 px-4 py-3">
           <div className="max-w-2xl mx-auto flex items-end gap-3">
             {userProfileImage ? (
               <img src={userProfileImage} alt={displayName} className="w-8 h-8 rounded-full object-cover flex-shrink-0" />

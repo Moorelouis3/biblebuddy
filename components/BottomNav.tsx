@@ -14,7 +14,7 @@
 import Link from "next/link";
 import { BIBLE_STUDY_GROUP_ID } from "../lib/bibleStudiesCatalog";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Tab = {
   label: string;
@@ -66,6 +66,24 @@ function isActive(pathname: string | null, tab: Tab) {
 export default function BottomNav() {
   const pathname = usePathname();
   const [moreOpen, setMoreOpen] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
+
+  // Publish the bar's real height (safe area included) as --bb-bottom-nav-h,
+  // so anything pinned to the bottom of a page - like the group comment box -
+  // can sit on top of the bar instead of underneath it (Louis, 2026-09-17).
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const root = document.documentElement;
+    const publish = () => root.style.setProperty("--bb-bottom-nav-h", `${Math.ceil(nav.getBoundingClientRect().height)}px`);
+    publish();
+    const observer = typeof ResizeObserver === "undefined" ? null : new ResizeObserver(publish);
+    observer?.observe(nav);
+    return () => {
+      observer?.disconnect();
+      root.style.setProperty("--bb-bottom-nav-h", "0px");
+    };
+  }, []);
 
   // A tap that navigates should not leave the sheet hanging open behind it.
   useEffect(() => {
@@ -107,6 +125,7 @@ export default function BottomNav() {
       ) : null}
 
       <nav
+        ref={navRef}
         aria-label="Main"
         className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]"
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
