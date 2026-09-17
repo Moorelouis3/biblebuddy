@@ -4382,3 +4382,9 @@ Day: 240 — Glory Departs and Exile Is Confirmed (Ezekiel 10-12) | Runtime:
 audio not rendered (no API/Supabase credentials in this environment) |
 Cast: narrator only.
 Next up: Day 241.
+
+## 2026-09-17T04:29:26Z (bible year day writer run)
+Day: 241 — False Prophets and Fruitless Vines (Ezekiel 13-15) | Runtime:
+audio not rendered (no API/Supabase credentials in this environment) |
+Cast: narrator only.
+Next up: Day 242. Stopping here — two-day budget cap for this run reached.
