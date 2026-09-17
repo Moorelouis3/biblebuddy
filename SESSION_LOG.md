@@ -4471,3 +4471,7 @@ Next up: Psalms 73
 ## 2026-09-17T18:27:49Z (bible year day writer run)
 Day: 256 — Spiritual Conflict and Final Hope (Daniel 10-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 257.
+
+## 2026-09-17T18:29:26Z (bible year day writer run)
+Day: 257 — Love for the Unfaithful (Hosea 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 258. Stopping here — two-day budget cap for this run reached.
