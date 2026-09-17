@@ -1,5 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, after } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { drainGroupPostBroadcasts } from "@/lib/groupPostBroadcast";
+
+export const maxDuration = 60;
 
 export async function POST(
   request: NextRequest,
@@ -91,6 +94,16 @@ export async function POST(
   if (insertError) {
     return NextResponse.json({ error: insertError.message || "Post failed to publish." }, { status: 500 });
   }
+
+  // Group-wide notifications are queued by the insert trigger; send them now,
+  // after the response, so the post itself returns instantly.
+  after(async () => {
+    try {
+      await drainGroupPostBroadcasts(supabaseAdmin, 50_000);
+    } catch (broadcastError) {
+      console.error("[CREATE_POST] broadcast send failed (cron will retry):", broadcastError);
+    }
+  });
 
   return NextResponse.json({
     ok: true,
