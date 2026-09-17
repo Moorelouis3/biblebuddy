@@ -1943,29 +1943,31 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           </p>
         </section>
 
-        {videoAvailable && (
-          <section className="mt-8">
-            <video
-              controls
-              preload="metadata"
-              playsInline
-              src="/landing-video.mp4"
-              poster="/landing-video-poster.jpg?v=2"
-              onError={() => setVideoAvailable(false)}
-              onPlay={() => trackVideoMilestone("video_played", "video-play", {})}
-              onTimeUpdate={handleVideoTimeUpdate}
-              onEnded={(event) =>
-                trackVideoMilestone("video_completed", "video-complete", {
-                  percent: 100,
-                  seconds: Math.round(event.currentTarget.duration || 0),
-                })
-              }
-              className="aspect-video w-full rounded-[22px] bg-[#0b1220] shadow-[0_30px_80px_rgba(7,22,47,0.18)]"
-            >
-              Your browser does not support video playback.
-            </video>
-          </section>
-        )}
+        {/* Hidden with CSS instead of unmounted on error - removing this
+            node from the React tree while a mobile browser's own video
+            engine is still touching it can crash the app with a
+            removeChild mismatch. Staying mounted-but-hidden avoids that. */}
+        <section className={`mt-8 ${videoAvailable ? "" : "hidden"}`}>
+          <video
+            controls
+            preload="metadata"
+            playsInline
+            src="/landing-video.mp4"
+            poster="/landing-video-poster.jpg?v=2"
+            onError={() => setVideoAvailable(false)}
+            onPlay={() => trackVideoMilestone("video_played", "video-play", {})}
+            onTimeUpdate={handleVideoTimeUpdate}
+            onEnded={(event) =>
+              trackVideoMilestone("video_completed", "video-complete", {
+                percent: 100,
+                seconds: Math.round(event.currentTarget.duration || 0),
+              })
+            }
+            className="aspect-video w-full rounded-[22px] bg-[#0b1220] shadow-[0_30px_80px_rgba(7,22,47,0.18)]"
+          >
+            Your browser does not support video playback.
+          </video>
+        </section>
 
         <section className="mt-10 text-center">
           <h2 className="text-xl font-black sm:text-2xl">Ready to start understanding the Bible?</h2>
