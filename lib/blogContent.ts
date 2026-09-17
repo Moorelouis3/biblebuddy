@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-3-explained",
+    title: "Genesis 3 Explained: The Fall of Man and the First Promise of a Savior",
+    description:
+      "Genesis 3 explained verse by verse: the serpent's temptation, the first sin, the curses, and the first promise of a Savior hidden inside them.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-3-explained",
+    publishedAt: "2026-09-17",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Genesis 3 Explained 📖",
+      content:
+        "One conversation. One bite. Paradise ends.\nBut the chapter does not end in despair.\n\n📌 God promises a Rescuer the same day sin enters the world.\n\n📖 The serpent's first move was a question, not a lie.\n📖 Adam stood right there and said nothing.\n📖 God made the first sacrifice Himself, to cover their shame.\n\nNew article on:\n🟢 the real meaning of the **first gospel promise** in Genesis 3:15\n🟢 why God asked Adam **\"where art thou\"** when He already knew\n🟢 what the **coats of skins** actually cost\n\nWhich part of Genesis 3 hits you hardest? 🙏",
+    },
+  },
+  {
     slug: "when-you-dont-feel-god-anymore",
     title: "What to Do When You Don't Feel God Anymore",
     description:

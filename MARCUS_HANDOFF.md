@@ -1,3 +1,18 @@
+## New series started: Genesis chapter-by-chapter blog posts
+Louis asked (live, 2026-09-17) to start a "Genesis N Explained" blog series
+continuing from the existing Genesis 1 and 2 posts, at a pace of roughly 2
+chapters per session/day. Genesis 3 (the Fall) is live today. This is a
+manual series driven by direct instruction each session, not the paused
+content-buddy topic queue — it does not need that pause lifted, and it is
+tracked separately in biblebuddy's docs/GENESIS_SERIES.md so progress
+survives between sessions. Genesis 3 is on the verse-breakdowns category
+fallback banner (/Whatisthebiblebanner.png) since no custom banner exists
+yet for it; same will apply to each new chapter until real banners are
+made. Note: writing 2 posts a day automatically (without Louis asking each
+time) would need a real scheduled routine set up in the claude.ai Routines
+UI, the same constraint documented for the Blog Writer Agent — an agent
+session cannot create or update a routine's schedule itself.
+
 ## Bible in One Year day writer's schedule fired despite Louis's pause request
 The Day 161 run (2026-09-09T08:27:29Z) logged in SESSION_LOG.md that Louis
 asked to pause the Bible in One Year day writer until he says continue.
