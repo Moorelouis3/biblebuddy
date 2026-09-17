@@ -4511,3 +4511,7 @@ Next up: Day 263.
 ## 2026-09-17T21:28:42Z (bible year day writer run)
 Day: 263 — Justice and Accountability (Amos 2-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 264. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-17T21:58:30Z (hourly chapter notes run)
+Chapter: Psalms 76 | Duration: 10 min | Sections: 4 | Cards: 19 | Status: pass
+Next up: Psalms 77
