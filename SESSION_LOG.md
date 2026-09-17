@@ -4491,3 +4491,7 @@ Next up: Day 260. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-17T19:58:30Z (hourly chapter notes run)
 Chapter: Psalms 74 | Duration: 12 min | Sections: 6 | Cards: 34 | Status: pass
 Next up: Psalms 75
+
+## 2026-09-17T20:25:46Z (bible year day writer run)
+Day: 260 — Sowing Sin and Remembering Jacob (Hosea 10-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 261.
