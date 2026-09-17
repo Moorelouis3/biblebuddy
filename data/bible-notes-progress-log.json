@@ -35375,6 +35375,59 @@
           "at": "2026-09-17T19:58:30Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 75,
+      "startedAt": "2026-09-17T20:46:01Z",
+      "finishedAt": "2026-09-17T20:56:30Z",
+      "durationMinutes": 10,
+      "sections": 5,
+      "cards": 18,
+      "verses": 10,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress after Psalms 74 (priority queue and style-redo backlog both confirmed empty, remaining: []). Repo started on a detached HEAD one commit behind a freshly force-updated origin/main (shallow clone boundary artifact, not real divergence); resolved with git checkout main then git reset --hard origin/main since the working tree was clean, landing cleanly on the tip of origin/main. Fetched real KJV text for Psalms 75 (10 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 75 is a short thanksgiving psalm that pivots midway into a first person oracle spoken by God himself (verses 2-3), warning the proud not to lift up their horn (boasting, borrowed from animal horns) or speak with a stiff neck (stubborn pride), noting true promotion comes from none of the three compass directions named, an intentional omission of the north that ancient readers likely connected with God's own dwelling place, then describing a cup of mixed, potent wine in the LORD's hand representing judgment the wicked are made to drink to the dregs, before closing back in the psalmist's own voice vowing lifelong praise to the God of Jacob and returning to the horn image, promising the wicked will have theirs cut off while the righteous have theirs exalted. Chunked into 5 sections (1, 2-3, 4-6, 7-8, 9-10), 18 phrase cards across 10 verses (1.8 cards/verse). check_bible_note_style.py came back clean with 0 problems after one fix (an early draft had the Selah bullet, not the closing meaning bullet, as the last bullet in one card, reordered so the last bullet in every card ends on the book emoji). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms (dissolved, uprightly, horn, stiff neck, mixture, dregs, Selah, God of Jacob), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji per card ending on the book emoji, no duplicate titles, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file (verse 8 and verses 9-10 contain semicolons in the actual KJV text, so card headings were split exactly at those semicolon boundaries rather than crossing them). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/psalmsSeventyFiveSource.ts, preserveExactPhraseBodies psalms range extended from chapters 1-74 to 1-75, new function applyPersonalPsalmsSeventyFiveStudySections added and called right after applyPersonalPsalmsSeventyFourStudySections(). Parser check passed exactly via getBibleReaderStudySections('psalms', 75) (5/5 sections, verse ranges 1/2-3/4-6/7-8/9-10 with no gaps, 18 total cards). npx tsc --noEmit -p . clean with zero errors. Next forward-progress target is Psalms 76.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-17T20:47:45Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 75 (normal forward progress, redo/priority queues empty, confirmed no existing psalmsSeventyFive* file and last wired chapter is Psalms 74)",
+          "at": "2026-09-17T20:47:45Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com/aruljohn/Bible-kjv Psalms.json, chapter 75, 10 verses)",
+          "at": "2026-09-17T20:48:05Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementation read (lib/psalmsSeventyFourSource.ts)",
+          "at": "2026-09-17T20:48:05Z"
+        },
+        {
+          "name": "source file written (lib/psalmsSeventyFiveSource.ts, 5 sections, 18 phrase cards)",
+          "at": "2026-09-17T20:53:40Z"
+        },
+        {
+          "name": "style checker: 1 problem on first pass (Selah bullet used as last bullet instead of book-emoji bullet), fixed by reordering bullets, second run clean",
+          "at": "2026-09-17T20:53:53Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import added, preserveExactPhraseBodies range extended from <= 74 to <= 75, new applyPersonalPsalmsSeventyFiveStudySections function added and called after applyPersonalPsalmsSeventyFourStudySections())",
+          "at": "2026-09-17T20:54:10Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('psalms', 75) via tsx, 5/5 sections, 18 total cards, no throw)",
+          "at": "2026-09-17T20:54:30Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p ., zero errors)",
+          "at": "2026-09-17T20:55:48Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-17T20:56:30Z"
+        }
+      ]
     }
   ]
 }
