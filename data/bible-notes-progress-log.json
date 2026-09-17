@@ -35033,6 +35033,59 @@
           "at": "2026-09-17T14:00:23Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 69,
+      "startedAt": "2026-09-17T14:49:00Z",
+      "finishedAt": "2026-09-17T14:59:10Z",
+      "durationMinutes": 10,
+      "sections": 8,
+      "cards": 37,
+      "verses": 36,
+      "notes": "New chapter, forward progress after Psalms 68. Imprecatory/messianic psalm (David hounded and mocked, quoted repeatedly in the New Testament: John 2:17 zeal of thine house, John 15:25 hated without a cause, Matthew 27/John 19 gall and vinegar at the cross, Acts 1:20 habitation desolate applied to Judas, Romans 11:9-10 and 15:3).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-17T14:48:52Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 69 (normal forward progress, redo/priority queues empty)",
+          "at": "2026-09-17T14:49:00Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Psalms.json)",
+          "at": "2026-09-17T14:49:20Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-17T14:50:00Z"
+        },
+        {
+          "name": "source file written (lib/psalmsSixtyNineSource.ts)",
+          "at": "2026-09-17T14:56:30Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-09-17T14:57:13Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, apply function, call, preserveExactPhraseBodies range extended to 69)",
+          "at": "2026-09-17T14:57:34Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 37 cards)",
+          "at": "2026-09-17T14:57:52Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-17T14:59:06Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-17T14:59:10Z"
+        }
+      ]
     }
   ]
 }
