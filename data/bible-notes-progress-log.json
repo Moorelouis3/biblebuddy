@@ -35155,6 +35155,59 @@
           "at": "2026-09-17T15:54:20Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 71,
+      "startedAt": "2026-09-17T16:46:48Z",
+      "finishedAt": "2026-09-17T16:54:51Z",
+      "durationMinutes": 8,
+      "sections": 8,
+      "cards": 50,
+      "verses": 24,
+      "notes": "New chapter, forward progress after Psalms 70. Priority queue and style-redo backlog both confirmed empty (remaining: []). David's psalm of old age, opening with a flat declaration of trust and a plea never to be put to confusion, then grounding that trust all the way back to birth (holden up from the womb, taken out of his mother's bowels), naming enemies who plot in secret and claim God has forsaken him, turning to hope as a daily choice and going forward in borrowed strength rather than his own failing strength, then closing with praise on instruments (psaltery and harp) and the prayer visibly answered, his enemies confounded instead of him. Fetched real KJV text for Psalms 71 (24 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-17T16:46:48Z"
+        },
+        {
+          "name": "git state resolved (checked out main tracking origin/main; detached HEAD matched origin/main exactly, no divergence)",
+          "at": "2026-09-17T16:47:05Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 71 (normal forward progress, priority queue and redo backlog both empty, confirmed against progress log and lib/ for no existing psalmsSeventyOne* file)",
+          "at": "2026-09-17T16:47:20Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Psalms.json, 24 verses)",
+          "at": "2026-09-17T16:47:45Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) and skill pipeline read (.claude/skills/bible-notes/SKILL.md)",
+          "at": "2026-09-17T16:51:13Z"
+        },
+        {
+          "name": "source file written (lib/psalmsSeventyOneSource.ts, 8 sections, 50 cards)",
+          "at": "2026-09-17T16:52:40Z"
+        },
+        {
+          "name": "style checker: 6 problems on first pass (5 over-length bullets, 1 wrong final-bullet emoji), fixed, second run clean",
+          "at": "2026-09-17T16:53:05Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, applyPersonalPsalmsSeventyOneStudySections function and call, preserveExactPhraseBodies range extended to 71)",
+          "at": "2026-09-17T16:53:30Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 50 cards, no throw)",
+          "at": "2026-09-17T16:54:20Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-17T16:54:51Z"
+        }
+      ]
     }
   ]
 }
