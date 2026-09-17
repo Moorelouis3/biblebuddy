@@ -4479,3 +4479,7 @@ Next up: Day 258. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-17T19:05:03Z (hourly chapter notes run)
 Chapter: Psalms 73 | Duration: 18 min | Sections: 8 | Cards: 48 | Status: pass
 Next up: Psalms 74
+
+## 2026-09-17T19:34:00Z (bible year day writer run)
+Day: 258 — Covenant Betrayal and Mercy (Hosea 4-6) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 259.
