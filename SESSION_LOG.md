@@ -4376,3 +4376,9 @@ the old pre-BlogPostShell template to the current pattern, 9 verses
 fetched and verified KJV, tsc/lint clean, committed and pushed
 ([deploy]). ~53 posts remain short per docs/BLOG_LENGTH_AUDIT.md; this
 is a multi-session job, not a one-shot one.
+
+## 2026-09-17T04:28:08Z (bible year day writer run)
+Day: 240 — Glory Departs and Exile Is Confirmed (Ezekiel 10-12) | Runtime:
+audio not rendered (no API/Supabase credentials in this environment) |
+Cast: narrator only.
+Next up: Day 241.

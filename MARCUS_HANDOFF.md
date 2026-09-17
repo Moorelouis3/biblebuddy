@@ -286,7 +286,7 @@ that claiming full certainty either way goes beyond the text. Flagging per
 the format spec's doctrinal-sensitivity rule so Louis can read it himself.
 
 ## Bible in One Year days waiting on local audio render
-Scripts through Day 239 are written and pushed, but none of them have been
+Scripts through Day 240 are written and pushed, but none of them have been
 rendered — this environment has no OPENAI_API_KEY or Supabase service key.
 Run `npx tsx scripts/render-pending-bible-year-days.ts` on a machine that
 has those keys; it auto-detects every day with a script but no current
@@ -406,3 +406,17 @@ before any new work began, no commits lost, no rescue branch needed. Still
 worth fixing at the environment level (seed each fresh session's local
 `main` from current `origin/main` at container start) since this keeps
 costing real setup time on every run of this routine.
+
+## Stale local main recurred again (2026-09-17, Bible in One Year Day 240 run) — still unfixed at the environment level
+Same root cause as the many entries above: fresh checkout's local `main`
+was stuck at an old tip ("Email analytics: welcome email only..." /
+Day 175 era, `6092e47`) with genuinely no common ancestor with
+`origin/main` (`9247ea5`, "Genesis 4 Explained" era) — the unrelated-history
+variant. This run's actual working HEAD was already detached at the
+correct, current `origin/main` tip, so nothing was at risk. Pushed the
+stale `main` line to `rescue/stale-local-main-2026-09-17` before touching
+anything, left local `main` untouched (repointing it is classified as
+irreversible local destruction and denied in this environment), and
+pushed this run's new commit with `git push origin HEAD:main` instead.
+Still worth fixing at the environment level so a future run doesn't have
+to keep diagnosing this by hand.
