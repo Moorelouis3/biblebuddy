@@ -1,0 +1,13 @@
+{
+  "note": "Tracker for the Bible chapter blog library. Written only by scripts/chapter-blog-queue.mjs. See docs/CHAPTER_BLOG_WRITER_AGENT.md.",
+  "dailyTarget": 5,
+  "startedAt": "2026-09-17",
+  "updatedAt": "2026-09-17T12:00:00.000Z",
+  "nextChapter": "Genesis 5",
+  "chapters": {
+    "genesis-1-explained": { "status": "published", "publishedAt": "2026-09-01T00:00:00.000Z", "note": "written before the routine existed" },
+    "genesis-2-explained": { "status": "published", "publishedAt": "2026-09-01T00:00:00.000Z", "note": "written before the routine existed" },
+    "genesis-3-explained": { "status": "published", "publishedAt": "2026-09-17T03:00:00.000Z", "note": "written before the routine existed" },
+    "genesis-4-explained": { "status": "published", "publishedAt": "2026-09-17T03:15:00.000Z", "note": "written before the routine existed" }
+  }
+}

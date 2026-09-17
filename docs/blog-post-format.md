@@ -55,8 +55,8 @@ Each verse gets its own H3. Quote the verse, then break it down in 3 to 5 senten
 ### 8. Conclusion (150 to 250 words)
 Recap the 2 or 3 most important takeaways. End with hope and one clear next action.
 
-### 9. Join Bible Buddy CTA
-Standard block at the end of every post. Invite the reader to join Bible Buddy to keep growing: devotionals, the community, the reading streak. Warm, direct, no pressure. The section's text ends with "There is room for you." followed by "Start studying by clicking the button below." — do NOT put a CTA button or any closing line inside the article itself. The page template renders the single Start Studying Now button (with "No account needed. Completely free.") as the very last element, and nothing comes after it.
+### 9. No CTA section (changed 2026-09-17)
+Do NOT write a "Keep Growing With Bible Buddy" section or any sign-up pitch at the end of the article. Louis removed them from every post. The page template renders the Bible Buddy end card (components/blog/BlogAuthorBox.tsx) under every post, and that card is the only end-of-post CTA. The article ends with the Conclusion.
 
 ## Character Study Variant
 
@@ -111,8 +111,8 @@ story is a legend.
 Same as standard. Recap the 2 or 3 lessons that matter most and end with
 hope and one clear next action.
 
-### 9. Join Bible Buddy CTA
-Same as standard, word for word.
+### 9. No CTA section
+Same as standard: the article ends with the Conclusion.
 
 ## SEO checklist for every post
 

@@ -4,6 +4,7 @@ import { Children, cloneElement, isValidElement, type ReactElement, type ReactNo
 import BlogPostingSchema from "@/components/BlogPostingSchema";
 import RelatedPosts from "./RelatedPosts";
 import BlogAuthorBox from "./BlogAuthorBox";
+import ChapterNav from "./ChapterNav";
 import BlogPostBreaker from "@/components/blog/BlogPostBreaker";
 import BlogPostBottom from "@/components/blog/BlogPostBottom";
 import BlogTopNav from "@/components/blog/BlogTopNav";
@@ -369,6 +370,7 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
         />
       </article>
 
+      <ChapterNav slug={article.slug} />
       <BlogAuthorBox postSlug={article.slug} />
       <RelatedPosts slug={article.slug} />
 
