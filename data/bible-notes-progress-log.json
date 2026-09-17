@@ -35094,6 +35094,59 @@
           "at": "2026-09-17T15:00:11Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 70,
+      "startedAt": "2026-09-17T15:45:59Z",
+      "finishedAt": "2026-09-17T15:53:12Z",
+      "durationMinutes": 7,
+      "sections": 3,
+      "cards": 10,
+      "verses": 5,
+      "notes": "New chapter, forward progress after Psalms 69. Short urgent rescue psalm that repeats the closing verses of Psalm 40 almost word for word; verse 1 mirror text came back all caps in the raw.githubusercontent.com KJV mirror (a rare data quirk), cross checked and normalized against bible-api.com/psalm+70.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-17T15:46:24Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 70 (normal forward progress, redo/priority queues empty)",
+          "at": "2026-09-17T15:46:51Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Psalms.json, cross checked against bible-api.com for verse 1 casing)",
+          "at": "2026-09-17T15:47:30Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-17T15:49:00Z"
+        },
+        {
+          "name": "source file written (lib/psalmsSeventySource.ts)",
+          "at": "2026-09-17T15:50:25Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-09-17T15:50:40Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, apply function, call, preserveExactPhraseBodies range extended to 70)",
+          "at": "2026-09-17T15:51:05Z"
+        },
+        {
+          "name": "parser check passed (3 sections, 10 cards)",
+          "at": "2026-09-17T15:51:18Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-17T15:51:18Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-17T15:53:12Z"
+        }
+      ]
     }
   ]
 }
