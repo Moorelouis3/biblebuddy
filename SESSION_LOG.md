@@ -4424,3 +4424,6 @@ Next up: Day 249.
 ## 2026-09-17T14:29:05Z (bible year day writer run)
 Day: 249 — Dry Bones and Final Deliverance (Ezekiel 37-39) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 250. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-17T15:00:00Z (bug fixer run)
+Bug fixed: home page crashed on some Android phones when the intro video failed to load mid-load (removeChild DOM crash). Now the video is hidden instead of removed, so it can't race with the phone's video player. Commit 515ff24, pushed to main, no [deploy] tag. No other open bugs this run.
