@@ -4447,3 +4447,7 @@ Next up: Psalms 71
 ## 2026-09-17T16:26:49Z (bible year day writer run)
 Day: 252 — Living Water and Restored Inheritance (Ezekiel 46-48) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 253.
+
+## 2026-09-17T16:31:00Z (bible year day writer run)
+Day: 253 — Faithfulness in Babylon (Daniel 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 254. Stopping here — two-day budget cap for this run reached.
