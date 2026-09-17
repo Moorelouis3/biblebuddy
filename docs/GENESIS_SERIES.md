@@ -35,9 +35,12 @@ need to re-flag per chapter, just note it in this file's log below.
 - Genesis 3 — done (published 2026-09-17). The Fall, the serpent's
   temptation, the curses, the protoevangelium (3:15), the first
   sacrifice (coats of skins).
-- Genesis 4 — next up. Cain and Abel, the first murder, the mark of
+- Genesis 4 — done (published 2026-09-17). Cain and Abel, the two
+  offerings, God's warning at the door, the first murder, the mark of
   Cain, Cain's line vs. the birth of Seth.
-- Genesis 5 onward — not started.
+- Genesis 5 — next up. The genealogy from Adam to Noah, Enoch walking
+  with God and being taken, the long lifespans.
+- Genesis 6 onward — not started.
 
 Genesis runs 50 chapters total. At ~2 a session this series is a
 multi-week project, not a one-shot one — keep this file current so

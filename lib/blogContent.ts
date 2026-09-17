@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-4-explained",
+    title: "Genesis 4 Explained: Cain, Abel, and the First Murder",
+    description:
+      "Genesis 4 explained verse by verse: the two offerings, God's warning at the door, the first murder, and the surprising mercy shown to Cain afterward.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-4-explained",
+    publishedAt: "2026-09-17",
+    readTime: "15 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Genesis 4 Explained 📖",
+      content:
+        "Two brothers. Two offerings. One walks away furious.\nIt ends in the first murder in history.\n\n📌 God warns Cain by name before anything happens.\n\n📖 Sin is pictured as an animal crouching at the door.\n📖 \"Am I my brother's keeper\" is the oldest excuse in the book.\n📖 God protects Cain from revenge even after the murder.\n\nNew article on:\n🟢 why God accepted **Abel's offering** and not Cain's\n🟢 what the **mark of Cain** actually was for\n🟢 how **Seth's line** answers Cain's violence\n\nHave you ever felt what Cain felt before he acted on it? 🙏",
+    },
+  },
+  {
     slug: "genesis-3-explained",
     title: "Genesis 3 Explained: The Fall of Man and the First Promise of a Savior",
     description:
