@@ -4420,3 +4420,7 @@ Next up: Psalms 69
 ## 2026-09-17T14:26:47Z (bible year day writer run)
 Day: 248 — Shepherds, New Heart, and Restoration (Ezekiel 34-36) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 249.
+
+## 2026-09-17T14:29:05Z (bible year day writer run)
+Day: 249 — Dry Bones and Final Deliverance (Ezekiel 37-39) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 250. Stopping here — two-day budget cap for this run reached.
