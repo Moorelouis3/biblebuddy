@@ -4515,3 +4515,7 @@ Next up: Day 264. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-17T21:58:30Z (hourly chapter notes run)
 Chapter: Psalms 76 | Duration: 10 min | Sections: 4 | Cards: 19 | Status: pass
 Next up: Psalms 77
+
+## 2026-09-17T22:00:00Z (bible year day writer run)
+Day: 264 — Seek the Lord and Live (Amos 5-7) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 265.
