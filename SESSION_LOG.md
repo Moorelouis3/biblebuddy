@@ -4495,3 +4495,7 @@ Next up: Psalms 75
 ## 2026-09-17T20:25:46Z (bible year day writer run)
 Day: 260 — Sowing Sin and Remembering Jacob (Hosea 10-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 261.
+
+## 2026-09-17T20:27:23Z (bible year day writer run)
+Day: 261 — Return to the Lord (Hosea 13-14; Joel 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 262. Stopping here — two-day budget cap for this run reached.
