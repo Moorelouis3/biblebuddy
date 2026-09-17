@@ -1102,14 +1102,15 @@ export const BLOG_ARTICLES: BlogArticle[] = [
   },
   {
     slug: "how-to-read-the-bible",
-    title: "How to Read the Bible",
-    description: "A simple way to read Scripture with understanding instead of just checking a box.",
+    title: "How to Read the Bible: A Simple Way to Study Scripture So It Actually Sticks",
+    description: "Reading the Bible and understanding it are not the same thing. A simple, practical way to study Scripture so it actually sticks, starting tonight.",
     category: "Bible Study Tips",
     categorySlug: "bible-study-tips",
     canonicalPath: "/blog/how-to-read-the-bible",
     legacyPath: "/bible-study-tips/how-to-read-the-bible",
     publishedAt: "2026-07-20",
-    readTime: "8 min read",
+    updatedAt: "2026-09-17",
+    readTime: "16 min read",
     image: "/blog-banners/how-to-read-the-bible.jpg",
   },
   {
