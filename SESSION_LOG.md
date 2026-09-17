@@ -4356,3 +4356,23 @@ Next up: Day 239.
 Day: 239 — The End Comes (Ezekiel 7-9) | Runtime: audio not rendered (no
 API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 240. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-17 (blog length audit run)
+Louis flagged that the "audit all posts for 3,000+ words / 15 min read"
+job looked like it vanished after being given twice. Investigation: a
+2026-09-14 session did fix 8 posts (Armor of God, St. Patrick, Why So
+Many Bible Translations, 5 Things Holding Men Back, What Is Hell x2, Who
+Was Joseph, Genesis 2, 15 Lessons From the Life of Jesus, Genesis 1) and
+they are live — nothing was lost. But nothing was logged anywhere, so
+the next session had no way to see that, and a follow-up session
+yesterday (2026-09-16) produced zero commits, meaning whatever it did
+was never saved. Root cause: sessions are ephemeral containers with no
+memory beyond what gets committed. Fixed the actual gap: created
+docs/BLOG_LENGTH_AUDIT.md as a persistent, git-tracked checklist of
+every post's status, and the rule that every future post fix must be
+committed immediately, one at a time. Then did the first fix under the
+new process: how-to-read-the-bible, 284 to ~3,172 words, rewritten from
+the old pre-BlogPostShell template to the current pattern, 9 verses
+fetched and verified KJV, tsc/lint clean, committed and pushed
+([deploy]). ~53 posts remain short per docs/BLOG_LENGTH_AUDIT.md; this
+is a multi-session job, not a one-shot one.
