@@ -1,5 +1,4 @@
 import BlogPostShell from "@/components/blog/BlogPostShell";
-import StudyCta from "@/components/StudyCta";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
 
 export const metadata = buildBlogArticleMetadata("building-self-control");
@@ -167,12 +166,7 @@ export default function BuildingSelfControl() {
           Share your thoughts below and join the conversation.
         </div>
       </div>
-      <StudyCta
-        slug="temptation-of-jesus"
-        title="The Temptation of Jesus"
-        days={21}
-        description="Self-control is not willpower — it is knowing how to answer. This 21-day study walks through how Jesus met temptation in the wilderness, and how His answers become yours."
-      />
+
 
       {/* CommentSection wrapper with minimal top margin */}
       <div className="mt-2">

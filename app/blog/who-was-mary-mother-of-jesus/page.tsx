@@ -1,6 +1,5 @@
 import Link from "next/link";
 import BlogPostShell from "@/components/blog/BlogPostShell";
-import StudyCta from "@/components/StudyCta";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
 
 export const metadata = buildBlogArticleMetadata("who-was-mary-mother-of-jesus", {
@@ -604,37 +603,7 @@ export default function WhoWasMaryMotherOfJesusPage() {
         </div>
       </section>
 
-      <section className="mt-14">
-        <h2 className="text-3xl font-black tracking-tight text-slate-950">
-          🚀 Keep Growing With Bible Buddy
-        </h2>
-        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
-          <p>
-            Inside <strong>Bible Buddy</strong>, you will find:
-          </p>
-        </div>
-        <ul className="mt-4 space-y-3 text-lg leading-8 text-slate-700">
-          <li>📖 Verse by verse explanations in plain English</li>
-          <li>🌱 Daily devotionals that meet you where you are</li>
-          <li>🔥 A reading streak that keeps you coming back one day at a time</li>
-          <li>🤝 A community of believers walking the same road</li>
-        </ul>
-        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
-          <p>It is completely free. No pressure, no credit card, no account needed to begin.</p>
-          <p>Just you, God&apos;s Word, and a little help understanding it.</p>
-          <p>
-            Thousands of Christians are already reading this way, one day at a time. There is room
-            for you.
-          </p>
-        </div>
 
-        <StudyCta
-          slug="women-of-the-bible"
-          title="Women of the Bible"
-          days={21}
-          description="Mary's story is one of many. This 21 day study walks through the women whose lives shaped Scripture, what they faced, what God did, and what it means for you."
-        />
-      </section>
     </BlogPostShell>
   );
 }

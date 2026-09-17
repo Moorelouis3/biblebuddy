@@ -187,7 +187,7 @@ export default function BlogAuthorBox({ postSlug }: { postSlug: string }) {
       </Link>
       {isMember ? null : (
         <p className="mt-2.5 text-center text-[12px] leading-snug text-[#3b4660] sm:text-[13px]">
-          No credit card needed. Just create your free account and start exploring.
+          No account needed to start. No credit card. Completely free.
         </p>
       )}
 

@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import CommentSection from "@/components/comments/CommentSection";
-import { trackBlogPromoEvent } from "@/lib/blogViewTracking";
 import { useSupabaseUser } from "@/lib/useSupabaseUser";
 
 type BlogPostBottomProps = {
@@ -38,23 +36,7 @@ export default function BlogPostBottom({ articleSlug, postSlug }: BlogPostBottom
     );
   }
 
-  // Into the app, not a signup form. There is no account to create: /start
-  // makes a guest and drops the reader straight into studying. Sending blog
-  // readers to /signup asked them for an email the product does not need.
-  const endCtaHref = `/start?src=blog&promo=end-cta&post=${encodeURIComponent(postSlug)}`;
-
-  return (
-    <div className="mt-10 text-center">
-      <Link
-        href={endCtaHref}
-        onClick={() =>
-          trackBlogPromoEvent({ eventType: "click", promo: "end-cta", postSlug, slotIndex: 99 })
-        }
-        className="inline-flex w-full items-center justify-center rounded-2xl bg-[#0056fd] px-8 py-4 text-base font-black uppercase tracking-wide text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5 sm:w-auto sm:min-w-[340px]"
-      >
-        Start Studying Now
-      </Link>
-      <p className="mt-3 text-sm font-bold text-[#40516b]">No account needed. Completely free. 🤍</p>
-    </div>
-  );
+  // Logged out: nothing. The Bible Buddy end card (BlogAuthorBox) is the one
+  // end-of-post CTA since 2026-09-17 (Louis).
+  return null;
 }

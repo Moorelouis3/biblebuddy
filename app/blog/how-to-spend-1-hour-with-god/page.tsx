@@ -558,35 +558,7 @@ export default function HowToSpend1HourWithGodPage() {
         </div>
       </section>
 
-      <section className="mt-14">
-        <h2 className="text-3xl font-black tracking-tight text-slate-950">
-          🚀 Keep Growing With Bible Buddy
-        </h2>
-        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
-          <p>
-            If you want help staying consistent with your time in the Word, you do not have to build
-            the habit alone.
-          </p>
-          <p>
-            Inside <strong>Bible Buddy</strong>, you will find:
-          </p>
-        </div>
-        <ul className="mt-4 space-y-3 text-lg leading-8 text-slate-700">
-          <li>📖 Verse by verse explanations in plain English</li>
-          <li>🌱 Daily devotionals that meet you where you are</li>
-          <li>🔥 A reading streak that keeps you coming back one day at a time</li>
-          <li>🤝 A community of believers walking the same road</li>
-        </ul>
-        <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
-          <p>It is free to start. No pressure, no credit card.</p>
-          <p>Just you, God&apos;s Word, and a little help understanding it.</p>
-          <p>
-            Thousands of Christians are already reading this way, one day at a time. There is room
-            for you.
-          </p>
-          <p>Start studying by clicking the button below. 👇</p>
-        </div>
-      </section>
+
     </BlogPostShell>
   );
 }
