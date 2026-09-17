@@ -4467,3 +4467,7 @@ Next up: Day 256. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-17T17:58:16Z (hourly chapter notes run)
 Chapter: Psalms 72 | Duration: 11 min | Sections: 8 | Cards: 38 | Status: pass
 Next up: Psalms 73
+
+## 2026-09-17T18:27:49Z (bible year day writer run)
+Day: 256 — Spiritual Conflict and Final Hope (Daniel 10-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 257.
