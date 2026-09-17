@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-5-explained",
+    title: "Genesis 5 Explained: The Genealogy From Adam to Noah",
+    description:
+      "Genesis 5 explained verse by verse: the genealogy from Adam to Noah, the repeated word 'and he died,' and the one man, Enoch, who never dies at all.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-5-explained",
+    publishedAt: "2026-09-17",
+    readTime: "11 min read",
+    image: "/Whatisthebiblebanner.png",
+    groupPost: {
+      title: "Genesis 5 Explained 📖",
+      content:
+        "Ten names. Ten lifespans. Nine deaths.\nOne name breaks the pattern completely.\n\n📌 Enoch walked with God, and he never died at all.\n\n📖 The same word closes name after name: \"and he died.\"\n📖 Methuselah lived longer than anyone else in Scripture.\n📖 A tired father named his son Noah, hoping for comfort.\n\nNew article on:\n🟢 why the whole chapter repeats **\"and he died\"**\n🟢 what it means that **Enoch walked with God**\n🟢 the striking math behind **Methuselah's death and the flood**\n\nWhich name in this genealogy surprised you most? 🙏",
+    },
+  },
+  {
     slug: "genesis-4-explained",
     title: "Genesis 4 Explained: Cain, Abel, and the First Murder",
     description:
