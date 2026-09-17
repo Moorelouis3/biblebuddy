@@ -4431,3 +4431,7 @@ Bug fixed: home page crashed on some Android phones when the intro video failed 
 ## 2026-09-17T14:59:47Z (hourly chapter notes run)
 Chapter: Psalms 69 | Duration: 10 min | Sections: 8 | Cards: 37 | Status: pass
 Next up: Psalms 70
+
+## 2026-09-17T15:26:07Z (bible year day writer run)
+Day: 250 — Vision of a Restored Temple (Ezekiel 40-42) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 251.
