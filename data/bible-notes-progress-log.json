@@ -35823,6 +35823,59 @@
           "at": "2026-09-18T03:57:00Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 83,
+      "startedAt": "2026-09-18T03:57:00Z",
+      "finishedAt": "2026-09-18T05:50:00Z",
+      "durationMinutes": 113,
+      "sections": 5,
+      "cards": 26,
+      "verses": 18,
+      "notes": "This chapter spanned two runs. The prior scheduled run (committed 58746e0 at 05:07:29Z) fetched the real KJV text for Psalms 83 from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, wrote lib/psalmsEightyThreeSource.ts to the full style spec (5 sections covering all 18 verses with no gaps: 1-2, 3-8, 9-12, 13-15, 16-18; 26 phrase cards), and ran it clean through scripts/check_bible_note_style.py (0 problems), but could not finish because registry.npmjs.org was returning HTTP 503 registry-wide (confirmed independently with curl), leaving node_modules incomplete twice in a row with no .bin/tsc. That run correctly left the file unwired and logged a block event rather than guessing the verification would pass. This run started with npm install, which succeeded cleanly this time (596 packages, no errors). Re-verified the carried-over draft rather than rewriting it from scratch: re-fetched the KJV text for Psalms 83 independently and confirmed all 18 verses and all 26 phrase-card titles are exact phrases lifted verbatim from the actual verses (Keep Not Thou Silence O God, Thine Enemies Make A Tumult, They Have Taken Crafty Counsel Against Thy People, Let Us Cut Them Off From Being A Nation, The Tabernacles Of Edom And The Ishmaelites, Do Unto Them As Unto The Midianites, Which Perished At Endor They Became As Dung For The Earth, Make Them Like A Wheel As The Stubble Before The Wind, That Men May Know That Thou Whose Name Alone Is JEHOVAH, and so on), reran scripts/check_bible_note_style.py clean (0 problems, 26 cards), and did a full section 13 eye check: every card opens with a real teaching move (defining tumult, crafty counsel, confederate, holpen, Selah, JEHOVAH, Most High; identifying Edom/Ishmaelites/Moab/Hagarenes/Gebal/Ammon/Amalek/Tyre/Assur by family and history; correcting the assumption that this is a quiet or hidden threat; naming the callback to Gideon, Deborah and Barak, and Oreb/Zeeb/Zebah/Zalmunna from Judges seven and eight), defines every hard term inline, closes each card on meaning rather than mechanics (the shift from judgment to the hope of repentance in verse 16, the psalm's real goal being that people know God rather than just defeating ten nations), uses exactly four bullets each three to eight words with a distinct emoji ending on the scripture-point bullet, has zero duplicate titles across all 26 cards, and has no hyphens, em dashes, semicolons, or contractions anywhere in the file. This is Asaph's psalm listing a ten-nation coalition (Edom, Ishmaelites, Moab, Hagarenes, Gebal, Ammon, Amalek, Philistines, Tyre, Assyria) conspiring to erase Israel, calling back to Gideon's defeat of Midian and Deborah and Barak's defeat of Sisera and Jabin as the model for the deliverance being asked for, and closing with a request that ends not in Israel's victory but in the nations knowing that JEHOVAH alone is Most High over all the earth. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/psalmsEightyThreeSource.ts, preserveExactPhraseBodies range extended from psalms chapters 1-82 to 1-83, new function applyPersonalPsalmsEightyThreeStudySections added and called right after applyPersonalPsalmsEightyTwoStudySections(). Parser check passed via getBibleReaderStudySections('psalms', 83) (5/5 sections, verse ranges 1-2/3-8/9-12/13-15/16-18 with no gaps, 26 total cards, matching the file's own internal section-count safety check). npx tsc --noEmit -p . clean with zero errors. Next forward-progress target is Psalms 84.",
+      "steps": [
+        {
+          "name": "npm install done (596 packages, clean, no errors, unlike the prior run's registry outage)",
+          "at": "2026-09-18T05:46:27Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 83 (new chapter, forward progress; priority queue and style-redo backlog both confirmed empty; reusing style-checker-clean draft left unwired by the prior blocked run)",
+          "at": "2026-09-18T05:47:10Z"
+        },
+        {
+          "name": "KJV text re-fetched and cross-checked: Psalms 83 (18 verses) from raw.githubusercontent.com aruljohn/Bible-kjv, confirmed matches the carried-over draft",
+          "at": "2026-09-18T05:47:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-18T05:48:10Z"
+        },
+        {
+          "name": "source file verified: lib/psalmsEightyThreeSource.ts (already written by the prior blocked run, 5 sections, 26 phrase cards; re-reviewed in full against the style spec, no rewrite needed)",
+          "at": "2026-09-18T05:48:40Z"
+        },
+        {
+          "name": "style checker clean: python3 scripts/check_bible_note_style.py lib/psalmsEightyThreeSource.ts, 0 problems, 26 cards",
+          "at": "2026-09-18T05:48:55Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 83, new apply function, call added after Psalms 82)",
+          "at": "2026-09-18T05:49:15Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections(psalms,83) returns 5 sections / 26 cards, no throw",
+          "at": "2026-09-18T05:49:35Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-18T05:50:00Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md hourly chapter notes run entry)",
+          "at": "2026-09-18T05:51:24Z"
+        }
+      ]
     }
   ]
 }
