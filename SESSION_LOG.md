@@ -4645,3 +4645,7 @@ Next up: Day 283.
 ## 2026-09-18T07:31:07Z (bible year day writer run)
 Day: 283 — Opposition, Parables, and Provision (Matthew 12-14) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 284. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T07:55:47Z (hourly chapter notes run)
+Chapter: Psalms 85 | Duration: 9 min | Sections: 5 | Cards: 25 | Status: pass
+Next up: Psalms 86

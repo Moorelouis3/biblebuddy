@@ -35933,6 +35933,63 @@
           "at": "2026-09-18T06:54:18Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 85,
+      "startedAt": "2026-09-18T07:46:09Z",
+      "finishedAt": "2026-09-18T07:54:49Z",
+      "durationMinutes": 8.67,
+      "sections": 5,
+      "cards": 25,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog (data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json, both remaining=[]) confirmed empty, so this was normal forward progress after Psalms 84. Psalms 85-96 and 97-150 were still only covered by old bulk-range placeholder files (psalmsSixtySevenToNinetySixPersonalNotes.ts, etc), never given their own dedicated per-chapter file, so Psalms 85 (the first chapter after 84 with no dedicated wired-in lib file) was the correct next target, written as a new chapter. Repo started in a detached HEAD state that turned out to exactly match the real, just-fetched origin/main tip (a stale local ref before fetching made it look diverged); resolved with git checkout -B main origin/main, nothing lost. npm install ran clean (596 packages, no errors) on this fresh clone. Fetched real KJV text for Psalms 85 (13 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 85 is a communal psalm of restoration: verses 1-3 open by remembering God's past favor, forgiveness, and the reversal of Jacob's captivity, likely the return from Babylonian exile. Verses 4-7 turn to present prayer, asking God to turn the people back, end his anger, and revive them again. Verses 8-9 shift to listening, the psalmist waiting to hear God speak peace to his people while warning against turning back to folly, with salvation described as near to those who fear him. Verses 10-11 give the psalm's famous image, mercy and truth meeting, righteousness and peace kissing, truth springing from the earth while righteousness looks down from heaven. Verses 12-13 close with the LORD giving what is good, the land yielding its increase, and righteousness going before him to set the people in the way of his steps. Chunked into 5 sections covering all 13 verses with no gaps or overlaps (1-3, 4-7, 8-9, 10-11, 12-13), 25 phrase cards total (1.9 cards per verse). scripts/check_bible_note_style.py found 3 bullet word count problems on the first run (three closing bullets ran 9 words instead of the 3-8 word limit), all three trimmed to fit and the checker came back clean with 0 problems on the second run. A manual section 13 eye check confirmed every card opens with one of the four approved moves (defining favourable, iniquity, covered, Selah, wrath, shew, nigh, folly, saints, increase, identifying the vague reference of Jacob as the whole nation and the way of his steps as a godly life), closes each card on meaning rather than mechanics (mercy as the reason to expect new hope, joy in God as the real aim, the psalm moving from remembered mercy to a changed path), uses exactly four bullets each three to eight words with a distinct emoji per card ending on the scripture point emoji, has zero duplicate titles across all 25 cards, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/psalmsEightyFiveSource.ts, preserveExactPhraseBodies range extended from psalms chapters 1-84 to 1-85, new function applyPersonalPsalmsEightyFiveStudySections added and called right after applyPersonalPsalmsEightyFourStudySections() and before applyPersonalPsalmsNinetySevenThroughOneTwentySixStudySections(), correctly overriding the earlier bulk applyPersonalPsalmsSixtySevenThroughNinetySixStudySections() call for chapter 85 specifically since replaceStudySectionsForBookRange removes any existing sections for the target chapter range before pushing new ones and call order (not definition order) decides which content wins. Parser check passed via getBibleReaderStudySections('psalms', 85) (5/5 sections, verse ranges 1-3/4-7/8-9/10-11/12-13 with no gaps, 25 total cards). npx tsc --noEmit -p . clean with zero errors. Next forward-progress target is Psalms 86.",
+      "steps": [
+        {
+          "name": "session start, repo checked out on main tracking origin/main",
+          "at": "2026-09-18T07:46:09Z"
+        },
+        {
+          "name": "npm install done (596 packages, clean, no errors)",
+          "at": "2026-09-18T07:47:24Z"
+        },
+        {
+          "name": "priority queue and style-redo backlog both confirmed empty; target chapter determined: Psalms 85 (new chapter, forward progress, first chapter after 84 with no dedicated wired-in lib file)",
+          "at": "2026-09-18T07:54:49Z"
+        },
+        {
+          "name": "KJV text fetched: Psalms 85 (13 verses) from raw.githubusercontent.com aruljohn/Bible-kjv",
+          "at": "2026-09-18T07:54:49Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-09-18T07:54:49Z"
+        },
+        {
+          "name": "source file written: lib/psalmsEightyFiveSource.ts (5 sections, 25 phrase cards)",
+          "at": "2026-09-18T07:51:57Z"
+        },
+        {
+          "name": "style checker: 3 bullet word count problems found on first run, fixed, clean on second run",
+          "at": "2026-09-18T07:54:49Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 85, new apply function, call added after Psalms 84 and before the 97-126 broad range)",
+          "at": "2026-09-18T07:54:49Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections(psalms,85) returns 5 sections / 25 cards, no gaps, no throw",
+          "at": "2026-09-18T07:52:42Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-18T07:52:58Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-18T07:54:49Z"
+        }
+      ]
     }
   ]
 }
