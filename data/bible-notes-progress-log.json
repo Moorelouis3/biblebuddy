@@ -35591,6 +35591,63 @@
           "at": "2026-09-18T00:02:18Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 79,
+      "startedAt": "2026-09-18T00:45:54Z",
+      "finishedAt": "2026-09-18T00:59:23Z",
+      "durationMinutes": 14,
+      "sections": 6,
+      "cards": 20,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress after Psalms 78 (priority queue in data/bible-notes-priority-queue.json and style-redo backlog in data/bible-notes-style-redo-remaining.json both confirmed empty, remaining: []). Repo was again found in a detached HEAD state at the start of the run, and the local main branch pointer turned out to be stale with a completely unrelated history to origin/main (no common merge base at all, likely a container setup artifact, not real work in progress). Rather than force-reset the local main branch, worked directly from a clean detached checkout of origin/main (git fetch origin main, git checkout origin/main), confirmed no uncommitted changes existed, and pushed to origin main directly at the end. Fetched real KJV text for Psalms 79 (13 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 79 is a short communal lament by Asaph over the destruction of Jerusalem and its temple: the heathen have defiled God's inheritance and left the dead unburied for birds and beasts, Israel has become a reproach to its neighbors, the psalmist asks how long God's anger will burn, pleads for wrath to fall on the nations that never knew God rather than further punishment of Israel's own sins, asks for rescue for the glory of God's name, prays for the groaning of condemned prisoners to reach God, wants the nations' taunt (\"where is their God?\") answered visibly, and closes with a vow that God's people, pictured as his flock, will give thanks and declare his praise to every future generation. Chunked into 6 sections covering all 13 verses with no gaps or overlaps, 20 phrase cards total (about 1.54 cards per verse, appropriate for a short, dense lament where nearly every verse carries an archaic word, a historical reference, or an imprecatory-prayer concept worth unpacking). scripts/check_bible_note_style.py came back clean with 0 problems on the first run. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key archaic and cultural terms (heathen, inheritance, defiled, wroth-adjacent jealousy language, prevent meaning go before rather than stop, shew, sevenfold, bosom), explains the imprecatory-prayer genre honestly (asking God to right a wrong rather than personal revenge, per the allowed-hedge guidance in section 9), names vague references (Jacob as another name for Israel, the heathen and kingdoms as Babylon and its allies), closes each section on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji per bullet ending on the scripture-point emoji, has zero duplicate titles across all 20 cards, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished note text. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/psalmsSeventyNineSource.ts, preserveExactPhraseBodies range extended from psalms chapters 1-78 to 1-79, new function applyPersonalPsalmsSeventyNineStudySections added and called right after applyPersonalPsalmsSeventyEightStudySections() and before the broader applyPersonalPsalmsNinetySevenThroughOneTwentySixStudySections() call (chapter 79 previously only had old-style bulk placeholder content from the psalms 67-96 legacy block, now overridden by the new dedicated file). Parser check passed via getBibleReaderStudySections('psalms', 79) (6/6 sections, verse ranges 1-3/4-5/6-7/8-9/10-11/12-13 with no gaps, 20 total cards). npx tsc --noEmit -p . clean with zero errors. Next forward-progress target is Psalms 80.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-18T00:45:54Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 79 (new chapter, forward progress; priority queue and style-redo backlog both empty)",
+          "at": "2026-09-18T00:48:24Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) and SKILL.md read",
+          "at": "2026-09-18T00:45:54Z"
+        },
+        {
+          "name": "KJV text fetched: Psalms 79, 13 verses",
+          "at": "2026-09-18T00:50:13Z"
+        },
+        {
+          "name": "source file written: lib/psalmsSeventyNineSource.ts (6 sections, 20 cards)",
+          "at": "2026-09-18T00:55:02Z"
+        },
+        {
+          "name": "style checker clean: 20 cards, 0 problems",
+          "at": "2026-09-18T00:55:02Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 79, new function and call added)",
+          "at": "2026-09-18T00:55:23Z"
+        },
+        {
+          "name": "wiring confirmed via getBibleReaderStudySections: 6 sections, 20 cards, no throw",
+          "at": "2026-09-18T00:55:23Z"
+        },
+        {
+          "name": "parser check passed",
+          "at": "2026-09-18T00:55:23Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-18T00:57:23Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-18T00:59:23Z"
+        }
+      ]
     }
   ]
 }
