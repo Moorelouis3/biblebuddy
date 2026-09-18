@@ -4571,3 +4571,7 @@ Next up: Day 273.
 ## 2026-09-18T02:35:00Z (bible year day writer run)
 Day: 273 — Future Glory and Jerusalem's Hope (Haggai 2; Zechariah 1-2) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 274. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T02:55:00Z (hourly chapter notes run)
+Chapter: Psalms 81 | Duration: 9 min | Sections: 4 | Cards: 26 | Status: pass
+Next up: Psalms 82
