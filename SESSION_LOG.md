@@ -4587,3 +4587,7 @@ Next up: Day 276. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T03:55:03Z (hourly chapter notes run)
 Chapter: Psalms 82 | Duration: 9 min | Sections: 4 | Cards: 16 | Status: pass
 Next up: Psalms 83
+
+## 2026-09-18T04:27:02Z (bible year day writer run)
+Day: 276 — The Coming King and Rejected Shepherd (Zechariah 9-11) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 277.
