@@ -4595,3 +4595,21 @@ Next up: Day 277.
 ## 2026-09-18T04:28:11Z (bible year day writer run)
 Day: 277 — Pierced One and the Lord's Reign (Zechariah 12-14) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 278. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T05:06:53Z (bible note writer run)
+Status: BLOCKED — npm registry outage. Target was Psalms 83. npm install
+failed with HTTP 503 from registry.npmjs.org on the first attempt, then
+failed again on a retry (roughly 8 minutes, 503 on attempt #3 for nearly
+every package including typescript itself), leaving node_modules without
+tsc. Confirmed independently with a plain curl to
+https://registry.npmjs.org/typescript, also 503. KJV fetch (GitHub raw
+mirror) worked fine and the full chapter was drafted and written to
+lib/psalmsEightyThreeSource.ts — 5 sections, 26 cards, clean through
+scripts/check_bible_note_style.py — but the parser check and
+npx tsc --noEmit both need node_modules and could not run, so the chapter
+is not marked done. Left the draft file unwired (not imported or called in
+lib/bibleReaderStudyNotes.ts) so nothing in the live app changed and the
+progress log still points to Psalms 83 as next. No chapter/session-log
+pass entry recorded, since none is true yet. Full detail in
+data/bible-notes-usage-events.json.
+Next up: Psalms 83 (retry once npm registry access is restored).
