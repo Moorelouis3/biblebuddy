@@ -4793,3 +4793,7 @@ Next up: Day 304. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T18:58:30Z (hourly chapter notes run)
 Chapter: Psalms 95 | Duration: 13 min | Sections: 4 | Cards: 21 | Status: pass
 Next up: Psalms 96
+
+## 2026-09-18T19:26:57Z (bible year day writer run)
+Day: 304 — Living Water, Light, and Sight (John 7-9) | Runtime: ~20 min est | Cast: narrator (single-voice; no named speaking roles auto-cast in this reading)
+Next up: Day 305
