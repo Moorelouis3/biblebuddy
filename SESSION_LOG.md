@@ -4539,3 +4539,7 @@ Next up: Day 268. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T00:02:18Z (hourly chapter notes run)
 Chapter: Psalms 78 | Duration: 15 min | Sections: 14 | Cards: 68 | Status: pass
 Next up: Psalms 79
+
+## 2026-09-18T00:25:32Z (bible year day writer run)
+Day: 268 — Corrupt Leaders and Bethlehem's Ruler (Micah 3-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 269.
