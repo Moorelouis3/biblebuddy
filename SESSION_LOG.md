@@ -4809,3 +4809,7 @@ Next up: Psalms 97
 ## 2026-09-18T20:26:15Z (bible year day writer run)
 Day: 306 — Love, Service, and Abiding (John 13-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 307.
+
+## 2026-09-18T20:31:00Z (bible year day writer run)
+Day: 307 — Spirit, Prayer, and Arrest (John 16-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 308. Stopping here — two-day budget cap for this run reached.
