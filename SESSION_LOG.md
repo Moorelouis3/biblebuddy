@@ -4845,3 +4845,7 @@ Next up: Psalms 100
 ## 2026-09-18T23:26:30Z (bible year day writer run)
 Day: 312 — Gospel to Gentiles (Acts 10-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 313.
+
+## 2026-09-18T23:45:00Z (bible year day writer run)
+Day: 313 — Mission and the Jerusalem Council (Acts 13-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 314. Stopping here — two-day budget cap for this run reached.
