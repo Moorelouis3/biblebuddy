@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-9-explained",
+    title: "Genesis 9 Explained: The Rainbow Covenant and the Curse of Canaan",
+    description:
+      "Genesis 9 explained verse by verse: the new permission to eat meat, why human life carries weight, the rainbow covenant, and the curse of Canaan.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-9-explained",
+    publishedAt: "2026-09-18",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-9-explained.jpg",
+    groupPost: {
+      title: "Genesis 9 Explained 📖",
+      content:
+        "Noah survived the flood.\nThis chapter shows he did not survive being human.\n\n📌 Human life carries weight because it is made in God's image.\n\n📖 God allows meat for the first time, with one limit on blood.\n📖 The rainbow becomes a sign of an everlasting covenant.\n📖 A family scene ends in a curse that still gets misused today.\n\nNew article on:\n🟢 why **eating meat** was new after the flood\n🟢 what the **rainbow covenant** actually promises\n🟢 the truth behind the **curse of Canaan**\n\nWhat part of Noah's story after the flood surprised you? 🙏",
+    },
+  },
+  {
     slug: "genesis-8-explained",
     title: "Genesis 8 Explained: The Flood Ends and Noah Leaves the Ark",
     description:
