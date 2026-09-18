@@ -4765,3 +4765,9 @@ Next up: Day 300. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T16:54:27Z (hourly chapter notes run)
 Chapter: Psalms 93 | Duration: 9 min | Sections: 3 | Cards: 11 | Status: pass
 Next up: Psalms 94
+
+## 2026-09-18T17:27:08Z (bible year day writer run)
+Day: 300 — Jerusalem, Temple, and Coming Judgment (Luke 19-21) | Runtime:
+audio not rendered (no API/Supabase credentials in this environment) |
+Cast: narrator only.
+Next up: Day 301.
