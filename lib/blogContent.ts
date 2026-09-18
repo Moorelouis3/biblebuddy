@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-7-explained",
+    title: "Genesis 7 Explained: The Flood Begins and the Ark Door Shuts",
+    description:
+      "Genesis 7 explained verse by verse: Noah boards the ark, the LORD shuts the door, and the flood covers the earth for forty days and 150 more.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-7-explained",
+    publishedAt: "2026-09-18",
+    readTime: "11 min read",
+    image: "/blog-banners/genesis-7-explained.jpg",
+    groupPost: {
+      title: "Genesis 7 Explained 📖",
+      content:
+        "The ark door finally shuts in this chapter.\nNo one outside gets back in.\n\n📌 God shuts the door Himself, not Noah.\n\n📖 Sevens of clean animals, only two of unclean.\n📖 Forty days of rain, then 150 days of water.\n📖 Only eight people survive the whole flood.\n\nNew article on:\n🟢 why God asked for **sevens** of some animals\n🟢 what it means that the **LORD shut the door**\n🟢 how many people actually **survived the flood**\n\nWhich detail in this chapter surprised you most? 🙏",
+    },
+  },
+  {
     slug: "genesis-6-explained",
     title: "Genesis 6 Explained: Wickedness, Noah, and the Ark",
     description:
