@@ -4583,3 +4583,7 @@ Next up: Day 275.
 ## 2026-09-18T03:29:57Z (bible year day writer run)
 Day: 275 — Branch, Temple, and Restoration (Zechariah 6-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 276. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T03:55:03Z (hourly chapter notes run)
+Chapter: Psalms 82 | Duration: 9 min | Sections: 4 | Cards: 16 | Status: pass
+Next up: Psalms 83
