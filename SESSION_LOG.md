@@ -4689,3 +4689,7 @@ Next up: Psalms 89
 ## 2026-09-18T11:26:35Z (bible year day writer run)
 Day: 290 — Deliverance, Healing, and True Cleanliness (Mark 5-7) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 291.
+
+## 2026-09-18T11:28:28Z (bible year day writer run)
+Day: 291 — The Way of the Cross (Mark 8-10) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 292. Stopping here — two-day budget cap for this run reached.
