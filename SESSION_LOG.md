@@ -4543,3 +4543,7 @@ Next up: Psalms 79
 ## 2026-09-18T00:25:32Z (bible year day writer run)
 Day: 268 — Corrupt Leaders and Bethlehem's Ruler (Micah 3-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 269.
+
+## 2026-09-18T00:40:00Z (bible year day writer run)
+Day: 269 — What the Lord Requires (Micah 6-7; Nahum 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 270. Stopping here — two-day budget cap for this run reached.
