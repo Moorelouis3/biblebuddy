@@ -4575,3 +4575,7 @@ Next up: Day 274. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T02:55:00Z (hourly chapter notes run)
 Chapter: Psalms 81 | Duration: 9 min | Sections: 4 | Cards: 26 | Status: pass
 Next up: Psalms 82
+
+## 2026-09-18T03:27:08Z (bible year day writer run)
+Day: 274 — Cleansing, Spirit, and Wickedness Removed (Zechariah 3-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 275.
