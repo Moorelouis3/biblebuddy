@@ -4737,3 +4737,9 @@ Next up: Psalms 92
 ## 2026-09-18T14:57:27Z (hourly chapter notes run)
 Chapter: Psalms 92 | Duration: 11 min | Sections: 5 | Cards: 19 | Status: pass
 Next up: Psalms 93
+
+## 2026-09-18T15:26:12Z (bible year day writer run)
+Day: 296 — Mercy, Miracles, and Discipleship (Luke 7-9) | Runtime: audio not
+rendered (no API/Supabase credentials in this environment) | Cast: narrator
+only.
+Next up: Day 297. Stopping here — two-day budget cap for this run reached.
