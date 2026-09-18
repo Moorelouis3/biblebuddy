@@ -4791,5 +4791,5 @@ Day: 303 — Living Water and Bread of Life (John 4-6) | Runtime: ~20 min est | 
 Next up: Day 304. Stopping here — two-day budget cap for this run reached.
 
 ## 2026-09-18T18:58:30Z (hourly chapter notes run)
-Chapter: Psalms 95 | Duration: 12 min | Sections: 4 | Cards: 21 | Status: pass
+Chapter: Psalms 95 | Duration: 13 min | Sections: 4 | Cards: 21 | Status: pass
 Next up: Psalms 96
