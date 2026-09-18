@@ -4649,3 +4649,7 @@ Next up: Day 284. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T07:55:47Z (hourly chapter notes run)
 Chapter: Psalms 85 | Duration: 9 min | Sections: 5 | Cards: 25 | Status: pass
 Next up: Psalms 86
+
+## 2026-09-18T08:25:11Z (bible year day writer run)
+Day: 284 — Clean Hearts, Confession, and Glory (Matthew 15-17) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 285.
