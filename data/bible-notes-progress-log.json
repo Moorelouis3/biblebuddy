@@ -36573,8 +36573,8 @@
       "book": "Psalms",
       "chapter": 96,
       "startedAt": "2026-09-18T19:45:41Z",
-      "finishedAt": null,
-      "durationMinutes": null,
+      "finishedAt": "2026-09-18T20:01:22Z",
+      "durationMinutes": 15.7,
       "sections": 4,
       "cards": 25,
       "verses": 13,
@@ -36619,6 +36619,14 @@
         {
           "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json, SESSION_LOG.md)",
           "at": "2026-09-18T20:00:42Z"
+        },
+        {
+          "name": "committed (96b4844, no [deploy] tag)",
+          "at": "2026-09-18T20:01:02Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via git rev-parse origin/main",
+          "at": "2026-09-18T20:01:22Z"
         }
       ]
     }
