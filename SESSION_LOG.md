@@ -4693,3 +4693,7 @@ Next up: Day 291.
 ## 2026-09-18T11:28:28Z (bible year day writer run)
 Day: 291 — The Way of the Cross (Mark 8-10) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 292. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T11:58:53Z (hourly chapter notes run)
+Chapter: Psalms 89 | Duration: 13 min | Sections: 12 | Cards: 100 | Status: pass
+Next up: Psalms 90
