@@ -4677,3 +4677,7 @@ Next up: Psalms 88
 ## 2026-09-18T10:28:43Z (bible year day writer run)
 Day: 288 — Cross, Resurrection, and the Gospel Begins (Matthew 27-28; Mark 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 289.
+
+## 2026-09-18T10:29:50Z (bible year day writer run)
+Day: 289 — Authority, Conflict, and Parables (Mark 2-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 290. Stopping here — two-day budget cap for this run reached.
