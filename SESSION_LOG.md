@@ -4701,3 +4701,7 @@ Next up: Psalms 90
 ## 2026-09-18T12:30:00Z (bible year day writer run)
 Day: 292 — Temple Judgment and Watchfulness (Mark 11-13) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 293.
+
+## 2026-09-18T12:45:00Z (bible year day writer run)
+Day: 293 — Jesus' Death and Resurrection (Mark 14-16) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 294. Stopping here — two-day budget cap for this run reached.
