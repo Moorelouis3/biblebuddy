@@ -4797,3 +4797,7 @@ Next up: Psalms 96
 ## 2026-09-18T19:26:57Z (bible year day writer run)
 Day: 304 — Living Water, Light, and Sight (John 7-9) | Runtime: ~20 min est | Cast: narrator (single-voice; no named speaking roles auto-cast in this reading)
 Next up: Day 305
+
+## 2026-09-18T19:28:02Z (bible year day writer run)
+Day: 305 — Good Shepherd and the Hour Arrives (John 10-12) | Runtime: ~21 min est | Cast: narrator (single-voice; no named speaking roles auto-cast in this reading)
+Next up: Day 306. Stopping here — two-day budget cap for this run reached.
