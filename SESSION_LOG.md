@@ -4805,3 +4805,7 @@ Next up: Day 306. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T20:00:36Z (hourly chapter notes run)
 Chapter: Psalms 96 | Duration: 15 min | Sections: 4 | Cards: 25 | Status: pass
 Next up: Psalms 97
+
+## 2026-09-18T20:26:15Z (bible year day writer run)
+Day: 306 — Love, Service, and Abiding (John 13-15) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 307.
