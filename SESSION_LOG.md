@@ -4813,3 +4813,7 @@ Next up: Day 307.
 ## 2026-09-18T20:31:00Z (bible year day writer run)
 Day: 307 — Spirit, Prayer, and Arrest (John 16-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 308. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T20:55:33Z (hourly chapter notes run)
+Chapter: Psalms 97 | Duration: 8 min | Sections: 4 | Cards: 25 | Status: pass
+Next up: Psalms 98

@@ -36629,6 +36629,63 @@
           "at": "2026-09-18T20:01:22Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 97,
+      "startedAt": "2026-09-18T20:47:03Z",
+      "finishedAt": "2026-09-18T20:54:33Z",
+      "durationMinutes": 7.5,
+      "sections": 4,
+      "cards": 25,
+      "verses": 12,
+      "notes": "New chapter, normal forward progress after Psalms 96. Poetry chapter (LORD's kingship, idols confounded, light sown for the righteous). Written to docs/bible-study-note-style.md spec.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-18T20:48:10Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 97 (new chapter, forward progress)",
+          "at": "2026-09-18T20:48:10Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 97",
+          "at": "2026-09-18T20:48:19Z"
+        },
+        {
+          "name": "style spec and skill file read in full",
+          "at": "2026-09-18T20:48:27Z"
+        },
+        {
+          "name": "note content drafted (25 cards, 4 sections) for Psalms 97",
+          "at": "2026-09-18T20:50:19Z"
+        },
+        {
+          "name": "source file written: lib/psalmsNinetySevenSource.ts",
+          "at": "2026-09-18T20:52:20Z"
+        },
+        {
+          "name": "style checker clean (25 cards, 0 problems)",
+          "at": "2026-09-18T20:52:28Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-09-18T20:52:52Z"
+        },
+        {
+          "name": "parser check passed (4 sections, 25 cards, no throw)",
+          "at": "2026-09-18T20:53:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-09-18T20:54:29Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-18T20:55:25Z"
+        }
+      ]
     }
   ]
 }
