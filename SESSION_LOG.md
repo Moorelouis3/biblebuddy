@@ -4742,4 +4742,10 @@ Next up: Psalms 93
 Day: 296 — Mercy, Miracles, and Discipleship (Luke 7-9) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only.
-Next up: Day 297. Stopping here — two-day budget cap for this run reached.
+Next up: Day 297.
+
+## 2026-09-18T15:52:00Z (bible year day writer run)
+Day: 297 — Neighbor Love, Prayer, and Watchfulness (Luke 10-12) | Runtime:
+audio not rendered (no API/Supabase credentials in this environment) |
+Cast: narrator only.
+Next up: Day 298. Stopping here — two-day budget cap for this run reached.
