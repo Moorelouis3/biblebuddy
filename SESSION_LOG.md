@@ -4579,3 +4579,7 @@ Next up: Psalms 82
 ## 2026-09-18T03:27:08Z (bible year day writer run)
 Day: 274 — Cleansing, Spirit, and Wickedness Removed (Zechariah 3-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 275.
+
+## 2026-09-18T03:29:57Z (bible year day writer run)
+Day: 275 — Branch, Temple, and Restoration (Zechariah 6-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 276. Stopping here — two-day budget cap for this run reached.
