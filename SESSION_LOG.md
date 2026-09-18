@@ -4555,3 +4555,7 @@ Next up: Psalms 80
 ## 2026-09-18T01:25:24Z (bible year day writer run)
 Day: 270 — Nineveh Falls and Habakkuk Questions (Nahum 2-3; Habakkuk 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 271.
+
+## 2026-09-18T01:27:13Z (bible year day writer run)
+Day: 271 — The Righteous Live by Faith (Habakkuk 2-3; Zephaniah 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 272. Stopping here — two-day budget cap for this run reached.
