@@ -4563,3 +4563,7 @@ Next up: Day 272. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T01:55:30Z (hourly chapter notes run)
 Chapter: Psalms 80 | Duration: 10 min | Sections: 5 | Cards: 32 | Status: pass
 Next up: Psalms 81
+
+## 2026-09-18T02:10:00Z (bible year day writer run)
+Day: 272 — Seek the Lord and Rebuild (Zephaniah 2-3; Haggai 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 273.
