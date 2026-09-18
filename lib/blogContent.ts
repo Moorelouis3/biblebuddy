@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-8-explained",
+    title: "Genesis 8 Explained: The Flood Ends and Noah Leaves the Ark",
+    description:
+      "Genesis 8 explained verse by verse: the raven and dove, dry ground after the flood, and God's promise that seedtime and harvest will never cease.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-8-explained",
+    publishedAt: "2026-09-18",
+    readTime: "12 min read",
+    image: "/blog-banners/genesis-8-explained.jpg",
+    groupPost: {
+      title: "Genesis 8 Explained 📖",
+      content:
+        "The rain stopped. The waiting did not.\nNoah still has months to go.\n\n📌 God remembered Noah before the water ever moved.\n\n📖 A raven never comes back, a dove finally does.\n📖 Noah sees dry ground, then waits two more months.\n📖 God promises seedtime and harvest will never cease.\n\nNew article on:\n🟢 why the **raven and dove** got different jobs\n🟢 why Noah waited for a **word from God** to leave\n🟢 the very first **altar** in the whole Bible\n\nWhat part of Noah's long wait stands out to you? 🙏",
+    },
+  },
+  {
     slug: "genesis-7-explained",
     title: "Genesis 7 Explained: The Flood Begins and the Ark Door Shuts",
     description:
