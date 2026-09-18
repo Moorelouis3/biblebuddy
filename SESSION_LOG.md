@@ -4669,3 +4669,7 @@ Next up: Day 287.
 ## 2026-09-18T09:41:00Z (bible year day writer run)
 Day: 287 — Watchfulness, Supper, and Betrayal (Matthew 24-26) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 288. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T09:58:11Z (hourly chapter notes run)
+Chapter: Psalms 87 | Duration: 12 min | Sections: 3 | Cards: 13 | Status: pass
+Next up: Psalms 88
