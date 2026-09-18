@@ -4665,3 +4665,7 @@ Next up: Psalms 87
 ## 2026-09-18T09:27:30Z (bible year day writer run)
 Day: 286 — The King Enters and Confronts Hypocrisy (Matthew 21-23) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 287.
+
+## 2026-09-18T09:41:00Z (bible year day writer run)
+Day: 287 — Watchfulness, Supper, and Betrayal (Matthew 24-26) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 288. Stopping here — two-day budget cap for this run reached.
