@@ -4613,3 +4613,7 @@ progress log still points to Psalms 83 as next. No chapter/session-log
 pass entry recorded, since none is true yet. Full detail in
 data/bible-notes-usage-events.json.
 Next up: Psalms 83 (retry once npm registry access is restored).
+
+## 2026-09-18T05:28:20Z (bible year day writer run)
+Day: 278 — Covenant Worship and Refining Fire (Malachi 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 279.
