@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-10-explained",
+    title: "Genesis 10 Explained: The Table of Nations After the Flood",
+    description:
+      "Genesis 10 explained verse by verse: the sons of Noah, Nimrod's kingdom of Babel, the Table of Nations, and how it sets up the Tower of Babel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-10-explained",
+    publishedAt: "2026-09-18",
+    readTime: "12 min read",
+    image: "/blog-banners/genesis-10-explained.jpg",
+    groupPost: {
+      title: "Genesis 10 Explained 📖",
+      content:
+        "Genesis 10 looks like a list of names.\nIt is actually a map of every nation on earth.\n\n📌 Every nation traces back to one family, Noah's.\n\n📖 Nimrod builds the kingdom of Babel.\n📖 Canaan's descendants are the nations Israel later faces.\n📖 One line quietly gets set apart, leading to Abraham.\n\nNew article on:\n🟢 who **Nimrod** really was\n🟢 where the **Philistines** actually came from\n🟢 how this chapter sets up the **Tower of Babel**\n\nWhich nation's backstory surprised you most? 🙏",
+    },
+  },
+  {
     slug: "genesis-9-explained",
     title: "Genesis 9 Explained: The Rainbow Covenant and the Curse of Canaan",
     description:
