@@ -2,8 +2,8 @@
   "note": "Tracker for the Bible chapter blog library. Written only by scripts/chapter-blog-queue.mjs. See docs/CHAPTER_BLOG_WRITER_AGENT.md.",
   "dailyTarget": 5,
   "startedAt": "2026-09-17",
-  "updatedAt": "2026-09-18T13:40:29.953Z",
-  "nextChapter": "Genesis 10",
+  "updatedAt": "2026-09-18T13:40:45.825Z",
+  "nextChapter": "Genesis 11",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -56,6 +56,11 @@
       "status": "committed",
       "startedAt": "2026-09-18T10:40:20.733Z",
       "committedAt": "2026-09-18T10:46:22.698Z"
+    },
+    "genesis-10-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-09-18T13:40:45.824Z"
     }
   }
 }
