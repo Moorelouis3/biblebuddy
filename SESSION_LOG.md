@@ -4829,3 +4829,7 @@ Next up: Day 310. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T21:58:53Z (hourly chapter notes run)
 Chapter: Psalms 98 | Duration: 12 min | Sections: 3 | Cards: 18 | Status: pass
 Next up: Psalms 99
+
+## 2026-09-18T22:15:00Z (bible year day writer run)
+Day: 310 — Bold Witness and Shared Life (Acts 4-6) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 311.
