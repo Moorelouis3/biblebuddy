@@ -36503,6 +36503,59 @@
           "at": "2026-09-18T17:55:58Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 95,
+      "startedAt": "2026-09-18T18:46:12Z",
+      "finishedAt": "2026-09-18T18:58:30Z",
+      "durationMinutes": 12,
+      "sections": 4,
+      "cards": 21,
+      "verses": 11,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Session started on a detached HEAD at the prior commit (4dbf6d0, Bible in One Year Day 303); local main was stale at an old commit (6092e47, Email analytics) with 50 commits of apparent divergence on each side until git fetch origin main showed that was just the same recurring shallow-clone stale-local-main artifact noted in the Psalms 94 entry and several rescue/stale-local-main-* branches on origin, not real divergence (origin/main's real tip matched the detached HEAD exactly). The environment again blocked the usual git checkout -B main origin/main fix as destructive, so work stayed on the detached HEAD (already identical to origin/main, working tree clean) and was pushed straight to origin main at the end via git push origin HEAD:main. npm install ran clean (596 packages). Priority queue and style-redo backlog both confirmed empty (remaining=[] in both data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json). docs/BIBLE_BUDDY_NOTES_PROGRESS.md's own running header already named Psalms 95 as next after Psalms 94 (676 chapters logged), confirmed by no psalmsNinetyFive* file existing in lib/ and no chapter-95 wiring call past Psalms 94 in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for Psalms 95 (11 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 95 is a psalm of two halves: verses 1-3 open with a communal call to sing and make a joyful noise to the LORD as the rock of salvation and a great King above all gods, verses 4-5 ground that kingship in creation itself (the deep places of the earth, the strength of the hills, the sea he made, the dry land his hands formed), verses 6-7 shift from voice to posture with a call to worship, bow down, and kneel before the LORD our maker because Israel is the people of his pasture and the sheep of his hand, hinging on to day if ye will hear his voice, and verses 8-11 turn that hinge into a direct warning against hardening the heart the way the wilderness generation did at the provocation and temptation (Massah and Meribah), closing on God's oath in wrath that generation would not enter his rest, the same verses Hebrews 3-4 later quotes at length. Wrote 4 sections and 21 phrase cards (6 + 4 + 4 + 7) following docs/bible-study-note-style.md exactly: three-part shape (title lifted verbatim from the KJV in title case, 4-8 line body with a blank line between every line, exactly 4 bullets), one of the four approved opening moves per card, no hyphens/em dashes/semicolons/contractions, no banned filler or hedge words, no repeated first lines or structures across cards, every bullet a distinct idea ending on a 4th bullet with the takeaway. python3 scripts/check_bible_note_style.py passed clean on the first run (21 cards, 0 problems). Ran the section 13 checklist by eye on every card before saving. Wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies psalms range extended from <=94 to <=95, new applyPersonalPsalmsNinetyFiveStudySections() function and call placed after the Ninety Four call (chapter 95 was previously served by the legacy PSALMS_67_96_PERSONAL_SECTIONS fallback range, now overridden by the dedicated file). Verified with a direct getBibleReaderStudySections('psalms', 95) call through the real reader module: 4 sections, 21 cards, verse ranges 1-3/4-5/6-7/8-11 covering all 11 verses with no gaps or overlaps. npx tsc --noEmit -p . exited 0 with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-18T18:50:01Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 95 (new chapter, forward progress; redo backlog and priority queue both empty)",
+          "at": "2026-09-18T18:50:01Z"
+        },
+        {
+          "name": "KJV text fetched: Psalms 95 (11 verses, raw.githubusercontent.com aruljohn/Bible-kjv mirror)",
+          "at": "2026-09-18T18:50:11Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) + reference implementation reviewed (lib/psalmsNinetyFourSource.ts, wiring at lib/bibleReaderStudyNotes.ts)",
+          "at": "2026-09-18T18:50:26Z"
+        },
+        {
+          "name": "source file written: lib/psalmsNinetyFiveSource.ts (4 sections, 21 cards, 11 verses)",
+          "at": "2026-09-18T18:55:26Z"
+        },
+        {
+          "name": "style checker clean: 21 cards, 0 problems (python3 scripts/check_bible_note_style.py)",
+          "at": "2026-09-18T18:55:31Z"
+        },
+        {
+          "name": "parser check passed: 4 sections, 21 cards (npx tsx module import)",
+          "at": "2026-09-18T18:55:53Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies psalms range to 95, applyPersonalPsalmsNinetyFiveStudySections call)",
+          "at": "2026-09-18T18:56:17Z"
+        },
+        {
+          "name": "reader wiring confirmed: getBibleReaderStudySections('psalms', 95) returns 4 sections / 21 cards",
+          "at": "2026-09-18T18:56:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (exit 0)",
+          "at": "2026-09-18T18:57:59Z"
+        }
+      ]
     }
   ]
 }
