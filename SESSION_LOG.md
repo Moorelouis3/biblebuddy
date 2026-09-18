@@ -4633,3 +4633,7 @@ Next up: Day 281.
 ## 2026-09-18T06:27:34Z (bible year day writer run)
 Day: 281 — Kingdom Prayer and Kingdom Power (Matthew 6-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 282. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T06:54:18Z (hourly chapter notes run)
+Chapter: Psalms 84 | Duration: 8 min | Sections: 5 | Cards: 21 | Status: pass
+Next up: Psalms 85
