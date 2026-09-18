@@ -4729,3 +4729,7 @@ Day: 295 — Jesus' Mission and Kingdom Ethics (Luke 4-6) | Runtime: audio not
 rendered (no API/Supabase credentials in this environment) | Cast: narrator
 only.
 Next up: Day 296. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T14:05:00Z (hourly chapter notes run)
+Chapter: Psalms 91 | Duration: 18 min | Sections: 5 | Cards: 21 | Status: pass
+Next up: Psalms 92
