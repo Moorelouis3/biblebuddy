@@ -4801,3 +4801,7 @@ Next up: Day 305
 ## 2026-09-18T19:28:02Z (bible year day writer run)
 Day: 305 — Good Shepherd and the Hour Arrives (John 10-12) | Runtime: ~21 min est | Cast: narrator (single-voice; no named speaking roles auto-cast in this reading)
 Next up: Day 306. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T20:00:36Z (hourly chapter notes run)
+Chapter: Psalms 96 | Duration: 15 min | Sections: 4 | Cards: 25 | Status: pass
+Next up: Psalms 97
