@@ -4817,3 +4817,7 @@ Next up: Day 308. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T20:55:33Z (hourly chapter notes run)
 Chapter: Psalms 97 | Duration: 8 min | Sections: 4 | Cards: 25 | Status: pass
 Next up: Psalms 98
+
+## 2026-09-18T21:26:36Z (bible year day writer run)
+Day: 308 — Finished Work and Restored Disciples (John 19-21) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 309.
