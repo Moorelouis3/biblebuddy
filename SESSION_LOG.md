@@ -4841,3 +4841,7 @@ Next up: Day 312. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T22:54:30Z (hourly chapter notes run)
 Chapter: Psalms 99 | Duration: 8 min | Sections: 3 | Cards: 18 | Status: pass
 Next up: Psalms 100
+
+## 2026-09-18T23:26:30Z (bible year day writer run)
+Day: 312 — Gospel to Gentiles (Acts 10-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 313.

@@ -1,3 +1,6 @@
+## Detached HEAD held 5 genuinely unpushed commits, recovered (2026-09-18, before Day 312 run)
+Same recurring family as the entries below, another real-unpushed-work instance. This run started on a detached HEAD 5 commits ahead of both local and origin `main` (Day 310, Day 311, Psalms 98 notes, Psalms 99 notes, and a progress-log commit) — a prior session's work that never got pushed to `main` despite its own commit messages. Recovered the established safe way: backed the tip up to `rescue/unpushed-tip-2026-09-18` and pushed that first, then fast-forward merged into local `main` and pushed. No data lost. Still worth the environment-level fix the entries below keep asking for, so a session doesn't end detached without its push landing in the first place.
+
 ## Stale local main recurred again (2026-09-18, Bible in One Year Day 292 run) — still unfixed at the environment level
 Same root cause as the many entries below: fresh checkout's local `main`
 was stuck at an old tip ("Email analytics: welcome email only..." /
@@ -299,7 +302,7 @@ that claiming full certainty either way goes beyond the text. Flagging per
 the format spec's doctrinal-sensitivity rule so Louis can read it himself.
 
 ## Bible in One Year days waiting on local audio render
-Scripts through Day 311 are written and pushed, but none of them have been
+Scripts through Day 312 are written and pushed, but none of them have been
 rendered — this environment has no OPENAI_API_KEY or Supabase service key.
 Run `npx tsx scripts/render-pending-bible-year-days.ts` on a machine that
 has those keys; it auto-detects every day with a script but no current
