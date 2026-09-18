@@ -4673,3 +4673,7 @@ Next up: Day 288. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T09:58:11Z (hourly chapter notes run)
 Chapter: Psalms 87 | Duration: 12 min | Sections: 3 | Cards: 13 | Status: pass
 Next up: Psalms 88
+
+## 2026-09-18T10:28:43Z (bible year day writer run)
+Day: 288 — Cross, Resurrection, and the Gospel Begins (Matthew 27-28; Mark 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 289.
