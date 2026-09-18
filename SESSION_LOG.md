@@ -4697,3 +4697,7 @@ Next up: Day 292. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T11:58:53Z (hourly chapter notes run)
 Chapter: Psalms 89 | Duration: 13 min | Sections: 12 | Cards: 100 | Status: pass
 Next up: Psalms 90
+
+## 2026-09-18T12:30:00Z (bible year day writer run)
+Day: 292 — Temple Judgment and Watchfulness (Mark 11-13) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 293.

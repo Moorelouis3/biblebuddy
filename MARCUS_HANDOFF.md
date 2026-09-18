@@ -1,3 +1,16 @@
+## Stale local main recurred again (2026-09-18, Bible in One Year Day 292 run) — still unfixed at the environment level
+Same root cause as the many entries below: fresh checkout's local `main`
+was stuck at an old tip ("Email analytics: welcome email only..." /
+Day 175 era, `6092e47`) genuinely diverged from `origin/main` (`69a0e5f`,
+"Chapter notes: Psalms 89" era) — `git branch -v` reported 50 ahead / 50
+behind. This run's actual working HEAD was already detached at the
+correct, current `origin/main` tip, so nothing was at risk. Pushed the
+stale `main` line to `rescue/stale-local-main-2026-09-18` before touching
+anything, left local `main` untouched, and pushed this run's new commits
+with `git push origin HEAD:main` instead. Still worth fixing at the
+environment level so a future run doesn't have to keep diagnosing this by
+hand — this is now well past a tenth occurrence of the same bug.
+
 ## New series started: Genesis chapter-by-chapter blog posts
 Louis asked (live, 2026-09-17) to start a "Genesis N Explained" blog series
 continuing from the existing Genesis 1 and 2 posts, at a pace of roughly 2
@@ -286,7 +299,7 @@ that claiming full certainty either way goes beyond the text. Flagging per
 the format spec's doctrinal-sensitivity rule so Louis can read it himself.
 
 ## Bible in One Year days waiting on local audio render
-Scripts through Day 291 are written and pushed, but none of them have been
+Scripts through Day 292 are written and pushed, but none of them have been
 rendered — this environment has no OPENAI_API_KEY or Supabase service key.
 Run `npx tsx scripts/render-pending-bible-year-days.ts` on a machine that
 has those keys; it auto-detects every day with a script but no current
