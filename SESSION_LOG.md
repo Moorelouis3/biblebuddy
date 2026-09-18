@@ -4591,3 +4591,7 @@ Next up: Psalms 83
 ## 2026-09-18T04:27:02Z (bible year day writer run)
 Day: 276 — The Coming King and Rejected Shepherd (Zechariah 9-11) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 277.
+
+## 2026-09-18T04:28:11Z (bible year day writer run)
+Day: 277 — Pierced One and the Lord's Reign (Zechariah 12-14) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 278. Stopping here — two-day budget cap for this run reached.
