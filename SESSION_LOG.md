@@ -4551,3 +4551,7 @@ Next up: Day 270. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T00:59:23Z (hourly chapter notes run)
 Chapter: Psalms 79 | Duration: 14 min | Sections: 6 | Cards: 20 | Status: pass
 Next up: Psalms 80
+
+## 2026-09-18T01:25:24Z (bible year day writer run)
+Day: 270 — Nineveh Falls and Habakkuk Questions (Nahum 2-3; Habakkuk 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 271.
