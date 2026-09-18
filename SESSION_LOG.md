@@ -4705,3 +4705,7 @@ Next up: Day 293.
 ## 2026-09-18T12:45:00Z (bible year day writer run)
 Day: 293 — Jesus' Death and Resurrection (Mark 14-16) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 294. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-18T12:57:01Z (hourly chapter notes run)
+Chapter: Psalms 90 | Duration: 11 min | Sections: 4 | Cards: 24 | Status: pass
+Next up: Psalms 91

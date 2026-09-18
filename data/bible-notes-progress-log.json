@@ -36234,6 +36234,71 @@
           "at": "2026-09-18T11:58:53Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 90,
+      "startedAt": "2026-09-18T12:46:20Z",
+      "finishedAt": "2026-09-18T12:57:01Z",
+      "durationMinutes": 10.68,
+      "sections": 4,
+      "cards": 24,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Session started HEAD detached; local main branch pointer was again stale (6092e47, an unrelated Email analytics commit with no common git ancestor to the real tip), the same recurring shallow-clone graft artifact seen in prior runs (confirmed by git merge-base main origin/main returning no common ancestor, exit 1), not real divergence. Ran git checkout -B main origin/main to align local main with the true tip (adce139). Working tree was already clean, nothing was lost. npm install ran clean (596 packages, 24s). Style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) confirmed empty, so this was normal forward progress after Psalms 89 (confirmed by the last entry in this log and by no existing psalmsNinety* file in lib/, plus no wiring entry past chapter 89 in lib/bibleReaderStudyNotes.ts). Fetched real KJV text for Psalms 90 (17 verses, Moses's prayer) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 90 opens with God as an eternal dwelling place who existed before the mountains and for whom a thousand years is like a day (verses 1-4), moves into the psalm's central image of human life swept away like a flood, like sleep, like grass that flourishes at dawn and withers by evening, framed by God's anger at hidden sin (verses 5-8), turns to the famous plea to number our days and gain a heart of wisdom after naming life's threescore-years-and-ten span (verses 9-12), and closes with the prayer for mercy, gladness matching the days of affliction, and the doubled request that God establish the work of our hands (verses 13-17). Chunked into 4 sections covering all 17 verses with no gaps or overlaps (1-4, 5-8, 9-12, 13-17), 24 phrase cards total (1.4 cards per verse). python3 scripts/check_bible_note_style.py lib/psalmsNinetySource.ts was clean on the first run, 0 problems across all 24 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji per card ending on the scripture emoji, has zero duplicate titles across all 24 cards, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file (the KJV verse text itself contains semicolons and colons in verses 3, 5, 9, 10, and 17, but none of those were carried into any title or note body). Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range extended from psalms chapters 1-89 to 1-90, new function applyPersonalPsalmsNinetyStudySections added and called right after applyPersonalPsalmsEightyNineStudySections() (after the broad psalmsSixtySevenThroughNinetySix range application, so the dedicated override wins). Parser check passed: importing PSALMS_NINETY_PERSONAL_SECTIONS directly returned exactly 4/4 sections and 24 total cards with no throw. npx tsc --noEmit clean with zero errors. Next forward-progress target is Psalms 91.",
+      "steps": [
+        {
+          "name": "session start, repo checked out (HEAD detached)",
+          "at": "2026-09-18T12:46:20Z"
+        },
+        {
+          "name": "environment anomaly caught and resolved: local main branch pointer stale at an unrelated commit with no common ancestor to the true tip (shallow-clone graft artifact, same pattern as prior runs, confirmed via git merge-base returning no ancestor); git checkout -B main origin/main used to align local main with the true tip",
+          "at": "2026-09-18T12:46:55Z"
+        },
+        {
+          "name": "npm install done (596 packages, clean, no errors)",
+          "at": "2026-09-18T12:47:35Z"
+        },
+        {
+          "name": "style-redo backlog confirmed empty; target chapter determined: Psalms 90 (new chapter, forward progress, first chapter after 89 with no dedicated wired-in lib file)",
+          "at": "2026-09-18T12:48:00Z"
+        },
+        {
+          "name": "existing Psalms 89 wiring pattern reviewed in lib/bibleReaderStudyNotes.ts to confirm correct insertion point",
+          "at": "2026-09-18T12:48:09Z"
+        },
+        {
+          "name": "KJV text fetched: Psalms 90 (17 verses) from raw.githubusercontent.com aruljohn/Bible-kjv",
+          "at": "2026-09-18T12:48:35Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full; reference files lib/psalmsEightyNineSource.ts and lib/genesisThirtyOneSource.ts, plus scripts/check_bible_note_style.py, reviewed for voice and mechanical rules",
+          "at": "2026-09-18T12:49:10Z"
+        },
+        {
+          "name": "source file written: lib/psalmsNinetySource.ts (4 sections, 24 phrase cards)",
+          "at": "2026-09-18T12:53:45Z"
+        },
+        {
+          "name": "style checker clean on first run (scripts/check_bible_note_style.py, 0 problems, 24 cards)",
+          "at": "2026-09-18T12:54:01Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 90, new apply function added and called after Psalms 89)",
+          "at": "2026-09-18T12:54:15Z"
+        },
+        {
+          "name": "parser check passed: PSALMS_NINETY_PERSONAL_SECTIONS returns 4 sections / 24 cards, no throw",
+          "at": "2026-09-18T12:54:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-09-18T12:55:57Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-18T12:57:01Z"
+        }
+      ]
     }
   ]
 }
