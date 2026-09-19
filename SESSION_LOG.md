@@ -4969,3 +4969,7 @@ Next up: Day 332. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-19T08:59:43Z (hourly chapter notes run)
 Chapter: Psalms 109 | Duration: 12 min | Sections: 6 | Cards: 41 | Status: pass
 Next up: Psalms 110
+
+## 2026-09-19T09:26:57Z (bible year day writer run)
+Day: 332 — Weakness and True Apostleship (2 Corinthians 10-12) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 333.
