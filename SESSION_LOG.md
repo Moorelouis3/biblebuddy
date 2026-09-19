@@ -5129,3 +5129,7 @@ Next up: Day 358
 ## 2026-09-19T22:28:02Z (bible year day writer run)
 Day: 358 — Truth, Contending, and the Risen Christ (3 John 1; Jude 1; Revelation 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only (epistle, no dialogue)
 Next up: Day 359. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-19T22:56:10Z (hourly chapter notes run)
+Chapter: Psalms 123 | Duration: 9 min | Sections: 2 | Cards: 8 | Status: pass
+Next up: Psalms 124
