@@ -5053,3 +5053,7 @@ Next up: Day 346. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-19T15:57:48Z (hourly chapter notes run)
 Chapter: Psalms 116 | Duration: 8 min | Sections: 8 | Cards: 32 | Status: pass
 Next up: Psalms 117
+
+## 2026-09-19T16:32:43Z (bible year day writer run)
+Day: 346 — Gospel-Shaped Leadership and Good Works (Titus 1-3) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 347.
