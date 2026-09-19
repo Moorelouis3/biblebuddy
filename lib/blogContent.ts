@@ -95,7 +95,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/bible-in-one-year-day-1-study-notes",
     publishedAt: "2026-09-19",
     readTime: "16 min read",
-    image: "/Day1cover.png",
+    image: "/blog-banners/bible-in-one-year-day-1-study-notes.jpg",
     bibleYearDay: 1,
     bibleYearReading: "Genesis 1-2",
     // Test article for the new Study Notes series, held for Louis's review

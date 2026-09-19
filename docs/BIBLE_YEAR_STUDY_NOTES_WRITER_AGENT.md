@@ -217,12 +217,14 @@ Add an entry at the **top** of `BLOG_ARTICLES` in `lib/blogContent.ts`:
 - `category: "Bible in One Year"`, `categorySlug: "bible-in-one-year"`
 - `publishedAt`: the Berlin date, `TZ=Europe/Berlin date +%F`
 - `readTime`: words ÷ 200
-- `image`: use the day's existing Bible in One Year cover if one exists
-  (`coverImage` on that day's entry in `lib/bibleInOneYearPlan.ts`,
-  e.g. `/Day1cover.png`, `/day2cover.png`); otherwise fall back to
-  `/genericcoverforBIOY.png`. Do not generate new artwork - Louis said he
-  will supply Study Notes specific banners later; keep the article
-  compatible with the existing hero system in the meantime.
+- `image`: Louis supplied wide Study Notes banners for Days 1 to 21 on
+  2026-09-19. Use `"/blog-banners/bible-in-one-year-day-<N>-study-notes.jpg"`
+  when that file exists - check with `ls public/blog-banners`. Past Day 21,
+  fall back to the day's Bible in One Year cover (`coverImage` on that day's
+  entry in `lib/bibleInOneYearPlan.ts`) or `/genericcoverforBIOY.png`, and
+  keep ONE line in `MARCUS_HANDOFF.md` listing the days waiting on a real
+  banner, updating that same line rather than adding a block per day. Never
+  generate artwork yourself.
 - `bibleYearDay: <N>`, `bibleYearReading: "<Reading>"`
 - `groupPost`: DO NOT SET IT, and always set `excludeFromGroupShare: true`.
   Bible in One Year Study Notes never go to the Study Group - not on Day 1,
