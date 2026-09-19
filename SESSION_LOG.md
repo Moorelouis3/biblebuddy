@@ -5097,3 +5097,7 @@ Next up: Day 353
 ## 2026-09-19T19:56:00Z (hourly chapter notes run)
 Chapter: Psalms 120 | Duration: 10 min | Sections: 4 | Cards: 11 | Status: pass
 Next up: Psalms 121
+
+## 2026-09-19T20:15:00Z (bible year day writer run)
+Day: 353 — Patient Faith and Living Hope (James 5; 1 Peter 1-2) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only (epistle, no dialogue)
+Next up: Day 354
