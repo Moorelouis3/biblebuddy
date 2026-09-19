@@ -24,6 +24,20 @@ export type BlogArticle = {
     title: string;
     content: string;
   };
+  // Set only on Bible in One Year Study Notes posts (2026-09-19). Drives
+  // BibleYearNotesNav's previous/next day links and lets the reading show
+  // in the meta row. bibleYearDay is 1-365; bibleYearReading is the day's
+  // Scripture range exactly as it reads in docs/bible-in-one-year-master-plan.md
+  // (e.g. "Genesis 1-2").
+  bibleYearDay?: number;
+  bibleYearReading?: string;
+  // When true, app/api/cron/blog-group-post skips this article: it never
+  // becomes tonight's random pick for the Study Group promo. For a post
+  // still waiting on Louis's review (e.g. a new series' Day 1 test
+  // article), not being in BLOG_ARTICLES at all would also hide it from
+  // the site; this flag keeps the page live and reviewable while keeping
+  // it out of the live group. Remove the flag once Louis approves it.
+  excludeFromGroupShare?: boolean;
 };
 
 export type BlogCategory = {
@@ -63,9 +77,32 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     name: "Christian History",
     description: "Stories and turning points from the history of the Church.",
   },
+  {
+    slug: "bible-in-one-year",
+    name: "Bible in One Year",
+    description: "Day by day study notes that walk through the whole Bible in a year.",
+  },
 ];
 
 export const BLOG_ARTICLES: BlogArticle[] = [
+  {
+    slug: "bible-in-one-year-day-1-study-notes",
+    title: "Bible in One Year Day 1 Study Notes: Genesis 1-2",
+    description:
+      "Bible in One Year Day 1 Study Notes: a full walkthrough of Genesis 1-2, creation, being made in God's image, the first rest, and the garden of Eden.",
+    category: "Bible in One Year",
+    categorySlug: "bible-in-one-year",
+    canonicalPath: "/blog/bible-in-one-year-day-1-study-notes",
+    publishedAt: "2026-09-19",
+    readTime: "16 min read",
+    image: "/Day1cover.png",
+    bibleYearDay: 1,
+    bibleYearReading: "Genesis 1-2",
+    // Test article for the new Study Notes series, held for Louis's review
+    // (see docs/BIBLE_YEAR_STUDY_NOTES_WRITER_AGENT.md). Remove this flag
+    // once he approves Day 1.
+    excludeFromGroupShare: true,
+  },
   {
     slug: "genesis-13-explained",
     title: "Genesis 13 Explained: Abram, Lot, and the Land Promise Renewed",

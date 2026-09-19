@@ -348,6 +348,10 @@ async function main() {
       print(findNext(progress));
       break;
     case "claim": {
+      if (progress.paused) {
+        print({ paused: true, reason: progress.pausedReason || "This library is paused. Do not claim a chapter." });
+        break;
+      }
       // Walk past chapters that already exist (recording them) until a real one is found.
       let next = findNext(progress);
       while (next?.existing) {
