@@ -4,8 +4,8 @@
   "startedAt": "2026-09-19",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-19: Louis reviewed Day 1 live (narration rewrite, banner, video, promos) and said to start the recurring job at 3 days a day.",
-  "updatedAt": "2026-09-19T13:39:37.272Z",
-  "nextDay": "Day 3",
+  "updatedAt": "2026-09-19T13:40:00.790Z",
+  "nextDay": "Day 4",
   "days": {
     "1": {
       "status": "published",
@@ -18,6 +18,11 @@
       "status": "committed",
       "startedAt": "2026-09-19T12:23:34.029Z",
       "committedAt": "2026-09-19T12:28:39.740Z"
+    },
+    "3": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-09-19T13:40:00.790Z"
     }
   }
 }
