@@ -4961,3 +4961,7 @@ Next up: Psalms 109
 ## 2026-09-19T08:15:00Z (bible year day writer run)
 Day: 330 — Treasure in Jars of Clay (2 Corinthians 4-6) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 331.
+
+## 2026-09-19T08:25:00Z (bible year day writer run)
+Day: 331 — Repentance and Generosity (2 Corinthians 7-9) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 332. Stopping here — two-day budget cap for this run reached.
