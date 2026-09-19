@@ -206,11 +206,22 @@ Add an entry at the **top** of `BLOG_ARTICLES` in `lib/blogContent.ts`:
   will supply Study Notes specific banners later; keep the article
   compatible with the existing hero system in the meantime.
 - `bibleYearDay: <N>`, `bibleYearReading: "<Reading>"`
-- `groupPost`: optional, same rules as
-  `docs/BLOG_WRITER_AGENT.md` Step 4, EXCEPT while a day is still awaiting
-  Louis's review (Day 1 only, as of 2026-09-19) also set
-  `excludeFromGroupShare: true` so the nightly group cron cannot pick it up
-  before he has seen it. Remove that flag once he approves.
+- `groupPost`: DO NOT SET IT, and always set `excludeFromGroupShare: true`.
+  Bible in One Year Study Notes never go to the Study Group - not on Day 1,
+  not after Louis approves Day 1, not ever. Louis, 2026-09-19: "i dont want
+  any of these day post going to the damn group... we will be making 3 a day
+  i dont want to flood the group". At 3 posts a day for 365 days this series
+  would bury every other thing in the group, which is exactly what he does
+  not want.
+  The nightly group cron
+  (`app/api/cron/blog-group-post/route.ts`) independently skips anything
+  with a `bibleYearDay` or the "Bible in One Year" category, so a forgotten
+  flag cannot cause a flood - but set the flag anyway. Two locks, because
+  this one is not recoverable: a post shared into the group is shared once
+  and forever in `blog_article_shares`, and deleting the group post does not
+  undo it.
+  If Louis ever asks for a single specific day to be shared, he will say so
+  explicitly for that day. Never infer it.
 
 Metadata, canonical URL, Open Graph, article schema, breadcrumbs, the
 sitemap entry, and previous/next day navigation all come from this entry

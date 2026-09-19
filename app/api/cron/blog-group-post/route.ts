@@ -118,7 +118,18 @@ export async function GET(request: NextRequest) {
   // which is what let the deleted 2026-09-01 batch threaten a re-share
   // under the old link_url-only dedupe. Articles without a hand-written
   // teaser share with a simple description-based one.
-  const pendingArticles = BLOG_ARTICLES.filter((article) => !article.excludeFromGroupShare);
+  // Bible in One Year Study Notes NEVER go to the group (Louis, 2026-09-19,
+  // emphatically): that series runs at 3 posts a day for 365 days and would
+  // flood the group. This is a category-level block on purpose - it does not
+  // depend on the writing agent remembering to set excludeFromGroupShare on
+  // every one of 365 entries, because one forgotten flag is a flood. Any
+  // article carrying a bibleYearDay is part of that series and is skipped.
+  const pendingArticles = BLOG_ARTICLES.filter(
+    (article) =>
+      !article.excludeFromGroupShare &&
+      article.bibleYearDay === undefined &&
+      article.category !== "Bible in One Year",
+  );
 
   const { data: group, error: groupError } = await supabaseAdmin
     .from("study_groups")
