@@ -4941,3 +4941,7 @@ Next up: Day 328. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-19T06:48:12Z (chapter blog writer run)
 Chapter: Genesis 13 Explained | Words: 2,806 | Quality gate: ok:true (0 problems, 0 warnings) | tsc/eslint: clean | Status: committed, pushed without [deploy].
 Next up: Genesis 14. Note: Genesis 12 stayed in "committed" status for ~2 hours before this run's verify-live check (404) — not yet past the 24h threshold, no Marcus flag needed.
+
+## 2026-09-19T07:01:37Z (hourly chapter notes run)
+Chapter: Psalms 107 | Duration: 12 min | Sections: 9 | Cards: 45 | Status: pass
+Next up: Psalms 108

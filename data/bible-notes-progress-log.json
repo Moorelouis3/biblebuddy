@@ -37183,6 +37183,67 @@
           "at": "2026-09-19T05:58:30Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 107,
+      "startedAt": "2026-09-19T06:49:10Z",
+      "finishedAt": "2026-09-19T07:01:37Z",
+      "durationMinutes": 12,
+      "sections": 9,
+      "cards": 45,
+      "verses": 43,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Session started on a detached HEAD 30+ commits ahead of stale local/origin main (the same recurring environment bug logged repeatedly in MARCUS_HANDOFF.md) -- recovered safely (backup branch backup-recovered-20260919-064712 pushed first, confirmed 0 drift against origin/main once a concurrent session had already landed the same tip) before starting the actual chapter work. npm install run fresh (no node_modules in this clone). Priority queue and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) both confirmed empty, so normal forward progress after Psalms 106. Fetched real KJV text for Psalms 107 (43 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. This psalm is built from four parallel rescue stories sharing two repeating refrains (\"then they cried unto the LORD in their trouble\" and \"oh that men would praise the LORD for his goodness\"): verses 1-3 open with thanks and the redeemed gathered from every direction, 4-9 tell the first story of wanderers lost in the wilderness, 10-16 tell the second story of prisoners bound in darkness and iron for their own rebellion, 17-22 tell the third story of fools brought near death by their own folly and healed by God's word, 23-27 tell the fourth story of sailors caught in a storm (including the verse that gave English the idiom \"at wit's end\"), 28-32 cover the storm made calm and the desired haven, 33-38 shift to God's sovereign power reshaping the land itself (rivers to wilderness and back, answering the city the wanderers lacked in verse 4), 39-41 cover the cycle of princes brought low and the poor lifted high, and 42-43 close with the wisdom invitation to observe these things and understand the LORD's lovingkindness (the same word translated mercy in verse 1).",
+      "steps": [
+        {
+          "name": "git detached HEAD recovered (backup branch pushed, 0 drift confirmed against origin/main)",
+          "at": "2026-09-19T06:47:12Z"
+        },
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T06:48:13Z"
+        },
+        {
+          "name": "priority queue and style-redo backlog confirmed empty (normal forward progress)",
+          "at": "2026-09-19T06:48:13Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 107",
+          "at": "2026-09-19T06:49:10Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn/Bible-kjv mirror)",
+          "at": "2026-09-19T06:49:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-09-19T06:57:38Z"
+        },
+        {
+          "name": "source file written (lib/psalmsOneHundredSevenSource.ts)",
+          "at": "2026-09-19T06:58:59Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 45 cards, no problems)",
+          "at": "2026-09-19T06:58:59Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-09-19T06:59:14Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 45 cards, matches design)",
+          "at": "2026-09-19T06:59:31Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-19T07:00:58Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-19T07:01:37Z"
+        }
+      ]
     }
   ]
 }
