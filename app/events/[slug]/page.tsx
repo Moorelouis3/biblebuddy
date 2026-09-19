@@ -84,11 +84,24 @@ export default function CommunityEventPage() {
       setMembersLoading(true);
       setMembersFailed(false);
       try {
+        // Logged out readers (everyone arriving from the newsletter) cannot
+        // read community_event_members, so the count comes from the public
+        // API instead and the member photos below simply stay empty for them.
         const { count } = await supabase
           .from("community_event_members")
           .select("*", { count: "exact", head: true })
           .eq("event_slug", event.slug);
-        if (typeof count === "number") setTotalMembers(count);
+        if (typeof count === "number" && count > 0) {
+          setTotalMembers(count);
+        } else {
+          try {
+            const res = await fetch(`/api/community-events/${event.slug}/count`, { cache: "no-store" });
+            const payload = (await res.json()) as { count?: number };
+            if (typeof payload.count === "number") setTotalMembers(payload.count);
+          } catch {
+            /* the page still works without the count */
+          }
+        }
 
         const { data: memberRows, error } = await supabase
           .from("community_event_members")
@@ -359,7 +372,9 @@ export default function CommunityEventPage() {
           </div>
         ) : participants.length === 0 ? (
           <p className="mt-4 text-center text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
-            Be the first Bible Buddy to join the journey.
+            {totalMembers && totalMembers > 0
+              ? "Sign in to see who is studying with you."
+              : "Be the first Bible Buddy to join the journey."}
           </p>
         ) : (
           <>
