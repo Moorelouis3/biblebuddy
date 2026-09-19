@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-12-explained",
+    title: "Genesis 12 Explained: The Call of Abram and the Promise That Changes Everything",
+    description:
+      "Genesis 12 explained verse by verse: God's call to Abram, the Abrahamic covenant, and the famine in Egypt that nearly cost him his wife.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-12-explained",
+    publishedAt: "2026-09-19",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-12-explained.jpg",
+    groupPost: {
+      title: "Genesis 12 Explained 📖",
+      content:
+        "One man. One command. One promise big enough for the whole world.\nGod calls Abram, and everything narrows to this one family.\n\n📌 The promise never depended on Abram getting it right.\n\n📖 God calls a 75 year old man to leave everything he knows.\n📖 Abram builds altars in a land he does not yet own.\n📖 Fear leads him to a half truth that nearly costs him Sarai.\n\nNew article on:\n🟢 what the **Abrahamic covenant** actually promises\n🟢 why Abram lied about **Sarai** being his sister\n🟢 how this chapter points forward to **Jesus**\n\nWhat part of Abram's story stood out to you? 🙏",
+    },
+  },
+  {
     slug: "genesis-11-explained",
     title: "Genesis 11 Explained: The Tower of Babel and the Road to Abram",
     description:
