@@ -4925,3 +4925,7 @@ Next up: Day 325.
 ## 2026-09-19T05:29:52Z (bible year day writer run)
 Day: 325 — Purity, Judgment, and the Body (1 Corinthians 5-6) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 326. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-19T05:59:21Z (hourly chapter notes run)
+Chapter: Psalms 106 | Duration: 13 min | Sections: 13 | Cards: 52 | Status: pass
+Next up: Psalms 107

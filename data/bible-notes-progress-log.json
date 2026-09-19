@@ -37130,6 +37130,59 @@
           "at": "2026-09-19T05:01:00Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 106,
+      "startedAt": "2026-09-19T05:46:20Z",
+      "finishedAt": "2026-09-19T05:59:21Z",
+      "durationMinutes": 13.0,
+      "sections": 13,
+      "cards": 52,
+      "verses": 48,
+      "notes": "New chapter, normal forward progress after Psalms 105. Priority queue and style-redo backlog both confirmed empty. This is the companion historical psalm to Psalms 105, told from the angle of Israel's repeated failure rather than God's faithfulness. Verses 1-3 open with praise and the hard standard of righteousness at all times. Verses 4-5 insert a personal plea to be included in the nation's blessing. Verses 6-12 confess the fear at the Red Sea followed by God's rescue and Israel's brief belief. Verses 13-15 cover the quick forgetting and the craving for meat that brought leanness. Verses 16-18 recount Korah's envy and the earth swallowing Dathan and Abiram. Verses 19-23 retell the golden calf at Horeb and Moses standing in the breach. Verses 24-27 cover despising the promised land after the spies' report. Verses 28-31 retell Baalpeor and Phinehas stopping the plague. Verses 32-33 cover Moses speaking unadvisedly at the waters of strife. Verses 34-39 describe failing to drive out the nations and adopting their idols and child sacrifice. Verses 40-43 name the repeating cycle of anger, oppression, and deliverance from Judges. Verses 44-46 turn to God remembering his covenant and softening the hearts of their captors. Verses 47-48 close with a prayer to be gathered from exile and the doxology that ends Book Four of the Psalms. Style checker found 2 problems on the first pass (two over length closing bullets), fixed both, second run clean across all 52 cards. Parser check passed exactly: 13 sections, verse ranges 1-3/4-5/6-12/13-15/16-18/19-23/24-27/28-31/32-33/34-39/40-43/44-46/47-48 with no gaps, 52 total cards. tsc --noEmit -p . clean. Wired into lib/bibleReaderStudyNotes.ts, preserveExactPhraseBodies range extended to chapter 106.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T05:47:10Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 106 (new chapter, normal forward progress; priority queue and style-redo list both confirmed empty)",
+          "at": "2026-09-19T05:47:15Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 106 (48 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-09-19T05:47:20Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full, reference files lib/genesisThirtyOneSource.ts and lib/psalmsOneHundredFiveSource.ts reviewed",
+          "at": "2026-09-19T05:50:00Z"
+        },
+        {
+          "name": "source file written (lib/psalmsOneHundredSixSource.ts, 13 sections, 52 cards)",
+          "at": "2026-09-19T05:54:16Z"
+        },
+        {
+          "name": "style checker clean on lib/psalmsOneHundredSixSource.ts after fixing 2 flagged problems (2 over length closing bullets)",
+          "at": "2026-09-19T05:54:16Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 106, replaceStudySectionsForBookRange call added after Psalms 105)",
+          "at": "2026-09-19T05:54:34Z"
+        },
+        {
+          "name": "parser check passed: 13 sections, 52 cards, matches design, no gaps",
+          "at": "2026-09-19T05:55:10Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-19T05:57:30Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-19T05:58:30Z"
+        }
+      ]
     }
   ]
 }
