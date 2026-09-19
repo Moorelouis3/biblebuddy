@@ -36865,6 +36865,59 @@
           "at": "2026-09-18T23:54:08Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 101,
+      "startedAt": "2026-09-19T00:46:15Z",
+      "finishedAt": "2026-09-19T00:52:56Z",
+      "durationMinutes": 6.7,
+      "sections": 3,
+      "cards": 16,
+      "verses": 8,
+      "notes": "New chapter, normal forward progress after Psalms 100. Priority queue and style-redo backlog both confirmed empty (remaining=[] in both). David's vow of personal and household integrity as king: mercy and judgment sung together, walking wisely in a perfect way inside his own house, refusing wicked things before his eyes (1-3); keeping a froward heart, a secret slanderer, and a proud look at a distance (4-5); choosing the faithful to serve him, barring deceit and lies from his house, and vowing to destroy the wicked every morning and cut them off from the city of the LORD (6-8). Style checker clean first pass. Parser check and tsc --noEmit both clean. Wired into lib/bibleReaderStudyNotes.ts, preserveExactPhraseBodies extended to chapter 101.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T00:46:36Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 101 (new chapter, forward progress, priority queue and redo list both empty)",
+          "at": "2026-09-19T00:46:52Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 101 (8 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-09-19T00:46:58Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-09-19T00:47:01Z"
+        },
+        {
+          "name": "source file written (lib/psalmsOneHundredOneSource.ts, 3 sections, 16 cards)",
+          "at": "2026-09-19T00:50:35Z"
+        },
+        {
+          "name": "style checker clean on lib/psalmsOneHundredOneSource.ts",
+          "at": "2026-09-19T00:50:41Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 101, replaceStudySectionsForBookRange call added after Psalms 100)",
+          "at": "2026-09-19T00:50:55Z"
+        },
+        {
+          "name": "parser check passed: 3 sections, 16 cards, matches design",
+          "at": "2026-09-19T00:51:01Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-19T00:52:37Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-19T00:52:56Z"
+        }
+      ]
     }
   ]
 }
