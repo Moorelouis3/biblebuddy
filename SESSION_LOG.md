@@ -5081,3 +5081,7 @@ Next up: Psalms 119
 ## 2026-09-19T18:27:34Z (bible year day writer run)
 Day: 350 — Once-for-All Sacrifice and Faith (Hebrews 9-11) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 351.
+
+## 2026-09-19T18:35:00Z (bible year day writer run)
+Day: 351 — Endurance and Living Faith (Hebrews 12-13; James 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 352. Stopping here — two-day budget cap for this run reached.
