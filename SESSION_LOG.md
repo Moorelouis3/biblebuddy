@@ -4933,3 +4933,7 @@ Next up: Psalms 107
 ## 2026-09-19T06:27:10Z (bible year day writer run)
 Day: 326 — Marriage, Freedom, and Warning (1 Corinthians 7-10) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 327.
+
+## 2026-09-19T06:28:46Z (bible year day writer run)
+Day: 327 — Worship, Gifts, and Love (1 Corinthians 11-13) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 328. Stopping here — two-day budget cap for this run reached.
