@@ -86,6 +86,21 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "bible-in-one-year-day-2-study-notes",
+    title: "Bible in One Year Day 2 Study Notes: Genesis 3-4",
+    description:
+      "Bible in One Year Day 2 Study Notes: a full walkthrough of Genesis 3-4, the fall of man, the first promise of a Savior, and the first murder.",
+    category: "Bible in One Year",
+    categorySlug: "bible-in-one-year",
+    canonicalPath: "/blog/bible-in-one-year-day-2-study-notes",
+    publishedAt: "2026-09-19",
+    readTime: "13 min read",
+    image: "/blog-banners/bible-in-one-year-day-2-study-notes.jpg",
+    bibleYearDay: 2,
+    bibleYearReading: "Genesis 3-4",
+    excludeFromGroupShare: true,
+  },
+  {
     slug: "bible-in-one-year-day-1-study-notes",
     title: "Bible in One Year Day 1 Study Notes: Genesis 1-2",
     description:
