@@ -890,7 +890,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       // A community event page runs its own sign-up (2026-09-19): someone who
       // taps Join there gets a session mid-flow, and sending them to /start at
       // that moment threw away the join they were half way through.
-      if (pathname === "/start" || pathname?.startsWith("/events/")) {
+      // The blog is content, not the app: a half finished account opening a
+      // post should read the post, not get pulled into the chooser.
+      if (pathname === "/start" || pathname?.startsWith("/events/") || pathname?.startsWith("/blog")) {
         setShowFirstLoginOnboarding(false);
         return;
       }

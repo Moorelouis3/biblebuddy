@@ -53,6 +53,21 @@ export default function BibleInOneYearDayOneStudyNotesPage() {
               listened to today&apos;s teaching already, this is the same walk in writing. If you
               are reading first, this will carry you through it.
             </p>
+            <p>Here is what Day 1 puts in front of you.</p>
+          </div>
+          <ul className="mt-4 space-y-3 text-lg leading-8 text-slate-700">
+            <li>📖 Genesis 1, the six days, told as a pattern rather than a list</li>
+            <li>🌬️ Genesis 2, the same creation from close up: dust, breath, a garden, a name</li>
+            <li>❓ Why the account seems to happen twice, and why that is not a mistake</li>
+            <li>🕊️ Why God rests when He cannot get tired</li>
+            <li>💙 What being made in God&apos;s image actually says about you</li>
+          </ul>
+          <div className="mt-5 space-y-5 text-lg leading-8 text-slate-700">
+            <p>
+              📌 <strong>Everything the rest of the Bible says assumes what these two chapters
+              settle first: God is good, the world He made is good, and you were made on
+              purpose.</strong>
+            </p>
           </div>
         </>
       }
@@ -93,6 +108,13 @@ export default function BibleInOneYearDayOneStudyNotesPage() {
             to make out. The Bible starts here for a reason. Darkness is not too much for God.
             Confusion is not stronger than His voice.
           </p>
+          <p>
+            One more thing before we move on, because it shapes the whole chapter. Watch the rhythm
+            in these verses: God speaks, it happens, God names it, God calls it good, evening and
+            morning. Six times. Once you see that pattern you can read Genesis 1 the way it is
+            written, as ordered creation rather than a pile of facts, and the breaks in the pattern
+            start to stand out. Day six breaks it. Day seven breaks it completely.
+          </p>
         </div>
       </section>
 
@@ -117,6 +139,23 @@ export default function BibleInOneYearDayOneStudyNotesPage() {
             And that first growing thing is a seed. Most of what God grows starts smaller than we
             expect it to. A seed is the easiest thing in the world to overlook, and inside it is
             next year&apos;s fruit and the generation after that.
+          </p>
+          <p>
+            There is an old way of reading these six days that helps here. The first three days
+            make spaces that are empty: light and dark, sky and sea, dry land. The next three days
+            fill those same spaces in the same order: sun and moon in the light, birds and fish in
+            sky and sea, animals and people on the land. Day one is filled by day four, day two by
+            day five, day three by day six.
+          </p>
+          <p>
+            📌 <strong>Genesis 1 is not a scramble. It is a house being built and then furnished,
+            room by room.</strong>
+          </p>
+          <p>
+            That matters for how you read the argument people have about these days. Whatever you
+            conclude about their length, the chapter is clearly arranged to show order and purpose,
+            not to be read like a lab report. Hold your view honestly, and hold it lightly enough to
+            keep reading.
           </p>
         </div>
       </section>
@@ -178,6 +217,23 @@ export default function BibleInOneYearDayOneStudyNotesPage() {
             mean use it up. It means look after it. Humanity is put here to represent God&apos;s
             care inside God&apos;s world, the way a good gardener represents the one who planted it.
           </p>
+          <p>
+            It is worth sitting with how unusual that was. The people who first heard Genesis lived
+            among nations where the king was the image of the god, the one man who carried the
+            divine likeness. Genesis hands that status to everybody. The farmer, the servant, the
+            mother, the child.
+          </p>
+          <p>
+            📌 <strong>Whatever the world decides you are worth, chapter one has already ruled on
+            it, and it ruled before you were born.</strong>
+          </p>
+          <p>
+            And notice how God speaks here. Everywhere else in the chapter it is &quot;let there
+            be.&quot; Here it is &quot;let us make man in our image.&quot; The pattern breaks for
+            you. Christians have long read that &quot;us&quot; as the earliest hint of God as
+            Father, Son and Spirit, and even if you set that question aside, the change of tone is
+            impossible to miss. Making people is not the same kind of act as making seas.
+          </p>
           <p>Then the chapter ends with God looking over all of it.</p>
           <VerseQuote
             text="And God saw every thing that he had made, and, behold, it was very good. And the evening and the morning were the sixth day."
@@ -216,6 +272,16 @@ export default function BibleInOneYearDayOneStudyNotesPage() {
             take that further, <ArticleLink href="/blog/how-to-spend-1-hour-with-god">an hour with God</ArticleLink>{" "}
             is a good place to start.
           </p>
+          <p>
+            There is one more detail people miss here. Every other day in chapter 1 closes with
+            &quot;and the evening and the morning were the third day,&quot; and so on. The seventh
+            day has no such line. The account leaves that day open.
+          </p>
+          <p>
+            Also notice what the man wakes up into. Human beings arrive on day six, and their first
+            full day is God&apos;s day of rest. 📌 <strong>People did not start with work and earn
+            a rest. They started in rest, and worked out of it.</strong>
+          </p>
         </div>
       </section>
 
@@ -252,6 +318,18 @@ export default function BibleInOneYearDayOneStudyNotesPage() {
             provision. Before there is any test, there is a home. Eden is beauty, safety and
             plenty, handed over before anything is asked.
           </p>
+          <p>
+            Two trees get named in the middle of that garden: the tree of life, and the tree of the
+            knowledge of good and evil. Remember both. The first one comes back at the very end of
+            the Bible, in the last chapter of Revelation, standing in the city of God with its
+            leaves for the healing of the nations. The story closes near the tree it opened beside.
+          </p>
+          <p>
+            Something else changes in chapter 2 that is easy to read straight past. Chapter 1 calls
+            Him God. From Genesis 2:4 on, He is the LORD God, the personal name. The God who spoke
+            galaxies into place in chapter 1 is the same God kneeling in the dirt in chapter 2, and
+            the writer wants you to feel the difference in distance.
+          </p>
         </div>
       </section>
 
@@ -285,6 +363,12 @@ export default function BibleInOneYearDayOneStudyNotesPage() {
           <p>
             Tomorrow that question gets answered, and not the way anyone wants. You can read where
             it goes in <ArticleLink href="/blog/genesis-3-explained">Genesis 3 explained</ArticleLink>.
+          </p>
+          <p>
+            The rivers in this section get named too: Pison, Gihon, Hiddekel and Euphrates. Two of
+            those last names are still on maps today, which is part of why Eden reads like a place
+            and not a fairy tale. If that detail interests you, there is a whole study on{" "}
+            <ArticleLink href="/blog/garden-of-eden-four-rivers">the four rivers of Eden</ArticleLink>.
           </p>
         </div>
       </section>
@@ -322,6 +406,60 @@ export default function BibleInOneYearDayOneStudyNotesPage() {
           />
           <p>No hiding. No covering. No performing. Fully known and completely safe with it.</p>
           <p>Before shame entered the story, there was peace.</p>
+          <p>
+            Between those two moments sits the line Jesus quotes when people ask Him about
+            marriage: a man leaves his father and his mother, and cleaves unto his wife, and they
+            are one flesh. It is written into the story here, at the beginning, before any law is
+            given and before anything goes wrong.
+          </p>
+          <p>
+            And hold on to that last verse for tomorrow, because it is the exact thing that breaks
+            first. Not the garden. Not the work. The being unafraid in front of God and each other.
+            One chapter later they are sewing leaves together and hiding in the trees.
+          </p>
+        </div>
+      </section>
+
+      <section className="mt-14">
+        <h2 className="text-3xl font-black tracking-tight text-slate-950">
+          📅 How to actually read Day 1
+        </h2>
+        <div className="mt-6 space-y-5 text-lg leading-8 text-slate-700">
+          <p>
+            If today is your first day of reading the Bible in a year, a word about how to do this
+            so you are still here in March.
+          </p>
+          <p>
+            <strong>Read the chapters first, notes second.</strong> Genesis 1 and 2 take about
+            eight minutes. Let the text hit you before anyone explains it, including me.
+          </p>
+          <p>
+            <strong>Do not chase every question today.</strong> Day 1 raises big ones: the length
+            of the days, dinosaurs, where Cain&apos;s wife comes from, how this sits with science.
+            Write them down and keep going. Most of them get clearer once you have more of the book
+            in you, and{" "}
+            <ArticleLink href="/blog/christian-and-science">faith and science</ArticleLink> has a
+            fuller answer than I can give you in a paragraph here.
+          </p>
+          <p>
+            <strong>Pick the same time tomorrow.</strong> The people who finish a year in the Bible
+            are almost never the ones with the most time. They are the ones who made it boringly
+            predictable: same chair, same ten minutes, same cup of coffee.
+          </p>
+          <p>
+            <strong>Miss a day without quitting.</strong> You will miss days. A plan is not a
+            streak you can break, it is a road you get back on. Missing Tuesday costs you nothing
+            if you open it again on Wednesday.
+          </p>
+          <p>
+            📌 <strong>The goal was never to finish the Bible. The goal is to know God, and
+            finishing is just what happens along the way.</strong>
+          </p>
+          <p>
+            If you want a fuller method for reading well, not just often,{" "}
+            <ArticleLink href="/blog/how-to-read-the-bible">how to read the Bible</ArticleLink>{" "}
+            walks through it.
+          </p>
         </div>
       </section>
 

@@ -10,6 +10,7 @@ import BlogPostBreaker from "@/components/blog/BlogPostBreaker";
 import BlogPostBottom from "@/components/blog/BlogPostBottom";
 import BlogTopNav from "@/components/blog/BlogTopNav";
 import PromoSlot from "@/components/blog/PromoSlot";
+import BibleYearPromo from "@/components/blog/BibleYearPromo";
 import { getArticleEngagementKey, getBlogArticle } from "@/lib/blogContent";
 
 const SITE_URL = "https://www.mybiblebuddy.net";
@@ -111,7 +112,19 @@ function extractFaqPairs(children: ReactNode): Array<{ question: string; answer:
 // words, plus one right before the FAQ section. Never inserts after the
 // final content block (so nothing stacks against the end CTA), and stops
 // entirely once the FAQ starts.
-function withPromoSlots(children: ReactNode, postSlug: string): ReactNode[] {
+function withPromoSlots(
+  children: ReactNode,
+  postSlug: string,
+  bibleYear?: { day: number; reading?: string },
+): ReactNode[] {
+  // Bible in One Year Study Notes get their own promo for that day instead of
+  // the rotating generic banners (Louis, 2026-09-19).
+  const promo = (key: string, slotIndex: number) =>
+    bibleYear ? (
+      <BibleYearPromo key={key} day={bibleYear.day} reading={bibleYear.reading} postSlug={postSlug} />
+    ) : (
+      <PromoSlot key={key} postSlug={postSlug} slotIndex={slotIndex} />
+    );
   const nodes = Children.toArray(children);
   const out: ReactNode[] = [];
   let wordsSincePromo = 0;
@@ -123,9 +136,9 @@ function withPromoSlots(children: ReactNode, postSlug: string): ReactNode[] {
 
     if (isFaqSection) {
       const previous = out[out.length - 1];
-      const previousIsPromo = isValidElement(previous) && previous.type === PromoSlot;
+      const previousIsPromo = isValidElement(previous) && (previous.type === PromoSlot || previous.type === BibleYearPromo);
       if (!previousIsPromo) {
-        out.push(<PromoSlot key="promo-before-faq" postSlug={postSlug} slotIndex={slotIndex++} />);
+        out.push(promo("promo-before-faq", slotIndex++));
       }
       faqReached = true;
       out.push(node);
@@ -138,7 +151,7 @@ function withPromoSlots(children: ReactNode, postSlug: string): ReactNode[] {
     wordsSincePromo += countWords(node);
     const isLastNode = i === nodes.length - 1;
     if (wordsSincePromo >= 1000 && !isLastNode) {
-      out.push(<PromoSlot key={`promo-${i}`} postSlug={postSlug} slotIndex={slotIndex++} />);
+      out.push(promo(`promo-${i}`, slotIndex++));
       wordsSincePromo = 0;
     }
   });
@@ -328,7 +341,13 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
 
         <BlogPostBreaker articleSlug={engagementKey} path={path} title={article.title} />
 
-        {withPromoSlots(toSectionCards(anchoredChildren), article.slug)}
+        {withPromoSlots(
+          toSectionCards(anchoredChildren),
+          article.slug,
+          article.bibleYearDay
+            ? { day: article.bibleYearDay, reading: article.bibleYearReading }
+            : undefined,
+        )}
 
         {faqPairs.length >= 2 ? (
           <script
