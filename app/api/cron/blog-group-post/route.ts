@@ -118,7 +118,7 @@ export async function GET(request: NextRequest) {
   // which is what let the deleted 2026-09-01 batch threaten a re-share
   // under the old link_url-only dedupe. Articles without a hand-written
   // teaser share with a simple description-based one.
-  const pendingArticles = BLOG_ARTICLES.slice();
+  const pendingArticles = BLOG_ARTICLES.filter((article) => !article.excludeFromGroupShare);
 
   const { data: group, error: groupError } = await supabaseAdmin
     .from("study_groups")

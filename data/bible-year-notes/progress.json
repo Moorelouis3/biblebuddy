@@ -1,0 +1,16 @@
+{
+  "note": "Tracker for the Bible in One Year Study Notes blog series. Written only by scripts/bible-year-notes-queue.mjs. See docs/BIBLE_YEAR_STUDY_NOTES_WRITER_AGENT.md.",
+  "dailyTarget": 3,
+  "startedAt": "2026-09-19",
+  "paused": true,
+  "pausedReason": "Day 1 is a hand written test article, held for Louis's review per his Notion prompt (2026-09-18). Do not flip this to false, do not create the claude.ai Routine, and do not claim Day 2 until Louis has reviewed Day 1 live and said to continue.",
+  "updatedAt": "2026-09-19T09:00:00.000Z",
+  "nextDay": "Day 2",
+  "days": {
+    "1": {
+      "status": "committed",
+      "committedAt": "2026-09-19T09:00:00.000Z",
+      "note": "Written by the Claude Prompts queue runner as the required Day 1 test article. Source: lib/bibleYearDayOneSegments.ts (script) + docs/bible-in-one-year-master-plan.md (reading: Genesis 1-2). No YouTube video exists for Day 1 in the codebase (see lib/bibleYearDayYoutubeVideos.ts) so none is embedded. excludeFromGroupShare is set on its BLOG_ARTICLES entry so it is not auto-shared to the Study Group before Louis reviews it."
+    }
+  }
+}

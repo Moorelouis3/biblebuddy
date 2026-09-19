@@ -5,6 +5,7 @@ import BlogPostingSchema from "@/components/BlogPostingSchema";
 import RelatedPosts from "./RelatedPosts";
 import BlogAuthorBox from "./BlogAuthorBox";
 import ChapterNav from "./ChapterNav";
+import BibleYearNotesNav from "./BibleYearNotesNav";
 import BlogPostBreaker from "@/components/blog/BlogPostBreaker";
 import BlogPostBottom from "@/components/blog/BlogPostBottom";
 import BlogTopNav from "@/components/blog/BlogTopNav";
@@ -371,6 +372,7 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
       </article>
 
       <ChapterNav slug={article.slug} />
+      <BibleYearNotesNav slug={article.slug} />
       <BlogAuthorBox postSlug={article.slug} />
       <RelatedPosts slug={article.slug} />
 

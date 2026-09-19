@@ -2,7 +2,9 @@
   "note": "Tracker for the Bible chapter blog library. Written only by scripts/chapter-blog-queue.mjs. See docs/CHAPTER_BLOG_WRITER_AGENT.md.",
   "dailyTarget": 5,
   "startedAt": "2026-09-17",
-  "updatedAt": "2026-09-19T06:47:44.789Z",
+  "paused": true,
+  "pausedReason": "Louis, 2026-09-18 (via Notion): production priority moved to the Bible in One Year Study Notes series (3/day). This library is preserved, not deleted, and can resume later - see docs/CHAPTER_BLOG_WRITER_AGENT.md and docs/BIBLE_YEAR_STUDY_NOTES_WRITER_AGENT.md. Do not flip this to false without Louis saying so.",
+  "updatedAt": "2026-09-19T09:00:00.000Z",
   "nextChapter": "Genesis 14",
   "chapters": {
     "genesis-1-explained": {

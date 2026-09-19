@@ -1,5 +1,15 @@
 # Chapter Blog Writer Agent
 
+**PAUSED 2026-09-18.** Louis moved the production priority to the Bible in
+One Year Study Notes series (3/day, see
+`docs/BIBLE_YEAR_STUDY_NOTES_WRITER_AGENT.md`). This library is preserved
+exactly as it is, not deleted, and can resume later. If this routine fires
+while paused: run `node scripts/chapter-blog-queue.mjs claim`. It will
+print `{ "paused": true, "reason": "..." }` instead of a chapter. When you
+see that, write and commit nothing, and stop. Do not treat a paused run as
+a failure. Everything below this notice describes the routine as it runs
+once Louis un-pauses it.
+
 The scheduled agent that builds the **Bible Chapter Library**: one
 "<Book> <N> Explained" article for every chapter of the Bible, in canonical
 order, starting at Genesis 5 (Genesis 1 to 4 existed before this routine).
