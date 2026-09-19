@@ -86,6 +86,21 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "bible-in-one-year-day-3-study-notes",
+    title: "Bible in One Year Day 3 Study Notes: Genesis 5-7",
+    description:
+      "Bible in One Year Day 3 Study Notes: a full walkthrough of Genesis 5-7, the generations before the flood, Noah building the ark, and the flood beginning.",
+    category: "Bible in One Year",
+    categorySlug: "bible-in-one-year",
+    canonicalPath: "/blog/bible-in-one-year-day-3-study-notes",
+    publishedAt: "2026-09-19",
+    readTime: "13 min read",
+    image: "/blog-banners/bible-in-one-year-day-3-study-notes.jpg",
+    bibleYearDay: 3,
+    bibleYearReading: "Genesis 5-7",
+    excludeFromGroupShare: true,
+  },
+  {
     slug: "bible-in-one-year-day-2-study-notes",
     title: "Bible in One Year Day 2 Study Notes: Genesis 3-4",
     description:
