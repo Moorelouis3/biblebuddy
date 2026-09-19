@@ -38017,6 +38017,62 @@
           "at": "2026-09-19T19:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 121,
+      "startedAt": "2026-09-19T20:46:08Z",
+      "finishedAt": "2026-09-19T20:55:10Z",
+      "durationMinutes": 9,
+      "sections": 4,
+      "cards": 15,
+      "verses": 8,
+      "notes": "New chapter, normal forward progress. Second of the Songs of Ascents. Density 1.9 cards/verse. Style checker and tsc both clean on the first pass; section 13 eye check found no issues.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T20:46:08Z"
+        },
+        {
+          "name": "chapter determined",
+          "at": "2026-09-19T20:47:53Z",
+          "detail": "Psalms 121, new chapter (priority queue and redo-remaining both empty)"
+        },
+        {
+          "name": "KJV text fetched",
+          "at": "2026-09-19T20:47:59Z",
+          "detail": "8 verses from raw.githubusercontent.com/aruljohn/Bible-kjv/master/Psalms.json"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-09-19T20:48:01Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-09-19T20:51:49Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-09-19T20:51:49Z"
+        },
+        {
+          "name": "wiring done",
+          "at": "2026-09-19T20:52:10Z"
+        },
+        {
+          "name": "parser check passed",
+          "at": "2026-09-19T20:52:34Z",
+          "detail": "4 sections, 15 cards"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-19T20:54:31Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-19T20:55:10Z"
+        }
+      ]
     }
   ]
 }
