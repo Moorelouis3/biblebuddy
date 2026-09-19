@@ -4893,3 +4893,7 @@ Next up: Day 320. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-19T02:58:00Z (hourly chapter notes run)
 Chapter: Psalms 103 | Duration: 10 min | Sections: 5 | Cards: 37 | Status: pass
 Next up: Psalms 104
+
+## 2026-09-19T03:25:23Z (bible year day writer run)
+Day: 320 — New Life in the Spirit (Romans 6-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 321.
