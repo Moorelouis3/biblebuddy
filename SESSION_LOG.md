@@ -4965,3 +4965,7 @@ Next up: Day 331.
 ## 2026-09-19T08:25:00Z (bible year day writer run)
 Day: 331 — Repentance and Generosity (2 Corinthians 7-9) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 332. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-19T08:59:43Z (hourly chapter notes run)
+Chapter: Psalms 109 | Duration: 12 min | Sections: 6 | Cards: 41 | Status: pass
+Next up: Psalms 110
