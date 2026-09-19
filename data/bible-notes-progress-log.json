@@ -37077,6 +37077,59 @@
           "at": "2026-09-19T03:59:26Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 105,
+      "startedAt": "2026-09-19T04:46:20Z",
+      "finishedAt": "2026-09-19T05:00:03Z",
+      "durationMinutes": 13.7,
+      "sections": 11,
+      "cards": 78,
+      "verses": 45,
+      "notes": "New chapter, normal forward progress after Psalms 104. Priority queue and style-redo backlog both confirmed empty. This psalm is a historical hymn retelling the covenant story from Abraham through the conquest of Canaan. Verses 1-4 open with a fourfold call to praise, give thanks, sing, and seek God. Verses 5-8 command Israel to remember the everlasting covenant God made with Abraham's line. Verses 9-12 retrace that covenant through Abraham, Isaac, and Jacob and the promise of Canaan while the family was still few in number. Verses 13-15 recall God protecting the wandering patriarchs from kings like Pharaoh and Abimelech. Verses 16-22 retell Joseph's story, the famine, his enslavement and imprisonment, and his sudden exaltation over Egypt. Verses 23-27 cover Israel's growth in Egypt, Pharaoh's turn to oppression, and the sending of Moses and Aaron. Verses 28-36 list the ten plagues (out of their original Exodus order, opening with darkness). Verses 37-41 cover the exodus itself, the wealth carried out, the cloud and fire, quail and manna, and water from the rock. Verses 42-45 close by tying the whole story back to the promise made to Abraham and the purpose of it all, obedience, ending on the same Hallelujah that opened the psalm. Style checker was clean after three small fixes (one banned filler word, two over length bullets). Parser check initially surfaced a real problem: a 9 verse plagues section (28-36) exceeded the global enforceStudySectionVerseLimit(8) split threshold elsewhere in lib/bibleReaderStudyNotes.ts, which duplicates a section's full card list into every sub part rather than dividing them, an existing generic behavior in the shared renderer, not specific to this chapter. Fixed by splitting that section at the natural break between the hail plague and the vines and fig trees line into two sections of 5 and 4 verses (28-32 and 33-36), keeping every section at or under 8 verses. Final parser check: 11 sections, 78 cards, 1.73 cards per verse, no duplicated or skipped verses. tsc --noEmit -p . clean. Wired into lib/bibleReaderStudyNotes.ts, preserveExactPhraseBodies range extended to chapter 105.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T04:46:20Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 105 (new chapter, forward progress; priority queue and style-redo list both confirmed empty)",
+          "at": "2026-09-19T04:47:24Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 105 (45 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-09-19T04:47:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full, reference files lib/genesisThirtyOneSource.ts and lib/psalmsOneHundredFourSource.ts reviewed",
+          "at": "2026-09-19T04:53:00Z"
+        },
+        {
+          "name": "source file written (lib/psalmsOneHundredFiveSource.ts, 10 draft sections, 78 cards)",
+          "at": "2026-09-19T04:56:00Z"
+        },
+        {
+          "name": "style checker clean on lib/psalmsOneHundredFiveSource.ts after fixing 3 flagged problems (1 banned filler word, 2 over length bullets)",
+          "at": "2026-09-19T04:57:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 105, replaceStudySectionsForBookRange call added after Psalms 104)",
+          "at": "2026-09-19T04:57:45Z"
+        },
+        {
+          "name": "parser check passed after splitting the 9 verse plagues section into two 8-and-under sections: 11 sections, 78 cards, matches design",
+          "at": "2026-09-19T04:58:46Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-19T05:00:03Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-19T05:01:00Z"
+        }
+      ]
     }
   ]
 }
