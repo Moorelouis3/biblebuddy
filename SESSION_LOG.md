@@ -5065,3 +5065,7 @@ Next up: Day 348. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-19T16:54:56Z (hourly chapter notes run)
 Chapter: Psalms 117 | Duration: 8 min | Sections: 1 | Cards: 5 | Status: pass
 Next up: Psalms 118
+
+## 2026-09-19T17:27:28Z (bible year day writer run)
+Day: 348 — Jesus Greater Than Moses and Priesthood (Hebrews 3-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 349.

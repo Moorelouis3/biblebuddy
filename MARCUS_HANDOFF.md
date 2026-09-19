@@ -307,20 +307,6 @@ states plainly that Scripture does not give a complete, certain answer and
 that claiming full certainty either way goes beyond the text. Flagging per
 the format spec's doctrinal-sensitivity rule so Louis can read it himself.
 
-## Bible in One Year days waiting on local audio render
-Scripts through Day 321 are written and pushed, but none of them have been
-rendered — this environment has no OPENAI_API_KEY or Supabase service key.
-Run `npx tsx scripts/render-pending-bible-year-days.ts` on a machine that
-has those keys; it auto-detects every day with a script but no current
-audio and renders/uploads them in one batch. This line will be updated as
-the day writer keeps going rather than getting a new entry per day.
-Also: Louis flagged Day 65's rendered audio as sounding very short. The
-Day 65 script itself is normal length (4 chapters, 6 blocks, ~7 min of
-teaching/opening/closing text, in line with other 4-chapter days), so this
-can't be checked from the day-writer environment (no keys to inspect the
-actual stored file) — worth a listen/re-render check on the machine that
-has the keys.
-
 ## Urgent: origin/main was force pushed mid run today, replacing the whole shared branch history
 This 2026-09-03 hourly chapter run started on a detached HEAD (`333e1e1`)
 that had no common ancestor with `origin/main` (`ebdd3da`, the "Esther 5"
@@ -497,7 +483,7 @@ recovery entries here.
 Same recurring family logged repeatedly above, another real-unpushed-work instance, largest yet: session started on a detached HEAD 30 commits ahead of both local and origin `main` (stuck at "Bible in One Year Day 307 / John 16-18," `9f6da92`), including Psalms 97-103 notes, Bible in One Year Days 308-321, the Genesis 11 redo, and prior recovery/logging commits. Recovered the established safe way: backed the tip up to `backup-recovered-20260919-034618` and pushed it first, then attempted a fast-forward merge into local `main`. By the time of the merge, `origin/main` had already advanced to match the detached tip exactly (`git fetch` showed `9f6da92..68ab366`) — a concurrent session apparently hit and fixed the identical state moments earlier. No data lost either way; confirmed local `main` and `origin/main` match exactly (0 drift) before continuing. Not re-flagging the root cause again since every entry above already has — just tracking that this is now happening essentially every single run, back to back, including concurrently across sessions.
 
 ## Bible in One Year audio: waiting on local render (day writer agent)
-Days 2 through 347 have scripts wired into DAY_SCRIPTS but this agent's environment has no OPENAI_API_KEY or Supabase service key, so none of it has been rendered/uploaded from here. Whoever has the keys: run `npx tsx scripts/render-pending-bible-year-days.ts` to catch up whatever hasn't been rendered yet. This single entry gets updated (not appended to) as more days are written.
+Days 2 through 348 have scripts wired into DAY_SCRIPTS but this agent's environment has no OPENAI_API_KEY or Supabase service key, so none of it has been rendered/uploaded from here. Whoever has the keys: run `npx tsx scripts/render-pending-bible-year-days.ts` to catch up whatever hasn't been rendered yet. This single entry gets updated (not appended to) as more days are written. Also carried over from an older duplicate entry: Louis flagged Day 65's rendered audio as sounding very short. The Day 65 script itself is normal length (4 chapters, 6 blocks, in line with other 4-chapter days), so this can't be checked from this environment (no keys to inspect the actual stored file) — worth a listen/re-render check on the machine that has the keys.
 
 ## Bible in One Year plan: 1 Corinthians 7 was missing from the schedule, fixed
 Found while writing Day 326: `lib/bibleInOneYearPlan.ts`'s schedule table had a stray duplicate pair of lines for days 324 and 325 (an old, inconsistent re-entry sitting right after the correct ones — the duplicate day 325 line even claimed "1 Corinthians 5-7" while the actual shipped Day 325 script only covers 5-6). Because of that duplicate, 1 Corinthians 7 was never assigned to any day at all — day 325 stopped at chapter 6 and day 326 picked up at chapter 8. Fixed by deleting the two duplicate lines and widening Day 326 from "1 Corinthians 8-10" to "1 Corinthians 7-10" (4 chapters, within the plan's normal range — 107 other days already run 4 chapters), so chapter 7 is covered and every day number after 326 is untouched. Day 325's already-shipped script was left alone per the "never touch a day that already has a script" rule.
