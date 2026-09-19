@@ -435,9 +435,7 @@ const ADDITIONAL_BIBLE_YEAR_SCHEDULE_RAW = `
 323 | Romans 15-16; 1 Corinthians 1 | Unity, Mission, and the Cross
 324 | 1 Corinthians 2-4 | Spirit, Foundation, and Stewardship
 325 | 1 Corinthians 5-6 | Purity, Judgment, and the Body
-324 | 1 Corinthians 2-4 | Wisdom, Spirit, and Servants
-325 | 1 Corinthians 5-7 | Holiness, Body, and Marriage
-326 | 1 Corinthians 8-10 | Freedom, Love, and Warning
+326 | 1 Corinthians 7-10 | Marriage, Freedom, and Warning
 327 | 1 Corinthians 11-13 | Worship, Gifts, and Love
 328 | 1 Corinthians 14-16 | Order, Resurrection, and Hope
 329 | 2 Corinthians 1-3 | Comfort and New Covenant Ministry
