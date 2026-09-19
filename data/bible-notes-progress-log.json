@@ -38073,6 +38073,63 @@
           "at": "2026-09-19T20:55:10Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 122,
+      "startedAt": "2026-09-19T21:47:29Z",
+      "finishedAt": "2026-09-19T21:57:26Z",
+      "durationMinutes": 10,
+      "sections": 4,
+      "cards": 13,
+      "verses": 9,
+      "notes": "New chapter, normal forward progress. Third of the Songs of Ascents (Psalms 120-134), the pilgrim's joy at the invitation to go up to Jerusalem, the city's compact unity and its role as seat of justice tied to the house of David, the Hebrew wordplay between Jerusalem and shalom (peace), and the closing personal vow that echoes the house of the LORD from verse one as an inclusio. Density about 1.44 cards/verse. Style checker clean on first pass; manual section 13 eye check found three cards whose opening or closing line was too descriptive rather than one of the four approved moves or landing on meaning, rewrote those three (the 'they' identification move on card one, the tribes/nation close on card five, and the shalom wordplay close on card eight, plus reordered card ten to open with the point instead of a background line), re-verified clean. Parser check passed via getBibleReaderStudySections('psalms', 122) (4/4 sections, verse ranges 1-2/3-5/6-7/8-9 with no gaps, 13 total cards). npx tsc --noEmit clean with zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T21:47:59Z"
+        },
+        {
+          "name": "target chapter determined",
+          "at": "2026-09-19T21:49:00Z",
+          "detail": "Psalms 122, new chapter (style-redo backlog empty, priority queue empty, last wired Psalms chapter was 121)"
+        },
+        {
+          "name": "KJV text fetched",
+          "at": "2026-09-19T21:49:42Z",
+          "detail": "9 verses from raw.githubusercontent.com/aruljohn/Bible-kjv/master/Psalms.json"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-09-19T21:50:00Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-09-19T21:52:35Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-09-19T21:52:40Z"
+        },
+        {
+          "name": "wired into reader",
+          "at": "2026-09-19T21:53:30Z",
+          "detail": "import added, replaceStudySectionsForBookRange call added, preserveExactPhraseBodies psalms range extended from 121 to 122"
+        },
+        {
+          "name": "parser check passed",
+          "at": "2026-09-19T21:54:20Z",
+          "detail": "4 sections, 13 cards, no throw"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-19T21:55:20Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-19T21:57:26Z"
+        }
+      ]
     }
   ]
 }
