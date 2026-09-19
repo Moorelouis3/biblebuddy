@@ -5077,3 +5077,7 @@ Next up: Day 350. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-19T17:57:09Z (hourly chapter notes run)
 Chapter: Psalms 118 | Duration: 12 min | Sections: 12 | Cards: 29 | Status: pass
 Next up: Psalms 119
+
+## 2026-09-19T18:27:34Z (bible year day writer run)
+Day: 350 — Once-for-All Sacrifice and Faith (Hebrews 9-11) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 351.
