@@ -4957,3 +4957,7 @@ Next up: Day 330. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-19T07:53:09Z (hourly chapter notes run)
 Chapter: Psalms 108 | Duration: 6 min | Sections: 4 | Cards: 28 | Status: pass
 Next up: Psalms 109
+
+## 2026-09-19T08:15:00Z (bible year day writer run)
+Day: 330 — Treasure in Jars of Clay (2 Corinthians 4-6) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 331.
