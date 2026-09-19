@@ -5101,3 +5101,7 @@ Next up: Psalms 121
 ## 2026-09-19T20:15:00Z (bible year day writer run)
 Day: 353 — Patient Faith and Living Hope (James 5; 1 Peter 1-2) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only (epistle, no dialogue)
 Next up: Day 354
+
+## 2026-09-19T20:35:00Z (bible year day writer run)
+Day: 354 — Suffering, Shepherding, and Glory (1 Peter 3-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only (epistle, no dialogue)
+Next up: Day 355. Stopping here — two-day budget cap for this run reached.
