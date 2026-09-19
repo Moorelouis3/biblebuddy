@@ -121,7 +121,7 @@ function withPromoSlots(
   // the rotating generic banners (Louis, 2026-09-19).
   const promo = (key: string, slotIndex: number) =>
     bibleYear ? (
-      <BibleYearPromo key={key} day={bibleYear.day} reading={bibleYear.reading} postSlug={postSlug} />
+      <BibleYearPromo key={key} day={bibleYear.day} reading={bibleYear.reading} postSlug={postSlug} slotIndex={slotIndex} />
     ) : (
       <PromoSlot key={key} postSlug={postSlug} slotIndex={slotIndex} />
     );

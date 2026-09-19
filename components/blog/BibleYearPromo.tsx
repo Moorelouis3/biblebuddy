@@ -1,101 +1,98 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { trackBlogPromoEvent } from "@/lib/blogViewTracking";
 import { useSupabaseUser } from "@/lib/useSupabaseUser";
 
 /**
- * The promo inside Bible in One Year Study Notes posts (Louis, 2026-09-19:
- * "can we make special promos for the Bible in One Year pages").
+ * The promo inside Bible in One Year Study Notes posts.
  *
- * The rotating blog banners are generic and only ever shown to logged out
- * readers, so a Study Notes page had nothing in it pointing at the plan the
- * whole article is about. This one is specific: it names the day and the
- * reading, and it works for members too - they get a link straight into that
- * day in the app instead of a sign up pitch.
+ * 2026-09-19: Louis supplied four banner versions for this series, so the
+ * built-in card was replaced by his artwork. Each post rotates through the
+ * four so a reader never sees the same banner twice on one page, and the
+ * rotation is seeded by the day number, so a given day always shows the same
+ * banners in the same order (clean data, not noise).
  *
- * Built natively (no image file) so every day gets its own promo without
- * anyone drawing 365 banners. Tracked as promo "bible-year-day-<N>" in
- * blog_promo_events, alongside the banner promos.
+ * Members are already inside the app, so their banner links to that day in
+ * the plan instead of a sign up. Everything is logged to blog_promo_events
+ * under the banner's own name, so the four versions can be compared.
  */
+
+const VERSIONS = [
+  { name: "bible-year-trivia", file: "bible-year-trivia.jpg", alt: "Read it. Remember it. Answer today's Bible trivia inside Bible Buddy." },
+  { name: "bible-year-progress", file: "bible-year-progress.jpg", alt: "Save your Bible in One Year progress inside Bible Buddy." },
+  { name: "bible-year-discussion", file: "bible-year-discussion.jpg", alt: "Join today's discussion with other Bible Buddies." },
+  { name: "bible-year-experience", file: "bible-year-experience.jpg", alt: "The full Bible in One Year experience inside Bible Buddy." },
+];
+
 export default function BibleYearPromo({
   day,
   reading,
   postSlug,
+  slotIndex = 0,
 }: {
   day: number;
   reading?: string;
   postSlug: string;
+  slotIndex?: number;
 }) {
+  void reading;
   const { loading, userId } = useSupabaseUser();
-  const cardRef = useRef<HTMLDivElement | null>(null);
+  const linkRef = useRef<HTMLAnchorElement | null>(null);
   const impressionSent = useRef(false);
-  const promoName = `bible-year-day-${day}`;
+  const version = VERSIONS[(day + slotIndex) % VERSIONS.length];
 
   useEffect(() => {
     if (loading || impressionSent.current) return;
-    const el = cardRef.current;
+    const el = linkRef.current;
     if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
+    const send = () => {
       impressionSent.current = true;
-      trackBlogPromoEvent({ eventType: "impression", promo: promoName, postSlug, slotIndex: day });
+      trackBlogPromoEvent({ eventType: "impression", promo: version.name, postSlug, slotIndex: day });
+    };
+    if (typeof IntersectionObserver === "undefined") {
+      send();
       return;
     }
     const observer = new IntersectionObserver(
       (entries) => {
         if (impressionSent.current || !entries.some((entry) => entry.isIntersecting)) return;
-        impressionSent.current = true;
-        trackBlogPromoEvent({ eventType: "impression", promo: promoName, postSlug, slotIndex: day });
+        send();
         observer.disconnect();
       },
       { threshold: 0.4 },
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [loading, promoName, postSlug, day]);
+  }, [loading, version.name, postSlug, day]);
 
   if (loading) return null;
 
   const isMember = Boolean(userId);
   const href = isMember
     ? `/dashboard?view=bible-year&day=${day}`
-    : `/start?src=blog&promo=${promoName}&post=${encodeURIComponent(postSlug)}`;
+    : `/start?src=blog&promo=${version.name}&post=${encodeURIComponent(postSlug)}`;
 
   return (
-    <div
-      ref={cardRef}
-      className="my-10 overflow-hidden rounded-[24px] border border-[#3a2c14] px-6 py-7 text-center"
-      style={{ background: "linear-gradient(140deg, #0c1220 0%, #111f3a 55%, #0d1526 100%)" }}
+    <Link
+      ref={linkRef}
+      href={href}
+      rel={isMember ? undefined : "nofollow"}
+      onClick={() => trackBlogPromoEvent({ eventType: "click", promo: version.name, postSlug, slotIndex: day })}
+      aria-label={version.alt}
+      className="my-10 block overflow-hidden rounded-[24px] shadow-[0_18px_48px_rgba(15,23,42,0.10)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(0,86,253,0.16)]"
     >
-      <p className="text-[11px] font-black uppercase tracking-[0.22em] text-[#e8c877]">
-        Bible in One Year · Day {day}
-      </p>
-      <p className="mt-3 text-2xl font-black leading-tight text-white sm:text-[28px]">
-        {isMember ? `Open Day ${day} in Bible Buddy` : "Read the whole Bible, one day at a time"}
-      </p>
-      <p className="mt-3 text-sm font-semibold leading-6 text-[#c9d6ec] sm:text-base">
-        {isMember
-          ? `Today's reading${reading ? ` is ${reading}` : ""}, with the audio teaching, study notes, trivia and the daily reflection waiting for you.`
-          : `Day ${day}${reading ? ` is ${reading}` : ""}. Every day has audio you can listen to, the reading itself, short trivia and a reflection you can share. It is free, and you can start at Day 1 whenever you want.`}
-      </p>
-      <Link
-        href={href}
-        rel={isMember ? undefined : "nofollow"}
-        onClick={() => trackBlogPromoEvent({ eventType: "click", promo: promoName, postSlug, slotIndex: day })}
-        // Inline: the site's global `a { color: inherit }` outranks utilities.
-        style={{
-          color: "#221503",
-          WebkitTextFillColor: "#221503",
-          background: "linear-gradient(180deg, #f0d489 0%, #cfa147 100%)",
-        }}
-        className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-xl px-6 text-sm font-black tracking-wide transition hover:brightness-95 sm:w-auto sm:min-w-[320px]"
-      >
-        {isMember ? `Go to Day ${day}` : "Start the Bible in One Year free"}
-      </Link>
-      {isMember ? null : (
-        <p className="mt-3 text-xs font-semibold text-[#9fb2d1]">No account needed to start. Completely free.</p>
-      )}
-    </div>
+      <Image
+        src={`/promos/${version.file}`}
+        alt={version.alt}
+        width={1536}
+        height={1026}
+        loading="lazy"
+        sizes="(max-width: 768px) 100vw, 672px"
+        className="h-auto w-full"
+      />
+    </Link>
   );
 }
