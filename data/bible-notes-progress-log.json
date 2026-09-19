@@ -37024,6 +37024,59 @@
           "at": "2026-09-19T02:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 104,
+      "startedAt": "2026-09-19T03:47:16Z",
+      "finishedAt": "2026-09-19T03:59:26Z",
+      "durationMinutes": 12.2,
+      "sections": 7,
+      "cards": 59,
+      "verses": 35,
+      "notes": "New chapter, normal forward progress after Psalms 103. Style-redo backlog confirmed empty (remaining=[]). Before this chapter, the session again started on a detached HEAD holding 30 commits (Psalms 97-103, Bible in One Year Days 308-321, the Genesis 11 redo, and prior recovery/logging commits) that never reached origin/main despite their own commit messages saying so, the same recurring bug logged repeatedly in MARCUS_HANDOFF.md. Recovered via backup branch + fast-forward before starting chapter work; by the time of the merge origin/main had already advanced to match the detached tip exactly (a concurrent session hit and fixed the identical state moments earlier), confirmed 0 drift; see MARCUS_HANDOFF.md for the incident writeup. This psalm is a creation hymn, a sweeping tour of God's ongoing care for the world He made. Verses 1-4 open with the same bless-the-LORD call as Psalms 103 and picture God robed in light, stretching the heavens like a tent, riding the clouds as a chariot (echoing and reclaiming nearby ancient storm-god imagery for the one true God), and making His angels out of wind and fire. Verses 5-9 recall the flood, the earth's unmovable foundations, and the fixed boundary set for the sea. Verses 10-13 and 14-18 move through springs, wild donkeys, birds, cattle, grain, wine, oil, bread, and the cedars of Lebanon (with Solomon's temple noted), plus storks, wild goats, and conies (hyraxes) each finding a home built for them. Verses 19-23 cover the moon appointed for the calendar, the sun's fixed schedule, and the day/night shift change between lions and human labor. Verses 24-30 are the psalm's wide-angle turn: manifold works, the sea and leviathan reframed as tame and playful rather than a rival god, every creature waiting on God's hand, and the Genesis-echoing breath/dust/Spirit cycle of death and renewal. Verses 31-35 close with God's unfading glory, Sinai-echoing theophany imagery (earth trembling, hills smoking), a personal lifelong vow to sing, and the closing inclusio repeating the psalm's opening line before the final Hallelujah. Style checker was clean on the first pass (0 problems, 59 cards). Parser check (7 sections, 59 cards, 1.69 cards per verse) and tsc --noEmit -p . both clean. Wired into lib/bibleReaderStudyNotes.ts, preserveExactPhraseBodies range extended to chapter 104.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T03:47:16Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 104 (new chapter, forward progress, style-redo list confirmed empty)",
+          "at": "2026-09-19T03:47:33Z"
+        },
+        {
+          "name": "KJV text fetched for Psalms 104 (35 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-09-19T03:47:57Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full, reference file lib/psalmsOneHundredThreeSource.ts reviewed",
+          "at": "2026-09-19T03:53:00Z"
+        },
+        {
+          "name": "source file written (lib/psalmsOneHundredFourSource.ts, 7 sections, 59 cards)",
+          "at": "2026-09-19T03:57:00Z"
+        },
+        {
+          "name": "style checker clean on lib/psalmsOneHundredFourSource.ts on first pass (0 problems)",
+          "at": "2026-09-19T03:57:23Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 104, replaceStudySectionsForBookRange call added after Psalms 103)",
+          "at": "2026-09-19T03:57:40Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 59 cards, matches design",
+          "at": "2026-09-19T03:58:04Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-19T03:59:00Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-19T03:59:26Z"
+        }
+      ]
     }
   ]
 }
