@@ -4997,3 +4997,7 @@ Next up: Psalms 112
 ## 2026-09-19T11:25:01Z (bible year day writer run)
 Day: 336 — Mystery, Unity, and New Life (Ephesians 3-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 337.
+
+## 2026-09-19T11:26:36Z (bible year day writer run)
+Day: 337 — Armor, Joy, and Christlike Humility (Ephesians 6; Philippians 1-2) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 338. Stopping here — two-day budget cap for this run reached.
