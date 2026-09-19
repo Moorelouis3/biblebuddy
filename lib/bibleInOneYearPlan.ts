@@ -433,6 +433,7 @@ const ADDITIONAL_BIBLE_YEAR_SCHEDULE_RAW = `
 321 | Romans 9-11 | Israel, Mercy, and God's Plan
 322 | Romans 12-14 | Living Sacrifices and Love
 323 | Romans 15-16; 1 Corinthians 1 | Unity, Mission, and the Cross
+324 | 1 Corinthians 2-4 | Spirit, Foundation, and Stewardship
 324 | 1 Corinthians 2-4 | Wisdom, Spirit, and Servants
 325 | 1 Corinthians 5-7 | Holiness, Body, and Marriage
 326 | 1 Corinthians 8-10 | Freedom, Love, and Warning
