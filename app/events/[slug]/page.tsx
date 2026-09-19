@@ -20,6 +20,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { useSupabaseUser } from "../../../lib/useSupabaseUser";
 import { joinCommunityEvent } from "../../../lib/communityEventJoin";
+import { ensureGuestSession } from "../../../lib/guestSession";
 import { getCommunityEvent, getCommunityEventState } from "../../../lib/communityEvents";
 
 const GRID_PAGE_SIZE = 24;
@@ -188,17 +189,32 @@ export default function CommunityEventPage() {
   async function join() {
     if (!event || joining || joined) return;
     track("community_event_join_click", { event: event.slug });
-    if (!userId) {
-      // Keep the query string: it carries which email brought them here.
-      router.push(`/login?next=${encodeURIComponent(`/events/${event.slug}${window.location.search}`)}`);
-      return;
+
+    // Nobody is sent away to log in first (2026-09-19). A visitor with no
+    // account gets a session here and the gate below collects name, email,
+    // password and photo in one step, then the join finishes by itself.
+    let joinUserId = userId;
+    if (!joinUserId) {
+      setJoining(true);
+      try {
+        const guest = await ensureGuestSession({ source: `community_event_${event.slug}` });
+        if (guest.ok && guest.userId) joinUserId = guest.userId;
+      } finally {
+        setJoining(false);
+      }
+      if (!joinUserId) {
+        // Could not start a session: fall back to the old login route.
+        router.push(`/login?next=${encodeURIComponent(`/events/${event.slug}${window.location.search}`)}`);
+        return;
+      }
     }
+
     // Joining requires a real account - name, email, profile picture - so
     // the community grid shows real people (Louis, 2026-09-04).
     if (!(await ensureFullAccount())) return;
     setJoining(true);
     try {
-      const result = await joinCommunityEvent(userId, event.slug, { reminders, source: "event_page" });
+      const result = await joinCommunityEvent(joinUserId, event.slug, { reminders, source: "event_page" });
       if (result.ok && result.alreadyJoined) {
         setJoined(true);
       } else if (result.ok) {
@@ -212,15 +228,15 @@ export default function CommunityEventPage() {
           const { data: me } = await supabase
             .from("profile_stats")
             .select("user_id, display_name, username, profile_image_url")
-            .eq("user_id", userId)
+            .eq("user_id", joinUserId)
             .maybeSingle();
           setParticipants((current) =>
-            current.some((p) => p.user_id === userId)
+            current.some((p) => p.user_id === joinUserId)
               ? current
               : [
                   ...current,
                   {
-                    user_id: userId,
+                    user_id: joinUserId,
                     display_name: (me as any)?.display_name || (me as any)?.username || "Bible Buddy",
                     profile_image_url: (me as any)?.profile_image_url || null,
                   },
@@ -306,6 +322,18 @@ export default function CommunityEventPage() {
       ) : null}
 
       {joinButton}
+      {!joined && !userId && !authLoading ? (
+        <p className="-mt-2 text-center text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+          Already have a Bible Buddy account?{" "}
+          <Link
+            href={`/login?next=${encodeURIComponent(`/events/${event.slug}`)}`}
+            className="font-black text-[var(--bb-accent,#2f7fe8)] underline"
+          >
+            Sign in
+          </Link>{" "}
+          first.
+        </p>
+      ) : null}
 
       {/* How it works, folded into one compact accordion. */}
       <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]">

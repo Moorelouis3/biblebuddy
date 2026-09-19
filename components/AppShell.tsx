@@ -886,7 +886,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       // Guests and email signups get the same front door.
       //
       // Already being on /start ends the redirect, otherwise this loops.
-      if (pathname === "/start") {
+      //
+      // A community event page runs its own sign-up (2026-09-19): someone who
+      // taps Join there gets a session mid-flow, and sending them to /start at
+      // that moment threw away the join they were half way through.
+      if (pathname === "/start" || pathname?.startsWith("/events/")) {
         setShowFirstLoginOnboarding(false);
         return;
       }

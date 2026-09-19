@@ -10,7 +10,7 @@
  * confirmation link before the address becomes active.
  */
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ModalShell } from "./ModalShell";
 import { supabase } from "../lib/supabaseClient";
 import { checkFullAccount, hasFullName, type AccountGateState } from "../lib/accountGate";
@@ -23,22 +23,36 @@ import { checkFullAccount, hasFullName, type AccountGateState } from "../lib/acc
 export function useAccountGate(actionLabel: string) {
   const [gate, setGate] = useState<AccountGateState | null>(null);
   const [open, setOpen] = useState(false);
+  // Resolves when the modal closes, so the caller can carry straight on with
+  // the action instead of making the person press the button twice
+  // (2026-09-19, Louis: joining should finish in one go).
+  const pending = useRef<((ok: boolean) => void) | null>(null);
+
+  const settle = useCallback((ok: boolean) => {
+    setOpen(false);
+    const resolve = pending.current;
+    pending.current = null;
+    resolve?.(ok);
+  }, []);
 
   const ensureFullAccount = useCallback(async () => {
     const state = await checkFullAccount();
     if (state.ok) return true;
     setGate(state);
     setOpen(true);
-    return false;
+    return new Promise<boolean>((resolve) => {
+      pending.current?.(false);
+      pending.current = resolve;
+    });
   }, []);
 
   const accountGateModal = (
     <AccountRequiredModal
       isOpen={open}
-      onClose={() => setOpen(false)}
+      onClose={() => settle(false)}
       gate={gate}
       actionLabel={actionLabel}
-      onCompleted={() => setOpen(false)}
+      onCompleted={() => settle(true)}
     />
   );
 
