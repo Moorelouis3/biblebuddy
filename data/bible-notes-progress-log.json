@@ -37903,6 +37903,59 @@
           "at": "2026-09-19T17:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 119,
+      "startedAt": "2026-09-19T18:52:30Z",
+      "finishedAt": "2026-09-19T19:13:30Z",
+      "durationMinutes": 21,
+      "sections": 22,
+      "cards": 180,
+      "verses": 176,
+      "notes": "Longest chapter in the Bible, a 22 stanza acrostic across the Hebrew alphabet (Aleph to Tau), each stanza 8 verses. One section per stanza, ~1 card per verse given the acrostic repetition. New chapter, not a style redo. Also fixed a pre-existing wiring gap: Psalms 118 was wired via replaceStudySectionsForBookRange but had been left out of the preserveExactPhraseBodies range (was <=117), so its hand formatted text was silently going through the generic auto-formatter instead of rendering verbatim. Extended that range to <=119 to fix both 118 and 119 in the same commit.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T18:50:14Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 119 (redo-remaining and priority-queue both empty, forward progress)",
+          "at": "2026-09-19T18:52:30Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn/Bible-kjv Psalms.json, chapter 119, 176 verses)",
+          "at": "2026-09-19T18:53:30Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-09-19T18:54:18Z"
+        },
+        {
+          "name": "source file written (lib/psalmsOneHundredNineteenSource.ts, 22 sections / 180 cards)",
+          "at": "2026-09-19T19:10:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 11 mechanical issues then 0 problems)",
+          "at": "2026-09-19T19:11:20Z"
+        },
+        {
+          "name": "wired into reader (import + replaceStudySectionsForBookRange for psalms 119, extended preserveExactPhraseBodies range to <=119, fixing a pre-existing gap that had excluded 118)",
+          "at": "2026-09-19T19:11:45Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections psalms 119: 22 sections, 180 cards confirmed, no throw)",
+          "at": "2026-09-19T19:12:10Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p ., 0 errors)",
+          "at": "2026-09-19T19:13:15Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json entry appended, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + totals updated)",
+          "at": "2026-09-19T19:15:02Z"
+        }
+      ]
     }
   ]
 }
