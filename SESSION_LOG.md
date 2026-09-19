@@ -5069,3 +5069,7 @@ Next up: Psalms 118
 ## 2026-09-19T17:27:28Z (bible year day writer run)
 Day: 348 — Jesus Greater Than Moses and Priesthood (Hebrews 3-5) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 349.
+
+## 2026-09-19T17:45:00Z (bible year day writer run)
+Day: 349 — Better Hope and Better Covenant (Hebrews 6-8) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 350. Stopping here — two-day budget cap for this run reached.
