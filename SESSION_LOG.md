@@ -4853,3 +4853,11 @@ Next up: Day 314. Stopping here — two-day budget cap for this run reached.
 ## 2026-09-18T23:54:08Z (hourly chapter notes run)
 Chapter: Psalms 100 | Duration: 8 min | Sections: 3 | Cards: 11 | Status: pass
 Next up: Psalms 101
+
+## 2026-09-19T00:25:45Z (bible year day writer run)
+Recovered a detached-HEAD-with-unpushed-commits state at session start (same
+recurring bug as prior entries in MARCUS_HANDOFF.md) before starting work:
+backed the tip up to `rescue/unpushed-tip-2026-09-19`, pushed it, then
+fast-forward merged into local main and pushed. No data lost.
+Day: 314 — Gospel Across the Cities (Acts 16-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 315.

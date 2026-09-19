@@ -1,3 +1,6 @@
+## Detached HEAD held unpushed commits again, recovered (2026-09-19, before Day 314 run)
+Same recurring family as the entries below, yet another real-unpushed-work instance. This run started on a detached HEAD (Day 312, Day 313, Psalms 99 notes, Psalms 100 notes, and a progress-log commit) genuinely ahead of both local and origin `main` — a prior session's work that never got pushed to `main` despite its own commit messages. Recovered the established safe way: backed the tip up to `rescue/unpushed-tip-2026-09-19` and pushed that first, then fast-forward merged into local `main` and pushed. No data lost. This is now well past the point of being a fluke — every one of the last several runs has hit this same bug at session start. Still worth the environment-level fix the entries below keep asking for, so a session doesn't end detached without its push landing in the first place.
+
 ## Detached HEAD held 5 genuinely unpushed commits, recovered (2026-09-18, before Day 312 run)
 Same recurring family as the entries below, another real-unpushed-work instance. This run started on a detached HEAD 5 commits ahead of both local and origin `main` (Day 310, Day 311, Psalms 98 notes, Psalms 99 notes, and a progress-log commit) — a prior session's work that never got pushed to `main` despite its own commit messages. Recovered the established safe way: backed the tip up to `rescue/unpushed-tip-2026-09-18` and pushed that first, then fast-forward merged into local `main` and pushed. No data lost. Still worth the environment-level fix the entries below keep asking for, so a session doesn't end detached without its push landing in the first place.
 
@@ -302,7 +305,7 @@ that claiming full certainty either way goes beyond the text. Flagging per
 the format spec's doctrinal-sensitivity rule so Louis can read it himself.
 
 ## Bible in One Year days waiting on local audio render
-Scripts through Day 313 are written and pushed, but none of them have been
+Scripts through Day 314 are written and pushed, but none of them have been
 rendered — this environment has no OPENAI_API_KEY or Supabase service key.
 Run `npx tsx scripts/render-pending-bible-year-days.ts` on a machine that
 has those keys; it auto-detects every day with a script but no current
