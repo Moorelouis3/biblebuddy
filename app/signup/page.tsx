@@ -16,6 +16,15 @@ import {
 
 const DASHBOARD_ENTRY_PATH = "/dashboard";
 
+// Honour ?next= the same way the login page does (2026-09-19): someone who
+// arrives from an email link and signs up should land where they were going.
+function signupNextPath() {
+  if (typeof window === "undefined") return DASHBOARD_ENTRY_PATH;
+  const raw = new URLSearchParams(window.location.search).get("next");
+  if (!raw || !raw.startsWith("/") || raw.startsWith("//") || raw.startsWith("/\\")) return DASHBOARD_ENTRY_PATH;
+  return raw;
+}
+
 function getSignupLandingSessionId() {
   if (typeof window === "undefined") return "server";
   const key = "bb:landing-session-id";
@@ -128,7 +137,7 @@ export default function SignupPage() {
         data: { session },
       } = await supabase.auth.getSession();
       if (session) {
-        router.push(DASHBOARD_ENTRY_PATH);
+        router.push(signupNextPath());
       }
     };
 
@@ -138,7 +147,7 @@ export default function SignupPage() {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
-        router.push(DASHBOARD_ENTRY_PATH);
+        router.push(signupNextPath());
       }
     });
 
@@ -221,7 +230,7 @@ export default function SignupPage() {
       email: normalizedEmail,
       password: normalizedPassword,
       options: {
-        emailRedirectTo: typeof window !== "undefined" ? `${window.location.origin}${DASHBOARD_ENTRY_PATH}` : undefined,
+        emailRedirectTo: typeof window !== "undefined" ? `${window.location.origin}${signupNextPath()}` : undefined,
         data: {
           firstName: username,
           first_name: username,
@@ -254,7 +263,7 @@ export default function SignupPage() {
 
     if (data.session) {
       await applyReferralCodeIfPresent();
-      router.push(DASHBOARD_ENTRY_PATH);
+      router.push(signupNextPath());
       return;
     }
 
@@ -265,7 +274,7 @@ export default function SignupPage() {
 
     if (loginData.session) {
       await applyReferralCodeIfPresent();
-      router.push(DASHBOARD_ENTRY_PATH);
+      router.push(signupNextPath());
       return;
     }
 
@@ -298,7 +307,7 @@ export default function SignupPage() {
     setLoading(true);
     setError(null);
 
-    const redirectTo = typeof window !== "undefined" ? `${window.location.origin}${DASHBOARD_ENTRY_PATH}` : undefined;
+    const redirectTo = typeof window !== "undefined" ? `${window.location.origin}${signupNextPath()}` : undefined;
     if (typeof window !== "undefined") {
       writePendingSignupAttribution();
       window.localStorage.setItem("bb:pending-oauth-signup", provider);

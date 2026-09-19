@@ -1,5 +1,5 @@
 {
-  "note": "Twice-weekly Bible Buddy newsletter (Tue/Fri) through the new year. Order = most-read blog posts first (blog_page_views visitors, 2026-09-15), with seasonal swaps. Sent from Systeme.io to tag bb-day1-welcome, sender 'Bible Buddy'. Louis approves each before it goes out. Drafts already exist in Systeme (systemeDraftId). To send: open the draft from the Systeme newsletter list, Save draft dropdown, Save and send. Rescheduled 2026-09-17: every 4 days after the Sep 15 send, all auto-scheduled in Systeme at 15:00 Berlin (9am US Eastern).",
+  "note": "Twice-weekly Bible Buddy newsletter (Tue/Fri) through the new year. Order = most-read blog posts first (blog_page_views visitors, 2026-09-15), with seasonal swaps. Sent from Systeme.io to tag bb-day1-welcome, sender 'Bible Buddy'. Louis approves each before it goes out. Drafts already exist in Systeme (systemeDraftId). To send: open the draft from the Systeme newsletter list, Save draft dropdown, Save and send. Rescheduled 2026-09-17: every 4 days after the Sep 15 send, all auto-scheduled in Systeme at 15:00 Berlin (9am US Eastern). 2026-09-19: four Wisdom of Proverbs emails inserted at the next four slots (Sep 19, 23, 27, Oct 1); every blog email pushed back, seasonal ones kept on their own dates, schedule now ends Jan 25.",
   "sent": [
     {
       "date": "2026-09-11",
@@ -17,73 +17,72 @@
   "upcoming": [
     {
       "date": "2026-09-19",
-      "slug": "garden-of-eden-four-rivers",
-      "systemeDraftId": 5302978,
-      "subject": "Two of Eden's rivers still flow today",
+      "slug": "proverbs-push-1-have-you-studied-it",
+      "subject": "You know Proverbs. Have you studied it?",
+      "systemeDraftId": 5318449,
       "scheduledInSysteme": "2026-09-19 15:00 Europe/Berlin"
     },
     {
       "date": "2026-09-23",
-      "slug": "names-of-god-meanings",
-      "systemeDraftId": 5302996,
-      "subject": "What do you call God when you pray?",
+      "slug": "proverbs-push-2-no-meeting",
+      "subject": "No Zoom. No meeting. Still a group.",
+      "systemeDraftId": 5318451,
       "scheduledInSysteme": "2026-09-23 15:00 Europe/Berlin"
     },
     {
       "date": "2026-09-27",
-      "slug": "wisdom-of-proverbs",
-      "special": "Wisdom of Proverbs community study starts Oct 1 - join link /events/wisdom-of-proverbs",
-      "systemeDraftId": 5302998,
-      "subject": "31 days in Proverbs, together",
+      "slug": "proverbs-push-3-not-alone",
+      "subject": "Same verse, two different things",
+      "systemeDraftId": 5318452,
       "scheduledInSysteme": "2026-09-27 15:00 Europe/Berlin"
     },
     {
       "date": "2026-10-01",
-      "slug": "moses",
-      "systemeDraftId": 5302997,
-      "subject": "Please send somebody else",
+      "slug": "proverbs-push-4-day-one",
+      "subject": "Proverbs 1 opens today",
+      "systemeDraftId": 5318453,
       "scheduledInSysteme": "2026-10-01 15:00 Europe/Berlin"
     },
     {
       "date": "2026-10-05",
-      "slug": "is-anxiety-a-sin",
-      "systemeDraftId": 5302999,
-      "subject": "Is feeling anxious a sin?",
+      "slug": "garden-of-eden-four-rivers",
+      "systemeDraftId": 5302978,
+      "subject": "Two of Eden's rivers still flow today",
       "scheduledInSysteme": "2026-10-05 15:00 Europe/Berlin"
     },
     {
       "date": "2026-10-09",
-      "slug": "who-is-leah",
-      "systemeDraftId": 5303000,
-      "subject": "Ever feel like the second choice?",
+      "slug": "names-of-god-meanings",
+      "systemeDraftId": 5302996,
+      "subject": "What do you call God when you pray?",
       "scheduledInSysteme": "2026-10-09 15:00 Europe/Berlin"
     },
     {
       "date": "2026-10-13",
-      "slug": "who-is-jezebel",
-      "systemeDraftId": 5303001,
-      "subject": "Nobody drifts from God all at once",
+      "slug": "moses",
+      "systemeDraftId": 5302997,
+      "subject": "Please send somebody else",
       "scheduledInSysteme": "2026-10-13 15:00 Europe/Berlin"
     },
     {
       "date": "2026-10-17",
-      "slug": "armor-of-god-explained",
-      "systemeDraftId": 5303002,
-      "subject": "Can you name all six pieces?",
+      "slug": "is-anxiety-a-sin",
+      "systemeDraftId": 5302999,
+      "subject": "Is feeling anxious a sin?",
       "scheduledInSysteme": "2026-10-17 15:00 Europe/Berlin"
     },
     {
       "date": "2026-10-21",
-      "slug": "5-things-holding-men-back-from-god",
-      "systemeDraftId": 5303007,
-      "subject": "What is quietly pulling you from God?",
+      "slug": "who-is-leah",
+      "systemeDraftId": 5303000,
+      "subject": "Ever feel like the second choice?",
       "scheduledInSysteme": "2026-10-21 15:00 Europe/Berlin"
     },
     {
       "date": "2026-10-25",
-      "slug": "what-is-hell",
-      "systemeDraftId": 5303010,
-      "subject": "Where did the pitchfork come from?",
+      "slug": "who-is-jezebel",
+      "systemeDraftId": 5303001,
+      "subject": "Nobody drifts from God all at once",
       "scheduledInSysteme": "2026-10-25 15:00 Europe/Berlin"
     },
     {
@@ -96,37 +95,37 @@
     },
     {
       "date": "2026-11-02",
-      "slug": "how-do-you-know-you-are-saved",
-      "systemeDraftId": 5303008,
-      "subject": "What if I am not really saved?",
+      "slug": "armor-of-god-explained",
+      "systemeDraftId": 5303002,
+      "subject": "Can you name all six pieces?",
       "scheduledInSysteme": "2026-11-02 15:00 Europe/Berlin"
     },
     {
       "date": "2026-11-06",
-      "slug": "genesis-1-explained",
-      "systemeDraftId": 5303009,
-      "subject": "Why is there light before the sun?",
+      "slug": "5-things-holding-men-back-from-god",
+      "systemeDraftId": 5303007,
+      "subject": "What is quietly pulling you from God?",
       "scheduledInSysteme": "2026-11-06 15:00 Europe/Berlin"
     },
     {
       "date": "2026-11-10",
-      "slug": "how-to-defend-your-faith-in-jesus",
-      "systemeDraftId": 5303012,
-      "subject": "What would you say if they asked?",
+      "slug": "what-is-hell",
+      "systemeDraftId": 5303010,
+      "subject": "Where did the pitchfork come from?",
       "scheduledInSysteme": "2026-11-10 15:00 Europe/Berlin"
     },
     {
       "date": "2026-11-14",
-      "slug": "men-who-walked-with-god",
-      "systemeDraftId": 5303014,
-      "subject": "Only two men got this description",
+      "slug": "how-do-you-know-you-are-saved",
+      "systemeDraftId": 5303008,
+      "subject": "What if I am not really saved?",
       "scheduledInSysteme": "2026-11-14 15:00 Europe/Berlin"
     },
     {
       "date": "2026-11-18",
-      "slug": "can-you-lose-your-salvation",
-      "systemeDraftId": 5303027,
-      "subject": "What if one more sin is too many?",
+      "slug": "genesis-1-explained",
+      "systemeDraftId": 5303009,
+      "subject": "Why is there light before the sun?",
       "scheduledInSysteme": "2026-11-18 15:00 Europe/Berlin"
     },
     {
@@ -147,16 +146,16 @@
     },
     {
       "date": "2026-11-30",
-      "slug": "what-is-the-fruit-of-the-spirit",
-      "systemeDraftId": 5303028,
-      "subject": "Why Paul said fruit, not fruits",
+      "slug": "how-to-defend-your-faith-in-jesus",
+      "systemeDraftId": 5303012,
+      "subject": "What would you say if they asked?",
       "scheduledInSysteme": "2026-11-30 15:00 Europe/Berlin"
     },
     {
       "date": "2026-12-04",
-      "slug": "who-was-joseph",
-      "systemeDraftId": 5303029,
-      "subject": "When someone you trusted turns on you",
+      "slug": "men-who-walked-with-god",
+      "systemeDraftId": 5303014,
+      "subject": "Only two men got this description",
       "scheduledInSysteme": "2026-12-04 15:00 Europe/Berlin"
     },
     {
@@ -208,32 +207,61 @@
     },
     {
       "date": "2027-01-01",
-      "slug": "genesis-2-explained",
-      "systemeDraftId": 5303030,
-      "subject": "The first thing God called not good",
+      "slug": "can-you-lose-your-salvation",
+      "systemeDraftId": 5303027,
+      "subject": "What if one more sin is too many?",
       "scheduledInSysteme": "2027-01-01 15:00 Europe/Berlin"
     },
     {
       "date": "2027-01-05",
-      "slug": "people-who-never-heard-of-jesus",
-      "systemeDraftId": 5303033,
-      "subject": "What about the ones who never heard?",
+      "slug": "what-is-the-fruit-of-the-spirit",
+      "systemeDraftId": 5303028,
+      "subject": "Why Paul said fruit, not fruits",
       "scheduledInSysteme": "2027-01-05 15:00 Europe/Berlin"
     },
     {
       "date": "2027-01-09",
-      "slug": "biblical-numbers-meanings",
-      "systemeDraftId": 5303034,
-      "subject": "Does 7 really mean something?",
+      "slug": "who-was-joseph",
+      "systemeDraftId": 5303029,
+      "subject": "When someone you trusted turns on you",
       "scheduledInSysteme": "2027-01-09 15:00 Europe/Berlin"
     },
     {
       "date": "2027-01-13",
+      "slug": "genesis-2-explained",
+      "systemeDraftId": 5303030,
+      "subject": "The first thing God called not good",
+      "scheduledInSysteme": "2027-01-13 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2027-01-17",
+      "slug": "people-who-never-heard-of-jesus",
+      "systemeDraftId": 5303033,
+      "subject": "What about the ones who never heard?",
+      "scheduledInSysteme": "2027-01-17 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2027-01-21",
+      "slug": "biblical-numbers-meanings",
+      "systemeDraftId": 5303034,
+      "subject": "Does 7 really mean something?",
+      "scheduledInSysteme": "2027-01-21 15:00 Europe/Berlin"
+    },
+    {
+      "date": "2027-01-25",
       "slug": "what-does-the-bible-say-about-anxiety",
       "special": "Holiday stress season",
       "systemeDraftId": 5303035,
       "subject": "Anxiety does not knock first",
-      "scheduledInSysteme": "2027-01-13 15:00 Europe/Berlin"
+      "scheduledInSysteme": "2027-01-25 15:00 Europe/Berlin"
+    }
+  ],
+  "retired": [
+    {
+      "systemeDraftId": 5302998,
+      "slug": "wisdom-of-proverbs",
+      "subject": "31 days in Proverbs, together",
+      "note": "Replaced 2026-09-19 by the four Proverbs push emails. Tags removed so it has no recipients; Systeme has no API to cancel a schedule, so Louis should delete or cancel it in the UI."
     }
   ]
 }

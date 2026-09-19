@@ -176,7 +176,8 @@ export default function CommunityEventPage() {
     if (!event || joining || joined) return;
     track("community_event_join_click", { event: event.slug });
     if (!userId) {
-      router.push(`/login?next=${encodeURIComponent(`/events/${event.slug}`)}`);
+      // Keep the query string: it carries which email brought them here.
+      router.push(`/login?next=${encodeURIComponent(`/events/${event.slug}${window.location.search}`)}`);
       return;
     }
     // Joining requires a real account - name, email, profile picture - so

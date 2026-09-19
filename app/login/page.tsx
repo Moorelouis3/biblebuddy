@@ -10,6 +10,19 @@ import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "../../lib/supabaseClient";
 import { hasCachedSupabaseSession } from "../../lib/authBoot";
 
+/**
+ * Where to send someone after login. Callers pass ?next=/events/... (the
+ * Proverbs signup does), and before 2026-09-19 this page ignored it and always
+ * went to the dashboard, so anyone tapping an email link while logged out
+ * never reached the page they came for. Only same-site paths are honoured.
+ */
+function nextPath() {
+  if (typeof window === "undefined") return "/dashboard";
+  const raw = new URLSearchParams(window.location.search).get("next");
+  if (!raw || !raw.startsWith("/") || raw.startsWith("//") || raw.startsWith("/\\")) return "/dashboard";
+  return raw;
+}
+
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -32,7 +45,7 @@ export default function LoginPage() {
         settled = true;
         window.clearTimeout(fallbackTimer);
         if (session) {
-          router.replace("/dashboard");
+          router.replace(nextPath());
           return;
         }
       } finally {
@@ -46,7 +59,7 @@ export default function LoginPage() {
       if (session) {
         settled = true;
         window.clearTimeout(fallbackTimer);
-        router.replace("/dashboard");
+        router.replace(nextPath());
       }
     });
 
@@ -100,14 +113,14 @@ export default function LoginPage() {
 
     // Use window.location for full page reload to ensure cookies are set
     // This prevents middleware from running before cookies are available
-    window.location.href = "/dashboard";
+    window.location.href = nextPath();
   }
 
   async function handleOAuthSignIn(provider: "google") {
     setLoading(true);
     setError(null);
 
-    const redirectTo = typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined;
+    const redirectTo = typeof window !== "undefined" ? `${window.location.origin}${nextPath()}` : undefined;
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: redirectTo ? { redirectTo } : undefined,
@@ -243,7 +256,10 @@ export default function LoginPage() {
 
           <p className="mt-5 text-center text-sm font-semibold text-[#667085]">
             Need an account?{" "}
-            <Link href="/signup" className="font-black text-[#2563EB] hover:underline">
+            <Link
+              href={`/signup${typeof window !== "undefined" ? window.location.search : ""}`}
+              className="font-black text-[#2563EB] hover:underline"
+            >
               Sign up
             </Link>
           </p>
