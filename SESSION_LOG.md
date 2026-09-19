@@ -4861,3 +4861,7 @@ backed the tip up to `rescue/unpushed-tip-2026-09-19`, pushed it, then
 fast-forward merged into local main and pushed. No data lost.
 Day: 314 — Gospel Across the Cities (Acts 16-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 315.
+
+## 2026-09-19T00:27:21Z (bible year day writer run)
+Day: 315 — Ephesus, Farewell, and Jerusalem (Acts 19-21) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 316. Stopping here — two-day budget cap for this run reached.
