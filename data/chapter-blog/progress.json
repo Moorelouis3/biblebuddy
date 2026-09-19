@@ -2,7 +2,7 @@
   "note": "Tracker for the Bible chapter blog library. Written only by scripts/chapter-blog-queue.mjs. See docs/CHAPTER_BLOG_WRITER_AGENT.md.",
   "dailyTarget": 5,
   "startedAt": "2026-09-17",
-  "updatedAt": "2026-09-19T02:45:59.089Z",
+  "updatedAt": "2026-09-19T04:39:58.265Z",
   "nextChapter": "Genesis 12",
   "chapters": {
     "genesis-1-explained": {
@@ -41,33 +41,38 @@
     },
     "genesis-7-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-09-18T02:40:20.230Z",
-      "committedAt": "2026-09-18T02:48:57.276Z"
+      "committedAt": "2026-09-18T02:48:57.276Z",
+      "publishedAt": "2026-09-19T04:39:57.373Z"
     },
     "genesis-8-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-09-18T06:40:07.949Z",
-      "committedAt": "2026-09-18T06:48:02.205Z"
+      "committedAt": "2026-09-18T06:48:02.205Z",
+      "publishedAt": "2026-09-19T04:39:57.631Z"
     },
     "genesis-9-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-09-18T10:40:20.733Z",
-      "committedAt": "2026-09-18T10:46:22.698Z"
+      "committedAt": "2026-09-18T10:46:22.698Z",
+      "publishedAt": "2026-09-19T04:39:57.937Z"
     },
     "genesis-10-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-09-18T13:40:45.824Z",
-      "committedAt": "2026-09-18T13:48:27.877Z"
+      "committedAt": "2026-09-18T13:48:27.877Z",
+      "publishedAt": "2026-09-19T04:39:58.059Z"
     },
     "genesis-11-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-09-19T02:40:27.494Z",
-      "committedAt": "2026-09-19T02:45:59.088Z"
+      "committedAt": "2026-09-19T02:45:59.088Z",
+      "publishedAt": "2026-09-19T04:39:58.265Z"
     }
   }
 }
