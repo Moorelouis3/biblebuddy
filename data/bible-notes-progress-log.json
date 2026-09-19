@@ -37956,6 +37956,67 @@
           "at": "2026-09-19T19:15:02Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 120,
+      "startedAt": "2026-09-19T19:45:55Z",
+      "finishedAt": "2026-09-19T19:56:00Z",
+      "durationMinutes": 10,
+      "sections": 4,
+      "cards": 11,
+      "verses": 7,
+      "notes": "New chapter, normal forward progress. First of the Songs of Ascents. Density 1.6 cards/verse. Style checker and tsc both clean; eye check caught two mechanics-focused closing lines and fixed them.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T19:47:05Z"
+        },
+        {
+          "name": "chapter determined",
+          "at": "2026-09-19T19:48:01Z",
+          "detail": "Psalms 120, new chapter (priority queue and redo-remaining both empty)"
+        },
+        {
+          "name": "KJV text fetched",
+          "at": "2026-09-19T19:48:15Z",
+          "detail": "7 verses from raw.githubusercontent.com/aruljohn/Bible-kjv/master/Psalms.json"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-09-19T19:51:41Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-09-19T19:52:10Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-09-19T19:52:10Z"
+        },
+        {
+          "name": "wiring done",
+          "at": "2026-09-19T19:52:37Z"
+        },
+        {
+          "name": "parser check passed",
+          "at": "2026-09-19T19:52:37Z",
+          "detail": "4 sections, 11 cards"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-19T19:53:51Z"
+        },
+        {
+          "name": "eye check fixes applied",
+          "at": "2026-09-19T19:54:30Z",
+          "detail": "two cards' closing lines rewritten from mechanics to meaning; re-verified checker/parser/tsc clean"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-19T19:56:00Z"
+        }
+      ]
     }
   ]
 }
