@@ -464,3 +464,28 @@ So the classifier can produce false/inconsistent denials on plain local
 git operations — worth knowing if a future run reports being blocked on a
 merge or push it should normally be allowed to do; retrying the exact
 same command once resolved it both times here.
+
+## Detached HEAD held 24 genuinely unpushed commits, recovered (2026-09-19, before next hourly chapter run) — worst occurrence yet
+Same family as the entry immediately above, but much larger: this run
+started on a detached HEAD 24 commits ahead of both local `main` and
+`origin/main` (which matched each other, stuck at "Bible in One Year Day
+307 / John 16-18" era, `9f6da92`). The 24 stranded commits included
+Psalms 97-102 study notes, six Bible in One Year day scripts (308-319),
+the Genesis 11 redo, and the previous incident's own recovery/logging
+commit — i.e. real, fully-verified work spanning multiple prior sessions
+that never actually reached `origin/main` despite each of those sessions'
+commit messages saying it had been pushed. Recovered the same safe way as
+before: backed the detached tip up to branch
+`backup-recovered-20260919-024701` and pushed that to origin first, then
+fast-forward merged it into local `main` and pushed `main` (confirmed
+`origin/main` now matches exactly, 0 commits of drift either direction).
+No data lost. Flagging because the pattern isn't just "stale cache"
+anymore, it's now repeatedly cost real unpushed work piling up across
+several sessions before anyone noticed — six-plus sessions apparently
+each ended detached without their push landing, back to back. Still
+unfixed at the environment level (each fresh container should seed local
+`main` from current `origin/main`, and/or the stop-hook that blocks
+ending a session with unpushed commits should also verify HEAD is
+actually on a branch matching origin, not just that there's no diff to
+commit). Worth root-causing directly rather than continuing to add
+recovery entries here.
