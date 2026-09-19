@@ -5033,3 +5033,7 @@ Next up: Psalms 115
 ## 2026-09-19T14:25:07Z (bible year day writer run)
 Day: 342 — Stand Firm and Guard the Gospel (2 Thessalonians 2-3; 1 Timothy 1) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 343.
+
+## 2026-09-19T14:26:31Z (bible year day writer run)
+Day: 343 — Church Order and Godliness (1 Timothy 2-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 344. Stopping here — two-day budget cap for this run reached.
