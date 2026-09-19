@@ -37350,6 +37350,63 @@
           "at": "2026-09-19T08:59:43Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 110,
+      "startedAt": "2026-09-19T09:48:23Z",
+      "finishedAt": "2026-09-19T09:54:46Z",
+      "durationMinutes": 6,
+      "sections": 2,
+      "cards": 19,
+      "verses": 7,
+      "notes": "New chapter (forward progress; redo and priority queues both empty). Short but heavily Messianic psalm (right hand, footstool, priest after the order of Melchizedek) quoted extensively in the NT (Matthew 22, Acts 2, Hebrews 1/5/7). 2 sections (vv 1-4, vv 5-7), 19 cards, about 2.7 cards per verse given how dense the content is. Style checker clean, parser check clean, tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T09:46:12Z"
+        },
+        {
+          "name": "git repo repaired (unshallowed, fast-forwarded local main to origin/main)",
+          "at": "2026-09-19T09:48:23Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 110 (new chapter, forward progress; redo + priority queues both empty)",
+          "at": "2026-09-19T09:48:23Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 110, 7 verses, raw.githubusercontent.com KJV mirror)",
+          "at": "2026-09-19T09:48:44Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) plus reference implementation (lib/genesisThirtyOneSource.ts) and structural reference (lib/psalmsOneHundredNineSource.ts)",
+          "at": "2026-09-19T09:50:30Z"
+        },
+        {
+          "name": "source file written: lib/psalmsOneHundredTenSource.ts (2 sections, 19 cards)",
+          "at": "2026-09-19T09:52:40Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py): 19 cards, no problems",
+          "at": "2026-09-19T09:53:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 110, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-19T09:53:40Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('psalms', 110) returns 2 sections, 19 cards, no throw",
+          "at": "2026-09-19T09:53:55Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-19T09:54:20Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-19T09:54:46Z"
+        }
+      ]
     }
   ]
 }
