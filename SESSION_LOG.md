@@ -4945,3 +4945,7 @@ Next up: Genesis 14. Note: Genesis 12 stayed in "committed" status for ~2 hours 
 ## 2026-09-19T07:01:37Z (hourly chapter notes run)
 Chapter: Psalms 107 | Duration: 12 min | Sections: 9 | Cards: 45 | Status: pass
 Next up: Psalms 108
+
+## 2026-09-19T07:26:12Z (bible year day writer run)
+Day: 328 — Order, Resurrection, and Hope (1 Corinthians 14-16) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 329.
