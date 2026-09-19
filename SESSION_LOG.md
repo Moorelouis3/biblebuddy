@@ -5137,3 +5137,7 @@ Next up: Psalms 124
 ## 2026-09-19T23:27:06Z (bible year day writer run)
 Day: 359 — Churches Warned and Heaven Opened (Revelation 2-4) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only (epistle-style letters, no dialogue voices)
 Next up: Day 360
+
+## 2026-09-19T23:41:00Z (bible year day writer run)
+Day: 360 — The Lamb, the Scroll, and the Redeemed (Revelation 5-7) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only (apocalyptic vision, no dialogue voices)
+Next up: Day 361. Stopping here — two-day budget cap for this run reached.
