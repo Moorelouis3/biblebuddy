@@ -4873,3 +4873,7 @@ Next up: Psalms 102
 ## 2026-09-19T01:26:36Z (bible year day writer run)
 Day: 316 — Paul's Defense and Witness (Acts 22-24) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 317.
+
+## 2026-09-19T01:29:59Z (bible year day writer run)
+Day: 317 — Paul Appeals and Sails Through Storm (Acts 25-27) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
+Next up: Day 318. Stopping here — two-day budget cap for this run reached.
