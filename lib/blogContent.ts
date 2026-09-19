@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-11-explained",
+    title: "Genesis 11 Explained: The Tower of Babel and the Road to Abram",
+    description:
+      "Genesis 11 explained verse by verse: the Tower of Babel, why God confused the languages, and the ten generations from Shem to Abram.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-11-explained",
+    publishedAt: "2026-09-19",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-11-explained.jpg",
+    groupPost: {
+      title: "Genesis 11 Explained 📖",
+      content:
+        "One language. One tower. One act of pride.\nThis chapter ends the story of one united humanity.\n\n📌 Unity is not the same thing as being right.\n\n📖 The builders wanted a name for themselves.\n📖 God confused their language and scattered them.\n📖 Ten generations later, the chapter ends on Abram.\n\nNew article on:\n🟢 what the **Tower of Babel** was really about\n🟢 why the name **Babel** means confusion\n🟢 how this chapter sets up **Abram's** call\n\nWhat part of the Babel story stood out to you? 🙏",
+    },
+  },
+  {
     slug: "genesis-10-explained",
     title: "Genesis 10 Explained: The Table of Nations After the Flood",
     description:
