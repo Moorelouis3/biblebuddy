@@ -4,14 +4,19 @@
   "startedAt": "2026-09-19",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-19: Louis reviewed Day 1 live (narration rewrite, banner, video, promos) and said to start the recurring job at 3 days a day.",
-  "updatedAt": "2026-09-19T12:23:26.470Z",
-  "nextDay": "Day 2",
+  "updatedAt": "2026-09-19T12:23:34.029Z",
+  "nextDay": "Day 3",
   "days": {
     "1": {
       "status": "published",
       "committedAt": "2026-09-19T09:00:00.000Z",
       "note": "Written by the Claude Prompts queue runner as the required Day 1 test article. Source: lib/bibleYearDayOneSegments.ts (script) + docs/bible-in-one-year-master-plan.md (reading: Genesis 1-2). No YouTube video exists for Day 1 in the codebase (see lib/bibleYearDayYoutubeVideos.ts) so none is embedded. excludeFromGroupShare is set on its BLOG_ARTICLES entry so it is not auto-shared to the Study Group before Louis reviews it.",
       "publishedAt": "2026-09-19T12:23:26.469Z"
+    },
+    "2": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-09-19T12:23:34.029Z"
     }
   }
 }
