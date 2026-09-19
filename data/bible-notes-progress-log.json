@@ -37679,6 +37679,63 @@
           "at": "2026-09-19T13:57:35Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 115,
+      "startedAt": "2026-09-19T14:46:38Z",
+      "finishedAt": "2026-09-19T15:05:00Z",
+      "durationMinutes": 18,
+      "sections": 6,
+      "cards": 25,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install run fresh (no node_modules in this clone). Session started with HEAD detached from main; git fetch origin main showed origin/main had force-updated to match the detached HEAD commit exactly, so checked out main and reset it to origin/main before starting (no data at risk, same pattern seen in the Psalms 114 run). Priority queue and style-redo backlog both confirmed empty (remaining=[] in both), and no lib file existed for Psalms 115, so normal forward progress after Psalms 114. Fetched real KJV text for Psalms 115 (18 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 115 is part of the Egyptian Hallel (Psalms 113-118) and argues that glory belongs to the LORD alone, opening with the heathen's taunt where is now their God, mocking the impotence of silver and gold idols organ by organ (mouths, eyes, ears, noses, hands, feet, throat) and warning they that make them are like unto them, building a threefold refrain calling Israel, the house of Aaron, and those that fear the LORD each to trust in the LORD as their help and shield, turning to the LORD's present blessing (mindful of us, small and great, more and more, you and your children), and closing with the LORD's ownership of the heavens versus the earth given to the children of men, the dead who cannot praise, and the living vow to bless the LORD from this time forth and for evermore, ending on Praise the LORD. Chunked into 6 sections: 1-2 (the plea not unto us, mercy and truth defined, the heathen's taunt), 3-4 (the answer that our God is in the heavens, idols as silver and gold, the work of men's hands), 5-8 (idols' failed senses organ by organ and the warning that worshippers become like what they worship), 9-11 (the threefold call to trust addressed to Israel, the house of Aaron, and those that fear the LORD, each closing with he is their help and their shield), 12-15 (the LORD mindful of us, blessing small and great, the promise to increase you more and more, and the LORD named as maker of heaven and earth), and 16-18 (heaven as the LORD's own domain, earth given to the children of men, the dead who cannot praise, and the closing vow ending in Praise the LORD). Density about 1.39 cards per verse (18 verses, 25 cards), reflecting genuinely distinct teaching points per card rather than padding the repetitive idol-mockery verses with duplicate cards. scripts/check_bible_note_style.py was clean on the first pass, 0 problems (no hyphens, em dashes, semicolons, contractions, banned filler, or banned hedge words; every card exactly 4 bullets 3 to 8 words each with a distinct emoji, last bullet starting with the takeaway emoji; no duplicate card titles across all 25 cards). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (mercy, truth, heathen, mindful, hallelujah), and closes on meaning rather than mechanics, with no repeated body-line shapes across cards in the same section. Parser check passed via getBibleReaderStudySections('psalms', 115) (6/6 sections, verse ranges 1-2/3-4/5-8/9-11/12-15/16-18 with no gaps, 25 total cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/psalmsOneHundredFifteenSource.ts, preserveExactPhraseBodies range extended from Psalms chapter 114 to chapter 115, replaceStudySectionsForBookRange(\"psalms\", 115, 115, PSALMS_ONE_HUNDRED_FIFTEEN_PERSONAL_SECTIONS) added right after the Psalms 114 call). Next forward-progress target is Psalms 116.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-19T14:46:38Z"
+        },
+        {
+          "name": "detached HEAD investigated: git fetch showed origin/main force-updated to match detached HEAD exactly; checked out main and reset to origin/main, no data loss",
+          "at": "2026-09-19T14:46:50Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 115 (new chapter, forward progress, priority queue and redo list both empty)",
+          "at": "2026-09-19T14:47:10Z"
+        },
+        {
+          "name": "KJV text fetched: Psalms 115 (18 verses) from raw.githubusercontent.com aruljohn/Bible-kjv",
+          "at": "2026-09-19T14:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline (SKILL.md) read in full; reviewed psalmsOneHundredFourteenSource.ts as structural reference",
+          "at": "2026-09-19T14:51:56Z"
+        },
+        {
+          "name": "wrote lib/psalmsOneHundredFifteenSource.ts (6 sections, 25 cards, 18 verses)",
+          "at": "2026-09-19T14:59:00Z"
+        },
+        {
+          "name": "style checker clean: 25 cards, no problems",
+          "at": "2026-09-19T14:59:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range extended to 115, replaceStudySectionsForBookRange call added",
+          "at": "2026-09-19T15:00:00Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 25 cards, matches design",
+          "at": "2026-09-19T15:00:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-19T15:01:20Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-19T15:03:00Z"
+        }
+      ]
     }
   ]
 }
