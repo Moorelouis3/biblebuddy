@@ -261,6 +261,11 @@ async function checkArticle(slug) {
     problems.push("contains an end-of-post CTA; the end card is the only CTA");
   }
   if (!/Frequently Asked Questions/i.test(source)) problems.push("missing a Frequently Asked Questions section");
+  // These notes are the written version of the spoken episode (Louis,
+  // 2026-09-19: "it should be a narration, not a verse breakdown").
+  if (/Top d+ (Key )?Verses|Top Verses From/i.test(source)) {
+    problems.push("has a \"Top verses\" section; Study Notes are a narration, not a verse breakdown");
+  }
   if (!blogContent.includes(`bibleYearDay: ${dayItem.day},`)) problems.push(`BLOG_ARTICLES entry is missing bibleYearDay: ${dayItem.day}`);
   if (!blogContent.includes(`slug: "${slug}"`)) problems.push(`${slug} is not in BLOG_ARTICLES`);
 

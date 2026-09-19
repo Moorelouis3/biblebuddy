@@ -144,22 +144,40 @@ Same file shape as Day 1 (`BlogPostShell`, `VerseQuote`, `ArticleLink`,
 a multi-chapter day can run longer). The reading decides. Never pad to
 reach a number, never cut a real point to stay under one.
 
+**This is a narration, not a verse breakdown.** Louis, 2026-09-19, on the
+first draft of Day 1: "it should be a narration not a lame break down of
+verses." The article is the **written version of that day's spoken
+episode**. Read the day's script end to end first, then tell the reading
+the way the script tells it - same order, same voice, same turns - in
+flowing prose. The reader should feel talked to, not handed a list.
+
+So: no "Top 5 verses" section, no verse-by-verse cards, no section that is
+just a quote followed by three sentences of commentary. Verses appear
+inside the telling, where the story reaches them.
+
 **Structure** (use what the day needs; do not force empty headings):
 
-1. Intro - meet the reader, name the day and the reading in the first 100
-   words, say what the article will do for them.
-2. The walkthrough - 4 to 7 H3 sections covering the day's reading **in
-   order**, grounded in the script's teaching, quoting key verses with
-   `VerseQuote`.
-3. Hard questions - genuinely disputed or confusing points. Separate what
-   the text says from how Christians interpret it; give the main views
-   fairly, do not manufacture certainty.
-4. Top verses from the day - 3 to 5 H3s, quote plus a short breakdown.
-5. Frequently Asked Questions - only the questions this day's material
-   actually raises, phrased how people search. Do not manufacture weak
-   ones for SEO.
-6. `🔑 Final Thoughts` - 2 or 3 takeaways specific to THIS day and one
-   concrete next step.
+1. Open the way the script opens - the same greeting and set up, in
+   writing. Name the day and the reading in the first 100 words.
+2. The walkthrough - one H2 per block of the day's script, in order,
+   following the script's teaching for that block. Prose paragraphs, with
+   `VerseQuote` for the verses the script actually leans on (roughly 5 to
+   10 across the article, not one per verse). Short paragraphs, one idea
+   each, the 📌 marker on the line that carries the point.
+3. Hard questions - where the day genuinely raises one, handle it inside
+   the narration or in the FAQ. Separate what the text says from how
+   Christians interpret it; give the main views fairly, do not manufacture
+   certainty.
+4. Close the way the script closes - the same landing, in writing,
+   including what tomorrow holds. No separate "Final Thoughts" heading is
+   needed if the close does that work.
+5. Frequently Asked Questions - last section, 4 to 6 questions this day's
+   material actually raises, phrased how people search. Do not manufacture
+   weak ones for SEO. (The quality gate requires this section.)
+
+`app/blog/bible-in-one-year-day-1-study-notes/page.tsx` is the reference
+for all of this - it was rewritten to the narration standard on
+2026-09-19. Match it.
 
 **No CTA.** The template's end card (`BlogAuthorBox`) is the only CTA, and
 `BibleYearNotesNav` (in `BlogPostShell`) adds the previous/next day links
