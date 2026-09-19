@@ -184,12 +184,22 @@ for all of this - it was rewritten to the narration standard on
 automatically once both days' `BLOG_ARTICLES` entries exist - nothing to
 wire by hand.
 
-**Video embed (optional, never guessed):** check
-`getBibleYearDayYoutubeVideoId(day)` from `lib/bibleYearDayYoutubeVideos.ts`.
-If it returns an id, embed it near the top of the article body (right after
-the intro) with `BlogVideoEmbed` (`components/blog/BlogVideoEmbed.tsx`),
-same as `app/blog/who-is-jezebel/page.tsx` does. **If it returns null,
-do not embed anything and do not invent an id.** Instead keep ONE line in
+**Video embed (never guessed):** check
+`getBibleYearDayYoutubeVideoId(day)` from `lib/bibleYearDayYoutubeVideos.ts`
+(Days 1 to 21 are filled in; Louis adds later days as they go public). If it
+returns an id, embed it with `BlogVideoEmbed`
+(`components/blog/BlogVideoEmbed.tsx`).
+
+**Where it goes:** at the END of the first body section, not directly under
+the intro. Louis, 2026-09-19: "i dont want the banner and the youtube
+embedded video to be too close then it looks crowded." Day 1 is the
+reference - banner, title, intro, share bar, first section, then the video.
+
+Its `title` and `uploadDate` must be the real ones: read them from
+`https://www.youtube.com/oembed?url=https://youtu.be/<id>&format=json` and
+the `"uploadDate"` field on the watch page. Never invent either.
+**If the registry returns null, do not embed anything and do not invent an
+id.** Instead keep ONE line in
 `MARCUS_HANDOFF.md` listing days waiting on a real video (same pattern as
 the chapter library's banner line), updating that same line rather than
 adding a block per day. Never change a YouTube video's privacy setting as

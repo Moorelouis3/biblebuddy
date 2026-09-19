@@ -1,6 +1,8 @@
 import BlogPostShell from "@/components/blog/BlogPostShell";
+import BlogVideoEmbed from "@/components/blog/BlogVideoEmbed";
 import Link from "next/link";
 import { buildBlogArticleMetadata } from "@/lib/blogContent";
+import { getBibleYearDayYoutubeVideoId } from "@/lib/bibleYearDayYoutubeVideos";
 
 export const metadata = buildBlogArticleMetadata("bible-in-one-year-day-1-study-notes", {
   title: "Bible in One Year Day 1 Study Notes: Genesis 1-2",
@@ -24,6 +26,9 @@ function ArticleLink({ href, children }: { href: string; children: React.ReactNo
     </Link>
   );
 }
+
+// From the registry, never hand typed (docs/BIBLE_YEAR_STUDY_NOTES_WRITER_AGENT.md).
+const videoId = getBibleYearDayYoutubeVideoId(1);
 
 export default function BibleInOneYearDayOneStudyNotesPage() {
   return (
@@ -116,6 +121,15 @@ export default function BibleInOneYearDayOneStudyNotesPage() {
             start to stand out. Day six breaks it. Day seven breaks it completely.
           </p>
         </div>
+        {videoId ? (
+          <BlogVideoEmbed
+            videoId={videoId}
+            title="Day 1 | The Creation of the World | Bible in One Year | Genesis 1-2 Explained"
+            description="Day 1 of the Bible in One Year: Genesis 1 and 2, the six days of creation, the seventh day of rest, and the garden of Eden, explained in plain English."
+            uploadDate="2026-08-28"
+            caption="Prefer to listen? This is Day 1 of the Bible in One Year, the same walk through Genesis 1 and 2."
+          />
+        ) : null}
       </section>
 
       <section className="mt-14">
