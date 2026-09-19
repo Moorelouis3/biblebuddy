@@ -67,6 +67,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-13-explained",
+    title: "Genesis 13 Explained: Abram, Lot, and the Land Promise Renewed",
+    description:
+      "Genesis 13 explained verse by verse: Abram and Lot separate, Lot chooses Sodom, and God renews His land promise to Abram at Hebron.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-13-explained",
+    publishedAt: "2026-09-19",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-13-explained.jpg",
+    groupPost: {
+      title: "Genesis 13 Explained 📖",
+      content:
+        "Too much wealth. Not enough land.\nAbram and Lot have to split up.\n\n📌 Giving up your first pick is not the same as losing.\n\n📖 Abram lets Lot choose the land first.\n📖 Lot picks the plain toward Sodom by sight.\n📖 God renews the promise the moment Abram has less.\n\nNew article on:\n🟢 why Abram gave **Lot** the first choice\n🟢 what Lot's choice of **Sodom** really cost him\n🟢 how God's promise grew once Abram had less\n\nWhat part of Abram and Lot's split stood out to you? 🙏",
+    },
+  },
+  {
     slug: "genesis-12-explained",
     title: "Genesis 12 Explained: The Call of Abram and the Promise That Changes Everything",
     description:
