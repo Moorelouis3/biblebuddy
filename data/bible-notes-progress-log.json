@@ -38621,6 +38621,63 @@
           "at": "2026-09-20T06:54:43Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 131,
+      "startedAt": "2026-09-20T07:47:35Z",
+      "finishedAt": "2026-09-20T07:55:07Z",
+      "durationMinutes": 7.5,
+      "sections": 1,
+      "cards": 6,
+      "verses": 3,
+      "notes": "New forward-progress chapter (priority queue and redo-remaining backlog both empty; Psalms 1-130 already wired, 131 was the first missing chapter in canonical order). Short Song of degrees carrying David's own name in its heading: heart not haughty, eyes not lofty, no reaching for great matters or things too high for him, explained as contentment rather than laziness (1). Soul quieted like a weaned child, explained through the ancient weaning age and the settled state of a weaned child versus a nursing infant, with the repeated line read as Hebrew poetic emphasis (2). Closes by shifting from David's own voice to a command for the whole nation to hope in the LORD from henceforth and for ever (3). Kept as a single section since the whole psalm is only three verses. 6 phrase cards, about 2 cards per verse.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-20T07:47:35Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 131 (new chapter, normal forward progress; priority queue and redo backlog both empty)",
+          "at": "2026-09-20T07:48:17Z"
+        },
+        {
+          "name": "KJV text fetched: Psalms 131 (3 verses) from raw.githubusercontent.com aruljohn/Bible-kjv",
+          "at": "2026-09-20T07:48:32Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-09-20T07:51:18Z"
+        },
+        {
+          "name": "source file written: lib/psalmsOneHundredThirtyOneSource.ts (1 section, 6 phrase cards)",
+          "at": "2026-09-20T07:51:18Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 6 cards)",
+          "at": "2026-09-20T07:51:22Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call, preserveExactPhraseBodies range extended to 131)",
+          "at": "2026-09-20T07:52:26Z"
+        },
+        {
+          "name": "parser check passed (npx tsx: 1 section, 6 phrases, no throw)",
+          "at": "2026-09-20T07:52:39Z"
+        },
+        {
+          "name": "wiring confirmed via getBibleReaderStudySections('Psalms', 131) - 1 section, 6 cards returned",
+          "at": "2026-09-20T07:54:15Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-20T07:54:15Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json entry appended, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + totals updated)",
+          "at": "2026-09-20T07:55:07Z"
+        }
+      ]
     }
   ]
 }

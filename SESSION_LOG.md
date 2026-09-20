@@ -5225,3 +5225,7 @@ changes. MARCUS_HANDOFF.md's existing render-status entry still accurate;
 nothing new to add. This run fired from the stale duplicate trigger flagged
 2026-09-10 ("days 12 to 30" / Day 11 quality-bar wording) — still not
 disabled at the environment level. Stopping cleanly per the job doc.
+
+## 2026-09-20T07:55:07Z (hourly chapter notes run)
+Chapter: Psalms 131 | Duration: 7.5 min | Sections: 1 | Cards: 6 | Status: pass
+Next up: Psalms 132
