@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-14-explained",
+    title: "Genesis 14 Explained: The War of the Kings and Melchizedek",
+    description:
+      "Genesis 14 explained verse by verse: the war of four kings against five, Abram's rescue of Lot, and the meeting with Melchizedek.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-14-explained",
+    publishedAt: "2026-09-20",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-14-explained.jpg",
+    groupPost: {
+      title: "Genesis 14 Explained 📖",
+      content:
+        "Four kings against five. A nephew taken captive.\nAbram becomes a soldier overnight.\n\n📌 A blessing worth having is not one you let someone else take credit for.\n\n📖 Abram rescues Lot with 318 men born in his own house.\n📖 A mysterious priest named Melchizedek blesses him.\n📖 Abram refuses a reward from the king of Sodom.\n\nNew article on:\n🟢 who **Melchizedek** really was\n🟢 why Abram gave him a **tithe**\n🟢 why Abram turned down the **king of Sodom**\n\nWhat part of Abram's rescue of Lot stood out to you? 🙏",
+    },
+  },
+  {
     slug: "bible-in-one-year-day-4-study-notes",
     title: "Bible in One Year Day 4 Study Notes: Genesis 8-10",
     description:
