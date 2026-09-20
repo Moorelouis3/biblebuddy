@@ -38560,6 +38560,59 @@
           "at": "2026-09-20T05:54:19Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 130,
+      "startedAt": "2026-09-20T06:46:53Z",
+      "finishedAt": "2026-09-20T06:53:42Z",
+      "durationMinutes": 6.8,
+      "sections": 2,
+      "cards": 14,
+      "verses": 8,
+      "notes": "New forward-progress chapter (priority queue and redo-remaining backlog both empty; Psalms 1-129 already wired, 130 was the first missing chapter in canonical order). Short psalm crying out of the depths for God to mark not iniquities, turning on forgiveness that produces reverence rather than moral carelessness (1-4), then waiting for the LORD more than watchmen wait for the morning, closing on plenteous redemption reaching all the way to the sin named in verse three (5-8). Split into two sections. 14 phrase cards, 1.75 cards per verse.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-20T06:46:53Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 130 (new chapter; priority queue and style-redo backlog both empty, Psalms 1-129 already wired)",
+          "at": "2026-09-20T06:47:39Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Psalms.json)",
+          "at": "2026-09-20T06:48:05Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-20T06:49:10Z"
+        },
+        {
+          "name": "source file written (lib/psalmsOneHundredThirtySource.ts)",
+          "at": "2026-09-20T06:52:30Z"
+        },
+        {
+          "name": "style checker clean (no problems found on first pass)",
+          "at": "2026-09-20T06:52:45Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts import, apply function, call site, preserveExactPhraseBodies extended to 130)",
+          "at": "2026-09-20T06:53:00Z"
+        },
+        {
+          "name": "parser check passed (2 sections, 14 cards)",
+          "at": "2026-09-20T06:53:05Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-20T06:53:21Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-20T06:53:42Z"
+        }
+      ]
     }
   ]
 }

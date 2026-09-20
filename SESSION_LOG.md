@@ -5208,3 +5208,7 @@ still accurate; nothing new to add. Stopping cleanly per the job doc.
 ## 2026-09-20T05:53:41Z (hourly chapter notes run)
 Chapter: Psalms 129 | Duration: 7.5 min | Sections: 2 | Cards: 15 | Status: pass
 Next up: Psalms 130
+
+## 2026-09-20T06:53:42Z (hourly chapter notes run)
+Chapter: Psalms 130 | Duration: 6.8 min | Sections: 2 | Cards: 14 | Status: pass
+Next up: Psalms 131
