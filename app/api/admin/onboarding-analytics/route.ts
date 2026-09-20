@@ -2727,11 +2727,16 @@ function mergeProfileSignupAttributionIntoTrafficSources(
         .slice(0, 100)
         .map((signup) => {
           const profile = signup.userId ? profileRowByUserId.get(signup.userId) : undefined;
-          const blogSlug = (profile?.signup_source_detail || "").match(/^blog:([^:]+)/)?.[1];
+          const detail = profile?.signup_source_detail || "";
+          const blogSlug = detail.match(/^blog:([^:]+)/)?.[1];
+          // The page they first opened, recorded on every signup since
+          // 2026-09-20 - the only entry signal that survives Facebook and
+          // Instagram stripping the referrer.
+          const entryPath = detail.match(/(?:^| )page:(\/\S*)/)?.[1];
           return {
             ...signup,
             studyMode: profile?.preferred_study_mode || null,
-            pagePath: blogSlug ? `/blog/${blogSlug}` : signup.pagePath,
+            pagePath: blogSlug ? `/blog/${blogSlug}` : signup.pagePath || entryPath || "",
           };
         }),
     }))

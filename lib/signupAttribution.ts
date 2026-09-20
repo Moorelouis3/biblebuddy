@@ -13,12 +13,20 @@ export type SignupAttribution = {
   // - one says which channel found them, the other says what converted them.
   firstTouchSource: string | null;
   firstTouchReferrer: string | null;
+  // The first page of ours this visitor ever opened, e.g.
+  // "/blog/genesis-1-explained". Captured on the first page view and never
+  // overwritten (2026-09-20). Facebook and Instagram open links in their own
+  // browsers, which send no referrer, so a signup from there used to record
+  // nothing at all: 192 of one week's 437 new users had no entry page. The
+  // referrer is theirs to withhold, but which page they were on is ours.
+  entryPath: string | null;
 };
 
 const PENDING_SIGNUP_ATTRIBUTION_KEY = "bb:pending-signup-attribution";
 const FIRST_TOUCH_SOURCE_KEY = "bb:first-touch-source";
 const FIRST_TOUCH_REFERRER_KEY = "bb:first-touch-referrer";
 const LANDING_REFERRER_KEY = "bb:landing-referrer";
+const FIRST_PAGE_KEY = "bb:first-page";
 
 function clean(value: unknown) {
   return typeof value === "string" && value.trim() ? value.trim() : null;
@@ -86,6 +94,13 @@ export function normalizeSignupSource(sourceValue?: unknown, referrerValue?: unk
 export function captureFirstTouch() {
   if (typeof window === "undefined") return;
 
+  // The entry page is recorded first and unconditionally: it is the one thing
+  // we always know, even when the referrer is stripped and there is no tag on
+  // the link. Path only - query strings can carry personal data.
+  if (!safeGet(window.localStorage, FIRST_PAGE_KEY)) {
+    safeSet(window.localStorage, FIRST_PAGE_KEY, window.location.pathname.slice(0, 300));
+  }
+
   const referrer = clean(document.referrer);
   // An internal referrer means this is not the visit that brought them here.
   let externalReferrer: string | null = referrer;
@@ -133,6 +148,7 @@ export function getSignupAttributionFromBrowser(): SignupAttribution {
       utmCampaign: null,
       firstTouchSource: null,
       firstTouchReferrer: null,
+      entryPath: null,
     };
   }
 
@@ -156,7 +172,7 @@ export function getSignupAttributionFromBrowser(): SignupAttribution {
   // report signups per post and per banner.
   const blogPromo = clean(params.get("promo"));
   const blogPost = clean(params.get("post"));
-  const sourceDetail =
+  const baseDetail =
     source === "Blog" && (blogPromo || blogPost)
       ? `blog:${blogPost || "unknown"}:${blogPromo || "unknown"}`
       : utmSource
@@ -164,10 +180,16 @@ export function getSignupAttributionFromBrowser(): SignupAttribution {
         : landingSource
           ? `landing:${landingSource}`
           : getReferrerHost(referrerUrl);
+  const entryPath = clean(safeGet(window.localStorage, FIRST_PAGE_KEY)) || clean(window.location.pathname);
+  // The entry page is always appended, so a signup with no referrer and no
+  // campaign tag still says which page the person came in on. Existing
+  // readers match on the "blog:" prefix, which is untouched.
+  const sourceDetail = [baseDetail, entryPath ? `page:${entryPath}` : null].filter(Boolean).join(" ") || null;
 
   return {
     source,
     sourceDetail,
+    entryPath,
     referrerUrl,
     landingSessionId: clean(
       safeGet(window.localStorage, "bb:landing-session-id") ||
@@ -205,6 +227,7 @@ export function readPendingSignupAttribution(): SignupAttribution | null {
         clean(parsed.firstTouchSource) || clean(safeGet(window.localStorage, FIRST_TOUCH_SOURCE_KEY)),
       firstTouchReferrer:
         clean(parsed.firstTouchReferrer) || clean(safeGet(window.localStorage, FIRST_TOUCH_REFERRER_KEY)),
+      entryPath: clean(parsed.entryPath) || clean(safeGet(window.localStorage, FIRST_PAGE_KEY)),
     };
   } catch {
     return null;
