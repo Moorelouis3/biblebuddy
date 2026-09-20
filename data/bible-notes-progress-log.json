@@ -38249,6 +38249,63 @@
           "at": "2026-09-19T23:55:25Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 125,
+      "startedAt": "2026-09-20T01:47:07Z",
+      "finishedAt": "2026-09-20T01:51:39Z",
+      "durationMinutes": 5,
+      "sections": 2,
+      "cards": 7,
+      "verses": 5,
+      "notes": "New chapter, normal forward progress. Style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) confirmed empty, and no lib file existed for Psalms 125 (124 was the most recent wired chapter), so normal forward progress. Session started with HEAD detached one commit ahead of a stale local main (the same recurring unrelated-history caching artifact logged repeatedly in MARCUS_HANDOFF.md); a fresh git fetch origin main showed the real, current origin/main matches the detached HEAD exactly (746f7de, Bible in One Year Day 364), so nothing was at risk, fixed with git checkout -B main origin/main before touching any files. Fetched real KJV text for Psalms 125 (5 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 125 is the sixth Song of Ascents: trusting the LORD pictured as being as immovable as mount Zion, the LORD surrounding His people the way the ring of mountains surrounds Jerusalem (1-2), then the promise that the wicked's rod of rule will not rest permanently on the righteous's inherited land so the righteous are not tempted into sin by prolonged oppression, a short prayer for fairness toward the good, a warning for those who choose crooked ways, and the closing line, peace shall be upon Israel, which echoes the mount Zion security imagery from verse one (3-5). Chunked into 2 sections matching those two movements. Density 1.4 cards/verse (5 verses, 7 cards). scripts/check_bible_note_style.py ran clean on the first pass, zero problems, across all 7 cards. Confirmed every card opens with one of the four approved moves, defines its key terms in plain language (mount Zion, rod, lot, put forth their hands unto iniquity, crooked ways), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card ending on \ud83d\udcd6, no duplicate card titles, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file. Parser check passed via getBibleReaderStudySections('Psalms', 125) (2/2 sections, verse ranges 1-2/3-5 with no gaps, 7 total cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/psalmsOneHundredTwentyFiveSource.ts, preserveExactPhraseBodies range extended from psalms chapter 124 to chapter 125, replaceStudySectionsForBookRange(\"psalms\", 125, 125, PSALMS_ONE_HUNDRED_TWENTY_FIVE_PERSONAL_SECTIONS) added right after the Psalms 124 call). Next forward-progress target is Psalms 126.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-20T01:46:53Z"
+        },
+        {
+          "name": "target chapter determined",
+          "at": "2026-09-20T01:47:07Z",
+          "detail": "Psalms 125, new chapter (style-redo backlog empty, last wired Psalms chapter was 124)"
+        },
+        {
+          "name": "KJV text fetched",
+          "at": "2026-09-20T01:47:12Z",
+          "detail": "5 verses from raw.githubusercontent.com/aruljohn/Bible-kjv/master/Psalms.json"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-09-20T01:47:14Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-09-20T01:49:37Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-09-20T01:49:39Z"
+        },
+        {
+          "name": "wired into reader",
+          "at": "2026-09-20T01:49:49Z",
+          "detail": "import added, replaceStudySectionsForBookRange call added, preserveExactPhraseBodies psalms range extended from 124 to 125"
+        },
+        {
+          "name": "parser check passed",
+          "at": "2026-09-20T01:50:05Z",
+          "detail": "2 sections, 7 cards, no throw"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-20T01:51:28Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-20T01:51:39Z"
+        }
+      ]
     }
   ]
 }

@@ -5161,3 +5161,7 @@ Next up: Day 364
 ## 2026-09-20T01:29:17Z (bible year day writer run)
 Day: 364 — Babylon Falls and the King Returns (Revelation 17-19) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only (apocalyptic vision, no dialogue voices)
 Next up: Day 365. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-20T01:51:39Z (hourly chapter notes run)
+Chapter: Psalms 125 | Duration: 5 min | Sections: 2 | Cards: 7 | Status: pass
+Next up: Psalms 126
