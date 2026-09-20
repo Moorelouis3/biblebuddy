@@ -38438,6 +38438,59 @@
           "at": "2026-09-20T03:58:13Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 128,
+      "startedAt": "2026-09-20T04:47:24Z",
+      "finishedAt": "2026-09-20T04:54:05Z",
+      "durationMinutes": 6.7,
+      "sections": 2,
+      "cards": 11,
+      "verses": 6,
+      "notes": "New forward-progress chapter (redo-remaining backlog empty). Short psalm, 6 verses, split into two sections (blessing on the home vs. peace for generations). 11 phrase cards, ~1.8 cards per verse.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-20T04:47:24Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 128 (new chapter, redo-remaining empty)",
+          "at": "2026-09-20T04:47:24Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Psalms.json)",
+          "at": "2026-09-20T04:48:30Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-20T04:48:30Z"
+        },
+        {
+          "name": "source file written (lib/psalmsOneHundredTwentyEightSource.ts)",
+          "at": "2026-09-20T04:52:10Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-09-20T04:52:30Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts import, apply function, call site, preserveExactPhraseBodies extended to 128)",
+          "at": "2026-09-20T04:53:00Z"
+        },
+        {
+          "name": "parser check passed (2 sections, 11 cards)",
+          "at": "2026-09-20T04:53:30Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-20T04:53:47Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-20T04:54:05Z"
+        }
+      ]
     }
   ]
 }
