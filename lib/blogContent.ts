@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-18-explained",
+    title: "Genesis 18 Explained: Sarah's Laugh and the Bargain for Sodom",
+    description:
+      "Genesis 18 explained verse by verse: the LORD visits Abraham, promises Isaac by name, Sarah's laugh gets caught, and Abraham bargains for Sodom's righteous.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-18-explained",
+    publishedAt: "2026-09-20",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-18-explained.jpg",
+    groupPost: {
+      title: "Genesis 18 Explained 📖",
+      content:
+        "Three strangers show up at Abraham's tent.\nOne of them already knows his wife's name.\n\n📌 Nothing is too hard for the LORD.\n\n📖 Sarah laughs at the promise, quietly, alone.\n📖 God repeats her private thought back to her.\n📖 Abraham bargains God down from fifty to ten.\n\nNew article on:\n🟢 who the **three visitors** really were\n🟢 why God caught **Sarah's laugh** but not Abraham's\n🟢 how Abraham's **bold prayer** for Sodom actually worked\n\nHave you ever laughed quietly at a promise that felt impossible? 🙏",
+    },
+  },
+  {
     slug: "genesis-17-explained",
     title: "Genesis 17 Explained: A New Name and the Sign of Circumcision",
     description:
