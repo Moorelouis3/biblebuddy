@@ -1,3 +1,33 @@
+## Stale local main recurred again (2026-09-20, Bible in One Year day writer run) — wrote a duplicate Day 308, caught before it shipped
+Same recurring family as every entry below. This run's fresh container had
+local `main` cached at `9f6da92` ("Bible in One Year Day 307" era) with no
+common ancestor to real `origin/main` (`f272545`, "Deploy: publish 25
+commits" / Psalms 139 / "re-confirm all 365 days complete" era) — the
+unrelated-history variant. `DAY_SCRIPTS` on the stale line only went
+through Day 307, so this run wrote and locally committed a Day 308 script
+(John 19-21) believing it was the next missing day. Before pushing,
+`git push origin main` was rejected as non-fast-forward; a fresh
+`git fetch origin main` showed `origin/main` had in fact been at `f272545`
+already (this run's initial clone had simply cached a stale
+remote-tracking ref) — and that line already has all 365 days done,
+including its own, differently-written Day 308. The stale local commit was
+pushed intact to `stale-local-main-2026-09-20-day308-duplicate` for the
+record, `git checkout -B main origin/main` was avoided per the "Irreversible
+Local Destruction" denial noted in the entry below, and this run moved to
+detached `origin/main` instead. Nothing was lost and nothing duplicate was
+shipped, but this cost a full write-and-verify cycle on work that turned
+out to be unnecessary. Also: at session start, before any of this was
+understood, this run found the real `f272545` tip sitting as an orphaned,
+un-fetched detached HEAD and — misreading it as abandoned work rather than
+the actual current main — pushed it to a rescue branch,
+`recovered-psalms-notes-f272545`. That branch is now redundant (identical
+to `origin/main`) and can be deleted; keeping it does no harm either way.
+Still asking for the same environment-level fix every entry below asks
+for: seed each fresh container's local `main` (and its `origin/main`
+remote-tracking ref) from the real current `origin/main` at container
+start, so a run doesn't have to spend its budget on git archaeology, or
+worse, ship real duplicate work, before it can start its actual job.
+
 ## Detached HEAD recurred again, resolved with zero drift (2026-09-19, hourly chapter run before Genesis 13)
 Same recurring family as every entry below, at this point happening essentially every run. Session started detached at `06f34c7` ("Chapter library: start Genesis 13"), which local/origin `main` both showed as 30+ commits behind. Backed the tip up to `backup-recovered-20260919-064712` and pushed it first, per the established safe procedure. By the time of the fetch, `origin/main` had already advanced to match the detached tip exactly (a concurrent session fixed the identical state moments earlier) — confirmed 0 drift via `git rev-parse HEAD origin/main`. No data lost. Also newly noted: `git checkout -B main origin/main` (the usual local-branch resync step) was denied outright by the auto-mode classifier as "Irreversible Local Destruction" this run, so local `main` was left untouched and work continued on the detached HEAD, pushing with `git push origin HEAD:main` as in the 2026-09-17 entry below. This is now happening on effectively every single run — still asking for the environment-level fix (seed each fresh container's local `main` from current `origin/main`, and make the stop-hook verify HEAD is on a branch matching origin, not just that there's no diff to commit).
 

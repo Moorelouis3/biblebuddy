@@ -5290,3 +5290,12 @@ Next up: Psalms 139
 ## 2026-09-20T15:59:31Z (hourly chapter notes run)
 Chapter: Psalms 139 | Duration: 14 min | Sections: 4 | Cards: 42 | Status: pass
 Next up: Psalms 140
+
+## 2026-09-20T16:35:00Z (bible year day writer run)
+Nothing to do: all 365 days already have scripts (confirmed against the
+real origin/main after recovering from a stale-local-main start — see
+MARCUS_HANDOFF.md). This run's own Day 308 draft, written before that was
+discovered, duplicated the already-shipped Day 308 and was not pushed to
+main.
+Next up: nothing — the plan is complete. Only audio rendering remains,
+tracked in MARCUS_HANDOFF.md.
