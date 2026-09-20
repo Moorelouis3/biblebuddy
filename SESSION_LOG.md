@@ -5263,3 +5263,7 @@ cleanly per the job doc — this range is finished.
 ## 2026-09-20T12:00:27Z (hourly chapter notes run)
 Chapter: Psalms 135 | Duration: 15 min | Sections: 7 | Cards: 35 | Status: pass
 Next up: Psalms 136
+
+## 2026-09-20T12:56:40Z (hourly chapter notes run)
+Chapter: Psalms 136 | Duration: 10 min | Sections: 5 | Cards: 24 | Status: pass
+Next up: Psalms 137
