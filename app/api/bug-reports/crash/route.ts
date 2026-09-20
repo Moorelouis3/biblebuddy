@@ -50,9 +50,16 @@ export async function POST(request: NextRequest) {
   }
 
   // Same error on the same page = same bug. Numbers and hashes in chunk
-  // names change every deploy, so strip them before comparing.
+  // names change every deploy, so strip them before comparing. Deploy ids
+  // (dpl_...) are mixed-case alphanumeric, not pure hex, so they need their
+  // own pass or "failed to load chunk" errors get a fresh fingerprint (and
+  // a fresh open bug) on every single deploy instead of collapsing.
   const pagePath = page.split("?")[0];
-  const normalized = `${name}:${message}`.replace(/[0-9a-f]{6,}/gi, "#").replace(/\d+/g, "#").slice(0, 150);
+  const normalized = `${name}:${message}`
+    .replace(/dpl_[A-Za-z0-9]+/g, "dpl_#")
+    .replace(/[0-9a-f]{6,}/gi, "#")
+    .replace(/\d+/g, "#")
+    .slice(0, 150);
   const fingerprint = `crash:${pagePath}:${normalized}`;
 
   try {
