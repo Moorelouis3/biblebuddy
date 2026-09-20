@@ -5271,3 +5271,14 @@ Next up: Psalms 137
 ## 2026-09-20T13:57:01Z (hourly chapter notes run)
 Chapter: Psalms 137 | Duration: 8 min | Sections: 3 | Cards: 15 | Status: pass
 Next up: Psalms 138
+
+## 2026-09-20 (bug fixer run)
+4 open bugs, all handled. Fixed: crash-report dedup was not stripping
+deploy ids, so the same harmless "stale chunk after a deploy" crash was
+opening a brand new bug report on every single release instead of being
+counted as one ongoing item (commit 2478050). One duplicate "stale chunk"
+report closed against that fix. One old Android-only crash closed as not
+a bug (traced to something on the visitor's phone, not our code, not
+recurring). One report (can't switch Bible version on Bible in One Year
+Day 1) left open as new — could not reproduce, no new occurrences since
+the earlier diagnosis.
