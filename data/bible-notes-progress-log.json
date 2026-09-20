@@ -38499,6 +38499,59 @@
           "at": "2026-09-20T04:56:07Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 129,
+      "startedAt": "2026-09-20T05:46:08Z",
+      "finishedAt": "2026-09-20T05:53:41Z",
+      "durationMinutes": 7.5,
+      "sections": 2,
+      "cards": 15,
+      "verses": 8,
+      "notes": "New forward-progress chapter (priority queue and redo-remaining backlog both empty; Psalms 1-128 already wired, 129 was the first missing chapter in canonical order). Short psalm about Israel's long affliction (plowers plowing the back, furrows) turning to trust in God's righteousness (1-4), then an imprecatory prayer against those who hate Zion, pictured as thin rootless grass on a flat housetop roof that withers before it can be harvested, so no one ever exchanges the traditional reaper/passerby harvest blessing over it (5-8). Split into two sections. 15 phrase cards, ~1.9 cards per verse.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-20T05:46:08Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 129 (new chapter; priority queue and style-redo backlog both empty, Psalms 1-128 already wired)",
+          "at": "2026-09-20T05:46:08Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Psalms.json)",
+          "at": "2026-09-20T05:52:16Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-20T05:52:16Z"
+        },
+        {
+          "name": "source file written (lib/psalmsOneHundredTwentyNineSource.ts)",
+          "at": "2026-09-20T05:52:16Z"
+        },
+        {
+          "name": "style checker clean (after fixing one over length bullet)",
+          "at": "2026-09-20T05:52:16Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts import, apply function, call site, preserveExactPhraseBodies extended to 129)",
+          "at": "2026-09-20T05:52:16Z"
+        },
+        {
+          "name": "parser check passed (2 sections, 15 cards)",
+          "at": "2026-09-20T05:52:16Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-20T05:52:16Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-20T05:52:16Z"
+        }
+      ]
     }
   ]
 }

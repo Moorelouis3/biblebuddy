@@ -5204,3 +5204,7 @@ old local `main` cached ref; `git fetch` + `git reset --hard origin/main`
 `origin/main` tip. `npm install` + `npx tsc --noEmit` clean. No new day to
 write, no code changes. MARCUS_HANDOFF.md's existing render-status entry
 still accurate; nothing new to add. Stopping cleanly per the job doc.
+
+## 2026-09-20T05:53:41Z (hourly chapter notes run)
+Chapter: Psalms 129 | Duration: 7.5 min | Sections: 2 | Cards: 15 | Status: pass
+Next up: Psalms 130
