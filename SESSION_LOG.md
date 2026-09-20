@@ -5181,3 +5181,7 @@ have scripts, confirming the prior run's Day 365 completion note. `npx tsc
 --noEmit` clean. Nothing to write this run. MARCUS_HANDOFF.md's existing
 "waiting on local render" entry already reflects the full year being
 written, so no new note needed there. Stopping cleanly per the job doc.
+
+## 2026-09-20T03:57:08Z (hourly chapter notes run)
+Chapter: Psalms 127 | Duration: 8 min | Sections: 2 | Cards: 10 | Status: pass
+Next up: Psalms 128

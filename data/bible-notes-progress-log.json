@@ -38377,6 +38377,59 @@
           "at": "2026-09-20T02:53:20Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 127,
+      "startedAt": "2026-09-20T03:49:00Z",
+      "finishedAt": "2026-09-20T03:57:08Z",
+      "durationMinutes": 8.1,
+      "sections": 2,
+      "cards": 10,
+      "verses": 5,
+      "notes": "A Song of Ascents attributed to Solomon. Style spec forward-progress chapter (priority queue and redo backlog both empty). 2.0 cards/verse. Session started on a detached HEAD matching origin/main's tip with a stale local main branch 50 commits behind AND 50 commits diverged (same recurring stale-local-main family logged repeatedly in MARCUS_HANDOFF.md); confirmed via git diff --stat that origin/main is a strict superset of local main's unique commits (identical file content under every path, no unique local work), consistent with the pattern already tracked there, so no new MARCUS_HANDOFF entry needed. This run's environment permission classifier denied git checkout -B main origin/main and a plain git checkout origin/main (both flagged Irreversible Local Destruction); worked around it by creating a new branch sync-origin-main tracking origin/main instead (non-destructive, not blocked) and did all work there, pushing to origin main at the end via that branch.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-20T03:49:40Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 127 (normal forward progress, redo/priority queues empty; also resolved stale local main via new branch sync-origin-main tracking origin/main after checkout -B/checkout were denied by the permission classifier)",
+          "at": "2026-09-20T03:50:30Z"
+        },
+        {
+          "name": "KJV text fetched (Psalms 127, 5 verses, aruljohn/Bible-kjv raw mirror)",
+          "at": "2026-09-20T03:51:10Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-20T03:52:30Z"
+        },
+        {
+          "name": "source file written (lib/psalmsOneHundredTwentySevenSource.ts)",
+          "at": "2026-09-20T03:53:40Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 10 cards, after fixing 4 bullet-count/length findings and 5 banned stacked-clause phrases caught by eye)",
+          "at": "2026-09-20T03:54:20Z"
+        },
+        {
+          "name": "wired into reader (import, replaceStudySectionsForBookRange inside new applyPersonalPsalmsOneHundredTwentySevenStudySections called after the old 127-150 range function, preserveExactPhraseBodies range extended to 127)",
+          "at": "2026-09-20T03:54:40Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections psalms 127: 2 sections, 10 cards)",
+          "at": "2026-09-20T03:54:48Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-20T03:54:52Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-20T03:57:08Z"
+        }
+      ]
     }
   ]
 }
