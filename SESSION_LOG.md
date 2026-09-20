@@ -5267,3 +5267,7 @@ Next up: Psalms 136
 ## 2026-09-20T12:56:40Z (hourly chapter notes run)
 Chapter: Psalms 136 | Duration: 10 min | Sections: 5 | Cards: 24 | Status: pass
 Next up: Psalms 137
+
+## 2026-09-20T13:57:01Z (hourly chapter notes run)
+Chapter: Psalms 137 | Duration: 8 min | Sections: 3 | Cards: 15 | Status: pass
+Next up: Psalms 138
