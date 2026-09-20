@@ -5336,3 +5336,7 @@ but matched origin/main exactly (0 drift). `npm install` + `npx tsc
 --noEmit` both clean. Already noted in MARCUS_HANDOFF.md (audio render
 entry); not duplicating it there.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-20T21:57:10Z (hourly chapter notes run)
+Chapter: Psalms 145 | Duration: 11 min | Sections: 7 | Cards: 36 | Status: pass
+Next up: Psalms 146
