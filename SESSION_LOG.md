@@ -5153,3 +5153,7 @@ Next up: Day 362
 ## 2026-09-20T00:31:08Z (bible year day writer run)
 Day: 362 — Witness, Beast, and Faithful Endurance (Revelation 11-13) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only (apocalyptic vision, no dialogue voices)
 Next up: Day 363. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-20T01:27:58Z (bible year day writer run)
+Day: 363 — Harvest, Bowls, and Judgment (Revelation 14-16) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only (apocalyptic vision, no dialogue voices)
+Next up: Day 364
