@@ -38249,6 +38249,78 @@
           "at": "2026-09-19T23:55:25Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 125,
+      "startedAt": "2026-09-20T00:46:14Z",
+      "finishedAt": "2026-09-20T01:01:53Z",
+      "durationMinutes": 16,
+      "sections": 1,
+      "cards": 10,
+      "verses": 5,
+      "notes": "New chapter, normal forward progress. Session started with a critical repo-state discovery: the local working copy's HEAD (75647ca) was a detached commit 50 commits ahead of origin/main (9f6da92, stuck at Add Bible in One Year Day 307). Ran git fetch --unshallow and confirmed via git merge-base --is-ancestor that origin/main IS a strict ancestor of that detached tip, meaning it is a clean fast forward, not divergent history. The gap contains 28 real chapter-note commits (Psalms 97 through 124) and 57 Bible in One Year day scripts plus several [deploy] tagged feature commits, none of which ever reached origin/main despite prior sessions believing their pushes succeeded. Discovered 15 pre-existing rescue/backup branches on origin from this exact same recurring failure dating back to 2026-08-13, none ever merged back to main, including one from a prior Psalms 124 run that explicitly misdiagnosed this same symptom as a shallow-clone false alarm and incorrectly concluded no push was needed. Given the scale (78 commits spanning weeks) and that merging to main would immediately trigger a batched Vercel deploy of everything since the embedded [deploy] commits, judged this a decision for Louis rather than something to force through autonomously. Pushed the full detached history to a new backup branch, rescue/unpushed-tip-2026-09-20, immediately for safety, then built this chapter on top of that correct/current state (not stale main) so as not to duplicate already-completed work, and pushed the finished chapter to that same branch rather than main. Flagged the whole situation to Louis via notification and to MARCUS_HANDOFF.md. Style-redo backlog and priority queue both confirmed empty on the correct branch, and Psalms 124 was the most recent wired chapter, so Psalms 125 is normal forward progress. Fetched real KJV text for Psalms 125 (5 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Psalms 125 is the sixth Song of Ascents: trust in the LORD pictured as being like Mount Zion, immovable and permanent (1), the ring of hills around Jerusalem as a picture of the LORD surrounding his people on every side (2), a promise that oppressive rule (the wicked's rod) will not rest forever on Israel's own inherited land, with the real danger that prolonged oppression could tempt even the righteous into sin (3), a prayer for those who are good and upright in heart (4), and a closing warning about those who turn to crooked ways alongside the closing benediction of peace upon Israel, with peace (shalom) called out as an echo of the same wordplay already used on Jerusalem's name in Psalms 122 (5). One section for all five verses, matching the precedent set by other short psalms (117, also one section). Density 2 cards per verse (5 verses, 10 cards). scripts/check_bible_note_style.py ran clean on the first pass, zero problems, across all 10 cards. Confirmed every card opens with one of the four approved moves, defines its key terms in plain language (Zion, abideth, round about, rod, lot, iniquity, upright, crooked, peace/shalom), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card ending on the book emoji, no duplicate card titles, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file. Parser check passed via getBibleReaderStudySections('psalms', 125) (1/1 section, verse range 1-5, 10 total cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/psalmsOneHundredTwentyFiveSource.ts, preserveExactPhraseBodies range extended from psalms chapter 124 to chapter 125, replaceStudySectionsForBookRange(\"psalms\", 125, 125, PSALMS_ONE_HUNDRED_TWENTY_FIVE_PERSONAL_SECTIONS) added right after the Psalms 124 call). This commit is pushed to rescue/unpushed-tip-2026-09-20, not main, until Louis decides how to handle the batched deploy question. Next forward-progress target is Psalms 126.",
+      "steps": [
+        {
+          "name": "session start / repo state check",
+          "at": "2026-09-20T00:46:14Z",
+          "detail": "found detached HEAD 50 commits ahead of stale origin/main"
+        },
+        {
+          "name": "unshallow fetch + merge-base verification",
+          "at": "2026-09-20T00:49:00Z",
+          "detail": "confirmed clean fast-forward ancestry, found 15 prior unmerged rescue branches back to 2026-08-13"
+        },
+        {
+          "name": "backup branch pushed",
+          "at": "2026-09-20T00:50:30Z",
+          "detail": "rescue/unpushed-tip-2026-09-20 created from the detached tip and pushed to origin"
+        },
+        {
+          "name": "npm install done",
+          "at": "2026-09-20T00:52:21Z"
+        },
+        {
+          "name": "target chapter determined",
+          "at": "2026-09-20T00:53:30Z",
+          "detail": "Psalms 125, new chapter (priority queue and style-redo backlog both empty, last wired Psalms chapter was 124)"
+        },
+        {
+          "name": "KJV text fetched",
+          "at": "2026-09-20T00:54:10Z",
+          "detail": "5 verses from raw.githubusercontent.com/aruljohn/Bible-kjv/master/Psalms.json"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-09-20T00:55:30Z"
+        },
+        {
+          "name": "source file written",
+          "at": "2026-09-20T00:58:30Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-09-20T00:58:50Z"
+        },
+        {
+          "name": "wired into reader",
+          "at": "2026-09-20T00:59:20Z",
+          "detail": "import added, replaceStudySectionsForBookRange call added, preserveExactPhraseBodies psalms range extended from 124 to 125"
+        },
+        {
+          "name": "parser check passed",
+          "at": "2026-09-20T00:59:45Z",
+          "detail": "1 section, 10 cards, no throw"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-20T01:00:20Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-20T01:01:53Z"
+        }
+      ]
     }
   ]
 }

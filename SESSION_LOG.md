@@ -5153,3 +5153,8 @@ Next up: Day 362
 ## 2026-09-20T00:31:08Z (bible year day writer run)
 Day: 362 — Witness, Beast, and Faithful Endurance (Revelation 11-13) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only (apocalyptic vision, no dialogue voices)
 Next up: Day 363. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-20T01:01:53Z (hourly chapter notes run)
+Chapter: Psalms 125 | Duration: 16 min | Sections: 1 | Cards: 10 | Status: pass
+Next up: Psalms 126
+NOTE: origin/main has been stuck at "Add Bible in One Year Day 307" for roughly two days. This run and everything since Psalms 97 (28 chapters) plus 57 Bible in One Year day scripts are sitting unmerged, pushed only to rescue/unpushed-tip-2026-09-20 (backup of the full gap) rather than main, pending Louis's call on the batched [deploy] this will trigger. See MARCUS_HANDOFF.md.
