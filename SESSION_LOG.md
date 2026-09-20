@@ -5327,3 +5327,12 @@ Next up: Psalms 144
 ## 2026-09-20T20:56:44Z (hourly chapter notes run)
 Chapter: Psalms 144 | Duration: 10 min | Sections: 7 | Cards: 28 | Status: pass
 Next up: Psalms 145
+
+## 2026-09-20T21:23:45Z (bible year day writer run)
+Nothing to do: re-confirmed all 365 days already have scripts in
+DAY_SCRIPTS (day 1 via its legacy buildDayOneSegments path, 2-365 in the
+DAY_SCRIPTS map) on current origin/main (b72def2). HEAD started detached
+but matched origin/main exactly (0 drift). `npm install` + `npx tsc
+--noEmit` both clean. Already noted in MARCUS_HANDOFF.md (audio render
+entry); not duplicating it there.
+Next up: nothing — plan complete. Only audio rendering remains.
