@@ -39129,6 +39129,63 @@
           "at": "2026-09-20T14:59:05Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 139,
+      "startedAt": "2026-09-20T15:45:30Z",
+      "finishedAt": "2026-09-20T15:59:31Z",
+      "durationMinutes": 14,
+      "sections": 4,
+      "cards": 42,
+      "verses": 24,
+      "notes": "New chapter (forward progress, not a style redo). Priority queue and style-redo backlog both empty. Session started with local main detached at a stale shallow-clone boundary; resolved cleanly with git checkout main && git reset --hard origin/main (no local work at risk, working tree already clean). Psalms 1-138 were already wired, so Psalms 139 (24 verses) was next in canonical order. This is David's meditation on God's total knowledge and presence, split into 4 sections: God's exhaustive knowledge of every thought, word, and motion, including downsitting and uprising as a merism for everything in between (1-6); the impossibility of escaping God's presence, walking through heaven, sheol (correcting the common misreading of hell as the fiery afterlife), and the wings of the morning as a poetic image for the fastest journey to the farthest place (7-12); the intimate forming of the body in the womb, reins as the ancient seat of emotion, and curiously wrought in the lowest parts of the earth as a poetic name for the womb rather than a literal underground location (13-18); and the closing turn to hatred of wickedness as loyalty language rather than personal grudge, and the closing prayer search me O God deliberately echoing the psalm's own opening verse (19-24). 42 cards across 4 sections (11, 7, 12, 12), about 1.75 cards per verse. Style checker found one bullet one word over the 8 word limit on the first pass, fixed and clean on the second run. Parser check and tsc --noEmit both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-20T15:46:30Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 139 (new chapter, forward progress; priority queue and redo backlog both empty)",
+          "at": "2026-09-20T15:47:30Z"
+        },
+        {
+          "name": "KJV text fetched: Psalms 139 (24 verses) from GitHub raw mirror",
+          "at": "2026-09-20T15:47:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-20T15:48:30Z"
+        },
+        {
+          "name": "drafted and reviewed all 42 phrase cards against style spec before writing source file",
+          "at": "2026-09-20T15:54:00Z"
+        },
+        {
+          "name": "source file written: lib/psalmsOneHundredThirtyNineSource.ts (4 sections, 42 cards)",
+          "at": "2026-09-20T15:54:20Z"
+        },
+        {
+          "name": "style checker clean: 42 cards, 0 problems (after fixing one over-length bullet)",
+          "at": "2026-09-20T15:55:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call site, preserveExactPhraseBodies range extended to 139)",
+          "at": "2026-09-20T15:54:54Z"
+        },
+        {
+          "name": "parser check passed: 4 sections, 42 cards, no throw",
+          "at": "2026-09-20T15:56:40Z"
+        },
+        {
+          "name": "npx tsc --noEmit clean, zero errors",
+          "at": "2026-09-20T15:57:10Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals updated)",
+          "at": "2026-09-20T15:58:52Z"
+        }
+      ]
     }
   ]
 }
