@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-16-explained",
+    title: "Genesis 16 Explained: Hagar, Ishmael, and the God Who Sees",
+    description:
+      "Genesis 16 explained verse by verse: Sarai's plan with Hagar, Ishmael's birth, and the angel of the LORD who tells a fleeing servant that God sees her.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-16-explained",
+    publishedAt: "2026-09-20",
+    readTime: "15 min read",
+    image: "/blog-banners/genesis-16-explained.jpg",
+    groupPost: {
+      title: "Genesis 16 Explained 📖",
+      content:
+        "Ten years of waiting, and still no son.\nSo Sarai builds her own shortcut.\n\n📌 God still sees the one everyone else overlooked.\n\n📖 Hagar flees into the wilderness alone.\n📖 The angel of the LORD finds her by a well.\n📖 She becomes the first person in the Bible to name God.\n\nNew article on:\n🟢 why Sarai's **plan** cost more than it solved\n🟢 who the **angel of the LORD** actually is\n🟢 what **Thou God seest me** really means\n\nHave you ever felt forgotten in the middle of someone else's story? 🙏",
+    },
+  },
+  {
     slug: "genesis-15-explained",
     title: "Genesis 15 Explained: The Covenant God Cuts Alone",
     description:
