@@ -4,7 +4,7 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-09-20T10:41:00.116Z",
+  "updatedAt": "2026-09-20T10:48:07.260Z",
   "nextChapter": "Genesis 18",
   "chapters": {
     "genesis-1-explained": {
@@ -113,8 +113,9 @@
     },
     "genesis-17-explained": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-09-20T10:40:12.179Z"
+      "status": "committed",
+      "startedAt": "2026-09-20T10:40:12.179Z",
+      "committedAt": "2026-09-20T10:48:07.259Z"
     }
   }
 }

@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-17-explained",
+    title: "Genesis 17 Explained: A New Name and the Sign of Circumcision",
+    description:
+      "Genesis 17 explained verse by verse: Abram becomes Abraham, Sarai becomes Sarah, God gives circumcision as the covenant sign, and Isaac is promised by name.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-17-explained",
+    publishedAt: "2026-09-20",
+    readTime: "15 min read",
+    image: "/blog-banners/genesis-17-explained.jpg",
+    groupPost: {
+      title: "Genesis 17 Explained 📖",
+      content:
+        "Thirteen years of silence.\nThen God shows up and changes his name.\n\n📌 God can rename you before the promise looks true.\n\n📖 Abram becomes Abraham, Sarai becomes Sarah.\n📖 Circumcision becomes the sign of the covenant.\n📖 Abraham laughs, and God names the son after it.\n\nNew article on:\n🟢 why God chose **circumcision** as the sign\n🟢 why Abraham **laughed** at God's own promise\n🟢 what happens to **Ishmael** once Isaac is named\n\nHave you ever doubted a promise right before obeying it anyway? 🙏",
+    },
+  },
+  {
     slug: "genesis-16-explained",
     title: "Genesis 16 Explained: Hagar, Ishmael, and the God Who Sees",
     description:
