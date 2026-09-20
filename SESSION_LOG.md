@@ -5259,3 +5259,7 @@ Days 2-365 via DAY_SCRIPTS). `npm install` + `npx tsc --noEmit` clean. No new
 day to write; MARCUS_HANDOFF.md's existing "waiting on local render" entry
 already covers all 365 days, so nothing to update there either. Stopping
 cleanly per the job doc — this range is finished.
+
+## 2026-09-20T12:00:27Z (hourly chapter notes run)
+Chapter: Psalms 135 | Duration: 15 min | Sections: 7 | Cards: 35 | Status: pass
+Next up: Psalms 136

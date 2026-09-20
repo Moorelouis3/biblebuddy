@@ -38881,6 +38881,59 @@
           "at": "2026-09-20T10:54:40Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 135,
+      "startedAt": "2026-09-20T11:45:42Z",
+      "finishedAt": "2026-09-20T12:00:27Z",
+      "durationMinutes": 15,
+      "sections": 7,
+      "cards": 35,
+      "verses": 21,
+      "notes": "New chapter (forward progress, not a style redo). Priority queue and style-redo backlog both empty. Poetry/wisdom chapter: temple call to praise (1-3, callback to Psalm 134's night watch), God's election of Israel and supremacy over nature and false gods (4-7), the Exodus plagues (8-9), conquest of Sihon/Og/Canaan (10-12), God's enduring name and compassionate judgment (13-14), the idol polemic paralleling Psalm 115 (15-18), and a closing fourfold call to bless spanning Israel/Aaron/Levi/God-fearers before bookending on the opening Hallelujah (19-21). 35 cards across 7 sections, averaging just under 2 cards per verse. Style checker, parser check, and tsc --noEmit all clean on first pass.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-09-20T11:46:05Z"
+        },
+        {
+          "name": "target_chapter_determined_psalms_135_new_chapter",
+          "at": "2026-09-20T11:46:20Z"
+        },
+        {
+          "name": "kjv_text_fetched_21_verses",
+          "at": "2026-09-20T11:46:45Z"
+        },
+        {
+          "name": "style_spec_read_in_full",
+          "at": "2026-09-20T11:47:52Z"
+        },
+        {
+          "name": "source_file_written_7_sections_35_cards",
+          "at": "2026-09-20T11:56:30Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-09-20T11:57:05Z"
+        },
+        {
+          "name": "wired_into_reader_and_preserveExactPhraseBodies_extended",
+          "at": "2026-09-20T11:57:35Z"
+        },
+        {
+          "name": "parser_check_passed_7_sections_35_cards",
+          "at": "2026-09-20T11:58:20Z"
+        },
+        {
+          "name": "tsc_noEmit_clean",
+          "at": "2026-09-20T11:58:54Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-09-20T12:00:27Z"
+        }
+      ]
     }
   ]
 }
