@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-15-explained",
+    title: "Genesis 15 Explained: The Covenant God Cuts Alone",
+    description:
+      "Genesis 15 explained verse by verse: Abram's honest doubt, faith counted as righteousness, the 400 year prophecy, and the covenant of the pieces.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-15-explained",
+    publishedAt: "2026-09-20",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-15-explained.jpg",
+    groupPost: {
+      title: "Genesis 15 Explained 📖",
+      content:
+        "Abram just turned down a fortune.\nThen God asks him to trust for something bigger.\n\n📌 Believing God is what He counts as righteousness.\n\n📖 Abram tells God he still has no son.\n📖 God promises stars too many to count.\n📖 God alone walks through the covenant, Abram sleeps through it.\n\nNew article on:\n🟢 what **counted for righteousness** really means\n🟢 the strange ceremony behind the **covenant of the pieces**\n🟢 why God let Abram **sleep** through his own covenant\n\nWhat part of Abram's honesty with God stood out to you? 🙏",
+    },
+  },
+  {
     slug: "genesis-14-explained",
     title: "Genesis 14 Explained: The War of the Kings and Melchizedek",
     description:
