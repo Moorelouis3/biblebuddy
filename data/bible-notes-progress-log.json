@@ -38755,6 +38755,59 @@
           "at": "2026-09-20T09:00:00Z"
         }
       ]
+    },
+    {
+      "book": "Psalms",
+      "chapter": 133,
+      "startedAt": "2026-09-20T09:45:41Z",
+      "finishedAt": "2026-09-20T09:52:09Z",
+      "durationMinutes": 6.5,
+      "sections": 1,
+      "cards": 8,
+      "verses": 3,
+      "notes": "New forward-progress chapter (priority queue and redo-remaining backlog both empty; Psalms 1-132 already wired, 133 was the first missing chapter in canonical order). A short Song of Ascents (3 verses) about brothers dwelling together in unity, pictured through the high priest's anointing oil running down to Aaron's robe and the dew of Hermon poetically applied to Zion. Single section for the whole chapter, matching the same shape used for Psalms 131 (also 3 verses). 8 phrase cards, roughly 2.7 cards per verse given the density of distinct images in verses 2-3 (ointment on the head, running to the beard, reaching the skirts; dew of Hermon, descending on Zion, the LORD's commanded blessing).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-20T09:46:10Z"
+        },
+        {
+          "name": "target chapter determined: Psalms 133 (new chapter, normal forward progress; priority queue and redo backlog both empty; Psalms 1-132 already wired)",
+          "at": "2026-09-20T09:46:30Z"
+        },
+        {
+          "name": "KJV text fetched: Psalms 133 (3 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv/master/Psalms.json",
+          "at": "2026-09-20T09:46:55Z"
+        },
+        {
+          "name": "style spec read: docs/bible-study-note-style.md read in full",
+          "at": "2026-09-20T09:47:20Z"
+        },
+        {
+          "name": "source file written: lib/psalmsOneHundredThirtyThreeSource.ts (1 section, 8 phrase cards)",
+          "at": "2026-09-20T09:49:10Z"
+        },
+        {
+          "name": "style checker clean: python3 scripts/check_bible_note_style.py lib/psalmsOneHundredThirtyThreeSource.ts (fixed 3 overlong bullets, then 0 problems)",
+          "at": "2026-09-20T09:49:45Z"
+        },
+        {
+          "name": "wired into reader: import + preserveExactPhraseBodies range extended to 133 + replaceStudySectionsForBookRange call added in lib/bibleReaderStudyNotes.ts",
+          "at": "2026-09-20T09:50:05Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('psalms', 133) returned 1 section, 8 cards, no throw",
+          "at": "2026-09-20T09:50:35Z"
+        },
+        {
+          "name": "tsc clean: npx tsc --noEmit -p . zero errors",
+          "at": "2026-09-20T09:51:05Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json and docs/BIBLE_BUDDY_NOTES_PROGRESS.md updated",
+          "at": "2026-09-20T09:52:09Z"
+        }
+      ]
     }
   ]
 }
