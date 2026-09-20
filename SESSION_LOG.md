@@ -5350,3 +5350,7 @@ main pattern already logged repeatedly in MARCUS_HANDOFF.md, not
 re-flagging again. `npm install` + `npx tsc --noEmit` both clean.
 MARCUS_HANDOFF.md audio-render entry already covers this; not duplicating.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-20T22:54:10Z (hourly chapter notes run)
+Chapter: Psalms 146 | Duration: 8 min | Sections: 6 | Cards: 24 | Status: pass
+Next up: Psalms 147
