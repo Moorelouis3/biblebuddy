@@ -5319,3 +5319,7 @@ matched origin/main exactly (0 drift), so no recovery needed this time.
 `npx tsc --noEmit` clean. Already noted in MARCUS_HANDOFF.md (audio
 render entry); not duplicating it there.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-20T19:58:30Z (hourly chapter notes run)
+Chapter: Psalms 143 | Duration: 12 min | Sections: 6 | Cards: 28 | Status: pass
+Next up: Psalms 144
