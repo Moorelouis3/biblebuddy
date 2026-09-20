@@ -86,6 +86,21 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "bible-in-one-year-day-4-study-notes",
+    title: "Bible in One Year Day 4 Study Notes: Genesis 8-10",
+    description:
+      "Bible in One Year Day 4 Study Notes: a full walkthrough of Genesis 8-10, the flood receding, Noah's altar, the rainbow covenant, and the table of nations.",
+    category: "Bible in One Year",
+    categorySlug: "bible-in-one-year",
+    canonicalPath: "/blog/bible-in-one-year-day-4-study-notes",
+    publishedAt: "2026-09-20",
+    readTime: "14 min read",
+    image: "/blog-banners/bible-in-one-year-day-4-study-notes.jpg",
+    bibleYearDay: 4,
+    bibleYearReading: "Genesis 8-10",
+    excludeFromGroupShare: true,
+  },
+  {
     slug: "bible-in-one-year-day-3-study-notes",
     title: "Bible in One Year Day 3 Study Notes: Genesis 5-7",
     description:
