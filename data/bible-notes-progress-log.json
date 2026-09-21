@@ -40346,6 +40346,59 @@
           "at": "2026-09-21T11:58:20Z"
         }
       ]
+    },
+    {
+      "book": "Ecclesiastes",
+      "chapter": 10,
+      "startedAt": "2026-09-21T12:47:35Z",
+      "finishedAt": "2026-09-21T12:56:30Z",
+      "durationMinutes": 8.9,
+      "sections": 5,
+      "cards": 41,
+      "verses": 20,
+      "notes": "New chapter, normal forward progress after Ecclesiastes 9. Five sections covering dead flies spoiling ointment as a picture for a little folly spoiling a reputation and the wise heart at the right hand, folly seated in high places with the horses and servants role reversal, the pit and hedge and stones and wood as ordinary tasks with their own risk closing on wisdom being profitable to direct, the fool's mouth undoing him from first word to mischievous end, and the closing contrast between a child king's careless court and a disciplined king's son ending on the bird of the air carrying careless words. Style checker clean on first pass.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-21T12:47:35Z"
+        },
+        {
+          "name": "target chapter determined: Ecclesiastes 10 (normal forward progress, new chapter, priority queue and redo backlog both empty)",
+          "at": "2026-09-21T12:46:30Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Ecclesiastes.json)",
+          "at": "2026-09-21T12:48:10Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, SKILL.md, genesisThirtyOneSource.ts and ecclesiastesNineSource.ts reference files)",
+          "at": "2026-09-21T12:50:00Z"
+        },
+        {
+          "name": "source file written (lib/ecclesiastesTenSource.ts)",
+          "at": "2026-09-21T12:53:30Z"
+        },
+        {
+          "name": "style checker clean (41 cards, no problems on first pass)",
+          "at": "2026-09-21T12:53:45Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 10, apply function + call site)",
+          "at": "2026-09-21T12:54:10Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 41 cards)",
+          "at": "2026-09-21T12:54:30Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-21T12:55:00Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-21T12:56:30Z"
+        }
+      ]
     }
   ]
 }

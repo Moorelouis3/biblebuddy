@@ -5499,3 +5499,7 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-21T11:57:00Z (hourly chapter notes run)
 Chapter: Ecclesiastes 9 | Duration: 11 min | Sections: 6 | Cards: 39 | Status: pass
 Next up: Ecclesiastes 10
+
+## 2026-09-21T12:56:30Z (hourly chapter notes run)
+Chapter: Ecclesiastes 10 | Duration: 9 min | Sections: 5 | Cards: 41 | Status: pass
+Next up: Ecclesiastes 11
