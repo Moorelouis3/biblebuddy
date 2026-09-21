@@ -40680,6 +40680,59 @@
           "at": "2026-09-21T18:57:43Z"
         }
       ]
+    },
+    {
+      "book": "Song of Solomon",
+      "chapter": 4,
+      "startedAt": "2026-09-21T19:46:39Z",
+      "finishedAt": "2026-09-21T19:54:10Z",
+      "durationMinutes": 7.5,
+      "sections": 7,
+      "cards": 23,
+      "verses": 16,
+      "notes": "New chapter, normal forward progress after Song of Solomon 3. Priority queue (data/bible-notes-style-redo-remaining.json) confirmed empty, so this was ordinary forward-progress logic: next chapter with no wired lib file after Song of Solomon 3. Repo state at session start was messy: HEAD was detached 51 commits ahead of a stale cached origin/main ref; git fetch origin main showed the remote had actually been force updated and the cached ref was just stale locally (origin/main truly was at the detached HEAD commit, 4a3048c). Local main (a separate, unrelated 50-commit history with no common ancestor per git merge-base) was reset hard to origin/main since the working tree was clean and nothing local was uncommitted or unique. Fetched real KJV text for Song of Solomon 4 (16 verses) from the raw.githubusercontent.com aruljohn Bible-kjv mirror (SongofSolomon.json). Seven sections covering all 16 verses with no gaps: the opening praise of eyes, hair, teeth, lips, and temples (1-3); the tower of David neck, buckler jewelry, and twin roe breasts (4-5); the mountain of myrrh (echoing chapter 2) closing into 'thou art all fair' (6-7); the first use of the word 'spouse' in the book, the named mountain peaks Amana/Shenir/Hermon, and the lions' dens and leopards' mountains (8); ravished heart, the love better than wine callback to 1:2, and lips dropping honeycomb echoing the promised land's milk and honey (9-11); the enclosed garden, sealed fountain, orchard of pomegranates, the eight named spices, and the fountain of living waters (12-15); and the closing shift to her voice calling the winds and inviting him into what is now called his garden, answering his verse 8 invitation (16). scripts/check_bible_note_style.py passed clean on the first run, 23 cards, zero problems. All titles are exact contiguous KJV phrases in title case, one semicolon in the raw KJV text of verse 7 and verse 16 was replaced with a comma in the title only (semicolons are banned outright by the style spec) while the body text still teaches the actual clause. Manual section 13 eye check confirmed all four opening moves used across cards, key terms defined in plain language (armoury, buckler, inclosed, ravished, threescore-style archaic vocabulary), closes land on meaning not mechanics, exactly four bullets per card each three to eight words with a distinct emoji within each card ending on the takeaway bullet (📖), no duplicate titles, no hyphens/em dashes/semicolons/contractions anywhere (including compound words that are normally hyphenated, e.g. 'snow capped' written as two words). Parser check passed via getBibleReaderStudySections('Song of Solomon', 4): 7/7 sections, verse ranges 1-3/4-5/6-7/8/9-11/12-15/16 with no gaps, 23 total cards. npx tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/songOfSolomonFourSource.ts, preserveExactPhraseBodies already covered song of solomon chapters 1-8 so no range change needed, new function applyPersonalSongOfSolomonFourStudySections added and called right after applyPersonalSongOfSolomonThreeStudySections()). Next forward-progress target is Song of Solomon 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-21T19:46:39Z"
+        },
+        {
+          "name": "target chapter determined: Song of Solomon 4, new chapter (forward progress after Song of Solomon 3; style-redo backlog empty)",
+          "at": "2026-09-21T19:47:10Z"
+        },
+        {
+          "name": "KJV text fetched: Song of Solomon 4, 16 verses, from raw.githubusercontent.com aruljohn Bible-kjv mirror (SongofSolomon.json)",
+          "at": "2026-09-21T19:47:45Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementations reviewed (lib/songOfSolomonThreeSource.ts, lib/bibleReaderStudyNotes.ts wiring, scripts/check_bible_note_style.py)",
+          "at": "2026-09-21T19:49:30Z"
+        },
+        {
+          "name": "source file written: lib/songOfSolomonFourSource.ts",
+          "at": "2026-09-21T19:52:00Z"
+        },
+        {
+          "name": "style checker clean: 23 cards, no problems",
+          "at": "2026-09-21T19:52:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, applyPersonalSongOfSolomonFourStudySections call, invocation order after Song of Solomon 3; preserveExactPhraseBodies already covered chapters 1-8",
+          "at": "2026-09-21T19:52:50Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections returns 7 sections, 23 cards for Song of Solomon 4, no throw",
+          "at": "2026-09-21T19:53:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-21T19:53:50Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-21T19:54:10Z"
+        }
+      ]
     }
   ]
 }
