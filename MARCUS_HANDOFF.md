@@ -1,3 +1,6 @@
+## Stale local main recurred a second time today (2026-09-21, Bible in One Year day writer run) — caught with zero drift, nothing written
+Same bug as the entry directly below, hit again in a fresh container the same day. Local `main` was stuck at the same old `9f6da92` ("Day 307") tip with no common ancestor to `origin/main`. This time it was caught before any commit: confirmed `9f6da92` was already backed up in `origin/stale-local-main-2026-09-20-day308-duplicate`, then moved straight to detached HEAD on `origin/main` (which already has all 365 days) without touching local `main`. No new data, no duplicate shipped, no code changed. The day range is already complete (all 365 scripts wired into `DAY_SCRIPTS`, `tsc --noEmit` clean), so this run had nothing to write anyway. Still asking for the same environment-level fix as every entry below: seed each fresh container's local `main` from real current `origin/main` at container start.
+
 ## Stale local main recurred again (2026-09-21, Bible in One Year day writer run) — same duplicate-Day-308 pattern as yesterday, caught before it shipped
 Identical root cause to the entry directly below, one day later. This run's
 container also started detached at the old, stale `9f6da92` ("Day 307")
