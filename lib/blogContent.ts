@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-21-explained",
+    title: "Genesis 21 Explained: Isaac's Birth and Hagar Sent Away",
+    description:
+      "Genesis 21 explained verse by verse: Isaac's long promised birth, Sarah's demand to cast out Hagar and Ishmael, God's provision in the wilderness, and Abraham's covenant with Abimelech.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-21-explained",
+    publishedAt: "2026-09-21",
+    readTime: "12 min read",
+    image: "/blog-banners/genesis-21-explained.jpg",
+    groupPost: {
+      title: "Genesis 21 Explained 📖",
+      content:
+        "Isaac is finally born, twenty five years after the promise.\nThe same chapter sends another son into the wilderness.\n\n📌 God hears Ishmael's voice the moment Hagar runs out of water.\n\n📖 Sarah demands Hagar and Ishmael be sent away.\n📖 God provides a well in the desert just in time.\n📖 Abraham makes a peace covenant with Abimelech at Beersheba.\n\nNew article on:\n🟢 what Ishmael's **mocking** actually means\n🟢 why God tells Abraham to **listen to Sarah**\n🟢 how Paul uses this story in **Galatians 4**\n\nHave you ever watched someone else's answered prayer land right beside your own pain? 🙏",
+    },
+  },
+  {
     slug: "genesis-20-explained",
     title: "Genesis 20 Explained: Abraham's Second Lie About Sarah",
     description:
