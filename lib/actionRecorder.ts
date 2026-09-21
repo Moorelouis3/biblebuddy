@@ -13,6 +13,40 @@ import type { ActionType } from "./actionTypes";
 import { syncCurrentStreakToProfileStats } from "./profileStats";
 import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
 
+/** Fired on any "did something" (not just viewed/opened) action. */
+export const MEANINGFUL_ACTION_EVENT = "bb:meaningful-action";
+
+export type MeaningfulActionDetail = { userId: string; actionType: ActionType };
+
+/**
+ * Action types that represent a real completed moment in the app, not just
+ * a page view/open/start. Used to trigger the post-signup display-name
+ * prompt after a new account's first one (2026-09-21) - a suffix/allowlist
+ * check here rather than a new flag on every one of the 50+ call sites,
+ * since this function is already the single choke point for every action.
+ */
+function isMeaningfulAction(actionType: ActionType): boolean {
+  if (actionType.endsWith("_completed")) return true;
+  const alsoMeaningful = new Set<ActionType>([
+    "note_created",
+    "person_learned",
+    "place_discovered",
+    "keyword_mastered",
+    "trivia_question_correct",
+    "understand_verse_of_the_day",
+    "group_message_sent",
+    "feed_post_thought",
+    "feed_post_prayer",
+    "feed_post_prayer_request",
+    "feed_post_photo",
+    "feed_post_video",
+    "feed_post_commented",
+    "feed_post_replied",
+    "buddy_added",
+  ]);
+  return alsoMeaningful.has(actionType);
+}
+
 /**
  * Log an action to master_actions table ONLY
  * 
@@ -96,6 +130,14 @@ export async function logActionToMasterActions(
       await syncCurrentStreakToProfileStats(userId);
     } catch (streakError) {
       console.error("[ACTION] Error syncing streak after action:", streakError);
+    }
+
+    if (typeof window !== "undefined" && isMeaningfulAction(actionType)) {
+      window.dispatchEvent(
+        new CustomEvent<MeaningfulActionDetail>(MEANINGFUL_ACTION_EVENT, {
+          detail: { userId, actionType },
+        })
+      );
     }
 
     // Rewards/currency were intentionally removed. The master action log now records behavior only.
@@ -212,4 +254,3 @@ export async function recordAction(
     throw err;
   }
 }
-

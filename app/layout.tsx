@@ -9,6 +9,7 @@ import { PostSuccessEffect } from "@/components/PostSuccessEffect";
 import { AppToast } from "@/components/AppToast";
 import { PointsPop } from "@/components/PointsPop";
 import GlobalCreditFeedback from "@/components/GlobalCreditFeedback";
+import DisplayNamePromptGate from "@/components/DisplayNamePromptGate";
 import { GlobalAudioPlayerProvider } from "@/components/GlobalAudioPlayer";
 import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
 // redeploy trigger
@@ -197,6 +198,7 @@ export default function RootLayout({
         <AppToast />
         <PointsPop />
         <GlobalCreditFeedback />
+        <DisplayNamePromptGate />
         {/* ✅ VERCEL ANALYTICS */}
         <Analytics />
       </body>
