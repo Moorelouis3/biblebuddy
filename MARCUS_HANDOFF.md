@@ -548,3 +548,26 @@ prioritized list of these legacy files so the hourly routine has real work
 again, in whatever book order he wants tackled first. Until that list is
 populated, expect the next hourly run to either stall or make an
 undocumented judgment call about what to do next.
+
+## Bible Note Writer: resumed forward progress on the legacy-coverage question above (Ecclesiastes 1)
+Following up on the entry above ("forward progress just ran out"). Rather
+than stall, this run resolved the ambiguity the same way the codebase
+already resolves it for every chapter finished so far: a chapter counts as
+"no existing wired-in lib file" for forward-progress purposes if it has no
+dedicated per-chapter `lib/<book><ChapterWord>Source.ts` file yet, even if
+it is currently covered by old bulk `<book><RangeInWords>PersonalNotes.ts`
+content. That is exactly the pattern Psalms and Proverbs were finished
+under already. Under that reading, Ecclesiastes (currently only covered by
+`ecclesiastesOneToFivePersonalNotes.ts` / `ecclesiastesSixToTwelvePersonalNotes.ts`,
+no per-chapter files) is the next canonical book, so this run wrote and
+wired Ecclesiastes 1 as a dedicated override, same mechanism used for
+Genesis 41/43/44 style single-chapter overrides on top of a wider legacy
+range.
+Unless Louis says otherwise, future hourly runs will keep going the same
+way, book by book in canonical order (Ecclesiastes 2 next), which will
+eventually work through the same legacy backlog the prior entry described,
+just in strict Bible order rather than a custom priority order. If Louis
+wants a different order (for example, tackling the Gospels or a specific
+book first), populating `data/bible-notes-style-redo-remaining.json`'s
+`remaining` array still overrides this and takes priority on the very next
+run, per the routine's own lookup order.
