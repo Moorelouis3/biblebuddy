@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-20-explained",
+    title: "Genesis 20 Explained: Abraham's Second Lie About Sarah",
+    description:
+      "Genesis 20 explained verse by verse: Abraham lies about Sarah again, Abimelech's dream warning, the price of the lie, and the prayer that heals his household.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-20-explained",
+    publishedAt: "2026-09-21",
+    readTime: "11 min read",
+    image: "/blog-banners/genesis-20-explained.jpg",
+    groupPost: {
+      title: "Genesis 20 Explained 📖",
+      content:
+        "Abraham already tried this lie once in Egypt.\nHere he tries it again on a new king.\n\n📌 God warned the king in a dream before any sin happened.\n\n📖 Abraham says Sarah is his sister, again.\n📖 Abimelech takes her, not knowing she is married.\n📖 Abraham's own prayer heals the household his fear harmed.\n\nNew article on:\n🟢 why Abraham repeats his **oldest fear**\n🟢 what **a covering of the eyes** means\n🟢 why he is called a **prophet** in this chapter\n\nHave you ever repeated a fear you thought you had already outgrown? 🙏",
+    },
+  },
+  {
     slug: "genesis-19-explained",
     title: "Genesis 19 Explained: Sodom's Destruction and Lot's Escape",
     description:
