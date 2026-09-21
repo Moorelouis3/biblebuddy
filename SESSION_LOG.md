@@ -5495,3 +5495,7 @@ time started clean — detached HEAD already matched real origin/main
 `npm install` + `npx tsc --noEmit` both clean. MARCUS_HANDOFF.md's
 audio-render entry already covers the 365/365 status; not duplicating.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-21T11:57:00Z (hourly chapter notes run)
+Chapter: Ecclesiastes 9 | Duration: 11 min | Sections: 6 | Cards: 39 | Status: pass
+Next up: Ecclesiastes 10

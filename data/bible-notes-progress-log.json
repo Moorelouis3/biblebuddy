@@ -40285,6 +40285,59 @@
           "at": "2026-09-21T10:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Ecclesiastes",
+      "chapter": 9,
+      "startedAt": "2026-09-21T11:46:04Z",
+      "finishedAt": "2026-09-21T11:57:00Z",
+      "durationMinutes": 10.9,
+      "sections": 6,
+      "cards": 39,
+      "verses": 18,
+      "notes": "New chapter, normal forward progress after Ecclesiastes 8. Six sections covering the one common event (death) for righteous and wicked alike, the living dog beating the dead lion, the commendation of ordinary joy and full hearted work, time and chance touching everyone, the parable of the poor wise man who delivered a city and was forgotten, and the closing proverbs on quiet wisdom outlasting weapons of war. Style checker clean after fixing one banned hedge word (fairly).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-21T11:47:05Z"
+        },
+        {
+          "name": "target chapter determined: Ecclesiastes 9 (normal forward progress, new chapter, redo backlog empty)",
+          "at": "2026-09-21T11:47:20Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Ecclesiastes.json)",
+          "at": "2026-09-21T11:47:26Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, SKILL.md, genesisThirtyOneSource.ts, ecclesiastesEightSource.ts reference files)",
+          "at": "2026-09-21T11:50:30Z"
+        },
+        {
+          "name": "source file written (lib/ecclesiastesNineSource.ts)",
+          "at": "2026-09-21T11:52:00Z"
+        },
+        {
+          "name": "style checker clean (39 cards, fixed one banned hedge word 'fairly')",
+          "at": "2026-09-21T11:52:50Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 9, apply function + call site)",
+          "at": "2026-09-21T11:53:15Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 39 cards)",
+          "at": "2026-09-21T11:53:30Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-21T11:53:50Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-21T11:57:00Z"
+        }
+      ]
     }
   ]
 }
