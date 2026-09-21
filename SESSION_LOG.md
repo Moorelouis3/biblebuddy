@@ -5620,3 +5620,7 @@ Next up: Song of Solomon 6
 ## 2026-09-21T21:56:55Z (hourly chapter notes run)
 Chapter: Song of Solomon 6 | Duration: 11 min | Sections: 6 | Cards: 26 | Status: pass
 Next up: Song of Solomon 7
+
+## 2026-09-21T22:55:30Z (hourly chapter notes run)
+Chapter: Song of Solomon 7 | Duration: 9 min | Sections: 4 | Cards: 30 | Status: pass
+Next up: Song of Solomon 8

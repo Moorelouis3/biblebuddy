@@ -722,6 +722,7 @@ import { SONG_OF_SOLOMON_THREE_PERSONAL_SECTIONS } from "./songOfSolomonThreeSou
 import { SONG_OF_SOLOMON_FOUR_PERSONAL_SECTIONS } from "./songOfSolomonFourSource";
 import { SONG_OF_SOLOMON_FIVE_PERSONAL_SECTIONS } from "./songOfSolomonFiveSource";
 import { SONG_OF_SOLOMON_SIX_PERSONAL_SECTIONS } from "./songOfSolomonSixSource";
+import { SONG_OF_SOLOMON_SEVEN_PERSONAL_SECTIONS } from "./songOfSolomonSevenSource";
 import { ISAIAH_1_15_PERSONAL_SECTIONS } from "./isaiahOneToFifteenPersonalNotes";
 import { ISAIAH_16_66_PERSONAL_SECTIONS } from "./isaiahSixteenToSixtySixPersonalNotes";
 import { JEREMIAH_1_9_PERSONAL_SECTIONS } from "./jeremiahOneToNinePersonalNotes";
@@ -2719,6 +2720,10 @@ function applyPersonalSongOfSolomonFiveStudySections() {
 
 function applyPersonalSongOfSolomonSixStudySections() {
   replaceStudySectionsForBookRange("song of solomon", 6, 6, SONG_OF_SOLOMON_SIX_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSongOfSolomonSevenStudySections() {
+  replaceStudySectionsForBookRange("song of solomon", 7, 7, SONG_OF_SOLOMON_SEVEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalIsaiahOneThroughFifteenStudySections() {
@@ -10267,6 +10272,7 @@ applyPersonalSongOfSolomonThreeStudySections();
 applyPersonalSongOfSolomonFourStudySections();
 applyPersonalSongOfSolomonFiveStudySections();
 applyPersonalSongOfSolomonSixStudySections();
+applyPersonalSongOfSolomonSevenStudySections();
 applyPersonalIsaiahOneThroughFifteenStudySections();
 applyPersonalIsaiahSixteenThroughSixtySixStudySections();
 applyPersonalJeremiahOneThroughNineStudySections();
