@@ -158,6 +158,8 @@ export default function LegalPageLayout({
             <nav className="flex flex-wrap gap-x-5 gap-y-2 text-xs font-black">
               <Link href="/privacy">Privacy</Link>
               <Link href="/terms">Terms</Link>
+              <Link href="/community-guidelines">Community Guidelines</Link>
+              <Link href="/delete-account">Delete Account</Link>
               <Link href="/contact">Contact</Link>
             </nav>
           </div>

@@ -13,6 +13,10 @@ import { createPortal } from "react-dom";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import CommunityEventBanner from "@/components/CommunityEventBanner";
+import ReportBlockMenu from "@/components/ReportBlockMenu";
+import { useBlockedUserIds } from "@/lib/userBlocks";
+import { isExternalUrl, isNativeApp, openExternal } from "@/lib/nativeApp";
+import { hasFullStudyAccess } from "@/lib/accessPolicy";
 import { supabase } from "../../../../lib/supabaseClient";
 import { HOME_FEED_COVER_MARKER } from "@/lib/groupFeedCarouselScheduler";
 import { HUB_CONTENT, type HubItemStatic } from "@/lib/hubContent";
@@ -52,7 +56,6 @@ const WeekLessonPage = dynamic(() => import("../series/week/[weekNum]/page"), { 
 const GroupWeeklyPollCard = dynamic(() => import("@/components/GroupWeeklyPollCard"), { ssr: false });
 const GroupWeeklyTriviaCard = dynamic(() => import("@/components/GroupWeeklyTriviaCard"), { ssr: false });
 const GroupWeeklyQuestionCard = dynamic(() => import("@/components/GroupWeeklyQuestionCard"), { ssr: false });
-const UpgradeRequiredModal = dynamic(() => import("@/components/UpgradeRequiredModal"), { ssr: false });
 const CreditLimitModal = dynamic(() => import("@/components/CreditLimitModal"), { ssr: false });
 const PostMentionSuggestions = dynamic(() => import("@/components/PostMentionSuggestions"), { ssr: false });
 const TextareaMentionInput = dynamic(() => import("@/components/TextareaMentionInput"), { ssr: false });
@@ -980,6 +983,7 @@ function GroupCommentSection({
   const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
   const [autoCommentLoading, setAutoCommentLoading] = useState(false);
   const [commentPendingDelete, setCommentPendingDelete] = useState<GroupFeedComment | null>(null);
+  const blockedUserIds = useBlockedUserIds();
   const canUsePortal = typeof document !== "undefined";
 
   async function loadComments() {
@@ -1399,8 +1403,10 @@ function GroupCommentSection({
     setDeletingCommentId(null);
   }
 
-  const topLevelComments = comments.filter((comment) => comment.parent_post_id === post.id);
-  const replies = (parentId: string) => comments.filter((comment) => comment.parent_post_id === parentId);
+  // Blocked users' comments (and replies under them) are hidden.
+  const visibleComments = blockedUserIds.size > 0 ? comments.filter((comment) => !blockedUserIds.has(comment.user_id)) : comments;
+  const topLevelComments = visibleComments.filter((comment) => comment.parent_post_id === post.id);
+  const replies = (parentId: string) => visibleComments.filter((comment) => comment.parent_post_id === parentId);
 
   function renderCommentRow(comment: GroupFeedComment, depth = 0) {
     const name = comment.display_name || "Buddy";
@@ -1533,6 +1539,18 @@ function GroupCommentSection({
               >
                 {deletingCommentId === comment.id ? "Deleting..." : "Delete"}
               </button>
+            )}
+            {comment.user_id !== userId && (
+              <ReportBlockMenu
+                targetUserId={comment.user_id}
+                targetName={name}
+                contentType="group_comment"
+                contentId={comment.id}
+                currentUserId={userId || null}
+                size="sm"
+                align="left"
+                className="-ml-1.5"
+              />
             )}
           </div>
           {replyingTo === comment.id && (
@@ -1814,13 +1832,11 @@ export default function GroupChatPage() {
   const [installSetupLoading, setInstallSetupLoading] = useState(false);
   const [installSetupError, setInstallSetupError] = useState<string | null>(null);
   const [installCardDismissed, setInstallCardDismissed] = useState(false);
-  const [upgradeCardDismissed, setUpgradeCardDismissed] = useState(false);
   const [hideProfileSetupCard, setHideProfileSetupCard] = useState(false);
   const [hidePushSetupCard, setHidePushSetupCard] = useState(false);
   const [hideInstallSetupCard, setHideInstallSetupCard] = useState(false);
-  const [hideUpgradeSetupCard, setHideUpgradeSetupCard] = useState(false);
-  const [showDevotionalUpgradeModal, setShowDevotionalUpgradeModal] = useState(false);
-  const [showPastStudyProModal, setShowPastStudyProModal] = useState(false);
+  // Core study is free (lib/accessPolicy CORE_STUDY_IS_FREE): no Pro walls here.
+  const hasStudyAccess = hasFullStudyAccess(userIsPaid);
   const [devotionalPreviews, setDevotionalPreviews] = useState<Record<string, DevotionalPreview>>({});
   const [updateFeatureIndex, setUpdateFeatureIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<string>("home");
@@ -1847,6 +1863,8 @@ export default function GroupChatPage() {
 
   // Chat posts
   const [posts, setPosts] = useState<Post[]>([]);
+  // Users blocked in either direction: their posts/comments stay out of the feed.
+  const blockedUserIds = useBlockedUserIds();
   const [weeklyPollByPostId, setWeeklyPollByPostId] = useState<Record<string, WeeklyGroupPollFeedSet>>({});
   const [weeklyTriviaByPostId, setWeeklyTriviaByPostId] = useState<Record<string, WeeklyGroupTriviaFeedSet>>({});
   const [weeklyQuestionByPostId, setWeeklyQuestionByPostId] = useState<Record<string, WeeklyGroupQuestionFeedSet>>({});
@@ -1885,6 +1903,24 @@ export default function GroupChatPage() {
   const scriptureContainerRef = useRef<HTMLDivElement>(null);
   const feedLoadMoreRef = useRef<HTMLDivElement>(null);
   const weeklyEnsureGroupIdRef = useRef<string | null>(null);
+
+  // In the native app, outside links inside post text (auto-linked URLs carry
+  // target="_blank" and stop propagation inline) open in the in-app browser
+  // sheet instead of replacing Bible Buddy in the WebView. Capture phase so it
+  // runs before the inline handler. Web behavior is unchanged.
+  useEffect(() => {
+    if (!isNativeApp()) return;
+    const onClickCapture = (event: globalThis.MouseEvent) => {
+      const anchor = (event.target as Element | null)?.closest?.("a[href]") as HTMLAnchorElement | null;
+      if (!anchor || anchor.target !== "_blank") return;
+      const href = anchor.getAttribute("href") || "";
+      if (!isExternalUrl(href)) return;
+      event.preventDefault();
+      openExternal(anchor.href);
+    };
+    document.addEventListener("click", onClickCapture, true);
+    return () => document.removeEventListener("click", onClickCapture, true);
+  }, []);
 
   function handleScriptureClick(event: MouseEvent<HTMLDivElement>) {
     const target = event.target as HTMLElement | null;
@@ -2273,10 +2309,6 @@ export default function GroupChatPage() {
     return `bb:update-card-install-dismissed:${currentUserId}`;
   }
 
-  function getUpdateCardUpgradeDismissKey(currentUserId: string) {
-    return `bb:update-card-upgrade-dismissed:${currentUserId}`;
-  }
-
   function dismissUpdateCardPush() {
     if (!userId || typeof window === "undefined") return;
     window.localStorage.setItem(getUpdateCardPushDismissKey(userId), "1");
@@ -2287,12 +2319,6 @@ export default function GroupChatPage() {
     if (!userId || typeof window === "undefined") return;
     window.localStorage.setItem(getUpdateCardInstallDismissKey(userId), "1");
     setInstallCardDismissed(true);
-  }
-
-  function dismissUpdateCardUpgrade() {
-    if (!userId || typeof window === "undefined") return;
-    window.localStorage.setItem(getUpdateCardUpgradeDismissKey(userId), "1");
-    setUpgradeCardDismissed(true);
   }
 
   async function savePushSubscription(currentUserId: string, subscription: PushSubscription) {
@@ -2404,8 +2430,9 @@ export default function GroupChatPage() {
   }
 
   async function openDevotionalFromFeature(title: "The Tempting of Jesus" | "The Testing of Joseph", paidOnly: boolean) {
-    if (paidOnly && !userIsPaid) {
-      setShowDevotionalUpgradeModal(true);
+    // Core study is free (lib/accessPolicy): gated devotionals simply open.
+    if (paidOnly && !hasStudyAccess) {
+      router.push("/bible-studies");
       return;
     }
 
@@ -2650,8 +2677,10 @@ export default function GroupChatPage() {
   }, [userActivePremiumSkin, userCurrentStreak, userId, userSelectedStreakFlame]);
 
   useEffect(() => {
+    // Web push prompts are web-only; the store apps handle notifications natively.
     const supported =
       typeof window !== "undefined" &&
+      !isNativeApp() &&
       "Notification" in window &&
       "serviceWorker" in navigator &&
       "PushManager" in window;
@@ -2661,6 +2690,13 @@ export default function GroupChatPage() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    // Inside the store app Bible Buddy is already installed: no Add to Home
+    // Screen card and no beforeinstallprompt handling.
+    if (isNativeApp()) {
+      setIsStandaloneApp(true);
+      return;
+    }
 
     const userAgent = navigator.userAgent || "";
     setIsIosDevice(/iphone|ipad|ipod/i.test(userAgent));
@@ -2699,11 +2735,6 @@ export default function GroupChatPage() {
   useEffect(() => {
     if (!userId || typeof window === "undefined") return;
     setInstallCardDismissed(window.localStorage.getItem(getUpdateCardInstallDismissKey(userId)) === "1");
-  }, [userId]);
-
-  useEffect(() => {
-    if (!userId || typeof window === "undefined") return;
-    setUpgradeCardDismissed(window.localStorage.getItem(getUpdateCardUpgradeDismissKey(userId)) === "1");
   }, [userId]);
 
   useEffect(() => {
@@ -2761,16 +2792,6 @@ export default function GroupChatPage() {
     const timeout = window.setTimeout(() => setHideInstallSetupCard(true), 220);
     return () => window.clearTimeout(timeout);
   }, [installCardDismissed, isStandaloneApp]);
-
-  useEffect(() => {
-    const upgradeComplete = userIsPaid || upgradeCardDismissed;
-    if (!upgradeComplete) {
-      setHideUpgradeSetupCard(false);
-      return;
-    }
-    const timeout = window.setTimeout(() => setHideUpgradeSetupCard(true), 220);
-    return () => window.clearTimeout(timeout);
-  }, [upgradeCardDismissed, userIsPaid]);
 
   useEffect(() => {
     let cancelled = false;
@@ -5670,7 +5691,7 @@ export default function GroupChatPage() {
                 ) : (
                   <div className="divide-y divide-gray-100">
                     {/* Top-level comments */}
-                    {comments.filter((c) => !c.parent_comment_id).map((comment) => (
+                    {comments.filter((c) => !c.parent_comment_id && !blockedUserIds.has(c.user_id)).map((comment) => (
                       <div key={comment.id} className="px-5 py-4">
                         <div className="flex items-start gap-3">
                           <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0">
@@ -5781,6 +5802,18 @@ export default function GroupChatPage() {
                                   {deletingSeriesCommentId === comment.id ? "Deleting..." : "Delete"}
                                 </button>
                               )}
+                              {userId && comment.user_id !== userId && (
+                                <ReportBlockMenu
+                                  targetUserId={comment.user_id}
+                                  targetName={comment.display_name}
+                                  contentType="series_comment"
+                                  contentId={comment.id}
+                                  currentUserId={userId}
+                                  size="sm"
+                                  align="left"
+                                  className="-ml-2"
+                                />
+                              )}
                             </div>
 
                             {/* Inline reply input */}
@@ -5808,7 +5841,7 @@ export default function GroupChatPage() {
                             )}
 
                             {/* Replies */}
-                            {comments.filter((c) => c.parent_comment_id === comment.id).map((reply) => (
+                            {comments.filter((c) => c.parent_comment_id === comment.id && !blockedUserIds.has(c.user_id)).map((reply) => (
                               <div key={reply.id} className="mt-3 ml-6 pl-3 border-l border-[#e8ddd0] flex items-start gap-2">
                                 <Link href={`/profile/${reply.user_id}`} className="flex-shrink-0">
                                   {reply.profile_image_url ? (
@@ -5902,6 +5935,18 @@ export default function GroupChatPage() {
                                         {deletingSeriesCommentId === reply.id ? "Deleting..." : "Delete"}
                                       </button>
                                     )}
+                                    {userId && reply.user_id !== userId && (
+                                      <ReportBlockMenu
+                                        targetUserId={reply.user_id}
+                                        targetName={reply.display_name}
+                                        contentType="series_comment"
+                                        contentId={reply.id}
+                                        currentUserId={userId}
+                                        size="sm"
+                                        align="left"
+                                        className="-ml-1.5"
+                                      />
+                                    )}
                                   </div>
                                 </div>
                               </div>
@@ -5910,7 +5955,7 @@ export default function GroupChatPage() {
                         </div>
                       </div>
                     ))}
-                    {comments.filter((c) => !c.parent_comment_id).length === 0 && (
+                    {comments.filter((c) => !c.parent_comment_id && !blockedUserIds.has(c.user_id)).length === 0 && (
                       <p className="text-sm text-gray-400 text-center py-6">No comments yet. Be the first!</p>
                     )}
                   </div>
@@ -6220,10 +6265,10 @@ export default function GroupChatPage() {
                 </div>
               )}
 
-              {(selectedSeries.is_current || isLeader || (userIsPaid && !selectedSeries.id.startsWith("preview-"))) && (() => {
+              {(selectedSeries.is_current || isLeader || (hasStudyAccess && !selectedSeries.id.startsWith("preview-"))) && (() => {
                 const sd = seriesStartDate;
                 const isPreviewSeries = selectedSeries.id.startsWith("preview-");
-                const hasArchivedPaidAccess = userIsPaid && !selectedSeries.is_current && !isPreviewSeries;
+                const hasArchivedPaidAccess = hasStudyAccess && !selectedSeries.is_current && !isPreviewSeries;
                 return (
                   <div className="flex flex-col gap-3">
                     <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide px-1">Week Lessons</p>
@@ -6353,7 +6398,7 @@ export default function GroupChatPage() {
                   const isTemptationSeries = normalizeSeriesTitle(planned.title) === "the temptation of jesus";
                   const isWisdomSeries = normalizeSeriesTitle(planned.title) === "the wisdom of proverbs";
                   const isPastStudy = isTemptationSeries;
-                  const canOpenPastStudy = isPastStudy && (userIsPaid || isLeader);
+                  const canOpenPastStudy = isPastStudy && (hasStudyAccess || isLeader);
                   const canOpen = isLive || isLeader || canOpenPastStudy;
                   const startLabel = isLive && currentSeriesStartAt ? formatDateTimeLabel(currentSeriesStartAt) : null;
                   const startCountdown =
@@ -6373,10 +6418,10 @@ export default function GroupChatPage() {
                   let footerRight: string | null = null;
 
                   if (isPastStudy) {
-                    statusLabel = userIsPaid || isLeader ? "Past Study" : "Pro Only";
-                    statusTone = userIsPaid || isLeader ? "past" : "pro";
-                    footerLeft = canOpenPastStudy ? "Replay the finished study anytime" : "Past studies are unlocked with Pro";
-                    footerRight = canOpenPastStudy ? "Open Past Study" : "Pro Locked";
+                    statusLabel = hasStudyAccess || isLeader ? "Past Study" : "Locked";
+                    statusTone = hasStudyAccess || isLeader ? "past" : "locked";
+                    footerLeft = canOpenPastStudy ? "Replay the finished study anytime" : "Past study";
+                    footerRight = canOpenPastStudy ? "Open Past Study" : "Locked";
                   } else if (isWisdomSeries) {
                     statusLabel = "Next Bible Study";
                     statusTone = "upcoming";
@@ -6426,17 +6471,9 @@ export default function GroupChatPage() {
                     disabled: !canOpen,
                     onClick: canOpen
                       ? () => {
-                          if (isPastStudy && !canOpenPastStudy) {
-                            setShowPastStudyProModal(true);
-                            return;
-                          }
                           if (previewSeries) setSelectedSeries(previewSeries);
                         }
-                      : isPastStudy
-                        ? () => {
-                            setShowPastStudyProModal(true);
-                          }
-                        : null,
+                      : null,
                   };
                 })}
               />
@@ -6582,53 +6619,6 @@ export default function GroupChatPage() {
 
         </div>}
       </div>
-
-      <UpgradeRequiredModal
-        isOpen={showDevotionalUpgradeModal}
-        onClose={() => setShowDevotionalUpgradeModal(false)}
-      />
-
-      {showPastStudyProModal && (
-        <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4 modal-backdrop-in"
-          onClick={() => setShowPastStudyProModal(false)}
-        >
-          <div
-            className="w-full max-w-sm rounded-3xl bg-white p-6 shadow-xl modal-panel-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex justify-center">
-              <LouisAvatar mood="wave" size={64} />
-            </div>
-            <h3 className="mt-4 text-center text-2xl font-bold text-gray-900">Past Bible Studies</h3>
-            <p className="mt-3 text-center text-sm leading-6 text-gray-600">
-              You need to upgrade to Pro to unlock access to past Bible studies like
-              {" "}
-              <span className="font-semibold text-gray-900">The Temptation of Jesus</span>.
-            </p>
-            <div className="mt-6 flex gap-3">
-              <button
-                type="button"
-                onClick={() => setShowPastStudyProModal(false)}
-                className="flex-1 rounded-2xl border border-gray-200 px-4 py-3 text-sm font-semibold text-gray-600 transition hover:bg-gray-50"
-              >
-                Close
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setShowPastStudyProModal(false);
-                  router.push("/upgrade");
-                }}
-                className="flex-1 rounded-2xl px-4 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-                style={{ backgroundColor: "#5a9a5a" }}
-              >
-                Upgrade to Pro
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {selectedScripture ? (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 px-4" onClick={() => setSelectedScripture(null)}>
@@ -7522,6 +7512,19 @@ export default function GroupChatPage() {
                 )}
               </div>
             )}
+            {userId && activeFeedPost.user_id !== userId && (
+              <ReportBlockMenu
+                targetUserId={activeFeedPost.user_id}
+                targetName={activeFeedPost.display_name || "Buddy"}
+                contentType="group_post"
+                contentId={activeFeedPost.id}
+                currentUserId={userId}
+                onBlocked={() => {
+                  setSelectedFeedPost(null);
+                  setDeepLinkedCommentId(null);
+                }}
+              />
+            )}
             <button
               type="button"
               onClick={() => {
@@ -7595,6 +7598,11 @@ export default function GroupChatPage() {
               href={activeFeedPlainLinkUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={(event) => {
+                if (!isNativeApp()) return;
+                event.preventDefault();
+                openExternal(activeFeedPlainLinkUrl);
+              }}
               className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#0056fd] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#003bb0]"
             >
               🔗 Open link
@@ -7691,7 +7699,8 @@ export default function GroupChatPage() {
     if (showTopBuddiesDetail) return renderTopBuddiesDetailView();
     if (activeFeedPost) return renderActiveFeedPostView();
     if (loadingPosts) return <p className="text-[var(--bb-text-muted,#9ca3af)] text-sm text-center py-8">Loading posts...</p>;
-    if (posts.length === 0) {
+    const visiblePosts = blockedUserIds.size > 0 ? posts.filter((post) => !blockedUserIds.has(post.user_id)) : posts;
+    if (visiblePosts.length === 0) {
       return (
         <div className="text-center py-12">
           <p className="text-[var(--bb-text-muted,#9ca3af)] text-sm">No posts yet.</p>
@@ -7699,7 +7708,7 @@ export default function GroupChatPage() {
         </div>
       );
     }
-    const orderedPosts = sortPinnedPostsFirst(posts);
+    const orderedPosts = sortPinnedPostsFirst(visiblePosts);
     const isHomeCommunityFeed = activeTab === "home";
     const weeklyTriviaPost = isHomeCommunityFeed ? orderedPosts.find((post) => weeklyTriviaByPostId[post.id]) : undefined;
     const feedPosts = isHomeCommunityFeed
@@ -7842,6 +7851,16 @@ export default function GroupChatPage() {
                   )}
                 </div>
               )}
+              {userId && post.user_id !== userId && (
+                <ReportBlockMenu
+                  targetUserId={post.user_id}
+                  targetName={post.display_name || "Buddy"}
+                  contentType="group_post"
+                  contentId={post.id}
+                  currentUserId={userId}
+                  className="flex-shrink-0"
+                />
+              )}
             </div>
               {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && <h3 className={`font-black text-[var(--bb-text-primary,#111827)] leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
               {isScrambledSharePost && renderScrambledShareCard(post, true)}
@@ -7924,7 +7943,17 @@ export default function GroupChatPage() {
               }
               const meta = VIDEO_META[parsed.platform];
               return (
-                <a href={post.link_url} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="mt-3 flex items-center gap-3 p-3 border border-[var(--bb-card-border,#f3f4f6)] rounded-xl hover:bg-[var(--bb-surface-soft,#f3f4f6)] transition">
+                <a
+                  href={post.link_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (!isNativeApp() || !post.link_url) return;
+                    e.preventDefault();
+                    openExternal(post.link_url);
+                  }}
+                  className="mt-3 flex items-center gap-3 p-3 border border-[var(--bb-card-border,#f3f4f6)] rounded-xl hover:bg-[var(--bb-surface-soft,#f3f4f6)] transition">
                   <span className="text-xl">{meta.icon}</span>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-semibold text-[var(--bb-text-secondary,#374151)]">{meta.label}</p>
@@ -8127,12 +8156,13 @@ export default function GroupChatPage() {
     const profileIncomplete = missingProfilePhoto || missingBio || missingLocation;
     const pushIncomplete = pushSupported && !(pushPermission === "granted" && pushSubscribed) && !pushDismissed;
     const installIncomplete = !isStandaloneApp && !installCardDismissed;
-    const upgradeIncomplete = !userIsPaid && !upgradeCardDismissed;
+    // The "Go deeper with Bible Buddy Pro" step was removed (2026-09-21): the
+    // app is free (lib/accessPolicy CORE_STUDY_IS_FREE) and App Store builds
+    // can't link to web purchases.
     const showProfileSetup = profileIncomplete && !hideProfileSetupCard;
     const showPushSetup = pushIncomplete && !hidePushSetupCard;
     const showInstallSetup = installIncomplete && !hideInstallSetupCard;
-    const showUpgradeSetup = upgradeIncomplete && !hideUpgradeSetupCard;
-    const showSetupHeader = showProfileSetup || showPushSetup || showInstallSetup || showUpgradeSetup;
+    const showSetupHeader = showProfileSetup || showPushSetup || showInstallSetup;
     const profileHref = userId ? `/profile/${userId}` : "/profile";
     if (!showSetupHeader) {
       return null;
@@ -8288,43 +8318,6 @@ export default function GroupChatPage() {
                 </button>
               </div>
               {installSetupError && <p className="text-xs text-red-500 mt-2">{installSetupError}</p>}
-            </div>
-          )}
-          </div>
-
-          <div className={`overflow-hidden transition-all duration-300 ${showUpgradeSetup ? "max-h-72 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-1 pointer-events-none"}`}>
-          {upgradeIncomplete && (
-            <div className="rounded-2xl border border-[#ead8c4] bg-[#fffaf4] px-4 py-3">
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold text-gray-900">Go deeper with Bible Buddy Pro</p>
-                  <p className="text-sm text-gray-600 mt-1">
-                    Unlock unlimited study, open every Bible study, and keep going without credit limits when you are in the middle of a real breakthrough.
-                  </p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Unlimited study access</span>
-                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">Full Bible study library</span>
-                    <span className="text-xs px-2.5 py-1 rounded-full font-medium bg-[#f5e3d0] text-[#9a5b1f]">No daily credit wall</span>
-                  </div>
-                </div>
-                <div className="text-xl flex-shrink-0">⭐</div>
-              </div>
-              <div className="mt-3 flex items-center gap-3">
-                <Link
-                  href="/upgrade"
-                  className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-                  style={{ backgroundColor: SAGE }}
-                >
-                  Upgrade to Pro
-                </Link>
-                <button
-                  type="button"
-                  onClick={dismissUpdateCardUpgrade}
-                  className="rounded-xl px-4 py-2 text-sm font-medium text-gray-600 border border-gray-200 hover:bg-white transition"
-                >
-                  Maybe later
-                </button>
-              </div>
             </div>
           )}
           </div>

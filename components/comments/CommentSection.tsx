@@ -8,6 +8,8 @@ import { triggerToast } from "@/components/AppToast";
 import { ModalShell } from "@/components/ModalShell";
 import TextareaMentionInput from "@/components/TextareaMentionInput";
 import MentionText from "@/components/MentionText";
+import ReportBlockMenu from "@/components/ReportBlockMenu";
+import { useBlockedUserIds } from "@/lib/userBlocks";
 import { requestAutoReplyDraft } from "@/lib/requestAutoReplyDraft";
 import {
   extractMentionedItemsFromText,
@@ -109,6 +111,7 @@ export default function CommentSection({
   onUserHasPosted,
 }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
+  const blockedUserIds = useBlockedUserIds();
   const [user, setUser] = useState<{ id: string; name: string } | null>(null);
   const [content, setContent] = useState("");
   const [replyTo, setReplyTo] = useState<string | null>(null);
@@ -741,6 +744,9 @@ export default function CommentSection({
     }
   }
 
+  // Blocked users' comments (and the replies under them) are hidden.
+  const visibleComments = blockedUserIds.size > 0 ? comments.filter((c) => !blockedUserIds.has(c.user_id)) : comments;
+
   const renderComments = (items: Comment[], depth = 0) =>
     items.length === 0
       ? null
@@ -882,6 +888,18 @@ export default function CommentSection({
                     Delete
                   </button>
                 )}
+                {user && c.user_id !== user.id && (
+                  <ReportBlockMenu
+                    targetUserId={c.user_id}
+                    targetName={c.user_name}
+                    contentType="comment"
+                    contentId={c.id}
+                    currentUserId={user.id}
+                    size="sm"
+                    align="left"
+                    className="-ml-2"
+                  />
+                )}
               </div>
               {replyTo === c.id && (
                 <form onSubmit={handlePost} className="mt-2 flex items-end gap-2">
@@ -975,7 +993,7 @@ export default function CommentSection({
           </form>
         )}
         <div>
-          {comments.length === 0 ? (
+          {visibleComments.length === 0 ? (
             <div
               className={`mt-4 rounded-xl border px-5 py-10 text-center text-sm text-gray-500 ${
                 variant === "plain" ? "border-gray-200 bg-white" : "border-dashed border-[#ead8c4] bg-[#fffaf4]"
@@ -984,7 +1002,7 @@ export default function CommentSection({
               No comments yet. Be the first to share your reflection.
             </div>
           ) : (
-            <div className="mt-4 flex flex-col gap-3">{renderComments(groupComments(comments))}</div>
+            <div className="mt-4 flex flex-col gap-3">{renderComments(groupComments(visibleComments))}</div>
           )}
         </div>
         {!user && <div className="mt-4 text-center text-sm text-gray-500">Sign in to comment.</div>}

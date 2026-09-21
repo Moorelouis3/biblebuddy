@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import {
   APP_THEMES,
@@ -102,11 +103,12 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [resettingPlan, setResettingPlan] = useState(false);
 
-  // Promo code
-  const [promoCode, setPromoCode] = useState("");
-  const [applyingCode, setApplyingCode] = useState(false);
-  const [promoSuccess, setPromoSuccess] = useState(false);
-  const [promoError, setPromoError] = useState<string | null>(null);
+  // Delete account
+  const [showDeleteAccount, setShowDeleteAccount] = useState(false);
+  const [deleteConfirmText, setDeleteConfirmText] = useState("");
+  const [deletingAccount, setDeletingAccount] = useState(false);
+  const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
+  const [accountDeleted, setAccountDeleted] = useState(false);
   const [guestLogoutWarningOpen, setGuestLogoutWarningOpen] = useState(false);
 
   useEffect(() => {
@@ -307,43 +309,48 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
     router.push("/dashboard");
   }
 
-  async function handleApplyPromoCode() {
-    if (!promoCode.trim()) {
-      setPromoError("Please enter a code");
+  async function handleDeleteAccount() {
+    if (deleteConfirmText.trim().toUpperCase() !== "DELETE") {
+      setDeleteAccountError('Type DELETE to confirm.');
       return;
     }
 
-    setApplyingCode(true);
-    setPromoError(null);
-    setPromoSuccess(false);
+    setDeletingAccount(true);
+    setDeleteAccountError(null);
 
     try {
-      const response = await fetch("/api/upgrade/code", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ code: promoCode.trim() }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to apply code");
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session?.access_token) {
+        throw new Error("Please sign in again, then try deleting your account.");
       }
 
-      setPromoSuccess(true);
-      setPromoCode("");
-      
-      // Optionally refresh profile state after a short delay
+      const response = await fetch("/api/account/delete", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${session.access_token}`,
+        },
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || "We couldn't delete your account. Please try again.");
+      }
+
+      setAccountDeleted(true);
+      try {
+        await supabase.auth.signOut({ scope: "local" });
+      } catch {
+        // the login is already gone; clearing the local session is best-effort
+      }
       setTimeout(() => {
-        window.location.reload();
-      }, 2000);
-    } catch (error: any) {
-      console.error("Error applying promo code:", error);
-      setPromoError(error.message || "Failed to apply code. Please try again.");
-    } finally {
-      setApplyingCode(false);
+        window.location.href = "/";
+      }, 2500);
+    } catch (error) {
+      console.error("Error deleting account:", error);
+      setDeleteAccountError(
+        (error instanceof Error && error.message) || "We couldn't delete your account. Please try again."
+      );
+      setDeletingAccount(false);
     }
   }
 
@@ -961,56 +968,6 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           </div>
         </div>
 
-        {/* Promo Code Section */}
-        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-4">Unlock Pro with a Code</h2>
-          
-          <div className="space-y-4">
-            <p className="text-sm text-gray-600">
-              Have a promo or lifetime access code? Enter it below to unlock Pro.
-            </p>
-
-            {promoSuccess && (
-              <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-                🎉 Pro unlocked! Welcome to BibleBuddy Pro.
-              </div>
-            )}
-
-            {promoError && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-                {promoError}
-              </div>
-            )}
-
-            <div className="flex gap-3">
-              <input
-                type="text"
-                value={promoCode}
-                onChange={(e) => {
-                  setPromoCode(e.target.value);
-                  setPromoError(null);
-                  setPromoSuccess(false);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !applyingCode) {
-                    handleApplyPromoCode();
-                  }
-                }}
-                placeholder="Enter access code"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                disabled={applyingCode}
-              />
-              <button
-                onClick={handleApplyPromoCode}
-                disabled={applyingCode || !promoCode.trim()}
-                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {applyingCode ? "Applying..." : "Apply Code"}
-              </button>
-            </div>
-          </div>
-        </div>
-
         {/* Account Section */}
         <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
           <h2 className="text-xl font-semibold mb-4">Account</h2>
@@ -1044,6 +1001,93 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
             </button>
           </div>
         </div>
+
+        {/* Delete Account Section */}
+        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
+          <h2 className="text-xl font-semibold mb-4">Delete my account</h2>
+
+          <div className="space-y-4">
+            {accountDeleted ? (
+              <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
+                Your account and data have been deleted. Taking you home...
+              </div>
+            ) : !showDeleteAccount ? (
+              <>
+                <p className="text-sm text-gray-600">
+                  Permanently delete your Bible Buddy account and everything tied to it: your profile, progress,
+                  notes, highlights, bookmarks, posts, comments, messages, and chats with Little Louis.
+                </p>
+                <button
+                  onClick={() => {
+                    setShowDeleteAccount(true);
+                    setDeleteConfirmText("");
+                    setDeleteAccountError(null);
+                  }}
+                  className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+                >
+                  Delete my account
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-sm font-semibold text-red-800 mb-2">
+                    This cannot be undone
+                  </p>
+                  <p className="text-sm text-red-700">
+                    Your account, progress, and everything you have posted will be permanently deleted.
+                    Type <span className="font-bold">DELETE</span> below to confirm.
+                  </p>
+                </div>
+
+                {deleteAccountError && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                    {deleteAccountError}
+                  </div>
+                )}
+
+                <input
+                  type="text"
+                  value={deleteConfirmText}
+                  onChange={(e) => {
+                    setDeleteConfirmText(e.target.value);
+                    setDeleteAccountError(null);
+                  }}
+                  placeholder="Type DELETE"
+                  autoCapitalize="characters"
+                  autoComplete="off"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                  disabled={deletingAccount}
+                />
+
+                <div className="flex gap-3">
+                  <button
+                    onClick={handleDeleteAccount}
+                    disabled={deletingAccount || deleteConfirmText.trim().toUpperCase() !== "DELETE"}
+                    className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {deletingAccount ? "Deleting..." : "Permanently delete"}
+                  </button>
+                  <button
+                    onClick={() => setShowDeleteAccount(false)}
+                    disabled={deletingAccount}
+                    className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+
+        <p className="text-center text-xs text-[var(--bb-text-secondary,#9ca3af)]">
+          <Link href="/privacy" className="underline hover:opacity-80">Privacy Policy</Link>
+          {" · "}
+          <Link href="/terms" className="underline hover:opacity-80">Terms of Service</Link>
+          {" · "}
+          <Link href="/community-guidelines" className="underline hover:opacity-80">Community Guidelines</Link>
+        </p>
       </div>
     </div>
   );

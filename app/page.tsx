@@ -14,6 +14,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { hasCachedSupabaseSession } from "@/lib/authBoot";
 import { applyAppThemeToDocument, cacheAppThemeForUser } from "@/lib/appThemes";
+import { isNativeApp } from "@/lib/nativeApp";
 
 type PreviewPanel = "watch" | "study" | "trivia";
 type StudyTab = "bible" | "notes";
@@ -1866,6 +1867,14 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
   // Milestones already reported this page load - trackLandingEventOnce
   // additionally dedupes per session, so refreshes don't double-count.
   const videoMilestonesRef = useRef<Set<string>>(new Set());
+  // Inside the App Store / Play Store app the page must not talk about
+  // browsers, home screens or other platforms' apps. Read after mount so the
+  // server render (web copy) and first client render match.
+  const [inNativeApp, setInNativeApp] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setInNativeApp(isNativeApp());
+  }, []);
 
   function trackVideoMilestone(eventName: LandingAnalyticsEvent, stepKey: string, metadata: Record<string, unknown>) {
     if (videoMilestonesRef.current.has(stepKey)) return;
@@ -1904,10 +1913,14 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
       q: "How are the lessons different?",
       a: "Most apps give you the text and leave you alone with it. Bible Buddy puts the explanation right inside the reading: verse-by-verse commentary, guided audio you can listen to anywhere, historical context, and quizzes that make it stick.",
     },
-    {
-      q: "Do I need to download anything?",
-      a: "No. Bible Buddy runs in your browser on any phone or computer. You can add it to your home screen in two taps and it works like a native app - iPhone and Android store apps are coming after beta.",
-    },
+    ...(inNativeApp
+      ? []
+      : [
+          {
+            q: "Do I need to download anything?",
+            a: "No. Bible Buddy runs in your browser on any phone or computer. You can add it to your home screen in two taps and it works like an app.",
+          },
+        ]),
     {
       q: "Can beginners use Bible Buddy?",
       a: "Beginners are exactly who it's built for. Start with the Bible in One Year plan - about 20 minutes a day, read or listen, with every chapter explained as you go.",
@@ -2006,7 +2019,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
 
         <section id="about" className="mt-14 rounded-[24px] border border-[#dce7f5] bg-[#f7fbff] p-6 text-center sm:p-8">
           <p className="text-sm font-semibold leading-7 text-[#40516b] sm:text-base">
-            Bible Buddy is currently in beta &bull; a free web app built by one person with one mission: helping people understand God&apos;s Word. New features are added every week. iPhone and Android apps are coming after beta.
+            Bible Buddy is currently in beta &bull; a free {inNativeApp ? "app" : "web app"} built by one person with one mission: helping people understand God&apos;s Word. New features are added every week.
           </p>
           <p className="mt-3 text-sm font-black text-[#07162f]">&mdash; Louis, founder of Bible Buddy</p>
           <p className="mt-5 border-t border-[#dce7f5] pt-5 text-xs font-semibold leading-6 text-[#6d7789]">
@@ -3064,15 +3077,11 @@ function DayOneGiftModal({ onClose }: { onClose: () => void }) {
         <p className="text-xs font-black uppercase tracking-[0.16em] text-[#9a6a1f]">Day 1 free gift</p>
         <h2 className="mt-2 text-2xl font-black leading-tight">You're getting the Day 1 Study Notes as a free gift.</h2>
         <p className="mt-3 text-sm font-semibold leading-6 text-[#58677a]">
-          Study Notes are normally part of Bible Buddy Plus and include deeper explanations, context, themes, and guided study tools for every chapter.
+          Study Notes include deeper explanations, context, themes, and guided study tools for every chapter - and they are free for every chapter.
         </p>
-        <p className="mt-3 text-sm font-semibold leading-6 text-[#58677a]">
-          If you want to continue unlocking Study Notes after Genesis 2, you can upgrade anytime.
-        </p>
-        <div className="mt-5 grid gap-2 sm:grid-cols-2">
-          <Link href="/upgrade" className="rounded-2xl bg-[#102033] px-4 py-3 text-center text-sm font-black text-white">Upgrade to Plus</Link>
-          <button type="button" onClick={onClose} className="rounded-2xl border border-[#d9c49e] bg-white px-4 py-3 text-sm font-black text-[#102033]">
-            Continue Free
+        <div className="mt-5 grid gap-2">
+          <button type="button" onClick={onClose} className="rounded-2xl bg-[#102033] px-4 py-3 text-center text-sm font-black text-white">
+            Continue
           </button>
         </div>
       </div>

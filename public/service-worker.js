@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v17-2026-06-14-dev-cache-bypass";
+const CACHE_VERSION = "v18-2026-09-21-bb-feed-redirect";
 const CACHE_NAME = `biblebuddy-${CACHE_VERSION}`;
 const RUNTIME_CACHE_NAME = `biblebuddy-runtime-${CACHE_VERSION}`;
 const MEDIA_CACHE_NAME = `biblebuddy-media-${CACHE_VERSION}`;
@@ -163,9 +163,27 @@ self.addEventListener("push", (event) => {
   event.waitUntil(self.registration.showNotification(title, options));
 });
 
+// Old social notifications stored '/bb-feed', a page that no longer exists.
+// The feed lives on the dashboard's group view now.
+function resolveNotificationUrl(rawUrl) {
+  if (typeof rawUrl !== "string" || !rawUrl) return "/dashboard";
+  try {
+    const parsed = new URL(rawUrl, self.location.origin);
+    if (
+      parsed.origin === self.location.origin &&
+      (parsed.pathname === "/bb-feed" || parsed.pathname.startsWith("/bb-feed/"))
+    ) {
+      return "/dashboard?view=group";
+    }
+  } catch (error) {
+    // fall through to the raw URL
+  }
+  return rawUrl;
+}
+
 self.addEventListener("notificationclick", (event) => {
   event.notification.close();
-  const url = event.notification.data?.url || "/dashboard";
+  const url = resolveNotificationUrl(event.notification.data?.url || "/dashboard");
 
   event.waitUntil(
     self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((clients) => {

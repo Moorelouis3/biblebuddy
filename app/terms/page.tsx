@@ -14,14 +14,15 @@ export default function TermsPage() {
       eyebrow="Terms"
       title="Terms of Service"
       description="These Terms explain how Bible Buddy works, what you can expect from us, and what we ask from everyone using the service."
-      lastUpdated="March 24, 2026"
+      lastUpdated="September 21, 2026"
     >
       <LegalSection title="1. Acceptance of Terms">
         <p>
           By accessing or using Bible Buddy, you agree to be bound by these Terms of
-          Service and our{" "}
-          <Link href="/privacy">Privacy Policy</Link>. If you do not agree, do not
-          use the service.
+          Service, our{" "}
+          <Link href="/privacy">Privacy Policy</Link>, and our{" "}
+          <Link href="/community-guidelines">Community Guidelines</Link>. If you do
+          not agree, do not use the service.
         </p>
       </LegalSection>
 
@@ -76,26 +77,32 @@ export default function TermsPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="7. Community Standards">
+      <LegalSection title="7. Community Standards and Zero Tolerance">
         <p>
           Bible Buddy is intended to be a respectful, encouraging space for Bible
-          study. We may remove content or restrict accounts that, in our judgment,
-          violate these terms or harm the community, including content involving
-          harassment, hate, explicit sexual content, threats, spam, or repeated
-          disruption.
+          study. By using Bible Buddy you agree to follow our{" "}
+          <Link href="/community-guidelines">Community Guidelines</Link>.
         </p>
+        <p>
+          <strong>
+            There is zero tolerance for objectionable content or abusive users.
+          </strong>{" "}
+          Objectionable content includes harassment, bullying, hate speech, threats,
+          sexual or explicit content, violence, spam, scams, and sharing other
+          people&apos;s private information.
+        </p>
+        <ul>
+          <li>You can report any post, comment, message, or user from inside Bible Buddy, and you can block users you do not want to hear from.</li>
+          <li>We review reports, usually within 24 hours.</li>
+          <li>We remove objectionable content and suspend or permanently remove users who post it or who abuse others, without prior notice.</li>
+        </ul>
       </LegalSection>
 
-      <LegalSection title="8. Paid Features and Billing">
+      <LegalSection title="8. Price">
         <p>
-          Some features may require payment, including Bible Buddy Pro or future
-          subscription offerings. Prices, features, and billing terms may change
-          from time to time. If you purchase a paid feature, you authorize the
-          applicable payment processor to charge the selected payment method.
-        </p>
-        <p>
-          Except where required by law, fees are non-refundable once billed. Trial
-          offers, promotional codes, and discounts may be subject to separate terms.
+          Bible Buddy is free to use. There are no paid features or subscriptions
+          inside the app. If you bought Bible Buddy Pro before it became free, you
+          can contact us about that purchase at support@mybiblebuddy.net.
         </p>
       </LegalSection>
 
@@ -165,7 +172,9 @@ export default function TermsPage() {
 
       <LegalSection title="15. Termination">
         <p>
-          You may stop using Bible Buddy at any time. We may suspend or terminate
+          You may stop using Bible Buddy at any time, and you can permanently
+          delete your account from Settings → Delete my account (see our{" "}
+          <Link href="/delete-account">account deletion page</Link>). We may suspend or terminate
           your access if we believe you violated these terms, created risk for the
           service or community, or where needed for legal or operational reasons.
         </p>
@@ -198,7 +207,9 @@ export default function TermsPage() {
           You can also visit the{" "}
           <Link href="/contact">Contact page</Link>{" "}
           or review our{" "}
-          <Link href="/privacy">Privacy Policy</Link>.
+          <Link href="/privacy">Privacy Policy</Link>{" "}
+          and{" "}
+          <Link href="/community-guidelines">Community Guidelines</Link>.
         </p>
       </LegalSection>
     </LegalPageLayout>

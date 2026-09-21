@@ -542,6 +542,13 @@ function BibleBookIcon() {
   );
 }
 
+// Bible Buddy is free, and the App Store (guideline 3.1.1) forbids sending
+// people to an outside checkout for digital content. Every Pro / Lifetime /
+// $50 upsell, free-plan gate and Stripe checkout on this dashboard is switched
+// off here, independent of CORE_STUDY_IS_FREE. Kept as a hard switch (not
+// deleted) so the old prompts stay in the file for reference. 2026-09-21.
+const PAID_UPGRADE_UI_ENABLED = false as boolean;
+
 type UpgradeFeatureIconName = "book" | "calendar" | "devices" | "shield" | "notes" | "sparkles" | "crown" | "lock";
 
 function UpgradeFeatureIcon({ name }: { name: UpgradeFeatureIconName }) {
@@ -6993,19 +7000,6 @@ export default function DashboardJourneyExperience({
     return day ? getBibleYearDayContent(day).audio : null;
   }
 
-  function renderBibleYearBackgroundListeningCta(day: GenesisBibleYearDay) {
-    return (
-      <button
-        type="button"
-        onClick={() => openBibleYearQuickUpgrade("background_audio")}
-        className="block w-full text-center text-sm font-bold text-[var(--bb-text-primary,#111827)] transition hover:opacity-80"
-        aria-label={`Listen with the app closed for Day ${day.dayNumber}`}
-      >
-        Listen with the app closed
-      </button>
-    );
-  }
-
   function getBibleYearLessonVerses(block: BibleYearDailyLesson["sections"][number]["verseBlock"]) {
     const book = getBibleYearBookFromReference(block.reference);
     return getBibleYearLocalChapterVerses(book, block.chapter).filter(
@@ -7212,6 +7206,7 @@ export default function DashboardJourneyExperience({
   }
 
   function openBibleYearQuickUpgrade(context: "day3" | "day7" | "guest_pro" | "background_audio" | null = null) {
+    if (!PAID_UPGRADE_UI_ENABLED) return;
     setBibleYearDeepNotesUpgradeOpen(false);
     setBibleYearDownloadUpgradeOpen(false);
     setBibleYearQuickUpgradeError(null);
@@ -7241,7 +7236,7 @@ export default function DashboardJourneyExperience({
   }
 
   async function openBibleYearCompletionUpgradePrompt(day: GenesisBibleYearDay) {
-    if (isPaidUser) return;
+    if (isPaidUser || !PAID_UPGRADE_UI_ENABLED) return;
     bibleYearCompletionUpgradeDayRef.current = day.dayNumber;
     setBibleYearDeepNotesUpgradeOpen(false);
     setBibleYearDownloadUpgradeOpen(false);
@@ -7409,7 +7404,7 @@ export default function DashboardJourneyExperience({
   }
 
   async function openDayThreeProPrompt(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
-    if (isPaidUser) return false;
+    if (isPaidUser || !PAID_UPGRADE_UI_ENABLED) return false;
     if (await hasSeenDayProPrompt(3)) return false;
     rememberDayProPromptSeen(3);
     setBibleYearDayThreeProPrompt({ day, nextDay });
@@ -7420,7 +7415,7 @@ export default function DashboardJourneyExperience({
   }
 
   async function openDaySevenProPrompt(day: GenesisBibleYearDay, nextDay: GenesisBibleYearDay) {
-    if (isPaidUser) return false;
+    if (isPaidUser || !PAID_UPGRADE_UI_ENABLED) return false;
     if (await hasSeenDayProPrompt(7)) return false;
     rememberDayProPromptSeen(7);
     setBibleYearDaySevenProPrompt({ day, nextDay });
@@ -7431,6 +7426,7 @@ export default function DashboardJourneyExperience({
   }
 
   function previewDayThreeProPromptForOwner() {
+    if (!PAID_UPGRADE_UI_ENABLED) return;
     if (userId !== DAY_THREE_PRO_POPUP_PREVIEW_USER_ID) return;
     const dayThree = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 3);
     const dayFour = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => day.dayNumber === 4);
@@ -7521,6 +7517,16 @@ export default function DashboardJourneyExperience({
   }
 
   async function startBibleYearQuickUpgrade(plan: "monthly" | "yearly") {
+    if (!PAID_UPGRADE_UI_ENABLED) {
+      // No checkout: just close whatever asked and let the reader carry on.
+      setBibleYearQuickUpgradeOpen(false);
+      setBibleYearQuickUpgradeContext(null);
+      setBibleYearQuickUpgradeLoading(null);
+      setBibleYearLifetimeInfoOpen(false);
+      setBibleYearInlineCompletionUpgradeDay(null);
+      resolveBibleYearCompletionUpgradeGate();
+      return;
+    }
     try {
       const shouldContinueDayCompletionAfterUpgradeClick = bibleYearQuickUpgradeContext === "completion";
       setBibleYearQuickUpgradeLoading(plan);
@@ -7618,6 +7624,7 @@ export default function DashboardJourneyExperience({
   }
 
   function showBibleYearStudyNotesUpgrade(dayNumber?: number | null) {
+    if (!PAID_UPGRADE_UI_ENABLED) return;
     const day =
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber) ||
       selectedBibleYearSeriesDay ||
@@ -7710,7 +7717,7 @@ export default function DashboardJourneyExperience({
     } as const;
     void trackDeepStudyInterestOnce(trackingPayload);
 
-    const hasPaidAccess = await resolveBibleYearStudyNotesPaidStatus();
+    const hasPaidAccess = !PAID_UPGRADE_UI_ENABLED || (await resolveBibleYearStudyNotesPaidStatus());
 
     if (hasPaidAccess) {
       setBibleYearDayOneDeepNotesGiftOpen(false);
@@ -7755,7 +7762,7 @@ export default function DashboardJourneyExperience({
   function renderBibleYearDayOneDeepNotesGiftModal() {
     return (
       <ModalShell
-        isOpen={Boolean(bibleYearDayOneDeepNotesGiftOpen && !isPaidUser)}
+        isOpen={Boolean(PAID_UPGRADE_UI_ENABLED && bibleYearDayOneDeepNotesGiftOpen && !isPaidUser)}
         onClose={() => setBibleYearDayOneDeepNotesGiftOpen(false)}
         backdropColor="bg-slate-950/72 backdrop-blur-md"
       >
@@ -7812,6 +7819,7 @@ export default function DashboardJourneyExperience({
   }
 
   function renderBibleYearDeepNotesUpgradeModal() {
+    if (!PAID_UPGRADE_UI_ENABLED) return null;
     const upgradeFeatures = [
       {
         icon: "🎧",
@@ -7944,6 +7952,7 @@ export default function DashboardJourneyExperience({
   }
 
   function renderBibleYearQuickUpgradeModal() {
+    if (!PAID_UPGRADE_UI_ENABLED) return null;
     const isBackgroundAudioUpgrade = bibleYearQuickUpgradeContext === "background_audio";
     const modalTitle = isBackgroundAudioUpgrade ? "Listen with your app closed" : "Choose your Pro plan";
     const modalBody = isBackgroundAudioUpgrade
@@ -8035,7 +8044,7 @@ export default function DashboardJourneyExperience({
 
   function renderBibleYearDayThreeProUpgradePrompt() {
     const prompt = bibleYearDayThreeProPrompt;
-    if (!prompt) return null;
+    if (!prompt || !PAID_UPGRADE_UI_ENABLED) return null;
 
     const sections = [
       {
@@ -8201,7 +8210,7 @@ export default function DashboardJourneyExperience({
 
   function renderBibleYearDaySevenProUpgradePrompt() {
     const prompt = bibleYearDaySevenProPrompt;
-    if (!prompt) return null;
+    if (!prompt || !PAID_UPGRADE_UI_ENABLED) return null;
 
     const sections = [
       {
@@ -8345,7 +8354,7 @@ export default function DashboardJourneyExperience({
   }
 
   function renderGuestProUpgradePrompt() {
-    if (!guestProPromptOpen) return null;
+    if (!guestProPromptOpen || !PAID_UPGRADE_UI_ENABLED) return null;
 
     const sections = [
       {
@@ -11330,14 +11339,14 @@ Before we understand redemption, we need to understand what God made humanity fo
               activeReference={bibleYearOpenVerseBreakdownKey}
               onActiveReferenceChange={setBibleYearOpenVerseBreakdownKey}
               onSectionOpen={trackSummaryStudyNotesSection}
-              canOpenSections={isPaidUser || isOwnerDashboard}
+              canOpenSections={isPaidUser || isOwnerDashboard || !PAID_UPGRADE_UI_ENABLED}
               onLockedSectionClick={handleLockedStudyNotesSectionClick}
               intro={day.dayNumber === 1 ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.intro : undefined}
               closing={day.dayNumber === 1 && (isPaidUser || isOwnerDashboard) ? BIBLE_YEAR_DAY_ONE_STUDY_NOTES_FRAME.closing : undefined}
               topId={`bible-year-day-${day.dayNumber}-summary-deep-study-top`}
             />
           ) : deepNotesMarkdown ? (
-            isPaidUser || isOwnerDashboard ? (
+            isPaidUser || isOwnerDashboard || !PAID_UPGRADE_UI_ENABLED ? (
               <ChapterNotesMarkdown>{deepNotesMarkdown}</ChapterNotesMarkdown>
             ) : (
               <button
@@ -11370,7 +11379,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     }
 
     if (card === "trivia") {
-      if (!isPaidUser && !isOwnerDashboard) {
+      if (PAID_UPGRADE_UI_ENABLED && !isPaidUser && !isOwnerDashboard) {
         return (
           <div className="px-4 pb-4">
             <div className="dashboard-inline-task rounded-[24px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4">
@@ -12124,6 +12133,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       onContinueFree?: (() => void) | null;
     },
   ) {
+    if (!PAID_UPGRADE_UI_ENABLED) return null;
     const featureRows = [
       {
         title: "Unlimited Bible in One Year Days",
@@ -14110,9 +14120,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </p>
                   </div>
                 </div>
-                <div className="mt-4">
-                  {renderBibleYearBackgroundListeningCta(day)}
-                </div>
                 <div className="mt-5">
                   <button
                     type="button"
@@ -14769,7 +14776,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                       autoplay={false}
                     />
                   </div>
-                  {renderBibleYearBackgroundListeningCta(day)}
                 </div>
               ) : modalShowVideo && modalVideoPlayerSrc ? (
                 <div>
@@ -15589,7 +15595,6 @@ Before we understand redemption, we need to understand what God made humanity fo
                   autoplay={false}
                 />
               </div>
-              {renderBibleYearBackgroundListeningCta(day)}
               {renderBibleYearFollowAlongScripture(day)}
               <button
                 type="button"
@@ -15846,7 +15851,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       </svg></span>
                   ) : null}
                   <span className="mt-1 block text-[11px] font-bold text-[var(--bb-text-primary,#fff7ed)] sm:text-xs">{item.label}</span>
-                  {item.premium ? (
+                  {item.premium && PAID_UPGRADE_UI_ENABLED ? (
                     <span className="mt-1 inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] px-2 py-0.5 text-[9px] font-black text-[var(--bb-accent,#f6b44b)]">
                       {isPaidUser ? "Pro" : "Premium"}
                     </span>
@@ -16156,7 +16161,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             >
               x
             </button>
-            <p className="pr-12 text-[11px] font-black uppercase tracking-[0.2em] text-amber-300">Premium Download</p>
+            <p className="pr-12 text-[11px] font-black uppercase tracking-[0.2em] text-amber-300">Download</p>
             <h2 className="mt-2 pr-10 text-2xl font-black leading-tight">Download this Day {bibleYearDownloadPrompt?.dayNumber} video?</h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-amber-50/86">
               This will start the download for {bibleYearDownloadPrompt?.title}. If your browser opens the video instead, use the browser save option from that page.
@@ -16180,7 +16185,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         </ModalShell>
 
-        <ModalShell isOpen={bibleYearDownloadUpgradeOpen} onClose={() => setBibleYearDownloadUpgradeOpen(false)}>
+        <ModalShell isOpen={PAID_UPGRADE_UI_ENABLED && bibleYearDownloadUpgradeOpen} onClose={() => setBibleYearDownloadUpgradeOpen(false)}>
           <div className="bb-skin-glow-card relative w-full max-w-md overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_34%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#f6b44b)_20%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_96%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_78%,transparent))] p-5 text-left text-[var(--bb-text-primary,#111827)] shadow-[0_28px_80px_rgba(0,0,0,0.42),0_0_36px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_18%,transparent)] backdrop-blur-xl">
             <button
               type="button"
@@ -16224,7 +16229,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           </div>
         </ModalShell>
 
-        <ModalShell isOpen={bibleYearQuickUpgradeOpen} onClose={closeBibleYearQuickUpgrade}>
+        <ModalShell isOpen={PAID_UPGRADE_UI_ENABLED && bibleYearQuickUpgradeOpen} onClose={closeBibleYearQuickUpgrade}>
           <div className="bb-skin-glow-card relative w-full max-w-md overflow-hidden rounded-[28px] border border-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_38%,var(--bb-card-border,#dbe7f4))] bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#f6b44b)_24%,transparent),transparent_44%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_98%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_82%,transparent))] p-5 text-left text-[var(--bb-text-primary,#111827)] shadow-[0_28px_80px_rgba(0,0,0,0.45),0_0_38px_color-mix(in_srgb,var(--bb-accent,#f6b44b)_22%,transparent)] backdrop-blur-xl">
             {bibleYearQuickUpgradeLoading ? (
               <div className="absolute inset-0 z-20 grid place-items-center bg-[color-mix(in_srgb,var(--bb-card,#ffffff)_86%,transparent)] backdrop-blur-sm">
@@ -17184,7 +17189,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 : null}
               </>
             ) : null}
-            {isAnonymousGuest && !CORE_STUDY_IS_FREE && !homePanelOverride && !deepStudyFocusActive ? (
+            {PAID_UPGRADE_UI_ENABLED && isAnonymousGuest && !CORE_STUDY_IS_FREE && !homePanelOverride && !deepStudyFocusActive ? (
               <button
                 type="button"
                 onClick={() => setGuestProPromptOpen(true)}
@@ -17654,16 +17659,20 @@ Before we understand redemption, we need to understand what God made humanity fo
                     </div>
                   ) : (
                     <div className="mt-4 rounded-2xl border border-[#f0d7b3] bg-[#fff8ef] p-4">
-                      <p className="text-sm font-bold text-gray-950">Free Bible Study access</p>
-                      <p className="mt-2 text-sm leading-6 text-gray-700">
-                        As a free user, you can use one Bible study at a time. Upgrade to Pro to switch between every Bible Buddy Bible study and keep exploring different studies.
-                      </p>
-                      <Link
-                        href="/upgrade"
-                        className="mt-4 inline-flex w-full justify-center rounded-full bg-[#7BAFD4] px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
-                      >
-                        Upgrade for full access
-                      </Link>
+                      {PAID_UPGRADE_UI_ENABLED ? (
+                        <>
+                          <p className="text-sm font-bold text-gray-950">Free Bible Study access</p>
+                          <p className="mt-2 text-sm leading-6 text-gray-700">
+                            As a free user, you can use one Bible study at a time. Upgrade to Pro to switch between every Bible Buddy Bible study and keep exploring different studies.
+                          </p>
+                          <Link
+                            href="/upgrade"
+                            className="mt-4 inline-flex w-full justify-center rounded-full bg-[#7BAFD4] px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                          >
+                            Upgrade for full access
+                          </Link>
+                        </>
+                      ) : null}
                       <div className="mt-4 rounded-2xl border border-[#ead7bd] bg-white/70 p-3">
                         <p className="text-xs font-bold text-gray-900">Reset current Bible Study</p>
                         <p className="mt-1 text-xs leading-5 text-gray-600">
@@ -18905,14 +18914,18 @@ Before we understand redemption, we need to understand what God made humanity fo
             <div className="mt-4 rounded-2xl border border-[#f0d7b3] bg-[#fff8ef] p-4">
               <p className="text-sm font-bold text-gray-950">One active Bible study at a time</p>
               <p className="mt-2 text-sm leading-6 text-gray-700">
-                As a free Bible Buddy, you can follow one Bible study at a time. Finish your current study first, or upgrade to Pro to switch studies whenever you want.
+                {PAID_UPGRADE_UI_ENABLED
+                  ? "As a free Bible Buddy, you can follow one Bible study at a time. Finish your current study first, or upgrade to Pro to switch studies whenever you want."
+                  : "You can follow one Bible study at a time. Finish your current study first."}
               </p>
-              <Link
-                href="/upgrade"
-                className="mt-4 inline-flex w-full justify-center rounded-full bg-[#7BAFD4] px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
-              >
-                Upgrade for unlimited studies
-              </Link>
+              {PAID_UPGRADE_UI_ENABLED ? (
+                <Link
+                  href="/upgrade"
+                  className="mt-4 inline-flex w-full justify-center rounded-full bg-[#7BAFD4] px-4 py-2.5 text-sm font-bold text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"
+                >
+                  Upgrade for unlimited studies
+                </Link>
+              ) : null}
             </div>
           )}
         </div>
@@ -18988,7 +19001,9 @@ Before we understand redemption, we need to understand what God made humanity fo
 
           {freePlanGate?.kind === "study" ? (
             <p className="mt-4 text-sm font-semibold leading-6 text-gray-700">
-              You can follow one Bible study at a time on the free plan. Finish your current study first, or upgrade to Pro to switch studies whenever you want.
+              {PAID_UPGRADE_UI_ENABLED
+                ? "You can follow one Bible study at a time on the free plan. Finish your current study first, or upgrade to Pro to switch studies whenever you want."
+                : "You can follow one Bible study at a time. Finish your current study first."}
             </p>
           ) : freePlanGate?.kind === "bible-year-future" ? (
             <div className="mt-4 space-y-3">
@@ -19016,14 +19031,16 @@ Before we understand redemption, we need to understand what God made humanity fo
                 </p>
                 <p className="mt-1 text-2xl font-black text-[#17213d]">{freePlanCountdown}</p>
               </div>
-              <p className="text-sm font-semibold leading-6 text-gray-700">
-                Do not want to wait? Upgrade now and get unlimited chapters.
-              </p>
+              {PAID_UPGRADE_UI_ENABLED ? (
+                <p className="text-sm font-semibold leading-6 text-gray-700">
+                  Do not want to wait? Upgrade now and get unlimited chapters.
+                </p>
+              ) : null}
             </div>
           )}
 
           <div className="mt-5 grid gap-2">
-            {freePlanGate?.kind === "bible-year-future" ? null : (
+            {freePlanGate?.kind === "bible-year-future" || !PAID_UPGRADE_UI_ENABLED ? null : (
               <Link
                 href="/upgrade"
                 className="inline-flex w-full justify-center rounded-full bg-[#7BAFD4] px-4 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:bg-[#6aa3cc]"

@@ -24,9 +24,14 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
+// TURNED OFF 2026-09-21 (Louis): AI accounts posting as named people is not
+// allowed on the App Store. The cron is removed from vercel.json and this
+// route refuses to run, so nothing posts as Christina/Marcus/Mateo/Harold.
+const MODERATOR_ENGAGEMENT_ENABLED = false;
+
 function isAuthorized(request: NextRequest) {
   const secret = process.env.CRON_SECRET;
-  if (!secret) return true;
+  if (!secret) return false;
   return request.headers.get("authorization") === `Bearer ${secret}`;
 }
 
@@ -39,6 +44,9 @@ function hashString(value: string) {
 export async function GET(request: NextRequest) {
   if (!isAuthorized(request)) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
+  if (!MODERATOR_ENGAGEMENT_ENABLED) {
+    return NextResponse.json({ ok: true, skipped: "moderator engagement is turned off" });
   }
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;

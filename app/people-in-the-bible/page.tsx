@@ -18,6 +18,7 @@ import { requestLouisNotes } from "../../lib/requestLouisNotes";
 import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 import CreditEducationModal from "../../components/CreditEducationModal";
+import { CORE_STUDY_IS_FREE } from "../../lib/accessPolicy";
 // Utility to get/set session flag for education modal
 const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 
@@ -542,7 +543,7 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
           const prev = prevCreditsRef.current;
           const curr = typeof data.daily_credits === "number" ? data.daily_credits : null;
           // Only trigger if prev was 5, now 4, and ignore_credit_phase1 is false
-          if (prev === 5 && curr === 4) {
+          if (!CORE_STUDY_IS_FREE && prev === 5 && curr === 4) {
             setShowEducationModal(true);
           }
           prevCreditsRef.current = curr;

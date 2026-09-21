@@ -19,6 +19,8 @@ import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { useSupabaseUser } from "../../../lib/useSupabaseUser";
+import { useBlockedUserIds } from "../../../lib/userBlocks";
+import ReportBlockMenu from "../../../components/ReportBlockMenu";
 import { joinCommunityEvent } from "../../../lib/communityEventJoin";
 import { ensureGuestSession } from "../../../lib/guestSession";
 import { getCommunityEvent, getCommunityEventState } from "../../../lib/communityEvents";
@@ -71,6 +73,12 @@ export default function CommunityEventPage() {
   const [totalMembers, setTotalMembers] = useState<number | null>(null);
   const [membersLoading, setMembersLoading] = useState(true);
   const [membersFailed, setMembersFailed] = useState(false);
+  // Blocked buddies (either direction) are left out of the member grid.
+  const blockedUserIds = useBlockedUserIds();
+  const visibleParticipants = useMemo(
+    () => (blockedUserIds.size > 0 ? participants.filter((p) => !blockedUserIds.has(p.user_id)) : participants),
+    [participants, blockedUserIds],
+  );
 
 
   const state = useMemo(() => (event ? getCommunityEventState(event) : null), [event]);
@@ -407,9 +415,9 @@ export default function CommunityEventPage() {
         ) : (
           <>
             <div className="mt-4 grid grid-cols-4 gap-x-2 gap-y-4 sm:grid-cols-6 md:grid-cols-8">
-              {participants.map((buddy) => (
+              {visibleParticipants.map((buddy, index) => (
+                <div key={buddy.user_id} className="relative min-w-0">
                 <Link
-                  key={buddy.user_id}
                   href={`/profile/${buddy.user_id}`}
                   className="flex min-w-0 flex-col items-center gap-1.5"
                   title={buddy.display_name}
@@ -431,6 +439,18 @@ export default function CommunityEventPage() {
                     {firstName(buddy.display_name)}
                   </span>
                 </Link>
+                <ReportBlockMenu
+                  targetUserId={buddy.user_id}
+                  targetName={buddy.display_name}
+                  contentType="event_member"
+                  contentId={slug}
+                  currentUserId={userId ?? null}
+                  reportLabel="Report photo or name"
+                  size="sm"
+                  align={index % 4 < 2 ? "left" : "right"}
+                  className="absolute right-0 top-0 rounded-full bg-[var(--bb-card,#ffffff)] shadow-sm"
+                />
+                </div>
               ))}
             </div>
             {remaining > 0 ? (

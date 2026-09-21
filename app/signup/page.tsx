@@ -81,6 +81,18 @@ async function saveSignupAttributionToProfile(userId: string, username: string, 
   }
 }
 
+const TERMS_VERSION = "2026-09-21";
+
+async function recordTermsAcceptance() {
+  try {
+    await supabase.auth.updateUser({
+      data: { terms_accepted_at: new Date().toISOString(), terms_version: TERMS_VERSION },
+    });
+  } catch (termsError) {
+    console.error("Terms acceptance save failed (non-blocking):", termsError);
+  }
+}
+
 async function recordLandingSignupEvent(userId: string, username: string, attribution: SignupAttribution) {
   if (typeof window === "undefined") return;
   try {
@@ -126,6 +138,7 @@ export default function SignupPage() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   useEffect(() => {
     if (referrerUserId) {
@@ -217,6 +230,10 @@ export default function SignupPage() {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+    if (!agreedToTerms) {
+      setError("Please agree to the Terms, Privacy Policy and Community Guidelines to create your account.");
+      return;
+    }
     setLoading(true);
     setError(null);
 
@@ -262,6 +279,7 @@ export default function SignupPage() {
     window.localStorage.setItem(`bb:skip-initial-dashboard-view:${user.id}`, "1");
 
     if (data.session) {
+      await recordTermsAcceptance();
       await applyReferralCodeIfPresent();
       router.push(signupNextPath());
       return;
@@ -273,6 +291,7 @@ export default function SignupPage() {
     });
 
     if (loginData.session) {
+      await recordTermsAcceptance();
       await applyReferralCodeIfPresent();
       router.push(signupNextPath());
       return;
@@ -361,6 +380,13 @@ export default function SignupPage() {
               <GoogleLogo />
               <span>Continue with Google</span>
             </button>
+            <p className="text-center text-[11px] font-semibold leading-5 text-[#526075]">
+              By continuing you agree to our{" "}
+              <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>,{" "}
+              <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a>{" "}
+              and{" "}
+              <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.
+            </p>
           </div>
 
           <div className="my-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
@@ -399,6 +425,26 @@ export default function SignupPage() {
               />
             </div>
 
+            <label className="flex items-start gap-2 text-xs font-semibold leading-5 text-gray-700">
+              <input
+                type="checkbox"
+                required
+                checked={agreedToTerms}
+                onChange={(event) => {
+                  setAgreedToTerms(event.target.checked);
+                  if (event.target.checked) setError(null);
+                }}
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-[#d9e3ee] accent-[#135397]"
+              />
+              <span>
+                I agree to the{" "}
+                <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>,{" "}
+                <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a>{" "}
+                and{" "}
+                <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.
+              </span>
+            </label>
+
             {error && (
               <p className="rounded-lg border border-red-100 bg-red-50 px-3 py-2 text-xs text-red-600">
                 {error}
@@ -407,7 +453,7 @@ export default function SignupPage() {
 
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || !agreedToTerms}
               className="mt-2 w-full rounded-xl bg-[#135397] py-3 text-sm font-black text-white shadow-[0_16px_32px_rgba(19,83,151,0.18)] hover:bg-[#0f4279] disabled:opacity-60"
             >
               {loading ? "Creating account..." : "Create account"}

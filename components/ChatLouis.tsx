@@ -10,6 +10,9 @@ import { buildPersistedFeatureTours, DEFAULT_FEATURE_TOURS, normalizeFeatureTour
 import { useFeatureRenderPriority } from "./FeatureRenderPriorityContext";
 import { getDailyRecommendation, type DailyRecommendation } from "../lib/dailyRecommendation";
 import { buildLouisGuideChatMessage, getLouisPageGuide } from "../lib/louisGuidance";
+import { isNativeApp } from "../lib/nativeApp";
+
+const AI_CONSENT_KEY = "bb:ai-consent-v1";
 import { getVerseIntro, getVerseOfTheDay, type VerseOfTheDayEntry } from "../lib/verseOfTheDay";
 import { syncCurrentStreakToProfileStats } from "../lib/profileStats";
 import {
@@ -1616,6 +1619,26 @@ function buildLouisJourneyRecommendation({
 export function ChatLouis({ displayMode = "floating", studyContext = null }: ChatLouisProps) {
   const { featureToursEnabled } = useFeatureRenderPriority();
   const isEmbedded = displayMode === "embedded";
+  // App Store 5.1.2: say plainly that Little Louis is an AI and that messages
+  // go to OpenAI, and get consent once before the first message.
+  const [aiConsent, setAiConsent] = useState(true);
+  const [hideVoiceInput, setHideVoiceInput] = useState(false);
+  useEffect(() => {
+    try {
+      setAiConsent(window.localStorage.getItem(AI_CONSENT_KEY) === "1");
+    } catch {
+      setAiConsent(false);
+    }
+    setHideVoiceInput(isNativeApp());
+  }, []);
+  function acceptAiConsent() {
+    setAiConsent(true);
+    try {
+      window.localStorage.setItem(AI_CONSENT_KEY, "1");
+    } catch {
+      // consent still applies for this session
+    }
+  }
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -3340,7 +3363,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
 
   async function handleSend() {
     const trimmed = input.trim();
-    if (!trimmed) return;
+    if (!trimmed || !aiConsent) return;
 
     const nextConversationMemory: LouisConversationMemory = {
       summary: summarizeConversationMemory(trimmed),
@@ -3808,10 +3831,26 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
           ) : null}
 
           {/* Input area */}
-          <div 
+          <div
             className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-3 py-3"
           >
-            <div className="flex gap-2 items-end">
+            {!aiConsent ? (
+              <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 text-xs leading-relaxed text-[var(--bb-text-primary,#111827)]">
+                <p className="font-bold">Little Louis is an AI helper</p>
+                <p className="mt-1 text-[var(--bb-text-secondary,#4b5563)]">
+                  It is not a real person and can make mistakes. To reply, your messages are sent to OpenAI and saved to your Bible Buddy account. Please don&apos;t share private details like addresses or health information.{" "}
+                  <a href="/privacy" className="underline">Privacy Policy</a>
+                </p>
+                <button
+                  type="button"
+                  onClick={acceptAiConsent}
+                  className="mt-2 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-4 py-2 text-xs font-black text-[var(--bb-button-text,#ffffff)] transition hover:brightness-95"
+                >
+                  I understand, start chatting
+                </button>
+              </div>
+            ) : null}
+            <div className={`flex gap-2 items-end ${aiConsent ? "" : "hidden"}`}>
               <div className="flex-1 flex items-end gap-2">
                 <textarea
                   ref={textareaRef}
@@ -3840,6 +3879,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
               <button
                 type="button"
                 onClick={toggleListening}
+                hidden={hideVoiceInput}
                 className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition ${
                   isListening
                     ? "bg-red-500 hover:bg-red-600 text-white"
@@ -3881,6 +3921,11 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
                 {isSending ? "Sending..." : "Send"}
               </button>
             </div>
+            {aiConsent ? (
+              <p className="mt-1.5 text-center text-[10px] text-[var(--bb-text-secondary,#6b7280)]">
+                Little Louis is an AI and can make mistakes.
+              </p>
+            ) : null}
           </div>
         </div>
       )}

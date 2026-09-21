@@ -83,6 +83,7 @@ export default function AccountRequiredModal({
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [emailPendingConfirm, setEmailPendingConfirm] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   useEffect(() => {
     if (!isOpen || !gate) return;
@@ -112,6 +113,10 @@ export default function AccountRequiredModal({
       setError("Please enter your email and a password of at least 6 characters.");
       return;
     }
+    if (gate.missing.email && !agreedToTerms) {
+      setError("Please agree to the Terms, Privacy Policy and Community Guidelines.");
+      return;
+    }
     setSaving(true);
     setError(null);
     try {
@@ -137,7 +142,13 @@ export default function AccountRequiredModal({
         const { error: authError } = await supabase.auth.updateUser({
           email: email.trim().toLowerCase(),
           password: password.trim(),
-          data: { firstName: firstName.trim(), first_name: firstName.trim(), display_name: fullName },
+          data: {
+            firstName: firstName.trim(),
+            first_name: firstName.trim(),
+            display_name: fullName,
+            terms_accepted_at: new Date().toISOString(),
+            terms_version: "2026-09-21",
+          },
         });
         if (authError) throw authError;
       } else {
@@ -246,6 +257,21 @@ export default function AccountRequiredModal({
                   placeholder="Choose a password"
                   className="rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-3 py-2.5 text-sm font-semibold outline-none focus:border-[var(--bb-accent,#2f7fe8)]"
                 />
+                <label className="flex items-start gap-2 text-xs font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
+                  <input
+                    type="checkbox"
+                    checked={agreedToTerms}
+                    onChange={(event) => setAgreedToTerms(event.target.checked)}
+                    className="mt-0.5 h-4 w-4 shrink-0"
+                  />
+                  <span>
+                    I agree to the{" "}
+                    <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>,{" "}
+                    <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a>{" "}
+                    and{" "}
+                    <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.
+                  </span>
+                </label>
               </>
             ) : null}
 
@@ -282,7 +308,7 @@ export default function AccountRequiredModal({
             <button
               type="button"
               onClick={() => void save()}
-              disabled={saving}
+              disabled={saving || (gate.missing.email && !agreedToTerms)}
               className="mt-1 rounded-2xl bg-[#111827] px-5 py-3 text-sm font-black disabled:cursor-wait disabled:opacity-70"
               style={{ color: "#ffffff" }}
             >

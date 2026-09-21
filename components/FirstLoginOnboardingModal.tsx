@@ -6,7 +6,6 @@ import Image from "next/image";
 type DoomScrollValue = "10" | "20" | "40" | "60_plus";
 type BibleExperienceValue = "beginner" | "intermediate" | "advanced" | "experienced";
 type MainGoalValue = "understanding" | "consistency" | "completion" | "spiritual_growth";
-type UpgradePlan = "monthly" | "yearly";
 
 type FirstLoginOnboardingAnswers = {
   doomScrollMinutes: DoomScrollValue | "";
@@ -15,22 +14,15 @@ type FirstLoginOnboardingAnswers = {
   firstName: string;
 };
 
-type FinishPayload =
-  | {
-      answers: FirstLoginOnboardingAnswers;
-      projectedDays: number;
-      projectedLessonsPerDay: string;
-      projectedMinutesLabel: string;
-      path: "free";
-    }
-  | {
-      answers: FirstLoginOnboardingAnswers;
-      projectedDays: number;
-      projectedLessonsPerDay: string;
-      projectedMinutesLabel: string;
-      path: "upgrade";
-      plan: UpgradePlan;
-    };
+// Bible Buddy is free (2026-09-21, App Store prep): onboarding only ever
+// finishes on the free path — there is no paid option to pick.
+type FinishPayload = {
+  answers: FirstLoginOnboardingAnswers;
+  projectedDays: number;
+  projectedLessonsPerDay: string;
+  projectedMinutesLabel: string;
+  path: "free";
+};
 
 type FirstLoginOnboardingModalProps = {
   isOpen: boolean;
@@ -201,18 +193,12 @@ export default function FirstLoginOnboardingModal({
   onFinish,
 }: FirstLoginOnboardingModalProps) {
   const [stepIndex, setStepIndex] = useState(0);
-  const [showPlans, setShowPlans] = useState(false);
   const [answers, setAnswers] = useState<FirstLoginOnboardingAnswers>({
     doomScrollMinutes: "",
     bibleExperience: "",
     mainGoal: "",
     firstName: initialFirstName,
   });
-
-  useEffect(() => {
-    if (!isOpen) return;
-    setShowPlans(false);
-  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -253,17 +239,6 @@ export default function FirstLoginOnboardingModal({
       projectedLessonsPerDay: projected.projectedLessonsPerDay,
       projectedMinutesLabel: projected.projectedMinutesLabel,
       path: "free",
-    });
-  }
-
-  async function handleFinishUpgrade(plan: UpgradePlan) {
-    await onFinish({
-      answers,
-      projectedDays: projected.projectedDays,
-      projectedLessonsPerDay: projected.projectedLessonsPerDay,
-      projectedMinutesLabel: projected.projectedMinutesLabel,
-      path: "upgrade",
-      plan,
     });
   }
 
@@ -565,8 +540,8 @@ export default function FirstLoginOnboardingModal({
                   Welcome{answers.firstName.trim() ? `, ${answers.firstName.trim()}` : ""}.
                 </h3>
                 <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
-                  <p>Start with the free experience or unlock everything Bible Buddy offers.</p>
-                  <p>Either way, your Day 1 journey starts now.</p>
+                  <p>Everything in Bible Buddy is included.</p>
+                  <p>Your Day 1 journey starts now.</p>
                 </div>
 
                 <div className={`mt-6 rounded-[28px] border ${modalBorder} bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] px-5 py-5`}>
@@ -589,49 +564,16 @@ export default function FirstLoginOnboardingModal({
                   </div>
                 </div>
 
-                {showPlans ? (
-                  <div className="mt-5 grid gap-3">
-                    <button
-                      type="button"
-                      disabled={submitting}
-                      onClick={() => void handleFinishUpgrade("yearly")}
-                      className="flex items-center justify-between rounded-2xl border border-[var(--bb-accent,#2f7fe8)] bg-[linear-gradient(135deg,#0f56d8,#2f7fe8)] px-4 py-4 text-left text-white shadow-[0_18px_34px_rgba(47,127,232,0.24)] transition hover:brightness-105 disabled:opacity-60"
-                    >
-                      <span>
-                        <span className="block text-sm font-black">Full Access</span>
-                        <span className="mt-1 block text-xs font-semibold text-blue-100">Lifetime one-time payment</span>
-                      </span>
-                      <span className="text-xl font-black">$50</span>
-                    </button>
-                    <button
-                      type="button"
-                      disabled={submitting}
-                      onClick={() => setShowPlans(false)}
-                      className={`rounded-2xl border ${modalBorder} bg-[var(--bb-card,#ffffff)] px-4 py-3 text-sm font-black ${headingText} transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:opacity-60`}
-                    >
-                      Back
-                    </button>
-                  </div>
-                ) : (
-                  <div className="mt-5 grid gap-3">
-                    <button
-                      type="button"
-                      disabled={submitting}
-                      onClick={() => setShowPlans(true)}
-                      className="rounded-2xl bg-[var(--bb-accent,#2f7fe8)] px-4 py-4 text-sm font-black text-white shadow-[0_16px_32px_rgba(47,127,232,0.22)] transition hover:brightness-105 disabled:opacity-60"
-                    >
-                      Unlock Full Experience
-                    </button>
-                    <button
-                      type="button"
-                      disabled={submitting}
-                      onClick={() => void handleFinishFree()}
-                      className={`rounded-2xl border ${modalBorder} bg-[var(--bb-card,#ffffff)] px-4 py-4 text-sm font-black ${headingText} transition hover:bg-[var(--bb-surface-soft,#f8fbff)] disabled:opacity-60`}
-                    >
-                      Start Day 1 Free
-                    </button>
-                  </div>
-                )}
+                <div className="mt-5 grid gap-3">
+                  <button
+                    type="button"
+                    disabled={submitting}
+                    onClick={() => void handleFinishFree()}
+                    className="rounded-2xl bg-[var(--bb-accent,#2f7fe8)] px-4 py-4 text-sm font-black text-white shadow-[0_16px_32px_rgba(47,127,232,0.22)] transition hover:brightness-105 disabled:opacity-60"
+                  >
+                    Start Day 1
+                  </button>
+                </div>
               </div>
             ) : null}
 

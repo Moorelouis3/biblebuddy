@@ -14,6 +14,7 @@ import { clearCapturedInstallPrompt, useInstallPrompt } from "../hooks/useInstal
 import { recordAppInstalled, recordInstallAskShown, shouldShowInstallBanner } from "./HomeInstallBanner";
 import { getInstallEnvironment } from "../lib/installEnvironment";
 import InstallIOSSheet from "./InstallIOSSheet";
+import { isNativeApp } from "../lib/nativeApp";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
@@ -76,7 +77,7 @@ const BuddyCelebrationModal = dynamic(
   { ssr: false },
 );
 
-const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password", "/privacy", "/terms", "/contact"];
+const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password", "/privacy", "/terms", "/contact", "/community-guidelines", "/delete-account"];
 const DAILY_RECOMMENDATIONS_ENABLED = false;
 const AUTOMATIC_FEEDBACK_POPUPS_ENABLED = false;
 const AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED = false;
@@ -753,6 +754,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   async function ensurePushSubscription(currentUserId: string) {
     if (typeof window === "undefined") return;
     if (!("serviceWorker" in navigator) || !("PushManager" in window)) return;
+    if (isNativeApp()) return;
     const vapidPublicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
     if (!vapidPublicKey) {
       throw new Error("Missing NEXT_PUBLIC_VAPID_PUBLIC_KEY.");
@@ -1130,37 +1132,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     }
   }
 
-  async function startOnboardingUpgradeCheckout(plan: "monthly" | "yearly") {
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-
-    if (!session) {
-      throw new Error("Please log in before upgrading.");
-    }
-
-    const response = await fetch("/api/stripe/checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${session.access_token}`,
-      },
-      body: JSON.stringify({
-        plan,
-        returnTo: "/dashboard",
-        prompt: "first_login_onboarding",
-        checkoutContext: "first_login_onboarding",
-      }),
-    });
-    const data = await response.json().catch(() => null);
-
-    if (!response.ok || !data?.url) {
-      throw new Error(data?.error || "Unable to open checkout right now.");
-    }
-
-    window.location.href = data.url;
-  }
-
   async function handleFirstLoginOnboardingFinish(payload: {
     answers: {
       doomScrollMinutes: string;
@@ -1171,8 +1142,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     projectedDays: number;
     projectedLessonsPerDay: string;
     projectedMinutesLabel: string;
-    path: "free" | "upgrade";
-    plan?: "monthly" | "yearly";
+    // Onboarding is free-only (App Store prep, 2026-09-21): no checkout path.
+    path: "free";
   }) {
     if (!userId) {
       setFirstLoginOnboardingError("We could not find your account. Refresh the page and try again.");
@@ -1318,11 +1289,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       setUsername(displayName);
       setFirstLoginOnboardingName(displayName);
       setShowFirstLoginOnboarding(false);
-
-      if (payload.path === "upgrade" && payload.plan) {
-        await startOnboardingUpgradeCheckout(payload.plan);
-        return;
-      }
 
       if (pathname !== "/dashboard") {
         router.push("/dashboard");
@@ -1680,6 +1646,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (typeof window === "undefined" || !("serviceWorker" in navigator)) return;
+    // The native app shell loads the live site itself; no PWA service worker
+    // (and no reload-on-new-worker) inside the App Store / Play Store app.
+    if (isNativeApp()) return;
 
     let cancelled = false;
     let hasReloadedForNewWorker = false;
@@ -1712,7 +1681,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const supported = "Notification" in window && "serviceWorker" in navigator && "PushManager" in window;
+    // Web push needs the service worker, which the native app does not run —
+    // treating push as unsupported there hides every web push prompt/nudge.
+    const supported =
+      !isNativeApp() && "Notification" in window && "serviceWorker" in navigator && "PushManager" in window;
     setPushSupported(supported);
     setPushPermission(supported ? Notification.permission : "unsupported");
   }, []);
@@ -1737,6 +1709,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     if (!userId || typeof window === "undefined") return;
 
     function onDayCompleted(event: Event) {
+      // Neither web push nor Add to Home Screen applies inside the native app.
+      if (isNativeApp()) return;
       const detail = (event as CustomEvent).detail as { nextDay?: number; completedDay?: number } | undefined;
 
       if (pushSupported && !(pushPermission === "granted" && pushSubscribed)) {

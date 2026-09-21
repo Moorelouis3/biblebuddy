@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { isNativeApp } from "@/lib/nativeApp";
 
 // TypeScript declaration for Google AdSense
 declare global {
@@ -73,8 +74,8 @@ export default function AdSlot({
   const ENABLE_ADS = false;
 
   useEffect(() => {
-    // Don't initialize if ads are disabled
-    if (!ENABLE_ADS) {
+    // Don't initialize if ads are disabled or running in the native app
+    if (!ENABLE_ADS || isNativeApp()) {
       return;
     }
 
@@ -100,8 +101,9 @@ export default function AdSlot({
     }
   }, [adSlotId, ENABLE_ADS]);
 
-  // Don't render anything if ads are disabled
-  if (!ENABLE_ADS) {
+  // Don't render anything if ads are disabled, or inside the native apps
+  // (the App Store / Play Store builds are ad-free).
+  if (!ENABLE_ADS || isNativeApp()) {
     return null;
   }
 

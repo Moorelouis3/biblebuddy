@@ -5,6 +5,7 @@ import InstallBanner from "./InstallBanner";
 import InstallIOSSheet from "./InstallIOSSheet";
 import { supabase } from "../lib/supabaseClient";
 import { getInstallEnvironment, getInstallPlatform, isStandalone } from "../lib/installEnvironment";
+import { isNativeApp } from "../lib/nativeApp";
 import {
   INSTALL_PROMPT_STORAGE_KEY,
   clearCapturedInstallPrompt,
@@ -38,6 +39,8 @@ function writeLocalInstallState(state: "never" | "installed") {
 /** Synchronous, localStorage-only visibility decision — safe to run before paint. */
 export function shouldShowInstallBanner(): boolean {
   if (typeof window === "undefined") return false;
+  // Never inside the App Store / Play Store app.
+  if (isNativeApp()) return false;
   const env = getInstallEnvironment();
   if (env.isStandalone) return false;
   const state = readLocalInstallState();
@@ -118,6 +121,9 @@ async function writeInstallPromptColumns(columns: Record<string, string>) {
  */
 export function reconcileInstallPromptState(dbState: string | null) {
   if (typeof window === "undefined") return;
+  // The native app is not a home-screen install of the web app; leave the
+  // web install bookkeeping and analytics alone there.
+  if (isNativeApp()) return;
   let changed = false;
 
   if (isStandalone()) {

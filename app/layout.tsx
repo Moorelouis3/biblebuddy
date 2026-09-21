@@ -5,6 +5,8 @@ import AppShell from "@/components/AppShell";
 import { APP_THEMES } from "@/lib/appThemes";
 import { SmokeDeleteEffect } from "@/components/SmokeDeleteEffect";
 import TrafficSourceCapture from "@/components/TrafficSourceCapture";
+import AdSenseScript from "@/components/AdSenseScript";
+import NativeExternalLinks from "@/components/NativeExternalLinks";
 import { PostSuccessEffect } from "@/components/PostSuccessEffect";
 import { AppToast } from "@/components/AppToast";
 import { PointsPop } from "@/components/PointsPop";
@@ -71,6 +73,9 @@ export const metadata: Metadata = {
     "og:image:secure_url": socialPreviewImage,
     "twitter:image:alt": socialImageAlt,
     "p:domain_verify": "56de80934d28272fd86fcc8176074f43",
+    // Keeps AdSense site ownership verifiable now that the ad script is
+    // injected client-side (components/AdSenseScript.tsx).
+    "google-adsense-account": "ca-pub-3367331224607676",
   },
 };
 
@@ -174,11 +179,6 @@ export default function RootLayout({
           suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: appThemeFirstPaintScript }}
         />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3367331224607676"
-          crossOrigin="anonymous"
-        />
       </head>
       <body
         className="antialiased bg-gray-50"
@@ -193,6 +193,9 @@ export default function RootLayout({
           </div>
         </div>
         <TrafficSourceCapture />
+        {/* AdSense loads on the web only; native apps are ad-free. */}
+        <AdSenseScript />
+        <NativeExternalLinks />
         <SmokeDeleteEffect />
         <PostSuccessEffect />
         <AppToast />

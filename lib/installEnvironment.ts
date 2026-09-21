@@ -2,6 +2,8 @@
 // decide what tapping Add should do. All checks are synchronous and safe to
 // call during render on the client; on the server they return the "no" answer.
 
+import { isNativeApp } from "@/lib/nativeApp";
+
 export type InstallEnvironment = {
   /** Already running as an installed app (home screen icon). */
   isStandalone: boolean;
@@ -15,6 +17,9 @@ export type InstallEnvironment = {
 
 export function isStandalone(): boolean {
   if (typeof window === "undefined") return false;
+  // The App Store / Play Store app is already "installed" — never offer
+  // Add to Home Screen inside it.
+  if (isNativeApp()) return true;
   if (window.matchMedia?.("(display-mode: standalone)").matches) return true;
   // iOS Safari's non-standard flag, set when launched from a home screen icon.
   return (window.navigator as { standalone?: boolean }).standalone === true;

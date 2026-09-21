@@ -8,6 +8,7 @@ import { ModalShell } from "../../components/ModalShell";
 import UserBadge from "../../components/UserBadge";
 import StreakFlameBadge from "../../components/StreakFlameBadge";
 import { extractLegacyDirectMessageAction } from "../../lib/directMessageActions";
+import { useBlockedUserIds } from "../../lib/userBlocks";
 
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
 const FETCH_BATCH_SIZE = 200;
@@ -103,13 +104,19 @@ export default function MessagesPage() {
     };
   }, [currentUserId]);
 
+  // Conversations with blocked buddies (either direction) stay out of the inbox.
+  const blockedUserIds = useBlockedUserIds();
+  const unblockedConversations = useMemo(
+    () => conversations.filter((conversation) => !blockedUserIds.has(conversation.otherUserId)),
+    [conversations, blockedUserIds],
+  );
   const primaryConversations = useMemo(
-    () => conversations.filter((conversation) => conversation.bucket === "primary"),
-    [conversations],
+    () => unblockedConversations.filter((conversation) => conversation.bucket === "primary"),
+    [unblockedConversations],
   );
   const generalConversations = useMemo(
-    () => conversations.filter((conversation) => conversation.bucket === "general"),
-    [conversations],
+    () => unblockedConversations.filter((conversation) => conversation.bucket === "general"),
+    [unblockedConversations],
   );
   const visibleConversations = activeTab === "primary" ? primaryConversations : generalConversations;
 
@@ -300,7 +307,7 @@ export default function MessagesPage() {
 
           {loading ? (
             <div className="py-12 text-center text-sm text-[var(--bb-text-muted,#9ca3af)]">Loading...</div>
-          ) : conversations.length === 0 ? (
+          ) : unblockedConversations.length === 0 ? (
             <div className="rounded-3xl border border-dashed border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-surface,#ffffff)] p-12 text-center">
               <p className="mb-4 text-4xl">💬</p>
               <h2 className="mb-2 text-xl font-bold text-[var(--bb-text-primary,#111827)]">No messages yet</h2>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ModalShell } from "./ModalShell";
+import { isNativeApp } from "../lib/nativeApp";
 
 // Guided step-by-step Add-to-Home-Screen flow for iPhone, which has no install
 // prompt API — Apple only allows the manual Share-menu route. One step at a
@@ -100,6 +101,9 @@ export default function InstallIOSSheet({ isOpen, onClose }: InstallIOSSheetProp
 
   const step = INSTALL_SHEET_STEPS[stepIndex];
   const isLastStep = stepIndex === INSTALL_SHEET_STEPS.length - 1;
+
+  // Add to Home Screen makes no sense inside the App Store / Play Store app.
+  if (isNativeApp()) return null;
 
   return (
     <ModalShell isOpen={isOpen} onClose={onClose} placement="bottom">

@@ -1,5 +1,7 @@
 "use client";
 
+import { isNativeApp } from "../lib/nativeApp";
+
 // Slim "Add to Home Screen" banner shown under the app header on the home
 // screen. Purely presentational — HomeInstallBanner owns the display rules,
 // environment detection, and persistence.
@@ -21,6 +23,8 @@ export default function InstallBanner({
   subline = "Opens like an app. Keeps your streak in reach.",
   showAddLink = true,
 }: InstallBannerProps) {
+  // Never shown inside the App Store / Play Store app.
+  if (isNativeApp()) return null;
   return (
     <div className="mx-auto mb-3 w-full max-w-xl px-1">
       <style>{`

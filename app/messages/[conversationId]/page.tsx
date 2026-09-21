@@ -9,6 +9,7 @@ import UserBadge from "../../../components/UserBadge";
 import StreakFlameBadge from "../../../components/StreakFlameBadge";
 import { getDirectMessagePresentation, isMissingDirectMessageActionColumnError } from "../../../lib/directMessageActions";
 import MentionText from "../../../components/MentionText";
+import { BLOCKS_CHANGED_EVENT, unblockUser } from "../../../lib/userBlocks";
 
 const AVATAR_COLORS = ["#4a9b6f", "#5b8dd9", "#c97b3e", "#9b6bb5", "#d45f7a", "#3ea8a8"];
 const REPORT_REASONS = [
@@ -724,6 +725,21 @@ export default function ConversationPage({
         blocked_user_id: otherUser.user_id,
       });
       setMenuOpen(false);
+      window.dispatchEvent(new Event(BLOCKS_CHANGED_EVENT));
+    } finally {
+      setBlockingBuddy(false);
+    }
+  }
+
+  async function handleUnblockBuddy() {
+    if (!userId || !otherUser || blockingBuddy) return;
+    setBlockingBuddy(true);
+
+    try {
+      const result = await unblockUser(otherUser.user_id);
+      if (!result.ok) return;
+      setBlockState(null);
+      setMenuOpen(false);
     } finally {
       setBlockingBuddy(false);
     }
@@ -791,7 +807,7 @@ export default function ConversationPage({
   const blockedByMe = blockState?.blocker_user_id === userId;
   const blockedByThem = !!blockState && blockState.blocker_user_id !== userId;
   const composerNotice = blockedByMe
-    ? "You blocked this buddy. Unblock them in the database or admin tools to message again."
+    ? "You blocked this buddy. Unblock them to message again."
     : blockedByThem
       ? "This buddy has blocked messages in this conversation."
       : null;
@@ -864,14 +880,25 @@ export default function ConversationPage({
                   >
                     View Buddy Profile
                   </Link>
-                  <button
-                    type="button"
-                    onClick={() => void handleBlockBuddy()}
-                    disabled={blockingBuddy || !!blockedByMe}
-                    className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-red-600 transition hover:bg-red-50 disabled:opacity-50"
-                  >
-                    {blockedByMe ? "Buddy Blocked" : blockingBuddy ? "Blocking..." : `Block ${otherDisplay}`}
-                  </button>
+                  {blockedByMe ? (
+                    <button
+                      type="button"
+                      onClick={() => void handleUnblockBuddy()}
+                      disabled={blockingBuddy}
+                      className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] disabled:opacity-50"
+                    >
+                      {blockingBuddy ? "Unblocking..." : `Unblock ${otherDisplay}`}
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => void handleBlockBuddy()}
+                      disabled={blockingBuddy}
+                      className="block w-full rounded-2xl px-4 py-3 text-left text-sm font-semibold text-red-600 transition hover:bg-red-50 disabled:opacity-50"
+                    >
+                      {blockingBuddy ? "Blocking..." : `Block ${otherDisplay}`}
+                    </button>
+                  )}
                   <button
                     type="button"
                     onClick={() => setShowReportModal(true)}
@@ -1125,8 +1152,18 @@ export default function ConversationPage({
 
           <div className="border-t border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-5 py-4">
             {composerNotice ? (
-                <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-                {composerNotice}
+                <div className="flex items-center justify-between gap-3 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                <span>{composerNotice}</span>
+                {blockedByMe && (
+                  <button
+                    type="button"
+                    onClick={() => void handleUnblockBuddy()}
+                    disabled={blockingBuddy}
+                    className="flex-shrink-0 rounded-full border border-red-300 bg-white px-3 py-1.5 text-xs font-semibold text-red-700 transition hover:bg-red-100 disabled:opacity-50"
+                  >
+                    {blockingBuddy ? "Unblocking..." : "Unblock"}
+                  </button>
+                )}
               </div>
             ) : (
               <>

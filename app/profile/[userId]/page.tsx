@@ -19,6 +19,8 @@ import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { buildFullName, hasRequiredFullName, splitFullName } from "@/lib/profileName";
 import UserBadge from "@/components/UserBadge";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
+import ReportBlockMenu from "@/components/ReportBlockMenu";
+import { BLOCKS_CHANGED_EVENT, getUsersIBlocked, unblockUser } from "@/lib/userBlocks";
 import { CUSTOM_MEMBER_BADGE_OPTIONS, normalizeCustomMemberBadge } from "@/lib/userBadges";
 
 // --- Avatar color helpers ---
@@ -50,21 +52,6 @@ function formatJoined(dateStr: string | null | undefined): string {
   const date = new Date(dateStr);
   const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   return `${months[date.getMonth()]} ${date.getFullYear()}`;
-}
-
-function getProTrialTimeLeft(expiresAt: string | null | undefined) {
-  if (!expiresAt) return null;
-  const ms = new Date(expiresAt).getTime() - Date.now();
-  if (ms <= 0) return null;
-  const totalMinutes = Math.floor(ms / 60000);
-  const days = Math.floor(totalMinutes / 1440);
-  const hours = Math.floor((totalMinutes % 1440) / 60);
-  const minutes = totalMinutes % 60;
-  return { days, hours, minutes };
-}
-
-function formatProTrialTimeLeft(timeLeft: { days: number; hours: number; minutes: number }) {
-  return `${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m left`;
 }
 
 type BuddyState = "none" | "pending_sent" | "pending_received" | "buddies";
@@ -181,6 +168,40 @@ export default function PublicProfilePage() {
   const [saving, setSaving] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
 
+  // --- Block state (report/block menu, App Store 1.2) ---
+  const [blockedByViewer, setBlockedByViewer] = useState(false);
+  const [unblockingProfile, setUnblockingProfile] = useState(false);
+
+  useEffect(() => {
+    if (!viewerUserId || viewerUserId === profileUserId) {
+      setBlockedByViewer(false);
+      return;
+    }
+    let cancelled = false;
+    const refresh = () => {
+      void getUsersIBlocked({ userId: viewerUserId }).then((ids) => {
+        if (!cancelled) setBlockedByViewer(ids.has(profileUserId));
+      });
+    };
+    refresh();
+    window.addEventListener(BLOCKS_CHANGED_EVENT, refresh);
+    return () => {
+      cancelled = true;
+      window.removeEventListener(BLOCKS_CHANGED_EVENT, refresh);
+    };
+  }, [viewerUserId, profileUserId]);
+
+  async function handleUnblockProfile() {
+    if (unblockingProfile) return;
+    setUnblockingProfile(true);
+    try {
+      const result = await unblockUser(profileUserId);
+      if (result.ok) setBlockedByViewer(false);
+    } finally {
+      setUnblockingProfile(false);
+    }
+  }
+
   // --- Buddy state ---
   const [buddyState, setBuddyState] = useState<BuddyState>("none");
   const [buddyRequestId, setBuddyRequestId] = useState<string | null>(null);
@@ -197,7 +218,6 @@ export default function PublicProfilePage() {
   const [savingBadge, setSavingBadge] = useState(false);
   const [badgeSaveMessage, setBadgeSaveMessage] = useState<string | null>(null);
   const [editProfileError, setEditProfileError] = useState<string | null>(null);
-  const [trialClockTick, setTrialClockTick] = useState(0);
 
   // â”€â”€ Recent posts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const [recentPosts, setRecentPosts] = useState<Array<{
@@ -225,11 +245,6 @@ export default function PublicProfilePage() {
     loadProfileData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profileUserId]);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => setTrialClockTick((tick) => tick + 1), 60000);
-    return () => window.clearInterval(timer);
-  }, []);
 
   async function loadProfileData() {
     try {
@@ -896,9 +911,6 @@ export default function PublicProfilePage() {
     stats?.username === "moorelouis3";
   const initials = displayName.split(" ").map((w: string) => w[0]).join("").slice(0, 2).toUpperCase();
   const color = avatarColor(profileUserId);
-  const proTrialTimeLeft = getProTrialTimeLeft(stats?.pro_expires_at);
-  const showProTrialBanner = Boolean(stats?.member_badge === "pro_trial" && stats?.is_paid && proTrialTimeLeft);
-  void trialClockTick;
 
   return (
     <div className="profile-page-shell min-h-screen bg-gray-50 pb-12">
@@ -914,27 +926,6 @@ export default function PublicProfilePage() {
         </nav>
 
         {/* --- PROFILE HEADER --- */}
-        {showProTrialBanner && proTrialTimeLeft && (
-          <div className="mb-6 overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-r from-violet-50 via-white to-emerald-50 shadow-sm">
-            <div className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <div className="min-w-0">
-                <p className="text-xs font-black uppercase tracking-wide text-violet-600">Pro Trial Active</p>
-                <p className="mt-1 text-sm font-semibold text-gray-900">
-                  {isOwner ? "You have" : `${displayName} has`} Bible Buddy Pro for {formatProTrialTimeLeft(proTrialTimeLeft)}.
-                </p>
-              </div>
-              {isOwner && (
-                <Link
-                  href="/upgrade"
-                  className="inline-flex items-center justify-center rounded-xl bg-violet-600 px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:bg-violet-700"
-                >
-                  Upgrade
-                </Link>
-              )}
-            </div>
-          </div>
-        )}
-
         <div className="profile-skin-card bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
 
@@ -992,7 +983,28 @@ export default function PublicProfilePage() {
                   </div>
                 ) : viewerUserId ? (
                   <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
-                    {buddyState === "none" && (
+                    <div className="flex items-center gap-1">
+                      {blockedByViewer && (
+                        <button
+                          onClick={() => void handleUnblockProfile()}
+                          disabled={unblockingProfile}
+                          className="profile-skin-inner px-4 py-1.5 rounded-lg text-sm font-medium text-gray-700 bg-gray-100 border border-gray-200 hover:bg-gray-200 transition disabled:opacity-60"
+                        >
+                          {unblockingProfile ? "Unblocking..." : "Unblock"}
+                        </button>
+                      )}
+                      <ReportBlockMenu
+                        targetUserId={profileUserId}
+                        targetName={displayName}
+                        contentType="profile"
+                        currentUserId={viewerUserId}
+                        reportLabel="Report profile"
+                      />
+                    </div>
+                    {blockedByViewer && (
+                      <p className="text-xs text-gray-500">You blocked {displayName}.</p>
+                    )}
+                    {!blockedByViewer && buddyState === "none" && (
                       <button
                         onClick={handleAddBuddy}
                         disabled={buddyActionLoading}
