@@ -1,19 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+import { computeDashboard, type DashboardWindow } from "@/lib/adminDashboard";
+import { writeAnalyticsSnapshot } from "@/lib/adminAnalyticsSnapshots";
 
-// Pre-builds /admin/analytics so it opens instantly (Louis, 2026-09-15: 20-40s
-// waits were "wild"). Each timeframe is computed by the analytics route itself
-// with fresh=1, which saves the result as a snapshot. Groups run on their own
-// schedules (vercel.json): Today every 30 min, the rest less often because
-// they change slowly and cost the most to build.
+// Pre-builds /admin/analytics so it opens instantly. Since 2026-09-21 this
+// builds the new dashboard (lib/adminDashboard.ts) directly - about 15s per
+// timeframe. The old page's snapshots had silently stopped updating on
+// 2026-09-15; the old page (/admin/analytics/legacy) now computes live.
+// Groups keep their existing vercel.json schedules: Today every 30 min, the
+// rest hourly. "long" is kept as a no-op so its schedule does not 400.
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
-const GROUPS: Record<string, string[]> = {
+const GROUPS: Record<string, DashboardWindow[]> = {
   today: ["today"],
   recent: ["yesterday", "7d", "30d"],
-  long: ["90d", "lifetime"],
+  long: [],
 };
 
 export async function GET(request: NextRequest) {
@@ -25,42 +29,21 @@ export async function GET(request: NextRequest) {
   const windows = GROUPS[group];
   if (!windows) return NextResponse.json({ error: "Unknown group." }, { status: 400 });
 
-  const origin = request.nextUrl.origin;
-  const results: Array<{ window: string; mode: string; status: number | string; seconds: number }> = [];
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !serviceKey) return NextResponse.json({ error: "Server not configured." }, { status: 500 });
+  const admin = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
 
-  // One timeframe at a time (overview + full together) so the database is not
-  // hit with every heavy query at once - except the long group: 90 Days and
-  // All Time take minutes each, and back to back they would pass the 5-minute
-  // limit on this function.
-  const buildWindow = (window: string) =>
-    Promise.all(
-      ["overview", "full"].map(async (mode) => {
-        const started = Date.now();
-        const params = new URLSearchParams({ window, fresh: "1" });
-        if (mode === "overview") params.set("mode", "overview");
-        try {
-          const response = await fetch(`${origin}/api/admin/onboarding-analytics?${params}`, {
-            headers: { Authorization: `Bearer ${secret}` },
-            cache: "no-store",
-          });
-          // Drain the body so the connection closes cleanly.
-          await response.arrayBuffer();
-          results.push({ window, mode, status: response.status, seconds: Math.round((Date.now() - started) / 1000) });
-        } catch (error) {
-          results.push({
-            window,
-            mode,
-            status: error instanceof Error ? error.message : "failed",
-            seconds: Math.round((Date.now() - started) / 1000),
-          });
-        }
-      }),
-    );
-  if (group === "long") {
-    await Promise.all(windows.map(buildWindow));
-  } else {
-    for (const window of windows) await buildWindow(window);
+  const results: Array<{ window: string; ok: boolean; seconds: number; error?: string }> = [];
+  for (const window of windows) {
+    const started = Date.now();
+    try {
+      const data = await computeDashboard(admin, window);
+      await writeAnalyticsSnapshot(admin, `dashboard:${window}`, { ...data, snapshotAt: new Date().toISOString() } as unknown as Record<string, unknown>);
+      results.push({ window, ok: true, seconds: Math.round((Date.now() - started) / 1000) });
+    } catch (error) {
+      results.push({ window, ok: false, seconds: Math.round((Date.now() - started) / 1000), error: error instanceof Error ? error.message : "failed" });
+    }
   }
-
-  return NextResponse.json({ ok: results.every((row) => row.status === 200), group, results });
+  return NextResponse.json({ ok: results.every((r) => r.ok), group, results });
 }
