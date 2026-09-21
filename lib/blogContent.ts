@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-19-explained",
+    title: "Genesis 19 Explained: Sodom's Destruction and Lot's Escape",
+    description:
+      "Genesis 19 explained verse by verse: the mob at Lot's door, the angels who pull him out, the fire on Sodom, his wife's pillar of salt, and the cave above Zoar.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-19-explained",
+    publishedAt: "2026-09-21",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-19-explained.jpg",
+    groupPost: {
+      title: "Genesis 19 Explained 📖",
+      content:
+        "Two angels walk into Sodom at evening.\nBy morning the whole city is gone.\n\n📌 Mercy pulled Lot out while he was still lingering.\n\n📖 A mob surrounds Lot's house demanding his guests.\n📖 Fire falls the same day Lot reaches safety.\n📖 His wife looks back once, and that is enough.\n\nNew article on:\n🟢 what **Sodom's sin** actually was\n🟢 why Lot's **wife looked back**\n🟢 what happened to Abraham's **ten righteous people**\n\nHave you ever lingered somewhere mercy was already pulling you away from? 🙏",
+    },
+  },
+  {
     slug: "genesis-18-explained",
     title: "Genesis 18 Explained: Sarah's Laugh and the Bargain for Sodom",
     description:
