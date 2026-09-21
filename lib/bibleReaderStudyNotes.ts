@@ -708,6 +708,7 @@ import { ECCLESIASTES_TWO_PERSONAL_SECTIONS } from "./ecclesiastesTwoSource";
 import { ECCLESIASTES_THREE_PERSONAL_SECTIONS } from "./ecclesiastesThreeSource";
 import { ECCLESIASTES_FOUR_PERSONAL_SECTIONS } from "./ecclesiastesFourSource";
 import { ECCLESIASTES_FIVE_PERSONAL_SECTIONS } from "./ecclesiastesFiveSource";
+import { ECCLESIASTES_SIX_PERSONAL_SECTIONS } from "./ecclesiastesSixSource";
 import { SONG_OF_SOLOMON_1_8_PERSONAL_SECTIONS } from "./songOfSolomonOneToEightPersonalNotes";
 import { ISAIAH_1_15_PERSONAL_SECTIONS } from "./isaiahOneToFifteenPersonalNotes";
 import { ISAIAH_16_66_PERSONAL_SECTIONS } from "./isaiahSixteenToSixtySixPersonalNotes";
@@ -1060,7 +1061,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "esther" && section.chapter >= 1 && section.chapter <= 10) ||
     (normalizeBook(book) === "job" && section.chapter >= 1 && section.chapter <= 42) ||
     (normalizeBook(book) === "psalms" && section.chapter >= 1 && section.chapter <= 150) ||
-    (normalizeBook(book) === "ecclesiastes" && section.chapter >= 1 && section.chapter <= 5);
+    (normalizeBook(book) === "ecclesiastes" && section.chapter >= 1 && section.chapter <= 6);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -2649,6 +2650,10 @@ function applyPersonalEcclesiastesFourStudySections() {
 
 function applyPersonalEcclesiastesFiveStudySections() {
   replaceStudySectionsForBookRange("ecclesiastes", 5, 5, ECCLESIASTES_FIVE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEcclesiastesSixStudySections() {
+  replaceStudySectionsForBookRange("ecclesiastes", 6, 6, ECCLESIASTES_SIX_PERSONAL_SECTIONS);
 }
 
 function applyPersonalSongOfSolomonOneThroughEightStudySections() {
@@ -10187,6 +10192,7 @@ applyPersonalEcclesiastesTwoStudySections();
 applyPersonalEcclesiastesThreeStudySections();
 applyPersonalEcclesiastesFourStudySections();
 applyPersonalEcclesiastesFiveStudySections();
+applyPersonalEcclesiastesSixStudySections();
 applyPersonalSongOfSolomonOneThroughEightStudySections();
 applyPersonalIsaiahOneThroughFifteenStudySections();
 applyPersonalIsaiahSixteenThroughSixtySixStudySections();

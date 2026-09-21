@@ -5465,3 +5465,7 @@ origin/main (80812f7, no divergence this time). `npm install` + `npx tsc
 --noEmit` both clean. MARCUS_HANDOFF.md audio-render entry already covers
 the 365/365 status; not duplicating.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-21T08:56:30Z (hourly chapter notes run)
+Chapter: Ecclesiastes 6 | Duration: 11 min | Sections: 4 | Cards: 18 | Status: pass
+Next up: Ecclesiastes 7
