@@ -5547,3 +5547,15 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-21T16:02:00Z (hourly chapter notes run)
 Chapter: Song of Solomon 1 | Duration: 11 min | Sections: 6 | Cards: 31 | Status: pass
 Next up: Song of Solomon 2
+
+## 2026-09-21T17:05:00Z (bible year day writer run)
+Nothing to do: re-confirmed all 365 days already have scripts (day 1 via
+its legacy segments path, days 2-365 in DAY_SCRIPTS, verified by scanning
+every key 1-365 for gaps: none found). Fresh container again showed local
+`main` stuck at the old `9f6da92` ("Day 307") tip with no common ancestor
+to real `origin/main`, but HEAD was already correctly detached at the
+current `origin/main` tip, so `git fetch origin main` resolved it with
+zero drift; local `main` left untouched, no rescue branch needed. `npm
+install` + `npx tsc --noEmit` both clean. MARCUS_HANDOFF.md's audio-render
+entry already covers the 365/365 status; not duplicating.
+Next up: nothing — plan complete. Only audio rendering remains.
