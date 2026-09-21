@@ -5422,3 +5422,7 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-21T04:58:00Z (hourly chapter notes run)
 Chapter: Ecclesiastes 2 | Duration: 11 min | Sections: 8 | Cards: 37 | Status: pass
 Next up: Ecclesiastes 3
+
+## 2026-09-21T05:57:15Z (hourly chapter notes run)
+Chapter: Ecclesiastes 3 | Duration: 11 min | Sections: 7 | Cards: 33 | Status: pass
+Next up: Ecclesiastes 4
