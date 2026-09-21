@@ -8,6 +8,7 @@ import AppLoadingScreen from "@/components/AppLoadingScreen";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "../../lib/supabaseClient";
+import { markTermsAcceptancePending } from "../../lib/termsAcceptance";
 import { hasCachedSupabaseSession } from "../../lib/authBoot";
 
 /**
@@ -120,6 +121,7 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
 
+    markTermsAcceptancePending("google_login");
     const redirectTo = typeof window !== "undefined" ? `${window.location.origin}${nextPath()}` : undefined;
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
@@ -193,6 +195,7 @@ export default function LoginPage() {
             <GoogleLogo />
             <span>Continue with Google</span>
           </button>
+          <p className="mt-2 text-center text-[11px] font-semibold leading-5 text-[#667085]">By continuing you agree to our <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>, <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a> and <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.</p>
 
           <div className="my-5 flex items-center gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#9aa4b2]">
             <span className="h-px flex-1 bg-[#E5E7EB]" />

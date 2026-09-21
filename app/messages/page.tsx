@@ -158,9 +158,10 @@ export default function MessagesPage() {
         return;
       }
 
-      const otherIds = rawConversations.map((conversation) =>
-        conversation.user_id_1 === uid ? conversation.user_id_2 : conversation.user_id_1,
-      );
+      // A deleted account leaves a NULL participant (the thread is kept).
+      const otherIds = rawConversations
+        .map((conversation) => (conversation.user_id_1 === uid ? conversation.user_id_2 : conversation.user_id_1))
+        .filter((id): id is string => Boolean(id));
       const conversationIds = rawConversations.map((conversation) => conversation.id);
 
       const profileChunks = Array.from(
@@ -237,8 +238,8 @@ export default function MessagesPage() {
 
         return {
           id: conversation.id,
-          otherUserId: otherId,
-          otherUserName: profile?.display_name || profile?.username || "Bible Buddy",
+          otherUserId: otherId ?? "",
+          otherUserName: otherId ? profile?.display_name || profile?.username || "Bible Buddy" : "Deleted account",
           otherUserImage: profile?.profile_image_url || null,
           otherUserBadge: profile?.member_badge || null,
           otherUserIsPaid: profile?.is_paid === true,
@@ -380,7 +381,7 @@ export default function MessagesPage() {
                         <div className="mb-0.5 flex items-center justify-between gap-2">
                           <div className="flex min-w-0 items-center gap-2">
                             <Link
-                              href={`/profile/${convo.otherUserId}`}
+                              href={convo.otherUserId ? `/profile/${convo.otherUserId}` : "/messages"}
                               onClick={(event) => event.stopPropagation()}
                               className={`truncate text-sm hover:underline ${
                                 convo.hasUnread ? "font-bold text-[var(--bb-text-primary,#111827)]" : "font-semibold text-[var(--bb-text-primary,#1f2937)]"

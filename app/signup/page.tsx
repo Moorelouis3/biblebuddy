@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "../../lib/supabaseClient";
+import { markTermsAcceptancePending, recordTermsAcceptance } from "../../lib/termsAcceptance";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import {
   getSignupAttributionFromBrowser,
@@ -81,17 +82,6 @@ async function saveSignupAttributionToProfile(userId: string, username: string, 
   }
 }
 
-const TERMS_VERSION = "2026-09-21";
-
-async function recordTermsAcceptance() {
-  try {
-    await supabase.auth.updateUser({
-      data: { terms_accepted_at: new Date().toISOString(), terms_version: TERMS_VERSION },
-    });
-  } catch (termsError) {
-    console.error("Terms acceptance save failed (non-blocking):", termsError);
-  }
-}
 
 async function recordLandingSignupEvent(userId: string, username: string, attribution: SignupAttribution) {
   if (typeof window === "undefined") return;
@@ -279,7 +269,7 @@ export default function SignupPage() {
     window.localStorage.setItem(`bb:skip-initial-dashboard-view:${user.id}`, "1");
 
     if (data.session) {
-      await recordTermsAcceptance();
+      await recordTermsAcceptance("email_signup");
       await applyReferralCodeIfPresent();
       router.push(signupNextPath());
       return;
@@ -291,7 +281,7 @@ export default function SignupPage() {
     });
 
     if (loginData.session) {
-      await recordTermsAcceptance();
+      await recordTermsAcceptance("email_signup");
       await applyReferralCodeIfPresent();
       router.push(signupNextPath());
       return;
@@ -330,6 +320,7 @@ export default function SignupPage() {
     if (typeof window !== "undefined") {
       writePendingSignupAttribution();
       window.localStorage.setItem("bb:pending-oauth-signup", provider);
+      markTermsAcceptancePending("google_signup");
     }
     const { error } = await supabase.auth.signInWithOAuth({
       provider,

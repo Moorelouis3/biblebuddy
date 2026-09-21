@@ -15,6 +15,7 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 import { hasCachedSupabaseSession } from "@/lib/authBoot";
 import { applyAppThemeToDocument, cacheAppThemeForUser } from "@/lib/appThemes";
 import { isNativeApp } from "@/lib/nativeApp";
+import { markTermsAcceptancePending, TERMS_VERSION } from "@/lib/termsAcceptance";
 
 type PreviewPanel = "watch" | "study" | "trivia";
 type StudyTab = "bible" | "notes";
@@ -910,6 +911,10 @@ export default function LandingPage() {
           landing_questionnaire: onboardingPayload,
           recommended_journey: studyRoute,
           selected_devotional_id: devotionalIdForSetup,
+          // Shown next to the button: "By continuing you agree to our Terms..."
+          terms_accepted_at: new Date().toISOString(),
+          terms_version: TERMS_VERSION,
+          terms_accepted_via: "email_signup",
         },
       },
     });
@@ -1058,6 +1063,7 @@ export default function LandingPage() {
     );
     setSubmitting(true);
     setError(null);
+    markTermsAcceptancePending("google_landing");
     cacheAppThemeForUser(null, "light");
     applyAppThemeToDocument("light");
     const redirectTo =
@@ -3548,6 +3554,7 @@ function OnboardingFlow(props: {
                 <GoogleLogo />
                 <span>Sign up with Google</span>
               </button>
+              <p className="mt-2 text-center text-[11px] font-semibold leading-5 text-[#667085]">By continuing you agree to our <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>, <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a> and <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.</p>
               <div className="my-4 flex items-center gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#9aa4b2]">
                 <span className="h-px flex-1 bg-[#eadcc2]" /> or <span className="h-px flex-1 bg-[#eadcc2]" />
               </div>
@@ -3592,6 +3599,7 @@ function OnboardingFlow(props: {
                 <button type="submit" disabled={props.submitting} className="rounded-2xl px-5 py-4 text-sm font-black disabled:opacity-60" style={{ backgroundColor: "#0E1A3A", color: "#ffffff" }}>
                   {props.submitting ? "Creating account..." : "Create Free Account"}
                 </button>
+                <p className="text-center text-[11px] font-semibold leading-5 text-[#667085]">By continuing you agree to our <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>, <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a> and <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.</p>
               </form>
             </div>
           ) : null}

@@ -65,6 +65,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Forbidden." }, { status: 403 });
   }
 
+  // The other person deleted their account (their id is NULL on the thread).
+  if (!conversation.user_id_1 || !conversation.user_id_2) {
+    return NextResponse.json({ error: "This account was deleted, so you can't reply." }, { status: 410 });
+  }
+
   let imageUrl: string | null = null;
 
   if (hasPhoto) {

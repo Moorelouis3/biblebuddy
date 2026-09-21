@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
 import { LouisAvatar } from "../../../components/LouisAvatar";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
+import { AiConsentCard, useAiConsent } from "../../../components/AiConsentCard";
 
 type MessageRole = "user" | "assistant";
 
@@ -18,6 +19,7 @@ export default function GrowNotePage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [aiConsent, acceptAiConsent] = useAiConsent();
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [displayName, setDisplayName] = useState("");
@@ -294,7 +296,7 @@ export default function GrowNotePage() {
 
   async function handleSend() {
     const trimmed = input.trim();
-    if (!trimmed) return;
+    if (!trimmed || !aiConsent) return;
 
     const userMessage: Message = { role: "user", content: trimmed };
     const newMessages: Message[] = [...messages, userMessage];
@@ -808,6 +810,8 @@ export default function GrowNotePage() {
                 No, keep editing
               </button>
             </div>
+          ) : !aiConsent ? (
+            <AiConsentCard featureName="GROW notes" onAccept={acceptAiConsent} />
           ) : (
             <div className="flex gap-3">
               <input

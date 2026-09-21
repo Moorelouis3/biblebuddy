@@ -54,6 +54,10 @@ export async function POST(request: NextRequest) {
   }
 
   const recipientId = conversation.user_id_1 === sender.id ? conversation.user_id_2 : conversation.user_id_1;
+  if (!recipientId) {
+    // The other person deleted their account.
+    return NextResponse.json({ ok: true, skipped: "recipient deleted" });
+  }
 
   const { data: senderProfile } = await supabaseAdmin
     .from("profile_stats")

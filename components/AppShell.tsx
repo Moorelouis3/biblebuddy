@@ -15,6 +15,7 @@ import { recordAppInstalled, recordInstallAskShown, shouldShowInstallBanner } fr
 import { getInstallEnvironment } from "../lib/installEnvironment";
 import InstallIOSSheet from "./InstallIOSSheet";
 import { isNativeApp } from "../lib/nativeApp";
+import { recordPendingTermsAcceptance } from "../lib/termsAcceptance";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
@@ -1453,6 +1454,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     });
   }, [isLoggedIn, pathname, userId, username]);
 
+  // Google sign-in: record the Terms/Privacy/Guidelines acceptance the user
+  // agreed to on the page before leaving for Google.
+  useEffect(() => {
+    if (!userId || !isLoggedIn || typeof window === "undefined") return;
+    void recordPendingTermsAcceptance();
+  }, [isLoggedIn, userId]);
+
   useEffect(() => {
     if (!userId || !isLoggedIn || typeof window === "undefined") return;
     const pendingProvider = window.localStorage.getItem("bb:pending-oauth-signup");
@@ -1839,7 +1847,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       if (merged.length === 0) { setConversationPreviews([]); return; }
 
-      const otherIds = merged.map((c: any) => c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1);
+      const otherIds = merged.map((c: any) => c.user_id_1 === currentUserId ? c.user_id_2 : c.user_id_1).filter(Boolean);
       const [profileResult, replyStatusResult] = await Promise.all([
         supabase
           .from("profile_stats")
@@ -1874,8 +1882,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         const profile = profiles.find((p: any) => p.user_id === otherId);
         return {
           id: c.id,
-          otherUserId: otherId,
-          otherUserName: profile?.display_name || profile?.username || "Bible Buddy",
+          otherUserId: otherId ?? "",
+          otherUserName: otherId ? profile?.display_name || profile?.username || "Bible Buddy" : "Deleted account",
           otherUserImage: profile?.profile_image_url || null,
           otherUserBadge: profile?.member_badge || null,
           otherUserIsPaid: profile?.is_paid === true,

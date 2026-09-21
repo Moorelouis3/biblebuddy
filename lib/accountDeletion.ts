@@ -8,6 +8,9 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 
 export const PROTECTED_ACCOUNT_EMAILS = ["moorelouis3@gmail.com"];
 
+/** Shown in place of a deleted account's direct messages. */
+export const DELETED_MESSAGE_TEXT = "This message was deleted.";
+
 export type AccountDeletionResult = {
   ok: boolean;
   error?: string;
@@ -208,6 +211,7 @@ export async function deleteUserAccount(
   };
 
   let conversationIds: string[] = [];
+  const ownDmPhotoPaths: string[] = [];
 
   try {
     // 1. Group posts (and replies under them)
@@ -261,19 +265,59 @@ export async function deleteUserAccount(
       await deleteWhere("group_series_post_comments", "id", [...seriesCommentIds].reverse());
     }
 
-    // 5. Direct messages: whole conversations the user was part of
+    // 5. Direct messages. The other person keeps the conversation and every
+    //    message THEY wrote. The deleted user's own messages stay in place as
+    //    "This message was deleted." (text, photo and buttons wiped) so the
+    //    thread still reads in order. Their photos are removed from storage.
+    //    When the login is deleted, the database sets sender_id / user_id_1 /
+    //    user_id_2 to NULL (ON DELETE SET NULL, see
+    //    PRESERVE_DMS_ON_ACCOUNT_DELETE.sql), which the Messages pages show as
+    //    "Deleted account".
     conversationIds = [
       ...new Set([
         ...(await selectIds("conversations", "user_id_1", userId)),
         ...(await selectIds("conversations", "user_id_2", userId)),
       ]),
     ];
-    await deleteWhere("messages", "sender_id", userId);
+    const { data: ownPhotoRows, error: ownPhotoError } = await admin
+      .from("messages")
+      .select("image_url")
+      .eq("sender_id", userId)
+      .not("image_url", "is", null)
+      .limit(10000);
+    if (ownPhotoError && !isMissingTableError(ownPhotoError)) {
+      throw new Error(`Could not read messages: ${ownPhotoError.message}`);
+    }
+    for (const row of (ownPhotoRows || []) as Array<{ image_url: string | null }>) {
+      const marker = "/post-media/";
+      const at = row.image_url?.indexOf(marker) ?? -1;
+      if (row.image_url && at >= 0) ownDmPhotoPaths.push(decodeURIComponent(row.image_url.slice(at + marker.length).split("?")[0]));
+    }
+    const { error: redactError, count: redacted } = await admin
+      .from("messages")
+      .update(
+        { content: DELETED_MESSAGE_TEXT, image_url: null, action_label: null, action_href: null },
+        { count: "exact" }
+      )
+      .eq("sender_id", userId);
+    if (redactError && !isMissingTableError(redactError)) {
+      throw new Error(`Could not clear messages: ${redactError.message}`);
+    }
+    note("messages (text removed)", redacted);
     if (conversationIds.length > 0) {
-      await deleteWhere("messages", "conversation_id", conversationIds);
-      await deleteWhere("buddy_reports", "conversation_id", conversationIds);
-      await nullifyWhere("bug_reports", "conversation_id", conversationIds);
-      await deleteWhere("conversations", "id", conversationIds);
+      // Fix the inbox preview where the deleted user sent the latest message.
+      for (const conversationId of conversationIds) {
+        const { data: latest } = await admin
+          .from("messages")
+          .select("sender_id")
+          .eq("conversation_id", conversationId)
+          .order("created_at", { ascending: false })
+          .limit(1)
+          .maybeSingle();
+        if (latest?.sender_id === userId) {
+          await admin.from("conversations").update({ last_message_preview: DELETED_MESSAGE_TEXT }).eq("id", conversationId);
+        }
+      }
     }
 
     // 6. Notifications to or from the user (+ queued push jobs for them)
@@ -305,12 +349,16 @@ export async function deleteUserAccount(
     };
   }
 
-  // 8. Uploaded files (avatars/<uid>/..., post-media/<uid>/..., DM photos
-  //    of the conversations removed above)
+  // 8. Uploaded files (avatars/<uid>/..., post-media/<uid>/..., and only the
+  //    DM photos this user sent - the other person's photos stay)
+  if (ownDmPhotoPaths.length > 0) {
+    const { data: removed, error: removeError } = await admin.storage.from("post-media").remove(ownDmPhotoPaths);
+    if (removeError) warnings.push(`storage post-media (dm photos): ${removeError.message}`);
+    else storageFilesRemoved += removed?.length || 0;
+  }
   const storageFolders: Array<[bucket: string, folder: string]> = [
     ["avatars", userId],
     ["post-media", userId],
-    ...conversationIds.map((id): [string, string] => ["post-media", `dm-photos/${id}`]),
   ];
   for (const [bucket, folder] of storageFolders) {
     try {

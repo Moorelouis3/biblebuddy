@@ -286,7 +286,7 @@ export default function ConversationPage({
       const { data: profiles } = await supabase
         .from("profile_stats")
         .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, last_active_at, current_streak, selected_streak_flame")
-        .in("user_id", [uid, otherId]);
+        .in("user_id", otherId ? [uid, otherId] : [uid]);
 
       const profileRows = profiles || [];
       const myRow = profileRows.find((profile) => profile.user_id === uid) || null;
@@ -308,8 +308,8 @@ export default function ConversationPage({
 
       setOtherUser(
         otherRow || {
-          user_id: otherId,
-          display_name: null,
+          user_id: otherId ?? "",
+          display_name: otherId ? null : "Deleted account",
           username: null,
           profile_image_url: null,
           member_badge: null,
@@ -806,7 +806,10 @@ export default function ConversationPage({
   const myColor = userId ? avatarColor(userId) : "#5b8dd9";
   const blockedByMe = blockState?.blocker_user_id === userId;
   const blockedByThem = !!blockState && blockState.blocker_user_id !== userId;
-  const composerNotice = blockedByMe
+  const otherAccountDeleted = !loading && !!otherUser && !otherUser.user_id;
+  const composerNotice = otherAccountDeleted
+    ? "This account was deleted. You can read your conversation, but you can’t reply."
+    : blockedByMe
     ? "You blocked this buddy. Unblock them to message again."
     : blockedByThem
       ? "This buddy has blocked messages in this conversation."
@@ -827,7 +830,7 @@ export default function ConversationPage({
             </button>
 
             <Link
-              href={`/profile/${otherUser?.user_id}`}
+              href={otherUser?.user_id ? `/profile/${otherUser.user_id}` : "/messages"}
               className="flex min-w-0 flex-1 items-center gap-3 rounded-2xl px-1 py-1 transition hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
             >
               {otherUser?.profile_image_url ? (
