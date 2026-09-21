@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-22-explained",
+    title: "Genesis 22 Explained: The Binding of Isaac",
+    description:
+      "Genesis 22 explained verse by verse: God's test of Abraham, the three day walk to Moriah, Isaac's question, the ram provided in his place, and the covenant oath that follows.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-22-explained",
+    publishedAt: "2026-09-21",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-22-explained.jpg",
+    groupPost: {
+      title: "Genesis 22 Explained 📖",
+      content:
+        "God asks Abraham for the son every promise ran through.\nNo explanation comes with the command.\n\n📌 Abraham raises the knife before God raises His voice to stop him.\n\n📖 Isaac asks his father where the lamb is, on the way up.\n📖 A ram is caught in a thicket at the exact moment it is needed.\n📖 God swears an oath on His own name over Abraham's obedience.\n\nNew article on:\n🟢 what **Jehovahjireh** actually means\n🟢 how old Isaac really was on that mountain\n🟢 how this chapter points straight at **the Lamb of God**\n\nWhat is the one thing you would struggle to hand back to God? 🙏",
+    },
+  },
+  {
     slug: "genesis-21-explained",
     title: "Genesis 21 Explained: Isaac's Birth and Hagar Sent Away",
     description:
