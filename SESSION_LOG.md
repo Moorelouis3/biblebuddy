@@ -5378,3 +5378,15 @@ Next up: Psalms 149
 ## 2026-09-21T01:56:25Z (hourly chapter notes run)
 Chapter: Psalms 149 | Duration: 10 min | Sections: 3 | Cards: 18 | Status: pass
 Next up: Psalms 150
+
+## 2026-09-21T02:22:45Z (bible year day writer run)
+Nothing to do: re-confirmed all 365 days already have scripts (day 1 via
+its legacy segments path, 2-365 in DAY_SCRIPTS) on current origin/main
+(66e5e9c). Same recurring stale-local-main pattern again on session
+start (local `main` at old "Day 307" era, 50 commits behind with no
+common ancestor to current history) — reset local `main` to
+origin/main (HEAD wasn't on it, so no working-tree risk) rather than
+re-logging the root cause once more. `npm install` + `npx tsc --noEmit`
+both clean. MARCUS_HANDOFF.md audio-render entry already covers the
+365/365 status; not duplicating.
+Next up: nothing — plan complete. Only audio rendering remains.
