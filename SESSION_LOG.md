@@ -5570,3 +5570,7 @@ nothing was at risk. `npm install` + `npx tsc --noEmit` both clean.
 MARCUS_HANDOFF.md's audio-render entry already covers the 365/365 status;
 not duplicating.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-21T17:58:16Z (hourly chapter notes run)
+Chapter: Song of Solomon 2 | Duration: 10 min | Sections: 5 | Cards: 34 | Status: pass
+Next up: Song of Solomon 3
