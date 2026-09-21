@@ -520,3 +520,31 @@ Found while writing Day 326: `lib/bibleInOneYearPlan.ts`'s schedule table had a 
 
 ## Static KJV reader mirror truncated for every single-chapter book
 Found while sourcing Philemon 1 text for Bible in One Year Day 347. `public/kjv/philemon/1.json` (the static mirror the in-app KJV reader serves from, built by `scripts/fetch-kjv-static.ts`) held only verse 1 of Philemon's 25 verses — the fetch script's `book+chapter` request format hits an edge case in bible-api.com for one-chapter books, where it returns just verse 1 instead of the whole chapter. Fixed `public/kjv/philemon/1.json` directly (refetched via the explicit `1:1-25` range and rewrote it in the existing format) since I needed it for today's script anyway. Checked the other four single-chapter books and they have the identical bug, still unfixed: `public/kjv/obadiah/1.json`, `public/kjv/jude/1.json`, `public/kjv/2-john/1.json`, `public/kjv/3-john/1.json` (each 1 verse instead of the real count). Whoever picks this up: rerun `fetch-kjv-static.ts` for just those four books with the range made explicit, so the in-app reader stops showing a single verse for them.
+
+## Bible Note Writer: forward progress just ran out, redo backlog is empty, next hourly run has no defined next chapter
+Finished Psalms 150 this run, completing the entire book of Psalms (150/150).
+While picking the next target I checked whether any chapter anywhere in the
+Bible still has zero wiring in `lib/bibleReaderStudyNotes.ts` (the condition
+the routine's own instructions use to pick a "forward progress" chapter). A
+full scan of every `replaceStudySectionsForBookRange(...)` call against the
+canonical 1,189 chapter count came back with zero gaps: every single chapter
+in every book already has some content wired in. `data/bible-notes-priority-queue.json`
+and `data/bible-notes-style-redo-remaining.json` are also both empty
+(`remaining: []`). That means all three of the routine's lookup steps (priority
+queue, redo backlog, forward-progress scan) will come up empty on the very
+next scheduled run, and its instructions do not say what to do in that case.
+Separately, a large fraction of that "already wired" content is still old
+bulk multi-chapter files (pattern `<book><RangeInWords>PersonalNotes.ts`,
+one file covering 5-20+ chapters at once) written before the current
+`docs/bible-study-note-style.md` spec, not the current one-file-per-chapter
+Insight Card style used for Genesis 1-40ish, Psalms, and Proverbs. Grepping
+the imports, this legacy-style bulk coverage still spans most of the Bible:
+large chunks of Exodus, Leviticus, Numbers, Deuteronomy, Joshua, Judges,
+1-2 Samuel, Job, Isaiah, Jeremiah, Ezekiel, all twelve Minor Prophets, all
+four Gospels, Acts, every Pauline epistle, Hebrews, the General Epistles,
+and Revelation. Louis needs to decide the next phase: most likely, populate
+`data/bible-notes-style-redo-remaining.json`'s `remaining` array with a
+prioritized list of these legacy files so the hourly routine has real work
+again, in whatever book order he wants tackled first. Until that list is
+populated, expect the next hourly run to either stall or make an
+undocumented judgment call about what to do next.
