@@ -4836,7 +4836,11 @@ async function buildOverviewAnalyticsResponse(
       }),
     );
   const validAuthUsers = allAuthUsers.filter((user) => !isOwnerAuthUser(user.id, allAuthSummaryByUserId));
-  const newUserAuthUsers = await keepUsersWhoPickedAPath(adminSupabase, validAuthUsers, null);
+  // New Users = every account created (Louis, 2026-09-21: "I want to know the
+  // higher number"). The people who went on to pick a study path are reported
+  // separately as Started Studying.
+  const newUserAuthUsers = validAuthUsers;
+  const studyingAuthUsers = await keepUsersWhoPickedAPath(adminSupabase, validAuthUsers, null);
   const { data: allUpgradeActionData } = await adminSupabase
     .from("master_actions")
     .select("user_id, action_label, event_metadata, created_at")
@@ -4937,6 +4941,10 @@ async function buildOverviewAnalyticsResponse(
   const previousSignups = previousRange
     ? collectSignupTimestampsFromAuthUsers(newUserAuthUsers, previousRange.startIso, previousRange.endIso).length
     : 0;
+  const currentStartedStudying = collectSignupTimestampsFromAuthUsers(studyingAuthUsers, startIso, endIso).length;
+  const previousStartedStudying = previousRange
+    ? collectSignupTimestampsFromAuthUsers(studyingAuthUsers, previousRange.startIso, previousRange.endIso).length
+    : 0;
   const firstThreeDaysSinceIso = new Date(Date.now() - NEW_USER_FIRST_THREE_DAYS_LOOKBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
   const { data: firstThreeDaysData } = await adminSupabase
     .from("master_actions")
@@ -4984,6 +4992,7 @@ async function buildOverviewAnalyticsResponse(
     },
     simpleComparisons: {
       signups: { current: currentSignups, previous: previousSignups, change: percentChange(currentSignups, previousSignups) },
+      startedStudying: { current: currentStartedStudying, previous: previousStartedStudying, change: percentChange(currentStartedStudying, previousStartedStudying) },
       upgrades: { current: currentUpgrades, previous: previousUpgrades, change: percentChange(currentUpgrades, previousUpgrades) },
     },
     completionUpgrade,
@@ -5475,8 +5484,10 @@ async function computeAnalyticsResponse(request: Request, skipMemoryCache: boole
   }
 
   const validSimpleAuthUsers = allAuthUsers.filter((user) => !isOwnerAuthUser(user.id, allAuthSummaryByUserId));
-  // New Users = picked a study path, not just an account (see keepUsersWhoPickedAPath).
-  const newUserAuthUsers = await keepUsersWhoPickedAPath(adminSupabase, validSimpleAuthUsers, null);
+  // New Users = every account created; Started Studying = the ones who picked
+  // a study path (see keepUsersWhoPickedAPath). Louis, 2026-09-21.
+  const newUserAuthUsers = validSimpleAuthUsers;
+  const studyingAuthUsers = await keepUsersWhoPickedAPath(adminSupabase, validSimpleAuthUsers, null);
   const validSimpleAuthUserIds = validSimpleAuthUsers.map((user) => user.id).filter(Boolean);
   const profileSignupAttributionRows: ProfileSignupAttributionRow[] = [];
   // 200 per request: .in() puts every id in the URL, and ~350+ uuids makes
@@ -5587,6 +5598,10 @@ async function computeAnalyticsResponse(request: Request, skipMemoryCache: boole
   );
   const currentSignups = signupSeries.reduce((sum, point) => sum + point.value, 0);
   const currentUpgrades = upgradeSeries.reduce((sum, point) => sum + point.value, 0);
+  const currentStartedStudying = collectSignupTimestampsFromAuthUsers(studyingAuthUsers, journeySinceIso, journeyBeforeIso).length;
+  const previousStartedStudying = previousRange
+    ? collectSignupTimestampsFromAuthUsers(studyingAuthUsers, previousRange.startIso, previousRange.endIso).length
+    : 0;
   const previousUpgrades = previousRange
     ? collectFirstPaidUpgradeTimestamps(upgradeRows, previousRange.startIso, previousRange.endIso).length
     : 0;
@@ -5637,6 +5652,7 @@ async function computeAnalyticsResponse(request: Request, skipMemoryCache: boole
       },
       simpleComparisons: {
         signups: { current: currentSignups, previous: previousSignups, change: percentChange(currentSignups, previousSignups) },
+        startedStudying: { current: currentStartedStudying, previous: previousStartedStudying, change: percentChange(currentStartedStudying, previousStartedStudying) },
         upgrades: { current: currentUpgrades, previous: previousUpgrades, change: percentChange(currentUpgrades, previousUpgrades) },
       },
       bibleYearDays,
@@ -5683,6 +5699,11 @@ async function computeAnalyticsResponse(request: Request, skipMemoryCache: boole
         current: currentSignups,
         previous: previousSignups,
         change: percentChange(currentSignups, previousSignups),
+      },
+      startedStudying: {
+        current: currentStartedStudying,
+        previous: previousStartedStudying,
+        change: percentChange(currentStartedStudying, previousStartedStudying),
       },
       upgrades: {
         current: currentUpgrades,

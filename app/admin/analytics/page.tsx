@@ -341,6 +341,8 @@ type AnalyticsResponse = {
   };
   simpleComparisons?: {
     signups: { current: number; previous: number; change: number };
+    // People who picked a study path (Louis, 2026-09-21). New Users counts every account.
+    startedStudying?: { current: number; previous: number; change: number };
     upgrades: { current: number; previous: number; change: number };
   };
   businessMetrics?: {
@@ -3240,6 +3242,15 @@ function MobileAnalyticsHighlights({
             comparisonLabel={comparisonLabel}
             onClick={() => openDrilldown("signups")}
             active={drilldownKind === "signups"}
+          />
+          <OverviewMetricCard
+            icon={<Icon name="user" />}
+            title="Started Studying"
+            value={formatNumber(data?.simpleComparisons?.startedStudying?.current ?? 0)}
+            helper="New users who picked a study path"
+            color="#0d9488"
+            comparison={windowKey === "lifetime" ? null : data?.simpleComparisons?.startedStudying?.change}
+            comparisonLabel={comparisonLabel}
           />
           <OverviewMetricCard
             icon={<Icon name="percent" />}
