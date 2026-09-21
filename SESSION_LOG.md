@@ -5527,3 +5527,7 @@ this run — HEAD, local `main`, and `origin/main` all matched exactly
 clean. MARCUS_HANDOFF.md already covers the 365/365 status (twice, from
 earlier runs today); not duplicating.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-21T14:55:00Z (hourly chapter notes run)
+Chapter: Ecclesiastes 12 | Duration: 9 min | Sections: 7 | Cards: 38 | Status: pass
+Next up: Song of Solomon 1
