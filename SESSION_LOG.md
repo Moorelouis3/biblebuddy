@@ -5637,3 +5637,7 @@ rescue branch) rather than leaving it drifted. `npm install` +
 `npx tsc --noEmit` both clean. MARCUS_HANDOFF.md's audio-render entry
 already covers the 365/365 status; not duplicating.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-21T23:54:31Z (hourly chapter notes run)
+Chapter: Song of Solomon 8 | Duration: 9 min | Sections: 4 | Cards: 31 | Status: pass
+Next up: Isaiah 1
