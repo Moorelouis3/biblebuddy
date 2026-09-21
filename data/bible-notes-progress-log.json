@@ -40407,6 +40407,59 @@
           "at": "2026-09-21T12:57:20Z"
         }
       ]
+    },
+    {
+      "book": "Ecclesiastes",
+      "chapter": 11,
+      "startedAt": "2026-09-21T13:46:32Z",
+      "finishedAt": "2026-09-21T13:55:58Z",
+      "durationMinutes": 9.4,
+      "sections": 4,
+      "cards": 20,
+      "verses": 10,
+      "notes": "New chapter, normal forward progress after Ecclesiastes 10. Four sections covering cast thy bread upon the waters and giving a portion to seven and also to eight as risky, wide generosity in the face of unknown future evil, the fixed processes of clouds and a fallen tree next to the folly of waiting for perfect wind and clouds before sowing, the mystery of bones forming in the womb pointing to the larger mystery of God's own work, and sowing morning and evening since no one knows which effort prospers, the light and sun as a picture for the plain goodness of being alive balanced against remembering the days of darkness and vanity defined again as fleeting rather than worthless, and the closing charge to rejoice in youth read alongside the reminder that God will bring every choice into judgment, with remove sorrow and put away evil split into two separate cards since they are two distinct commands. Style checker clean on first pass.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-21T13:47:16Z"
+        },
+        {
+          "name": "target chapter determined: Ecclesiastes 11 (normal forward progress, new chapter, priority queue and redo backlog both empty)",
+          "at": "2026-09-21T13:47:30Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Ecclesiastes.json)",
+          "at": "2026-09-21T13:48:00Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, SKILL.md, genesisThirtyOneSource.ts and ecclesiastesTenSource.ts reference files)",
+          "at": "2026-09-21T13:50:00Z"
+        },
+        {
+          "name": "source file written (lib/ecclesiastesElevenSource.ts)",
+          "at": "2026-09-21T13:52:00Z"
+        },
+        {
+          "name": "style checker clean (20 cards, no problems on first pass)",
+          "at": "2026-09-21T13:52:30Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 11, apply function + call site)",
+          "at": "2026-09-21T13:52:45Z"
+        },
+        {
+          "name": "parser check passed (4 sections, 20 cards)",
+          "at": "2026-09-21T13:52:50Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-21T13:53:11Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-21T13:55:58Z"
+        }
+      ]
     }
   ]
 }
