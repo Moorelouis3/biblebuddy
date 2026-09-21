@@ -5439,3 +5439,7 @@ behind, clean fast-forward, no data at risk). `npm install` +
 `npx tsc --noEmit` both clean. MARCUS_HANDOFF.md audio-render entry
 already covers the 365/365 status; not duplicating.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-21T06:55:26Z (hourly chapter notes run)
+Chapter: Ecclesiastes 4 | Duration: 9 min | Sections: 5 | Cards: 26 | Status: pass
+Next up: Ecclesiastes 5
