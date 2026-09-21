@@ -5418,3 +5418,7 @@ stale-cache issue this time. `npm install` + `npx tsc --noEmit` both
 clean. MARCUS_HANDOFF.md audio-render entry already covers the 365/365
 status; not duplicating.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-21T04:58:00Z (hourly chapter notes run)
+Chapter: Ecclesiastes 2 | Duration: 11 min | Sections: 8 | Cards: 37 | Status: pass
+Next up: Ecclesiastes 3
