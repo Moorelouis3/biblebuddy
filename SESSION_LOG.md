@@ -5612,3 +5612,7 @@ zero drift this run (no stale-main recurrence this time). `npm install` +
 `npx tsc --noEmit` both clean. MARCUS_HANDOFF.md's audio-render entry
 already covers the 365/365 status; not duplicating.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-21T20:56:14Z (hourly chapter notes run)
+Chapter: Song of Solomon 5 | Duration: 10 min | Sections: 8 | Cards: 35 | Status: pass
+Next up: Song of Solomon 6
