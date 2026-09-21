@@ -40513,6 +40513,59 @@
           "at": "2026-09-21T14:55:00Z"
         }
       ]
+    },
+    {
+      "book": "Song of Solomon",
+      "chapter": 1,
+      "startedAt": "2026-09-21T15:51:20Z",
+      "finishedAt": "2026-09-21T16:02:00Z",
+      "durationMinutes": 10.7,
+      "sections": 6,
+      "cards": 31,
+      "verses": 17,
+      "notes": "New chapter, normal forward progress after Ecclesiastes 12 (the final chapter of Ecclesiastes), first chapter of Song of Solomon. Priority queue and style redo backlog both confirmed empty (remaining: [] in both files). The book already had an old-style lib/songOfSolomonOneToEightPersonalNotes.ts file wired in from an earlier, shallower pass (generic templated notes, not the deep phrase-card standard), but it was never added to the style-redo-remaining backlog, so this chapter was treated the same way Ecclesiastes, Proverbs, and Psalms individual chapters were: written as a new dedicated lib/songOfSolomonOneSource.ts file and wired in with a later call order so it overrides the old book-range file for chapter 1 specifically, following the exact precedent already used throughout Ecclesiastes. Session started with local main diverged from origin/main (stale detached HEAD left from a previous container, and git reset/checkout -B were blocked by the sandbox's destructive-action classifier); resolved non-destructively with git checkout origin/main (detached HEAD onto the shared remote history) since the working tree was already clean and origin is the shared source of truth other runs push to. Because Song of Solomon is a multi-word book name, the raw-notes parser header token uses the concatenated placeholder SongOfSolomon (matching the existing 1 Samuel / 1 Kings / 2 Kings precedent files, e.g. lib/firstSamuelOneSource.ts) so the header regex and the style checker's hyphen-allowlist regex (which only matches single-token book names) both work correctly, while the reference field and error messages still read Song of Solomon. Six sections covering the book's title and the bride's opening desire for the king's kisses and love better than wine (1-3), her dark, sun weathered skin from forced vineyard labor by her angry brothers, pictured against the black tents of Kedar and the rich curtains of Solomon (4-6), her question to the shepherd king about where he rests his flock at noon and his reply pointing her to the flock's own footsteps (7-8), the king comparing her to a prized mare among Pharaoh's chariot horses and promising gold and silver ornaments (9-11), the banquet table, her costly spikenard and myrrh, and the henna blossoms of Engedi (12-14), and the closing exchange of praise ending in cedar beams and fir rafters as a shared house built from nature itself (15-17). Style checker clean on first pass (31 cards).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-21T15:51:32Z"
+        },
+        {
+          "name": "target chapter determined: Song of Solomon 1, new chapter (forward progress; existing songOfSolomonOneToEightPersonalNotes.ts is old-style book-range coverage being superseded, matching the Ecclesiastes/Proverbs/Psalms precedent)",
+          "at": "2026-09-21T15:51:32Z"
+        },
+        {
+          "name": "KJV text fetched: Song of Solomon 1, 17 verses, from raw.githubusercontent.com aruljohn Bible-kjv mirror",
+          "at": "2026-09-21T15:51:44Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-09-21T15:53:43Z"
+        },
+        {
+          "name": "source file written: lib/songOfSolomonOneSource.ts",
+          "at": "2026-09-21T15:57:31Z"
+        },
+        {
+          "name": "style checker clean: 31 cards, no problems",
+          "at": "2026-09-21T15:57:34Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, applyPersonalSongOfSolomonOneStudySections call, invocation order, preserveExactPhraseBodies range 1-8",
+          "at": "2026-09-21T15:57:48Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections returns 6 sections, 31 cards for Song of Solomon 1, no throw",
+          "at": "2026-09-21T15:58:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-21T15:59:53Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-21T16:02:00Z"
+        }
+      ]
     }
   ]
 }
