@@ -5616,3 +5616,7 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-21T20:56:14Z (hourly chapter notes run)
 Chapter: Song of Solomon 5 | Duration: 10 min | Sections: 8 | Cards: 35 | Status: pass
 Next up: Song of Solomon 6
+
+## 2026-09-21T21:56:55Z (hourly chapter notes run)
+Chapter: Song of Solomon 6 | Duration: 11 min | Sections: 6 | Cards: 26 | Status: pass
+Next up: Song of Solomon 7
