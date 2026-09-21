@@ -305,18 +305,19 @@ export async function deleteUserAccount(
     }
     note("messages (text removed)", redacted);
     if (conversationIds.length > 0) {
-      // Fix the inbox preview where the deleted user sent the latest message.
+      // Rebuild each inbox preview from the latest message AFTER the wipe, so
+      // the deleted user's old words never linger in the other person's list.
       for (const conversationId of conversationIds) {
         const { data: latest } = await admin
           .from("messages")
-          .select("sender_id")
+          .select("content")
           .eq("conversation_id", conversationId)
           .order("created_at", { ascending: false })
+          .order("id", { ascending: false })
           .limit(1)
           .maybeSingle();
-        if (latest?.sender_id === userId) {
-          await admin.from("conversations").update({ last_message_preview: DELETED_MESSAGE_TEXT }).eq("id", conversationId);
-        }
+        const preview = typeof latest?.content === "string" ? latest.content.slice(0, 120) : DELETED_MESSAGE_TEXT;
+        await admin.from("conversations").update({ last_message_preview: preview }).eq("id", conversationId);
       }
     }
 

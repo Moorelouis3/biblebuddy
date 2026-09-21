@@ -21,6 +21,8 @@ import { supabase } from "../../../lib/supabaseClient";
 import { useSupabaseUser } from "../../../lib/useSupabaseUser";
 import { useBlockedUserIds } from "../../../lib/userBlocks";
 import ReportBlockMenu from "../../../components/ReportBlockMenu";
+import ProverbsBooksPromo from "../../../components/ProverbsBooksPromo";
+import { PROVERBS_BOOKS_ON_SALE } from "../../../lib/proverbsBooks";
 import { joinCommunityEvent } from "../../../lib/communityEventJoin";
 import { ensureGuestSession } from "../../../lib/guestSession";
 import { getCommunityEvent, getCommunityEventState } from "../../../lib/communityEvents";
@@ -328,6 +330,8 @@ export default function CommunityEventPage() {
           </p>
         </div>
       ) : null}
+
+      {joined && event.printBooksPath && PROVERBS_BOOKS_ON_SALE ? <ProverbsBooksPromo eventSlug={event.slug} /> : null}
 
       {joinButton}
       {!joined && !userId && !authLoading ? (

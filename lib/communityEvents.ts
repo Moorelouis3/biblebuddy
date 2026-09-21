@@ -20,6 +20,8 @@ export type CommunityEvent = {
   bannerArt: string;
   /** Book/journal promo stays hidden until a real link is configured. */
   bookUrl: string | null;
+  /** Internal printed-books page, promoted on the event page after signup. */
+  printBooksPath: string | null;
 };
 
 export const COMMUNITY_EVENTS: CommunityEvent[] = [
@@ -32,6 +34,7 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     totalDays: 31,
     bannerArt: "/events/proverbs-banner-art.png",
     bookUrl: null,
+    printBooksPath: "/events/wisdom-of-proverbs/books",
   },
 ];
 
