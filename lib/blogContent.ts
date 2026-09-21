@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-23-explained",
+    title: "Genesis 23 Explained: Sarah's Death and the Cave of Machpelah",
+    description:
+      "Genesis 23 explained verse by verse: Sarah's death at Hebron, Abraham's negotiation with the Hittites, the price named for the cave of Machpelah, and Sarah's burial.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-23-explained",
+    publishedAt: "2026-09-21",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-23-explained.jpg",
+    groupPost: {
+      title: "Genesis 23 Explained 📖",
+      content:
+        "Sarah dies, and Abraham owns nothing to bury her in.\nThe man God promised a whole country has to buy a grave.\n\n📌 Abraham refuses free land twice and insists on paying in full.\n\n📖 The Hittites offer any tomb in the area at no cost.\n📖 Ephron names a steep price dressed up as small.\n📖 Abraham weighs out four hundred shekels of silver in public.\n\nNew article on:\n🟢 why Abraham calls himself a **stranger and a sojourner**\n🟢 what the **cave of Machpelah** becomes for his family\n🟢 how this ties to **Acts 7:5** and Abraham's real inheritance\n\nHave you ever had to take one small step toward a promise you have not fully received yet? 🙏",
+    },
+  },
+  {
     slug: "genesis-22-explained",
     title: "Genesis 22 Explained: The Binding of Isaac",
     description:
