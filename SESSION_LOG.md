@@ -5473,3 +5473,12 @@ Next up: Ecclesiastes 7
 ## 2026-09-21T10:00:00Z (hourly chapter notes run)
 Chapter: Ecclesiastes 7 | Duration: 12 min | Sections: 9 | Cards: 57 | Status: pass
 Next up: Ecclesiastes 8
+
+## 2026-09-21T10:35:00Z (bible year day writer run)
+Nothing to do: started on the same stale-`main`/no-common-ancestor
+container bug logged in MARCUS_HANDOFF.md (yesterday's entry) — wrote a
+Day 308 script against the stale line before the non-fast-forward push
+caught it. Real origin/main already has all 365 days complete, including
+its own Day 308. Reset to it, confirmed npm install + npx tsc --noEmit
+clean, shipped nothing. Logged the recurrence in MARCUS_HANDOFF.md.
+Next up: nothing — plan complete. Only audio rendering remains.

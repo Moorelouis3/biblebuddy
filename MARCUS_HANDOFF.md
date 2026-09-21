@@ -1,3 +1,20 @@
+## Stale local main recurred again (2026-09-21, Bible in One Year day writer run) — same duplicate-Day-308 pattern as yesterday, caught before it shipped
+Identical root cause to the entry directly below, one day later. This run's
+container also started detached at the old, stale `9f6da92` ("Day 307")
+line with no common ancestor to real `origin/main` (which already has all
+365 days). Wrote and committed a Day 308 script, pushed it — the push
+landed as a new branch on GitHub instead of updating `main` (non-fast-
+forward), which is what caught it. Fetched real `origin/main`, confirmed
+it already has its own Day 308 (and all 365 days) via `DAY_SCRIPTS`,
+reset local `main` to it, and stopped — no duplicate shipped. The stale
+line plus this run's throwaway commit was pushed to
+`rescue/bible-year-days-through-308-2026-09-21` for the record; like the
+branch from yesterday's identical incident, it's redundant now and safe
+to delete whenever someone's cleaning up branches. Restating the same ask
+as every entry below: seed each fresh container's local `main` (and
+`origin/main` remote-tracking ref) from the real current `origin/main` at
+container start — this is now recurring daily.
+
 ## Stale local main recurred again (2026-09-20, Bible in One Year day writer run) — wrote a duplicate Day 308, caught before it shipped
 Same recurring family as every entry below. This run's fresh container had
 local `main` cached at `9f6da92` ("Bible in One Year Day 307" era) with no
