@@ -10,6 +10,7 @@ import {
   resolveFounderId,
   sendLouisInboxMessage,
 } from "@/lib/weeklyBibleReport";
+import { requireOwner } from "@/lib/requireOwner";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -116,6 +117,8 @@ async function sendWeeklyLouisReportsNow() {
 }
 
 export async function POST(request: NextRequest) {
+  const denied = await requireOwner(request);
+  if (denied) return denied;
   const db: any = getDb();
   if (!db) {
     return NextResponse.json({ error: "Server not configured." }, { status: 500 });

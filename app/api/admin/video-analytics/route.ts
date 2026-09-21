@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { bibleBuddyTvTitles } from "@/lib/bibleBuddyTvContent";
+import { requireOwner } from "@/lib/requireOwner";
 
 type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
 
@@ -21,6 +22,8 @@ function getFromDate(filter: TimeFilter): string | null {
 }
 
 export async function GET(request: NextRequest) {
+  const denied = await requireOwner(request);
+  if (denied) return denied;
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
   const adminSupabase = createClient(url, serviceKey);

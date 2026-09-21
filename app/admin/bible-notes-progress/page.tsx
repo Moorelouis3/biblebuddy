@@ -62,7 +62,11 @@ export default function BibleNotesProgressPage() {
     async function load() {
       setLoading(true);
       try {
-        const res = await fetch("/api/admin/bible-notes-progress", { cache: "no-store" });
+        const { data: sessionData } = await supabase.auth.getSession();
+        const res = await fetch("/api/admin/bible-notes-progress", {
+          cache: "no-store",
+          headers: { Authorization: `Bearer ${sessionData.session?.access_token ?? ""}` },
+        });
         if (!res.ok) throw new Error(`Request failed: ${res.status}`);
         const data = (await res.json()) as ProgressLog;
         setLog(data);

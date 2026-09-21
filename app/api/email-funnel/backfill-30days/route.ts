@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { sendFunnelEmailViaSysteme, recordEmailSent, updateEmailFunnelState } from "@/lib/emailFunnelHelpers";
+import { requireOwner } from "@/lib/requireOwner";
 
 export const runtime = "nodejs";
 export const maxDuration = 540;
 
 // Backfill: Send Day 1 emails to all users who signed up in the last 30 days
 export async function POST(request: NextRequest) {
+  const denied = await requireOwner(request);
+  if (denied) return denied;
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
