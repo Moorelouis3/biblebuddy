@@ -5624,3 +5624,16 @@ Next up: Song of Solomon 7
 ## 2026-09-21T22:55:30Z (hourly chapter notes run)
 Chapter: Song of Solomon 7 | Duration: 9 min | Sections: 4 | Cards: 30 | Status: pass
 Next up: Song of Solomon 8
+
+## 2026-09-21T23:23:45Z (bible year day writer run)
+Nothing to do: re-confirmed all 365 days already have scripts (day 1 via
+its legacy segments path, days 2-365 present in DAY_SCRIPTS, scanned every
+key 2-365 for gaps/dupes programmatically: none found). Session started
+detached on origin/main; local `main` was again stuck stale at the old
+"Day 307" tip with unrelated history, already safely backed up by an
+earlier run today as `rescue/stale-local-main-2026-09-21` — reset local
+`main` to `origin/main` (safe: old tip is preserved remotely on that
+rescue branch) rather than leaving it drifted. `npm install` +
+`npx tsc --noEmit` both clean. MARCUS_HANDOFF.md's audio-render entry
+already covers the 365/365 status; not duplicating.
+Next up: nothing — plan complete. Only audio rendering remains.
