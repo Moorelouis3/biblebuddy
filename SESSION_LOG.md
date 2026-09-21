@@ -5482,3 +5482,7 @@ caught it. Real origin/main already has all 365 days complete, including
 its own Day 308. Reset to it, confirmed npm install + npx tsc --noEmit
 clean, shipped nothing. Logged the recurrence in MARCUS_HANDOFF.md.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-21T10:58:00Z (hourly chapter notes run)
+Chapter: Ecclesiastes 8 | Duration: 10 min | Sections: 9 | Cards: 44 | Status: pass
+Next up: Ecclesiastes 9

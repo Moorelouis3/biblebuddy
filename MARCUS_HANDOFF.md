@@ -588,3 +588,18 @@ wants a different order (for example, tackling the Gospels or a specific
 book first), populating `data/bible-notes-style-redo-remaining.json`'s
 `remaining` array still overrides this and takes priority on the very next
 run, per the routine's own lookup order.
+
+## Stale local main recurred again (2026-09-21, hourly chapter run) — still unfixed at the environment level
+Same root cause as every entry above, another occurrence. Fresh checkout's
+local `main` was stuck at `9f6da92` ("Bible in One Year Day 307 script",
+John 16-18 era) with no common ancestor with `origin/main` (`c5e8bef`,
+"Chapter library: verify live" era) — the unrelated-history variant. This
+run's actual working HEAD was already detached at the correct, current
+`origin/main` tip, so nothing was at risk. Pushed the stale `main` line to
+`rescue/stale-local-main-2026-09-21` before touching anything, left local
+`main` untouched (repointing it is classified as irreversible local
+destruction and denied in this environment), and will push this run's new
+commit with `git push origin HEAD:main` instead. Flagging again since this
+keeps costing setup time every run — worth fixing at the environment level
+(seed each fresh session's local `main` from current `origin/main` at
+container start) rather than each run diagnosing it by hand.

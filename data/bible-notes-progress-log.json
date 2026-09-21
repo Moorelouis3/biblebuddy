@@ -40232,6 +40232,59 @@
           "at": "2026-09-21T09:59:16Z"
         }
       ]
+    },
+    {
+      "book": "Ecclesiastes",
+      "chapter": 8,
+      "startedAt": "2026-09-21T10:47:35Z",
+      "finishedAt": "2026-09-21T10:58:00Z",
+      "durationMinutes": 10.4,
+      "sections": 9,
+      "cards": 44,
+      "verses": 17,
+      "notes": "New chapter, normal forward progress after Ecclesiastes 7. Nine sections covering the king's authority, time and judgment, mortality (no discharge in that war), the unequal treatment of the just and the wicked, and the closing admission that the work of God cannot be fully found out. Style checker clean on first full pass after fixing 12 over length bullets and one banned hedge word (fairly).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-21T10:47:35Z"
+        },
+        {
+          "name": "target chapter determined: Ecclesiastes 8 (normal forward progress, new chapter)",
+          "at": "2026-09-21T10:47:49Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Ecclesiastes.json)",
+          "at": "2026-09-21T10:48:13Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-21T10:52:11Z"
+        },
+        {
+          "name": "source file written (lib/ecclesiastesEightSource.ts)",
+          "at": "2026-09-21T10:53:31Z"
+        },
+        {
+          "name": "style checker clean (44 cards, no problems)",
+          "at": "2026-09-21T10:53:56Z"
+        },
+        {
+          "name": "wired into reader (import, preserveExactPhraseBodies range extended to 8, apply function + call site)",
+          "at": "2026-09-21T10:55:05Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 44 cards)",
+          "at": "2026-09-21T10:55:08Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-21T10:55:31Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-21T10:58:00Z"
+        }
+      ]
     }
   ]
 }
