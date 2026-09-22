@@ -5848,3 +5848,14 @@ Next up: Isaiah 16
 ## 2026-09-22T18:55:25Z (hourly chapter notes run)
 Chapter: Isaiah 16 | Duration: 9 min | Sections: 4 | Cards: 30 | Status: pass
 Next up: Isaiah 17
+
+## 2026-09-22T19:26:20Z (bible year day writer run)
+No stale-main issue this time: HEAD matched `origin/main` exactly at
+session start (`26ac39d`). Re-verified DAY_SCRIPTS in
+scripts/render-bible-year-day.ts programmatically: all 365 days present,
+no gaps (day 1 via buildDayOneSegments, days 2-365 wired). `npm install` +
+`npx tsc --noEmit` both clean. Nothing to write this run — the plan is
+complete. MARCUS_HANDOFF.md's audio-render note and prior stale-main
+entries already cover this; nothing new to add there.
+Next up: nothing — plan complete. Only audio rendering remains (separate
+machine with the render keys).
