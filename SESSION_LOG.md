@@ -5744,3 +5744,13 @@ Next up: Isaiah 6
 ## 2026-09-22T07:58:40Z (hourly chapter notes run)
 Chapter: Isaiah 6 | Duration: 13 min | Sections: 4 | Cards: 30 | Status: pass
 Next up: Isaiah 7
+
+## 2026-09-22T08:23:57Z (bible year day writer run)
+Re-checked DAY_SCRIPTS in scripts/render-bible-year-day.ts per this run's
+scheduled instructions (lowest missing day, max 2 per run): still all
+present (day 1 via buildDayOneSegments, days 2-365 wired, verified
+programmatically — no gaps, no dupes). `npm install` + `npx tsc --noEmit`
+both clean. HEAD was already detached at real origin/main exactly, no
+stale-main drift this run. MARCUS_HANDOFF.md audio-render note already
+up to date, nothing new to fold in. Nothing to write this run.
+Next up: nothing — plan complete. Only audio rendering remains.
