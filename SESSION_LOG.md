@@ -5641,3 +5641,12 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-21T23:54:31Z (hourly chapter notes run)
 Chapter: Song of Solomon 8 | Duration: 9 min | Sections: 4 | Cards: 31 | Status: pass
 Next up: Isaiah 1
+
+## 2026-09-22T00:23:54Z (bible year day writer run)
+Nothing to do: re-confirmed all 365 days still have scripts (day 1 via its
+legacy segments path, days 2-365 all present in DAY_SCRIPTS with no gaps or
+dupes). `npm install` + `npx tsc --noEmit` both clean. HEAD was already
+exactly on `origin/main` (no stale-local-main recurrence this run, no
+unpushed work). MARCUS_HANDOFF.md's audio-render entry still accurately
+reflects 365/365 written and waiting on a keyed render; left as is.
+Next up: nothing — plan complete. Only audio rendering remains.
