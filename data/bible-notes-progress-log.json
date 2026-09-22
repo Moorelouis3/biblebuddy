@@ -41967,6 +41967,59 @@
           "at": "2026-09-22T20:55:03Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 19,
+      "startedAt": "2026-09-22T21:46:21Z",
+      "finishedAt": "2026-09-22T21:57:34Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 49,
+      "verses": 25,
+      "notes": "Normal forward progress (new chapter, not a style redo); priority queue and style-redo backlog both empty. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Isaiah 19 is the burden of Egypt: the LORD arrives in judgment and Egypt's many idols (Apis, Hapi, Osiris, Isis) prove powerless, civil war breaks out, and panicked Egyptians turn to charmers and familiar spirits before being handed to a cruel foreign lord (1-4); the Nile itself fails, taking down fishing, flax, linen weaving, and fish farming with it (5-10); Zoan and Noph's famous wise counsellors are made brutish and Pharaoh's court staggers like a drunken man, unable to fix anything from the highest ruler to the lowest worker (11-15); Egypt trembles before tiny Judah because the fear is really about Judah's God, not Judah's army (16-17); the tone turns fully, with Egyptian cities swearing to the LORD, an altar and pillar inside Egypt itself, and God hearing Egypt's cry and healing what He smote (18-22); and the chapter closes with a highway joining once bitter enemies Egypt and Assyria, and Israel standing as an equal third, with God calling Egypt 'my people,' a title normally reserved for Israel alone (23-25). Split into 6 sections (1-4, 5-10, 11-15, 16-17, 18-22, 23-25), density 1.96 cards/verse. check_bible_note_style.py found 3 bullet word count problems on the first pass (all over 8 words), fixed and reran clean. Parser check (getBibleReaderStudySections) and npx tsc --noEmit both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T21:47:15Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 19 (new chapter, forward progress)",
+          "at": "2026-09-22T21:47:15Z"
+        },
+        {
+          "name": "KJV text fetched: Isaiah 19, 25 verses",
+          "at": "2026-09-22T21:47:35Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-22T21:50:00Z"
+        },
+        {
+          "name": "source file written: lib/isaiahNineteenSource.ts",
+          "at": "2026-09-22T21:54:48Z"
+        },
+        {
+          "name": "style checker clean (after fixing 3 bullet word count issues)",
+          "at": "2026-09-22T21:55:10Z"
+        },
+        {
+          "name": "wiring done",
+          "at": "2026-09-22T21:55:40Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 49 cards",
+          "at": "2026-09-22T21:56:20Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-22T21:57:01Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md row + totals, progress-log.json entry)",
+          "at": "2026-09-22T21:57:34Z"
+        }
+      ]
     }
   ]
 }

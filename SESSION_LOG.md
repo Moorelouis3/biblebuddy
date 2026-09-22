@@ -5894,3 +5894,7 @@ dedicated pipeline, days 2-365 wired into DAY_SCRIPTS), no gaps. `npx tsc
 MARCUS_HANDOFF.md's audio-render note already covers the only open item
 (rendering, which needs the keys on a different machine).
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T21:57:34Z (hourly chapter notes run)
+Chapter: Isaiah 19 | Duration: 11 min | Sections: 6 | Cards: 49 | Status: pass
+Next up: Isaiah 20
