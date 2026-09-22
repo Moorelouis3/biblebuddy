@@ -5813,3 +5813,7 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-22T13:55:32Z (hourly chapter notes run)
 Chapter: Isaiah 11 | Duration: 8 min | Sections: 6 | Cards: 33 | Status: pass
 Next up: Isaiah 12
+
+## 2026-09-22T14:54:38Z (hourly chapter notes run)
+Chapter: Isaiah 12 | Duration: 9 min | Sections: 2 | Cards: 12 | Status: pass
+Next up: Isaiah 13
