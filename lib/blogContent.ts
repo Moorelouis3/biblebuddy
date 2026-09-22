@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-27-explained",
+    title: "Genesis 27 Explained: Jacob Steals Esau's Blessing",
+    description:
+      "Genesis 27 explained verse by verse: Isaac's plan to bless Esau, Rebekah and Jacob's deception, Esau's bitter cry, and the lesser blessing Isaac still gives him.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-27-explained",
+    publishedAt: "2026-09-22",
+    readTime: "17 min read",
+    image: "/blog-banners/genesis-27-explained.jpg",
+    groupPost: {
+      title: "Genesis 27 Explained 📖",
+      content:
+        "A blind father is tricked into blessing the wrong son.\nHis own mother helped plan it.\n\n📌 God already promised this outcome. The lie was never needed.\n\n📖 Jacob disguises himself as his own brother.\n📖 Esau lets out a bitter cry when he finds out.\n📖 Isaac still won't take the blessing back.\n\nNew article on:\n🟢 the **goat skins** that fooled a blind man\n🟢 why Isaac says **he shall be blessed** anyway\n🟢 the different blessing Esau **still** receives\n\nHave you ever tried to force something God already promised? 🙏",
+    },
+  },
+  {
     slug: "genesis-26-explained",
     title: "Genesis 26 Explained: Isaac's Famine, a Repeated Lie, and Three Wells",
     description:
