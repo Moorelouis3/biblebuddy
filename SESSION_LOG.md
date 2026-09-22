@@ -5766,3 +5766,18 @@ Next up: Isaiah 9
 ## 2026-09-22T10:58:30Z (hourly chapter notes run)
 Chapter: Isaiah 9 | Duration: 12.5 min | Sections: 6 | Cards: 39 | Status: pass
 Next up: Isaiah 10
+
+## 2026-09-22T11:59:52Z (bible note writer run, no chapter completed)
+Session started on the same recurring stale-local-git-ref bug logged many
+times before: local main landed on an unrelated, stale commit (9f6da92)
+instead of the already-correct detached HEAD (3f9f608, this session's
+true starting point). Drafted and fully verified Psalms 97 (4 sections,
+24 cards) against what looked like current origin/main (last logged:
+Psalms 96), but on push, origin/main turned out to already be at 3f9f608
+with its own progress log 761 entries deep, running through Isaiah 9,
+including its own already-written Psalms 97. The freshly drafted Psalms
+97 was fully redundant, so it was discarded and local main was reset to
+match the true origin/main after confirming (by diffing file trees) that
+nothing unique was lost. No new chapter landed this run. Next real target
+is Isaiah 10. Full detail logged in data/bible-notes-usage-events.json.
+Next up: Isaiah 10.
