@@ -5677,3 +5677,12 @@ correct detached HEAD on origin/main's true tip (129a0df) per the
 established workaround, did not touch local main. tsc --noEmit clean.
 Nothing to write this run.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T02:23:19Z (bible year day writer run)
+Re-checked DAY_SCRIPTS in scripts/render-bible-year-day.ts against days
+1-365 per this run's scheduled instructions (lowest missing day, max 2
+per run): still all present (day 1 via buildDayOneSegments, days 2-365
+wired). No plan gaps, no code changes needed. MARCUS_HANDOFF.md's single
+"waiting on local render" entry already reflects the completed plan, so
+left it as-is. Nothing to write this run.
+Next up: nothing — plan complete. Only audio rendering remains.
