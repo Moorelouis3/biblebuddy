@@ -5701,3 +5701,7 @@ the working tree was clean (no local work at risk), reset local main
 directly to origin/main this time rather than working from a detached
 HEAD. Nothing to write this run.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T03:58:08Z (hourly chapter notes run)
+Chapter: Isaiah 2 | Duration: 12 min | Sections: 4 | Cards: 44 | Status: pass
+Next up: Isaiah 3

@@ -41002,6 +41002,67 @@
           "at": "2026-09-22T03:05:32Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 2,
+      "startedAt": "2026-09-22T03:46:25Z",
+      "finishedAt": "2026-09-22T03:58:08Z",
+      "durationMinutes": 11.7,
+      "sections": 4,
+      "cards": 44,
+      "verses": 22,
+      "notes": "Normal forward progress after Isaiah 1 (redo backlog and priority queue both empty). Session started on a detached HEAD already at the correct current origin/main tip while local main was stale with no common ancestor (recurring documented environment bug); left local main untouched per the established no-repoint policy and worked from the detached HEAD, pushing at the end with git push origin HEAD:main. 4 sections, 44 cards (2 cards/verse), style checker clean after one bullet-length fix, parser check and tsc --noEmit both clean.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-09-22T03:49:32Z"
+        },
+        {
+          "name": "redo_and_priority_queues_confirmed_empty",
+          "at": "2026-09-22T03:49:32Z"
+        },
+        {
+          "name": "target_chapter_determined_isaiah_2_normal_forward_progress",
+          "at": "2026-09-22T03:49:40Z"
+        },
+        {
+          "name": "kjv_text_fetched_isaiah_2",
+          "at": "2026-09-22T03:50:10Z"
+        },
+        {
+          "name": "style_spec_read_in_full",
+          "at": "2026-09-22T03:52:00Z"
+        },
+        {
+          "name": "skill_technical_pipeline_read",
+          "at": "2026-09-22T03:53:30Z"
+        },
+        {
+          "name": "source_file_written_isaiahTwoSource_ts",
+          "at": "2026-09-22T03:55:00Z"
+        },
+        {
+          "name": "style_checker_clean_after_one_fix",
+          "at": "2026-09-22T03:56:07Z"
+        },
+        {
+          "name": "wired_into_reader_bibleReaderStudyNotes_ts",
+          "at": "2026-09-22T03:56:20Z"
+        },
+        {
+          "name": "parser_check_passed_4_sections_44_cards",
+          "at": "2026-09-22T03:56:30Z"
+        },
+        {
+          "name": "tsc_noEmit_clean",
+          "at": "2026-09-22T03:57:00Z"
+        },
+        {
+          "name": "progress_files_logged_json_md_session_log",
+          "at": "2026-09-22T04:00:16Z"
+        }
+      ]
     }
   ]
 }
