@@ -5,9 +5,9 @@ import { WISDOM_BOOK_ASSETS, WISDOM_BOOKS_PAGE_PATH } from "../../../lib/wisdomO
 // Standalone sales page for the printed Wisdom of Proverbs editions. Linked
 // from the event page (?src=proverbs_event_page), social, email and the blog.
 
-const title = "The Wisdom of Proverbs: Hardcover, Paperback & Journal | Bible Buddy";
+const title = "The Wisdom of Proverbs: Hardcover & Paperback | Bible Buddy";
 const description =
-  "Take the 31-day Wisdom of Proverbs study with you. The hardcover, paperback and companion journal by Louis Moore III, a Bible Buddy study.";
+  "Take the 31-day Wisdom of Proverbs study with you. The hardcover and paperback editions by Louis Moore III, a Bible Buddy study.";
 
 export const metadata: Metadata = {
   title,

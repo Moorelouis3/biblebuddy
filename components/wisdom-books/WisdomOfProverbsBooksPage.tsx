@@ -129,6 +129,8 @@ export default function WisdomOfProverbsBooksPage() {
   const hardcover = PRODUCTS.hardcover;
   const paperback = PRODUCTS.paperback;
   const journal = PRODUCTS.journal;
+  // Hardcover is always featured; these follow when switched on in the config.
+  const otherEditions = [paperback, journal].filter((product) => product.visible);
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-4 pb-28 pt-4 sm:gap-10 sm:pt-6">
@@ -228,9 +230,10 @@ export default function WisdomOfProverbsBooksPage() {
         <h2 id="other-heading" className="text-center text-sm font-black uppercase tracking-[0.22em] text-[#8a6124]">
           Other ways to study
         </h2>
-        <div className="grid gap-5 md:grid-cols-2">
-          <SecondaryCard product={paperback} variant="paperback" />
-          <SecondaryCard product={journal} variant="journal" />
+        <div className={otherEditions.length > 1 ? "grid gap-5 md:grid-cols-2" : "mx-auto grid w-full max-w-xl gap-5"}>
+          {otherEditions.map((product) => (
+            <SecondaryCard key={product.key} product={product} variant={product.key === "journal" ? "journal" : "paperback"} />
+          ))}
         </div>
       </section>
 
@@ -286,7 +289,7 @@ export default function WisdomOfProverbsBooksPage() {
           </AmazonCta>
         </div>
         <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-bold">
-          {[paperback, journal].map((product) =>
+          {otherEditions.map((product) =>
             product.amazonUrl ? (
               <a
                 key={product.key}

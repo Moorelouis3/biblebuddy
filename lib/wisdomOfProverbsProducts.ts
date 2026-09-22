@@ -28,6 +28,8 @@ export type WisdomProduct = {
   ctaLabel: string;
   /** landing-analytics event name fired on the Amazon click */
   clickEvent: string;
+  /** Shown on the books page. false keeps the product wired up but hidden. */
+  visible: boolean;
 };
 
 export const WISDOM_BOOKS_PAGE_PATH = "/books/wisdom-of-proverbs";
@@ -55,6 +57,7 @@ export const WISDOM_OF_PROVERBS_PRODUCTS: Record<WisdomProductKey, WisdomProduct
     image: WISDOM_BOOK_ASSETS.cover,
     ctaLabel: "Buy Hardcover on Amazon",
     clickEvent: "wisdom_hardcover_amazon_clicked",
+    visible: true,
   },
   paperback: {
     key: "paperback",
@@ -68,6 +71,7 @@ export const WISDOM_OF_PROVERBS_PRODUCTS: Record<WisdomProductKey, WisdomProduct
     image: WISDOM_BOOK_ASSETS.cover,
     ctaLabel: "Buy Paperback on Amazon",
     clickEvent: "wisdom_paperback_amazon_clicked",
+    visible: true,
   },
   journal: {
     key: "journal",
@@ -81,6 +85,9 @@ export const WISDOM_OF_PROVERBS_PRODUCTS: Record<WisdomProductKey, WisdomProduct
     image: null, // TODO(Louis): real journal cover file
     ctaLabel: "Buy Journal on Amazon",
     clickEvent: "wisdom_journal_amazon_clicked",
+    // Hidden until Louis says to add it (2026-09-22). Flip to true, add the
+    // Amazon link and the cover image, and the page shows it again.
+    visible: false,
   },
 };
 
