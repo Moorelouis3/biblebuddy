@@ -22,7 +22,7 @@ import { useSupabaseUser } from "../../../lib/useSupabaseUser";
 import { useBlockedUserIds } from "../../../lib/userBlocks";
 import ReportBlockMenu from "../../../components/ReportBlockMenu";
 import ProverbsBooksPromo from "../../../components/ProverbsBooksPromo";
-import { PROVERBS_BOOKS_ON_SALE } from "../../../lib/proverbsBooks";
+import { WISDOM_BOOKS_ON_SALE } from "../../../lib/wisdomOfProverbsProducts";
 import { joinCommunityEvent } from "../../../lib/communityEventJoin";
 import { ensureGuestSession } from "../../../lib/guestSession";
 import { getCommunityEvent, getCommunityEventState } from "../../../lib/communityEvents";
@@ -70,6 +70,13 @@ export default function CommunityEventPage() {
   const [justJoined, setJustJoined] = useState(false);
   const [reminders, setReminders] = useState(false);
   const [howOpen, setHowOpen] = useState(false);
+  // The printed-book banner stays hidden until the hardcover Amazon link is
+  // set (lib/wisdomOfProverbsProducts.ts). ?previewBooks=1 shows it early.
+  const [previewBooks, setPreviewBooks] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPreviewBooks(new URLSearchParams(window.location.search).get("previewBooks") === "1");
+  }, []);
 
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [totalMembers, setTotalMembers] = useState<number | null>(null);
@@ -273,6 +280,8 @@ export default function CommunityEventPage() {
   }
 
 
+  const showBooksPromo = WISDOM_BOOKS_ON_SALE || previewBooks;
+
   const joinLabel = joining ? "JOINING…" : "JOIN THE 31-DAY STUDY";
 
   const remaining = totalMembers !== null ? Math.max(0, totalMembers - participants.length) : 0;
@@ -322,6 +331,9 @@ export default function CommunityEventPage() {
         fits your schedule, then meet the community in the daily discussion.
       </p>
 
+      {/* Printed-book banner: after the description, before the signed-up card. */}
+      {joined && event.printBooksPath && showBooksPromo ? <ProverbsBooksPromo eventSlug={event.slug} /> : null}
+
       {joined ? (
         <div className="rounded-2xl border border-[#cfe5cf] bg-[#eefaf0] p-4 text-center">
           <p className="text-base font-black text-[#14532d]">Welcome — you&apos;re signed up! 🎉</p>
@@ -330,8 +342,6 @@ export default function CommunityEventPage() {
           </p>
         </div>
       ) : null}
-
-      {joined && event.printBooksPath && PROVERBS_BOOKS_ON_SALE ? <ProverbsBooksPromo eventSlug={event.slug} /> : null}
 
       {joinButton}
       {!joined && !userId && !authLoading ? (

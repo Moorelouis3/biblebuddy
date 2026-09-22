@@ -12,10 +12,19 @@ const ALLOWED_EVENTS = new Set([
   "community_event_day_started",
   "community_event_day_completed",
   "community_event_book_click",
-  // Printed Proverbs books (2026-09-21): event-page promo -> books page -> Amazon.
-  "community_event_books_promo_impression",
-  "community_event_books_promo_click",
-  "community_event_books_page_view",
+  // Printed Wisdom of Proverbs books (2026-09-22). Event-page banner ->
+  // /books/wisdom-of-proverbs -> Amazon. Metadata: {source, placement, utm_*,
+  // referrer_host, product}.
+  "wisdom_book_banner_viewed",
+  "wisdom_book_banner_clicked",
+  "wisdom_book_page_viewed",
+  "wisdom_hardcover_amazon_clicked",
+  "wisdom_paperback_amazon_clicked",
+  "wisdom_journal_amazon_clicked",
+  // One-time "New Book Live!" popup for Proverbs members / devotional readers.
+  "wisdom_book_popup_impression",
+  "wisdom_book_popup_dismissed",
+  "wisdom_book_popup_clicked",
   // Verse of the Day system (2026-09-02). Metadata carries {date, reference,
   // background} so performance can be split by verse and by background theme.
   "votd_card_impression",

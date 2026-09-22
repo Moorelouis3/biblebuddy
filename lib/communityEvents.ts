@@ -34,7 +34,7 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     totalDays: 31,
     bannerArt: "/events/proverbs-banner-art.png",
     bookUrl: null,
-    printBooksPath: "/events/wisdom-of-proverbs/books",
+    printBooksPath: "/books/wisdom-of-proverbs",
   },
 ];
 

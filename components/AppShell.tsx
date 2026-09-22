@@ -30,6 +30,7 @@ import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import BottomNav from "./BottomNav";
 import WisdomProverbsPopup from "./WisdomProverbsPopup";
+import WisdomBookPopup from "./WisdomBookPopup";
 import ReportProblemCard from "./ReportProblemCard";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import {
@@ -895,7 +896,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       // that moment threw away the join they were half way through.
       // The blog is content, not the app: a half finished account opening a
       // post should read the post, not get pulled into the chooser.
-      if (pathname === "/start" || pathname?.startsWith("/events/") || pathname?.startsWith("/blog")) {
+      // Same for the printed-book pages (/books/...), linked from social and email.
+      if (pathname === "/start" || pathname?.startsWith("/events/") || pathname?.startsWith("/blog") || pathname?.startsWith("/books/")) {
         setShowFirstLoginOnboarding(false);
         return;
       }
@@ -3631,6 +3633,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           (not a member, never shown) and waits for a quiet moment. */}
       {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
         <WisdomProverbsPopup
+          userId={userId}
+          pathname={pathname}
+          blocked={Boolean(
+            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
+          )}
+        />
+      ) : null}
+
+      {/* One-time "New Book Live!" popup for Proverbs members and devotional
+          readers. Off until the hardcover Amazon link is set. */}
+      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
+        <WisdomBookPopup
           userId={userId}
           pathname={pathname}
           blocked={Boolean(
