@@ -5825,3 +5825,18 @@ Next up: Isaiah 14
 ## 2026-09-22T16:57:50Z (hourly chapter notes run)
 Chapter: Isaiah 14 | Duration: 11 min | Sections: 8 | Cards: 65 | Status: pass
 Next up: Isaiah 15
+
+## 2026-09-22T17:27:25Z (bible year day writer run)
+Session started with local `main` stale-cached at the old Day 307 tip with
+no common ancestor to real `origin/main` — same recurring container bug
+logged repeatedly in MARCUS_HANDOFF.md. Caught it before touching any
+files: `git fetch origin main` then `git branch -f main origin/main` +
+`git checkout main` to resync, no data at risk (nothing uncommitted was
+sitting on the stale ref). Re-verified DAY_SCRIPTS in
+scripts/render-bible-year-day.ts programmatically: all 365 days present,
+no gaps (day 1 via buildDayOneSegments, days 2-365 wired). `npm install` +
+`npx tsc --noEmit` both clean. Nothing to write this run — the plan is
+complete. MARCUS_HANDOFF.md's audio-render note and today's stale-main
+entries already cover this; nothing new to add there.
+Next up: nothing — plan complete. Only audio rendering remains (separate
+machine with the render keys).
