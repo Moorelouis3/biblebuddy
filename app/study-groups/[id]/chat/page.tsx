@@ -662,6 +662,19 @@ function isBibleBuddyTvSharePost(post: Pick<Post, "link_url" | "title">) {
 // mybiblebuddy.net URL. Returns the internal path so they can render as a real
 // in-app button: the generic link card below labels them "Video" and opens them
 // with target="_blank", which does not reliably open from the installed app.
+/** Our own study pages (e.g. a devotional day) open inside the app, not as an outside link. */
+function parseInternalStudyPath(linkUrl: string | null | undefined) {
+  if (!linkUrl) return null;
+  try {
+    const parsed = new URL(linkUrl, "https://www.mybiblebuddy.net");
+    if (!/(^|\.)mybiblebuddy\.net$/i.test(parsed.hostname)) return null;
+    if (!/^\/devotionals\/[^/?#]+/.test(parsed.pathname)) return null;
+    return parsed.pathname;
+  } catch {
+    return null;
+  }
+}
+
 function parseBlogArticlePath(linkUrl: string | null | undefined) {
   if (!linkUrl) return null;
 
@@ -5208,8 +5221,9 @@ export default function GroupChatPage() {
   const activeFeedScrambledPromo = activeFeedPost ? isScrambledPromoPost(activeFeedPost) : false;
   const activeFeedBibleBuddyTvShare = activeFeedPost ? isBibleBuddyTvSharePost(activeFeedPost) : false;
   const activeFeedBlogArticlePath = activeFeedPost ? parseBlogArticlePath(activeFeedPost.link_url) : null;
+  const activeFeedStudyPath = activeFeedPost ? parseInternalStudyPath(activeFeedPost.link_url) : null;
   const activeFeedPlainLinkUrl =
-    activeFeedPost?.link_url && !activeFeedBlogArticlePath && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare
+    activeFeedPost?.link_url && !activeFeedBlogArticlePath && !activeFeedStudyPath && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare
       ? activeFeedPost.link_url
       : null;
   const modalTopBuddies = topBuddies;
@@ -7593,6 +7607,15 @@ export default function GroupChatPage() {
             </Link>
           )}
 
+          {activeFeedStudyPath && (
+            <Link
+              href={activeFeedStudyPath}
+              className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#0056fd] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#003bb0]"
+            >
+              📖 Open today&apos;s study
+            </Link>
+          )}
+
           {activeFeedPlainLinkUrl && (
             <a
               href={activeFeedPlainLinkUrl}
@@ -7751,6 +7774,7 @@ export default function GroupChatPage() {
           const isScrambledPromo = isScrambledPromoPost(post);
           const isBibleBuddyTvShare = isBibleBuddyTvSharePost(post);
           const blogArticlePath = parseBlogArticlePath(post.link_url);
+          const studyPath = parseInternalStudyPath(post.link_url);
           const triviaSet = weeklyTriviaByPostId[post.id];
           const questionSet = weeklyQuestionByPostId[post.id];
           return (
@@ -7923,7 +7947,16 @@ export default function GroupChatPage() {
                   📖 Read the full post
                 </Link>
               )}
-              {post.link_url && !blogArticlePath && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (() => {
+              {studyPath && (
+                <Link
+                  href={studyPath}
+                  onClick={(event) => event.stopPropagation()}
+                  className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-[#0056fd] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#003bb0]"
+                >
+                  📖 Open today&apos;s study
+                </Link>
+              )}
+              {post.link_url && !blogArticlePath && !studyPath && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (() => {
               const parsed = parseVideoEmbed(post.link_url);
               if (parsed.embedUrl) {
                 if (!parsed.portrait) {

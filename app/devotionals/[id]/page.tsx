@@ -87,6 +87,12 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import ChapterNotesMarkdown from "../../../components/ChapterNotesMarkdown";
 import CommentSection from "../../../components/comments/CommentSection";
+import GroupPostThread from "../../../components/GroupPostThread";
+import {
+  getDevotionalEventDayPostMap,
+  getEventDiscussedDayNumbers,
+} from "../../../lib/eventDiscussion";
+import type { EventDayPost } from "../../../lib/communityEventDays";
 import { supabase } from "../../../lib/supabaseClient";
 import DevotionalDayModal from "../../../components/DevotionalDayModal";
 import DevotionalDayCompletionModal from "../../../components/DevotionalDayCompletionModal";
@@ -393,6 +399,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [expandedWisdomTask, setExpandedWisdomTask] = useState<string | null>(null);
   const [completedTriviaDayNumbers, setCompletedTriviaDayNumbers] = useState<Set<number>>(new Set());
   const [completedDiscussionDayNumbers, setCompletedDiscussionDayNumbers] = useState<Set<number>>(new Set());
+  // Community event days (Wisdom of Proverbs): day number -> that day's Bible Buddy group post.
+  const [eventDayPosts, setEventDayPosts] = useState<Map<number, EventDayPost>>(new Map());
   const [starterBuddies, setStarterBuddies] = useState<DevotionalStarterBuddy[]>([]);
   const [showStarterBuddiesModal, setShowStarterBuddiesModal] = useState(false);
   const [starterBuddyPage, setStarterBuddyPage] = useState(0);
@@ -644,7 +652,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           if (isChapterJourneyStudyTitle(devotionalData.title)) {
             const loadedDays = daysData || [];
             const reflectionSlugs = loadedDays.map((day) => chapterSlug(day.bible_reading_book, day.bible_reading_chapter));
-            const [actionsRes, reflectionsRes] = await Promise.all([
+            const [actionsRes, reflectionsRes, eventDiscussedDays] = await Promise.all([
               supabase
                 .from("master_actions")
                 .select("action_type, action_label")
@@ -663,6 +671,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                     .eq("is_deleted", false)
                     .in("article_slug", reflectionSlugs)
                 : Promise.resolve({ data: [], error: null } as any),
+              // Community event days: replying in the day's group thread also counts.
+              getDevotionalEventDayPostMap(supabase, devotionalId)
+                .then((dayPosts) => getEventDiscussedDayNumbers(supabase, dayPosts, userId))
+                .catch(() => new Set<number>()),
             ]);
 
             const actions = actionsRes.data || [];
@@ -688,7 +700,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                 row.action_type === ACTION_TYPE.scrambled_chapter_completed &&
                 String(row.action_label || "").toLowerCase().startsWith(chapterLabelLower)
               );
-              const hasReflection = reflectionSet.has(chapterSlug(day.bible_reading_book, day.bible_reading_chapter));
+              const hasReflection =
+                reflectionSet.has(chapterSlug(day.bible_reading_book, day.bible_reading_chapter)) ||
+                eventDiscussedDays.has(day.day_number);
               if (hasTrivia) triviaDaySet.add(day.day_number);
               if (hasReflection) discussionDaySet.add(day.day_number);
               const completed = isModernStudyPlanTitle(devotionalData.title)
@@ -733,6 +747,20 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       loadDevotional();
     }
   }, [devotionalId, userId, router]);
+
+  useEffect(() => {
+    let cancelled = false;
+    void getDevotionalEventDayPostMap(supabase, devotionalId)
+      .then((dayPosts) => {
+        if (!cancelled) setEventDayPosts(dayPosts);
+      })
+      .catch(() => {
+        if (!cancelled) setEventDayPosts(new Map());
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [devotionalId]);
 
   useEffect(() => {
     function handleBibleReaderHeight(event: MessageEvent) {
@@ -2380,6 +2408,36 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                 {day.reflection_question || `What stood out to you most in Day ${day.day_number}?`}
                               </p>
                               <div className="mt-4">
+                                {eventDayPosts.get(day.day_number) ? (
+                                  <>
+                                    <p className="mb-3 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+                                      Today&apos;s group discussion
+                                    </p>
+                                    <GroupPostThread
+                                      postId={eventDayPosts.get(day.day_number)!.group_post_id}
+                                      groupId={eventDayPosts.get(day.day_number)!.group_id}
+                                      placeholderText="Start typing your thoughts..."
+                                      submitButtonText="Post Comment"
+                                      onPosted={() => {
+                                        setCompletedDiscussionDayNumbers((previous) => {
+                                          const next = new Set(previous);
+                                          next.add(day.day_number);
+                                          return next;
+                                        });
+                                        updateWisdomTaskProgress(day.day_number, { discussion: true });
+                                      }}
+                                      onUserHasPosted={() => {
+                                        setCompletedDiscussionDayNumbers((previous) => {
+                                          if (previous.has(day.day_number)) return previous;
+                                          const next = new Set(previous);
+                                          next.add(day.day_number);
+                                          return next;
+                                        });
+                                        updateWisdomTaskProgress(day.day_number, { discussion: true });
+                                      }}
+                                    />
+                                  </>
+                                ) : (
                                 <CommentSection
                                   articleSlug={chapterSlug(day.bible_reading_book, day.bible_reading_chapter)}
                                   headingText=""
@@ -2404,6 +2462,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                                     updateWisdomTaskProgress(day.day_number, { discussion: true });
                                   }}
                                 />
+                                )}
                               </div>
                             </div>
                           </details>

@@ -22,10 +22,11 @@ import { useRouter } from "next/navigation";
 import { lockDocumentScroll } from "../hooks/useDocumentScrollLock";
 import { supabase } from "../lib/supabaseClient";
 import { WISDOM_BOOKS_ON_SALE, WISDOM_BOOKS_PAGE_PATH } from "../lib/wisdomOfProverbsProducts";
+import { PROMO_VISIT_KEY } from "./ProverbsLaunchPopup";
 
 const POPUP_ID = "wisdom_proverbs_book_2026";
 const SHOW_DELAY_MS = 1500;
-const EXCLUDED_PREFIXES = ["/start", "/events", "/books", "/login", "/signup", "/reset-password", "/admin", "/moderator-admin", "/onboarding"];
+const EXCLUDED_PREFIXES = ["/start", "/events", "/books", "/devotionals", "/login", "/signup", "/reset-password", "/admin", "/moderator-admin", "/onboarding"];
 
 const localKey = (userId: string) => `bb-popup-done:${POPUP_ID}:${userId}`;
 
@@ -106,6 +107,10 @@ export default function WisdomBookPopup({
       let clearSince = 0;
       const attempt = async () => {
         if (cancelled) return;
+        // One promo popup per visit (see ProverbsLaunchPopup).
+        try {
+          if (window.sessionStorage.getItem(PROMO_VISIT_KEY)) return;
+        } catch {}
         const clear = !isExcluded(pathRef.current) && !blockedRef.current && !otherModalOpen() && !document.hidden;
         if (!clear) clearSince = 0;
         else if (!clearSince) clearSince = Date.now();
@@ -122,12 +127,15 @@ export default function WisdomBookPopup({
         if (writeError || cancelled) return;
         try {
           window.localStorage.setItem(localKey(userId), "seen");
+          window.sessionStorage.setItem(PROMO_VISIT_KEY, POPUP_ID);
         } catch {}
         restoreFocusRef.current = document.activeElement as HTMLElement | null;
         setOpen(true);
         track("wisdom_book_popup_impression", userId, { page: pathRef.current });
       };
-      timer = setTimeout(attempt, 500);
+      // Starts later than ProverbsLaunchPopup so, during the study, the launch
+      // popup wins the one-promo-per-visit slot when someone qualifies for both.
+      timer = setTimeout(attempt, 4000);
     })();
 
     return () => {

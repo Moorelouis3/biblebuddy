@@ -25,6 +25,10 @@ const ALLOWED_EVENTS = new Set([
   "wisdom_book_popup_impression",
   "wisdom_book_popup_dismissed",
   "wisdom_book_popup_clicked",
+  // One-time "It starts today" popup for members who have not started (Oct 1+).
+  "proverbs_launch_popup_impression",
+  "proverbs_launch_popup_dismissed",
+  "proverbs_launch_popup_clicked",
   // Verse of the Day system (2026-09-02). Metadata carries {date, reference,
   // background} so performance can be split by verse and by background theme.
   "votd_card_impression",

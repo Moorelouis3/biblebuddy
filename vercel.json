@@ -99,6 +99,10 @@
     {
       "path": "/api/cron/group-post-broadcasts",
       "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/community-event-daily",
+      "schedule": "0 10 * * *"
     }
   ],
   "headers": [

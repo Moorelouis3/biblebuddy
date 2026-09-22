@@ -31,6 +31,7 @@ import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import BottomNav from "./BottomNav";
 import WisdomProverbsPopup from "./WisdomProverbsPopup";
 import WisdomBookPopup from "./WisdomBookPopup";
+import ProverbsLaunchPopup from "./ProverbsLaunchPopup";
 import ReportProblemCard from "./ReportProblemCard";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import {
@@ -3633,6 +3634,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           (not a member, never shown) and waits for a quiet moment. */}
       {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
         <WisdomProverbsPopup
+          userId={userId}
+          pathname={pathname}
+          blocked={Boolean(
+            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
+          )}
+        />
+      ) : null}
+
+      {/* One-time "The Wisdom of Proverbs has started" popup for members who
+          have not started yet (from Oct 1). Checked before the book popup. */}
+      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
+        <ProverbsLaunchPopup
           userId={userId}
           pathname={pathname}
           blocked={Boolean(

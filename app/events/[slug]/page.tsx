@@ -25,7 +25,10 @@ import ProverbsBooksPromo from "../../../components/ProverbsBooksPromo";
 import { WISDOM_BOOKS_ON_SALE } from "../../../lib/wisdomOfProverbsProducts";
 import { joinCommunityEvent } from "../../../lib/communityEventJoin";
 import { ensureGuestSession } from "../../../lib/guestSession";
-import { getCommunityEvent, getCommunityEventState } from "../../../lib/communityEvents";
+import { getCommunityEvent, getCommunityEventState, type CommunityEventState } from "../../../lib/communityEvents";
+import EventTodayCard from "../../../components/community-event/EventTodayCard";
+import EventProgressTracker from "../../../components/community-event/EventProgressTracker";
+import { useEventProgress } from "../../../components/community-event/useEventProgress";
 
 const GRID_PAGE_SIZE = 24;
 
@@ -73,9 +76,15 @@ export default function CommunityEventPage() {
   // The printed-book banner stays hidden until the hardcover Amazon link is
   // set (lib/wisdomOfProverbsProducts.ts). ?previewBooks=1 shows it early.
   const [previewBooks, setPreviewBooks] = useState(false);
+  // Testing override: ?previewDay=N (1..31) renders live mode as if it were
+  // community day N. Client-only; without the param nothing changes.
+  const [previewDay, setPreviewDay] = useState<number | null>(null);
   useEffect(() => {
+    const search = new URLSearchParams(window.location.search);
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setPreviewBooks(new URLSearchParams(window.location.search).get("previewBooks") === "1");
+    setPreviewBooks(search.get("previewBooks") === "1");
+    const rawDay = Number(search.get("previewDay"));
+    setPreviewDay(Number.isInteger(rawDay) && rawDay >= 1 ? rawDay : null);
   }, []);
 
   const [participants, setParticipants] = useState<Participant[]>([]);
@@ -90,7 +99,14 @@ export default function CommunityEventPage() {
   );
 
 
-  const state = useMemo(() => (event ? getCommunityEventState(event) : null), [event]);
+  const state = useMemo<CommunityEventState | null>(() => {
+    if (!event) return null;
+    if (previewDay !== null && previewDay <= event.totalDays) return { phase: "live", communityDay: previewDay };
+    return getCommunityEventState(event);
+  }, [event, previewDay]);
+
+  // The member's real devotional progress - only fetched once they joined.
+  const { completedDays } = useEventProgress(event?.devotionalId, userId, joined);
 
   useEffect(() => {
     if (event) track("community_event_page_view", { event: event.slug });
@@ -331,6 +347,11 @@ export default function CommunityEventPage() {
         fits your schedule, then meet the community in the daily discussion.
       </p>
 
+      {/* Live mode: today's community day, study and discussion. */}
+      {state?.phase === "live" ? (
+        <EventTodayCard event={event} day={state.communityDay} completedToday={joined && completedDays.has(state.communityDay)} />
+      ) : null}
+
       {/* Printed-book banner: after the description, before the signed-up card. */}
       {joined && event.printBooksPath && showBooksPromo ? <ProverbsBooksPromo eventSlug={event.slug} /> : null}
 
@@ -338,10 +359,16 @@ export default function CommunityEventPage() {
         <div className="rounded-2xl border border-[#cfe5cf] bg-[#eefaf0] p-4 text-center">
           <p className="text-base font-black text-[#14532d]">Welcome — you&apos;re signed up! 🎉</p>
           <p className="mt-1 text-sm font-semibold text-[#3f6212]">
-            The journey begins October 1. We&apos;ll let you know when Day 1 is ready.
+            {state?.phase === "live"
+              ? `The study is live — Day ${state.communityDay} is open now. Go at your own pace; every earlier day stays open.`
+              : state?.phase === "evergreen"
+                ? "All 31 days are open. Go at your own pace, one chapter at a time."
+                : "The journey begins October 1. We'll let you know when Day 1 is ready."}
           </p>
         </div>
       ) : null}
+
+      {joined && state ? <EventProgressTracker event={event} state={state} completedDays={completedDays} /> : null}
 
       {joinButton}
       {!joined && !userId && !authLoading ? (

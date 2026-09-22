@@ -20,6 +20,7 @@ import {
   getActiveCommunityEvent,
   getCommunityEventState,
 } from "../lib/communityEvents";
+import { useEventProgress } from "./community-event/useEventProgress";
 
 function trackEvent(eventName: string, metadata: Record<string, unknown> = {}) {
   try {
@@ -67,6 +68,9 @@ export default function CommunityEventBanner({
 
   const state = useMemo(() => (event ? getCommunityEventState(event, now) : null), [event, now]);
 
+  // Members see their own real devotional progress (devotional_progress).
+  const { completedDays, loaded: progressLoaded } = useEventProgress(event?.devotionalId, userId, joined);
+
   useEffect(() => {
     if (!event) return;
     trackEvent("community_event_banner_impression", { event: event.slug, source });
@@ -103,6 +107,9 @@ export default function CommunityEventBanner({
   }, [event, userId]);
 
   if (!event || !state) return null;
+
+  let doneCount = 0;
+  for (let d = 1; d <= event.totalDays; d += 1) if (completedDays.has(d)) doneCount += 1;
 
   const pill =
     state.phase === "countdown"
@@ -168,6 +175,19 @@ export default function CommunityEventBanner({
             <p className="text-[11px] font-semibold text-[#bfa877] sm:text-xs">
               {participants} Bible Buddies have joined
             </p>
+          ) : null}
+          {joined && progressLoaded ? (
+            <div className="mt-0.5 w-full max-w-[220px]">
+              <p className="text-[11px] font-bold text-[#e8c877] sm:text-xs">
+                {doneCount}/{event.totalDays} days done
+              </p>
+              <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full" style={{ background: "rgba(232,200,119,0.2)" }}>
+                <div
+                  className="h-full rounded-full"
+                  style={{ width: `${Math.round((doneCount / event.totalDays) * 100)}%`, background: "linear-gradient(90deg, #f0d489 0%, #cfa147 100%)" }}
+                />
+              </div>
+            </div>
           ) : null}
           <span
             className="mt-1.5 w-fit rounded-lg px-4 py-2 text-[12px] font-black tracking-wide text-[#221503] sm:px-5 sm:text-sm"

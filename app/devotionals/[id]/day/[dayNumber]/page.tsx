@@ -7,6 +7,9 @@ import BibleReadingModal from "@/components/BibleReadingModal";
 import BrowserTtsButton from "@/components/BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "@/lib/genesisOneTts";
 import CommentSection from "@/components/comments/CommentSection";
+import GroupPostThread from "@/components/GroupPostThread";
+import { getEventDayPost, type EventDayPost } from "@/lib/communityEventDays";
+import { eventSlugForDevotional, getEventDayRepliers, getEventDiscussedDayNumbers } from "@/lib/eventDiscussion";
 import DevotionalDayCompletionModal from "@/components/DevotionalDayCompletionModal";
 import TriviaGamePlayer from "@/components/TriviaGamePlayer";
 import { ACTION_TYPE } from "@/lib/actionTypes";
@@ -279,6 +282,8 @@ export default function ProverbsStudyDayPage() {
   const [notesDone, setNotesDone] = useState(false);
   const [triviaDone, setTriviaDone] = useState(false);
   const [reflectionDone, setReflectionDone] = useState(false);
+  // Community event day (Wisdom of Proverbs): this day's Bible Buddy group post, if published.
+  const [eventDayPost, setEventDayPost] = useState<EventDayPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [openTask, setOpenTask] = useState<number | null>(null);
   const completionWatcherReadyRef = useRef(false);
@@ -393,6 +398,12 @@ export default function ProverbsStudyDayPage() {
     setDevotional(devotionalRow);
     setDay(dayRow);
 
+    const eventSlug = eventSlugForDevotional(devotionalId);
+    const dayPost = eventSlug
+      ? await getEventDayPost(supabase, eventSlug, dayNumber).catch(() => null)
+      : null;
+    setEventDayPost(dayPost);
+
     if (!uid || !dayRow || !devotionalRow) {
       setLoading(false);
       return;
@@ -402,7 +413,7 @@ export default function ProverbsStudyDayPage() {
     const noteLabel = notesActionLabel(dayRow.bible_reading_book, dayRow.bible_reading_chapter);
     const reflectionSlug = chapterSlug(dayRow.bible_reading_book, dayRow.bible_reading_chapter);
 
-    const [progressRes, actionsRes, commentsRes] = await Promise.all([
+    const [progressRes, actionsRes, commentsRes, eventDiscussedDays] = await Promise.all([
       supabase
         .from("devotional_progress")
         .select("is_completed, reading_completed, completed_at")
@@ -426,19 +437,27 @@ export default function ProverbsStudyDayPage() {
         .eq("article_slug", reflectionSlug)
         .eq("is_deleted", false)
         .limit(1),
+      // Replying in the day's group thread also counts as the discussion.
+      dayPost
+        ? getEventDiscussedDayNumbers(supabase, new Map([[dayNumber, dayPost]]), uid).catch(() => new Set<number>())
+        : Promise.resolve(new Set<number>()),
     ]);
 
     const actions = actionsRes.data || [];
     setProgress((progressRes.data as Progress | null) ?? { is_completed: false, reading_completed: false, completed_at: null });
     setNotesDone(actions.some((row) => (row.action_type === ACTION_TYPE.chapter_notes_reviewed || row.action_type === ACTION_TYPE.chapter_notes_viewed) && row.action_label === noteLabel));
     setTriviaDone(actions.some((row) => row.action_type === ACTION_TYPE.trivia_chapter_completed && String(row.action_label || "").toLowerCase().startsWith(label.toLowerCase())));
-    setReflectionDone(Boolean(commentsRes.data?.length));
+    setReflectionDone(Boolean(commentsRes.data?.length) || eventDiscussedDays.has(dayNumber));
 
-    await loadFinishers(dayRow, devotionalRow);
+    await loadFinishers(dayRow, devotionalRow, dayPost);
     setLoading(false);
   }
 
-  async function loadFinishers(dayRow: DevotionalDay, devotionalRow: Devotional | null = devotional) {
+  async function loadFinishers(
+    dayRow: DevotionalDay,
+    devotionalRow: Devotional | null = devotional,
+    dayPost: EventDayPost | null = eventDayPost,
+  ) {
     const label = `${dayRow.bible_reading_book} ${dayRow.bible_reading_chapter}`;
     const noteLabel = notesActionLabel(dayRow.bible_reading_book, dayRow.bible_reading_chapter);
     const reflectionSlug = chapterSlug(dayRow.bible_reading_book, dayRow.bible_reading_chapter);
@@ -453,6 +472,7 @@ export default function ProverbsStudyDayPage() {
       notesActionsRes,
       triviaActionsRes,
       commentsRes,
+      groupRepliers,
     ] = await Promise.all([
       supabase
         .from("devotional_progress")
@@ -506,6 +526,9 @@ export default function ProverbsStudyDayPage() {
         .eq("is_deleted", false)
         .order("created_at", { ascending: false })
         .limit(1000),
+      dayPost
+        ? getEventDayRepliers(supabase, dayPost.group_post_id).catch(() => [])
+        : Promise.resolve([] as Array<{ user_id: string; created_at: string | null }>),
     ]);
 
     if (introRes.error) {
@@ -590,6 +613,11 @@ export default function ProverbsStudyDayPage() {
         return row.user_id;
       }),
     );
+    groupRepliers.forEach((row) => {
+      if (!row.user_id) return;
+      reflectionIds.add(row.user_id);
+      if (!reflectionDates.has(row.user_id)) reflectionDates.set(row.user_id, row.created_at || null);
+    });
 
     const inferDate = (id: string) =>
       notesDates.get(id) ||
@@ -1087,6 +1115,25 @@ export default function ProverbsStudyDayPage() {
 
           <CollapsibleTask taskNumber={4} title="Discussion" estimate={taskEstimates.reflection} done={reflectionDone} open={openTask === 4} onToggle={() => setOpenTask(openTask === 4 ? null : 4)}>
             <p className="mb-4 text-xl font-black leading-snug text-gray-950">{day.reflection_question}</p>
+            {eventDayPost ? (
+              <>
+                <p className="mb-3 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">
+                  Today&apos;s group discussion
+                </p>
+                <GroupPostThread
+                  postId={eventDayPost.group_post_id}
+                  groupId={eventDayPost.group_id}
+                  placeholderText="Start Typing Here"
+                  submitButtonText="Post Discussion"
+                  onPosted={() => {
+                    setReflectionDone(true);
+                    void markReflectionComplete();
+                    void loadFinishers(day);
+                  }}
+                  onUserHasPosted={() => setReflectionDone(true)}
+                />
+              </>
+            ) : (
             <CommentSection
               articleSlug={chapterSlug(day.bible_reading_book, day.bible_reading_chapter)}
               headingText=""
@@ -1099,6 +1146,7 @@ export default function ProverbsStudyDayPage() {
                 void loadFinishers(day);
               }}
             />
+            )}
           </CollapsibleTask>
         </div>
       </div>
