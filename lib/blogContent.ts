@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-28-explained",
+    title: "Genesis 28 Explained: Jacob's Ladder and the Vow at Bethel",
+    description:
+      "Genesis 28 explained verse by verse: Isaac's blessing, Jacob's dream of a ladder to heaven, God renewing the covenant, and the vow he makes at Bethel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-28-explained",
+    publishedAt: "2026-09-22",
+    readTime: "16 min read",
+    image: "/blog-banners/genesis-28-explained.jpg",
+    groupPost: {
+      title: "Genesis 28 Explained 📖",
+      content:
+        "A runaway with a rock for a pillow.\nThis is who God chooses to speak to first.\n\n📌 Jacob had done nothing yet to earn what happens next.\n\n📖 He dreams of a ladder reaching to heaven.\n📖 Angels are already moving on it, before he wakes.\n📖 God renews the whole covenant right there.\n\nNew article on:\n🟢 what Jacob's **ladder** actually was\n🟢 why he named the place **Bethel**\n🟢 the **vow** Jacob makes before taking one step\n\nHas God ever met you in a season that felt empty? 🙏",
+    },
+  },
+  {
     slug: "genesis-27-explained",
     title: "Genesis 27 Explained: Jacob Steals Esau's Blessing",
     description:
