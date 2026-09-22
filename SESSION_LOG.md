@@ -5791,3 +5791,7 @@ both clean, working tree clean, HEAD in sync with origin/main. MARCUS_HANDOFF.md
 audio-render note already up to date, nothing new to fold in. Nothing to
 write this run.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T12:58:57Z (hourly chapter notes run)
+Chapter: Isaiah 10 | Duration: 11 min | Sections: 8 | Cards: 60 | Status: pass
+Next up: Isaiah 11
