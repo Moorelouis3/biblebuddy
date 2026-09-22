@@ -5795,3 +5795,17 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-22T12:58:57Z (hourly chapter notes run)
 Chapter: Isaiah 10 | Duration: 11 min | Sections: 8 | Cards: 60 | Status: pass
 Next up: Isaiah 11
+
+## 2026-09-22T13:25:06Z (bible year day writer run)
+Re-checked DAY_SCRIPTS in scripts/render-bible-year-day.ts per this run's
+scheduled instructions (lowest missing day, max 2 per run): all 365 days
+still present (day 1 via buildDayOneSegments, days 2-365 wired, verified
+programmatically — no gaps, no dupes). `npm install` + `npx tsc --noEmit`
+both clean. Stale-local-main bug present again (local `main` on the old
+`9f6da92` "Day 307" fork) but HEAD was already detached at the true
+origin/main tip (f22c67c, Isaiah 10 era), so nothing was at risk; left
+local `main` untouched (`9f6da92` is already backed up on three origin
+rescue branches) and pushed with `git push origin HEAD:main`. No new
+MARCUS_HANDOFF entry — today's recurrence and the audio-render note are
+both already logged there. Nothing to write this run.
+Next up: nothing — plan complete. Only audio rendering remains.
