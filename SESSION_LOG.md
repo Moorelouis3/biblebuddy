@@ -5910,3 +5910,7 @@ write this run — the plan is still complete. MARCUS_HANDOFF.md's
 audio-render note already covers the only open item (rendering, which
 needs the OPENAI/Supabase keys on a different machine).
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T22:56:15Z (hourly chapter notes run)
+Chapter: Isaiah 20 | Duration: 10 min | Sections: 3 | Cards: 13 | Status: pass
+Next up: Isaiah 21
