@@ -41429,6 +41429,59 @@
           "at": "2026-09-22T09:57:49Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 9,
+      "startedAt": "2026-09-22T10:46:01Z",
+      "finishedAt": "2026-09-22T10:58:30Z",
+      "durationMinutes": 12.5,
+      "sections": 6,
+      "cards": 39,
+      "verses": 21,
+      "notes": "New chapter, normal forward progress after Isaiah 8 (both priority queue and style-redo backlog empty). Session started with HEAD detached from a stale, diverged local main ref (recurring shallow clone artifact); resolved non-destructively via git checkout origin/main (detached HEAD, clean tree, nothing discarded) rather than force-touching local main, which the sandbox denies as irreversible local destruction. Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv mirror. 6 sections: dawn of light in Galilee of the nations after chapter eight's darkness, quoted later by Matthew (1-2); joy of harvest, the broken yoke and the day of Midian callback, burned war gear instead of endless battle (3-5); the child is born passage with one card per royal title (Wonderful, Counsellor, The Mighty God, The Everlasting Father, The Prince of Peace) and the throne of David sustained by the zeal of the LORD of hosts (6-7); pride before the fall, Ephraim and Samaria's defiant boast to rebuild bigger, Rezin's own allies turning on Israel, first refrain (8-12); head and tail, branch and rush merism, corrupt elders and lying prophets, second refrain (13-17); wildfire imagery, brother against brother between Manasseh and Ephraim uniting only against Judah, fourth and final refrain in the chapter carrying into chapter ten (18-21). Density 1.86 cards/verse. Style checker found 2 problems (banned hedge word 'quite', duplicate card title on the four times repeated refrain), both fixed, then clean. Also fixed a stray duplicated bullet line caught before running the checker. Parser check and tsc both clean. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 9, applyPersonalIsaiahNineStudySections added and called). Next target: Isaiah 10.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T10:48:00Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 9 (new chapter, forward progress after Isaiah 8)",
+          "at": "2026-09-22T10:48:10Z"
+        },
+        {
+          "name": "KJV text fetched: Isaiah 9, 21 verses from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-22T10:48:36Z"
+        },
+        {
+          "name": "style spec read: docs/bible-study-note-style.md",
+          "at": "2026-09-22T10:49:10Z"
+        },
+        {
+          "name": "source file written: lib/isaiahNineSource.ts (6 sections, 39 cards)",
+          "at": "2026-09-22T10:53:45Z"
+        },
+        {
+          "name": "style checker clean: check_bible_note_style.py, 39 cards, 2 problems found and fixed then 0 problems",
+          "at": "2026-09-22T10:54:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range extended to 9, applyPersonalIsaiahNineStudySections added and called",
+          "at": "2026-09-22T10:54:30Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 39 cards, matches design",
+          "at": "2026-09-22T10:54:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-22T10:55:10Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md and data/bible-notes-progress-log.json",
+          "at": "2026-09-22T10:57:24Z"
+        }
+      ]
     }
   ]
 }

@@ -5762,3 +5762,7 @@ Next up: Isaiah 8
 ## 2026-09-22T09:56:53Z (hourly chapter notes run)
 Chapter: Isaiah 8 | Duration: 11 min | Sections: 6 | Cards: 37 | Status: pass
 Next up: Isaiah 9
+
+## 2026-09-22T10:58:30Z (hourly chapter notes run)
+Chapter: Isaiah 9 | Duration: 12.5 min | Sections: 6 | Cards: 39 | Status: pass
+Next up: Isaiah 10
