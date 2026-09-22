@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-25-explained",
+    title: "Genesis 25 Explained: Abraham's Death and Esau's Traded Birthright",
+    description:
+      "Genesis 25 explained verse by verse: Abraham's death and burial, Ishmael's line fulfilled, the birth of Esau and Jacob, and the birthright Esau traded away for a bowl of stew.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-25-explained",
+    publishedAt: "2026-09-22",
+    readTime: "16 min read",
+    image: "/blog-banners/genesis-25-explained.jpg",
+    groupPost: {
+      title: "Genesis 25 Explained 📖",
+      content:
+        "Abraham dies in one calm verse.\nA few verses later, his grandson trades away his future for soup.\n\n📌 God tells Rebekah the outcome before her twins are even born.\n\n📖 Isaac and Ishmael bury their father together.\n📖 Esau calls himself \"at the point to die\" over a bowl of stew.\n📖 Jacob makes him swear an oath before he'll even feed him.\n\nNew article on:\n🟢 the **birthright** Esau gave away in thirty seconds\n🟢 why **Ishmael's** promise gets kept in full\n🟢 the prayer that finally breaks Rebekah's barrenness\n\nWhat have you traded away when you were just tired and hungry? 🙏",
+    },
+  },
+  {
     slug: "genesis-24-explained",
     title: "Genesis 24 Explained: The Servant's Prayer and Rebekah at the Well",
     description:
