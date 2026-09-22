@@ -5817,3 +5817,7 @@ Next up: Isaiah 12
 ## 2026-09-22T14:54:38Z (hourly chapter notes run)
 Chapter: Isaiah 12 | Duration: 9 min | Sections: 2 | Cards: 12 | Status: pass
 Next up: Isaiah 13
+
+## 2026-09-22T16:00:09Z (hourly chapter notes run)
+Chapter: Isaiah 13 | Duration: 13 min | Sections: 7 | Cards: 52 | Status: pass
+Next up: Isaiah 14

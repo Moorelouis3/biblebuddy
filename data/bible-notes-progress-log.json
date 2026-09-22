@@ -41641,6 +41641,59 @@
           "at": "2026-09-22T14:54:38Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 13,
+      "startedAt": "2026-09-22T15:47:13Z",
+      "finishedAt": "2026-09-22T16:00:09Z",
+      "durationMinutes": 13,
+      "sections": 7,
+      "cards": 52,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run (new chapter, normal forward progress after Isaiah 12). Session started with local git HEAD detached at the same commit as a stale cached origin/main (a force push had rewritten main's remote history on GitHub); git fetch origin main then git checkout -B main origin/main rebuilt local main from the verified current tip, nothing lost. npm install ran clean (596 packages, fresh clone). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so next chapter was determined by normal canonical-order scan: Isaiah 13 (Isaiah 1-12 already had wired lib files, 13 did not). Fetched real KJV text for Isaiah 13 (22 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv/master/Isaiah.json. Isaiah 13 opens the burden oracles against the nations with God's judgment on Babylon: the LORD musters a coalition army (the Medes, named over a century before Cyrus's actual 539 BC conquest) as His own sanctified weapon, describes the coming Day of the LORD in both human terms (melting hearts, labor pangs, faces flushed with fear) and cosmic upheaval imagery (darkened stars, sun, and moon), pictures survivors becoming rarer than the gold of Ophir, does not soften the real historical brutality of ancient conquest, and closes with the specific, checkable prophecy that Babylon, unlike every other fallen ancient city, would never be rebuilt or resettled, left instead to desert animals and doleful creatures. Built lib/isaiahThirteenSource.ts, 7 sections (1-3, 4-5, 6-8, 9-11, 12-14, 15-18, 19-22), 52 phrase cards, 2.36 cards per verse. scripts/check_bible_note_style.py found 11 problems on the first pass (bullets running 9-10 words), all fixed, then clean across all 52 cards with no hyphens, em dashes, semicolons, contractions, banned filler/hedge words, duplicate titles, or repeated emoji. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies Isaiah range extended from 12 to 13, applyPersonalIsaiahThirteenStudySections added and called). Parser check confirmed 7 sections and 52 cards rendering verbatim, and npx tsc --noEmit -p . was clean. Next target: Isaiah 14.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T15:47:13Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 13 (normal forward progress, new chapter, no existing wired file)",
+          "at": "2026-09-22T15:47:55Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com Isaiah.json, 22 verses)",
+          "at": "2026-09-22T15:48:04Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-09-22T15:48:04Z"
+        },
+        {
+          "name": "source file written (lib/isaiahThirteenSource.ts, 7 sections, 52 cards)",
+          "at": "2026-09-22T15:55:28Z"
+        },
+        {
+          "name": "style checker clean (fixed 11 bullet word count problems)",
+          "at": "2026-09-22T15:56:01Z"
+        },
+        {
+          "name": "wired into reader (import, applyPersonalIsaiahThirteenStudySections, preserveExactPhraseBodies range extended to 13)",
+          "at": "2026-09-22T15:56:15Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 52 cards, verbatim render confirmed)",
+          "at": "2026-09-22T15:56:48Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-22T15:58:53Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-22T16:00:09Z"
+        }
+      ]
     }
   ]
 }
