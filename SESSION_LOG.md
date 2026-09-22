@@ -5724,3 +5724,15 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-22T05:57:00Z (hourly chapter notes run)
 Chapter: Isaiah 4 | Duration: 11 min | Sections: 3 | Cards: 16 | Status: pass
 Next up: Isaiah 5
+
+## 2026-09-22T06:30:46Z (bible year day writer run)
+Container started on the stale `9f6da92` ("Day 307") fork again — wrote,
+wired, and type-checked a Day 308 script (John 19-21) before `git push`
+was rejected as non-fast-forward. Fetched real origin/main, confirmed all
+365 days already complete (including its own Day 308), reset local main
+to it, pushed the discarded draft to
+`stale-local-main-2026-09-22-day308-duplicate` for the record. Nothing
+new shipped. See MARCUS_HANDOFF.md for the full incident writeup — this
+is at least the fourth Day 308 duplicate in four days from the same
+stale-container root cause.
+Next up: nothing — plan complete. Only audio rendering remains.
