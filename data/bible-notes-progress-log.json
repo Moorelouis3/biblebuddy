@@ -41364,6 +41364,59 @@
           "at": "2026-09-22T08:56:59Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 8,
+      "startedAt": "2026-09-22T09:45:51Z",
+      "finishedAt": "2026-09-22T09:56:48Z",
+      "durationMinutes": 10.9,
+      "sections": 6,
+      "cards": 37,
+      "verses": 22,
+      "notes": "New chapter, normal forward progress after Isaiah 7 (both priority queue and style-redo backlog empty). Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv mirror. 6 sections: the sign child Mahershalalhashbaz and his name meaning (1-4); Shiloah vs the flooding river, addressed to Immanuel (5-8); every plot against God fails, for God is with us (9-10); fear the LORD not the nations, sanctuary and stone of stumbling (11-15); sealed testimony and Isaiah's children as living signs (16-18); mediums vs the law and the testimony, closing in darkness before chapter 9 (19-22). Density 1.68 cards/verse. Style checker found 1 problem (misordered closing bullet), fixed, then clean. Parser check and tsc both clean. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 8, applyPersonalIsaiahEightStudySections added and called). Next target: Isaiah 9.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T09:47:04Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 8 (new chapter, forward progress after Isaiah 7)",
+          "at": "2026-09-22T09:47:04Z"
+        },
+        {
+          "name": "KJV text fetched: Isaiah 8, 22 verses from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-22T09:47:22Z"
+        },
+        {
+          "name": "style spec read: docs/bible-study-note-style.md",
+          "at": "2026-09-22T09:47:28Z"
+        },
+        {
+          "name": "source file written: lib/isaiahEightSource.ts (6 sections, 37 cards)",
+          "at": "2026-09-22T09:53:42Z"
+        },
+        {
+          "name": "style checker clean: check_bible_note_style.py, 37 cards, 0 problems",
+          "at": "2026-09-22T09:53:53Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range extended to 8, applyPersonalIsaiahEightStudySections added and called",
+          "at": "2026-09-22T09:54:09Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 37 cards, matches design",
+          "at": "2026-09-22T09:54:28Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-22T09:56:03Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md and data/bible-notes-progress-log.json",
+          "at": "2026-09-22T09:56:48Z"
+        }
+      ]
     }
   ]
 }

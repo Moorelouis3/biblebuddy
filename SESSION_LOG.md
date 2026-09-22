@@ -5758,3 +5758,7 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-22T08:55:31Z (hourly chapter notes run)
 Chapter: Isaiah 7 | Duration: 8 min | Sections: 6 | Cards: 38 | Status: pass
 Next up: Isaiah 8
+
+## 2026-09-22T09:56:53Z (hourly chapter notes run)
+Chapter: Isaiah 8 | Duration: 11 min | Sections: 6 | Cards: 37 | Status: pass
+Next up: Isaiah 9
