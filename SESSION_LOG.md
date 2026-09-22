@@ -5720,3 +5720,7 @@ both clean. Local HEAD was detached but matched origin/main exactly
 audio-render note already up to date, nothing new to fold in. Nothing to
 write this run.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T05:57:00Z (hourly chapter notes run)
+Chapter: Isaiah 4 | Duration: 11 min | Sections: 3 | Cards: 16 | Status: pass
+Next up: Isaiah 5

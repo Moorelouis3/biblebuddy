@@ -729,6 +729,7 @@ import { ISAIAH_16_66_PERSONAL_SECTIONS } from "./isaiahSixteenToSixtySixPersona
 import { ISAIAH_ONE_PERSONAL_SECTIONS } from "./isaiahOneSource";
 import { ISAIAH_TWO_PERSONAL_SECTIONS } from "./isaiahTwoSource";
 import { ISAIAH_THREE_PERSONAL_SECTIONS } from "./isaiahThreeSource";
+import { ISAIAH_FOUR_PERSONAL_SECTIONS } from "./isaiahFourSource";
 import { JEREMIAH_1_9_PERSONAL_SECTIONS } from "./jeremiahOneToNinePersonalNotes";
 import { JEREMIAH_10_52_PERSONAL_SECTIONS } from "./jeremiahTenToFiftyTwoPersonalNotes";
 import { LAMENTATIONS_1_5_PERSONAL_SECTIONS } from "./lamentationsOneToFivePersonalNotes";
@@ -1080,7 +1081,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "psalms" && section.chapter >= 1 && section.chapter <= 150) ||
     (normalizeBook(book) === "ecclesiastes" && section.chapter >= 1 && section.chapter <= 12) ||
     (normalizeBook(book) === "song of solomon" && section.chapter >= 1 && section.chapter <= 8) ||
-    (normalizeBook(book) === "isaiah" && section.chapter >= 1 && section.chapter <= 3);
+    (normalizeBook(book) === "isaiah" && section.chapter >= 1 && section.chapter <= 4);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -2753,6 +2754,10 @@ function applyPersonalIsaiahTwoStudySections() {
 
 function applyPersonalIsaiahThreeStudySections() {
   replaceStudySectionsForBookRange("isaiah", 3, 3, ISAIAH_THREE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalIsaiahFourStudySections() {
+  replaceStudySectionsForBookRange("isaiah", 4, 4, ISAIAH_FOUR_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJeremiahOneThroughNineStudySections() {
@@ -10300,6 +10305,7 @@ applyPersonalIsaiahSixteenThroughSixtySixStudySections();
 applyPersonalIsaiahOneStudySections();
 applyPersonalIsaiahTwoStudySections();
 applyPersonalIsaiahThreeStudySections();
+applyPersonalIsaiahFourStudySections();
 applyPersonalJeremiahOneThroughNineStudySections();
 applyPersonalJeremiahTenThroughFiftyTwoStudySections();
 applyPersonalLamentationsOneThroughFiveStudySections();
