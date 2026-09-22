@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-24-explained",
+    title: "Genesis 24 Explained: The Servant's Prayer and Rebekah at the Well",
+    description:
+      "Genesis 24 explained verse by verse: Abraham's servant sent to find Isaac a wife, his prayer at the well, Rebekah's answer, and the journey that ends in the field where Isaac meets her.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-24-explained",
+    publishedAt: "2026-09-22",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-24-explained.jpg",
+    groupPost: {
+      title: "Genesis 24 Explained 📖",
+      content:
+        "Abraham sends a servant a thousand miles to find his son a wife.\nHe never even tells him her name.\n\n📌 The servant prays for a sign, and God answers before he even finishes.\n\n📖 Rebekah waters ten camels by hand without being asked.\n📖 The servant worships right there at the well.\n📖 Rebekah's family says one line settles it all.\n\nNew article on:\n🟢 the **prayer** that gets answered mid sentence\n🟢 why **Rebekah** still gets asked for her own answer\n🟢 how Isaac meets his wife in a quiet field\n\nHave you ever prayed for a sign this specific? 🙏",
+    },
+  },
+  {
     slug: "genesis-23-explained",
     title: "Genesis 23 Explained: Sarah's Death and the Cave of Machpelah",
     description:
