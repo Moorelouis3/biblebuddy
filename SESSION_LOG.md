@@ -5736,3 +5736,7 @@ new shipped. See MARCUS_HANDOFF.md for the full incident writeup — this
 is at least the fourth Day 308 duplicate in four days from the same
 stale-container root cause.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T06:59:27Z (hourly chapter notes run)
+Chapter: Isaiah 5 | Duration: 12 min | Sections: 6 | Cards: 54 | Status: pass
+Next up: Isaiah 6
