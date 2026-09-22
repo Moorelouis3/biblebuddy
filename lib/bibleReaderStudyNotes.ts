@@ -732,6 +732,7 @@ import { ISAIAH_THREE_PERSONAL_SECTIONS } from "./isaiahThreeSource";
 import { ISAIAH_FOUR_PERSONAL_SECTIONS } from "./isaiahFourSource";
 import { ISAIAH_FIVE_PERSONAL_SECTIONS } from "./isaiahFiveSource";
 import { ISAIAH_SIX_PERSONAL_SECTIONS } from "./isaiahSixSource";
+import { ISAIAH_SEVEN_PERSONAL_SECTIONS } from "./isaiahSevenSource";
 import { JEREMIAH_1_9_PERSONAL_SECTIONS } from "./jeremiahOneToNinePersonalNotes";
 import { JEREMIAH_10_52_PERSONAL_SECTIONS } from "./jeremiahTenToFiftyTwoPersonalNotes";
 import { LAMENTATIONS_1_5_PERSONAL_SECTIONS } from "./lamentationsOneToFivePersonalNotes";
@@ -1083,7 +1084,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "psalms" && section.chapter >= 1 && section.chapter <= 150) ||
     (normalizeBook(book) === "ecclesiastes" && section.chapter >= 1 && section.chapter <= 12) ||
     (normalizeBook(book) === "song of solomon" && section.chapter >= 1 && section.chapter <= 8) ||
-    (normalizeBook(book) === "isaiah" && section.chapter >= 1 && section.chapter <= 6);
+    (normalizeBook(book) === "isaiah" && section.chapter >= 1 && section.chapter <= 7);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -2768,6 +2769,10 @@ function applyPersonalIsaiahFiveStudySections() {
 
 function applyPersonalIsaiahSixStudySections() {
   replaceStudySectionsForBookRange("isaiah", 6, 6, ISAIAH_SIX_PERSONAL_SECTIONS);
+}
+
+function applyPersonalIsaiahSevenStudySections() {
+  replaceStudySectionsForBookRange("isaiah", 7, 7, ISAIAH_SEVEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJeremiahOneThroughNineStudySections() {
@@ -10318,6 +10323,7 @@ applyPersonalIsaiahThreeStudySections();
 applyPersonalIsaiahFourStudySections();
 applyPersonalIsaiahFiveStudySections();
 applyPersonalIsaiahSixStudySections();
+applyPersonalIsaiahSevenStudySections();
 applyPersonalJeremiahOneThroughNineStudySections();
 applyPersonalJeremiahTenThroughFiftyTwoStudySections();
 applyPersonalLamentationsOneThroughFiveStudySections();

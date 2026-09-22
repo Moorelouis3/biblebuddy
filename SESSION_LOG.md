@@ -5754,3 +5754,7 @@ both clean. HEAD was already detached at real origin/main exactly, no
 stale-main drift this run. MARCUS_HANDOFF.md audio-render note already
 up to date, nothing new to fold in. Nothing to write this run.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T08:55:31Z (hourly chapter notes run)
+Chapter: Isaiah 7 | Duration: 8 min | Sections: 6 | Cards: 38 | Status: pass
+Next up: Isaiah 8
