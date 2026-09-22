@@ -5686,3 +5686,7 @@ wired). No plan gaps, no code changes needed. MARCUS_HANDOFF.md's single
 "waiting on local render" entry already reflects the completed plan, so
 left it as-is. Nothing to write this run.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T03:03:48Z (hourly chapter notes run)
+Chapter: Isaiah 1 | Duration: 18 min | Sections: 6 | Cards: 62 | Status: pass
+Next up: Isaiah 2

@@ -40941,6 +40941,59 @@
           "at": "2026-09-21T23:54:31Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 1,
+      "startedAt": "2026-09-22T02:46:16Z",
+      "finishedAt": "2026-09-22T03:04:05Z",
+      "durationMinutes": 17.8,
+      "sections": 6,
+      "cards": 62,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Session started in a detached HEAD state with local main stale (50 commits diverged from origin, months behind); reset local main to match origin/main exactly (origin/main was already at the same commit the session's detached HEAD started on, so this discarded no real work). npm install ran clean (596 packages, fresh clone, no node_modules). Priority queue (bible-notes-priority-queue.json) and style-redo backlog (bible-notes-style-redo-remaining.json) both confirmed empty. Normal forward-progress lookup after Song of Solomon 8 (the last completed book) required real investigation: Isaiah, Jeremiah, Lamentations, Ezekiel, Daniel, and all twelve minor prophets, plus the entire New Testament (Matthew through Revelation), already have legacy multi-chapter files wired in (for example isaiahOneToFifteenPersonalNotes.ts / isaiahSixteenToSixtySixPersonalNotes.ts covering all 66 chapters). Sampled several of these files directly and confirmed they are the same auto-generated template placeholder content (rotating boilerplate phrases like 'gives the reader one concrete line for following Isaiah carefully' with generic four-bullet templates) that Psalms, Proverbs, Ecclesiastes, and Song of Solomon all originally shipped with before this tracked process progressively overrode them chapter by chapter (confirmed by grepping the same template phrases inside psalmsOneToSixPersonalNotes.ts, proverbsOneToSixPersonalNotes.ts, ecclesiastesOneToFivePersonalNotes.ts, and songOfSolomonOneToEightPersonalNotes.ts, none of which are live anymore since every one of their chapters now has a real per-chapter override). Cross-checked against data/bible-notes-progress-log.json: zero logged entries exist for Isaiah, Jeremiah, Lamentations, Ezekiel, Daniel, any minor prophet, or any New Testament book, confirming none of them have been reached by the real per-chapter process yet. This is expected, ordinary project state, not a new problem: it is the exact same pattern the Psalms 150 log entry (2026-09-21) anticipated when it said the next forward-progress chapter would need 'the standard canonical-order scan' because subsequent books already carry legacy multi-chapter wiring. Isaiah 1 is therefore the correct next forward-progress target, using the same override-on-top-of-legacy-placeholder mechanism already used throughout Psalms, Proverbs, Ecclesiastes, Song of Solomon, 2 Kings, and 1/2 Chronicles: a brand new lib/isaiahOneSource.ts, wired with a fresh applyPersonalIsaiahOneStudySections() call placed after the two existing legacy Isaiah calls so it overrides chapter 1 specifically, leaving Isaiah 2-66's placeholder content untouched for future runs to pick up in the same canonical order. Fetched real KJV text for Isaiah 1 (31 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Isaiah.json). Read docs/bible-study-note-style.md in full before writing. Isaiah 1 is the opening covenant lawsuit of the whole book: split into 6 sections matching its own movements: the superscription and the heavens-and-earth courtroom summons naming the ox and the ass who know their owner while Israel does not (1-3); the nation pictured as an untreated, festering wound and Jerusalem as an abandoned harvest hut left standing alone like a besieged city, with the remnant saved from a Sodom-and-Gomorrah fate (4-9); God rejecting Judah's ritual sacrifices, incense, new moons, and prayers as worthless while their hands stayed full of blood (10-15); the reasoning-together invitation with the scarlet-and-snow, crimson-and-wool dye imagery and the willing-versus-rebellious fork in the road (16-20); the faithful city turned harlot, its silver turned to dross and its wine cut with water, its judges taking bribes (21-23); and the closing promise to purge the dross and tin and restore honest judges, paired with judgment on the sacred oaks and gardens that will burn like dry tow with none to quench it (24-31). Density exactly 2 cards per verse (31 verses, 62 cards), matching the density of the reference implementation lib/genesisThirtyOneSource.ts. scripts/check_bible_note_style.py found 5 problems on the first pass (one banned hedge word 'fairly', and four bullets one word over the 8-word ceiling), fixed all five, second run clean with 0 problems across all 62 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (vision, laden, mollified, putrifying, abomination, oblations, dross, tin, converts, tow), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card ending on 📖 or ➡️, no duplicate card titles across all 62 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file (only possessives). Parser check passed exactly via getBibleReaderStudySections('isaiah', 1) (6/6 sections, verse ranges 1-3/4-9/10-15/16-20/21-23/24-31 with no gaps, 62 total cards, text rendered verbatim, spot checked first and last cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/isaiahOneSource.ts, preserveExactPhraseBodies extended with a new isaiah chapter 1-1 clause, new applyPersonalIsaiahOneStudySections() function added and called directly after the two existing legacy Isaiah calls so it overrides chapter 1 without touching chapters 2-66. Next forward-progress target is Isaiah 2, which (like the rest of Isaiah through Revelation) still needs its own real per-chapter override on top of the existing legacy placeholder wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T02:47:09Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 1 (forward progress; legacy multi-chapter placeholder confirmed across Isaiah-Revelation, same pattern Psalms/Proverbs/Ecclesiastes/Song of Solomon started with)",
+          "at": "2026-09-22T03:02:36Z"
+        },
+        {
+          "name": "KJV text fetched: Isaiah 1, 31 verses, raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-22T03:02:36Z"
+        },
+        {
+          "name": "style spec read: docs/bible-study-note-style.md in full",
+          "at": "2026-09-22T03:02:36Z"
+        },
+        {
+          "name": "source file written: lib/isaiahOneSource.ts, 62 cards across 6 sections",
+          "at": "2026-09-22T03:02:36Z"
+        },
+        {
+          "name": "style checker clean: check_bible_note_style.py, fixed 5 problems then 0 remaining",
+          "at": "2026-09-22T03:02:36Z"
+        },
+        {
+          "name": "wired into reader: import + applyPersonalIsaiahOneStudySections + preserveExactPhraseBodies extended",
+          "at": "2026-09-22T03:02:36Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('isaiah', 1), 6/6 sections, 62 cards, 31 verses verbatim",
+          "at": "2026-09-22T03:02:36Z"
+        },
+        {
+          "name": "tsc clean: npx tsc --noEmit -p ., zero errors",
+          "at": "2026-09-22T03:02:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-22T03:04:05Z"
+        }
+      ]
     }
   ]
 }
