@@ -609,3 +609,24 @@ commit with `git push origin HEAD:main` instead. Flagging again since this
 keeps costing setup time every run — worth fixing at the environment level
 (seed each fresh session's local `main` from current `origin/main` at
 container start) rather than each run diagnosing it by hand.
+
+## Follow up: repo fork from earlier today is resolved, verified nothing was lost
+Closing the loop on "Repo forked into two unrelated ~50-commit histories,
+one containing an unpushed live security fix" logged earlier today
+(2026-09-22). Shortly after that was flagged, origin/main was force
+updated to the previously orphaned history, which does include the admin
+routes security fix and is far more complete than the old origin/main
+(all of Psalms, Proverbs, Ecclesiastes, and Song of Solomon now show
+complete in the recovered history's own progress log). Since this was a
+forced, non fast forward push, checked directly whether anything unique
+to the old origin/main line (last tip before the force push: `9f6da92`)
+was dropped: diffed that tip's file tree against the new history and
+found exactly two files present in the old line and absent from the new
+one, `app/admin/add-log/route.ts` and `app/admin/list-users/route.ts` -
+the two vulnerable routes the security fix deliberately deletes. Nothing
+else differs. So this recovery did not lose any real content, it
+correctly replaced the stale line with the more complete one and shipped
+the security fix. The underlying recurring stale-local-main problem
+itself is still unfixed at the environment level (see the many entries
+above spanning weeks) and will keep producing incidents like this one,
+including future risky force pushes, until addressed at the source.

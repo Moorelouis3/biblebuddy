@@ -5650,3 +5650,20 @@ exactly on `origin/main` (no stale-local-main recurrence this run, no
 unpushed work). MARCUS_HANDOFF.md's audio-render entry still accurately
 reflects 365/365 written and waiting on a keyed render; left as is.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T01:01:53Z (bible note writer run, no chapter completed)
+Session started on a real fork: local git had two divergent ~50-commit
+histories with no common tip. The orphaned side (never pushed) held a
+Louis-authored security fix (close open admin routes) plus completed
+Song of Solomon, Ecclesiastes, and more. Environment blocked branching or
+pushing a safety ref, so flagged it to Louis directly by notification
+with the recovery SHA instead of guessing at a merge. Drafted and fully
+verified Psalms 97 (4 sections, 28 cards) against what looked like the
+current origin/main, but before pushing, origin/main was force updated
+(likely in direct response to the notification) to the recovered history,
+which turned out to already have its own Psalms 97 and everything through
+Song of Solomon 8 done. The freshly drafted Psalms 97 was fully redundant,
+so it was discarded and local main was reset to match the true, now
+current origin/main. No new chapter landed this run. Next real target is
+Isaiah 1. Full detail logged in data/bible-notes-usage-events.json.
+Next up: Isaiah 1.
