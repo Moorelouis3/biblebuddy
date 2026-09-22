@@ -41861,6 +41861,59 @@
           "at": "2026-09-22T18:55:25Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 17,
+      "startedAt": "2026-09-22T19:46:10Z",
+      "finishedAt": "2026-09-22T19:55:56Z",
+      "durationMinutes": 10,
+      "sections": 5,
+      "cards": 29,
+      "verses": 14,
+      "notes": "Normal forward progress (new chapter, not a style redo); priority queue and style-redo backlog both empty. Session started with local git HEAD detached, matching origin/main exactly, but local main branch had diverged (stale, 9f6da92 tip); reset local main hard to origin/main before starting, no work was lost since detached HEAD already equaled origin/main. Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Isaiah 17 is the burden of Damascus, tied to Ephraim (the Syro-Ephraimite alliance from Isaiah 7): Damascus and Aroer's cities reduced to empty pastureland, and the fortress ceasing from Ephraim, since Israel's fading glory and Syria's remnant end up equally humbled (1-3); Jacob's glory made thin like a harvested field, with a small gleaning/olive-shaking remnant surviving total judgment (4-6); survivors finally look to their Maker instead of the altars, groves, and images their own hands made (7-8); the genuinely hard-to-translate 'forsaken bough' line handled with an honest scholarly hedge, forgetting the Rock of Israel's strength, and the pagan-garden-ritual background behind 'strange slips' and a harvest that becomes a heap of grief instead of grain (9-11); and the roaring multitude of nations rebuked by God and scattered like chaff and a rolling weed, ending on the sudden overnight reversal and the promise that Judah's own plunderers will themselves be plundered (12-14). Split into 5 sections (1-3, 4-6, 7-8, 9-11, 12-14), density 2.07 cards/verse. check_bible_note_style.py found zero problems on the first pass. Parser check (getBibleReaderStudySections) and npx tsc --noEmit both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T19:46:10Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 17 (new chapter, forward progress; priority queue and style-redo backlog both empty, no existing isaiahSeventeenSource.ts file)",
+          "at": "2026-09-22T19:46:57Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 17 (14 verses) from raw.githubusercontent.com mirror",
+          "at": "2026-09-22T19:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-22T19:47:35Z"
+        },
+        {
+          "name": "source file lib/isaiahSeventeenSource.ts written (5 sections, 29 cards)",
+          "at": "2026-09-22T19:53:00Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-09-22T19:53:43Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 17, applyPersonalIsaiahSeventeenStudySections added and called after applyPersonalIsaiahSixteenStudySections)",
+          "at": "2026-09-22T19:53:56Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 29 cards, getBibleReaderStudySections('isaiah', 17))",
+          "at": "2026-09-22T19:53:57Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-22T19:54:15Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md row + totals, progress-log.json entry)",
+          "at": "2026-09-22T19:55:56Z"
+        }
+      ]
     }
   ]
 }
