@@ -5690,3 +5690,14 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-22T03:03:48Z (hourly chapter notes run)
 Chapter: Isaiah 1 | Duration: 18 min | Sections: 6 | Cards: 62 | Status: pass
 Next up: Isaiah 2
+
+## 2026-09-22T04:00:00Z (bible year day writer run)
+Re-checked DAY_SCRIPTS in scripts/render-bible-year-day.ts per this run's
+scheduled instructions (lowest missing day, max 2 per run): still all
+present (day 1 via buildDayOneSegments, days 2-365 wired). tsc --noEmit
+clean. Local `main` was again the known stale ref (stuck at 9f6da92,
+"Day 307"), diverged from real origin/main with no common ancestor; since
+the working tree was clean (no local work at risk), reset local main
+directly to origin/main this time rather than working from a detached
+HEAD. Nothing to write this run.
+Next up: nothing — plan complete. Only audio rendering remains.
