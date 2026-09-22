@@ -5809,3 +5809,7 @@ rescue branches) and pushed with `git push origin HEAD:main`. No new
 MARCUS_HANDOFF entry — today's recurrence and the audio-render note are
 both already logged there. Nothing to write this run.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T13:55:32Z (hourly chapter notes run)
+Chapter: Isaiah 11 | Duration: 8 min | Sections: 6 | Cards: 33 | Status: pass
+Next up: Isaiah 12

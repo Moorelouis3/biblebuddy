@@ -41535,6 +41535,59 @@
           "at": "2026-09-22T12:58:13Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 11,
+      "startedAt": "2026-09-22T13:46:32Z",
+      "finishedAt": "2026-09-22T13:54:54Z",
+      "durationMinutes": 8.4,
+      "sections": 6,
+      "cards": 33,
+      "verses": 16,
+      "notes": "New chapter, normal forward progress after Isaiah 10 (priority queue and style-redo backlog both confirmed empty). Session started on a fresh clone with no node_modules, and with local git HEAD detached but already pointing at origin/main's current commit, so resolved non-destructively with git checkout -B main origin/main (no fast forward needed, nothing discarded). npm install ran clean (596 packages, fresh clone). Fetched real KJV text for Isaiah 11 (16 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Split into 6 sections: the Branch out of Jesse's stem and the sevenfold description of the Spirit resting on him, wisdom, understanding, counsel, might, knowledge and the fear of the LORD (1-2); this king judging with perfect righteousness, quick understanding in the fear of the LORD rather than by sight or hearing, smiting the earth with the rod of his mouth, righteousness as the girdle of his loins (3-5); the peaceable kingdom, wolf and lamb, leopard and kid, calf and young lion and fatling, a little child leading them, cow and bear feeding together, the lion eating straw like the ox, sucking child playing on the hole of the asp, closing on the earth full of the knowledge of the LORD as the waters cover the sea (6-9, given 9 cards for density since nearly every clause carries its own distinct image); the root of Jesse standing as an ensign to the Gentiles, the Lord setting his hand again the second time to recover the remnant from the full list of named nations, gathering the outcasts of Israel and dispersed of Judah (10-12); Ephraim's envy and Judah's old rivalry ending together, the adversaries cut off, the reunited house then subduing the Philistines, Edom, Moab and Ammon (13-14); and the closing highway for the remnant, the tongue of the Egyptian sea destroyed, the mighty wind over the river recalling the Red Sea crossing, seven streams so men go over dryshod, ending on the exact exodus out of Egypt comparison that names Israel directly (15-16). Density 2.06 cards/verse (16 verses, 33 cards). scripts/check_bible_note_style.py found 1 problem on the first automated pass (a last bullet on the sixfold Spirit card ending on plain 'might' language instead of \ud83d\udcd6 or an implication arrow), fixed by reworking the fourth bullet to land on \ud83d\udcd6 as an implication of all four preceding qualities, second run clean with 0 problems across all 33 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves (define the word, correct a misreading, identify a vague reference, or state the point flat), defines its key terms in plain language (rod, stem, branch, wisdom, understanding, counsel, might, knowledge, fear of the LORD, girdle, equity, ensign, Gentiles, remnant, envy, vex, adversaries, dryshod, highway), closes each card on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet always \ud83d\udcd6 or \u27a1\ufe0f, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 33 cards. Parser check passed exactly via getBibleReaderStudySections('isaiah', 11) (6/6 sections, verse ranges 1-2/3-5/6-9/10-12/13-14/15-16 with no gaps, 33 total cards, text rendered verbatim with no garbling). npx tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/isaiahElevenSource.ts, preserveExactPhraseBodies isaiah range extended from chapters 1-10 to 1-11, new function applyPersonalIsaiahElevenStudySections added and called right after applyPersonalIsaiahTenStudySections(). Next forward-progress target is Isaiah 12.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T13:47:10Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 11 (new chapter, forward progress after Isaiah 10; style-redo backlog empty)",
+          "at": "2026-09-22T13:47:20Z"
+        },
+        {
+          "name": "KJV text fetched: Isaiah 11, 16 verses from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-22T13:47:40Z"
+        },
+        {
+          "name": "style spec read: docs/bible-study-note-style.md",
+          "at": "2026-09-22T13:47:40Z"
+        },
+        {
+          "name": "source file written: lib/isaiahElevenSource.ts (6 sections, 33 cards)",
+          "at": "2026-09-22T13:51:30Z"
+        },
+        {
+          "name": "style checker clean: check_bible_note_style.py, 33 cards, 1 problem found and fixed then 0 problems",
+          "at": "2026-09-22T13:52:27Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range extended to 11, applyPersonalIsaiahElevenStudySections added and called",
+          "at": "2026-09-22T13:52:27Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 33 cards, matches design, text verbatim with no garbling",
+          "at": "2026-09-22T13:52:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-09-22T13:53:02Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md and data/bible-notes-progress-log.json",
+          "at": "2026-09-22T13:54:54Z"
+        }
+      ]
     }
   ]
 }
