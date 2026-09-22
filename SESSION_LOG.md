@@ -5821,3 +5821,7 @@ Next up: Isaiah 13
 ## 2026-09-22T16:00:09Z (hourly chapter notes run)
 Chapter: Isaiah 13 | Duration: 13 min | Sections: 7 | Cards: 52 | Status: pass
 Next up: Isaiah 14
+
+## 2026-09-22T16:57:50Z (hourly chapter notes run)
+Chapter: Isaiah 14 | Duration: 11 min | Sections: 8 | Cards: 65 | Status: pass
+Next up: Isaiah 15

@@ -41694,6 +41694,63 @@
           "at": "2026-09-22T16:00:09Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 14,
+      "startedAt": "2026-09-22T16:47:03Z",
+      "finishedAt": "2026-09-22T16:57:50Z",
+      "durationMinutes": 11,
+      "sections": 8,
+      "cards": 65,
+      "verses": 32,
+      "notes": "Normal forward progress (new chapter, not a style redo); priority queue and style-redo backlog both empty. Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Split into 8 sections (1-4, 5-8, 9-11, 12-15, 16-19, 20-23, 24-27, 28-32), density 2.03 cards/verse. First draft of section 1 accidentally left verses 3-4 with zero card coverage; caught during the verse-by-verse cross check before finishing and fixed by adding 4 more cards. check_bible_note_style.py found 8 mechanical problems on first pass (long bullets, one wrong last-bullet emoji, one repeated emoji), all fixed, then clean. Parser check (getBibleReaderStudySections) and npx tsc --noEmit -p . both clean. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies range extended from 13 to 14, applyPersonalIsaiahFourteenStudySections() added and called in sequence.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T16:47:36Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 14 (new chapter, forward progress; priority queue and style-redo backlog both empty)",
+          "at": "2026-09-22T16:47:49Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 14 (32 verses) from raw.githubusercontent.com mirror",
+          "at": "2026-09-22T16:48:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-22T16:50:24Z"
+        },
+        {
+          "name": "source file lib/isaiahFourteenSource.ts written (8 sections, initial 61 cards)",
+          "at": "2026-09-22T16:52:00Z"
+        },
+        {
+          "name": "style checker clean (after fixing 8 mechanical problems)",
+          "at": "2026-09-22T16:53:20Z"
+        },
+        {
+          "name": "coverage gap found and fixed: verses 3-4 of section 1 had no cards, added 4 cards (65 total), style checker re-run clean",
+          "at": "2026-09-22T16:54:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 14, applyPersonalIsaiahFourteenStudySections added and called)",
+          "at": "2026-09-22T16:53:36Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 65 cards, getBibleReaderStudySections('isaiah', 14))",
+          "at": "2026-09-22T16:54:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-22T16:56:30Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md row + totals, progress-log.json entry)",
+          "at": "2026-09-22T16:57:50Z"
+        }
+      ]
     }
   ]
 }
