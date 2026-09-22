@@ -636,6 +636,86 @@ export default function AnalyticsDashboardView({
                 </Section>
               </div>
             </div>
+
+            {/* Printed books: The Wisdom of Proverbs */}
+            {d.books ? (
+              <Section
+                summary={
+                  <SectionSummary
+                    icon="📖"
+                    title="Wisdom of Proverbs books"
+                    line={`${fmt(d.books.pageVisitors)} visited · ${fmt(d.books.amazonClicks)} Amazon clicks`}
+                  />
+                }
+              >
+                <div className="hidden lg:block">
+                  <CardTitle icon="📖" right={<Link href="/books/wisdom-of-proverbs" className="text-xs font-bold text-[#2563eb]">Open books page →</Link>}>
+                    Wisdom of Proverbs books
+                  </CardTitle>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="rounded-xl bg-[#f5f8fc] px-4 py-3">
+                    <p className="text-xs font-bold text-[#64748b]">Books page visitors</p>
+                    <p className="text-2xl font-black">{fmt(d.books.pageVisitors)}</p>
+                    <p className="text-xs font-semibold text-[#64748b]">{fmt(d.books.pageViews)} page views</p>
+                    <Change value={d.books.pageViewsChange} />
+                  </div>
+                  <div className="rounded-xl bg-[#fff7e8] px-4 py-3">
+                    <p className="text-xs font-bold text-[#8a6124]">Hardcover clicks</p>
+                    <p className="text-2xl font-black">{fmt(d.books.hardcoverClicks)}</p>
+                    <p className="text-xs font-semibold text-[#64748b]">{fmt(d.books.hardcoverPeople)} people · $29.99</p>
+                  </div>
+                  <div className="rounded-xl bg-[#fff7e8] px-4 py-3">
+                    <p className="text-xs font-bold text-[#8a6124]">Paperback clicks</p>
+                    <p className="text-2xl font-black">{fmt(d.books.paperbackClicks)}</p>
+                    <p className="text-xs font-semibold text-[#64748b]">{fmt(d.books.paperbackPeople)} people · $19.99</p>
+                  </div>
+                  <div className="rounded-xl bg-[#eef4ff] px-4 py-3">
+                    <p className="text-xs font-bold text-[#64748b]">Went to Amazon</p>
+                    <p className="text-2xl font-black">{pct(d.books.clickRate)}</p>
+                    <p className="text-xs font-semibold text-[#64748b]">
+                      {fmt(d.books.amazonPeople)} of {fmt(d.books.pageVisitors)} visitors
+                    </p>
+                    <Change value={d.books.amazonClicksChange} suffix="clicks vs previous period" />
+                  </div>
+                </div>
+                <div className="mt-4 grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <p className="mb-2 text-sm font-black">Where book page visitors came from</p>
+                    {d.books.sources.length ? (
+                      <div className="space-y-2">
+                        {d.books.sources.slice(0, 6).map((s) => (
+                          <div key={s.source} className="grid grid-cols-[140px_1fr_auto] items-center gap-2 text-xs font-bold">
+                            <span className="truncate">{s.source}</span>
+                            <Bar value={s.views} max={d.books.sources[0]?.views || 1} color="#b8862e" />
+                            <span className="w-9 text-right">{fmt(s.views)}</span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-[#64748b]">No visits in this period yet.</p>
+                    )}
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <p className="mb-2 font-black">What sends people there</p>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-xl bg-[#f5f8fc] px-4 py-3">
+                      <span className="text-xs font-bold text-[#64748b]">Event-page banner</span>
+                      <span className="font-black">{fmt(d.books.bannerViews)} views</span>
+                      <span className="font-black">{fmt(d.books.bannerClicks)} clicks</span>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-xl bg-[#f5f8fc] px-4 py-3">
+                      <span className="text-xs font-bold text-[#64748b]">&ldquo;New Book Live!&rdquo; popup</span>
+                      <span className="font-black">{fmt(d.books.popupViews)} views</span>
+                      <span className="font-black">{fmt(d.books.popupClicks)} clicks</span>
+                      <span className="font-black">{fmt(d.books.popupDismissed)} closed</span>
+                    </div>
+                    <p className="text-xs text-[#64748b]">
+                      Clicks are people tapping an Amazon button. Actual sales happen on Amazon and show in KDP.
+                    </p>
+                  </div>
+                </div>
+              </Section>
+            ) : null}
           </div>
         ) : null}
       </div>

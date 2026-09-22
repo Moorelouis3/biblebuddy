@@ -500,8 +500,60 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     groupPosts: groupPosts.filter((g) => inCur(g.created_at)).length,
   };
 
+  // ----- printed books (Wisdom of Proverbs) -----
+  // From the landing-analytics events the books page, the event-page banner
+  // and the book popup send (lib/wisdomOfProverbsProducts.ts). "People" =
+  // distinct signed-in user, else session, else one per event.
+  const who = (e: EventRow) => e.user_id || e.session_id || `${e.event_name}:${e.created_at}`;
+  const bookStats = (r: Range) => {
+    const inR = events.filter((e) => within(e.created_at, r));
+    const count = (name: string) => inR.filter((e) => e.event_name === name).length;
+    const people = (name: string) => new Set(inR.filter((e) => e.event_name === name).map(who)).size;
+    const amazonNames = ["wisdom_hardcover_amazon_clicked", "wisdom_paperback_amazon_clicked", "wisdom_journal_amazon_clicked"];
+    return {
+      pageViews: count("wisdom_book_page_viewed"),
+      pageVisitors: people("wisdom_book_page_viewed"),
+      hardcoverClicks: count("wisdom_hardcover_amazon_clicked"),
+      hardcoverPeople: people("wisdom_hardcover_amazon_clicked"),
+      paperbackClicks: count("wisdom_paperback_amazon_clicked"),
+      paperbackPeople: people("wisdom_paperback_amazon_clicked"),
+      journalClicks: count("wisdom_journal_amazon_clicked"),
+      amazonPeople: new Set(inR.filter((e) => amazonNames.includes(e.event_name)).map(who)).size,
+      bannerViews: count("wisdom_book_banner_viewed"),
+      bannerClicks: count("wisdom_book_banner_clicked"),
+      popupViews: count("wisdom_book_popup_impression"),
+      popupClicks: count("wisdom_book_popup_clicked"),
+      popupDismissed: count("wisdom_book_popup_dismissed"),
+    };
+  };
+  const booksCur = bookStats(current);
+  const booksPrev = bookStats(previous);
+  const bookSourceCounts = new Map<string, number>();
+  for (const e of events) {
+    if (e.event_name !== "wisdom_book_page_viewed" || !inCur(e.created_at)) continue;
+    const label =
+      e.source === "proverbs_event_page" ? "Proverbs event page"
+      : e.source === "book_popup" ? "Book popup"
+      : e.source && e.source !== "Direct" ? e.source
+      : "Direct / unknown";
+    bookSourceCounts.set(label, (bookSourceCounts.get(label) || 0) + 1);
+  }
+  const books = {
+    ...booksCur,
+    pageViewsChange: change(booksCur.pageViews, booksPrev.pageViews),
+    amazonClicks: booksCur.hardcoverClicks + booksCur.paperbackClicks + booksCur.journalClicks,
+    amazonClicksChange: change(
+      booksCur.hardcoverClicks + booksCur.paperbackClicks + booksCur.journalClicks,
+      booksPrev.hardcoverClicks + booksPrev.paperbackClicks + booksPrev.journalClicks,
+    ),
+    clickRate: rate(booksCur.amazonPeople, booksCur.pageVisitors),
+    sources: [...bookSourceCounts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([source, views]) => ({ source, views })),
+  };
+
   // ----- content -----
-  const chapters = (chapterProgress as { chapters: Record<string, { status: string }>; nextChapter?: string; paused?: boolean }).chapters;
+  const chapters =(chapterProgress as { chapters: Record<string, { status: string }>; nextChapter?: string; paused?: boolean }).chapters;
   const content = {
     published: Object.values(chapters).filter((c) => c.status === "published" || c.status === "committed").length,
     total: 1189,
@@ -547,6 +599,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     popularActivities,
     email,
     community,
+    books,
     content,
   };
 }
