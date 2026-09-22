@@ -5863,3 +5863,20 @@ machine with the render keys).
 ## 2026-09-22T19:55:56Z (hourly chapter notes run)
 Chapter: Isaiah 17 | Duration: 10 min | Sections: 5 | Cards: 29 | Status: pass
 Next up: Isaiah 18
+
+## 2026-09-22T20:24:45Z (bible year day writer run)
+Fresh container again had local `main` cached at the stale `9f6da92`
+("Day 307") tip with no common ancestor to real `origin/main` (`2bfc339`,
+Isaiah 17 / chapter-notes era). Caught before writing anything: fetched
+origin, confirmed the stale tip is already backed up on
+`rescue/stale-local-main-2026-09-19` and `-2026-09-21` (reflog showed
+local `main` was freshly created from that stale ref this session, no
+unique local commits), then `git checkout main && git reset --hard
+origin/main` to resync — no data lost. Re-verified DAY_SCRIPTS
+programmatically: all 365 days present (day 1 via its own dedicated
+pipeline, days 2-365 wired into DAY_SCRIPTS), no gaps. `npm install` +
+`npx tsc --noEmit` both clean. Nothing to write this run — the plan is
+still complete. MARCUS_HANDOFF.md's audio-render note and prior
+stale-main entries already cover this; nothing new to add there.
+Next up: nothing — plan complete. Only audio rendering remains (separate
+machine with the render keys).
