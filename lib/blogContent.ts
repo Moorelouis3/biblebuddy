@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-26-explained",
+    title: "Genesis 26 Explained: Isaac's Famine, a Repeated Lie, and Three Wells",
+    description:
+      "Genesis 26 explained verse by verse: God's covenant renewed to Isaac, his repeated lie about Rebekah, the wells named Esek, Sitnah, and Rehoboth, and the peace treaty at Beersheba.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-26-explained",
+    publishedAt: "2026-09-22",
+    readTime: "15 min read",
+    image: "/blog-banners/genesis-26-explained.jpg",
+    groupPost: {
+      title: "Genesis 26 Explained 📖",
+      content:
+        "Isaac tells the exact same lie his father told, twice.\nIn the same city, to the same kind of king.\n\n📌 God still renews His whole covenant with Isaac anyway.\n\n📖 Isaac digs two wells and gives both of them up.\n📖 The third well finally goes uncontested.\n📖 A former enemy shows up asking for peace.\n\nNew article on:\n🟢 the wells named **Contention**, **Hostility**, and **Room**\n🟢 why God says **fear not** right when Isaac needs it\n🟢 the peace treaty made at Beersheba\n\nWhat old family fear keeps showing up in your own life? 🙏",
+    },
+  },
+  {
     slug: "genesis-25-explained",
     title: "Genesis 25 Explained: Abraham's Death and Esau's Traded Birthright",
     description:
