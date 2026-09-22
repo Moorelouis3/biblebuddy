@@ -5667,3 +5667,13 @@ so it was discarded and local main was reset to match the true, now
 current origin/main. No new chapter landed this run. Next real target is
 Isaiah 1. Full detail logged in data/bible-notes-usage-events.json.
 Next up: Isaiah 1.
+
+## 2026-09-22T01:23:12Z (bible year day writer run)
+Checked DAY_SCRIPTS in scripts/render-bible-year-day.ts against days 1-365:
+all present (day 1 via buildDayOneSegments, days 2-365 all wired). Also
+confirmed local `main` is still the known stale ref (stuck at old commit
+9f6da92, "Day 307") diverged from real origin/main — worked from the
+correct detached HEAD on origin/main's true tip (129a0df) per the
+established workaround, did not touch local main. tsc --noEmit clean.
+Nothing to write this run.
+Next up: nothing — plan complete. Only audio rendering remains.
