@@ -5844,3 +5844,7 @@ machine with the render keys).
 ## 2026-09-22T17:57:11Z (hourly chapter notes run)
 Chapter: Isaiah 15 | Duration: 10 min | Sections: 3 | Cards: 20 | Status: pass
 Next up: Isaiah 16
+
+## 2026-09-22T18:55:25Z (hourly chapter notes run)
+Chapter: Isaiah 16 | Duration: 9 min | Sections: 4 | Cards: 30 | Status: pass
+Next up: Isaiah 17
