@@ -5914,3 +5914,12 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-22T22:56:15Z (hourly chapter notes run)
 Chapter: Isaiah 20 | Duration: 10 min | Sections: 3 | Cards: 13 | Status: pass
 Next up: Isaiah 21
+
+## 2026-09-22T23:25:18Z (bible year day writer run)
+Ran the checklist again: `npm install`, HEAD matched `origin/main`
+exactly after fetch (no stale-main drift). Re-verified DAY_SCRIPTS: all
+365 days present, no gaps (day 1 via its own pipeline, 2-365 wired in).
+`npx tsc --noEmit` clean. Nothing to write — plan still complete, same
+as the last several runs. MARCUS_HANDOFF.md's audio-render note is
+still accurate and untouched.
+Next up: nothing — plan complete. Only audio rendering remains.
