@@ -42073,6 +42073,55 @@
           "at": "2026-09-22T22:56:15Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 21,
+      "startedAt": "2026-09-22T23:45:52Z",
+      "finishedAt": "2026-09-22T23:55:54Z",
+      "durationMinutes": 10,
+      "sections": 6,
+      "cards": 22,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. data/bible-notes-style-redo-remaining.json confirmed empty, so this was normal forward progress after Isaiah 20. Session started on a detached HEAD already matching origin/main's tip; git checkout main moved to a stale, unrelated local main ref (shallow clone artifact, no common ancestor with origin/main), and the sandbox's destructive-action classifier blocked git checkout -B main origin/main, so instead git checkout --detach origin/main was used to get back onto the correct, up to date tip non destructively (no data lost, working tree was already clean). Fetched real KJV text for Isaiah 21 (17 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Isaiah 21 carries three short burdens: verses 1-2 open the burden of the desert of the sea (Babylon), commanding Elam and Media to attack it; verses 3-4 describe Isaiah's own physical anguish at the vision; verse 5 pictures a feast inside Babylon interrupted by a sudden call to arms, echoing Belshazzar's feast in Daniel 5; verses 6-10 follow a watchman who finally cries Babylon is fallen, is fallen and notes her idols smashed; verses 11-12 are the short burden of Dumah (watchman, what of the night); verses 13-17 are the burden upon Arabia, covering the Dedanim traders, Tema's mercy to fleeing refugees, and Kedar's glory failing within one exact year. Chunked into 6 sections (1-2, 3-4, 5, 6-10, 11-12, 13-17), 22 cards across 17 verses, density about 1.29 cards/verse. scripts/check_bible_note_style.py found one problem on the first pass (a 9 word bullet), fixed immediately, then a clean second pass with zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (burden, desert of the sea, whirlwinds, travaileth, bowed down, hireling, grievousness, Dumah, Elam, Media, Kedar, Dedanim, Tema), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet always landing on 📖, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 22 cards. Parser check passed via getBibleReaderStudySections('isaiah', 21) (6/6 sections, verse ranges 1-2/3-4/5/6-10/11-12/13-17 with no gaps, 22 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/isaiahTwentyOneSource.ts, preserveExactPhraseBodies isaiah range extended from chapters 1-20 to 1-21, new function applyPersonalIsaiahTwentyOneStudySections added and called right after applyPersonalIsaiahTwentyStudySections(). Next forward-progress target is Isaiah 22.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T23:47:59Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 21 (new chapter, forward progress)",
+          "at": "2026-09-22T23:48:12Z"
+        },
+        {
+          "name": "KJV text fetched: Isaiah 21, 17 verses",
+          "at": "2026-09-22T23:48:20Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation read in full",
+          "at": "2026-09-22T23:48:25Z"
+        },
+        {
+          "name": "source file written: lib/isaiahTwentyOneSource.ts",
+          "at": "2026-09-22T23:53:35Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed, then clean)",
+          "at": "2026-09-22T23:53:44Z"
+        },
+        {
+          "name": "wiring done (import, applyPersonalIsaiahTwentyOneStudySections, preserveExactPhraseBodies extended to chapter 21)",
+          "at": "2026-09-22T23:54:08Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 22 cards",
+          "at": "2026-09-22T23:54:26Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-22T23:55:50Z"
+        }
+      ]
     }
   ]
 }

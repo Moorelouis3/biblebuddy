@@ -5923,3 +5923,7 @@ exactly after fetch (no stale-main drift). Re-verified DAY_SCRIPTS: all
 as the last several runs. MARCUS_HANDOFF.md's audio-render note is
 still accurate and untouched.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-22T23:55:54Z (hourly chapter notes run)
+Chapter: Isaiah 21 | Duration: 10 min | Sections: 6 | Cards: 22 | Status: pass
+Next up: Isaiah 22
