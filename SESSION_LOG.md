@@ -5781,3 +5781,13 @@ match the true origin/main after confirming (by diffing file trees) that
 nothing unique was lost. No new chapter landed this run. Next real target
 is Isaiah 10. Full detail logged in data/bible-notes-usage-events.json.
 Next up: Isaiah 10.
+
+## 2026-09-22T13:00:00Z (bible year day writer run)
+Re-checked DAY_SCRIPTS in scripts/render-bible-year-day.ts per this run's
+scheduled instructions (lowest missing day, max 2 per run): all 365 days
+still present (day 1 via buildDayOneSegments, days 2-365 wired, verified
+programmatically — no gaps, no dupes). `npm install` + `npx tsc --noEmit`
+both clean, working tree clean, HEAD in sync with origin/main. MARCUS_HANDOFF.md
+audio-render note already up to date, nothing new to fold in. Nothing to
+write this run.
+Next up: nothing — plan complete. Only audio rendering remains.
