@@ -740,6 +740,7 @@ import { ISAIAH_ELEVEN_PERSONAL_SECTIONS } from "./isaiahElevenSource";
 import { ISAIAH_TWELVE_PERSONAL_SECTIONS } from "./isaiahTwelveSource";
 import { ISAIAH_THIRTEEN_PERSONAL_SECTIONS } from "./isaiahThirteenSource";
 import { ISAIAH_FOURTEEN_PERSONAL_SECTIONS } from "./isaiahFourteenSource";
+import { ISAIAH_FIFTEEN_PERSONAL_SECTIONS } from "./isaiahFifteenSource";
 import { JEREMIAH_1_9_PERSONAL_SECTIONS } from "./jeremiahOneToNinePersonalNotes";
 import { JEREMIAH_10_52_PERSONAL_SECTIONS } from "./jeremiahTenToFiftyTwoPersonalNotes";
 import { LAMENTATIONS_1_5_PERSONAL_SECTIONS } from "./lamentationsOneToFivePersonalNotes";
@@ -1091,7 +1092,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "psalms" && section.chapter >= 1 && section.chapter <= 150) ||
     (normalizeBook(book) === "ecclesiastes" && section.chapter >= 1 && section.chapter <= 12) ||
     (normalizeBook(book) === "song of solomon" && section.chapter >= 1 && section.chapter <= 8) ||
-    (normalizeBook(book) === "isaiah" && section.chapter >= 1 && section.chapter <= 14);
+    (normalizeBook(book) === "isaiah" && section.chapter >= 1 && section.chapter <= 15);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -2808,6 +2809,10 @@ function applyPersonalIsaiahThirteenStudySections() {
 
 function applyPersonalIsaiahFourteenStudySections() {
   replaceStudySectionsForBookRange("isaiah", 14, 14, ISAIAH_FOURTEEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalIsaiahFifteenStudySections() {
+  replaceStudySectionsForBookRange("isaiah", 15, 15, ISAIAH_FIFTEEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJeremiahOneThroughNineStudySections() {
@@ -10366,6 +10371,7 @@ applyPersonalIsaiahElevenStudySections();
 applyPersonalIsaiahTwelveStudySections();
 applyPersonalIsaiahThirteenStudySections();
 applyPersonalIsaiahFourteenStudySections();
+applyPersonalIsaiahFifteenStudySections();
 applyPersonalJeremiahOneThroughNineStudySections();
 applyPersonalJeremiahTenThroughFiftyTwoStudySections();
 applyPersonalLamentationsOneThroughFiveStudySections();

@@ -5840,3 +5840,7 @@ complete. MARCUS_HANDOFF.md's audio-render note and today's stale-main
 entries already cover this; nothing new to add there.
 Next up: nothing — plan complete. Only audio rendering remains (separate
 machine with the render keys).
+
+## 2026-09-22T17:57:11Z (hourly chapter notes run)
+Chapter: Isaiah 15 | Duration: 10 min | Sections: 3 | Cards: 20 | Status: pass
+Next up: Isaiah 16

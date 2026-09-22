@@ -41751,6 +41751,63 @@
           "at": "2026-09-22T16:57:50Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 15,
+      "startedAt": "2026-09-22T17:47:30Z",
+      "finishedAt": "2026-09-22T17:57:11Z",
+      "durationMinutes": 10,
+      "sections": 3,
+      "cards": 20,
+      "verses": 9,
+      "notes": "Normal forward progress (new chapter, not a style redo); priority queue and style-redo backlog both empty. Session started with local git HEAD detached, diverged from a stale cached origin/main; git fetch origin main found the detached HEAD already matched the freshly fetched origin/main tip, so no reset was needed. Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Isaiah 15 opens the burden of Moab, a short oracle of genuine grief (contrasted deliberately with chapter 14's taunt against Babylon) over Moab's coming destruction. Split into 3 sections (1-3, 4-6, 7-9), density 2.22 cards/verse. check_bible_note_style.py found zero problems on the first pass. During the eye checklist pass, caught two cards opening with near identical wording (both started 'were two more ... Moabite towns') and reworded one before saving. Parser check (getBibleReaderStudySections) and npx tsc --noEmit -p . both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T17:47:56Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 15 (new chapter, forward progress; priority queue and style-redo backlog both empty)",
+          "at": "2026-09-22T17:48:33Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 15 (9 verses) from raw.githubusercontent.com mirror",
+          "at": "2026-09-22T17:51:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-22T17:52:57Z"
+        },
+        {
+          "name": "source file lib/isaiahFifteenSource.ts written (3 sections, 20 cards)",
+          "at": "2026-09-22T17:53:32Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-09-22T17:53:32Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 15, applyPersonalIsaiahFifteenStudySections added and called)",
+          "at": "2026-09-22T17:53:41Z"
+        },
+        {
+          "name": "parser check passed (3 sections, 20 cards, getBibleReaderStudySections('isaiah', 15))",
+          "at": "2026-09-22T17:54:01Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-22T17:55:38Z"
+        },
+        {
+          "name": "eye checklist pass: reworded a repeated opening phrase across two cards, re-verified style checker/parser/tsc all clean",
+          "at": "2026-09-22T17:57:00Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md row + totals, progress-log.json entry)",
+          "at": "2026-09-22T17:57:11Z"
+        }
+      ]
     }
   ]
 }
