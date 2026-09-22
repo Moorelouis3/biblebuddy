@@ -5884,3 +5884,13 @@ machine with the render keys).
 ## 2026-09-22T20:55:03Z (hourly chapter notes run)
 Chapter: Isaiah 18 | Duration: 8 min | Sections: 3 | Cards: 16 | Status: pass
 Next up: Isaiah 19
+
+## 2026-09-22T21:05:00Z (bible year day writer run)
+Ran the standard checklist: `npm install`, verified `origin/main` and local
+HEAD match (`d1f5270`, no stale-main drift this time), re-verified
+DAY_SCRIPTS programmatically — all 365 days present (day 1 via its own
+dedicated pipeline, days 2-365 wired into DAY_SCRIPTS), no gaps. `npx tsc
+--noEmit` clean. Nothing to write this run — the plan is still complete.
+MARCUS_HANDOFF.md's audio-render note already covers the only open item
+(rendering, which needs the keys on a different machine).
+Next up: nothing — plan complete. Only audio rendering remains.
