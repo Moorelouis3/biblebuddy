@@ -41071,6 +41071,59 @@
           "at": "2026-09-22T04:00:53Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 3,
+      "startedAt": "2026-09-22T04:46:03Z",
+      "finishedAt": "2026-09-22T05:00:32Z",
+      "durationMinutes": 14.5,
+      "sections": 9,
+      "cards": 46,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress after Isaiah 2 (priority queue and style-redo backlog both confirmed empty). Session started detached at the correct current origin/main tip while local main was stale with no common ancestor (recurring documented environment bug); left local main untouched per the established no-repoint policy and worked from the detached HEAD, pushing at the end with git push origin HEAD:main. npm install ran clean (596 packages, fresh clone). Fetched real KJV text for Isaiah 3 (26 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv. Read docs/bible-study-note-style.md in full and reviewed lib/isaiahTwoSource.ts as the most recent same-book reference for section/card structure. Wrote 7 thematic sections: the total removal of every kind of leader named across 3 verses including an inline list of all 11 roles (1-3); the babes-rule-over-them social collapse and the desperate, refused offer of leadership (4-7); Jerusalem ruined and compared directly to Sodom (8-9); the well-with-the-righteous versus ill-with-the-wicked contrast followed by the children/women leadership judgment restated (10-12); the LORD standing up in a courtroom scene to plead and judge the elders for eating up the vineyard and grinding the faces of the poor (13-15); and the daughters of Zion's haughty display followed by its full reversal, including an eighteen-item ornament list handled as a single compressed list card per the style spec's guidance on chapters that resist teaching, plus five separate reversal cards for verse 24 (16-24); and the closing image of the city as a desolate, mourning woman that sets up chapter 4 (25-26). Density 1.77 cards per verse (46 cards, 26 verses), intentionally lower than the 2.0 set by Isaiah 1 and 2 because two stretches of this chapter (the leadership list in 1-3 and the ornament list in 19-23) are genuinely list-heavy rather than padded. scripts/check_bible_note_style.py found 4 problems on the first pass (one banned hedge word 'fairly', one bullet at 9 words instead of the 3-8 ceiling, and an inline list whose 5 emoji-prefixed example lines were being counted as extra bullets by the checker's line-level emoji detection), fixed all four by rewording the hedge, shortening the bullet, and converting the inline list to plain prose naming a few example items instead of an emoji list; second run clean with 0 problems across all 46 cards. While running the parser check, discovered that the app's enforceStudySectionVerseLimit(8) helper (called once globally after all chapters are wired) auto-splits any section spanning more than 8 verses into 'Part 1'/'Part 2' pieces by duplicating the ENTIRE card array into each part rather than dividing it, which had silently turned the originally-authored 16-24 section (9 verses) into two sections both carrying all 13 cards (59 total instead of 46). Fixed this at the source by splitting that section into three properly-bounded sections (16-18, 19-23, 24) each at or under the 8-verse cap, matching the natural content breaks (the haughty display in 16-18, the compressed ornament list in 19-23, and the five-part reversal in 24), and updated the parser's expected section count from 7 to 9. Re-ran the parser check and confirmed 9/9 sections, verse ranges 1-3/4-7/8-9/10-12/13-15/16-18/19-23/24/25-26 with no gaps and no overlaps, and exactly 46 total cards with no duplication. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (stay, staff, mighty man, prudent, ancient, counsellor, err, plead, discover, bravery, stomacher, desolate), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card ending on 📖, no duplicate card titles across all 46 cards, and no hyphens, em dashes, semicolons, or contractions anywhere in the finished file (only possessives). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/isaiahThreeSource.ts, preserveExactPhraseBodies extended from isaiah chapters 1-2 to 1-3, new applyPersonalIsaiahThreeStudySections() function added and called directly after applyPersonalIsaiahTwoStudySections(). Next forward-progress target is Isaiah 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-22T04:47:52Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 3 (forward progress; priority queue and style-redo backlog both empty)",
+          "at": "2026-09-22T04:48:03Z"
+        },
+        {
+          "name": "KJV text fetched: Isaiah 3, 26 verses, raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-22T04:48:13Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md), reference implementation reviewed (lib/isaiahTwoSource.ts), skill.md pipeline reviewed",
+          "at": "2026-09-22T04:48:13Z"
+        },
+        {
+          "name": "source file written: lib/isaiahThreeSource.ts, 46 cards",
+          "at": "2026-09-22T04:55:56Z"
+        },
+        {
+          "name": "style checker clean: check_bible_note_style.py, fixed banned hedge word + one 9-word bullet + inline list miscounted as bullets, then 0 remaining",
+          "at": "2026-09-22T04:56:30Z"
+        },
+        {
+          "name": "wired into reader: import + applyPersonalIsaiahThreeStudySections + preserveExactPhraseBodies extended to chapter 3",
+          "at": "2026-09-22T04:56:46Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('isaiah', 3); found and fixed an 8-verse section-length cap bug (9-verse section was being duplicated into Part 1/Part 2 by enforceStudySectionVerseLimit) by splitting the source into 3 sections; confirmed 9 sections, 46 total cards, no gaps, no duplication",
+          "at": "2026-09-22T04:58:22Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-22T04:59:50Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-22T05:01:17Z"
+        }
+      ]
     }
   ]
 }

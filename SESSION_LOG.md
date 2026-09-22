@@ -5705,3 +5705,7 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-22T03:58:08Z (hourly chapter notes run)
 Chapter: Isaiah 2 | Duration: 12 min | Sections: 4 | Cards: 44 | Status: pass
 Next up: Isaiah 3
+
+## 2026-09-22T05:00:32Z (hourly chapter notes run)
+Chapter: Isaiah 3 | Duration: 15 min | Sections: 9 | Cards: 46 | Status: pass
+Next up: Isaiah 4
