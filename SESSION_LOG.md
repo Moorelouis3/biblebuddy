@@ -6103,3 +6103,7 @@ unrelated reason, not a real problem). MARCUS_HANDOFF.md's audio-render
 note is still accurate; not duplicating.
 Next up: nothing -- plan complete. Only audio rendering remains, on the
 machine with keys.
+
+## 2026-09-23T14:56:03Z (hourly chapter notes run)
+Chapter: Isaiah 36 | Duration: 10 min | Sections: 5 | Cards: 25 | Status: pass
+Next up: Isaiah 37
