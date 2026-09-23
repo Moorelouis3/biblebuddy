@@ -6072,3 +6072,11 @@ touching the stale local `main` ref, then pushed straight to `origin main`.
 ## 2026-09-23T11:58:30Z (hourly chapter notes run)
 Chapter: Isaiah 33 | Duration: 12 min | Sections: 5 | Cards: 46 | Status: pass
 Next up: Isaiah 34
+
+## 2026-09-23T12:25:18Z (bible year day writer run)
+Re-verified plan complete: npm install clean, HEAD correctly on real
+origin/main (acae0e3, Isaiah 33 era, no stale-branch issue this run),
+DAY_SCRIPTS has days 2-365 wired in plus Day 1 via its own dedicated
+pipeline (buildDayOneSegments), npx tsc --noEmit clean. Nothing to write.
+MARCUS_HANDOFF.md's audio-render note is still accurate; not duplicating.
+Next up: nothing — only audio rendering remains, on the machine with keys.
