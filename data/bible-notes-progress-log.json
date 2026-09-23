@@ -42346,6 +42346,59 @@
           "at": "2026-09-23T04:01:55Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 26,
+      "startedAt": "2026-09-23T04:46:30Z",
+      "finishedAt": "2026-09-23T04:56:30Z",
+      "durationMinutes": 10,
+      "sections": 4,
+      "cards": 29,
+      "verses": 21,
+      "notes": "Song of trust answering chapter 25's hymn of praise. Sections: 1-6 the strong city whose defense is salvation and perfect peace for the mind stayed on God; 7-11 the way of the just and judgment as a teacher for a world that will not otherwise learn; 12-15 peace credited to God, a direct confession of Israel's past rule under other lords (Assyria, Babylon), those false powers declared dead forever; 16-21 labor pains that produced only wind, the resurrection hope of thy dead men shall live answering verse 14, dew as quiet life giving refreshment, and the closing theophany of the LORD coming out to punish and disclose hidden blood, echoing Cain and Abel. Density about 1.38 cards/verse. New chapter (not a style redo). Style checker clean after one fix. Parser check and tsc both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-23T04:47:09Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 26 (new chapter, normal forward progress after Isaiah 25)",
+          "at": "2026-09-23T04:47:54Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 26 (21 verses) from raw.githubusercontent.com aruljohn mirror",
+          "at": "2026-09-23T04:48:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-23T04:49:00Z"
+        },
+        {
+          "name": "source file written: lib/isaiahTwentySixSource.ts (4 sections, 29 cards)",
+          "at": "2026-09-23T04:53:30Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed: 9 word bullet, then zero problems)",
+          "at": "2026-09-23T04:54:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies isaiah range extended to 26, applyPersonalIsaiahTwentySixStudySections added and called)",
+          "at": "2026-09-23T04:54:40Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('isaiah', 26): 4 sections, 29 cards, no gaps)",
+          "at": "2026-09-23T04:55:05Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-09-23T04:55:40Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-23T04:56:30Z"
+        }
+      ]
     }
   ]
 }

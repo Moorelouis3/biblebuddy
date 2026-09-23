@@ -5997,3 +5997,7 @@ its own pipeline, 2-365 wired in), `npx tsc --noEmit` clean (exit 0, no
 errors). MARCUS_HANDOFF.md's single audio-render note is already accurate
 and up to date; not duplicating it. Nothing to write this run.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-23T04:56:23Z (hourly chapter notes run)
+Chapter: Isaiah 26 | Duration: 10 min | Sections: 4 | Cards: 29 | Status: pass
+Next up: Isaiah 27
