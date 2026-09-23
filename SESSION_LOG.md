@@ -6084,3 +6084,7 @@ Next up: nothing — only audio rendering remains, on the machine with keys.
 ## 2026-09-23T12:57:42Z (hourly chapter notes run)
 Chapter: Isaiah 34 | Duration: 11 min | Sections: 5 | Cards: 33 | Status: pass
 Next up: Isaiah 35
+
+## 2026-09-23T13:56:00Z (hourly chapter notes run)
+Chapter: Isaiah 35 | Duration: 10 min | Sections: 3 | Cards: 21 | Status: pass
+Next up: Isaiah 36
