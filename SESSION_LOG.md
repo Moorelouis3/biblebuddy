@@ -5943,3 +5943,17 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-23T00:55:12Z (hourly chapter notes run)
 Chapter: Isaiah 22 | Duration: 7 min | Sections: 8 | Cards: 28 | Status: pass
 Next up: Isaiah 23
+
+## 2026-09-23T01:15:00Z (bible year day writer run)
+Re-ran the checklist: `npm install`, then hit the same recurring
+stale-local-main issue again (local `main` was still pointing at the old
+`9f6da92` "Day 307" tip). Confirmed via file-tree diff this is the exact
+same already-investigated fork from the 2026-09-22 incident (only diff
+vs. origin/main is the two deliberately-deleted vulnerable admin routes,
+nothing else) — no new unique local commits, so `git reset --hard
+origin/main` was safe here and no new rescue branch was needed. Verified
+`DAY_SCRIPTS`: all 365 days present (day 1 via its own pipeline, 2-365
+wired in), `npx tsc --noEmit` clean. Nothing to write — plan still
+complete, same conclusion as the 00:00 run today. MARCUS_HANDOFF.md
+already notes this; not duplicating it.
+Next up: nothing — plan complete. Only audio rendering remains.
