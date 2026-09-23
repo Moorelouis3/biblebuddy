@@ -3,6 +3,7 @@ import { COMMUNITY_EVENTS, getCommunityEventState, isCommunityEventDayUnlocked, 
 import { BIBLE_BUDDY_GROUP_ID, eventDayStudyPath, type EventDayPost } from "@/lib/communityEventDays";
 import { insertGroupPostWithRetry } from "@/lib/groupPostInsert";
 import { getProverbsDailyPost, type ProverbsDailyPost } from "@/lib/proverbsDailyPosts";
+import { WISDOM_BOOKS_ON_SALE, WISDOM_BOOKS_PAGE_PATH } from "@/lib/wisdomOfProverbsProducts";
 
 // Community event daily post (2026-09-22, The Wisdom of Proverbs).
 //
@@ -29,6 +30,9 @@ export const COMMUNITY_EVENT_POST_CATEGORY = "general";
 export const COMMUNITY_EVENT_NOTIFICATION_TYPE = "group_post";
 
 export const SITE_URL = "https://www.mybiblebuddy.net";
+
+/** Quiet book line at the bottom of each daily post; null until a book is on sale. */
+export const BOOKS_CTA_PATH: string | null = WISDOM_BOOKS_ON_SALE ? `${WISDOM_BOOKS_PAGE_PATH}?src=daily_post` : null;
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
 const NOTIFY_CHUNK = 100;
@@ -78,6 +82,12 @@ export function buildPostContent(entry: ProverbsDailyPost, totalDays = COMMUNITY
     `<p>❤️ Read somebody else&rsquo;s response and encourage them in the comments</p>`,
   );
   for (const closing of entry.closing) lines.push(blank, `<p><strong>${escapeHtml(closing)}</strong></p>`);
+  if (BOOKS_CTA_PATH) {
+    lines.push(
+      blank,
+      `<p>📕 <em>Prefer paper? <a href="${escapeHtml(BOOKS_CTA_PATH)}">Get The Wisdom of Proverbs in print →</a></em></p>`,
+    );
+  }
 
   return { title: buildPostTitle(entry), content: lines.join("") };
 }
@@ -103,6 +113,7 @@ export function buildPostPlainText(entry: ProverbsDailyPost, totalDays = COMMUNI
     "✍🏾 Share your answer to today's question below",
     "❤️ Read somebody else's response and encourage them in the comments",
     ...entry.closing.flatMap((c) => ["", c]),
+    ...(BOOKS_CTA_PATH ? ["", `📕 Prefer paper? Get The Wisdom of Proverbs in print → ${BOOKS_CTA_PATH}`] : []),
   ].join("\n");
 }
 

@@ -1,5 +1,3 @@
-import { supabase } from "./supabaseClient";
-
 // The printed editions of The Wisdom of Proverbs (2026-09-22).
 // ONE place for everything product-related: order, prices, copy, images and
 // Amazon links. The /books/wisdom-of-proverbs page and the event-page banner
@@ -125,6 +123,9 @@ export async function trackWisdomBookEvent(eventName: string, metadata: Record<s
     const visit = readWisdomVisitSource();
     let userId: string | null = null;
     try {
+      // Loaded here, not at the top: this file is also read by the daily-post
+      // cron on the server, which must not pull in the browser client.
+      const { supabase } = await import("./supabaseClient");
       const { data } = await supabase.auth.getSession();
       userId = data.session?.user?.id ?? null;
     } catch {

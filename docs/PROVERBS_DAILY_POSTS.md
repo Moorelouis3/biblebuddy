@@ -1,7 +1,8 @@
 # The Wisdom of Proverbs: the 31 daily group posts
 
 Louis's wording (PROVERBS_DAILY_POSTS_REWRITTEN_WITH_LINKS.md, 2026-09-23), as each post will appear in the Bible Buddy group.
-One goes up at 6:00 a.m. US Eastern each day, October 1-31. "Complete Day N here" links straight to that day in the devotional.
+One goes up at 6:00 a.m. US Eastern each day, October 1-31. "Complete Day N here" links straight to that day in the devotional,
+and the last line links to the printed books page.
 Content lives in lib/proverbsDailyPosts.ts; the post is built by lib/communityEventDailyPost.ts.
 
 ---
@@ -30,6 +31,8 @@ Which voice has the most say in your decisions right now, and is it pulling you 
 📖 Complete Day 1 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/1
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -56,6 +59,8 @@ What is one area of your life where you need God's wisdom right now, and what wo
 📖 Complete Day 2 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/2
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -82,6 +87,8 @@ Where are you leaning on your own understanding right now instead of trusting Go
 📖 Complete Day 3 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/3
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -108,6 +115,8 @@ What is one thing that has been slowly pulling your heart off course, and what w
 📖 Complete Day 4 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/4
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -134,6 +143,8 @@ Proverbs 5 says to stay far away from temptation instead of testing how close yo
 📖 Complete Day 5 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/5
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -160,6 +171,8 @@ Of the seven things God hates in Proverbs 6, which one stood out to you the most
 📖 Complete Day 6 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/6
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -188,6 +201,8 @@ Proverbs 6:27 asks, "Can a man take fire in his bosom, and his clothes not be bu
 📖 Complete Day 7 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/7
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -214,6 +229,8 @@ What does it mean to you that God's wisdom is older than the world itself?
 📖 Complete Day 8 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/8
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -240,6 +257,8 @@ Wisdom and Folly both call out in Proverbs 9. Which invitation do you hear the l
 📖 Complete Day 9 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/9
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -268,6 +287,8 @@ What is one thing you could start preparing for now, while it is still summer in
 📖 Complete Day 10 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/10
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -294,6 +315,8 @@ Proverbs 11 says honest scales delight God. Why do you think honesty in the smal
 📖 Complete Day 11 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/11
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -320,6 +343,8 @@ When was the last time you changed something because someone gave you honest cou
 📖 Complete Day 12 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/12
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -346,6 +371,8 @@ Think of a time your own words cost you something. What would guarding your mout
 📖 Complete Day 13 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/13
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -372,6 +399,8 @@ When you are trying to figure out whether something is from God, how do you chec
 📖 Complete Day 14 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/14
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -400,6 +429,8 @@ What does giving a soft answer look like when you know you are right?
 📖 Complete Day 15 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/15
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -426,6 +457,8 @@ If pride does not feel like pride, how can you tell when it is creeping into you
 📖 Complete Day 16 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/16
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -452,6 +485,8 @@ Who has been that kind of friend to you, and who could you be that kind of frien
 📖 Complete Day 17 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/17
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -478,6 +513,8 @@ When something goes wrong in your life, what do you run to first for safety?
 📖 Complete Day 18 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/18
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -504,6 +541,8 @@ Have you ever been angry at God about something that started with your own choic
 📖 Complete Day 19 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/19
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -530,6 +569,8 @@ What is the difference between waiting on God and quietly holding on to a grudge
 📖 Complete Day 20 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/20
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -558,6 +599,8 @@ In what you are working toward right now, what part is yours to do and what part
 📖 Complete Day 21 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/21
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -584,6 +627,8 @@ Proverbs 22:1 says "A good name is rather to be chosen than great riches." What 
 📖 Complete Day 22 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/22
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -610,6 +655,8 @@ What does having enough look like to you, whether it is food, drink, money, or a
 📖 Complete Day 23 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/23
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -636,6 +683,8 @@ What helps you get back up after you fall short?
 📖 Complete Day 24 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/24
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -664,6 +713,8 @@ What is one small area where you could start rebuilding self control this week?
 📖 Complete Day 25 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/25
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -690,6 +741,8 @@ Why do you think gossip is so easy to pass along, and what can you do the next t
 📖 Complete Day 26 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/26
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -716,6 +769,8 @@ Who in your life has permission to tell you the truth, even when it is hard to h
 📖 Complete Day 27 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/27
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -744,6 +799,8 @@ Why do you think confessing and actually stopping both matter, and not just one 
 📖 Complete Day 28 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/28
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -770,6 +827,8 @@ Where has worrying about what people think held you back, and what would trustin
 📖 Complete Day 29 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/29
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -798,6 +857,8 @@ Agur prays, "give me neither poverty nor riches." What do you think of a prayer 
 📖 Complete Day 30 here → /devotionals/c0ca300a-c0e9-47b8-84c5-99aca743a203/day/30
 ✍🏾 Share your answer to today's question below
 ❤️ Read somebody else's response and encourage them in the comments
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
 
 ---
@@ -830,4 +891,6 @@ Which part of the picture of wisdom in Proverbs 31 do you most want your own lif
 🏆 **You finished all 31 chapters of Proverbs.**
 
 Before you leave, tell the group one thing from this month that you want to carry into your everyday life.
+
+📕 Prefer paper? Get The Wisdom of Proverbs in print → /books/wisdom-of-proverbs?src=daily_post
 ```
