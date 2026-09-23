@@ -5972,3 +5972,7 @@ correct detached tip. Nothing to write; MARCUS_HANDOFF.md already has an
 accurate, current note on the completed plan and the audio-render status,
 so not duplicating it.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-23T02:57:00Z (hourly chapter notes run)
+Chapter: Isaiah 24 | Duration: 11 min | Sections: 7 | Cards: 28 | Status: pass
+Next up: Isaiah 25
