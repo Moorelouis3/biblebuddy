@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-33-explained",
+    title: "Genesis 33 Explained: Jacob and Esau Meet Again",
+    description:
+      "Genesis 33 explained verse by verse: Jacob and Esau's reunion after twenty years, Esau's forgiveness, and why Jacob settles in Shechem instead of returning to Bethel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-33-explained",
+    publishedAt: "2026-09-23",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-33-explained.jpg",
+    groupPost: {
+      title: "Genesis 33 Explained 📖",
+      content:
+        "Jacob spent all night bracing to meet the brother who once wanted him dead.\nThen Esau just runs to him and weeps.\n\n📌 The fear that filled the last chapter is gone before Jacob says a word.\n\n📖 Jacob bows to the ground seven times before Esau ever reaches him.\n📖 Esau tries twice to refuse the gift Jacob sends ahead.\n📖 Jacob settles in Shechem instead of finishing the journey home.\n\nNew article on:\n🟢 why Jacob compares Esau's face to the **face of God**\n🟢 what **El-elohe-Israel** means\n🟢 the vow Jacob still had not kept\n\nHave you ever braced for a hard conversation that went nothing like you feared? 🙏",
+    },
+  },
+  {
     slug: "genesis-32-explained",
     title: "Genesis 32 Explained: Jacob Wrestles with God at Peniel",
     description:
