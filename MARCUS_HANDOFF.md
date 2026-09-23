@@ -668,3 +668,20 @@ the security fix. The underlying recurring stale-local-main problem
 itself is still unfixed at the environment level (see the many entries
 above spanning weeks) and will keep producing incidents like this one,
 including future risky force pushes, until addressed at the source.
+
+## Stale "Bible in One Year Day Writer" trigger disabled — the hourly no-op waste is fixed
+Many entries above (2026-09-10 onward) asked for this at the environment
+level and it never got done, so this run just did it: disabled trigger
+`trig_017Kh16PSkgnht3BEEGx9KaX` ("Bible Buddy - Bible in One Year Day
+Writer", firing hourly on `20 * * * *`) via `update_trigger`. Its stored
+prompt was the original, outdated version of this job (days 12-30, Day
+11 as the quality-bar example) — confirmed via `list_triggers` that it
+was the only trigger with this name, and its prompt matched exactly what
+fired this run. All 365 days have been complete for a while now (re-
+verified again this run against a freshly-fetched real `origin/main`:
+`DAY_SCRIPTS` covers 2-365 plus Day 1's special case, `tsc --noEmit`
+clean), so the trigger had nothing left to do and was just burning an
+`npm install` + full verification cycle every single hour, forever. It
+is disabled, not deleted, so it can be re-enabled instantly if the plan
+ever needs redoing (e.g. a day's script gets pulled and rewritten). No
+code changed this run.

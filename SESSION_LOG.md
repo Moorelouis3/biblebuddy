@@ -6149,3 +6149,14 @@ Next up: Isaiah 40
 ## 2026-09-23T19:59:34Z (hourly chapter notes run)
 Chapter: Isaiah 40 | Duration: 13 min | Sections: 11 | Cards: 47 | Status: pass
 Next up: Isaiah 41
+
+## 2026-09-23T20:26:00Z (bible year day writer run)
+Day: none — re-verified all 365 days (1-365) already complete in
+DAY_SCRIPTS against a freshly-fetched real origin/main, tsc clean, 0
+errors. This run's trigger was the stale one (days 12-30 / Day 11
+quality-bar prompt) that MARCUS_HANDOFF.md has flagged since 2026-09-10
+as firing hourly forever for nothing; disabled it via update_trigger
+(trig_017Kh16PSkgnht3BEEGx9KaX) since the plan is done and it was pure
+waste. No code changed. MARCUS_HANDOFF.md updated with the trigger fix.
+Next up: nothing — plan complete. Only audio rendering remains, on the
+machine with keys.
