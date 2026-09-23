@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-31-explained",
+    title: "Genesis 31 Explained: Jacob Flees Laban and Makes a Covenant",
+    description:
+      "Genesis 31 explained verse by verse: God calls Jacob home, Rachel steals Laban's household gods, Laban's pursuit, and the covenant at Galeed and Mizpah.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-31-explained",
+    publishedAt: "2026-09-23",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-31-explained.jpg",
+    groupPost: {
+      title: "Genesis 31 Explained 📖",
+      content:
+        "Twenty years of service, and Jacob finally slips away while his uncle is three days off shearing sheep.\nThen his own wife steals something on the way out.\n\n📌 An angel already told Jacob in a dream that the flock trick was never his doing.\n\n📖 God tells Jacob it is time to go home.\n📖 Rachel steals her father's household gods and lies about it to his face.\n📖 Two men who no longer trust each other build a boundary of stones between them.\n\nNew article on:\n🟢 what the **household gods** actually were\n🟢 the truth behind the famous **Mizpah** blessing\n🟢 why Jacob's **twenty years** finally come out at once\n\nHave you ever finally worked up the nerve to leave something that used you for years? 🙏",
+    },
+  },
+  {
     slug: "genesis-30-explained",
     title: "Genesis 30 Explained: Rachel, Leah, and Jacob's Growing Flocks",
     description:
