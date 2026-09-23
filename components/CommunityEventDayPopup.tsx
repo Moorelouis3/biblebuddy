@@ -79,9 +79,14 @@ export default function CommunityEventDayPopup({
 
   useEffect(() => {
     if (!event) return;
+    // ?previewDay=N alone is for the pages (Today card, tracker). Showing this
+    // popup early needs ?previewPopup=1 as well, so a preview link cannot
+    // surprise anyone with "Day 31 is ready" a week before the study starts
+    // (2026-09-23, Louis).
     let previewDay = "";
     try {
-      previewDay = new URLSearchParams(window.location.search).get("previewDay") || "";
+      const search = new URLSearchParams(window.location.search);
+      if (search.get("previewPopup") === "1") previewDay = search.get("previewDay") || "";
     } catch {}
 
     let cancelled = false;

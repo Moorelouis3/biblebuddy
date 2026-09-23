@@ -20,7 +20,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { useSupabaseUser } from "../../../lib/useSupabaseUser";
 import { useBlockedUserIds } from "../../../lib/userBlocks";
-import ReportBlockMenu from "../../../components/ReportBlockMenu";
 import ProverbsBooksPromo from "../../../components/ProverbsBooksPromo";
 import { WISDOM_BOOKS_ON_SALE } from "../../../lib/wisdomOfProverbsProducts";
 import { joinCommunityEvent } from "../../../lib/communityEventJoin";
@@ -461,7 +460,10 @@ export default function CommunityEventPage() {
         ) : (
           <>
             <div className="mt-4 grid grid-cols-4 gap-x-2 gap-y-4 sm:grid-cols-6 md:grid-cols-8">
-              {visibleParticipants.map((buddy, index) => (
+              {/* No report/block dots over the faces (2026-09-23, Louis):
+                  tapping a buddy opens their profile, which has the report and
+                  block actions. */}
+              {visibleParticipants.map((buddy) => (
                 <div key={buddy.user_id} className="relative min-w-0">
                 <Link
                   href={`/profile/${buddy.user_id}`}
@@ -485,17 +487,6 @@ export default function CommunityEventPage() {
                     {firstName(buddy.display_name)}
                   </span>
                 </Link>
-                <ReportBlockMenu
-                  targetUserId={buddy.user_id}
-                  targetName={buddy.display_name}
-                  contentType="event_member"
-                  contentId={slug}
-                  currentUserId={userId ?? null}
-                  reportLabel="Report photo or name"
-                  size="sm"
-                  align={index % 4 < 2 ? "left" : "right"}
-                  className="absolute right-0 top-0 rounded-full bg-[var(--bb-card,#ffffff)] shadow-sm"
-                />
                 </div>
               ))}
             </div>
