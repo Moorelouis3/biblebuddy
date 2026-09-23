@@ -52,37 +52,57 @@ export function buildPostTitle(entry: ProverbsDailyPost) {
  * written in the app (<p>..</p>, an empty <p> for a blank line). The feed
  * turns "Proverbs 1:7" into a tappable verse link on its own.
  */
-export function buildPostContent(entry: ProverbsDailyPost, totalDays = COMMUNITY_EVENT_TOTAL_DAYS) {
+export function buildPostContent(entry: ProverbsDailyPost, totalDays = COMMUNITY_EVENT_TOTAL_DAYS, studyPath?: string) {
   const blank = "<p></p>";
-  const content = [
-    `<p><strong>Day ${entry.day} of ${totalDays} · Proverbs ${entry.chapter}</strong></p>`,
+  const lines = [`<p><strong>⭐ Day ${entry.day} of ${totalDays}: ${escapeHtml(entry.title)}</strong></p>`, blank];
+  if (entry.milestone) lines.push(`<p><strong>${escapeHtml(entry.milestone)}</strong></p>`, blank);
+  lines.push(`<p>📖 <strong>Today&rsquo;s Reading: Proverbs ${entry.chapter}</strong></p>`, blank);
+  for (const paragraph of entry.paragraphs) lines.push(`<p>${escapeHtml(paragraph)}</p>`, blank);
+  lines.push(
+    `<p>📜 <strong>Key Verse</strong></p>`,
+    `<p><em>&ldquo;${escapeHtml(entry.keyVerse.text)}&rdquo;</em></p>`,
+    `<p><strong>${escapeHtml(entry.keyVerse.reference)} (KJV)</strong></p>`,
     blank,
-    `<p>${escapeHtml(entry.summary)}</p>`,
+    `<p>💭 <strong>Today&rsquo;s Reflection</strong></p>`,
+    `<p><strong>${escapeHtml(entry.question)}</strong></p>`,
     blank,
-    `<p><em>&quot;${escapeHtml(entry.keyVerse.text)}&quot;</em></p>`,
-    `<p>${escapeHtml(entry.keyVerse.reference)} (KJV)</p>`,
-    blank,
-    `<p><strong>Today's question:</strong> ${escapeHtml(entry.question)}</p>`,
-    blank,
-    `<p>Tap to open today's study, then share your answer below 👇</p>`,
-  ].join("");
+    `<p>👇🏾 <strong>Now it&rsquo;s your turn</strong></p>`,
+  );
+  if (studyPath) {
+    lines.push(
+      `<p>📖 <a href="${escapeHtml(studyPath)}">Complete Day ${entry.day} here →</a></p>`,
+    );
+  }
+  lines.push(
+    `<p>✍🏾 Share your answer to today&rsquo;s question below</p>`,
+    `<p>❤️ Read somebody else&rsquo;s response and encourage them in the comments</p>`,
+  );
+  for (const closing of entry.closing) lines.push(blank, `<p><strong>${escapeHtml(closing)}</strong></p>`);
 
-  return { title: buildPostTitle(entry), content };
+  return { title: buildPostTitle(entry), content: lines.join("") };
 }
 
 /** Plain-text version of the same post, for the review doc and dry runs. */
-export function buildPostPlainText(entry: ProverbsDailyPost, totalDays = COMMUNITY_EVENT_TOTAL_DAYS) {
+export function buildPostPlainText(entry: ProverbsDailyPost, totalDays = COMMUNITY_EVENT_TOTAL_DAYS, studyPath?: string) {
   return [
-    `Day ${entry.day} of ${totalDays} · Proverbs ${entry.chapter}`,
+    `⭐ Day ${entry.day} of ${totalDays}: ${entry.title}`,
     "",
-    entry.summary,
+    ...(entry.milestone ? [entry.milestone, ""] : []),
+    `📖 Today's Reading: Proverbs ${entry.chapter}`,
     "",
+    ...entry.paragraphs.flatMap((p) => [p, ""]),
+    "📜 Key Verse",
     `"${entry.keyVerse.text}"`,
     `${entry.keyVerse.reference} (KJV)`,
     "",
-    `Today's question: ${entry.question}`,
+    "💭 Today's Reflection",
+    entry.question,
     "",
-    "Tap to open today's study, then share your answer below 👇",
+    "👇🏾 Now it's your turn",
+    ...(studyPath ? [`📖 Complete Day ${entry.day} here → ${studyPath}`] : []),
+    "✍🏾 Share your answer to today's question below",
+    "❤️ Read somebody else's response and encourage them in the comments",
+    ...entry.closing.flatMap((c) => ["", c]),
   ].join("\n");
 }
 
@@ -298,7 +318,7 @@ async function runForEvent(
 
   const studyPath = eventDayStudyPath(event.devotionalId, day);
   const linkUrl = `${SITE_URL}${studyPath}`;
-  const { title, content } = buildPostContent(entry, event.totalDays);
+  const { title, content } = buildPostContent(entry, event.totalDays, studyPath);
   const louis = await getLouis();
 
   // 1. The post.
@@ -348,7 +368,7 @@ async function runForEvent(
     title,
     category: COMMUNITY_EVENT_POST_CATEGORY,
     linkUrl,
-    preview: options.dryRun ? buildPostPlainText(entry, event.totalDays) : undefined,
+    preview: options.dryRun ? buildPostPlainText(entry, event.totalDays, studyPath) : undefined,
   };
 
   // 2. Notifications. Only for the event's current day: a backfill of an
