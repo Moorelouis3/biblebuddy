@@ -5986,3 +5986,7 @@ real `origin/main`) — left local `main` untouched, worked from the correct
 detached tip. Nothing to write; MARCUS_HANDOFF.md's existing notes on the
 completed plan and audio-render status are still accurate, not duplicating.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-23T04:00:41Z (hourly chapter notes run)
+Chapter: Isaiah 25 | Duration: 15 min | Sections: 4 | Cards: 19 | Status: pass
+Next up: Isaiah 26
