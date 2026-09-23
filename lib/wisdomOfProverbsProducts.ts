@@ -8,9 +8,7 @@
 // "Coming soon to Amazon" and is not clickable, and the event-page banner
 // stays hidden until the hardcover link is set.
 //
-// JOURNAL COVER: set `journal.image` once the real journal cover file is in
-// /public/books/wisdom-of-proverbs/. Until then the card shows a plain
-// "cover coming soon" frame - never the study book's artwork.
+// All three editions are live on Amazon as of 2026-09-23.
 
 export type WisdomProductKey = "hardcover" | "paperback" | "journal";
 
@@ -37,6 +35,8 @@ export const WISDOM_BOOK_ASSETS = {
   promoBanner: "/books/wisdom-of-proverbs/get-the-physical-book-banner.webp",
   /** Real front cover of the study book. 900x1350 */
   cover: "/books/wisdom-of-proverbs/cover.webp",
+  /** Real front cover of the companion journal (8.5x11 trim). 900x1164 */
+  journalCover: "/books/wisdom-of-proverbs/journal-cover.webp",
   /** Social share image. 1200x630 */
   ogImage: "/books/wisdom-of-proverbs/og.jpg",
 } as const;
@@ -79,13 +79,12 @@ export const WISDOM_OF_PROVERBS_PRODUCTS: Record<WisdomProductKey, WisdomProduct
     price: "$19.99",
     description:
       "A companion for readers who want more room to write, reflect, pray, and apply what they are learning throughout Proverbs.",
-    amazonUrl: null, // Journal is still a KDP draft (2026-09-22) - add once it is live
-    image: null, // TODO(Louis): real journal cover file
+    amazonUrl: "https://www.amazon.com/dp/B0HKN3GNJT", // KDP paperback journal, live (ASIN B0HKN3GNJT)
+    image: WISDOM_BOOK_ASSETS.journalCover,
     ctaLabel: "Buy Journal on Amazon",
     clickEvent: "wisdom_journal_amazon_clicked",
-    // Hidden until Louis says to add it (2026-09-22). Flip to true, add the
-    // Amazon link and the cover image, and the page shows it again.
-    visible: false,
+    // Live on Amazon since 2026-09-23, so it shows alongside the other two.
+    visible: true,
   },
 };
 

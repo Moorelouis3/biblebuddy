@@ -272,49 +272,15 @@ export default function WisdomOfProverbsBooksPage() {
         </ul>
       </section>
 
-      {/* 6. FINAL CTA */}
-      <section
-        className="overflow-hidden rounded-[28px] px-6 py-9 text-center text-[#f6ecd8] sm:px-10 sm:py-12"
-        style={{ background: "linear-gradient(160deg, #120b05 0%, #24170b 60%, #332010 100%)" }}
-      >
-        <h2 className="text-2xl font-bold uppercase tracking-[0.12em] sm:text-3xl" style={{ fontFamily: SERIF, color: "#e3b964" }}>
-          Wisdom Changes Everything
-        </h2>
-        <p className="mx-auto mt-3 max-w-md text-[16px] leading-7 text-[#eadcc2]">
-          Take The Wisdom of Proverbs off the screen and make it part of your daily study.
-        </p>
-        <div className="mx-auto mt-6 max-w-sm">
-          <AmazonCta product={hardcover} placement="final_cta">
-            Get the Hardcover — {hardcover.price}
-          </AmazonCta>
-        </div>
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm font-bold">
-          {otherEditions.map((product) =>
-            product.amazonUrl ? (
-              <a
-                key={product.key}
-                href={product.amazonUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => void trackWisdomBookEvent(product.clickEvent, { product: product.key, placement: "final_links" })}
-                className="text-[#e3b964] underline underline-offset-4"
-              >
-                {product.label} — {product.price}
-              </a>
-            ) : (
-              <span key={product.key} className="text-[#a8977a]">
-                {product.label} — {product.price} (coming soon)
-              </span>
-            ),
-          )}
-        </div>
-        <p className="mx-auto mt-8 max-w-md border-t border-[#4a331a] pt-5 text-sm leading-6 text-[#cdbb99]">
-          The Wisdom of Proverbs community study is free inside Bible Buddy. The printed editions are optional.{" "}
-          <Link href="/events/wisdom-of-proverbs" className="font-black text-[#e3b964] underline underline-offset-4">
-            Join the free study
-          </Link>
-        </p>
-      </section>
+      {/* 6. CLOSING NOTE - no second sales pitch (2026-09-23, Louis: the three
+          editions at the top are the whole page). Only the free-study line
+          stays, so nobody thinks the study costs money. */}
+      <p className="mx-auto max-w-md border-t border-[#e8dac0] pt-6 text-center text-sm leading-6 text-[var(--bb-text-secondary,#5b4a36)]">
+        The Wisdom of Proverbs community study is free inside Bible Buddy. The printed editions are optional.{" "}
+        <Link href="/events/wisdom-of-proverbs" className="font-black text-[#8a6124] underline underline-offset-4">
+          Join the free study
+        </Link>
+      </p>
     </div>
   );
 }
