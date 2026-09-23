@@ -6126,3 +6126,8 @@ npx tsc --noEmit clean. MARCUS_HANDOFF.md already carries today's
 completion note and the standing audio-render line; nothing new to add.
 Next up: nothing — plan complete. Only audio rendering remains, on the
 machine with keys.
+
+
+## 2026-09-23T17:56:19Z (hourly chapter notes run)
+Chapter: Isaiah 38 | Duration: 7 min | Sections: 7 | Cards: 27 | Status: pass
+Next up: Isaiah 39
