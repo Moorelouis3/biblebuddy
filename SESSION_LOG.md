@@ -6141,3 +6141,7 @@ to main; see MARCUS_HANDOFF.md for the full account and a corrected
 rescue-branch name.
 Next up: nothing — plan complete. Only audio rendering remains, on the
 machine with keys.
+
+## 2026-09-23T18:54:26Z (hourly chapter notes run)
+Chapter: Isaiah 39 | Duration: 8 min | Sections: 4 | Cards: 16 | Status: pass
+Next up: Isaiah 40
