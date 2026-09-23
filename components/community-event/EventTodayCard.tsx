@@ -58,31 +58,59 @@ export default function EventTodayCard({
 
   const ready = loadedFor === day;
 
+  // Done days go green (2026-09-23, Louis): the day number never changes, so
+  // the colour is what tells you at a glance whether today still needs doing.
+  const palette = completedToday
+    ? {
+        background: "linear-gradient(180deg, #123020 0%, #081409 100%)",
+        border: "#2f7a4a",
+        eyebrow: "#8fdcab",
+        dayLine: "#b6f0ca",
+        title: "#e7fbec",
+        skeleton: "#14301f",
+        button: "linear-gradient(180deg, #a7ecc0 0%, #46a86c 100%)",
+        buttonText: "#07260f",
+        link: "#8fdcab",
+      }
+    : {
+        background: "linear-gradient(180deg, #17100a 0%, #0c0804 100%)",
+        border: "#3a2c14",
+        eyebrow: "#bfa877",
+        dayLine: "#e8c877",
+        title: "#f4ecdd",
+        skeleton: "#2a1f10",
+        button: "linear-gradient(180deg, #f0d489 0%, #cfa147 100%)",
+        buttonText: "#221503",
+        link: "#e8c877",
+      };
+
   return (
     <section
-      className="rounded-2xl border border-[#3a2c14] p-5 text-center"
-      style={{ background: "linear-gradient(180deg, #17100a 0%, #0c0804 100%)" }}
-      aria-label={`Today: day ${day} of ${event.totalDays}`}
+      className="rounded-2xl border p-5 text-center transition-colors"
+      style={{ background: palette.background, borderColor: palette.border }}
+      aria-label={`Day ${day} of ${event.totalDays}${completedToday ? ", completed" : ", not completed yet"}`}
     >
-      <p className="text-xs font-black uppercase tracking-[0.2em] text-[#bfa877]">Today</p>
-      <p className="mt-1 text-sm font-black tracking-widest text-[#e8c877]">
+      <p className="text-xs font-black uppercase tracking-[0.2em]" style={{ color: palette.eyebrow }}>
+        {completedToday ? "✓ Completed" : "Today"}
+      </p>
+      <p className="mt-1 text-sm font-black tracking-widest" style={{ color: palette.dayLine }}>
         DAY {day} OF {event.totalDays} — PROVERBS {day}
       </p>
       {ready && dayTitle ? (
-        <h2 className="mt-2 text-xl font-black leading-tight" style={{ color: "#f4ecdd" }}>
+        <h2 className="mt-2 text-xl font-black leading-tight" style={{ color: palette.title }}>
           {dayTitle}
         </h2>
       ) : !ready ? (
-        <div className="mx-auto mt-3 h-5 w-2/3 animate-pulse rounded bg-[#2a1f10]" aria-hidden="true" />
+        <div className="mx-auto mt-3 h-5 w-2/3 animate-pulse rounded" style={{ background: palette.skeleton }} aria-hidden="true" />
       ) : null}
-      {completedToday ? (
-        <p className="mt-2 text-xs font-bold text-[#bfa877]">✓ You finished today&apos;s study</p>
-      ) : null}
+      <p className="mt-2 text-xs font-bold" style={{ color: palette.eyebrow }}>
+        {completedToday ? `Day ${day} done — well done!` : "Not done yet"}
+      </p>
 
       <Link
         href={eventDayStudyPath(event.devotionalId, day)}
-        className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl px-5 text-sm font-black tracking-wide text-[#221503] transition hover:brightness-95"
-        style={{ background: "linear-gradient(180deg, #f0d489 0%, #cfa147 100%)" }}
+        className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl px-5 text-sm font-black tracking-wide transition hover:brightness-95"
+        style={{ background: palette.button, color: palette.buttonText }}
       >
         {completedToday ? "REVISIT TODAY'S STUDY" : "OPEN TODAY'S STUDY"}
       </Link>
@@ -90,7 +118,8 @@ export default function EventTodayCard({
       {ready && discussionHref ? (
         <Link
           href={discussionHref}
-          className="mt-3 inline-block text-sm font-black text-[#e8c877] underline underline-offset-4"
+          className="mt-3 inline-block text-sm font-black underline underline-offset-4"
+          style={{ color: palette.link }}
         >
           Join today&apos;s discussion →
         </Link>
