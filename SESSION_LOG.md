@@ -5957,3 +5957,7 @@ wired in), `npx tsc --noEmit` clean. Nothing to write — plan still
 complete, same conclusion as the 00:00 run today. MARCUS_HANDOFF.md
 already notes this; not duplicating it.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-23T02:03:00Z (hourly chapter notes run)
+Chapter: Isaiah 23 | Duration: 17 min | Sections: 5 | Cards: 21 | Status: pass
+Next up: Isaiah 24
