@@ -58,6 +58,10 @@ type Args = {
   remindersOnly: boolean;
   eventSlug: string;
   link: string | null;
+  /** Notify an existing post instead of creating a new one. */
+  postId: string | null;
+  /** Only notify this many people this run (staged rollout / smoke test). */
+  limit: number | null;
 };
 
 function parseArgs(argv: string[]): Args {
@@ -76,6 +80,8 @@ function parseArgs(argv: string[]): Args {
     remindersOnly: argv.includes("--reminders-only"),
     eventSlug: get("event") || "wisdom-of-proverbs",
     link: get("link"),
+    postId: get("post-id"),
+    limit: get("limit") ? Number(get("limit")) : null,
   };
 }
 
@@ -113,6 +119,52 @@ function buildAnnouncement(raw: string) {
   return { title, content: html.join(""), plain };
 }
 
+/**
+ * Everyone approved in the group, minus the author.
+ *
+ * 2026-09-23: the notify_group_broadcast_post trigger does this by itself on
+ * insert, but it takes ~2 minutes to write all ~6,450 rows inside the insert's
+ * own transaction - long enough that the client call can look like it failed
+ * while the fan-out is still running. So the post is inserted with the trigger
+ * skipped and the fan-out happens here instead: chunked, counted, and safe to
+ * re-run (loadAlreadyNotified means nobody is notified twice).
+ */
+async function loadApprovedGroupMembers(supabase: SupabaseClient, groupId: string) {
+  const userIds: string[] = [];
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from("group_members")
+      .select("user_id")
+      .eq("group_id", groupId)
+      .eq("status", "approved")
+      .order("user_id", { ascending: true })
+      .range(from, from + PAGE_SIZE - 1);
+    if (error) throw new Error(`group_members: ${error.message}`);
+    const rows = (data as Array<{ user_id: string }> | null) || [];
+    rows.forEach((row) => userIds.push(row.user_id));
+    if (rows.length < PAGE_SIZE) break;
+  }
+  return [...new Set(userIds)];
+}
+
+/** Who already has a notification for this post, so a re-run never doubles up. */
+async function loadAlreadyNotified(supabase: SupabaseClient, postId: string) {
+  const seen = new Set<string>();
+  for (let from = 0; ; from += PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from("notifications")
+      .select("user_id")
+      .eq("post_id", postId)
+      .eq("type", NOTIFICATION_TYPE)
+      .range(from, from + PAGE_SIZE - 1);
+    if (error) throw new Error(`notifications: ${error.message}`);
+    const rows = (data as Array<{ user_id: string }> | null) || [];
+    rows.forEach((row) => seen.add(row.user_id));
+    if (rows.length < PAGE_SIZE) break;
+  }
+  return seen;
+}
+
 async function loadEventMembers(supabase: SupabaseClient, eventSlug: string, remindersOnly: boolean) {
   const userIds: string[] = [];
   for (let from = 0; ; from += PAGE_SIZE) {
@@ -144,10 +196,13 @@ async function main() {
   const louis = await resolveLouis(supabase);
   const linkUrl = args.link ? (args.link.startsWith("http") ? args.link : `${SITE_URL}${args.link}`) : null;
 
-  // group  -> normal insert, the DB broadcast trigger notifies the whole group
-  // members -> skip the trigger, notify the event's members ourselves
+  // group   -> everyone approved in the Bible Buddy group
+  // members -> just the people signed up for the event
   const broadcast = args.audience === "group";
-  const recipients = broadcast ? [] : await loadEventMembers(supabase, args.eventSlug, args.remindersOnly);
+  const audience = broadcast
+    ? await loadApprovedGroupMembers(supabase, BIBLE_BUDDY_GROUP_ID)
+    : await loadEventMembers(supabase, args.eventSlug, args.remindersOnly);
+  const groupRoute = `/study-groups/${BIBLE_BUDDY_GROUP_ID}/chat`;
 
   console.log("─".repeat(70));
   console.log(post.plain);
@@ -158,56 +213,66 @@ async function main() {
   console.log(
     "Audience:    ",
     broadcast
-      ? "EVERYONE in the Bible Buddy group (the broadcast trigger fans out)"
-      : `${recipients.length} event member(s)${args.remindersOnly ? " with reminders on" : ""}`,
+      ? `${audience.length} approved group member(s) - EVERYONE in Bible Buddy`
+      : `${audience.length} event member(s)${args.remindersOnly ? " with reminders on" : ""}`,
   );
+  if (args.postId) console.log("Existing post:", args.postId, "(notifying only, no new post)");
+  if (args.limit) console.log("Limit:        ", args.limit, "recipient(s) this run");
+
+  if (process.argv.includes("--show-html")) {
+    console.log("\nSTORED HTML:\n" + post.content);
+  }
 
   if (!args.send) {
     console.log("\nDRY RUN - nothing was written. Re-run with --send to post it.");
     return;
   }
 
-  const postId = crypto.randomUUID();
-  await insertGroupPostWithRetry(
-    supabase,
-    {
-      id: postId,
-      group_id: BIBLE_BUDDY_GROUP_ID,
-      user_id: louis.userId,
-      display_name: louis.displayName,
-      title: post.title,
-      category: POST_CATEGORY,
-      content: post.content,
-      link_url: linkUrl,
-    },
-    { skipInsertNotifications: !broadcast },
-  );
-  console.log("\nPosted:", postId);
-
-  if (!broadcast && recipients.length) {
-    const message = `${louis.displayName} posted: ${post.title}`;
-    const pending = recipients.filter((userId) => userId !== louis.userId);
-    let sent = 0;
-    for (let i = 0; i < pending.length; i += NOTIFY_CHUNK) {
-      const chunk = pending
-        .slice(i, i + NOTIFY_CHUNK)
-        .map((userId) => ({
-          user_id: userId,
-          type: NOTIFICATION_TYPE,
-          from_user_id: louis.userId,
-          from_user_name: louis.displayName,
-          article_slug: args.link || null,
-          post_id: postId,
-          comment_id: null,
-          message,
-          is_read: false,
-        }));
-      const { error } = await supabase.from("notifications").insert(chunk);
-      if (error) throw new Error(`notifications insert: ${error.message}`);
-      sent += chunk.length;
-    }
-    console.log("Notified:", sent);
+  let postId = args.postId;
+  if (!postId) {
+    postId = crypto.randomUUID();
+    await insertGroupPostWithRetry(
+      supabase,
+      {
+        id: postId,
+        group_id: BIBLE_BUDDY_GROUP_ID,
+        user_id: louis.userId,
+        display_name: louis.displayName,
+        title: post.title,
+        category: POST_CATEGORY,
+        content: post.content,
+        link_url: linkUrl,
+      },
+      // Always ours to send: the insert-time trigger is unreliable from the
+      // service role, and skipping it means nobody can be notified twice.
+      { skipInsertNotifications: true },
+    );
+    console.log("\nPosted:", postId);
   }
+
+  const already = await loadAlreadyNotified(supabase, postId);
+  const pending = audience.filter((userId) => userId !== louis.userId && !already.has(userId));
+  const batch = args.limit ? pending.slice(0, args.limit) : pending;
+  const message = `${louis.displayName} posted in Bible Buddy Study Group`;
+  let sent = 0;
+  for (let i = 0; i < batch.length; i += NOTIFY_CHUNK) {
+    const chunk = batch.slice(i, i + NOTIFY_CHUNK).map((userId) => ({
+      user_id: userId,
+      type: NOTIFICATION_TYPE,
+      from_user_id: louis.userId,
+      from_user_name: louis.displayName,
+      article_slug: groupRoute,
+      post_id: postId,
+      comment_id: null,
+      message,
+      is_read: false,
+    }));
+    const { error } = await supabase.from("notifications").insert(chunk);
+    if (error) throw new Error(`notifications insert: ${error.message}`);
+    sent += chunk.length;
+    if (sent % 1000 === 0) console.log("  notified", sent, "of", batch.length);
+  }
+  console.log("Notified:", sent, already.size ? `(${already.size} already had one)` : "");
   console.log(`Open it: ${SITE_URL}/study-groups/${BIBLE_BUDDY_GROUP_ID}/chat`);
 }
 

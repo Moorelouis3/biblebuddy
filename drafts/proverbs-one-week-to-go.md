@@ -1,21 +1,28 @@
-# One week until The Wisdom of Proverbs — what time will you study?
+# ⭐ ONE WEEK UNTIL WE START!
 
-In one week, on **October 1st**, we start reading Proverbs together. One chapter a day, 31 days, the whole book.
+On **October 1**, we're starting **The Wisdom of Proverbs: A 31-Day Study of the Book of Proverbs** together here in Bible Buddy.
 
-I want to be honest with you about what this is. It is not a study you drift through. It is a **31-day challenge**. One chapter every single day, even on the days you are tired, even on the days you are busy. That is the whole point.
+**One chapter. Every day. For 31 days.**
 
-Here is the part most people skip. People who decide **when** they will do something are far more likely to actually do it than people who only decide **that** they will. "I will read Proverbs this month" is a wish. "I will read Proverbs at 6:30 in the morning before anyone else is up" is a plan.
+But this is more than just going through the book of Proverbs. I want us to make this a **31-day Bible study challenge.**
 
-So before October 1st gets here, I want you to pick your time.
+**Can you show up every single day for all 31 days?**
 
-👇🏾 **Tell me in the comments:**
+Not just when you feel motivated. Not just when you have extra time. For 31 days, we're intentionally making time to get into God's Word every single day and working through the entire book of Proverbs together.
 
-**1.** What time of day are you going to study? (Be specific — "7am with my coffee", "on my lunch break", "9pm before bed")
+One thing that can help is deciding **before October 1 when you're going to study.**
 
-**2.** Are you in for all 31 days?
+Morning before work?
+During your lunch break?
+In the evening?
+Right before bed?
 
-Reading your answer out loud to this group makes it real. And when day 14 comes and you do not feel like it, you will have 100 people here who know what you said.
+You don't necessarily need an exact time. Just choose a part of your day that you can realistically commit to for the next 31 days.
 
-✨ [Not signed up yet? Join the study here →](/events/wisdom-of-proverbs)
+👇🏾 **Tell us in the comments: When are you planning to do your Proverbs study each day?**
 
-See you October 1st. Chapter one. Let's go.
+📖 **[Join the 31-Day Proverbs Study here →](/events/wisdom-of-proverbs)**
+
+Then come back October 1. Every day we'll have a new study and discussion here in the group as we work through Proverbs **together.**
+
+**31 chapters. 31 days. Let's see if we can finish what we start. 💪🏾📖**
