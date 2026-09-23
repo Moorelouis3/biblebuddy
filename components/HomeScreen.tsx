@@ -23,6 +23,7 @@ import { useSupabaseUser } from "../lib/useSupabaseUser";
 import { recordNewUser } from "../lib/guestSession";
 import VerseOfTheDayCard from "./VerseOfTheDayCard";
 import CommunityEventBanner from "./CommunityEventBanner";
+import HomeStudyToday from "./community-event/HomeStudyToday";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES, getBibleYearDayCoverImage } from "../lib/bibleInOneYearPlan";
@@ -401,6 +402,10 @@ export default function HomeScreen() {
 
       {/* Verse of the Day leads - moved above the journey (Louis, 2026-09-04) */}
       <VerseOfTheDayCard userId={userId} />
+
+      {/* Members of a live community study see today’s day here, so nobody has
+          to open the group to learn that Day N is ready (Louis, 2026-09-23). */}
+      <HomeStudyToday userId={userId} />
 
       {/* Continue Your Journey */}
       <section aria-labelledby="home-journey-heading">
