@@ -6048,3 +6048,12 @@ has all 365 days (day 1 via its own pipeline, 2-365 wired in), `npx tsc
 MARCUS_HANDOFF.md's existing notes on completion and audio-render status
 are still accurate; not duplicating them.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-23T10:57:51Z (hourly chapter notes run)
+Chapter: Isaiah 32 | Duration: 11 min | Sections: 5 | Cards: 37 | Status: pass
+Next up: Isaiah 33
+Note: same recurring stale-local-main environment bug hit again at session
+start (local `main` cached at old `9f6da92` "Day 307" tip, diverged from
+current `origin/main`). Already flagged repeatedly in MARCUS_HANDOFF.md, not
+re-flagging. Worked from a fresh branch off `origin/main` instead of
+touching the stale local `main` ref, then pushed straight to `origin main`.
