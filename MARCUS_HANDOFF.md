@@ -1,3 +1,32 @@
+## Stale local main recurred again (2026-09-23 later run, Bible in One Year day writer run) — wrote a duplicate Day 308 on the stale line, caught before it shipped to main
+Same bug, same family as every entry below, but this run fell for it harder
+than most: the container's detached HEAD at session start actually
+matched real `origin/main` (`35393fb`), and I second-guessed it — ran
+`git rev-parse HEAD origin/main main` and saw the *cached* `origin/main`/
+`main` refs pointing at the old `9f6da92` ("Day 307") tip, concluded HEAD
+was the stale one, and reset onto `9f6da92` instead. Wrote a full Day 308
+script there (John 19-21), wired it into `DAY_SCRIPTS`, `tsc --noEmit`
+clean, committed, then `git push` was rejected non-fast-forward — the
+first real signal something was wrong. Before investigating further I
+pushed that stale-based commit to a new branch named
+`rescue/real-main-through-day308-2026-09-23`; the name is backwards, it
+is actually the stale `9f6da92` line plus a duplicate Day 308, not real
+main — flagging that here so nobody trusts the name. It's redundant with
+several nearly-identical branches from the entries below and safe to
+delete whenever someone's cleaning up. `git fetch origin main` then
+correctly resolved `origin/main` to the real `35393fb` tip, which already
+has its own Day 308 and all 365 days complete (re-verified: `DAY_SCRIPTS`
+covers 2-365 plus Day 1's special case, `tsc --noEmit` clean, 0 errors).
+No duplicate shipped, no data lost — real `main` was never touched, only
+a new throwaway branch was added. Lesson for future runs: a locally
+cached `origin/main` ref that disagrees with the actual checked-out HEAD
+is itself a symptom of this bug — `git fetch origin main` first and trust
+the freshly-fetched ref over any cached one before deciding which side is
+stale. Same ask as every entry below, now with another concrete cost
+example: seed each fresh container's local `main` (and its `origin/main`
+remote-tracking ref) from the real current `origin/main` at container
+start.
+
 ## Stale local main recurred again (2026-09-23, Bible in One Year day writer run) — zero cost, plan already complete anyway
 Same recurring bug as every entry below: fresh container's local `main` was cached at the old `9f6da92` ("Day 307") tip again, no common ancestor with real `origin/main`. Caught immediately before any writing started, no new commits existed on the stale line to rescue-branch (it's the same snapshot already preserved multiple times below), so just renamed it aside locally and reset `main` to `origin/main`. Confirmed (again) all 365 Bible year days are already complete and `tsc` is clean — nothing to write this run regardless. Same ask as every entry below, still unaddressed: seed each fresh container's local `main` from real current `origin/main` at container start.
 

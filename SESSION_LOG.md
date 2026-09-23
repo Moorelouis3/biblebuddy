@@ -6131,3 +6131,13 @@ machine with keys.
 ## 2026-09-23T17:56:19Z (hourly chapter notes run)
 Chapter: Isaiah 38 | Duration: 7 min | Sections: 7 | Cards: 27 | Status: pass
 Next up: Isaiah 39
+
+## 2026-09-23T18:34:09Z (bible year day writer run)
+Day: none — re-verified all 365 days (1-365) already complete in
+DAY_SCRIPTS, tsc clean, 0 errors. Fell for the recurring stale-local-main
+bug harder than usual this run: wrote a duplicate Day 308 on the stale
+`9f6da92` line before catching it on push rejection. No duplicate shipped
+to main; see MARCUS_HANDOFF.md for the full account and a corrected
+rescue-branch name.
+Next up: nothing — plan complete. Only audio rendering remains, on the
+machine with keys.
