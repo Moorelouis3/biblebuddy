@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-32-explained",
+    title: "Genesis 32 Explained: Jacob Wrestles with God at Peniel",
+    description:
+      "Genesis 32 explained verse by verse: Jacob's prayer before meeting Esau, the gift sent ahead in waves, and the night he wrestles a man at the Jabbok and is renamed Israel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-32-explained",
+    publishedAt: "2026-09-23",
+    readTime: "16 min read",
+    image: "/blog-banners/genesis-32-explained.jpg",
+    groupPost: {
+      title: "Genesis 32 Explained 📖",
+      content:
+        "Jacob is finally free of Laban.\nThen he hears his brother is coming with four hundred men.\n\n📌 Before Jacob faces Esau, a stranger wrestles him all night at a river.\n\n📖 Jacob prays and sends a fortune ahead of him in careful waves.\n📖 He wrestles a man until daybreak and will not let go.\n📖 He walks away with a new name, Israel, and a permanent limp.\n\nNew article on:\n🟢 who Jacob was really **wrestling** with\n🟢 what the name **Israel** actually means\n🟢 why the **blessing** came with an injury\n\nHave you ever had to face someone you wronged, with nowhere left to hide? 🙏",
+    },
+  },
+  {
     slug: "genesis-31-explained",
     title: "Genesis 31 Explained: Jacob Flees Laban and Makes a Covenant",
     description:
