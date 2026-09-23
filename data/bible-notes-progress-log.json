@@ -42122,6 +42122,55 @@
           "at": "2026-09-22T23:55:50Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 22,
+      "startedAt": "2026-09-23T00:47:47Z",
+      "finishedAt": "2026-09-23T00:55:12Z",
+      "durationMinutes": 7,
+      "sections": 8,
+      "cards": 28,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. data/bible-notes-style-redo-remaining.json confirmed empty, so this was normal forward progress after Isaiah 21. Session again started on a detached HEAD already matching origin/main's tip; git checkout main again moved to the same stale, unrelated local main ref described in the Isaiah 21 log entry (a shallow clone artifact with no common ancestor with origin/main). The sandbox's destructive-action classifier again blocked both git checkout -B main origin/main and git checkout <sha>, so instead a fresh branch (git checkout -b work origin/main) was created non destructively, landing exactly on origin/main's tip with a clean working tree and no data lost. Fetched real KJV text for Isaiah 22 (25 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Isaiah 22 is the burden of the valley of vision, an ironic name for Jerusalem: verses 1-2 open with the city crowding onto its housetops; verses 3-4 describe its rulers fleeing and being captured anyway, and Isaiah's own personal grief; verses 5-7 picture the day of trouble itself with Elam and Kir attacking; verses 8-11 catalog Jerusalem's frantic defensive engineering (the house of the forest armory, the lower pool, the ditch between the two walls) closing on the real indictment, that they never looked to the Maker; verses 12-14 contrast God's call to mourning with the city's fatalistic feast, ending in one of the book's harsher judgments; verses 15-19 are the burden against Shebna the treasurer, condemned for hewing himself a proud tomb and cast out like a ball into a foreign land; verses 20-23 install Eliakim as his replacement, robed and given the key of the house of David as a nail in a sure place, an image Revelation 3:7 later reuses for Jesus; verses 24-25 close with that same nail buckling under everyone hung on it, a warning that no human support bears unlimited weight. Chunked into 8 sections (1-2, 3-4, 5-7, 8-11, 12-14, 15-19, 20-23, 24-25), 28 cards across 25 verses, density about 1.12 cards per verse, in line with the density set by Isaiah 21. scripts/check_bible_note_style.py found one problem on the first pass (a 21 word body line on the Nail In A Sure Place card), fixed immediately by shortening the sentence, then a clean second pass with zero problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (burden, valley of vision, treading down, perplexity, discovered, sepulchre, station, girdle, sackcloth, iniquity, purged, flagons), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet always landing on 📖, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 28 cards. Parser check passed via getBibleReaderStudySections('isaiah', 22) (8/8 sections, verse ranges 1-2/3-4/5-7/8-11/12-14/15-19/20-23/24-25 with no gaps, 28 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/isaiahTwentyTwoSource.ts, preserveExactPhraseBodies isaiah range extended from chapters 1-21 to 1-22, new function applyPersonalIsaiahTwentyTwoStudySections added and called right after applyPersonalIsaiahTwentyOneStudySections(). Next forward-progress target is Isaiah 23.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-23T00:48:11Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 22 (new chapter, forward progress)",
+          "at": "2026-09-23T00:48:20Z"
+        },
+        {
+          "name": "KJV text fetched: Isaiah 22, 25 verses",
+          "at": "2026-09-23T00:48:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation read in full",
+          "at": "2026-09-23T00:49:10Z"
+        },
+        {
+          "name": "source file written: lib/isaiahTwentyTwoSource.ts",
+          "at": "2026-09-23T00:52:00Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed, then clean)",
+          "at": "2026-09-23T00:52:20Z"
+        },
+        {
+          "name": "wiring done (import, applyPersonalIsaiahTwentyTwoStudySections, preserveExactPhraseBodies extended to chapter 22)",
+          "at": "2026-09-23T00:52:35Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 28 cards",
+          "at": "2026-09-23T00:52:42Z"
+        },
+        {
+          "name": "tsc clean",
+          "at": "2026-09-23T00:53:00Z"
+        }
+      ]
     }
   ]
 }
