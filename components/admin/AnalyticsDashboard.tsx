@@ -17,7 +17,7 @@ export default function AnalyticsDashboard({ embedded = false }: { embedded?: bo
   void embedded;
   const [checked, setChecked] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
-  const [windowKey, setWindowKey] = useState<DashboardWindow>("7d");
+  const [windowKey, setWindowKey] = useState<DashboardWindow>("today");
   const [data, setData] = useState<(DashboardData & { snapshotAt?: string }) | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);

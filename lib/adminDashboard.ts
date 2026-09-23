@@ -232,14 +232,14 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   const profileCols =
     "user_id, created_at, account_type, bible_year_launch_seen_at, preferred_study_mode, signup_source, signup_utm_source, signup_first_touch_source, signup_referrer_url, signup_source_detail, signup_landing_session_id, registered_at, converted_from_guest_at";
 
-  const [profilesAll, events, blogViews, promoEvents, groupPosts, proverbsMembers, emailRows] = await Promise.all([
+  const [profilesAll, events, blogViews, promoEvents, groupPosts, proverbsMembers, emailRowsAll] = await Promise.all([
     fetchAll<ProfileRow>(admin, "profile_stats", profileCols, (q) => q.gte("created_at", widest)),
     fetchAll<EventRow>(admin, "landing_page_events", "session_id, user_id, event_name, referrer, page_path, source, created_at", (q) => q.gte("created_at", sinceIso)),
     fetchAll<BlogViewRow>(admin, "blog_page_views", "session_id, user_id, article_slug, referrer, created_at", (q) => q.gte("created_at", sinceIso)),
     fetchAll<{ event_type: string; created_at: string }>(admin, "blog_promo_events", "event_type, created_at", (q) => q.gte("created_at", sinceIso)),
     fetchAll<{ created_at: string; user_id: string | null }>(admin, "group_posts", "created_at, user_id", (q) => q.gte("created_at", sinceIso).is("parent_post_id", null)),
     fetchAll<{ user_id: string; joined_at: string }>(admin, "community_event_members", "user_id, joined_at", (q) => q.eq("event_slug", "wisdom-of-proverbs"), "joined_at"),
-    admin.from("email_campaign_stats").select("name, sent_at, recipients, opens, clicks").not("sent_at", "is", null).order("sent_at", { ascending: false }).limit(1),
+    admin.from("email_campaign_stats").select("id, name, sent_at, recipients, opens, clicks, site_visits").not("sent_at", "is", null).order("sent_at", { ascending: false }).limit(24),
   ]);
 
   const profiles = profilesAll.filter((p) => p.user_id !== OWNER_USER_ID);
@@ -435,6 +435,15 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   }).length;
   const promoImpressions = promoEvents.filter((e) => e.event_type === "impression" && inCur(e.created_at)).length;
   const promoClicks = promoEvents.filter((e) => e.event_type === "click" && inCur(e.created_at)).length;
+  // Extra blog detail: how many different readers, how views ran day by day,
+  // how many posts went out, and how many views each post is averaging.
+  const blogReaders = new Set(blogCur.map((v) => v.user_id || v.session_id || v.created_at)).size;
+  const blogReadersPrev = new Set(
+    blogViews.filter((v) => inPrev(v.created_at)).map((v) => v.user_id || v.session_id || v.created_at),
+  ).size;
+  const blogSpark = spark(blogCur.map((v) => v.created_at));
+  const publishedInWindow = BLOG_ARTICLES.filter((a) => a.publishedAt && within(new Date(a.publishedAt).toISOString(), current)).length;
+  const postsWithViews = Object.keys(postCounts).length;
 
   // ----- popular activities -----
   const actionCounts: Record<string, number> = {};
@@ -459,7 +468,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     .sort((a, b) => b.value - a.value);
 
   // ----- email -----
-  const lastEmail = (emailRows.data || [])[0] as
+  const lastEmail = (emailRowsAll.data || [])[0] as
     | { name: string; sent_at: string; recipients: number | null; opens: number | null; clicks: number | null }
     | undefined;
   let email: null | { subject: string; sentAt: string; sent: number; opens: number; clicks: number; newUsers: number } = null;
@@ -483,6 +492,39 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       ).length,
     };
   }
+
+  // Every send, newest first, so a month's emails can be compared side by side.
+  const emailHistory = (emailRowsAll.data || []) as Array<{
+    id: string;
+    name: string;
+    sent_at: string;
+    recipients: number | null;
+    opens: number | null;
+    clicks: number | null;
+    site_visits: number | null;
+  }>;
+  const emails = {
+    sends: emailHistory.map((row) => ({
+      id: row.id,
+      subject: row.name,
+      sentAt: row.sent_at,
+      sent: row.recipients || 0,
+      opens: row.opens || 0,
+      clicks: row.clicks || 0,
+      visits: row.site_visits || 0,
+      openRate: rate(row.opens || 0, row.recipients || 0),
+      clickRate: rate(row.clicks || 0, row.recipients || 0),
+    })),
+    last30: (() => {
+      const since = berlinMidnight(addDays(today, -29)).getTime();
+      const recent = emailHistory.filter((r) => new Date(r.sent_at).getTime() >= since);
+      const sent = recent.reduce((n, r) => n + (r.recipients || 0), 0);
+      const opens = recent.reduce((n, r) => n + (r.opens || 0), 0);
+      const clicks = recent.reduce((n, r) => n + (r.clicks || 0), 0);
+      const visits = recent.reduce((n, r) => n + (r.site_visits || 0), 0);
+      return { count: recent.length, sent, opens, clicks, visits, openRate: rate(opens, sent), clickRate: rate(clicks, sent) };
+    })(),
+  };
 
   // ----- community -----
   const memberIds = new Set(proverbsMembers.map((m) => m.user_id));
@@ -595,9 +637,17 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       topPosts,
       sources: blogSources,
       promo: { impressions: promoImpressions, clicks: promoClicks, ctr: rate(promoClicks, promoImpressions) },
+      readers: blogReaders,
+      readersChange: change(blogReaders, blogReadersPrev),
+      spark: blogSpark,
+      published: publishedInWindow,
+      totalPosts: BLOG_ARTICLES.length,
+      postsRead: postsWithViews,
+      viewsPerReader: blogReaders ? Math.round((blogCur.length / blogReaders) * 10) / 10 : 0,
     },
     popularActivities,
     email,
+    emails,
     community,
     books,
     content,

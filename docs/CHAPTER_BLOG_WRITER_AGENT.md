@@ -168,8 +168,8 @@ Add an entry at the **top** of `BLOG_ARTICLES` in `lib/blogContent.ts`:
 - `publishedAt`: the Berlin date, `TZ=Europe/Berlin date +%F`
 - `readTime`: words ÷ 200, e.g. `"12 min read"`
 - `image`: use `"/blog-banners/<slug>.jpg"` when `public/blog-banners/<slug>.jpg`
-  exists (Louis supplied Genesis 1-50, Exodus 1-40 and Leviticus 1-27 by
-  2026-09-22). Check with `ls`.
+  exists (Louis supplied Genesis 1-50, Exodus 1-40, Leviticus 1-27, Numbers
+  1-36, Deuteronomy 1-34 and Joshua 1-24 by 2026-09-23). Check with `ls`.
   Otherwise use the verse-breakdowns fallback `"/Whatisthebiblebanner.png"`, and
   keep ONE line in `MARCUS_HANDOFF.md` listing the chapters waiting on a real
   banner, updating that same line rather than adding a block per chapter.

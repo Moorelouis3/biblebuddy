@@ -511,6 +511,29 @@ export default function AnalyticsDashboardView({
                     <p className="text-xs font-semibold text-[#475569]">came in through a blog post</p>
                   </div>
                 </div>
+                {d.blog.readers !== undefined ? (
+                  <>
+                    {d.blog.spark?.length ? (
+                      <div className="mt-3">
+                        <Sparkline values={d.blog.spark} color="#2563eb" />
+                      </div>
+                    ) : null}
+                    <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                      {[
+                        ["Readers", fmt(d.blog.readers), `${d.blog.viewsPerReader} posts each`],
+                        ["Posts read", fmt(d.blog.postsRead), `of ${fmt(d.blog.totalPosts)} published`],
+                        ["New posts", fmt(d.blog.published), windowLabel.toLowerCase()],
+                        ["Promo clicks", pct(d.blog.promo.ctr), `${fmt(d.blog.promo.clicks)} clicks`],
+                      ].map(([label, value, note]) => (
+                        <div key={label as string} className="rounded-xl bg-[#f5f8fc] px-3 py-2">
+                          <p className="text-[11px] font-bold text-[#64748b]">{label}</p>
+                          <p className="text-lg font-black">{value}</p>
+                          <p className="text-[11px] font-semibold text-[#64748b]">{note}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : null}
                 <div className="mt-4 grid gap-5 sm:grid-cols-2">
                   <div>
                     <p className="mb-2 text-sm font-black">Top posts</p>
@@ -590,6 +613,48 @@ export default function AnalyticsDashboardView({
                   ) : (
                     <p className="text-sm text-[#64748b]">No email recorded yet.</p>
                   )}
+                  {d.emails?.sends?.length ? (
+                    <div className="mt-4 border-t border-[#e8eef7] pt-3">
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <p className="text-sm font-black">Every send</p>
+                        <p className="text-xs font-bold text-[#64748b]">
+                          Last 30 days: {fmt(d.emails.last30.count)} emails · {pct(d.emails.last30.openRate)} opened
+                        </p>
+                      </div>
+                      <div className="mt-2 overflow-x-auto">
+                        <table className="w-full min-w-[420px] text-left text-xs">
+                          <thead>
+                            <tr className="text-[11px] font-bold uppercase tracking-wide text-[#64748b]">
+                              <th className="py-1.5 pr-2 font-bold">Sent</th>
+                              <th className="py-1.5 pr-2 font-bold">Subject</th>
+                              <th className="py-1.5 pr-2 text-right font-bold">To</th>
+                              <th className="py-1.5 pr-2 text-right font-bold">Opened</th>
+                              <th className="py-1.5 pr-2 text-right font-bold">Clicked</th>
+                              <th className="py-1.5 text-right font-bold">Visits</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {d.emails.sends.map((s) => (
+                              <tr key={s.id} className="border-t border-[#eef2f8] align-top">
+                                <td className="whitespace-nowrap py-1.5 pr-2 font-bold text-[#64748b]">
+                                  {new Date(s.sentAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                                </td>
+                                <td className="py-1.5 pr-2 font-semibold text-[#334155]">{s.subject}</td>
+                                <td className="py-1.5 pr-2 text-right font-bold">{fmt(s.sent)}</td>
+                                <td className="py-1.5 pr-2 text-right font-bold">
+                                  {fmt(s.opens)} <span className="font-semibold text-[#64748b]">({pct(s.openRate)})</span>
+                                </td>
+                                <td className="py-1.5 pr-2 text-right font-bold">
+                                  {fmt(s.clicks)} <span className="font-semibold text-[#64748b]">({pct(s.clickRate)})</span>
+                                </td>
+                                <td className="py-1.5 text-right font-bold">{fmt(s.visits)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  ) : null}
                 </Section>
 
                 <Section summary={<SectionSummary icon="👥" title="Community" line={`${fmt(d.community.proverbsTotal)} in Proverbs · ${fmt(d.community.proverbsJoined)} joined this period`} />}>
