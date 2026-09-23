@@ -306,6 +306,11 @@
       "timestamp": "2026-09-23T08:58:30Z",
       "type": "chapter_count_checkpoint",
       "detail": "Isaiah 30 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, or throttling encountered. 270 chapters have shipped since the last checkpoint at 2026-08-28T13:00:36Z (Ezra 5), each in its own separate hourly run, with no block or cooldown event logged anywhere in that entire span. This checkpoint is far overdue against the roughly-every-10-20-chapters guidance, noted honestly rather than guessed away: no run in this stretch logged an intermediate checkpoint even though hundreds of chapters completed."
+    },
+    {
+      "type": "chapter_count_checkpoint",
+      "timestamp": "2026-09-23T21:56:00Z",
+      "detail": "Isaiah 42 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, block, or throttling encountered. 12 chapters have shipped since the last checkpoint at 2026-09-23T08:58:30Z (Isaiah 30), each in its own separate hourly run: Isaiah 31 through 42. No block or cooldown event logged anywhere in that span."
     }
   ]
 }
