@@ -6145,3 +6145,7 @@ machine with keys.
 ## 2026-09-23T18:54:26Z (hourly chapter notes run)
 Chapter: Isaiah 39 | Duration: 8 min | Sections: 4 | Cards: 16 | Status: pass
 Next up: Isaiah 40
+
+## 2026-09-23T19:59:34Z (hourly chapter notes run)
+Chapter: Isaiah 40 | Duration: 13 min | Sections: 11 | Cards: 47 | Status: pass
+Next up: Isaiah 41
