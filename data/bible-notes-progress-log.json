@@ -42505,8 +42505,7 @@
           "at": "2026-09-23T06:57:09Z"
         }
       ]
-    }
-,
+    },
     {
       "book": "Isaiah",
       "chapter": 29,
@@ -42561,6 +42560,59 @@
         {
           "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
           "at": "2026-09-23T07:58:00Z"
+        }
+      ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 30,
+      "startedAt": "2026-09-23T08:47:20Z",
+      "finishedAt": "2026-09-23T08:57:47Z",
+      "durationMinutes": 10,
+      "sections": 10,
+      "cards": 45,
+      "verses": 33,
+      "notes": "New chapter, normal forward progress after Isaiah 29 (priority queue and style-redo backlog both empty). Sections: 1-5 woe to the rebellious children trusting Egypt's shadow instead of asking God, naming the envoys sent to Zoan and Hanes; 6-7 the burden of the beasts of the south, a dangerous Negev caravan route risked for an ally that profits nothing; 8-11 the command to write the warning permanently, the people's rejection of the seers and demand for smooth things, and the wish to silence the Holy One of Israel; 12-14 the iniquity pictured as a swelling breach in a wall and a shattered potter's vessel, total judgment; 15-17 the offer of salvation through returning and rest that Judah refuses, choosing horses and flight instead, ending in a routed remnant; 18-19 the LORD waiting to be gracious and blessing those who wait for him, reversing Judah's earlier refusal; 20-22 the bread of adversity paired with teachers no longer hidden, the word behind you saying this is the way, and idols cast away like an unclean cloth; 23-26 the agricultural and light-filled blessing reversing the chapter's hardship, closing with the LORD binding up the very breach named in verse 13; 27-28 the name of the LORD arriving personally in burning judgment, sifting the nations; 29-33 the closing song of deliverance, the LORD's thundering voice, Assyria beaten down, and Tophet prepared for the Assyrian king. Density about 1.36 cards/verse (33 verses, 45 cards), in the same range as lib/genesisThirtyOneSource.ts and lib/isaiahTwentyNineSource.ts. Style checker found 2 mechanical problems on the first pass (one bullet at 9 words, one card with only 3 recognized bullets because a keycap 7-emoji was not matched by the checker's emoji regex), fixed both, second run clean across all 45 cards. A manual read also caught two body lines using the word \"while\" to stack two ideas in one line (against section 3's line rules), split into separate lines, re-verified clean. Parser check confirmed 10 sections with no verse gaps (1-5/6-7/8-11/12-14/15-17/18-19/20-22/23-26/27-28/29-33) and 45 total cards matching design. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/isaiahThirtySource.ts, preserveExactPhraseBodies isaiah range extended from chapters 1-29 to 1-30, and a new replaceStudySectionsForBookRange('isaiah', 30, 30, ISAIAH_THIRTY_PERSONAL_SECTIONS) call added inside the existing applyPersonalIsaiahTwentySixStudySections() function right after chapter 29, correctly overriding the legacy ISAIAH_16_66_PERSONAL_SECTIONS bulk placeholder for chapter 30 only, chapters 31-66 of that legacy file left untouched. Next forward-progress target is Isaiah 31.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-23T08:47:20Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 30 (new, forward progress; priority queue and style-redo backlog both empty)",
+          "at": "2026-09-23T08:47:44Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 30 (33 verses) from raw.githubusercontent.com aruljohn/Bible-kjv",
+          "at": "2026-09-23T08:47:44Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-23T08:49:30Z"
+        },
+        {
+          "name": "source file written: lib/isaiahThirtySource.ts (10 sections, 45 cards)",
+          "at": "2026-09-23T08:56:05Z"
+        },
+        {
+          "name": "style checker (check_bible_note_style.py) clean, 45 cards, after fixing 2 mechanical issues plus 2 manual line-rule fixes",
+          "at": "2026-09-23T08:56:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 30, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-23T08:56:55Z"
+        },
+        {
+          "name": "parser check passed: 10 sections, 45 cards, verbatim text",
+          "at": "2026-09-23T08:57:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-23T08:57:47Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md, usage-events.json checkpoint)",
+          "at": "2026-09-23T09:00:02Z"
         }
       ]
     }

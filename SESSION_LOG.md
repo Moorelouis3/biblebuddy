@@ -6029,3 +6029,7 @@ Next up: Isaiah 29
 ## 2026-09-23T07:56:08Z (hourly chapter notes run)
 Chapter: Isaiah 29 | Duration: 10 min | Sections: 7 | Cards: 27 | Status: pass
 Next up: Isaiah 30
+
+## 2026-09-23T08:58:00Z (hourly chapter notes run)
+Chapter: Isaiah 30 | Duration: 10 min | Sections: 10 | Cards: 45 | Status: pass
+Next up: Isaiah 31
