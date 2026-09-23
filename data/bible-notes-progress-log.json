@@ -43380,6 +43380,59 @@
           "at": "2026-09-23T22:58:48Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 44,
+      "startedAt": "2026-09-23T23:46:33Z",
+      "finishedAt": "2026-09-23T23:57:30Z",
+      "durationMinutes": 11,
+      "sections": 8,
+      "cards": 48,
+      "verses": 28,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress after Isaiah 43 (priority queue and style-redo backlog both empty). Fetched real KJV text from raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Density 1.71 cards/verse. Style checker found 7 mechanical problems (bullet word counts over 8, an inline emoji list miscounted as bullets) on first pass, fixed, then clean. Also did a manual eye pass adding quote marks around 13 defined terms to match the established bold-via-quotes convention from the reference chapters. Parser check and tsc both clean. Wired into lib/bibleReaderStudyNotes.ts.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-23T23:47:00Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 44 (new chapter, normal forward progress)",
+          "at": "2026-09-23T23:47:05Z"
+        },
+        {
+          "name": "KJV text fetched (Isaiah 44, 28 verses)",
+          "at": "2026-09-23T23:47:15Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-09-23T23:47:36Z"
+        },
+        {
+          "name": "source file written: lib/isaiahFortyFourSource.ts",
+          "at": "2026-09-23T23:53:00Z"
+        },
+        {
+          "name": "style checker clean (7 problems found and fixed, plus 13 eye-pass quote fixes)",
+          "at": "2026-09-23T23:55:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts",
+          "at": "2026-09-23T23:55:25Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 48 cards)",
+          "at": "2026-09-23T23:55:45Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-09-23T23:56:43Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-09-23T23:57:30Z"
+        }
+      ]
     }
   ]
 }
