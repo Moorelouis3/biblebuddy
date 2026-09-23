@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-29-explained",
+    title: "Genesis 29 Explained: Jacob Meets Rachel and Is Deceived by Laban",
+    description:
+      "Genesis 29 explained verse by verse: Jacob meets Rachel at the well, Laban's wedding night deception, and the birth of Leah's first four sons.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-29-explained",
+    publishedAt: "2026-09-23",
+    readTime: "15 min read",
+    image: "/blog-banners/genesis-29-explained.jpg",
+    groupPost: {
+      title: "Genesis 29 Explained 📖",
+      content:
+        "A man who tricked his blind father just got tricked himself.\nOn his own wedding night.\n\n📌 Jacob works seven years, then wakes up married to the wrong sister.\n\n📖 He meets Rachel at a well and rolls the stone alone.\n📖 Laban swaps Leah in under cover of darkness.\n📖 Leah names her fourth son pure praise, no bargaining.\n\nNew article on:\n🟢 why Jacob's **wedding night** goes wrong\n🟢 what **tender eyed** actually means\n🟢 how this chapter leads straight to **Jesus**\n\nHave you ever gotten back the exact thing you once gave out? 🙏",
+    },
+  },
+  {
     slug: "genesis-28-explained",
     title: "Genesis 28 Explained: Jacob's Ladder and the Vow at Bethel",
     description:
