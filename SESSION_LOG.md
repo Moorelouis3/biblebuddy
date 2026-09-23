@@ -6049,6 +6049,17 @@ MARCUS_HANDOFF.md's existing notes on completion and audio-render status
 are still accurate; not duplicating them.
 Next up: nothing — plan complete. Only audio rendering remains.
 
+## 2026-09-23T11:27:57Z (bible year day writer run)
+Re-verified plan complete, no new day to write. `npm install` clean, HEAD
+was already correctly on real `origin/main` (`d28a584`, Isaiah 32 era);
+only local `main` branch ref was stale (old `9f6da92` "Day 307" tip, same
+recurring bug already logged repeatedly in MARCUS_HANDOFF.md — not
+re-flagging, zero cost this time, no rescue branch needed). Reset local
+`main` to `origin/main`. `DAY_SCRIPTS` has all 365 days (day 1 via its own
+pipeline, 2-365 wired in), `npx tsc --noEmit` clean (exit 0).
+MARCUS_HANDOFF.md's audio-render note is still accurate; not duplicating.
+Next up: nothing — plan complete. Only audio rendering remains.
+
 ## 2026-09-23T10:57:51Z (hourly chapter notes run)
 Chapter: Isaiah 32 | Duration: 11 min | Sections: 5 | Cards: 37 | Status: pass
 Next up: Isaiah 33
