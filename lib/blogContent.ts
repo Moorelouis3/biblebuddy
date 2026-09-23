@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-30-explained",
+    title: "Genesis 30 Explained: Rachel, Leah, and Jacob's Growing Flocks",
+    description:
+      "Genesis 30 explained verse by verse: Rachel and Leah bargain through their maids, the mandrakes trade, Joseph's birth, and Jacob's deal with Laban's flocks.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-30-explained",
+    publishedAt: "2026-09-23",
+    readTime: "15 min read",
+    image: "/blog-banners/genesis-30-explained.jpg",
+    groupPost: {
+      title: "Genesis 30 Explained 📖",
+      content:
+        "Two sisters at war, and both hand over their own servants to win.\nOne plant becomes the strangest bargain in Genesis.\n\n📌 Rachel finally gets a son, years after her sister's first four.\n\n📖 Rachel and Leah both give their maids to Jacob for more sons.\n📖 A trade over mandrakes decides who sleeps with Jacob that night.\n📖 Jacob grows rich off Laban's own speckled flocks.\n\nNew article on:\n🟢 what **mandrakes** actually were\n🟢 why these **names** still matter today\n🟢 the trick with the **rods** and what really caused it\n\nHave you ever waited years for something while someone else seemed to get it easy? 🙏",
+    },
+  },
+  {
     slug: "genesis-29-explained",
     title: "Genesis 29 Explained: Jacob Meets Rachel and Is Deceived by Laban",
     description:
