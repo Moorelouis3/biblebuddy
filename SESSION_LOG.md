@@ -5961,3 +5961,14 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-23T02:03:00Z (hourly chapter notes run)
 Chapter: Isaiah 23 | Duration: 17 min | Sections: 5 | Cards: 21 | Status: pass
 Next up: Isaiah 24
+
+## 2026-09-23T02:24:00Z (bible year day writer run)
+Re-verified: `npm install` clean, `DAY_SCRIPTS` has all 365 days (day 1 via
+its own pipeline, 2-365 wired in), `npx tsc --noEmit` clean. Also hit the
+same recurring stale-local-main bug again (local `main` still stuck at the
+old `9f6da92` "Day 307" tip; detached HEAD was already correctly on real
+`origin/main`) — left local `main` untouched as before, worked from the
+correct detached tip. Nothing to write; MARCUS_HANDOFF.md already has an
+accurate, current note on the completed plan and the audio-render status,
+so not duplicating it.
+Next up: nothing — plan complete. Only audio rendering remains.
