@@ -662,14 +662,22 @@ function isBibleBuddyTvSharePost(post: Pick<Post, "link_url" | "title">) {
 // mybiblebuddy.net URL. Returns the internal path so they can render as a real
 // in-app button: the generic link card below labels them "Video" and opens them
 // with target="_blank", which does not reliably open from the installed app.
-/** Our own study pages (e.g. a devotional day) open inside the app, not as an outside link. */
+/**
+ * Our own pages (a devotional day, a community event, the printed editions)
+ * open inside the app as a real button, never as an outside link - the generic
+ * link card uses target="_blank", which does not reliably open from the
+ * installed app. Each kind gets its own label so the button says what it does.
+ */
 function parseInternalStudyPath(linkUrl: string | null | undefined) {
   if (!linkUrl) return null;
   try {
     const parsed = new URL(linkUrl, "https://www.mybiblebuddy.net");
     if (!/(^|\.)mybiblebuddy\.net$/i.test(parsed.hostname)) return null;
-    if (!/^\/devotionals\/[^/?#]+/.test(parsed.pathname)) return null;
-    return parsed.pathname;
+    const path = `${parsed.pathname}${parsed.search}`;
+    if (/^\/devotionals\/[^/?#]+/.test(parsed.pathname)) return { path, label: "📖 Open today's study" };
+    if (/^\/events\/[^/?#]+/.test(parsed.pathname)) return { path, label: "✨ Open the study page" };
+    if (/^\/books\/[^/?#]+/.test(parsed.pathname)) return { path, label: "📕 See the printed editions" };
+    return null;
   } catch {
     return null;
   }
@@ -7609,10 +7617,10 @@ export default function GroupChatPage() {
 
           {activeFeedStudyPath && (
             <Link
-              href={activeFeedStudyPath}
+              href={activeFeedStudyPath.path}
               className="mt-4 flex w-full items-center justify-center gap-2 rounded-full bg-[#0056fd] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#003bb0]"
             >
-              📖 Open today&apos;s study
+              {activeFeedStudyPath.label}
             </Link>
           )}
 
@@ -7949,11 +7957,11 @@ export default function GroupChatPage() {
               )}
               {studyPath && (
                 <Link
-                  href={studyPath}
+                  href={studyPath.path}
                   onClick={(event) => event.stopPropagation()}
                   className="mt-3 flex w-full items-center justify-center gap-2 rounded-full bg-[#0056fd] px-5 py-3 text-sm font-bold text-white transition hover:bg-[#003bb0]"
                 >
-                  📖 Open today&apos;s study
+                  {studyPath.label}
                 </Link>
               )}
               {post.link_url && !blogArticlePath && !studyPath && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (() => {
