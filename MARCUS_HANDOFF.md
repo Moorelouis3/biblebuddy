@@ -1,3 +1,22 @@
+## Stale local main recurred again (2026-09-23, Bible in One Year Day 308 run) — much further diverged this time, still unfixed at the environment level
+Same root cause as every entry below, but this occurrence is worse than most:
+the fresh container's detached HEAD was sitting on a completely unrelated
+history — a chain of Isaiah 37/38 chapter-notes and "day writer: re-confirm
+all 365 days complete, nothing to write" commits with **no common ancestor**
+at all with real `origin/main` (`git merge-base` returned nothing). That
+stale line's own "365 days complete" commits were themselves wrong — real
+`origin/main` only had scripts through Day 307. Had I trusted the stale
+HEAD's "nothing to do" conclusion instead of double-checking against
+`origin/main`, this run would have written nothing and falsely reported the
+whole series done. Caught it by diffing `git rev-parse HEAD origin/main
+main` before writing anything. Preserved the stale line as branch
+`stale-snapshot-2026-09-23` (in case anything on it is real, unpublished
+work — it didn't look like it, but I didn't delete it) and reset local
+`main` to real `origin/main` before starting. Same ask as every entry below,
+still unaddressed: seed each fresh container's local `main` from real
+current `origin/main` at container start, so this stops costing a
+verification step (or worse) on every single run.
+
 ## Stale local main recurred again (2026-09-18, Bible in One Year Day 292 run) — still unfixed at the environment level
 Same root cause as the many entries below: fresh checkout's local `main`
 was stuck at an old tip ("Email analytics: welcome email only..." /
@@ -299,7 +318,7 @@ that claiming full certainty either way goes beyond the text. Flagging per
 the format spec's doctrinal-sensitivity rule so Louis can read it himself.
 
 ## Bible in One Year days waiting on local audio render
-Scripts through Day 307 are written and pushed, but none of them have been
+Scripts through Day 308 are written and pushed, but none of them have been
 rendered — this environment has no OPENAI_API_KEY or Supabase service key.
 Run `npx tsx scripts/render-pending-bible-year-days.ts` on a machine that
 has those keys; it auto-detects every day with a script but no current

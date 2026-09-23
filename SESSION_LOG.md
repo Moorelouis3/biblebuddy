@@ -4813,3 +4813,8 @@ Next up: Day 307.
 ## 2026-09-18T20:31:00Z (bible year day writer run)
 Day: 307 — Spirit, Prayer, and Arrest (John 16-18) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only.
 Next up: Day 308. Stopping here — two-day budget cap for this run reached.
+
+## 2026-09-23T18:29:00Z (bible year day writer run)
+Day: 308 — Finished Work and Restored Disciples (John 19-21) | Runtime: audio not rendered (no API/Supabase credentials in this environment) | Cast: narrator only. tsc clean.
+Note: fresh container's local `main` was again the stale, unrelated snapshot (see MARCUS_HANDOFF.md) — recovered onto real `origin/main` before writing anything; real main had days through 307, not 365 as the stale line falsely showed.
+Next up: Day 309.
