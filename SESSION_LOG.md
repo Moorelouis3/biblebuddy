@@ -6160,3 +6160,7 @@ as firing hourly forever for nothing; disabled it via update_trigger
 waste. No code changed. MARCUS_HANDOFF.md updated with the trigger fix.
 Next up: nothing — plan complete. Only audio rendering remains, on the
 machine with keys.
+
+## 2026-09-23T20:58:34Z (hourly chapter notes run)
+Chapter: Isaiah 41 | Duration: 13 min | Sections: 9 | Cards: 45 | Status: pass
+Next up: Isaiah 42
