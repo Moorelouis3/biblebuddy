@@ -6001,3 +6001,7 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-23T04:56:23Z (hourly chapter notes run)
 Chapter: Isaiah 26 | Duration: 10 min | Sections: 4 | Cards: 29 | Status: pass
 Next up: Isaiah 27
+
+## 2026-09-23T05:55:55Z (hourly chapter notes run)
+Chapter: Isaiah 27 | Duration: 9 min | Sections: 4 | Cards: 28 | Status: pass
+Next up: Isaiah 28
