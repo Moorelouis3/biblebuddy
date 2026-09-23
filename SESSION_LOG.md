@@ -6080,3 +6080,7 @@ DAY_SCRIPTS has days 2-365 wired in plus Day 1 via its own dedicated
 pipeline (buildDayOneSegments), npx tsc --noEmit clean. Nothing to write.
 MARCUS_HANDOFF.md's audio-render note is still accurate; not duplicating.
 Next up: nothing — only audio rendering remains, on the machine with keys.
+
+## 2026-09-23T12:57:42Z (hourly chapter notes run)
+Chapter: Isaiah 34 | Duration: 11 min | Sections: 5 | Cards: 33 | Status: pass
+Next up: Isaiah 35
