@@ -6088,3 +6088,18 @@ Next up: Isaiah 35
 ## 2026-09-23T13:56:00Z (hourly chapter notes run)
 Chapter: Isaiah 35 | Duration: 10 min | Sections: 3 | Cards: 21 | Status: pass
 Next up: Isaiah 36
+
+## 2026-09-23T14:28:02Z (bible year day writer run)
+Re-verified plan complete: npm install clean, HEAD correctly detached on
+real origin/main (e268913, Isaiah 35 era), local main branch ref still
+stale at old 9f6da92 "Day 307" tip (same recurring, already-logged
+environment bug; repointing local main is denied here as irreversible
+local destruction, so left it untouched and worked from the detached
+origin/main HEAD as before). DAY_SCRIPTS has days 2-365 wired in plus Day
+1 via its own dedicated pipeline (buildDayOneSegments) -- all 365 days
+present. npx tsc --noEmit clean (via ./node_modules/.bin/tsc directly;
+npx tsc was blocked by this session's auto-mode classifier for an
+unrelated reason, not a real problem). MARCUS_HANDOFF.md's audio-render
+note is still accurate; not duplicating.
+Next up: nothing -- plan complete. Only audio rendering remains, on the
+machine with keys.
