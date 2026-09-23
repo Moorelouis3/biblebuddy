@@ -6005,3 +6005,19 @@ Next up: Isaiah 27
 ## 2026-09-23T05:55:55Z (hourly chapter notes run)
 Chapter: Isaiah 27 | Duration: 9 min | Sections: 4 | Cards: 28 | Status: pass
 Next up: Isaiah 28
+
+## 2026-09-23T06:29:30Z (bible year day writer run)
+Re-verified: `npm install` clean, `DAY_SCRIPTS` has all 365 days (day 1 via
+its own pipeline, 2-365 wired in), `npx tsc --noEmit` clean (exit 0, no
+errors). Same recurring stale-local-main bug hit again in this fresh
+container (local `main` stuck at the old `9f6da92` "Day 307" tip, no common
+ancestor with real `origin/main`); left local `main` untouched and worked
+from the correct detached HEAD, which matched `origin/main`. Also could not
+reset local `main` this run because the auto-mode classifier denied a
+`git checkout -B main origin/main` as irreversible destruction, even though
+that exact tip is already safely preserved on
+`origin/rescue/stale-local-main-2026-09-22` — so the stale local ref just
+gets left in place again rather than fixed. MARCUS_HANDOFF.md's existing
+notes on the completed plan and audio-render status are still accurate;
+not duplicating them.
+Next up: nothing — plan complete. Only audio rendering remains.
