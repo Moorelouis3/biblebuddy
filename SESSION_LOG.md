@@ -6037,3 +6037,14 @@ Next up: Isaiah 31
 ## 2026-09-23T09:57:00Z (hourly chapter notes run)
 Chapter: Isaiah 31 | Duration: 10 min | Sections: 4 | Cards: 22 | Status: pass
 Next up: Isaiah 32
+
+## 2026-09-23T10:25:57Z (bible year day writer run)
+Same recurring stale-local-main bug hit again (fresh container's local
+`main` cached at old `9f6da92` "Day 307" tip, no common ancestor with real
+`origin/main`). Caught before any writing, worked from detached HEAD on
+real `origin/main` instead. Re-verified: `npm install` clean, `DAY_SCRIPTS`
+has all 365 days (day 1 via its own pipeline, 2-365 wired in), `npx tsc
+--noEmit` clean (exit 0). Nothing to write — plan is complete.
+MARCUS_HANDOFF.md's existing notes on completion and audio-render status
+are still accurate; not duplicating them.
+Next up: nothing — plan complete. Only audio rendering remains.
