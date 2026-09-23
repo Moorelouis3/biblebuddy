@@ -5927,3 +5927,15 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-22T23:55:54Z (hourly chapter notes run)
 Chapter: Isaiah 21 | Duration: 10 min | Sections: 6 | Cards: 22 | Status: pass
 Next up: Isaiah 22
+
+## 2026-09-23T00:00:00Z (bible year day writer run)
+Ran the checklist: `npm install`, hit the recurring stale-local-main bug
+again (local `main` cached at old `9f6da92` "Day 307" tip, no common
+ancestor with real `origin/main`) — same well-documented pattern as every
+prior entry in MARCUS_HANDOFF.md, no new commits on the stale line this
+time so nothing to rescue-branch. Renamed the stale local branch aside and
+reset `main` to `origin/main`. Verified `DAY_SCRIPTS`: all 365 days
+present (day 1 via its own pipeline, 2-365 wired in), `npx tsc --noEmit`
+clean. Nothing to write — plan still complete. MARCUS_HANDOFF.md's
+audio-render note is still accurate and untouched.
+Next up: nothing — plan complete. Only audio rendering remains.
