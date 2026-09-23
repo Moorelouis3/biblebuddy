@@ -42969,6 +42969,63 @@
           "at": "2026-09-23T14:58:22Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 37,
+      "startedAt": "2026-09-23T15:46:17Z",
+      "finishedAt": "2026-09-23T15:59:03Z",
+      "durationMinutes": 12.77,
+      "sections": 9,
+      "cards": 49,
+      "verses": 38,
+      "notes": "New chapter, normal forward progress after Isaiah 36 (style-redo backlog empty, data/bible-notes-style-redo-remaining.json remaining: []). npm install ran clean (596 packages, fresh clone). Session started with local HEAD detached from refs/heads/main at a stale commit; git fetch origin main plus git checkout -B main origin/main restored a normal tracking branch before any work began. Fetched real KJV text for Isaiah 37 (38 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Isaiah 37 closes the Sennacherib crisis begun in chapter 36: Hezekiah tears his clothes and prays in the temple, sends Eliakim, Shebna, and the elders of the priests to Isaiah, and receives God's first promise that Sennacherib will hear a rumor and fall by the sword in his own land (1-7); Sennacherib's renewed written threat naming Libnah, Lachish, Tirhakah king of Ethiopia, and a roll call of already conquered cities and kings (8-13); Hezekiah spreading the letter before the LORD and praying to the God enthroned between the cherubims, admitting Assyria's real conquests while asking that all the kingdoms of the earth may know the LORD alone is God (14-20); Isaiah's taunt song where the daughter of Zion mocks Sennacherib back and his boasts about Lebanon's cedars and drying up rivers are named as borrowed Assyrian royal rhetoric (21-25); God's reveal that Assyria's rise was planned long before Sennacherib was born, the grass on the housetops image, God's awareness of Sennacherib's private rage, and the hook in the nose and bridle in the lips that will lead him home like a captured animal (26-29); the sign of the remnant eating self grown grain for two years before normal sowing resumes, and the LORD of hosts' own zeal guaranteeing the outcome (30-32); the promise that Sennacherib will not even build a siege bank against Jerusalem and will return by the same road he came, for the sake of God's own name and David's (33-35); and the angel of the LORD striking one hundred and eighty five thousand Assyrians in a single night, Sennacherib's retreat to Nineveh fulfilling the chapter's opening prophecy exactly, and his murder by his own sons while worshipping his god Nisroch, with Esarhaddon succeeding him (36-38). Split into 9 sections (1-4, 5-7, 8-13, 14-20, 21-25, 26-29, 30-32, 33-35, 36-38); the original draft chunked 21-29 as one 9-verse section, which was caught and re-split into 21-25 and 26-29 after discovering the reader's enforceStudySectionVerseLimit(8) silently duplicates a section's entire card set into two Part 1/Part 2 halves whenever a section spans more than 8 verses. A missing verse 28 card (I Know Thy Abode, And Thy Going Out, And Thy Coming In) was added in the same pass. Density about 1.29 cards/verse (38 verses, 49 cards). scripts/check_bible_note_style.py passed clean on the first full run after the split fix, zero problems across all 49 cards, no hyphens/em dashes/semicolons/contractions/banned words, no duplicate titles or repeated emoji within any card. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (rent, sackcloth, Rabshakeh, scribe, remnant, cherubims, fourscore, bank, zeal), closes on meaning rather than mechanics, and uses exactly four bullets each three to eight words with a distinct emoji within each card ending on 📖 or ➡️. Parser check passed via getBibleReaderStudySections('isaiah', 37) (9/9 sections, verse ranges 1-4/5-7/8-13/14-20/21-25/26-29/30-32/33-35/36-38 with no gaps and no duplication, 49 total cards, text rendered verbatim, confirmed with npx tsx). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/isaiahThirtySevenSource.ts, preserveExactPhraseBodies isaiah range extended from chapters 1-36 to 1-37, new call replaceStudySectionsForBookRange(\"isaiah\", 37, 37, ISAIAH_THIRTY_SEVEN_PERSONAL_SECTIONS) added inside the existing Isaiah-section-applying function, already invoked at module load). Next forward-progress target is Isaiah 38.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-23T15:48:04Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 37 (new chapter, forward progress; redo-remaining empty)",
+          "at": "2026-09-23T15:48:18Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 37",
+          "at": "2026-09-23T15:48:30Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-09-23T15:54:12Z"
+        },
+        {
+          "name": "source file written: lib/isaiahThirtySevenSource.ts (8 sections, 48 cards)",
+          "at": "2026-09-23T15:54:12Z"
+        },
+        {
+          "name": "style checker clean: 48 cards, no problems",
+          "at": "2026-09-23T15:54:14Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range 1-37, replaceStudySectionsForBookRange call)",
+          "at": "2026-09-23T15:54:28Z"
+        },
+        {
+          "name": "fixed 9-verse section split (verse-limit auto-split was duplicating cards), added missing verse 28 card, style checker clean: 49 cards",
+          "at": "2026-09-23T15:56:19Z"
+        },
+        {
+          "name": "parser check passed: 9 sections, 49 cards, no duplication, no throw",
+          "at": "2026-09-23T15:56:19Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-23T15:57:58Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json entry appended, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + totals updated)",
+          "at": "2026-09-23T15:59:08Z"
+        }
+      ]
     }
   ]
 }
