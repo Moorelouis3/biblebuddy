@@ -5990,3 +5990,10 @@ Next up: nothing — plan complete. Only audio rendering remains.
 ## 2026-09-23T04:00:41Z (hourly chapter notes run)
 Chapter: Isaiah 25 | Duration: 15 min | Sections: 4 | Cards: 19 | Status: pass
 Next up: Isaiah 26
+
+## 2026-09-23T04:23:58Z (bible year day writer run)
+Re-verified: `npm install` clean, `DAY_SCRIPTS` has all 365 days (day 1 via
+its own pipeline, 2-365 wired in), `npx tsc --noEmit` clean (exit 0, no
+errors). MARCUS_HANDOFF.md's single audio-render note is already accurate
+and up to date; not duplicating it. Nothing to write this run.
+Next up: nothing — plan complete. Only audio rendering remains.
