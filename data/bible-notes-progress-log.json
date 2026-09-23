@@ -42452,6 +42452,59 @@
           "at": "2026-09-23T05:55:55Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 28,
+      "startedAt": "2026-09-23T06:47:40Z",
+      "finishedAt": "2026-09-23T06:57:09Z",
+      "durationMinutes": 10,
+      "sections": 11,
+      "cards": 30,
+      "verses": 29,
+      "notes": "New chapter, normal forward progress after Isaiah 27 (priority queue and style-redo backlog both empty). Sections: 1-4 the fading crown of Ephraim's drunken pride versus the coming judgment storm (Assyria); 5-6 the LORD himself as the true, lasting crown for the faithful remnant; 7-8 Judah's own priests and prophets caught in the same drunkenness; 9-10 the leaders mocking Isaiah's teaching as baby talk (precept upon precept); 11-13 God answering that mockery by speaking through the Assyrian invaders' foreign tongue, and the mockers' own words turned into their snare; 14-15 the scornful rulers in Jerusalem and their covenant with death (likely the Egypt alliance); 16-17 the tried cornerstone laid in Zion as the true foundation, contrasted with that false refuge; 18-19 the covenant with death disannulled by the overflowing scourge; 20-21 the too-short-bed proverb and the strange work at Perazim and Gibeon (God turning against his own people for once); 22-23 the final warning against mockery and the determined consumption; 24-29 the closing parable of the plowman, wisdom in farming technique used to show that God's judgment is purposeful, not random cruelty. Density about 1.03 cards/verse, matching the lib/genesisThirtyOneSource.ts reference implementation's density rather than the older 2-3-cards-per-verse Insight Cards model. Style checker clean after one mechanical fix (an over length bullet). Parser check and tsc both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-23T06:47:40Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 28 (new, forward progress)",
+          "at": "2026-09-23T06:47:40Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 28 (29 verses)",
+          "at": "2026-09-23T06:48:26Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-23T06:48:26Z"
+        },
+        {
+          "name": "source file written: lib/isaiahTwentyEightSource.ts (11 sections, 32 cards)",
+          "at": "2026-09-23T06:54:07Z"
+        },
+        {
+          "name": "style checker (check_bible_note_style.py) clean, 30 cards, 11 sections",
+          "at": "2026-09-23T06:54:38Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange)",
+          "at": "2026-09-23T06:54:53Z"
+        },
+        {
+          "name": "parser check passed: 11 sections, 30 cards, verbatim text",
+          "at": "2026-09-23T06:55:13Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-23T06:56:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-23T06:57:09Z"
+        }
+      ]
     }
   ]
 }

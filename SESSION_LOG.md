@@ -6021,3 +6021,7 @@ gets left in place again rather than fixed. MARCUS_HANDOFF.md's existing
 notes on the completed plan and audio-render status are still accurate;
 not duplicating them.
 Next up: nothing — plan complete. Only audio rendering remains.
+
+## 2026-09-23T06:58:30Z (hourly chapter notes run)
+Chapter: Isaiah 28 | Duration: 10 min | Sections: 11 | Cards: 30 | Status: pass
+Next up: Isaiah 29
