@@ -9,7 +9,8 @@
  */
 
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
+import { supabase } from "../../lib/supabaseClient";
 import type { CommunityEvent, CommunityEventState } from "../../lib/communityEvents";
 import { eventDayStudyPath } from "../../lib/communityEventDays";
 
@@ -36,16 +37,47 @@ export default function EventProgressTracker({
   event,
   state,
   completedDays,
+  onReset,
 }: {
   event: CommunityEvent;
   state: CommunityEventState;
   completedDays: Set<number>;
+  onReset?: () => void;
 }) {
   const total = event.totalDays;
   let doneCount = 0;
   for (let d = 1; d <= total; d += 1) if (completedDays.has(d)) doneCount += 1;
   const pct = Math.round((doneCount / total) * 100);
   const today = state.phase === "live" ? state.communityDay : null;
+
+  // Start over: clears this member's progress for the study's devotional,
+  // using the same endpoint the Bible Study reset already uses.
+  const [confirming, setConfirming] = useState(false);
+  const [resetting, setResetting] = useState(false);
+  const [resetError, setResetError] = useState<string | null>(null);
+
+  const resetProgress = async () => {
+    setResetting(true);
+    setResetError(null);
+    try {
+      const { data } = await supabase.auth.getSession();
+      const token = data.session?.access_token;
+      if (!token) throw new Error("You need to be signed in to reset your progress.");
+      const res = await fetch("/api/devotionals/reset-progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ devotionalId: event.devotionalId }),
+      });
+      const payload = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(payload?.error || "Could not reset your progress.");
+      setConfirming(false);
+      onReset?.();
+    } catch (err) {
+      setResetError(err instanceof Error ? err.message : "Could not reset your progress.");
+    } finally {
+      setResetting(false);
+    }
+  };
 
   return (
     <section className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 sm:p-5">
@@ -113,6 +145,48 @@ export default function EventProgressTracker({
           );
         })}
       </ol>
+
+      {doneCount > 0 ? (
+        <div className="mt-4 border-t border-[var(--bb-card-border,#dbe7f4)] pt-3">
+          {confirming ? (
+            <div className="rounded-xl bg-[var(--bb-surface-soft,#f3f4f6)] p-3">
+              <p className="text-sm font-bold text-[var(--bb-text-primary,#111827)]">
+                Start over? This clears all {doneCount} completed day{doneCount === 1 ? "" : "s"} of {event.title}.
+              </p>
+              <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+                Your notes and the group discussions stay — only your completed days are cleared.
+              </p>
+              <div className="mt-3 flex gap-2">
+                <button
+                  type="button"
+                  onClick={() => void resetProgress()}
+                  disabled={resetting}
+                  className="min-h-10 flex-1 rounded-lg bg-[#b91c1c] px-4 text-sm font-black text-white transition hover:brightness-110 disabled:opacity-70"
+                >
+                  {resetting ? "RESETTING…" : "YES, RESET"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setConfirming(false)}
+                  disabled={resetting}
+                  className="min-h-10 flex-1 rounded-lg border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 text-sm font-black text-[var(--bb-text-primary,#111827)] transition hover:brightness-95 disabled:opacity-70"
+                >
+                  CANCEL
+                </button>
+              </div>
+              {resetError ? <p className="mt-2 text-xs font-bold text-[#b91c1c]">{resetError}</p> : null}
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setConfirming(true)}
+              className="text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)] underline transition hover:text-[var(--bb-text-primary,#111827)]"
+            >
+              Reset my progress
+            </button>
+          )}
+        </div>
+      ) : null}
     </section>
   );
 }

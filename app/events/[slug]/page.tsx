@@ -106,7 +106,7 @@ export default function CommunityEventPage() {
   }, [event, previewDay]);
 
   // The member's real devotional progress - only fetched once they joined.
-  const { completedDays } = useEventProgress(event?.devotionalId, userId, joined);
+  const { completedDays, reload: reloadProgress } = useEventProgress(event?.devotionalId, userId, joined);
 
   useEffect(() => {
     if (event) track("community_event_page_view", { event: event.slug });
@@ -368,7 +368,12 @@ export default function CommunityEventPage() {
         </div>
       ) : null}
 
-      {joined && state ? <EventProgressTracker event={event} state={state} completedDays={completedDays} /> : null}
+      {/* The tracker only appears once the study is running (Oct 1). Before
+          then there is nothing to track, so members just see the welcome card.
+          ?previewDay=N counts as live for checking it early. */}
+      {joined && state && state.phase !== "countdown" ? (
+        <EventProgressTracker event={event} state={state} completedDays={completedDays} onReset={reloadProgress} />
+      ) : null}
 
       {joinButton}
       {!joined && !userId && !authLoading ? (
