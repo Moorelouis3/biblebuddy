@@ -6068,3 +6068,7 @@ start (local `main` cached at old `9f6da92` "Day 307" tip, diverged from
 current `origin/main`). Already flagged repeatedly in MARCUS_HANDOFF.md, not
 re-flagging. Worked from a fresh branch off `origin/main` instead of
 touching the stale local `main` ref, then pushed straight to `origin main`.
+
+## 2026-09-23T11:58:30Z (hourly chapter notes run)
+Chapter: Isaiah 33 | Duration: 12 min | Sections: 5 | Cards: 46 | Status: pass
+Next up: Isaiah 34

@@ -42725,6 +42725,63 @@
           "at": "2026-09-23T10:57:37Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 33,
+      "startedAt": "2026-09-23T11:46:40Z",
+      "finishedAt": "2026-09-23T11:58:30Z",
+      "durationMinutes": 11.8,
+      "sections": 5,
+      "cards": 46,
+      "verses": 24,
+      "notes": "New chapter, normal forward progress after Isaiah 32 (priority queue and style-redo backlog both empty). Fetched real KJV text for Isaiah 33 (24 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Sections: 1-4 a woe oracle against the spoiler (many scholars read this as Assyria) paired with a prayer for grace, ending on the reversal picture of the plunderer's own loot gathered up like a locust swarm; 5-9 the LORD exalted and filling Zion with judgment and righteousness while highways empty, Lebanon's cedars are hewn down in shame, and Sharon, Bashan, and Carmel (named and explained as real, fertile regions) all collapse together; 10-14 God's first person announcement that he will finally rise, the wicked's plans pictured as chaff and stubble that catch their own fire, and the chapter's central question of who can dwell with the devouring, everlasting fire; 15-19 the answer, the person who walks righteously and refuses bribes, violence, and evil, promised a fortress (with munitions correctly defined as an old word for stronghold, not weapons), provision, and a vision of the king from chapter 32, closing on the end of incomprehensible foreign speech that once meant conquest and siege; 20-24 Zion pictured as an unmovable tent, God himself as the broad river Jerusalem never had, three governing titles (judge, lawgiver, king) collapsed into one, the enemy's ship falling apart, the chapter's opening spoil reversed and shared even with the lame, and a close that lands on forgiveness of iniquity as the real foundation under all the promised safety. Density about 1.92 cards/verse (24 verses, 46 cards). scripts/check_bible_note_style.py ran clean on the first pass across all 46 cards. Every title verified as an exact or lightly punctuation adjusted KJV phrase in title case, semicolons in the source verses replaced with commas to satisfy the spec's no semicolon rule. Parser check confirmed 5 sections with no verse gaps (1-4/5-9/10-14/15-19/20-24) and 46 total cards matching design, text rendered verbatim. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/isaiahThirtyThreeSource.ts, preserveExactPhraseBodies isaiah range extended to 33, replaceStudySectionsForBookRange call added inside the existing Isaiah 26-32 apply function). Next target: Isaiah 34.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-23T11:47:20Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 33 (new chapter, forward progress)",
+          "at": "2026-09-23T11:48:47Z"
+        },
+        {
+          "name": "KJV text fetched (Isaiah 33, 24 verses, raw.githubusercontent.com/aruljohn/Bible-kjv)",
+          "at": "2026-09-23T11:48:57Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-09-23T11:49:01Z"
+        },
+        {
+          "name": "read SKILL.md and reference implementation (isaiahThirtyTwoSource.ts, genesisThirtyOneSource.ts), drafted all 46 cards for Isaiah 33 across 5 sections",
+          "at": "2026-09-23T11:54:12Z"
+        },
+        {
+          "name": "source file written (lib/isaiahThirtyThreeSource.ts, 5 sections, 46 cards)",
+          "at": "2026-09-23T11:55:32Z"
+        },
+        {
+          "name": "style checker clean on first pass (46 cards, 0 problems)",
+          "at": "2026-09-23T11:55:32Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 33, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-23T11:55:44Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 46 cards, matches design)",
+          "at": "2026-09-23T11:56:07Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (exit 0, no errors)",
+          "at": "2026-09-23T11:58:26Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json entry + docs/BIBLE_BUDDY_NOTES_PROGRESS.md row and totals)",
+          "at": "2026-09-23T11:58:45Z"
+        }
+      ]
     }
   ]
 }
