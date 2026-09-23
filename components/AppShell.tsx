@@ -32,6 +32,7 @@ import BottomNav from "./BottomNav";
 import WisdomProverbsPopup from "./WisdomProverbsPopup";
 import WisdomBookPopup from "./WisdomBookPopup";
 import ProverbsLaunchPopup from "./ProverbsLaunchPopup";
+import CommunityEventDayPopup from "./CommunityEventDayPopup";
 import ReportProblemCard from "./ReportProblemCard";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import {
@@ -3634,6 +3635,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           (not a member, never shown) and waits for a quiet moment. */}
       {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
         <WisdomProverbsPopup
+          userId={userId}
+          pathname={pathname}
+          blocked={Boolean(
+            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
+          )}
+        />
+      ) : null}
+
+      {/* Daily "Day N is ready" nudge for members of the live study, so people
+          who never open the group still know today is open. */}
+      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
+        <CommunityEventDayPopup
           userId={userId}
           pathname={pathname}
           blocked={Boolean(

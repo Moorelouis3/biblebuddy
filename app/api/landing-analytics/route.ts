@@ -29,6 +29,10 @@ const ALLOWED_EVENTS = new Set([
   "proverbs_launch_popup_impression",
   "proverbs_launch_popup_dismissed",
   "proverbs_launch_popup_clicked",
+  // Daily "Day N is ready" reminder for community study members.
+  "community_event_day_popup_impression",
+  "community_event_day_popup_dismissed",
+  "community_event_day_popup_clicked",
   // Verse of the Day system (2026-09-02). Metadata carries {date, reference,
   // background} so performance can be split by verse and by background theme.
   "votd_card_impression",
