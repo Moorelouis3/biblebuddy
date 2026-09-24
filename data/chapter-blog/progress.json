@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-09-24T06:45:05.483Z",
-  "nextChapter": "Genesis 37",
+  "updatedAt": "2026-09-24T10:32:23.811Z",
+  "nextChapter": "Genesis 38",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -232,21 +232,29 @@
     },
     "genesis-34-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-09-24T02:32:07.927Z",
-      "committedAt": "2026-09-24T02:41:36.703Z"
+      "committedAt": "2026-09-24T02:41:36.703Z",
+      "publishedAt": "2026-09-24T10:32:23.356Z"
     },
     "genesis-35-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-09-24T04:32:10.808Z",
-      "committedAt": "2026-09-24T04:41:49.591Z"
+      "committedAt": "2026-09-24T04:41:49.591Z",
+      "publishedAt": "2026-09-24T10:32:23.577Z"
     },
     "genesis-36-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-09-24T06:32:03.753Z",
-      "committedAt": "2026-09-24T06:45:05.482Z"
+      "committedAt": "2026-09-24T06:45:05.482Z",
+      "publishedAt": "2026-09-24T10:32:23.811Z"
+    },
+    "genesis-37-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-09-24T10:32:04.668Z"
     }
   }
 }
