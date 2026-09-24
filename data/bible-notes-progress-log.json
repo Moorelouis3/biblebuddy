@@ -44045,6 +44045,14 @@
         {
           "name": "tsc --noEmit -p . clean, zero errors",
           "at": "2026-09-24T09:53:39Z"
+        },
+        {
+          "name": "committed: Add Isaiah 54 study notes (4 sections, 34 phrase cards)",
+          "at": "2026-09-24T09:54:55Z"
+        },
+        {
+          "name": "pushed: origin/main 915a18e..d8913e9",
+          "at": "2026-09-24T09:54:55Z"
         }
       ]
     }
