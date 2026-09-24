@@ -43931,6 +43931,14 @@
         {
           "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md and data/bible-notes-progress-log.json",
           "at": "2026-09-24T07:58:00Z"
+        },
+        {
+          "name": "committed: Add Isaiah 52 study notes (6 sections, 32 phrase cards)",
+          "at": "2026-09-24T07:57:00Z"
+        },
+        {
+          "name": "pushed: origin/main b36f6c2..81c36ca",
+          "at": "2026-09-24T07:57:46Z"
         }
       ]
     }
