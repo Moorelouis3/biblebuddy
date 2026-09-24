@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-36-explained",
+    title: "Genesis 36 Explained: Esau's Family and the Kings of Edom",
+    description:
+      "Genesis 36 explained verse by verse: Esau's wives, sons, and grandsons, the Horites of Seir, and the kings of Edom who reigned before Israel had one.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-36-explained",
+    publishedAt: "2026-09-24",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-36-explained.jpg",
+    groupPost: {
+      title: "Genesis 36 Explained 📖",
+      content:
+        "Esau lost the birthright and the blessing.\nGenesis still gives him a whole chapter.\n\n📌 A hard blessing from Isaac comes true here, kings and all.\n\n📖 Both brothers grow too wealthy to share the same land.\n📖 His family marries into the Horites already living there.\n📖 Edom gets eight kings before Israel ever crowns one.\n\nNew article on:\n🟢 why the name **Korah** shows up twice in one list\n🟢 the one clause that births **Amalek**\n🟢 what Esau's wives' different names actually mean\n\nHave you ever felt passed over, still wondering God was not done with you? 🙏",
+    },
+  },
+  {
     slug: "genesis-35-explained",
     title: "Genesis 35 Explained: Bethel, Rachel's Death, and Israel's Twelve Sons",
     description:
