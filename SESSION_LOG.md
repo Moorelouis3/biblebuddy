@@ -6180,3 +6180,7 @@ Next up: Isaiah 45
 ## 2026-09-24T01:01:30Z (hourly chapter notes run)
 Chapter: Isaiah 45 | Duration: 15 min | Sections: 8 | Cards: 50 | Status: pass
 Next up: Isaiah 46
+
+## 2026-09-24T01:55:08Z (hourly chapter notes run)
+Chapter: Isaiah 46 | Duration: 9 min | Sections: 5 | Cards: 26 | Status: pass
+Next up: Isaiah 47

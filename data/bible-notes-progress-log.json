@@ -43502,6 +43502,67 @@
           "at": "2026-09-24T01:03:27Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 46,
+      "startedAt": "2026-09-24T01:46:33Z",
+      "finishedAt": "2026-09-24T01:55:08Z",
+      "durationMinutes": 8.6,
+      "sections": 5,
+      "cards": 26,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (596 packages, fresh clone, 0 changes needed). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining=[]), so this was normal forward progress after Isaiah 45, confirmed by no isaiahFortySix* file in lib/ and no chapter 46 wiring call past Isaiah 45 in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for Isaiah 46 (13 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Isaiah 46 mocks the Babylonian gods Bel (Marduk) and Nebo (Nabu), pictured collapsing and being loaded onto pack animals to be evacuated as captives themselves (1-2); God contrasts Himself, who has carried Israel from birth and promises to carry it to old age, with idols that must be carried by their own worshippers (3-4); a description of how an idol actually gets made, gold weighed on a balance and paid to a hired goldsmith, followed by the worshippers bowing to the very thing they watched being built and that cannot answer anyone who cries to it (5-7); a call to remember former things, God's unmatched claim of declaring the end from the beginning, and Cyrus named again as the ravenous bird from the east executing God's plan (8-11); and a closing call to the stouthearted who are far from righteousness, promising God will bring salvation near and place it in Zion (12-13). Split into 5 sections (1-2, 3-4, 5-7, 8-11, 12-13). Density exactly 2.0 cards/verse (13 verses, 26 cards), matching the spec's target. Every title is an exact phrase lifted from the fetched KJV text; where a verse's chosen phrase would have spanned a semicolon (verse 9's two I am God clauses, verse 13's bring near / not far off clause), the title was cut to the sub-phrase before or after the semicolon instead, matching the pattern already used in Isaiah 45. scripts/check_bible_note_style.py found 7 problems on the first pass (bullets running 9 words instead of the 3-8 word limit), fixed by trimming each flagged bullet, then clean across all 26 cards, zero problems, no hyphens/em dashes/semicolons/contractions/banned words, no duplicate titles or repeated emoji within any card. A manual section 13 eye check found one section (8-11) with three cards in a row opening with the word This, reworded one of them (the ancient times card) to vary the structure per the spec's no-repeated-structure rule. Every card opens with one of the four approved moves, defines its key terms in plain language or quotes (Bel, Nebo, hoar hairs, balance, goldsmith, transgressors, stouthearted, counsel, pleasure, Zion), closes on meaning rather than mechanics, and uses exactly four bullets each three to eight words with a distinct emoji within each card ending on \ud83d\udcd6. Parser check passed via getBibleReaderStudySections('isaiah', 46) (5/5 sections, verse ranges 1-2/3-4/5-7/8-11/12-13 with no gaps, 26 total cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/isaiahFortySixSource.ts, preserveExactPhraseBodies isaiah range extended from chapters 1-45 to 1-46, new call replaceStudySectionsForBookRange(\"isaiah\", 46, 46, ISAIAH_FORTY_SIX_PERSONAL_SECTIONS) added inside the existing Isaiah-section-applying function, already invoked at module load). Next forward-progress target is Isaiah 47.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-24T01:46:33Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 46 (new chapter, normal forward progress; priority queue and style-redo backlog both empty)",
+          "at": "2026-09-24T01:46:45Z"
+        },
+        {
+          "name": "KJV text fetched (Isaiah 46, 13 verses)",
+          "at": "2026-09-24T01:47:10Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-09-24T01:48:30Z"
+        },
+        {
+          "name": "reference implementation read (lib/isaiahFortyFiveSource.ts)",
+          "at": "2026-09-24T01:49:30Z"
+        },
+        {
+          "name": "source file written: lib/isaiahFortySixSource.ts",
+          "at": "2026-09-24T01:53:29Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 26 cards, after fixing 7 bullet word count issues)",
+          "at": "2026-09-24T01:53:50Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 46, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-24T01:53:58Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 26 cards, no gaps)",
+          "at": "2026-09-24T01:54:05Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-24T01:54:07Z"
+        },
+        {
+          "name": "manual section 13 eye check passed (fixed a repeated This-opening structure across three cards in one section)",
+          "at": "2026-09-24T01:55:00Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-24T01:55:08Z"
+        }
+      ]
     }
   ]
 }
