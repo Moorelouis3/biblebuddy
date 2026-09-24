@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-34-explained",
+    title: "Genesis 34 Explained: Dinah, Shechem, and the Massacre",
+    description:
+      "Genesis 34 explained verse by verse: Shechem's assault of Dinah, Jacob's silence, the deceitful demand for circumcision, and the massacre by Simeon and Levi.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-34-explained",
+    publishedAt: "2026-09-24",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-34-explained.jpg",
+    groupPost: {
+      title: "Genesis 34 Explained 📖",
+      content:
+        "Dinah goes out to visit some local girls.\nBy the end of the chapter, a whole city is dead.\n\n📌 The brothers' peace deal was a trap from the very first word.\n\n📖 Shechem assaults Dinah, then asks his father to get her as a wife.\n📖 Jacob's sons demand every man in the city be circumcised.\n📖 Simeon and Levi kill them all on the third day.\n\nNew article on:\n🟢 why Genesis calls the brothers' plan **deceitful**\n🟢 what Jacob's silence actually says\n🟢 Jacob's real verdict on the massacre, given **decades later**\n\nHave you seen real pain answered with something that made it worse? 🙏",
+    },
+  },
+  {
     slug: "genesis-33-explained",
     title: "Genesis 33 Explained: Jacob and Esau Meet Again",
     description:
