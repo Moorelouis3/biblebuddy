@@ -15108,7 +15108,7 @@
       "chapter": 10,
       "startedAt": "2026-08-08T21:46:51Z",
       "finishedAt": "2026-08-08T21:56:52Z",
-      "durationMinutes": 10.0,
+      "durationMinutes": 10,
       "sections": 5,
       "cards": 39,
       "verses": 18,
@@ -20322,7 +20322,7 @@
       "chapter": 22,
       "startedAt": "2026-08-12T18:46:18Z",
       "finishedAt": "2026-08-12T18:55:12Z",
-      "durationMinutes": 9.0,
+      "durationMinutes": 9,
       "sections": 13,
       "cards": 45,
       "verses": 53,
@@ -20505,7 +20505,7 @@
       "chapter": 3,
       "startedAt": "2026-08-12T21:46:51Z",
       "finishedAt": "2026-08-12T21:58:49Z",
-      "durationMinutes": 12.0,
+      "durationMinutes": 12,
       "sections": 7,
       "cards": 49,
       "verses": 27,
@@ -35715,7 +35715,7 @@
       "chapter": 81,
       "startedAt": "2026-09-18T02:45:58Z",
       "finishedAt": "2026-09-18T02:55:00Z",
-      "durationMinutes": 9.0,
+      "durationMinutes": 9,
       "sections": 4,
       "cards": 26,
       "verses": 16,
@@ -36179,7 +36179,7 @@
       "chapter": 89,
       "startedAt": "2026-09-18T11:45:54Z",
       "finishedAt": "2026-09-18T11:58:53Z",
-      "durationMinutes": 13.0,
+      "durationMinutes": 13,
       "sections": 12,
       "cards": 100,
       "verses": 52,
@@ -37136,7 +37136,7 @@
       "chapter": 106,
       "startedAt": "2026-09-19T05:46:20Z",
       "finishedAt": "2026-09-19T05:59:21Z",
-      "durationMinutes": 13.0,
+      "durationMinutes": 13,
       "sections": 13,
       "cards": 52,
       "verses": 48,
@@ -39928,7 +39928,7 @@
       "chapter": 2,
       "startedAt": "2026-09-21T04:46:58Z",
       "finishedAt": "2026-09-21T04:58:00Z",
-      "durationMinutes": 11.0,
+      "durationMinutes": 11,
       "sections": 8,
       "cards": 37,
       "verses": 26,
@@ -43809,6 +43809,67 @@
         {
           "name": "pushed (fe0c7a5..0b6190f main -> main), confirmed via git fetch + git rev-parse HEAD origin/main matching",
           "at": "2026-09-24T05:55:05Z"
+        }
+      ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 51,
+      "startedAt": "2026-09-24T06:46:14Z",
+      "finishedAt": "2026-09-24T06:59:09Z",
+      "durationMinutes": 12.9,
+      "sections": 7,
+      "cards": 49,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (596 packages, fresh clone). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: []), so this was normal forward progress after Isaiah 50, confirmed by no isaiahFiftyOne* file in lib/ and no chapter 51 wiring call past Isaiah 50 in lib/bibleReaderStudyNotes.ts. Session started with local HEAD detached from refs/heads/main and local main stale at an unrelated old tip (9f6da92, Bible in One Year Day 307), the same recurring shallow clone anomaly logged in many prior entries. git fetch origin main confirmed origin/main's true tip (b4fa3d6) contained Isaiah 50 plus two unrelated Chapter library: Genesis 36 commits from other concurrent work, not data loss (verified via git log and merge-base, nothing was overwritten). A git checkout -B main origin/main was denied by the sandbox auto mode classifier as irreversible local destruction, so work proceeded directly from the already-correct detached HEAD and the final push used git push origin HEAD:main instead of touching the local main ref. Fetched real KJV text for Isaiah 51 (23 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Isaiah 51 opens with a call to look back to the rock they were hewn from, Abraham and Sarah, and the promise that God will comfort Zion's ruins into an Eden again (1-3); a second call to listen, God's law and righteousness going out as a light and lasting past the heavens and earth themselves which will vanish like smoke and wear out like a garment (4-6); a call not to fear human reproach since mockers fade like moth eaten cloth while God's righteousness stands forever (7-8); a plea for God's arm to awake as in the days it cut Rahab and dried the sea at the exodus, answered with the promise that the redeemed will return to Zion singing (9-11); God naming Himself as the one true comforter, asking why Israel fears mortal men who wither like grass while forgetting their Maker, promising the captive exile will hasten to be loosed and never lack bread, since this is the same LORD of hosts who divided the sea and covers His people in the shadow of His hand (12-16); a call for Jerusalem herself to awake from the stupor of drinking God's cup of fury to its dregs, with none of her own sons able to guide her through the desolation, destruction, famine and sword that left them fainted in the streets like a wild bull in a net (17-20); and the closing reversal where God takes the cup of trembling out of Jerusalem's hand for good and hands it instead to the very tormentors who once forced her to lie down as the ground for them to walk over (21-23). Split into 7 sections (1-3, 4-6, 7-8, 9-11, 12-16, 17-20, 21-23), matching the chapter's 23 verses exactly. Density 2.13 cards/verse (23 verses, 49 cards). Every title is an exact phrase lifted from the fetched KJV text, with verses 19 and 23 each split across two or three cards since each contains more than one distinct teachable phrase not contiguous enough to combine into a single title. scripts/check_bible_note_style.py found 4 problems on the first pass (four bullets running 9-10 words instead of the 3-8 word limit), fixed by trimming each, then clean across all 49 cards, zero problems, no hyphens/em dashes/semicolons/contractions/banned words, no duplicate titles or repeated emoji within any card. A manual section 13 eye check plus a grep for forbidden filler openers confirmed every card opens with one of the four approved moves, defines its key terms in plain language (hearken, hewn, digged, bare, isles, wax old, abolished, revilings, Rahab, dragon, ransomed, hasteneth, loosed, LORD of hosts, dregs, wrung out, pleadeth, afflict), closes on meaning rather than mechanics, and uses exactly four bullets each three to eight words with a distinct emoji within each card ending on 📖. Parser check passed via getBibleReaderStudySections('isaiah', 51) (7/7 sections, verse ranges 1-3/4-6/7-8/9-11/12-16/17-20/21-23 with no gaps, 49 total cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/isaiahFiftyOneSource.ts, preserveExactPhraseBodies isaiah range extended from chapters 1-50 to 1-51, new call replaceStudySectionsForBookRange(\"isaiah\", 51, 51, ISAIAH_FIFTY_ONE_PERSONAL_SECTIONS) added inside the existing Isaiah-section-applying function, already invoked at module load). Next forward-progress target is Isaiah 52. Intermediate step timestamps below are best-effort based on real tool-call ordering within the observed window; only the start, KJV-fetch, and final timestamps were captured directly via the date command at the moment of that action.",
+      "steps": [
+        {
+          "name": "npm install done (596 packages, fresh clone)",
+          "at": "2026-09-24T06:46:37Z"
+        },
+        {
+          "name": "priority queue and style-redo backlog confirmed empty; target chapter determined: Isaiah 51 (normal forward progress)",
+          "at": "2026-09-24T06:47:20Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 51 (23 verses, raw.githubusercontent.com aruljohn/Bible-kjv mirror)",
+          "at": "2026-09-24T06:47:46Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and bible-notes skill read in full",
+          "at": "2026-09-24T06:50:00Z"
+        },
+        {
+          "name": "reference implementation read (lib/isaiahFiftySource.ts) and wiring pattern reviewed",
+          "at": "2026-09-24T06:51:30Z"
+        },
+        {
+          "name": "source file written: lib/isaiahFiftyOneSource.ts (7 sections, 49 cards)",
+          "at": "2026-09-24T06:56:30Z"
+        },
+        {
+          "name": "style checker run, 4 bullet-length problems found and fixed, then clean (0 problems)",
+          "at": "2026-09-24T06:57:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 51, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-24T06:57:55Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 49 cards, no gaps)",
+          "at": "2026-09-24T06:58:00Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-24T06:58:20Z"
+        },
+        {
+          "name": "manual section 13 eye check and forbidden-filler grep passed",
+          "at": "2026-09-24T06:58:36Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-24T06:59:09Z"
         }
       ]
     }

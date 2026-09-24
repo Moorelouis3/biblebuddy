@@ -6200,3 +6200,7 @@ Next up: Isaiah 50
 ## 2026-09-24T05:54:30Z (hourly chapter notes run)
 Chapter: Isaiah 50 | Duration: 8 min | Sections: 4 | Cards: 23 | Status: pass
 Next up: Isaiah 51
+
+## 2026-09-24T06:59:09Z (hourly chapter notes run)
+Chapter: Isaiah 51 | Duration: 13 min | Sections: 7 | Cards: 49 | Status: pass
+Next up: Isaiah 52
