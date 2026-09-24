@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-35-explained",
+    title: "Genesis 35 Explained: Bethel, Rachel's Death, and Israel's Twelve Sons",
+    description:
+      "Genesis 35 explained verse by verse: Jacob's return to Bethel, the household's hidden idols, Rachel's death giving birth to Benjamin, and Reuben's sin.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-35-explained",
+    publishedAt: "2026-09-24",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-35-explained.jpg",
+    groupPost: {
+      title: "Genesis 35 Explained 📖",
+      content:
+        "Jacob's sons just wiped out a city.\nGod's answer is one word: go back to Bethel.\n\n📌 Jacob finally finishes a vow he made twenty years earlier.\n\n📖 The household buries its hidden idols before the altar.\n📖 Rachel dies giving birth to Benjamin on the road.\n📖 Esau and Jacob bury their father Isaac together.\n\nNew article on:\n🟢 why God renames Jacob **Israel** a second time\n🟢 what Reuben's sin actually cost him\n🟢 the son Jacob renamed with his own words\n\nHave you ever had to finish a promise you had put off for years? 🙏",
+    },
+  },
+  {
     slug: "genesis-34-explained",
     title: "Genesis 34 Explained: Dinah, Shechem, and the Massacre",
     description:
