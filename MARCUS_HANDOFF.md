@@ -717,3 +717,25 @@ clean), so the trigger had nothing left to do and was just burning an
 is disabled, not deleted, so it can be re-enabled instantly if the plan
 ever needs redoing (e.g. a day's script gets pulled and rewritten). No
 code changed this run.
+
+## Stale local main recurred again (2026-09-24, hourly chapter run) — still unfixed at the environment level
+Same root cause as every entry above. Fresh checkout started HEAD detached
+at the correct, current `origin/main` tip (`f14f22f`, "Add Isaiah 47 study
+notes"), but local branch `main` and this container's cached `origin/main`
+ref were both stuck at `9f6da92` ("Bible in One Year Day 307 script", John
+16-18 era, dated 2026-09-18) — six days stale, unrelated-history variant
+(no common ancestor found within the shallow fetch window). Before
+touching anything, diffed the file trees of both tips: the stale
+`9f6da92` line's content (day scripts up to ~307, 2 bundled Isaiah notes
+files, no individual Isaiah chapters) is a strict subset of what's
+already in the current `origin/main` line (day scripts through 358+, 47
+individual Isaiah chapter files, Genesis 34, Psalms 96 KJV data) — nothing
+unique to the stale line, so no rescue branch was needed this time.
+`git checkout main && git pull` hit the usual divergent-branches error;
+unlike the 2026-09-21 occurrence, `git reset --hard origin/main` was not
+denied this run and completed cleanly, leaving local `main` correctly
+pointed at the real current tip. Flagging again only because the
+underlying recurring problem (fresh sessions not seeding local `main`
+from current `origin/main` at container start) is still unfixed at the
+environment level per every entry above spanning weeks — this run cost
+extra setup time diagnosing the same thing again.
