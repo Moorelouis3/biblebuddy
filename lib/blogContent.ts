@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-37-explained",
+    title: "Genesis 37 Explained: Joseph's Dreams and the Brothers Who Sold Him",
+    description:
+      "Genesis 37 explained verse by verse: Jacob's favoritism, Joseph's two dreams, his brothers' plot, Reuben's rescue attempt, and the sale to Egypt.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-37-explained",
+    publishedAt: "2026-09-24",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-37-explained.jpg",
+    groupPost: {
+      title: "Genesis 37 Explained 📖",
+      content:
+        "One coat. Two dreams. Ten brothers who hate him.\nBy the end of the chapter, Joseph is gone.\n\n📌 His own brothers sell him for the price of a slave.\n\n📖 Jacob's favoritism splits the family wide open.\n📖 Joseph's dreams only make his brothers hate him more.\n📖 Reuben tries a quiet rescue, and it still fails.\n\nNew article on:\n🟢 what the **coat of many colours** really meant\n🟢 who actually **sold** Joseph, brothers or traders\n🟢 the **deception** that comes back on Jacob himself\n\nHave you ever been pushed out by the people who should have protected you? 🙏",
+    },
+  },
+  {
     slug: "genesis-36-explained",
     title: "Genesis 36 Explained: Esau's Family and the Kings of Edom",
     description:
