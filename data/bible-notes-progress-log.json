@@ -43442,8 +43442,8 @@
       "book": "Isaiah",
       "chapter": 45,
       "startedAt": "2026-09-24T00:46:11Z",
-      "finishedAt": "2026-09-24T01:01:30Z",
-      "durationMinutes": 15.3,
+      "finishedAt": "2026-09-24T01:03:27Z",
+      "durationMinutes": 17.3,
       "sections": 8,
       "cards": 50,
       "verses": 25,
@@ -43496,6 +43496,10 @@
         {
           "name": "progress files logged",
           "at": "2026-09-24T01:01:30Z"
+        },
+        {
+          "name": "committed (241b55c) and pushed to origin main (312e322 -> 241b55c, confirmed via git fetch + git rev-parse HEAD origin/main matching)",
+          "at": "2026-09-24T01:03:27Z"
         }
       ]
     }
