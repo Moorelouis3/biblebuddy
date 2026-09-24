@@ -1,3 +1,35 @@
+## Stale local main recurred again (2026-09-24, Bible Note Writer Agent, Isaiah 45 run) — worst case yet, no shared git history at all, but a git worktree sidestepped it cleanly, no data lost
+Same recurring bug documented repeatedly below, one new wrinkle and one new
+fix worth recording. Session started detached at a commit that turned out
+to be `origin/main`'s real tip (`312e322`, Isaiah 44). Running
+`git checkout main` moved onto the stale local branch ref (`9f6da92`, a
+Bible in One Year day script), and this time `git merge-base main
+312e322` returned nothing at all, not just a lagging ref but two commit
+graphs with zero shared ancestry (51 commits only on one side, 50 only on
+the other). `git fetch origin main` confirmed `origin/main` had force
+updated to `312e322`, 796 progress log entries deep versus the stale
+local branch's 678. New wrinkle: the usual fix
+(`git checkout -B main origin/main`, or even a plain `git checkout
+origin/main -- .`) was refused outright by this session's auto mode
+classifier as "Irreversible Local Destruction," which earlier entries
+below did not report hitting. New fix: rather than force past that
+denial, I ran `git worktree add <scratchpad path> --detach origin/main`,
+a purely additive operation that does not touch the existing checkout,
+and did the entire chapter's work there instead. Clean and uneventful:
+`npm install`, KJV fetch, note writing, style checker, parser check, and
+`tsc --noEmit` all ran fine in the worktree, and the commit was pushed
+straight from there with `git push origin HEAD:main`. No data lost, no
+duplicate work shipped, nothing destructive attempted. Flagging this
+mainly because the worktree approach is a clean, non-destructive
+workaround worth reusing in any future run that hits this same
+classifier denial, and because the severity here (fully unrelated commit
+graphs, not just a lagging ref) suggests whatever reuses or snapshots
+this container's git state between runs may be doing something more
+disruptive than a normal shallow-clone staleness issue. Same ask as
+every entry below: seeding each fresh container's local `main` from a
+freshly fetched `origin/main` before the agent's first commit would
+remove this whole class of problem at the source.
+
 ## Stale local main recurred again (2026-09-23 later run, Bible in One Year day writer run) — wrote a duplicate Day 308 on the stale line, caught before it shipped to main
 Same bug, same family as every entry below, but this run fell for it harder
 than most: the container's detached HEAD at session start actually
