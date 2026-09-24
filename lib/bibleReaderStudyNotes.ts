@@ -772,6 +772,7 @@ import { ISAIAH_FORTY_THREE_PERSONAL_SECTIONS } from "./isaiahFortyThreeSource";
 import { ISAIAH_FORTY_FOUR_PERSONAL_SECTIONS } from "./isaiahFortyFourSource";
 import { ISAIAH_FORTY_FIVE_PERSONAL_SECTIONS } from "./isaiahFortyFiveSource";
 import { ISAIAH_FORTY_SIX_PERSONAL_SECTIONS } from "./isaiahFortySixSource";
+import { ISAIAH_FORTY_SEVEN_PERSONAL_SECTIONS } from "./isaiahFortySevenSource";
 import { JEREMIAH_1_9_PERSONAL_SECTIONS } from "./jeremiahOneToNinePersonalNotes";
 import { JEREMIAH_10_52_PERSONAL_SECTIONS } from "./jeremiahTenToFiftyTwoPersonalNotes";
 import { LAMENTATIONS_1_5_PERSONAL_SECTIONS } from "./lamentationsOneToFivePersonalNotes";
@@ -1123,7 +1124,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "psalms" && section.chapter >= 1 && section.chapter <= 150) ||
     (normalizeBook(book) === "ecclesiastes" && section.chapter >= 1 && section.chapter <= 12) ||
     (normalizeBook(book) === "song of solomon" && section.chapter >= 1 && section.chapter <= 8) ||
-    (normalizeBook(book) === "isaiah" && section.chapter >= 1 && section.chapter <= 46);
+    (normalizeBook(book) === "isaiah" && section.chapter >= 1 && section.chapter <= 47);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -2908,6 +2909,7 @@ function applyPersonalIsaiahTwentySixStudySections() {
   replaceStudySectionsForBookRange("isaiah", 44, 44, ISAIAH_FORTY_FOUR_PERSONAL_SECTIONS);
   replaceStudySectionsForBookRange("isaiah", 45, 45, ISAIAH_FORTY_FIVE_PERSONAL_SECTIONS);
   replaceStudySectionsForBookRange("isaiah", 46, 46, ISAIAH_FORTY_SIX_PERSONAL_SECTIONS);
+  replaceStudySectionsForBookRange("isaiah", 47, 47, ISAIAH_FORTY_SEVEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJeremiahOneThroughNineStudySections() {
