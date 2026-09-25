@@ -44629,6 +44629,63 @@
           "at": "2026-09-25T22:00:00Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 65,
+      "startedAt": "2026-09-25T22:47:46Z",
+      "finishedAt": "2026-09-25T22:56:57Z",
+      "durationMinutes": 9.2,
+      "sections": 8,
+      "cards": 49,
+      "verses": 25,
+      "notes": "New chapter (forward progress after Isaiah 64; priority queue and style-redo backlog both empty). God found by a nation that never sought him, applied to the Gentiles by Paul in Romans, the patient spread out hands inviting a rebellious people, and the forbidden garden shrines, brick altars, grave lodging, and swine's flesh (1-4); the self righteous irony of holier than thou, the smoke in the nose and fire all day pictures of constant anger, and God's permanent written record repaying former generations' incense on the mountains (5-7); the new wine in the cluster image, a faithful remnant sparing the whole nation like Abraham pleaded for Sodom, the seed out of Jacob promise, and Sharon and the valley of Achor turned from trouble to pasture (8-10); the hidden pagan wordplay in that troop and that number, the fortune gods Gad and Meni fed a ritual table, and God numbering the idolaters to the sword because he called and they did not answer (11-12); the four fold reversal between servants who eat, drink, rejoice, and sing and rebels who hunger, thirst, are ashamed, and howl, a new name promised to God's servants later echoed in Acts, and the LORD's name tied to the Hebrew word Amen (13-16); the new heavens and new earth promise using the same creation word as Genesis, later quoted in Revelation and Second Peter, Jerusalem remade into joy, and no more weeping, an image Revelation echoes almost word for word (17-19); the reversal of infant mortality and cut short old age, a hundred years old now counted young, and the Deuteronomy curse of building houses for others and the Genesis three futility curse both fully reversed (20-23); and God answering before his people call, directly reversing the chapter's earlier accusation, the wolf and lamb feeding together echoing Isaiah 11, and the Genesis 3 curse on the serpent eating dust still holding even inside a fully peaceful new creation (24-25). Density just under 2 cards per verse. Style checker found 1 problem on first pass (one bullet at 9 words), fixed and reverified clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-25T22:47:46Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 65 (new chapter, canonical forward progress; both priority queue and redo backlog empty)",
+          "at": "2026-09-25T22:47:46Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 65 (25 verses) via GitHub raw aruljohn/Bible-kjv",
+          "at": "2026-09-25T22:53:31Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) plus reference implementations isaiahSixtyFourSource.ts and genesisThirtyOneSource.ts",
+          "at": "2026-09-25T22:53:31Z"
+        },
+        {
+          "name": "source file written: lib/isaiahSixtyFiveSource.ts (8 sections, 49 cards)",
+          "at": "2026-09-25T22:53:31Z"
+        },
+        {
+          "name": "style checker clean: python3 scripts/check_bible_note_style.py lib/isaiahSixtyFiveSource.ts -> No problems found",
+          "at": "2026-09-25T22:53:31Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to Isaiah 65, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-25T22:56:19Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('isaiah', 65) -> 8 sections, 49 cards, no throw",
+          "at": "2026-09-25T22:56:19Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-25T22:56:19Z"
+        },
+        {
+          "name": "manual section 13 eye check pass: confirmed opening moves, defined terms, meaning based closes, no forbidden filler, unique titles as exact KJV phrases",
+          "at": "2026-09-25T22:56:57Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json entry and docs/BIBLE_BUDDY_NOTES_PROGRESS.md row/header totals updated",
+          "at": "2026-09-25T22:56:57Z"
+        }
+      ]
     }
   ]
 }

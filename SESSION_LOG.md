@@ -6256,3 +6256,7 @@ Next up: Isaiah 64
 ## 2026-09-25T22:00:00Z (hourly chapter notes run)
 Chapter: Isaiah 64 | Duration: 13 min | Sections: 4 | Cards: 24 | Status: pass
 Next up: Isaiah 65
+
+## 2026-09-25T22:56:57Z (hourly chapter notes run)
+Chapter: Isaiah 65 | Duration: 9.2 min | Sections: 8 | Cards: 49 | Status: pass
+Next up: Isaiah 66
