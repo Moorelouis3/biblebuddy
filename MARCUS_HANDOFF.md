@@ -739,3 +739,19 @@ underlying recurring problem (fresh sessions not seeding local `main`
 from current `origin/main` at container start) is still unfixed at the
 environment level per every entry above spanning weeks — this run cost
 extra setup time diagnosing the same thing again.
+
+## Chapter Blog Writer: genesis-37-explained stuck `committed`, not live after 24+ hours — Deploy routine may be broken or missed several runs
+`verify-live` (2026-09-25 run, claiming Genesis 38) still gets a 404 for
+`genesis-37-explained`, which has been `committed` since
+2026-09-24T10:38:53Z — well past the 24-hour threshold this routine's own
+doc says to flag. More notable: `data/chapter-blog/progress.json` shows no
+queue activity at all between that commit and this run, a ~25.5 hour gap,
+even though this routine is scheduled to fire 5x/day (02:30, 04:30, 06:30,
+10:30, 13:30 UTC) and the Deploy routine at 08:00 and 16:00 UTC — so it
+looks like either several scheduled fires were skipped/failed before
+reaching even the claim step, or the Deploy routine itself silently
+stopped publishing. Worth checking both: (1) whether the chapter-blog
+queue trigger actually fired on schedule yesterday, and (2) whether the
+08:00/16:00 UTC Deploy routine is still running and picking up `[deploy]`
+commits. This run is proceeding with Genesis 38 per the routine's normal
+retry-on-next-run behavior; not blocking on this.
