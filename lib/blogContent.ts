@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-39-explained",
+    title: "Genesis 39 Explained: Joseph, Potiphar's Wife, and Prison",
+    description:
+      "Genesis 39 explained verse by verse: Joseph's rise in Potiphar's house, his refusal of Potiphar's wife, the false accusation, and his unjust imprisonment.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-39-explained",
+    publishedAt: "2026-09-25",
+    readTime: "12 min read",
+    image: "/blog-banners/genesis-39-explained.jpg",
+    groupPost: {
+      title: "Genesis 39 Explained 📖",
+      content:
+        "He said no. Not once. Every single day.\nThen the lie that followed nearly buried him.\n\n📌 Joseph goes from trusted slave to falsely accused prisoner in one afternoon.\n\n📖 Potiphar's wife propositions Joseph day after day.\n📖 Joseph runs and leaves his own garment behind.\n📖 He is punished for the very thing he refused to do.\n\nNew article on:\n🟢 why Joseph calls this sin against **God**, not just Potiphar\n🟢 whether Potiphar even believed his wife's story\n🟢 how the LORD stays with Joseph in the **prison** too\n\nHave you ever done the right thing and still paid for it? 🙏",
+    },
+  },
+  {
     slug: "genesis-38-explained",
     title: "Genesis 38 Explained: Judah, Tamar, and the Twins Pharez and Zarah",
     description:
