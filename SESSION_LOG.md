@@ -6228,3 +6228,7 @@ Next up: Isaiah 57
 ## 2026-09-25T12:58:04Z (hourly chapter notes run)
 Chapter: Isaiah 57 | Duration: 12 min | Sections: 8 | Cards: 40 | Status: pass
 Next up: Isaiah 58
+
+## 2026-09-25T13:56:48Z (hourly chapter notes run)
+Chapter: Isaiah 58 | Duration: 10 min | Sections: 6 | Cards: 27 | Status: pass
+Next up: Isaiah 59

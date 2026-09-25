@@ -44222,6 +44222,59 @@
           "at": "2026-09-25T12:58:04Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 58,
+      "startedAt": "2026-09-25T13:46:48Z",
+      "finishedAt": "2026-09-25T13:56:48Z",
+      "durationMinutes": 10.0,
+      "sections": 6,
+      "cards": 27,
+      "verses": 14,
+      "notes": "New chapter (forward progress). True fasting vs performed fasting; the fast God chooses; light rising in the dark; honoring the sabbath.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-09-25T13:46:48Z"
+        },
+        {
+          "name": "target_chapter_determined_isaiah_58_new_chapter_forward_progress",
+          "at": "2026-09-25T13:47:30Z"
+        },
+        {
+          "name": "kjv_text_fetched_isaiah_58_14_verses",
+          "at": "2026-09-25T13:47:30Z"
+        },
+        {
+          "name": "style_spec_and_skill_read",
+          "at": "2026-09-25T13:50:52Z"
+        },
+        {
+          "name": "source_file_written",
+          "at": "2026-09-25T13:55:58Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-09-25T13:55:58Z"
+        },
+        {
+          "name": "wired_into_reader_confirmed",
+          "at": "2026-09-25T13:55:58Z"
+        },
+        {
+          "name": "parser_check_passed_6_sections_27_cards",
+          "at": "2026-09-25T13:55:58Z"
+        },
+        {
+          "name": "tsc_noemit_clean",
+          "at": "2026-09-25T13:55:58Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-09-25T13:56:48Z"
+        }
+      ]
     }
   ]
 }
