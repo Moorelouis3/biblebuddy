@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-38-explained",
+    title: "Genesis 38 Explained: Judah, Tamar, and the Twins Pharez and Zarah",
+    description:
+      "Genesis 38 explained verse by verse: Judah's broken promise, Tamar's disguise, the trial by fire, and the twins Pharez and Zarah born into Jesus' line.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-38-explained",
+    publishedAt: "2026-09-25",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-38-explained.jpg",
+    groupPost: {
+      title: "Genesis 38 Explained 📖",
+      content:
+        "Judah sends his daughter in law away.\nHe never plans to keep his promise to her.\n\n📌 She disguises herself, and Judah is the one exposed.\n\n📖 Two of Judah's sons die for what they refuse to do.\n📖 Tamar asks for proof instead of payment.\n📖 Judah orders her death before he learns the truth.\n\nNew article on:\n🟢 what **Onan's sin** actually was\n🟢 why Judah calls Tamar **more righteous** than himself\n🟢 how this messy story reaches all the way to **Jesus**\n\nHave you ever judged someone else for the very thing you were hiding yourself? 🙏",
+    },
+  },
+  {
     slug: "genesis-37-explained",
     title: "Genesis 37 Explained: Joseph's Dreams and the Brothers Who Sold Him",
     description:
