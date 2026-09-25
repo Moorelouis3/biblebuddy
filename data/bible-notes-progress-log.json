@@ -44568,6 +44568,67 @@
           "at": "2026-09-25T20:57:39Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 64,
+      "startedAt": "2026-09-25T21:47:27Z",
+      "finishedAt": "2026-09-25T22:00:00Z",
+      "durationMinutes": 12.5,
+      "sections": 4,
+      "cards": 24,
+      "verses": 12,
+      "notes": "New chapter (forward progress after Isaiah 63; priority queue and style-redo backlog both empty). The prophet's prayer for God to rend the heavens and come down, mountains melting at his presence, the fire and boiling water pictures of power, and the memory of past terrible unlooked for deeds (1-3); the sweeping claim that no eye has seen a god like this (later quoted by Paul in 1 Corinthians 2:9), God meeting those who do right, and the confession that follows, wroth for our sin, righteousnesses as filthy rags, fading like a leaf carried off by the wind of our iniquities (4-6); no one calling on God's name, his hidden face, and the potter and clay image turning the confession toward trust, closing on the plea not to remember iniquity forever (7-9); and the holy cities and Zion named wilderness, the beautiful temple burned with fire, closing on the chapter's unanswered final question, wilt thou refrain thyself, wilt thou hold thy peace (10-12). Density exactly 2 cards per verse.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-25T21:47:27Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 64 (new chapter, normal forward progress; priority queue and style-redo backlog both empty)",
+          "at": "2026-09-25T21:47:34Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 64 (12 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-09-25T21:47:38Z"
+        },
+        {
+          "name": "style spec docs/bible-study-note-style.md read in full",
+          "at": "2026-09-25T21:49:00Z"
+        },
+        {
+          "name": "reference implementation lib/isaiahSixtyThreeSource.ts reviewed for file structure and voice",
+          "at": "2026-09-25T21:49:10Z"
+        },
+        {
+          "name": "source file lib/isaiahSixtyFourSource.ts written (4 sections, 24 cards)",
+          "at": "2026-09-25T21:56:00Z"
+        },
+        {
+          "name": "style checker clean: python3 scripts/check_bible_note_style.py (0 problems on first pass, 24 cards)",
+          "at": "2026-09-25T21:56:30Z"
+        },
+        {
+          "name": "manual section 13 eye check pass: confirmed opening moves, defined terms, meaning based closes, no forbidden filler",
+          "at": "2026-09-25T21:57:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies isaiah range extended to 64, replaceStudySectionsForBookRange call added)",
+          "at": "2026-09-25T21:58:00Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('isaiah', 64) returned 4 sections, 24 cards, no throw, text renders verbatim",
+          "at": "2026-09-25T21:58:30Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-25T21:59:10Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json entry and docs/BIBLE_BUDDY_NOTES_PROGRESS.md row/header totals updated",
+          "at": "2026-09-25T22:00:00Z"
+        }
+      ]
     }
   ]
 }
