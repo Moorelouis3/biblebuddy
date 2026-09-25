@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { readAnalyticsSnapshot, writeAnalyticsSnapshot } from "@/lib/adminAnalyticsSnapshots";
 import { BLOG_ARTICLES } from "@/lib/blogContent";
 import chapterProgress from "@/data/chapter-blog/progress.json";
 
@@ -227,17 +228,41 @@ const pickedAPath = (p: ProfileRow) =>
  * authoritative list, and it matches the group's own member count.
  *
  * Guests are Supabase anonymous users; everyone else has an email, so the two
- * add up to the total exactly. Paginated 1,000 at a time like
- * app/api/admin/journey-analytics/route.ts does. If auth is unreachable the
- * card is dropped rather than shown wrong - the caller renders nothing when
- * this returns null.
+ * add up to the total exactly.
+ *
+ * CACHED FOR 30 MINUTES (2026-09-26, Louis: "it don't need to load new every
+ * time"). Walking auth is ~15s for 7 pages, and the number barely moves, so it
+ * is read from a small file in the snapshot bucket instead. Only the first
+ * caller after the cache expires pays for the walk; the recent-signup
+ * timestamps ride along so the "+N new" pill stays auth-sourced for any
+ * window without a second pass. A warm function keeps it in memory too.
  */
-async function countAuthAccounts(admin: SupabaseClient, current: { start: Date; end: Date }) {
+const AUTH_COUNT_CACHE_KEY = "auth-accounts";
+const AUTH_COUNT_TTL_MS = 30 * 60 * 1000;
+/** Covers the widest window the card reports (30 days). */
+const AUTH_RECENT_WINDOW_MS = 31 * 24 * 60 * 60 * 1000;
+
+type AuthAccountCounts = {
+  total: number;
+  guests: number;
+  withEmail: number;
+  /** ISO creation times for accounts made in the last ~31 days. */
+  recentCreatedAt: string[];
+  snapshotAt: string;
+};
+
+let authCountMemo: AuthAccountCounts | null = null;
+
+const authCountIsFresh = (counts: AuthAccountCounts | null) =>
+  Boolean(counts && Date.now() - Date.parse(counts.snapshotAt) < AUTH_COUNT_TTL_MS);
+
+async function walkAuthAccounts(admin: SupabaseClient): Promise<AuthAccountCounts | null> {
   try {
+    const recentSince = Date.now() - AUTH_RECENT_WINDOW_MS;
     let total = 0;
     let guests = 0;
     let withEmail = 0;
-    let newInWindow = 0;
+    const recentCreatedAt: string[] = [];
     for (let page = 1; page <= 60; page += 1) {
       const { data, error } = await admin.auth.admin.listUsers({ page, perPage: 1000 });
       if (error) throw new Error(error.message);
@@ -246,18 +271,44 @@ async function countAuthAccounts(admin: SupabaseClient, current: { start: Date; 
         total += 1;
         if (user.is_anonymous) guests += 1;
         else if (user.email) withEmail += 1;
-        const created = user.created_at ? Date.parse(user.created_at) : NaN;
-        if (Number.isFinite(created) && created >= current.start.getTime() && created < current.end.getTime()) {
-          newInWindow += 1;
-        }
+        if (user.created_at && Date.parse(user.created_at) >= recentSince) recentCreatedAt.push(user.created_at);
       }
       if (users.length < 1000) break;
     }
-    return { total, guests, withEmail, newInWindow };
+    return { total, guests, withEmail, recentCreatedAt, snapshotAt: new Date().toISOString() };
   } catch (error) {
-    console.error("[DASHBOARD] auth account count failed:", error instanceof Error ? error.message : error);
+    console.error("[DASHBOARD] auth account walk failed:", error instanceof Error ? error.message : error);
     return null;
   }
+}
+
+async function countAuthAccounts(admin: SupabaseClient, current: { start: Date; end: Date }) {
+  let counts = authCountIsFresh(authCountMemo) ? authCountMemo : null;
+
+  if (!counts) {
+    const stored = (await readAnalyticsSnapshot(admin, AUTH_COUNT_CACHE_KEY)) as AuthAccountCounts | null;
+    if (authCountIsFresh(stored)) {
+      counts = stored;
+      authCountMemo = stored;
+    } else {
+      const walked = await walkAuthAccounts(admin);
+      if (walked) {
+        counts = walked;
+        authCountMemo = walked;
+        await writeAnalyticsSnapshot(admin, AUTH_COUNT_CACHE_KEY, walked as unknown as Record<string, unknown>);
+      } else {
+        // Auth unreachable: a number from earlier beats no card at all.
+        counts = stored || authCountMemo;
+      }
+    }
+  }
+
+  if (!counts) return null;
+  const newInWindow = counts.recentCreatedAt.filter((iso) => {
+    const at = Date.parse(iso);
+    return at >= current.start.getTime() && at < current.end.getTime();
+  }).length;
+  return { total: counts.total, guests: counts.guests, withEmail: counts.withEmail, newInWindow };
 }
 
 // ---------- main ----------
