@@ -6220,3 +6220,7 @@ Next up: Isaiah 55
 ## 2026-09-24T10:55:26Z (hourly chapter notes run)
 Chapter: Isaiah 55 | Duration: 8 min | Sections: 4 | Cards: 25 | Status: pass
 Next up: Isaiah 56
+
+## 2026-09-25T12:20:30Z (hourly chapter notes run)
+Chapter: Isaiah 56 | Duration: 8 min | Sections: 4 | Cards: 16 | Status: pass
+Next up: Isaiah 57
