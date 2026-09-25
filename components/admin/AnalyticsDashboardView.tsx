@@ -327,6 +327,42 @@ export default function AnalyticsDashboardView({
           <p className="mt-10 text-center text-sm font-bold text-[#64748b]">Loading {windowLabel.toLowerCase()}…</p>
         ) : d ? (
           <div className={`mt-6 space-y-5 transition ${loading ? "opacity-50" : ""}`}>
+            {/* Total users - all-time, so it sits above the window-scoped
+                cards. Guarded: saved snapshots written before this card
+                existed have no totalUsers, and the page reads a snapshot
+                before it recomputes. */}
+            {d.totalUsers ? (
+            <Card className="!p-4 sm:!p-5">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-3">
+                  <span
+                    className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl text-xl"
+                    style={{ background: "#0ea5e918" }}
+                  >
+                    👥
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-xs font-black uppercase tracking-wide text-[#64748b]">Total users</p>
+                    <p className="text-[34px] font-black leading-none text-[#0b1633] sm:text-[40px]">
+                      {fmt(d.totalUsers.value)}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+                  <span className="rounded-full bg-[#16a34a14] px-3 py-1.5 text-xs font-black text-[#15803d]">
+                    {fmt(d.totalUsers.registered)} registered
+                  </span>
+                  <span className="rounded-full bg-[#64748b14] px-3 py-1.5 text-xs font-black text-[#475569]">
+                    {fmt(d.totalUsers.guests)} guest
+                  </span>
+                  <span className="rounded-full bg-[#2563eb14] px-3 py-1.5 text-xs font-black text-[#1d4ed8]">
+                    +{fmt(d.totalUsers.newInWindow)} {windowLabel.toLowerCase()}
+                  </span>
+                </div>
+              </div>
+            </Card>
+            ) : null}
+
             {/* KPI cards */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
               <KpiCard icon="👤" label="New users" value={fmt(d.topCards.newUsers.value)} change={d.topCards.newUsers.change} spark={d.topCards.newUsers.spark} color="#16a34a" />

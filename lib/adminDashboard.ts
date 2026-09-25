@@ -232,7 +232,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   const profileCols =
     "user_id, created_at, account_type, bible_year_launch_seen_at, preferred_study_mode, signup_source, signup_utm_source, signup_first_touch_source, signup_referrer_url, signup_source_detail, signup_landing_session_id, registered_at, converted_from_guest_at";
 
-  const [profilesAll, events, blogViews, promoEvents, groupPosts, proverbsMembers, emailRowsAll] = await Promise.all([
+  const [profilesAll, events, blogViews, promoEvents, groupPosts, proverbsMembers, emailRowsAll, lifetimeCounts] = await Promise.all([
     fetchAll<ProfileRow>(admin, "profile_stats", profileCols, (q) => q.gte("created_at", widest)),
     fetchAll<EventRow>(admin, "landing_page_events", "session_id, user_id, event_name, referrer, page_path, source, created_at", (q) => q.gte("created_at", sinceIso)),
     fetchAll<BlogViewRow>(admin, "blog_page_views", "session_id, user_id, article_slug, referrer, created_at", (q) => q.gte("created_at", sinceIso)),
@@ -240,6 +240,25 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     fetchAll<{ created_at: string; user_id: string | null }>(admin, "group_posts", "created_at, user_id", (q) => q.gte("created_at", sinceIso).is("parent_post_id", null)),
     fetchAll<{ user_id: string; joined_at: string }>(admin, "community_event_members", "user_id, joined_at", (q) => q.eq("event_slug", "wisdom-of-proverbs"), "joined_at"),
     admin.from("email_campaign_stats").select("id, name, sent_at, recipients, opens, clicks, site_visits").not("sent_at", "is", null).order("sent_at", { ascending: false }).limit(24),
+    // Lifetime account counts (2026-09-25, Louis: a total users card at the
+    // top). Everything else on this page is window-scoped; these are all-time,
+    // so they are counted server-side rather than derived from `profiles`,
+    // which only reaches back as far as the comparison window needs.
+    (async () => {
+      // `registered` is counted explicitly rather than as "total minus
+      // guests": a small number of old rows have no account_type at all and
+      // no registered_at, so they are neither, and folding them into
+      // registered would overstate it.
+      const [totalRes, guestRes, registeredRes] = await Promise.all([
+        admin.from("profile_stats").select("user_id", { count: "exact", head: true }),
+        admin.from("profile_stats").select("user_id", { count: "exact", head: true }).eq("account_type", "guest"),
+        admin.from("profile_stats").select("user_id", { count: "exact", head: true }).eq("account_type", "registered"),
+      ]);
+      if (totalRes.error) throw new Error(`profile_stats count: ${totalRes.error.message}`);
+      if (guestRes.error) throw new Error(`profile_stats guest count: ${guestRes.error.message}`);
+      if (registeredRes.error) throw new Error(`profile_stats registered count: ${registeredRes.error.message}`);
+      return { total: totalRes.count ?? 0, guests: guestRes.count ?? 0, registered: registeredRes.count ?? 0 };
+    })(),
   ]);
 
   const profiles = profilesAll.filter((p) => p.user_id !== OWNER_USER_ID);
@@ -607,6 +626,15 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     range: { start: current.start.toISOString(), end: current.end.toISOString() },
     generatedAt: now.toISOString(),
     topCards,
+    // All-time, minus Louis's own account, with the window's new signups as
+    // context so the card says both "how many" and "still growing?".
+    // Both totals drop Louis's own account, which is a registered one.
+    totalUsers: {
+      value: Math.max(0, lifetimeCounts.total - 1),
+      registered: Math.max(0, lifetimeCounts.registered - 1),
+      guests: lifetimeCounts.guests,
+      newInWindow: newCur.length,
+    },
     startedStudying: { value: pickedCur.length, change: change(pickedCur.length, pickedPrev.length) },
     newUsersOverTime: { points: overTime, total: last30, change: change(last30, prev30) },
     funnel,
