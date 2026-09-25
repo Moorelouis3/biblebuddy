@@ -217,6 +217,49 @@ const pickedAPath = (p: ProfileRow) =>
   Boolean(p.registered_at || p.converted_from_guest_at) ||
   (p.account_type !== null && p.account_type !== "guest");
 
+/**
+ * Every account, straight from auth (2026-09-25, Louis: "it's over 6,400,
+ * something is wrong").
+ *
+ * The rest of this page counts profile_stats rows, but ~720 accounts have no
+ * profile_stats row at all - 712 of them real email signups - so counting that
+ * table understated the user base by hundreds. auth.users is the only
+ * authoritative list, and it matches the group's own member count.
+ *
+ * Guests are Supabase anonymous users; everyone else has an email, so the two
+ * add up to the total exactly. Paginated 1,000 at a time like
+ * app/api/admin/journey-analytics/route.ts does. If auth is unreachable the
+ * card is dropped rather than shown wrong - the caller renders nothing when
+ * this returns null.
+ */
+async function countAuthAccounts(admin: SupabaseClient, current: { start: Date; end: Date }) {
+  try {
+    let total = 0;
+    let guests = 0;
+    let withEmail = 0;
+    let newInWindow = 0;
+    for (let page = 1; page <= 60; page += 1) {
+      const { data, error } = await admin.auth.admin.listUsers({ page, perPage: 1000 });
+      if (error) throw new Error(error.message);
+      const users = data?.users || [];
+      for (const user of users) {
+        total += 1;
+        if (user.is_anonymous) guests += 1;
+        else if (user.email) withEmail += 1;
+        const created = user.created_at ? Date.parse(user.created_at) : NaN;
+        if (Number.isFinite(created) && created >= current.start.getTime() && created < current.end.getTime()) {
+          newInWindow += 1;
+        }
+      }
+      if (users.length < 1000) break;
+    }
+    return { total, guests, withEmail, newInWindow };
+  } catch (error) {
+    console.error("[DASHBOARD] auth account count failed:", error instanceof Error ? error.message : error);
+    return null;
+  }
+}
+
 // ---------- main ----------
 
 export async function computeDashboard(admin: SupabaseClient, window: DashboardWindow) {
@@ -244,21 +287,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     // top). Everything else on this page is window-scoped; these are all-time,
     // so they are counted server-side rather than derived from `profiles`,
     // which only reaches back as far as the comparison window needs.
-    (async () => {
-      // `registered` is counted explicitly rather than as "total minus
-      // guests": a small number of old rows have no account_type at all and
-      // no registered_at, so they are neither, and folding them into
-      // registered would overstate it.
-      const [totalRes, guestRes, registeredRes] = await Promise.all([
-        admin.from("profile_stats").select("user_id", { count: "exact", head: true }),
-        admin.from("profile_stats").select("user_id", { count: "exact", head: true }).eq("account_type", "guest"),
-        admin.from("profile_stats").select("user_id", { count: "exact", head: true }).eq("account_type", "registered"),
-      ]);
-      if (totalRes.error) throw new Error(`profile_stats count: ${totalRes.error.message}`);
-      if (guestRes.error) throw new Error(`profile_stats guest count: ${guestRes.error.message}`);
-      if (registeredRes.error) throw new Error(`profile_stats registered count: ${registeredRes.error.message}`);
-      return { total: totalRes.count ?? 0, guests: guestRes.count ?? 0, registered: registeredRes.count ?? 0 };
-    })(),
+    countAuthAccounts(admin, current),
   ]);
 
   const profiles = profilesAll.filter((p) => p.user_id !== OWNER_USER_ID);
@@ -628,13 +657,16 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     topCards,
     // All-time, minus Louis's own account, with the window's new signups as
     // context so the card says both "how many" and "still growing?".
-    // Both totals drop Louis's own account, which is a registered one.
-    totalUsers: {
-      value: Math.max(0, lifetimeCounts.total - 1),
-      registered: Math.max(0, lifetimeCounts.registered - 1),
-      guests: lifetimeCounts.guests,
-      newInWindow: newCur.length,
-    },
+    // Louis's own account is dropped from the total and from `registered`,
+    // which is the one he is in. Null when auth could not be read.
+    totalUsers: lifetimeCounts
+      ? {
+          value: Math.max(0, lifetimeCounts.total - 1),
+          registered: Math.max(0, lifetimeCounts.withEmail - 1),
+          guests: lifetimeCounts.guests,
+          newInWindow: lifetimeCounts.newInWindow,
+        }
+      : null,
     startedStudying: { value: pickedCur.length, change: change(pickedCur.length, pickedPrev.length) },
     newUsersOverTime: { points: overTime, total: last30, change: change(last30, prev30) },
     funnel,
