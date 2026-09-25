@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-09-25T13:42:31.097Z",
-  "nextChapter": "Genesis 40",
+  "updatedAt": "2026-09-25T17:13:21.768Z",
+  "nextChapter": "Proverbs 1",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -269,5 +269,9 @@
       "startedAt": "2026-09-25T13:31:38.746Z",
       "committedAt": "2026-09-25T13:42:31.096Z"
     }
-  }
+  },
+  "priorityBooks": [
+    "Proverbs"
+  ],
+  "priorityReason": "2026-09-25 Louis: cover Proverbs first so the chapter posts land during the October study, then resume the canonical walk at Genesis 32."
 }

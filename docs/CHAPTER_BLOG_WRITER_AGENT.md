@@ -15,6 +15,21 @@ The scheduled agent that builds the **Bible Chapter Library**: one
 order, starting at Genesis 5 (Genesis 1 to 4 existed before this routine).
 Louis, 2026-09-17: 5 chapters a day, no drop in quality.
 
+**Order is not always canonical.** `progress.json` may carry
+`priorityBooks`, which pulls whole books to the front of the queue — set on
+2026-09-25 to `["Proverbs"]` so the Proverbs chapters publish during the
+October community study. Never pick a chapter yourself: `claim` already
+applies the priority, and when the priority book is finished the queue
+resumes at the earliest unwritten chapter on its own (no bookmark to
+restore). To change it:
+
+```
+node scripts/chapter-blog-queue.mjs priority Proverbs "why"   # set
+node scripts/chapter-blog-queue.mjs priority --clear          # back to canonical
+```
+
+`status` shows `priorityBooks` and `priorityRemaining`.
+
 **One chapter per run.** The routine fires 5 times a day, so the daily
 target is met while every run stays small enough to research, write and
 check one chapter properly. A failed run costs one chapter, not a whole day.

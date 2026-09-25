@@ -99,14 +99,36 @@ function isStaleGenerating(entry) {
 }
 
 /**
- * The next chapter to write: earliest chapter (canonical order) that has no
- * article and is not done, in flight, or parked for Louis. A failed chapter
- * sits earlier in the order than anything after it, so it is always retried
- * before the queue moves on. A chapter whose article already exists is
- * reported as `existing` instead - never written twice.
+ * Chapters in the order the queue will write them.
+ *
+ * Normally that is canonical order. `priorityBooks` (2026-09-25, Louis: cover
+ * Proverbs during the October study) pulls whole books to the front, in the
+ * order listed. The sort is stable, so chapters keep canonical order inside
+ * each group and everything else keeps its place - which means no bookmark is
+ * needed. Once the priority book is finished the queue simply carries on at
+ * the earliest unwritten chapter, exactly where it left off.
+ */
+export function orderedChapters(progress) {
+  const priority = (progress?.priorityBooks || []).map((book) => String(book).toLowerCase());
+  const all = allChapters();
+  if (!priority.length) return all;
+  const rank = (item) => {
+    const index = priority.indexOf(item.book.toLowerCase());
+    return index === -1 ? priority.length : index;
+  };
+  return [...all].sort((a, b) => rank(a) - rank(b));
+}
+
+/**
+ * The next chapter to write: earliest chapter (priority books first, then
+ * canonical order) that has no article and is not done, in flight, or parked
+ * for Louis. A failed chapter sits earlier in the order than anything after
+ * it, so it is always retried before the queue moves on. A chapter whose
+ * article already exists is reported as `existing` instead - never written
+ * twice.
  */
 export function findNext(progress) {
-  for (const item of allChapters()) {
+  for (const item of orderedChapters(progress)) {
     const entry = progress.chapters[item.slug];
     if (entry && ["committed", "published", "needs_louis"].includes(entry.status)) continue;
     if (entry && ["generating", "quality_check"].includes(entry.status) && !isStaleGenerating(entry)) continue;
@@ -126,10 +148,21 @@ function summary(progress) {
   const lastPublished = published
     .filter(([, e]) => e.publishedAt)
     .sort((a, b) => (a[1].publishedAt < b[1].publishedAt ? 1 : -1))[0];
+  const priorityBooks = progress.priorityBooks || [];
+  const priorityRemaining = priorityBooks.length
+    ? chapters.filter(
+        (c) =>
+          priorityBooks.some((b) => b.toLowerCase() === c.book.toLowerCase()) &&
+          !["committed", "published"].includes(progress.chapters[c.slug]?.status),
+      ).length
+    : 0;
   return {
     totalChapters: chapters.length,
     completed: done.length,
     remaining: chapters.length - done.length,
+    priorityBooks,
+    priorityRemaining,
+    priorityReason: priorityBooks.length ? progress.priorityReason || null : null,
     currentBook: next?.book || null,
     nextChapter: next ? next.label : "All chapters complete",
     dailyTarget: progress.dailyTarget,
@@ -332,6 +365,24 @@ function selfTest() {
     genesisToExodus: chapters[49].slug === "genesis-50-explained" && chapters[50].slug === "exodus-1-explained",
     lastIsRevelation22: chapters[1188].slug === "revelation-22-explained",
   };
+
+  // Priority ordering: Proverbs first, canonical order preserved everywhere
+  // else, and nothing lost or duplicated by the reorder.
+  const prioritised = orderedChapters({ priorityBooks: ["Proverbs"] });
+  const proverbs = prioritised.slice(0, 31);
+  checks.priorityFirst = proverbs.every((c) => c.book === "Proverbs") && proverbs[0].slug === "proverbs-1-explained";
+  checks.priorityKeepsOrder = proverbs[30].slug === "proverbs-31-explained" && prioritised[31].slug === "genesis-1-explained";
+  checks.priorityKeepsEveryChapter =
+    prioritised.length === 1189 && new Set(prioritised.map((c) => c.slug)).size === 1189;
+  // Once the priority book is written, the queue resumes where it left off.
+  const mid = { priorityBooks: ["Proverbs"], chapters: {} };
+  for (let n = 1; n <= 31; n += 1) mid.chapters[chapterSlug("Proverbs", n)] = { status: "published" };
+  for (let n = 1; n <= 31; n += 1) mid.chapters[chapterSlug("Genesis", n)] = { status: "published" };
+  checks.resumesAfterPriority = orderedChapters(mid).find(
+    (c) => !["committed", "published"].includes(mid.chapters[c.slug]?.status),
+  )?.slug === "genesis-32-explained";
+  checks.noPriorityIsCanonical = orderedChapters({}).at(0).slug === "genesis-1-explained";
+
   return { ok: Object.values(checks).every(Boolean), checks };
 }
 
@@ -390,6 +441,31 @@ async function main() {
       progress.chapters[slug] = entry;
       saveProgress(progress);
       print({ slug, ...entry });
+      break;
+    }
+    case "priority": {
+      // priority Proverbs "reason"   -> write Proverbs next, then carry on
+      // priority --clear             -> back to plain canonical order
+      if (args[0] === "--clear") {
+        delete progress.priorityBooks;
+        delete progress.priorityReason;
+        saveProgress(progress);
+        print({ priorityBooks: [], nextChapter: findNext(progress)?.label || null });
+        break;
+      }
+      const known = new Map(BOOKS.map(([book]) => [book.toLowerCase(), book]));
+      const books = [];
+      let reason = null;
+      for (const arg of args) {
+        const match = known.get(arg.toLowerCase());
+        if (match) books.push(match);
+        else reason = reason ? `${reason} ${arg}` : arg;
+      }
+      if (!books.length) throw new Error(`usage: priority <Book> [<Book>...] ["reason"] | priority --clear`);
+      progress.priorityBooks = books;
+      if (reason) progress.priorityReason = reason;
+      saveProgress(progress);
+      print(summary(progress));
       break;
     }
     case "verify-live": {
