@@ -44300,6 +44300,55 @@
           "at": "2026-09-25T15:01:30Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 60,
+      "startedAt": "2026-09-25T17:46:03Z",
+      "finishedAt": "2026-09-25T17:58:32Z",
+      "durationMinutes": 12.5,
+      "sections": 7,
+      "cards": 44,
+      "verses": 22,
+      "notes": "New chapter (forward progress after Isaiah 59). Zion commanded to arise and shine with a light she did not produce herself, the nations and their kings drawn toward it, exiled sons and daughters carried home, camels, gold, and incense from Midian, Sheba, and Kedar arriving as tribute, former outsiders rebuilding the walls and gates left permanently open, the wrath/favour and smote/mercy contrast, the trade of lesser materials (brass, iron, wood, stone) for greater ones, the temple renamed Salvation and Praise, and the closing sun/moon imagery of an everlasting light ending the days of mourning, closing on God hastening the promise in his own time.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-25T17:47:09Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 60 (new chapter, forward progress; redo-remaining and priority-queue both empty)",
+          "at": "2026-09-25T17:47:09Z"
+        },
+        {
+          "name": "KJV text fetched for Isaiah 60 (22 verses) via raw.githubusercontent.com aruljohn/Bible-kjv",
+          "at": "2026-09-25T17:47:38Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementation (isaiahFiftyNineSource.ts) read in full",
+          "at": "2026-09-25T17:52:20Z"
+        },
+        {
+          "name": "lib/isaiahSixtySource.ts written (new chapter, 7 sections, 44 cards)",
+          "at": "2026-09-25T17:53:41Z"
+        },
+        {
+          "name": "style checker clean on first pass (44 cards, 0 problems)",
+          "at": "2026-09-25T17:53:52Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, replaceStudySectionsForBookRange(isaiah,60,60,...), preserveExactPhraseBodies range extended to 60",
+          "at": "2026-09-25T17:54:19Z"
+        },
+        {
+          "name": "parser check passed: 7 sections, 44 cards, matches design (22 verses, ~2 cards/verse)",
+          "at": "2026-09-25T17:54:53Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-09-25T17:56:26Z"
+        }
+      ]
     }
   ]
 }
