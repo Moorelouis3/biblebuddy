@@ -44169,6 +44169,59 @@
           "at": "2026-09-25T12:20:30Z"
         }
       ]
+    },
+    {
+      "book": "Isaiah",
+      "chapter": 57,
+      "startedAt": "2026-09-25T12:46:31Z",
+      "finishedAt": "2026-09-25T12:58:04Z",
+      "durationMinutes": 12,
+      "sections": 8,
+      "cards": 40,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (596 packages, fresh clone). Priority queue (data/bible-notes-priority-queue.json) confirmed empty (remaining: []), and the style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty too, so this was normal forward progress after Isaiah 56, confirmed by no isaiahFiftySeven* file existing yet in lib/. Fetched real KJV text for Isaiah 57 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Isaiah 57 moves from a quiet observation about the righteous dying unnoticed (verses 1-2) into a sharp, extended rebuke of the nation's idolatry and spiritual adultery, sons of the sorceress, worship under every green tree, child sacrifice in the valleys, idols pictured as a portion and a lofty bed with a covenant made to them, and political alliances bought with tribute sent to a king (verses 3-10). It turns on God's own question, of whom hast thou been afraid, explaining that His past silence was patience, not blindness, and that idols are vanity the wind will carry away while the one who trusts God inherits His holy mountain (verses 11-13). It then pivots to one of the clearest self descriptions of God in Isaiah, the high and lofty One that inhabiteth eternity who also dwells with the contrite and humble to revive them (verses 14-15), followed by God explaining that His anger has a limit because He remembers He made these souls Himself, naming covetousness as the root sin, and promising to heal and create the fruit of the lips, peace to the far off and the near (verses 16-19). It closes by picturing the wicked as a troubled sea that cannot rest, casting up mire and dirt, ending on the same line that also closes chapter forty eight, there is no peace, saith my God, to the wicked (verses 20-21). Chunked into 8 sections (1-2 the righteous taken away, 3-5 sons of the sorceress, 6-8 smooth stones and a lofty bed, 9-10 wearied but not grieved, 11-13 God's patience is not blindness, 14-15 the high and lofty One, 16-19 I will heal him, 20-21 no peace for the wicked). Density about 1.9 cards per verse (21 verses, 40 cards), matching the denser end of recent Isaiah chapters. Card headings include a matched emoji per phrase (following lib/genesisThirtyOneSource.ts, the designated reference implementation of the spec) since docs/bible-study-note-style.md section 8 calls for one emoji on every note title, a detail the immediately prior chapter (Isaiah 56) had dropped. scripts/check_bible_note_style.py found 1 problem on the first automated pass (one bullet at 9 words, one over the 3 to 8 word limit, in the Hell/Sheol definition), fixed by trimming an article, second run clean with 0 problems across all 40 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (lay to heart, sorceress, countenance style betrayal language, enflaming, clifts of the rocks, portion and lot, drink and meat offering, discovered thyself, debase, Sheol, wearied, contend, wroth, covetousness, frowardly, revive, contrite, fruit of the lips), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 40 cards. Parser check passed exactly via getBibleReaderStudySections('isaiah', 57) (8/8 sections, verse ranges 1-2/3-5/6-8/9-10/11-13/14-15/16-19/20-21 with no gaps, 40 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/isaiahFiftySevenSource.ts, preserveExactPhraseBodies isaiah range extended from chapters 1-56 to 1-57, and a new replaceStudySectionsForBookRange('isaiah', 57, 57, ISAIAH_FIFTY_SEVEN_PERSONAL_SECTIONS) call added onto the existing applyPersonalIsaiahTwentySixStudySections function. Next forward-progress target is Isaiah 58.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-25T12:46:55Z"
+        },
+        {
+          "name": "target chapter determined: Isaiah 57 (normal forward progress, priority queue and style-redo backlog both empty)",
+          "at": "2026-09-25T12:47:30Z"
+        },
+        {
+          "name": "KJV text fetched (Isaiah 57, 21 verses, aruljohn mirror)",
+          "at": "2026-09-25T12:48:15Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-09-25T12:50:00Z"
+        },
+        {
+          "name": "source file written: lib/isaiahFiftySevenSource.ts (40 cards, 8 sections)",
+          "at": "2026-09-25T12:55:20Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 automated fix)",
+          "at": "2026-09-25T12:55:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-09-25T12:55:55Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 40 cards, text verbatim)",
+          "at": "2026-09-25T12:56:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-09-25T12:56:02Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-25T12:58:04Z"
+        }
+      ]
     }
   ]
 }
