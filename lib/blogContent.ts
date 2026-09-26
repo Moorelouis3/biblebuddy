@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-1-explained",
+    title: "Proverbs 1 Explained: Why Wisdom Begins With Fearing God",
+    description:
+      "Proverbs 1 explained verse by verse: the purpose of the book, the fear of the LORD, a father's warning against violent men, and wisdom crying out in the street.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-1-explained",
+    publishedAt: "2026-09-26",
+    readTime: "15 min read",
+    image: "/blog-banners/proverbs-1-explained.jpg",
+    groupPost: {
+      title: "Proverbs 1 Explained 📖",
+      content:
+        "A father warns his son before trouble ever finds him.\nNot after. Before.\n\n📌 Wisdom begins with fearing God, not with being smart.\n\n📖 Solomon asked God for wisdom instead of riches.\n📖 A violent gang tries to recruit his son.\n📖 Wisdom herself cries out in the streets, calling anyone who will listen.\n\nNew article on:\n🟢 what the **fear of the LORD** actually means\n🟢 why greed for gain **destroys its own chaser**\n🟢 the promise waiting for anyone who **turns and listens**\n\nWhich voice have you been listening to this week? 🙏",
+    },
+  },
+  {
     slug: "genesis-39-explained",
     title: "Genesis 39 Explained: Joseph, Potiphar's Wife, and Prison",
     description:
