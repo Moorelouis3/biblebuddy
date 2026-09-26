@@ -494,6 +494,9 @@ publishing for a future series, that needs a small feature (filter
 `BLOG_ARTICLES` by `publishedAt <= today` in the blog index and the
 per post route) before it can work the way the calendar implies.
 
+## Stale local main recurred again (2026-09-26, hourly chapter notes run, Jeremiah 15) — caught with zero drift, clean fast-forward, nothing lost
+Same recurring family as every entry below, environment-level cause still unfixed. This run's container started detached with local `main` cached at an old `7bb8a56` tip (Analytics / Total users card era) that was missing Jeremiah 1-14 entirely, while genuinely diverged from the real current work. Wrote, verified, and locally committed Jeremiah 15 notes on top of the detached HEAD before noticing the mismatch on `git status`. `git fetch --unshallow origin` (this container's clone was shallow) followed by `git fetch origin main` resolved the real, current `origin/main` to `b520a3e` (Jeremiah 14 progress log tip) — which turned out to be exactly this run's commit parent, so `git push origin HEAD:main` landed as a clean fast-forward (`b520a3e4..c9accc47`), no rescue branch needed, no data lost, no duplicate work. Confirmed with a fresh `git fetch origin main` afterward and reset local `main` to match. Restating the same ask as every entry below: seed each fresh container's local `main` (and its `origin/main` remote-tracking ref) from the real current `origin/main` at container start, so a run does not have to spend part of its budget on git archaeology before it can push its actual work.
+
 ## Stale local main recurred again (2026-09-06, hourly chapter run) — still unfixed at the environment level
 Same root cause as every entry above: fresh checkout's local `main` was
 stuck at the old "Day 108 / Psalms 13" tip while `origin/main` was already
