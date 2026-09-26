@@ -6332,3 +6332,7 @@ Next up: Jeremiah 17
 ## 2026-09-26T16:59:01Z (hourly chapter notes run)
 Chapter: Jeremiah 17 | Duration: 12 min | Sections: 7 | Cards: 29 | Status: pass
 Next up: Jeremiah 18
+
+## 2026-09-26T17:54:21Z (hourly chapter notes run)
+Chapter: Jeremiah 18 | Duration: 8.4 min | Sections: 5 | Cards: 24 | Status: pass
+Next up: Jeremiah 19
