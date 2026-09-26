@@ -6272,3 +6272,7 @@ Next up: Jeremiah 2
 ## 2026-09-26T01:57:33Z (hourly chapter notes run)
 Chapter: Jeremiah 2 | Duration: 10 min | Sections: 8 | Cards: 30 | Status: pass
 Next up: Jeremiah 3
+
+## 2026-09-26T02:55:48Z (hourly chapter notes run)
+Chapter: Jeremiah 3 | Duration: 9.2 min | Sections: 8 | Cards: 34 | Status: pass
+Next up: Jeremiah 4
