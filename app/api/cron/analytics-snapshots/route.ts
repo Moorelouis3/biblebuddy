@@ -7,14 +7,22 @@ import { writeAnalyticsSnapshot } from "@/lib/adminAnalyticsSnapshots";
 // builds the new dashboard (lib/adminDashboard.ts) directly - about 15s per
 // timeframe. The old page's snapshots had silently stopped updating on
 // 2026-09-15; the old page (/admin/analytics/legacy) now computes live.
-// Groups keep their existing vercel.json schedules: Today every 30 min, the
-// rest hourly. "long" is kept as a no-op so its schedule does not 400.
+// Every timeframe is rebuilt every 15 minutes (2026-09-26, Louis: "so its no
+// waiting") - `today` on the quarter hour, `recent` (yesterday / 7d / 30d)
+// offset to 7,22,37,52 so the two runs never overlap. The page only ever
+// reads these files, so opening /admin/analytics never computes anything.
+// "long" is kept as an empty group so an old schedule would not 400.
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 300;
 
 const GROUPS: Record<string, DashboardWindow[]> = {
+  // One run rebuilds every timeframe the page can show, so they can never
+  // drift apart (before this, `30d` was found 3.5 hours stale while `7d` was
+  // 33 minutes old - the multi-window run was not always finishing).
+  all: ["today", "yesterday", "7d", "30d"],
+  // Kept so any older schedule still resolves instead of 400ing.
   today: ["today"],
   recent: ["yesterday", "7d", "30d"],
   long: [],

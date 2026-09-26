@@ -238,7 +238,8 @@ const pickedAPath = (p: ProfileRow) =>
  * window without a second pass. A warm function keeps it in memory too.
  */
 const AUTH_COUNT_CACHE_KEY = "auth-accounts";
-const AUTH_COUNT_TTL_MS = 30 * 60 * 1000;
+/** Just under the 15-minute snapshot cron, so every run refreshes it. */
+const AUTH_COUNT_TTL_MS = 14 * 60 * 1000;
 /** Covers the widest window the card reports (30 days). */
 const AUTH_RECENT_WINDOW_MS = 31 * 24 * 60 * 60 * 1000;
 
