@@ -45666,6 +45666,59 @@
           "at": "2026-09-26T14:56:32Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 16,
+      "startedAt": "2026-09-26T15:46:20Z",
+      "finishedAt": "2026-09-26T15:56:35Z",
+      "durationMinutes": 10.25,
+      "sections": 6,
+      "cards": 23,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress after Jeremiah 15 (priority queue and style-redo backlog both confirmed empty). KJV fetched from raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Style checker clean on first pass (0 problems, 23 cards). Section 13 eye checklist passed manually. Parser check passed (6/6 sections, 23 cards, verbatim). tsc --noEmit -p . clean. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to ch16, replaceStudySectionsForBookRange call added via applyPersonalJeremiahSixteenStudySections, invoked after the chapter 15 call). Density about 1.1 cards/verse. Redo mode: new chapter (not a style redo).",
+      "steps": [
+        {
+          "name": "npm install done (596 packages, fresh clone)",
+          "at": "2026-09-26T15:46:57Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 16 (new chapter, forward progress; priority queue and redo-remaining both empty)",
+          "at": "2026-09-26T15:47:30Z"
+        },
+        {
+          "name": "KJV text fetched for Jeremiah 16 (21 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-09-26T15:48:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full, reference files genesisThirtyOneSource.ts and jeremiahFifteenSource.ts reviewed",
+          "at": "2026-09-26T15:49:30Z"
+        },
+        {
+          "name": "source file lib/jeremiahSixteenSource.ts written (6 sections, 23 cards)",
+          "at": "2026-09-26T15:53:00Z"
+        },
+        {
+          "name": "style checker script clean on first pass (23 cards, 0 problems)",
+          "at": "2026-09-26T15:53:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, applyPersonalJeremiahSixteenStudySections added and invoked)",
+          "at": "2026-09-26T15:54:10Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections jeremiah 16: 6/6 sections, 23 cards)",
+          "at": "2026-09-26T15:54:50Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean with zero errors",
+          "at": "2026-09-26T15:55:28Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-26T15:56:35Z"
+        }
+      ]
     }
   ]
 }

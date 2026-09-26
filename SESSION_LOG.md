@@ -6324,3 +6324,7 @@ Next up: Jeremiah 15
 ## 2026-09-26T14:54:23Z (hourly chapter notes run)
 Chapter: Jeremiah 15 | Duration: 7.6 min | Sections: 5 | Cards: 23 | Status: pass
 Next up: Jeremiah 16
+
+## 2026-09-26T15:56:35Z (hourly chapter notes run)
+Chapter: Jeremiah 16 | Duration: 10.25 min | Sections: 6 | Cards: 23 | Status: pass
+Next up: Jeremiah 17
