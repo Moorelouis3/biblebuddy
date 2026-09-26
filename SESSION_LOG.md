@@ -6348,3 +6348,7 @@ Next up: Jeremiah 21
 ## 2026-09-26T20:58:15Z (hourly chapter notes run)
 Chapter: Jeremiah 21 | Duration: 12 min | Sections: 5 | Cards: 31 | Status: pass
 Next up: Jeremiah 22
+
+## 2026-09-26T22:01:19Z (hourly chapter notes run)
+Chapter: Jeremiah 22 | Duration: 15 min | Sections: 8 | Cards: 59 | Status: pass
+Next up: Jeremiah 23
