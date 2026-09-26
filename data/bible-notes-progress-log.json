@@ -45414,6 +45414,63 @@
           "at": "2026-09-26T11:00:00Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 12,
+      "startedAt": "2026-09-26T11:46:02Z",
+      "finishedAt": "2026-09-26T11:54:08Z",
+      "durationMinutes": 8,
+      "sections": 4,
+      "cards": 19,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (596 packages, fresh clone). Priority/style-redo backlog confirmed empty (remaining: []), so this was normal forward progress after Jeremiah 11, confirmed by no jeremiahTwelve* file in lib/. Fetched real KJV text for Jeremiah 12 (17 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Jeremiah 12 opens with Jeremiah's honest complaint asking why the wicked prosper despite affirming God's righteousness first, God near in their mouth but far from their reins, and the request to pull them out like sheep for the slaughter against their own denial that judgment would ever come (1-4); God's reply warning of harder trials ahead via the footmen versus horses and the swelling of Jordan images, plus the warning that Jeremiah's own brethren and father's house had dealt treacherously and should not be trusted despite fair words, tying back to the Anathoth plot from chapter 11 (5-6); God's own lament over mine heritage pictured as a lion roaring in the forest and then a speckled bird targeted by other birds, the many pastors who destroyed the vineyard, the land mourning a desolation no man laid to heart, the sword of the LORD devouring the land so no flesh shall have peace, and sowing wheat but reaping thorns (7-13); and closing with judgment on the evil neighbor nations who seized Israel's inheritance, paired with a real promise to pluck them up and return with compassion on the condition they learn to swear by the LORD's name instead of Baal, with the same utterly pluck up and destroy judgment falling on any nation that refuses (14-17). Split into 4 sections (1-4, 5-6, 7-13, 14-17), matching the chapter's 17 verses exactly, following the same 4-section-per-chapter convention used across Jeremiah 1-11. Density about 1.12 cards per verse (17 verses, 19 cards). scripts/check_bible_note_style.py found 0 problems on the first pass, clean across all 19 cards: no hyphens, em dashes, semicolons, contractions, banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using 📖. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (reins, pastors, heritage, speckled bird, inheritance, fair words, swearing by the LORD's name), and closes on meaning rather than mechanics. Parser check passed via getBibleReaderStudySections('jeremiah', 12) (4/4 sections, verse ranges 1-4/5-6/7-13/14-17 with no gaps, 19 total cards, text rendered verbatim, preserveExactPhraseFormatting: true confirmed). npx tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/jeremiahTwelveSource.ts, preserveExactPhraseBodies jeremiah condition extended to include chapter 12, new function applyPersonalJeremiahTwelveStudySections() added and called right after applyPersonalJeremiahElevenStudySections()). Next forward-progress target is Jeremiah 13.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-26T11:46:31Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 12 (normal forward progress, redo backlog empty, last entry was Jeremiah 11)",
+          "at": "2026-09-26T11:46:48Z"
+        },
+        {
+          "name": "KJV text fetched (Jeremiah 12, 17 verses, aruljohn mirror)",
+          "at": "2026-09-26T11:47:15Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-26T11:48:40Z"
+        },
+        {
+          "name": "reviewed reference conventions in lib/jeremiahElevenSource.ts and wiring in lib/bibleReaderStudyNotes.ts",
+          "at": "2026-09-26T11:49:45Z"
+        },
+        {
+          "name": "source file written: lib/jeremiahTwelveSource.ts (19 cards, 4 sections)",
+          "at": "2026-09-26T11:52:05Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-09-26T11:52:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, applyPersonalJeremiahTwelveStudySections)",
+          "at": "2026-09-26T11:53:10Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, verses 1-4/5-6/7-13/14-17, no gaps, 19 cards, text verbatim)",
+          "at": "2026-09-26T11:53:45Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-09-26T11:54:05Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-09-26T11:54:08Z"
+        }
+      ]
     }
   ]
 }
