@@ -6344,3 +6344,7 @@ Next up: Jeremiah 20
 ## 2026-09-26T19:57:40Z (hourly chapter notes run)
 Chapter: Jeremiah 20 | Duration: 11 min | Sections: 5 | Cards: 42 | Status: pass
 Next up: Jeremiah 21
+
+## 2026-09-26T20:58:15Z (hourly chapter notes run)
+Chapter: Jeremiah 21 | Duration: 12 min | Sections: 5 | Cards: 31 | Status: pass
+Next up: Jeremiah 22
