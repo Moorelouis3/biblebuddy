@@ -810,6 +810,7 @@ import { JEREMIAH_THIRTEEN_PERSONAL_SECTIONS } from "./jeremiahThirteenSource";
 import { JEREMIAH_FOURTEEN_PERSONAL_SECTIONS } from "./jeremiahFourteenSource";
 import { JEREMIAH_FIFTEEN_PERSONAL_SECTIONS } from "./jeremiahFifteenSource";
 import { JEREMIAH_SIXTEEN_PERSONAL_SECTIONS } from "./jeremiahSixteenSource";
+import { JEREMIAH_SEVENTEEN_PERSONAL_SECTIONS } from "./jeremiahSeventeenSource";
 import { LAMENTATIONS_1_5_PERSONAL_SECTIONS } from "./lamentationsOneToFivePersonalNotes";
 import { EZEKIEL_1_12_PERSONAL_SECTIONS } from "./ezekielOneToTwelvePersonalNotes";
 import { EZEKIEL_13_48_PERSONAL_SECTIONS } from "./ezekielThirteenToFortyEightPersonalNotes";
@@ -1160,7 +1161,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "ecclesiastes" && section.chapter >= 1 && section.chapter <= 12) ||
     (normalizeBook(book) === "song of solomon" && section.chapter >= 1 && section.chapter <= 8) ||
     (normalizeBook(book) === "isaiah" && section.chapter >= 1 && section.chapter <= 66) ||
-    (normalizeBook(book) === "jeremiah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16));
+    (normalizeBook(book) === "jeremiah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16 || section.chapter === 17));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3033,6 +3034,10 @@ function applyPersonalJeremiahFifteenStudySections() {
 
 function applyPersonalJeremiahSixteenStudySections() {
   replaceStudySectionsForBookRange("jeremiah", 16, 16, JEREMIAH_SIXTEEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJeremiahSeventeenStudySections() {
+  replaceStudySectionsForBookRange("jeremiah", 17, 17, JEREMIAH_SEVENTEEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJeremiahThreeStudySections() {
@@ -10617,6 +10622,7 @@ applyPersonalJeremiahThirteenStudySections();
 applyPersonalJeremiahFourteenStudySections();
 applyPersonalJeremiahFifteenStudySections();
 applyPersonalJeremiahSixteenStudySections();
+applyPersonalJeremiahSeventeenStudySections();
 applyPersonalLamentationsOneThroughFiveStudySections();
 applyPersonalEzekielOneThroughTwelveStudySections();
 applyPersonalEzekielThirteenThroughFortyEightStudySections();
