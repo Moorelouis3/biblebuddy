@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-5-explained",
+    title: "Proverbs 5 Explained: The Warning Against the Strange Woman",
+    description:
+      "Proverbs 5 explained verse by verse: the honey that turns bitter, what an affair actually costs, drinking from your own well, and why nothing here is hidden from God.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-5-explained",
+    publishedAt: "2026-09-26",
+    readTime: "13 min read",
+    image: "/blog-banners/proverbs-5-explained.jpg",
+    groupPost: {
+      title: "Proverbs 5 Explained 📖",
+      content:
+        "Her lips drop honey. Her end is bitter as wormwood.\nThat is the whole chapter in one line.\n\n📌 Solomon spends all 23 verses on one warning.\n\n📖 A path so unstable Solomon says you cannot even map it.\n📖 What it actually costs: your honour, your years, your wealth.\n📖 Then a command to actually enjoy the marriage you already have.\n\nNew article on:\n🟢 what it means to **drink from your own cistern**\n🟢 why the old word **ravished** shows up in this chapter\n🟢 whether verse 22 means **God sets the trap**\n\nWhat do you already have that is worth being glad in today? 🙏",
+    },
+  },
+  {
     slug: "proverbs-4-explained",
     title: "Proverbs 4 Explained: Get Wisdom, Guard Your Heart",
     description:
