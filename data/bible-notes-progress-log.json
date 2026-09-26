@@ -45057,12 +45057,12 @@
       "book": "Jeremiah",
       "chapter": 6,
       "startedAt": "2026-09-26T05:46:14Z",
-      "finishedAt": "2026-09-26T06:05:00Z",
-      "durationMinutes": 18.8,
+      "finishedAt": "2026-09-26T06:01:17Z",
+      "durationMinutes": 15.05,
       "sections": 8,
       "cards": 56,
       "verses": 30,
-      "notes": "New chapter (forward progress; priority queue and style-redo backlog both empty). Jeremiah 6 only had old bulk placeholder wiring (jeremiahOneToNinePersonalNotes.ts), so it was written fresh with its own dedicated override file, the same per-chapter migration pattern used for Jeremiah 1-5. Sections: the trumpet and fire beacon warning system with Benjamin, Tekoa, and Bethhaccerem explained, plus the daughter of Zion under siege and the enemy's own war council words shifting from a noon attack to a night attack (1-5); the siege mount, the city to be visited, the fountain simile for constant wickedness, and the throughly glean and grapegatherer imagery (6-9); the uncircumcised ear idiom, Jeremiah's own weariness holding in God's fury, and covetousness and false dealing reaching from least to greatest, prophet to priest (10-13); the healed slightly and peace, peace, when there is no peace false comfort, and the lost capacity to blush explained as a seared conscience (14-15); the old paths and rest for your souls invitation refused twice, watchmen and trumpet echoing verse 1, and the fruit of their thoughts judgment (16-19); the incense from Sheba and sweet cane offerings rejected for missing obedience, stumblingblocks, and the north country army detailed with bow, spear, and horses in array (20-23); the fame thereof and hands wax feeble fear response, travail as childbirth pain, and sackcloth and ashes mourning customs (24-26); and the tower and fortress assignment for Jeremiah closing on the full metal refining picture, brass and iron, bellows and lead, founder melting in vain, and reprobate silver (27-30). scripts/check_bible_note_style.py found 6 problems on first pass (one banned filler word 'positioned', one banned hedge word 'fairly', three bullets over the 8 word limit, one card whose last bullet did not use the required closing emoji), fixed all six, then clean across all 56 cards. Three KJV titles with a semicolon (verse 4, verse 11, verse 14) had that mark swapped for a colon to satisfy the banned-semicolon rule. Parser check and npx tsc --noEmit -p . both clean.",
+      "notes": "New chapter (forward progress; priority queue and style-redo backlog both empty). Jeremiah 6 only had old bulk placeholder wiring (jeremiahOneToNinePersonalNotes.ts), so it was written fresh with its own dedicated override file, the same per-chapter migration pattern used for Jeremiah 1-5. Sections: the trumpet and fire beacon warning system with Benjamin, Tekoa, and Bethhaccerem explained, plus the daughter of Zion under siege and the enemy's own war council words shifting from a noon attack to a night attack (1-5); the siege mount, the city to be visited, the fountain simile for constant wickedness, and the throughly glean and grapegatherer imagery (6-9); the uncircumcised ear idiom, Jeremiah's own weariness holding in God's fury, and covetousness and false dealing reaching from least to greatest, prophet to priest (10-13); the healed slightly and peace, peace, when there is no peace false comfort, and the lost capacity to blush explained as a seared conscience (14-15); the old paths and rest for your souls invitation refused twice, watchmen and trumpet echoing verse 1, and the fruit of their thoughts judgment (16-19); the incense from Sheba and sweet cane offerings rejected for missing obedience, stumblingblocks, and the north country army detailed with bow, spear, and horses in array (20-23); the fame thereof and hands wax feeble fear response, travail as childbirth pain, and sackcloth and ashes mourning customs (24-26); and the tower and fortress assignment for Jeremiah closing on the full metal refining picture, brass and iron, bellows and lead, founder melting in vain, and reprobate silver (27-30). scripts/check_bible_note_style.py found 6 problems on first pass (one banned filler word 'positioned', one banned hedge word 'fairly', three bullets over the 8 word limit, one card whose last bullet did not use the required closing emoji), fixed all six, then clean across all 56 cards. Three KJV titles with a semicolon (verse 4, verse 11, verse 14) had that mark swapped for a colon to satisfy the banned-semicolon rule. Parser check and npx tsc --noEmit -p . both clean. Committing on top of local main revealed the same stale-cached-ref issue as the Jeremiah 5 run: local main was 24 commits behind the real origin/main (missing the Jeremiah 5 commit itself, plus Proverbs and analytics work, among others), even though the working tree on disk already reflected the up to date files. Fixed by checking out main, running a fast forward only merge to real origin/main (no commits lost, since local main was a pure ancestor), then cherry picking the Jeremiah 6 commit on top. Cherry pick applied cleanly with no conflicts. Re ran the parser check and npx tsc --noEmit -p . on the corrected tree, both clean, before pushing.",
       "steps": [
         {
           "name": "npm install done",
@@ -45103,6 +45103,18 @@
         {
           "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
           "at": "2026-09-26T06:05:00Z"
+        },
+        {
+          "name": "recovered stale local main (24 commits behind real origin/main) via fast forward merge, then cherry picked the Jeremiah 6 commit on top with no conflicts",
+          "at": "2026-09-26T05:59:40Z"
+        },
+        {
+          "name": "re-verified on corrected tree: parser check and npx tsc --noEmit -p . both clean",
+          "at": "2026-09-26T06:00:40Z"
+        },
+        {
+          "name": "pushed to origin/main (589511d), confirmed by fetch",
+          "at": "2026-09-26T06:01:17Z"
         }
       ]
     }
