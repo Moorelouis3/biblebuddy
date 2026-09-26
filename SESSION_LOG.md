@@ -6264,3 +6264,7 @@ Next up: Isaiah 66
 ## 2026-09-25T23:56:00Z (hourly chapter notes run)
 Chapter: Isaiah 66 | Duration: 9.2 min | Sections: 9 | Cards: 51 | Status: pass
 Next up: Jeremiah 1
+
+## 2026-09-26T00:56:31Z (hourly chapter notes run)
+Chapter: Jeremiah 1 | Duration: 10 min | Sections: 7 | Cards: 22 | Status: pass
+Next up: Jeremiah 2
