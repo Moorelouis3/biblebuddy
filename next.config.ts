@@ -48,6 +48,23 @@ const nextConfig: NextConfig = {
       { source: "/bible-study-hub/christian-history/st-valentine", destination: "/blog/st-valentine", permanent: true },
     ];
   },
+  async rewrites() {
+    // Tracked links in comments and DMs.
+    //
+    // Content Buddy mints a short code per person and counts the click on the
+    // way through, but its own address is a railway.app URL - and Louis found
+    // it in his Instagram DMs on 26 September: "why is the link in IG DMs
+    // saying life buddy not mybiblebuddy.net". A link under his name has to be
+    // his domain, so mybiblebuddy.net/r/<code> is served straight through to
+    // the counter, which then forwards to the page. Same click tracking, and
+    // the reader only ever sees mybiblebuddy.net.
+    return [
+      {
+        source: "/r/:code",
+        destination: "https://life-buddy-production.up.railway.app/r/:code",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
