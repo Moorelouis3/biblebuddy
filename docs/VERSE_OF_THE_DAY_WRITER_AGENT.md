@@ -2,9 +2,14 @@
 
 Scheduled agent that keeps the Verse of the Day queue full.
 
-**Write 6 entries per run.** Stop early only if
-`node scripts/verse-of-the-day-queue.mjs status` reports `writeMore: false`
-(the queue has reached 90 approved days ahead).
+**Write EXACTLY 2 entries per run.** The routine fires three times a day,
+so that is 6 a day — enough to rebuild a 90-day runway in about two and a
+half weeks while the app spends one a day. Two per run keeps every run small
+enough to write properly, and a failed run costs two entries, not six.
+
+Stop early only if the queue reports `writeMore: false` (90 approved days
+ahead). Never write ahead of that: the point is a steady buffer, not a year
+written in a weekend.
 
 ## Why this exists
 
@@ -20,31 +25,50 @@ every few weeks and has none of the breakdown sections.
 
 ## The queue owns the schedule — never pick a date yourself
 
+Your clone has **no database keys**, so you reach the queue through the
+site, exactly like the Bug Fixer does. `$BUG_AGENT_TOKEN` is already in your
+environment (`$VERSE_AGENT_TOKEN` is used instead when it exists).
+
+**Read what to write next:**
+
+```bash
+curl -s -H "Authorization: Bearer $BUG_AGENT_TOKEN" \
+  https://www.mybiblebuddy.net/api/verse-of-the-day/agent
 ```
-node scripts/verse-of-the-day-queue.mjs status        # runway, target, how short
-node scripts/verse-of-the-day-queue.mjs next          # the date + verses already used
-node scripts/verse-of-the-day-queue.mjs record f.json # save one finished entry
-node scripts/verse-of-the-day-queue.mjs self-test
+
+Returns `nextDate`, `runwayDays`, `shortBy`, `writeMore`, a rotating
+`backgroundTheme`, and `avoidReferences` — every verse already used. Gaps
+are filled before the queue extends, so a missing day is never skipped.
+
+**Submit one finished entry:**
+
+```bash
+curl -s -X POST -H "Authorization: Bearer $BUG_AGENT_TOKEN" \
+  -H "Content-Type: application/json" \
+  https://www.mybiblebuddy.net/api/verse-of-the-day/agent \
+  -d @entry.json
 ```
 
-`next` returns `scheduled_date`, a rotating `background_theme` and
-`avoidReferences`. Gaps are filled before the queue extends, so a missing
-day in the middle is never skipped.
+The endpoint does three things you must not do by hand: it **fetches the
+KJV text from bible-api itself** (never type or paraphrase Scripture — the
+`verse_text` you send is ignored), it **refuses a reference already used**
+(Psalm/Psalms and casing normalised, HTTP 409), and it refuses a date that
+already has an approved verse. It upserts, so a retry is safe.
 
-`record` does three things you must not do by hand: it **fetches the KJV
-text from bible-api.com** (never type Scripture yourself), it **refuses a
-reference that has already been used** (Psalm/Psalms and casing are
-normalised), and it upserts on `scheduled_date` so a re-run is safe.
+Re-read the GET after each POST: it returns the new `runwayDays` and the
+next date, and tells you when to stop.
 
-Entries live in Supabase (`verse_of_the_day_entries`), not in the repo, so
-**there is nothing to commit and no deploy is needed.** A saved entry is
-live the moment its date arrives.
+Entries live in Supabase, not in the repo, so **there is nothing to commit
+and no deploy is needed.** A saved entry is live when its date arrives.
+
+(Locally, with the service key present, the same queue is available as
+`node scripts/verse-of-the-day-queue.mjs status | next | used | record`.)
 
 ## Picking the verse
 
 - Never reuse a reference in `avoidReferences`.
 - Rotate the feel across a run: comfort, correction, promise, wisdom,
-  identity, hard verse. Do not write six comfort verses in a row.
+  identity, hard verse. Do not write two comfort verses in the same run, or six in a week.
 - Mix Old and New Testament. Do not let Psalms dominate.
 - Prefer verses people actually search for and memorise, but include
   less-obvious ones — a verse nobody expects is a reason to open the app.
@@ -53,7 +77,7 @@ live the moment its date arrives.
 
 ## The entry
 
-Write JSON to a temp file, then `record` it. Required fields:
+Write JSON to a file, then POST it. Required fields:
 
 ```json
 {
@@ -76,7 +100,7 @@ Write JSON to a temp file, then `record` it. Required fields:
 ```
 
 `book` is lowercase and matches bible-api (`1 john`, `song of solomon`).
-`verse_text`, `translation`, `status` and `edited_by` are set by the script.
+`verse_text`, `translation`, `status` and `edited_by` are set server-side.
 
 ## Voice and length
 
@@ -112,7 +136,7 @@ House style, taken from the pilot:
   Good: "What decision have you researched to death but never prayed about?"
 - `prayer` — first person, honest, no performance.
 
-## Quality gate before `record`
+## Quality gate before you POST
 
 1. The verse says what you claim — read the surrounding chapter, not just
    the verse.
@@ -125,7 +149,7 @@ House style, taken from the pilot:
 ## After the run
 
 Report the dates written, the references used, and the new `runwayDays`
-from `status`. If `bible-api.com` is rate limiting (it throttles around 15
-quick requests), the script already backs off and retries; if it still
+returned by the last POST. If `bible-api.com` is rate limiting (it throttles around 15
+quick requests), the endpoint already backs off and retries; if it still
 fails, write the remaining entries next run rather than typing the verse
 text by hand.
