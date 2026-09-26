@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-4-explained",
+    title: "Proverbs 4 Explained: Get Wisdom, Guard Your Heart",
+    description:
+      "Proverbs 4 explained verse by verse: the wisdom David passed to Solomon, why wisdom outranks everything else, the path of the wicked, and guarding your heart above all.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-4-explained",
+    publishedAt: "2026-09-26",
+    readTime: "13 min read",
+    image: "/blog-banners/proverbs-4-explained.jpg",
+    groupPost: {
+      title: "Proverbs 4 Explained 📖",
+      content:
+        "A father passes down what his own father once taught him.\nTwo generations of one lesson.\n\n📌 Get wisdom is repeated more than once for a reason.\n\n📖 Solomon recalls the words David spoke to him as a boy.\n📖 Wisdom is called the principal thing, above every other gain.\n📖 One verse says guard your heart, because life flows from it.\n\nNew article on:\n🟢 what it means that wisdom is the **principal thing**\n🟢 why the wicked in this chapter **cannot rest**\n🟢 how to actually **guard your heart** all day long\n\nWhat are you guarding less carefully than your heart right now? 🙏",
+    },
+  },
+  {
     slug: "proverbs-3-explained",
     title: "Proverbs 3 Explained: Trust the LORD With All Your Heart",
     description:
