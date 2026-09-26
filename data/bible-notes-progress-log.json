@@ -44934,6 +44934,59 @@
           "at": "2026-09-26T02:57:00Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 4,
+      "startedAt": "2026-09-26T03:46:21Z",
+      "finishedAt": "2026-09-26T03:58:35Z",
+      "durationMinutes": 12.2,
+      "sections": 8,
+      "cards": 49,
+      "verses": 31,
+      "notes": "New chapter (forward progress; priority queue and style-redo backlog both empty). Jeremiah 4 only had old bulk placeholder wiring (jeremiahOneToNinePersonalNotes.ts), no chapter-specific style-spec file, so it was written fresh and given its own dedicated override file following the same per-chapter migration pattern used for Jeremiah 1, 2, and 3. The conditional call to return built on removing idols, truthful oaths, and circumcising the heart, tied to the Abrahamic promise (1-4); the trumpet-and-siege warning naming the invader from the north as a lion and destroyer of the Gentiles, with a call to mourn before disaster lands (5-8); leaders losing their nerve, the false prophets' peace message exposed as deception, and the purely destructive wind that does not winnow (9-12); the invading army pictured as clouds and a whirlwind, God's washing offer set beside the coming judgment, and the invasion traced from Dan to Mount Ephraim (13-18); Jeremiah's own bodily anguish over his message, and Judah named sottish children skilled at evil (19-22); the vision of judgment undoing creation itself, reusing Genesis 1's exact without-form-and-void phrase (23-26); the promise that judgment will not be a full end, and the correction that God's repenting means changing His mind, not confessing sin (27-29); and Jerusalem personified as a woman dressing up for allies who will betray her, closing on the daughter of Zion's labor-pain cry (30-31). Split into 8 sections. scripts/check_bible_note_style.py found 3 problems on first pass (bullets running 9-10 words), fixed all three, then clean. Parser check and npx tsc --noEmit -p . both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-26T03:46:21Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 4 (forward progress, both queue files empty, Jeremiah 4 only has old bulk placeholder wiring via jeremiahOneToNinePersonalNotes.ts, same per-chapter migration pattern as Jeremiah 1, 2, and 3)",
+          "at": "2026-09-26T03:57:44Z"
+        },
+        {
+          "name": "KJV text fetched: Jeremiah 4, 31 verses, via raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-09-26T03:57:44Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-26T03:57:44Z"
+        },
+        {
+          "name": "source file written: lib/jeremiahFourSource.ts (8 sections, 49 cards, 31 verses)",
+          "at": "2026-09-26T03:57:44Z"
+        },
+        {
+          "name": "style checker clean: 3 problems fixed (bullets over word limit), then 0 problems",
+          "at": "2026-09-26T03:57:44Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies extended to Jeremiah 4, replaceStudySectionsForBookRange call added after Jeremiah 3's",
+          "at": "2026-09-26T03:57:44Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('jeremiah', 4) returns 8 sections, 49 cards, no throw",
+          "at": "2026-09-26T03:57:26Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, exit code 0",
+          "at": "2026-09-26T03:57:26Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + totals updated (822), data/bible-notes-progress-log.json entry appended",
+          "at": "2026-09-26T03:58:35Z"
+        }
+      ]
     }
   ]
 }
