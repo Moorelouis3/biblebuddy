@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-2-explained",
+    title: "Proverbs 2 Explained: Wisdom That Protects You From Two Dangers",
+    description:
+      "Proverbs 2 explained verse by verse: searching for wisdom like silver, the LORD who gives it, and the two dangers, the evil man and the strange woman, it rescues you from.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-2-explained",
+    publishedAt: "2026-09-26",
+    readTime: "13 min read",
+    image: "/blog-banners/proverbs-2-explained.jpg",
+    groupPost: {
+      title: "Proverbs 2 Explained 📖",
+      content:
+        "One sentence. Twenty two verses. One promise at the end.\n\nThat is the whole shape of this chapter.\n\n📌 Wisdom is searched for, like buried silver, not stumbled into.\n\n📖 Solomon tells his son exactly how hard to search.\n📖 Wisdom rescues him from a man who delights in evil.\n📖 Wisdom rescues him from a woman who flatters her way into an affair.\n\nNew article on:\n🟢 why the search matters even though **God gives the gift**\n🟢 who the **strange woman** in this chapter actually is\n🟢 what it means to actually **remain** somewhere good\n\nWhich path are you walking right now? 🙏",
+    },
+  },
+  {
     slug: "proverbs-1-explained",
     title: "Proverbs 1 Explained: Why Wisdom Begins With Fearing God",
     description:
