@@ -44812,6 +44812,59 @@
           "at": "2026-09-26T00:58:30Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 2,
+      "startedAt": "2026-09-26T01:47:33Z",
+      "finishedAt": "2026-09-26T01:57:33Z",
+      "durationMinutes": 10.0,
+      "sections": 8,
+      "cards": 30,
+      "verses": 37,
+      "notes": "New chapter (forward progress; priority queue and style-redo backlog both empty). Jeremiah 2 still only had old bulk placeholder wiring (jeremiahOneToNinePersonalNotes.ts), no chapter-specific style-spec file, so it was written fresh and given its own dedicated override file following the same per-chapter migration pattern used for Jeremiah 1. Israel's remembered devotion and holiness as firstfruits (1-3); the charge that the fathers found no fault yet chased vanity while priests, prophets, and pastors all failed (4-8); the two evils of forsaking the fountain of living waters for broken cisterns, framed by the Chittim and Kedar challenge (9-13); the spoiled nation, the young lions, broken crown from Noph and Tahapanes, and the Sihor/Assyria back and forth (14-19); the noble vine turned degenerate, worship on every high hill, washing with nitre, and the wild ass and dromedary images (20-25); ashamed as a caught thief, a stock and stone called father, a god for every city, and killing their own prophets (26-30); the wilderness question, we are lords as open rebellion, and the maid who forgot her ornaments (31-32); and the calculated pursuit of idols, the blood of the poor innocents, the false claim of innocence, and repeated humiliation from Egypt as from Assyria (33-37). Split into 8 sections. scripts/check_bible_note_style.py found 0 problems on first pass. Parser check and npx tsc --noEmit -p . both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-26T01:47:33Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 2 (forward progress, both queue files empty, Jeremiah 2 only has old bulk placeholder wiring via jeremiahOneToNinePersonalNotes.ts, same per-chapter migration pattern as Jeremiah 1)",
+          "at": "2026-09-26T01:48:14Z"
+        },
+        {
+          "name": "KJV text fetched: Jeremiah 2, 37 verses, via raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-09-26T01:49:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-26T01:52:43Z"
+        },
+        {
+          "name": "source file written: lib/jeremiahTwoSource.ts (8 sections, 30 cards, 37 verses)",
+          "at": "2026-09-26T01:54:00Z"
+        },
+        {
+          "name": "style checker clean: 0 problems on first pass",
+          "at": "2026-09-26T01:54:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies extended to Jeremiah 2, replaceStudySectionsForBookRange call added after the bulk range apply",
+          "at": "2026-09-26T01:54:24Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('jeremiah', 2) returns 8 sections, 30 cards, no throw",
+          "at": "2026-09-26T01:54:52Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, exit code 0",
+          "at": "2026-09-26T01:56:42Z"
+        },
+        {
+          "name": "progress files logged: docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + totals updated (820), data/bible-notes-progress-log.json entry appended",
+          "at": "2026-09-26T01:57:33Z"
+        }
+      ]
     }
   ]
 }
