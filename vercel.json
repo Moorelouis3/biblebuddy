@@ -109,6 +109,14 @@
       "schedule": "0 10 * * *"
     }
   ],
+  "functions": {
+    "app/api/cron/analytics-snapshots/route.ts": {
+      "memory": 3009
+    },
+    "app/api/admin/dashboard/route.ts": {
+      "memory": 3009
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
