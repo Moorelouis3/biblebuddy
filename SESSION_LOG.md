@@ -6300,3 +6300,7 @@ Next up: Jeremiah 9
 ## 2026-09-26T08:55:39Z (hourly chapter notes run)
 Chapter: Jeremiah 9 | Duration: 8.13 min | Sections: 6 | Cards: 24 | Status: pass
 Next up: Jeremiah 10
+
+## 2026-09-26T10:00:07Z (hourly chapter notes run)
+Chapter: Jeremiah 10 | Duration: 13.83 min | Sections: 5 | Cards: 20 | Status: pass
+Next up: Jeremiah 11
