@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-3-explained",
+    title: "Proverbs 3 Explained: Trust the LORD With All Your Heart",
+    description:
+      "Proverbs 3 explained verse by verse: trusting God over your own understanding, honoring Him with money, His discipline, wisdom's worth, and how it treats your neighbor.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-3-explained",
+    publishedAt: "2026-09-26",
+    readTime: "12 min read",
+    image: "/blog-banners/proverbs-3-explained.jpg",
+    groupPost: {
+      title: "Proverbs 3 Explained 📖",
+      content:
+        "Two verses from this chapter get quoted everywhere.\nThe other thirty three barely get read.\n\n📌 Trust in the Lord only makes sense next to the rest of the chapter.\n\n📖 Solomon ties loyalty and truth to a promise of favor.\n📖 God's discipline is proof of love, not proof of distance.\n📖 The chapter ends on neighbors, not theology.\n\nNew article on:\n🟢 what it means to **lean not on your own understanding**\n🟢 whether honoring God with money **guarantees** wealth\n🟢 why wisdom is called **more precious than rubies**\n\nHave you read past verse 6 lately? 🙏",
+    },
+  },
+  {
     slug: "proverbs-2-explained",
     title: "Proverbs 2 Explained: Wisdom That Protects You From Two Dangers",
     description:
