@@ -6312,3 +6312,7 @@ Next up: Jeremiah 12
 ## 2026-09-26T11:54:08Z (hourly chapter notes run)
 Chapter: Jeremiah 12 | Duration: 8 min | Sections: 4 | Cards: 19 | Status: pass
 Next up: Jeremiah 13
+
+## 2026-09-26T12:56:50Z (hourly chapter notes run)
+Chapter: Jeremiah 13 | Duration: 10.8 min | Sections: 7 | Cards: 28 | Status: pass
+Next up: Jeremiah 14
