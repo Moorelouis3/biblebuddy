@@ -44995,6 +44995,63 @@
           "at": "2026-09-26T03:59:31Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 5,
+      "startedAt": "2026-09-26T04:45:53Z",
+      "finishedAt": "2026-09-26T05:01:44Z",
+      "durationMinutes": 15.9,
+      "sections": 8,
+      "cards": 45,
+      "verses": 31,
+      "notes": "New chapter (forward progress; priority queue and style-redo backlog both empty). Session started in a detached HEAD state with local main appearing 18 commits behind origin/main; a fetch showed this was a stale cached ref, not real divergence, so local main was fast forwarded to the real origin/main with no work lost or discarded. Jeremiah 5 only had old bulk placeholder wiring (jeremiahOneToNinePersonalNotes.ts), so it was written fresh with its own dedicated override file, the same per-chapter migration pattern used for Jeremiah 1-4. Sections: the search for one honest man in Jerusalem and the lion/wolf/leopard judgment for repeated backsliding (1-6); covenant children turned to idolatry and ritual prostitution, pictured as fed horses (7-9); the command to destroy walls but not make a full end, battlements disowned as not the LORD's, and false prophets who will become wind (10-13); the LORD of hosts, Jeremiah's words as fire against a people of wood, and the unfamiliar-tongued invader stripping the harvest (14-17); the repeated not-a-full-end promise and measure-for-measure exile for idolatry (18-19); eyes that do not see explained as willful refusal, the sea's obedience shaming the people's rebellion, revolting clarified as an archaic word for rebelling, and the former/latter rain calendar (20-25); the birdcage image for houses full of deceit, corrupt courts skipping the fatherless, and the verse 9 refrain repeated to frame idolatry and injustice as one offense (26-29); and the close on wonderful meaning astonishing, prophets and priests feeding each other's lies, and the unanswered final question (30-31). scripts/check_bible_note_style.py found 3 problems on first pass (one banned hedge word 'fairly', two bullets one word over the 8 word limit), fixed all three, then clean across all 45 cards. Five KJV titles with a semicolon (verse 2, verse 4, two titles from verse 10, verse 21) had that mark swapped for a colon to satisfy the banned-semicolon rule. Parser check and npx tsc --noEmit -p . both clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-26T04:45:53Z"
+        },
+        {
+          "name": "recovered stale detached HEAD / fast-forwarded local main to real origin/main (no work lost)",
+          "at": "2026-09-26T04:48:30Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 5 (forward progress, priority queue and style-redo backlog both empty)",
+          "at": "2026-09-26T04:48:45Z"
+        },
+        {
+          "name": "KJV text fetched for Jeremiah 5 (31 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-09-26T04:48:52Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-09-26T04:49:10Z"
+        },
+        {
+          "name": "source file lib/jeremiahFiveSource.ts written (8 sections, 45 cards)",
+          "at": "2026-09-26T04:58:00Z"
+        },
+        {
+          "name": "style checker clean (fixed 3 problems: 1 banned hedge word, 2 over-length bullets)",
+          "at": "2026-09-26T04:59:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, applyPersonalJeremiahFiveStudySections call)",
+          "at": "2026-09-26T04:59:50Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 45 cards, verbatim text confirmed)",
+          "at": "2026-09-26T05:00:05Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-09-26T05:00:19Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-26T05:01:44Z"
+        }
+      ]
     }
   ]
 }
