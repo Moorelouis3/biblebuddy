@@ -6356,3 +6356,7 @@ Next up: Jeremiah 23
 ## 2026-09-26T23:00:42Z (hourly chapter notes run)
 Chapter: Jeremiah 23 | Duration: 14 min | Sections: 11 | Cards: 54 | Status: pass
 Next up: Jeremiah 24
+
+## 2026-09-26T23:55:19Z (hourly chapter notes run)
+Chapter: Jeremiah 24 | Duration: 9 min | Sections: 3 | Cards: 18 | Status: pass
+Next up: Jeremiah 25
