@@ -6368,3 +6368,7 @@ Next up: Jeremiah 26
 ## 2026-09-27T01:56:00Z (hourly chapter notes run)
 Chapter: Jeremiah 26 | Duration: 9 min | Sections: 7 | Cards: 34 | Status: pass
 Next up: Jeremiah 27
+
+## 2026-09-27T02:59:10Z (hourly chapter notes run)
+Chapter: Jeremiah 27 | Duration: 13 min | Sections: 6 | Cards: 31 | Status: pass
+Next up: Jeremiah 28
