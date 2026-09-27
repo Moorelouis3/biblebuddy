@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-6-explained",
+    title: "Proverbs 6 Explained: The Sluggard, the Ant, and Six Things God Hates",
+    description:
+      "Proverbs 6 explained verse by verse: the trap of cosigning a debt, the ant's lesson for the lazy, the seven things God hates, and the return to the warning against adultery.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-6-explained",
+    publishedAt: "2026-09-27",
+    readTime: "14 min read",
+    image: "/blog-banners/proverbs-6-explained.jpg",
+    groupPost: {
+      title: "Proverbs 6 Explained 📖",
+      content:
+        "Five short warnings, packed into one chapter.\nEach one lands on its own.\n\n📌 One promise made carelessly can snare you for years.\n\n📖 Go to the ant, Solomon says, and watch her work unsupervised.\n📖 Seven things the LORD names as hated outright.\n📖 Fire in the bosom, a picture of what adultery always does.\n\nNew article on:\n🟢 what it really means to be **surety** for someone\n🟢 why Solomon numbers it **six things, yea seven**\n🟢 whether hunger ever **excuses** stealing\n\nWhich of these five warnings hits closest to home this week? 🙏",
+    },
+  },
+  {
     slug: "proverbs-5-explained",
     title: "Proverbs 5 Explained: The Warning Against the Strange Woman",
     description:
