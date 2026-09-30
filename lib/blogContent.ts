@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-7-explained",
+    title: "Proverbs 7 Explained: The Young Man Watched From a Window",
+    description:
+      "Proverbs 7 explained verse by verse: the young man watched from a window, the woman's calculated pitch, and why even strong men have fallen to her.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-7-explained",
+    publishedAt: "2026-10-01",
+    readTime: "14 min read",
+    image: "/blog-banners/proverbs-7-explained.jpg",
+    groupPost: {
+      title: "Proverbs 7 Explained 📖",
+      content:
+        "One scene. One window. One warning worth remembering.\nSolomon watched the whole thing happen.\n\n📌 Flattery can work like force on a man who never decided his limits.\n\n📖 A young man walks toward a corner in the dark.\n📖 Her pitch sounds religious. It is not.\n📖 Even strong men have fallen to her, not just the foolish.\n\nNew article on:\n🟢 what it means to call wisdom your **sister**\n🟢 why she mentions **peace offerings** and paid vows\n🟢 why Solomon compares him to an **ox** going to slaughter\n\nWhich part of this scene hits closest to home? 🙏",
+    },
+  },
+  {
     slug: "proverbs-6-explained",
     title: "Proverbs 6 Explained: The Sluggard, the Ant, and Six Things God Hates",
     description:
