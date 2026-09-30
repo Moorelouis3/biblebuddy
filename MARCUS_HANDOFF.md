@@ -758,3 +758,23 @@ queue trigger actually fired on schedule yesterday, and (2) whether the
 08:00/16:00 UTC Deploy routine is still running and picking up `[deploy]`
 commits. This run is proceeding with Genesis 38 per the routine's normal
 retry-on-next-run behavior; not blocking on this.
+
+## Chapter Blog Writer: whole repo went silent for 3+ days (2026-09-27 to 2026-09-30) — this looks bigger than the recurring Deploy-lag issue above
+This run (claiming after Proverbs 6) found `proverbs-6-explained` still
+`committed`, not live (`verify-live` 404), since `committedAt`
+2026-09-27T02:42:05Z — about 81 hours ago, far past both the 24-hour
+threshold this routine's doc says to flag and the ~39.5 hours it took the
+previous stuck chapter (genesis-37-explained, flagged above on 2026-09-25)
+to eventually go live. More importantly: `git log` shows **zero commits
+of any kind, from any of this project's scheduled agents**, between
+2026-09-27T02:59:33Z (the last Jeremiah study-notes commit) and this run
+starting 2026-09-30. That is not just the Deploy routine or this queue
+skipping a cycle — every scheduled routine on this project (chapter blog,
+study notes, deploy) appears to have stopped firing entirely for over 3
+days, then resumed (with me) with no explanation. Worth checking whether
+the scheduler/triggers for this project's routines were paused,
+misconfigured, or hit an account-level issue around 2026-09-27; the
+per-routine symptoms (stuck `committed` chapters, no Deploy runs) are
+likely downstream of that same root cause rather than separate bugs. This
+run is proceeding normally (claim → write → ship) since the queue itself
+is healthy; not blocking on this.
