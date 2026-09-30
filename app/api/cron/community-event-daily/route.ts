@@ -3,9 +3,16 @@ import { createClient } from "@supabase/supabase-js";
 import { runCommunityEventDaily } from "@/lib/communityEventDailyPost";
 
 // Community event daily post (2026-09-22, The Wisdom of Proverbs, Oct 1-31).
-// Runs at 10:00 UTC = 6:00 a.m. US Eastern in October (EDT). For each live
-// event it posts that day's study post as Louis in the Bible Buddy group and
-// notifies the event's members (day 1: everyone, after that: reminders on).
+//
+// Runs at 01:00 UTC (2026-10-01, Louis: "3am my time"), which is 03:00 in
+// Berlin while CEST is in force, and 02:00 there after the clocks go back on
+// 26 October - Vercel crons are UTC only, so the last week of the study lands
+// an hour earlier for him. In US terms it is 9:00 p.m. Eastern the PREVIOUS
+// evening, so American members meet each day the night before their date.
+//
+// For each live event it posts that day's study post as Louis in the Bible
+// Buddy group and notifies the event's members (day 1: everyone, after that:
+// reminders on).
 // All the logic is in lib/communityEventDailyPost.ts.
 //
 //   ?dryRun=1              no writes, returns what it would do

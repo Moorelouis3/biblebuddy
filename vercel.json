@@ -106,7 +106,7 @@
     },
     {
       "path": "/api/cron/community-event-daily",
-      "schedule": "0 10 * * *"
+      "schedule": "0 1 * * *"
     }
   ],
   "functions": {
