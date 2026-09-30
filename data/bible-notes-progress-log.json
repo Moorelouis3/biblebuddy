@@ -46364,6 +46364,60 @@
           "at": "2026-09-27T02:59:10Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 28,
+      "startedAt": "2026-09-30T23:29:00Z",
+      "finishedAt": "2026-09-30T23:38:28Z",
+      "durationMinutes": 9.47,
+      "sections": 4,
+      "cards": 29,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (596 packages, fresh clone). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: []), so this was normal forward progress after Jeremiah 27, confirmed by no jeremiahTwentyEight* file in lib/ (files present were One through TwentySeven, no gaps) and no chapter 28 wiring call past Jeremiah 27 in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for Jeremiah 28 (17 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Jeremiah 28 is the direct continuation of chapter 27's yoke sign act: the prophet Hananiah of Gibeon publicly contradicts Jeremiah in the temple courtyard in the fourth year of Zedekiah, claiming God has already broken Babylon's yoke and that the exiled king Jeconiah and the temple vessels will return within two years (1-4); Jeremiah answers in the same public setting, genuinely wishing Hananiah were right but explaining the real test, that true prophets have historically warned of judgment while a prophet of peace must wait to be proven right by the outcome (5-9); Hananiah then stages a counter sign act, breaking the wooden yoke off Jeremiah's neck in front of the crowd and repeating his two year claim, and Jeremiah simply walks away without arguing further (10-11); God's real answer comes to Jeremiah privately afterward, that breaking the wooden yoke only earns Judah and the nations a heavier iron one, that Hananiah was never sent by God and taught the people to trust a lie, and that Hananiah himself will die within the year for teaching rebellion against the LORD, which is exactly what happens two months later in the seventh month (12-17). Split into 4 sections (1-4, 5-9, 10-11, 12-17), matching the chapter's 17 verses exactly with no gaps. Card density is 1.71 cards per verse (17 verses, 29 cards), near the ~2x target, a little lighter only where a single verse carries one tightly bound idea (verses 10 and 16 each still earned their own multi-angle treatment). scripts/check_bible_note_style.py found zero problems on the first pass across all 29 cards: no hyphens, em dashes, semicolons, or contractions, no banned filler or hedge words, no duplicate titles or repeated emoji within any card, every card exactly four bullets each three to eight words, every last bullet using 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves (defining yoke, countenance, pestilence, beasts of the field, vessels, and Jeconiah/Jehoiachin; correcting misreadings of Zedekiah's identity, the Amen response, Jeremiah's silent walk away, and the wood/iron distinction; naming the vague deadline and public setting; and stating flat theological points about testable prophecy, false comfort, and the swift fulfillment of judgment), closes on meaning rather than mechanics, and never restates a body line in its bullets. Every title verified as an exact or lightly trimmed contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('jeremiah', 28): 4/4 sections, verse ranges 1-4/5-9/10-11/12-17 with no gaps, 29 total cards, text rendered verbatim, preserveExactPhraseFormatting: true confirmed. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/jeremiahTwentyEightSource.ts, preserveExactPhraseBodies jeremiah condition extended to include chapter 28, new function applyPersonalJeremiahTwentyEightStudySections() added with its own replaceStudySectionsForBookRange(\"jeremiah\", 28, 28, JEREMIAH_TWENTY_EIGHT_PERSONAL_SECTIONS) call, invoked right after applyPersonalJeremiahTwentySevenStudySections()). Next forward-progress target is Jeremiah 29.",
+      "mode": "new chapter, normal forward progress",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-09-30T23:29:00Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 28 (new, forward progress)",
+          "at": "2026-09-30T23:29:00Z"
+        },
+        {
+          "name": "KJV text fetched for Jeremiah 28",
+          "at": "2026-09-30T23:29:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-09-30T23:29:21Z"
+        },
+        {
+          "name": "source file lib/jeremiahTwentyEightSource.ts written (4 sections, 29 cards)",
+          "at": "2026-09-30T23:35:06Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-09-30T23:35:06Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call, invocation)",
+          "at": "2026-09-30T23:35:06Z"
+        },
+        {
+          "name": "parser check passed: 4 sections, 29 cards",
+          "at": "2026-09-30T23:35:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-09-30T23:35:59Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-09-30T23:38:28Z"
+        }
+      ]
     }
   ]
 }
