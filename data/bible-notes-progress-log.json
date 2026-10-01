@@ -47343,6 +47343,67 @@
           "at": "2026-10-01T15:53:41Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 46,
+      "startedAt": "2026-10-01T16:46:51Z",
+      "finishedAt": "2026-10-01T16:57:23Z",
+      "durationMinutes": 10.5,
+      "sections": 6,
+      "cards": 30,
+      "verses": 28,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (`remaining: []`), so this was normal forward progress after Jeremiah 45, confirmed by no `jeremiahFortySix*` file in `lib/`. Local git had a detached HEAD sitting past a stale local `main` ref; `git fetch origin main` resolved it cleanly (origin/main matched the detached HEAD exactly) and `main` was reset to track origin/main, the same recurring environment anomaly noted in prior runs, nothing was lost. `npm install` ran clean (596 packages, fresh clone). Fetched real KJV text for Jeremiah 46 (28 verses) from the `raw.githubusercontent.com/aruljohn/Bible-kjv` mirror. Jeremiah 46 opens the block of oracles against foreign nations (46-51) with Egypt: the historical anchor of Pharaohnecho's army at Carchemish on the Euphrates, defeated by Nebuchadrezzar in 605 BC, a genuine turning point that ended Egyptian power in the Near East (1-4); the panicked rout at the river, fear on every side, and Egypt pictured as the Nile's own flood, boasting it will cover the earth, before mercenary allies (Ethiopians, Libyans, Lydians) are named (5-9); the day of the LORD's vengeance pictured as a sacrifice, the futile call to fetch Gilead's famous balm (a callback to the Joseph story) for a wound beyond cure, international shame, and the confirmation that Babylon will personally invade Egypt itself, judgment landing in the very delta cities (Migdol, Noph, Tahpanhes) where Jewish refugees had fled in chapters 43-44 (10-14); Pharaoh mocked as but a noise who missed his moment, Nebuchadrezzar compared to unmistakable landmarks (Tabor, Carmel), and Noph/Memphis condemned to desolation (15-19); Egypt pictured as a fair heifer led to slaughter, her hired mercenaries as fattened cattle that flee, the retreat compared to a serpent's hiss against an army advancing like woodcutters, and the population (her forest) overwhelmed by numbers like locusts (20-24); and the close naming Egypt's gods directly (No/Thebes and the god Amon) alongside a rare promise of Egypt's eventual restoration, before the message pivots to comfort for Jacob, that unlike the nations God judges to a full end, Israel's discipline is correction kept in measure (25-28). Split into 6 sections (1-4, 5-9, 10-14, 15-19, 20-24, 25-28), matching the chapter's 28 verses exactly with no gaps. Density about 1.07 cards per verse (28 verses, 30 cards). `scripts/check_bible_note_style.py` found 0 problems on the first pass across all 30 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using the book emoji. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (buckler, furbish, brigandines, apace, satiate, Gilead's balm, Migdol/Noph/Tahpanhes, No/Thebes), grounds the Carchemish history and the chapter 36-44 callbacks, and closes on meaning rather than mechanics. Parser check passed via getBibleReaderStudySections('jeremiah', 46) (6/6 sections, verse ranges 1-4/5-9/10-14/15-19/20-24/25-28 with no gaps, 30 total cards, text rendered verbatim). `npx tsc --noEmit -p .` clean with zero errors. Wired into `lib/bibleReaderStudyNotes.ts` (import added for `lib/jeremiahFortySixSource.ts`, the `jeremiah` condition in `preserveExactPhraseBodies` extended from chapters 1 through 45 to include chapter 46, and a new `applyPersonalJeremiahFortySixStudySections()` function and call added right after the existing chapter 45 override call). Next target: Jeremiah 47.",
+      "steps": [
+        {
+          "name": "npm install done (596 packages, fresh clone)",
+          "at": "2026-10-01T16:46:51Z"
+        },
+        {
+          "name": "resolved stale detached HEAD / local main ref via git fetch origin main, main reset to track origin/main",
+          "at": "2026-10-01T16:47:10Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 46 (normal forward progress, priority queue and redo-remaining both empty, last logged chapter was Jeremiah 45)",
+          "at": "2026-10-01T16:47:40Z"
+        },
+        {
+          "name": "KJV text fetched (Jeremiah 46, 28 verses, aruljohn mirror)",
+          "at": "2026-10-01T16:48:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline (.claude/skills/bible-notes/SKILL.md) read in full",
+          "at": "2026-10-01T16:49:30Z"
+        },
+        {
+          "name": "reference implementation (lib/genesisThirtyOneSource.ts, lib/jeremiahFortyFiveSource.ts) read for shape and wiring pattern",
+          "at": "2026-10-01T16:50:30Z"
+        },
+        {
+          "name": "source file written: lib/jeremiahFortySixSource.ts (6 sections, 30 cards)",
+          "at": "2026-10-01T16:54:30Z"
+        },
+        {
+          "name": "style checker clean on first pass (30 cards, 0 problems)",
+          "at": "2026-10-01T16:55:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 46, apply function added and called)",
+          "at": "2026-10-01T16:55:30Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 30 cards, verse ranges 1-4/5-9/10-14/15-19/20-24/25-28, no gaps)",
+          "at": "2026-10-01T16:56:05Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-01T16:56:28Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-01T16:57:23Z"
+        }
+      ]
     }
   ]
 }
