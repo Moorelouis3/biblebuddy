@@ -826,6 +826,7 @@ import { JEREMIAH_TWENTY_NINE_PERSONAL_SECTIONS } from "./jeremiahTwentyNineSour
 import { JEREMIAH_THIRTY_PERSONAL_SECTIONS } from "./jeremiahThirtySource";
 import { JEREMIAH_THIRTY_ONE_PERSONAL_SECTIONS } from "./jeremiahThirtyOneSource";
 import { JEREMIAH_THIRTY_TWO_PERSONAL_SECTIONS } from "./jeremiahThirtyTwoSource";
+import { JEREMIAH_THIRTY_THREE_PERSONAL_SECTIONS } from "./jeremiahThirtyThreeSource";
 import { LAMENTATIONS_1_5_PERSONAL_SECTIONS } from "./lamentationsOneToFivePersonalNotes";
 import { EZEKIEL_1_12_PERSONAL_SECTIONS } from "./ezekielOneToTwelvePersonalNotes";
 import { EZEKIEL_13_48_PERSONAL_SECTIONS } from "./ezekielThirteenToFortyEightPersonalNotes";
@@ -1176,7 +1177,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "ecclesiastes" && section.chapter >= 1 && section.chapter <= 12) ||
     (normalizeBook(book) === "song of solomon" && section.chapter >= 1 && section.chapter <= 8) ||
     (normalizeBook(book) === "isaiah" && section.chapter >= 1 && section.chapter <= 66) ||
-    (normalizeBook(book) === "jeremiah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16 || section.chapter === 17 || section.chapter === 18 || section.chapter === 19 || section.chapter === 20 || section.chapter === 21 || section.chapter === 22 || section.chapter === 23 || section.chapter === 24 || section.chapter === 25 || section.chapter === 26 || section.chapter === 27 || section.chapter === 28 || section.chapter === 29 || section.chapter === 30 || section.chapter === 31 || section.chapter === 32));
+    (normalizeBook(book) === "jeremiah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16 || section.chapter === 17 || section.chapter === 18 || section.chapter === 19 || section.chapter === 20 || section.chapter === 21 || section.chapter === 22 || section.chapter === 23 || section.chapter === 24 || section.chapter === 25 || section.chapter === 26 || section.chapter === 27 || section.chapter === 28 || section.chapter === 29 || section.chapter === 30 || section.chapter === 31 || section.chapter === 32 || section.chapter === 33));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3113,6 +3114,10 @@ function applyPersonalJeremiahThirtyOneStudySections() {
 
 function applyPersonalJeremiahThirtyTwoStudySections() {
   replaceStudySectionsForBookRange("jeremiah", 32, 32, JEREMIAH_THIRTY_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJeremiahThirtyThreeStudySections() {
+  replaceStudySectionsForBookRange("jeremiah", 33, 33, JEREMIAH_THIRTY_THREE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJeremiahThreeStudySections() {
@@ -10713,6 +10718,7 @@ applyPersonalJeremiahTwentyNineStudySections();
 applyPersonalJeremiahThirtyStudySections();
 applyPersonalJeremiahThirtyOneStudySections();
 applyPersonalJeremiahThirtyTwoStudySections();
+applyPersonalJeremiahThirtyThreeStudySections();
 applyPersonalLamentationsOneThroughFiveStudySections();
 applyPersonalEzekielOneThroughTwelveStudySections();
 applyPersonalEzekielThirteenThroughFortyEightStudySections();
