@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-12-explained",
+    title: "Proverbs 12 Explained: Roots That Hold and Lips That Snare",
+    description:
+      "Proverbs 12 explained verse by verse: a root nothing can move, a virtuous woman, mercy for animals, and the tongue that heals or wounds.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-12-explained",
+    publishedAt: "2026-10-01",
+    readTime: "15 min read",
+    image: "/blog-banners/proverbs-12-explained.jpg",
+    groupPost: {
+      title: "Proverbs 12 Explained 📖",
+      content:
+        "A root nothing can move.\nA tongue that heals or wounds like a sword.\n\n📌 Eight of this chapter's 28 verses are about the mouth.\n\n📖 The righteous man cares for his animals.\n📖 A good word lifts a heavy heart.\n📖 Lying lips close the chapter the same way chapter 11 opened.\n\nNew article on:\n🟢 what a **virtuous woman** meant in verse 4\n🟢 does verse 21 promise **no evil** ever touches you\n🟢 why a lazy hunter never **eats** what he caught\n\nWhich line in this chapter hits closest to home? 🙏",
+    },
+  },
+  {
     slug: "proverbs-11-explained",
     title: "Proverbs 11 Explained: Honest Scales and a Righteousness That Delivers",
     description:
