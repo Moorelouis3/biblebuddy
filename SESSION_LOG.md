@@ -6420,3 +6420,7 @@ Next up: Jeremiah 39
 ## 2026-10-01T09:56:09Z (hourly chapter notes run)
 Chapter: Jeremiah 39 | Duration: 9.9 min | Sections: 5 | Cards: 20 | Status: pass
 Next up: Jeremiah 40
+
+## 2026-10-01T10:57:27Z (hourly chapter notes run)
+Chapter: Jeremiah 40 | Duration: 10.4 min | Sections: 5 | Cards: 20 | Status: pass
+Next up: Jeremiah 41
