@@ -11,3 +11,4 @@
 2026-09-26T08:07:01Z | 49 commits | Isaiah 57-66 and Jeremiah 1-8 chapter notes, Genesis 38-39 Explained chapter library entries, Proverbs 1-3 Explained blog posts and banners, analytics fixes (total users card, snapshot memory/OOM fix, 15-minute rebuild cadence), and Verse of the Day writer queue/agent doc
 2026-09-26T16:07:21Z | 23 commits | Jeremiah 9-16 chapter notes, Proverbs 4-5 Explained chapter library entries, and tracked comment links served from mybiblebuddy.net
 2026-10-01T08:06:59Z | 42 commits | Jeremiah 17-37 chapter notes, Proverbs 6-10 Explained chapter library entries, and Bible in One Year day-progress/current-day bug fixes
+2026-10-01T16:06:41Z | 16 commits | Jeremiah 38-45 study notes, Proverbs 11-12 chapter library pages
