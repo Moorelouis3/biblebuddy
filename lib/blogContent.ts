@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-9-explained",
+    title: "Proverbs 9 Explained: Wisdom and Folly Both Call to You",
+    description:
+      "Proverbs 9 explained verse by verse: wisdom's costly feast, folly's copycat invitation, why a scorner can't be corrected, and what stolen water really costs.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-9-explained",
+    publishedAt: "2026-10-01",
+    readTime: "14 min read",
+    image: "/blog-banners/proverbs-9-explained.jpg",
+    groupPost: {
+      title: "Proverbs 9 Explained 📖",
+      content:
+        "Two women. Two houses. Nearly the same words.\nOnly one of them tells the truth.\n\n📌 Folly copies Wisdom's exact invitation, almost word for word.\n\n📖 Wisdom built her house before inviting a single guest.\n📖 A scorner can't be corrected, but a wise man gets wiser.\n📖 Her guests don't know the dead are already there.\n\nNew article on:\n🟢 what the **seven pillars** of wisdom's house mean\n🟢 why **stolen water** tastes sweeter than it should\n🟢 what **the fear of the LORD** actually starts\n\nWhich table are you really sitting at this week? 🙏",
+    },
+  },
+  {
     slug: "proverbs-8-explained",
     title: "Proverbs 8 Explained: Wisdom's Call Before the World Began",
     description:
