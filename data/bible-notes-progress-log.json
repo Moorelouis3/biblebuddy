@@ -47510,6 +47510,59 @@
           "at": "2026-10-01T19:00:17Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 49,
+      "startedAt": "2026-10-01T19:46:05Z",
+      "finishedAt": "2026-10-01T19:58:00Z",
+      "durationMinutes": 11.9,
+      "sections": 11,
+      "cards": 45,
+      "verses": 39,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (`remaining: []`), so this was normal forward progress after Jeremiah 48, confirmed by no `jeremiahFortyNine*` file in `lib/` and no chapter 49 wiring call past Jeremiah 48 in `lib/bibleReaderStudyNotes.ts`. npm install ran clean (596 packages, fresh clone). Fetched real KJV text for Jeremiah 49 (39 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Jeremiah 49 collects five short oracles against foreign nations: Ammon (1-6), accused of squatting on the tribe of Gad's land after Israel's own exile, with Rabbah (its capital, modern day Amman) threatened with fire before a closing promise its captivity will be reversed; Edom (7-22), the longest block, opening with Teman's famous wisdom failing, Dedan told to dwell deep, the grapegatherer and thief idiom showing Edom's judgment will be more total than either, a surprising mercy line for Edom's fatherless and widows, the wrath cup Edom cannot skip since less guilty nations already drank it, God swearing by himself against Bozrah, Edom's cliff dwelling pride (tied to Petra) nested as high as the eagle, the Sodom and Gomorrah comparison, and a lion out of Jordan's thickets alongside God's own who is like me challenge and the least of the flock dragging Edom away; Damascus (23-27), waxing feeble, mourned as the city of my joy, its young men falling in the streets, and its palaces of Benhadad set on fire; Kedar and this (non Canaanite) Hazor (28-33), nomadic Arabian tribes stripped of tents, flocks, and camels, told to dwell deep exactly as Dedan was, and the wealthy but unwalled, allied-to-no-one nation scattered into all winds and left a dwelling for dragons; and Elam (34-39), dated to the start of Zedekiah's reign, its famous archers' bow broken, its people scattered to all four winds with no nation left to flee to, and a closing promise (matching the Ammon and Moab pattern) that even Elam's captivity will one day be reversed. Split into 11 sections (1-3, 4-6, 7-11, 12-15, 16-18, 19-22, 23-27, 28-30, 31-33, 34-36, 37-39) covering all 39 verses with no gaps or overlaps. Density about 1.15 cards per verse (39 verses, 45 cards), consistent with the 1.0-1.3 range set by recent Jeremiah oracle chapters. Every card title was checked by hand against the fetched KJV text to confirm it is a real contiguous substring of the verse it comes from (several early drafts were corrected, e.g. swapping a paraphrased title for the exact contiguous phrase 'An Alarm Of War To Be Heard In Rabbah', and 'That Dwellest In The Clefts Of The Rock' instead of dropping the word 'that'). scripts/check_bible_note_style.py found one problem on the first pass (a banned hedge word, 'quite', on the 'I Will Set My Throne In Elam' card), fixed immediately and reverified clean across all 45 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no other banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using \ud83d\udcd6. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms in plain language (Gad, Rabbah, sackcloth, Teman, Eliphaz the Temanite, Dedan, the wrath cup, Bozrah, clefts of the rock/Petra, swelling of Jordan, pangs, Hamath and Arpad, Benhadad, Kedar, this non-Canaanite Hazor, booty and spoil, dragons as jackals, Elam, the four winds from the four quarters), grounds the Numbers/Job/Genesis callbacks and the Moab/Ammon latter days pattern, and closes on meaning rather than mechanics. Parser check passed via getBibleReaderStudySections('jeremiah', 49) (11/11 sections, all verse ranges with no gaps, 45 total cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/jeremiahFortyNineSource.ts, preserveExactPhraseBodies jeremiah condition extended to include chapter 49, new function applyPersonalJeremiahFortyNineStudySections() added with its own replaceStudySectionsForBookRange(\"jeremiah\", 49, 49, JEREMIAH_FORTY_NINE_PERSONAL_SECTIONS) call, invoked right after applyPersonalJeremiahFortyEightStudySections()). Next forward-progress target is Jeremiah 50.",
+      "steps": [
+        {
+          "name": "npm install done (596 packages, fresh clone)",
+          "at": "2026-10-01T19:46:33Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 49 (normal forward progress, priority queue and redo-remaining both empty, last logged chapter was Jeremiah 48)",
+          "at": "2026-10-01T19:47:30Z"
+        },
+        {
+          "name": "KJV text fetched (Jeremiah 49, 39 verses, aruljohn mirror)",
+          "at": "2026-10-01T19:48:05Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline (.claude/skills/bible-notes/SKILL.md) read in full",
+          "at": "2026-10-01T19:48:55Z"
+        },
+        {
+          "name": "reference implementation (lib/jeremiahFortyEightSource.ts) read for parser shape and wiring pattern",
+          "at": "2026-10-01T19:49:10Z"
+        },
+        {
+          "name": "source file written: lib/jeremiahFortyNineSource.ts (11 sections, 45 cards)",
+          "at": "2026-10-01T19:53:09Z"
+        },
+        {
+          "name": "style checker clean after one hedge word fix (45 cards, 0 problems)",
+          "at": "2026-10-01T19:54:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 49, apply function added and called)",
+          "at": "2026-10-01T19:55:10Z"
+        },
+        {
+          "name": "parser check passed (11 sections, 45 cards, verse ranges 1-3 through 37-39, no gaps)",
+          "at": "2026-10-01T19:56:05Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-01T19:57:00Z"
+        }
+      ]
     }
   ]
 }
