@@ -58,6 +58,8 @@ type Breakdown = {
 };
 
 const TASK_BLUE = "#7BAFD4";
+/** Faces shown on the "studied this chapter" row before collapsing to a count. */
+const STUDIED_AVATAR_LIMIT = 12;
 
 type DevotionalContentBlock =
   | { kind: "heading"; key: string; level: 1 | 2; html: string }
@@ -911,6 +913,15 @@ export default function ProverbsStudyDayPage() {
   }
 
   const introCompletedDate = formatCompletedDate(progress?.completed_at);
+  // Everyone who has touched this chapter at all. breakdown.intro already
+  // includes people inferred from a later task, so it is the widest honest
+  // "studied this" set. Full finishers lead the row.
+  const finisherIds = new Set(finishers.map((f) => f.user_id));
+  const studiedBuddies = [
+    ...finishers,
+    ...breakdown.intro.filter((buddy) => !finisherIds.has(buddy.user_id)),
+  ];
+
   const breakdownSections: Array<[string, Finisher[], string]> = [
     ["Task 1 Overview", breakdown.intro, "Overview completed"],
     ["Task 2 Reading", breakdown.reading, "Reading completed"],
@@ -932,31 +943,43 @@ export default function ProverbsStudyDayPage() {
         </div>
 
         <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-          <p className="text-sm font-bold text-gray-950">Chapter Finishers</p>
+          {/* Headline is everyone studying this chapter, not only the people
+              who completed every single task (2026-10-01, Louis). On Proverbs 1
+              that is 70 rather than 3 - the strict count read as dead when the
+              day was actually busy. Full finishers still get their credit on
+              the line below and in the breakdown. */}
+          <p className="text-sm font-bold text-gray-950">Studied {chapterLabel}</p>
           <p className="mt-2 text-lg font-black text-gray-950">
-            {finishers.length} {finishers.length === 1 ? "buddy has" : "buddies have"} finished all 4 parts for {chapterLabel}
+            {studiedBuddies.length} {studiedBuddies.length === 1 ? "buddy has" : "buddies have"} studied {chapterLabel}
           </p>
           <p className="mt-1 text-sm text-gray-600">
-            Intro, reading, notes, trivia, and reflection all completed.
+            {finishers.length > 0
+              ? `${finishers.length} of them finished every task: intro, reading, notes, trivia and reflection.`
+              : "Finish the intro, reading, notes, trivia and reflection to be the first to complete every task."}
           </p>
-          {finishers.length === 0 ? (
+          {studiedBuddies.length === 0 ? (
             <p className="mt-5 text-sm leading-6 text-gray-600">
-              No full finishers yet. Once buddies complete every task for this chapter, they will show up here.
+              Nobody has started this chapter yet. Be the first.
             </p>
           ) : (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {finishers.map((finisher) => (
-                <div key={finisher.user_id} className="flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5">
-                  {finisher.profile_image_url ? (
-                    <img src={finisher.profile_image_url} alt={finisher.display_name} className="h-7 w-7 rounded-full object-cover" />
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              {studiedBuddies.slice(0, STUDIED_AVATAR_LIMIT).map((buddy) => (
+                <div key={buddy.user_id} className="flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5">
+                  {buddy.profile_image_url ? (
+                    <img src={buddy.profile_image_url} alt={buddy.display_name} className="h-7 w-7 rounded-full object-cover" />
                   ) : (
                     <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#7BAFD4] text-xs font-black text-slate-950">
-                      {finisher.display_name.slice(0, 1).toUpperCase()}
+                      {buddy.display_name.slice(0, 1).toUpperCase()}
                     </div>
                   )}
-                  <span className="text-xs font-bold text-gray-800">{finisher.display_name}</span>
+                  <span className="text-xs font-bold text-gray-800">{buddy.display_name}</span>
                 </div>
               ))}
+              {studiedBuddies.length > STUDIED_AVATAR_LIMIT ? (
+                <span className="text-xs font-bold text-gray-500">
+                  +{studiedBuddies.length - STUDIED_AVATAR_LIMIT} more
+                </span>
+              ) : null}
             </div>
           )}
           <div className="mt-5 border-t border-gray-100 pt-4">
