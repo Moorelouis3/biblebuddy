@@ -46524,6 +46524,59 @@
           "at": "2026-10-01T00:55:07Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 31,
+      "startedAt": "2026-10-01T01:46:30Z",
+      "finishedAt": "2026-10-01T01:58:00Z",
+      "durationMinutes": 11.5,
+      "sections": 13,
+      "cards": 64,
+      "verses": 40,
+      "notes": "New chapter, normal canonical forward progress after Jeremiah 30. Priority queue and style-redo backlog both empty. Covers the heart of the Book of Consolation: Rahel weeping for her children (quoted in Matthew 2:18) and the new covenant passage (31:31-34, quoted in full in Hebrews 8). Style checker found 11 problems on first pass (one missing 4/8 bullet ending symbol, several bullets over the 8 word limit, two body lines over 20 words, one section/card title collision), fixed all, clean on second pass. tsc clean.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-10-01T01:46:30Z"
+        },
+        {
+          "name": "target_chapter_determined_jeremiah_31_new_chapter",
+          "at": "2026-10-01T01:47:18Z"
+        },
+        {
+          "name": "kjv_text_fetched",
+          "at": "2026-10-01T01:47:18Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-10-01T01:50:18Z"
+        },
+        {
+          "name": "source_file_written",
+          "at": "2026-10-01T01:52:49Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-10-01T01:52:49Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-10-01T01:53:20Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-10-01T01:53:40Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-10-01T01:55:33Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-10-01T01:58:00Z"
+        }
+      ]
     }
   ]
 }
