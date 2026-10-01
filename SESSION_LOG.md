@@ -6396,3 +6396,7 @@ Next up: Jeremiah 33
 ## 2026-10-01T03:57:00Z (hourly chapter notes run)
 Chapter: Jeremiah 33 | Duration: 11.3 min | Sections: 9 | Cards: 31 | Status: pass
 Next up: Jeremiah 34
+
+## 2026-10-01T04:55:20Z (hourly chapter notes run)
+Chapter: Jeremiah 34 | Duration: 8.5 min | Sections: 6 | Cards: 24 | Status: pass
+Next up: Jeremiah 35
