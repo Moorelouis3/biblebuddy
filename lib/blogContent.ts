@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-10-explained",
+    title: "Proverbs 10 Explained: Wisdom, Work, and the Tongue",
+    description:
+      "Proverbs 10 explained verse by verse: where Solomon's long speeches end and 32 short proverbs on work, speech, love, and the righteous life begin.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-10-explained",
+    publishedAt: "2026-10-01",
+    readTime: "15 min read",
+    image: "/blog-banners/proverbs-10-explained.jpg",
+    groupPost: {
+      title: "Proverbs 10 Explained 📖",
+      content:
+        "Nine chapters of speeches just ended.\nThis one opens with 32 short sayings instead.\n\n📌 Love covereth all sins, hatred stirs up strife.\n\n📖 A wise son makes a glad father.\n📖 The diligent hand makes rich, the slack hand poor.\n📖 Two lines repeat word for word on purpose.\n\nNew article on:\n🟢 why the chapter suddenly feels so **different**\n🟢 what **love covereth all sins** really means\n🟢 does wealth actually prove **righteousness**\n\nWhich of these 32 sayings hits closest to home? 🙏",
+    },
+  },
+  {
     slug: "proverbs-9-explained",
     title: "Proverbs 9 Explained: Wisdom and Folly Both Call to You",
     description:
