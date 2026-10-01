@@ -6380,3 +6380,7 @@ Next up: Jeremiah 29
 ## 2026-10-01T00:00:35Z (hourly chapter notes run)
 Chapter: Jeremiah 29 | Duration: 14 min | Sections: 7 | Cards: 59 | Status: pass
 Next up: Jeremiah 30
+
+## 2026-10-01T00:55:07Z (hourly chapter notes run)
+Chapter: Jeremiah 30 | Duration: 9 min | Sections: 8 | Cards: 30 | Status: pass
+Next up: Jeremiah 31

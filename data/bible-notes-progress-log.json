@@ -46471,6 +46471,59 @@
           "at": "2026-10-01T00:00:35Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 30,
+      "startedAt": "2026-10-01T00:45:48Z",
+      "finishedAt": "2026-10-01T00:55:07Z",
+      "durationMinutes": 9.3,
+      "sections": 8,
+      "cards": 30,
+      "verses": 24,
+      "notes": "New chapter, normal canonical forward progress after Jeremiah 29. Priority queue and style-redo backlog both empty. Opens the Book of Consolation (chapters 30-33). Style checker found one bullet one word over the limit on first pass, fixed immediately, clean on second pass. tsc clean.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-10-01T00:46:15Z"
+        },
+        {
+          "name": "target_chapter_determined_jeremiah_30_new_chapter",
+          "at": "2026-10-01T00:46:30Z"
+        },
+        {
+          "name": "kjv_text_fetched",
+          "at": "2026-10-01T00:46:50Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-10-01T00:48:30Z"
+        },
+        {
+          "name": "source_file_written",
+          "at": "2026-10-01T00:52:30Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-10-01T00:52:55Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-10-01T00:53:10Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-10-01T00:53:30Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-10-01T00:53:58Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-10-01T00:55:07Z"
+        }
+      ]
     }
   ]
 }
