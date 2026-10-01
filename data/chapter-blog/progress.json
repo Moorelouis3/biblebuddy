@@ -4,7 +4,7 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-10-01T06:42:45.057Z",
+  "updatedAt": "2026-10-01T10:32:16.156Z",
   "nextChapter": "Proverbs 11",
   "chapters": {
     "genesis-1-explained": {
@@ -330,16 +330,18 @@
     },
     "proverbs-9-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-01T04:31:43.414Z",
-      "committedAt": "2026-10-01T04:39:09.179Z"
+      "committedAt": "2026-10-01T04:39:09.179Z",
+      "publishedAt": "2026-10-01T10:32:16.105Z"
     },
     "proverbs-10-explained": {
       "attempts": 2,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-01T06:35:31.632Z",
       "lastError": "Environment blocker: node_modules is missing and 'npm install' was denied by the auto-mode permission classifier (reason: Irreversible Local Destruction), so tsc/eslint quality gates could not run. No article was written. Needs the environment's Setup script updated to run npm install/ci at session start so this routine doesn't need to install deps mid-run.",
-      "committedAt": "2026-10-01T06:42:45.057Z"
+      "committedAt": "2026-10-01T06:42:45.057Z",
+      "publishedAt": "2026-10-01T10:32:16.156Z"
     }
   },
   "priorityBooks": [
