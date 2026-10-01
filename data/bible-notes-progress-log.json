@@ -47237,6 +47237,55 @@
           "at": "2026-10-01T13:58:21Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 44,
+      "startedAt": "2026-10-01T14:46:30Z",
+      "finishedAt": "2026-10-01T14:58:30Z",
+      "durationMinutes": 12.0,
+      "sections": 7,
+      "cards": 39,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty, so this was normal forward progress after Jeremiah 43. Session git state showed a stale local origin/main ref (appeared 39 commits behind HEAD) that resolved cleanly after a fresh git fetch origin main, the same recurring environment ref anomaly logged in many prior runs, nothing was actually lost. Fetched real KJV text for Jeremiah 44 (30 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Jeremiah 44 is God's final recorded word to the Judean refugees who fled to Egypt against Jeremiah's warning in chapters 42-43: verses 1-6 open with the word reaching the Jews scattered across Migdol, Tahpanhes, Noph, and Pathros, reminding them they personally witnessed Jerusalem's destruction for the same sin of idolatry they are repeating; verses 7-10 ask why they commit this evil against their own souls, stacking the word wickedness five times across every generation and class; verses 11-14 pronounce that God will set His face against this remnant for evil, naming the sword/famine/pestilence triad and promising only a tiny few will ever return; verses 15-19 record the people's open defiance, refusing to listen and defending their worship of the queen of heaven (identified by many scholars with the Mesopotamian goddess Ishtar) with a backward cause-and-effect claim that prosperity came from the idol and hardship came from abandoning it; verses 20-23 give Jeremiah's reply, that God remembered all of it and their own defense actually proves the charge; verses 24-28 pronounce an oath that God's name will no longer be invoked by Judah in Egypt (a severe judgment given how central that oath formula was to daily speech), with only a small remnant returning as a kind of test of whose words stand; and verses 29-30 close with a falsifiable sign, that Pharaoh Hophra (the historical Apries) will be handed to his enemies just as Zedekiah was handed to Nebuchadrezzar, using a proven past fulfillment to back a new one. Chunked into 7 sections (1-6 the word reaches the refugees, 7-10 why commit this great evil, 11-14 I will set my face against you, 15-19 the people refuse to listen, 20-23 Jeremiah's reply, 24-28 an oath against using God's name, 29-30 a sign in Pharaoh Hophra's fall). Density about 1.3 cards per verse (30 verses, 39 cards), consistent with the recent Jeremiah chapter calibration. scripts/check_bible_note_style.py found 0 problems on the very first automated pass across all 39 cards. A manual section 13 eye check caught one forbidden opening line (\"This shows the whole community...\") on the Jeremiah 44:15-19 section's first card, which Part 5 of the skill lists as a banned crutch opener, rewritten to lead with the actual content instead and reverified clean. Every card opens with one of the four approved moves, defines its key terms in plain language (Migdol, Tahpanhes, Noph, Pathros, knew not, burn incense, Howbeit, rising early and sending, hearkened, inclined their ear, poured forth, kindled, man and woman child and suckling, works of your hands, execration, astonishment, sword/famine/pestilence, remnant, queen of heaven, drink offerings, victuals, cakes, bear, desolation, vows, oath by God's name, watch over for evil, sign, Pharaoh Hophra/Apries), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 39 cards. Parser check passed exactly via getBibleReaderStudySections('jeremiah', 44) (7/7 sections, verse ranges 1-6/7-10/11-14/15-19/20-23/24-28/29-30 with no gaps, 39 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/jeremiahFortyFourSource.ts, preserveExactPhraseBodies jeremiah range extended from chapters 1-43 to 1-44, new function applyPersonalJeremiahFortyFourStudySections added and called right after applyPersonalJeremiahFortyThreeStudySections(). Next forward-progress target is Jeremiah 45.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-01T14:47:35Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 44 (normal forward progress, redo-remaining empty, last logged chapter was Jeremiah 43)",
+          "at": "2026-10-01T14:48:05Z"
+        },
+        {
+          "name": "KJV text fetched (Jeremiah 44, 30 verses, aruljohn mirror)",
+          "at": "2026-10-01T14:48:15Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-01T14:48:22Z"
+        },
+        {
+          "name": "source file written: lib/jeremiahFortyFourSource.ts (7 sections, 40 cards)",
+          "at": "2026-10-01T14:54:16Z"
+        },
+        {
+          "name": "style checker clean on first pass (39 cards, 0 problems)",
+          "at": "2026-10-01T14:54:26Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 44, apply function added and called)",
+          "at": "2026-10-01T14:55:11Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 39 cards, verse ranges 1-6/7-10/11-14/15-19/20-23/24-28/29-30, no gaps)",
+          "at": "2026-10-01T14:55:36Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-01T14:57:29Z"
+        }
+      ]
     }
   ]
 }
