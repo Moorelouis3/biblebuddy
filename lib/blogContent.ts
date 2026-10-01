@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-11-explained",
+    title: "Proverbs 11 Explained: Honest Scales and a Righteousness That Delivers",
+    description:
+      "Proverbs 11 explained verse by verse: honest scales, a stranger's debt, a city's blessing or ruin, and the generosity that multiplies instead of shrinks.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-11-explained",
+    publishedAt: "2026-10-01",
+    readTime: "16 min read",
+    image: "/blog-banners/proverbs-11-explained.jpg",
+    groupPost: {
+      title: "Proverbs 11 Explained 📖",
+      content:
+        "A crooked scale. A gold ring on a pig.\nThis chapter weighs honesty like nothing before it.\n\n📌 Righteousness shows up twelve times. Wicked shows up nine.\n\n📖 A false balance is an abomination to God.\n📖 Scattering generously leads to increase, not loss.\n📖 Trusting riches ends in a fall.\n\nNew article on:\n🟢 what **surety for a stranger** actually means\n🟢 why verse 4 **repeats** a line from chapter 10\n🟢 does verse 16 really **rank** men above women\n\nWhich line in this chapter hits closest to home? 🙏",
+    },
+  },
+  {
     slug: "proverbs-10-explained",
     title: "Proverbs 10 Explained: Wisdom, Work, and the Tongue",
     description:
