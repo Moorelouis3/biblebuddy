@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-8-explained",
+    title: "Proverbs 8 Explained: Wisdom's Call Before the World Began",
+    description:
+      "Proverbs 8 explained verse by verse: wisdom's public call, her worth beyond rubies, her reach into kings, and her claim to stand beside God before creation.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-8-explained",
+    publishedAt: "2026-10-01",
+    readTime: "15 min read",
+    image: "/blog-banners/proverbs-8-explained.jpg",
+    groupPost: {
+      title: "Proverbs 8 Explained 📖",
+      content:
+        "Wisdom stops whispering in this chapter.\nShe stands at the gates and calls out loud.\n\n📌 She claims to have been there before the mountains existed.\n\n📖 She stands in the highest, busiest places in the city.\n📖 Her worth is set above rubies and gold.\n📖 One verse here fueled a major early church argument.\n\nNew article on:\n🟢 what it means that the LORD **possessed** wisdom\n🟢 why kings and judges are said to **rule by her**\n🟢 the mysterious phrase **brought up with him**\n\nWhere is wisdom calling to you right now? 🙏",
+    },
+  },
+  {
     slug: "proverbs-7-explained",
     title: "Proverbs 7 Explained: The Young Man Watched From a Window",
     description:
