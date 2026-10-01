@@ -47620,6 +47620,63 @@
           "at": "2026-10-01T20:57:00Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 51,
+      "startedAt": "2026-10-01T21:46:03Z",
+      "finishedAt": "2026-10-01T22:02:00Z",
+      "durationMinutes": 15.95,
+      "sections": 17,
+      "cards": 63,
+      "verses": 64,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, so this was normal forward progress after Jeremiah 50, confirmed by no jeremiahFiftyOne* file in lib/ and no chapter 51 wiring call past Jeremiah 50 in lib/bibleReaderStudyNotes.ts. At session start, HEAD was a detached commit 47 commits ahead of local main but matching origin/main exactly once fetched (a stale local main ref left over from a prior detached-HEAD checkout, not a push failure or lost work); fetched and fast-forwarded local main to origin/main before writing anything. npm install ran clean (596 packages, fresh clone). Fetched real KJV text for Jeremiah 51 (64 verses, the longest chapter in Jeremiah) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Jeremiah 51 continues and intensifies the oracle against Babylon begun in chapter 50: the destroying wind and winnowing fanners, Israel's sin not equal to forsakenness, Babylon as a golden cup that made the nations drunk, balm offered and refused, the Medes named as God's chosen instrument tied explicitly to the burned temple, the creation hymn contrasting the true Maker against the handmade idols (founder, graven image, molten image), the sustained battle axe image repeating 'with thee will I break in pieces' across horses, riders, chariots, people of every age and role, farmers, and rulers, the destroying mountain rolled down and left permanently unusable even for building stone, the named coalition kingdoms of Ararat, Minni, and Ashchenaz, Babylon's mighty men becoming 'as women,' the threshingfloor and harvest image, Nebuchadrezzar's devouring of Jerusalem pictured as a dragon swallowing her whole, the drying of her canals, the lions turned lambs, the Sheshach atbash cipher name, Bel forced to disgorge what he swallowed, the repeated flight warning to God's people still inside the city, the measure-for-measure principle stated directly, the mount-up-to-heaven pride motif, the broad walls and high gates destroyed, and the closing narrative frame of Seraiah the quiet prince carrying Jeremiah's written scroll into Babylon, reading it aloud, binding it to a stone, and sinking it in the Euphrates as a living picture of Babylon's permanent end, with 'Thus far are the words of Jeremiah' marking the formal close of the Babylon oracles. Wrote lib/jeremiahFiftyOneSource.ts following the exact parser/type naming pattern of lib/jeremiahFiftySource.ts. Style checker flagged a banned hedge word (fairly, used 3 times) and two overlong bullets on first pass; fixed all four and reran clean (63 cards, 0 problems). Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 51, applyPersonalJeremiahFiftyOneStudySections() added with its own replaceStudySectionsForBookRange (\"jeremiah\", 51, 51, JEREMIAH_FIFTY_ONE_PERSONAL_SECTIONS) call, invoked right after applyPersonalJeremiahFiftyStudySections()). Next forward-progress target is Jeremiah 52, the final chapter of the book.",
+      "steps": [
+        {
+          "name": "npm install done (596 packages, fresh clone)",
+          "at": "2026-10-01T21:46:30Z"
+        },
+        {
+          "name": "local main branch ref was stale (behind origin/main after a prior detached-HEAD checkout); fetched and fast-forwarded main to match origin before doing any work",
+          "at": "2026-10-01T21:48:40Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 51 (normal forward progress, priority queue and redo-remaining both empty, last logged chapter was Jeremiah 50, confirmed no jeremiahFiftyOne* file in lib/)",
+          "at": "2026-10-01T21:48:46Z"
+        },
+        {
+          "name": "KJV text fetched (Jeremiah 51, 64 verses, aruljohn mirror via raw.githubusercontent.com)",
+          "at": "2026-10-01T21:49:01Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline (.claude/skills/bible-notes/SKILL.md) read in full; reference implementation (lib/genesisThirtyOneSource.ts and lib/jeremiahFiftySource.ts) read for parser shape, wiring pattern, and voice",
+          "at": "2026-10-01T21:49:01Z"
+        },
+        {
+          "name": "source file written: lib/jeremiahFiftyOneSource.ts (17 sections, 63 cards)",
+          "at": "2026-10-01T21:57:25Z"
+        },
+        {
+          "name": "style checker clean after fixing a banned hedge word (fairly) and two over-length bullets (63 cards, 0 problems)",
+          "at": "2026-10-01T21:57:51Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 51, apply function added and called)",
+          "at": "2026-10-01T21:58:21Z"
+        },
+        {
+          "name": "parser check passed (17 sections, 63 cards, verse ranges 1-4 through 59-64, no gaps)",
+          "at": "2026-10-01T21:58:21Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-01T22:00:34Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-01T22:02:00Z"
+        }
+      ]
     }
   ]
 }
