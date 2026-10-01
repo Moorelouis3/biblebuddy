@@ -284,12 +284,25 @@ function clearStoredBibleYearProgress(userId?: string | null) {
   window.localStorage.removeItem(key);
 }
 
+/**
+ * Where you are is how FAR you have got, not the first day you skipped
+ * (2026-10-01, Rachel Moore: "I am on day 63 but it still says I am on day
+ * 29"). She had read through day 86 with five days skipped, and the old rule
+ * - first day without a completed reading - kept sending her back to day 29.
+ * Skipped days stay open in the plan to catch up on; they no longer drag the
+ * plan backwards. Mirrors app/api/bible-year/progress/route.ts; change both.
+ */
 function getResolvedBibleYearCurrentDayNumberFromCards(
   completedCardsByDay: BibleYearCompletedCardsByDay,
   days = GENESIS_BIBLE_IN_ONE_YEAR_SERIES,
 ) {
+  const highestCompleted = days.reduce(
+    (highest, day) => (completedCardsByDay[day.dayNumber]?.reading === true ? day.dayNumber : highest),
+    0,
+  );
   return (
-    days.find((day) => completedCardsByDay[day.dayNumber]?.reading !== true)?.dayNumber ||
+    days.find((day) => day.dayNumber > highestCompleted && completedCardsByDay[day.dayNumber]?.reading !== true)
+      ?.dayNumber ||
     days[days.length - 1]?.dayNumber ||
     1
   );

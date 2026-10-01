@@ -398,8 +398,21 @@ export async function GET(request: NextRequest) {
       if (dayNumber) reflectionPostedByDay[dayNumber] = true;
     });
 
+    // Where you are is how FAR you have got, not the first day you skipped
+    // (2026-10-01, Rachel Moore: "I am on day 63 but it still says I am on
+    // day 29"). She had read through day 86 with five days skipped along the
+    // way, and the old rule - first day without a completed reading - kept
+    // sending her back to the earliest gap, day 29. Skipped days stay open in
+    // the plan list to catch up on; they just no longer drag the plan
+    // backwards.
+    const highestCompletedDayNumber = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.reduce(
+      (highest, day) => (completedCardsByDay[day.dayNumber]?.reading === true ? day.dayNumber : highest),
+      0,
+    );
     const authoritativeCurrentDayNumber =
-      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((day) => completedCardsByDay[day.dayNumber]?.reading !== true)?.dayNumber ||
+      GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find(
+        (day) => day.dayNumber > highestCompletedDayNumber && completedCardsByDay[day.dayNumber]?.reading !== true,
+      )?.dayNumber ||
       GENESIS_BIBLE_IN_ONE_YEAR_SERIES[GENESIS_BIBLE_IN_ONE_YEAR_SERIES.length - 1]?.dayNumber ||
       1;
     const resolvedCurrentDayNumber = authoritativeCurrentDayNumber;
