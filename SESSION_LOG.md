@@ -6416,3 +6416,7 @@ Next up: Jeremiah 38
 ## 2026-10-01T09:02:06Z (hourly chapter notes run)
 Chapter: Jeremiah 38 | Duration: 15.9 min | Sections: 6 | Cards: 30 | Status: pass
 Next up: Jeremiah 39
+
+## 2026-10-01T09:56:09Z (hourly chapter notes run)
+Chapter: Jeremiah 39 | Duration: 9.9 min | Sections: 5 | Cards: 20 | Status: pass
+Next up: Jeremiah 40
