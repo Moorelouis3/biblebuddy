@@ -6448,3 +6448,7 @@ Next up: Jeremiah 46
 ## 2026-10-01T16:57:23Z (hourly chapter notes run)
 Chapter: Jeremiah 46 | Duration: 10.5 min | Sections: 6 | Cards: 30 | Status: pass
 Next up: Jeremiah 47
+
+## 2026-10-01T17:55:20Z (hourly chapter notes run)
+Chapter: Jeremiah 47 | Duration: 8.1 min | Sections: 2 | Cards: 16 | Status: pass
+Next up: Jeremiah 48
