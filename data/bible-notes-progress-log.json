@@ -47119,6 +47119,63 @@
           "at": "2026-10-01T11:56:43Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 42,
+      "startedAt": "2026-10-01T12:46:11Z",
+      "finishedAt": "2026-10-01T12:59:00Z",
+      "durationMinutes": 12.8,
+      "sections": 5,
+      "cards": 24,
+      "verses": 22,
+      "notes": "New chapter, normal forward progress following Jeremiah 41. Priority queue and style redo backlog both confirmed empty. Jeremiah 42 covers the remnant led by Johanan begging Jeremiah to pray and vowing in advance to obey whatever God says (1-6), God's answer after a ten day wait promising to build and plant them if they stay in the land and not to fear the king of Babylon, with mercy available even through Babylon's own hand (7-12), the warning that fleeing to Egypt out of fear of war, famine, and the sword only delivers them into the same three disasters along with the same fury already poured out on Jerusalem (13-18), and the closing verdict naming their advance dissembling and foretelling they will die by sword, famine, and pestilence in the very place they are fleeing to, directly setting up their actual flight to Egypt in chapter 43 (19-22). Split into 5 sections (1-3, 4-6, 7-12, 13-18, 19-22) covering all 22 verses with no gaps. Density about 1.09 cards per verse (22 verses, 24 cards). scripts/check_bible_note_style.py found 0 problems on the first full pass. A manual section 13 eye check caught one banned stacked-clause phrase ('rather than') and one two-idea comma line the mechanical checker does not catch, both fixed and reverified clean. Every card title was checked against the fetched KJV text to confirm it is a real contiguous substring of its verse. Parser check passed via getBibleReaderStudySections('jeremiah', 42): 5/5 sections, verse ranges 1-3/4-6/7-12/13-18/19-22 with no gaps, 24 total cards, text rendered verbatim. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/jeremiahFortyTwoSource.ts, the jeremiah condition in preserveExactPhraseBodies extended from chapter 41 to include chapter 42, and a new applyPersonalJeremiahFortyTwoStudySections() function and call added right after the existing chapter 41 override call). Next target: Jeremiah 43.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-01T12:46:55Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 42 (new chapter, forward progress; priority queue and style redo backlog both confirmed empty)",
+          "at": "2026-10-01T12:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Jeremiah 42 (22 verses, via raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-10-01T12:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-01T12:48:10Z"
+        },
+        {
+          "name": "source file written: lib/jeremiahFortyTwoSource.ts (5 sections, 24 cards)",
+          "at": "2026-10-01T12:54:00Z"
+        },
+        {
+          "name": "style checker clean on first run (24 cards, 0 problems)",
+          "at": "2026-10-01T12:54:15Z"
+        },
+        {
+          "name": "manual section 13 eye check found and fixed a stacked rather than clause and a two idea comma line, re-verified clean",
+          "at": "2026-10-01T12:55:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call site, preserveExactPhraseBodies range extended to 42)",
+          "at": "2026-10-01T12:55:40Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 24 cards, matches design",
+          "at": "2026-10-01T12:56:05Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-01T12:57:06Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-01T12:59:00Z"
+        }
+      ]
     }
   ]
 }
