@@ -46895,6 +46895,67 @@
           "at": "2026-10-01T08:00:21Z"
         }
       ]
+    },
+    {
+      "book": "Jeremiah",
+      "chapter": 38,
+      "startedAt": "2026-10-01T08:46:12Z",
+      "finishedAt": "2026-10-01T09:02:06Z",
+      "durationMinutes": 15.9,
+      "sections": 6,
+      "cards": 30,
+      "verses": 28,
+      "notes": "New chapter, normal forward progress following Jeremiah 37. Narrative chapter: Jeremiah thrown into Malchiah's cistern and rescued by Ebedmelech the Ethiopian, the secret meeting with Zedekiah, the surrender offer, the vision of the women's mocking taunt echoing the mire image, and Jeremiah's cover story that protects him until Jerusalem falls. Style checker clean on first pass, 30 cards for 28 verses. Manual eye check found and fixed one stacked 'rather than' clause and one 'while' clause in a bullet, both outside what the mechanical checker catches.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-01T08:46:45Z"
+        },
+        {
+          "name": "target chapter determined: Jeremiah 38 (new chapter, forward progress)",
+          "at": "2026-10-01T08:47:45Z"
+        },
+        {
+          "name": "KJV text fetched for Jeremiah 38 (28 verses, via raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-10-01T08:49:31Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-01T08:49:41Z"
+        },
+        {
+          "name": "drafted all 30 phrase cards across 6 sections against style spec",
+          "at": "2026-10-01T08:55:08Z"
+        },
+        {
+          "name": "source file written: lib/jeremiahThirtyEightSource.ts",
+          "at": "2026-10-01T08:56:07Z"
+        },
+        {
+          "name": "style checker clean: 30 cards, 0 problems",
+          "at": "2026-10-01T08:56:11Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call, preserveExactPhraseBodies range)",
+          "at": "2026-10-01T08:56:49Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 30 cards for Jeremiah 38",
+          "at": "2026-10-01T08:57:12Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-01T08:59:18Z"
+        },
+        {
+          "name": "section 13 eye check found 2 issues (stacked rather than clause, while clause in bullet), fixed, re-verified clean",
+          "at": "2026-10-01T09:01:35Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-01T09:02:06Z"
+        }
+      ]
     }
   ]
 }

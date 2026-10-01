@@ -6412,3 +6412,7 @@ Next up: Jeremiah 37
 ## 2026-10-01T08:00:21Z (hourly chapter notes run)
 Chapter: Jeremiah 37 | Duration: 14.2 min | Sections: 5 | Cards: 28 | Status: pass
 Next up: Jeremiah 38
+
+## 2026-10-01T09:02:06Z (hourly chapter notes run)
+Chapter: Jeremiah 38 | Duration: 15.9 min | Sections: 6 | Cards: 30 | Status: pass
+Next up: Jeremiah 39
