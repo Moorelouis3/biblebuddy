@@ -784,3 +784,23 @@ per-routine symptoms (stuck `committed` chapters, no Deploy runs) are
 likely downstream of that same root cause rather than separate bugs. This
 run is proceeding normally (claim → write → ship) since the queue itself
 is healthy; not blocking on this.
+
+## Bug Fixer Agent: cannot reach mybiblebuddy.net — bug-reports API returning 500 "Could not query the database for the schema cache" on every attempt (2026-10-02)
+This run could not fetch the open bug queue. `GET
+https://www.mybiblebuddy.net/api/bug-reports/agent` with the real agent
+token returned the same error every single time across 11 attempts spread
+over roughly 5 minutes (five quick retries, then a monitored loop with
+25-second gaps): `{"error":"Could not query the database for the schema
+cache. Retrying."}`, HTTP 500. The server responds fast each time (no
+hang, no timeout) — it is consistently and immediately failing with a
+database/schema-cache error, which is different from the timeout symptom
+flagged in the 2026-10-01 entry above on this same endpoint, so this
+looks like a second, separate problem on the same route rather than a
+recurrence of that one. Per the Bug Fixer's own instructions, stopping
+here without touching any code since step 2 (fetch open bugs) could not
+complete, and appending only this entry. Worth having someone check
+whether Supabase (or whatever is behind this) is mid-migration, had a
+schema change that did not propagate, or is otherwise unhealthy —
+"schema cache" errors like this are a known Supabase/PostgREST symptom
+when the API layer's cached schema is stale or the underlying connection
+pool cannot resolve it.
