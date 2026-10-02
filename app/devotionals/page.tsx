@@ -99,7 +99,7 @@ function getStudyScriptureRange(title: string) {
     "The Creation of the World": "Genesis 1 & 2",
     "The Fall of Man": "Genesis 3 & 4",
     "The Flood of Noah": "Genesis 5-10",
-    "The Obedience of Abraham": "21 Days",
+    "The Obedience of Abraham": "Genesis 11-25",
     "The Promise Through Isaac": "Genesis 26 & 27",
     "The Wrestling of Jacob": "Genesis 28-36",
     "The Testing of Joseph": "Genesis 37-50",

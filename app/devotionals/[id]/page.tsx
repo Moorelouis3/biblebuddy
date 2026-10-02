@@ -47,7 +47,7 @@ function getPreviewDescription(title: string, fallback: string): string {
     "The Heart of David":
       "David's story moves from hidden fields to public battles, from worship to warfare, from caves to kingship, and from failure to repentance. He is brave, gifted, loved, hunted, crowned, broken, and restored across a life that never feels flat or simple. This Bible study follows the rise and fall of David with all the emotion that makes his life unforgettable. It shows why his heart mattered, where it drifted, and how it kept getting pulled back toward God. If you want a story full of courage, weakness, worship, and return, David's life carries all of it.",
     "The Obedience of Abraham":
-      "Abraham's story starts before the call, in a family already moving toward an unfinished road. This Bible study follows Genesis 11-25 one full chapter at a time, so the intro, Bible reading, notes, trivia, and reflection all stay centered on the same passage. You will walk through the call to leave, the altars, the waiting, the covenant, the failures, Isaac's birth, the mountain of testing, Sarah's grief, and Abraham's final legacy. The last six days leave Genesis and read how the rest of Scripture talks about him - Hebrews, Romans, James, Galatians, and Jesus' own words in John 8. Abraham is not a flawless man, but he keeps moving when God speaks. His story is about trusting before you understand, waiting when the promise feels delayed, and placing even your deepest gifts back into God's hands.",
+      "Abraham's story starts before the call, in a family already moving toward an unfinished road. This Bible study now follows Genesis 11-25 one full chapter at a time, so the intro, Bible reading, notes, trivia, and reflection all stay centered on the same passage. You will walk through the call to leave, the altars, the waiting, the covenant, the failures, Isaac's birth, the mountain of testing, Sarah's grief, and Abraham's final legacy. Abraham is not a flawless man, but he keeps moving when God speaks. His story is about trusting before you understand, waiting when the promise feels delayed, and placing even your deepest gifts back into God's hands.",
     "The Transforming of Paul":
       "Paul's story begins with violence, certainty, and religious zeal aimed in the wrong direction. Then Jesus meets him, blinds him, remakes him, and sends him into a life of preaching, suffering, prison, endurance, and deep spiritual fire. This Bible study follows the whole arc, from Saul the persecutor to Paul the apostle who finished his race still holding to Christ. You will walk through the road to Damascus, the missionary journeys, the beatings, the prison songs, the shipwrecks, and the final steady faith that marked his end. It is a story about how radically Jesus can change a life and keep changing it through every next season.",
     "The Courage of Daniel":
@@ -230,7 +230,7 @@ function getStudyScriptureRange(title: string | null | undefined) {
     "The Creation of the World": "Genesis 1 & 2",
     "The Fall of Man": "Genesis 3 & 4",
     "The Flood of Noah": "Genesis 5-10",
-    "The Obedience of Abraham": "21 Days",
+    "The Obedience of Abraham": "Genesis 11-25",
     "The Promise Through Isaac": "Genesis 26 & 27",
     "The Wrestling of Jacob": "Genesis 28-36",
     "The Testing of Joseph": "Genesis 37-50",
@@ -260,11 +260,7 @@ function getDevotionalOverviewTtsSrc(devotionalId: string | null | undefined, da
 function getChapterJourneyProgressLabel(title: string | null | undefined, currentDay: number, totalDays: number) {
   if (isModernStudyPlanTitle(title)) return `Day ${currentDay} of ${totalDays}`;
   if (title === "The Testing of Joseph") return `Genesis ${currentDay + 36} of 50`;
-  // Days 1-15 are Genesis 11-25; 16-21 leave Genesis for Hebrews, Romans,
-  // James, Galatians and John, so only the Genesis stretch gets a chapter label.
-  if (title === "The Obedience of Abraham") {
-    return currentDay <= 15 ? `Genesis ${currentDay + 10} of 25` : `Day ${currentDay} of ${totalDays}`;
-  }
+  if (title === "The Obedience of Abraham") return `Genesis ${currentDay + 10} of 25`;
   if (title === "The Rise of Esther") return `Esther ${currentDay} of ${totalDays}`;
   if (title === "The Courage of Daniel") return `Daniel ${currentDay} of ${totalDays}`;
   if (title === "The Creation of the World") return `Genesis ${currentDay} of 2`;
