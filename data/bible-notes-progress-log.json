@@ -48459,6 +48459,55 @@
           "at": "2026-10-02T12:16:39Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 9,
+      "startedAt": "2026-10-02T12:47:15Z",
+      "finishedAt": "2026-10-02T13:02:00Z",
+      "durationMinutes": 15,
+      "sections": 3,
+      "cards": 25,
+      "verses": 11,
+      "notes": "Scheduled hourly Bible Note Writer Agent run (new chapter, normal forward progress, not a style redo). npm install ran clean (596 packages, fresh clone). Session started on a detached HEAD at the correct origin/main tip, but `git checkout main` surfaced a stale local main branch ref diverged onto an old unrelated history (\"Add Jeremiah 27 study notes\", not an ancestor of the real origin/main); recovered with `git fetch origin main` plus `git reset --hard origin/main` before any Bible notes work began. Both data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json confirmed remaining: [], so the target was determined from the last entry in this log (Ezekiel 8) plus confirming lib/ had no ezekielNine* file and lib/bibleReaderStudyNotes.ts had no chapter 9 wiring past Ezekiel 8. Fetched real KJV text for Ezekiel 9 (11 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 9 is the vision of the six executioners and the man with the inkhorn, split into 3 sections (1-4, 5-7, 8-11) with no gaps: the summons of the six armed men and the seventh man clothed in linen with a writer's inkhorn, gathered beside the brasen altar as the glory of God rises from the cherub and personally commissions the marking of everyone who sighs and cries over Jerusalem's abominations before any killing starts; the command to show no eye-spare or pity on the unmarked, beginning at the sanctuary with the same ancient men before the house (very likely the seventy elders from chapter 8's secret idolatry), then spreading from the defiled temple into the wider city; and Ezekiel left standing, falling on his face to plead for the remnant, answered with the charge that Israel and Judah's iniquity is exceeding great, their own claim that the LORD has forsaken the earth disproved by the entire vision, the repeated no-spare no-pity verdict now tied explicitly back to verse 5, and the man in linen's report that the marking is done. scripts/check_bible_note_style.py was clean on the first pass, 0 problems across all 25 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms in plain language (destroying weapon, the higher gate, linen and inkhorn, the brasen altar, the cherub, the mark and its likely tav shape, spare and pity, defile, iniquity, residue, recompense), and closes on meaning rather than mechanics. Every title verified by hand as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('ezekiel', 9) (3/3 sections, verse ranges 1-4/5-7/8-11 with no gaps, 25 total cards, text rendered verbatim, preserveExactPhraseFormatting: true confirmed). npx tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/ezekielNineSource.ts, preserveExactPhraseBodies ezekiel condition extended to include chapter 9, new function applyPersonalEzekielNineStudySections() added with its own replaceStudySectionsForBookRange(\"ezekiel\", 9, 9, EZEKIEL_NINE_PERSONAL_SECTIONS) call, invoked right after applyPersonalEzekielEightStudySections()). Next forward-progress target is Ezekiel 10.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T12:49:46Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 9 (new chapter, forward progress)",
+          "at": "2026-10-02T12:50:01Z"
+        },
+        {
+          "name": "KJV text fetched: Ezekiel 9 (11 verses) via raw.githubusercontent.com",
+          "at": "2026-10-02T12:50:25Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementation reviewed",
+          "at": "2026-10-02T12:55:52Z"
+        },
+        {
+          "name": "source file written: lib/ezekielNineSource.ts (3 sections, 25 cards)",
+          "at": "2026-10-02T12:56:44Z"
+        },
+        {
+          "name": "style checker clean (25 cards, 0 problems)",
+          "at": "2026-10-02T12:56:44Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, apply function, call site, preserveExactPhraseBodies range extended to Ezekiel 9",
+          "at": "2026-10-02T12:57:17Z"
+        },
+        {
+          "name": "parser check passed (3 sections, 25 cards, no throw)",
+          "at": "2026-10-02T12:57:27Z"
+        },
+        {
+          "name": "tsc --noEmit clean (no errors)",
+          "at": "2026-10-02T13:00:22Z"
+        }
+      ]
     }
   ]
 }
