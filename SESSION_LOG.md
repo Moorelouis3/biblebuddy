@@ -6551,3 +6551,7 @@ Next up: Ezekiel 14
 ## 2026-10-02T18:02:28Z (hourly chapter notes run)
 Chapter: Ezekiel 14 | Duration: 15.9 min | Sections: 8 | Cards: 31 | Status: pass
 Next up: Ezekiel 15
+
+## 2026-10-02T18:55:00Z (hourly chapter notes run)
+Chapter: Ezekiel 15 | Duration: 8 min | Sections: 2 | Cards: 15 | Status: pass
+Next up: Ezekiel 16

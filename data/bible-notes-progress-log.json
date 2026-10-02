@@ -48814,6 +48814,59 @@
           "at": "2026-10-02T18:02:53Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 15,
+      "startedAt": "2026-10-02T18:46:38Z",
+      "finishedAt": "2026-10-02T18:55:00Z",
+      "durationMinutes": 8,
+      "sections": 2,
+      "cards": 15,
+      "verses": 8,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style-redo backlog both confirmed empty, so this was normal forward progress after Ezekiel 14. Fetched real KJV text for Ezekiel 15 (8 verses) from the aruljohn/Bible-kjv raw mirror. Ezekiel 15 is a short parable: vine wood is worse than forest tree wood, too thin and twisted even for a wall peg, let alone a beam, so its only honest use is fuel; a vine stick already charred at both ends and scorched in the middle makes the point that it was useless even whole, so burned it is only more of the same (1-5). The parable turns to direct application in verses 6-8: Jerusalem itself is that same vine wood, good only for the fire of judgment, God setting His face against the city, escape from one fire only to meet a second (siege then exile), the refrain 'ye shall know that I am the LORD,' and the land left desolate because of a real, named trespass. Split into 2 sections (1-5, 6-8) matching the chapter's 8 verses with no gaps. Density 1.875 cards/verse (15 cards), kept on the fuller side per spec section 12 guidance for short chapters that resist teaching. scripts/check_bible_note_style.py was clean on the first full pass (15 cards, 0 problems). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms in plain language (son of man, pin, meet, devoureth, set my face against, desolate, trespass), and closes on meaning rather than mechanics. Every title verified by hand as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('ezekiel', 15) (2/2 sections, verse ranges 1-5/6-8, 15 total cards, text rendered verbatim). npx tsc --noEmit -p . came back clean. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/ezekielFifteenSource.ts, preserveExactPhraseBodies ezekiel range extended from chapters 1-14 to include chapter 15, new function applyPersonalEzekielFifteenStudySections() added and invoked right after applyPersonalEzekielFourteenStudySections(). Next forward-progress target is Ezekiel 16.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T18:46:38Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 15 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-02T18:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (Ezekiel 15, 8 verses, aruljohn mirror)",
+          "at": "2026-10-02T18:47:32Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-02T18:48:00Z"
+        },
+        {
+          "name": "source file written: lib/ezekielFifteenSource.ts (15 cards, 2 sections)",
+          "at": "2026-10-02T18:50:40Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-02T18:51:06Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalEzekielFifteenStudySections)",
+          "at": "2026-10-02T18:51:20Z"
+        },
+        {
+          "name": "parser check passed (2/2 sections, 15 cards, text verbatim)",
+          "at": "2026-10-02T18:51:26Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-02T18:51:47Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-02T18:54:30Z"
+        }
+      ]
     }
   ]
 }
