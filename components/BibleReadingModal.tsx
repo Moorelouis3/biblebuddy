@@ -249,7 +249,16 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
   }
 
   async function handleMarkChapterComplete(options: { showError?: boolean } = {}) {
-    if (chapterCompleted || markingChapterComplete) return true;
+    if (markingChapterComplete) return true;
+    if (chapterCompleted) {
+      // The chapter was already completed before (e.g. read through a
+      // different page), so there is nothing to write here - but the caller
+      // still needs to hear about it, otherwise a devotional day whose
+      // reading task happens to match an already-completed chapter never
+      // gets its own per-day progress recorded.
+      onMarkComplete?.();
+      return true;
+    }
 
     try {
       const activeUserId = await getActiveUserId();
