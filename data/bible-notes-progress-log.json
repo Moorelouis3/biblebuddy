@@ -48068,6 +48068,59 @@
           "at": "2026-10-02T05:00:49Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 2,
+      "startedAt": "2026-10-02T05:46:21Z",
+      "finishedAt": "2026-10-02T05:53:36Z",
+      "durationMinutes": 7.25,
+      "sections": 4,
+      "cards": 14,
+      "verses": 10,
+      "notes": "New chapter, normal forward progress (not a style redo). Priority queue and style-redo backlog both empty at start of run. Progress log's only logged Ezekiel entry was chapter 1; lib/ only had the old bulk ezekielOneToTwelvePersonalNotes.ts placeholder covering chapter 2, no dedicated file, so Ezekiel 2 was the correct next target. Dedicated lib/ezekielTwoSource.ts created and wired in with a narrow replaceStudySectionsForBookRange('ezekiel', 2, 2, ...) call invoked right after the chapter 1 apply function, overriding just chapter 2 without touching chapters 3-12's existing legacy wiring. Built per the style spec's four opening moves and four-bullet closing pattern, following ezekielOneSource.ts as the structural/parser reference. Short commissioning scene, density 1.4 cards/verse, leaner than the ~2x skill target because the chapter repeats a small number of ideas (rebellion, fear, obedience) rather than introducing many distinct concrete details.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T05:46:21Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 2 (new chapter, normal forward progress; priority queue and style-redo backlog both empty; progress log's only Ezekiel entry was chapter 1; lib/ezekielTwoSource.ts did not exist yet)",
+          "at": "2026-10-02T05:46:58Z"
+        },
+        {
+          "name": "KJV text fetched for Ezekiel 2 (10 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-02T05:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-02T05:48:30Z"
+        },
+        {
+          "name": "lib/ezekielTwoSource.ts written (4 sections, 14 cards)",
+          "at": "2026-10-02T05:51:00Z"
+        },
+        {
+          "name": "style checker clean on first pass (scripts/check_bible_note_style.py, 0 problems)",
+          "at": "2026-10-02T05:51:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies ezekiel condition extended to chapter 2, applyPersonalEzekielTwoStudySections() added and invoked after chapter 1's apply call",
+          "at": "2026-10-02T05:52:00Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('ezekiel', 2) returned 4/4 sections, 14 cards, verbatim text",
+          "at": "2026-10-02T05:52:30Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-02T05:52:55Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json entry appended, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row and running totals updated",
+          "at": "2026-10-02T05:53:36Z"
+        }
+      ]
     }
   ]
 }
