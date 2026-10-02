@@ -48345,6 +48345,59 @@
           "at": "2026-10-02T09:58:53Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 7,
+      "startedAt": "2026-10-02T10:46:19Z",
+      "finishedAt": "2026-10-02T10:57:18Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 38,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run (new chapter, normal forward progress). npm install ran clean (596 packages, fresh clone). Session started with a stale local main branch ref pointing at an old cached commit (Add Jeremiah 27 study notes) that was not an ancestor of the real origin/main history; recovered with git fetch origin main plus git reset --hard origin/main before any Bible notes work began, confirmed clean working tree throughout. Both data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json confirmed with remaining: [], so the target was determined from data/bible-notes-progress-log.json's last entry (Ezekiel 6) plus confirming lib/ had no ezekielSeven* file and lib/bibleReaderStudyNotes.ts had no chapter 7 wiring past Ezekiel 6. Fetched real KJV text for Ezekiel 7 (27 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 7 is the climactic end has come oracle: the end announced against the four corners of the land, judgment tied to Israel's own abominations (1-4); the doom formula repeated with new intensity, the end pictured as watching and stalking, morning bringing judgment instead of relief, ending in the new title the LORD that smiteth (5-9); the rod that has blossomed and pride that has budded, violence itself ruling as a rod of wickedness, buying and selling rendered meaningless since the Jubilee land-return law will never take effect (10-13); the trumpet blown to no response, sword without and pestilence and famine within, survivors compared to mourning doves, sackcloth and shaved heads (14-18); silver and gold thrown into the streets as a stumblingblock, temple gold reshaped into idols, foreign strangers defiling the secret place, the Holy of Holies itself (19-22); and the closing scene, a chain as a sign act of coming captivity, Babylon named as the worst of the heathen, every source of guidance (prophet, priest, elder) failing at once, king and prince and common people all sharing the same despair, closing on according to their deserts will I judge them, echoing the chapter's opening line (23-27). Read docs/bible-study-note-style.md in full and used lib/genesisThirtyOneSource.ts and lib/ezekielSixSource.ts as reference implementations for voice and for the exact file/parser conventions already in use for this book. Deliberately kept density near 1.4 cards per verse rather than forcing redundant cards, since large stretches of this chapter are the text's own intentional repetition of the same judgment formula and manufacturing a second unique card per repeated line would have violated the spec's own never repeat rule. Wrote lib/ezekielSevenSource.ts with 6 sections and 38 phrase cards. python3 scripts/check_bible_note_style.py lib/ezekielSevenSource.ts passed clean on the first full run (38 cards found, no problems). Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies ezekiel condition extended to chapter 7, and applyPersonalEzekielSevenStudySections() added and invoked right after chapter 6's apply call, matching reading order. Parser check via getBibleReaderStudySections('ezekiel', 7) confirmed 6 sections and 38 cards with no throw, text verbatim. npx tsc --noEmit -p . came back clean (no output, exit code 0). Logged in data/bible-notes-progress-log.json with full step timestamps, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row and running totals updated, and SESSION_LOG.md appended as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Ezekiel 8.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T10:46:19Z"
+        },
+        {
+          "name": "recovered stale local main branch ref via git fetch origin main + git reset --hard origin/main (local main was a stale cache pointing at unrelated Jeremiah 27 era history, not an ancestor of origin/main)",
+          "at": "2026-10-02T10:50:04Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 7 (new chapter, normal forward progress; priority queue data/bible-notes-priority-queue.json and style-redo backlog data/bible-notes-style-redo-remaining.json both confirmed empty; progress log's last entry was Ezekiel 6; no ezekielSeven* file existed in lib/ and no chapter 7 wiring was present)",
+          "at": "2026-10-02T10:50:20Z"
+        },
+        {
+          "name": "KJV text fetched for Ezekiel 7 (27 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-02T10:50:20Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus reference implementations lib/genesisThirtyOneSource.ts (style spec reference) and lib/ezekielSixSource.ts (file/parser structure, same book)",
+          "at": "2026-10-02T10:52:58Z"
+        },
+        {
+          "name": "lib/ezekielSevenSource.ts written (6 sections, 38 cards)",
+          "at": "2026-10-02T10:52:58Z"
+        },
+        {
+          "name": "style checker clean on first run: 38 cards found, no problems",
+          "at": "2026-10-02T10:54:19Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies ezekiel condition extended to chapter 7, applyPersonalEzekielSevenStudySections() added and invoked after chapter 6's apply call",
+          "at": "2026-10-02T10:54:30Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('ezekiel', 7) returned 6/6 sections, 38 cards, verbatim text",
+          "at": "2026-10-02T10:54:59Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-02T10:57:18Z"
+        }
+      ]
     }
   ]
 }
