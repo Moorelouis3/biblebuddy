@@ -48011,6 +48011,59 @@
           "at": "2026-10-02T03:57:22Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 1,
+      "startedAt": "2026-10-02T04:45:54Z",
+      "finishedAt": "2026-10-02T04:58:06Z",
+      "durationMinutes": 12.2,
+      "sections": 6,
+      "cards": 40,
+      "verses": 28,
+      "notes": "New chapter, normal forward progress. Priority queue and style-redo backlog both empty at start of run. This is the first chapter of Ezekiel written to docs/bible-study-note-style.md -- the book previously carried only its original legacy placeholder wiring (lib/ezekielOneToTwelvePersonalNotes.ts, covering chapters 1-12 as one old-style block) and was not counted as done in this log, per docs/BIBLE_BUDDY_NOTES_PROGRESS.md's running note that Ezekiel through Revelation still carry only legacy placeholder content. Dedicated lib/ezekielOneSource.ts created and wired in with a narrow replaceStudySectionsForBookRange('ezekiel', 1, 1, ...) call that runs after the legacy 1-12 block call, so it overrides just chapter 1 without touching chapters 2-12's existing legacy wiring. Built per the style spec's four opening moves and four-bullet closing pattern, following lamentationsFiveSource.ts as the structural/parser reference. Vision chapter (the four living creatures, the wheels, the throne) handled as prophecy per the skill's Part 4 guidance: grounded every image in its ancient context (Chebar as a canal, amber as glowing metal, Chaldeans as Babylon, dreadful rings as awe not fear) before any forward-looking note.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T04:49:12Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 1 (new chapter, normal forward progress; priority queue and style-redo backlog both empty; Ezekiel through Revelation still only carry legacy placeholder wiring per docs/BIBLE_BUDDY_NOTES_PROGRESS.md, confirmed via progress-log cross-check script -- first unlogged canonical chapter is Ezekiel 1)",
+          "at": "2026-10-02T04:49:12Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com/aruljohn/Bible-kjv/master/Ezekiel.json (28 verses, chapter 1)",
+          "at": "2026-10-02T04:49:26Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-02T04:49:32Z"
+        },
+        {
+          "name": "source file lib/ezekielOneSource.ts written (6 sections, 40 cards)",
+          "at": "2026-10-02T04:55:10Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems after one bullet word-count fix)",
+          "at": "2026-10-02T04:55:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, applyPersonalEzekielOneStudySections, preserveExactPhraseBodies range extended to ezekiel chapter 1)",
+          "at": "2026-10-02T04:55:53Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 40 cards, matches design)",
+          "at": "2026-10-02T04:56:04Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-10-02T04:57:55Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-02T04:59:10Z"
+        }
+      ]
     }
   ]
 }
