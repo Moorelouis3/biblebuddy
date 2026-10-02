@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-15-explained",
+    title: "Proverbs 15 Explained: A Soft Answer and a Watching God",
+    description:
+      "Proverbs 15 explained verse by verse: the soft answer that turns away wrath, the eyes of the LORD in every place, and why humility comes before honour.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-15-explained",
+    publishedAt: "2026-10-02",
+    readTime: "14 min read",
+    image: "/blog-banners/proverbs-15-explained.jpg",
+    groupPost: {
+      title: "Proverbs 15 Explained 📖",
+      content:
+        "One word can calm a room.\nThe next word can wreck it.\n\n📌 This chapter names the LORD 9 times in 33 verses.\n\n📖 A soft answer turns away wrath.\n📖 The eyes of the LORD are in every place.\n📖 Before honour comes humility.\n\nNew article on:\n🟢 what **Hell and destruction** actually means in verse 11\n🟢 why God defends the **widow's border** in verse 25\n🟢 why the days of the afflicted are called **evil**\n\nWhat is the first sentence you reach for when you're upset? 🙏",
+    },
+  },
+  {
     slug: "proverbs-14-explained",
     title: "Proverbs 14 Explained: Wisdom's House and a Nation's Reproach",
     description:
