@@ -48121,6 +48121,63 @@
           "at": "2026-10-02T05:53:36Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 3,
+      "startedAt": "2026-10-02T06:46:21Z",
+      "finishedAt": "2026-10-02T06:59:00Z",
+      "durationMinutes": 12.65,
+      "sections": 7,
+      "cards": 26,
+      "verses": 27,
+      "notes": "New chapter, normal forward progress (not a style redo). Priority queue and style-redo backlog both empty at start of run. Progress log's last entry was Ezekiel 2; lib/ only had the old bulk ezekielOneToTwelvePersonalNotes.ts placeholder covering chapter 3, no dedicated file, so Ezekiel 3 was the correct next target. Dedicated lib/ezekielThreeSource.ts created and wired in with a narrow replaceStudySectionsForBookRange('ezekiel', 3, 3, ...) call invoked right after the chapter 2 apply function, overriding just chapter 3 without touching chapters 4-12's existing legacy wiring. Built per the style spec's four opening moves and four-bullet closing pattern, following ezekielOneSource.ts and ezekielTwoSource.ts as the structural/parser reference. Commissioning scene continuation (eat the scroll, sent to his own people, hardened face, watchman charge, muted and restrained), density 0.96 cards/verse, leaner than the ~2x skill target because the chapter repeats and extends ideas already taught in chapters 1-2 rather than introducing many new concrete details. A manual section 13 eye check (beyond the mechanical checker) caught two cards opening with a banned restatement pattern ('This verse describes...', 'This phrase is...') and both were rewritten before saving.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T06:46:29Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 3 (new chapter, normal forward progress; priority queue and style-redo backlog both empty; progress log's last entry was Ezekiel 2; lib/ezekielThreeSource.ts did not exist yet)",
+          "at": "2026-10-02T06:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Ezekiel 3 (27 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-02T06:47:41Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus reference implementations ezekielOneSource.ts, ezekielTwoSource.ts, and genesisThirtyOneSource.ts",
+          "at": "2026-10-02T06:50:00Z"
+        },
+        {
+          "name": "lib/ezekielThreeSource.ts written (7 sections, 26 cards)",
+          "at": "2026-10-02T06:54:30Z"
+        },
+        {
+          "name": "style checker clean on first pass (scripts/check_bible_note_style.py, 0 problems)",
+          "at": "2026-10-02T06:55:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies ezekiel condition extended to chapter 3, applyPersonalEzekielThreeStudySections() added and invoked after chapter 2's apply call",
+          "at": "2026-10-02T06:55:40Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('ezekiel', 3) returned 7/7 sections, 26 cards, verbatim text",
+          "at": "2026-10-02T06:56:10Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-02T06:56:40Z"
+        },
+        {
+          "name": "manual section 13 eye check caught two banned-opener cards ('This verse describes...', 'This phrase is...'); rewrote both, reran style checker and tsc clean again",
+          "at": "2026-10-02T06:58:30Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json entry appended, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row and running totals updated",
+          "at": "2026-10-02T06:59:00Z"
+        }
+      ]
     }
   ]
 }
