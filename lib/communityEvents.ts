@@ -64,22 +64,22 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
   {
     slug: "obedience-of-abraham",
     title: "The Obedience of Abraham",
-    subtitle: "A 15-Day Bible Buddy Community Devotional",
+    subtitle: "A 21-Day Bible Buddy Community Devotional",
     devotionalId: "2c7641c1-0280-4847-b36e-e89004a58534",
     startDate: "2026-11-01",
-    totalDays: 15,
+    totalDays: 21,
     bannerArt: "/events/abraham-banner-art.png",
     bookUrl: null,
     printBooksPath: null,
-    dateRangeLabel: "November 1–15",
+    dateRangeLabel: "November 1–21",
     intro:
-      "Walk through Genesis 11–25 with Bible Buddies around the world - the call Abraham answered, the years he waited, the covenant God kept, and the mistakes he made on the way. A new day opens every day through the first half of November. Join whenever you like and study each day when it suits you, then meet the community in the daily discussion.",
+      "Walk through Abraham's life with Bible Buddies around the world - the call he answered, the years he waited, the covenant God kept, and the mistakes he made on the way - and finish where the New Testament looks back at him in Hebrews, Romans, James and Galatians. A new day opens every day from the 1st to the 21st of November. Join whenever you like and study each day when it suits you, then meet the community in the daily discussion.",
     howItWorks: [
-      "A new devotional unlocks each day. Read or listen, read the matching chapter of Genesis, take the trivia, and answer the daily discussion question—whenever you have time.",
-      "We read the same chapter of Abraham's story each day and meet in the discussion afterward.",
+      "A new devotional unlocks each day. Read or listen, read that day's chapter, take the trivia, and answer the daily discussion question—whenever you have time.",
+      "We read the same chapter each day and meet in the discussion afterward.",
     ],
     joinedLine: "walk through Abraham's story together",
-    evergreenLine: "All 15 days are open. Go at your own pace, one chapter at a time.",
+    evergreenLine: "All 21 days are open. Go at your own pace, one chapter at a time.",
   },
 ];
 
