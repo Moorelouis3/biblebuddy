@@ -6563,3 +6563,7 @@ Next up: Ezekiel 17
 ## 2026-10-02T20:58:59Z (hourly chapter notes run)
 Chapter: Ezekiel 17 | Duration: 12.3 min | Sections: 6 | Cards: 48 | Status: pass
 Next up: Ezekiel 18
+
+## 2026-10-02T21:59:46Z (hourly chapter notes run)
+Chapter: Ezekiel 18 | Duration: 12.4 min | Sections: 9 | Cards: 56 | Status: pass
+Next up: Ezekiel 19
