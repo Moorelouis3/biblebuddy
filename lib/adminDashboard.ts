@@ -23,6 +23,13 @@ export const DASHBOARD_WINDOWS: DashboardWindow[] = ["today", "yesterday", "7d",
 
 const OWNER_USER_ID = "669d4404-5eee-49ee-a112-2ecbd573e22a";
 const DAY_MS = 86_400_000;
+/**
+ * Email reporting starts in September (2026-10-02, Louis). Before that the
+ * list was a different era - a May send, then nothing back to February and
+ * November 2025 - and mixing those in made the averages meaningless. The old
+ * rows are still in the table, just not reported on.
+ */
+export const EMAIL_STATS_SINCE = "2026-09-01T00:00:00Z";
 
 // ---------- time (Berlin) ----------
 
@@ -334,7 +341,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     fetchAll<{ event_type: string; created_at: string }>(admin, "blog_promo_events", "event_type, created_at", (q) => q.gte("created_at", sinceIso)),
     fetchAll<{ created_at: string; user_id: string | null }>(admin, "group_posts", "created_at, user_id", (q) => q.gte("created_at", sinceIso).is("parent_post_id", null)),
     fetchAll<{ user_id: string; joined_at: string }>(admin, "community_event_members", "user_id, joined_at", (q) => q.eq("event_slug", "wisdom-of-proverbs"), "joined_at"),
-    admin.from("email_campaign_stats").select("id, name, sent_at, recipients, opens, clicks, site_visits").not("sent_at", "is", null).order("sent_at", { ascending: false }).limit(24),
+    admin.from("email_campaign_stats").select("id, name, sent_at, recipients, opens, clicks, site_visits").not("sent_at", "is", null).gte("sent_at", EMAIL_STATS_SINCE).order("sent_at", { ascending: false }).limit(24),
     // Lifetime account counts (2026-09-25, Louis: a total users card at the
     // top). Everything else on this page is window-scoped; these are all-time,
     // so they are counted server-side rather than derived from `profiles`,

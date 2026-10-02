@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { EMAIL_STATS_SINCE } from "@/lib/adminDashboard";
 import { createClient } from "@supabase/supabase-js";
 
 export const runtime = "nodejs";
@@ -141,9 +142,11 @@ export async function GET(request: NextRequest) {
     // Broadcast newsletters sent from Systeme.io. Opens come from their
     // dashboard (no stats API exists); siteVisits is measured from our own
     // traffic by the email-stats-sync cron.
+    // September onward only - see EMAIL_STATS_SINCE.
     const { data: newsletterRows } = await supabaseAdmin
       .from("email_campaign_stats")
       .select("*")
+      .gte("sent_at", EMAIL_STATS_SINCE)
       .order("sent_at", { ascending: false })
       .limit(30);
     const newsletters = (newsletterRows || []).map((row: any) => ({
