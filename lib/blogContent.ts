@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-16-explained",
+    title: "Proverbs 16 Explained: The LORD Who Directs Every Step",
+    description:
+      "Proverbs 16 explained verse by verse: why your heart plans the way but the LORD directs the steps, pride before destruction, and the lot cast into the lap.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-16-explained",
+    publishedAt: "2026-10-02",
+    readTime: "15 min read",
+    image: "/blog-banners/proverbs-16-explained.jpg",
+    groupPost: {
+      title: "Proverbs 16 Explained 📖",
+      content:
+        "You make a plan.\nGod directs where it actually lands.\n\n📌 The chapter opens and closes on the same 4 words: of the LORD.\n\n📖 A man's heart plans his way, the LORD directs his steps.\n📖 Pride goes before destruction, not just a fall.\n📖 A lot cast in the lap is still the LORD's to dispose.\n\nNew article on:\n🟢 what Proverbs 16:4 really says about the **wicked**\n🟢 why verse 25 repeats **Proverbs 14:12** almost word for word\n🟢 whether casting a lot is the same as **fortune telling**\n\nWhat plan are you still holding onto too tightly? 🙏",
+    },
+  },
+  {
     slug: "proverbs-15-explained",
     title: "Proverbs 15 Explained: A Soft Answer and a Watching God",
     description:
