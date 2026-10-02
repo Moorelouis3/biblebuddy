@@ -6488,3 +6488,7 @@ Next up: Lamentations 4
 ## 2026-10-02T02:55:58Z (hourly chapter notes run)
 Chapter: Lamentations 4 | Duration: 10 min | Sections: 7 | Cards: 44 | Status: pass
 Next up: Lamentations 5
+
+## 2026-10-02T03:57:22Z (hourly chapter notes run)
+Chapter: Lamentations 5 | Duration: 11.2 min | Sections: 7 | Cards: 44 | Status: pass
+Next up: Ezekiel 1
