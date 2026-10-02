@@ -6567,3 +6567,7 @@ Next up: Ezekiel 18
 ## 2026-10-02T21:59:46Z (hourly chapter notes run)
 Chapter: Ezekiel 18 | Duration: 12.4 min | Sections: 9 | Cards: 56 | Status: pass
 Next up: Ezekiel 19
+
+## 2026-10-02T22:22:54Z (blog writer run)
+Article: Why Do Christians Leave the Faith? | Words: ~4500 | Category: Christian Foundations | Status: pass
+Queue remaining: 23

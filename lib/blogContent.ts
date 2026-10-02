@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "why-christians-leave-the-faith",
+    title: "Why Do Christians Leave the Faith?",
+    description:
+      "Why do Christians leave the faith? The real reasons, from hypocrisy to doubt to church hurt, and the line between leaving Jesus and leaving a flawed church.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/why-christians-leave-the-faith",
+    publishedAt: "2026-10-03",
+    readTime: "23 min read",
+    image: "/why-christians-leave-the-faith-banner.png",
+    groupPost: {
+      title: "Why Do Christians Leave the Faith? 📖",
+      content:
+        "Someone you love just said they are done with church.\nOr maybe it was you, at two in the morning.\n\n📌 Most people who leave are not rebelling against God.\n\n📖 Peter stayed when a whole crowd walked away.\n📖 Thomas doubted and Jesus still met him.\n📖 A desperate father believed and asked for help anyway.\n\nNew article on:\n🟢 the real reasons people walk away, without **contempt**\n🟢 why doubt is not the same as **unbelief**\n🟢 how to talk to someone who is **leaving**\n\nWhat would you say to someone walking away? 🙏",
+    },
+  },
+  {
     slug: "proverbs-17-explained",
     title: "Proverbs 17 Explained: A Dry Morsel and a House Full of Strife",
     description:

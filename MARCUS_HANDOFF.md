@@ -807,3 +807,15 @@ pool cannot resolve it.
 
 ## Live duplicate-content bug: enforceStudySectionVerseLimit(8) in lib/bibleReaderStudyNotes.ts (found 2026-10-02, Bible Note Writer Agent, Ezekiel 16 run)
 While writing Ezekiel 16, discovered that `enforceStudySectionVerseLimit(8)` in `lib/bibleReaderStudyNotes.ts` splits any wired study section spanning more than 8 verses into "Part 1"/"Part 2"/etc, but instead of slicing the section's cards across the parts, it copies the FULL original card list into every part unchanged (only the verse range and title change). This means readers see every phrase card duplicated once per part. Confirmed this is already live, not just a risk for new work: a full scan of every wired chapter in the app found it currently affects two already-shipped chapters: Ezra 8 (section 8:1-14 split into two "Part 1"/"Part 2" sections, each showing all the same cards) and Nehemiah 7 (three separate sections hit the same way: 7:8-25, 7:26-38, 7:46-56). Readers browsing those two chapters right now see doubled (Ezra 8) or tripled (one Nehemiah 7 block) repeated cards. I worked around it for my own new Ezekiel 16 work by keeping every section to 8 verses or fewer, but did not touch the shared function itself, since a single scheduled chapter run isn't the place to patch shared infra. Worth a real fix to `enforceStudySectionVerseLimit` (slice `section.categories[0].content` across the parts instead of copying it whole) and then a resplit of the two already-affected chapters.
+
+## New blog post touches contested doctrine: eternal security (again)
+The blog writer agent just published "Why Do Christians Leave the Faith?"
+(/blog/why-christians-leave-the-faith), from the front of content-buddy's
+topic queue. The post itself is mainly about the real reasons people
+leave (hypocrisy, church hurt, inherited faith, unanswered suffering,
+doubt), but one FAQ answer ("Can you lose your salvation by leaving the
+church?") touches eternal security, the same contested doctrine flagged
+for can-you-lose-your-salvation on 2026-09-xx. That answer states plainly
+that sincere Christians disagree and does not pick a side, per the
+format spec's doctrinal-sensitivity rule, but flagging per that same
+rule so Louis can read it himself since this ships unreviewed.
