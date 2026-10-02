@@ -48875,6 +48875,63 @@
           "at": "2026-10-02T18:55:57Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 16,
+      "startedAt": "2026-10-02T19:50:17Z",
+      "finishedAt": "2026-10-02T20:06:55Z",
+      "durationMinutes": 17,
+      "sections": 13,
+      "cards": 81,
+      "verses": 63,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. On startup, local git state was a detached HEAD 51 commits ahead of a stale local main (last synced at Jeremiah 27, Sep 27), while origin/main had independently advanced through Ezekiel 15 with no shared history (a known recurring issue in this repo per its many rescue/stale-local-main branches). Confirmed origin/main already contained equivalent/superset content (Jeremiah 27, Proverbs 6, etc) before resetting local main to match origin/main exactly, losing nothing. Priority queue and style-redo backlog both confirmed empty, so this was normal forward progress after Ezekiel 15. Fetched real KJV text for Ezekiel 16 (63 verses) from the aruljohn/Bible-kjv raw mirror. Ezekiel 16 is the long allegory of Jerusalem as an abandoned infant God rescues, raises, marries, and crowns (1-14), who then turns to idolatry and child sacrifice using the very gifts God gave her (15-22), chases political alliances with Egypt, Philistia, Assyria, and Chaldea while never satisfied (23-29), is accused of the bizarre reversal of paying her lovers instead of being paid (30-34), receives a formal legal sentence modeled on the Mosaic penalties for adultery and murder (35-43), is compared unfavorably to her 'sisters' Samaria and Sodom (44-52), and is nevertheless promised restoration and an everlasting covenant at the close (53-63). Split into 11 natural content sections, each kept to 8 verses or fewer after discovering that lib/bibleReaderStudyNotes.ts's enforceStudySectionVerseLimit(8) silently duplicates a whole section's card content (rather than slicing it) when a wired section spans more than 8 verses \u2014 confirmed by a parser check that returned 99 cards with 'Part 1'/'Part 2' duplicate titles before the fix. Resplit the two affected sections (original 35-43 and 44-52, each 9 verses) into four sections (35-39/40-43 and 44-48/49-52), adding one new card for verse 43 which had not been covered, for a final 13 sections / 81 cards covering all 63 verses with no gaps or overlaps (verified programmatically). This duplication bug in enforceStudySectionVerseLimit is pre-existing and shared across the whole reader, not something this single-chapter run should touch \u2014 flagging it here so it is visible, but the fix applied was scoped to keeping this chapter's own sections under the limit, not patching the shared function. Density 1.29 cards/verse (81 cards over 63 verses), matching the recent Ezekiel 13-14 density band for long, legally dense prophetic chapters. scripts/check_bible_note_style.py found one problem on first pass (a 9 word bullet), fixed, then clean (81 cards, 0 problems). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms in plain language (abominations, countenance-adjacent customs like swaddling and salting newborns, high places, eminent place, sweet savour, unsatiable, imperious, haughty, lotheth, pacified), and closes on meaning rather than mechanics, while handling the chapter's child sacrifice and sexual betrayal imagery plainly and historically rather than graphically. Every title verified by hand as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('ezekiel', 16) (13/13 sections, 81 total cards, full verse coverage 1-63 with no gaps, text rendered verbatim). npx tsc --noEmit -p . came back clean. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/ezekielSixteenSource.ts, preserveExactPhraseBodies ezekiel range extended from chapters 1-15 to include chapter 16, new function applyPersonalEzekielSixteenStudySections() added and invoked right after applyPersonalEzekielFifteenStudySections(). Next forward-progress target is Ezekiel 17.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T19:50:17Z"
+        },
+        {
+          "name": "git state recovered: local main reset to match origin/main (confirmed superset, no data loss) after detached HEAD/stale-clone divergence",
+          "at": "2026-10-02T19:50:17Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 16 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-02T19:50:54Z"
+        },
+        {
+          "name": "KJV text fetched (Ezekiel 16, 63 verses, aruljohn mirror)",
+          "at": "2026-10-02T19:51:15Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-02T19:51:21Z"
+        },
+        {
+          "name": "source file written: lib/ezekielSixteenSource.ts (initial 11 sections, 80 cards)",
+          "at": "2026-10-02T20:01:13Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 1 bullet word count issue, then 0 problems)",
+          "at": "2026-10-02T20:01:27Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalEzekielSixteenStudySections)",
+          "at": "2026-10-02T20:01:51Z"
+        },
+        {
+          "name": "parser check found duplicate-content bug (sections >8 verses hit enforceStudySectionVerseLimit duplication), resplit into 13 sections/81 cards, re-verified clean with full 1-63 verse coverage",
+          "at": "2026-10-02T20:04:26Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-02T20:06:29Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-02T20:06:55Z"
+        }
+      ]
     }
   ]
 }
