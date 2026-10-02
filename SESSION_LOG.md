@@ -6559,3 +6559,7 @@ Next up: Ezekiel 16
 ## 2026-10-02T20:06:55Z (hourly chapter notes run)
 Chapter: Ezekiel 16 | Duration: 17 min | Sections: 13 | Cards: 81 | Status: pass
 Next up: Ezekiel 17
+
+## 2026-10-02T20:58:59Z (hourly chapter notes run)
+Chapter: Ezekiel 17 | Duration: 12.3 min | Sections: 6 | Cards: 48 | Status: pass
+Next up: Ezekiel 18
