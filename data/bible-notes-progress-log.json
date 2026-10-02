@@ -48410,6 +48410,55 @@
           "at": "2026-10-02T10:58:44Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 8,
+      "startedAt": "2026-10-02T11:47:54Z",
+      "finishedAt": "2026-10-02T12:20:00Z",
+      "durationMinutes": 32,
+      "sections": 5,
+      "cards": 27,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run (new chapter, normal forward progress, not a style redo). npm install ran clean (596 packages, fresh clone). Both data/bible-notes-priority-queue.json (checked by the skill) and data/bible-notes-style-redo-remaining.json confirmed remaining: [], so the target was determined from the last entry in this log (Ezekiel 7) plus confirming lib/ had no ezekielEight* file and lib/bibleReaderStudyNotes.ts had no chapter 8 wiring past Ezekiel 7. Fetched real KJV text for Ezekiel 8 (18 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 8 is the vision of hidden idolatry in the Jerusalem temple, split into 5 sections (1-4, 5-6, 7-12, 13-15, 16-18) with no gaps: the vision begins with the hand of the LORD, the fiery figure, and the spirit carrying Ezekiel to Jerusalem's inner gate where the image of jealousy and the glory of God both stood; the image confirmed by sight and the three-times-repeated escalation command to see greater abominations; the hole dug in the wall exposing the secret chamber of creeping things, idols, and the seventy elders led by Jaazaniah son of Shaphan burning incense while believing the LORD does not see them; the women weeping for Tammuz at the temple's own door; and the closing scene of men between the porch and the altar worshipping the sun with their backs to the temple, closing on the same mine eye shall not spare judgment language used in chapter 7. scripts/check_bible_note_style.py was clean on the first pass, 0 problems across all 27 cards. A manual section 13 eye check caught one stacked clause joined with \"while\" that the mechanical checker cannot flag, split into two lines before finishing, then reverified clean. Every card opens with one of the four approved moves, defines its key terms in plain language (sixth year dating, the hand of the LORD GOD as a vision-opening phrase, amber, the image of jealousy likely Asherah, pourtrayed, the seventy elders echoing Moses, Jaazaniah son of Shaphan, Tammuz, the branch to the nose as a disputed gesture), and closes on meaning rather than mechanics. Every title verified by hand as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('ezekiel', 8) (5/5 sections, verse ranges 1-4/5-6/7-12/13-15/16-18 with no gaps, 27 total cards, text rendered verbatim, preserveExactPhraseFormatting: true confirmed). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/ezekielEightSource.ts, preserveExactPhraseBodies ezekiel condition extended to include chapter 8, new function applyPersonalEzekielEightStudySections() added with its own replaceStudySectionsForBookRange(\"ezekiel\", 8, 8, EZEKIEL_EIGHT_PERSONAL_SECTIONS) call, invoked right after applyPersonalEzekielSevenStudySections()). Next forward-progress target is Ezekiel 9.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T11:52:07Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 8 (new chapter, forward progress)",
+          "at": "2026-10-02T11:58:42Z"
+        },
+        {
+          "name": "KJV text fetched for Ezekiel 8",
+          "at": "2026-10-02T11:58:42Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-10-02T11:58:42Z"
+        },
+        {
+          "name": "source file written: lib/ezekielEightSource.ts",
+          "at": "2026-10-02T12:02:53Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-10-02T12:03:22Z"
+        },
+        {
+          "name": "wired into reader (import, apply function, call, preserveExactPhraseBodies range)",
+          "at": "2026-10-02T12:13:45Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 27 cards",
+          "at": "2026-10-02T12:14:17Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-02T12:16:39Z"
+        }
+      ]
     }
   ]
 }
