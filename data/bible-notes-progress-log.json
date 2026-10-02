@@ -49058,6 +49058,55 @@
           "at": "2026-10-02T22:02:23Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 19,
+      "startedAt": "2026-10-02T22:47:40Z",
+      "finishedAt": "2026-10-02T22:57:07Z",
+      "durationMinutes": 9.5,
+      "sections": 6,
+      "cards": 30,
+      "verses": 14,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (596 packages, fresh clone, ~28s). Priority queue and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after Ezekiel 18, confirmed by no ezekielNineteen* file existing in lib/ before this run. Session also found the repo on a detached HEAD pointing at an older local main while origin/main had been force-updated ahead to the Ezekiel 18 commit; reset the local main branch to track origin/main before starting any work. Fetched real KJV text for Ezekiel 19 (14 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 19 is a short funeral lamentation built from two linked pictures: a lioness and her two cubs (1-9), and a vine planted by water (10-14). The lioness is Judah, nourishing one whelp who is taken in a pit and carried in chains to Egypt (many scholars identify this as Jehoahaz), then losing hope and raising a second whelp who repeats the same violent pattern, is trapped by a coalition of nations, and is carried in chains to the king of Babylon (many scholars connect this to Jehoiakim or Jehoiachin), his roar silenced on the mountains of Israel. The vine picture restarts the same story: planted by the waters, fruitful, with strong rods for royal sceptres and exalted stature, then plucked up in fury, dried by the east wind (read by many scholars as Babylon), its rods broken and withered, replanted in the dry wilderness, and finally burned by a fire that came out of one of its own branches, leaving no strong rod left to be a sceptre, closing on the same word, lamentation, that opened the chapter. Split into 6 sections (1-2, 3-4, 5-6, 7-9, 10-11, 12-14), matching the chapter's 14 verses exactly with no gaps or overlaps. Density 2.14 cards/verse (14 verses, 30 cards), weighted so the two capture sequences (3-4 and 7-9) and the vine's destruction (12-14) carry the most cards since each verse there holds multiple distinct hunting or judgment images worth separating. scripts/check_bible_note_style.py came back clean on the first pass: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using 📖. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms in plain language (lamentation, whelp, pit, ward, rod, sceptre, stature, withered), is honest about the genuine scholarly uncertainty over which specific kings the two cubs represent rather than inventing false certainty, and closes on meaning rather than mechanics, with the chapter's final card closing the whole note by naming the callback from the opening verse. Every title verified by hand as an exact contiguous KJV substring in title case. Parser check passed via EZEKIEL_NINETEEN_PERSONAL_SECTIONS (6/6 sections, verse ranges 1-2/3-4/5-6/7-9/10-11/12-14 with no gaps, 30 total cards, text rendered verbatim). npx tsc --noEmit -p . came back clean (no output, exit code 0). Wired into lib/bibleReaderStudyNotes.ts (import added for lib/ezekielNineteenSource.ts, the ezekiel condition in preserveExactPhraseBodies extended from chapters 1-18 to include chapter 19, replaceStudySectionsForBookRange(\"ezekiel\", 19, 19, EZEKIEL_NINETEEN_PERSONAL_SECTIONS) call added inside the existing chapter 17/18 wiring function). Next forward-progress target is Ezekiel 20.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T22:47:23Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 19 (new chapter, forward progress)",
+          "at": "2026-10-02T22:47:40Z"
+        },
+        {
+          "name": "KJV text fetched (Ezekiel 19, 14 verses, raw GitHub mirror)",
+          "at": "2026-10-02T22:47:56Z"
+        },
+        {
+          "name": "style spec and skill read in full",
+          "at": "2026-10-02T22:48:25Z"
+        },
+        {
+          "name": "source file written (lib/ezekielNineteenSource.ts, 30 cards)",
+          "at": "2026-10-02T22:54:12Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 30 cards)",
+          "at": "2026-10-02T22:54:12Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 30 cards, text verbatim)",
+          "at": "2026-10-02T22:54:41Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts",
+          "at": "2026-10-02T22:54:57Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-02T22:57:01Z"
+        }
+      ]
     }
   ]
 }
