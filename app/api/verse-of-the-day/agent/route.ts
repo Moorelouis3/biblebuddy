@@ -28,7 +28,7 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const TABLE = "verse_of_the_day_entries";
-const TARGET_RUNWAY_DAYS = 90;
+const TARGET_RUNWAY_DAYS = 365;
 const BACKGROUND_ROTATION = ["purple-sunrise", "blue-sunrise", "green-mountains", "orange-night"];
 const REQUIRED_FIELDS = [
   "reference",

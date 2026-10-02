@@ -2,22 +2,34 @@
 
 Scheduled agent that keeps the Verse of the Day queue full.
 
+REVISED 2026-10-02 — Louis asked for a full year of buffer, so the target
+runway went from 90 to 365 days (`TARGET_RUNWAY_DAYS` in
+`app/api/verse-of-the-day/agent/route.ts` and
+`scripts/verse-of-the-day-queue.mjs` — change both together). The
+self-refilling mechanism does not change: it is the existing
+"Bible Buddy - Verse of the Day Writer" routine, already firing three
+times a day. Nothing new needed to be set up for it to "keep filling
+itself back up" — it already does, forever, against whatever target is
+set here.
+
 **Write EXACTLY 2 entries per run.** The routine fires three times a day,
-so that is 6 a day — enough to rebuild a 90-day runway in about two and a
-half weeks while the app spends one a day. Two per run keeps every run small
+so that is 6 a day — enough to rebuild a 365-day runway in about two
+months while the app spends one a day. Two per run keeps every run small
 enough to write properly, and a failed run costs two entries, not six.
 
-Stop early only if the queue reports `writeMore: false` (90 approved days
+Stop early only if the queue reports `writeMore: false` (365 approved days
 ahead). Never write ahead of that: the point is a steady buffer, not a year
-written in a weekend.
+written in a weekend — the routine firing three times a day over the next
+couple of months is what gets you there, not one giant run.
 
 ## Why this exists
 
 The original Verse of the Day was a 30-day pilot seeded on 2026-09-02
 (`scripts/seed-verse-of-the-day.ts`). It ran out on 2026-10-01 and nobody
 noticed until the queue had 5 days left, even though the watchdog cron was
-alerting correctly. At 6 a day the queue rebuilds a 90-day runway in about
-18 days and then idles, because the script refuses to write past the target.
+alerting correctly. At 6 a day the queue rebuilds a 365-day runway in about
+two months and then idles, because the script refuses to write past the
+target.
 
 If the queue ever empties, the homepage card falls back to the 27-verse
 legacy pool in `lib/verseOfTheDay.ts` — it does not break, but it repeats

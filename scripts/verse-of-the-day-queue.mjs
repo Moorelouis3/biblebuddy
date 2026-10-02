@@ -28,7 +28,7 @@ config({ path: ".env.local" });
 
 const TABLE = "verse_of_the_day_entries";
 /** Keep this many approved days ahead; the writer stops when it is reached. */
-export const TARGET_RUNWAY_DAYS = 90;
+export const TARGET_RUNWAY_DAYS = 365;
 const BACKGROUND_ROTATION = ["purple-sunrise", "blue-sunrise", "green-mountains", "orange-night"];
 const REQUIRED_FIELDS = [
   "reference",
