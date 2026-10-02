@@ -6539,3 +6539,7 @@ Next up: Ezekiel 11
 ## 2026-10-02T15:01:07Z (hourly chapter notes run)
 Chapter: Ezekiel 11 | Duration: 15 min | Sections: 6 | Cards: 28 | Status: pass
 Next up: Ezekiel 12
+
+## 2026-10-02T15:58:20Z (hourly chapter notes run)
+Chapter: Ezekiel 12 | Duration: 10.5 min | Sections: 6 | Cards: 33 | Status: pass
+Next up: Ezekiel 13
