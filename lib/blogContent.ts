@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-14-explained",
+    title: "Proverbs 14 Explained: Wisdom's House and a Nation's Reproach",
+    description:
+      "Proverbs 14 explained verse by verse: the wise woman who builds her house, fear of the LORD as a fountain of life, and why oppressing the poor reproaches God.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-14-explained",
+    publishedAt: "2026-10-02",
+    readTime: "17 min read",
+    image: "/blog-banners/proverbs-14-explained.jpg",
+    groupPost: {
+      title: "Proverbs 14 Explained 📖",
+      content:
+        "A wise woman builds her house with her hands.\nA fool tears hers down with hers.\n\n📌 The LORD is named 3 times in this chapter.\nEvery time, the word next to His name is fear.\n\n📖 A scorner searches for wisdom and never finds it.\n📖 A path can feel right and still end in death.\n📖 Oppressing the poor reproaches God Himself.\n\nNew article on:\n🟢 why Proverbs 14:12 repeats itself in **chapter 16**\n🟢 what the **fountain of life** actually means\n🟢 why a king with no people has no **honour** left\n\nWhat is your own house being built on right now? 🙏",
+    },
+  },
+  {
     slug: "proverbs-13-explained",
     title: "Proverbs 13 Explained: The Mouth, the Rod, and True Riches",
     description:
