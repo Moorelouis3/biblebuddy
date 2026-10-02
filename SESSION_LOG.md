@@ -6531,3 +6531,7 @@ Next up: Ezekiel 9
 ## 2026-10-02T13:02:00Z (hourly chapter notes run)
 Chapter: Ezekiel 9 | Duration: 15 min | Sections: 3 | Cards: 25 | Status: pass
 Next up: Ezekiel 10
+
+## 2026-10-02T14:09:54Z (hourly chapter notes run)
+Chapter: Ezekiel 10 | Duration: 23 min | Sections: 6 | Cards: 28 | Status: pass
+Next up: Ezekiel 11
