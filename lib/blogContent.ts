@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-17-explained",
+    title: "Proverbs 17 Explained: A Dry Morsel and a House Full of Strife",
+    description:
+      "Proverbs 17 explained verse by verse: a quiet meal over a feast full of strife, the LORD who tries the heart, and whether a gift is a bribe or a blessing.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-17-explained",
+    publishedAt: "2026-10-02",
+    readTime: "14 min read",
+    image: "/blog-banners/proverbs-17-explained.jpg",
+    groupPost: {
+      title: "Proverbs 17 Explained 📖",
+      content:
+        "A dry crust eaten in peace.\nA feast eaten in the middle of a fight.\n\n📌 Proverbs 17 keeps weighing quiet against loud, all chapter long.\n\n📖 A reproof lands deeper in a wise man than a hundred stripes in a fool.\n📖 A friend loves at all times, a brother is born for adversity.\n📖 Even a fool who holds his peace is counted wise.\n\nNew article on:\n🟢 whether Proverbs 17:8 actually approves of **bribery**\n🟢 what it means to **become surety** for someone\n🟢 why a merry heart is called **medicine** for the body\n\nWhat conversation do you need to leave off before it floods? 🙏",
+    },
+  },
+  {
     slug: "proverbs-16-explained",
     title: "Proverbs 16 Explained: The LORD Who Directs Every Step",
     description:
