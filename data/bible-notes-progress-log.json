@@ -48178,6 +48178,63 @@
           "at": "2026-10-02T06:59:00Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 4,
+      "startedAt": "2026-10-02T07:46:29Z",
+      "finishedAt": "2026-10-02T08:02:00Z",
+      "durationMinutes": 16,
+      "sections": 7,
+      "cards": 26,
+      "verses": 17,
+      "notes": "New chapter, normal forward progress (priority queue and style-redo backlog both empty; progress log's last entry was Ezekiel 3; lib/ezekielFourSource.ts did not exist yet). Covers the acted-out siege sign: the clay tile pourtrayed with Jerusalem and the miniature fort/mount/camp/battering rams sealed off by the iron pan wall (1-3); lying on the left side 390 days for Israel's iniquity and the right side 40 days for Judah's (4-6); face set toward the siege, arm bared, bands laid on so he cannot turn (7-8); mixed grain bread eaten by weight and water drunk by measure, both rationed like a besieged city (9-11); bread baked over human dung as a sign of coming ceremonial defilement among the Gentiles (12-13); Ezekiel's own protest answered by God's concession to cow's dung instead of man's dung (14-15); and the closing word that Jerusalem's staff of bread will break, leaving the city eating and drinking in anxious, astonished rationing for its own iniquity (16-17). Density 1.53 cards/verse, leaner than the 2x narrative target since this chapter is one continuous symbolic sign-act whose later verses measure and extend ideas already introduced earlier, same reasoning as Ezekiel 3. Two inline component lists (siege works, the six grains) had to be converted to plain prose because the mechanical style checker counts any emoji-led line as a bullet, which collided with the fixed four-bullet-per-card rule; also trimmed two closing bullets that ran one word over the eight word limit. Clean on style checker, parser check, and tsc after those fixes.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T07:46:29Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 4 (new chapter, normal forward progress; priority queue and style-redo backlog both empty; progress log's last entry was Ezekiel 3; lib/ezekielFourSource.ts did not exist yet)",
+          "at": "2026-10-02T07:46:50Z"
+        },
+        {
+          "name": "KJV text fetched for Ezekiel 4 (17 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-02T07:47:12Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus reference implementations lib/genesisThirtyOneSource.ts and lib/ezekielThreeSource.ts",
+          "at": "2026-10-02T07:49:00Z"
+        },
+        {
+          "name": "lib/ezekielFourSource.ts written (7 sections, 26 cards)",
+          "at": "2026-10-02T07:51:30Z"
+        },
+        {
+          "name": "style checker found 8 problems on first pass (two inline component lists counted as extra bullets, four over-length bullets); fixed by converting both inline lists to plain prose and trimming the bullets; rerun clean, 0 problems",
+          "at": "2026-10-02T07:52:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies ezekiel condition extended to chapter 4, applyPersonalEzekielFourStudySections() added and invoked after chapter 3's apply call",
+          "at": "2026-10-02T07:52:50Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('ezekiel', 4) returned 7/7 sections, 26 cards, verbatim text",
+          "at": "2026-10-02T07:53:11Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-02T07:53:33Z"
+        },
+        {
+          "name": "manual section 13 eye check performed by rereading the full file; no issues found needing further edits",
+          "at": "2026-10-02T07:56:09Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json entry appended, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row and running totals updated",
+          "at": "2026-10-02T08:00:00Z"
+        }
+      ]
     }
   ]
 }
