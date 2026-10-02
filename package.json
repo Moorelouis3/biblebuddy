@@ -43,7 +43,8 @@
     "tts:bible-topic:reels": "tsx scripts/generate-bible-topic-reel-audio.ts",
     "repair:lifetime-customers": "tsx scripts/repair-lifetime-customers.ts",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "pending": "node scripts/pending-deploy.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",

@@ -3,21 +3,34 @@ Before writing or editing any Bible study note, read
 `docs/bible-study-note-style.md` and follow it exactly.
 
 ## Deploy cadence (mandatory — read before committing anything)
-REVISED 2026-08-07 after a scheduled run proved the old "batch pushes to
-twice a day" rule structurally impossible: the agent environment's stop
-hook (`~/.claude/stop-hook-git-check.sh`) hard-blocks ending a session
-with unpushed commits, so per-chapter pushes are unavoidable — and that's
-fine, because pushes are NOT the real cost. **Builds are.** Vercel only
-builds commits whose message contains `[deploy]`, so the rule is now
-about the tag, not the push:
+Pushes are free. **Builds are the bill.** Vercel only builds a commit whose
+message contains `[deploy]`, and the Deploy routine adds that tag twice a
+day (10:00 and 18:00 Berlin), publishing everything that has piled up on
+main in one build. Four to twelve ad-hoc builds a day is how the bill got to
+€60 when it should be €25.
 
-- **Never put `[deploy]` on per-chapter note commits.** Push them freely
-  (the stop hook will make you anyway) — without the tag they cost
-  nothing.
-- `[deploy]` belongs ONLY on: the twice-daily report commits (morning/
-  night), an explicit release Louis asked for, or a Level 2 upgrade
-  (see `docs/LEVEL2_UPGRADE_AGENT.md` — those are deliberate content
-  releases and deploy immediately).
+**The only test, decided by Louis on 2026-10-02. Ask it in this order:**
+
+1. **Is Bible Buddy broken for more than one person right now?** A crash, a
+   page that will not load, a study nobody can open, a daily post that did
+   not fire. → tag it `[deploy]` and push immediately.
+2. **Is it a timed thing that misses its moment if it waits?** A study that
+   starts today, an email going out in an hour. → tag it, and say why in the
+   commit.
+3. **Anything else** — a new feature, a better page, a fix nobody has hit, a
+   tidy-up, content. However good it is, it waits for the next scheduled
+   deploy. Commit it untagged, push it, and tell Louis when it goes live.
+
+Never ask Louis "want me to deploy this now?" for a step-3 change — the
+answer is no, and asking invites the expensive habit back. Just say which
+step it is and when it lands.
+
+`npm run pending` prints what is finished but not live yet, and when the
+next deploy is. Louis runs it himself; no agent needs to be asked.
+
+Exception that is still true: a Level 2 upgrade
+(`docs/LEVEL2_UPGRADE_AGENT.md`) is a deliberate content release and
+deploys immediately.
 
 ## Session Log (for Life Buddy reporting)
 This project reports to "Life Buddy" (`C:\Users\Moore\Desktop\second-brain`),
@@ -37,9 +50,12 @@ Today: <the concrete plan for this session>
 ## <date> (night)
 Time spent: <rough estimate>
 Done: <what actually got done/decided>
+Not live yet: <run `npm run pending` and name what is waiting + when it deploys>
 Still open: <unfinished or blocked items>
 Next: <what's planned for next session>
 ```
+"Not live yet" is there so Louis can see tomorrow morning what is sitting on
+main waiting for a build, without having to remember it or ask an agent.
 
 Append both to `SESSION_LOG.md` in this project's root (create it if it
 doesn't exist).
