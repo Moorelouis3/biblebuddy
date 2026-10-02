@@ -39,7 +39,6 @@ type StudyFilter = "all" | "done" | "started";
 // "everything is there but just different tabs, not 50 different pages").
 type PlansSection = "bible-year" | "devotionals" | "articles";
 type BibleYearTestamentFilter = "all" | "old" | "new";
-type DevotionalLengthFilter = "all" | "21" | "31" | "coming-soon";
 
 const NEW_TESTAMENT_BOOKS = new Set([
   "Matthew", "Mark", "Luke", "John", "Acts", "Romans",
@@ -54,9 +53,30 @@ function isNewTestamentDay(day: (typeof GENESIS_BIBLE_IN_ONE_YEAR_SERIES)[number
   return firstBook ? NEW_TESTAMENT_BOOKS.has(firstBook) : false;
 }
 
+/**
+ * What the Plans page lists (Louis, 2026-10-02): the study running now and the
+ * one that starts next, nothing else. A grid of greyed-out studies with no
+ * dates read as a catalogue of things that do not work, so a study appears
+ * here when it is live or when it has a start date people can plan around.
+ */
 const FEATURED_STUDY_ORDER = [
   "The Wisdom of Proverbs",
   "The Obedience of Abraham",
+];
+
+/** The study that starts next. Its card is grey until the cursor is on it. */
+const NEXT_UP_STUDY_TITLE = "The Obedience of Abraham";
+const NEXT_UP_START_LABEL = "Starts 1 November";
+const NEXT_UP_EVENT_PATH = "/events/obedience-of-abraham";
+
+const KEEP_DEVOTIONAL_TITLES = new Set(FEATURED_STUDY_ORDER);
+const FEATURED_STUDY_ORDER_INDEX = new Map(
+  FEATURED_STUDY_ORDER.map((title, index) => [title, index]),
+);
+// Progress maths (6 tasks a day) still covers every chapter study, including
+// the ones no longer listed - anyone part-way through one keeps a correct bar.
+const CHAPTER_JOURNEY_TITLES = new Set([
+  ...FEATURED_STUDY_ORDER,
   "Women of the Bible",
   "The Calling of Moses",
   "The Heart of David",
@@ -67,30 +87,7 @@ const FEATURED_STUDY_ORDER = [
   "The Disciples of Jesus",
   "The Transforming of Paul",
   "The Testing of Joseph",
-];
-/**
- * The study that goes live next (2026-10-01, Louis). It sits beside Proverbs
- * in full colour rather than greyed out like the other locked studies, with a
- * countdown, so people can see what is coming.
- */
-const NEXT_UP_STUDY_TITLE = "The Obedience of Abraham";
-const NEXT_UP_START_DATE = "2026-11-01";
-
-/** Whole days from the Berlin date today until the start date. */
-function daysUntilNextUpStudy() {
-  const berlinToday = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Berlin" }).format(new Date());
-  const [ty, tm, td] = berlinToday.split("-").map(Number);
-  const [sy, sm, sd] = NEXT_UP_START_DATE.split("-").map(Number);
-  const diff = Date.UTC(sy, sm - 1, sd) - Date.UTC(ty, tm - 1, td);
-  return Math.round(diff / 86400000);
-}
-
-const OWNER_EMAIL = "moorelouis3@gmail.com";
-const KEEP_DEVOTIONAL_TITLES = new Set(FEATURED_STUDY_ORDER);
-const FEATURED_STUDY_ORDER_INDEX = new Map(
-  FEATURED_STUDY_ORDER.map((title, index) => [title, index]),
-);
-const CHAPTER_JOURNEY_TITLES = new Set(FEATURED_STUDY_ORDER);
+]);
 const CHAPTER_JOURNEY_TASK_TOTAL = 6;
 
 function isChapterJourney(title: string) {
@@ -173,7 +170,6 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   // day 67 is the first row for someone on day 67.
   const [bibleYearDaysBefore, setBibleYearDaysBefore] = useState(0);
   const [bibleYearDaysAfter, setBibleYearDaysAfter] = useState(10);
-  const [lengthFilter, setLengthFilter] = useState<DevotionalLengthFilter>("all");
   const [articleCategory, setArticleCategory] = useState<string>("all");
   const [bibleYearCompletedByDay, setBibleYearCompletedByDay] = useState<Record<number, boolean>>({});
   const [bibleYearCurrentDay, setBibleYearCurrentDay] = useState<number | null>(null);
@@ -239,7 +235,6 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
       }
     }
   }
-  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [progressByDevotional, setProgressByDevotional] = useState<Record<string, StudyProgressSummary>>({});
 
@@ -268,7 +263,6 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     void supabase.auth.getUser().then(({ data }) => {
       const user = data.user;
       setUserId(user?.id ?? null);
-      setUserEmail(user?.email ?? null);
       const meta: any = user?.user_metadata || {};
       setUsername(
         meta.firstName ||
@@ -465,12 +459,6 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     };
   }, [progressByDevotional, visibleDevotionals]);
 
-  // Which studies are actually playable today - same rule the cards use.
-  const isPlanAvailableFor = (title: string) => {
-    const isOwnerUser = userEmail?.toLowerCase() === OWNER_EMAIL;
-    return title === "The Wisdom of Proverbs" || (title === "Women of the Bible" && isOwnerUser);
-  };
-
   const filteredDevotionals = useMemo(() => {
     let list = visibleDevotionals;
 
@@ -482,12 +470,8 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
       });
     }
 
-    if (lengthFilter === "21") list = list.filter((study) => study.total_days === 21);
-    else if (lengthFilter === "31") list = list.filter((study) => study.total_days === 31);
-    else if (lengthFilter === "coming-soon") list = list.filter((study) => !isPlanAvailableFor(study.title));
-
     return list;
-  }, [progressByDevotional, studyFilter, lengthFilter, visibleDevotionals, userEmail]);
+  }, [progressByDevotional, studyFilter, visibleDevotionals]);
 
   const filteredBibleYearDays = useMemo(() => {
     if (bibleYearFilter === "all") return GENESIS_BIBLE_IN_ONE_YEAR_SERIES;
@@ -1097,28 +1081,6 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
           )}
         </div>
 
-        <div className="mb-4 flex flex-wrap gap-2">
-          {([
-            ["all", "All"],
-            ["21", "21 Days"],
-            ["31", "31 Days"],
-            ["coming-soon", "Coming Soon"],
-          ] as Array<[DevotionalLengthFilter, string]>).map(([value, label]) => (
-            <button
-              key={value}
-              type="button"
-              onClick={() => setLengthFilter(value)}
-              className={`rounded-full px-3.5 py-2 text-xs font-black transition ${
-                lengthFilter === value
-                  ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] shadow-sm"
-                  : "bg-[var(--bb-card,#ffffff)] text-[var(--bb-text-primary,#111827)] shadow-sm hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-
         {filteredDevotionals.length === 0 ? (
           <div className="text-gray-500">
             {studyFilter === "all"
@@ -1131,35 +1093,25 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
             {filteredDevotionals.map((devotional) => {
               const progress = progressByDevotional[devotional.id] ?? buildEmptyProgress(devotional);
               const isComplete = progress.isComplete;
-              const isOwnerUser = userEmail?.toLowerCase() === OWNER_EMAIL;
-              const isPlanAvailable =
-                devotional.title === "The Wisdom of Proverbs" ||
-                (devotional.title === "Women of the Bible" && isOwnerUser);
-              const isLockedPreview = !isPlanAvailable;
-              // The next study keeps its colour and gets a countdown, so it
-              // reads as "this is coming" rather than "this is switched off".
+              // The next study is not playable yet, but its card is not dead
+              // either - it opens the sign-up page. Grey at rest, full colour
+              // under the cursor on desktop (Louis, 2026-10-02).
               const isNextUp = devotional.title === NEXT_UP_STUDY_TITLE;
-              const daysToStart = isNextUp ? daysUntilNextUpStudy() : 0;
+              const isPlanAvailable = devotional.title === "The Wisdom of Proverbs";
+              const isLockedPreview = !isPlanAvailable && !isNextUp;
               const card = (
                 <div className={`bb-bible-study-card group flex h-full flex-col rounded-[18px] border p-2.5 shadow-sm transition-all duration-200 sm:p-3 ${
                   isComplete
                     ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]"
                     : isNextUp
-                      ? "border-[#cfa147] bg-[var(--bb-card,#ffffff)]"
+                      ? "border-[#cfa147] bg-[var(--bb-card,#ffffff)] bb-study-card-next-up"
                       : isLockedPreview
                         ? "border-[var(--bb-card-border,#dbe7f4)] bg-slate-100 grayscale opacity-65"
                         : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] hover:-translate-y-1 hover:shadow-xl"
                 }`}>
                   <div className="relative">
                     {getDevotionalVisual(devotional)}
-                    {isNextUp ? (
-                      <span
-                        className="absolute right-2 top-2 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[#221503] shadow-sm"
-                        style={{ background: "linear-gradient(180deg, #f0d489 0%, #cfa147 100%)" }}
-                      >
-                        {daysToStart > 1 ? `${daysToStart} days` : daysToStart === 1 ? "Tomorrow" : "Starts today"}
-                      </span>
-                    ) : isLockedPreview ? (
+                    {isLockedPreview ? (
                       <span className="absolute right-2 top-2 rounded-full bg-slate-700 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-white shadow-sm">
                         Coming Soon
                       </span>
@@ -1178,7 +1130,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                     </p>
                     {isNextUp ? (
                       <p className="mt-1 text-[11px] font-black uppercase tracking-wide text-[#a57d2c] sm:text-xs">
-                        {daysToStart > 0 ? `Starts 1 November` : "Starting today"}
+                        {NEXT_UP_START_LABEL}
                       </p>
                     ) : null}
                     <div className="mt-auto pt-3">
@@ -1189,7 +1141,13 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                         />
                       </div>
                       <p className="mt-2 text-xs font-black text-[var(--bb-text-primary,#111827)]">
-                        {isComplete ? "Completed" : progress.percent > 0 ? "Continue" : "Start"}
+                        {isNextUp
+                          ? "Sign up"
+                          : isComplete
+                            ? "Completed"
+                            : progress.percent > 0
+                              ? "Continue"
+                              : "Start"}
                       </p>
                     </div>
                   </div>
@@ -1213,7 +1171,9 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                         dedupeKey: `devotional-opened:${devotional.id}`,
                       }).catch((error) => console.error("[NAV] Failed to track devotional click:", error));
                     }
-                    if (embedded && onStudySelect) {
+                    if (isNextUp) {
+                      router.push(NEXT_UP_EVENT_PATH);
+                    } else if (embedded && onStudySelect) {
                       onStudySelect(devotional.id);
                     } else {
                       router.push(`/plans/${devotional.id}`);
@@ -1232,7 +1192,9 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                           dedupeKey: `devotional-opened:${devotional.id}`,
                         }).catch((error) => console.error("[NAV] Failed to track devotional click:", error));
                       }
-                      if (embedded && onStudySelect) {
+                      if (isNextUp) {
+                        router.push(NEXT_UP_EVENT_PATH);
+                      } else if (embedded && onStudySelect) {
                         onStudySelect(devotional.id);
                       } else {
                         router.push(`/plans/${devotional.id}`);

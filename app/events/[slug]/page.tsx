@@ -3,9 +3,10 @@
 export const dynamic = "force-dynamic";
 
 /**
- * The community event page - sign-up and information for The Wisdom of
- * Proverbs, and any community devotional after it. Driven by
- * lib/communityEvents.ts so the next event is a config entry.
+ * The community event page - sign-up and information for every community
+ * devotional: Proverbs in October, Abraham in November, whatever follows.
+ * All of the copy comes from lib/communityEvents.ts, so a new study is a
+ * config entry and never carries the previous study's wording.
  *
  * The community grid reuses the devotional's own participant system:
  * profile_stats for photo + name, the same initials fallback, the same
@@ -297,9 +298,16 @@ export default function CommunityEventPage() {
 
   const showBooksPromo = WISDOM_BOOKS_ON_SALE || previewBooks;
 
-  const joinLabel = joining ? "JOINING…" : "JOIN THE 31-DAY STUDY";
+  const joinLabel = joining ? "JOINING…" : `JOIN THE ${event.totalDays}-DAY STUDY`;
 
   const remaining = totalMembers !== null ? Math.max(0, totalMembers - participants.length) : 0;
+
+  // "1 November" - the configured start date, spoken.
+  const startDayLabel = new Date(`${event.startDate}T12:00:00Z`).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  });
 
   // Once someone is in, the buttons disappear - this is a sign-up page for a
   // study that is still being built, so there is nothing to view yet.
@@ -324,7 +332,7 @@ export default function CommunityEventPage() {
           background: `linear-gradient(100deg, #0c0804 0%, #17100a 55%, rgba(23,16,10,0.65) 100%), url(${event.bannerArt}) right top / auto 100% no-repeat`,
         }}
       >
-        <p className="text-xs font-black uppercase tracking-[0.2em] text-[#bfa877]">October 1–31</p>
+        <p className="text-xs font-black uppercase tracking-[0.2em] text-[#bfa877]">{event.dateRangeLabel}</p>
         <h1 className="mt-2 text-3xl font-black leading-tight" style={{ color: "#e8c877" }}>
           {event.title}
         </h1>
@@ -341,9 +349,7 @@ export default function CommunityEventPage() {
       </header>
 
       <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-        Study all 31 chapters of Proverbs alongside Bible Buddies around the world. A new day becomes available
-        every day throughout October. You do not have to join at a particular time. Complete each day whenever it
-        fits your schedule, then meet the community in the daily discussion.
+        {event.intro}
       </p>
 
       {/* Live mode: today's community day, study and discussion. */}
@@ -361,8 +367,8 @@ export default function CommunityEventPage() {
             {state?.phase === "live"
               ? `The study is live — Day ${state.communityDay} is open now. Go at your own pace; every earlier day stays open.`
               : state?.phase === "evergreen"
-                ? "All 31 days are open. Go at your own pace, one chapter at a time."
-                : "The journey begins October 1. We'll let you know when Day 1 is ready."}
+                ? event.evergreenLine
+                : `The journey begins ${startDayLabel}. We'll let you know when Day 1 is ready.`}
           </p>
         </div>
       ) : null}
@@ -409,11 +415,10 @@ export default function CommunityEventPage() {
         {howOpen ? (
           <div className="border-t border-[var(--bb-card-border,#dbe7f4)] px-5 py-4">
             <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-              A new devotional unlocks each day. Read or listen, read the matching chapter of Proverbs, take the
-              trivia, and answer the daily discussion question—whenever you have time.
+              {event.howItWorks[0]}
             </p>
             <p className="mt-3 text-sm font-black leading-6 text-[var(--bb-text-primary,#111827)]">
-              We study the same chapter each day and meet in the discussion afterward.
+              {event.howItWorks[1]}
             </p>
           </div>
         ) : null}
@@ -425,7 +430,7 @@ export default function CommunityEventPage() {
         <h2 className="mt-1 text-lg font-black text-[var(--bb-text-primary,#111827)]">JOIN THESE BIBLE BUDDIES</h2>
         {totalMembers !== null && totalMembers > 0 ? (
           <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-            {totalMembers} Bible {totalMembers === 1 ? "Buddy has" : "Buddies have"} already signed up to study Proverbs together.
+            {totalMembers} Bible {totalMembers === 1 ? "Buddy has" : "Buddies have"} already signed up to {event.joinedLine}.
           </p>
         ) : null}
 
@@ -516,7 +521,7 @@ export default function CommunityEventPage() {
           </span>
         </label>
         <p className="mt-2 text-center text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-          Free inside Bible Buddy · October 1–31
+          Free inside Bible Buddy · {event.dateRangeLabel}
         </p>
       </section>
 
@@ -527,7 +532,7 @@ export default function CommunityEventPage() {
             Continue Your Journey Beyond the App
           </h2>
           <p className="mt-1 text-sm font-semibold text-[#f4ecdd]">
-            Bring The Wisdom of Proverbs into your personal study time with the hardcover devotional and companion
+            Bring {event.title} into your personal study time with the hardcover devotional and companion
             journal.
           </p>
           <a

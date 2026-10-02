@@ -22,8 +22,24 @@ export type CommunityEvent = {
   bookUrl: string | null;
   /** Internal printed-books page, promoted on the event page after signup. */
   printBooksPath: string | null;
+  /** "October 1-31" - the eyebrow over the title and the footer line. */
+  dateRangeLabel: string;
+  /** The paragraph under the header: what the study is and how it paces. */
+  intro: string;
+  /** The two paragraphs inside "How does the community study work?". */
+  howItWorks: [string, string];
+  /** Completes "N Bible Buddies have already signed up to ___ together." */
+  joinedLine: string;
+  /** Shown to members once the dated window has passed. */
+  evergreenLine: string;
 };
 
+/**
+ * Every event's page is built from this list, so adding the next community
+ * study is a config entry. The copy fields exist because the page used to
+ * carry Proverbs wording in the markup, which quietly made the second event
+ * advertise the first one.
+ */
 export const COMMUNITY_EVENTS: CommunityEvent[] = [
   {
     slug: "wisdom-of-proverbs",
@@ -35,6 +51,35 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     bannerArt: "/events/proverbs-banner-art.png",
     bookUrl: null,
     printBooksPath: "/books/wisdom-of-proverbs",
+    dateRangeLabel: "October 1–31",
+    intro:
+      "Study all 31 chapters of Proverbs alongside Bible Buddies around the world. A new day becomes available every day throughout October. You do not have to join at a particular time. Complete each day whenever it fits your schedule, then meet the community in the daily discussion.",
+    howItWorks: [
+      "A new devotional unlocks each day. Read or listen, read the matching chapter of Proverbs, take the trivia, and answer the daily discussion question—whenever you have time.",
+      "We study the same chapter each day and meet in the discussion afterward.",
+    ],
+    joinedLine: "study Proverbs together",
+    evergreenLine: "All 31 days are open. Go at your own pace, one chapter at a time.",
+  },
+  {
+    slug: "obedience-of-abraham",
+    title: "The Obedience of Abraham",
+    subtitle: "A 15-Day Bible Buddy Community Devotional",
+    devotionalId: "2c7641c1-0280-4847-b36e-e89004a58534",
+    startDate: "2026-11-01",
+    totalDays: 15,
+    bannerArt: "/events/abraham-banner-art.png",
+    bookUrl: null,
+    printBooksPath: null,
+    dateRangeLabel: "November 1–15",
+    intro:
+      "Walk through Genesis 11–25 with Bible Buddies around the world - the call Abraham answered, the years he waited, the covenant God kept, and the mistakes he made on the way. A new day opens every day through the first half of November. Join whenever you like and study each day when it suits you, then meet the community in the daily discussion.",
+    howItWorks: [
+      "A new devotional unlocks each day. Read or listen, read the matching chapter of Genesis, take the trivia, and answer the daily discussion question—whenever you have time.",
+      "We read the same chapter of Abraham's story each day and meet in the discussion afterward.",
+    ],
+    joinedLine: "walk through Abraham's story together",
+    evergreenLine: "All 15 days are open. Go at your own pace, one chapter at a time.",
   },
 ];
 
@@ -42,9 +87,25 @@ export function getCommunityEvent(slug: string) {
   return COMMUNITY_EVENTS.find((event) => event.slug === slug) || null;
 }
 
-/** The event shown on the group page right now - newest first. */
-export function getActiveCommunityEvent() {
-  return COMMUNITY_EVENTS[0] || null;
+/**
+ * The event the banner, the home card and the daily popup speak for. A study
+ * that is running always wins; otherwise the one starting soonest, so the next
+ * study takes over the moment the current one finishes. Never guesses from
+ * array order - that broke the day Abraham was added below Proverbs.
+ */
+export function getActiveCommunityEvent(now = new Date()) {
+  const withState = COMMUNITY_EVENTS.map((event) => ({ event, state: getCommunityEventState(event, now) }));
+  const live = withState.find((entry) => entry.state.phase === "live");
+  if (live) return live.event;
+
+  const upcoming = withState
+    .filter((entry) => entry.state.phase === "countdown")
+    .sort((a, b) => a.event.startDate.localeCompare(b.event.startDate));
+  if (upcoming.length) return upcoming[0].event;
+
+  // All finished: the most recent one is the one people are still reading.
+  const finished = [...COMMUNITY_EVENTS].sort((a, b) => b.startDate.localeCompare(a.startDate));
+  return finished[0] || null;
 }
 
 /** Today's calendar date in Europe/Berlin, as {y, m, d}. */

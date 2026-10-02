@@ -5058,3 +5058,19 @@ body.bb-modal-scroll-locked {
 @media (prefers-reduced-motion: reduce) {
   .bb-continue-pulse { animation: none; }
 }
+
+/* The study that starts next (Louis, 2026-10-02): grey on the Plans grid, and
+   full colour when the cursor is on it. Hand-written rather than Tailwind
+   hover utilities so it cannot depend on a class being generated, and gated on
+   a real pointer so a tap on a phone never leaves the card stuck in colour. */
+.bb-study-card-next-up { filter: grayscale(1); }
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  .bb-study-card-next-up:hover {
+    filter: grayscale(0);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bb-study-card-next-up:hover { transform: none; }
+}
