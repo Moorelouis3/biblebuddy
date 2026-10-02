@@ -6515,3 +6515,7 @@ Next up: Ezekiel 5
 ## 2026-10-02T09:00:58Z (hourly chapter notes run)
 Chapter: Ezekiel 5 | Duration: 14 min | Sections: 5 | Cards: 36 | Status: pass
 Next up: Ezekiel 6
+
+## 2026-10-02T09:55:00Z (hourly chapter notes run)
+Chapter: Ezekiel 6 | Duration: 9 min | Sections: 4 | Cards: 28 | Status: pass
+Next up: Ezekiel 7
