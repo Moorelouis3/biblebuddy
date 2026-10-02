@@ -56,6 +56,7 @@ function isNewTestamentDay(day: (typeof GENESIS_BIBLE_IN_ONE_YEAR_SERIES)[number
 
 const FEATURED_STUDY_ORDER = [
   "The Wisdom of Proverbs",
+  "The Obedience of Abraham",
   "Women of the Bible",
   "The Calling of Moses",
   "The Heart of David",
@@ -67,6 +68,23 @@ const FEATURED_STUDY_ORDER = [
   "The Transforming of Paul",
   "The Testing of Joseph",
 ];
+/**
+ * The study that goes live next (2026-10-01, Louis). It sits beside Proverbs
+ * in full colour rather than greyed out like the other locked studies, with a
+ * countdown, so people can see what is coming.
+ */
+const NEXT_UP_STUDY_TITLE = "The Obedience of Abraham";
+const NEXT_UP_START_DATE = "2026-11-01";
+
+/** Whole days from the Berlin date today until the start date. */
+function daysUntilNextUpStudy() {
+  const berlinToday = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Berlin" }).format(new Date());
+  const [ty, tm, td] = berlinToday.split("-").map(Number);
+  const [sy, sm, sd] = NEXT_UP_START_DATE.split("-").map(Number);
+  const diff = Date.UTC(sy, sm - 1, sd) - Date.UTC(ty, tm - 1, td);
+  return Math.round(diff / 86400000);
+}
+
 const OWNER_EMAIL = "moorelouis3@gmail.com";
 const KEEP_DEVOTIONAL_TITLES = new Set(FEATURED_STUDY_ORDER);
 const FEATURED_STUDY_ORDER_INDEX = new Map(
@@ -358,7 +376,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
       return "/heartofdaviddevotional.png";
     }
     if (title === "The Obedience of Abraham") {
-      return "/TheobedienceofAbraham.png";
+      return "/obedienceofabraham28day.png";
     }
     if (title === "The Promise Through Isaac") {
       return "/ThePromiseThroughIsaac.png";
@@ -1118,17 +1136,30 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                 devotional.title === "The Wisdom of Proverbs" ||
                 (devotional.title === "Women of the Bible" && isOwnerUser);
               const isLockedPreview = !isPlanAvailable;
+              // The next study keeps its colour and gets a countdown, so it
+              // reads as "this is coming" rather than "this is switched off".
+              const isNextUp = devotional.title === NEXT_UP_STUDY_TITLE;
+              const daysToStart = isNextUp ? daysUntilNextUpStudy() : 0;
               const card = (
                 <div className={`bb-bible-study-card group flex h-full flex-col rounded-[18px] border p-2.5 shadow-sm transition-all duration-200 sm:p-3 ${
                   isComplete
                     ? "border-[var(--bb-accent,#2f7fe8)] bg-[var(--bb-accent-soft,#eaf5ff)]"
-                    : isLockedPreview
-                      ? "border-[var(--bb-card-border,#dbe7f4)] bg-slate-100 grayscale opacity-65"
-                      : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] hover:-translate-y-1 hover:shadow-xl"
-                }`}> 
+                    : isNextUp
+                      ? "border-[#cfa147] bg-[var(--bb-card,#ffffff)]"
+                      : isLockedPreview
+                        ? "border-[var(--bb-card-border,#dbe7f4)] bg-slate-100 grayscale opacity-65"
+                        : "border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] hover:-translate-y-1 hover:shadow-xl"
+                }`}>
                   <div className="relative">
                     {getDevotionalVisual(devotional)}
-                    {isLockedPreview ? (
+                    {isNextUp ? (
+                      <span
+                        className="absolute right-2 top-2 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[#221503] shadow-sm"
+                        style={{ background: "linear-gradient(180deg, #f0d489 0%, #cfa147 100%)" }}
+                      >
+                        {daysToStart > 1 ? `${daysToStart} days` : daysToStart === 1 ? "Tomorrow" : "Starts today"}
+                      </span>
+                    ) : isLockedPreview ? (
                       <span className="absolute right-2 top-2 rounded-full bg-slate-700 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-white shadow-sm">
                         Coming Soon
                       </span>
@@ -1145,6 +1176,11 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                     <p className="mt-1 text-[11px] font-bold leading-tight text-[var(--bb-text-muted,#6b7280)] sm:text-xs">
                       {getStudyScriptureRange(devotional.title) ?? `${devotional.total_days} day devotional`}
                     </p>
+                    {isNextUp ? (
+                      <p className="mt-1 text-[11px] font-black uppercase tracking-wide text-[#a57d2c] sm:text-xs">
+                        {daysToStart > 0 ? `Starts 1 November` : "Starting today"}
+                      </p>
+                    ) : null}
                     <div className="mt-auto pt-3">
                       <div className="h-2 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#f8fbff)]">
                         <div
