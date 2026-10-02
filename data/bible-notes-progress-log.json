@@ -48745,6 +48745,75 @@
           "at": "2026-10-02T16:59:02Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 14,
+      "startedAt": "2026-10-02T17:46:34Z",
+      "finishedAt": "2026-10-02T18:02:28Z",
+      "durationMinutes": 15.9,
+      "sections": 8,
+      "cards": 31,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Repo started in a detached HEAD state whose tip matched origin/main exactly, while the local main branch ref was stale (51 commits diverged each way, the same recurring environment issue noted in prior runs); git fetch origin main confirmed no divergence between HEAD and origin/main, and a new branch bible-notes-work was created from HEAD to commit from, leaving the stale local main ref untouched, no data at risk. npm install ran clean (596 packages, fresh clone, 25s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Ezekiel 13, confirmed by no ezekielFourteen* file in lib/ and no chapter 14 wiring call past chapter 13 in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for Ezekiel 14 (23 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 14 opens with elders of Israel sitting before Ezekiel while carrying idols hidden in their own hearts, and God's refusal to be enquired of by a divided heart (1-3); God's direct answer to anyone, Israelite or stranger, who comes to a prophet with hidden idols, the call to repent, and the warning that such a person becomes a sign and a proverb (4-8); the hard case of the deceived prophet, where asker and false prophet share the same guilt, aimed at keeping Israel from going astray rather than destruction for its own sake (9-11); the first of four hypothetical judgments on a sinning land, famine severe enough to break the staff of bread, where even Noah, Daniel, and Job could only save themselves, not their own sons and daughters (12-14); the same refrain repeated for noisome beasts (15-16), the sword (17-18), and pestilence (19-20), each with the wording shifted slightly and the names Noah, Daniel, and Job bookending the list on either end; and the chapter's turn to Jerusalem by name, where the four judgments apply together, a remnant of sons and daughters is deliberately preserved and brought out so the exiles can see Jerusalem's sin firsthand, be strangely comforted by finally understanding why, and know that God does nothing without cause (21-23). Split into 8 sections (1-3, 4-8, 9-11, 12-14, 15-16, 17-18, 19-20, 21-23), matching the chapter's 23 verses exactly with no gaps. Density about 1.35 cards/verse (23 verses, 31 cards), deliberately on the leaner side per the style spec's section 12 guidance for a chapter built on a repeated four-part refrain, teaching each judgment's distinct wording and the chapter's own literary bookend structure once rather than padding three near-identical restatements of the same Noah/Daniel/Job point. scripts/check_bible_note_style.py was clean on the first mechanical pass (31 cards, 0 problems: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using the book emoji). A manual section 13 eye check caught 8 bullets that restated their body line almost word for word, which the mechanical checker cannot detect; all 8 were rewritten to carry a genuinely separate idea, then the style checker, parser check, and tsc were all re-run clean. The eye check otherwise confirmed every card opens with one of the four approved moves, defines its key terms in plain language (enquired, estranged, sojourn, stumblingblock, noisome, the staff of bread idiom, the oath formula as I live saith the Lord GOD), and closes each card on meaning rather than mechanics. Every title verified by hand as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('ezekiel', 14) (8/8 sections, verse ranges 1-3/4-8/9-11/12-14/15-16/17-18/19-20/21-23 with no gaps, 31 total cards, text rendered verbatim). npx tsc --noEmit -p . came back clean (no output, exit code 0) both before and after the bullet fixes. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/ezekielFourteenSource.ts, the ezekiel condition in preserveExactPhraseBodies extended from chapters 1-13 to include chapter 14, new function applyPersonalEzekielFourteenStudySections() added with its own replaceStudySectionsForBookRange(\"ezekiel\", 14, 14, EZEKIEL_FOURTEEN_PERSONAL_SECTIONS) call, invoked right after applyPersonalEzekielThirteenStudySections()). Logged in docs/BIBLE_BUDDY_NOTES_PROGRESS.md with running totals updated, and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Ezekiel 15.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-02T17:47:42Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 14 (new chapter, forward progress mode)",
+          "at": "2026-10-02T17:47:42Z"
+        },
+        {
+          "name": "KJV text fetched (Ezekiel 14, 23 verses, from GitHub raw mirror)",
+          "at": "2026-10-02T17:48:00Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-10-02T17:48:06Z"
+        },
+        {
+          "name": "reference implementation and wiring pattern reviewed (genesisThirtyOneSource.ts, ezekielThirteenSource.ts, bibleReaderStudyNotes.ts)",
+          "at": "2026-10-02T17:52:57Z"
+        },
+        {
+          "name": "source file written: lib/ezekielFourteenSource.ts (8 sections, 31 cards)",
+          "at": "2026-10-02T17:54:03Z"
+        },
+        {
+          "name": "style checker clean on first run",
+          "at": "2026-10-02T17:54:03Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-02T17:54:29Z"
+        },
+        {
+          "name": "parser check passed: 8 sections, 31 cards, matches design",
+          "at": "2026-10-02T17:54:59Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-02T17:57:10Z"
+        },
+        {
+          "name": "section 13 eye checklist pass: fixed 8 bullets that restated body lines near verbatim, re-verified style checker/parser/tsc all clean",
+          "at": "2026-10-02T17:59:42Z"
+        },
+        {
+          "name": "git state checked: detached HEAD matched origin/main exactly after fetch, local main ref stale/diverged (known recurring issue), created bible-notes-work branch from HEAD to commit safely",
+          "at": "2026-10-02T18:01:54Z"
+        },
+        {
+          "name": "progress files updated: docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals",
+          "at": "2026-10-02T18:01:54Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json entry drafted, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + totals updated",
+          "at": "2026-10-02T18:02:53Z"
+        }
+      ]
     }
   ]
 }
