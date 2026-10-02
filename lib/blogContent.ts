@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-13-explained",
+    title: "Proverbs 13 Explained: The Mouth, the Rod, and True Riches",
+    description:
+      "Proverbs 13 explained verse by verse: the wise son, the mouth that keeps life, the paradox of riches, and why withholding correction is called a failure to love.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-13-explained",
+    publishedAt: "2026-10-02",
+    readTime: "15 min read",
+    image: "/blog-banners/proverbs-13-explained.jpg",
+    groupPost: {
+      title: "Proverbs 13 Explained 📖",
+      content:
+        "A man who acts rich and owns nothing.\nA man who looks poor and holds real wealth.\n\n📌 This chapter names life or death 4 times in 25 verses.\n\n📖 Keeping your mouth keeps your life.\n📖 Hope deferred makes the heart sick.\n📖 Sparing the rod is called hating your son.\n\nNew article on:\n🟢 what Proverbs 13:7 means by **rich yet nothing**\n🟢 why the poor man never hears a **rebuke**\n🟢 what **betimes** actually means in verse 24\n\nWhich verse from this chapter caught you off guard? 🙏",
+    },
+  },
+  {
     slug: "proverbs-12-explained",
     title: "Proverbs 12 Explained: Roots That Hold and Lips That Snare",
     description:
