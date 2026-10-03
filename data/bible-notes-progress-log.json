@@ -50230,6 +50230,63 @@
           "at": "2026-10-03T17:58:16Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 39,
+      "startedAt": "2026-10-03T18:46:26Z",
+      "finishedAt": "2026-10-03T18:58:50Z",
+      "durationMinutes": 12,
+      "sections": 6,
+      "cards": 46,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter, normal forward progress (priority queue and style-redo backlog both confirmed empty). The chapter closes the Gog of Magog oracle: a second prophecy against Gog repeating his defeat on the mountains of Israel, disarmed in both hands and left exposed and unburied on the open field because God has spoken it (1-5); fire sent on Magog and the careless isles so the heathen know the LORD, Israel's holy name no longer polluted, and Gog's own abandoned weapons burning as Israel's fuel for seven years while Israel plunders the plunderers in return (6-10); Gog's army given an actual burial plot, the well traveled valley east of the Dead Sea renamed the Valley of Hamongog (multitude of Gog), a dedicated seven month, full time search for every scattered bone so the land can be ritually cleansed, and a nearby city renamed Hamonah for the same reason (11-16); God's sacrifice for the fowls and beasts of the field, a deliberately graphic reversal of Israel's own sacrificial system, feasting on the mighty and the princes of the earth compared to the prime fatlings of Bashan, and filled at God's own table with the army's horses and chariots (17-20); the nations watching God's public glory and executed judgment, Israel learning the same refrain for itself, and God correcting any watching nation's assumption that the exile proved God weak rather than Israel sinful (21-24); and the closing turn to mercy, God's own jealousy for His holy name now restoring rather than judging, the captivity of Jacob reversed, the shame of exile already borne before healing arrived, a complete regathering with none left behind, and the chapter's and oracle's end on relationship as God pours out His spirit on the house of Israel and promises never to hide His face again (25-29). 6 sections of 4-6 verses, 46 cards for 29 verses (about 1.59 cards per verse), consistent with the density set by Ezekiel 38 (about 1.74). Style checker found 2 problems on the first pass (two closing bullets one word over the eight word ceiling), fixed, then 0 problems clean across all 46 cards. Manual section 13 eye check confirmed every card opens with one of the four approved moves, defines every historical/geographic term in plain language, ties the restored unwalled safety and the dry-bones callback back to chapters 36-38, closes on meaning, and confirmed all 46 titles are unique exact contiguous KJV substrings. Parser check passed via getBibleReaderStudySections('ezekiel', 39): 6/6 sections, verse ranges 1-5/6-10/11-16/17-20/21-24/25-29 with no gaps, 46 total cards rendering verbatim. npx tsc --noEmit -p . clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 39, replaceStudySectionsForBookRange call added after chapter 38). Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Ezekiel 40.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone)",
+          "at": "2026-10-03T18:46:26Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 39 (new chapter, normal forward progress; priority queue and redo backlog both empty)",
+          "at": "2026-10-03T18:46:26Z"
+        },
+        {
+          "name": "KJV text fetched (Ezekiel 39, 29 verses, aruljohn mirror)",
+          "at": "2026-10-03T18:47:20Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill read in full",
+          "at": "2026-10-03T18:47:20Z"
+        },
+        {
+          "name": "reference implementation (lib/ezekielThirtyEightSource.ts) read for format",
+          "at": "2026-10-03T18:47:20Z"
+        },
+        {
+          "name": "source file written: lib/ezekielThirtyNineSource.ts (46 cards, 6 sections)",
+          "at": "2026-10-03T18:53:45Z"
+        },
+        {
+          "name": "style checker: 2 problems on first pass (overlong bullets), fixed, clean on second pass",
+          "at": "2026-10-03T18:53:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 39, replaceStudySectionsForBookRange call added)",
+          "at": "2026-10-03T18:54:16Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 46 cards, no gaps, text verbatim)",
+          "at": "2026-10-03T18:54:16Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-03T18:54:37Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-03T18:58:50Z"
+        }
+      ]
     }
   ]
 }
