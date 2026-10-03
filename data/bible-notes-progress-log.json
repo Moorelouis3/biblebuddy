@@ -49266,6 +49266,59 @@
           "at": "2026-10-03T01:57:49Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 23,
+      "startedAt": "2026-10-03T02:46:26Z",
+      "finishedAt": "2026-10-03T03:01:36Z",
+      "durationMinutes": 15.17,
+      "sections": 12,
+      "cards": 54,
+      "verses": 49,
+      "notes": "Scheduled hourly Bible Note Writer Agent run (new chapter, normal forward progress, not a style redo). npm install ran clean (596 packages, fresh clone, 26s). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: []), so the target was determined by scanning forward from the last logged chapter (Ezekiel 22) and confirming no ezekielTwentyThree* file existed in lib/ and no chapter 23 wiring existed in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for Ezekiel 23 (49 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 23 is the extended allegory of two sisters, Aholah (Samaria, the northern kingdom) and Aholibah (Jerusalem, the southern kingdom), both daughters of one mother who played the harlot in Egypt from their youth (1-4); Aholah's doting on Assyria's officers and horsemen, her defilement by their idols, and her historical destruction in the Assyrian conquest of Samaria (5-10); Aholibah watching her sister's fall and growing more corrupt instead of more careful (11-13); Aholibah's pursuit of Babylon through painted wall murals of Chaldean soldiers, her own initiative in sending messengers, the figurative treaty sealed in the bed of love, and her eventual disgust with that ally too (14-18); her strange return to longing for Egypt, the crude paramour imagery, and the deliberate echo of the breast bruising image from verse three (19-21); God's judgment pronounced through the very allies she once loved, named specifically (Pekod, Shoa, Koa, the Chaldeans and Assyrians), with siege equipment, mutilation, and fire detailed as the sentence (22-27); the cause restated plainly, that political alliance was spiritual adultery and the real charge was forgetting God (28-31); the cup motif, drinking her sister's exact measure of judgment, breaking the sherds, and the self destructive grief that echoes the chapter's opening body imagery (32-35); both sisters judged together by name, including the detail of child sacrifice to Molech happening the same day as temple worship in God's own house (36-39); the entertainment of foreign men with incense and oil meant for God's worship, and outsiders as distant as the Sabeans drawn into the corruption (40-42); the verdict named, an old and hardened pattern judged by a real instrument of justice (43-45); and the sentence carried out, stoning as the legal penalty for adultery, public burning, the stated purpose of warning other women, and the book's signature closing refrain, ye shall know that I am the Lord GOD (46-49). Chunked into 12 sections of 3-6 verses, landing at roughly 1.1 cards per verse given how repetitive this chapter's judgment refrains are across both sisters (per the style spec's section 12 guidance for chapters that resist teaching, favoring real distinct teaching points over padded restatement). Style checker (scripts/check_bible_note_style.py) flagged one body line count overage on the first pass (9 lines on the Aholah/Aholibah name meaning card, one over the ceiling), fixed by tightening to 6 lines, then clean across all 54 cards, 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines every hard or archaic term in plain language (pourtrayed, vermilion, nativity, paramours, inordinate, alienated, sherds, Sabeans), is honest where identification is scholarly rather than certain (the Aholah/Aholibah name meanings, the Pekod/Shoa/Koa place names, both flagged with many scholars believe or likely), and closes on meaning rather than mechanics; confirmed all 54 titles are unique and none repeat a Part 5 forbidden opening phrase. Parser check passed via getBibleReaderStudySections('ezekiel', 23): 12/12 sections, verse ranges 1-4/5-10/11-13/14-18/19-21/22-27/28-31/32-35/36-39/40-42/43-45/46-49 with no gaps, 54 total cards rendering verbatim. npx tsc --noEmit -p . came back clean (no output, exit code 0). Wired into lib/bibleReaderStudyNotes.ts (import added, replaceStudySectionsForBookRange(\"ezekiel\", 23, 23, EZEKIEL_TWENTY_THREE_PERSONAL_SECTIONS) call added directly after the chapter 22 call, the ezekiel condition in preserveExactPhraseBodies extended to include chapter 23). Logged here with full step timestamps, and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Ezekiel 24.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-03T02:46:26Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 23 (normal forward progress, new chapter, priority queue and style-redo backlog both empty)",
+          "at": "2026-10-03T02:47:00Z"
+        },
+        {
+          "name": "KJV text fetched for Ezekiel 23 (49 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-10-03T02:47:25Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) and reference implementation reviewed (lib/genesisThirtyOneSource.ts, lib/ezekielTwentyTwoSource.ts)",
+          "at": "2026-10-03T02:50:00Z"
+        },
+        {
+          "name": "source file written (lib/ezekielTwentyThreeSource.ts, 12 sections, 54 cards)",
+          "at": "2026-10-03T02:56:00Z"
+        },
+        {
+          "name": "style checker clean (1 problem fixed on first pass, then 0 problems)",
+          "at": "2026-10-03T02:56:35Z"
+        },
+        {
+          "name": "wired into reader (import, replaceStudySectionsForBookRange call, preserveExactPhraseBodies range extended to chapter 23)",
+          "at": "2026-10-03T02:57:00Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('ezekiel', 23): 12 sections, 54 cards, verbatim)",
+          "at": "2026-10-03T02:57:42Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-03T02:58:03Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json, SESSION_LOG.md)",
+          "at": "2026-10-03T03:01:36Z"
+        }
+      ]
     }
   ]
 }
