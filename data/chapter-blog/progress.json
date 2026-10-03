@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-10-03T06:42:23.960Z",
-  "nextChapter": "Proverbs 21",
+  "updatedAt": "2026-10-03T10:33:29.794Z",
+  "nextChapter": "Proverbs 22",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -394,21 +394,29 @@
     },
     "proverbs-18-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-03T02:33:33.214Z",
-      "committedAt": "2026-10-03T02:42:03.502Z"
+      "committedAt": "2026-10-03T02:42:03.502Z",
+      "publishedAt": "2026-10-03T10:33:29.679Z"
     },
     "proverbs-19-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-03T04:33:21.380Z",
-      "committedAt": "2026-10-03T04:42:34.005Z"
+      "committedAt": "2026-10-03T04:42:34.005Z",
+      "publishedAt": "2026-10-03T10:33:29.757Z"
     },
     "proverbs-20-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-03T06:33:51.908Z",
-      "committedAt": "2026-10-03T06:42:23.959Z"
+      "committedAt": "2026-10-03T06:42:23.959Z",
+      "publishedAt": "2026-10-03T10:33:29.794Z"
+    },
+    "proverbs-21-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-03T10:33:12.925Z"
     }
   },
   "priorityBooks": [
