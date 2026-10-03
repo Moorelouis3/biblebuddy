@@ -26,31 +26,23 @@ cover's own colours. Nothing about the cover art was changed.
 
 ---
 
-## Module 2 — Standard Three Images & Text
+## Module 2 — Standard Image Header with Text
 
 **Headline**
 
-```
-See Inside the Study
-```
-
+\
 **Body**
 
-```
-Explore the chapter, consider its connections to Scripture, and work through reflection questions, a practical action and prayer.
-```
+\
+**Image:**  — 1940 × 1200 px
 
-**Images** (1200 × 1200 px each, from the published 446-page interior):
+Three real pages side by side: Today's Reading (p13), Reflection Questions
+(p23) and Today's Prayer (p25) of the Second Edition interior, rendered at 3x
+and cropped to the top of each page.
 
-| File | Page | Shows |
-|---|---|---|
-| `module-2-img-1-reading.jpg` | p. 12 | Day 1 — Today's Reading, Proverbs 1, Before You Read |
-| `module-2-img-2-reflection.jpg` | p. 20 | Day 1 — Reflection Questions |
-| `module-2-img-3-prayer.jpg` | p. 22 | Day 1 — Today's Prayer |
-
-These are real pages, rendered from the interior PDF at 3× and cropped to the
-top of each page so the headings stay readable on a phone. No page text was
-altered, retyped or generated.
+One wide image rather than the three-image module on purpose: that module puts
+separate text under each image, which would have meant splitting the approved
+sentence into three captions nobody wrote.
 
 ---
 
