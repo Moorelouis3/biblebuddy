@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-18-explained",
+    title: "Proverbs 18 Explained: Deep Waters and a True Friend",
+    description:
+      "Proverbs 18 explained verse by verse: a man who isolates himself, two towers of safety, hearing both sides first, and a friend closer than a brother.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-18-explained",
+    publishedAt: "2026-10-03",
+    readTime: "16 min read",
+    image: "/blog-banners/proverbs-18-explained.jpg",
+    groupPost: {
+      title: "Proverbs 18 Explained 📖",
+      content:
+        "Some days you want to talk it through.\nOther days you just want to be left alone.\n\n📌 Proverbs 18 names two towers of safety, and only one is actually safe.\n\n📖 The tongue holds death and life in the same breath.\n📖 A rich man's wealth is only a strong wall in his own mind.\n📖 A friend can stick closer than a brother.\n\nNew article on:\n🟢 whether verse 1 is really praising **isolation**\n🟢 what a gift in verse 16 is actually **buying**\n🟢 why finding a wife in verse 22 is not a verdict on **singleness**\n\nWhich tower are you actually running to this week? 🙏",
+    },
+  },
+  {
     slug: "why-christians-leave-the-faith",
     title: "Why Do Christians Leave the Faith?",
     description:
