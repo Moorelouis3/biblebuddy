@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-19-explained",
+    title: "Proverbs 19 Explained: The Counsel of the LORD That Stands",
+    description:
+      "Proverbs 19 explained verse by verse: integrity over cleverness, a false witness warned twice, mercy as a loan to the LORD, and the counsel that stands.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-19-explained",
+    publishedAt: "2026-10-03",
+    readTime: "13 min read",
+    image: "/blog-banners/proverbs-19-explained.jpg",
+    groupPost: {
+      title: "Proverbs 19 Explained 📖",
+      content:
+        "A poor man with integrity beats a rich liar.\nThat ranking opens this whole chapter.\n\n📌 Proverbs 19 warns twice: a false witness will not go free.\n\n📖 Wealth buys friends. Poverty loses them fast.\n📖 Mercy to the poor is called lending to the LORD.\n📖 Many plans form in your heart, but His counsel stands.\n\nNew article on:\n🟢 why a **false witness** gets warned about twice\n🟢 what it means to **lend to the LORD**\n🟢 why a servant ruling a prince is called **unseemly**\n\nWhich plan are you most sure of this week? 🙏",
+    },
+  },
+  {
     slug: "proverbs-18-explained",
     title: "Proverbs 18 Explained: Deep Waters and a True Friend",
     description:
