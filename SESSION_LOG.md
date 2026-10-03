@@ -6591,3 +6591,7 @@ Next up: Ezekiel 23
 ## 2026-10-03T03:01:36Z (hourly chapter notes run)
 Chapter: Ezekiel 23 | Duration: 15.17 min | Sections: 12 | Cards: 54 | Status: pass
 Next up: Ezekiel 24
+
+## 2026-10-03T03:59:02Z (hourly chapter notes run)
+Chapter: Ezekiel 24 | Duration: 12.15 min | Sections: 6 | Cards: 30 | Status: pass
+Next up: Ezekiel 25
