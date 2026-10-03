@@ -6583,3 +6583,7 @@ Next up: Ezekiel 21
 ## 2026-10-03T00:54:19Z (hourly chapter notes run)
 Chapter: Ezekiel 21 | Duration: 7.6 min | Sections: 7 | Cards: 46 | Status: pass
 Next up: Ezekiel 22
+
+## 2026-10-03T01:57:49Z (hourly chapter notes run)
+Chapter: Ezekiel 22 | Duration: 10.75 min | Sections: 6 | Cards: 45 | Status: pass
+Next up: Ezekiel 23
