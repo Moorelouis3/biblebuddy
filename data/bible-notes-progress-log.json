@@ -49510,6 +49510,59 @@
           "at": "2026-10-03T05:59:20Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 27,
+      "startedAt": "2026-10-03T06:46:09Z",
+      "finishedAt": "2026-10-03T06:57:31Z",
+      "durationMinutes": 11.4,
+      "sections": 9,
+      "cards": 36,
+      "verses": 36,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: []), so this was normal forward progress after Ezekiel 26, confirmed by no ezekielTwentySeven* file in lib/ and no chapter 27 wiring call past chapter 26 in lib/bibleReaderStudyNotes.ts. npm install ran clean (596 packages, fresh clone, 29s). Fetched real KJV text for Ezekiel 27 (36 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 27 continues the oracle against Tyre begun in chapter 26, cast as the funeral lamentation God told Ezekiel to sing for her in verse 2, and built around one extended metaphor: Tyre pictured as a magnificent trading ship, built from the finest materials the ancient world had (fir from Senir, cedar masts from Lebanon, oaks of Bashan for oars, ivory benches from Chittim, a sail of fine Egyptian linen, a deck covered in costly purple dye), crewed and defended by hired hands from neighboring cities (Zidon and Arvad as mariners, Gebal as calkers, Persia/Lud/Phut as mercenary soldiers, the Gammadims in her towers) (1-11); then a long merchant list naming trading partners stretching from Tarshish in the far west to Togarmah, Dedan, Syria, Judah and Israel, Damascus, Arabia and Kedar, Sheba and Raamah, and the Mesopotamian cities of Haran, Canneh, Eden, Asshur, and Chilmad, each bringing its own named goods (silver, slaves, horses, ivory, wheat of Minnith, wine of Helbon, spices, gold), showing how the whole known trading world fed into Tyre's wealth (12-25); then the ship metaphor turns to disaster, broken by the east wind out in the open sea, her crew abandoning ship to stand on the shore and mourn her with the recognized ancient customs of loud public grief, dust on the head, shaved heads, and sackcloth, answering her own opening boast (I am of perfect beauty) with a funeral question (what city is like Tyrus) (26-32); and closing with every distant trading partner left astonished and afraid at how completely she fell, ending as a permanent warning rather than a city that could ever be rebuilt (33-36). Chunked into 9 sections (1-3 the lament commanded and Tyre's boast, 4-7 the ship built from the finest materials, 8-11 her hired sailors and soldiers, 12-15 Tarshish to Dedan, 16-19 Syria/Judah/Damascus, 20-25 every nation's goods and her peak glory, 26-28 the east wind breaks the ship, 29-32 the funeral customs and the lament's own question, 33-36 the closing terror and erasure), matching the chapter's 36 verses exactly with no gaps. Density exactly 1.0 cards per verse (36 verses, 36 cards), consistent with the current post style-spec norm set by the immediately preceding chapters (Ezekiel 25 at 1.18, Ezekiel 26 at 1.05) and with the reference implementation lib/genesisThirtyOneSource.ts (55 verses, 56 cards, ~1.02). scripts/check_bible_note_style.py found 4 mechanical problems on the first pass (one banned hedge word, 'quite', and three bullets over the 8 word limit) and 0 after fixes, across all 36 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using \ud83d\udcd6. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (situate, isles, borders, Senir as another name for Hermon, Bashan, Chittim as likely Cyprus, Elishah, calkers, the Gammadims as a disputed identity, Tarshish, the slave trade in Javan/Tubal/Meshech, Togarmah, Minnith, Pannag flagged honestly as a word scholars still debate, Helbon, cassia and calamus, Kedar tracing to Ishmael, Sheba, Haran as Abraham's family's former home, replenished, great waters, the east wind as a recurring biblical picture of judgment, sackcloth, a lamentation), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and also fixed one mismatched title emoji by eye (swapped a farming emoji for a ship emoji on the Zidon and Arvad mariners card) that the mechanical checker could not catch. Every title verified by hand as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('ezekiel', 27) (9/9 sections, verse ranges 1-3/4-7/8-11/12-15/16-19/20-25/26-28/29-32/33-36 with no gaps, 36 total cards, text rendered verbatim). npx tsc --noEmit -p . came back clean (no output, exit code 0). Wired into lib/bibleReaderStudyNotes.ts (import added for lib/ezekielTwentySevenSource.ts, the ezekiel condition in preserveExactPhraseBodies extended to include chapter 27, replaceStudySectionsForBookRange(\"ezekiel\", 27, 27, EZEKIEL_TWENTY_SEVEN_PERSONAL_SECTIONS) call added directly after the chapter 26 call inside the existing chapter 17-26 wiring function). Logged in data/bible-notes-progress-log.json with step timestamps, and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Ezekiel 28.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-03T06:46:35Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 27 (forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-03T06:47:01Z"
+        },
+        {
+          "name": "KJV text fetched (Ezekiel 27, 36 verses, raw.githubusercontent.com)",
+          "at": "2026-10-03T06:47:30Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-03T06:48:30Z"
+        },
+        {
+          "name": "source file written (lib/ezekielTwentySevenSource.ts, 9 sections, 36 cards)",
+          "at": "2026-10-03T06:53:00Z"
+        },
+        {
+          "name": "style checker clean (0 problems after fixing 1 hedge word and 3 overlong bullets, 36 cards)",
+          "at": "2026-10-03T06:55:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-03T06:55:20Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 36 cards, no throw)",
+          "at": "2026-10-03T06:55:41Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-03T06:55:57Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json, SESSION_LOG.md)",
+          "at": "2026-10-03T06:57:31Z"
+        }
+      ]
     }
   ]
 }
