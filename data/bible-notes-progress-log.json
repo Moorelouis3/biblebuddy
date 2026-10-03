@@ -49864,6 +49864,59 @@
           "at": "2026-10-03T12:00:00Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 33,
+      "startedAt": "2026-10-03T12:46:43Z",
+      "finishedAt": "2026-10-03T12:57:53Z",
+      "durationMinutes": 11,
+      "sections": 11,
+      "cards": 35,
+      "verses": 33,
+      "notes": "New chapter, normal forward progress (both priority queue and style-redo backlog were empty). Watchman passage, individual responsibility, news of Jerusalem's fall arriving, and the land claim by the survivors left in Judah.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-03T12:46:43Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 33 (new chapter, normal forward progress)",
+          "at": "2026-10-03T12:46:43Z"
+        },
+        {
+          "name": "KJV text fetched from GitHub raw mirror",
+          "at": "2026-10-03T12:53:00Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-10-03T12:54:00Z"
+        },
+        {
+          "name": "source file written (lib/ezekielThirtyThreeSource.ts)",
+          "at": "2026-10-03T12:56:30Z"
+        },
+        {
+          "name": "style checker clean",
+          "at": "2026-10-03T12:57:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts",
+          "at": "2026-10-03T12:57:20Z"
+        },
+        {
+          "name": "parser check passed (11 sections, 35 cards)",
+          "at": "2026-10-03T12:57:34Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-03T12:57:34Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-10-03T12:57:53Z"
+        }
+      ]
     }
   ]
 }

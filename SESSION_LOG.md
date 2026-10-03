@@ -6627,3 +6627,7 @@ Next up: Ezekiel 32
 ## 2026-10-03T12:00:00Z (hourly chapter notes run)
 Chapter: Ezekiel 32 | Duration: 14 min | Sections: 11 | Cards: 34 | Status: pass
 Next up: Ezekiel 33
+
+## 2026-10-03T12:57:53Z (hourly chapter notes run)
+Chapter: Ezekiel 33 | Duration: 11 min | Sections: 11 | Cards: 35 | Status: pass
+Next up: Ezekiel 34
