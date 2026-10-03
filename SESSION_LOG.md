@@ -6659,3 +6659,7 @@ Next up: Ezekiel 40
 ## 2026-10-03T20:02:11Z (hourly chapter notes run)
 Chapter: Ezekiel 40 | Duration: 16 min | Sections: 10 | Cards: 47 | Status: pass
 Next up: Ezekiel 41
+
+## 2026-10-03T20:55:47Z (hourly chapter notes run)
+Chapter: Ezekiel 41 | Duration: 10 min | Sections: 6 | Cards: 30 | Status: pass
+Next up: Ezekiel 42
