@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-22-explained",
+    title: "Proverbs 22 Explained: A Good Name and the Child You Train",
+    description:
+      "Proverbs 22 explained verse by verse: a good name over riches, training up a child, the rich and poor meet together, and the landmark you must not move.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-22-explained",
+    publishedAt: "2026-10-03",
+    readTime: "17 min read",
+    image: "/blog-banners/proverbs-22-explained.jpg",
+    groupPost: {
+      title: "Proverbs 22 Explained 📖",
+      content:
+        "A good name is worth more than gold.\nThat is only the opening line.\n\n📌 Proverbs 22 keeps asking: what did you actually build, and what did you just borrow?\n\n📖 The rich and poor meet together, made by the same LORD.\n📖 Train up a child in the way he should go.\n📖 Remove not the ancient landmark your fathers set.\n\nNew article on:\n🟢 whether **train up a child** is really a guarantee\n🟢 what it costs to **strike hands** as surety for a debt\n🟢 why moving a boundary stone mattered enough to curse it\n\nWhat line have you been quietly nudging lately? 🙏",
+    },
+  },
+  {
     slug: "proverbs-21-explained",
     title: "Proverbs 21 Explained: The King's Heart and the LORD Who Weighs It",
     description:
