@@ -85,6 +85,7 @@
     "baseline-browser-mapping": "^2.10.20",
     "eslint": "^9",
     "eslint-config-next": "16.0.5",
+    "pdf-to-img": "^7.0.0",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
     "typescript": "^5"
