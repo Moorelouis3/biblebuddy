@@ -6607,3 +6607,7 @@ Next up: Ezekiel 27
 ## 2026-10-03T06:55:57Z (hourly chapter notes run)
 Chapter: Ezekiel 27 | Duration: 9.8 min | Sections: 9 | Cards: 36 | Status: pass
 Next up: Ezekiel 28
+
+## 2026-10-03T07:58:15Z (hourly chapter notes run)
+Chapter: Ezekiel 28 | Duration: 12 min | Sections: 6 | Cards: 33 | Status: pass
+Next up: Ezekiel 29
