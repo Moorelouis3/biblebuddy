@@ -6647,3 +6647,7 @@ Next up: Ezekiel 37
 ## 2026-10-03T16:59:00Z (hourly chapter notes run)
 Chapter: Ezekiel 37 | Duration: 13 min | Sections: 8 | Cards: 48 | Status: pass
 Next up: Ezekiel 38
+
+## 2026-10-03T17:57:23Z (hourly chapter notes run)
+Chapter: Ezekiel 38 | Duration: 11 min | Sections: 6 | Cards: 40 | Status: pass
+Next up: Ezekiel 39

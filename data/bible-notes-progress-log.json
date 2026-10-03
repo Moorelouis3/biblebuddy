@@ -50161,6 +50161,67 @@
           "at": "2026-10-03T17:00:04Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 38,
+      "startedAt": "2026-10-03T17:46:13Z",
+      "finishedAt": "2026-10-03T17:57:23Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 40,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter, normal forward progress (priority queue and style-redo backlog both confirmed empty). The Gog of Magog oracle: God sets His face against Gog, chief prince of Meshech and Tubal, naming his coalition of Magog, Persia, Ethiopia, Libya, Gomer, and Togarmah (1-6); the ironic command to be prepared aimed at an invader God already controls, timed to the latter years against a freshly restored, unwalled Israel (7-9); Gog's private motive exposed as plunder, with Sheba, Dedan, and Tarshish only watching and questioning (10-13); a second prophecy naming the invasion as no surprise to God, its purpose that the heathen may know Him when He is sanctified through it (14-16); Gog tied to earlier prophetic warnings, met with God's fury, jealousy, and a great shaking (17-19); and the closing cosmic judgment, every creature shaking, mountains thrown down, the army destroyed by God directed confusion, pestilence, blood, and the same fire and brimstone once sent on Sodom, so God is magnified, sanctified, and known as the LORD before many nations (20-23). 6 sections of 3-6 verses, 40 cards for 23 verses (about 1.74 cards per verse). Style checker ran clean with 0 problems on the first pass; three lines using the banned stacked clause word rather than were caught and rewritten during drafting before the file was written to disk. Manual section 13 eye check confirmed every card opens with one of the four approved moves, defines every historical and geographic term in plain language, ties restoration callbacks back to chapter 36 and the brother against brother confusion back to Gideon and Jonathan, closes on meaning, and confirmed all 40 titles are unique exact contiguous KJV substrings. Parser check passed via getBibleReaderStudySections('ezekiel', 38): 6/6 sections, verse ranges 1-6/7-9/10-13/14-16/17-19/20-23 with no gaps, 40 total cards rendering verbatim. npx tsc --noEmit -p . clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 38, replaceStudySectionsForBookRange call added after chapter 37). Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Ezekiel 39.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone)",
+          "at": "2026-10-03T17:46:53Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 38 (new chapter, normal forward progress; priority queue and redo backlog both empty)",
+          "at": "2026-10-03T17:46:53Z"
+        },
+        {
+          "name": "git state resolved (detached HEAD matched origin/main; checked out main tracking origin/main)",
+          "at": "2026-10-03T17:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (Ezekiel 38, 23 verses, aruljohn mirror)",
+          "at": "2026-10-03T17:47:16Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-03T17:47:30Z"
+        },
+        {
+          "name": "reference implementation (lib/ezekielThirtySevenSource.ts) read for format",
+          "at": "2026-10-03T17:48:30Z"
+        },
+        {
+          "name": "source file written: lib/ezekielThirtyEightSource.ts (40 cards, 6 sections)",
+          "at": "2026-10-03T17:56:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems first pass)",
+          "at": "2026-10-03T17:56:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 38, replaceStudySectionsForBookRange call added)",
+          "at": "2026-10-03T17:56:20Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 40 cards, no gaps, text verbatim)",
+          "at": "2026-10-03T17:56:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-03T17:56:43Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-03T17:57:23Z"
+        }
+      ]
     }
   ]
 }
