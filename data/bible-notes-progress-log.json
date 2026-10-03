@@ -49160,6 +49160,59 @@
           "at": "2026-10-02T23:58:31Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 21,
+      "startedAt": "2026-10-03T00:46:44Z",
+      "finishedAt": "2026-10-03T00:54:19Z",
+      "durationMinutes": 7.58,
+      "sections": 7,
+      "cards": 46,
+      "verses": 32,
+      "notes": "Scheduled hourly Bible Note Writer Agent run (new chapter, normal forward progress, not a style redo). npm install ran clean (596 packages, fresh clone). Session started on a detached HEAD at the same commit as origin/main (Ezekiel 20); checked out and reset local main to track it before any chapter work. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: []), so the target was determined by scanning forward from the last logged chapter (Ezekiel 20) and confirming no ezekielTwentyOne* file existed in lib/ and no chapter 21 wiring existed in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for Ezekiel 21 (32 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 21 is built entirely around one controlling image, the LORD's drawn sword: Ezekiel sets his face toward Jerusalem and announces the sword drawn against righteous and wicked alike, a coming war rather than a courtroom verdict on each soul (1-5); Ezekiel acts out the terror with sighing and bodily collapse while the sword is sharpened and furbished, including the notoriously hard to translate line about the sword showing Judah no special favor (6-10); the sword handed to the slayer, with striking the thigh as that culture's gesture of grief (11-13); the sword doubled a third time, reaching into private inner chambers and aimed at city gates, addressed like a soldier told which way to strike (14-17); the king of Babylon at a literal fork in the road using arrow divination, idols, and liver reading to choose between Jerusalem and Rabbath of the Ammonites, God using even a pagan king's superstition to carry out judgment whose real cause is Judah's own long remembered guilt (18-23); the formal stripping of King Zedekiah's diadem and crown, the triple overturn of the corrupt human throne, and the forward pointing promise of a rightful ruler still to come, echoing the older Genesis promise of Shiloh (24-27); and the sword turning at last on Ammon for mocking Judah's fall, judged on its own home soil and left to be forgotten (28-32). Chunked into 7 sections of 3-6 verses, landing at roughly 1.4 cards per verse, favoring full explanations of the chapter's divination practices (belomancy, teraphim, hepatoscopy) and the triple repetition patterns over padded restatement of the single recurring sword image. Style checker caught 5 mechanical issues on the first pass (one semicolon in a title, two body sections one line under the floor, two bullets one word over the limit), all fixed, then clean (46 cards, 0 problems). A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms in plain language (furbished, privy chambers, defenced, diadem, nativity, brutish), is honest where scholars are genuinely divided (the rod of my son line, the identity of each divination method), and closes on meaning rather than mechanics. Every title verified by hand as an exact contiguous KJV substring in title case, with LORD kept capitalized to match existing chapters. Parser check passed via getBibleReaderStudySections('ezekiel', 21): 7/7 sections, verse ranges 1-5/6-10/11-13/14-17/18-23/24-27/28-32 with no gaps, 46 total cards rendering verbatim. npx tsc --noEmit -p . came back clean (no output, exit code 0). Wired into lib/bibleReaderStudyNotes.ts (import added, replaceStudySectionsForBookRange(\"ezekiel\", 21, 21, EZEKIEL_TWENTY_ONE_PERSONAL_SECTIONS) call added inside the existing chapter 17/18/19/20 wiring function, the ezekiel condition in preserveExactPhraseBodies extended to include chapter 21). Logged here with full step timestamps, and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Ezekiel 22.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-03T00:46:44Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 21 (normal forward progress, new chapter, priority queue and style-redo backlog both empty)",
+          "at": "2026-10-03T00:46:50Z"
+        },
+        {
+          "name": "KJV text fetched for Ezekiel 21 (32 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-10-03T00:47:19Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-10-03T00:50:05Z"
+        },
+        {
+          "name": "source file written (lib/ezekielTwentyOneSource.ts, 7 sections, 46 cards)",
+          "at": "2026-10-03T00:51:52Z"
+        },
+        {
+          "name": "style checker clean (5 mechanical issues found and fixed, then 0 problems)",
+          "at": "2026-10-03T00:52:50Z"
+        },
+        {
+          "name": "wired into reader (import, replaceStudySectionsForBookRange call, preserveExactPhraseBodies range extended to chapter 21)",
+          "at": "2026-10-03T00:53:15Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('ezekiel', 21): 7 sections, 46 cards, verbatim)",
+          "at": "2026-10-03T00:53:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-03T00:54:19Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json, SESSION_LOG.md)",
+          "at": "2026-10-03T00:55:15Z"
+        }
+      ]
     }
   ]
 }

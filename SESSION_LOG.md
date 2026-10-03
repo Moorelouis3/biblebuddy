@@ -6579,3 +6579,7 @@ Next up: Ezekiel 20
 ## 2026-10-02T23:58:31Z (hourly chapter notes run)
 Chapter: Ezekiel 20 | Duration: 11.5 min | Sections: 11 | Cards: 54 | Status: pass
 Next up: Ezekiel 21
+
+## 2026-10-03T00:54:19Z (hourly chapter notes run)
+Chapter: Ezekiel 21 | Duration: 7.6 min | Sections: 7 | Cards: 46 | Status: pass
+Next up: Ezekiel 22
