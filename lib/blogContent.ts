@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-21-explained",
+    title: "Proverbs 21 Explained: The King's Heart and the LORD Who Weighs It",
+    description:
+      "Proverbs 21 explained verse by verse: the king's heart in the LORD's hand, a brawling woman named twice, the wicked as a ransom, and safety that is of the LORD.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-21-explained",
+    publishedAt: "2026-10-03",
+    readTime: "16 min read",
+    image: "/blog-banners/proverbs-21-explained.jpg",
+    groupPost: {
+      title: "Proverbs 21 Explained 📖",
+      content:
+        "A king thinks he rules his own heart.\nThis chapter says someone else is steering it.\n\n📌 Proverbs 21 keeps asking: who is actually in control?\n\n📖 The king's heart is in the hand of the LORD, like a river.\n📖 A brawling woman gets named twice, ten verses apart.\n📖 The horse is prepared for battle, but safety is of the LORD.\n\nNew article on:\n🟢 what it means that the **wicked become a ransom** for the righteous\n🟢 why Solomon repeats the same **warning twice** in one chapter\n🟢 what you are really trusting when you prepare for battle\n\nWhat have you been trusting to keep you safe this week? 🙏",
+    },
+  },
+  {
     slug: "proverbs-20-explained",
     title: "Proverbs 20 Explained: The Candle of the LORD",
     description:
