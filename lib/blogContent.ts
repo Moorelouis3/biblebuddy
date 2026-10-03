@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-20-explained",
+    title: "Proverbs 20 Explained: The Candle of the LORD",
+    description:
+      "Proverbs 20 explained verse by verse: wine as a mocker, divers weights, a clean heart no one can claim, and the spirit as the candle of the LORD.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-20-explained",
+    publishedAt: "2026-10-03",
+    readTime: "17 min read",
+    image: "/blog-banners/proverbs-20-explained.jpg",
+    groupPost: {
+      title: "Proverbs 20 Explained 📖",
+      content:
+        "Wine makes a mocker out of the one who trusts it.\nThat is just the opening line.\n\n📌 Proverbs 20 keeps asking: can you actually see your own heart clearly?\n\n📖 Who can say, I have made my heart clean?\n📖 Divers weights are an abomination to the LORD, named twice in one chapter.\n📖 The spirit of man is the candle of the LORD, searching the inward parts.\n\nNew article on:\n🟢 what it means to take a **pledge** for a stranger's debt\n🟢 why cursing a parent gets such severe language\n🟢 what the **candle of the LORD** actually searches\n\nWhat has that candle been searching in you lately? 🙏",
+    },
+  },
+  {
     slug: "proverbs-19-explained",
     title: "Proverbs 19 Explained: The Counsel of the LORD That Stands",
     description:
