@@ -49388,6 +49388,59 @@
           "at": "2026-10-03T03:59:59Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 25,
+      "startedAt": "2026-10-03T04:46:24Z",
+      "finishedAt": "2026-10-03T04:55:56Z",
+      "durationMinutes": 9.5,
+      "sections": 5,
+      "cards": 20,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after Ezekiel 24. Session started with local git HEAD detached (matching origin/main) and the local main ref stale 23 commits behind; git checkout -B main origin/main reset the local branch cleanly onto origin with nothing lost, the same recurring environment ref anomaly logged in many prior runs. Also found two unrelated 'Chapter library' blog commits (Proverbs 18/19 Explained, a separate feature touching app/blog and data/chapter-blog, not this pipeline) already pushed to origin by another session, left untouched. Fetched real KJV text for Ezekiel 25 (17 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 25 is four short judgment oracles against Israel's neighboring nations for gloating over Jerusalem's fall: verses 1-4 against Ammon for mocking the sanctuary's profaning, Israel's desolation, and Judah's captivity; verses 5-7 Ammon's own capital Rabbah reduced to a camel stable and the nation cut off for literally clapping and stamping in celebration; verses 8-11 against Moab and Seir for claiming Judah was no different from any other defeated heathen nation, their border strongholds opened and the nation erased from memory; verses 12-14 against Edom, Esau's own descendants, for taking vengeance on their brother nation during the siege, judged in turn by the hand of Israel; and verses 15-17 against the Philistines, Israel's oldest enemy, for revenge rooted in old generational hatred, the Cherethites cut off and the coastal remnant destroyed. Chunked into 5 sections, one per nation plus a split for Ammon (1-4 the taunt, 5-7 the judgment), 8-11 Moab, 12-14 Edom, 15-17 Philistia. Density about 1.18 cards per verse (17 verses, 20 cards), consistent with the current post style-spec density norm seen in recent Ezekiel chapters rather than the older superseded 2 cards per verse target. scripts/check_bible_note_style.py found 0 problems on the first pass. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (set thy face against, Aha, sanctuary, profaned, men of the east, Rabbah, couching place, spoil, Seir, the glory of the country, Bethjeshimoth, Baalmeon, Kiriathaim, Teman, Dedan, despiteful heart, old hatred, Cherethims, remnant, furious rebukes), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles. Parser check passed via getBibleReaderStudySections('ezekiel', 25) (5/5 sections, verse ranges 1-4/5-7/8-11/12-14/15-17 with no gaps, 20 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/ezekielTwentyFiveSource.ts, preserveExactPhraseBodies ezekiel range extended from chapters 1-24 to 1-25, replaceStudySectionsForBookRange('ezekiel', 25, 25, ...) call added inside the existing applyPersonalEzekielSeventeenStudySections function right after the chapter 24 call, in reading order with its neighbors. Next forward-progress target is Ezekiel 26.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-03T04:46:24Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 25 (forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-03T04:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (Ezekiel 25, 17 verses, raw.githubusercontent.com)",
+          "at": "2026-10-03T04:47:35Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-03T04:48:10Z"
+        },
+        {
+          "name": "source file written (lib/ezekielTwentyFiveSource.ts, 5 sections, 20 cards)",
+          "at": "2026-10-03T04:53:40Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 20 cards)",
+          "at": "2026-10-03T04:53:55Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-03T04:54:20Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 20 cards, no throw)",
+          "at": "2026-10-03T04:54:45Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-03T04:55:43Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json, SESSION_LOG.md)",
+          "at": "2026-10-03T04:55:56Z"
+        }
+      ]
     }
   ]
 }
