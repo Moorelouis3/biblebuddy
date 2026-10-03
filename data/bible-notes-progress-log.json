@@ -49449,6 +49449,59 @@
           "at": "2026-10-03T04:58:10Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 26,
+      "startedAt": "2026-10-03T05:46:37Z",
+      "finishedAt": "2026-10-03T05:57:18Z",
+      "durationMinutes": 10.7,
+      "sections": 6,
+      "cards": 22,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: []), so this was normal forward progress after Ezekiel 25, confirmed by no ezekielTwentySix* file in lib/ and no chapter 26 wiring call past chapter 25 in lib/bibleReaderStudyNotes.ts. npm install ran clean (596 packages, fresh clone, 29s). Fetched real KJV text for Ezekiel 26 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 26 is the first of several oracles against Tyre, opening with Tyre's commercial glee over Jerusalem's fall (Aha, she is broken that was the gates of the people, I shall be replenished), a mocking tone rooted in trade opportunism rather than the old generational hatred driving Ammon, Moab, Edom, and Philistia in chapter 25, answered by God's direct opposition and the picture of many nations rising against Tyre like the sea's waves (1-3); the sentence against Tyre's walls and towers, the scraping bare like the top of a rock, the irony of a trade capital reduced to a place for spreading fishing nets, and the mainland satellite towns (her daughters in the field) falling first (4-6); Nebuchadrezzar named directly as a king of kings with real siege engines, battering rams, siege towers, and the terrifying noise of horses and chariots entering through a breach (7-11); the plunder of Tyre's wealth, her building stones and timber cast into the sea (a detail many Bible teachers connect to Alexander the Great's later causeway built from the ruined mainland city's own rubble), her songs and harps silenced, and the sentence that she would never be rebuilt (12-14); the isles and princes of the sea mourning Tyre's fall as a formal funeral lamentation, stripping off their royal robes and clothing themselves in trembling the way other trading partners feared the same fate (15-18); and the closing picture of Tyre brought down with the dead of old time into the pit, so completely erased that she could be sought for and never found again (19-21). Chunked into 6 sections (1-3 Tyre's taunt and God's opposition, 4-6 walls and towers scraped bare, 7-11 Nebuchadrezzar's siege, 12-14 stones cast into the sea, 15-18 the princes of the sea mourn, 19-21 sought for, never found), matching the chapter's 21 verses exactly with no gaps. Density about 1.05 cards per verse (21 verses, 22 cards), consistent with the current post style-spec density norm set by the immediately preceding chapter, Ezekiel 25 (1.18 cards/verse), rather than the older superseded 2 cards per verse target. scripts/check_bible_note_style.py was clean on the first pass, 0 problems across all 22 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using \ud83d\udcd6. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (Aha as satisfaction rather than shock, gates of the people, replenished, I am against thee, scrape, a place for the spreading of nets, her daughters which are in the field, Nebuchadrezzar as a spelling variant of Nebuchadnezzar, king of kings as a title not a divine claim, engines of war, strong garrisons, the city's stones and timber cast into the water and its likely later fulfillment through Alexander's causeway, broidered garments, clothe themselves with trembling, a lamentation as a formal funeral song, the deep, the pit, people of old time, sought for), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and draws out that Tyre's motive (profit) differs from the old hatred driving the nations judged in the previous chapter. Every title verified by hand as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('ezekiel', 26) (6/6 sections, verse ranges 1-3/4-6/7-11/12-14/15-18/19-21 with no gaps, 22 total cards, text rendered verbatim). npx tsc --noEmit -p . came back clean (no output, exit code 0). Wired into lib/bibleReaderStudyNotes.ts (import added for lib/ezekielTwentySixSource.ts, the ezekiel condition in preserveExactPhraseBodies extended to include chapter 26, replaceStudySectionsForBookRange(\"ezekiel\", 26, 26, EZEKIEL_TWENTY_SIX_PERSONAL_SECTIONS) call added directly after the chapter 25 call inside the existing chapter 17-25 wiring function). Logged in data/bible-notes-progress-log.json with step timestamps, and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Ezekiel 27.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-03T05:46:37Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 26 (forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-03T05:46:37Z"
+        },
+        {
+          "name": "KJV text fetched (Ezekiel 26, 21 verses, raw.githubusercontent.com)",
+          "at": "2026-10-03T05:46:37Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-03T05:46:37Z"
+        },
+        {
+          "name": "source file written (lib/ezekielTwentySixSource.ts, 6 sections, 22 cards)",
+          "at": "2026-10-03T05:56:36Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 22 cards)",
+          "at": "2026-10-03T05:56:36Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-03T05:56:36Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 22 cards, no throw)",
+          "at": "2026-10-03T05:56:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-03T05:56:36Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json, SESSION_LOG.md)",
+          "at": "2026-10-03T05:57:18Z"
+        }
+      ]
     }
   ]
 }

@@ -6599,3 +6599,7 @@ Next up: Ezekiel 25
 ## 2026-10-03T04:55:56Z (hourly chapter notes run)
 Chapter: Ezekiel 25 | Duration: 9.5 min | Sections: 5 | Cards: 20 | Status: pass
 Next up: Ezekiel 26
+
+## 2026-10-03T05:57:18Z (hourly chapter notes run)
+Chapter: Ezekiel 26 | Duration: 10.7 min | Sections: 6 | Cards: 22 | Status: pass
+Next up: Ezekiel 27
