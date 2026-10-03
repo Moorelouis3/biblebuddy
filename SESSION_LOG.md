@@ -6635,3 +6635,7 @@ Next up: Ezekiel 34
 ## 2026-10-03T13:58:04Z (hourly chapter notes run)
 Chapter: Ezekiel 34 | Duration: 11 min | Sections: 7 | Cards: 33 | Status: pass
 Next up: Ezekiel 35
+
+## 2026-10-03T14:58:24Z (hourly chapter notes run)
+Chapter: Ezekiel 35 | Duration: 11 min | Sections: 4 | Cards: 17 | Status: pass
+Next up: Ezekiel 36
