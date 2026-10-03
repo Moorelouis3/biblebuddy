@@ -49693,6 +49693,59 @@
           "at": "2026-10-03T08:58:32Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 30,
+      "startedAt": "2026-10-03T09:46:14Z",
+      "finishedAt": "2026-10-03T09:59:33Z",
+      "durationMinutes": 13,
+      "sections": 8,
+      "cards": 32,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (623 packages, fresh clone, 31s). Priority queue and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: []), so this was normal forward progress after Ezekiel 29, confirmed by no ezekielThirty* file in lib/ and no chapter 30 wiring call past chapter 29 in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for Ezekiel 30 (26 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Ezekiel 30 continues the oracle against Egypt from chapter 29: the day of the LORD announced as a cloudy day of judgment on Egypt and the surrounding heathen nations (1-3); the sword falling on Egypt and her mercenary allies Ethiopia, Libya, Lydia, and Chub, her power collapsing from the southern border city of Syene (4-6); Egypt joining the long list of already-judged nations, a fire set in the land, and messengers by ship carrying the news as far as the careless Ethiopians (7-9); Nebuchadrezzar named as God's chosen instrument, the Nile's rivers made dry, and the land sold into the hand of the wicked (10-12); Egypt's idols and native princes destroyed with named cities falling one by one, Noph (Memphis), Pathros (Upper Egypt), Zoan (Tanis), Sin (Pelusium), and No (Thebes) (13-16); the young men of Aven (On/Heliopolis) and Pibeseth (Bubastis) falling by the sword, the cities going into captivity, Tehaphnehes darkened, and Egypt's yoke over other nations broken (17-19); a dated oracle about a year later announcing Pharaoh's arm already broken, unable to be healed or hold a sword again (20-22); and the closing scattering of the Egyptians among the nations as God strengthens Babylon's king's arms in the same measure Pharaoh's fail, Pharaoh pictured groaning like a mortally wounded man, closing on the repeated refrain that Egypt will know the LORD (23-26). Chunked into 8 sections (1-3, 4-6, 7-9, 10-12, 13-16, 17-19, 20-22, 23-26), matching the chapter's 26 verses exactly with no gaps. Density about 1.23 cards per verse (26 verses, 32 cards), consistent with the current post style-spec density norm set by recent Ezekiel chapters (Ezekiel 26 at 1.05, Ezekiel 29 at 1.19), and appropriate per the style spec's section 12 guidance for a chapter built heavily on place names and a repeated judgment refrain: the teaching leans on what each city and nation name meant to the original reader (Syene/Aswan, Noph/Memphis, Pathros/Upper Egypt, Zoan/Tanis, Sin/Pelusium, No/Thebes, Aven/On, Pibeseth/Bubastis, Tehaphnehes) rather than padding repeated judgment language. scripts/check_bible_note_style.py found one problem on the first pass (one bullet one word over the eight word ceiling), fixed by tightening the wording, then clean across all 32 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using the scripture-point emoji. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (howl, woe worth the day, day of the LORD, heathen, the named allied nations and mercenaries, uphold, Syene, fire as total devastation, careless as feeling safe rather than reckless, Nebuchadrezzar as a spelling variant, terrible as feared and dreaded, the rivers as the Nile's branches, selling the land as a legal transfer, Noph, prince as native rule, Pathros and Zoan naming north and south together, Sin and No, rent asunder, Aven and Pibeseth as pagan worship centers, captivity as forced displacement, Tehaphnehes, yoke as the power to control others, the dated oracle tied to Jerusalem's own fall, arm as military strength, binding up as the normal ancient treatment, scattering as the loss of national identity, and the groanings of a deadly wounded man), closes each card on meaning rather than mechanics, and cross-references Egypt's earlier boast in chapter 29 and Pharaoh's broken arm answered later in the same chapter by Babylon's strengthened arm. Every title verified by hand as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('ezekiel', 30) (8/8 sections, verse ranges 1-3/4-6/7-9/10-12/13-16/17-19/20-22/23-26 with no gaps, 32 total cards, text rendered verbatim). npx tsc --noEmit -p . came back clean (no output, exit code 0). Wired into lib/bibleReaderStudyNotes.ts (import added for lib/ezekielThirtySource.ts, the ezekiel condition in preserveExactPhraseBodies extended to include chapter 30, replaceStudySectionsForBookRange(\"ezekiel\", 30, 30, EZEKIEL_THIRTY_PERSONAL_SECTIONS) call added directly after the chapter 29 call inside the existing chapter 17-29 wiring function). Logged in data/bible-notes-progress-log.json with full step timestamps, and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Ezekiel 31.",
+      "steps": [
+        {
+          "name": "npm install done (623 packages, fresh clone, 31s)",
+          "at": "2026-10-03T09:47:49Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 30, normal forward progress (priority queue and style-redo backlog both empty, no ezekielThirty* file in lib/, no chapter 30 wiring call past chapter 29)",
+          "at": "2026-10-03T09:48:30Z"
+        },
+        {
+          "name": "KJV text fetched: Ezekiel 30 (26 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-03T09:49:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, reference implementation lib/ezekielTwentyNineSource.ts read",
+          "at": "2026-10-03T09:50:00Z"
+        },
+        {
+          "name": "source file written: lib/ezekielThirtySource.ts (8 sections, 32 cards)",
+          "at": "2026-10-03T09:55:54Z"
+        },
+        {
+          "name": "style checker: 1 bullet over word count found and fixed, second run clean",
+          "at": "2026-10-03T09:56:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 30, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-03T09:56:25Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections ezekiel 30: 8 sections, 32 cards, no gaps)",
+          "at": "2026-10-03T09:56:51Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-10-03T09:58:45Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-03T09:59:33Z"
+        }
+      ]
     }
   ]
 }

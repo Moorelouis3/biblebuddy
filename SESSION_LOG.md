@@ -6615,3 +6615,7 @@ Next up: Ezekiel 29
 ## 2026-10-03T08:58:32Z (hourly chapter notes run)
 Chapter: Ezekiel 29 | Duration: 12 min | Sections: 6 | Cards: 25 | Status: pass
 Next up: Ezekiel 30
+
+## 2026-10-03T09:59:33Z (hourly chapter notes run)
+Chapter: Ezekiel 30 | Duration: 13 min | Sections: 8 | Cards: 32 | Status: pass
+Next up: Ezekiel 31
