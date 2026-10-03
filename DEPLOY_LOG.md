@@ -14,3 +14,4 @@
 2026-10-01T16:06:41Z | 16 commits | Jeremiah 38-45 study notes, Proverbs 11-12 chapter library pages
 2026-10-02T08:08:54Z | 34 commits | Jeremiah 46-52, Lamentations 1-5, and Ezekiel 1-4 study notes, Proverbs 13-15 Explained chapter library entries, devotional reading task bug fix, newsletter auto-discovery, PNG image payload shrink, and Verse of the Day runway extension
 2026-10-02T16:08:38Z | 21 commits | Ezekiel 5-12 study notes, Proverbs 16-17 Explained chapter library entries, bug-reports API error logged to Marcus, Abraham event sign-up page and image prompts, and shorts-schedule backup cleanup
+2026-10-03T08:08:16Z | 39 commits | Ezekiel 13-28 study notes, Proverbs 18-20 Explained chapter library entries, a blog article, Amazon listing copy, Abraham sign-up page, and own-email-sending groundwork
