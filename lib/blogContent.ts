@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-24-explained",
+    title: "Proverbs 24 Explained: The House Wisdom Builds and the Field Folly Loses",
+    description:
+      "Proverbs 24 explained verse by verse: a house built by wisdom, a duty to rescue the endangered, gloating over an enemy's fall, and the sluggard's ruined vineyard.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-24-explained",
+    publishedAt: "2026-10-04",
+    readTime: "13 min read",
+    image: "/blog-banners/proverbs-24-explained.jpg",
+    groupPost: {
+      title: "Proverbs 24 Explained 📖",
+      content:
+        "One man builds a house.\nAnother man lets his field's wall fall down.\n\n📌 Proverbs 24 keeps asking which one you're doing right now.\n\n📖 Through wisdom is an house builded.\n📖 A just man falleth seven times, and riseth up again.\n📖 Yet a little sleep, a little slumber, a little folding of the hands.\n\nNew article on:\n🟢 whether God spares your enemy if you **celebrate their fall**\n🟢 who gets **drawn unto death** in verse 11, and why it's your job\n🟢 why verse 29 is not a contradiction of eye for eye\n\nWhat's one broken stone in your own wall before it becomes the whole thing? 🙏",
+    },
+  },
+  {
     slug: "proverbs-23-explained",
     title: "Proverbs 23 Explained: The Wine That Bites Like a Serpent",
     description:
