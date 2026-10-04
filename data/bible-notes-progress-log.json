@@ -50809,6 +50809,59 @@
           "at": "2026-10-04T03:55:40Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 48,
+      "startedAt": "2026-10-04T04:46:41Z",
+      "finishedAt": "2026-10-04T05:02:31Z",
+      "durationMinutes": 16,
+      "sections": 5,
+      "cards": 39,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (624 packages, fresh clone, 33s). Priority queue and style-redo backlog both confirmed empty (`remaining: []` in both), so this was normal forward progress after Ezekiel 47 (last entry in this log), confirmed by no `ezekielFortyEight*` file in `lib/` and no chapter 48 wiring in `lib/bibleReaderStudyNotes.ts` before this run. This is Ezekiel's final chapter, completing the whole book. Fetched real KJV text for Ezekiel 48 (35 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter closes the temple vision by dividing the restored land into horizontal strips for the seven northern tribes, Dan through Judah, each strip running the full east-west width of the land (1-7); the holy oblation at the center set aside for the sanctuary, the priests descended from the faithful Zadok, and the Levites, with firm language that none of it may ever be sold or traded away (8-14); the common city zone, its surrounding pasture suburbs, the workers drawn from every tribe who farm it, and the prince's own land flanking the holy center between Judah and Benjamin (15-22); the five remaining southern tribes, Benjamin through Gad, completing all twelve allotments once Levi's separate portion and Joseph's double share through Ephraim and Manasseh are accounted for, followed by the land's final border closing the loop back through the Waters of Strife at Kadesh already named in chapter 47 (23-29); and the city's twelve gates, one per tribe including Levi and a single gate for Joseph, closing on the city's new name, The LORD Is There, the resolution of the glory's departure shown back in chapters 8-11 (30-35). A boundary-list and dimension-heavy chapter per the style spec's section 12 guidance for chapters that resist teaching, using lib/ezekielFortySevenSource.ts (also border-heavy) as the direct structural template: 5 sections, 39 cards for 35 verses (about 1.1 cards per verse), density kept deliberately leaner on the most repetitive tribal-listing verses rather than padding them, per the spec's explicit instruction to write a shorter note rather than a padded one. `python3 scripts/check_bible_note_style.py` found 2 problems on the first pass (two bullets at 9 words against the 3-8 word ceiling), both fixed, second pass clean across all 39 cards: no hyphens outside verse-reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using \ud83d\udcd6. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (portion, profane, suburbs, oblation, alienate, foursquare, most holy, reed, Zadok), closes on meaning rather than mechanics, and that all 39 titles are unique exact contiguous KJV substrings verified against the fetched text. Parser check passed via getBibleReaderStudySections('ezekiel', 48): 5/5 sections, verse ranges 1-7/8-14/15-22/23-29/30-35 with no gaps, 39 total cards rendering verbatim. `npx tsc --noEmit -p .` came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/ezekielFortyEightSource.ts, replaceStudySectionsForBookRange(\"ezekiel\", 48, 48, EZEKIEL_FORTY_EIGHT_PERSONAL_SECTIONS) call added directly after the chapter 47 call, the ezekiel condition in preserveExactPhraseBodies extended to include chapter 48). Ezekiel is now complete end to end, Genesis through Ezekiel all done. Logged in docs/BIBLE_BUDDY_NOTES_PROGRESS.md (running totals updated to 923 chapters) and SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Daniel 1.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-04T04:46:41Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 48 (normal forward progress, redo backlog and priority queue both empty, last done chapter was Ezekiel 47)",
+          "at": "2026-10-04T04:47:33Z"
+        },
+        {
+          "name": "KJV text fetched (Ezekiel 48, 35 verses, aruljohn mirror)",
+          "at": "2026-10-04T04:47:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-04T04:48:10Z"
+        },
+        {
+          "name": "source file written: lib/ezekielFortyEightSource.ts (39 cards, 5 sections)",
+          "at": "2026-10-04T04:58:34Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 bullet word count fixes)",
+          "at": "2026-10-04T04:58:55Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-10-04T04:59:17Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 39 cards, text verbatim)",
+          "at": "2026-10-04T04:59:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-04T05:01:11Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-04T05:02:31Z"
+        }
+      ]
     }
   ]
 }
