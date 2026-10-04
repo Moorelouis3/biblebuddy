@@ -51160,6 +51160,63 @@
           "at": "2026-10-04T10:04:58Z"
         }
       ]
+    },
+    {
+      "book": "Daniel",
+      "chapter": 6,
+      "startedAt": "2026-10-04T10:46:06Z",
+      "finishedAt": "2026-10-04T10:58:38Z",
+      "durationMinutes": 13,
+      "sections": 6,
+      "cards": 43,
+      "verses": 28,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (623 packages, fresh clone, 32s). Priority queue (data/bible-notes-priority-queue.json) confirmed empty and style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty (remaining: []), so this was normal forward progress after Daniel 5, confirmed by no danielSix* file in lib/ and no chapter 6 wiring call past chapter 5 in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for Daniel 6 (28 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Daniel 6 is Daniel in the lions' den: the hundred and twenty princes and three presidents, Daniel's promotion on account of his excellent spirit, and the threat that promotion created (1-3); the presidents and princes failing to find any real fault in Daniel and so engineering a thirty day prayer ban enforced by an unchangeable Medo-Persian law, which Darius signs without seeing the trap (4-9); Daniel praying three times a day toward Jerusalem exactly as he always had, caught in the act, and accused by name as a Jewish exile who disregards both the king and his decree, leaving Darius sore displeased with himself and laboring all day for a legal way out (10-15); Daniel sentenced to the den, the stone sealed with the king's own signet and his lords', and Darius passing a sleepless, fasting, musicless night (16-18); Darius running to the den at dawn, Daniel's answer that his God sent an angel to shut the lions' mouths and that he was found innocent before both God and the king, and his deliverance explained plainly as the result of belief (19-23); the accusers and their households thrown to the same lions, who show their true nature this time, and Darius's empire wide decree reversing his own law to require fear of the living, stedfast God whose kingdom cannot be destroyed, closing with Daniel prospering under both Darius and Cyrus the Persian (24-28). Chunked into 6 sections (1-3, 4-9, 10-15, 16-18, 19-23, 24-28), matching the chapter's 28 verses exactly with no gaps or overlaps. Density about 1.54 cards/verse (28 verses, 43 cards), in the same range as Genesis 31 and the other Daniel chapters written in this phrase-note style (not the separate Insight Cards format described elsewhere in the skill file, since docs/bible-study-note-style.md and lib/genesisThirtyOneSource.ts govern format here per the run instructions). scripts/check_bible_note_style.py found 1 problem on the first automated pass (the Stedfast For Ever card's last bullet used a repeated emoji instead of ending on 📖 or ➡️), fixed by swapping two bullet emojis, and a second pass came back with 0 problems across all 43 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (occasion, supplication, lamentable, stedfast, signet, aforetime), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet always landing on 📖 or ➡️, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 43 cards. All titles are exact contiguous KJV substrings, with semicolons from the source text (verse 2's three presidents, verse 7's petition clause) replaced by commas to satisfy the no semicolon rule. Parser check passed exactly via getBibleReaderStudySections('daniel', 6) (6/6 sections, verse ranges 1-3/4-9/10-15/16-18/19-23/24-28 with no gaps, 43 total cards, text rendering verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/danielSixSource.ts, preserveExactPhraseBodies daniel condition extended from chapters 1-5 to include chapter 6, new function applyPersonalDanielSixStudySections added and called right after applyPersonalDanielFiveStudySections(). Next forward-progress target is Daniel 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-04T10:47:40Z"
+        },
+        {
+          "name": "target chapter determined: Daniel 6 (new chapter, forward progress)",
+          "at": "2026-10-04T10:47:40Z"
+        },
+        {
+          "name": "KJV text fetched (Daniel 6, 28 verses, from raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-10-04T10:47:59Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-10-04T10:48:06Z"
+        },
+        {
+          "name": "source file written (lib/danielSixSource.ts, 6 sections, 44 cards)",
+          "at": "2026-10-04T10:53:30Z"
+        },
+        {
+          "name": "style checker clean (43 cards, 0 problems)",
+          "at": "2026-10-04T10:54:04Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-04T10:54:32Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 43 cards, no throw)",
+          "at": "2026-10-04T10:55:04Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-04T10:57:15Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-04T10:58:33Z"
+        },
+        {
+          "name": "progress log finalized (data/bible-notes-progress-log.json, SESSION_LOG.md hourly chapter notes run entry)",
+          "at": "2026-10-04T10:58:50Z"
+        }
+      ]
     }
   ]
 }
