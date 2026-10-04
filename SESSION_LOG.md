@@ -6735,3 +6735,7 @@ Next up: Daniel 11
 ## 2026-10-04T16:00:05Z (hourly chapter notes run)
 Chapter: Daniel 11 | Duration: 13.52 min | Sections: 10 | Cards: 64 | Status: pass
 Next up: Daniel 12
+
+## 2026-10-04T16:59:30Z (hourly chapter notes run)
+Chapter: Daniel 12 | Duration: 12.9 min | Sections: 5 | Cards: 22 | Status: pass
+Next up: Hosea 1
