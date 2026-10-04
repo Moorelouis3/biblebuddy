@@ -826,3 +826,14 @@ This run (2026-10-03, 06:30 UTC slot) got through `GET /api/bug-reports/agent` o
 Side effect worth knowing about: bug `edc89d6b-2217-4e2a-80b8-d4a003aa4cbe` (the "/reading - something went wrong in this link" report) is now sitting in `fixing` status in the database from this run's one successful POST, with no diagnosis update behind it, because every attempt to finish updating it failed the way described above. If the route's own logic skips reports already marked `fixing` (assuming another run has it), this report could get silently stuck and never picked up again until someone resets its status by hand. The second open bug (`cad4c0ae...`, Kalayshia Rhines, Plans/Bible Studies tab coming up blank) was never even reached - still sitting as `new` with its prior diagnosis untouched.
 
 Per the Bug Fixer's own fallback instructions, stopping here without touching any product code, committing only this note. Worth someone checking the live Supabase project's schema cache / PostgREST status directly, and resetting `edc89d6b...`'s status back to `new` if it's still stuck on `fixing` once the API is healthy again.
+
+## Live Supabase service-role key published on public GitHub
+Bible Buddy's repo (github.com/Moorelouis3/biblebuddy) is public, and
+scripts/reformat-devotionals.mjs hardcoded the production Supabase
+service-role key as a fallback — confirmed readable anonymously from
+raw.githubusercontent.com, valid until 2035. It bypasses all row-level
+security and reaches the auth admin API. Louis has to rotate it himself in
+the Supabase dashboard (Project Settings → API); until he does, the literal
+cannot be meaningfully cleaned up and the database should be treated as
+exposed. Needs tracking because it is a one-action task only Louis can do
+and it blocks the whole v1.0 App Store roadmap.
