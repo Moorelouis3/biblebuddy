@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-27-explained",
+    title: "Proverbs 27 Explained: Iron Sharpens Iron and the Wounds of a Friend",
+    description:
+      "Proverbs 27 explained verse by verse: the wounds of a friend vs an enemy's kiss, iron sharpening iron, boasting about tomorrow, and a man tested by his own praise.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-27-explained",
+    publishedAt: "2026-10-04",
+    readTime: "16 min read",
+    image: "/blog-banners/proverbs-27-explained.jpg",
+    groupPost: {
+      title: "Proverbs 27 Explained 📖",
+      content:
+        "A friend wounds you with truth.\nAn enemy kisses you with a lie.\n\n📌 Proverbs 27 keeps testing what is real and what only looks real.\n\n📖 Faithful are the wounds of a friend.\n📖 Iron sharpeneth iron, so a man sharpeneth his friend.\n📖 As in water face answereth to face, so the heart of man to man.\n\nNew article on:\n🟢 why verse 1 warns against **boasting about tomorrow**\n🟢 what it means to be tested by your own **praise**\n🟢 why the chapter ends with advice about **flocks and herds**\n\nWhich friend in your life gives you honest wounds instead of empty kisses? 🙏",
+    },
+  },
+  {
     slug: "proverbs-26-explained",
     title: "Proverbs 26 Explained: Fools, Sluggards, and Answering Both Ways",
     description:
