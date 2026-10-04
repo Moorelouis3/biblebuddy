@@ -159,21 +159,33 @@ export default function HomeScreen() {
 
       const profile = profileResult.status === "fulfilled" ? (profileResult.value.data as any) : null;
       const chapterCount = chapterResult.status === "fulfilled" ? chapterResult.value.count : null;
-      // The plan's own rule, copied exactly: the current day is the FIRST day
-      // in the series whose reading is not done. Home used to say last row +1,
-      // which ran a day ahead whenever a day had a progress row but an
-      // unfinished reading - so home said Day 38 while the plan opened Day 37.
+      // Where you are is how FAR you have got, not the first day you skipped.
+      //
+      // Rachel Moore reported this twice. /api/bible-year/progress was fixed on
+      // 2026-10-01, but this copy of the rule was left behind, so home kept
+      // saying Day 29 - her earliest gap - while the plan itself opened Day 91.
+      // She had read 85 days by then. Skipped days stay open in the plan to
+      // catch up on; they just never drag the number backwards again.
+      //
+      // Keep this in step with the same calculation in
+      // app/api/bible-year/progress/route.ts. Two copies of one rule is what
+      // caused this bug; if a third appears, give them one shared helper.
       let planDay: number | null = null;
       let planFinished = false;
+      let highestReadDay = 0;
       if (planResult.status === "fulfilled" && Array.isArray(planResult.value.data)) {
         const readDays = new Set(
           (planResult.value.data as any[])
             .filter((row) => row.reading_completed === true)
             .map((row) => Number(row.day_number)),
         );
-        const firstUnread = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((d) => !readDays.has(d.dayNumber));
-        planDay = firstUnread ? firstUnread.dayNumber : PLAN_TOTAL_DAYS;
-        planFinished = !firstUnread;
+        const highestRead = readDays.size ? Math.max(...readDays) : 0;
+        const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find(
+          (d) => d.dayNumber > highestRead && !readDays.has(d.dayNumber),
+        );
+        planDay = nextDay ? nextDay.dayNumber : PLAN_TOTAL_DAYS;
+        planFinished = !nextDay;
+        highestReadDay = highestRead;
       }
 
       setStats({
@@ -182,7 +194,9 @@ export default function HomeScreen() {
         chaptersRead: typeof chapterCount === "number" ? chapterCount : null,
         planDay,
         planFinished,
-        lastCompletedDay: planDay !== null ? planDay - 1 : null,
+        // The furthest day actually finished, not "the day before the next
+        // one" - those differ for anyone who skipped a day.
+        lastCompletedDay: planDay !== null ? highestReadDay : null,
         displayName: profile?.display_name || profile?.username || null,
         flameId: profile?.selected_streak_flame ?? null,
       });
