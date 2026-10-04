@@ -50628,6 +50628,59 @@
           "at": "2026-10-04T00:57:30Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 45,
+      "startedAt": "2026-10-04T01:46:23Z",
+      "finishedAt": "2026-10-04T02:03:00Z",
+      "durationMinutes": 17,
+      "sections": 5,
+      "cards": 35,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in each), so this was normal forward progress after Ezekiel 44, confirmed by no ezekielFortyFive* file in lib/ and no chapter 45 wiring in lib/bibleReaderStudyNotes.ts before this run. Git HEAD was found detached but matching origin/main exactly after a fetch (origin/main had been force updated past a stale cached ref); local main was checked out and reset to track origin/main before writing, no work lost. Fetched real KJV text for Ezekiel 45 (25 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. This chapter is Ezekiel's land and liturgical-calendar law code following the temple vision: the holy district divided into strips for the sanctuary, the Levites, the city, and the prince, closing with the point that giving the prince a fixed portion removes his reason to oppress the people (1-8); fixed, honest measures for the balance, ephah, bath, homer, shekel, gerah, and maneh so trade could not be rigged (9-12); the oblation of wheat, barley, oil, and livestock that funds the prince's offerings for the nation's feasts, new moons, and sabbaths, tying that funding back to the same reconciliation language used for the Levites and priests in chapter 44 (13-17); the twice yearly cleansing of the sanctuary on the first and seventh days of the first month, covering unintentional sin (18-20); and the Passover and the Feast of Tabernacles, each with their own seven day, animal heavy offering schedule (21-25). A dimension and law heavy chapter per the style spec's section 12 guidance for chapters that resist teaching rather than a narrative one; chunked into 5 sections of 3-8 verses, 35 cards for 25 verses (about 1.4 cards per verse), above the spec's 1x floor though below the usual 2x target given the genre. scripts/check_bible_note_style.py flagged 1 problem on the first pass (banned hedge word 'fairly' in one card about judgment and justice), fixed by rewording to 'judging by what is right' / 'judging rightly', clean on the second pass across all 35 cards. A manual section 13 eye check (the mechanical checker cannot judge this) caught 3 bullets that near-restated their own body line almost word for word (the posts/settle card, the kid-of-the-goats card, and the erreth/simple card), all rewritten to carry a distinct takeaway instead, re-verified clean with the checker again after. Parser check passed via getBibleReaderStudySections('ezekiel', 45): 5/5 sections, verse ranges 1-8/9-12/13-17/18-20/21-25 with no gaps, 35 total cards rendering verbatim. npx tsc --noEmit -p . came back clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/ezekielFortyFiveSource.ts, the ezekiel condition inside preserveExactPhraseBodies extended from chapters 1-44 to 1-45, and a replaceStudySectionsForBookRange(\"ezekiel\", 45, 45, EZEKIEL_FORTY_FIVE_PERSONAL_SECTIONS) call added directly after the chapter 44 call inside the existing Ezekiel wiring function (applyPersonalEzekielSeventeenStudySections, which is called once at module scope). Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next up: Ezekiel 46.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-04T01:47:45Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 45 (new, forward progress)",
+          "at": "2026-10-04T01:48:12Z"
+        },
+        {
+          "name": "KJV text fetched for Ezekiel 45 (25 verses) from aruljohn/Bible-kjv raw JSON",
+          "at": "2026-10-04T01:48:29Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-04T01:48:37Z"
+        },
+        {
+          "name": "source file written: lib/ezekielFortyFiveSource.ts (5 sections, 35 cards)",
+          "at": "2026-10-04T01:57:24Z"
+        },
+        {
+          "name": "style checker clean (0 problems, 35 cards)",
+          "at": "2026-10-04T01:57:44Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-04T01:58:35Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 35 cards, no throw",
+          "at": "2026-10-04T01:59:02Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-04T02:00:37Z"
+        },
+        {
+          "name": "section 13 by-eye checklist pass: fixed 3 bullets that near-restated body lines, re-verified checker/parser/tsc all clean",
+          "at": "2026-10-04T02:02:19Z"
+        }
+      ]
     }
   ]
 }
