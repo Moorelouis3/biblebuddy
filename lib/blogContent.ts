@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-26-explained",
+    title: "Proverbs 26 Explained: Fools, Sluggards, and Answering Both Ways",
+    description:
+      "Proverbs 26 explained verse by verse: the fool, the sluggard's lion excuse, a dog returning to its vomit, talebearers, and answering a fool both ways.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-26-explained",
+    publishedAt: "2026-10-04",
+    readTime: "16 min read",
+    image: "/blog-banners/proverbs-26-explained.jpg",
+    groupPost: {
+      title: "Proverbs 26 Explained 📖",
+      content:
+        "A dog returns to its own vomit.\nSolomon says that is exactly what a fool does.\n\n📌 Proverbs 26 holds up mirror after mirror to show you what foolishness looks like.\n\n📖 Answer not a fool according to his folly... answer a fool according to his folly.\n📖 As a dog returneth to his vomit, so a fool returneth to his folly.\n📖 Where there is no talebearer, the strife ceaseth.\n\nNew article on:\n🟢 why verses 4 and 5 seem to **contradict** each other\n🟢 the sluggard's excuse about a **lion in the street**\n🟢 why a **flattering mouth** works the same ruin as a lie\n\nWhat excuse have you been treating like a real lion? 🙏",
+    },
+  },
+  {
     slug: "proverbs-25-explained",
     title: "Proverbs 25 Explained: Apples of Gold and a City Without Walls",
     description:
