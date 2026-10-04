@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-10-04T04:40:55.111Z",
-  "nextChapter": "Proverbs 25",
+  "updatedAt": "2026-10-04T06:33:40.445Z",
+  "nextChapter": "Proverbs 26",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -436,6 +436,11 @@
       "status": "committed",
       "startedAt": "2026-10-04T04:33:06.740Z",
       "committedAt": "2026-10-04T04:40:55.111Z"
+    },
+    "proverbs-25-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-04T06:33:40.445Z"
     }
   },
   "priorityBooks": [
