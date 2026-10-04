@@ -6751,3 +6751,7 @@ Next up: Hosea 3
 ## 2026-10-04T19:56:39Z (hourly chapter notes run)
 Chapter: Hosea 3 | Duration: 9.9 min | Sections: 2 | Cards: 12 | Status: pass
 Next up: Hosea 4
+
+## 2026-10-04T20:56:00Z (hourly chapter notes run)
+Chapter: Hosea 4 | Duration: 9.3 min | Sections: 6 | Cards: 40 | Status: pass
+Next up: Hosea 5
