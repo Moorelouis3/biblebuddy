@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-23-explained",
+    title: "Proverbs 23 Explained: The Wine That Bites Like a Serpent",
+    description:
+      "Proverbs 23 explained verse by verse: self control at a ruler's table, the rod that corrects a child, buying the truth, and the wine that bites like a serpent.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-23-explained",
+    publishedAt: "2026-10-04",
+    readTime: "16 min read",
+    image: "/blog-banners/proverbs-23-explained.jpg",
+    groupPost: {
+      title: "Proverbs 23 Explained 📖",
+      content:
+        "You sit at a ruler's table.\nThe very next verse says put a knife to your throat.\n\n📌 Proverbs 23 keeps asking what you just swallowed.\n\n📖 Riches certainly make themselves wings and fly away.\n📖 Buy the truth, and sell it not.\n📖 Look not thou upon the wine when it is red.\n\nNew article on:\n🟢 whether verse 13 really commands **physical punishment**\n🟢 what **deliver his soul from hell** actually means\n🟢 why the chapter ends on a man planning his **next drink**\n\nWhat appetite has been getting the final word lately? 🙏",
+    },
+  },
+  {
     slug: "proverbs-22-explained",
     title: "Proverbs 22 Explained: A Good Name and the Child You Train",
     description:
