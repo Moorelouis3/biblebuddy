@@ -50751,6 +50751,56 @@
           "at": "2026-10-04T02:58:38Z"
         }
       ]
+    },
+    {
+      "book": "Ezekiel",
+      "chapter": 47,
+      "startedAt": "2026-10-04T03:46:33Z",
+      "finishedAt": "2026-10-04T03:54:37Z",
+      "durationMinutes": 8,
+      "sections": 5,
+      "cards": 33,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Normal forward progress (priority queue and style-redo backlog both empty). The river of life vision: water flowing out from under the temple threshold beside the altar, deepening in four measured stages from ankle deep to an uncrossable river (1-5); the river healing the Dead Sea into a thriving fishery from Engedi to Eneglaim, with trees on its banks bearing monthly fruit and leaves for medicine, echoing Eden and pointing forward to Revelation 22 (6-12); the land boundary rule naming Joseph a double portion through Ephraim and Manasseh and grounding the inheritance in the oath God swore to Abraham, Isaac, and Jacob (13-14); the full border tour reusing Mosaic boundary markers (Hamath, the Jordan, the Dead Sea, Meribah/Kadesh, the Mediterranean) (15-21); and the closing inheritance rule including resident foreigners alongside native Israelites, assigning them land within whatever tribe they live among (22-23). Written to docs/bible-study-note-style.md spec using lib/ezekielFortySixSource.ts as the direct structural template, 1.4 cards per verse, extra density on the river/healing section where the teaching content was richest. Style checker flagged 3 bullet word-count violations on the first pass (9 words each), fixed by trimming; second pass clean across all 33 cards. Manual section 13 eye check and a forbidden-filler grep both came back clean, all 33 titles verified as exact contiguous KJV substrings. Parser check and tsc --noEmit -p . both clean.",
+      "styleRedo": false,
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone)",
+          "at": "2026-10-04T03:47:09Z"
+        },
+        {
+          "name": "target chapter determined: Ezekiel 47 (new chapter, normal forward progress after Ezekiel 46; priority queue and redo backlog both empty)",
+          "at": "2026-10-04T03:47:22Z"
+        },
+        {
+          "name": "KJV text fetched for Ezekiel 47 (23 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-04T03:47:30Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) plus reference implementation lib/ezekielFortySixSource.ts",
+          "at": "2026-10-04T03:47:34Z"
+        },
+        {
+          "name": "source file written: lib/ezekielFortySevenSource.ts (5 sections, 33 cards)",
+          "at": "2026-10-04T03:52:09Z"
+        },
+        {
+          "name": "style checker clean after fixing 3 bullet word count violations",
+          "at": "2026-10-04T03:52:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies ezekiel range extended to 47, replaceStudySectionsForBookRange call added after chapter 46)",
+          "at": "2026-10-04T03:52:46Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('ezekiel', 47) returned 5 sections, 33 cards, no throw",
+          "at": "2026-10-04T03:53:05Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-10-04T03:54:37Z"
+        }
+      ]
     }
   ]
 }
