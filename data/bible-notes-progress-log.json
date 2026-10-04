@@ -51707,6 +51707,59 @@
           "at": "2026-10-04T19:05:05Z"
         }
       ]
+    },
+    {
+      "book": "Hosea",
+      "chapter": 3,
+      "startedAt": "2026-10-04T19:46:46Z",
+      "finishedAt": "2026-10-04T19:56:39Z",
+      "durationMinutes": 9.9,
+      "sections": 2,
+      "cards": 12,
+      "verses": 5,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter, normal forward progress (priority queue and style-redo backlog both confirmed empty). Fetched real KJV text for Hosea 3 (5 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Chunked into 2 sections (1-3, 4-5) with no gaps. Wrote lib/hoseaThreeSource.ts following lib/genesisThirtyOneSource.ts as the structural/style reference. scripts/check_bible_note_style.py came back clean on the first pass across all 12 cards. Manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms in plain language (flagons of wine as grape cakes not literal wine, homer, ephod, teraphim with a callback to Genesis 31, latter days, and the David their king phrase corrected to point forward to a future Davidic king rather than a literal return of David), closes on meaning rather than mechanics, and uses exactly four bullets per card with no repeated emoji within a card, last bullet landing on \ud83d\udcd6. No hyphens, em dashes, semicolons, or contractions. Parser check passed exactly via getBibleReaderStudySections('hosea', 3): 2/2 sections, verse ranges 1-3/4-5 with no gaps, 12 total cards. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/hoseaThreeSource.ts, preserveExactPhraseBodies hosea condition extended to include chapter 3, new applyPersonalHoseaThreeStudySections function added calling replaceStudySectionsForBookRange(\"hosea\", 3, 3, HOSEA_THREE_PERSONAL_SECTIONS) right after applyPersonalHoseaTwoStudySections() is defined, invoked right after it in the call order. Next forward-progress target is Hosea 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-04T19:47:21Z"
+        },
+        {
+          "name": "target chapter determined: Hosea 3 (new chapter, normal forward progress, redo backlog empty)",
+          "at": "2026-10-04T19:47:40Z"
+        },
+        {
+          "name": "KJV text fetched for Hosea 3 (5 verses) from aruljohn/Bible-kjv mirror",
+          "at": "2026-10-04T19:48:14Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and reference implementations read in full",
+          "at": "2026-10-04T19:49:45Z"
+        },
+        {
+          "name": "source file lib/hoseaThreeSource.ts written (2 sections, 12 cards)",
+          "at": "2026-10-04T19:52:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems, first pass)",
+          "at": "2026-10-04T19:52:35Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply function + call)",
+          "at": "2026-10-04T19:52:50Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('hosea', 3): 2 sections, 12 cards)",
+          "at": "2026-10-04T19:52:54Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-04T19:53:10Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-04T19:56:39Z"
+        }
+      ]
     }
   ]
 }
