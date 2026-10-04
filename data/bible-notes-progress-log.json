@@ -51575,6 +51575,72 @@
           "at": "2026-10-04T17:00:17Z"
         }
       ]
+    },
+    {
+      "book": "Hosea",
+      "chapter": 1,
+      "startedAt": "2026-10-04T17:46:22Z",
+      "finishedAt": "2026-10-04T17:59:45Z",
+      "durationMinutes": 11.2,
+      "sections": 5,
+      "cards": 26,
+      "verses": 11,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (624 packages, fresh clone, 41s). Priority queue (`data/bible-notes-priority-queue.json`) and style-redo backlog (`data/bible-notes-style-redo-remaining.json`) both confirmed empty (`remaining: []`), so this was normal forward progress. Daniel 1-12 is now fully done (confirmed via the progress log and dedicated `lib/danielTwelveSource.ts` wiring), so canonical order moves to the next book, Hosea. Hosea 1 had no dedicated per-chapter file in `lib/`, only the original legacy bulk file `hoseaOneToTwelvePersonalNotes.ts` wired in via `replaceStudySectionsForBookRange(\"hosea\", 1, 12, ...)`, which docs/BIBLE_BUDDY_NOTES_PROGRESS.md's running header explicitly flags as not yet counted as done for Hosea through Malachi and Matthew through Revelation. Treated this as a brand new chapter per the normal pipeline, not a style redo: wrote a new dedicated `lib/hoseaOneSource.ts` file and added a narrower `applyPersonalHoseaOneStudySections()` call that runs after the legacy bulk Hosea calls so it overrides just chapter 1, leaving the legacy file in place to cover chapters 2-12 until they each get the same treatment, matching exactly how Daniel 1-12 were peeled off one at a time from `danielOneToTwelvePersonalNotes.ts` in earlier runs. Fetched real KJV text for Hosea 1 (11 verses) from the `raw.githubusercontent.com/aruljohn/Bible-kjv` mirror. Hosea 1 is the book's opening: the superscription dating Hosea by four kings of Judah and Jeroboam the Second of Israel (1); the LORD's command to marry Gomer, a living symbol of Israel's unfaithfulness, with the land's idolatry pictured as marital whoredom (2-3); the birth of Jezreel, naming both the historical bloodshed of Jehu's dynasty and the coming end of Israel's kingdom, followed by the promise to break Israel's military strength in the valley of Jezreel (4-5); the birth of Loruhamah, marking the withdrawal of mercy from Israel while mercy is preserved for Judah, who will be saved by the LORD directly rather than by weapons of war (6-7); the birth of Loammi, reversing the Sinai covenant formula itself to declare Israel is no longer God's people (8-9); and the chapter's closing reversal, where the same judgment images (uncountable sand, the name Jezreel) are turned back into promises of restoration and reunion between Judah and Israel under one head (10-11). Split into 5 sections (1-3, 4-5, 6-7, 8-9, 10-11), landing at 26 cards for 11 verses, about 2.36 cards per verse. Ran `python3 scripts/check_bible_note_style.py lib/hoseaOneSource.ts`, which caught 5 bullets over the 8 word limit on the first pass; trimmed each and reran clean. Also checked the full chapter by eye against section 13 of the style spec (four opening moves used across cards, no verse recap, honest hedges only where scholarship is genuinely divided such as Gomer's exact past and the timing of Jerusalem's reunification, no forbidden filler phrases, no repeated card titles or first lines).",
+      "isStyleRedo": false,
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, 41s)",
+          "at": "2026-10-04T17:47:03Z"
+        },
+        {
+          "name": "target chapter determined: Hosea 1 (normal forward progress; priority queue and style-redo backlog both empty; Daniel 1-12 fully done, Hosea is next book in canonical order and still only has legacy bulk wiring)",
+          "at": "2026-10-04T17:47:14Z"
+        },
+        {
+          "name": "KJV text fetched for Hosea 1 (11 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-04T17:48:40Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md in full, plus reference file lib/danielNineSource.ts for parser/file shape)",
+          "at": "2026-10-04T17:49:30Z"
+        },
+        {
+          "name": "source file written (lib/hoseaOneSource.ts, 5 sections, 26 cards)",
+          "at": "2026-10-04T17:53:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py: 5 bullets over the 8 word limit on first pass, trimmed, clean on second pass)",
+          "at": "2026-10-04T17:54:40Z"
+        },
+        {
+          "name": "manual section 13 eye check against docs/bible-study-note-style.md: confirmed four opening moves used, no verse recap, no banned filler/hedge words, no duplicate titles",
+          "at": "2026-10-04T17:54:55Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import added, preserveExactPhraseBodies extended for hosea chapter 1, applyPersonalHoseaOneStudySections() added and called after the legacy Hosea bulk calls so it overrides just chapter 1)",
+          "at": "2026-10-04T17:55:20Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('hosea', 1): 5 sections / 26 cards, matches design)",
+          "at": "2026-10-04T17:55:45Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-10-04T17:57:03Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-04T17:57:35Z"
+        },
+        {
+          "name": "committed to origin main",
+          "at": "2026-10-04T17:59:40Z"
+        },
+        {
+          "name": "pushed to origin main",
+          "at": "2026-10-04T17:59:45Z"
+        }
+      ]
     }
   ]
 }
