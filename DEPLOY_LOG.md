@@ -17,3 +17,4 @@
 2026-10-03T08:08:16Z | 39 commits | Ezekiel 13-28 study notes, Proverbs 18-20 Explained chapter library entries, a blog article, Amazon listing copy, Abraham sign-up page, and own-email-sending groundwork
 2026-10-03T16:08:32Z | 23 commits | Ezekiel 29-36 study notes, Proverbs 21-22 chapter library, A+ KDP module rebuild, bug fixer log
 2026-10-04T08:08:13Z | 36 commits | Ezekiel 37-48 study notes (book now complete), Daniel 1-3 study notes, Proverbs 23-25 Explained chapter library entries, and a home screen fix for skippers returning to their first gap
+2026-10-04T16:08:45Z | 21 commits | Daniel 4-11 study notes, Proverbs 26-27 Explained chapter library entries, 66-book backfill script coverage fix, and a Marcus handoff for the exposed Supabase service-role key
