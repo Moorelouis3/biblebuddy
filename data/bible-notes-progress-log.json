@@ -51447,6 +51447,60 @@
           "at": "2026-10-04T15:02:20Z"
         }
       ]
+    },
+    {
+      "book": "Daniel",
+      "chapter": 11,
+      "startedAt": "2026-10-04T15:46:34Z",
+      "finishedAt": "2026-10-04T16:01:00Z",
+      "durationMinutes": 14.433333333333334,
+      "sections": 10,
+      "cards": 64,
+      "verses": 45,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (624 packages, fresh clone, 30s). Priority queue (`data/bible-notes-priority-queue.json`) and style-redo backlog (`data/bible-notes-style-redo-remaining.json`) both confirmed empty (`remaining: []`), so this was normal forward progress after Daniel 10, confirmed by no `danielEleven*` file in `lib/` and no chapter 11 wiring call past chapter 10 in `lib/bibleReaderStudyNotes.ts`. Fetched real KJV text for Daniel 11 (45 verses) from the `raw.githubusercontent.com/aruljohn/Bible-kjv` mirror. The chapter is the angel's long historical prophecy covering the fall of Persia and the rise of a mighty king, Alexander the Great, whose empire splits toward the four winds after his early death (1-4); the long running wars between the king of the south (the Ptolemies ruling Egypt) and the king of the north (the Seleucids ruling Syria), including the failed Berenice marriage alliance, Ptolemy the Third's revenge campaign, the Battle of Raphia, and Antiochus the Third's eventual conquest of the glorious land and his later defeat by Rome at Magnesia (5-19); a quick raiser of taxes cut down without battle, then the rise of a vile person, Antiochus the Fourth Epiphanes, who seizes the throne by flattery, deposes the legitimate high priest, and governs through deceit and calculated generosity (20-24); his two invasions of Egypt bracketing the mutual treachery of two kings lying at one table, and his first plundering of the Jerusalem temple on the way home (25-28); his second Egyptian campaign cut short by Roman ships at Chittim, his resulting fury against the holy covenant, and the desecration of the temple itself, halting the daily sacrifice and setting up the abomination that maketh desolate, the same phrase Jesus later quotes in Matthew 24 (29-31); the split response among the Jewish people, some corrupted by flattery and others, identified by many scholars with the Maccabean resistance, standing firm, teaching, suffering, and being refined through persecution toward an appointed time of the end (32-35); and the chapter's final, more extreme king who exalts himself above every god, honors a god of forces instead of his fathers, and is swept into a climactic final conflict at the time of the end involving the king of the south, a whirlwind like invasion from the north, the fall of Egypt, Libya, and Ethiopia, troubling news from the east and north, and a palace planted near the glorious holy mountain before the king comes to his end with none to help him, a section many scholars read as reaching beyond Antiochus toward a future fulfillment (36-45). Chunked into 10 sections (1-4, 5-9, 10-14, 15-19, 20-24, 25-28, 29-31, 32-35, 36-39, 40-45), matching the chapter's 45 verses exactly with no gaps. Density about 1.42 cards/verse (45 verses, 64 cards), reflecting the chapter's unusual density of distinct historical figures, titles, and events packed into very short verses, with the recurring king of the south and king of the north titles explained once early on so the rest of the chapter's many kings stay trackable. As the most historically dense prophecy chapter in the book, every specific identification of a king (Cambyses, Xerxes, Alexander, Ptolemy, Seleucus, Antiochus, Scipio, the Roman senate at Chittim) is flagged honestly as \"many scholars identify\" or \"many scholars believe\" rather than asserted as settled fact, and the genuinely disputed questions (the desire of women in verse 37, whether verses 36 through 45 still describe Antiochus or point further ahead) are presented as open scholarly disagreement rather than manufactured certainty. `scripts/check_bible_note_style.py` found 4 problems on the first pass (one bullet one word over the eight word limit, and three body lines over the twenty word limit), fixed by trimming the bullet and splitting each long line into two shorter ones; second pass clean across all 64 cards, no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (choler, holpen, tidings, Chittim, forces, tabernacles), closes on meaning rather than mechanics, and uses exactly four bullets each three to eight words with a distinct emoji within each card, every last bullet landing on 📖 or ➡️. Every title verified by hand as an exact contiguous KJV substring or lightly joined KJV phrase in title case. Parser check passed exactly via `getBibleReaderStudySections('daniel', 11)` (10/10 sections, verse ranges 1-4/5-9/10-14/15-19/20-24/25-28/29-31/32-35/36-39/40-45 with no gaps, 64 total cards rendering verbatim, `preserveExactPhraseFormatting: true` confirmed). `npx tsc --noEmit -p .` clean with zero errors (no output). Wired into `lib/bibleReaderStudyNotes.ts`: import added for `lib/danielElevenSource.ts`, `preserveExactPhraseBodies` daniel condition extended to include chapter 11, new `applyPersonalDanielElevenStudySections` function added calling `replaceStudySectionsForBookRange(\"daniel\", 11, 11, DANIEL_ELEVEN_PERSONAL_SECTIONS)` right after `applyPersonalDanielTenStudySections()` is defined, invoked right after it in the call order. Logged in `data/bible-notes-progress-log.json` with full step timestamps, and in `SESSION_LOG.md` as an hourly chapter notes run. Committed and pushed to `origin/main` without the `[deploy]` tag per the deploy cadence rule in `CLAUDE.md`. Next forward-progress target is Daniel 12.",
+      "isStyleRedo": false,
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-04T15:47:07Z"
+        },
+        {
+          "name": "target chapter determined: Daniel 11 (normal forward progress; priority queue and style-redo backlog both empty)",
+          "at": "2026-10-04T15:47:24Z"
+        },
+        {
+          "name": "KJV text fetched for Daniel 11 (45 verses)",
+          "at": "2026-10-04T15:47:36Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md, plus reference files lib/genesisThirtyOneSource.ts and lib/danielTenSource.ts)",
+          "at": "2026-10-04T15:47:40Z"
+        },
+        {
+          "name": "source file written (lib/danielElevenSource.ts, 10 sections, 64 cards)",
+          "at": "2026-10-04T15:54:17Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, after fixing 4 flagged problems)",
+          "at": "2026-10-04T15:54:36Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, applyPersonalDanielElevenStudySections call)",
+          "at": "2026-10-04T15:54:59Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('daniel', 11), 10 sections / 64 cards)",
+          "at": "2026-10-04T15:55:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-04T15:57:37Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-04T15:59:04Z"
+        }
+      ]
     }
   ]
 }
