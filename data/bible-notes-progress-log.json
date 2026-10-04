@@ -51323,6 +51323,68 @@
           "at": "2026-10-04T13:01:14Z"
         }
       ]
+    },
+    {
+      "book": "Daniel",
+      "chapter": 9,
+      "startedAt": "2026-10-04T13:47:17Z",
+      "finishedAt": "2026-10-04T14:00:45Z",
+      "durationMinutes": 13.5,
+      "sections": 6,
+      "cards": 55,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 45s). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: []), so this was normal forward progress after Daniel 8, confirmed by no danielNine* file in lib/ and no chapter 9 wiring call past chapter 8 in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for Daniel 9 (27 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Daniel 9 is Daniel's prayer of confession and Gabriel's seventy weeks prophecy: dating the vision under Darius the Mede and Daniel's realization from Jeremiah's writing that the seventy years are almost finished (1-3); the long national confession of sin reaching every level of leadership (4-10); the curse of Moses' law landing as warned and God's righteousness defended even in judgment (11-14); Daniel's plea for mercy grounded in the exodus and God's own reputation and name (15-19); Gabriel arriving at the time of the evening oblation to give Daniel skill and understanding (20-23); and the seventy weeks prophecy itself, the decree to rebuild Jerusalem, the Messiah cut off, the coming prince who destroys the city and sanctuary, and the final week with sacrifice ceasing in its midst (24-27). Chunked into 6 sections matching the chapter's 27 verses with no gaps. Density about 2.04 cards/verse, consistent with other recent Daniel chapters, with the dense 24-27 section split further than a flat ratio since several of its clauses are each separately teachable per the style spec's split-two-ideas rule. As a prophecy chapter, the seventy weeks math is grounded in the text itself first, with the traditional Christian Messiah/Jesus and destroying prince/Rome readings flagged honestly as 'many scholars believe' or 'many read this as' rather than asserted as the only reading, and the final week's exact timing noted as genuinely disputed. scripts/check_bible_note_style.py found 5 mechanical problems on the first pass (a semicolon in one heading, a banned hedge word used twice, two overlong bullets, one card whose last bullet was not \ud83d\udcd6/\u27a1\ufe0f), all fixed, clean on the second pass across all 55 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning rather than mechanics, and that every title is an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('daniel', 9) (6/6 sections, verse ranges 1-3/4-10/11-14/15-19/20-23/24-27 with no gaps, 55 total cards rendering verbatim, preserveExactPhraseFormatting true). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts (import added for lib/danielNineSource.ts, preserveExactPhraseBodies daniel condition extended to include chapter 9, new applyPersonalDanielNineStudySections function added calling replaceStudySectionsForBookRange('daniel', 9, 9, DANIEL_NINE_PERSONAL_SECTIONS) right after applyPersonalDanielEightStudySections() in the call order). Logged in docs/BIBLE_BUDDY_NOTES_PROGRESS.md (running totals updated) and SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next forward-progress target is Daniel 10.",
+      "isStyleRedo": false,
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-04T13:48:02Z"
+        },
+        {
+          "name": "target chapter determined: Daniel 9 (normal forward progress, priority queue and style-redo backlog both empty)",
+          "at": "2026-10-04T13:48:30Z"
+        },
+        {
+          "name": "KJV text fetched for Daniel 9 (27 verses)",
+          "at": "2026-10-04T13:49:10Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-10-04T13:50:00Z"
+        },
+        {
+          "name": "source file written (lib/danielNineSource.ts, 6 sections, 55 cards)",
+          "at": "2026-10-04T13:54:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, after fixing 5 flagged problems)",
+          "at": "2026-10-04T13:56:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, applyPersonalDanielNineStudySections call)",
+          "at": "2026-10-04T13:56:40Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('daniel', 9), 6 sections / 55 cards)",
+          "at": "2026-10-04T13:57:05Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-04T13:57:40Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-04T13:59:30Z"
+        },
+        {
+          "name": "committed",
+          "at": "2026-10-04T14:00:30Z"
+        },
+        {
+          "name": "pushed to origin main",
+          "at": "2026-10-04T14:00:45Z"
+        }
+      ]
     }
   ]
 }
