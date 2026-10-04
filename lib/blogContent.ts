@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-25-explained",
+    title: "Proverbs 25 Explained: Apples of Gold and a City Without Walls",
+    description:
+      "Proverbs 25 explained verse by verse: wisdom in a king's court, a word fitly spoken, feeding your enemy, and a city with no walls left standing.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-25-explained",
+    publishedAt: "2026-10-04",
+    readTime: "15 min read",
+    image: "/blog-banners/proverbs-25-explained.jpg",
+    groupPost: {
+      title: "Proverbs 25 Explained 📖",
+      content:
+        "Your enemy is hungry.\nSolomon tells you to feed him anyway.\n\n📌 Proverbs 25 keeps testing what you do with power, words, and enemies.\n\n📖 A word fitly spoken is like apples of gold in pictures of silver.\n📖 If thine enemy be hungry, give him bread to eat.\n📖 He that hath no rule over his own spirit is like a city broken down.\n\nNew article on:\n🟢 what it really means to **heap coals of fire** on someone's head\n🟢 why God gets glory from **concealing** a thing\n🟢 what a **troubled fountain** has to do with a good man falling\n\nWho in your life needs kindness instead of payback today? 🙏",
+    },
+  },
+  {
     slug: "proverbs-24-explained",
     title: "Proverbs 24 Explained: The House Wisdom Builds and the Field Folly Loses",
     description:
