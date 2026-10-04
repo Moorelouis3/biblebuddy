@@ -6707,3 +6707,7 @@ Next up: Daniel 4
 ## 2026-10-04T08:59:00Z (hourly chapter notes run)
 Chapter: Daniel 4 | Duration: 12 min | Sections: 8 | Cards: 45 | Status: pass
 Next up: Daniel 5
+
+## 2026-10-04T09:59:51Z (hourly chapter notes run)
+Chapter: Daniel 5 | Duration: 14 min | Sections: 8 | Cards: 58 | Status: pass
+Next up: Daniel 6
