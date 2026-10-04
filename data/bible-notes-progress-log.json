@@ -51270,6 +51270,59 @@
           "at": "2026-10-04T11:59:00Z"
         }
       ]
+    },
+    {
+      "book": "Daniel",
+      "chapter": 8,
+      "startedAt": "2026-10-04T12:46:37Z",
+      "finishedAt": "2026-10-04T13:01:43Z",
+      "durationMinutes": 15.1,
+      "sections": 9,
+      "cards": 45,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 45s). Priority queue (data/bible-notes-priority-queue.json) confirmed empty and style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty (remaining: []), so this was normal forward progress after Daniel 7, confirmed by no danielEight* file in lib/ before this run. Fetched real KJV text for Daniel 8 (27 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Daniel 8 is Daniel's vision of the ram and the he goat, set at Shushan in the province of Elam in the third year of Belshazzar (1-2); the two horned ram, later identified as Media and Persia, pushing west, north, and south unchecked (3-4); the swift he goat from the west, later identified as Greece with its notable horn as the first king, shattering the ram and then splitting into four horns toward the four winds after the goat's own horn breaks (5-8); the little horn rising from one of those four (identified by most scholars as Antiochus the Fourth of the Seleucid kingdom), growing toward the south, east, and the pleasant land, reaching toward the host of heaven, halting the daily sacrifice, and casting the sanctuary and the truth itself to the ground (9-12); the two saints discussing how long the desolation will last and the answer of two thousand three hundred days until the sanctuary is cleansed, tied by many scholars to the Maccabean cleansing behind Hanukkah (13-14); Gabriel, the Bible's first named angel, appearing to explain the vision, Daniel's fear and collapse, and the repeated note that the vision points to an appointed time of the end (15-19); the angel's direct decoding of the ram as Media and Persia and the goat as Greece, with Alexander's empire splitting among four generals after his early death (20-22); and the fuller description of the fierce, cunning king still to come, who destroys the holy people, prospers through policy and craft, uses false peace as a weapon, and is finally broken without human hand after standing against the Prince of princes, closing with Daniel's own fainting and continued faithfulness in the king's business despite not fully understanding what he had seen (23-27). Chunked into 9 sections (1-2, 3-4, 5-8, 9-12, 13-14, 15-19, 20-22, 23-25, 26-27), matching the chapter's 27 verses exactly with no gaps or overlaps. Density of 1.67 cards per verse (27 verses, 45 cards), in the same phrase note format as the other Daniel chapters and governed by docs/bible-study-note-style.md and lib/genesisThirtyOneSource.ts rather than the separate Insight Cards format described elsewhere in the skill file, per the run instructions. As a prophecy chapter, the historical identifications (Media/Persia, Greece, Alexander's four successor kingdoms, Antiochus the Fourth) are grounded in the angel's own direct interpretation given in verses 20 through 22, with anything beyond that flagged honestly as 'many scholars believe' or 'likely' rather than asserted as settled fact. scripts/check_bible_note_style.py came back with 0 problems on the very first automated pass across all 45 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (choler, countenance of a vision's setting is not present but choler, policy, craft, indignation, cogitations-free chapter so no duplicate reused term, daily sacrifice, sanctuary, transgression of desolation, Prince of princes all defined), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet always landing on \ud83d\udcd6 or \u27a1\ufe0f, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 45 cards. All titles are exact contiguous KJV substrings, with semicolon bearing verses (6, 12, 25, 26, 27) handled by trimming the title to the clause before or after the semicolon rather than reproducing the banned punctuation, and the one colon bearing title (verse 17) kept as is since only semicolons are banned. Parser check passed exactly via getBibleReaderStudySections('daniel', 8) (9/9 sections, verse ranges 1-2/3-4/5-8/9-12/13-14/15-19/20-22/23-25/26-27 with no gaps, 45 total cards, text rendering verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/danielEightSource.ts, preserveExactPhraseBodies daniel condition extended from chapters 1 through 7 to include chapter 8, new function applyPersonalDanielEightStudySections added and called right after applyPersonalDanielSevenStudySections(). Next forward progress target is Daniel 9.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-04T12:47:45Z"
+        },
+        {
+          "name": "target chapter determined: Daniel 8 (new chapter, forward progress)",
+          "at": "2026-10-04T12:47:51Z"
+        },
+        {
+          "name": "KJV text for Daniel 8 fetched (27 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-10-04T12:48:11Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-04T12:48:43Z"
+        },
+        {
+          "name": "source file lib/danielEightSource.ts written (9 sections, 45 cards)",
+          "at": "2026-10-04T12:56:50Z"
+        },
+        {
+          "name": "style checker clean on first pass (45 cards, 0 problems)",
+          "at": "2026-10-04T12:56:57Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply fn, call site)",
+          "at": "2026-10-04T12:57:20Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 45 cards, no throw)",
+          "at": "2026-10-04T12:58:01Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-04T13:00:58Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-04T13:01:14Z"
+        }
+      ]
     }
   ]
 }
