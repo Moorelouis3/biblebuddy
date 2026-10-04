@@ -6679,3 +6679,7 @@ Next up: Ezekiel 45
 ## 2026-10-04T02:03:00Z (hourly chapter notes run)
 Chapter: Ezekiel 45 | Duration: 17 min | Sections: 5 | Cards: 35 | Status: pass
 Next up: Ezekiel 46
+
+## 2026-10-04T02:58:00Z (hourly chapter notes run)
+Chapter: Ezekiel 46 | Duration: 12 min | Sections: 6 | Cards: 36 | Status: pass
+Next up: Ezekiel 47
