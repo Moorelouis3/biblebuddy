@@ -50862,6 +50862,59 @@
           "at": "2026-10-04T05:02:31Z"
         }
       ]
+    },
+    {
+      "book": "Daniel",
+      "chapter": 1,
+      "startedAt": "2026-10-04T05:46:06Z",
+      "finishedAt": "2026-10-04T05:57:36Z",
+      "durationMinutes": 12,
+      "sections": 7,
+      "cards": 28,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (624 packages, fresh clone, 24s). Local git started in a detached HEAD state pointed at origin's real tip (Ezekiel 48); local `main` had gone stale 51 commits behind with its own 51 divergent commits of its own, the same recurring environment ref anomaly logged in prior runs, so local `main` was hard reset to `origin/main` (`git fetch origin main && git checkout -B main origin/main`) with nothing lost, since the stale local commits were already superseded upstream. Priority queue and style-redo backlog (`data/bible-notes-style-redo-remaining.json`) both confirmed empty (`remaining: []`), so this was normal forward progress after Ezekiel 48, completing the whole book of Ezekiel. Daniel, Hosea through Malachi, and all of Matthew through Revelation already have legacy bulk placeholder wiring in `lib/bibleReaderStudyNotes.ts` (for example `danielOneToTwelvePersonalNotes.ts` covering Daniel 1-12), but none of those books has an individual new-style per-chapter `Source.ts` file yet, so Daniel 1 is the correct next forward-progress target, written as a new chapter with an override, the same pattern used for every Ezekiel chapter before it (an individual `replaceStudySectionsForBookRange` call placed after the bulk apply function so it supersedes just that one chapter). Fetched real KJV text for Daniel 1 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens the book: Nebuchadnezzar's siege of Jerusalem in Jehoiakim's reign and the temple vessels carried to Shinar (1-2); the king's order to select unblemished, gifted young nobles of Judah for three years of Chaldean training on the king's own food and wine (3-5); Daniel, Hananiah, Mishael, and Azariah renamed Belteshazzar, Shadrach, Meshach, and Abednego after Babylonian gods (6-7); Daniel's resolve not to defile himself with the king's food, and the eunuch's fear of the risk that request created for him (8-10); the ten day test on pulse and water proposed to the steward Melzar (11-14); the four found healthier on the simple diet after ten days, with God given wisdom and visions (15-17); and their final interview before Nebuchadnezzar, found ten times better than Babylon's magicians and astrologers, closing on Daniel's service lasting to the first year of Cyrus (18-21). Chunked into 7 sections. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/danielOneSource.ts, preserveExactPhraseBodies extended with a dedicated daniel chapter 1 condition, new function applyPersonalDanielOneStudySections added and called right after the existing applyPersonalDanielOneThroughTwelveStudySections(), correctly overriding the legacy DANIEL_1_12_PERSONAL_SECTIONS bulk file for chapter 1 only, chapters 2-12 of that legacy file left untouched. scripts/check_bible_note_style.py found 1 problem on the first automated pass (one body line at 23 words), fixed by splitting it into two lines, second run clean with 0 problems across all 28 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (besieged, Shinar, eunuch, cunning, science, Chaldeans, purposed, defile, countenance, prove, beseech, pulse, communed, magicians, astrologers), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 28 cards. Parser check passed exactly via getBibleReaderStudySections('daniel', 1) (7/7 sections, verse ranges 1-2/3-5/6-7/8-10/11-14/15-17/18-21 with no gaps, 28 total cards). npx tsc --noEmit -p . clean with zero errors. Density about 1.33 cards per verse (21 verses, 28 cards), calibrated against lib/genesisThirtyOneSource.ts (the task's named reference implementation, itself about 1.02 cards per verse) rather than the newer SKILL.md Insight Cards density target, per the instruction that the style spec and its named reference file win on content, voice, and format whenever they disagree with SKILL.md. Next forward-progress target is Daniel 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-04T05:48:17Z"
+        },
+        {
+          "name": "target chapter determined: Daniel 1 (normal forward progress, new chapter; priority queue and redo backlog both empty, and Daniel/Hosea-Malachi/Matthew-Revelation only have legacy bulk wiring, no individual Source.ts files yet)",
+          "at": "2026-10-04T05:52:27Z"
+        },
+        {
+          "name": "KJV text fetched (Daniel 1, 21 verses, aruljohn mirror)",
+          "at": "2026-10-04T05:52:27Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-04T05:52:27Z"
+        },
+        {
+          "name": "source file written: lib/danielOneSource.ts (28 cards, 7 sections)",
+          "at": "2026-10-04T05:53:59Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 automated fix)",
+          "at": "2026-10-04T05:53:59Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalDanielOneStudySections)",
+          "at": "2026-10-04T05:53:59Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 28 cards, text verbatim)",
+          "at": "2026-10-04T05:53:59Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-04T05:55:57Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-04T05:57:36Z"
+        }
+      ]
     }
   ]
 }
