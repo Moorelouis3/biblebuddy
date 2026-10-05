@@ -6831,3 +6831,7 @@ Next up: Amos 5
 ## 2026-10-05T15:00:56Z (hourly chapter notes run)
 Chapter: Amos 5 | Duration: 14 min | Sections: 9 | Cards: 54 | Status: pass
 Next up: Amos 6
+
+## 2026-10-05T16:09:33Z (hourly chapter notes run)
+Chapter: Amos 6 | Duration: 23 min | Sections: 5 | Cards: 29 | Status: pass
+Next up: Amos 7
