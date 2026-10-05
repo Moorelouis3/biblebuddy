@@ -6863,3 +6863,7 @@ Next up: Jonah 3
 ## 2026-10-05T22:23:07Z (blog writer run)
 Article: What Is Sin, Really? A Complete Guide for Christians | Words: ~4510 | Category: Christian Foundations | Status: pass
 Queue remaining: 22
+
+## 2026-10-05T22:57:30Z (hourly chapter notes run)
+Chapter: Jonah 3 | Duration: 9 min | Sections: 4 | Cards: 22 | Status: pass
+Next up: Jonah 4
