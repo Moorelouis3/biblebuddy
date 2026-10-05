@@ -51943,6 +51943,59 @@
           "at": "2026-10-04T22:59:40Z"
         }
       ]
+    },
+    {
+      "book": "Hosea",
+      "chapter": 7,
+      "startedAt": "2026-10-04T23:46:11Z",
+      "finishedAt": "2026-10-05T00:00:02Z",
+      "durationMinutes": 13.85,
+      "sections": 5,
+      "cards": 34,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog and priority queue both confirmed empty, so this was normal forward progress after Hosea 6. On startup, local git state was a stale cached ref (main pointed to an unrelated old Jeremiah/Proverbs-era commit left over from the container snapshot); resynced to the true origin/main via git fetch + reset, confirmed against the GitHub API directly (commit 7151aa9, Hosea 6) and cross checked against data/bible-notes-progress-log.json, which agreed exactly. No data loss, just a stale local cache corrected before writing anything. Fetched real KJV text for Hosea 7 (16 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Wrote lib/hoseaSevenSource.ts per docs/bible-study-note-style.md (5 sections: 1-3 healing offered and sin uncovered, 4-7 the oven/adultery/drunken-king imagery, 8-10 Ephraim as an unturned cake and fading strength, 11-13 the silly dove caught in Egypt/Assyria's net, 14-16 the deceitful bow and princes falling by the sword), wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to include chapter 7, replaceStudySectionsForBookRange call added after Hosea 6). Style checker, parser check (5 sections, 34 cards), and tsc --noEmit all clean.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-10-04T23:49:47Z"
+        },
+        {
+          "name": "target_chapter_determined_hosea_7_new_chapter_forward_progress",
+          "at": "2026-10-04T23:49:47Z"
+        },
+        {
+          "name": "kjv_text_fetched_hosea_7",
+          "at": "2026-10-04T23:50:00Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-10-04T23:53:11Z"
+        },
+        {
+          "name": "source_file_written_hoseaSevenSource_ts",
+          "at": "2026-10-04T23:54:55Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-10-04T23:54:55Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-10-04T23:59:38Z"
+        },
+        {
+          "name": "parser_check_passed_5_sections_34_cards",
+          "at": "2026-10-04T23:59:38Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-10-04T23:59:38Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-10-05T00:00:02Z"
+        }
+      ]
     }
   ]
 }
