@@ -52996,8 +52996,8 @@
       "book": "Amos",
       "chapter": 8,
       "startedAt": "2026-10-05T17:46:26Z",
-      "finishedAt": "2026-10-05T18:06:18Z",
-      "durationMinutes": 20,
+      "finishedAt": "2026-10-05T18:11:11Z",
+      "durationMinutes": 25,
       "sections": 5,
       "cards": 32,
       "verses": 14,
@@ -53046,6 +53046,14 @@
         {
           "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
           "at": "2026-10-05T18:06:18Z"
+        },
+        {
+          "name": "committed (23eb889, parent 5e148ac matched real origin/main tip, no stale-ref issue this time since main was reset before writing began)",
+          "at": "2026-10-05T18:09:30Z"
+        },
+        {
+          "name": "pushed to origin/main (5e148ac..23eb889), confirmed via fetch",
+          "at": "2026-10-05T18:11:11Z"
         }
       ]
     }
