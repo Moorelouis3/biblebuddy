@@ -32,7 +32,26 @@ function arg(name: string, fallback?: string) {
 }
 
 const day = Number(arg("day", "1"));
-const brollPath = arg("broll") as string;
+/**
+ * The b-roll this day belongs on.
+ *
+ * The seven templates are meant to cycle so no two days running look alike.
+ * The watcher passes --broll for that, but anything else rendering a batch by
+ * hand passed whatever it liked: by 5 October, 142 of 279 days had been built
+ * on Template 02 and 116 days looked exactly like the day before them. Louis:
+ * "all you did was use the same damn bg for like 40 videos back to back... no
+ * 2 days should match the same bg."
+ *
+ * So the rotation lives HERE, as the default, and --broll is only an override.
+ * Rendering a day with no flag now puts it on the right template by itself.
+ */
+const TEMPLATES = [
+  "Template 01.mp4", "Template 02 (1).mp4", "Template 03.mp4", "Template 04.mp4",
+  "Template 05.mp4", "Template 06.mp4", "Template 07.mp4",
+];
+const TEMPLATE_DIR = "C:/Users/Moore/Downloads";
+const rotationBroll = () => join(TEMPLATE_DIR, TEMPLATES[(day - 1) % TEMPLATES.length]);
+const brollPath = (arg("broll") || rotationBroll()) as string;
 const preset = arg("preset", "veryfast") as string;
 const padded = String(day).padStart(3, "0");
 
