@@ -247,7 +247,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   // Anything reaching those routes now goes to the real tab instead.
   useEffect(() => {
     if (embedded) return;
-    router.replace("/dashboard?view=bible_studies");
+    router.replace("/plan?view=bible_studies");
   }, [embedded, router]);
 
   // Load "Don't show again" preference from localStorage
