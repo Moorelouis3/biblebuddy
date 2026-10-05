@@ -6851,3 +6851,7 @@ Next up: Obadiah 1
 ## 2026-10-05T20:01:19Z (hourly chapter notes run)
 Chapter: Obadiah 1 | Duration: 15 min | Sections: 6 | Cards: 47 | Status: pass
 Next up: Jonah 1
+
+## 2026-10-05T20:58:04Z (hourly chapter notes run)
+Chapter: Jonah 1 | Duration: 11 min | Sections: 5 | Cards: 35 | Status: pass
+Next up: Jonah 2
