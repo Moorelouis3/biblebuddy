@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-31-explained",
+    title: "Proverbs 31 Explained: King Lemuel and the Virtuous Woman",
+    description:
+      "Proverbs 31 explained verse by verse: a mother's warning to King Lemuel about women and wine, and the virtuous woman's life from dawn to dusk.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-31-explained",
+    publishedAt: "2026-10-05",
+    readTime: "15 min read",
+    image: "/blog-banners/proverbs-31-explained.jpg",
+    groupPost: {
+      title: "Proverbs 31 Explained 📖",
+      content:
+        "The book of Proverbs ends on two voices.\nNeither one is Solomon.\n\n📌 A mother teaches a king, then a poem praises a woman.\n\n📖 Open thy mouth for those who cannot speak.\n📖 Her price is far above rubies.\n📖 Favour is deceitful, beauty is vain.\n\nNew article on:\n🟢 who **King Lemuel** actually was\n🟢 why his mother warns him about **wine**\n🟢 what the **virtuous woman** poem is really praising\n\nWhat is one way you could speak up for someone this week? 🙏",
+    },
+  },
+  {
     slug: "proverbs-30-explained",
     title: "Proverbs 30 Explained: Agur's Confession and Four Things Too Wonderful",
     description:
