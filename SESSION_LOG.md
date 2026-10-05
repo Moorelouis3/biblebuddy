@@ -6823,3 +6823,7 @@ Next up: Amos 3
 ## 2026-10-05T12:55:18Z (hourly chapter notes run)
 Chapter: Amos 3 | Duration: 8 min | Sections: 6 | Cards: 26 | Status: pass
 Next up: Amos 4
+
+## 2026-10-05T13:57:30Z (hourly chapter notes run)
+Chapter: Amos 4 | Duration: 10 min | Sections: 5 | Cards: 25 | Status: pass
+Next up: Amos 5
