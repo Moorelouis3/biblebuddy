@@ -19,3 +19,4 @@
 2026-10-04T08:08:13Z | 36 commits | Ezekiel 37-48 study notes (book now complete), Daniel 1-3 study notes, Proverbs 23-25 Explained chapter library entries, and a home screen fix for skippers returning to their first gap
 2026-10-04T16:08:45Z | 21 commits | Daniel 4-11 study notes, Proverbs 26-27 Explained chapter library entries, 66-book backfill script coverage fix, and a Marcus handoff for the exposed Supabase service-role key
 2026-10-05T08:08:33Z | 33 commits | Daniel 12 and Hosea 1-14 study notes (book now complete), Joel 1 study notes, Proverbs 28-30 Explained chapter library entries, and a Bible Studies blank-screen bug fix
+2026-10-05T16:11:36Z | 14 commits | Joel 2-3 and Amos 1-5 study notes, Proverbs 31 and Genesis 40 Explained chapter library entries, and a bug-fixer flag for the persistent bug-reports API/database failure
