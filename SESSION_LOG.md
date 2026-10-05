@@ -6807,3 +6807,7 @@ Next up: Joel 2
 ## 2026-10-05T09:00:30Z (hourly chapter notes run)
 Chapter: Joel 2 | Duration: 13 min | Sections: 11 | Cards: 62 | Status: pass
 Next up: Joel 3
+
+## 2026-10-05T10:27:16Z (hourly chapter notes run)
+Chapter: Joel 3 | Duration: 41 min | Sections: 5 | Cards: 35 | Status: pass
+Next up: Amos 1
