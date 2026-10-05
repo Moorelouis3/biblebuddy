@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-28-explained",
+    title: "Proverbs 28 Explained: Bold as a Lion and Covering vs Confessing Sin",
+    description:
+      "Proverbs 28 explained verse by verse: the wicked fleeing with no one chasing them, covering sin vs confessing it, blood guilt, and trusting your own heart.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-28-explained",
+    publishedAt: "2026-10-05",
+    readTime: "15 min read",
+    image: "/blog-banners/proverbs-28-explained.jpg",
+    groupPost: {
+      title: "Proverbs 28 Explained 📖",
+      content:
+        "Nobody is chasing him.\nHe runs anyway.\n\n📌 Proverbs 28 asks what you do when no one is watching.\n\n📖 The wicked flee when no man pursueth.\n📖 He that covereth his sins shall not prosper.\n📖 He that trusteth in his own heart is a fool.\n\nNew article on:\n🟢 why a guilty conscience **invents its own danger**\n🟢 the two conditions mercy actually requires\n🟢 why trusting your own heart is called **foolish**\n\nWhat have you been covering instead of confessing? 🙏",
+    },
+  },
+  {
     slug: "proverbs-27-explained",
     title: "Proverbs 27 Explained: Iron Sharpens Iron and the Wounds of a Friend",
     description:
