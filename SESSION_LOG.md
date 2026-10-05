@@ -6847,3 +6847,7 @@ Next up: Amos 9
 ## 2026-10-05T18:59:00Z (hourly chapter notes run)
 Chapter: Amos 9 | Duration: 11 min | Sections: 7 | Cards: 37 | Status: pass
 Next up: Obadiah 1
+
+## 2026-10-05T20:01:19Z (hourly chapter notes run)
+Chapter: Obadiah 1 | Duration: 15 min | Sections: 6 | Cards: 47 | Status: pass
+Next up: Jonah 1

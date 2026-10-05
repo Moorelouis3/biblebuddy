@@ -53117,6 +53117,59 @@
           "at": "2026-10-05T18:59:53Z"
         }
       ]
+    },
+    {
+      "book": "Obadiah",
+      "chapter": 1,
+      "startedAt": "2026-10-05T19:46:15Z",
+      "finishedAt": "2026-10-05T20:01:19Z",
+      "durationMinutes": 15,
+      "sections": 6,
+      "cards": 47,
+      "verses": 21,
+      "notes": "New chapter, normal forward progress after Amos 9. Priority queue and style-redo backlog both empty. Obadiah 1 (the whole book, one chapter) was still wired only through the legacy obadiahOnePersonalNotes.ts bulk placeholder file, never split into a dedicated per-chapter Source.ts file the way Genesis through Amos were, and was not tracked in either backlog file. Confirmed via grep that Jonah, Micah, Nahum, Habakkuk, Zephaniah, Haggai, Zechariah, Malachi, and all of Matthew carry the same legacy-placeholder gap, matching this file's own running-totals note. Wrote lib/obadiahOneSource.ts, repointed the existing OBADIAH_1_PERSONAL_SECTIONS import to it (same const name, no wiring-call change needed), extended preserveExactPhraseBodies, style checker clean, parser check clean, tsc clean. Next forward target is Jonah 1.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-05T19:46:49Z"
+        },
+        {
+          "name": "target chapter determined: Obadiah 1 (new chapter, normal forward progress; confirmed priority queue and style-redo backlog both empty, confirmed via grep that Obadiah/Jonah/Micah/Nahum/Habakkuk/Zephaniah/Haggai/Zechariah/Malachi/Matthew all still carry only legacy *PersonalNotes.ts placeholder wiring)",
+          "at": "2026-10-05T19:52:10Z"
+        },
+        {
+          "name": "KJV text fetched for Obadiah 1 (21 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-10-05T19:50:25Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-10-05T19:53:40Z"
+        },
+        {
+          "name": "source file written: lib/obadiahOneSource.ts (47 cards, 6 sections)",
+          "at": "2026-10-05T19:56:35Z"
+        },
+        {
+          "name": "style checker clean (47 cards, 0 problems after fixing 1 bullet word count)",
+          "at": "2026-10-05T19:57:16Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import repointed to obadiahOneSource, preserveExactPhraseBodies range extended, no change needed to the existing replaceStudySectionsForBookRange call)",
+          "at": "2026-10-05T19:57:45Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 47 cards, no throw)",
+          "at": "2026-10-05T19:57:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-05T19:58:05Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-05T20:01:19Z"
+        }
+      ]
     }
   ]
 }

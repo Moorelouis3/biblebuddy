@@ -945,7 +945,7 @@ import { AMOS_NINE_PERSONAL_SECTIONS } from "./amosNineSource";
 import { JOEL_TWO_PERSONAL_SECTIONS } from "./joelTwoSource";
 import { JOEL_THREE_PERSONAL_SECTIONS } from "./joelThreeSource";
 import { AMOS_1_9_PERSONAL_SECTIONS } from "./amosOneToNinePersonalNotes";
-import { OBADIAH_1_PERSONAL_SECTIONS } from "./obadiahOnePersonalNotes";
+import { OBADIAH_1_PERSONAL_SECTIONS } from "./obadiahOneSource";
 import { JONAH_1_4_PERSONAL_SECTIONS } from "./jonahOneToFourPersonalNotes";
 import { MICAH_1_7_PERSONAL_SECTIONS } from "./micahOneToSevenPersonalNotes";
 import { NAHUM_1_3_PERSONAL_SECTIONS } from "./nahumOneToThreePersonalNotes";
@@ -1293,7 +1293,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "daniel" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12)) ||
     (normalizeBook(book) === "hosea" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14)) ||
     (normalizeBook(book) === "joel" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
-    (normalizeBook(book) === "amos" && section.chapter >= 1 && section.chapter <= 9);
+    (normalizeBook(book) === "amos" && section.chapter >= 1 && section.chapter <= 9) ||
+    (normalizeBook(book) === "obadiah" && section.chapter === 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
