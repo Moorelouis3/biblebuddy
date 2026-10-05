@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-40-explained",
+    title: "Genesis 40 Explained: Joseph, the Butler, and the Baker",
+    description:
+      "Genesis 40 explained verse by verse: the butler and baker's dreams, Joseph's interpretations, his one request, and the butler who forgets him.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-40-explained",
+    publishedAt: "2026-10-05",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-40-explained.jpg",
+    groupPost: {
+      title: "Genesis 40 Explained 📖",
+      content:
+        "Two prisoners dream on the same night.\nJoseph reads both dreams exactly right.\n\n📌 One man walks free. One man does not.\n\n📖 Joseph credits God before he hears a single detail.\n📖 He asks the butler for one small favor.\n📖 The chapter ends with that favor forgotten.\n\nNew article on:\n🟢 what **\"lift up his head\"** really means in this chapter\n🟢 why the **baker's** dream turns out so differently\n🟢 why the butler **forgets** Joseph right after he helps him\n\nHave you ever helped someone who forgot you the moment they didn't need you anymore? 🙏",
+    },
+  },
+  {
     slug: "proverbs-31-explained",
     title: "Proverbs 31 Explained: King Lemuel and the Virtuous Woman",
     description:
