@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import BibleReadingModal from "@/components/BibleReadingModal";
 import BrowserTtsButton from "@/components/BrowserTtsButton";
 import { getGenesisOneTtsSrc } from "@/lib/genesisOneTts";
+import { maybeRequestAppReview } from "@/lib/appReviewPrompt";
 import CommentSection from "@/components/comments/CommentSection";
 import GroupPostThread from "@/components/GroupPostThread";
 import { getEventDayPost, type EventDayPost } from "@/lib/communityEventDays";
@@ -776,6 +777,16 @@ export default function ProverbsStudyDayPage() {
         action_label: `${devotional.title} - Day ${dayNumber} Intro Reading Completed`,
       });
       if (!error) triggerPoints(TASK_XP.intro);
+
+      // Finishing a day is one of the few genuinely good moments we have, so it
+      // is a fair place to ask for a store review. Inert on the web and says no
+      // far more often than yes - see lib/appReviewPrompt.ts for the rules.
+      void maybeRequestAppReview({
+        supabase,
+        userId,
+        trigger: "devotional_day_completed",
+        value: dayNumber,
+      });
     }
 
     setProgress((prev) => ({
