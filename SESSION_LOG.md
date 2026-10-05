@@ -6859,3 +6859,7 @@ Next up: Jonah 2
 ## 2026-10-05T22:05:00Z (hourly chapter notes run)
 Chapter: Jonah 2 | Duration: 19 min | Sections: 4 | Cards: 24 | Status: pass
 Next up: Jonah 3
+
+## 2026-10-05T22:23:07Z (blog writer run)
+Article: What Is Sin, Really? A Complete Guide for Christians | Words: ~4510 | Category: Christian Foundations | Status: pass
+Queue remaining: 22

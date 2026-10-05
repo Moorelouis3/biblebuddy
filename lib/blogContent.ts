@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-sin",
+    title: "What Is Sin, Really? A Complete Guide for Christians",
+    description:
+      "What is sin, really? Not just broken rules, but a broken relationship with God. A clear, honest biblical guide to sin, the heart, and grace.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/what-is-sin",
+    publishedAt: "2026-10-06",
+    readTime: "23 min read",
+    image: "/what-is-sin-banner.png",
+    groupPost: {
+      title: "What Is Sin, Really? 📖",
+      content:
+        "Sin is not first a rule you broke.\nIt is a relationship broken.\n\n📌 Most people get sin wrong before they ever get grace wrong.\n\n📖 Adam and Eve hid from God, not a rulebook.\n📖 Jesus said anger and lust count before they're ever seen.\n📖 Christ died for you while you were still a sinner.\n\nNew article on:\n🟢 why sin means **missing the mark**, not just breaking a rule\n🟢 the difference between sins of **doing** and sins of **not doing**\n🟢 why **\"I'm a good person\"** misses the real question\n\nWhere have you been hiding instead of bringing it into the light? 🙏",
+    },
+  },
+  {
     slug: "genesis-40-explained",
     title: "Genesis 40 Explained: Joseph, the Butler, and the Baker",
     description:
