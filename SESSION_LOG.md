@@ -6799,3 +6799,7 @@ Also closed this run: 1 stale "can't reproduce" reading-page report re-checked a
 ## 2026-10-05T06:58:12Z (hourly chapter notes run)
 Chapter: Hosea 14 | Duration: 11 min | Sections: 3 | Cards: 25 | Status: pass
 Next up: Joel 1
+
+## 2026-10-05T08:00:00Z (hourly chapter notes run)
+Chapter: Joel 1 | Duration: 14 min | Sections: 7 | Cards: 35 | Status: pass
+Next up: Joel 2

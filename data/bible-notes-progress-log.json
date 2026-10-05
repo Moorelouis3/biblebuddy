@@ -52387,6 +52387,59 @@
           "at": "2026-10-05T07:00:26Z"
         }
       ]
+    },
+    {
+      "book": "Joel",
+      "chapter": 1,
+      "startedAt": "2026-10-05T07:46:31Z",
+      "finishedAt": "2026-10-05T08:00:00Z",
+      "durationMinutes": 13.5,
+      "sections": 7,
+      "cards": 35,
+      "verses": 20,
+      "notes": "New chapter, normal forward progress (not a style redo; Joel 1 was never in data/bible-notes-style-redo-remaining.json). First chapter of Joel. Wrote lib/joelOneSource.ts from scratch, wired into lib/bibleReaderStudyNotes.ts overriding the legacy joelOneToThreePersonalNotes.ts bulk file for chapter 1 only (chapters 2-3 untouched). Style checker clean first pass, parser check and tsc both clean. Density 1.75 cards/verse.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, 33s)",
+          "at": "2026-10-05T07:47:13Z"
+        },
+        {
+          "name": "target chapter determined: Joel 1 (new chapter, normal forward progress after Hosea 14; priority queue and style-redo backlog both confirmed empty)",
+          "at": "2026-10-05T07:48:54Z"
+        },
+        {
+          "name": "KJV text fetched (Joel 1, 20 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-10-05T07:48:54Z"
+        },
+        {
+          "name": "style spec and skill pipeline read in full (docs/bible-study-note-style.md, scripts/check_bible_note_style.py, lib/genesisThirtyOneSource.ts and lib/hoseaFourteenSource.ts as reference)",
+          "at": "2026-10-05T07:55:00Z"
+        },
+        {
+          "name": "source file written: lib/joelOneSource.ts (7 sections, 35 phrase cards)",
+          "at": "2026-10-05T07:55:30Z"
+        },
+        {
+          "name": "style checker clean on first pass (python3 scripts/check_bible_note_style.py lib/joelOneSource.ts, 35 cards, No problems found)",
+          "at": "2026-10-05T07:56:00Z"
+        },
+        {
+          "name": "wired into reader: import + preserveExactPhraseBodies joel chapter 1 condition + applyPersonalJoelOneStudySections() added and called after the legacy applyPersonalJoelOneThroughThreeStudySections() in lib/bibleReaderStudyNotes.ts",
+          "at": "2026-10-05T07:56:05Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('Joel', 1): 7 sections, 35 cards, no throw)",
+          "at": "2026-10-05T07:56:16Z"
+        },
+        {
+          "name": "tsc --noEmit clean (no output, exit code 0)",
+          "at": "2026-10-05T07:57:30Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json entry, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals)",
+          "at": "2026-10-05T08:00:00Z"
+        }
+      ]
     }
   ]
 }
