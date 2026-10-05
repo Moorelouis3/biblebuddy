@@ -941,6 +941,7 @@ import { AMOS_FIVE_PERSONAL_SECTIONS } from "./amosFiveSource";
 import { AMOS_SIX_PERSONAL_SECTIONS } from "./amosSixSource";
 import { AMOS_SEVEN_PERSONAL_SECTIONS } from "./amosSevenSource";
 import { AMOS_EIGHT_PERSONAL_SECTIONS } from "./amosEightSource";
+import { AMOS_NINE_PERSONAL_SECTIONS } from "./amosNineSource";
 import { JOEL_TWO_PERSONAL_SECTIONS } from "./joelTwoSource";
 import { JOEL_THREE_PERSONAL_SECTIONS } from "./joelThreeSource";
 import { AMOS_1_9_PERSONAL_SECTIONS } from "./amosOneToNinePersonalNotes";
@@ -1292,7 +1293,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "daniel" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12)) ||
     (normalizeBook(book) === "hosea" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14)) ||
     (normalizeBook(book) === "joel" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
-    (normalizeBook(book) === "amos" && section.chapter >= 1 && section.chapter <= 8);
+    (normalizeBook(book) === "amos" && section.chapter >= 1 && section.chapter <= 9);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3612,6 +3613,7 @@ function applyPersonalAmosSevenStudySections() {
 
 function applyPersonalAmosEightStudySections() {
   replaceStudySectionsForBookRange("amos", 8, 8, AMOS_EIGHT_PERSONAL_SECTIONS);
+  replaceStudySectionsForBookRange("amos", 9, 9, AMOS_NINE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalObadiahOneStudySections() {
