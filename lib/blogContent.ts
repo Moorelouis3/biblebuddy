@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-29-explained",
+    title: "Proverbs 29 Explained: Hardened Necks, Kings, and No Vision",
+    description:
+      "Proverbs 29 explained verse by verse: a hardened neck against correction, kings and bribes, raising a child, and the fear of man vs trusting the LORD.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-29-explained",
+    publishedAt: "2026-10-05",
+    readTime: "14 min read",
+    image: "/blog-banners/proverbs-29-explained.jpg",
+    groupPost: {
+      title: "Proverbs 29 Explained 📖",
+      content:
+        "He was corrected.\nAgain and again.\n\n📌 Proverbs 29 asks what happens the next time.\n\n📖 Often reproved hardeneth his neck.\n📖 Where there is no vision, the people perish.\n📖 The fear of man bringeth a snare.\n\nNew article on:\n🟢 what **vision** actually means in verse 18\n🟢 why kings get **four whole verses** in this chapter\n🟢 trading the **fear of man** for trust in the LORD\n\nWhen were you last corrected, and did your neck soften or harden? 🙏",
+    },
+  },
+  {
     slug: "proverbs-28-explained",
     title: "Proverbs 28 Explained: Bold as a Lion and Covering vs Confessing Sin",
     description:
