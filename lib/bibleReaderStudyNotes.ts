@@ -934,6 +934,7 @@ import { HOSEA_FOURTEEN_PERSONAL_SECTIONS } from "./hoseaFourteenSource";
 import { JOEL_1_3_PERSONAL_SECTIONS } from "./joelOneToThreePersonalNotes";
 import { JOEL_ONE_PERSONAL_SECTIONS } from "./joelOneSource";
 import { AMOS_ONE_PERSONAL_SECTIONS } from "./amosOneSource";
+import { AMOS_TWO_PERSONAL_SECTIONS } from "./amosTwoSource";
 import { JOEL_TWO_PERSONAL_SECTIONS } from "./joelTwoSource";
 import { JOEL_THREE_PERSONAL_SECTIONS } from "./joelThreeSource";
 import { AMOS_1_9_PERSONAL_SECTIONS } from "./amosOneToNinePersonalNotes";
@@ -1285,7 +1286,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "daniel" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12)) ||
     (normalizeBook(book) === "hosea" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14)) ||
     (normalizeBook(book) === "joel" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
-    (normalizeBook(book) === "amos" && section.chapter === 1);
+    (normalizeBook(book) === "amos" && section.chapter >= 1 && section.chapter <= 2);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3577,6 +3578,10 @@ function applyPersonalAmosOneThroughNineStudySections() {
 
 function applyPersonalAmosOneStudySections() {
   replaceStudySectionsForBookRange("amos", 1, 1, AMOS_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalAmosTwoStudySections() {
+  replaceStudySectionsForBookRange("amos", 2, 2, AMOS_TWO_PERSONAL_SECTIONS);
 }
 
 function applyPersonalObadiahOneStudySections() {
@@ -11221,6 +11226,7 @@ applyPersonalJoelTwoStudySections();
 applyPersonalJoelThreeStudySections();
 applyPersonalAmosOneThroughNineStudySections();
 applyPersonalAmosOneStudySections();
+applyPersonalAmosTwoStudySections();
 applyPersonalObadiahOneStudySections();
 applyPersonalJonahOneThroughFourStudySections();
 applyPersonalMicahOneThroughSevenStudySections();
