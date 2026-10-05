@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "proverbs-30-explained",
+    title: "Proverbs 30 Explained: Agur's Confession and Four Things Too Wonderful",
+    description:
+      "Proverbs 30 explained verse by verse: Agur's confession, a prayer for neither poverty nor riches, and riddles about mystery and wisdom.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/proverbs-30-explained",
+    publishedAt: "2026-10-05",
+    readTime: "15 min read",
+    image: "/blog-banners/proverbs-30-explained.jpg",
+    groupPost: {
+      title: "Proverbs 30 Explained 📖",
+      content:
+        "A new voice shows up in Proverbs 30.\nFirst thing he does is call himself brutish.\n\n📌 Agur admits what he does not know, then keeps teaching anyway.\n\n📖 Every word of God is pure, add nothing to it.\n📖 He prays for neither poverty nor riches.\n📖 Four small creatures praised for pure wisdom, not strength.\n\nNew article on:\n🟢 who **Agur** actually was\n🟢 the riddle of **Ithiel and Ucal**\n🟢 what **the way of a man with a maid** means\n\nWhat is one thing about God you honestly do not fully understand? 🙏",
+    },
+  },
+  {
     slug: "proverbs-29-explained",
     title: "Proverbs 29 Explained: Hardened Necks, Kings, and No Vision",
     description:
