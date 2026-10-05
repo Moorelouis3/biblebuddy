@@ -6867,3 +6867,7 @@ Queue remaining: 22
 ## 2026-10-05T22:57:30Z (hourly chapter notes run)
 Chapter: Jonah 3 | Duration: 9 min | Sections: 4 | Cards: 22 | Status: pass
 Next up: Jonah 4
+
+## 2026-10-05T23:58:30Z (hourly chapter notes run)
+Chapter: Jonah 4 | Duration: 11 min | Sections: 5 | Cards: 27 | Status: pass
+Next up: Micah 1

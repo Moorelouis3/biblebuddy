@@ -950,6 +950,7 @@ import { JONAH_1_4_PERSONAL_SECTIONS } from "./jonahOneToFourPersonalNotes";
 import { JONAH_ONE_PERSONAL_SECTIONS } from "./jonahOneSource";
 import { JONAH_TWO_PERSONAL_SECTIONS } from "./jonahTwoSource";
 import { JONAH_THREE_PERSONAL_SECTIONS } from "./jonahThreeSource";
+import { JONAH_FOUR_PERSONAL_SECTIONS } from "./jonahFourSource";
 import { MICAH_1_7_PERSONAL_SECTIONS } from "./micahOneToSevenPersonalNotes";
 import { NAHUM_1_3_PERSONAL_SECTIONS } from "./nahumOneToThreePersonalNotes";
 import { HABAKKUK_1_3_PERSONAL_SECTIONS } from "./habakkukOneToThreePersonalNotes";
@@ -1298,7 +1299,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "joel" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "amos" && section.chapter >= 1 && section.chapter <= 9) ||
     (normalizeBook(book) === "obadiah" && section.chapter === 1) ||
-    (normalizeBook(book) === "jonah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3));
+    (normalizeBook(book) === "jonah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3635,6 +3636,10 @@ function applyPersonalJonahTwoStudySections() {
 
 function applyPersonalJonahThreeStudySections() {
   replaceStudySectionsForBookRange("jonah", 3, 3, JONAH_THREE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJonahFourStudySections() {
+  replaceStudySectionsForBookRange("jonah", 4, 4, JONAH_FOUR_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJonahOneThroughFourStudySections() {
@@ -11287,6 +11292,7 @@ applyPersonalJonahOneThroughFourStudySections();
 applyPersonalJonahOneStudySections();
 applyPersonalJonahTwoStudySections();
 applyPersonalJonahThreeStudySections();
+applyPersonalJonahFourStudySections();
 applyPersonalMicahOneThroughSevenStudySections();
 applyPersonalNahumOneThroughThreeStudySections();
 applyPersonalHabakkukOneThroughThreeStudySections();
