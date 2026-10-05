@@ -6795,3 +6795,7 @@ Next up: Hosea 14
 ## 2026-10-05T06:45:00Z (bug fixer run)
 Bug fixed: opening Bible Studies from outside Plan Day (bottom nav, home cards, chat links) bounced through an extra blank redirect step that could stall and leave the screen blank on a slow connection. Now redirects straight to /plan. Commit bab9c90, pushed to main, no [deploy] tag.
 Also closed this run: 1 stale "can't reproduce" reading-page report re-checked and left open with no new info; 3 crash reports (Meta/Facebook crawler bot hitting old chunk URLs right after a deploy) marked not_a_bug, matching the established pattern. 1 newest report (/start, couldn't access site) left untouched, over the 5-per-run limit.
+
+## 2026-10-05T06:58:12Z (hourly chapter notes run)
+Chapter: Hosea 14 | Duration: 11 min | Sections: 3 | Cards: 25 | Status: pass
+Next up: Joel 1

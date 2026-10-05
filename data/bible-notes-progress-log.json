@@ -52330,6 +52330,59 @@
           "at": "2026-10-05T06:02:01Z"
         }
       ]
+    },
+    {
+      "book": "Hosea",
+      "chapter": 14,
+      "startedAt": "2026-10-05T06:47:15Z",
+      "finishedAt": "2026-10-05T06:58:12Z",
+      "durationMinutes": 11.0,
+      "sections": 3,
+      "cards": 25,
+      "verses": 9,
+      "notes": "New chapter, normal forward progress (not a style redo). Last chapter of Hosea. Wrote lib/hoseaFourteenSource.ts from scratch, wired into lib/bibleReaderStudyNotes.ts overriding the legacy hoseaThirteenToFourteenPersonalNotes.ts bulk file for chapter 14 only. Style checker clean first pass, parser check and tsc both clean. Density 2.78 cards/verse, deliberately on the richer end since this is the book's resolution chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-05T06:47:52Z"
+        },
+        {
+          "name": "target chapter determined: Hosea 14 (new chapter, normal forward progress, last chapter of Hosea)",
+          "at": "2026-10-05T06:48:12Z"
+        },
+        {
+          "name": "KJV text fetched (Hosea 14, 9 verses, raw.githubusercontent.com aruljohn/Bible-kjv mirror)",
+          "at": "2026-10-05T06:48:30Z"
+        },
+        {
+          "name": "style spec and skill pipeline read in full (docs/bible-study-note-style.md, .claude/skills/bible-notes/SKILL.md, lib/genesisThirtyOneSource.ts and lib/hoseaThirteenSource.ts as reference, scripts/check_bible_note_style.py)",
+          "at": "2026-10-05T06:52:46Z"
+        },
+        {
+          "name": "source file written: lib/hoseaFourteenSource.ts (3 sections, 25 phrase cards)",
+          "at": "2026-10-05T06:53:00Z"
+        },
+        {
+          "name": "style checker clean on first pass (python3 scripts/check_bible_note_style.py lib/hoseaFourteenSource.ts, 25 cards, No problems found)",
+          "at": "2026-10-05T06:53:41Z"
+        },
+        {
+          "name": "wired into reader: import + preserveExactPhraseBodies chapter 14 added + applyPersonalHoseaFourteenStudySections() added and called in lib/bibleReaderStudyNotes.ts",
+          "at": "2026-10-05T06:54:05Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('hosea', 14): 3 sections, 25 cards, verbatim)",
+          "at": "2026-10-05T06:54:20Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-10-05T06:54:51Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals, data/bible-notes-progress-log.json entry)",
+          "at": "2026-10-05T06:57:42Z"
+        }
+      ]
     }
   ]
 }
