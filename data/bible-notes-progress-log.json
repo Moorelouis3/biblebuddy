@@ -52448,6 +52448,59 @@
           "at": "2026-10-05T08:02:15Z"
         }
       ]
+    },
+    {
+      "book": "Joel",
+      "chapter": 2,
+      "startedAt": "2026-10-05T08:46:23Z",
+      "finishedAt": "2026-10-05T08:59:16Z",
+      "durationMinutes": 12.9,
+      "sections": 11,
+      "cards": 62,
+      "verses": 32,
+      "notes": "New chapter, normal forward progress (not a style redo; Joel 2 was never in data/bible-notes-style-redo-remaining.json). Second chapter of Joel. Wrote lib/joelTwoSource.ts from scratch, wired into lib/bibleReaderStudyNotes.ts overriding the legacy joelOneToThreePersonalNotes.ts bulk file for chapter 2 only (chapter 3 untouched, still legacy). Style checker caught one bullet one word over the limit on first pass, fixed, clean on second pass. Parser check and tsc both clean. Density 1.94 cards/verse.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, 31s)",
+          "at": "2026-10-05T08:46:54Z"
+        },
+        {
+          "name": "target chapter determined: Joel 2 (new chapter, normal forward progress after Joel 1; priority queue and style-redo backlog both confirmed empty)",
+          "at": "2026-10-05T08:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (Joel 2, 32 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-10-05T08:47:35Z"
+        },
+        {
+          "name": "style spec and skill pipeline read in full (docs/bible-study-note-style.md, scripts/check_bible_note_style.py, lib/genesisThirtyOneSource.ts and lib/joelOneSource.ts as reference)",
+          "at": "2026-10-05T08:53:00Z"
+        },
+        {
+          "name": "source file written: lib/joelTwoSource.ts (11 sections, 62 phrase cards)",
+          "at": "2026-10-05T08:56:30Z"
+        },
+        {
+          "name": "style checker: 1 problem found first pass (bullet over word limit), fixed, clean on second pass (python3 scripts/check_bible_note_style.py lib/joelTwoSource.ts, 62 cards, No problems found)",
+          "at": "2026-10-05T08:57:05Z"
+        },
+        {
+          "name": "wired into reader: import + preserveExactPhraseBodies joel chapter 2 condition + applyPersonalJoelTwoStudySections() added and called after applyPersonalJoelOneStudySections() in lib/bibleReaderStudyNotes.ts",
+          "at": "2026-10-05T08:58:00Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('joel', 2): 11 sections, 62 cards, no throw)",
+          "at": "2026-10-05T08:58:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean (no output, exit code 0)",
+          "at": "2026-10-05T08:59:16Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json entry, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals)",
+          "at": "2026-10-05T09:00:30Z"
+        }
+      ]
     }
   ]
 }
