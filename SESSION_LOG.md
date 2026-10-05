@@ -6779,3 +6779,7 @@ Next up: Hosea 10
 ## 2026-10-05T02:58:00Z (hourly chapter notes run)
 Chapter: Hosea 10 | Duration: 11.5 min | Sections: 4 | Cards: 29 | Status: pass
 Next up: Hosea 11
+
+## 2026-10-05T03:56:30Z (hourly chapter notes run)
+Chapter: Hosea 11 | Duration: 10.3 min | Sections: 4 | Cards: 27 | Status: pass
+Next up: Hosea 12
