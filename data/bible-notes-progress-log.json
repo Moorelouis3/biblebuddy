@@ -52813,7 +52813,7 @@
       "sections": 9,
       "cards": 54,
       "verses": 27,
-      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter, normal forward progress after Amos 4 (priority queue and style-redo backlog both empty). Fetched real KJV text for Amos 5 (27 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Wrote lib/amosFiveSource.ts (9 sections, 54 cards, density exactly 2.0 cards/verse) following docs/bible-study-note-style.md exactly, using lib/amosFourSource.ts and lib/genesisThirtyOneSource.ts as structural/voice reference. check_bible_note_style.py found 3 problems on the first pass (three bullets one word over the 8-word limit), fixed, second pass clean. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies amos range extended from <=4 to <=5, applyPersonalAmosFiveStudySections() added calling replaceStudySectionsForBookRange(\"amos\", 5, 5, ...) right after applyPersonalAmosFourStudySections(). Parser check passed (9/9 sections, verse ranges 1-3/4-6/7-9/10-13/14-15/16-17/18-20/21-24/25-27, 54 total cards, verbatim). tsc --noEmit -p . clean. Logged in docs/BIBLE_BUDDY_NOTES_PROGRESS.md (running totals updated to 957) and SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per CLAUDE.md deploy cadence.",
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter, normal forward progress after Amos 4 (priority queue and style-redo backlog both empty). Fetched real KJV text for Amos 5 (27 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Wrote lib/amosFiveSource.ts (9 sections, 54 cards, density exactly 2.0 cards/verse) following docs/bible-study-note-style.md exactly, using lib/amosFourSource.ts and lib/genesisThirtyOneSource.ts as structural/voice reference. check_bible_note_style.py found 3 problems on the first pass (three bullets one word over the 8-word limit), fixed, second pass clean. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies amos range extended from <=4 to <=5, applyPersonalAmosFiveStudySections() added calling replaceStudySectionsForBookRange(\"amos\", 5, 5, ...) right after applyPersonalAmosFourStudySections(). Parser check passed (9/9 sections, verse ranges 1-3/4-6/7-9/10-13/14-15/16-17/18-20/21-24/25-27, 54 total cards, verbatim). tsc --noEmit -p . clean. Logged in docs/BIBLE_BUDDY_NOTES_PROGRESS.md (running totals updated to 957) and SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per CLAUDE.md deploy cadence. Note: local origin/main ref was initially stale in the working copy (showed Jeremiah 27, no common ancestor with HEAD), but a fresh `git fetch origin main` corrected it to the real tip (58c88b6, right before this commit), confirming the earlier mismatch was just a stale cached ref rather than real divergence. Pushed cleanly as a fast-forward, confirmed via a second fetch showing origin/main at 7ff0f04, matching HEAD exactly.",
       "steps": [
         {
           "name": "npm install done",
@@ -52858,6 +52858,14 @@
         {
           "name": "session log appended (hourly chapter notes run)",
           "at": "2026-10-05T15:00:56Z"
+        },
+        {
+          "name": "committed (7ff0f04, detached HEAD built on real origin/main tip 58c88b6)",
+          "at": "2026-10-05T15:01:40Z"
+        },
+        {
+          "name": "pushed to origin/main (58c88b6..7ff0f04), confirmed via fetch",
+          "at": "2026-10-05T15:02:16Z"
         }
       ],
       "redoOrNew": "new"
