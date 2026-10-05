@@ -331,6 +331,11 @@
       "type": "chapter_count_checkpoint",
       "timestamp": "2026-10-01T12:59:30Z",
       "detail": "Jeremiah 42 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, block, or throttling encountered. 11 chapters have shipped since the last checkpoint at 2026-10-01T01:58:00Z (Jeremiah 31), each in its own separate hourly run: Jeremiah 32 through 42. No block or cooldown event logged anywhere in that span. Session start this run was clean, git was in a detached HEAD state pointing at origin/main with no local divergence, checked out main cleanly, npm install completed cleanly on a fresh clone."
+    },
+    {
+      "type": "chapter_count_checkpoint",
+      "timestamp": "2026-10-05T14:59:40Z",
+      "detail": "Amos 5 shipped this run via the raw.githubusercontent.com/aruljohn/Bible-kjv mirror, no usage limit, rate limit, block, or throttling encountered this run. The last checkpoint was 2026-10-01T12:59:30Z at Jeremiah 42, and roughly 97 chapters have shipped since then (Jeremiah 43-52, all of Lamentations, all of Ezekiel, all of Daniel, all of Hosea, all of Joel, Amos 1-5), each in its own separate hourly run per the progress log, far more than the roughly-every-10-20-chapters checkpoint cadence this file calls for. No run in that span logged a block or resumed event, so there is no evidence of any limit or cooldown having occurred in that gap, but this run cannot independently confirm that every one of those runs would have logged a block event had one happened. Logging this checkpoint now to get the cadence back on track going forward."
     }
   ]
 }
