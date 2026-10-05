@@ -52695,6 +52695,60 @@
           "at": "2026-10-05T11:59:09Z"
         }
       ]
+    },
+    {
+      "book": "Amos",
+      "chapter": 3,
+      "startedAt": "2026-10-05T12:47:19Z",
+      "finishedAt": "2026-10-05T12:55:18Z",
+      "durationMinutes": 8,
+      "sections": 6,
+      "cards": 26,
+      "verses": 15,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 34s). Style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty (remaining: []), so this was normal forward progress. The previous log entry (Amos 2) explicitly named Amos 3 as the next forward-progress target, and lib/bibleReaderStudyNotes.ts wiring confirmed no amosThreeSource.ts file and no chapter 3 override existed yet, only the legacy amosOneToNinePersonalNotes.ts bulk file covering it. Treated as a brand new chapter per the normal pipeline, same override pattern used for Amos 1 and Amos 2: wrote a dedicated lib/amosThreeSource.ts and added applyPersonalAmosThreeStudySections() right after applyPersonalAmosTwoStudySections(), overriding only chapter 3 and leaving the legacy file in place for chapters 4 through 9. Fetched real KJV text for Amos 3 (15 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens with God naming Israel as the only family He has known of all the earth, meaning being chosen raises accountability rather than removing it (1-2); a chain of rhetorical cause and effect questions, two walking together only by agreement, a lion roaring only after it has caught prey, a young lion crying from its den matching that same image, a bird only caught by a snare already set, and evil in a city tracing back to the LORD, building the case that Amos's prophecy has a real cause behind it (3-6); Amos defending his own compulsion to speak, since the LORD reveals His secret to His prophets first and the lion has already roared, so he cannot but prophesy (7-8); pagan Ashdod and Egypt summoned as ironic witnesses to behold the violent disorder and injustice inside Samaria, where the people no longer even know how to do right and store up wealth from violence in their palaces (9-10); an adversary surrounding the land to strip Israel's strength, pictured by the shepherd's law of only recovering a torn ear or leg from a lion's mouth as proof, a picture of a remnant surviving while the wealthy relax on imported Damascus couches (11-12); and the closing visitation, God testifying against the house of Jacob, striking the golden calf shrine at Bethel and cutting off the altar horns that were believed to offer safety, then smiting the winter and summer houses and the houses of ivory funded by that same injustice, closing on every great house coming to an end (13-15). Split into 6 sections (1-2, 3-6, 7-8, 9-10, 11-12, 13-15), matching the chapter's 15 verses exactly with no gaps. Density about 1.73 cards per verse (15 verses, 26 cards). scripts/check_bible_note_style.py passed clean on the first mechanical pass (26 cards, 0 problems), but a manual section 13 and line-rule eye check caught two banned stacked-clause connectors the mechanical checker does not scan for, rather than in the prophet's-guild card and while in the Damascus couch card, both rewritten into single-idea lines, then the checker was re-run clean. Every title verified programmatically as an exact contiguous KJV substring against the fetched Amos 3 text. Parser check passed via getBibleReaderStudySections('Amos', 3): 6/6 sections, verse ranges 1-2/3-6/7-8/9-10/11-12/13-15 with no gaps, final verse 15, 26 total cards, preserveExactPhraseFormatting true confirmed. npx tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/amosThreeSource.ts, the amos condition in preserveExactPhraseBodies widened from chapters 1 through 2 to 1 through 3, new applyPersonalAmosThreeStudySections function added calling replaceStudySectionsForBookRange(\"amos\", 3, 3, AMOS_THREE_PERSONAL_SECTIONS), invoked right after applyPersonalAmosTwoStudySections() in the call order. Next forward-progress target is Amos 4.",
+      "mode": "new chapter (normal forward progress, overriding chapter 3 of a legacy multi-chapter bulk file, same pattern used for Amos 1, Amos 2, Joel, and Hosea)",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, 34s)",
+          "at": "2026-10-05T12:47:53Z"
+        },
+        {
+          "name": "target chapter determined: Amos 3 (style-redo backlog empty; normal forward progress after Amos 2, which is the last entry in this log and explicitly named Amos 3 as next target)",
+          "at": "2026-10-05T12:48:30Z"
+        },
+        {
+          "name": "KJV text fetched for Amos 3 (15 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-10-05T12:48:11Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-05T12:50:30Z"
+        },
+        {
+          "name": "source file lib/amosThreeSource.ts written (6 sections, 26 cards)",
+          "at": "2026-10-05T12:51:08Z"
+        },
+        {
+          "name": "style checker: 2 stacked-clause words found by manual eye check (rather than, while), not flagged by the mechanical checker itself which was clean on first pass; both rewritten, checker re-run clean",
+          "at": "2026-10-05T12:51:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies amos range widened to chapter 3, new applyPersonalAmosThreeStudySections function, invoked after applyPersonalAmosTwoStudySections)",
+          "at": "2026-10-05T12:52:10Z"
+        },
+        {
+          "name": "parser check passed: 6/6 sections, 26 cards, verse ranges 1-2/3-6/7-8/9-10/11-12/13-15 with no gaps, final verse 15, no throw",
+          "at": "2026-10-05T12:52:58Z"
+        },
+        {
+          "name": "tsc --noEmit clean (no output, exit code 0)",
+          "at": "2026-10-05T12:52:58Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-05T12:55:18Z"
+        }
+      ]
     }
   ]
 }
