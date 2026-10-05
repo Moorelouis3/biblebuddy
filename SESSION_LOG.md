@@ -6855,3 +6855,7 @@ Next up: Jonah 1
 ## 2026-10-05T20:58:04Z (hourly chapter notes run)
 Chapter: Jonah 1 | Duration: 11 min | Sections: 5 | Cards: 35 | Status: pass
 Next up: Jonah 2
+
+## 2026-10-05T22:05:00Z (hourly chapter notes run)
+Chapter: Jonah 2 | Duration: 19 min | Sections: 4 | Cards: 24 | Status: pass
+Next up: Jonah 3

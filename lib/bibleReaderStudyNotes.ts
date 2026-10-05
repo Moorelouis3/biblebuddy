@@ -948,6 +948,7 @@ import { AMOS_1_9_PERSONAL_SECTIONS } from "./amosOneToNinePersonalNotes";
 import { OBADIAH_1_PERSONAL_SECTIONS } from "./obadiahOneSource";
 import { JONAH_1_4_PERSONAL_SECTIONS } from "./jonahOneToFourPersonalNotes";
 import { JONAH_ONE_PERSONAL_SECTIONS } from "./jonahOneSource";
+import { JONAH_TWO_PERSONAL_SECTIONS } from "./jonahTwoSource";
 import { MICAH_1_7_PERSONAL_SECTIONS } from "./micahOneToSevenPersonalNotes";
 import { NAHUM_1_3_PERSONAL_SECTIONS } from "./nahumOneToThreePersonalNotes";
 import { HABAKKUK_1_3_PERSONAL_SECTIONS } from "./habakkukOneToThreePersonalNotes";
@@ -1296,7 +1297,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "joel" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "amos" && section.chapter >= 1 && section.chapter <= 9) ||
     (normalizeBook(book) === "obadiah" && section.chapter === 1) ||
-    (normalizeBook(book) === "jonah" && section.chapter === 1);
+    (normalizeBook(book) === "jonah" && (section.chapter === 1 || section.chapter === 2));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3625,6 +3626,10 @@ function applyPersonalObadiahOneStudySections() {
 
 function applyPersonalJonahOneStudySections() {
   replaceStudySectionsForBookRange("jonah", 1, 1, JONAH_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJonahTwoStudySections() {
+  replaceStudySectionsForBookRange("jonah", 2, 2, JONAH_TWO_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJonahOneThroughFourStudySections() {
@@ -11275,6 +11280,7 @@ applyPersonalAmosEightStudySections();
 applyPersonalObadiahOneStudySections();
 applyPersonalJonahOneThroughFourStudySections();
 applyPersonalJonahOneStudySections();
+applyPersonalJonahTwoStudySections();
 applyPersonalMicahOneThroughSevenStudySections();
 applyPersonalNahumOneThroughThreeStudySections();
 applyPersonalHabakkukOneThroughThreeStudySections();
