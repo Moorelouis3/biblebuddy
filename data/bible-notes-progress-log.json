@@ -53695,6 +53695,63 @@
           "at": "2026-10-06T05:05:00Z"
         }
       ]
+    },
+    {
+      "book": "Micah",
+      "chapter": 6,
+      "startedAt": "2026-10-06T05:46:25Z",
+      "finishedAt": null,
+      "durationMinutes": null,
+      "sections": 4,
+      "cards": 39,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 44s). Found local git on a detached HEAD; a fresh git fetch origin main showed origin/main had already advanced to that same commit (the initial clone's remote-tracking ref was just stale, not an actual unpushed-work problem), so ran git checkout -B main origin/main to put local main back on a proper branch pointer with nothing lost or re-pushed. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after Micah 5, the real progress log's latest entry (971 entries) before this run. Micah 6 had no entry in the progress log and no dedicated per-chapter Source.ts file, only the legacy bulk file micahOneToSevenPersonalNotes.ts wired via replaceStudySectionsForBookRange(\"micah\", 1, 7, ...). Wrote a new dedicated lib/micahSixSource.ts file and added a narrower applyPersonalMicahSixStudySections() call that runs right after applyPersonalMicahFiveStudySections() so it overrides only chapter 6, leaving the legacy file in place to cover chapter 7 alone. Fetched real KJV text for Micah 6 (16 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter is Micah's covenant lawsuit: God calls the mountains and hills as ancient witnesses and opens a formal legal case against Israel, recalling the Exodus, the redemption from Egypt, the leadership of Moses, Aaron, and Miriam, and the Balak and Balaam episode from Numbers spanning Shittim to Gilgal (1-5); the questioner's escalating, almost absurd bargaining over burnt offerings, thousands of rams, rivers of oil, and even a firstborn child, answered by the chapter's most famous verse naming what God already required all along, to do justly, love mercy, and walk humbly with God (6-8); the city's rigged economy exposed through the scant measure, wicked balances, the bag of deceitful weights, and rich men whose fortune was built on violence and lies (9-12); and the Deuteronomy style covenant curses of futility, eating without being satisfied, sowing without reaping, treading olives without oil, pressing wine without drinking it, landing on a nation that chose to imitate the corrupt dynasties of Omri and Ahab, closing on the reproach that comes from carrying God's name while acting like this (13-16). Split into 4 sections (1-5, 6-8, 9-12, 13-16), matching the chapter's 16 verses exactly with no gaps. Density about 2.44 cards per verse (16 verses, 39 cards). scripts/check_bible_note_style.py initially flagged one banned hedge word (\"fairly\"), fixed by rewording to \"honestly\"; second pass clean across all 39 cards, no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using the book emoji or the arrow emoji. A manual section 13 eye check caught one stacked clause joined with the word while, which the mechanical checker cannot detect, on the closing card Ye Shall Bear The Reproach Of My People, split into two separate lines and reverified with both the style checker and a fresh tsc run. The eye check also confirmed every card opens with one of the four approved moves, defines its key terms in plain language (contend, controversy, plead, testify, redeemed, Shittim unto Gilgal, high God, burnt offering, hesed and mercy, scant measure, deceitful weights, smiting, casting down, travaileth and treading olives, statutes of Omri, hissing, reproach), and closes on meaning rather than mechanics. Every title verified as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections('micah', 6): 4/4 sections, verse ranges 1-5/6-8/9-12/13-16 with no gaps, 39 total cards rendering verbatim, no throw. npx tsc --noEmit -p . came back clean (no output, exit code 0), run twice, once before and once after the eye-check fix, both clean. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/micahSixSource.ts, the micah condition in preserveExactPhraseBodies widened to chapters 1 through 6, new applyPersonalMicahSixStudySections() function added calling replaceStudySectionsForBookRange(\"micah\", 6, 6, MICAH_SIX_PERSONAL_SECTIONS), invoked right after applyPersonalMicahFiveStudySections(). Logged in docs/BIBLE_BUDDY_NOTES_PROGRESS.md (running totals updated to 972 chapters) and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next forward-progress target is Micah 7, the last chapter still on the legacy bulk file, which once migrated will complete the whole book of Micah.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, about 44s)",
+          "at": "2026-10-06T05:47:30Z"
+        },
+        {
+          "name": "target chapter determined: Micah 6 (normal forward progress, priority queue and redo backlog both empty, Micah 5 is the latest finished chapter; also fixed stale local branch pointer via git fetch + checkout -B main origin/main, no divergence found)",
+          "at": "2026-10-06T05:48:46Z"
+        },
+        {
+          "name": "KJV text fetched (Micah 6, 16 verses, aruljohn mirror)",
+          "at": "2026-10-06T05:49:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-10-06T05:51:00Z"
+        },
+        {
+          "name": "source file written: lib/micahSixSource.ts (39 cards, 4 sections)",
+          "at": "2026-10-06T05:59:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 fix for banned hedge word 'fairly', clean on second pass)",
+          "at": "2026-10-06T06:00:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to chapter 6, applyPersonalMicahSixStudySections added and called)",
+          "at": "2026-10-06T06:00:40Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('micah', 6): 4/4 sections, 39 cards, no throw)",
+          "at": "2026-10-06T06:01:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors (first pass)",
+          "at": "2026-10-06T06:04:10Z"
+        },
+        {
+          "name": "manual section 13 eye check caught one stacked clause joined by 'while' (not caught by the mechanical checker), fixed by splitting into two lines, style checker and tsc both reconfirmed clean",
+          "at": "2026-10-06T06:09:30Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-06T06:10:17Z"
+        }
+      ]
     }
   ]
 }
