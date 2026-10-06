@@ -54273,6 +54273,59 @@
           "at": "2026-10-06T15:01:44Z"
         }
       ]
+    },
+    {
+      "book": "Zephaniah",
+      "chapter": 3,
+      "startedAt": "2026-10-06T15:46:15Z",
+      "finishedAt": "2026-10-06T15:58:03Z",
+      "durationMinutes": 12,
+      "sections": 5,
+      "cards": 40,
+      "verses": 20,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 31s). Priority queue and style-redo backlog (data/bible-notes-priority-queue.json, data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after Zephaniah 2. Zephaniah 3 had no dedicated per-chapter Source.ts file, only the legacy bulk file zephaniahOneToThreePersonalNotes.ts wired via replaceStudySectionsForBookRange(\"zephaniah\", 1, 3, ...). Wrote a new dedicated lib/zephaniahThreeSource.ts file and added a narrower applyPersonalZephaniahThreeStudySections() call right after the existing applyPersonalZephaniahTwoStudySections() call, so it overrides only chapter 3, completing the whole book of Zephaniah on dedicated per-chapter files. Fetched real KJV text for Zephaniah 3 (20 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter is Zephaniah's closing turn from indictment to restoration: Jerusalem named the filthy, oppressing city with corrupt princes, judges, prophets, and priests, set against the just LORD present in her midst (1-5); God's past judgments on other nations meant as a warning met with eager corruption instead, closing on the call to wait for him until the fire of his jealousy falls (6-8); the promise of a pure language, united worship, and a humbled remnant that no longer lies or fears (9-13); the sudden shift to command Zion to sing, with the LORD himself pictured as king in her midst, resting in his love and singing over her (14-17); and the closing promise to gather the sorrowful, save the lame, and visibly bring the captivity back before their own eyes (18-20). Split into 5 sections (1-5, 6-8, 9-13, 14-17, 18-20), matching the chapter's 20 verses exactly with no gaps. Density exactly 2.0 cards per verse (20 verses, 40 cards). scripts/check_bible_note_style.py initially flagged a banned hedge word (fairly) and 13 bullets over the 8 word limit, fixed by rewording, then clean across all 40 cards on the second pass. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, and closes on meaning rather than mechanics. Parser check passed via getBibleReaderStudySections(\"zephaniah\", 3): 5/5 sections, verse ranges 1-5/6-8/9-13/14-17/18-20 with no gaps, 40 total cards rendering verbatim, no throw. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies zephaniah condition widened to include chapter 3, new applyPersonalZephaniahThreeStudySections() function added, invoked right after applyPersonalZephaniahTwoStudySections(). Logged in docs/BIBLE_BUDDY_NOTES_PROGRESS.md and SESSION_LOG.md. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next forward-progress target is Haggai 1, the first chapter of the next book in canonical order.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-06T15:46:46Z"
+        },
+        {
+          "name": "target chapter determined: Zephaniah 3 (priority queue and style-redo backlog both empty, normal forward progress after Zephaniah 2)",
+          "at": "2026-10-06T15:47:20Z"
+        },
+        {
+          "name": "KJV text fetched for Zephaniah 3 (20 verses, raw.githubusercontent.com aruljohn/Bible-kjv mirror)",
+          "at": "2026-10-06T15:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-10-06T15:48:50Z"
+        },
+        {
+          "name": "source file lib/zephaniahThreeSource.ts written (5 sections, 40 cards)",
+          "at": "2026-10-06T15:52:20Z"
+        },
+        {
+          "name": "style checker initial pass flagged 14 problems (banned hedge word, 13 over-length bullets); fixed and clean on second pass",
+          "at": "2026-10-06T15:53:28Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies zephaniah chapter 3 condition, applyPersonalZephaniahThreeStudySections added and called right after applyPersonalZephaniahTwoStudySections)",
+          "at": "2026-10-06T15:55:20Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections(\"zephaniah\", 3): 5/5 sections, verse ranges 1-5/6-8/9-13/14-17/18-20 with no gaps, 40 total cards, no throw",
+          "at": "2026-10-06T15:56:10Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, exit code 0",
+          "at": "2026-10-06T15:57:06Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-06T15:58:03Z"
+        }
+      ]
     }
   ]
 }
