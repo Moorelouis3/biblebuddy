@@ -54444,6 +54444,59 @@
           "at": "2026-10-06T17:59:00Z"
         }
       ]
+    },
+    {
+      "book": "Zechariah",
+      "chapter": 1,
+      "startedAt": "2026-10-06T18:46:19Z",
+      "finishedAt": "2026-10-06T18:56:35Z",
+      "durationMinutes": 10,
+      "sections": 4,
+      "cards": 33,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 37s). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in each). Normal forward progress: the prior run's own log entry (Haggai 2) named Zechariah 1 as the next forward-progress target, and lib/ wiring confirmed only the legacy bulk file zechariahOneToFourteenPersonalNotes.ts covered chapter 1, via replaceStudySectionsForBookRange(\"zechariah\", 1, 14, ...), the same pattern seen before Nahum, Habakkuk, Zephaniah, and Haggai were each peeled into dedicated per-chapter files. Fetched real KJV text for Zechariah 1 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens with God's call through Zechariah (son of Berechiah, son of Iddo the prophet, dated to Darius's second year) to turn back to him unlike the fathers who ignored the former prophets and were eventually proven right in their own confession (1-6). It moves into Zechariah's first night vision: the angel of the LORD on a red horse among the myrtle trees in a low valley, flanked by a patrol of red, speckled, and white horses sent to walk to and fro through the earth, reporting that the whole earth sits still and at rest while Jerusalem remains in ruins (7-11). The angel of the LORD then intercedes, asking how long God will withhold mercy after the seventy years of exile Jeremiah had promised, and God answers with good and comfortable words: jealousy for Jerusalem and Zion, anger at the heathen nations who pushed the punishment further than he intended, and promises that his house will be built, a measuring line will be stretched over Jerusalem, the cities will prosper and spread abroad, and the LORD will yet comfort Zion and choose Jerusalem again (12-17). It closes with the second vision of four horns, representing the nations that scattered Judah, Israel, and Jerusalem, and four carpenters (skilled craftsmen, not only woodworkers) sent to fray (terrify) those horns and cast out the Gentile powers that had lifted up their own horn over the land of Judah to scatter it (18-21). Chunked into 4 sections matching the chapter's own scene breaks (1-6, 7-11, 12-17, 18-21), all 21 verses covered with no gaps. Density about 1.57 cards/verse (21 verses, 33 cards), in the same range as the reference implementation lib/genesisThirtyOneSource.ts and recent chapters like Haggai 2. scripts/check_bible_note_style.py passed clean on the first run, 33 cards, zero problems: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using \ud83d\udcd6 or \u27a1\ufe0f. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (sore, hearken, former prophets, threescore and ten, comfortable, jealous, heathen, Sebat, the bottom, carpenters, fray, horn), closes on meaning rather than mechanics, and that bullets compress rather than restate the body. Every title verified as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections(\"zechariah\", 1): 4/4 sections, verse ranges 1-6/7-11/12-17/18-21 with no gaps, 33 total cards rendering verbatim, no throw. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/zechariahOneSource.ts, the zechariah condition in preserveExactPhraseBodies added for chapter 1, new applyPersonalZechariahOneStudySections() function added calling replaceStudySectionsForBookRange(\"zechariah\", 1, 1, ZECHARIAH_ONE_PERSONAL_SECTIONS), invoked right after applyPersonalZechariahOneThroughFourteenStudySections() so it overrides only chapter 1, leaving chapters 2-14 on the legacy file for future runs. Logged in data/bible-notes-progress-log.json with full step timestamps, and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next forward-progress target is Zechariah 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-06T18:47:07Z"
+        },
+        {
+          "name": "target chapter determined: Zechariah 1 (normal forward progress, new chapter; priority queue and style-redo backlog both empty)",
+          "at": "2026-10-06T18:47:33Z"
+        },
+        {
+          "name": "KJV text fetched: Zechariah 1, 21 verses, from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-06T18:47:40Z"
+        },
+        {
+          "name": "style spec read: docs/bible-study-note-style.md",
+          "at": "2026-10-06T18:47:43Z"
+        },
+        {
+          "name": "source file written: lib/zechariahOneSource.ts (4 sections, 33 cards)",
+          "at": "2026-10-06T18:52:04Z"
+        },
+        {
+          "name": "style checker clean: check_bible_note_style.py -> 0 problems on first pass",
+          "at": "2026-10-06T18:52:55Z"
+        },
+        {
+          "name": "wired into reader: import, preserveExactPhraseBodies zechariah chapter 1, applyPersonalZechariahOneStudySections call",
+          "at": "2026-10-06T18:53:10Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections(zechariah, 1) -> 4 sections, 33 cards, no throw",
+          "at": "2026-10-06T18:53:17Z"
+        },
+        {
+          "name": "tsc clean: npx tsc --noEmit -p . exit 0",
+          "at": "2026-10-06T18:55:59Z"
+        },
+        {
+          "name": "progress files logged: progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md",
+          "at": "2026-10-06T18:56:35Z"
+        }
+      ]
     }
   ]
 }
