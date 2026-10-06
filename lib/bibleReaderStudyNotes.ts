@@ -954,6 +954,7 @@ import { JONAH_FOUR_PERSONAL_SECTIONS } from "./jonahFourSource";
 import { MICAH_1_7_PERSONAL_SECTIONS } from "./micahOneToSevenPersonalNotes";
 import { MICAH_ONE_PERSONAL_SECTIONS } from "./micahOneSource";
 import { MICAH_TWO_PERSONAL_SECTIONS } from "./micahTwoSource";
+import { MICAH_THREE_PERSONAL_SECTIONS } from "./micahThreeSource";
 import { NAHUM_1_3_PERSONAL_SECTIONS } from "./nahumOneToThreePersonalNotes";
 import { HABAKKUK_1_3_PERSONAL_SECTIONS } from "./habakkukOneToThreePersonalNotes";
 import { ZEPHANIAH_1_3_PERSONAL_SECTIONS } from "./zephaniahOneToThreePersonalNotes";
@@ -1302,7 +1303,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "amos" && section.chapter >= 1 && section.chapter <= 9) ||
     (normalizeBook(book) === "obadiah" && section.chapter === 1) ||
     (normalizeBook(book) === "jonah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
-    (normalizeBook(book) === "micah" && (section.chapter === 1 || section.chapter === 2));
+    (normalizeBook(book) === "micah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3659,6 +3660,10 @@ function applyPersonalMicahOneStudySections() {
 
 function applyPersonalMicahTwoStudySections() {
   replaceStudySectionsForBookRange("micah", 2, 2, MICAH_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMicahThreeStudySections() {
+  replaceStudySectionsForBookRange("micah", 3, 3, MICAH_THREE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalNahumOneThroughThreeStudySections() {
@@ -11307,6 +11312,7 @@ applyPersonalJonahFourStudySections();
 applyPersonalMicahOneThroughSevenStudySections();
 applyPersonalMicahOneStudySections();
 applyPersonalMicahTwoStudySections();
+applyPersonalMicahThreeStudySections();
 applyPersonalNahumOneThroughThreeStudySections();
 applyPersonalHabakkukOneThroughThreeStudySections();
 applyPersonalZephaniahOneThroughThreeStudySections();
