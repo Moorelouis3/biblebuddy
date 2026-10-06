@@ -11,6 +11,7 @@ import BlogPostBottom from "@/components/blog/BlogPostBottom";
 import BlogTopNav from "@/components/blog/BlogTopNav";
 import PromoSlot from "@/components/blog/PromoSlot";
 import BibleYearPromo from "@/components/blog/BibleYearPromo";
+import ProverbsStudyPromo from "@/components/blog/ProverbsStudyPromo";
 import { getArticleEngagementKey, getBlogArticle } from "@/lib/blogContent";
 
 const SITE_URL = "https://www.mybiblebuddy.net";
@@ -108,6 +109,22 @@ function extractFaqPairs(children: ReactNode): Array<{ question: string; answer:
   return [];
 }
 
+/**
+ * A Proverbs chapter post, by its slug: proverbs-1-explained to
+ * proverbs-31-explained.
+ *
+ * Matched on the slug rather than kept as a list, so the thirty-one posts and
+ * any later rewrite of them are covered without a list to maintain. The chapter
+ * number is bounded so an unrelated post that happens to start with the word
+ * cannot pick up the study's banner by accident.
+ */
+function isProverbsChapterPost(slug: string): boolean {
+  const m = /^proverbs-(\d{1,2})-explained$/.exec(slug || "");
+  if (!m) return false;
+  const chapter = Number(m[1]);
+  return chapter >= 1 && chapter <= 31;
+}
+
 // Weave PromoSlots into the article body: one after roughly every 1,000
 // words, plus one right before the FAQ section. Never inserts after the
 // final content block (so nothing stacks against the end CTA), and stops
@@ -118,13 +135,19 @@ function withPromoSlots(
   bibleYear?: { day: number; reading?: string },
 ): ReactNode[] {
   // Bible in One Year Study Notes get their own promo for that day instead of
-  // the rotating generic banners (Louis, 2026-09-19).
-  const promo = (key: string, slotIndex: number) =>
-    bibleYear ? (
-      <BibleYearPromo key={key} day={bibleYear.day} reading={bibleYear.reading} postSlug={postSlug} slotIndex={slotIndex} />
-    ) : (
-      <PromoSlot key={key} postSlug={postSlug} slotIndex={slotIndex} />
-    );
+  // the rotating generic banners (Louis, 2026-09-19). The Proverbs chapter
+  // posts do the same with the 31-day study (Louis, 2026-10-06): someone
+  // reading Proverbs 14 is already interested in the exact thing that study
+  // teaches, so a generic banner is the wrong offer on those pages.
+  const promo = (key: string, slotIndex: number) => {
+    if (bibleYear) {
+      return <BibleYearPromo key={key} day={bibleYear.day} reading={bibleYear.reading} postSlug={postSlug} slotIndex={slotIndex} />;
+    }
+    if (isProverbsChapterPost(postSlug)) {
+      return <ProverbsStudyPromo key={key} postSlug={postSlug} slotIndex={slotIndex} />;
+    }
+    return <PromoSlot key={key} postSlug={postSlug} slotIndex={slotIndex} />;
+  };
   const nodes = Children.toArray(children);
   const out: ReactNode[] = [];
   let wordsSincePromo = 0;
@@ -136,7 +159,8 @@ function withPromoSlots(
 
     if (isFaqSection) {
       const previous = out[out.length - 1];
-      const previousIsPromo = isValidElement(previous) && (previous.type === PromoSlot || previous.type === BibleYearPromo);
+      const previousIsPromo = isValidElement(previous)
+        && (previous.type === PromoSlot || previous.type === BibleYearPromo || previous.type === ProverbsStudyPromo);
       if (!previousIsPromo) {
         out.push(promo("promo-before-faq", slotIndex++));
       }
