@@ -6883,3 +6883,7 @@ Next up: Micah 3
 ## 2026-10-06T02:59:30Z (hourly chapter notes run)
 Chapter: Micah 3 | Duration: 13 min | Sections: 3 | Cards: 27 | Status: pass
 Next up: Micah 4
+
+## 2026-10-06T04:12:22Z (hourly chapter notes run)
+Chapter: Micah 4 | Duration: 25 min | Sections: 3 | Cards: 33 | Status: pass
+Next up: Micah 5
