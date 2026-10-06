@@ -53700,8 +53700,8 @@
       "book": "Micah",
       "chapter": 6,
       "startedAt": "2026-10-06T05:46:25Z",
-      "finishedAt": null,
-      "durationMinutes": null,
+      "finishedAt": "2026-10-06T06:11:42Z",
+      "durationMinutes": 25,
       "sections": 4,
       "cards": 39,
       "verses": 16,
@@ -53750,6 +53750,14 @@
         {
           "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
           "at": "2026-10-06T06:10:17Z"
+        },
+        {
+          "name": "committed (64784ec: Add Micah 6 study notes)",
+          "at": "2026-10-06T06:10:50Z"
+        },
+        {
+          "name": "pushed to origin/main, confirmed via git fetch + git log origin/main and git status (clean, up to date)",
+          "at": "2026-10-06T06:11:42Z"
         }
       ]
     }
