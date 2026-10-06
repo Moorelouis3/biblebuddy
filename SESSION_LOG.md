@@ -6951,3 +6951,7 @@ Next up: Zechariah 2
 ## 2026-10-06T19:56:40Z (hourly chapter notes run)
 Chapter: Zechariah 2 | Duration: 11 min | Sections: 3 | Cards: 23 | Status: pass
 Next up: Zechariah 3
+
+## 2026-10-06T20:56:34Z (hourly chapter notes run)
+Chapter: Zechariah 3 | Duration: 10 min | Sections: 4 | Cards: 21 | Status: pass
+Next up: Zechariah 4
