@@ -6927,3 +6927,7 @@ Next up: Zephaniah 1
 ## 2026-10-06T14:03:23Z (hourly chapter notes run)
 Chapter: Zephaniah 1 | Duration: 17 min | Sections: 6 | Cards: 40 | Status: pass
 Next up: Zephaniah 2
+
+## 2026-10-06T15:00:00Z (hourly chapter notes run)
+Chapter: Zephaniah 2 | Duration: 14 min | Sections: 4 | Cards: 29 | Status: pass
+Next up: Zephaniah 3

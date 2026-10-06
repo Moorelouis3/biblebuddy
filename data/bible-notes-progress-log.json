@@ -44228,7 +44228,7 @@
       "chapter": 58,
       "startedAt": "2026-09-25T13:46:48Z",
       "finishedAt": "2026-09-25T13:56:48Z",
-      "durationMinutes": 10.0,
+      "durationMinutes": 10,
       "sections": 6,
       "cards": 27,
       "verses": 14,
@@ -44818,7 +44818,7 @@
       "chapter": 2,
       "startedAt": "2026-09-26T01:47:33Z",
       "finishedAt": "2026-09-26T01:57:33Z",
-      "durationMinutes": 10.0,
+      "durationMinutes": 10,
       "sections": 8,
       "cards": 30,
       "verses": 37,
@@ -45546,7 +45546,7 @@
       "chapter": 14,
       "startedAt": "2026-09-26T13:46:51Z",
       "finishedAt": "2026-09-26T14:12:49Z",
-      "durationMinutes": 26.0,
+      "durationMinutes": 26,
       "sections": 7,
       "cards": 24,
       "verses": 22,
@@ -47243,7 +47243,7 @@
       "chapter": 44,
       "startedAt": "2026-10-01T14:46:30Z",
       "finishedAt": "2026-10-01T14:58:30Z",
-      "durationMinutes": 12.0,
+      "durationMinutes": 12,
       "sections": 7,
       "cards": 39,
       "verses": 30,
@@ -52336,7 +52336,7 @@
       "chapter": 14,
       "startedAt": "2026-10-05T06:47:15Z",
       "finishedAt": "2026-10-05T06:58:12Z",
-      "durationMinutes": 11.0,
+      "durationMinutes": 11,
       "sections": 3,
       "cards": 25,
       "verses": 9,
@@ -54214,6 +54214,59 @@
         {
           "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
           "at": "2026-10-06T14:03:23Z"
+        }
+      ]
+    },
+    {
+      "book": "Zephaniah",
+      "chapter": 2,
+      "startedAt": "2026-10-06T14:46:18Z",
+      "finishedAt": "2026-10-06T15:00:00Z",
+      "durationMinutes": 14,
+      "sections": 4,
+      "cards": 29,
+      "verses": 15,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 43s). Priority queue and style-redo backlog (data/bible-notes-priority-queue.json, data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after Zephaniah 1. Zephaniah 2 had no dedicated per-chapter Source.ts file, only the legacy bulk file zephaniahOneToThreePersonalNotes.ts wired via replaceStudySectionsForBookRange(\"zephaniah\", 1, 3, ...). Wrote a new dedicated lib/zephaniahTwoSource.ts file and added a narrower applyPersonalZephaniahTwoStudySections() call right after the existing applyPersonalZephaniahOneStudySections() call, so it overrides only chapter 2, leaving the legacy file in place to cover chapter 3. Fetched real KJV text for Zephaniah 2 (15 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens with a doubled, urgent call to gather and seek the LORD before the decree comes to pass, addressed to a nation whose exact description (nation not desired) is genuinely hard to translate, closing on the honest hedge that hiding on that day is a possibility, not a guarantee (1-3); judgment on the Philistine coast runs through all five major cities (Gaza, Ashkelon, Ashdod, Ekron, the Cherethites, Canaan/the land of the Philistines), ending in the surprising reversal that the emptied coastline becomes shepherd pastureland for the remnant of Judah, whose captivity the LORD turns away in the very same breath as Philistia's judgment (4-7); judgment on Moab and Ammon for mocking Israel despite their kinship through Lot, compared directly to Sodom and Gomorrah, their land reduced to nettles and saltpits for their pride, widening out to God famishing every false god of the earth and worship reaching the distant isles of the heathen (8-11); a one verse oracle against Ethiopia/Cush that doubles back on Zephaniah's own father's name Cushi, followed by judgment stretching to the last compass direction, the north, against Assyria and its capital Nineveh, pictured as a once great city turned to desert, its palace lintels taken over by wild birds, its expensive cedar paneling exposed, and its arrogant claim of being unmatched (echoing language God uses for himself) answered with total, mocking contempt from every passerby (12-15). Split into 4 sections (1-3, 4-7, 8-11, 12-15), matching the chapter's 15 verses exactly with no gaps. 29 cards across 15 verses, about 1.93 cards per verse, consistent with the Minor Prophets density range. scripts/check_bible_note_style.py passed clean on the first automated pass (29 cards, 0 problems): no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using the book emoji. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (nation not desired, decree, chaff, meek, Cherethites, Canaan, Maktesh style wordplay on Cush/Cushi, host of heaven style callbacks, cormorant and bittern, lintels, cedar work, dwelt carelessly), closes on meaning rather than mechanics, and that bullets compress rather than restate the body. Every title verified by hand as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections(\"zephaniah\", 2): 4/4 sections, verse ranges 1-3/4-7/8-11/12-15 with no gaps, 29 total cards rendering verbatim, no throw. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/zephaniahTwoSource.ts, zephaniah preserveExactPhraseBodies condition extended to include chapter 2, new applyPersonalZephaniahTwoStudySections() function added calling replaceStudySectionsForBookRange(\"zephaniah\", 2, 2, ZEPHANIAH_TWO_PERSONAL_SECTIONS), invoked right after applyPersonalZephaniahOneStudySections(). Logged in data/bible-notes-progress-log.json with full step timestamps, and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next forward-progress target is Zephaniah 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-06T14:47:06Z"
+        },
+        {
+          "name": "target chapter determined: Zephaniah 2 (priority queue and style-redo backlog both empty, normal forward progress after Zephaniah 1)",
+          "at": "2026-10-06T14:47:36Z"
+        },
+        {
+          "name": "KJV text fetched for Zephaniah 2 (15 verses, raw.githubusercontent.com aruljohn/Bible-kjv mirror)",
+          "at": "2026-10-06T14:47:39Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-10-06T14:52:45Z"
+        },
+        {
+          "name": "source file lib/zephaniahTwoSource.ts written (4 sections, 29 cards)",
+          "at": "2026-10-06T14:54:06Z"
+        },
+        {
+          "name": "style checker clean on first automated pass (29 cards, 0 problems)",
+          "at": "2026-10-06T14:54:09Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies zephaniah chapter 2 condition, applyPersonalZephaniahTwoStudySections added and called right after applyPersonalZephaniahOneStudySections)",
+          "at": "2026-10-06T14:54:19Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections(\"zephaniah\", 2): 4/4 sections, verse ranges 1-3/4-7/8-11/12-15 with no gaps, 29 total cards, no throw",
+          "at": "2026-10-06T14:55:31Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, exit code 0",
+          "at": "2026-10-06T14:58:07Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-06T15:00:00Z"
         }
       ]
     }
