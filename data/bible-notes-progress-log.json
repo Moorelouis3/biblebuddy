@@ -54497,6 +54497,59 @@
           "at": "2026-10-06T18:56:35Z"
         }
       ]
+    },
+    {
+      "book": "Zechariah",
+      "chapter": 2,
+      "startedAt": "2026-10-06T19:45:52Z",
+      "finishedAt": "2026-10-06T19:56:40Z",
+      "durationMinutes": 11,
+      "sections": 3,
+      "cards": 23,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 35s). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in each). Normal forward progress: the prior run's own log entry (Zechariah 1) named Zechariah 2 as the next forward-progress target, and lib/ only had zechariahOneSource.ts wired for chapter 1, with no dedicated file yet for chapter 2. Fetched real KJV text for Zechariah 2 (13 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens with Zechariah's third night vision: a man with a measuring line sent to measure Jerusalem, followed by the angel's instruction that Jerusalem will be inhabited as towns without walls because of the multitude of men and cattle, with God himself promised as a wall of fire round about her and the glory in her midst (1-5). It moves into a direct call to the exiles still in Babylon to flee the land of the north, with God naming Zion as precious as the apple of his eye and promising to shake his hand against the nations that plundered her, who will become spoil to their own servants, with the refrain repeated that the LORD of hosts has sent the speaker (6-9). It closes with a call to Zion to sing and rejoice because the LORD himself will come and dwell in her midst, many nations will be joined to the LORD in that day, the LORD will inherit Judah as his portion in the holy land and choose Jerusalem again, and the chapter ends on a note of reverent silence before the LORD as he rises out of his holy habitation (10-13). Chunked into 3 sections matching the chapter's own scene breaks (1-5, 6-9, 10-13), all 13 verses covered with no gaps. Density about 1.77 cards/verse (13 verses, 23 cards), in the same range as the reference implementation lib/genesisThirtyOneSource.ts and recent chapters like Zechariah 1. scripts/check_bible_note_style.py passed clean on the first run, 23 cards, zero problems: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using \ud83d\udcd6 or \u27a1\ufe0f. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (measuring line, breadth, apple of the eye, four winds, daughter of Babylon, holy habitation, inherit, holy land), closes on meaning rather than mechanics, and that bullets compress rather than restate the body. Every title verified as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections(\"zechariah\", 2): 3/3 sections, verse ranges 1-5/6-9/10-13 with no gaps, 23 total cards rendering verbatim, no throw. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/zechariahTwoSource.ts, the zechariah condition in preserveExactPhraseBodies extended to include chapter 2, new applyPersonalZechariahTwoStudySections() function added calling replaceStudySectionsForBookRange(\"zechariah\", 2, 2, ZECHARIAH_TWO_PERSONAL_SECTIONS), invoked right after applyPersonalZechariahOneStudySections(). Logged in data/bible-notes-progress-log.json with full step timestamps, and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next forward-progress target is Zechariah 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-06T19:46:00Z"
+        },
+        {
+          "name": "target chapter determined: Zechariah 2 (normal forward progress, new chapter; priority queue and style-redo backlog both empty)",
+          "at": "2026-10-06T19:46:49Z"
+        },
+        {
+          "name": "KJV text fetched: Zechariah 2, 13 verses, from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-06T19:47:11Z"
+        },
+        {
+          "name": "style spec read: docs/bible-study-note-style.md",
+          "at": "2026-10-06T19:48:30Z"
+        },
+        {
+          "name": "source file written: lib/zechariahTwoSource.ts (3 sections, 23 cards)",
+          "at": "2026-10-06T19:53:09Z"
+        },
+        {
+          "name": "style checker clean: check_bible_note_style.py -> 0 problems on first pass",
+          "at": "2026-10-06T19:53:30Z"
+        },
+        {
+          "name": "wired into reader: import, preserveExactPhraseBodies zechariah chapter 2, applyPersonalZechariahTwoStudySections call",
+          "at": "2026-10-06T19:53:45Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections(zechariah, 2) -> 3 sections, 23 cards, no throw",
+          "at": "2026-10-06T19:53:58Z"
+        },
+        {
+          "name": "tsc clean: npx tsc --noEmit -p . exit 0",
+          "at": "2026-10-06T19:56:25Z"
+        },
+        {
+          "name": "progress files logged: progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md",
+          "at": "2026-10-06T19:56:40Z"
+        }
+      ]
     }
   ]
 }
