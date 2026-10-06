@@ -24,6 +24,12 @@ const nextConfig: NextConfig = {
     // 301s so old links, Pinterest pins, and any indexed URLs pass on to
     // the new canonical /blog addresses.
     return [
+      // Proverbs' shareable page (2026-10-06). Doing this here rather than with
+      // redirect() inside app/study/[slug]/page.tsx: by the time that component
+      // runs the response has already started streaming, so Next falls back to a
+      // meta refresh with a one second delay, which link preview crawlers do not
+      // follow. A config redirect is a real 308 before any rendering happens.
+      { source: "/study/wisdom-of-proverbs", destination: "/devotionals/wisdom-of-proverbs", permanent: true },
       { source: "/bible-study-hub/character-studies/who-is-leah", destination: "/blog/who-is-leah", permanent: true },
       { source: "/bible-study-hub/character-studies/who-is-jezebel", destination: "/blog/who-is-jezebel", permanent: true },
       { source: "/bible-study-hub/christian-foundations/what-does-the-bible-say-about-anxiety", destination: "/blog/what-does-the-bible-say-about-anxiety", permanent: true },

@@ -46,12 +46,9 @@ export default async function StudyDeepLinkPage({
   const { slug } = await params;
   const normalized = slug?.toLowerCase?.() ?? "";
 
-  // Proverbs has its own public page now (2026-10-06). Everything below sends a
-  // signed-out visitor to /devotionals/<id>, which hands off to /dashboard, which
-  // the proxy bounces to "/" - so shared Proverbs links used to die on the
-  // homepage. Send them to the page that actually works logged out.
-  if (normalized === "wisdom-of-proverbs") redirect("/devotionals/wisdom-of-proverbs");
-
+  // Note: "wisdom-of-proverbs" never reaches here. It is redirected to
+  // /devotionals/wisdom-of-proverbs by next.config.ts, before rendering, because
+  // a redirect() at this point streams as a meta refresh that crawlers ignore.
   const pattern = STUDY_SLUGS[normalized];
 
   // Unknown slug — send them to the full list rather than a dead end.
