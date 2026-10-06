@@ -6895,3 +6895,7 @@ Next up: Micah 6
 ## 2026-10-06T06:11:00Z (hourly chapter notes run)
 Chapter: Micah 6 | Duration: 25 min | Sections: 4 | Cards: 39 | Status: pass
 Next up: Micah 7
+
+## 2026-10-06T07:03:18Z (hourly chapter notes run)
+Chapter: Micah 7 | Duration: 17 min | Sections: 5 | Cards: 42 | Status: pass
+Next up: Nahum 1
