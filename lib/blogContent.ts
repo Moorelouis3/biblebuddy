@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-43-explained",
+    title: "Genesis 43 Explained: Judah Stands Surety for Benjamin",
+    description:
+      "Genesis 43 explained verse by verse: Judah offers himself for Benjamin, the brothers return to Egypt, and Joseph nearly breaks down at the table.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-43-explained",
+    publishedAt: "2026-10-06",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-43-explained.jpg",
+    groupPost: {
+      title: "Genesis 43 Explained 📖",
+      content:
+        "One brother once sold Joseph for silver.\nNow he offers his own life for another one.\n\n📌 Judah tells Jacob: let me bear the blame forever.\n\n📖 Jacob sends the same goods Joseph was sold for.\n📖 A steward tells terrified men not to fear.\n📖 Joseph leaves the room just to keep from breaking.\n\nNew article on:\n🟢 why **Judah** succeeds where Reuben failed\n🟢 how Joseph knew their exact **birth order**\n🟢 why **Benjamin** gets five times the food\n\nHave you ever watched someone finally step up, long after you stopped expecting it? 🙏",
+    },
+  },
+  {
     slug: "genesis-42-explained",
     title: "Genesis 42 Explained: Face to Face With the Brother They Sold",
     description:
