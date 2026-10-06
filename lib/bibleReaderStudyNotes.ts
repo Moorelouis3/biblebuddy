@@ -960,6 +960,7 @@ import { MICAH_FIVE_PERSONAL_SECTIONS } from "./micahFiveSource";
 import { MICAH_SIX_PERSONAL_SECTIONS } from "./micahSixSource";
 import { MICAH_SEVEN_PERSONAL_SECTIONS } from "./micahSevenSource";
 import { NAHUM_1_3_PERSONAL_SECTIONS } from "./nahumOneToThreePersonalNotes";
+import { NAHUM_ONE_PERSONAL_SECTIONS } from "./nahumOneSource";
 import { HABAKKUK_1_3_PERSONAL_SECTIONS } from "./habakkukOneToThreePersonalNotes";
 import { ZEPHANIAH_1_3_PERSONAL_SECTIONS } from "./zephaniahOneToThreePersonalNotes";
 import { HAGGAI_1_2_PERSONAL_SECTIONS } from "./haggaiOneToTwoPersonalNotes";
@@ -1307,7 +1308,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "amos" && section.chapter >= 1 && section.chapter <= 9) ||
     (normalizeBook(book) === "obadiah" && section.chapter === 1) ||
     (normalizeBook(book) === "jonah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
-    (normalizeBook(book) === "micah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7));
+    (normalizeBook(book) === "micah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7)) ||
+    (normalizeBook(book) === "nahum" && section.chapter === 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3688,6 +3690,10 @@ function applyPersonalMicahSevenStudySections() {
 
 function applyPersonalNahumOneThroughThreeStudySections() {
   replaceStudySectionsForBookRange("nahum", 1, 3, NAHUM_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalNahumOneStudySections() {
+  replaceStudySectionsForBookRange("nahum", 1, 1, NAHUM_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalHabakkukOneThroughThreeStudySections() {
@@ -11338,6 +11344,7 @@ applyPersonalMicahFiveStudySections();
 applyPersonalMicahSixStudySections();
 applyPersonalMicahSevenStudySections();
 applyPersonalNahumOneThroughThreeStudySections();
+applyPersonalNahumOneStudySections();
 applyPersonalHabakkukOneThroughThreeStudySections();
 applyPersonalZephaniahOneThroughThreeStudySections();
 applyPersonalHaggaiOneThroughTwoStudySections();
