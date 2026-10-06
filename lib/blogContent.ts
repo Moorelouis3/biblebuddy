@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-45-explained",
+    title: "Genesis 45 Explained: Joseph Reveals Himself to His Brothers",
+    description:
+      "Genesis 45 explained verse by verse: Joseph tells his brothers who he is, forgives them, and sends wagons racing ahead to bring Jacob to Egypt.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-45-explained",
+    publishedAt: "2026-10-06",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-45-explained.jpg",
+    groupPost: {
+      title: "Genesis 45 Explained 📖",
+      content:
+        "Judah is mid sentence, still pleading.\nThen Joseph cannot hold it back anymore.\n\n📌 Every Egyptian is sent out of the room.\n\n📖 Joseph says four words: I am Joseph.\n📖 He names what they did before he forgives it.\n📖 Jacob refuses to believe it, until he sees the wagons.\n\nNew article on:\n🟢 how Joseph explains **God's hand** in what they did\n🟢 why **Benjamin** gets gifts fifteen times his own price\n🟢 why it takes more than words to convince Jacob\n\nHave you ever held back a truth so long that saying it finally broke you open? 🙏",
+    },
+  },
+  {
     slug: "genesis-44-explained",
     title: "Genesis 44 Explained: The Cup, the Trap, and Judah's Plea",
     description:
