@@ -4,8 +4,6 @@ import dynamic from "next/dynamic";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import { triggerPostSuccess } from "@/components/PostSuccessEffect";
 import { triggerToast } from "@/components/AppToast";
-import { EditorContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
 import ReactMarkdown from "react-markdown";
 import { useEffect, useMemo, useState, useRef, useCallback, type CSSProperties, type MouseEvent } from "react";
 import { useAccountGate } from "@/components/AccountRequiredModal";
@@ -58,6 +56,10 @@ const GroupWeeklyTriviaCard = dynamic(() => import("@/components/GroupWeeklyTriv
 const GroupWeeklyQuestionCard = dynamic(() => import("@/components/GroupWeeklyQuestionCard"), { ssr: false });
 const CreditLimitModal = dynamic(() => import("@/components/CreditLimitModal"), { ssr: false });
 const PostMentionSuggestions = dynamic(() => import("@/components/PostMentionSuggestions"), { ssr: false });
+// TipTap only downloads when someone opens the composer - see the component's
+// own note. Keeping it out of this page's bundle is most of why the group feed
+// got faster (2026-10-06).
+const GroupPostEditor = dynamic(() => import("@/components/GroupPostEditor"), { ssr: false });
 const TextareaMentionInput = dynamic(() => import("@/components/TextareaMentionInput"), { ssr: false });
 
 // â”€â”€ Interfaces â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -2523,30 +2525,6 @@ export default function GroupChatPage() {
   const feedRef = useRef<HTMLDivElement>(null);
   const { ensureFullAccount, accountGateModal } = useAccountGate("post in the group");
   const communityRootRef = useRef<HTMLDivElement>(null);
-  const postEditor = useEditor({
-    extensions: [
-      StarterKit.configure({
-        heading: {
-          levels: [1, 2, 3],
-        },
-      }),
-    ],
-    content: "",
-    immediatelyRender: false,
-    editorProps: {
-      attributes: {
-        class: "prose prose-sm max-w-none focus:outline-none min-h-[220px] px-4 py-4 text-gray-800",
-      },
-    },
-  });
-
-  function runPostEditorCommand(command: () => boolean) {
-    return (e: MouseEvent<HTMLButtonElement>) => {
-      e.preventDefault();
-      command();
-    };
-  }
-
   useEffect(() => {
     let cancelled = false;
 
@@ -3514,11 +3492,6 @@ export default function GroupChatPage() {
     members.length,
   ]);
 
-  useEffect(() => {
-    return () => {
-      if (postEditor) postEditor.destroy();
-    };
-  }, [postEditor]);
 
   // â”€â”€ Load comments when post is selected â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   useEffect(() => {
@@ -4096,7 +4069,6 @@ export default function GroupChatPage() {
     setNewPostTitle("");
     setNewPostContent("");
     setEditingFeedPost(null);
-    postEditor?.commands.clearContent();
     setComposerPhotoFile(null);
     setComposerPhotoPreview(null);
     if (composerVideoPreview) URL.revokeObjectURL(composerVideoPreview);
@@ -4119,14 +4091,15 @@ export default function GroupChatPage() {
     setEditingFeedPost(post);
     setNewPostTitle(post.title || "");
     setNewPostContent(post.content || "");
-    postEditor?.commands.setContent(post.content || "");
     setShowPostComposerModal(true);
   }
 
   async function handleSubmitPost() {
     // Posting requires a real account - name, email, profile picture.
     if (!(await ensureFullAccount())) return;
-    const editorHtml = postEditor?.getHTML() ?? "";
+    // The composer owns the editor now, and reports its HTML up through
+    // onChangeHtml, so newPostContent is the text to post.
+    const editorHtml = newPostContent;
     let normalizedContent = editorHtml === "<p></p>" ? "" : editorHtml;
     const hasContent = stripHtml(normalizedContent).length > 0;
     const hasPhoto = composerMode === "photo" && !!composerPhotoFile;
@@ -6961,17 +6934,12 @@ export default function GroupChatPage() {
 
                   <div>
                     <label className="block text-sm font-semibold text-gray-800 mb-2">Message</label>
-                    <div className="rounded-3xl border border-[#ead8c4] overflow-hidden bg-[#fffaf4]">
-                      <div className="flex flex-wrap gap-2 px-4 py-3 border-b border-[#efe5d9] bg-[#fffdf9]">
-                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleBold().run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("bold") ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>Bold</button>
-                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleItalic().run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("italic") ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>Italic</button>
-                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleHeading({ level: 1 }).run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("heading", { level: 1 }) ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>H1</button>
-                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleHeading({ level: 2 }).run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("heading", { level: 2 }) ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>H2</button>
-                        <button type="button" onMouseDown={runPostEditorCommand(() => postEditor?.chain().focus().toggleBulletList().run() ?? false)} className={`px-3 py-1.5 rounded-full text-xs font-semibold ${postEditor?.isActive("bulletList") ? "bg-[#dff0df] text-[#4f7e54]" : "bg-white text-gray-600 border border-[#d4ecd4]"}`}>List</button>
-                      </div>
-                      <EditorContent editor={postEditor} />
-                    </div>
-                    <PostMentionSuggestions editor={postEditor} items={mentionItems} />
+                    <GroupPostEditor
+                      key={editingFeedPost?.id ?? "new-post"}
+                      content={newPostContent}
+                      onChangeHtml={setNewPostContent}
+                      mentionItems={mentionItems}
+                    />
                   </div>
 
                   <input
@@ -7079,7 +7047,7 @@ export default function GroupChatPage() {
                     <button
                       type="button"
                       onClick={handleSubmitPost}
-                      disabled={submitting || (!stripHtml(postEditor?.getHTML() ?? "").length && !composerPhotoFile && !composerVideoFile && !editingFeedPost?.media_url)}
+                      disabled={submitting || (!stripHtml(newPostContent).length && !composerPhotoFile && !composerVideoFile && !editingFeedPost?.media_url)}
                       className="px-5 py-2.5 rounded-xl text-sm font-semibold text-white disabled:opacity-50 transition"
                       style={{ backgroundColor: SAGE }}
                     >
