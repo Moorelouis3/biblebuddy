@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-44-explained",
+    title: "Genesis 44 Explained: The Cup, the Trap, and Judah's Plea",
+    description:
+      "Genesis 44 explained verse by verse: Joseph's silver cup is planted in Benjamin's sack, and Judah offers himself in Benjamin's place to save him.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-44-explained",
+    publishedAt: "2026-10-06",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-44-explained.jpg",
+    groupPost: {
+      title: "Genesis 44 Explained 📖",
+      content:
+        "The brothers leave Egypt with full sacks.\nThey do not make it a mile.\n\n📌 Joseph plants his own cup in Benjamin's sack.\n\n📖 The cup turns up in the youngest brother's grain.\n📖 All ten brothers go back, not just Benjamin.\n📖 Judah gives the longest speech in Genesis.\n\nNew article on:\n🟢 why **Judah** offers himself as a slave instead\n🟢 why he confesses guilt for a **crime he did not commit**\n🟢 what happens right before Joseph finally breaks\n\nHave you ever had to find out if a promise would hold once it actually cost you something? 🙏",
+    },
+  },
+  {
     slug: "genesis-43-explained",
     title: "Genesis 43 Explained: Judah Stands Surety for Benjamin",
     description:
