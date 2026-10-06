@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-41-explained",
+    title: "Genesis 41 Explained: Pharaoh's Dreams and Joseph's Rise to Power",
+    description:
+      "Genesis 41 explained verse by verse: Pharaoh's dreams, Joseph's interpretation, and his sudden rise to rule all of Egypt.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-41-explained",
+    publishedAt: "2026-10-06",
+    readTime: "15 min read",
+    image: "/blog-banners/genesis-41-explained.jpg",
+    groupPost: {
+      title: "Genesis 41 Explained 📖",
+      content:
+        "Pharaoh dreams the same thing twice in one night.\nNo one in Egypt can explain it.\n\n📌 A forgotten prisoner solves it, and rules Egypt by nightfall.\n\n📖 Joseph credits God before he hears a single detail.\n📖 Seven good years, then seven years of famine.\n📖 He names his own sons after his pain, not his promotion.\n\nNew article on:\n🟢 what the **doubled dream** actually meant\n🟢 how Joseph went from **prisoner to ruler** in one day\n🟢 why the whole world ends up coming to **him** for bread\n\nHave you ever waited so long for a door to open that you stopped expecting it to? 🙏",
+    },
+  },
+  {
     slug: "what-is-sin",
     title: "What Is Sin, Really? A Complete Guide for Christians",
     description:
