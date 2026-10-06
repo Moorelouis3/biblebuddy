@@ -9,6 +9,7 @@ import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "../../lib/supabaseClient";
 import { markTermsAcceptancePending, recordTermsAcceptance } from "../../lib/termsAcceptance";
 import { ACTION_TYPE } from "../../lib/actionTypes";
+import { reportCloserSignup } from "../../lib/closerSignup";
 import {
   getSignupAttributionFromBrowser,
   writePendingSignupAttribution,
@@ -264,6 +265,10 @@ export default function SignupPage() {
       return;
     }
 
+    // A real new account exists from here on: everything above is an error or
+    // an account that already existed. This is the moment the comment reply
+    // that brought them can be credited.
+    reportCloserSignup();
     void recordSignup(user.id, user.email, username);
     window.localStorage.setItem(`bb:skip-initial-login:${user.id}`, "1");
     window.localStorage.setItem(`bb:skip-initial-dashboard-view:${user.id}`, "1");

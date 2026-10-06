@@ -90,15 +90,15 @@
     },
     {
       "path": "/api/cron/analytics-snapshots?group=yesterday",
-      "schedule": "3,18,33,48 * * * *"
+      "schedule": "18 * * * *"
     },
     {
       "path": "/api/cron/analytics-snapshots?group=7d",
-      "schedule": "6,21,36,51 * * * *"
+      "schedule": "21 2 * * *"
     },
     {
       "path": "/api/cron/analytics-snapshots?group=30d",
-      "schedule": "9,24,39,54 * * * *"
+      "schedule": "24 3 * * *"
     },
     {
       "path": "/api/cron/group-post-broadcasts",

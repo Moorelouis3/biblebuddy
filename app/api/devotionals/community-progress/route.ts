@@ -74,8 +74,34 @@ function completionLabel(score: ProgressScore) {
   return `${score.completedTasks} task${score.completedTasks === 1 ? "" : "s"} started`;
 }
 
+/**
+ * Requires a signed-in caller (2026-10-06).
+ *
+ * One request here runs five scans of up to 20,000 rows each across
+ * master_actions, devotional_progress and article_comments - about 100,000
+ * rows - with no rate limit. It was open to anyone, so a single bot in a loop
+ * could flatten the database, which is what two outages on 2026-10-05/06 looked
+ * like. Nothing in the app calls this route, so requiring a token costs
+ * nothing today and closes the door.
+ */
+async function requireSignedIn(request: NextRequest) {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !anonKey) return false;
+
+  const token = request.headers.get("authorization")?.replace(/^Bearer /, "") || "";
+  if (!token) return false;
+
+  const auth = createClient(supabaseUrl, anonKey, { auth: { autoRefreshToken: false, persistSession: false } });
+  const { data, error } = await auth.auth.getUser(token);
+  return Boolean(!error && data?.user);
+}
+
 export async function GET(request: NextRequest) {
   try {
+    if (!(await requireSignedIn(request))) {
+      return NextResponse.json({ error: "Please sign in again." }, { status: 401 });
+    }
     const admin = getAdminClient();
     const idsParam = request.nextUrl.searchParams.get("ids") || "";
     const selectedId = request.nextUrl.searchParams.get("devotionalId") || "";

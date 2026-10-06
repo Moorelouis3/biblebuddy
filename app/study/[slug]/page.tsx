@@ -44,7 +44,12 @@ export default async function StudyDeepLinkPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const pattern = STUDY_SLUGS[slug?.toLowerCase?.() ?? ""];
+  const normalized = slug?.toLowerCase?.() ?? "";
+
+  // Note: "wisdom-of-proverbs" never reaches here. It is redirected to
+  // /devotionals/wisdom-of-proverbs by next.config.ts, before rendering, because
+  // a redirect() at this point streams as a meta refresh that crawlers ignore.
+  const pattern = STUDY_SLUGS[normalized];
 
   // Unknown slug — send them to the full list rather than a dead end.
   if (!pattern) redirect("/devotionals");

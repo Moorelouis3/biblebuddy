@@ -86,6 +86,91 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-45-explained",
+    title: "Genesis 45 Explained: Joseph Reveals Himself to His Brothers",
+    description:
+      "Genesis 45 explained verse by verse: Joseph tells his brothers who he is, forgives them, and sends wagons racing ahead to bring Jacob to Egypt.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-45-explained",
+    publishedAt: "2026-10-06",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-45-explained.jpg",
+    groupPost: {
+      title: "Genesis 45 Explained 📖",
+      content:
+        "Judah is mid sentence, still pleading.\nThen Joseph cannot hold it back anymore.\n\n📌 Every Egyptian is sent out of the room.\n\n📖 Joseph says four words: I am Joseph.\n📖 He names what they did before he forgives it.\n📖 Jacob refuses to believe it, until he sees the wagons.\n\nNew article on:\n🟢 how Joseph explains **God's hand** in what they did\n🟢 why **Benjamin** gets gifts fifteen times his own price\n🟢 why it takes more than words to convince Jacob\n\nHave you ever held back a truth so long that saying it finally broke you open? 🙏",
+    },
+  },
+  {
+    slug: "genesis-44-explained",
+    title: "Genesis 44 Explained: The Cup, the Trap, and Judah's Plea",
+    description:
+      "Genesis 44 explained verse by verse: Joseph's silver cup is planted in Benjamin's sack, and Judah offers himself in Benjamin's place to save him.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-44-explained",
+    publishedAt: "2026-10-06",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-44-explained.jpg",
+    groupPost: {
+      title: "Genesis 44 Explained 📖",
+      content:
+        "The brothers leave Egypt with full sacks.\nThey do not make it a mile.\n\n📌 Joseph plants his own cup in Benjamin's sack.\n\n📖 The cup turns up in the youngest brother's grain.\n📖 All ten brothers go back, not just Benjamin.\n📖 Judah gives the longest speech in Genesis.\n\nNew article on:\n🟢 why **Judah** offers himself as a slave instead\n🟢 why he confesses guilt for a **crime he did not commit**\n🟢 what happens right before Joseph finally breaks\n\nHave you ever had to find out if a promise would hold once it actually cost you something? 🙏",
+    },
+  },
+  {
+    slug: "genesis-43-explained",
+    title: "Genesis 43 Explained: Judah Stands Surety for Benjamin",
+    description:
+      "Genesis 43 explained verse by verse: Judah offers himself for Benjamin, the brothers return to Egypt, and Joseph nearly breaks down at the table.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-43-explained",
+    publishedAt: "2026-10-06",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-43-explained.jpg",
+    groupPost: {
+      title: "Genesis 43 Explained 📖",
+      content:
+        "One brother once sold Joseph for silver.\nNow he offers his own life for another one.\n\n📌 Judah tells Jacob: let me bear the blame forever.\n\n📖 Jacob sends the same goods Joseph was sold for.\n📖 A steward tells terrified men not to fear.\n📖 Joseph leaves the room just to keep from breaking.\n\nNew article on:\n🟢 why **Judah** succeeds where Reuben failed\n🟢 how Joseph knew their exact **birth order**\n🟢 why **Benjamin** gets five times the food\n\nHave you ever watched someone finally step up, long after you stopped expecting it? 🙏",
+    },
+  },
+  {
+    slug: "genesis-42-explained",
+    title: "Genesis 42 Explained: Face to Face With the Brother They Sold",
+    description:
+      "Genesis 42 explained verse by verse: Joseph's brothers bow before him as spies, Simeon is held hostage, and the brothers' guilt finally surfaces.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-42-explained",
+    publishedAt: "2026-10-06",
+    readTime: "18 min read",
+    image: "/blog-banners/genesis-42-explained.jpg",
+    groupPost: {
+      title: "Genesis 42 Explained 📖",
+      content:
+        "Ten brothers bow to a stranger for grain.\nThe stranger is not a stranger.\n\n📌 Joseph recognizes them instantly. They see nothing.\n\n📖 He calls his own brothers spies.\n📖 Their old guilt spills out, unasked.\n📖 He weeps where they cannot see it.\n\nNew article on:\n🟢 why Joseph keeps **Simeon** behind in Egypt\n🟢 the guilt that surfaces after **20+ years** of silence\n🟢 why found money makes them **afraid**, not relieved\n\nHave you ever carried a guilt so long you assumed it would never catch up with you? 🙏",
+    },
+  },
+  {
+    slug: "genesis-41-explained",
+    title: "Genesis 41 Explained: Pharaoh's Dreams and Joseph's Rise to Power",
+    description:
+      "Genesis 41 explained verse by verse: Pharaoh's dreams, Joseph's interpretation, and his sudden rise to rule all of Egypt.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-41-explained",
+    publishedAt: "2026-10-06",
+    readTime: "15 min read",
+    image: "/blog-banners/genesis-41-explained.jpg",
+    groupPost: {
+      title: "Genesis 41 Explained 📖",
+      content:
+        "Pharaoh dreams the same thing twice in one night.\nNo one in Egypt can explain it.\n\n📌 A forgotten prisoner solves it, and rules Egypt by nightfall.\n\n📖 Joseph credits God before he hears a single detail.\n📖 Seven good years, then seven years of famine.\n📖 He names his own sons after his pain, not his promotion.\n\nNew article on:\n🟢 what the **doubled dream** actually meant\n🟢 how Joseph went from **prisoner to ruler** in one day\n🟢 why the whole world ends up coming to **him** for bread\n\nHave you ever waited so long for a door to open that you stopped expecting it to? 🙏",
+    },
+  },
+  {
     slug: "what-is-sin",
     title: "What Is Sin, Really? A Complete Guide for Christians",
     description:

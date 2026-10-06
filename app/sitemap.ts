@@ -39,5 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    // The shareable Proverbs entry page. Until this was added the sitemap listed
+    // only the homepage and the blog (2026-10-06).
+    {
+      url: `${SITE_URL}/devotionals/wisdom-of-proverbs`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
   ];
 }
