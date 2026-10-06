@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-42-explained",
+    title: "Genesis 42 Explained: Face to Face With the Brother They Sold",
+    description:
+      "Genesis 42 explained verse by verse: Joseph's brothers bow before him as spies, Simeon is held hostage, and the brothers' guilt finally surfaces.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-42-explained",
+    publishedAt: "2026-10-06",
+    readTime: "18 min read",
+    image: "/blog-banners/genesis-42-explained.jpg",
+    groupPost: {
+      title: "Genesis 42 Explained 📖",
+      content:
+        "Ten brothers bow to a stranger for grain.\nThe stranger is not a stranger.\n\n📌 Joseph recognizes them instantly. They see nothing.\n\n📖 He calls his own brothers spies.\n📖 Their old guilt spills out, unasked.\n📖 He weeps where they cannot see it.\n\nNew article on:\n🟢 why Joseph keeps **Simeon** behind in Egypt\n🟢 the guilt that surfaces after **20+ years** of silence\n🟢 why found money makes them **afraid**, not relieved\n\nHave you ever carried a guilt so long you assumed it would never catch up with you? 🙏",
+    },
+  },
+  {
     slug: "genesis-41-explained",
     title: "Genesis 41 Explained: Pharaoh's Dreams and Joseph's Rise to Power",
     description:
