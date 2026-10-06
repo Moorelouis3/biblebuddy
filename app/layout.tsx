@@ -73,6 +73,13 @@ export const metadata: Metadata = {
     "og:image:secure_url": socialPreviewImage,
     "twitter:image:alt": socialImageAlt,
     "p:domain_verify": "56de80934d28272fd86fcc8176074f43",
+    // "The Content Buddy" Meta app. Facebook's Sharing Debugger warns this is
+    // missing on every page without it; it only affects share statistics in
+    // Insights, never how a preview looks. An app id is public by design - it
+    // ships in the page's meta tags - so it is not a secret (2026-10-06).
+    // Note: per-page metadata replaces `other` wholesale, so any page defining
+    // its own must repeat this (see app/devotionals/wisdom-of-proverbs).
+    "fb:app_id": "1293695119276480",
     // Keeps AdSense site ownership verifiable now that the ad script is
     // injected client-side (components/AdSenseScript.tsx).
     "google-adsense-account": "ca-pub-3367331224607676",

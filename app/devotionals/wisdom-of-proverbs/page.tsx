@@ -50,6 +50,9 @@ export const metadata: Metadata = {
   other: {
     "og:image:secure_url": image,
     "twitter:image:alt": "The Wisdom of Proverbs — a free 31-day Bible study from Bible Buddy",
+    // Repeated from the root layout because a page's `other` replaces it rather
+    // than merging with it.
+    "fb:app_id": "1293695119276480",
   },
 };
 
