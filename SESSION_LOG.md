@@ -6907,3 +6907,7 @@ Next up: Nahum 2
 ## 2026-10-06T09:01:24Z (hourly chapter notes run)
 Chapter: Nahum 2 | Duration: 15 min | Sections: 4 | Cards: 30 | Status: pass
 Next up: Nahum 3
+
+## 2026-10-06T09:59:05Z (hourly chapter notes run)
+Chapter: Nahum 3 | Duration: 13 min | Sections: 7 | Cards: 42 | Status: pass
+Next up: Habakkuk 1

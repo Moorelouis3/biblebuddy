@@ -962,6 +962,7 @@ import { MICAH_SEVEN_PERSONAL_SECTIONS } from "./micahSevenSource";
 import { NAHUM_1_3_PERSONAL_SECTIONS } from "./nahumOneToThreePersonalNotes";
 import { NAHUM_ONE_PERSONAL_SECTIONS } from "./nahumOneSource";
 import { NAHUM_TWO_PERSONAL_SECTIONS } from "./nahumTwoSource";
+import { NAHUM_THREE_PERSONAL_SECTIONS } from "./nahumThreeSource";
 import { HABAKKUK_1_3_PERSONAL_SECTIONS } from "./habakkukOneToThreePersonalNotes";
 import { ZEPHANIAH_1_3_PERSONAL_SECTIONS } from "./zephaniahOneToThreePersonalNotes";
 import { HAGGAI_1_2_PERSONAL_SECTIONS } from "./haggaiOneToTwoPersonalNotes";
@@ -1310,7 +1311,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "obadiah" && section.chapter === 1) ||
     (normalizeBook(book) === "jonah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
     (normalizeBook(book) === "micah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7)) ||
-    (normalizeBook(book) === "nahum" && (section.chapter === 1 || section.chapter === 2));
+    (normalizeBook(book) === "nahum" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3699,6 +3700,10 @@ function applyPersonalNahumOneStudySections() {
 
 function applyPersonalNahumTwoStudySections() {
   replaceStudySectionsForBookRange("nahum", 2, 2, NAHUM_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalNahumThreeStudySections() {
+  replaceStudySectionsForBookRange("nahum", 3, 3, NAHUM_THREE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalHabakkukOneThroughThreeStudySections() {
@@ -11351,6 +11356,7 @@ applyPersonalMicahSevenStudySections();
 applyPersonalNahumOneThroughThreeStudySections();
 applyPersonalNahumOneStudySections();
 applyPersonalNahumTwoStudySections();
+applyPersonalNahumThreeStudySections();
 applyPersonalHabakkukOneThroughThreeStudySections();
 applyPersonalZephaniahOneThroughThreeStudySections();
 applyPersonalHaggaiOneThroughTwoStudySections();
