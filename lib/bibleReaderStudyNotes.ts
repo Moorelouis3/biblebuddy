@@ -972,6 +972,7 @@ import { ZEPHANIAH_ONE_PERSONAL_SECTIONS } from "./zephaniahOneSource";
 import { ZEPHANIAH_TWO_PERSONAL_SECTIONS } from "./zephaniahTwoSource";
 import { ZEPHANIAH_THREE_PERSONAL_SECTIONS } from "./zephaniahThreeSource";
 import { HAGGAI_1_2_PERSONAL_SECTIONS } from "./haggaiOneToTwoPersonalNotes";
+import { HAGGAI_ONE_PERSONAL_SECTIONS } from "./haggaiOneSource";
 import { ZECHARIAH_1_14_PERSONAL_SECTIONS } from "./zechariahOneToFourteenPersonalNotes";
 import { MALACHI_1_4_PERSONAL_SECTIONS } from "./malachiOneToFourPersonalNotes";
 import { MATTHEW_1_5_PERSONAL_SECTIONS } from "./matthewOneToFivePersonalNotes";
@@ -1319,7 +1320,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "micah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7)) ||
     (normalizeBook(book) === "nahum" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "habakkuk" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
-    (normalizeBook(book) === "zephaniah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3));
+    (normalizeBook(book) === "zephaniah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
+    (normalizeBook(book) === "haggai" && section.chapter === 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3748,6 +3750,10 @@ function applyPersonalZephaniahThreeStudySections() {
 
 function applyPersonalHaggaiOneThroughTwoStudySections() {
   replaceStudySectionsForBookRange("haggai", 1, 2, HAGGAI_1_2_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHaggaiOneStudySections() {
+  replaceStudySectionsForBookRange("haggai", 1, 1, HAGGAI_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalZechariahOneThroughFourteenStudySections() {
@@ -11398,6 +11404,7 @@ applyPersonalZephaniahOneStudySections();
 applyPersonalZephaniahTwoStudySections();
 applyPersonalZephaniahThreeStudySections();
 applyPersonalHaggaiOneThroughTwoStudySections();
+applyPersonalHaggaiOneStudySections();
 applyPersonalZechariahOneThroughFourteenStudySections();
 applyPersonalMalachiOneThroughFourStudySections();
 applyPersonalMatthewOneThroughFiveStudySections();

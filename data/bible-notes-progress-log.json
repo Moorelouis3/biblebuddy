@@ -54326,6 +54326,63 @@
           "at": "2026-10-06T15:58:03Z"
         }
       ]
+    },
+    {
+      "book": "Haggai",
+      "chapter": 1,
+      "startedAt": "2026-10-06T17:00:17Z",
+      "finishedAt": "2026-10-06T17:10:00Z",
+      "durationMinutes": 10,
+      "sections": 4,
+      "cards": 25,
+      "verses": 15,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 4s, node_modules already present). Session hit the same recurring environment anomaly logged in many prior runs: a chapter (Micah 3) was written, verified, committed, and pushed against a stale cached main ref before git push was rejected as non-fast-forward, revealing the real origin/main tip was far ahead (through all of Micah, Nahum, Habakkuk, Zephaniah, and a 25-commit deploy publish). That chapter turned out to already exist on the real main (commit 0844c31), so the stale-base work was discarded entirely via git reset --hard origin/main rather than pushed, confirmed clean via git status first. The real next chapter was then determined fresh from the correct base: style-redo backlog confirmed empty (remaining: []), and the real progress log's latest entry (982 entries, Zephaniah 3) explicitly named Haggai 1 as the next forward-progress target, confirmed by lib/ wiring showing only the legacy bulk file haggaiOneToTwoPersonalNotes.ts wired via replaceStudySectionsForBookRange(\"haggai\", 1, 2, ...) with no dedicated per-chapter file for chapter 1. Wrote a new dedicated lib/haggaiOneSource.ts file and added a narrower applyPersonalHaggaiOneStudySections() call that runs right after the existing applyPersonalHaggaiOneThroughTwoStudySections() legacy call so it overrides only chapter 1, leaving the legacy file in place to cover chapter 2. Fetched real KJV text for Haggai 1 (15 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens with the precise date formula anchoring the book to 520 BC, the word of the LORD through Haggai to both Zerubbabel the governor and Joshua the high priest, and the people's own excuse that the time has not come to rebuild the LORD's house while they lived comfortably in their own finished homes (1-4); the call to consider their ways, the futility curse of sowing much and reaping little, eating without being filled, and earning wages only to lose them like a bag with holes, followed by the direct command to go up, gather wood, and build, and God's own naming of the failed harvest's real cause, neglect of his house (5-9); the drought God himself called down on the land, the mountains, the crops, and even the labour of their own hands (10-11); and the turning point, the remnant obeying and fearing before the LORD, God's immediate reassurance that he is with them, the LORD stirring up their spirit, the people actually beginning work on the house, and the closing date showing they started only twenty three days after the first word came (12-15). Split into 4 sections (1-4, 5-9, 10-11, 12-15), matching the chapter's 15 verses exactly with no gaps. Density about 1.67 cards per verse (15 verses, 25 cards). scripts/check_bible_note_style.py initially flagged one banned hedge word (\"quite\"), fixed by removing it; second pass clean across all 25 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using 📖. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (cieled houses, consider your ways, bag with holes, stayed from dew, remnant, fear before the LORD, stirred up the spirit), closes on meaning rather than mechanics, and that the one KJV semicolon inside verse 7's \"Thus saith the LORD of hosts; Consider your ways\" was normalized to a comma in the card title per the no semicolon rule. Every title verified as an exact contiguous KJV substring in title case. Parser check passed via getBibleReaderStudySections(\"haggai\", 1): 4/4 sections, verse ranges 1-4/5-9/10-11/12-15 with no gaps, 25 total cards rendering verbatim, no throw. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/haggaiOneSource.ts, a new haggai chapter 1 condition added to preserveExactPhraseBodies, new applyPersonalHaggaiOneStudySections() function added calling replaceStudySectionsForBookRange(\"haggai\", 1, 1, HAGGAI_ONE_PERSONAL_SECTIONS), invoked right after applyPersonalHaggaiOneThroughTwoStudySections(). Logged in docs/BIBLE_BUDDY_NOTES_PROGRESS.md (running totals updated to 983 chapters) and in SESSION_LOG.md as an hourly chapter notes run. Committed and pushed to origin/main without the [deploy] tag per the deploy cadence rule in CLAUDE.md. Next forward-progress target is Haggai 2, which carries the same legacy-placeholder gap and will need the same per-chapter migration.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-06T16:46:44Z"
+        },
+        {
+          "name": "stale base detected on push rejection, Micah 3 already existed on real origin/main (0844c31); discarded stale local commits via git reset --hard origin/main",
+          "at": "2026-10-06T17:00:12Z"
+        },
+        {
+          "name": "target chapter determined: Haggai 1 (normal forward progress on the real base, style-redo backlog empty, Zephaniah 3 is the real latest finished chapter, named Haggai 1 as next target)",
+          "at": "2026-10-06T17:00:17Z"
+        },
+        {
+          "name": "KJV text fetched (Haggai 1, 15 verses, aruljohn mirror)",
+          "at": "2026-10-06T17:00:17Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full (read earlier this session before the stale-base discovery)",
+          "at": "2026-10-06T16:52:40Z"
+        },
+        {
+          "name": "source file written: lib/haggaiOneSource.ts (25 cards, 4 sections)",
+          "at": "2026-10-06T17:03:52Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 problem fixed then 0 problems on second pass)",
+          "at": "2026-10-06T17:04:01Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalHaggaiOneStudySections)",
+          "at": "2026-10-06T17:04:26Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 25 cards, text verbatim)",
+          "at": "2026-10-06T17:04:40Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-06T17:06:06Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-06T17:11:00Z"
+        }
+      ]
     }
   ]
 }

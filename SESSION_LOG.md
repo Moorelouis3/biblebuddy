@@ -6935,3 +6935,7 @@ Next up: Zephaniah 3
 ## 2026-10-06T15:58:03Z (hourly chapter notes run)
 Chapter: Zephaniah 3 | Duration: 12 min | Sections: 5 | Cards: 40 | Status: pass
 Next up: Haggai 1
+
+## 2026-10-06T17:11:00Z (hourly chapter notes run)
+Chapter: Haggai 1 | Duration: 10 min | Sections: 4 | Cards: 25 | Status: pass
+Next up: Haggai 2
