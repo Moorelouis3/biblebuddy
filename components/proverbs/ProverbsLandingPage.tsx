@@ -13,44 +13,87 @@ import { getCommunityEvent } from "@/lib/communityEvents";
  * and /events/wisdom-of-proverbs. The first bounced a signed-out visitor to the
  * homepage (it redirects to /devotionals/<id>, which redirects to /dashboard,
  * which the proxy sends to "/"), and the second is a client component, so it
- * could never carry its own link preview. Every blog post, QR code and social
- * share pointing at Proverbs therefore dropped strangers on the generic homepage
- * with a generic preview card.
+ * could never carry its own link preview.
  *
- * This page is deliberately plain copy plus one decision. It works signed out,
- * explains the study, and sends people to signup carrying the Proverbs
- * destination so they land in the study rather than a dashboard.
- *
- * Everything here is real: the copy comes from lib/communityEvents.ts, and the
- * participant count is the live figure from the public count endpoint. No
- * invented testimonials, results or numbers.
+ * Everything shown here is real: the copy comes from lib/communityEvents.ts, and
+ * the count and faces come from the two public endpoints under
+ * /api/community-events/<slug>/. No invented testimonials, results or numbers.
  */
 
 const EVENT_SLUG = "wisdom-of-proverbs";
+
+type Member = { name: string; image: string | null };
+
+/** One collapsible section. Open by default on the first one so the page never looks empty. */
+function Section({
+  emoji,
+  title,
+  subtitle,
+  defaultOpen = false,
+  children,
+}: {
+  emoji: string;
+  title: string;
+  subtitle: string;
+  defaultOpen?: boolean;
+  children: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div className="overflow-hidden rounded-3xl border border-[#dce7f7] bg-white">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full items-center gap-4 px-5 py-5 text-left transition hover:bg-[#f7faff] sm:px-7"
+      >
+        <span aria-hidden className="text-2xl">
+          {emoji}
+        </span>
+        <span className="flex-1">
+          <span className="block text-lg font-bold text-[#10213a] sm:text-xl">{title}</span>
+          <span className="mt-0.5 block text-sm text-[#5b6c84]">{subtitle}</span>
+        </span>
+        <span
+          aria-hidden
+          className={`shrink-0 text-xl text-[#2f6fd0] transition-transform ${open ? "rotate-180" : ""}`}
+        >
+          ⌄
+        </span>
+      </button>
+      {open ? <div className="border-t border-[#eaf1fb] px-5 pb-7 pt-5 sm:px-7">{children}</div> : null}
+    </div>
+  );
+}
 
 export default function ProverbsLandingPage() {
   const event = getCommunityEvent(EVENT_SLUG);
   const { userId, loading: authLoading } = useSupabaseUser();
   const [joinedCount, setJoinedCount] = useState<number | null>(null);
+  const [members, setMembers] = useState<Member[]>([]);
 
   const devotionalId = event?.devotionalId ?? "";
   const studyPath = `/devotionals/${devotionalId}`;
-  // Signed out, carry the destination through signup so they arrive in Proverbs.
-  // Both /signup and /login honour ?next= (see their nextPath helpers).
+  // Carry the destination through signup so they land in Proverbs, not a dashboard.
+  // Both /signup and /login honour ?next=.
   const startHref = userId ? studyPath : `/signup?next=${encodeURIComponent(studyPath)}`;
+  const ctaLabel = userId ? "Open the study" : "Start the Free 31-Day Study";
 
   useEffect(() => {
     let cancelled = false;
-    // Count only - the endpoint never returns names, photos or ids, which is why
-    // it is safe to show to a logged out visitor.
+    // Neither call may block the page: a failure just hides that piece.
     fetch(`/api/community-events/${EVENT_SLUG}/count`)
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
         if (!cancelled && typeof data?.count === "number") setJoinedCount(data.count);
       })
-      .catch(() => {
-        // A missing count just hides that line; it must never block the page.
-      });
+      .catch(() => {});
+    fetch(`/api/community-events/${EVENT_SLUG}/members`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (!cancelled && Array.isArray(data?.members)) setMembers(data.members);
+      })
+      .catch(() => {});
     return () => {
       cancelled = true;
     };
@@ -58,28 +101,48 @@ export default function ProverbsLandingPage() {
 
   if (!event) return null;
 
-  const steps = [
-    {
-      title: "Read or listen",
-      body: "Each day opens with a short study of that chapter — read it, or let Bible Buddy read it to you.",
-    },
-    {
-      title: "Read the chapter",
-      body: "Then the chapter of Proverbs itself, with study notes beside the text.",
-    },
-    {
-      title: "Take the trivia",
-      body: "A few questions on what you just read, so it actually sticks.",
-    },
-    {
-      title: "Join the discussion",
-      body: "Answer the day's question and see what everyone else saw in the same chapter.",
-    },
+  const howToStudy = [
+    { emoji: "📖", text: "Read the chapter first. All 31, one a day — Proverbs has a chapter for every day of the month." },
+    { emoji: "🧭", text: "Start at chapter 1, not chapter 10. The famous one-liners only make sense after the nine chapters of pleading that come first." },
+    { emoji: "✍️", text: "Write down the one line that stung. Proverbs is not meant to be admired, it is meant to be obeyed." },
+    { emoji: "🎯", text: "Pick one thing to change that day. Your words, your money, your temper — not all of it at once." },
+    { emoji: "🙏", text: "Close in prayer. Wisdom in Proverbs starts with the fear of the Lord, not with cleverness." },
+    { emoji: "🔁", text: "Miss a day? Carry on from where you stopped. Nothing locks and nothing expires." },
   ];
 
+  const dailySteps = [
+    { emoji: "🎧", title: "Read or listen", text: "A short study of the chapter — read it, or let Bible Buddy read it to you." },
+    { emoji: "📜", title: "Read the chapter", text: "The chapter of Proverbs itself, with study notes beside the text." },
+    { emoji: "🧠", title: "Take the trivia", text: "A few questions on what you just read, so it actually sticks." },
+    { emoji: "💬", title: "Join the discussion", text: "Answer the day's question and see what everyone else saw in the same chapter." },
+  ];
+
+  const cta = (
+    <div className="text-center">
+      <Link
+        href={startHref}
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2f6fd0] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#2f6fd0]/25 transition hover:bg-[#2559ab] sm:w-auto sm:text-lg"
+      >
+        <span aria-hidden>📖</span>
+        {ctaLabel}
+      </Link>
+      <p className="mt-3 text-sm text-[#5b6c84]">
+        Free forever · A Bible Buddy account saves your place and your answers
+      </p>
+      {!userId && !authLoading ? (
+        <p className="mt-2 text-sm text-[#5b6c84]">
+          Already have an account?{" "}
+          <Link href={`/login?next=${encodeURIComponent(studyPath)}`} className="font-semibold text-[#2f6fd0] underline">
+            Sign in
+          </Link>
+        </p>
+      ) : null}
+    </div>
+  );
+
   return (
-    <main className="min-h-screen bg-[#f7faff]">
-      <div className="mx-auto w-full max-w-3xl px-5 pb-20 pt-8">
+    <main className="min-h-screen bg-gradient-to-b from-[#eef4fd] via-[#f7faff] to-white">
+      <div className="mx-auto w-full max-w-3xl px-5 pb-20 pt-6 sm:pt-10">
         <div className="overflow-hidden rounded-3xl border border-[#dce7f7] bg-white shadow-sm">
           <Image
             src="/og/wisdom-of-proverbs.png"
@@ -92,80 +155,114 @@ export default function ProverbsLandingPage() {
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#2f6fd0]">
-            Free · 31 days · Go at your own pace
-          </p>
-          <h1 className="mt-3 text-3xl font-bold leading-tight text-[#10213a] sm:text-4xl">
-            The Wisdom of Proverbs
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#e4f0e4] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#3f7a46]">
+            ✓ Free · 31 Days · Your own pace
+          </span>
+          <h1 className="mt-5 text-3xl font-bold leading-tight text-[#10213a] sm:text-[2.6rem]">
+            Understand Proverbs.
+            <br />
+            Apply God&rsquo;s wisdom to your life.
           </h1>
-          <p className="mt-3 text-base text-[#44566f]">{event.subtitle}</p>
-        </div>
-
-        <div className="mt-8 rounded-3xl border border-[#dce7f7] bg-white p-6 sm:p-8">
-          <p className="text-base leading-relaxed text-[#2c3e55]">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#44566f]">
             Most people never actually study Proverbs. They treat it as a drawer of loose advice — open it,
-            grab a line, close it again. But Proverbs does not open with sayings. It opens with a father
-            pleading with his son to listen, and he keeps going for nine chapters. The short lines everyone
-            quotes do not start until chapter 10, and they land completely differently once you have read
-            what comes before them.
+            grab a line, close it again. This takes you through all 31 chapters, one a day.
           </p>
-          <p className="mt-4 text-base leading-relaxed text-[#2c3e55]">
-            This study walks through all 31 chapters, one a day. You will spend time on your words, your
-            money, your temper, your friendships, the things you keep hidden, and the voices you have been
-            letting decide your life.
-          </p>
-          <p className="mt-4 text-base font-semibold text-[#10213a]">{event.evergreenLine}</p>
         </div>
 
-        <div className="mt-6 rounded-3xl border border-[#dce7f7] bg-white p-6 sm:p-8">
-          <h2 className="text-xl font-bold text-[#10213a]">How each day works</h2>
-          <ol className="mt-5 space-y-5">
-            {steps.map((step, index) => (
-              <li key={step.title} className="flex gap-4">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eaf1fd] text-sm font-bold text-[#2f6fd0]">
-                  {index + 1}
-                </span>
-                <div>
-                  <p className="font-semibold text-[#10213a]">{step.title}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-[#44566f]">{step.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
+        <div className="mt-8">{cta}</div>
 
-        <div className="mt-6 rounded-3xl border border-[#dce7f7] bg-white p-6 text-center sm:p-8">
-          {joinedCount !== null && joinedCount > 0 ? (
-            <p className="text-base text-[#2c3e55]">
-              <span className="font-bold text-[#10213a]">{joinedCount.toLocaleString()} Bible Buddies</span>{" "}
-              have joined this study. You can start yours today.
-            </p>
-          ) : (
-            <p className="text-base text-[#2c3e55]">Start your 31 days whenever you are ready.</p>
-          )}
-
-          <Link
-            href={startHref}
-            className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#2f6fd0] px-8 py-4 text-base font-bold text-white transition hover:bg-[#2559ab] sm:w-auto"
+        <div className="mt-10 space-y-4">
+          <Section
+            emoji="🧭"
+            title="How to study Proverbs"
+            subtitle="Six things that change how the book reads"
+            defaultOpen
           >
-            {userId ? "Open the study" : "Start the Free 31-Day Study"}
-          </Link>
+            <ul className="space-y-4">
+              {howToStudy.map((item) => (
+                <li key={item.text} className="flex gap-3">
+                  <span aria-hidden className="mt-0.5 text-lg">
+                    {item.emoji}
+                  </span>
+                  <span className="text-[15px] leading-relaxed text-[#2c3e55]">{item.text}</span>
+                </li>
+              ))}
+            </ul>
+          </Section>
 
-          <p className="mt-4 text-sm text-[#5b6c84]">
-            A free Bible Buddy account keeps your place and saves your answers.
-          </p>
-
-          {!userId && !authLoading ? (
-            <p className="mt-2 text-sm text-[#5b6c84]">
-              Already have an account?{" "}
-              <Link
-                href={`/login?next=${encodeURIComponent(studyPath)}`}
-                className="font-semibold text-[#2f6fd0] underline"
-              >
-                Sign in
-              </Link>
+          <Section emoji="📅" title="How each day works" subtitle="Four steps, about fifteen minutes">
+            <ol className="space-y-4">
+              {dailySteps.map((step, index) => (
+                <li key={step.title} className="flex gap-3">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eaf1fd] text-sm font-bold text-[#2f6fd0]">
+                    {index + 1}
+                  </span>
+                  <span>
+                    <span className="block font-semibold text-[#10213a]">
+                      <span aria-hidden className="mr-1.5">
+                        {step.emoji}
+                      </span>
+                      {step.title}
+                    </span>
+                    <span className="mt-0.5 block text-[15px] leading-relaxed text-[#44566f]">{step.text}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-5 rounded-2xl bg-[#f3f8ff] px-4 py-3 text-sm font-medium text-[#2c3e55]">
+              {event.evergreenLine}
             </p>
-          ) : null}
+          </Section>
+        </div>
+
+        {members.length > 0 ? (
+          <div className="mt-10 rounded-3xl border border-[#dce7f7] bg-white px-5 py-7 sm:px-7">
+            <h2 className="text-center text-lg font-bold text-[#10213a] sm:text-xl">
+              {joinedCount !== null
+                ? `${joinedCount.toLocaleString()} Bible Buddies are studying Proverbs`
+                : "Bible Buddies studying Proverbs"}
+            </h2>
+            <p className="mt-1 text-center text-sm text-[#5b6c84]">You will not be doing this on your own.</p>
+            <div className="mt-6 flex flex-wrap justify-center gap-x-5 gap-y-5">
+              {members.map((member, index) => (
+                <div key={`${member.name}-${index}`} className="flex w-16 flex-col items-center gap-1.5">
+                  {member.image ? (
+                    // Avatars come from many hosts, so plain <img> rather than next/image.
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={member.image}
+                      alt=""
+                      loading="lazy"
+                      className="h-12 w-12 rounded-full border border-[#e3ecf8] object-cover"
+                    />
+                  ) : (
+                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#eaf1fd] text-sm font-bold text-[#2f6fd0]">
+                      {member.name.charAt(0).toUpperCase()}
+                    </span>
+                  )}
+                  <span className="w-full truncate text-center text-xs text-[#5b6c84]">{member.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        <div className="mt-10 rounded-3xl bg-[#10213a] px-6 py-10 text-center sm:px-10">
+          <h2 className="text-2xl font-bold text-white sm:text-3xl">Thirty-one days from now</h2>
+          <p className="mx-auto mt-3 max-w-md text-base leading-relaxed text-[#b9cbe4]">
+            you will have read every chapter of Proverbs. Not skimmed. Not collected one verse at a time.
+            Read, understood, and put to work.
+          </p>
+          <div className="mt-7">
+            <Link
+              href={startHref}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#10213a] transition hover:bg-[#eef4fd] sm:w-auto sm:text-lg"
+            >
+              <span aria-hidden>📖</span>
+              {ctaLabel}
+            </Link>
+            <p className="mt-3 text-sm text-[#8ea7c6]">Free · No card · Start today</p>
+          </div>
         </div>
       </div>
     </main>
