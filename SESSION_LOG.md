@@ -6879,3 +6879,83 @@ Next up: Micah 2
 ## 2026-10-06T01:57:13Z (hourly chapter notes run)
 Chapter: Micah 2 | Duration: 11 min | Sections: 3 | Cards: 29 | Status: pass
 Next up: Micah 3
+
+## 2026-10-06T02:59:30Z (hourly chapter notes run)
+Chapter: Micah 3 | Duration: 13 min | Sections: 3 | Cards: 27 | Status: pass
+Next up: Micah 4
+
+## 2026-10-06T04:12:22Z (hourly chapter notes run)
+Chapter: Micah 4 | Duration: 25 min | Sections: 3 | Cards: 33 | Status: pass
+Next up: Micah 5
+
+## 2026-10-06T04:59:30Z (hourly chapter notes run)
+Chapter: Micah 5 | Duration: 13 min | Sections: 3 | Cards: 40 | Status: pass
+Next up: Micah 6
+
+## 2026-10-06T06:11:00Z (hourly chapter notes run)
+Chapter: Micah 6 | Duration: 25 min | Sections: 4 | Cards: 39 | Status: pass
+Next up: Micah 7
+
+## 2026-10-06T07:03:18Z (hourly chapter notes run)
+Chapter: Micah 7 | Duration: 17 min | Sections: 5 | Cards: 42 | Status: pass
+Next up: Nahum 1
+
+## 2026-10-06T08:02:00Z (hourly chapter notes run)
+Chapter: Nahum 1 | Duration: 16 min | Sections: 6 | Cards: 30 | Status: pass
+Next up: Nahum 2
+
+## 2026-10-06T09:01:24Z (hourly chapter notes run)
+Chapter: Nahum 2 | Duration: 15 min | Sections: 4 | Cards: 30 | Status: pass
+Next up: Nahum 3
+
+## 2026-10-06T09:59:05Z (hourly chapter notes run)
+Chapter: Nahum 3 | Duration: 13 min | Sections: 7 | Cards: 42 | Status: pass
+Next up: Habakkuk 1
+
+## 2026-10-06T10:59:30Z (hourly chapter notes run)
+Chapter: Habakkuk 1 | Duration: 13 min | Sections: 5 | Cards: 36 | Status: pass
+Next up: Habakkuk 2
+
+## 2026-10-06T12:01:30Z (hourly chapter notes run)
+Chapter: Habakkuk 2 | Duration: 15 min | Sections: 7 | Cards: 39 | Status: pass
+Next up: Habakkuk 3
+
+## 2026-10-06T12:58:47Z (hourly chapter notes run)
+Chapter: Habakkuk 3 | Duration: 12 min | Sections: 7 | Cards: 44 | Status: pass
+Next up: Zephaniah 1
+
+## 2026-10-06T14:03:23Z (hourly chapter notes run)
+Chapter: Zephaniah 1 | Duration: 17 min | Sections: 6 | Cards: 40 | Status: pass
+Next up: Zephaniah 2
+
+## 2026-10-06T15:00:00Z (hourly chapter notes run)
+Chapter: Zephaniah 2 | Duration: 14 min | Sections: 4 | Cards: 29 | Status: pass
+Next up: Zephaniah 3
+
+## 2026-10-06T15:58:03Z (hourly chapter notes run)
+Chapter: Zephaniah 3 | Duration: 12 min | Sections: 5 | Cards: 40 | Status: pass
+Next up: Haggai 1
+
+## 2026-10-06T17:11:00Z (hourly chapter notes run)
+Chapter: Haggai 1 | Duration: 10 min | Sections: 4 | Cards: 25 | Status: pass
+Next up: Haggai 2
+
+## 2026-10-06T17:59:00Z (hourly chapter notes run)
+Chapter: Haggai 2 | Duration: 13 min | Sections: 5 | Cards: 37 | Status: pass
+Next up: Zechariah 1
+
+## 2026-10-06T18:56:35Z (hourly chapter notes run)
+Chapter: Zechariah 1 | Duration: 10 min | Sections: 4 | Cards: 33 | Status: pass
+Next up: Zechariah 2
+
+## 2026-10-06T19:56:40Z (hourly chapter notes run)
+Chapter: Zechariah 2 | Duration: 11 min | Sections: 3 | Cards: 23 | Status: pass
+Next up: Zechariah 3
+
+## 2026-10-06T20:56:34Z (hourly chapter notes run)
+Chapter: Zechariah 3 | Duration: 10 min | Sections: 4 | Cards: 21 | Status: pass
+Next up: Zechariah 4
+
+## 2026-10-06T21:55:10Z (hourly chapter notes run)
+Chapter: Zechariah 4 | Duration: 9 min | Sections: 4 | Cards: 17 | Status: pass
+Next up: Zechariah 5

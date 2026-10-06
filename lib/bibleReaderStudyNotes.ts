@@ -954,11 +954,31 @@ import { JONAH_FOUR_PERSONAL_SECTIONS } from "./jonahFourSource";
 import { MICAH_1_7_PERSONAL_SECTIONS } from "./micahOneToSevenPersonalNotes";
 import { MICAH_ONE_PERSONAL_SECTIONS } from "./micahOneSource";
 import { MICAH_TWO_PERSONAL_SECTIONS } from "./micahTwoSource";
+import { MICAH_THREE_PERSONAL_SECTIONS } from "./micahThreeSource";
+import { MICAH_FOUR_PERSONAL_SECTIONS } from "./micahFourSource";
+import { MICAH_FIVE_PERSONAL_SECTIONS } from "./micahFiveSource";
+import { MICAH_SIX_PERSONAL_SECTIONS } from "./micahSixSource";
+import { MICAH_SEVEN_PERSONAL_SECTIONS } from "./micahSevenSource";
 import { NAHUM_1_3_PERSONAL_SECTIONS } from "./nahumOneToThreePersonalNotes";
+import { NAHUM_ONE_PERSONAL_SECTIONS } from "./nahumOneSource";
+import { NAHUM_TWO_PERSONAL_SECTIONS } from "./nahumTwoSource";
+import { NAHUM_THREE_PERSONAL_SECTIONS } from "./nahumThreeSource";
+import { HABAKKUK_ONE_PERSONAL_SECTIONS } from "./habakkukOneSource";
+import { HABAKKUK_TWO_PERSONAL_SECTIONS } from "./habakkukTwoSource";
+import { HABAKKUK_THREE_PERSONAL_SECTIONS } from "./habakkukThreeSource";
 import { HABAKKUK_1_3_PERSONAL_SECTIONS } from "./habakkukOneToThreePersonalNotes";
 import { ZEPHANIAH_1_3_PERSONAL_SECTIONS } from "./zephaniahOneToThreePersonalNotes";
+import { ZEPHANIAH_ONE_PERSONAL_SECTIONS } from "./zephaniahOneSource";
+import { ZEPHANIAH_TWO_PERSONAL_SECTIONS } from "./zephaniahTwoSource";
+import { ZEPHANIAH_THREE_PERSONAL_SECTIONS } from "./zephaniahThreeSource";
 import { HAGGAI_1_2_PERSONAL_SECTIONS } from "./haggaiOneToTwoPersonalNotes";
+import { HAGGAI_ONE_PERSONAL_SECTIONS } from "./haggaiOneSource";
+import { HAGGAI_TWO_PERSONAL_SECTIONS } from "./haggaiTwoSource";
 import { ZECHARIAH_1_14_PERSONAL_SECTIONS } from "./zechariahOneToFourteenPersonalNotes";
+import { ZECHARIAH_ONE_PERSONAL_SECTIONS } from "./zechariahOneSource";
+import { ZECHARIAH_TWO_PERSONAL_SECTIONS } from "./zechariahTwoSource";
+import { ZECHARIAH_THREE_PERSONAL_SECTIONS } from "./zechariahThreeSource";
+import { ZECHARIAH_FOUR_PERSONAL_SECTIONS } from "./zechariahFourSource";
 import { MALACHI_1_4_PERSONAL_SECTIONS } from "./malachiOneToFourPersonalNotes";
 import { MATTHEW_1_5_PERSONAL_SECTIONS } from "./matthewOneToFivePersonalNotes";
 import { MATTHEW_6_28_PERSONAL_SECTIONS } from "./matthewSixToTwentyEightPersonalNotes";
@@ -1302,7 +1322,12 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "amos" && section.chapter >= 1 && section.chapter <= 9) ||
     (normalizeBook(book) === "obadiah" && section.chapter === 1) ||
     (normalizeBook(book) === "jonah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
-    (normalizeBook(book) === "micah" && (section.chapter === 1 || section.chapter === 2));
+    (normalizeBook(book) === "micah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7)) ||
+    (normalizeBook(book) === "nahum" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
+    (normalizeBook(book) === "habakkuk" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
+    (normalizeBook(book) === "zephaniah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
+    (normalizeBook(book) === "haggai" && (section.chapter === 1 || section.chapter === 2)) ||
+    (normalizeBook(book) === "zechariah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3661,24 +3686,104 @@ function applyPersonalMicahTwoStudySections() {
   replaceStudySectionsForBookRange("micah", 2, 2, MICAH_TWO_PERSONAL_SECTIONS);
 }
 
+function applyPersonalMicahThreeStudySections() {
+  replaceStudySectionsForBookRange("micah", 3, 3, MICAH_THREE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMicahFourStudySections() {
+  replaceStudySectionsForBookRange("micah", 4, 4, MICAH_FOUR_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMicahFiveStudySections() {
+  replaceStudySectionsForBookRange("micah", 5, 5, MICAH_FIVE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMicahSixStudySections() {
+  replaceStudySectionsForBookRange("micah", 6, 6, MICAH_SIX_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMicahSevenStudySections() {
+  replaceStudySectionsForBookRange("micah", 7, 7, MICAH_SEVEN_PERSONAL_SECTIONS);
+}
+
 function applyPersonalNahumOneThroughThreeStudySections() {
   replaceStudySectionsForBookRange("nahum", 1, 3, NAHUM_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalNahumOneStudySections() {
+  replaceStudySectionsForBookRange("nahum", 1, 1, NAHUM_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalNahumTwoStudySections() {
+  replaceStudySectionsForBookRange("nahum", 2, 2, NAHUM_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalNahumThreeStudySections() {
+  replaceStudySectionsForBookRange("nahum", 3, 3, NAHUM_THREE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalHabakkukOneThroughThreeStudySections() {
   replaceStudySectionsForBookRange("habakkuk", 1, 3, HABAKKUK_1_3_PERSONAL_SECTIONS);
 }
 
+function applyPersonalHabakkukOneStudySections() {
+  replaceStudySectionsForBookRange("habakkuk", 1, 1, HABAKKUK_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHabakkukTwoStudySections() {
+  replaceStudySectionsForBookRange("habakkuk", 2, 2, HABAKKUK_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHabakkukThreeStudySections() {
+  replaceStudySectionsForBookRange("habakkuk", 3, 3, HABAKKUK_THREE_PERSONAL_SECTIONS);
+}
+
 function applyPersonalZephaniahOneThroughThreeStudySections() {
   replaceStudySectionsForBookRange("zephaniah", 1, 3, ZEPHANIAH_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZephaniahOneStudySections() {
+  replaceStudySectionsForBookRange("zephaniah", 1, 1, ZEPHANIAH_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZephaniahTwoStudySections() {
+  replaceStudySectionsForBookRange("zephaniah", 2, 2, ZEPHANIAH_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZephaniahThreeStudySections() {
+  replaceStudySectionsForBookRange("zephaniah", 3, 3, ZEPHANIAH_THREE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalHaggaiOneThroughTwoStudySections() {
   replaceStudySectionsForBookRange("haggai", 1, 2, HAGGAI_1_2_PERSONAL_SECTIONS);
 }
 
+function applyPersonalHaggaiOneStudySections() {
+  replaceStudySectionsForBookRange("haggai", 1, 1, HAGGAI_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHaggaiTwoStudySections() {
+  replaceStudySectionsForBookRange("haggai", 2, 2, HAGGAI_TWO_PERSONAL_SECTIONS);
+}
+
 function applyPersonalZechariahOneThroughFourteenStudySections() {
   replaceStudySectionsForBookRange("zechariah", 1, 14, ZECHARIAH_1_14_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZechariahOneStudySections() {
+  replaceStudySectionsForBookRange("zechariah", 1, 1, ZECHARIAH_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZechariahTwoStudySections() {
+  replaceStudySectionsForBookRange("zechariah", 2, 2, ZECHARIAH_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZechariahThreeStudySections() {
+  replaceStudySectionsForBookRange("zechariah", 3, 3, ZECHARIAH_THREE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZechariahFourStudySections() {
+  replaceStudySectionsForBookRange("zechariah", 4, 4, ZECHARIAH_FOUR_PERSONAL_SECTIONS);
 }
 
 function applyPersonalMalachiOneThroughFourStudySections() {
@@ -11307,11 +11412,31 @@ applyPersonalJonahFourStudySections();
 applyPersonalMicahOneThroughSevenStudySections();
 applyPersonalMicahOneStudySections();
 applyPersonalMicahTwoStudySections();
+applyPersonalMicahThreeStudySections();
+applyPersonalMicahFourStudySections();
+applyPersonalMicahFiveStudySections();
+applyPersonalMicahSixStudySections();
+applyPersonalMicahSevenStudySections();
 applyPersonalNahumOneThroughThreeStudySections();
+applyPersonalNahumOneStudySections();
+applyPersonalNahumTwoStudySections();
+applyPersonalNahumThreeStudySections();
 applyPersonalHabakkukOneThroughThreeStudySections();
+applyPersonalHabakkukOneStudySections();
+applyPersonalHabakkukTwoStudySections();
+applyPersonalHabakkukThreeStudySections();
 applyPersonalZephaniahOneThroughThreeStudySections();
+applyPersonalZephaniahOneStudySections();
+applyPersonalZephaniahTwoStudySections();
+applyPersonalZephaniahThreeStudySections();
 applyPersonalHaggaiOneThroughTwoStudySections();
+applyPersonalHaggaiOneStudySections();
+applyPersonalHaggaiTwoStudySections();
 applyPersonalZechariahOneThroughFourteenStudySections();
+applyPersonalZechariahOneStudySections();
+applyPersonalZechariahTwoStudySections();
+applyPersonalZechariahThreeStudySections();
+applyPersonalZechariahFourStudySections();
 applyPersonalMalachiOneThroughFourStudySections();
 applyPersonalMatthewOneThroughFiveStudySections();
 applyPersonalMatthewSixThroughTwentyEightStudySections();
