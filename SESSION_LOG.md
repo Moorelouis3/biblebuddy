@@ -6939,3 +6939,7 @@ Next up: Haggai 1
 ## 2026-10-06T17:11:00Z (hourly chapter notes run)
 Chapter: Haggai 1 | Duration: 10 min | Sections: 4 | Cards: 25 | Status: pass
 Next up: Haggai 2
+
+## 2026-10-06T17:59:00Z (hourly chapter notes run)
+Chapter: Haggai 2 | Duration: 13 min | Sections: 5 | Cards: 37 | Status: pass
+Next up: Zechariah 1
