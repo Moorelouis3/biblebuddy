@@ -16,6 +16,7 @@ import { hasCachedSupabaseSession } from "@/lib/authBoot";
 import { applyAppThemeToDocument, cacheAppThemeForUser } from "@/lib/appThemes";
 import { isNativeApp } from "@/lib/nativeApp";
 import { markTermsAcceptancePending, TERMS_VERSION } from "@/lib/termsAcceptance";
+import { reportCloserSignup } from "@/lib/closerSignup";
 
 type PreviewPanel = "watch" | "study" | "trivia";
 type StudyTab = "bible" | "notes";
@@ -936,6 +937,11 @@ export default function LandingPage() {
       setSubmitting(false);
       return;
     }
+
+    // A real new account exists from here on, so this is the moment the reply
+    // that brought them can be credited. Everything above this line is either
+    // an error or an account that already existed.
+    reportCloserSignup();
 
     if (!data.session) {
       const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
