@@ -968,6 +968,7 @@ import { HABAKKUK_TWO_PERSONAL_SECTIONS } from "./habakkukTwoSource";
 import { HABAKKUK_THREE_PERSONAL_SECTIONS } from "./habakkukThreeSource";
 import { HABAKKUK_1_3_PERSONAL_SECTIONS } from "./habakkukOneToThreePersonalNotes";
 import { ZEPHANIAH_1_3_PERSONAL_SECTIONS } from "./zephaniahOneToThreePersonalNotes";
+import { ZEPHANIAH_ONE_PERSONAL_SECTIONS } from "./zephaniahOneSource";
 import { HAGGAI_1_2_PERSONAL_SECTIONS } from "./haggaiOneToTwoPersonalNotes";
 import { ZECHARIAH_1_14_PERSONAL_SECTIONS } from "./zechariahOneToFourteenPersonalNotes";
 import { MALACHI_1_4_PERSONAL_SECTIONS } from "./malachiOneToFourPersonalNotes";
@@ -1315,7 +1316,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "jonah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
     (normalizeBook(book) === "micah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7)) ||
     (normalizeBook(book) === "nahum" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
-    (normalizeBook(book) === "habakkuk" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3));
+    (normalizeBook(book) === "habakkuk" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
+    (normalizeBook(book) === "zephaniah" && section.chapter === 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3728,6 +3730,10 @@ function applyPersonalHabakkukThreeStudySections() {
 
 function applyPersonalZephaniahOneThroughThreeStudySections() {
   replaceStudySectionsForBookRange("zephaniah", 1, 3, ZEPHANIAH_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZephaniahOneStudySections() {
+  replaceStudySectionsForBookRange("zephaniah", 1, 1, ZEPHANIAH_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalHaggaiOneThroughTwoStudySections() {
@@ -11378,6 +11384,7 @@ applyPersonalHabakkukOneStudySections();
 applyPersonalHabakkukTwoStudySections();
 applyPersonalHabakkukThreeStudySections();
 applyPersonalZephaniahOneThroughThreeStudySections();
+applyPersonalZephaniahOneStudySections();
 applyPersonalHaggaiOneThroughTwoStudySections();
 applyPersonalZechariahOneThroughFourteenStudySections();
 applyPersonalMalachiOneThroughFourStudySections();

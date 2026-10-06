@@ -6923,3 +6923,7 @@ Next up: Habakkuk 3
 ## 2026-10-06T12:58:47Z (hourly chapter notes run)
 Chapter: Habakkuk 3 | Duration: 12 min | Sections: 7 | Cards: 44 | Status: pass
 Next up: Zephaniah 1
+
+## 2026-10-06T14:03:23Z (hourly chapter notes run)
+Chapter: Zephaniah 1 | Duration: 17 min | Sections: 6 | Cards: 40 | Status: pass
+Next up: Zephaniah 2
