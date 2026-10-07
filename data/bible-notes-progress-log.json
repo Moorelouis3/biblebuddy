@@ -55059,6 +55059,59 @@
           "at": "2026-10-07T05:01:42Z"
         }
       ]
+    },
+    {
+      "book": "Zechariah",
+      "chapter": 12,
+      "startedAt": "2026-10-07T05:47:13Z",
+      "finishedAt": "2026-10-07T05:58:00Z",
+      "durationMinutes": 10.78,
+      "sections": 4,
+      "cards": 19,
+      "verses": 14,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter, not a style redo (data/bible-notes-style-redo-remaining.json confirmed remaining: [] before starting, and data/bible-notes-priority-queue.json also confirmed remaining: [] before starting). Normal forward progress after Zechariah 11, confirmed as next by no zechariahTwelve* file existing in lib/ and by no chapter 12 wiring in lib/bibleReaderStudyNotes.ts before this run. Fetched real KJV text for Zechariah 12 (14 verses) from the aruljohn Bible-kjv raw mirror on GitHub. Chapter opens with the burden of the word of the LORD, naming God as creator before warning that Jerusalem becomes a cup of trembling and a burdensome stone for the nations gathered against it (1-3), moves to God striking enemy horses and riders with blindness and panic while watching over Judah, the governors of Judah gaining confidence in the LORD, and the leaders of Judah becoming a consuming fire among the surrounding peoples until Jerusalem is inhabited again in her own place (4-6), turns to the LORD saving the humble tents of Judah before the famous capital so that David's house and Jerusalem's people do not grow proud over the rest of Judah, the feeble among them becoming as mighty as David, the house of David pictured with language as overwhelming as the angel of the LORD, and God committing to destroy every nation that comes against Jerusalem (7-9), and closes with the richly debated outpouring of the spirit of grace and supplications, the house of David looking on the one they pierced (the verse the New Testament later ties to the crucifixion in John 19:37), the whole land mourning as for an only son, that grief compared to the historic mourning for Hadadrimmon (traditionally linked to King Josiah's death at Megiddo in 2 Chronicles 35), and every family, royal, prophetic (the house of Nathan), and priestly (the house of Levi and the house of Shimei), mourning apart rather than as one undivided crowd (10-14). Wrote lib/zechariahTwelveSource.ts as a new dedicated file, parser shape copied directly from lib/zechariahElevenSource.ts, 4 sections, 19 cards, every card title a verbatim title-cased KJV phrase. Style checker (scripts/check_bible_note_style.py) passed clean with 0 problems on the first run. Wired into lib/bibleReaderStudyNotes.ts: import added after the chapter 11 import, preserveExactPhraseBodies condition for zechariah widened to include chapter 12, applyPersonalZechariahTwelveStudySections() function added right after the chapter 11 one and invoked in the same order. Parser check passed (4/4 sections, 19 cards, text rendering verbatim, no throw). tsc --noEmit -p . clean, zero errors.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, ~31s)",
+          "at": "2026-10-07T05:47:44Z"
+        },
+        {
+          "name": "target chapter determined: Zechariah 12 (priority queue and style-redo backlog both confirmed empty, normal forward progress after Zechariah 11, confirmed via lib/ listing and bibleReaderStudyNotes.ts wiring check)",
+          "at": "2026-10-07T05:48:02Z"
+        },
+        {
+          "name": "KJV text fetched (Zechariah 12, 14 verses, aruljohn raw mirror)",
+          "at": "2026-10-07T05:48:34Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus SKILL.md, reference implementation lib/genesisThirtyOneSource.ts, and lib/zechariahElevenSource.ts",
+          "at": "2026-10-07T05:52:30Z"
+        },
+        {
+          "name": "source file written: lib/zechariahTwelveSource.ts (19 cards, 4 sections)",
+          "at": "2026-10-07T05:53:51Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first run)",
+          "at": "2026-10-07T05:54:42Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to include chapter 12, applyPersonalZechariahTwelveStudySections added and invoked)",
+          "at": "2026-10-07T05:55:10Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 19 cards, text verbatim, no throw)",
+          "at": "2026-10-07T05:55:27Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-07T05:57:29Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-07T05:58:00Z"
+        }
+      ]
     }
   ]
 }
