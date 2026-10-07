@@ -993,6 +993,7 @@ import { MALACHI_1_4_PERSONAL_SECTIONS } from "./malachiOneToFourPersonalNotes";
 import { MALACHI_ONE_PERSONAL_SECTIONS } from "./malachiOneSource";
 import { MALACHI_TWO_PERSONAL_SECTIONS } from "./malachiTwoSource";
 import { MALACHI_THREE_PERSONAL_SECTIONS } from "./malachiThreeSource";
+import { MALACHI_FOUR_PERSONAL_SECTIONS } from "./malachiFourSource";
 import { MATTHEW_1_5_PERSONAL_SECTIONS } from "./matthewOneToFivePersonalNotes";
 import { MATTHEW_6_28_PERSONAL_SECTIONS } from "./matthewSixToTwentyEightPersonalNotes";
 import { MARK_1_16_PERSONAL_SECTIONS } from "./markOneToSixteenPersonalNotes";
@@ -1341,7 +1342,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "zephaniah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "haggai" && (section.chapter === 1 || section.chapter === 2)) ||
     (normalizeBook(book) === "zechariah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14)) ||
-    (normalizeBook(book) === "malachi" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3));
+    (normalizeBook(book) === "malachi" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3854,6 +3855,10 @@ function applyPersonalMalachiTwoStudySections() {
 
 function applyPersonalMalachiThreeStudySections() {
   replaceStudySectionsForBookRange("malachi", 3, 3, MALACHI_THREE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalMalachiFourStudySections() {
+  replaceStudySectionsForBookRange("malachi", 4, 4, MALACHI_FOUR_PERSONAL_SECTIONS);
 }
 
 function applyPersonalMatthewOneThroughFiveStudySections() {
@@ -11517,6 +11522,7 @@ applyPersonalMalachiOneThroughFourStudySections();
 applyPersonalMalachiOneStudySections();
 applyPersonalMalachiTwoStudySections();
 applyPersonalMalachiThreeStudySections();
+applyPersonalMalachiFourStudySections();
 applyPersonalMatthewOneThroughFiveStudySections();
 applyPersonalMatthewSixThroughTwentyEightStudySections();
 applyPersonalMarkOneThroughSixteenStudySections();

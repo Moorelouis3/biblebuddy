@@ -55413,6 +55413,59 @@
           "at": "2026-10-07T11:06:03Z"
         }
       ]
+    },
+    {
+      "book": "Malachi",
+      "chapter": 4,
+      "startedAt": "2026-10-07T11:47:01Z",
+      "finishedAt": "2026-10-07T11:55:53Z",
+      "durationMinutes": 8.87,
+      "sections": 2,
+      "cards": 15,
+      "verses": 6,
+      "notes": "New chapter, normal forward progress after Malachi 3. Oven and stubble judgment, Sun of righteousness healing, remember the law of Moses, and the promise of Elijah before the day of the LORD, written fresh to docs/bible-study-note-style.md, same voice as malachiOneSource.ts, malachiTwoSource.ts, and malachiThreeSource.ts (no emoji in card titles). ~2.5 cards per verse. Completes the whole book of Malachi and, with it, the entire Old Testament on dedicated per-chapter files under the current style spec.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T11:47:01Z"
+        },
+        {
+          "name": "target chapter determined: Malachi 4 (new chapter, forward progress after Malachi 3; priority queue and style-redo backlog both empty)",
+          "at": "2026-10-07T11:47:01Z"
+        },
+        {
+          "name": "KJV text fetched: Malachi 4 (6 verses) via raw.githubusercontent.com",
+          "at": "2026-10-07T11:47:01Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-10-07T11:54:30Z"
+        },
+        {
+          "name": "source file written: lib/malachiFourSource.ts",
+          "at": "2026-10-07T11:54:30Z"
+        },
+        {
+          "name": "style checker clean (15 cards, 3 bullet word count problems fixed, clean on second pass)",
+          "at": "2026-10-07T11:54:30Z"
+        },
+        {
+          "name": "wired into reader (import, applyPersonalMalachiFourStudySections, preserveExactPhraseBodies extended)",
+          "at": "2026-10-07T11:54:30Z"
+        },
+        {
+          "name": "parser check passed (2 sections, 15 cards verbatim)",
+          "at": "2026-10-07T11:54:30Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p .)",
+          "at": "2026-10-07T11:54:30Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-07T11:55:53Z"
+        }
+      ]
     }
   ]
 }
