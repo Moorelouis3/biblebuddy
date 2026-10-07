@@ -55242,6 +55242,59 @@
           "at": "2026-10-07T08:05:02Z"
         }
       ]
+    },
+    {
+      "book": "Malachi",
+      "chapter": 1,
+      "startedAt": "2026-10-07T08:46:12Z",
+      "finishedAt": "2026-10-07T09:01:32Z",
+      "durationMinutes": 15,
+      "sections": 3,
+      "cards": 32,
+      "verses": 14,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 29s). Repo was in a detached HEAD state at session start; fetched origin/main and confirmed it already matched the detached HEAD (Zechariah 14, the prior run own work, including the [deploy] batch commit on top of it), so local main was reset to origin/main with nothing unpushed lost. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty. Confirmed via the prior run own log entry and via lib/bibleReaderStudyNotes.ts that Malachi was the next forward-progress target: lib/malachiOneToFourPersonalNotes.ts is legacy bulk content (pre-dating the style spec) wired via one replaceStudySectionsForBookRange(\"malachi\", 1, 4, ...) call, with no malachi entry yet in the preserveExactPhraseBodies list, matching the exact pattern Zechariah chapters were in before each got its own dedicated per-chapter override. Fetched real KJV text for Malachi 1 (14 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens with God flat claim I have loved you met with Israel skeptical wherein, answered by the Jacob and Esau family history and God sovereign choice of the covenant line over Edom, closing on Edom defiant vow to rebuild what God tore down and the LORD lasting indignation against it while Israel watches His name grow (1-5); turns to the priests specifically, rebuked through the father and master honor analogy for despising God name by offering blind, lame, and sick animals, the kind of damaged gift no human governor would accept, ending on God preferring shut temple doors to worthless, costless offerings (6-10); and closes with a forward look to God name becoming great among the Gentiles through pure worship in every place, set against Israel own profaned, weary, scornful worship and the deceiver who vows a good animal and sacrifices a corrupt one instead, landing on God as a great King whose worth never depended on Israel worship to begin with (11-14). Split into 3 sections matching the chapter own turns (1-5, 6-10, 11-14), all 14 verses covered with no gaps. Density 2.29 cards per verse (14 verses, 32 cards). scripts/check_bible_note_style.py passed clean on the first pass: 32 cards, 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning rather than mechanics, and that bullets compress a distinct angle rather than restating the body. Parser check passed via getBibleReaderStudySections(\"malachi\", 1): 3/3 sections, verse ranges 1-5/6-10/11-14 with no gaps, 32 total cards rendering verbatim, no throw. npx tsc --noEmit -p . came back clean. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/malachiOneSource.ts, a new malachi condition added to preserveExactPhraseBodies for chapter 1, new applyPersonalMalachiOneStudySections() function added calling replaceStudySectionsForBookRange(\"malachi\", 1, 1, MALACHI_ONE_PERSONAL_SECTIONS), invoked right after the existing applyPersonalMalachiOneThroughFourStudySections() so it overrides only chapter 1 of the legacy bulk file. Next forward-progress target is Malachi 2, which still carries only the legacy malachiOneToFourPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T08:47:02Z"
+        },
+        {
+          "name": "target chapter determined: Malachi 1 (normal forward progress, new chapter, not a redo)",
+          "at": "2026-10-07T08:51:02Z"
+        },
+        {
+          "name": "KJV text fetched for Malachi 1 (14 verses)",
+          "at": "2026-10-07T08:51:02Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-10-07T08:51:02Z"
+        },
+        {
+          "name": "source file written: lib/malachiOneSource.ts (3 sections, 32 cards)",
+          "at": "2026-10-07T08:57:01Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, clean on first pass)",
+          "at": "2026-10-07T08:57:01Z"
+        },
+        {
+          "name": "wired into reader (import, apply function, preserveExactPhraseBodies extended)",
+          "at": "2026-10-07T08:59:58Z"
+        },
+        {
+          "name": "parser check passed (3 sections, 32 cards verbatim)",
+          "at": "2026-10-07T08:59:58Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p .)",
+          "at": "2026-10-07T08:59:58Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-07T09:01:32Z"
+        }
+      ]
     }
   ]
 }

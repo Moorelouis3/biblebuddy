@@ -6999,3 +6999,7 @@ Next up: Zechariah 14
 ## 2026-10-07T08:01:43Z (hourly chapter notes run)
 Chapter: Zechariah 14 | Duration: 16 min | Sections: 6 | Cards: 45 | Status: pass
 Next up: Malachi 1
+
+## 2026-10-07T09:01:32Z (hourly chapter notes run)
+Chapter: Malachi 1 | Duration: 15 min | Sections: 3 | Cards: 32 | Status: pass
+Next up: Malachi 2
