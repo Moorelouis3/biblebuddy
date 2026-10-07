@@ -982,6 +982,7 @@ import { ZECHARIAH_FOUR_PERSONAL_SECTIONS } from "./zechariahFourSource";
 import { ZECHARIAH_FIVE_PERSONAL_SECTIONS } from "./zechariahFiveSource";
 import { ZECHARIAH_SIX_PERSONAL_SECTIONS } from "./zechariahSixSource";
 import { ZECHARIAH_SEVEN_PERSONAL_SECTIONS } from "./zechariahSevenSource";
+import { ZECHARIAH_EIGHT_PERSONAL_SECTIONS } from "./zechariahEightSource";
 import { MALACHI_1_4_PERSONAL_SECTIONS } from "./malachiOneToFourPersonalNotes";
 import { MATTHEW_1_5_PERSONAL_SECTIONS } from "./matthewOneToFivePersonalNotes";
 import { MATTHEW_6_28_PERSONAL_SECTIONS } from "./matthewSixToTwentyEightPersonalNotes";
@@ -1330,7 +1331,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "habakkuk" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "zephaniah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "haggai" && (section.chapter === 1 || section.chapter === 2)) ||
-    (normalizeBook(book) === "zechariah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7));
+    (normalizeBook(book) === "zechariah" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -3799,6 +3800,10 @@ function applyPersonalZechariahSixStudySections() {
 
 function applyPersonalZechariahSevenStudySections() {
   replaceStudySectionsForBookRange("zechariah", 7, 7, ZECHARIAH_SEVEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalZechariahEightStudySections() {
+  replaceStudySectionsForBookRange("zechariah", 8, 8, ZECHARIAH_EIGHT_PERSONAL_SECTIONS);
 }
 
 function applyPersonalMalachiOneThroughFourStudySections() {
@@ -11455,6 +11460,7 @@ applyPersonalZechariahFourStudySections();
 applyPersonalZechariahFiveStudySections();
 applyPersonalZechariahSixStudySections();
 applyPersonalZechariahSevenStudySections();
+applyPersonalZechariahEightStudySections();
 applyPersonalMalachiOneThroughFourStudySections();
 applyPersonalMatthewOneThroughFiveStudySections();
 applyPersonalMatthewSixThroughTwentyEightStudySections();

@@ -6971,3 +6971,7 @@ Next up: Zechariah 7
 ## 2026-10-07T01:02:20Z (hourly chapter notes run)
 Chapter: Zechariah 7 | Duration: 11 min | Sections: 4 | Cards: 26 | Status: pass
 Next up: Zechariah 8
+
+## 2026-10-07T02:00:41Z (hourly chapter notes run)
+Chapter: Zechariah 8 | Duration: 14 min | Sections: 6 | Cards: 43 | Status: pass
+Next up: Zechariah 9
