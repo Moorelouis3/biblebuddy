@@ -55653,6 +55653,59 @@
           "at": "2026-10-07T15:00:09Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 4,
+      "startedAt": "2026-10-07T15:46:35Z",
+      "finishedAt": "2026-10-07T15:59:19Z",
+      "durationMinutes": 13,
+      "sections": 7,
+      "cards": 45,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after Matthew 3. Matthew 4 had no dedicated per-chapter Source.ts file, only the legacy bulk file matthewOneToFivePersonalNotes.ts wired via replaceStudySectionsForBookRange(\"matthew\", 1, 5, ...), already overridden chapter by chapter for 1, 2, and 3. Wrote a new dedicated lib/matthewFourSource.ts file and added a narrower applyPersonalMatthewFourStudySections() call right after applyPersonalMatthewThreeStudySections() so it overrides only chapter 4, leaving chapter 5 of the legacy bulk file in place. Fetched real KJV text for Matthew 4 (25 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the three temptations of Jesus in the wilderness after his forty day fast (bread from stones, casting himself from the temple pinnacle, worshiping Satan for the kingdoms of the world, each met with a Deuteronomy quote), John the Baptist's arrest prompting Jesus to move from Nazareth to Capernaum fulfilling Isaiah's prophecy about Zabulon and Nephthalim, Jesus beginning to preach repentance and the kingdom of heaven, the calling of the first four disciples (Simon Peter and Andrew, then James and John) away from their fishing nets, and a closing summary of his teaching, preaching, and healing ministry spreading his fame through Galilee, Syria, and the Decapolis. Chunked into 7 sections (1-2 driven into the wilderness to fast, 3-4 the first temptation over bread, 5-7 the second temptation at the temple, 8-11 the third temptation on the mountain, 12-17 the move to Capernaum and the prophecy fulfilled, 18-22 calling the first disciples, 23-25 fame spreading across the land). Density exactly 1.8 cards per verse (25 verses, 45 cards). scripts/check_bible_note_style.py ran clean with 0 problems on the first pass across all 45 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (an hungred, tempter, pinnacle, sheweth, glory, Satan, dwelt, Zabulon, Nephthalim, Esaias, shadow of death, sprung up, straightway, mending, synagogue, gospel, fame, lunatick, palsy, Decapolis), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet always using the takeaway symbol, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 45 cards. Parser check passed exactly via getBibleReaderStudySections(\"matthew\", 4) (7/7 sections, verse ranges 1-2/3-4/5-7/8-11/12-17/18-22/23-25 with no gaps, 45 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/matthewFourSource.ts, preserveExactPhraseBodies matthew range extended from chapters 1-3 to 1-4, new function applyPersonalMatthewFourStudySections added and called right after applyPersonalMatthewThreeStudySections(), correctly overriding the legacy MATTHEW_1_5_PERSONAL_SECTIONS bulk file for chapter 4 only, chapter 5 of that legacy file left untouched. Next forward-progress target is Matthew 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T15:46:35Z"
+        },
+        {
+          "name": "target chapter determined: Matthew 4 (normal forward progress, priority queue and redo backlog both empty, overriding ch.4 of legacy matthewOneToFivePersonalNotes.ts bulk file)",
+          "at": "2026-10-07T15:47:30Z"
+        },
+        {
+          "name": "KJV text fetched (Matthew 4, 25 verses, aruljohn mirror)",
+          "at": "2026-10-07T15:48:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-07T15:49:20Z"
+        },
+        {
+          "name": "source file written: lib/matthewFourSource.ts (45 cards, 7 sections)",
+          "at": "2026-10-07T15:54:54Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-07T15:54:54Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalMatthewFourStudySections)",
+          "at": "2026-10-07T15:55:20Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 45 cards, text verbatim)",
+          "at": "2026-10-07T15:55:35Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-07T15:59:19Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-07T16:00:05Z"
+        }
+      ]
     }
   ]
 }
