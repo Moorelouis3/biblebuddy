@@ -55181,6 +55181,59 @@
           "at": "2026-10-07T06:57:18Z"
         }
       ]
+    },
+    {
+      "book": "Zechariah",
+      "chapter": 14,
+      "startedAt": "2026-10-07T07:46:10Z",
+      "finishedAt": "2026-10-07T08:01:43Z",
+      "durationMinutes": 16,
+      "sections": 6,
+      "cards": 45,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 31s). Before installing, found HEAD in a detached state with the local main branch stale (pointing at Micah 2); fetched origin and confirmed origin/main already matched the detached HEAD (Zechariah 13, the prior run's work), so no work was actually unpushed, just a stale local remote tracking ref. Reset local main to origin/main and continued from there. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress. The progress log's last entry was Zechariah 13, and lib/ showed dedicated files through zechariahThirteenSource.ts with none yet for chapter 14, confirming Zechariah 14 (the book's final chapter) as the next target. Fetched real KJV text for Zechariah 14 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens with the day of the LORD, the siege and partial captivity of Jerusalem, and the LORD personally fighting from the Mount of Olives, which splits to open an escape valley recalling Uzziah's earthquake (1-5); moves into a day unlike any other, with reversed light, a living river flowing from Jerusalem in every season, and the LORD becoming one acknowledged king over all the earth (6-9); describes Jerusalem alone staying lifted up while the surrounding land flattens, its gates named and its safety made permanent (10-11); turns to the plague on the armies that attacked, including a tumult that turns them on each other, Judah joining a battle already won, and the spoil reversing into Jerusalem's hands instead of out of them (12-15); has surviving nations making an annual pilgrimage to keep the feast of tabernacles, with rain withheld from any nation that refuses and Egypt singled out for the plague instead since its farming never depended on rain (16-19); and closes with holiness reaching ordinary life, from horse bells once reserved for the high priest's plate to kitchen pots used for sacrifice, ending on no more the Canaanite (trader) in the house of the LORD (20-21). Wrote lib/zechariahFourteenSource.ts as a brand new dedicated file (45 phrase cards across 6 sections, about 2 cards per verse), wired it into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to include chapter 14, replaceStudySectionsForBookRange call and apply-function call added in reading order after chapter 13). Style checker (scripts/check_bible_note_style.py) initially flagged 2 repeated-emoji-within-a-card problems, both fixed, then passed clean. Parser check confirmed 6 sections and 45 cards rendering verbatim. npx tsc --noEmit -p . was clean across the whole project. This completes all 14 chapters of Zechariah; next up is Malachi 1.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T07:48:58Z"
+        },
+        {
+          "name": "target chapter determined: Zechariah 14 (normal forward progress, new chapter, not a redo)",
+          "at": "2026-10-07T07:48:58Z"
+        },
+        {
+          "name": "KJV text fetched for Zechariah 14 (21 verses)",
+          "at": "2026-10-07T07:49:11Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-10-07T07:54:34Z"
+        },
+        {
+          "name": "source file written: lib/zechariahFourteenSource.ts (6 sections, 45 cards)",
+          "at": "2026-10-07T07:56:47Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 emoji-duplicate fixes applied)",
+          "at": "2026-10-07T07:56:47Z"
+        },
+        {
+          "name": "wired into reader (import, apply function, preserveExactPhraseBodies extended)",
+          "at": "2026-10-07T07:57:11Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 45 cards verbatim)",
+          "at": "2026-10-07T07:57:30Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p .)",
+          "at": "2026-10-07T07:59:54Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-07T08:01:43Z"
+        }
+      ]
     }
   ]
 }
