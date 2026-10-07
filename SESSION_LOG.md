@@ -7031,3 +7031,7 @@ Next up: Matthew 4
 ## 2026-10-07T16:00:05Z (hourly chapter notes run)
 Chapter: Matthew 4 | Duration: 13 min | Sections: 7 | Cards: 45 | Status: pass
 Next up: Matthew 5
+
+## 2026-10-07T17:04:09Z (hourly chapter notes run)
+Chapter: Matthew 5 | Duration: 17 min | Sections: 11 | Cards: 94 | Status: pass
+Next up: Matthew 6
