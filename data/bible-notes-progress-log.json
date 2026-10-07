@@ -54945,6 +54945,59 @@
           "at": "2026-10-07T03:02:47Z"
         }
       ]
+    },
+    {
+      "book": "Zechariah",
+      "chapter": 10,
+      "startedAt": "2026-10-07T03:46:50Z",
+      "finishedAt": "2026-10-07T03:56:33Z",
+      "durationMinutes": 9.72,
+      "sections": 5,
+      "cards": 29,
+      "verses": 12,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter, not a style redo (priority queue and redo backlog both confirmed empty). Normal forward progress after Zechariah 9, which was the last logged entry. Fetched real KJV text for Zechariah 10 (12 verses) from the aruljohn Bible-kjv raw mirror. Chapter covers asking the LORD (not idols or diviners) for rain and the leaderless flock (1-2), the LORD turning Judah from a vulnerable flock into a warhorse and judging the failed shepherds (3-5), Judah and the house of Joseph (the northern kingdom) being restored, redeemed, and multiplied (6-8), the people being sown among the nations and gathered back from Egypt and Assyria into Gilead and Lebanon (9-10), and the sea and river drying up before Assyria's pride and Egypt's sceptre, ending with the people walking securely in the LORD's name (11-12). Wrote lib/zechariahTenSource.ts (new dedicated file, parser shape copied from lib/zechariahNineSource.ts, 5 sections, 29 cards, no gaps, every title a verbatim title-cased KJV substring, semicolon-bearing verses split into separate cards to avoid the banned punctuation in a title). Style checker (scripts/check_bible_note_style.py) passed clean on the first run, 0 problems, 29 cards. Wired into lib/bibleReaderStudyNotes.ts: import added, preserveExactPhraseBodies widened to include chapter 10, applyPersonalZechariahTenStudySections() added right after the chapter 9 call and invoked. Parser check passed (5/5 sections, 29 cards verbatim, no throw). tsc --noEmit -p . clean, zero errors.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T03:46:01Z"
+        },
+        {
+          "name": "target chapter determined: Zechariah 10 (normal forward progress, priority queue and style-redo backlog both empty, progress log last entry Zechariah 9, no wired zechariahTenSource.ts file exists)",
+          "at": "2026-10-07T03:46:50Z"
+        },
+        {
+          "name": "KJV text fetched (Zechariah 10, 12 verses, aruljohn raw mirror)",
+          "at": "2026-10-07T03:47:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus skill SKILL.md and reference implementation lib/zechariahNineSource.ts",
+          "at": "2026-10-07T03:50:30Z"
+        },
+        {
+          "name": "source file written: lib/zechariahTenSource.ts (29 cards, 5 sections)",
+          "at": "2026-10-07T03:53:05Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first run)",
+          "at": "2026-10-07T03:53:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to include chapter 10, applyPersonalZechariahTenStudySections added and invoked)",
+          "at": "2026-10-07T03:53:30Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 29 cards, text verbatim, no throw)",
+          "at": "2026-10-07T03:53:36Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-07T03:54:01Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-07T03:56:33Z"
+        }
+      ]
     }
   ]
 }
