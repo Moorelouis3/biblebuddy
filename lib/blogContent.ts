@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-49-explained",
+    title: "Genesis 49 Explained: Jacob's Final Blessing Over His Twelve Sons",
+    description:
+      "Genesis 49 explained verse by verse: Jacob blesses each of his twelve sons before he dies, naming Reuben's loss, Judah's sceptre, and Joseph's reward.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-49-explained",
+    publishedAt: "2026-10-07",
+    readTime: "16 min read",
+    image: "/blog-banners/genesis-49-explained.jpg",
+    groupPost: {
+      title: "Genesis 49 Explained 📖",
+      content:
+        "A dying man calls for all twelve sons.\nHe has something to say to every one of them.\n\n📌 Some get corrected. Some get crowned.\n\n📖 Reuben loses his place as firstborn.\n📖 Judah gets the blessing that leads to kings.\n📖 Jacob cries out to God in the middle of it all.\n\nNew article on:\n🟢 what the **sceptre shall not depart** really means\n🟢 why **Simeon and Levi** get scattered, not cursed alike\n🟢 why Jacob's last words are about a **burial plot**\n\nHave you ever wondered if something from years ago still follows you into how people see you now? 🙏",
+    },
+  },
+  {
     slug: "genesis-48-explained",
     title: "Genesis 48 Explained: Jacob Blesses Ephraim Over Manasseh",
     description:
