@@ -55352,6 +55352,59 @@
           "at": "2026-10-07T09:57:01Z"
         }
       ]
+    },
+    {
+      "book": "Malachi",
+      "chapter": 3,
+      "startedAt": "2026-10-07T10:48:51Z",
+      "finishedAt": "2026-10-07T11:04:48Z",
+      "durationMinutes": 15.95,
+      "sections": 6,
+      "cards": 45,
+      "verses": 18,
+      "notes": "New chapter, normal forward progress after Malachi 2. Messenger/refiner prophecy, the tithing passage, and the book of remembrance, written fresh to docs/bible-study-note-style.md, same voice as malachiOneSource.ts and malachiTwoSource.ts (no emoji in card titles, matching those two files). ~2.5 cards per verse.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T10:48:51Z"
+        },
+        {
+          "name": "target chapter determined: Malachi 3 (new chapter, forward progress after Malachi 2)",
+          "at": "2026-10-07T10:49:38Z"
+        },
+        {
+          "name": "KJV text fetched: Malachi 3 (18 verses) via raw.githubusercontent.com",
+          "at": "2026-10-07T10:49:55Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-10-07T10:50:00Z"
+        },
+        {
+          "name": "source file written: lib/malachiThreeSource.ts",
+          "at": "2026-10-07T10:59:08Z"
+        },
+        {
+          "name": "style checker clean (45 cards, 1 bullet word count problem fixed, clean on second pass)",
+          "at": "2026-10-07T10:59:08Z"
+        },
+        {
+          "name": "wired into reader (import, applyPersonalMalachiThreeStudySections, preserveExactPhraseBodies extended)",
+          "at": "2026-10-07T10:59:43Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 45 cards verbatim)",
+          "at": "2026-10-07T11:00:20Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p .)",
+          "at": "2026-10-07T11:02:53Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-07T11:04:48Z"
+        }
+      ]
     }
   ]
 }

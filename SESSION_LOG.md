@@ -7007,3 +7007,7 @@ Next up: Malachi 2
 ## 2026-10-07T09:57:10Z (hourly chapter notes run)
 Chapter: Malachi 2 | Duration: 10 min | Sections: 5 | Cards: 36 | Status: pass
 Next up: Malachi 3
+
+## 2026-10-07T11:04:48Z (hourly chapter notes run)
+Chapter: Malachi 3 | Duration: 16 min | Sections: 6 | Cards: 45 | Status: pass
+Next up: Malachi 4
