@@ -54892,6 +54892,59 @@
           "at": "2026-10-07T02:01:51Z"
         }
       ]
+    },
+    {
+      "book": "Zechariah",
+      "chapter": 9,
+      "startedAt": "2026-10-07T02:46:00Z",
+      "finishedAt": "2026-10-07T03:02:47Z",
+      "durationMinutes": 17,
+      "sections": 5,
+      "cards": 34,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter, not a style redo (redo backlog confirmed empty). Normal forward progress after Zechariah 8, which named Zechariah 9 as the next target. Session was in a detached HEAD state that already matched origin/main exactly (local main ref stale, the same recurring environment anomaly logged in many prior runs); left the local ref alone and worked on the detached HEAD since it already equaled origin/main's tip. Wrote lib/zechariahNineSource.ts (new dedicated file, 5 sections covering verses 1-4/5-8/9-10/11-13/14-17, 34 cards, no gaps) and wired it into lib/bibleReaderStudyNotes.ts right after applyPersonalZechariahEightStudySections(), overriding only chapter 9 of the legacy zechariahOneToFourteenPersonalNotes.ts bulk file. Fetched real KJV text for Zechariah 9 (17 verses) from the aruljohn Bible-kjv raw mirror. Chapter covers judgment on Syria/Phoenicia and the Philistine cities (1-8), the messianic King riding lowly on a donkey with dominion from sea to sea (9-10), prisoners freed and Judah/Ephraim pictured as God's bow and arrow against Greece (11-13), and a closing battle-then-harvest scene ending on praise of God's goodness and beauty (14-17). Style checker initially flagged one oversized bullet, fixed. A manual section 13 eye check then caught a large number of bullets restating their card's body line almost word for word (a defect the mechanical checker cannot see) plus one banned stacked 'while' clause; rewrote every flagged bullet to compress a distinct angle and split the while clause into two lines, then reran the checker clean. Every title hand verified as an exact contiguous KJV substring in title case. Parser check passed (5/5 sections, 34 cards verbatim, no throw). tsc --noEmit clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T02:46:30Z"
+        },
+        {
+          "name": "target chapter determined: Zechariah 9 (normal forward progress, style-redo backlog empty, progress log last entry Zechariah 8, zechariah wiring shows chapters 1-8 on dedicated files)",
+          "at": "2026-10-07T02:47:30Z"
+        },
+        {
+          "name": "KJV text fetched (Zechariah 9, 17 verses, aruljohn mirror)",
+          "at": "2026-10-07T02:48:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-07T02:50:00Z"
+        },
+        {
+          "name": "skill (.claude/skills/bible-notes/SKILL.md) and reference implementation lib/genesisThirtyOneSource.ts read in full",
+          "at": "2026-10-07T02:52:00Z"
+        },
+        {
+          "name": "source file written: lib/zechariahNineSource.ts (34 cards, 5 sections)",
+          "at": "2026-10-07T02:58:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 1 oversized bullet, then a manual section 13 eye check found and fixed many near-verbatim bullet/body repeats and 1 banned stacked while clause, 0 problems on final pass)",
+          "at": "2026-10-07T03:01:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to include chapter 9, applyPersonalZechariahNineStudySections added and invoked)",
+          "at": "2026-10-07T03:02:00Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 34 cards, text verbatim, no throw)",
+          "at": "2026-10-07T03:02:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-07T03:02:47Z"
+        }
+      ]
     }
   ]
 }
