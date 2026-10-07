@@ -7051,3 +7051,7 @@ Next up: Matthew 9
 ## 2026-10-07T22:00:33Z (hourly chapter notes run)
 Chapter: Matthew 9 | Duration: 14 min | Sections: 7 | Cards: 47 | Status: pass
 Next up: Matthew 10
+
+## 2026-10-07T22:16:14Z (blog writer run)
+Article: Can God Forgive What I've Done? | Words: ~3100 | Category: Christian Foundations | Status: pass
+Queue remaining: 21

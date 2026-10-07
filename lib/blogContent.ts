@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "can-god-forgive-what-ive-done",
+    title: "Can God Forgive What I've Done?",
+    description:
+      "Can God forgive what you have done? See how Paul, David, Peter, and a dying thief were all forgiven completely, and why 1 John 1:9 means you can be too.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/can-god-forgive-what-ive-done",
+    publishedAt: "2026-10-08",
+    readTime: "16 min read",
+    image: "/can-god-forgive-what-ive-done-banner.png",
+    groupPost: {
+      title: "Can God Forgive What I've Done? 📖",
+      content:
+        "You have never said it out loud.\nNot to anyone.\n\n📌 Yes, God can forgive it. All of it.\n\n📖 Paul approved a murder, then wrote half the New Testament.\n📖 David arranged a killing, and was still forgiven.\n📖 A dying thief had nothing left to offer but a breath.\n\nNew article on:\n🟢 what **1 John 1:9** actually promises you\n🟢 the fear that your sin is **too far gone**\n🟢 the real difference between **guilt** and shame\n\nWhat is the thing you have never told anyone? 🙏",
+    },
+  },
+  {
     slug: "genesis-50-explained",
     title: "Genesis 50 Explained: Joseph's Forgiveness and a Coffin in Egypt",
     description:
