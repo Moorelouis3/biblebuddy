@@ -56003,6 +56003,59 @@
           "at": "2026-10-07T22:00:33Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 10,
+      "startedAt": "2026-10-07T22:46:31Z",
+      "finishedAt": "2026-10-07T23:00:14Z",
+      "durationMinutes": 14,
+      "sections": 7,
+      "cards": 53,
+      "verses": 42,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 41s). Priority queue and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: []), so this was normal forward progress after Matthew 9. Matthew 10 had no dedicated per-chapter Source.ts file, only the legacy bulk file lib/matthewSixToTwentyEightPersonalNotes.ts wired via replaceStudySectionsForBookRange(\"matthew\", 6, 28, ...), already overridden for chapters 6 through 9. Wrote a new dedicated lib/matthewTenSource.ts file (same parser shape as matthewNineSource.ts) and wired it into lib/bibleReaderStudyNotes.ts with a narrower applyPersonalMatthewTenStudySections() call placed right after applyPersonalMatthewNineStudySections() so it overrides only chapter 10, leaving the legacy bulk file in place to cover chapters 11-28 until each gets the same treatment, also extended the preserveExactPhraseBodies condition for Matthew to include chapter 10. Fetched real KJV text for Matthew 10 (42 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers Jesus giving the twelve power over unclean spirits and naming all twelve apostles, including Matthew the publican, Simon the Canaanite, and Judas Iscariot who would betray him (1-4); the limited mission to the lost sheep of the house of Israel rather than Gentiles or Samaritans, preaching the kingdom at hand and healing freely because they received freely (5-8); the instructions to travel without money, bag, or spare clothing, trusting worthy hosts, pronouncing peace on receptive homes, and shaking the dust off their feet against towns less receptive than Sodom and Gomorrha (9-15); the warnings of persecution before councils, synagogues, governors, and kings, the promise of the Spirit speaking through them, family betrayal, and fleeing from city to city (16-23); the sayings on the disciple not being above his master, the Beelzebub accusation, preaching openly despite threats, and God's intimate knowledge of sparrows and numbered hairs as grounds not to fear (24-31); confessing Christ before men, the sword instead of peace, family division, taking up the cross, and losing life to find it (32-39); and the closing promise that receiving a disciple means receiving Jesus and the Father, with even a cup of cold water never going unrewarded (40-42). Split into 7 sections matching natural breaks in the discourse (1-4, 5-8, 9-15, 16-23, 24-31, 32-39, 40-42), all 42 verses covered with no gaps or overlaps. Density about 1.26 cards per verse (42 verses, 53 cards). scripts/check_bible_note_style.py came back clean on the first pass, 0 problems across all 53 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using 📖 or ➡️. A manual section 13 eye check and a manual grep for contractions the checker regex does not catch (apostrophe-s forms like it's or that's) both confirmed every card opens with one of the four approved moves rather than restating the verse, defines its key terms in plain language (apostle, publican, Canaanite, Iscariot, scrip, staves, meat, salute, shake off the dust of your feet, Sodom and Gomorrha, councils, scourge, Beelzebub, Gehenna, farthing, variance, cross), closes on meaning rather than mechanics, and that bullets compress a distinct angle rather than restating the body. Parser check passed via getBibleReaderStudySections(\"matthew\", 10): 7/7 sections, verse ranges 1-4/5-8/9-15/16-23/24-31/32-39/40-42 with no gaps, 53 total cards rendering verbatim, no throw. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/matthewTenSource.ts, the matthew condition in preserveExactPhraseBodies widened to include chapter 10, new applyPersonalMatthewTenStudySections() function added calling replaceStudySectionsForBookRange(\"matthew\", 10, 10, MATTHEW_TEN_PERSONAL_SECTIONS), invoked right after applyPersonalMatthewNineStudySections(). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Matthew 11, which still carries only the legacy matthewSixToTwentyEightPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T22:47:12Z"
+        },
+        {
+          "name": "target chapter determined: Matthew 10 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-07T22:47:20Z"
+        },
+        {
+          "name": "KJV text fetched (Matthew 10, 42 verses, aruljohn mirror)",
+          "at": "2026-10-07T22:47:31Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-07T22:48:10Z"
+        },
+        {
+          "name": "source file written: lib/matthewTenSource.ts (53 cards, 7 sections)",
+          "at": "2026-10-07T22:56:10Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-07T22:56:18Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalMatthewTenStudySections)",
+          "at": "2026-10-07T22:57:40Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 53 cards, text verbatim)",
+          "at": "2026-10-07T22:58:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-07T22:59:20Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-07T23:00:14Z"
+        }
+      ]
     }
   ]
 }
