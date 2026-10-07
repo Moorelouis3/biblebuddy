@@ -73,6 +73,15 @@ export default function StartPage() {
       // They picked a plan: this is the moment someone became a user.
       if (guest.ok && guest.userId) recordNewUser(guest.userId, `plan_${choice.mode}`);
 
+      // Guest accounts are off (see lib/guestSession.ts). Without a session the
+      // destination below would just bounce off the proxy back to "/", so send
+      // them to sign up and bring them back to the plan they picked.
+      if (!guest.ok) {
+        setChoosing(null);
+        router.push(`/signup?next=${encodeURIComponent(choice.href)}`);
+        return;
+      }
+
       if (guest.ok) {
         const nowIso = new Date().toISOString();
         const today = new Date();

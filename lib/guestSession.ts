@@ -198,8 +198,32 @@ async function createGuest(source: string): Promise<GuestSessionResult> {
  * Safe to call repeatedly. Never throws — callers should degrade to read-only
  * when this returns `ok: false`, not break the page.
  */
+/**
+ * Guest accounts are switched OFF (2026-10-06).
+ *
+ * Measured over 3,026 sign-ups since 1 July: 1,872 were anonymous and only 6.4%
+ * of guests ever attached an email. So 62% of growth arrived, used the app, and
+ * left no way to reach them - and email is the channel Bible Buddy is being
+ * built on. The way in is now the landing pages: the blog stays public, each
+ * post points at a study's page, and that page asks for name, email and
+ * password before the app opens.
+ *
+ * Returning "disabled" rather than deleting the call sites, because every caller
+ * already handles it: StartStudyingButton and /start send people to /signup, the
+ * event page to /login?next=, and the two readers simply stay read-only. Flip
+ * GUESTS_ENABLED back to true to undo this in one line.
+ *
+ * Existing guests are deliberately untouched - they keep their accounts and
+ * their progress. This only stops NEW ones being created.
+ */
+const GUESTS_ENABLED = false;
+
 export async function ensureGuestSession(options?: { source?: string }): Promise<GuestSessionResult> {
   const source = options?.source || "deep_link";
+
+  if (!GUESTS_ENABLED) {
+    return { ok: false, reason: "disabled", message: "Guest accounts are turned off - sign up instead." };
+  }
 
   if (inFlight) return inFlight;
 
