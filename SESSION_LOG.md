@@ -7043,3 +7043,7 @@ Next up: Matthew 7
 ## 2026-10-07T20:02:03Z (hourly chapter notes run)
 Chapter: Matthew 7 | Duration: 16 min | Sections: 9 | Cards: 59 | Status: pass
 Next up: Matthew 8
+
+## 2026-10-07T20:59:47Z (hourly chapter notes run)
+Chapter: Matthew 8 | Duration: 14 min | Sections: 7 | Cards: 61 | Status: pass
+Next up: Matthew 9

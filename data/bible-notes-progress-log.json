@@ -55889,6 +55889,63 @@
           "at": "2026-10-07T20:04:22Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 8,
+      "startedAt": "2026-10-07T20:46:08Z",
+      "finishedAt": "2026-10-07T20:59:47Z",
+      "durationMinutes": 13.7,
+      "sections": 7,
+      "cards": 61,
+      "verses": 34,
+      "notes": "New chapter, normal forward progress after Matthew 7. Priority queue and style-redo backlog both empty. New dedicated lib/matthewEightSource.ts, overriding chapter 8 of the legacy matthewSixToTwentyEightPersonalNotes.ts bulk file. Density 1.79 cards/verse. Style checker found 8 bullet word-count issues on first pass, all fixed, second run clean. tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T20:46:44Z"
+        },
+        {
+          "name": "target chapter determined: Matthew 8 (forward progress, both priority queue and style-redo backlog empty)",
+          "at": "2026-10-07T20:47:05Z"
+        },
+        {
+          "name": "KJV text fetched (Matthew 8, 34 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror)",
+          "at": "2026-10-07T20:47:30Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-10-07T20:50:30Z"
+        },
+        {
+          "name": "source file written (lib/matthewEightSource.ts, 7 sections, 61 cards)",
+          "at": "2026-10-07T20:56:10Z"
+        },
+        {
+          "name": "style checker clean (8 bullet word-count fixes, second run 0 problems)",
+          "at": "2026-10-07T20:57:40Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies extended, applyPersonalMatthewEightStudySections added and called)",
+          "at": "2026-10-07T20:58:00Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections Matthew 8: 7 sections, 61 cards)",
+          "at": "2026-10-07T20:58:15Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p .)",
+          "at": "2026-10-07T20:58:40Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-07T20:58:56Z"
+        },
+        {
+          "name": "progress files logged, committing next",
+          "at": "2026-10-07T20:59:47Z"
+        }
+      ]
     }
   ]
 }
