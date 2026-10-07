@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-50-explained",
+    title: "Genesis 50 Explained: Joseph's Forgiveness and a Coffin in Egypt",
+    description:
+      "Genesis 50 explained verse by verse: Joseph buries Jacob, forgives his fearful brothers with God meant it unto good, and Genesis ends with his death.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-50-explained",
+    publishedAt: "2026-10-07",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-50-explained.jpg",
+    groupPost: {
+      title: "Genesis 50 Explained 📖",
+      content:
+        "Jacob is gone.\nNow his sons are afraid of their own brother.\n\n📌 Joseph answers with one famous line.\n\n📖 A massive funeral crosses two countries.\n📖 The brothers beg to be forgiven again.\n📖 Genesis ends with a coffin, and an oath.\n\nNew article on:\n🟢 why Joseph says **God meant it unto good**\n🟢 what the brothers' message from Jacob really was\n🟢 why Joseph makes Israel swear about his **bones**\n\nHave you ever wondered if someone's forgiveness of you was actually real? 🙏",
+    },
+  },
+  {
     slug: "genesis-49-explained",
     title: "Genesis 49 Explained: Jacob's Final Blessing Over His Twelve Sons",
     description:
