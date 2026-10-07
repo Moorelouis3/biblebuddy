@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-47-explained",
+    title: "Genesis 47 Explained: Jacob Settles in Goshen and Joseph Feeds Egypt",
+    description:
+      "Genesis 47 explained verse by verse: Jacob meets Pharaoh, Joseph feeds Egypt through famine, and the people trade land and freedom to survive.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-47-explained",
+    publishedAt: "2026-10-07",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-47-explained.jpg",
+    groupPost: {
+      title: "Genesis 47 Explained 📖",
+      content:
+        "Five brothers stand before Pharaoh.\nThey tell him the truth: we are shepherds.\n\n📌 Pharaoh gives them the best land anyway.\n\n📖 Jacob blesses Pharaoh before Pharaoh blesses him.\n📖 The famine gets worse, not better.\n📖 Egypt trades its own land just to eat.\n\nNew article on:\n🟢 why Jacob calls his long life **few and evil**\n🟢 how a **fifth part tax** becomes permanent law\n🟢 the one thing Jacob asks for that Egypt cannot give\n\nHave you ever been comfortable somewhere that still was not quite home? 🙏",
+    },
+  },
+  {
     slug: "genesis-46-explained",
     title: "Genesis 46 Explained: Jacob Goes Down to Egypt",
     description:
