@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-48-explained",
+    title: "Genesis 48 Explained: Jacob Blesses Ephraim Over Manasseh",
+    description:
+      "Genesis 48 explained verse by verse: Jacob adopts Ephraim and Manasseh as his own sons, then crosses his hands to bless the younger over the firstborn.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-48-explained",
+    publishedAt: "2026-10-07",
+    readTime: "13 min read",
+    image: "/blog-banners/genesis-48-explained.jpg",
+    groupPost: {
+      title: "Genesis 48 Explained 📖",
+      content:
+        "Jacob is dying, and nearly blind.\nHe still knows exactly where to put his hands.\n\n📌 He crosses them on purpose, not by mistake.\n\n📖 He adopts both grandsons as his own sons.\n📖 He blesses the younger over the firstborn.\n📖 Joseph tries to correct him. Jacob refuses.\n\nNew article on:\n🟢 why Jacob suddenly mentions **Rachel's death**\n🟢 what **wittingly** tells us about his hands\n🟢 the strange verse about a **sword and a bow**\n\nHave you ever made a call everyone around you thought was backward? 🙏",
+    },
+  },
+  {
     slug: "genesis-47-explained",
     title: "Genesis 47 Explained: Jacob Settles in Goshen and Joseph Feeds Egypt",
     description:
