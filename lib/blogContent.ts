@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "genesis-46-explained",
+    title: "Genesis 46 Explained: Jacob Goes Down to Egypt",
+    description:
+      "Genesis 46 explained verse by verse: God tells Jacob not to fear Egypt, the family of seventy is counted, and Joseph finally meets his father again.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/genesis-46-explained",
+    publishedAt: "2026-10-07",
+    readTime: "14 min read",
+    image: "/blog-banners/genesis-46-explained.jpg",
+    groupPost: {
+      title: "Genesis 46 Explained 📖",
+      content:
+        "The wagons are loaded. The road is ready.\nJacob stops anyway, before he crosses the border.\n\n📌 God meets him there, by name, in the night.\n\n📖 He tells Jacob plainly: fear not.\n📖 A list counts every soul who makes the trip.\n📖 Joseph drives out himself to meet his father.\n\nNew article on:\n🟢 why the family is counted at exactly **seventy**\n🟢 why Joseph scripts what his brothers tell **Pharaoh**\n🟢 what Jacob says the moment he sees Joseph's face\n\nHave you ever needed one more word from God before taking a step you had already decided on? 🙏",
+    },
+  },
+  {
     slug: "genesis-45-explained",
     title: "Genesis 45 Explained: Joseph Reveals Himself to His Brothers",
     description:
