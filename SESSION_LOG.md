@@ -6991,3 +6991,7 @@ Next up: Zechariah 12
 ## 2026-10-07T05:58:00Z (hourly chapter notes run)
 Chapter: Zechariah 12 | Duration: 11 min | Sections: 4 | Cards: 19 | Status: pass
 Next up: Zechariah 13
+
+## 2026-10-07T06:55:20Z (hourly chapter notes run)
+Chapter: Zechariah 13 | Duration: 9 min | Sections: 3 | Cards: 18 | Status: pass
+Next up: Zechariah 14
