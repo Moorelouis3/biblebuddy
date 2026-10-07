@@ -54998,6 +54998,59 @@
           "at": "2026-10-07T03:56:33Z"
         }
       ]
+    },
+    {
+      "book": "Zechariah",
+      "chapter": 11,
+      "startedAt": "2026-10-07T04:46:33Z",
+      "finishedAt": "2026-10-07T04:59:49Z",
+      "durationMinutes": 13.27,
+      "sections": 6,
+      "cards": 26,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter, not a style redo (data/bible-notes-style-redo-remaining.json confirmed remaining: [] before starting). Normal forward progress after Zechariah 10, confirmed as next by docs/BIBLE_BUDDY_NOTES_PROGRESS.md's running header, by no zechariahEleven* file existing in lib/, and by no chapter 11 wiring in lib/bibleReaderStudyNotes.ts before this run. Fetched real KJV text for Zechariah 11 (17 verses) from the aruljohn Bible-kjv raw mirror on GitHub. Chapter is the taunt against the forests of Lebanon and Bashan and the thickets of Jordan picturing coming judgment on proud rulers (1-3), God instructing Zechariah to act out being a shepherd over a flock already doomed to slaughter by greedy, pitiless owners and sellers (4-6), Zechariah taking up two shepherd's staves named Beauty and Bands, feeding the poor of the flock, cutting off three corrupt shepherds in one month, and finally refusing to feed a flock that loathed him back (7-9), breaking the staff Beauty to end God's covenant protection over the nations, recognized as the word of the LORD only by the faithful remnant (10-11), the shepherd's wages weighed out at thirty pieces of silver (the legal price of a slave's death in Exodus 21) and thrown to the potter inside the Temple itself, which Matthew 27 points back to directly in the story of Judas, followed by the second staff Bands being broken to act out the split between Judah and Israel (12-14), and God raising up a worthless, idol shepherd who refuses every true shepherding duty and feeds on the flock instead of feeding it, closing with a formal woe pronounced against him (15-17). Wrote lib/zechariahElevenSource.ts as a new dedicated file, parser shape copied directly from lib/zechariahTenSource.ts, 6 sections, 26 cards, every card title a verbatim title-cased KJV phrase with semicolons/colons from the original verse replaced by commas so no card title trips the banned-punctuation check. Style checker (scripts/check_bible_note_style.py) found one problem on the first run (banned hedge word 'fairly' in one body line), fixed by rewording to 'a true wage', then passed clean with 0 problems on the second run. Wired into lib/bibleReaderStudyNotes.ts: import added after the chapter 10 import, preserveExactPhraseBodies condition for zechariah widened to include chapter 11, applyPersonalZechariahElevenStudySections() function added right after the chapter 10 one and invoked in the same order. Parser check passed (6/6 sections, 26 cards, text rendering verbatim, no throw). tsc --noEmit -p . clean, zero errors.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, ~32s)",
+          "at": "2026-10-07T04:47:05Z"
+        },
+        {
+          "name": "target chapter determined: Zechariah 11 (style-redo backlog empty, normal forward progress after Zechariah 10, confirmed via lib/ listing and bibleReaderStudyNotes.ts wiring check)",
+          "at": "2026-10-07T04:47:30Z"
+        },
+        {
+          "name": "KJV text fetched (Zechariah 11, 17 verses, aruljohn raw mirror)",
+          "at": "2026-10-07T04:47:33Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus SKILL.md and reference implementation lib/genesisThirtyOneSource.ts and lib/zechariahTenSource.ts",
+          "at": "2026-10-07T04:51:00Z"
+        },
+        {
+          "name": "source file written: lib/zechariahElevenSource.ts (26 cards, 6 sections)",
+          "at": "2026-10-07T04:55:50Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 problem found and fixed on first run, 0 on second run)",
+          "at": "2026-10-07T04:56:12Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to include chapter 11, applyPersonalZechariahElevenStudySections added and invoked)",
+          "at": "2026-10-07T04:56:45Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 26 cards, text verbatim, no throw)",
+          "at": "2026-10-07T04:56:55Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-07T04:57:04Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-07T04:59:49Z"
+        }
+      ]
     }
   ]
 }
