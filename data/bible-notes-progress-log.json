@@ -55474,6 +55474,59 @@
           "at": "2026-10-07T11:57:09Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 1,
+      "startedAt": "2026-10-07T12:46:15Z",
+      "finishedAt": "2026-10-07T12:58:58Z",
+      "durationMinutes": 13,
+      "sections": 6,
+      "cards": 23,
+      "verses": 25,
+      "notes": "First chapter of the New Testament (Old Testament completed with Malachi 4 earlier today). New chapter, written to docs/bible-study-note-style.md, wired into lib/bibleReaderStudyNotes.ts.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T12:46:50Z"
+        },
+        {
+          "name": "target chapter determined: Matthew 1 (new chapter, normal forward progress, redo/priority queues empty)",
+          "at": "2026-10-07T12:47:25Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com/aruljohn/Bible-kjv, Matthew.json, chapter 1, 25 verses)",
+          "at": "2026-10-07T12:47:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-07T12:50:00Z"
+        },
+        {
+          "name": "source file written: lib/matthewOneSource.ts (6 sections, 23 cards)",
+          "at": "2026-10-07T12:54:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py)",
+          "at": "2026-10-07T12:55:02Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, applyPersonalMatthewOneStudySections after the Matthew 1-5 legacy block, preserveExactPhraseBodies extended to matthew 1)",
+          "at": "2026-10-07T12:55:25Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections / MATTHEW_ONE_PERSONAL_SECTIONS, no throw, 6 sections, 23 cards)",
+          "at": "2026-10-07T12:55:51Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-07T12:58:17Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-10-07T12:58:58Z"
+        }
+      ]
     }
   ]
 }
