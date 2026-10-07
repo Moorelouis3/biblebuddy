@@ -55303,6 +55303,55 @@
           "at": "2026-10-07T09:04:23Z"
         }
       ]
+    },
+    {
+      "book": "Malachi",
+      "chapter": 2,
+      "startedAt": "2026-10-07T09:46:55Z",
+      "finishedAt": "2026-10-07T09:57:10Z",
+      "durationMinutes": 10.25,
+      "sections": 5,
+      "cards": 36,
+      "verses": 17,
+      "notes": "New chapter, normal forward progress after Malachi 1. Law/prophecy chapter (priestly corruption, covenant of Levi, treachery against wives) written fresh to docs/bible-study-note-style.md, same voice as malachiOneSource.ts. ~2.1 cards per verse.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T09:46:55Z"
+        },
+        {
+          "name": "target chapter determined: Malachi 2 (new chapter, forward progress)",
+          "at": "2026-10-07T09:46:55Z"
+        },
+        {
+          "name": "KJV text fetched: Malachi 2 (17 verses) via raw.githubusercontent.com",
+          "at": "2026-10-07T09:47:10Z"
+        },
+        {
+          "name": "style spec read in full",
+          "at": "2026-10-07T09:47:15Z"
+        },
+        {
+          "name": "source file written: lib/malachiTwoSource.ts",
+          "at": "2026-10-07T09:52:30Z"
+        },
+        {
+          "name": "style checker clean (36 cards, 0 problems)",
+          "at": "2026-10-07T09:52:35Z"
+        },
+        {
+          "name": "wiring done: import + replaceStudySectionsForBookRange + preserveExactPhraseBodies for malachi 2",
+          "at": "2026-10-07T09:53:12Z"
+        },
+        {
+          "name": "parser check passed: 5 sections, 36 cards for Malachi 2",
+          "at": "2026-10-07T09:53:51Z"
+        },
+        {
+          "name": "tsc clean (npx tsc --noEmit -p .)",
+          "at": "2026-10-07T09:57:01Z"
+        }
+      ]
     }
   ]
 }
