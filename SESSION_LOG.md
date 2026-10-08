@@ -7087,3 +7087,7 @@ Next up: Matthew 17
 ## 2026-10-08T06:03:00Z (hourly chapter notes run)
 Chapter: Matthew 17 | Duration: 17 min | Sections: 6 | Cards: 43 | Status: pass
 Next up: Matthew 18
+
+## 2026-10-08T07:00:48Z (hourly chapter notes run)
+Chapter: Matthew 18 | Duration: 13 min | Sections: 8 | Cards: 60 | Status: pass
+Next up: Matthew 19
