@@ -1584,16 +1584,49 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       void fetchNotifications(currentUserId);
     };
 
-    const interval = window.setInterval(refresh, 8000);
+    /**
+     * This used to run every 8 seconds and never stop (2026-10-08).
+     *
+     * One pass is about 13 Supabase calls - roughly 6 for the unread count and
+     * 7 for notifications - so a single open tab was making ~5,850 calls an
+     * hour, and kept going while the tab sat in the background. That alone
+     * accounted for the project's ~147,000 requests a day, which is what
+     * starved the database into three outages in four days.
+     *
+     * It was always a safety net rather than the mechanism: the realtime
+     * channels above (`notifications:${userId}` and `messages-unread:…`) push
+     * these updates the moment anything changes. So the net now checks once a
+     * minute, and only while the tab is actually visible. Returning to the tab
+     * still refreshes immediately, so nothing feels slower to a real person.
+     */
+    const POLL_MS = 60_000;
+    let interval: number | null = null;
+
+    const stop = () => {
+      if (interval !== null) {
+        window.clearInterval(interval);
+        interval = null;
+      }
+    };
+    const start = () => {
+      if (interval === null) interval = window.setInterval(refresh, POLL_MS);
+    };
+
+    if (document.visibilityState === "visible") start();
     window.addEventListener("focus", refresh);
 
     function handleVisibilityChange() {
-      if (document.visibilityState === "visible") refresh();
+      if (document.visibilityState === "visible") {
+        refresh();
+        start();
+      } else {
+        stop();
+      }
     }
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      window.clearInterval(interval);
+      stop();
       window.removeEventListener("focus", refresh);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
