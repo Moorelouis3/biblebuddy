@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-4-explained",
+    title: "Exodus 4 Explained: Moses's Excuses and the Return to Egypt",
+    description:
+      "Exodus 4 explained verse by verse: God gives Moses three signs, appoints Aaron as his spokesman, and sends him back to Egypt to confront Pharaoh.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-4-explained",
+    publishedAt: "2026-10-08",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-4-explained.jpg",
+    groupPost: {
+      title: "Exodus 4 Explained 📖",
+      content:
+        "God already answered Moses twice.\nMoses keeps arguing anyway.\n\n📌 God answers every excuse except one: send someone else.\n\n📖 A shepherd's staff turns into a snake, then back again.\n📖 Moses says he is not **eloquent**. God says He made his mouth.\n📖 Aaron is given as a spokesman, already walking to meet him.\n\nNew article on:\n🟢 why God only gets angry at **one** of Moses's excuses\n🟢 what really happens at the inn with Zipporah\n🟢 why Israel believes the moment they hear it\n\nHave you ever kept arguing with God after He already answered you? 🙏",
+    },
+  },
+  {
     slug: "exodus-3-explained",
     title: "Exodus 3 Explained: The Burning Bush and the Name of God",
     description:
