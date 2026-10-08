@@ -7115,3 +7115,7 @@ Next up: Matthew 24
 ## 2026-10-08T13:07:09Z (hourly chapter notes run)
 Chapter: Matthew 24 | Duration: 21 min | Sections: 10 | Cards: 66 | Status: pass
 Next up: Matthew 25
+
+## 2026-10-08T13:59:26Z (hourly chapter notes run)
+Chapter: Matthew 25 | Duration: 12 min | Sections: 11 | Cards: 47 | Status: pass
+Next up: Matthew 26
