@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-3-explained",
+    title: "Exodus 3 Explained: The Burning Bush and the Name of God",
+    description:
+      "Exodus 3 explained verse by verse: Moses meets God at the burning bush, hears the name I AM THAT I AM, and is sent back to Egypt to free Israel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-3-explained",
+    publishedAt: "2026-10-08",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-3-explained.jpg",
+    groupPost: {
+      title: "Exodus 3 Explained 📖",
+      content:
+        "A shepherd sees a bush on fire that never burns up.\nGod speaks from inside it.\n\n📌 God answers **who am I** with a promise, not a resume.\n\n📖 Moses is told to take off his shoes on holy ground.\n📖 God reveals His name: **I AM THAT I AM**.\n📖 He warns Moses that Pharaoh will say no, before Moses even asks.\n\nNew article on:\n🟢 what **I AM THAT I AM** actually means\n🟢 why Jesus later claims this exact name for Himself\n🟢 why God tells Moses the hard part in advance\n\nHave you ever felt unqualified for something God was clearly asking of you? 🙏",
+    },
+  },
+  {
     slug: "exodus-2-explained",
     title: "Exodus 2 Explained: Baby Moses in the Basket and the Flight to Midian",
     description:
