@@ -56622,6 +56622,63 @@
           "at": "2026-10-08T09:03:00Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 21,
+      "startedAt": "2026-10-08T09:47:14Z",
+      "finishedAt": "2026-10-08T09:59:21Z",
+      "durationMinutes": 12,
+      "sections": 9,
+      "cards": 73,
+      "verses": 46,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 37s). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in each). Checked data/bible-notes-progress-log.json: latest entry was Matthew 20, finishedAt 09:03:00Z, confirming normal forward progress lands on Matthew 21. Confirmed via ls/grep that lib/matthewOneSource.ts through lib/matthewTwentySource.ts all exist and are wired, with no lib/matthewTwentyOneSource.ts yet. Fetched real KJV text for Matthew 21 (46 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the triumphal entry, the donkey and colt from Zechariah's prophecy, and the daughter of Zion address (1-5); the disciples' garments and branches spread on the road, the Hosanna and Psalm 118 blessing, and the city's moved reaction asking Who is this (6-11); the temple cleansing, the Court of the Gentiles commerce, the moneychangers and dove sellers, the Isaiah and Jeremiah quotations, and the blind and lame healed in the temple (12-14); the children's Hosanna, the leaders' sore displeasure, Jesus's Psalm 8 quotation, and the withdrawal to Bethany (15-17); the cursing of the fig tree as an acted out prophetic judgment, the lesson on faith and the mountain idiom, and believing prayer (18-22); the chief priests and elders demanding Jesus's authority, his counter question about John's baptism, and their dishonest We cannot tell (23-27); the parable of the two sons, the publicans and harlots entering the kingdom first, and John's call to righteousness (28-32); and the parable of the wicked husbandmen in full, the vineyard echoing Isaiah 5, the escalation from servants to the son, the owner's question that forces the leaders to self condemn, the Psalm 118 cornerstone quotation, the kingdom given to a fruit bearing nation, the two stone judgment images, and the leaders' fear of the multitude (33-46). Split into 9 sections (1-5, 6-11, 12-14, 15-17, 18-22, 23-27, 28-32, 33-39, 40-46), all 46 verses covered with no gaps or overlaps, each section kept at 7 verses or fewer. Density about 1.59 cards per verse (46 verses, 73 cards). scripts/check_bible_note_style.py found 1 problem on the first automated pass (a last bullet using the wrong emoji instead of 📖 or ➡️), fixed it, second run clean with 0 problems across all 73 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using the book emoji or the arrow emoji. A manual section 13 eye check and a targeted grep for forbidden Part 5 opening phrases both came back clean. Every title verified by hand as an exact or lightly punctuation trimmed KJV phrase in title case (the We fear the people semicolon in verse 26 was split so the heading carries only the clause before it), no duplicate titles across all 73 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections('matthew', 21): 9/9 sections, verse ranges 1-5/6-11/12-14/15-17/18-22/23-27/28-32/33-39/40-46 with no gaps, 73 total cards rendering verbatim, preserveExactPhraseFormatting true, no throw. npx tsc --noEmit -p . came back clean (exit code 0, no output). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/matthewTwentyOneSource.ts, the matthew condition in preserveExactPhraseBodies widened to include chapter 21, a new replaceStudySectionsForBookRange('matthew', 21, 21, MATTHEW_TWENTY_ONE_PERSONAL_SECTIONS) call added right after the chapter 20 call. This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Matthew 22.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-08T09:47:14Z"
+        },
+        {
+          "name": "priority queue and style redo backlog confirmed empty; target chapter determined: Matthew 21 (normal forward progress after Matthew 20)",
+          "at": "2026-10-08T09:47:14Z"
+        },
+        {
+          "name": "confirmed Matthew 1-20 all wired, no existing lib/matthewTwentyOneSource.ts file",
+          "at": "2026-10-08T09:47:30Z"
+        },
+        {
+          "name": "KJV text fetched (Matthew 21, 46 verses, aruljohn mirror)",
+          "at": "2026-10-08T09:47:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, reference file lib/matthewTwentySource.ts read",
+          "at": "2026-10-08T09:53:46Z"
+        },
+        {
+          "name": "source file written: lib/matthewTwentyOneSource.ts (73 cards, 9 sections)",
+          "at": "2026-10-08T09:57:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 1 bullet emoji ordering issue, then 0 problems)",
+          "at": "2026-10-08T09:58:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-08T09:58:40Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 73 cards, text verbatim, preserveExactPhraseFormatting true)",
+          "at": "2026-10-08T09:58:55Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-08T09:59:10Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-08T09:59:21Z"
+        }
+      ]
     }
   ]
 }
