@@ -56508,6 +56508,59 @@
           "at": "2026-10-08T07:00:48Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 19,
+      "startedAt": "2026-10-08T07:46:36Z",
+      "finishedAt": "2026-10-08T08:02:00Z",
+      "durationMinutes": 15,
+      "sections": 8,
+      "cards": 48,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue file was not present; style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty, so this was normal forward progress after Matthew 18. Fetched real KJV text for Matthew 19 (30 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Matthew 19 opens with Jesus leaving Galilee for Judaea beyond Jordan, then the Pharisees test him on divorce, which he answers by returning to Genesis one and two rather than the rabbinic Hillel/Shammai debate; Moses's concession for hardness of heart and the fornication exception follow; the disciples react with shock and Jesus explains the three kinds of eunuchs, including voluntary celibacy for the kingdom's sake; little children are brought to him and rebuked by the disciples before Jesus corrects them; the rich young man asks what good thing he must do, is tested on the commandments, and walks away sorrowful rather than sell his possessions; Jesus then teaches how hard it is for the rich to enter the kingdom (the camel through a needle's eye hyperbole, with a note that the popular 'needle gate' legend has no real evidence behind it) before telling Peter that sacrifice now is rewarded in the regeneration, closing on 'the first shall be last, and the last shall be first,' a bridge directly into chapter twenty's parable. Chunked into 8 sections (1-2 Jesus leaves Galilee for Judaea, 3-6 Pharisees test him on divorce, 7-9 Moses and the hardness of heart, 10-12 eunuchs for the kingdom's sake, 13-15 suffer the little children, 16-22 the rich young man, 23-26 easier for a camel, 27-30 the first shall be last). Density 1.6 cards/verse (30 verses, 48 cards). scripts/check_bible_note_style.py found 1 problem on the first automated pass (one bullet at 9 words on the Hardness Of Your Hearts card), fixed it, second run clean with 0 problems across all 48 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (coasts, tempting, cleave, twain, asunder, writing of divorcement, hardness of heart, fornication, eunuch, suffer, regeneration, hundredfold), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 48 cards. Parser check passed exactly via getBibleReaderStudySections('matthew', 19) (8/8 sections, verse ranges 1-2/3-6/7-9/10-12/13-15/16-22/23-26/27-30 with no gaps, 48 total cards, text rendered verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/matthewNineteenSource.ts, preserveExactPhraseBodies matthew range extended from chapters 1-18 to 1-19, new function applyPersonalMatthewNineteenStudySections added and called right after applyPersonalMatthewEighteenStudySections(). Next forward-progress target is Matthew 20.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-08T07:46:36Z"
+        },
+        {
+          "name": "target chapter determined: Matthew 19 (normal forward progress, redo backlog empty, last entry was Matthew 18, no existing lib file for Matthew 19)",
+          "at": "2026-10-08T07:47:37Z"
+        },
+        {
+          "name": "KJV text fetched (Matthew 19, 30 verses, aruljohn mirror)",
+          "at": "2026-10-08T07:51:57Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and bible-notes SKILL.md read in full",
+          "at": "2026-10-08T07:51:57Z"
+        },
+        {
+          "name": "source file written: lib/matthewNineteenSource.ts (8 sections, 48 cards)",
+          "at": "2026-10-08T07:59:00Z"
+        },
+        {
+          "name": "style checker clean (fixed 1 bullet word-count issue, then 0 problems across 48 cards)",
+          "at": "2026-10-08T07:59:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call site, preserveExactPhraseBodies matthew range extended to 19)",
+          "at": "2026-10-08T07:59:00Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('matthew', 19): 8/8 sections, 48 cards",
+          "at": "2026-10-08T07:59:00Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-10-08T07:59:24Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-08T08:02:00Z"
+        }
+      ]
     }
   ]
 }
