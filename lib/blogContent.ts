@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-1-explained",
+    title: "Exodus 1 Explained: Slavery in Egypt and the Midwives Who Feared God",
+    description:
+      "Exodus 1 explained verse by verse: Jacob's family multiplies in Egypt, a new king enslaves them, and two midwives defy orders to kill Hebrew sons.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-1-explained",
+    publishedAt: "2026-10-08",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-1-explained.jpg",
+    groupPost: {
+      title: "Exodus 1 Explained 📖",
+      content:
+        "Genesis ends in a coffin.\nExodus opens with a graveyard growing anyway.\n\n📌 A new king forgets everything Joseph did for Egypt.\n\n📖 Jacob's seventy people become a nation of slaves.\n📖 Pharaoh orders two midwives to kill baby boys.\n📖 They say no, and God blesses them for it.\n\nNew article on:\n🟢 why Pharaoh feared a nation he could not see\n🟢 who **Shiphrah and Puah** really were\n🟢 what it means that they **feared God** more than a king\n\nHave you ever had to choose between obeying a rule and doing what you knew was right? 🙏",
+    },
+  },
+  {
     slug: "can-god-forgive-what-ive-done",
     title: "Can God Forgive What I've Done?",
     description:
