@@ -56056,6 +56056,63 @@
           "at": "2026-10-07T23:00:14Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 11,
+      "startedAt": "2026-10-07T23:49:40Z",
+      "finishedAt": "2026-10-08T00:00:33Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 28,
+      "verses": 30,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages). Session started with a stale cached origin/main ref in the container snapshot (local detached HEAD at Matthew 10 showed no common ancestor with the first git fetch of origin/main, which still pointed at Micah 2) -- investigated with git reflog and a fresh git fetch origin before touching anything, confirmed this was purely a stale remote-tracking ref from container setup and not real divergence, since after the fetch origin/main matched local HEAD exactly at the Matthew 10 commit. Reset local main onto origin/main cleanly (no force push needed, no data lost) before starting the actual chapter. Priority queue (data/bible-notes-style-redo-remaining.json) confirmed empty (remaining: []), so this was normal forward progress after Matthew 10. Matthew 11 had no dedicated per-chapter Source.ts file, only the legacy bulk file lib/matthewSixToTwentyEightPersonalNotes.ts wired via replaceStudySectionsForBookRange(\"matthew\", 6, 28, ...). Wrote a new dedicated lib/matthewElevenSource.ts file (same parser shape as matthewTenSource.ts) and wired it into lib/bibleReaderStudyNotes.ts with a narrower applyPersonalMatthewElevenStudySections() call placed right after applyPersonalMatthewTenStudySections(), which itself runs after the bulk 6-28 call, so it overrides only chapter 11 and leaves the legacy bulk file covering chapters 12-28 until each gets the same treatment. Also extended the preserveExactPhraseBodies condition for Matthew to include chapter 11. Fetched real KJV text for Matthew 11 (30 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers John the Baptist, from prison, sending messengers to ask if Jesus is the one who should come, and Jesus answering with the evidence of healed blind, lame, and lepers rather than a direct claim (1-6); Jesus praising John to the crowds as more than a prophet, the one Malachi promised, and greater in the old era than anyone, while the least in the new kingdom now outranks him in position (7-11); the difficult kingdom of heaven suffereth violence line (both the violent-opposition and the eager-crowds readings noted honestly since the text does not settle it), John as Elias in the sense of fulfilling the role rather than literal reincarnation, and the call to truly hear rather than merely listen (12-15); the parable of children playing wedding and funeral games in the marketplace who will join neither mood, applied to a generation that rejected both John the ascetic and Jesus the opposite (16-19); the woes against Chorazin, Bethsaida, and Capernaum, Galilean towns that saw the most miracles yet did not repent, judged more harshly than Tyre, Sidon, and even Sodom because more revelation brings more responsibility (20-24); and the closing prayer thanking the Father for hiding kingdom truth from the self reliant and revealing it to humble babes, the high claim that only the Father and Son fully know each other, and the famous invitation to the weary to take Jesus's easy yoke and light burden instead of the burden of self sufficient religion, closing the chapter by answering the doubt John raised from prison in verse two (25-30). Split into 6 sections matching natural breaks in the chapter (1-6, 7-11, 12-15, 16-19, 20-24, 25-30), all 30 verses covered with no gaps or overlaps. Density about 0.93 cards per verse (30 verses, 28 cards), slightly below Matthew 10's 1.26 but matched to where the text naturally groups (the children's game parable in 16-17 and the Capernaum-Sodom comparison in 23-24 each became one card instead of two to avoid padding or restating the same point twice). scripts/check_bible_note_style.py came back clean on the first pass, 0 problems across all 28 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using 📖 or ➡️. A manual section 13 eye check and a manual grep for the spec's 'while' and 'rather' stacked-clause words (not caught by the mechanical checker) both came back clean, and confirmed every card opens with one of the four approved moves rather than restating the verse, defines its key terms in plain language (offended, reed, soft raiment, Elias, upbraid, woe, labour and heavy laden, yoke), closes on meaning rather than mechanics, and that bullets compress a distinct angle rather than restating the body. One title (verse 29) was deliberately trimmed to drop the KJV semicolon (\"Learn of me; for I am meek...\") since the checker flags any semicolon in the file -- the title still lifts a real contiguous KJV phrase, just stopping before the semicolon. Parser check passed via npx tsx against a direct import of MATTHEW_ELEVEN_PERSONAL_SECTIONS: 6/6 sections, verse ranges 1-6/7-11/12-15/16-19/20-24/25-30 with no gaps, 28 total cards rendering verbatim, no throw. npx tsc --noEmit came back clean (no output, exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/matthewElevenSource.ts, the matthew condition in preserveExactPhraseBodies widened to include chapter 11, new applyPersonalMatthewElevenStudySections() function added calling replaceStudySectionsForBookRange(\"matthew\", 11, 11, MATTHEW_ELEVEN_PERSONAL_SECTIONS), invoked right after applyPersonalMatthewTenStudySections(). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Matthew 12, which still carries only the legacy matthewSixToTwentyEightPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-07T23:49:40Z"
+        },
+        {
+          "name": "git sync verified: stale cached origin/main ref in container snapshot resolved via git fetch, local HEAD already matched real origin/main at Matthew 10, no divergence or data loss, main branch reset cleanly onto origin/main",
+          "at": "2026-10-07T23:49:30Z"
+        },
+        {
+          "name": "target chapter determined: Matthew 11 (normal forward progress, style-redo backlog empty)",
+          "at": "2026-10-07T23:50:04Z"
+        },
+        {
+          "name": "KJV text fetched (Matthew 11, 30 verses, aruljohn mirror)",
+          "at": "2026-10-07T23:50:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-07T23:51:30Z"
+        },
+        {
+          "name": "source file written: lib/matthewElevenSource.ts (28 cards, 6 sections)",
+          "at": "2026-10-07T23:56:40Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-07T23:56:55Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalMatthewElevenStudySections)",
+          "at": "2026-10-07T23:57:30Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 28 cards, text verbatim, no throw)",
+          "at": "2026-10-07T23:57:55Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-07T23:58:22Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-08T00:00:33Z"
+        }
+      ]
     }
   ]
 }
