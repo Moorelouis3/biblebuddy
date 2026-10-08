@@ -57245,6 +57245,59 @@
           "at": "2026-10-08T21:07:07Z"
         }
       ]
+    },
+    {
+      "book": "Mark",
+      "chapter": 4,
+      "startedAt": "2026-10-08T21:46:41Z",
+      "finishedAt": "2026-10-08T22:04:52Z",
+      "durationMinutes": 18,
+      "sections": 8,
+      "cards": 51,
+      "verses": 41,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Started on a detached HEAD matching origin/main at Mark 3; the local main branch ref was stale from initial container setup (pointed at an older commit, 50 commits behind), so re-pointed it with git checkout -B main origin/main before doing any work (no local work was lost, the stale ref was never used for anything). npm install ran clean (624 packages, fresh clone, no node_modules). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Mark 3, the previous entry in this log. Confirmed no lib/markFourSource.ts existed yet. Fetched real KJV text for Mark 4 (41 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the parable of the sower told from a ship on the Sea of Galilee (1-9); why Jesus taught in parables, quoting Isaiah's warning about seeing but not perceiving (10-12); the sower parable explained soil by soil (13-20); the lamp under a bushel and the measure for measure sayings (21-25); the parable of the growing seed, unique to Mark (26-29); the mustard seed parable and the note that Jesus explained everything privately to his disciples (30-34); and Jesus calming the storm on the crossing to the Gentile side of the lake, ending on the disciples' fear of who he actually is (35-41). Split into 8 sections (1-4, 5-9, 10-12, 13-20, 21-25, 26-29, 30-34, 35-41), all 41 verses covered with no gaps or overlaps. The original plan was 7 sections with the opening one spanning verses 1-9, but the first npx tsx parser check revealed that lib/bibleReaderStudyNotes.ts silently auto-splits any wired-in section longer than 8 verses (enforceStudySectionVerseLimit(8)) by verse range only, without dividing the card list, which duplicated all 11 cards of that section into both verse halves (22 cards shown instead of 11). Fixed by splitting that section in the source file itself into Mark 4:1-4 and Mark 4:5-9 as two real sections with the cards correctly divided between them (5 and 6 cards), keeping every section at or under the 8 verse cap; re-ran the parser check and confirmed 51 total cards with no duplication. Density about 1.24 cards per verse (41 verses, 51 cards), in the same range as Mark 1-3. scripts/check_bible_note_style.py found 17 problems on the first automated pass: several bullets one or two words over the 8 word limit, and two cards using the style spec's inline-list technique with a repeated emoji per list item, which the checker (and the actual working convention found in lib/proverbsThirtySource.ts) treats as extra bullets rather than body text. Fixed by rewriting those two inline lists as plain unbulleted lines (matching the real shipped convention) and trimming the over-length bullets; second run clean with 0 problems across all 51 cards. A manual section 13 eye check confirmed every card opens with a definition, a corrected misreading, an identified vague reference, or a flat statement rather than a restated verse, defines its key terms in plain language (hearken, sower, way side, stony ground, mystery, mete, candlestick, hinder part, sickle), never recaps the verse as the teaching, closes on meaning rather than mechanics, and avoids banned filler, hedges, hyphens, em dashes, semicolons, and contractions. Every title verified as an exact or near exact contiguous KJV phrase in title case, with no duplicate titles across all 51 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"mark\", 4): 8/8 sections, verse ranges 1-4/5-9/10-12/13-20/21-25/26-29/30-34/35-41 with no gaps, 51 total cards rendering verbatim, no throw, no duplication. npx tsc --noEmit -p . came back clean (no output, exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/markFourSource.ts, the mark condition in preserveExactPhraseBodies widened to include chapter 4 alongside chapters 1 through 3, and a new applyPersonalMarkFourStudySections() function added calling replaceStudySectionsForBookRange(\"mark\", 4, 4, MARK_FOUR_PERSONAL_SECTIONS), invoked right after applyPersonalMarkThreeStudySections(). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Mark 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-08T21:48:09Z"
+        },
+        {
+          "name": "target chapter determined: Mark 4 (new chapter, priority queue and redo list both empty, forward progress after Mark 3)",
+          "at": "2026-10-08T21:48:09Z"
+        },
+        {
+          "name": "KJV text fetched: Mark 4, 41 verses",
+          "at": "2026-10-08T21:48:31Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-10-08T21:48:35Z"
+        },
+        {
+          "name": "source file written: lib/markFourSource.ts",
+          "at": "2026-10-08T21:57:42Z"
+        },
+        {
+          "name": "style checker clean (51 cards, after fixing 17 mechanical issues: over-length bullets and two inline lists reformatted to match the real non-emoji convention)",
+          "at": "2026-10-08T21:59:12Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply call, preserveExactPhraseBodies range)",
+          "at": "2026-10-08T21:59:43Z"
+        },
+        {
+          "name": "parser check passed (8 sections, 51 cards, after fixing a verse-limit auto-split bug by splitting the original 9-verse opening section into two sections of 4 and 5 verses)",
+          "at": "2026-10-08T22:01:33Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-08T22:03:49Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-08T22:04:52Z"
+        }
+      ]
     }
   ]
 }
