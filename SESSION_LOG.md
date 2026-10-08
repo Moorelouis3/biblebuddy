@@ -7147,3 +7147,7 @@ Next up: Mark 4
 ## 2026-10-08T22:06:23Z (hourly chapter notes run)
 Chapter: Mark 4 | Duration: 18 min | Sections: 8 | Cards: 51 | Status: pass
 Next up: Mark 5
+
+## 2026-10-08T23:00:00Z (hourly chapter notes run)
+Chapter: Mark 5 | Duration: 13 min | Sections: 10 | Cards: 64 | Status: pass
+Next up: Mark 6
