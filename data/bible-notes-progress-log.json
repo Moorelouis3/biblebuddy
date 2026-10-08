@@ -56296,6 +56296,59 @@
           "at": "2026-10-08T03:01:00Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 15,
+      "startedAt": "2026-10-08T03:45:44Z",
+      "finishedAt": "2026-10-08T03:58:57Z",
+      "durationMinutes": 13,
+      "sections": 7,
+      "cards": 43,
+      "verses": 39,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (624 packages, fresh clone, about 41s). Priority queue and style-redo backlog (`data/bible-notes-style-redo-remaining.json`, `remaining: []`) both confirmed empty, so this was normal forward progress after Matthew 14 (the latest entry in this log). Matthew 15 had no dedicated per-chapter `Source.ts` file yet. Wrote a new dedicated `lib/matthewFifteenSource.ts` file (same parser shape as `matthewFourteenSource.ts`) and added a narrower `applyPersonalMatthewFifteenStudySections()` call right after `applyPersonalMatthewFourteenStudySections()` so it overrides only chapter 15. Also extended the `preserveExactPhraseBodies` condition for Matthew to include chapter 15. Fetched real KJV text for Matthew 15 (39 verses) from the `raw.githubusercontent.com/aruljohn/Bible-kjv` mirror. The chapter covers the Pharisees' hand washing challenge, Jesus's countercharge that their Corban style tradition voided the command to honor father and mother, and Isaiah's old lips without heart prophecy (1-9); the public teaching that defilement comes from the heart's words, not unwashed hands, the blind leaders of the blind warning, and the heart's own catalog of evil (10-20); the Canaanite woman's persistent faith in Gentile territory, from the disciples' dismissal and the hard children's bread and dogs saying through her clever reply and her daughter's immediate healing (21-28); the healing of great multitudes by the sea of Galilee closing with the crowd glorifying the God of Israel (29-31); and the feeding of the four thousand, with its own seven loaves, seven baskets, and the ship's landing at Magdala (32-39). Split into 7 sections matching the chapter's own scene breaks (1-6, 7-9, 10-14, 15-20, 21-28, 29-31, 32-39), all 39 verses covered with no gaps or overlaps, each section at or under the 9 verse guideline. Density about 1.10 cards per verse (39 verses, 43 cards), in line with recent Matthew chapters (Matthew 14 was 1.19, Matthew 13 was 1.03). `scripts/check_bible_note_style.py` came back clean on the first pass, 0 problems across all 43 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using \ud83d\udcd6 or \u27a1\ufe0f. A manual section 13 eye check confirmed every card opens with one of the four approved moves rather than restating the verse, defines its key terms in plain language (transgress, tradition of the elders, Corban style gift vow, Esaias, hypocrite, draught, parable, vexed, Canaan, Son of David, lost sheep of the house of Israel, dumb, maimed, brake, Magdala), closes on meaning rather than mechanics, and that bullets compress a distinct angle rather than restating the body. No forbidden Part 5 filler phrases found on a targeted grep. Every title is an exact phrase lifted from the KJV verse in title case, with the chapter's one KJV semicolon in verse 23 dropped in favor of a comma to satisfy the no semicolon rule. Split verse 2 and the surrounding hand washing dispute into six separate cards (the delegation, the tradition itself, Jesus's countercharge, the commandment, the Corban loophole, and the summary) since those are distinct reader questions bundled into a few dense verses; the Canaanite woman scene (21-28) was given 11 cards for 8 verses since it is the densest narrative beat in the chapter. Parser check passed via a direct `npx tsx` import call to `getBibleReaderStudySections(\"matthew\", 15)`: 7/7 sections, verse ranges 1-6/7-9/10-14/15-20/21-28/29-31/32-39 with no gaps, 43 total cards rendering verbatim, no throw. `npx tsc --noEmit -p .` came back clean (exit code 0, no output). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Matthew 16.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-08T03:46:25Z"
+        },
+        {
+          "name": "target chapter determined: Matthew 15 (normal forward progress, priority queue and style redo backlog both empty)",
+          "at": "2026-10-08T03:46:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-08T03:46:45Z"
+        },
+        {
+          "name": "KJV text fetched (Matthew 15, 39 verses, aruljohn mirror)",
+          "at": "2026-10-08T03:47:00Z"
+        },
+        {
+          "name": "source file written: lib/matthewFifteenSource.ts (43 cards, 7 sections)",
+          "at": "2026-10-08T03:53:12Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-08T03:54:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalMatthewFifteenStudySections)",
+          "at": "2026-10-08T03:55:14Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 43 cards, text verbatim)",
+          "at": "2026-10-08T03:55:48Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-08T03:58:38Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-08T04:00:47Z"
+        }
+      ]
     }
   ]
 }
