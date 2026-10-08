@@ -56398,6 +56398,67 @@
           "at": "2026-10-08T05:01:32Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 17,
+      "startedAt": "2026-10-08T05:46:17Z",
+      "finishedAt": "2026-10-08T06:03:00Z",
+      "durationMinutes": 17,
+      "sections": 6,
+      "cards": 43,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 36s). Repo was in a detached HEAD state at session start; git fetch origin main showed origin/main had force updated to the same commit as local HEAD (Matthew 16), so git checkout main && git reset --hard origin/main landed cleanly with nothing unpushed lost. Priority queue and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Matthew 16, the latest entry in this log, which already named Matthew 17 as the next target. Confirmed no lib/matthewSeventeenSource.ts or similar file existed yet via grep across lib/. Fetched real KJV text for Matthew 17 (27 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the transfiguration, Peter's offer to build three tabernacles, the bright cloud and the voice naming Jesus the beloved Son, and the charge to tell no man until the resurrection (1-6, 7-9); the disciples asking about Elias, Jesus confirming the prophecy was already fulfilled through John the Baptist, and the warning that the Son of man will suffer the same way (10-13); the desperate father's demon possessed son, the disciples' failed healing attempt, the faithless generation rebuke, the immediate cure, and the teaching on faith as a grain of mustard seed plus prayer and fasting (14-21); the second plain prediction of Jesus's death and resurrection in Galilee, met this time with sorrow rather than rebuke (22-23); and the temple tribute money question, Jesus's royal household logic for Peter, and the coin found in the fish's mouth (24-27). Wrote a new dedicated lib/matthewSeventeenSource.ts file (same parser shape as matthewSixteenSource.ts) and added a narrower applyPersonalMatthewSeventeenStudySections() call right after applyPersonalMatthewSixteenStudySections() so it overrides only chapter 17, and extended the preserveExactPhraseBodies matthew condition to include chapter 17. First attempt grouped the transfiguration scene as a single 1-9 section, but the parser check revealed the pre-existing enforceStudySectionVerseLimit(8) call in lib/bibleReaderStudyNotes.ts silently splits any section over 8 verses into duplicated Part 1 / Part 2 sections carrying the exact same card list twice, rather than dividing the cards between them, doubling the chapter's effective card count to 56. Fixed by splitting that section into 1-6 and 7-9 at a natural scene break (the glory on the mountain, then coming back down), matching the convention every other wired Matthew chapter already follows of keeping every section at 8 verses or fewer. Final verse ranges 1-6/7-9/10-13/14-21/22-23/24-27 cover all 27 verses with no gaps or overlaps. Density about 1.59 cards per verse (27 verses, 43 cards). scripts/check_bible_note_style.py came back clean on the first pass, 0 problems across all 43 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (transfigured, tabernacles, Elias, listed, lunatick, sore vexed, ofttimes, unbelief, grain of mustard seed, howbeit, betrayed, tribute money, prevented, custom, offend, an hook), and closes on meaning rather than mechanics. Every title verified by hand as an exact contiguous KJV phrase in title case, with the chapter's semicolons and colons (verses 5, 15, 18, 25, 27) replaced by commas in card titles to satisfy the no-semicolon rule, consistent with prior chapters. The note on verse 21 (prayer and fasting) honestly flags that many of the oldest Greek manuscripts omit that verse, rather than staying silent or inventing false certainty. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"matthew\", 17): 6/6 sections, verse ranges 1-6/7-9/10-13/14-21/22-23/24-27 with no gaps, 43 total cards rendering verbatim, preserveExactPhraseFormatting true, no throw. npx tsc --noEmit -p . came back clean (exit code 0, run in background due to its runtime). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Matthew 18, which still carries only the legacy matthewSixToTwentyEightPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-08T05:46:53Z"
+        },
+        {
+          "name": "target chapter determined: Matthew 17 (new chapter, forward progress after Matthew 16, style redo backlog empty)",
+          "at": "2026-10-08T05:47:40Z"
+        },
+        {
+          "name": "KJV text fetched: Matthew 17, 27 verses, from GitHub raw aruljohn mirror",
+          "at": "2026-10-08T05:47:40Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) + reference files (matthewSixteenSource.ts, check_bible_note_style.py, wiring in bibleReaderStudyNotes.ts)",
+          "at": "2026-10-08T05:54:30Z"
+        },
+        {
+          "name": "source file written: lib/matthewSeventeenSource.ts (43 cards, initially 5 sections)",
+          "at": "2026-10-08T05:55:40Z"
+        },
+        {
+          "name": "style checker clean: 43 cards, 0 problems on first pass",
+          "at": "2026-10-08T05:55:55Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range, applyPersonalMatthewSeventeenStudySections call",
+          "at": "2026-10-08T05:56:30Z"
+        },
+        {
+          "name": "parser check found a bug: enforceStudySectionVerseLimit(8) split the 9 verse section 1-9 into duplicated Part 1/Part 2 sections, doubling cards to 56",
+          "at": "2026-10-08T05:56:20Z"
+        },
+        {
+          "name": "fixed: split section 1-9 into 1-6 and 7-9 so every section stays at 8 verses or fewer, matching house convention",
+          "at": "2026-10-08T05:59:30Z"
+        },
+        {
+          "name": "parser check passed: 6/6 sections, verse ranges 1-6/7-9/10-13/14-21/22-23/24-27, 43 cards, verbatim text confirmed",
+          "at": "2026-10-08T06:01:01Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-08T05:58:09Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-08T06:03:00Z"
+        }
+      ]
     }
   ]
 }

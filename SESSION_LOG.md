@@ -7083,3 +7083,7 @@ Next up: Matthew 16
 ## 2026-10-08T05:01:47Z (hourly chapter notes run)
 Chapter: Matthew 16 | Duration: 10 min | Sections: 5 | Cards: 41 | Status: pass
 Next up: Matthew 17
+
+## 2026-10-08T06:03:00Z (hourly chapter notes run)
+Chapter: Matthew 17 | Duration: 17 min | Sections: 6 | Cards: 43 | Status: pass
+Next up: Matthew 18
