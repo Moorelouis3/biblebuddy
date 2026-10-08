@@ -56744,6 +56744,59 @@
           "at": "2026-10-08T11:04:48Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 23,
+      "startedAt": "2026-10-08T11:47:16Z",
+      "finishedAt": "2026-10-08T12:01:53Z",
+      "durationMinutes": 15,
+      "sections": 9,
+      "cards": 61,
+      "verses": 39,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 38s). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Matthew 22, the latest entry in this log. Confirmed no lib/matthewTwentyThreeSource.ts existed yet. Fetched real KJV text for Matthew 23 (39 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Chapter covers the warning about scribes and Pharisees sitting in Moses' seat without practicing what they teach (1-7), Jesus's correction to his own disciples about titles and servanthood (8-12), the first three woes about shutting the kingdom's door and devouring widows' houses (13-15), the broken oath system around temple gold and altar gifts (16-22), tithing mint and anise and cummin while neglecting judgment, mercy, and faith (23-24), cleaning the outside of the cup while remaining full of extortion within (25-28), building the prophets' tombs while being called a generation of vipers (29-33), the prediction of persecution tied back to Abel and Zacharias (34-36), and the lament over Jerusalem closing the chapter (37-39). Split into 9 sections, all 39 verses covered with no gaps. Density about 1.56 cards per verse (61 cards). scripts/check_bible_note_style.py found 6 problems on first pass (all bullets at 9-10 words instead of 3-8), fixed every one, second run clean with 0 problems across all 61 cards. Manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms (Moses' seat, phylacteries, borders/tassels, Rabbi, woe, hypocrite, pretence, proselyte, debtor, tithe, weightier matters, sepulchres, measure, generation of vipers, Gehenna, scourge, henceforth), and closes on meaning. Titles verified by hand as exact contiguous KJV phrases in title case, with the repeated 'Woe unto you, scribes and Pharisees, hypocrites' refrain used as a title only once (its first appearance) so no duplicate titles exist across the chapter. Parser check passed via getBibleReaderStudySections('matthew', 23): 9/9 sections, verse ranges 1-7/8-12/13-15/16-22/23-24/25-28/29-33/34-36/37-39 with no gaps, 61 cards rendering verbatim, preserveExactPhraseFormatting true, no throw. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/matthewTwentyThreeSource.ts, the matthew condition in preserveExactPhraseBodies widened to include chapter 23, new replaceStudySectionsForBookRange('matthew', 23, 23, MATTHEW_TWENTY_THREE_PERSONAL_SECTIONS) call added right after the chapter 22 call inside applyPersonalMatthewTwentyStudySections(), confirmed this runs after the legacy applyPersonalMatthewSixThroughTwentyEightStudySections() call so the override correctly takes precedence. New chapter, normal forward progress, not a style redo. Next forward-progress target is Matthew 24.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-08T11:47:30Z"
+        },
+        {
+          "name": "priority queue and style redo backlog confirmed empty; target chapter determined: Matthew 23 (normal forward progress after Matthew 22)",
+          "at": "2026-10-08T11:47:54Z"
+        },
+        {
+          "name": "KJV text fetched (Matthew 23, 39 verses, aruljohn mirror)",
+          "at": "2026-10-08T11:48:05Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline (.claude/skills/bible-notes/SKILL.md) read in full, reference file lib/matthewTwentyTwoSource.ts read",
+          "at": "2026-10-08T11:49:30Z"
+        },
+        {
+          "name": "source file written: lib/matthewTwentyThreeSource.ts (61 cards, 9 sections)",
+          "at": "2026-10-08T11:56:28Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 6 bullet word-count issues, then 0 problems)",
+          "at": "2026-10-08T11:56:56Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to chapter 23, replaceStudySectionsForBookRange call added)",
+          "at": "2026-10-08T11:57:10Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 61 cards, text verbatim, preserveExactPhraseFormatting true)",
+          "at": "2026-10-08T11:57:12Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-08T12:00:07Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-08T12:01:53Z"
+        }
+      ]
     }
   ]
 }
