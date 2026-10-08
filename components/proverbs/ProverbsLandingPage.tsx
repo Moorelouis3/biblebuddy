@@ -101,20 +101,22 @@ export default function ProverbsLandingPage() {
 
   if (!event) return null;
 
-  const howToStudy = [
-    { emoji: "📖", text: "Read the chapter first. All 31, one a day — Proverbs has a chapter for every day of the month." },
-    { emoji: "🧭", text: "Start at chapter 1, not chapter 10. The famous one-liners only make sense after the nine chapters of pleading that come first." },
-    { emoji: "✍️", text: "Write down the one line that stung. Proverbs is not meant to be admired, it is meant to be obeyed." },
-    { emoji: "🎯", text: "Pick one thing to change that day. Your words, your money, your temper — not all of it at once." },
-    { emoji: "🙏", text: "Close in prayer. Wisdom in Proverbs starts with the fear of the Lord, not with cleverness." },
-    { emoji: "🔁", text: "Miss a day? Carry on from where you stopped. Nothing locks and nothing expires." },
+  // What this actually is, before what you do each day. People arriving from a
+  // social post assume a Zoom class or a mailing list, so say plainly that it is
+  // neither.
+  const whatItIs = [
+    { emoji: "📱", text: "It all happens inside Bible Buddy, on your phone or your computer. No Zoom, no video calls, no meetings to show up to." },
+    { emoji: "📅", text: "31 chapters, one a day — Proverbs has a chapter for every day of the month." },
+    { emoji: "⏱️", text: "About fifteen minutes a day, whenever suits you. Morning, lunch break, last thing at night." },
+    { emoji: "🔓", text: "All 31 days are open from the start. Begin today or next month, go fast or slow. Nothing locks and nothing expires." },
+    { emoji: "💾", text: "Your place and your answers save as you go, so you can stop mid-day and pick it back up on any device." },
   ];
 
   const dailySteps = [
-    { emoji: "🎧", title: "Read or listen", text: "A short study of the chapter — read it, or let Bible Buddy read it to you." },
+    { emoji: "🎧", title: "Read or listen", text: "A short study of the day's chapter — read it, or let Bible Buddy read it to you." },
     { emoji: "📜", title: "Read the chapter", text: "The chapter of Proverbs itself, with study notes beside the text." },
     { emoji: "🧠", title: "Take the trivia", text: "A few questions on what you just read, so it actually sticks." },
-    { emoji: "💬", title: "Join the discussion", text: "Answer the day's question and see what everyone else saw in the same chapter." },
+    { emoji: "💬", title: "Join the discussion", text: "Answer the day's question and see what everyone else saw in the same chapter — in your own time, not live." },
   ];
 
   const cta = (
@@ -171,15 +173,15 @@ export default function ProverbsLandingPage() {
 
         <div className="mt-8">{cta}</div>
 
-        <div className="mt-10 space-y-4">
+        <div className="mt-10">
           <Section
-            emoji="🧭"
-            title="How to study Proverbs"
-            subtitle="Six things that change how the book reads"
+            emoji="📖"
+            title="How this Bible study works"
+            subtitle="Digital, self-paced, and free — here is exactly what happens"
             defaultOpen
           >
             <ul className="space-y-4">
-              {howToStudy.map((item) => (
+              {whatItIs.map((item) => (
                 <li key={item.text} className="flex gap-3">
                   <span aria-hidden className="mt-0.5 text-lg">
                     {item.emoji}
@@ -188,10 +190,11 @@ export default function ProverbsLandingPage() {
                 </li>
               ))}
             </ul>
-          </Section>
 
-          <Section emoji="📅" title="How each day works" subtitle="Four steps, about fifteen minutes">
-            <ol className="space-y-4">
+            <p className="mt-7 text-sm font-bold uppercase tracking-[0.1em] text-[#5b6c84]">
+              What a day looks like
+            </p>
+            <ol className="mt-4 space-y-4">
               {dailySteps.map((step, index) => (
                 <li key={step.title} className="flex gap-3">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eaf1fd] text-sm font-bold text-[#2f6fd0]">
@@ -209,7 +212,8 @@ export default function ProverbsLandingPage() {
                 </li>
               ))}
             </ol>
-            <p className="mt-5 rounded-2xl bg-[#f3f8ff] px-4 py-3 text-sm font-medium text-[#2c3e55]">
+
+            <p className="mt-6 rounded-2xl bg-[#f3f8ff] px-4 py-3 text-sm font-medium text-[#2c3e55]">
               {event.evergreenLine}
             </p>
           </Section>
