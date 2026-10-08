@@ -7063,3 +7063,7 @@ Next up: Matthew 11
 ## 2026-10-08T00:00:33Z (hourly chapter notes run)
 Chapter: Matthew 11 | Duration: 11 min | Sections: 6 | Cards: 28 | Status: pass
 Next up: Matthew 12
+
+## 2026-10-08T01:01:00Z (hourly chapter notes run)
+Chapter: Matthew 12 | Duration: 15 min | Sections: 9 | Cards: 49 | Status: pass
+Next up: Matthew 13
