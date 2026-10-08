@@ -7127,3 +7127,7 @@ Next up: Matthew 27
 ## 2026-10-08T17:04:30Z (hourly chapter notes run)
 Chapter: Matthew 27 | Duration: 18 min | Sections: 16 | Cards: 87 | Status: pass
 Next up: Matthew 28
+
+## 2026-10-08T17:58:30Z (hourly chapter notes run)
+Chapter: Matthew 28 | Duration: 11 min | Sections: 5 | Cards: 33 | Status: pass
+Next up: Mark 1
