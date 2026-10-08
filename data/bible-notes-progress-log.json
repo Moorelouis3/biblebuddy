@@ -56679,6 +56679,63 @@
           "at": "2026-10-08T09:59:21Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 22,
+      "startedAt": "2026-10-08T10:46:37Z",
+      "finishedAt": "2026-10-08T11:00:47Z",
+      "durationMinutes": 14,
+      "sections": 7,
+      "cards": 65,
+      "verses": 46,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 39s). Priority queue and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Matthew 21, the latest entry in this log, which named Matthew 22 as next. Confirmed Matthew 1-21 all wired to dedicated lib files via grep of lib/bibleReaderStudyNotes.ts, no lib/matthewTwentyTwoSource.ts existed yet. Fetched real KJV text for Matthew 22 (46 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Chapter covers the parable of the marriage feast for the king's son and its refusal (1-7), the second invitation and the man without a wedding garment (8-14), render unto Caesar (15-22), the Sadducees' seven brothers resurrection riddle (23-28), Jesus correcting their assumption from Exodus 3 (29-33), the great commandment from Deuteronomy 6 and Leviticus 19 (34-40), and David's Lord from Psalm 110 (41-46). Split into 7 sections, all 46 verses covered with no gaps. Density about 1.41 cards per verse (65 cards). scripts/check_bible_note_style.py found 10 problems on first pass (all bullets at 9-10 words instead of 3-8), fixed every one, second run clean with 0 problems across all 65 cards. Manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms (fatlings, wroth, levirate marriage, tribute, denarius, superscription, hypocrite, twain, durst, footstool), and closes on meaning. Titles verified by hand as exact contiguous KJV phrases in title case, the render unto Caesar semicolon in verse 21 split so each clause got its own card. Parser check passed via getBibleReaderStudySections('matthew', 22): 7/7 sections, verse ranges 1-7/8-14/15-22/23-28/29-33/34-40/41-46 with no gaps, 65 cards rendering verbatim, preserveExactPhraseFormatting true, no throw. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/matthewTwentyTwoSource.ts, the matthew condition in preserveExactPhraseBodies widened to include chapter 22, new replaceStudySectionsForBookRange('matthew', 22, 22, MATTHEW_TWENTY_TWO_PERSONAL_SECTIONS) call added right after the chapter 21 call inside applyPersonalMatthewTwentyStudySections(). New chapter, normal forward progress, not a style redo. Next forward-progress target is Matthew 23.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-08T10:46:37Z"
+        },
+        {
+          "name": "priority queue and style redo backlog confirmed empty; target chapter determined: Matthew 22 (normal forward progress after Matthew 21)",
+          "at": "2026-10-08T10:47:33Z"
+        },
+        {
+          "name": "confirmed Matthew 1-21 all wired, no existing lib/matthewTwentyTwoSource.ts file",
+          "at": "2026-10-08T10:47:33Z"
+        },
+        {
+          "name": "KJV text fetched (Matthew 22, 46 verses, aruljohn mirror)",
+          "at": "2026-10-08T10:47:33Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, reference file lib/matthewTwentyOneSource.ts read",
+          "at": "2026-10-08T10:56:25Z"
+        },
+        {
+          "name": "source file written: lib/matthewTwentyTwoSource.ts (65 cards, 7 sections)",
+          "at": "2026-10-08T10:56:25Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 10 bullet word-count issues, then 0 problems)",
+          "at": "2026-10-08T10:56:49Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-08T10:56:49Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 65 cards, text verbatim, preserveExactPhraseFormatting true)",
+          "at": "2026-10-08T10:57:14Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-08T10:58:20Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-08T11:00:47Z"
+        }
+      ]
     }
   ]
 }
