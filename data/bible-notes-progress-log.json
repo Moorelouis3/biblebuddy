@@ -57192,6 +57192,59 @@
           "at": "2026-10-08T19:55:44Z"
         }
       ]
+    },
+    {
+      "book": "Mark",
+      "chapter": 3,
+      "startedAt": "2026-10-08T20:46:43Z",
+      "finishedAt": "2026-10-08T21:07:07Z",
+      "durationMinutes": 20,
+      "sections": 6,
+      "cards": 42,
+      "verses": 35,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone). This run also found and fixed a stale local git branch ref: the container's local `main` branch pointed at an old Micah 2 commit while `origin/main` was already far ahead at Mark 2, and `git merge --ff-only` on it correctly refused with \"unrelated histories\" (the local ref predated a history rewrite upstream). The working tree's HEAD was already detached at origin/main's real tip when the session started, so the fix was to re-detach HEAD at origin/main (`git checkout origin/main --detach`) rather than force-reset the local branch (a `git checkout -B main origin/main` was attempted first and correctly denied by the sandbox's destructive-git-action guard), and the final push went to origin/main by explicit refspec (`git push origin HEAD:main`) instead of relying on a local branch. No work was lost; the stale ref was simply never used. Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Mark 2, the previous entry in this log. Confirmed no lib/markThreeSource.ts existed yet, only the legacy bulk file lib/markOneToSixteenPersonalNotes.ts covering chapter 3. Fetched real KJV text for Mark 3 (35 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the healing of the withered hand on the Sabbath and the Pharisees plotting with the Herodians to destroy Jesus (1-6); the growing multitude from Galilee, Judaea, Jerusalem, Idumaea, beyond Jordan, and Tyre and Sidon pressing in, with unclean spirits crying out his identity and being silenced (7-12); the ordaining of the twelve, including the Boanerges nickname for James and John, Matthew's reappearance as the Levi of chapter two, the likely family tie between Matthew and James the son of Alphaeus, Simon the Canaanite as a zealot rather than a man from Canaan, and the early warning about Judas (13-19); the Beelzebub accusation from scribes who traveled down from Jerusalem, answered with the divided kingdom and house sayings and the strong man parable (20-27); the warning about blasphemy against the Holy Ghost, tied directly back to the scribes' own accusation (28-30); and Jesus redefining family around doing the will of God when his mother and brothers come looking for him (31-35). Split into 6 sections (1-6, 7-12, 13-19, 20-27, 28-30, 31-35), all 35 verses covered with no gaps or overlaps. Density about 1.2 cards per verse (35 verses, 42 cards), in the same range as Mark 1 and Mark 2. scripts/check_bible_note_style.py found 1 bullet word count problem on the first automated pass (one bullet one word over the 8 word limit), fixed it, second run clean with 0 problems across all 42 cards. A manual section 13 eye check also caught one banned hedge word (\"rather\") inside a body line that the mechanical checker does not scan for, rewritten before saving. That eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (withered, Beelzebub, Boanerges, ordained, surnamed, straitly charged, throng, plagues, Canaanite as zealot, damnation), never restates the verse as the teaching, closes on meaning rather than mechanics, and avoids all banned filler, hedges, hyphens, em dashes, semicolons, and contractions. Every title verified as an exact or near exact contiguous KJV phrase in title case, with no duplicate titles across all 42 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"mark\", 3): 6/6 sections, verse ranges 1-6/7-12/13-19/20-27/28-30/31-35 with no gaps, 42 total cards rendering verbatim, no throw. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/markThreeSource.ts, the mark condition in preserveExactPhraseBodies widened to include chapter 3 alongside chapters 1 and 2, and a new applyPersonalMarkThreeStudySections() function added calling replaceStudySectionsForBookRange(\"mark\", 3, 3, MARK_THREE_PERSONAL_SECTIONS), invoked right after applyPersonalMarkTwoStudySections(). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Mark 4, which still carries only the legacy markOneToSixteenPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-08T20:51:00Z"
+        },
+        {
+          "name": "target chapter determined: Mark 3 (new chapter, priority queue and redo list both empty, forward progress after Mark 2)",
+          "at": "2026-10-08T20:51:00Z"
+        },
+        {
+          "name": "KJV text fetched: Mark 3, 35 verses",
+          "at": "2026-10-08T20:51:19Z"
+        },
+        {
+          "name": "style spec read",
+          "at": "2026-10-08T20:51:19Z"
+        },
+        {
+          "name": "source file written: lib/markThreeSource.ts",
+          "at": "2026-10-08T21:00:34Z"
+        },
+        {
+          "name": "style checker clean (42 cards, after fixing one over-length bullet and one banned hedge word found by eye)",
+          "at": "2026-10-08T21:01:12Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply call, preserveExactPhraseBodies range)",
+          "at": "2026-10-08T21:01:42Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 42 cards)",
+          "at": "2026-10-08T21:01:42Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-08T21:05:21Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-08T21:07:07Z"
+        }
+      ]
     }
   ]
 }
