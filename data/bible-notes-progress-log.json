@@ -56927,6 +56927,55 @@
           "at": "2026-10-08T14:01:36Z"
         }
       ]
+    },
+    {
+      "book": "Matthew",
+      "chapter": 26,
+      "startedAt": "2026-10-08T14:46:50Z",
+      "finishedAt": "2026-10-08T15:10:00Z",
+      "durationMinutes": 23,
+      "sections": 16,
+      "cards": 90,
+      "verses": 75,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after Matthew 25. Fetched real KJV text for Matthew 26 (75 verses: the anointing at Bethany, the Last Supper, Gethsemane, the arrest, the trial before Caiaphas, and Peter's threefold denial) from the aruljohn Bible-kjv raw.githubusercontent.com mirror. Split into 15 written sections (1-5, 6-13, 14-16, 17-19, 20-25, 26-29, 30-35, 36-41, 42-46, 47-50, 51-54, 55-56, 57-61, 62-66, 67-75), all 75 verses covered with no gaps, density about 1.2 cards per verse (90 cards), matching the density trend of recent Matthew chapters (24 and 25). scripts/check_bible_note_style.py found 39 problems on the first automated pass: 3 semicolons in card titles, 2 banned filler words ('essentially' and 'indeed', the latter unavoidable in a KJV-exact title so that card was retitled to a different exact phrase from the same verse instead), 24 bullets over the 8 word limit, 1 body line over 20 words, 2 cards under the 3 line body floor, and 5 cards short one bullet because keycap digit emoji (1-3 with the enclosing-keycap codepoint) fell outside the checker's emoji regex and were not recognized as bullets at all. Fixed every item (keycap emoji swapped for recognized emoji, bullets trimmed, the long body line split in two, the two short bodies expanded to 4-5 lines, the semicolons changed to commas), second run clean across all 90 cards. A manual section 13 eye check during drafting confirmed each card opens with a defining, correcting, identifying, or flat-statement move, defines every archaic or cultural term (subtilty, bewrayeth, adjure, buffeted, legion, Gethsemane, testament/covenant, remission), and closes on meaning rather than mechanics. Parser check initially found the project's global enforceStudySectionVerseLimit(8) safety net (lib/bibleReaderStudyNotes.ts line 11698) silently split and duplicated the final 67-75 section (9 verses, over the 8 verse cap) into two sections sharing the same 10 cards, so that section was split by hand into 67-71 and 72-75 (16 sections total instead of 15) before re-verifying clean: 16/16 sections, 90 cards, no gaps, no duplication. npx tsc --noEmit -p . clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/matthewTwentySixSource.ts, preserveExactPhraseBodies matthew range extended from chapters 1-25 to 1-26, new replaceStudySectionsForBookRange('matthew', 26, 26, MATTHEW_TWENTY_SIX_PERSONAL_SECTIONS) call added right after the chapter 25 call inside applyPersonalMatthewOneThroughFiveStudySections-era wiring block, running after the legacy matthewSixToTwentyEightPersonalNotes bulk override so precedence is correct. New chapter, normal forward progress, not a style redo. Next forward-progress target is Matthew 27.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-08T14:46:50Z"
+        },
+        {
+          "name": "target chapter determined: Matthew 26 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-08T14:46:50Z"
+        },
+        {
+          "name": "KJV text fetched (Matthew 26, 75 verses, aruljohn mirror)",
+          "at": "2026-10-08T14:49:01Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-08T14:49:01Z"
+        },
+        {
+          "name": "source file written: lib/matthewTwentySixSource.ts (90 cards, 15 written sections)",
+          "at": "2026-10-08T15:02:36Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 39 automated fixes across 2 passes)",
+          "at": "2026-10-08T15:05:23Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange)",
+          "at": "2026-10-08T15:00:53Z"
+        },
+        {
+          "name": "parser check passed (16/16 sections after manual split for the 8 verse safety net, 90 cards, text verbatim, no duplication)",
+          "at": "2026-10-08T15:05:23Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-08T15:05:23Z"
+        }
+      ]
     }
   ]
 }
