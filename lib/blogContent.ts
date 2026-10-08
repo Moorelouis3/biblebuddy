@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-2-explained",
+    title: "Exodus 2 Explained: Baby Moses in the Basket and the Flight to Midian",
+    description:
+      "Exodus 2 explained verse by verse: a mother hides baby Moses in a basket, Pharaoh's daughter adopts him, and he flees to Midian after killing an Egyptian.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-2-explained",
+    publishedAt: "2026-10-08",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-2-explained.jpg",
+    groupPost: {
+      title: "Exodus 2 Explained 📖",
+      content:
+        "Pharaoh orders every Hebrew son thrown in the river.\nOne mother uses that same river to save hers.\n\n📌 The basket word matches Noah's ark word exactly.\n\n📖 Pharaoh's own daughter adopts the baby anyway.\n📖 Grown Moses kills a man and flees to Midian.\n📖 Forty silent years pass in a single verse.\n\nNew article on:\n🟢 why Moses is named for being **drawn out**\n🟢 what **Hebrews 11** says his parents' hiding really was\n🟢 why God is barely named until the chapter's last lines\n\nHave you ever had to decide which side you truly belonged to? 🙏",
+    },
+  },
+  {
     slug: "exodus-1-explained",
     title: "Exodus 1 Explained: Slavery in Egypt and the Midwives Who Feared God",
     description:
