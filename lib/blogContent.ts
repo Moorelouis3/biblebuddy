@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-5-explained",
+    title: "Exodus 5 Explained: Pharaoh's Refusal and Bricks Without Straw",
+    description:
+      "Exodus 5 explained verse by verse: Pharaoh refuses to let Israel go, removes their straw, and Moses brings his first raw complaint to God.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-5-explained",
+    publishedAt: "2026-10-08",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-5-explained.jpg",
+    groupPost: {
+      title: "Exodus 5 Explained 📖",
+      content:
+        "Moses finally obeys God.\nThings get worse within the hour.\n\n📌 Pharaoh answers a message from God by calling it vain words.\n\n📖 Pharaoh says he does not even know the LORD.\n📖 He removes the straw but keeps the same brick quota.\n📖 Israel ends up blaming Moses instead of Pharaoh.\n\nNew article on:\n🟢 why obeying God made things harder, not easier\n🟢 what making bricks without straw actually meant\n🟢 the raw complaint Moses brings straight to God\n\nHas obedience ever cost you more than disobedience would have? 🙏",
+    },
+  },
+  {
     slug: "exodus-4-explained",
     title: "Exodus 4 Explained: Moses's Excuses and the Return to Egypt",
     description:
