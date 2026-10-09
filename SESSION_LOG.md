@@ -7211,3 +7211,12 @@ Next up: Luke 4
 ## 2026-10-09T14:02:00Z (hourly chapter notes run)
 Chapter: Luke 4 | Duration: 15 min | Sections: 11 | Cards: 77 | Status: pass
 Next up: Luke 5
+
+## 2026-10-09 (bug fixer run)
+Fixed: app-wide crash ("SecurityError: The operation is insecure") on the
+home page for phones with storage blocked (e.g. iOS Safari Private
+Browsing) — saving the color theme now fails quietly instead of crashing.
+Commit 4b048e7, pushed to main, no [deploy] tag.
+Left open (no change, already checked earlier today, no new occurrences):
+one /reading report and one /start report, both single unreproducible
+reports.
