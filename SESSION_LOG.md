@@ -7159,3 +7159,7 @@ Next up: Mark 7
 ## 2026-10-09T01:00:27Z (hourly chapter notes run)
 Chapter: Mark 7 | Duration: 13 min | Sections: 6 | Cards: 56 | Status: pass
 Next up: Mark 8
+
+## 2026-10-09T02:05:18Z (hourly chapter notes run)
+Chapter: Mark 8 | Duration: 19 min | Sections: 8 | Cards: 51 | Status: pass
+Next up: Mark 9
