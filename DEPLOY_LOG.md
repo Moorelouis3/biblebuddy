@@ -26,3 +26,4 @@
 2026-10-07T16:07:22Z | 19 commits | Malachi 1-4 study notes (book now complete), Matthew 1-4 study notes (New Testament begun), and Genesis 49-50 Explained chapter library entries
 2026-10-08T08:08:07Z | 29 commits | Matthew 5-19 study notes, Exodus 1-3 Explained chapter library entries, and verse-of-the-day/bug-reports agent log entries
 2026-10-08T16:07:48Z | 20 commits | Matthew 20-26 study notes (triumphal entry through Peter's denial), Exodus 4-5 Explained chapter library entries, mailing list moved off Systeme to our own table, and the campaign sender plus merged Proverbs page sections
+2026-10-09T08:07:28Z | 28 commits | Matthew 27-28 study notes (resurrection, Great Commission), Mark 1-14 study notes (Gospel of Mark through the trial and Peter's denial), and Exodus 6-8 Explained chapter library entries
