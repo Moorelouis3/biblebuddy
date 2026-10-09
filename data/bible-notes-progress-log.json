@@ -57587,6 +57587,63 @@
           "at": "2026-10-09T03:01:55Z"
         }
       ]
+    },
+    {
+      "book": "Mark",
+      "chapter": 10,
+      "startedAt": "2026-10-09T03:46:32Z",
+      "finishedAt": "2026-10-09T04:01:09Z",
+      "durationMinutes": 15,
+      "sections": 10,
+      "cards": 58,
+      "verses": 52,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone). Style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty (remaining: []), so this was normal forward progress after Mark 9, the latest entry in this log. Confirmed no lib/markTenSource.ts existed yet, only the legacy bulk file lib/markOneToSixteenPersonalNotes.ts covering chapter 10. Fetched real KJV text for Mark 10 (52 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the Pharisees testing Jesus on divorce, answered from creation and what God hath joined together (1-9); the private follow up on adultery and the rebuke turned into blessing the little children (10-16); the rich young ruler who kept the commandments but could not let go of his possessions, and Jesus's grief filled love for him (17-22); the camel through the needle's eye and with God all things are possible (23-27); Peter's claim of having left all, met with the hundredfold promise bundled with persecution and the first and last reversal (28-31); the third and most detailed passion prediction on the road up to Jerusalem (32-34); James and John's request for the right and left hand seats, redirected to the cup, the baptism, and greatness as service (35-40); the other ten's jealousy and the Son of man came not to be ministered unto but to minister and to give his life a ransom for many (41-45); and blind Bartimaeus crying out, casting off his garment, and receiving his sight and following Jesus in the way (46-52). Chunked into 9 natural sections first, but the parser verification caught that section 1 (verses 1-9) spanned 9 verses, over the app's enforceStudySectionVerseLimit(8) cap in lib/bibleReaderStudyNotes.ts, which silently duplicates a section's entire card set into fake Part 1 and Part 2 labels instead of actually dividing the cards between them, which would have shown the reader every card in that section twice. Fixed before committing by splitting that section into 1-5 and 6-9 with the 8 cards correctly divided 4 and 4, giving 10 sections total, each 8 verses or fewer, matching the precedent already set by lib/markNineSource.ts and lib/markEightSource.ts. Density about 1.12 cards per verse (52 verses, 58 cards). scripts/check_bible_note_style.py found 2 problems on the first automated pass, both bullets one word over the 8 word limit, fixed both, second run clean with 0 problems across all 58 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using the book emoji or the arrow emoji. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (tempting, bill of divorcement, hardness of heart, cleave, twain, asunder, suffer the little children, defraud, beholding, hundredfold, scourge, baptism, minister, servant of all, ransom), and closes on meaning rather than mechanics, with titles as exact contiguous KJV phrases in title case and no duplicates across all 58 cards. Parser check passed via getBibleReaderStudySections('mark', 10): 10 of 10 sections, verse ranges 1-5/6-9/10-16/17-22/23-27/28-31/32-34/35-40/41-45/46-52 with no gaps, 58 total cards rendering verbatim, no duplication, no throw. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/markTenSource.ts, the mark condition in preserveExactPhraseBodies widened to include chapter 10, new applyPersonalMarkTenStudySections() function added calling replaceStudySectionsForBookRange('mark', 10, 10, MARK_TEN_PERSONAL_SECTIONS), invoked right after applyPersonalMarkNineStudySections(). Logged in docs/BIBLE_BUDDY_NOTES_PROGRESS.md (running total updated to 1,040) and in SESSION_LOG.md as an hourly chapter notes run. This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Mark 11, which still carries only the legacy markOneToSixteenPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-09T03:47:00Z"
+        },
+        {
+          "name": "target chapter determined: Mark 10 (normal forward progress, style-redo backlog empty, Mark 9 was last completed chapter)",
+          "at": "2026-10-09T03:47:21Z"
+        },
+        {
+          "name": "KJV text fetched (Mark 10, 52 verses, aruljohn mirror)",
+          "at": "2026-10-09T03:47:47Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-09T03:47:51Z"
+        },
+        {
+          "name": "source file written: lib/markTenSource.ts (58 cards, 9 sections initially)",
+          "at": "2026-10-09T03:56:17Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 2 automated fixes for over-length bullets)",
+          "at": "2026-10-09T03:56:36Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalMarkTenStudySections)",
+          "at": "2026-10-09T03:56:57Z"
+        },
+        {
+          "name": "parser check caught section 1 (1-9) exceeding the 8 verse enforceStudySectionVerseLimit cap, duplicating its cards into fake Part 1/Part 2",
+          "at": "2026-10-09T03:57:30Z"
+        },
+        {
+          "name": "fixed: split section 1 into 1-5 and 6-9 (10 sections total), re-ran style checker clean, re-ran parser check clean (10/10 sections, 58 cards, no duplication)",
+          "at": "2026-10-09T03:58:37Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-09T04:00:18Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-09T04:01:09Z"
+        }
+      ]
     }
   ]
 }
