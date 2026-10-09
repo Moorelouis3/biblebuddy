@@ -7232,3 +7232,7 @@ Next up: Luke 7
 ## 2026-10-09T17:00:30Z (hourly chapter notes run)
 Chapter: Luke 7 | Duration: 12 min | Sections: 9 | Cards: 60 | Status: pass
 Next up: Luke 8
+
+## 2026-10-09T18:01:00Z (hourly chapter notes run)
+Chapter: Luke 8 | Duration: 14 min | Sections: 11 | Cards: 58 | Status: pass
+Next up: Luke 9
