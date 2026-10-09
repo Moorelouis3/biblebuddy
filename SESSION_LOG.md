@@ -7248,3 +7248,7 @@ Next up: Luke 11
 ## 2026-10-09T21:00:28Z (hourly chapter notes run)
 Chapter: Luke 11 | Duration: 15 min | Sections: 13 | Cards: 65 | Status: pass
 Next up: Luke 12
+
+## 2026-10-09T22:03:31Z (hourly chapter notes run)
+Chapter: Luke 12 | Duration: 16 min | Sections: 12 | Cards: 70 | Status: pass
+Next up: Luke 13
