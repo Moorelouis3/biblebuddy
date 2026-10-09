@@ -57807,6 +57807,59 @@
           "at": "2026-10-09T07:04:56Z"
         }
       ]
+    },
+    {
+      "book": "Mark",
+      "chapter": 14,
+      "startedAt": "2026-10-09T07:46:11Z",
+      "finishedAt": "2026-10-09T08:03:00Z",
+      "durationMinutes": 17,
+      "sections": 14,
+      "cards": 72,
+      "verses": 72,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 41s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Mark 13, the latest entry in this log. Confirmed no lib/markFourteenSource.ts existed yet, only the legacy bulk file lib/markOneToSixteenPersonalNotes.ts covering chapter 14. Fetched real KJV text for Mark 14 (72 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the plot to kill Jesus by craft (1-2); the woman anointing Jesus with costly spikenard at Bethany (3-9); Judas going to betray him (10-11); preparing the Passover in the furnished upper room (12-16); Jesus announcing His betrayer at the table (17-21); the institution of the Lord's Supper (22-25); the walk to the Mount of Olives and the prediction of Peter's denial, down to the cock crowing twice (26-31); the agony in Gethsemane (32-36); the three failed watches of prayer (37-42); the betrayal with a kiss and the arrest (43-46); the severed ear, the fleeing disciples, and the young man who fled naked (47-52); the unjust trial before the council and the false witnesses who could not agree (53-59); the high priest's question and Jesus's plain I am, met with a guilty verdict (60-65); and Peter's three denials ending in the second cock crow and his weeping (66-72). Split into 14 sections (1-2, 3-9, 10-11, 12-16, 17-21, 22-25, 26-31, 32-36, 37-42, 43-46, 47-52, 53-59, 60-65, 66-72), all 72 verses covered with no gaps or overlaps, each section at or under the 8 verse wiring cap. Density exactly 1.0 card per verse (72 verses, 72 cards), at the floor the skill sets but built from genuinely distinct teaching points, matching the lighter density Mark 13 (1.19) already settled into for this book. scripts/check_bible_note_style.py found 7 problems on the first automated pass (1 banned hedge word 'fairly', 6 bullets one word over the 8 word cap), fixed all seven, a second pass still flagged 2 of those same bullets at 9 words, tightened further, third run clean with 0 problems across all 72 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (craft, alabaster, spikenard, pence, aforehand, goodman, guestchamber, furnished, testament, vehemently, Gethsemane, Abba, sore amazed, wist, buffet, rent his clothes, Galilaean), never recaps the verse as the teaching, closes on meaning rather than mechanics, and avoids all banned filler, hedges, hyphens, em dashes, semicolons, and contractions. Every title verified as an exact or near exact contiguous KJV phrase in title case, with no duplicate titles across all 72 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"mark\", 14): 14/14 sections, verse ranges 1-2/3-9/10-11/12-16/17-21/22-25/26-31/32-36/37-42/43-46/47-52/53-59/60-65/66-72 with no gaps, 72 total cards rendering verbatim, no throw, no duplication. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/markFourteenSource.ts, the mark condition in preserveExactPhraseBodies widened to include chapter 14 alongside chapters 1 through 13, and a new applyPersonalMarkFourteenStudySections() function added calling replaceStudySectionsForBookRange(\"mark\", 14, 14, MARK_FOURTEEN_PERSONAL_SECTIONS), invoked right after applyPersonalMarkThirteenStudySections(). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Mark 15, which still carries only the legacy markOneToSixteenPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, 41s)",
+          "at": "2026-10-09T07:46:52Z"
+        },
+        {
+          "name": "target chapter determined: Mark 14 (normal forward progress, priority queue and redo backlog both empty, Mark 13 was latest logged chapter, no lib/markFourteenSource.ts existed yet, only legacy markOneToSixteenPersonalNotes.ts)",
+          "at": "2026-10-09T07:47:15Z"
+        },
+        {
+          "name": "KJV text fetched (Mark 14, 72 verses, aruljohn mirror)",
+          "at": "2026-10-09T07:47:19Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus SKILL.md and reference implementation lib/markThirteenSource.ts",
+          "at": "2026-10-09T07:52:30Z"
+        },
+        {
+          "name": "source file written: lib/markFourteenSource.ts (72 cards, 14 sections)",
+          "at": "2026-10-09T07:55:40Z"
+        },
+        {
+          "name": "style checker: first run flagged 7 problems (1 banned hedge word, 6 bullets over the 8 word cap); fixed all seven; second run still flagged 2 bullets at 9 words; tightened further; third run clean, 0 problems across 72 cards",
+          "at": "2026-10-09T07:55:58Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to chapter 14, applyPersonalMarkFourteenStudySections, call site added)",
+          "at": "2026-10-09T07:56:20Z"
+        },
+        {
+          "name": "parser check passed: 14/14 sections, verse ranges 1-2/3-9/10-11/12-16/17-21/22-25/26-31/32-36/37-42/43-46/47-52/53-59/60-65/66-72 with no gaps, 72 total cards, no throw, no duplication",
+          "at": "2026-10-09T07:56:31Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-09T07:59:40Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-09T08:01:14Z"
+        }
+      ]
     }
   ]
 }
