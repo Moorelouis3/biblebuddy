@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-10-explained",
+    title: "Exodus 10 Explained: Locusts, Darkness, and Pharaoh's Closest Confession",
+    description:
+      "Exodus 10 explained verse by verse: locusts strip Egypt bare, Pharaoh's own servants turn on him, darkness falls for three days, and he confesses, then hardens again.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-10-explained",
+    publishedAt: "2026-10-09",
+    readTime: "12 min read",
+    image: "/blog-banners/exodus-10-explained.jpg",
+    groupPost: {
+      title: "Exodus 10 Explained 📖",
+      content:
+        "Pharaoh's own servants finally turn on him.\nThen darkness falls for three straight days.\n\n📌 Pharaoh says \"I have sinned,\" then hardens his heart again.\n\n📖 Locusts strip away every green thing left in Egypt.\n📖 Darkness falls so thick it could be felt.\n📖 Israel has light in its own houses the whole time.\n\nNew article on:\n🟢 why Pharaoh's own **servants** push back on him\n🟢 what darkness **which may be felt** actually means\n🟢 the confession that still was not real repentance\n\nHave you ever used the right words without meaning to change? 🙏",
+    },
+  },
+  {
     slug: "exodus-9-explained",
     title: "Exodus 9 Explained: Boils, Hail, and a Name Declared to Egypt",
     description:
