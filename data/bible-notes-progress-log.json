@@ -58166,6 +58166,60 @@
           "at": "2026-10-09T13:02:48Z"
         }
       ]
+    },
+    {
+      "book": "Luke",
+      "chapter": 4,
+      "startedAt": "2026-10-09T13:47:00Z",
+      "finishedAt": "2026-10-09T14:01:37Z",
+      "durationMinutes": 14.6,
+      "sections": 11,
+      "cards": 77,
+      "verses": 44,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter (not a style redo), normal forward progress after Luke 3 (both the priority queue and the style-redo backlog were empty). Built a new dedicated lib/lukeFourSource.ts matching the pattern used for Luke 1-3. Fetched real KJV text from the aruljohn/Bible-kjv raw GitHub mirror. Covers the wilderness temptation (stone to bread, the kingdoms of the world, the pinnacle of the temple), Jesus reading from Isaiah in the Nazareth synagogue and claiming the prophecy as fulfilled, the hometown crowd turning on Him and trying to kill Him, the Elias/Eliseus examples, casting out the unclean spirit in the Capernaum synagogue, healing Simon's mother in law and the sick who were brought to Him, and His reply that He must preach to other cities also. Style checker needed two small fixes (one banned hedge word 'roughly', one over length bullet) before coming back clean. Parser check and tsc --noEmit both clean on the first wiring attempt.",
+      "styleRedo": false,
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone)",
+          "at": "2026-10-09T13:47:42Z"
+        },
+        {
+          "name": "target chapter determined: Luke 4 (new chapter, priority queue and style-redo backlog both empty)",
+          "at": "2026-10-09T13:47:57Z"
+        },
+        {
+          "name": "KJV text fetched (Luke 4, 44 verses, GitHub raw mirror)",
+          "at": "2026-10-09T13:48:16Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-09T13:48:20Z"
+        },
+        {
+          "name": "source file lib/lukeFourSource.ts written (11 sections, 77 cards)",
+          "at": "2026-10-09T13:58:04Z"
+        },
+        {
+          "name": "style checker clean (after fixing 2 issues: 1 banned hedge word, 1 over-length bullet)",
+          "at": "2026-10-09T13:58:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-09T13:58:46Z"
+        },
+        {
+          "name": "parser check passed (11 sections, 77 cards, verbatim, no duplication)",
+          "at": "2026-10-09T13:59:12Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-10-09T14:01:24Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-09T14:02:00Z"
+        }
+      ]
     }
   ]
 }
