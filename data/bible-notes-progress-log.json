@@ -57864,6 +57864,59 @@
           "at": "2026-10-09T08:04:42Z"
         }
       ]
+    },
+    {
+      "book": "Mark",
+      "chapter": 15,
+      "startedAt": "2026-10-09T08:46:17Z",
+      "finishedAt": "2026-10-09T09:00:30Z",
+      "durationMinutes": 14,
+      "sections": 10,
+      "cards": 54,
+      "verses": 47,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 35s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Mark 14, the latest entry in this log before this run. Confirmed no lib/markFifteenSource.ts existed yet, only the legacy bulk file lib/markOneToSixteenPersonalNotes.ts covering chapter 15. Fetched real KJV text for Mark 15 (47 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers Jesus before Pilate and his silence under accusation (1-5); the Passover prisoner custom and the crowd choosing Barabbas over Jesus (6-11); Pilate yielding to the crowd, scourging, and sentencing Jesus to the cross (12-15); the soldiers mocking him as a king in the Praetorium (16-20); Simon of Cyrene compelled to bear the cross on the way to Golgotha, and the wine mingled with myrrh and parted garments (21-24); the third hour, the superscription, and the two thieves crucified with him (25-28); the passersby, chief priests, and fellow condemned men reviling him (29-32); the darkness, the cry of Eloi Eloi lama sabachthani, and his death (33-37); the veil torn in two and the centurion's confession, with the women watching from a distance (38-41); and Joseph of Arimathaea's bold request for the body and the burial in a rock hewn tomb (42-47). Split into 10 sections (1-5, 6-11, 12-15, 16-20, 21-24, 25-28, 29-32, 33-37, 38-41, 42-47), all 47 verses covered with no gaps or overlaps. Density about 1.15 cards per verse (47 verses, 54 cards), in line with the recent Mark chapters (Mark 12 at 1.27, Mark 13 at 1.19, Mark 14 at 1.0) and with the reference implementation lib/genesisThirtyOneSource.ts (also close to 1.0). scripts/check_bible_note_style.py found 3 problems on the first automated pass (3 bullets one word over the 8 word cap), fixed all three, second run clean with 0 problems across all 54 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (council, Praetorium, scourged, superscription, centurion, Golgotha, Arimathaea, sepulchre, hewn, preparation, Barabbas, insurrection), never recaps the verse as the teaching, closes on meaning rather than mechanics, and avoids all banned filler, hedges, hyphens, em dashes, semicolons, and contractions. Every title verified as an exact or near exact contiguous KJV phrase in title case, with no duplicate titles across all 54 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"Mark\", 15): 10/10 sections, verse ranges 1-5/6-11/12-15/16-20/21-24/25-28/29-32/33-37/38-41/42-47 with no gaps, 54 total cards rendering verbatim, no throw, no duplication. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/markFifteenSource.ts, the mark condition in preserveExactPhraseBodies widened to include chapter 15 alongside chapters 1 through 14, and a new applyPersonalMarkFifteenStudySections() function added calling replaceStudySectionsForBookRange(\"mark\", 15, 15, MARK_FIFTEEN_PERSONAL_SECTIONS), invoked right after applyPersonalMarkFourteenStudySections(). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Mark 16, which still carries only the legacy markOneToSixteenPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, 35s)",
+          "at": "2026-10-09T08:46:52Z"
+        },
+        {
+          "name": "priority queue and style-redo backlog both confirmed empty; target chapter determined: Mark 15, new chapter (forward progress after Mark 14)",
+          "at": "2026-10-09T08:47:10Z"
+        },
+        {
+          "name": "KJV text fetched for Mark 15 (47 verses) from raw.githubusercontent.com aruljohn/Bible-kjv mirror",
+          "at": "2026-10-09T08:47:15Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md and .claude/skills/bible-notes/SKILL.md read in full; reference implementation lib/genesisThirtyOneSource.ts and lib/markFourteenSource.ts read for structure",
+          "at": "2026-10-09T08:50:00Z"
+        },
+        {
+          "name": "lib/markFifteenSource.ts written: 10 sections, 54 cards covering all 47 verses",
+          "at": "2026-10-09T08:56:10Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py: 3 problems found (bullet word count), fixed, second run clean (0 problems, 54 cards)",
+          "at": "2026-10-09T08:56:50Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies range extended to chapter 15, applyPersonalMarkFifteenStudySections() added and invoked after Mark 14's",
+          "at": "2026-10-09T08:57:00Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections(\"Mark\", 15) returns 10/10 sections, 54 total cards, no throw, no duplication",
+          "at": "2026-10-09T08:57:08Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-09T08:59:49Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-09T09:00:30Z"
+        }
+      ]
     }
   ]
 }
