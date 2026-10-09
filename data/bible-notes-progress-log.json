@@ -57644,6 +57644,59 @@
           "at": "2026-10-09T04:01:09Z"
         }
       ]
+    },
+    {
+      "book": "Mark",
+      "chapter": 11,
+      "startedAt": "2026-10-09T04:46:12Z",
+      "finishedAt": "2026-10-09T05:01:51Z",
+      "durationMinutes": 16,
+      "sections": 6,
+      "cards": 45,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 26s). Session started with local git in a detached HEAD state; git fetch origin main showed origin/main already at the detached tip (Mark 10 plus two unrelated 'Chapter library: Exodus' commits from a separate process), so git checkout -B main origin/main reattached HEAD cleanly with nothing lost. Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Mark 10, the latest entry in this log. Confirmed no lib/markElevenSource.ts existed yet, only the legacy bulk file lib/markOneToSixteenPersonalNotes.ts covering chapter 11. Fetched real KJV text for Mark 11 (33 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers fetching the unridden colt (1-6), the triumphal entry into Jerusalem with Hosanna and the hope for David's kingdom (7-11), the cursing of the fruitless fig tree (12-14), the cleansing of the temple and the house of prayer versus den of thieves rebuke (15-19), the fig tree found withered and the teaching on faith, prayer, and forgiveness (20-26), and the chief priests, scribes, and elders challenging his authority, answered by his own counter question about John the Baptist (27-33). Split into 6 sections (1-6, 7-11, 12-14, 15-19, 20-26, 27-33), all 33 verses covered with no gaps or overlaps, each section at or under the 8 verse wiring cap. Density about 1.36 cards per verse (33 verses, 45 cards). scripts/check_bible_note_style.py found 1 problem on the first automated pass (banned filler word 'indeed', present only because a card title had lifted the full KJV clause ending 'a prophet indeed'), fixed by trimming the title to end at 'prophet' instead, still an exact contiguous KJV phrase, second run clean with 0 problems across all 45 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (Bethphage, whereon never man sat, straightway, hither, Hosanna, Psalm one hundred eighteen, if haply, early breba style figs, Court of the Gentiles, moneychangers, den of thieves, ought, trespasses, Sanhedrin, baptism of John), never recaps the verse as the teaching, closes on meaning rather than mechanics, and avoids all banned filler, hedges, hyphens, em dashes, semicolons, and contractions. Every title verified as an exact contiguous KJV phrase in title case, with no duplicate titles across all 45 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections('mark', 11): 6/6 sections, verse ranges 1-6/7-11/12-14/15-19/20-26/27-33 with no gaps, 45 total cards rendering verbatim, no throw, no duplication. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/markElevenSource.ts, the mark condition in preserveExactPhraseBodies widened to include chapter 11 alongside chapters 1 through 10, and a new applyPersonalMarkElevenStudySections() function added calling replaceStudySectionsForBookRange('mark', 11, 11, MARK_ELEVEN_PERSONAL_SECTIONS), invoked right after applyPersonalMarkTenStudySections(). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Mark 12, which still carries only the legacy markOneToSixteenPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-09T04:46:38Z"
+        },
+        {
+          "name": "target chapter determined: Mark 11 (normal forward progress, priority queue and redo backlog both empty, Mark 10 was latest logged chapter)",
+          "at": "2026-10-09T04:47:40Z"
+        },
+        {
+          "name": "KJV text fetched (Mark 11, 33 verses, aruljohn mirror)",
+          "at": "2026-10-09T04:48:10Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-09T04:50:30Z"
+        },
+        {
+          "name": "source file written: lib/markElevenSource.ts (45 cards, 6 sections)",
+          "at": "2026-10-09T04:56:10Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 fix: trimmed banned word 'indeed' out of a lifted title)",
+          "at": "2026-10-09T04:57:42Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalMarkElevenStudySections)",
+          "at": "2026-10-09T04:58:05Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 45 cards, text verbatim)",
+          "at": "2026-10-09T04:58:25Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-09T05:00:06Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-09T05:01:51Z"
+        }
+      ]
     }
   ]
 }
