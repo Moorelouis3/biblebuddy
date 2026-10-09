@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-happens-the-moment-you-die",
+    title: "What Happens the Moment You Die? What the Bible Actually Says",
+    description:
+      "What happens the moment you die? What the Bible says about paradise, the wait for resurrection, and why a raised body is the real Christian hope.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/what-happens-the-moment-you-die",
+    publishedAt: "2026-10-10",
+    readTime: "23 min read",
+    image: "/what-happens-the-moment-you-die-banner.png",
+    groupPost: {
+      title: "What Happens the Moment You Die? 📖",
+      content:
+        "Someone you love just died.\nOr it is your own mortality keeping you up tonight.\n\n📌 For the Christian, to die is to be with Christ immediately.\n\n📖 A dying thief was promised paradise that same day.\n📖 Scripture says less about the details than most assume.\n📖 The real hope is a body raised, not a floating ghost.\n\nNew article on:\n🟢 what happens the moment a believer **dies**\n🟢 why the resurrection, not just **heaven**, is the hope\n🟢 what the Bible honestly does **not** tell us\n\nWhat verse brings you the most peace about death? 🙏",
+    },
+  },
+  {
     slug: "exodus-10-explained",
     title: "Exodus 10 Explained: Locusts, Darkness, and Pharaoh's Closest Confession",
     description:

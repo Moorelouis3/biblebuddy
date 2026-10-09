@@ -7252,3 +7252,7 @@ Next up: Luke 12
 ## 2026-10-09T22:03:31Z (hourly chapter notes run)
 Chapter: Luke 12 | Duration: 16 min | Sections: 12 | Cards: 70 | Status: pass
 Next up: Luke 13
+
+## 2026-10-09T22:24:33Z (blog writer run)
+Article: What Happens the Moment You Die? What the Bible Actually Says | Words: ~4,516 | Category: Christian Foundations | Status: pass
+Queue remaining: 20
