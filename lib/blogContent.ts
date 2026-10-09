@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-6-explained",
+    title: "Exodus 6 Explained: The Name JEHOVAH and the Genealogy of Moses",
+    description:
+      "Exodus 6 explained verse by verse: God renews His covenant and reveals the name JEHOVAH, then a genealogy traces Moses and Aaron back through Levi.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-6-explained",
+    publishedAt: "2026-10-09",
+    readTime: "15 min read",
+    image: "/blog-banners/exodus-6-explained.jpg",
+    groupPost: {
+      title: "Exodus 6 Explained 📖",
+      content:
+        "Moses just accused God of doing nothing.\nGod answers with His own name.\n\n📌 Seven separate promises, stacked in just three verses.\n\n📖 God reveals His covenant name: **JEHOVAH**.\n📖 Israel is too worn down by suffering to even listen.\n📖 Moses objects again, word for word, eighteen verses later.\n\nNew article on:\n🟢 what the name **JEHOVAH** actually reveals\n🟢 why the story pauses for a family genealogy\n🟢 the seven promises packed into three verses\n\nHave you ever gotten an answer from God that did not feel like relief yet? 🙏",
+    },
+  },
+  {
     slug: "exodus-5-explained",
     title: "Exodus 5 Explained: Pharaoh's Refusal and Bricks Without Straw",
     description:
