@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-7-explained",
+    title: "Exodus 7 Explained: Serpents, Blood, and a Hardened Heart",
+    description:
+      "Exodus 7 explained verse by verse: Aaron's rod swallows Egypt's serpents, the Nile turns to blood, and Pharaoh's heart hardens against God's first sign.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-7-explained",
+    publishedAt: "2026-10-09",
+    readTime: "12 min read",
+    image: "/blog-banners/exodus-7-explained.jpg",
+    groupPost: {
+      title: "Exodus 7 Explained 📖",
+      content:
+        "The talking is over. The signs begin.\n\n📌 Aaron's rod swallows every rod the magicians make.\n\n📖 God calls Moses \"a god\" to Pharaoh.\n📖 The Nile itself turns to blood.\n📖 Pharaoh's own experts copy it, and still refuses.\n\nNew article on:\n🟢 what it means God made Moses **a god** to Pharaoh\n🟢 why a copied miracle still was not enough\n🟢 the first plague, and the heart it could not move\n\nHave you ever watched proof fail to change someone's mind? 🙏",
+    },
+  },
+  {
     slug: "exodus-6-explained",
     title: "Exodus 6 Explained: The Name JEHOVAH and the Genealogy of Moses",
     description:
