@@ -515,6 +515,22 @@ function safeGetLocalStorageItem(key: string): string | null {
   }
 }
 
+function safeSetLocalStorageItem(key: string, value: string): void {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch {
+    // Storage disabled or full (e.g. iOS Safari Private Browsing); skip caching.
+  }
+}
+
+function safeRemoveLocalStorageItem(key: string): void {
+  try {
+    window.localStorage.removeItem(key);
+  } catch {
+    // Storage disabled; nothing to remove.
+  }
+}
+
 export function readCachedAppTheme(userId: string | null | undefined): AppThemeId {
   if (typeof window === "undefined") return "light";
   return normalizeAppThemeId(
@@ -542,12 +558,12 @@ export function readPendingAppThemeSync(userId: string | null | undefined) {
     const startedAt = Number(parsed.startedAt);
     if (!Number.isFinite(startedAt)) return null;
     if (Date.now() - startedAt > APP_THEME_PENDING_SYNC_MS) {
-      window.localStorage.removeItem(getAppThemePendingSyncKey(userId));
+      safeRemoveLocalStorageItem(getAppThemePendingSyncKey(userId));
       return null;
     }
     return { themeId, startedAt };
   } catch {
-    window.localStorage.removeItem(getAppThemePendingSyncKey(userId));
+    safeRemoveLocalStorageItem(getAppThemePendingSyncKey(userId));
     return null;
   }
 }
@@ -563,14 +579,14 @@ export function shouldPreferCachedAppTheme(userId: string | null | undefined, au
 export function cacheAppThemeForUser(userId: string | null | undefined, themeId: AppThemeId, options: { markSelected?: boolean } = {}) {
   if (typeof window === "undefined") return;
   const normalizedThemeId = normalizeAppThemeId(themeId);
-  if (userId) window.localStorage.setItem(getAppThemeStorageKey(userId), normalizedThemeId);
-  window.localStorage.setItem(APP_THEME_STORAGE_KEY, normalizedThemeId);
+  if (userId) safeSetLocalStorageItem(getAppThemeStorageKey(userId), normalizedThemeId);
+  safeSetLocalStorageItem(APP_THEME_STORAGE_KEY, normalizedThemeId);
   if (options.markSelected) {
     const updatedAt = String(Date.now());
-    if (userId) window.localStorage.setItem(getAppThemeStorageTimestampKey(userId), updatedAt);
-    window.localStorage.setItem(APP_THEME_STORAGE_TIMESTAMP_KEY, updatedAt);
+    if (userId) safeSetLocalStorageItem(getAppThemeStorageTimestampKey(userId), updatedAt);
+    safeSetLocalStorageItem(APP_THEME_STORAGE_TIMESTAMP_KEY, updatedAt);
     if (userId) {
-      window.localStorage.setItem(getAppThemePendingSyncKey(userId), JSON.stringify({ themeId: normalizedThemeId, startedAt: Number(updatedAt) }));
+      safeSetLocalStorageItem(getAppThemePendingSyncKey(userId), JSON.stringify({ themeId: normalizedThemeId, startedAt: Number(updatedAt) }));
     }
   }
 }
@@ -589,7 +605,7 @@ export function clearPendingAppThemeSync(userId: string | null | undefined, them
   if (typeof window === "undefined" || !userId) return;
   const pendingSync = readPendingAppThemeSync(userId);
   if (!themeId || pendingSync?.themeId === themeId) {
-    window.localStorage.removeItem(getAppThemePendingSyncKey(userId));
+    safeRemoveLocalStorageItem(getAppThemePendingSyncKey(userId));
   }
 }
 
