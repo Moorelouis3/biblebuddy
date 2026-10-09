@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-8-explained",
+    title: "Exodus 8 Explained: Frogs, Lice, and the Finger of God",
+    description:
+      "Exodus 8 explained verse by verse: frogs, lice, and flies strike Egypt, Pharaoh's magicians fail for the first time, and God spares Goshen.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-8-explained",
+    publishedAt: "2026-10-09",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-8-explained.jpg",
+    groupPost: {
+      title: "Exodus 8 Explained 📖",
+      content:
+        "Pharaoh begs for relief three times in one chapter.\nThree times he breaks his word once the pain stops.\n\n📌 Egypt's own magicians admit this plague is the finger of God.\n\n📖 Frogs fill every house in Egypt.\n📖 Lice cover every scrap of dust.\n📖 God draws a line Egypt's flies cannot cross.\n\nNew article on:\n🟢 the first plague the **magicians cannot copy**\n🟢 why God protects **Goshen** starting here\n🟢 Pharaoh's first try at **bargaining instead of obeying**\n\nHave you ever kept a promise only until the pain stopped? 🙏",
+    },
+  },
+  {
     slug: "exodus-7-explained",
     title: "Exodus 7 Explained: Serpents, Blood, and a Hardened Heart",
     description:
