@@ -57986,6 +57986,59 @@
           "at": "2026-10-09T10:03:45Z"
         }
       ]
+    },
+    {
+      "book": "Luke",
+      "chapter": 1,
+      "startedAt": "2026-10-09T10:46:12Z",
+      "finishedAt": "2026-10-09T11:05:34Z",
+      "durationMinutes": 19,
+      "sections": 15,
+      "cards": 83,
+      "verses": 80,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, 33s). Priority queue and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty. Progress log's last entry was Mark 16, completing all 16 chapters of Mark on dedicated per-chapter files. Checked lib/bibleReaderStudyNotes.ts and found Luke 1-24 still wired only through the legacy bulk files lukeOneToTwentyOnePersonalNotes.ts and lukeTwentyTwoToTwentyFourPersonalNotes.ts (the same kind of pre-spec placeholder wiring Mark carried before this project converted it chapter by chapter), with zero Luke entries in this progress log. So target chapter was Luke 1, following the same override pattern used throughout Mark: a new dedicated lib/lukeOneSource.ts file, wired with its own replaceStudySectionsForBookRange(\"luke\", 1, 1, ...) call placed right after the legacy bulk call so it wins, without touching the legacy file or its wiring for chapters 2-24. Fetched real KJV text for Luke 1 (80 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers Luke's dedication to Theophilus (1-4); Zacharias and Elisabeth's priestly background and childlessness (5-7); the angel Gabriel appearing to Zacharias at the altar of incense and promising a son, John (8-17); Zacharias's doubt and being struck silent, and Elisabeth's conception (18-25); Gabriel's appearance to Mary in Nazareth, announcing Jesus (26-31); the fuller announcement of the virgin birth and Mary's answer of faith (32-38); Mary's visit to Elisabeth and the babe leaping in the womb (39-45); the Magnificat (46-56); John's birth and naming on the eighth day (57-66); and Zacharias's prophecy, the Benedictus, closing with a summary of John's hidden growth (67-80). Split into 15 sections, all 80 verses covered with no gaps or overlaps, respecting the codebase's enforceStudySectionVerseLimit(8) cap (discovered mid run: a first draft section spanning Luke 1:67-75, 9 verses, tripped that generic post processing step and got silently duplicated into two 'Part 1'/'Part 2' pieces with the same 7 cards in each when checked through the live getBibleReaderStudySections() wiring; fixed by splitting that section into 67-71 and 72-75 at the source, each with its own non duplicated cards, before logging this chapter done). Density 1.04 cards per verse (80 verses, 83 cards), in line with the last several completed chapters (Mark 14 at 1.00, Mark 15 at 1.15, Mark 1 at 1.13), and with the style spec's own reference implementation genesisThirtyOneSource.ts (56 cards for 55 verses, 1.02). scripts/check_bible_note_style.py found 11 mechanical problems on the first pass (7 semicolons inside card titles quoting KJV verses with semicolons, one banned hedge word 'fairly', and 3 bullets running 9 words instead of the 3 to 8 word limit); all 11 fixed (semicolons replaced with commas in titles, 'fairly' removed, the 3 long bullets trimmed) and the script came back clean, 0 problems across all 83 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (espoused, holpen, dayspring, remission, horn of salvation), never recaps the verse as the teaching, closes on meaning rather than mechanics, and avoids stacked clauses. Every title verified as an exact or near exact contiguous KJV phrase in title case, with no duplicates across all 83 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"luke\", 1): 15/15 sections, verse ranges 1-4 through 76-80 with no gaps, max section span 8 verses (clear of the enforceStudySectionVerseLimit(8) cutoff), 83 total cards rendering verbatim, no throw, no duplication. npx tsc --noEmit -p . came back clean (exit code 0). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/lukeOneSource.ts, a new luke clause added to preserveExactPhraseBodies for chapter 1, and a new applyPersonalLukeOneStudySections() function added calling replaceStudySectionsForBookRange(\"luke\", 1, 1, LUKE_ONE_PERSONAL_SECTIONS), invoked right after applyPersonalLukeOneThroughTwentyOneStudySections() so it overrides the legacy chapter 1 content, same pattern as every Mark chapter conversion. This was new chapter coverage under the style spec (not a style-redo-remaining entry, since Luke was never in that backlog), the first chapter of Luke on a dedicated per-chapter file. Next forward-progress target is Luke 2, which still carries only the legacy lukeOneToTwentyOnePersonalNotes.ts bulk file wiring. Note on step timestamps: npm install, target determination, and KJV fetch were each captured individually in real time; the style spec read, source file write (including the mid run section split fix), style check, wiring, parser check, and tsc check completed in quick succession before the next real date call was made, so they share that next timestamp below, consistent with how the Mark 16 entry logged this same kind of clustering.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, 33s)",
+          "at": "2026-10-09T10:46:12Z"
+        },
+        {
+          "name": "priority queue and style-redo backlog both confirmed empty; progress log checked; target chapter determined: Luke 1, new chapter (forward progress after Mark 16, since Luke 1-24 still only carries legacy bulk wiring)",
+          "at": "2026-10-09T10:47:57Z"
+        },
+        {
+          "name": "KJV text fetched for Luke 1 (80 verses) from raw.githubusercontent.com aruljohn/Bible-kjv mirror",
+          "at": "2026-10-09T10:47:57Z"
+        },
+        {
+          "name": "docs/bible-study-note-style.md and .claude/skills/bible-notes/SKILL.md read in full; reference implementation lib/genesisThirtyOneSource.ts and lib/markSixteenSource.ts read for structure; wiring points and enforceStudySectionVerseLimit(8) located in lib/bibleReaderStudyNotes.ts",
+          "at": "2026-10-09T11:05:00Z"
+        },
+        {
+          "name": "lib/lukeOneSource.ts written: 15 sections, 83 cards covering all 80 verses (includes mid run fix splitting an original 67-75 section into 67-71 and 72-75 to respect the 8 verse section cap)",
+          "at": "2026-10-09T11:05:00Z"
+        },
+        {
+          "name": "scripts/check_bible_note_style.py: 11 problems on first pass, all fixed (semicolons in titles, one banned hedge word, 3 long bullets), 0 problems on re-run across 83 cards",
+          "at": "2026-10-09T11:05:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies clause added for luke chapter 1, applyPersonalLukeOneStudySections() added and invoked after the legacy Luke 1-21 call",
+          "at": "2026-10-09T11:05:00Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections(\"luke\", 1) returns 15/15 sections, 83 total cards, no throw, no duplication, verified against the live wiring (not just the standalone module)",
+          "at": "2026-10-09T11:05:00Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-09T11:05:00Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-09T11:05:34Z"
+        }
+      ]
     }
   ]
 }
