@@ -7244,3 +7244,7 @@ Next up: Luke 10
 ## 2026-10-09T20:04:50Z (hourly chapter notes run)
 Chapter: Luke 10 | Duration: 19 min | Sections: 10 | Cards: 74 | Status: pass
 Next up: Luke 11
+
+## 2026-10-09T21:00:28Z (hourly chapter notes run)
+Chapter: Luke 11 | Duration: 15 min | Sections: 13 | Cards: 65 | Status: pass
+Next up: Luke 12
