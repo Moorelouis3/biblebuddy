@@ -7175,3 +7175,7 @@ Next up: Mark 11
 ## 2026-10-09T05:01:51Z (hourly chapter notes run)
 Chapter: Mark 11 | Duration: 16 min | Sections: 6 | Cards: 45 | Status: pass
 Next up: Mark 12
+
+## 2026-10-09T06:08:57Z (hourly chapter notes run)
+Chapter: Mark 12 | Duration: 21 min | Sections: 11 | Cards: 56 | Status: pass
+Next up: Mark 13

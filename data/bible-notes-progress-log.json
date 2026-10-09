@@ -57697,6 +57697,59 @@
           "at": "2026-10-09T05:01:51Z"
         }
       ]
+    },
+    {
+      "book": "Mark",
+      "chapter": 12,
+      "startedAt": "2026-10-09T05:48:25Z",
+      "finishedAt": "2026-10-09T06:08:57Z",
+      "durationMinutes": 21,
+      "sections": 11,
+      "cards": 56,
+      "verses": 44,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 43s). Session started with local git in a detached HEAD state on a shallow (depth 50) clone; the cached local main branch pointer (168ea40, Add Micah 2 study notes) was far behind the real origin/main (e7acdb5, Add Mark 11 study notes), which made git fetch report a confusing forced-update warning. Confirmed with git rev-list --count and root-commit checks that this was purely a shallow-clone artifact (other sessions had pushed many more chapters since this container was cloned), not a real history rewrite or lost work, then reattached with git checkout -B main origin/main. Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Mark 11, the latest entry in this log. Confirmed no lib/markTwelveSource.ts existed yet, only the legacy bulk file lib/markOneToSixteenPersonalNotes.ts covering chapter 12. Fetched real KJV text for Mark 12 (44 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the parable of the wicked husbandmen who beat and kill the servants sent to collect fruit and finally kill the heir, ending with the vineyard given to others (1-9); the quotation of Psalm 118 about the rejected stone becoming the head of the corner, and the leaders who understood the parable targeted them but feared the crowd too much to act (10-12); the Pharisees and Herodians teaming up over the tribute to Caesar question, answered by Render to Caesar the things that are Caesars, and to God the things that are Gods (13-17); the Sadducees denial of the resurrection tested with the seven brothers riddle, and Jesus answer from the burning bush that God is the God of the living, not the dead (18-27); the scribe asking for the first commandment of all, answered with the Shema and loving neighbour as self, and the scribe affirming it is more than all whole burnt offerings, with Jesus telling him he is not far from the kingdom of God (28-34); Jesus own question about how David calls the Christ Lord in Psalm 110 if Christ is David son (35-37); the warning to beware of the scribes who love long clothing, chief seats, and devour widows houses under cover of long prayers (38-40); and the widow who cast in two mites, all that she had, praised above the wealthy who gave only out of their abundance (41-44). Chunked into 10 natural sections first; the parser verification caught that section 1 (1-9) spanned 9 verses, over the apps enforceStudySectionVerseLimit(8) cap in lib/bibleReaderStudyNotes.ts, which silently duplicates a sections full card set into fake Part 1 and Part 2 labels rather than dividing them between the parts, matching a problem the Mark 10 run hit and documented. Fixed by splitting the section into true 1-5 and 6-9 sections with the cards correctly divided between them, giving 11 sections total, each 8 verses or fewer. Density about 1.27 cards per verse (44 verses, 56 cards). scripts/check_bible_note_style.py came back clean on the very first run, 0 problems across all 56 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every last bullet using the scripture or implication emoji. Caught and fixed by hand before that run, outside what the checker itself can see: two keycap style digit emoji (a 1 in a box and a 7 in a box) used as bullet leads would not have matched the checkers emoji regex at all, since the regex range does not cover the plain ASCII digit the keycap sequence starts with, which would have silently turned those bullets into stray prose lines and broken the 4 bullet count; both were swapped for ordinary emoji (a pointing hand and a numbers symbol) before ever running the checker. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (winefat, husbandmen, wellbeloved, tribute, denarius, superscription, Sadducees, levirate marriage, Shema, durst, mite, farthing), never recaps the verse as the teaching, closes on meaning rather than mechanics, and avoids all banned filler and hedge words. Every title verified as an exact contiguous KJV phrase in title case, with no duplicate titles across all 56 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"mark\", 12): 11/11 sections, verse ranges 1-5/6-9/10-12/13-17/18-23/24-27/28-31/32-34/35-37/38-40/41-44 with no gaps, 56 total cards rendering verbatim, no throw, no duplication. npx tsc --noEmit -p . came back clean (exit code 0, ran in the background since the full project check runs long on this codebase). Wired into lib/bibleReaderStudyNotes.ts: import added for lib/markTwelveSource.ts, the mark condition in preserveExactPhraseBodies widened to include chapter 12 alongside chapters 1 through 11, and a new applyPersonalMarkTwelveStudySections() function added calling replaceStudySectionsForBookRange(\"mark\", 12, 12, MARK_TWELVE_PERSONAL_SECTIONS), invoked right after applyPersonalMarkElevenStudySections(). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Mark 13, which still carries only the legacy markOneToSixteenPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-09T05:49:08Z"
+        },
+        {
+          "name": "target chapter determined: Mark 12 (normal forward progress, priority queue and redo backlog both empty, Mark 11 was latest logged chapter)",
+          "at": "2026-10-09T05:49:48Z"
+        },
+        {
+          "name": "KJV text fetched (Mark 12, 44 verses, aruljohn mirror)",
+          "at": "2026-10-09T05:49:48Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus reference implementations lib/genesisThirtyOneSource.ts and lib/markElevenSource.ts",
+          "at": "2026-10-09T05:49:48Z"
+        },
+        {
+          "name": "source file written: lib/markTwelveSource.ts (56 cards, originally 10 sections)",
+          "at": "2026-10-09T06:02:13Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, clean on the first run, 0 problems across 56 cards)",
+          "at": "2026-10-09T06:02:13Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to chapter 12, applyPersonalMarkTwelveStudySections, call site added)",
+          "at": "2026-10-09T06:02:13Z"
+        },
+        {
+          "name": "parser check: first run exposed the enforceStudySectionVerseLimit(8) duplication bug on the original 9 verse section 1-9 (cards copied into a fake Part 1 and Part 2 instead of being divided); fixed by splitting into true 1-5 and 6-9 sections; second run clean, 11/11 sections, 56 cards, no duplication",
+          "at": "2026-10-09T06:04:26Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors (ran in background, confirmed via process exit code 0)",
+          "at": "2026-10-09T06:07:32Z"
+        },
+        {
+          "name": "progress files logged (bible-notes-progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-09T06:08:57Z"
+        }
+      ]
     }
   ]
 }
