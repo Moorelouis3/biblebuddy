@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-9-explained",
+    title: "Exodus 9 Explained: Boils, Hail, and a Name Declared to Egypt",
+    description:
+      "Exodus 9 explained verse by verse: cattle die, boils strike Egypt's magicians, hail falls, and God tells Pharaoh exactly why He raised him up.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-9-explained",
+    publishedAt: "2026-10-09",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-9-explained.jpg",
+    groupPost: {
+      title: "Exodus 9 Explained 📖",
+      content:
+        "Pharaoh finally says, \"I have sinned.\"\nThen he hardens his heart again anyway.\n\n📌 God tells Pharaoh exactly why He raised him up.\n\n📖 Egypt's cattle die. Israel's survive.\n📖 The magicians get struck by their own plague.\n📖 Fire falls inside the worst hail Egypt ever saw.\n\nNew article on:\n🟢 why some Egyptians were **spared from the hail**\n🟢 what it means God **raised Pharaoh up** for this\n🟢 Pharaoh's closest confession yet, and why it did not last\n\nHave you ever said the right words to God without meaning to change? 🙏",
+    },
+  },
+  {
     slug: "exodus-8-explained",
     title: "Exodus 8 Explained: Frogs, Lice, and the Finger of God",
     description:
