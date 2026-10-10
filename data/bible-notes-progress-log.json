@@ -59275,6 +59275,59 @@
           "at": "2026-10-10T10:02:17Z"
         }
       ]
+    },
+    {
+      "book": "Luke",
+      "chapter": 24,
+      "startedAt": "2026-10-10T10:45:49Z",
+      "finishedAt": "2026-10-10T11:06:27Z",
+      "durationMinutes": 21,
+      "sections": 11,
+      "cards": 55,
+      "verses": 53,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (624 packages, fresh clone, about 50s). This container's local `main` git ref initially looked behind `origin/main` by two commits (detached HEAD at 67ce6e7, local `main` at 168ea40), but this turned out to be a shallow clone artifact: `git fetch origin --unshallow` confirmed `origin/main` actually resolves to 67ce6e7 too, so local `main` was simply reset to match it with no real divergence or lost work (confirmed clean before and after). Style-redo backlog and priority queue (`data/bible-notes-style-redo-remaining.json` and `data/bible-notes-priority-queue.json`, both `remaining: []`) confirmed empty, so this was normal forward progress after Luke 23, the latest entry in this log. Confirmed no `lib/lukeTwentyFourSource.ts` existed yet, only the legacy bulk file `lib/lukeTwentyTwoToTwentyFourPersonalNotes.ts` still actively covering chapter 24 (chapters 22-23 already overridden by dedicated files). Fetched real KJV text for Luke 24 (53 verses) from the `raw.githubusercontent.com/aruljohn/Bible-kjv` mirror. The chapter covers the women finding the empty tomb and the spices they prepared (1-3); the two angels declaring he is risen and recalling his own Galilee prediction of the third day (4-8); the report to the eleven, Mary Magdalene, Joanna, and Mary the mother of James named, their words dismissed as idle tales, and Peter running to see the empty linen clothes (9-12); the walk to Emmaus, the risen Jesus joining them unrecognized (13-16); Cleopas recounting the crucifixion and the women's astonishing report to the stranger who is actually Jesus (17-24); Jesus rebuking their slowness to believe and expounding Moses and all the prophets concerning himself (25-27); the supper at Emmaus, the familiar breaking of bread, and the burning hearts realization (28-32); the return to Jerusalem and the report that the Lord is risen indeed and had appeared to Simon (33-35); Jesus appearing to the gathered disciples, offering his hands and feet as proof he is not a spirit, and eating fish and honeycomb before them (36-43); the opening of their understanding, the necessity of Christ's suffering and resurrection, and the commission to preach repentance to all nations while waiting in Jerusalem for power from on high (44-49); and the ascension at Bethany after the final blessing, with the disciples returning to Jerusalem in worship and great joy, continually in the temple (50-53). Split into 11 sections (1-3, 4-8, 9-12, 13-16, 17-24, 25-27, 28-32, 33-35, 36-43, 44-49, 50-53), all 53 verses covered with no gaps or overlaps, each within the app's `enforceStudySectionVerseLimit(8)` cap. Density about 1.04 cards per verse (53 verses, 55 cards), in line with recent Luke chapters. `scripts/check_bible_note_style.py` found 2 bullet word count problems on the first automated pass, fixed both, second run clean with 0 problems across all 55 cards. A further manual grep pass caught 5 uses of the banned stacking word \"rather than\" and 2 uses of \"while\" inside card bodies (words the mechanical checker does not scan for) plus one stacked double \"and\" in a single line, all rewritten into clean single clauses, rechecked clean again after each fix. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (spices, sepulchre, holden, communed, constrained, behoved, endued, furlong/threescore, idle tales, the heart burning idiom), never recaps the verse as the teaching, and closes on meaning rather than mechanics, with titles as exact or near exact contiguous KJV phrases in title case and no duplicates across all 55 cards. Parser check passed via a direct `npx tsx` import call to `getBibleReaderStudySections(\"luke\", 24)`: 11/11 sections, verse ranges 1-3/4-8/9-12/13-16/17-24/25-27/28-32/33-35/36-43/44-49/50-53 with no gaps, 55 total cards rendering verbatim, no duplication, no throw. `npx tsc --noEmit -p .` came back clean, zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: import added for `lib/lukeTwentyFourSource.ts`, the `luke` condition in `preserveExactPhraseBodies` widened from chapters 1-23 to include chapter 24, new `applyPersonalLukeTwentyFourStudySections()` function added calling `replaceStudySectionsForBookRange(\"luke\", 24, 24, LUKE_TWENTY_FOUR_PERSONAL_SECTIONS)`, invoked right after `applyPersonalLukeTwentyThreeStudySections()` so this single chapter override replaces the bulk chapter 24 sections, leaving the `lukeTwentyTwoToTwentyFourPersonalNotes.ts` legacy bulk file fully superseded for every chapter it used to cover. Logged in `data/bible-notes-progress-log.json` with full step timestamps, `docs/BIBLE_BUDDY_NOTES_PROGRESS.md` (row plus running totals), and `SESSION_LOG.md` as an hourly chapter notes run. This was a new chapter, normal forward progress, not a style redo. This completes the whole of Luke (chapters 1-24) on dedicated per-chapter files. Next forward-progress target is John 1, which currently reads from the legacy bulk file `lib/johnOneToTwentyOnePersonalNotes.ts`.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-10T10:49:40Z"
+        },
+        {
+          "name": "target chapter determined: Luke 24 (normal forward progress, style-redo backlog and priority queue both empty)",
+          "at": "2026-10-10T10:50:43Z"
+        },
+        {
+          "name": "KJV text fetched (Luke 24, 53 verses, aruljohn mirror)",
+          "at": "2026-10-10T10:51:02Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-10T10:51:41Z"
+        },
+        {
+          "name": "source file written: lib/lukeTwentyFourSource.ts (55 cards, 11 sections)",
+          "at": "2026-10-10T10:58:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, plus manual grep fixes for 'rather than'/'while'/stacked 'and')",
+          "at": "2026-10-10T11:01:06Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to 24, applyPersonalLukeTwentyFourStudySections, ordered after applyPersonalLukeTwentyThreeStudySections)",
+          "at": "2026-10-10T11:00:40Z"
+        },
+        {
+          "name": "parser check passed (11/11 sections, 55 cards)",
+          "at": "2026-10-10T11:01:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-10T11:05:01Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md totals + row, data/bible-notes-progress-log.json entry)",
+          "at": "2026-10-10T11:06:27Z"
+        }
+      ]
     }
   ]
 }
