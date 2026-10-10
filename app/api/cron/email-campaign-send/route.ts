@@ -70,6 +70,10 @@ export async function GET(request: NextRequest) {
   const { data, error } = await db
     .from("email_campaigns")
     .select("campaign_id, subject, html, text, tag, rate_per_second, max_per_run, started_at, scheduled_for")
+    // Marketing only. The welcome email is a campaign row too, but it is
+    // triggered one person at a time by /api/cron/welcome-email - if this
+    // batch sender ever picked it up it would post it to the whole list.
+    .eq("kind", "marketing")
     .eq("status", "sending")
     .or(`scheduled_for.is.null,scheduled_for.lte.${new Date().toISOString()}`)
     .order("scheduled_for", { ascending: true, nullsFirst: false })

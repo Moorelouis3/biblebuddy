@@ -257,7 +257,12 @@ export async function POST(request: NextRequest) {
     if (!sesSendingEnabled()) {
       return NextResponse.json({ error: "SES is not configured." }, { status: 400 });
     }
-    const eligibleNow = await countEligible(campaignId, db);
+    // A transactional campaign - the welcome - has no audience to count. It
+    // fires once per new signup from /api/cron/welcome-email, so asking
+    // marketing_recipients() how many people it reaches would return the whole
+    // list and be a frightening and completely wrong number to show.
+    const transactional = campaign.kind === "transactional";
+    const eligibleNow = transactional ? null : await countEligible(campaignId, db);
     const { error } = await db
       .from("email_campaigns")
       .update({ status: "sending" })
@@ -266,6 +271,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       ok: true,
       armed: true,
+      transactional,
       scheduledFor: campaign.scheduled_for,
       eligibleNow,
       targetGroups: campaign.target_groups,

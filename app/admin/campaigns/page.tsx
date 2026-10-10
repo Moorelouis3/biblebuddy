@@ -214,7 +214,9 @@ export default function CampaignsPage() {
         op === "test"
           ? `Test sent to ${json.testedTo}.`
           : op === "schedule"
-            ? `Armed. The cron will send it at its scheduled time, to ${Number(json.eligibleNow).toLocaleString()} people.`
+            ? json.transactional
+              ? "Welcome email is live. Every new account from now on gets it."
+              : `Armed. The cron will send it at its scheduled time, to ${Number(json.eligibleNow).toLocaleString()} people.`
             : op === "targets"
               ? `Saved. ${Number(json.eligibleNow).toLocaleString()} people are eligible right now.`
               : "Saved.",
@@ -281,6 +283,11 @@ export default function CampaignsPage() {
   }
 
   const engagement = data.engagement;
+  // The welcome is pinned above the broadcasts. It is a campaign row like any
+  // other - same stats, same preview - but it is triggered by a signup rather
+  // than scheduled, so it gets its own controls and none of the targeting.
+  const welcome = data.campaigns.find((c) => c.campaign_id === "welcome") || null;
+  const broadcasts = data.campaigns.filter((c) => c.campaign_id !== "welcome");
 
   return (
     <main className="mx-auto max-w-6xl px-4 pb-24 pt-6">
@@ -374,8 +381,89 @@ export default function CampaignsPage() {
         signal, and they are the only email activity that moves anyone between the groups above.
       </p>
 
+      {welcome && (
+        <section className="mt-6 rounded-2xl border-2 border-[#0056fd] bg-[#f5f8ff] p-4">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-black uppercase tracking-wide text-[#0056fd]">
+                📌 Welcome email · sent automatically to every new account
+              </p>
+              <p className="mt-1 text-base font-bold leading-snug text-slate-950">{welcome.subject}</p>
+            </div>
+            <span
+              className={`rounded-full px-3 py-1 text-xs font-black uppercase ${
+                welcome.status === "sending" ? "bg-emerald-100 text-emerald-800" : "bg-slate-200 text-slate-700"
+              }`}
+            >
+              {welcome.status === "sending" ? "Live" : "Off"}
+            </span>
+          </div>
+
+          <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-700">
+            <span>
+              <strong className="text-slate-950">{welcome.sent.toLocaleString()}</strong> sent
+            </span>
+            <span>
+              <strong className="text-slate-950">{welcome.open_rate}%</strong> opens ({welcome.opens})
+            </span>
+            <span>
+              <strong className="text-slate-950">{welcome.click_rate}%</strong> clicks ({welcome.clicks})
+            </span>
+            {welcome.bounces > 0 && <span className="text-orange-700">{welcome.bounces} bounced</span>}
+            {welcome.complaints > 0 && <span className="text-red-700">{welcome.complaints} complained</span>}
+            {welcome.failed > 0 && <span className="text-red-700">{welcome.failed} failed</span>}
+          </div>
+
+          <p className="mt-2 text-xs text-slate-600">
+            {welcome.status === "sending"
+              ? welcome.started_at
+                ? `Live since ${whenLabel(welcome.started_at)}. Only accounts created after that get it — nobody who joined earlier is ever emailed this.`
+                : "Live. The cut-over stamps on the next run; only accounts created after that get it."
+              : "Off. Switching it on sets the cut-over to that moment, so the 5,000 people already on the list can never receive it."}
+          </p>
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => void openPreview(welcome.campaign_id)}
+              disabled={previewLoading !== null}
+              className="rounded-full border border-[#0056fd] px-4 py-2 text-sm font-bold text-[#0056fd] disabled:opacity-50"
+            >
+              {previewLoading === welcome.campaign_id ? "Opening…" : "View draft"}
+            </button>
+            <button
+              type="button"
+              disabled={busy !== null || !data.senderReady}
+              onClick={() => act(welcome.campaign_id, "test")}
+              className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 disabled:opacity-50"
+            >
+              Send me a test
+            </button>
+            {welcome.status === "sending" ? (
+              <button
+                type="button"
+                disabled={busy !== null}
+                onClick={() => act(welcome.campaign_id, "pause")}
+                className="rounded-full bg-orange-600 px-4 py-2 text-sm font-bold text-white disabled:opacity-50"
+              >
+                Switch off
+              </button>
+            ) : (
+              <button
+                type="button"
+                disabled={busy !== null || !data.senderReady}
+                onClick={() => act(welcome.campaign_id, "schedule")}
+                className="rounded-full bg-[#0056fd] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"
+              >
+                Switch on
+              </button>
+            )}
+          </div>
+        </section>
+      )}
+
       <div className="mt-6 space-y-3">
-        {data.campaigns.map((c) => {
+        {broadcasts.map((c) => {
           const edit = edits[c.campaign_id] || {};
           const scheduledInput = (edit.scheduledFor ?? (c.scheduled_for ? c.scheduled_for.slice(0, 16) : "")) as string;
           const targets = c.target_groups ?? [...ENGAGEMENT_GROUPS];

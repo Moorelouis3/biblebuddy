@@ -40,7 +40,20 @@ export async function GET(request: NextRequest) {
     // 8-step onboarding sequence. Nothing is deleted: the templates and
     // the day 4/8 conditional routes stay in the repo, they just have no
     // sender pointed at them.
-    const daysToProcess = [1];
+    // Day 1 moved to our own server on 2026-10-10. This asks whether that
+    // one is live rather than hard-coding the answer, so there is never a
+    // moment with two welcomes going out and never a moment with none: if
+    // /api/cron/welcome-email is switched on, Systeme stands down; if it is
+    // paused, Systeme keeps doing it exactly as before.
+    const { data: ownWelcome } = await supabaseAdmin
+      .from("email_campaigns")
+      .select("status")
+      .eq("campaign_id", "welcome")
+      .maybeSingle();
+    const ownWelcomeLive = ownWelcome?.status === "sending";
+
+    const daysToProcess = ownWelcomeLive ? [] : [1];
+    results.systemeWelcome = ownWelcomeLive ? "stood down - we send it now" : "active";
 
     for (const day of daysToProcess) {
       const hoursSinceSignupMin = (day - 1) * 24;
