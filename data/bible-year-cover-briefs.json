@@ -560,6 +560,2040 @@
       "brief": "In a grand, dimly lit space of the ancient temple, the air is thick with anticipation as a group of Levites prepares for an ethereal worship session. The focal point is a magnificent golden harp, its strings glimmering in the soft, warm light that filters through ornate, stained glass windows, casting colorful patterns on the polished stone floor. One Levite, clad in richly embroidered robes, stands poised beside the harp, fingers hovering just above the strings, ready to begin a celestial melody. The vibrant colors from the stained glass illuminate the scene with a heavenly glow, suggesting divine presence. Surrounding him, other musicians hold various instruments, their expressions focused and reverent, as if waiting for the moment to join in harmony. In the background, intricately carved pillars rise majestically toward the ceiling, framing this pivotal moment of worship, echoing the importance of their role in the temple’s sacred music ministry.",
       "source": "model",
       "updatedAt": "2026-08-11T11:19:16.144Z"
+    },
+    "101": {
+      "dayNumber": 101,
+      "title": "David's Offering and Solomon's Temple",
+      "reference": "1 Chronicles 29; 2 Chronicles 1-3",
+      "brief": "Read 1 Chronicles 29; 2 Chronicles 1-3: David's Offering and Solomon's Temple.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.222Z"
+    },
+    "102": {
+      "dayNumber": 102,
+      "title": "Temple Dedication and God's Glory",
+      "reference": "2 Chronicles 4-7",
+      "brief": "Read 2 Chronicles 4-7: Temple Dedication and God's Glory.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "103": {
+      "dayNumber": 103,
+      "title": "Solomon's Reign and the Divided Kingdom",
+      "reference": "2 Chronicles 8-11",
+      "brief": "Read 2 Chronicles 8-11: Solomon's Reign and the Divided Kingdom.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "104": {
+      "dayNumber": 104,
+      "title": "Kings, Reform, and Returning to God",
+      "reference": "2 Chronicles 12-15",
+      "brief": "Read 2 Chronicles 12-15: Kings, Reform, and Returning to God.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "105": {
+      "dayNumber": 105,
+      "title": "Asa, Jehoshaphat, and Trust",
+      "reference": "2 Chronicles 16-19",
+      "brief": "Read 2 Chronicles 16-19: Asa, Jehoshaphat, and Trust.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "106": {
+      "dayNumber": 106,
+      "title": "Worship in Battle and Joash Preserved",
+      "reference": "2 Chronicles 20-23",
+      "brief": "Read 2 Chronicles 20-23: Worship in Battle and Joash Preserved.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "107": {
+      "dayNumber": 107,
+      "title": "Faithfulness and Forgetting God",
+      "reference": "2 Chronicles 24-27",
+      "brief": "Read 2 Chronicles 24-27: Faithfulness and Forgetting God.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "108": {
+      "dayNumber": 108,
+      "title": "Ahaz's Failure and Hezekiah's Reform",
+      "reference": "2 Chronicles 28-31",
+      "brief": "Read 2 Chronicles 28-31: Ahaz's Failure and Hezekiah's Reform.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "109": {
+      "dayNumber": 109,
+      "title": "Hezekiah, Manasseh, and Josiah",
+      "reference": "2 Chronicles 32-35",
+      "brief": "Read 2 Chronicles 32-35: Hezekiah, Manasseh, and Josiah.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "110": {
+      "dayNumber": 110,
+      "title": "Exile Ends and Worship Returns",
+      "reference": "2 Chronicles 36; Ezra 1-3",
+      "brief": "Read 2 Chronicles 36; Ezra 1-3: Exile Ends and Worship Returns.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "111": {
+      "dayNumber": 111,
+      "title": "Opposition and Renewed Teaching",
+      "reference": "Ezra 4-7",
+      "brief": "Read Ezra 4-7: Opposition and Renewed Teaching.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "112": {
+      "dayNumber": 112,
+      "title": "Return, Repentance, and Nehemiah's Burden",
+      "reference": "Ezra 8-10; Nehemiah 1",
+      "brief": "Read Ezra 8-10; Nehemiah 1: Return, Repentance, and Nehemiah's Burden.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "113": {
+      "dayNumber": 113,
+      "title": "Rebuilding the Wall",
+      "reference": "Nehemiah 2-5",
+      "brief": "Read Nehemiah 2-5: Rebuilding the Wall.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "114": {
+      "dayNumber": 114,
+      "title": "Completion, Scripture, and Confession",
+      "reference": "Nehemiah 6-9",
+      "brief": "Read Nehemiah 6-9: Completion, Scripture, and Confession.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "115": {
+      "dayNumber": 115,
+      "title": "Covenant Renewal and Reform",
+      "reference": "Nehemiah 10-13",
+      "brief": "Read Nehemiah 10-13: Covenant Renewal and Reform.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "116": {
+      "dayNumber": 116,
+      "title": "Esther Rises for Such a Time",
+      "reference": "Esther 1-4",
+      "brief": "Read Esther 1-4: Esther Rises for Such a Time.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "117": {
+      "dayNumber": 117,
+      "title": "Reversal and Deliverance",
+      "reference": "Esther 5-8",
+      "brief": "Read Esther 5-8: Reversal and Deliverance.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "118": {
+      "dayNumber": 118,
+      "title": "Purim and Job's Testing Begins",
+      "reference": "Esther 9-10; Job 1-2",
+      "brief": "Read Esther 9-10; Job 1-2: Purim and Job's Testing Begins.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "119": {
+      "dayNumber": 119,
+      "title": "Job Laments His Suffering",
+      "reference": "Job 3-6",
+      "brief": "Read Job 3-6: Job Laments His Suffering.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "120": {
+      "dayNumber": 120,
+      "title": "Job Pleads With God",
+      "reference": "Job 7-10",
+      "brief": "Read Job 7-10: Job Pleads With God.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "121": {
+      "dayNumber": 121,
+      "title": "Human Frailty and Hope",
+      "reference": "Job 11-14",
+      "brief": "Read Job 11-14: Human Frailty and Hope.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "122": {
+      "dayNumber": 122,
+      "title": "Friends Accuse, Job Suffers",
+      "reference": "Job 15-18",
+      "brief": "Read Job 15-18: Friends Accuse, Job Suffers.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "123": {
+      "dayNumber": 123,
+      "title": "Job's Redeemer and Continued Accusation",
+      "reference": "Job 19-22",
+      "brief": "Read Job 19-22: Job's Redeemer and Continued Accusation.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "124": {
+      "dayNumber": 124,
+      "title": "Job Searches for God",
+      "reference": "Job 23-26",
+      "brief": "Read Job 23-26: Job Searches for God.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "125": {
+      "dayNumber": 125,
+      "title": "Wisdom and Deep Distress",
+      "reference": "Job 27-30",
+      "brief": "Read Job 27-30: Wisdom and Deep Distress.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "126": {
+      "dayNumber": 126,
+      "title": "Job's Integrity and Elihu Speaks",
+      "reference": "Job 31-34",
+      "brief": "Read Job 31-34: Job's Integrity and Elihu Speaks.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "127": {
+      "dayNumber": 127,
+      "title": "God Answers From the Storm",
+      "reference": "Job 35-38",
+      "brief": "Read Job 35-38: God Answers From the Storm.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "128": {
+      "dayNumber": 128,
+      "title": "God Restores Job",
+      "reference": "Job 39-42",
+      "brief": "Read Job 39-42: God Restores Job.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "129": {
+      "dayNumber": 129,
+      "title": "The Blessed Way and Trust in Trouble",
+      "reference": "Psalms 1-3",
+      "brief": "Read Psalms 1-3: The Blessed Way and Trust in Trouble.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "130": {
+      "dayNumber": 130,
+      "title": "Prayer in Distress",
+      "reference": "Psalms 4-6",
+      "brief": "Read Psalms 4-6: Prayer in Distress.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "131": {
+      "dayNumber": 131,
+      "title": "God Judges Righteously",
+      "reference": "Psalms 7-9",
+      "brief": "Read Psalms 7-9: God Judges Righteously.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "132": {
+      "dayNumber": 132,
+      "title": "When Evil Seems Strong",
+      "reference": "Psalms 10-12",
+      "brief": "Read Psalms 10-12: When Evil Seems Strong.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "133": {
+      "dayNumber": 133,
+      "title": "Lament, Trust, and Integrity",
+      "reference": "Psalms 13-15",
+      "brief": "Read Psalms 13-15: Lament, Trust, and Integrity.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "134": {
+      "dayNumber": 134,
+      "title": "Refuge, Resurrection Hope, and Deliverance",
+      "reference": "Psalms 16-18",
+      "brief": "Read Psalms 16-18: Refuge, Resurrection Hope, and Deliverance.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "135": {
+      "dayNumber": 135,
+      "title": "Creation, Scripture, and the King",
+      "reference": "Psalms 19-21",
+      "brief": "Read Psalms 19-21: Creation, Scripture, and the King.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "136": {
+      "dayNumber": 136,
+      "title": "Suffering, Shepherd, and Glory",
+      "reference": "Psalms 22-24",
+      "brief": "Read Psalms 22-24: Suffering, Shepherd, and Glory.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "137": {
+      "dayNumber": 137,
+      "title": "Guidance, Forgiveness, and Courage",
+      "reference": "Psalms 25-27",
+      "brief": "Read Psalms 25-27: Guidance, Forgiveness, and Courage.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "138": {
+      "dayNumber": 138,
+      "title": "Help, Strength, and Joy",
+      "reference": "Psalms 28-30",
+      "brief": "Read Psalms 28-30: Help, Strength, and Joy.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "139": {
+      "dayNumber": 139,
+      "title": "Trust, Confession, and Praise",
+      "reference": "Psalms 31-33",
+      "brief": "Read Psalms 31-33: Trust, Confession, and Praise.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "140": {
+      "dayNumber": 140,
+      "title": "Taste and See God's Goodness",
+      "reference": "Psalms 34-36",
+      "brief": "Read Psalms 34-36: Taste and See God's Goodness.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "141": {
+      "dayNumber": 141,
+      "title": "Waiting, Wisdom, and Frailty",
+      "reference": "Psalms 37-39",
+      "brief": "Read Psalms 37-39: Waiting, Wisdom, and Frailty.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "142": {
+      "dayNumber": 142,
+      "title": "Rescue, Obedience, and Thirst for God",
+      "reference": "Psalms 40-42",
+      "brief": "Read Psalms 40-42: Rescue, Obedience, and Thirst for God.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "143": {
+      "dayNumber": 143,
+      "title": "Hope, Victory, and the King",
+      "reference": "Psalms 43-45",
+      "brief": "Read Psalms 43-45: Hope, Victory, and the King.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "144": {
+      "dayNumber": 144,
+      "title": "God Is Our Refuge",
+      "reference": "Psalms 46-48",
+      "brief": "Read Psalms 46-48: God Is Our Refuge.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "145": {
+      "dayNumber": 145,
+      "title": "Wealth, Judgment, and Repentance",
+      "reference": "Psalms 49-51",
+      "brief": "Read Psalms 49-51: Wealth, Judgment, and Repentance.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "146": {
+      "dayNumber": 146,
+      "title": "God Sustains the Faithful",
+      "reference": "Psalms 52-54",
+      "brief": "Read Psalms 52-54: God Sustains the Faithful.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "147": {
+      "dayNumber": 147,
+      "title": "Betrayal, Fear, and Mercy",
+      "reference": "Psalms 55-57",
+      "brief": "Read Psalms 55-57: Betrayal, Fear, and Mercy.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "148": {
+      "dayNumber": 148,
+      "title": "Justice and Restoration",
+      "reference": "Psalms 58-60",
+      "brief": "Read Psalms 58-60: Justice and Restoration.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "149": {
+      "dayNumber": 149,
+      "title": "Longing for God's Presence",
+      "reference": "Psalms 61-63",
+      "brief": "Read Psalms 61-63: Longing for God's Presence.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "150": {
+      "dayNumber": 150,
+      "title": "Protection and Praise",
+      "reference": "Psalms 64-66",
+      "brief": "Read Psalms 64-66: Protection and Praise.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "151": {
+      "dayNumber": 151,
+      "title": "Blessing for the Nations and Suffering",
+      "reference": "Psalms 67-69",
+      "brief": "Read Psalms 67-69: Blessing for the Nations and Suffering.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "152": {
+      "dayNumber": 152,
+      "title": "Help, Aging, and the Righteous King",
+      "reference": "Psalms 70-72",
+      "brief": "Read Psalms 70-72: Help, Aging, and the Righteous King.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "153": {
+      "dayNumber": 153,
+      "title": "Worship When Life Feels Unfair",
+      "reference": "Psalms 73-75",
+      "brief": "Read Psalms 73-75: Worship When Life Feels Unfair.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "154": {
+      "dayNumber": 154,
+      "title": "God's Power and Israel's Memory",
+      "reference": "Psalms 76-78",
+      "brief": "Read Psalms 76-78: God's Power and Israel's Memory.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "155": {
+      "dayNumber": 155,
+      "title": "Judgment, Restoration, and Listening",
+      "reference": "Psalms 79-81",
+      "brief": "Read Psalms 79-81: Judgment, Restoration, and Listening.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "156": {
+      "dayNumber": 156,
+      "title": "Justice and Longing for God's House",
+      "reference": "Psalms 82-84",
+      "brief": "Read Psalms 82-84: Justice and Longing for God's House.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "157": {
+      "dayNumber": 157,
+      "title": "Revival and Zion's Hope",
+      "reference": "Psalms 85-87",
+      "brief": "Read Psalms 85-87: Revival and Zion's Hope.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "158": {
+      "dayNumber": 158,
+      "title": "Darkness, Covenant, and Numbering Days",
+      "reference": "Psalms 88-90",
+      "brief": "Read Psalms 88-90: Darkness, Covenant, and Numbering Days.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "159": {
+      "dayNumber": 159,
+      "title": "Refuge and the Lord Reigns",
+      "reference": "Psalms 91-93",
+      "brief": "Read Psalms 91-93: Refuge and the Lord Reigns.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "160": {
+      "dayNumber": 160,
+      "title": "Justice and Worship",
+      "reference": "Psalms 94-96",
+      "brief": "Read Psalms 94-96: Justice and Worship.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "161": {
+      "dayNumber": 161,
+      "title": "The Holy King Reigns",
+      "reference": "Psalms 97-99",
+      "brief": "Read Psalms 97-99: The Holy King Reigns.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "162": {
+      "dayNumber": 162,
+      "title": "Thanksgiving and Mercy",
+      "reference": "Psalms 100-102",
+      "brief": "Read Psalms 100-102: Thanksgiving and Mercy.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "163": {
+      "dayNumber": 163,
+      "title": "Bless the Lord and Remember His Works",
+      "reference": "Psalms 103-105",
+      "brief": "Read Psalms 103-105: Bless the Lord and Remember His Works.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "164": {
+      "dayNumber": 164,
+      "title": "Mercy Despite Failure",
+      "reference": "Psalms 106-108",
+      "brief": "Read Psalms 106-108: Mercy Despite Failure.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "165": {
+      "dayNumber": 165,
+      "title": "Justice, Messiah, and Wisdom",
+      "reference": "Psalms 109-111",
+      "brief": "Read Psalms 109-111: Justice, Messiah, and Wisdom.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "166": {
+      "dayNumber": 166,
+      "title": "Fear of the Lord and Exodus Praise",
+      "reference": "Psalms 112-114",
+      "brief": "Read Psalms 112-114: Fear of the Lord and Exodus Praise.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "167": {
+      "dayNumber": 167,
+      "title": "The Lord Alone Is Worthy",
+      "reference": "Psalms 115-117",
+      "brief": "Read Psalms 115-117: The Lord Alone Is Worthy.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "168": {
+      "dayNumber": 168,
+      "title": "Steadfast Love and Pilgrim Songs",
+      "reference": "Psalms 118-120",
+      "brief": "Read Psalms 118-120: Steadfast Love and Pilgrim Songs.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "169": {
+      "dayNumber": 169,
+      "title": "Help From the Lord",
+      "reference": "Psalms 121-123",
+      "brief": "Read Psalms 121-123: Help From the Lord.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "170": {
+      "dayNumber": 170,
+      "title": "Rescue and Restoration",
+      "reference": "Psalms 124-126",
+      "brief": "Read Psalms 124-126: Rescue and Restoration.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "171": {
+      "dayNumber": 171,
+      "title": "Home, Labor, and Perseverance",
+      "reference": "Psalms 127-129",
+      "brief": "Read Psalms 127-129: Home, Labor, and Perseverance.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "172": {
+      "dayNumber": 172,
+      "title": "Waiting, Forgiveness, and David's Promise",
+      "reference": "Psalms 130-132",
+      "brief": "Read Psalms 130-132: Waiting, Forgiveness, and David's Promise.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "173": {
+      "dayNumber": 173,
+      "title": "Unity and Praise",
+      "reference": "Psalms 133-135",
+      "brief": "Read Psalms 133-135: Unity and Praise.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "174": {
+      "dayNumber": 174,
+      "title": "His Steadfast Love Endures Forever",
+      "reference": "Psalms 136-138",
+      "brief": "Read Psalms 136-138: His Steadfast Love Endures Forever.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "175": {
+      "dayNumber": 175,
+      "title": "Known by God and Kept From Evil",
+      "reference": "Psalms 139-141",
+      "brief": "Read Psalms 139-141: Known by God and Kept From Evil.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "176": {
+      "dayNumber": 176,
+      "title": "Refuge, Mercy, and Battle",
+      "reference": "Psalms 142-144",
+      "brief": "Read Psalms 142-144: Refuge, Mercy, and Battle.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "177": {
+      "dayNumber": 177,
+      "title": "Great Is the Lord",
+      "reference": "Psalms 145-147",
+      "brief": "Read Psalms 145-147: Great Is the Lord.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "178": {
+      "dayNumber": 178,
+      "title": "Let Everything Praise the Lord",
+      "reference": "Psalms 148-150",
+      "brief": "Read Psalms 148-150: Let Everything Praise the Lord.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "179": {
+      "dayNumber": 179,
+      "title": "Wisdom Begins With the Fear of the Lord",
+      "reference": "Proverbs 1-3",
+      "brief": "Read Proverbs 1-3: Wisdom Begins With the Fear of the Lord.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "180": {
+      "dayNumber": 180,
+      "title": "Guard Your Heart",
+      "reference": "Proverbs 4-6",
+      "brief": "Read Proverbs 4-6: Guard Your Heart.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "181": {
+      "dayNumber": 181,
+      "title": "Wisdom Calls, Folly Tempts",
+      "reference": "Proverbs 7-9",
+      "brief": "Read Proverbs 7-9: Wisdom Calls, Folly Tempts.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "182": {
+      "dayNumber": 182,
+      "title": "Words, Work, and Righteousness",
+      "reference": "Proverbs 10-12",
+      "brief": "Read Proverbs 10-12: Words, Work, and Righteousness.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "183": {
+      "dayNumber": 183,
+      "title": "Discipline, Speech, and the Heart",
+      "reference": "Proverbs 13-15",
+      "brief": "Read Proverbs 13-15: Discipline, Speech, and the Heart.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "184": {
+      "dayNumber": 184,
+      "title": "Plans, Pride, and Wise Words",
+      "reference": "Proverbs 16-18",
+      "brief": "Read Proverbs 16-18: Plans, Pride, and Wise Words.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "185": {
+      "dayNumber": 185,
+      "title": "Justice, Wealth, and Humility",
+      "reference": "Proverbs 19-21",
+      "brief": "Read Proverbs 19-21: Justice, Wealth, and Humility.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "186": {
+      "dayNumber": 186,
+      "title": "Wisdom for Daily Life",
+      "reference": "Proverbs 22-24",
+      "brief": "Read Proverbs 22-24: Wisdom for Daily Life.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "187": {
+      "dayNumber": 187,
+      "title": "Self-Control and Friendship",
+      "reference": "Proverbs 25-27",
+      "brief": "Read Proverbs 25-27: Self-Control and Friendship.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "188": {
+      "dayNumber": 188,
+      "title": "Justice, Confession, and Wonder",
+      "reference": "Proverbs 28-30",
+      "brief": "Read Proverbs 28-30: Justice, Confession, and Wonder.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "189": {
+      "dayNumber": 189,
+      "title": "Noble Wisdom and Life's Vapor",
+      "reference": "Proverbs 31; Ecclesiastes 1-2",
+      "brief": "Read Proverbs 31; Ecclesiastes 1-2: Noble Wisdom and Life's Vapor.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "190": {
+      "dayNumber": 190,
+      "title": "Time, Work, and Worship",
+      "reference": "Ecclesiastes 3-5",
+      "brief": "Read Ecclesiastes 3-5: Time, Work, and Worship.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "191": {
+      "dayNumber": 191,
+      "title": "Limits of Human Wisdom",
+      "reference": "Ecclesiastes 6-8",
+      "brief": "Read Ecclesiastes 6-8: Limits of Human Wisdom.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "192": {
+      "dayNumber": 192,
+      "title": "Live Wisely Under the Sun",
+      "reference": "Ecclesiastes 9-11",
+      "brief": "Read Ecclesiastes 9-11: Live Wisely Under the Sun.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "193": {
+      "dayNumber": 193,
+      "title": "Remember Your Creator and Covenant Love",
+      "reference": "Ecclesiastes 12; Song of Solomon 1-2",
+      "brief": "Read Ecclesiastes 12; Song of Solomon 1-2: Remember Your Creator and Covenant Love.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "194": {
+      "dayNumber": 194,
+      "title": "Love, Desire, and Commitment",
+      "reference": "Song of Solomon 3-5",
+      "brief": "Read Song of Solomon 3-5: Love, Desire, and Commitment.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "195": {
+      "dayNumber": 195,
+      "title": "Love Strong as Death",
+      "reference": "Song of Solomon 6-8",
+      "brief": "Read Song of Solomon 6-8: Love Strong as Death.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "196": {
+      "dayNumber": 196,
+      "title": "Rebellion, Judgment, and Hope",
+      "reference": "Isaiah 1-3",
+      "brief": "Read Isaiah 1-3: Rebellion, Judgment, and Hope.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "197": {
+      "dayNumber": 197,
+      "title": "Holiness and Isaiah's Call",
+      "reference": "Isaiah 4-6",
+      "brief": "Read Isaiah 4-6: Holiness and Isaiah's Call.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "198": {
+      "dayNumber": 198,
+      "title": "Immanuel and the Coming King",
+      "reference": "Isaiah 7-9",
+      "brief": "Read Isaiah 7-9: Immanuel and the Coming King.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "199": {
+      "dayNumber": 199,
+      "title": "Judgment, Remnant, and Salvation",
+      "reference": "Isaiah 10-12",
+      "brief": "Read Isaiah 10-12: Judgment, Remnant, and Salvation.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "200": {
+      "dayNumber": 200,
+      "title": "Nations Under God's Judgment",
+      "reference": "Isaiah 13-15",
+      "brief": "Read Isaiah 13-15: Nations Under God's Judgment.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "201": {
+      "dayNumber": 201,
+      "title": "Pride, Refuge, and the Nations",
+      "reference": "Isaiah 16-18",
+      "brief": "Read Isaiah 16-18: Pride, Refuge, and the Nations.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "202": {
+      "dayNumber": 202,
+      "title": "Egypt, Babylon, and Trust",
+      "reference": "Isaiah 19-21",
+      "brief": "Read Isaiah 19-21: Egypt, Babylon, and Trust.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "203": {
+      "dayNumber": 203,
+      "title": "Jerusalem, Leaders, and World Judgment",
+      "reference": "Isaiah 22-24",
+      "brief": "Read Isaiah 22-24: Jerusalem, Leaders, and World Judgment.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "204": {
+      "dayNumber": 204,
+      "title": "Feast, Resurrection, and Restoration",
+      "reference": "Isaiah 25-27",
+      "brief": "Read Isaiah 25-27: Feast, Resurrection, and Restoration.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "205": {
+      "dayNumber": 205,
+      "title": "False Security and True Rest",
+      "reference": "Isaiah 28-30",
+      "brief": "Read Isaiah 28-30: False Security and True Rest.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "206": {
+      "dayNumber": 206,
+      "title": "Woe, Rescue, and the Coming King",
+      "reference": "Isaiah 31-33",
+      "brief": "Read Isaiah 31-33: Woe, Rescue, and the Coming King.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "207": {
+      "dayNumber": 207,
+      "title": "Judgment and Assyria's Threat",
+      "reference": "Isaiah 34-36",
+      "brief": "Read Isaiah 34-36: Judgment and Assyria's Threat.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "208": {
+      "dayNumber": 208,
+      "title": "Hezekiah's Prayer and Warning",
+      "reference": "Isaiah 37-39",
+      "brief": "Read Isaiah 37-39: Hezekiah's Prayer and Warning.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "209": {
+      "dayNumber": 209,
+      "title": "Comfort and the Servant",
+      "reference": "Isaiah 40-42",
+      "brief": "Read Isaiah 40-42: Comfort and the Servant.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "210": {
+      "dayNumber": 210,
+      "title": "God Redeems and Names Cyrus",
+      "reference": "Isaiah 43-45",
+      "brief": "Read Isaiah 43-45: God Redeems and Names Cyrus.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "211": {
+      "dayNumber": 211,
+      "title": "Idols Fall, God Carries",
+      "reference": "Isaiah 46-48",
+      "brief": "Read Isaiah 46-48: Idols Fall, God Carries.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "212": {
+      "dayNumber": 212,
+      "title": "The Servant Restores Zion",
+      "reference": "Isaiah 49-51",
+      "brief": "Read Isaiah 49-51: The Servant Restores Zion.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "213": {
+      "dayNumber": 213,
+      "title": "The Suffering Servant",
+      "reference": "Isaiah 52-54",
+      "brief": "Read Isaiah 52-54: The Suffering Servant.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "214": {
+      "dayNumber": 214,
+      "title": "Invitation, Mercy, and Peace",
+      "reference": "Isaiah 55-57",
+      "brief": "Read Isaiah 55-57: Invitation, Mercy, and Peace.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "215": {
+      "dayNumber": 215,
+      "title": "True Worship and Future Glory",
+      "reference": "Isaiah 58-60",
+      "brief": "Read Isaiah 58-60: True Worship and Future Glory.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "216": {
+      "dayNumber": 216,
+      "title": "Good News and the Day of Vengeance",
+      "reference": "Isaiah 61-63",
+      "brief": "Read Isaiah 61-63: Good News and the Day of Vengeance.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "217": {
+      "dayNumber": 217,
+      "title": "New Creation and Final Worship",
+      "reference": "Isaiah 64-66",
+      "brief": "Read Isaiah 64-66: New Creation and Final Worship.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "218": {
+      "dayNumber": 218,
+      "title": "Jeremiah's Call and Israel's Unfaithfulness",
+      "reference": "Jeremiah 1-3",
+      "brief": "Read Jeremiah 1-3: Jeremiah's Call and Israel's Unfaithfulness.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "219": {
+      "dayNumber": 219,
+      "title": "Coming Judgment",
+      "reference": "Jeremiah 4-6",
+      "brief": "Read Jeremiah 4-6: Coming Judgment.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "220": {
+      "dayNumber": 220,
+      "title": "Temple Trust and Tears",
+      "reference": "Jeremiah 7-9",
+      "brief": "Read Jeremiah 7-9: Temple Trust and Tears.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "221": {
+      "dayNumber": 221,
+      "title": "Idols, Covenant, and Complaint",
+      "reference": "Jeremiah 10-12",
+      "brief": "Read Jeremiah 10-12: Idols, Covenant, and Complaint.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "222": {
+      "dayNumber": 222,
+      "title": "Pride, Drought, and Intercession",
+      "reference": "Jeremiah 13-15",
+      "brief": "Read Jeremiah 13-15: Pride, Drought, and Intercession.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "223": {
+      "dayNumber": 223,
+      "title": "Signs, Sin, and the Potter",
+      "reference": "Jeremiah 16-18",
+      "brief": "Read Jeremiah 16-18: Signs, Sin, and the Potter.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "224": {
+      "dayNumber": 224,
+      "title": "Broken Jar and Jerusalem Warned",
+      "reference": "Jeremiah 19-21",
+      "brief": "Read Jeremiah 19-21: Broken Jar and Jerusalem Warned.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "225": {
+      "dayNumber": 225,
+      "title": "Kings, Exile, and Good Figs",
+      "reference": "Jeremiah 22-24",
+      "brief": "Read Jeremiah 22-24: Kings, Exile, and Good Figs.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "226": {
+      "dayNumber": 226,
+      "title": "Seventy Years and the Yoke",
+      "reference": "Jeremiah 25-27",
+      "brief": "Read Jeremiah 25-27: Seventy Years and the Yoke.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "227": {
+      "dayNumber": 227,
+      "title": "False Hope and Promised Restoration",
+      "reference": "Jeremiah 28-30",
+      "brief": "Read Jeremiah 28-30: False Hope and Promised Restoration.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "228": {
+      "dayNumber": 228,
+      "title": "New Covenant and Future Hope",
+      "reference": "Jeremiah 31-33",
+      "brief": "Read Jeremiah 31-33: New Covenant and Future Hope.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "229": {
+      "dayNumber": 229,
+      "title": "Broken Promises and God's Written Word",
+      "reference": "Jeremiah 34-36",
+      "brief": "Read Jeremiah 34-36: Broken Promises and God's Written Word.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "230": {
+      "dayNumber": 230,
+      "title": "Jerusalem Falls",
+      "reference": "Jeremiah 37-39",
+      "brief": "Read Jeremiah 37-39: Jerusalem Falls.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "231": {
+      "dayNumber": 231,
+      "title": "The Remnant After the Fall",
+      "reference": "Jeremiah 40-42",
+      "brief": "Read Jeremiah 40-42: The Remnant After the Fall.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "232": {
+      "dayNumber": 232,
+      "title": "Egypt, Warning, and Baruch",
+      "reference": "Jeremiah 43-45",
+      "brief": "Read Jeremiah 43-45: Egypt, Warning, and Baruch.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "233": {
+      "dayNumber": 233,
+      "title": "Judgment on the Nations",
+      "reference": "Jeremiah 46-48",
+      "brief": "Read Jeremiah 46-48: Judgment on the Nations.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "234": {
+      "dayNumber": 234,
+      "title": "Babylon Will Fall",
+      "reference": "Jeremiah 49-51",
+      "brief": "Read Jeremiah 49-51: Babylon Will Fall.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "235": {
+      "dayNumber": 235,
+      "title": "Jerusalem's Ruin and Grief",
+      "reference": "Jeremiah 52; Lamentations 1-2",
+      "brief": "Read Jeremiah 52; Lamentations 1-2: Jerusalem's Ruin and Grief.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "236": {
+      "dayNumber": 236,
+      "title": "Mercy in the Middle of Lament",
+      "reference": "Lamentations 3-5",
+      "brief": "Read Lamentations 3-5: Mercy in the Middle of Lament.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "237": {
+      "dayNumber": 237,
+      "title": "Ezekiel Sees God's Glory",
+      "reference": "Ezekiel 1-3",
+      "brief": "Read Ezekiel 1-3: Ezekiel Sees God's Glory.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "238": {
+      "dayNumber": 238,
+      "title": "Signs of Jerusalem's Judgment",
+      "reference": "Ezekiel 4-6",
+      "brief": "Read Ezekiel 4-6: Signs of Jerusalem's Judgment.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "239": {
+      "dayNumber": 239,
+      "title": "The End Comes",
+      "reference": "Ezekiel 7-9",
+      "brief": "Read Ezekiel 7-9: The End Comes.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "240": {
+      "dayNumber": 240,
+      "title": "Glory Departs and Exile Is Confirmed",
+      "reference": "Ezekiel 10-12",
+      "brief": "Read Ezekiel 10-12: Glory Departs and Exile Is Confirmed.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "241": {
+      "dayNumber": 241,
+      "title": "False Prophets and Fruitless Vines",
+      "reference": "Ezekiel 13-15",
+      "brief": "Read Ezekiel 13-15: False Prophets and Fruitless Vines.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "242": {
+      "dayNumber": 242,
+      "title": "Sin, Responsibility, and Life",
+      "reference": "Ezekiel 16-18",
+      "brief": "Read Ezekiel 16-18: Sin, Responsibility, and Life.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "243": {
+      "dayNumber": 243,
+      "title": "Lament and Sword",
+      "reference": "Ezekiel 19-21",
+      "brief": "Read Ezekiel 19-21: Lament and Sword.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "244": {
+      "dayNumber": 244,
+      "title": "Corruption and the Siege Sign",
+      "reference": "Ezekiel 22-24",
+      "brief": "Read Ezekiel 22-24: Corruption and the Siege Sign.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "245": {
+      "dayNumber": 245,
+      "title": "Nations and Tyre Judged",
+      "reference": "Ezekiel 25-27",
+      "brief": "Read Ezekiel 25-27: Nations and Tyre Judged.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "246": {
+      "dayNumber": 246,
+      "title": "Pride Falls and Egypt Judged",
+      "reference": "Ezekiel 28-30",
+      "brief": "Read Ezekiel 28-30: Pride Falls and Egypt Judged.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "247": {
+      "dayNumber": 247,
+      "title": "Watchman, Judgment, and Accountability",
+      "reference": "Ezekiel 31-33",
+      "brief": "Read Ezekiel 31-33: Watchman, Judgment, and Accountability.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "248": {
+      "dayNumber": 248,
+      "title": "Shepherds, New Heart, and Restoration",
+      "reference": "Ezekiel 34-36",
+      "brief": "Read Ezekiel 34-36: Shepherds, New Heart, and Restoration.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "249": {
+      "dayNumber": 249,
+      "title": "Dry Bones and Final Deliverance",
+      "reference": "Ezekiel 37-39",
+      "brief": "Read Ezekiel 37-39: Dry Bones and Final Deliverance.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "250": {
+      "dayNumber": 250,
+      "title": "Vision of a Restored Temple",
+      "reference": "Ezekiel 40-42",
+      "brief": "Read Ezekiel 40-42: Vision of a Restored Temple.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "251": {
+      "dayNumber": 251,
+      "title": "Glory Returns and Worship Is Ordered",
+      "reference": "Ezekiel 43-45",
+      "brief": "Read Ezekiel 43-45: Glory Returns and Worship Is Ordered.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.224Z"
+    },
+    "252": {
+      "dayNumber": 252,
+      "title": "Living Water and Restored Inheritance",
+      "reference": "Ezekiel 46-48",
+      "brief": "Read Ezekiel 46-48: Living Water and Restored Inheritance.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "253": {
+      "dayNumber": 253,
+      "title": "Faithfulness in Babylon",
+      "reference": "Daniel 1-3",
+      "brief": "Read Daniel 1-3: Faithfulness in Babylon.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "254": {
+      "dayNumber": 254,
+      "title": "Proud Kings and the Lions' Den",
+      "reference": "Daniel 4-6",
+      "brief": "Read Daniel 4-6: Proud Kings and the Lions' Den.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "255": {
+      "dayNumber": 255,
+      "title": "Kingdoms, Son of Man, and Prayer",
+      "reference": "Daniel 7-9",
+      "brief": "Read Daniel 7-9: Kingdoms, Son of Man, and Prayer.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "256": {
+      "dayNumber": 256,
+      "title": "Spiritual Conflict and Final Hope",
+      "reference": "Daniel 10-12",
+      "brief": "Read Daniel 10-12: Spiritual Conflict and Final Hope.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "257": {
+      "dayNumber": 257,
+      "title": "Love for the Unfaithful",
+      "reference": "Hosea 1-3",
+      "brief": "Read Hosea 1-3: Love for the Unfaithful.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "258": {
+      "dayNumber": 258,
+      "title": "Covenant Betrayal and Mercy",
+      "reference": "Hosea 4-6",
+      "brief": "Read Hosea 4-6: Covenant Betrayal and Mercy.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "259": {
+      "dayNumber": 259,
+      "title": "Israel's Wandering Heart",
+      "reference": "Hosea 7-9",
+      "brief": "Read Hosea 7-9: Israel's Wandering Heart.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "260": {
+      "dayNumber": 260,
+      "title": "Sowing Sin and Remembering Jacob",
+      "reference": "Hosea 10-12",
+      "brief": "Read Hosea 10-12: Sowing Sin and Remembering Jacob.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "261": {
+      "dayNumber": 261,
+      "title": "Return to the Lord",
+      "reference": "Hosea 13-14; Joel 1",
+      "brief": "Read Hosea 13-14; Joel 1: Return to the Lord.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "262": {
+      "dayNumber": 262,
+      "title": "The Day of the Lord Begins",
+      "reference": "Joel 2-3; Amos 1",
+      "brief": "Read Joel 2-3; Amos 1: The Day of the Lord Begins.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "263": {
+      "dayNumber": 263,
+      "title": "Justice and Accountability",
+      "reference": "Amos 2-4",
+      "brief": "Read Amos 2-4: Justice and Accountability.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "264": {
+      "dayNumber": 264,
+      "title": "Seek the Lord and Live",
+      "reference": "Amos 5-7",
+      "brief": "Read Amos 5-7: Seek the Lord and Live.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "265": {
+      "dayNumber": 265,
+      "title": "Famine of the Word and Edom's Fall",
+      "reference": "Amos 8-9; Obadiah 1",
+      "brief": "Read Amos 8-9; Obadiah 1: Famine of the Word and Edom's Fall.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "266": {
+      "dayNumber": 266,
+      "title": "Running, Mercy, and Repentance",
+      "reference": "Jonah 1-3",
+      "brief": "Read Jonah 1-3: Running, Mercy, and Repentance.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "267": {
+      "dayNumber": 267,
+      "title": "God's Compassion and Israel's Sin",
+      "reference": "Jonah 4; Micah 1-2",
+      "brief": "Read Jonah 4; Micah 1-2: God's Compassion and Israel's Sin.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "268": {
+      "dayNumber": 268,
+      "title": "Corrupt Leaders and Bethlehem's Ruler",
+      "reference": "Micah 3-5",
+      "brief": "Read Micah 3-5: Corrupt Leaders and Bethlehem's Ruler.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "269": {
+      "dayNumber": 269,
+      "title": "What the Lord Requires",
+      "reference": "Micah 6-7; Nahum 1",
+      "brief": "Read Micah 6-7; Nahum 1: What the Lord Requires.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "270": {
+      "dayNumber": 270,
+      "title": "Nineveh Falls and Habakkuk Questions",
+      "reference": "Nahum 2-3; Habakkuk 1",
+      "brief": "Read Nahum 2-3; Habakkuk 1: Nineveh Falls and Habakkuk Questions.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "271": {
+      "dayNumber": 271,
+      "title": "The Righteous Live by Faith",
+      "reference": "Habakkuk 2-3; Zephaniah 1",
+      "brief": "Read Habakkuk 2-3; Zephaniah 1: The Righteous Live by Faith.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "272": {
+      "dayNumber": 272,
+      "title": "Seek the Lord and Rebuild",
+      "reference": "Zephaniah 2-3; Haggai 1",
+      "brief": "Read Zephaniah 2-3; Haggai 1: Seek the Lord and Rebuild.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "273": {
+      "dayNumber": 273,
+      "title": "Future Glory and Jerusalem's Hope",
+      "reference": "Haggai 2; Zechariah 1-2",
+      "brief": "Read Haggai 2; Zechariah 1-2: Future Glory and Jerusalem's Hope.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "274": {
+      "dayNumber": 274,
+      "title": "Cleansing, Spirit, and Wickedness Removed",
+      "reference": "Zechariah 3-5",
+      "brief": "Read Zechariah 3-5: Cleansing, Spirit, and Wickedness Removed.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "275": {
+      "dayNumber": 275,
+      "title": "Branch, Temple, and Restoration",
+      "reference": "Zechariah 6-8",
+      "brief": "Read Zechariah 6-8: Branch, Temple, and Restoration.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "276": {
+      "dayNumber": 276,
+      "title": "The Coming King and Rejected Shepherd",
+      "reference": "Zechariah 9-11",
+      "brief": "Read Zechariah 9-11: The Coming King and Rejected Shepherd.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "277": {
+      "dayNumber": 277,
+      "title": "Pierced One and the Lord's Reign",
+      "reference": "Zechariah 12-14",
+      "brief": "Read Zechariah 12-14: Pierced One and the Lord's Reign.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "278": {
+      "dayNumber": 278,
+      "title": "Covenant Worship and Refining Fire",
+      "reference": "Malachi 1-3",
+      "brief": "Read Malachi 1-3: Covenant Worship and Refining Fire.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "279": {
+      "dayNumber": 279,
+      "title": "Promise Fulfilled in Jesus' Birth",
+      "reference": "Malachi 4; Matthew 1-2",
+      "brief": "Read Malachi 4; Matthew 1-2: Promise Fulfilled in Jesus' Birth.",
+      "source": "plan",
+      "updatedAt": "2026-10-04T17:10:38.225Z"
+    },
+    "280": {
+      "dayNumber": 280,
+      "title": "Baptism, Temptation, and Kingdom Teaching",
+      "reference": "Matthew 3-5",
+      "brief": "Read Matthew 3-5: Baptism, Temptation, and Kingdom Teaching.",
+      "source": "script"
+    },
+    "281": {
+      "dayNumber": 281,
+      "title": "Kingdom Prayer and Kingdom Power",
+      "reference": "Matthew 6-8",
+      "brief": "Read Matthew 6-8: Kingdom Prayer and Kingdom Power.",
+      "source": "script"
+    },
+    "282": {
+      "dayNumber": 282,
+      "title": "Compassion, Mission, and Invitation",
+      "reference": "Matthew 9-11",
+      "brief": "Read Matthew 9-11: Compassion, Mission, and Invitation.",
+      "source": "script"
+    },
+    "283": {
+      "dayNumber": 283,
+      "title": "Opposition, Parables, and Provision",
+      "reference": "Matthew 12-14",
+      "brief": "Read Matthew 12-14: Opposition, Parables, and Provision.",
+      "source": "script"
+    },
+    "284": {
+      "dayNumber": 284,
+      "title": "Clean Hearts, Confession, and Glory",
+      "reference": "Matthew 15-17",
+      "brief": "Read Matthew 15-17: Clean Hearts, Confession, and Glory.",
+      "source": "script"
+    },
+    "285": {
+      "dayNumber": 285,
+      "title": "Humility, Forgiveness, and Servant Greatness",
+      "reference": "Matthew 18-20",
+      "brief": "Read Matthew 18-20: Humility, Forgiveness, and Servant Greatness.",
+      "source": "script"
+    },
+    "286": {
+      "dayNumber": 286,
+      "title": "The King Enters and Confronts Hypocrisy",
+      "reference": "Matthew 21-23",
+      "brief": "Read Matthew 21-23: The King Enters and Confronts Hypocrisy.",
+      "source": "script"
+    },
+    "287": {
+      "dayNumber": 287,
+      "title": "Watchfulness, Supper, and Betrayal",
+      "reference": "Matthew 24-26",
+      "brief": "Read Matthew 24-26: Watchfulness, Supper, and Betrayal.",
+      "source": "script"
+    },
+    "288": {
+      "dayNumber": 288,
+      "title": "Cross, Resurrection, and the Gospel Begins",
+      "reference": "Matthew 27-28; Mark 1",
+      "brief": "Read Matthew 27-28; Mark 1: Cross, Resurrection, and the Gospel Begins.",
+      "source": "script"
+    },
+    "289": {
+      "dayNumber": 289,
+      "title": "Authority, Conflict, and Parables",
+      "reference": "Mark 2-4",
+      "brief": "Read Mark 2-4: Authority, Conflict, and Parables.",
+      "source": "script"
+    },
+    "290": {
+      "dayNumber": 290,
+      "title": "Deliverance, Healing, and True Cleanliness",
+      "reference": "Mark 5-7",
+      "brief": "Read Mark 5-7: Deliverance, Healing, and True Cleanliness.",
+      "source": "script"
+    },
+    "291": {
+      "dayNumber": 291,
+      "title": "The Way of the Cross",
+      "reference": "Mark 8-10",
+      "brief": "Read Mark 8-10: The Way of the Cross.",
+      "source": "script"
+    },
+    "292": {
+      "dayNumber": 292,
+      "title": "Temple Judgment and Watchfulness",
+      "reference": "Mark 11-13",
+      "brief": "Read Mark 11-13: Temple Judgment and Watchfulness.",
+      "source": "script"
+    },
+    "293": {
+      "dayNumber": 293,
+      "title": "Jesus' Death and Resurrection",
+      "reference": "Mark 14-16",
+      "brief": "Read Mark 14-16: Jesus' Death and Resurrection.",
+      "source": "script"
+    },
+    "294": {
+      "dayNumber": 294,
+      "title": "Births, Promise, and Preparation",
+      "reference": "Luke 1-3",
+      "brief": "Read Luke 1-3: Births, Promise, and Preparation.",
+      "source": "script"
+    },
+    "295": {
+      "dayNumber": 295,
+      "title": "Jesus' Mission and Kingdom Ethics",
+      "reference": "Luke 4-6",
+      "brief": "Read Luke 4-6: Jesus' Mission and Kingdom Ethics.",
+      "source": "script"
+    },
+    "296": {
+      "dayNumber": 296,
+      "title": "Mercy, Miracles, and Discipleship",
+      "reference": "Luke 7-9",
+      "brief": "Read Luke 7-9: Mercy, Miracles, and Discipleship.",
+      "source": "script"
+    },
+    "297": {
+      "dayNumber": 297,
+      "title": "Neighbor Love, Prayer, and Watchfulness",
+      "reference": "Luke 10-12",
+      "brief": "Read Luke 10-12: Neighbor Love, Prayer, and Watchfulness.",
+      "source": "script"
+    },
+    "298": {
+      "dayNumber": 298,
+      "title": "Repentance, Lost Things, and Grace",
+      "reference": "Luke 13-15",
+      "brief": "Read Luke 13-15: Repentance, Lost Things, and Grace.",
+      "source": "script"
+    },
+    "299": {
+      "dayNumber": 299,
+      "title": "Wealth, Faith, and Humility",
+      "reference": "Luke 16-18",
+      "brief": "Read Luke 16-18: Wealth, Faith, and Humility.",
+      "source": "script"
+    },
+    "300": {
+      "dayNumber": 300,
+      "title": "Jerusalem, Temple, and Coming Judgment",
+      "reference": "Luke 19-21",
+      "brief": "Read Luke 19-21: Jerusalem, Temple, and Coming Judgment.",
+      "source": "script"
+    },
+    "301": {
+      "dayNumber": 301,
+      "title": "Cross, Resurrection, and Opened Eyes",
+      "reference": "Luke 22-24",
+      "brief": "Read Luke 22-24: Cross, Resurrection, and Opened Eyes.",
+      "source": "script"
+    },
+    "302": {
+      "dayNumber": 302,
+      "title": "The Word Became Flesh",
+      "reference": "John 1-3",
+      "brief": "Read John 1-3: The Word Became Flesh.",
+      "source": "script"
+    },
+    "303": {
+      "dayNumber": 303,
+      "title": "Living Water and Bread of Life",
+      "reference": "John 4-6",
+      "brief": "Read John 4-6: Living Water and Bread of Life.",
+      "source": "script"
+    },
+    "304": {
+      "dayNumber": 304,
+      "title": "Living Water, Light, and Sight",
+      "reference": "John 7-9",
+      "brief": "Read John 7-9: Living Water, Light, and Sight.",
+      "source": "script"
+    },
+    "305": {
+      "dayNumber": 305,
+      "title": "Good Shepherd and the Hour Arrives",
+      "reference": "John 10-12",
+      "brief": "Read John 10-12: Good Shepherd and the Hour Arrives.",
+      "source": "script"
+    },
+    "306": {
+      "dayNumber": 306,
+      "title": "Love, Service, and Abiding",
+      "reference": "John 13-15",
+      "brief": "Read John 13-15: Love, Service, and Abiding.",
+      "source": "script"
+    },
+    "307": {
+      "dayNumber": 307,
+      "title": "Spirit, Prayer, and Arrest",
+      "reference": "John 16-18",
+      "brief": "Read John 16-18: Spirit, Prayer, and Arrest.",
+      "source": "script"
+    },
+    "308": {
+      "dayNumber": 308,
+      "title": "Finished Work and Restored Disciples",
+      "reference": "John 19-21",
+      "brief": "Read John 19-21: Finished Work and Restored Disciples.",
+      "source": "script"
+    },
+    "309": {
+      "dayNumber": 309,
+      "title": "Spirit, Witness, and the Church Begins",
+      "reference": "Acts 1-3",
+      "brief": "Read Acts 1-3: Spirit, Witness, and the Church Begins.",
+      "source": "script"
+    },
+    "310": {
+      "dayNumber": 310,
+      "title": "Bold Witness and Shared Life",
+      "reference": "Acts 4-6",
+      "brief": "Read Acts 4-6: Bold Witness and Shared Life.",
+      "source": "script"
+    },
+    "311": {
+      "dayNumber": 311,
+      "title": "Stephen, Saul, and Conversion",
+      "reference": "Acts 7-9",
+      "brief": "Read Acts 7-9: Stephen, Saul, and Conversion.",
+      "source": "script"
+    },
+    "312": {
+      "dayNumber": 312,
+      "title": "Gospel to Gentiles",
+      "reference": "Acts 10-12",
+      "brief": "Read Acts 10-12: Gospel to Gentiles.",
+      "source": "script"
+    },
+    "313": {
+      "dayNumber": 313,
+      "title": "Mission and the Jerusalem Council",
+      "reference": "Acts 13-15",
+      "brief": "Read Acts 13-15: Mission and the Jerusalem Council.",
+      "source": "script"
+    },
+    "314": {
+      "dayNumber": 314,
+      "title": "Gospel Across the Cities",
+      "reference": "Acts 16-18",
+      "brief": "Read Acts 16-18: Gospel Across the Cities.",
+      "source": "script"
+    },
+    "315": {
+      "dayNumber": 315,
+      "title": "Ephesus, Farewell, and Jerusalem",
+      "reference": "Acts 19-21",
+      "brief": "Read Acts 19-21: Ephesus, Farewell, and Jerusalem.",
+      "source": "script"
+    },
+    "316": {
+      "dayNumber": 316,
+      "title": "Paul's Defense and Witness",
+      "reference": "Acts 22-24",
+      "brief": "Read Acts 22-24: Paul's Defense and Witness.",
+      "source": "script"
+    },
+    "317": {
+      "dayNumber": 317,
+      "title": "Paul Appeals and Sails Through Storm",
+      "reference": "Acts 25-27",
+      "brief": "Read Acts 25-27: Paul Appeals and Sails Through Storm.",
+      "source": "script"
+    },
+    "318": {
+      "dayNumber": 318,
+      "title": "Rome and the Gospel's Need",
+      "reference": "Acts 28; Romans 1-2",
+      "brief": "Read Acts 28; Romans 1-2: Rome and the Gospel's Need.",
+      "source": "script"
+    },
+    "319": {
+      "dayNumber": 319,
+      "title": "Justification by Faith",
+      "reference": "Romans 3-5",
+      "brief": "Read Romans 3-5: Justification by Faith.",
+      "source": "script"
+    },
+    "320": {
+      "dayNumber": 320,
+      "title": "New Life in the Spirit",
+      "reference": "Romans 6-8",
+      "brief": "Read Romans 6-8: New Life in the Spirit.",
+      "source": "script"
+    },
+    "321": {
+      "dayNumber": 321,
+      "title": "Israel, Mercy, and God's Plan",
+      "reference": "Romans 9-11",
+      "brief": "Read Romans 9-11: Israel, Mercy, and God's Plan.",
+      "source": "script"
+    },
+    "322": {
+      "dayNumber": 322,
+      "title": "Living Sacrifices and Love",
+      "reference": "Romans 12-14",
+      "brief": "Read Romans 12-14: Living Sacrifices and Love.",
+      "source": "script"
+    },
+    "323": {
+      "dayNumber": 323,
+      "title": "Unity, Mission, and the Cross",
+      "reference": "Romans 15-16; 1 Corinthians 1",
+      "brief": "Read Romans 15-16; 1 Corinthians 1: Unity, Mission, and the Cross.",
+      "source": "script"
+    },
+    "324": {
+      "dayNumber": 324,
+      "title": "Spirit, Foundation, and Stewardship",
+      "reference": "1 Corinthians 2-4",
+      "brief": "Read 1 Corinthians 2-4: Spirit, Foundation, and Stewardship.",
+      "source": "script"
+    },
+    "325": {
+      "dayNumber": 325,
+      "title": "Purity, Judgment, and the Body",
+      "reference": "1 Corinthians 5-6",
+      "brief": "Read 1 Corinthians 5-6: Purity, Judgment, and the Body.",
+      "source": "script"
+    },
+    "326": {
+      "dayNumber": 326,
+      "title": "Marriage, Freedom, and Warning",
+      "reference": "1 Corinthians 7-10",
+      "brief": "Read 1 Corinthians 7-10: Marriage, Freedom, and Warning.",
+      "source": "script"
+    },
+    "327": {
+      "dayNumber": 327,
+      "title": "Worship, Gifts, and Love",
+      "reference": "1 Corinthians 11-13",
+      "brief": "Read 1 Corinthians 11-13: Worship, Gifts, and Love.",
+      "source": "script"
+    },
+    "328": {
+      "dayNumber": 328,
+      "title": "Order, Resurrection, and Hope",
+      "reference": "1 Corinthians 14-16",
+      "brief": "Read 1 Corinthians 14-16: Order, Resurrection, and Hope.",
+      "source": "script"
+    },
+    "329": {
+      "dayNumber": 329,
+      "title": "Comfort and New Covenant Ministry",
+      "reference": "2 Corinthians 1-3",
+      "brief": "Read 2 Corinthians 1-3: Comfort and New Covenant Ministry.",
+      "source": "script"
+    },
+    "330": {
+      "dayNumber": 330,
+      "title": "Treasure in Jars of Clay",
+      "reference": "2 Corinthians 4-6",
+      "brief": "Read 2 Corinthians 4-6: Treasure in Jars of Clay.",
+      "source": "script"
+    },
+    "331": {
+      "dayNumber": 331,
+      "title": "Repentance and Generosity",
+      "reference": "2 Corinthians 7-9",
+      "brief": "Read 2 Corinthians 7-9: Repentance and Generosity.",
+      "source": "script"
+    },
+    "332": {
+      "dayNumber": 332,
+      "title": "Weakness and True Apostleship",
+      "reference": "2 Corinthians 10-12",
+      "brief": "Read 2 Corinthians 10-12: Weakness and True Apostleship.",
+      "source": "script"
+    },
+    "333": {
+      "dayNumber": 333,
+      "title": "Gospel Grace Defended",
+      "reference": "2 Corinthians 13; Galatians 1-2",
+      "brief": "Read 2 Corinthians 13; Galatians 1-2: Gospel Grace Defended.",
+      "source": "script"
+    },
+    "334": {
+      "dayNumber": 334,
+      "title": "Promise, Freedom, and the Spirit",
+      "reference": "Galatians 3-5",
+      "brief": "Read Galatians 3-5: Promise, Freedom, and the Spirit.",
+      "source": "script"
+    },
+    "335": {
+      "dayNumber": 335,
+      "title": "New Creation and Grace",
+      "reference": "Galatians 6; Ephesians 1-2",
+      "brief": "Read Galatians 6; Ephesians 1-2: New Creation and Grace.",
+      "source": "script"
+    },
+    "336": {
+      "dayNumber": 336,
+      "title": "Mystery, Unity, and New Life",
+      "reference": "Ephesians 3-5",
+      "brief": "Read Ephesians 3-5: Mystery, Unity, and New Life.",
+      "source": "script"
+    },
+    "337": {
+      "dayNumber": 337,
+      "title": "Armor, Joy, and Christlike Humility",
+      "reference": "Ephesians 6; Philippians 1-2",
+      "brief": "Read Ephesians 6; Philippians 1-2: Armor, Joy, and Christlike Humility.",
+      "source": "script"
+    },
+    "338": {
+      "dayNumber": 338,
+      "title": "Knowing Christ and His Supremacy",
+      "reference": "Philippians 3-4; Colossians 1",
+      "brief": "Read Philippians 3-4; Colossians 1: Knowing Christ and His Supremacy.",
+      "source": "script"
+    },
+    "339": {
+      "dayNumber": 339,
+      "title": "Fullness in Christ",
+      "reference": "Colossians 2-4",
+      "brief": "Read Colossians 2-4: Fullness in Christ.",
+      "source": "script"
+    },
+    "340": {
+      "dayNumber": 340,
+      "title": "Faith, Love, and Encouragement",
+      "reference": "1 Thessalonians 1-3",
+      "brief": "Read 1 Thessalonians 1-3: Faith, Love, and Encouragement.",
+      "source": "script"
+    },
+    "341": {
+      "dayNumber": 341,
+      "title": "Holiness and the Lord's Return",
+      "reference": "1 Thessalonians 4-5; 2 Thessalonians 1",
+      "brief": "Read 1 Thessalonians 4-5; 2 Thessalonians 1: Holiness and the Lord's Return.",
+      "source": "script"
+    },
+    "342": {
+      "dayNumber": 342,
+      "title": "Stand Firm and Guard the Gospel",
+      "reference": "2 Thessalonians 2-3; 1 Timothy 1",
+      "brief": "Read 2 Thessalonians 2-3; 1 Timothy 1: Stand Firm and Guard the Gospel.",
+      "source": "script"
+    },
+    "343": {
+      "dayNumber": 343,
+      "title": "Church Order and Godliness",
+      "reference": "1 Timothy 2-4",
+      "brief": "Read 1 Timothy 2-4: Church Order and Godliness.",
+      "source": "script"
+    },
+    "344": {
+      "dayNumber": 344,
+      "title": "Care, Contentment, and Courage",
+      "reference": "1 Timothy 5-6; 2 Timothy 1",
+      "brief": "Read 1 Timothy 5-6; 2 Timothy 1: Care, Contentment, and Courage.",
+      "source": "script"
+    },
+    "345": {
+      "dayNumber": 345,
+      "title": "Endurance and Finishing Faithfully",
+      "reference": "2 Timothy 2-4",
+      "brief": "Read 2 Timothy 2-4: Endurance and Finishing Faithfully.",
+      "source": "script"
+    },
+    "346": {
+      "dayNumber": 346,
+      "title": "Gospel-Shaped Leadership and Good Works",
+      "reference": "Titus 1-3",
+      "brief": "Read Titus 1-3: Gospel-Shaped Leadership and Good Works.",
+      "source": "script"
+    },
+    "347": {
+      "dayNumber": 347,
+      "title": "Reconciliation and the Son's Supremacy",
+      "reference": "Philemon 1; Hebrews 1-2",
+      "brief": "Read Philemon 1; Hebrews 1-2: Reconciliation and the Son's Supremacy.",
+      "source": "script"
+    },
+    "348": {
+      "dayNumber": 348,
+      "title": "Jesus Greater Than Moses and Priesthood",
+      "reference": "Hebrews 3-5",
+      "brief": "Read Hebrews 3-5: Jesus Greater Than Moses and Priesthood.",
+      "source": "script"
+    },
+    "349": {
+      "dayNumber": 349,
+      "title": "Better Hope and Better Covenant",
+      "reference": "Hebrews 6-8",
+      "brief": "Read Hebrews 6-8: Better Hope and Better Covenant.",
+      "source": "script"
+    },
+    "350": {
+      "dayNumber": 350,
+      "title": "Once-for-All Sacrifice and Faith",
+      "reference": "Hebrews 9-11",
+      "brief": "Read Hebrews 9-11: Once-for-All Sacrifice and Faith.",
+      "source": "script"
+    },
+    "351": {
+      "dayNumber": 351,
+      "title": "Endurance and Living Faith",
+      "reference": "Hebrews 12-13; James 1",
+      "brief": "Read Hebrews 12-13; James 1: Endurance and Living Faith.",
+      "source": "script"
+    },
+    "352": {
+      "dayNumber": 352,
+      "title": "Faith Works Through Humility",
+      "reference": "James 2-4",
+      "brief": "Read James 2-4: Faith Works Through Humility.",
+      "source": "script"
+    },
+    "353": {
+      "dayNumber": 353,
+      "title": "Patient Faith and Living Hope",
+      "reference": "James 5; 1 Peter 1-2",
+      "brief": "Read James 5; 1 Peter 1-2: Patient Faith and Living Hope.",
+      "source": "script"
+    },
+    "354": {
+      "dayNumber": 354,
+      "title": "Suffering, Shepherding, and Glory",
+      "reference": "1 Peter 3-5",
+      "brief": "Read 1 Peter 3-5: Suffering, Shepherding, and Glory.",
+      "source": "script"
+    },
+    "355": {
+      "dayNumber": 355,
+      "title": "Remember Truth and Await the Day",
+      "reference": "2 Peter 1-3",
+      "brief": "Read 2 Peter 1-3: Remember Truth and Await the Day.",
+      "source": "script"
+    },
+    "356": {
+      "dayNumber": 356,
+      "title": "Walking in Light and Love",
+      "reference": "1 John 1-3",
+      "brief": "Read 1 John 1-3: Walking in Light and Love.",
+      "source": "script"
+    },
+    "357": {
+      "dayNumber": 357,
+      "title": "Love, Truth, and Assurance",
+      "reference": "1 John 4-5; 2 John 1",
+      "brief": "Read 1 John 4-5; 2 John 1: Love, Truth, and Assurance.",
+      "source": "script"
+    },
+    "358": {
+      "dayNumber": 358,
+      "title": "Truth, Contending, and the Risen Christ",
+      "reference": "3 John 1; Jude 1; Revelation 1",
+      "brief": "Read 3 John 1; Jude 1; Revelation 1: Truth, Contending, and the Risen Christ.",
+      "source": "script"
+    },
+    "359": {
+      "dayNumber": 359,
+      "title": "Churches Warned and Heaven Opened",
+      "reference": "Revelation 2-4",
+      "brief": "Read Revelation 2-4: Churches Warned and Heaven Opened.",
+      "source": "script"
+    },
+    "360": {
+      "dayNumber": 360,
+      "title": "The Lamb, the Scroll, and the Redeemed",
+      "reference": "Revelation 5-7",
+      "brief": "Read Revelation 5-7: The Lamb, the Scroll, and the Redeemed.",
+      "source": "script"
+    },
+    "361": {
+      "dayNumber": 361,
+      "title": "Trumpets and the Little Scroll",
+      "reference": "Revelation 8-10",
+      "brief": "Read Revelation 8-10: Trumpets and the Little Scroll.",
+      "source": "script"
+    },
+    "362": {
+      "dayNumber": 362,
+      "title": "Witness, Beast, and Faithful Endurance",
+      "reference": "Revelation 11-13",
+      "brief": "Read Revelation 11-13: Witness, Beast, and Faithful Endurance.",
+      "source": "script"
+    },
+    "363": {
+      "dayNumber": 363,
+      "title": "Harvest, Bowls, and Judgment",
+      "reference": "Revelation 14-16",
+      "brief": "Read Revelation 14-16: Harvest, Bowls, and Judgment.",
+      "source": "script"
+    },
+    "364": {
+      "dayNumber": 364,
+      "title": "Babylon Falls and the King Returns",
+      "reference": "Revelation 17-19",
+      "brief": "Read Revelation 17-19: Babylon Falls and the King Returns.",
+      "source": "script"
+    },
+    "365": {
+      "dayNumber": 365,
+      "title": "Final Judgment and New Creation",
+      "reference": "Revelation 20-22",
+      "brief": "Read Revelation 20-22: Final Judgment and New Creation.",
+      "source": "script"
     }
   }
 }
