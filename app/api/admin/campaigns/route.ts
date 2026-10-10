@@ -48,6 +48,26 @@ export async function GET(request: NextRequest) {
   if (auth instanceof NextResponse) return auth;
   const { db } = auth;
 
+  // ?campaignId=... returns one campaign WITH its body, for the preview.
+  // Read from the same row the sender reads, so what is on screen is what
+  // goes out - no second copy to drift. Reading cannot send: this is a GET
+  // and it touches nothing but the select.
+  const wanted = request.nextUrl.searchParams.get("campaignId");
+  if (wanted) {
+    const { data: one, error: oneError } = await db
+      .from("email_campaigns")
+      .select("campaign_id, subject, html, text, status, scheduled_for, notes")
+      .eq("campaign_id", wanted)
+      .maybeSingle();
+    if (oneError) return NextResponse.json({ error: oneError.message }, { status: 500 });
+    if (!one) return NextResponse.json({ error: "No such campaign." }, { status: 404 });
+    // The real link is per recipient and only exists at send time, so the
+    // preview shows a working stand-in rather than a raw placeholder.
+    const previewHtml = (one.html || "").split("{{UNSUBSCRIBE}}").join("https://www.mybiblebuddy.net/api/email/unsubscribe?preview=1");
+    const previewText = (one.notes || "").split("preview:")[1]?.trim() || null;
+    return NextResponse.json({ campaign: { ...one, html: previewHtml, previewText } });
+  }
+
   const { data: stats, error } = await db
     .from("ses_campaign_stats")
     .select("*")

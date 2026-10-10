@@ -120,6 +120,16 @@ export async function sendEmail(options: {
       ]
     : [];
 
+  // A visible unsubscribe link, not just the header. Gmail and Yahoo both
+  // want one in the body from bulk senders, and a reader who cannot find it
+  // reports spam instead - which is the thing that actually costs a sender
+  // its reputation. Campaign bodies carry {{UNSUBSCRIBE}} and it is swapped
+  // for that recipients own link here, so one placeholder serves every send.
+  const withUnsub = (value: string) =>
+    options.unsubscribeUrl ? value.split("{{UNSUBSCRIBE}}").join(options.unsubscribeUrl) : value;
+  const htmlBody = withUnsub(options.html);
+  const textBody = withUnsub(options.text);
+
   try {
     const result = await sesClient().send(
       new SendEmailCommand({
@@ -138,8 +148,8 @@ export async function sendEmail(options: {
           Simple: {
             Subject: { Data: options.subject, Charset: "UTF-8" },
             Body: {
-              Html: { Data: options.html, Charset: "UTF-8" },
-              Text: { Data: options.text, Charset: "UTF-8" },
+              Html: { Data: htmlBody, Charset: "UTF-8" },
+              Text: { Data: textBody, Charset: "UTF-8" },
             },
             Headers: headers.length ? headers : undefined,
           },

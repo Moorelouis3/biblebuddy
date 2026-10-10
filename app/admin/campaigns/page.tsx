@@ -59,6 +59,15 @@ export default function CampaignsPage() {
   const [notice, setNotice] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
   const [edits, setEdits] = useState<Record<string, { subject?: string; scheduledFor?: string }>>({});
+  const [preview, setPreview] = useState<{
+    campaign_id: string;
+    subject: string;
+    html: string;
+    status: string;
+    scheduled_for: string | null;
+    previewText: string | null;
+  } | null>(null);
+  const [previewLoading, setPreviewLoading] = useState<string | null>(null);
 
   const token = useCallback(
     async () => (await supabase.auth.getSession()).data.session?.access_token || "",
@@ -82,6 +91,32 @@ export default function CampaignsPage() {
   useEffect(() => {
     void load();
   }, [load]);
+
+  useEffect(() => {
+    if (!preview) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPreview(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [preview]);
+
+  async function openPreview(campaignId: string) {
+    setPreviewLoading(campaignId);
+    setError(null);
+    try {
+      const response = await fetch(`/api/admin/campaigns?campaignId=${encodeURIComponent(campaignId)}`, {
+        headers: { authorization: `Bearer ${await token()}` },
+      });
+      const json = await response.json();
+      if (!response.ok) throw new Error(json.error || "Could not open that draft.");
+      setPreview(json.campaign);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not open that draft.");
+    } finally {
+      setPreviewLoading(null);
+    }
+  }
 
   async function act(campaignId: string, op: string, extra: Record<string, unknown> = {}) {
     setBusy(campaignId + op);
@@ -177,6 +212,14 @@ export default function CampaignsPage() {
                   }
                   className="min-w-0 flex-1 rounded-lg border border-slate-200 px-3 py-2 text-base font-bold text-slate-950"
                 />
+                <button
+                  type="button"
+                  onClick={() => void openPreview(c.campaign_id)}
+                  disabled={previewLoading !== null}
+                  className="rounded-full border border-[#0056fd] px-4 py-2 text-sm font-bold text-[#0056fd] disabled:opacity-50"
+                >
+                  {previewLoading === c.campaign_id ? "Opening…" : "View draft"}
+                </button>
                 <span
                   className={`rounded-full px-3 py-1 text-xs font-black uppercase ${STATUS_STYLE[c.status] || "bg-slate-100 text-slate-700"}`}
                 >
@@ -260,6 +303,51 @@ export default function CampaignsPage() {
           );
         })}
       </div>
+
+      {preview && (
+        <div
+          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-slate-950/60 p-3 sm:p-6"
+          onClick={() => setPreview(null)}
+        >
+          <div
+            className="w-full max-w-2xl rounded-2xl bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-3 border-b border-slate-200 p-4">
+              <div className="min-w-0">
+                <p className="text-xs font-bold uppercase tracking-wide text-slate-500">Subject</p>
+                <p className="text-lg font-black leading-snug text-slate-950">{preview.subject}</p>
+                <p className="mt-2 text-xs font-bold uppercase tracking-wide text-slate-500">Preview text</p>
+                <p className="text-sm text-slate-700">{preview.previewText || "— none set —"}</p>
+              </div>
+              <div className="flex shrink-0 flex-col items-end gap-2">
+                <span className={`rounded-full px-3 py-1 text-xs font-black uppercase ${STATUS_STYLE[preview.status] || "bg-slate-100 text-slate-700"}`}>
+                  {preview.status}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setPreview(null)}
+                  className="rounded-full bg-slate-900 px-4 py-2 text-sm font-bold text-white"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+            <p className="px-4 pt-3 text-xs text-slate-500">
+              {whenLabel(preview.scheduled_for)} · this is the saved draft, exactly as it would be sent. Opening it
+              sends nothing.
+            </p>
+            {/* Sandboxed: campaign HTML is arbitrary markup and must not be able
+                to touch the admin page it is being viewed inside. */}
+            <iframe
+              title="Email preview"
+              sandbox=""
+              className="mt-3 h-[65vh] w-full rounded-b-2xl border-0 bg-white"
+              srcDoc={`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#1f2937;margin:0;padding:20px;max-width:600px}img{max-width:100%;height:auto}a{color:#0056fd}</style></head><body>${preview.html}</body></html>`}
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
