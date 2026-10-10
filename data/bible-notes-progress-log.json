@@ -59662,6 +59662,59 @@
           "at": "2026-10-10T17:08:27Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 7,
+      "startedAt": "2026-10-10T17:45:57Z",
+      "finishedAt": "2026-10-10T18:04:18Z",
+      "durationMinutes": 18,
+      "sections": 11,
+      "cards": 50,
+      "verses": 53,
+      "notes": "New chapter, forward progress (priority queue and style redo backlog both empty). Jesus at the feast of tabernacles, his brothers' unbelief, teaching in the temple, the rivers of living water discourse, the crowd divided over his identity, Nicodemus's first public pushback.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-10-10T17:46:53Z"
+        },
+        {
+          "name": "target_chapter_determined_John_7_new_chapter",
+          "at": "2026-10-10T17:47:16Z"
+        },
+        {
+          "name": "kjv_text_fetched_53_verses",
+          "at": "2026-10-10T17:47:52Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-10-10T17:49:30Z"
+        },
+        {
+          "name": "source_file_written_11_sections_50_cards",
+          "at": "2026-10-10T17:59:16Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-10-10T17:59:20Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-10-10T17:59:44Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-10-10T17:59:44Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-10-10T18:03:48Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-10-10T18:04:18Z"
+        }
+      ]
     }
   ]
 }

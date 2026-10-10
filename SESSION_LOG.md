@@ -7391,3 +7391,7 @@ Next up: John 6
 ## 2026-10-10T17:08:27Z (hourly chapter notes run)
 Chapter: John 6 | Duration: 23 min | Sections: 14 | Cards: 76 | Status: pass
 Next up: John 7
+
+## 2026-10-10T18:04:18Z (hourly chapter notes run)
+Chapter: John 7 | Duration: 18 min | Sections: 11 | Cards: 50 | Status: pass
+Next up: John 8
