@@ -59768,6 +59768,59 @@
           "at": "2026-10-10T19:01:40Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 9,
+      "startedAt": "2026-10-10T19:46:11Z",
+      "finishedAt": "2026-10-10T19:58:39Z",
+      "durationMinutes": 12,
+      "sections": 9,
+      "cards": 41,
+      "verses": 41,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty (remaining: []), so this was normal forward progress after John 8, the latest entry in this log, which named John 9 as the next target directly. Confirmed no lib/johnNineSource.ts existed yet (John 1-8 all have dedicated per-chapter files, John 9-21 still read from the legacy lib/johnOneToTwentyOnePersonalNotes.ts bulk file). npm install ran clean (624 packages, fresh clone). Fetched real KJV text for John 9 (41 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. John 9 is the healing of the man born blind and its aftermath: verses 1-5 open with the disciples wrongly assuming the blindness was punishment for sin, Jesus rejecting that and naming the works of God and his own identity as the light of the world instead; verses 6-9 cover the healing itself, clay made from spit and dust, sent to wash in the pool of Siloam (whose name means Sent), and the neighbours arguing over whether this is really the same beggar; verses 10-12 are the man giving his first, bare account, not yet knowing where Jesus went; verses 13-17 bring him before the Pharisees, where the sabbath healing splits them into a real division; verses 18-23 move to the parents, who confirm only the safe facts and push the question back to their son out of fear of being put out of the synagogue; verses 24-29 are the second, harder interrogation, where the man refuses to be talked out of the one fact he knows for certain; verses 30-34 are his boldest speech, turning the Pharisees own logic back on them before they cast him out; verses 35-38 are Jesus seeking the man out personally after his expulsion, leading to the full confession Lord, I believe, and he worshipped him; and verses 39-41 close on Jesus naming the deeper judgment at work, that the ones who claim to already see are the ones left spiritually blind. Chunked into 9 sections (1-5, 6-9, 10-12, 13-17, 18-23, 24-29, 30-34, 35-38, 39-41), all 41 verses covered with no gaps or overlaps, each section within the 3-9 verse wiring range. Density exactly 1.0 cards per verse (41 verses, 41 cards), matching the density of the immediately preceding chapter John 8 (59 cards for 59 verses). scripts/check_bible_note_style.py found 1 problem on the first automated pass (one body line at 21 words), fixed by trimming the sentence, second run clean with 0 problems across all 41 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language using quotation marks rather than markdown bold to match the existing file convention (blind from his birth, manifest, Siloam, sabbath, prophet, synagogue, Moses disciples, marvellous, Son of God, worshipped, judgment), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet always landing on \u2794\ufe0f or \ud83d\udcd6, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 41 cards. One stacked-clause rather than construction was caught and rewritten during drafting before saving. Parser check passed exactly via getBibleReaderStudySections('john', 9) (9/9 sections, verse ranges 1-5/6-9/10-12/13-17/18-23/24-29/30-34/35-38/39-41 with no gaps, 41 total cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/johnNineSource.ts right after the John 8 import, preserveExactPhraseBodies john range extended from chapters 1-8 to 1-9, new function applyPersonalJohnNineStudySections added and called right after applyPersonalJohnEightStudySections(), correctly overriding the legacy JOHN_1_21_PERSONAL_SECTIONS bulk file for chapter 9 only, chapters 10-21 of that legacy file left untouched. Next forward-progress target is John 10.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-10T19:46:50Z"
+        },
+        {
+          "name": "target chapter determined: John 9 (normal forward progress, style-redo backlog empty, confirmed no existing lib/johnNineSource.ts)",
+          "at": "2026-10-10T19:46:50Z"
+        },
+        {
+          "name": "KJV text fetched (John 9, 41 verses, aruljohn mirror)",
+          "at": "2026-10-10T19:46:50Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-10T19:46:50Z"
+        },
+        {
+          "name": "source file written: lib/johnNineSource.ts (41 cards, 9 sections)",
+          "at": "2026-10-10T19:56:53Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 automated fix: trimmed a 21 word body line)",
+          "at": "2026-10-10T19:56:53Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies 1-9, applyPersonalJohnNineStudySections)",
+          "at": "2026-10-10T19:56:53Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 41 cards, text verbatim)",
+          "at": "2026-10-10T19:56:53Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-10T19:56:53Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-10T19:58:39Z"
+        }
+      ]
     }
   ]
 }
