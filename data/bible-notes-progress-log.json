@@ -59609,6 +59609,59 @@
           "at": "2026-10-10T16:02:38Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 6,
+      "startedAt": "2026-10-10T16:45:49Z",
+      "finishedAt": "2026-10-10T17:08:27Z",
+      "durationMinutes": 23,
+      "sections": 14,
+      "cards": 76,
+      "verses": 71,
+      "notes": "New chapter, forward progress (priority queue and style redo backlog both empty). Bread of life discourse, walking on water, feeding of the five thousand, Peter confession, Judas foreshadowing.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-10-10T16:46:38Z"
+        },
+        {
+          "name": "target_chapter_determined_John_6_new_chapter",
+          "at": "2026-10-10T16:46:38Z"
+        },
+        {
+          "name": "kjv_text_fetched_71_verses",
+          "at": "2026-10-10T16:47:05Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-10-10T16:47:05Z"
+        },
+        {
+          "name": "source_file_written_14_sections_76_cards",
+          "at": "2026-10-10T17:04:00Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-10-10T17:04:00Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-10-10T17:04:54Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-10-10T17:07:39Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-10-10T17:07:39Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-10-10T17:08:27Z"
+        }
+      ]
     }
   ]
 }
