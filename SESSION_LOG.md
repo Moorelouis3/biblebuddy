@@ -7403,3 +7403,7 @@ Next up: John 9
 ## 2026-10-10T19:58:39Z (hourly chapter notes run)
 Chapter: John 9 | Duration: 12 min | Sections: 9 | Cards: 41 | Status: pass
 Next up: John 10
+
+## 2026-10-10T21:01:54Z (hourly chapter notes run)
+Chapter: John 10 | Duration: 14 min | Sections: 10 | Cards: 53 | Status: pass
+Next up: John 11

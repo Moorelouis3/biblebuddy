@@ -59821,6 +59821,59 @@
           "at": "2026-10-10T19:58:39Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 10,
+      "startedAt": "2026-10-10T20:46:08Z",
+      "finishedAt": "2026-10-10T21:00:09Z",
+      "durationMinutes": 14,
+      "sections": 10,
+      "cards": 53,
+      "verses": 42,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 36s). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in both), so this was normal forward progress after John 9, the latest entry in this log. Confirmed no lib/johnTenSource.ts existed yet, only the legacy bulk file lib/johnOneToTwentyOnePersonalNotes.ts covering chapter 10. Fetched real KJV text for John 10 (42 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. John 10 covers the sheepfold parable of the thief versus the true shepherd who enters by the door, the porter, and the sheep knowing his voice (1-6); Jesus naming himself the door of the sheep and his purpose that they might have life more abundantly (7-10); the good shepherd who lays down his life, contrasted with the fleeing hireling, and the mutual knowledge between Jesus and the Father (11-15); the other sheep not of this fold pointing to the Gentiles, one fold and one shepherd, and his power to lay down his life and take it again (16-18); the division this teaching causes, some calling him demon possessed, others pointing to the healing of the blind man from the chapter before (19-21); the feast of the dedication (Hanukkah) at Solomon's porch and the demand to be told plainly if he is the Christ (22-26); the unbreakable security of the flock in the Father's and the Son's hand, climaxing in I and my Father are one (27-30); the attempt to stone him for blasphemy and his scripture based defense from Psalm 82 (31-33); his restated claim to be the Son of God and his appeal to his works as evidence (34-38); and his escape beyond Jordan to the place of John's first baptism, closing on many believing there (39-42). Chunked into 10 sections (1-6, 7-10, 11-15, 16-18, 19-21, 22-26, 27-30, 31-33, 34-38, 39-42), all 42 verses covered with no gaps or overlaps, each within the app's section verse limit. Density about 1.26 cards per verse (42 verses, 53 cards), in line with recent John chapters (John 6 about 1.07, John 8 about 1.0, John 9 about 1.0). scripts/check_bible_note_style.py found zero problems on the first automated pass: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using \ud83d\udcd6 or \u27a1\ufe0f. A manual section 13 eye check confirmed every card opens with one of the four approved moves (defining a word, correcting a misreading, identifying a vague reference, or stating the point flat), defines its key terms in plain language (sheepfold, porter, hireling, parable, shewed, sanctified, pluck, the feast of the dedication as Hanukkah, Solomon's porch, Psalm 82's gods language), never recaps the verse as the teaching, and closes on meaning rather than mechanics, with no duplicates across all 53 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections('john', 10): 10/10 sections, verse ranges 1-6/7-10/11-15/16-18/19-21/22-26/27-30/31-33/34-38/39-42 with no gaps, 53 total cards rendering verbatim, no duplication, no throw; getBibleReaderStudySections('john', 11) through 21 remain untouched, still reading from the legacy bulk file. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/johnTenSource.ts right after the John 9 import, preserveExactPhraseBodies john range extended from chapters 1-9 to 1-10, new function applyPersonalJohnTenStudySections added and called right after applyPersonalJohnNineStudySections(), correctly overriding the legacy JOHN_1_21_PERSONAL_SECTIONS bulk file for chapter 10 only, chapters 11-21 of that legacy file left untouched. Next forward-progress target is John 11.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-10T20:46:45Z"
+        },
+        {
+          "name": "target chapter determined: John 10 (normal forward progress, priority queue and style-redo backlog both empty, confirmed no existing lib/johnTenSource.ts)",
+          "at": "2026-10-10T20:47:09Z"
+        },
+        {
+          "name": "KJV text fetched (John 10, 42 verses, aruljohn mirror)",
+          "at": "2026-10-10T20:47:09Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-10T20:47:54Z"
+        },
+        {
+          "name": "source file written: lib/johnTenSource.ts (53 cards, 10 sections)",
+          "at": "2026-10-10T20:57:07Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-10T20:57:07Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies 1-10, applyPersonalJohnTenStudySections)",
+          "at": "2026-10-10T20:57:52Z"
+        },
+        {
+          "name": "parser check passed (10/10 sections, 53 cards, text verbatim)",
+          "at": "2026-10-10T20:57:52Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-10T21:00:09Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-10T21:01:00Z"
+        }
+      ]
     }
   ]
 }
