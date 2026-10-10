@@ -59442,6 +59442,59 @@
           "at": "2026-10-10T13:01:03Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 3,
+      "startedAt": "2026-10-10T13:46:00Z",
+      "finishedAt": "2026-10-10T14:05:14Z",
+      "durationMinutes": 19.2,
+      "sections": 8,
+      "cards": 41,
+      "verses": 36,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 49s). Priority queue (data/bible-notes-priority-queue.json) does not exist in this repo (only the style-redo backlog does); style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty (remaining: []), so this was normal forward progress. Determined the next chapter by reading data/bible-notes-progress-log.json (last entry John 2) and then running a programmatic scan of lib/ against the canonical book/chapter order to confirm John 3 was the first chapter with no existing dedicated source file (only the legacy bulk file lib/johnOneToTwentyOnePersonalNotes.ts covers it). Fetched real KJV text for John 3 (36 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers Nicodemus the Pharisee and ruler of the Jews coming to Jesus by night and being told except a man be born again he cannot see the kingdom of God (1-3); born of water and of the Spirit, and the wind blowing where it listeth as the analogy for the Spirit's unseen work (4-8); Jesus rebuking Nicodemus as a master of Israel who should already know this, his own firsthand heavenly testimony, and the bronze serpent in the wilderness as the pattern for the Son of man being lifted up (9-15); for God so loved the world, the only begotten Son, and God sending the Son to save rather than condemn the world (16-18); light come into the world and men loving darkness rather than light (19-21); John the Baptist baptizing in Aenon near Salim, the dispute about purifying, and John's own disciples reporting that all men now come to Jesus (22-26); John's answer that a man can receive nothing except it be given from heaven, the friend of the bridegroom whose joy is fulfilled, and he must increase but I must decrease (27-30); and the closing verses on the one who cometh from above being above all, the Spirit given to the Son without measure, and he that believeth not the Son shall not see life but the wrath of God abideth on him (31-36). Split into 8 sections (1-3, 4-8, 9-15, 16-18, 19-21, 22-26, 27-30, 31-36), all 36 verses covered with no gaps or overlaps, each within the app's enforceStudySectionVerseLimit(8) cap. An earlier draft had one 9 verse section (22-30), which was caught before wiring: that limit silently splits any section over 8 verses into an auto generated Part 1 / Part 2 pair that duplicates every card into both halves instead of filtering them, confirmed by a direct getBibleReaderStudySections call that showed 50 cards instead of 41 before the fix. Fixed by hand splitting that section into 22-26 and 27-30 with its 9 cards divided correctly between them, re-verified with the same call afterward showing the correct 41 total with no duplication. Density about 1.14 cards per verse (36 verses, 41 cards), in the same range as the genesisThirtyOneSource.ts, johnOneSource.ts, and johnTwoSource.ts reference implementations. scripts/check_bible_note_style.py came back clean on the first pass, 0 problems across all 41 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines key terms in plain language (born again/from above, master of Israel, Aenon/springs, purifying, only begotten, whosoever, wrath), supplies real grounding (the Sanhedrin and the risk a ruler took visiting by night, the Numbers 21 bronze serpent healing, the ancient Jewish wedding custom of the friend of the bridegroom, what a seal proved in the ancient world, a prophet receiving the Spirit only in portion versus Jesus receiving it without measure), never recaps the verse as the teaching, and closes on meaning rather than mechanics, with titles as exact or near exact contiguous KJV phrases in title case and no duplicates across all 41 cards. A pass for stacked clauses the mechanical checker cannot catch (the words while and rather than inside body prose, and comma spliced independent clauses) found and fixed three lines before the automated pass. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"john\", 3): 8/8 sections, verse ranges 1-3/4-8/9-15/16-18/19-21/22-26/27-30/31-36 with no gaps, 41 total cards rendering verbatim, no duplication, no throw. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/johnThreeSource.ts right after the lib/johnTwoSource.ts import, the john condition in preserveExactPhraseBodies widened from chapters 1-2 to chapters 1-3, new applyPersonalJohnThreeStudySections() function added calling replaceStudySectionsForBookRange(\"john\", 3, 3, JOHN_THREE_PERSONAL_SECTIONS), invoked right after applyPersonalJohnTwoStudySections(). Logged in docs/BIBLE_BUDDY_NOTES_PROGRESS.md (running totals updated) and in SESSION_LOG.md as an hourly chapter notes run. This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is John 4, which still carries only the legacy lib/johnOneToTwentyOnePersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, about 49s)",
+          "at": "2026-10-10T13:47:01Z"
+        },
+        {
+          "name": "target chapter determined: John 3 (new chapter, normal forward progress; style-redo backlog empty, progress log's latest entry was John 2, confirmed by a programmatic scan of lib/ against canonical book/chapter order)",
+          "at": "2026-10-10T13:48:53Z"
+        },
+        {
+          "name": "KJV text fetched for John 3 (raw.githubusercontent.com/aruljohn/Bible-kjv, John.json, 36 verses)",
+          "at": "2026-10-10T13:49:30Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md), SKILL.md technical pipeline reviewed, reference implementations reviewed (lib/genesisThirtyOneSource.ts, lib/johnTwoSource.ts)",
+          "at": "2026-10-10T13:55:00Z"
+        },
+        {
+          "name": "source file written: lib/johnThreeSource.ts (first draft, 7 sections including one 9 verse section)",
+          "at": "2026-10-10T14:00:00Z"
+        },
+        {
+          "name": "style checker clean on first pass (scripts/check_bible_note_style.py, 41 cards, 0 problems)",
+          "at": "2026-10-10T14:00:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies extended to john chapter 3, applyPersonalJohnThreeStudySections() added and invoked after applyPersonalJohnTwoStudySections()",
+          "at": "2026-10-10T14:01:30Z"
+        },
+        {
+          "name": "parser check via getBibleReaderStudySections caught the enforceStudySectionVerseLimit(8) auto split bug on the 9 verse section (50 cards instead of 41, duplicated), fixed by hand splitting into two sections (22-26 and 27-30), re-verified clean at 8 sections / 41 cards with no duplication",
+          "at": "2026-10-10T14:03:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, exit code 0",
+          "at": "2026-10-10T14:04:10Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md",
+          "at": "2026-10-10T14:05:14Z"
+        }
+      ]
     }
   ]
 }
