@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-13-explained",
+    title: "Exodus 13 Explained: Firstborn, Bread, and the Pillar of Fire",
+    description:
+      "Exodus 13 explained verse by verse: the firstborn claimed for God, the first Passover memorial, Joseph bones carried out, and the pillar of fire.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-13-explained",
+    publishedAt: "2026-10-10",
+    readTime: "14 min read",
+    image: "/blog-banners/exodus-13-explained.jpg",
+    groupPost: {
+      title: "Exodus 13 Explained 📖",
+      content:
+        "Egypt is behind them. The sea is still ahead.\n\n📌 God claims every firstborn the same morning Israel walks free.\n\n📖 A feast is built just to make a child ask why.\n📖 Moses carries Joseph's old promise out of Egypt.\n📖 A pillar of fire never once left Israel in the dark.\n\nNew article on:\n🟢 why a **donkey's** firstborn gets a different rule\n🟢 why God skips the **fastest road** to Canaan\n🟢 what the **pillar of fire** still means today\n\nDo you have a promise you are still waiting to see kept? 🙏",
+    },
+  },
+  {
     slug: "exodus-12-explained",
     title: "Exodus 12 Explained: The Passover Lamb and the Night Egypt Let Go",
     description:
