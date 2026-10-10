@@ -7347,3 +7347,7 @@ reading the test. Systeme still sends the welcome email and has NOT been cut
 over - do that after the first SES broadcast lands. No campaign has been sent
 to the list yet; content is Louis's call.
 Next: write the first broadcast, send it slow (--rate 2 --max-per-run 100).
+
+## 2026-10-10T06:58:57Z (hourly chapter notes run)
+Chapter: Luke 20 | Duration: 13 min | Sections: 8 | Cards: 55 | Status: pass
+Next up: Luke 21

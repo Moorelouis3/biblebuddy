@@ -59063,6 +59063,59 @@
           "at": "2026-10-10T06:01:24Z"
         }
       ]
+    },
+    {
+      "book": "Luke",
+      "chapter": 20,
+      "startedAt": "2026-10-10T06:45:48Z",
+      "finishedAt": "2026-10-10T06:58:57Z",
+      "durationMinutes": 13,
+      "sections": 8,
+      "cards": 55,
+      "verses": 47,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (624 packages, fresh clone, about 29s). Priority queue (data/bible-notes-priority-queue.json, not present this run so treated as empty) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Luke 19, the latest entry in this log. Confirmed no lib/lukeTwentySource.ts existed yet, only the legacy bulk file lib/lukeOneToTwentyOnePersonalNotes.ts covering chapter 20. Fetched real KJV text for Luke 20 (47 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the chief priests, scribes, and elders challenging Jesus's authority and His counter question about John's baptism (1-8); the parable of the wicked husbandmen who beat three servants, kill the beloved son and heir, and are answered with the crowd's own prediction of judgment and give the vineyard to others, ending in God forbid (9-16); the stone which the builders rejected becoming the head of the corner, and the leaders seeking to arrest Him but fearing the people (17-19); the spies sent to trap Him over tribute to Caesar, answered with Render unto Caesar the things which be Caesar's, and unto God the things which be God's (20-26); the Sadducees' seven brothers riddle meant to mock the resurrection (27-33); Jesus's answer that the children of the resurrection neither marry nor die and are equal unto the angels, with the burning bush argument that God is not a God of the dead but of the living, met with the scribes' own praise (34-40); Jesus's question of how David's son can also be David's Lord, quoting Psalm 110 (41-44); and the closing warning to beware of the scribes who love long robes, chief seats, and long prayers for show while they devour widows' houses (45-47). Split into 8 sections (1-8, 9-16, 17-19, 20-26, 27-33, 34-40, 41-44, 45-47), all 47 verses covered with no gaps or overlaps, each within the app's enforceStudySectionVerseLimit(8) cap. Density about 1.17 cards per verse (47 verses, 55 cards), in the same range as recent Luke chapters (Luke 19 was 1.06, Luke 18 was 1.14). scripts/check_bible_note_style.py found 6 problems on the first automated pass: one last bullet not ending on 📖/➡️, two bullets one word over the 8 word cap, one card with only 3 bullets because a keycap digit emoji (7️⃣) was not recognized by the checker's emoji regex, and one card with an inline list that produced 7 detected bullets with repeated emoji because the mechanical checker (unlike the hand written style spec's one narrative example) does not special case inline lists; all five fixed (swapped the keycap emoji for 🔢, rewrote the inline list as three plain prose lines followed by the normal 4 bullets, matching the actual pattern already used throughout the proven reference file lib/genesisThirtyOneSource.ts, which contains no inline lists), second run clean with 0 problems across all 55 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (husbandmen, beloved son, superscription, tribute, Sadducees, seed, shew, devour, damnation), corrects the misreading of stoning as exaggeration rather than a real first century danger and of equal unto the angels as literal transformation, never recaps the verse as the teaching, and closes on meaning rather than mechanics, with titles as exact or near exact contiguous KJV phrases in title case and no duplicates across all 55 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"luke\", 20): 8/8 sections, verse ranges 1-8/9-16/17-19/20-26/27-33/34-40/41-44/45-47 with no gaps, 55 total cards rendering verbatim, no duplication, no throw. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/lukeTwentySource.ts, the luke condition in preserveExactPhraseBodies widened from chapters 1-19 to include chapter 20, new applyPersonalLukeTwentyStudySections() function added calling replaceStudySectionsForBookRange(\"luke\", 20, 20, LUKE_TWENTY_PERSONAL_SECTIONS), invoked right after applyPersonalLukeNineteenStudySections() and before applyPersonalLukeTwentyTwoThroughTwentyFourStudySections(). Logged in data/bible-notes-progress-log.json with step timestamps, and in SESSION_LOG.md as an hourly chapter notes run. This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Luke 21, which still carries only the legacy lukeOneToTwentyOnePersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-10T06:45:48Z"
+        },
+        {
+          "name": "target chapter determined: Luke 20 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-10T06:46:38Z"
+        },
+        {
+          "name": "KJV text fetched (Luke 20, 47 verses, aruljohn mirror)",
+          "at": "2026-10-10T06:46:52Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-10T06:47:40Z"
+        },
+        {
+          "name": "source file written: lib/lukeTwentySource.ts (8 sections, 55 cards)",
+          "at": "2026-10-10T06:55:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 6 problems found and fixed across two passes, 0 problems on final pass across 55 cards)",
+          "at": "2026-10-10T06:57:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 20, applyPersonalLukeTwentyStudySections call added)",
+          "at": "2026-10-10T06:57:45Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, verses 1-47 fully covered, no gaps, 55 total cards, no throw)",
+          "at": "2026-10-10T06:58:05Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-10T06:58:15Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md totals + row, data/bible-notes-progress-log.json entry)",
+          "at": "2026-10-10T06:58:57Z"
+        }
+      ]
     }
   ]
 }
