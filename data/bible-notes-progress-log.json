@@ -59927,6 +59927,59 @@
           "at": "2026-10-10T21:59:25Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 12,
+      "startedAt": "2026-10-10T22:45:43Z",
+      "finishedAt": "2026-10-10T23:00:55Z",
+      "durationMinutes": 15,
+      "sections": 8,
+      "cards": 68,
+      "verses": 50,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 34s). Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in both), so this was normal forward progress after John 11, the latest entry in this log. Session started with local git in a detached HEAD state; git fetch origin main plus git checkout main and git reset --hard origin/main landed cleanly on the same commit as origin, nothing lost, the same recurring environment ref anomaly logged in many prior runs. Confirmed no lib/johnTwelveSource.ts existed yet. Fetched real KJV text for John 12 (50 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. John 12 covers Mary's anointing of Jesus at Bethany, the plot against Lazarus, the triumphal entry into Jerusalem, the Greeks seeking Jesus and the corn of wheat teaching, Jesus's troubled soul and the voice from heaven, the call to walk while there is light, Isaiah's prophecy of unbelief, and Jesus's final public appeal, chunked into 8 sections following the natural scene breaks: 1-8 a costly anointing, 9-11 a plot against Lazarus, 12-19 the king enters Jerusalem, 20-26 certain Greeks seek Jesus, 27-33 now is my soul troubled, 34-36 walk while ye have the light, 37-43 though they believed not, 44-50 I am come a light into the world. Density about 1.36 cards per verse (50 verses, 68 cards), in line with the recent John chapters (John 9 at 1.0, John 10 at 1.26, John 11 at 1.07). scripts/check_bible_note_style.py found 0 problems on the first automated pass across all 68 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves (define the word, correct the misreading, identify the vague reference, state the point flat), defines its key terms in plain language (spikenard, pence/denarius, Hosanna, furlong style measures carried from context, Esaias as the Greek form of Isaiah, put out of the synagogue, prince of this world), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet landing on 📖 or ➡️, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 68 cards. The two KJV phrases containing the word while (Yet A Little While Is The Light With You, Walk While Ye Have The Light) appear only as verbatim lifted card titles, never inside constructed body prose, so the spec's stacked clause rule on while is respected throughout. Parser check passed exactly via getBibleReaderStudySections('john', 12) (8/8 sections, verse ranges 1-8/9-11/12-19/20-26/27-33/34-36/37-43/44-50 with no gaps, 68 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/johnTwelveSource.ts, preserveExactPhraseBodies john range extended from chapters 1-11 to 1-12, new function applyPersonalJohnTwelveStudySections added and called right after applyPersonalJohnElevenStudySections(), correctly overriding the legacy bulk file for chapter 12 only. Next forward-progress target is John 13.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-10T22:46:41Z"
+        },
+        {
+          "name": "target chapter determined: John 12 (normal forward progress, priority queue and style-redo backlog both empty, new chapter)",
+          "at": "2026-10-10T22:47:12Z"
+        },
+        {
+          "name": "KJV text fetched (John 12, 50 verses, aruljohn mirror)",
+          "at": "2026-10-10T22:46:48Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full, reference files lib/johnElevenSource.ts and scripts/check_bible_note_style.py reviewed",
+          "at": "2026-10-10T22:47:47Z"
+        },
+        {
+          "name": "source file written: lib/johnTwelveSource.ts (8 sections, 68 cards)",
+          "at": "2026-10-10T22:58:30Z"
+        },
+        {
+          "name": "style checker clean (python3 scripts/check_bible_note_style.py), 0 problems on first pass across all 68 cards",
+          "at": "2026-10-10T22:58:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies john range extended to 12, applyPersonalJohnTwelveStudySections added and called)",
+          "at": "2026-10-10T22:59:05Z"
+        },
+        {
+          "name": "parser check passed via getBibleReaderStudySections('john', 12): 8/8 sections, verse ranges 1-8 through 44-50 with no gaps, 68 total cards",
+          "at": "2026-10-10T22:59:40Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-10-10T23:00:44Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-10T23:00:55Z"
+        }
+      ]
     }
   ]
 }

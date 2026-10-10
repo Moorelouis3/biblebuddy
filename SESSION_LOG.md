@@ -7411,3 +7411,7 @@ Next up: John 11
 ## 2026-10-10T22:00:44Z (hourly chapter notes run)
 Chapter: John 11 | Duration: 14 min | Sections: 13 | Cards: 61 | Status: pass
 Next up: John 12
+
+## 2026-10-10T23:00:55Z (hourly chapter notes run)
+Chapter: John 12 | Duration: 15 min | Sections: 8 | Cards: 68 | Status: pass
+Next up: John 13
