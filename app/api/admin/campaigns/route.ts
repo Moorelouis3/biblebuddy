@@ -2,7 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { sendEmail, sesSendingEnabled } from "@/lib/email/sesSender";
 import { countEligible } from "@/lib/email/sendCampaign";
-import { unsubscribeUrl } from "@/lib/blogBroadcast";
+// NOT lib/blogBroadcast: that one signs with CRON_SECRET and points at
+// /unsubscribe?email=..., which /api/email/unsubscribe cannot validate - it
+// reads ?e=... and verifies with EMAIL_LINK_SECRET. A test send was going out
+// with an unsubscribe link that could never work.
+import { unsubscribeUrl } from "@/lib/email/unsubscribeLink";
 import { ENGAGEMENT_GROUPS, isEngagementGroup } from "@/lib/email/engagementGroups";
 
 export const runtime = "nodejs";
