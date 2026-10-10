@@ -3574,10 +3574,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                             {/* Louis, 2026-10-10: the broadcast screen existed
                                 but there was no way into it from the app. */}
                             <Link
-                              href="/admin/email-broadcasts"
+                              href="/admin/campaigns"
                               onClick={() => setIsProfileMenuOpen(false)}
                               className={`block px-4 py-2 text-sm ${
-                                pathname?.startsWith("/admin/email-broadcasts")
+                                pathname?.startsWith("/admin/campaigns") || pathname?.startsWith("/admin/email-broadcasts")
                                   ? "bg-sky-100 text-black font-medium"
                                   : "text-gray-700 hover:bg-gray-100"
                               }`}
