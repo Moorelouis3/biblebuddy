@@ -59715,6 +59715,59 @@
           "at": "2026-10-10T18:04:18Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 8,
+      "startedAt": "2026-10-10T18:46:07Z",
+      "finishedAt": "2026-10-10T19:01:40Z",
+      "durationMinutes": 16,
+      "sections": 11,
+      "cards": 59,
+      "verses": 59,
+      "notes": "New chapter, forward progress (priority queue and style redo backlog both empty). The woman caught in adultery, the light of the world and the testimony of two witnesses, the warning that they will die in their sins, the truth that makes free versus the servant of sin, Abraham's seed versus Abraham's children, of your father the devil, the Samaritan insult, and the before Abraham was I am declaration ending in the attempted stoning.",
+      "steps": [
+        {
+          "name": "npm_install_done",
+          "at": "2026-10-10T18:46:45Z"
+        },
+        {
+          "name": "target_chapter_determined_John_8_new_chapter",
+          "at": "2026-10-10T18:47:30Z"
+        },
+        {
+          "name": "kjv_text_fetched_59_verses",
+          "at": "2026-10-10T18:49:00Z"
+        },
+        {
+          "name": "style_spec_read",
+          "at": "2026-10-10T18:50:30Z"
+        },
+        {
+          "name": "source_file_written_11_sections_59_cards",
+          "at": "2026-10-10T18:56:30Z"
+        },
+        {
+          "name": "style_checker_clean",
+          "at": "2026-10-10T18:56:45Z"
+        },
+        {
+          "name": "wired_into_reader",
+          "at": "2026-10-10T18:57:16Z"
+        },
+        {
+          "name": "parser_check_passed",
+          "at": "2026-10-10T18:57:45Z"
+        },
+        {
+          "name": "tsc_clean",
+          "at": "2026-10-10T18:58:10Z"
+        },
+        {
+          "name": "progress_files_logged",
+          "at": "2026-10-10T19:01:40Z"
+        }
+      ]
     }
   ]
 }
