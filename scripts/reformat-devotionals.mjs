@@ -15,7 +15,12 @@ import Anthropic from "@anthropic-ai/sdk";
 import { createClient } from "@supabase/supabase-js";
 
 const SUPABASE_URL = "https://dntaonyrfdzedukvwcwk.supabase.co";
-const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRudGFvbnlyZmR6ZWR1a3Z3Y3drIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NDI1MzQ2NCwiZXhwIjoyMDc5ODI5NDY0fQ._0wEiXC1VkzjqWgos611n8CTy96GwzDQiKzhQO56sAE";
+const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+if (!SUPABASE_SERVICE_KEY) {
+  // Was hardcoded here until 2026-10-09, in a public repo. The key it held is
+  // revoked. Never put a literal back - read it from .env.local.
+  throw new Error("SUPABASE_SERVICE_ROLE_KEY missing from the environment (.env.local).");
+}
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const FILTER_TITLE = process.env.DEVOTIONAL_TITLE || null;
 

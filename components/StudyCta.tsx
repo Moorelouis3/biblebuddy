@@ -56,7 +56,7 @@ export default function StudyCta({
       </Link>
 
       <p className="mt-3 text-xs font-medium text-gray-500">
-        No account needed. Bible Buddy is completely free.
+        A free account is all it takes. Bible Buddy is completely free.
       </p>
     </aside>
   );

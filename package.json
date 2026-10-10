@@ -44,7 +44,10 @@
     "repair:lifetime-customers": "tsx scripts/repair-lifetime-customers.ts",
     "start": "next start",
     "lint": "eslint",
-    "pending": "node scripts/pending-deploy.mjs"
+    "pending": "node scripts/pending-deploy.mjs",
+    "signups": "node scripts/signup-report.mjs",
+    "campaign": "node scripts/campaign.mjs",
+    "backfill-subscribers": "node scripts/backfill-subscribers.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",

@@ -2008,7 +2008,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
               Start Studying Now
               <LandingLineIcon name="arrow" light />
             </StartStudyingButton>
-            <p className="mt-3 text-xs font-bold text-[#6d7789]">No account needed. Completely free.</p>
+            <p className="mt-3 text-xs font-bold text-[#6d7789]">Free account. No credit card.</p>
           </div>
         </section>
 
@@ -2057,7 +2057,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
               Start Studying Now
               <LandingLineIcon name="arrow" light />
             </StartStudyingButton>
-            <p className="mt-3 text-xs font-bold text-[#6d7789]">No account needed. Completely free.</p>
+            <p className="mt-3 text-xs font-bold text-[#6d7789]">Free account. No credit card.</p>
           </div>
         </section>
 

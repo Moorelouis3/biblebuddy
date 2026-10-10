@@ -172,7 +172,7 @@ export default function StartPage() {
       </div>
 
       <p className="mt-8 text-center text-xs font-bold text-gray-500">
-        Bible Buddy is completely free. No account needed to start.
+        Bible Buddy is completely free. All it takes is a free account.
       </p>
     </div>
   );

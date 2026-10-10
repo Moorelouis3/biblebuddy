@@ -7284,3 +7284,66 @@ Next up: Luke 19
 ## 2026-10-10T06:02:10Z (hourly chapter notes run)
 Chapter: Luke 19 | Duration: 15 min | Sections: 9 | Cards: 51 | Status: pass
 Next up: Luke 20
+
+## 2026-10-08 (night)
+Time spent: ~3h
+Done: Reworked the devotional invitation on the 31 Proverbs chapter posts.
+Three asks now, early / middle / end. The like/comment/share breaker is gone
+from the top and nothing replaces it - a banner there stacked straight onto
+the post's own hero image. Two study banners sit inside the article, spaced by
+word count and able to land inside a section card (the verse-by-verse card
+alone is ~2,000 words, which is why the old two promos could not appear before
+~2,400 words). Placement is a two-pass plan: survey every legal reading break,
+then snap each banner to the break nearest its target, so no chapter needs
+hand-tuning. The end-of-post card now has a Wisdom of Proverbs version on
+these posts instead of the generic Bible Buddy one - same chrome, Proverbs
+copy, button to the study - and that card is the closing ask, so the third
+banner was dropped. Banner art is a pool in ProverbsStudyPromo.tsx with the
+rules for adding more written above it. Non-Proverbs posts are untouched,
+verified against Genesis 12 and a Bible in One Year day.
+Not live yet: nothing committed by me - the work is on disk, uncommitted.
+Step 3 under the deploy test (a better page, nobody is broken), so it waits
+for the next scheduled build once committed.
+Still open: Louis making more Proverbs banner images; only two exist, which is
+exactly enough for the two in-article slots, so a third is optional now.
+Noticed, not fixed: the generic end card still says "No account needed to
+start", which stopped being true when guest accounts were turned off on
+2026-10-06. It is on every non-Proverbs post. Out of scope here, worth a
+separate pass.
+Heads up: another session stash/pulled this working tree mid-task and left
+this file conflicted and its dev server serving a corrupt bundle. Resolved the
+conflict by keeping both entries; verified against a separate production
+build on port 3100 instead.
+Next: commit once Louis has looked at it, then ride the next 10:00/18:00 deploy.
+
+## 2026-10-10 (night)
+Time spent: ~4h
+Done: Bible Buddy sends its own email now. Amazon SES is live (production
+access, 50k/day, Frankfurt), IAM sender created, nine env vars in Vercel, and
+a real test message landed in Louis's inbox. Bounces and complaints run
+SES -> SNS topic -> /api/webhooks/ses -> suppression list, subscription
+confirmed end to end.
+
+Found and fixed a real bug: nothing had EVER written to email_subscribers
+except the one-off Systeme import, so the list had fallen 852 accounts behind
+the app. Backfilled 625 (the other 229 had unsubscribed and were left off) and
+added a trigger on auth.users so every future signup joins automatically. The
+trigger swallows its own errors by design - a mailing list is never worth
+losing a signup over. Verified with a probe account. 4,571 -> 5,196.
+
+Broadcast sending moved off Resend (whose key was never set, and which looped
+over every recipient inside one request) onto sendCampaign + the batching
+cron: rate limited, suppression aware, resumable. Draft cron went from Tue+Fri
+to Tue/Thu/Sat. Added SES_REPLY_TO - mail goes out from a subdomain with no
+inbox, so replies were vanishing. Email dashboard added to the account menu;
+the page existed with no way to reach it.
+
+Also: Proverbs promos reworked to three per post (two banners + the end card),
+"No account needed" removed from five screens (untrue since guests went off),
+and a signup-wall report at npm run signups with a Wednesday check.
+Not live yet: nothing - this entry's commit is tagged [deploy].
+Still open: ImprovMX catch-all confirmed forwarding to Gmail, pending Louis
+reading the test. Systeme still sends the welcome email and has NOT been cut
+over - do that after the first SES broadcast lands. No campaign has been sent
+to the list yet; content is Louis's call.
+Next: write the first broadcast, send it slow (--rate 2 --max-per-run 100).

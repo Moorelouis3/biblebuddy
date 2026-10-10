@@ -53,6 +53,10 @@
       "schedule": "0 * * * *"
     },
     {
+      "path": "/api/cron/email-campaign-send",
+      "schedule": "*/10 * * * *"
+    },
+    {
       "path": "/api/cron/enroll-remaining-signups",
       "schedule": "0 13 * * *"
     },
@@ -74,7 +78,7 @@
     },
     {
       "path": "/api/cron/blog-broadcast-draft",
-      "schedule": "0 9 * * 2,5"
+      "schedule": "0 9 * * 2,4,6"
     },
     {
       "path": "/api/cron/email-stats-sync",

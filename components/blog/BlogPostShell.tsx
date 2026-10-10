@@ -9,6 +9,7 @@ import BibleYearNotesNav from "./BibleYearNotesNav";
 import BlogPostBreaker from "@/components/blog/BlogPostBreaker";
 import BlogPostBottom from "@/components/blog/BlogPostBottom";
 import BlogTopNav from "@/components/blog/BlogTopNav";
+import BlogViewTracker from "@/components/blog/BlogViewTracker";
 import PromoSlot from "@/components/blog/PromoSlot";
 import BibleYearPromo from "@/components/blog/BibleYearPromo";
 import ProverbsStudyPromo from "@/components/blog/ProverbsStudyPromo";
@@ -125,6 +126,165 @@ function isProverbsChapterPost(slug: string): boolean {
   return chapter >= 1 && chapter <= 31;
 }
 
+/**
+ * How many banners a Proverbs post carries, and where they go.
+ *
+ * Louis, 2026-10-08: "you gotta let the blog post cook some!!!" - so nothing
+ * sits above the intro. The hero image is already there; a banner under it
+ * stacks two pictures before a word has been read. The first invitation waits
+ * until the reader is a few hundred words in and has decided to stay.
+ * "i think this length post should have 3 promos" - at roughly one per 1,200
+ * words, a 3,000 to 3,900 word chapter post gets two inside the article plus
+ * the closing one, which is three.
+ */
+const WORDS_PER_INVITATION = 1200;
+const MIN_INVITATIONS = 2;
+const MAX_INVITATIONS = 5;
+// Where the first one aims for: far enough in that the post has started, early
+// enough that someone who gives up halfway has still been asked once.
+const FIRST_INVITATION_AFTER = 500;
+// A break this close to the end would read as part of the closing banner.
+const CLOSING_CLEARANCE = 800;
+// Two banners closer together than this crowd each other.
+const MIN_INVITATION_GAP = 500;
+
+/**
+ * Where an invitation is allowed to go, and whether one goes there.
+ *
+ * Promos used to be spaced by counting whole top-level nodes, which on a
+ * Proverbs post means counting seven section cards - and the verse-by-verse
+ * card is 2,000 words of them. Nothing could be placed inside it, so the
+ * first banner appeared two thirds of the way down the page.
+ *
+ * The legal breaks are decided by the caller: between two section cards, or in
+ * front of an H3 inside a card. Never mid paragraph, never between a heading
+ * and the text under it. The same walk runs twice. The first pass places
+ * nothing and just records how many words in each break falls; planInvitations
+ * then picks which of those breaks to use; the second pass inserts at them.
+ *
+ * Two passes rather than one greedy pass because greedy cannot look ahead: it
+ * has to commit at the first break past its word budget, and on a post whose
+ * next break is 600 words later it either lands badly or runs out of room and
+ * drops a banner entirely. Picking the break nearest each target gets the
+ * spacing right on every chapter without hand-tuning any of them.
+ */
+type InvitationBudget = {
+  // Count words that have just been emitted into the article.
+  spend: (node: ReactNode) => void;
+  // Offer a legal break. Returns a banner when one belongs here.
+  take: () => ReactNode | null;
+};
+
+// First pass: record where every legal break falls, insert nothing.
+function createBreakSurvey(startWords: number) {
+  let cursor = startWords;
+  const offsets: number[] = [];
+  return {
+    offsets,
+    spend(node: ReactNode) {
+      cursor += countWords(node);
+    },
+    take() {
+      offsets.push(cursor);
+      return null;
+    },
+  };
+}
+
+/**
+ * Choose which of the surveyed breaks get a banner.
+ *
+ * Targets are the first one at FIRST_INVITATION_AFTER and the rest spread
+ * evenly over what is left, so a three-banner post reads early, middle, end.
+ * Each target takes the nearest break that is not already spoken for, is not
+ * inside the closing banner's clearance, and is not crowding another banner.
+ */
+function planInvitations(offsets: number[], totalWords: number): Set<number> {
+  const chosen = new Set<number>();
+  if (offsets.length === 0) return chosen;
+
+  const count = Math.min(
+    MAX_INVITATIONS,
+    Math.max(MIN_INVITATIONS, Math.round(totalWords / WORDS_PER_INVITATION)),
+  );
+  // One of the asks is the end-of-post card, which is not a break in the
+  // article and is rendered separately.
+  const interior = count - 1;
+  const first = Math.min(FIRST_INVITATION_AFTER, totalWords);
+
+  for (let i = 0; i < interior; i++) {
+    const target = first + (i * (totalWords - first)) / interior;
+    let best = -1;
+    let bestDistance = Infinity;
+
+    for (let index = 0; index < offsets.length; index++) {
+      if (chosen.has(index)) continue;
+      const offset = offsets[index];
+      if (totalWords - offset < CLOSING_CLEARANCE) continue;
+      let crowded = false;
+      for (const taken of chosen) {
+        if (Math.abs(offset - offsets[taken]) < MIN_INVITATION_GAP) crowded = true;
+      }
+      if (crowded) continue;
+      const distance = Math.abs(offset - target);
+      if (distance < bestDistance) {
+        bestDistance = distance;
+        best = index;
+      }
+    }
+
+    if (best < 0) break;
+    chosen.add(best);
+  }
+
+  return chosen;
+}
+
+// Second pass: insert a banner at each break the plan picked. Words no longer
+// matter here, because the plan is already fixed and both passes walk the
+// article in the same order.
+function createInvitationPlacer(
+  chosen: Set<number>,
+  render: (slotIndex: number) => ReactNode,
+): InvitationBudget {
+  let breakIndex = -1;
+  let placed = 0;
+  return {
+    spend() {},
+    take() {
+      breakIndex += 1;
+      if (!chosen.has(breakIndex)) return null;
+      placed += 1;
+      // Slots count from 1 and pick the artwork, so no two banners in a post
+      // show the same picture while the pool is big enough.
+      return render(placed);
+    },
+  };
+}
+
+/**
+ * Weave invitations into one section card's body.
+ *
+ * Allowed in front of any H3 except the card's first block, so a subheading
+ * never gets separated from the text it introduces and an invitation never
+ * lands directly under the card's own H2 row. Paragraphs, verse quotes and
+ * lists are never broken into, because an H3 is the only break considered.
+ */
+function weaveSectionBody(body: ReactNode[], budget?: InvitationBudget): ReactNode[] {
+  if (!budget) return body;
+
+  const out: ReactNode[] = [];
+  body.forEach((node, i) => {
+    if (i > 0 && isValidElement(node) && node.type === "h3") {
+      const invitation = budget.take();
+      if (invitation) out.push(invitation);
+    }
+    out.push(node);
+    budget.spend(node);
+  });
+  return out;
+}
+
 // Weave PromoSlots into the article body: one after roughly every 1,000
 // words, plus one right before the FAQ section. Never inserts after the
 // final content block (so nothing stacks against the end CTA), and stops
@@ -136,15 +296,12 @@ function withPromoSlots(
 ): ReactNode[] {
   // Bible in One Year Study Notes get their own promo for that day instead of
   // the rotating generic banners (Louis, 2026-09-19). The Proverbs chapter
-  // posts do the same with the 31-day study (Louis, 2026-10-06): someone
-  // reading Proverbs 14 is already interested in the exact thing that study
-  // teaches, so a generic banner is the wrong offer on those pages.
+  // posts are not routed through here at all - they weave the 31-day study
+  // invitation themselves, on a tighter word budget that can reach inside a
+  // long section card. See weaveStudyInvitations below.
   const promo = (key: string, slotIndex: number) => {
     if (bibleYear) {
       return <BibleYearPromo key={key} day={bibleYear.day} reading={bibleYear.reading} postSlug={postSlug} slotIndex={slotIndex} />;
-    }
-    if (isProverbsChapterPost(postSlug)) {
-      return <ProverbsStudyPromo key={key} postSlug={postSlug} slotIndex={slotIndex} />;
     }
     return <PromoSlot key={key} postSlug={postSlug} slotIndex={slotIndex} />;
   };
@@ -160,7 +317,7 @@ function withPromoSlots(
     if (isFaqSection) {
       const previous = out[out.length - 1];
       const previousIsPromo = isValidElement(previous)
-        && (previous.type === PromoSlot || previous.type === BibleYearPromo || previous.type === ProverbsStudyPromo);
+        && (previous.type === PromoSlot || previous.type === BibleYearPromo);
       if (!previousIsPromo) {
         out.push(promo("promo-before-faq", slotIndex++));
       }
@@ -211,7 +368,7 @@ function leadingEmoji(text: string) {
  * and bounce is what actually costs rankings.) The card framing stays:
  * the heading row with its emoji, body below.
  */
-function toSectionCards(children: ReactNode): ReactNode[] {
+function toSectionCards(children: ReactNode, budget?: InvitationBudget): ReactNode[] {
   const out: ReactNode[] = [];
   let sectionIndex = 0;
   // The heading whose card is still collecting its body, for flat posts.
@@ -226,6 +383,9 @@ function toSectionCards(children: ReactNode): ReactNode[] {
     const label = cleanHeadingLabel(headingText);
     const icon = leadingEmoji(headingText);
     sectionIndex += 1;
+
+    budget?.spend(heading);
+    const wovenBody = weaveSectionBody(body, budget);
 
     return (
       <section
@@ -243,7 +403,7 @@ function toSectionCards(children: ReactNode): ReactNode[] {
             children: label,
           })}
         </div>
-        <div className="border-t border-[#eef3fb] px-4 pb-5 pt-3">{body}</div>
+        <div className="border-t border-[#eef3fb] px-4 pb-5 pt-3">{wovenBody}</div>
       </section>
     );
   }
@@ -255,16 +415,28 @@ function toSectionCards(children: ReactNode): ReactNode[] {
     openBody = [];
   }
 
+  // The gap between two section cards is the other legal reading break.
+  // Never before the first card, which would put it above the article.
+  function breakBetweenCards() {
+    if (!budget || out.length === 0) return;
+    const invitation = budget.take();
+    if (invitation) out.push(invitation);
+  }
+
   Children.toArray(children).forEach((node) => {
     if (!isValidElement(node)) {
       if (openHeading) openBody.push(node);
-      else out.push(node);
+      else {
+        out.push(node);
+        budget?.spend(node);
+      }
       return;
     }
 
     // Flat posts: a bare H2 starts a card that runs to the next heading.
     if (node.type === "h2") {
       flush();
+      breakBetweenCards();
       openHeading = node as ReactElement<{ id?: string; className?: string; children?: ReactNode }>;
       return;
     }
@@ -275,6 +447,7 @@ function toSectionCards(children: ReactNode): ReactNode[] {
     const headingIndex = kids.findIndex((kid) => isValidElement(kid) && kid.type === "h2");
     if (headingIndex >= 0) {
       flush();
+      breakBetweenCards();
       out.push(
         card(
           kids[headingIndex] as ReactElement<{ id?: string; className?: string; children?: ReactNode }>,
@@ -285,7 +458,10 @@ function toSectionCards(children: ReactNode): ReactNode[] {
     }
 
     if (openHeading) openBody.push(node);
-    else out.push(node);
+    else {
+      out.push(node);
+      budget?.spend(node);
+    }
   });
 
   flush();
@@ -303,6 +479,12 @@ type BlogPostShellProps = {
 
 // Standard blog post page order: banner image, category breadcrumb, title,
 // intro, share/like breaker, article body, then CTA + comments.
+//
+// A Proverbs chapter post reads in a different order (Louis, 2026-10-08): the
+// like/share breaker is gone, two study banners are woven through the body at
+// reading breaks, and the end-of-post card sells the 31-day study instead of
+// the app in general. Three asks on a post this long - early, middle, end - so
+// a reader who stops partway has already been asked at least once.
 export default function BlogPostShell({ slug, title, intro, children }: BlogPostShellProps) {
   const article = getBlogArticle(slug);
   if (!article) return null;
@@ -312,10 +494,34 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
 
   const tocEntries: TocEntry[] = [];
   const anchoredChildren = addHeadingAnchors(children, tocEntries);
-  const totalWords = countWords(intro) + countWords(anchoredChildren);
+  const introWords = countWords(intro);
+  const totalWords = introWords + countWords(anchoredChildren);
   const readMinutes = Math.max(1, Math.round(totalWords / 200));
   const verseCount = countVerses(anchoredChildren);
   const faqPairs = extractFaqPairs(anchoredChildren);
+
+  const isProverbsStudyPost = isProverbsChapterPost(article.slug);
+  const studyInvitation = (slotIndex: number) => (
+    <ProverbsStudyPromo key={`proverbs-study-${slotIndex}`} postSlug={article.slug} slotIndex={slotIndex} />
+  );
+  // Two passes over the same walk: survey the legal breaks, pick the ones that
+  // get a banner, then build the body for real. The intro counts as words
+  // already read, so the first banner lands a few hundred words into the
+  // article proper rather than straight under the title.
+  const breakSurvey = isProverbsStudyPost ? createBreakSurvey(introWords) : undefined;
+  if (breakSurvey) toSectionCards(anchoredChildren, breakSurvey);
+  const invitationBudget = breakSurvey
+    ? createInvitationPlacer(planInvitations(breakSurvey.offsets, totalWords), studyInvitation)
+    : undefined;
+  const body = isProverbsStudyPost
+    ? toSectionCards(anchoredChildren, invitationBudget)
+    : withPromoSlots(
+        toSectionCards(anchoredChildren),
+        article.slug,
+        article.bibleYearDay
+          ? { day: article.bibleYearDay, reading: article.bibleYearReading }
+          : undefined,
+      );
 
   return (
     <>
@@ -361,17 +567,22 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
           ) : null}
         </div>
 
+        {/* The like/comment/share breaker used to sit under the meta row on
+            these posts, earning almost nothing that high up. It is gone, and
+            nothing replaces it: a banner there would stack straight onto the
+            post's own hero image before a word had been read. So only the view
+            tracking that lived inside the breaker stays. */}
+        {isProverbsStudyPost ? (
+          <BlogViewTracker articleSlug={engagementKey} title={article.title} />
+        ) : null}
+
         {intro}
 
-        <BlogPostBreaker articleSlug={engagementKey} path={path} title={article.title} />
-
-        {withPromoSlots(
-          toSectionCards(anchoredChildren),
-          article.slug,
-          article.bibleYearDay
-            ? { day: article.bibleYearDay, reading: article.bibleYearReading }
-            : undefined,
+        {isProverbsStudyPost ? null : (
+          <BlogPostBreaker articleSlug={engagementKey} path={path} title={article.title} />
         )}
+
+        {body}
 
         {faqPairs.length >= 2 ? (
           <script
@@ -416,7 +627,7 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
 
       <ChapterNav slug={article.slug} />
       <BibleYearNotesNav slug={article.slug} />
-      <BlogAuthorBox postSlug={article.slug} />
+      <BlogAuthorBox postSlug={article.slug} variant={isProverbsStudyPost ? "proverbs" : "app"} />
       <RelatedPosts slug={article.slug} />
 
       <BlogPostBottom articleSlug={engagementKey} postSlug={article.slug} />

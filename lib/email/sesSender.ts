@@ -125,6 +125,11 @@ export async function sendEmail(options: {
       new SendEmailCommand({
         FromEmailAddress: process.env.SES_FROM_ADDRESS,
         Destination: { ToAddresses: [to] },
+        // Mail goes out from the verified sending subdomain
+        // (mail.mybiblebuddy.net), which has no inbox behind it. Without this
+        // every reply to a campaign would bounce into nothing - and people do
+        // reply to these, which is half the point of sending them.
+        ReplyToAddresses: process.env.SES_REPLY_TO ? [process.env.SES_REPLY_TO] : undefined,
         ConfigurationSetName: process.env.SES_CONFIGURATION_SET || undefined,
         EmailTags: options.tags
           ? Object.entries(options.tags).map(([Name, Value]) => ({ Name, Value }))

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BlogArticleEngagementBar from "@/components/blog/BlogArticleEngagementBar";
-import { logBlogViewToMasterActions, trackBlogPageView } from "@/lib/blogViewTracking";
+import BlogViewTracker from "@/components/blog/BlogViewTracker";
 
 type BlogPostBreakerProps = {
   // Database key for likes/comments/views (legacy path for migrated posts).
@@ -17,11 +17,6 @@ type BlogPostBreakerProps = {
 export default function BlogPostBreaker({ articleSlug, path, title }: BlogPostBreakerProps) {
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
   const [isShareOpen, setIsShareOpen] = useState(false);
-
-  useEffect(() => {
-    trackBlogPageView(articleSlug);
-    void logBlogViewToMasterActions(articleSlug, title);
-  }, [articleSlug, title]);
 
   const pageUrl = `https://www.mybiblebuddy.net${path}`;
   const shareText = `Check out this Bible Buddy article: ${title}`;
@@ -88,6 +83,8 @@ export default function BlogPostBreaker({ articleSlug, path, title }: BlogPostBr
 
   return (
     <div className="my-8 border-y border-[#E7EEFF] py-4">
+      <BlogViewTracker articleSlug={articleSlug} title={title} />
+
       <div className="flex items-center gap-3">
         <div className="min-w-0 flex-1 [&>div]:mb-0">
           <BlogArticleEngagementBar articleSlug={articleSlug} />
