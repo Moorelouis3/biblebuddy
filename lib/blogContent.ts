@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-11-explained",
+    title: "Exodus 11 Explained: The Last Warning Before the Final Plague",
+    description:
+      "Exodus 11 explained verse by verse: God names the tenth plague before it falls, Israel is told to ask Egypt for gold, and Moses leaves Pharaoh in great anger.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-11-explained",
+    publishedAt: "2026-10-10",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-11-explained.jpg",
+    groupPost: {
+      title: "Exodus 11 Explained 📖",
+      content:
+        "God names the last plague before it falls.\nThen Moses walks out in anger.\n\n📌 Not a dog will move its tongue against Israel.\n\n📖 Egypt hands over its own gold and silver.\n📖 The tenth plague reaches Pharaoh's own throne.\n📖 Moses predicts Egypt's own servants will beg him to leave.\n\nNew article on:\n🟢 why Israel was told to **ask Egypt for jewels**\n🟢 the line drawn between **two neighboring households**\n🟢 why none of the nine plagues before this one **worked**\n\nHave you ever been warned plainly and still waited too long? 🙏",
+    },
+  },
+  {
     slug: "what-happens-the-moment-you-die",
     title: "What Happens the Moment You Die? What the Bible Actually Says",
     description:
