@@ -58794,6 +58794,63 @@
           "at": "2026-10-09T23:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Luke",
+      "chapter": 15,
+      "startedAt": "2026-10-10T00:46:03Z",
+      "finishedAt": "2026-10-10T00:58:00Z",
+      "durationMinutes": 12,
+      "sections": 9,
+      "cards": 37,
+      "verses": 32,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (624 packages, fresh clone, about 43s, 28 preexisting audit vulnerabilities unrelated to this chapter, not touched). Checked data/bible-notes-priority-queue.json first (remaining: []), then data/bible-notes-style-redo-remaining.json (remaining: []), both confirmed empty, so this was normal forward progress after Luke 14, the latest entry in this log. Confirmed no lib/lukeFifteenSource.ts existed yet via a directory listing of lib/, only the legacy bulk file lib/lukeOneToTwentyOnePersonalNotes.ts covering chapter 15. Fetched real KJV text for Luke 15 (32 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (HTTP 200), parsed chapter 15 from its chapters array. The chapter covers the Pharisees and scribes murmuring that Jesus receiveth sinners and eateth with them, prompting three parables (1-3); the parable of the lost sheep, the shepherd leaving the ninety and nine, and the joy in heaven over one sinner that repenteth (4-7); the parable of the lost coin and the woman's careful search (8-10); the younger son demanding his inheritance early and departing for the far country (11-13); the mighty famine, feeding swine for a Gentile master, and longing for the husks (14-16); the son coming to himself, resolving to arise and return, rehearsing his confession, and the father seeing him a great way off, running, and falling on his neck (17-20); the son's confession, the father cutting it off, and the best robe, ring, shoes, and fatted calf of the celebration, closing on this my son was dead and is alive again (21-24); the elder son in the field hearing musick and dancing, learning from a servant why, and refusing to go in (25-28); and the elder son's complaint that he was never given even a kid, the father's gentle answer that nothing was ever lost to him, and the parable's ending left deliberately open on the brother who was dead and is alive again (29-32). Read docs/bible-study-note-style.md in full before writing, and followed .claude/skills/bible-notes/SKILL.md for the technical pipeline, using lib/lukeFourteenSource.ts as the exact parser and wiring reference and docs/bible-study-note-style.md's five approved examples plus lib/genesisThirtyOneSource.ts as the reference implementation for voice. Split into 9 sections (1-3, 4-7, 8-10, 11-13, 14-16, 17-20, 21-24, 25-28, 29-32), all 32 verses covered with no gaps or overlaps, each within the app's enforceStudySectionVerseLimit(8) cap. Wrote lib/lukeFifteenSource.ts with 37 phrase cards (about 1.16 cards per verse), giving the pivotal return of the prodigal (17-20) 6 cards given how much is happening in those 4 verses. scripts/check_bible_note_style.py found 2 problems on the first automated pass, both bullets one word over the 8 word cap ('A lost sheep was often too scared to walk' and 'The angels are not named as the ones rejoicing'), fixed both by trimming, second run clean with 0 problems across all 37 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using the open book emoji. A manual section 13 eye check (which the checker cannot perform) caught several body lines that stacked two full sentences onto one line, violating the one idea per line rule, under the cards for 'Fell On His Neck, And Kissed Him,' 'Bring Forth The Best Robe,' 'Bring Hither The Fatted Calf,' and the father's reply to the elder son, and split every one of them into separate single idea lines before saving. Confirmed every card opens with one of the four approved moves (defining a word, correcting a misreading, identifying a vague reference, or stating the point flat), defines its key terms in plain language (publicans, murmured, fain, husks, musick, safe and sound, compassion, recompensed), never recaps the verse as the teaching, and closes on meaning rather than mechanics. Every title verified by hand as an exact or near exact contiguous KJV phrase in title case, with no duplicate titles across all 37 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections('luke', 15): 9/9 sections, verse ranges 1-3/4-7/8-10/11-13/14-16/17-20/21-24/25-28/29-32 with no gaps, 37 total cards rendering verbatim, no duplication, no throw. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/lukeFifteenSource.ts, the luke condition in preserveExactPhraseBodies widened from chapters 1-14 to include chapter 15, new applyPersonalLukeFifteenStudySections() function added calling replaceStudySectionsForBookRange('luke', 15, 15, LUKE_FIFTEEN_PERSONAL_SECTIONS), invoked right after applyPersonalLukeFourteenStudySections(). This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Luke 16, which still carries only the legacy lukeOneToTwentyOnePersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, about 43s)",
+          "at": "2026-10-10T00:46:46Z"
+        },
+        {
+          "name": "target chapter determined: Luke 15 (normal forward progress, priority queue and style-redo backlog both empty, no lib/lukeFifteenSource.ts existed)",
+          "at": "2026-10-10T00:46:50Z"
+        },
+        {
+          "name": "KJV text fetched (Luke 15, 32 verses, aruljohn mirror, HTTP 200)",
+          "at": "2026-10-10T00:47:08Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-10T00:47:30Z"
+        },
+        {
+          "name": "source file written: lib/lukeFifteenSource.ts (37 cards, 9 sections)",
+          "at": "2026-10-10T00:52:10Z"
+        },
+        {
+          "name": "style checker clean after fixing 2 overlength bullets",
+          "at": "2026-10-10T00:52:40Z"
+        },
+        {
+          "name": "manual section 13 eye check fixed stacked two-sentence body lines in 4 cards",
+          "at": "2026-10-10T00:52:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalLukeFifteenStudySections)",
+          "at": "2026-10-10T00:53:10Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 37 cards, verses 1-32 fully covered, no gaps)",
+          "at": "2026-10-10T00:53:40Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-10T00:55:45Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md totals + row, data/bible-notes-progress-log.json entry)",
+          "at": "2026-10-10T00:58:00Z"
+        }
+      ]
     }
   ]
 }
