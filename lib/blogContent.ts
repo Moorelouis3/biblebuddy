@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-15-explained",
+    title: "Exodus 15 Explained: The Song of Moses and the Water at Marah",
+    description:
+      "Exodus 15 explained verse by verse: the song of Moses after the Red Sea, Miriam's refrain, and Israel's bitter water test at Marah and Elim.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-15-explained",
+    publishedAt: "2026-10-10",
+    readTime: "14 min read",
+    image: "/blog-banners/exodus-15-explained.jpg",
+    groupPost: {
+      title: "Exodus 15 Explained 📖",
+      content:
+        "One sea just drowned an empire.\nThree days later, Israel is thirsty and complaining.\n\n📌 The same mouths that sang praise now ask what to drink.\n\n📖 Moses and Israel sing the first song in the Bible.\n📖 Miriam leads the women with timbrels and dancing.\n📖 Bitter water turns sweet at a place called Marah.\n\nNew article on:\n🟢 why the song quotes **Egypt's own boast** back at them\n🟢 what **I am the LORD that healeth thee** really means\n🟢 why praise can fade to complaining in just **three days**\n\nHave you ever praised God, then doubted Him days later? 🙏",
+    },
+  },
+  {
     slug: "exodus-14-explained",
     title: "Exodus 14 Explained: The Red Sea and Pharaoh's Last Pursuit",
     description:
