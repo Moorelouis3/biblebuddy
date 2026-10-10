@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-12-explained",
+    title: "Exodus 12 Explained: The Passover Lamb and the Night Egypt Let Go",
+    description:
+      "Exodus 12 explained verse by verse: the Passover lamb, blood on the doorposts, the death of Egypt's firstborn, and Israel's first night of freedom.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-12-explained",
+    publishedAt: "2026-10-10",
+    readTime: "14 min read",
+    image: "/blog-banners/exodus-12-explained.jpg",
+    groupPost: {
+      title: "Exodus 12 Explained 📖",
+      content:
+        "One lamb. One night. Blood on a doorframe deciding who lives.\n\n📌 The blood had to be applied, not just available.\n\n📖 Egypt loses a firstborn in every house but one.\n📖 Israel eats standing up, ready to walk out the door.\n📖 Six hundred thousand leave the same night, right on schedule.\n\nNew article on:\n🟢 why the lamb had to be **without blemish**\n🟢 what the blood on the doorposts actually **did**\n🟢 why this one night became a **feast forever**\n\nAre you sheltering behind the blood, or just aware that it exists? 🙏",
+    },
+  },
+  {
     slug: "exodus-11-explained",
     title: "Exodus 11 Explained: The Last Warning Before the Final Plague",
     description:
