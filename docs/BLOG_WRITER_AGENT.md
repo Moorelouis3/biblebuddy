@@ -206,12 +206,17 @@ Queue remaining: <N>
 ```
 
 Then commit every changed file with the message
-`Add blog article: <title> [deploy]`.
+`Add blog article: <title>`.
 
-The `[deploy]` tag is **required** here. Vercel only builds tagged
-commits, and these posts are deliberate content releases that must be
-live the moment the run finishes. This is the documented exception to the
-usual "no `[deploy]` on routine commits" rule in `CLAUDE.md`.
+**Do NOT add `[deploy]`.** This used to be a documented exception, on the
+grounds that a post had to be live the moment the run finished. Louis removed
+it on 2026-10-10 after seeing six builds in a day: the run fires around 22:00
+and the next scheduled deploy is 08:07, so the tag bought about eight hours on
+a blog where nothing is waiting — at the price of one extra Vercel build per
+post, three a week. Builds are the bill, not pushes.
+
+The post goes live at the next scheduled deploy like everything else. Say so in
+the run report: "live at the next deploy (10:00 or 18:00 Berlin)".
 
 Push to `origin main` and confirm the push actually succeeded before
 finishing.
