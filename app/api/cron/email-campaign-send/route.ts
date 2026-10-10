@@ -46,6 +46,9 @@ type CampaignRow = {
   max_per_run: number;
   started_at: string | null;
   scheduled_for: string | null;
+  // Read so a run can tell a first hiccup from a campaign that is actually
+  // broken; see the catch block.
+  last_result: { consecutiveFailures?: number } | null;
 };
 
 export async function GET(request: NextRequest) {
@@ -69,7 +72,7 @@ export async function GET(request: NextRequest) {
   // so a campaign with a date goes before one without, and nulls last.
   const { data, error } = await db
     .from("email_campaigns")
-    .select("campaign_id, subject, html, text, tag, rate_per_second, max_per_run, started_at, scheduled_for")
+    .select("campaign_id, subject, html, text, tag, rate_per_second, max_per_run, started_at, scheduled_for, last_result")
     // Marketing only. The welcome email is a campaign row too, but it is
     // triggered one person at a time by /api/cron/welcome-email - if this
     // batch sender ever picked it up it would post it to the whole list.
@@ -189,19 +192,36 @@ export async function GET(request: NextRequest) {
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
 
-    // Pause rather than keep hammering. A campaign that is failing needs a
-    // person to look at it, and the next run would hit the same wall.
+    // Three strikes, not one.
+    //
+    // This used to pause on the first error, on the reasoning that a failing
+    // campaign needs a person. That is true of a campaign that is genuinely
+    // broken and badly wrong for one that hiccupped: a send to 5,000 people
+    // runs for nine hours across fifty-odd invocations, and over that long a
+    // single dropped connection or a slow query is close to certain. Twice in
+    // one evening a blip stopped the Moses campaign dead, and both times the
+    // only fix was a human noticing and pressing a button.
+    //
+    // A transient failure costs ten minutes now - the next run simply tries
+    // again. A real one still stops, three runs in, with its reasons kept.
+    const strikes = (Number((campaign.last_result as { consecutiveFailures?: number } | null)?.consecutiveFailures) || 0) + 1;
+    const giveUp = strikes >= 3;
+
     await db
       .from("email_campaigns")
       .update({
-        status: "paused",
+        ...(giveUp ? { status: "paused" } : {}),
         last_run_at: new Date().toISOString(),
-        last_result: { error: message },
+        last_result: {
+          error: message || "(the error carried no message - usually a dropped connection)",
+          consecutiveFailures: strikes,
+          willRetry: !giveUp,
+        },
       })
       .eq("campaign_id", campaign.campaign_id);
 
     return NextResponse.json(
-      { ok: false, campaignId: campaign.campaign_id, paused: true, error: message },
+      { ok: false, campaignId: campaign.campaign_id, paused: giveUp, strikes, error: message },
       { status: 500 },
     );
   }

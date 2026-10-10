@@ -35,6 +35,7 @@ import { unsubscribeUrl } from "./unsubscribeLink";
 
 export type CampaignResult = {
   campaignId: string;
+  /** How many this run found waiting, not the whole remaining list. */
   eligible: number;
   sent: number;
   skipped: number;
@@ -101,17 +102,29 @@ export async function sendCampaign(options: {
     );
   }
 
-  const eligible = await countEligible(campaignId, db);
-
   // Only this run's worth. PostgREST caps a result at 1,000 rows anyway, and
   // the queue is ordered by address, so the next run picks up where this one
   // stopped - the addresses it sent to are claimed and no longer returned.
+  //
+  // This used to be preceded by a countEligible() call, which meant building
+  // the engagement view TWICE per run for a number only used to decide
+  // whether the campaign had finished. An empty batch answers that just as
+  // well and costs nothing, and halving the heavy queries halves the chance
+  // of the run tripping over a slow one.
   const batchSize = Math.min(limit ?? 1000, 1000);
   const { data, error } = await db
     .rpc("marketing_recipients", { p_campaign_id: campaignId })
     .limit(batchSize);
-  if (error) throw new Error(`marketing_recipients(${campaignId}): ${error.message}`);
+  if (error) {
+    throw new Error(
+      `marketing_recipients(${campaignId}): ${error.message || "no message - usually a dropped connection"}`,
+    );
+  }
   let queue = (data ?? []) as Recipient[];
+
+  // How many this run found, not how many remain on the whole list. The cron
+  // only asks whether it is zero.
+  const eligible = queue.length;
 
   // Tag targeting predates engagement groups and is still honoured. It is not
   // part of the view because it describes the list row rather than the
@@ -160,7 +173,18 @@ export async function sendCampaign(options: {
       p_campaign_id: campaignId,
       p_email: subscriber.email,
     });
-    if (checkError) throw new Error(`can_send_campaign_now: ${checkError.message}`);
+    // A failed CHECK is not a failed campaign. Skip this one address and move
+    // on: it was never claimed, so the next run picks it up. Throwing here
+    // abandoned the other ninety-nine people in the batch and handed the cron
+    // an error, which is how one slow query stopped a send to 4,400.
+    //
+    // Failing closed - skipping rather than sending - is the right direction:
+    // the cost is one email ten minutes late, against possibly mailing
+    // somebody who had just unsubscribed.
+    if (checkError) {
+      result.skipped += 1;
+      continue;
+    }
     if (!allowed) {
       result.cappedDuringRun += 1;
       continue;
