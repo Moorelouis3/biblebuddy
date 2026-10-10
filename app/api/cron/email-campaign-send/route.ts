@@ -163,6 +163,13 @@ export async function GET(request: NextRequest) {
     // Finished when this run found nobody left to send to. Anyone who failed
     // is already recorded in email_campaign_sends and is deliberately NOT
     // retried - a hard bounce retried forever is how a sender gets burned.
+    //
+    // "Nobody left" includes people held back by their weekly cap, and that
+    // is deliberate. A quiet or inactive subscriber who has already had their
+    // allowance this week does not receive this campaign late next week; they
+    // simply receive fewer campaigns, which is the entire point of the groups.
+    // Holding one open until the rolling window moved would post Thursday's
+    // email on the following Tuesday, and the campaign would never complete.
     const finished = result.eligible === 0;
 
     await db

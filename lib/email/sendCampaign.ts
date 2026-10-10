@@ -5,24 +5,32 @@ import { unsubscribeUrl } from "./unsubscribeLink";
 /**
  * Send one email to the mailing list.
  *
- * `sesSender.sendEmail` sends to one address; this is the part that walks
- * email_subscribers and does it properly for thousands.
+ * `sesSender.sendEmail` sends to one address; this is the part that walks the
+ * list and does it properly for thousands.
  *
- * Three things it refuses to get wrong:
+ * Four things it refuses to get wrong:
  *
  *  - **Never twice.** Every address is claimed in email_campaign_sends before
- *    it is sent, and anyone already claimed is skipped. A campaign to 4,500
- *    people takes about an hour, so it WILL be interrupted eventually; a resume
- *    has to be safe. Re-running the same campaign id simply continues.
- *  - **Never to someone who said no.** sendEmail checks email_suppressions
- *    itself, and this checks again in bulk first so a suppressed address is not
- *    even attempted.
+ *    it is sent, and anyone already claimed is skipped. A campaign to 5,000
+ *    people takes hours, so it WILL be interrupted eventually; a resume has to
+ *    be safe. Re-running the same campaign id simply continues.
+ *  - **Never to someone who said no.** marketing_recipients() excludes
+ *    suppressed addresses, and sendEmail checks email_suppressions again
+ *    itself before each send.
+ *  - **Never more often than the person's group allows.** Quiet subscribers
+ *    take two campaigns per rolling seven days and inactive ones take one,
+ *    counted across ALL marketing campaigns rather than per campaign.
  *  - **Never faster than allowed.** SES caps the send rate - 1/second in the
- *    sandbox, 14/second by default in production. Going over gets requests
- *    rejected and, repeated, gets an account reviewed.
+ *    sandbox, 14/second by default in production.
+ *
+ * WHO GETS IT IS NOT DECIDED HERE. The queue comes from marketing_recipients()
+ * in the database, which is the same function /api/admin/campaigns calls to
+ * show Louis the recipient count before he arms a campaign. One query, two
+ * callers: the number on screen cannot drift from what actually goes out.
  *
  * Call it with a stable campaignId (e.g. "2026-10-13-proverbs-launch"). Running
- * it again with that id resumes; running it with a new id sends to everyone.
+ * it again with that id resumes; running it with a new id sends to everyone
+ * eligible.
  */
 
 export type CampaignResult = {
@@ -32,6 +40,16 @@ export type CampaignResult = {
   skipped: number;
   failed: number;
   stoppedEarly: boolean;
+  /** Dropped between queueing and sending because a cap filled up mid-run. */
+  cappedDuringRun: number;
+};
+
+type Recipient = {
+  email: string;
+  first_name: string | null;
+  engagement_group: string;
+  weekly_cap: number | null;
+  marketing_sends_7d: number;
 };
 
 function admin(): SupabaseClient {
@@ -41,23 +59,20 @@ function admin(): SupabaseClient {
   return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
 }
 
-async function allRows<T>(
-  db: SupabaseClient,
-  table: string,
-  columns: string,
-  refine?: (q: any) => any,
-): Promise<T[]> {
-  const out: T[] = [];
-  for (let page = 0; page < 500; page += 1) {
-    let q = db.from(table).select(columns).range(page * 1000, page * 1000 + 999);
-    if (refine) q = refine(q);
-    const { data, error } = await q;
-    if (error) throw new Error(`${table}: ${error.message}`);
-    if (!data?.length) break;
-    out.push(...(data as T[]));
-    if (data.length < 1000) break;
-  }
-  return out;
+/**
+ * How many people are eligible for this campaign right now.
+ *
+ * Exported because the dashboard shows this number before anything is armed,
+ * and it has to be produced by the same query the sender walks.
+ */
+export async function countEligible(campaignId: string, db: SupabaseClient = admin()): Promise<number> {
+  const { count, error } = await db.rpc(
+    "marketing_recipients",
+    { p_campaign_id: campaignId },
+    { count: "exact", head: true },
+  );
+  if (error) throw new Error(`marketing_recipients(${campaignId}): ${error.message}`);
+  return count ?? 0;
 }
 
 export async function sendCampaign(options: {
@@ -86,33 +101,43 @@ export async function sendCampaign(options: {
     );
   }
 
-  const subscribers = await allRows<{ email: string; first_name: string | null }>(
-    db,
-    "email_subscribers",
-    "email, first_name",
-    tag ? (q: any) => q.contains("tags", [tag]) : undefined,
-  );
+  const eligible = await countEligible(campaignId, db);
 
-  const suppressed = new Set(
-    (await allRows<{ email: string }>(db, "email_suppressions", "email")).map((r) => r.email),
-  );
-  const alreadySent = new Set(
-    (
-      await allRows<{ email: string }>(db, "email_campaign_sends", "email", (q: any) =>
-        q.eq("campaign_id", campaignId),
-      )
-    ).map((r) => r.email),
-  );
+  // Only this run's worth. PostgREST caps a result at 1,000 rows anyway, and
+  // the queue is ordered by address, so the next run picks up where this one
+  // stopped - the addresses it sent to are claimed and no longer returned.
+  const batchSize = Math.min(limit ?? 1000, 1000);
+  const { data, error } = await db
+    .rpc("marketing_recipients", { p_campaign_id: campaignId })
+    .limit(batchSize);
+  if (error) throw new Error(`marketing_recipients(${campaignId}): ${error.message}`);
+  let queue = (data ?? []) as Recipient[];
 
-  const queue = subscribers.filter((s) => !suppressed.has(s.email) && !alreadySent.has(s.email));
+  // Tag targeting predates engagement groups and is still honoured. It is not
+  // part of the view because it describes the list row rather than the
+  // person's behaviour, and no campaign currently sets it.
+  if (tag && queue.length) {
+    const { data: tagged, error: tagError } = await db
+      .from("email_subscribers")
+      .select("email")
+      .contains("tags", [tag])
+      .in(
+        "email",
+        queue.map((r) => r.email),
+      );
+    if (tagError) throw new Error(`tag filter: ${tagError.message}`);
+    const keep = new Set((tagged ?? []).map((r) => r.email));
+    queue = queue.filter((r) => keep.has(r.email));
+  }
 
   const result: CampaignResult = {
     campaignId,
-    eligible: queue.length,
+    eligible,
     sent: 0,
-    skipped: subscribers.length - queue.length,
+    skipped: 0,
     failed: 0,
     stoppedEarly: false,
+    cappedDuringRun: 0,
   };
 
   if (options.dryRun) return result;
@@ -121,6 +146,24 @@ export async function sendCampaign(options: {
     if (limit && result.sent >= limit) {
       result.stoppedEarly = true;
       break;
+    }
+
+    // Ask again, one address at a time, immediately before sending.
+    //
+    // The queue above was built at the start of the run and the seven-day
+    // window is rolling, so by the time a batch reaches its last address the
+    // answer can have changed - another campaign may have gone out, or the
+    // person may have unsubscribed in the last ten minutes. This is what makes
+    // the cap and the suppression list true at the moment of sending rather
+    // than at the moment of queueing.
+    const { data: allowed, error: checkError } = await db.rpc("can_send_campaign_now", {
+      p_campaign_id: campaignId,
+      p_email: subscriber.email,
+    });
+    if (checkError) throw new Error(`can_send_campaign_now: ${checkError.message}`);
+    if (!allowed) {
+      result.cappedDuringRun += 1;
+      continue;
     }
 
     // Claim first. If this insert loses a race or the process dies immediately
