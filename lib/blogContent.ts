@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-14-explained",
+    title: "Exodus 14 Explained: The Red Sea and Pharaoh's Last Pursuit",
+    description:
+      "Exodus 14 explained verse by verse: Pharaoh's army traps Israel at the Red Sea, the waters divide, and Egypt's army is destroyed as it crosses.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-14-explained",
+    publishedAt: "2026-10-10",
+    readTime: "11 min read",
+    image: "/blog-banners/exodus-14-explained.jpg",
+    groupPost: {
+      title: "Exodus 14 Explained 📖",
+      content:
+        "Pharaoh's army is closing in. The sea is still closed too.\n\n📌 God tells Moses exactly where to trap His own people.\n\n📖 Israel begs to go back to slavery days after Passover.\n📖 Moses is told to stand still, then told to move.\n📖 The sea splits, and Egypt's army drowns chasing it.\n\nNew article on:\n🟢 why God sets the **trap** before Pharaoh even moves\n🟢 what **stand still** actually asked of a terrified nation\n🟢 why belief shows up in the chapter's **very last verse**\n\nHave you ever had to stand still and just watch God work? 🙏",
+    },
+  },
+  {
     slug: "exodus-13-explained",
     title: "Exodus 13 Explained: Firstborn, Bread, and the Pillar of Fire",
     description:
