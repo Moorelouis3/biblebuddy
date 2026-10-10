@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 import { suppress } from "@/lib/email/sesSender";
 
 /**
@@ -31,6 +32,15 @@ type SnsEnvelope = {
 type SesEvent = {
   eventType?: string;
   notificationType?: string;
+  mail?: {
+    messageId?: string;
+    timestamp?: string;
+    destination?: string[];
+    tags?: Record<string, string[]>;
+  };
+  open?: { timestamp?: string; userAgent?: string; ipAddress?: string };
+  click?: { timestamp?: string; userAgent?: string; ipAddress?: string; link?: string };
+  delivery?: { timestamp?: string };
   bounce?: {
     bounceType?: string;
     bounceSubType?: string;
@@ -49,6 +59,56 @@ function authorized(request: NextRequest, envelope: SnsEnvelope) {
   const allowedTopic = process.env.SES_SNS_TOPIC_ARN;
   if (allowedTopic && envelope.TopicArn && envelope.TopicArn !== allowedTopic) return false;
   return true;
+}
+
+/**
+ * Keep every event SES reports, not just the ones that suppress someone.
+ *
+ * Louis, 2026-10-10: moving off Systeme meant losing the open and click rates
+ * he had always measured by - 17-20% opens, 0.7-2% clicks. SES publishes the
+ * same events to this topic once Open and Click tracking are on, so the
+ * numbers come back as long as something writes them down. This is that.
+ *
+ * The campaign comes from the EmailTags that sendCampaign already sets, so an
+ * open can be attributed without matching on subject lines.
+ *
+ * Deliberately best-effort: a failure here must never make this endpoint
+ * return non-2xx, because SNS retries on error and a retry storm over a
+ * statistic is worse than a missing statistic. Suppression is the part that
+ * matters, and it has already happened by the time this runs.
+ */
+async function recordEvent(kind: string, event: SesEvent) {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const messageId = event.mail?.messageId;
+  if (!url || !key || !messageId) return;
+
+  const detail =
+    kind === "Open" ? event.open : kind === "Click" ? event.click : kind === "Delivery" ? event.delivery : null;
+  const occurredAt = detail?.timestamp || event.mail?.timestamp || new Date().toISOString();
+
+  // SES tags arrive as { campaign: ["2026-10-13-first"] }.
+  const campaignId = event.mail?.tags?.campaign?.[0] ?? null;
+
+  try {
+    const db = createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
+    await db.from("email_events").upsert(
+      {
+        message_id: messageId,
+        event_type: kind.toLowerCase(),
+        occurred_at: occurredAt,
+        campaign_id: campaignId,
+        email: event.mail?.destination?.[0] ?? null,
+        link_url: kind === "Click" ? event.click?.link ?? null : null,
+        user_agent: (detail as { userAgent?: string } | null)?.userAgent ?? null,
+        ip_address: (detail as { ipAddress?: string } | null)?.ipAddress ?? null,
+      },
+      // SNS delivers at least once, so the same event can arrive twice.
+      { onConflict: "message_id,event_type,occurred_at", ignoreDuplicates: true },
+    );
+  } catch (error) {
+    console.error("[SES WEBHOOK] could not record event:", error instanceof Error ? error.message : error);
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -84,6 +144,8 @@ export async function POST(request: NextRequest) {
 
   const kind = event.eventType || event.notificationType;
   const suppressed: string[] = [];
+
+  if (kind) await recordEvent(kind, event);
 
   if (kind === "Bounce" && event.bounce) {
     const permanent = event.bounce.bounceType === "Permanent";

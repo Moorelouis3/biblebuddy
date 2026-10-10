@@ -173,12 +173,23 @@ if (command === "list") {
     const patch = { status: "sending" };
     if (opt("rate")) patch.rate_per_second = Number(opt("rate"));
     if (opt("max-per-run")) patch.max_per_run = Number(opt("max-per-run"));
+    // --at "2026-12-12T15:00" schedules instead of starting now. Parsed in
+    // local time, which is what Louis means when he says 3pm.
+    if (opt("at")) {
+      const when = new Date(opt("at"));
+      if (Number.isNaN(when.getTime())) die(`could not read --at "${opt("at")}" as a date`);
+      patch.scheduled_for = when.toISOString();
+    }
     const audience = await subscriberTotal(data.tag);
     const tally = await counts(id);
     const remaining = Math.max(0, audience - tally.sent - tally.failed - tally.skipped);
     const { error: e } = await db.from("email_campaigns").update(patch).eq("campaign_id", id);
     if (e) die(e.message);
-    console.log(`Started "${id}".`);
+    if (patch.scheduled_for) {
+      console.log(`Scheduled "${id}" for ${new Date(patch.scheduled_for).toLocaleString()}.`);
+    } else {
+      console.log(`Started "${id}".`);
+    }
     console.log(`${remaining} to go, up to ${patch.max_per_run ?? data.max_per_run} every 10 minutes.`);
     console.log(`Stop it any time with: npm run campaign -- pause ${id}`);
   }

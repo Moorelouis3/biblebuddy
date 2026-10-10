@@ -45,6 +45,7 @@ type CampaignRow = {
   rate_per_second: number;
   max_per_run: number;
   started_at: string | null;
+  scheduled_for: string | null;
 };
 
 export async function GET(request: NextRequest) {
@@ -64,10 +65,14 @@ export async function GET(request: NextRequest) {
 
   // Oldest first, one at a time. Two campaigns going out at once would share
   // the SES rate limit and neither would respect it.
+  // Anything scheduled for the future is left alone. Ordered by scheduled_for
+  // so a campaign with a date goes before one without, and nulls last.
   const { data, error } = await db
     .from("email_campaigns")
-    .select("campaign_id, subject, html, text, tag, rate_per_second, max_per_run, started_at")
+    .select("campaign_id, subject, html, text, tag, rate_per_second, max_per_run, started_at, scheduled_for")
     .eq("status", "sending")
+    .or(`scheduled_for.is.null,scheduled_for.lte.${new Date().toISOString()}`)
+    .order("scheduled_for", { ascending: true, nullsFirst: false })
     .order("created_at", { ascending: true })
     .limit(1);
 
@@ -119,7 +124,11 @@ export async function GET(request: NextRequest) {
 
   const campaign = (data?.[0] as CampaignRow | undefined) ?? null;
   if (!campaign) {
-    return NextResponse.json({ ok: true, idle: true, reason: "no campaign is marked sending" });
+    return NextResponse.json({
+      ok: true,
+      idle: true,
+      reason: "nothing is due - no campaign is both marked sending and past its scheduled time",
+    });
   }
 
   if (!sesSendingEnabled()) {
