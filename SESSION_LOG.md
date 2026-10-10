@@ -7383,3 +7383,7 @@ Next up: John 4
 ## 2026-10-10T14:59:30Z (hourly chapter notes run)
 Chapter: John 4 | Duration: 14 min | Sections: 12 | Cards: 51 | Status: pass
 Next up: John 5
+
+## 2026-10-10T16:02:38Z (hourly chapter notes run)
+Chapter: John 5 | Duration: 16 min | Sections: 11 | Cards: 51 | Status: pass
+Next up: John 6
