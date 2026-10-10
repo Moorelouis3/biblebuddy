@@ -7379,3 +7379,7 @@ Next up: John 3
 ## 2026-10-10T14:05:14Z (hourly chapter notes run)
 Chapter: John 3 | Duration: 19 min | Sections: 8 | Cards: 41 | Status: pass
 Next up: John 4
+
+## 2026-10-10T14:59:30Z (hourly chapter notes run)
+Chapter: John 4 | Duration: 14 min | Sections: 12 | Cards: 51 | Status: pass
+Next up: John 5
