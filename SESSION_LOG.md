@@ -7272,3 +7272,7 @@ Next up: Luke 16
 ## 2026-10-10T02:01:25Z (hourly chapter notes run)
 Chapter: Luke 16 | Duration: 15 min | Sections: 6 | Cards: 44 | Status: pass
 Next up: Luke 17
+
+## 2026-10-10T04:02:40Z (hourly chapter notes run)
+Chapter: Luke 17 | Duration: 17 min | Sections: 8 | Cards: 29 | Status: pass
+Next up: Luke 18
