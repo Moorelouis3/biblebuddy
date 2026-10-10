@@ -7351,3 +7351,7 @@ Next: write the first broadcast, send it slow (--rate 2 --max-per-run 100).
 ## 2026-10-10T06:58:57Z (hourly chapter notes run)
 Chapter: Luke 20 | Duration: 13 min | Sections: 8 | Cards: 55 | Status: pass
 Next up: Luke 21
+
+## 2026-10-10T08:00:01Z (hourly chapter notes run)
+Chapter: Luke 21 | Duration: 14 min | Sections: 8 | Cards: 46 | Status: pass
+Next up: Luke 22

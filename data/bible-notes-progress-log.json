@@ -59116,6 +59116,59 @@
           "at": "2026-10-10T06:58:57Z"
         }
       ]
+    },
+    {
+      "book": "Luke",
+      "chapter": 21,
+      "startedAt": "2026-10-10T07:46:03Z",
+      "finishedAt": "2026-10-10T08:00:01Z",
+      "durationMinutes": 14,
+      "sections": 8,
+      "cards": 46,
+      "verses": 38,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (624 packages, fresh clone, about 44s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style-redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Luke 20, the latest entry in this log. Confirmed no lib/lukeTwentyOneSource.ts existed yet, only the legacy bulk file lib/lukeOneToTwentyOnePersonalNotes.ts covering chapter 21. Fetched real KJV text for Luke 21 (38 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the poor widow's two mites outweighing the rich givers' surplus gifts (1-4); Jesus predicting the temple's total destruction and warning against being deceived by false Christs and panic over wars (5-9); wars, earthquakes, and persecution turning into testimony (10-13); the promise of a mouth and wisdom against betrayal by family, with \"there shall not an hair of your head perish\" (14-19); Jerusalem compassed with armies, the days of vengeance, and Jerusalem trodden down of the Gentiles (20-24); signs in sun, moon, and stars, and the Son of man coming in a cloud with power and great glory (25-28); the fig tree parable and \"heaven and earth shall pass away, but my words shall not pass away\" (29-33); and the warning to watch and pray against surfeiting and drunkenness, closing with Jesus teaching daily in the temple and retiring nightly to the Mount of Olives (34-38). Split into 8 sections (1-4, 5-9, 10-13, 14-19, 20-24, 25-28, 29-33, 34-38), all 38 verses covered with no gaps or overlaps, each within the app's enforceStudySectionVerseLimit(8) cap. Density about 1.21 cards per verse (38 verses, 46 cards), in the same range as recent Luke chapters. scripts/check_bible_note_style.py came back clean on the first automated pass, 0 problems across all 46 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (mite, penury, compassed, pestilences, surfeiting, snare, draweth nigh), corrects the common misreading of \"this generation\" as having one certain answer and of the heavenly signs as necessarily literal astronomical events, never recaps the verse as the teaching, and closes on meaning rather than mechanics, with titles as exact or near exact contiguous KJV phrases in title case and no duplicates across all 46 cards. Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"luke\", 21): 8/8 sections, verse ranges 1-4/5-9/10-13/14-19/20-24/25-28/29-33/34-38 with no gaps, 46 total cards rendering verbatim, no duplication, no throw. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/lukeTwentyOneSource.ts, the luke condition in preserveExactPhraseBodies widened from chapters 1-20 to include chapter 21, new applyPersonalLukeTwentyOneStudySections() function added calling replaceStudySectionsForBookRange(\"luke\", 21, 21, LUKE_TWENTY_ONE_PERSONAL_SECTIONS), invoked right after applyPersonalLukeTwentyStudySections() and before applyPersonalLukeTwentyTwoThroughTwentyFourStudySections(). Logged in data/bible-notes-progress-log.json with full step timestamps, and in SESSION_LOG.md as an hourly chapter notes run. This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Luke 22, which still carries only the legacy lukeTwentyTwoToTwentyFourPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done (624 packages, fresh clone, about 44s)",
+          "at": "2026-10-10T07:46:47Z"
+        },
+        {
+          "name": "target chapter determined: Luke 21 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-10T07:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (Luke 21, 38 verses, aruljohn mirror)",
+          "at": "2026-10-10T07:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline doc read in full",
+          "at": "2026-10-10T07:47:55Z"
+        },
+        {
+          "name": "source file written: lib/lukeTwentyOneSource.ts (8 sections, 46 cards)",
+          "at": "2026-10-10T07:53:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass across 46 cards)",
+          "at": "2026-10-10T07:54:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 21, applyPersonalLukeTwentyOneStudySections call added)",
+          "at": "2026-10-10T07:55:30Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, verses 1-38 fully covered, no gaps, 46 total cards, no throw)",
+          "at": "2026-10-10T07:56:30Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-10T07:57:57Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md totals + row, data/bible-notes-progress-log.json entry)",
+          "at": "2026-10-10T08:00:01Z"
+        }
+      ]
     }
   ]
 }
