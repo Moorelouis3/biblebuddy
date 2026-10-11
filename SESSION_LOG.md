@@ -7542,3 +7542,7 @@ Next up: Acts 12
 ## 2026-10-11T19:56:30Z (hourly chapter notes run)
 Chapter: Acts 12 | Duration: 10 min | Sections: 7 | Cards: 39 | Status: pass
 Next up: Acts 13
+
+## 2026-10-11T21:08:51Z (hourly chapter notes run)
+Chapter: Acts 13 | Duration: 23 min | Sections: 11 | Cards: 76 | Status: pass
+Next up: Acts 14
