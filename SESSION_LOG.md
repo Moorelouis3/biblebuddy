@@ -7534,3 +7534,7 @@ Next up: Acts 10
 ## 2026-10-11T18:00:21Z (hourly chapter notes run)
 Chapter: Acts 10 | Duration: 14 min | Sections: 8 | Cards: 55 | Status: pass
 Next up: Acts 11
+
+## 2026-10-11T18:56:30Z (hourly chapter notes run)
+Chapter: Acts 11 | Duration: 11 min | Sections: 8 | Cards: 36 | Status: pass
+Next up: Acts 12
