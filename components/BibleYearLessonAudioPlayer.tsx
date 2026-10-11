@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import VideoHelpfulPoll from "./VideoHelpfulPoll";
+import SaveForOfflineButton from "@/components/SaveForOfflineButton";
 import { getBibleYearVideoEmbedSrc } from "../lib/bibleYearAudio";
 import { supabase } from "../lib/supabaseClient";
 
@@ -849,6 +850,13 @@ export default function BibleYearLessonAudioPlayer({
             </button>
           </div>
         </div>
+        {/* Twenty minutes of audio, kept on the phone. The service worker
+            has been able to do this since September; nothing asked it to. */}
+        {!controlsLocked ? (
+          <div className="mt-1 flex justify-center">
+            <SaveForOfflineButton audioSrc={audioSrc} />
+          </div>
+        ) : null}
         {!controlsLocked && showHelpfulPoll ? (
           <VideoHelpfulPoll
             userId={userId}

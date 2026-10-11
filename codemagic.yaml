@@ -1,0 +1,83 @@
+# Build the iPhone app on Codemagic's Macs.
+#
+# GitHub Actions is locked on this account ("your account is locked due to a
+# billing issue") and a support ticket is open, but the iOS build should not
+# wait on someone else's billing system. Codemagic is a different company
+# with its own Macs and a free individual plan - 500 macOS minutes a month,
+# which at roughly ten minutes a build is about fifty builds. More than
+# enough, and it costs nothing.
+#
+# .github/workflows/ios-build.yml stays. Whichever unblocks first wins, and
+# having two independent ways to compile is worth keeping anyway.
+#
+# Setup, once: sign in at codemagic.io with GitHub, add this repository, and
+# it finds this file on its own. No settings to fill in.
+
+workflows:
+  ios-build:
+    name: Bible Buddy iOS
+    instance_type: mac_mini_m2
+    max_build_duration: 30
+
+    environment:
+      node: 22
+      xcode: latest
+      cocoapods: default
+
+    # Only when something that affects the shell changes. The web app deploys
+    # through Vercel and has nothing to do with this.
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+      # Codemagic has no path filter, so cancel runs that changed nothing
+      # relevant rather than burning free minutes on a Bible notes commit.
+      cancel_previous_builds: true
+
+    scripts:
+      - name: Install dependencies
+        script: npm ci --no-audit --no-fund
+
+      - name: Generate the iOS project
+        # ios/ is gitignored - it is generated output, so it is rebuilt here
+        # rather than drifting out of step with capacitor.config.ts.
+        script: npx cap add ios
+
+      - name: Sync web assets and plugins
+        script: npx cap sync ios
+
+      - name: Show which plugins linked
+        script: npx cap ls ios
+
+      - name: Build for the simulator
+        # Unsigned on purpose. Signing needs the paid Apple membership; this
+        # is here to answer "does it compile", months before that matters.
+        script: |
+          xcodebuild \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+    artifacts:
+      # So the generated project can be read without a Mac - Info.plist, the
+      # pod versions, what Capacitor actually wrote.
+      - ios/App/App/Info.plist
+      - ios/App/Podfile
+      - ios/App/Podfile.lock
+      - /tmp/xcodebuild_logs/*.log
+
+    publishing:
+      email:
+        recipients:
+          - moorelouis3@gmail.com
+        # Only shout when it breaks. A green build every push becomes noise
+        # and then gets filtered, which is how a red one gets missed.
+        notify:
+          success: false
+          failure: true
