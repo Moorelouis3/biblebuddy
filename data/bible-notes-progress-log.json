@@ -60196,6 +60196,67 @@
           "at": "2026-10-11T02:56:22Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 17,
+      "startedAt": "2026-10-11T03:45:50Z",
+      "finishedAt": "2026-10-11T04:00:00Z",
+      "durationMinutes": 14,
+      "sections": 6,
+      "cards": 36,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog (data/bible-notes-style-redo-remaining.json) and priority queue (data/bible-notes-priority-queue.json) both confirmed empty, so this was normal forward progress after John 16 (last entry in this log). No lib/johnSeventeenSource.ts existed yet, confirming John 17 was the correct next chapter in canonical order. Fetched real KJV text for John 17 (26 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. John 17 is Jesus' high priestly prayer, the closing movement of the upper room farewell discourse, in six natural sections: verses 1-5 open the prayer with Jesus lifting his eyes to heaven and declaring that his hour has come, asking the Father to glorify him so he can glorify the Father in return, naming his authority over all flesh, defining eternal life as knowing God rather than mere endless duration, and claiming the glory he had with the Father before the world existed; verses 6-10 turn to the disciples the Father gave him, who have kept his word despite the failure about to come, with Jesus explicitly narrowing this particular prayer to them rather than the world in general and naming shared Father/Son ownership over them; verses 11-16 ask the Holy Father to keep the disciples through his name so they may be one as Father and Son are one, names Judas as the son of perdition whose loss fulfills scripture, and clarifies that Jesus is not asking for the disciples to be removed from the world but kept from evil while remaining in it, not of it; verses 17-19 ask for the disciples to be sanctified through the Father's truth, with Jesus sending them into the world exactly as he was sent and sanctifying himself for their sakes; verses 20-23 widen the prayer to every future believer who will come to faith through the disciples' word, asking for a unity so real it becomes evidence to the world that the Father sent the Son, sharing the same glory given to Jesus; and verses 24-26 close with Jesus asking for the disciples to be with him where he is and behold his glory, naming a love that predates creation itself, contrasting the world's ignorance of the Father with the disciples' real knowledge of him, and ending on the Father's own love now living inside ordinary believers. Chunked into 6 sections matching that movement (1-5 the hour has come for glory, 6-10 those thou hast given me, 11-16 keep them through thy name, 17-19 sanctified through the truth, 20-23 one as we are one, 24-26 before the foundation of the world). Density about 1.4 cards per verse (26 verses, 36 cards), matching the density already established in John 15 and John 16. scripts/check_bible_note_style.py found 0 problems on the first automated pass across all 36 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (manifested, sanctify, perdition, behold, glorify, perfect in one), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 36 cards. Parser check passed exactly via getBibleReaderStudySections('john', 17) (6/6 sections, verse ranges 1-5/6-10/11-16/17-19/20-23/24-26 with no gaps, 36 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/johnSeventeenSource.ts, preserveExactPhraseBodies john range extended from chapters 1-16 to 1-17, new function applyPersonalJohnSeventeenStudySections added and called right after applyPersonalJohnSixteenStudySections(). This container's initial git checkout was a stale snapshot whose local main had diverged 50 commits from origin/main (different chapters entirely, pointing to an earlier history rewrite upstream); working tree was clean so local main was reset to origin/main before starting any work, to build on the real live history. Next forward-progress target is John 18.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-11T03:47:00Z"
+        },
+        {
+          "name": "local main reset to origin/main (stale container clone had diverged 50 commits)",
+          "at": "2026-10-11T03:47:19Z"
+        },
+        {
+          "name": "target chapter determined: John 17 (normal forward progress, redo backlog and priority queue both empty, last log entry John 16, no lib/johnSeventeenSource.ts existed)",
+          "at": "2026-10-11T03:47:19Z"
+        },
+        {
+          "name": "KJV text fetched (John 17, 26 verses, aruljohn mirror)",
+          "at": "2026-10-11T03:47:35Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill (.claude/skills/bible-notes/SKILL.md) read in full",
+          "at": "2026-10-11T03:50:00Z"
+        },
+        {
+          "name": "reference implementations read (lib/genesisThirtyOneSource.ts, lib/johnSixteenSource.ts) and wiring pattern confirmed in lib/bibleReaderStudyNotes.ts",
+          "at": "2026-10-11T03:51:30Z"
+        },
+        {
+          "name": "source file written: lib/johnSeventeenSource.ts (36 cards, 6 sections)",
+          "at": "2026-10-11T03:54:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-11T03:55:04Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range 1-17, applyPersonalJohnSeventeenStudySections)",
+          "at": "2026-10-11T03:55:23Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 36 cards, text verbatim)",
+          "at": "2026-10-11T03:55:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-11T03:57:48Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-10-11T04:00:00Z"
+        }
+      ]
     }
   ]
 }
