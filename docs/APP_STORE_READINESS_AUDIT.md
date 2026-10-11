@@ -1,185 +1,153 @@
-# App Store readiness audit
+# App Store — working plan
 
-Audited 2026-10-10 against the repo as it stands and Apple's App Review
-Guidelines. Stage 1 compliance shipped 2026-09-21 (`051080bcb`); this is what
-is left.
-
----
-
-## The headline
-
-**There is no app yet.** Stage 1 was web-side work — it made the *website*
-behave correctly when something wraps it. The wrapper itself does not exist on
-this machine:
-
-- no `ios/` or `android/` folder in the repo
-- no `@capacitor/*` or `cordova` dependency in `package.json`
-- no `capacitor.config.*` and no `.xcodeproj` anywhere under `C:\Users\Moore`
-
-`lib/nativeApp.ts` detects a shell by `window.Capacitor` or a `BibleBuddyApp`
-user-agent marker. Nothing in this repo produces either. So either the shell
-lives on a Mac that isn't here, or it was never built. **Confirm which before
-planning anything else** — it changes the size of this list considerably.
-
-**You also need a Mac.** Xcode is macOS-only, and building, signing and
-uploading all run through it. Options: a Mac, a rented cloud Mac (MacStadium,
-Scaleway ~£25/month), or a CI service that provides macOS runners (Codemagic,
-Bitrise, GitHub Actions macOS). Nothing else gets an app into review.
+Updated 2026-10-11. Replaces the first audit's framing, which wrongly made
+Apple Developer enrolment sound like a gate on starting. It isn't. Membership
+is paid at the end of October; nearly all of the build happens before then.
 
 ---
 
-## Hard blockers — Apple will reject without these
+## Start here
 
-### 1. Sign in with Apple (Guideline 4.8)
+**Add Capacitor to the project and scaffold the iOS app.** Nothing else can be
+worked on until the project exists, and it is all Windows work:
 
-`app/login/page.tsx:120` offers exactly one third-party provider: Google. The
-rule is that if you offer any third-party sign-in, you must also offer Sign in
-with Apple or an equivalent privacy-preserving option. This is a flat
-rejection, every time, and it is the most common one for apps in this shape.
+```bash
+npm i @capacitor/core @capacitor/cli
+npx cap init "Bible Buddy" net.mybiblebuddy.app --web-dir=public
+```
 
-Supabase supports Apple as a provider, so this is mostly configuration plus a
-button — but it needs an Apple Developer account first, and the Services ID
-and key setup is fiddly.
+Then write `capacitor.config.ts` so the shell appends `BibleBuddyApp` to the
+user agent — `lib/nativeApp.ts:9` already watches for exactly that string, so
+the native switches that shipped in September start working the moment the
+shell runs.
 
-### 2. Minimum Functionality (Guideline 4.2)
-
-> "Your app should include features, content, and UI that elevate it beyond a
-> repackaged website."
-
-A Capacitor shell that loads mybiblebuddy.net and adds a user-agent string is
-precisely what 4.2 exists to catch. Today the app uses **zero** Capacitor
-plugins — nothing native happens at all.
-
-What would answer it, roughly in order of value:
-
-- **Native push notifications** (see below — also a product gap)
-- **Offline reading** — cache the current chapter and the day's plan so it
-  works on a plane or the Tube
-- **Haptics** on streak/completion moments
-- **Share sheet** for verses and insight cards
-- **Widgets** — verse of the day on the home screen is a strong native-only
-  feature and reviewers notice them
-- **Audio in the background / lock-screen controls** — you already have
-  chapter audio and Bible in One Year audio; a webview handles this badly and
-  natively it is a genuine improvement
-
-You do not need all of these. You need enough that a reviewer opening the app
-cannot say "this is the website".
-
-### 3. The app currently has no notifications at all
-
-`components/AppShell.tsx:1732` disables web push inside the native app, and
-nothing replaces it. So someone who installs from the App Store gets *fewer*
-features than the website: no daily reading reminder, no streak nudge, no
-group activity. Daily reminders are the core retention loop — shipping without
-them would be worse than not shipping.
-
-This needs `@capacitor/push-notifications`, APNs certificates, and a device-token
-table alongside the existing web-push subscriptions.
+No Apple account, no Mac, no money. One sitting.
 
 ---
 
-## Review mechanics
+## The three stages
 
-### A reviewer must be able to get in
+| | When | What it is |
+|---|---|---|
+| **1. Before payday** | now → 31 Oct | Build the app. Everything that doesn't need a paid Apple account. |
+| **2. After payday** | 31 Oct → ~15 Nov | £79 enrolment, then the Apple-gated pieces + TestFlight. |
+| **3. Submit** | ~15 Nov → 23 Nov | Store listing, privacy, reviewer access. **Submit 23 Nov, launch 9 Dec.** |
 
-Anonymous accounts were turned off on 2026-10-06, so the app opens on a signup
-wall. Apple's reviewer will not create an account with a real address.
+Two and a half weeks between submission and launch is deliberate: first
+submissions of app-shaped-websites usually get at least one conversation with
+review, and you want room for it rather than a panic in December.
 
-- Create a permanent demo account and put the credentials in the **App Review
-  Information** notes
-- Make sure it has data: a plan in progress, some notes, a group — a reviewer
-  who sees an empty app is more likely to invoke 4.2
+---
 
-### User-generated content (Guideline 1.2)
+## Stage 1 — now, before payday
 
-Apple requires four things for apps with UGC. Three are done:
+**A free Apple ID removes the £79, not the Mac.** Xcode only runs on macOS,
+and you need it to compile anything. With a free account you can build and run
+on your own iPhone, but the profile expires every 7 days and you reinstall.
+Sort out Mac access early — buy, borrow, or rent a cloud Mac at roughly
+£25/month.
 
-| Requirement | Status |
+### Can be written on Windows
+
+| Task | Why |
 |---|---|
-| A way to report offensive content | Done — posts, comments, replies, profiles, event members |
-| A way to block abusive users | Done — including DM unblock |
-| Published developer contact | Done — `app/contact` |
-| Filter objectionable content before it appears | **Partial** |
+| Capacitor install + `capacitor.config.ts` | **Start here** (above) |
+| Offline reading — cache current chapter + today's plan day | Recommended. Biggest 4.2 answer and genuinely useful |
+| Native share sheet for verses and insight cards | Recommended |
+| Haptics on streak and chapter-complete moments | Recommended |
+| **Local** reading reminders (`@capacitor/local-notifications`) | Recommended. Works on a free account — no Apple config at all |
+| Background / lock-screen audio controls for chapter + Bible in One Year | Recommended. Webview handles this badly; real improvement |
+| Sign in with Apple — button and Supabase call, behind a flag | **Apple requires** (4.8). Code now, configure in Stage 2 |
+| Remote push — registration + device-token table, behind a flag | Recommended. Code now, certificates in Stage 2 |
+| Demo account for the reviewer, with real data in it | **Apple requires**. Guests are off, so review hits a signup wall |
+| Confirm signup actually enforces the 13+ the terms claim | **Apple requires** (age rating) |
+| Draft the App Privacy answers | **Apple requires**. Entered in Stage 3, but writing them now is free |
 
-The gap is the last one and the response commitment: Apple expects you to act
-on reports **within 24 hours**. `/admin/reports` is a manual queue with one
-person reading it. Either commit to checking it daily, or put automated
-filtering in front of posts. Say which in the review notes.
+### Needs Mac + Xcode
 
-### App Privacy ("nutrition label")
+| Task | Notes |
+|---|---|
+| `npx cap add ios`, `pod install` | CocoaPods is macOS-only |
+| Info.plist: background audio, notification strings | Free account is fine |
+| Build and run on your own iPhone | Free account; 7-day profile, reinstall weekly |
+| Test offline, audio, share, haptics on a real device | The simulator lies about all four |
 
-Not started. You declare, per data type, what you collect and whether it is
-linked to identity or used for tracking. From the code you will need to cover
-at least: email address, name, user content (posts, notes, prayers), identifiers,
-usage data, and diagnostics. Also the third parties in the privacy policy —
-OpenAI, Google, Supabase, AWS.
-
-**Ads are already off in the native build** (`components/AdSlot.tsx:106`), which
-is worth a lot here: no IDFA, no App Tracking Transparency prompt, no
-"Data Used to Track You" section. Keep it that way.
-
-### Age rating
-
-Open DMs, group chat and a public feed. Answer the questionnaire honestly —
-expect 12+ at least. Under-13 would drag in COPPA and a parental-consent flow,
-so if the terms already say 13+, make sure signup actually enforces it.
+**Not possible on a free account at all** — these are Stage 2 by force, not by
+choice: Push Notifications, Sign in with Apple, App Groups (so home-screen
+widgets wait too), TestFlight.
 
 ---
 
-## Payments — nothing to do
+## Stage 2 — after payday
 
-Worth stating plainly because it is the other classic rejection: the app is
-free, Stripe is gone, and nothing digital is sold inside it. Physical goods
-bought on the open web are explicitly outside the in-app-purchase rules
-(3.1.3(e)/3.1.5), so external links to physical items are allowed. If a
-*digital* subscription or unlock ever comes back inside the app, it must go
-through IAP at 15–30%.
-
----
-
-## Store listing assets
-
-None of this exists yet:
-
-- App icon, 1024×1024, no transparency, no rounded corners
-- Screenshots: 6.9" iPhone required; 6.5" if you support older; iPad set if you
-  declare iPad support (declaring it means it must actually work on iPad —
-  easier to ship iPhone-only first)
-- Name (30 chars), subtitle (30), keywords (100), description
-- Support URL, marketing URL, privacy policy URL — all exist on the site
-- "What's New" text
-- Export compliance answer (uses HTTPS → exempt, but you must answer)
+1. Enrol in the Apple Developer Program, £79/yr. **Do this first** — approval
+   can take a few days, and everything below is blocked on it.
+2. Sign in with Apple: Services ID, key, Supabase provider, then switch on the
+   button written in Stage 1. *(Apple requires — 4.8)*
+3. Remote push: APNs key, Push Notifications capability, switch on the
+   registration written in Stage 1.
+4. Distribution certificate and provisioning profile.
+5. TestFlight build to yourself and a few readers. First real multi-device
+   test.
+6. Home-screen widget — verse of the day. *(Recommended. Needs App Groups,
+   which is why it waits. Reviewers notice widgets.)*
 
 ---
 
-## Suggested order
+## Stage 3 — submit
 
-1. Find out whether a shell exists, and sort out Mac access. Everything is
-   blocked behind this.
-2. Apple Developer Program enrolment — £79/yr, and it can take days to
-   approve. Start it early because Sign in with Apple needs it.
-3. Sign in with Apple on the website. It is useful on the web anyway, and it
-   is the one blocker you can clear without a Mac.
-4. Build the Capacitor shell properly: push notifications first, then offline
-   reading, then share and haptics.
-5. Demo account, App Privacy answers, age rating, review notes.
-6. Icon and screenshots.
-7. Submit, and expect at least one rejection — 4.2 is a judgement call and
-   first submissions of wrapper apps usually get a conversation.
+1. App icon 1024×1024, and 6.9" iPhone screenshots.
+2. Name, subtitle, keywords, description, "What's New".
+3. App Privacy answers entered. Ads stay off in the native build — that keeps
+   IDFA, the tracking prompt and the whole "Data Used to Track You" section
+   out of it. Protect that.
+4. Age rating questionnaire.
+5. App Review notes: demo credentials, and how reports are handled within 24
+   hours. *(Apple requires — 1.2)*
+6. Export compliance: HTTPS only, exempt, but you still answer it.
+7. **Submit 23 Nov.** Review is usually 24–48 hours. Budget for one rejection.
+8. **Launch 9 Dec.**
+
+iPhone only for the first release. Declaring iPad support means it has to
+actually work on iPad, and that is a second round of screenshots and layout
+testing for no launch-day benefit.
 
 ---
 
-## Honest assessment
+## Technical notes
 
-The compliance work from September was the hard, boring half and it is real:
-deletion, reporting, blocking, guidelines, AI disclosure, no payments. That
-clears most of the things that get apps rejected on policy.
+### What already works
 
-What is left is not policy, it is **building an actual app**. A webview with a
-user-agent string will be rejected under 4.2, and should be — it would also be
-a worse product than the website, because notifications are off. The work that
-makes it pass review is the same work that makes it worth installing: push,
-offline, widgets, proper audio.
+Stage 1 compliance shipped 2026-09-21 (`051080bcb`): in-app account deletion,
+report and block across posts/comments/profiles, community guidelines, terms
+at signup, AI disclosure on Little Louis, all payment paths removed, and the
+native switches in `lib/nativeApp.ts`. That is most of what gets apps rejected
+on policy, and it is done.
 
-Budget weeks, not days, and Mac access is the first domino.
+Ads are already disabled inside the native build
+(`components/AdSlot.tsx:106`).
+
+### The one unresolved decision
+
+Capacitor can either load `https://www.mybiblebuddy.net` remotely via
+`server.url`, or bundle web assets locally. Remote loading is far simpler for
+a server-rendered Next app, and it is also what Guideline 4.2 is written to
+catch. The answer is not to avoid remote loading — it is to put enough real
+native capability around it that a reviewer cannot call it a repackaged
+website. That is why offline, audio, share, haptics and push are on the Stage 1
+list rather than treated as nice-to-haves.
+
+### Notifications are a product gap, not just a review one
+
+`components/AppShell.tsx:1732` disables web push inside the native app and
+nothing replaces it today. Shipping without notifications would make the App
+Store version *worse* than the website — daily reminders are the retention
+loop. Local notifications in Stage 1 cover the daily reading reminder without
+any Apple configuration; remote push in Stage 2 covers group activity and
+streaks.
+
+### Reports and the 24-hour rule
+
+`/admin/reports` is a manual queue read by one person. Apple expects reports
+acted on within 24 hours. Either commit to checking it daily and say so in the
+review notes, or put automated filtering in front of posts before submission.
