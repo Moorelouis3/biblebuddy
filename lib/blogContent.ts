@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-18-explained",
+    title: "Exodus 18 Explained: Jethro's Visit and Israel's First Judges",
+    description:
+      "Exodus 18 explained verse by verse: Jethro reunites Moses with Zipporah, declares the LORD greater than all gods, and gives Moses the plan for Israel's first judges.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-18-explained",
+    publishedAt: "2026-10-11",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-18-explained.jpg",
+    groupPost: {
+      title: "Exodus 18 Explained 📖",
+      content:
+        "No plague. No enemy. Just a father in law showing up.\n\n📌 Moses is about to burn out, and it takes an outsider to see it.\n\n📖 Jethro brings Zipporah and the boys back to camp.\n📖 Jethro declares the LORD greater than all gods.\n📖 The line in front of Moses runs from morning to night.\n\nNew article on:\n🟢 what the names **Gershom and Eliezer** mean\n🟢 why Jethro says **the thing thou doest is not good**\n🟢 how one conversation built Israel's first **court system**\n\nWhat are you still carrying alone that you haven't asked anyone to share? 🙏",
+    },
+  },
+  {
     slug: "exodus-17-explained",
     title: "Exodus 17 Explained: Water From the Rock and the Fight With Amalek",
     description:
