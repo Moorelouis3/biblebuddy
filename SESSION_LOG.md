@@ -7514,3 +7514,7 @@ Next up: Acts 5
 ## 2026-10-11T12:57:59Z (hourly chapter notes run)
 Chapter: Acts 5 | Duration: 12 min | Sections: 8 | Cards: 37 | Status: pass
 Next up: Acts 6
+
+## 2026-10-11T14:04:12Z (hourly chapter notes run)
+Chapter: Acts 6 | Duration: 17 min | Sections: 7 | Cards: 28 | Status: pass
+Next up: Acts 7
