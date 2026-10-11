@@ -59980,6 +59980,59 @@
           "at": "2026-10-10T23:00:55Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 13,
+      "startedAt": "2026-10-10T23:46:09Z",
+      "finishedAt": "2026-10-11T00:00:52Z",
+      "durationMinutes": 14.7,
+      "sections": 8,
+      "cards": 48,
+      "verses": 38,
+      "notes": "New chapter, normal forward progress (redo backlog and priority queue were both empty). Jesus washes the disciples' feet, gives the new commandment, and foretells Judas's betrayal and Peter's denial.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-10T23:46:09Z"
+        },
+        {
+          "name": "target chapter determined: John 13 (redo queue empty, normal forward progress)",
+          "at": "2026-10-10T23:47:00Z"
+        },
+        {
+          "name": "KJV text fetched for John 13 (raw.githubusercontent.com Bible-kjv mirror)",
+          "at": "2026-10-10T23:47:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-10T23:47:43Z"
+        },
+        {
+          "name": "source file written: lib/johnThirteenSource.ts (8 sections, 48 cards)",
+          "at": "2026-10-10T23:57:30Z"
+        },
+        {
+          "name": "style checker clean: python3 scripts/check_bible_note_style.py (0 problems)",
+          "at": "2026-10-10T23:57:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call, preserveExactPhraseBodies extended to John 13)",
+          "at": "2026-10-10T23:58:00Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('john', 13) -> 8 sections, 48 cards",
+          "at": "2026-10-11T00:00:21Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-10-11T00:00:21Z"
+        },
+        {
+          "name": "progress log files updated",
+          "at": "2026-10-11T00:00:52Z"
+        }
+      ]
     }
   ]
 }

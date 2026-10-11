@@ -1080,6 +1080,7 @@ import { JOHN_NINE_PERSONAL_SECTIONS } from "./johnNineSource";
 import { JOHN_TEN_PERSONAL_SECTIONS } from "./johnTenSource";
 import { JOHN_ELEVEN_PERSONAL_SECTIONS } from "./johnElevenSource";
 import { JOHN_TWELVE_PERSONAL_SECTIONS } from "./johnTwelveSource";
+import { JOHN_THIRTEEN_PERSONAL_SECTIONS } from "./johnThirteenSource";
 import { ACTS_1_28_PERSONAL_SECTIONS } from "./actsOneToTwentyEightPersonalNotes";
 import { ROMANS_1_8_PERSONAL_SECTIONS } from "./romansOneToEightPersonalNotes";
 import { ROMANS_9_16_PERSONAL_SECTIONS } from "./romansNineToSixteenPersonalNotes";
@@ -1426,7 +1427,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "matthew" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16 || section.chapter === 17 || section.chapter === 18 || section.chapter === 19 || section.chapter === 20 || section.chapter === 21 || section.chapter === 22 || section.chapter === 23 || section.chapter === 24 || section.chapter === 25 || section.chapter === 26 || section.chapter === 27 || section.chapter === 28)) ||
     (normalizeBook(book) === "mark" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16)) ||
     (normalizeBook(book) === "luke" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16 || section.chapter === 17 || section.chapter === 18 || section.chapter === 19 || section.chapter === 20 || section.chapter === 21 || section.chapter === 22 || section.chapter === 23 || section.chapter === 24)) ||
-    (normalizeBook(book) === "john" && section.chapter >= 1 && section.chapter <= 12);
+    (normalizeBook(book) === "john" && section.chapter >= 1 && section.chapter <= 13);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4271,6 +4272,10 @@ function applyPersonalJohnElevenStudySections() {
 
 function applyPersonalJohnTwelveStudySections() {
   replaceStudySectionsForBookRange("john", 12, 12, JOHN_TWELVE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJohnThirteenStudySections() {
+  replaceStudySectionsForBookRange("john", 13, 13, JOHN_THIRTEEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalActsOneThroughTwentyEightStudySections() {
@@ -11989,6 +11994,7 @@ applyPersonalJohnNineStudySections();
 applyPersonalJohnTenStudySections();
 applyPersonalJohnElevenStudySections();
 applyPersonalJohnTwelveStudySections();
+applyPersonalJohnThirteenStudySections();
 applyPersonalActsOneThroughTwentyEightStudySections();
 applyPersonalRomansOneThroughEightStudySections();
 applyPersonalRomansNineThroughSixteenStudySections();
