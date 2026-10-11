@@ -1,0 +1,92 @@
+# Build the iPhone app on a real Mac, for free.
+#
+# Louis has no Mac, and Xcode only runs on macOS - which looked like a hard
+# blocker on roughly a third of the App Store work. It is not: this repo is
+# public, and GitHub gives public repositories free minutes on standard
+# hosted runners, macOS included. Every push gets a Mac with Xcode and
+# CocoaPods on it.
+#
+# What this proves, without anyone owning a Mac:
+#   - the Capacitor iOS project generates
+#   - the pods install
+#   - the app actually compiles
+#
+# What it cannot do is put the app on Louis's phone. A runner in a
+# datacenter has no cable to Berlin. That gap closes in Stage 2 through
+# TestFlight, which installs over the air - so even then, no physical Mac.
+#
+# Unsigned simulator build on purpose. Signing needs the paid membership;
+# this is here to catch "it does not compile" months before that matters.
+
+name: iOS build
+
+on:
+  push:
+    paths:
+      - "capacitor.config.ts"
+      - "native/**"
+      - "package.json"
+      - ".github/workflows/ios-build.yml"
+  # So it can be run by hand from the Actions tab without pushing anything.
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # --no-audit --no-fund: this installs 600 packages to run two Capacitor
+      # commands, and the audit output is noise that hides real failures.
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Show the Capacitor config being used
+        run: npx cap doctor || true
+
+      # ios/ is not committed - it is generated output, and regenerating it
+      # here keeps it honest against capacitor.config.ts rather than drifting.
+      - name: Generate the iOS project
+        run: npx cap add ios
+
+      - name: Sync web assets and plugins
+        run: npx cap sync ios
+
+      - name: Check the plugins actually linked
+        run: npx cap ls ios
+
+      # CODE_SIGNING_ALLOWED=NO because there is no certificate yet and this
+      # is not trying to produce something installable - only to prove the
+      # project compiles.
+      - name: Build for the simulator
+        run: |
+          xcodebuild \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      # Kept so the generated project can be downloaded and inspected -
+      # Info.plist, the pod versions, what Capacitor actually wrote - without
+      # needing a Mac to look.
+      - name: Upload the generated iOS project
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-project
+          path: |
+            ios/App/App/Info.plist
+            ios/App/Podfile
+            ios/App/Podfile.lock
+          retention-days: 14
+          if-no-files-found: warn
