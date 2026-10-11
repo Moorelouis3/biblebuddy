@@ -8,7 +8,15 @@ import { supabase } from "./supabaseClient";
 export const TERMS_VERSION = "2026-09-21";
 const PENDING_KEY = "bb:pending-terms-acceptance";
 
-type AcceptanceMethod = "email_signup" | "guest_upgrade" | "google_signup" | "google_login" | "google_landing";
+type AcceptanceMethod =
+  | "email_signup"
+  | "guest_upgrade"
+  | "google_signup"
+  | "google_login"
+  | "google_landing"
+  // Sign in with Apple, required by App Review Guideline 4.8 alongside Google.
+  | "apple_signup"
+  | "apple_login";
 
 /** Call right before redirecting to Google. */
 export function markTermsAcceptancePending(method: AcceptanceMethod) {

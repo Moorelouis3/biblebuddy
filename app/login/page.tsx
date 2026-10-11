@@ -8,6 +8,7 @@ import AppLoadingScreen from "@/components/AppLoadingScreen";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "../../lib/supabaseClient";
+import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending } from "../../lib/termsAcceptance";
 import { hasCachedSupabaseSession } from "../../lib/authBoot";
 
@@ -195,6 +196,14 @@ export default function LoginPage() {
             <GoogleLogo />
             <span>Continue with Google</span>
           </button>
+          {/* Guideline 4.8: offering Google means Apple must be offered too.
+              Renders nothing until the Apple side is configured. */}
+          <SignInWithAppleButton
+            disabled={loading}
+            redirectTo={typeof window !== "undefined" ? `${window.location.origin}${nextPath()}` : undefined}
+            onBeforeSignIn={() => markTermsAcceptancePending("apple_login")}
+            onError={(message) => setError(message)}
+          />
           <p className="mt-2 text-center text-[11px] font-semibold leading-5 text-[#667085]">By continuing you agree to our <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>, <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a> and <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.</p>
 
           <div className="my-5 flex items-center gap-3 text-xs font-black uppercase tracking-[0.16em] text-[#9aa4b2]">

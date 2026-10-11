@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "../../lib/supabaseClient";
+import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending, recordTermsAcceptance } from "../../lib/termsAcceptance";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { reportCloserSignup } from "../../lib/closerSignup";
@@ -376,6 +377,14 @@ export default function SignupPage() {
               <GoogleLogo />
               <span>Continue with Google</span>
             </button>
+          {/* Guideline 4.8: offering Google means Apple must be offered too.
+              Renders nothing until the Apple side is configured. */}
+          <SignInWithAppleButton
+            disabled={loading}
+            redirectTo={typeof window !== "undefined" ? `${window.location.origin}${signupNextPath()}` : undefined}
+            onBeforeSignIn={() => markTermsAcceptancePending("apple_signup")}
+            onError={(message) => setError(message)}
+          />
             <p className="text-center text-[11px] font-semibold leading-5 text-[#526075]">
               By continuing you agree to our{" "}
               <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>,{" "}
