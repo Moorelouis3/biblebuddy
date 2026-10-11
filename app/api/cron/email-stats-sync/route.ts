@@ -88,6 +88,72 @@ export async function GET(request: NextRequest) {
     }
   }
 
+  /**
+   * Campaigns we send ourselves, through SES (2026-10-11).
+   *
+   * The block above discovers sends from Systeme's API, so anything sent
+   * through our own pipeline was invisible to the analytics page - the Moses
+   * email went to 5,207 people and left no row at all. Worse, Systeme never
+   * returns opens, so those rows are filled in by hand; SES gives us real
+   * delivery, open and click events for free in email_events.
+   *
+   * Unique PEOPLE, not events: SES fires an Open every time a client loads the
+   * pixel, so one reader who opens an email three times is one open, not three.
+   */
+  const sesSynced: string[] = [];
+  try {
+    const { data: own } = await supabase
+      .from("email_campaigns")
+      .select("campaign_id, subject, started_at, completed_at")
+      .not("started_at", "is", null)
+      .order("started_at", { ascending: false })
+      .limit(25);
+
+    for (const campaign of own || []) {
+      const seen: Record<string, Set<string>> = {};
+      for (let page = 0; page < 60; page += 1) {
+        const { data: events, error: eventsError } = await supabase
+          .from("email_events")
+          .select("event_type, email")
+          .eq("campaign_id", campaign.campaign_id)
+          .range(page * 1000, page * 1000 + 999);
+        if (eventsError) throw new Error(eventsError.message);
+        if (!events?.length) break;
+        for (const event of events) {
+          const kind = String(event.event_type || "").toLowerCase();
+          (seen[kind] ||= new Set()).add(event.email);
+        }
+        if (events.length < 1000) break;
+      }
+
+      const { count: sentCount } = await supabase
+        .from("email_campaign_sends")
+        .select("*", { count: "exact", head: true })
+        .eq("campaign_id", campaign.campaign_id)
+        .eq("status", "sent");
+
+      const { error: upsertError } = await supabase.from("email_campaign_stats").upsert(
+        {
+          id: campaign.campaign_id,
+          name: campaign.subject,
+          kind: "ses",
+          sent_at: campaign.started_at,
+          recipients: sentCount ?? 0,
+          opens: seen.open?.size ?? 0,
+          clicks: seen.click?.size ?? 0,
+          checked_at: new Date().toISOString(),
+        },
+        { onConflict: "id" },
+      );
+      // site_visits is deliberately left alone - the block below computes it
+      // from arrivals, and overwriting it with 0 here would wipe that work.
+      if (upsertError) console.error("[EMAIL_SYNC] ses upsert failed:", upsertError.message);
+      else sesSynced.push(campaign.campaign_id);
+    }
+  } catch (error) {
+    console.error("[EMAIL_SYNC] ses campaign sync failed:", error instanceof Error ? error.message : error);
+  }
+
   try {
     const { data: campaigns, error } = await supabase
       .from("email_campaign_stats")
@@ -97,7 +163,7 @@ export async function GET(request: NextRequest) {
       .limit(40);
     if (error) throw new Error(error.message);
     if (!campaigns?.length) {
-      return NextResponse.json({ ok: true, updated: 0, discovered, note: "No campaigns recorded yet." });
+      return NextResponse.json({ ok: true, updated: 0, discovered, sesSynced, note: "No campaigns recorded yet." });
     }
 
     // Paged in created_at order inside each campaign's own window. The old
@@ -148,7 +214,7 @@ export async function GET(request: NextRequest) {
       updated.push({ name: campaign.name, siteVisits: people.size });
     }
 
-    return NextResponse.json({ ok: true, updated: updated.length, campaigns: updated, discovered });
+    return NextResponse.json({ ok: true, updated: updated.length, campaigns: updated, discovered, sesSynced });
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Sync failed." },
