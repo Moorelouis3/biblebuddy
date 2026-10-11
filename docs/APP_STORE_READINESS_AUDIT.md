@@ -6,22 +6,49 @@ is paid at the end of October; nearly all of the build happens before then.
 
 ---
 
-## Start here
+## 🟦 24% ready
 
-**Add Capacitor to the project and scaffold the iOS app.** Nothing else can be
-worked on until the project exists, and it is all Windows work:
-
-```bash
-npm i @capacitor/core @capacitor/cli
-npx cap init "Bible Buddy" net.mybiblebuddy.app --web-dir=public
+```
+[██████░░░░░░░░░░░░░░░░░░░]  24 / 100
 ```
 
-Then write `capacitor.config.ts` so the shell appends `BibleBuddyApp` to the
-user agent — `lib/nativeApp.ts:9` already watches for exactly that string, so
-the native switches that shipped in September start working the moment the
-shell runs.
+| | |
+|---|---|
+| **Compliance and legal** | 🟩 done — 17 of 17 points |
+| **The app itself** | 🟥 barely started — 7 of 48 |
+| **Apple account and signing** | ⬜ not started — 0 of 21 |
+| **Store listing and submission** | ⬜ not started — 0 of 14 |
 
-No Apple account, no Mac, no money. One sitting.
+The number is weighted by effort, not by counting tasks — see *Scoring* at the
+bottom, where every point is listed. It is low because September's work, real
+as it is, was the policy half. The app half is a shell, an offline cache and
+nothing else yet.
+
+**Honest read:** 24% with six weeks to the 23 Nov target is on track, but only
+if the Stage 1 list below gets worked through steadily. The long poles are
+background audio, push and device testing — not the paperwork.
+
+---
+
+## Start here
+
+**Local reading reminders** — `@capacitor/local-notifications`. A daily
+notification scheduled on the device itself: no APNs, no certificates, no
+Apple account, and it works on a free one. It closes the worst gap in the
+app (an App Store install currently has no reminders at all), and it is real
+native capability for Guideline 4.2. All Windows work.
+
+Done already, this session:
+
+- ✅ Capacitor installed, `capacitor.config.ts` written with
+  `appendUserAgent: "BibleBuddyApp"` — the string `lib/nativeApp.ts:9` has
+  been waiting for since September, which switches on every native behaviour
+  already shipped.
+- ✅ Offline reading, by registering the service worker for everyone. It was
+  only ever registered as a side effect of enabling web push, so the whole
+  offline cache in `public/service-worker.js` existed only for readers who had
+  turned notifications on — and never in the app. It caches every page you
+  visit and serves it back when the network is gone.
 
 ---
 
@@ -51,8 +78,8 @@ Sort out Mac access early — buy, borrow, or rent a cloud Mac at roughly
 
 | Task | Why |
 |---|---|
-| Capacitor install + `capacitor.config.ts` | **Start here** (above) |
-| Offline reading — cache current chapter + today's plan day | Recommended. Biggest 4.2 answer and genuinely useful |
+| ~~Capacitor install + `capacitor.config.ts`~~ | ✅ done |
+| ~~Offline reading~~ | ✅ done — service worker now registers for everyone, web and app |
 | Native share sheet for verses and insight cards | Recommended |
 | Haptics on streak and chapter-complete moments | Recommended |
 | **Local** reading reminders (`@capacitor/local-notifications`) | Recommended. Works on a free account — no Apple config at all |
@@ -139,10 +166,12 @@ list rather than treated as nice-to-haves.
 
 ### Notifications are a product gap, not just a review one
 
-`components/AppShell.tsx:1732` disables web push inside the native app and
-nothing replaces it today. Shipping without notifications would make the App
-Store version *worse* than the website — daily reminders are the retention
-loop. Local notifications in Stage 1 cover the daily reading reminder without
+The native app has no notifications at all today. Web push is deliberately off
+there — remote notifications go through APNs, not the Push API — and nothing
+has replaced it yet. The service worker *does* now register in the app, so
+offline caching works, but a service worker cannot deliver a reminder.
+Shipping like this would make the App Store version *worse* than the website,
+and daily reminders are the retention loop. Local notifications in Stage 1 cover the daily reading reminder without
 any Apple configuration; remote push in Stage 2 covers group activity and
 streaks.
 
@@ -151,3 +180,79 @@ streaks.
 `/admin/reports` is a manual queue read by one person. Apple expects reports
 acted on within 24 hours. Either commit to checking it daily and say so in the
 review notes, or put automated filtering in front of posts before submission.
+
+---
+
+## Scoring
+
+Where the percentage at the top comes from. Points are rough effort, so the
+number tracks work rather than tick-boxes — writing the listing copy is not
+the same size as building push. Update the ticks as things land and the
+header number with them.
+
+### Compliance and legal — 17 / 17 🟩
+
+| ✓ | Item | Pts |
+|---|---|---|
+| ✅ | In-app account deletion | 3 |
+| ✅ | Report and block across posts, comments, profiles, members | 5 |
+| ✅ | Community guidelines + terms agreement at signup | 2 |
+| ✅ | AI disclosure and consent on Little Louis | 2 |
+| ✅ | All payment paths removed | 2 |
+| ✅ | Ads off in the native build | 1 |
+| ✅ | Privacy policy, terms and contact pages | 2 |
+
+### The app itself — 7 / 48 🟥
+
+| ✓ | Item | Pts | Where |
+|---|---|---|---|
+| ✅ | Capacitor installed and configured | 3 | Windows |
+| ✅ | Offline page caching live for every reader | 4 | Windows |
+| ☐ | Local reading reminders | 4 | Windows |
+| ☐ | Background / lock-screen audio | 4 | Windows + device |
+| ☐ | Remote push — registration code behind a flag | 4 | Windows |
+| ☐ | Sign in with Apple — button and call behind a flag | 3 | Windows |
+| ☐ | Native share sheet | 2 | Windows |
+| ☐ | Haptics | 1 | Windows |
+| ☐ | Offline download for a Bible Year day (audio included) | 3 | Windows |
+| ☐ | `cap add ios`, pods, Info.plist | 3 | **Mac** |
+| ☐ | Build and run on a real iPhone | 3 | **Mac** |
+| ☐ | Device testing: offline, audio, share, haptics | 6 | **Mac** |
+| ☐ | Demo account with real data for the reviewer | 1 | Windows |
+| ☐ | Confirm signup enforces 13+ | 1 | Windows |
+| ☐ | App Privacy answers drafted | 2 | Windows |
+| ☐ | Service worker verified working in WKWebView | 4 | **Mac** |
+
+### Apple account and signing — 0 / 21 ⬜
+
+| ✓ | Item | Pts |
+|---|---|---|
+| ☐ | Apple Developer Program enrolment | 2 |
+| ☐ | Sign in with Apple: Services ID, key, Supabase provider | 3 |
+| ☐ | APNs key and Push Notifications capability | 3 |
+| ☐ | Distribution certificate and provisioning profile | 3 |
+| ☐ | TestFlight round with real testers | 6 |
+| ☐ | Home-screen widget (needs App Groups) | 4 |
+
+### Store listing and submission — 0 / 14 ⬜
+
+| ✓ | Item | Pts |
+|---|---|---|
+| ☐ | App icon 1024×1024 | 2 |
+| ☐ | Screenshots | 5 |
+| ☐ | Name, subtitle, keywords, description | 2 |
+| ☐ | App Privacy answers entered | 2 |
+| ☐ | Age rating questionnaire | 1 |
+| ☐ | Review notes, demo credentials, 24-hour report commitment | 1 |
+| ☐ | Export compliance | 1 |
+
+### Known unknowns
+
+Not scored, because nobody has checked yet and guessing would move the number
+dishonestly:
+
+- Whether a Capacitor shell already exists on a Mac somewhere
+- Whether service workers behave in WKWebView with `server.url` remote
+  loading — scored above as work, but it may turn out to need a different
+  offline approach entirely
+- Whether an Apple Developer account already exists under another address

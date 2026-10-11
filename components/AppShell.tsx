@@ -1724,10 +1724,37 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
+  // Register the service worker for everyone, logged in or not, web or app.
+  //
+  // It was only ever registered as a side effect of setting up web push, in
+  // three places, all of them behind "is push supported and is this person
+  // logged in". So the entire offline story - public/service-worker.js caches
+  // every page you visit and serves it back when the network is gone - only
+  // existed for people who had turned notifications on. Anyone who declined
+  // got nothing, and the native app, where push is deliberately off, got
+  // nothing at all.
+  //
+  // Registering is idempotent, so the push paths can keep calling it.
+  //
+  // NOT in local dev: the worker already passes every request straight to the
+  // network on localhost, and having it installed there mostly produces
+  // confusing stale-cache behaviour after a rebuild.
   useEffect(() => {
     if (typeof window === "undefined") return;
-    // Web push needs the service worker, which the native app does not run —
-    // treating push as unsupported there hides every web push prompt/nudge.
+    if (!("serviceWorker" in navigator)) return;
+    const host = window.location.hostname;
+    if (host === "localhost" || host === "127.0.0.1" || host === "[::1]") return;
+    navigator.serviceWorker.register("/service-worker.js").catch((error) => {
+      console.warn("[SW] registration failed:", error);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    // Web push stays off in the native app: remote notifications there go
+    // through APNs, not the Push API, so every web push prompt and nudge
+    // should stay hidden. This is about push only — the service worker above
+    // does register in the app, and its offline caching works there.
     const supported =
       !isNativeApp() && "Notification" in window && "serviceWorker" in navigator && "PushManager" in window;
     setPushSupported(supported);
