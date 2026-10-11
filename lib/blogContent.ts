@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-17-explained",
+    title: "Exodus 17 Explained: Water From the Rock and the Fight With Amalek",
+    description:
+      "Exodus 17 explained verse by verse: water from the rock at Horeb, Massah and Meribah, and Israel's battle with Amalek while Moses holds up his hands.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-17-explained",
+    publishedAt: "2026-10-11",
+    readTime: "14 min read",
+    image: "/blog-banners/exodus-17-explained.jpg",
+    groupPost: {
+      title: "Exodus 17 Explained 📖",
+      content:
+        "Water solved. Now an enemy shows up at the same camp.\n\n📌 Israel wins the battle only while Moses keeps his hands up.\n\n📖 Thirsty Israel accuses Moses of trying to kill them.\n📖 God stands on the rock before Moses even strikes it.\n📖 Aaron and Hur hold up his tired arms until sundown.\n\nNew article on:\n🟢 what **Massah and Meribah** actually mean\n🟢 why **Joshua's** very first fight shows up here\n🟢 why Moses builds an altar called **Jehovahnissi**\n\nWhen was the last time you asked, is the LORD among us or not? 🙏",
+    },
+  },
+  {
     slug: "exodus-16-explained",
     title: "Exodus 16 Explained: Manna, Quail, and the First Sabbath Test",
     description:
