@@ -97,13 +97,15 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
     trackVotdEvent("votd_share", meta);
     if (userId) void upsertVotdEngagement(userId, entry.id, { shared_at: new Date().toISOString() });
     try {
-      if (typeof navigator !== "undefined" && navigator.share) {
-        await navigator.share({ title: "Verse of the Day - Bible Buddy", text, url });
-        return;
+      // Native share sheet in the app, Web Share on the web, clipboard last.
+      // "Copied" is only shown when something really was copied - inside the
+      // app this used to claim a copy after the real sheet failed to open.
+      const { shareContent } = await import("@/lib/nativeShare");
+      const outcome = await shareContent({ title: "Verse of the Day - Bible Buddy", text, url });
+      if (outcome === "copied") {
+        setShareCopied(true);
+        setTimeout(() => setShareCopied(false), 2000);
       }
-      await navigator.clipboard.writeText(`${text}\n${url}`);
-      setShareCopied(true);
-      setTimeout(() => setShareCopied(false), 2000);
     } catch {
       // Dismissed share sheet - nothing to report.
     }

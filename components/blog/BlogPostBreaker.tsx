@@ -22,15 +22,11 @@ export default function BlogPostBreaker({ articleSlug, path, title }: BlogPostBr
   const shareText = `Check out this Bible Buddy article: ${title}`;
 
   async function handleNativeShare() {
-    if (typeof navigator === "undefined" || !navigator.share) {
-      await handleCopyLink();
-      return;
-    }
-    try {
-      await navigator.share({ title, text: shareText, url: pageUrl });
-    } catch {
-      // User canceled the share sheet. Nothing to do.
-    }
+    // Native sheet inside the app, Web Share on the web, and only then the
+    // clipboard — which keeps its own "link copied" confirmation.
+    const { shareContent } = await import("@/lib/nativeShare");
+    const outcome = await shareContent({ title, text: shareText, url: pageUrl });
+    if (outcome === "failed") await handleCopyLink();
   }
 
   async function handleCopyLink() {
