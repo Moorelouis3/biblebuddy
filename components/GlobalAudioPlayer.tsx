@@ -1,6 +1,13 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import {
+  clearMediaSession,
+  setMediaSessionHandlers,
+  setMediaSessionPlaying,
+  setMediaSessionPosition,
+  setMediaSessionTrack,
+} from "@/lib/mediaSession";
 
 type AudioProgressState = {
   currentTime: number;
@@ -107,6 +114,9 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     setCurrentTime(state.currentTime);
     setDuration(state.duration);
     progressCallbackRef.current?.(state);
+    // Keeps the lock-screen scrubber and play/pause in step with the page.
+    setMediaSessionPlaying(isPlaying);
+    setMediaSessionPosition(audio);
   }
 
   function saveProgress(audio: HTMLAudioElement | null) {
@@ -227,6 +237,28 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     audio.playbackRate = playbackRate;
     audioRef.current = audio;
 
+    // Lock screen, Control Centre, headphone buttons and the car stereo.
+    // Chapter readings run twenty minutes and people listen with the phone
+    // in a pocket; without this, locking the screen leaves them with no way
+    // to pause short of unlocking and finding the tab again.
+    setMediaSessionTrack({ title: input.label || "Bible Buddy" });
+    setMediaSessionHandlers({
+      onPlay: () => void resume(),
+      onPause: () => pause(),
+      onSeek: (seconds) => {
+        if (!audioRef.current) return;
+        audioRef.current.currentTime = seconds;
+        notify(audioRef.current, !audioRef.current.paused, { force: true });
+      },
+      onSeekBy: (offset) => {
+        const current = audioRef.current;
+        if (!current) return;
+        const limit = Number.isFinite(current.duration) ? current.duration : current.currentTime;
+        current.currentTime = Math.min(Math.max(current.currentTime + offset, 0), limit);
+        notify(current, !current.paused, { force: true });
+      },
+    });
+
     audio.onloadedmetadata = () => {
       applySavedProgress(audio, key);
       notify(audio, true, { force: true });
@@ -263,6 +295,8 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
       setCurrentTime(0);
       audioRef.current = null;
       stopBackgroundMusic();
+      // Nothing is playing any more; take it off the lock screen.
+      clearMediaSession();
     };
 
     audio.onerror = () => {
