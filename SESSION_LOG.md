@@ -7506,3 +7506,7 @@ Next up: Acts 3
 ## 2026-10-11T10:59:04Z (hourly chapter notes run)
 Chapter: Acts 3 | Duration: 13 min | Sections: 6 | Cards: 31 | Status: pass
 Next up: Acts 4
+
+## 2026-10-11T12:00:41Z (hourly chapter notes run)
+Chapter: Acts 4 | Duration: 15 min | Sections: 7 | Cards: 40 | Status: pass
+Next up: Acts 5
