@@ -7490,3 +7490,7 @@ Still open:
   is a design call.
 
 Next: Mac, then npx cap add ios and a build onto a real iPhone.
+
+## 2026-10-11T07:58:06Z (hourly chapter notes run)
+Chapter: John 21 | Duration: 12 min | Sections: 7 | Cards: 42 | Status: pass
+Next up: Acts 1
