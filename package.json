@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",
+    "@capacitor/core": "^8.5.3",
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.86.0",
     "@tiptap/extension-color": "^3.13.0",
@@ -77,6 +78,7 @@
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.80.0",
+    "@capacitor/cli": "^8.5.3",
     "@tailwindcss/postcss": "^4",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^20",
