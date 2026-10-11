@@ -7427,3 +7427,7 @@ Next up: John 15
 ## 2026-10-11T02:02:21Z (hourly chapter notes run)
 Chapter: John 15 | Duration: 16 min | Sections: 6 | Cards: 30 | Status: pass
 Next up: John 16
+
+## 2026-10-11T02:56:22Z (hourly chapter notes run)
+Chapter: John 16 | Duration: 10 min | Sections: 6 | Cards: 43 | Status: pass
+Next up: John 17
