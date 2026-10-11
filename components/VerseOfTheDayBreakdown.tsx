@@ -300,13 +300,13 @@ export default function VerseOfTheDayBreakdown({
     trackVotdEvent("votd_share", meta);
     if (userId) void upsertVotdEngagement(userId, entry.id, { shared_at: new Date().toISOString() });
     try {
-      if (typeof navigator !== "undefined" && navigator.share) {
-        await navigator.share({ title: "Verse of the Day - Bible Buddy", text, url });
-        return;
+      // Native sheet in the app, Web Share on the web, clipboard last.
+      const { shareContent } = await import("@/lib/nativeShare");
+      const outcome = await shareContent({ title: "Verse of the Day - Bible Buddy", text, url });
+      if (outcome === "copied") {
+        setShareState("copied");
+        setTimeout(() => setShareState("idle"), 2000);
       }
-      await navigator.clipboard.writeText(`${text}\n${url}`);
-      setShareState("copied");
-      setTimeout(() => setShareState("idle"), 2000);
     } catch {
       // Share sheet dismissed or clipboard blocked - not an error worth showing.
     }

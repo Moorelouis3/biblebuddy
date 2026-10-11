@@ -63,17 +63,11 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
   const shareText = `Check out this Bible Buddy article: ${shareTitle}`;
 
   async function handleNativeShare() {
-    if (typeof navigator === "undefined" || !navigator.share) {
-      await handleCopyLink();
-      return;
-    }
-
+    // Native sheet inside the app, Web Share on the web, clipboard last.
     try {
-      await navigator.share({
-        title: shareTitle,
-        text: shareText,
-        url: pageUrl,
-      });
+      const { shareContent } = await import("@/lib/nativeShare");
+      const outcome = await shareContent({ title: shareTitle, text: shareText, url: pageUrl });
+      if (outcome === "failed") await handleCopyLink();
     } catch {
       // User canceled or platform rejected share. No UI error needed here.
     }

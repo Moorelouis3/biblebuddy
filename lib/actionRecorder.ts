@@ -138,6 +138,18 @@ export async function logActionToMasterActions(
           detail: { userId, actionType },
         })
       );
+
+      // A short buzz when something is actually finished - a chapter, a
+      // devotional day, a note written. Hooked in here rather than at the
+      // 50+ call sites for the same reason the event above is: this is the
+      // one place that already knows the difference between completing
+      // something and merely opening it.
+      //
+      // Silent on the web and on any phone with haptics off, and never
+      // awaited: nothing should wait on a vibration.
+      void import("@/lib/nativeShare")
+        .then(({ tapHaptic }) => tapHaptic(actionType.endsWith("_completed") ? "success" : "light"))
+        .catch(() => {});
     }
 
     // Rewards/currency were intentionally removed. The master action log now records behavior only.
