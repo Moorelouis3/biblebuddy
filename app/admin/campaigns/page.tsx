@@ -548,6 +548,19 @@ export default function CampaignsPage() {
                 )}
               </div>
 
+              {/* A draft with a date on it LOOKS scheduled and is not. The
+                  cron only picks up campaigns marked 'sending', so a date in
+                  the past on a draft means that day came and went and nothing
+                  was sent. Worth shouting about: the whole point of a date is
+                  believing it will happen. */}
+              {c.status === "draft" && c.scheduled_for && (
+                <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs font-semibold text-amber-900">
+                  {new Date(c.scheduled_for) < new Date()
+                    ? `This was dated ${whenLabel(c.scheduled_for)} and did not send — it is still a draft.`
+                    : `Dated ${whenLabel(c.scheduled_for)}, but it will not send: a draft is never picked up. Press “Arm for its date” to schedule it.`}
+                </p>
+              )}
+
               <div className="mt-3 flex flex-wrap items-center gap-2">
                 <label className="text-xs font-bold uppercase tracking-wide text-slate-500">Goes out</label>
                 <input
