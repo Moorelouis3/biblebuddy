@@ -60603,6 +60603,59 @@
           "at": "2026-10-11T10:01:30Z"
         }
       ]
+    },
+    {
+      "book": "Acts",
+      "chapter": 3,
+      "startedAt": "2026-10-11T10:45:56Z",
+      "finishedAt": "2026-10-11T10:58:45Z",
+      "durationMinutes": 12.8,
+      "sections": 6,
+      "cards": 31,
+      "verses": 26,
+      "notes": "New chapter, normal forward progress after Acts 2. Priority queue and style-redo backlog both confirmed empty. Mirrored lib/genesisThirtyOneSource.ts's exact raw-text formatting (blank line between every body line and every bullet) per the task brief's reference implementation. Split 'By Our Own Power Or Holiness' and 'Unto You First' / 'Turning Away From His Iniquities' into separate single-idea cards rather than bundling two beats into one card. All sections stayed at or under 6 verses, well under the enforceStudySectionVerseLimit(8) safety net that caused duplication on Acts 2, so no section splitting was needed. Extended preserveExactPhraseBodies to acts chapter 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-11T10:45:56Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-11T10:45:56Z"
+        },
+        {
+          "name": "target chapter determined: Acts 3 (new chapter, normal forward progress after Acts 2; priority queue and redo backlog both empty)",
+          "at": "2026-10-11T10:46:57Z"
+        },
+        {
+          "name": "KJV text fetched for Acts 3 (26 verses, raw.githubusercontent.com aruljohn/Bible-kjv)",
+          "at": "2026-10-11T10:47:20Z"
+        },
+        {
+          "name": "source file written: lib/actsThreeSource.ts (6 sections, 31 cards)",
+          "at": "2026-10-11T10:52:40Z"
+        },
+        {
+          "name": "style checker clean (31 cards, 0 problems) on first pass",
+          "at": "2026-10-11T10:53:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended, applyPersonalActsThreeStudySections added and called)",
+          "at": "2026-10-11T10:53:50Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('Acts', 3) returned 6 sections, 31 cards, verbatim, verse ranges 1-3/4-6/7-10/11-16/17-21/22-26 with no gaps",
+          "at": "2026-10-11T10:54:06Z"
+        },
+        {
+          "name": "tsc clean: npx tsc --noEmit -p . exited 0 with no output",
+          "at": "2026-10-11T10:55:40Z"
+        },
+        {
+          "name": "progress files logged: data/bible-notes-progress-log.json entry appended, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + totals updated",
+          "at": "2026-10-11T10:58:45Z"
+        }
+      ]
     }
   ]
 }
