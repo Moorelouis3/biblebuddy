@@ -1749,6 +1749,25 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  // The daily reading reminder inside the store apps.
+  //
+  // Web push never reaches them, so without this an App Store install has no
+  // reminder at all. A local notification is scheduled by the phone itself,
+  // which needs nothing from Apple. Only for signed-in readers - reminding a
+  // stranger to continue a plan they have not started is noise.
+  useEffect(() => {
+    if (!userId) return;
+    let cancelled = false;
+    void (async () => {
+      const { ensureDailyReminder } = await import("@/lib/nativeReminders");
+      if (cancelled) return;
+      await ensureDailyReminder();
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     // Web push stays off in the native app: remote notifications there go
