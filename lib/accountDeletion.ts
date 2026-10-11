@@ -65,6 +65,10 @@ const USER_OWNED_ROWS: Array<[table: string, column: string]> = [
   ["moderator_actions", "moderator_user_id"],
   ["moderator_settings", "user_id"],
   ["notes", "user_id"],
+  // APNs/FCM device tokens for the store apps. A token left behind after
+  // deletion is a live route to someone's phone for an account that no
+  // longer exists.
+  ["native_push_tokens", "user_id"],
   ["onboarding_dm_sent", "user_id"],
   ["people_progress", "user_id"],
   ["places_progress", "user_id"],
