@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-16-explained",
+    title: "Exodus 16 Explained: Manna, Quail, and the First Sabbath Test",
+    description:
+      "Exodus 16 explained verse by verse: Israel's hunger in the wilderness of Sin, the manna and quail God sends, and the first sabbath test before Sinai.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-16-explained",
+    publishedAt: "2026-10-11",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-16-explained.jpg",
+    groupPost: {
+      title: "Exodus 16 Explained 📖",
+      content:
+        "One month out of Egypt, and Israel is already out of food.\n\n📌 God answers hunger with bread that falls from the sky, one day at a time.\n\n📖 Quail cover the camp at evening, manna covers the ground at dawn.\n📖 Gather too much, and it spoils by morning.\n📖 Gather exactly an omer, and it's always enough.\n\nNew article on:\n🟢 why the **sabbath** test shows up weeks before Sinai\n🟢 what happens when people try to **hoard** tomorrow's bread\n🟢 how this chapter points straight at **John 6**\n\nWhat's the one thing you're most tempted to stockpile instead of trusting God with today? 🙏",
+    },
+  },
+  {
     slug: "exodus-15-explained",
     title: "Exodus 15 Explained: The Song of Moses and the Water at Marah",
     description:
