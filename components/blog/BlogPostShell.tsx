@@ -126,6 +126,14 @@ function isProverbsChapterPost(slug: string): boolean {
   return chapter >= 1 && chapter <= 31;
 }
 
+// Generic promo spacing, for every post that is not a Proverbs chapter.
+// Measured on the live exodus-14-explained: the first banner sat at 55% of
+// the article and the second at 74%, so a reader who stopped halfway was
+// never asked once. 250 puts it after the intro and the opening section -
+// still not above the intro, which Louis was clear about, but visible.
+const FIRST_PROMO_AFTER = 250;
+const WORDS_PER_PROMO = 1000;
+
 /**
  * How many banners a Proverbs post carries, and where they go.
  *
@@ -293,6 +301,7 @@ function withPromoSlots(
   children: ReactNode,
   postSlug: string,
   bibleYear?: { day: number; reading?: string },
+  introWords = 0,
 ): ReactNode[] {
   // Bible in One Year Study Notes get their own promo for that day instead of
   // the rotating generic banners (Louis, 2026-09-19). The Proverbs chapter
@@ -307,7 +316,16 @@ function withPromoSlots(
   };
   const nodes = Children.toArray(children);
   const out: ReactNode[] = [];
-  let wordsSincePromo = 0;
+  // The intro counts as words already read, and the first promo comes at
+  // FIRST_PROMO_AFTER rather than a full thousand (Louis, 2026-10-11).
+  //
+  // It used to start from zero and wait for 1,000 words of section cards. By
+  // then a typical chapter post is four fifths over, and because a promo is
+  // never placed after the final node, most posts ended up with exactly one -
+  // right at the bottom, under the article and two nav blocks, where nobody
+  // reaches it. The Proverbs posts had already been given this treatment; the
+  // other few hundred had not.
+  let wordsSincePromo = introWords;
   let slotIndex = 0;
   let faqReached = false;
 
@@ -331,7 +349,9 @@ function withPromoSlots(
 
     wordsSincePromo += countWords(node);
     const isLastNode = i === nodes.length - 1;
-    if (wordsSincePromo >= 1000 && !isLastNode) {
+    // First one early, the rest spaced out. Same shape as the Proverbs posts.
+    const threshold = slotIndex === 0 ? FIRST_PROMO_AFTER : WORDS_PER_PROMO;
+    if (wordsSincePromo >= threshold && !isLastNode) {
       out.push(promo(`promo-${i}`, slotIndex++));
       wordsSincePromo = 0;
     }
@@ -521,6 +541,7 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
         article.bibleYearDay
           ? { day: article.bibleYearDay, reading: article.bibleYearReading }
           : undefined,
+        introWords,
       );
 
   return (
