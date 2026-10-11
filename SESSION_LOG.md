@@ -7546,3 +7546,7 @@ Next up: Acts 13
 ## 2026-10-11T21:08:51Z (hourly chapter notes run)
 Chapter: Acts 13 | Duration: 23 min | Sections: 11 | Cards: 76 | Status: pass
 Next up: Acts 14
+
+## 2026-10-11T21:58:20Z (hourly chapter notes run)
+Chapter: Acts 14 | Duration: 12 min | Sections: 8 | Cards: 49 | Status: pass
+Next up: Acts 15
