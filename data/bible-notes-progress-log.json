@@ -60033,6 +60033,59 @@
           "at": "2026-10-11T00:00:52Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 14,
+      "startedAt": "2026-10-11T00:45:56Z",
+      "finishedAt": "2026-10-11T00:59:30Z",
+      "durationMinutes": 13.6,
+      "sections": 7,
+      "cards": 31,
+      "verses": 31,
+      "notes": "New chapter, normal forward progress (redo backlog and priority queue were both empty). Jesus comforts the disciples before his death, promises a place prepared, names himself the way the truth and the life, promises the Comforter, and gives his peace before moving willingly toward Gethsemane.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-11T00:48:12Z"
+        },
+        {
+          "name": "target chapter determined: John 14 (priority queue and style-redo backlog both empty, normal forward progress)",
+          "at": "2026-10-11T00:51:00Z"
+        },
+        {
+          "name": "KJV text fetched for John 14 (raw.githubusercontent.com Bible-kjv mirror, 31 verses)",
+          "at": "2026-10-11T00:52:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-11T00:54:08Z"
+        },
+        {
+          "name": "source file written: lib/johnFourteenSource.ts (7 sections, 31 cards)",
+          "at": "2026-10-11T00:55:23Z"
+        },
+        {
+          "name": "style checker clean: python3 scripts/check_bible_note_style.py (0 problems)",
+          "at": "2026-10-11T00:55:23Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call, preserveExactPhraseBodies extended to John 14)",
+          "at": "2026-10-11T00:55:40Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('john', 14) -> 7 sections, 31 cards",
+          "at": "2026-10-11T00:55:44Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-10-11T00:58:24Z"
+        },
+        {
+          "name": "progress log files updated",
+          "at": "2026-10-11T00:59:30Z"
+        }
+      ]
     }
   ]
 }

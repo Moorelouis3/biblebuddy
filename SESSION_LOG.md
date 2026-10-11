@@ -7419,3 +7419,7 @@ Next up: John 13
 ## 2026-10-11T00:00:52Z (hourly chapter notes run)
 Chapter: John 13 | Duration: 15 min | Sections: 8 | Cards: 48 | Status: pass
 Next up: John 14
+
+## 2026-10-11T00:59:30Z (hourly chapter notes run)
+Chapter: John 14 | Duration: 14 min | Sections: 7 | Cards: 31 | Status: pass
+Next up: John 15
