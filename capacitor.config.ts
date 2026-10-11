@@ -9,6 +9,12 @@ import type { CapacitorConfig } from "@capacitor/cli";
  * it is to put enough real native capability around it: offline reading,
  * background audio, share, haptics, notifications.
  *
+ * @capacitor/ios is a runtime dependency, not a dev one: `npx cap add ios`
+ * reads it out of node_modules to lay down the Xcode project, and CI installs
+ * with --omit=dev often enough that this is worth stating. The first build
+ * failed on exactly this - core, cli and the plugins were installed, the
+ * platform itself was not.
+ *
  * appendUserAgent is the important line. lib/nativeApp.ts has been watching
  * for the string "BibleBuddyApp" since September, and every native switch
  * already shipped - hiding install banners, web push, the service worker and
