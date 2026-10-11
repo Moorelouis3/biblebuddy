@@ -7447,3 +7447,46 @@ Next up: John 20
 ## 2026-10-11T07:00:30Z (hourly chapter notes run)
 Chapter: John 20 | Duration: 15 min | Sections: 6 | Cards: 51 | Status: pass
 Next up: John 21
+
+## 2026-10-11 (morning)
+Marching orders: get Bible Buddy ready for the App Store.
+Today: build everything the iPhone app needs that does not require a Mac or
+the paid Apple membership, and put a real readiness number on it.
+
+Done:
+- Capacitor shell installed and configured. appendUserAgent "BibleBuddyApp"
+  wakes every native switch that shipped in September and had been dormant
+  since, because nothing had ever produced a shell.
+- Offline reading now works for everyone. The service worker was only ever
+  registered as a side effect of enabling web push, so the offline cache
+  existed only for readers who had turned notifications on - and never in
+  the app.
+- Daily 08:00 reading reminder (local notification, needs nothing from Apple).
+- Real iOS share sheet instead of silently copying to the clipboard.
+- Haptics on finishing a chapter or a plan day.
+- Lock-screen audio controls: title, artwork, pause, scrubber.
+- Sign in with Apple and remote push written and switched off behind env
+  vars, so Stage 2 is certificates rather than a build.
+- App Store icon, and APP_STORE_LISTING.md with the privacy answers, listing
+  copy and review notes.
+- Privacy policy corrected - it still named Systeme as the email processor.
+- Blog promos: the first one was landing at 55% of the article on every
+  non-Proverbs post. Now ~15%, and most posts get two or three instead of one.
+
+Readiness: 50%, up from 24. The ceiling without a Mac or the membership is
+about 52%, written down in the plan so the number does not drift.
+
+Not live yet: everything above is committed untagged and lands at the next
+scheduled build. The engagement groups, welcome email and email fixes from
+yesterday are already live.
+
+Still open:
+- Mac access. 16 points of Xcode work are blocked on it; a free Apple ID
+  covers the rest.
+- Apple Developer membership (£79) at the end of October - 21 points.
+- Demo account for App Review. Not mine to create on production; two minutes
+  for Louis, and it needs real data in it.
+- Offline-download button has a working helper but no home; where it belongs
+  is a design call.
+
+Next: Mac, then npx cap add ios and a build onto a real iPhone.
