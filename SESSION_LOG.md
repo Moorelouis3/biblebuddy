@@ -7522,3 +7522,7 @@ Next up: Acts 7
 ## 2026-10-11T15:03:26Z (hourly chapter notes run)
 Chapter: Acts 7 | Duration: 18 min | Sections: 13 | Cards: 76 | Status: pass
 Next up: Acts 8
+
+## 2026-10-11T15:59:24Z (hourly chapter notes run)
+Chapter: Acts 8 | Duration: 13 min | Sections: 8 | Cards: 44 | Status: pass
+Next up: Acts 9
