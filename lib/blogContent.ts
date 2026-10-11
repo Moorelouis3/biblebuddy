@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-19-explained",
+    title: "Exodus 19 Explained: The Covenant Offer at Mount Sinai",
+    description:
+      "Exodus 19 explained verse by verse: Israel arrives at Sinai, God's covenant offer, and the sanctifying before the Ten Commandments are given.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-19-explained",
+    publishedAt: "2026-10-11",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-19-explained.jpg",
+    groupPost: {
+      title: "Exodus 19 Explained 📖",
+      content:
+        "Israel finally reaches the mountain everything was building toward.\n\nGod opens with an offer, not a rule.\n\n📌 Israel says yes before hearing a single commandment.\n\n📖 God calls them a peculiar treasure and a kingdom of priests.\n📖 The people wash their clothes and mark out boundary lines.\n📖 Mount Sinai shakes, smokes, and catches fire on the third day.\n\nNew article on:\n🟢 what **peculiar treasure** actually meant in 1611 English\n🟢 why touching the mountain carried a **death penalty**\n🟢 how **1 Peter 2:9** echoes this chapter word for word\n\nWould you say yes to God before hearing all the details? 🙏",
+    },
+  },
+  {
     slug: "exodus-18-explained",
     title: "Exodus 18 Explained: Jethro's Visit and Israel's First Judges",
     description:
