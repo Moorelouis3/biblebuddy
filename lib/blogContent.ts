@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-20-explained",
+    title: "Exodus 20 Explained: The Ten Commandments at Sinai",
+    description:
+      "Exodus 20 explained verse by verse: the Ten Commandments spoken at Sinai, Israel's fear of God's voice, and the simple altar instructions that close the chapter.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-20-explained",
+    publishedAt: "2026-10-11",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-20-explained.jpg",
+    groupPost: {
+      title: "Exodus 20 Explained 📖",
+      content:
+        "The mountain is on fire, and a voice speaks out of it.\n\nThese are the Ten Commandments. Everyone knows a little of them.\n\n📌 Rescue comes before a single rule is spoken.\n\n📖 Four commands are about God. Five are about your neighbor.\n📖 One command has a promise attached to it: honoring your parents.\n📖 Israel gets so afraid they beg Moses to be their go between.\n\nNew article on:\n🟢 why **thou shalt not kill** does not ban war or capital punishment\n🟢 why churches **number the commandments** differently\n🟢 why the chapter ends with rules for building a plain **altar**\n\nWhich of the ten have you quietly reduced to a box to check? 🙏",
+    },
+  },
+  {
     slug: "exodus-19-explained",
     title: "Exodus 19 Explained: The Covenant Offer at Mount Sinai",
     description:
