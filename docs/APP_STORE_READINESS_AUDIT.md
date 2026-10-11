@@ -6,49 +6,68 @@ is paid at the end of October; nearly all of the build happens before then.
 
 ---
 
-## 🟦 24% ready
+## 🟦 50% ready
 
 ```
-[██████░░░░░░░░░░░░░░░░░░░]  24 / 100
+[████████████░░░░░░░░░░░░░]  50 / 100
 ```
 
 | | |
 |---|---|
 | **Compliance and legal** | 🟩 done — 17 of 17 points |
-| **The app itself** | 🟥 barely started — 7 of 48 |
-| **Apple account and signing** | ⬜ not started — 0 of 21 |
-| **Store listing and submission** | ⬜ not started — 0 of 14 |
+| **The app itself** | 🟨 most of the code written — 28 of 48 |
+| **Apple account and signing** | ⬜ blocked on the £79 — 0 of 21 |
+| **Store listing and submission** | 🟨 5 of 14 |
 
-The number is weighted by effort, not by counting tasks — see *Scoring* at the
-bottom, where every point is listed. It is low because September's work, real
-as it is, was the policy half. The app half is a shell, an offline cache and
-nothing else yet.
+Weighted by effort, not by counting tasks — see *Scoring* at the bottom, where
+every point is listed.
 
-**Honest read:** 24% with six weeks to the 23 Nov target is on track, but only
-if the Stage 1 list below gets worked through steadily. The long poles are
-background audio, push and device testing — not the paperwork.
+### The ceiling without a Mac or the membership is about 52%
+
+Worth saying plainly rather than letting the number creep. What is left splits
+into three piles and two of them cannot be touched yet:
+
+- **~2 points still doable on Windows** — wiring the offline-download button
+  into the dashboard, which is a design decision, not a coding one.
+- **16 points need a Mac** — `cap add ios`, a build on a real iPhone, device
+  testing, and confirming service workers behave in WKWebView. A free Apple
+  ID covers all of it; Xcode is the blocker, not the money.
+- **21 points need the paid membership** — Sign in with Apple, APNs,
+  distribution signing, TestFlight. The code for the first two is written and
+  sitting behind environment variables.
+
+So 50% is close to everything that can be done before payday. The next real
+jump needs a Mac in front of you.
 
 ---
 
 ## Start here
 
-**Local reading reminders** — `@capacitor/local-notifications`. A daily
-notification scheduled on the device itself: no APNs, no certificates, no
-Apple account, and it works on a free one. It closes the worst gap in the
-app (an App Store install currently has no reminders at all), and it is real
-native capability for Guideline 4.2. All Windows work.
+**Get in front of a Mac.** Everything buildable on Windows is now built. The
+next 16 points are all Xcode: `npx cap add ios`, a build onto your own
+iPhone, and testing offline, audio, share and haptics on a real device. A
+free Apple ID is enough for all of it — the £79 is not needed until Stage 2.
 
-Done already, this session:
+One small thing still open on Windows: the offline-download button has a
+working helper (`lib/offlineDownload.ts`) but no home. Where "save this day
+for offline" belongs in the Bible Year screen is a design call, so it was
+left rather than guessed at inside a 19,000-line component.
 
-- ✅ Capacitor installed, `capacitor.config.ts` written with
-  `appendUserAgent: "BibleBuddyApp"` — the string `lib/nativeApp.ts:9` has
-  been waiting for since September, which switches on every native behaviour
-  already shipped.
-- ✅ Offline reading, by registering the service worker for everyone. It was
-  only ever registered as a side effect of enabling web push, so the whole
-  offline cache in `public/service-worker.js` existed only for readers who had
-  turned notifications on — and never in the app. It caches every page you
-  visit and serves it back when the network is gone.
+### Built on 11 Oct
+
+| | |
+|---|---|
+| Capacitor shell | `capacitor.config.ts`, `appendUserAgent: "BibleBuddyApp"` — wakes every native switch shipped in September |
+| Offline reading | the service worker now registers for everyone; it only ever ran for readers who had enabled web push |
+| Daily reminder | local notification at 08:00, needs nothing from Apple |
+| Share sheet | the real iOS sheet instead of silently copying to the clipboard |
+| Haptics | a buzz on finishing a chapter or a plan day |
+| Lock-screen audio | title, artwork, pause and scrubber on the lock screen |
+| Sign in with Apple | written, behind `NEXT_PUBLIC_APPLE_SIGNIN_ENABLED` |
+| Remote push | code and `native_push_tokens`, behind `NEXT_PUBLIC_NATIVE_PUSH_ENABLED` |
+| App icon | `native/appstore/app-icon-1024.png` |
+| Submission pack | `APP_STORE_LISTING.md` — privacy answers, listing copy, review notes |
+| Privacy policy | corrected: it still named Systeme as the email processor |
 
 ---
 
@@ -80,15 +99,15 @@ Sort out Mac access early — buy, borrow, or rent a cloud Mac at roughly
 |---|---|
 | ~~Capacitor install + `capacitor.config.ts`~~ | ✅ done |
 | ~~Offline reading~~ | ✅ done — service worker now registers for everyone, web and app |
-| Native share sheet for verses and insight cards | Recommended |
-| Haptics on streak and chapter-complete moments | Recommended |
-| **Local** reading reminders (`@capacitor/local-notifications`) | Recommended. Works on a free account — no Apple config at all |
-| Background / lock-screen audio controls for chapter + Bible in One Year | Recommended. Webview handles this badly; real improvement |
-| Sign in with Apple — button and Supabase call, behind a flag | **Apple requires** (4.8). Code now, configure in Stage 2 |
-| Remote push — registration + device-token table, behind a flag | Recommended. Code now, certificates in Stage 2 |
+| ~~Native share sheet~~ | ✅ done |
+| ~~Haptics~~ | ✅ done |
+| ~~Local reading reminders~~ | ✅ done — 08:00 daily, no Apple config |
+| Background / lock-screen audio | 🟨 lock-screen controls done; background playback needs Info.plist (**Mac**) |
+| ~~Sign in with Apple — button and call~~ | ✅ written, behind a flag |
+| ~~Remote push — code + token table~~ | ✅ written, behind a flag |
 | Demo account for the reviewer, with real data in it | **Apple requires**. Guests are off, so review hits a signup wall |
-| Confirm signup actually enforces the 13+ the terms claim | **Apple requires** (age rating) |
-| Draft the App Privacy answers | **Apple requires**. Entered in Stage 3, but writing them now is free |
+| ~~Confirm the 13+ claim~~ | ✅ checked — no gate exists, and none is required at 12+ |
+| ~~Draft the App Privacy answers~~ | ✅ done → `APP_STORE_LISTING.md` |
 
 ### Needs Mac + Xcode
 
@@ -202,28 +221,28 @@ header number with them.
 | ✅ | Ads off in the native build | 1 |
 | ✅ | Privacy policy, terms and contact pages | 2 |
 
-### The app itself — 7 / 48 🟥
+### The app itself — 28 / 48 🟨
 
 | ✓ | Item | Pts | Where |
 |---|---|---|---|
 | ✅ | Capacitor installed and configured | 3 | Windows |
 | ✅ | Offline page caching live for every reader | 4 | Windows |
-| ☐ | Local reading reminders | 4 | Windows |
-| ☐ | Background / lock-screen audio | 4 | Windows + device |
-| ☐ | Remote push — registration code behind a flag | 4 | Windows |
-| ☐ | Sign in with Apple — button and call behind a flag | 3 | Windows |
-| ☐ | Native share sheet | 2 | Windows |
-| ☐ | Haptics | 1 | Windows |
-| ☐ | Offline download for a Bible Year day (audio included) | 3 | Windows |
+| ✅ | Local reading reminders | 4 | Windows |
+| 🟨 | Lock-screen controls ✅ · background playback needs Info.plist | 2/4 | Windows + **Mac** |
+| ✅ | Remote push — code + token table, behind a flag | 4 | Windows |
+| ✅ | Sign in with Apple — button and call behind a flag | 3 | Windows |
+| ✅ | Native share sheet | 2 | Windows |
+| ✅ | Haptics | 1 | Windows |
+| 🟨 | Offline download — helper written, button not placed yet | 2/3 | Windows |
 | ☐ | `cap add ios`, pods, Info.plist | 3 | **Mac** |
 | ☐ | Build and run on a real iPhone | 3 | **Mac** |
 | ☐ | Device testing: offline, audio, share, haptics | 6 | **Mac** |
 | ☐ | Demo account with real data for the reviewer | 1 | Windows |
-| ☐ | Confirm signup enforces 13+ | 1 | Windows |
-| ☐ | App Privacy answers drafted | 2 | Windows |
+| ✅ | Checked: no age gate exists, and none is required at 12+ | 1 | Windows |
+| ✅ | App Privacy answers drafted → APP_STORE_LISTING.md | 2 | Windows |
 | ☐ | Service worker verified working in WKWebView | 4 | **Mac** |
 
-### Apple account and signing — 0 / 21 ⬜
+### Apple account and signing — 0 / 21 ⬜ (blocked on the £79)
 
 | ✓ | Item | Pts |
 |---|---|---|
@@ -234,16 +253,16 @@ header number with them.
 | ☐ | TestFlight round with real testers | 6 |
 | ☐ | Home-screen widget (needs App Groups) | 4 |
 
-### Store listing and submission — 0 / 14 ⬜
+### Store listing and submission — 5 / 14 🟨
 
 | ✓ | Item | Pts |
 |---|---|---|
-| ☐ | App icon 1024×1024 | 2 |
+| ✅ | App icon 1024×1024 → native/appstore/ | 2 |
 | ☐ | Screenshots | 5 |
-| ☐ | Name, subtitle, keywords, description | 2 |
+| ✅ | Name, subtitle, keywords, description | 2 |
 | ☐ | App Privacy answers entered | 2 |
 | ☐ | Age rating questionnaire | 1 |
-| ☐ | Review notes, demo credentials, 24-hour report commitment | 1 |
+| 🟨 | Review notes written; demo account still to create | 1 |
 | ☐ | Export compliance | 1 |
 
 ### Known unknowns
