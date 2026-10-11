@@ -60086,6 +60086,59 @@
           "at": "2026-10-11T00:59:30Z"
         }
       ]
+    },
+    {
+      "book": "John",
+      "chapter": 15,
+      "startedAt": "2026-10-11T01:46:15Z",
+      "finishedAt": "2026-10-11T02:02:21Z",
+      "durationMinutes": 16.1,
+      "sections": 6,
+      "cards": 30,
+      "verses": 27,
+      "notes": "New chapter, normal forward progress (redo backlog and priority queue were both empty). The true vine and the branches, abiding in Jesus and bearing fruit, the command to love one another, the shift from servants to friends, and the world's hatred answered by the promised Comforter who proceeds from the Father.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-11T01:47:03Z"
+        },
+        {
+          "name": "target chapter determined: John 15 (priority queue and style-redo backlog both empty, normal forward progress after John 14)",
+          "at": "2026-10-11T01:47:03Z"
+        },
+        {
+          "name": "KJV text fetched for John 15 (raw.githubusercontent.com Bible-kjv mirror, 27 verses)",
+          "at": "2026-10-11T01:48:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-11T01:49:00Z"
+        },
+        {
+          "name": "source file written: lib/johnFifteenSource.ts (6 sections, 30 cards)",
+          "at": "2026-10-11T01:59:00Z"
+        },
+        {
+          "name": "style checker clean: python3 scripts/check_bible_note_style.py (0 problems)",
+          "at": "2026-10-11T02:00:52Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call site, preserveExactPhraseBodies extended to John 15)",
+          "at": "2026-10-11T02:00:52Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections(\"john\", 15) -> 6 sections, 30 cards",
+          "at": "2026-10-11T02:01:17Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-10-11T02:01:17Z"
+        },
+        {
+          "name": "progress log files updated",
+          "at": "2026-10-11T02:02:21Z"
+        }
+      ]
     }
   ]
 }
