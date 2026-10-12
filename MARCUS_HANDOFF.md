@@ -882,3 +882,23 @@ were deliberately NOT changed and need Louis to choose:
    routes look the group up by that exact string. Renaming it needs the DB row
    and the code changed in the same deploy, or every scheduled group post
    silently stops. Migration written, that section left commented out.
+
+## origin/main (GitHub) is 6 days and 65+ commits behind the branch everything actually runs on
+The repo's real `main` ref on GitHub has not moved since Micah 2 (commit
+168ea40, 2026-10-06). Every agent run since then -- Bible notes (Nahum
+through Acts 28, Romans 1-5), bug fixes, the newsletter rewrite, the brand
+rename to "My Bible Buddy", chapter library pages, App Store planning -- has
+actually been committed and pushed to a long-lived branch called
+`claude/laughing-mcnulty-9af2d2` instead, which was never merged back into
+`main`. There is no open pull request for it (checked `list_pull_requests`,
+none exist). That branch's history even contains two commits literally
+titled "Deploy: publish N commits [deploy]", meaning whatever has been
+treating that branch as production believes those deploys shipped --- but if
+Vercel's production branch is genuinely `main` on GitHub, none of the last
+~65 commits (roughly a week of work across several agents) have ever
+actually gone live. Separately, this run found the Romans 4 commit from the
+previous Bible Note Writer run had been logged as pushed but had in fact
+never reached the remote at all (fixed by this run's push, which carried it
+along with Romans 5). Louis needs to confirm what Vercel is actually
+building from, and either fast-forward `main` to this branch's tip or open a
+PR, before trusting any "[deploy]" tag on this branch again.
