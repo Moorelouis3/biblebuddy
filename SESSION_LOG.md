@@ -7682,3 +7682,26 @@ Next up: Romans 4
 ## 2026-10-12T17:57:40Z (hourly chapter notes run)
 Chapter: Romans 4 | Duration: 11 min | Sections: 6 | Cards: 37 | Status: pass
 Next up: Romans 5
+
+## 2026-10-12 (night)
+Time spent: ~1.5 hours
+Done: fixed the Bible reader route, which was case-split between git and
+disk. Git recorded app/bible/page.tsx next to
+app/Bible/[book]/[chapter]/page.tsx from a single on-disk app/Bible, so
+production served the index on /bible and chapters on /Bible and 404'd on
+the other half of each — and most internal links point at capital /Bible,
+so every link to the reader home was dead for real users. Settled on
+lowercase, rewrote the git index directly (core.ignorecase makes git mv a
+no-op here), lowercased 77 capital /Bible URLs across 35 files, and added
+redirects for the capital URLs, which have to stay forever because
+already-published group posts and already-sent emails carry them. Deployed
+out-of-band as step 1 and verified in production: /bible and
+/bible/genesis/1 are 200, /Bible and /Bible/genesis/1 308 to them in one
+hop, and the 24 older blog redirects still work.
+Not live yet: 8a4e43ab (Apple Developer membership paid) landed on main
+after the build, so it waits for the 10:00 Berlin deploy.
+Still open: the on-disk directory is still app/Bible — a watcher holds a
+handle on it and Windows refuses the rename, so local dev keeps serving the
+inverse of production on this machine. Harmless for Vercel, which builds
+from the index, but worth renaming next time the lock is gone.
+Next: nothing carried over from this fix.
