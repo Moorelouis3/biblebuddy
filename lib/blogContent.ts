@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-22-explained",
+    title: "Exodus 22 Explained: Restitution, Justice, and the Poor",
+    description:
+      "Exodus 22 explained verse by verse: restitution for theft and property damage, laws protecting the stranger, widow, and poor.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-22-explained",
+    publishedAt: "2026-10-12",
+    readTime: "14 min read",
+    image: "/blog-banners/exodus-22-explained.jpg",
+    groupPost: {
+      title: "Exodus 22 Explained 📖",
+      content:
+        "A stolen sheep. A trampled vineyard.\nOrdinary disputes God expected judges to settle fairly.\n\n📌 The widow and stranger get the one law that skips the courts entirely.\n\n📖 Stealing an ox costs five, a sheep costs four.\n📖 A poor man's cloak must come back before sunset.\n📖 God Himself promises to hear the cry of the forgotten.\n\nNew article on:\n🟢 why breaking in at **night** changes the punishment\n🟢 what the law says about lending without **usury**\n🟢 why God skips the courts for the **widow** and **stranger**\n\nWho in your life has nobody speaking up for them? 🙏",
+    },
+  },
+  {
     slug: "exodus-21-explained",
     title: "Exodus 21 Explained: Servants, Justice, and Eye for Eye",
     description:
