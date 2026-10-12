@@ -33,7 +33,14 @@ export function tryAutoReload(error: Error) {
   return true;
 }
 
+/** A local dev server has no real visitors, so a crash there is noise, not a bug report. */
+function isLocalDevHost() {
+  const host = window.location.hostname;
+  return host === "localhost" || host === "127.0.0.1" || host.endsWith(".local");
+}
+
 export async function reportCrash(error: Error & { digest?: string }, boundary: "page" | "global", autoReloaded = false) {
+  if (isLocalDevHost()) return;
   try {
     let token = "";
     try {

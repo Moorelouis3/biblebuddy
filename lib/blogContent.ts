@@ -97,6 +97,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 ];
 
 export const BLOG_ARTICLES: BlogArticle[] = [
+  {
+    slug: "exodus-25-explained",
+    title: "Exodus 25 Explained: The Ark of the Covenant and the Tabernacle",
+    description:
+      "Exodus 25 explained verse by verse: the ark of the covenant, the mercy seat and cherubim, the table of shewbread, and the golden candlestick.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-25-explained",
+    publishedAt: "2026-10-12",
+    readTime: "14 min read",
+    image: "/blog-banners/exodus-25-explained.jpg",
+    groupPost: {
+      title: "Exodus 25 Explained 📖",
+      content:
+        "Moses is still in the cloud. Forty days of it.\nAnd God starts with an offering, not a rule.\n\n📌 Nobody is taxed. Every gift is willing.\n\n📖 A gold box gets two cherubim facing each other.\n📖 A table holds bread that never runs out.\n📖 A lampstand is hammered from one block of gold.\n\nNew article on:\n🟢 why the **mercy seat** is more than a lid\n🟢 where Israel got all that **gold** in the desert\n🟢 what **cherubim** guarded before this chapter\n\nWhat would you give right now, not because you were told to, but because you want God close? 🙏",
+    },
+  },
   // The first three Christian News articles (2026-10-12). Written to
   // docs/christian-news-format.md, not to the standard teaching shape.
   //

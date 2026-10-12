@@ -7657,3 +7657,24 @@ the banner artwork still reading "BIBLE BUDDY", and 15 clunky "a/your My Bible
 Buddy account" strings. The campaign row is NOT created; nothing can send.
 Next: create the campaign as a draft once the build is out, test-send to Louis,
 then arm it for all three groups.
+
+## 2026-10-12T14:04:36Z (hourly chapter notes run)
+Chapter: Romans 1 | Duration: 17 min | Sections: 6 | Cards: 58 | Status: pass
+Next up: Romans 2
+
+## 2026-10-12 (Bug Fixer, 14:30 UTC run)
+Bug fixed: two "crash" reports today were actually someone's local test
+copy of the app (localhost), not real visitors, reporting into the same
+bug list real users use. Added a check so only crashes from the real site
+get logged going forward. Commit c33de41, pushed to main, no [deploy] tag.
+The other 2 open reports (can't reach /reading, can't reach /start) were
+already rechecked earlier today, still one-off with no repeat, left open
+with diagnosis — nothing new to add this run.
+
+## 2026-10-12T15:00:03Z (hourly chapter notes run)
+Chapter: Romans 2 | Duration: 13 min | Sections: 5 | Cards: 47 | Status: pass
+Next up: Romans 3
+
+## 2026-10-12T16:57:34Z (hourly chapter notes run)
+Chapter: Romans 3 | Duration: 12 min | Sections: 7 | Cards: 62 | Status: pass
+Next up: Romans 4
