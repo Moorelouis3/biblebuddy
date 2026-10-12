@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "do-you-have-to-go-to-church",
+    title: "Do You Have to Go to Church to Be Saved?",
+    description:
+      "Do you have to go to church to be saved? No, salvation is by faith alone. But church was never meant to be optional either.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/do-you-have-to-go-to-church",
+    publishedAt: "2026-10-13",
+    readTime: "15 min read",
+    image: "/do-you-have-to-go-to-church-banner.png",
+    groupPost: {
+      title: "Do You Have to Go to Church to Be Saved? 📖",
+      content:
+        "You haven't been to church in months.\nAnd one question won't leave you alone.\n\n📌 No, church attendance doesn't save you. But it isn't optional either.\n\n📖 A dying thief was saved with zero church attendance.\n📖 Paul calls believers one body, with many members.\n📖 The first church gathered daily in homes, not buildings.\n\nNew article on:\n🟢 why you do not need a **building** to be saved\n🟢 what to do if **church hurt** you badly\n🟢 what the word **church** actually means in the Bible\n\nWhat would it take for you to walk back in? 🙏",
+    },
+  },
+  {
     slug: "exodus-25-explained",
     title: "Exodus 25 Explained: The Ark of the Covenant and the Tabernacle",
     description:

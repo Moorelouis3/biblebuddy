@@ -7714,3 +7714,7 @@ Next up: Romans 6
 ## 2026-10-12T20:59:37Z (hourly chapter notes run)
 Chapter: Romans 6 | Duration: 13 min | Sections: 6 | Cards: 26 | Status: pass
 Next up: Romans 7
+
+## 2026-10-12T22:20:32Z (blog writer run)
+Article: Do You Have to Go to Church to Be Saved? | Words: ~3060 | Category: Christian Foundations | Status: pass
+Queue remaining: 19
