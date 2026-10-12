@@ -5,8 +5,8 @@
  * daily dashboard answering "what should I do today?".
  *
  * Order is fixed by the spec: greeting + compact stats, Continue Your
- * Journey (plan card + nearby-day strip), Verse of the Day, Recommended For
- * You (3 across), Test Your Knowledge, From Your Groups.
+ * Journey (plan card + nearby-day strip), Verse of the Day, Look It Up,
+ * Recommended For You (3 across), Test Your Knowledge, From Your Groups.
  *
  * Deliberately its own component rather than another branch inside
  * DashboardJourneyExperience (19k lines, slow splash). The shell paints
@@ -30,6 +30,7 @@ import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES, getBibleYearDayCoverImage } from "../
 import { BIBLE_STUDY_GROUP_ID } from "../lib/bibleStudiesCatalog";
 import StreakFlameEmoji from "./StreakFlameEmoji";
 import LevelProgressCard from "./LevelProgressCard";
+import BibleReferenceCard from "./BibleReferenceCard";
 
 /** Chapters in the Protestant canon, so progress is a real fraction. */
 const TOTAL_BIBLE_CHAPTERS = 1189;
@@ -416,6 +417,12 @@ export default function HomeScreen() {
 
       {/* Verse of the Day leads - moved above the journey (Louis, 2026-09-04) */}
       <VerseOfTheDayCard userId={userId} />
+
+      {/* Look It Up - the people/places/keywords lists, which were buried
+          under Plans > Bible Study Tools > Bible References where nobody
+          found them. Sits high on the page because looking a name up is a
+          reading-time need, not an end-of-session one (Louis, 2026-10-12). */}
+      <BibleReferenceCard onEvent={trackHomeEvent} />
 
       {/* Members of a live community study see today’s day here, so nobody has
           to open the group to learn that Day N is ready (Louis, 2026-09-23). */}
