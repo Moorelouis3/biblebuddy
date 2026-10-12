@@ -7698,8 +7698,9 @@ already-published group posts and already-sent emails carry them. Deployed
 out-of-band as step 1 and verified in production: /bible and
 /bible/genesis/1 are 200, /Bible and /Bible/genesis/1 308 to them in one
 hop, and the 24 older blog redirects still work.
-Not live yet: 8a4e43ab (Apple Developer membership paid) landed on main
-after the build, so it waits for the 10:00 Berlin deploy.
+Not live yet: nothing user-facing. 8a4e43ab (Apple Developer membership
+paid) landed on main after the build, but it only edits a doc, so npm run
+pending correctly reports everything live.
 Still open: the on-disk directory is still app/Bible — a watcher holds a
 handle on it and Windows refuses the rename, so local dev keeps serving the
 inverse of production on this machine. Harmless for Vercel, which builds
