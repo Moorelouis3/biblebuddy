@@ -4,7 +4,7 @@
 # blocker on roughly a third of the App Store work. It is not: this repo is
 # public, and GitHub gives public repositories free minutes on standard
 # hosted runners, macOS included. Every push gets a Mac with Xcode and
-# CocoaPods on it.
+# Swift Package Manager on it.
 #
 # What this proves, without anyone owning a Mac:
 #   - the Capacitor iOS project generates
@@ -53,6 +53,8 @@ jobs:
 
       # ios/ is not committed - it is generated output, and regenerating it
       # here keeps it honest against capacitor.config.ts rather than drifting.
+      # Capacitor 8 uses Swift Package Manager, not CocoaPods - this writes
+      # Package.swift and an App.xcodeproj, and there is no .xcworkspace.
       - name: Generate the iOS project
         run: npx cap add ios
 
@@ -68,7 +70,7 @@ jobs:
       - name: Build for the simulator
         run: |
           xcodebuild \
-            -workspace ios/App/App.xcworkspace \
+            -project ios/App/App.xcodeproj \
             -scheme App \
             -sdk iphonesimulator \
             -configuration Debug \
@@ -86,7 +88,6 @@ jobs:
           name: ios-project
           path: |
             ios/App/App/Info.plist
-            ios/App/Podfile
-            ios/App/Podfile.lock
+            ios/App/Package.swift
           retention-days: 14
           if-no-files-found: warn

@@ -113,7 +113,7 @@ Sort out Mac access early — buy, borrow, or rent a cloud Mac at roughly
 
 | Task | Notes |
 |---|---|
-| `npx cap add ios`, `pod install` | CocoaPods is macOS-only |
+| ~~`npx cap add ios`~~ | ✅ done in CI — Capacitor 8 uses Swift Package Manager, so there are no pods |
 | Info.plist: background audio, notification strings | Free account is fine |
 | Build and run on your own iPhone | Free account; 7-day profile, reinstall weekly |
 | Test offline, audio, share, haptics on a real device | The simulator lies about all four |

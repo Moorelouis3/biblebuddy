@@ -22,7 +22,6 @@ workflows:
     environment:
       node: 22
       xcode: latest
-      cocoapods: default
 
     # Only when something that affects the shell changes. The web app deploys
     # through Vercel and has nothing to do with this.
@@ -56,7 +55,7 @@ workflows:
         # is here to answer "does it compile", months before that matters.
         script: |
           xcodebuild \
-            -workspace ios/App/App.xcworkspace \
+            -project ios/App/App.xcodeproj \
             -scheme App \
             -sdk iphonesimulator \
             -configuration Debug \
@@ -65,11 +64,10 @@ workflows:
             build
 
     artifacts:
-      # So the generated project can be read without a Mac - Info.plist, the
-      # pod versions, what Capacitor actually wrote.
+      # So the generated project can be read without a Mac: Info.plist, and
+      # Package.swift listing which plugin versions Capacitor linked.
       - ios/App/App/Info.plist
-      - ios/App/Podfile
-      - ios/App/Podfile.lock
+      - ios/App/Package.swift
       - /tmp/xcodebuild_logs/*.log
 
     publishing:
