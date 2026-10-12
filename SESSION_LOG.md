@@ -7574,3 +7574,7 @@ Next up: Acts 20
 ## 2026-10-12T04:00:57Z (hourly chapter notes run)
 Chapter: Acts 20 | Duration: 13 min | Sections: 8 | Cards: 63 | Status: pass
 Next up: Acts 21
+
+## 2026-10-12T05:05:57Z (hourly chapter notes run)
+Chapter: Acts 21 | Duration: 19 min | Sections: 7 | Cards: 63 | Status: pass
+Next up: Acts 22
