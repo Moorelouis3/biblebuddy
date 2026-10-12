@@ -62329,6 +62329,59 @@
           "at": "2026-10-12T17:57:40Z"
         }
       ]
+    },
+    {
+      "book": "Romans",
+      "chapter": 5,
+      "startedAt": "2026-10-12T18:45:56Z",
+      "finishedAt": "2026-10-12T18:57:30Z",
+      "durationMinutes": 12,
+      "sections": 6,
+      "cards": 39,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean, fresh clone (704 packages). Priority queue (not used by this routine's instructions, but checked via the style-redo backlog) and style redo backlog (`remaining: []` in data/bible-notes-style-redo-remaining.json) confirmed empty, so this was normal forward progress after Romans 4, the latest entry in this log. Confirmed no lib/romansFiveSource.ts existed yet, only the legacy bulk file lib/romansOneToEightPersonalNotes.ts still covering chapters 5-8. Fetched real KJV text for Romans 5 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Read docs/bible-study-note-style.md in full and lib/romansFourSource.ts as the reference implementation before writing. Covers peace with God, access by faith, and the chain from tribulation to patience to experience to hope, closing on the Holy Ghost shedding God's love abroad in the heart (1-5); Christ dying for the ungodly while they were still sinners, proved by comparison to how rarely anyone would die even for a good man (6-8); being saved from wrath and reconciled, the much more argument moving from Christ's death to his ongoing life, closing on the atonement received (9-11); sin and death entering the world through Adam, death reigning even before the law gave sin a name, with Adam as a figure of Christ to come (12-14); the offence versus the free gift, condemnation from one act answered by justification covering many, grace overflowing past the damage it answers (15-17); and the closing contrast of the two reigns, Adam's disobedience against Christ's obedience, the law exposing sin's scale, and grace reigning through righteousness unto eternal life (18-21). 6 sections, all 21 verses covered with no gaps or overlaps, 1.86 cards per verse. `python3 scripts/check_bible_note_style.py lib/romansFiveSource.ts` ran clean on the first pass across all 39 cards, 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain quoted language, closes on meaning rather than mechanics, has exactly four bullets each three to eight words with a distinct emoji and the last on 📖, and has no hyphens, em dashes, semicolons, or contractions, with no duplicate titles across all 39 cards. Parser check passed via getBibleReaderStudySections(\"romans\", 5): 6/6 sections, verse ranges 1-5/6-8/9-11/12-14/15-17/18-21 with no gaps, 39 total cards rendering verbatim. `npx tsc --noEmit -p .` came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/romansFiveSource.ts, preserveExactPhraseBodies romans condition widened from chapters 1-4 to include chapter 5, new applyPersonalRomansFiveStudySections() function added calling replaceStudySectionsForBookRange(\"romans\", 5, 5, ROMANS_FIVE_PERSONAL_SECTIONS), invoked right after applyPersonalRomansFourStudySections() so the dedicated chapter 5 file overrides the legacy bulk file for chapters 1-5 only, chapters 6-8 of that legacy file left untouched. This was a new chapter, normal forward progress, not a style redo. No usage limit, rate limit, block, or throttling occurred this run, so no event was logged to data/bible-notes-usage-events.json. Next forward progress target is Romans 6.",
+      "steps": [
+        {
+          "name": "npm install done (704 packages, fresh clone)",
+          "at": "2026-10-12T18:45:56Z"
+        },
+        {
+          "name": "target chapter determined: Romans 5 (normal forward progress, style-redo queue empty, no existing lib file)",
+          "at": "2026-10-12T18:49:30Z"
+        },
+        {
+          "name": "KJV text fetched for Romans 5 (21 verses, raw.githubusercontent.com aruljohn mirror)",
+          "at": "2026-10-12T18:49:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full; romansFourSource.ts read as reference",
+          "at": "2026-10-12T18:50:30Z"
+        },
+        {
+          "name": "lib/romansFiveSource.ts written (6 sections, 39 cards drafted)",
+          "at": "2026-10-12T18:51:51Z"
+        },
+        {
+          "name": "style checker run, clean on first pass across all 39 cards",
+          "at": "2026-10-12T18:53:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, replaceStudySectionsForBookRange call, preserveExactPhraseBodies range extended to chapter 5)",
+          "at": "2026-10-12T18:54:00Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 39 cards, verbatim)",
+          "at": "2026-10-12T18:55:00Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-10-12T18:56:15Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-12T18:57:30Z"
+        }
+      ]
     }
   ]
 }
