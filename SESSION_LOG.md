@@ -7626,3 +7626,7 @@ Still open: the three articles are held out of the study group on purpose
 until Louis reads them (MARCUS_HANDOFF.md has the verification gaps and the
 banner problem). The email plan is unbuilt and still waiting on the four
 sequence questions and the weekly cap decision.
+
+## 2026-10-12T11:02:51Z (hourly chapter notes run)
+Chapter: Acts 26 | Duration: 16 min | Sections: 8 | Cards: 46 | Status: pass
+Next up: Acts 27
