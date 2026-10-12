@@ -2,7 +2,8 @@
 
 Updated 2026-10-12. Replaces the first audit's framing, which wrongly made
 Apple Developer enrolment sound like a gate on starting. It isn't. Membership
-is paid in the last week of October; all of the unpaid build is already done.
+was paid on 2026-10-12 (order W1432539549). Stage 2 is unblocked as soon as
+Apple activates it.
 
 ---
 
@@ -48,10 +49,10 @@ Apple account is built, and it compiles: Codemagic build #3 produced an iOS
 app on a Mac mini M2 with all four native plugins linked. Nothing is blocked
 on Windows any more, and nothing is blocked on owning a Mac.
 
-What is left needs the €99. Louis decided on 2026-10-12 to pay in the **last
-week of October** rather than earlier, so the money is only committed once it
-is certain it can be spared. Target ~27 Oct; approval is usually 24-48h,
-which still leaves Stage 2 its full window.
+**The €99 is paid.** Louis bought the membership on 2026-10-12, order
+W1432539549 — two weeks earlier than the plan called for. Apple emails when
+the membership activates, usually within 24-48h; nothing in Stage 2 can start
+before that mail arrives, because every item needs the developer portal.
 
 The one thing that cannot be checked before then: **the app has never run.**
 Compiling is not working. Safe areas, the status bar, whether the service
@@ -83,9 +84,9 @@ fixes on day one of Stage 2; that is normal, and it is why submission sits on
 
 | | When | What it is |
 |---|---|---|
-| **1. Before the membership** | now → ~27 Oct | Build the app. Everything that doesn't need a paid Apple account. **Done.** |
-| **2. After the membership** | ~27 Oct → ~15 Nov | €99 enrolment, then the Apple-gated pieces + TestFlight, and the first run on a real iPhone. |
-| **3. Submit** | ~15 Nov → 23 Nov | Store listing, privacy, reviewer access. **Submit 23 Nov, launch 9 Dec.** |
+| **1. Before the membership** | → 12 Oct | Build the app. Everything that doesn't need a paid Apple account. **Done.** |
+| **2. After the membership** | 12 Oct → ~1 Nov | ✅ €99 paid. Waiting on activation, then the Apple-gated pieces + TestFlight, and the first run on a real iPhone. |
+| **3. Submit** | ~1 Nov → 23 Nov | Store listing, privacy, reviewer access. **Launch stays 9 Dec.** Submitting early buys room for a rejection, not an earlier launch. |
 
 Two and a half weeks between submission and launch is deliberate: first
 submissions of app-shaped-websites usually get at least one conversation with
@@ -137,10 +138,11 @@ widgets wait too), TestFlight.
 
 ---
 
-## Stage 2 — after the membership (last week of October)
+## Stage 2 — after the membership (paid 12 Oct, awaiting activation)
 
-1. Enrol in the Apple Developer Program, €99/yr. **Do this first** — approval
-   can take a few days, and everything below is blocked on it.
+1. ~~Enrol in the Apple Developer Program, €99/yr.~~ ✅ Paid 12 Oct, order
+   W1432539549. Everything below is blocked until Apple's activation email
+   arrives — the developer portal shows nothing useful before then.
 2. Sign in with Apple: Services ID, key, Supabase provider, then switch on the
    button written in Stage 1. *(Apple requires — 4.8)*
 3. Remote push: APNs key, Push Notifications capability, switch on the
