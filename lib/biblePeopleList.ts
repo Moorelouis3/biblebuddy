@@ -1,7 +1,8 @@
 /**
  * Comprehensive list of biblical people (~2,500 individuals)
  * 
- * Each person appears once, with aliases where applicable.
+ * Each person appears once, with aliases where applicable -- enforced by
+ * dedupePersonEntries() below, not by hand.
  * All names are explicitly mentioned in Scripture (OT or NT).
  * Alphabetized by primary name.
  * 
@@ -14,7 +15,75 @@ export type BiblePersonEntry = {
   aliases?: string[];
 };
 
-export const BIBLE_PEOPLE_LIST: BiblePersonEntry[] = [
+function normalizePersonName(name: string): string {
+  return name.trim().toLowerCase();
+}
+
+/**
+ * Collapses exact name repeats (trim + case insensitive) so every person appears
+ * once. The source array below is appended to book by book, so the same person
+ * legitimately turns up in several integration blocks.
+ *
+ * Only exact repeats of the primary name collapse:
+ * - Near-duplicates like "Abda" vs "Abda (father of Adoniram)" are deliberately
+ *   distinct people and are left alone.
+ * - Aliases are untouched. Many are intentionally also primary entries of their
+ *   own ("Abraham" has the alias "Abram", and "Abram" is its own entry), which is
+ *   how the KJV/NT spelling pairs stay searchable.
+ *
+ * Where repeats carry different aliases, the surviving entry gets the union, so
+ * dropping "Gideon" once does not lose "Jerubbaal". Where repeats differ only in
+ * casing, the capitalized spelling wins.
+ */
+function dedupePersonEntries(entries: BiblePersonEntry[]): BiblePersonEntry[] {
+  const indexByName = new Map<string, number>();
+  const deduped: BiblePersonEntry[] = [];
+
+  entries.forEach((entry) => {
+    const name = entry.name.trim();
+    const normalized = normalizePersonName(name);
+    if (!normalized) {
+      return;
+    }
+
+    const aliases = (entry.aliases ?? []).map((alias) => alias.trim()).filter(Boolean);
+    const existingIndex = indexByName.get(normalized);
+
+    if (existingIndex === undefined) {
+      indexByName.set(normalized, deduped.length);
+      deduped.push(aliases.length ? { name, aliases } : { name });
+      return;
+    }
+
+    const existing = deduped[existingIndex];
+
+    // Same person, different casing: prefer the capitalized spelling.
+    const preferredName =
+      existing.name[0] !== existing.name[0].toUpperCase() && name[0] === name[0].toUpperCase()
+        ? name
+        : existing.name;
+
+    // Keep the union of aliases so a dropped repeat cannot take one with it.
+    const mergedAliases = [...(existing.aliases ?? [])];
+    const seenAliases = new Set(mergedAliases.map(normalizePersonName));
+    aliases.forEach((alias) => {
+      const key = normalizePersonName(alias);
+      if (seenAliases.has(key)) {
+        return;
+      }
+      seenAliases.add(key);
+      mergedAliases.push(alias);
+    });
+
+    deduped[existingIndex] = mergedAliases.length
+      ? { name: preferredName, aliases: mergedAliases }
+      : { name: preferredName };
+  });
+
+  return deduped;
+}
+
+const BASE_BIBLE_PEOPLE_LIST: BiblePersonEntry[] = [
   // A
   { name: "Aaron" },
   { name: "Abagtha" },
@@ -3282,4 +3351,6 @@ export const BIBLE_PEOPLE_LIST: BiblePersonEntry[] = [
   { name: "Ziphites" },
   // End 1 Samuel integration
 ];
+
+export const BIBLE_PEOPLE_LIST: BiblePersonEntry[] = dedupePersonEntries(BASE_BIBLE_PEOPLE_LIST);
 

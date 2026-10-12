@@ -38,11 +38,11 @@ let cachedCandidates: Candidate[] | null = null;
  * Built once per server process. The lists are static module data, so there
  * is nothing to invalidate.
  *
- * Deduped by kind + name because BIBLE_PLACES_LIST carries about 120 repeated
- * names (Beth-car is in there twice), which would otherwise show the same
- * place twice in one result list. A name that is both a person and a place -
- * Bethel - is two real entries and stays, because they go to different pages
- * and the result row badges which is which.
+ * Still deduped by kind + name as a backstop. The source lists dedupe themselves
+ * on export now, so this no longer has repeats to catch, but it is cheap and it
+ * keeps one result row per name no matter what the lists do later. A name that is
+ * both a person and a place - Bethel - is two real entries and stays, because
+ * they go to different pages and the result row badges which is which.
  */
 function getCandidates(): Candidate[] {
   if (cachedCandidates) return cachedCandidates;

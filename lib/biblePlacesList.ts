@@ -2,7 +2,7 @@
 /**
  * Comprehensive list of biblical places (~1,800-2,000 locations)
  * 
- * Each place appears once.
+ * Each place appears once -- enforced by dedupePlaceEntries() below, not by hand.
  * All places are explicitly named or clearly described in Scripture (OT or NT).
  * Alphabetized by name.
  * 
@@ -16,7 +16,53 @@ export type BiblePlaceEntry = {
   name: string;
 };
 
-export const BIBLE_PLACES_LIST: BiblePlaceEntry[] = [
+function normalizePlaceName(name: string): string {
+  return name.trim().toLowerCase();
+}
+
+/**
+ * Collapses exact name repeats (trim + case insensitive) so every place appears
+ * once. The source array below is appended to book by book, so the same place
+ * legitimately turns up in several integration blocks; deduping here keeps every
+ * consumer (the A-Z Places page, Look It Up, mentions, the notes scripts) honest
+ * without anyone having to hand-prune the data.
+ *
+ * Only exact repeats collapse. Near-duplicates like "Jericho" vs "Jericho (city)"
+ * or "Samaria (city)" vs "Samaria (region)" are deliberately distinct entries and
+ * are left alone.
+ *
+ * Where repeats differ only in casing, the capitalized spelling wins, so the A-Z
+ * listing shows "Field" rather than "field".
+ */
+function dedupePlaceEntries(entries: BiblePlaceEntry[]): BiblePlaceEntry[] {
+  const indexByName = new Map<string, number>();
+  const deduped: BiblePlaceEntry[] = [];
+
+  entries.forEach((entry) => {
+    const name = entry.name.trim();
+    const normalized = normalizePlaceName(name);
+    if (!normalized) {
+      return;
+    }
+
+    const existingIndex = indexByName.get(normalized);
+    if (existingIndex === undefined) {
+      indexByName.set(normalized, deduped.length);
+      deduped.push({ name });
+      return;
+    }
+
+    // Same place, different casing: prefer the capitalized spelling.
+    const existing = deduped[existingIndex];
+    if (existing.name[0] !== existing.name[0].toUpperCase() && name[0] === name[0].toUpperCase()) {
+      deduped[existingIndex] = { name };
+    }
+  });
+
+  return deduped;
+}
+
+const BASE_BIBLE_PLACES_LIST: BiblePlaceEntry[] = [
   // Ruth integration (2026-02-17)
   { name: "Bethlehem Ephrathah" },
   { name: "country of Moab" },
@@ -2347,4 +2393,6 @@ export const BIBLE_PLACES_LIST: BiblePlaceEntry[] = [
 { name: "Zoar (reference tradition)" },
 // End 1 Samuel integration
 ];
+
+export const BIBLE_PLACES_LIST: BiblePlaceEntry[] = dedupePlaceEntries(BASE_BIBLE_PLACES_LIST);
 
