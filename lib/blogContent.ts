@@ -148,6 +148,23 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     excludeFromGroupShare: true,
   },
   {
+    slug: "exodus-24-explained",
+    title: "Exodus 24 Explained: Sealing the Covenant in Blood",
+    description:
+      "Exodus 24 explained verse by verse: the blood of the covenant, Israel's elders seeing God on Sinai, and Moses going up the mountain for forty days.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-24-explained",
+    publishedAt: "2026-10-12",
+    readTime: "14 min read",
+    image: "/blog-banners/exodus-24-explained.jpg",
+    groupPost: {
+      title: "Exodus 24 Explained 📖",
+      content:
+        "The law was spoken. Now it gets sealed.\nNot with a signature. With blood.\n\n📌 Moses sprinkles the same blood on the altar and on the people.\n\n📖 Seventy elders climb the mountain and see the God of Israel.\n📖 They eat a covenant meal in His presence and live.\n📖 Moses disappears into the cloud for forty days.\n\nNew article on:\n🟢 why a covenant needed **blood** at all\n🟢 how Jesus echoes this exact **blood of the covenant**\n🟢 what Moses waited **forty days** for\n\nWhat promise have you said yes to, but never really sealed? 🙏",
+    },
+  },
+  {
     slug: "exodus-23-explained",
     title: "Exodus 23 Explained: Justice, Rest, and the Three Feasts",
     description:
