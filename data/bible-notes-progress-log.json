@@ -62427,6 +62427,59 @@
           "at": "2026-10-12T20:59:37Z"
         }
       ]
+    },
+    {
+      "book": "Romans",
+      "chapter": 7,
+      "startedAt": "2026-10-12T22:46:30Z",
+      "finishedAt": "2026-10-12T22:57:22Z",
+      "durationMinutes": 11,
+      "sections": 5,
+      "cards": 24,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in each), so this was normal forward progress: new chapter, not a redo. Latest entry in the progress log before this run was Romans 6, so target was Romans 7, confirmed no existing lib/romansSevenSource.ts and no Romans 7 wiring in lib/bibleReaderStudyNotes.ts (chapter 7 was still falling through to the legacy romansOneToEightPersonalNotes.ts bulk file). Session started with local git in a detached HEAD state, 50 commits behind origin/main; git checkout main && git reset --hard origin/main fast forwarded cleanly with nothing lost, the same recurring environment ref anomaly logged in many prior runs. Fetched real KJV text for Romans 7 (25 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Chunked into 5 sections (1-6 dead to the law and free to serve in newness of spirit, 7-13 the law exposes sin rather than causing it, 14-17 sold under sin and the indwelling sin that fights the true self, 18-20 willing good but powerless to perform it, 21-25 the war between the law of the mind and the law in the members, ending in the wretched man's cry and thanks through Jesus Christ). 24 cards total, about 0.96 cards per verse, consistent with the epistle argument-tracing density used for Romans 1-6. scripts/check_bible_note_style.py found one problem on the first automated pass: a last bullet at 9 words ('The new union exists to bear fruit for God'). Fixed by trimming it to 'The new union exists to bear fruit' (7 words). Second pass came back with 0 problems across all 24 cards. Manual section 13 eye check confirmed all four opening moves used appropriately, every key term (dominion, motions of sins, newness of spirit versus oldness of the letter, covet, concupiscence, carnal, sold under sin, the inward man, wretched) defined in plain language, closes landing on meaning not mechanics, exactly four bullets per card each three to eight words with a distinct emoji and the last one using \ud83d\udcd6, no hyphens/em dashes/semicolons/contractions, no duplicate titles. Parser check passed via getBibleReaderStudySections('romans', 7): 5/5 sections, verse ranges 1-6/7-13/14-17/18-20/21-25 with no gaps, 24 cards, text verbatim. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/romansSevenSource.ts, preserveExactPhraseBodies romans range extended from chapters 1-6 to 1-7, new function applyPersonalRomansSevenStudySections added and called right after applyPersonalRomansSixStudySections(), overriding the legacy ROMANS_1_8_PERSONAL_SECTIONS bulk file for chapter 7 only, chapter 8 of that legacy file left untouched. Next forward-progress target is Romans 8.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-12T22:46:55Z"
+        },
+        {
+          "name": "target chapter determined: Romans 7 (normal forward progress, priority queue and style-redo backlog both empty)",
+          "at": "2026-10-12T22:47:30Z"
+        },
+        {
+          "name": "KJV text fetched for Romans 7 (25 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-12T22:49:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-12T22:49:30Z"
+        },
+        {
+          "name": "source file lib/romansSevenSource.ts written (5 sections, 24 cards)",
+          "at": "2026-10-12T22:55:10Z"
+        },
+        {
+          "name": "style checker clean after one bullet-length fix",
+          "at": "2026-10-12T22:55:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts: import, applyPersonalRomansSevenStudySections, preserveExactPhraseBodies range extended to chapter 7",
+          "at": "2026-10-12T22:56:10Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('romans', 7) returned 5/5 sections, 24 cards",
+          "at": "2026-10-12T22:56:40Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean with zero errors",
+          "at": "2026-10-12T22:57:05Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-12T22:57:22Z"
+        }
+      ]
     }
   ]
 }
