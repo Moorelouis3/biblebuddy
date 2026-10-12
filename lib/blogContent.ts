@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-23-explained",
+    title: "Exodus 23 Explained: Justice, Rest, and the Three Feasts",
+    description:
+      "Exodus 23 explained verse by verse: honesty in court, kindness toward an enemy's ox, the sabbath for land and people, the three feasts, and the Angel sent before Israel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-23-explained",
+    publishedAt: "2026-10-12",
+    readTime: "15 min read",
+    image: "/blog-banners/exodus-23-explained.jpg",
+    groupPost: {
+      title: "Exodus 23 Explained 📖",
+      content:
+        "No fire on the mountain this time.\nJust ordinary honesty, ordinary rest, ordinary enemies.\n\n📌 Help your enemy's struggling animal, centuries before love your enemies.\n\n📖 The land itself gets a sabbath year, so the poor can eat.\n📖 Judges are warned not to favor rich or poor, only the facts.\n📖 An Angel carrying God's own name goes ahead of Israel.\n\nNew article on:\n🟢 why the law protects your **enemy's** ox\n🟢 who the mysterious **Angel** in verse 21 really is\n🟢 why God clears the land **little by little**\n\nWho has the least claim on your kindness this week? 🙏",
+    },
+  },
+  {
     slug: "exodus-22-explained",
     title: "Exodus 22 Explained: Restitution, Justice, and the Poor",
     description:
