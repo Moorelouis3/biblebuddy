@@ -217,6 +217,20 @@ async function main() {
   check(placeholderLeak === 0, "no unrendered {{token}} in any block");
   check(zeroLeak === 0, "no block reports a count of zero");
 
+  // The copy carries **bold** / *italic* markup. Both renderers must consume it:
+  // a stray asterisk in a sent email is the kind of thing nobody notices until
+  // it is in 5,000 inboxes.
+  let asteriskLeak = 0;
+  let noEmphasis = 0;
+  for (const p of rendered.values()) {
+    if (renderProgressSectionText(p).includes("*")) asteriskLeak += 1;
+    const html = renderProgressSectionHtml(p);
+    if (html.includes("*")) asteriskLeak += 1;
+    if (!/<strong>|<em>/.test(html)) noEmphasis += 1;
+  }
+  check(asteriskLeak === 0, "no raw ** or * survives into either part");
+  check(noEmphasis === 0, "every block renders real <strong>/<em>, not literal markup");
+
   const guiltWords = /streak|missed|haven't|behind|fell off|lapsed|inactive|compared/i;
   const guilty = [...rendered.values()].filter((p) => guiltWords.test(renderProgressSectionText(p)));
   check(guilty.length === 0, "no guilt, streak or comparison language", guilty.length ? guilty[0].email : "");

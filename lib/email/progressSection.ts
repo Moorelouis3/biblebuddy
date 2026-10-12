@@ -33,6 +33,26 @@ function escapeHtml(value: string): string {
     .replace(/"/g, "&quot;");
 }
 
+/**
+ * The copy is written once, with `**bold**` and `*italic*`, and each renderer
+ * does what it can with it. Writing the HTML tags into the sentences instead
+ * would mean keeping a second, tag-free copy for the plain-text part, and the
+ * two would drift the first time a line was reworded.
+ *
+ * Applied AFTER escaping, so the markup produces the only tags in the output.
+ * Double asterisks are consumed first; whatever single ones remain are italic.
+ */
+function inlineMarkupToHtml(escaped: string): string {
+  return escaped
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>");
+}
+
+/** The same markup removed, for the plain-text part. */
+function stripInlineMarkup(value: string): string {
+  return value.replace(/\*\*(.+?)\*\*/g, "$1").replace(/\*(.+?)\*/g, "$1");
+}
+
 function titleCaseBook(book: string): string {
   return book
     .split(" ")
@@ -58,7 +78,7 @@ function continueCta(study: { kind: "devotional" | "bible_year"; nextDay: number
   return `${verb} Day ${study.nextDay}`;
 }
 
-type Copy = { heading: string; lines: string[]; cta: string; href: string };
+type Copy = { emoji: string; heading: string; lines: string[]; cta: string; href: string };
 
 /**
  * The single place the variant is turned into sentences, so the HTML and the
@@ -71,48 +91,48 @@ export function progressCopy(progress: RecipientProgress): Copy {
 
   if (progress.variant === "weekly") {
     const n = progress.chaptersThisWeek;
-    const heading = name ? `Your week, ${name}` : "Your week";
-    const lines: string[] = [
-      `You covered ${n} ${plural(n, "chapter", "chapters")} this week.`,
-    ];
+    const heading = name ? `Your Week, ${name}` : "Your Week";
+    const lines: string[] = [`You covered **${n} ${plural(n, "chapter", "chapters")}** this week.`];
 
     if (study && !study.finished) {
-      lines.push(
-        `You're ${study.daysCompleted} ${plural(study.daysCompleted, "day", "days")} into ${study.title}, and Day ${study.nextDay} is ready when you are.`,
-      );
-      return { heading, lines, cta: continueCta(study, "Continue with"), href };
+      lines.push(`You're **${study.daysCompleted} ${plural(study.daysCompleted, "day", "days")}** into *${study.title}*.`);
+      lines.push(`**Day ${study.nextDay} is ready when you are.**`);
+      return { emoji: "📖", heading, lines, cta: continueCta(study, "Continue with"), href };
     }
 
     if (study && study.finished) {
-      lines.push(`You also finished ${study.title} — the whole thing. Beautiful work.`);
-      return { heading, lines, cta: "Choose your next study", href };
+      lines.push(`You also finished *${study.title}*.`);
+      lines.push("**The whole thing.** 🎉");
+      return { emoji: "📖", heading, lines, cta: "Choose your next study", href };
     }
 
     // Chapters but no study. The reading link stands on its own.
     if (progress.lastChapter) {
-      lines.push(`You were last in ${titleCaseBook(progress.lastChapter.book)}.`);
-      return { heading, lines, cta: `Keep reading in ${titleCaseBook(progress.lastChapter.book)}`, href };
+      const book = titleCaseBook(progress.lastChapter.book);
+      lines.push(`You were last in **${book}**.`);
+      lines.push("Pick it back up whenever you like.");
+      return { emoji: "📖", heading, lines, cta: `Keep reading in ${book}`, href };
     }
-    return { heading, lines, cta: "Keep reading", href };
+    return { emoji: "📖", heading, lines, cta: "Keep reading", href };
   }
 
   if (progress.variant === "study" && study) {
-    const heading = "Where you left off";
-
     if (study.finished) {
       return {
-        heading: "You finished it",
-        lines: [`You completed every day of ${study.title}. That is worth sitting with.`],
+        emoji: "🎉",
+        heading: "You Finished It",
+        lines: [`You completed **every day** of *${study.title}*.`, "That is worth sitting with."],
         cta: "Choose your next study",
         href,
       };
     }
 
     return {
-      heading,
+      emoji: "📖",
+      heading: "Where You Left Off",
       lines: [
-        `You're ${study.daysCompleted} ${plural(study.daysCompleted, "day", "days")} into ${study.title}.`,
-        `Day ${study.nextDay} is waiting whenever you'd like it.`,
+        `You're **${study.daysCompleted} ${plural(study.daysCompleted, "day", "days")}** into *${study.title}*.`,
+        `**Day ${study.nextDay} is waiting** whenever you'd like it.`,
       ],
       cta: continueCta(study, "Open"),
       href,
@@ -120,10 +140,11 @@ export function progressCopy(progress: RecipientProgress): Copy {
   }
 
   return {
-    heading: "Start when you're ready",
+    emoji: "✨",
+    heading: "Start When You're Ready",
     lines: [
-      "Bible Buddy explains each chapter in plain English, a day at a time.",
-      "The Wisdom of Proverbs is a gentle place to begin.",
+      "Bible Buddy explains each chapter in **plain English**, a day at a time.",
+      "*The Wisdom of Proverbs* is a gentle place to begin.",
     ],
     cta: "Start The Wisdom of Proverbs",
     href,
@@ -132,22 +153,31 @@ export function progressCopy(progress: RecipientProgress): Copy {
 
 /** The block as it appears in the HTML part, matching the newsletter's table style. */
 export function renderProgressSectionHtml(progress: RecipientProgress): string {
-  const { heading, lines, cta, href } = progressCopy(progress);
+  const { emoji, heading, lines, cta, href } = progressCopy(progress);
   const paragraphs = lines
-    .map((line) => `<p style="margin:0 0 12px;font-size:16px;line-height:1.65;color:${BODY};">${escapeHtml(line)}</p>`)
+    .map(
+      (line) =>
+        `<p style="margin:0 0 10px;font-size:16px;line-height:1.6;color:${BODY};">${inlineMarkupToHtml(escapeHtml(line))}</p>`,
+    )
     .join("\n");
 
-  return `<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin:32px 0 8px;">
+  return `<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin:30px 0 8px;">
 <tr><td style="background:#f7f8fb;border-left:4px solid ${ACCENT};padding:22px 24px;">
-<p style="margin:0 0 10px;font-size:12px;font-weight:bold;letter-spacing:1.5px;color:${ACCENT};text-transform:uppercase;">${escapeHtml(heading)}</p>
+<h3 style="margin:0 0 12px;font-size:20px;line-height:1.3;color:${HEADING};">${escapeHtml(emoji)}&nbsp;&nbsp;${escapeHtml(heading)}</h3>
 ${paragraphs}
-<p style="margin:16px 0 0;"><a href="${escapeHtml(href)}" style="display:inline-block;background:${ACCENT};color:#ffffff;text-decoration:none;padding:11px 20px;font-size:15px;font-weight:bold;">${escapeHtml(cta)} →</a></p>
+<p style="margin:16px 0 0;"><a href="${escapeHtml(href)}" style="display:inline-block;background:${ACCENT};color:#ffffff;text-decoration:none;padding:12px 22px;font-size:15px;font-weight:bold;">${escapeHtml(cta)} →</a></p>
 </td></tr>
 </table>`;
 }
 
 /** The same block for the plain-text part. */
 export function renderProgressSectionText(progress: RecipientProgress): string {
-  const { heading, lines, cta, href } = progressCopy(progress);
-  return [heading.toUpperCase(), "", ...lines, "", `${cta}: ${href}`].join("\n");
+  const { emoji, heading, lines, cta, href } = progressCopy(progress);
+  return [
+    `${emoji} ${heading.toUpperCase()}`,
+    "",
+    ...lines.map(stripInlineMarkup),
+    "",
+    `${cta}: ${href}`,
+  ].join("\n");
 }
