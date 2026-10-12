@@ -1001,7 +1001,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                 <h3 className="text-base font-semibold text-gray-900">A Journey Through The Bible</h3>
 
                 <p className="text-gray-700 leading-relaxed">
-                  Bible Buddy studies are built as one connected journey through Scripture. Start with <strong>The Creation of the World</strong>, then keep moving study by study so the Bible unfolds in order instead of feeling like random pieces.
+                  My Bible Buddy studies are built as one connected journey through Scripture. Start with <strong>The Creation of the World</strong>, then keep moving study by study so the Bible unfolds in order instead of feeling like random pieces.
                 </p>
 
                 <p className="text-gray-700 leading-relaxed">

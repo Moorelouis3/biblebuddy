@@ -414,7 +414,7 @@ function getSeriesPromoDescription(title: string | null | undefined, fallback?: 
     return "A 5 week Bible study through Jesus in the wilderness, breaking down temptation, obedience, and spiritual endurance week by week.";
   }
 
-  return fallback || "A guided Bible Buddy study through Scripture with notes, trivia, reflection, and group discussion.";
+  return fallback || "A guided My Bible Buddy study through Scripture with notes, trivia, reflection, and group discussion.";
 }
 
 function selectFeaturedSeriesPreview(
@@ -905,7 +905,7 @@ function getRenderablePostContent(html: string): string {
 
 // Turns bare http(s) URLs in post text into real links. Skips anything that is
 // already inside an attribute or tag (preceded by a quote, '=' or '>') so
-// existing anchors are left alone. Internal Bible Buddy links open in the same
+// existing anchors are left alone. Internal My Bible Buddy links open in the same
 // tab; everything else opens in a new one.
 function linkBareUrlsInHtml(html: string) {
   return html.replace(/(^|[^"'=>\w])(https?:\/\/[^\s<]+?)([.,!?)]*)(?=\s|<|$)/g, (_match, lead: string, url: string, trail: string) => {
@@ -1309,7 +1309,7 @@ function GroupCommentSection({
         post.title,
         post.content,
         post.content,
-        post.display_name || "Bible Buddy",
+        post.display_name || "My Bible Buddy",
       );
       setNewComment(draft);
     } catch (error) {
@@ -1929,7 +1929,7 @@ export default function GroupChatPage() {
 
   // In the native app, outside links inside post text (auto-linked URLs carry
   // target="_blank" and stop propagation inline) open in the in-app browser
-  // sheet instead of replacing Bible Buddy in the WebView. Capture phase so it
+  // sheet instead of replacing My Bible Buddy in the WebView. Capture phase so it
   // runs before the inline handler. Web behavior is unchanged.
   useEffect(() => {
     if (!isNativeApp()) return;
@@ -2431,7 +2431,7 @@ export default function GroupChatPage() {
     try {
       const promptEvent = deferredInstallPromptRef.current;
       if (!promptEvent) {
-        throw new Error("Open Bible Buddy in Chrome to install it from your browser menu.");
+        throw new Error("Open My Bible Buddy in Chrome to install it from your browser menu.");
       }
 
       await promptEvent.prompt();
@@ -2690,7 +2690,7 @@ export default function GroupChatPage() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Inside the store app Bible Buddy is already installed: no Add to Home
+    // Inside the store app My Bible Buddy is already installed: no Add to Home
     // Screen card and no beforeinstallprompt handling.
     if (isNativeApp()) {
       setIsStandaloneApp(true);
@@ -6033,7 +6033,7 @@ export default function GroupChatPage() {
                               </p>
                               <h2 className="text-2xl font-bold text-gray-900 mt-3">{selectedSeries.title}</h2>
                               <p className="text-sm text-gray-700 mt-2 max-w-xl">
-                                A guided Bible Buddy group study through Scripture, released week by week.
+                                A guided My Bible Buddy group study through Scripture, released week by week.
                               </p>
                             </div>
                           )}
@@ -7338,7 +7338,7 @@ export default function GroupChatPage() {
             <div className="px-6 py-5 space-y-4">
               <div className="rounded-xl border border-green-100 bg-green-50 px-4 py-3">
                 <p className="text-xs font-bold uppercase tracking-wide text-green-700">Official Group</p>
-                <p className="text-sm text-green-900 mt-1">This is the official Bible Buddy group for the whole app.</p>
+                <p className="text-sm text-green-900 mt-1">This is the official My Bible Buddy group for the whole app.</p>
               </div>
               {group.description && (
                 <div>
@@ -7353,7 +7353,7 @@ export default function GroupChatPage() {
                 </div>
                 <div className="rounded-xl border border-gray-200 px-4 py-3">
                   <p className="text-xs font-bold uppercase tracking-wide text-gray-400">Teacher</p>
-                  <p className="text-sm text-gray-900 mt-1">{group.leader_name || "Bible Buddy"}</p>
+                  <p className="text-sm text-gray-900 mt-1">{group.leader_name || "My Bible Buddy"}</p>
                 </div>
                 {group.current_weekly_study && (
                   <div className="rounded-xl border border-gray-200 px-4 py-3">
@@ -8080,7 +8080,7 @@ export default function GroupChatPage() {
           <div className="min-w-0 flex-1">
             <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5f8d68]">Update</p>
             <h3 className={`mt-1 font-bold leading-snug text-gray-900 ${compact ? "text-base" : "text-lg"}`}>
-              {post.title || "I added Scrambled to Bible Buddy."}
+              {post.title || "I added Scrambled to My Bible Buddy."}
             </h3>
             <p className={`mt-2 leading-relaxed text-gray-700 ${compact ? "text-sm" : "text-[15px]"}`}>
               {promoCopy}
@@ -8116,7 +8116,7 @@ export default function GroupChatPage() {
             <div className={`relative overflow-hidden rounded-2xl border border-[#d8e4fb] bg-white/80 shadow-sm ${compact ? "h-28 w-full sm:w-40" : "h-32 w-full sm:w-48"}`}>
               <img
                 src={post.media_url}
-                alt={post.title || "Bible Buddy TV thumbnail"}
+                alt={post.title || "My Bible Buddy TV thumbnail"}
                 className="h-full w-full object-cover"
               />
             </div>
@@ -8127,9 +8127,9 @@ export default function GroupChatPage() {
                 <LouisAvatar mood="wave" size={compact ? 42 : 50} />
               </div>
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Bible Buddy TV</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">My Bible Buddy TV</p>
                 <h3 className={`mt-1 font-bold leading-snug text-gray-900 ${compact ? "text-base" : "text-lg"}`}>
-                  {post.title || "Bible Buddy TV"}
+                  {post.title || "My Bible Buddy TV"}
                 </h3>
               </div>
             </div>
@@ -8148,7 +8148,7 @@ export default function GroupChatPage() {
                   onClick={(event) => event.stopPropagation()}
                   className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
                 >
-                  Watch in Bible Buddy TV
+                  Watch in My Bible Buddy TV
                 </Link>
               ) : null}
             </div>
@@ -8165,7 +8165,7 @@ export default function GroupChatPage() {
     const profileIncomplete = missingProfilePhoto || missingBio || missingLocation;
     const pushIncomplete = pushSupported && !(pushPermission === "granted" && pushSubscribed) && !pushDismissed;
     const installIncomplete = !isStandaloneApp && !installCardDismissed;
-    // The "Go deeper with Bible Buddy Pro" step was removed (2026-09-21): the
+    // The "Go deeper with My Bible Buddy Pro" step was removed (2026-09-21): the
     // app is free (lib/accessPolicy CORE_STUDY_IS_FREE) and App Store builds
     // can't link to web purchases.
     const showProfileSetup = profileIncomplete && !hideProfileSetupCard;
@@ -8185,7 +8185,7 @@ export default function GroupChatPage() {
               <p className="text-xs font-semibold uppercase tracking-[0.18em]" style={{ color: SAGE }}>Set Up</p>
               <h3 className="text-lg font-bold text-gray-900 mt-1">Set up your Bible Buddy</h3>
               <p className="text-sm text-gray-500 mt-1 leading-relaxed">
-                A few quick things help your profile feel real and make sure you do not miss replies, likes, and important Bible Buddy updates.
+                A few quick things help your profile feel real and make sure you do not miss replies, likes, and important My Bible Buddy updates.
               </p>
             </div>
             <div className="h-11 w-11 rounded-2xl bg-[#eef8ef] flex items-center justify-center text-xl flex-shrink-0">?</div>
@@ -8231,7 +8231,7 @@ export default function GroupChatPage() {
                 <div className="min-w-0">
                   <p className="text-sm font-semibold text-gray-900">Turn on push alerts</p>
                   <p className="text-sm text-gray-600 mt-1">
-                    Get real-time Bible Buddy notifications when someone likes your post, replies, or sends something important.
+                    Get real-time My Bible Buddy notifications when someone likes your post, replies, or sends something important.
                   </p>
                 </div>
                 <div className="text-xl flex-shrink-0">🔔</div>
@@ -8264,9 +8264,9 @@ export default function GroupChatPage() {
             <div className="rounded-2xl border border-[#d7e8d7] bg-[#f4fbf5] px-4 py-3">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <p className="text-sm font-semibold text-gray-900">Did you know you can install Bible Buddy as an app?</p>
+                  <p className="text-sm font-semibold text-gray-900">Did you know you can install My Bible Buddy as an app?</p>
                   <p className="text-sm text-gray-600 mt-1">
-                    Save it to your home screen so you can continue studying the Bible with one tap on the Bible Buddy icon.
+                    Save it to your home screen so you can continue studying the Bible with one tap on the My Bible Buddy icon.
                   </p>
                 </div>
                 <div className="text-xl flex-shrink-0">📲</div>
@@ -8289,11 +8289,11 @@ export default function GroupChatPage() {
                       className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
                       style={{ backgroundColor: SAGE }}
                     >
-                      {installSetupLoading ? "Opening..." : "Install Bible Buddy"}
+                      {installSetupLoading ? "Opening..." : "Install My Bible Buddy"}
                     </button>
                   )}
                   <ol className="space-y-2 text-sm text-gray-600">
-                    <li>1. Open Bible Buddy in Chrome.</li>
+                    <li>1. Open My Bible Buddy in Chrome.</li>
                     <li>2. Tap the 3-dot menu in the top right.</li>
                     <li>3. Tap <span className="font-semibold text-gray-800">{canInstallToHomeScreen ? "Install app" : "Add to Home screen"}</span>.</li>
                   </ol>
@@ -8308,11 +8308,11 @@ export default function GroupChatPage() {
                       className="rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-60"
                       style={{ backgroundColor: SAGE }}
                     >
-                      {installSetupLoading ? "Opening..." : "Install Bible Buddy"}
+                      {installSetupLoading ? "Opening..." : "Install My Bible Buddy"}
                     </button>
                   )}
                   <p className="text-sm text-gray-600">
-                    Use your browser menu to add Bible Buddy to your home screen for quicker access.
+                    Use your browser menu to add My Bible Buddy to your home screen for quicker access.
                   </p>
                 </div>
               )}

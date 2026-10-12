@@ -76,7 +76,7 @@ function buildStructuredMessage(params: {
   const reporterLabel =
     params.displayName?.trim() ||
     (params.username?.trim() ? `@${params.username.trim()}` : null) ||
-    "Bible Buddy user";
+    "My Bible Buddy user";
   lines.push(`Reporter: ${reporterLabel}`);
   lines.push("");
   lines.push("Message:");

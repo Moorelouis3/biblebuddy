@@ -3,7 +3,7 @@
 /**
  * The "Today" card on the event page while the event is live: which
  * community day it is, that day's devotional title, the study button, and
- * the link to that day's discussion post in the Bible Buddy group (only once
+ * the link to that day's discussion post in the My Bible Buddy group (only once
  * the daily cron has actually posted it).
  */
 

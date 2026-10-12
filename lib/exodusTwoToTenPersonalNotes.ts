@@ -2868,7 +2868,7 @@ function formatExodusTwoToTenPhraseExplanation(section: PersonalExodusPhraseSect
     .replace(/\bFor beginners,?\s*/gi, "")
     .replace(/\bThis phrase helps\s+/gi, "The wording helps ")
     .replace(/\bThe phrase helps\s+/gi, "The wording helps ")
-    .replace(/\bBible Buddy should slow down here because\s*/gi, "Slow down here because ")
+    .replace(/\bMy Bible Buddy should slow down here because\s*/gi, "Slow down here because ")
     .replace(/\bThis detail helps (?:a beginner|the reader) (?:see|follow|understand) that\s*/gi, "Notice that ")
     .replace(/\bThis detail helps (?:a beginner|the reader) (?:see|follow|understand)\s*/gi, "Notice ")
     .replace(/\bThis phrase helps (?:a beginner|the reader) (?:see|follow|understand) that\s*/gi, "Notice that ")

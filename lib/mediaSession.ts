@@ -1,5 +1,5 @@
 /**
- * Lock-screen controls for Bible Buddy's audio (Louis, 2026-10-11).
+ * Lock-screen controls for My Bible Buddy's audio (Louis, 2026-10-11).
  *
  * Chapter audio and the Bible in One Year narration are long - often twenty
  * minutes or more. People listen with the phone in a pocket, and today the
@@ -52,8 +52,8 @@ export function setMediaSessionTrack(track: MediaSessionTrack | null): void {
     }
     ms.metadata = new MediaMetadata({
       title: track.title,
-      artist: track.artist ?? "Bible Buddy",
-      album: track.album ?? "Bible Buddy",
+      artist: track.artist ?? "My Bible Buddy",
+      album: track.album ?? "My Bible Buddy",
       artwork: ARTWORK,
     });
   } catch {

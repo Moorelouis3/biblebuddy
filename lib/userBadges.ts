@@ -59,7 +59,7 @@ export function resolveUserBadge(input: {
       emoji: "ðŸ™",
       className: "bg-violet-100 text-violet-700",
       title: "Pro Trial",
-      description: "This buddy has a 30-day Bible Buddy Pro trial. They get the Pro badge while their trial is active.",
+      description: "This buddy has a 30-day My Bible Buddy Pro trial. They get the Pro badge while their trial is active.",
       louisMood: "pray",
     };
   }
@@ -71,7 +71,7 @@ export function resolveUserBadge(input: {
       emoji: "🤝",
       className: "bg-teal-100 text-teal-700",
       title: "Buddy Partner",
-      description: "This member is an official Bible Buddy Ambassador. They help grow the Bible Buddy community by sharing the app and inviting others to study God's Word.",
+      description: "This member is an official My Bible Buddy Ambassador. They help grow the My Bible Buddy community by sharing the app and inviting others to study God's Word.",
       louisMood: "stareyes",
     };
   }
@@ -83,7 +83,7 @@ export function resolveUserBadge(input: {
       emoji: "👨‍🏫",
       className: "bg-green-100 text-green-700",
       title: "Teacher",
-      description: "Louis is the owner and head teacher on Bible Buddy. This badge marks the person leading, guiding, and teaching inside the study group.",
+      description: "Louis is the owner and head teacher on My Bible Buddy. This badge marks the person leading, guiding, and teaching inside the study group.",
       louisMood: "wave",
     };
   }
@@ -95,7 +95,7 @@ export function resolveUserBadge(input: {
       emoji: "🛡️",
       className: "bg-sky-100 text-sky-700",
       title: "Moderator",
-      description: "This buddy helps keep Bible Buddy healthy, welcoming, and on track. Moderators are trusted to guide the community and support the flow of the group.",
+      description: "This buddy helps keep My Bible Buddy healthy, welcoming, and on track. Moderators are trusted to guide the community and support the flow of the group.",
       louisMood: "think",
     };
   }
@@ -107,7 +107,7 @@ export function resolveUserBadge(input: {
       emoji: "🔥",
       className: "bg-orange-100 text-orange-700",
       title: "Top Buddy",
-      description: "This buddy has stood out in Bible Buddy through strong activity, encouragement, and presence. Top Buddy highlights someone who is making a real impact here.",
+      description: "This buddy has stood out in My Bible Buddy through strong activity, encouragement, and presence. Top Buddy highlights someone who is making a real impact here.",
       louisMood: "stareyes",
     };
   }
@@ -119,7 +119,7 @@ export function resolveUserBadge(input: {
       emoji: "⭐",
       className: "bg-amber-100 text-amber-700",
       title: "Founder Buddy",
-      description: "This member has been with Bible Buddy from the beginning and has been instrumental in the growth and direction of Bible Buddy.",
+      description: "This member has been with My Bible Buddy from the beginning and has been instrumental in the growth and direction of My Bible Buddy.",
       louisMood: "bible",
     };
   }
@@ -131,7 +131,7 @@ export function resolveUserBadge(input: {
       emoji: "🙏",
       className: "bg-violet-100 text-violet-700",
       title: "Pro Buddy",
-      description: "This buddy has full Bible Buddy premium access unlocked. Pro Buddy members support the app and get access to the deeper study experience.",
+      description: "This buddy has full My Bible Buddy premium access unlocked. Pro Buddy members support the app and get access to the deeper study experience.",
       louisMood: "pray",
     };
   }
@@ -143,7 +143,7 @@ export function resolveUserBadge(input: {
       emoji: "👨‍🏫",
       className: "bg-green-100 text-green-700",
       title: "Teacher",
-      description: "Louis is the owner and head teacher on Bible Buddy. This badge marks the person leading, guiding, and teaching inside the study group.",
+      description: "Louis is the owner and head teacher on My Bible Buddy. This badge marks the person leading, guiding, and teaching inside the study group.",
       louisMood: "wave",
     };
   }
@@ -155,7 +155,7 @@ export function resolveUserBadge(input: {
       emoji: "🛡️",
       className: "bg-sky-100 text-sky-700",
       title: "Moderator",
-      description: "This buddy helps keep Bible Buddy healthy, welcoming, and on track. Moderators are trusted to guide the community and support the flow of the group.",
+      description: "This buddy helps keep My Bible Buddy healthy, welcoming, and on track. Moderators are trusted to guide the community and support the flow of the group.",
       louisMood: "think",
     };
   }
@@ -167,7 +167,7 @@ export function resolveUserBadge(input: {
       emoji: "🙏",
       className: "bg-violet-100 text-violet-700",
       title: "Pro Buddy",
-      description: "This buddy is a paid Bible Buddy supporter. Pro Buddy members help support the app and unlock deeper Bible study features at the same time.",
+      description: "This buddy is a paid My Bible Buddy supporter. Pro Buddy members help support the app and unlock deeper Bible study features at the same time.",
       louisMood: "pray",
     };
   }

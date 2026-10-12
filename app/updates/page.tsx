@@ -44,7 +44,7 @@ const xpExamples = [
 const navItems = [
   {
     title: "Dashboard",
-    body: "Your daily starting place. This is where your current Bible Study, daily tasks, Bible Buddy, progress, and next step come together.",
+    body: "Your daily starting place. This is where your current Bible Study, daily tasks, My Bible Buddy, progress, and next step come together.",
   },
   {
     title: "Bible TV",
@@ -178,7 +178,7 @@ export default function UpdatesPage() {
       <section className="px-4 py-14 sm:px-6">
         <SectionHeader
           eyebrow="The big change"
-          title="BibleBuddy is not just another Bible app."
+          title="My Bible Buddy is not just another Bible app."
           body="A normal Bible app gives you access. BibleBuddy gives you a path. Access is helpful, but a path is what you need when you are tired, busy, new to Scripture, or unsure where to begin."
         />
 
@@ -222,7 +222,7 @@ export default function UpdatesPage() {
       <section className="px-4 py-14 sm:px-6">
         <SectionHeader
           eyebrow="How it all connects"
-          title="The BibleBuddy ecosystem"
+          title="The My Bible Buddy ecosystem"
           body="Each system has a job. Together, they help you start, understand, remember, stay motivated, and keep going."
         />
 
@@ -270,13 +270,13 @@ export default function UpdatesPage() {
       <section className="px-4 py-14 sm:px-6">
         <SectionHeader
           eyebrow="Customization"
-          title="BibleBuddy should feel like yours."
+          title="My Bible Buddy should feel like yours."
           body="Themes and profile settings can make the app feel personal while keeping Scripture and daily study at the center."
         />
 
         <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-3">
           <MiniCard title="Themes and frames" body="Change the look and feel of your BibleBuddy space so the app feels warm, personal, and motivating." />
-          <MiniCard title="Bible Buddy customization" body="Unlock and switch Buddies so your study encouragement can match the kind of tone that helps you most." />
+          <MiniCard title="My Bible Buddy customization" body="Unlock and switch Buddies so your study encouragement can match the kind of tone that helps you most." />
           <MiniCard title="Simple personalization" body="Keep the visual style personal without turning BibleBuddy into a store or reward economy." />
         </div>
       </section>

@@ -12,7 +12,7 @@ export function UpgradeBanner() {
 
   useEffect(() => {
     async function checkMembership() {
-      // Nothing to upgrade to — Bible Buddy is free.
+      // Nothing to upgrade to — My Bible Buddy is free.
       if (CORE_STUDY_IS_FREE) return;
 
       try {

@@ -6,7 +6,7 @@ import { unsubscribeToken } from "@/lib/blogBroadcast";
 // cannot unsubscribe somebody else by guessing an address.
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Unsubscribe | Bible Buddy" };
+export const metadata = { title: "Unsubscribe | My Bible Buddy" };
 
 export default async function UnsubscribePage({
   searchParams,
@@ -41,7 +41,7 @@ export default async function UnsubscribePage({
         <>
           <h1 className="text-3xl font-black tracking-tight">You&apos;re unsubscribed</h1>
           <p className="mt-3 text-base font-semibold leading-7 text-[#41506b]">
-            We won&apos;t email <strong>{address}</strong> about new studies again. Bible Buddy itself stays free and
+            We won&apos;t email <strong>{address}</strong> about new studies again. My Bible Buddy itself stays free and
             open whenever you want it.
           </p>
         </>
@@ -49,7 +49,7 @@ export default async function UnsubscribePage({
         <>
           <h1 className="text-3xl font-black tracking-tight">That link didn&apos;t work</h1>
           <p className="mt-3 text-base font-semibold leading-7 text-[#41506b]">
-            It may have been broken by your email app. Reply to any Bible Buddy email and we&apos;ll take you off the
+            It may have been broken by your email app. Reply to any My Bible Buddy email and we&apos;ll take you off the
             list by hand.
           </p>
         </>
@@ -58,7 +58,7 @@ export default async function UnsubscribePage({
         href="/"
         className="mt-6 inline-block w-fit rounded-2xl bg-[#0056FD] px-6 py-3 text-sm font-black text-white"
       >
-        Open Bible Buddy
+        Open My Bible Buddy
       </a>
     </main>
   );

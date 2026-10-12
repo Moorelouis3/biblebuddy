@@ -102,5 +102,5 @@ Continue with Day 10: https://www.mybiblebuddy.net/devotionals/example-devotiona
 Thanks for reading,
 Louis
 
-You're receiving this because you signed up for Bible Buddy.
+You're receiving this because you signed up for My Bible Buddy.
 Unsubscribe: https://www.mybiblebuddy.net/api/email/unsubscribe?token=EXAMPLE

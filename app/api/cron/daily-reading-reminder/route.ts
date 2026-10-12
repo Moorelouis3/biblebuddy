@@ -129,7 +129,7 @@ export async function GET(request: NextRequest) {
         user_id: userId,
         type: NOTIFICATION_TYPE,
         from_user_id: null,
-        from_user_name: "Bible Buddy",
+        from_user_name: "My Bible Buddy",
         article_slug: `/plan?view=bible-year&day=${day.dayNumber}&solo=1`,
         message,
         is_read: false,

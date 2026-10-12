@@ -369,7 +369,7 @@ export default function PublicProfilePage() {
       const profileActorName =
         (typeof profileData.display_name === "string" && profileData.display_name.trim()) ||
         (typeof profileData.username === "string" && profileData.username.trim()) ||
-        "Bible Buddy Member";
+        "My Bible Buddy Member";
 
       await buildActionLog(profileUserId, profileActorName);
 
@@ -542,12 +542,12 @@ export default function PublicProfilePage() {
         p_activity_type: "buddy_added",
         p_activity_data: {
           buddy_id: profileUserId,
-          buddy_name: stats?.display_name || stats?.username || "Bible Buddy",
+          buddy_name: stats?.display_name || stats?.username || "My Bible Buddy",
         },
         p_is_public: true,
       });
 
-      void logActionToMasterActions(viewerUserId!, "buddy_added", stats?.display_name || stats?.username || "Bible Buddy");
+      void logActionToMasterActions(viewerUserId!, "buddy_added", stats?.display_name || stats?.username || "My Bible Buddy");
 
       setBuddyState("buddies");
       setBuddyRequestId(null);
@@ -660,7 +660,7 @@ export default function PublicProfilePage() {
     if (error || !masterActions) { setActionLog([]); return; }
 
       const loginDates = new Set<string>();
-      const actorName = actorNameOverride || stats?.display_name || stats?.username || "Bible Buddy Member";
+      const actorName = actorNameOverride || stats?.display_name || stats?.username || "My Bible Buddy Member";
       for (const action of masterActions) {
         const actionDate = new Date(action.created_at);
         const dateKey = getBrowserDateKey(actionDate);
@@ -901,7 +901,7 @@ export default function PublicProfilePage() {
   const displayStreak = streak || { currentStreak: 0, last7Days: [] };
   const heatMapWeeks = buildHeatMapWeeks(heatMapDays);
   const heatMapMonthLabels = getHeatMapMonthLabels(heatMapWeeks);
-  const displayName = stats?.display_name || stats?.username || "Bible Buddy Member";
+  const displayName = stats?.display_name || stats?.username || "My Bible Buddy Member";
   const username = stats?.username || null;
   const isOwner = viewerUserId === profileUserId;
   const canAssignBadges = viewerEmail === "moorelouis3@gmail.com";
@@ -1329,7 +1329,7 @@ export default function PublicProfilePage() {
                   <h3 className="text-2xl font-bold text-gray-900">Daily activity</h3>
                   <div className="mt-4 space-y-4 text-base leading-8 text-[#43584b]">
                     <p>
-                      This chart shows daily activity on Bible Buddy over the past 6 months.
+                      This chart shows daily activity on My Bible Buddy over the past 6 months.
                       It includes when you show up, study, post, like, comment, reply,
                       and take part in group activity.
                     </p>

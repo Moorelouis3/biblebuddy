@@ -255,7 +255,7 @@ export default function HomeScreen() {
               if (!profile) return null;
               return {
                 userId: id,
-                name: (profile.display_name || profile.username || "Bible Buddy") as string,
+                name: (profile.display_name || profile.username || "My Bible Buddy") as string,
                 image: (profile.profile_image_url as string) || null,
               };
             })

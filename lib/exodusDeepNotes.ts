@@ -1472,7 +1472,7 @@ This is a deep Old Testament mystery.
 
 The angel of the LORD is distinct in some way, but also speaks with God's own authority.
 
-For Bible Buddy, the key idea is this:
+For My Bible Buddy, the key idea is this:
 
 Moses is encountering God's holy presence.
 

@@ -81,7 +81,7 @@ export default function AdminReportsPage() {
     return (
       <main className="mx-auto min-h-screen max-w-3xl px-4 py-8 text-slate-950">
         <h1 className="text-2xl font-black">Reports</h1>
-        <p className="mt-2 text-sm font-semibold text-gray-500">This page is only for the Bible Buddy owner.</p>
+        <p className="mt-2 text-sm font-semibold text-gray-500">This page is only for the My Bible Buddy owner.</p>
       </main>
     );
   }

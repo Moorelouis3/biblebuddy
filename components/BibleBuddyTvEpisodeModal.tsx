@@ -61,7 +61,7 @@ function normalizeMarkdownForModal(markdown: string): string {
   return markdown.replace(/^\s*[-\u2022*]\s+/gm, "").replace(/\n{3,}/g, "\n\n").trim();
 }
 
-const notesUnlockLabel = (title: BibleBuddyTvTitle, episode: BibleBuddyTvEpisode) => `Bible Buddy TV Notes:${title.slug}:${episode.id}`;
+const notesUnlockLabel = (title: BibleBuddyTvTitle, episode: BibleBuddyTvEpisode) => `My Bible Buddy TV Notes:${title.slug}:${episode.id}`;
 const notesCacheKey = (episodeId: string) => `bbtv-deep-notes:v1:${episodeId}`;
 
 function buildDeepStudyPrompt(title: BibleBuddyTvTitle, episode: BibleBuddyTvEpisode) {
@@ -69,10 +69,10 @@ function buildDeepStudyPrompt(title: BibleBuddyTvTitle, episode: BibleBuddyTvEpi
   const contentTypeLabel = isMovie ? "movie" : "episode";
   const summaryText = episode.louisIntro || episode.summary;
   const seedNotes = episode.studyNotesDocument?.trim() || "No starter notes yet.";
-  return `You are writing premium Bible Buddy study notes for a ${contentTypeLabel}.
+  return `You are writing premium My Bible Buddy study notes for a ${contentTypeLabel}.
 Write 1000 to 1500 words in markdown.
 Style requirements:
-- Sound like Bible Buddy: warm, sharp, clear, thoughtful, spiritually rich, and easy to follow
+- Sound like My Bible Buddy: warm, sharp, clear, thoughtful, spiritually rich, and easy to follow
 - Slightly less personal than a first-person teacher voice, but still with strong rhythm and conviction
 - Use emoji section headings often
 - Use short paragraphs, bullet lists, and a few callout quotes
@@ -90,7 +90,7 @@ Formatting rules:
 - Use blockquotes with ">"
 - Avoid tables
 Content requirements:
-- Bible Buddy TV title: ${title.title}
+- My Bible Buddy TV title: ${title.title}
 - This ${contentTypeLabel}: ${episode.title}
 - Label shown in app: ${episode.contentLabel || (isMovie ? "Movie" : `Episode ${episode.episodeNumber}`)}
 - Duration: ${episode.duration}
@@ -408,7 +408,7 @@ export default function BibleBuddyTvEpisodeModal({
         <div className="flex items-start justify-between gap-4 border-b border-gray-200 px-5 py-4 sm:px-6">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.28em]" style={{ color: CAROLINA_BLUE }}>
-              Bible Buddy TV Player
+              My Bible Buddy TV Player
             </p>
             <h2 className="mt-1 text-xl font-semibold sm:text-2xl">{contentLabel}: {episode.title}</h2>
           </div>
@@ -564,7 +564,7 @@ export default function BibleBuddyTvEpisodeModal({
                         <LouisAvatar mood="think" size={72} />
                       </div>
                       <div className="max-w-2xl text-center">
-                        <p className="text-base font-semibold text-gray-900">Building deeper Bible Buddy notes...</p>
+                        <p className="text-base font-semibold text-gray-900">Building deeper My Bible Buddy notes...</p>
                         <p className="mt-2 text-sm leading-relaxed text-gray-600">Pulling together the bigger Scripture arc, the people, the places, and the details underneath what you just watched.</p>
                       </div>
                       <div className="w-full max-w-2xl space-y-3">

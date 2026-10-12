@@ -49,7 +49,7 @@ ${sections.map((section) => `${section.reference} - ${section.heading}\n\n${sect
 
 ${closing.join("\n\n")}
 
-The big idea is this: ${title} is not a disconnected reading. It continues the same Bible Buddy journey of seeing how the LORD forms His people for worship, holiness, order, mercy, and faithful life before Him.`;
+The big idea is this: ${title} is not a disconnected reading. It continues the same My Bible Buddy journey of seeing how the LORD forms His people for worship, holiness, order, mercy, and faithful life before Him.`;
 }
 
 function makeStudySections(sections: readonly DaySection[]): BibleYearDeepStudySection[] {

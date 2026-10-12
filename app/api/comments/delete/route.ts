@@ -175,7 +175,7 @@ export async function POST(request: NextRequest) {
           commentId,
           content: target.content,
           authorUserId: target.user_id,
-          sourceLabel: "Bible Buddy Feed",
+          sourceLabel: "My Bible Buddy Feed",
           contextTitle: `Feed post ${target.post_id}`,
           deletedIds,
         },

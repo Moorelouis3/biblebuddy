@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   const result = await unsubscribe(request);
   const body = result.ok
-    ? `<h1>You're unsubscribed</h1><p>${result.email} won't receive any more emails from Bible Buddy.</p>
+    ? `<h1>You're unsubscribed</h1><p>${result.email} won't receive any more emails from My Bible Buddy.</p>
        <p>Your account and your study progress are untouched - this only stops the emails.</p>`
     : `<h1>That link didn't work</h1><p>It may have been cut in half by your email app. Reply to the email
        and Louis will take you off the list by hand.</p>`;
@@ -70,7 +70,7 @@ export async function GET(request: NextRequest) {
   return new NextResponse(
     `<!doctype html><html lang="en"><head><meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-     <title>Bible Buddy email</title>
+     <title>My Bible Buddy email</title>
      <style>
        body { margin:0; background:#f3f6fa; color:#111827; font:16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
        main { max-width:34rem; margin:0 auto; padding:3rem 1rem; }
@@ -78,7 +78,7 @@ export async function GET(request: NextRequest) {
        p { margin:0 0 .75rem; color:#374151; }
        a { color:#2f7fe8; }
      </style></head>
-     <body><main>${body}<p><a href="https://www.mybiblebuddy.net">Back to Bible Buddy</a></p></main></body></html>`,
+     <body><main>${body}<p><a href="https://www.mybiblebuddy.net">Back to My Bible Buddy</a></p></main></body></html>`,
     { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } },
   );
 }

@@ -210,10 +210,10 @@ export default function BibleBuddyTvHomePage() {
         userId: user.id,
         username: resolvedName,
         actionType: ACTION_TYPE.bible_buddy_tv_viewed,
-        actionLabel: "Bible Buddy TV",
+        actionLabel: "My Bible Buddy TV",
         dedupeKey: "bible-buddy-tv-home",
       }).catch((error) => {
-        console.error("[NAV] Failed to track Bible Buddy TV home view:", error);
+        console.error("[NAV] Failed to track My Bible Buddy TV home view:", error);
       });
     }
 
@@ -324,7 +324,7 @@ export default function BibleBuddyTvHomePage() {
                 aria-hidden="true"
               />
             </div>
-            <p className="mt-4 text-lg font-semibold text-gray-900">Opening Bible Buddy TV</p>
+            <p className="mt-4 text-lg font-semibold text-gray-900">Opening My Bible Buddy TV</p>
             <p className="mt-1 text-sm text-gray-600">Getting your video page ready...</p>
           </div>
         </div>
@@ -332,9 +332,9 @@ export default function BibleBuddyTvHomePage() {
 
       <div className="mx-auto max-w-5xl px-4 py-8">
         <div>
-          <h1 className="mb-2 text-3xl font-bold">Bible Buddy TV</h1>
+          <h1 className="mb-2 text-3xl font-bold">My Bible Buddy TV</h1>
           <p className="text-gray-600">
-            Bible shows, movies, sermons, documentaries, and story-based video content inside Bible Buddy.
+            Bible shows, movies, sermons, documentaries, and story-based video content inside My Bible Buddy.
           </p>
         </div>
 
@@ -498,7 +498,7 @@ export default function BibleBuddyTvHomePage() {
               onChange={(event) => handleBrowseSelection(event.target.value as BibleBuddyTvBrowseKey)}
               className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-3 pr-12 text-sm font-medium text-gray-800 shadow-sm outline-none transition focus:ring-2"
               style={{ ["--tw-ring-color" as string]: CAROLINA_BLUE }}
-              aria-label="Choose a Bible Buddy TV category"
+              aria-label="Choose a My Bible Buddy TV category"
             >
               {bibleBuddyTvBrowseOptions.map((option) => (
                 <option key={option.id} value={option.id}>

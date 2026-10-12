@@ -317,7 +317,7 @@ You can receive peace in the middle of the waiting.
 
 You can receive peace while your heart is still learning not to be afraid.
 
-And one reason I built Bible Buddy is because I know how hard it can be to understand verses like these on your own. Sometimes people read Scripture, but nobody explains what it means or how it connects to real life. Bible Buddy breaks Scripture down in a simple, practical way so people can actually understand it and apply it daily.
+And one reason I built My Bible Buddy is because I know how hard it can be to understand verses like these on your own. Sometimes people read Scripture, but nobody explains what it means or how it connects to real life. My Bible Buddy breaks Scripture down in a simple, practical way so people can actually understand it and apply it daily.
 
 Now stay with this: Jesus does not shame the troubled heart. He speaks peace to it.
 
@@ -575,7 +575,7 @@ But because God is near, His Word is true, and His peace is stronger than the st
 
 And if you want more guided Bible lessons like this, you can sign up free at myBibleBuddy.net.
 
-Bible Buddy is here to help you understand Scripture, calm your mind, and walk with God one day at a time.`,
+My Bible Buddy is here to help you understand Scripture, calm your mind, and walk with God one day at a time.`,
       },
     ],
   },

@@ -19,7 +19,7 @@ type InstallBannerProps = {
 export default function InstallBanner({
   onAdd,
   onDontShowAgain,
-  headline = "Add Bible Buddy to your home screen",
+  headline = "Add My Bible Buddy to your home screen",
   subline = "Opens like an app. Keeps your streak in reach.",
   showAddLink = true,
 }: InstallBannerProps) {

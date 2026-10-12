@@ -142,13 +142,13 @@ export function buildBibleStudySaturdaySnapshot(
 const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
   {
     title: "Highlighting your Bible should help you later, not just make the page colorful",
-    description: "Most people highlight with no system and end up with a page full of color they can't explain later. In Bible Buddy, you can highlight with a purpose — marking what confused you, what stood out, and what you want to come back to.",
+    description: "Most people highlight with no system and end up with a page full of color they can't explain later. In My Bible Buddy, you can highlight with a purpose — marking what confused you, what stood out, and what you want to come back to.",
     contentHtml: `
 <p>Most people start highlighting the Bible with no real system.</p>
 <p>They go through a chapter, mark a few verses in yellow, and then two weeks later they come back and have no idea why they highlighted that.</p>
 <p>The color is there. The reason is gone.</p>
 <h2>🖊️ Highlighting with purpose changes everything</h2>
-<p>In Bible Buddy, you can tap any verse number and highlight it right there. But the goal is not to make the page look active — it is to leave a trail for future you.</p>
+<p>In My Bible Buddy, you can tap any verse number and highlight it right there. But the goal is not to make the page look active — it is to leave a trail for future you.</p>
 <h2>✅ Three ways to highlight intentionally</h2>
 <ul>
 <li>🟡 <strong>Mark what confused you</strong> — so you know to come back and study it more</li>
@@ -161,13 +161,13 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
   },
   {
     title: "Sometimes you are not confused by the Bible, you are just stuck on one wording",
-    description: "Sometimes the issue is not the verse itself — it is just the translation. In Bible Buddy, you can switch between WEB, ASV, and KJV without leaving your place so you can see the verse in different words and keep reading.",
+    description: "Sometimes the issue is not the verse itself — it is just the translation. In My Bible Buddy, you can switch between WEB, ASV, and KJV without leaving your place so you can see the verse in different words and keep reading.",
     contentHtml: `
 <p>Sometimes you read a verse and something just feels off.</p>
 <p>You read it again. Still not clicking. You are not sure if you misunderstood the verse — or if you are just stuck on the specific words used in that translation.</p>
 <p>That is a common moment. And it does not have to stop your reading.</p>
 <h2>📖 Switch translations without losing your place</h2>
-<p>At the top of the <a href="/Bible"><strong>Bible reader in Bible Buddy</strong></a>, there is a translation dropdown. Tap it and switch between WEB, ASV, and KJV right there in the same view.</p>
+<p>At the top of the <a href="/Bible"><strong>Bible reader in My Bible Buddy</strong></a>, there is a translation dropdown. Tap it and switch between WEB, ASV, and KJV right there in the same view.</p>
 <p>You do not have to open another app. You do not have to search anything. You just see the verse in different words and keep moving.</p>
 <h2>✅ When this helps most</h2>
 <ul>
@@ -202,14 +202,14 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
   },
   {
     title: "What do you do if you don't understand a person, place, or word when reading the Bible?",
-    description: "I built Bible Buddy because I got tired of how many things I needed just to study the Bible. Highlighters, notebooks, Notion, Google, YouTube, two other Bible apps — all of that just because I would hit a word I didn't understand. Now you can just tap it and the explanation opens right there.",
+    description: "I built My Bible Buddy because I got tired of how many things I needed just to study the Bible. Highlighters, notebooks, Notion, Google, YouTube, two other Bible apps — all of that just because I would hit a word I didn't understand. Now you can just tap it and the explanation opens right there.",
     contentHtml: `
-<p>I built Bible Buddy because I got tired of how many things I needed just to study the Bible.</p>
+<p>I built My Bible Buddy because I got tired of how many things I needed just to study the Bible.</p>
 <p>Highlighters. Notebooks. Notion. Google. YouTube. Two other Bible apps.</p>
 <p>All of that just because I would get to reading and hit a person, place, or word I didn't understand — and then I had to stop, search it up, write the definition down, and piece together what it meant before the verse even made sense.</p>
 <p>That broke my focus every single time. So I made something better.</p>
 <h2>📖 Reading the Bible is different now</h2>
-<p>Inside Bible Buddy we have a full <a href="/Bible"><strong>Bible reader</strong></a> built specifically for this problem.</p>
+<p>Inside My Bible Buddy we have a full <a href="/Bible"><strong>Bible reader</strong></a> built specifically for this problem.</p>
 <p>When you come across a person, place, or keyword you don't know — you don't have to leave the page. Just tap it right there and the explanation opens instantly.</p>
 <h2>🔍 How it works</h2>
 <ul>
@@ -306,7 +306,7 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
 <li>✔ <strong>Progress feels real</strong> — checking off a day feels like momentum</li>
 </ul>
 <p>If you have been jumping around the Bible without a clear path, this is the week to pick a plan and actually follow it.</p>
-<p>The reading plans in Bible Buddy are already set up and ready to go. Just pick one and start today.</p>
+<p>The reading plans in My Bible Buddy are already set up and ready to go. Just pick one and start today.</p>
 `.trim(),
   },
   {

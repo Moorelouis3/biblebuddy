@@ -248,7 +248,7 @@ export default function HomeInstallBanner() {
     // No captured prompt (browser without install support, or criteria not met).
     setBlockedMessage({
       headline: "Install isn't available in this browser",
-      subline: "Open Bible Buddy in Chrome to add it to your home screen.",
+      subline: "Open My Bible Buddy in Chrome to add it to your home screen.",
     });
   };
 

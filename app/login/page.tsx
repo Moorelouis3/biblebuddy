@@ -162,7 +162,7 @@ export default function LoginPage() {
             <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
             <path d="M16 11.2v17" />
           </svg>
-          <span className="text-lg font-black tracking-tight">Bible Buddy</span>
+          <span className="text-lg font-black tracking-tight">My Bible Buddy</span>
         </Link>
         <PublicHomeButton className="bb-login-home fixed right-5 top-5 z-50 rounded-full border px-5 py-2.5 text-sm font-black shadow-[0_10px_24px_rgba(14,26,58,0.06)] transition hover:-translate-y-0.5 sm:right-8" />
       </header>
@@ -172,7 +172,7 @@ export default function LoginPage() {
           <div className="text-center">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7BAFD4]">Welcome back</p>
             <h1 className="bb-login-title bb-login-serif mt-3 text-4xl font-black leading-tight">
-              Log in to Bible Buddy
+              Log in to My Bible Buddy
             </h1>
             <div className="mx-auto mt-5 flex max-w-[210px] items-center justify-center gap-3 text-[#7BAFD4]">
               <span className="h-px flex-1 bg-[#7BAFD4]/70" />

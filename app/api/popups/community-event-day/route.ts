@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { getActiveCommunityEvent, getCommunityEventState } from "@/lib/communityEvents";
 
 // The daily "Day N is ready" reminder (2026-09-23, Louis): members who open
-// Bible Buddy but never look at the group still need to know today's day is
+// My Bible Buddy but never look at the group still need to know today's day is
 // open. Shown at most once per calendar day, and never once that day is done.
 //
 // user_popups_seen keeps one row per day (popup_id wisdom_proverbs_day_<n>),

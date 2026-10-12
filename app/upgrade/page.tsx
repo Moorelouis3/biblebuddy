@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 /**
- * Bible Buddy is free.
+ * My Bible Buddy is free.
  *
  * This route used to be the Pro pricing page. It is kept (rather than deleted)
  * so every existing link, bookmark, email and in-app button that points at
@@ -24,7 +24,7 @@ export default function UpgradePage() {
           Good news
         </p>
         <h1 className="mt-3 text-3xl font-bold text-gray-950 md:text-4xl">
-          Bible Buddy is completely free
+          My Bible Buddy is completely free
         </h1>
         <p className="mt-4 text-lg leading-7 text-gray-700">
           There is nothing to upgrade to any more. The full Bible-study
@@ -48,16 +48,16 @@ export default function UpgradePage() {
         <p className="mt-6 text-sm leading-6 text-gray-600">
           Study as much as you want, for as long as you want. If you want to
           spend a whole Saturday going through fifteen chapters of Genesis,
-          Bible Buddy will never stop you and ask for money.
+          My Bible Buddy will never stop you and ask for money.
         </p>
       </div>
 
       <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-6 md:p-8">
         <h2 className="text-lg font-bold text-amber-900">
-          If you already supported Bible Buddy
+          If you already supported My Bible Buddy
         </h2>
         <p className="mt-3 text-sm font-medium leading-6 text-amber-900/90">
-          Thank you — genuinely. Bible Buddy got here because people paid for it
+          Thank you — genuinely. My Bible Buddy got here because people paid for it
           when it was not free. You keep everything you have, and you will not
           be charged again.
         </p>

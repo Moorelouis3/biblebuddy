@@ -191,7 +191,7 @@ export default function TopBuddiesAdminPage() {
       <main className="min-h-screen bg-gray-50 px-4 py-12">
         <div className="mx-auto max-w-xl rounded-2xl border border-gray-200 bg-white p-6 text-center shadow-sm">
           <h1 className="text-2xl font-black text-gray-950">Top Buddies</h1>
-          <p className="mt-3 text-sm leading-6 text-gray-600">This analytics page is only available to the Bible Buddy owner.</p>
+          <p className="mt-3 text-sm leading-6 text-gray-600">This analytics page is only available to the My Bible Buddy owner.</p>
           <Link href="/dashboard" className="mt-5 inline-flex rounded-xl bg-[#7BAFD4] px-5 py-3 text-sm font-black text-slate-950">
             Back to Dashboard
           </Link>
@@ -239,7 +239,7 @@ export default function TopBuddiesAdminPage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[#4f8fb7]">How weekly Top Buddies are calculated</p>
-              <p className="mt-1 text-sm leading-6 text-gray-600">{data?.scoring.summary || "Loading the Bible Buddy scoring formula..."}</p>
+              <p className="mt-1 text-sm leading-6 text-gray-600">{data?.scoring.summary || "Loading the My Bible Buddy scoring formula..."}</p>
             </div>
             <div className="flex flex-wrap gap-2">
               {LIMITS.map((option) => (

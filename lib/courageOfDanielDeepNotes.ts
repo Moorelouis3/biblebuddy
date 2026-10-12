@@ -245,7 +245,7 @@ const DANIEL_VERSE_NOTES: Record<string, string[]> = {
   "4:19": [
     "### 😧 Daniel Is Troubled",
     "`Astonied` means stunned or deeply troubled.",
-    "Daniel is not eager to announce judgment. Bible Buddy notes should not make Daniel cold. He tells hard truth with grief in it.",
+    "Daniel is not eager to announce judgment. My Bible Buddy notes should not make Daniel cold. He tells hard truth with grief in it.",
   ],
   "4:22": [
     "### 🌳 Thou Art The Tree",
@@ -421,7 +421,7 @@ const DANIEL_SECTION_STYLE_NOTES: Record<string, string[]> = {
     "* 🤝 Daniel respects the official over him",
     "* 🌱 Daniel asks for a test instead of making a scene",
     "* ⏳ Daniel lets faithfulness prove itself over time",
-    "This is Bible Buddy courage. It is not loud for the sake of being loud. It is steady obedience with a clear heart.",
+    "This is My Bible Buddy courage. It is not loud for the sake of being loud. It is steady obedience with a clear heart.",
   ],
   "God Gives What Babylon Cannot Manufacture": [
     "### 🎓 Babylon Can Train, But God Gives",
@@ -730,7 +730,7 @@ const danielNotes: DanielChapterNote[] = [
           "God gives Daniel favor with the prince of the eunuchs. The word eunuch can refer to a royal official, often a man serving closely in palace administration. Daniel is under authority, and that authority is afraid. If the boys look weak, the official could lose his life.",
           "Daniel proposes a ten-day test with pulse and water. Pulse means vegetables, grains, or simple plant food. This is not a magic diet plan. It is a faith test inside a dangerous court system.",
           "At the end of the ten days, Daniel and his friends look healthier than the others. The point is not that vegetables are always better than royal food. The point is that God honors their loyalty in a place where loyalty is costly.",
-          "This is Bible Buddy Daniel at ground level: faith under pressure, wisdom under authority, and obedience without drama.",
+          "This is My Bible Buddy Daniel at ground level: faith under pressure, wisdom under authority, and obedience without drama.",
         ],
       },
       {

@@ -29,39 +29,39 @@ export function FeedbackModal({
   const questions = [
     {
       id: "discovery_source",
-      question: "How did you find out about Bible Buddy?",
+      question: "How did you find out about My Bible Buddy?",
       type: "dropdown",
       options: ["Instagram", "Threads", "Facebook", "YouTube", "Someone I know", "Other"],
     },
     {
       id: "happiness_rating",
-      question: "How happy are you with Bible Buddy?",
+      question: "How happy are you with My Bible Buddy?",
       options: ["Very happy", "Somewhat happy", "Neutral", "Not happy"],
     },
     {
       id: "usefulness_rating",
-      question: "How useful do you find Bible Buddy for understanding the Bible?",
+      question: "How useful do you find My Bible Buddy for understanding the Bible?",
       options: ["Extremely useful", "Very useful", "Somewhat useful", "Not very useful"],
     },
     {
       id: "usage_frequency",
-      question: "How often would you use Bible Buddy?",
+      question: "How often would you use My Bible Buddy?",
       options: ["Daily", "4–5 days a week", "2–3 days a week", "Once in a while"],
     },
     {
       id: "recommendation_likelihood",
-      question: "How likely are you to recommend Bible Buddy to someone else?",
+      question: "How likely are you to recommend My Bible Buddy to someone else?",
       options: ["Very likely", "Likely", "Neutral", "Unlikely"],
     },
     {
       id: "improvement_feedback",
-      question: "If you could change, remove, or add anything to Bible Buddy, what would it be?",
+      question: "If you could change, remove, or add anything to My Bible Buddy, what would it be?",
       type: "textarea",
       optional: true,
     },
     {
       id: "review_text",
-      question: "Could you write us a 2–3 sentence review for Bible Buddy please?",
+      question: "Could you write us a 2–3 sentence review for My Bible Buddy please?",
       type: "textarea",
       optional: true,
     },
@@ -262,10 +262,10 @@ export function FeedbackModal({
               <div className="mb-6">
                 <h2 className="text-2xl font-bold mb-4">Hey {username},</h2>
                 <p className="text-gray-700 text-lg">
-                  Thank you for being a user of Bible Buddy. I truly hope it's helping you understand the Bible better.
+                  Thank you for being a user of My Bible Buddy. I truly hope it's helping you understand the Bible better.
                 </p>
                 <p className="text-gray-700 text-lg mt-2">
-                  Would you take 3 minutes to answer a short questionnaire? Your feedback helps make Bible Buddy better for everyone.
+                  Would you take 3 minutes to answer a short questionnaire? Your feedback helps make My Bible Buddy better for everyone.
                 </p>
               </div>
 

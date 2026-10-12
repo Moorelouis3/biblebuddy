@@ -82,7 +82,7 @@ export async function scheduleDailyReminder(hour = DEFAULT_REMINDER_HOUR): Promi
         {
           id: DAILY_REMINDER_ID,
           title: "Time with God",
-          body: "Today's reading is ready in Bible Buddy.",
+          body: "Today's reading is ready in My Bible Buddy.",
           // `on` with no date fields repeats: every day at this hour.
           schedule: { on: { hour, minute: 0 }, allowWhileIdle: true },
           // Tapping it opens the dashboard rather than wherever the app was

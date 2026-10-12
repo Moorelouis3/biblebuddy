@@ -389,7 +389,7 @@ export default function NamesOfGodMeaningsPage() {
           </li>
           <li>
             <strong>Study it verse by verse, not just the summary.</strong> This overview gets you
-            started. Bible Buddy is where you can go phrase by phrase through Exodus 3 or Genesis
+            started. My Bible Buddy is where you can go phrase by phrase through Exodus 3 or Genesis
             17 and see exactly how each name unfolds in context, completely free.
           </li>
         </ol>

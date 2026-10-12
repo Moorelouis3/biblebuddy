@@ -241,7 +241,7 @@ export default function WisdomBookPopup({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/books/wisdom-of-proverbs/popup-desktop.webp"
-            alt="New Book Live! The Wisdom of Proverbs, a 31-day study of the Book of Proverbs. Get the physical copy and take the study with you, while supporting Bible Buddy and helping keep it free for everyone."
+            alt="New Book Live! The Wisdom of Proverbs, a 31-day study of the Book of Proverbs. Get the physical copy and take the study with you, while supporting My Bible Buddy and helping keep it free for everyone."
             width={1527}
             height={1030}
             className="block h-auto w-full select-none"
@@ -260,7 +260,7 @@ export default function WisdomBookPopup({
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/books/wisdom-of-proverbs/popup-mobile.webp"
-            alt="New Book Live! The Wisdom of Proverbs, a 31-day study of the Book of Proverbs. Get the physical copy and take the study with you, while supporting Bible Buddy and helping keep it free for everyone."
+            alt="New Book Live! The Wisdom of Proverbs, a 31-day study of the Book of Proverbs. Get the physical copy and take the study with you, while supporting My Bible Buddy and helping keep it free for everyone."
             width={900}
             height={900}
             className="block h-auto w-full select-none"

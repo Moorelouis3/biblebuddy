@@ -104,13 +104,13 @@ const benefitRows = [
 const landingProofItems = [
   {
     name: "Maya",
-    detail: "Bible Buddy member",
+    detail: "My Bible Buddy member",
     quote: "I listen every morning while getting ready for work. It centers my day before everything gets loud.",
   },
   {
     name: "Daniel",
     detail: "Listens before work",
-    quote: "I play two episodes a day, on the way to work and back home. I am on my second time finishing the Bible with Bible Buddy.",
+    quote: "I play two episodes a day, on the way to work and back home. I am on my second time finishing the Bible with My Bible Buddy.",
   },
   {
     name: "Tiana",
@@ -134,7 +134,7 @@ const landingProofItems = [
   },
   {
     name: "Naomi",
-    detail: "Bible Buddy member",
+    detail: "My Bible Buddy member",
     quote: "I finally understand how Abraham, Isaac, Jacob, and Joseph fit into one bigger story.",
   },
   {
@@ -188,7 +188,7 @@ const loadingMessages = [
   "You do not need to study the Bible perfectly - you just need a clear next step.",
   "Understanding Scripture becomes easier when someone guides you through it.",
   "Most people struggle with consistency because they do not know where to start.",
-  "Bible Buddy is designed to help you build a daily rhythm that lasts.",
+  "My Bible Buddy is designed to help you build a daily rhythm that lasts.",
 ];
 
 function estimatedDaysForTime(time: string) {
@@ -428,7 +428,7 @@ async function initializeLandingUserDashboard({
   const { data: sessionData } = await supabase.auth.getSession();
   const token = sessionData.session?.access_token;
   if (!token) {
-    throw new Error("Bible Buddy could not verify your new account session.");
+    throw new Error("My Bible Buddy could not verify your new account session.");
   }
 
   const response = await fetch("/api/landing-onboarding/setup", {
@@ -450,7 +450,7 @@ async function initializeLandingUserDashboard({
   });
   const payload = await response.json().catch(() => null);
   if (!response.ok) {
-    throw new Error(payload?.error || "Bible Buddy could not finish setting up your dashboard.");
+    throw new Error(payload?.error || "My Bible Buddy could not finish setting up your dashboard.");
   }
 }
 
@@ -800,7 +800,7 @@ export default function LandingPage() {
         if (anonymousError) {
           const message = anonymousError.message || "";
           if (/anonymous sign-?ins are disabled/i.test(message)) {
-            setError("Guest Mode needs Supabase Anonymous Sign-Ins turned on before Bible Buddy can create guest users. Turn it on in Supabase Auth, then try again.");
+            setError("Guest Mode needs Supabase Anonymous Sign-Ins turned on before My Bible Buddy can create guest users. Turn it on in Supabase Auth, then try again.");
             setSubmitting(false);
             guestJourneyStartingRef.current = false;
             return;
@@ -810,7 +810,7 @@ export default function LandingPage() {
         guestUserId = anonymousData.user?.id || null;
       }
 
-      if (!guestUserId) throw new Error("Bible Buddy could not start guest mode.");
+      if (!guestUserId) throw new Error("My Bible Buddy could not start guest mode.");
 
       await initializeLandingUserDashboard({
         userId: guestUserId,
@@ -834,7 +834,7 @@ export default function LandingPage() {
       enterDashboard(route);
     } catch (guestError) {
       console.warn("Guest journey start failed:", guestError);
-      setError(guestError instanceof Error ? guestError.message : "Bible Buddy could not start guest mode. Please try again.");
+      setError(guestError instanceof Error ? guestError.message : "My Bible Buddy could not start guest mode. Please try again.");
       setSubmitting(false);
       guestJourneyStartingRef.current = false;
     }
@@ -954,7 +954,7 @@ export default function LandingPage() {
         setError(
           loginError?.message?.toLowerCase().includes("email not confirmed")
             ? "Your account was created, but email confirmation is still turned on. Confirm your email or turn off confirmation in Supabase Auth."
-            : loginError?.message || "Account created, but Bible Buddy could not start your session yet. Try logging in.",
+            : loginError?.message || "Account created, but My Bible Buddy could not start your session yet. Try logging in.",
         );
         return;
       }
@@ -973,7 +973,7 @@ export default function LandingPage() {
       });
     } catch (initializationError) {
       console.error("Landing user initialization failed:", initializationError);
-      setError("Your account was created, but Bible Buddy could not finish setting up your dashboard. Please try logging in.");
+      setError("Your account was created, but My Bible Buddy could not finish setting up your dashboard. Please try logging in.");
       setSubmitting(false);
       return;
     }
@@ -1021,7 +1021,7 @@ export default function LandingPage() {
           user_id: user.id,
           username: cleanName,
           action_type: ACTION_TYPE.user_signup,
-          action_label: "Signed up after Bible Buddy landing questionnaire",
+          action_label: "Signed up after My Bible Buddy landing questionnaire",
           created_at: new Date().toISOString(),
         });
       }
@@ -1142,7 +1142,7 @@ export default function LandingPage() {
                 Have you ever started reading the Bible only to quit a few days later because you didn't understand what you were reading?
                 <br className="hidden sm:block" />
                 <br className="hidden sm:block" />
-                Bible Buddy helps you stay consistent with simple daily lessons, clear explanations, and guided audio that make Scripture easier to understand and easier to finish.
+                My Bible Buddy helps you stay consistent with simple daily lessons, clear explanations, and guided audio that make Scripture easier to understand and easier to finish.
               </p>
               <div className="mt-5 grid grid-cols-2 gap-3 sm:mt-7 sm:block sm:space-y-4">
                 {[
@@ -1177,7 +1177,7 @@ export default function LandingPage() {
           <section id="how-it-works" className="px-5 py-10 sm:px-8 sm:py-16 lg:py-20">
             <div className="mx-auto max-w-7xl">
               <div className="mx-auto max-w-2xl text-center">
-                <h2 className="bb-serif text-[2.15rem] font-black leading-tight text-[#07162f] sm:text-5xl">Why Bible Buddy works</h2>
+                <h2 className="bb-serif text-[2.15rem] font-black leading-tight text-[#07162f] sm:text-5xl">Why My Bible Buddy works</h2>
                 <p className="mt-3 text-sm font-semibold leading-6 text-[#526075] sm:mt-4">
                   We remove the overwhelm and guesswork so you can focus on what matters: spending time with God's Word.
                 </p>
@@ -1208,7 +1208,7 @@ export default function LandingPage() {
               <div className="bb-listen-copy relative z-20 max-w-lg">
                 <h2 className="bb-serif text-[2rem] font-black leading-tight sm:text-5xl">Listen anywhere. Grow everywhere.</h2>
                 <p className="mt-3 text-sm font-semibold leading-6 sm:mt-5 sm:text-base sm:leading-7">
-                  Whether you're driving, working out, cleaning, or taking a walk, Bible Buddy fits into your life. You do not need more time. You need a better way.
+                  Whether you're driving, working out, cleaning, or taking a walk, My Bible Buddy fits into your life. You do not need more time. You need a better way.
                 </p>
                 <div className="mt-6 grid grid-cols-5 gap-2 text-center text-[10px] font-bold sm:mt-10 sm:gap-4 sm:text-[11px]">
                   {[
@@ -1348,7 +1348,7 @@ export default function LandingPage() {
                     For thousands of years, God&apos;s Word was heard before it was read.
                   </h2>
                   <p className="mt-4 max-w-2xl text-center text-sm font-medium leading-7 text-[#334762] sm:text-left">
-                    People gathered to listen. Teachers read aloud. Early Christians shared Scripture together. Bible Buddy brings that ancient rhythm into modern life with guided audio lessons that help you understand, remember, and keep going.
+                    People gathered to listen. Teachers read aloud. Early Christians shared Scripture together. My Bible Buddy brings that ancient rhythm into modern life with guided audio lessons that help you understand, remember, and keep going.
                   </p>
 
                   <div className="mt-7 grid gap-5 md:grid-cols-3">
@@ -1371,7 +1371,7 @@ export default function LandingPage() {
 
                   <div className="mt-7 rounded-2xl border border-[#eadfcd] bg-[#fffdf8]/82 px-5 py-4 text-center shadow-[0_16px_38px_rgba(7,22,47,0.055)]">
                     <p className="mx-auto max-w-2xl text-base font-black leading-7 text-[#07162f]">
-                      No matter how busy life gets, Bible Buddy brings God&apos;s Word to you, so you never fall behind.
+                      No matter how busy life gets, My Bible Buddy brings God&apos;s Word to you, so you never fall behind.
                     </p>
                     <div className="mx-auto mt-3 h-0.5 w-16 bg-[#d99822]" />
                   </div>
@@ -1423,7 +1423,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="mx-auto mt-5 flex max-w-7xl flex-wrap items-center justify-between gap-3 text-xs font-semibold text-[#6d7789]">
-              <span>Copyright 2026 Bible Buddy. All rights reserved.</span>
+              <span>Copyright 2026 My Bible Buddy. All rights reserved.</span>
               <span>Free to start. Cancel anytime.</span>
             </div>
           </footer>
@@ -1569,7 +1569,7 @@ export default function LandingPage() {
                 <path d="M23.8 12.4c-2.6-.4-4.7.3-6.2 1.5" />
               </svg>
             </div>
-            <span className="text-lg font-black tracking-tight">Bible Buddy</span>
+            <span className="text-lg font-black tracking-tight">My Bible Buddy</span>
           </div>
           <Link href="/login" className="bb-force-black hidden rounded-full border border-[#ece3d7] bg-[#FBF9F4] px-5 py-2.5 text-sm font-black shadow-[0_12px_30px_rgba(14,26,58,0.14)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_38px_rgba(14,26,58,0.18)] sm:inline-flex sm:px-7 sm:py-3">
             Login
@@ -1621,7 +1621,7 @@ export default function LandingPage() {
               <span className="bb-hero-gold mt-3 block text-[0.82em]">Let's change that!</span>
             </h1>
             <p className="bb-force-black mx-auto mt-9 max-w-2xl text-lg font-semibold leading-8">
-              If you've ever wanted to study the Bible but struggled to stay consistent or understand what you're reading, <strong>Bible Buddy</strong> makes Bible study easier.
+              If you've ever wanted to study the Bible but struggled to stay consistent or understand what you're reading, <strong>My Bible Buddy</strong> makes Bible study easier.
             </p>
             <div className="mx-auto mt-8 grid max-w-3xl gap-5 text-left sm:grid-cols-2 lg:grid-cols-4">
               {[
@@ -1672,10 +1672,10 @@ export default function LandingPage() {
                 <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
                 <path d="M16 11.2v17" />
               </svg>
-              <span className="text-base font-black text-[#0E1A3A]">Bible Buddy</span>
+              <span className="text-base font-black text-[#0E1A3A]">My Bible Buddy</span>
             </div>
             <p className="mt-3 max-w-xl text-xs font-semibold leading-5 text-[#536173]">
-              Bible Buddy helps you build a guided daily Bible study rhythm. Educational content only; always seek pastoral or professional counsel for personal situations.
+              My Bible Buddy helps you build a guided daily Bible study rhythm. Educational content only; always seek pastoral or professional counsel for personal situations.
             </p>
           </div>
 
@@ -1686,7 +1686,7 @@ export default function LandingPage() {
           </div>
         </div>
         <div className="mx-auto mt-5 flex max-w-6xl flex-wrap items-center justify-between gap-3 text-xs font-semibold text-[#6b7280]">
-          <span>Copyright 2026 Bible Buddy. All rights reserved.</span>
+          <span>Copyright 2026 My Bible Buddy. All rights reserved.</span>
           <span>Free to start. Cancel anytime.</span>
         </div>
       </footer>
@@ -1910,12 +1910,12 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
 
   const faqs = [
     {
-      q: "Who is Bible Buddy for?",
-      a: "Everyday Christians who want to actually understand the Bible - not scholars. Whether you've never read it before or you've tried and felt lost, Bible Buddy walks you through Scripture with plain-English explanations.",
+      q: "Who is My Bible Buddy for?",
+      a: "Everyday Christians who want to actually understand the Bible - not scholars. Whether you've never read it before or you've tried and felt lost, My Bible Buddy walks you through Scripture with plain-English explanations.",
     },
     {
-      q: "Is Bible Buddy really free?",
-      a: "Yes - completely free. Every chapter, every study note, every devotional, all the audio and all the trivia. There is no Pro tier, no credits and no daily limit. You do not even need an account to start; create one when you want Bible Buddy to remember your progress across devices.",
+      q: "Is My Bible Buddy really free?",
+      a: "Yes - completely free. Every chapter, every study note, every devotional, all the audio and all the trivia. There is no Pro tier, no credits and no daily limit. You do not even need an account to start; create one when you want My Bible Buddy to remember your progress across devices.",
     },
     {
       q: "What Bible translation do you use?",
@@ -1923,18 +1923,18 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
     },
     {
       q: "How are the lessons different?",
-      a: "Most apps give you the text and leave you alone with it. Bible Buddy puts the explanation right inside the reading: verse-by-verse commentary, guided audio you can listen to anywhere, historical context, and quizzes that make it stick.",
+      a: "Most apps give you the text and leave you alone with it. My Bible Buddy puts the explanation right inside the reading: verse-by-verse commentary, guided audio you can listen to anywhere, historical context, and quizzes that make it stick.",
     },
     ...(inNativeApp
       ? []
       : [
           {
             q: "Do I need to download anything?",
-            a: "No. Bible Buddy runs in your browser on any phone or computer. You can add it to your home screen in two taps and it works like an app.",
+            a: "No. My Bible Buddy runs in your browser on any phone or computer. You can add it to your home screen in two taps and it works like an app.",
           },
         ]),
     {
-      q: "Can beginners use Bible Buddy?",
+      q: "Can beginners use My Bible Buddy?",
       a: "Beginners are exactly who it's built for. Start with the Bible in One Year plan - about 20 minutes a day, read or listen, with every chapter explained as you go.",
     },
   ];
@@ -1961,7 +1961,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
           <p className="mx-auto mt-5 max-w-[560px] text-[1.02rem] font-black leading-7 sm:text-lg">
             Most Bible apps help you read the Bible.
             <br />
-            Bible Buddy helps you <span className="bb-brand-blue underline decoration-2 underline-offset-4">understand</span> it.
+            My Bible Buddy helps you <span className="bb-brand-blue underline decoration-2 underline-offset-4">understand</span> it.
           </p>
           <p className="mx-auto mt-4 max-w-[520px] text-[0.98rem] font-semibold leading-7 text-[#40516b]">
             Verse-by-verse explanations in plain English, guided audio, and simple study tools to help you truly understand Scripture.
@@ -2031,14 +2031,14 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
 
         <section id="about" className="mt-14 rounded-[24px] border border-[#dce7f5] bg-[#f7fbff] p-6 text-center sm:p-8">
           <p className="text-sm font-semibold leading-7 text-[#40516b] sm:text-base">
-            Bible Buddy is currently in beta &bull; a free {inNativeApp ? "app" : "web app"} built by one person with one mission: helping people understand God&apos;s Word. New features are added every week.
+            My Bible Buddy is currently in beta &bull; a free {inNativeApp ? "app" : "web app"} built by one person with one mission: helping people understand God&apos;s Word. New features are added every week.
           </p>
-          <p className="mt-3 text-sm font-black text-[#07162f]">&mdash; Louis, founder of Bible Buddy</p>
+          <p className="mt-3 text-sm font-black text-[#07162f]">&mdash; Louis, founder of My Bible Buddy</p>
           <p className="mt-5 border-t border-[#dce7f5] pt-5 text-xs font-semibold leading-6 text-[#6d7789]">
-            Profiles marked with the Moderator badge are part of the Bible Buddy moderation and community team.
+            Profiles marked with the Moderator badge are part of the My Bible Buddy moderation and community team.
             Moderator accounts help welcome members, encourage discussion, respond to posts, and keep the community
             active and supportive. Multiple moderator profiles may sometimes be operated or assisted by the same
-            Bible Buddy team member, including through automated tools. All moderator activity remains subject to
+            My Bible Buddy team member, including through automated tools. All moderator activity remains subject to
             human review and quality checks.
           </p>
         </section>
@@ -2072,7 +2072,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
               <Link href="/privacy" className="transition hover:text-[#0056FD]">Privacy</Link>
               <Link href="/terms" className="transition hover:text-[#0056FD]">Terms</Link>
             </div>
-            <p className="text-xs font-bold text-[#6d7789]">&copy; 2026 Bible Buddy</p>
+            <p className="text-xs font-bold text-[#6d7789]">&copy; 2026 My Bible Buddy</p>
           </div>
         </footer>
       </main>
@@ -2086,7 +2086,7 @@ function LandingPhoneFrame({ variant, featured = false }: { variant: "home" | "v
       <div className="overflow-hidden rounded-[30px] bg-[#0b1524] text-white">
         <div className="flex items-center justify-between px-4 py-3 text-[10px] font-black text-white/80">
           <span>9:41</span>
-          <span>Bible Buddy</span>
+          <span>My Bible Buddy</span>
           <span>• •</span>
         </div>
         {variant === "home" ? <LandingPhoneHome /> : null}
@@ -2203,7 +2203,7 @@ function BibleBuddyMark({ small = false }: { small?: boolean }) {
         height={small ? 24 : 28}
         className={`${small ? "h-6 w-6" : "h-7 w-7"} rounded-md object-cover`}
       />
-      <span className={small ? "text-base font-black tracking-tight" : "text-lg font-black tracking-tight"}>Bible Buddy</span>
+      <span className={small ? "text-base font-black tracking-tight" : "text-lg font-black tracking-tight"}>My Bible Buddy</span>
     </div>
   );
 }
@@ -2501,14 +2501,14 @@ function HowItWorksSection({ onStart }: { onStart: () => void }) {
       <div className="mx-auto max-w-3xl text-center">
         <div className="flex items-center justify-center gap-5">
           <span className="hidden h-px w-24 bg-[#d89b43] sm:block" />
-          <h2 className="bb-force-black bb-serif text-4xl font-black leading-tight sm:text-5xl">Here's How Bible Buddy Works</h2>
+          <h2 className="bb-force-black bb-serif text-4xl font-black leading-tight sm:text-5xl">Here's How My Bible Buddy Works</h2>
           <span className="hidden h-px w-24 bg-[#d89b43] sm:block" />
         </div>
         <p className="mt-4 text-2xl font-black leading-tight text-[#0E1A3A] sm:text-3xl">
           Scripture was meant to be <span className="text-[#d89b43]">heard and understood.</span>
         </p>
         <p className="mx-auto mt-4 max-w-2xl text-sm font-semibold leading-6 text-[#33415c]">
-          For thousands of years, people gathered together to listen as Scripture was read and explained aloud. Bible Buddy brings that experience into a simple daily system built for modern life.
+          For thousands of years, people gathered together to listen as Scripture was read and explained aloud. My Bible Buddy brings that experience into a simple daily system built for modern life.
         </p>
       </div>
 
@@ -3304,7 +3304,7 @@ function OnboardingFlow(props: {
                     <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
                     <path d="M16 11.2v17" />
                   </svg>
-                  <span className="text-base font-black">Bible Buddy</span>
+                  <span className="text-base font-black">My Bible Buddy</span>
                 </div>
               </div>
 
@@ -3375,7 +3375,7 @@ function OnboardingFlow(props: {
                     <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
                     <path d="M16 11.2v17" />
                   </svg>
-                  <span className="text-base font-black">Bible Buddy</span>
+                  <span className="text-base font-black">My Bible Buddy</span>
                 </div>
               </div>
 
@@ -3476,7 +3476,7 @@ function OnboardingFlow(props: {
                 <p className="text-xl font-black leading-8 text-[#0E1A3A]">
                   If you spend {props.answers.time || "30 minutes"} a day
                   <br />
-                  with Bible Buddy,
+                  with My Bible Buddy,
                 </p>
                 <p className="mt-4 text-2xl font-black leading-8 text-[#d89b43]">
                   you could read the whole Bible

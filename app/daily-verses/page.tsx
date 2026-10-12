@@ -122,7 +122,7 @@ function DailyVersesArchive() {
     <div className="mx-auto w-full max-w-2xl px-4 pb-28 pt-6">
       <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">Daily Verses</h1>
       <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-        Revisit previous verses from Bible Buddy.
+        Revisit previous verses from My Bible Buddy.
       </p>
 
       {!loaded ? (

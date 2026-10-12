@@ -9,7 +9,7 @@ import { requireOwner } from "@/lib/requireOwner";
  *
  *     TOTAL USERS  =  registered  +  guests
  *
- * The moment someone lands in Bible Buddy they are a real user and they count.
+ * The moment someone lands in My Bible Buddy they are a real user and they count.
  * Underneath that they are either a guest or registered. When a guest signs up
  * they move from one side to the other and TOTAL does not change — because
  * signing up attaches an email to the SAME Supabase user, it does not create a

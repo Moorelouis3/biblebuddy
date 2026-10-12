@@ -3251,14 +3251,14 @@ export function buildBlogArticleMetadata(
   overrides?: { title?: string; description?: string },
 ) {
   const article = getBlogArticle(slug);
-  if (!article) return { title: "Blog Article | Bible Buddy" };
+  if (!article) return { title: "Blog Article | My Bible Buddy" };
 
   const title = overrides?.title ?? article.title;
   const description = overrides?.description ?? article.description;
   const url = `/blog/${article.slug}`;
 
   return {
-    title: `${title} | Bible Buddy`,
+    title: `${title} | My Bible Buddy`,
     description,
     alternates: { canonical: url },
     openGraph: {

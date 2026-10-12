@@ -19,7 +19,7 @@ const url = "https://www.mybiblebuddy.net/devotionals/wisdom-of-proverbs";
 const image = "https://www.mybiblebuddy.net/og/wisdom-of-proverbs.png";
 const title = "The Wisdom of Proverbs | Free 31-Day Bible Study";
 const description =
-  "Understand Proverbs and apply God's wisdom to your life. Start the free 31-day study with Bible Buddy.";
+  "Understand Proverbs and apply God's wisdom to your life. Start the free 31-day study with My Bible Buddy.";
 
 export const metadata: Metadata = {
   title,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title,
     description,
     url,
-    siteName: "Bible Buddy",
+    siteName: "My Bible Buddy",
     type: "website",
     images: [
       {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/png",
-        alt: "The Wisdom of Proverbs — a free 31-day Bible study from Bible Buddy",
+        alt: "The Wisdom of Proverbs — a free 31-day Bible study from My Bible Buddy",
       },
     ],
   },
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   other: {
     "og:image:secure_url": image,
-    "twitter:image:alt": "The Wisdom of Proverbs — a free 31-day Bible study from Bible Buddy",
+    "twitter:image:alt": "The Wisdom of Proverbs — a free 31-day Bible study from My Bible Buddy",
     // Repeated from the root layout because a page's `other` replaces it rather
     // than merging with it.
     "fb:app_id": "1293695119276480",

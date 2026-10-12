@@ -325,7 +325,7 @@ function formatLeviticusOneToEightPhraseExplanation(section: PersonalLeviticusPh
     .replace(/\bA beginner should notice\s*/gi, "Notice ")
     .replace(/\bA beginner should\s+/gi, "The reader can ")
     .replace(/\bFor beginners,?\s*/gi, "")
-    .replace(/\bBible Buddy should slow down here because\s*/gi, "Slow down here because ")
+    .replace(/\bMy Bible Buddy should slow down here because\s*/gi, "Slow down here because ")
     .replace(/\bThis detail helps (?:a beginner|the reader) (?:see|follow|understand) that\s*/gi, "Notice that ")
     .replace(/\bThis detail helps (?:a beginner|the reader) (?:see|follow|understand)\s*/gi, "Notice ")
     .replace(/\bThis phrase helps (?:a beginner|the reader) (?:see|follow|understand) that\s*/gi, "Notice that ")

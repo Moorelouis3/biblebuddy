@@ -4,10 +4,10 @@ export default function HowItWorksPage() {
   return (
     <main className="min-h-screen bg-[#fffdf8] px-6 py-10 text-[#07162f]">
       <div className="mx-auto max-w-4xl">
-        <Link href="/" className="text-sm font-black text-[#135397]">Bible Buddy</Link>
-        <h1 className="mt-10 font-serif text-5xl font-black leading-tight">How Bible Buddy works</h1>
+        <Link href="/" className="text-sm font-black text-[#135397]">My Bible Buddy</Link>
+        <h1 className="mt-10 font-serif text-5xl font-black leading-tight">How My Bible Buddy works</h1>
         <p className="mt-5 max-w-2xl text-lg font-semibold leading-8 text-[#526075]">
-          Bible Buddy gives you one simple daily rhythm: listen to the guided lesson, understand the passage, reflect on what you learned, and keep moving through Scripture one day at a time.
+          My Bible Buddy gives you one simple daily rhythm: listen to the guided lesson, understand the passage, reflect on what you learned, and keep moving through Scripture one day at a time.
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {[

@@ -2,7 +2,7 @@ import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
 import { createClient } from "@supabase/supabase-js";
 
 /**
- * Sending email as Bible Buddy, from Bible Buddy (Louis, 2026-10-03).
+ * Sending email as My Bible Buddy, from My Bible Buddy (Louis, 2026-10-03).
  *
  * Until now every email went out through Systeme.io: the app added a tag to a
  * contact there and one of their automations did the sending. That is why the
@@ -19,7 +19,7 @@ import { createClient } from "@supabase/supabase-js";
  *   SES_SENDING_ENABLED=true
  *   AWS_SES_REGION=eu-central-1
  *   AWS_SES_ACCESS_KEY_ID / AWS_SES_SECRET_ACCESS_KEY
- *   SES_FROM_ADDRESS="Louis at Bible Buddy <louis@mail.mybiblebuddy.net>"
+ *   SES_FROM_ADDRESS="Louis at My Bible Buddy <louis@mail.mybiblebuddy.net>"
  *   SES_CONFIGURATION_SET      (optional, for bounce/complaint events)
  *
  * Suppression is ours, not only Amazon's: every send checks email_suppressions

@@ -2,7 +2,7 @@
 
 /**
  * "Day N is ready" - the daily nudge for members of a live community study
- * (2026-09-23, Louis: opening Bible Buddy without going to the group should
+ * (2026-09-23, Louis: opening My Bible Buddy without going to the group should
  * still tell you today's day is open).
  *
  * Shown at most once per calendar day (user_popups_seen row per day), never

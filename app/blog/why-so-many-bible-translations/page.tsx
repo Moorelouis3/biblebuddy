@@ -411,9 +411,9 @@ export default function WhySoManyBibleTranslationsPage() {
           evidence discovered since the last major translation, not a change in what the Bible teaches.
         </p>
 
-        <h3 className="mt-8 text-2xl font-black text-slate-950">What translation does Bible Buddy use?</h3>
+        <h3 className="mt-8 text-2xl font-black text-slate-950">What translation does My Bible Buddy use?</h3>
         <p className="mt-4 text-lg leading-8 text-slate-700">
-          Bible Buddy&apos;s reading and study notes are built around the King James Version, chosen for its long history
+          My Bible Buddy&apos;s reading and study notes are built around the King James Version, chosen for its long history
           and its faithfulness to the original manuscripts. You can still read about and compare other translations, like
           this guide does, to deepen your understanding of a passage.
         </p>

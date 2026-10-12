@@ -114,7 +114,7 @@ export default function BibleBuddyTvShowPageClient({
         actionLabel: `${categoryLabel}: ${title.title}`,
         dedupeKey: `bible-buddy-tv-title:${title.slug}`,
       }).catch((error) => {
-        console.error("[NAV] Failed to track Bible Buddy TV title view:", error);
+        console.error("[NAV] Failed to track My Bible Buddy TV title view:", error);
       });
     }
 
@@ -247,7 +247,7 @@ export default function BibleBuddyTvShowPageClient({
         username: resolvedUserName,
         actionLabel,
       }).catch((error: unknown) => {
-        console.error("[NAV] Failed to track Bible Buddy TV video start:", error);
+        console.error("[NAV] Failed to track My Bible Buddy TV video start:", error);
       });
     }
   }
@@ -276,7 +276,7 @@ export default function BibleBuddyTvShowPageClient({
 
       const token = session?.access_token;
       if (!token) {
-        throw new Error("Sign in first to share Bible Buddy TV videos.");
+        throw new Error("Sign in first to share My Bible Buddy TV videos.");
       }
 
       const controller = new AbortController();
@@ -350,7 +350,7 @@ export default function BibleBuddyTvShowPageClient({
     <div className="min-h-screen bg-gray-50 pb-12">
       <div className="mx-auto max-w-5xl px-4 py-8">
         <Link href="/biblebuddy-tv" className="inline-block text-blue-600 hover:underline">
-          &larr; Back to Bible Buddy TV
+          &larr; Back to My Bible Buddy TV
         </Link>
 
         <h1 className="mb-2 mt-4 text-3xl font-bold">{title.title}</h1>

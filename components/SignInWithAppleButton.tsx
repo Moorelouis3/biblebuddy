@@ -7,7 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
  *
  * App Review Guideline 4.8: an app that offers any third-party sign-in must
  * also offer Sign in with Apple or an equivalent privacy-preserving option.
- * Bible Buddy offers Google, so this is not optional - it is a flat
+ * My Bible Buddy offers Google, so this is not optional - it is a flat
  * rejection without it.
  *
  * SWITCHED OFF until the Apple side exists. Turning it on needs a paid

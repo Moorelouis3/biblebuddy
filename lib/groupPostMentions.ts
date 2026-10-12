@@ -110,7 +110,7 @@ const BIBLE_BOOK_CHAPTER_COUNTS: Record<(typeof BIBLE_BOOKS)[number], number> = 
 
 const STATIC_READING_PLANS: Array<{ label: string; href: string }> = [
   { label: "Bible in One Year", href: "/reading-plans/bible-in-one-year" },
-  { label: "The Bible Buddy Reading Plan", href: "/reading-plans/bible-buddy" },
+  { label: "The My Bible Buddy Reading Plan", href: "/reading-plans/bible-buddy" },
 ];
 
 function normalizeSearchText(value: string) {

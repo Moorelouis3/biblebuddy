@@ -187,7 +187,7 @@ export async function POST(request: Request) {
     const { error: masterActionError } = await adminSupabase.from("master_actions").insert({
       user_id: userId,
       session_id: sessionId,
-      username: userId ? "Bible Buddy User" : "Anonymous Visitor",
+      username: userId ? "My Bible Buddy User" : "Anonymous Visitor",
       action_type: masterActionType,
       action_label: `BibleBuddy Funnel | ${labelParts.join(" | ")}`,
       journey_day: null,

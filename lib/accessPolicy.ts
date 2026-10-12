@@ -1,5 +1,5 @@
 /**
- * Bible Buddy access policy.
+ * My Bible Buddy access policy.
  *
  * The core Bible-study experience is free. No credits, no per-day drip, no
  * plan limits, no upgrade wall between someone and understanding Scripture.

@@ -188,8 +188,8 @@ export default function ProverbsLaunchPopup({
   const headline = day <= 1 ? "It starts today!" : `Day ${day} is live!`;
   const body =
     day <= 1
-      ? "The Wisdom of Proverbs community study begins today. Open Day 1, read Proverbs 1, and share what stood out in today's discussion in the Bible Buddy group."
-      : `The group is on Day ${day}, and it's not too late. Start with Day 1 and go at your own pace. Every day has its own discussion in the Bible Buddy group.`;
+      ? "The Wisdom of Proverbs community study begins today. Open Day 1, read Proverbs 1, and share what stood out in today's discussion in the My Bible Buddy group."
+      : `The group is on Day ${day}, and it's not too late. Start with Day 1 and go at your own pace. Every day has its own discussion in the My Bible Buddy group.`;
 
   return createPortal(
     <div

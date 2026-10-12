@@ -3,7 +3,7 @@
 /**
  * One group post's reply thread, embeddable outside the group feed
  * (2026-09-22, Wisdom of Proverbs community study). The devotional day's
- * discussion IS the replies on that day's Bible Buddy group post, so a
+ * discussion IS the replies on that day's My Bible Buddy group post, so a
  * comment made here or in the group shows in both places - stored once as a
  * group_posts reply. Inserts, deletes, gating, report/block and blocked-user
  * hiding mirror the group feed's comment thread
@@ -443,7 +443,7 @@ export default function GroupPostThread({
           href={eventDayDiscussionPath(groupId, postId)}
           className="text-xs font-semibold text-[var(--bb-accent,#2f7fe8)] hover:underline"
         >
-          See this in the Bible Buddy group
+          See this in the My Bible Buddy group
         </Link>
         <button
           type="button"
@@ -477,7 +477,7 @@ export default function GroupPostThread({
           >
             <h3 className="text-lg font-black text-[var(--bb-text-primary,#111827)]">Delete this comment?</h3>
             <p className="mt-2 text-sm leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-              This removes it here and in the Bible Buddy group, along with any replies under it. This can&apos;t be undone.
+              This removes it here and in the My Bible Buddy group, along with any replies under it. This can&apos;t be undone.
             </p>
             <div className="mt-5 flex gap-3">
               <button

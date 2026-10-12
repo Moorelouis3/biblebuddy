@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
   }
 
   const body = await request.json().catch(() => null);
-  let fullName = typeof body?.fullName === "string" && body.fullName.trim() ? body.fullName.trim() : "Bible Buddy";
+  let fullName = typeof body?.fullName === "string" && body.fullName.trim() ? body.fullName.trim() : "My Bible Buddy";
   const email = typeof body?.email === "string" ? body.email.trim().toLowerCase() : userData.user.email || "";
   const answers = (body?.answers && typeof body.answers === "object" ? body.answers : {}) as Answers;
   const recommendationDays = Number.isFinite(Number(body?.recommendationDays)) ? Number(body.recommendationDays) : 365;
@@ -208,7 +208,7 @@ export async function POST(request: NextRequest) {
 
   if (profileError) {
     console.error("[LANDING_SETUP] profile_stats setup failed:", profileError);
-    return NextResponse.json({ error: "Could not create your Bible Buddy dashboard profile." }, { status: 500 });
+    return NextResponse.json({ error: "Could not create your My Bible Buddy dashboard profile." }, { status: 500 });
   }
 
   const { error: responseError } = await admin.from("landing_onboarding_responses").upsert(

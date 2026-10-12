@@ -58,9 +58,9 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
   const pageUrl = `https://www.mybiblebuddy.net${pathname}`;
   const shareTitle =
     typeof document !== "undefined"
-      ? document.title.replace(/\s*\|\s*Bible Buddy.*$/i, "").trim()
-      : toTitleCase(segments[segments.length - 1] || "Bible Buddy");
-  const shareText = `Check out this Bible Buddy article: ${shareTitle}`;
+      ? document.title.replace(/\s*\|\s*My Bible Buddy.*$/i, "").trim()
+      : toTitleCase(segments[segments.length - 1] || "My Bible Buddy");
+  const shareText = `Check out this My Bible Buddy article: ${shareTitle}`;
 
   async function handleNativeShare() {
     // Native sheet inside the app, Web Share on the web, clipboard last.
@@ -243,7 +243,7 @@ export default function BibleStudyHubArticleLayout({ children }: { children: Rea
         <>
           <section className="my-8 rounded-[28px] border border-[#b7ccff] bg-[#eaf2ff] p-6 text-center shadow-[0_18px_48px_rgba(0,86,253,0.10)]">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#0056fd]">
-              Keep studying with Bible Buddy
+              Keep studying with My Bible Buddy
             </p>
             <h2 className="mt-3 text-2xl font-black leading-tight text-slate-950">
               Keep learning after this article.

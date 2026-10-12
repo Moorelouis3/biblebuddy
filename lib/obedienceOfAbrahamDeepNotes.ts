@@ -1812,7 +1812,7 @@ This chapter is not only about Abraham proving devotion. It is about the Lord wh
     return "";
   };
 
-  const renderDeepTakeaways = () => `## Bible Buddy Deep Takeaways
+  const renderDeepTakeaways = () => `## My Bible Buddy Deep Takeaways
 
 ${note.sections
   .map((section) => {
@@ -3142,7 +3142,7 @@ That is why Genesis 11 matters.
 
 It sets the stage for everything that comes next.
 
-# Bible Buddy Deep Takeaways
+# My Bible Buddy Deep Takeaways
 
 Genesis 11 teaches us that pride often hides behind the desire for security.
 
@@ -4012,7 +4012,7 @@ The life of faith is not presented as instant perfection.
 
 It is presented as a journey where obedience begins, weakness is exposed, and God remains faithful.
 
-# Bible Buddy Deep Takeaways
+# My Bible Buddy Deep Takeaways
 
 Genesis 12 teaches that faith often begins with leaving something familiar.
 

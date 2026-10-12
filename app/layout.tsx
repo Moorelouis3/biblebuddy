@@ -18,9 +18,9 @@ import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
 
 const siteUrl = new URL("https://www.mybiblebuddy.net");
 const socialPreviewImage = new URL("/newsocialbanner.png", siteUrl).toString();
-const socialTitle = "Bible Buddy, making Bible study easier...";
-const socialDescription = "Bible Buddy, making Bible study easier...";
-const socialImageAlt = "Bible Buddy, making Bible study easier...";
+const socialTitle = "My Bible Buddy, making Bible study easier...";
+const socialDescription = "My Bible Buddy, making Bible study easier...";
+const socialImageAlt = "My Bible Buddy, making Bible study easier...";
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     canonical: siteUrl.toString(),
     // Lets browsers, Feedly and other readers auto-discover the blog feed.
     types: {
-      "application/rss+xml": [{ url: "/feed.xml", title: "Bible Buddy Blog" }],
+      "application/rss+xml": [{ url: "/feed.xml", title: "My Bible Buddy Blog" }],
     },
   },
   icons: {
@@ -45,14 +45,14 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "BibleBuddy",
+    title: "My Bible Buddy",
   },
   openGraph: {
     title: socialTitle,
     description: socialDescription,
     type: "website",
     url: siteUrl.toString(),
-    siteName: "Bible Buddy",
+    siteName: "My Bible Buddy",
     images: [
       {
         url: socialPreviewImage,

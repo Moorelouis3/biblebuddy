@@ -4,8 +4,8 @@ import LegalPageLayout from "@/components/LegalPageLayout";
 import LegalSection from "@/components/LegalSection";
 
 export const metadata: Metadata = {
-  title: "Delete Your Account | Bible Buddy",
-  description: "How to permanently delete your Bible Buddy account and data.",
+  title: "Delete Your Account | My Bible Buddy",
+  description: "How to permanently delete your My Bible Buddy account and data.",
 };
 
 export default function DeleteAccountPage() {
@@ -13,12 +13,12 @@ export default function DeleteAccountPage() {
     <LegalPageLayout
       eyebrow="Account"
       title="Delete Your Account"
-      description="You can permanently delete your Bible Buddy account and the data tied to it at any time."
+      description="You can permanently delete your My Bible Buddy account and the data tied to it at any time."
       lastUpdated="September 21, 2026"
     >
       <LegalSection title="1. Delete Your Account in the App">
         <ol className="list-decimal pl-5">
-          <li>Sign in to Bible Buddy on the website or in the app.</li>
+          <li>Sign in to My Bible Buddy on the website or in the app.</li>
           <li>Open <strong>Settings</strong>.</li>
           <li>Scroll to <strong>Delete my account</strong> and tap the button.</li>
           <li>Type <strong>DELETE</strong> to confirm, then tap <strong>Permanently delete</strong>.</li>

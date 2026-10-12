@@ -241,7 +241,7 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
     // Chapter readings run twenty minutes and people listen with the phone
     // in a pocket; without this, locking the screen leaves them with no way
     // to pause short of unlocking and finding the tab again.
-    setMediaSessionTrack({ title: input.label || "Bible Buddy" });
+    setMediaSessionTrack({ title: input.label || "My Bible Buddy" });
     setMediaSessionHandlers({
       onPlay: () => void resume(),
       onPause: () => pause(),

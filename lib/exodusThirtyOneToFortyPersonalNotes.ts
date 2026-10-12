@@ -900,7 +900,7 @@ function explainDay30Phrase(title: string): string {
   } else if (lower.includes("gold, and silver, and brass")) {
     add(`${title} names valuable metals offered for the tabernacle work.`, "These are not leftovers from a junk pile.", "Israel brings costly materials so God's dwelling can be built according to His command.", "\u{1F7E1} Gold", "\u{26AA} Silver", "\u{1F7E4} Brass", "The gifts that once could have served idols are now directed toward obedient worship.");
   } else if (lower.includes("every man and woman") || lower.includes("commanded by the hand of moses")) {
-    add(`${title} joins willing giving with obedience to God's command.`, "The people bring gifts freely, but the work is still directed by what the LORD commanded through Moses.", "Willing hearts do not replace God's pattern. They respond to it.", "\u{1F465} Men and women", "\u{1F381} Willing offering", "\u{1F4DC} Command through Moses", "Bible Buddy readers should see both pieces together: free generosity and careful obedience.");
+    add(`${title} joins willing giving with obedience to God's command.`, "The people bring gifts freely, but the work is still directed by what the LORD commanded through Moses.", "Willing hearts do not replace God's pattern. They respond to it.", "\u{1F465} Men and women", "\u{1F381} Willing offering", "\u{1F4DC} Command through Moses", "My Bible Buddy readers should see both pieces together: free generosity and careful obedience.");
   } else if (lower.includes("offering") || lower.includes("willing") || lower.includes("heart stirred") || lower.includes("spirit made willing") || lower.includes("men and women") || lower.includes("rulers brought") || lower.includes("bracelets") || lower.includes("jewels")) {
     add(`${title} means Israel is giving freely for the LORD's dwelling place.`, "This is the opposite of the golden calf scene. Now gifts are brought for worship according to God's command.", "\u{1F381} Willing gifts", "\u{1F465} Men and women", "\u{1F48D} Precious materials", "God is forming a worshiping people, not a forced labor camp.");
   } else if (lower.includes("fifty loops") || lower.includes("curtains were one") || lower.includes("taches of gold") || lower.includes("taches of brass")) {
@@ -980,7 +980,7 @@ function formatExodusThirtyOneToFortyPhraseExplanation(section: PersonalExodusPh
     .replace(/\bFor beginners,?\s*/gi, "")
     .replace(/\bThis phrase helps\s+/gi, "The wording helps ")
     .replace(/\bThe phrase helps\s+/gi, "The wording helps ")
-    .replace(/\bBible Buddy should slow down here because\s*/gi, "Slow down here because ")
+    .replace(/\bMy Bible Buddy should slow down here because\s*/gi, "Slow down here because ")
     .replace(/\bThis detail helps (?:a beginner|the reader) (?:see|follow|understand) that\s*/gi, "Notice that ")
     .replace(/\bThis detail helps (?:a beginner|the reader) (?:see|follow|understand)\s*/gi, "Notice ")
     .replace(/\bThis phrase helps (?:a beginner|the reader) (?:see|follow|understand) that\s*/gi, "Notice that ")

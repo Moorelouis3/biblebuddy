@@ -87,6 +87,6 @@ export async function checkLouisRateLimit(
 /** Shown when someone somehow reaches the ceiling. */
 export function louisLimitMessage(isGuest: boolean) {
   return isGuest
-    ? "You have done a lot of chatting today. Create a free Bible Buddy account and you get a much higher daily limit — and your progress is saved across devices."
-    : "You have reached today's chat limit. It resets at midnight. Everything else in Bible Buddy is still open — go read a chapter and I will be here tomorrow.";
+    ? "You have done a lot of chatting today. Create a free My Bible Buddy account and you get a much higher daily limit — and your progress is saved across devices."
+    : "You have reached today's chat limit. It resets at midnight. Everything else in My Bible Buddy is still open — go read a chapter and I will be here tomorrow.";
 }

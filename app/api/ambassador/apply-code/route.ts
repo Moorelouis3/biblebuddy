@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
   }
 
   if (ambassador.user_id === user.id) {
-    return NextResponse.json({ error: "You cannot use your own Bible Buddy invite link." }, { status: 400 });
+    return NextResponse.json({ error: "You cannot use your own My Bible Buddy invite link." }, { status: 400 });
   }
 
   // Make sure this referred user hasn't already been credited to an invite.
@@ -125,7 +125,7 @@ export async function POST(req: NextRequest) {
   });
 
   if (referralError) {
-    return NextResponse.json({ error: referralError.message || "Could not apply Bible Buddy invite." }, { status: 400 });
+    return NextResponse.json({ error: referralError.message || "Could not apply My Bible Buddy invite." }, { status: 400 });
   }
 
   return NextResponse.json({

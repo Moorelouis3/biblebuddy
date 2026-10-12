@@ -2458,7 +2458,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
             ) : (
               <>
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-bold text-gray-900 text-sm">Share to Bible Buddy Feed</h3>
+                  <h3 className="font-bold text-gray-900 text-sm">Share to My Bible Buddy Feed</h3>
                   <button onClick={() => setShareVerse(null)} className="text-gray-400 hover:text-gray-600 transition text-lg leading-none">×</button>
                 </div>
 

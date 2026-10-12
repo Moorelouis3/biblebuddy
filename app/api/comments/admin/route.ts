@@ -103,7 +103,7 @@ async function requireModerator(request: NextRequest) {
       profile?.username ||
       data.user.user_metadata?.display_name ||
       data.user.user_metadata?.name ||
-      "Bible Buddy",
+      "My Bible Buddy",
     requesterImage: profile?.profile_image_url ?? null,
   };
 }
@@ -295,9 +295,9 @@ export async function GET(request: NextRequest) {
       id: row.id,
       kind: "feed_post_comment",
       source: "Group Feed",
-      sourceLabel: "Bible Buddy Feed",
+      sourceLabel: "My Bible Buddy Feed",
       href: `/dashboard?post=${row.post_id}&comment=${row.id}`,
-      contextTitle: "Bible Buddy Feed post",
+      contextTitle: "My Bible Buddy Feed post",
       contextContent: "",
       userId: row.user_id,
       userName: "Buddy",
@@ -437,7 +437,7 @@ export async function GET(request: NextRequest) {
       return {
         ...comment,
         sourceLabel: post?.title || comment.sourceLabel,
-        contextTitle: post?.title || post?.post_type || "Bible Buddy Feed post",
+        contextTitle: post?.title || post?.post_type || "My Bible Buddy Feed post",
         contextContent: clipText(post?.content),
       };
     }
@@ -548,7 +548,7 @@ export async function GET(request: NextRequest) {
         contextTitle: row.context_title ?? null,
         content: clipText(row.content, 900),
         authorUserId: row.author_user_id ?? null,
-        authorName: row.author_name || "Bible Buddy",
+        authorName: row.author_name || "My Bible Buddy",
         deletedBy: row.deleted_by ?? null,
         deletedByName: row.deleted_by_name || "Moderator",
         deletedAt: row.deleted_at,

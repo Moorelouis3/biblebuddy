@@ -354,7 +354,7 @@ export async function GET(request: NextRequest) {
 
         return {
           userId: stats.userId,
-          displayName: profile?.display_name || profile?.username || "Bible Buddy",
+          displayName: profile?.display_name || profile?.username || "My Bible Buddy",
           username: profile?.username || null,
           profileImageUrl: profile?.profile_image_url || null,
           memberBadge: profile?.member_badge || null,

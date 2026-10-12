@@ -566,7 +566,7 @@ export default function ScrambledGamePlayer({
             <div className={`mx-auto grid place-items-center rounded-full border border-gray-200 bg-white shadow-lg shadow-gray-200/80 ${compact ? "h-20 w-20" : "h-24 w-24"}`}>
               <LouisAvatar mood="stareyes" size={compact ? 92 : 112} />
             </div>
-            <p className={`${compact ? "mt-3" : "mt-4"} text-xs font-black uppercase tracking-[0.22em] text-gray-950`}>Bible Buddy</p>
+            <p className={`${compact ? "mt-3" : "mt-4"} text-xs font-black uppercase tracking-[0.22em] text-gray-950`}>My Bible Buddy</p>
             <p className={`${compact ? "mt-1" : "mt-1"} text-base font-black text-gray-950`}>You finished Scrambled.</p>
             <h1 className={`mx-auto max-w-md font-black leading-tight text-[var(--bb-text-primary,#111827)] ${compact ? "mt-1 text-2xl" : "mt-8 text-3xl"}`}>
               {compact ? `${bookName} ${chapter.chapter} Scrambled Results` : `Scrambled Results for ${bookName} ${chapter.chapter}`}
@@ -605,7 +605,7 @@ export default function ScrambledGamePlayer({
           <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-[#d8e8dc] bg-white shadow-lg shadow-[#d8e8dc]/80">
             <LouisAvatar mood="stareyes" size={112} />
           </div>
-          <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-[#2f7a52]">Bible Buddy</p>
+          <p className="mt-4 text-xs font-black uppercase tracking-[0.22em] text-[#2f7a52]">My Bible Buddy</p>
           <p className="mt-1 text-sm font-semibold text-[#2f7a52]">You finished this chapter.</p>
 
           <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-[#4a9b6f]">Chapter Complete</p>

@@ -378,7 +378,7 @@ export default function WhoWasJosephPage() {
           </p>
           <p>
             This overview only scratches the surface of Genesis 37 through 50. Inside{" "}
-            <strong>Bible Buddy</strong>, you can walk through Joseph&apos;s whole life verse by
+            <strong>My Bible Buddy</strong>, you can walk through Joseph&apos;s whole life verse by
             verse, completely free.
           </p>
         </div>

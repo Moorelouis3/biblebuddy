@@ -76,7 +76,7 @@ export default function CreditEducationModal({ open, onClose, userId, ignoreCred
               Your credits reset daily.
             </p>
             <p className="mb-1">
-              Upgrade to Bible Buddy Pro for unlimited access to everything.
+              Upgrade to My Bible Buddy Pro for unlimited access to everything.
             </p>
           </div>
           {/* Action Buttons */}

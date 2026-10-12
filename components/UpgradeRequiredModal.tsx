@@ -2,7 +2,7 @@
 
 import { ModalShell } from "./ModalShell";
 
-// Bible Buddy is free (lib/accessPolicy.ts CORE_STUDY_IS_FREE) and ships in the
+// My Bible Buddy is free (lib/accessPolicy.ts CORE_STUDY_IS_FREE) and ships in the
 // App Store, which forbids pointing people at an outside checkout. This modal
 // used to sell a $50 lifetime Pro plan via Stripe; it now never starts a
 // checkout and only tells the reader everything is included. Props are

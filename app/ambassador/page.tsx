@@ -89,9 +89,9 @@ export default function BuddyRewardsPage() {
 
         <div className="mb-6">
           <p className="text-xs font-black uppercase tracking-[0.16em] text-blue-600">Invite</p>
-          <h1 className="mt-1 text-3xl font-black text-gray-950">Share Bible Buddy</h1>
+          <h1 className="mt-1 text-3xl font-black text-gray-950">Share My Bible Buddy</h1>
           <p className="mt-2 text-sm font-semibold leading-6 text-gray-600">
-            Share Bible Buddy with friends who want help understanding Scripture and staying consistent.
+            Share My Bible Buddy with friends who want help understanding Scripture and staying consistent.
           </p>
         </div>
 
@@ -130,7 +130,7 @@ export default function BuddyRewardsPage() {
           ) : (
             <div className="divide-y divide-gray-100">
               {referrals.map((r) => {
-                const displayName = r.display_name || r.username || "Bible Buddy";
+                const displayName = r.display_name || r.username || "My Bible Buddy";
                 return (
                 <div key={r.referred_user_id} className="flex items-center gap-3 px-5 py-3">
                   {r.profile_image_url ? (

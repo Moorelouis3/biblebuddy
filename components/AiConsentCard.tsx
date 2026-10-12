@@ -40,7 +40,7 @@ export function AiConsentCard({ onAccept, featureName = "Little Louis" }: { onAc
       <p className="font-bold">{featureName} uses AI</p>
       <p className="mt-1 text-[var(--bb-text-secondary,#4b5563)]">
         Replies come from an AI helper, not a real person, and can make mistakes. To reply, what you type is sent to
-        OpenAI and saved to your Bible Buddy account. Please don&apos;t share private details like addresses or health
+        OpenAI and saved to your My Bible Buddy account. Please don&apos;t share private details like addresses or health
         information.{" "}
         <a href="/privacy" className="underline">
           Privacy Policy

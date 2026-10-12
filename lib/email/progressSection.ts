@@ -152,7 +152,7 @@ export function progressCopy(progress: RecipientProgress): Copy {
     emoji: "✨",
     heading: "Start When You're Ready",
     lines: [
-      "Bible Buddy explains each chapter in **plain English**, a day at a time.",
+      "My Bible Buddy explains each chapter in **plain English**, a day at a time.",
       "*The Wisdom of Proverbs* is a gentle place to begin.",
     ],
     cta: "Start The Wisdom of Proverbs",

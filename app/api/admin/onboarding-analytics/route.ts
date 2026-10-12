@@ -695,10 +695,10 @@ function buildPersonaLine(questions: Array<{ key: string; mostCommon: AnswerSumm
   const time = byKey.get("time");
   const difficulty = byKey.get("difficulty");
   if (!goal || !experience || !studyFocus || !time || !difficulty) {
-    return "Not enough new onboarding data yet to describe the average Bible Buddy user.";
+    return "Not enough new onboarding data yet to describe the average My Bible Buddy user.";
   }
 
-  return `The typical Bible Buddy user wants to ${goal.toLowerCase()}, is ${experience.toLowerCase()}, wants to focus on ${studyFocus.toLowerCase()}, has about ${time.toLowerCase()} a day, and most often says ${difficulty.toLowerCase()}.`;
+  return `The typical My Bible Buddy user wants to ${goal.toLowerCase()}, is ${experience.toLowerCase()}, wants to focus on ${studyFocus.toLowerCase()}, has about ${time.toLowerCase()} a day, and most often says ${difficulty.toLowerCase()}.`;
 }
 
 function summarizeFunnel(rows: Record<string, unknown>[]) {
@@ -3286,7 +3286,7 @@ function getLandingActivityInfo(row: LandingEventRow) {
     return {
       category: "accountsCreated" as LandingActivityCategory,
       title: "Created account",
-      detail: "Visitor created a Bible Buddy account.",
+      detail: "Visitor created a My Bible Buddy account.",
     };
   }
   if (eventName === "closed_onboarding") {
@@ -4115,7 +4115,7 @@ function buildVisitorJourneys(
           category: row.event_name === "landing_page_visit" ? "landing" as const : isAccountEvent(eventName) ? "account" as const : "landing" as const,
           status: info.category === "dropoff" ? "dropped" as const : "completed" as const,
           timestamp: row.created_at || new Date().toISOString(),
-          detail: isStartClick ? "Visitor clicked Create Free Account." : isAccountEvent(eventName) ? "Visitor created a Bible Buddy account." : info.detail,
+          detail: isStartClick ? "Visitor clicked Create Free Account." : isAccountEvent(eventName) ? "Visitor created a My Bible Buddy account." : info.detail,
           dayNumber: null,
           taskType: null,
         };

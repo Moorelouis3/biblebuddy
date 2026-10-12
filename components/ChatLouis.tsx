@@ -519,7 +519,7 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
     { match: /\b(devotionals?|bible studies?)\b/, href: "/plans", reply: "Okay.\n\nI’m taking you to Plans now." },
     { match: /\b(reading plans?|plans?)\b/, href: "/plans", reply: "Okay.\n\nI’m opening Plans now." },
     { match: /\b(group|bible study group|the group)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to The Bible Study Group now." },
-    { match: /\b(tv|sermons?|bible buddy tv)\b/, href: "/biblebuddy-tv", reply: "Okay.\n\nI’m opening Bible Buddy TV now." },
+    { match: /\b(tv|sermons?|bible buddy tv)\b/, href: "/biblebuddy-tv", reply: "Okay.\n\nI’m opening My Bible Buddy TV now." },
     { match: /\b(profile)\b/, href: "/profile", reply: "Okay.\n\nI’m taking you to your profile now." },
     { match: /\b(settings?)\b/, href: "/settings", reply: "Okay.\n\nI’m opening settings now." },
     { match: /\b(study tools?|guided studies?)\b/, href: "/guided-studies", reply: "Okay.\n\nI’m taking you to the study tools now." },
@@ -914,7 +914,7 @@ function getStreakCelebrationLine(currentStreak: number) {
   }
 
   if (currentStreak === 5) {
-    return "Five straight days is strong. You're not just visiting Bible Buddy now. You're building something.";
+    return "Five straight days is strong. You're not just visiting My Bible Buddy now. You're building something.";
   }
 
   if (currentStreak === 6) {
@@ -1143,11 +1143,11 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
       kind: "default",
       category: "tv",
       score: 8,
-      summaryLines: [`Your best move today is one sermon in Bible Buddy TV${context.lastTvLabel ? ` that fits with ${context.lastTvLabel}.` : "."}`],
+      summaryLines: [`Your best move today is one sermon in My Bible Buddy TV${context.lastTvLabel ? ` that fits with ${context.lastTvLabel}.` : "."}`],
       whyLine: "That matches the teaching content you already spend time with in here.",
       question: "Want to watch it now?",
       href: "/biblebuddy-tv",
-      yesFollowUp: "Let's get you into Bible Buddy TV and keep you growing.",
+      yesFollowUp: "Let's get you into My Bible Buddy TV and keep you growing.",
     });
   }
 
@@ -1222,7 +1222,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
           : "I want you to finish your profile bio today.",
       ],
       whyLine:
-        "Let people know who they are studying with. That makes Bible Buddy feel more personal.",
+        "Let people know who they are studying with. That makes My Bible Buddy feel more personal.",
       question: context.missingProfilePhoto ? "Want to upload one now?" : "Want to finish that now?",
       href: "/profile",
       yesFollowUp: "Let's clean up your profile and make it feel complete.",
@@ -1280,12 +1280,12 @@ function buildHabitNudgeFromCards(openedCards: string[]): LouisHabitNudge | null
     };
   }
 
-  if (!seen.has("Bible Buddy TV")) {
+  if (!seen.has("My Bible Buddy TV")) {
     return {
       key: "tv",
       summary:
-        "You still haven't tried Bible Buddy TV. If you want something easier to ease into today, that could be a good move.",
-      label: "Try Bible Buddy TV",
+        "You still haven't tried My Bible Buddy TV. If you want something easier to ease into today, that could be a good move.",
+      label: "Try My Bible Buddy TV",
       href: "/biblebuddy-tv",
     };
   }
@@ -1294,7 +1294,7 @@ function buildHabitNudgeFromCards(openedCards: string[]): LouisHabitNudge | null
     return {
       key: "notes",
       summary:
-        "You haven't opened the study tools yet. That's where Bible studies, reading plans, and the deeper study side of Bible Buddy really opens up.",
+        "You haven't opened the study tools yet. That's where Bible studies, reading plans, and the deeper study side of My Bible Buddy really opens up.",
       label: "Open study tools",
       href: "/guided-studies",
     };
@@ -1359,9 +1359,9 @@ function summarizeLastMasterAction(action: {
     action.action_type === "bible_buddy_tv_title_opened"
   ) {
     return {
-      summary: label ? `Last time you were watching ${label}.` : "Last time you were in Bible Buddy TV.",
+      summary: label ? `Last time you were watching ${label}.` : "Last time you were in My Bible Buddy TV.",
       followUp: "Do you want to pick that back up?",
-      continueLabel: "Open Bible Buddy TV",
+      continueLabel: "Open My Bible Buddy TV",
       continueHref: "/biblebuddy-tv",
     };
   }
@@ -1385,7 +1385,7 @@ function summarizeLastMasterAction(action: {
           ? null
           : label === "Bible Study Tools"
             ? "/guided-studies"
-            : label === "Bible Buddy TV"
+            : label === "My Bible Buddy TV"
               ? "/biblebuddy-tv"
               : label === "Bible Study Games"
                 ? "/bible-trivia"
@@ -1469,7 +1469,7 @@ function buildLouisJourneyRecommendation({
       greeting: "Let's build this the right way.",
       contextLine: formattedGoal
         ? `You told me you want to ${formattedGoal}.`
-        : "The best way to get real traction in Bible Buddy is to start with one structured habit.",
+        : "The best way to get real traction in My Bible Buddy is to start with one structured habit.",
       recommendationLine:
         "Pick one Bible study and let me walk you through it chapter by chapter. You do one task at a time, and I will help with the rest.",
       primaryButtonText: "Start a Bible study",
@@ -1580,7 +1580,7 @@ function buildLouisJourneyRecommendation({
       greeting: "Let's help the Word stick more clearly.",
       contextLine: "You said you want to understand the Bible better.",
       recommendationLine:
-        "Spend a little time with the study notes, people, places, and keyword side of Bible Buddy. That is where understanding really starts opening up.",
+        "Spend a little time with the study notes, people, places, and keyword side of My Bible Buddy. That is where understanding really starts opening up.",
       primaryButtonText: "Open study tools",
       primaryButtonHref: "/guided-studies",
       level: 2,
@@ -1597,13 +1597,13 @@ function buildLouisJourneyRecommendation({
   if (currentStreak >= 5 && !hasTriedTv) {
     return {
       greeting: "You might want an easier learning lane today.",
-      contextLine: "Bible Buddy TV is good when you want to stay in the app but change the pace a little.",
+      contextLine: "My Bible Buddy TV is good when you want to stay in the app but change the pace a little.",
       recommendationLine:
-        "Try a sermon, documentary, or Bible show in Bible Buddy TV and let it reinforce what you're already learning.",
-      primaryButtonText: "Open Bible Buddy TV",
+        "Try a sermon, documentary, or Bible show in My Bible Buddy TV and let it reinforce what you're already learning.",
+      primaryButtonText: "Open My Bible Buddy TV",
       primaryButtonHref: "/biblebuddy-tv",
       level: 2,
-      cardTitle: "Try Bible Buddy TV",
+      cardTitle: "Try My Bible Buddy TV",
       cardSubtitle: "A good secondary lane once the habit is forming.",
       cardEyebrow: "Expansion",
       cardTheme: "blue",
@@ -2928,7 +2928,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
       setDailyFlowType("new_user");
       return [
         `Hey ${name} 👋`,
-        "Welcome to Bible Buddy",
+        "Welcome to My Bible Buddy",
         "Today is your first day",
         "Let’s start your streak",
         onboardingGoal ? `You said you want to ${formatOnboardingGoal(onboardingGoal)}` : "",
@@ -3838,7 +3838,7 @@ export function ChatLouis({ displayMode = "floating", studyContext = null }: Cha
               <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 text-xs leading-relaxed text-[var(--bb-text-primary,#111827)]">
                 <p className="font-bold">Little Louis is an AI helper</p>
                 <p className="mt-1 text-[var(--bb-text-secondary,#4b5563)]">
-                  It is not a real person and can make mistakes. To reply, your messages are sent to OpenAI and saved to your Bible Buddy account. Please don&apos;t share private details like addresses or health information.{" "}
+                  It is not a real person and can make mistakes. To reply, your messages are sent to OpenAI and saved to your My Bible Buddy account. Please don&apos;t share private details like addresses or health information.{" "}
                   <a href="/privacy" className="underline">Privacy Policy</a>
                 </p>
                 <button

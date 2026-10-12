@@ -123,7 +123,7 @@ export default function EmailAnalyticsPage() {
     return (
       <main className="mx-auto max-w-3xl px-4 py-16 text-center">
         <h1 className="text-2xl font-black text-slate-950">Not authorized</h1>
-        <p className="mt-2 text-sm font-semibold text-slate-500">This page is for the Bible Buddy admin only.</p>
+        <p className="mt-2 text-sm font-semibold text-slate-500">This page is for the My Bible Buddy admin only.</p>
         <Link href="/" className="mt-6 inline-block rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-bold text-white">
           Back home
         </Link>

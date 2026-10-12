@@ -34,7 +34,7 @@ export default async function BibleBuddyTvSermonTopicPage({
     <div className="min-h-screen bg-gray-50 pb-12">
       <div className="mx-auto max-w-5xl px-4 py-8">
         <Link href="/biblebuddy-tv" className="text-sm font-medium text-blue-600 hover:underline">
-          &larr; Back to Bible Buddy TV
+          &larr; Back to My Bible Buddy TV
         </Link>
 
         <div className="mt-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
@@ -43,7 +43,7 @@ export default async function BibleBuddyTvSermonTopicPage({
           </p>
           <h1 className="mt-1 text-3xl font-bold text-gray-900">{getBibleBuddyTvSermonTopicLabel(normalizedTopic)}</h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-600">
-            Sermons in Bible Buddy TV that speak directly to {getBibleBuddyTvSermonTopicLabel(normalizedTopic).toLowerCase()}.
+            Sermons in My Bible Buddy TV that speak directly to {getBibleBuddyTvSermonTopicLabel(normalizedTopic).toLowerCase()}.
           </p>
         </div>
 

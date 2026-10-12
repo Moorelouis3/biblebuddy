@@ -22,7 +22,7 @@ export function GlobalUpdateModal({ isOpen, onDismiss }: GlobalUpdateModalProps)
         className="relative w-full max-w-md overflow-hidden rounded-[28px] bg-white shadow-2xl shadow-black/30 ring-1 ring-black/10"
         role="dialog"
         aria-modal="true"
-        aria-label="Bible Buddy update"
+        aria-label="My Bible Buddy update"
       >
         <button
           type="button"
@@ -35,7 +35,7 @@ export function GlobalUpdateModal({ isOpen, onDismiss }: GlobalUpdateModalProps)
 
         <img
           src="/updatebanner2026.png"
-          alt="Bible Buddy update"
+          alt="My Bible Buddy update"
           className="block w-full bg-[#f3f7fd]"
         />
 
@@ -46,7 +46,7 @@ export function GlobalUpdateModal({ isOpen, onDismiss }: GlobalUpdateModalProps)
               onClick={handleExplore}
               className="w-full rounded-2xl bg-[#7BAFD4] px-4 py-3 text-sm font-black text-slate-950 shadow-md transition hover:bg-[#6aa3cc]"
             >
-              Open Bible Buddy
+              Open My Bible Buddy
             </button>
             <button
               type="button"

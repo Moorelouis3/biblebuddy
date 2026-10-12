@@ -239,7 +239,7 @@ export default function MessagesPage() {
         return {
           id: conversation.id,
           otherUserId: otherId ?? "",
-          otherUserName: otherId ? profile?.display_name || profile?.username || "Bible Buddy" : "Deleted account",
+          otherUserName: otherId ? profile?.display_name || profile?.username || "My Bible Buddy" : "Deleted account",
           otherUserImage: profile?.profile_image_url || null,
           otherUserBadge: profile?.member_badge || null,
           otherUserIsPaid: profile?.is_paid === true,
@@ -271,7 +271,7 @@ export default function MessagesPage() {
       <div className="h-[100dvh] w-screen overflow-hidden bg-[var(--bb-card,#fcfcfb)] text-[var(--bb-text-primary,#111827)] sm:mx-4 sm:h-auto sm:max-h-[calc(100dvh-2rem)] sm:w-full sm:max-w-2xl sm:rounded-[28px] sm:border sm:border-[var(--bb-card-border,#e5e7eb)] sm:shadow-2xl">
         <div className="flex items-center justify-between border-b border-[var(--bb-card-border,#e5e7eb)] px-5 py-4">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--bb-accent,#4a9b6f)]">Bible Buddy</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--bb-accent,#4a9b6f)]">My Bible Buddy</p>
             <h1 className="mt-1 text-2xl font-bold text-[var(--bb-text-primary,#111827)]">Messages</h1>
           </div>
           <button

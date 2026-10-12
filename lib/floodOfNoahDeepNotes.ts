@@ -357,7 +357,7 @@ const floodNotes: FloodChapterNote[] = [
           "Genesis 6:8 says Noah found grace in the eyes of the LORD.",
         ],
         notes: [
-          "Genesis 6 opens with difficult language about the `sons of God`, the `daughters of men`, and `giants` in the earth. Bible readers have discussed these phrases for a long time. Some understand the sons of God as heavenly beings who rebelled. Some understand them as rulers or powerful men. Some understand them as the line of Seth intermarrying with the line of Cain. Bible Buddy should handle this carefully: the main point of the chapter is not curiosity. The main point is corruption.",
+          "Genesis 6 opens with difficult language about the `sons of God`, the `daughters of men`, and `giants` in the earth. Bible readers have discussed these phrases for a long time. Some understand the sons of God as heavenly beings who rebelled. Some understand them as rulers or powerful men. Some understand them as the line of Seth intermarrying with the line of Cain. My Bible Buddy should handle this carefully: the main point of the chapter is not curiosity. The main point is corruption.",
           "The KJV word `giants` translates the Hebrew word often rendered Nephilim. The word is debated, but in the story it points to a fearful ancient world of mighty figures, violence, and distorted human power. Genesis is not inviting us to obsess over speculation. It is showing a world where power, desire, and rebellion have become dangerous.",
           "Verse 5 is one of the darkest statements in the Bible about the human heart. God sees that wickedness is great in the earth. The problem is not only behavior. It is imagination, thought, desire, intention, and direction. The inside of humanity is sick.",
           "That is why the flood is not random. Genesis gives the moral reason before it gives the water.",
@@ -5020,7 +5020,7 @@ At minimum, Ham dishonors his father by looking upon his shame and then telling 
 
 Some readers have debated whether more happened, but Genesis does not spell that out clearly here.
 
-Bible Buddy should stay careful.
+My Bible Buddy should stay careful.
 
 The clear point is dishonor.
 

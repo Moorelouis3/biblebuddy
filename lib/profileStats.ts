@@ -225,7 +225,7 @@ export async function getHeatMapData(
  * Returns streak data including last 7 days
  * 
  * Streak Definition: a user earns a streak day by showing up and doing
- * real activity in Bible Buddy that day.
+ * real activity in My Bible Buddy that day.
  */
 export interface StreakData {
   currentStreak: number;

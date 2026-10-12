@@ -102,7 +102,7 @@ class TaskPlayerErrorBoundary extends Component<
         <div className="bg-white px-5 py-8 text-center">
           <h2 className="text-2xl font-black text-gray-900">This task needs a quick refresh</h2>
           <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-gray-600">
-            Bible Buddy could not open this task cleanly. Close this and try again from the dashboard.
+            My Bible Buddy could not open this task cleanly. Close this and try again from the dashboard.
           </p>
           <button
             type="button"

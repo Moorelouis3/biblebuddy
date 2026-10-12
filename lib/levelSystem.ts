@@ -257,7 +257,7 @@ const LEVEL_NAMES = [
   "Kingdom Servant", "Hope Carrier", "Grace Witness", "Truth Defender", "Story Keeper",
   "Journey Leader", "Bible Scholar", "Faith Captain", "Covenant Champion", "Word Guardian",
   "Kingdom Builder", "Scripture Master", "Faith General", "Bible Veteran", "Holy Flame",
-  "Gospel Ambassador", "Word Legend", "Kingdom Elder", "Bible Champion", "Bible Buddy Legend",
+  "Gospel Ambassador", "Word Legend", "Kingdom Elder", "Bible Champion", "My Bible Buddy Legend",
 ] as const;
 
 export const LEVEL_DEFINITIONS: LevelDefinition[] = LEVEL_MIN_POINTS.map((minPoints, index) => {

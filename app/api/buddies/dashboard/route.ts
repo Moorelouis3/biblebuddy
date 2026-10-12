@@ -147,7 +147,7 @@ async function fetchPaged<T>(
 }
 
 function displayName(profile?: ProfileRow | null) {
-  return profile?.display_name || profile?.username || "Bible Buddy";
+  return profile?.display_name || profile?.username || "My Bible Buddy";
 }
 
 function formatActivity(action: ActionRow) {
@@ -237,7 +237,7 @@ function formatActivity(action: ActionRow) {
       return label ? `opened ${label}` : "opened a community Bible study";
     case "bible_buddy_tv_video_started":
     case "bible_buddy_tv_title_opened":
-      return label ? `watched ${label}` : "watched Bible Buddy TV";
+      return label ? `watched ${label}` : "watched My Bible Buddy TV";
     case "group_message_sent":
       return "sent a group message";
     case "study_group_feed_viewed":
@@ -252,7 +252,7 @@ function formatActivity(action: ActionRow) {
     case "feed_post_prayer_request":
       return "shared with the community";
     default:
-      return label || "made progress in Bible Buddy";
+      return label || "made progress in My Bible Buddy";
   }
 }
 

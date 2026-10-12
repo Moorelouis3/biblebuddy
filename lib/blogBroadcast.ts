@@ -54,8 +54,8 @@ export function buildBroadcastDraft(posts: ReturnType<typeof pickPostsSince>) {
   const subject = posts.length > 1 ? `${lead.title} (and ${posts.length - 1} more)` : lead.title;
   const intro =
     posts.length > 1
-      ? "A few new studies went up on Bible Buddy this week. Here they are."
-      : "A new study went up on Bible Buddy this week.";
+      ? "A few new studies went up on My Bible Buddy this week. Here they are."
+      : "A new study went up on My Bible Buddy this week.";
   return { subject, intro, postSlugs: posts.map((post) => post.slug) };
 }
 
@@ -98,14 +98,14 @@ export function renderBroadcastHtml(subjectIntro: string, slugs: string[]) {
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f8ff;padding:24px 12px;">
     <tr><td align="center">
       <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:18px;padding:28px 24px;">
-        <tr><td style="font:800 20px/1.3 -apple-system,Segoe UI,Arial,sans-serif;color:#0f172a;padding-bottom:6px;">Bible Buddy</td></tr>
+        <tr><td style="font:800 20px/1.3 -apple-system,Segoe UI,Arial,sans-serif;color:#0f172a;padding-bottom:6px;">My Bible Buddy</td></tr>
         <tr><td style="font:400 16px/1.65 -apple-system,Segoe UI,Arial,sans-serif;color:#41506b;padding-bottom:22px;">
           ${escapeHtml(subjectIntro)}
         </td></tr>
         ${cards}
         <tr><td style="padding-top:6px;border-top:1px solid #e6eefc;">
           <div style="font:400 13px/1.6 -apple-system,Segoe UI,Arial,sans-serif;color:#6d7789;padding-top:14px;">
-            You're getting this because you signed up for Bible Buddy. Everything in the app is free.
+            You're getting this because you signed up for My Bible Buddy. Everything in the app is free.
             <br />
             <a href="{{UNSUBSCRIBE}}" style="color:#6d7789;">Unsubscribe</a>
           </div>
@@ -160,7 +160,7 @@ export function renderBroadcastText(subjectIntro: string, slugs: string[]) {
     "",
     blocks.join("\n\n"),
     "",
-    "Everything in Bible Buddy is free.",
+    "Everything in My Bible Buddy is free.",
     SITE_URL,
   ].join("\n");
 }

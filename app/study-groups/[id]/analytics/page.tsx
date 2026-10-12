@@ -825,7 +825,7 @@ export default function StudyGroupAnalyticsPage() {
           <div className="mt-5 rounded-3xl border border-[#efe5d9] bg-[#fffdf9] p-5 shadow-sm">
             <div className="flex items-start justify-between gap-4 flex-wrap">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#b06a2a]">Bible Buddy Fire Board</p>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#b06a2a]">My Bible Buddy Fire Board</p>
                 <h2 className="mt-2 text-xl font-bold text-gray-900">30-Day Fire Emoji</h2>
                 <p className="mt-2 max-w-2xl text-sm text-gray-600">
                   Ranked by who has held the fire badge the longest. Click a buddy name to open their profile, and share these fire Bible buddies back into the group feed.

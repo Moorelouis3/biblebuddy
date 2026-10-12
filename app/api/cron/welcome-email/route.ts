@@ -39,7 +39,7 @@ export const dynamic = "force-dynamic";
 /** Nobody who signed up longer ago than this ever gets a welcome. */
 const MAX_AGE_DAYS = 7;
 
-/** Most new signups in an hour; well above the ~20/day Bible Buddy sees. */
+/** Most new signups in an hour; well above the ~20/day My Bible Buddy sees. */
 const MAX_PER_RUN = 200;
 
 function isAuthorized(request: NextRequest) {

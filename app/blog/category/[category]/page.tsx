@@ -20,18 +20,18 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
   if (!category) {
     return {
-      title: "Blog Category | Bible Buddy",
+      title: "Blog Category | My Bible Buddy",
     };
   }
 
   return {
-    title: `${category.name} | Bible Buddy Blog`,
+    title: `${category.name} | My Bible Buddy Blog`,
     description: category.description,
     alternates: {
       canonical: `/blog/category/${category.slug}`,
     },
     openGraph: {
-      title: `${category.name} | Bible Buddy Blog`,
+      title: `${category.name} | My Bible Buddy Blog`,
       description: category.description,
       url: `/blog/category/${category.slug}`,
       type: "website",
@@ -59,7 +59,7 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
 
         <div className="mb-8 rounded-[32px] border border-[#d8e3ec] bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.08)] md:p-10">
           <p className="text-sm font-black uppercase tracking-[0.22em] text-[#0056fd]">
-            Bible Buddy Blog
+            My Bible Buddy Blog
           </p>
           <h1 className="mt-3 text-4xl font-black text-slate-950 md:text-5xl">{category.name}</h1>
           <p className="mt-3 max-w-2xl text-lg font-semibold leading-8 text-slate-600">
