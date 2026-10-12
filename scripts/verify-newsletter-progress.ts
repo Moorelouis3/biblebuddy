@@ -342,13 +342,28 @@ async function main() {
     ],
   ];
 
+  // Every image the email points at must already exist under public/, or it
+  // will 404 in the inbox. Checked here rather than trusted, because the file
+  // only becomes reachable once the site is deployed.
+  const imgSrcs = [...htmlTemplate.matchAll(/<img[^>]+src="([^"]+)"/g)].map((m) => m[1]);
+  for (const src of imgSrcs) {
+    const local = src.replace(/^https:\/\/www\.mybiblebuddy\.net\//, "");
+    const onDisk = path.join(process.cwd(), "public", local);
+    check(fs.existsSync(onDisk), `banner image exists in public/: ${local}`, fs.existsSync(onDisk) ? `${(fs.statSync(onDisk).size / 1024).toFixed(0)}KB` : "MISSING");
+    // Copy it beside the previews and point them at it, so a preview renders
+    // offline instead of showing a broken image before the site is deployed.
+    if (fs.existsSync(onDisk)) fs.copyFileSync(onDisk, path.join(outDir, path.basename(local)));
+  }
+  const localiseImages = (tpl: string) =>
+    imgSrcs.reduce((acc, src) => acc.split(src).join(path.basename(src)), tpl);
+
   for (const [name, progress] of examples) {
     const fill = (tpl: string, section: string) =>
       tpl
         .replace(/\{\{\s*progress_section\s*\}\}/g, section)
         .replace(/\{\{\s*first_name\s*\}\}/g, (progress.firstName || "friend"))
         .replace(/\{\{UNSUBSCRIBE\}\}/g, "https://www.mybiblebuddy.net/api/email/unsubscribe?token=EXAMPLE");
-    fs.writeFileSync(path.join(outDir, `${name}.html`), fill(htmlTemplate, renderProgressSectionHtml(progress)), "utf8");
+    fs.writeFileSync(path.join(outDir, `${name}.html`), localiseImages(fill(htmlTemplate, renderProgressSectionHtml(progress))), "utf8");
     fs.writeFileSync(path.join(outDir, `${name}.txt`), fill(textTemplate, renderProgressSectionText(progress)), "utf8");
     console.log(`\n--- preview: ${name} (variant=${progress.variant}) ---`);
     console.log(renderProgressSectionText(progress).split("\n").map((l) => `     ${l}`).join("\n"));

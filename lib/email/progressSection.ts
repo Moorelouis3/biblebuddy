@@ -21,9 +21,18 @@ import { continueHref, type RecipientProgress } from "./newsletterProgress";
  * reader's completed work covered, not chapters they sat and read one by one.
  */
 
-const ACCENT = "#5268a7";
-const HEADING = "#17233b";
-const BODY = "#263244";
+/**
+ * Palette sampled from the newsletter banner rather than picked by eye:
+ * #103d3e is the teal behind the "BIBLE BUDDY" wordmark and #f0c678 the
+ * average of the gold in the headline. ACCENT is that teal darkened slightly
+ * so it still passes contrast as a link on white, and the button inverts the
+ * banner's gold-on-teal into teal-on-gold.
+ */
+const ACCENT = "#15595b";
+const HEADING = "#0e3233";
+const BODY = "#243330";
+const GOLD = "#e8c06a";
+const CARD_BG = "#f2f7f6";
 
 function escapeHtml(value: string): string {
   return value
@@ -162,10 +171,10 @@ export function renderProgressSectionHtml(progress: RecipientProgress): string {
     .join("\n");
 
   return `<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin:30px 0 8px;">
-<tr><td style="background:#f7f8fb;border-left:4px solid ${ACCENT};padding:22px 24px;">
+<tr><td style="background:${CARD_BG};border-left:4px solid ${ACCENT};padding:22px 24px;">
 <h3 style="margin:0 0 12px;font-size:20px;line-height:1.3;color:${HEADING};">${escapeHtml(emoji)}&nbsp;&nbsp;${escapeHtml(heading)}</h3>
 ${paragraphs}
-<p style="margin:16px 0 0;"><a href="${escapeHtml(href)}" style="display:inline-block;background:${ACCENT};color:#ffffff;text-decoration:none;padding:12px 22px;font-size:15px;font-weight:bold;">${escapeHtml(cta)} →</a></p>
+<p style="margin:16px 0 0;"><a href="${escapeHtml(href)}" style="display:inline-block;background:${GOLD};color:${HEADING};text-decoration:none;padding:12px 22px;font-size:15px;font-weight:bold;">${escapeHtml(cta)} →</a></p>
 </td></tr>
 </table>`;
 }
