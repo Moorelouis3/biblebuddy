@@ -2533,7 +2533,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const breadcrumbItems = buildBreadcrumbs(pathname);
   // Genesis 1 is the clean-reader prototype and supplies its own chapter
   // navigation, so it opts out of the breadcrumb row. Genesis 1 only.
-  const isGenesisOneReader = /^\/Bible\/genesis\/1\/?$/i.test(pathname || "");
+  const isGenesisOneReader = /^\/bible\/genesis\/1\/?$/i.test(pathname || "");
   const shouldShowBreadcrumbs =
     isLoggedIn &&
     !isBarePage &&

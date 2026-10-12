@@ -542,7 +542,7 @@ export async function fetchLouisDailyChecklistData(
       pointsLabel: TASK_REWARD_LABELS.reading,
       timeEstimateLabel: formatEstimate(readingMinutes),
       timeEstimateDetail: `${chapterLabel} reading`,
-      href: `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?from=louis-daily-task`,
+      href: `/bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?from=louis-daily-task`,
       done: readingDone,
       devotionalId: activeDevotional.id,
       devotionalTitle: activeDevotional.title,
@@ -560,7 +560,7 @@ export async function fetchLouisDailyChecklistData(
       pointsLabel: TASK_REWARD_LABELS.notes,
       timeEstimateLabel: formatEstimate(notesMinutes),
       timeEstimateDetail: "Study notes",
-      href: `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
+      href: `/bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
       done: notesDone,
       devotionalId: activeDevotional.id,
       devotionalTitle: activeDevotional.title,
@@ -578,7 +578,7 @@ export async function fetchLouisDailyChecklistData(
       timeEstimateDetail: hasTrivia ? `${triviaQuestionCount} questions` : "Study notes",
       href: hasTrivia
         ? `/bible-trivia/${triviaRouteSlug}/${day.bible_reading_chapter}?from=louis-daily-task`
-        : `/Bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
+        : `/bible/${encodeURIComponent(day.bible_reading_book)}/${day.bible_reading_chapter}?notes=1&from=louis-daily-task`,
       done: hasTrivia ? triviaDone : notesDone,
       disabled: false,
       devotionalId: activeDevotional.id,

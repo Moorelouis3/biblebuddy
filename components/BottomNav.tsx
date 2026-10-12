@@ -26,7 +26,7 @@ type Tab = {
 
 const TABS: Tab[] = [
   { label: "Home", href: "/dashboard", icon: "🏠", prefixes: ["/dashboard"] },
-  { label: "Bible", href: "/reading", icon: "📖", prefixes: ["/reading", "/Bible", "/bible-study-notes"] },
+  { label: "Bible", href: "/reading", icon: "📖", prefixes: ["/reading", "/bible", "/bible-study-notes"] },
   {
     label: "Plans",
     href: "/plans",

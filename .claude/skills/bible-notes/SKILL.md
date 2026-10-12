@@ -276,7 +276,7 @@ npx tsc --noEmit -p .
 
 Zero errors, every time, before considering a chapter done.
 
-Finally, if a browser preview is available, load `/Bible/<book>/<chapter>`, open the Notes/Chapter-notes view, click a section card to expand it, and confirm the phrase cards render with correct text. The Journey/Day view (`DashboardJourneyExperience.tsx`) pulls from the exact same `getBibleReaderStudySections` function, so verifying the standalone reader also confirms the Bible-in-one-year day view is correct — no separate wiring or verification needed there.
+Finally, if a browser preview is available, load `/bible/<book>/<chapter>`, open the Notes/Chapter-notes view, click a section card to expand it, and confirm the phrase cards render with correct text. The Journey/Day view (`DashboardJourneyExperience.tsx`) pulls from the exact same `getBibleReaderStudySections` function, so verifying the standalone reader also confirms the Bible-in-one-year day view is correct — no separate wiring or verification needed there.
 
 ### Step 8 — Log it
 

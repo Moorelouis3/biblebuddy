@@ -118,7 +118,7 @@ export function continueHref(progress: RecipientProgress): string {
     const { book, chapter } = progress.lastChapter;
     const total = getBookTotalChapters(book);
     const target = total && chapter < total ? chapter + 1 : chapter;
-    return `${SITE_URL}/Bible/${encodeURIComponent(book)}/${target}`;
+    return `${SITE_URL}/bible/${encodeURIComponent(book)}/${target}`;
   }
 
   return `${SITE_URL}/devotionals/wisdom-of-proverbs`;

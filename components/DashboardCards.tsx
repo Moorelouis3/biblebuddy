@@ -162,7 +162,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         </div>
       ) : null}
 
-      <Link href="/Bible" onClick={(event) => handleCardClick(event, "bible", "/Bible")}>
+      <Link href="/bible" onClick={(event) => handleCardClick(event, "bible", "/bible")}>
         <div
           data-dashboard-tour="bible"
           className={`bb-card cursor-pointer rounded-xl border p-5 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md ${getSpotlightClasses("bible")}`}

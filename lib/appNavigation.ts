@@ -23,7 +23,7 @@ export const APP_NAV_ITEMS: AppNavItem[] = [
   {
     label: "The Bible",
     href: "/reading",
-    activePrefixes: ["/reading", "/Bible", "/bible-study-notes", "/reading-plan"],
+    activePrefixes: ["/reading", "/bible", "/bible-study-notes", "/reading-plan"],
     activeClasses: "bg-blue-50 text-blue-700 font-medium cursor-not-allowed",
     hoverClasses: "text-gray-700 hover:bg-blue-50 hover:text-blue-600 active:scale-[0.98]",
   },

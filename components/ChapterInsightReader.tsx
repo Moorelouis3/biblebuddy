@@ -249,7 +249,7 @@ export default function ChapterInsightReader({
   const [studyModeOn, setStudyModeOn] = useState(false);
   const totalChapters = getBookTotalChapters(BOOK);
   const goToChapter = (target: number) => {
-    router.push(`/Bible/${encodeURIComponent(book.toLowerCase())}/${target}`);
+    router.push(`/bible/${encodeURIComponent(book.toLowerCase())}/${target}`);
   };
 
   return (
@@ -337,7 +337,7 @@ export default function ChapterInsightReader({
                                   setMenuBook(null);
                                   if (!isCurrent) {
                                     router.push(
-                                      `/Bible/${encodeURIComponent(menuBookName.toLowerCase())}/${ch}`,
+                                      `/bible/${encodeURIComponent(menuBookName.toLowerCase())}/${ch}`,
                                     );
                                   }
                                 }}

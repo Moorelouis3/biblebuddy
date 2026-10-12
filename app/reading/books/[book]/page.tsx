@@ -384,7 +384,7 @@ export default function BookPage() {
                           return (
                           <Link
                             key={`${bookKey}-topic-${index + 1}`}
-                            href={`/Bible/${encodeURIComponent(bookKey)}/${chapter}`}
+                            href={`/bible/${encodeURIComponent(bookKey)}/${chapter}`}
                             onClick={() => {
                               if (!userId) return;
 
@@ -439,7 +439,7 @@ export default function BookPage() {
             <div className="grid grid-cols-4 gap-2 sm:gap-3 mt-2">
               {allChapters.map((chapter) => {
                 const done = completedChapters.includes(chapter);
-                const href = `/Bible/${encodeURIComponent(bookKey)}/${chapter}`;
+                const href = `/bible/${encodeURIComponent(bookKey)}/${chapter}`;
                 const stateClasses = done
                   ? "border-green-300 bg-green-100 text-green-800"
                   : "border-gray-200 bg-white text-gray-900 hover:border-blue-200 hover:bg-blue-50";

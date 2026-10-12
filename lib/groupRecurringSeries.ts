@@ -156,7 +156,7 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
 <li>🔵 <strong>Mark what you want to revisit</strong> — for study, reflection, or sharing later</li>
 </ul>
 <p>When you build a simple system, your highlights become a map of your time in Scripture — not just color on a page.</p>
-<p>Open the Bible reader and try it this week. <a href="/Bible"><strong>Tap here to start reading →</strong></a></p>
+<p>Open the Bible reader and try it this week. <a href="/bible"><strong>Tap here to start reading →</strong></a></p>
 `.trim(),
   },
   {
@@ -167,7 +167,7 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
 <p>You read it again. Still not clicking. You are not sure if you misunderstood the verse — or if you are just stuck on the specific words used in that translation.</p>
 <p>That is a common moment. And it does not have to stop your reading.</p>
 <h2>📖 Switch translations without losing your place</h2>
-<p>At the top of the <a href="/Bible"><strong>Bible reader in My Bible Buddy</strong></a>, there is a translation dropdown. Tap it and switch between WEB, ASV, and KJV right there in the same view.</p>
+<p>At the top of the <a href="/bible"><strong>Bible reader in My Bible Buddy</strong></a>, there is a translation dropdown. Tap it and switch between WEB, ASV, and KJV right there in the same view.</p>
 <p>You do not have to open another app. You do not have to search anything. You just see the verse in different words and keep moving.</p>
 <h2>✅ When this helps most</h2>
 <ul>
@@ -176,7 +176,7 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
 <li>📌 <strong>You want to study a verse deeply</strong> — read it in all three and notice what each one emphasizes</li>
 </ul>
 <p>The goal is to keep you in the Word, not bouncing between apps trying to figure out what a sentence means.</p>
-<p><a href="/Bible"><strong>Open the Bible reader and try switching translations →</strong></a></p>
+<p><a href="/bible"><strong>Open the Bible reader and try switching translations →</strong></a></p>
 `.trim(),
   },
   {
@@ -187,7 +187,7 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
 <p>That feeling is more common than people admit. The Bible is not always easy to follow, especially in books like Leviticus, Ezekiel, or Revelation where the context matters a lot.</p>
 <p>That is exactly what chapter notes are for.</p>
 <h2>📝 What chapter notes do</h2>
-<p>In the <a href="/Bible"><strong>Bible reader</strong></a>, every chapter has a notes section that breaks down what you just read in plain language.</p>
+<p>In the <a href="/bible"><strong>Bible reader</strong></a>, every chapter has a notes section that breaks down what you just read in plain language.</p>
 <p>It gives you the context, the key moment in the chapter, and how it connects to the bigger story — so you understand the flow before moving on instead of carrying confusion into the next chapter.</p>
 <h2>✅ Use chapter notes when</h2>
 <ul>
@@ -197,7 +197,7 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
 <li>🗒️ <strong>You are preparing to discuss a passage with someone else</strong></li>
 </ul>
 <p>You do not have to search anything. Just open the notes right there in the reader.</p>
-<p><a href="/Bible"><strong>Open the Bible reader and check out the chapter notes →</strong></a></p>
+<p><a href="/bible"><strong>Open the Bible reader and check out the chapter notes →</strong></a></p>
 `.trim(),
   },
   {
@@ -209,7 +209,7 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
 <p>All of that just because I would get to reading and hit a person, place, or word I didn't understand — and then I had to stop, search it up, write the definition down, and piece together what it meant before the verse even made sense.</p>
 <p>That broke my focus every single time. So I made something better.</p>
 <h2>📖 Reading the Bible is different now</h2>
-<p>Inside My Bible Buddy we have a full <a href="/Bible"><strong>Bible reader</strong></a> built specifically for this problem.</p>
+<p>Inside My Bible Buddy we have a full <a href="/bible"><strong>Bible reader</strong></a> built specifically for this problem.</p>
 <p>When you come across a person, place, or keyword you don't know — you don't have to leave the page. Just tap it right there and the explanation opens instantly.</p>
 <h2>🔍 How it works</h2>
 <ul>
@@ -224,7 +224,7 @@ const MONDAY_FEATURES: RecurringSeriesTemplate[] = [
 <li>✔ You understand the full verse or chapter instead of guessing</li>
 <li>✔ Your focus stays locked in from start to finish</li>
 </ul>
-<p>This is one of the main reasons I built the app. Open the Bible and try it — <a href="/Bible"><strong>tap here to open the Bible reader →</strong></a></p>
+<p>This is one of the main reasons I built the app. Open the Bible and try it — <a href="/bible"><strong>tap here to open the Bible reader →</strong></a></p>
 `.trim(),
   },
   {

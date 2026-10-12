@@ -2404,7 +2404,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
 
   const totalChaptersInBook = getBookTotalChapters(book);
   const chapterReaderHref = (targetBook: string, targetChapter: number) =>
-    `/Bible/${encodeURIComponent(targetBook.toLowerCase())}/${targetChapter}${isDashboardEmbed ? "?dashboardEmbed=1&hideReaderChrome=1" : ""}`;
+    `/bible/${encodeURIComponent(targetBook.toLowerCase())}/${targetChapter}${isDashboardEmbed ? "?dashboardEmbed=1&hideReaderChrome=1" : ""}`;
 
   function goPrevChapter() {
     if (chapter <= 1) return;
@@ -3774,7 +3774,7 @@ function CongratsModalWithConfetti({
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 
-  const backLink = "/Bible";
+  const backLink = "/bible";
 
   const [showLevelUpModal, setShowLevelUpModal] = useState(false);
   const [showModal, setShowModal] = useState(true);

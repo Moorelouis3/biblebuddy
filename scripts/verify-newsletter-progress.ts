@@ -286,7 +286,7 @@ async function main() {
     ...base, variant: "weekly", chaptersThisWeek: 5, lastChapter: { book: "genesis", chapter: 12 },
   };
   const href = continueHref(chaptersNoStudy);
-  check(href.includes("/Bible/genesis/13"), "chapters without a study still get a reading link", href);
+  check(href.includes("/bible/genesis/13"), "chapters without a study still get a reading link", href);
   check(/5 chapters/.test(progressCopy(chaptersNoStudy).lines.join(" ")), "chapter count shown without needing a study");
 
   const lastChapterOfBook: RecipientProgress = {

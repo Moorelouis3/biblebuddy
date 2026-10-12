@@ -312,7 +312,7 @@ export default function VerseOfTheDayBreakdown({
     }
   }
 
-  const bibleHref = `/Bible/${encodeURIComponent(entry.book)}/${entry.chapter}`;
+  const bibleHref = `/bible/${encodeURIComponent(entry.book)}/${entry.chapter}`;
 
   return (
     <div className="overflow-hidden rounded-[28px] bg-[var(--bb-card,#ffffff)] shadow-xl">

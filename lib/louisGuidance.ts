@@ -66,7 +66,7 @@ export function getLouisPageGuide(pathname: string | null): LouisPageGuide | nul
   if (!pathname) return null;
 
   if (pathname === "/dashboard") return DASHBOARD_GUIDE;
-  if (pathname === "/reading" || pathname === "/Bible") return BIBLE_BOOKS_GUIDE;
+  if (pathname === "/reading" || pathname === "/bible") return BIBLE_BOOKS_GUIDE;
   if (
     pathname === "/dashboard" ||
     pathname.endsWith("/chat") ||

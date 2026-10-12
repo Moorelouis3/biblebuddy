@@ -58,7 +58,7 @@ export default function BlogTopNav() {
         {signedIn ? (
           <>
             <Link href="/blog" className="transition hover:text-[#0056fd]">Blog</Link>
-            <Link href="/Bible/genesis/1" className="hidden transition hover:text-[#0056fd] sm:inline">Bible</Link>
+            <Link href="/bible/genesis/1" className="hidden transition hover:text-[#0056fd] sm:inline">Bible</Link>
             <Link href="/plans" className="transition hover:text-[#0056fd]">Plans</Link>
             <Link
               href="/dashboard"

@@ -48,7 +48,7 @@ export default function ChapterNotesPage() {
   }, [approvedBibleYearDeepStudySections]);
 
   function goToChapter() {
-    router.push(`/Bible/${book}/${chapter}`);
+    router.push(`/bible/${book}/${chapter}`);
   }
 
   function goHome() {

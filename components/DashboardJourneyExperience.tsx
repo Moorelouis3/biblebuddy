@@ -1280,7 +1280,7 @@ function buildPreloadedNextChapterTasks({
       title: `Read ${chapterLabel}`,
       pointsLabel: TASK_REWARD_LABELS.reading,
       timeEstimateLabel: "4 min",
-      href: `/Bible/${encodeURIComponent(book)}/${chapter}?from=louis-daily-task`,
+      href: `/bible/${encodeURIComponent(book)}/${chapter}?from=louis-daily-task`,
       done: false,
       disabled: true,
       devotionalId,
@@ -1295,7 +1295,7 @@ function buildPreloadedNextChapterTasks({
       title: `Review ${chapterLabel} Notes`,
       pointsLabel: TASK_REWARD_LABELS.notes,
       timeEstimateLabel: "12 min",
-      href: `/Bible/${encodeURIComponent(book)}/${chapter}?notes=1&from=louis-daily-task`,
+      href: `/bible/${encodeURIComponent(book)}/${chapter}?notes=1&from=louis-daily-task`,
       done: false,
       disabled: true,
       devotionalId,
@@ -6240,7 +6240,7 @@ export default function DashboardJourneyExperience({
     const selectedChapterCount = dashboardBibleSelectedBook ? getBookTotalChapters(dashboardBibleSelectedBook) : 0;
     const readerSrc =
       dashboardBibleSelectedBook && dashboardBibleSelectedChapter
-        ? `/Bible/${encodeURIComponent(dashboardBibleSelectedBook)}/${dashboardBibleSelectedChapter}?dashboardEmbed=1&hideReaderChrome=1`
+        ? `/bible/${encodeURIComponent(dashboardBibleSelectedBook)}/${dashboardBibleSelectedChapter}?dashboardEmbed=1&hideReaderChrome=1`
         : null;
 
     return (

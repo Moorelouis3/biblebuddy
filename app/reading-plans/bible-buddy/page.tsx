@@ -325,7 +325,7 @@ export default function BibleBuddyReadingPlanPage() {
     if (typeof window !== "undefined") {
       window.sessionStorage.setItem("bbFromReadingPlan", "bible-buddy");
     }
-    router.push(`/Bible/${slug}/${chapter}`);
+    router.push(`/bible/${slug}/${chapter}`);
   };
 
   const renderBookChapters = (book: string) => {

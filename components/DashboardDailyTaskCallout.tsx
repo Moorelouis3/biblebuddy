@@ -353,7 +353,7 @@ function ScriptureReferenceTakeover({
             Back to Notes
           </button>
           <a
-            href={`/Bible/${encodeURIComponent(selectedScripture.book.toLowerCase())}/${selectedScripture.chapter}`}
+            href={`/bible/${encodeURIComponent(selectedScripture.book.toLowerCase())}/${selectedScripture.chapter}`}
             className="rounded-full border border-[var(--bb-card-border,#e5e7eb)] bg-white px-7 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)] shadow-sm transition hover:bg-[var(--bb-surface-soft,#f6f8fb)]"
           >
             Read Chapter

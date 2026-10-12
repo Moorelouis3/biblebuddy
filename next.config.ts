@@ -5,6 +5,17 @@ const nextConfig: NextConfig = {
     webpackBuildWorker: false,
     parallelServerCompiles: false,
     parallelServerBuildTraces: false,
+    // Required by the /Bible -> /bible redirects below. By default Next matches
+    // the `source` of every redirect, rewrite and header in this file with
+    // path-to-regexp's `sensitive: false`, i.e. case-insensitively. A redirect
+    // from "/Bible" to "/bible" would therefore also match "/bible" and send it
+    // to itself forever. This makes the sources in this file match
+    // case-sensitively, which is how the app/ page routes already behave on
+    // Vercel's case-sensitive filesystem.
+    //
+    // Every other source in this file is already all-lowercase and is reached
+    // by lowercase links, so nothing else changes behaviour.
+    caseSensitiveRoutes: true,
   },
   // These two admin routes build paths from process.cwd() and touch public/,
   // so Next's file tracer cannot tell which files they need and bundles the
@@ -24,6 +35,22 @@ const nextConfig: NextConfig = {
     // 301s so old links, Pinterest pins, and any indexed URLs pass on to
     // the new canonical /blog addresses.
     return [
+      // The Bible reader lives at lowercase /bible. Capital /Bible was a
+      // half-finished rename: ecc877d17 renamed the index route in git,
+      // core.ignorecase made the directory rename a no-op on Windows, and later
+      // commits (f9197d985, 798694ad0) re-added the chapter route under capital
+      // Bible. Git ended up recording app/bible/page.tsx next to
+      // app/Bible/[book]/[chapter]/page.tsx, so in production /bible served the
+      // index and 404'd on chapters while /Bible did the exact opposite.
+      //
+      // Both routes now live under lowercase app/bible. These redirects keep the
+      // capital URLs alive, and not only for bookmarks: group posts published by
+      // the recurring-series cron and weekly report emails already went out with
+      // hard-coded /Bible links, so those live on in the database and in
+      // people's inboxes for good.
+      { source: "/Bible", destination: "/bible", permanent: true },
+      { source: "/Bible/:book/:chapter", destination: "/bible/:book/:chapter", permanent: true },
+
       // Proverbs' shareable page (2026-10-06). Doing this here rather than with
       // redirect() inside app/study/[slug]/page.tsx: by the time that component
       // runs the response has already started streaming, so Next falls back to a

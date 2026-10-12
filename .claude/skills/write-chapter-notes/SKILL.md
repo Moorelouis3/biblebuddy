@@ -197,7 +197,7 @@ Check for:
   ```
 
 Then, if the user wants to see it rendered (not just the data), start the
-dev server and screenshot the `/Bible/<book>/<chapter>` route with the
+dev server and screenshot the `/bible/<book>/<chapter>` route with the
 "Notes" tab open — see the `run` skill for the dev-server-in-sandbox
 gotchas (background dev servers can die between tool calls here; combine
 server start + curl warmup + screenshot into one shell invocation).

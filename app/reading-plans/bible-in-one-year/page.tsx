@@ -343,7 +343,7 @@ export default function BibleInOneYearPage() {
     if (typeof window !== "undefined") {
       window.sessionStorage.setItem("bbFromReadingPlan", "bible-in-one-year");
     }
-    router.push(`/Bible/${slug}/${chapter}`);
+    router.push(`/bible/${slug}/${chapter}`);
   };
 
   const getDayState = (day: DayReading): "not-started" | "in-progress" | "completed" => {

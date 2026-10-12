@@ -795,7 +795,7 @@ export default function ScrambledGamePlayer({
                 ?
               </button>
               {!onClose && (
-                <Link href={`/Bible/${bookSlug}/${chapter.chapter}`} className="text-sm font-semibold text-[#4768af] hover:text-[#35508a]">
+                <Link href={`/bible/${bookSlug}/${chapter.chapter}`} className="text-sm font-semibold text-[#4768af] hover:text-[#35508a]">
                   Read chapter
                 </Link>
               )}

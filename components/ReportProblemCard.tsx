@@ -31,7 +31,7 @@ function pageLabel(pathname: string) {
   const rules: Array<[string, string]> = [
     ["/dashboard", "Home"],
     ["/reading", "Bible Reader"],
-    ["/Bible", "Bible Reader"],
+    ["/bible", "Bible Reader"],
     ["/plan", "Plan Day"],
     ["/plans", "Plans"],
     ["/devotionals", "Plans"],

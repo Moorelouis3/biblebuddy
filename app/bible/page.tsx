@@ -140,7 +140,7 @@ export default function BiblePage() {
                       "relative rounded-xl border px-3 py-3 text-left shadow-sm transition text-sm";
 
                     // All books are unlocked and open directly in the full Bible reader.
-                    const href = `/Bible/${encodeURIComponent(book.toLowerCase())}/1`;
+                    const href = `/bible/${encodeURIComponent(book.toLowerCase())}/1`;
 
                     // Determine styling: complete = green, default = white
                     let cardClasses = "bg-white border-blue-200";

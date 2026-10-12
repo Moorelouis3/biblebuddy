@@ -151,7 +151,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
   const [chapterCompleted, setChapterCompleted] = useState(false);
   const [markingChapterComplete, setMarkingChapterComplete] = useState(false);
   const bookDisplayName = useMemo(() => normalizeBookDisplay(book), [book]);
-  const biblePageHref = `/Bible/${encodeURIComponent(book.toLowerCase().trim())}/${chapter}`;
+  const biblePageHref = `/bible/${encodeURIComponent(book.toLowerCase().trim())}/${chapter}`;
   const bibleNotesHref = `${biblePageHref}?notes=1`;
   const normalizedGameBookKey = useMemo(() => {
     const rawKey = book.toLowerCase().trim().replace(/[^a-z0-9]+/g, "");
@@ -982,7 +982,7 @@ Be accurate to Scripture.`;
             {error}
             <div className="mt-4">
               <Link
-                href={`/Bible/${encodeURIComponent(book)}/${chapter}`}
+                href={`/bible/${encodeURIComponent(book)}/${chapter}`}
                 className="text-blue-600 hover:underline"
               >
                 Open in full page

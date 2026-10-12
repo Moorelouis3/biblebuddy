@@ -360,7 +360,7 @@ function buildLouisPageContext(pathname: string | null | undefined, searchParams
   const segments = safePathname.split("/").filter(Boolean);
   const routeKind: LouisPageContext["routeKind"] = (() => {
     if (safePathname === "/dashboard") return "dashboard";
-    if (safePathname === "/reading" || safePathname === "/Bible") return "bible_home";
+    if (safePathname === "/reading" || safePathname === "/bible") return "bible_home";
     if (segments[0] === "reading" && segments[1] === "books" && segments[2]) return "bible_book";
     if (segments[0] === "Bible" && segments[1] && segments[2]) return "bible_chapter";
     if (safePathname === "/devotionals" || safePathname === "/bible-studies") return "devotionals_home";
@@ -515,7 +515,7 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
 
   const simpleRoutes: Array<{ match: RegExp; href: string; reply: string }> = [
     { match: /\b(dashboard|home)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to the dashboard now." },
-    { match: /\b(the )?bible( reader)?\b/, href: "/Bible", reply: "Okay.\n\nI’m opening the Bible reader now." },
+    { match: /\b(the )?bible( reader)?\b/, href: "/bible", reply: "Okay.\n\nI’m opening the Bible reader now." },
     { match: /\b(devotionals?|bible studies?)\b/, href: "/plans", reply: "Okay.\n\nI’m taking you to Plans now." },
     { match: /\b(reading plans?|plans?)\b/, href: "/plans", reply: "Okay.\n\nI’m opening Plans now." },
     { match: /\b(group|bible study group|the group)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to The Bible Study Group now." },
@@ -548,14 +548,14 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
 
   if (book && chapter && /\b(notes|chapter notes)\b/.test(normalized)) {
     return {
-      href: `/Bible/${toBibleBookSegment(book)}/${chapter}`,
+      href: `/bible/${toBibleBookSegment(book)}/${chapter}`,
       reply: `Okay.\n\nI’m opening ${book} ${chapter}.\n\nTap Chapter Notes on that page and you’ll be right where you need to be.`,
     };
   }
 
   if (book && chapter && wantsNavigation) {
     return {
-      href: `/Bible/${toBibleBookSegment(book)}/${chapter}`,
+      href: `/bible/${toBibleBookSegment(book)}/${chapter}`,
       reply: `Okay.\n\nI’m opening ${book} ${chapter} now.`,
     };
   }
@@ -576,7 +576,7 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
 
   if (!book && chapter && currentPage.routeKind === "bible_chapter" && wantsNavigation) {
     return {
-      href: `/Bible/${toBibleBookSegment(currentPage.book || "")}/${chapter}`,
+      href: `/bible/${toBibleBookSegment(currentPage.book || "")}/${chapter}`,
       reply: `Okay.\n\nI’m opening ${currentPage.book} ${chapter} now.`,
     };
   }
@@ -1102,7 +1102,7 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
 
   if (context.lastMasterActionSummary?.continueHref) {
     const href = context.lastMasterActionSummary.continueHref;
-    const isBible = href.includes("/Bible/") || href === "/Bible" || href === "/reading";
+    const isBible = href.includes("/bible/") || href === "/bible" || href === "/reading";
     const isGroup = false;
     const isGame = href.includes("/bible-trivia");
 
@@ -1308,7 +1308,7 @@ function renderLouisGuideContent(_guide?: unknown) {
 }
 
 function getEncodedBibleHref(book: string, chapter: number) {
-  return `/Bible/${encodeURIComponent(book)}/${chapter}`;
+  return `/bible/${encodeURIComponent(book)}/${chapter}`;
 }
 
 function summarizeLastMasterAction(action: {
@@ -1380,7 +1380,7 @@ function summarizeLastMasterAction(action: {
   if (action.action_type === "dashboard_card_opened" && label) {
     const href =
       label === "The Bible"
-        ? "/Bible"
+        ? "/bible"
         : label === "Bible Study Group"
           ? null
           : label === "Bible Study Tools"
@@ -1536,7 +1536,7 @@ function buildLouisJourneyRecommendation({
       recommendationLine:
         "Spend a little time in the Bible reader or study side of the app today. Read the chapter behind what you just learned and let the notes and context help it click.",
       primaryButtonText: "Open the Bible",
-      primaryButtonHref: "/Bible",
+      primaryButtonHref: "/bible",
       level: 1,
       cardTitle: "Read The Chapter Behind It",
       cardSubtitle: "Use the Bible reader and notes to deepen understanding.",

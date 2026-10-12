@@ -99,7 +99,7 @@ export async function buildLouisRecommendationHandoff(
   if (
     targetPath.startsWith("/devotionals/") ||
     targetPath.startsWith("/bible-studies/") ||
-    targetPath.startsWith("/Bible/") ||
+    targetPath.startsWith("/bible/") ||
     targetPath === "/reading"
   ) {
     return null;
@@ -113,7 +113,7 @@ export async function buildLouisRecommendationHandoff(
       `You are in the profile setup now.\n\nClean up what is missing while you are here.\n\nA good profile makes it easier for people to know who they are studying with.\n\nIf you need help, just ask me.`,
       `This is a quick profile win.\n\nAdd the missing pieces and make the app feel more personal.\n\nA little setup here goes a long way later.\n\nI am here if you want help with it.`,
     ]);
-  } else if (targetPath.startsWith("/Bible") || targetPath === "/reading") {
+  } else if (targetPath.startsWith("/bible") || targetPath === "/reading") {
     message = pickVariant(seed, [
       `You are back in Scripture now.\n\nSlow down and really read what is in front of you.\n\nThen sit with what stands out before you move on.\n\nI am here if you want help understanding what you read.`,
       `You are back in the Bible now.\n\nDo not rush it just to say you opened the page.\n\nRead the chapter, pay attention, and let the Word speak before you move on.\n\nIf anything feels unclear, ask me.`,

@@ -47,7 +47,7 @@ Most of this existed before Phase 5 and was simply unreachable:
 | `supabase/migrations/BLOCK_ANONYMOUS_COMMUNITY_WRITES.sql` | Keeps guests out of community writes |
 
 Wired into `app/devotionals/[id]/page.tsx` (day click) and
-`app/Bible/[book]/[chapter]/page.tsx` (person/place/keyword study cards).
+`app/bible/[book]/[chapter]/page.tsx` (person/place/keyword study cards).
 
 ## Design decisions
 

@@ -671,7 +671,7 @@ export default function PublicProfilePage() {
         let url: string | undefined;
         if (label) {
           const match = label.match(/^(.+?)\s+(\d+)$/);
-          if (match) url = `/Bible/${encodeURIComponent(match[1])}/${match[2]}`;
+          if (match) url = `/bible/${encodeURIComponent(match[1])}/${match[2]}`;
         }
         actions.push({ date: d, text: label ? `${actorName} completed ${label}` : `${actorName} completed a chapter`, sortKey: actionDate.getTime(), actionType: "chapter_completed", url });
       } else if (action.action_type === "book_completed") {

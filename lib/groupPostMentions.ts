@@ -143,7 +143,7 @@ function buildStaticMentions() {
     add({
       key: `book:${book}`,
       label: book,
-      href: `/Bible/${encodeURIComponent(book.toLowerCase())}/1`,
+      href: `/bible/${encodeURIComponent(book.toLowerCase())}/1`,
       kind: "book",
     });
 
@@ -152,7 +152,7 @@ function buildStaticMentions() {
       add({
         key: `chapter:${book}:${chapter}`,
         label: `${book} ${chapter}`,
-        href: `/Bible/${toBibleBookSegment(book)}/${chapter}`,
+        href: `/bible/${toBibleBookSegment(book)}/${chapter}`,
         kind: "chapter",
       });
     }

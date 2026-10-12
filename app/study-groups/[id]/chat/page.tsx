@@ -6645,7 +6645,7 @@ export default function GroupChatPage() {
 
               <div className="mt-6 flex justify-end">
                 <Link
-                  href={`/Bible/${encodeURIComponent(selectedScripture.book.toLowerCase())}/${selectedScripture.chapter}`}
+                  href={`/bible/${encodeURIComponent(selectedScripture.book.toLowerCase())}/${selectedScripture.chapter}`}
                   className="rounded-xl bg-[#4a9b6f] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
                 >
                   Read Full Chapter

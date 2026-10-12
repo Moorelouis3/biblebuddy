@@ -273,7 +273,7 @@ export async function GET(request: NextRequest) {
       kind: "article_comment",
       source: isBibleChapter ? "Bible Chapters" : "Articles",
       sourceLabel,
-      href: isBibleChapter ? slug.replace(/^bible-chapter-/, "/Bible/").replace(/-(\d+)$/, "/$1") : articleHrefFromSlug(slug),
+      href: isBibleChapter ? slug.replace(/^bible-chapter-/, "/bible/").replace(/-(\d+)$/, "/$1") : articleHrefFromSlug(slug),
       contextTitle: bibleContext?.contextTitle ?? sourceLabel,
       contextContent: bibleContext?.contextContent ?? `This comment was posted under the article or discussion page: ${sourceLabel}.`,
       userId: row.user_id,

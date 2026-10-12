@@ -119,13 +119,13 @@ function prettifyLouisPath(value: string | null | undefined) {
   if (!text) return "inside the app";
 
   if (text === "/dashboard") return "the dashboard";
-  if (text === "/reading" || text === "/Bible") return "the Bible reader home";
+  if (text === "/reading" || text === "/bible") return "the Bible reader home";
   if (text === "/devotionals") return "the devotionals page";
   if (text === "/dashboard") return "The Bible Study Group";
   if (text === "/bible-trivia") return "the Bible trivia page";
   if (text === "/bible-study-games/scrambled") return "the Scrambled page";
   if (text === "/bible-study-games") return "the Bible study games page";
-  if (text.startsWith("/Bible/")) {
+  if (text.startsWith("/bible/")) {
     const parts = text.split("/").filter(Boolean);
     const book = decodeURIComponent(parts[1] || "").replace(/-/g, " ");
     const chapter = parts[2];
