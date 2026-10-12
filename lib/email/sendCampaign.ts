@@ -1,6 +1,8 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { sendEmail, sesSendingEnabled } from "./sesSender";
 import { unsubscribeUrl } from "./unsubscribeLink";
+import { fetchProgressForBatch, resolveProgressWindow, type ProgressWindow } from "./newsletterProgress";
+import { renderProgressSectionHtml, renderProgressSectionText } from "./progressSection";
 
 /**
  * Send one email to the mailing list.
@@ -22,6 +24,11 @@ import { unsubscribeUrl } from "./unsubscribeLink";
  *    counted across ALL marketing campaigns rather than per campaign.
  *  - **Never faster than allowed.** SES caps the send rate - 1/second in the
  *    sandbox, 14/second by default in production.
+ *  - **Never somebody else's progress.** A body containing `{{progress_section}}`
+ *    is rendered per recipient from that address's own account. The lookup is
+ *    keyed by the address being sent to, the rendered block is built inside the
+ *    send loop for that one address, and nothing is carried between iterations.
+ *    See the progress-section comment further down.
  *
  * WHO GETS IT IS NOT DECIDED HERE. The queue comes from marketing_recipients()
  * in the database, which is the same function /api/admin/campaigns calls to
@@ -89,6 +96,12 @@ export async function sendCampaign(options: {
   /** Stop after this many sends - use a small number for a real-world test. */
   limit?: number;
   dryRun?: boolean;
+  /**
+   * The seven-day window the `{{progress_section}}` block reports on. Pass the
+   * campaign row so every batch of a multi-hour send measures the same week;
+   * see resolveProgressWindow.
+   */
+  progressWindow?: ProgressWindow;
 }): Promise<CampaignResult> {
   const { campaignId, subject, html, text, tag, limit } = options;
   const rate = Math.max(0.2, options.ratePerSecond ?? 1);
@@ -155,6 +168,30 @@ export async function sendCampaign(options: {
 
   if (options.dryRun) return result;
 
+  // The personalised progress block.
+  //
+  // Fetched ONCE for the whole batch rather than per address: three windowed
+  // lookups chunked at 250 cost about 1.8s for 1,000 recipients, where a
+  // per-person query would be one round trip each. Only addresses in THIS
+  // batch are looked up, and the result is a map keyed by address.
+  //
+  // A campaign whose body does not mention {{progress_section}} skips all of
+  // this, so existing campaigns are untouched and cost nothing extra.
+  //
+  // It runs BEFORE the send loop, which is what makes a failure here harmless:
+  // nothing has been claimed yet, so the throw reaches the cron, costs that run
+  // its ten minutes, and the next one re-queues the same people. Sending the
+  // whole batch a numberless email because one query timed out would be worse
+  // than sending it late.
+  const needsProgress = html.includes("{{progress_section}}") || text.includes("{{progress_section}}");
+  const progressByEmail = needsProgress
+    ? await fetchProgressForBatch(
+        db,
+        queue.map((r) => ({ email: r.email, first_name: r.first_name })),
+        options.progressWindow ?? resolveProgressWindow({}),
+      )
+    : new Map();
+
   for (const subscriber of queue) {
     if (limit && result.sent >= limit) {
       result.stoppedEarly = true;
@@ -201,16 +238,35 @@ export async function sendCampaign(options: {
     }
 
     const name = (subscriber.first_name || "friend").trim() || "friend";
-    const personalise = (value: string) => value.replace(/\{\{\s*first_name\s*\}\}/g, name);
+
+    // Built inside the loop, from this one address's own row. If the lookup
+    // returned nothing for this address - no account, or a row that arrived
+    // between queueing and sending - the block falls back to the invitation
+    // variant, which contains no numbers at all. It never falls back to
+    // somebody else's progress, and it is never left as a raw placeholder.
+    const progress = progressByEmail.get(subscriber.email.toLowerCase()) ?? {
+      email: subscriber.email,
+      firstName: subscriber.first_name,
+      userId: null,
+      chaptersThisWeek: 0,
+      lastChapter: null,
+      study: null,
+      variant: "invitation" as const,
+    };
+
+    const personalise = (value: string, section: string) =>
+      value
+        .replace(/\{\{\s*progress_section\s*\}\}/g, section)
+        .replace(/\{\{\s*first_name\s*\}\}/g, name);
 
     let status: "sent" | "failed" | "skipped" = "failed";
     let detail: string | null = null;
     try {
       const sendResult = await sendEmail({
         to: subscriber.email,
-        subject: personalise(subject),
-        html: personalise(html),
-        text: personalise(text),
+        subject: personalise(subject, ""),
+        html: personalise(html, renderProgressSectionHtml(progress)),
+        text: personalise(text, renderProgressSectionText(progress)),
         unsubscribeUrl: unsubscribeUrl(subscriber.email),
         tags: { campaign: campaignId.replace(/[^a-zA-Z0-9_-]/g, "-").slice(0, 60) },
       });

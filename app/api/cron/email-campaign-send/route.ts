@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { sendCampaign } from "@/lib/email/sendCampaign";
 import { sesSendingEnabled } from "@/lib/email/sesSender";
+import { fetchProgressForBatch, resolveProgressWindow } from "@/lib/email/newsletterProgress";
+import { renderProgressSectionHtml, renderProgressSectionText } from "@/lib/email/progressSection";
 
 export const runtime = "nodejs";
 export const maxDuration = 300;
@@ -45,6 +47,7 @@ type CampaignRow = {
   rate_per_second: number;
   max_per_run: number;
   started_at: string | null;
+  created_at: string | null;
   scheduled_for: string | null;
   // Read so a run can tell a first hiccup from a campaign that is actually
   // broken; see the catch block.
@@ -72,7 +75,7 @@ export async function GET(request: NextRequest) {
   // so a campaign with a date goes before one without, and nulls last.
   const { data, error } = await db
     .from("email_campaigns")
-    .select("campaign_id, subject, html, text, tag, rate_per_second, max_per_run, started_at, scheduled_for, last_result")
+    .select("campaign_id, subject, html, text, tag, rate_per_second, max_per_run, started_at, created_at, scheduled_for, last_result")
     // Marketing only. The welcome email is a campaign row too, but it is
     // triggered one person at a time by /api/cron/welcome-email - if this
     // batch sender ever picked it up it would post it to the whole list.
@@ -118,15 +121,29 @@ export async function GET(request: NextRequest) {
     if (!sesSendingEnabled()) {
       return NextResponse.json({ error: "SES is not configured yet." }, { status: 409 });
     }
-    const fill = (value: string) => value.replace(/\{\{\s*first_name\s*\}\}/g, "friend");
+    // A test send renders the progress block for the TEST ADDRESS's own
+    // account, not a stand-in. That is the only way a test tells you whether
+    // the real thing works, and it keeps the placeholder from going out raw.
+    const progressMap = await fetchProgressForBatch(
+      db,
+      [{ email: testAddress, first_name: null }],
+      resolveProgressWindow({}),
+    );
+    const progress = progressMap.get(testAddress.toLowerCase());
+    const sectionHtml = progress ? renderProgressSectionHtml(progress) : "";
+    const sectionText = progress ? renderProgressSectionText(progress) : "";
+    const fill = (value: string, section: string) =>
+      value
+        .replace(/\{\{\s*progress_section\s*\}\}/g, section)
+        .replace(/\{\{\s*first_name\s*\}\}/g, "friend");
     const { sendEmail } = await import("@/lib/email/sesSender");
     const sent = await sendEmail({
       to: testAddress,
-      subject: fill(row.subject),
-      html: fill(row.html),
-      text: fill(row.text),
+      subject: fill(row.subject, ""),
+      html: fill(row.html, sectionHtml),
+      text: fill(row.text, sectionText),
     });
-    return NextResponse.json({ ok: sent.sent, test: testAddress, ...sent });
+    return NextResponse.json({ ok: sent.sent, test: testAddress, variant: progress?.variant ?? null, ...sent });
   }
 
   const campaign = (data?.[0] as CampaignRow | undefined) ?? null;
@@ -149,11 +166,17 @@ export async function GET(request: NextRequest) {
     });
   }
 
+  // started_at is also what anchors the progress block's seven-day window, so
+  // it has to be pinned before the first batch and never moved afterwards. A
+  // send spans many of these runs; without a fixed anchor the people reached on
+  // Wednesday would be measured against a different week from Tuesday's.
   if (!campaign.started_at) {
+    const startedAt = new Date().toISOString();
     await db
       .from("email_campaigns")
-      .update({ started_at: new Date().toISOString() })
+      .update({ started_at: startedAt })
       .eq("campaign_id", campaign.campaign_id);
+    campaign.started_at = startedAt;
   }
 
   try {
@@ -165,6 +188,7 @@ export async function GET(request: NextRequest) {
       tag: campaign.tag ?? undefined,
       ratePerSecond: Number(campaign.rate_per_second),
       limit: campaign.max_per_run,
+      progressWindow: resolveProgressWindow(campaign),
     });
 
     // Finished when this run found nobody left to send to. Anyone who failed
