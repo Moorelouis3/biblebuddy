@@ -86,6 +86,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-21-explained",
+    title: "Exodus 21 Explained: Servants, Justice, and Eye for Eye",
+    description:
+      "Exodus 21 explained verse by verse: the case laws on Hebrew servants, taking a life, eye for eye justice, and an ox that gores or falls into a pit.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-21-explained",
+    publishedAt: "2026-10-12",
+    readTime: "14 min read",
+    image: "/blog-banners/exodus-21-explained.jpg",
+    groupPost: {
+      title: "Exodus 21 Explained 📖",
+      content:
+        "No fire this time. Just real disputes judges had to settle fairly.\n\n📌 Eye for eye was always a ceiling on revenge, not a license for it.\n\n📖 A Hebrew servant goes free after six years, for nothing.\n📖 Taking a life by accident gets a place to flee to.\n📖 An ox owner is liable only once he already knew it was dangerous.\n\nNew article on:\n🟢 what **eye for eye** actually limits, not demands\n🟢 why a **daughter's** servitude gets different rules than a son's\n🟢 the hardest verse in the chapter, read honestly\n\nWhich of these case laws surprised you most? 🙏",
+    },
+  },
+  {
     slug: "exodus-20-explained",
     title: "Exodus 20 Explained: The Ten Commandments at Sinai",
     description:
