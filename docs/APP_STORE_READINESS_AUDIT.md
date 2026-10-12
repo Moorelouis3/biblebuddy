@@ -1,8 +1,8 @@
 # App Store — working plan
 
-Updated 2026-10-11. Replaces the first audit's framing, which wrongly made
+Updated 2026-10-12. Replaces the first audit's framing, which wrongly made
 Apple Developer enrolment sound like a gate on starting. It isn't. Membership
-is paid at the end of October; nearly all of the build happens before then.
+is paid in the last week of October; all of the unpaid build is already done.
 
 ---
 
@@ -16,7 +16,7 @@ is paid at the end of October; nearly all of the build happens before then.
 |---|---|
 | **Compliance and legal** | 🟩 done — 17 of 17 points |
 | **The app itself** | 🟨 most of the code written — 28 of 48 |
-| **Apple account and signing** | ⬜ blocked on the £79 — 0 of 21 |
+| **Apple account and signing** | ⬜ blocked on the €99 — 0 of 21 |
 | **Store listing and submission** | 🟨 5 of 14 |
 
 Weighted by effort, not by counting tasks — see *Scoring* at the bottom, where
@@ -43,15 +43,23 @@ jump needs a Mac in front of you.
 
 ## Start here
 
-**Get in front of a Mac.** Everything buildable on Windows is now built. The
-next 16 points are all Xcode: `npx cap add ios`, a build onto your own
-iPhone, and testing offline, audio, share and haptics on a real device. A
-free Apple ID is enough for all of it — the £79 is not needed until Stage 2.
+**Wait for the membership, then go.** Everything buildable without a paid
+Apple account is built, and it compiles: Codemagic build #3 produced an iOS
+app on a Mac mini M2 with all four native plugins linked. Nothing is blocked
+on Windows any more, and nothing is blocked on owning a Mac.
 
-One small thing still open on Windows: the offline-download button has a
-working helper (`lib/offlineDownload.ts`) but no home. Where "save this day
-for offline" belongs in the Bible Year screen is a design call, so it was
-left rather than guessed at inside a 19,000-line component.
+What is left needs the €99. Louis decided on 2026-10-12 to pay in the **last
+week of October** rather than earlier, so the money is only committed once it
+is certain it can be spared. Target ~27 Oct; approval is usually 24-48h,
+which still leaves Stage 2 its full window.
+
+The one thing that cannot be checked before then: **the app has never run.**
+Compiling is not working. Safe areas, the status bar, whether the service
+worker behaves inside WKWebView, whether the 08:00 reminder actually fires,
+whether audio survives a locked screen - all unknown until TestFlight puts it
+on a real iPhone, and TestFlight needs the membership. Expect a list of small
+fixes on day one of Stage 2; that is normal, and it is why submission sits on
+23 Nov with slack rather than in October.
 
 ### Built on 11 Oct
 
@@ -75,8 +83,8 @@ left rather than guessed at inside a 19,000-line component.
 
 | | When | What it is |
 |---|---|---|
-| **1. Before payday** | now → 31 Oct | Build the app. Everything that doesn't need a paid Apple account. |
-| **2. After payday** | 31 Oct → ~15 Nov | £79 enrolment, then the Apple-gated pieces + TestFlight. |
+| **1. Before the membership** | now → ~27 Oct | Build the app. Everything that doesn't need a paid Apple account. **Done.** |
+| **2. After the membership** | ~27 Oct → ~15 Nov | €99 enrolment, then the Apple-gated pieces + TestFlight, and the first run on a real iPhone. |
 | **3. Submit** | ~15 Nov → 23 Nov | Store listing, privacy, reviewer access. **Submit 23 Nov, launch 9 Dec.** |
 
 Two and a half weeks between submission and launch is deliberate: first
@@ -85,13 +93,18 @@ review, and you want room for it rather than a panic in December.
 
 ---
 
-## Stage 1 — now, before payday
+## Stage 1 — now, before the membership
 
-**A free Apple ID removes the £79, not the Mac.** Xcode only runs on macOS,
-and you need it to compile anything. With a free account you can build and run
-on your own iPhone, but the profile expires every 7 days and you reinstall.
-Sort out Mac access early — buy, borrow, or rent a cloud Mac at roughly
-£25/month.
+**The Mac problem is solved, and it cost nothing.** Xcode only runs on macOS,
+which looked like a hard blocker on a third of this work. It was not: CI
+builds on someone else's Mac. `codemagic.yaml` runs on a Mac mini M2 (free
+individual plan, 500 macOS minutes a month), and
+`.github/workflows/ios-build.yml` does the same on GitHub's Macs whenever
+that account's billing lock clears. No Mac to buy, borrow or rent.
+
+What CI cannot do is put the app on a phone in Berlin. That gap closes in
+Stage 2 through TestFlight, which installs over the air - so even then, still
+no physical Mac.
 
 ### Can be written on Windows
 
@@ -124,9 +137,9 @@ widgets wait too), TestFlight.
 
 ---
 
-## Stage 2 — after payday
+## Stage 2 — after the membership (last week of October)
 
-1. Enrol in the Apple Developer Program, £79/yr. **Do this first** — approval
+1. Enrol in the Apple Developer Program, €99/yr. **Do this first** — approval
    can take a few days, and everything below is blocked on it.
 2. Sign in with Apple: Services ID, key, Supabase provider, then switch on the
    button written in Stage 1. *(Apple requires — 4.8)*
@@ -242,7 +255,7 @@ header number with them.
 | ✅ | App Privacy answers drafted → APP_STORE_LISTING.md | 2 | Windows |
 | ☐ | Service worker verified working in WKWebView | 4 | **Mac** |
 
-### Apple account and signing — 0 / 21 ⬜ (blocked on the £79)
+### Apple account and signing — 0 / 21 ⬜ (blocked on the €99)
 
 | ✓ | Item | Pts |
 |---|---|---|
