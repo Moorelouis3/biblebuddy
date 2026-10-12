@@ -7558,3 +7558,7 @@ Next up: Acts 16
 ## 2026-10-12T00:08:00Z (hourly chapter notes run)
 Chapter: Acts 16 | Duration: 22 min | Sections: 8 | Cards: 64 | Status: pass
 Next up: Acts 17
+
+## 2026-10-12T01:00:41Z (hourly chapter notes run)
+Chapter: Acts 17 | Duration: 15 min | Sections: 8 | Cards: 69 | Status: pass
+Next up: Acts 18

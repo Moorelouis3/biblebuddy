@@ -61417,6 +61417,63 @@
           "at": "2026-10-12T00:13:00Z"
         }
       ]
+    },
+    {
+      "book": "Acts",
+      "chapter": 17,
+      "startedAt": "2026-10-12T00:46:05Z",
+      "finishedAt": "2026-10-12T01:00:41Z",
+      "durationMinutes": 15,
+      "sections": 8,
+      "cards": 69,
+      "verses": 34,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (704 packages, fresh clone). Priority queue (data/bible-notes-priority-queue.json) not present/not checked as a separate file this run; style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) confirmed empty, so this was normal forward progress. Read the tail of the progress log and confirmed Acts 16 was the latest entry, so Acts 17 was next in canonical order. Confirmed no lib/actsSeventeenSource.ts existed yet and no Acts 17 wiring in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for Acts 17 (34 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the riot in Thessalonica over Paul and Silas reasoning in the synagogue and the mob dragging Jason before the city rulers (1-9), the Berean believers searching the scriptures daily and Paul being sent on to Athens (10-15), Paul disputing with Epicurean and Stoic philosophers in the market and being brought before the Areopagus (16-21), and the Mars' hill sermon on the unknown god, one blood, and the call to repent before a coming judgment, ending with mockery from some and belief from others including Dionysius the Areopagite and Damaris (22-34). Read docs/bible-study-note-style.md in full before writing, plus lib/actsSixteenSource.ts and lib/genesisThirtyOneSource.ts as voice/structure references, and the technical pipeline in .claude/skills/bible-notes/SKILL.md. Wrote lib/actsSeventeenSource.ts following the exact parser shape used in lib/actsSixteenSource.ts. First draft used 7 sections, one of them spanning Acts 17:1-9 (9 verses). The style checker (scripts/check_bible_note_style.py) initially flagged two oversized bullets (9 words instead of the 3-8 word limit), which were trimmed and the checker came back clean at 64 cards. The parser verification step then surfaced a real bug risk: lib/bibleReaderStudyNotes.ts calls enforceStudySectionVerseLimit(8) at the end of the file, which auto-splits any wired-in section wider than 8 verses into Part 1 / Part 2 pieces but copies the full, unsplit card list into each part rather than dividing it, so the 9-verse section was rendering as two sections with its 17 cards fully duplicated (81 total instead of 64). Fixed by restructuring that one section into two real sections, Acts 17:1-5 and Acts 17:6-9, each under the 8 verse limit, writing 8 new cards for verses 6-9 (the mob finding the house empty, dragging Jason and other believers before the rulers, the received-as-hospitality-turned-crime angle, the panic spreading to the rulers themselves, and the bond-and-release ending) so no section in this chapter is wider than 8 verses and none of the auto-split logic applies to it. Updated the parser's expected-section-count safety check from 7 to 8 to match. Final style checker run came back clean at 69 cards across 8 sections. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/actsSeventeenSource.ts, the acts condition in preserveExactPhraseBodies widened from chapters 1-16 to include chapter 17, new applyPersonalActsSeventeenStudySections() function added calling replaceStudySectionsForBookRange(\"acts\", 17, 17, ACTS_SEVENTEEN_PERSONAL_SECTIONS), invoked right after applyPersonalActsSixteenStudySections(). Parser check passed via a direct npx tsx import call to getBibleReaderStudySections(\"acts\", 17): 8/8 sections, verse ranges 1-5/6-9/10-15/16-21/22-25/26-28/29-31/32-34 with no gaps, no overlaps, and no duplication, 69 total cards rendering verbatim, no throw. npx tsc --noEmit -p . came back clean, zero errors. This was a new chapter, normal forward progress, not a style redo. No usage limit, rate limit, block, or throttling occurred this run, so no event was logged to data/bible-notes-usage-events.json. Next forward progress target is Acts 18.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-12T00:46:45Z"
+        },
+        {
+          "name": "target chapter determined: Acts 17 (new chapter, forward progress)",
+          "at": "2026-10-12T00:46:55Z"
+        },
+        {
+          "name": "KJV text fetched for Acts 17 (34 verses)",
+          "at": "2026-10-12T00:47:01Z"
+        },
+        {
+          "name": "style spec and skill pipeline doc read in full",
+          "at": "2026-10-12T00:49:30Z"
+        },
+        {
+          "name": "source file lib/actsSeventeenSource.ts written (initial 7 sections, 64 cards)",
+          "at": "2026-10-12T00:53:45Z"
+        },
+        {
+          "name": "style checker clean after trimming two oversized bullets",
+          "at": "2026-10-12T00:54:06Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 17, applyPersonalActsSeventeenStudySections added and called)",
+          "at": "2026-10-12T00:54:20Z"
+        },
+        {
+          "name": "parser check exposed enforceStudySectionVerseLimit(8) duplicating the 9-verse section; restructured into two sections (1-5 and 6-9) under the 8-verse cap, section count updated 7 to 8",
+          "at": "2026-10-12T00:56:00Z"
+        },
+        {
+          "name": "style checker clean on final 8-section, 69-card version",
+          "at": "2026-10-12T00:56:50Z"
+        },
+        {
+          "name": "parser check passed clean (8/8 sections, 69 cards, no duplication, text verbatim)",
+          "at": "2026-10-12T00:57:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-12T00:57:26Z"
+        }
+      ]
     }
   ]
 }
