@@ -870,3 +870,15 @@ Three things need a human decision before these go into the Tuesday newsletter.
 **Still needing verification, by article.** Noah's ark: the 2026 field season numbers (90 days, around 1,000 soil samples, twelve cores inside and four outside, 20 metres, 40 percent carbon) come from the team's own statements and from reporting, not from a publication, and the article says "the team reports" throughout for that reason; Eşref Atabey's landslide assessment is cited second hand through Wikipedia and has not been read in the original; whether the pottery is claimed to be associated with the formation or simply found nearby is unclear in the sources and the article says so. Shroud: the 2026 npj Heritage Science paper and the 2022 Heritage WAXS paper were both read in full, but the Catholic Church's formal position is stated from general knowledge rather than from a Vatican source, and that one sentence should be checked if Louis wants it stated more strongly. Laminin: every structural claim comes from the Hohenester 2019 review read in full, but Louie Giglio is described rather than quoted, on purpose, because no transcript of his exact words was available and the article is correcting a claim rather than going after a pastor.
 
 **One rule that needs holding.** These articles are built to be updated, not replaced. When the Durupınar lab results land this winter, the right move is to bump `updatedAt` and add a dated update line inside the affected section, not to write a second article or quietly rewrite the first. The format spec says this, and the archive is the point of the category.
+
+## My Bible Buddy rename: three decisions left for Louis
+The brand rename is done and on main (875 strings, 243 files). Three things
+were deliberately NOT changed and need Louis to choose:
+1. capacitor.config.ts still has appName "Bible Buddy" - that renames the
+   installed phone app, which belongs to an App Store release, not a text pass.
+2. Tomorrow's newsletter banner artwork still reads "BIBLE BUDDY" while the
+   email body now says "My Bible Buddy". Needs new artwork or a revert.
+3. study_groups.name is 'Bible Buddy Study Group' in the database and ~20 cron
+   routes look the group up by that exact string. Renaming it needs the DB row
+   and the code changed in the same deploy, or every scheduled group post
+   silently stops. Migration written, that section left commented out.

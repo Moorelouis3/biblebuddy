@@ -7638,3 +7638,22 @@ Next up: Acts 28
 ## 2026-10-12T13:01:02Z (hourly chapter notes run)
 Chapter: Acts 28 | Duration: 13 min | Sections: 9 | Cards: 41 | Status: pass
 Next up: next unwired chapter after Romans/Corinthians (both already covered by legacy multi-chapter files)
+
+## 2026-10-12 (night)
+Time spent: ~4h
+Done: Deduped BIBLE_PLACES_LIST / BIBLE_PEOPLE_LIST at export (134 + 195 dupes
+gone, A-Z pages render each entry once). Built the newsletter's personalised
+progress block: three variants, batch lookup, per-recipient render in
+sendCampaign, resumability and duplicate protection untouched. Wrote tomorrow's
+Proverbs newsletter with Louis's banner and a palette sampled from it. Fixed the
+chapter_completed prefix-match bug (the event log held ~27% of real completions).
+Renamed the brand to "My Bible Buddy": 875 occurrences in 243 files, proven to be
+only that substitution.
+Not live yet: everything above is on main, untagged, waiting for the next
+scheduled build. The newsletter banner image CANNOT be sent before that build
+publishes it - the URL is a 404 until then.
+Still open: 3 decisions for Louis (see MARCUS_HANDOFF.md) - capacitor appName,
+the banner artwork still reading "BIBLE BUDDY", and 15 clunky "a/your My Bible
+Buddy account" strings. The campaign row is NOT created; nothing can send.
+Next: create the campaign as a draft once the build is out, test-send to Louis,
+then arm it for all three groups.
