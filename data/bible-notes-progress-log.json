@@ -62064,6 +62064,59 @@
           "at": "2026-10-12T12:03:51Z"
         }
       ]
+    },
+    {
+      "book": "Acts",
+      "chapter": 28,
+      "startedAt": "2026-10-12T12:47:37Z",
+      "finishedAt": "2026-10-12T13:01:02Z",
+      "durationMinutes": 13.4,
+      "sections": 9,
+      "cards": 41,
+      "verses": 31,
+      "notes": "New chapter, forward progress (both priority queue and style redo backlog were empty). Final chapter of Acts, which is now fully complete (chapters 1-28, each with its own dedicated source file). Written to docs/bible-study-note-style.md spec (exact-phrase titles, 4-8 line bodies, exactly 4 bullets).",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-12T12:49:01Z"
+        },
+        {
+          "name": "target chapter determined: Acts 28 (new chapter, forward progress, both priority queue and style-redo backlog empty)",
+          "at": "2026-10-12T12:49:01Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com/aruljohn/Bible-kjv Acts.json",
+          "at": "2026-10-12T12:50:00Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-12T12:50:30Z"
+        },
+        {
+          "name": "source file written: lib/actsTwentyEightSource.ts (9 sections, 41 cards)",
+          "at": "2026-10-12T12:58:00Z"
+        },
+        {
+          "name": "style checker clean (check_bible_note_style.py, 3 mechanical issues fixed)",
+          "at": "2026-10-12T12:59:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-12T12:59:30Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 41 cards confirmed via getBibleReaderStudySections)",
+          "at": "2026-10-12T12:59:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-12T13:00:34Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-10-12T13:01:02Z"
+        }
+      ]
     }
   ]
 }
