@@ -7630,3 +7630,7 @@ sequence questions and the weekly cap decision.
 ## 2026-10-12T11:02:51Z (hourly chapter notes run)
 Chapter: Acts 26 | Duration: 16 min | Sections: 8 | Cards: 46 | Status: pass
 Next up: Acts 27
+
+## 2026-10-12T12:03:51Z (hourly chapter notes run)
+Chapter: Acts 27 | Duration: 17 min | Sections: 10 | Cards: 61 | Status: pass
+Next up: Acts 28
