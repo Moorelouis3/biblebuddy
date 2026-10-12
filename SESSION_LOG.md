@@ -7594,3 +7594,35 @@ Next up: Acts 25
 ## 2026-10-12T09:57:54Z (hourly chapter notes run)
 Chapter: Acts 25 | Duration: 12 min | Sections: 5 | Cards: 32 | Status: pass
 Next up: Acts 26
+
+## 2026-10-12 (session)
+Today: plan the Tuesday newsletter / Friday teaching sequence split, and a
+Christian News blog content type with three initial articles.
+Done: audited the SES email stack, campaign dashboard and blog pipeline;
+researched all three article subjects to source level; wrote
+`docs/newsletter-and-christian-news-plan.md` (email plan, Christian News fit,
+three outlines with sources and verification gaps, newsletter layout,
+dashboard gaps, sponsorship prep).
+Not live yet: nothing shipped — planning only, no code, no sends.
+Still open: four open questions on the Friday sequence (lesson list, start
+point for new signups, end behaviour, whether the whole list starts at
+lesson 1), and the weekly-cap collision for the inactive group.
+Next: Louis reviews the plan; build order starts with the christian-news
+category and the three article template components.
+
+## 2026-10-12 (Christian News build)
+Built the Christian News content type and its first three articles: Durupınar
+and the search for Noah's ark, the Shroud of Turin, and laminin. Each one
+researched from primary sources where reachable (the 2026 npj Heritage Science
+shroud paper and the 2019 Essays in Biochemistry laminin review were both read
+in full), with an Established / Still uncertain block and a cited source list.
+Also added: the category, the format spec, two components, visible published
+and updated dates on every post, and the sitemap updatedAt fix.
+Status: pass. tsc clean, eslint clean, all three pages and the category page
+verified rendering.
+Not live yet: all of it. Committed untagged, live at the next scheduled deploy
+(10:00 or 18:00 Berlin).
+Still open: the three articles are held out of the study group on purpose
+until Louis reads them (MARCUS_HANDOFF.md has the verification gaps and the
+banner problem). The email plan is unbuilt and still waiting on the four
+sequence questions and the weekly cap decision.

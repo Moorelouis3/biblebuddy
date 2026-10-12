@@ -82,9 +82,71 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     name: "Bible in One Year",
     description: "Day by day study notes that walk through the whole Bible in a year.",
   },
+  // Added 2026-10-12. Discoveries, research and claims that circulate among
+  // Christians, explained with the evidence and the gaps in it. The format is
+  // its own spec - docs/christian-news-format.md - because an explainer does
+  // not fit the nine-section teaching shape, and because this category needs
+  // two rules the others do not: no old discovery is dressed up as breaking
+  // news, and a disputed claim stays disputed in our wording.
+  {
+    slug: "christian-news",
+    name: "Christian News",
+    description:
+      "Discoveries, research and claims in the news, explained honestly: what the evidence shows, and what is still unsettled.",
+  },
 ];
 
 export const BLOG_ARTICLES: BlogArticle[] = [
+  // The first three Christian News articles (2026-10-12). Written to
+  // docs/christian-news-format.md, not to the standard teaching shape.
+  //
+  // All three carry excludeFromGroupShare and no groupPost teaser ON PURPOSE:
+  // this category does not auto-ship. The pages are live and reviewable, and
+  // /api/cron/blog-group-post leaves them alone until Louis has read them and
+  // removed the flag. See the publishing gate in the format spec.
+  //
+  // Banners are the category fallback and two other existing landscape
+  // banners. Flagged in MARCUS_HANDOFF.md: three real banners would be worth
+  // commissioning before these go into the newsletter.
+  {
+    slug: "have-they-found-noahs-ark",
+    title: "Have They Found Noah's Ark? The Truth About the Durupınar Site",
+    description:
+      "What researchers have actually found at the Durupınar formation near Mount Ararat, what the published geology says, and what is still unconfirmed.",
+    category: "Christian News",
+    categorySlug: "christian-news",
+    canonicalPath: "/blog/have-they-found-noahs-ark",
+    publishedAt: "2026-10-12",
+    readTime: "11 min read",
+    image: "/blog-banners/christian-news-noahs-ark.png",
+    excludeFromGroupShare: true,
+  },
+  {
+    slug: "shroud-of-turin-what-the-science-says",
+    title: "The Shroud of Turin: What the Science Actually Says",
+    description:
+      "The Shroud of Turin explained: the 1988 radiocarbon date, the 2022 X ray study, the 2026 fragment analysis, and the part still unexplained.",
+    category: "Christian News",
+    categorySlug: "christian-news",
+    canonicalPath: "/blog/shroud-of-turin-what-the-science-says",
+    publishedAt: "2026-10-12",
+    readTime: "13 min read",
+    image: "/blog-banners/christian-news-shroud.png",
+    excludeFromGroupShare: true,
+  },
+  {
+    slug: "laminin-the-cross-shaped-protein",
+    title: "Laminin: The Truth About the Cross Shaped Protein",
+    description:
+      "Laminin really does look like a cross in electron micrographs. What the protein does, what the popular story gets wrong, and what Colossians 1:17 means.",
+    category: "Christian News",
+    categorySlug: "christian-news",
+    canonicalPath: "/blog/laminin-the-cross-shaped-protein",
+    publishedAt: "2026-10-12",
+    readTime: "11 min read",
+    image: "/blog-banners/christian-news-laminin.png",
+    excludeFromGroupShare: true,
+  },
   {
     slug: "exodus-23-explained",
     title: "Exodus 23 Explained: Justice, Rest, and the Three Feasts",

@@ -487,6 +487,25 @@ function toSectionCards(children: ReactNode, budget?: InvitationBudget): ReactNo
   flush();
   return out;
 }
+/**
+ * "2026-10-12" -> "12 October 2026".
+ *
+ * Forced to UTC. The registry stores a plain calendar date, which Date parses
+ * as UTC midnight; formatting that in a server timezone behind UTC prints the
+ * day before, which is exactly the off-by-one the writer agent already has a
+ * warning about for publishedAt.
+ */
+function formatPostDate(isoDate: string) {
+  const parsed = new Date(`${isoDate}T00:00:00Z`);
+  if (Number.isNaN(parsed.getTime())) return isoDate;
+  return parsed.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 type BlogPostShellProps = {
   slug: string;
   // The on-page H1. Defaults to the listing title with the 📖 prefix.
@@ -577,8 +596,22 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
           {title ?? <>📖 {article.title}</>}
         </h1>
 
-        {/* The same meta row a devotional or a Bible in One Year day carries. */}
+        {/* The same meta row a devotional or a Bible in One Year day carries.
+            The dates were added 2026-10-12 for Christian News, which cannot
+            honestly run without them - but every post gets them, because
+            "when was this written" is a fair question on a teaching post too.
+            publishedAt and updatedAt were already in the registry; until now
+            they only ever reached the article schema, so a reader could not
+            see either one. */}
         <div className="mt-4 flex flex-wrap items-center gap-2 text-sm font-bold text-[#41506b]">
+          <span className="rounded-full bg-[#f2f7ff] px-3 py-1.5">
+            📅 {formatPostDate(article.publishedAt)}
+          </span>
+          {article.updatedAt ? (
+            <span className="rounded-full bg-[#fff6e5] px-3 py-1.5">
+              🔄 Updated {formatPostDate(article.updatedAt)}
+            </span>
+          ) : null}
           <span className="rounded-full bg-[#f2f7ff] px-3 py-1.5">⏱️ {readMinutes} min read</span>
           {tocEntries.length >= 2 ? (
             <span className="rounded-full bg-[#f2f7ff] px-3 py-1.5">📑 {tocEntries.length} sections</span>

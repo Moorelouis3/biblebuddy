@@ -33,9 +33,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.75,
       };
     }),
+    // updatedAt first, publishedAt otherwise (2026-10-12). This used to be
+    // publishedAt only, which meant a post that got a real content overhaul -
+    // or a Christian News article updated because the research moved - never
+    // signalled a re-crawl. The article schema already preferred updatedAt for
+    // dateModified; the sitemap disagreeing with it was the bug.
     ...BLOG_ARTICLES.map((article) => ({
       url: `${SITE_URL}/blog/${article.slug}`,
-      lastModified: new Date(article.publishedAt),
+      lastModified: new Date(article.updatedAt ?? article.publishedAt),
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
