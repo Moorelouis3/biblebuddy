@@ -62117,6 +62117,63 @@
           "at": "2026-10-12T13:01:02Z"
         }
       ]
+    },
+    {
+      "book": "Romans",
+      "chapter": 1,
+      "startedAt": "2026-10-12T13:47:09Z",
+      "finishedAt": "2026-10-12T14:04:36Z",
+      "durationMinutes": 17,
+      "sections": 6,
+      "cards": 58,
+      "verses": 32,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in both), so this was normal forward progress. The progress log's last entry was Acts 28, the final chapter of Acts, so the next canonical chapter is Romans 1. Confirmed no romansOneSource.ts or any dedicated Romans chapter file existed yet, only the legacy pre spec bulk files lib/romansOneToEightPersonalNotes.ts and lib/romansNineToSixteenPersonalNotes.ts. Session started with local git detached from refs/heads/main pointing at an older commit than origin/main; git fetch origin main && git checkout main && git reset --hard origin/main brought it to the real current main (645efbf) with nothing lost, the same recurring environment ref anomaly logged in many prior runs. Fetched real KJV text for Romans 1 (32 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Romans 1 is Paul's opening to the church at Rome, handled as an epistle per the skill's Part 4 guidance (trace the logical flow, ground first century context): verses 1-7 are Paul's single long opening sentence naming himself a servant and apostle separated unto the gospel, tying Jesus to David's lineage and to his resurrection declared with power, and closing the standard Greek plus Hebrew grace and peace greeting to the beloved saints at Rome; verses 8-13 are Paul's thanksgiving and his long held, repeatedly frustrated desire to visit Rome in person, including the archaic trap word let meaning hindered rather than allowed; verses 14-17 carry the chapter's thesis, Paul as debtor to every culture, not ashamed of the gospel because it is the power of God unto salvation to the Jew first and also to the Greek, closing on the Habakkuk quotation the just shall live by faith; verses 18-23 open the case against idolatry, God's wrath already revealed, the suppressed truth, the general revelation available through creation leaving mankind without excuse, and the trade of the uncorruptible God's glory for an image of man, birds, fourfooted beasts, and creeping things; verses 24-27 trace the gave them up pattern (a phrase that repeats three times across the chapter, in verses 24, 26, and 28) into dishonoured bodies and vile affections against nature; verses 28-32 close on the reprobate mind and the long vice list, broken into three cards covering it a few terms at a time rather than one long card, ending on the verdict that approving these things in others carries the same guilt as doing them. Chunked into 6 sections (1-7 Paul introduces himself, 8-13 Paul's longing to visit Rome, 14-17 not ashamed of the gospel, 18-23 the wrath of God against idolatry, 24-27 God gave them up, 28-32 a reprobate mind and its fruit). Density about 1.81 cards per verse (32 verses, 58 cards). First automated style checker pass found 16 problems: several bullets over the 8 word limit, one card's last bullet not ending on 📖 or ➡️, and three cards (the vice list cards covering verses 29-31) built as inline emoji bulleted lists inside the body, which the checker correctly treats as bullets and flags for exceeding the 4 bullet limit and repeating emoji. Rewrote those three cards as plain prose definitions followed by the normal 4 closing bullets, and trimmed every flagged bullet to 3-8 words. Second automated run was clean with 0 problems across all 58 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves (define the word, correct the misreading, identify the vague reference, or state the point flat), defines its key term in plain language (servant, apostle, separated, gospel, afore, seed, lord, declared, resurrection, grace, apostleship, obedience, saints, without ceasing, let, hitherto, debtor, barbarians, righteousness, wrath, hold, manifest, without excuse, vain, uncorruptible, gave up, dishonour, vile affections, against nature, recompence, meet, retain, reprobate, convenient, and each vice term in the closing list), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet on 📖 or ➡️, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 58 cards. Parser check passed exactly via getBibleReaderStudySections('romans', 1) (6/6 sections, verse ranges 1-7/8-13/14-17/18-23/24-27/28-32 with no gaps, 58 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/romansOneSource.ts, preserveExactPhraseBodies extended with a new romans chapter 1 condition, new function applyPersonalRomansOneStudySections added and called immediately after applyPersonalRomansOneThroughEightStudySections() so the dedicated chapter 1 file overrides the legacy ROMANS_1_8_PERSONAL_SECTIONS bulk file for chapter 1 only, chapters 2-8 of that legacy file left untouched. Next forward-progress target is Romans 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-12T13:47:09Z"
+        },
+        {
+          "name": "target chapter determined: Romans 1 (normal forward progress; priority queue and style-redo backlog both empty; forward progress picks up right after Acts 28, the last logged entry)",
+          "at": "2026-10-12T13:49:19Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-12T13:49:19Z"
+        },
+        {
+          "name": "KJV text fetched (Romans 1, 32 verses, aruljohn mirror)",
+          "at": "2026-10-12T13:55:54Z"
+        },
+        {
+          "name": "source file written (lib/romansOneSource.ts, 6 sections, 58 cards)",
+          "at": "2026-10-12T13:57:44Z"
+        },
+        {
+          "name": "style checker first pass: 16 problems found (long bullets, wrong last-bullet emoji, inline emoji lists miscounted as bullets)",
+          "at": "2026-10-12T13:57:44Z"
+        },
+        {
+          "name": "style checker clean after fixes: 0 problems across 58 cards",
+          "at": "2026-10-12T13:59:09Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalRomansOneStudySections called after the legacy Romans 1-8 bulk apply)",
+          "at": "2026-10-12T13:59:57Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('romans', 1) returned 6/6 sections, 58 total cards",
+          "at": "2026-10-12T13:59:57Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-12T14:03:43Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-12T14:04:36Z"
+        }
+      ]
     }
   ]
 }
