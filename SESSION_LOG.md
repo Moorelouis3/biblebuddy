@@ -7661,3 +7661,12 @@ then arm it for all three groups.
 ## 2026-10-12T14:04:36Z (hourly chapter notes run)
 Chapter: Romans 1 | Duration: 17 min | Sections: 6 | Cards: 58 | Status: pass
 Next up: Romans 2
+
+## 2026-10-12 (Bug Fixer, 14:30 UTC run)
+Bug fixed: two "crash" reports today were actually someone's local test
+copy of the app (localhost), not real visitors, reporting into the same
+bug list real users use. Added a check so only crashes from the real site
+get logged going forward. Commit c33de41, pushed to main, no [deploy] tag.
+The other 2 open reports (can't reach /reading, can't reach /start) were
+already rechecked earlier today, still one-off with no repeat, left open
+with diagnosis — nothing new to add this run.
