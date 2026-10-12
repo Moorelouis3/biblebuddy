@@ -62378,6 +62378,55 @@
           "at": "2026-10-12T19:58:06Z"
         }
       ]
+    },
+    {
+      "book": "Romans",
+      "chapter": 6,
+      "startedAt": "2026-10-12T20:46:26Z",
+      "finishedAt": "2026-10-12T20:59:37Z",
+      "durationMinutes": 13,
+      "sections": 6,
+      "cards": 26,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style-redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty (remaining: []), so this was normal forward progress: new chapter, not a redo. Latest entry in the progress log before this run was Romans 5, so target was Romans 6, confirmed no existing lib/romansSixSource.ts and no Romans 6 wiring in lib/bibleReaderStudyNotes.ts (chapter 6 was still falling through to the legacy romansOneToEightPersonalNotes.ts bulk file). Fetched real KJV text for Romans 6 (23 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Chunked into 6 sections (1-4 baptized into his death and newness of life, 5-7 crucified with him and freed from sin, 8-11 dead to sin and alive to God, 12-14 let not sin reign, 15-19 servants of righteousness, 20-23 wages of sin versus the gift of God). 26 cards total, about 1.13 cards per verse, consistent with the epistle argument-tracing density used for Romans 1-5. scripts/check_bible_note_style.py found one problem on the first automated pass: the banned filler word 'indeed' showed up inside a card title that had lifted the exact KJV phrase from verse 11 ('dead indeed unto sin'). Fixed by trimming that title to an exact contiguous substring ending before 'indeed' ('Reckon Ye Also Yourselves To Be Dead') rather than skipping a word in the middle of the lifted phrase. Second pass came back with 0 problems across all 26 cards. Manual section 13 eye check confirmed all four opening moves used appropriately, every key term (reign, members, instruments, reckon, dominion, wages, gift) defined in plain language, closes landing on meaning not mechanics, exactly four bullets per card each three to eight words with a distinct emoji and the last one using \ud83d\udcd6 or \u27a1\ufe0f, no hyphens/em dashes/semicolons/contractions, no duplicate titles. Parser check passed via getBibleReaderStudySections('romans', 6): 6/6 sections, verse ranges 1-4/5-7/8-11/12-14/15-19/20-23 with no gaps, 26 cards, text verbatim. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/romansSixSource.ts, preserveExactPhraseBodies romans range extended from chapters 1-5 to 1-6, new function applyPersonalRomansSixStudySections added and called right after applyPersonalRomansFiveStudySections(), overriding the legacy ROMANS_1_8_PERSONAL_SECTIONS bulk file for chapter 6 only, chapters 7-8 of that legacy file left untouched. Next forward-progress target is Romans 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-12T20:47:29Z"
+        },
+        {
+          "name": "target chapter determined: Romans 6 (normal forward progress, style-redo backlog empty)",
+          "at": "2026-10-12T20:47:29Z"
+        },
+        {
+          "name": "KJV text fetched (Romans 6, 23 verses, aruljohn mirror)",
+          "at": "2026-10-12T20:47:29Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-12T20:56:03Z"
+        },
+        {
+          "name": "source file written: lib/romansSixSource.ts (26 cards, 6 sections)",
+          "at": "2026-10-12T20:56:03Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 1 'indeed' filler-word problem in a title on first pass, 0 problems on second pass)",
+          "at": "2026-10-12T20:56:03Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalRomansSixStudySections)",
+          "at": "2026-10-12T20:56:54Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 26 cards, text verbatim)",
+          "at": "2026-10-12T20:59:37Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-12T20:59:37Z"
+        }
+      ]
     }
   ]
 }
