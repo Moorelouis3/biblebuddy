@@ -7802,3 +7802,7 @@ Next up: 1 Corinthians 11
 ## 2026-10-13T18:57:25Z (hourly chapter notes run)
 Chapter: 1 Corinthians 11 | Duration: 11 min | Sections: 9 | Cards: 36 | Status: pass
 Next up: 1 Corinthians 12
+
+## 2026-10-13T19:58:00Z (hourly chapter notes run)
+Chapter: 1 Corinthians 12 | Duration: 12 min | Sections: 7 | Cards: 37 | Status: pass
+Next up: 1 Corinthians 13
