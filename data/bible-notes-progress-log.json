@@ -62480,6 +62480,55 @@
           "at": "2026-10-12T22:57:22Z"
         }
       ]
+    },
+    {
+      "book": "Romans",
+      "chapter": 8,
+      "startedAt": "2026-10-12T23:47:00Z",
+      "finishedAt": "2026-10-12T23:58:09Z",
+      "durationMinutes": 11.15,
+      "sections": 7,
+      "cards": 47,
+      "verses": 39,
+      "notes": "New chapter, not a redo. Written to docs/bible-study-note-style.md (not the older Insight Cards 2x per verse density target). Themes: no condemnation, flesh vs Spirit, adoption, creation groaning, the Spirit's intercession, the golden chain, nothing separates us from God's love.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-12T23:47:14Z"
+        },
+        {
+          "name": "target chapter determined: Romans 8 (new chapter, redo backlog and priority queue both empty)",
+          "at": "2026-10-12T23:47:20Z"
+        },
+        {
+          "name": "KJV text fetched (Romans 8, 39 verses, raw.githubusercontent.com mirror)",
+          "at": "2026-10-12T23:47:40Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-12T23:49:00Z"
+        },
+        {
+          "name": "source file written: lib/romansEightSource.ts",
+          "at": "2026-10-12T23:55:30Z"
+        },
+        {
+          "name": "style checker clean (47 cards, 0 problems)",
+          "at": "2026-10-12T23:56:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call, preserveExactPhraseBodies range)",
+          "at": "2026-10-12T23:57:00Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 47 cards)",
+          "at": "2026-10-12T23:57:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-12T23:58:09Z"
+        }
+      ]
     }
   ]
 }
