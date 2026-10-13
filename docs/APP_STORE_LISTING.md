@@ -34,6 +34,30 @@ retyping at submission time.
 - Age rating: 13+
 - Pricing: free, and available in all 175 countries or regions
 
+## Verified by reading the code, 2026-10-13
+
+Three claims this pack depends on, checked rather than assumed:
+
+- **Ads really are off everywhere.** `components/AdSlot.tsx:74` is a
+  hard-coded `const ENABLE_ADS = false`, not an environment flag, so there is
+  no build in which an ad renders. This is what holds up both "no ads anywhere
+  in the app" in the review notes and **tracking: No** on all ten privacy data
+  types.
+- **Account deletion is reachable.** The 2026-10-04 audit found it stranded on
+  an unlinked `/settings` page, which is a Guideline 5.1.1(v) rejection. It
+  has since been fixed: `DashboardJourneyExperience.tsx:85` embeds the whole
+  settings page inside the dashboard, delete section included.
+- **Nothing on the server branches on the app's user agent.**
+  `isNativeUserAgent()` exists in `lib/nativeApp.ts` but has no callers, so
+  the app and the website are served identical HTML and no CDN cache can hand
+  one the other's page. Worth keeping that way.
+
+Safe areas are handled across the header, bottom nav and modals, and the
+viewport is already `viewportFit: "cover"`, so the notch is unlikely to be
+the problem the first screenshots show.
+
+---
+
 ## Still to enter, and why it was left
 
 | Item | Why it is not done |

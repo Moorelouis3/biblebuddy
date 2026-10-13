@@ -84,3 +84,92 @@ workflows:
         notify:
           success: true
           failure: true
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # The signed build: what actually puts Bible Buddy on a phone.
+  #
+  # Manual only - no `triggering` block - because it costs real minutes and
+  # burns a TestFlight build number every run.
+  #
+  # ONE SETUP STEP, and it is the only thing left that an agent cannot do,
+  # because it means handling a secret:
+  #
+  #   1. App Store Connect → Users and Access → Integrations →
+  #      App Store Connect API → generate a key with the App Manager role.
+  #      The .p8 downloads ONCE. Keep it.
+  #   2. Codemagic → Teams/Personal Account → Integrations →
+  #      Developer Portal → Connect. Paste the Issuer ID, the Key ID and the
+  #      .p8 contents. Name the integration exactly:  BibleBuddy ASC
+  #   3. Run this workflow.
+  #
+  # After that Codemagic creates the certificate and provisioning profile
+  # itself, so no certificates ever touch Louis's Windows machine.
+  ios-release:
+    name: Bible Buddy iOS — TestFlight
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+
+    integrations:
+      app_store_connect: BibleBuddy ASC
+
+    environment:
+      node: 22
+      xcode: latest
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: net.mybiblebuddy.app
+
+    scripts:
+      - name: Install dependencies
+        script: npm ci --no-audit --no-fund
+
+      - name: Generate the iOS project
+        script: npx cap add ios
+
+      - name: Sync web assets and plugins
+        script: npx cap sync ios
+
+      - name: Write the Info.plist keys Apple requires
+        script: bash scripts/ios-info-plist.sh
+
+      - name: Install the app icon
+        script: bash scripts/ios-app-icon.sh
+
+      - name: Set the version and build number
+        # Apple rejects a build whose number it has seen before, and the
+        # error arrives after the upload rather than before it. $BUILD_NUMBER
+        # is Codemagic's own counter, so it always goes up.
+        script: |
+          cd ios/App
+          agvtool new-marketing-version 1.0
+          agvtool new-version -all "$BUILD_NUMBER"
+
+      - name: Set up signing
+        # Pulls the certificate and profile Codemagic made from the App Store
+        # Connect key, and points the Xcode project at them.
+        script: xcode-project use-profiles
+
+      - name: Build the ipa
+        script: |
+          xcode-project build-ipa \
+            --project ios/App/App.xcodeproj \
+            --scheme App
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+
+    publishing:
+      app_store_connect:
+        auth: integration
+        # Straight to TestFlight, not to review. Review comes later and by
+        # hand, so a stray run can never submit the app by accident.
+        submit_to_testflight: true
+        submit_to_app_store: false
+
+      email:
+        recipients:
+          - moorelouis3@gmail.com
+        notify:
+          success: true
+          failure: true
