@@ -1,26 +1,34 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { signInWithProviderNatively } from "@/lib/nativeAuth";
+import { isNativeApp } from "@/lib/nativeApp";
+import { signInWithAppleNatively } from "@/lib/nativeAuth";
 
 /**
- * Sign in with Apple (Louis, 2026-10-11).
+ * Sign in with Apple (Louis, 2026-10-11, rewired 2026-10-13).
  *
  * App Review Guideline 4.8: an app that offers any third-party sign-in must
  * also offer Sign in with Apple or an equivalent privacy-preserving option.
  * Bible Buddy offers Google, so this is not optional - it is a flat
  * rejection without it.
  *
- * SWITCHED OFF until the Apple side exists. Turning it on needs a paid
- * Developer Program membership (end of October), a Services ID, a signing
- * key, and the Apple provider enabled in Supabase. A button that throws
- * "Unsupported provider" is worse than no button, so it renders nothing
- * until NEXT_PUBLIC_APPLE_SIGNIN_ENABLED is set to "true" in Vercel.
+ * Two different flows behind one button, and they are not interchangeable:
  *
- * The code is written now so that switching it on in Stage 2 is one
- * environment variable rather than a feature to build under deadline.
+ *   - In the iOS app: the native sheet, via signInWithAppleNatively(). Apple
+ *     hands back an identity token and Supabase takes it directly. No
+ *     redirect, no browser, and - the part that matters for maintenance - no
+ *     OAuth "Secret Key", which Apple expires every six months.
+ *   - On the web: the ordinary OAuth redirect, which *does* need that secret.
+ *     It is not configured, so this stays behind
+ *     NEXT_PUBLIC_APPLE_SIGNIN_ENABLED. A button that throws "Unsupported
+ *     provider" is worse than no button.
+ *
+ * Which is why the button renders inside the app whether or not that
+ * environment variable is set: the app's path needs nothing on the web side.
  */
 
+/** The web flow only. The app does not depend on this. */
 export function appleSignInEnabled(): boolean {
   return process.env.NEXT_PUBLIC_APPLE_SIGNIN_ENABLED === "true";
 }
@@ -34,12 +42,14 @@ function AppleLogo() {
 }
 
 type Props = {
-  /** Where to land after Apple sends them back. */
+  /** Where to land after Apple sends them back. Web flow only. */
   redirectTo?: string;
   disabled?: boolean;
   onError?: (message: string) => void;
-  /** Called before redirecting, so the page can record terms acceptance. */
+  /** Called before signing in, so the page can record terms acceptance. */
   onBeforeSignIn?: () => void;
+  /** Called when the native sheet succeeds - there is no redirect to carry it. */
+  onSignedIn?: () => void;
   className?: string;
 };
 
@@ -48,19 +58,33 @@ export default function SignInWithAppleButton({
   disabled,
   onError,
   onBeforeSignIn,
+  onSignedIn,
   className,
 }: Props) {
-  if (!appleSignInEnabled()) return null;
+  // isNativeApp() reads the user agent, which does not exist during the
+  // server render. Deciding in an effect keeps the first paint identical on
+  // both sides rather than hydrating into a mismatch.
+  const [visible, setVisible] = useState(appleSignInEnabled());
+
+  useEffect(() => {
+    if (appleSignInEnabled() || isNativeApp()) setVisible(true);
+  }, []);
+
+  if (!visible) return null;
 
   async function signIn() {
     onBeforeSignIn?.();
-    // Inside the app this goes through an in-app Safari sheet and a deep link,
-    // because a plain redirect escapes to the system browser and the session
-    // never comes back. Returns false on the web, where the redirect is fine.
     try {
-      if (await signInWithProviderNatively("apple")) return;
+      if (await signInWithAppleNatively()) {
+        onSignedIn?.();
+        return;
+      }
     } catch (nativeError) {
-      onError?.(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");
+      // A cancelled sheet throws too. Say nothing rather than show an error
+      // for something the person did on purpose.
+      const message =
+        nativeError instanceof Error ? nativeError.message : "Could not start sign-in.";
+      if (!/cancel/i.test(message)) onError?.(message);
       return;
     }
     const { error } = await supabase.auth.signInWithOAuth({

@@ -221,11 +221,12 @@ export default function LoginPage() {
             <span>Continue with Google</span>
           </button>
           {/* Guideline 4.8: offering Google means Apple must be offered too.
-              Renders nothing until the Apple side is configured. */}
+              Native sheet inside the app; on the web it waits for the flag. */}
           <SignInWithAppleButton
             disabled={loading}
             redirectTo={typeof window !== "undefined" ? `${window.location.origin}${nextPath()}` : undefined}
             onBeforeSignIn={() => markTermsAcceptancePending("apple_login")}
+            onSignedIn={() => router.replace(nextPath())}
             onError={(message) => setError(message)}
           />
           <p className="mt-2 text-center text-[11px] font-semibold leading-5 text-[#667085]">By continuing you agree to our <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline">Terms</a>, <a href="/privacy" target="_blank" rel="noopener noreferrer" className="underline">Privacy Policy</a> and <a href="/community-guidelines" target="_blank" rel="noopener noreferrer" className="underline">Community Guidelines</a>.</p>

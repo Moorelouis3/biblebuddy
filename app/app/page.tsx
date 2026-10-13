@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import SignInWithAppleButton, { appleSignInEnabled } from "@/components/SignInWithAppleButton";
+import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending } from "@/lib/termsAcceptance";
 import { signInWithProviderNatively, startNativeAuthListener } from "@/lib/nativeAuth";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
@@ -127,14 +127,15 @@ export default function AppEntryPage() {
           </p>
         ) : null}
 
-        {/* Apple first, and visually at least as prominent as Google. Renders
-            nothing until NEXT_PUBLIC_APPLE_SIGNIN_ENABLED is true, so there is
-            never a button that errors with "Unsupported provider". */}
+        {/* Apple first, and visually at least as prominent as Google -
+            Guideline 4.8 asks for both. Inside the app this is the native
+            sheet, so it does not wait on the web environment flag. */}
         <SignInWithAppleButton
           redirectTo={redirectTo}
           disabled={busy}
           onError={setError}
           onBeforeSignIn={() => markTermsAcceptancePending("apple_login")}
+          onSignedIn={() => router.replace("/dashboard")}
           className="flex w-full items-center justify-center gap-3 rounded-2xl bg-black px-4 py-4 text-[15px] font-black text-white transition disabled:opacity-60"
         />
 
@@ -142,7 +143,7 @@ export default function AppEntryPage() {
           type="button"
           onClick={() => void continueWithGoogle()}
           disabled={busy}
-          className={`${appleSignInEnabled() ? "mt-3" : ""} flex w-full items-center justify-center gap-3 rounded-2xl border border-[#dfe4ec] bg-white px-4 py-4 text-[15px] font-black text-[#1f2937] transition disabled:opacity-60`}
+          className={`mt-3 flex w-full items-center justify-center gap-3 rounded-2xl border border-[#dfe4ec] bg-white px-4 py-4 text-[15px] font-black text-[#1f2937] transition disabled:opacity-60`}
         >
           <GoogleLogo />
           <span>Continue with Google</span>

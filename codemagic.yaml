@@ -53,6 +53,11 @@ workflows:
       - name: Write the Info.plist keys Apple requires
         script: bash scripts/ios-info-plist.sh
 
+      - name: Give the app the Sign in with Apple entitlement
+        # Guideline 4.8 - mandatory because Google sign-in is offered. iOS will
+        # not present the Apple sheet without this, whatever Supabase says.
+        script: bash scripts/ios-entitlements.sh
+
       - name: Install the app icon
         # Otherwise the app wears Capacitor's grey placeholder everywhere -
         # home screen, TestFlight, and the store listing.
@@ -147,6 +152,11 @@ workflows:
 
       - name: Write the Info.plist keys Apple requires
         script: bash scripts/ios-info-plist.sh
+
+      - name: Give the app the Sign in with Apple entitlement
+        # Guideline 4.8 - mandatory because Google sign-in is offered. iOS will
+        # not present the Apple sheet without this, whatever Supabase says.
+        script: bash scripts/ios-entitlements.sh
 
       - name: Install the app icon
         script: bash scripts/ios-app-icon.sh

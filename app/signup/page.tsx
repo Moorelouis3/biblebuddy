@@ -390,11 +390,12 @@ export default function SignupPage() {
               <span>Continue with Google</span>
             </button>
           {/* Guideline 4.8: offering Google means Apple must be offered too.
-              Renders nothing until the Apple side is configured. */}
+              Native sheet inside the app; on the web it waits for the flag. */}
           <SignInWithAppleButton
             disabled={loading}
             redirectTo={typeof window !== "undefined" ? `${window.location.origin}${signupNextPath()}` : undefined}
             onBeforeSignIn={() => markTermsAcceptancePending("apple_signup")}
+            onSignedIn={() => router.replace(signupNextPath())}
             onError={(message) => setError(message)}
           />
             <p className="text-center text-[11px] font-semibold leading-5 text-[#526075]">
