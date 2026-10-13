@@ -11,6 +11,52 @@
   color: #ffffff !important;
 }
 
+/* ===========================================================================
+   Safe area, for the iOS/Android shell only (Louis, 2026-10-13)
+   ===========================================================================
+   The webview draws edge to edge - capacitor.config.ts sets contentInset
+   "never" and the viewport meta carries viewport-fit=cover - so the top of
+   the page is underneath the clock, the battery and TestFlight's own back
+   pill. Paying for that per screen did not work: the app shell's header did
+   it, and every page that renders without the shell did not. Blog posts,
+   articles, onboarding and anything with shouldHideShellChrome all started at
+   y=0.
+
+   So the document body pays it, once, for everything in normal flow. Rules
+   below then take the inset OFF the handful of elements that were already
+   paying it themselves, because the thing this has to avoid above all is
+   charging twice.
+
+   Fixed and sticky elements are not in flow and body padding does not reach
+   them, so they keep their own inset - see the two blocks at the end.
+
+   .bb-native is set by components/NativePlatformClass.tsx. It is deliberately
+   not a media query: env(safe-area-inset-top) is non-zero in Safari on a
+   notched phone too, and the website must keep its normal layout there.
+   =========================================================================== */
+
+html.bb-native body {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Already paid for by the body now. */
+html.bb-native .bb-safe-top-header {
+  padding-top: 0;
+}
+
+/* Full-screen overlays are positioned against the viewport, not the body, so
+   they start underneath the status bar however much padding the body has.
+   Keeping their contents - a close button, usually - below it. */
+html.bb-native [data-bb-overlay],
+html.bb-native [role="dialog"] {
+  padding-top: max(env(safe-area-inset-top, 0px), 0px);
+}
+
+/* Anything the app pins to the top of the screen pays its own way. */
+html.bb-native [data-bb-fixed-top] {
+  top: env(safe-area-inset-top, 0px);
+}
+
 .bb-safe-top-header {
   padding-top: env(safe-area-inset-top, 0px);
 }

@@ -8,6 +8,7 @@ import { SmokeDeleteEffect } from "@/components/SmokeDeleteEffect";
 import TrafficSourceCapture from "@/components/TrafficSourceCapture";
 import AdSenseScript from "@/components/AdSenseScript";
 import NativeExternalLinks from "@/components/NativeExternalLinks";
+import NativePlatformClass from "@/components/NativePlatformClass";
 import { PostSuccessEffect } from "@/components/PostSuccessEffect";
 import { AppToast } from "@/components/AppToast";
 import { PointsPop } from "@/components/PointsPop";
@@ -224,6 +225,7 @@ export default function RootLayout({
         <TrafficSourceCapture />
         {/* AdSense loads on the web only; native apps are ad-free. */}
         <AdSenseScript />
+        <NativePlatformClass />
         <NativeExternalLinks />
         <SmokeDeleteEffect />
         <PostSuccessEffect />

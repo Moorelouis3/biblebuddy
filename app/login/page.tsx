@@ -1,7 +1,7 @@
 // app/login/page.tsx
 "use client";
 
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState, useEffect, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
@@ -30,6 +30,16 @@ function nextPath() {
 
 export default function LoginPage() {
   const router = useRouter();
+  // Inside the app this page IS the "Continue with email" screen: Apple and
+  // Google were already offered on the welcome screen one tap ago, and showing
+  // them again made the email option look like an afterthought. The user agent
+  // does not exist during the server render, so the server snapshot is false
+  // and the first paint matches on both sides.
+  const nativeApp = useSyncExternalStore(
+    () => () => {},
+    () => isNativeApp(),
+    () => false,
+  );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -197,7 +207,7 @@ export default function LoginPage() {
       `}</style>
 
       {/* Same reason as the landing page: this renders outside the app shell. */}
-      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 pb-5 pt-[calc(1.25rem+env(safe-area-inset-top,0px))] sm:px-8">
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 pb-5 pt-5 sm:px-8">
         <BrandHomeLink className="flex items-center gap-3 text-[#102D4D]">
           <svg className="h-8 w-8 shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
@@ -211,9 +221,9 @@ export default function LoginPage() {
       <main className="flex min-h-[calc(100vh-88px)] items-center justify-center px-5 pb-12 pt-6 sm:px-8">
         <div className="w-full max-w-md rounded-[24px] border border-[#EFE6D6] bg-white/85 px-6 py-8 shadow-[0_24px_60px_rgba(16,45,77,0.07)] sm:px-7">
           <div className="text-center">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#8A9AAE]">Welcome back</p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#8A9AAE]">{nativeApp ? "Email" : "Welcome back"}</p>
             <h1 className="bb-login-title bb-login-serif mt-3 text-4xl font-black leading-tight">
-              Log in to Bible Buddy
+              {nativeApp ? "Sign in or create an account" : "Log in to Bible Buddy"}
             </h1>
             <div className="mx-auto mt-5 flex max-w-[210px] items-center justify-center gap-3 text-[#A9B7C6]">
               <span className="h-px flex-1 bg-[#A9B7C6]/70" />
@@ -223,10 +233,14 @@ export default function LoginPage() {
               <span className="h-px flex-1 bg-[#A9B7C6]/70" />
             </div>
             <p className="mx-auto mt-4 max-w-sm text-sm font-semibold leading-6 text-[#596575]">
-              Pick up your Bible study journey right where you left off.
+              {nativeApp
+                ? "Use an email address you already have. Creating a Bible Buddy account does not create an email address."
+                : "Pick up your Bible study journey right where you left off."}
             </p>
           </div>
 
+          {!nativeApp ? (
+          <>
           <button
             type="button"
             onClick={() => void handleOAuthSignIn("google")}
@@ -255,6 +269,8 @@ export default function LoginPage() {
             or
             <span className="h-px flex-1 bg-[#E7DFCE]" />
           </div>
+          </>
+          ) : <div className="mt-6" />}
 
           <form onSubmit={handleSubmit} className="grid gap-3">
             <div>
@@ -310,15 +326,18 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <p className="mt-5 text-center text-sm font-semibold text-[#596575]">
-            Need an account?{" "}
+          <div className="mt-5">
             <Link
               href={`/signup${typeof window !== "undefined" ? window.location.search : ""}`}
-              className="font-black text-[#102D4D] underline"
+              className="flex min-h-[54px] w-full items-center justify-center rounded-[14px] border border-[#102D4D] px-5 text-[15px] font-black text-[#102D4D] transition active:scale-[0.99]"
             >
-              Sign up
+              Create an account
             </Link>
-          </p>
+            <p className="mt-2 text-center text-xs font-semibold leading-5 text-[#596575]">
+              New to Bible Buddy? Create an account with an email address you
+              already own - this does not create a new email address.
+            </p>
+          </div>
 
           <p className="mt-4 text-center text-xs font-semibold text-[#596575]">
             <Link href="/privacy" className="hover:underline">Privacy</Link>

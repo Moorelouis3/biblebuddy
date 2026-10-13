@@ -371,7 +371,7 @@ export default function SignupPage() {
         html, body { background-color: #FAF7EF !important; background-image: none !important; }
       `}</style>
       {/* Same reason as the landing page: this renders outside the app shell. */}
-      <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-4 pb-4 pt-[calc(1rem+env(safe-area-inset-top,0px))] md:pb-6 md:pt-[calc(1.5rem+env(safe-area-inset-top,0px))]">
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-4 pb-4 pt-4 md:pb-6 md:pt-6">
         <BrandHomeLink className="flex items-center gap-3">
           <Image
             src="/TherealiconforBB.png"

@@ -58,6 +58,9 @@ const ATTEMPT_TIMEOUT_MS = 90_000;
  */
 const DISMISS_GRACE_MS = 1_800;
 
+/** How long to give the in-app sheet to show a page before trying Safari. */
+const SHEET_FALLBACK_MS = 4_000;
+
 type Provider = "google" | "apple";
 
 export type NativeSignInResult =
@@ -416,19 +419,59 @@ export async function signInWithProviderNatively(
     };
   });
 
+  // Nothing here is awaited in line. Browser.open resolves in UIKit's present
+  // completion, and if UIKit never presents - the bridge's view controller is
+  // already presenting something, say - that completion never runs and the
+  // promise never settles. Awaiting it meant the timeout below fired into the
+  // void while the caller sat on the await, which is the shape of the endless
+  // spinner. The attempt's own promise is the only clock now.
+  void openSignInPage(data.url);
+  return settled;
+}
+
+/**
+ * Get the provider's page in front of the person, by whichever route works.
+ *
+ * Supabase is not at fault here: its authorize endpoint answers 302 to
+ * accounts.google.com with the right client id and callback, checked by hand
+ * on 2026-10-13. The whole failure is about getting a browser to open that URL
+ * on the device.
+ *
+ * So there is a second route now. If nothing has loaded in the in-app sheet
+ * after a few seconds, hand the URL to the system browser. That is what build
+ * 5 did by accident, and it failed then for a reason that no longer holds -
+ * the session landed in Safari and the app never heard about it. The custom
+ * scheme is registered now, so Safari finishes the sign-in and the deep link
+ * brings it back to this webview, whose storage holds the PKCE verifier.
+ */
+async function openSignInPage(url: string) {
+  let loaded = false;
+  let pageLoaded: { remove: () => void } | null = null;
+  const Browser = await browserPlugin();
+
   try {
-    const Browser = await browserPlugin();
-    // No presentationStyle. "popover" is an iPad shape, and on a phone it
-    // leaves the sheet's presentation up to UIKit's adaptation rules rather
-    // than simply filling the screen - which is all an OAuth page should do.
-    await Browser.open({ url: data.url });
-  } catch (openError) {
-    finish({
-      ok: false,
-      reason: "error",
-      message: describe(openError) || "Could not open the sign-in page.",
+    pageLoaded = await Browser.addListener("browserPageLoaded", () => {
+      loaded = true;
     });
+  } catch {
+    // No listener is not a reason to stop; the fallback still runs.
   }
 
-  return settled;
+  // No presentationStyle. "popover" is an iPad shape, and on a phone it leaves
+  // the sheet's presentation to UIKit's adaptation rules rather than simply
+  // filling the screen, which is all an OAuth page should do.
+  void Browser.open({ url }).catch(() => {
+    // Swallowed deliberately - the fallback below is the real handler.
+  });
+
+  window.setTimeout(() => {
+    pageLoaded?.remove();
+    // Still nothing on screen, and the attempt is still live.
+    if (loaded || !attempt) return;
+    try {
+      window.open(url, "_system");
+    } catch {
+      window.location.href = url;
+    }
+  }, SHEET_FALLBACK_MS);
 }

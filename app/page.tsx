@@ -1122,7 +1122,7 @@ export default function LandingPage() {
               AppShell's HIDDEN_ROUTES, so bb-safe-top-header never runs here,
               and the iOS shell draws under a transparent status bar. Without
               this the logo and nav sit on top of the clock and battery. */}
-          <header className="relative z-20 flex w-full items-center justify-between gap-6 bg-[#fffdf8] px-5 pb-4 pt-[calc(1.5rem+env(safe-area-inset-top,0px))] sm:px-8 sm:pb-5 sm:pt-[calc(1.25rem+env(safe-area-inset-top,0px))] lg:px-10">
+          <header className="relative z-20 flex w-full items-center justify-between gap-6 bg-[#fffdf8] px-5 pb-4 pt-6 sm:px-8 sm:pb-5 sm:pt-5 lg:px-10">
             <BibleBuddyMark />
             <nav className="hidden items-center gap-10 text-sm font-bold text-[#07162f] md:flex">
               <Link href="/how-it-works" className="transition hover:text-[#135397]">How It Works</Link>
@@ -1972,7 +1972,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             HIDDEN_ROUTES so bb-safe-top-header never runs here, and the iOS
             shell draws under a transparent status bar, which is why the logo
             and nav sat on top of the clock and battery on build 5. */}
-        <header className="flex items-center justify-between gap-3 pb-4 pt-[calc(1rem+env(safe-area-inset-top,0px))]">
+        <header className="flex items-center justify-between gap-3 pb-4 pt-4">
           <BibleBuddyMark />
           <nav className="flex items-center gap-5 text-sm font-black text-[#07162f] sm:gap-7">
             <a href="#about" className="transition hover:text-[#0056FD]">About</a>

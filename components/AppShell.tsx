@@ -3703,7 +3703,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             ? `min-h-screen bg-[var(--bb-background,#eef4fb)] ${shouldHideShellChrome ? "" : "pt-2 pb-2"} ${
                 // Reserve the bar's height so it never covers the last thing
                 // on a page.
-                showBottomNav ? "pb-[76px]" : ""
+                showBottomNav ? "pb-[calc(92px+env(safe-area-inset-bottom,0px))]" : ""
               }`
             : ""
         }

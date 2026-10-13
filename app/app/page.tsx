@@ -122,7 +122,8 @@ export default function AppEntryPage() {
         // screen renders outside the app shell and under a transparent status
         // bar. The phone draws the clock and the home indicator; we only keep
         // out of their way.
-        paddingTop: "env(safe-area-inset-top, 0px)",
+        // The top inset is paid once by the body - see globals.css.
+        paddingTop: "8px",
         paddingBottom: "calc(env(safe-area-inset-bottom, 0px) + 18px)",
         paddingLeft: "env(safe-area-inset-left, 0px)",
         paddingRight: "env(safe-area-inset-right, 0px)",
@@ -264,8 +265,10 @@ export default function AppEntryPage() {
             )}
           </button>
 
+          {/* The email screen, not the signup form: it offers signing in,
+              creating an account and resetting a password in one place. */}
           <Link
-            href="/signup"
+            href="/login"
             aria-disabled={busy || undefined}
             tabIndex={busy ? -1 : undefined}
             onClick={(event) => {
@@ -279,13 +282,6 @@ export default function AppEntryPage() {
             <EnvelopeIcon />
             <span>Continue with email</span>
           </Link>
-
-          <p className="mt-5 text-center text-[14.5px]" style={{ color: SLATE }}>
-            Already have an account?{" "}
-            <Link href="/login" className="font-bold underline" style={{ color: NAVY }}>
-              Sign in
-            </Link>
-          </p>
 
           <p className="mt-3.5 text-center text-[12px] leading-relaxed" style={{ color: SLATE }}>
             By continuing, you agree to our{" "}
