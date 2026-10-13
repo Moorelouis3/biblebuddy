@@ -120,11 +120,20 @@ workflows:
       xcode: latest
       vars:
         BUNDLE_ID: "net.mybiblebuddy.app"
-      # No ios_signing block on purpose. It only FETCHES signing files, and on
-      # a brand new Apple account there is nothing to fetch - build #1 of this
-      # workflow died before running a single step with "No matching profiles
-      # found for bundle identifier net.mybiblebuddy.app". The signing step
-      # below creates them instead.
+      # This needs a certificate to exist in the team's code signing
+      # identities, and on 2026-10-13 it did not, which cost two builds:
+      #   #1 died before any step ran - "No matching profiles found".
+      #   #2 got all the way to the archive and failed with "App requires a
+      #      provisioning profile", because the real problem was upstream:
+      #      "Cannot save Signing Certificates without certificate private
+      #      key". Apple had issued a certificate but nothing held its key.
+      # Fixed by generating one in Codemagic (Settings > Code signing
+      # identities > Generate certificate, "BibleBuddy Distribution"), which
+      # keeps the private key. Codemagic installs it into the build keychain
+      # and creates the missing provisioning profile from the API key below.
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: net.mybiblebuddy.app
 
     scripts:
       - name: Install dependencies
@@ -151,19 +160,11 @@ workflows:
           agvtool new-marketing-version 1.0
           agvtool new-version -all "$BUILD_NUMBER"
 
-      - name: Create and install the signing files
-        # --create is the important flag: it makes the distribution
-        # certificate and the App Store provisioning profile if the account
-        # does not have them yet, which is the case the first time anyone
-        # signs this app. Afterwards it just reuses what it finds.
-        #
-        # The App Store Connect key reaches this CLI through the integrations
-        # block at the top of the workflow; nothing secret appears here.
-        script: |
-          keychain initialize
-          app-store-connect fetch-signing-files "$BUNDLE_ID"             --type IOS_APP_STORE             --create
-          keychain add-certificates
-          xcode-project use-profiles
+      - name: Point Xcode at the signing files
+        # Codemagic has already put the certificate and profile on the
+        # machine by this point; this writes them into the Xcode project,
+        # which is generated and therefore starts with no signing at all.
+        script: xcode-project use-profiles
 
       - name: Build the ipa
         script: |
