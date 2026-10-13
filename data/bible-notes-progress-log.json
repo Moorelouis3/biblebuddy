@@ -62529,6 +62529,55 @@
           "at": "2026-10-12T23:58:09Z"
         }
       ]
+    },
+    {
+      "book": "Romans",
+      "chapter": 9,
+      "startedAt": "2026-10-13T00:46:20Z",
+      "finishedAt": "2026-10-13T00:58:21Z",
+      "durationMinutes": 12.02,
+      "sections": 6,
+      "cards": 43,
+      "verses": 33,
+      "notes": "New chapter, not a redo. Written to docs/bible-study-note-style.md. Themes: Paul's grief for Israel, the two senses of \"Israel,\" children of the flesh vs children of promise, Jacob and Esau and election before birth, the potter and the clay, vessels of wrath and mercy, Hosea and Isaiah quotes on the remnant and the Gentiles, the stumblingstone.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-13T00:47:00Z"
+        },
+        {
+          "name": "target chapter determined: Romans 9 (new chapter, redo backlog and priority queue both empty)",
+          "at": "2026-10-13T00:49:44Z"
+        },
+        {
+          "name": "KJV text fetched (Romans 9, 33 verses, raw.githubusercontent.com mirror)",
+          "at": "2026-10-13T00:50:15Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-13T00:52:00Z"
+        },
+        {
+          "name": "source file written: lib/romansNineSource.ts",
+          "at": "2026-10-13T00:56:00Z"
+        },
+        {
+          "name": "style checker clean (43 cards, 0 problems)",
+          "at": "2026-10-13T00:57:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call, preserveExactPhraseBodies range)",
+          "at": "2026-10-13T00:57:40Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 43 cards)",
+          "at": "2026-10-13T00:57:55Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-13T00:58:21Z"
+        }
+      ]
     }
   ]
 }
