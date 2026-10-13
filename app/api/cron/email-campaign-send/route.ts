@@ -4,6 +4,7 @@ import { sendCampaign } from "@/lib/email/sendCampaign";
 import { sesSendingEnabled } from "@/lib/email/sesSender";
 import { fetchProgressForBatch, resolveProgressWindow } from "@/lib/email/newsletterProgress";
 import { renderProgressSectionHtml, renderProgressSectionText } from "@/lib/email/progressSection";
+import { FRIDAY_LESSONS } from "@/lib/email/fridayTeachingSeries";
 
 export const runtime = "nodejs";
 export const maxDuration = 300;
@@ -73,6 +74,28 @@ export async function GET(request: NextRequest) {
   // the SES rate limit and neither would respect it.
   // Anything scheduled for the future is left alone. Ordered by scheduled_for
   // so a campaign with a date goes before one without, and nulls last.
+  //
+  // CAMPAIGNS OWNED BY ANOTHER SENDER ARE EXCLUDED BY ID (2026-10-13).
+  //
+  // A campaign row is not automatically this cron's to send. Two other senders
+  // own rows in this table, and both would be a disaster here:
+  //
+  //   - the welcome email, posted one person at a time by
+  //     /api/cron/welcome-email. It is kept out by kind='transactional'.
+  //   - the twelve Friday teaching lessons, dripped one per subscriber per week
+  //     by /api/cron/friday-teaching. Those are genuinely marketing and carry
+  //     no send date, because the Friday cron decides who is due from each
+  //     person's own position in the series rather than from a column. To this
+  //     query that looks exactly like "armed, undated, send it now" - so
+  //     arming the series would have posted lesson 1 to the whole list on the
+  //     spot, instead of lesson by lesson on Fridays, and burned the entire
+  //     twelve-week course in a few runs.
+  //
+  // Excluding them by id rather than by a far-future date: a date is a value
+  // somebody can clear by accident from the dashboard, whereas this cannot be
+  // undone by editing a row.
+  const foreignIds = FRIDAY_LESSONS.map((lesson) => lesson.id);
+
   const { data, error } = await db
     .from("email_campaigns")
     .select("campaign_id, subject, html, text, tag, rate_per_second, max_per_run, started_at, created_at, scheduled_for, last_result")
@@ -81,6 +104,7 @@ export async function GET(request: NextRequest) {
     // batch sender ever picked it up it would post it to the whole list.
     .eq("kind", "marketing")
     .eq("status", "sending")
+    .not("campaign_id", "in", `(${foreignIds.join(",")})`)
     .or(`scheduled_for.is.null,scheduled_for.lte.${new Date().toISOString()}`)
     .order("scheduled_for", { ascending: true, nullsFirst: false })
     .order("created_at", { ascending: true })
