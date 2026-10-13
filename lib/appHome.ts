@@ -1,7 +1,6 @@
 "use client";
 
 import { isNativeApp } from "./nativeApp";
-import { hasCachedSupabaseSession } from "./authBoot";
 
 /**
  * Where "home" is, which is not the same place on the website and in the app
@@ -29,22 +28,30 @@ export const PUBLIC_LANDING_PATH = "/?landing=1";
 /**
  * The destination for a wordmark or Home control.
  *
- * `signedIn` is read from the cached Supabase token rather than awaited, so
- * this can be used while rendering. It is only ever used to choose between two
- * in-app destinations, and both of them handle the other case themselves -
- * /app sends a signed-in person to the dashboard, the dashboard sends a signed
- * out one to login - so a stale answer costs a redirect, never a dead end.
+ * In the app this is ALWAYS the welcome screen, never the dashboard.
+ *
+ * It did briefly pick between the two by reading the cached Supabase token,
+ * and that was wrong twice over. A leftover sb-*-auth-token in storage counts
+ * as "signed in" to that check even when the session behind it is long dead,
+ * so tapping the wordmark while logged out threw people at the dashboard -
+ * which bounces them to login, but only after showing them a flash of a
+ * screen they have no business seeing. It reads as a hole in the app whether
+ * or not it is one.
+ *
+ * /app is the one destination that is right in every case and guesses about
+ * nothing: it asks Supabase for a real session and replaces into the
+ * dashboard itself when there is one.
  */
 export function homeDestination(): string {
   if (!isNativeApp()) return PUBLIC_HOME_PATH;
-  return hasCachedSupabaseSession() ? APP_HOME_PATH : APP_WELCOME_PATH;
+  return APP_WELCOME_PATH;
 }
 
 /** The same decision for the explicit "Home" button, which on the web wants
  *  the landing page specifically rather than whatever "/" resolves to. */
 export function homeButtonDestination(): string {
   if (!isNativeApp()) return PUBLIC_LANDING_PATH;
-  return hasCachedSupabaseSession() ? APP_HOME_PATH : APP_WELCOME_PATH;
+  return APP_WELCOME_PATH;
 }
 
 /**
