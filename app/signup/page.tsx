@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
+import BrandHomeLink from "@/components/BrandHomeLink";
 import { supabase } from "../../lib/supabaseClient";
 import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending, recordTermsAcceptance } from "../../lib/termsAcceptance";
@@ -333,7 +334,18 @@ export default function SignupPage() {
     // In the app: in-app Safari sheet plus a deep link back. On the web this
     // returns false and the ordinary redirect below runs.
     try {
-      if (await signInWithProviderNatively("google")) return;
+      const native = await signInWithProviderNatively("google", () => router.replace(signupNextPath()));
+      if (native !== false) {
+        if (native.ok) {
+          router.replace(signupNextPath());
+          return;
+        }
+        setLoading(false);
+        if (native.reason !== "cancelled") {
+          setError(native.message ?? "Sign-in did not complete. Please try again.");
+        }
+        return;
+      }
     } catch (nativeError) {
       setLoading(false);
       setError(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");
@@ -351,11 +363,16 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="bb-auth-public flex min-h-screen flex-col bg-[#fffdf8] text-[#07162f]">
+    <div className="bb-auth-public flex min-h-screen flex-col bg-[#FAF7EF] text-[#102D4D]">
       <LegalPageThemeReset />
+      <style>{`
+        /* Cream to the edges, so rubber-banding does not reveal the theme
+           system's own background. Matches the app welcome screen. */
+        html, body { background-color: #FAF7EF !important; background-image: none !important; }
+      `}</style>
       {/* Same reason as the landing page: this renders outside the app shell. */}
       <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-4 pb-4 pt-[calc(1rem+env(safe-area-inset-top,0px))] md:pb-6 md:pt-[calc(1.5rem+env(safe-area-inset-top,0px))]">
-        <Link href="/" className="flex items-center gap-3">
+        <BrandHomeLink className="flex items-center gap-3">
           <Image
             src="/TherealiconforBB.png"
             alt="Bible Buddy Logo"
@@ -366,12 +383,12 @@ export default function SignupPage() {
           <div className="text-lg font-bold tracking-tight text-gray-900 md:text-xl">
             Bible Buddy
           </div>
-        </Link>
+        </BrandHomeLink>
         <PublicHomeButton className="fixed right-5 top-5 z-50 rounded-full border border-[#E5E7EB] bg-white px-5 py-2.5 text-sm font-black text-[#111827] shadow-[0_10px_24px_rgba(17,24,39,0.06)] transition hover:-translate-y-0.5 sm:right-8" />
       </header>
 
       <div className="flex flex-1 items-center justify-center px-4 py-10">
-        <div className="w-full max-w-md rounded-2xl border border-[#eadfcd] bg-white/88 px-6 py-8 shadow-[0_24px_70px_rgba(7,22,47,0.08)]">
+        <div className="w-full max-w-md rounded-2xl border border-[#EFE6D6] bg-white/85 px-6 py-8 shadow-[0_24px_70px_rgba(7,22,47,0.08)]">
           <h1 className="mb-2 text-center text-3xl font-black text-[#07162f]">
             Start your Bible journey
           </h1>
@@ -384,7 +401,7 @@ export default function SignupPage() {
               type="button"
               onClick={() => void handleOAuthSignIn("google")}
               disabled={loading}
-              className="flex w-full items-center justify-center gap-3 rounded-xl border border-[#d9e3ee] bg-white px-4 py-3 text-sm font-black text-[#07162f] transition hover:bg-[#f8fbff] disabled:opacity-60"
+              className="flex w-full items-center justify-center gap-3 min-h-[54px] rounded-[14px] border border-[#DCE1E8] bg-white px-4 text-[15px] font-black text-[#1F2937] transition active:scale-[0.99] disabled:opacity-60"
             >
               <GoogleLogo />
               <span>Continue with Google</span>
@@ -408,9 +425,9 @@ export default function SignupPage() {
           </div>
 
           <div className="my-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-400">
-            <span className="h-px flex-1 bg-[#eadfcd]" />
+            <span className="h-px flex-1 bg-[#E7DFCE]" />
             or
-            <span className="h-px flex-1 bg-[#eadfcd]" />
+            <span className="h-px flex-1 bg-[#E7DFCE]" />
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -423,7 +440,7 @@ export default function SignupPage() {
                 required
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="w-full rounded-xl border border-[#d9e3ee] bg-white px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]"
+                className="w-full rounded-[14px] border border-[#E3DACA] bg-white px-4 py-3.5 text-[15px] text-[#102D4D] outline-none transition focus:border-[#102D4D]"
                 placeholder="you@example.com"
               />
             </div>
@@ -438,7 +455,7 @@ export default function SignupPage() {
                 minLength={6}
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
-                className="w-full rounded-xl border border-[#d9e3ee] bg-white px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#7BAFD4]"
+                className="w-full rounded-[14px] border border-[#E3DACA] bg-white px-4 py-3.5 text-[15px] text-[#102D4D] outline-none transition focus:border-[#102D4D]"
                 placeholder="Create a password"
               />
             </div>
@@ -472,7 +489,7 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={loading || !agreedToTerms}
-              className="mt-2 w-full rounded-xl bg-[#135397] py-3 text-sm font-black text-white shadow-[0_16px_32px_rgba(19,83,151,0.18)] hover:bg-[#0f4279] disabled:opacity-60"
+              className="mt-2 flex min-h-[54px] w-full items-center justify-center rounded-[14px] bg-[#102D4D] text-[15px] font-black text-white transition active:scale-[0.99] disabled:opacity-60"
             >
               {loading ? "Creating account..." : "Create account"}
             </button>

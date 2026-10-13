@@ -88,16 +88,23 @@ export default function SignInWithAppleButton({
     onBeforeSignIn?.();
     onBusyChange?.(true);
     try {
-      if (await signInWithAppleNatively()) {
-        onSignedIn?.();
+      const native = await signInWithAppleNatively();
+      if (native !== false) {
+        if (native.ok) {
+          onSignedIn?.();
+          return;
+        }
+        // Cancelling the sheet is a choice, not a failure: hand the controls
+        // back without an error. Anything else gets said out loud - including
+        // the one about the installed build being too old to do this at all.
+        onBusyChange?.(false);
+        if (native.reason !== "cancelled") {
+          onError?.(native.message ?? "Sign-in did not complete. Please try again.");
+        }
         return;
       }
     } catch (nativeError) {
-      // A cancelled sheet throws too. Say nothing rather than show an error
-      // for something the person did on purpose.
-      const message =
-        nativeError instanceof Error ? nativeError.message : "Could not start sign-in.";
-      if (!/cancel/i.test(message)) onError?.(message);
+      onError?.(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");
       onBusyChange?.(false);
       return;
     }

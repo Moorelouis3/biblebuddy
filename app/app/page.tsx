@@ -75,7 +75,20 @@ export default function AppEntryPage() {
     setError(null);
     markTermsAcceptancePending("google_login");
     try {
-      if (await signInWithProviderNatively("google")) return;
+      const native = await signInWithProviderNatively("google", () => router.replace("/dashboard"));
+      if (native !== false) {
+        if (native.ok) {
+          router.replace("/dashboard");
+          return;
+        }
+        // Give the buttons back whatever happened. Cancelling says nothing; a
+        // timeout or a refusal from the provider says what to do next.
+        setPending(null);
+        if (native.reason !== "cancelled") {
+          setError(native.message ?? "Sign-in did not complete. Please try again.");
+        }
+        return;
+      }
     } catch (nativeError) {
       setPending(null);
       setError(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");

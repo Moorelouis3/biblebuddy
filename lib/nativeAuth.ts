@@ -26,12 +26,43 @@ import { isNativeApp } from "./nativeApp";
  *   1. CFBundleURLTypes in Info.plist registers the scheme (scripts/ios-info-plist.sh)
  *   2. Supabase > Authentication > URL Configuration allows REDIRECT_URL
  *   3. The scheme matches the bundle id, net.mybiblebuddy.app
+ *
+ * ---------------------------------------------------------------------------
+ * Build 6 on Louis's phone span forever on "Signing in with Google", and the
+ * reason it span rather than failed is the shape of the old code: it opened
+ * the sheet, returned, and then waited for a deep link that was the ONLY thing
+ * that could ever end the attempt. Everything else - the person tapping Done,
+ * the provider sending back an error, the sheet never appearing - left the
+ * button disabled for good.
+ *
+ * So an attempt is now a promise with four ways to finish, and the UI simply
+ * awaits it:
+ *   1. the deep link arrives with a code      -> signed in
+ *   2. the deep link arrives with an error    -> that error, readably
+ *   3. the Safari sheet closes with no session-> cancelled
+ *   4. nothing happens for 90 seconds         -> timed out, try again
+ * Plus: whenever the app comes back to the foreground we re-check the session,
+ * because a sign-in that completed in a way we did not see still counts.
  */
 
 export const NATIVE_AUTH_SCHEME = "net.mybiblebuddy.app";
 export const NATIVE_AUTH_REDIRECT = `${NATIVE_AUTH_SCHEME}://auth-callback`;
 
+/** How long to wait before calling an attempt dead. */
+const ATTEMPT_TIMEOUT_MS = 90_000;
+
+/**
+ * The deep link and the sheet closing race each other: iOS often reports the
+ * sheet dismissed a beat before the URL reaches the app. Give the URL that
+ * beat before concluding the person cancelled.
+ */
+const DISMISS_GRACE_MS = 1_800;
+
 type Provider = "google" | "apple";
+
+export type NativeSignInResult =
+  | { ok: true }
+  | { ok: false; reason: "cancelled" | "timeout" | "error"; message?: string };
 
 let listenerAttached = false;
 
@@ -47,56 +78,203 @@ async function appPlugin() {
 }
 
 /**
+ * Is this plugin actually in the installed binary?
+ *
+ * It matters because the JS half of a Capacitor plugin ships with the website,
+ * which updates the moment Vercel deploys, while the native half only changes
+ * when a new build is installed. A plugin added today is therefore "present"
+ * in the page and absent from the app someone is holding, and what that looks
+ * like depends on the plugin: @capacitor/browser quietly falls back to its web
+ * implementation (window.open, which does nothing inside a WebView), and
+ * @capacitor-community/apple-sign-in has no web half at all, so it throws
+ * `"SignInWithApple" plugin is not implemented on ios`.
+ *
+ * Both are the same situation and both deserve the same sentence, which is:
+ * update the app.
+ */
+export function nativePluginAvailable(name: string): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    const capacitor = (window as unknown as {
+      Capacitor?: { isPluginAvailable?: (name: string) => boolean };
+    }).Capacitor;
+    return Boolean(capacitor?.isPluginAvailable?.(name));
+  } catch {
+    return false;
+  }
+}
+
+export const OUT_OF_DATE_BUILD =
+  "This version of the app cannot finish sign-in. Install the newest Bible Buddy build from TestFlight, then try again.";
+
+/* -------------------------------------------------------------------------- */
+/* One attempt at a time                                                      */
+/* -------------------------------------------------------------------------- */
+
+type Attempt = {
+  settle: (result: NativeSignInResult) => void;
+  timer: number | null;
+  graceTimer: number | null;
+};
+
+let attempt: Attempt | null = null;
+
+function finish(result: NativeSignInResult) {
+  const current = attempt;
+  if (!current) return;
+  attempt = null;
+  if (current.timer !== null) window.clearTimeout(current.timer);
+  if (current.graceTimer !== null) window.clearTimeout(current.graceTimer);
+  current.settle(result);
+}
+
+/** True when a session exists now. Used to rescue attempts we lost track of. */
+async function hasSession(): Promise<boolean> {
+  try {
+    const { data } = await supabase.auth.getSession();
+    return Boolean(data?.session);
+  } catch {
+    return false;
+  }
+}
+
+async function closeSheet() {
+  try {
+    const Browser = await browserPlugin();
+    await Browser.close();
+  } catch {
+    // Already closed, or no sheet. Not a problem.
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Listeners                                                                  */
+/* -------------------------------------------------------------------------- */
+
+/**
  * Start listening for the provider sending us back. Safe to call repeatedly -
- * it attaches once. Call it high in the tree so the listener exists before any
+ * it attaches once. Call it high in the tree so the listeners exist before any
  * sign-in button can be pressed.
+ *
+ * `onSignedIn` fires for a sign-in that completes with no attempt in flight,
+ * which is how a session that arrives late still gets someone to the
+ * dashboard.
  */
 export async function startNativeAuthListener(onSignedIn?: () => void) {
   if (!isNativeApp() || listenerAttached) return;
   listenerAttached = true;
 
   const App = await appPlugin();
-  const Browser = await browserPlugin();
 
-  await App.addListener("appUrlOpen", async ({ url }) => {
-    if (!url || !url.startsWith(NATIVE_AUTH_SCHEME)) return;
+  await App.addListener("appUrlOpen", ({ url }) => {
+    void handleAuthUrl(url, onSignedIn);
+  });
 
-    // The sheet has done its job either way - close it before anything that
-    // can throw, so a failure never leaves a Safari sheet stuck on screen.
-    try {
-      await Browser.close();
-    } catch {
-      // Already closed. Not a problem.
+  // Coming back to the foreground. If a sign-in finished in a way we did not
+  // observe - the deep link consumed while the webview was suspended, say -
+  // the session is already there and nobody should be left staring at a
+  // spinner.
+  await App.addListener("appStateChange", ({ isActive }) => {
+    if (!isActive) return;
+    void (async () => {
+      if (await hasSession()) {
+        finish({ ok: true });
+        onSignedIn?.();
+      }
+    })();
+  });
+
+  if (nativePluginAvailable("Browser")) {
+    const Browser = await browserPlugin();
+    // The sheet was dismissed. Either the deep link is a moment behind it, or
+    // the person tapped Done - wait out the grace period and then decide.
+    await Browser.addListener("browserFinished", () => {
+      const current = attempt;
+      if (!current) return;
+      current.graceTimer = window.setTimeout(() => {
+        void (async () => {
+          if (!attempt) return;
+          if (await hasSession()) {
+            finish({ ok: true });
+            onSignedIn?.();
+            return;
+          }
+          finish({ ok: false, reason: "cancelled" });
+        })();
+      }, DISMISS_GRACE_MS);
+    });
+  }
+}
+
+async function handleAuthUrl(url: string | undefined, onSignedIn?: () => void) {
+  if (!url || !url.startsWith(NATIVE_AUTH_SCHEME)) return;
+
+  // The sheet has done its job either way - close it before anything that can
+  // throw, so a failure never leaves a Safari sheet stuck on screen.
+  await closeSheet();
+
+  try {
+    const parsed = new URL(url);
+    // Supabase puts a refusal in the query string and, on the implicit flow,
+    // in the fragment. Reading both is the difference between a readable
+    // message and the old silent spinner.
+    const hash = new URLSearchParams(parsed.hash.replace(/^#/, ""));
+    const failure =
+      parsed.searchParams.get("error_description") ??
+      parsed.searchParams.get("error") ??
+      hash.get("error_description") ??
+      hash.get("error");
+    if (failure) {
+      finish({ ok: false, reason: "error", message: readable(failure) });
+      return;
     }
 
-    try {
-      // Supabase returns either ?code= (PKCE, what we ask for) or a
-      // #access_token= fragment on older flows. Handle both rather than
-      // assuming, because a silent failure here looks identical to a user
-      // who simply gave up at the Google screen.
-      const parsed = new URL(url);
-      const code = parsed.searchParams.get("code");
-      if (code) {
-        const { error } = await supabase.auth.exchangeCodeForSession(code);
+    // Supabase returns either ?code= (PKCE, what we ask for) or a
+    // #access_token= fragment on older flows. Handle both rather than
+    // assuming, because a silent failure here looks identical to a user who
+    // simply gave up at the Google screen.
+    const code = parsed.searchParams.get("code");
+    if (code) {
+      const { error } = await supabase.auth.exchangeCodeForSession(code);
+      if (error) throw error;
+    } else {
+      const access_token = hash.get("access_token");
+      const refresh_token = hash.get("refresh_token");
+      if (access_token && refresh_token) {
+        const { error } = await supabase.auth.setSession({ access_token, refresh_token });
         if (error) throw error;
-      } else if (parsed.hash.includes("access_token")) {
-        const params = new URLSearchParams(parsed.hash.replace(/^#/, ""));
-        const access_token = params.get("access_token");
-        const refresh_token = params.get("refresh_token");
-        if (access_token && refresh_token) {
-          const { error } = await supabase.auth.setSession({ access_token, refresh_token });
-          if (error) throw error;
-        }
       } else {
-        // The provider sent us back with no credentials - usually "cancel".
+        // Came back with no credentials and no error - usually "cancel".
+        finish({ ok: false, reason: "cancelled" });
         return;
       }
-      onSignedIn?.();
-    } catch (error) {
-      console.error("[nativeAuth] could not finish sign-in:", error);
     }
-  });
+    finish({ ok: true });
+    onSignedIn?.();
+  } catch (error) {
+    console.error("[nativeAuth] could not finish sign-in:", describe(error));
+    finish({
+      ok: false,
+      reason: "error",
+      message: error instanceof Error ? error.message : "Sign-in could not be completed.",
+    });
+  }
 }
+
+/** Never let a token or a code reach the log. */
+function describe(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  return "unknown error";
+}
+
+function readable(raw: string): string {
+  const text = raw.replace(/\+/g, " ");
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Apple: the native sheet                                                    */
+/* -------------------------------------------------------------------------- */
 
 /**
  * Sign in with Apple, natively.
@@ -112,11 +290,18 @@ export async function startNativeAuthListener(onSignedIn?: () => void) {
  * bundle id listed under Client IDs, which is already set.
  *
  * Requires the com.apple.developer.applesignin entitlement in the built app
- * (scripts/ios-entitlements.sh). Without it iOS refuses to present the sheet
- * and the error says nothing useful about why.
+ * (scripts/ios-entitlements.sh) AND the plugin's native half, which first
+ * shipped in build 7. Without the entitlement iOS refuses to present the sheet
+ * and the error says nothing useful; without the native half the call throws
+ * `"SignInWithApple" plugin is not implemented on ios`, which is what build 6
+ * did.
  */
-export async function signInWithAppleNatively(): Promise<boolean> {
+export async function signInWithAppleNatively(): Promise<NativeSignInResult | false> {
   if (!isNativeApp()) return false;
+
+  if (!nativePluginAvailable("SignInWithApple")) {
+    return { ok: false, reason: "error", message: OUT_OF_DATE_BUILD };
+  }
 
   const { SignInWithApple } = await import("@capacitor-community/apple-sign-in");
 
@@ -125,23 +310,34 @@ export async function signInWithAppleNatively(): Promise<boolean> {
   const rawNonce = cryptoRandom();
   const hashedNonce = await sha256Hex(rawNonce);
 
-  const result = await SignInWithApple.authorize({
-    clientId: "net.mybiblebuddy.app",
-    redirectURI: NATIVE_AUTH_REDIRECT,
-    scopes: "name email",
-    nonce: hashedNonce,
-  });
+  let result;
+  try {
+    result = await SignInWithApple.authorize({
+      clientId: NATIVE_AUTH_SCHEME,
+      redirectURI: NATIVE_AUTH_REDIRECT,
+      scopes: "name email",
+      nonce: hashedNonce,
+    });
+  } catch (error) {
+    const message = describe(error);
+    // 1001 is ASAuthorizationError.canceled; the plugin surfaces it as text.
+    if (/cancel|1001/i.test(message)) return { ok: false, reason: "cancelled" };
+    if (/not implemented/i.test(message)) {
+      return { ok: false, reason: "error", message: OUT_OF_DATE_BUILD };
+    }
+    return { ok: false, reason: "error", message };
+  }
 
   const idToken = result?.response?.identityToken;
-  if (!idToken) throw new Error("Apple did not return a sign-in token.");
+  if (!idToken) return { ok: false, reason: "cancelled" };
 
   const { error } = await supabase.auth.signInWithIdToken({
     provider: "apple",
     token: idToken,
     nonce: rawNonce,
   });
-  if (error) throw error;
-  return true;
+  if (error) return { ok: false, reason: "error", message: error.message };
+  return { ok: true };
 }
 
 function cryptoRandom() {
@@ -155,16 +351,33 @@ async function sha256Hex(value: string) {
   return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
+/* -------------------------------------------------------------------------- */
+/* Google (and Apple on the web): the Safari sheet                            */
+/* -------------------------------------------------------------------------- */
+
 /**
  * Sign in with Google or Apple from inside the app.
  *
  * Returns false when this is not the native app, so callers can fall through
  * to the ordinary web redirect rather than branching at every call site.
+ * Otherwise it resolves only when the attempt is genuinely over, one way or
+ * another - which is what stops the button spinning for ever.
  */
-export async function signInWithProviderNatively(provider: Provider): Promise<boolean> {
+export async function signInWithProviderNatively(
+  provider: Provider,
+  onSignedIn?: () => void,
+): Promise<NativeSignInResult | false> {
   if (!isNativeApp()) return false;
 
-  await startNativeAuthListener();
+  // Without the native half, Browser.open falls back to window.open, which a
+  // WebView ignores: the sheet never appears and nothing ever comes back.
+  // That is build 6's endless spinner, and it deserves a sentence rather than
+  // a silence.
+  if (!nativePluginAvailable("Browser")) {
+    return { ok: false, reason: "error", message: OUT_OF_DATE_BUILD };
+  }
+
+  await startNativeAuthListener(onSignedIn);
 
   // skipBrowserRedirect hands us the URL instead of navigating the webview to
   // it - which is the whole point, because that navigation is what escaped to
@@ -178,10 +391,44 @@ export async function signInWithProviderNatively(provider: Provider): Promise<bo
   });
 
   if (error || !data?.url) {
-    throw error ?? new Error("Could not start sign-in.");
+    return {
+      ok: false,
+      reason: "error",
+      message: error?.message ?? "Could not start sign-in.",
+    };
   }
 
-  const Browser = await browserPlugin();
-  await Browser.open({ url: data.url, presentationStyle: "popover" });
-  return true;
+  // Anything already in flight is abandoned, not left to time out.
+  finish({ ok: false, reason: "cancelled" });
+
+  const settled = new Promise<NativeSignInResult>((resolve) => {
+    attempt = {
+      settle: resolve,
+      graceTimer: null,
+      timer: window.setTimeout(() => {
+        void closeSheet();
+        finish({
+          ok: false,
+          reason: "timeout",
+          message: "Sign-in took too long. Check your connection and try again.",
+        });
+      }, ATTEMPT_TIMEOUT_MS),
+    };
+  });
+
+  try {
+    const Browser = await browserPlugin();
+    // No presentationStyle. "popover" is an iPad shape, and on a phone it
+    // leaves the sheet's presentation up to UIKit's adaptation rules rather
+    // than simply filling the screen - which is all an OAuth page should do.
+    await Browser.open({ url: data.url });
+  } catch (openError) {
+    finish({
+      ok: false,
+      reason: "error",
+      message: describe(openError) || "Could not open the sign-in page.",
+    });
+  }
+
+  return settled;
 }

@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 
 const LogoHeader = () => (
   <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-5 py-5 sm:px-8" role="banner">
-    <div className="flex items-center gap-3 text-[#111827]">
+    <div className="flex items-center gap-3 text-[#102D4D]">
       <Image src="/TherealiconforBB.png" alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-lg object-cover" />
       <span className="text-lg font-black tracking-tight">Bible Buddy</span>
     </div>
@@ -21,19 +21,22 @@ const LogoHeader = () => (
 );
 
 const ResetShell = ({ children }: { children: ReactNode }) => (
-  <div className="bb-auth-public min-h-screen bg-[#F5F7FA] text-[#111827]">
+  <div className="bb-auth-public min-h-screen bg-[#FAF7EF] text-[#102D4D]">
     <LegalPageThemeReset />
     <style>{`
-      .bb-reset-serif { font-family: "Playfair Display", "Cormorant Garamond", "Libre Baskerville", Georgia, serif; }
+      /* Cream to the edges, so rubber-banding does not reveal the theme
+         system's own background. Matches the app welcome screen. */
+      html, body { background-color: #FAF7EF !important; background-image: none !important; }
+      .bb-reset-serif { font-family: var(--font-bb-serif), "Playfair Display", Georgia, serif; }
       .bb-reset-title.bb-reset-title {
-        color: #000000 !important;
-        -webkit-text-fill-color: #000000 !important;
+        color: #102D4D !important;
+        -webkit-text-fill-color: #102D4D !important;
       }
       .bb-reset-home.bb-reset-home {
         background: #ffffff !important;
-        border-color: #E5E7EB !important;
-        color: #111827 !important;
-        -webkit-text-fill-color: #111827 !important;
+        border-color: #E7DFCE !important;
+        color: #102D4D !important;
+        -webkit-text-fill-color: #102D4D !important;
       }
     `}</style>
     <LogoHeader />
@@ -51,16 +54,16 @@ const ResetCard = ({ children }: { children: ReactNode }) => (
 
 const ResetTitle = ({ title, description }: { title: string; description: string }) => (
   <div className="mb-7 text-center">
-    <p className="text-xs font-black uppercase tracking-[0.18em] text-[#7BAFD4]">Account help</p>
+    <p className="text-xs font-black uppercase tracking-[0.18em] text-[#8A9AAE]">Account help</p>
     <h1 className="bb-reset-title bb-reset-serif mt-3 text-4xl font-black leading-tight text-black">
       {title}
     </h1>
-    <div className="mx-auto mt-5 flex max-w-[210px] items-center justify-center gap-3 text-[#7BAFD4]">
-      <span className="h-px flex-1 bg-[#7BAFD4]/70" />
+    <div className="mx-auto mt-5 flex max-w-[210px] items-center justify-center gap-3 text-[#A9B7C6]">
+      <span className="h-px flex-1 bg-[#A9B7C6]/70" />
       <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M20.8 8.6c0 5.4-8.8 10.2-8.8 10.2S3.2 14 3.2 8.6A4.6 4.6 0 0 1 12 6.7a4.6 4.6 0 0 1 8.8 1.9Z" />
       </svg>
-      <span className="h-px flex-1 bg-[#7BAFD4]/70" />
+      <span className="h-px flex-1 bg-[#A9B7C6]/70" />
     </div>
     <p className="mx-auto mt-4 max-w-sm text-sm font-semibold leading-6 text-[#667085]">
       {description}
@@ -68,8 +71,8 @@ const ResetTitle = ({ title, description }: { title: string; description: string
   </div>
 );
 
-const inputClass = "w-full rounded-2xl border px-4 py-3 text-sm font-bold outline-none focus:border-[#7BAFD4]";
-const inputStyle = { backgroundColor: "#ffffff", borderColor: "#E5E7EB", color: "#111827" };
+const inputClass = "w-full rounded-[14px] border px-4 py-3.5 text-[15px] font-bold outline-none transition focus:border-[#102D4D]";
+const inputStyle = { backgroundColor: "#FFFFFF", borderColor: "#E3DACA", color: "#102D4D" };
 const primaryButtonClass = "w-full rounded-2xl px-4 py-4 text-sm font-black text-white shadow-[0_18px_40px_rgba(14,26,58,0.18)] transition hover:-translate-y-0.5 disabled:opacity-60";
 
 function getPasswordResetRedirectUrl() {
@@ -269,7 +272,7 @@ function ResetPasswordForm() {
             {error && <p className="rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-xs font-semibold text-red-600">{error}</p>}
             {resetRequestSent && <p className="rounded-xl border border-[#E5E7EB] bg-[#EAF5FF] px-3 py-2 text-xs font-semibold text-[#111827]">Check your email for a password reset link.</p>}
 
-            <button type="submit" disabled={loading} className={primaryButtonClass} style={{ backgroundColor: "#7BAFD4", color: "#ffffff" }}>
+            <button type="submit" disabled={loading} className={primaryButtonClass} style={{ backgroundColor: "#102D4D", color: "#FFFFFF" }}>
               {loading ? "Sending..." : "Send reset link"}
             </button>
           </form>
@@ -328,7 +331,7 @@ function ResetPasswordForm() {
 
           {error && <p className="rounded-xl border border-red-100 bg-red-50 px-3 py-2 text-xs font-semibold text-red-600">{error}</p>}
 
-          <button type="submit" disabled={loading} className={primaryButtonClass} style={{ backgroundColor: "#7BAFD4", color: "#ffffff" }}>
+          <button type="submit" disabled={loading} className={primaryButtonClass} style={{ backgroundColor: "#102D4D", color: "#FFFFFF" }}>
             {loading ? "Resetting Password..." : "Reset Password"}
           </button>
         </form>

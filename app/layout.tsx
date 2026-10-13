@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 import AppShell from "@/components/AppShell";
@@ -15,6 +16,27 @@ import DisplayNamePromptGate from "@/components/DisplayNamePromptGate";
 import { GlobalAudioPlayerProvider } from "@/components/GlobalAudioPlayer";
 import { Analytics } from "@vercel/analytics/react"; // ✅ ADD THIS
 // redeploy trigger
+
+/**
+ * The brand serif (Louis, 2026-10-13).
+ *
+ * Five places in this codebase ask for font-family "Playfair Display" and
+ * nothing has ever loaded it, so all of them have really been Georgia. Rather
+ * than change the look of the whole marketing site in passing, this exposes
+ * the real face as a variable: next/font gives it a generated family name, so
+ * a declaration naming the literal string "Playfair Display" still falls
+ * through to Georgia exactly as it does today. Only the screens that ask for
+ * var(--font-bb-serif) - the app welcome screen and the auth pages - get it.
+ *
+ * Self-hosted by next/font, which matters in a WebView on a phone: it arrives
+ * with the page rather than after a round trip to Google.
+ */
+const brandSerif = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-bb-serif",
+  display: "swap",
+});
 
 const siteUrl = new URL("https://www.mybiblebuddy.net");
 const socialPreviewImage = new URL("/newsocialbanner.png", siteUrl).toString();
@@ -180,7 +202,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={brandSerif.variable} suppressHydrationWarning>
       <head>
         <script
           suppressHydrationWarning
