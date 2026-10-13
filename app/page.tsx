@@ -1087,6 +1087,13 @@ export default function LandingPage() {
   }
 
   function enterDashboard(studyRoute: StudyRoute = selectedStudyRoute || recommendedStudyRoute) {
+    // Same as the login page: inside the iOS shell a hard navigation is
+    // reported as a failed load, and Capacitor answers that with its offline
+    // error page even on a perfectly good connection.
+    if (isNativeApp()) {
+      router.replace("/dashboard");
+      return;
+    }
     window.location.href = "/dashboard";
   }
 

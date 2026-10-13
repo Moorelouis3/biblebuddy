@@ -11,6 +11,7 @@ import { supabase } from "../../lib/supabaseClient";
 import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending } from "../../lib/termsAcceptance";
 import { hasCachedSupabaseSession } from "../../lib/authBoot";
+import { isNativeApp } from "../../lib/nativeApp";
 
 /**
  * Where to send someone after login. Callers pass ?next=/events/... (the
@@ -113,8 +114,19 @@ export default function LoginPage() {
 
     setLoading(false);
 
-    // Use window.location for full page reload to ensure cookies are set
-    // This prevents middleware from running before cookies are available
+    // On the web, a full reload so the next page is rendered with the
+    // session already in place.
+    //
+    // NOT in the iOS app. A hard navigation fired the instant the session is
+    // written gets reported by WKWebView as a failed load, and Capacitor
+    // answers a failed load with its error page - which is why a successful
+    // email login showed "You're offline" on build 5, and why Try again then
+    // worked. Client-side navigation never leaves the page, so there is no
+    // load to fail.
+    if (isNativeApp()) {
+      router.replace(nextPath());
+      return;
+    }
     window.location.href = nextPath();
   }
 
