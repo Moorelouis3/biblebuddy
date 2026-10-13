@@ -23,33 +23,20 @@ workflows:
       node: 22
       xcode: latest
 
-    # Only when something that affects the shell changes. The web app deploys
-    # through Vercel and has nothing to do with this.
-    triggering:
-      events:
-        - push
-      branch_patterns:
-        - pattern: main
-          include: true
-      cancel_previous_builds: true
-
-    # The changeset filter is load-bearing, not tidiness.
+    # Manual only. There is no triggering block on purpose.
     #
-    # The hourly Bible-notes routine commits to main all day. Without this,
-    # every one of those pushes started an iOS build, and because
-    # cancel_previous_builds is on, each one killed the build queued behind
-    # it. On 2026-10-13, with Codemagic's macOS queue backed up, that meant
-    # the iOS build was cancelled and re-queued faster than it could ever
-    # reach a machine - it would never have run at all.
-    when:
-      changeset:
-        includes:
-          - "capacitor.config.ts"
-          - "codemagic.yaml"
-          - "native/"
-          - "scripts/ios-"
-          - "package.json"
-          - "package-lock.json"
+    # Two routines commit to main all day - the hourly Bible notes writer and
+    # the chapter library - and Codemagic has no working path filter for this.
+    # A changeset filter was tried on 2026-10-13 and did not skip: commit
+    # d5bef2b ("Chapter library: start Exodus 29") still queued a full iOS
+    # build. With cancel_previous_builds on, each of those also killed the
+    # build queued behind it, so the one that mattered never ran. With it off,
+    # every chapter of notes would instead burn three minutes of a 500 minute
+    # monthly allowance - about 144 minutes a day, so the free plan would be
+    # gone inside a week.
+    #
+    # Builds are started by hand from codemagic.io, which is the right shape
+    # anyway: the iOS shell only changes when someone deliberately changes it.
 
     scripts:
       - name: Install dependencies
