@@ -30,6 +30,9 @@ retyping at submission time.
 - Privacy policy URL
 - App Review notes (the about / UGC / AI / account-deletion blocks below) —
   **without** the demo account, which does not exist yet
+- App Privacy: all ten data types, published
+- Age rating: 13+
+- Pricing: free, and available in all 175 countries or regions
 
 ## Still to enter, and why it was left
 
@@ -39,7 +42,7 @@ retyping at submission time.
 | Content rights answer | A rights attestation. Louis only. |
 | App Review demo account + "Sign-in required" | The account does not exist. Needs real data in it or Guideline 4.2 gets more likely. |
 | App Review contact phone | Not known to the agent. |
-| App Privacy — 5 of 10 data types | See the table below. Half done; the rest is mechanical. |
+| Family Controls entitlement | The request is written out in `FAMILY_CONTROLS_REQUEST.md`; Louis submits it, because it is an application to Apple in his name. |
 | Screenshots | Need the app running on a device. |
 | Build | Needs signing, which needs keys only Louis can download and paste. |
 
@@ -58,18 +61,19 @@ true while ads stay off in the native build.
 | Photos or Videos | App Functionality | Yes | No | ✅ |
 | Other User Content | App Functionality | Yes | No | ✅ |
 | User ID | Analytics, App Functionality | Yes | No | ✅ |
-| Device ID | App Functionality | Yes | No | ⬜ |
-| Product Interaction | Analytics, App Functionality | Yes | No | ⬜ |
-| Crash Data | App Functionality | Yes | No | ⬜ |
-| Performance Data | App Functionality | Yes | No | ⬜ |
-| Other Diagnostic Data | App Functionality | Yes | No | ⬜ |
+| Device ID | App Functionality | Yes | No | ✅ |
+| Product Interaction | Analytics, App Functionality | Yes | No | ✅ |
+| Crash Data | App Functionality | Yes | No | ✅ |
+| Performance Data | App Functionality | Yes | No | ✅ |
+| Other Diagnostic Data | App Functionality | Yes | No | ✅ |
 
 Email Address carries "Developer's Advertising or Marketing" because Bible
 Buddy sends campaign email. Dropping that would understate what the app does
 with the address.
 
-Nothing on this page is live until **Publish** is pressed, which should wait
-until all ten are set up.
+All ten are set up and **published** (2026-10-13). The product page shows
+"Data Linked to You" and **no "Data Used to Track You" section at all** — that
+is the thing worth protecting.
 
 ---
 
@@ -107,10 +111,41 @@ the two and a mismatch is a rejection.
 
 ---
 
-## Age rating
+## Age rating — done, 13+
 
-Answer the questionnaire honestly. The app has open direct messages, group
-chat and a public feed, so expect **12+**.
+Answered 2026-10-13. Apple calculated **13+** (16+ in Brazil, 15+ in Korea,
+and 12+ on operating systems older than version 26). No override applied.
+
+Also: Apple will not sell the app in **Afghanistan or Morocco** — automatic,
+local law, nothing to do with these answers.
+
+| Question | Answer | Why |
+|---|---|---|
+| Parental controls / age assurance | No / No | Neither exists in the app |
+| Unrestricted web access | **No** | External links leave the app for the system browser (`components/NativeExternalLinks.tsx`); inside the shell you can only reach mybiblebuddy.net |
+| User-generated content | Yes | Study groups and article comments |
+| Social media | Yes | Posts are redistributed through a feed |
+| Social media disabled under 13 | No | There is no age gate — see below |
+| Messaging and chat | Yes | `/messages` |
+| Advertising | **No** | Ads are off in the native build |
+| Profanity or crude humour | None | |
+| Horror / fear themes | None | Frightening passages exist, but the app is not horror content |
+| Alcohol, tobacco or drugs | Infrequent | Scripture plainly references wine and drunkenness |
+| Medical or treatment info | None | |
+| Health or wellness topics | No | Devotionals are spiritual reflection, not self-care advice |
+| Mature or suggestive themes | Infrequent | The full KJV includes adultery, rape and incest, and the notes explain those passages |
+| Sexual content / graphic | None / None | No depictions |
+| Cartoon violence | None | |
+| Realistic violence | Infrequent | Biblical narrative |
+| Prolonged graphic violence | None | |
+| Guns or weapons | Infrequent | Swords and spears throughout |
+| Simulated gambling / gambling / loot boxes | None / No / No | |
+| Contests | Infrequent | Trivia and streaks |
+
+The judgement calls are the "infrequent" ones. They are there because the app
+presents the complete Bible, and under-declaring is a rejection risk while
+over-declaring only costs a slightly higher age. Change them if you disagree —
+the questionnaire is editable until submission.
 
 **There is no age gate today.** `/terms` says Bible Buddy "is not intended
 for children under 13", and nothing at signup collects or checks a birthdate
