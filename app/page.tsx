@@ -1966,7 +1966,13 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
       <LandingThemeStyles />
 
       <main className="mx-auto max-w-[860px] px-5 pb-10 sm:px-8">
-        <header className="flex items-center justify-between gap-3 py-4">
+        {/* THIS is the header the live landing page renders - the earlier one
+            in this file belongs to a variant that is not currently reached.
+            It needs the status bar inset itself: "/" is in AppShell's
+            HIDDEN_ROUTES so bb-safe-top-header never runs here, and the iOS
+            shell draws under a transparent status bar, which is why the logo
+            and nav sat on top of the clock and battery on build 5. */}
+        <header className="flex items-center justify-between gap-3 pb-4 pt-[calc(1rem+env(safe-area-inset-top,0px))]">
           <BibleBuddyMark />
           <nav className="flex items-center gap-5 text-sm font-black text-[#07162f] sm:gap-7">
             <a href="#about" className="transition hover:text-[#0056FD]">About</a>
