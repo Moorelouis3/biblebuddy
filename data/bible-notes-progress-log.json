@@ -62700,6 +62700,59 @@
           "at": "2026-10-13T03:02:04Z"
         }
       ]
+    },
+    {
+      "book": "Romans",
+      "chapter": 12,
+      "startedAt": "2026-10-13T03:46:10Z",
+      "finishedAt": "2026-10-13T03:55:06Z",
+      "durationMinutes": 9,
+      "sections": 5,
+      "cards": 28,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (704 packages, fresh clone). Priority queue and style redo backlog (remaining: [] in both) confirmed empty, so this was normal forward progress after Romans 11, the latest entry in this log. Confirmed no lib/romansTwelveSource.ts existed yet, only the legacy bulk file lib/romansNineToSixteenPersonalNotes.ts covering chapter 12. Fetched real KJV text for Romans 12 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter turns from doctrine to practice: presenting the body as a living sacrifice and being transformed by a renewed mind rather than conformed to the world (1-2); thinking soberly about spiritual gifts using the one body, many members picture, then matching each gift to the attitude it needs (3-8); love without pretending, abhorring evil, honoring others first, staying fervent, and pursuing hospitality (9-13); blessing persecutors, sharing others' emotions, and refusing to rank people by status or trust your own conceit (14-16); and closing on refusing personal revenge, quoting Deuteronomy on vengeance belonging to God and Proverbs on heaping coals of fire on an enemy's head, landing on the chapter's summary line, overcome evil with good (17-21). Split into 5 sections (1-2, 3-8, 9-13, 14-16, 17-21), all 21 verses covered with no gaps or overlaps, none exceeding the renderer's eight verse section cap. Density about 1.33 cards per verse (21 verses, 28 cards). scripts/check_bible_note_style.py found 2 problems on the first pass (two bullets one word over the eight word limit), fixed both, clean on the second run across all 28 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (beseech, reasonable service, conformed, transformed, soberly, dissimulation, cleave, condescend, conceits, recompense, avenge), names the Old Testament source behind each quotation (Deuteronomy on vengeance, Proverbs on coals of fire), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet landing on the scripture emoji, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 28 cards. Parser check passed exactly via getBibleReaderStudySections(\"romans\", 12) (5/5 sections, verse ranges 1-2/3-8/9-13/14-16/17-21 with no gaps, 28 total cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/romansTwelveSource.ts, preserveExactPhraseBodies romans range extended from chapters 1-11 to 1-12, new function applyPersonalRomansTwelveStudySections added and called right after applyPersonalRomansElevenStudySections(), correctly overriding the legacy ROMANS_9_16_PERSONAL_SECTIONS bulk file for chapter 12 only, chapters 13-16 of that legacy file left untouched. No usage limit, rate limit, block, or throttling occurred this run. Next forward-progress target is Romans 13, which is currently still covered by the legacy ROMANS_9_16_PERSONAL_SECTIONS bulk file.",
+      "steps": [
+        {
+          "name": "npm install done (704 packages, fresh clone)",
+          "at": "2026-10-13T03:46:42Z"
+        },
+        {
+          "name": "target chapter determined: Romans 12 (normal forward progress, redo backlog empty, last log entry was Romans 11)",
+          "at": "2026-10-13T03:47:05Z"
+        },
+        {
+          "name": "KJV text fetched (Romans 12, 21 verses, aruljohn mirror)",
+          "at": "2026-10-13T03:47:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-13T03:49:00Z"
+        },
+        {
+          "name": "source file written: lib/romansTwelveSource.ts (5 sections, 28 cards)",
+          "at": "2026-10-13T03:52:30Z"
+        },
+        {
+          "name": "style checker found 2 problems, fixed, clean on second run",
+          "at": "2026-10-13T03:53:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalRomansTwelveStudySections)",
+          "at": "2026-10-13T03:54:00Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 28 cards, verbatim, no gaps)",
+          "at": "2026-10-13T03:54:20Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-13T03:54:50Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-13T03:55:06Z"
+        }
+      ]
     }
   ]
 }
