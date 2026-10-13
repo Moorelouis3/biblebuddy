@@ -63148,6 +63148,59 @@
           "at": "2026-10-13T11:06:19Z"
         }
       ]
+    },
+    {
+      "book": "1 Corinthians",
+      "chapter": 4,
+      "startedAt": "2026-10-13T11:47:00Z",
+      "finishedAt": "2026-10-13T11:57:41Z",
+      "durationMinutes": 11,
+      "sections": 5,
+      "cards": 31,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 704 packages). Priority queue and style redo backlog both confirmed empty, so this was normal forward progress after 1 Corinthians 3, the latest entry in this log. Confirmed no lib/firstCorinthiansFourSource.ts existed yet and 1 Corinthians 4 was still unwired (only covered by the legacy bulk file lib/firstCorinthiansOneToSixteenPersonalNotes.ts). Fetched real KJV text for 1 Corinthians 4 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers Paul and Apollos as stewards who answer only to the Lord, not to Corinth's popularity contest, with judgment reserved for the Lord's return when hidden motives get exposed (1-5); the puffed up pride of ranking teachers against each other, Paul's pointed what hast thou that thou didst not receive, and the sarcastic now ye are full, now ye are rich, ye have reigned as kings aimed at Corinth's premature sense of arrival (6-8); the apostles pictured as condemned men appointed to death and made a spectacle to the world and angels, the string of contrasts (fools, weak, despised), and the real hardships of hunger, nakedness, manual labor, and being cursed and blessing in return (9-13); Paul's fatherly warning that he writes not to shame but to warn, the distinction between Corinth's many hired instructors and its one true spiritual father, the call to be followers of him, and the sending of Timotheus to remind them of his ways (14-17); and the closing confrontation with the puffed up teachers who assumed Paul would not return, his plan to test power rather than speech, the chapter's thesis that the kingdom of God is not in word but in power, and the final choice he leaves Corinth between the rod and love (18-21). Split into 5 sections (1-5, 6-8, 9-13, 14-17, 18-21) averaging about 1.5 cards per verse, 31 cards total. Style checker (scripts/check_bible_note_style.py) ran clean after one fix (a stacked while clause split into two lines). Parser check confirmed 5 sections and 31 cards matching design exactly. npx tsc --noEmit -p . came back clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import, preserveExactPhraseBodies range for 1 corinthians extended to include chapter 4, new applyPersonalFirstCorinthiansFourStudySections function and call added after chapter 3's.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-13T11:47:00Z"
+        },
+        {
+          "name": "target chapter determined: 1 Corinthians 4 (new chapter, forward progress)",
+          "at": "2026-10-13T11:48:30Z"
+        },
+        {
+          "name": "KJV text fetched for 1 Corinthians 4 (21 verses)",
+          "at": "2026-10-13T11:50:00Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md)",
+          "at": "2026-10-13T11:51:00Z"
+        },
+        {
+          "name": "source file written (lib/firstCorinthiansFourSource.ts, 5 sections, 31 cards)",
+          "at": "2026-10-13T11:55:30Z"
+        },
+        {
+          "name": "style checker clean (one stacked-clause fix applied)",
+          "at": "2026-10-13T11:56:20Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply function and call)",
+          "at": "2026-10-13T11:56:40Z"
+        },
+        {
+          "name": "parser check passed (5 sections, 31 cards confirmed)",
+          "at": "2026-10-13T11:57:12Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-10-13T11:57:12Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-10-13T11:57:41Z"
+        }
+      ]
     }
   ]
 }
