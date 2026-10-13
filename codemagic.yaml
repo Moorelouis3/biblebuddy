@@ -53,20 +53,17 @@ workflows:
       - name: Show which plugins linked
         script: npx cap ls ios
 
-      - name: Build for the simulator
-        # Unsigned on purpose. Signing needs the paid Apple membership; this
-        # is here to answer "does it compile", months before that matters.
-        script: |
-          xcodebuild \
-            -project ios/App/App.xcodeproj \
-            -scheme App \
-            -sdk iphonesimulator \
-            -configuration Debug \
-            -destination 'generic/platform=iOS Simulator' \
-            CODE_SIGNING_ALLOWED=NO \
-            build
+      - name: Run it in a simulator and photograph what happens
+        # Builds, installs, launches and screenshots. "It compiles" was never
+        # the same as "it runs", and until this step existed nobody had seen
+        # Bible Buddy open as an app at all.
+        script: bash scripts/ios-simulator-run.sh
 
     artifacts:
+      # The point of the whole build: pictures of the app running, and the
+      # device log that explains a white screen when there is one.
+      - build/simulator-screenshots/*.png
+      - build/simulator-screenshots/app-log.txt
       # So the generated project can be read without a Mac: Info.plist, and
       # Package.swift listing which plugin versions Capacitor linked.
       - ios/App/App/Info.plist
@@ -77,8 +74,8 @@ workflows:
       email:
         recipients:
           - moorelouis3@gmail.com
-        # Only shout when it breaks. A green build every push becomes noise
-        # and then gets filtered, which is how a red one gets missed.
+        # A green build now carries screenshots of the app actually running,
+        # which is worth opening rather than filtering.
         notify:
-          success: false
+          success: true
           failure: true
