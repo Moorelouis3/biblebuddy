@@ -62578,6 +62578,59 @@
           "at": "2026-10-13T00:58:21Z"
         }
       ]
+    },
+    {
+      "book": "Romans",
+      "chapter": 10,
+      "startedAt": "2026-10-13T01:45:44Z",
+      "finishedAt": "2026-10-13T01:58:14Z",
+      "durationMinutes": 12.5,
+      "sections": 6,
+      "cards": 28,
+      "verses": 21,
+      "notes": "New chapter, not a redo. Written to docs/bible-study-note-style.md. Themes: Paul's prayer for Israel's salvation, zeal without knowledge, the righteousness of the law vs the righteousness of faith, Christ as the end of the law, confessing with the mouth and believing in the heart, no difference between Jew and Greek, the chain from sent to preach to hear to believe to call, Isaiah and Joel quotes, faith coming by hearing, and God still stretching out His hands to a disobedient Israel.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-13T01:46:40Z"
+        },
+        {
+          "name": "target chapter determined: Romans 10 (new chapter, priority queue and redo backlog both empty, forward progress)",
+          "at": "2026-10-13T01:47:07Z"
+        },
+        {
+          "name": "KJV text fetched (Romans 10, 21 verses, raw.githubusercontent.com mirror)",
+          "at": "2026-10-13T01:47:30Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-13T01:53:10Z"
+        },
+        {
+          "name": "source file written: lib/romansTenSource.ts",
+          "at": "2026-10-13T01:54:17Z"
+        },
+        {
+          "name": "style checker clean (28 cards, 0 problems)",
+          "at": "2026-10-13T01:54:17Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, call, preserveExactPhraseBodies range)",
+          "at": "2026-10-13T01:55:15Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 28 cards)",
+          "at": "2026-10-13T01:55:15Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-13T01:58:14Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-13T02:00:03Z"
+        }
+      ]
     }
   ]
 }
