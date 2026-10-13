@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-10-13T06:43:41.673Z",
-  "nextChapter": "Exodus 29",
+  "updatedAt": "2026-10-13T10:32:44.783Z",
+  "nextChapter": "Exodus 30",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -744,21 +744,29 @@
     },
     "exodus-26-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-13T02:33:06.760Z",
-      "committedAt": "2026-10-13T02:43:32.501Z"
+      "committedAt": "2026-10-13T02:43:32.501Z",
+      "publishedAt": "2026-10-13T10:32:44.663Z"
     },
     "exodus-27-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-13T04:32:21.466Z",
-      "committedAt": "2026-10-13T04:42:00.454Z"
+      "committedAt": "2026-10-13T04:42:00.454Z",
+      "publishedAt": "2026-10-13T10:32:44.724Z"
     },
     "exodus-28-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-13T06:32:13.681Z",
-      "committedAt": "2026-10-13T06:43:41.673Z"
+      "committedAt": "2026-10-13T06:43:41.673Z",
+      "publishedAt": "2026-10-13T10:32:44.783Z"
+    },
+    "exodus-29-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-13T10:32:29.968Z"
     }
   },
   "priorityBooks": [
