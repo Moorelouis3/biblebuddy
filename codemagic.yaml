@@ -189,9 +189,17 @@ workflows:
     publishing:
       app_store_connect:
         auth: integration
-        # Straight to TestFlight, not to review. Review comes later and by
-        # hand, so a stray run can never submit the app by accident.
-        submit_to_testflight: true
+        # Upload only. The binary lands in TestFlight and internal testers
+        # can install it straight away.
+        #
+        # submit_to_testflight does something else than its name suggests: it
+        # asks Apple for *beta review*, which only external testers need. Apple
+        # allows one build per train in beta review at a time, so with it on,
+        # every build made while an earlier one is still in review ends as
+        # "post-processing failed" - build 7 did, with a perfectly good ipa
+        # already on App Store Connect. Turn it back on the day external
+        # testers are added.
+        submit_to_testflight: false
         submit_to_app_store: false
 
       email:

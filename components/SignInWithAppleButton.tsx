@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore, type ReactNode } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { isNativeApp } from "@/lib/nativeApp";
 import { signInWithAppleNatively } from "@/lib/nativeAuth";
@@ -50,7 +50,15 @@ type Props = {
   onBeforeSignIn?: () => void;
   /** Called when the native sheet succeeds - there is no redirect to carry it. */
   onSignedIn?: () => void;
+  /**
+   * Busy for the duration of the attempt. Cancelling the native sheet is not
+   * an error and not a success, so a page that only watched the other two
+   * callbacks would stay spinning forever.
+   */
+  onBusyChange?: (busy: boolean) => void;
   className?: string;
+  /** Replaces the label, e.g. with a spinner while signing in. */
+  children?: ReactNode;
 };
 
 export default function SignInWithAppleButton({
@@ -59,21 +67,26 @@ export default function SignInWithAppleButton({
   onError,
   onBeforeSignIn,
   onSignedIn,
+  onBusyChange,
   className,
+  children,
 }: Props) {
   // isNativeApp() reads the user agent, which does not exist during the
-  // server render. Deciding in an effect keeps the first paint identical on
-  // both sides rather than hydrating into a mismatch.
-  const [visible, setVisible] = useState(appleSignInEnabled());
+  // server render. The server snapshot is false, so the first paint matches on
+  // both sides and the button appears on the client pass without a flash of
+  // mismatched markup. (A useEffect+setState would do the same thing and is
+  // what the lint rule exists to stop.)
+  const native = useSyncExternalStore(
+    () => () => {},
+    () => isNativeApp(),
+    () => false,
+  );
 
-  useEffect(() => {
-    if (appleSignInEnabled() || isNativeApp()) setVisible(true);
-  }, []);
-
-  if (!visible) return null;
+  if (!appleSignInEnabled() && !native) return null;
 
   async function signIn() {
     onBeforeSignIn?.();
+    onBusyChange?.(true);
     try {
       if (await signInWithAppleNatively()) {
         onSignedIn?.();
@@ -85,13 +98,17 @@ export default function SignInWithAppleButton({
       const message =
         nativeError instanceof Error ? nativeError.message : "Could not start sign-in.";
       if (!/cancel/i.test(message)) onError?.(message);
+      onBusyChange?.(false);
       return;
     }
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "apple",
       options: redirectTo ? { redirectTo } : undefined,
     });
-    if (error) onError?.(error.message);
+    if (error) {
+      onError?.(error.message);
+      onBusyChange?.(false);
+    }
   }
 
   return (
@@ -108,8 +125,12 @@ export default function SignInWithAppleButton({
       }
       style={className ? undefined : { backgroundColor: "#000000" }}
     >
-      <AppleLogo />
-      <span>Continue with Apple</span>
+      {children ?? (
+        <>
+          <AppleLogo />
+          <span>Continue with Apple</span>
+        </>
+      )}
     </button>
   );
 }
