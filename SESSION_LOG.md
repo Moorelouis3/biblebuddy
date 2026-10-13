@@ -7782,3 +7782,7 @@ Next up: 1 Corinthians 6
 ## 2026-10-13T14:00:29Z (hourly chapter notes run)
 Chapter: 1 Corinthians 6 | Duration: 13 min | Sections: 6 | Cards: 24 | Status: pass
 Next up: 1 Corinthians 7
+
+## 2026-10-13T15:02:00Z (hourly chapter notes run)
+Chapter: 1 Corinthians 7 | Duration: 15 min | Sections: 12 | Cards: 41 | Status: pass
+Next up: 1 Corinthians 8

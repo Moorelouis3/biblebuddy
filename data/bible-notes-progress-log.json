@@ -63307,6 +63307,59 @@
           "at": "2026-10-13T14:01:00Z"
         }
       ]
+    },
+    {
+      "book": "1 Corinthians",
+      "chapter": 7,
+      "startedAt": "2026-10-13T14:47:08Z",
+      "finishedAt": "2026-10-13T15:02:00Z",
+      "durationMinutes": 14.9,
+      "sections": 12,
+      "cards": 41,
+      "verses": 40,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (706 packages, fresh clone). Both detour queues confirmed empty: data/bible-notes-priority-queue.json remaining is [] and data/bible-notes-style-redo-remaining.json remaining is [], so this was normal forward progress after 1 Corinthians 6, the latest entry in this log. Confirmed no lib/firstCorinthiansSevenSource.ts existed yet and no chapter 7 specific wiring in lib/bibleReaderStudyNotes.ts (only the legacy bulk file lib/firstCorinthiansOneToSixteenPersonalNotes.ts covered it). Fetched real KJV text for 1 Corinthians 7 (40 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter is Paul's extended answer to the Corinthians' own letter about marriage and singleness: mutual sexual duty within marriage and the danger of prolonged abstinence (1-5); marriage as permission rather than command, singleness as Paul's own gift, and better to marry than to burn (6-9); the Lord's own command against a believing spouse leaving a marriage (10-11); Paul's apostolic guidance for a believer married to an unbeliever, defining sanctified, settling the status of children of mixed marriages, and the Pauline allowance when an unbelieving spouse abandons the marriage (12-16); the principle of remaining in the calling one was in at conversion, illustrated by circumcision no longer mattering and bondservants belonging to Christ either way (17-24); Paul's judgment on virgins given the present distress of that era (25-28); the time is short and the exhortation to hold every earthly tie loosely because the fashion of this world passes away (29-31); serving the Lord without carefulness as the practical case for singleness, without ranking a wife's devotion beneath it (32-35); the specific family situation of a guardian and his unmarried virgin past the flower of her age (36-38); and the widow's liberty to remarry only in the Lord, closing on Paul's own confidence that the Spirit guided this chapter (39-40). Split into 12 sections (1-2, 3-5, 6-9, 10-11, 12-16, 17-20, 21-24, 25-28, 29-31, 32-35, 36-38, 39-40), all 40 verses covered with no gaps or overlaps, 41 total cards, about 1.0 card per verse, consistent with the epistle argument tracing density used for 1 Corinthians 1-6. scripts/check_bible_note_style.py was clean on the first pass across all 41 cards, 0 problems. A manual section 13 eye check confirmed every card opens with one of the four approved moves (define the word, correct the misreading, identify the vague reference, or state the point flat), defines its key terms in plain language (touch, due benevolence, incontinency, burn, sanctified, bondage, calling, servant, bought with a price, present distress, fashion, carefulness, distraction, flower of her age, only in the Lord), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet landing on either the scripture emoji or the arrow emoji, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 41 cards. Parser check passed exactly via getBibleReaderStudySections(\"1 Corinthians\", 7) (12/12 sections, verse ranges with no gaps, 41 total cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/firstCorinthiansSevenSource.ts, preserveExactPhraseBodies extended to cover 1 corinthians chapter 7, new function applyPersonalFirstCorinthiansSevenStudySections added and called immediately after applyPersonalFirstCorinthiansSixStudySections so it overrides chapter 7 specifically, without touching the wiring for chapters 8-16 which remain on the legacy bulk file for now. This was a new chapter, not a style redo (both backlog queues were empty). No usage limit, rate limit, block, or throttling occurred this run. Next up per canonical order: 1 Corinthians 8, currently only covered by the legacy bulk file lib/firstCorinthiansOneToSixteenPersonalNotes.ts.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-13T14:47:57Z"
+        },
+        {
+          "name": "target chapter determined: 1 Corinthians 7 (new chapter, normal forward progress)",
+          "at": "2026-10-13T14:48:35Z"
+        },
+        {
+          "name": "KJV text fetched for 1 Corinthians 7 (40 verses, GitHub raw mirror)",
+          "at": "2026-10-13T14:48:56Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-13T14:52:00Z"
+        },
+        {
+          "name": "source file written: lib/firstCorinthiansSevenSource.ts (12 sections, 41 phrase cards)",
+          "at": "2026-10-13T14:55:53Z"
+        },
+        {
+          "name": "style checker clean (41 cards, 0 problems)",
+          "at": "2026-10-13T14:55:59Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply function, preserveExactPhraseBodies range)",
+          "at": "2026-10-13T14:56:34Z"
+        },
+        {
+          "name": "parser check passed (12 sections, 41 cards, verbatim)",
+          "at": "2026-10-13T14:57:18Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-13T15:00:52Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-13T15:02:00Z"
+        }
+      ]
     }
   ]
 }
