@@ -7786,3 +7786,7 @@ Next up: 1 Corinthians 7
 ## 2026-10-13T15:02:00Z (hourly chapter notes run)
 Chapter: 1 Corinthians 7 | Duration: 15 min | Sections: 12 | Cards: 41 | Status: pass
 Next up: 1 Corinthians 8
+
+## 2026-10-13T15:58:26Z (hourly chapter notes run)
+Chapter: 1 Corinthians 8 | Duration: 12 min | Sections: 5 | Cards: 16 | Status: pass
+Next up: 1 Corinthians 9
