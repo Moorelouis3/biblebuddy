@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-30-explained",
+    title: "Exodus 30 Explained: Incense, Ransom Money, and Anointing Oil",
+    description:
+      "Exodus 30 explained verse by verse: the altar of incense, the half shekel ransom money, the bronze laver, and the holy anointing oil and incense.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-30-explained",
+    publishedAt: "2026-10-13",
+    readTime: "12 min read",
+    image: "/blog-banners/exodus-30-explained.jpg",
+    groupPost: {
+      title: "Exodus 30 Explained 📖",
+      content:
+        "An altar that never touches blood. A tax everyone pays the same.\n\n📌 Rich or poor, the ransom cost exactly half a shekel.\n\n📖 Incense burned every morning and evening, nothing else allowed on that altar.\n📖 A bronze laver where skipping the wash meant death.\n📖 One oil and one incense nobody else was allowed to copy.\n\nNew article on:\n🟢 why a **census** required a ransom for the soul\n🟢 what happened when two priests ignored the **holy incense** rule\n🟢 how the half shekel connects to the **temple tax** Jesus paid\n\nWhat line has God drawn in your life that you have started treating as casual? 🙏",
+    },
+  },
+  {
     slug: "exodus-29-explained",
     title: "Exodus 29 Explained: The Ordination of Aaron and His Sons",
     description:
