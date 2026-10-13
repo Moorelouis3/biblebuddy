@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-28-explained",
+    title: "Exodus 28 Explained: The Priestly Garments and the Breastplate",
+    description:
+      "Exodus 28 explained verse by verse: Aaron's priestly garments, the ephod, the breastplate of judgment, the Urim and Thummim, and the golden plate.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-28-explained",
+    publishedAt: "2026-10-13",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-28-explained.jpg",
+    groupPost: {
+      title: "Exodus 28 Explained 📖",
+      content:
+        "This chapter finally makes something to be worn.\n\n📌 Aaron carried the twelve tribes in two places at once.\n\n📖 Two stones on his shoulders, named for the tribes.\n📖 A breastplate of twelve stones worn over his heart.\n📖 Bells on his robe that had to keep sounding, or he could die.\n\nNew article on:\n🟢 what the **Urim and Thummim** actually were\n🟢 why Aaron wore a **gold plate** on his forehead\n🟢 how the **breastplate** stayed fastened to the ephod\n\nWho do you carry before God in prayer, the way Aaron carried Israel? 🙏",
+    },
+  },
+  {
     slug: "exodus-27-explained",
     title: "Exodus 27 Explained: The Bronze Altar and the Court of the Tabernacle",
     description:
