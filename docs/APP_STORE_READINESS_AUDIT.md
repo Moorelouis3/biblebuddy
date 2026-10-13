@@ -58,9 +58,9 @@ The one thing that cannot be checked before then: **the app has never run.**
 Compiling is not working. Safe areas, the status bar, whether the service
 worker behaves inside WKWebView, whether the 08:00 reminder actually fires,
 whether audio survives a locked screen - all unknown until TestFlight puts it
-on a real iPhone, and TestFlight needs the membership. Expect a list of small
-fixes on day one of Stage 2; that is normal, and it is why submission sits on
-23 Nov with slack rather than in October.
+on a real iPhone. Expect a list of small fixes the first day it runs; that is
+normal, and it is the only thing between here and submission that is not
+already done.
 
 ### Built on 11 Oct
 
@@ -80,17 +80,37 @@ fixes on day one of Stage 2; that is normal, and it is why submission sits on
 
 ---
 
-## The three stages
+## The plan — live before 1 November
 
-| | When | What it is |
+Re-anchored 2026-10-13. The old schedule (submit 23 Nov, launch 9 Dec) was
+built on paying the membership in late October. Louis paid on 12 October and
+most of what was scheduled for "after payday" was finished the same day, so
+six weeks of it stopped being real.
+
+**The date now has a reason rather than a guess behind it: Bible Buddy went
+public in November, so shipping the iPhone app before 1 November makes the
+launch its one-year birthday.**
+
+| | When | What |
 |---|---|---|
-| **1. Before the membership** | → 12 Oct | Build the app. Everything that doesn't need a paid Apple account. **Done.** |
-| **2. After the membership** | 12 Oct → ~1 Nov | ✅ €99 paid. Waiting on activation, then the Apple-gated pieces + TestFlight, and the first run on a real iPhone. |
-| **3. Submit** | ~1 Nov → 23 Nov | Store listing, privacy, reviewer access. **Launch stays 9 Dec.** Submitting early buys room for a rejection, not an earlier launch. |
+| ✅ Everything that needs no paid account | → 12 Oct | Shell, offline, audio, share, haptics, reminder. Done. |
+| ✅ Everything Apple gates | 13 Oct | Membership, App ID, Services ID, app record, listing, privacy, 13+ rating, free in 175 countries, content rights, signing key and certificate pipeline. Done. |
+| ⏳ First signed build to TestFlight | 13–14 Oct | The last technical gate. |
+| ⬜ On a real iPhone, fix what it shows | 14–16 Oct | **The only genuine unknown left.** |
+| ⬜ Screenshots, trader status, reviewer account | 16–17 Oct | |
+| ⬜ **Submit** | **~17 Oct** | Early on purpose - see below. |
+| ⬜ Review | 1–3 days, usually | |
+| ⬜ **Live** | **before 1 November** | |
 
-Two and a half weeks between submission and launch is deliberate: first
-submissions of app-shaped-websites usually get at least one conversation with
-review, and you want room for it rather than a panic in December.
+Submitting on the 17th rather than the 25th is the whole safety margin. A
+first submission of an app-shaped-website can draw one conversation with App
+Review, and that round trip costs days. Submit early and one rejection still
+lands inside October; submit late and it does not.
+
+Worth knowing either way: **January is the biggest month of the year for
+Bible apps.** Going live in October means the app enters the New Year wave
+with ratings and some search ranking already behind it, rather than three
+weeks old.
 
 ---
 
@@ -166,8 +186,8 @@ widgets wait too), TestFlight.
 5. App Review notes: demo credentials, and how reports are handled within 24
    hours. *(Apple requires — 1.2)*
 6. Export compliance: HTTPS only, exempt, but you still answer it.
-7. **Submit 23 Nov.** Review is usually 24–48 hours. Budget for one rejection.
-8. **Launch 9 Dec.**
+7. **Submit ~17 Oct.** Review is usually 24–48 hours. Budget for one rejection.
+8. **Live before 1 November** — the one-year birthday.
 
 iPhone only for the first release. Declaring iPad support means it has to
 actually work on iPad, and that is a second round of screenshots and layout
