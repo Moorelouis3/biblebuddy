@@ -63551,6 +63551,63 @@
           "at": "2026-10-13T17:58:40Z"
         }
       ]
+    },
+    {
+      "book": "1 Corinthians",
+      "chapter": 11,
+      "startedAt": "2026-10-13T18:46:17Z",
+      "finishedAt": "2026-10-13T18:57:25Z",
+      "durationMinutes": 11,
+      "sections": 9,
+      "cards": 36,
+      "verses": 34,
+      "notes": "New chapter (forward progress, not a style redo). Head covering and headship chain (3-16), divisions at the Lord's supper (17-22), institution of the Lord's supper (23-26), eating unworthily and the weak/sickly/chastened warning (27-32), closing practical instruction to tarry (33-34). About 1.06 cards per verse, matching the genesisThirtyOneSource.ts reference density. Style checker, parser check, and tsc --noEmit all clean on first pass.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-13T18:47:00Z"
+        },
+        {
+          "name": "git synced to origin/main (fixed stale detached HEAD)",
+          "at": "2026-10-13T18:47:10Z"
+        },
+        {
+          "name": "target chapter determined: 1 Corinthians 11 (new chapter, forward progress, both detour queues empty)",
+          "at": "2026-10-13T18:47:25Z"
+        },
+        {
+          "name": "KJV text fetched: 1 Corinthians 11, 34 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror",
+          "at": "2026-10-13T18:47:45Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-13T18:48:30Z"
+        },
+        {
+          "name": "source file written: lib/firstCorinthiansElevenSource.ts (9 sections, 36 cards)",
+          "at": "2026-10-13T18:52:30Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-10-13T18:52:38Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, apply function, call site)",
+          "at": "2026-10-13T18:52:50Z"
+        },
+        {
+          "name": "parser check passed (9 sections, 36 cards, no gaps/overlaps)",
+          "at": "2026-10-13T18:53:03Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-10-13T18:56:05Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-13T18:57:25Z"
+        }
+      ]
     }
   ]
 }
