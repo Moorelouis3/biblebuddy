@@ -58,8 +58,6 @@ const ATTEMPT_TIMEOUT_MS = 90_000;
  */
 const DISMISS_GRACE_MS = 1_800;
 
-/** How long to give the in-app sheet to show a page before trying Safari. */
-const SHEET_FALLBACK_MS = 4_000;
 
 type Provider = "google" | "apple";
 
@@ -68,6 +66,8 @@ export type NativeSignInResult =
   | { ok: false; reason: "cancelled" | "timeout" | "error"; message?: string };
 
 let listenerAttached = false;
+/** Set while the app is in the background with a sign-in attempt live. */
+let leftForBrowser = false;
 
 /** Load the plugin only on a device; importing it on the web pulls in nothing useful. */
 async function browserPlugin() {
@@ -178,12 +178,35 @@ export async function startNativeAuthListener(onSignedIn?: () => void) {
   // the session is already there and nobody should be left staring at a
   // spinner.
   await App.addListener("appStateChange", ({ isActive }) => {
-    if (!isActive) return;
+    if (!isActive) {
+      // Backgrounded. If an attempt is live, this is the browser taking over.
+      if (attempt) leftForBrowser = true;
+      return;
+    }
     void (async () => {
       if (await hasSession()) {
         finish({ ok: true });
         onSignedIn?.();
+        leftForBrowser = false;
+        return;
       }
+      // Back in the app, having gone out to the browser, with no session to
+      // show for it: they backed out. Without this the spinner would sit there
+      // until the timeout, which is most of two minutes of nothing.
+      if (!leftForBrowser || !attempt) return;
+      leftForBrowser = false;
+      const current = attempt;
+      current.graceTimer = window.setTimeout(() => {
+        void (async () => {
+          if (!attempt) return;
+          if (await hasSession()) {
+            finish({ ok: true });
+            onSignedIn?.();
+            return;
+          }
+          finish({ ok: false, reason: "cancelled" });
+        })();
+      }, DISMISS_GRACE_MS);
     })();
   });
 
@@ -372,14 +395,9 @@ export async function signInWithProviderNatively(
 ): Promise<NativeSignInResult | false> {
   if (!isNativeApp()) return false;
 
-  // Without the native half, Browser.open falls back to window.open, which a
-  // WebView ignores: the sheet never appears and nothing ever comes back.
-  // That is build 6's endless spinner, and it deserves a sentence rather than
-  // a silence.
-  if (!nativePluginAvailable("Browser")) {
-    return { ok: false, reason: "error", message: OUT_OF_DATE_BUILD };
-  }
-
+  // No Browser-plugin check and no in-app sheet. Two builds were spent on
+  // SFSafariViewController and neither ever put a Google page on screen, so
+  // the sheet is out of the critical path entirely - see openSignInPage.
   await startNativeAuthListener(onSignedIn);
 
   // skipBrowserRedirect hands us the URL instead of navigating the webview to
@@ -425,53 +443,49 @@ export async function signInWithProviderNatively(
   // promise never settles. Awaiting it meant the timeout below fired into the
   // void while the caller sat on the await, which is the shape of the endless
   // spinner. The attempt's own promise is the only clock now.
-  void openSignInPage(data.url);
+  openSignInPage(data.url);
   return settled;
 }
 
 /**
- * Get the provider's page in front of the person, by whichever route works.
+ * Get the provider's page in front of the person.
  *
- * Supabase is not at fault here: its authorize endpoint answers 302 to
- * accounts.google.com with the right client id and callback, checked by hand
- * on 2026-10-13. The whole failure is about getting a browser to open that URL
- * on the device.
+ * This is the system browser, deliberately, and it is the third attempt at
+ * this. What is established:
  *
- * So there is a second route now. If nothing has loaded in the in-app sheet
- * after a few seconds, hand the URL to the system browser. That is what build
- * 5 did by accident, and it failed then for a reason that no longer holds -
- * the session landed in Safari and the app never heard about it. The custom
- * scheme is registered now, so Safari finishes the sign-in and the deep link
- * brings it back to this webview, whose storage holds the PKCE verifier.
+ *   - Supabase is fine. Its authorize endpoint answers 302 to
+ *     accounts.google.com with the right client id and callback; checked by
+ *     hand on 2026-10-13.
+ *   - Google refuses OAuth inside an embedded webview, so the page cannot
+ *     simply load here.
+ *   - SFSafariViewController, via @capacitor/browser, never showed anything on
+ *     Louis's phone across builds 6 and 7, with the plugin's native half
+ *     linked in both. Two rounds of making that path more patient did not move
+ *     it, so it is no longer the route.
+ *   - The system browser DOES work. Build 5 proved it: Louis signed in
+ *     perfectly well there. The only thing wrong in build 5 was the return
+ *     trip - the session was written to the browser's storage and the app
+ *     never heard about it.
+ *
+ * The return trip is exactly what has been built since: the custom scheme is
+ * registered in Info.plist, and @capacitor/app's appUrlOpen catches the deep
+ * link. So the browser finishes the sign-in, iOS hands the callback to the
+ * app, and the code is exchanged here - in the webview whose storage holds
+ * the PKCE verifier, which is the half build 5 was missing.
+ *
+ * Nothing in this function can hang the attempt: there is no native call to
+ * wait on, and no promise that resolves in a UIKit completion handler.
  */
-async function openSignInPage(url: string) {
-  let loaded = false;
-  let pageLoaded: { remove: () => void } | null = null;
-  const Browser = await browserPlugin();
-
+function openSignInPage(url: string) {
+  // _system asks Capacitor's WKWebView delegate for the real browser. If the
+  // delegate is not there, a plain assignment gets the same treatment: an
+  // off-domain navigation is handed to the system browser because
+  // server.allowNavigation does not list the provider.
   try {
-    pageLoaded = await Browser.addListener("browserPageLoaded", () => {
-      loaded = true;
-    });
+    const opened = window.open(url, "_system");
+    if (opened) return;
   } catch {
-    // No listener is not a reason to stop; the fallback still runs.
+    // Fall through.
   }
-
-  // No presentationStyle. "popover" is an iPad shape, and on a phone it leaves
-  // the sheet's presentation to UIKit's adaptation rules rather than simply
-  // filling the screen, which is all an OAuth page should do.
-  void Browser.open({ url }).catch(() => {
-    // Swallowed deliberately - the fallback below is the real handler.
-  });
-
-  window.setTimeout(() => {
-    pageLoaded?.remove();
-    // Still nothing on screen, and the attempt is still live.
-    if (loaded || !attempt) return;
-    try {
-      window.open(url, "_system");
-    } catch {
-      window.location.href = url;
-    }
-  }, SHEET_FALLBACK_MS);
+  window.location.href = url;
 }
