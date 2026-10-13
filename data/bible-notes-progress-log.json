@@ -63087,6 +63087,59 @@
           "at": "2026-10-13T09:58:24Z"
         }
       ]
+    },
+    {
+      "book": "1 Corinthians",
+      "chapter": 3,
+      "startedAt": "2026-10-13T10:46:14Z",
+      "finishedAt": "2026-10-13T11:00:50Z",
+      "durationMinutes": 15,
+      "sections": 5,
+      "cards": 37,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (704 packages, fresh clone, about 39s). Priority queue (data/bible-notes-priority-queue.json) and style redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in both), so this was normal forward progress after 1 Corinthians 2, the latest entry in this log. Confirmed no lib/firstCorinthiansThreeSource.ts existed yet and no chapter 3 specific wiring in lib/bibleReaderStudyNotes.ts (chapter 3 was still on the legacy bulk file lib/firstCorinthiansOneToSixteenPersonalNotes.ts only). Fetched real KJV text for 1 Corinthians 3 (23 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the Corinthians as carnal babes still on milk instead of meat, with envying, strife, and division over Paul versus Apollos as the proof (1-4); Paul and Apollos reframed as ministers who only planted and watered while God alone gives the increase, both laborers together with God, the church as God's husbandry and building (5-9); Paul as the wise masterbuilder who laid the one foundation, Jesus Christ, with every builder's work tested by fire as gold, silver, and precious stones against wood, hay, and stubble, ending in reward for what survives and a saved but empty handed escape for what burns (10-15); the church as God's temple because the Spirit dwells in it, with a warning against defiling that temple (16-17); and the closing turn against worldly wisdom, becoming a fool to become wise, the Job and Psalms quotations on God catching the wise in their own craftiness, the call to stop glorying in men, and the sweeping all things are yours, and ye are Christ's, and Christ is God's that closes the chapter's argument (18-23). Split into 5 sections (1-4, 5-9, 10-15, 16-17, 18-23), all 23 verses covered with no gaps or overlaps, 37 total cards, about 1.61 cards per verse, in the established range for this book. scripts/check_bible_note_style.py found one problem on the first pass (a 9 word bullet), fixed, then came back clean across all 37 cards. A manual section 13 eye check, done while drafting, caught and split several comma spliced or two-sentences-per-line body lines before the automated pass, confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet landing on a scripture emoji, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file (two KJV semicolons were swapped for commas in two card titles to satisfy the no semicolon rule), with no duplicate card titles across all 37 cards. Parser check passed exactly via getBibleReaderStudySections(\"1 corinthians\", 3) (5/5 sections, verse ranges 1-4/5-9/10-15/16-17/18-23 with no gaps, 37 total cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/firstCorinthiansThreeSource.ts, the 1 corinthians condition in preserveExactPhraseBodies widened from chapters 1-2 to include chapter 3, new applyPersonalFirstCorinthiansThreeStudySections() function added calling replaceStudySectionsForBookRange(\"1 corinthians\", 3, 3, FIRST_CORINTHIANS_THREE_PERSONAL_SECTIONS), invoked right after applyPersonalFirstCorinthiansTwoStudySections() so the single chapter override replaces the bulk chapter 3 sections without touching the bulk file coverage of chapters 4-16. This was a new chapter, normal forward progress, not a style redo (both backlog queues were empty). Next forward-progress target is 1 Corinthians 4, which still carries only the legacy firstCorinthiansOneToSixteenPersonalNotes.ts bulk file wiring.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-13T10:46:53Z"
+        },
+        {
+          "name": "target chapter determined: 1 Corinthians 3 (new chapter, forward progress, both queues empty)",
+          "at": "2026-10-13T10:47:37Z"
+        },
+        {
+          "name": "KJV text fetched: 1 Corinthians 3, 23 verses",
+          "at": "2026-10-13T10:48:30Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-13T10:49:00Z"
+        },
+        {
+          "name": "source file written: lib/firstCorinthiansThreeSource.ts (5 sections, 37 cards)",
+          "at": "2026-10-13T10:55:00Z"
+        },
+        {
+          "name": "style checker clean (1 bullet word count issue found and fixed, then 0 issues across 37 cards)",
+          "at": "2026-10-13T10:55:08Z"
+        },
+        {
+          "name": "wired into reader: lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, apply function + call)",
+          "at": "2026-10-13T10:55:18Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections(1 corinthians, 3) = 5 sections / 37 cards",
+          "at": "2026-10-13T10:55:23Z"
+        },
+        {
+          "name": "tsc clean: npx tsc --noEmit -p . zero errors",
+          "at": "2026-10-13T10:55:56Z"
+        },
+        {
+          "name": "progress files logged: BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals updated, progress-log.json entry appended",
+          "at": "2026-10-13T11:00:50Z"
+        }
+      ]
     }
   ]
 }
