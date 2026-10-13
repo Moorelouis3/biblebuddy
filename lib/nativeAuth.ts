@@ -49,14 +49,17 @@ export const NATIVE_AUTH_SCHEME = "net.mybiblebuddy.app";
 export const NATIVE_AUTH_REDIRECT = `${NATIVE_AUTH_SCHEME}://auth-callback`;
 
 /** How long to wait before calling an attempt dead. */
-const ATTEMPT_TIMEOUT_MS = 90_000;
+const ATTEMPT_TIMEOUT_MS = 45_000;
 
 /**
  * The deep link and the sheet closing race each other: iOS often reports the
  * sheet dismissed a beat before the URL reaches the app. Give the URL that
  * beat before concluding the person cancelled.
  */
-const DISMISS_GRACE_MS = 1_800;
+const DISMISS_GRACE_MS = 1_200;
+
+/** How many of those grace periods to wait before calling it a cancellation. */
+const RESUME_LOOKS = 8;
 
 
 type Provider = "google" | "apple";
@@ -68,6 +71,22 @@ export type NativeSignInResult =
 let listenerAttached = false;
 /** Set while the app is in the background with a sign-in attempt live. */
 let leftForBrowser = false;
+
+/**
+ * Why the last deep link failed, kept for the screen that comes back.
+ *
+ * iOS may relaunch the app to deliver the callback rather than resuming it. In
+ * that case the page that started the sign-in is gone, there is no attempt to
+ * settle and no error box to write into - so without this, a failed exchange
+ * is indistinguishable from never having tried. Read it once on mount.
+ */
+let pendingAuthError: string | null = null;
+
+export function consumeNativeAuthError(): string | null {
+  const message = pendingAuthError;
+  pendingAuthError = null;
+  return message;
+}
 
 /** Load the plugin only on a device; importing it on the web pulls in nothing useful. */
 async function browserPlugin() {
@@ -173,6 +192,29 @@ export async function startNativeAuthListener(onSignedIn?: () => void) {
     void handleAuthUrl(url, onSignedIn);
   });
 
+  // The listener above only catches a deep link that arrives while the app is
+  // already running. iOS is free to RELAUNCH the app to deliver one instead,
+  // and when it does, the webview reloads and appUrlOpen has already fired by
+  // the time any of this JavaScript exists. The URL is then only available
+  // here. Without this the app comes back from the browser showing its last
+  // screenshot - a spinner that says "Signing in with Google" and belongs to a
+  // page that no longer exists - and nothing ever happens.
+  try {
+    const launch = await App.getLaunchUrl();
+    if (launch?.url) await handleAuthUrl(launch.url, onSignedIn);
+  } catch {
+    // Not every platform implements it. Not a reason to stop.
+  }
+
+  // The belt to that pair of braces. Any route to a session at all - including
+  // one established by code this module never saw - ends the attempt and gets
+  // the person moving.
+  supabase.auth.onAuthStateChange((event) => {
+    if (event !== "SIGNED_IN" && event !== "TOKEN_REFRESHED") return;
+    finish({ ok: true });
+    onSignedIn?.();
+  });
+
   // Coming back to the foreground. If a sign-in finished in a way we did not
   // observe - the deep link consumed while the webview was suspended, say -
   // the session is already there and nobody should be left staring at a
@@ -195,16 +237,26 @@ export async function startNativeAuthListener(onSignedIn?: () => void) {
       // until the timeout, which is most of two minutes of nothing.
       if (!leftForBrowser || !attempt) return;
       leftForBrowser = false;
-      const current = attempt;
-      current.graceTimer = window.setTimeout(() => {
+      // One look is not enough: the deep link, the code exchange and the
+      // cookie write all happen in the seconds after the app comes forward.
+      // Keep looking for a while before concluding they backed out.
+      let looks = 0;
+      const poll = window.setInterval(() => {
         void (async () => {
-          if (!attempt) return;
+          if (!attempt) {
+            window.clearInterval(poll);
+            return;
+          }
           if (await hasSession()) {
+            window.clearInterval(poll);
             finish({ ok: true });
             onSignedIn?.();
             return;
           }
-          finish({ ok: false, reason: "cancelled" });
+          if (++looks >= RESUME_LOOKS) {
+            window.clearInterval(poll);
+            finish({ ok: false, reason: "cancelled" });
+          }
         })();
       }, DISMISS_GRACE_MS);
     })();
@@ -235,9 +287,9 @@ export async function startNativeAuthListener(onSignedIn?: () => void) {
 async function handleAuthUrl(url: string | undefined, onSignedIn?: () => void) {
   if (!url || !url.startsWith(NATIVE_AUTH_SCHEME)) return;
 
-  // The sheet has done its job either way - close it before anything that can
-  // throw, so a failure never leaves a Safari sheet stuck on screen.
-  await closeSheet();
+  // The sheet, if there is one, has done its job either way. Not awaited:
+  // nothing about dismissing a window should be able to delay the exchange.
+  void closeSheet();
 
   try {
     const parsed = new URL(url);
@@ -251,7 +303,8 @@ async function handleAuthUrl(url: string | undefined, onSignedIn?: () => void) {
       hash.get("error_description") ??
       hash.get("error");
     if (failure) {
-      finish({ ok: false, reason: "error", message: readable(failure) });
+      pendingAuthError = readable(failure);
+      finish({ ok: false, reason: "error", message: pendingAuthError });
       return;
     }
 
@@ -278,12 +331,10 @@ async function handleAuthUrl(url: string | undefined, onSignedIn?: () => void) {
     finish({ ok: true });
     onSignedIn?.();
   } catch (error) {
+    // describe() never returns a token or a code - only the message.
     console.error("[nativeAuth] could not finish sign-in:", describe(error));
-    finish({
-      ok: false,
-      reason: "error",
-      message: error instanceof Error ? error.message : "Sign-in could not be completed.",
-    });
+    pendingAuthError = error instanceof Error ? error.message : "Sign-in could not be completed.";
+    finish({ ok: false, reason: "error", message: pendingAuthError });
   }
 }
 

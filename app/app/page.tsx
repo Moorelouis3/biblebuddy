@@ -7,7 +7,11 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending } from "@/lib/termsAcceptance";
-import { signInWithProviderNatively, startNativeAuthListener } from "@/lib/nativeAuth";
+import {
+  consumeNativeAuthError,
+  signInWithProviderNatively,
+  startNativeAuthListener,
+} from "@/lib/nativeAuth";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
 
 /**
@@ -62,7 +66,12 @@ export default function AppEntryPage() {
       } catch {
         // No session, or storage is blocked. Either way: show the welcome.
       }
-      if (!cancelled) setCheckingSession(false);
+      if (cancelled) return;
+      // A sign-in that failed while this page did not exist - iOS relaunched
+      // the app to deliver the callback - has nowhere else to say so.
+      const carried = consumeNativeAuthError();
+      if (carried) setError(carried);
+      setCheckingSession(false);
     })();
     return () => {
       cancelled = true;
