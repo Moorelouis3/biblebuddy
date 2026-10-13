@@ -31,9 +31,25 @@ workflows:
       branch_patterns:
         - pattern: main
           include: true
-      # Codemagic has no path filter, so cancel runs that changed nothing
-      # relevant rather than burning free minutes on a Bible notes commit.
       cancel_previous_builds: true
+
+    # The changeset filter is load-bearing, not tidiness.
+    #
+    # The hourly Bible-notes routine commits to main all day. Without this,
+    # every one of those pushes started an iOS build, and because
+    # cancel_previous_builds is on, each one killed the build queued behind
+    # it. On 2026-10-13, with Codemagic's macOS queue backed up, that meant
+    # the iOS build was cancelled and re-queued faster than it could ever
+    # reach a machine - it would never have run at all.
+    when:
+      changeset:
+        includes:
+          - "capacitor.config.ts"
+          - "codemagic.yaml"
+          - "native/"
+          - "scripts/ios-"
+          - "package.json"
+          - "package-lock.json"
 
     scripts:
       - name: Install dependencies
