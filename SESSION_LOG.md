@@ -7790,3 +7790,7 @@ Next up: 1 Corinthians 8
 ## 2026-10-13T15:58:26Z (hourly chapter notes run)
 Chapter: 1 Corinthians 8 | Duration: 12 min | Sections: 5 | Cards: 16 | Status: pass
 Next up: 1 Corinthians 9
+
+## 2026-10-13T17:06:40Z (hourly chapter notes run)
+Chapter: 1 Corinthians 9 | Duration: 20 min | Sections: 7 | Cards: 54 | Status: pass
+Next up: 1 Corinthians 10
