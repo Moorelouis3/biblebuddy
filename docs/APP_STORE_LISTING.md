@@ -8,6 +8,43 @@ Drafted 2026-10-11. See `APP_STORE_READINESS_AUDIT.md` for the plan.
 
 ---
 
+## Account facts (2026-10-13)
+
+| | |
+|---|---|
+| Team ID | `Q8TDSF2RP2` |
+| App ID / bundle | `net.mybiblebuddy.app` — Push Notifications + Sign in with Apple enabled |
+| Services ID (Sign in with Apple, web flow) | `net.mybiblebuddy.signin` → `https://<supabase-ref>.supabase.co/auth/v1/callback` |
+| Apple ID (the app's number) | `6822155944` |
+| SKU | `biblebuddy-ios-001` |
+| Store name as registered | **Bible Buddy: Study & Devotions** |
+
+## Already entered in App Store Connect
+
+Everything below is saved and verified after a reload — it does not need
+retyping at submission time.
+
+- Name, subtitle, promotional text, description, keywords
+- Support URL, marketing URL, version 1.0, copyright
+- Primary category **Reference**, secondary **Books**
+- Privacy policy URL
+- App Review notes (the about / UGC / AI / account-deletion blocks below) —
+  **without** the demo account, which does not exist yet
+
+## Still to enter, and why it was left
+
+| Item | Why it is not done |
+|---|---|
+| EU trader status | A legal declaration about who is selling. Apple removes apps from the EU store without it, so this is required, not optional. Louis only. |
+| Content rights answer | A rights attestation. Louis only. |
+| App Review demo account + "Sign-in required" | The account does not exist. Needs real data in it or Guideline 4.2 gets more likely. |
+| App Review contact phone | Not known to the agent. |
+| App Privacy questionnaire | Answers are drafted above; the form is long and the browser viewport kept changing under it. Next session. |
+| Screenshots | Need the app running on a device. |
+| Build | Needs signing, which needs keys only Louis can download and paste. |
+
+---
+
 ## App Privacy ("nutrition label")
 
 Apple asks, per data type: do you collect it, is it linked to the user, and
