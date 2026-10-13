@@ -7778,3 +7778,7 @@ Next up: 1 Corinthians 5
 ## 2026-10-13T12:58:23Z (hourly chapter notes run)
 Chapter: 1 Corinthians 5 | Duration: 11 min | Sections: 4 | Cards: 19 | Status: pass
 Next up: 1 Corinthians 6
+
+## 2026-10-13T14:00:29Z (hourly chapter notes run)
+Chapter: 1 Corinthians 6 | Duration: 13 min | Sections: 6 | Cards: 24 | Status: pass
+Next up: 1 Corinthians 7
