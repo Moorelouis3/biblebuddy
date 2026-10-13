@@ -63,7 +63,7 @@ const BREADCRUMB_LABELS: Record<string, string> = {
   "bible-study-games": "Bible Trivia",
   "bible-trivia": "Trivia",
   scrambled: "Retired",
-  "biblebuddy-tv": "My Bible Buddy TV",
+  "biblebuddy-tv": "Bible Buddy TV",
   browse: "Browse",
   notes: "Notes",
   "people-in-the-bible": "People in the Bible",

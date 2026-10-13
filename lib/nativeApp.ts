@@ -43,7 +43,7 @@ export function nativePlatform(): "ios" | "android" | "web" {
 /**
  * Open a link outside the app. In the native app this uses the Capacitor
  * Browser plugin (an in-app Safari/Chrome sheet) when it is installed, so
- * outside sites never replace My Bible Buddy inside the WebView. On the web it
+ * outside sites never replace Bible Buddy inside the WebView. On the web it
  * opens a new tab.
  */
 export function openExternal(url: string) {

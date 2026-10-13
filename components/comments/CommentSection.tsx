@@ -185,7 +185,7 @@ export default function CommentSection({
       setCurrentUserIsAdmin((email || "").toLowerCase() === ADMIN_EMAIL);
     }
 
-    const safeName = displayName || "My Bible Buddy Member";
+    const safeName = displayName || "Bible Buddy Member";
     const nameParts = splitFullName(displayName);
     setProfileFirstName(nameParts.firstName);
     setProfileLastName(nameParts.lastName);
@@ -208,7 +208,7 @@ export default function CommentSection({
 
     const rows = ((data || []) as Comment[]).map((row) => ({
       ...row,
-      user_name: hasRequiredFullName(row.user_name) ? row.user_name : "My Bible Buddy Member",
+      user_name: hasRequiredFullName(row.user_name) ? row.user_name : "Bible Buddy Member",
       like_count: Math.max(0, Number(row.like_count || 0)),
       liked: false,
     }));
@@ -269,7 +269,7 @@ export default function CommentSection({
       setComments((prev) =>
         prev.map((c) => ({
           ...c,
-          user_name: profileMap[c.user_id]?.display_name ?? "My Bible Buddy Member",
+          user_name: profileMap[c.user_id]?.display_name ?? "Bible Buddy Member",
           profile_image_url: profileMap[c.user_id]?.profile_image_url ?? null,
           member_badge: profileMap[c.user_id]?.member_badge ?? null,
           is_paid: profileMap[c.user_id]?.is_paid ?? false,
@@ -732,7 +732,7 @@ export default function CommentSection({
           return {
             user_id: userId,
             username: null,
-            display_name: profile?.display_name || "My Bible Buddy Member",
+            display_name: profile?.display_name || "Bible Buddy Member",
             profile_image_url: profile?.profile_image_url ?? null,
           };
         }),

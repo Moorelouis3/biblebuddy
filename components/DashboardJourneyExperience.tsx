@@ -555,7 +555,7 @@ function BibleBookIcon() {
   );
 }
 
-// My Bible Buddy is free, and the App Store (guideline 3.1.1) forbids sending
+// Bible Buddy is free, and the App Store (guideline 3.1.1) forbids sending
 // people to an outside checkout for digital content. Every Pro / Lifetime /
 // $50 upsell, free-plan gate and Stripe checkout on this dashboard is switched
 // off here, independent of CORE_STUDY_IS_FREE. Kept as a hard switch (not
@@ -2521,7 +2521,7 @@ export default function DashboardJourneyExperience({
     const statusDetail =
       completedDays > 0
         ? `At your current pace, you are headed to finish the Bible on ${expectedFinishDateLabel}. Each completed lesson can move that date closer.`
-        : `Start with today's lesson and My Bible Buddy will update your expected finish date as your reading rhythm grows.`;
+        : `Start with today's lesson and Bible Buddy will update your expected finish date as your reading rhythm grows.`;
     return {
       expectedDay,
       statusLabel,
@@ -2865,7 +2865,7 @@ export default function DashboardJourneyExperience({
   }, [profile?.selected_buddy_avatar]);
 
   const selectedBuddy = liveSelectedBuddyId ? getBuddyAvatar(liveSelectedBuddyId) : null;
-  // Retired. The "My Bible Buddy 3.0 is now live" mode gate had no way out other
+  // Retired. The "Bible Buddy 3.0 is now live" mode gate had no way out other
   // than picking an option, and its choice only persisted once a userId had
   // loaded, so it could reappear every visit and block the dashboard. Nothing
   // should stand between someone and the app.
@@ -5690,7 +5690,7 @@ export default function DashboardJourneyExperience({
       const { error } = await supabase.from("group_posts").insert({
         group_id: dashboardGroup.id,
         user_id: userId,
-        display_name: profile?.display_name || "My Bible Buddy",
+        display_name: profile?.display_name || "Bible Buddy",
         category: "general",
         content,
       });
@@ -5719,7 +5719,7 @@ export default function DashboardJourneyExperience({
       const { error } = await supabase.from("group_posts").insert({
         group_id: dashboardGroup.id,
         user_id: userId,
-        display_name: profile?.display_name || "My Bible Buddy",
+        display_name: profile?.display_name || "Bible Buddy",
         category: "general",
         content,
         parent_post_id: postId,
@@ -6026,8 +6026,8 @@ export default function DashboardJourneyExperience({
                 </h2>
                 <p className="bb-text-secondary mt-2 text-sm font-semibold leading-6">
                   {embeddedBibleSelectedBook
-                    ? "Pick one of the My Bible Buddy studies available for this book."
-                    : "Only books that already have My Bible Buddy studies are shown here."}
+                    ? "Pick one of the Bible Buddy studies available for this book."
+                    : "Only books that already have Bible Buddy studies are shown here."}
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-2">
@@ -6489,7 +6489,7 @@ export default function DashboardJourneyExperience({
           <div className="mx-auto w-full max-w-2xl overflow-hidden rounded-[28px] bg-[var(--bb-card,#ffffff)]">
             <iframe
               key={groupIframeKey}
-              title="My Bible Buddy Group"
+              title="Bible Buddy Group"
               src={`/study-groups/${dashboardGroup.id}/chat?${groupDeepLinkParams.toString()}`}
               className="w-full border-0 bg-[var(--bb-card,#ffffff)]"
               style={{ height: `${dashboardGroupEmbedHeight}px` }}
@@ -6521,7 +6521,7 @@ export default function DashboardJourneyExperience({
 
     if (!userId || !episode.available) return;
 
-    const categoryLabel = bibleBuddyTvCategories.find((category) => category.id === title.category)?.label || "My Bible Buddy TV";
+    const categoryLabel = bibleBuddyTvCategories.find((category) => category.id === title.category)?.label || "Bible Buddy TV";
     const actionLabel = buildBibleBuddyTvWatchLabel({
       categoryLabel,
       title: title.title,
@@ -6642,7 +6642,7 @@ export default function DashboardJourneyExperience({
               <img src={featuredEpisode.thumbnail || featuredTitle.heroImage || featuredTitle.poster} alt="" loading="lazy" decoding="async" className="h-64 w-full object-cover opacity-75" />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-white/80">My Bible Buddy TV</p>
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-white/80">Bible Buddy TV</p>
                 <h2 className="mt-1 text-3xl font-black leading-tight">{featuredTitle.title}</h2>
                 <p className="mt-2 line-clamp-2 text-sm font-semibold leading-5 text-white/85">{featuredEpisode.summary}</p>
                 <span className="mt-4 inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-black text-black">Ã¢â€“Â¶ Play</span>
@@ -6816,8 +6816,8 @@ export default function DashboardJourneyExperience({
             <div className="flex justify-center">
               <LouisAvatar mood="wave" size={96} />
             </div>
-            <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">My Bible Buddy 3.0</p>
-            <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">My Bible Buddy 3.0 is now live.</h2>
+            <p className="mt-4 text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Bible Buddy 3.0</p>
+            <h2 className="mt-2 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy 3.0 is now live.</h2>
             <p className="mx-auto mt-3 max-w-sm text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
               Please select your study mode so your dashboard can load the right Bible study experience.
             </p>
@@ -6830,7 +6830,7 @@ export default function DashboardJourneyExperience({
               className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-5 text-left transition hover:-translate-y-0.5 hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-card,#ffffff)] hover:shadow-sm"
             >
               <span className="text-xs font-black uppercase tracking-[0.14em] text-[var(--bb-accent,#2f7fe8)]">Guided</span>
-              <span className="mt-1 block text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">My Bible Buddy Study Journey</span>
+              <span className="mt-1 block text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Buddy Study Journey</span>
               <span className="mt-2 block text-sm font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)]">
                 Start from Genesis 1, The Creation of the World, and work through the Bible with story-based explanations, daily tasks, notes, trivia, and reflection.
               </span>
@@ -7512,10 +7512,10 @@ export default function DashboardJourneyExperience({
           <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">What is lifetime?</p>
           <h3 className="mt-2 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">$50 full access for life</h3>
           <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            This is a Founder Buddy price. My Bible Buddy is a new Bible reading app, and we depend on the support of early users to keep growing.
+            This is a Founder Buddy price. Bible Buddy is a new Bible reading app, and we depend on the support of early users to keep growing.
           </p>
           <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-            In return, we are offering one $50 payment for full access to My Bible Buddy for life. No yearly renewal. You keep Pro study notes, guided tools, and Bible journey features as My Bible Buddy grows.
+            In return, we are offering one $50 payment for full access to Bible Buddy for life. No yearly renewal. You keep Pro study notes, guided tools, and Bible journey features as Bible Buddy grows.
           </p>
           <button
             type="button"
@@ -7794,7 +7794,7 @@ export default function DashboardJourneyExperience({
 
           <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-[#fff0cf] px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-[#a66d00] shadow-[inset_0_1px_0_rgba(255,255,255,0.82)]">
             <span aria-hidden="true">Ã°Å¸Å½Â</span>
-            <span>My Bible Buddy Pro Gift</span>
+            <span>Bible Buddy Pro Gift</span>
           </div>
 
           <h2 className="mx-auto mt-5 max-w-sm font-serif text-[34px] font-black leading-[1.02] tracking-normal text-[#101828]">
@@ -7894,9 +7894,9 @@ export default function DashboardJourneyExperience({
           </div>
 
           <div className="mx-auto mt-3 max-w-sm space-y-1.5 text-left text-[13px] font-semibold leading-5 text-[var(--bb-text-secondary,#4b5563)] sm:text-center">
-            <p>My Bible Buddy Free helps you stay consistent.</p>
+            <p>Bible Buddy Free helps you stay consistent.</p>
             <p>
-              My Bible Buddy Pro gives you <span className="font-black text-[var(--bb-accent,#2f7fe8)]">background audio, full Study Notes, and full trivia access</span>.
+              Bible Buddy Pro gives you <span className="font-black text-[var(--bb-accent,#2f7fe8)]">background audio, full Study Notes, and full trivia access</span>.
             </p>
           </div>
 
@@ -7997,7 +7997,7 @@ export default function DashboardJourneyExperience({
             x
           </button>
           <div className="inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">
-            My Bible Buddy Pro
+            Bible Buddy Pro
           </div>
           <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">{modalTitle}</h2>
           <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
@@ -8082,7 +8082,7 @@ export default function DashboardJourneyExperience({
         id: "devices",
         icon: "devices",
         iconClass: "bg-[#ddecff] text-[#2f6bcf]",
-        title: "Use My Bible Buddy Across Devices",
+        title: "Use Bible Buddy Across Devices",
         pain: "You may start on your phone, continue on a laptop, then come back later from somewhere else.",
         pro: "Pro keeps your journey, notes, and progress connected so your study does not feel trapped on one screen.",
         result: "Your Bible plan follows you wherever you open BibleBuddy.",
@@ -8432,9 +8432,9 @@ export default function DashboardJourneyExperience({
           </button>
 
           <div className="pr-9 text-left sm:text-center">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">My Bible Buddy Pro</p>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Bible Buddy Pro</p>
             <h2 className="mt-1 font-serif text-[26px] font-black leading-[1.02] tracking-normal text-[var(--bb-text-primary,#111827)] sm:text-[28px]">
-              Go deeper with My Bible Buddy Pro.
+              Go deeper with Bible Buddy Pro.
             </h2>
             <div className="mx-auto mt-1.5 h-1 w-36 rounded-full bg-[var(--bb-accent,#2f7fe8)] opacity-70 sm:w-44" aria-hidden="true" />
           </div>
@@ -11399,7 +11399,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Premium Trivia</p>
               <h3 className="mt-2 text-lg font-black leading-tight text-[var(--bb-text-primary,#111827)]">Unlock Trivia for this day</h3>
               <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-                Trivia is part of My Bible Buddy Premium. Upgrade to test what you learned from today&apos;s reading.
+                Trivia is part of Bible Buddy Premium. Upgrade to test what you learned from today&apos;s reading.
               </p>
               <button
                 type="button"
@@ -12224,7 +12224,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             You just completed today&apos;s lesson.
           </p>
           <p className="mx-auto mt-4 max-w-[34rem] text-[17px] font-black leading-7 text-[#10224b] sm:text-[18px] sm:leading-8">
-            Upgrade to unlock My Bible Buddy Premium for full access to powerful study tools.
+            Upgrade to unlock Bible Buddy Premium for full access to powerful study tools.
           </p>
         </div>
 
@@ -13147,7 +13147,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           navigator.canShare({ files: [file] })
         ) {
           await navigator.share({
-            title: "My Bible Buddy Progress",
+            title: "Bible Buddy Progress",
             text: shareText,
             files: [file],
           });
@@ -13220,7 +13220,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <div className="grid h-9 w-9 place-items-center rounded-[10px] bg-[linear-gradient(180deg,#2567ff_0%,#0f4fe8_100%)] text-[20px] font-black text-white shadow-[0_8px_16px_rgba(37,103,255,0.22)]">
                     B
                   </div>
-                  <p className="text-[19px] font-black tracking-[-0.02em] text-[#10224b]">My Bible Buddy</p>
+                  <p className="text-[19px] font-black tracking-[-0.02em] text-[#10224b]">Bible Buddy</p>
                 </div>
 
                 <p className="mt-4 text-center text-[10px] font-bold uppercase tracking-[0.32em] text-[#496ab3]">
@@ -15031,7 +15031,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const showAudio = true;
     const cover = getBibleYearDayCoverImage(day);
     const readingSummary = formatBibleYearMediaReference(day);
-    const audioIntroCopy = day.summary?.trim() || `Study ${readingSummary} with My Bible Buddy.`;
+    const audioIntroCopy = day.summary?.trim() || `Study ${readingSummary} with Bible Buddy.`;
     const previousBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === day.dayNumber - 1) || null;
     const nextBibleYearDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === day.dayNumber + 1) || null;
     const verseBreakdownSections = lesson.sections;
@@ -15535,7 +15535,7 @@ Before we understand redemption, we need to understand what God made humanity fo
       if (typeof navigator !== "undefined" && navigator.share) {
         await navigator.share({
           title: `Bible In One Year: ${day.title}`,
-          text: `Study ${day.reference} with My Bible Buddy.`,
+          text: `Study ${day.reference} with Bible Buddy.`,
           url: typeof window !== "undefined" ? window.location.href : undefined,
         });
       }
@@ -16036,7 +16036,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   <p>Ã°Å¸â€Â¥ and how this chapter fits into God's bigger story</p>
                 </div>
                 <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#e7d4bd)]">
-                  check out the Study Notes for today's study inside My Bible Buddy.
+                  check out the Study Notes for today's study inside Bible Buddy.
                 </p>
                 <button
                   type="button"
@@ -16126,7 +16126,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               Ãƒâ€”
             </button>
             <div className="inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">
-              My Bible Buddy Pro
+              Bible Buddy Pro
             </div>
             <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">Go deeper in God's Word</h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
@@ -16210,7 +16210,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               ÃƒÆ’Ã¢â‚¬â€
             </button>
             <div className="inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">
-              My Bible Buddy Pro
+              Bible Buddy Pro
             </div>
             <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">Take Bible study deeper</h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
@@ -16266,7 +16266,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               x
             </button>
             <div className="inline-flex rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#f6b44b)_16%,transparent)] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#f6b44b)]">
-              My Bible Buddy Pro
+              Bible Buddy Pro
             </div>
             <h2 className="mt-4 pr-10 text-2xl font-black leading-tight">Choose your Pro plan</h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
@@ -16357,7 +16357,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     const orderedShareRewardsReferrals = [...shareRewardsReferrals].sort(
       (a, b) => new Date(b.trial_started_at).getTime() - new Date(a.trial_started_at).getTime(),
     );
-    const shareMessage = `Join me on My Bible Buddy. It helps you know where to start, understand what you read, and stay consistent with Bible study. ${shareUrl}`;
+    const shareMessage = `Join me on Bible Buddy. It helps you know where to start, understand what you read, and stay consistent with Bible study. ${shareUrl}`;
     const copyInviteLink = async () => {
       await navigator.clipboard.writeText(shareUrl);
       setShareCopied(true);
@@ -16365,7 +16365,7 @@ Before we understand redemption, we need to understand what God made humanity fo
     };
     const openNativeShare = async () => {
       if (navigator.share) {
-        await navigator.share({ title: "My Bible Buddy", text: "Join me on My Bible Buddy.", url: shareUrl });
+        await navigator.share({ title: "Bible Buddy", text: "Join me on Bible Buddy.", url: shareUrl });
         return;
       }
       await copyInviteLink();
@@ -16383,7 +16383,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <div className="min-w-0 flex-1">
                   <h2 className="text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Invite Bible Buddies</h2>
                   <p className="mt-2 text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">
-                    Invite friends to My Bible Buddy and help them start reading Scripture consistently.
+                    Invite friends to Bible Buddy and help them start reading Scripture consistently.
                   </p>
                 </div>
               </div>
@@ -16399,7 +16399,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                       {shareUrl}
                     </p>
                     <p className="mt-2 text-xs font-bold leading-5 text-[var(--bb-text-muted,#6b7280)]">
-                      Send it anywhere. When someone clicks your link and signs up, My Bible Buddy credits the signup back to you.
+                      Send it anywhere. When someone clicks your link and signs up, Bible Buddy credits the signup back to you.
                     </p>
                   </div>
 
@@ -17209,7 +17209,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 className="mx-auto flex w-full max-w-xl items-center justify-between gap-3 rounded-2xl border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_34%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_82%,var(--bb-card,#ffffff)),color-mix(in_srgb,var(--bb-card,#ffffff)_72%,transparent))] px-4 py-3 text-left shadow-sm transition hover:brightness-95"
               >
                 <span className="min-w-0">
-                  <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Go deeper with My Bible Buddy Pro</span>
+                  <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">Go deeper with Bible Buddy Pro</span>
                   <span className="mt-0.5 block text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">Unlock deeper study notes, protect progress, and keep your Bible journey connected.</span></span>
                 <span className="shrink-0 rounded-full bg-[var(--bb-button,#2f7fe8)] px-3 py-1.5 text-xs font-black text-[var(--bb-button-text,#ffffff)]">
                   Learn more
@@ -17676,7 +17676,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                         <>
                           <p className="text-sm font-bold text-gray-950">Free Bible Study access</p>
                           <p className="mt-2 text-sm leading-6 text-gray-700">
-                            As a free user, you can use one Bible study at a time. Upgrade to Pro to switch between every My Bible Buddy Bible study and keep exploring different studies.
+                            As a free user, you can use one Bible study at a time. Upgrade to Pro to switch between every Bible Buddy Bible study and keep exploring different studies.
                           </p>
                           <Link
                             href="/upgrade"
@@ -18573,7 +18573,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                     ? "bg-transparent text-[var(--bb-accent,#2f7fe8)] sm:bg-[var(--bb-accent-soft,rgba(47,127,232,0.10))] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,transparent)]"
                     : "bg-transparent text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.08))] sm:bg-[var(--bb-surface-soft,#f4f8ff)] sm:shadow-[0_0_18px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_18%,transparent)] sm:ring-1 sm:ring-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_16%,transparent)] sm:hover:bg-[var(--bb-accent-soft,rgba(47,127,232,0.12))] sm:hover:shadow-[0_0_24px_color-mix(in_srgb,var(--bb-accent,#2f7fe8)_26%,transparent)]"
                 }`}
-                aria-label="Invite friends to My Bible Buddy"
+                aria-label="Invite friends to Bible Buddy"
                 data-dashboard-nav-key="share"
               >
                 <span className={`grid h-7 w-7 place-items-center rounded-full ${inviteTabActive ? "bg-[var(--bb-accent,#2f7fe8)] text-white" : ""}`} aria-hidden="true">
@@ -18638,7 +18638,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             You&apos;ve already started building a rhythm in God&apos;s Word. Create a free account to save your streak, sync progress across devices, and keep your journey backed up.
           </p>
           <div className="mt-5 grid gap-2 text-left">
-            {["Save your streak", "Use My Bible Buddy on phone and desktop", "Post reflections and keep notes permanently"].map((benefit) => (
+            {["Save your streak", "Use Bible Buddy on phone and desktop", "Post reflections and keep notes permanently"].map((benefit) => (
               <div key={benefit} className="flex items-center gap-3 rounded-2xl bg-[var(--bb-surface-soft,#f4f8ff)] px-4 py-3 text-sm font-black text-[var(--bb-text-primary,#111827)]">
                 <span className="grid h-7 w-7 place-items-center rounded-full bg-[var(--bb-accent,#2f7fe8)] text-white" aria-hidden="true">Ã¢Å“â€œ</span>
                 <span>{benefit}</span>
@@ -18677,7 +18677,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[var(--bb-accent,#2f7fe8)]">Guest journey</p>
-              <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">You are using My Bible Buddy as a guest.</h2>
+              <h2 className="mt-2 text-2xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">You are using Bible Buddy as a guest.</h2>
             </div>
             <button type="button" onClick={() => setGuestInfoModalOpen(false)} className="grid h-9 w-9 place-items-center rounded-full bg-[var(--bb-surface-soft,#f4f8ff)] text-lg font-black text-[var(--bb-text-secondary,#4b5563)]" aria-label="Close guest info">
               x
@@ -18928,7 +18928,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <p className="text-sm font-bold text-gray-950">One active Bible study at a time</p>
               <p className="mt-2 text-sm leading-6 text-gray-700">
                 {PAID_UPGRADE_UI_ENABLED
-                  ? "As a free My Bible Buddy, you can follow one Bible study at a time. Finish your current study first, or upgrade to Pro to switch studies whenever you want."
+                  ? "As a free Bible Buddy, you can follow one Bible study at a time. Finish your current study first, or upgrade to Pro to switch studies whenever you want."
                   : "You can follow one Bible study at a time. Finish your current study first."}
               </p>
               {PAID_UPGRADE_UI_ENABLED ? (
@@ -18993,7 +18993,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <LouisAvatar mood="wave" size={74} />
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Free My Bible Buddy</p>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#2f7fe8]">Free Bible Buddy</p>
               <h2 className="mt-1 text-xl font-black leading-tight text-gray-950">
                 {freePlanGate?.kind === "study"
                   ? "One Bible study at a time"
@@ -19036,7 +19036,7 @@ Before we understand redemption, we need to understand what God made humanity fo
           ) : (
             <div className="mt-4 space-y-3">
               <p className="text-sm font-semibold leading-6 text-gray-700">
-                Hey, as a free My Bible Buddy, you get one new Bible study chapter each day.
+                Hey, as a free Bible Buddy, you get one new Bible study chapter each day.
               </p>
               <div className="rounded-2xl bg-[#f6f9ff] p-4 text-center">
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-[#5b6f92]">
@@ -19096,7 +19096,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <div>
                 <h2 className="text-2xl font-bold text-gray-950">How Bible Study Works</h2>
                 <p className="mt-2 text-sm leading-6 text-gray-600">
-                  My Bible Buddy is built for steady Bible study, not rushing through a timer.
+                  Bible Buddy is built for steady Bible study, not rushing through a timer.
                 </p>
               </div>
               <button
@@ -19132,7 +19132,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <section>
                 <h3 className="text-lg font-bold text-gray-950">Ã°Å¸â€Â¥ Your Daily Streak</h3>
                 <p className="mt-2 leading-7">
-                  To keep your streak going, log in to My Bible Buddy each day. The streak is about showing up consistently.
+                  To keep your streak going, log in to Bible Buddy each day. The streak is about showing up consistently.
                 </p>
                 <p className="mt-2 leading-7">
                   You do not have to finish every chapter task in one day. The chapter study is where your Bible actions and task progress stay organized.
@@ -19145,7 +19145,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                   Your current chapter stays active until the chapter tasks are complete. If Proverbs 1 takes one day, great. If it takes a few days, or even a week, that is okay too.
                 </p>
                 <p className="mt-2 leading-7">
-                  When you come back, My Bible Buddy helps you continue where you left off instead of making you feel behind.
+                  When you come back, Bible Buddy helps you continue where you left off instead of making you feel behind.
                 </p>
               </section>
 
@@ -19194,7 +19194,7 @@ Before we understand redemption, we need to understand what God made humanity fo
               <section className="rounded-2xl border border-[#b9dcf4] bg-[#eaf5ff] p-4">
                 <h3 className="text-lg font-bold text-gray-950">Ã¢Å“â€¦ When A Chapter Is Complete</h3>
                 <p className="mt-2 leading-7">
-                  Once the chapter study is finished, My Bible Buddy celebrates the completion and moves you to the next chapter. The goal is simple: keep showing up, keep learning, and keep moving forward at a healthy pace.
+                  Once the chapter study is finished, Bible Buddy celebrates the completion and moves you to the next chapter. The goal is simple: keep showing up, keep learning, and keep moving forward at a healthy pace.
                 </p>
               </section>
             </div>

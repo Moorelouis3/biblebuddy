@@ -172,7 +172,7 @@ const BANK: WeeklyPollBankEntry[] = [
   {
     key: "bible_buddy_help_wish",
     subjectTitle: STUDY,
-    question: "What would you most like My Bible Buddy to help you with?",
+    question: "What would you most like Bible Buddy to help you with?",
     options: ["Understanding Scripture", "Reading consistently", "Learning Bible history", "Applying Scripture to life"],
   },
   {

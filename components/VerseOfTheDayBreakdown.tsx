@@ -104,7 +104,7 @@ function VotdDiscussion({ entry, userId }: { entry: VerseOfTheDayEntry; userId: 
         .select("display_name, username, profile_image_url")
         .eq("user_id", userId)
         .maybeSingle();
-      const displayName = profile?.display_name || profile?.username || "My Bible Buddy Member";
+      const displayName = profile?.display_name || profile?.username || "Bible Buddy Member";
 
       const { data: inserted, error } = await supabase
         .from("group_posts")
@@ -158,7 +158,7 @@ function VotdDiscussion({ entry, userId }: { entry: VerseOfTheDayEntry; userId: 
                 </span>
               )}
               <div className="min-w-0 rounded-2xl bg-[var(--bb-surface-soft,#f4f8ff)] px-3.5 py-2.5">
-                <p className="text-xs font-black text-[var(--bb-text-primary,#111827)]">{comment.display_name || "My Bible Buddy Member"}</p>
+                <p className="text-xs font-black text-[var(--bb-text-primary,#111827)]">{comment.display_name || "Bible Buddy Member"}</p>
                 <p className="mt-0.5 whitespace-pre-wrap text-sm font-semibold leading-relaxed text-[var(--bb-text-secondary,#374151)]">{comment.content}</p>
               </div>
             </div>
@@ -302,7 +302,7 @@ export default function VerseOfTheDayBreakdown({
     try {
       // Native sheet in the app, Web Share on the web, clipboard last.
       const { shareContent } = await import("@/lib/nativeShare");
-      const outcome = await shareContent({ title: "Verse of the Day - My Bible Buddy", text, url });
+      const outcome = await shareContent({ title: "Verse of the Day - Bible Buddy", text, url });
       if (outcome === "copied") {
         setShareState("copied");
         setTimeout(() => setShareState("idle"), 2000);

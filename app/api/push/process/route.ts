@@ -46,10 +46,10 @@ function cleanNotificationBody(actorName: string | null, message: string | null 
 function normalizePushPayload(payload: PushJobRow["payload"]) {
   const rawTitle = (payload?.title || "").trim();
   const actorName =
-    rawTitle.replace(/\s+from My Bible Buddy\s*$/i, "").trim() ||
+    rawTitle.replace(/\s+from Bible Buddy\s*$/i, "").trim() ||
     null;
   const body = cleanNotificationBody(actorName, payload?.body);
-  const title = actorName || rawTitle || "My Bible Buddy";
+  const title = actorName || rawTitle || "Bible Buddy";
 
   return {
     title,

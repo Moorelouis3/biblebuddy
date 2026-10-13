@@ -269,7 +269,7 @@ export default function AnalyticsDashboardView({
           <div className="flex items-start justify-between gap-3">
             <div>
               <h1 className="flex items-center gap-2 whitespace-nowrap text-[21px] font-black sm:text-[32px]">
-                <span className="text-[#2563eb]">📖</span> My Bible Buddy <span className="text-[#cbd5e1]">|</span> Analytics
+                <span className="text-[#2563eb]">📖</span> Bible Buddy <span className="text-[#cbd5e1]">|</span> Analytics
               </h1>
               <p className="mt-1 text-sm font-medium text-[#64748b]">Growth, engagement, and retention at a glance.</p>
             </div>

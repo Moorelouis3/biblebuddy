@@ -39,7 +39,7 @@ export default function StudyGroupsPage() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="text-center">
         <p className="text-sm font-semibold text-gray-900">Opening Group...</p>
-        <p className="text-sm text-gray-500 mt-1">Taking you to the official My Bible Buddy group.</p>
+        <p className="text-sm text-gray-500 mt-1">Taking you to the official Bible Buddy group.</p>
       </div>
     </div>
   );

@@ -360,7 +360,7 @@ export default function WhoWasAdamPage() {
           </p>
           <p>
             This chapter comes alive in a whole new way when you walk through it slowly, verse by
-            verse, inside <strong>My Bible Buddy</strong>. And it is completely free.
+            verse, inside <strong>Bible Buddy</strong>. And it is completely free.
           </p>
         </div>
       </section>

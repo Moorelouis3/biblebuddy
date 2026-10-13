@@ -24,12 +24,12 @@ export default function BlogPostingSchema({ slug }: { slug: string }) {
     author: {
       "@type": "Person",
       name: "Louis",
-      jobTitle: "Founder of My Bible Buddy",
+      jobTitle: "Founder of Bible Buddy",
       url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
-      name: "My Bible Buddy",
+      name: "Bible Buddy",
       url: SITE_URL,
       logo: {
         "@type": "ImageObject",

@@ -182,7 +182,7 @@ export async function maybeRequestAppReview(opts: {
 }
 
 /**
- * The manual "Rate My Bible Buddy" row for Settings. This opens the store listing
+ * The manual "Rate Bible Buddy" row for Settings. This opens the store listing
  * outright, which is allowed, is not rate-limited, and does NOT consume one of
  * the three sheets - so it is the right home for a permanent link.
  *

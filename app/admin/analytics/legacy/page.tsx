@@ -1567,7 +1567,7 @@ function AnalyticsDrilldownPanel({
   const config = {
     active_users: { title: "Active Users", subtitle: "Everyone with at least one tracked action in this timeframe." },
     actions: { title: "Master Actions", subtitle: "The complete tracked activity feed for this timeframe." },
-    signups: { title: "New Users", subtitle: "Who started using My Bible Buddy, where they came from, and where they are now. Includes guests - an account with no email is still a real user." },
+    signups: { title: "New Users", subtitle: "Who started using Bible Buddy, where they came from, and where they are now. Includes guests - an account with no email is still a real user." },
     days_completed: { title: "Days Completed", subtitle: "Every Bible in One Year completion recorded in this timeframe." },
   }[kind];
   const rowCount = kind === "active_users" ? data?.activeUsers.length : kind === "actions" ? data?.actions.length : kind === "signups" ? data?.signups.length : data?.daysCompleted.length;
@@ -2151,7 +2151,7 @@ function RevenueAnalyticsSection({
         <SimpleAnalyticsKpiCard
           title="Overall Revenue"
           value={loading ? "..." : revenue?.revenueRange || "$0"}
-          helper="My Bible Buddy revenue in this timeframe"
+          helper="Bible Buddy revenue in this timeframe"
           accent="blue"
         />
         <SimpleAnalyticsKpiCard
@@ -6333,7 +6333,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
       <div className={`grid ${embedded ? "min-h-[420px]" : "min-h-screen"} ${embedded ? "" : "bg-[var(--bb-background,#0e1218)]"} place-items-center p-6`}>
         <div className="max-w-md rounded-2xl border border-[var(--bb-card-border,#374151)] bg-[var(--bb-card,#19212c)] p-6 text-center shadow-sm">
           <h1 className="text-2xl font-bold text-[var(--bb-text-primary,#f9fafb)]">Owner analytics only</h1>
-          <p className="mt-2 text-sm text-[var(--bb-text-secondary,#d1d5db)]">This dashboard is only available to the My Bible Buddy owner account.</p>
+          <p className="mt-2 text-sm text-[var(--bb-text-secondary,#d1d5db)]">This dashboard is only available to the Bible Buddy owner account.</p>
         </div>
       </div>
     );
@@ -6754,7 +6754,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                   : activeView === "bible-year"
                     ? "Open any day to see starts, task completion, users, and drop-off for that Bible study day."
                     : activeView === "traffic-sources"
-                      ? "See which sources are bringing people to the My Bible Buddy landing page."
+                      ? "See which sources are bringing people to the Bible Buddy landing page."
                       : "See who opened study notes, which note they opened, and when they opened it."}
               </p>
             </div>
@@ -6887,7 +6887,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                 <FounderMetricCard
                   title="Total Users"
                   value={formatNumber(businessMetrics.totalUsers)}
-                  helper="All registered My Bible Buddy accounts."
+                  helper="All registered Bible Buddy accounts."
                   icon="visitors"
                 />
                 <FounderMetricCard
@@ -6899,7 +6899,7 @@ function AnalyticsPageContent({ embedded = false, legacy = false }: { embedded?:
                 <FounderMetricCard
                   title="Audio Plays"
                   value={formatNumber(data?.audioEngagement?.totalPlays || 0)}
-                  helper="How many My Bible Buddy audio lessons were played."
+                  helper="How many Bible Buddy audio lessons were played."
                   icon="play"
                 />
               </div>

@@ -5,7 +5,7 @@ import { getCommunityEvent } from "@/lib/communityEvents";
 // How many people have joined a community study, for visitors who are not
 // logged in (2026-09-19). community_event_members is readable only to signed
 // in users, so a logged out reader arriving from the Proverbs emails saw
-// "Be the first My Bible Buddy to join the journey" while 69 people had already
+// "Be the first Bible Buddy to join the journey" while 69 people had already
 // joined. Returns a count only - never names, photos or ids.
 
 export const runtime = "nodejs";

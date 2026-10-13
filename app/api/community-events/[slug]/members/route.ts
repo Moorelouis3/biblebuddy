@@ -22,7 +22,7 @@ const MAX_MEMBERS = 40;
 
 function firstName(profile: { display_name?: string | null; username?: string | null }) {
   const raw = (profile.display_name || profile.username || "").trim();
-  if (!raw) return "My Bible Buddy";
+  if (!raw) return "Bible Buddy";
   return raw.split(/\s+/)[0].slice(0, 20);
 }
 

@@ -163,13 +163,13 @@ export default function CommunityEventPage() {
             row.user_id,
             {
               user_id: row.user_id,
-              display_name: row.display_name || row.username || "My Bible Buddy",
+              display_name: row.display_name || row.username || "Bible Buddy",
               profile_image_url: row.profile_image_url || null,
             },
           ]),
         );
         const page = ids.map(
-          (id) => byId.get(id) || { user_id: id, display_name: "My Bible Buddy", profile_image_url: null },
+          (id) => byId.get(id) || { user_id: id, display_name: "Bible Buddy", profile_image_url: null },
         );
         setParticipants((current) => {
           const seen = new Set(current.map((p) => p.user_id));
@@ -270,7 +270,7 @@ export default function CommunityEventPage() {
                   ...current,
                   {
                     user_id: joinUserId,
-                    display_name: (me as any)?.display_name || (me as any)?.username || "My Bible Buddy",
+                    display_name: (me as any)?.display_name || (me as any)?.username || "Bible Buddy",
                     profile_image_url: (me as any)?.profile_image_url || null,
                   },
                 ],
@@ -383,7 +383,7 @@ export default function CommunityEventPage() {
       {joinButton}
       {!joined && !userId && !authLoading ? (
         <p className="-mt-2 text-center text-xs font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-          Already have a My Bible Buddy account?{" "}
+          Already have a Bible Buddy account?{" "}
           <Link
             href={`/login?next=${encodeURIComponent(`/events/${event.slug}`)}`}
             className="font-black text-[var(--bb-accent,#2f7fe8)] underline"
@@ -460,7 +460,7 @@ export default function CommunityEventPage() {
           <p className="mt-4 text-center text-sm font-bold text-[var(--bb-text-secondary,#4b5563)]">
             {totalMembers && totalMembers > 0
               ? "Sign in to see who is studying with you."
-              : "Be the first My Bible Buddy to join the journey."}
+              : "Be the first Bible Buddy to join the journey."}
           </p>
         ) : (
           <>
@@ -521,7 +521,7 @@ export default function CommunityEventPage() {
           </span>
         </label>
         <p className="mt-2 text-center text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-          Free inside My Bible Buddy · {event.dateRangeLabel}
+          Free inside Bible Buddy · {event.dateRangeLabel}
         </p>
       </section>
 

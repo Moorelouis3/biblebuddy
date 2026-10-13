@@ -3067,7 +3067,7 @@ function getDay9TeachingTexture(section: PersonalGenesisPhraseSectionInput, head
     return [
       "Hagar and Ishmael are outside Abraham's tent, but they are not outside God's sight.",
       "The wilderness scene teaches that God hears the vulnerable, the rejected, and the desperate.",
-      "My Bible Buddy readers should not rush past this pain; God's mercy here is practical, personal, and life-saving.",
+      "Bible Buddy readers should not rush past this pain; God's mercy here is practical, personal, and life-saving.",
     ];
   }
 

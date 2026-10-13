@@ -169,7 +169,7 @@ export default function CommunityEventBanner({
           </p>
           <p className="text-[13px] font-bold leading-snug text-[#f4ecdd] sm:text-base">{sub}</p>
           {state.phase === "countdown" ? (
-            <p className="text-[11px] font-semibold text-[#bfa877] sm:text-xs">Live daily on My Bible Buddy</p>
+            <p className="text-[11px] font-semibold text-[#bfa877] sm:text-xs">Live daily on Bible Buddy</p>
           ) : null}
           {participants !== null && !joined ? (
             <p className="text-[11px] font-semibold text-[#bfa877] sm:text-xs">

@@ -184,7 +184,7 @@ function replaceRoboticHeadings(note: string) {
     .replace(/### 🧭 How The Story Is Moving/g, "")
     .replace(/### 🔎 Walking Through The Verses/g, "")
     .replace(/### 🔎 Verse \d+/g, "")
-    .replace(/# My Bible Buddy Deep Takeaways/g, "# Final Thought")
+    .replace(/# Bible Buddy Deep Takeaways/g, "# Final Thought")
     .replace(/# What To Carry Forward/g, "# Carry This Forward")
     .replace(/# The Big Lesson/g, "# The Big Lesson");
 }

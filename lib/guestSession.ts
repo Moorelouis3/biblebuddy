@@ -7,7 +7,7 @@ import { getSignupAttributionFromBrowser } from "./signupAttribution";
 /**
  * Guest sessions — study without signing up.
  *
- * My Bible Buddy already supported anonymous users, but only through the landing
+ * Bible Buddy already supported anonymous users, but only through the landing
  * questionnaire on `/`. Someone arriving from a blog post, a search result or a
  * shared link had no way to become a guest, so every study action failed.
  *
@@ -98,7 +98,7 @@ async function ensureGuestProfile(userId: string, source: string) {
 /**
  * Record a new user, once, when they choose to study.
  *
- * Using the app IS the conversion. My Bible Buddy is free and earns through
+ * Using the app IS the conversion. Bible Buddy is free and earns through
  * in-app promos, so a guest who studies daily and never gives an email has
  * completed the funnel. Analytics used to count only created_free_account,
  * which just the email form fires, so those people were invisible.
@@ -203,7 +203,7 @@ async function createGuest(source: string): Promise<GuestSessionResult> {
  *
  * Measured over 3,026 sign-ups since 1 July: 1,872 were anonymous and only 6.4%
  * of guests ever attached an email. So 62% of growth arrived, used the app, and
- * left no way to reach them - and email is the channel My Bible Buddy is being
+ * left no way to reach them - and email is the channel Bible Buddy is being
  * built on. The way in is now the landing pages: the blog stays public, each
  * post points at a study's page, and that page asks for name, email and
  * password before the app opens.

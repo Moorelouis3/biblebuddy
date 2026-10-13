@@ -452,7 +452,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
       candidates.push(withLouisCard(createRecommendation({
         priority: 100,
         greeting,
-        contextLine: "Your profile is still one of the fastest ways to make My Bible Buddy feel like your space.",
+        contextLine: "Your profile is still one of the fastest ways to make Bible Buddy feel like your space.",
         recommendationLine: missingBits.length > 0
           ? `Add ${missingBits.join(", ")} so people can recognize you, and so the app feels more personal right away.`
           : "Finish setting up your profile so the rest of the app feels more connected to you.",
@@ -462,11 +462,11 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         category: "profile",
         cardTheme: "purple",
       }), [
-        { title: "Hey, you still have not set up your profile yet", subtitle: "Take a minute and finish it so My Bible Buddy feels more personal, and so other people can actually recognize you." },
+        { title: "Hey, you still have not set up your profile yet", subtitle: "Take a minute and finish it so Bible Buddy feels more personal, and so other people can actually recognize you." },
         { title: "Hey, your profile still needs a little love", subtitle: "Add the missing pieces so the app feels more like your space and less like a blank account." },
-        { title: "Hey, finish your profile when you get a second", subtitle: "Your name, photo, and bio help My Bible Buddy feel more personal faster." },
+        { title: "Hey, finish your profile when you get a second", subtitle: "Your name, photo, and bio help Bible Buddy feel more personal faster." },
         { title: "Hey, letâ€™s get your profile looking right", subtitle: "A finished profile makes the app feel more real the second people see your name, picture, and bio." },
-        { title: "Hey, do not leave your profile half done", subtitle: "Clean that up now and the rest of My Bible Buddy will feel way more connected to you." },
+        { title: "Hey, do not leave your profile half done", subtitle: "Clean that up now and the rest of Bible Buddy will feel way more connected to you." },
       ]));
     }
 
@@ -523,18 +523,18 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         priority: 96,
         greeting,
         contextLine: "You have not stepped into the Bible Study Group yet.",
-        recommendationLine: "That is where the community side of My Bible Buddy starts to click. You can follow the live study, read what other people are learning, and stop studying alone.",
+        recommendationLine: "That is where the community side of Bible Buddy starts to click. You can follow the live study, read what other people are learning, and stop studying alone.",
         primaryButtonText: "Open Bible Study Group",
         primaryButtonHref: "/dashboard",
         level: 1,
         category: "group",
         cardTheme: "green",
       }), [
-        { title: "Hey, you have not checked out the Bible Study Group yet", subtitle: "That is where the My Bible Buddy community gets together, studies Scripture, and talks about what everyone is learning." },
-        { title: "Hey, you should step into the Bible Study Group", subtitle: "This is where the live study, real discussion, and community side of My Bible Buddy all start to come alive." },
+        { title: "Hey, you have not checked out the Bible Study Group yet", subtitle: "That is where the Bible Buddy community gets together, studies Scripture, and talks about what everyone is learning." },
+        { title: "Hey, you should step into the Bible Study Group", subtitle: "This is where the live study, real discussion, and community side of Bible Buddy all start to come alive." },
         { title: "Hey, do not study alone the whole time", subtitle: "The Bible Study Group is where people read together, reflect together, and actually build community around Scripture." },
         { title: "Hey, go see what the Bible Study Group is about", subtitle: "If you want the app to feel more alive, this is the place where people are really showing up together." },
-        { title: "Hey, the group side of My Bible Buddy is waiting on you", subtitle: "Open the study group and see how the weekly study and community conversations come together." },
+        { title: "Hey, the group side of Bible Buddy is waiting on you", subtitle: "Open the study group and see how the weekly study and community conversations come together." },
       ]));
     } else if (false) {
       const { data: currentSeriesRows } = await supabase
@@ -658,8 +658,8 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
           greeting,
           contextLine: contextLine(
             actionDate,
-            `you finished ${chapterRef} in the My Bible Buddy Reading Plan.`,
-            `It's been a while since you last opened the My Bible Buddy Reading Plan.`
+            `you finished ${chapterRef} in the Bible Buddy Reading Plan.`,
+            `It's been a while since you last opened the Bible Buddy Reading Plan.`
           ),
           recommendationLine: `Your next chapter is ${nextChapter.book} ${nextChapter.chapter}, so you already know exactly where to jump back in.`,
           primaryButtonText: `Read ${nextChapter.book} ${nextChapter.chapter}`,
@@ -896,28 +896,28 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         priority: 63,
         greeting,
         contextLine: "Push alerts are still off on this account.",
-        recommendationLine: "Turn them on so you do not miss new group activity, messages, or things happening inside My Bible Buddy.",
+        recommendationLine: "Turn them on so you do not miss new group activity, messages, or things happening inside Bible Buddy.",
         primaryButtonText: "Turn On Push Alerts",
         primaryButtonHref: "/dashboard",
         level: 2,
         category: "general",
         cardTheme: "blue",
       }), [
-        { title: "Hey, you should turn on push notifications", subtitle: "Click here and do that so you do not miss things happening in My Bible Buddy." },
+        { title: "Hey, you should turn on push notifications", subtitle: "Click here and do that so you do not miss things happening in Bible Buddy." },
         { title: "Hey, push alerts are still off", subtitle: "Turn them on so new messages, group activity, and updates can actually reach you." },
-        { title: "Hey, do not miss what is happening", subtitle: "Enable push alerts so My Bible Buddy can let you know when new stuff comes in." },
+        { title: "Hey, do not miss what is happening", subtitle: "Enable push alerts so Bible Buddy can let you know when new stuff comes in." },
         { title: "Hey, it is probably time to switch push alerts on", subtitle: "That way you do not have to keep checking the app to know when something new happened." },
-        { title: "Hey, let My Bible Buddy send you alerts", subtitle: "Turn push on so important things can reach you instead of getting missed." },
+        { title: "Hey, let Bible Buddy send you alerts", subtitle: "Turn push on so important things can reach you instead of getting missed." },
       ]));
     }
 
-    // There is no Pro to upsell any more — My Bible Buddy is free. Without this
+    // There is no Pro to upsell any more — Bible Buddy is free. Without this
     // guard Louis would still pitch an upgrade to the most engaged users.
     if (!CORE_STUDY_IS_FREE && profile.is_paid !== true && (loginActions.length >= 10 || streak >= 7 || (allActions.length >= 25 && daysSinceActive !== null && daysSinceActive <= 7))) {
       candidates.push(withLouisCard(createRecommendation({
         priority: 61,
         greeting,
-        contextLine: "You have been using My Bible Buddy for a while now.",
+        contextLine: "You have been using Bible Buddy for a while now.",
         recommendationLine: "If the app has really been helping you, it might be time to look at what Pro opens up for your study life.",
         primaryButtonText: "See Pro",
         primaryButtonHref: "/upgrade",
@@ -925,10 +925,10 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         category: "upgrade",
         cardTheme: "gold",
       }), [
-        { title: "Hey, you have been using My Bible Buddy for a while now", subtitle: "Have you thought about upgrading? Tap here and see why Pro might be worth it for you." },
-        { title: "Hey, if My Bible Buddy has been helping you, look at Pro", subtitle: "See what opens up when the credit wall is gone and the full Bible study library is unlocked." },
+        { title: "Hey, you have been using Bible Buddy for a while now", subtitle: "Have you thought about upgrading? Tap here and see why Pro might be worth it for you." },
+        { title: "Hey, if Bible Buddy has been helping you, look at Pro", subtitle: "See what opens up when the credit wall is gone and the full Bible study library is unlocked." },
         { title: "Hey, you might be ready for Pro now", subtitle: "You have already been showing up, so take a look at what upgrading would add to your study flow." },
-        { title: "Hey, want to go deeper with My Bible Buddy", subtitle: "Tap here and see what Pro gives you if you want more room to study without limits." },
+        { title: "Hey, want to go deeper with Bible Buddy", subtitle: "Tap here and see what Pro gives you if you want more room to study without limits." },
         { title: "Hey, it may be time to look at upgrading", subtitle: "If you are using the app a lot now, Pro might make the whole experience feel smoother." },
       ]));
     }
@@ -949,7 +949,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
     const recommendedDevotional = pickRecommendedDevotional(recommendedDevotionals || []);
     if (recommendedDevotional) {
       const fallbackRecommendation: DailyRecommendation = {
-        greeting: "Welcome to My Bible Buddy.",
+        greeting: "Welcome to Bible Buddy.",
         contextLine: `${recommendedDevotional.title} is a strong place to begin if you want a guided story and a clear next step.`,
         recommendationLine: "Start with Day 1 today and let the app lead you into a simple, steady rhythm.",
         primaryButtonText: "Start Day 1",
@@ -966,7 +966,7 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
     }
 
     const defaultRecommendation: DailyRecommendation = {
-      greeting: "Welcome to My Bible Buddy.",
+      greeting: "Welcome to Bible Buddy.",
       contextLine: "There is a lot here, but you only need one good next step.",
       recommendationLine: "Open the Bible today and start with one chapter.",
       primaryButtonText: "Open the Bible",

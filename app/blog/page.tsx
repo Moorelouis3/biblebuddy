@@ -7,14 +7,14 @@ import BlogFeatured from "@/components/blog/BlogFeatured";
 import { BLOG_ARTICLES } from "@/lib/blogContent";
 
 export const metadata: Metadata = {
-  title: "My Bible Buddy Blog | Bible Study Articles, Verse Breakdowns, and Church History",
+  title: "Bible Buddy Blog | Bible Study Articles, Verse Breakdowns, and Church History",
   description:
-    "Read My Bible Buddy articles that help you understand Scripture, study the Bible, learn church history, and build a daily Bible habit.",
+    "Read Bible Buddy articles that help you understand Scripture, study the Bible, learn church history, and build a daily Bible habit.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
-    title: "My Bible Buddy Blog",
+    title: "Bible Buddy Blog",
     description:
       "Bible study articles, verse breakdowns, church history, and practical guides to help you understand Scripture.",
     url: "/blog",

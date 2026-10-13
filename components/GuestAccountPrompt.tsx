@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { isGuestUser } from "@/lib/guestSession";
 
 /**
- * "Only My Bible Buddy members can comment."
+ * "Only Bible Buddy members can comment."
  *
  * Guests can read and study everything with no account. Taking part in the
  * community needs one.
@@ -83,7 +83,7 @@ export function GuestAccountPrompt({
           Members only
         </p>
         <h2 className="mt-2 text-xl font-black text-gray-950">
-          Only My Bible Buddy members can {ACTION_COPY[action]}
+          Only Bible Buddy members can {ACTION_COPY[action]}
         </h2>
         <p className="mt-3 text-sm font-medium leading-6 text-gray-600">
           Create a free account to join the conversation. It takes a few seconds,

@@ -52,7 +52,7 @@ export default function BlogTopNav() {
           height={28}
           className="h-6 w-6 rounded-md object-cover sm:h-7 sm:w-7"
         />
-        <span className="whitespace-nowrap text-base font-black tracking-tight sm:text-lg">My Bible Buddy</span>
+        <span className="whitespace-nowrap text-base font-black tracking-tight sm:text-lg">Bible Buddy</span>
       </Link>
       <nav className="flex items-center gap-3 whitespace-nowrap text-[13px] font-black text-[#07162f] sm:gap-7 sm:text-sm">
         {signedIn ? (

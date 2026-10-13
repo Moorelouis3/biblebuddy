@@ -38,7 +38,7 @@ function buildFireBuddyShareHtml(
       ? "These Bible Buddies have kept the fire going for 100 days or more. That kind of consistency is rare."
       : threshold >= 60
         ? "These Bible Buddies have stayed active in the Word for 60 days or more. That is strong consistency."
-        : "These Bible Buddies have stayed active in the Word for 30 days or more on My Bible Buddy. Keep showing up.";
+        : "These Bible Buddies have stayed active in the Word for 30 days or more on Bible Buddy. Keep showing up.";
 
   const rows = buddies
     .map((buddy) => {
@@ -131,7 +131,7 @@ export async function POST(
   ]);
 
   if (profilesLoadError) {
-    return NextResponse.json({ error: profilesLoadError.message || "Could not load My Bible Buddy streaks." }, { status: 500 });
+    return NextResponse.json({ error: profilesLoadError.message || "Could not load Bible Buddy streaks." }, { status: 500 });
   }
 
   const profiles = (allProfiles || []) as Array<{
@@ -197,7 +197,7 @@ export async function POST(
       group_id: groupId,
       user_id: postOwnerId,
       display_name: displayName,
-      title: "🔥 My Bible Buddy Fire Streaks",
+      title: "🔥 Bible Buddy Fire Streaks",
       category: "general",
       content,
     })

@@ -19,7 +19,7 @@ export default function BlogPostBreaker({ articleSlug, path, title }: BlogPostBr
   const [isShareOpen, setIsShareOpen] = useState(false);
 
   const pageUrl = `https://www.mybiblebuddy.net${path}`;
-  const shareText = `Check out this My Bible Buddy article: ${title}`;
+  const shareText = `Check out this Bible Buddy article: ${title}`;
 
   async function handleNativeShare() {
     // Native sheet inside the app, Web Share on the web, and only then the

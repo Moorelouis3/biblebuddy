@@ -165,7 +165,7 @@ export async function GET(request: NextRequest) {
         const entry = metadataText(row.metadata, ["guest_entry_source"]);
         const picked =
           entry === "plan_bible_year" ? "Bible in One Year" : entry === "plan_devotional" ? "a devotional" : entry === "plan_bible" ? "Just the Bible" : "";
-        steps.push({ at, label: picked ? `Picked ${picked} - became a new user` : "Came inside My Bible Buddy - became a new user" });
+        steps.push({ at, label: picked ? `Picked ${picked} - became a new user` : "Came inside Bible Buddy - became a new user" });
       } else if (row.event_name === "created_free_account" || row.event_name === "created_account_successfully") {
         steps.push({ at, label: "Created a full account" });
       } else if (row.event_name === "start_button_clicked" || row.event_name === "cta_clicked") {

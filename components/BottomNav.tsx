@@ -3,7 +3,7 @@
 /**
  * The app's bottom tab bar.
  *
- * My Bible Buddy TV, the games and the invite page all existed and worked but
+ * Bible Buddy TV, the games and the invite page all existed and worked but
  * nothing linked to them - the only navigation was a "Navigation" dropdown in
  * the header, and it listed five of them at most. This is the way in.
  *
@@ -51,7 +51,7 @@ const TABS: Tab[] = [
 ];
 
 const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
-  // My Bible Buddy TV pulled from the UI 2026-09-02 - too buggy for now. The
+  // Bible Buddy TV pulled from the UI 2026-09-02 - too buggy for now. The
   // routes still exist; it just has no doors until it is fixed.
   { label: "Invite a Buddy", href: "/ambassador", icon: "💌" },
   { label: "BB Chat", href: "/chat", icon: "💬" },

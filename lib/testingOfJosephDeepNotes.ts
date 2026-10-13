@@ -10183,7 +10183,7 @@ This centralizes Egypt's land under Pharaoh's control.
 
 The chapter is explaining how Egypt's land system changed during the famine.
 
-For My Bible Buddy readers, the key is to notice both sides:
+For Bible Buddy readers, the key is to notice both sides:
 
 ⚖️ the policy is severe
 
@@ -11359,7 +11359,7 @@ Shiloh is a difficult phrase, and Bible readers have understood it in a few ways
 
 It may mean the one to whom the rule belongs, or it may point to a place or title connected to peace and rightful rule.
 
-For My Bible Buddy, the main idea is this:
+For Bible Buddy, the main idea is this:
 
 Judah's line is tied to coming rule, gathering, and hope.
 

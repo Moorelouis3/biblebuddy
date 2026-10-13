@@ -443,7 +443,7 @@ export default function CommentsAdminPage() {
                       </span>
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2">
-                          <p className="font-black">{comment.userName || "My Bible Buddy"}</p>
+                          <p className="font-black">{comment.userName || "Bible Buddy"}</p>
                           <span className="rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-xs font-black text-blue-700">
                             L{comment.userLevel ?? 1}
                           </span>
@@ -508,7 +508,7 @@ export default function CommentsAdminPage() {
                               value={replyText}
                               onChange={(event) => setReplyText(event.target.value)}
                               rows={4}
-                              placeholder="My Bible Buddy will draft a warm reply here..."
+                              placeholder="Bible Buddy will draft a warm reply here..."
                               className="mt-2 w-full resize-none rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-sm font-semibold leading-6 outline-none focus:border-emerald-300 focus:ring-4 focus:ring-emerald-100"
                             />
                             <div className="mt-2 flex flex-wrap gap-2">
@@ -597,7 +597,7 @@ export default function CommentsAdminPage() {
                   <article key={item.id} className="p-4">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                       <div className="min-w-0">
-                        <p className="text-sm font-black text-slate-900">{item.authorName || "My Bible Buddy"}</p>
+                        <p className="text-sm font-black text-slate-900">{item.authorName || "Bible Buddy"}</p>
                         <p className="mt-1 text-xs font-semibold text-slate-500">
                           Deleted by {item.deletedByName || "Moderator"} - {formatTime(item.deletedAt)}
                         </p>

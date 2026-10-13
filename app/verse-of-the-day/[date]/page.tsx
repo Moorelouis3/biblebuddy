@@ -64,7 +64,7 @@ export default function VerseOfTheDayDatePage() {
             href="/dashboard"
             className="text-sm font-bold text-[var(--bb-accent,#2563eb)]"
           >
-            ← Back to My Bible Buddy
+            ← Back to Bible Buddy
           </Link>
         </div>
       ) : null}

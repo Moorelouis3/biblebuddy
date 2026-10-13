@@ -65,7 +65,7 @@ function notesActionLabel(book: string, chapter: number) {
 }
 
 function displayName(profile: any) {
-  return profile?.display_name || profile?.username || "My Bible Buddy";
+  return profile?.display_name || profile?.username || "Bible Buddy";
 }
 
 function completionLabel(score: ProgressScore) {

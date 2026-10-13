@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import LegalPageLayout from "@/components/LegalPageLayout";
 
 export const metadata: Metadata = {
-  title: "Contact | My Bible Buddy",
-  description: "Contact My Bible Buddy.",
+  title: "Contact | Bible Buddy",
+  description: "Contact Bible Buddy.",
 };
 
 export default function ContactPage() {
   return (
     <LegalPageLayout
       eyebrow="Contact"
-      title="Contact My Bible Buddy"
+      title="Contact Bible Buddy"
       description="Questions, support requests, feedback, and partnership inquiries are welcome."
       lastUpdated="March 24, 2026"
     >
@@ -23,7 +23,7 @@ export default function ContactPage() {
       </p>
 
       <h2>Social Channels</h2>
-      <p>You can also connect with My Bible Buddy here:</p>
+      <p>You can also connect with Bible Buddy here:</p>
       <ul>
         <li>
           <a

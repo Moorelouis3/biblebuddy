@@ -357,7 +357,7 @@ export default function LessonsFromTheLifeOfJesusPage() {
           <p>That is fifteen lessons, and fifteen real places in the Gospels to go read them in full.</p>
           <p>
             💡 Reading each of these moments verse by verse, with the history and the language
-            explained as you go, is exactly what <strong>My Bible Buddy</strong> is for. It is free, so
+            explained as you go, is exactly what <strong>Bible Buddy</strong> is for. It is free, so
             there is nothing stopping you from opening Matthew, Mark, Luke, or John tonight.
           </p>
         </div>

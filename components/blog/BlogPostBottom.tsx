@@ -36,7 +36,7 @@ export default function BlogPostBottom({ articleSlug, postSlug }: BlogPostBottom
     );
   }
 
-  // Logged out: nothing. The My Bible Buddy end card (BlogAuthorBox) is the one
+  // Logged out: nothing. The Bible Buddy end card (BlogAuthorBox) is the one
   // end-of-post CTA since 2026-09-17 (Louis).
   return null;
 }

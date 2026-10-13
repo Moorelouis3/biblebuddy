@@ -1,5 +1,5 @@
 // lib/bibleInOneYearPlan.ts
-// Generates the custom 365-day Bible reading plan used by My Bible Buddy.
+// Generates the custom 365-day Bible reading plan used by Bible Buddy.
 
 import { BIBLE_YEAR_APPROVED_COVER_DAYS } from "./bibleYearApprovedCovers";
 

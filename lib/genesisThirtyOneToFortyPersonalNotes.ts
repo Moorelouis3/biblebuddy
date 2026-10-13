@@ -418,7 +418,7 @@ function cleanGenesisThirtyNineFortyFrameworkText(content: string) {
     .replace(/\bnot filler\b/gi, "meaningful")
     .replace(/\binterpreting dreams\b/gi, "explaining dreams")
     .replace(
-      /\bMy Bible Buddy should slow down here because blessing and suffering are happening at the same time\./gi,
+      /\bBible Buddy should slow down here because blessing and suffering are happening at the same time\./gi,
       "This helps the reader see blessing and suffering happening at the same time.",
     );
 }

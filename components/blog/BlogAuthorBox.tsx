@@ -76,7 +76,7 @@ type EndCardContent = {
 const APP_CARD: EndCardContent = {
   promoName: "end-card",
   headline: "Enjoyed this blog post?",
-  subhead: "You'll love what's waiting for you inside My Bible Buddy.",
+  subhead: "You'll love what's waiting for you inside Bible Buddy.",
   body: (
     <>
       <strong className="font-bold text-[#26324d]">Bible</strong> Buddy is a{" "}
@@ -90,9 +90,9 @@ const APP_CARD: EndCardContent = {
     { title: "A Supportive Community", text: "Study together", bubble: "#fdf1d8", icon: "people" },
   ],
   visitorPath: "/start",
-  visitorLabel: "Start Using My Bible Buddy for Free",
+  visitorLabel: "Start Using Bible Buddy for Free",
   memberPath: "/dashboard",
-  memberLabel: "Open My Bible Buddy",
+  memberLabel: "Open Bible Buddy",
   footnote: "Create your free account. No credit card. Completely free.",
   trackMembers: false,
 };
@@ -106,18 +106,18 @@ const APP_CARD: EndCardContent = {
  * no testimonials, no deadlines.
  *
  * It introduces the app the way Louis asked the banners to, so a visitor who
- * landed here from a search knows what My Bible Buddy is before being asked to
+ * landed here from a search knows what Bible Buddy is before being asked to
  * join anything.
  */
 const PROVERBS_CARD: EndCardContent = {
   promoName: "proverbs-end-card",
   headline: "Want the whole book of Proverbs?",
-  subhead: "The Wisdom of Proverbs is waiting for you inside My Bible Buddy.",
+  subhead: "The Wisdom of Proverbs is waiting for you inside Bible Buddy.",
   body: (
     <>
       This article covered one chapter.{" "}
       <strong className="font-bold text-[#26324d]">The Wisdom of Proverbs</strong> walks through all 31, a chapter a day,
-      inside my <strong className="font-bold text-[#26324d]">free</strong> Bible study app, My Bible Buddy.
+      inside my <strong className="font-bold text-[#26324d]">free</strong> Bible study app, Bible Buddy.
     </>
   ),
   features: [
@@ -195,14 +195,14 @@ export default function BlogAuthorBox({
         <div className="flex min-w-0 items-center gap-3 sm:gap-4">
           <Image
             src="/TherealiconforBB.png"
-            alt="My Bible Buddy logo"
+            alt="Bible Buddy logo"
             width={72}
             height={72}
             className="h-14 w-14 shrink-0 rounded-[16px] shadow-[0_8px_20px_rgba(0,86,253,0.25)] sm:h-[72px] sm:w-[72px] sm:rounded-[20px]"
           />
           <div className="min-w-0">
             <p className={`${heading.className} text-[26px] font-black leading-none tracking-tight text-[#0b1633] sm:text-[34px]`}>
-              My Bible Buddy
+              Bible Buddy
             </p>
             <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#3b4660] sm:text-[11px]">
               Read · Understand · Grow

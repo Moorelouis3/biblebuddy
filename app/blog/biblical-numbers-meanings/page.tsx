@@ -370,7 +370,7 @@ export default function BiblicalNumbersMeaningsPage() {
         </p>
         <p className="mt-5 text-lg leading-8 text-slate-700">
           Verses like these read very differently once you slow down and study them line by line.
-          That is exactly what <strong>My Bible Buddy</strong> is built for, and it is free to start any
+          That is exactly what <strong>Bible Buddy</strong> is built for, and it is free to start any
           time you want to go deeper than an overview.
         </p>
       </section>

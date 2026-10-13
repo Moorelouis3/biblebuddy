@@ -656,7 +656,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // reading is the moment the daily reminder is an easy yes. Re-asks at
   // most every few days, even if the bell-dropdown prompt was dismissed.
   const [completionPushDay, setCompletionPushDay] = useState<number | null>(null);
-  // Post-completion "put My Bible Buddy on your phone" ask (2026-09-09): only
+  // Post-completion "put Bible Buddy on your phone" ask (2026-09-09): only
   // ~1 in 10 users has the icon installed, and the ones without it mostly
   // never find their way back - the biggest retention leak. One prompt per
   // completion at most: push reminder first if eligible, else this.
@@ -796,7 +796,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
       if (permission !== "granted") {
         throw new Error(
-          "Notifications are blocked in this browser. Open your browser or phone site settings for My Bible Buddy, allow notifications, then tap Enable again.",
+          "Notifications are blocked in this browser. Open your browser or phone site settings for Bible Buddy, allow notifications, then tap Enable again.",
         );
       }
 
@@ -954,7 +954,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           console.error("[ONBOARDING] Error creating initialized profile_stats row:", upsertError);
         }
 
-        void saveSignupAttributionForUser(currentUserId, username || "My Bible Buddy User", signupAttribution);
+        void saveSignupAttributionForUser(currentUserId, username || "Bible Buddy User", signupAttribution);
 
         if (!hasExistingBibleYearProgress) {
           let { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
@@ -1054,7 +1054,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const pending = readPendingLandingOnboarding();
     if (!pending) return;
 
-    const displayName = headerProfileName && headerProfileName !== "You" ? headerProfileName : email?.split("@")[0] || "My Bible Buddy";
+    const displayName = headerProfileName && headerProfileName !== "You" ? headerProfileName : email?.split("@")[0] || "Bible Buddy";
     const estimatedDays = Number(pending.recommendation?.estimatedDays || 365);
     const pendingStudyRoute = "bible_year";
     const pendingDevotionalId = null;
@@ -1473,7 +1473,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const signupAttribution = getCurrentSignupAttribution();
     const landingSessionId = signupAttribution.landingSessionId || window.localStorage.getItem("bb:landing-session-id") || "";
     const landingSource = signupAttribution.source;
-    const displayName = username || "My Bible Buddy User";
+    const displayName = username || "Bible Buddy User";
 
     void (async () => {
       try {
@@ -1496,7 +1496,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             user_id: userId,
             username: displayName,
             action_type: ACTION_TYPE.user_signup,
-            action_label: "Signed up for My Bible Buddy",
+            action_label: "Signed up for Bible Buddy",
             created_at: new Date().toISOString(),
           });
         }
@@ -1966,7 +1966,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         return {
           id: c.id,
           otherUserId: otherId ?? "",
-          otherUserName: otherId ? profile?.display_name || profile?.username || "My Bible Buddy" : "Deleted account",
+          otherUserName: otherId ? profile?.display_name || profile?.username || "Bible Buddy" : "Deleted account",
           otherUserImage: profile?.profile_image_url || null,
           otherUserBadge: profile?.member_badge || null,
           otherUserIsPaid: profile?.is_paid === true,
@@ -2117,7 +2117,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           p_activity_type: "buddy_added",
           p_activity_data: {
             buddy_id: notif.from_user_id,
-            buddy_name: notif.from_user_name || "My Bible Buddy",
+            buddy_name: notif.from_user_name || "Bible Buddy",
           },
           p_is_public: true,
         });
@@ -3011,7 +3011,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 {/* Logo removed as requested */}
                 <div>
                   <div className="text-sm font-bold text-[var(--bb-text-primary,#f9fafb)] tracking-tight">
-                    My Bible Buddy
+                    Bible Buddy
                   </div>
                 </div>
               </Link>
@@ -3156,7 +3156,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               <p className="mt-0.5 text-xs text-[var(--bb-text-secondary,#6b7280)]">
                                 {pushPermission === "granted" && pushSubscribed
                                   ? "Push alerts are on for this device."
-                                  : "Turn on push alerts so new My Bible Buddy notifications reach this device."}
+                                  : "Turn on push alerts so new Bible Buddy notifications reach this device."}
                               </p>
                             </div>
                             {!(pushPermission === "granted" && pushSubscribed) && (
@@ -3842,7 +3842,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             </h2>
             <p className="mt-2 text-sm font-semibold text-gray-600">
               {completionInstallBlocked ||
-                "Put My Bible Buddy on your phone so tomorrow is one tap away - no searching, no typing, just your icon."}
+                "Put Bible Buddy on your phone so tomorrow is one tap away - no searching, no typing, just your icon."}
             </p>
             {!completionInstallBlocked ? (
               <button
@@ -3874,7 +3874,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     setCompletionInstallDay(null);
                     return;
                   }
-                  setCompletionInstallBlocked("Install isn't available in this browser. Open My Bible Buddy in Chrome to add it to your home screen.");
+                  setCompletionInstallBlocked("Install isn't available in this browser. Open Bible Buddy in Chrome to add it to your home screen.");
                 }}
                 className="mt-4 w-full rounded-2xl px-5 py-3 text-sm font-black transition hover:opacity-90"
                 style={{ backgroundColor: "var(--bb-button, #2f7fe8)", color: "var(--bb-button-text, #ffffff)" }}

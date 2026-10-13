@@ -285,7 +285,7 @@ export default function ProverbsStudyDayPage() {
   const [notesDone, setNotesDone] = useState(false);
   const [triviaDone, setTriviaDone] = useState(false);
   const [reflectionDone, setReflectionDone] = useState(false);
-  // Community event day (Wisdom of Proverbs): this day's My Bible Buddy group post, if published.
+  // Community event day (Wisdom of Proverbs): this day's Bible Buddy group post, if published.
   const [eventDayPost, setEventDayPost] = useState<EventDayPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [openTask, setOpenTask] = useState<number | null>(null);

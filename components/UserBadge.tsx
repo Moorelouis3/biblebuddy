@@ -50,7 +50,7 @@ export default function UserBadge({
             <div className="flex items-center gap-3">
               <LouisAvatar mood={badge.louisMood} size={56} />
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">My Bible Buddy Badge</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">Bible Buddy Badge</p>
                 <div className="mt-1 flex items-center gap-2">
                   <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${badge.className}`}>
                     <span aria-hidden="true">{badge.emoji}</span>

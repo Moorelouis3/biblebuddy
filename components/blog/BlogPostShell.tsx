@@ -656,7 +656,7 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
         ) : null}
 
         {/* BreadcrumbList: turns the bare URL in a Google result into
-            "My Bible Buddy > Character Studies > Who Was Jezebel", which is
+            "Bible Buddy > Character Studies > Who Was Jezebel", which is
             both clearer and measurably better for click-through. */}
         <script
           type="application/ld+json"

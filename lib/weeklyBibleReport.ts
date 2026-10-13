@@ -630,7 +630,7 @@ function getUpgradeRecommendation(): Recommendation {
   return {
     key: "upgrade",
     priority: 95,
-    line: "Upgrade to Pro Buddy so you can move through My Bible Buddy without locks, open more study tools, and go deeper whenever you want to.",
+    line: "Upgrade to Pro Buddy so you can move through Bible Buddy without locks, open more study tools, and go deeper whenever you want to.",
     action: { label: "Upgrade to Pro Buddy", href: "/upgrade" },
     quickActionLabel: "Upgrade to Pro Buddy",
   };
@@ -657,7 +657,7 @@ function getStreakRecommendation(profile: ProfileRow | undefined, actionCounts: 
     return {
       key: "streak-building",
       priority: 72,
-      line: "You are building a real daily habit now. Stay steady, because this is the stretch where consistency starts changing how My Bible Buddy feels to you.",
+      line: "You are building a real daily habit now. Stay steady, because this is the stretch where consistency starts changing how Bible Buddy feels to you.",
       action: { label: "Read today's chapter", href: "/bible" },
       quickActionLabel: "Read today's chapter",
     };
@@ -718,7 +718,7 @@ function pickRecommendations(
     recommendations.push({
       key: "profile",
       priority: 100,
-      line: `Finish your profile by adding ${toSentenceCaseList(missingProfileBits.length ? missingProfileBits : ["the last missing details"])} so your page feels like you and the community side of My Bible Buddy feels more real.`,
+      line: `Finish your profile by adding ${toSentenceCaseList(missingProfileBits.length ? missingProfileBits : ["the last missing details"])} so your page feels like you and the community side of Bible Buddy feels more real.`,
       action: { label: "Finish your profile", href: `/profile/${userId}` },
       quickActionLabel: "Finish your profile",
     });
@@ -728,7 +728,7 @@ function pickRecommendations(
     recommendations.push({
       key: "notifications",
       priority: 96,
-      line: "Turn on notifications so My Bible Buddy can actually pull you back in when a new message, study update, or important moment shows up.",
+      line: "Turn on notifications so Bible Buddy can actually pull you back in when a new message, study update, or important moment shows up.",
       action: { label: "Turn on notifications", href: "/settings" },
       quickActionLabel: "Turn on notifications",
     });
@@ -819,7 +819,7 @@ function pickRecommendations(
     recommendations.push({
       key: "community",
       priority: 74,
-      line: "Say something in the study group this week. Even one comment can turn My Bible Buddy from a tool into an actual community for you.",
+      line: "Say something in the study group this week. Even one comment can turn Bible Buddy from a tool into an actual community for you.",
       action: { label: "Open Study Group", href: "/dashboard" },
       quickActionLabel: "Open Study Group",
     });
@@ -927,7 +927,7 @@ export function buildWeeklyReportForUser(
   const message = [
     `Hey ${firstName},`,
     "",
-    "Here is your personal My Bible Buddy wrap-up for this week.",
+    "Here is your personal Bible Buddy wrap-up for this week.",
     "",
     "𝗬𝗢𝗨𝗥 𝗪𝗘𝗘𝗞",
     ...statLines,
@@ -1011,7 +1011,7 @@ export function buildWeeklyLouisReportForUser(
       : null,
     `📅 You were active on ${formatCount(activeDays, "day")} this week and logged ${formatCount(actions.length, "action")}.`,
     profile?.current_streak ? `🔥 Your current streak is ${formatCount(profile.current_streak, "day")}.` : null,
-    profile?.current_level ? `⭐ You are holding Level ${profile.current_level} in My Bible Buddy.` : null,
+    profile?.current_level ? `⭐ You are holding Level ${profile.current_level} in Bible Buddy.` : null,
   ].filter(Boolean) as string[];
 
   const recommendations = pickRecommendations(userId, profile, actions, context);

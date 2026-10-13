@@ -274,7 +274,7 @@ export default function GenesisOneExplainedPage() {
           </p>
           <p>
             This chapter comes alive on a whole different level when you slow down and study it
-            verse by verse, and that is exactly what <strong>My Bible Buddy</strong> is built for.
+            verse by verse, and that is exactly what <strong>Bible Buddy</strong> is built for.
           </p>
         </div>
 

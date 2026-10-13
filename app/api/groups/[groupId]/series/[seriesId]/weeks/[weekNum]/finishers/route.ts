@@ -69,7 +69,7 @@ function pickBestDisplayName(...values: Array<string | null | undefined>) {
   const normalized = values
     .map(normalizeText)
     .filter((value): value is string => Boolean(value));
-  if (normalized.length === 0) return "My Bible Buddy";
+  if (normalized.length === 0) return "Bible Buddy";
   return normalized
     .sort((a, b) => scoreDisplayName(b) - scoreDisplayName(a))[0];
 }

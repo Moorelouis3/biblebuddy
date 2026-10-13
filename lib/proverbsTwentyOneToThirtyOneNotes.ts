@@ -210,7 +210,7 @@ export const PROVERBS_TWENTY_ONE_TO_THIRTY_ONE_TEMPLATES: Record<number, Chapter
           "The goal is not information only. It is trust in the Lord.",
           "These words are meant to be kept within, fitted on the lips, and used to answer truth to those who ask.",
           "That is a picture of deep learning. Wisdom is received, stored, lived, and then spoken.",
-          "My Bible Buddy's chapter notes are trying to help with that exact movement: not just reading, but understanding and carrying truth forward.",
+          "Bible Buddy's chapter notes are trying to help with that exact movement: not just reading, but understanding and carrying truth forward.",
         ],
       },
       {

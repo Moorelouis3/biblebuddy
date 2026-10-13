@@ -101,7 +101,7 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
       // "Copied" is only shown when something really was copied - inside the
       // app this used to claim a copy after the real sheet failed to open.
       const { shareContent } = await import("@/lib/nativeShare");
-      const outcome = await shareContent({ title: "Verse of the Day - My Bible Buddy", text, url });
+      const outcome = await shareContent({ title: "Verse of the Day - Bible Buddy", text, url });
       if (outcome === "copied") {
         setShareCopied(true);
         setTimeout(() => setShareCopied(false), 2000);

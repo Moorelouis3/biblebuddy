@@ -261,7 +261,7 @@ export default function GardenOfEdenFourRiversPage() {
             The way back to the tree of life was guarded, not left standing open. That single detail
             is why this passage rewards slow, careful reading rather than a quick glance at a
             graphic. Studying it verse by verse, the way you can free inside{" "}
-            <strong>My Bible Buddy</strong>, brings out details like this that a summary always flattens.
+            <strong>Bible Buddy</strong>, brings out details like this that a summary always flattens.
           </p>
         </div>
 

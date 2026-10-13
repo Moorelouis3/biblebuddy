@@ -1662,7 +1662,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           type: "reading-plan",
           id: "bible-buddy",
           backLink: "/reading-plans/bible-buddy",
-          backText: "Back to The My Bible Buddy Reading Plan",
+          backText: "Back to The Bible Buddy Reading Plan",
         });
         setFromReadingPlan(true); // Keep for backward compatibility
       } else if (source === "bible-in-one-year") {
@@ -1683,12 +1683,12 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         });
         setFromReadingPlan(true);
       } else if (source === "true") {
-        // Legacy: just "true" means My Bible Buddy
+        // Legacy: just "true" means Bible Buddy
         setSourceContext({
           type: "reading-plan",
           id: "bible-buddy",
           backLink: "/reading-plans/bible-buddy",
-          backText: "Back to The My Bible Buddy Reading Plan",
+          backText: "Back to The Bible Buddy Reading Plan",
         });
         setFromReadingPlan(true);
       }
@@ -2168,7 +2168,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           // If this chapter was opened from a reading plan, also log reading_plan_chapter_completed
           if (sourceContext.type === "reading-plan" && sourceContext.id) {
             const readingPlanLabel = sourceContext.id === "bible-buddy" 
-              ? "The My Bible Buddy Reading Plan"
+              ? "The Bible Buddy Reading Plan"
               : sourceContext.id === "bible-in-one-year"
               ? "Bible in One Year"
               : sourceContext.id;

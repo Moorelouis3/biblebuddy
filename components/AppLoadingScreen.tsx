@@ -14,20 +14,20 @@ export default function AppLoadingScreen({ className = "" }: Props) {
       <div className="flex w-full max-w-sm -translate-y-[13vh] flex-col items-center justify-center px-6 text-center sm:-translate-y-[8vh]">
         <Image
           src="/TherealiconforBB.png"
-          alt="My Bible Buddy"
+          alt="Bible Buddy"
           width={112}
           height={112}
           priority
           className="h-24 w-24 rounded-[24px] object-cover sm:h-28 sm:w-28"
         />
         <p className="mt-4 text-2xl font-black tracking-tight text-[var(--bb-text-primary,#111827)] sm:text-[2rem]">
-          My Bible Buddy
+          Bible Buddy
         </p>
         <div className="mt-8 w-44 sm:w-52">
           <div className="h-1.5 overflow-hidden rounded-full bg-[var(--bb-progress-track,#dbe7f4)] sm:h-2">
             <div className="bb-loading-bar h-full rounded-full bg-[var(--bb-accent,#0056FD)] shadow-[0_0_14px_color-mix(in_srgb,var(--bb-accent,#0056FD)_24%,transparent)]" />
           </div>
-          <span className="sr-only">Loading My Bible Buddy</span>
+          <span className="sr-only">Loading Bible Buddy</span>
         </div>
       </div>
 

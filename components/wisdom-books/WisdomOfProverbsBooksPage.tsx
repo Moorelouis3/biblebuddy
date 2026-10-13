@@ -170,7 +170,7 @@ export default function WisdomOfProverbsBooksPage() {
           {[
             ["book", "Read anytime", "Take the study beyond the screen."],
             ["shelf", "Return for years", "Keep Proverbs on your bookshelf."],
-            ["heart", "Support the mission", "Help My Bible Buddy reach more people with God’s Word."],
+            ["heart", "Support the mission", "Help Bible Buddy reach more people with God’s Word."],
           ].map(([icon, title, body]) => (
             <li key={title} className="flex items-start gap-3">
               <span className="mt-0.5 flex-shrink-0" style={{ color: GOLD }}>
@@ -259,7 +259,7 @@ export default function WisdomOfProverbsBooksPage() {
             ["leaf", "Go deeper", "Take the study beyond the screen."],
             ["pen", "Study anywhere", "Read, highlight, write, and return whenever you want."],
             ["gift", "A meaningful gift", "Give the study to someone you want to encourage."],
-            ["people", "Support the mission", "Your purchase helps support the work behind My Bible Buddy."],
+            ["people", "Support the mission", "Your purchase helps support the work behind Bible Buddy."],
           ].map(([icon, title, body]) => (
             <li key={title} className="flex flex-col items-center text-center">
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f4ead8] text-[#8a6124]">
@@ -276,7 +276,7 @@ export default function WisdomOfProverbsBooksPage() {
           editions at the top are the whole page). Only the free-study line
           stays, so nobody thinks the study costs money. */}
       <p className="mx-auto max-w-md border-t border-[#e8dac0] pt-6 text-center text-sm leading-6 text-[var(--bb-text-secondary,#5b4a36)]">
-        The Wisdom of Proverbs community study is free inside My Bible Buddy. The printed editions are optional.{" "}
+        The Wisdom of Proverbs community study is free inside Bible Buddy. The printed editions are optional.{" "}
         <Link href="/events/wisdom-of-proverbs" className="font-black text-[#8a6124] underline underline-offset-4">
           Join the free study
         </Link>

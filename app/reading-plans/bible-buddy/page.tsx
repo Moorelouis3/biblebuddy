@@ -7,7 +7,7 @@ import { ACTION_TYPE } from "../../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../../lib/navigationActionTracker";
 import { getBookTotalChapters, getCompletedChapters } from "../../../lib/readingProgress";
 
-// The My Bible Buddy Reading Plan order (exactly as requested)
+// The Bible Buddy Reading Plan order (exactly as requested)
 const PLAN_BOOKS: string[] = [
   "Matthew",
   "Mark",
@@ -194,9 +194,9 @@ export default function BibleBuddyReadingPlanPage() {
           userId: uid,
           username,
           actionType: ACTION_TYPE.reading_plan_opened,
-          actionLabel: "The My Bible Buddy Reading Plan",
+          actionLabel: "The Bible Buddy Reading Plan",
           dedupeKey: "reading-plan-opened:bible-buddy",
-        }).catch((error) => console.error("[NAV] Failed to track My Bible Buddy plan view:", error));
+        }).catch((error) => console.error("[NAV] Failed to track Bible Buddy plan view:", error));
 
         // Single query for all completed chapters in this plan
         const planBookKeys = PLAN_BOOKS.map((book) => book.toLowerCase().trim());
@@ -313,14 +313,14 @@ export default function BibleBuddyReadingPlanPage() {
           userId,
           username,
           actionType: ACTION_TYPE.reading_plan_chapter_opened,
-          actionLabel: `The My Bible Buddy Reading Plan - ${book} ${chapter}`,
+          actionLabel: `The Bible Buddy Reading Plan - ${book} ${chapter}`,
           dedupeKey: `reading-plan-chapter:bible-buddy:${book.toLowerCase()}:${chapter}`,
         }).catch((error) => console.error("[NAV] Failed to track reading plan chapter click:", error));
       });
     }
     const slug = encodeURIComponent(book.toLowerCase().trim());
     // Reuse the existing Bible chapter overlay route.
-    // Mark that we came from the My Bible Buddy Reading Plan so the Bible page
+    // Mark that we came from the Bible Buddy Reading Plan so the Bible page
     // can show a clear "back to plan" link instead of sending users elsewhere.
     if (typeof window !== "undefined") {
       window.sessionStorage.setItem("bbFromReadingPlan", "bible-buddy");
@@ -374,7 +374,7 @@ export default function BibleBuddyReadingPlanPage() {
       <div className="max-w-5xl mx-auto px-4 py-8">
         {/* HEADER */}
         <h1 className="text-3xl font-bold mb-2">
-          The My Bible Buddy Reading Plan
+          The Bible Buddy Reading Plan
         </h1>
 
         {/* COVER IMAGE (match devotional cover style) */}
@@ -382,7 +382,7 @@ export default function BibleBuddyReadingPlanPage() {
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-4 max-w-xs w-full">
             <img
               src="/images/Thebiblebuddyreadingplan.png"
-              alt="The My Bible Buddy Reading Plan cover"
+              alt="The Bible Buddy Reading Plan cover"
               className="w-full h-auto rounded-lg object-contain"
             />
           </div>
@@ -390,7 +390,7 @@ export default function BibleBuddyReadingPlanPage() {
 
         {/* INTRO PARAGRAPH */}
         <p className="text-gray-800 leading-relaxed text-base mb-8">
-          The My Bible Buddy Reading Plan guides you through the Bible in a story-focused order that starts with the life of Jesus and the early church. This helps you understand who Jesus is, what He taught, and why Christians believe what we believe today before moving back into the Old Testament to see where it all began and learn the history behind the faith.
+          The Bible Buddy Reading Plan guides you through the Bible in a story-focused order that starts with the life of Jesus and the early church. This helps you understand who Jesus is, what He taught, and why Christians believe what we believe today before moving back into the Old Testament to see where it all began and learn the history behind the faith.
         </p>
 
         {/* COVER + PROGRESS CARD */}

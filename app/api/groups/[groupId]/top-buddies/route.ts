@@ -678,7 +678,7 @@ export async function GET(
       const profile = clickerProfileMap.get(clicker.userId);
       return {
         userId: clicker.userId,
-        displayName: profile?.display_name || profile?.username || clicker.username || "My Bible Buddy",
+        displayName: profile?.display_name || profile?.username || clicker.username || "Bible Buddy",
         username: profile?.username || clicker.username || null,
         profileImageUrl: profile?.profile_image_url || null,
         memberBadge: profile?.member_badge || null,

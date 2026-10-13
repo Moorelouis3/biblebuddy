@@ -112,7 +112,7 @@ export default function BookmarksPage() {
     <div className="mx-auto w-full max-w-2xl px-4 pb-28 pt-6">
       <h1 className="text-2xl font-black text-[var(--bb-text-primary,#111827)]">Bookmarks</h1>
       <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
-        Everything you&apos;ve saved in My Bible Buddy.
+        Everything you&apos;ve saved in Bible Buddy.
       </p>
 
       {error ? <p className="mt-4 rounded-xl bg-red-50 p-3 text-sm font-bold text-red-700">{error}</p> : null}

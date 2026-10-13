@@ -5,7 +5,7 @@ import { BLOG_ARTICLES } from "@/lib/blogContent";
 // page could not be found" on a white screen - the surest way to lose
 // someone who followed an old or mistyped link. A dead end is now a way
 // back in, with the newest studies to land on.
-export const metadata = { title: "Page not found | My Bible Buddy" };
+export const metadata = { title: "Page not found | Bible Buddy" };
 
 export default function NotFound() {
   const recent = [...BLOG_ARTICLES]

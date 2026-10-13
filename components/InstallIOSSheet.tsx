@@ -86,7 +86,7 @@ export const INSTALL_SHEET_STEPS = [
   },
   {
     title: "Tap Add in the corner",
-    detail: "That's it — My Bible Buddy lands on your home screen and opens like an app.",
+    detail: "That's it — Bible Buddy lands on your home screen and opens like an app.",
     illustration: <AddConfirmIllustration />,
   },
 ];
@@ -118,7 +118,7 @@ export default function InstallIOSSheet({ isOpen, onClose }: InstallIOSSheetProp
               height={30}
               className="h-[30px] w-[30px] shrink-0 rounded-[9px] shadow-[0_2px_6px_rgba(14,26,58,0.25)]"
             />
-            <p className="text-sm font-extrabold text-[var(--bb-text-primary,#111827)]">Add My Bible Buddy</p>
+            <p className="text-sm font-extrabold text-[var(--bb-text-primary,#111827)]">Add Bible Buddy</p>
           </div>
           <span className="rounded-full bg-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_12%,var(--bb-card,#ffffff))] px-3 py-1 text-xs font-black text-[var(--bb-accent,#2f7fe8)]">
             Step {stepIndex + 1} of {INSTALL_SHEET_STEPS.length}

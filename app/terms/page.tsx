@@ -4,8 +4,8 @@ import LegalPageLayout from "@/components/LegalPageLayout";
 import LegalSection from "@/components/LegalSection";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | My Bible Buddy",
-  description: "Terms of Service for My Bible Buddy.",
+  title: "Terms of Service | Bible Buddy",
+  description: "Terms of Service for Bible Buddy.",
 };
 
 export default function TermsPage() {
@@ -13,12 +13,12 @@ export default function TermsPage() {
     <LegalPageLayout
       eyebrow="Terms"
       title="Terms of Service"
-      description="These Terms explain how My Bible Buddy works, what you can expect from us, and what we ask from everyone using the service."
+      description="These Terms explain how Bible Buddy works, what you can expect from us, and what we ask from everyone using the service."
       lastUpdated="September 21, 2026"
     >
       <LegalSection title="1. Acceptance of Terms">
         <p>
-          By accessing or using My Bible Buddy, you agree to be bound by these Terms of
+          By accessing or using Bible Buddy, you agree to be bound by these Terms of
           Service, our{" "}
           <Link href="/privacy">Privacy Policy</Link>, and our{" "}
           <Link href="/community-guidelines">Community Guidelines</Link>. If you do
@@ -29,8 +29,8 @@ export default function TermsPage() {
       <LegalSection title="2. Eligibility">
         <p>
           You must be legally able to enter into a binding agreement to use Bible
-          Buddy. If you are under 18, you should use My Bible Buddy only with the
-          involvement of a parent or legal guardian. My Bible Buddy is not intended for
+          Buddy. If you are under 18, you should use Bible Buddy only with the
+          involvement of a parent or legal guardian. Bible Buddy is not intended for
           children under 13.
         </p>
       </LegalSection>
@@ -43,9 +43,9 @@ export default function TermsPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="4. License to Use My Bible Buddy">
+      <LegalSection title="4. License to Use Bible Buddy">
         <p>
-          Subject to these terms, My Bible Buddy grants you a limited, non-exclusive,
+          Subject to these terms, Bible Buddy grants you a limited, non-exclusive,
           non-transferable, revocable license to access and use the service for your
           personal, non-commercial use.
         </p>
@@ -54,19 +54,19 @@ export default function TermsPage() {
       <LegalSection title="5. Acceptable Use">
         <p>You agree not to:</p>
         <ul>
-          <li>Use My Bible Buddy for unlawful, fraudulent, abusive, or harmful activity.</li>
+          <li>Use Bible Buddy for unlawful, fraudulent, abusive, or harmful activity.</li>
           <li>Interfere with the service, its infrastructure, or other users.</li>
           <li>Attempt to gain unauthorized access to accounts, systems, or private data.</li>
           <li>Upload or share malware, spam, harassing content, or content that infringes another person&apos;s rights.</li>
-          <li>Scrape, copy, reverse engineer, or exploit My Bible Buddy beyond what is allowed by applicable law.</li>
+          <li>Scrape, copy, reverse engineer, or exploit Bible Buddy beyond what is allowed by applicable law.</li>
           <li>Use community, comments, messages, or study group features to threaten, impersonate, or abuse others.</li>
         </ul>
       </LegalSection>
 
       <LegalSection title="6. User Content">
         <p>
-          You retain ownership of content you submit to My Bible Buddy, such as notes,
-          comments, posts, messages, and feedback. You grant My Bible Buddy a
+          You retain ownership of content you submit to Bible Buddy, such as notes,
+          comments, posts, messages, and feedback. You grant Bible Buddy a
           non-exclusive, worldwide, royalty-free license to host, store, reproduce,
           adapt, display, and distribute that content as needed to operate, improve,
           and provide the service.
@@ -79,8 +79,8 @@ export default function TermsPage() {
 
       <LegalSection title="7. Community Standards and Zero Tolerance">
         <p>
-          My Bible Buddy is intended to be a respectful, encouraging space for Bible
-          study. By using My Bible Buddy you agree to follow our{" "}
+          Bible Buddy is intended to be a respectful, encouraging space for Bible
+          study. By using Bible Buddy you agree to follow our{" "}
           <Link href="/community-guidelines">Community Guidelines</Link>.
         </p>
         <p>
@@ -92,7 +92,7 @@ export default function TermsPage() {
           people&apos;s private information.
         </p>
         <ul>
-          <li>You can report any post, comment, message, or user from inside My Bible Buddy, and you can block users you do not want to hear from.</li>
+          <li>You can report any post, comment, message, or user from inside Bible Buddy, and you can block users you do not want to hear from.</li>
           <li>We review reports, usually within 24 hours.</li>
           <li>We remove objectionable content and suspend or permanently remove users who post it or who abuse others, without prior notice.</li>
         </ul>
@@ -100,16 +100,16 @@ export default function TermsPage() {
 
       <LegalSection title="8. Price">
         <p>
-          My Bible Buddy is free to use. There are no paid features or subscriptions
-          inside the app. If you bought My Bible Buddy Pro before it became free, you
+          Bible Buddy is free to use. There are no paid features or subscriptions
+          inside the app. If you bought Bible Buddy Pro before it became free, you
           can contact us about that purchase at support@mybiblebuddy.net.
         </p>
       </LegalSection>
 
       <LegalSection title="9. Intellectual Property">
         <p>
-          My Bible Buddy and its design, branding, software, text, graphics, and other
-          original content are owned by My Bible Buddy or its licensors and protected
+          Bible Buddy and its design, branding, software, text, graphics, and other
+          original content are owned by Bible Buddy or its licensors and protected
           by intellectual property laws. These terms do not transfer ownership of
           any intellectual property to you.
         </p>
@@ -117,7 +117,7 @@ export default function TermsPage() {
 
       <LegalSection title="10. Third-Party Services">
         <p>
-          My Bible Buddy may rely on or link to third-party services. We are not
+          Bible Buddy may rely on or link to third-party services. We are not
           responsible for third-party products, websites, or policies, and your use
           of them may be subject to separate terms.
         </p>
@@ -125,7 +125,7 @@ export default function TermsPage() {
 
       <LegalSection title="11. Service Availability">
         <p>
-          We may modify, suspend, or discontinue all or part of My Bible Buddy at any
+          We may modify, suspend, or discontinue all or part of Bible Buddy at any
           time, with or without notice. We do not guarantee uninterrupted or
           error-free availability.
         </p>
@@ -133,21 +133,21 @@ export default function TermsPage() {
 
       <LegalSection title="12. Disclaimers">
         <p>
-          My Bible Buddy is provided on an &quot;as is&quot; and &quot;as available&quot; basis to the
+          Bible Buddy is provided on an &quot;as is&quot; and &quot;as available&quot; basis to the
           fullest extent permitted by law. We disclaim warranties of any kind,
           whether express or implied, including implied warranties of merchantability,
           fitness for a particular purpose, non-infringement, and uninterrupted
           availability.
         </p>
         <p>
-          My Bible Buddy provides educational and devotional tools, not professional
+          Bible Buddy provides educational and devotional tools, not professional
           legal, medical, mental health, or financial advice.
         </p>
       </LegalSection>
 
       <LegalSection title="13. Limitation of Liability">
         <p>
-          To the fullest extent permitted by law, My Bible Buddy and its operators,
+          To the fullest extent permitted by law, Bible Buddy and its operators,
           affiliates, licensors, and service providers will not be liable for any
           indirect, incidental, special, consequential, exemplary, or punitive
           damages, or for any loss of profits, revenues, data, goodwill, or use,
@@ -155,7 +155,7 @@ export default function TermsPage() {
         </p>
         <p>
           To the fullest extent permitted by law, our total liability for claims
-          arising out of or relating to My Bible Buddy will not exceed the greater of
+          arising out of or relating to Bible Buddy will not exceed the greater of
           the amount you paid us in the 12 months before the claim arose or 50 U.S.
           dollars.
         </p>
@@ -163,7 +163,7 @@ export default function TermsPage() {
 
       <LegalSection title="14. Indemnification">
         <p>
-          You agree to defend, indemnify, and hold harmless My Bible Buddy and its
+          You agree to defend, indemnify, and hold harmless Bible Buddy and its
           operators from claims, liabilities, damages, losses, and expenses arising
           out of your content, your misuse of the service, or your violation of
           these terms or applicable law.
@@ -172,7 +172,7 @@ export default function TermsPage() {
 
       <LegalSection title="15. Termination">
         <p>
-          You may stop using My Bible Buddy at any time, and you can permanently
+          You may stop using Bible Buddy at any time, and you can permanently
           delete your account from Settings → Delete my account (see our{" "}
           <Link href="/delete-account">account deletion page</Link>). We may suspend or terminate
           your access if we believe you violated these terms, created risk for the
@@ -183,7 +183,7 @@ export default function TermsPage() {
       <LegalSection title="16. Governing Law">
         <p>
           These terms are governed by the laws applicable in the jurisdiction from
-          which My Bible Buddy is operated, excluding conflict-of-law rules, except to
+          which Bible Buddy is operated, excluding conflict-of-law rules, except to
           the extent consumer protection law in your home jurisdiction requires
           otherwise.
         </p>
@@ -193,7 +193,7 @@ export default function TermsPage() {
         <p>
           We may update these Terms of Service from time to time. When we do, we
           will post the updated version here and update the date above. Continued
-          use of My Bible Buddy after changes become effective means you accept the
+          use of Bible Buddy after changes become effective means you accept the
           revised terms.
         </p>
       </LegalSection>

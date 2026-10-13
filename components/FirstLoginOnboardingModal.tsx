@@ -14,7 +14,7 @@ type FirstLoginOnboardingAnswers = {
   firstName: string;
 };
 
-// My Bible Buddy is free (2026-09-21, App Store prep): onboarding only ever
+// Bible Buddy is free (2026-09-21, App Store prep): onboarding only ever
 // finishes on the free path — there is no paid option to pick.
 type FinishPayload = {
   answers: FirstLoginOnboardingAnswers;
@@ -257,10 +257,10 @@ export default function FirstLoginOnboardingModal({
             <div className="flex items-center justify-between gap-4">
               <div className="flex min-w-0 items-center gap-3">
                 <div className={`grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-[16px] border ${modalBorder} ${softSurface}`}>
-                  <Image src="/TherealiconforBB.png" alt="My Bible Buddy" width={36} height={36} className="h-9 w-9 object-contain" />
+                  <Image src="/TherealiconforBB.png" alt="Bible Buddy" width={36} height={36} className="h-9 w-9 object-contain" />
                 </div>
                 <div className="min-w-0">
-                  <p className={`text-[11px] font-black uppercase tracking-[0.2em] ${accentText}`}>Welcome to My Bible Buddy</p>
+                  <p className={`text-[11px] font-black uppercase tracking-[0.2em] ${accentText}`}>Welcome to Bible Buddy</p>
                   <h2 className={`mt-1 text-2xl font-black ${headingText}`}>Your Day 1 journey starts here</h2>
                 </div>
               </div>
@@ -282,9 +282,9 @@ export default function FirstLoginOnboardingModal({
             {currentSlide === "welcome_intro" ? (
               <div>
                 <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Most Bible apps help you read the Bible</p>
-                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>My Bible Buddy helps you understand it.</h3>
+                <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>Bible Buddy helps you understand it.</h3>
                 <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
-                  <p>My Bible Buddy combines audio Bible lessons with study tools designed to help you actually understand what you are reading.</p>
+                  <p>Bible Buddy combines audio Bible lessons with study tools designed to help you actually understand what you are reading.</p>
                   <p>Every day includes guided audio, study notes, trivia, and discussion questions to help Scripture stick.</p>
                 </div>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -307,7 +307,7 @@ export default function FirstLoginOnboardingModal({
 
             {currentSlide === "what_to_expect_daily" ? (
               <div>
-                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Your Daily My Bible Buddy Routine</p>
+                <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Your Daily Bible Buddy Routine</p>
                 <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>Simple. Consistent. Designed for real life.</h3>
                 <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>Every day follows the same easy-to-follow structure.</p>
@@ -341,7 +341,7 @@ export default function FirstLoginOnboardingModal({
                 <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>Learn while living your life.</h3>
                 <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
                   <p>For most of history, many people experienced Scripture by hearing it rather than reading it.</p>
-                  <p>My Bible Buddy lets you listen while driving, walking, working out, cleaning, or getting ready for the day.</p>
+                  <p>Bible Buddy lets you listen while driving, walking, working out, cleaning, or getting ready for the day.</p>
                 </div>
                 <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   {[
@@ -398,7 +398,7 @@ export default function FirstLoginOnboardingModal({
                   <p className={`mt-3 text-5xl font-black leading-none ${headingText}`}>{projected.projectedDays}</p>
                   <p className={`mt-2 text-lg font-black ${headingText}`}>days</p>
                   <p className={`mx-auto mt-4 max-w-md text-sm font-semibold leading-6 ${bodyText}`}>
-                    If you replaced your daily scrolling with My Bible Buddy, you could finish the Bible in about {projected.projectedDays} days.
+                    If you replaced your daily scrolling with Bible Buddy, you could finish the Bible in about {projected.projectedDays} days.
                   </p>
                 </div>
                 <div className="mt-5 grid gap-3 sm:grid-cols-3">
@@ -423,7 +423,7 @@ export default function FirstLoginOnboardingModal({
                 <p className={`text-sm font-black uppercase tracking-[0.16em] ${accentText}`}>Built For Consistency</p>
                 <h3 className={`mt-3 text-3xl font-black leading-tight ${headingText}`}>Thousands of small moments become a finished Bible.</h3>
                 <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
-                  <p>Many My Bible Buddy users fit Scripture into moments they already have.</p>
+                  <p>Many Bible Buddy users fit Scripture into moments they already have.</p>
                   <p>The goal is not finding more time. It is using the time you already have.</p>
                 </div>
                 <div className={`mt-6 rounded-[28px] border ${modalBorder} bg-[linear-gradient(180deg,#ffffff_0%,#f8fbff_100%)] px-5 py-5`}>
@@ -491,7 +491,7 @@ export default function FirstLoginOnboardingModal({
                   <p>Your answer helps us personalize encouragement and future recommendations.</p>
                   <p>There are no wrong answers.</p>
                 </div>
-                <p className={`mt-6 text-sm font-black ${headingText}`}>What do you want most from My Bible Buddy?</p>
+                <p className={`mt-6 text-sm font-black ${headingText}`}>What do you want most from Bible Buddy?</p>
                 <div className="mt-4 grid gap-3">
                   {GOAL_OPTIONS.map((option) => (
                     <button
@@ -540,7 +540,7 @@ export default function FirstLoginOnboardingModal({
                   Welcome{answers.firstName.trim() ? `, ${answers.firstName.trim()}` : ""}.
                 </h3>
                 <div className={`mt-4 space-y-3 text-[15px] font-semibold leading-7 ${bodyText}`}>
-                  <p>Everything in My Bible Buddy is included.</p>
+                  <p>Everything in Bible Buddy is included.</p>
                   <p>Your Day 1 journey starts now.</p>
                 </div>
 

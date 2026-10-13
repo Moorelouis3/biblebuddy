@@ -21,10 +21,10 @@ import { useSupabaseUser } from "@/lib/useSupabaseUser";
  */
 
 const VERSIONS = [
-  { name: "bible-year-trivia", file: "bible-year-trivia.jpg", alt: "Read it. Remember it. Answer today's Bible trivia inside My Bible Buddy." },
-  { name: "bible-year-progress", file: "bible-year-progress.jpg", alt: "Save your Bible in One Year progress inside My Bible Buddy." },
+  { name: "bible-year-trivia", file: "bible-year-trivia.jpg", alt: "Read it. Remember it. Answer today's Bible trivia inside Bible Buddy." },
+  { name: "bible-year-progress", file: "bible-year-progress.jpg", alt: "Save your Bible in One Year progress inside Bible Buddy." },
   { name: "bible-year-discussion", file: "bible-year-discussion.jpg", alt: "Join today's discussion with other Bible Buddies." },
-  { name: "bible-year-experience", file: "bible-year-experience.jpg", alt: "The full Bible in One Year experience inside My Bible Buddy." },
+  { name: "bible-year-experience", file: "bible-year-experience.jpg", alt: "The full Bible in One Year experience inside Bible Buddy." },
 ];
 
 export default function BibleYearPromo({

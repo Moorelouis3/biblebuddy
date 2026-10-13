@@ -2,7 +2,7 @@
  * Track User Activity Utility
  *
  * Tracks when a user logs in, refreshes, or interacts with the app.
- * Updates last_active_at as a lightweight heartbeat and logs user_login once per My Bible Buddy day.
+ * Updates last_active_at as a lightweight heartbeat and logs user_login once per Bible Buddy day.
  */
 
 import { supabase } from "./supabaseClient";

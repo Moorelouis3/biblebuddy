@@ -592,7 +592,7 @@ export default function GenesisTwoExplainedPage() {
             lonely tonight, Genesis 2 says none of that is outside what God already designed for.
           </p>
           <p>
-            This chapter comes alive verse by verse inside <strong>My Bible Buddy</strong>, and it is
+            This chapter comes alive verse by verse inside <strong>Bible Buddy</strong>, and it is
             completely free to start.
           </p>
         </div>

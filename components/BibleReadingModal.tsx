@@ -400,7 +400,7 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
           }
         }
 
-        throw new Error(`${bookDisplay} ${chapter} is not loaded in My Bible Buddy's KJV chapter library yet.`);
+        throw new Error(`${bookDisplay} ${chapter} is not loaded in Bible Buddy's KJV chapter library yet.`);
       } catch (err) {
         console.error("Error loading chapter:", err);
         setError(err instanceof Error ? err.message : "Failed to load chapter");

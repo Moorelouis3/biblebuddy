@@ -20,7 +20,7 @@ export default function GlobalError({ error }: { error: Error & { digest?: strin
         {reloading ? null : (
           <div style={{ maxWidth: 420, margin: "0 auto", padding: "20vh 24px", textAlign: "center" }}>
             <div style={{ fontSize: 40 }}>🛠️</div>
-            <h1 style={{ fontSize: 20, fontWeight: 900, margin: "12px 0 8px" }}>My Bible Buddy hit a snag</h1>
+            <h1 style={{ fontSize: 20, fontWeight: 900, margin: "12px 0 8px" }}>Bible Buddy hit a snag</h1>
             <p style={{ fontSize: 14, fontWeight: 600, color: "#4b5563", margin: 0 }}>
               Louis has already been sent the details. Tap below to reload - it usually works on the second go.
             </p>
@@ -39,7 +39,7 @@ export default function GlobalError({ error }: { error: Error & { digest?: strin
                 cursor: "pointer",
               }}
             >
-              Reload My Bible Buddy
+              Reload Bible Buddy
             </button>
           </div>
         )}

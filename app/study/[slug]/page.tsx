@@ -17,7 +17,7 @@ import { createClient } from "@supabase/supabase-js";
  *
  * Matching is done with ILIKE rather than equality because several devotionals
  * were seeded with longer titles than their canonical name
- * (e.g. "The Disciples of Jesus: A 21 Day Devotional — A My Bible Buddy Study").
+ * (e.g. "The Disciples of Jesus: A 21 Day Devotional — A Bible Buddy Study").
  */
 
 export const dynamic = "force-dynamic";

@@ -33,7 +33,7 @@ function getPreviewDescription(title: string, fallback: string): string {
     "The Tempting of Jesus":
       "Jesus walks into the wilderness alone, hungry, and led by the Spirit. What follows is not a small private struggle, but a direct showdown between the Son of God and the voice of temptation. This Bible study follows that tension closely, showing how Jesus answered pressure with truth instead of impulse. You will see the enemy's strategy, the power of Scripture, and the strength of obedience when no one else is watching. If you have ever felt tired, tempted, or spiritually stretched, this story will hit close to home.",
     "The Testing of Joseph":
-      "Joseph's life turns fast.\n\nHe moves from favored son to betrayed brother, from slave to prisoner, and from forgotten man to ruler in Egypt.\n\nThis 14-chapter journey walks through:\n\n🧥 the coat and family tension\n🌙 the dreams that made everything louder\n🕳️ the pit, betrayal, and Egypt\n🔒 prison, waiting, and hidden faithfulness\n🌾 famine, wisdom, and promotion\n🤝 forgiveness, reunion, and God's providence\n\nEvery chapter keeps the same My Bible Buddy flow: intro, Bible reading, notes, trivia, and reflection.\n\nIf you have ever wondered what God is doing in a long painful season, Joseph's story speaks right into that question.",
+      "Joseph's life turns fast.\n\nHe moves from favored son to betrayed brother, from slave to prisoner, and from forgotten man to ruler in Egypt.\n\nThis 14-chapter journey walks through:\n\n🧥 the coat and family tension\n🌙 the dreams that made everything louder\n🕳️ the pit, betrayal, and Egypt\n🔒 prison, waiting, and hidden faithfulness\n🌾 famine, wisdom, and promotion\n🤝 forgiveness, reunion, and God's providence\n\nEvery chapter keeps the same Bible Buddy flow: intro, Bible reading, notes, trivia, and reflection.\n\nIf you have ever wondered what God is doing in a long painful season, Joseph's story speaks right into that question.",
     "The Disciples of Jesus":
       "These men were not polished heroes when Jesus called them. They were ordinary, rough, unsure, and often slower to understand than they should have been. This Bible study follows their lives as Jesus teaches, corrects, stretches, and changes them from the inside out. You will watch fear turn into faith, confusion turn into conviction, and ordinary people become the foundation of a movement that changed the world. It is a story about calling, failure, growth, and what happens when people stay close to Jesus long enough to be transformed.",
     "Women of the Bible":
@@ -67,11 +67,11 @@ function getPreviewDescription(title: string, fallback: string): string {
     "The Deliverance of Moses":
       "Exodus 1-18 follows Israel from slavery in Egypt through Moses' birth, calling, confrontation with Pharaoh, the plagues, Passover, the Red Sea, and the first wilderness lessons. This Bible Study keeps every chapter tied to the same five-task rhythm: intro, Bible reading, notes, trivia, and reflection.",
     "The Covenant at Sinai":
-      "Exodus 19-24 brings the rescued people to Mount Sinai. God descends in holiness, gives His commandments, forms the covenant, and teaches Israel how to live as His people. This Bible Study walks through Sinai chapter by chapter with the full five-task My Bible Buddy flow.",
+      "Exodus 19-24 brings the rescued people to Mount Sinai. God descends in holiness, gives His commandments, forms the covenant, and teaches Israel how to live as His people. This Bible Study walks through Sinai chapter by chapter with the full five-task Bible Buddy flow.",
     "The Presence of God":
-      "Exodus 25-40 moves from tabernacle instructions to the golden calf, Moses' intercession, covenant mercy, obedient construction, and the glory of the Lord filling the tabernacle. This Bible Study keeps every chapter tied to the full My Bible Buddy rhythm: intro, reading, notes, trivia, and reflection.",
+      "Exodus 25-40 moves from tabernacle instructions to the golden calf, Moses' intercession, covenant mercy, obedient construction, and the glory of the Lord filling the tabernacle. This Bible Study keeps every chapter tied to the full Bible Buddy rhythm: intro, reading, notes, trivia, and reflection.",
     "Holiness Before God":
-      "Leviticus 1-27 teaches how a holy God dwells with His people. This Bible Study walks chapter by chapter through sacrifice, priesthood, atonement, clean and unclean, holy living, feasts, Jubilee, covenant blessing, and devotion to the Lord with the full My Bible Buddy rhythm: intro, reading, notes, trivia, and reflection.",
+      "Leviticus 1-27 teaches how a holy God dwells with His people. This Bible Study walks chapter by chapter through sacrifice, priesthood, atonement, clean and unclean, holy living, feasts, Jubilee, covenant blessing, and devotion to the Lord with the full Bible Buddy rhythm: intro, reading, notes, trivia, and reflection.",
     "The Wilderness Journey":
       "Numbers 1-14 takes Israel from ordered camp life at Sinai into the pressure of the wilderness. This Bible Study walks chapter by chapter through census, camp order, Levites, purity, offerings, priestly blessing, cloud and fire, complaint, leadership pressure, Miriam and Aaron, the spies, fear, faith, and the hard lesson of trusting God between deliverance and promise.",
     "The Rebellion in the Wilderness":
@@ -399,7 +399,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [expandedWisdomTask, setExpandedWisdomTask] = useState<string | null>(null);
   const [completedTriviaDayNumbers, setCompletedTriviaDayNumbers] = useState<Set<number>>(new Set());
   const [completedDiscussionDayNumbers, setCompletedDiscussionDayNumbers] = useState<Set<number>>(new Set());
-  // Community event days (Wisdom of Proverbs): day number -> that day's My Bible Buddy group post.
+  // Community event days (Wisdom of Proverbs): day number -> that day's Bible Buddy group post.
   const [eventDayPosts, setEventDayPosts] = useState<Map<number, EventDayPost>>(new Map());
   const [starterBuddies, setStarterBuddies] = useState<DevotionalStarterBuddy[]>([]);
   const [showStarterBuddiesModal, setShowStarterBuddiesModal] = useState(false);
@@ -1781,8 +1781,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       <DevotionalDayCompletionModal
         dayNumber={null}
         devotionalTitle={null}
-        customTitle="You Need My Bible Buddy Pro"
-        customBody={"This plan is part of the My Bible Buddy Pro library. Upgrade to unlock full access to all plans, deeper studies, and future releases."}
+        customTitle="You Need Bible Buddy Pro"
+        customBody={"This plan is part of the Bible Buddy Pro library. Upgrade to unlock full access to all plans, deeper studies, and future releases."}
         primaryButtonText="Upgrade to Pro"
         secondaryButtonText="Maybe Later"
         onPrimary={() => router.push('/upgrade')}
@@ -2701,7 +2701,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
             </button>
             <h2 className="text-xl font-bold text-gray-900 mb-3">Unlock All Reading Plans</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              You've already started your free plan. Upgrade to My Bible Buddy Pro to unlock every plan — including this one — plus all future releases.
+              You've already started your free plan. Upgrade to Bible Buddy Pro to unlock every plan — including this one — plus all future releases.
             </p>
             <div className="flex flex-col gap-3">
               <button

@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { isExternalUrl, isNativeApp, openExternal } from "@/lib/nativeApp";
 
-// Inside the native app, links that leave My Bible Buddy (and target=_blank links,
+// Inside the native app, links that leave Bible Buddy (and target=_blank links,
 // which a WebView cannot open as a new tab) open in the system browser sheet
 // instead of replacing the app. Does nothing on the web.
 export default function NativeExternalLinks() {

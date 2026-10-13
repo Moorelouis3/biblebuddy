@@ -7,7 +7,7 @@ import { WISDOM_BOOKS_ON_SALE, WISDOM_BOOKS_PAGE_PATH } from "@/lib/wisdomOfProv
 
 // Community event daily post (2026-09-22, The Wisdom of Proverbs).
 //
-// Every morning of a live event, one post goes up as Louis in the My Bible Buddy
+// Every morning of a live event, one post goes up as Louis in the Bible Buddy
 // group. Its replies ARE the day's discussion (the devotional day page shows
 // the same thread). The event's members get a notification: everyone on day 1,
 // then only members who turned reminders on.

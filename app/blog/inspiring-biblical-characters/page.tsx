@@ -196,7 +196,7 @@ export default function InspiringBiblicalCharactersPage() {
           </p>
           <p>
             💡 You can walk through that whole night, verse by verse, inside{" "}
-            <strong>My Bible Buddy</strong>, and it is completely free to open right now.
+            <strong>Bible Buddy</strong>, and it is completely free to open right now.
           </p>
           <p>God shut the lions&apos; mouths, and Daniel walked out the next morning unharmed.</p>
         </div>

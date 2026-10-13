@@ -124,7 +124,7 @@ function unitWidth(font: LoadedFont, text: string, trackingRatio: number) {
 }
 
 /** The look, held constant across every day so 365 covers read as one set.
- *  LAYER 1 of the prompt: permanent My Bible Buddy art direction. */
+ *  LAYER 1 of the prompt: permanent Bible Buddy art direction. */
 const COVER_STYLE_DIRECTION = [
   // Louis picked the darker, high-contrast look (day 31 candidate-3) as the
   // house style over a brighter variant. Keep the deep blacks — softening them

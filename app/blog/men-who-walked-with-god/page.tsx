@@ -157,7 +157,7 @@ export default function MenWhoWalkedWithGodPage() {
           <p>
             Noah&apos;s story goes much deeper than these two verses, and the whole chapter is worth
             slowing down for. You can read it verse by verse inside{" "}
-            <strong>My Bible Buddy</strong>, which is free to use, so there is nothing stopping you from
+            <strong>Bible Buddy</strong>, which is free to use, so there is nothing stopping you from
             starting today.
           </p>
         </div>

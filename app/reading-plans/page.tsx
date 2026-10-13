@@ -25,7 +25,7 @@ const ACTIVE_PLANS: ReadingPlan[] = [
   },
   {
     id: "bible-buddy",
-    title: "The My Bible Buddy Reading Plan",
+    title: "The Bible Buddy Reading Plan",
     subtitle: "A story-focused journey through Scripture",
     coverImage: "/images/Thebiblebuddyreadingplan.png",
   },

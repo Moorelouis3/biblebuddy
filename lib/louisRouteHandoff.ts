@@ -109,7 +109,7 @@ export async function buildLouisRecommendationHandoff(
 
   if (targetPath === "/settings") {
     message = pickVariant(seed, [
-      `You are in your profile settings now.\n\nTake a minute and finish it the right way.\n\nThe more complete your profile is, the more My Bible Buddy feels like a real community.\n\nI am here if you want help deciding what to add.`,
+      `You are in your profile settings now.\n\nTake a minute and finish it the right way.\n\nThe more complete your profile is, the more Bible Buddy feels like a real community.\n\nI am here if you want help deciding what to add.`,
       `You are in the profile setup now.\n\nClean up what is missing while you are here.\n\nA good profile makes it easier for people to know who they are studying with.\n\nIf you need help, just ask me.`,
       `This is a quick profile win.\n\nAdd the missing pieces and make the app feel more personal.\n\nA little setup here goes a long way later.\n\nI am here if you want help with it.`,
     ]);
@@ -125,7 +125,7 @@ export async function buildLouisRecommendationHandoff(
     message = pickVariant(seed, [
       `You are watching ${label} now.\n\nDo not just play it in the background and move on.\n\nPay attention to what lines up with what you have been reading lately.\n\nIf you want to talk through it after, ask me.`,
       `This is a good next watch.\n\nStay present with it and listen for what connects back to Scripture.\n\nGood teaching lands better when you actually slow down and take it in.\n\nI am here if you want to talk about it after.`,
-      `You are in My Bible Buddy TV now.\n\nWatch this with intention and look for what God might be trying to highlight.\n\nA good teaching can deepen what you have already been reading.\n\nIf anything stands out, come tell me.`,
+      `You are in Bible Buddy TV now.\n\nWatch this with intention and look for what God might be trying to highlight.\n\nA good teaching can deepen what you have already been reading.\n\nIf anything stands out, come tell me.`,
     ]);
   } else if (targetPath.startsWith("/bible-trivia") || targetPath.startsWith("/bible-study-games")) {
     message = pickVariant(seed, [

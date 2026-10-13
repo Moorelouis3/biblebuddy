@@ -105,7 +105,7 @@ export default function ProverbsLandingPage() {
   // social post assume a Zoom class or a mailing list, so say plainly that it is
   // neither.
   const whatItIs = [
-    { emoji: "📱", text: "It all happens inside My Bible Buddy, on your phone or your computer. No Zoom, no video calls, no meetings to show up to." },
+    { emoji: "📱", text: "It all happens inside Bible Buddy, on your phone or your computer. No Zoom, no video calls, no meetings to show up to." },
     { emoji: "📅", text: "31 chapters, one a day — Proverbs has a chapter for every day of the month." },
     { emoji: "⏱️", text: "About fifteen minutes a day, whenever suits you. Morning, lunch break, last thing at night." },
     { emoji: "🔓", text: "All 31 days are open from the start. Begin today or next month, go fast or slow. Nothing locks and nothing expires." },
@@ -113,7 +113,7 @@ export default function ProverbsLandingPage() {
   ];
 
   const dailySteps = [
-    { emoji: "🎧", title: "Read or listen", text: "A short study of the day's chapter — read it, or let My Bible Buddy read it to you." },
+    { emoji: "🎧", title: "Read or listen", text: "A short study of the day's chapter — read it, or let Bible Buddy read it to you." },
     { emoji: "📜", title: "Read the chapter", text: "The chapter of Proverbs itself, with study notes beside the text." },
     { emoji: "🧠", title: "Take the trivia", text: "A few questions on what you just read, so it actually sticks." },
     { emoji: "💬", title: "Join the discussion", text: "Answer the day's question and see what everyone else saw in the same chapter — in your own time, not live." },
@@ -129,7 +129,7 @@ export default function ProverbsLandingPage() {
         {ctaLabel}
       </Link>
       <p className="mt-3 text-sm text-[#5b6c84]">
-        Free forever · A My Bible Buddy account saves your place and your answers
+        Free forever · A Bible Buddy account saves your place and your answers
       </p>
       {!userId && !authLoading ? (
         <p className="mt-2 text-sm text-[#5b6c84]">
@@ -148,7 +148,7 @@ export default function ProverbsLandingPage() {
         <div className="overflow-hidden rounded-3xl border border-[#dce7f7] bg-white shadow-sm">
           <Image
             src="/og/wisdom-of-proverbs.png"
-            alt="The Wisdom of Proverbs — a free 31-day Bible study from My Bible Buddy"
+            alt="The Wisdom of Proverbs — a free 31-day Bible study from Bible Buddy"
             width={1200}
             height={630}
             priority

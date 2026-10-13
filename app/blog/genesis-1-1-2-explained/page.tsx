@@ -212,7 +212,7 @@ export default function GenesisOneOneTwoExplainedPage() {
           <p>
             If you want to read Genesis 1 the way it was actually written, verse by verse, you can
             open the whole chapter for free in the{" "}
-            <ArticleLink href="/bible/genesis/1">My Bible Buddy reader here</ArticleLink>, and follow
+            <ArticleLink href="/bible/genesis/1">Bible Buddy reader here</ArticleLink>, and follow
             along as we keep going.
           </p>
         </div>

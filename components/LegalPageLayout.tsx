@@ -110,7 +110,7 @@ export default function LegalPageLayout({
         <div className="bb-legal-header mb-8 flex items-center justify-between gap-5 rounded-none px-0 py-0" role="banner">
           <Link href="/" className="bb-legal-logo flex items-center gap-3">
             <Image src="/TherealiconforBB.png" alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-lg object-cover" />
-            <span className="text-lg font-black tracking-tight">My Bible Buddy</span>
+            <span className="text-lg font-black tracking-tight">Bible Buddy</span>
           </Link>
           <PublicHomeButton className="bb-legal-home fixed right-5 top-6 z-50 rounded-full border px-5 py-2.5 text-sm font-black shadow-[0_10px_24px_rgba(14,26,58,0.06)] transition hover:-translate-y-0.5 sm:right-8" />
         </div>
@@ -151,7 +151,7 @@ export default function LegalPageLayout({
                 <path d="M16 11.2v17" />
               </svg>
               <div>
-                <p className="text-sm font-black text-[#111827]">My Bible Buddy</p>
+                <p className="text-sm font-black text-[#111827]">Bible Buddy</p>
                 <p className="text-xs font-semibold text-[#6B7280]">Simple. Guided. Transformative.</p>
               </div>
             </div>
@@ -164,7 +164,7 @@ export default function LegalPageLayout({
             </nav>
           </div>
           <div className="mt-5 border-t border-[#E5E7EB] pt-4 text-xs font-semibold text-[#6B7280]">
-            © 2026 My Bible Buddy. All rights reserved.
+            © 2026 Bible Buddy. All rights reserved.
           </div>
         </footer>
       </div>

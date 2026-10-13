@@ -4,8 +4,8 @@ import LegalPageLayout from "@/components/LegalPageLayout";
 import LegalSection from "@/components/LegalSection";
 
 export const metadata: Metadata = {
-  title: "Community Guidelines | My Bible Buddy",
-  description: "The rules for posting, commenting, and messaging in My Bible Buddy.",
+  title: "Community Guidelines | Bible Buddy",
+  description: "The rules for posting, commenting, and messaging in Bible Buddy.",
 };
 
 export default function CommunityGuidelinesPage() {
@@ -13,14 +13,14 @@ export default function CommunityGuidelinesPage() {
     <LegalPageLayout
       eyebrow="Community"
       title="Community Guidelines"
-      description="My Bible Buddy is a place to study the Bible and encourage each other. These simple rules keep it safe and kind for everyone."
+      description="Bible Buddy is a place to study the Bible and encourage each other. These simple rules keep it safe and kind for everyone."
       lastUpdated="September 21, 2026"
     >
       <LegalSection title="1. Be Respectful">
         <p>
           Treat everyone the way you would want to be treated. Disagree kindly,
           assume the best about people, and remember that people of every
-          background and stage of faith use My Bible Buddy.
+          background and stage of faith use Bible Buddy.
         </p>
       </LegalSection>
 
@@ -58,7 +58,7 @@ export default function CommunityGuidelinesPage() {
       <LegalSection title="5. How We Enforce These Rules">
         <p>
           <strong>
-            My Bible Buddy has zero tolerance for objectionable content and abusive users.
+            Bible Buddy has zero tolerance for objectionable content and abusive users.
           </strong>
         </p>
         <ul>

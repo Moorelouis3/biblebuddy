@@ -3,7 +3,7 @@ import { getEventDayPosts, type EventDayPost } from "./communityEventDays";
 
 // Devotional <-> community event wiring (2026-09-22). When a devotional runs as
 // a community event, each day's discussion is the replies on that day's post
-// in the My Bible Buddy group (see lib/communityEventDays.ts). Days with no post
+// in the Bible Buddy group (see lib/communityEventDays.ts). Days with no post
 // yet keep the old article_comments discussion so early starters are never
 // blocked.
 

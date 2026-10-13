@@ -8,7 +8,7 @@
   "blocks": [
     { "type": "bold", "text": "Today is Day 1." },
     { "type": "p", "text": "Here is what today looks like." },
-    { "type": "p", "text": "Open My Bible Buddy." },
+    { "type": "p", "text": "Open Bible Buddy." },
     { "type": "p", "text": "Read the Day 1 lesson." },
     { "type": "p", "text": "Read Proverbs 1." },
     { "type": "p", "text": "Answer the questions, and see what everyone else noticed." },

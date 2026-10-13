@@ -6,46 +6,46 @@ export const runtime = "nodejs";
 export const maxDuration = 30;
 
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
-const WELCOME_MESSAGE = `Hey, welcome to My Bible Buddy 👋
+const WELCOME_MESSAGE = `Hey, welcome to Bible Buddy 👋
 
 My name is Louis, and I'm the one who built the app.
 
-I created My Bible Buddy because I used to struggle to actually understand what I was reading in the Bible.
+I created Bible Buddy because I used to struggle to actually understand what I was reading in the Bible.
 
 It often felt like I needed notebooks, videos, commentaries, and Google searches just to understand a few verses. Even then, I still had questions.
 
 So I decided to build something simpler.
 
-My Bible Buddy was created to help both myself and others understand the Bible and build a consistent habit of reading God's Word every day.
+Bible Buddy was created to help both myself and others understand the Bible and build a consistent habit of reading God's Word every day.
 
 The goal isn't just to help you read through the Bible.
 
 The goal is to help you actually understand what you're reading while building a daily Bible habit that lasts.
 
-My Bible Buddy is currently in beta, which means we're still actively improving the app and adding new features.
+Bible Buddy is currently in beta, which means we're still actively improving the app and adding new features.
 
-Right now, My Bible Buddy is not available in the App Store or Google Play Store.
+Right now, Bible Buddy is not available in the App Store or Google Play Store.
 
-However, you can save My Bible Buddy directly to your phone and use it just like a normal app.
+However, you can save Bible Buddy directly to your phone and use it just like a normal app.
 
-How To Save My Bible Buddy On iPhone
+How To Save Bible Buddy On iPhone
 
 1. Open Safari
 2. Go to mybiblebuddy.net
 3. Tap the three dots at the bottom of the screen
 4. Tap Share
 5. Tap Add to Home Screen
-6. My Bible Buddy will now appear on your home screen like a normal app
+6. Bible Buddy will now appear on your home screen like a normal app
 
-How To Save My Bible Buddy On Android
+How To Save Bible Buddy On Android
 
 1. Open Chrome
 2. Go to mybiblebuddy.net
 3. Tap the three dots in the top right corner
 4. Tap Add to Home Screen or Install App
-5. My Bible Buddy will now appear on your home screen like a normal app
+5. Bible Buddy will now appear on your home screen like a normal app
 
-Once you've installed My Bible Buddy, I encourage you to start Day 1 of the Bible in One Year journey.
+Once you've installed Bible Buddy, I encourage you to start Day 1 of the Bible in One Year journey.
 
 The entire app is built around helping you understand Scripture one day at a time while building a consistent Bible reading habit.
 

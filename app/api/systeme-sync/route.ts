@@ -6,7 +6,7 @@ export const maxDuration = 10;
 
 // Adds a new Bible Buddy signup to the Systeme.io email list so the same
 // list that already has ~1,700 biblestudywithlouis.com subscribers becomes
-// the real My Bible Buddy list going forward - fired non-blocking from the
+// the real Bible Buddy list going forward - fired non-blocking from the
 // signup page, same pattern as /api/send-welcome-dm. A failure here should
 // never affect account creation.
 export async function POST(request: NextRequest) {

@@ -166,7 +166,7 @@ export default function DisplayNamePromptGate() {
           What should we call you?
         </h2>
         <p className="mt-2 text-sm font-medium leading-6 text-[var(--bb-text-secondary,#4b5563)]">
-          So the rest of My Bible Buddy knows you by name, not an ID.
+          So the rest of Bible Buddy knows you by name, not an ID.
         </p>
 
         <div className="mt-4 grid gap-3">

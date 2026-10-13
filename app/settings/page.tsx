@@ -462,7 +462,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           { onConflict: "user_id" },
         );
       if (error) throw error;
-      setSettingsMessage("My Bible Buddy updated.");
+      setSettingsMessage("Bible Buddy updated.");
       setActiveBuddyIndex(0);
       const buddy = getBuddyAvatar(buddyId);
       const labelIndex = Math.abs(buddyId.charCodeAt(0) + buddyId.length) % BUDDY_READY_BUTTON_LABELS.length;
@@ -479,8 +479,8 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
       }
       setSettingsMessage(
         /selected_buddy_avatar/i.test(error.message || "")
-          ? "My Bible Buddy selection needs the selected_buddy_avatar column in profile_stats before it can save."
-          : error.message || "Could not update My Bible Buddy.",
+          ? "Bible Buddy selection needs the selected_buddy_avatar column in profile_stats before it can save."
+          : error.message || "Could not update Bible Buddy.",
       );
     } finally {
       setBuddySaving(null);
@@ -645,7 +645,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                 <LouisAvatar buddyId={buddyReadyModal.buddyId} mood="reading" size={136} />
               </div>
               <p className="mt-5 text-xs font-black uppercase tracking-[0.2em] text-[var(--bb-accent,#2563eb)]">
-                My Bible Buddy ready
+                Bible Buddy ready
               </p>
               <h2 className="mt-2 text-3xl font-black leading-tight text-gray-950">
                 {buddyReadyModal.buddyName} is ready
@@ -677,7 +677,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         <div className="mb-6 rounded-xl bg-[var(--bb-card,#ffffff)] p-6 text-[var(--bb-text-primary,#111827)] shadow-sm">
           <h2 className="text-xl font-semibold">App theme</h2>
           <p className="mt-1 text-sm text-[var(--bb-text-secondary,#4b5563)]">
-            Pick the color My Bible Buddy wears everywhere - it saves to your account.
+            Pick the color Bible Buddy wears everywhere - it saves to your account.
           </p>
           <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
             {APP_THEMES.map((theme) => {
@@ -714,9 +714,9 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           </div>
         </div>
 
-        {/* My Bible Buddy Section */}
+        {/* Bible Buddy Section */}
         <div className="bg-white rounded-xl p-4 shadow-sm mb-6 sm:p-6">
-          <h2 className="text-xl font-semibold mb-2">My Bible Buddy</h2>
+          <h2 className="text-xl font-semibold mb-2">Bible Buddy</h2>
           <p className="mb-4 text-sm text-gray-600">
             Pick the Buddy that should show across your dashboard, menu, popups, games, and study areas.
           </p>
@@ -727,7 +727,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                 type="button"
                 onClick={() => moveBuddyCard(-1)}
                 className="absolute left-1 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#2563eb)] shadow-sm transition hover:brightness-95 active:scale-95 sm:left-0"
-                aria-label="Previous My Bible Buddy"
+                aria-label="Previous Bible Buddy"
               >
                 ‹
               </button>
@@ -802,7 +802,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
                 type="button"
                 onClick={() => moveBuddyCard(1)}
                 className="absolute right-1 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-2xl font-black text-[var(--bb-accent,#2563eb)] shadow-sm transition hover:brightness-95 active:scale-95 sm:right-0"
-                aria-label="Next My Bible Buddy"
+                aria-label="Next Bible Buddy"
               >
                 ›
               </button>
@@ -1014,7 +1014,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
             ) : !showDeleteAccount ? (
               <>
                 <p className="text-sm text-gray-600">
-                  Permanently delete your My Bible Buddy account and everything tied to it: your profile, progress,
+                  Permanently delete your Bible Buddy account and everything tied to it: your profile, progress,
                   notes, highlights, bookmarks, posts, comments, messages, and chats with Little Louis.
                 </p>
                 <button

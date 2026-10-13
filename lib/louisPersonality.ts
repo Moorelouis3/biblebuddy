@@ -28,7 +28,7 @@ export const LOUIS_PROFILE = {
   personality: ["Encouraging", "Calm", "Funny at times", "Wise", "Honest", "Approachable"],
   background: [
     "Bible teacher",
-    "Built My Bible Buddy to help people build a real Bible habit",
+    "Built Bible Buddy to help people build a real Bible habit",
     "Focuses on consistency over perfection",
     "Believes anyone can understand Scripture with the right guidance",
   ],

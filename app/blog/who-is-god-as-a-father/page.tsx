@@ -180,7 +180,7 @@ export default function WhoIsGodAsAFatherPage() {
           <p>
             This is exactly the kind of verse that opens up when you slow down and study it line by
             line. That kind of study, verse by verse in plain English, is what{" "}
-            <strong>My Bible Buddy</strong> is built for, and it is free to start.
+            <strong>Bible Buddy</strong> is built for, and it is free to start.
           </p>
         </div>
 

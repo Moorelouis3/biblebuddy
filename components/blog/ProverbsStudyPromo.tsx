@@ -70,12 +70,12 @@ const BANNERS = [
   {
     name: "study-now",
     file: "proverbs-study-now.jpg",
-    alt: "The Wisdom of Proverbs: a free 31-day Bible study inside My Bible Buddy. Start studying now.",
+    alt: "The Wisdom of Proverbs: a free 31-day Bible study inside Bible Buddy. Start studying now.",
   },
   {
     name: "next-31-days",
     file: "proverbs-next-31-days.jpg",
-    alt: "Start your next 31 days with the book of Proverbs inside My Bible Buddy.",
+    alt: "Start your next 31 days with the book of Proverbs inside Bible Buddy.",
   },
 ];
 

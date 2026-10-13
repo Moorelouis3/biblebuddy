@@ -2,11 +2,11 @@
   {
     "number": 1,
     "launchDate": "OCTOBER 16, 2026",
-    "subject": "How My Bible Buddy helps you understand the Bible",
+    "subject": "How Bible Buddy helps you understand the Bible",
     "blocks": [
       {
         "type": "h1",
-        "text": "How My Bible Buddy Helps You Understand the Bible"
+        "text": "How Bible Buddy Helps You Understand the Bible"
       },
       {
         "type": "p",
@@ -42,7 +42,7 @@
       },
       {
         "type": "h3",
-        "text": "That’s Why I Built My Bible Buddy"
+        "text": "That’s Why I Built Bible Buddy"
       },
       {
         "type": "p",
@@ -62,7 +62,7 @@
       },
       {
         "type": "p",
-        "html": "When you open the Bible in My Bible Buddy:"
+        "html": "When you open the Bible in Bible Buddy:"
       },
       {
         "type": "ul",
@@ -90,7 +90,7 @@
       },
       {
         "type": "p",
-        "html": "That’s what I want My Bible Buddy to help you do."
+        "html": "That’s what I want Bible Buddy to help you do."
       },
       {
         "type": "p",
@@ -106,7 +106,7 @@
       },
       {
         "type": "h3",
-        "text": "Try It in My Bible Buddy"
+        "text": "Try It in Bible Buddy"
       },
       {
         "type": "cta",
@@ -120,7 +120,7 @@
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
@@ -163,7 +163,7 @@
       },
       {
         "type": "p",
-        "html": "The Bible we read in My Bible Buddy is a collection of <strong>66 books</strong>, divided into the Old Testament and the New Testament."
+        "html": "The Bible we read in Bible Buddy is a collection of <strong>66 books</strong>, divided into the Old Testament and the New Testament."
       },
       {
         "type": "p",
@@ -269,7 +269,7 @@
       },
       {
         "type": "h3",
-        "text": "Explore the Books in My Bible Buddy"
+        "text": "Explore the Books in Bible Buddy"
       },
       {
         "type": "p",
@@ -307,14 +307,14 @@
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
   {
     "number": 3,
     "launchDate": "OCTOBER 30, 2026",
-    "subject": "Not sure where to start? Try a My Bible Buddy study guide.",
+    "subject": "Not sure where to start? Try a Bible Buddy study guide.",
     "blocks": [
       {
         "type": "h1",
@@ -342,7 +342,7 @@
       },
       {
         "type": "p",
-        "html": "<strong>Our My Bible Buddy study guides are a great way to start reading and understanding the Bible.</strong>"
+        "html": "<strong>Our Bible Buddy study guides are a great way to start reading and understanding the Bible.</strong>"
       },
       {
         "type": "p",
@@ -432,17 +432,17 @@
       },
       {
         "type": "p",
-        "html": "Explore the study guides in My Bible Buddy and choose one you’d like to work through."
+        "html": "Explore the study guides in Bible Buddy and choose one you’d like to work through."
       },
       {
         "type": "cta",
-        "label": "Explore My Bible Buddy Study Guides",
+        "label": "Explore Bible Buddy Study Guides",
         "url": "{{bible_buddy_url}}/devotionals"
       },
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
@@ -534,7 +534,7 @@
       },
       {
         "type": "h3",
-        "text": "Take a Closer Look With My Bible Buddy"
+        "text": "Take a Closer Look With Bible Buddy"
       },
       {
         "type": "p",
@@ -542,7 +542,7 @@
       },
       {
         "type": "p",
-        "html": "Open a chapter in My Bible Buddy and turn it on. You’ll see explanations underneath the verses as you work through the passage."
+        "html": "Open a chapter in Bible Buddy and turn it on. You’ll see explanations underneath the verses as you work through the passage."
       },
       {
         "type": "p",
@@ -579,13 +579,13 @@
       },
       {
         "type": "cta",
-        "label": "Open the Bible in My Bible Buddy",
+        "label": "Open the Bible in Bible Buddy",
         "url": "{{bible_buddy_url}}/reading"
       },
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
@@ -673,7 +673,7 @@
       },
       {
         "type": "h3",
-        "text": "Save Your Highlights in My Bible Buddy"
+        "text": "Save Your Highlights in Bible Buddy"
       },
       {
         "type": "p",
@@ -723,7 +723,7 @@
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
@@ -807,11 +807,11 @@
       },
       {
         "type": "h3",
-        "text": "Explore With My Bible Buddy"
+        "text": "Explore With Bible Buddy"
       },
       {
         "type": "p",
-        "html": "My Bible Buddy has pages for people, places, and keywords that you can explore alongside your reading."
+        "html": "Bible Buddy has pages for people, places, and keywords that you can explore alongside your reading."
       },
       {
         "type": "p",
@@ -831,7 +831,7 @@
       },
       {
         "type": "p",
-        "html": "Read about that person in My Bible Buddy. Then go back to the chapter."
+        "html": "Read about that person in Bible Buddy. Then go back to the chapter."
       },
       {
         "type": "p",
@@ -845,7 +845,7 @@
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
@@ -933,7 +933,7 @@
       },
       {
         "type": "h3",
-        "text": "Keep Your Notes in My Bible Buddy"
+        "text": "Keep Your Notes in Bible Buddy"
       },
       {
         "type": "p",
@@ -975,7 +975,7 @@
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
@@ -1030,7 +1030,7 @@
       },
       {
         "type": "p",
-        "html": "Inside the My Bible Buddy reader, the <strong>Trivia</strong> tab gives you questions about that book and chapter."
+        "html": "Inside the Bible Buddy reader, the <strong>Trivia</strong> tab gives you questions about that book and chapter."
       },
       {
         "type": "p",
@@ -1089,7 +1089,7 @@
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
@@ -1140,7 +1140,7 @@
       },
       {
         "type": "h3",
-        "text": "Let My Bible Buddy Help You Choose"
+        "text": "Let Bible Buddy Help You Choose"
       },
       {
         "type": "p",
@@ -1187,7 +1187,7 @@
       {
         "type": "ul",
         "items": [
-          "Have My Bible Buddy ready",
+          "Have Bible Buddy ready",
           "Know what you’ll open"
         ]
       },
@@ -1223,7 +1223,7 @@
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
@@ -1286,7 +1286,7 @@
       },
       {
         "type": "p",
-        "html": "Inside My Bible Buddy, our shared study group gives us a place to talk about what we’re learning."
+        "html": "Inside Bible Buddy, our shared study group gives us a place to talk about what we’re learning."
       },
       {
         "type": "p",
@@ -1344,7 +1344,7 @@
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
@@ -1408,7 +1408,7 @@
       },
       {
         "type": "p",
-        "html": "When you’re signed in to My Bible Buddy, you can bring Bible questions to <strong>Little Louis</strong> in the chat."
+        "html": "When you’re signed in to Bible Buddy, you can bring Bible questions to <strong>Little Louis</strong> in the chat."
       },
       {
         "type": "p",
@@ -1462,7 +1462,7 @@
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   },
@@ -1591,7 +1591,7 @@
       },
       {
         "type": "cta",
-        "label": "Choose Your Next My Bible Buddy Study",
+        "label": "Choose Your Next Bible Buddy Study",
         "url": "{{bible_buddy_url}}/devotionals"
       },
       {
@@ -1601,7 +1601,7 @@
       {
         "type": "signoff",
         "name": "Louis",
-        "title": "Founder of My Bible Buddy"
+        "title": "Founder of Bible Buddy"
       }
     ]
   }

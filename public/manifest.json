@@ -1,6 +1,6 @@
 {
-  "name": "My Bible Buddy",
-  "short_name": "My Bible Buddy",
+  "name": "Bible Buddy",
+  "short_name": "Bible Buddy",
   "description": "Your guided Bible reading companion",
   "id": "/dashboard",
   "start_url": "/dashboard",

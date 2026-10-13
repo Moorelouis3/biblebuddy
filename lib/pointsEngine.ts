@@ -1,5 +1,5 @@
 // lib/pointsEngine.ts
-// The one place My Bible Buddy points are computed (relaunched 2026-09-05).
+// The one place Bible Buddy points are computed (relaunched 2026-09-05).
 //
 // Design rule: DERIVE, DON'T STORE. Points are always a weighted sum over
 // master_actions plus the group tables. profile_stats.current_level (and

@@ -1,0 +1,143 @@
+You are writing an email for Bible Buddy, a free Bible study app. You are writing AS Louis, the founder. It goes to about 5,200 people who signed up to the app.
+
+Rewrite the email below.
+
+WHAT IS WRONG WITH IT
+- The SUBJECT LINE is trash. Replace it.
+- The PREVIEW TEXT is trash. Replace it.
+- The BODY is OK. Keep its bones and its story beats, but sharpen it.
+
+WHAT IT MUST DO
+Focus on one feeling: believing you are not qualified for what God is calling you to.
+Walk through Moses as the proof - not the famous scenes, the gap in the middle. The murder, the running, forty years keeping another man's sheep, eighty years old at the bush, and arguing with God when He finally spoke. Then land it on the reader: the thing you think disqualifies you is the same thing Moses had.
+
+HOW IT MUST SOUND
+- Like Louis talking to one person, not a newsletter talking to a list.
+- Short paragraphs. Often one sentence. Plenty of white space.
+- Plain words. No church jargon, no hype, no exclamation marks.
+- A few lines in bold where the thought turns.
+- Open with a question the reader is already asking themselves.
+- Sign off: Louis
+
+HOW IT MUST END
+Tee up the full Moses character study, casually, the way you would mention it to a friend. Something like: if you want to go deeper on him, I wrote a full character study on Moses here. Link: https://www.mybiblebuddy.net/blog/moses
+Do not stack a second call to action after it. One link, one invitation.
+
+WHAT TO GIVE ME BACK
+1. Five subject line options. Under 45 characters. Curious, not clickbait, no colons.
+2. Three preview text options. Under 90 characters. It must add to the subject, not repeat it.
+3. The email body as simple HTML - only <p>, <strong> and one <a> for the link. No tables, no inline styles, no images. The image is added separately.
+
+HERE IS THE CURRENT EMAIL
+
+Current subject: Please send somebody else
+Current preview text: Moses said it to God at the burning bush. God sent him anyway.
+
+Current body:
+---
+Ever feel like your past already disqualified you?
+
+ 
+
+Like God might use somebody else, but not you.
+
+ 
+
+Not after what you did.
+
+ 
+
+Not after how long you have been sitting still.
+
+ 
+
+If that is where you are, Moses is your story.
+
+ 
+
+Most people know two scenes from his life. The baby in the basket. The sea splitting open.
+
+ 
+
+What gets skipped is everything in between.
+
+ 
+
+A murder. A run for his life. Forty years keeping somebody else's sheep in the desert.
+
+ 
+
+He was eighty when God finally spoke to him from a burning bush.
+
+ 
+
+And Moses argued with Him.
+
+ 
+
+❓ Who am I to go?
+
+ 
+
+❓ What if they do not believe me?
+
+ 
+
+❓ I am slow of speech.
+
+ 
+
+❓ Please, send somebody else.
+
+ 
+
+God never argued him into confidence.
+
+ 
+
+He answered the fear with a promise instead. "Certainly I will be with thee."
+
+ 
+
+The man who ran from Egypt in fear came back and emptied it.
+
+ 
+
+Not as a prince. As a shepherd holding a stick.
+
+ 
+
+That is the part I do not want you to miss.
+
+ 
+
+God is not looking for qualified people. He is looking for available ones.
+
+ 
+
+Midian was not punishment. It was preparation. The palace gave Moses his education, and the desert gave him his character.
+
+ 
+
+If you are in a season where nothing seems to be happening, that is not proof God is done with you.
+
+ 
+
+In the full guide I walk through his whole life in order, from the basket on the Nile to Mount Nebo, plus six lessons his story still teaches.
+
+ 
+
+You can read it here:
+
+ 
+
+Who Was Moses in the Bible? The Story of the Man God Drew Out
+
+ 
+
+It is completely free, just like everything else inside Bible Buddy.
+
+ 
+
+Louis
+---

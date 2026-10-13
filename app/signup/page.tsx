@@ -188,7 +188,7 @@ export default function SignupPage() {
           user_id: userId,
           username,
           action_type: ACTION_TYPE.user_signup,
-          action_label: "Signed up for My Bible Buddy",
+          action_label: "Signed up for Bible Buddy",
           created_at: new Date().toISOString(),
         });
       }
@@ -297,7 +297,7 @@ export default function SignupPage() {
     setError(
       loginError?.message?.toLowerCase().includes("email not confirmed")
         ? "Your account was created, but Supabase email confirmation is still turned on. Turn it off in Supabase Auth so new users can enter the dashboard immediately."
-        : loginError?.message || "Account created, but My Bible Buddy could not start your session yet. Try logging in."
+        : loginError?.message || "Account created, but Bible Buddy could not start your session yet. Try logging in."
     );
   }
 
@@ -314,7 +314,7 @@ export default function SignupPage() {
         localStorage.removeItem("bb:pending-referrer-user-id");
       }
     } catch (referralError) {
-      console.error("My Bible Buddy invite apply failed (non-blocking):", referralError);
+      console.error("Bible Buddy invite apply failed (non-blocking):", referralError);
     }
   }
 
@@ -346,13 +346,13 @@ export default function SignupPage() {
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/TherealiconforBB.png"
-            alt="My Bible Buddy Logo"
+            alt="Bible Buddy Logo"
             width={32}
             height={32}
             className="h-8 w-8 rounded-lg object-cover"
           />
           <div className="text-lg font-bold tracking-tight text-gray-900 md:text-xl">
-            My Bible Buddy
+            Bible Buddy
           </div>
         </Link>
         <PublicHomeButton className="fixed right-5 top-5 z-50 rounded-full border border-[#E5E7EB] bg-white px-5 py-2.5 text-sm font-black text-[#111827] shadow-[0_10px_24px_rgba(17,24,39,0.06)] transition hover:-translate-y-0.5 sm:right-8" />

@@ -125,7 +125,7 @@ export default function StartPage() {
     <div className="mx-auto max-w-3xl px-5 py-10 sm:py-14">
       <div className="text-center">
         <p className="text-xs font-black uppercase tracking-[0.18em] text-[#0056FD]">
-          Welcome to My Bible Buddy
+          Welcome to Bible Buddy
         </p>
         <h1 className="mt-3 text-3xl font-black leading-tight text-gray-950 sm:text-4xl">
           How would you like to read the Bible?
@@ -172,7 +172,7 @@ export default function StartPage() {
       </div>
 
       <p className="mt-8 text-center text-xs font-bold text-gray-500">
-        My Bible Buddy is completely free. All it takes is a free account.
+        Bible Buddy is completely free. All it takes is a free account.
       </p>
     </div>
   );

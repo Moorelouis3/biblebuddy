@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
   const episode = tvTitle?.episodes.find((item) => item.id === episodeId) ?? null;
 
   if (!tvTitle || !episode) {
-    return NextResponse.json({ error: "That My Bible Buddy TV video could not be found." }, { status: 404 });
+    return NextResponse.json({ error: "That Bible Buddy TV video could not be found." }, { status: 404 });
   }
 
   const supabaseAdmin = createClient(supabaseUrl, serviceKey, {
@@ -102,7 +102,7 @@ export async function POST(request: NextRequest) {
   }
 
   if (!membership) {
-    return NextResponse.json({ error: "Join the study group first to share My Bible Buddy TV videos." }, { status: 403 });
+    return NextResponse.json({ error: "Join the study group first to share Bible Buddy TV videos." }, { status: 403 });
   }
 
   const displayName =
@@ -143,7 +143,7 @@ export async function POST(request: NextRequest) {
     user_id: userData.user.id,
     username: displayName,
     action_type: ACTION_TYPE.group_message_sent,
-    action_label: `Shared My Bible Buddy TV: ${tvTitle.title} • ${episode.title}`,
+    action_label: `Shared Bible Buddy TV: ${tvTitle.title} • ${episode.title}`,
   }).then(({ error }) => {
     if (error) {
       console.error("[TV_SHARE] Failed to record master action", error);

@@ -47,7 +47,7 @@ const TRIVIA_GUIDE: LouisPageGuide = {
 const TV_GUIDE: LouisPageGuide = {
   id: "bible_buddy_tv",
   featureKey: "bible_buddy_tv",
-  title: "My Bible Buddy TV",
+  title: "Bible Buddy TV",
 };
 
 const DEVOTIONALS_GUIDE: LouisPageGuide = {
@@ -107,7 +107,7 @@ export function buildLouisGuideChatMessage(
     case "dashboard":
       return [
         `hey ${name}, this is your dashboard`,
-        "this is your home base in My Bible Buddy where everything starts",
+        "this is your home base in Bible Buddy where everything starts",
         "use this page to jump into the Bible, devotionals, the group, games, and the rest of the app",
         "if you ever feel lost, click me and I will help you find your next step",
       ].join("\n\n");

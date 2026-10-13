@@ -794,7 +794,7 @@ export default function ConversationPage({
     );
   }
 
-  const otherDisplay = otherUser?.display_name || otherUser?.username || "My Bible Buddy";
+  const otherDisplay = otherUser?.display_name || otherUser?.username || "Bible Buddy";
   const myDisplay = myProfile?.display_name || myProfile?.username || "You";
   const latestOwnMessageId =
     [...messages].reverse().find((message) => message.sender_id === userId)?.id ?? null;

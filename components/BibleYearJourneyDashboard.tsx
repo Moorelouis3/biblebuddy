@@ -80,7 +80,7 @@ async function getStableDashboardUser() {
 export default function BibleYearJourneyDashboard() {
   const router = useRouter();
   const [userId, setUserId] = useState<string | null>(null);
-  const [userName, setUserName] = useState("My Bible Buddy");
+  const [userName, setUserName] = useState("Bible Buddy");
   const [profile, setProfile] = useState<DashboardProfile | null>(null);
   const [loading, setLoading] = useState(true);
   // The real devotional checklist - the same data the devotional detail page
@@ -111,10 +111,10 @@ export default function BibleYearJourneyDashboard() {
       metadata.first_name ||
       metadata.full_name ||
       metadata.name ||
-      (user.email ? user.email.split("@")[0] : "My Bible Buddy");
+      (user.email ? user.email.split("@")[0] : "Bible Buddy");
 
     setUserId(user.id);
-    setUserName(String(fallbackName || "My Bible Buddy"));
+    setUserName(String(fallbackName || "Bible Buddy"));
     setProfile((current) => current || {
       is_paid: false,
       daily_credits: null,
@@ -137,7 +137,7 @@ export default function BibleYearJourneyDashboard() {
     });
     // Mount straight away. This used to wait for the profile fetch below so the
     // study mode was known before rendering, but a slow or stalled request then
-    // left people stuck on "Loading My Bible Buddy" forever. The mode is still
+    // left people stuck on "Loading Bible Buddy" forever. The mode is still
     // never guessed: the placeholder above leaves it null, and the dashboard
     // waits for a real value before deciding which middle to show.
     setLoading(false);
@@ -159,7 +159,7 @@ export default function BibleYearJourneyDashboard() {
         console.error("[DASHBOARD] Could not load profile stats:", error);
       }
 
-      const displayName = data?.display_name || data?.username || fallbackName || "My Bible Buddy";
+      const displayName = data?.display_name || data?.username || fallbackName || "Bible Buddy";
       setUserName(String(displayName));
       setProfile({
         is_paid: data?.is_paid ?? false,

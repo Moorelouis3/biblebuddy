@@ -44,7 +44,7 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
   {
     slug: "wisdom-of-proverbs",
     title: "The Wisdom of Proverbs",
-    subtitle: "A 31-Day My Bible Buddy Community Devotional",
+    subtitle: "A 31-Day Bible Buddy Community Devotional",
     devotionalId: "c0ca300a-c0e9-47b8-84c5-99aca743a203",
     startDate: "2026-10-01",
     totalDays: 31,
@@ -64,7 +64,7 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
   {
     slug: "obedience-of-abraham",
     title: "The Obedience of Abraham",
-    subtitle: "A 21-Day My Bible Buddy Community Devotional",
+    subtitle: "A 21-Day Bible Buddy Community Devotional",
     devotionalId: "2c7641c1-0280-4847-b36e-e89004a58534",
     startDate: "2026-11-01",
     totalDays: 21,

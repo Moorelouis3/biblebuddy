@@ -2,7 +2,7 @@
 
 import { ModalShell } from "./ModalShell";
 
-// My Bible Buddy is free (lib/accessPolicy.ts CORE_STUDY_IS_FREE) and ships in the
+// Bible Buddy is free (lib/accessPolicy.ts CORE_STUDY_IS_FREE) and ships in the
 // App Store, which forbids pointing people at an outside checkout. This modal
 // used to sell a $50 Pro upgrade when daily credits ran out; it now only says
 // everything is included and lets the reader carry on. Props are unchanged so
@@ -39,7 +39,7 @@ export default function CreditLimitModal({
         </button>
         <h2 className="mt-2 px-8 text-2xl font-black leading-tight text-[#0b162f]">Everything is free</h2>
         <p className="mt-2 text-sm font-semibold leading-6 text-[#52627b]">
-          Every chapter, study note, audio lesson and trivia game in My Bible Buddy is included. Keep studying.
+          Every chapter, study note, audio lesson and trivia game in Bible Buddy is included. Keep studying.
         </p>
         <button
           type="button"

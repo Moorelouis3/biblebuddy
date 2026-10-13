@@ -201,7 +201,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
 
       <Link href="/biblebuddy-tv" onClick={(event) => handleCardClick(event, "bible_buddy_tv", "/biblebuddy-tv")}>
         <div className="bb-card cursor-pointer rounded-xl border p-5 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md">
-          <h2 className="bb-text-primary text-xl font-semibold">ðŸ“º My Bible Buddy TV</h2>
+          <h2 className="bb-text-primary text-xl font-semibold">ðŸ“º Bible Buddy TV</h2>
           <p className="bb-text-secondary mt-1">Stream Bible shows, movies, sermons, and more</p>
         </div>
       </Link>
@@ -225,7 +225,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         <span className="bb-text-muted absolute right-4 top-4 text-base" aria-hidden="true">
           â†—
         </span>
-        <h2 className="bb-text-primary text-xl font-semibold">â†— Share My Bible Buddy</h2>
+        <h2 className="bb-text-primary text-xl font-semibold">â†— Share Bible Buddy</h2>
         <p className="bb-text-secondary mt-1">Share by text, WhatsApp, or copy link.</p>
       </button>
     </div>

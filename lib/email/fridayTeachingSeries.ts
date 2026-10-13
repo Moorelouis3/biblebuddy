@@ -162,7 +162,7 @@ export function renderFridayLessonHtml(lesson: FridayLesson): string {
   // rather than the copy - it is identical in all twelve.
   parts.push(
     `<p style="margin:26px 0 0;">Louis<br>` +
-      `<span style="color:#667085;">Founder of My Bible Buddy</span></p>`,
+      `<span style="color:#667085;">Founder of Bible Buddy</span></p>`,
   );
 
   return `<!doctype html>
@@ -188,7 +188,7 @@ ${parts.join("\n")}
 <td align="center" style="padding:0 12px 28px;">
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;"><tr>
 <td style="padding:16px 28px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#667085;text-align:center;">
-My Bible Buddy &middot; You are receiving this because you created a My Bible Buddy account.<br>
+Bible Buddy &middot; You are receiving this because you created a Bible Buddy account.<br>
 <a href="{{UNSUBSCRIBE}}" style="color:#667085;">Unsubscribe</a>
 </td>
 </tr></table>
@@ -220,10 +220,10 @@ export function renderFridayLessonText(lesson: FridayLesson): string {
       lines.push(`${strip(block.label)}:`, block.url, "");
     }
   }
-  lines.push("Louis", "Founder of My Bible Buddy", "");
+  lines.push("Louis", "Founder of Bible Buddy", "");
   lines.push(
     "---",
-    "My Bible Buddy - You are receiving this because you created a My Bible Buddy account.",
+    "Bible Buddy - You are receiving this because you created a Bible Buddy account.",
     "Unsubscribe: {{UNSUBSCRIBE}}",
   );
   return lines.join("\n");
