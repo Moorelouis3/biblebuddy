@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-29-explained",
+    title: "Exodus 29 Explained: The Ordination of Aaron and His Sons",
+    description:
+      "Exodus 29 explained verse by verse: the sin offering, the ram of consecration, blood on the ear, thumb, and toe, and seven days that make Aaron a priest.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-29-explained",
+    publishedAt: "2026-10-13",
+    readTime: "12 min read",
+    image: "/blog-banners/exodus-29-explained.jpg",
+    groupPost: {
+      title: "Exodus 29 Explained 📖",
+      content:
+        "The clothes are finished. Nobody can wear them yet.\n\n📌 Aaron needed an offering made for his own sin first.\n\n📖 A bullock killed as a sin offering for Aaron himself.\n📖 Blood put on his ear, thumb, and toe.\n📖 Seven straight days before the ordination counted as done.\n\nNew article on:\n🟢 why blood went on an **ear, thumb, and toe**\n🟢 the **two lambs** offered every morning and evening\n🟢 why the chapter ends on God wanting to **dwell** with His people\n\nWhat would it cost you to be fully set apart for God? 🙏",
+    },
+  },
+  {
     slug: "exodus-28-explained",
     title: "Exodus 28 Explained: The Priestly Garments and the Breastplate",
     description:
