@@ -63795,6 +63795,59 @@
           "at": "2026-10-13T22:04:49Z"
         }
       ]
+    },
+    {
+      "book": "1 Corinthians",
+      "chapter": 15,
+      "startedAt": "2026-10-13T22:46:29Z",
+      "finishedAt": "2026-10-13T23:12:00Z",
+      "durationMinutes": 25.5,
+      "sections": 10,
+      "cards": 104,
+      "verses": 58,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Session started on a detached HEAD at a stale point; ran git fetch origin main before trusting git status (per the repo's own documented history of stale local main/origin refs in data/bible-notes-usage-events.json), confirmed the detached HEAD already matched the verified origin/main tip exactly, and rebuilt local main from that verified tip with git checkout -B main origin/main before touching any files. npm install ran clean (fresh clone, 709 packages, about 47s). Priority queue and style redo backlog (data/bible-notes-priority-queue.json, data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after 1 Corinthians 14, the latest entry in this log. Confirmed no lib/firstCorinthiansFifteenSource.ts existed yet. Fetched real KJV text for 1 Corinthians 15 (58 verses, the resurrection chapter) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens restating the gospel Paul already preached and the eyewitness chain from Cephas through the five hundred brethren to Paul himself, defining delivered and received as technical handoff terms and naming Paul's own unworthy, late calling (1-11); it traces the full logical collapse that follows if there is no resurrection, false witnesses, vain faith, unforgiven sin, perished loved ones, and a hope limited to this life only, landing on most miserable as the honest low point of the whole chapter (12-19); it turns on Christ as firstfruits guaranteeing the rest of the harvest, Adam and Christ as the two representative heads of two families, the military sense of order behind the resurrection's sequence, and the final handoff of the kingdom with death named the last enemy to fall (20-28, split into two eight verse sections per the app's own enforceStudySectionVerseLimit(8) cap); it handles the honestly uncertain baptized for the dead with real hedges rather than invented certainty, Paul's daily risk and possible arena combat at Ephesus, and the quoted pagan and Greek proverbs about eating, drinking, and evil company (29-34); it answers the how and what body objection with the seed analogy, quickened, bare grain, God designing each seed's own body, and the stacked examples of flesh, celestial and terrestrial bodies, and one star differing from another in glory (35-41); it works through the four sown and raised contrasts, corruption to incorruption, dishonour to glory, weakness to power, natural to spiritual body, then the first Adam as a living soul against the last Adam as a quickening spirit, and the earthy versus heavenly image believers will bear (42-49); and it closes on the mystery of being changed in a moment, the last trump, the clothing picture behind put on incorruption and immortality, the Isaiah and Hosea quotes behind death swallowed up in victory and the taunts against death and the grave, sting and strength tied to sin and the law, and labour not in vain echoing the vain of verse two now settled for good (50-58, also split into two eight verse sections under the same cap). Split into 10 sections total (1-4, 5-11, 12-19, 20-23, 24-28, 29-34, 35-41, 42-49, 50-53, 54-58), 104 cards total, about 1.79 cards per verse. scripts/check_bible_note_style.py found 33 problems on the first automated pass (mostly body lines over 20 words and a few bullets over 8 words, plus four last bullets not starting with the required book or arrow emoji), fixed every one individually, second run clean with 0 problems across all 104 cards. A follow up manual grep for the spec's banned stacking words (while, rather than) caught one body line the mechanical checker cannot flag, rewritten to two unstacked clauses joined with and instead of while. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (gospel, quickened, firstfruits, parousia, earthy, celestial, terrestrial, stedfast, unmoveable), handles the genuinely disputed baptized for the dead and fought with beasts at Ephesus phrases with honest hedges (many scholars believe, it is not fully certain) rather than invented certainty, closes on meaning rather than mechanics, and has no duplicate titles across all 104 cards. Also discovered and worked around a real structural constraint while wiring: the app's own enforceStudySectionVerseLimit(8) in lib/bibleReaderStudyNotes.ts caps every section in the whole app at 8 verses, silently duplicating all of a section's cards into Part 1 and Part 2 entries if a section runs longer, so the two 9 verse sections originally drafted (20-28 and 50-58) were each split into two proper 8 and under sections with cards reapportioned by verse rather than left to that automatic, duplicating fallback. Parser check passed exactly via getBibleReaderStudySections('1 Corinthians', 15) (10/10 sections, verse ranges 1-4/5-11/12-19/20-23/24-28/29-34/35-41/42-49/50-53/54-58 with no gaps or duplication, 104 total cards rendering verbatim). npx tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/firstCorinthiansFifteenSource.ts, preserveExactPhraseBodies 1 corinthians range extended from chapters 1-14 to 1-15, new function applyPersonalFirstCorinthiansFifteenStudySections added and called right after applyPersonalFirstCorinthiansFourteenStudySections(), correctly overriding the legacy FIRST_CORINTHIANS_1_16_PERSONAL_SECTIONS bulk file for chapter 15 only, chapter 16 of that legacy file left untouched. New chapter (forward progress, not a style redo). Next forward-progress target is 1 Corinthians 16.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-13T22:46:55Z"
+        },
+        {
+          "name": "target chapter determined: 1 Corinthians 15 (normal forward progress, priority queue and redo backlog both empty, confirmed via git fetch against a verified origin/main tip)",
+          "at": "2026-10-13T22:51:00Z"
+        },
+        {
+          "name": "KJV text fetched (1 Corinthians 15, 58 verses, aruljohn mirror)",
+          "at": "2026-10-13T22:52:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline (.claude/skills/bible-notes/SKILL.md) read in full",
+          "at": "2026-10-13T22:54:00Z"
+        },
+        {
+          "name": "source file written: lib/firstCorinthiansFifteenSource.ts (104 cards, 8 sections before verse-limit split)",
+          "at": "2026-10-13T22:57:40Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 33 problems found and fixed, 0 on second pass)",
+          "at": "2026-10-13T23:01:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended, applyPersonalFirstCorinthiansFifteenStudySections)",
+          "at": "2026-10-13T23:03:00Z"
+        },
+        {
+          "name": "parser check passed, discovered enforceStudySectionVerseLimit(8) would duplicate cards on two 9-verse sections, split those into four proper sections (10 total), re-verified 10/10 sections and 104 cards rendering verbatim with no gaps",
+          "at": "2026-10-13T23:07:00Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors (re-run again after a final prose fix, also clean)",
+          "at": "2026-10-13T23:11:11Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-13T23:12:00Z"
+        }
+      ]
     }
   ]
 }
