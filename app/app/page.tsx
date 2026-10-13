@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import SignInWithAppleButton, { appleSignInEnabled } from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending } from "@/lib/termsAcceptance";
+import { signInWithProviderNatively, startNativeAuthListener } from "@/lib/nativeAuth";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
 
 /**
@@ -36,6 +37,12 @@ export default function AppEntryPage() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Attach the deep-link listener before any button can be pressed, so a fast
+  // tap cannot land back here with nothing listening.
+  useEffect(() => {
+    void startNativeAuthListener(() => router.replace("/dashboard"));
+  }, [router]);
+
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -60,6 +67,13 @@ export default function AppEntryPage() {
     setBusy(true);
     setError(null);
     markTermsAcceptancePending("google_login");
+    try {
+      if (await signInWithProviderNatively("google")) return;
+    } catch (nativeError) {
+      setBusy(false);
+      setError(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");
+      return;
+    }
     const redirectTo =
       typeof window !== "undefined" ? `${window.location.origin}/dashboard` : undefined;
     const { error: oauthError } = await supabase.auth.signInWithOAuth({

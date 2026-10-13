@@ -12,6 +12,7 @@ import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending } from "../../lib/termsAcceptance";
 import { hasCachedSupabaseSession } from "../../lib/authBoot";
 import { isNativeApp } from "../../lib/nativeApp";
+import { signInWithProviderNatively } from "../../lib/nativeAuth";
 
 /**
  * Where to send someone after login. Callers pass ?next=/events/... (the
@@ -135,6 +136,16 @@ export default function LoginPage() {
     setError(null);
 
     markTermsAcceptancePending("google_login");
+    // In the app this opens an in-app Safari sheet and comes back through a
+    // deep link. On the web it returns false and we fall through.
+    try {
+      if (await signInWithProviderNatively("google")) return;
+    } catch (nativeError) {
+      setLoading(false);
+      setError(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");
+      return;
+    }
+
     const redirectTo = typeof window !== "undefined" ? `${window.location.origin}${nextPath()}` : undefined;
     const { error } = await supabase.auth.signInWithOAuth({
       provider,

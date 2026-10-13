@@ -1,6 +1,7 @@
 "use client";
 
 import { supabase } from "@/lib/supabaseClient";
+import { signInWithProviderNatively } from "@/lib/nativeAuth";
 
 /**
  * Sign in with Apple (Louis, 2026-10-11).
@@ -53,6 +54,15 @@ export default function SignInWithAppleButton({
 
   async function signIn() {
     onBeforeSignIn?.();
+    // Inside the app this goes through an in-app Safari sheet and a deep link,
+    // because a plain redirect escapes to the system browser and the session
+    // never comes back. Returns false on the web, where the redirect is fine.
+    try {
+      if (await signInWithProviderNatively("apple")) return;
+    } catch (nativeError) {
+      onError?.(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");
+      return;
+    }
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "apple",
       options: redirectTo ? { redirectTo } : undefined,

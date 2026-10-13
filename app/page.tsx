@@ -16,6 +16,7 @@ import { hasCachedSupabaseSession } from "@/lib/authBoot";
 import { applyAppThemeToDocument, cacheAppThemeForUser } from "@/lib/appThemes";
 import { isNativeApp } from "@/lib/nativeApp";
 import { markTermsAcceptancePending, TERMS_VERSION } from "@/lib/termsAcceptance";
+import { signInWithProviderNatively } from "@/lib/nativeAuth";
 import { reportCloserSignup } from "@/lib/closerSignup";
 
 type PreviewPanel = "watch" | "study" | "trivia";
@@ -1072,6 +1073,15 @@ export default function LandingPage() {
     markTermsAcceptancePending("google_landing");
     cacheAppThemeForUser(null, "light");
     applyAppThemeToDocument("light");
+    // In the app: in-app Safari sheet plus a deep link back, because a plain
+    // redirect leaves for the system browser and the session never returns.
+    try {
+      if (await signInWithProviderNatively("google")) return;
+    } catch (nativeError) {
+      setSubmitting(false);
+      setError(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");
+      return;
+    }
     const redirectTo =
       typeof window !== "undefined"
         ? `${window.location.origin}/dashboard`

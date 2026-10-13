@@ -50,5 +50,21 @@ if ! plist "Print :UIBackgroundModes" | grep -q "audio"; then
   plist "Add :UIBackgroundModes: string audio"
 fi
 
+# The custom URL scheme that brings Google and Apple sign-in back into the app.
+#
+# Without this the provider redirects to net.mybiblebuddy.app://auth-callback,
+# iOS finds nothing registered to answer it, and the sign-in dies silently in a
+# Safari sheet. See lib/nativeAuth.ts - this file, Supabase's redirect
+# allow-list and that module all have to name the same scheme.
+if ! plist "Print :CFBundleURLTypes" >/dev/null 2>&1; then
+  plist "Add :CFBundleURLTypes array"
+fi
+if ! plist "Print :CFBundleURLTypes" | grep -q "net.mybiblebuddy.app"; then
+  plist "Add :CFBundleURLTypes:0 dict"
+  plist "Add :CFBundleURLTypes:0:CFBundleURLName string net.mybiblebuddy.app"
+  plist "Add :CFBundleURLTypes:0:CFBundleURLSchemes array"
+  plist "Add :CFBundleURLTypes:0:CFBundleURLSchemes:0 string net.mybiblebuddy.app"
+fi
+
 echo "--- Info.plist ---"
 plist "Print"

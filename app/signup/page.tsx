@@ -9,6 +9,7 @@ import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "../../lib/supabaseClient";
 import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending, recordTermsAcceptance } from "../../lib/termsAcceptance";
+import { signInWithProviderNatively } from "../../lib/nativeAuth";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { reportCloserSignup } from "../../lib/closerSignup";
 import {
@@ -327,6 +328,16 @@ export default function SignupPage() {
       writePendingSignupAttribution();
       window.localStorage.setItem("bb:pending-oauth-signup", provider);
       markTermsAcceptancePending("google_signup");
+    }
+
+    // In the app: in-app Safari sheet plus a deep link back. On the web this
+    // returns false and the ordinary redirect below runs.
+    try {
+      if (await signInWithProviderNatively("google")) return;
+    } catch (nativeError) {
+      setLoading(false);
+      setError(nativeError instanceof Error ? nativeError.message : "Could not start sign-in.");
+      return;
     }
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
