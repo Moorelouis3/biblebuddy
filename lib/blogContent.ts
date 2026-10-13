@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-27-explained",
+    title: "Exodus 27 Explained: The Bronze Altar and the Court of the Tabernacle",
+    description:
+      "Exodus 27 explained verse by verse: the bronze altar, its brass tools, the linen court, the one gate, and the lamp that burned every night.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-27-explained",
+    publishedAt: "2026-10-13",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-27-explained.jpg",
+    groupPost: {
+      title: "Exodus 27 Explained 📖",
+      content:
+        "The gold stops here. This chapter is all brass.\n\n📌 The altar that carried fire every day was never gold.\n\n📖 A bronze altar got horns on its four corners.\n📖 A linen fence marked off the whole courtyard.\n📖 One lamp had to burn every single night, no exceptions.\n\nNew article on:\n🟢 why the **altar** was brass, not gold\n🟢 what the **horns** of the altar were for\n🟢 why the altar had **no steps** leading up to it\n\nWhat is one thing you keep doing faithfully, even when no one is watching? 🙏",
+    },
+  },
+  {
     slug: "exodus-26-explained",
     title: "Exodus 26 Explained: The Tabernacle's Walls, Coverings, and Veil",
     description:
