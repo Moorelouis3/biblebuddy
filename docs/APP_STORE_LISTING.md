@@ -39,9 +39,37 @@ retyping at submission time.
 | Content rights answer | A rights attestation. Louis only. |
 | App Review demo account + "Sign-in required" | The account does not exist. Needs real data in it or Guideline 4.2 gets more likely. |
 | App Review contact phone | Not known to the agent. |
-| App Privacy questionnaire | Answers are drafted above; the form is long and the browser viewport kept changing under it. Next session. |
+| App Privacy — 5 of 10 data types | See the table below. Half done; the rest is mechanical. |
 | Screenshots | Need the app running on a device. |
 | Build | Needs signing, which needs keys only Louis can download and paste. |
+
+## App Privacy — exact answers
+
+Data collection is declared as **Yes**. Ten data types are selected and
+nothing else: Name, Email Address, Photos or Videos, Other User Content,
+User ID, Device ID, Product Interaction, Crash Data, Performance Data,
+Other Diagnostic Data. **Tracking is No on every single one**, which is only
+true while ads stay off in the native build.
+
+| Data type | Purposes | Linked | Tracking | Done |
+|---|---|---|---|---|
+| Name | App Functionality | Yes | No | ✅ |
+| Email Address | App Functionality, Developer's Advertising or Marketing | Yes | No | ✅ |
+| Photos or Videos | App Functionality | Yes | No | ✅ |
+| Other User Content | App Functionality | Yes | No | ✅ |
+| User ID | Analytics, App Functionality | Yes | No | ✅ |
+| Device ID | App Functionality | Yes | No | ⬜ |
+| Product Interaction | Analytics, App Functionality | Yes | No | ⬜ |
+| Crash Data | App Functionality | Yes | No | ⬜ |
+| Performance Data | App Functionality | Yes | No | ⬜ |
+| Other Diagnostic Data | App Functionality | Yes | No | ⬜ |
+
+Email Address carries "Developer's Advertising or Marketing" because Bible
+Buddy sends campaign email. Dropping that would understate what the app does
+with the address.
+
+Nothing on this page is live until **Publish** is pressed, which should wait
+until all ten are set up.
 
 ---
 
