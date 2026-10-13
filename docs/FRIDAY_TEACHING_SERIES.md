@@ -68,22 +68,17 @@ Eastern is 12:00 UTC in October and 13:00 UTC in November; both are covered and
 exactly one matches. Sending continues in batches until noon Eastern so a list
 of 5,000 clears comfortably.
 
-**The engagement caps are untouched.** This cron does not consult
-`marketing_recipients()` — it has its own eligibility, and suppression is still
-enforced inside `sendEmail`. Unsubscribe, bounce/complaint suppression and
-duplicate protection all still apply.
+**There are no frequency caps.** They were removed on 2026-10-13 — see
+`supabase/migrations/20261013_remove_frequency_caps.sql`. Everyone receives
+every email. Unsubscribe, bounce/complaint suppression and duplicate protection
+are all still enforced; the three engagement groups survive as a way of seeing
+the list, not as a rule about who gets mail.
+
+Keep an eye on the bounce rate regardless: the 10 October send to the whole
+list bounced at 3.73%, and SES suspends an account above 5%. The 194 hard
+bounces from it are now suppressed, so the next full send starts cleaner.
 
 ## Open items
-
-**The caps will need raising before Tuesday newsletters are armed.** Today
-`quiet` is capped at 2 marketing emails per rolling 7 days and `inactive` at 1.
-The Tuesday + Friday plan is two a week for everyone, so an `inactive`
-subscriber has room for only one of them and would receive Tuesday one week and
-Friday the next, at random — falling permanently behind in an ordered course.
-Raising `quiet` to 3 and `inactive` to 2 fixes it. Not done yet because nothing
-Tuesday is armed, so it changes nothing today. Worth knowing when it is done:
-`inactive` means no sign of life in over 90 days, and doubling what that group
-receives is the usual way a sender's complaint rate climbs.
 
 **There is no email-preferences page.** The source copy had an
 `{{email_preferences_link}}` in its footer; no such page exists anywhere in the

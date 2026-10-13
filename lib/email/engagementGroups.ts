@@ -21,11 +21,17 @@ export const GROUP_LABEL: Record<EngagementGroup, string> = {
   inactive: "Inactive",
 };
 
-/** The sending frequency shown under each count. Mirrors weekly_cap in SQL. */
+/**
+ * The sending frequency shown under each count.
+ *
+ * Every group receives every campaign since 2026-10-13, when Louis removed the
+ * frequency caps - see supabase/migrations/20261013_remove_frequency_caps.sql.
+ * The groups are now a way of SEEING the list, not a rule about who gets mail.
+ */
 export const GROUP_CADENCE: Record<EngagementGroup, string> = {
   active: "Every campaign",
-  quiet: "Max 2 per 7 days",
-  inactive: "Max 1 per 7 days",
+  quiet: "Every campaign",
+  inactive: "Every campaign",
 };
 
 /** Why someone is in the group, in one line, for the card itself. */
