@@ -20,14 +20,23 @@
 
 name: iOS build
 
+# Manual only, deliberately (2026-10-13).
+#
+# This account is locked - "The job was not started because your account is
+# locked due to a billing issue" - so every run dies in about ten seconds and
+# emails Louis a failure that means nothing. Codemagic is the path that works
+# (codemagic.yaml), and this file is kept because a second way to compile is
+# worth having the day the lock clears.
+#
+# To put it back on pushes when GitHub billing is sorted, restore:
+#   push:
+#     paths:
+#       - "capacitor.config.ts"
+#       - "native/**"
+#       - "scripts/ios-info-plist.sh"
+#       - "package.json"
+#       - ".github/workflows/ios-build.yml"
 on:
-  push:
-    paths:
-      - "capacitor.config.ts"
-      - "native/**"
-      - "package.json"
-      - ".github/workflows/ios-build.yml"
-  # So it can be run by hand from the Actions tab without pushing anything.
   workflow_dispatch:
 
 jobs:
