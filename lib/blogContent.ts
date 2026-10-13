@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-26-explained",
+    title: "Exodus 26 Explained: The Tabernacle's Walls, Coverings, and Veil",
+    description:
+      "Exodus 26 explained verse by verse: the linen curtains, the goat hair and skin coverings, the gold boards, and the veil that divided holy from most holy.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-26-explained",
+    publishedAt: "2026-10-13",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-26-explained.jpg",
+    groupPost: {
+      title: "Exodus 26 Explained 📖",
+      content:
+        "No furniture gets built in this chapter.\nJust walls, curtains, and one veil.\n\n📌 Gold was used near the ark. Brass was used at the door.\n\n📖 Four layers of covering hid gold and cherubim inside.\n📖 One curtain split the tabernacle into two rooms.\n📖 That same veil tore when Jesus died on the cross.\n\nNew article on:\n🟢 why the **veil** mattered so much\n🟢 what **cherubim** were woven into\n🟢 how **Matthew 27** connects straight back to this chapter\n\nHow close do you feel to God right now? 🙏",
+    },
+  },
+  {
     slug: "do-you-have-to-go-to-church",
     title: "Do You Have to Go to Church to Be Saved?",
     description:
