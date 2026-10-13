@@ -50,6 +50,11 @@ workflows:
       - name: Write the Info.plist keys Apple requires
         script: bash scripts/ios-info-plist.sh
 
+      - name: Install the app icon
+        # Otherwise the app wears Capacitor's grey placeholder everywhere -
+        # home screen, TestFlight, and the store listing.
+        script: bash scripts/ios-app-icon.sh
+
       - name: Show which plugins linked
         script: npx cap ls ios
 
