@@ -68,7 +68,7 @@ workflows:
       # The point of the whole build: pictures of the app running, and the
       # device log that explains a white screen when there is one.
       - build/simulator-screenshots/*.png
-      - build/simulator-screenshots/app-log.txt
+      - build/simulator-screenshots/*.txt
       # So the generated project can be read without a Mac: Info.plist, and
       # Package.swift listing which plugin versions Capacitor linked.
       - ios/App/App/Info.plist
