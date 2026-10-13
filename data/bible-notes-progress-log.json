@@ -62859,6 +62859,59 @@
           "at": "2026-10-13T05:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Romans",
+      "chapter": 15,
+      "startedAt": "2026-10-13T06:46:13Z",
+      "finishedAt": "2026-10-13T06:57:44Z",
+      "durationMinutes": 12,
+      "sections": 5,
+      "cards": 37,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter, normal forward progress, not a style redo (style-redo backlog data/bible-notes-style-redo-remaining.json confirmed empty before starting). npm install ran clean (704 packages, fresh clone, about 35s). Confirmed no lib/romansFifteenSource.ts existed yet, only the legacy bulk file lib/romansNineToSixteenPersonalNotes.ts covering chapters 15-16. Fetched real KJV text for Romans 15 (33 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter closes the weak/strong argument from chapter 14 (1-6), stacks four Old Testament quotations proving Gentile inclusion was always planned (7-13), covers Paul's own pioneering ministry to the Gentiles from Jerusalem to Illyricum (14-21), lays out his actual travel plan through Jerusalem and Rome toward Spain carrying the collection for the poor saints (22-29), and closes with his urgent prayer request and a short benediction (30-33). Split into 5 sections (1-6, 7-13, 14-21, 22-29, 30-33), all 33 verses covered with no gaps, each within the 8 verse section cap. Density about 1.12 cards per verse (33 verses, 37 cards), consistent with the epistle argument-tracing density used for Romans 1-14, slightly lower in the quote-stacked and travel-plan sections. scripts/check_bible_note_style.py found 4 problems on the first pass (two bullets one word over the limit, one body line over 20 words, one body line needing a split), fixed all four, clean on the second run across all 37 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, names the Old Testament source behind each stacked quotation, closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji and the last bullet landing on 📖 or ➡️, and has no hyphens, em dashes, semicolons, or contractions, with no duplicate card titles across all 37 cards. Parser check passed exactly via getBibleReaderStudySections(\"romans\", 15) (5/5 sections, verse ranges 1-6/7-13/14-21/22-29/30-33 with no gaps, 37 total cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/romansFifteenSource.ts, preserveExactPhraseBodies romans range extended from chapters 1-14 to 1-15, new function applyPersonalRomansFifteenStudySections added and called right after applyPersonalRomansFourteenStudySections(), correctly overriding the legacy ROMANS_9_16_PERSONAL_SECTIONS bulk file for chapter 15 only, chapter 16 of that legacy file left untouched. No usage limit, rate limit, block, or throttling occurred this run. Next forward-progress target is Romans 16, which is currently still covered by the legacy ROMANS_9_16_PERSONAL_SECTIONS bulk file.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-13T06:46:48Z"
+        },
+        {
+          "name": "target chapter determined: Romans 15 (normal forward progress, redo backlog empty, next after Romans 14)",
+          "at": "2026-10-13T06:47:09Z"
+        },
+        {
+          "name": "KJV text fetched (Romans 15, 33 verses, aruljohn mirror)",
+          "at": "2026-10-13T06:47:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-10-13T06:49:00Z"
+        },
+        {
+          "name": "source file written: lib/romansFifteenSource.ts (37 cards, 5 sections)",
+          "at": "2026-10-13T06:52:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 4 automated fixes)",
+          "at": "2026-10-13T06:53:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalRomansFifteenStudySections)",
+          "at": "2026-10-13T06:53:43Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 37 cards, text verbatim)",
+          "at": "2026-10-13T06:53:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-13T06:54:30Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-13T06:57:44Z"
+        }
+      ]
     }
   ]
 }
