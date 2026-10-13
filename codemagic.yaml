@@ -47,6 +47,9 @@ workflows:
       - name: Sync web assets and plugins
         script: npx cap sync ios
 
+      - name: Write the Info.plist keys Apple requires
+        script: bash scripts/ios-info-plist.sh
+
       - name: Show which plugins linked
         script: npx cap ls ios
 

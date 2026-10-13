@@ -61,6 +61,9 @@ jobs:
       - name: Sync web assets and plugins
         run: npx cap sync ios
 
+      - name: Write the Info.plist keys Apple requires
+        run: bash scripts/ios-info-plist.sh
+
       - name: Check the plugins actually linked
         run: npx cap ls ios
 
