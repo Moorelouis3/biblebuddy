@@ -81,7 +81,9 @@ const BuddyCelebrationModal = dynamic(
   { ssr: false },
 );
 
-const HIDDEN_ROUTES = ["/", "/login", "/signup", "/reset-password", "/privacy", "/terms", "/contact", "/community-guidelines", "/delete-account"];
+// "/app" is the native shell's front door - a signed-out welcome screen that
+// must not wear the app chrome (bottom nav, header, popups) around it.
+const HIDDEN_ROUTES = ["/", "/app", "/login", "/signup", "/reset-password", "/privacy", "/terms", "/contact", "/community-guidelines", "/delete-account"];
 const DAILY_RECOMMENDATIONS_ENABLED = false;
 const AUTOMATIC_FEEDBACK_POPUPS_ENABLED = false;
 const AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED = false;

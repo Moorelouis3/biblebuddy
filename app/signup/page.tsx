@@ -342,7 +342,8 @@ export default function SignupPage() {
   return (
     <div className="bb-auth-public flex min-h-screen flex-col bg-[#fffdf8] text-[#07162f]">
       <LegalPageThemeReset />
-      <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-4 py-4 md:py-6">
+      {/* Same reason as the landing page: this renders outside the app shell. */}
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-5 px-4 pb-4 pt-[calc(1rem+env(safe-area-inset-top,0px))] md:pb-6 md:pt-[calc(1.5rem+env(safe-area-inset-top,0px))]">
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/TherealiconforBB.png"

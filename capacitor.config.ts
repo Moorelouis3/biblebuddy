@@ -36,7 +36,12 @@ const config: CapacitorConfig = {
   appendUserAgent: NATIVE_APP_UA_MARKER,
 
   server: {
-    url: "https://www.mybiblebuddy.net",
+    // NOT "/" - that is the marketing landing page, and the first TestFlight
+    // build opened on it: the promo video, "Start Studying Now", a website
+    // nav. Someone who installed the app has already been sold it. /app is
+    // the native front door: it sends a signed-in user straight to the
+    // dashboard and shows everyone else Apple / Google / email.
+    url: "https://www.mybiblebuddy.net/app",
     // Shown when the site cannot be reached, instead of the webview's own
     // "cannot connect to server" page with a URL in it.
     errorPath: "offline.html",

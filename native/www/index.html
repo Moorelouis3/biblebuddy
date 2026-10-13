@@ -34,7 +34,35 @@
   <p class="mark">BIBLE BUDDY</p>
   <h1>You're offline</h1>
   <p>Bible Buddy needs a connection for this page. Anything you've saved for offline reading is still available.</p>
-  <button type="button" onclick="location.replace('https://www.mybiblebuddy.net')">Try again</button>
+  <button id="retry" type="button">Try again</button>
+<script>
+  // Retrying used to jump to the marketing homepage, which lost your place
+  // and, on a phone that is still offline, simply landed back here.
+  //
+  // Now it reloads whatever you were actually on, and only falls back to the
+  // app's own entry if there is nothing to go back to. The button also waits
+  // for the connection instead of failing again the instant you press it.
+  (function () {
+    var HOME = "https://www.mybiblebuddy.net/app";
+    var btn = document.getElementById("retry");
+
+    function retry() {
+      if (!navigator.onLine) {
+        btn.textContent = "Still offline";
+        setTimeout(function () { btn.textContent = "Try again"; }, 1600);
+        return;
+      }
+      btn.textContent = "Reconnecting...";
+      btn.disabled = true;
+      if (history.length > 1) { history.back(); return; }
+      location.replace(HOME);
+    }
+
+    btn.addEventListener("click", retry);
+    // Come back on its own the moment the phone has a connection again.
+    window.addEventListener("online", retry);
+  })();
+</script>
 </main>
 </body>
 </html>

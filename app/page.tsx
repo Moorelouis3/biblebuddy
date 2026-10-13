@@ -1101,7 +1101,11 @@ export default function LandingPage() {
 
       <main>
         <div className="bb-landing-shell mx-auto max-w-[1440px] overflow-hidden bg-[#fffdf8]">
-          <header className="relative z-20 flex w-full items-center justify-between gap-6 bg-[#fffdf8] px-5 pb-4 pt-6 sm:px-8 sm:py-5 lg:px-10">
+          {/* pt has to carry the status bar inset itself: "/" is in
+              AppShell's HIDDEN_ROUTES, so bb-safe-top-header never runs here,
+              and the iOS shell draws under a transparent status bar. Without
+              this the logo and nav sit on top of the clock and battery. */}
+          <header className="relative z-20 flex w-full items-center justify-between gap-6 bg-[#fffdf8] px-5 pb-4 pt-[calc(1.5rem+env(safe-area-inset-top,0px))] sm:px-8 sm:pb-5 sm:pt-[calc(1.25rem+env(safe-area-inset-top,0px))] lg:px-10">
             <BibleBuddyMark />
             <nav className="hidden items-center gap-10 text-sm font-bold text-[#07162f] md:flex">
               <Link href="/how-it-works" className="transition hover:text-[#135397]">How It Works</Link>

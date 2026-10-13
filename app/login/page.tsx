@@ -156,7 +156,8 @@ export default function LoginPage() {
         }
       `}</style>
 
-      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
+      {/* Same reason as the landing page: this renders outside the app shell. */}
+      <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 pb-5 pt-[calc(1.25rem+env(safe-area-inset-top,0px))] sm:px-8">
         <Link href="/" className="flex items-center gap-3 text-[#111827]">
           <svg className="h-8 w-8 shrink-0" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M5 8.5c4.8-1.7 7.8.2 11 2.7 3.2-2.5 6.2-4.4 11-2.7v17c-4.8-1.7-7.8.2-11 2.7-3.2-2.5-6.2-4.4-11-2.7v-17Z" />
