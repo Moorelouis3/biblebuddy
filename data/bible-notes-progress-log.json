@@ -64444,5 +64444,59 @@
         }
       ]
     }
+,
+    {
+      "book": "2 Corinthians",
+      "chapter": 11,
+      "startedAt": "2026-10-14T10:46:11Z",
+      "finishedAt": "2026-10-14T11:06:02Z",
+      "durationMinutes": 20,
+      "sections": 6,
+      "cards": 38,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 710 packages, about 44s). Session started on a detached HEAD that looked diverged from origin/main at first (git merge-base reported no common ancestor), which turned out to be a shallow clone boundary (depth 50) rather than real divergence; re-fetching origin main resolved it and HEAD matched origin/main exactly afterward. Priority queue (data/bible-notes-priority-queue.json) is not present in this repo; style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) confirmed empty, so this was normal forward progress after 2 Corinthians 10, the latest entry in this log before this one. Confirmed no lib/secondCorinthiansElevenSource.ts existed yet (2 Corinthians dedicated source files on disk ran only through Ten) and chapter 11 had no dedicated wiring in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for 2 Corinthians 11 (33 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter is Paul's fool's speech: his godly jealousy picturing the church as a bride espoused to one husband, his fear the Corinthians could be beguiled from simple devotion to Christ the way the serpent beguiled Eve, and his answer to those preaching another Jesus, spirit, and gospel (1-6); his refusal to be a financial burden on Corinth while other churches, mainly in Macedonia, supported him, and his vow to keep that policy (7-11); his explanation that refusing payment denies rivals an easy comparison, naming them false apostles and deceitful workers disguised the way Satan disguises himself as an angel of light, with an end that will eventually match their actual works (12-15); his reluctant setup for boasting as a fool, turning the charge that Corinth suffers fools gladly back on them, and naming the real abuses (bondage, exploitation, humiliation) they tolerated from confident rivals (16-21); the long list of credentials and sufferings, matching his rivals as a Hebrew, Israelite, and seed of Abraham and then surpassing them in suffering, forty stripes save one, Roman rods, a stoning at Lystra, three shipwrecks and a night adrift, eight distinct categories of peril ending on false brethren, constant physical hardship, and the daily care of all the churches as the heaviest burden of all (22-29); and the closing turn to boasting only in his weaknesses, an oath that he does not lie, and the deliberately undignified Damascus escape lowered through a wall opening in a basket (30-33). Split into 6 sections (1-6, 7-11, 12-15, 16-21, 22-29, 30-33), all 33 verses covered with no gaps or overlaps, 38 total cards, about 1.15 cards per verse. scripts/check_bible_note_style.py found 4 problems on the first automated pass (two cards ended their fourth bullet on a plain fact instead of the required emoji marker, and two bullets ran 9 words instead of 3-8), fixed by reordering bullets so the real takeaway lands last with the correct emoji and trimming the long bullets, second run clean with 0 problems across all 38 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (folly, espoused, subtilty, simplicity, a whit, chiefest apostles, rude, abasing, chargeable, deceitful workers, angel of light, glory after the flesh, bondage, devour, stripes, deaths oft, save one, beaten with rods, stoned, shipwreck, perils, watchings, fastings, nakedness, infirmities, Aretas), closes on meaning rather than mechanics, and has no duplicate titles across all 38 cards. One card had its bullet order re-sequenced by eye after the mechanical pass so the final bullet carries the real takeaway instead of a restated fact. Parser check passed exactly via getBibleReaderStudySections('2 corinthians', 11): 6/6 sections, verse ranges 1-6/7-11/12-15/16-21/22-29/30-33 with no gaps, 38 total cards rendering verbatim. npx tsc --noEmit -p . came back clean, zero errors, on two separate runs (before and after the final bullet reordering). Wired into lib/bibleReaderStudyNotes.ts: new import, the 2 corinthians condition in preserveExactPhraseBodies widened from chapters 1 through 10 to include chapter 11, new applyPersonalSecondCorinthiansElevenStudySections() function added calling replaceStudySectionsForBookRange(\"2 corinthians\", 11, 11, SECOND_CORINTHIANS_ELEVEN_PERSONAL_SECTIONS), invoked right after applyPersonalSecondCorinthiansTenStudySections(), correctly overriding the legacy SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS bulk file for chapter 11 only; chapters 12-13 of that legacy file remain live and untouched. New chapter (forward progress, not a style redo). Next forward-progress target is 2 Corinthians 12.",
+      "steps": [
+        {
+          "name": "npm install done (clean, fresh clone, 710 packages, about 44s)",
+          "at": "2026-10-14T10:47:36Z"
+        },
+        {
+          "name": "target chapter determined: 2 Corinthians 11 (style redo backlog empty, normal forward progress after 2 Corinthians 10)",
+          "at": "2026-10-14T10:47:58Z"
+        },
+        {
+          "name": "KJV text fetched (2 Corinthians 11, 33 verses, aruljohn mirror)",
+          "at": "2026-10-14T10:48:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline read in full",
+          "at": "2026-10-14T10:49:30Z"
+        },
+        {
+          "name": "source file written: lib/secondCorinthiansElevenSource.ts (38 cards, 6 sections)",
+          "at": "2026-10-14T11:00:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 2 missing takeaway-emoji bullets and 2 overlong bullets, clean on second pass)",
+          "at": "2026-10-14T11:01:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 11, applyPersonalSecondCorinthiansElevenStudySections)",
+          "at": "2026-10-14T11:02:00Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections via tsx, 6/6 sections, 38 cards, no throw)",
+          "at": "2026-10-14T11:02:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-14T11:03:38Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-14T11:06:02Z"
+        }
+      ]
+    }
   ]
 }
