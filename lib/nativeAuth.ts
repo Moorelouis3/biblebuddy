@@ -236,48 +236,32 @@ export async function startNativeAuthListener(onSignedIn?: () => void) {
     throw error;
   }
 
-  try {
-    await App.addListener("appUrlOpen", ({ url }) => {
-      note(`url:${shape(url)}`);
-      void handleAuthUrl(url, onSignedIn);
-    });
-    note("listening");
-  } catch (error) {
-    note(`listen-failed:${describe(error)}`);
-    listenerAttached = false;
-    throw error;
-  }
-
-  // The listener above only catches a deep link that arrives while the app is
-  // already running. iOS is free to RELAUNCH the app to deliver one instead,
-  // and when it does, the webview reloads and appUrlOpen has already fired by
-  // the time any of this JavaScript exists. The URL is then only available
-  // here. Without this the app comes back from the browser showing its last
-  // screenshot - a spinner that says "Signing in with Google" and belongs to a
-  // page that no longer exists - and nothing ever happens.
-  try {
-    const launch = await App.getLaunchUrl();
-    if (launch?.url) await handleAuthUrl(launch.url, onSignedIn);
-  } catch {
-    // Not every platform implements it. Not a reason to stop.
-  }
-
-  // The belt to that pair of braces. Any route to a session at all - including
-  // one established by code this module never saw - ends the attempt and gets
-  // the person moving.
-  supabase.auth.onAuthStateChange((event) => {
-    if (event !== "SIGNED_IN" && event !== "TOKEN_REFRESHED") return;
-    finish({ ok: true });
-    onSignedIn?.();
-  });
+  // NOT awaited, and that is the whole fix.
+  //
+  // Louis's trail read "app=yes > opened" - the step between them, the one
+  // that says the callback listener is registered, never happened. Awaiting
+  // addListener was waiting on a confirmation from the native bridge that
+  // never arrived, so this function hung here on page load, every time,
+  // silently. Nothing downstream ran: no appUrlOpen handler, no foreground
+  // check. Chrome did its half perfectly and sent the result back to an app
+  // with nobody listening, which is why five rounds of this looked like
+  // Google failing.
+  //
+  // Registering the handler is what matters; being told it was registered is
+  // not worth blocking on.
+  App.addListener("appUrlOpen", ({ url }: { url: string }) => {
+    note(`url:${shape(url)}`);
+    void handleAuthUrl(url, onSignedIn);
+  })
+    .then(() => note("listening"))
+    .catch((error: unknown) => note(`listen-failed:${describe(error)}`));
 
   // Coming back to the foreground. If a sign-in finished in a way we did not
   // observe - the deep link consumed while the webview was suspended, say -
   // the session is already there and nobody should be left staring at a
   // spinner.
-  await App.addListener("appStateChange", ({ isActive }) => {
+  App.addListener("appStateChange", ({ isActive }: { isActive: boolean }) => {
     if (!isActive) {
-      // Backgrounded. If an attempt is live, this is the browser taking over.
       if (attempt) leftForBrowser = true;
       note("background");
       return;
@@ -290,14 +274,8 @@ export async function startNativeAuthListener(onSignedIn?: () => void) {
         leftForBrowser = false;
         return;
       }
-      // Back in the app, having gone out to the browser, with no session to
-      // show for it: they backed out. Without this the spinner would sit there
-      // until the timeout, which is most of two minutes of nothing.
       if (!leftForBrowser || !attempt) return;
       leftForBrowser = false;
-      // One look is not enough: the deep link, the code exchange and the
-      // cookie write all happen in the seconds after the app comes forward.
-      // Keep looking for a while before concluding they backed out.
       let looks = 0;
       const poll = window.setInterval(() => {
         void (async () => {
@@ -318,13 +296,30 @@ export async function startNativeAuthListener(onSignedIn?: () => void) {
         })();
       }, DISMISS_GRACE_MS);
     })();
+  }).catch(() => note("state-listen-failed"));
+
+  // Launched rather than resumed: iOS is free to relaunch the app to deliver
+  // the callback, and then appUrlOpen has already fired before any of this
+  // exists. Time-boxed for the same reason as above.
+  void withTimeout(App.getLaunchUrl(), 3_000, "launch-url-timeout")
+    .then((launch) => {
+      if (launch?.url) void handleAuthUrl(launch.url, onSignedIn);
+    })
+    .catch(() => note("no-launch-url"));
+
+  // The belt to those braces. Any route to a session at all ends the attempt.
+  supabase.auth.onAuthStateChange((event) => {
+    if (event !== "SIGNED_IN" && event !== "TOKEN_REFRESHED") return;
+    note("session");
+    finish({ ok: true });
+    onSignedIn?.();
   });
 
   if (nativePluginAvailable("Browser")) {
     const Browser = await browserPlugin();
     // The sheet was dismissed. Either the deep link is a moment behind it, or
     // the person tapped Done - wait out the grace period and then decide.
-    await Browser.addListener("browserFinished", () => {
+    void Browser.addListener("browserFinished", () => {
       const current = attempt;
       if (!current) return;
       current.graceTimer = window.setTimeout(() => {
