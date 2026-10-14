@@ -95,15 +95,13 @@ export default function AppEntryPage() {
         // timeout or a refusal from the provider says what to do next.
         setPending(null);
         if (native.reason !== "cancelled") {
-          // The trail is the point: it names the step it got stuck on.
-          const trail = nativeAuthTrail();
-          setError(
-            `${native.message ?? "Sign-in did not complete. Please try again."}${
-              trail ? `
-
-${trail}` : ""
-            }`,
-          );
+          // The step trail that found the nonce bug is still recorded in
+          // lib/nativeAuth.ts and still printed to the console. It is just not
+          // on screen any more, because people about to download this from the
+          // App Store should not be shown "app=yes > google-ready". Putting it
+          // back is one line: append nativeAuthTrail() to the message below.
+          console.info("[nativeAuth]", nativeAuthTrail());
+          setError(native.message ?? "Sign-in did not complete. Please try again.");
         }
         return;
       }
