@@ -29,6 +29,7 @@ import { buildFullName, hasRequiredFullName, splitFullName } from "../../lib/pro
 import { isAdminUser } from "../../lib/readingProgress";
 import type { BuddyAvatar } from "../../lib/buddyAvatars";
 import { clearLegacyBibleYearOfflineStorage } from "../../lib/bibleYearOfflinePack";
+import BibleLockSettings from "@/components/BibleLockSettings";
 
 type StorePurchaseRow = {
   item_id: string;
@@ -919,6 +920,10 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
             </button>
           </div>
         </div>
+
+        {/* The Bible lock renders nothing unless this device can do it, so it
+            costs the website and Android nothing to have it here. */}
+        <BibleLockSettings />
 
         {/* Reading Plan Section */}
         <div className="bg-white rounded-xl p-6 shadow-sm mb-6">

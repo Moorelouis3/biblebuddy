@@ -12,6 +12,21 @@ import { supabase } from "./supabaseClient";
 import type { ActionType } from "./actionTypes";
 import { syncCurrentStreakToProfileStats } from "./profileStats";
 import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
+import { clearBibleLock } from "./bibleLock";
+
+/**
+ * Finishing one of these means today's reading is done, which is what the
+ * Bible lock waits for.
+ *
+ * The hook lives here rather than in any of the screens that finish a chapter
+ * because this is the one function all of them go through. Two places deciding
+ * what "done" means is how someone ends up locked out of their phone after
+ * reading, which is the one failure this feature cannot have.
+ */
+const READING_DONE_ACTIONS = new Set<ActionType>([
+  "chapter_completed",
+  "reading_plan_chapter_completed",
+]);
 
 /** Fired on any "did something" (not just viewed/opened) action. */
 export const MEANINGFUL_ACTION_EVENT = "bb:meaningful-action";
@@ -175,6 +190,12 @@ export async function recordAction(
   username?: string | null
 ): Promise<void> {
   try {
+    // Give the phone back first. Not awaited and never allowed to throw: a
+    // stats write failing afterwards must not leave someone locked out.
+    if (READING_DONE_ACTIONS.has(actionType)) {
+      void clearBibleLock();
+    }
+
     // STEP 1: Insert action into master_actions using shared function
     await logActionToMasterActions(userId, actionType, actionLabel, username);
 
