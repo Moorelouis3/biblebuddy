@@ -7858,3 +7858,7 @@ Next up: 2 Corinthians 9
 ## 2026-10-14T08:56:26Z (hourly chapter notes run)
 Chapter: 2 Corinthians 9 | Duration: 10 min | Sections: 4 | Cards: 31 | Status: pass
 Next up: 2 Corinthians 10
+
+## 2026-10-14T10:00:56Z (hourly chapter notes run)
+Chapter: 2 Corinthians 10 | Duration: 14 min | Sections: 5 | Cards: 30 | Status: pass
+Next up: 2 Corinthians 11
