@@ -64936,6 +64936,71 @@
           "at": "2026-10-14T18:58:00Z"
         }
       ]
+    },
+    {
+      "book": "Ephesians",
+      "chapter": 1,
+      "startedAt": "2026-10-14T19:47:29Z",
+      "finishedAt": "2026-10-14T19:59:54Z",
+      "durationMinutes": 12,
+      "sections": 6,
+      "cards": 41,
+      "verses": 23,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean at first (fresh clone, 704 packages, about 35s), but npx tsc --noEmit -p . later surfaced 6 TS2307/TS2339 errors in lib/nativeAuth.ts for four Capacitor packages (@capacitor/browser, @capacitor/app, @capacitor-community/apple-sign-in, @capgo/capacitor-social-login) that are correctly declared in package.json and package-lock.json but had not actually landed in node_modules after the bulk install, apparently a transient fetch gap during that one install rather than a real network block, since installing each of the four directly right after (npm install <pkg> --no-save) succeeded immediately with no errors. Re-ran npx tsc --noEmit -p . after that and it came back fully clean with zero output, confirming the chapter notes work itself was never the problem. Priority queue (data/bible-notes-priority-queue.json) and style redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after Galatians 6, the latest entry in this log before this one, matching that entry's own note that the next forward-progress target was Ephesians 1. Confirmed no lib/ephesiansOneSource.ts existed yet; only the legacy bulk file lib/ephesiansOneToSixPersonalNotes.ts covered chapter 1. Fetched real KJV text for Ephesians 1 (23 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Ephesians.json). This chapter opens the letter: Paul's greeting to the saints and faithful at Ephesus with grace and peace (1-2); the long opening blessing praising God for choosing, predestinating, and adopting believers before the foundation of the world, to the praise of the glory of his grace, accepted in the beloved (3-6); redemption through Christ's blood and the forgiveness of sins, the mystery of his will now revealed, and God's plan to gather together in one all things in Christ, both in heaven and on earth (7-10); obtaining an inheritance, being sealed with the Holy Spirit of promise as the earnest of that inheritance, and the redemption of the purchased possession still ahead (11-14); Paul's prayer of thanksgiving for their faith and love, asking for the spirit of wisdom and revelation and the eyes of their understanding to be enlightened, to know the hope of his calling, the riches of his inheritance in the saints, and the exceeding greatness of his power toward believers (15-19); and that same power shown in raising Christ from the dead, seating him at God's right hand far above every rank of spiritual authority, putting all things under his feet, and making him head over all things to the church, which is his body, the fulness of him that filleth all in all (20-23). Split into 6 sections (1-2, 3-6, 7-10, 11-14, 15-19, 20-23), all 23 verses covered with no gaps or overlaps, 41 total cards, about 1.78 cards per verse. scripts/check_bible_note_style.py found 2 problems on the first pass, both bullets running to 9 words instead of the 3-8 word limit; both were shortened and the checker came back fully clean on the second pass across all 41 cards: no hyphens outside verse reference lines (the KJV phrase us-ward was written without its hyphen as Us Ward to satisfy this rule), no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (apostle, saints, grace and peace, spiritual blessings, heavenly places, chosen, holy and without blame, predestinated, adoption, good pleasure, redemption, riches of his grace, abounded, the mystery of his will, the dispensation of the fulness of times, obtained an inheritance, sealed, the earnest of our inheritance, the purchased possession, the spirit of wisdom and revelation, enlightened, the hope of his calling, us ward, principality and power and might and dominion, head over all things, fulness), closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines across all 41 cards. Parser check passed exactly via getBibleReaderStudySections('ephesians', 1): 6/6 sections, verse ranges 1-2/3-6/7-10/11-14/15-19/20-23 with no gaps, 41 total cards rendering verbatim. npx tsc --noEmit -p . came back clean, zero errors, after the Capacitor package install gap above was resolved. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/ephesiansOneSource.ts, a new ephesians condition added to preserveExactPhraseBodies for chapter 1, new applyPersonalEphesiansOneStudySections() function calling replaceStudySectionsForBookRange(\"ephesians\", 1, 1, EPHESIANS_ONE_PERSONAL_SECTIONS), invoked right after the existing applyPersonalEphesiansOneThroughSixStudySections() call so the new dedicated chapter 1 file correctly overrides the legacy EPHESIANS_1_6_PERSONAL_SECTIONS bulk file for chapter 1 only, chapters 2 through 6 of that legacy file left untouched for now. New chapter, normal forward progress, not a style redo. Next forward-progress target is Ephesians 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-14T19:46:09Z"
+        },
+        {
+          "name": "target chapter determined: Ephesians 1 (normal forward progress, priority queue and redo backlog both empty, next after Galatians 6)",
+          "at": "2026-10-14T19:47:29Z"
+        },
+        {
+          "name": "confirmed no lib/ephesiansOneSource.ts existed; only legacy bulk file covers chapter 1",
+          "at": "2026-10-14T19:47:45Z"
+        },
+        {
+          "name": "KJV text fetched for Ephesians 1 (23 verses, aruljohn mirror)",
+          "at": "2026-10-14T19:48:10Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-14T19:48:40Z"
+        },
+        {
+          "name": "source file written: lib/ephesiansOneSource.ts (41 cards, 6 sections)",
+          "at": "2026-10-14T19:53:30Z"
+        },
+        {
+          "name": "style checker clean (2 bullet word-count problems found and fixed, then 0 problems on second pass, 41 cards)",
+          "at": "2026-10-14T19:54:10Z"
+        },
+        {
+          "name": "manual section 13 eye check passed (opening moves, no duplicate titles, no repeated opening lines, no forbidden filler phrases)",
+          "at": "2026-10-14T19:54:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalEphesiansOneStudySections)",
+          "at": "2026-10-14T19:55:00Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 41 cards, text verbatim)",
+          "at": "2026-10-14T19:55:20Z"
+        },
+        {
+          "name": "tsc --noEmit failed first pass with module-resolution errors (4 missing Capacitor packages not installed by bulk npm install)",
+          "at": "2026-10-14T19:56:10Z"
+        },
+        {
+          "name": "installed the 4 missing Capacitor packages directly, then tsc --noEmit clean, zero errors",
+          "at": "2026-10-14T19:59:54Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-14T20:00:00Z"
+        }
+      ]
     }
   ]
 }
