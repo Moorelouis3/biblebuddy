@@ -557,8 +557,11 @@ let googleReady = false;
  * Guessing at a value we did not choose is not a thing that can work, so this
  * supplies one and forces a fresh sign-in rather than a restored one.
  *
- * Google writes the nonce into the token exactly as given, unlike Apple, which
- * stores the hash of what you send. So the same raw string goes to both sides.
+ * Which form goes where is settled now, by trying the other one: sending the
+ * raw string to both sides got "Nonces mismatch", so Supabase hashes whatever
+ * it is given and compares that to the claim. Google stores what it is given
+ * verbatim. Therefore Google gets the hash and Supabase gets the original -
+ * the same arrangement as the Apple path, which has worked since build 7.
  *
  * Returns null when the plugin is not in the installed binary, so the caller
  * can fall back to the browser rather than leaving someone with no way in.
@@ -580,6 +583,7 @@ export async function signInWithGoogleNatively(): Promise<NativeSignInResult | n
   }
 
   const rawNonce = cryptoRandom();
+  const hashedNonce = await sha256Hex(rawNonce);
 
   let idToken: string | null = null;
   try {
@@ -587,7 +591,8 @@ export async function signInWithGoogleNatively(): Promise<NativeSignInResult | n
       provider: "google",
       options: {
         scopes: ["email", "profile"],
-        nonce: rawNonce,
+        // The hash, because the token must end up carrying the hash.
+        nonce: hashedNonce,
         // Without this the plugin silently restores whatever Google session is
         // already on the phone, handing back a token minted for some earlier
         // request with a nonce of its own. It also means the account picker
