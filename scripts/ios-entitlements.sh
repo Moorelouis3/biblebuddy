@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 # Give the generated iOS app the Sign in with Apple entitlement.
 #
-# App Review Guideline 4.8 makes Sign in with Apple mandatory because Bible
-# Buddy offers Google. The Apple side is already in place - the App ID has the
+# Two entitlements now.
+#
+# Sign in with Apple: App Review Guideline 4.8 makes it mandatory because Bible
+# Buddy offers Google.
+#
+# Family Controls: the Bible lock. Apple grants this one by application rather
+# than by ticking a box - granted 2026-10-14 - and without it in the built app
+# the Screen Time frameworks refuse everything at runtime. The Apple side is already in place - the App ID has the
 # capability, the key exists, and Supabase has the bundle id under Client IDs -
 # but none of that matters without this: iOS refuses to present the sign-in
 # sheet if the running app does not carry the entitlement, and the error it
@@ -34,6 +40,8 @@ cat > "$ENTITLEMENTS" <<'PLIST'
 	<array>
 		<string>Default</string>
 	</array>
+	<key>com.apple.developer.family-controls</key>
+	<true/>
 </dict>
 </plist>
 PLIST
