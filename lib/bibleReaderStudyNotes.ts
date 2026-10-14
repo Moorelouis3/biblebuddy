@@ -1168,6 +1168,7 @@ import { SECOND_CORINTHIANS_ELEVEN_PERSONAL_SECTIONS } from "./secondCorinthians
 import { SECOND_CORINTHIANS_TWELVE_PERSONAL_SECTIONS } from "./secondCorinthiansTwelveSource";
 import { SECOND_CORINTHIANS_THIRTEEN_PERSONAL_SECTIONS } from "./secondCorinthiansThirteenSource";
 import { GALATIANS_1_6_PERSONAL_SECTIONS } from "./galatiansOneToSixPersonalNotes";
+import { GALATIANS_ONE_PERSONAL_SECTIONS } from "./galatiansOneSource";
 import { EPHESIANS_1_6_PERSONAL_SECTIONS } from "./ephesiansOneToSixPersonalNotes";
 import { PHILIPPIANS_1_4_PERSONAL_SECTIONS } from "./philippiansOneToFourPersonalNotes";
 import { COLOSSIANS_1_4_PERSONAL_SECTIONS } from "./colossiansOneToFourPersonalNotes";
@@ -1512,7 +1513,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "acts" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16 || section.chapter === 17 || section.chapter === 18 || section.chapter === 19 || section.chapter === 20 || section.chapter === 21 || section.chapter === 22 || section.chapter === 23 || section.chapter === 24 || section.chapter === 25 || section.chapter === 26 || section.chapter === 27 || section.chapter === 28)) ||
     (normalizeBook(book) === "romans" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16)) ||
     (normalizeBook(book) === "1 corinthians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16)) ||
-    (normalizeBook(book) === "2 corinthians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13));
+    (normalizeBook(book) === "2 corinthians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13)) ||
+    (normalizeBook(book) === "galatians" && section.chapter === 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4706,6 +4708,10 @@ function applyPersonalSecondCorinthiansThirteenStudySections() {
 
 function applyPersonalGalatiansOneThroughSixStudySections() {
   replaceStudySectionsForBookRange("galatians", 1, 6, GALATIANS_1_6_PERSONAL_SECTIONS);
+}
+
+function applyPersonalGalatiansOneStudySections() {
+  replaceStudySectionsForBookRange("galatians", 1, 1, GALATIANS_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalEphesiansOneThroughSixStudySections() {
@@ -12487,6 +12493,7 @@ applyPersonalSecondCorinthiansElevenStudySections();
 applyPersonalSecondCorinthiansTwelveStudySections();
 applyPersonalSecondCorinthiansThirteenStudySections();
 applyPersonalGalatiansOneThroughSixStudySections();
+applyPersonalGalatiansOneStudySections();
 applyPersonalEphesiansOneThroughSixStudySections();
 applyPersonalPhilippiansOneThroughFourStudySections();
 applyPersonalColossiansOneThroughFourStudySections();
