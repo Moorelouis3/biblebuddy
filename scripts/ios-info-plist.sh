@@ -66,5 +66,19 @@ if ! plist "Print :CFBundleURLTypes" | grep -q "net.mybiblebuddy.app"; then
   plist "Add :CFBundleURLTypes:0:CFBundleURLSchemes:0 string net.mybiblebuddy.app"
 fi
 
+# Google's SDK answers on its own URL scheme: the client id with its parts
+# reversed. Without it the native sign-in sheet opens and never comes back.
+#
+# This is an iOS OAuth client id, which has no secret and ships inside every
+# copy of the app - public by design, like the bundle id next to it.
+GOOGLE_SCHEME="com.googleusercontent.apps.565216751325-q2k0ps1u5u1pu266ir56qfljgovk7tb5"
+if ! plist "Print :CFBundleURLTypes" | grep -q "$GOOGLE_SCHEME"; then
+  INDEX=$(plist "Print :CFBundleURLTypes" | grep -c "CFBundleURLName" || true)
+  plist "Add :CFBundleURLTypes:$INDEX dict"
+  plist "Add :CFBundleURLTypes:$INDEX:CFBundleURLName string $GOOGLE_SCHEME"
+  plist "Add :CFBundleURLTypes:$INDEX:CFBundleURLSchemes array"
+  plist "Add :CFBundleURLTypes:$INDEX:CFBundleURLSchemes:0 string $GOOGLE_SCHEME"
+fi
+
 echo "--- Info.plist ---"
 plist "Print"

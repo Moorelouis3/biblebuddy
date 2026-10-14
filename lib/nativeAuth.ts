@@ -500,6 +500,88 @@ async function sha256Hex(value: string) {
 }
 
 /* -------------------------------------------------------------------------- */
+/* Google, natively                                                           */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The iOS OAuth client. Public by design - iOS clients have no secret and the
+ * id ships inside every copy of the app, like the bundle id.
+ */
+const GOOGLE_IOS_CLIENT_ID =
+  "565216751325-q2k0ps1u5u1pu266ir56qfljgovk7tb5.apps.googleusercontent.com";
+const GOOGLE_WEB_CLIENT_ID =
+  "565216751325-esjt99v76m409lja2n15qp4sp69jg93d.apps.googleusercontent.com";
+
+let googleReady = false;
+
+/**
+ * Sign in with Google without leaving the app (Louis, 2026-10-14).
+ *
+ * Five rounds went into getting a browser to do this and every one of them
+ * failed somewhere different: the in-app sheet never drew, and with the system
+ * browser the callback came back to an app whose listener registration had
+ * hung. Meanwhile Apple has worked first time since build 7, and the reason is
+ * structural - it never leaves the app, so there is no browser to fail and no
+ * callback to lose. Google can work the same way, and this is that.
+ *
+ * Google's own SDK shows the account sheet and hands back an identity token;
+ * Supabase takes it directly through signInWithIdToken, exactly as it does for
+ * Apple. No redirect, no deep link, no custom URL scheme in the middle.
+ *
+ * Two things outside this file have to be in place, and both are done:
+ *   - an iOS OAuth client in Google Cloud for net.mybiblebuddy.app
+ *   - that client id listed under Supabase > Auth > Google > Client IDs
+ *
+ * No nonce is sent. Google only puts one in the token if it is asked to, and
+ * Supabase only checks one if it is given one, so the pair is consistent.
+ *
+ * Returns null when the plugin is not in the installed binary, so the caller
+ * can fall back to the browser rather than leaving someone with no way in.
+ */
+export async function signInWithGoogleNatively(): Promise<NativeSignInResult | null> {
+  if (!nativePluginAvailable("SocialLogin")) {
+    note("google-plugin-missing");
+    return null;
+  }
+
+  const { SocialLogin } = await import("@capgo/capacitor-social-login");
+
+  if (!googleReady) {
+    await SocialLogin.initialize({
+      google: { iOSClientId: GOOGLE_IOS_CLIENT_ID, webClientId: GOOGLE_WEB_CLIENT_ID },
+    });
+    googleReady = true;
+    note("google-ready");
+  }
+
+  let idToken: string | null = null;
+  try {
+    const response = await SocialLogin.login({
+      provider: "google",
+      options: { scopes: ["email", "profile"] },
+    });
+    const result = response?.result as { idToken?: string | null } | undefined;
+    idToken = result?.idToken ?? null;
+  } catch (error) {
+    const message = describe(error);
+    note("google-sheet-failed");
+    if (/cancel/i.test(message)) return { ok: false, reason: "cancelled" };
+    return { ok: false, reason: "error", message };
+  }
+
+  if (!idToken) return { ok: false, reason: "cancelled" };
+
+  note("google-exchanging");
+  const { error } = await supabase.auth.signInWithIdToken({
+    provider: "google",
+    token: idToken,
+  });
+  if (error) return { ok: false, reason: "error", message: error.message };
+  note("signed-in");
+  return { ok: true };
+}
+
+/* -------------------------------------------------------------------------- */
 /* Google (and Apple on the web): the Safari sheet                            */
 /* -------------------------------------------------------------------------- */
 
@@ -516,6 +598,14 @@ export async function signInWithProviderNatively(
   onSignedIn?: () => void,
 ): Promise<NativeSignInResult | false> {
   if (!isNativeApp()) return false;
+
+  // Native first. It only returns null when the plugin is not in the installed
+  // binary, which is every build before this change - those keep the browser
+  // route below rather than losing Google altogether.
+  if (provider === "google") {
+    const native = await signInWithGoogleNatively();
+    if (native) return native;
+  }
 
   // No Browser-plugin check and no in-app sheet. Two builds were spent on
   // SFSafariViewController and neither ever put a Google page on screen, so
