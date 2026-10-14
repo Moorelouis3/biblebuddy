@@ -1177,6 +1177,7 @@ import { GALATIANS_SIX_PERSONAL_SECTIONS } from "./galatiansSixSource";
 import { EPHESIANS_1_6_PERSONAL_SECTIONS } from "./ephesiansOneToSixPersonalNotes";
 import { EPHESIANS_ONE_PERSONAL_SECTIONS } from "./ephesiansOneSource";
 import { EPHESIANS_TWO_PERSONAL_SECTIONS } from "./ephesiansTwoSource";
+import { EPHESIANS_THREE_PERSONAL_SECTIONS } from "./ephesiansThreeSource";
 import { PHILIPPIANS_1_4_PERSONAL_SECTIONS } from "./philippiansOneToFourPersonalNotes";
 import { COLOSSIANS_1_4_PERSONAL_SECTIONS } from "./colossiansOneToFourPersonalNotes";
 import { FIRST_THESSALONIANS_1_3_PERSONAL_SECTIONS } from "./firstThessaloniansOneToThreePersonalNotes";
@@ -1522,7 +1523,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "1 corinthians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16)) ||
     (normalizeBook(book) === "2 corinthians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13)) ||
     (normalizeBook(book) === "galatians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6)) ||
-    (normalizeBook(book) === "ephesians" && (section.chapter === 1 || section.chapter === 2));
+    (normalizeBook(book) === "ephesians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4749,6 +4750,10 @@ function applyPersonalEphesiansOneStudySections() {
 
 function applyPersonalEphesiansTwoStudySections() {
   replaceStudySectionsForBookRange("ephesians", 2, 2, EPHESIANS_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalEphesiansThreeStudySections() {
+  replaceStudySectionsForBookRange("ephesians", 3, 3, EPHESIANS_THREE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalPhilippiansOneThroughFourStudySections() {
@@ -12534,6 +12539,7 @@ applyPersonalGalatiansSixStudySections();
 applyPersonalEphesiansOneThroughSixStudySections();
 applyPersonalEphesiansOneStudySections();
 applyPersonalEphesiansTwoStudySections();
+applyPersonalEphesiansThreeStudySections();
 applyPersonalPhilippiansOneThroughFourStudySections();
 applyPersonalColossiansOneThroughFourStudySections();
 applyPersonalFirstThessaloniansOneThroughThreeStudySections();

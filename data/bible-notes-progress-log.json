@@ -65058,6 +65058,67 @@
           "at": "2026-10-14T20:59:35Z"
         }
       ]
+    },
+    {
+      "book": "Ephesians",
+      "chapter": 3,
+      "startedAt": "2026-10-14T21:46:18Z",
+      "finishedAt": "2026-10-14T21:59:00Z",
+      "durationMinutes": 13,
+      "sections": 6,
+      "cards": 34,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (711 packages, about 39s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Ephesians 2, the latest entry in this log before this one, matching that entry's own note that the next forward-progress target was Ephesians 3. Confirmed no lib/ephesiansThreeSource.ts existed yet; only the legacy bulk file lib/ephesiansOneToSixPersonalNotes.ts covered chapter 3. Fetched real KJV text for Ephesians 3 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Ephesians.json). This chapter opens with Paul naming himself the prisoner of Jesus Christ for the Gentiles, the dispensation of grace given to him, and the mystery made known to him by revelation, already touched on briefly earlier in the letter (1-4); this mystery was not made known to past generations the way it is now revealed to the apostles and prophets by the Spirit, that Gentiles are fellowheirs and of the same body and partakers of the promise, with Paul made a minister of it by the effectual working of God's power (5-7); Paul naming himself less than the least of all saints yet given this grace to preach the unsearchable riches of Christ and the fellowship of the mystery hid in God, so that the principalities and powers in heavenly places might now learn the manifold wisdom of God through the church (8-10); the eternal purpose fulfilled in Christ, the boldness and access by faith that believers now have, and Paul's request that they not grow discouraged over his tribulations, which were actually their glory (11-13); Paul's prayer bowing his knees to the Father of the whole family in heaven and earth, asking for believers to be strengthened by the Spirit in the inner man, for Christ to dwell in their hearts, and for them to be rooted and grounded in love so they can grasp the breadth and length and depth and height of a love that passes knowledge, and be filled with the fulness of God (14-19); and the closing doxology praising the God who can do exceeding abundantly above all we ask or think, with glory in the church by Christ Jesus world without end (20-21). Split into 6 sections (1-4, 5-7, 8-10, 11-13, 14-19, 20-21), all 21 verses covered with no gaps or overlaps, 34 total cards, about 1.6 cards per verse. scripts/check_bible_note_style.py found 4 problems on the first pass, all bullets running to 9 words instead of the 3-8 word limit; all four were shortened and the checker came back fully clean on the second pass across all 34 cards: no hyphens outside verse reference lines (the KJV phrase you-ward written without its hyphen as You Ward, matching the Us Ward precedent set in Ephesians 1), no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on \ud83d\udcd6 or \u27a1\ufe0f. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (dispensation, you ward, mystery, revelation, fellowheirs, minister, effectual working, unsearchable riches, fellowship of the mystery, principalities and powers, manifold wisdom, boldness, access, tribulations, inner man, rooted and grounded, breadth and length and depth and height, passeth knowledge, fulness, exceeding abundantly, world without end), closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines across all 34 cards. Parser check passed exactly via getBibleReaderStudySections('ephesians', 3): 6/6 sections, verse ranges 1-4/5-7/8-10/11-13/14-19/20-21 with no gaps, 34 total cards rendering verbatim. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/ephesiansThreeSource.ts, the ephesians condition in preserveExactPhraseBodies widened from chapters 1-2 to include chapter 3, new applyPersonalEphesiansThreeStudySections() function calling replaceStudySectionsForBookRange('ephesians', 3, 3, EPHESIANS_THREE_PERSONAL_SECTIONS), invoked right after applyPersonalEphesiansTwoStudySections(), correctly overriding the legacy EPHESIANS_1_6_PERSONAL_SECTIONS bulk file for chapter 3 only; chapters 4 through 6 of that legacy file remain live and untouched. New chapter, normal forward progress, not a style redo. Next forward-progress target is Ephesians 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-14T21:47:05Z"
+        },
+        {
+          "name": "target chapter determined: Ephesians 3 (normal forward progress, priority queue and redo backlog both empty, next after Ephesians 2)",
+          "at": "2026-10-14T21:47:30Z"
+        },
+        {
+          "name": "confirmed no lib/ephesiansThreeSource.ts existed; only legacy bulk file covers chapter 3",
+          "at": "2026-10-14T21:47:40Z"
+        },
+        {
+          "name": "KJV text fetched for Ephesians 3 (21 verses, aruljohn mirror)",
+          "at": "2026-10-14T21:48:05Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-14T21:48:50Z"
+        },
+        {
+          "name": "source file written: lib/ephesiansThreeSource.ts (34 cards, 6 sections)",
+          "at": "2026-10-14T21:53:30Z"
+        },
+        {
+          "name": "style checker clean (4 bullet word count problems found and fixed, then 0 problems on second pass, 34 cards)",
+          "at": "2026-10-14T21:54:10Z"
+        },
+        {
+          "name": "manual section 13 eye check passed (opening moves, no duplicate titles, no repeated opening lines, no forbidden filler phrases)",
+          "at": "2026-10-14T21:54:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalEphesiansThreeStudySections)",
+          "at": "2026-10-14T21:55:00Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 34 cards, text verbatim)",
+          "at": "2026-10-14T21:55:32Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-14T21:55:32Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-14T21:59:00Z"
+        }
+      ]
     }
   ]
 }
