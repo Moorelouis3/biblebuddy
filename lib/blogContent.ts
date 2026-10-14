@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-32-explained",
+    title: "Exodus 32 Explained: The Golden Calf and Moses' Plea for Israel",
+    description:
+      "Exodus 32 explained verse by verse: the golden calf, God's anger, Moses' intercession, the broken tables, and the price Israel paid for idolatry.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-32-explained",
+    publishedAt: "2026-10-14",
+    readTime: "15 min read",
+    image: "/blog-banners/exodus-32-explained.jpg",
+    groupPost: {
+      title: "Exodus 32 Explained 📖",
+      content:
+        "Forty days of waiting, and the people melt their jewelry into a god.\n\n📌 Moses argued with God before he ever confronted the camp below.\n\n📖 The high priest built the calf with his own hands.\n📖 God offered to start over with Moses alone.\n📖 Moses asked to be erased instead of Israel.\n\nNew article on:\n🟢 why God called Israel **stiffnecked**\n🟢 what the **three thousand** deaths actually judged\n🟢 why Moses offered to be **blotted out** of God's book\n\nWhat do you reach for when God's timing feels too slow? 🙏",
+    },
+  },
+  {
     slug: "exodus-31-explained",
     title: "Exodus 31 Explained: Bezaleel, the Sabbath Sign, and the Tables of Stone",
     description:
