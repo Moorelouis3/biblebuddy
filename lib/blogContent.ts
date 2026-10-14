@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-35-explained",
+    title: "Exodus 35 Explained: The Offering for the Tabernacle Begins",
+    description:
+      "Exodus 35 explained verse by verse: the sabbath renewed, the tabernacle offering relayed from the mountain, and why Israel finally gave willingly.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-35-explained",
+    publishedAt: "2026-10-14",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-35-explained.jpg",
+    groupPost: {
+      title: "Exodus 35 Explained 📖",
+      content:
+        "The same gold that built a calf comes back in this chapter.\n\n📌 This time nobody has to ask twice.\n\n📖 The sabbath law gets one new detail added.\n📖 Moses relays a plan God gave before the golden calf.\n📖 Women's skilled spinning gets named directly.\n\nNew article on:\n🟢 why the offering had to be **willing**\n🟢 who **Bezaleel and Aholiab** actually were\n🟢 what changed between the calf and this chapter\n\nWhat is something you could give willingly this week? 🙏",
+    },
+  },
+  {
     slug: "exodus-34-explained",
     title: "Exodus 34 Explained: God Proclaims His Name and Moses' Shining Face",
     description:
