@@ -61,6 +61,9 @@ const DISMISS_GRACE_MS = 1_200;
 /** How many of those grace periods to wait before calling it a cancellation. */
 const RESUME_LOOKS = 8;
 
+/** How long Supabase gets to turn the code into a session. */
+const EXCHANGE_TIMEOUT_MS = 20_000;
+
 
 type Provider = "google" | "apple";
 
@@ -314,7 +317,15 @@ async function handleAuthUrl(url: string | undefined, onSignedIn?: () => void) {
     // simply gave up at the Google screen.
     const code = parsed.searchParams.get("code");
     if (code) {
-      const { error } = await supabase.auth.exchangeCodeForSession(code);
+      // Name this step when it fails. Everything up to here is Google's side
+      // and the phone's; from here on it is Supabase, and when Supabase is
+      // slow this is where a sign-in dies - which is indistinguishable, from
+      // the button, from Google never having answered at all.
+      const { error } = await withTimeout(
+        supabase.auth.exchangeCodeForSession(code),
+        EXCHANGE_TIMEOUT_MS,
+        "Google signed you in, but Bible Buddy could not reach its database. Try again.",
+      );
       if (error) throw error;
     } else {
       const access_token = hash.get("access_token");
@@ -415,6 +426,14 @@ export async function signInWithAppleNatively(): Promise<NativeSignInResult | fa
   });
   if (error) return { ok: false, reason: "error", message: error.message };
   return { ok: true };
+}
+
+/** Reject with a sentence worth reading rather than hanging. */
+function withTimeout<T>(work: Promise<T>, ms: number, message: string): Promise<T> {
+  return Promise.race([
+    work,
+    new Promise<T>((_, reject) => window.setTimeout(() => reject(new Error(message)), ms)),
+  ]);
 }
 
 function cryptoRandom() {
