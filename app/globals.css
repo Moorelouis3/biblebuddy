@@ -44,6 +44,27 @@ html.bb-native .bb-safe-top-header {
   padding-top: 0;
 }
 
+/* The body's padding keeps the TOP of a page clear, but padding scrolls away
+   with the page - so on a long chapter, the verse you have scrolled to ends up
+   under the clock. Louis's App Store screenshots caught exactly that: "great
+   many." and "him." printed across the time and the battery.
+
+   A fixed band in the page's own background colour sits in that strip, so
+   scrolled content passes behind something solid instead of colliding with
+   the status bar. Below every popup (z-index 100 against their 260+) and it
+   ignores pointer events, so it can never swallow a tap. */
+html.bb-native body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: env(safe-area-inset-top, 0px);
+  background-color: var(--bb-background, #eef4fb);
+  pointer-events: none;
+  z-index: 100;
+}
+
 /* Full-screen overlays are positioned against the viewport, not the body, so
    they start underneath the status bar however much padding the body has.
    Keeping their contents - a close button, usually - below it. */
