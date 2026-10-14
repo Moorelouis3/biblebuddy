@@ -7890,3 +7890,7 @@ Next up: Galatians 4
 ## 2026-10-14T16:59:50Z (hourly chapter notes run)
 Chapter: Galatians 4 | Duration: 13 min | Sections: 6 | Cards: 54 | Status: pass
 Next up: Galatians 5
+
+## 2026-10-14T17:57:34Z (hourly chapter notes run)
+Chapter: Galatians 5 | Duration: 10 min | Sections: 6 | Cards: 40 | Status: pass
+Next up: Galatians 6
