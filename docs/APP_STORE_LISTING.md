@@ -182,6 +182,12 @@ is one.
 
 ## Store listing
 
+> Reviewed with Louis 2026-10-14. The name stays as registered. The subtitle
+> became "Read and Understand the Bible". The promotional text lost "with no
+> account needed to read along", which stopped being true when anonymous
+> accounts were turned off on 2026-10-06 - an untrue claim on the product page
+> is worth more than the line was. Everything else is deliberately unchanged.
+
 **Name** (30 max)
 
 ```
@@ -191,7 +197,7 @@ Bible Buddy: Study & Devotions
 **Subtitle** (30 max)
 
 ```
-Read the Bible, understand it
+Read and Understand the Bible
 ```
 
 **Keywords** (100 max, comma separated, no spaces, don't repeat the name)
@@ -204,7 +210,7 @@ bible,study,devotional,scripture,daily,reading,plan,verse,christian,faith,prayer
 whatever is current)
 
 ```
-Reading plans, chapter-by-chapter notes, devotionals, trivia and a study group — free, with no account needed to read along.
+Reading plans, chapter-by-chapter notes, devotionals, trivia and a study group — all free. Create your account and start understanding the Bible.
 ```
 
 **Description**
