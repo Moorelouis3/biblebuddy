@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-repentance",
+    title: "What Is Repentance, Really? A Simple, Honest Answer",
+    description:
+      "What is repentance, really? Why feeling sorry is not the same thing, godly sorrow versus worldly sorrow, and what turning back to God actually looks like.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/what-is-repentance",
+    publishedAt: "2026-10-15",
+    readTime: "16 min read",
+    image: "/what-is-repentance-banner.png",
+    groupPost: {
+      title: "What Is Repentance, Really? 📖",
+      content:
+        "You confessed the same sin again.\nAnd now you are wondering if any of it was real.\n\n📌 Repeating a sin does not prove your repentance was fake.\n\n📖 Godly sorrow turns toward God. Worldly sorrow just sits there.\n📖 Peter wept and walked back. Judas wept and walked away.\n📖 Jesus told His disciples to forgive the same sin seven times in a day.\n\nNew article on:\n🟢 the real difference between **feeling sorry** and **turning**\n🟢 what to do when you fall into the **same sin again**\n🟢 what turning actually looks like on an **ordinary Tuesday**\n\nWhat does turning back to God actually look like for you this week? 🙏",
+    },
+  },
+  {
     slug: "exodus-35-explained",
     title: "Exodus 35 Explained: The Offering for the Tabernacle Begins",
     description:

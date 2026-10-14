@@ -7910,3 +7910,7 @@ Next up: Ephesians 3
 ## 2026-10-14T21:59:00Z (hourly chapter notes run)
 Chapter: Ephesians 3 | Duration: 13 min | Sections: 6 | Cards: 34 | Status: pass
 Next up: Ephesians 4
+
+## 2026-10-14T22:18:19Z (blog writer run)
+Article: What Is Repentance, Really? A Simple, Honest Answer | Words: ~3100 | Category: Christian Foundations | Status: pass
+Queue remaining: 18
