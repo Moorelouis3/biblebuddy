@@ -488,6 +488,24 @@ function withTimeout<T>(work: Promise<T>, ms: number, message: string): Promise<
   ]);
 }
 
+/**
+ * Does this id_token have a nonce claim? Presence only.
+ *
+ * Nothing is returned, logged or shown from inside the token - this reads one
+ * claim and answers yes or no, which is enough to tell the two halves of the
+ * nonce rule apart without ever putting a credential on screen.
+ */
+function tokenHasNonce(idToken: string): boolean {
+  try {
+    const payload = idToken.split(".")[1];
+    if (!payload) return false;
+    const json = atob(payload.replace(/-/g, "+").replace(/_/g, "/"));
+    return Boolean((JSON.parse(json) as { nonce?: string }).nonce);
+  } catch {
+    return false;
+  }
+}
+
 function cryptoRandom() {
   const bytes = new Uint8Array(32);
   crypto.getRandomValues(bytes);
@@ -532,8 +550,15 @@ let googleReady = false;
  *   - an iOS OAuth client in Google Cloud for net.mybiblebuddy.app
  *   - that client id listed under Supabase > Auth > Google > Client IDs
  *
- * No nonce is sent. Google only puts one in the token if it is asked to, and
- * Supabase only checks one if it is given one, so the pair is consistent.
+ * The nonce has to be ours. Sending none produced "Passed nonce and nonce in
+ * id_token should either both exist or not" from Supabase, which says the
+ * token came back carrying one anyway - the plugin restores a previously
+ * signed-in Google session when it can, and that cached token brings its own.
+ * Guessing at a value we did not choose is not a thing that can work, so this
+ * supplies one and forces a fresh sign-in rather than a restored one.
+ *
+ * Google writes the nonce into the token exactly as given, unlike Apple, which
+ * stores the hash of what you send. So the same raw string goes to both sides.
  *
  * Returns null when the plugin is not in the installed binary, so the caller
  * can fall back to the browser rather than leaving someone with no way in.
@@ -554,11 +579,21 @@ export async function signInWithGoogleNatively(): Promise<NativeSignInResult | n
     note("google-ready");
   }
 
+  const rawNonce = cryptoRandom();
+
   let idToken: string | null = null;
   try {
     const response = await SocialLogin.login({
       provider: "google",
-      options: { scopes: ["email", "profile"] },
+      options: {
+        scopes: ["email", "profile"],
+        nonce: rawNonce,
+        // Without this the plugin silently restores whatever Google session is
+        // already on the phone, handing back a token minted for some earlier
+        // request with a nonce of its own. It also means the account picker
+        // actually appears, which is what someone tapping this expects.
+        forcePrompt: true,
+      },
     });
     const result = response?.result as { idToken?: string | null } | undefined;
     idToken = result?.idToken ?? null;
@@ -571,10 +606,15 @@ export async function signInWithGoogleNatively(): Promise<NativeSignInResult | n
 
   if (!idToken) return { ok: false, reason: "cancelled" };
 
+  // Says whether the token carries a nonce claim at all - never its value, and
+  // never anything else out of the token. This is the fact the last failure
+  // turned on, so it is worth being able to see.
+  note(`token-nonce:${tokenHasNonce(idToken) ? "yes" : "no"}`);
   note("google-exchanging");
   const { error } = await supabase.auth.signInWithIdToken({
     provider: "google",
     token: idToken,
+    nonce: rawNonce,
   });
   if (error) return { ok: false, reason: "error", message: error.message };
   note("signed-in");
