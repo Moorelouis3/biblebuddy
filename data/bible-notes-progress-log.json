@@ -64769,6 +64769,59 @@
           "at": "2026-10-14T15:59:03Z"
         }
       ]
+    },
+    {
+      "book": "Galatians",
+      "chapter": 4,
+      "startedAt": "2026-10-14T16:46:34Z",
+      "finishedAt": "2026-10-14T16:59:50Z",
+      "durationMinutes": 13,
+      "sections": 6,
+      "cards": 54,
+      "verses": 31,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 710 packages, about 36s). Priority queue (data/bible-notes-priority-queue.json) and style redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in both), so this was normal forward progress after Galatians 3, the latest entry in this log before this one. Confirmed no lib/galatiansFourSource.ts existed yet; only the legacy bulk file lib/galatiansOneToSixPersonalNotes.ts covered chapter 4. Fetched real KJV text for Galatians 4 (31 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter moves in six parts: the heir who differs nothing from a servant until the father's appointed time, tutors and governors, the elements of the world, the fulness of time, God sending forth His Son made of a woman and made under the law to redeem those under the law, the adoption of sons, the Spirit crying Abba Father, and the believer as heir of God through Christ (1-7); the warning against turning back to weak and beggarly elements and observing days, months, times, and years, with Paul's fear his labor was in vain (8-11); Paul's appeal to be as he is, his infirmity of the flesh on his first visit, being received as an angel of God, the lost blessedness, the plucked out eyes hyperbole, and becoming an enemy for telling the truth (12-16); the false teachers' corrupt zeal against Paul's own travail in birth again until Christ be formed in the Galatians (17-20); the Hagar and Sarah allegory of the two covenants, Mount Sinai answering to the earthly Jerusalem in bondage, the Jerusalem above that is free and the mother of us all, and the Isaiah quote about the barren woman's many children (21-27); and the closing identification of believers as children of promise like Isaac, the persecution pattern repeating, and the command to cast out the bondwoman so believers stand as children of the free (28-31). Split into 6 sections (1-7, 8-11, 12-16, 17-20, 21-27, 28-31), all 31 verses covered with no gaps or overlaps, 54 total cards, about 1.74 cards per verse. scripts/check_bible_note_style.py came back clean with 0 problems on the first automated pass: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet using 📖. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (tutors and governors, elements of the world, fulness of time, redeem, adoption, Abba, weak and beggarly elements, infirmity of the flesh, zealously affect, travail, allegory, Agar, Jerusalem above, barren), closes on meaning rather than mechanics, and has no duplicate titles across all 54 cards. Parser check passed exactly via getBibleReaderStudySections('galatians', 4): 6/6 sections, verse ranges 1-7/8-11/12-16/17-20/21-27/28-31 with no gaps, 54 total cards rendering verbatim. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/galatiansFourSource.ts, galatians chapter 4 added to the preserveExactPhraseBodies condition, new replaceStudySectionsForBookRange(\"galatians\", 4, 4, GALATIANS_FOUR_PERSONAL_SECTIONS) call added right after the chapter 3 call, correctly overriding the legacy GALATIANS_1_6_PERSONAL_SECTIONS bulk file for chapter 4 only (chapters 5-6 still legacy). New chapter, normal forward progress, not a style redo. Next forward-progress target is Galatians 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-14T16:47:10Z"
+        },
+        {
+          "name": "target chapter determined: Galatians 4 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-14T16:47:40Z"
+        },
+        {
+          "name": "KJV text fetched (Galatians 4, 31 verses, aruljohn mirror)",
+          "at": "2026-10-14T16:47:55Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-14T16:48:10Z"
+        },
+        {
+          "name": "source file written: lib/galatiansFourSource.ts (54 cards, 6 sections)",
+          "at": "2026-10-14T16:56:04Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems first pass)",
+          "at": "2026-10-14T16:56:04Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange chapter 4 call)",
+          "at": "2026-10-14T16:56:19Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 54 cards, text verbatim)",
+          "at": "2026-10-14T16:56:20Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-14T16:56:45Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json)",
+          "at": "2026-10-14T16:59:50Z"
+        }
+      ]
     }
   ]
 }
