@@ -64231,6 +64231,59 @@
           "at": "2026-10-14T05:58:00Z"
         }
       ]
+    },
+    {
+      "book": "2 Corinthians",
+      "chapter": 7,
+      "startedAt": "2026-10-14T06:46:49Z",
+      "finishedAt": "2026-10-14T06:59:15Z",
+      "durationMinutes": 12,
+      "sections": 5,
+      "cards": 36,
+      "verses": 16,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install hit an ECONNRESET on the first attempt (proxy/network blip) and succeeded clean on immediate retry (fresh clone, 709 packages, about 25s). Priority queue (data/bible-notes-priority-queue.json) not present in this checkout; style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) confirmed empty, so this was normal forward progress after 2 Corinthians 6, the latest entry in this log. Confirmed no lib/secondCorinthiansSevenSource.ts existed yet, only the legacy bulk file lib/secondCorinthiansOneToThirteenPersonalNotes.ts covering chapter 7. Fetched real KJV text for 2 Corinthians 7 (16 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens with Paul's call to cleanse themselves given the promises just named in chapter six and his appeal to be received, since he wronged, corrupted, and defrauded no man (1-4); moves to his anxious wait in Macedonia, fightings without and fears within, resolved by God's comfort arriving through Titus and the report of the Corinthians' earnest desire, mourning, and fervent mind toward Paul (5-7); works through the sorrowful letter Paul does not regret, since it produced godly sorrow unto repentance rather than the sorrow of the world that worketh death (8-10); lists the Corinthians' own proof of real repentance (carefulness, clearing of themselves, indignation, fear, vehement desire, zeal, revenge) and names Paul's real motive for writing, that their care for him might appear to them (11-13); and closes with Paul's boasting about them to Titus proven true, Titus's inward affection toward them, and Paul's confidence in them restored in all things (14-16). Split into 5 sections (1-4, 5-7, 8-10, 11-13, 14-16), all 16 verses covered with no gaps or overlaps, 36 total cards, 2.25 cards per verse. scripts/check_bible_note_style.py passed clean on the first automated pass, 0 problems across all 36 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (filthiness, perfecting, fear of God, wronged/corrupted/defrauded, boldness of speech, tribulation, Macedonia, no rest, fightings/fears, cast down, carefulness, clearing of yourselves, indignation/fear/vehement desire/zeal/revenge, inward affection, fear and trembling), closes on meaning rather than mechanics, and has no duplicate titles across all 36 cards. Parser check passed via a temporary tsx script calling getBibleReaderStudySections('2 Corinthians', 7) (5/5 sections, verse ranges 1-4/5-7/8-10/11-13/14-16 with no gaps, 36 total cards rendering verbatim), script removed afterward. npx tsc --noEmit clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/secondCorinthiansSevenSource.ts, preserveExactPhraseBodies 2 corinthians range extended from chapters 1-6 to 1-7, new function applyPersonalSecondCorinthiansSevenStudySections added and called right after applyPersonalSecondCorinthiansSixStudySections(), correctly overriding the legacy SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS bulk file for chapter 7 only, chapters 8-13 of that legacy file left untouched. New chapter (forward progress, not a style redo). Next forward-progress target is 2 Corinthians 8.",
+      "steps": [
+        {
+          "name": "npm install done (one ECONNRESET retry, then clean, 709 packages)",
+          "at": "2026-10-14T06:47:45Z"
+        },
+        {
+          "name": "target chapter determined: 2 Corinthians 7 (priority queue absent, redo backlog empty, normal forward progress after 2 Corinthians 6)",
+          "at": "2026-10-14T06:47:55Z"
+        },
+        {
+          "name": "KJV text fetched (2 Corinthians 7, 16 verses, aruljohn mirror)",
+          "at": "2026-10-14T06:48:09Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-14T06:48:20Z"
+        },
+        {
+          "name": "source file written: lib/secondCorinthiansSevenSource.ts (36 cards, 5 sections)",
+          "at": "2026-10-14T06:53:50Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-14T06:54:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 7, applyPersonalSecondCorinthiansSevenStudySections)",
+          "at": "2026-10-14T06:54:11Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections via temporary tsx script, 5/5 sections, 36 cards, no throw)",
+          "at": "2026-10-14T06:54:46Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-14T06:57:16Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-14T06:59:15Z"
+        }
+      ]
     }
   ]
 }

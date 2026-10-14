@@ -7846,3 +7846,7 @@ Next up: 2 Corinthians 6
 ## 2026-10-14T05:58:00Z (hourly chapter notes run)
 Chapter: 2 Corinthians 6 | Duration: 11 min | Sections: 6 | Cards: 42 | Status: pass
 Next up: 2 Corinthians 7
+
+## 2026-10-14T06:59:15Z (hourly chapter notes run)
+Chapter: 2 Corinthians 7 | Duration: 12 min | Sections: 5 | Cards: 36 | Status: pass
+Next up: 2 Corinthians 8
