@@ -61895,7 +61895,7 @@
       "chapter": 25,
       "startedAt": "2026-10-12T09:45:54Z",
       "finishedAt": "2026-10-12T09:58:53Z",
-      "durationMinutes": 13.0,
+      "durationMinutes": 13,
       "sections": 5,
       "cards": 32,
       "verses": 27,
@@ -61960,7 +61960,7 @@
       "chapter": 26,
       "startedAt": "2026-10-12T10:46:51Z",
       "finishedAt": "2026-10-12T11:02:51Z",
-      "durationMinutes": 16.0,
+      "durationMinutes": 16,
       "sections": 8,
       "cards": 46,
       "verses": 32,
@@ -64335,6 +64335,59 @@
         {
           "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
           "at": "2026-10-14T08:04:30Z"
+        }
+      ]
+    },
+    {
+      "book": "2 Corinthians",
+      "chapter": 9,
+      "startedAt": "2026-10-14T08:46:12Z",
+      "finishedAt": "2026-10-14T08:56:26Z",
+      "durationMinutes": 10,
+      "sections": 4,
+      "cards": 31,
+      "verses": 15,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 710 packages, about 38s). Priority queue not present; style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) confirmed empty, so this was normal forward progress after 2 Corinthians 8, the latest entry in this log before this one. Confirmed no lib/secondCorinthiansNineSource.ts existed yet and no wiring for chapter 9 in lib/bibleReaderStudyNotes.ts. Fetched real KJV text for 2 Corinthians 9 (15 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens with Paul explaining why he keeps writing about a gift he just called unnecessary to mention, recalling the Corinthians' own earlier eagerness and Achaia's year old readiness, sending brethren ahead so the gift is actually collected rather than merely promised before he or visiting Macedonians arrive, and wanting it given as bounty rather than squeezed out of covetousness (1-5); moves into the sowing and reaping metaphor, ruling out grudging or forced giving in favor of the cheerful giver God loves, grounding the promise of abounding grace and sufficiency in God as the source rather than a blank check for personal wealth, and closing on the Psalm quote about the one whose righteousness remains forever (6-9); works through God as the one who supplies the seed in the first place and multiplies it, carefully separating that multiplication from any cash guarantee and reframing the real harvest as growing generosity and character, and naming the double effect of the gift meeting real physical want in Jerusalem while also multiplying thanksgiving to God (10-12); and closes on the gift as proof of a profession already made, defining liberal as the old plain word for generous rather than a modern political label, correcting long after you as old language for deep yearning rather than a time reference, and landing the whole two chapter collection appeal on God's own unspeakable gift behind every other gift in the story (13-15). Split into 4 sections (1-5, 6-9, 10-12, 13-15), all 15 verses covered with no gaps or overlaps, 31 total cards, about 2.07 cards per verse. scripts/check_bible_note_style.py found 1 problem on the first automated pass (one bullet at 9 words instead of 3-8), fixed by trimming it, second run clean with 0 problems across all 31 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on a scripture-point or implication emoji. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (touching, superfluous, forwardness, Achaia, zeal/provoked, bounty, covetousness, sparingly/bountifully, grudgingly, necessity, cheerful, sufficiency, administration, want, experiment, professed subjection, liberal, long after, unspeakable), closes on meaning rather than mechanics, and has no duplicate titles across all 31 cards. Parser check passed via a temporary tsx script calling getBibleReaderStudySections('2 Corinthians', 9) (4/4 sections, verse ranges 1-5/6-9/10-12/13-15 with no gaps, 31 total cards rendering verbatim), script removed afterward. npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/secondCorinthiansNineSource.ts, preserveExactPhraseBodies 2 corinthians range extended from chapters 1-8 to 1-9, new function applyPersonalSecondCorinthiansNineStudySections added and called right after applyPersonalSecondCorinthiansEightStudySections(), correctly extending coverage past the legacy SECOND_CORINTHIANS_1_13_PERSONAL_SECTIONS bulk file for chapter 9 only, chapters 10-13 of that legacy file left untouched. New chapter (forward progress, not a style redo). Next forward-progress target is 2 Corinthians 10.",
+      "steps": [
+        {
+          "name": "npm install done (clean, 710 packages, about 38s, fresh clone)",
+          "at": "2026-10-14T08:47:08Z"
+        },
+        {
+          "name": "target chapter determined: 2 Corinthians 9 (priority queue absent, redo backlog empty, normal forward progress after 2 Corinthians 8)",
+          "at": "2026-10-14T08:47:10Z"
+        },
+        {
+          "name": "KJV text fetched (2 Corinthians 9, 15 verses, aruljohn mirror)",
+          "at": "2026-10-14T08:47:17Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-14T08:48:30Z"
+        },
+        {
+          "name": "source file written: lib/secondCorinthiansNineSource.ts (31 cards, 4 sections)",
+          "at": "2026-10-14T08:52:31Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed one bullet over the 8 word limit, clean on second pass)",
+          "at": "2026-10-14T08:52:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range extended to 9, applyPersonalSecondCorinthiansNineStudySections)",
+          "at": "2026-10-14T08:52:46Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections via temporary tsx script, 4/4 sections, 31 cards, no throw)",
+          "at": "2026-10-14T08:53:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-14T08:55:40Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-14T08:56:26Z"
         }
       ]
     }
