@@ -9,6 +9,7 @@ import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending } from "@/lib/termsAcceptance";
 import {
   consumeNativeAuthError,
+  nativeAuthTrail,
   signInWithProviderNatively,
   startNativeAuthListener,
 } from "@/lib/nativeAuth";
@@ -94,7 +95,15 @@ export default function AppEntryPage() {
         // timeout or a refusal from the provider says what to do next.
         setPending(null);
         if (native.reason !== "cancelled") {
-          setError(native.message ?? "Sign-in did not complete. Please try again.");
+          // The trail is the point: it names the step it got stuck on.
+          const trail = nativeAuthTrail();
+          setError(
+            `${native.message ?? "Sign-in did not complete. Please try again."}${
+              trail ? `
+
+${trail}` : ""
+            }`,
+          );
         }
         return;
       }
@@ -227,7 +236,7 @@ export default function AppEntryPage() {
           {error ? (
             <p
               role="alert"
-              className="mb-3 rounded-2xl bg-[#FDECEC] px-4 py-3 text-center text-[14px] font-semibold text-[#9B1C1C]"
+              className="mb-3 whitespace-pre-line break-words rounded-2xl bg-[#FDECEC] px-4 py-3 text-center text-[13px] font-semibold text-[#9B1C1C]"
             >
               {error}
             </p>

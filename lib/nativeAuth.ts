@@ -85,6 +85,42 @@ let leftForBrowser = false;
  */
 let pendingAuthError: string | null = null;
 
+/**
+ * A running note of what the native sign-in actually did (Louis, 2026-10-14).
+ *
+ * Five rounds have been spent guessing at this from the outside, because a
+ * button that spins tells you nothing about which of five steps it is stuck
+ * on. The welcome screen prints this line in the app so the next test says
+ * where it died instead of that it died.
+ *
+ * Nothing secret goes in here: a callback URL is recorded as the names of its
+ * parameters, never their values.
+ */
+const trail: string[] = [];
+
+function note(step: string) {
+  trail.push(step);
+  if (trail.length > 8) trail.shift();
+}
+
+export function nativeAuthTrail(): string {
+  return trail.join(" > ");
+}
+
+/** Parameter names only - never a code, a token or an email. */
+function shape(url: string): string {
+  try {
+    const parsed = new URL(url);
+    const keys = [
+      ...Array.from(parsed.searchParams.keys()),
+      ...Array.from(new URLSearchParams(parsed.hash.replace(/^#/, "")).keys()),
+    ];
+    return `${parsed.protocol}//${parsed.host}[${keys.join(",")}]`;
+  } catch {
+    return "unparseable";
+  }
+}
+
 export function consumeNativeAuthError(): string | null {
   const message = pendingAuthError;
   pendingAuthError = null;
@@ -189,11 +225,28 @@ export async function startNativeAuthListener(onSignedIn?: () => void) {
   if (!isNativeApp() || listenerAttached) return;
   listenerAttached = true;
 
-  const App = await appPlugin();
+  note(`app=${nativePluginAvailable("App") ? "yes" : "NO"}`);
 
-  await App.addListener("appUrlOpen", ({ url }) => {
-    void handleAuthUrl(url, onSignedIn);
-  });
+  let App;
+  try {
+    App = await appPlugin();
+  } catch (error) {
+    note(`import-failed:${describe(error)}`);
+    listenerAttached = false;
+    throw error;
+  }
+
+  try {
+    await App.addListener("appUrlOpen", ({ url }) => {
+      note(`url:${shape(url)}`);
+      void handleAuthUrl(url, onSignedIn);
+    });
+    note("listening");
+  } catch (error) {
+    note(`listen-failed:${describe(error)}`);
+    listenerAttached = false;
+    throw error;
+  }
 
   // The listener above only catches a deep link that arrives while the app is
   // already running. iOS is free to RELAUNCH the app to deliver one instead,
@@ -226,8 +279,10 @@ export async function startNativeAuthListener(onSignedIn?: () => void) {
     if (!isActive) {
       // Backgrounded. If an attempt is live, this is the browser taking over.
       if (attempt) leftForBrowser = true;
+      note("background");
       return;
     }
+    note("foreground");
     void (async () => {
       if (await hasSession()) {
         finish({ ok: true });
@@ -321,6 +376,7 @@ async function handleAuthUrl(url: string | undefined, onSignedIn?: () => void) {
       // and the phone's; from here on it is Supabase, and when Supabase is
       // slow this is where a sign-in dies - which is indistinguishable, from
       // the button, from Google never having answered at all.
+      note("exchanging");
       const { error } = await withTimeout(
         supabase.auth.exchangeCodeForSession(code),
         EXCHANGE_TIMEOUT_MS,
@@ -339,6 +395,7 @@ async function handleAuthUrl(url: string | undefined, onSignedIn?: () => void) {
         return;
       }
     }
+    note("signed-in");
     finish({ ok: true });
     onSignedIn?.();
   } catch (error) {
@@ -513,6 +570,7 @@ export async function signInWithProviderNatively(
   // promise never settles. Awaiting it meant the timeout below fired into the
   // void while the caller sat on the await, which is the shape of the endless
   // spinner. The attempt's own promise is the only clock now.
+  note("opened");
   openSignInPage(data.url);
   return settled;
 }
