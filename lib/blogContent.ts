@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-31-explained",
+    title: "Exodus 31 Explained: Bezaleel, the Sabbath Sign, and the Tables of Stone",
+    description:
+      "Exodus 31 explained verse by verse: Bezaleel and Aholiab filled with the Spirit of God, the sabbath renewed as a sign, and the tables written by God's own finger.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-31-explained",
+    publishedAt: "2026-10-14",
+    readTime: "12 min read",
+    image: "/blog-banners/exodus-31-explained.jpg",
+    groupPost: {
+      title: "Exodus 31 Explained 📖",
+      content:
+        "God names a craftsman before he ever gives him a tool.\n\n📌 Bezaleel was filled with the Spirit of God, and the job was skilled work with his hands.\n\n📖 A second craftsman from the small tribe of Dan, given equal standing.\n📖 The sabbath renewed as a sign, with the highest stakes yet.\n📖 Two tables of stone written by the finger of God.\n\nNew article on:\n🟢 why **craftsmanship** is called being filled with God's Spirit\n🟢 what happened to the one man Israel actually **stoned** for sabbath breaking\n🟢 why this peaceful chapter sits right before the **golden calf**\n\nWhat skill of yours might God be filling for more than you have given it credit for? 🙏",
+    },
+  },
+  {
     slug: "exodus-30-explained",
     title: "Exodus 30 Explained: Incense, Ransom Money, and Anointing Oil",
     description:
