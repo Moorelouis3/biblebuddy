@@ -5,7 +5,7 @@
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
   "updatedAt": "2026-10-14T10:32:34.772Z",
-  "nextChapter": "Exodus 34",
+  "nextChapter": "Exodus 35",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -797,6 +797,11 @@
       "startedAt": "2026-10-14T06:32:34.186Z",
       "committedAt": "2026-10-14T06:44:15.902Z",
       "publishedAt": "2026-10-14T10:32:34.772Z"
+    },
+    "exodus-34-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-14T10:32:13.389Z"
     }
   },
   "priorityBooks": [
