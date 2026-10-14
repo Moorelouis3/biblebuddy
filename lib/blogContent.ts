@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-34-explained",
+    title: "Exodus 34 Explained: God Proclaims His Name and Moses' Shining Face",
+    description:
+      "Exodus 34 explained verse by verse: God's own name proclaimed, the covenant renewed, and why Moses' face shone after being with God.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-34-explained",
+    publishedAt: "2026-10-14",
+    readTime: "15 min read",
+    image: "/blog-banners/exodus-34-explained.jpg",
+    groupPost: {
+      title: "Exodus 34 Explained 📖",
+      content:
+        "Moses asked to see God's glory. This chapter is the answer.\n\n📌 God proclaimed His own name and character out loud.\n\n📖 Moses had to cut the new stone tables himself.\n📖 The covenant was renewed with the same old terms.\n📖 Moses came down with a face that glowed, and did not know it.\n\nNew article on:\n🟢 what God actually said about His own **character**\n🟢 why God calls Himself a **jealous** God\n🟢 why Moses had to wear a **veil**\n\nWhich part of God's character do you forget most often? 🙏",
+    },
+  },
+  {
     slug: "exodus-33-explained",
     title: "Exodus 33 Explained: Moses Pleads for God's Presence and Glory",
     description:
