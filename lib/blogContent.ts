@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-33-explained",
+    title: "Exodus 33 Explained: Moses Pleads for God's Presence and Glory",
+    description:
+      "Exodus 33 explained verse by verse: God's offer of an angel, the tent of meeting, Moses' plea for God's presence, and the cleft of the rock.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-33-explained",
+    publishedAt: "2026-10-14",
+    readTime: "15 min read",
+    image: "/blog-banners/exodus-33-explained.jpg",
+    groupPost: {
+      title: "Exodus 33 Explained 📖",
+      content:
+        "God offered Israel an angel. Moses said that was not enough.\n\n📌 Moses refused to move without God's own presence.\n\n📖 The people stripped off their jewelry in mourning.\n📖 Moses spoke with God face to face, as a friend.\n📖 God hid Moses in a rock to protect him from His own glory.\n\nNew article on:\n🟢 why God calls Israel a **stiffnecked** people\n🟢 what Moses actually saw from the **cleft of the rock**\n🟢 what **gracious to whom I will be gracious** really means\n\nDo you ask for God's presence, or just His blessing? 🙏",
+    },
+  },
+  {
     slug: "exodus-32-explained",
     title: "Exodus 32 Explained: The Golden Calf and Moses' Plea for Israel",
     description:
