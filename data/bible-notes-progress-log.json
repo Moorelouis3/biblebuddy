@@ -64655,6 +64655,63 @@
           "at": "2026-10-14T13:57:54Z"
         }
       ]
+    },
+    {
+      "book": "Galatians",
+      "chapter": 2,
+      "startedAt": "2026-10-14T14:46:55Z",
+      "finishedAt": "2026-10-14T14:58:05Z",
+      "durationMinutes": 11,
+      "sections": 5,
+      "cards": 52,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 710 packages, about 36s). Priority queue (data/bible-notes-priority-queue.json) and style redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty (remaining: [] in both), so this was normal forward progress after Galatians 1, the latest entry in this log before this one. Confirmed no lib/galatiansTwoSource.ts existed yet; only the legacy bulk file lib/galatiansOneToSixPersonalNotes.ts covered chapter 2. Fetched real KJV text for Galatians 2 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Galatians.json). The chapter covers Paul's private meeting in Jerusalem fourteen years later with Barnabas and Titus, going up by revelation, and Titus not being compelled to be circumcised despite false brethren brought in to spy out their liberty (1-5); the Jerusalem pillars James, Cephas, and John adding nothing to Paul's gospel, recognizing the same grace at work in him as in Peter, extending the right hands of fellowship, and asking only that Paul remember the poor (6-10); Paul publicly confronting Peter at Antioch for withdrawing from table fellowship with Gentiles out of fear of the circumcision party, even carrying Barnabas away with that hypocrisy (11-14); the doctrine of justification by faith and not by the works of the law, closed by Paul's rhetorical denial that this makes Christ a minister of sin (15-17); and Paul's personal testimony of being crucified with Christ, living by faith in the Son of God who loved him, and closing on the sharp conclusion that if righteousness came by the law, Christ died for nothing (18-21). Split into 5 sections (1-5, 6-10, 11-14, 15-17, 18-21), all 21 verses covered with no gaps or overlaps, 52 total cards, about 2.48 cards per verse. scripts/check_bible_note_style.py found 5 problems on the first automated pass (five bullets running one word over the eight word limit), fixed all five, second run clean with 0 problems across all 52 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3 to 8 words, every last bullet using the scripture or arrow emoji. One title was deliberately rewritten during drafting: \"who seemed to be somewhat\" was avoided as a title/body phrase since the checker's banned hedge word list flags \"somewhat\" even when it is the actual KJV word being quoted, so \"Whatsoever They Were, It Maketh No Matter To Me\" was used instead, an equally exact KJV substring covering the same verse. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (went up by revelation, of reputation, compelled, false brethren, privily, pillars, right hands of fellowship, withstood to the face, dissembled, dissimulation, walked not uprightly, justified, works of the law, crucified with Christ, frustrate the grace of God), closes on meaning rather than mechanics, and has no duplicate titles across all 52 cards. Parser check passed exactly via getBibleReaderStudySections('galatians', 2): 5/5 sections, verse ranges 1-5/6-10/11-14/15-17/18-21 with no gaps, 52 total cards rendering verbatim. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/galatiansTwoSource.ts, new galatians chapter 2 condition added to preserveExactPhraseBodies, new applyPersonalGalatiansTwoStudySections() function calling replaceStudySectionsForBookRange(\"galatians\", 2, 2, GALATIANS_TWO_PERSONAL_SECTIONS), invoked right after applyPersonalGalatiansOneStudySections() so it correctly overrides the legacy GALATIANS_1_6_PERSONAL_SECTIONS bulk file for chapter 2 only (chapters 3-6 still legacy). New chapter, normal forward progress, not a style redo. Next forward-progress target is Galatians 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-14T14:46:55Z"
+        },
+        {
+          "name": "target chapter determined: Galatians 2 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-14T14:47:46Z"
+        },
+        {
+          "name": "KJV text fetched (Galatians 2, 21 verses, aruljohn mirror)",
+          "at": "2026-10-14T14:48:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-14T14:49:10Z"
+        },
+        {
+          "name": "source file written: lib/galatiansTwoSource.ts (52 cards, 5 sections)",
+          "at": "2026-10-14T14:52:44Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 5 automated fixes)",
+          "at": "2026-10-14T14:54:27Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalGalatiansTwoStudySections)",
+          "at": "2026-10-14T14:54:40Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 52 cards, text verbatim)",
+          "at": "2026-10-14T14:54:44Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-14T14:57:00Z"
+        },
+        {
+          "name": "manual section 13 style checklist eye check passed",
+          "at": "2026-10-14T14:57:31Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md, data/bible-notes-progress-log.json)",
+          "at": "2026-10-14T14:58:05Z"
+        }
+      ]
     }
   ]
 }
