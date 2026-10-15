@@ -115,6 +115,23 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     },
   },
   {
+    slug: "exodus-36-explained",
+    title: "Exodus 36 Explained: Too Much to Give",
+    description:
+      "Exodus 36 explained verse by verse: Israel gives so much that Moses has to stop them, and the tabernacle finally gets built exactly as commanded.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-36-explained",
+    publishedAt: "2026-10-15",
+    readTime: "12 min read",
+    image: "/blog-banners/exodus-36-explained.jpg",
+    groupPost: {
+      title: "Exodus 36 Explained 📖",
+      content:
+        "Moses asked for an offering last chapter.\nThis chapter he has to stop it.\n\n📌 The people gave more than the project could use.\n\n📖 A command from Exodus 26 finally becomes a real building.\n📖 Every board stands on silver, then gets wrapped in gold.\n📖 The outer door gets gold on top, but brass underneath.\n\nNew article on:\n🟢 why Moses told people to **stop giving**\n🟢 why gold sits on **silver** inside and **brass** at the door\n🟢 what changed between the calf and this offering\n\nHas your own giving ever actually met its goal? 🙏",
+    },
+  },
+  {
     slug: "exodus-35-explained",
     title: "Exodus 35 Explained: The Offering for the Tabernacle Begins",
     description:
