@@ -65686,6 +65686,64 @@
           "at": "2026-10-15T08:57:11Z"
         }
       ]
+    },
+    {
+      "book": "Colossians",
+      "chapter": 4,
+      "startedAt": "2026-10-15T09:46:21Z",
+      "finishedAt": "2026-10-15T09:58:30Z",
+      "durationMinutes": 12,
+      "sections": 8,
+      "cards": 39,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (fresh clone, 711 packages, about 33s). Session started on a detached HEAD matching origin/main's tip while the local main branch ref was stale (same recurring environment ref anomaly logged in prior runs); rebuilt local main with `git checkout -B main origin/main`, a safe non destructive fix since the working tree was already clean. Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty. Last progress log entry was Colossians 3, so checked forward progress directly: lib/ already has dedicated colossiansOneSource.ts, colossiansTwoSource.ts, and colossiansThreeSource.ts wired in for chapters 1-3, but chapter 4 had no dedicated file and was still only covered by the legacy bulk file lib/colossiansOneToFourPersonalNotes.ts, so Colossians 4 is the correct next target, a new chapter, not a redo, completing dedicated coverage for the whole book. Fetched real KJV text for Colossians 4 (18 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter closes the letter: Paul's final instruction to masters about fair and equal treatment and the call to continue in watchful, thankful prayer (1-2); his own prayer request for an open door to speak the mystery of Christ despite his bonds (3-4); the call to walk in wisdom toward outsiders and redeem the time, with speech seasoned with grace and salt (5-6); Tychicus and Onesimus commended as the trusted messengers carrying the letter and the news (7-9); greetings from Aristarchus, Mark (with the quiet note of his reconciliation with Paul after the earlier rift), and Jesus called Justus, closing on Epaphras's fervent prayer labor for Colosse, Laodicea, and Hierapolis (10-13); greetings from Luke the beloved physician and Demas (whose later abandonment of Paul gives this ordinary greeting a sad hindsight), plus the greeting to Laodicea and the house church of Nymphas (14-15); the instruction to circulate this letter to Laodicea and read their letter in return, plus the public charge to Archippus to fulfil his ministry (16-17); and Paul's own handwritten closing, remembering his bonds, ending in grace (18). Split into 8 sections (1-2, 3-4, 5-6, 7-9, 10-13, 14-15, 16-17, 18), all 18 verses covered with no gaps or overlaps, 39 total cards, about 2.17 cards per verse, dense through the companion greetings in 10-13 where nearly every name carries its own distinct historical detail. Treated as an epistle's closing per Part 4 of the skill, tracing first century context (Roman household codes, the mechanics of letter circulation, slavery and inheritance law, the physical act of hand copying and hand signing a letter) wherever it changed what a phrase meant, rather than skipping past the list of names as filler. scripts/check_bible_note_style.py passed clean on the first automated run across all 39 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on scripture or implication. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (just and equal, continue, watch, door of utterance, mystery of Christ, manifest, redeeming the time, seasoned with salt, fellowservant, fellowprisoner, Marcus/John Mark, of the circumcision, fellowworkers, labouring fervently, perfect and complete, bear record, zeal, physician, church in his house, epistle from Laodicea, take heed, fulfil, salutation by the hand, bonds), closes on meaning rather than mechanics, and has no duplicate titles or repeated opening lines across all 39 cards. Parser check passed exactly via getBibleReaderStudySections('colossians', 4): 8/8 sections, verse ranges 1-2/3-4/5-6/7-9/10-13/14-15/16-17/18 with no gaps, 39 total cards rendering verbatim; chapters 1, 2, and 3 of Colossians confirmed unaffected (6, 5, and 7 sections respectively, unchanged). npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/colossiansFourSource.ts, the colossians condition in preserveExactPhraseBodies extended to include chapter 4, new applyPersonalColossiansFourStudySections() function calling replaceStudySectionsForBookRange(\"colossians\", 4, 4, COLOSSIANS_FOUR_PERSONAL_SECTIONS), invoked right after applyPersonalColossiansThreeStudySections(), correctly overriding the legacy COLOSSIANS_1_4_PERSONAL_SECTIONS bulk file for chapter 4, completing dedicated per-chapter coverage for all of Colossians 1-4; that legacy file no longer covers any live chapter in this book. New chapter, normal forward progress, not a style redo. Next forward-progress target is 1 Thessalonians 1.",
+      "styleRedo": false,
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-15T09:46:55Z"
+        },
+        {
+          "name": "resolved detached HEAD / stale local main ref anomaly, reset local main to origin/main",
+          "at": "2026-10-15T09:47:22Z"
+        },
+        {
+          "name": "target chapter determined: Colossians 4 (priority queue and style redo backlog both empty; chapters 1-3 already have dedicated files, chapter 4 still only on the legacy bulk file; new chapter, not a redo)",
+          "at": "2026-10-15T09:47:30Z"
+        },
+        {
+          "name": "KJV text fetched (Colossians 4, 18 verses, aruljohn mirror)",
+          "at": "2026-10-15T09:47:53Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-15T09:49:00Z"
+        },
+        {
+          "name": "source file written: lib/colossiansFourSource.ts (39 cards, 8 sections)",
+          "at": "2026-10-15T09:52:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-15T09:52:31Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalColossiansFourStudySections)",
+          "at": "2026-10-15T09:53:00Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 39 cards, text verbatim)",
+          "at": "2026-10-15T09:53:15Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-15T09:53:34Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-15T09:58:30Z"
+        }
+      ]
     }
   ]
 }
