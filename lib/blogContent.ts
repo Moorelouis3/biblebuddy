@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-39-explained",
+    title: "Exodus 39 Explained: The Priestly Garments and the Finished Tabernacle",
+    description:
+      "Exodus 39 explained verse by verse: the ephod, the breastplate's twelve stones, the priestly garments finished, and the whole tabernacle brought to Moses.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-39-explained",
+    publishedAt: "2026-10-15",
+    readTime: "14 min read",
+    image: "/blog-banners/exodus-39-explained.jpg",
+    groupPost: {
+      title: "Exodus 39 Explained 📖",
+      content:
+        "The tent is built. Now someone has to get dressed for it.\n\n📌 One phrase repeats seven times in this chapter alone.\n\n📖 Gold was hammered thin, then cut into actual thread.\n📖 Aaron's breastplate carried twelve tribes, double fastened so it could not fall.\n📖 The whole project gets inspected, then blessed, just like Genesis 1.\n\nNew article on:\n🟢 how gold actually gets woven into **cloth**\n🟢 why the **breastplate** could never come loose\n🟢 what **HOLINESS TO THE LORD** meant on Aaron's forehead\n\nIs there something in your own life that needs fastened down better? 🙏",
+    },
+  },
+  {
     slug: "exodus-38-explained",
     title: "Exodus 38 Explained: The Bronze Altar, the Laver, and the Final Count of Gold",
     description:
