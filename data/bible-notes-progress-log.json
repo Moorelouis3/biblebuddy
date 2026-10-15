@@ -65181,5 +65181,71 @@
         }
       ]
     }
+,
+    {
+      "book": "Ephesians",
+      "chapter": 5,
+      "startedAt": "2026-10-14T23:46:01Z",
+      "finishedAt": "2026-10-15T00:03:05Z",
+      "durationMinutes": 17,
+      "sections": 10,
+      "cards": 65,
+      "verses": 33,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (711 packages, about 48s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Ephesians 4, the latest entry in this log before this one, matching that entry's own note that the next forward-progress target was Ephesians 5. Confirmed no lib/ephesiansFiveSource.ts existed yet and the ephesians preserveExactPhraseBodies condition only covered chapters 1-4. Fetched real KJV text for Ephesians 5 (33 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (Ephesians.json). This chapter opens with the call to be followers (imitators) of God as dear children and walk in love as Christ gave Himself as an offering and a sacrifice, followed by the list of sins, fornication, uncleanness, and covetousness, that should not even be named among saints, with foolish talking and jesting replaced by thanksgiving (1-4); the warning that a covetous man is an idolater with no inheritance in the kingdom of Christ and God, not to be deceived by vain words into partaking with the children of disobedience (5-7); the identity shift from being darkness to being light in the Lord, walking as children of light with the fruit of the Spirit in goodness, righteousness, and truth, and proving what is acceptable to the Lord (8-10); having no fellowship with the unfruitful works of darkness but reproving them, since light makes things manifest, and the quoted call to awake, arise from the dead, and receive Christ's light (11-14); the call to walk circumspectly as wise, redeeming the time because the days are evil, understanding the will of the Lord, and being filled with the Spirit instead of drunk with wine (15-18); speaking in psalms, hymns, and spiritual songs, making melody in the heart, giving thanks always, and submitting to one another in the fear of God, the verse that opens the household section (19-21); wives submitting to husbands as to the Lord, with the husband as head of the wife as Christ is head of the church and its saviour, and the church subject to Christ in every thing (22-24); husbands commanded to love their wives as Christ loved the church and gave Himself for it, to sanctify and cleanse it by the washing of water by the word, and to present it to Himself a glorious church without spot, wrinkle, or blemish (25-27); the standard of loving a wife as one's own body, since no man hates his own flesh but nourishes and cherishes it as the Lord does the church, members of His body, flesh, and bones (28-30); and the close quoting Genesis on a man leaving father and mother to be joined to his wife as one flesh, named a great mystery concerning Christ and the church, closing with the call for each husband to love his wife as himself and the wife to reverence her husband (31-33). Split into 10 sections (1-4, 5-7, 8-10, 11-14, 15-18, 19-21, 22-24, 25-27, 28-30, 31-33), all 33 verses covered with no gaps or overlaps, 65 total cards, about 2 cards per verse. scripts/check_bible_note_style.py found 2 problems on the first pass (two bullets running to 9 words), fixed, then 0 problems on the second pass across all 65 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on a scripture or implication emoji. A separate manual sweep for stacked clauses (the mechanical checker does not catch these) found one banned connector phrase and one line with two \"and\"s; both rewritten into shorter single-idea lines. A script cross-checking every one of the 65 card headings against the fetched verse text confirmed each is an exact KJV substring of its verse, required for the Insight Card underline derivation. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (followers/imitators, fornication, uncleanness, covetousness, vain words, children of disobedience, partakers, proving, fellowship, reprove, manifest, circumspectly, redeeming the time, excess, psalms and hymns and spiritual songs, melody, submitting, head, saviour, sanctify, cleanse, washing of water by the word, spot or wrinkle, blemish, nourisheth, cherisheth, one flesh, great mystery, reverence), closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines across all 65 cards. This chapter also handles the household section (wives/husbands, verses 22-33) with historical grounding (head as source imagery, the countercultural weight of the husbands' command in its original culture, the Genesis 2 one flesh callback) rather than taking a side in any modern theological debate, consistent with the style spec's instruction to ground claims in the text and well-established fact. Parser check passed exactly via getBibleReaderStudySections('ephesians', 5): 10/10 sections, verse ranges 1-4/5-7/8-10/11-14/15-18/19-21/22-24/25-27/28-30/31-33 with no gaps, 65 total cards rendering verbatim. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/ephesiansFiveSource.ts, the ephesians condition in preserveExactPhraseBodies widened from chapters 1-4 to include chapter 5, new applyPersonalEphesiansFiveStudySections() function calling replaceStudySectionsForBookRange('ephesians', 5, 5, EPHESIANS_FIVE_PERSONAL_SECTIONS), invoked right after applyPersonalEphesiansFourStudySections(), correctly overriding the legacy EPHESIANS_1_6_PERSONAL_SECTIONS bulk file for chapter 5 only; chapter 6 of that legacy file remains live and untouched. New chapter, normal forward progress, not a style redo. Next forward-progress target is Ephesians 6.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-14T23:47:54Z"
+        },
+        {
+          "name": "target chapter determined: Ephesians 5 (normal forward progress, priority queue and redo backlog both empty, next after Ephesians 4)",
+          "at": "2026-10-14T23:48:13Z"
+        },
+        {
+          "name": "confirmed no lib/ephesiansFiveSource.ts existed; preserveExactPhraseBodies only covered chapters 1-4",
+          "at": "2026-10-14T23:48:30Z"
+        },
+        {
+          "name": "KJV text fetched for Ephesians 5 (33 verses, aruljohn mirror)",
+          "at": "2026-10-14T23:48:58Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-14T23:51:00Z"
+        },
+        {
+          "name": "SKILL.md and INSIGHT_CARDS_STANDARD.md read, priority queue and redo backlog both confirmed empty",
+          "at": "2026-10-14T23:54:00Z"
+        },
+        {
+          "name": "source file written: lib/ephesiansFiveSource.ts (65 cards, 10 sections)",
+          "at": "2026-10-15T00:00:30Z"
+        },
+        {
+          "name": "style checker: 2 bullet word count problems found and fixed, then 0 problems across all 65 cards",
+          "at": "2026-10-15T00:01:10Z"
+        },
+        {
+          "name": "manual stacked-clause sweep: 2 lines fixed (a banned connector and a double and), then clean",
+          "at": "2026-10-15T00:01:40Z"
+        },
+        {
+          "name": "verified all 65 card headings are exact KJV substrings of their verses",
+          "at": "2026-10-15T00:02:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to chapter 5, applyPersonalEphesiansFiveStudySections)",
+          "at": "2026-10-15T00:02:30Z"
+        },
+        {
+          "name": "parser check passed (10/10 sections, 65 cards, text verbatim)",
+          "at": "2026-10-15T00:02:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-15T00:03:05Z"
+        }
+      ]
+    }
   ]
 }
