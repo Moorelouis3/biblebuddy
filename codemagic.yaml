@@ -58,6 +58,13 @@ workflows:
         # not present the Apple sheet without this, whatever Supabase says.
         script: bash scripts/ios-entitlements.sh
 
+      - name: Add the Bible lock's daily re-lock extension
+        # The lock has to come back at the start of each day whether or not
+        # anyone opens Bible Buddy, and only a DeviceActivityMonitor extension
+        # gets woken for that. ios/ is regenerated every build, so the second
+        # target is added here rather than committed.
+        script: bash scripts/ios-bible-lock-extension.sh
+
       - name: Install the app icon
         # Otherwise the app wears Capacitor's grey placeholder everywhere -
         # home screen, TestFlight, and the store listing.
@@ -157,6 +164,13 @@ workflows:
         # Guideline 4.8 - mandatory because Google sign-in is offered. iOS will
         # not present the Apple sheet without this, whatever Supabase says.
         script: bash scripts/ios-entitlements.sh
+
+      - name: Add the Bible lock's daily re-lock extension
+        # The lock has to come back at the start of each day whether or not
+        # anyone opens Bible Buddy, and only a DeviceActivityMonitor extension
+        # gets woken for that. ios/ is regenerated every build, so the second
+        # target is added here rather than committed.
+        script: bash scripts/ios-bible-lock-extension.sh
 
       - name: Install the app icon
         script: bash scripts/ios-app-icon.sh

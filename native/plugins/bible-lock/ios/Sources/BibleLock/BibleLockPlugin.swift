@@ -1,5 +1,6 @@
 import Foundation
 import Capacitor
+import DeviceActivity
 import FamilyControls
 import ManagedSettings
 import SwiftUI
@@ -38,7 +39,7 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
     ]
 
     private let store = ManagedSettingsStore(named: .bibleLock)
-    private let selection = SelectionStore()
+    private let center = DeviceActivityCenter()
 
     // MARK: - Availability
 
@@ -58,7 +59,7 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
             return
         }
         let authorized = AuthorizationCenter.shared.authorizationStatus == .approved
-        let chosen = selection.load()
+        let chosen = BibleLockSharedSelection.load()
         call.resolve([
             "supported": true,
             "authorized": authorized,
@@ -113,10 +114,10 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
             // Apple's own picker. We do not build this list and we never see
             // what comes back in readable form.
             let picker = ActivityPickerHost(
-                initial: self.selection.load(),
+                initial: BibleLockSharedSelection.load(),
                 onDone: { [weak self] chosen in
                     guard let self else { return }
-                    self.selection.save(chosen)
+                    BibleLockSharedSelection.save(chosen)
                     presenter.dismiss(animated: true) {
                         call.resolve([
                             "chosen": chosen.applicationTokens.count + chosen.categoryTokens.count
@@ -142,7 +143,7 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
             call.reject("The Bible lock needs iOS 16 or later.")
             return
         }
-        let chosen = selection.load()
+        let chosen = BibleLockSharedSelection.load()
         guard !chosen.applicationTokens.isEmpty || !chosen.categoryTokens.isEmpty else {
             call.reject("No apps have been chosen to lock yet.")
             return
@@ -151,6 +152,7 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
         store.shield.applicationCategories = chosen.categoryTokens.isEmpty
             ? nil
             : .specific(chosen.categoryTokens)
+        scheduleDailyRelock()
         call.resolve(["locked": true])
     }
 
@@ -158,40 +160,39 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
         // Deliberately unconditional, and deliberately the simplest method
         // here. Whatever else has gone wrong, this always gives the phone
         // back.
+        //
+        // The daily schedule is deliberately NOT cancelled. Clearing means
+        // "you have read today", not "stop locking" - the extension puts the
+        // shield back when the day turns over, which is the entire point of
+        // the feature. Turning it off for good is removing the apps in the
+        // picker, which stops the extension finding anything to shield.
         store.shield.applications = nil
         store.shield.applicationCategories = nil
         call.resolve(["locked": false])
     }
-}
 
-extension ManagedSettingsStore.Name {
-    /// Our own store, so clearing the shield can never disturb another app's.
-    static let bibleLock = Self("net.mybiblebuddy.app.biblelock")
-}
+    /**
+     Ask iOS to wake the extension as each day begins.
 
-/**
- The chosen apps, between launches.
-
- FamilyActivitySelection is Codable and its tokens are opaque: what is written
- here cannot be turned back into a list of apps by us or by anyone reading the
- file. It stays on the device and is never sent anywhere.
- */
-@available(iOS 16.0, *)
-private struct SelectionStore {
-    private let key = "net.mybiblebuddy.app.biblelock.selection"
-
-    func load() -> FamilyActivitySelection {
-        guard let data = UserDefaults.standard.data(forKey: key),
-              let decoded = try? JSONDecoder().decode(FamilyActivitySelection.self, from: data)
-        else {
-            return FamilyActivitySelection()
+     A single repeating window covering the whole day: its start is the moment
+     the lock should come back. Scheduling is idempotent - starting an activity
+     that is already running replaces it - so calling this on every lock is
+     fine and keeps it alive if iOS ever drops it.
+     */
+    @available(iOS 16.0, *)
+    private func scheduleDailyRelock() {
+        let schedule = DeviceActivitySchedule(
+            intervalStart: DateComponents(hour: 0, minute: 0),
+            intervalEnd: DateComponents(hour: 23, minute: 59),
+            repeats: true
+        )
+        do {
+            try center.startMonitoring(.bibleLockDaily, during: schedule)
+        } catch {
+            // Without this the lock still works today, just not tomorrow. Not
+            // worth failing the call someone is waiting on.
+            print("[BibleLock] could not schedule the daily re-lock: (error.localizedDescription)")
         }
-        return decoded
-    }
-
-    func save(_ selection: FamilyActivitySelection) {
-        guard let data = try? JSONEncoder().encode(selection) else { return }
-        UserDefaults.standard.set(data, forKey: key)
     }
 }
 
