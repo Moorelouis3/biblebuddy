@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-37-explained",
+    title: "Exodus 37 Explained: Bezaleel Builds the Ark and the Lampstand",
+    description:
+      "Exodus 37 explained verse by verse: Bezaleel builds the ark, the mercy seat, the table, and the gold lampstand exactly as God commanded Moses.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-37-explained",
+    publishedAt: "2026-10-15",
+    readTime: "13 min read",
+    image: "/blog-banners/exodus-37-explained.jpg",
+    groupPost: {
+      title: "Exodus 37 Explained 📖",
+      content:
+        "The last chapter built the tent.\nThis chapter builds what goes inside it.\n\n📌 Only Bezaleel is named making the ark, the table, and the lampstand.\n\n📖 Two gold cherubim face each other over the mercy seat.\n📖 The whole lampstand is one piece of hammered gold.\n📖 The incense recipe could not legally be copied by anyone else.\n\nNew article on:\n🟢 what the **mercy seat** actually means\n🟢 why only **Bezaleel** gets named here\n🟢 how much gold a **talent** really weighs\n\nWhich part of the tabernacle would you want to see in person? 🙏",
+    },
+  },
+  {
     slug: "what-is-repentance",
     title: "What Is Repentance, Really? A Simple, Honest Answer",
     description:
