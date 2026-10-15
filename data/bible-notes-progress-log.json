@@ -65523,6 +65523,63 @@
           "at": "2026-10-15T04:58:58Z"
         }
       ]
+    },
+    {
+      "book": "Colossians",
+      "chapter": 1,
+      "startedAt": "2026-10-15T05:46:30Z",
+      "finishedAt": "2026-10-15T06:01:58Z",
+      "durationMinutes": 15,
+      "sections": 6,
+      "cards": 57,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (fresh clone, 711 packages, about 38s). Local git was in a detached HEAD state with a shallow clone whose history did not share a merge base with origin/main (git merge-base returned nothing because both refs were shallow at different depths), the same recurring environment ref anomaly logged in many prior runs. `git checkout -B main origin/main` reset local main to match the remote exactly; the working tree was already clean so nothing local was lost. Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Philippians 4, the latest entry in this log. Colossians 1 was still only covered by the legacy bulk file lib/colossiansOneToFourPersonalNotes.ts. Fetched real KJV text for Colossians 1 (29 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Colossians 1 opens with Paul and Timothy greeting the saints at Colosse (1-2), moves into thanksgiving for their faith and love reported by Epaphras and the gospel bearing fruit everywhere since the day they first knew the grace of God in truth (3-8), Paul's prayer that they be filled with the knowledge of God's will and walk worthy, strengthened for patience and joy, and giving thanks for deliverance from darkness into the kingdom of the Son and redemption through his blood (9-14), the Christ hymn naming Christ the image of the invisible God and firstborn over all creation (a rank, not a creation date), the one by whom and for whom all things were made, the head of the church, the firstborn from the dead, and the one in whom all the fulness of God dwells and through whom all things are reconciled (15-20), the Colossians themselves once alienated and hostile in mind, now reconciled through Christ's death and to be presented holy and blameless if they continue grounded in the faith (21-23), and closes with Paul's own suffering filling up what remains of Christ's afflictions for the sake of the church, his stewardship to fulfil the word of God, and the mystery hidden for ages and now revealed among the Gentiles as Christ in them, which he labors to proclaim so every believer is presented mature in Christ (24-29). Chunked into 6 sections (1-2 grace and peace to Colosse, 3-8 thanks for their faith and love, 9-14 Paul's prayer for the Colossians, 15-20 the supremacy of Christ, 21-23 once enemies now reconciled, 24-29 Paul's labor for the hidden mystery). Density about 1.97 cards per verse (29 verses, 57 cards). scripts/check_bible_note_style.py found 1 problem on the first automated pass (one bullet at 9 words), fixed it, second run clean with 0 problems across all 57 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (apostle, saints, Colosse, grace and peace, hope, gospel, Epaphras, fellowservant, minister, meet, inheritance, translated, redemption, image, firstborn, thrones/dominions/principalities/powers, consist, preeminence, fulness, reconcile, alienated, present/unblameable/unreproveable, grounded and settled, dispensation, fulfil, mystery, manifest, perfect, labour and striving), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 57 cards. Parser check passed exactly via getBibleReaderStudySections('colossians', 1) (6/6 sections, verse ranges 1-2/3-8/9-14/15-20/21-23/24-29 with no gaps, 57 total cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/colossiansOneSource.ts, preserveExactPhraseBodies colossians condition added for chapter 1 only, new function applyPersonalColossiansOneStudySections added and called right after applyPersonalColossiansOneThroughFourStudySections(), correctly overriding the legacy COLOSSIANS_1_4_PERSONAL_SECTIONS bulk file for chapter 1 only, chapters 2 through 4 of that legacy file left untouched. Next forward-progress target is Colossians 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-15T05:47:08Z"
+        },
+        {
+          "name": "resolved detached HEAD / shallow clone ref anomaly, reset local main to origin/main",
+          "at": "2026-10-15T05:47:50Z"
+        },
+        {
+          "name": "target chapter determined: Colossians 1 (normal forward progress, priority queue and style redo backlog both empty, after Philippians 4)",
+          "at": "2026-10-15T05:48:31Z"
+        },
+        {
+          "name": "KJV text fetched (Colossians 1, 29 verses, aruljohn mirror)",
+          "at": "2026-10-15T05:48:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-15T05:48:41Z"
+        },
+        {
+          "name": "source file written: lib/colossiansOneSource.ts (57 cards, 6 sections)",
+          "at": "2026-10-15T05:56:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 automated fix)",
+          "at": "2026-10-15T05:56:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalColossiansOneStudySections)",
+          "at": "2026-10-15T05:56:52Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 57 cards, text verbatim)",
+          "at": "2026-10-15T05:56:53Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-15T05:57:15Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-15T06:01:58Z"
+        }
+      ]
     }
   ]
 }
