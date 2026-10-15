@@ -7950,3 +7950,7 @@ Next up: Colossians 2
 ## 2026-10-15T08:07:36Z (hourly chapter notes run)
 Chapter: Colossians 2 | Duration: 20 min | Sections: 5 | Cards: 47 | Status: pass
 Next up: Colossians 3
+
+## 2026-10-15T08:57:11Z (hourly chapter notes run)
+Chapter: Colossians 3 | Duration: 11 min | Sections: 7 | Cards: 44 | Status: pass
+Next up: Colossians 4
