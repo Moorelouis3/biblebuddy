@@ -1182,6 +1182,7 @@ import { EPHESIANS_FOUR_PERSONAL_SECTIONS } from "./ephesiansFourSource";
 import { EPHESIANS_FIVE_PERSONAL_SECTIONS } from "./ephesiansFiveSource";
 import { EPHESIANS_SIX_PERSONAL_SECTIONS } from "./ephesiansSixSource";
 import { PHILIPPIANS_1_4_PERSONAL_SECTIONS } from "./philippiansOneToFourPersonalNotes";
+import { PHILIPPIANS_ONE_PERSONAL_SECTIONS } from "./philippiansOneSource";
 import { COLOSSIANS_1_4_PERSONAL_SECTIONS } from "./colossiansOneToFourPersonalNotes";
 import { FIRST_THESSALONIANS_1_3_PERSONAL_SECTIONS } from "./firstThessaloniansOneToThreePersonalNotes";
 import { FIRST_THESSALONIANS_4_5_PERSONAL_SECTIONS } from "./firstThessaloniansFourToFivePersonalNotes";
@@ -1526,7 +1527,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "1 corinthians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16)) ||
     (normalizeBook(book) === "2 corinthians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13)) ||
     (normalizeBook(book) === "galatians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6)) ||
-    (normalizeBook(book) === "ephesians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6));
+    (normalizeBook(book) === "ephesians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6)) ||
+    (normalizeBook(book) === "philippians" && section.chapter === 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4773,6 +4775,10 @@ function applyPersonalEphesiansSixStudySections() {
 
 function applyPersonalPhilippiansOneThroughFourStudySections() {
   replaceStudySectionsForBookRange("philippians", 1, 4, PHILIPPIANS_1_4_PERSONAL_SECTIONS);
+}
+
+function applyPersonalPhilippiansOneStudySections() {
+  replaceStudySectionsForBookRange("philippians", 1, 1, PHILIPPIANS_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalColossiansOneThroughFourStudySections() {
@@ -12559,6 +12565,7 @@ applyPersonalEphesiansFourStudySections();
 applyPersonalEphesiansFiveStudySections();
 applyPersonalEphesiansSixStudySections();
 applyPersonalPhilippiansOneThroughFourStudySections();
+applyPersonalPhilippiansOneStudySections();
 applyPersonalColossiansOneThroughFourStudySections();
 applyPersonalFirstThessaloniansOneThroughThreeStudySections();
 applyPersonalFirstThessaloniansFourThroughFiveStudySections();
