@@ -67,7 +67,7 @@ def check(path):
             core = line.strip()
             if core == "---":
                 continue
-            if re.match(r"^#\s*\S+\s+\d+:\d+", core):
+            if re.match(r"^#\s*\d*\s*[A-Za-z]+(?:\s+[A-Za-z]+)*\s+\d+:\d+", core):
                 continue
             if "-" in core:
                 problems.append(f"line {i}: hyphen found: {core!r}")

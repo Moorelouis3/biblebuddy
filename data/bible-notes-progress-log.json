@@ -65744,6 +65744,60 @@
           "at": "2026-10-15T09:58:30Z"
         }
       ]
+    },
+    {
+      "book": "1 Thessalonians",
+      "chapter": 1,
+      "startedAt": "2026-10-15T10:46:42Z",
+      "finishedAt": "2026-10-15T10:58:19Z",
+      "durationMinutes": 12,
+      "sections": 4,
+      "cards": 23,
+      "verses": 10,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 711 packages, about 37s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this is normal forward progress. Last progress log entry was Colossians 4 and SESSION_LOG.md's prior run already named 1 Thessalonians 1 as next up. Confirmed in lib/: chapter 1 of 1 Thessalonians was still covered only by the legacy bulk file lib/firstThessaloniansOneToThreePersonalNotes.ts (templated, low quality filler content from before the Insight Cards standard, e.g. repeated boilerplate phrases like 'The phrase helps the reader connect doctrine to home life' attached to unrelated verses), so 1 Thessalonians 1 is the correct next target: a new dedicated chapter file, same override pattern already used to complete Philippians and Colossians chapter by chapter. Fetched real KJV text for 1 Thessalonians 1 (10 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens Paul's letter: the greeting from Paul, Silvanus, and Timotheus (1); thanksgiving and constant prayer for the church (2); the triad of work of faith, labour of love, and patience of hope (3); their election and the gospel that arrived with power, the Holy Ghost, and full assurance, backed by Paul's own conduct among them (4-5); becoming imitators of Paul and the Lord despite affliction, received with joy (6); becoming examples to all of Macedonia and Achaia as their faith sounded out everywhere, needing no promotion from Paul (7-8); and their well known turn from idols to the living and true God, now waiting for Jesus, raised from the dead, who delivers from the wrath to come (9-10). Split into 4 sections (1-3, 4-6, 7-8, 9-10), 23 total cards, 2.3 cards per verse, read as an epistle per Part 4 of the skill: first century context (the Greek/Hebrew shape of 'grace and peace,' Silvanus as Silas, Timotheus as Timothy, Macedonia and Achaia as the two Roman regions covering Greece, the ordinary polytheism of a Roman city behind 'turned from idols') wherever it changed what a phrase meant, rather than skipping past names and geography as filler. scripts/check_bible_note_style.py initially flagged 4 false-positive 'hyphen found' problems, all on the verse-range header lines (e.g. '# 1 Thessalonians 1:1-3'): the checker's skip-pattern for those structural lines assumed a single-word book name and did not match a numbered, multi-word book like '1 Thessalonians,' a case that had never come up before since this is the first single-chapter override file written for a numbered book. Fixed the checker's regex to accept an optional leading number and multi-word book names generally (so it will also work correctly for 1/2 Timothy, 1/2 Corinthians, 1/2 Peter, Song of Solomon, etc. in future runs), then reran it against this file plus colossiansOneSource.ts, colossiansFourSource.ts, and genesisThirtyOneSource.ts to confirm no regression. Checker then passed clean with 0 real problems across all 23 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on scripture or implication. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (Silvanus, Timotheus, grace and peace, election, word only versus power, Holy Ghost, much assurance, followers/imitators, affliction, ensamples, Macedonia, Achaia, sounded out, faith to Godward, entering in, turned, idols, wait for his Son, wrath to come), closes on meaning rather than mechanics, and has no duplicate titles or repeated opening lines across all 23 cards. Parser check passed exactly via getBibleReaderStudySections('1 thessalonians', 1): 4/4 sections, verse ranges 1-3/4-6/7-8/9-10 with no gaps, 23 total cards rendering verbatim. npx tsc --noEmit -p . came back clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/firstThessaloniansOneSource.ts, a new '1 thessalonians' chapter 1 condition added to preserveExactPhraseBodies, new applyPersonalFirstThessaloniansOneStudySections() function calling replaceStudySectionsForBookRange(\"1 thessalonians\", 1, 1, FIRST_THESSALONIANS_ONE_PERSONAL_SECTIONS), invoked right after applyPersonalFirstThessaloniansOneThroughThreeStudySections() so it correctly overrides the legacy bulk file for chapter 1 only; chapters 2 and 3 of 1 Thessalonians remain on the legacy bulk file, untouched, for a future run. New chapter, normal forward progress, not a style redo. Next forward-progress target is 1 Thessalonians 2.",
+      "styleRedo": false,
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-15T10:48:12Z"
+        },
+        {
+          "name": "target chapter determined: 1 Thessalonians 1 (priority queue and style redo backlog both empty; new chapter, not a redo, overriding legacy bulk file for chapter 1 only)",
+          "at": "2026-10-15T10:47:35Z"
+        },
+        {
+          "name": "KJV text fetched (1 Thessalonians 1, 10 verses, aruljohn mirror)",
+          "at": "2026-10-15T10:48:30Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-15T10:52:51Z"
+        },
+        {
+          "name": "source file written: lib/firstThessaloniansOneSource.ts (23 cards, 4 sections)",
+          "at": "2026-10-15T10:53:30Z"
+        },
+        {
+          "name": "style checker: fixed false-positive hyphen bug for numbered/multi-word book names in scripts/check_bible_note_style.py, then clean (0 problems)",
+          "at": "2026-10-15T10:53:50Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalFirstThessaloniansOneStudySections)",
+          "at": "2026-10-15T10:54:10Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 23 cards, text verbatim)",
+          "at": "2026-10-15T10:54:50Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-15T10:57:47Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-15T10:58:19Z"
+        }
+      ]
     }
   ]
 }

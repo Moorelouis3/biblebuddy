@@ -1191,6 +1191,7 @@ import { COLOSSIANS_ONE_PERSONAL_SECTIONS } from "./colossiansOneSource";
 import { COLOSSIANS_TWO_PERSONAL_SECTIONS } from "./colossiansTwoSource";
 import { COLOSSIANS_THREE_PERSONAL_SECTIONS } from "./colossiansThreeSource";
 import { COLOSSIANS_FOUR_PERSONAL_SECTIONS } from "./colossiansFourSource";
+import { FIRST_THESSALONIANS_ONE_PERSONAL_SECTIONS } from "./firstThessaloniansOneSource";
 import { FIRST_THESSALONIANS_1_3_PERSONAL_SECTIONS } from "./firstThessaloniansOneToThreePersonalNotes";
 import { FIRST_THESSALONIANS_4_5_PERSONAL_SECTIONS } from "./firstThessaloniansFourToFivePersonalNotes";
 import { SECOND_THESSALONIANS_1_3_PERSONAL_SECTIONS } from "./secondThessaloniansOneToThreePersonalNotes";
@@ -1536,7 +1537,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "galatians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6)) ||
     (normalizeBook(book) === "ephesians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6)) ||
     (normalizeBook(book) === "philippians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
-    (normalizeBook(book) === "colossians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4));
+    (normalizeBook(book) === "colossians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
+    (normalizeBook(book) === "1 thessalonians" && section.chapter === 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4823,6 +4825,10 @@ function applyPersonalColossiansFourStudySections() {
 
 function applyPersonalFirstThessaloniansOneThroughThreeStudySections() {
   replaceStudySectionsForBookRange("1 thessalonians", 1, 3, FIRST_THESSALONIANS_1_3_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstThessaloniansOneStudySections() {
+  replaceStudySectionsForBookRange("1 thessalonians", 1, 1, FIRST_THESSALONIANS_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalFirstThessaloniansFourThroughFiveStudySections() {
@@ -12611,6 +12617,7 @@ applyPersonalColossiansTwoStudySections();
 applyPersonalColossiansThreeStudySections();
 applyPersonalColossiansFourStudySections();
 applyPersonalFirstThessaloniansOneThroughThreeStudySections();
+applyPersonalFirstThessaloniansOneStudySections();
 applyPersonalFirstThessaloniansFourThroughFiveStudySections();
 applyPersonalSecondThessaloniansOneThroughThreeStudySections();
 applyPersonalFirstTimothyOneThroughSixStudySections();
