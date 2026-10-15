@@ -184,6 +184,14 @@ workflows:
           agvtool new-marketing-version 1.0
           agvtool new-version -all "$BUILD_NUMBER"
 
+      - name: Fetch signing for the Bible lock extension
+        # ios_signing above only fetches a profile for net.mybiblebuddy.app.
+        # The DeviceActivity extension is a second target with its own bundle
+        # id, and the archive fails without its own profile. --create makes one
+        # the first time; after that it just fetches it.
+        script: |
+          app-store-connect fetch-signing-files             net.mybiblebuddy.app.biblelockmonitor             --type IOS_APP_STORE             --create
+
       - name: Point Xcode at the signing files
         # Codemagic has already put the certificate and profile on the
         # machine by this point; this writes them into the Xcode project,
