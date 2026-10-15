@@ -7,6 +7,7 @@ import {
   clearBibleLock,
   lockChosenApps,
   requestBibleLockPermission,
+  UNLOCKING_ACTIONS_SUMMARY,
   type BibleLockStatus,
 } from "@/lib/bibleLock";
 
@@ -145,7 +146,8 @@ export default function BibleLockSettings() {
             </div>
 
             <p className="text-xs text-gray-500">
-              The lock clears itself the moment you finish today&apos;s reading.
+              The lock clears itself the moment you finish today&apos;s reading.{" "}
+              {UNLOCKING_ACTIONS_SUMMARY} Any one of them is enough.
             </p>
           </>
         )}

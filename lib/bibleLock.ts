@@ -1,6 +1,7 @@
 "use client";
 
 import { registerPlugin } from "@capacitor/core";
+import type { ActionType } from "./actionTypes";
 import { isNativeApp } from "./nativeApp";
 import { nativePluginAvailable } from "./nativeAuth";
 
@@ -23,6 +24,60 @@ import { nativePluginAvailable } from "./nativeAuth";
  * and the capability on the App ID. Android blocks apps through a completely
  * different mechanism and is a separate piece of work.
  */
+
+/**
+ * What counts as having done today's reading (Louis, 2026-10-14).
+ *
+ * The rule is completion, never opening. Bible Buddy records a *_viewed or
+ * *_opened event for almost every tap, and if any of those unlocked the phone
+ * then opening the Bible for one second would do it and the whole feature is
+ * theatre.
+ *
+ * It is also deliberately not only chapters. Louis's point: there are many
+ * ways into Scripture here, and finishing a trivia chapter or a devotional day
+ * or a Bible-in-One-Year day is time spent in the Bible by any honest reading.
+ * Someone who does the trivia instead of the chapter has still done the thing
+ * this feature exists to protect.
+ *
+ * Left out on purpose: single questions and single words
+ * (trivia_question_correct, scrambled_word_answered), because one tap is not a
+ * session; everything social or in the feed, which is time with people rather
+ * than with Scripture; and Little Louis, which is a conversation that may not
+ * touch the Bible at all.
+ */
+export const UNLOCKING_ACTIONS = new Set<ActionType>([
+  // Reading
+  "chapter_completed",
+  "reading_plan_chapter_completed",
+  "bible_in_one_year_day_completed",
+  "bible_in_one_year_reading_completed",
+  "bible_year_task_completed",
+  "devotional_day_completed",
+  "bible_topic_lesson_completed",
+  "book_completed",
+
+  // The games - a trivia or scrambled chapter is a real sitting with a passage
+  "trivia_chapter_completed",
+  "scrambled_chapter_completed",
+  "bible_in_one_year_trivia_completed",
+
+  // Writing something down
+  "devotional_reflection_saved",
+  "bible_in_one_year_reflection_completed",
+  "note_created",
+
+  // Going deeper on a passage
+  "chapter_notes_reviewed",
+  "keyword_mastered",
+  "person_learned",
+  "place_discovered",
+  "understand_verse_of_the_day",
+]);
+
+/** The same list in words, for the screen that explains it. */
+export const UNLOCKING_ACTIONS_SUMMARY =
+  "Finish a chapter, a devotional day, a Bible in One Year day, a trivia or scrambled chapter, " +
+  "save a reflection or a note, or learn a keyword, person or place.";
 
 export type BibleLockStatus = {
   supported: boolean;
