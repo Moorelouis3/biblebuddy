@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-38-explained",
+    title: "Exodus 38 Explained: The Bronze Altar, the Laver, and the Final Count of Gold",
+    description:
+      "Exodus 38 explained verse by verse: the bronze altar, the laver made from women's mirrors, and the full accounting of every talent of gold, silver, and brass.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-38-explained",
+    publishedAt: "2026-10-15",
+    readTime: "14 min read",
+    image: "/blog-banners/exodus-38-explained.jpg",
+    groupPost: {
+      title: "Exodus 38 Explained 📖",
+      content:
+        "This chapter builds the altar everyone would see first.\nThen it does something nobody expects.\n\n📌 The project ends with a full financial audit, down to the shekel.\n\n📖 The laver was made from women's bronze mirrors.\n📖 Every man paid the same half shekel ransom, rich or poor.\n📖 The silver total matches the census count exactly.\n\nNew article on:\n🟢 what a **laver** actually was\n🟢 why the **half shekel** ransom mattered\n🟢 how the numbers prove themselves\n\nDoes it surprise you that the Bible includes an audit like this? 🙏",
+    },
+  },
+  {
     slug: "exodus-37-explained",
     title: "Exodus 37 Explained: Bezaleel Builds the Ark and the Lampstand",
     description:
