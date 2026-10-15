@@ -65416,6 +65416,59 @@
           "at": "2026-10-15T02:57:50Z"
         }
       ]
+    },
+    {
+      "book": "Philippians",
+      "chapter": 3,
+      "startedAt": "2026-10-15T03:45:52Z",
+      "finishedAt": "2026-10-15T04:02:07Z",
+      "durationMinutes": 16,
+      "sections": 8,
+      "cards": 50,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (fresh clone, 711 packages, about 49s). Priority queue and style redo backlog (`data/bible-notes-style-redo-remaining.json`, `remaining: []`) both confirmed empty, so this was normal forward progress after Philippians 2, the latest entry in this log, which named Philippians 3 as its own next target. Confirmed Philippians 3 had no dedicated per-chapter source file, only the legacy bulk file `lib/philippiansOneToFourPersonalNotes.ts` covering chapters 1-4 with pre-spec, generic, templated content never logged in this progress log. Fetched real KJV text for Philippians 3 (21 verses) from the `raw.githubusercontent.com/aruljohn/Bible-kjv` mirror. Philippians 3 moves through Paul's warning against the dogs and the concision demanding circumcision, his redefinition of true circumcision as worship in the spirit (1-3); his flawless Jewish pedigree, circumcised the eighth day, of the stock of Israel, the tribe of Benjamin, a Hebrew of the Hebrews, a Pharisee, blameless under the law (4-6); that entire pedigree recounted as gain now counted as loss, even as dung, next to the surpassing worth of knowing Christ and a righteousness that comes from God by faith rather than the law (7-9); his desire to know Christ in the power of his resurrection and the fellowship of his sufferings (10-11); his honest admission that he has not yet arrived, forgetting what is behind and pressing toward the mark for the prize of God's high calling (12-14); his call for the mature to think the same way and walk by whatever rule has already been attained (15-16); his call to imitate his example set against a tearful warning about the enemies of the cross, whose end is destruction, whose god is their belly, whose glory is in their shame (17-19); and the close naming the believer's true citizenship as being in heaven, awaiting the Savior who will change these lowly bodies to be like his own glorious body (20-21). Split into 8 sections (1-3, 4-6, 7-9, 10-11, 12-14, 15-16, 17-19, 20-21), all 21 verses covered with no gaps or overlaps, 50 total cards, about 2.4 cards per verse, dense through the pedigree and ledger passages and the enemies of the cross warning where nearly every clause carries its own distinct idea. `scripts/check_bible_note_style.py` passed clean on the first automated run across all 50 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (concision, circumcision of the heart, stock of Israel, tribe of Benjamin, Hebrew of the Hebrews, Pharisee, zeal, blameless, excellency, dung, apprehended, conformable, press toward the mark, the high calling, conversation as citizenship, vile body, fashioned, subdue), closes on meaning rather than mechanics, and has no duplicate titles or repeated opening lines across all 50 cards. Parser check passed exactly via `getBibleReaderStudySections('philippians', 3)`: 8/8 sections, verse ranges 1-3/4-6/7-9/10-11/12-14/15-16/17-19/20-21 with no gaps, 50 total cards rendering verbatim. `npx tsc --noEmit -p .` came back clean, zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import for `lib/philippiansThreeSource.ts`, the `philippians` condition in `preserveExactPhraseBodies` widened from chapters 1 or 2 to chapters 1, 2, or 3, new `applyPersonalPhilippiansThreeStudySections()` function added calling `replaceStudySectionsForBookRange(\"philippians\", 3, 3, PHILIPPIANS_THREE_PERSONAL_SECTIONS)`, invoked right after `applyPersonalPhilippiansTwoStudySections()`, correctly overriding the legacy `PHILIPPIANS_1_4_PERSONAL_SECTIONS` bulk file for chapter 3 only; chapter 4 of that legacy file remains live and untouched. This was a new chapter, normal forward progress, not a style redo. Next forward-progress target is Philippians 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-15T03:46:42Z"
+        },
+        {
+          "name": "target chapter determined: Philippians 3 (new chapter, forward progress; priority queue and redo backlog both empty)",
+          "at": "2026-10-15T03:46:50Z"
+        },
+        {
+          "name": "KJV text fetched (Philippians 3, 21 verses, aruljohn mirror)",
+          "at": "2026-10-15T03:47:06Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline (SKILL.md) read in full",
+          "at": "2026-10-15T03:48:30Z"
+        },
+        {
+          "name": "source file written: lib/philippiansThreeSource.ts (50 cards, 8 sections)",
+          "at": "2026-10-15T03:56:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-15T03:56:25Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalPhilippiansThreeStudySections)",
+          "at": "2026-10-15T03:56:40Z"
+        },
+        {
+          "name": "parser check passed (8/8 sections, 50 cards, text verbatim)",
+          "at": "2026-10-15T03:56:49Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-15T03:57:29Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-15T04:02:07Z"
+        }
+      ]
     }
   ]
 }
