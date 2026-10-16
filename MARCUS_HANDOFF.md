@@ -882,3 +882,16 @@ were deliberately NOT changed and need Louis to choose:
    routes look the group up by that exact string. Renaming it needs the DB row
    and the code changed in the same deploy, or every scheduled group post
    silently stops. Migration written, that section left commented out.
+
+## Chapter Blog Writer: exodus-39-explained stuck `committed`, not live after 24+ hours — Deploy routine looks stalled (2026-10-16)
+`verify-live` on this run (claiming the next chapter after Exodus 39) still
+gets a 404 for `exodus-39-explained`, which has been `committed` since
+2026-10-15T10:42:52Z — well past the 24-hour threshold this routine's own
+doc says to flag. The git history backs this up: the last `[deploy]`-tagged
+commit on main is `0ffe5ba` at 2026-10-15 08:07:03 UTC ("Deploy: publish 28
+commits"), and nothing has carried the tag since, even though the Deploy
+routine runs at 08:00 and 16:00 UTC — so the 16:00 UTC run on 10-15 and the
+08:00 UTC run on 10-16 both appear to have been skipped or failed. Worth
+checking whether the Deploy routine's own scheduled trigger is still firing
+and completing. Not blocking this run; proceeding to claim and write the
+next chapter per the routine's normal retry-on-next-run behavior.
