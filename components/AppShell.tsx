@@ -85,6 +85,11 @@ const BuddyCelebrationModal = dynamic(
 // "/app" is the native shell's front door - a signed-out welcome screen that
 // must not wear the app chrome (bottom nav, header, popups) around it.
 const HIDDEN_ROUTES = ["/", "/app", "/login", "/signup", "/reset-password", "/privacy", "/terms", "/contact", "/community-guidelines", "/delete-account"];
+// How long the dashboard splash may hide the app chrome before the shell shows
+// it regardless. HomeScreen reports itself loaded on mount, so the normal path
+// resolves in milliseconds and never reaches this; it only bites when nothing
+// reports at all. See the watchdog effect for why that happens.
+const DASHBOARD_CHROME_REVEAL_MS = 2500;
 const DAILY_RECOMMENDATIONS_ENABLED = false;
 const AUTOMATIC_FEEDBACK_POPUPS_ENABLED = false;
 const AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED = false;
@@ -364,6 +369,32 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       window.removeEventListener("bb:dashboard-loader-state", handleDashboardLoaderState as EventListener);
     };
   }, [pathname]);
+
+  /**
+   * The header is hidden on /dashboard until something dispatches
+   * bb:dashboard-loader-state with loading:false. Exactly two components ever
+   * send it - HomeScreen and BibleYearJourneyDashboard - so any route into
+   * /dashboard that does not mount one of them leaves the top header, the
+   * alerts, the messages and the profile picture gone for good. That is not
+   * hypothetical: it is what "Bring the top header back and stop the double
+   * bottom menu" fixed on 2026-08-31, and app/dashboard/page.tsx still returns
+   * null for every group- and plan-shaped URL while it redirects.
+   *
+   * So the splash keeps its say, but it no longer gets the last word. If
+   * nothing reports the dashboard loaded within the timeout, the chrome comes
+   * back anyway. The failure mode flips from "header gone until reload" to
+   * "header appears a beat late", which is the one worth having.
+   *
+   * Re-armed whenever the flag goes true, so a real loading state later still
+   * gets its own watchdog.
+   */
+  useEffect(() => {
+    if (typeof window === "undefined" || !dashboardFullscreenLoading) return;
+    const revealTimer = window.setTimeout(() => {
+      setDashboardFullscreenLoading(false);
+    }, DASHBOARD_CHROME_REVEAL_MS);
+    return () => window.clearTimeout(revealTimer);
+  }, [dashboardFullscreenLoading]);
 
   useEffect(() => {
     function loadSelectedBuddy(event?: Event) {
