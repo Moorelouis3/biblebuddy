@@ -325,7 +325,8 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   // Get cover image path based on devotional title
   const getCoverImage = (title: string): string | null => {
     if (title === "The Tempting of Jesus") {
-      return "/newtempting.png";
+      // Second-edition cover, same file as app/devotionals/[id]/page.tsx.
+      return "/tempting-of-jesus-cover.png";
     }
     if (title === "The Testing of Joseph") {
       return "/TheTestingofJospehnewcover.png";

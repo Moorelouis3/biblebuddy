@@ -1,7 +1,10 @@
 "use client";
 
 function getCoverImage(title: string): string | null {
-  if (title === "The Tempting of Jesus") return "/newtempting.png";
+  // The published second-edition cover, lifted from the print wrap on 2026-10-16
+  // when the 21 days were rebased on the book. The old /newtempting.png still
+  // said "A 21 Day Devotional" and used the previous artwork.
+  if (title === "The Tempting of Jesus") return "/tempting-of-jesus-cover.png";
   if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
   if (title === "The Disciples of Jesus") return "/disciplesofjesusdevotional.png";
   if (title === "Women of the Bible") return "/womenofthebible.png";

@@ -63,6 +63,11 @@ const ALLOWED_EVENTS = new Set([
   // be told apart from bounces. Metadata: {event_slug, placement, signed_in}.
   "proverbs_share_page_view",
   "proverbs_share_start_click",
+  // The shareable Tempting of Jesus landing page (2026-10-16), built the day the
+  // study was rebased on the second edition of the book. Same shape as the
+  // Proverbs pair. Metadata: {devotional_id, placement, signed_in}.
+  "tempting_share_page_view",
+  "tempting_share_start_click",
   // Homepage redesign (2026-09-02) - section click-throughs.
   "home_continue_plan_click",
   "home_nearby_day_click",
