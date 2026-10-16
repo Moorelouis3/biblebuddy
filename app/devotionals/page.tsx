@@ -61,13 +61,21 @@ function isNewTestamentDay(day: (typeof GENESIS_BIBLE_IN_ONE_YEAR_SERIES)[number
  */
 const FEATURED_STUDY_ORDER = [
   "The Wisdom of Proverbs",
-  "The Obedience of Abraham",
+  "The Tempting of Jesus",
 ];
 
-/** The study that starts next. Its card is grey until the cursor is on it. */
-const NEXT_UP_STUDY_TITLE = "The Obedience of Abraham";
+/**
+ * The study that starts next. Its card is grey until the cursor is on it.
+ *
+ * Louis, 2026-10-16: Abraham comes off the shelf and The Tempting of Jesus
+ * takes the 1 November slot, the day its 21 days were rebased on the second
+ * edition of the book. It has no community event, so "Sign up" goes to its own
+ * public page rather than /events/<slug>; that page carries the same pitch and
+ * sends people into the study through signup.
+ */
+const NEXT_UP_STUDY_TITLE = "The Tempting of Jesus";
 const NEXT_UP_START_LABEL = "Starts 1 November";
-const NEXT_UP_EVENT_PATH = "/events/obedience-of-abraham";
+const NEXT_UP_EVENT_PATH = "/devotionals/tempting-of-jesus";
 
 const KEEP_DEVOTIONAL_TITLES = new Set(FEATURED_STUDY_ORDER);
 const FEATURED_STUDY_ORDER_INDEX = new Map(
@@ -77,6 +85,7 @@ const FEATURED_STUDY_ORDER_INDEX = new Map(
 // the ones no longer listed - anyone part-way through one keeps a correct bar.
 const CHAPTER_JOURNEY_TITLES = new Set([
   ...FEATURED_STUDY_ORDER,
+  "The Obedience of Abraham",
   "Women of the Bible",
   "The Calling of Moses",
   "The Heart of David",
@@ -112,6 +121,7 @@ function getStudyScriptureRange(title: string) {
     "The Promised Land Ahead": "Numbers 26-36",
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "31 Days",
+    "The Tempting of Jesus": "21 Days",
     "Women of the Bible": "21 Days",
     "The Courage of Daniel": "Daniel 1-6",
   };
