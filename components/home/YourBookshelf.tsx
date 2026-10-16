@@ -6,8 +6,15 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
 import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
-import { BIBLE_YEAR_FALLBACK_COVER_IMAGE } from "../../lib/bibleInOneYearPlan";
-import { availability, fetchLibraryStudies, fetchProgressByStudy, withTotals } from "../../lib/libraryCatalog";
+import { BIBLE_YEAR_PLAN_HREF } from "../../lib/bibleYearProgress";
+import {
+  BIBLE_YEAR_SHELF_COVER,
+  BIBLE_YEAR_SHELF_TITLE,
+  availability,
+  fetchLibraryStudies,
+  fetchProgressByStudy,
+  withTotals,
+} from "../../lib/libraryCatalog";
 
 /**
  * Your Bookshelf - one section where the home screen used to carry two.
@@ -50,12 +57,10 @@ export default function YourBookshelf({
   userId,
   planDay,
   planCompletedDays,
-  planHref,
 }: {
   userId: string | null;
   planDay: number | null;
   planCompletedDays: number;
-  planHref: string;
 }) {
   const router = useRouter();
   const [books, setBooks] = useState<ShelfBook[]>([]);
@@ -103,9 +108,9 @@ export default function YourBookshelf({
       // assembled here from the same numbers the old day rail used.
       const bibleYear: ShelfBook = {
         key: "bible-in-one-year",
-        title: "Bible in One Year",
-        cover: BIBLE_YEAR_FALLBACK_COVER_IMAGE,
-        href: planHref,
+        title: BIBLE_YEAR_SHELF_TITLE,
+        cover: BIBLE_YEAR_SHELF_COVER,
+        href: BIBLE_YEAR_PLAN_HREF,
         currentDay: planDay,
         totalDays: PLAN_TOTAL_DAYS,
         percent: Math.round((planCompletedDays / PLAN_TOTAL_DAYS) * 100),
@@ -135,7 +140,7 @@ export default function YourBookshelf({
     return () => {
       cancelled = true;
     };
-  }, [userId, planDay, planCompletedDays, planHref, event, communityDay]);
+  }, [userId, planDay, planCompletedDays, event, communityDay]);
 
   // The group's reading for today, for the strip under the shelf.
   useEffect(() => {

@@ -3,7 +3,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
+import { bibleYearHref, fetchBibleYearPosition, BIBLE_YEAR_TOTAL_DAYS } from "../../lib/bibleYearProgress";
 import {
+  BIBLE_YEAR_SHELF_COVER,
+  BIBLE_YEAR_SHELF_ID,
+  BIBLE_YEAR_SHELF_TITLE,
   LIBRARY_CATEGORIES,
   availability,
   fetchLibraryStudies,
@@ -31,6 +35,7 @@ export default function LibraryPage() {
   const [studies, setStudies] = useState<LibraryStudy[]>([]);
   const [progress, setProgress] = useState<Record<string, StudyProgress>>({});
   const [category, setCategory] = useState("all");
+  const [bibleYear, setBibleYear] = useState<{ planDay: number | null; highestReadDay: number } | null>(null);
   const [loading, setLoading] = useState(true);
   const [failed, setFailed] = useState(false);
 
@@ -48,6 +53,8 @@ export default function LibraryPage() {
         const p = await fetchProgressByStudy(userId);
         if (!cancelled) setProgress(p);
       }
+      const position = await fetchBibleYearPosition(userId ?? null);
+      if (!cancelled) setBibleYear({ planDay: position.planDay, highestReadDay: position.highestReadDay });
       if (!cancelled) setLoading(false);
     })();
     return () => {
@@ -157,7 +164,7 @@ export default function LibraryPage() {
           <h2 className="text-lg font-black text-[var(--bb-text-primary,#111827)]">All Study Guides</h2>
           {!loading && filtered.length > 0 ? (
             <span className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-              {filtered.length} {filtered.length === 1 ? "study" : "studies"}
+              {filtered.length + (category === "all" && bibleYear ? 1 : 0)} studies
             </span>
           ) : null}
         </div>
@@ -232,6 +239,48 @@ export default function LibraryPage() {
                 </button>
               );
             })}
+            {/* Bible in One Year sits on the shelf like a book, but it is a
+                reading plan: the card is new, the pages behind it are the same
+                ones it always opened. It carries no category, so it shows
+                under All Studies only. */}
+            {category === "all" && bibleYear ? (
+              <button
+                type="button"
+                onClick={() => router.push(bibleYearHref())}
+                className="group text-left"
+              >
+                <div className="overflow-hidden rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f1f5fa)] shadow-sm transition group-hover:border-[var(--bb-accent,#2f7fe8)]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={BIBLE_YEAR_SHELF_COVER}
+                    alt={BIBLE_YEAR_SHELF_TITLE}
+                    loading="lazy"
+                    className="aspect-[2/3] w-full object-cover"
+                  />
+                </div>
+                <p className="mt-2 text-sm font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                  {BIBLE_YEAR_SHELF_TITLE}
+                </p>
+                <p className="mt-0.5 text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                  {BIBLE_YEAR_TOTAL_DAYS} Days
+                </p>
+                {bibleYear.highestReadDay > 0 ? (
+                  <>
+                    <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#f1f5fa)]">
+                      <span
+                        className="block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]"
+                        style={{
+                          width: `${Math.round((bibleYear.highestReadDay / BIBLE_YEAR_TOTAL_DAYS) * 100)}%`,
+                        }}
+                      />
+                    </span>
+                    <p className="mt-1 text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                      Day {bibleYear.planDay} of {BIBLE_YEAR_TOTAL_DAYS}
+                    </p>
+                  </>
+                ) : null}
+              </button>
+            ) : null}
           </div>
         )}
       </section>

@@ -33,6 +33,23 @@ export type StudyProgress = {
   lastActivityAt: string | null;
 };
 
+/**
+ * Bible in One Year on the shelf.
+ *
+ * It is a reading plan, not a `devotionals` row, so it has no catalog record to
+ * read. Louis, 2026-10-16: "add the bible in one year same way it is but just
+ * push it behind a cover in the library, and when they click on that the same
+ * pages load like it did before - no need to redesign, we just moved it."
+ *
+ * So this is a shelf entry and nothing more: the cover, the day count, and a
+ * link to the plan pages that already exist. Nothing about the plan itself
+ * changed.
+ */
+export const BIBLE_YEAR_SHELF_ID = "bible-in-one-year";
+export const BIBLE_YEAR_SHELF_COVER = "/bible-in-one-year-cover.png";
+export const BIBLE_YEAR_SHELF_TITLE = "Bible in One Year";
+export const BIBLE_YEAR_SHELF_SUBTITLE = "A 365-Day Journey Through God's Word";
+
 /** The filter pills. `null` category studies appear only under All Studies. */
 export const LIBRARY_CATEGORIES: Array<{ value: string; label: string }> = [
   { value: "all", label: "All Studies" },

@@ -26,7 +26,7 @@ import CommunityEventBanner from "./CommunityEventBanner";
 import YourBookshelf from "./home/YourBookshelf";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
-import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "../lib/bibleInOneYearPlan";
+import { calculateBibleYearPosition } from "../lib/bibleYearProgress";
 import { BIBLE_STUDY_GROUP_ID } from "../lib/bibleStudiesCatalog";
 import StreakFlameEmoji from "./StreakFlameEmoji";
 import LevelProgressCard from "./LevelProgressCard";
@@ -160,34 +160,10 @@ export default function HomeScreen() {
 
       const profile = profileResult.status === "fulfilled" ? (profileResult.value.data as any) : null;
       const chapterCount = chapterResult.status === "fulfilled" ? chapterResult.value.count : null;
-      // Where you are is how FAR you have got, not the first day you skipped.
-      //
-      // Rachel Moore reported this twice. /api/bible-year/progress was fixed on
-      // 2026-10-01, but this copy of the rule was left behind, so home kept
-      // saying Day 29 - her earliest gap - while the plan itself opened Day 91.
-      // She had read 85 days by then. Skipped days stay open in the plan to
-      // catch up on; they just never drag the number backwards again.
-      //
-      // Keep this in step with the same calculation in
-      // app/api/bible-year/progress/route.ts. Two copies of one rule is what
-      // caused this bug; if a third appears, give them one shared helper.
-      let planDay: number | null = null;
-      let planFinished = false;
-      let highestReadDay = 0;
-      if (planResult.status === "fulfilled" && Array.isArray(planResult.value.data)) {
-        const readDays = new Set(
-          (planResult.value.data as any[])
-            .filter((row) => row.reading_completed === true)
-            .map((row) => Number(row.day_number)),
-        );
-        const highestRead = readDays.size ? Math.max(...readDays) : 0;
-        const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find(
-          (d) => d.dayNumber > highestRead && !readDays.has(d.dayNumber),
-        );
-        planDay = nextDay ? nextDay.dayNumber : PLAN_TOTAL_DAYS;
-        planFinished = !nextDay;
-        highestReadDay = highestRead;
-      }
+      // One shared rule now - see lib/bibleYearProgress.ts for why.
+      const { planDay, planFinished, highestReadDay } = calculateBibleYearPosition(
+        planResult.status === "fulfilled" ? (planResult.value.data as any) : null,
+      );
 
       setStats({
         loaded: true,
@@ -285,7 +261,6 @@ export default function HomeScreen() {
   }, []);
   const biblePercent =
     stats.chaptersRead === null ? null : Math.round((stats.chaptersRead / TOTAL_BIBLE_CHAPTERS) * 100);
-  const planHref = stats.planDay ? `/plan?view=bible-year&day=${stats.planDay}&solo=1` : "/plans";
   const completedDays = stats.lastCompletedDay ?? 0;
   const continueLabel = stats.planFinished
     ? "View Completed Plan"
@@ -405,7 +380,6 @@ export default function HomeScreen() {
         userId={userId}
         planDay={stats.planDay}
         planCompletedDays={completedDays}
-        planHref={planHref}
       />
 
       {/* 5b. Upcoming Community Study - the EXACT banner from the group page.
