@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "exodus-40-explained",
+    title: "Exodus 40 Explained: The Tabernacle Finished and the Glory of the Lord",
+    description:
+      "Exodus 40 explained verse by verse: Moses sets up the tabernacle exactly as commanded, and the glory of the LORD fills it so fully he cannot enter.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/exodus-40-explained",
+    publishedAt: "2026-10-16",
+    readTime: "12 min read",
+    image: "/blog-banners/exodus-40-explained.jpg",
+    groupPost: {
+      title: "Exodus 40 Explained 📖",
+      content:
+        "Every piece is finally in place.\nThen something nobody built shows up.\n\n📌 Moses could not even walk through the door.\n\n📖 The date gets stated twice, down to the day.\n📖 Aaron's anointing is commanded, but not shown happening yet.\n📖 A cloud now decides when the whole camp moves.\n\nNew article on:\n🟢 why Moses couldn't **enter** his own finished tent\n🟢 what the **cloud and fire** meant for Israel's journeys\n🟢 how this closes the whole book of **Exodus**\n\nHave you ever done everything right and still found a door closed? 🙏",
+    },
+  },
+  {
     slug: "exodus-39-explained",
     title: "Exodus 39 Explained: The Priestly Garments and the Finished Tabernacle",
     description:
