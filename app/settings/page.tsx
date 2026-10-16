@@ -356,7 +356,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           return;
         }
         window.location.href = "/";
-      }, 2500);
+      }, 4000);
     } catch (error) {
       console.error("Error deleting account:", error);
       setDeleteAccountError(
@@ -1036,7 +1036,9 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           <div className="space-y-4">
             {accountDeleted ? (
               <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-                Your account and data have been deleted. Taking you home...
+                You are signed out and your account can no longer be used. Removing the rest of
+                your data takes a few minutes, and we will email you when it is done. You are welcome
+                back any time - just sign up again.
               </div>
             ) : !showDeleteAccount ? (
               <>
