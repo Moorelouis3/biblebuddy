@@ -183,7 +183,7 @@ export default function LibraryPage() {
           <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-6">
             {filtered.map((study) => {
               const p = withTotals(progress[study.id], study.total_days);
-              const { comingSoon, label } = availability(study);
+              const { comingSoon, label } = availability(study, p.completedDays > 0);
               return (
                 <button
                   key={study.id}

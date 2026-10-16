@@ -76,8 +76,8 @@ export default function StudyDetailPage({ studyId }: { studyId: string }) {
   }
 
   const p = progress ?? withTotals(undefined, study.total_days);
-  const { comingSoon, label } = availability(study);
   const started = p.completedDays > 0;
+  const { comingSoon, label } = availability(study, started);
 
   const primaryLabel = comingSoon
     ? label ?? "Coming soon"

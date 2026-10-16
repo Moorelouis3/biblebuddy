@@ -135,9 +135,18 @@ export function withTotals(progress: StudyProgress | undefined, totalDays: numbe
   };
 }
 
-/** A study with a future available_from is on the shelf but not startable yet. */
-export function availability(study: LibraryStudy, now = new Date()) {
-  if (!study.available_from) return { comingSoon: false, label: null as string | null };
+/**
+ * A future `available_from` marks when the study opens to new readers - the
+ * 1 November slot on the shelf, say.
+ *
+ * It is not a lock on anyone already in it. Louis had finished all 21 days of
+ * The Tempting of Jesus before it was given a November date, and the first cut
+ * of this greyed it out and offered him "Read again" underneath a Coming Soon
+ * badge at the same time. So a reader with any progress always sees their own
+ * state; the date only speaks to people who have not started.
+ */
+export function availability(study: LibraryStudy, hasProgress = false, now = new Date()) {
+  if (!study.available_from || hasProgress) return { comingSoon: false, label: null as string | null };
   const start = new Date(`${study.available_from}T00:00:00`);
   if (start <= now) return { comingSoon: false, label: null };
   return {
