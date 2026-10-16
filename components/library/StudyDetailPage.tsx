@@ -87,9 +87,14 @@ export default function StudyDetailPage({ studyId }: { studyId: string }) {
         ? "Continue Studying"
         : "Start Studying Free";
 
-  const primaryHref = started
-    ? `/devotionals/${study.id}/day/${p.nextDay}`
-    : `/devotionals/${study.id}`;
+  /**
+   * Always the study's own page, the one listing every day - never a deep link
+   * into a single day. Louis, 2026-10-16: "it takes me to proverbs 8 instead of
+   * the main proverbs devotional page with all the days, that's how it's done."
+   * The shelf's Continue Studying card is the shortcut straight into a day;
+   * this button is the way in to the study itself.
+   */
+  const primaryHref = `/plan?view=bible_studies&study=${encodeURIComponent(study.id)}`;
 
   const features: Array<[string, string]> = [
     ["📘", `${study.total_days} Days`],
