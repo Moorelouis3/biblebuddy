@@ -37,11 +37,14 @@ type Tab = {
 const TABS: Tab[] = [
   { label: "Home", href: "/dashboard", icon: "🏠", prefixes: ["/dashboard"] },
   { label: "Bible", href: "/reading", icon: "📖", prefixes: ["/reading", "/bible", "/bible-study-notes"] },
+  // Plans became Library on 2026-10-16. Same slot, same six tabs - the old
+  // prefixes stay so a bookmark, notification or deep link into any of them
+  // still lights this tab up while it redirects.
   {
-    label: "Plans",
-    href: "/plans",
-    icon: "🗓️",
-    prefixes: ["/plans", "/plan", "/devotionals", "/guided-studies", "/bible-studies", "/reading-plans"],
+    label: "Library",
+    href: "/library",
+    icon: "📚",
+    prefixes: ["/library", "/plans", "/plan", "/devotionals", "/guided-studies", "/bible-studies", "/reading-plans"],
   },
   {
     label: "Games",
