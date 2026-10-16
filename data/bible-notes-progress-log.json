@@ -66226,6 +66226,63 @@
           "at": "2026-10-16T18:00:43Z"
         }
       ]
+    },
+    {
+      "book": "1 Timothy",
+      "chapter": 1,
+      "startedAt": "2026-10-16T18:46:30Z",
+      "finishedAt": "2026-10-16T18:58:58Z",
+      "durationMinutes": 12.47,
+      "sections": 6,
+      "cards": 37,
+      "verses": 20,
+      "notes": "New chapter (not a style redo), normal forward progress after 2 Thessalonians 3. Overrides chapter 1 of the legacy bulk file lib/firstTimothyOneToSixPersonalNotes.ts via a new dedicated lib/firstTimothyOneSource.ts file; chapters 2-6 of that legacy file remain live and untouched. Style checker, parser check, and tsc all clean. A manual section 13 eye check caught one content error (the card titled \"For This Cause I Obtained Mercy\" had accidentally opened by defining \"pattern,\" which belongs to the next card) and fixed it by swapping the two cards' openings so each explains its own title phrase.",
+      "steps": [
+        {
+          "name": "npm install done (fresh clone, 711 packages)",
+          "at": "2026-10-16T18:46:30Z"
+        },
+        {
+          "name": "target chapter determined: 1 Timothy 1 (new chapter, forward progress, priority queue and style redo backlog both empty)",
+          "at": "2026-10-16T18:47:43Z"
+        },
+        {
+          "name": "KJV text fetched (raw.githubusercontent.com aruljohn/Bible-kjv mirror, 1Timothy.json)",
+          "at": "2026-10-16T18:48:30Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementation lib/genesisThirtyOneSource.ts reviewed",
+          "at": "2026-10-16T18:50:00Z"
+        },
+        {
+          "name": "source file written (lib/firstTimothyOneSource.ts)",
+          "at": "2026-10-16T18:52:00Z"
+        },
+        {
+          "name": "style checker clean (after fixing 2 last-bullet-emoji issues, 1 bullet word-count issue, 1 repeated-emoji issue)",
+          "at": "2026-10-16T18:52:58Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies condition for 1 timothy chapter 1, apply function, call site after the legacy 1-6 range function)",
+          "at": "2026-10-16T18:53:20Z"
+        },
+        {
+          "name": "parser check passed (6 sections, 37 cards, verse ranges 1-2/3-7/8-11/12-14/15-17/18-20 with no gaps)",
+          "at": "2026-10-16T18:53:32Z"
+        },
+        {
+          "name": "tsc clean (first full pass)",
+          "at": "2026-10-16T18:54:09Z"
+        },
+        {
+          "name": "manual section 13 eye check found and fixed 1 content error (card titled For This Cause I Obtained Mercy had swapped content with the next card); style checker and parser check reverified clean",
+          "at": "2026-10-16T18:56:30Z"
+        },
+        {
+          "name": "progress files logged (docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running total, data/bible-notes-progress-log.json entry)",
+          "at": "2026-10-16T18:58:58Z"
+        }
+      ]
     }
   ]
 }
