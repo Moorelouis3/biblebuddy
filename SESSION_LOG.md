@@ -8006,3 +8006,7 @@ Next up: 1 Timothy 4
 ## 2026-10-16T22:00:30Z (hourly chapter notes run)
 Chapter: 1 Timothy 4 | Duration: 14 min | Sections: 4 | Cards: 29 | Status: pass
 Next up: 1 Timothy 5
+
+## 2026-10-16T22:21:43Z (blog writer run)
+Article: How Do You Know When God Is Speaking to You? | Words: ~4510 | Category: Bible Study Tips | Status: pass
+Queue remaining: 17

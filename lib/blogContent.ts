@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "how-to-know-god-is-speaking",
+    title: "How Do You Know When God Is Speaking to You?",
+    description:
+      "How do you know when God is speaking to you? Why His Word comes first, four honest tests for any impression, and what Elijah's still small voice teaches.",
+    category: "Bible Study Tips",
+    categorySlug: "bible-study-tips",
+    canonicalPath: "/blog/how-to-know-god-is-speaking",
+    publishedAt: "2026-10-17",
+    readTime: "23 min read",
+    image: "/how-to-know-god-is-speaking-banner.png",
+    groupPost: {
+      title: "How Do You Know When God Is Speaking to You? 📖",
+      content:
+        "You felt something during prayer.\nNow you're wondering if that was really God.\n\n📌 Testing it matters more than feeling it.\n\n📖 God's Word always comes first.\n📖 Elijah heard God in a whisper, not fire.\n📖 \"God told me\" has justified terrible things.\n\nNew article on:\n🟢 the four **tests** for any impression or feeling\n🟢 why God's voice never contradicts **Scripture**\n🟢 what Elijah's **still small voice** actually teaches\n\nHow do you usually sense God speaking to you? 🙏",
+    },
+  },
+  {
     slug: "exodus-40-explained",
     title: "Exodus 40 Explained: The Tabernacle Finished and the Glory of the Lord",
     description:
