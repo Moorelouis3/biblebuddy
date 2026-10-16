@@ -1204,6 +1204,7 @@ import { SECOND_THESSALONIANS_TWO_PERSONAL_SECTIONS } from "./secondThessalonian
 import { SECOND_THESSALONIANS_THREE_PERSONAL_SECTIONS } from "./secondThessaloniansThreeSource";
 import { FIRST_TIMOTHY_1_6_PERSONAL_SECTIONS } from "./firstTimothyOneToSixPersonalNotes";
 import { FIRST_TIMOTHY_ONE_PERSONAL_SECTIONS } from "./firstTimothyOneSource";
+import { FIRST_TIMOTHY_TWO_PERSONAL_SECTIONS } from "./firstTimothyTwoSource";
 import { SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS } from "./secondTimothyOneToFourPersonalNotes";
 import { TITUS_1_3_PERSONAL_SECTIONS } from "./titusOneToThreePersonalNotes";
 import { PHILEMON_1_PERSONAL_SECTIONS } from "./philemonOnePersonalNotes";
@@ -1548,7 +1549,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "colossians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
     (normalizeBook(book) === "1 thessalonians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5)) ||
     (normalizeBook(book) === "2 thessalonians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
-    (normalizeBook(book) === "1 timothy" && section.chapter === 1);
+    (normalizeBook(book) === "1 timothy" && section.chapter >= 1 && section.chapter <= 2);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4883,6 +4884,10 @@ function applyPersonalFirstTimothyOneThroughSixStudySections() {
 
 function applyPersonalFirstTimothyOneStudySections() {
   replaceStudySectionsForBookRange("1 timothy", 1, 1, FIRST_TIMOTHY_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstTimothyTwoStudySections() {
+  replaceStudySectionsForBookRange("1 timothy", 2, 2, FIRST_TIMOTHY_TWO_PERSONAL_SECTIONS);
 }
 
 function applyPersonalSecondTimothyOneThroughFourStudySections() {
@@ -12671,6 +12676,7 @@ applyPersonalSecondThessaloniansTwoStudySections();
 applyPersonalSecondThessaloniansThreeStudySections();
 applyPersonalFirstTimothyOneThroughSixStudySections();
 applyPersonalFirstTimothyOneStudySections();
+applyPersonalFirstTimothyTwoStudySections();
 applyPersonalSecondTimothyOneThroughFourStudySections();
 applyPersonalTitusOneThroughThreeStudySections();
 applyPersonalPhilemonOneStudySections();
