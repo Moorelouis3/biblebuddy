@@ -65913,6 +65913,59 @@
           "at": "2026-10-16T12:59:13Z"
         }
       ]
+    },
+    {
+      "book": "1 Thessalonians",
+      "chapter": 4,
+      "startedAt": "2026-10-16T13:46:55Z",
+      "finishedAt": "2026-10-16T14:00:13Z",
+      "durationMinutes": 13,
+      "sections": 5,
+      "cards": 34,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (fresh clone, 711 packages, about 38s). Priority queue / style redo backlog (`data/bible-notes-style-redo-remaining.json`, `remaining: []`) confirmed empty, so this was normal forward progress after 1 Thessalonians 3, the latest entry in `data/bible-notes-progress-log.json`, which named 1 Thessalonians 4 as its own next target. Confirmed no `lib/firstThessaloniansFourSource.ts` existed yet; the `1 thessalonians` condition in `preserveExactPhraseBodies` only covered chapters 1-3, and the legacy bulk file `lib/firstThessaloniansFourToFivePersonalNotes.ts` still covered chapters 4-5. Fetched real KJV text for 1 Thessalonians 4 (18 verses) from the `raw.githubusercontent.com/aruljohn/Bible-kjv` mirror. The chapter opens with Paul's appeal that they walk and please God more and more, since sanctification is God's will, meaning abstaining from fornication, possessing one's own vessel in honour rather than lust, not defrauding a brother since the Lord avenges it, and holiness as God's call backed by his given Holy Spirit (1-8); it continues with their God taught brotherly love already visible across Macedonia, Paul's charge to live quietly, work with their own hands, walk honestly toward outsiders, and need nothing from anyone (9-12); and it closes with the comfort passage: not grieving like those with no hope, since belief in Jesus's death and resurrection guarantees God will bring back those asleep in him, the word of the Lord that the living will not precede the dead, the Lord himself descending with a shout, the archangel's voice, and God's trumpet, the dead in Christ rising first, the living caught up together with them in the clouds to meet the Lord in the air, forever with the Lord, and the charge to comfort one another with these words (13-18). Split into 5 sections (1-3, 4-8, 9-12, 13-15, 16-18), all 18 verses covered with no gaps or overlaps, 34 total cards, about 1.9 cards per verse, matching the density of the chapters written the same way. `scripts/check_bible_note_style.py` came back fully clean on the first automated pass across all 34 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (beseech, exhort, walk, abound, sanctification, fornication, vessel, concupiscence, Gentiles, defraud, avenger, forewarned, testified, uncleanness, taught of God, Macedonia, study to be quiet, asleep, sorrow not, sleep in Jesus, word of the Lord, prevent, archangel, trump of God, caught up, meet the Lord in the air), closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines across all 34 cards. Parser check passed exactly via `getBibleReaderStudySections('1 thessalonians', 4)`: 5/5 sections, verse ranges 1-3/4-8/9-12/13-15/16-18 with no gaps, 34 total cards rendering verbatim. `npx tsc --noEmit -p .` ran clean, zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import for `lib/firstThessaloniansFourSource.ts`, the `1 thessalonians` condition in `preserveExactPhraseBodies` widened from chapters 1-3 to include chapter 4, new `applyPersonalFirstThessaloniansFourStudySections()` function calling `replaceStudySectionsForBookRange(\"1 thessalonians\", 4, 4, FIRST_THESSALONIANS_FOUR_PERSONAL_SECTIONS)`, invoked right after `applyPersonalFirstThessaloniansFourThroughFiveStudySections()` so it correctly overrides the legacy `FIRST_THESSALONIANS_4_5_PERSONAL_SECTIONS` bulk file for chapter 4 only; chapter 5 of that legacy file remains live and untouched for a future run. New chapter, normal forward progress, not a style redo. Next forward-progress target is 1 Thessalonians 5.",
+      "steps": [
+        {
+          "at": "2026-10-16T13:47:33Z",
+          "name": "npm install done"
+        },
+        {
+          "at": "2026-10-16T13:49:00Z",
+          "name": "target chapter determined: 1 Thessalonians 4 (normal forward progress, redo backlog empty, no existing dedicated chapter 4 file, confirmed against both the progress log and git history)"
+        },
+        {
+          "at": "2026-10-16T13:49:30Z",
+          "name": "KJV text fetched (1 Thessalonians 4, 18 verses, aruljohn mirror)"
+        },
+        {
+          "at": "2026-10-16T13:52:30Z",
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus reference implementation lib/firstThessaloniansThreeSource.ts"
+        },
+        {
+          "at": "2026-10-16T13:54:42Z",
+          "name": "source file written: lib/firstThessaloniansFourSource.ts (34 cards, 5 sections)"
+        },
+        {
+          "at": "2026-10-16T13:54:47Z",
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)"
+        },
+        {
+          "at": "2026-10-16T13:55:06Z",
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to 1-4, applyPersonalFirstThessaloniansFourStudySections added and called after the legacy 4-5 bulk call)"
+        },
+        {
+          "at": "2026-10-16T13:55:13Z",
+          "name": "parser check passed (5/5 sections, 34 cards, text verbatim, ranges 1-3/4-8/9-12/13-15/16-18 with no gaps)"
+        },
+        {
+          "at": "2026-10-16T13:58:23Z",
+          "name": "tsc --noEmit -p . clean, zero errors"
+        },
+        {
+          "at": "2026-10-16T14:00:13Z",
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)"
+        }
+      ]
     }
   ]
 }
