@@ -593,8 +593,14 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
     moveBuddyCard(deltaX < 0 ? 1 : -1);
   }
 
+  // This page is its own scroll container (h-dvh + overflow-y-auto), so the
+  // app shell's bottom reserve does not reach inside it. With a flat pb-12 the
+  // last 48px sat behind the floating navigation pill, which is where Delete
+  // my account lives - Louis could see it and not reach it. --bb-bottom-nav-h
+  // is the pill's real measured height, safe area included, published by
+  // components/BottomNav.tsx for exactly this.
   return (
-    <div className={`${embedded ? "min-h-0 overflow-visible" : "h-dvh min-h-screen overflow-y-auto"} bg-[var(--bb-background,#0e1218)] pb-12 text-[var(--bb-text-primary,#f9fafb)] [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch]`}>
+    <div className={`${embedded ? "min-h-0 overflow-visible" : "h-dvh min-h-screen overflow-y-auto"} bg-[var(--bb-background,#0e1218)] pb-[calc(var(--bb-bottom-nav-h,0px)+3rem)] text-[var(--bb-text-primary,#f9fafb)] [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch]`}>
       {guestLogoutWarningOpen ? (
         <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/55 px-4">
           <div className="w-full max-w-md rounded-3xl border border-[#d8e7f2] bg-white p-6 text-center shadow-2xl">

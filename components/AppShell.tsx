@@ -902,7 +902,24 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       // The blog is content, not the app: a half finished account opening a
       // post should read the post, not get pulled into the chooser.
       // Same for the printed-book pages (/books/...), linked from social and email.
-      if (pathname === "/start" || pathname?.startsWith("/events/") || pathname?.startsWith("/blog") || pathname?.startsWith("/books/")) {
+      // Settings and account deletion are exempt for a different reason than
+      // the rest of this list (Louis, 2026-10-16). The others are places a
+      // half-finished account has a good reason to be. These two are places
+      // they must be ABLE to reach: App Review Guideline 5.1.1(v) requires
+      // account deletion to be reachable from inside the app, and until now a
+      // brand-new account was pushed to /start the moment it opened Settings -
+      // which is exactly what Louis hit trying to film the deletion flow for
+      // App Review, and what a reviewer creating their own account would hit
+      // too. Someone who wants to delete the account they just made must not
+      // have to finish onboarding first.
+      if (
+        pathname === "/start" ||
+        pathname === "/settings" ||
+        pathname === "/delete-account" ||
+        pathname?.startsWith("/events/") ||
+        pathname?.startsWith("/blog") ||
+        pathname?.startsWith("/books/")
+      ) {
         setShowFirstLoginOnboarding(false);
         return;
       }
