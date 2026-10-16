@@ -63,6 +63,12 @@ const TABS: Tab[] = [
 const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
   // Bible Buddy TV pulled from the UI 2026-09-02 - too buggy for now. The
   // routes still exist; it just has no doors until it is fixed.
+  // Settings last used to be reachable only through the dashboard's own tab
+  // strip, which switches slides inside one page. Louis found that it bounced
+  // him back to the dashboard every time, so account deletion - the thing App
+  // Review specifically checks for - had no dependable way in. /settings is a
+  // real route and always works.
+  { label: "Settings", href: "/settings", icon: "⚙️" },
   { label: "Invite a Buddy", href: "/ambassador", icon: "💌" },
   { label: "BB Chat", href: "/chat", icon: "💬" },
   { label: "Notes", href: "/notes", icon: "📝" },
