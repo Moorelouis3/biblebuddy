@@ -66389,6 +66389,71 @@
           "at": "2026-10-16T20:57:18Z"
         }
       ]
+    },
+    {
+      "book": "1 Timothy",
+      "chapter": 4,
+      "startedAt": "2026-10-16T21:46:17Z",
+      "finishedAt": "2026-10-16T22:00:30Z",
+      "durationMinutes": 14.2,
+      "sections": 4,
+      "cards": 29,
+      "verses": 16,
+      "notes": "New chapter (not a style redo), normal forward progress after 1 Timothy 3. This session's container initially showed a detached HEAD against a stale-looking cached local main ref; a fresh git fetch origin main confirmed the detached HEAD already matched the true current origin/main tip exactly (1 Timothy 3), so only the cached branch pointer was stale, not the working tree. Reset local main to match and proceeded with no work lost. Overrides chapter 4 of the legacy bulk file lib/firstTimothyOneToSixPersonalNotes.ts via a new dedicated lib/firstTimothyFourSource.ts file; chapters 5-6 of that legacy file remain live and untouched. Style checker, parser check, and tsc all clean. A manual section 13 eye check added one honest many scholars believe hedge on the backward/forward reference of a faithful saying in verse 9.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-16T21:48:00Z"
+        },
+        {
+          "name": "target chapter determined: 1 Timothy 4 (normal forward progress, redo backlog empty, last entry was 1 Timothy 3)",
+          "at": "2026-10-16T21:48:00Z"
+        },
+        {
+          "name": "KJV text fetched (1 Timothy 4, 16 verses, aruljohn mirror)",
+          "at": "2026-10-16T21:48:08Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md) and reference implementation lib/firstTimothyThreeSource.ts reviewed",
+          "at": "2026-10-16T21:48:21Z"
+        },
+        {
+          "name": "source file write in progress: drafting lib/firstTimothyFourSource.ts",
+          "at": "2026-10-16T21:50:36Z"
+        },
+        {
+          "name": "source file written (lib/firstTimothyFourSource.ts, 29 cards, 4 sections)",
+          "at": "2026-10-16T21:54:58Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-10-16T21:55:02Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to chapter 4, applyPersonalFirstTimothyFourStudySections)",
+          "at": "2026-10-16T21:55:20Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 29 cards, verse ranges 1-5/6-10/11-13/14-16, no gaps, text verbatim)",
+          "at": "2026-10-16T21:56:29Z"
+        },
+        {
+          "name": "tsc clean (first full pass)",
+          "at": "2026-10-16T21:59:51Z"
+        },
+        {
+          "name": "manual section 13 eye check found and fixed 1 content issue (added honest scholarly hedge to the A Faithful Saying card); style checker and parser check reverified clean",
+          "at": "2026-10-16T21:59:51Z"
+        },
+        {
+          "name": "tsc reverified clean after eye check fix",
+          "at": "2026-10-16T21:59:51Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-16T22:00:47Z"
+        }
+      ]
     }
   ]
 }
