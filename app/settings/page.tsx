@@ -30,6 +30,8 @@ import { isAdminUser } from "../../lib/readingProgress";
 import type { BuddyAvatar } from "../../lib/buddyAvatars";
 import { clearLegacyBibleYearOfflineStorage } from "../../lib/bibleYearOfflinePack";
 import BibleLockSettings from "@/components/BibleLockSettings";
+import { isNativeApp } from "@/lib/nativeApp";
+import { APP_WELCOME_PATH } from "@/lib/appHome";
 
 type StorePurchaseRow = {
   item_id: string;
@@ -344,6 +346,15 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         // the login is already gone; clearing the local session is best-effort
       }
       setTimeout(() => {
+        // In the app, "/" is the marketing landing page, and a hard navigation
+        // there leaves the webview on an advert for the app you just left -
+        // which is what Louis saw, with no way back and no profile. /app is
+        // the native front door: it finds no session and shows the welcome
+        // screen, which is what being signed out should look like.
+        if (isNativeApp()) {
+          router.replace(APP_WELCOME_PATH);
+          return;
+        }
         window.location.href = "/";
       }, 2500);
     } catch (error) {
@@ -593,14 +604,19 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
     moveBuddyCard(deltaX < 0 ? 1 : -1);
   }
 
-  // This page is its own scroll container (h-dvh + overflow-y-auto), so the
-  // app shell's bottom reserve does not reach inside it. With a flat pb-12 the
-  // last 48px sat behind the floating navigation pill, which is where Delete
-  // my account lives - Louis could see it and not reach it. --bb-bottom-nav-h
-  // is the pill's real measured height, safe area included, published by
-  // components/BottomNav.tsx for exactly this.
+  // NOT its own scroll container. It was h-dvh + overflow-y-auto, and inside
+  // the iOS app that put the last stretch of the page permanently out of
+  // reach: the body carries the status-bar inset, so a child asking for the
+  // full viewport height hangs off the bottom of the screen by exactly that
+  // much, and overscroll-behavior:contain meant you could not scroll to it.
+  // Delete my account is the last thing on this page. Louis had to turn the
+  // phone sideways to tap it.
+  //
+  // Scrolling with the document instead fixes it everywhere and costs nothing.
+  // The padding clears the floating navigation pill: --bb-bottom-nav-h is its
+  // real measured height, safe area included, published by BottomNav.
   return (
-    <div className={`${embedded ? "min-h-0 overflow-visible" : "h-dvh min-h-screen overflow-y-auto"} bg-[var(--bb-background,#0e1218)] pb-[calc(var(--bb-bottom-nav-h,0px)+3rem)] text-[var(--bb-text-primary,#f9fafb)] [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch]`}>
+    <div className={`${embedded ? "min-h-0 overflow-visible" : "min-h-dvh"} bg-[var(--bb-background,#0e1218)] pb-[calc(var(--bb-bottom-nav-h,0px)+3rem)] text-[var(--bb-text-primary,#f9fafb)] [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch]`}>
       {guestLogoutWarningOpen ? (
         <div className="fixed inset-0 z-[300] flex items-center justify-center bg-black/55 px-4">
           <div className="w-full max-w-md rounded-3xl border border-[#d8e7f2] bg-white p-6 text-center shadow-2xl">
