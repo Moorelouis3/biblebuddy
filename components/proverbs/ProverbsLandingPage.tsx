@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSupabaseUser } from "@/lib/useSupabaseUser";
 import { getCommunityEvent } from "@/lib/communityEvents";
+import { getLandingSessionId, markShareLandingClick } from "@/lib/shareLandingReferral";
 
 /**
  * The permanent, shareable entry page for The Wisdom of Proverbs.
@@ -21,6 +22,37 @@ import { getCommunityEvent } from "@/lib/communityEvents";
  */
 
 const EVENT_SLUG = "wisdom-of-proverbs";
+const PAGE_PATH = "/devotionals/wisdom-of-proverbs";
+
+/**
+ * Tracking, added 2026-10-16. This page shipped with none, so the only thing
+ * known about the link was Vercel's raw page views: no way to tell a visitor
+ * who read it and left from one who went on to sign up and join.
+ *
+ * session_id is the shared bb:landing-session-id, which is also what the signup
+ * events carry, so a view here and the signup that follows it join on one id.
+ * Shape copied from components/WisdomProverbsPopup.tsx.
+ */
+function track(eventName: string, userId: string | null, extra: Record<string, unknown> = {}) {
+  try {
+    void fetch("/api/landing-analytics", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event_name: eventName,
+        session_id: getLandingSessionId(),
+        user_id: userId,
+        source: "share_link",
+        page_path: window.location.pathname,
+        referrer: document.referrer || null,
+        metadata: { event_slug: EVENT_SLUG, signed_in: Boolean(userId), ...extra },
+      }),
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    // Analytics never blocks the page.
+  }
+}
 
 type Member = { name: string; image: string | null };
 
@@ -79,6 +111,19 @@ export default function ProverbsLandingPage() {
   const startHref = userId ? studyPath : `/signup?next=${encodeURIComponent(studyPath)}`;
   const ctaLabel = userId ? "Open the study" : "Start the Free 31-Day Study";
 
+  const handleStartClick = (placement: string) => {
+    markShareLandingClick(PAGE_PATH, placement);
+    track("proverbs_share_start_click", userId ?? null, { placement, destination: startHref });
+  };
+
+  const viewTracked = useRef(false);
+
+  useEffect(() => {
+    if (authLoading || viewTracked.current) return;
+    viewTracked.current = true;
+    track("proverbs_share_page_view", userId ?? null);
+  }, [authLoading, userId]);
+
   useEffect(() => {
     let cancelled = false;
     // Neither call may block the page: a failure just hides that piece.
@@ -123,6 +168,7 @@ export default function ProverbsLandingPage() {
     <div className="text-center">
       <Link
         href={startHref}
+        onClick={() => handleStartClick("hero")}
         className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#2f6fd0] px-8 py-4 text-base font-bold text-white shadow-lg shadow-[#2f6fd0]/25 transition hover:bg-[#2559ab] sm:w-auto sm:text-lg"
       >
         <span aria-hidden>📖</span>
@@ -260,6 +306,7 @@ export default function ProverbsLandingPage() {
           <div className="mt-7">
             <Link
               href={startHref}
+              onClick={() => handleStartClick("closing")}
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-base font-bold text-[#10213a] transition hover:bg-[#eef4fd] sm:w-auto sm:text-lg"
             >
               <span aria-hidden>📖</span>

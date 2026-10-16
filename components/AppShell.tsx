@@ -18,6 +18,7 @@ import { isNativeApp } from "../lib/nativeApp";
 import { recordPendingTermsAcceptance } from "../lib/termsAcceptance";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
+import { readShareLandingReferral } from "../lib/shareLandingReferral";
 import { recalculateTotalActions } from "../lib/recalculateTotalActions";
 import { syncCurrentStreakToProfileStats } from "../lib/profileStats";
 import { FeatureRenderPriorityProvider } from "./FeatureRenderPriorityContext";
@@ -1505,6 +1506,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
         await saveSignupAttributionForUser(userId, displayName, signupAttribution);
 
+        // Set when a public share landing page sent them here. An Apple or
+        // Google signup lands back on /dashboard, where the /signup?next= that
+        // sent them is long gone, so this marker is the only way that page gets
+        // the credit (2026-10-16).
+        const shareLandingReferral = readShareLandingReferral();
+
         await fetch("/api/landing-analytics", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -1528,6 +1535,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               startJourneyClicked: window.localStorage.getItem("bb:landing-start-clicked") === "1",
               startJourneyClickedAt: window.localStorage.getItem("bb:landing-start-clicked-at"),
               startJourneyClickedFrom: window.localStorage.getItem("bb:landing-start-clicked-from"),
+              shareLandingPage: shareLandingReferral?.page ?? null,
+              shareLandingPlacement: shareLandingReferral?.placement ?? null,
+              shareLandingClickedAt: shareLandingReferral?.at ?? null,
             },
           }),
           keepalive: true,

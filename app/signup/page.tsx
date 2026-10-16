@@ -13,6 +13,7 @@ import { markTermsAcceptancePending, recordTermsAcceptance } from "../../lib/ter
 import { signInWithProviderNatively } from "../../lib/nativeAuth";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { reportCloserSignup } from "../../lib/closerSignup";
+import { readShareLandingReferral } from "../../lib/shareLandingReferral";
 import {
   getSignupAttributionFromBrowser,
   writePendingSignupAttribution,
@@ -89,6 +90,10 @@ async function saveSignupAttributionToProfile(userId: string, username: string, 
 
 async function recordLandingSignupEvent(userId: string, username: string, attribution: SignupAttribution) {
   if (typeof window === "undefined") return;
+  // Set when they arrived through a public share landing page, e.g. the
+  // Wisdom of Proverbs link (2026-10-16). page_path already carries ?next=,
+  // but only for a signup completed on this page.
+  const shareLanding = readShareLandingReferral();
   try {
     await fetch("/api/landing-analytics", {
       method: "POST",
@@ -111,6 +116,9 @@ async function recordLandingSignupEvent(userId: string, username: string, attrib
           startJourneyClicked: window.localStorage.getItem("bb:landing-start-clicked") === "1",
           startJourneyClickedAt: window.localStorage.getItem("bb:landing-start-clicked-at"),
           startJourneyClickedFrom: window.localStorage.getItem("bb:landing-start-clicked-from"),
+          shareLandingPage: shareLanding?.page ?? null,
+          shareLandingPlacement: shareLanding?.placement ?? null,
+          shareLandingClickedAt: shareLanding?.at ?? null,
         },
       }),
       keepalive: true,

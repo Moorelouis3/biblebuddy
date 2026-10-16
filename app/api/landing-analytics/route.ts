@@ -58,6 +58,11 @@ const ALLOWED_EVENTS = new Set([
   "wisdom_proverbs_popup_join_clicked",
   "wisdom_proverbs_popup_join_success",
   "wisdom_proverbs_popup_join_failed",
+  // The shareable Proverbs landing page (2026-10-16). It is the one Proverbs
+  // surface that reported nothing, so its first ten days of visitors could not
+  // be told apart from bounces. Metadata: {event_slug, placement, signed_in}.
+  "proverbs_share_page_view",
+  "proverbs_share_start_click",
   // Homepage redesign (2026-09-02) - section click-throughs.
   "home_continue_plan_click",
   "home_nearby_day_click",
