@@ -67256,6 +67256,59 @@
           "at": "2026-10-17T11:55:12Z"
         }
       ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 5,
+      "startedAt": "2026-10-17T13:46:24Z",
+      "finishedAt": "2026-10-17T13:57:26Z",
+      "durationMinutes": 11,
+      "sections": 3,
+      "cards": 29,
+      "verses": 14,
+      "notes": "New chapter, normal forward progress (priority queue and style redo backlog both empty). Written and wired via a new dedicated lib/hebrewsFiveSource.ts file, extending dedicated per-chapter coverage into Hebrews 5.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T13:46:24Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 5 (priority queue and style redo backlog both empty, normal forward progress after Hebrews 4)",
+          "at": "2026-10-17T13:46:30Z"
+        },
+        {
+          "name": "KJV text fetched for Hebrews 5 (14 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-10-17T13:47:05Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-17T13:49:00Z"
+        },
+        {
+          "name": "lib/hebrewsFiveSource.ts written (3 sections, 29 cards)",
+          "at": "2026-10-17T13:54:00Z"
+        },
+        {
+          "name": "style checker (scripts/check_bible_note_style.py) clean",
+          "at": "2026-10-17T13:55:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-17T13:55:40Z"
+        },
+        {
+          "name": "parser check passed (3 sections, 29 cards, matches design)",
+          "at": "2026-10-17T13:56:05Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean",
+          "at": "2026-10-17T13:56:40Z"
+        },
+        {
+          "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, bible-notes-progress-log.json)",
+          "at": "2026-10-17T13:57:26Z"
+        }
+      ]
     }
   ]
 }
