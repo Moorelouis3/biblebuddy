@@ -123,7 +123,7 @@ export async function sendBugReply(
   const now = new Date().toISOString();
   const { error: messageError } = await admin
     .from("messages")
-    .insert({ conversation_id: conversationId, sender_id: louisUserId, content, created_at: now });
+    .insert({ conversation_id: conversationId, sender_id: louisUserId, content, created_at: now, is_automated: true });
   if (messageError) throw new Error(messageError.message);
 
   const preview = content.length > 120 ? `${content.slice(0, 117)}...` : content;

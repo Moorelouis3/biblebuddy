@@ -174,6 +174,9 @@ export default function ConversationPage({
   const [blockState, setBlockState] = useState<BlockState | null>(null);
   const [uploadingPhoto, setUploadingPhoto] = useState(false);
   const [photoPreview, setPhotoPreview] = useState<{ file: File; url: string } | null>(null);
+  /** The rest of a multi-photo pick, sent one after the other. */
+  const [photoQueue, setPhotoQueue] = useState<Array<{ file: File; url: string }>>([]);
+  const photoQueueRef = useRef<Array<{ file: File; url: string }>>([]);
   const [expandedImageUrl, setExpandedImageUrl] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -437,19 +440,26 @@ export default function ConversationPage({
   }, [conversationId, userId]);
 
   async function handlePhotoSelect(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file || !userId || blockState) return;
-    const objectUrl = URL.createObjectURL(file);
-    setPhotoPreview({ file, url: objectUrl });
+    // Every photo picked, not just the first (Louis, 2026-10-17: "I can only
+    // upload one pic at a time"). They go as separate messages, in order, the
+    // way every other messaging app sends them.
+    const files = Array.from(e.target.files ?? []);
+    if (files.length === 0 || !userId || blockState) return;
+    const picked = files.map((file) => ({ file, url: URL.createObjectURL(file) }));
+    setPhotoPreview(picked[0]);
+    setPhotoQueue(picked.slice(1));
+    photoQueueRef.current = picked.slice(1);
     // Reset file input so same file can be selected again
     e.target.value = "";
     inputRef.current?.focus();
   }
 
-  async function handleSendPhoto() {
-    if (!photoPreview || !userId || uploadingPhoto || blockState) return;
+  async function handleSendPhoto(item?: { file: File; url: string }) {
+    const pending = item ?? photoPreview;
+    if (!pending || !userId || blockState) return;
+    if (!item && uploadingPhoto) return;
     setUploadingPhoto(true);
-    const { file } = photoPreview;
+    const { file } = pending;
     const ext = file.name.split(".").pop() ?? "jpg";
     const path = `dm-photos/${conversationId}/${userId}-${Date.now()}.${ext}`;
     const { error: uploadError } = await supabase.storage.from("post-media").upload(path, file, { upsert: false });
@@ -460,7 +470,7 @@ export default function ConversationPage({
     }
     const { data: urlData } = supabase.storage.from("post-media").getPublicUrl(path);
     const imageUrl = urlData?.publicUrl ?? null;
-    URL.revokeObjectURL(photoPreview.url);
+    URL.revokeObjectURL(pending.url);
     setPhotoPreview(null);
 
     const optimisticMsg: Message = {
@@ -508,6 +518,14 @@ export default function ConversationPage({
       window.dispatchEvent(new Event("bb:refresh-unread-messages"));
     }
     setUploadingPhoto(false);
+
+    // Next photo of the same pick, if there is one.
+    const [next, ...rest] = photoQueueRef.current;
+    if (next) {
+      photoQueueRef.current = rest;
+      setPhotoQueue(rest);
+      await handleSendPhoto(next);
+    }
   }
 
   async function handleSend() {
@@ -773,7 +791,7 @@ export default function ConversationPage({
   if (loading) {
     return (
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="h-[100dvh] w-screen bg-[var(--bb-card,#ffffff)] px-6 py-16 text-center text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-auto sm:w-full sm:max-w-3xl sm:rounded-[28px] sm:shadow-2xl">
+        <div className="h-[calc(100dvh-max(2rem,env(safe-area-inset-top,0px)+env(safe-area-inset-bottom,0px)))] w-screen bg-[var(--bb-card,#ffffff)] px-6 py-16 text-center text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-auto sm:w-full sm:max-w-3xl sm:rounded-[28px] sm:shadow-2xl">
           <p className="text-sm text-[var(--bb-text-muted,#9ca3af)]">Loading conversation...</p>
         </div>
       </ModalShell>
@@ -783,7 +801,7 @@ export default function ConversationPage({
   if (notFound) {
     return (
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="h-[100dvh] w-screen bg-[var(--bb-card,#ffffff)] px-6 py-12 text-center text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-auto sm:w-full sm:max-w-md sm:rounded-[28px] sm:shadow-2xl">
+        <div className="h-[calc(100dvh-max(2rem,env(safe-area-inset-top,0px)+env(safe-area-inset-bottom,0px)))] w-screen bg-[var(--bb-card,#ffffff)] px-6 py-12 text-center text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-auto sm:w-full sm:max-w-md sm:rounded-[28px] sm:shadow-2xl">
           <p className="mb-4 text-4xl">?</p>
           <h1 className="mb-2 text-xl font-bold">Conversation not found</h1>
           <Link href="/messages" className="text-sm font-semibold text-[var(--bb-accent,#2563eb)] hover:underline">
@@ -818,7 +836,7 @@ export default function ConversationPage({
   return (
     <>
       <ModalShell isOpen={true} onClose={() => onExternalClose ? onExternalClose() : router.back()} backdropColor="bg-black/45" zIndex="z-[80]">
-        <div className="flex h-[100dvh] w-screen flex-col overflow-hidden bg-[var(--bb-background,#f5f5f5)] text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-[84vh] sm:w-full sm:max-w-4xl sm:rounded-[32px] sm:border sm:border-[var(--bb-card-border,#e5e7eb)] sm:shadow-2xl">
+        <div className="flex h-[calc(100dvh-max(2rem,env(safe-area-inset-top,0px)+env(safe-area-inset-bottom,0px)))] w-screen flex-col overflow-hidden bg-[var(--bb-background,#f5f5f5)] text-[var(--bb-text-primary,#1f2937)] sm:mx-4 sm:h-[84vh] sm:w-full sm:max-w-4xl sm:rounded-[32px] sm:border sm:border-[var(--bb-card-border,#e5e7eb)] sm:shadow-2xl">
           <div className="flex items-center gap-3 border-b border-[var(--bb-card-border,#e5e7eb)] bg-[var(--bb-card,#ffffff)] px-5 py-4">
             <button
               type="button"
@@ -1175,9 +1193,14 @@ export default function ConversationPage({
                   <div className="mb-3 flex items-start gap-3">
                     <div className="relative">
                       <img src={photoPreview.url} alt="Photo preview" className="h-24 w-24 rounded-2xl object-cover border border-[var(--bb-card-border,#e5e7eb)]" />
+                      {photoQueue.length > 0 ? (
+                        <span className="absolute -bottom-1 -left-1 rounded-full bg-[var(--bb-accent,#2f7fe8)] px-2 py-0.5 text-[11px] font-black text-white shadow">
+                          +{photoQueue.length} more
+                        </span>
+                      ) : null}
                       <button
                         type="button"
-                        onClick={() => { URL.revokeObjectURL(photoPreview.url); setPhotoPreview(null); }}
+                        onClick={() => { URL.revokeObjectURL(photoPreview.url); photoQueue.forEach((q) => URL.revokeObjectURL(q.url)); setPhotoPreview(null); setPhotoQueue([]); photoQueueRef.current = []; }}
                         className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-gray-800 text-white text-xs font-bold"
                       >
                         ×
@@ -1191,6 +1214,7 @@ export default function ConversationPage({
                     ref={photoInputRef}
                     type="file"
                     accept="image/*"
+                    multiple
                     className="hidden"
                     onChange={handlePhotoSelect}
                   />

@@ -68,7 +68,16 @@ export function ModalShell({
       className={`bb-modal-shell bb-skin-modal-backdrop fixed inset-0 ${zIndex} ${backdropColor} flex ${
         scrollable ? "items-start overflow-y-auto py-10" : placement === "bottom" ? "items-end pb-6 sm:pb-8" : "items-center"
       } justify-center p-4 ${closing ? "modal-backdrop-out" : "modal-backdrop-in"}`}
-      style={{ zIndex: 9990 }}
+      style={{
+        zIndex: 9990,
+        // A modal is position:fixed, so the safe-area padding the body carries
+        // never reaches it - which is why a full height panel ran under the
+        // clock and the battery on a phone (Louis, 2026-10-17: "the convo
+        // popup is bigger than the page so it bleeds into the upper part of
+        // the phone"). p-4 stays the floor; the inset wins when it is larger.
+        paddingTop: "max(1rem, env(safe-area-inset-top, 0px))",
+        paddingBottom: "max(1rem, env(safe-area-inset-bottom, 0px))",
+      }}
       onClick={closeOnBackdrop ? onClose : undefined}
     >
       <div

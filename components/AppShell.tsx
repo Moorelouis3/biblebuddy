@@ -2019,11 +2019,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           .from("profile_stats")
           .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_streak, selected_streak_flame")
           .in("user_id", [...new Set(otherIds)]),
+        // Primary means I have written back, the way every messaging app means
+        // it. It used to mean the other person had written to me, which is true
+        // of nearly every conversation there is - so everything was Primary and
+        // the split said nothing (Louis, 2026-10-17: "it is making all my
+        // messages primary and I do not like that").
+        //
+        // is_automated keeps the Bug Fixer out of it: those replies go out as
+        // Louis, and counting them would quietly put every bug report back in
+        // Primary.
         supabase
           .from("messages")
           .select("conversation_id")
           .in("conversation_id", merged.map((c: any) => c.id))
-          .neq("sender_id", currentUserId),
+          .eq("sender_id", currentUserId)
+          .eq("is_automated", false),
       ]);
 
       const profiles = profileResult.data || [];
@@ -3497,16 +3507,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                                   <div className="flex-1 min-w-0">
                                     <div className="flex items-center justify-between gap-2">
                                       <div className="flex min-w-0 items-center gap-2">
-                                        <Link
-                                          href={`/profile/${convo.otherUserId}`}
-                                          onClick={(e) => {
-                                            e.stopPropagation();
-                                            setIsMessagesOpen(false);
-                                          }}
-                                          className={`text-sm truncate hover:underline ${convo.hasUnread ? "font-bold text-[var(--bb-text-primary,#111827)]" : "font-medium text-[var(--bb-text-primary,#1f2937)]"}`}
+                                        {/* Plain text, not a link to the profile. The name is the
+                                            biggest thing in the row and the obvious place to tap, so
+                                            a link here meant tapping a message usually opened the
+                                            person instead of the conversation (Louis, 2026-10-17:
+                                            "clicking the alert most the time opens the person
+                                            profile cause clicking their name does that"). The
+                                            profile is a tap away inside the conversation. */}
+                                        <span
+                                          className={`text-sm truncate ${convo.hasUnread ? "font-bold text-[var(--bb-text-primary,#111827)]" : "font-medium text-[var(--bb-text-primary,#1f2937)]"}`}
                                         >
                                           {convo.otherUserName}
-                                        </Link>
+                                        </span>
                                         <StreakFlameBadge currentStreak={convo.otherUserCurrentStreak} flameId={convo.otherUserSelectedStreakFlame} />
                                         <UserBadge customBadge={convo.otherUserBadge} isPaid={convo.otherUserIsPaid} />
                                       </div>
