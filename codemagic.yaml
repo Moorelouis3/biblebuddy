@@ -168,7 +168,7 @@ workflows:
         # An app asking for an entitlement its profile lacks cannot be signed,
         # so this stays off until Apple issues a profile that has it. See
         # docs/bible-lock-entitlement-evidence.md.
-        BIBLE_LOCK_ENTITLEMENT: "on"
+        BIBLE_LOCK_ENTITLEMENT: "off"
         # The version people see is "<this>.<build>" - 1.09 is version 1,
         # build 9 (Louis, 2026-10-17: "so I know it's version 1 build 9").
         # Bump it to 2 when version 2 ships and the numbers read 2.14, 2.15.
