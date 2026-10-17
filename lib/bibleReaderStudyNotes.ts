@@ -1222,6 +1222,7 @@ import { PHILEMON_1_PERSONAL_SECTIONS } from "./philemonOnePersonalNotes";
 import { PHILEMON_ONE_PERSONAL_SECTIONS } from "./philemonOneSource";
 import { HEBREWS_1_13_PERSONAL_SECTIONS } from "./hebrewsOneToThirteenPersonalNotes";
 import { HEBREWS_ONE_PERSONAL_SECTIONS } from "./hebrewsOneSource";
+import { HEBREWS_TWO_PERSONAL_SECTIONS } from "./hebrewsTwoSource";
 import { JAMES_1_5_PERSONAL_SECTIONS } from "./jamesOneToFivePersonalNotes";
 import { FIRST_PETER_1_5_PERSONAL_SECTIONS } from "./firstPeterOneToFivePersonalNotes";
 import { SECOND_PETER_1_3_PERSONAL_SECTIONS } from "./secondPeterOneToThreePersonalNotes";
@@ -1566,7 +1567,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 timothy" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
     (normalizeBook(book) === "titus" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "philemon" && section.chapter === 1) ||
-    (normalizeBook(book) === "hebrews" && section.chapter === 1);
+    (normalizeBook(book) === "hebrews" && (section.chapter === 1 || section.chapter === 2));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4973,6 +4974,10 @@ function applyPersonalHebrewsOneThroughThirteenStudySections() {
 
 function applyPersonalHebrewsOneSourceStudySections() {
   replaceStudySectionsForBookRange("hebrews", 1, 1, HEBREWS_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHebrewsTwoSourceStudySections() {
+  replaceStudySectionsForBookRange("hebrews", 2, 2, HEBREWS_TWO_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJamesOneThroughFiveStudySections() {
@@ -12763,6 +12768,7 @@ applyPersonalPhilemonOneStudySections();
 applyPersonalPhilemonOneSourceStudySections();
 applyPersonalHebrewsOneThroughThirteenStudySections();
 applyPersonalHebrewsOneSourceStudySections();
+applyPersonalHebrewsTwoSourceStudySections();
 applyPersonalJamesOneThroughFiveStudySections();
 applyPersonalFirstPeterOneThroughFiveStudySections();
 applyPersonalSecondPeterOneThroughThreeStudySections();

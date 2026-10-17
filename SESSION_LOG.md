@@ -8076,3 +8076,7 @@ App Groups too. Proof and next steps in docs/bible-lock-entitlement-evidence.md;
 it needs Xcode on a Mac or an Apple support ticket.
 Next: confirm TestFlight build 10 finishes processing, then the Bible Lock
 entitlement with Apple.
+
+## 2026-10-17T09:57:40Z (hourly chapter notes run)
+Chapter: Hebrews 2 | Duration: 11.7 min | Sections: 4 | Cards: 32 | Status: pass
+Next up: Hebrews 3
