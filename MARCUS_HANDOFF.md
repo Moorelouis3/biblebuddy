@@ -895,3 +895,6 @@ routine runs at 08:00 and 16:00 UTC — so the 16:00 UTC run on 10-15 and the
 checking whether the Deploy routine's own scheduled trigger is still firing
 and completing. Not blocking this run; proceeding to claim and write the
 next chapter per the routine's normal retry-on-next-run behavior.
+
+## Hebrews through Revelation have generic templated "notes," not real content
+The legacy bulk files covering Hebrews, James, 1-2 Peter, 1-3 John, Jude, and Revelation (e.g. lib/hebrewsOneToThirteenPersonalNotes.ts) turned out to be generic filler text with the KJV phrase substituted in, not real teaching, discovered while carving Hebrews 1 out as its own chapter per the established per-book redo pattern. This is live in the app right now for the entire rest of the New Testament until forward progress carves out each chapter one by one; flagging in case Louis wants it prioritized or added to the style redo backlog explicitly rather than waiting for the hourly routine to reach it naturally.
