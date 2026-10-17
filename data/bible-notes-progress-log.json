@@ -66706,6 +66706,63 @@
           "at": "2026-10-17T02:01:28Z"
         }
       ]
+    },
+    {
+      "book": "2 Timothy",
+      "chapter": 3,
+      "startedAt": "2026-10-17T02:45:37Z",
+      "finishedAt": "2026-10-17T02:56:41Z",
+      "durationMinutes": 11.1,
+      "sections": 4,
+      "cards": 34,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 711 packages, about 30s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after 2 Timothy 2, the latest entry in data/bible-notes-progress-log.json. Confirmed no lib/secondTimothyThreeSource.ts existed yet and 2 Timothy has no legacy bulk file covering chapter 3 beyond the already-superseded lib/secondTimothyOneToFourPersonalNotes.ts. Fetched real KJV text for 2 Timothy 3 (17 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (2Timothy.json). The chapter opens with the warning that perilous times will come in the last days, cataloguing an eighteen word list of vices (lovers of their own selves, covetous, boasters, proud, blasphemers, disobedient to parents, unthankful, unholy, without natural affection, trucebreakers, false accusers, incontinent, fierce, despisers of those that are good, traitors, heady, highminded, lovers of pleasures more than lovers of God) and the warning about those having a form of godliness but denying the power thereof, closing with the charge to turn away from such (1-5); turns to false teachers who creep into houses and lead captive silly women laden with sins, ever learning but never coming to the knowledge of the truth, compared to Jannes and Jambres who withstood Moses, men of corrupt minds whose folly will be made manifest to all (6-9); Paul's appeal to his own doctrine, manner of life, and the real persecutions he endured at Antioch, Iconium, and Lystra from which the Lord delivered him, the flat statement that all who will live godly in Christ Jesus shall suffer persecution, and the warning that evil men and seducers shall wax worse and worse, deceiving and being deceived (10-13); and the charge to continue in what Timothy learned from a child in the holy scriptures, landing on the classic statement that all scripture is given by inspiration of God and is profitable for doctrine, reproof, correction, and instruction in righteousness, so the man of God may be perfect, throughly furnished unto all good works (14-17). Split into 4 sections (1-5, 6-9, 10-13, 14-17), all 17 verses covered with no gaps or overlaps, 34 total cards, exactly 2 cards per verse. The long vice list in verses 2-4 was grouped into thematic clusters (self-exaltation, disrespect of family and God, broken relationships, betrayal and pride) rather than one card per word, each cluster card defining its 2-3 archaic words plainly, consistent with the spec's section 12 guidance for chapters that resist teaching. One attempt at the spec's inline-list body tool (for the four jobs of scripture in verse 16) had to be rewritten into plain quoted prose, since the mechanical checker counts every emoji-led line anywhere in a card as one of the four required bullets and an inline list would have broken that count, the same known limitation already noted against lib/genesisThirtyOneSource.ts in a prior Colossians 3 run. scripts/check_bible_note_style.py found 6 problems on the first automated pass (3 final bullets ending in the wrong emoji instead of 📖/➡️, and the verse 16 inline-list card miscounted as 8 bullets with a repeated emoji), fixed by swapping 3 last-bullet emoji to ➡️ and rewriting the inline list into prose, clean on the second pass across all 34 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (perilous, covetous, boasters, blasphemers, without natural affection, trucebreakers, false accusers, incontinent, fierce, heady, highminded, form of godliness, creep into houses, silly women, divers lusts, Jannes and Jambres, reprobate, longsuffering, charity, seducers, wax worse and worse, inspiration, throughly furnished), closes on meaning rather than mechanics, and has no duplicate titles or repeated opening lines across all 34 cards. Parser check passed exactly via getBibleReaderStudySections('2 timothy', 3): 4/4 sections, verse ranges 1-5/6-9/10-13/14-17 with no gaps, 34 total cards rendering verbatim, last verse covered 17 of 17. npx tsc --noEmit -p . ran clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/secondTimothyThreeSource.ts, the 2 timothy condition in preserveExactPhraseBodies extended from chapters 1-2 to include chapter 3, new applyPersonalSecondTimothyThreeStudySections() function calling replaceStudySectionsForBookRange('2 timothy', 3, 3, SECOND_TIMOTHY_THREE_PERSONAL_SECTIONS), invoked right after applyPersonalSecondTimothyTwoStudySections() so it correctly overrides the legacy SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS bulk file for chapter 3 only; chapter 4 of that legacy file remains live and untouched for a future run. New chapter, normal forward progress, not a style redo. Next forward-progress target is 2 Timothy 4.",
+      "steps": [
+        {
+          "name": "npm install done (fresh clone, 711 packages, about 30s)",
+          "at": "2026-10-17T02:46:10Z"
+        },
+        {
+          "name": "target chapter determined: 2 Timothy 3 (normal forward progress; priority queue and style redo backlog both empty; last progress-log entry was 2 Timothy 2)",
+          "at": "2026-10-17T02:46:23Z"
+        },
+        {
+          "name": "KJV text fetched (2 Timothy 3, 17 verses, aruljohn mirror, 2Timothy.json)",
+          "at": "2026-10-17T02:46:54Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline (.claude/skills/bible-notes/SKILL.md) read in full; reference implementation lib/genesisThirtyOneSource.ts reviewed",
+          "at": "2026-10-17T02:49:30Z"
+        },
+        {
+          "name": "source file written (lib/secondTimothyThreeSource.ts, 34 cards, 4 sections)",
+          "at": "2026-10-17T02:50:30Z"
+        },
+        {
+          "name": "style checker found 6 problems (3 last-bullet emoji, 1 inline-list card miscounted), fixed, reverified clean",
+          "at": "2026-10-17T02:51:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to chapter 3, applyPersonalSecondTimothyThreeStudySections added after chapter 2's call)",
+          "at": "2026-10-17T02:51:25Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 34 cards, verse ranges 1-5/6-9/10-13/14-17, no gaps, verse 17 of 17 covered)",
+          "at": "2026-10-17T02:51:40Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean",
+          "at": "2026-10-17T02:54:08Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json entry, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals, SESSION_LOG.md)",
+          "at": "2026-10-17T02:55:37Z"
+        },
+        {
+          "name": "progress files finalized (finishedAt/durationMinutes set)",
+          "at": "2026-10-17T02:56:41Z"
+        }
+      ]
     }
   ]
 }

@@ -8026,3 +8026,7 @@ Next up: 2 Timothy 2
 ## 2026-10-17T02:10:00Z (hourly chapter notes run)
 Chapter: 2 Timothy 2 | Duration: 15 min | Sections: 7 | Cards: 32 | Status: pass
 Next up: 2 Timothy 3
+
+## 2026-10-17T02:56:34Z (hourly chapter notes run)
+Chapter: 2 Timothy 3 | Duration: 13 min | Sections: 4 | Cards: 34 | Status: pass
+Next up: 2 Timothy 4
