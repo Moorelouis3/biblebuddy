@@ -8080,3 +8080,7 @@ entitlement with Apple.
 ## 2026-10-17T09:57:40Z (hourly chapter notes run)
 Chapter: Hebrews 2 | Duration: 11.7 min | Sections: 4 | Cards: 32 | Status: pass
 Next up: Hebrews 3
+
+## 2026-10-17T10:59:06Z (hourly chapter notes run)
+Chapter: Hebrews 3 | Duration: 12.65 min | Sections: 4 | Cards: 33 | Status: pass
+Next up: Hebrews 4
