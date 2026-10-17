@@ -17,6 +17,12 @@ const REPORT_CONTENT_TYPES = [
   "profile",
   "event_member",
   "message",
+  // The buddy feed. Keep this list and ReportContentType in
+  // components/ReportBlockMenu.tsx in step: an unknown type is a 400, so a
+  // report button added there without a type added here fails silently from
+  // the reader's side.
+  "feed_post",
+  "feed_comment",
 ] as const;
 
 const REPORT_REASONS = [
