@@ -12,7 +12,7 @@ import { supabase } from "./supabaseClient";
 import type { ActionType } from "./actionTypes";
 import { syncCurrentStreakToProfileStats } from "./profileStats";
 import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
-import { clearBibleLock, UNLOCKING_ACTIONS } from "./bibleLock";
+import { liftBibleLockFor, UNLOCKING_ACTIONS } from "./bibleLock";
 
 /** Fired on any "did something" (not just viewed/opened) action. */
 export const MEANINGFUL_ACTION_EVENT = "bb:meaningful-action";
@@ -182,8 +182,13 @@ export async function recordAction(
     // hook is here because recordAction is the one function every screen that
     // finishes anything passes through - two places deciding what "done" means
     // is how someone ends up locked out of their phone after reading.
+    // It also has to SAY so. Clearing the shield in silence is the same thing
+    // as a broken feature from the reader's side (Louis, 2026-10-17: "no pop
+    // up, no new banner, no apps unlocked, nothing"), so liftBibleLockFor is
+    // the way in now - it checks whether anything was actually locked and
+    // announces it when there was.
     if (UNLOCKING_ACTIONS.has(actionType)) {
-      void clearBibleLock();
+      void liftBibleLockFor(actionType);
     }
 
     // STEP 1: Insert action into master_actions using shared function

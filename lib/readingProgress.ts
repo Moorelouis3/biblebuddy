@@ -314,6 +314,32 @@ export async function markChapterDone(userId: string, book: string, chapter: num
     }
 
     console.log(`[READING_PROGRESS] ✅ Marked ${bookKey} chapter ${chapter} as completed for user ${userId}`);
+
+    // Give the phone back, here, where the chapter is actually finished.
+    //
+    // Seven screens mark a chapter done and every one of them comes through
+    // this function, but only FullChapterReader ever lifted the Bible lock. So
+    // Louis locked his apps, read Leviticus 22 from the book page on
+    // 2026-10-17, and nothing happened: "it said locked, I finished a chapter,
+    // no pop up, no new banner, no apps unlocked, nothing." The completion was
+    // recorded correctly at 13:05:55 - it was the unlock that was never wired
+    // to this path.
+    //
+    // It also sits ABOVE the master_actions block on purpose. That block only
+    // writes an event the first time a chapter is ever completed, so hanging
+    // the unlock off it would leave anybody re-reading a chapter they had read
+    // before locked out with no way back. Finishing the chapter is what counts,
+    // not whether it was the first time.
+    //
+    // Dynamic import because this module is also pulled in by server code, and
+    // lib/bibleLock.ts registers a Capacitor plugin as soon as it loads.
+    if (typeof window !== "undefined") {
+      void import("./bibleLock")
+        .then((mod) => mod.liftBibleLockFor(ACTION_TYPE.chapter_completed))
+        .catch(() => {
+          // No plugin, not in the app, nothing locked: the read still counts.
+        });
+    }
     // Exact match, not a prefix match.
     //
     // This was `.ilike(action_label, "${actionLabel}%")`, which matched any

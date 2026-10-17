@@ -208,7 +208,28 @@ export async function liftBibleLockFor(actionType: ActionType): Promise<boolean>
   const before = await bibleLockStatus();
   if (!before.supported || !before.locked) return false;
   await clearBibleLock();
+  announceBibleLockLifted();
   return true;
+}
+
+/**
+ * Tell every open screen the apps just came back.
+ *
+ * The lift used to be silent: the shield cleared, and the strip at the top of
+ * the dashboard went on saying "Apps locked" until something happened to make
+ * it re-read. Louis, 2026-10-17, having locked his apps and finished Leviticus
+ * 22: "it said locked, I finished a chapter, no pop up, no new banner, no apps
+ * unlocked, nothing."
+ *
+ * Whoever lifts the lock fires this, and anything showing lock state listens.
+ */
+export function announceBibleLockLifted(): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.dispatchEvent(new CustomEvent("bb:bible-lock-lifted", { detail: { lifted: true } }));
+  } catch {
+    // Nothing to tell, nothing to break.
+  }
 }
 
 export async function clearBibleLock(): Promise<void> {

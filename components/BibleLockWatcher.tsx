@@ -92,7 +92,23 @@ export default function BibleLockWatcher({ userId }: { userId: string | null }) 
         .in("action_type", [...UNLOCKING_ACTIONS])
         .limit(1);
 
-      if (data && data.length > 0) {
+      // A chapter read for the second time writes no event at all - the
+      // master_actions row is written once per chapter, ever (see
+      // lib/readingProgress.ts). Somebody re-reading Psalm 23 would have been
+      // left shielded with nothing they could do about it, so completed_chapters
+      // - which is always written - is the second place to look.
+      let done = Boolean(data && data.length > 0);
+      if (!done) {
+        const { data: chapters } = await supabase
+          .from("completed_chapters")
+          .select("chapter")
+          .eq("user_id", userId)
+          .gte("completed_at", since)
+          .limit(1);
+        done = Boolean(chapters && chapters.length > 0);
+      }
+
+      if (done) {
         await clearBibleLock();
         // The reader shows its own line when it unlocks on the spot. This path
         // is the quieter one - the app coming back to find the day already

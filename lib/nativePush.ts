@@ -71,6 +71,44 @@ async function storeToken(token: string): Promise<void> {
 }
 
 /**
+ * Say where registration stopped, somewhere Louis and I can both read it.
+ *
+ * native_push_tokens held zero rows on 2026-10-17 - no phone had ever
+ * registered - and from the outside that is indistinguishable from the prompt
+ * never being asked for, the permission being refused, the plugin missing from
+ * the build, or APNs rejecting the app. Every one of those failures was being
+ * written to a console inside a WebView on a phone, which nobody can see.
+ *
+ * So the phone files it as a bug report instead, through the endpoint crashes
+ * already use. One line, the stage it died at, and the platform. It only ever
+ * reports failures, and identical ones collapse into a single row by
+ * fingerprint, so this cannot flood the tracker.
+ */
+async function reportPushFailure(stage: string, detail?: unknown): Promise<void> {
+  if (typeof window === "undefined") return;
+  try {
+    await fetch("/api/bug-reports/crash", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: "PushRegistration",
+        message: `Notifications: ${stage} (${nativePlatform()})`,
+        stack:
+          detail instanceof Error
+            ? `${detail.name}: ${detail.message}\n${detail.stack ?? ""}`
+            : detail === undefined
+              ? ""
+              : JSON.stringify(detail).slice(0, 2000),
+        page: window.location.pathname,
+        boundary: "push",
+      }),
+    });
+  } catch {
+    // If even this cannot get out, there is nothing further to try.
+  }
+}
+
+/**
  * Ask for permission, register with APNs, and remember the token.
  *
  * Call it once per session for a signed-in reader. Safe to call repeatedly:
@@ -80,26 +118,42 @@ async function storeToken(token: string): Promise<void> {
 export async function registerForNativePush(
   onOpenUrl?: (url: string) => void,
 ): Promise<boolean> {
+  if (!isNativeApp()) return false;
+
   const push = await pushPlugin();
-  if (!push) return false;
+  if (!push) {
+    await reportPushFailure("plugin not available in this build");
+    return false;
+  }
 
   try {
     let permission = await push.checkPermissions();
     if (permission.receive === "prompt" || permission.receive === "prompt-with-rationale") {
       permission = await push.requestPermissions();
     }
-    if (permission.receive !== "granted") return false;
+    if (permission.receive !== "granted") {
+      await reportPushFailure(`permission is "${permission.receive}"`);
+      return false;
+    }
 
     // Listeners before register(), or the first token can arrive with
     // nothing attached to catch it.
-    await push.removeAllListeners();
-    await push.addListener("registration", (token) => {
+    //
+    // Not awaited, deliberately. addListener returns a promise that in some
+    // Capacitor versions never settles, and awaiting it here would mean
+    // register() was never reached - permission granted, no token, nothing in
+    // native_push_tokens and no error anywhere to explain it. The same trap
+    // already cost a day on native sign-in; the listener is attached
+    // synchronously either way.
+    void push.removeAllListeners();
+    void push.addListener("registration", (token) => {
       void storeToken(token.value);
     });
-    await push.addListener("registrationError", (error) => {
+    void push.addListener("registrationError", (error) => {
       console.warn("[PUSH] registration failed:", error);
+      void reportPushFailure("APNs refused to issue a token", error);
     });
-    await push.addListener("pushNotificationActionPerformed", (action) => {
+    void push.addListener("pushNotificationActionPerformed", (action) => {
       const url = action.notification?.data?.url;
       if (typeof url === "string" && url.startsWith("/")) onOpenUrl?.(url);
     });
@@ -108,6 +162,7 @@ export async function registerForNativePush(
     return true;
   } catch (error) {
     console.warn("[PUSH] could not register:", error);
+    await reportPushFailure("threw while registering", error);
     return false;
   }
 }

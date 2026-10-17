@@ -16,6 +16,7 @@ import { getInstallEnvironment } from "../lib/installEnvironment";
 import InstallIOSSheet from "./InstallIOSSheet";
 import { isNativeApp } from "../lib/nativeApp";
 import BibleLockWatcher from "./BibleLockWatcher";
+import BibleLockLiftedToast from "./BibleLockLiftedToast";
 import { recordPendingTermsAcceptance } from "../lib/termsAcceptance";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
@@ -3111,6 +3112,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* Unlocks the phone as soon as today's reading is done, however it was
           done - not only through the screens that remember to ask. */}
       <BibleLockWatcher userId={userId} />
+      <BibleLockLiftedToast />
 
       {/* NAVBAR (hidden on landing/login/signup) */}
       {!isBarePage && !isDashboardStoreOpen && !shouldHideShellChrome && (

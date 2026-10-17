@@ -98,6 +98,34 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    // Never let a phone keep an HTML document.
+    //
+    // The store app is a WKWebView pointed at this site, and iOS caches the
+    // document it is given. The cached document names the previous build's
+    // JavaScript, so the app goes on running old code after a deploy - and
+    // quitting the app does not clear it. On 2026-10-17 four DM fixes and the
+    // Bible lock unlock were all live on the website and none of them had
+    // reached Louis's phone: "none of the DM shit went through, the 4 changes
+    // we made."
+    //
+    // StaleBuildReloader notices and reloads, but it can only run if it is in
+    // the document that was cached - a phone stuck on HTML older than the
+    // reloader itself never self-heals, which is exactly the hole this closes.
+    //
+    // Only documents. sec-fetch-dest is "script" for the hashed chunks under
+    // /_next/static and "image", "style" and so on for everything else, so
+    // those keep their immutable caching and nothing is re-downloaded. Every
+    // browser that matters has sent this header since 2019; one that does not
+    // simply behaves as it did before.
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "header", key: "sec-fetch-dest", value: "document" }],
+        headers: [{ key: "Cache-Control", value: "no-store, must-revalidate" }],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
