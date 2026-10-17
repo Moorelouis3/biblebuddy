@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
@@ -16,10 +16,15 @@ import {
 /**
  * The second screen of the Library: one study guide.
  *
- * Cover and title up top, then the two CTAs, then About This Study and What
- * You'll Get. Start Studying Free uses the existing study route, so somebody
- * already enrolled is never asked to enrol again - they get Continue Studying
- * and their saved day instead.
+ * Cover and title up top, then the two CTAs, then the dropdowns. Louis,
+ * 2026-10-17: "remove the what u get section, add it to the drop downs, and
+ * the about this study, on all studies" - the prose used to sit open between
+ * the buttons and the people, pushing everything down for a reader who had
+ * already decided. It is all still here, a tap away.
+ *
+ * Start Studying Free uses the existing study route, so somebody already
+ * enrolled is never asked to enrol again - they get Continue Studying and
+ * their saved day instead.
  */
 /**
  * "N Bible Buddies are studying X", with faces.
@@ -97,9 +102,48 @@ function ReadersCard({ studyId, title }: { studyId: string; title: string }) {
  * Collapsed by default here: on the in-app page the reader has usually already
  * decided, so it sits out of the way until asked for.
  */
-function HowItWorks({ totalDays }: { totalDays: number }) {
+function Disclosure({
+  icon,
+  title,
+  subtitle,
+  children,
+}: {
+  icon: string;
+  title: string;
+  subtitle: string;
+  children: ReactNode;
+}) {
   const [open, setOpen] = useState(false);
 
+  return (
+    <section className="mt-5 overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full items-center gap-4 px-5 py-5 text-left transition hover:bg-[var(--bb-surface-soft,#f7faff)]"
+      >
+        <span aria-hidden className="text-2xl">{icon}</span>
+        <span className="flex-1">
+          <span className="block text-lg font-black text-[var(--bb-text-primary,#111827)]">{title}</span>
+          <span className="mt-0.5 block text-sm text-[var(--bb-text-muted,#6b7280)]">{subtitle}</span>
+        </span>
+        <span
+          aria-hidden
+          className={`shrink-0 text-xl text-[var(--bb-accent,#2f7fe8)] transition-transform ${open ? "rotate-180" : ""}`}
+        >
+          ⌄
+        </span>
+      </button>
+
+      {open ? (
+        <div className="border-t border-[var(--bb-card-border,#eaf1fb)] px-5 pb-7 pt-5">{children}</div>
+      ) : null}
+    </section>
+  );
+}
+
+function HowItWorks({ totalDays }: { totalDays: number }) {
   const whatItIs = [
     ["📱", "It all happens inside Bible Buddy, on your phone or your computer. No Zoom, no video calls, no meetings to show up to."],
     ["📅", `${totalDays} days, one a day.`],
@@ -115,33 +159,21 @@ function HowItWorks({ totalDays }: { totalDays: number }) {
     ["✍️", "Do the one thing, then pray", "One small, concrete action you can check off, and a prayer to close it."],
   ];
 
-  return (
-    <section className="mt-5 overflow-hidden rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)]">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        className="flex w-full items-center gap-4 px-5 py-5 text-left transition hover:bg-[var(--bb-surface-soft,#f7faff)]"
-      >
-        <span aria-hidden className="text-2xl">📖</span>
-        <span className="flex-1">
-          <span className="block text-lg font-black text-[var(--bb-text-primary,#111827)]">
-            How this Bible study works
-          </span>
-          <span className="mt-0.5 block text-sm text-[var(--bb-text-muted,#6b7280)]">
-            Digital, self-paced, and free — here is exactly what happens
-          </span>
-        </span>
-        <span
-          aria-hidden
-          className={`shrink-0 text-xl text-[var(--bb-accent,#2f7fe8)] transition-transform ${open ? "rotate-180" : ""}`}
-        >
-          ⌄
-        </span>
-      </button>
+  // Only promises the app actually keeps.
+  const whatYouGet = [
+    `${totalDays} days of guided study`,
+    "Daily Scripture and clear explanations",
+    "Reflection questions",
+    "Practical application for real life",
+    "Track your progress in the app",
+  ];
 
-      {open ? (
-        <div className="border-t border-[var(--bb-card-border,#eaf1fb)] px-5 pb-7 pt-5">
+  return (
+    <Disclosure
+      icon="📖"
+      title="How this Bible study works"
+      subtitle="Digital, self-paced, and free — here is exactly what happens"
+    >
           <ul className="space-y-4">
             {whatItIs.map(([icon, text]) => (
               <li key={text} className="flex gap-3">
@@ -173,12 +205,25 @@ function HowItWorks({ totalDays }: { totalDays: number }) {
             ))}
           </ol>
 
+          <p className="mt-7 text-sm font-black uppercase tracking-[0.1em] text-[var(--bb-text-muted,#6b7280)]">
+            What you get
+          </p>
+          <ul className="mt-4 space-y-2.5">
+            {whatYouGet.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-2.5 text-[15px] font-semibold text-[var(--bb-text-primary,#111827)]"
+              >
+                <span aria-hidden className="mt-0.5 text-base">✅</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
           <p className="mt-6 rounded-2xl bg-[var(--bb-surface-soft,#f3f8ff)] px-4 py-3 text-sm font-medium text-[var(--bb-text-secondary,#2c3e55)]">
             All {totalDays} days are open. Go at your own pace, one day at a time.
           </p>
-        </div>
-      ) : null}
-    </section>
+    </Disclosure>
   );
 }
 
@@ -265,15 +310,6 @@ export default function StudyDetailPage({ studyId }: { studyId: string }) {
     ["❤️", "Grow closer to God"],
   ];
 
-  // Only promises the app actually keeps.
-  const whatYouGet = [
-    `${study.total_days} days of guided study`,
-    "Daily Scripture and clear explanations",
-    "Reflection questions",
-    "Practical application for real life",
-    "Track your progress in the app",
-  ];
-
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-5 md:py-8">
       <Link
@@ -345,28 +381,17 @@ export default function StudyDetailPage({ studyId }: { studyId: string }) {
         )}
       </div>
 
-      {study.description ? (
-        <section className="mt-8">
-          <h2 className="text-lg font-black text-[var(--bb-text-primary,#111827)]">About This Study</h2>
-          <p className="mt-2 text-[15px] leading-relaxed text-[var(--bb-text-secondary,#5f6368)]">
-            {study.description}
-          </p>
-        </section>
-      ) : null}
+      <div className="mt-3">
+        {study.description ? (
+          <Disclosure icon="📝" title="About This Study" subtitle="What this study is, and who it is for">
+            <p className="text-[15px] leading-relaxed text-[var(--bb-text-secondary,#2c3e55)]">
+              {study.description}
+            </p>
+          </Disclosure>
+        ) : null}
 
-      <section className="mt-7 rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f8fbff)] px-5 py-6">
-        <h2 className="text-lg font-black text-[var(--bb-text-primary,#111827)]">What You&rsquo;ll Get</h2>
-        <ul className="mt-3 space-y-2.5">
-          {whatYouGet.map((item) => (
-            <li key={item} className="flex items-start gap-2.5 text-[15px] font-semibold text-[var(--bb-text-primary,#111827)]">
-              <span aria-hidden className="mt-0.5 text-base">✅</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <HowItWorks totalDays={study.total_days} />
+        <HowItWorks totalDays={study.total_days} />
+      </div>
 
       <ReadersCard studyId={study.id} title={study.title} />
     </div>
