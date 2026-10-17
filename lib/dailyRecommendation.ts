@@ -7,6 +7,7 @@
  * re-enter the app with momentum.
  */
 
+import { BIBLE_YEAR_PLAN_HREF, bibleYearDayHref, fetchBibleYearPosition } from "./bibleYearProgress";
 import { SCRAMBLED_BOOKS } from "./scrambledGameData";
 import { isSeriesWeekComplete, toSeriesWeekProgressState } from "./seriesWeekProgress";
 import { supabase } from "./supabaseClient";
@@ -675,6 +676,21 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
           { title: "Hey, your next chapter is ready", subtitle: `You stopped at ${chapterRef}, so today is a good day for ${nextChapter.book} ${nextChapter.chapter}.` },
         ]));
       } else {
+        // Bible in One Year, resolved to the day itself.
+        //
+        // This said "Continue Reading Plan" and dropped people on
+        // /reading-plans/bible-in-one-year - the plan's front door - leaving
+        // them to work out which of 365 days they were on, which is the one
+        // question the card exists to answer (Louis, 2026-10-17: "fix Bible in
+        // One Year to resolve to a specific day").
+        //
+        // fetchBibleYearPosition already knows: planDay is the next day to
+        // open, and it counts from the furthest day finished rather than the
+        // first one skipped, so a missed day never drags the number backwards.
+        const bibleYearPosition = isBibleBuddy ? null : await fetchBibleYearPosition(userId);
+        const bibleYearDay = bibleYearPosition && !bibleYearPosition.planFinished ? bibleYearPosition.planDay : null;
+        const dayLabel = bibleYearDay ? `Day ${bibleYearDay}` : null;
+
         candidates.push(withLouisCard(createRecommendation({
           priority: 81,
           greeting,
@@ -683,9 +699,15 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
             `you read ${chapterRef} in ${planName}.`,
             `It's been a while since you last read from ${planName}.`
           ),
-          recommendationLine: "Jump back into your reading plan while the rhythm is still there.",
-          primaryButtonText: "Continue Reading Plan",
-          primaryButtonHref: isBibleBuddy ? "/reading-plans/bible-buddy" : "/reading-plans/bible-in-one-year",
+          recommendationLine: dayLabel
+            ? `${dayLabel} is next, so you already know exactly where to pick it back up.`
+            : "Jump back into your reading plan while the rhythm is still there.",
+          primaryButtonText: dayLabel ? `Continue ${dayLabel}` : "Continue Reading Plan",
+          primaryButtonHref: isBibleBuddy
+            ? "/reading-plans/bible-buddy"
+            : bibleYearDay
+              ? bibleYearDayHref(bibleYearDay)
+              : BIBLE_YEAR_PLAN_HREF,
           level: 1,
           category: "reading_plan",
           cardTheme: "blue",

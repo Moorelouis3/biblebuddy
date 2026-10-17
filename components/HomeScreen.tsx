@@ -22,6 +22,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useSupabaseUser } from "../lib/useSupabaseUser";
 import { recordNewUser } from "../lib/guestSession";
 import VerseOfTheDayCard from "./VerseOfTheDayCard";
+import NextStepCard from "./home/NextStepCard";
 import CommunityEventBanner from "./CommunityEventBanner";
 import YourBookshelf from "./home/YourBookshelf";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
@@ -365,6 +366,13 @@ export default function HomeScreen() {
 
       {/* Verse of the Day leads - moved above the journey (Louis, 2026-09-04) */}
       <VerseOfTheDayCard userId={userId} />
+
+      {/* The single next thing, directly under the verse (Louis, 2026-10-17).
+          It answers "what do I do today", which is the question people open
+          the app with, so it goes above the shelf: the shelf shows everything
+          you are part way through, this picks one of them and says start here.
+          It renders nothing when there is nothing to suggest. */}
+      <NextStepCard userId={userId} />
 
       {/* Continue Reading sits directly under the verse (Louis, 2026-10-17):
           the first thing after today's verse should be the book you are in.

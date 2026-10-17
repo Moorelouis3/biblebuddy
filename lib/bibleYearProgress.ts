@@ -74,3 +74,26 @@ export const BIBLE_YEAR_PLAN_HREF = "/plan?view=bible-year-series&solo=1";
 export function bibleYearHref() {
   return BIBLE_YEAR_PLAN_HREF;
 }
+
+/**
+ * A link that opens one Bible in One Year day.
+ *
+ * The note above says a day URL "does not survive a page load" and rewrites
+ * itself to /plan?solo=1. That is true of the address the old day rail used,
+ * and the reason is narrow: DashboardJourneyExperience only honours a linked
+ * day when **all three** of solo=1, view=bible-year and day=N are present
+ * (see linkedBibleYearDayNumber, which returns null the moment one is
+ * missing). The old link said view=bible-year&day=N with no solo=1, so it was
+ * rejected and the page fell back to whatever study was last open.
+ *
+ * Note the view: `bible-year`, one day, not `bible-year-series`, the list of
+ * all 365. BIBLE_YEAR_PLAN_HREF above is the list on purpose and stays as it
+ * is - this is for "open Day 143", not "show me the plan".
+ *
+ * Order does not matter to URLSearchParams, but solo=1 comes first here as a
+ * reminder of what makes it work.
+ */
+export function bibleYearDayHref(dayNumber: number): string {
+  const day = Math.min(Math.max(Math.round(dayNumber), 1), BIBLE_YEAR_TOTAL_DAYS);
+  return `/plan?solo=1&view=bible-year&day=${day}`;
+}
