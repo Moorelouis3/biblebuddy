@@ -153,9 +153,36 @@ export async function chooseAppsToLock(): Promise<number | null> {
   return result?.chosen ?? 0;
 }
 
+/**
+ * When the shield was last switched on, as an ISO string, or null.
+ *
+ * Only things finished AFTER this count as having read. Without it, somebody
+ * who reads in the morning and locks their apps at lunchtime is unlocked the
+ * instant the app reopens, because this morning's chapter is still "today's
+ * reading" - which is exactly what happened to Louis on 2026-10-17: "I set it,
+ * closed the app, and the apps were open again."
+ */
+export const BIBLE_LOCK_LOCKED_AT_KEY = "bb:bible-lock-locked-at";
+
+export function bibleLockLockedAt(): string | null {
+  try {
+    return window.localStorage.getItem(BIBLE_LOCK_LOCKED_AT_KEY);
+  } catch {
+    return null;
+  }
+}
+
 export async function lockChosenApps(): Promise<boolean> {
   if (!(await bibleLockAvailable())) return false;
   const { locked } = await BibleLock.lock();
+  if (locked) {
+    try {
+      window.localStorage.setItem(BIBLE_LOCK_LOCKED_AT_KEY, new Date().toISOString());
+    } catch {
+      // Without it the lock still works; it just lifts on the first thing
+      // finished today rather than the first thing finished from now.
+    }
+  }
   return locked;
 }
 

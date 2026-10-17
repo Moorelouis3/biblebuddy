@@ -30,6 +30,7 @@ import { isAdminUser } from "../../lib/readingProgress";
 import type { BuddyAvatar } from "../../lib/buddyAvatars";
 import { clearLegacyBibleYearOfflineStorage } from "../../lib/bibleYearOfflinePack";
 import BibleLockSettings from "@/components/BibleLockSettings";
+import NotificationDiagnostics from "@/components/NotificationDiagnostics";
 import { isNativeApp } from "@/lib/nativeApp";
 import { APP_WELCOME_PATH } from "@/lib/appHome";
 
@@ -945,6 +946,10 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
 
         {/* The Bible lock renders nothing unless this device can do it, so it
             costs the website and Android nothing to have it here. */}
+        {/* What iOS actually thinks about notifications, and a button to ask
+            again. Renders nothing outside the app. */}
+        <NotificationDiagnostics />
+
         <BibleLockSettings />
 
         {/* Reading Plan Section */}

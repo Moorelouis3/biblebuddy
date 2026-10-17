@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { bibleLockStatus, clearBibleLock, UNLOCKING_ACTIONS } from "@/lib/bibleLock";
+import { bibleLockLockedAt, bibleLockStatus, clearBibleLock, UNLOCKING_ACTIONS } from "@/lib/bibleLock";
 import { getBibleBuddyLocalDayStartIso } from "@/lib/louisDailyFlow";
 
 /**
@@ -39,11 +39,16 @@ export default function BibleLockWatcher({ userId }: { userId: string | null }) 
       const status = await bibleLockStatus();
       if (!status.supported || !status.locked) return;
 
+      // Since the lock went on, not since midnight. Somebody who reads in the
+      // morning and locks their apps at lunch would otherwise be unlocked by
+      // breakfast, every time the app opened.
+      const since = bibleLockLockedAt() || getBibleBuddyLocalDayStartIso();
+
       const { data } = await supabase
         .from("master_actions")
         .select("action_type")
         .eq("user_id", userId)
-        .gte("created_at", getBibleBuddyLocalDayStartIso())
+        .gte("created_at", since)
         .in("action_type", [...UNLOCKING_ACTIONS])
         .limit(1);
 

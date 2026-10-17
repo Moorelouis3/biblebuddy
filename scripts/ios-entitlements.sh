@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Give the generated iOS app the Sign in with Apple entitlement.
 #
-# Two entitlements now.
+# Three entitlements now.
 #
 # Sign in with Apple: App Review Guideline 4.8 makes it mandatory because Bible
 # Buddy offers Google.
@@ -65,6 +65,8 @@ cat > "$ENTITLEMENTS" <<PLIST
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>aps-environment</key>
+	<string>production</string>
 	<key>com.apple.developer.applesignin</key>
 	<array>
 		<string>Default</string>
