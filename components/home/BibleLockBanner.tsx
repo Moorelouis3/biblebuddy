@@ -51,8 +51,15 @@ export default function BibleLockBanner() {
       // Private window, blocked storage: show it, that is the safe side here.
     }
     void bibleLockStatus().then((status) => {
+      if (cancelled) return;
+      // status.supported is false on the website, on Android, on iOS 15 and in
+      // any installed build without the plugin. Louis, 2026-10-17: "we have
+      // the whole Bible Lock on the web version which is stupid cause it don't
+      // work - it should only show on iPhone." So the way in only exists where
+      // the lock does.
+      if (!status.supported) return;
       // Already locking? Then this is just noise on top of a thing that works.
-      if (!cancelled && !status.locked) setShow(true);
+      if (!status.locked) setShow(true);
     });
     return () => {
       cancelled = true;
