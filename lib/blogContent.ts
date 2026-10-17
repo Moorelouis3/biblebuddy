@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-1-explained",
+    title: "Leviticus 1 Explained: The Law of the Burnt Offering",
+    description:
+      "Leviticus 1 explained verse by verse: the burnt offering, the hand laid on its head, and why a bullock, a goat, or a single bird all count as a sweet savour.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-1-explained",
+    publishedAt: "2026-10-17",
+    readTime: "13 min read",
+    image: "/blog-banners/leviticus-1-explained.jpg",
+    groupPost: {
+      title: "Leviticus 1 Explained 📖",
+      content:
+        "The tabernacle is finished.\nNow Israel is told how to actually use it.\n\n📌 A bullock and a single bird end the chapter in identical words.\n\n📖 The offering was voluntary, not a penalty.\n📖 A hand on the animal's head made it accepted.\n📖 Rich or poor, every gift becomes a sweet savour to the LORD.\n\nNew article on:\n🟢 what laying a **hand** on the offering meant\n🟢 why there were three different **offerings**\n🟢 how this law reached all the way to **Mary and Joseph**\n\nDoes it surprise you that this law treated rich and poor exactly the same? 🙏",
+    },
+  },
+  {
     slug: "how-to-know-god-is-speaking",
     title: "How Do You Know When God Is Speaking to You?",
     description:
