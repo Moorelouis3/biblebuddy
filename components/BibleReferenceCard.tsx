@@ -203,14 +203,32 @@ export default function BibleReferenceCard({
         </Link>
       </div>
 
+      {/* The warm illustrated look the rest of the dashboard has (Louis,
+          2026-10-17: this was "a plain white container" that "feels
+          disconnected"). Same background and border as the Bible Trivia card
+          and the streak chip, which is the dashboard's established peach
+          family - but anchored left, where the hilltop town in the
+          illustration sits, so it does not read as the same picture as Trivia
+          further down the page.
+
+          Fixed text colours rather than themed ones, as on the other
+          illustrated cards: the background is a fixed light image, so themed
+          text would go white on it in dark mode. */}
       <div
         ref={containerRef}
-        className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5"
+        className="relative overflow-hidden rounded-2xl border border-[#f4dcc8] p-4 shadow-sm sm:p-5"
+        style={{
+          backgroundColor: "#fff3e6",
+          backgroundImage: "url(/home-cards/bg-trivia.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "left bottom",
+          backgroundRepeat: "no-repeat",
+        }}
       >
-        <p className="text-sm font-semibold text-[var(--bb-text-primary,#111827)]">
+        <p className="text-sm font-black text-[#5b3a21]">
           Hit a name you don&apos;t know?
         </p>
-        <p className="mt-0.5 text-xs text-[var(--bb-text-muted,#6b7280)]">
+        <p className="mt-0.5 text-xs font-semibold text-[#8a6a4f]">
           Type it here and Louis explains who, where or what it is.
         </p>
 
@@ -229,7 +247,12 @@ export default function BibleReferenceCard({
             onFocus={() => setOpen(true)}
             placeholder={placeholder}
             autoComplete="off"
-            className="w-full rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#eef2f7)] px-4 py-3 text-sm text-[var(--bb-text-primary,#111827)] outline-none transition placeholder:text-[var(--bb-text-muted,#9ca3af)] focus:border-[var(--bb-accent,#2f7fe8)]"
+            // White, not the soft grey it used to be: that read as a sunken
+            // panel on a white card, and on this one it would be a grey-blue
+            // patch in the middle of a peach illustration. The search box is
+            // the point of the card, so it sits on top of the background
+            // rather than in it.
+            className="w-full rounded-xl border border-[#f0d6bd] bg-white px-4 py-3 text-sm text-[#111827] shadow-sm outline-none transition placeholder:text-[#a98e76] focus:border-[var(--bb-accent,#2f7fe8)]"
           />
 
           {showPanel ? (

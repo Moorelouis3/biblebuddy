@@ -313,7 +313,26 @@ export default function YourBookshelf({
           Together" until 2026-10-17; Louis wanted it to say what it is. */}
       {todayStrip ? (
         <section aria-labelledby="home-today-together-heading">
-          <div className="rounded-3xl border border-[#dbe7f4] bg-[var(--bb-accent-soft,#eaf5ff)] p-4 shadow-sm sm:p-5">
+          {/* The lavender community look, the same family as From Your Groups
+              further down the dashboard (Louis, 2026-10-17: the plain blue
+              container "doesn't match the more polished components").
+              bg-journey is the one illustrated background the dashboard was
+              not using - a path over soft hills - so the two community cards
+              are related without being the same picture twice.
+
+              The text colours are fixed rather than themed, as on From Your
+              Groups: the background is a fixed light illustration, so themed
+              text would turn white on it in dark mode. */}
+          <div
+            className="relative overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
+            style={{
+              backgroundColor: "#f5f2ff",
+              backgroundImage: "url(/home-cards/bg-journey.jpg)",
+              backgroundSize: "cover",
+              backgroundPosition: "left bottom",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
             {/* On a phone the button goes underneath, full width. Beside the
                 text it left the heading about 150px to live in, which broke it
                 across two lines (Louis, 2026-10-17). */}
@@ -321,16 +340,16 @@ export default function YourBookshelf({
               <div className="min-w-0 flex-1">
                 <h2
                   id="home-today-together-heading"
-                  className="flex items-center gap-2 whitespace-nowrap text-base font-black text-[var(--bb-text-primary,#111827)] sm:text-xl"
+                  className="flex items-center gap-2 whitespace-nowrap text-base font-black text-[#2b2150] sm:text-xl"
                 >
                   <span aria-hidden>👥</span>
                   Today&rsquo;s Group Study
                 </h2>
-                <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#111827)] sm:text-[15px]">
+                <p className="mt-1 text-sm font-black text-[#2b2150] sm:text-[15px]">
                   {todayStrip.reading}
                   {todayStrip.dayTitle ? <> &middot; {todayStrip.dayTitle}</> : null}
                 </p>
-                <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)] sm:text-sm">
+                <p className="mt-1 text-xs font-semibold text-[#6a5aa8] sm:text-sm">
                   Read, reflect, and join the discussion with others in the Bible Buddy community.
                 </p>
               </div>
