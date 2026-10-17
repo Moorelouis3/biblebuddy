@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { isNativeApp } from "@/lib/nativeApp";
 
 /**
  * The blog's top menu.
@@ -19,6 +20,14 @@ import { supabase } from "@/lib/supabaseClient";
  */
 export default function BlogTopNav() {
   const [signedIn, setSignedIn] = useState(false);
+  const [isNative, setIsNative] = useState(false);
+
+  // In the app this header is the website intruding: the shell already has
+  // the bottom tabs, and a Start Studying button makes no sense to someone
+  // who is signed in and reading inside it (Louis, 2026-10-17).
+  useEffect(() => {
+    setIsNative(isNativeApp());
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -41,6 +50,8 @@ export default function BlogTopNav() {
       listener?.subscription.unsubscribe();
     };
   }, []);
+
+  if (isNative) return null;
 
   return (
     <header className="mx-auto flex w-full max-w-[860px] items-center justify-between gap-3 px-5 py-4 sm:px-8">

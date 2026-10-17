@@ -377,31 +377,9 @@ export default function HomeScreen() {
         planCompletedDays={completedDays}
       />
 
-      {/* Look It Up - the people/places/keywords lists, which were buried
-          under Plans > Bible Study Tools > Bible References where nobody
-          found them. Sits high on the page because looking a name up is a
-          reading-time need, not an end-of-session one (Louis, 2026-10-12). */}
-      <BibleReferenceCard onEvent={trackHomeEvent} />
-
-      {/* 5b. Upcoming Community Study - the EXACT banner from the group page.
-          One component, one event config, one signup page; only the
-          analytics source differs, so both spots stay in sync by
-          construction. The section disappears for anyone already signed up -
-          the homepage banner exists to recruit, the group page keeps
-          showing the joined state. */}
-      {!communityEventJoined ? (
-        <section aria-labelledby="home-community-study-heading">
-          <h2
-            id="home-community-study-heading"
-            className="mb-2 text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]"
-          >
-            Upcoming Community Study
-          </h2>
-          <CommunityEventBanner userId={userId} source="homepage" onJoinedChange={setCommunityEventJoined} />
-        </section>
-      ) : null}
-
-      {/* 6. Recommended For You */}
+      {/* Recommended For You - above Look It Up since 2026-10-17 (Louis).
+          Today's reading comes first, then something to read next; looking a
+          name up is a tool you reach for, not a thing to be offered. */}
       <section aria-labelledby="home-recommended-heading">
         <SectionHeading label="Recommended For You" href="/blog" onSeeAll={() => trackHomeEvent("home_see_all_click", { section: "recommended" })} />
         <div className="flex snap-x gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -430,6 +408,31 @@ export default function HomeScreen() {
           ))}
         </div>
       </section>
+
+      {/* Look It Up - the people/places/keywords lists, which were buried
+          under Plans > Bible Study Tools > Bible References where nobody
+          found them. Sits high on the page because looking a name up is a
+          reading-time need, not an end-of-session one (Louis, 2026-10-12). */}
+      <BibleReferenceCard onEvent={trackHomeEvent} />
+
+      {/* 5b. Upcoming Community Study - the EXACT banner from the group page.
+          One component, one event config, one signup page; only the
+          analytics source differs, so both spots stay in sync by
+          construction. The section disappears for anyone already signed up -
+          the homepage banner exists to recruit, the group page keeps
+          showing the joined state. */}
+      {!communityEventJoined ? (
+        <section aria-labelledby="home-community-study-heading">
+          <h2
+            id="home-community-study-heading"
+            className="mb-2 text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]"
+          >
+            Upcoming Community Study
+          </h2>
+          <CommunityEventBanner userId={userId} source="homepage" onJoinedChange={setCommunityEventJoined} />
+        </section>
+      ) : null}
+
 
       {/* 7. Test Your Knowledge - the approved Option 2 colorful pair.
           Decorative art is CSS/emoji, never baked text. No "daily challenge"

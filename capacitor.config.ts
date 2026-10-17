@@ -45,6 +45,12 @@ const config: CapacitorConfig = {
     // Shown when the site cannot be reached, instead of the webview's own
     // "cannot connect to server" page with a URL in it.
     errorPath: "offline.html",
+
+    // Capacitor hands any navigation whose host is not the server host to the
+    // system browser - which on Louis's phone is Chrome. The host above is
+    // www.mybiblebuddy.net, so a link that resolves to the bare domain (an old
+    // share URL, a redirect) left the app. Both spellings belong inside it.
+    allowNavigation: ["mybiblebuddy.net", "www.mybiblebuddy.net"],
   },
 
   ios: {

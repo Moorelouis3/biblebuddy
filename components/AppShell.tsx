@@ -2562,12 +2562,28 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     };
   }, [userId, isLoggedIn]);
 
+  // Read after mount, never during render: isNativeApp() looks at the user
+  // agent, and the server has no idea, so using it inline would hydrate
+  // against a different tree.
+  const [isNativeShell, setIsNativeShell] = useState(false);
+  useEffect(() => {
+    setIsNativeShell(isNativeApp());
+  }, []);
+
   // Treat iframe-embedded pages the same as bare pages (no shell/nav)
   const isPublicProfilePage = Boolean(pathname?.startsWith("/profile/"));
   // Blog pages carry their own landing-style top menu (BlogTopNav), so the
   // app shell header stays out of the way there.
+  //
+  // Not in the native app, though (Louis, 2026-10-17: "make it so the blog
+  // post stays in the app"). On the website a bare page is right - it is a
+  // marketing page with a website nav. Inside the app it stripped the bottom
+  // tabs and replaced them with a website header, so opening an article from
+  // the dashboard dumped you somewhere with no way back and read as if the
+  // app had handed you to a browser.
   const isBlogPage = Boolean(pathname === "/blog" || pathname?.startsWith("/blog/"));
-  const isBarePage = HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded || isPublicProfilePage || isBlogPage;
+  const isBarePage =
+    HIDDEN_ROUTES.includes(pathname ?? "/") || isEmbedded || isPublicProfilePage || (isBlogPage && !isNativeShell);
 
   useEffect(() => {
     function handleDashboardStoreState(event: Event) {

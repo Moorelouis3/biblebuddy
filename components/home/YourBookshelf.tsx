@@ -195,22 +195,25 @@ export default function YourBookshelf({
         <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0">
+              {/* Sized for a 375px phone first: at text-xl the two words wrapped
+                  and shoved the pill into the subtitle (Louis, 2026-10-17 -
+                  "way too big, makes multi lines"). */}
               <h2
                 id="home-bookshelf-heading"
-                className="flex items-center gap-2 text-xl font-black text-[var(--bb-text-primary,#111827)] sm:text-2xl"
+                className="flex items-center gap-1.5 whitespace-nowrap text-[17px] font-black text-[var(--bb-text-primary,#111827)] sm:text-2xl"
               >
-                <span aria-hidden className="text-xl sm:text-2xl">📖</span>
+                <span aria-hidden className="text-base sm:text-2xl">📖</span>
                 Continue Reading
               </h2>
-              <p className="mt-0.5 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
-                Your bookshelf &middot; Pick up where you left off.
+              <p className="mt-0.5 truncate text-xs font-semibold text-[var(--bb-text-muted,#6b7280)] sm:text-sm">
+                Pick up where you left off.
               </p>
             </div>
             <Link
               href="/library"
-              className="shrink-0 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-4 py-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[#dceeff]"
+              className="shrink-0 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-3 py-1.5 text-xs font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[#dceeff] sm:px-4 sm:py-2 sm:text-sm"
             >
-              View Library →
+              Library →
             </Link>
           </div>
 
@@ -257,20 +260,23 @@ export default function YourBookshelf({
                       </div>
                     </button>
 
-                    <p className="mt-2.5 text-[13px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                    {/* Two lines, always: a one-line title used to pull its
+                        progress bar and button up out of line with the book
+                        beside it. */}
+                    <p className="mt-2 line-clamp-2 h-[2.2em] text-xs font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[13px]">
                       {book.title}
                     </p>
 
                     <div className="mt-1 flex-1">
                       {book.startsLabel ? (
-                        <p className="text-xs font-black text-[#a57d2c]">{book.startsLabel}</p>
+                        <p className="text-[11px] font-black text-[#a57d2c]">{book.startsLabel}</p>
                       ) : book.isComplete ? (
-                        <p className="flex items-center gap-1 text-xs font-bold text-[#2f8f5b]">
+                        <p className="flex items-center gap-1 text-[11px] font-bold text-[#2f8f5b]">
                           <span aria-hidden>✅</span> Completed
                         </p>
                       ) : book.currentDay !== null ? (
                         <>
-                          <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                          <p className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
                             Day {book.currentDay} of {book.totalDays}
                           </p>
                           <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef2f7)]">
@@ -281,14 +287,14 @@ export default function YourBookshelf({
                           </span>
                         </>
                       ) : (
-                        <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">Start this study</p>
+                        <p className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">Start this study</p>
                       )}
                     </div>
 
                     <button
                       type="button"
                       onClick={() => router.push(book.href)}
-                      className={`mt-3 w-full rounded-full px-3 py-2.5 text-center text-[13px] font-black transition ${
+                      className={`mt-2.5 w-full rounded-full px-2 py-2 text-center text-xs font-black transition sm:text-[13px] ${
                         isLead
                           ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] hover:opacity-95"
                           : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] hover:bg-[#dceeff]"
@@ -309,26 +315,29 @@ export default function YourBookshelf({
       {todayStrip ? (
         <section aria-labelledby="home-today-together-heading">
           <div className="rounded-3xl border border-[#dbe7f4] bg-[var(--bb-accent-soft,#eaf5ff)] p-4 shadow-sm sm:p-5">
-            <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
+            {/* On a phone the button goes underneath, full width. Beside the
+                text it left the heading about 150px to live in, so "Today
+                Together" broke across two lines (Louis, 2026-10-17). */}
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
               <div className="min-w-0 flex-1">
                 <h2
                   id="home-today-together-heading"
-                  className="flex items-center gap-2 text-lg font-black text-[var(--bb-text-primary,#111827)] sm:text-xl"
+                  className="flex items-center gap-2 whitespace-nowrap text-base font-black text-[var(--bb-text-primary,#111827)] sm:text-xl"
                 >
                   <span aria-hidden>👥</span>
                   Today Together
                 </h2>
-                <p className="mt-1 text-[15px] font-black text-[var(--bb-text-primary,#111827)]">
+                <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#111827)] sm:text-[15px]">
                   {todayStrip.reading}
                   {todayStrip.dayTitle ? <> &middot; {todayStrip.dayTitle}</> : null}
                 </p>
-                <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+                <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)] sm:text-sm">
                   Read, reflect, and join the discussion with others in the Bible Buddy community.
                 </p>
               </div>
               <Link
                 href={`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`}
-                className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:opacity-95"
+                className="block shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-2.5 text-center text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:opacity-95 sm:py-3"
               >
                 Join Discussion →
               </Link>
