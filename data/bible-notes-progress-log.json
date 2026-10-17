@@ -66637,6 +66637,67 @@
           "at": "2026-10-17T01:01:53Z"
         }
       ]
+    },
+    {
+      "book": "2 Timothy",
+      "chapter": 2,
+      "startedAt": "2026-10-17T01:46:18Z",
+      "finishedAt": "2026-10-17T02:10:00Z",
+      "durationMinutes": 23.7,
+      "sections": 7,
+      "cards": 32,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 711 packages, about 34s). Style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) confirmed empty, so this was normal forward progress. The latest entry in data/bible-notes-progress-log.json was 2 Timothy 1, so 2 Timothy 2 is next in canonical order; confirmed no lib/secondTimothyTwoSource.ts existed yet, only the legacy bulk file lib/secondTimothyOneToFourPersonalNotes.ts covering chapter 2 and the preserveExactPhraseBodies condition in lib/bibleReaderStudyNotes.ts covering only chapter 1 of 2 timothy. Confirmed HEAD matched origin/main exactly before starting. Fetched real KJV text for 2 Timothy 2 (26 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror (2Timothy.json). The chapter opens with the charge to be strong in grace and commit sound teaching to faithful men who can teach others (1-2); three pictures of disciplined endurance, the soldier who will not get entangled, the athlete who must strive lawfully to be crowned, and the farmer who is first partaker of the fruits of his own labor, closing with the charge to actually weigh those pictures (3-7); Paul's own suffering as a chained prisoner for a gospel that cannot itself be bound, endured for the sake of the elect and the eternal glory that is in Christ Jesus (8-10); the early hymn called a faithful saying, dying and living with Christ, suffering and reigning with him, the warning that denying him brings denial, and the comfort that he abides faithful and cannot deny himself even when we do not believe (11-13); the charge to avoid wordy strife and rightly divide the word of truth like a careful workman, contrasted with the profane babbling of Hymenaeus and Philetus who taught a resurrection already past, closing on the foundation of God that stands sure regardless (14-19); the picture of a great house with vessels of honor and dishonor, the call to purge oneself into a vessel fit for the master's use, to flee youthful lusts, and to avoid unlearned questions that only breed strife (20-23); and the closing charge that the servant of the Lord must not strive but be gentle, apt to teach, and patient, instructing opposers in meekness so they might recover out of the snare of the devil (24-26). Split into 7 sections (1-2, 3-7, 8-10, 11-13, 14-19, 20-23, 24-26), all 26 verses covered with no gaps or overlaps, 32 total cards, about 1.2 cards per verse, denser in the hymn and workman sections than the opening charge. scripts/check_bible_note_style.py found one problem on the first automated pass, the banned hedge word 'fairly' in the opening line of the 'The Servant Of The Lord Must Not Strive' card, fixed by rewording to 'not honest competition'; clean on the second pass across all 32 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on the book emoji. A manual section 13 eye check caught two comma spliced body lines joining two independent clauses as one (one card's line 'This is not a rule he follows, it is simply who he is' and a closing bullet 'Harshness often hardens, it rarely changes minds') and one body line using an ellipsis to splice a quoted phrase together, all three rewritten into single clean ideas and reverified clean against the style checker, parser check, and tsc. Every card opens with one of the four approved moves, defines its key terms in plain language (grace, entangleth, strive for masteries and strive lawfully, husbandman, elect, abideth, rightly dividing, profane and vain babblings, canker, nameth the name of Christ, vessel unto honour and meet for the master's use, flee, gender strifes, strive versus apt to teach, meekness, snare), and closes on meaning rather than mechanics. Parser check passed exactly via a direct tsx import of SECOND_TIMOTHY_TWO_PERSONAL_SECTIONS: 7/7 sections, verse ranges 1-2/3-7/8-10/11-13/14-19/20-23/24-26 with no gaps, 32 total cards, last verse covered 26 of 26. npx tsc --noEmit -p . ran clean, zero errors, both before and after the eye-check fixes. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/secondTimothyTwoSource.ts, the 2 timothy condition in preserveExactPhraseBodies widened from chapter 1 only to chapters 1 through 2, new applyPersonalSecondTimothyTwoStudySections() function calling replaceStudySectionsForBookRange(\"2 timothy\", 2, 2, SECOND_TIMOTHY_TWO_PERSONAL_SECTIONS), invoked right after applyPersonalSecondTimothyOneStudySections() so it correctly overrides the legacy SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS bulk file for chapter 2 only; chapters 3 through 4 of that legacy file remain live and untouched for future runs. New chapter, normal forward progress, not a style redo. Next forward-progress target is 2 Timothy 3.",
+      "steps": [
+        {
+          "name": "npm install done (fresh clone, 711 packages)",
+          "at": "2026-10-17T01:47:10Z"
+        },
+        {
+          "name": "target chapter determined: 2 Timothy 2 (normal forward progress, style redo backlog empty, last entry was 2 Timothy 1)",
+          "at": "2026-10-17T01:47:40Z"
+        },
+        {
+          "name": "confirmed HEAD matched origin/main exactly, no uncommitted work",
+          "at": "2026-10-17T01:47:50Z"
+        },
+        {
+          "name": "KJV text fetched (2 Timothy 2, 26 verses, aruljohn mirror, 2Timothy.json)",
+          "at": "2026-10-17T01:48:05Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full and reference implementation lib/secondTimothyOneSource.ts reviewed",
+          "at": "2026-10-17T01:50:00Z"
+        },
+        {
+          "name": "source file written (lib/secondTimothyTwoSource.ts, 32 cards, 7 sections)",
+          "at": "2026-10-17T02:05:00Z"
+        },
+        {
+          "name": "style checker found 1 problem (banned hedge word 'fairly'), fixed, reverified clean",
+          "at": "2026-10-17T02:05:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to chapter 2, applyPersonalSecondTimothyTwoStudySections)",
+          "at": "2026-10-17T02:06:00Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 32 cards, verse ranges 1-2/3-7/8-10/11-13/14-19/20-23/24-26, no gaps, verse 26 of 26 covered)",
+          "at": "2026-10-17T02:06:30Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (first full pass)",
+          "at": "2026-10-17T02:07:30Z"
+        },
+        {
+          "name": "manual section 13 eye check: fixed 2 comma-spliced lines and 1 ellipsis splice; style checker, parser check, and tsc reverified clean",
+          "at": "2026-10-17T02:08:30Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json entry, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals, SESSION_LOG.md)",
+          "at": "2026-10-17T02:10:00Z"
+        }
+      ]
     }
   ]
 }
