@@ -197,13 +197,18 @@ workflows:
           agvtool new-marketing-version "${APP_MAJOR_VERSION:-1}.${BUILD_PADDED}"
           agvtool new-version -all "$BUILD_NUMBER"
 
-      - name: Fetch signing for the Bible lock extension
-        # ios_signing above only fetches a profile for net.mybiblebuddy.app.
-        # The DeviceActivity extension is a second target with its own bundle
-        # id, and the archive fails without its own profile. --create makes one
-        # the first time; after that it just fetches it.
-        script: |
-          app-store-connect fetch-signing-files net.mybiblebuddy.app.biblelockmonitor --type IOS_APP_STORE --create
+      # The Bible lock extension used to fetch its own signing here, on the
+      # assumption that ios_signing only covered net.mybiblebuddy.app. It does
+      # not: Codemagic matches the id AND its children, so
+      # net.mybiblebuddy.app.biblelockmonitor was already handled.
+      #
+      # The step was not merely redundant, it could never pass. Called by
+      # hand, app-store-connect fetches certificates from Apple and tries to
+      # save them, and Apple hands over a certificate without its private key
+      # - "Cannot save Signing Certificates without certificate private key",
+      # which is what killed build 9 (2026-10-17) and build 2 before it. Only
+      # the certificate generated inside Codemagic has a key it can use, and
+      # the ios_signing integration is the thing that knows that.
 
       - name: Point Xcode at the signing files
         # Codemagic has already put the certificate and profile on the
