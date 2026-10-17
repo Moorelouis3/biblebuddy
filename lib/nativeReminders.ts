@@ -121,12 +121,25 @@ export async function ensureDailyReminder(): Promise<void> {
 
   try {
     if (window.localStorage.getItem(PERMISSION_KEY)) {
-      // Already asked. Re-schedule only if they had said yes and something
-      // cleared it - an OS update, a reinstall, a restore from backup.
       const notifications = await plugin();
       if (!notifications) return;
       const permission = await notifications.checkPermissions();
-      if (permission.display === "granted" && !(await isDailyReminderOn())) {
+
+      // Said yes, and something cleared it - an OS update, a reinstall, a
+      // restore from backup.
+      if (permission.display === "granted") {
+        if (!(await isDailyReminderOn())) await scheduleDailyReminder();
+        return;
+      }
+
+      // Still "prompt" means iOS has never actually asked, so the flag is
+      // recording an ask that did not happen - the first run set it and then
+      // the scheduling found no plugin, which is every install made before
+      // the build that carried it (Louis, 2026-10-17: no notifications at all
+      // on TestFlight). Left alone this device could never get the reminder.
+      // "denied" is a real answer and stays final: a second prompt is how an
+      // app gets deleted.
+      if (permission.display === "prompt" || permission.display === "prompt-with-rationale") {
         await scheduleDailyReminder();
       }
       return;
