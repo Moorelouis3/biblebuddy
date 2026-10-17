@@ -59,13 +59,17 @@ ext = project.new_target(
   :swift
 )
 
+# The group already carries the folder name, so a reference of
+# "BibleLockMonitor/BibleLockMonitor.swift" inside it resolves to
+# BibleLockMonitor/BibleLockMonitor/BibleLockMonitor.swift and the archive
+# says the input files cannot be found. Just the filename.
 group = project.main_group.new_group(target_name, target_name)
 %w[BibleLockMonitor.swift BibleLockShared.swift].each do |file|
-  ref = group.new_reference(File.join(target_name, file))
+  ref = group.new_reference(file)
   ext.add_file_references([ref])
 end
-group.new_reference(File.join(target_name, 'Info.plist'))
-group.new_reference(File.join(target_name, 'BibleLockMonitor.entitlements'))
+group.new_reference('Info.plist')
+group.new_reference('BibleLockMonitor.entitlements')
 
 ext.build_configurations.each do |config|
   s = config.build_settings
