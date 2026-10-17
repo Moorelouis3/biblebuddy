@@ -193,11 +193,12 @@ export default function YourBookshelf({
     <>
       <section aria-labelledby="home-bookshelf-heading">
         <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
-          <div className="flex items-start justify-between gap-3">
+          <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               {/* Sized for a 375px phone first: at text-xl the two words wrapped
-                  and shoved the pill into the subtitle (Louis, 2026-10-17 -
-                  "way too big, makes multi lines"). */}
+                  and shoved the pill onto its own line (Louis, 2026-10-17 -
+                  "way too big, makes multi lines"). The subtitle under it went
+                  the same day, to buy back the height. */}
               <h2
                 id="home-bookshelf-heading"
                 className="flex items-center gap-1.5 whitespace-nowrap text-[17px] font-black text-[var(--bb-text-primary,#111827)] sm:text-2xl"
@@ -205,9 +206,6 @@ export default function YourBookshelf({
                 <span aria-hidden className="text-base sm:text-2xl">📖</span>
                 Continue Reading
               </h2>
-              <p className="mt-0.5 truncate text-xs font-semibold text-[var(--bb-text-muted,#6b7280)] sm:text-sm">
-                Pick up where you left off.
-              </p>
             </div>
             <Link
               href="/library"
@@ -310,14 +308,15 @@ export default function YourBookshelf({
         </div>
       </section>
 
-      {/* Today Together - its own card, because the group's reading is a
-          different thing from the reader's own place in a book. */}
+      {/* Today's Group Study - its own card, because the group's reading is a
+          different thing from the reader's own place in a book. Called "Today
+          Together" until 2026-10-17; Louis wanted it to say what it is. */}
       {todayStrip ? (
         <section aria-labelledby="home-today-together-heading">
           <div className="rounded-3xl border border-[#dbe7f4] bg-[var(--bb-accent-soft,#eaf5ff)] p-4 shadow-sm sm:p-5">
             {/* On a phone the button goes underneath, full width. Beside the
-                text it left the heading about 150px to live in, so "Today
-                Together" broke across two lines (Louis, 2026-10-17). */}
+                text it left the heading about 150px to live in, which broke it
+                across two lines (Louis, 2026-10-17). */}
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
               <div className="min-w-0 flex-1">
                 <h2
@@ -325,7 +324,7 @@ export default function YourBookshelf({
                   className="flex items-center gap-2 whitespace-nowrap text-base font-black text-[var(--bb-text-primary,#111827)] sm:text-xl"
                 >
                   <span aria-hidden>👥</span>
-                  Today Together
+                  Today&rsquo;s Group Study
                 </h2>
                 <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#111827)] sm:text-[15px]">
                   {todayStrip.reading}
