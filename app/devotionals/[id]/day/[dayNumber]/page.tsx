@@ -21,11 +21,13 @@ import { supabase } from "@/lib/supabaseClient";
 import { getTriviaBook, getTriviaChapter } from "@/lib/triviaGameData";
 import { triggerPoints } from "@/components/PointsPop";
 import { TASK_XP } from "@/lib/progressionRewards";
+import PaperbackStrip from "@/components/devotionals/PaperbackStrip";
 
 type Devotional = {
   id: string;
   title: string;
   total_days: number | null;
+  paperback_url: string | null;
 };
 
 type DevotionalDay = {
@@ -387,7 +389,7 @@ export default function ProverbsStudyDayPage() {
     setUserId(uid);
 
     const [devotionalRes, dayRes] = await Promise.all([
-      supabase.from("devotionals").select("id, title, total_days").eq("id", devotionalId).maybeSingle(),
+      supabase.from("devotionals").select("id, title, total_days, paperback_url").eq("id", devotionalId).maybeSingle(),
       supabase
         .from("devotional_days")
         .select("day_number, day_title, devotional_text, bible_reading_book, bible_reading_chapter, reflection_question")
@@ -952,6 +954,8 @@ export default function ProverbsStudyDayPage() {
           <h1 className="mt-1 text-2xl font-black text-gray-950">{day.day_title}</h1>
           <p className="mt-1 text-sm text-gray-500">{devotional.title}</p>
         </div>
+
+        <PaperbackStrip href={devotional.paperback_url} title={devotional.title} />
 
         <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
           {/* Headline is everyone studying this chapter, not only the people

@@ -117,6 +117,7 @@ import {
 } from "../../../lib/bibleReadingBackgroundMusic";
 import { triggerPoints } from "../../../components/PointsPop";
 import { TASK_XP } from "../../../lib/progressionRewards";
+import PaperbackStrip from "@/components/devotionals/PaperbackStrip";
 import {
   buildPersistedFeatureTours,
   DEFAULT_FEATURE_TOURS,
@@ -130,6 +131,8 @@ interface Devotional {
   subtitle: string;
   description: string;
   total_days: number;
+  /** Set on the studies that have a printed edition; null on the rest. */
+  paperback_url?: string | null;
 }
 
 interface DevotionalDay {
@@ -2248,6 +2251,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
                   {isUnlocked && isExpanded && (
                     <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
+                      {/* Buy the paperback, at the top of every day (Louis, 2026-10-17). */}
+                      <PaperbackStrip href={devotional?.paperback_url} title={devotional?.title} />
                       {isModernStudyPlan ? (
                         <div className="space-y-3">
                           <details
