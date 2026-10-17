@@ -24,6 +24,7 @@ import { recordNewUser } from "../lib/guestSession";
 import VerseOfTheDayCard from "./VerseOfTheDayCard";
 import CommunityEventBanner from "./CommunityEventBanner";
 import YourBookshelf from "./home/YourBookshelf";
+import BibleLockBanner from "./home/BibleLockBanner";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
 import { calculateBibleYearPosition } from "../lib/bibleYearProgress";
@@ -413,6 +414,10 @@ export default function HomeScreen() {
           under Plans > Bible Study Tools > Bible References where nobody
           found them. Sits high on the page because looking a name up is a
           reading-time need, not an end-of-session one (Louis, 2026-10-12). */}
+      {/* The Bible lock, which only Settings knew about until 2026-10-17. It
+          hides itself once the lock is on, and once dismissed it stays gone. */}
+      <BibleLockBanner />
+
       <BibleReferenceCard onEvent={trackHomeEvent} />
 
       {/* 5b. Upcoming Community Study - the EXACT banner from the group page.
