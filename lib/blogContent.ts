@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-3-explained",
+    title: "Leviticus 3 Explained: The Law of the Peace Offering",
+    description:
+      "Leviticus 3 explained verse by verse: the peace offering of herd, flock, and goat, the fat and kidneys given to God, and the rule against eating fat or blood.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-3-explained",
+    publishedAt: "2026-10-17",
+    readTime: "12 min read",
+    image: "/blog-banners/leviticus-3-explained.jpg",
+    groupPost: {
+      title: "Leviticus 3 Explained 📖",
+      content:
+        "This offering made room for a meal.\nBut not all of it belonged to the worshipper.\n\n📌 All the fat was the LORD's, every single time.\n\n📖 A peace offering could be male or female.\n📖 A lamb's fat tail got its own name.\n📖 Fat and blood were banned from every table, forever.\n\nNew article on:\n🟢 why the **peace offering** allowed a female animal\n🟢 what **the caul above the liver** actually was\n🟢 why one section skips the words **sweet savour**\n\nDid you know the fat tail of a lamb had its own law? 🙏",
+    },
+  },
+  {
     slug: "leviticus-2-explained",
     title: "Leviticus 2 Explained: The Law of the Meat Offering",
     description:
