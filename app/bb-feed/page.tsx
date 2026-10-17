@@ -1826,6 +1826,35 @@ export default function BbFeedPage() {
   const [myFeedLoading, setMyFeedLoading] = useState(false);
   const [myFeedLoaded, setMyFeedLoaded] = useState(false);
 
+  /**
+   * The Buddies tab, which now loads when it is opened rather than on arrival.
+   *
+   * Community is the tab you land on, but init awaited loadFriendsTab before it
+   * would show anything - so every visit paid for a tab most people never
+   * opened, and the page could not draw until the Buddies feed had been fetched
+   * and ranked.
+   *
+   * This drives the tab's own spinner. Without one the empty "No buddy posts
+   * yet" panel flashed up and was replaced by the posts a moment later, because
+   * nothing was waiting for the fetch any more.
+   */
+  const [buddiesLoading, setBuddiesLoading] = useState(false);
+  /**
+   * Whether the fetch has been started, as a ref rather than state.
+   *
+   * It is a ref for two reasons. State is not visible to another call in the
+   * same tick, and the effect that triggers this re-runs when userId arrives
+   * and when loadCommunityTab is rebuilt, with React invoking effects twice in
+   * development - so a state flag would let a second fetch through.
+   *
+   * And it is a flag at all, rather than a check on rankedBuddiesFeed.length,
+   * because the median reader has exactly one buddy and may genuinely have
+   * nothing to show. A length check would re-run the whole fetch every time
+   * they returned to an empty tab, which is precisely the case where it cannot
+   * help.
+   */
+  const buddiesLoadStarted = useRef(false);
+
   // Reactions the current user has already made — key: "postId:reactionType"
   const [myReactions, setMyReactions] = useState<Set<string>>(new Set());
 
@@ -1844,7 +1873,9 @@ export default function BbFeedPage() {
       if (!prof?.feed_onboarding_completed) {
         setShowFeedOnboarding(true);
       }
-      await loadFriendsTab(user.id);
+      // The Buddies tab used to be fetched and ranked here, before the page
+      // would draw - on a tab you do not land on. It loads when it is opened,
+      // like Community and My Feed.
       setLoading(false);
     }
     init();
@@ -1889,10 +1920,15 @@ export default function BbFeedPage() {
   }
 
   async function loadFriendsTab(uid: string) {
+    if (buddiesLoadStarted.current) return;
+    buddiesLoadStarted.current = true;
+    setBuddiesLoading(true);
+
     const buddyIds = await getBuddyIds(uid);
 
     if (buddyIds.length === 0) {
       setRankedBuddiesFeed([]);
+      setBuddiesLoading(false);
       return;
     }
 
@@ -1953,6 +1989,7 @@ export default function BbFeedPage() {
     // block list has arrived.
     const blocked = await getBlockedUserIds({ userId: uid });
     setRankedBuddiesFeed(blocked.size ? ranked.filter((item) => !blocked.has(item.user_id)) : ranked);
+    setBuddiesLoading(false);
     void loadMyReactions(uid, postChunks.map((p) => p.id));
   }
 
@@ -2094,6 +2131,8 @@ export default function BbFeedPage() {
   useEffect(() => {
     if (tab === "community" && userId) {
       void loadCommunityTab();
+    } else if (tab === "buddies" && userId) {
+      void loadFriendsTab(userId);
     } else if (tab === "myfeed" && userId) {
       void loadMyFeedTab(userId);
     }
@@ -2189,6 +2228,14 @@ export default function BbFeedPage() {
   // ── Render helpers ─────────────────────────────────────────────────────────
 
   function renderFriendsTab() {
+    // Needed now that this tab loads on open. init used to await the fetch
+    // before the page drew, so by the time anybody saw this there was nothing
+    // left to wait for; without a loading state the empty "No buddy posts yet"
+    // panel would flash up first and then be replaced by the posts.
+    if (buddiesLoading) {
+      return <div className="text-sm text-gray-400 text-center py-16">Loading your buddies&apos; posts...</div>;
+    }
+
     if (rankedBuddiesFeed.filter((i) => i._kind === "post").length === 0) {
       return (
         <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
