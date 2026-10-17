@@ -238,7 +238,7 @@ export default function YourBookshelf({
                     >
                       {book.isCommunityToday ? (
                         <span className="absolute left-2 top-2 z-10 rounded-md bg-[var(--bb-accent,#2f7fe8)] px-2 py-1 text-[9px] font-black uppercase tracking-wide text-white shadow">
-                          Today&rsquo;s study
+                          Group study
                         </span>
                       ) : null}
                       <div className="overflow-hidden rounded-xl shadow-[0_6px_16px_rgba(16,33,58,0.2)] transition group-hover:-translate-y-0.5">
