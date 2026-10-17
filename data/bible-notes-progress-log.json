@@ -66572,6 +66572,71 @@
           "at": "2026-10-16T23:59:24Z"
         }
       ]
+    },
+    {
+      "book": "2 Timothy",
+      "chapter": 1,
+      "startedAt": "2026-10-17T00:46:08Z",
+      "finishedAt": "2026-10-17T01:02:00Z",
+      "durationMinutes": 15.9,
+      "sections": 6,
+      "cards": 33,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` failed once with ECONNRESET on the first attempt (transient network reset against the registry) and then succeeded clean on an immediate retry (fresh clone, 711 packages, about 22s). Priority queue (`data/bible-notes-priority-queue.json`, `remaining: []`) and style redo backlog (`data/bible-notes-style-redo-remaining.json`, `remaining: []`) both confirmed empty, so this was normal forward progress. The latest entry in `data/bible-notes-progress-log.json` was 1 Timothy 6, and 1 Timothy is now fully dedicated 1 through 6, so 2 Timothy 1 is next in canonical order; confirmed no `lib/secondTimothyOneSource.ts` existed yet, only the legacy bulk file `lib/secondTimothyOneToFourPersonalNotes.ts` covering chapter 1 and the `preserveExactPhraseBodies` condition in `lib/bibleReaderStudyNotes.ts` not yet covering any chapter of `2 timothy`. Fetched real KJV text for 2 Timothy 1 (18 verses) from the `raw.githubusercontent.com/aruljohn/Bible-kjv` mirror (`2Timothy.json`). The chapter opens Paul's second and final letter to Timothy: the greeting naming Paul an apostle by the will of God according to the promise of life in Christ, to Timothy as his dearly beloved son, with grace, mercy, and peace (1-2); Paul's thanksgiving for Timothy rooted in his own family's generations of serving God with a pure conscience, his constant prayer for Timothy, his memory of Timothy's tears at their parting and his longing to be filled with joy again, and the unfeigned faith that first lived in Timothy's grandmother Lois and mother Eunice (3-5); the charge to stir up the gift of God placed in Timothy by the laying on of Paul's hands, since God gave a spirit of power, love, and a sound mind rather than fear (6-7); the call not to be ashamed of the gospel or of Paul as a prisoner but to be a partaker of its afflictions, grounded in a calling that came by grace and not works, planned before the world began, and now revealed through Christ who abolished death and brought life and immortality to light (8-10); Paul naming his own appointment as preacher, apostle, and teacher of the Gentiles, his confidence that he knows whom he has believed and that God will keep what he has committed to him, and the charge to Timothy to hold fast the form of sound words in faith and love and to guard that good thing by the Holy Ghost who dwells in us (11-14); and the closing contrast between those in Asia, including Phygellus and Hermogenes, who turned away from Paul, and the house of Onesiphorus, who refreshed him, was not ashamed of his chain, sought him out diligently in Rome, and had already ministered to him at Ephesus (15-18). Split into 6 sections (1-2, 3-5, 6-7, 8-10, 11-14, 15-18), all 18 verses covered with no gaps or overlaps, 33 total cards, about 1.8 cards per verse, matching the density of `lib/firstTimothySixSource.ts`. `scripts/check_bible_note_style.py` passed clean on the first automated pass across all 33 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖. A manual section 13 eye check, done carefully while drafting rather than as a separate pass, confirmed every card opens with one of the four approved moves, defines its key terms in plain language (apostle, dearly beloved son, mercy added to Paul's usual grace and peace greeting, forefathers, pure conscience, without ceasing, unfeigned, grandmother and mother, stir up, putting on of hands, the spirit of fear versus power/love/sound mind, partaker of afflictions, holy calling not according to works, abolished death, brought to light, preacher/apostle/teacher of the Gentiles, committed unto him against that day, form of sound words, that good thing kept by the Holy Ghost, Asia as a Roman province rather than the continent, Phygellus and Hermogenes, the house of Onesiphorus, refreshed and my chain, sought me out diligently, ministered unto me at Ephesus), closes on meaning rather than mechanics, and avoids stacked clauses (one earlier draft line using \"rather than\" in the \"Without Ceasing\" card was caught and rewritten before saving). Parser check passed exactly via `getBibleReaderStudySections('2 Timothy', 1)`: 6/6 sections, verse ranges 1-2/3-5/6-7/8-10/11-14/15-18 with no gaps, 33 total cards rendering verbatim. `npx tsc --noEmit -p .` ran clean, zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import for `lib/secondTimothyOneSource.ts`, a new `2 timothy` chapter 1 condition added to `preserveExactPhraseBodies`, new `applyPersonalSecondTimothyOneStudySections()` function calling `replaceStudySectionsForBookRange(\"2 timothy\", 1, 1, SECOND_TIMOTHY_ONE_PERSONAL_SECTIONS)`, invoked right after `applyPersonalSecondTimothyOneThroughFourStudySections()` so it correctly overrides the legacy `SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS` bulk file for chapter 1 only; chapters 2 through 4 of that legacy file remain live and untouched for future runs. New chapter, normal forward progress, not a style redo. Next forward-progress target is 2 Timothy 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T00:48:16Z"
+        },
+        {
+          "name": "target chapter determined: 2 Timothy 1 (new chapter, forward progress, remaining[] empty)",
+          "at": "2026-10-17T00:48:16Z"
+        },
+        {
+          "name": "KJV text fetched for 2 Timothy 1 (18 verses, raw.githubusercontent.com)",
+          "at": "2026-10-17T00:48:26Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-17T00:48:33Z"
+        },
+        {
+          "name": "note content drafted (6 sections, 33 cards, verses 1-18 fully covered)",
+          "at": "2026-10-17T00:55:19Z"
+        },
+        {
+          "name": "wrote lib/secondTimothyOneSource.ts",
+          "at": "2026-10-17T00:56:20Z"
+        },
+        {
+          "name": "style checker clean (33 cards, no problems)",
+          "at": "2026-10-17T00:56:25Z"
+        },
+        {
+          "name": "parser check passed (module import, 6 sections, 33 cards)",
+          "at": "2026-10-17T00:56:52Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply call, preserveExactPhraseBodies range)",
+          "at": "2026-10-17T00:57:13Z"
+        },
+        {
+          "name": "parser check passed in full reader (getBibleReaderStudySections, 6 sections, 33 cards, verbatim render confirmed)",
+          "at": "2026-10-17T00:57:47Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-17T01:00:18Z"
+        },
+        {
+          "name": "manual section 13 eye check completed (opening moves, bold definitions, closes on meaning, 4 bullets, no banned words all verified by hand during drafting)",
+          "at": "2026-10-17T01:00:29Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json entry, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals, SESSION_LOG.md)",
+          "at": "2026-10-17T01:01:53Z"
+        }
+      ]
     }
   ]
 }
