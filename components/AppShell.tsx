@@ -1815,6 +1815,28 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   // reminder at all. A local notification is scheduled by the phone itself,
   // which needs nothing from Apple. Only for signed-in readers - reminding a
   // stranger to continue a plan they have not started is noise.
+  // Remote push, so a DM reaches the phone (Louis, 2026-10-17: "I don't get
+  // notifications when I get a new DM"). registerForNativePush existed since
+  // 2026-10-11 and nothing ever called it, so no device ever had a token and
+  // /api/push/process had nothing to send to.
+  //
+  // It no-ops unless NEXT_PUBLIC_NATIVE_PUSH_ENABLED is "true", so the
+  // notification prompt is not spent before anything can be delivered.
+  useEffect(() => {
+    if (!userId) return;
+    let cancelled = false;
+    void (async () => {
+      const { registerForNativePush } = await import("@/lib/nativePush");
+      if (cancelled) return;
+      await registerForNativePush((url) => {
+        // Tapping the notification opens what it was about.
+        if (!cancelled) router.push(url);
+      });
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, router]);
   useEffect(() => {
     if (!userId) return;
     let cancelled = false;
