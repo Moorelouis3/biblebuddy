@@ -8092,3 +8092,7 @@ Next up: Hebrews 5
 ## 2026-10-17T13:57:26Z (hourly chapter notes run)
 Chapter: Hebrews 5 | Duration: 11.03 min | Sections: 3 | Cards: 29 | Status: pass
 Next up: Hebrews 6
+
+## 2026-10-17T14:56:29Z (hourly chapter notes run)
+Chapter: Hebrews 6 | Duration: 10.6 min | Sections: 5 | Cards: 42 | Status: pass
+Next up: Hebrews 7
