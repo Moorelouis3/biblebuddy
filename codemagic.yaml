@@ -299,7 +299,12 @@ workflows:
           echo "--- package resolution ---"
           xcodebuild -project ios/App/App.xcodeproj -scheme App -resolvePackageDependencies 2>&1 | tail -40
           echo "--- build settings ---"
-          xcodebuild -project ios/App/App.xcodeproj -scheme App -showBuildSettings 2>&1 | tail -60
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -showBuildSettings 2>&1 | tail -20
+          # The archive is where it dies now, and build-ipa swallows this too.
+          echo "--- archive ---"
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath build/diagnostic.xcarchive \
+            archive 2>&1 | grep -iE "error|warning: .*sign|provisioning|entitle|Signing|CodeSign|failed" | tail -40
           exit 0
       - name: Build the ipa
         script: |
