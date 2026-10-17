@@ -1227,6 +1227,7 @@ import { HEBREWS_THREE_PERSONAL_SECTIONS } from "./hebrewsThreeSource";
 import { HEBREWS_FOUR_PERSONAL_SECTIONS } from "./hebrewsFourSource";
 import { HEBREWS_FIVE_PERSONAL_SECTIONS } from "./hebrewsFiveSource";
 import { HEBREWS_SIX_PERSONAL_SECTIONS } from "./hebrewsSixSource";
+import { HEBREWS_SEVEN_PERSONAL_SECTIONS } from "./hebrewsSevenSource";
 import { JAMES_1_5_PERSONAL_SECTIONS } from "./jamesOneToFivePersonalNotes";
 import { FIRST_PETER_1_5_PERSONAL_SECTIONS } from "./firstPeterOneToFivePersonalNotes";
 import { SECOND_PETER_1_3_PERSONAL_SECTIONS } from "./secondPeterOneToThreePersonalNotes";
@@ -1571,7 +1572,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 timothy" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
     (normalizeBook(book) === "titus" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "philemon" && section.chapter === 1) ||
-    (normalizeBook(book) === "hebrews" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6));
+    (normalizeBook(book) === "hebrews" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4998,6 +4999,10 @@ function applyPersonalHebrewsFiveSourceStudySections() {
 
 function applyPersonalHebrewsSixSourceStudySections() {
   replaceStudySectionsForBookRange("hebrews", 6, 6, HEBREWS_SIX_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHebrewsSevenSourceStudySections() {
+  replaceStudySectionsForBookRange("hebrews", 7, 7, HEBREWS_SEVEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalJamesOneThroughFiveStudySections() {
@@ -12793,6 +12798,7 @@ applyPersonalHebrewsThreeSourceStudySections();
 applyPersonalHebrewsFourSourceStudySections();
 applyPersonalHebrewsFiveSourceStudySections();
 applyPersonalHebrewsSixSourceStudySections();
+applyPersonalHebrewsSevenSourceStudySections();
 applyPersonalJamesOneThroughFiveStudySections();
 applyPersonalFirstPeterOneThroughFiveStudySections();
 applyPersonalSecondPeterOneThroughThreeStudySections();
