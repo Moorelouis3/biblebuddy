@@ -67521,6 +67521,59 @@
           "at": "2026-10-17T17:59:06Z"
         }
       ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 10,
+      "startedAt": "2026-10-17T18:45:51Z",
+      "finishedAt": "2026-10-17T18:59:30Z",
+      "durationMinutes": 13.65,
+      "sections": 7,
+      "cards": 39,
+      "verses": 39,
+      "notes": "New chapter (not a redo), normal forward progress after Hebrews 9. Style checker clean after one fix (a 9 word bullet trimmed to 8). Parser check passed (7 sections, 39 cards). tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T18:47:32Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 10 (new chapter, forward progress)",
+          "at": "2026-10-17T18:47:32Z"
+        },
+        {
+          "name": "KJV text fetched for Hebrews 10 (39 verses, raw GitHub mirror)",
+          "at": "2026-10-17T18:47:54Z"
+        },
+        {
+          "name": "style spec and skill read in full",
+          "at": "2026-10-17T18:48:28Z"
+        },
+        {
+          "name": "source file lib/hebrewsTenSource.ts written (7 sections, 39 cards)",
+          "at": "2026-10-17T18:54:55Z"
+        },
+        {
+          "name": "style checker clean on lib/hebrewsTenSource.ts",
+          "at": "2026-10-17T18:55:07Z"
+        },
+        {
+          "name": "wired Hebrews 10 into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-17T18:55:32Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 39 cards)",
+          "at": "2026-10-17T18:55:58Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-17T18:58:14Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-17T18:59:30Z"
+        }
+      ]
     }
   ]
 }
