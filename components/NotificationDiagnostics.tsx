@@ -42,6 +42,33 @@ type State = {
  */
 const WEB_BUILD = (process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA || "dev").slice(0, 7);
 
+/**
+ * Whether the NATIVE push plugin is in the installed build.
+ *
+ * Not Capacitor.isPluginAvailable, which answers yes for a plugin that only
+ * has a web implementation - and @capacitor/push-notifications has one. That
+ * web fallback calls Notification.requestPermission(), which iOS WKWebView
+ * does not support and never settles, which is the exact shape of the hang
+ * Louis has been sitting in: checkPermissions answers "prompt" (the web
+ * implementation reading Notification.permission) and requestPermissions never
+ * comes back.
+ *
+ * PluginHeaders is the list the native side publishes at startup, so a name in
+ * it is genuinely compiled into the binary. Returns null where there is no
+ * bridge at all.
+ */
+function nativePluginNames(): string[] | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const headers = (window as unknown as { Capacitor?: { PluginHeaders?: Array<{ name?: string }> } })
+      .Capacitor?.PluginHeaders;
+    if (!Array.isArray(headers)) return null;
+    return headers.map((header) => header?.name).filter((name): name is string => Boolean(name));
+  } catch {
+    return null;
+  }
+}
+
 function Row({ label, value, good }: { label: string; value: string; good?: boolean | null }) {
   return (
     <div className="flex items-center justify-between gap-3 border-b border-[var(--bb-card-border,#eef2f7)] py-2 last:border-b-0">
@@ -132,6 +159,19 @@ export default function NotificationDiagnostics() {
             "the fix does not work". */}
         <Row label="App build" value={state.appBuild} />
         <Row label="Website build" value={state.webBuild} />
+        {/* The line that separates "iOS refused" from "iOS was never asked,
+            because the app is running the browser version of the plugin". */}
+        <Row
+          label="Native push plugin"
+          value={
+            nativePluginNames() === null
+              ? "no bridge"
+              : nativePluginNames()?.includes("PushNotifications")
+                ? "in this build"
+                : "MISSING - using web fallback"
+          }
+          good={nativePluginNames()?.includes("PushNotifications") ?? null}
+        />
         <Row label="Registering is on" value={nativePushEnabled() ? "yes" : "no"} good={nativePushEnabled()} />
         <Row
           label="iPhone permission"
@@ -165,9 +205,15 @@ export default function NotificationDiagnostics() {
             try {
               const ok = await registerForNativePush();
               if (!ok) {
+                // Say which of the two it was. "Did not grant permission, or
+                // the plugin is missing" told Louis nothing three times over.
+                const names = nativePluginNames();
                 setState((prev) => ({
                   ...prev,
-                  error: "iPhone did not grant permission, or the plugin is not in this build.",
+                  error:
+                    names && !names.includes("PushNotifications")
+                      ? `The push plugin is not in app build ${prev.appBuild}. iOS was never asked, because the app is running the browser version of it, which iOS cannot show a prompt for. This needs a new TestFlight build. Native plugins present: ${names.join(", ") || "none"}.`
+                      : "iPhone did not grant permission, or the request never came back. It has been reported.",
                 }));
               }
               // The token arrives on a listener, so give it a moment.

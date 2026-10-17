@@ -196,7 +196,10 @@ export async function registerForNativePush(
       const outcome = await Promise.race([
         push.requestPermissions(),
         new Promise<typeof TIMED_OUT>((resolve) => {
-          timer = setTimeout(() => resolve(TIMED_OUT), 10_000);
+          // Six, not ten. Louis has sat watching this button three times
+          // tonight; ten seconds of a disabled button reads as broken whether
+          // or not it is.
+          timer = setTimeout(() => resolve(TIMED_OUT), 6_000);
         }),
       ]);
       if (timer) clearTimeout(timer);
