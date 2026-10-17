@@ -1766,6 +1766,32 @@ function interleaveUpgradeCards<T extends { id: string }>(
   return nodes;
 }
 
+
+/**
+ * How many buddies the feed pulls posts from, newest friendship first.
+ *
+ * The buddy graph is a star. Measured 2026-10-17: 7,054 rows over 7,046
+ * people, median 1 buddy each, average 2.0 - and one account, Louis's, with
+ * 7,045, because everybody becomes his buddy. The feed asks for posts with
+ * .in(user_id, ...) chunked at 500, so the cost of a visit is
+ * 2 + 3 x ceil(buddies / 500): five queries for a normal reader, and
+ * forty-seven for him. He would have judged the feature by the one account it
+ * is slowest for.
+ *
+ * 300 puts everybody on the same five queries. Nobody but that one account is
+ * anywhere near the cap - the next busiest has four buddies - so for every
+ * other reader in the database this changes nothing at all.
+ *
+ * What it costs him: the Buddies tab draws on his 300 newest buddies instead
+ * of all 7,045, so a post from an older buddy can be missed. Raising this
+ * number costs three queries per extra 500. The version that drops nothing is
+ * to stop asking by author and ask by recency instead - fetch the last
+ * week of posts, then keep the ones written by a buddy - because posts in a
+ * week are few and bounded while buddies are neither. That is a change to
+ * loadFriendsTab rather than a number, so it is not done here.
+ */
+const BUDDY_FEED_LIMIT = 300;
+
 export default function BbFeedPage() {
   const router = useRouter();
   const [userId, setUserId] = useState<string | null>(null);
@@ -1825,12 +1851,13 @@ export default function BbFeedPage() {
   }, []);
 
   // ── Fetch helpers ──────────────────────────────────────────────────────────
-
   async function getBuddyIds(uid: string): Promise<string[]> {
     const { data } = await supabase
       .from("buddies")
       .select("user_id_1, user_id_2")
-      .or(`user_id_1.eq.${uid},user_id_2.eq.${uid}`);
+      .or(`user_id_1.eq.${uid},user_id_2.eq.${uid}`)
+      .order("created_at", { ascending: false })
+      .limit(BUDDY_FEED_LIMIT);
     if (!data) return [];
     return data.map((b) => b.user_id_1 === uid ? b.user_id_2 : b.user_id_1);
   }
@@ -1983,10 +2010,16 @@ export default function BbFeedPage() {
         .gte("created_at", sevenDaysAgo)
         .order("created_at", { ascending: false })
         .limit(100),
+      // Same cap. This one is a single query whatever the answer's size, so it
+      // was never a request-count problem - but uncapped it ships 7,045 rows to
+      // the phone to build a Set used only for ranking signals, and the top 300
+      // decide those signals just as well.
       supabase
         .from("buddies")
         .select("user_id_1, user_id_2")
-        .or(`user_id_1.eq.${userId},user_id_2.eq.${userId}`),
+        .or(`user_id_1.eq.${userId},user_id_2.eq.${userId}`)
+        .order("created_at", { ascending: false })
+        .limit(BUDDY_FEED_LIMIT),
       supabase
         .from("feed_activity")
         .select("activity_type, activity_data")
