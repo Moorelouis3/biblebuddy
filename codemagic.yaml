@@ -58,12 +58,25 @@ workflows:
         # not present the Apple sheet without this, whatever Supabase says.
         script: bash scripts/ios-entitlements.sh
 
-      - name: Add the Bible lock's daily re-lock extension
-        # The lock has to come back at the start of each day whether or not
-        # anyone opens Bible Buddy, and only a DeviceActivityMonitor extension
-        # gets woken for that. ios/ is regenerated every build, so the second
-        # target is added here rather than committed.
-        script: bash scripts/ios-bible-lock-extension.sh
+      # The Bible lock's daily re-lock extension is OFF (2026-10-17).
+      #
+      # It broke the archive: "Failed to show build settings
+      # ios/App/App.xcodeproj", which is xcodebuild refusing to read the
+      # project at all. Capacitor 8 generates an SPM project - CapApp-SPM, a
+      # packageReferences block, nine XCLocalSwiftPackageReference and
+      # XCSwiftPackageProductDependency objects - and the xcodeproj gem the
+      # script uses does not know those types, so re-saving the file drops
+      # them and what is left will not parse.
+      #
+      # Everything the reader touches still works: choosing apps, locking
+      # them, and the lock lifting when the day's reading is done all live in
+      # the plugin, which Capacitor links itself. What is missing is the
+      # automatic re-lock at the start of a day nobody opens the app on.
+      # Putting it back needs a way of adding the target that leaves the SPM
+      # references alone - an xcodegen spec, or patching the pbxproj in place.
+      #
+      # - name: Add the Bible lock's daily re-lock extension
+      #   script: bash scripts/ios-bible-lock-extension.sh
 
       - name: Install the app icon
         # Otherwise the app wears Capacitor's grey placeholder everywhere -
@@ -136,6 +149,9 @@ workflows:
         # build 9 (Louis, 2026-10-17: "so I know it's version 1 build 9").
         # Bump it to 2 when version 2 ships and the numbers read 2.14, 2.15.
         APP_MAJOR_VERSION: "1"
+        # Asked what the last build to actually reach TestFlight was, so a
+        # failed attempt never spends a number.
+        APP_STORE_APP_ID: "6822155944"
       # This needs a certificate to exist in the team's code signing
       # identities, and on 2026-10-13 it did not, which cost two builds:
       #   #1 died before any step ran - "No matching profiles found".
@@ -169,12 +185,25 @@ workflows:
         # not present the Apple sheet without this, whatever Supabase says.
         script: bash scripts/ios-entitlements.sh
 
-      - name: Add the Bible lock's daily re-lock extension
-        # The lock has to come back at the start of each day whether or not
-        # anyone opens Bible Buddy, and only a DeviceActivityMonitor extension
-        # gets woken for that. ios/ is regenerated every build, so the second
-        # target is added here rather than committed.
-        script: bash scripts/ios-bible-lock-extension.sh
+      # The Bible lock's daily re-lock extension is OFF (2026-10-17).
+      #
+      # It broke the archive: "Failed to show build settings
+      # ios/App/App.xcodeproj", which is xcodebuild refusing to read the
+      # project at all. Capacitor 8 generates an SPM project - CapApp-SPM, a
+      # packageReferences block, nine XCLocalSwiftPackageReference and
+      # XCSwiftPackageProductDependency objects - and the xcodeproj gem the
+      # script uses does not know those types, so re-saving the file drops
+      # them and what is left will not parse.
+      #
+      # Everything the reader touches still works: choosing apps, locking
+      # them, and the lock lifting when the day's reading is done all live in
+      # the plugin, which Capacitor links itself. What is missing is the
+      # automatic re-lock at the start of a day nobody opens the app on.
+      # Putting it back needs a way of adding the target that leaves the SPM
+      # references alone - an xcodegen spec, or patching the pbxproj in place.
+      #
+      # - name: Add the Bible lock's daily re-lock extension
+      #   script: bash scripts/ios-bible-lock-extension.sh
 
       - name: Install the app icon
         script: bash scripts/ios-app-icon.sh
@@ -191,11 +220,29 @@ workflows:
         #
         # Padded to two digits so Apple's numeric comparison still rises:
         # 1.09 then 1.10 is nine then ten, and after 1.99 comes 1.100.
+        #
+        # The number comes from TestFlight, NOT from $BUILD_NUMBER. Codemagic's
+        # counter moves on every attempt, so two failures spent 9 and 10 on
+        # nothing and the next good build would have called itself 1.11 of an
+        # app whose last real build was 8 (Louis, 2026-10-17: "don't call it
+        # build 10 or 11, it failed - we are build 9 until it is successful").
+        # Asking Apple what actually landed makes a failure cost nothing.
         script: |
           cd ios/App
-          BUILD_PADDED=$(printf "%02d" "$BUILD_NUMBER")
-          agvtool new-marketing-version "${APP_MAJOR_VERSION:-1}.${BUILD_PADDED}"
-          agvtool new-version -all "$BUILD_NUMBER"
+          LATEST=$(app-store-connect get-latest-testflight-build-number "$APP_STORE_APP_ID" 2>/dev/null || echo "")
+          case "$LATEST" in
+            ''|*[!0-9]*)
+              # Apple unreachable or no build yet: fall back to Codemagic's
+              # counter, which is always higher than anything uploaded, so the
+              # upload cannot collide even on the odd run.
+              NEXT="$BUILD_NUMBER"
+              echo "No TestFlight build number available - falling back to $NEXT."
+              ;;
+            *) NEXT=$((LATEST + 1)) ;;
+          esac
+          echo "Building as ${APP_MAJOR_VERSION:-1}.$(printf "%02d" "$NEXT") (build $NEXT)."
+          agvtool new-marketing-version "${APP_MAJOR_VERSION:-1}.$(printf "%02d" "$NEXT")"
+          agvtool new-version -all "$NEXT"
 
       # The Bible lock extension used to fetch its own signing here, on the
       # assumption that ios_signing only covered net.mybiblebuddy.app. It does
