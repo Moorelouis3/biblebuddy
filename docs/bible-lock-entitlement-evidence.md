@@ -1,75 +1,51 @@
-# Bible Lock: why it cannot ship yet
+# Bible Lock: what was actually wrong
 
-Written 2026-10-17 after eight failed builds. Everything here was read off
-Apple's own files, not inferred.
+Resolved 2026-10-17, after about ten failed builds.
 
-## What is true
+## The answer
 
-**Apple has granted the entitlement.** The App ID page for
-`net.mybiblebuddy.app` shows:
+Two files with the same name.
 
-> Family Controls (Distribution) · Platform Support iOS, visionOS · Provisioning
-> Support Development, Ad hoc, App Store Connect · Entitlement Keys
-> `com.apple.developer.family-controls` · **Assigned**
-
-Both Family Controls capabilities are ticked on the identifier — (Distribution)
-was already on, and (Development) was added on 2026-10-17 while chasing this.
-App Groups is ticked too, with one group configured.
-
-**And the provisioning profile does not contain it.** The build decodes every
-`.mobileprovision` on the machine before archiving. Every run, including after
-the profile was deleted outright so Apple generated a brand new one, prints:
+Apple's provisioning profile for `net.mybiblebuddy.app`, downloaded from the
+portal, contains everything it should:
 
 ```
-profile: .../provisioning_profile_888__amh.mobileprovision
-    "application-identifier" => "Q8TDSF2RP2.net.mybiblebuddy.app"
-    "get-task-allow" => false
-  "Name" => "Bible Buddy App Store"
+com.apple.developer.family-controls    true
+com.apple.security.application-groups  group.net.mybiblebuddy.app
+com.apple.developer.applesignin        Default
+aps-environment                        production
 ```
 
-No `com.apple.developer.family-controls`. No
-`com.apple.security.application-groups` either, although App Groups has been
-enabled on the identifier for weeks. So this is not one missing entitlement —
-the profile Apple issues for this App ID is missing every capability that was
-added after it was first created.
+The profile Codemagic put on the build machine, under the same name "Bible
+Buddy App Store", contained `application-identifier` and `get-task-allow` and
+nothing else.
 
-Which is why the archive says, in thirteen seconds, every time:
+So the archive was telling the truth - *its* profile had no Family Controls -
+and the portal was telling the truth too. They were describing different files.
 
-```
-error: Provisioning profile "Bible Buddy App Store" doesn't include the
-Family Controls (Development) capability
-error: ...doesn't include the com.apple.developer.family-controls entitlement
-```
+This is why nothing worked: regenerating the profile, enabling Family Controls
+(Development) alongside (Distribution), deleting the profile so Apple built a
+fresh one, and creating one by hand were all fixing a file the build never used.
 
-An app that asks for an entitlement its profile lacks cannot be signed at all,
-so this one line blocks the whole build.
+## The fix
 
-## What was already tried
+`ios-signing/Bible_Buddy_App_Store.mobileprovision` - Apple's real file - lives
+in the repository, and `scripts/ios-install-profile.sh` clears the provisioning
+profile directory and installs it before `xcode-project use-profiles` reads it.
 
-1. Regenerated the profile in the portal (it was **Invalid** — genuinely broken,
-   and worth fixing on its own). Still missing.
-2. Enabled Family Controls (Development) alongside (Distribution) on the App ID,
-   regenerated again. Still missing.
-3. Deleted the profile entirely so Codemagic's App Store Connect integration
-   created a fresh one. Still missing.
+A provisioning profile carries no private key. It is a signed list of what an
+app may do, useless without the distribution certificate, which is not here.
 
-## What to do next
+Replace the file when it expires (**2027-10-13**): download it from the portal
+and overwrite.
 
-This is an Apple-side question now, and it wants a human with the account:
+## How it was found
 
-- In **Xcode on a Mac**, sign in with the account and let it manage signing for
-  `net.mybiblebuddy.app`. Xcode's own profile request sometimes succeeds where
-  the API's does not, and the profile it produces can then be used by name.
-- Failing that, **Apple Developer Support**: the entitlement reads Assigned on
-  the App ID and does not appear in generated profiles. Quote the two errors
-  above and the decoded profile. That is a specific, reproducible complaint.
+Louis opened the profile page in the browser and asked whether it helped. It
+did: downloading that file and decoding it was the first time anyone had
+compared what Apple issues against what the build receives.
 
-## Until then
-
-`BIBLE_LOCK_ENTITLEMENT` in codemagic.yaml is `off`, so the app does not ask for
-the entitlement and builds sign normally. Set it to `on` the day a profile
-arrives carrying `com.apple.developer.family-controls`, and Bible Lock works —
-the plugin, the UI and the page are all finished and waiting.
-
-The dashboard banner and the page only appear where the lock can actually run,
-so nobody on the website or on Android is shown a feature that does nothing.
+The lesson is in the method. `xcode-project build-ipa` prints only "Failed to
+archive", so the codemagic.yaml keeps a step that runs the commands by hand and
+decodes every profile on the machine. Read that step before theorising; two
+confident wrong diagnoses came from not having it.
