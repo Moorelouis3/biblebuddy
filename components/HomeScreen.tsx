@@ -22,6 +22,7 @@ import { supabase } from "../lib/supabaseClient";
 import { useSupabaseUser } from "../lib/useSupabaseUser";
 import { recordNewUser } from "../lib/guestSession";
 import VerseOfTheDayCard from "./VerseOfTheDayCard";
+import { cardTint } from "../lib/cardTints";
 import CommunityEventBanner from "./CommunityEventBanner";
 import YourBookshelf from "./home/YourBookshelf";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
@@ -381,14 +382,23 @@ export default function HomeScreen() {
           Today's reading comes first, then something to read next; looking a
           name up is a tool you reach for, not a thing to be offered. */}
       <section aria-labelledby="home-recommended-heading">
-        <SectionHeading label="Recommended For You" href="/blog" onSeeAll={() => trackHomeEvent("home_see_all_click", { section: "recommended" })} />
+        {/* "Quick Reads", not "Recommended For You" (Louis, 2026-10-17). The
+            analytics key stays "recommended" so the history before the rename
+            still joins up with the history after it. */}
+        <SectionHeading label="Quick Reads" href="/blog" onSeeAll={() => trackHomeEvent("home_see_all_click", { section: "recommended" })} />
         <div className="flex snap-x gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {recommended.map((article) => (
+          {recommended.map((article, index) => {
+            const tint = cardTint(index);
+            return (
             <Link
               key={article.slug}
               href={article.canonicalPath}
               onClick={() => trackHomeEvent("home_article_click", { slug: article.slug })}
-              className="block w-[240px] shrink-0 snap-start rounded-xl outline-none transition hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] sm:w-[280px]"
+              // Each banner on its own tinted card. The width grew by the
+              // padding so the artwork keeps the size it had rather than
+              // shrinking to make room for the frame.
+              className="block w-[256px] shrink-0 snap-start rounded-2xl border p-2 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] sm:w-[296px]"
+              style={{ backgroundColor: tint.bg, borderColor: tint.border }}
             >
               <div className="relative aspect-[1728/910] overflow-hidden rounded-xl bg-[var(--bb-surface-soft,#eef2f7)]">
                 <Image
@@ -400,12 +410,13 @@ export default function HomeScreen() {
                   sizes="(max-width: 640px) 240px, 300px"
                 />
               </div>
-              <p className="mt-1.5 line-clamp-2 text-sm font-black text-[var(--bb-text-primary,#111827)]">
+              <p className="mt-1.5 line-clamp-2 px-0.5 text-sm font-black text-[var(--bb-text-primary,#111827)]">
                 {article.title}
               </p>
-              <p className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">{article.readTime}</p>
+              <p className="mt-0.5 px-0.5 pb-0.5 text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">{article.readTime}</p>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
 

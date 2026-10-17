@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
+import { cardTint } from "../../lib/cardTints";
 import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
 import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
 import { BIBLE_YEAR_PLAN_HREF } from "../../lib/bibleYearProgress";
@@ -229,8 +230,18 @@ export default function YourBookshelf({
                 // The book they are furthest into wears the solid button; the
                 // rest are tinted, so the eye lands on one thing.
                 const isLead = index === 0;
+                // Each book on its own pastel card (Louis, 2026-10-17:
+                // "separate bgs for each banner, and the same for continue
+                // reading"). The width grew by exactly the padding, so the
+                // covers keep the size and portrait proportions they had - the
+                // frame is added around them rather than taken out of them.
+                const tint = cardTint(index);
                 return (
-                  <li key={book.key} className="flex w-[132px] shrink-0 snap-start flex-col sm:w-[158px]">
+                  <li
+                    key={book.key}
+                    className="flex w-[148px] shrink-0 snap-start flex-col rounded-2xl border p-2 shadow-sm sm:w-[174px]"
+                    style={{ backgroundColor: tint.bg, borderColor: tint.border }}
+                  >
                     <button
                       type="button"
                       onClick={() => router.push(book.href)}
