@@ -1812,60 +1812,48 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  // The daily reading reminder inside the store apps.
+  // Notifications inside the store apps: remote push first, then the daily
+  // reading reminder.
   //
-  // Web push never reaches them, so without this an App Store install has no
-  // reminder at all. A local notification is scheduled by the phone itself,
-  // which needs nothing from Apple. Only for signed-in readers - reminding a
-  // stranger to continue a plan they have not started is noise.
-  // Remote push, so a DM reaches the phone (Louis, 2026-10-17: "I don't get
-  // notifications when I get a new DM"). registerForNativePush existed since
-  // 2026-10-11 and nothing ever called it, so no device ever had a token and
-  // /api/push/process had nothing to send to.
+  // Web push never reaches an app, so without this an App Store install has no
+  // reminder at all and no way for a DM to reach the phone. Only for
+  // signed-in readers - reminding a stranger to continue a plan they have not
+  // started is noise.
   //
-  // It no-ops unless NEXT_PUBLIC_NATIVE_PUSH_ENABLED is "true", so the
-  // notification prompt is not spent before anything can be delivered.
+  // One effect, not two, and that is the whole point: see below.
   useEffect(() => {
     if (!userId) return;
     let cancelled = false;
     void (async () => {
+      /**
+       * After push, never beside it.
+       *
+       * Two plugins are installed - local-notifications for the daily reading
+       * reminder, push-notifications for everything the server sends - and
+       * both call requestPermissions(). These were two effects firing on the
+       * same userId, so on every app open both asked iOS for notification
+       * authorization in the same moment.
+       *
+       * iOS shows one prompt for one request. Two concurrent requestAuthorization
+       * calls is a known way to end up with a completion handler that never
+       * fires, and that is exactly what Louis had: no prompt at all, both
+       * plugins hanging, from 2026-10-11 until tonight. It looked like a broken
+       * plugin because both were broken, and they were breaking each other.
+       *
+       * registerForNativePush is awaited first and owns the prompt. It cannot
+       * hang the reminder for long - it races a six second timeout internally -
+       * and once it has settled, whatever the reader answered is already
+       * recorded, so the reminder only has to read the permission, not ask for
+       * it again.
+       */
       const { registerForNativePush } = await import("@/lib/nativePush");
-      // Deliberately NOT `if (cancelled) return;` here.
-      //
-      // That line, with `router` in the dependency array below, is why nobody
-      // has ever been asked for notification permission. router changes
-      // identity when AppShell re-renders, which re-runs this effect, whose
-      // cleanup sets cancelled = true - and the dynamic import above takes
-      // long enough that the previous run almost always came back to find
-      // itself cancelled and returned here, before registering anything.
-      //
-      // Louis's Settings panel on 2026-10-17 showed it exactly: running in
-      // the app "ios", registering on "yes", iPhone permission "prompt" - iOS
-      // waiting to be asked, and nothing ever asking it.
-      //
-      // Registering twice is harmless: the token is the primary key, so a
-      // second call updates a row rather than adding one. Being cancelled is
-      // not harmless, so the race is resolved the other way.
       await registerForNativePush((url) => {
-        // Tapping the notification opens what it was about. This guard stays:
-        // navigating after the component has gone is the thing worth avoiding.
+        // Tapping the notification opens what it was about.
         if (!cancelled) router.push(url);
       });
-    })();
-    return () => {
-      cancelled = true;
-    };
-    // router is deliberately not a dependency. It is only used inside the
-    // callback above, where a stale instance navigates just as well, and
-    // listing it is what made this effect restart and cancel itself.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId]);
-  useEffect(() => {
-    if (!userId) return;
-    let cancelled = false;
-    void (async () => {
-      const { ensureDailyReminder } = await import("@/lib/nativeReminders");
+
       if (cancelled) return;
+      const { ensureDailyReminder } = await import("@/lib/nativeReminders");
       await ensureDailyReminder();
     })();
     return () => {
