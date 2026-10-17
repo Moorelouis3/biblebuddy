@@ -1,4 +1,4 @@
-import { isNativeApp, nativePlatform } from "@/lib/nativeApp";
+import { isNativeApp, nativePlatform, NATIVE_APP_UA_MARKER } from "@/lib/nativeApp";
 import { supabase } from "@/lib/supabaseClient";
 
 /**
@@ -118,7 +118,55 @@ async function reportPushFailure(stage: string, detail?: unknown): Promise<void>
 export async function registerForNativePush(
   onOpenUrl?: (url: string) => void,
 ): Promise<boolean> {
-  if (!isNativeApp()) return false;
+  /**
+   * The silent bail, which is why we have learned nothing for a week.
+   *
+   * This was `if (!isNativeApp()) return false;` with no report, so the most
+   * likely failure of all - the app not being recognised as the app - left no
+   * trace anywhere. Louis opened it repeatedly on 2026-10-17 and
+   * native_push_tokens stayed empty while zero diagnostics were filed, which
+   * is only possible if we were returning here.
+   *
+   * It matters because the two push systems are mutually exclusive by design:
+   * AppShell starts web push only when isNativeApp() is false. So if this is
+   * false inside the TestFlight app, the app quietly runs the website's push
+   * path in a WKWebView, which can never prompt the way iOS needs - exactly
+   * the symptom Louis described, and exactly his guess ("it's set up for the
+   * web version").
+   *
+   * So it reports, with what the check actually saw. Browsers reach here all
+   * the time and must not file anything.
+   */
+  if (!isNativeApp()) {
+    if (typeof window !== "undefined") {
+      const capacitor = (window as unknown as { Capacitor?: { isNativePlatform?: () => boolean; getPlatform?: () => string } }).Capacitor;
+      const looksLikeTheApp = Boolean(capacitor) || navigator.userAgent.includes(NATIVE_APP_UA_MARKER);
+      // Only when something suggests this really is the app. An ordinary
+      // browser is not a bug report.
+      if (looksLikeTheApp) {
+        await reportPushFailure("the app was not recognised as the app", {
+          hasCapacitor: Boolean(capacitor),
+          isNativePlatform: (() => {
+            try {
+              return capacitor?.isNativePlatform?.() ?? null;
+            } catch {
+              return "threw";
+            }
+          })(),
+          platform: (() => {
+            try {
+              return capacitor?.getPlatform?.() ?? null;
+            } catch {
+              return "threw";
+            }
+          })(),
+          uaHasMarker: navigator.userAgent.includes(NATIVE_APP_UA_MARKER),
+          userAgent: navigator.userAgent.slice(0, 300),
+        });
+      }
+    }
+    return false;
+  }
 
   const push = await pushPlugin();
   if (!push) {
