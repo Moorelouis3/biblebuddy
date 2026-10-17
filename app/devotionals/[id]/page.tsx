@@ -385,6 +385,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
 
   const [devotional, setDevotional] = useState<Devotional | null>(null);
   const [days, setDays] = useState<DevotionalDay[]>([]);
+  /** Live comments + replies on each day's chapter thread, by slug. */
+  const [commentCounts, setCommentCounts] = useState<Map<string, number>>(new Map());
   const [progress, setProgress] = useState<Map<number, DayProgress>>(new Map());
   const [chapterTaskProgress, setChapterTaskProgress] = useState<Map<number, ChapterTaskProgress>>(new Map());
   const [completedReaderChapterKeys, setCompletedReaderChapterKeys] = useState<Set<string>>(new Set());
@@ -750,6 +752,35 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       loadDevotional();
     }
   }, [devotionalId, userId, router]);
+
+  // How busy each day's thread is (Louis, 2026-10-17). Comments hang off the
+  // day's chapter, and the count is everything live on it - top-level and
+  // replies together, which is what the number means to a reader. Counted in
+  // the database (article_comment_counts, live since 2026-10-17): the
+  // alternative is downloading every row on 31 chapters to call length on it.
+  useEffect(() => {
+    if (days.length === 0) return;
+    let cancelled = false;
+    const slugs = Array.from(
+      new Set(days.map((day) => chapterSlug(day.bible_reading_book, day.bible_reading_chapter))),
+    );
+    void (async () => {
+      try {
+        const { data } = await supabase.rpc("article_comment_counts", { p_slugs: slugs });
+        if (cancelled || !data || typeof data !== "object") return;
+        const counts = new Map<string, number>();
+        for (const [slug, total] of Object.entries(data as Record<string, number>)) {
+          counts.set(slug, Number(total) || 0);
+        }
+        setCommentCounts(counts);
+      } catch {
+        // A failed count just leaves the badges off.
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [days]);
 
   useEffect(() => {
     let cancelled = false;
@@ -2056,6 +2087,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               const isUnlocked = isDayUnlocked(day.day_number);
               const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
               const isExpanded = expandedDayNumber === day.day_number;
+              const dayCommentCount =
+                commentCounts.get(chapterSlug(day.bible_reading_book, day.bible_reading_chapter)) || 0;
               const wisdomTriviaConfig = getDevotionalReadingGameConfig(day);
               const readerChapterKey = completedReaderChapterKey(day.bible_reading_book, day.bible_reading_chapter);
               const readerChapterDone = completedReaderChapterKeys.has(readerChapterKey);
@@ -2150,6 +2183,15 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                           {isModernStudyPlan ? `Day ${day.day_number}` : isChapterJourneyStudy ? chapterLabel : `Day ${day.day_number}`}
                         </span>
                         <span className="truncate text-gray-700">{day.day_title}</span>
+                        {dayCommentCount > 0 ? (
+                          <span
+                            className="flex shrink-0 items-center gap-1 rounded-full bg-[var(--bb-surface-soft,#eef3fa)] px-2 py-0.5 text-xs font-black text-[var(--bb-text-secondary,#5f6368)]"
+                            title={`${dayCommentCount} comment${dayCommentCount === 1 ? "" : "s"} and replies on this day`}
+                          >
+                            <span aria-hidden>💬</span>
+                            {dayCommentCount}
+                          </span>
+                        ) : null}
                       </div>
                       <div className="flex items-center gap-2">
                         {!isUnlocked && (

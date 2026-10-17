@@ -32,6 +32,8 @@ type AdminComment = {
   replyCount: number;
   hasMyReply: boolean;
   hasModeratorReply?: boolean;
+  /** Written by the auto-comment cron as Louis, not typed by him. */
+  isAuto?: boolean;
   isMine?: boolean;
 };
 
@@ -67,6 +69,9 @@ const SOURCE_FILTERS = [
   { value: "Bible Chapters", label: "Bible" },
   { value: "Articles", label: "Studies" },
   { value: "Group Feed", label: "Community" },
+  // Louis, 2026-10-17: his own auto-posted replies, so he can see what went
+  // out on his behalf without reading every thread.
+  { value: "Auto", label: "Auto" },
 ];
 
 function avatarFallback(name: string) {
@@ -180,7 +185,8 @@ export default function CommentsAdminPage() {
       const isReplied = Boolean(comment.hasModeratorReply || comment.hasMyReply);
       if (statusFilter === "needs" && isReplied) return false;
       if (statusFilter === "replied" && !isReplied) return false;
-      if (sourceFilter !== "All" && comment.source !== sourceFilter) return false;
+      if (sourceFilter === "Auto" && !comment.isAuto) return false;
+      if (sourceFilter !== "All" && sourceFilter !== "Auto" && comment.source !== sourceFilter) return false;
       if (!needle) return true;
       return [comment.userName, comment.content, comment.sourceLabel, comment.contextTitle, comment.contextContent]
         .join(" ")
@@ -451,6 +457,14 @@ export default function CommentsAdminPage() {
                             <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${comment.userBadgeClassName || "bg-slate-100 text-slate-700"}`}>
                               {comment.userBadgeEmoji ? `${comment.userBadgeEmoji} ` : ""}
                               {comment.userBadgeLabel}
+                            </span>
+                          ) : null}
+                          {comment.isAuto ? (
+                            <span
+                              className="rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-xs font-black text-amber-800"
+                              title="Posted by the auto-comment job, not typed by you"
+                            >
+                              Auto
                             </span>
                           ) : null}
                           <span className={`rounded-full border px-2 py-0.5 text-xs font-black ${sourceTone(comment.source)}`}>

@@ -61,6 +61,10 @@ const TABS: Tab[] = [
     icon: "👥",
     prefixes: ["/study-groups"],
   },
+  // Lil Louis is BB Chat - same page, the name people actually use for it
+  // (Louis, 2026-10-17). It was buried in the More sheet; the AI buddy is the
+  // thing people come back for, so it gets a tab and leaves More.
+  { label: "Lil Louis", href: "/chat", icon: "💬", prefixes: ["/chat"] },
 ];
 
 const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
@@ -73,7 +77,7 @@ const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
   // real route and always works.
   { label: "Settings", href: "/settings", icon: "⚙️" },
   { label: "Invite a Buddy", href: "/ambassador", icon: "💌" },
-  { label: "BB Chat", href: "/chat", icon: "💬" },
+  // BB Chat left this sheet on 2026-10-17 - it is the Lil Louis tab now.
   { label: "Notes", href: "/notes", icon: "📝" },
 ];
 
@@ -299,7 +303,7 @@ export default function BottomNav() {
                 href={tab.href}
                 aria-current={active ? "page" : undefined}
                 tabIndex={hidden ? -1 : undefined}
-                className={`flex min-h-[46px] flex-1 flex-col items-center justify-center gap-0.5 rounded-full px-0.5 text-[9.5px] font-black leading-none transition-colors ${
+                className={`flex min-h-[46px] flex-1 flex-col items-center justify-center gap-0.5 whitespace-nowrap rounded-full px-0.5 text-[9.5px] font-black leading-none transition-colors ${
                   active
                     ? "bg-[#E8F0FE] text-[var(--bb-accent,#2f7fe8)]"
                     : "text-[var(--bb-text-muted,#6b7280)]"
@@ -318,7 +322,7 @@ export default function BottomNav() {
             onClick={() => setMoreOpen((open) => !open)}
             aria-expanded={moreOpen}
             tabIndex={hidden ? -1 : undefined}
-            className={`flex min-h-[46px] flex-1 flex-col items-center justify-center gap-0.5 rounded-full px-0.5 text-[9.5px] font-black leading-none transition-colors ${
+            className={`flex min-h-[46px] flex-1 flex-col items-center justify-center gap-0.5 whitespace-nowrap rounded-full px-0.5 text-[9.5px] font-black leading-none transition-colors ${
               moreOpen || moreIsActive
                 ? "bg-[#E8F0FE] text-[var(--bb-accent,#2f7fe8)]"
                 : "text-[var(--bb-text-muted,#6b7280)]"

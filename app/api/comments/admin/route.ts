@@ -35,6 +35,8 @@ type AdminComment = {
   replyCount: number;
   hasMyReply: boolean;
   hasModeratorReply?: boolean;
+  /** Written by the auto-comment cron as Louis, not typed by him. */
+  isAuto?: boolean;
   isMine?: boolean;
 };
 
@@ -250,8 +252,8 @@ export async function GET(request: NextRequest) {
     reflectionTopRes,
     reflectionReplyRes,
   ] = await Promise.all([
-    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at").eq("is_deleted", false).is("parent_id", null).order("created_at", { ascending: false }).limit(sourceFetchLimit),
-    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at").eq("is_deleted", false).not("parent_id", "is", null).order("created_at", { ascending: false }).limit(sourceFetchLimit * 3),
+    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at, is_auto").eq("is_deleted", false).is("parent_id", null).order("created_at", { ascending: false }).limit(sourceFetchLimit),
+    admin.from("article_comments").select("id, article_slug, user_id, user_name, content, parent_id, created_at, is_auto").eq("is_deleted", false).not("parent_id", "is", null).order("created_at", { ascending: false }).limit(sourceFetchLimit * 3),
     admin.from("feed_post_comments").select("id, post_id, user_id, parent_comment_id, content, created_at").is("parent_comment_id", null).order("created_at", { ascending: false }).limit(sourceFetchLimit),
     admin.from("feed_post_comments").select("id, post_id, user_id, parent_comment_id, content, created_at").not("parent_comment_id", "is", null).order("created_at", { ascending: false }).limit(sourceFetchLimit * 3),
     admin.from("group_posts").select("id, group_id, user_id, display_name, category, title, content, parent_post_id, created_at").not("parent_post_id", "is", null).order("created_at", { ascending: false }).limit(sourceFetchLimit * 2),
@@ -287,6 +289,7 @@ export async function GET(request: NextRequest) {
       isReply: !!row.parent_id,
       replyCount: 0,
       hasMyReply: false,
+      isAuto: row.is_auto === true,
     });
   });
 
