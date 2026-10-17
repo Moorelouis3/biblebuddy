@@ -132,6 +132,10 @@ workflows:
       xcode: latest
       vars:
         BUNDLE_ID: "net.mybiblebuddy.app"
+        # The version people see is "<this>.<build>" - 1.09 is version 1,
+        # build 9 (Louis, 2026-10-17: "so I know it's version 1 build 9").
+        # Bump it to 2 when version 2 ships and the numbers read 2.14, 2.15.
+        APP_MAJOR_VERSION: "1"
       # This needs a certificate to exist in the team's code signing
       # identities, and on 2026-10-13 it did not, which cost two builds:
       #   #1 died before any step ran - "No matching profiles found".
@@ -179,9 +183,18 @@ workflows:
         # Apple rejects a build whose number it has seen before, and the
         # error arrives after the upload rather than before it. $BUILD_NUMBER
         # is Codemagic's own counter, so it always goes up.
+        #
+        # The marketing version carries the build in it: 1.09 is version 1,
+        # build 9, so TestFlight's own list says which build you are holding
+        # without reading the small number beside it (Louis, 2026-10-17). It
+        # was a flat 1.0 on every build before this one.
+        #
+        # Padded to two digits so Apple's numeric comparison still rises:
+        # 1.09 then 1.10 is nine then ten, and after 1.99 comes 1.100.
         script: |
           cd ios/App
-          agvtool new-marketing-version 1.0
+          BUILD_PADDED=$(printf "%02d" "$BUILD_NUMBER")
+          agvtool new-marketing-version "${APP_MAJOR_VERSION:-1}.${BUILD_PADDED}"
           agvtool new-version -all "$BUILD_NUMBER"
 
       - name: Fetch signing for the Bible lock extension
