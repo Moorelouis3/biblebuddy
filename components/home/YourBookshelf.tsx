@@ -168,15 +168,17 @@ export default function YourBookshelf({
     };
   }, [event, communityDay]);
 
+
   if (loading) {
     return (
       <section aria-labelledby="home-bookshelf-heading">
-        <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
-          <div className="h-5 w-40 animate-pulse rounded bg-[var(--bb-surface-soft,#eef2f7)]" />
-          <div className="mt-4 flex gap-4">
-            {[0, 1, 2, 3].map((i) => (
-              <div key={i} className="w-[88px] shrink-0 sm:w-[104px]">
-                <div className="aspect-[2/3] w-full animate-pulse rounded-lg bg-[var(--bb-surface-soft,#eef2f7)]" />
+        <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
+          <div className="h-6 w-44 animate-pulse rounded bg-[var(--bb-surface-soft,#eef2f7)]" />
+          <div className="mt-5 flex gap-3">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="w-[132px] shrink-0 sm:w-[158px]">
+                <div className="aspect-[2/3] w-full animate-pulse rounded-xl bg-[var(--bb-surface-soft,#eef2f7)]" />
+                <div className="mt-2 h-4 w-3/4 animate-pulse rounded bg-[var(--bb-surface-soft,#eef2f7)]" />
               </div>
             ))}
           </div>
@@ -188,117 +190,152 @@ export default function YourBookshelf({
   if (books.length === 0) return null;
 
   return (
-    <section aria-labelledby="home-bookshelf-heading">
-      <div className="rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h2
-              id="home-bookshelf-heading"
-              className="text-lg font-black text-[var(--bb-text-primary,#111827)]"
-            >
-              Your Bookshelf
-            </h2>
-            <p className="mt-0.5 text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-              Pick up where you left off.
-            </p>
-          </div>
-          <Link
-            href="/library"
-            className="shrink-0 text-sm font-black text-[var(--bb-accent,#2f7fe8)] hover:underline"
-          >
-            View all →
-          </Link>
-        </div>
-
-        {/* Swipes on a phone with the next cover peeking, several side by side
-            on a desktop. Snap so a swipe settles on a book, not between two. */}
-        <div className="-mx-4 mt-4 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:-mx-5 sm:px-5 [&::-webkit-scrollbar]:hidden">
-          <ul className="flex w-max snap-x snap-mandatory gap-4 sm:gap-5">
-            {books.map((book) => (
-              <li key={book.key} className="w-[92px] shrink-0 snap-start sm:w-[108px]">
-                <button
-                  type="button"
-                  onClick={() => router.push(book.href)}
-                  className="group block w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)]"
-                >
-                  <div className="relative">
-                    {book.isCommunityToday ? (
-                      <span className="absolute -top-1.5 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-[var(--bb-accent,#2f7fe8)] px-2 py-0.5 text-[9px] font-black uppercase tracking-wide text-white shadow">
-                        Today&rsquo;s study
-                      </span>
-                    ) : null}
-                    <div className="overflow-hidden rounded-lg shadow-[0_4px_10px_rgba(16,33,58,0.18)] transition group-hover:-translate-y-0.5">
-                      {book.cover ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={book.cover}
-                          alt={book.title}
-                          loading="lazy"
-                          className="aspect-[2/3] w-full object-cover"
-                        />
-                      ) : (
-                        <div className="flex aspect-[2/3] w-full items-center justify-center bg-[var(--bb-surface-soft,#eef2f7)] px-1.5 text-center text-[10px] font-black text-[var(--bb-text-muted,#6b7280)]">
-                          {book.title}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </button>
-
-                {/* The shelf the covers stand on. */}
-                <div className="mt-0 h-[3px] w-full rounded-full bg-gradient-to-b from-[#dfe6ef] to-[#c7d2e0]" />
-
-                <p
-                  className={`mt-2 text-center text-[11px] font-black leading-tight ${
-                    book.startsLabel ? "text-[#a57d2c]" : "text-[var(--bb-text-primary,#111827)]"
-                  }`}
-                >
-                  {book.startsLabel
-                    ? book.startsLabel
-                    : book.isComplete
-                      ? "Completed"
-                      : book.currentDay !== null
-                        ? `Day ${book.currentDay} of ${book.totalDays}`
-                        : "Start this study"}
-                </p>
-
-                {book.currentDay !== null && !book.isComplete ? (
-                  <span className="mt-1.5 block h-1 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef2f7)]">
-                    <span
-                      className="block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]"
-                      style={{ width: `${book.percent}%` }}
-                    />
-                  </span>
-                ) : null}
-
-                <button
-                  type="button"
-                  onClick={() => router.push(book.href)}
-                  className="mt-1.5 block w-full text-center text-[11px] font-black text-[var(--bb-accent,#2f7fe8)] hover:underline"
-                >
-                  {book.isComplete ? "Read again →" : book.currentDay !== null ? "Continue →" : "Open →"}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {todayStrip ? (
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 rounded-xl bg-[#fdf6e7] px-3 py-2.5">
-            <p className="min-w-0 text-[13px] font-semibold leading-snug text-[#7a5b1c]">
-              <span aria-hidden className="mr-1.5">👥</span>
-              <span className="font-black">Today together:</span> {todayStrip.reading}
-              {todayStrip.dayTitle ? <> · {todayStrip.dayTitle}</> : null}
-            </p>
+    <>
+      <section aria-labelledby="home-bookshelf-heading">
+        <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <h2
+                id="home-bookshelf-heading"
+                className="flex items-center gap-2 text-xl font-black text-[var(--bb-text-primary,#111827)] sm:text-2xl"
+              >
+                <span aria-hidden className="text-xl sm:text-2xl">📖</span>
+                Continue Reading
+              </h2>
+              <p className="mt-0.5 text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
+                Your bookshelf &middot; Pick up where you left off.
+              </p>
+            </div>
             <Link
-              href={`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`}
-              className="shrink-0 text-[13px] font-black text-[#a57d2c] hover:underline"
+              href="/library"
+              className="shrink-0 rounded-full bg-[var(--bb-accent-soft,#eaf5ff)] px-4 py-2 text-sm font-black text-[var(--bb-accent,#2f7fe8)] transition hover:bg-[#dceeff]"
             >
-              Join discussion →
+              View Library →
             </Link>
           </div>
-        ) : null}
-      </div>
-    </section>
+
+          {/* The covers are the point, so they are large. The row swipes on a
+              phone with the next one peeking; on a desktop three or four sit
+              side by side. */}
+          <div className="-mx-4 mt-5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:-mx-5 sm:px-5 [&::-webkit-scrollbar]:hidden">
+            <ul className="flex w-max snap-x snap-mandatory items-stretch gap-3 sm:gap-4">
+              {books.map((book, index) => {
+                const primaryLabel = book.isComplete
+                  ? "Read Again →"
+                  : book.currentDay !== null
+                    ? "Continue →"
+                    : "Open →";
+                // The book they are furthest into wears the solid button; the
+                // rest are tinted, so the eye lands on one thing.
+                const isLead = index === 0;
+                return (
+                  <li key={book.key} className="flex w-[132px] shrink-0 snap-start flex-col sm:w-[158px]">
+                    <button
+                      type="button"
+                      onClick={() => router.push(book.href)}
+                      className="group relative block w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)]"
+                    >
+                      {book.isCommunityToday ? (
+                        <span className="absolute left-2 top-2 z-10 rounded-md bg-[var(--bb-accent,#2f7fe8)] px-2 py-1 text-[9px] font-black uppercase tracking-wide text-white shadow">
+                          Today&rsquo;s study
+                        </span>
+                      ) : null}
+                      <div className="overflow-hidden rounded-xl shadow-[0_6px_16px_rgba(16,33,58,0.2)] transition group-hover:-translate-y-0.5">
+                        {book.cover ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={book.cover}
+                            alt={book.title}
+                            loading="lazy"
+                            className="aspect-[2/3] w-full object-cover"
+                          />
+                        ) : (
+                          <div className="flex aspect-[2/3] w-full items-center justify-center bg-[var(--bb-surface-soft,#eef2f7)] px-2 text-center text-[11px] font-black text-[var(--bb-text-muted,#6b7280)]">
+                            {book.title}
+                          </div>
+                        )}
+                      </div>
+                    </button>
+
+                    <p className="mt-2.5 text-[13px] font-black leading-tight text-[var(--bb-text-primary,#111827)]">
+                      {book.title}
+                    </p>
+
+                    <div className="mt-1 flex-1">
+                      {book.startsLabel ? (
+                        <p className="text-xs font-black text-[#a57d2c]">{book.startsLabel}</p>
+                      ) : book.isComplete ? (
+                        <p className="flex items-center gap-1 text-xs font-bold text-[#2f8f5b]">
+                          <span aria-hidden>✅</span> Completed
+                        </p>
+                      ) : book.currentDay !== null ? (
+                        <>
+                          <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
+                            Day {book.currentDay} of {book.totalDays}
+                          </p>
+                          <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef2f7)]">
+                            <span
+                              className="block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]"
+                              style={{ width: `${book.percent}%` }}
+                            />
+                          </span>
+                        </>
+                      ) : (
+                        <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">Start this study</p>
+                      )}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => router.push(book.href)}
+                      className={`mt-3 w-full rounded-full px-3 py-2.5 text-center text-[13px] font-black transition ${
+                        isLead
+                          ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] hover:opacity-95"
+                          : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] hover:bg-[#dceeff]"
+                      }`}
+                    >
+                      {primaryLabel}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Today Together - its own card, because the group's reading is a
+          different thing from the reader's own place in a book. */}
+      {todayStrip ? (
+        <section aria-labelledby="home-today-together-heading">
+          <div className="rounded-3xl border border-[#dbe7f4] bg-[var(--bb-accent-soft,#eaf5ff)] p-4 shadow-sm sm:p-5">
+            <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
+              <div className="min-w-0 flex-1">
+                <h2
+                  id="home-today-together-heading"
+                  className="flex items-center gap-2 text-lg font-black text-[var(--bb-text-primary,#111827)] sm:text-xl"
+                >
+                  <span aria-hidden>👥</span>
+                  Today Together
+                </h2>
+                <p className="mt-1 text-[15px] font-black text-[var(--bb-text-primary,#111827)]">
+                  {todayStrip.reading}
+                  {todayStrip.dayTitle ? <> &middot; {todayStrip.dayTitle}</> : null}
+                </p>
+                <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+                  Read, reflect, and join the discussion with others in the Bible Buddy community.
+                </p>
+              </div>
+              <Link
+                href={`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`}
+                className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:opacity-95"
+              >
+                Join Discussion →
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : null}
+    </>
   );
 }

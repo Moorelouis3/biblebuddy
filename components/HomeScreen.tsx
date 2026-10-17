@@ -366,21 +366,22 @@ export default function HomeScreen() {
       {/* Verse of the Day leads - moved above the journey (Louis, 2026-09-04) */}
       <VerseOfTheDayCard userId={userId} />
 
-      {/* Look It Up - the people/places/keywords lists, which were buried
-          under Plans > Bible Study Tools > Bible References where nobody
-          found them. Sits high on the page because looking a name up is a
-          reading-time need, not an end-of-session one (Louis, 2026-10-12). */}
-      <BibleReferenceCard onEvent={trackHomeEvent} />
-
-      {/* Your Bookshelf replaced two sections on 2026-10-16: the community
-          study day panel and the Bible in One Year day rail. One shelf of
-          upright covers now carries both, with each reader's real position
-          under the book and the group's reading in the strip beneath. */}
+      {/* Continue Reading sits directly under the verse (Louis, 2026-10-17):
+          the first thing after today's verse should be the book you are in.
+          It replaced two sections on 2026-10-16 - the community study day
+          panel and the Bible in One Year day rail - and renders the Today
+          Together card beneath itself. */}
       <YourBookshelf
         userId={userId}
         planDay={stats.planDay}
         planCompletedDays={completedDays}
       />
+
+      {/* Look It Up - the people/places/keywords lists, which were buried
+          under Plans > Bible Study Tools > Bible References where nobody
+          found them. Sits high on the page because looking a name up is a
+          reading-time need, not an end-of-session one (Louis, 2026-10-12). */}
+      <BibleReferenceCard onEvent={trackHomeEvent} />
 
       {/* 5b. Upcoming Community Study - the EXACT banner from the group page.
           One component, one event config, one signup page; only the
