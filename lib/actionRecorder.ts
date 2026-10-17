@@ -13,8 +13,6 @@ import type { ActionType } from "./actionTypes";
 import { syncCurrentStreakToProfileStats } from "./profileStats";
 import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
 import { liftBibleLockFor, UNLOCKING_ACTIONS } from "./bibleLock";
-import { FEED_MILESTONES } from "./feedMilestones";
-import { announceFeedMilestone } from "./announceFeedMilestone";
 
 /** Fired on any "did something" (not just viewed/opened) action. */
 export const MEANINGFUL_ACTION_EVENT = "bb:meaningful-action";
@@ -191,21 +189,6 @@ export async function recordAction(
     // announces it when there was.
     if (UNLOCKING_ACTIONS.has(actionType)) {
       void liftBibleLockFor(actionType);
-    }
-
-    // Tell the buddy feed, for the few completions worth announcing.
-    //
-    // Same reasoning as the lock above: this is the one function every screen
-    // that finishes something passes through, so the decision lives here rather
-    // than in each of them. Which completions qualify, and the daily cap, are
-    // decided on the server in lib/feedMilestones.ts - a page that could write
-    // its own feed rows could announce anything about anybody.
-    //
-    // Not awaited and never allowed to throw. An announcement is the least
-    // important thing happening in this function; the reading it describes is
-    // already recorded by the time anyone sees it.
-    if (FEED_MILESTONES.has(actionType)) {
-      void announceFeedMilestone(actionType, actionLabel);
     }
 
     // STEP 1: Insert action into master_actions using shared function
