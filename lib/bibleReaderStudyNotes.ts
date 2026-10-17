@@ -1217,6 +1217,7 @@ import { SECOND_TIMOTHY_FOUR_PERSONAL_SECTIONS } from "./secondTimothyFourSource
 import { TITUS_1_3_PERSONAL_SECTIONS } from "./titusOneToThreePersonalNotes";
 import { TITUS_ONE_PERSONAL_SECTIONS } from "./titusOneSource";
 import { TITUS_TWO_PERSONAL_SECTIONS } from "./titusTwoSource";
+import { TITUS_THREE_PERSONAL_SECTIONS } from "./titusThreeSource";
 import { PHILEMON_1_PERSONAL_SECTIONS } from "./philemonOnePersonalNotes";
 import { HEBREWS_1_13_PERSONAL_SECTIONS } from "./hebrewsOneToThirteenPersonalNotes";
 import { JAMES_1_5_PERSONAL_SECTIONS } from "./jamesOneToFivePersonalNotes";
@@ -1561,7 +1562,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 thessalonians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "1 timothy" && section.chapter >= 1 && section.chapter <= 6) ||
     (normalizeBook(book) === "2 timothy" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
-    (normalizeBook(book) === "titus" && (section.chapter === 1 || section.chapter === 2));
+    (normalizeBook(book) === "titus" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4948,6 +4949,10 @@ function applyPersonalTitusOneStudySections() {
 
 function applyPersonalTitusTwoStudySections() {
   replaceStudySectionsForBookRange("titus", 2, 2, TITUS_TWO_PERSONAL_SECTIONS);
+}
+
+function applyPersonalTitusThreeStudySections() {
+  replaceStudySectionsForBookRange("titus", 3, 3, TITUS_THREE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalPhilemonOneStudySections() {
@@ -12741,6 +12746,7 @@ applyPersonalSecondTimothyFourStudySections();
 applyPersonalTitusOneThroughThreeStudySections();
 applyPersonalTitusOneStudySections();
 applyPersonalTitusTwoStudySections();
+applyPersonalTitusThreeStudySections();
 applyPersonalPhilemonOneStudySections();
 applyPersonalHebrewsOneThroughThirteenStudySections();
 applyPersonalJamesOneThroughFiveStudySections();
