@@ -50,6 +50,12 @@ workflows:
       - name: Sync web assets and plugins
         script: npx cap sync ios
 
+      - name: Raise the project to iOS 16
+        # The Bible lock plugin needs 16, and Swift Package Manager will not
+        # resolve a graph where the app asks for less than a package it
+        # depends on. Without this xcodebuild cannot read the project at all.
+        script: bash scripts/ios-deployment-target.sh
+
       - name: Write the Info.plist keys Apple requires
         script: bash scripts/ios-info-plist.sh
 
@@ -58,25 +64,17 @@ workflows:
         # not present the Apple sheet without this, whatever Supabase says.
         script: bash scripts/ios-entitlements.sh
 
-      # The Bible lock's daily re-lock extension is OFF (2026-10-17).
-      #
-      # It broke the archive: "Failed to show build settings
-      # ios/App/App.xcodeproj", which is xcodebuild refusing to read the
-      # project at all. Capacitor 8 generates an SPM project - CapApp-SPM, a
-      # packageReferences block, nine XCLocalSwiftPackageReference and
-      # XCSwiftPackageProductDependency objects - and the xcodeproj gem the
-      # script uses does not know those types, so re-saving the file drops
-      # them and what is left will not parse.
-      #
-      # Everything the reader touches still works: choosing apps, locking
-      # them, and the lock lifting when the day's reading is done all live in
-      # the plugin, which Capacitor links itself. What is missing is the
-      # automatic re-lock at the start of a day nobody opens the app on.
-      # Putting it back needs a way of adding the target that leaves the SPM
-      # references alone - an xcodegen spec, or patching the pbxproj in place.
-      #
-      # - name: Add the Bible lock's daily re-lock extension
-      #   script: bash scripts/ios-bible-lock-extension.sh
+      - name: Add the Bible lock's daily re-lock extension
+        # The lock has to come back at the start of each day whether or not
+        # anyone opens Bible Buddy, and only a DeviceActivityMonitor extension
+        # gets woken for that. ios/ is regenerated every build, so the second
+        # target is added here rather than committed.
+        #
+        # Switched off for one build on 2026-10-17 on a wrong hunch: the
+        # archive was dying and this looked like the cause. It was not - the
+        # build failed in exactly the same place without it, and the real
+        # reason was the plugin asking for iOS 16 while the app asked for 15.
+        script: bash scripts/ios-bible-lock-extension.sh
 
       - name: Install the app icon
         # Otherwise the app wears Capacitor's grey placeholder everywhere -
@@ -177,6 +175,12 @@ workflows:
       - name: Sync web assets and plugins
         script: npx cap sync ios
 
+      - name: Raise the project to iOS 16
+        # The Bible lock plugin needs 16, and Swift Package Manager will not
+        # resolve a graph where the app asks for less than a package it
+        # depends on. Without this xcodebuild cannot read the project at all.
+        script: bash scripts/ios-deployment-target.sh
+
       - name: Write the Info.plist keys Apple requires
         script: bash scripts/ios-info-plist.sh
 
@@ -185,25 +189,17 @@ workflows:
         # not present the Apple sheet without this, whatever Supabase says.
         script: bash scripts/ios-entitlements.sh
 
-      # The Bible lock's daily re-lock extension is OFF (2026-10-17).
-      #
-      # It broke the archive: "Failed to show build settings
-      # ios/App/App.xcodeproj", which is xcodebuild refusing to read the
-      # project at all. Capacitor 8 generates an SPM project - CapApp-SPM, a
-      # packageReferences block, nine XCLocalSwiftPackageReference and
-      # XCSwiftPackageProductDependency objects - and the xcodeproj gem the
-      # script uses does not know those types, so re-saving the file drops
-      # them and what is left will not parse.
-      #
-      # Everything the reader touches still works: choosing apps, locking
-      # them, and the lock lifting when the day's reading is done all live in
-      # the plugin, which Capacitor links itself. What is missing is the
-      # automatic re-lock at the start of a day nobody opens the app on.
-      # Putting it back needs a way of adding the target that leaves the SPM
-      # references alone - an xcodegen spec, or patching the pbxproj in place.
-      #
-      # - name: Add the Bible lock's daily re-lock extension
-      #   script: bash scripts/ios-bible-lock-extension.sh
+      - name: Add the Bible lock's daily re-lock extension
+        # The lock has to come back at the start of each day whether or not
+        # anyone opens Bible Buddy, and only a DeviceActivityMonitor extension
+        # gets woken for that. ios/ is regenerated every build, so the second
+        # target is added here rather than committed.
+        #
+        # Switched off for one build on 2026-10-17 on a wrong hunch: the
+        # archive was dying and this looked like the cause. It was not - the
+        # build failed in exactly the same place without it, and the real
+        # reason was the plugin asking for iOS 16 while the app asked for 15.
+        script: bash scripts/ios-bible-lock-extension.sh
 
       - name: Install the app icon
         script: bash scripts/ios-app-icon.sh
