@@ -66,14 +66,26 @@ export default function BibleLockBanner() {
     }
     setLocked(status.locked);
 
-    // Dismissed is dismissed, in either state (Louis, 2026-10-17: "if someone
-    // decides to X out the strip then don't keep showing it, they can go to
-    // the settings to do it").
+    // Three states, not two (Louis, 2026-10-17): somebody who has set the lock
+    // up should never be asked to set it up again - "it should be already set
+    // every day".
     //
-    // I had the locked state override this, on the reasoning that a shielded
-    // phone should always explain itself. That is the reasoning every app uses
-    // to keep showing you something you closed. Settings carries the lock, and
-    // the X is somebody saying they know where it lives.
+    // 1. Apps shielded right now -> say so, and say how to get them back.
+    if (status.locked) {
+      setShow(true);
+      return;
+    }
+
+    // 2. Set up, and today's reading already done -> nothing. The lock comes
+    //    back on its own; there is nothing to ask for and nothing to say.
+    if (status.chosen > 0) {
+      setShow(false);
+      return;
+    }
+
+    // 3. Never set up -> the invitation, once, until they do it or close it.
+    //    Dismissed is dismissed; Settings carries the lock (Louis: "if someone
+    //    decides to X out the strip then don't keep showing it").
     try {
       if (window.localStorage.getItem(DISMISS_KEY) === "1") {
         setShow(false);

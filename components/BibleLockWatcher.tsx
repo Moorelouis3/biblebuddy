@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { bibleLockLockedAt, bibleLockStatus, clearBibleLock, UNLOCKING_ACTIONS } from "@/lib/bibleLock";
-import { getBibleBuddyLocalDayStartIso } from "@/lib/louisDailyFlow";
+import { bibleLockLockedAt, bibleLockStatus, clearBibleLock, lockChosenApps, UNLOCKING_ACTIONS } from "@/lib/bibleLock";
+import { getBibleBuddyLocalDayKey, getBibleBuddyLocalDayStartIso } from "@/lib/louisDailyFlow";
 
 /**
  * Give the phone back as soon as today's reading is done, whichever way it was
@@ -23,6 +23,9 @@ import { getBibleBuddyLocalDayStartIso } from "@/lib/louisDailyFlow";
  *
  * Does nothing on the website, on Android, or when nothing is locked.
  */
+/** The day the app last put the lock back on, so it only does it once. */
+const AUTO_LOCK_DAY_KEY = "bb:bible-lock-auto-locked-day";
+
 export default function BibleLockWatcher({ userId }: { userId: string | null }) {
   // One check at a time, and never two in the same second: coming back to the
   // foreground can fire both visibilitychange and focus.
@@ -37,7 +40,44 @@ export default function BibleLockWatcher({ userId }: { userId: string | null }) 
 
     try {
       const status = await bibleLockStatus();
-      if (!status.supported || !status.locked) return;
+      if (!status.supported) return;
+
+      // Not locked, but set up: this is where the new day starts. The lock is
+      // meant to come back by itself every morning (Louis, 2026-10-17: "it
+      // should be already set every day"), and the extension that would do
+      // that without the app being opened cannot build yet - see
+      // docs/bible-lock-entitlement-evidence.md. So the app does it the first
+      // time it is opened on a day where nothing has been read.
+      if (!status.locked) {
+        if (status.chosen === 0) return;
+        const today = getBibleBuddyLocalDayKey();
+        let lastAutoLock: string | null = null;
+        try {
+          lastAutoLock = window.localStorage.getItem(AUTO_LOCK_DAY_KEY);
+        } catch {
+          // Blocked storage: skip, rather than risk locking twice in a day.
+          return;
+        }
+        // Once a day. Somebody who unlocked on purpose in Settings is not
+        // re-locked until tomorrow.
+        if (lastAutoLock === today) return;
+
+        const { data: doneToday } = await supabase
+          .from("master_actions")
+          .select("action_type")
+          .eq("user_id", userId)
+          .gte("created_at", getBibleBuddyLocalDayStartIso())
+          .in("action_type", [...UNLOCKING_ACTIONS])
+          .limit(1);
+        if (doneToday && doneToday.length > 0) return;
+
+        try {
+          window.localStorage.setItem(AUTO_LOCK_DAY_KEY, today);
+        } catch {}
+        await lockChosenApps();
+        window.dispatchEvent(new CustomEvent("bb:bible-lock-lifted"));
+        return;
+      }
 
       // Since the lock went on, not since midnight. Somebody who reads in the
       // morning and locks their apps at lunch would otherwise be unlocked by
