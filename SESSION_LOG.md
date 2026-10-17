@@ -8084,3 +8084,7 @@ Next up: Hebrews 3
 ## 2026-10-17T10:59:06Z (hourly chapter notes run)
 Chapter: Hebrews 3 | Duration: 12.65 min | Sections: 4 | Cards: 33 | Status: pass
 Next up: Hebrews 4
+
+## 2026-10-17T11:55:12Z (hourly chapter notes run)
+Chapter: Hebrews 4 | Duration: 8.83 min | Sections: 4 | Cards: 34 | Status: pass
+Next up: Hebrews 5
