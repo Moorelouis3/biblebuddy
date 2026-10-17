@@ -69,6 +69,11 @@ group.new_reference(File.join(target_name, 'BibleLockMonitor.entitlements'))
 
 ext.build_configurations.each do |config|
   s = config.build_settings
+  # Without this the product is built as ".appex" with nothing in front of
+  # it, and the embed phase then has two commands producing the same path:
+  #   error: Multiple commands produce .../UninstalledProducts/iphoneos/.appex
+  # xcodeproj does not set it, and Xcode usually would.
+  s['PRODUCT_NAME'] = target_name
   s['PRODUCT_BUNDLE_IDENTIFIER'] = 'net.mybiblebuddy.app.biblelockmonitor'
   s['INFOPLIST_FILE'] = "#{target_name}/Info.plist"
   s['CODE_SIGN_ENTITLEMENTS'] = "#{target_name}/BibleLockMonitor.entitlements"
