@@ -31,30 +31,30 @@
 # by downloading it again from the portal.
 set -euo pipefail
 
-SOURCE="ios-signing/Bible_Buddy_App_Store.mobileprovision"
 DEST_DIR="$HOME/Library/MobileDevice/Provisioning Profiles"
 
-if [ ! -f "$SOURCE" ]; then
-  echo "No $SOURCE in the repository." >&2
+shopt -s nullglob
+PROFILES=(ios-signing/*.mobileprovision)
+if [ ${#PROFILES[@]} -eq 0 ]; then
+  echo "No profiles in ios-signing/." >&2
   exit 1
 fi
 
 mkdir -p "$DEST_DIR"
 
 # Clear the stale ones first. Leaving them means xcode-project use-profiles
-# picks whichever it finds, and the whole point is to stop it finding that one.
+# picks whichever it finds, and the whole point is to stop it finding those.
 rm -f "$DEST_DIR"/*.mobileprovision || true
 
-UUID=$(security cms -D -i "$SOURCE" 2>/dev/null | plutil -extract UUID raw - 2>/dev/null || true)
-if [ -z "$UUID" ]; then
-  echo "Could not read the UUID out of $SOURCE." >&2
-  exit 1
-fi
-
-cp "$SOURCE" "$DEST_DIR/$UUID.mobileprovision"
-echo "Installed $UUID.mobileprovision"
-
-echo "--- what it allows ---"
-security cms -D -i "$SOURCE" 2>/dev/null \
-  | plutil -p - 2>/dev/null \
-  | grep -iE "\"Name\"|com\.apple|application-identifier" || true
+for SOURCE in "${PROFILES[@]}"; do
+  UUID=$(security cms -D -i "$SOURCE" 2>/dev/null | plutil -extract UUID raw - 2>/dev/null || true)
+  if [ -z "$UUID" ]; then
+    echo "Could not read the UUID out of $SOURCE." >&2
+    exit 1
+  fi
+  cp "$SOURCE" "$DEST_DIR/$UUID.mobileprovision"
+  echo "Installed $(basename "$SOURCE") as $UUID.mobileprovision"
+  security cms -D -i "$SOURCE" 2>/dev/null \
+    | plutil -p - 2>/dev/null \
+    | grep -iE "\"Name\"|com\.apple|application-identifier" || true
+done
