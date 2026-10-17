@@ -64,17 +64,31 @@ workflows:
         # not present the Apple sheet without this, whatever Supabase says.
         script: bash scripts/ios-entitlements.sh
 
-      - name: Add the Bible lock's daily re-lock extension
-        # The lock has to come back at the start of each day whether or not
-        # anyone opens Bible Buddy, and only a DeviceActivityMonitor extension
-        # gets woken for that. ios/ is regenerated every build, so the second
-        # target is added here rather than committed.
-        #
-        # Switched off for one build on 2026-10-17 on a wrong hunch: the
-        # archive was dying and this looked like the cause. It was not - the
-        # build failed in exactly the same place without it, and the real
-        # reason was the plugin asking for iOS 16 while the app asked for 15.
-        script: bash scripts/ios-bible-lock-extension.sh
+      # The re-lock extension is OFF until its two real problems are fixed
+      # (2026-10-17). With package resolution finally working, the archive
+      # got far enough to say what is actually wrong with it:
+      #
+      #   error: Multiple commands produce '.../UninstalledProducts/
+      #   iphoneos/.appex'
+      #
+      # - the product name is empty, so the extension builds as '.appex'
+      # with nothing in front of it, and the embed phase adds it twice. The
+      # ruby in scripts/ios-bible-lock-extension.sh never sets PRODUCT_NAME.
+      #
+      #   error: "BibleLockMonitor" requires a provisioning profile with the
+      #   App Groups and Family Controls (Development) features
+      #
+      # - and that one is not code at all. The extension's bundle id,
+      # net.mybiblebuddy.app.biblelockmonitor, needs App Groups and Family
+      # Controls switched on in the developer portal before any profile can
+      # carry them. That is Louis's to do in his Apple account.
+      #
+      # Bible Lock still works without it: choosing apps, locking them and
+      # the lock lifting when the reading is done are all in the plugin.
+      # What is missing is the re-lock on a day nobody opens the app.
+      #
+      # - name: Add the Bible lock's daily re-lock extension
+      #   script: bash scripts/ios-bible-lock-extension.sh
 
       - name: Install the app icon
         # Otherwise the app wears Capacitor's grey placeholder everywhere -
@@ -189,17 +203,31 @@ workflows:
         # not present the Apple sheet without this, whatever Supabase says.
         script: bash scripts/ios-entitlements.sh
 
-      - name: Add the Bible lock's daily re-lock extension
-        # The lock has to come back at the start of each day whether or not
-        # anyone opens Bible Buddy, and only a DeviceActivityMonitor extension
-        # gets woken for that. ios/ is regenerated every build, so the second
-        # target is added here rather than committed.
-        #
-        # Switched off for one build on 2026-10-17 on a wrong hunch: the
-        # archive was dying and this looked like the cause. It was not - the
-        # build failed in exactly the same place without it, and the real
-        # reason was the plugin asking for iOS 16 while the app asked for 15.
-        script: bash scripts/ios-bible-lock-extension.sh
+      # The re-lock extension is OFF until its two real problems are fixed
+      # (2026-10-17). With package resolution finally working, the archive
+      # got far enough to say what is actually wrong with it:
+      #
+      #   error: Multiple commands produce '.../UninstalledProducts/
+      #   iphoneos/.appex'
+      #
+      # - the product name is empty, so the extension builds as '.appex'
+      # with nothing in front of it, and the embed phase adds it twice. The
+      # ruby in scripts/ios-bible-lock-extension.sh never sets PRODUCT_NAME.
+      #
+      #   error: "BibleLockMonitor" requires a provisioning profile with the
+      #   App Groups and Family Controls (Development) features
+      #
+      # - and that one is not code at all. The extension's bundle id,
+      # net.mybiblebuddy.app.biblelockmonitor, needs App Groups and Family
+      # Controls switched on in the developer portal before any profile can
+      # carry them. That is Louis's to do in his Apple account.
+      #
+      # Bible Lock still works without it: choosing apps, locking them and
+      # the lock lifting when the reading is done are all in the plugin.
+      # What is missing is the re-lock on a day nobody opens the app.
+      #
+      # - name: Add the Bible lock's daily re-lock extension
+      #   script: bash scripts/ios-bible-lock-extension.sh
 
       - name: Install the app icon
         script: bash scripts/ios-app-icon.sh
