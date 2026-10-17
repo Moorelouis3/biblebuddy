@@ -157,6 +157,9 @@ workflows:
       xcode: latest
       vars:
         BUNDLE_ID: "net.mybiblebuddy.app"
+        # Apple has the entitlement Assigned on the App ID; this build is the
+        # test of whether the fetched profile actually carries it.
+        BIBLE_LOCK_ENTITLEMENT: "on"
         # The version people see is "<this>.<build>" - 1.09 is version 1,
         # build 9 (Louis, 2026-10-17: "so I know it's version 1 build 9").
         # Bump it to 2 when version 2 ships and the numbers read 2.14, 2.15.
@@ -301,6 +304,18 @@ workflows:
           echo "--- build settings ---"
           xcodebuild -project ios/App/App.xcodeproj -scheme App -showBuildSettings 2>&1 | tail -20
           # The archive is where it dies now, and build-ipa swallows this too.
+          # What is ACTUALLY inside the profile Codemagic fetched. The portal
+          # says the capability is enabled and the entitlement is Assigned, and
+          # the archive says the profile does not carry it - only the file
+          # settles that (2026-10-17).
+          echo "--- profiles on this machine ---"
+          for f in "$HOME/Library/MobileDevice/Provisioning Profiles/"*.mobileprovision; do
+            [ -e "$f" ] || continue
+            echo "profile: $f"
+            security cms -D -i "$f" 2>/dev/null \
+              | plutil -p - 2>/dev/null \
+              | grep -iE "\"Name\"|application-identifier|family-controls|application-groups|get-task-allow" || true
+          done
           echo "--- archive ---"
           xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Release \
             -destination 'generic/platform=iOS' -archivePath build/diagnostic.xcarchive \
