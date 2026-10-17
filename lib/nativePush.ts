@@ -177,7 +177,37 @@ export async function registerForNativePush(
   try {
     let permission = await push.checkPermissions();
     if (permission.receive === "prompt" || permission.receive === "prompt-with-rationale") {
-      permission = await push.requestPermissions();
+      /**
+       * A hang is a failure, and it has to report like one.
+       *
+       * Louis tapped "Turn on notifications" on 2026-10-17: the button went to
+       * its disabled state and stayed there for over a minute with no iOS
+       * prompt. checkPermissions had just answered "prompt" on the same screen,
+       * so the bridge works - it is this call that goes out and never comes
+       * back. Every error path here reports, but a promise that never settles
+       * reaches no catch, so the one failure we were actually hitting was the
+       * one that stayed invisible.
+       *
+       * Ten seconds is far longer than asking iOS for permission takes; it is
+       * a hang, not a slow phone.
+       */
+      const TIMED_OUT = Symbol("timed-out");
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      const outcome = await Promise.race([
+        push.requestPermissions(),
+        new Promise<typeof TIMED_OUT>((resolve) => {
+          timer = setTimeout(() => resolve(TIMED_OUT), 10_000);
+        }),
+      ]);
+      if (timer) clearTimeout(timer);
+
+      if (outcome === TIMED_OUT) {
+        await reportPushFailure("requestPermissions never came back after 10s", {
+          checkPermissionsSaid: permission.receive,
+        });
+        return false;
+      }
+      permission = outcome;
     }
     if (permission.receive !== "granted") {
       await reportPushFailure(`permission is "${permission.receive}"`);

@@ -1830,16 +1830,36 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     let cancelled = false;
     void (async () => {
       const { registerForNativePush } = await import("@/lib/nativePush");
-      if (cancelled) return;
+      // Deliberately NOT `if (cancelled) return;` here.
+      //
+      // That line, with `router` in the dependency array below, is why nobody
+      // has ever been asked for notification permission. router changes
+      // identity when AppShell re-renders, which re-runs this effect, whose
+      // cleanup sets cancelled = true - and the dynamic import above takes
+      // long enough that the previous run almost always came back to find
+      // itself cancelled and returned here, before registering anything.
+      //
+      // Louis's Settings panel on 2026-10-17 showed it exactly: running in
+      // the app "ios", registering on "yes", iPhone permission "prompt" - iOS
+      // waiting to be asked, and nothing ever asking it.
+      //
+      // Registering twice is harmless: the token is the primary key, so a
+      // second call updates a row rather than adding one. Being cancelled is
+      // not harmless, so the race is resolved the other way.
       await registerForNativePush((url) => {
-        // Tapping the notification opens what it was about.
+        // Tapping the notification opens what it was about. This guard stays:
+        // navigating after the component has gone is the thing worth avoiding.
         if (!cancelled) router.push(url);
       });
     })();
     return () => {
       cancelled = true;
     };
-  }, [userId, router]);
+    // router is deliberately not a dependency. It is only used inside the
+    // callback above, where a stale instance navigates just as well, and
+    // listing it is what made this effect restart and cancel itself.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId]);
   useEffect(() => {
     if (!userId) return;
     let cancelled = false;

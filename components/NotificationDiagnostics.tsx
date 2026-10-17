@@ -138,9 +138,16 @@ export default function NotificationDiagnostics() {
             setBusy(false);
           }}
           className="mt-4 w-full rounded-2xl px-5 py-3 text-sm font-black transition hover:opacity-90 disabled:opacity-60"
-          style={{ backgroundColor: "var(--bb-button, #2f7fe8)", color: "var(--bb-button-text, #ffffff)" }}
+          style={{ backgroundColor: "var(--bb-button, #2f7fe8)" }}
         >
-          {busy ? "Asking…" : "Turn on notifications"}
+          {/* The label on its own span with a fixed colour. On Louis's phone
+              this button rendered as an empty blue bar - he could not tell it
+              was a button, and only pressed it because I said where it was.
+              globals.css sets `color: var(--bb-button-text) !important` on
+              several button selectors, and an !important rule outranks the
+              inline colour that used to be on the button itself; the span is
+              not what those rules match. */}
+          <span style={{ color: "#ffffff" }}>{busy ? "Asking…" : "Turn on notifications"}</span>
         </button>
       )}
     </div>

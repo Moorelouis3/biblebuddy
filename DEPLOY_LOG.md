@@ -47,3 +47,4 @@
 2026-10-17T17:55:38Z | 2 commits | Quick Reads rename with a pastel background per card on both dashboard shelves, and community notifications when somebody replies to or likes your post
 2026-10-17T18:02:29Z | 1 commit | iPhone push diagnostic: the silent bail now reports why the app was not recognised as the app
 2026-10-17T18:06:07Z | 1 commit | Continue Reading loses its white outer card so the book cards sit on the page like Quick Reads
+2026-10-17T18:15:48Z | 1 commit | Push registration no longer cancels itself before it runs, a hung permission request now reports instead of spinning forever, the Turn on notifications label is visible, and Bible Lock settings count down to midnight
