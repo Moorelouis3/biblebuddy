@@ -78,6 +78,12 @@ ext.build_configurations.each do |config|
   #   error: Multiple commands produce .../UninstalledProducts/iphoneos/.appex
   # xcodeproj does not set it, and Xcode usually would.
   s['PRODUCT_NAME'] = target_name
+  # The Info.plist refers to these. They are placeholders: this step runs
+  # before the version step, and agvtool -all then writes the real numbers
+  # across every target. Without the keys existing, the substitution resolves
+  # to empty and Apple rejects the upload for a missing version.
+  s['MARKETING_VERSION'] = '1.0'
+  s['CURRENT_PROJECT_VERSION'] = '1'
   s['PRODUCT_BUNDLE_IDENTIFIER'] = 'net.mybiblebuddy.app.biblelockmonitor'
   s['INFOPLIST_FILE'] = "#{target_name}/Info.plist"
   s['CODE_SIGN_ENTITLEMENTS'] = "#{target_name}/BibleLockMonitor.entitlements"
