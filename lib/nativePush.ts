@@ -24,8 +24,22 @@ import { supabase } from "@/lib/supabaseClient";
  * streak about to break.
  */
 
+/**
+ * On in the app unless it is explicitly switched off.
+ *
+ * It used to require NEXT_PUBLIC_NATIVE_PUSH_ENABLED === "true", which was
+ * right while nothing could be delivered: spending the one notification prompt
+ * iOS gives you, to deliver nothing, is how an app loses it for good. APNs is
+ * configured now, so that reason is gone - and the flag was costing more than
+ * it bought. NEXT_PUBLIC_ values are baked in when Vercel builds, so a
+ * redeploy that reuses its build cache can leave the old value in the bundle,
+ * and the symptom is exactly what Louis saw: open the app, no prompt, no
+ * error, nothing to look at (2026-10-17).
+ *
+ * Set it to "off" to stop registering.
+ */
 export function nativePushEnabled(): boolean {
-  return isNativeApp() && process.env.NEXT_PUBLIC_NATIVE_PUSH_ENABLED === "true";
+  return isNativeApp() && process.env.NEXT_PUBLIC_NATIVE_PUSH_ENABLED !== "off";
 }
 
 /** Loaded on demand: a top-level Capacitor import lands in the server bundle. */
