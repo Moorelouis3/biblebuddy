@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { bibleLockStatus } from "@/lib/bibleLock";
 
 /**
@@ -42,29 +42,57 @@ function AppTile({ className, children }: { className: string; children: React.R
 
 export default function BibleLockBanner() {
   const [show, setShow] = useState(false);
+  /**
+   * Whether the apps are shielded right now.
+   *
+   * This strip used to be one thing: an invitation to set up a feature. Louis,
+   * 2026-10-17, with eleven apps already locked: "the Bible Lock came up again
+   * even when 11 apps are locked already - it should say unlock your phone by
+   * completing a Bible Buddy task. This is wrong."
+   *
+   * He is right. Once the lock is on, the only thing worth saying is what gets
+   * the phone back.
+   */
+  const [locked, setLocked] = useState(false);
 
-  useEffect(() => {
-    let cancelled = false;
+  const read = useCallback(async () => {
+    const status = await bibleLockStatus();
+    // supported is false on the website, on Android, on iOS 15 and in any
+    // installed build without the plugin, so the strip only exists where the
+    // lock does.
+    if (!status.supported) {
+      setShow(false);
+      return;
+    }
+    setLocked(status.locked);
+    // The locked state always shows: dismissing an invitation is fair, but
+    // somebody whose apps are shielded should always be able to see why.
+    if (status.locked) {
+      setShow(true);
+      return;
+    }
     try {
       if (window.localStorage.getItem(DISMISS_KEY) === "1") return;
     } catch {
       // Private window, blocked storage: show it, that is the safe side here.
     }
-    void bibleLockStatus().then((status) => {
-      if (cancelled) return;
-      // status.supported is false on the website, on Android, on iOS 15 and in
-      // any installed build without the plugin. Louis, 2026-10-17: "we have
-      // the whole Bible Lock on the web version which is stupid cause it don't
-      // work - it should only show on iPhone." So the way in only exists where
-      // the lock does.
-      if (!status.supported) return;
-      // Already locking? Then this is just noise on top of a thing that works.
-      if (!status.locked) setShow(true);
-    });
-    return () => {
-      cancelled = true;
-    };
+    setShow(true);
   }, []);
+
+  useEffect(() => {
+    void read();
+    // The lock lifts while the app is open, and comes back the next morning,
+    // so the strip re-reads whenever the app comes back to the front.
+    const onVisible = () => {
+      if (document.visibilityState === "visible") void read();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    window.addEventListener("bb:bible-lock-lifted", read);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisible);
+      window.removeEventListener("bb:bible-lock-lifted", read);
+    };
+  }, [read]);
 
   function dismiss() {
     setShow(false);
@@ -96,39 +124,50 @@ export default function BibleLockBanner() {
             id="home-bible-lock-heading"
             className="text-sm font-black leading-tight text-[var(--bb-text-primary,#0f1f3a)] sm:text-base"
           >
-            Bible Lock
+            {locked ? "Apps locked" : "Bible Lock"}
           </h2>
           {/* The full line truncates on a 375px phone once the lock and the
               button have taken their share, and a sentence cut mid-word reads
               worse than a shorter one. */}
           <p className="truncate text-xs font-semibold leading-snug text-[#5b7395] sm:text-[13px]">
-            <span className="sm:hidden">Block apps until you read.</span>
-            <span className="hidden sm:inline">Block distracting apps until you study the Bible.</span>
+            {locked ? (
+              "Finish a Bible Buddy task to unlock them."
+            ) : (
+              <>
+                <span className="sm:hidden">Block apps until you read.</span>
+                <span className="hidden sm:inline">Block distracting apps until you study the Bible.</span>
+              </>
+            )}
           </p>
         </div>
 
-        {/* Room for the tiles only where there is room. */}
-        <div className="hidden items-center gap-1.5 lg:flex">
+        {/* Room for the tiles only where there is room, and none of it is
+            worth saying once the apps are already shielded. */}
+        <div className={`items-center gap-1.5 ${locked ? "hidden" : "hidden lg:flex"}`}>
           <AppTile className="bg-[#111827] text-white">♪</AppTile>
           <AppTile className="bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white">📷</AppTile>
           <AppTile className="bg-[#ff0033] text-white">▶</AppTile>
         </div>
 
         <Link
-          href="/bible-lock"
+          href={locked ? "/reading" : "/bible-lock"}
           className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-3.5 py-2 text-xs font-black text-white shadow-sm shadow-[#2f7fe8]/25 transition hover:opacity-95 sm:px-5 sm:text-sm"
         >
-          Set Up →
+          {locked ? "Read now →" : "Set Up →"}
         </Link>
 
-        <button
-          type="button"
-          onClick={dismiss}
-          aria-label="Hide this"
-          className="hidden h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-black text-[#7c93b5] transition hover:bg-white/70 hover:text-[#44566f] sm:grid"
-        >
-          ✕
-        </button>
+        {/* No hiding it while the apps are shielded: somebody looking at a
+            locked phone should always be able to find out why. */}
+        {locked ? null : (
+          <button
+            type="button"
+            onClick={dismiss}
+            aria-label="Hide this"
+            className="hidden h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-black text-[#7c93b5] transition hover:bg-white/70 hover:text-[#44566f] sm:grid"
+          >
+            ✕
+          </button>
+        )}
       </div>
     </section>
   );
