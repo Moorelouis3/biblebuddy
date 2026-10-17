@@ -65,14 +65,20 @@ export default function BibleLockBanner() {
       return;
     }
     setLocked(status.locked);
-    // The locked state always shows: dismissing an invitation is fair, but
-    // somebody whose apps are shielded should always be able to see why.
-    if (status.locked) {
-      setShow(true);
-      return;
-    }
+
+    // Dismissed is dismissed, in either state (Louis, 2026-10-17: "if someone
+    // decides to X out the strip then don't keep showing it, they can go to
+    // the settings to do it").
+    //
+    // I had the locked state override this, on the reasoning that a shielded
+    // phone should always explain itself. That is the reasoning every app uses
+    // to keep showing you something you closed. Settings carries the lock, and
+    // the X is somebody saying they know where it lives.
     try {
-      if (window.localStorage.getItem(DISMISS_KEY) === "1") return;
+      if (window.localStorage.getItem(DISMISS_KEY) === "1") {
+        setShow(false);
+        return;
+      }
     } catch {
       // Private window, blocked storage: show it, that is the safe side here.
     }
@@ -156,18 +162,14 @@ export default function BibleLockBanner() {
           {locked ? "Read now →" : "Set Up →"}
         </Link>
 
-        {/* No hiding it while the apps are shielded: somebody looking at a
-            locked phone should always be able to find out why. */}
-        {locked ? null : (
-          <button
-            type="button"
-            onClick={dismiss}
-            aria-label="Hide this"
-            className="hidden h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-black text-[#7c93b5] transition hover:bg-white/70 hover:text-[#44566f] sm:grid"
-          >
-            ✕
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={dismiss}
+          aria-label="Hide this"
+          className="grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-black text-[#7c93b5] transition hover:bg-white/70 hover:text-[#44566f]"
+        >
+          ✕
+        </button>
       </div>
     </section>
   );
