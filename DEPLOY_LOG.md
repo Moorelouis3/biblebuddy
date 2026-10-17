@@ -48,3 +48,4 @@
 2026-10-17T18:02:29Z | 1 commit | iPhone push diagnostic: the silent bail now reports why the app was not recognised as the app
 2026-10-17T18:06:07Z | 1 commit | Continue Reading loses its white outer card so the book cards sit on the page like Quick Reads
 2026-10-17T18:15:48Z | 1 commit | Push registration no longer cancels itself before it runs, a hung permission request now reports instead of spinning forever, the Turn on notifications label is visible, and Bible Lock settings count down to midnight
+2026-10-17T18:23:35Z | 1 commit | Settings shows the installed app build and the website build, so a fix that has not reached the phone is distinguishable from a fix that does not work

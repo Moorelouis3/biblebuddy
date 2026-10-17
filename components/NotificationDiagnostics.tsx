@@ -20,7 +20,27 @@ type State = {
   permission: string;
   tokenStored: boolean | null;
   error: string | null;
+  /** The installed TestFlight build, e.g. "1.0 (14)". */
+  appBuild: string;
+  /** The website build the app is showing, which is a separate thing entirely. */
+  webBuild: string;
 };
+
+/**
+ * Which app, and which website.
+ *
+ * These are two different versions and they drift apart constantly: the web
+ * half updates the moment Vercel deploys, the native half only when somebody
+ * installs a TestFlight build. All evening we have been unable to tell whether
+ * a fix had reached the phone, and every answer depended on guessing which of
+ * the two was stale - so the phone says both out loud now.
+ *
+ * It matters right now because "Turn on notifications" hangs forever with no
+ * timeout firing, and a JavaScript timer that never runs means either old web
+ * code or a native call blocking the WebView thread. These two lines tell
+ * those apart in one glance instead of another round of deploys.
+ */
+const WEB_BUILD = (process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA || "dev").slice(0, 7);
 
 function Row({ label, value, good }: { label: string; value: string; good?: boolean | null }) {
   return (
@@ -39,11 +59,29 @@ function Row({ label, value, good }: { label: string; value: string; good?: bool
 
 export default function NotificationDiagnostics() {
   const [native, setNative] = useState(false);
-  const [state, setState] = useState<State>({ permission: "checking…", tokenStored: null, error: null });
+  const [state, setState] = useState<State>({
+    permission: "checking…",
+    tokenStored: null,
+    error: null,
+    appBuild: "checking…",
+    webBuild: WEB_BUILD,
+  });
   const [busy, setBusy] = useState(false);
 
   const read = useCallback(async () => {
     if (!isNativeApp()) return;
+
+    // The installed TestFlight build. A separate question from the website
+    // build above it, and the one nobody could answer all evening.
+    let appBuild = "unknown";
+    try {
+      const appMod = await import("@capacitor/app");
+      const info = await appMod.App.getInfo();
+      appBuild = `${info.version} (${info.build})`;
+    } catch (error) {
+      appBuild = `unavailable (${error instanceof Error ? error.message : "no detail"})`;
+    }
+
     let permission = "unknown";
     try {
       const mod = await import("@capacitor/push-notifications");
@@ -68,7 +106,7 @@ export default function NotificationDiagnostics() {
       // this unknown rather than wrong.
     }
 
-    setState((prev) => ({ ...prev, permission, tokenStored }));
+    setState((prev) => ({ ...prev, permission, tokenStored, appBuild }));
   }, []);
 
   useEffect(() => {
@@ -88,6 +126,12 @@ export default function NotificationDiagnostics() {
 
       <div className="mt-4">
         <Row label="Running in the app" value={nativePlatform()} good />
+        {/* Two versions, not one. The app updates only when a TestFlight build
+            is installed; the website updates on every deploy. Telling them
+            apart is the difference between "the fix has not reached you" and
+            "the fix does not work". */}
+        <Row label="App build" value={state.appBuild} />
+        <Row label="Website build" value={state.webBuild} />
         <Row label="Registering is on" value={nativePushEnabled() ? "yes" : "no"} good={nativePushEnabled()} />
         <Row
           label="iPhone permission"
