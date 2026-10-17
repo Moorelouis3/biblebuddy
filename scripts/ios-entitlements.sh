@@ -31,7 +31,36 @@ if [ ! -f "$PBXPROJ" ]; then
   exit 1
 fi
 
-cat > "$ENTITLEMENTS" <<'PLIST'
+# Family Controls is written only when BIBLE_LOCK_ENTITLEMENT=on.
+#
+# Apple will not put com.apple.developer.family-controls into the
+# provisioning profile for this App ID, even with both Family Controls
+# capabilities ticked on the identifier and the profile regenerated after:
+#
+#   error: Provisioning profile "Bible Buddy App Store" doesn't include the
+#   Family Controls (Development) capability
+#   error: ...doesn't include the com.apple.developer.family-controls
+#   entitlement
+#
+# which killed builds 16, 17 and 18 (2026-10-17) in thirteen seconds each.
+# The distribution entitlement is granted per app by Apple on request, and
+# the profile only carries it once that grant is attached - so this is a
+# question for Apple, not for the build.
+#
+# An app that asks for an entitlement it has not been granted cannot be
+# signed at all, so asking for it blocks every other fix from shipping.
+# Turn it back on with BIBLE_LOCK_ENTITLEMENT=on once Apple confirms the
+# grant; Bible Lock cannot work without it.
+FAMILY_CONTROLS=""
+if [ "${BIBLE_LOCK_ENTITLEMENT:-off}" = "on" ]; then
+  FAMILY_CONTROLS=$(printf '	<key>com.apple.developer.family-controls</key>
+	<true/>')
+  echo "Family Controls entitlement: ON"
+else
+  echo "Family Controls entitlement: off (set BIBLE_LOCK_ENTITLEMENT=on to include it)"
+fi
+
+cat > "$ENTITLEMENTS" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -40,8 +69,7 @@ cat > "$ENTITLEMENTS" <<'PLIST'
 	<array>
 		<string>Default</string>
 	</array>
-	<key>com.apple.developer.family-controls</key>
-	<true/>
+${FAMILY_CONTROLS}
 </dict>
 </plist>
 PLIST
