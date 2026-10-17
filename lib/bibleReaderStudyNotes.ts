@@ -1213,6 +1213,7 @@ import { SECOND_TIMOTHY_1_4_PERSONAL_SECTIONS } from "./secondTimothyOneToFourPe
 import { SECOND_TIMOTHY_ONE_PERSONAL_SECTIONS } from "./secondTimothyOneSource";
 import { SECOND_TIMOTHY_TWO_PERSONAL_SECTIONS } from "./secondTimothyTwoSource";
 import { SECOND_TIMOTHY_THREE_PERSONAL_SECTIONS } from "./secondTimothyThreeSource";
+import { SECOND_TIMOTHY_FOUR_PERSONAL_SECTIONS } from "./secondTimothyFourSource";
 import { TITUS_1_3_PERSONAL_SECTIONS } from "./titusOneToThreePersonalNotes";
 import { PHILEMON_1_PERSONAL_SECTIONS } from "./philemonOnePersonalNotes";
 import { HEBREWS_1_13_PERSONAL_SECTIONS } from "./hebrewsOneToThirteenPersonalNotes";
@@ -1557,7 +1558,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "1 thessalonians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5)) ||
     (normalizeBook(book) === "2 thessalonians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "1 timothy" && section.chapter >= 1 && section.chapter <= 6) ||
-    (normalizeBook(book) === "2 timothy" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3));
+    (normalizeBook(book) === "2 timothy" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4928,6 +4929,10 @@ function applyPersonalSecondTimothyTwoStudySections() {
 
 function applyPersonalSecondTimothyThreeStudySections() {
   replaceStudySectionsForBookRange("2 timothy", 3, 3, SECOND_TIMOTHY_THREE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalSecondTimothyFourStudySections() {
+  replaceStudySectionsForBookRange("2 timothy", 4, 4, SECOND_TIMOTHY_FOUR_PERSONAL_SECTIONS);
 }
 
 function applyPersonalTitusOneThroughThreeStudySections() {
@@ -12721,6 +12726,7 @@ applyPersonalSecondTimothyOneThroughFourStudySections();
 applyPersonalSecondTimothyOneStudySections();
 applyPersonalSecondTimothyTwoStudySections();
 applyPersonalSecondTimothyThreeStudySections();
+applyPersonalSecondTimothyFourStudySections();
 applyPersonalTitusOneThroughThreeStudySections();
 applyPersonalPhilemonOneStudySections();
 applyPersonalHebrewsOneThroughThirteenStudySections();
