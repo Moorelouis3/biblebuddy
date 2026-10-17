@@ -3424,14 +3424,39 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     <div className="fixed top-16 left-4 right-4 sm:absolute sm:top-full sm:left-auto sm:right-0 sm:mt-2 sm:w-80 bg-[var(--bb-card,#ffffff)] rounded-xl shadow-lg border border-[var(--bb-card-border,#e5e7eb)] z-50 overflow-hidden">
                       <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--bb-card-border,#e5e7eb)]">
                         <span className="font-semibold text-sm text-[var(--bb-text-primary,#111827)]">Messages</span>
-                        <Link
-                          href="/messages"
-                          onClick={() => setIsMessagesOpen(false)}
-                          className="text-xs font-medium"
-                          style={{ color: "var(--bb-accent)" }}
-                        >
-                          See all
-                        </Link>
+                        <div className="flex items-center gap-3">
+                          {/* Forty-seven conversations were unread, some since June, because
+                              a message is only marked read by opening its conversation
+                              (Louis, 2026-10-17: "always blocked by 40 new messages that
+                              aren't new"). Opening forty-seven of them is not a fix. */}
+                          {unreadMessageCount > 0 ? (
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                const { data: { session } } = await supabase.auth.getSession();
+                                if (!session?.access_token) return;
+                                setConversationPreviews((prev) => prev.map((c) => ({ ...c, hasUnread: false })));
+                                setUnreadMessageCount(0);
+                                _cachedUnreadConvoIds.current = new Set();
+                                await fetch("/api/messages/mark-all-read", {
+                                  method: "POST",
+                                  headers: { authorization: `Bearer ${session.access_token}` },
+                                }).catch(() => {});
+                              }}
+                              className="text-xs font-medium text-[var(--bb-text-muted,#6b7280)] hover:text-[var(--bb-text-primary,#111827)]"
+                            >
+                              Mark all read
+                            </button>
+                          ) : null}
+                          <Link
+                            href="/messages"
+                            onClick={() => setIsMessagesOpen(false)}
+                            className="text-xs font-medium"
+                            style={{ color: "var(--bb-accent)" }}
+                          >
+                            See all
+                          </Link>
+                        </div>
                       </div>
 
                       <div className="max-h-80 overflow-y-auto">
