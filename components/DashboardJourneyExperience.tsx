@@ -68,6 +68,7 @@ import {
   type GenesisBibleYearDay,
 } from "../lib/bibleInOneYearPlan";
 import type { BibleYearDailyLesson } from "../lib/bibleYearDailyLessons";
+import BibleYearLessonFetcher from "./bible-year/BibleYearLessonFetcher";
 import { getYouTubeVideoId, type BibleYearAudioDay } from "../lib/bibleYearAudio";
 import { getBibleYearDayContent } from "../lib/bibleYearDaysContent";
 import type { BibleYearDeepStudySection } from "../lib/bibleYearDayOneDeepStudy";
@@ -2365,6 +2366,16 @@ export default function DashboardJourneyExperience({
   const [bibleYearDashboardActive, setBibleYearDashboardActive] = useState(true);
   const [bibleYearSeriesActive, setBibleYearSeriesActive] = useState(false);
   const [bibleYearSeriesDetailDay, setBibleYearSeriesDetailDay] = useState<GenesisBibleYearDay | null>(null);
+  /**
+   * Lessons for the days this bundle does not carry (Louis, 2026-10-17:
+   * "someone told me day 106 don't work" - they were right).
+   *
+   * BIBLE_YEAR_DAY_CONTENT stops at day 105. The writing for the rest is the
+   * narration scripts the audio was made from, about 2.5MB of text across 364
+   * modules, so it is fetched a day at a time instead of shipped to every
+   * reader of every page.
+   */
+  const [fetchedBibleYearLessons, setFetchedBibleYearLessons] = useState<Record<number, BibleYearDailyLesson>>({});
   const [bibleYearJourneyPreviewDay, setBibleYearJourneyPreviewDay] = useState<GenesisBibleYearDay | null>(null);
   const [selectedBibleYearSeriesDay, setSelectedBibleYearSeriesDay] = useState<GenesisBibleYearDay | null>(null);
   const [manualBibleYearStudyDayNumber, setManualBibleYearStudyDayNumber] = useState<number | null>(null);
@@ -7005,7 +7016,8 @@ export default function DashboardJourneyExperience({
 
   function getBibleYearDailyLesson(dayNumber: number): BibleYearDailyLesson | null {
     const day = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((item) => item.dayNumber === dayNumber);
-    return day ? getBibleYearDayContent(day).lesson : null;
+    const builtIn = day ? getBibleYearDayContent(day).lesson : null;
+    return builtIn ?? fetchedBibleYearLessons[dayNumber] ?? null;
   }
 
   function getBibleYearDayAudio(dayNumber: number): BibleYearAudioDay | null {
@@ -16318,7 +16330,22 @@ Before we understand redemption, we need to understand what God made humanity fo
       return renderStandardBibleYearReadingPage(day);
     }
 
+    // Days 106-365 are not in this bundle. Fetch the one being looked at and
+    // the real page replaces this the moment it lands.
+    const lessonFetcher = (
+      <BibleYearLessonFetcher
+        dayNumber={day.dayNumber}
+        onLesson={(fetchedDay, lesson) =>
+          setFetchedBibleYearLessons((current) =>
+            current[fetchedDay] ? current : { ...current, [fetchedDay]: lesson },
+          )
+        }
+      />
+    );
+
     return (
+      <>
+      {lessonFetcher}
       <article className="bb-skin-glow-card overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
         <div className="relative bg-[radial-gradient(circle_at_18%_0%,color-mix(in_srgb,var(--bb-accent,#2f7fe8)_22%,transparent),transparent_42%),linear-gradient(135deg,color-mix(in_srgb,var(--bb-card,#ffffff)_88%,transparent),color-mix(in_srgb,var(--bb-surface-soft,#f8fbff)_68%,transparent))] px-4 pb-5 pt-5 sm:px-5">
           <button
@@ -16344,6 +16371,7 @@ Before we understand redemption, we need to understand what God made humanity fo
         </div>
         {renderBibleYearDayModalBody(day)}
       </article>
+      </>
     );
   }
 

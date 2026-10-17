@@ -105,6 +105,8 @@ import {
   BIBLE_YEAR_DAY_FORTY_NINE_AUDIO,
   BIBLE_YEAR_DAY_FORTY_SEVEN_AUDIO,
   BIBLE_YEAR_DAY_FORTY_SIX_AUDIO,
+  getBibleYearAudioApiSrc,
+  getBibleYearAudioStoragePath,
 } from "./bibleYearAudio";
 import type { BibleYearDailyLesson } from "./bibleYearDailyLessons";
 import {
@@ -2679,11 +2681,31 @@ export const BIBLE_YEAR_DAY_CONTENT: Partial<Record<number, Omit<BibleYearDayCon
   },
 };
 
+/**
+ * Audio for a day nobody listed (Louis, 2026-10-17: "someone told me day 106
+ * don't work").
+ *
+ * BIBLE_YEAR_DAY_CONTENT stops at 105 and the reader needs an audio entry or
+ * it shows a different page, so days 106-365 looked empty. The recordings were
+ * there the whole time - all 365 folders are in the tts-audio bucket - and
+ * both the storage path and the api src are worked out from the day number
+ * rather than looked up, so there was never anything to list.
+ */
+function fallbackAudio(day: GenesisBibleYearDay): BibleYearAudioDay {
+  return {
+    dayNumber: day.dayNumber,
+    title: day.title,
+    storagePath: getBibleYearAudioStoragePath(day.dayNumber),
+    apiSrc: getBibleYearAudioApiSrc(day.dayNumber),
+    estimatedDuration: "about 15 min",
+  };
+}
+
 export function getBibleYearDayContent(day: GenesisBibleYearDay): BibleYearDayContent {
   const content = BIBLE_YEAR_DAY_CONTENT[day.dayNumber];
   return {
     lesson: content?.lesson ?? null,
-    audio: content?.audio ?? null,
+    audio: content?.audio ?? fallbackAudio(day),
     studyNotesMarkdown: getReaderAlignedStudyMarkdown(day, content?.studyNotesMarkdown),
     studyNotesSections: getReaderAlignedStudySections(day, content?.studyNotesSections),
     summary: content?.summary ?? buildFallbackSummary(day),
