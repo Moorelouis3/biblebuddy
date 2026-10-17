@@ -259,6 +259,20 @@ workflows:
         # which is generated and therefore starts with no signing at all.
         script: xcode-project use-profiles
 
+      - name: Show why the project will not open
+        # xcode-project build-ipa swallows xcodebuild's own output and prints
+        # only "Failed to show build settings", which has now cost four builds
+        # of guessing (2026-10-17). This runs the same commands by hand so the
+        # real reason is in the log. It can never fail the build itself.
+        script: |
+          set +e
+          echo "--- schemes and targets ---"
+          xcodebuild -project ios/App/App.xcodeproj -list 2>&1 | tail -40
+          echo "--- package resolution ---"
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -resolvePackageDependencies 2>&1 | tail -40
+          echo "--- build settings ---"
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -showBuildSettings 2>&1 | tail -60
+          exit 0
       - name: Build the ipa
         script: |
           xcode-project build-ipa \
