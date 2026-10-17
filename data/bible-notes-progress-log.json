@@ -67468,6 +67468,59 @@
           "at": "2026-10-17T16:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 9,
+      "startedAt": "2026-10-17T17:46:25Z",
+      "finishedAt": "2026-10-17T17:59:06Z",
+      "durationMinutes": 12.68,
+      "sections": 6,
+      "cards": 45,
+      "verses": 28,
+      "notes": "New chapter (not a redo), normal forward progress after Hebrews 8. Style checker clean on first automated pass across all 45 cards. Avoided the inline-list body tool to dodge a mechanical-checker edge case (it counts any emoji-leading line as a bullet). tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T17:46:25Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 9 (new chapter, redo backlog and priority queue both empty)",
+          "at": "2026-10-17T17:47:27Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-10-17T17:47:37Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-17T17:47:41Z"
+        },
+        {
+          "name": "source file written: lib/hebrewsNineSource.ts (45 cards, 6 sections)",
+          "at": "2026-10-17T17:53:53Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-10-17T17:55:16Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply call, preserveExactPhraseBodies range)",
+          "at": "2026-10-17T17:55:16Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 45 cards",
+          "at": "2026-10-17T17:55:36Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-17T17:55:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-17T17:59:06Z"
+        }
+      ]
     }
   ]
 }

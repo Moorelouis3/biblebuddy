@@ -8104,3 +8104,7 @@ Next up: Hebrews 8
 ## 2026-10-17T16:56:30Z (hourly chapter notes run)
 Chapter: Hebrews 8 | Duration: 10.7 min | Sections: 6 | Cards: 26 | Status: pass
 Next up: Hebrews 9
+
+## 2026-10-17T17:59:06Z (hourly chapter notes run)
+Chapter: Hebrews 9 | Duration: 12.68 min | Sections: 6 | Cards: 45 | Status: pass
+Next up: Hebrews 10
