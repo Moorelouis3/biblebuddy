@@ -67415,6 +67415,59 @@
           "at": "2026-10-17T15:56:00Z"
         }
       ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 8,
+      "startedAt": "2026-10-17T16:45:48Z",
+      "finishedAt": "2026-10-17T16:56:30Z",
+      "durationMinutes": 10.7,
+      "sections": 6,
+      "cards": 26,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after Hebrews 7. Fetched real KJV text for Hebrews 8 (13 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Hebrews 8 opens the letter's argument for a better priesthood and a better covenant: verses 1-2 sum up the previous seven chapters in one line, naming Jesus as the high priest seated at God's right hand and minister of the true heavenly tabernacle; verses 3-5 explain that every priest needs something to offer, that Jesus's priesthood could not exist on earth since Levitical priests already held that role there, and that the earthly tabernacle was only a shadow built to the exact pattern God showed Moses on the mount; verses 6-7 name Jesus as mediator of a better covenant built on better promises, and argue that the very existence of a second covenant proves the first was not faultless; verses 8-9 open the long quotation of Jeremiah's new covenant prophecy, naming Israel's repeated covenant breaking as the reason a new covenant became necessary; verses 10-12 continue that quotation, describing a law written on the mind and heart instead of stone, a covenant formula running through the whole Bible, direct access to God no longer limited to a priestly go between, and complete forgiveness of sins; verse 13 closes by noting that calling it a new covenant already marked the first as old and fading, written probably while the Jerusalem temple still stood. Chunked into 6 sections (1-2 Such An High Priest, 3-5 According To The Pattern, 6-7 A Better Covenant, 8-9 Finding Fault With Them, 10-12 Written In Their Hearts, 13 Ready To Vanish Away). Density exactly 2.0 cards per verse (13 verses, 26 cards). scripts/check_bible_note_style.py found 1 problem on the first automated pass (banned hedge word 'somewhat', which had been used because it is the literal KJV word in verse 3), fixed by retitling that card to a different exact phrase from the same verse ('It Is Of Necessity') that teaches the same point without the banned word, second run clean with 0 problems across all 26 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (sum, Majesty, minister, sanctuary, true tabernacle, ordained, necessity, shadow, shewed, mediator, covenant, faultless, them, house of Israel, house of Judah, iniquities, remember no more, decayeth and waxeth old), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 26 cards. Parser check passed exactly via getBibleReaderStudySections('hebrews', 8) (6/6 sections, verse ranges 1-2/3-5/6-7/8-9/10-12/13 with no gaps, 26 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/hebrewsEightSource.ts, preserveExactPhraseBodies hebrews range extended from chapters 1-7 to 1-8, new function applyPersonalHebrewsEightSourceStudySections added and called right after applyPersonalHebrewsSevenSourceStudySections(). Next forward-progress target is Hebrews 9.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T16:45:48Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 8 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-17T16:46:39Z"
+        },
+        {
+          "name": "KJV text fetched (Hebrews 8, 13 verses, aruljohn mirror)",
+          "at": "2026-10-17T16:46:48Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-10-17T16:48:30Z"
+        },
+        {
+          "name": "source file written (lib/hebrewsEightSource.ts, 6 sections, 26 cards)",
+          "at": "2026-10-17T16:50:00Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed: banned hedge word 'somewhat', retitled card)",
+          "at": "2026-10-17T16:51:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-17T16:52:30Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('hebrews', 8): 6 sections, 26 cards)",
+          "at": "2026-10-17T16:53:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-17T16:54:26Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-17T16:56:00Z"
+        }
+      ]
     }
   ]
 }
