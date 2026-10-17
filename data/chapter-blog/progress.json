@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-10-17T10:43:15.388Z",
-  "nextChapter": "Leviticus 5",
+  "updatedAt": "2026-10-17T13:34:44.034Z",
+  "nextChapter": "Leviticus 6",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -870,9 +870,15 @@
     },
     "leviticus-4-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-17T10:35:03.513Z",
-      "committedAt": "2026-10-17T10:43:15.388Z"
+      "committedAt": "2026-10-17T10:43:15.388Z",
+      "publishedAt": "2026-10-17T13:34:44.034Z"
+    },
+    "leviticus-5-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-17T13:33:46.976Z"
     }
   },
   "priorityBooks": [
