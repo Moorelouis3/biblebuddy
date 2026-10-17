@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-5-explained",
+    title: "Leviticus 5 Explained: The Sliding Scale Sin Offering and the Trespass Offering",
+    description:
+      "Leviticus 5 explained verse by verse: the sin offering priced as a lamb, two birds, or flour, and the trespass offering that required restitution plus a fifth more.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-5-explained",
+    publishedAt: "2026-10-17",
+    readTime: "13 min read",
+    image: "/blog-banners/leviticus-5-explained.jpg",
+    groupPost: {
+      title: "Leviticus 5 Explained 📖",
+      content:
+        "Same guilt. Three different price tags.\nThis law never locked the poor out.\n\n📌 A lamb, two birds, or flour all covered it.\n\n📖 Silence as a witness counted as sin.\n📖 The cheapest offering skipped oil and frankincense.\n📖 A trespass offering required paying back more than was taken.\n\nNew article on:\n🟢 why **silence** could be its own sin\n🟢 what made a **trespass offering** different\n🟢 how this points to **Mary and Joseph's own offering**\n\nDid you know forgiveness here had three different price points? 🙏",
+    },
+  },
+  {
     slug: "leviticus-4-explained",
     title: "Leviticus 4 Explained: The Law of the Sin Offering",
     description:
