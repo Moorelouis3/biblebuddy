@@ -1135,6 +1135,41 @@ function GroupCommentSection({
       await supabase.from("group_post_likes").insert({ post_id: comment.id, user_id: userId });
       await supabase.from("group_posts").update({ like_count: comment.like_count + 1 }).eq("id", comment.id);
       setComments((prev) => prev.map((item) => item.id === comment.id ? { ...item, like_count: item.like_count + 1, liked: true } : item));
+
+      // Tell them, once.
+      //
+      // Only on the like, never the unlike, and only the first time this
+      // person likes this post: unliking and liking again is one tap each way,
+      // and without the check it would send a fresh notification every time.
+      // That is how a feature people asked for becomes the reason they switch
+      // notifications off.
+      if (comment.user_id && comment.user_id !== userId) {
+        const { data: alreadyTold } = await supabase
+          .from("notifications")
+          .select("id")
+          .eq("user_id", comment.user_id)
+          .eq("from_user_id", userId)
+          .eq("type", "feed_post_liked")
+          .eq("comment_id", comment.id)
+          .limit(1);
+
+        if (!alreadyTold || alreadyTold.length === 0) {
+          const { error: likeNotificationError } = await supabase.from("notifications").insert({
+            user_id: comment.user_id,
+            type: "feed_post_liked",
+            from_user_id: userId,
+            from_user_name: displayName,
+            article_slug: `/study-groups/${groupId}/chat`,
+            post_id: post.id,
+            comment_id: comment.id,
+            message: `${displayName} liked your post.`,
+          });
+
+          if (likeNotificationError) {
+            console.error("Could not send like notification:", likeNotificationError);
+          }
+        }
+      }
     }
     setLikeLoading((prev) => {
       const next = new Set(prev);
@@ -1259,6 +1294,44 @@ function GroupCommentSection({
 
         if (notificationError) {
           console.error("Could not send group comment mention notifications:", notificationError);
+        }
+      }
+
+      /**
+       * Tell the author somebody answered them.
+       *
+       * Until now the only thing that notified anybody here was an @ mention,
+       * so a reply to your post reached you only if the person happened to
+       * type your name. On a wall where Louis started 107 of the last 108
+       * threads, the reply nobody hears about is the whole problem: people
+       * post, someone answers, and the poster never comes back to find out.
+       *
+       * feed_post_commented and feed_post_replied are not new types - AppShell
+       * already renders them and routes them into the thread through
+       * openGroupNotificationTarget. They were built for the old feed and have
+       * simply had nothing creating them since it was deleted.
+       */
+      const mentionedIds = new Set(mentionedUsers.map((item) => item.userId));
+      const parentComment = parentId ? comments.find((item) => item.id === parentId) ?? null : null;
+      const recipientId = parentComment ? parentComment.user_id : post.user_id;
+
+      // Not yourself, and not twice to somebody you just @ mentioned.
+      if (recipientId && recipientId !== userId && !mentionedIds.has(recipientId)) {
+        const { error: replyNotificationError } = await supabase.from("notifications").insert({
+          user_id: recipientId,
+          type: parentComment ? "feed_post_replied" : "feed_post_commented",
+          from_user_id: userId,
+          from_user_name: displayName,
+          article_slug: `/study-groups/${groupId}/chat`,
+          post_id: post.id,
+          comment_id: insertedId,
+          message: parentComment
+            ? `${displayName} replied to your comment.`
+            : `${displayName} commented on your post.`,
+        });
+
+        if (replyNotificationError) {
+          console.error("Could not send reply notification:", replyNotificationError);
         }
       }
 
