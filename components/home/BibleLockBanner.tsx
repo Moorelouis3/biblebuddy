@@ -249,7 +249,15 @@ export default function BibleLockBanner() {
             twenty-one that turns out to be. */}
         <Link
           href={locked ? "/" : "/bible-lock"}
-          className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-3.5 py-2 text-xs font-black text-white shadow-sm shadow-[#2f7fe8]/25 transition hover:opacity-95 sm:px-5 sm:text-sm"
+          className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-3.5 py-2 text-xs font-black shadow-sm shadow-[#2f7fe8]/25 transition hover:opacity-95 sm:px-5 sm:text-sm"
+          /* Inline, because globals.css has an unlayered `a { color: inherit }`
+             and Tailwind v4 keeps utilities in @layer utilities - unlayered
+             CSS outranks any layer, so text-white on an anchor silently does
+             nothing. This button shipped on 2026-10-17 with text-white and has
+             been dark blue on blue ever since. The landing page's buttons get
+             away with the same class only because bb-public-button sets a
+             colour of its own. */
+          style={{ color: "#ffffff" }}
         >
           {locked ? "Pick a task →" : "Set Up →"}
         </Link>

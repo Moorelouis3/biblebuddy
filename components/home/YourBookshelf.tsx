@@ -355,7 +355,21 @@ export default function YourBookshelf({
               </div>
               <Link
                 href={`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`}
-                className="block shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-2.5 text-center text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:opacity-95 sm:py-3"
+                /* Dark ink rather than the accent blue (Louis's mock-up,
+                   2026-10-17). #2b2150 is not a new colour: it is the same
+                   deep purple this card's own heading uses, and the one From
+                   Your Groups uses, so the button sits inside the lavender
+                   family instead of being the one loud thing on a pastel
+                   card. Fixed, like the text above it, because the
+                   illustrated background stays light in dark mode. */
+                className="block shrink-0 rounded-full bg-[#2b2150] px-5 py-2.5 text-center text-sm font-black shadow-sm transition hover:bg-[#3a2d6b] sm:py-3"
+                /* The colour is inline, not a utility class, because
+                   globals.css carries an unlayered `a { color: inherit }`.
+                   Tailwind v4 puts utilities in @layer utilities, and
+                   unlayered CSS outranks any layer - so a colour class on an
+                   anchor silently loses and the label inherits the card's
+                   dark text. On this button that was black on near-black. */
+                style={{ color: "#ffffff" }}
               >
                 Join Discussion →
               </Link>
