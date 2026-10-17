@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-4-explained",
+    title: "Leviticus 4 Explained: The Law of the Sin Offering",
+    description:
+      "Leviticus 4 explained verse by verse: the sin offering for the priest, the congregation, a ruler, and a common person, and why each case ends in forgiveness.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-4-explained",
+    publishedAt: "2026-10-17",
+    readTime: "13 min read",
+    image: "/blog-banners/leviticus-4-explained.jpg",
+    groupPost: {
+      title: "Leviticus 4 Explained 📖",
+      content:
+        "You did not mean to do it.\nThis chapter still has an answer for you.\n\n📌 Every single case here ends in forgiveness.\n\n📖 A priest's sin cost the same as the whole nation's.\n📖 Some blood went past the courtyard, toward the veil.\n📖 A whole bullock was burned outside the camp.\n\nNew article on:\n🟢 why **sin through ignorance** still needed an offering\n🟢 what happened to the **blood** before the veil\n🟢 how this law points straight at **Jesus**\n\nDid you know a priest's own sin cost as much as the nation's? 🙏",
+    },
+  },
+  {
     slug: "leviticus-3-explained",
     title: "Leviticus 3 Explained: The Law of the Peace Offering",
     description:
