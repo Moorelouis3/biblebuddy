@@ -72,60 +72,56 @@ export default function BibleLockBanner() {
 
   return (
     <section aria-labelledby="home-bible-lock-heading">
-      <div className="relative overflow-hidden rounded-3xl border border-[#d7e6fb] bg-[#eaf2fd] px-4 py-4 shadow-sm sm:px-5 sm:py-5">
+      {/* One line, at the very top of the dashboard, above the greeting
+          (Louis, 2026-10-17: "like a lil banner strip there so people don't
+          miss it"). It sits above everything, so it has to earn very little
+          height - the full version of this pitch is the page it opens. */}
+      <div className="flex items-center gap-3 rounded-2xl border border-[#d7e6fb] bg-[#eaf2fd] px-3 py-2.5 shadow-sm sm:gap-3.5 sm:px-4">
+        <span
+          aria-hidden
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-b from-[#5ea2f5] to-[#2f7fe8] text-base shadow-sm shadow-[#2f7fe8]/25 sm:h-10 sm:w-10 sm:text-lg"
+        >
+          🔒
+        </span>
+
+        <div className="min-w-0 flex-1">
+          <h2
+            id="home-bible-lock-heading"
+            className="text-sm font-black leading-tight text-[var(--bb-text-primary,#0f1f3a)] sm:text-base"
+          >
+            Bible Lock
+          </h2>
+          {/* The full line truncates on a 375px phone once the lock and the
+              button have taken their share, and a sentence cut mid-word reads
+              worse than a shorter one. */}
+          <p className="truncate text-xs font-semibold leading-snug text-[#5b7395] sm:text-[13px]">
+            <span className="sm:hidden">Block apps until you read.</span>
+            <span className="hidden sm:inline">Block distracting apps until you study the Bible.</span>
+          </p>
+        </div>
+
+        {/* Room for the tiles only where there is room. */}
+        <div className="hidden items-center gap-1.5 lg:flex">
+          <AppTile className="bg-[#111827] text-white">♪</AppTile>
+          <AppTile className="bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white">📷</AppTile>
+          <AppTile className="bg-[#ff0033] text-white">▶</AppTile>
+        </div>
+
+        <Link
+          href="/bible-lock"
+          className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-3.5 py-2 text-xs font-black text-white shadow-sm shadow-[#2f7fe8]/25 transition hover:opacity-95 sm:px-5 sm:text-sm"
+        >
+          Set Up →
+        </Link>
+
         <button
           type="button"
           onClick={dismiss}
           aria-label="Hide this"
-          className="absolute right-2.5 top-2.5 grid h-6 w-6 place-items-center rounded-full text-xs font-black text-[#7c93b5] transition hover:bg-white/70 hover:text-[#44566f]"
+          className="hidden h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-black text-[#7c93b5] transition hover:bg-white/70 hover:text-[#44566f] sm:grid"
         >
           ✕
         </button>
-
-        <div className="flex items-center gap-3.5 sm:gap-4">
-          {/* The lock tile */}
-          <span
-            aria-hidden
-            className="grid h-14 w-14 shrink-0 place-items-center rounded-[18px] bg-gradient-to-b from-[#5ea2f5] to-[#2f7fe8] text-2xl shadow-md shadow-[#2f7fe8]/25 sm:h-16 sm:w-16 sm:rounded-[20px] sm:text-3xl"
-          >
-            🔒
-          </span>
-
-          <div className="min-w-0 flex-1 pr-6 sm:pr-0">
-            <h2
-              id="home-bible-lock-heading"
-              className="text-lg font-black leading-tight text-[var(--bb-text-primary,#0f1f3a)] sm:text-xl"
-            >
-              Bible Lock
-            </h2>
-            <p className="mt-0.5 text-sm font-semibold leading-snug text-[#5b7395]">
-              Block distracting apps until you study the Bible.
-            </p>
-          </div>
-
-          {/* Wide screens get the whole row the mockup shows. */}
-          <div className="hidden items-center gap-2 lg:flex">
-            <AppTile className="bg-[#111827] text-white">♪</AppTile>
-            <AppTile className="bg-gradient-to-br from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white">📷</AppTile>
-            <AppTile className="bg-[#ff0033] text-white">▶</AppTile>
-            <AppTile className="bg-white/80 text-[#7c93b5]">···</AppTile>
-          </div>
-
-          <Link
-            href="/bible-lock"
-            className="hidden shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-6 py-3 text-sm font-black text-white shadow-md shadow-[#2f7fe8]/25 transition hover:opacity-95 sm:block"
-          >
-            Set Up →
-          </Link>
-        </div>
-
-        {/* On a phone the row cannot hold the button, so it takes its own line. */}
-        <Link
-          href="/bible-lock"
-          className="mt-3.5 block w-full rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-2.5 text-center text-sm font-black text-white shadow-md shadow-[#2f7fe8]/25 transition hover:opacity-95 sm:hidden"
-        >
-          Set Up →
-        </Link>
       </div>
     </section>
   );

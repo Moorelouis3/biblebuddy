@@ -299,6 +299,11 @@ export default function HomeScreen() {
     // renders the Report a Problem card right below this - pb-28 left a big
     // hole between the group card and the reporter (Louis, 2026-09-03).
     <div className="mx-auto flex w-full max-w-[960px] flex-col gap-6 px-4 pb-2 pt-5">
+      {/* Above the greeting, because Louis rates it the best thing in the app
+          and nobody could find it (2026-10-17). It hides itself once the lock
+          is on, and once dismissed it stays gone. */}
+      <BibleLockBanner />
+
       {/* 1-2. Greeting left, compact stat cards right */}
       <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -414,10 +419,6 @@ export default function HomeScreen() {
           under Plans > Bible Study Tools > Bible References where nobody
           found them. Sits high on the page because looking a name up is a
           reading-time need, not an end-of-session one (Louis, 2026-10-12). */}
-      {/* The Bible lock, which only Settings knew about until 2026-10-17. It
-          hides itself once the lock is on, and once dismissed it stays gone. */}
-      <BibleLockBanner />
-
       <BibleReferenceCard onEvent={trackHomeEvent} />
 
       {/* 5b. Upcoming Community Study - the EXACT banner from the group page.
