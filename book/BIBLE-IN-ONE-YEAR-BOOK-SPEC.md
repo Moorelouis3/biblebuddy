@@ -6,73 +6,77 @@ Written 2026-10-17. Everything here is measured from the repo, not estimated.
 
 ## 1. What exists today
 
-Run `npx tsx scripts/export-bible-year-manuscript.ts` to regenerate the manuscript
-at any time. As of today it reports:
+Run `npx tsx scripts/export-bible-year-manuscript.ts` to regenerate the
+manuscript at any time. As of today it reports:
 
 | | |
 |---|---|
-| Days with a finished script | **105** (days 1–105) |
-| Days still to write | **260** (days 106–365) |
-| Words of teaching written | **99,438** |
-| Average per finished day | **947 words** |
-| Shortest day | 236 words (day 60) |
-| Longest day | 2,502 words (day 95) |
+| Days with a finished script | **365** - all of them |
+| Words of teaching | **453,029** |
+| Average per day | **1,241 words** |
+| Shortest day | 500 words (day 100) |
+| Longest day | 2,006 words (day 1) |
 
-The plan itself covers all 365 days — every day has a reading and a title in
-`lib/bibleInOneYearPlan.ts` (day 1 Genesis 1–2 … day 365 Revelation 20–22).
-What days 106–365 do not yet have is the written study.
+These are the narration scripts the audio and the YouTube videos are made
+from, in `lib/bibleYearDayScripts.ts`. An earlier version of this file said
+105 days and 99,438 words: that was counting the in-app lesson objects, which
+only the first 105 days have. The scripts are the real manuscript and they are
+finished.
 
-**The Scripture is not in the manuscript, and that is correct.** In the app each
-section carries a `verseBlock` — a reference the reader's own Bible fills in.
-Printing the Bible text would add roughly 750,000 words, and a one-year
-devotional does not do it: The Bible Recap, Our Daily Bread and Jesus Calling
-all print the reference and let the reader open their Bible. That is the whole
-point of giving them a reading for the day.
+**The Scripture is not in the manuscript, and that is correct.** Each block of
+a script carries a reference whose verses the narrator reads from the Bible
+itself - the words are never in the script. Printing the Bible text would add
+roughly 750,000 words, and a one-year devotional does not do it: The Bible
+Recap, Our Daily Bread and Jesus Calling all print the reference and let the
+reader open their own Bible.
 
 ---
 
 ## 2. Trim and page count
 
-A page at 6×9 holds about 300 words. At 8.25×11 — KDP's largest hardcover trim,
-within a millimetre of A4 on the width — it holds about 650.
+A page at 6x9 holds about 300 words. At 8.25x11 - KDP's largest hardcover
+trim, within a millimetre of A4 on the width - it holds about 650.
 
-At the current average of 947 words a day:
+At 1,241 words a day:
 
 | Trim | Pages a day | All 365 days | Verdict |
 |---|---|---|---|
-| 6×9 | ~3.2 | ~1,150 pages | needs three volumes |
-| 7×10 | ~2.1 | ~770 pages | needs two volumes |
-| **8.25×11** | **~1.5** | **~530 pages** | **one volume, under KDP's 550 ceiling** |
+| 6x9 | ~4.1 | ~1,510 pages | four volumes |
+| 7x10 | ~2.8 | ~1,020 pages | two or three volumes |
+| **8.25x11** | **~1.9** | **~700 pages** | **two volumes of ~350** |
 
-So the premium single volume is not just a nice idea, it is the only trim where
-a year fits in one book. It is tight: 530 of 550 leaves almost no room, so if
-the unwritten days run longer than the written ones, either the later days come
-in shorter or it becomes two volumes after all.
+**A single hardcover does not fit.** KDP caps hardcover at 550 pages and the
+year needs about 700 even at the largest trim. The ways round it are:
 
-**Watch this number as days 106–365 are written.** Re-run the export script
-every 25 days or so and check the average. If it climbs above about 1,000 words
-a day, a single volume stops fitting.
+1. **Two premium volumes at 8.25x11**, ~350 pages each. Sold as a boxed pair,
+   or $69.99 each. This is the one I would do.
+2. **One paperback at 8.25x11.** Paperback allows up to 828 pages on cream, so
+   700 fits - but a 700-page perfect-bound paperback is 1.6 inches thick and
+   will not stay open on a table, which is the opposite of premium.
+3. **Cut to fit.** 550 pages means losing about 100,000 words, a fifth of the
+   book. Possible, but it is a year of editing.
 
-### If it does become two volumes
+### The split
 
-Split at **day 178 / day 179** — day 178 is Psalms 148–150 and day 179 is
-Proverbs 1–3, so the break falls on the end of a book rather than mid-Proverbs.
+Split at **day 178 / day 179** - day 178 is Psalms 148-150 and day 179 is
+Proverbs 1-3, so the break falls on the end of a book rather than mid-Proverbs.
 
-- Volume 1 — Days 1–178: Genesis to Psalms
-- Volume 2 — Days 179–365: Proverbs to Revelation
+- Volume 1 - Days 1-178: Genesis to Psalms
+- Volume 2 - Days 179-365: Proverbs to Revelation
 
 ---
 
 ## 3. Price
 
-$69.99 works. KDP's hardcover ceiling is $250. At ~530 pages, 8.25×11, black
-and white on cream, print cost lands somewhere around $11–13, so the margin is
-large and there is room to discount for church orders.
+$69.99 a volume works. KDP's hardcover ceiling is $250. At ~350 pages, 8.25x11,
+black and white on cream, print cost lands somewhere around $9-11, so the
+margin is large and there is room to discount for church orders.
 
-Be clear with yourself about what it is: 8.25×11 is a workbook size. It does not
-sit on a nightstand and it is not read one-handed at 6am. It is a gift edition —
-bought for someone else, at Christmas, by a person who wants it to look like it
-cost $70. A 6×9 set is the everyday book; this is the one under the tree.
+Be clear with yourself about what it is: 8.25x11 is a workbook size. It does
+not sit on a nightstand and it is not read one-handed at 6am. It is a gift
+edition - bought for someone else, at Christmas, by a person who wants it to
+look like it cost $70. A 6x9 set is the everyday book; this is the one under
+the tree.
 
 ---
 
@@ -118,8 +122,8 @@ Match what days 1–105 already do:
   passages, and the later prophets will need the same honesty.
 - Short paragraphs. The app reads them aloud, so they have to work in the ear.
 - End with something to carry, not a summary of what was just said.
-- Aim for **900–1,000 words**. The spread today is 236 to 2,502, which is too
-  wide for a printed page to look settled — the typesetter will fight it.
+- Aim for the current average of about 1,250 words. The spread today is 500 to
+  2,006, which is wide enough that the typesetter will fight it.
 
 ---
 

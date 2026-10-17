@@ -1,6 +1,7 @@
 import { mkdirSync, writeFileSync } from "fs";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "../lib/bibleInOneYearPlan";
 import { getBibleYearDayContent } from "../lib/bibleYearDaysContent";
+import { DAY_SCRIPTS } from "../lib/bibleYearDayScripts";
 
 /**
  * The Bible in One Year manuscript, as one markdown file (Louis, 2026-10-17).
@@ -41,6 +42,29 @@ const days: DayOut[] = [];
 let missing: number[] = [];
 
 for (const day of GENESIS_BIBLE_IN_ONE_YEAR_SERIES) {
+  // Day 1 is the only one still in the old lesson shape; days 2-365 are the
+  // narration scripts the audio and the videos are made from.
+  const script = DAY_SCRIPTS[day.dayNumber];
+  if (script) {
+    days.push({
+      dayNumber: script.dayNumber,
+      title: script.title,
+      reference: day.reference || script.blocks[0]?.reference || "",
+      // opening and closing are [text, pauseMs] pairs: the pause is a
+      // direction to the narrator and means nothing on a page.
+      paragraphs: (script.opening || []).map(([text]) => clean(text)).filter(Boolean),
+      sections: (script.blocks || []).map((block) => ({
+        // The heading is the passage this block is about. The verses
+        // themselves are read aloud from the reference and are not in the
+        // script, which is exactly why this exports cleanly.
+        heading: block.reference,
+        paragraphs: (block.teaching || []).map(clean).filter(Boolean),
+      })),
+      closing: (script.closing || []).map(([text]) => clean(text)).filter(Boolean),
+    });
+    continue;
+  }
+
   const { lesson } = getBibleYearDayContent(day);
   if (!lesson) {
     missing.push(day.dayNumber);
