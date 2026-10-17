@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import webpush from "web-push";
+import { apnsConfigured, sendApnsPush } from "@/lib/apnsSender";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -114,6 +115,22 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: subscriptionsError.message }, { status: 500 });
   }
 
+  // Phones, as well as browsers (Louis, 2026-10-17: no notification on a new
+  // DM). iOS delivers through APNs, not the Push API, so an app install has a
+  // device token here and no push_subscriptions row at all.
+  const tokensByUser = new Map<string, string[]>();
+  if (apnsConfigured()) {
+    const { data: deviceRows } = await supabase
+      .from("native_push_tokens")
+      .select("token, user_id")
+      .in("user_id", userIds);
+    for (const row of deviceRows || []) {
+      const current = tokensByUser.get(row.user_id) || [];
+      current.push(row.token);
+      tokensByUser.set(row.user_id, current);
+    }
+  }
+
   const subsByUser = new Map<string, PushSubscriptionRow[]>();
   ((subscriptions || []) as PushSubscriptionRow[]).forEach((subscription) => {
     const current = subsByUser.get(subscription.user_id) || [];
@@ -127,7 +144,9 @@ export async function GET(request: NextRequest) {
     const userSubscriptions = subsByUser.get(job.user_id) || [];
     const normalizedPayload = normalizePushPayload(job.payload);
 
-    if (userSubscriptions.length === 0) {
+    const deviceTokens = tokensByUser.get(job.user_id) || [];
+
+    if (userSubscriptions.length === 0 && deviceTokens.length === 0) {
       await supabase
         .from("push_notification_jobs")
         .update({
@@ -143,6 +162,17 @@ export async function GET(request: NextRequest) {
 
     let sentAny = false;
     let lastError: string | null = null;
+
+    if (deviceTokens.length > 0) {
+      const apns = await sendApnsPush(deviceTokens, normalizedPayload);
+      if (apns.sent > 0) sentAny = true;
+      if (apns.lastError) lastError = apns.lastError;
+      // A token Apple has disowned will never work again; keeping it only
+      // guarantees an error on every future notification.
+      for (const dead of apns.dead) {
+        await supabase.from("native_push_tokens").delete().eq("token", dead);
+      }
+    }
 
     for (const subscription of userSubscriptions) {
       try {
