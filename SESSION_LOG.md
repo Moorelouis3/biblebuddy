@@ -8054,3 +8054,25 @@ Next up: Hebrews 1
 ## 2026-10-17T09:01:01Z (hourly chapter notes run)
 Chapter: Hebrews 1 | Duration: 15 min | Sections: 3 | Cards: 26 | Status: pass
 Next up: Hebrews 2
+
+## 2026-10-17 (night)
+Time spent: a long overnight session.
+Done: Library study pages got the readers counter and the "How this Bible study
+works" directions, with About and What You'll Get folded into dropdowns. The
+bookshelf was rebuilt for a phone and renamed Today's Group Study. Lil Louis
+took a tab in the bar and left the More sheet. Bible Lock got a page and a
+dashboard strip, and now only appears on a device that can run it. Every day of
+a study offers the paperback. Louis's study comments answer themselves every 15
+minutes from his account, flagged is_auto with an Auto filter in
+/comments-admin, and each devotional day shows its comment count. Days 106-365
+of Bible in One Year open properly for the first time - the reader needed both a
+lesson and an audio entry and had neither past day 105. The Bible in One Year
+manuscript was exported, all 365 days and 453,029 words, with a book spec. DMs
+went to Joye, Mounika and Bree telling them Lil Louis is back.
+Not live yet: 4 commits waiting; next build Sat 18:05 Berlin.
+Still open: Bible Lock cannot ship. Apple has the entitlement Assigned on the
+App ID but every profile it issues for net.mybiblebuddy.app lacks it - and lacks
+App Groups too. Proof and next steps in docs/bible-lock-entitlement-evidence.md;
+it needs Xcode on a Mac or an Apple support ticket.
+Next: confirm TestFlight build 10 finishes processing, then the Bible Lock
+entitlement with Apple.
