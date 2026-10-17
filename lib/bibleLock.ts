@@ -166,6 +166,24 @@ export async function lockChosenApps(): Promise<boolean> {
  * place that marks it, so the two can never disagree. It is also what the
  * "turn it off" control calls, and it asks no questions before doing it.
  */
+/**
+ * Give the phone back for an action that counts as having read, and say
+ * whether it actually unlocked anything.
+ *
+ * recordAction already does this, but not every screen goes through it -
+ * FullChapterReader writes to master_actions itself, so finishing a chapter
+ * left the apps shielded and said nothing (Louis, 2026-10-17: "I just
+ * finished a chapter and no pop up saying congrats, your phone is
+ * unlocked"). Returning true is what lets a screen tell him.
+ */
+export async function liftBibleLockFor(actionType: ActionType): Promise<boolean> {
+  if (!UNLOCKING_ACTIONS.has(actionType)) return false;
+  const before = await bibleLockStatus();
+  if (!before.supported || !before.locked) return false;
+  await clearBibleLock();
+  return true;
+}
+
 export async function clearBibleLock(): Promise<void> {
   if (!isNativeApp() || !nativePluginAvailable("BibleLock")) return;
   try {

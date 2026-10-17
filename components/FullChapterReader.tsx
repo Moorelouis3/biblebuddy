@@ -58,6 +58,7 @@ import { cacheChapterNotes, fetchBibleChapterNotes, getCanonicalBibleNotesBookKe
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
+import { liftBibleLockFor } from "../lib/bibleLock";
 // NOT a static import. This helper reaches bibleYearDayOneDeepStudy, which
 // reaches bibleReaderStudyNotes, which pulls in all 482 note files: a 5.95 MB
 // chunk that was landing on every chapter before a single verse could show.
@@ -218,6 +219,8 @@ export default function BibleChapterPage() {
   // Genesis 1 KJV starts with its text already in hand, so the very first
   // render is the Scripture rather than a skeleton waiting on a fetch.
   const genesisOneIsBundled = isGenesisOneKjv(bookParam, Number(params.chapter), "kjv");
+  /** Shown when finishing this chapter gave the phone back. */
+  const [bibleLockLifted, setBibleLockLifted] = useState(false);
   const [sections, setSections] = useState<Section[]>(() =>
     genesisOneIsBundled
       ? [
@@ -2163,6 +2166,13 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
             console.error("Error logging action to master_actions:", actionError);
           } else {
             void awardDiamonds(userId, DIAMOND_REWARDS.fullChapter);
+            // This screen writes to master_actions itself instead of going
+            // through recordAction, so the Bible lock was never lifted when
+            // somebody finished a chapter here - the apps stayed shielded and
+            // nothing said otherwise (Louis, 2026-10-17).
+            void liftBibleLockFor(ACTION_TYPE.chapter_completed).then((lifted) => {
+              if (lifted) setBibleLockLifted(true);
+            });
           }
 
           // If this chapter was opened from a reading plan, also log reading_plan_chapter_completed
@@ -2452,6 +2462,28 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           ? "min-h-screen bg-gray-50 px-4 pt-0 pb-8"
           : "min-h-screen bg-gray-50 py-8 px-4"
     }>
+      {/* The phone coming back is the whole point of the Bible lock, and it
+          used to happen in silence - when it happened at all. */}
+      {bibleLockLifted ? (
+        <div className="fixed inset-x-0 top-0 z-[300] flex justify-center px-4 pt-[calc(env(safe-area-inset-top,0px)+12px)]">
+          <div className="flex w-full max-w-md items-center gap-3 rounded-2xl border border-[#b9e6c9] bg-[#eafaf0] px-4 py-3 shadow-lg">
+            <span aria-hidden className="text-2xl">🔓</span>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-black text-[#14532d]">Chapter done &mdash; your apps are unlocked</p>
+              <p className="mt-0.5 text-xs font-semibold text-[#2f6b45]">They lock again tomorrow until you have read.</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setBibleLockLifted(false)}
+              aria-label="Hide this"
+              className="shrink-0 rounded-full px-2 text-lg font-black text-[#2f6b45]/60 hover:text-[#14532d]"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      ) : null}
+
       <div className={isDashboardEmbed ? "mx-auto max-w-4xl px-2 py-3 text-[var(--bb-text-primary,#111827)] sm:px-4 sm:py-4" : "max-w-4xl mx-auto"}>
         {/* BACK LINK */}
         {!isDashboardEmbed && !isGenesisOnePrototype ? (
