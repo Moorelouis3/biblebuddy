@@ -46,3 +46,4 @@
 2026-10-17T17:28:37Z | 4 commits | Dashboard visual consistency (Keep Going removed, Today's Group Study and Look It Up given the illustrated lavender and peach treatment, dark Join Discussion button), community wall milestone posts (devotional days, Bible in One Year days and finished books post under the reader's own name every 15 minutes), a white-on-anchor contrast fix on the Bible Lock strip button, and Hebrews 8 study notes
 2026-10-17T17:55:38Z | 2 commits | Quick Reads rename with a pastel background per card on both dashboard shelves, and community notifications when somebody replies to or likes your post
 2026-10-17T18:02:29Z | 1 commit | iPhone push diagnostic: the silent bail now reports why the app was not recognised as the app
+2026-10-17T18:06:07Z | 1 commit | Continue Reading loses its white outer card so the book cards sit on the page like Quick Reads

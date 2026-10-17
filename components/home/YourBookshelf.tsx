@@ -173,7 +173,7 @@ export default function YourBookshelf({
   if (loading) {
     return (
       <section aria-labelledby="home-bookshelf-heading">
-        <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
+        <div>
           <div className="h-6 w-44 animate-pulse rounded bg-[var(--bb-surface-soft,#eef2f7)]" />
           <div className="mt-5 flex gap-3">
             {[0, 1, 2].map((i) => (
@@ -193,7 +193,21 @@ export default function YourBookshelf({
   return (
     <>
       <section aria-labelledby="home-bookshelf-heading">
-        <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
+        {/* No outer card. Louis, 2026-10-17: "you have the continue reading in
+            a white holder, remove that, it's pointless - look at the quick
+            reads, each banner has its own holder, no main holder, the page is
+            the external holder."
+
+            It was doing visible harm rather than nothing: once every book got
+            its own pastel card, a white box around them framed things that
+            were already framed, and the tints read as swatches inside a panel
+            instead of cards on the page. Quick Reads never had one. The
+            padding went with it, because HomeScreen's own px-4 already
+            provides the gutter - which is exactly how Quick Reads lines up.
+
+            The loading skeleton lost its box too, or the shelf would flash a
+            white panel and then drop it the moment the books arrived. */}
+        <div>
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               {/* Sized for a 375px phone first: at text-xl the two words wrapped
