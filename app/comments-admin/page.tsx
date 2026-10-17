@@ -32,6 +32,7 @@ type AdminComment = {
   replyCount: number;
   hasMyReply: boolean;
   hasModeratorReply?: boolean;
+  myReply?: { id: string; kind: string; content: string; createdAt: string; isAuto: boolean } | null;
   /** Written by the auto-comment cron as Louis, not typed by him. */
   isAuto?: boolean;
   isMine?: boolean;
@@ -130,6 +131,9 @@ export default function CommentsAdminPage() {
   const [sourceFilter, setSourceFilter] = useState("All");
   const [search, setSearch] = useState("");
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
+  const [editingReplyId, setEditingReplyId] = useState<string | null>(null);
+  const [editingReplyText, setEditingReplyText] = useState("");
+  const [savingReplyId, setSavingReplyId] = useState<string | null>(null);
   const [replyText, setReplyText] = useState("");
   const [postingId, setPostingId] = useState<string | null>(null);
   const [draftingId, setDraftingId] = useState<string | null>(null);
@@ -260,6 +264,67 @@ export default function CommentsAdminPage() {
     setReplyingTo(null);
     setReplyText("");
     setStatusMessage("Reply sent. That comment is marked as replied.");
+  }
+
+  /** Rewrite the reply I left - including one the auto-commenter left as me. */
+  async function saveMyReply(comment: AdminComment) {
+    const reply = comment.myReply;
+    const next = editingReplyText.trim();
+    if (!reply || !next) return;
+    setSavingReplyId(reply.id);
+    setStatusMessage(null);
+    const token = await getToken();
+    if (!token) { setSavingReplyId(null); return; }
+    const response = await fetch("/api/comments/edit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ kind: reply.kind, commentId: reply.id, content: next }),
+    });
+    if (response.ok) {
+      setComments((current) =>
+        current.map((item) =>
+          item.myReply && item.myReply.id === reply.id
+            ? { ...item, myReply: { ...item.myReply, content: next } }
+            : item,
+        ),
+      );
+      setEditingReplyId(null);
+      setEditingReplyText("");
+      setStatusMessage("Reply updated.");
+    } else {
+      const payload = await response.json().catch(() => ({}));
+      setStatusMessage(payload.error || "Could not update that reply.");
+    }
+    setSavingReplyId(null);
+  }
+
+  async function deleteMyReply(comment: AdminComment) {
+    const reply = comment.myReply;
+    if (!reply) return;
+    if (!window.confirm("Delete your reply to this comment?")) return;
+    setDeletingId(reply.id);
+    setStatusMessage(null);
+    const token = await getToken();
+    if (!token) { setDeletingId(null); return; }
+    const response = await fetch("/api/comments/delete", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+      body: JSON.stringify({ kind: reply.kind, commentId: reply.id }),
+    });
+    if (response.ok) {
+      setComments((current) =>
+        current.map((item) =>
+          item.myReply && item.myReply.id === reply.id
+            ? { ...item, myReply: null, hasMyReply: false }
+            : item,
+        ),
+      );
+      setStatusMessage("Reply deleted.");
+    } else {
+      const payload = await response.json().catch(() => ({}));
+      setStatusMessage(payload.error || "Could not delete that reply.");
+    }
+    setDeletingId(null);
   }
 
   async function deleteComment(comment: AdminComment) {
@@ -492,6 +557,68 @@ export default function CommentsAdminPage() {
                           ) : null}
                         </div>
 
+                        {comment.myReply ? (
+                          <div className="mt-3 rounded-2xl border border-emerald-100 bg-emerald-50/60 px-3 py-2">
+                            <div className="flex items-center justify-between gap-2">
+                              <p className="text-[10px] font-black uppercase tracking-[0.14em] text-emerald-700">
+                                Your reply{comment.myReply.isAuto ? " (auto)" : ""}
+                              </p>
+                              {editingReplyId === comment.myReply.id ? null : (
+                                <div className="flex items-center gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setEditingReplyId(comment.myReply!.id);
+                                      setEditingReplyText(comment.myReply!.content);
+                                    }}
+                                    className="text-xs font-black text-emerald-800 hover:underline"
+                                  >
+                                    Edit
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => void deleteMyReply(comment)}
+                                    disabled={deletingId === comment.myReply!.id}
+                                    className="text-xs font-black text-red-600 hover:underline disabled:opacity-60"
+                                  >
+                                    Delete
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+                            {editingReplyId === comment.myReply.id ? (
+                              <div className="mt-2">
+                                <textarea
+                                  value={editingReplyText}
+                                  onChange={(event) => setEditingReplyText(event.target.value)}
+                                  rows={3}
+                                  className="w-full rounded-xl border border-emerald-200 bg-white px-3 py-2 text-sm font-semibold text-slate-900 focus:outline-none"
+                                />
+                                <div className="mt-2 flex gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={() => void saveMyReply(comment)}
+                                    disabled={savingReplyId === comment.myReply!.id || !editingReplyText.trim()}
+                                    className="rounded-full bg-emerald-600 px-4 py-1.5 text-xs font-black text-white disabled:opacity-60"
+                                  >
+                                    {savingReplyId === comment.myReply!.id ? "Saving..." : "Save"}
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => { setEditingReplyId(null); setEditingReplyText(""); }}
+                                    className="rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-black text-slate-600"
+                                  >
+                                    Cancel
+                                  </button>
+                                </div>
+                              </div>
+                            ) : (
+                              <p className="mt-1 whitespace-pre-wrap text-sm font-semibold leading-6 text-slate-800">
+                                {cleanText(comment.myReply.content, 900)}
+                              </p>
+                            )}
+                          </div>
+                        ) : null}
                         <div className="mt-3 flex flex-wrap items-center gap-2">
                           {canAutoReply ? (
                             <button

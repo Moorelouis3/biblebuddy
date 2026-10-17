@@ -35,6 +35,8 @@ type AdminComment = {
   replyCount: number;
   hasMyReply: boolean;
   hasModeratorReply?: boolean;
+  /** The reply I left on this comment, if I left one. */
+  myReply?: { id: string; kind: string; content: string; createdAt: string; isAuto: boolean } | null;
   /** Written by the auto-comment cron as Louis, not typed by him. */
   isAuto?: boolean;
   isMine?: boolean;
@@ -177,20 +179,34 @@ function clipText(value: unknown, max = 700) {
 
 function addReplyMetadata(rows: AdminComment[], requesterId: string) {
   const replyMap = new Map<string, number>();
-  const myReplyParentIds = new Set<string>();
+  // The reply itself, not just the fact of it (Louis, 2026-10-17: "it says I
+  // commented but I need to see what was commented, and the ability to edit
+  // and delete it"). The rows are already here - replies are fetched beside
+  // the comments they answer - so this only had to keep one.
+  const myReplyByParent = new Map<string, AdminComment>();
 
   rows.forEach((row) => {
     if (!row.parentId) return;
     replyMap.set(row.parentId, (replyMap.get(row.parentId) || 0) + 1);
-    if (row.userId === requesterId) myReplyParentIds.add(row.parentId);
+    if (row.userId === requesterId) {
+      const existing = myReplyByParent.get(row.parentId);
+      // The newest one, if somebody replied more than once.
+      if (!existing || row.createdAt > existing.createdAt) myReplyByParent.set(row.parentId, row);
+    }
   });
 
-  return rows.map((row) => ({
-    ...row,
-    replyCount: replyMap.get(row.id) || 0,
-    hasMyReply: myReplyParentIds.has(row.id),
-    isMine: row.userId === requesterId,
-  }));
+  return rows.map((row) => {
+    const mine = myReplyByParent.get(row.id);
+    return {
+      ...row,
+      replyCount: replyMap.get(row.id) || 0,
+      hasMyReply: Boolean(mine),
+      myReply: mine
+        ? { id: mine.id, kind: mine.kind, content: mine.content, createdAt: mine.createdAt, isAuto: mine.isAuto === true }
+        : null,
+      isMine: row.userId === requesterId,
+    };
+  });
 }
 
 function todayKey(date = new Date(), timezoneOffsetMinutes = 0) {
