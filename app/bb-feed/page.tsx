@@ -9,6 +9,8 @@ import * as tus from "tus-js-client";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { FeedOnboardingModal } from "../../components/FeedOnboardingModal";
+import ReportBlockMenu from "../../components/ReportBlockMenu";
+import { BLOCKS_CHANGED_EVENT, getBlockedUserIds } from "../../lib/userBlocks";
 import { ModalShell } from "../../components/ModalShell";
 import { logActionToMasterActions } from "../../lib/actionRecorder";
 import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
@@ -752,14 +754,21 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
 
       if (!data || data.length === 0) { setComments([]); setLoading(false); return; }
 
-      const userIds = [...new Set(data.map((c) => c.user_id))];
+      // Blocking has to reach the comments too, or the person you blocked is
+      // still talking to you one level down. Cached in lib/userBlocks, so this
+      // is not a query per post.
+      const blocked = await getBlockedUserIds();
+      const visible = blocked.size ? data.filter((c) => !blocked.has(c.user_id)) : data;
+      if (visible.length === 0) { setComments([]); setLoading(false); return; }
+
+      const userIds = [...new Set(visible.map((c) => c.user_id))];
       const { data: profiles } = await supabase
         .from("profile_stats")
         .select("user_id, display_name, username, profile_image_url")
         .in("user_id", userIds);
 
       const p = profiles || [];
-      setComments(data.map((c) => {
+      setComments(visible.map((c) => {
         const prof = p.find((pr) => pr.user_id === c.user_id);
         return { ...c, display_name: prof?.display_name ?? null, username: prof?.username ?? null, profile_image_url: prof?.profile_image_url ?? null };
       }));
@@ -1056,6 +1065,19 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
                 Delete
               </button>
             )}
+            {/* A comment needs reporting as much as a post does, and this is
+                where blocking reaches the person who is replying rather than
+                posting. The menu hides itself on your own comment. */}
+            <ReportBlockMenu
+              targetUserId={comment.user_id}
+              targetName={name}
+              contentType="feed_comment"
+              contentId={comment.id}
+              currentUserId={myId}
+              reportLabel="Report comment"
+              size="sm"
+              align="left"
+            />
           </div>
           {/* Reply input */}
           {!indent && replyingTo === comment.id && (
@@ -1305,8 +1327,6 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   const [localCommentCount, setLocalCommentCount] = useState(post.comment_count);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [showReportModal, setShowReportModal] = useState(false);
-  const [reportReason, setReportReason] = useState("");
   const [loveAnimating, setLoveAnimating] = useState(false);
   const [likersOpen, setLikersOpen] = useState(false);
   const [likers, setLikers] = useState<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }[]>([]);
@@ -1354,18 +1374,6 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
     setTimeout(() => onDelete(post.id), 500);
   }
 
-  async function handleReport() {
-    if (!reportReason) return;
-    await supabase.from("post_reports").insert({
-      post_id: post.id,
-      reporter_user_id: myId,
-      reason: reportReason,
-    });
-    setShowReportModal(false);
-    setReportReason("");
-    showToastMsg("Report submitted. Thank you.");
-  }
-
   if (deleted) {
     return <div className="transition-all duration-500 opacity-0 h-0 overflow-hidden" />;
   }
@@ -1390,37 +1398,47 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
           </div>
           <p className="text-xs text-gray-400">{timeAgo(post.created_at)}</p>
         </div>
-        {/* 3-dot menu */}
-        <div className="relative flex-shrink-0">
-          <button
-            onClick={() => setMenuOpen((v) => !v)}
-            className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition text-lg leading-none"
-          >
-            ···
-          </button>
-          {menuOpen && (
-            <>
-              <div className="fixed inset-0 z-10" onClick={() => setMenuOpen(false)} />
-              <div className="absolute right-0 top-8 z-20 bg-white border border-gray-200 rounded-xl shadow-lg py-1 min-w-[150px]">
-                {isMyPost ? (
+        {/* My own post keeps this menu, because deleting is the only thing it
+            offers. Somebody else's goes through the shared ReportBlockMenu,
+            which also carries Block - this page's own menu had no way to block
+            anyone, and App Store guideline 1.2 wants both for user content. */}
+        {isMyPost ? (
+          <div className="relative flex-shrink-0">
+            <button
+              onClick={() => setMenuOpen((v) => !v)}
+              className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition text-lg leading-none"
+            >
+              ···
+            </button>
+            {menuOpen && (
+              <>
+                <div className="fixed inset-0 z-10" onClick={() => setMenuOpen(false)} />
+                <div className="absolute right-0 top-8 z-20 bg-white border border-gray-200 rounded-xl shadow-lg py-1 min-w-[150px]">
                   <button
                     onClick={() => { setMenuOpen(false); setShowDeleteModal(true); }}
                     className="w-full text-left px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition"
                   >
                     🗑️ Delete post
                   </button>
-                ) : (
-                  <button
-                    onClick={() => { setMenuOpen(false); setShowReportModal(true); }}
-                    className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition"
-                  >
-                    🚩 Report post
-                  </button>
-                )}
-              </div>
-            </>
-          )}
-        </div>
+                </div>
+              </>
+            )}
+          </div>
+        ) : (
+          <ReportBlockMenu
+            targetUserId={post.user_id}
+            targetName={displayName}
+            contentType="feed_post"
+            contentId={post.id}
+            currentUserId={myId}
+            reportLabel="Report post"
+            align="right"
+            className="flex-shrink-0"
+            // Blocking somebody should take their posts off the screen there
+            // and then, not on the next refresh.
+            onBlocked={() => onDelete(post.id)}
+          />
+        )}
       </div>
 
       {/* Content */}
@@ -1541,46 +1559,6 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
         </div>
       )}
 
-      {/* Report modal */}
-      {showReportModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 modal-backdrop-in" onClick={() => setShowReportModal(false)}>
-          <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full mx-4 modal-panel-in" onClick={(e) => e.stopPropagation()}>
-            <h3 className="font-bold text-gray-900 text-lg mb-2">Report this post</h3>
-            <p className="text-sm text-gray-500 mb-4">Why are you reporting this post?</p>
-            <div className="flex flex-col gap-2 mb-5">
-              {["Spam", "Inappropriate content", "Harassment", "False information", "Other"].map((reason) => (
-                <label key={reason} className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name={`report-reason-${post.id}`}
-                    value={reason}
-                    checked={reportReason === reason}
-                    onChange={() => setReportReason(reason)}
-                    className="accent-green-600"
-                  />
-                  <span className="text-sm text-gray-700">{reason}</span>
-                </label>
-              ))}
-            </div>
-            <div className="flex gap-3 justify-end">
-              <button
-                onClick={() => { setShowReportModal(false); setReportReason(""); }}
-                className="px-4 py-2 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-100 transition"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleReport}
-                disabled={!reportReason}
-                className="px-4 py-2 rounded-xl text-sm font-semibold text-white disabled:opacity-50 transition"
-                style={{ backgroundColor: "#4a9b6f" }}
-              >
-                Submit Report
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Photo lightbox */}
       {lightboxOpen && post.media_url && (
@@ -1942,7 +1920,12 @@ export default function BbFeedPage() {
     const myReactedIds = new Set([...myReactions].map((k) => k.split(":")[0]));
 
     const ranked = rankCommunityFeed(postChunks, activityChunks, buddyIdSet, myActivityData || [], myReactedIds);
-    setRankedBuddiesFeed(ranked);
+    // Blocked both ways, and asked for here rather than read from state: the
+    // list is cached for a minute inside lib/userBlocks, so this costs nothing
+    // after the first call, and it cannot race the feed loading before the
+    // block list has arrived.
+    const blocked = await getBlockedUserIds({ userId: uid });
+    setRankedBuddiesFeed(blocked.size ? ranked.filter((item) => !blocked.has(item.user_id)) : ranked);
     void loadMyReactions(uid, postChunks.map((p) => p.id));
   }
 
@@ -2049,8 +2032,31 @@ export default function BbFeedPage() {
       myReactedIds
     );
 
-    setRankedCommunityFeed(ranked);
+    const blocked = await getBlockedUserIds({ userId: userId ?? null });
+    setRankedCommunityFeed(blocked.size ? ranked.filter((item) => !blocked.has(item.user_id)) : ranked);
   }, [rankedCommunityFeed.length, userId, myReactions]);
+
+  // Blocking somebody from anywhere in the app clears them out of both feeds
+  // here, without a reload. ReportBlockMenu fires BLOCKS_CHANGED_EVENT, and the
+  // block may well have happened in the inbox or on a profile rather than on
+  // this page, so listening is the only way to stay honest.
+  useEffect(() => {
+    if (!userId) return;
+    let cancelled = false;
+    const prune = async () => {
+      const blocked = await getBlockedUserIds({ force: true, userId });
+      if (cancelled || blocked.size === 0) return;
+      const drop = <T extends { user_id: string }>(items: T[]) => items.filter((item) => !blocked.has(item.user_id));
+      setRankedBuddiesFeed((prev) => drop(prev));
+      setRankedCommunityFeed((prev) => drop(prev));
+      setMyFeedActivity((prev) => drop(prev));
+    };
+    window.addEventListener(BLOCKS_CHANGED_EVENT, prune);
+    return () => {
+      cancelled = true;
+      window.removeEventListener(BLOCKS_CHANGED_EVENT, prune);
+    };
+  }, [userId]);
 
   useEffect(() => {
     if (tab === "community" && userId) {
@@ -2244,6 +2250,26 @@ export default function BbFeedPage() {
   }
 
   // ── Page ───────────────────────────────────────────────────────────────────
+
+  // Nothing until we know who is here.
+  //
+  // The init effect sends a signed-out visitor to /login, but it is async, so
+  // the feed's whole frame - tabs, composer, empty states - drew first and then
+  // vanished. This page was written when anyone could browse as a guest;
+  // anonymous accounts were turned off on 2026-10-06, so there is no longer
+  // such a thing as a signed-out reader here, and showing them the shell of a
+  // feed they cannot use was only ever a flash of the wrong thing.
+  if (!userId) {
+    return (
+      <div className="bb-community-page bb-community-feed min-h-screen bg-gray-50" aria-busy="true">
+        <div className="mx-auto max-w-xl px-4 pt-6">
+          <div className="h-10 animate-pulse rounded-xl bg-gray-200" />
+          <div className="mt-3 h-28 animate-pulse rounded-xl bg-gray-200" />
+          <div className="mt-3 h-28 animate-pulse rounded-xl bg-gray-200" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bb-community-page bb-community-feed min-h-screen bg-gray-50 pb-16">

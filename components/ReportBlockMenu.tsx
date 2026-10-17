@@ -16,7 +16,13 @@ export type ReportContentType =
   | "comment"
   | "profile"
   | "event_member"
-  | "message";
+  | "message"
+  // The buddy feed (2026-10-17). It had its own report modal writing to a
+  // post_reports table that no longer exists, so reporting a post there threw
+  // and nothing was ever filed. Same vocabulary as everywhere else now, so the
+  // admin review page reads one set of reasons rather than two.
+  | "feed_post"
+  | "feed_comment";
 
 export const REPORT_REASONS = [
   "Spam",
