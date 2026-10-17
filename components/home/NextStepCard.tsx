@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getDailyRecommendation, type DailyRecommendation } from "@/lib/dailyRecommendation";
+import { getBibleBuddyLocalDayKey } from "@/lib/louisDailyFlow";
 
 /**
  * "Your next step" - one card, on the dashboard, saying the single next thing.
@@ -38,6 +39,66 @@ const THEMES: Record<string, { ring: string; bg: string; eyebrow: string }> = {
   gold: { ring: "border-[#f0e0b8]", bg: "bg-[#fffaef]", eyebrow: "text-[#9a7320]" },
 };
 
+/**
+ * Worked out once a day, per device, and remembered.
+ *
+ * getDailyRecommendation runs seven Supabase queries. It was written for a
+ * popup that fired once a session and is switched off
+ * (DAILY_RECOMMENDATIONS_ENABLED in AppShell), so it had never run on the
+ * dashboard - and the dashboard is the most-opened screen in Bible Buddy.
+ * Seven queries on every load of it, across the tabs people leave open, is the
+ * shape of the three October outages: those came from an eight-second poll in
+ * AppShell making about 147,000 requests a day, not from the database being
+ * too small.
+ *
+ * So it is computed once and remembered. Not for the whole day, though: the
+ * suggestion goes stale the moment somebody acts on it, and a card still
+ * saying "Continue Day 143" an hour after they finished Day 143 is worse than
+ * one query too many. Half an hour is the compromise - it collapses the burst
+ * of loads that happens while somebody is moving around the app, which is
+ * where the cost actually is, and never leaves the card wrong for long.
+ *
+ * Storing the misses matters too: without it, everybody with nothing to
+ * suggest pays all seven queries on every single load.
+ */
+const CACHE_PREFIX = "bb:next-step";
+/** Long enough to cover moving around the app, short enough to stay true. */
+const CACHE_TTL_MS = 30 * 60 * 1000;
+
+type CachedRecommendation = { day: string; at: number; value: DailyRecommendation | null };
+
+function cacheKey(userId: string) {
+  return `${CACHE_PREFIX}:${userId}`;
+}
+
+function readCache(userId: string): CachedRecommendation | null {
+  try {
+    const raw = window.localStorage.getItem(cacheKey(userId));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as CachedRecommendation;
+    if (!parsed || parsed.day !== getBibleBuddyLocalDayKey()) return null;
+    // A clock that has gone backwards (a timezone change, a corrected device
+    // clock) would otherwise pin a stale card until the TTL caught up.
+    const age = Date.now() - (parsed.at ?? 0);
+    if (age < 0 || age > CACHE_TTL_MS) return null;
+    return parsed;
+  } catch {
+    // Blocked storage, or something else wrote nonsense here. Fetching is
+    // always the correct fallback.
+    return null;
+  }
+}
+
+function writeCache(userId: string, value: DailyRecommendation | null) {
+  try {
+    const payload: CachedRecommendation = { day: getBibleBuddyLocalDayKey(), at: Date.now(), value };
+    window.localStorage.setItem(cacheKey(userId), JSON.stringify(payload));
+  } catch {
+    // Not remembering it costs seven queries on the next load, which is what
+    // the old behaviour was. Nothing breaks.
+  }
+}
+
 export default function NextStepCard({ userId }: { userId: string | null }) {
   const [recommendation, setRecommendation] = useState<DailyRecommendation | null>(null);
 
@@ -46,14 +107,23 @@ export default function NextStepCard({ userId }: { userId: string | null }) {
       setRecommendation(null);
       return;
     }
+
+    const cached = readCache(userId);
+    if (cached) {
+      setRecommendation(cached.value);
+      return;
+    }
+
     let cancelled = false;
     void (async () => {
       try {
         const next = await getDailyRecommendation(userId);
+        writeCache(userId, next);
         if (!cancelled) setRecommendation(next);
       } catch {
         // No suggestion is a fine outcome. The dashboard behaves exactly as it
-        // did before this card existed.
+        // did before this card existed. Deliberately not cached: a failed
+        // query should be retried on the next load, not remembered all day.
       }
     })();
     return () => {
