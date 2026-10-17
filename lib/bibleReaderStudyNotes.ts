@@ -1216,6 +1216,7 @@ import { SECOND_TIMOTHY_THREE_PERSONAL_SECTIONS } from "./secondTimothyThreeSour
 import { SECOND_TIMOTHY_FOUR_PERSONAL_SECTIONS } from "./secondTimothyFourSource";
 import { TITUS_1_3_PERSONAL_SECTIONS } from "./titusOneToThreePersonalNotes";
 import { TITUS_ONE_PERSONAL_SECTIONS } from "./titusOneSource";
+import { TITUS_TWO_PERSONAL_SECTIONS } from "./titusTwoSource";
 import { PHILEMON_1_PERSONAL_SECTIONS } from "./philemonOnePersonalNotes";
 import { HEBREWS_1_13_PERSONAL_SECTIONS } from "./hebrewsOneToThirteenPersonalNotes";
 import { JAMES_1_5_PERSONAL_SECTIONS } from "./jamesOneToFivePersonalNotes";
@@ -1560,7 +1561,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 thessalonians" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "1 timothy" && section.chapter >= 1 && section.chapter <= 6) ||
     (normalizeBook(book) === "2 timothy" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
-    (normalizeBook(book) === "titus" && section.chapter === 1);
+    (normalizeBook(book) === "titus" && (section.chapter === 1 || section.chapter === 2));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -4943,6 +4944,10 @@ function applyPersonalTitusOneThroughThreeStudySections() {
 
 function applyPersonalTitusOneStudySections() {
   replaceStudySectionsForBookRange("titus", 1, 1, TITUS_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalTitusTwoStudySections() {
+  replaceStudySectionsForBookRange("titus", 2, 2, TITUS_TWO_PERSONAL_SECTIONS);
 }
 
 function applyPersonalPhilemonOneStudySections() {
@@ -12735,6 +12740,7 @@ applyPersonalSecondTimothyThreeStudySections();
 applyPersonalSecondTimothyFourStudySections();
 applyPersonalTitusOneThroughThreeStudySections();
 applyPersonalTitusOneStudySections();
+applyPersonalTitusTwoStudySections();
 applyPersonalPhilemonOneStudySections();
 applyPersonalHebrewsOneThroughThirteenStudySections();
 applyPersonalJamesOneThroughFiveStudySections();
