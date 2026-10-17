@@ -157,9 +157,18 @@ workflows:
       xcode: latest
       vars:
         BUNDLE_ID: "net.mybiblebuddy.app"
-        # Apple has the entitlement Assigned on the App ID; this build is the
-        # test of whether the fetched profile actually carries it.
-        BIBLE_LOCK_ENTITLEMENT: "on"
+        # OFF, with proof (2026-10-17). The profile Apple generates for this
+        # App ID does not carry com.apple.developer.family-controls - and does
+        # not carry com.apple.security.application-groups either, though both
+        # are ticked on the identifier and the entitlement reads Assigned.
+        # Decoded from the .mobileprovision on the build machine, after
+        # regenerating the profile twice and then deleting it so Apple made a
+        # brand new one. Same result every time.
+        #
+        # An app asking for an entitlement its profile lacks cannot be signed,
+        # so this stays off until Apple issues a profile that has it. See
+        # docs/bible-lock-entitlement-evidence.md.
+        BIBLE_LOCK_ENTITLEMENT: "off"
         # The version people see is "<this>.<build>" - 1.09 is version 1,
         # build 9 (Louis, 2026-10-17: "so I know it's version 1 build 9").
         # Bump it to 2 when version 2 ships and the numbers read 2.14, 2.15.
