@@ -59,10 +59,15 @@ export default function BibleLockLiftedToast() {
         >
           🔓
         </span>
+        {/* Louis's own words, 2026-10-17: "congratulations, you just unlocked
+            your apps by spending time with God". It said "today's reading is
+            done", which was both colder and wrong - a reflection, a note or a
+            trivia chapter unlocks the phone too, and none of them is reading.
+            What is being congratulated is the time, not the task. */}
         <div className="min-w-0">
-          <p className="text-sm font-black leading-tight text-[#15502f]">Apps unlocked</p>
+          <p className="text-sm font-black leading-tight text-[#15502f]">Congratulations — apps unlocked</p>
           <p className="text-xs font-semibold leading-snug text-[#3d7a57]">
-            Today&apos;s reading is done. They lock again tomorrow.
+            You spent time with God. Go enjoy your phone — they lock again at midnight.
           </p>
         </div>
         <button

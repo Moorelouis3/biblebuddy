@@ -28,6 +28,20 @@ import { bibleLockStatus } from "@/lib/bibleLock";
 
 const DISMISS_KEY = "bb:bible-lock-banner-dismissed";
 
+/**
+ * The strip carries its own width and spacing, because it is rendered by
+ * AppShell above every page rather than by one screen.
+ *
+ * It lived inside HomeScreen's flex column until 2026-10-17, which meant it
+ * only ever appeared on the dashboard - and the whole point is that somebody
+ * whose apps are shielded should be told so wherever they are in the app
+ * (Louis: "a banner at the top on every page that says my apps are locked").
+ * The spacing belongs here and not in a wrapper in AppShell, because this
+ * component renders nothing most of the time and an outer wrapper would leave
+ * an empty gap at the top of every page.
+ */
+const STRIP_WRAPPER = "mx-auto w-full max-w-[960px] px-4 pt-3";
+
 /** A stand-in app icon: the shape and colour, none of the branding. */
 function AppTile({ className, children }: { className: string; children: React.ReactNode }) {
   return (
@@ -139,7 +153,7 @@ export default function BibleLockBanner() {
   // of its own.
   if (justLifted && !locked) {
     return (
-      <section aria-labelledby="home-bible-lock-heading">
+      <section aria-labelledby="home-bible-lock-heading" className={STRIP_WRAPPER}>
         <div
           role="status"
           className="flex items-center gap-3 rounded-2xl border border-[#bfe4cd] bg-[#eafaf0] px-3 py-2.5 shadow-sm sm:gap-3.5 sm:px-4"
@@ -155,7 +169,7 @@ export default function BibleLockBanner() {
               Apps unlocked
             </h2>
             <p className="truncate text-xs font-semibold leading-snug text-[#3d7a57] sm:text-[13px]">
-              Today&apos;s reading is done. They lock again tomorrow.
+              You spent time with God. They lock again at midnight.
             </p>
           </div>
           <button
@@ -174,7 +188,7 @@ export default function BibleLockBanner() {
   if (!show) return null;
 
   return (
-    <section aria-labelledby="home-bible-lock-heading">
+    <section aria-labelledby="home-bible-lock-heading" className={STRIP_WRAPPER}>
       {/* One line, at the very top of the dashboard, above the greeting
           (Louis, 2026-10-17: "like a lil banner strip there so people don't
           miss it"). It sits above everything, so it has to earn very little
@@ -199,7 +213,19 @@ export default function BibleLockBanner() {
               worse than a shorter one. */}
           <p className="truncate text-xs font-semibold leading-snug text-[#5b7395] sm:text-[13px]">
             {locked ? (
-              "Finish a Bible Buddy task to unlock them."
+              /* Not "read". Louis, 2026-10-17: "right now it says read, that's
+                 wrong, because there's more than just reading as a meaningful
+                 act." Twenty-one things unlock the phone - a chapter, a
+                 devotional day, trivia, a reflection, a note, a keyword - and
+                 naming only the first taught people the feature was narrower
+                 than it is. One line cannot hold all of them, so it says what
+                 they have in common and the full list is on /bible-lock. */
+              <>
+                <span className="sm:hidden">Spend time with God to unlock them.</span>
+                <span className="hidden sm:inline">
+                  Spend time with God to unlock them &mdash; a chapter, a devotional day, trivia, a note.
+                </span>
+              </>
             ) : (
               <>
                 <span className="sm:hidden">Block apps until you read.</span>
@@ -217,11 +243,15 @@ export default function BibleLockBanner() {
           <AppTile className="bg-[#ff0033] text-white">▶</AppTile>
         </div>
 
+        {/* Locked: the dashboard, not the Bible reader. "Read now" sent people
+            to the one way in and implied it was the only one; the dashboard
+            carries the day's task and what to do next, whichever of the
+            twenty-one that turns out to be. */}
         <Link
-          href={locked ? "/reading" : "/bible-lock"}
+          href={locked ? "/" : "/bible-lock"}
           className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-3.5 py-2 text-xs font-black text-white shadow-sm shadow-[#2f7fe8]/25 transition hover:opacity-95 sm:px-5 sm:text-sm"
         >
-          {locked ? "Read now →" : "Set Up →"}
+          {locked ? "Pick a task →" : "Set Up →"}
         </Link>
 
         <button

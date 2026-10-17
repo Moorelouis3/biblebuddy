@@ -17,6 +17,7 @@ import InstallIOSSheet from "./InstallIOSSheet";
 import { isNativeApp } from "../lib/nativeApp";
 import BibleLockWatcher from "./BibleLockWatcher";
 import BibleLockLiftedToast from "./BibleLockLiftedToast";
+import BibleLockBanner from "./home/BibleLockBanner";
 import { recordPendingTermsAcceptance } from "../lib/termsAcceptance";
 import { syncChaptersCount, shouldSyncChaptersCount } from "../lib/syncChaptersCount";
 import { trackUserActivity } from "../lib/trackUserActivity";
@@ -3853,6 +3854,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             <BibleStudyBreadcrumb items={breadcrumbItems} className="mb-2" />
           </div>
         )}
+        {/* The lock strip, at the top of EVERY app page (Louis, 2026-10-17: "a
+            banner at the top on every page that says my apps are locked until
+            you do a meaningful act"). It lived in HomeScreen, so somebody who
+            opened Bible Buddy on any other page saw nothing and had no idea
+            why their phone was shielded. Same gate as the bottom bar: this is
+            the app, not the blog or a public profile. It renders nothing
+            unless the lock is on or has never been set up, and it carries its
+            own spacing so there is no empty gap when it is silent. */}
+        {showBottomNav ? <BibleLockBanner /> : null}
         {children}
         {/* Report a Problem lives at the bottom of EVERY app page (Louis,
             2026-09-03) so people report from the page where the issue
