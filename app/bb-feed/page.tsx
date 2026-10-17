@@ -282,6 +282,12 @@ const ACTIVITY_LABELS: Record<string, (data: Record<string, string | number | nu
   verse_shared: (d) => `shared ${d.verse_ref || "a verse"}`,
   post_created: () => `posted something new`,
   prayer_shared: () => `shared a prayer`,
+  // The automatic ones (2026-10-17). Without a line here the feed falls back to
+  // the raw type with the underscores swapped out - "bible in one year day
+  // completed" - which reads like a database column, because it is one.
+  bible_in_one_year_day_completed: (d) =>
+    d.day_number ? `finished Day ${d.day_number} of Bible in One Year` : `read today's Bible in One Year`,
+  book_completed: (d) => (d.book ? `finished the book of ${d.book}` : `finished a book of the Bible`),
 };
 
 function activityLabel(type: string, data: Record<string, string | number | null>): string {
