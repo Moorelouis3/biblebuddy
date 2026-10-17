@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-2-explained",
+    title: "Leviticus 2 Explained: The Law of the Meat Offering",
+    description:
+      "Leviticus 2 explained verse by verse: the meat offering of flour, oil, and frankincense, the ban on leaven and honey, and why every offering needed salt.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-2-explained",
+    publishedAt: "2026-10-17",
+    readTime: "12 min read",
+    image: "/blog-banners/leviticus-2-explained.jpg",
+    groupPost: {
+      title: "Leviticus 2 Explained 📖",
+      content:
+        "No animal dies in this chapter.\nJust flour, oil, and fire.\n\n📌 Leaven and honey were never allowed near the altar.\n\n📖 A grain offering could be most holy too.\n📖 One rule covered oven, pan, and fryingpan alike.\n📖 Every single offering needed salt.\n\nNew article on:\n🟢 why **leaven** was banned from the fire\n🟢 what the **covenant of salt** actually meant\n🟢 how a handful could stand for the **whole offering**\n\nDid you know grain offerings were called most holy too? 🙏",
+    },
+  },
+  {
     slug: "leviticus-1-explained",
     title: "Leviticus 1 Explained: The Law of the Burnt Offering",
     description:
