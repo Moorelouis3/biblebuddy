@@ -11,7 +11,17 @@ import {
   type StreakData,
   syncCurrentStreakToProfileStats,
 } from "../../../lib/profileStats";
+import { activityLabel } from "../../../lib/feedActivityLabels";
 import { syncNotesCount, shouldSyncNotesCount } from "../../../lib/syncNotesCount";
+
+/**
+ * How much of somebody's wall loads at once.
+ *
+ * It was six, and clipped to one line each - a preview, not a wall. Fifty is
+ * the whole history for everyone in the database today (the busiest person has
+ * eight posts), so there is nothing yet for a "load more" to load.
+ */
+const WALL_PAGE_SIZE = 50;
 import { syncChaptersCount, shouldSyncChaptersCount } from "../../../lib/syncChaptersCount";
 import { syncTriviaQuestionsCount, shouldSyncTriviaQuestionsCount } from "../../../lib/syncTriviaQuestionsCount";
 import { isBookComplete } from "../../../lib/readingProgress";
@@ -220,11 +230,26 @@ export default function PublicProfilePage() {
   const [editProfileError, setEditProfileError] = useState<string | null>(null);
 
   // â”€â”€ Recent posts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  /**
+   * This person's wall: what they posted and what they finished, newest first.
+   *
+   * Louis, 2026-10-17: "should their feed be their profile instead of the other
+   * profile that we use now?" It should. The buddy feed's My Feed tab was
+   * already this - your own posts and your own activity - so the app carried
+   * two walls and a feed. The profile is the wall now, the feed is everybody
+   * else, and My Feed is gone.
+   *
+   * Activity is in here beside the posts because that is what makes a wall
+   * worth visiting on a quiet week: somebody who has not written anything has
+   * still been finishing things.
+   */
   const [recentPosts, setRecentPosts] = useState<Array<{
     id: string;
+    kind: "post" | "activity";
     post_type: string;
     content: string;
     verse_ref: string | null;
+    media_url: string | null;
     visibility: string;
     created_at: string;
   }>>([]);
@@ -380,14 +405,54 @@ export default function PublicProfilePage() {
       }
       await loadBuddyCount();
 
-      // Load recent feed posts (RLS filters visibility automatically)
-      const { data: posts } = await supabase
-        .from("feed_posts")
-        .select("id, post_type, content, verse_ref, visibility, created_at")
-        .eq("user_id", profileUserId)
-        .order("created_at", { ascending: false })
-        .limit(6);
-      setRecentPosts(posts || []);
+      // The wall: posts and activity together, newest first. RLS filters
+      // visibility automatically, so a buddies-only post simply does not come
+      // back for someone who is not a buddy - the filtering is not this page's
+      // job and must not look like it is.
+      const [postsRes, activityRes] = await Promise.all([
+        supabase
+          .from("feed_posts")
+          .select("id, post_type, content, verse_ref, media_url, visibility, created_at")
+          .eq("user_id", profileUserId)
+          .order("created_at", { ascending: false })
+          .limit(WALL_PAGE_SIZE),
+        supabase
+          .from("feed_activity")
+          .select("id, activity_type, activity_data, created_at")
+          .eq("user_id", profileUserId)
+          .order("created_at", { ascending: false })
+          .limit(WALL_PAGE_SIZE),
+      ]);
+
+      const wallPosts = (postsRes.data || []).map((post) => ({
+        id: post.id,
+        kind: "post" as const,
+        post_type: post.post_type,
+        content: post.content ?? "",
+        verse_ref: post.verse_ref ?? null,
+        media_url: post.media_url ?? null,
+        visibility: post.visibility ?? "community",
+        created_at: post.created_at,
+      }));
+
+      const wallActivity = (activityRes.data || []).map((row) => ({
+        id: row.id,
+        kind: "activity" as const,
+        post_type: row.activity_type,
+        // Rendered as the sentence the feed uses, so the same event never reads
+        // two different ways in two places.
+        content: activityLabel(row.activity_type, row.activity_data || {}),
+        verse_ref: null,
+        media_url: null,
+        visibility: "community",
+        created_at: row.created_at,
+      }));
+
+      setRecentPosts(
+        [...wallPosts, ...wallActivity]
+          .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+          .slice(0, WALL_PAGE_SIZE),
+      );
     } catch (err) {
       console.error("[PUBLIC_PROFILE] Error:", err);
     } finally {
@@ -1412,31 +1477,43 @@ export default function PublicProfilePage() {
         </div>
 
         {/* â”€â”€ RECENT POSTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-        {false && recentPosts.length > 0 && (
+        {recentPosts.length > 0 && (
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 p-5">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-gray-900">Recent Posts</h2>
-              <Link href="/dashboard" className="text-xs text-green-600 hover:underline font-medium">View Feed →</Link>
+              <h2 className="text-lg font-semibold text-gray-900">Posts</h2>
+              <Link href="/bb-feed" className="text-xs text-green-600 hover:underline font-medium">View Feed →</Link>
             </div>
             <div className="flex flex-col gap-2">
               {recentPosts.map((post) => {
                 const POST_TYPE_ICONS: Record<string, string> = {
                   thought: "💭", verse: "📖", prayer: "🙏", photo: "📷", link: "🔗",
                 };
-                const icon = POST_TYPE_ICONS[post.post_type] || "💬";
-                const preview = post.verse_ref
-                  ? `${post.verse_ref} — ${post.content.slice(0, 60)}`
-                  : post.content.slice(0, 80);
+                const icon = post.kind === "activity" ? "✅" : POST_TYPE_ICONS[post.post_type] || "💬";
                 const diffMs = Date.now() - new Date(post.created_at).getTime();
                 const diffDays = Math.floor(diffMs / 86400000);
                 const timeStr = diffDays === 0 ? "Today" : diffDays === 1 ? "Yesterday" : `${diffDays}d ago`;
                 return (
-                  <div key={post.id} className="flex items-start gap-3 px-3 py-2.5 rounded-xl bg-gray-50">
+                  <div key={`${post.kind}-${post.id}`} className="flex items-start gap-3 px-3 py-2.5 rounded-xl bg-gray-50">
                     <span className="text-base flex-shrink-0 mt-0.5">{icon}</span>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm text-gray-800 leading-snug truncate">
-                        {preview}{post.content.length > 80 ? "…" : ""}
+                      {post.verse_ref && (
+                        <p className="text-xs font-semibold text-gray-500">{post.verse_ref}</p>
+                      )}
+                      {/* Whole thing, wrapped. It was truncated to eighty
+                          characters and clipped to a single line, which is a
+                          preview of a wall rather than a wall. */}
+                      <p className="whitespace-pre-wrap break-words text-sm leading-snug text-gray-800">
+                        {post.content}
                       </p>
+                      {post.media_url && (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={post.media_url}
+                          alt=""
+                          loading="lazy"
+                          className="mt-2 max-h-72 w-full rounded-xl object-cover"
+                        />
+                      )}
                       <div className="flex items-center gap-2 mt-0.5">
                         <span className="text-[10px] text-gray-400">{timeStr}</span>
                         {post.visibility === "buddies" && (
