@@ -168,7 +168,7 @@ workflows:
         # An app asking for an entitlement its profile lacks cannot be signed,
         # so this stays off until Apple issues a profile that has it. See
         # docs/bible-lock-entitlement-evidence.md.
-        BIBLE_LOCK_ENTITLEMENT: "off"
+        BIBLE_LOCK_ENTITLEMENT: "on"
         # The version people see is "<this>.<build>" - 1.09 is version 1,
         # build 9 (Louis, 2026-10-17: "so I know it's version 1 build 9").
         # Bump it to 2 when version 2 ships and the numbers read 2.14, 2.15.
@@ -293,6 +293,10 @@ workflows:
       # the certificate generated inside Codemagic has a key it can use, and
       # the ios_signing integration is the thing that knows that.
 
+      - name: Install the real provisioning profile
+        # Codemagic fetches a stale one that carries no entitlements at all.
+        # Apple's own file does; it travels with the repo. See the script.
+        script: bash scripts/ios-install-profile.sh
       - name: Point Xcode at the signing files
         # Codemagic has already put the certificate and profile on the
         # machine by this point; this writes them into the Xcode project,
