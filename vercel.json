@@ -1,6 +1,10 @@
 {
   "crons": [
     {
+      "path": "/api/cron/community-milestones",
+      "schedule": "*/15 * * * *"
+    },
+    {
       "path": "/api/push/process",
       "schedule": "* * * * *"
     },
