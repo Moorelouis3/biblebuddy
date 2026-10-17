@@ -1232,6 +1232,7 @@ import { HEBREWS_EIGHT_PERSONAL_SECTIONS } from "./hebrewsEightSource";
 import { HEBREWS_NINE_PERSONAL_SECTIONS } from "./hebrewsNineSource";
 import { HEBREWS_TEN_PERSONAL_SECTIONS } from "./hebrewsTenSource";
 import { HEBREWS_ELEVEN_PERSONAL_SECTIONS } from "./hebrewsElevenSource";
+import { HEBREWS_TWELVE_PERSONAL_SECTIONS } from "./hebrewsTwelveSource";
 import { JAMES_1_5_PERSONAL_SECTIONS } from "./jamesOneToFivePersonalNotes";
 import { FIRST_PETER_1_5_PERSONAL_SECTIONS } from "./firstPeterOneToFivePersonalNotes";
 import { SECOND_PETER_1_3_PERSONAL_SECTIONS } from "./secondPeterOneToThreePersonalNotes";
@@ -1576,7 +1577,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 timothy" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4)) ||
     (normalizeBook(book) === "titus" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "philemon" && section.chapter === 1) ||
-    (normalizeBook(book) === "hebrews" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11));
+    (normalizeBook(book) === "hebrews" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -5019,6 +5020,10 @@ function applyPersonalHebrewsNineSourceStudySections() {
 
 function applyPersonalHebrewsElevenSourceStudySections() {
   replaceStudySectionsForBookRange("hebrews", 11, 11, HEBREWS_ELEVEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalHebrewsTwelveSourceStudySections() {
+  replaceStudySectionsForBookRange("hebrews", 12, 12, HEBREWS_TWELVE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalHebrewsTenSourceStudySections() {
@@ -12823,6 +12828,7 @@ applyPersonalHebrewsEightSourceStudySections();
 applyPersonalHebrewsNineSourceStudySections();
 applyPersonalHebrewsTenSourceStudySections();
 applyPersonalHebrewsElevenSourceStudySections();
+applyPersonalHebrewsTwelveSourceStudySections();
 applyPersonalJamesOneThroughFiveStudySections();
 applyPersonalFirstPeterOneThroughFiveStudySections();
 applyPersonalSecondPeterOneThroughThreeStudySections();
