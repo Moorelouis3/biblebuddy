@@ -90,5 +90,41 @@ export async function insertGroupPostWithRetry(
     );
   }
 
+  /**
+   * And into the feed, which is the only place anybody looks now.
+   *
+   * Louis, 2026-10-18: "the group is gone, everything posts to the
+   * community." Every automatic post Bible Buddy writes - the weekly trivia,
+   * the poll, the question, the series, the blog post, the verse discussion -
+   * comes through this one function, so mirroring here puts all of it in the
+   * feed without rewriting eight crons.
+   *
+   * A real feed post, not a pointer: it carries its own replies and likes in
+   * feed_post_comments and feed_post_reactions, so tapping one stays in the
+   * feed instead of bouncing out to a group page that is no longer part of
+   * the app.
+   *
+   * The group row is still written above, because the group's own machinery -
+   * weekly series bookkeeping, moderation, the broadcast queue - keys off it.
+   * That is storage now, not a destination.
+   *
+   * Best effort on purpose. A missing mirror costs one post in the feed; a
+   * throw here would fail the cron that was publishing it.
+   */
+  try {
+    await supabaseAdmin.from("feed_posts").insert({
+      user_id: payload.user_id,
+      post_type: payload.media_url ? "photo" : "thought",
+      content: payload.content,
+      media_url: payload.media_url ?? null,
+      link_url: payload.link_url ?? null,
+      visibility: "community",
+      reaction_counts: {},
+      comment_count: 0,
+    });
+  } catch {
+    // The group post is already in; the feed copy is the optional half.
+  }
+
   return insertedPostId;
 }

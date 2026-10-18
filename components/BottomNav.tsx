@@ -96,12 +96,10 @@ const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
   // Milestones go here, onto the poster's own wall, rather than into the group
   // where fifteen of them arrived back to back and crowded the conversation
   // out.
-  // The Group moved here when the Feed took its place in the bar. It is not
-  // dead weight - it is the one shared room, where the daily prompt and the
-  // weekly trivia, poll and prayer threads land, and where every automated
-  // post goes. It is just not the thing somebody opens to post about
-  // themselves, which is what the bar is for.
-  { label: "Group", href: `/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`, icon: "👥" },
+  // No Group entry. Louis, 2026-10-18: "the group is gone, everything posts to
+  // the community." Bible Buddy writes its posts straight into the feed now
+  // (lib/groupPostInsert.ts), so the group page holds nothing the feed does
+  // not already show.
 ];
 
 /** Below this, a movement is a twitch or a bounce, not a scroll. */

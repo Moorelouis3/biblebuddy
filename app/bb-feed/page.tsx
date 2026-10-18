@@ -11,7 +11,6 @@ import { supabase } from "../../lib/supabaseClient";
 import { FeedOnboardingModal } from "../../components/FeedOnboardingModal";
 import ReportBlockMenu from "../../components/ReportBlockMenu";
 import { activityLabel } from "../../lib/feedActivityLabels";
-import GroupThreadCard from "../../components/feed/GroupThreadCard";
 import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
 import { BLOCKS_CHANGED_EVENT, getBlockedUserIds } from "../../lib/userBlocks";
 import { ModalShell } from "../../components/ModalShell";
@@ -2036,7 +2035,7 @@ export default function BbFeedPage() {
     const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
     // Fetch posts, activity, buddy IDs, and my recent activity in parallel
-    const [activityRes, postsRes, groupRes, buddyRows, myActivityRes] = await Promise.all([
+    const [activityRes, postsRes, buddyRows, myActivityRes] = await Promise.all([
       supabase
         .from("feed_activity")
         .select("id, user_id, activity_type, activity_data, group_id, group_name, created_at")
@@ -2051,16 +2050,6 @@ export default function BbFeedPage() {
         .gte("created_at", sevenDaysAgo)
         .order("created_at", { ascending: false })
         .limit(100),
-      // The group's own threads, ranked in the same stream. Top-level only -
-      // a reply belongs under the thread it answers, not loose in the feed.
-      supabase
-        .from("group_posts")
-        .select("id, user_id, display_name, content, media_url, like_count, created_at")
-        .eq("group_id", BIBLE_STUDY_GROUP_ID)
-        .is("parent_post_id", null)
-        .gte("created_at", sevenDaysAgo)
-        .order("created_at", { ascending: false })
-        .limit(60),
       // Same cap. This one is a single query whatever the answer's size, so it
       // was never a request-count problem - but uncapped it ships 7,045 rows to
       // the phone to build a Set used only for ranking signals, and the top 300
@@ -2103,42 +2092,11 @@ export default function BbFeedPage() {
 
     const enrichedPosts = await enrichWithProfiles(postsRes.data || [], profiles) as FeedPost[];
     const enrichedActivity = await enrichWithProfiles(activityRes.data || [], profiles) as FeedActivity[];
-
-    /**
-     * The group's threads, shaped like feed posts so they rank beside them.
-     *
-     * Only the fields ranking and the card actually read are filled; the rest
-     * are the empty values a feed post would have. comment_count is left at 0
-     * rather than counted, because counting replies for sixty threads is sixty
-     * more queries on a screen that already does enough - the card says "open
-     * the thread", not "3 replies".
-     */
-    const groupPosts: FeedPost[] = (groupRes.data || []).map((row) => ({
-      id: row.id,
-      user_id: row.user_id,
-      post_type: "thought" as const,
-      content: row.content ?? "",
-      verse_ref: null,
-      verse_text: null,
-      media_url: row.media_url ?? null,
-      link_url: null,
-      link_title: null,
-      visibility: "community" as const,
-      reaction_counts: { love: row.like_count ?? 0 },
-      comment_count: 0,
-      created_at: row.created_at,
-      display_name: row.display_name,
-      username: null,
-      profile_image_url: profileMap[row.user_id]?.profile_image_url ?? null,
-      group_post: true,
-    }));
-
-    // Load reactions for optimistic UI
     void loadMyReactions(userId, enrichedPosts.map((pt) => pt.id));
     const myReactedIds = new Set([...myReactions].map((k) => k.split(":")[0]));
 
     const ranked = rankCommunityFeed(
-      [...enrichedPosts, ...groupPosts],
+      enrichedPosts,
       enrichedActivity,
       buddyIds,
       myActivityRes.data || [],
@@ -2316,16 +2274,13 @@ export default function BbFeedPage() {
 
     return (
       <div className="flex flex-col gap-3">
-        {/* No pinned group card any more: the group's threads are in the
-            stream itself now, ranked beside everything else, which is what
-            "all the stuff in there sits on the feed" means. */}
-        {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) =>
-          (item as FeedPost).group_post ? (
-            <GroupThreadCard key={`group-${item.id}`} post={item as FeedPost} />
-          ) : (
-            <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
-          )
-        )}
+        {/* One kind of card. Bible Buddy's own posts arrive as real feed
+            posts now (see lib/groupPostInsert.ts), so nothing in this list
+            links out of the feed - which was the complaint: "the post in the
+            community opens back up in the group, that's wrong". */}
+        {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
+        ))}
       </div>
     );
   }
@@ -2442,18 +2397,34 @@ export default function BbFeedPage() {
           ))}
         </div>
 
-        {/* Composer — hidden on My Feed tab */}
-        {!loading && userId && tab !== "myfeed" && (
+        {/* The composer lives on My Feed, and only there.
+
+            Louis, 2026-10-18: "the post option should be under My Feed,
+            that's where I post to my wall, or users post to their walls...
+            then the algorithm picks posts from users and shows them in the
+            community."
+
+            That is the whole model in one sentence. You write on your own
+            wall; Community is not somewhere you post, it is what the ranking
+            chose out of everybody's walls. A composer sitting on Community
+            said the opposite - that it was a room you post into - which is
+            why the two tabs never felt like different things. */}
+        {!loading && userId && tab === "myfeed" && (
           <PostComposer
             userId={userId}
             userProfile={myProfile}
             onPosted={(newPost) => {
+              // Straight onto your own wall, which is the tab you are looking
+              // at. It used to be pushed into whichever ranked feed was open,
+              // from a composer that was never on this tab - so the one place
+              // a new post certainly belongs was the one place it did not go.
+              setMyFeedPosts((prev) => [newPost, ...prev]);
+
+              // And into the community in front of you, if it is loaded.
+              // Posting to your wall is what puts something up for the
+              // ranking to choose; seeing it land is how that reads as true.
               const newRanked: RankedFeedItem = { ...newPost, _kind: "post", _score: 1, _signals: { recency: 1, engagement: 0, proximity: 0, relevance: 0 } };
-              if (tab === "buddies") {
-                setRankedBuddiesFeed((prev) => [newRanked, ...prev]);
-              } else {
-                setRankedCommunityFeed((prev) => [newRanked, ...prev]);
-              }
+              setRankedCommunityFeed((prev) => (prev.length ? [newRanked, ...prev] : prev));
             }}
           />
         )}
