@@ -57,3 +57,4 @@
 2026-10-18T03:08:47Z | 1 commit | Milestone posts were being rejected by a CHECK constraint on group_posts.category every single run
 2026-10-18T03:25:51Z | 1 commit | The social feed is back in the menu with its own wall tab, and milestones post to the person's own wall instead of crowding the group
 2026-10-18T03:37:11Z | 1 commit | Feed takes the Group's place in the tab bar, and the group's current discussion is pinned to the top of the feed
+2026-10-18T03:44:27Z | 1 commit | The group's threads now sit in the feed and rank with everything else, and the daily Proverbs group post is switched off

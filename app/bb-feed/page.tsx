@@ -11,7 +11,8 @@ import { supabase } from "../../lib/supabaseClient";
 import { FeedOnboardingModal } from "../../components/FeedOnboardingModal";
 import ReportBlockMenu from "../../components/ReportBlockMenu";
 import { activityLabel } from "../../lib/feedActivityLabels";
-import TodayInTheGroup from "../../components/feed/TodayInTheGroup";
+import GroupThreadCard from "../../components/feed/GroupThreadCard";
+import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
 import { BLOCKS_CHANGED_EVENT, getBlockedUserIds } from "../../lib/userBlocks";
 import { ModalShell } from "../../components/ModalShell";
 import { logActionToMasterActions } from "../../lib/actionRecorder";
@@ -37,6 +38,21 @@ interface FeedPost {
   display_name: string | null;
   username: string | null;
   profile_image_url: string | null;
+  /**
+   * This row came from the group, not from feed_posts.
+   *
+   * Louis, 2026-10-18: "wouldn't it be better to make the community post be
+   * the feed for the group - all the stuff in there sits on the feed... and
+   * then it just be BB posting like a regular post mixed with others' posts
+   * and actions, and we select what each person sees."
+   *
+   * So group threads rank in the same stream as everything else. They are
+   * marked rather than converted, because their likes and replies live in
+   * group_post_likes and in rows with parent_post_id, not in the feed's own
+   * tables - acting on one here would write to the wrong place. The card is a
+   * door into the thread instead.
+   */
+  group_post?: boolean;
 }
 
 interface FeedActivity {
@@ -2020,7 +2036,7 @@ export default function BbFeedPage() {
     const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
     // Fetch posts, activity, buddy IDs, and my recent activity in parallel
-    const [activityRes, postsRes, buddyRows, myActivityRes] = await Promise.all([
+    const [activityRes, postsRes, groupRes, buddyRows, myActivityRes] = await Promise.all([
       supabase
         .from("feed_activity")
         .select("id, user_id, activity_type, activity_data, group_id, group_name, created_at")
@@ -2035,6 +2051,16 @@ export default function BbFeedPage() {
         .gte("created_at", sevenDaysAgo)
         .order("created_at", { ascending: false })
         .limit(100),
+      // The group's own threads, ranked in the same stream. Top-level only -
+      // a reply belongs under the thread it answers, not loose in the feed.
+      supabase
+        .from("group_posts")
+        .select("id, user_id, display_name, content, media_url, like_count, created_at")
+        .eq("group_id", BIBLE_STUDY_GROUP_ID)
+        .is("parent_post_id", null)
+        .gte("created_at", sevenDaysAgo)
+        .order("created_at", { ascending: false })
+        .limit(60),
       // Same cap. This one is a single query whatever the answer's size, so it
       // was never a request-count problem - but uncapped it ships 7,045 rows to
       // the phone to build a Set used only for ranking signals, and the top 300
@@ -2078,12 +2104,41 @@ export default function BbFeedPage() {
     const enrichedPosts = await enrichWithProfiles(postsRes.data || [], profiles) as FeedPost[];
     const enrichedActivity = await enrichWithProfiles(activityRes.data || [], profiles) as FeedActivity[];
 
+    /**
+     * The group's threads, shaped like feed posts so they rank beside them.
+     *
+     * Only the fields ranking and the card actually read are filled; the rest
+     * are the empty values a feed post would have. comment_count is left at 0
+     * rather than counted, because counting replies for sixty threads is sixty
+     * more queries on a screen that already does enough - the card says "open
+     * the thread", not "3 replies".
+     */
+    const groupPosts: FeedPost[] = (groupRes.data || []).map((row) => ({
+      id: row.id,
+      user_id: row.user_id,
+      post_type: "thought" as const,
+      content: row.content ?? "",
+      verse_ref: null,
+      verse_text: null,
+      media_url: row.media_url ?? null,
+      link_url: null,
+      link_title: null,
+      visibility: "community" as const,
+      reaction_counts: { love: row.like_count ?? 0 },
+      comment_count: 0,
+      created_at: row.created_at,
+      display_name: row.display_name,
+      username: null,
+      profile_image_url: profileMap[row.user_id]?.profile_image_url ?? null,
+      group_post: true,
+    }));
+
     // Load reactions for optimistic UI
     void loadMyReactions(userId, enrichedPosts.map((pt) => pt.id));
     const myReactedIds = new Set([...myReactions].map((k) => k.split(":")[0]));
 
     const ranked = rankCommunityFeed(
-      enrichedPosts,
+      [...enrichedPosts, ...groupPosts],
       enrichedActivity,
       buddyIds,
       myActivityRes.data || [],
@@ -2251,29 +2306,26 @@ export default function BbFeedPage() {
     const posts = rankedCommunityFeed.filter((item) => item._kind === "post");
     if (posts.length === 0) {
       return (
-        <>
-          {/* Even with nothing in the feed, the group usually has something
-              going on - and an empty feed is exactly when it is worth
-              pointing at. */}
-          <TodayInTheGroup />
-          <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
-            <p className="text-3xl mb-3">🌎</p>
-            <h3 className="font-bold text-gray-900 mb-1">Community is quiet</h3>
-            <p className="text-sm text-gray-500">Be the first to share something!</p>
-          </div>
-        </>
+        <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+          <p className="text-3xl mb-3">🌎</p>
+          <h3 className="font-bold text-gray-900 mb-1">Community is quiet</h3>
+          <p className="text-sm text-gray-500">Be the first to share something!</p>
+        </div>
       );
     }
 
     return (
       <div className="flex flex-col gap-3">
-        {/* The group, through the feed. Pinned above the ranking rather than
-            ranked with it: it is one room everybody shares, so it is not
-            competing with individual posts for a place. */}
-        <TodayInTheGroup />
-        {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
-        ))}
+        {/* No pinned group card any more: the group's threads are in the
+            stream itself now, ranked beside everything else, which is what
+            "all the stuff in there sits on the feed" means. */}
+        {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) =>
+          (item as FeedPost).group_post ? (
+            <GroupThreadCard key={`group-${item.id}`} post={item as FeedPost} />
+          ) : (
+            <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
+          )
+        )}
       </div>
     );
   }
