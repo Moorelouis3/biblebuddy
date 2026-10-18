@@ -22,7 +22,6 @@
  */
 
 import Link from "next/link";
-import { BIBLE_STUDY_GROUP_ID } from "../lib/bibleStudiesCatalog";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -70,44 +69,17 @@ const TABS: Tab[] = [
   // (Louis, 2026-10-17). It was buried in the More sheet; the AI buddy is the
   // thing people come back for, so it gets a tab and leaves More.
   { label: "Lil Louis", href: "/chat", icon: "💬", prefixes: ["/chat"] },
-];
-
-const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
-  // Bible Buddy TV is back (Louis, 2026-10-18: "the buddy tube or whatever
-  // YouTube thing we had set up, can we bring that back? The issue is the
-  // videos loaded way too slow").
-  //
-  // It was pulled from the UI on 2026-09-02 as "too buggy for now" and never
-  // deleted - shows, episodes, My List and the whole browse surface have been
-  // sitting at /biblebuddy-tv ever since with no door into them, reachable
-  // only by asking Lil Louis for it. The slow start is fixed in
-  // components/YouTubeTrackedPlayer, so this is the door.
-  { label: "Bible Buddy TV", href: "/biblebuddy-tv", icon: "📺" },
-  // Settings last used to be reachable only through the dashboard's own tab
-  // strip, which switches slides inside one page. Louis found that it bounced
-  // him back to the dashboard every time, so account deletion - the thing App
-  // Review specifically checks for - had no dependable way in. /settings is a
-  // real route and always works.
-  { label: "Settings", href: "/settings", icon: "⚙️" },
-  { label: "Invite a Buddy", href: "/ambassador", icon: "💌" },
-  // BB Chat left this sheet on 2026-10-17 - it is the Lil Louis tab now.
-  { label: "Notes", href: "/notes", icon: "📝" },
-  // The social feed. Added 2026-10-17, removed the next morning when Louis
-  // said the community was the feed, and back the same day once he described
-  // what he actually meant: "a social feed on the menu that you click and it
-  // looks like Instagram or Facebook, and there you can post your own post and
-  // see your own wall in a tab on that menu option, where the main feed is set
-  // for the algorithm we make up."
-  //
-  // That is this page, not the group. The group is a room people talk in; this
-  // is a feed with a composer, a ranked main tab and your own wall beside it.
-  // Milestones go here, onto the poster's own wall, rather than into the group
-  // where fifteen of them arrived back to back and crowded the conversation
-  // out.
-  // No Group entry. Louis, 2026-10-18: "the group is gone, everything posts to
-  // the community." Bible Buddy writes its posts straight into the feed now
-  // (lib/groupPostInsert.ts), so the group page holds nothing the feed does
-  // not already show.
+  /**
+   * TV takes the slot More was in (Louis, 2026-10-18: "remove the More
+   * button and add TV instead, and make sure the rest is in the profile
+   * dropdown at the top").
+   *
+   * Still seven tabs, so nothing gets narrower: measured at 9.5px, the
+   * labels need about 225px of text and "TV" is the shortest of them, where
+   * an eighth tab would have squeezed "Lil Louis" past what its own width
+   * allows on a 375px phone.
+   */
+  { label: "TV", href: "/biblebuddy-tv", icon: "📺", prefixes: ["/biblebuddy-tv"] },
 ];
 
 /** Below this, a movement is a twitch or a bounce, not a scroll. */
@@ -234,14 +206,13 @@ function useKeyboardOpen() {
 
 export default function BottomNav() {
   const pathname = usePathname();
-  const [moreOpen, setMoreOpen] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
   const scrolledAway = useHideOnScroll(pathname);
   const keyboardOpen = useKeyboardOpen();
 
-  // The menu being open outranks everything: you cannot have a sheet anchored
-  // to a bar that has slid off the screen.
-  const hidden = !moreOpen && (scrolledAway || keyboardOpen);
+  // Nothing anchors to the bar any more now the More sheet is gone, so it
+  // hides whenever scrolling or the keyboard says so.
+  const hidden = scrolledAway || keyboardOpen;
 
   // Publish the bar's real height (safe area included) as --bb-bottom-nav-h,
   // so anything pinned to the bottom of a page - like the group comment box -
@@ -265,46 +236,8 @@ export default function BottomNav() {
     };
   }, []);
 
-  // A tap that navigates should not leave the sheet hanging open behind it.
-  const [moreLastPath, setMoreLastPath] = useState(pathname);
-  if (pathname !== moreLastPath) {
-    setMoreLastPath(pathname);
-    if (moreOpen) setMoreOpen(false);
-  }
-
-  const moreIsActive = MORE_LINKS.some((link) => pathname === link.href.split("?")[0]);
-
   return (
     <>
-      {moreOpen ? (
-        <>
-          <button
-            type="button"
-            aria-label="Close menu"
-            onClick={() => setMoreOpen(false)}
-            className="fixed inset-0 z-[29] bg-black/40"
-          />
-          {/* The sheet scrolls itself. Without max-height + overflow, a long
-              menu ran under the tab bar and swiping scrolled the page behind
-              it instead, so Notes could never be reached. overscroll-contain
-              keeps the swipe inside the sheet. */}
-          <div className="fixed inset-x-3 bottom-[calc(84px+env(safe-area-inset-bottom,0px))] z-[31] mx-auto max-h-[min(60vh,480px)] max-w-md overflow-y-auto overscroll-contain rounded-[22px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-2 shadow-[0_18px_44px_rgba(15,23,42,0.22)]">
-            {MORE_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                // Closing on pathname change misses query-only navigations -
-                // close on the tap itself.
-                onClick={() => setMoreOpen(false)}
-                className="flex min-h-12 items-center gap-3 rounded-xl px-3 text-sm font-black text-[var(--bb-text-primary,#111827)] hover:bg-[var(--bb-surface-soft,#f3f4f6)]"
-              >
-                <span aria-hidden="true">{link.icon}</span>
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </>
-      ) : null}
 
       {/* z-30: above page content, below every popup. At z-50 it was drawn
           after (so on top of) the pages' z-40/z-50 popups and covered their
@@ -346,22 +279,6 @@ export default function BottomNav() {
             );
           })}
 
-          <button
-            type="button"
-            onClick={() => setMoreOpen((open) => !open)}
-            aria-expanded={moreOpen}
-            tabIndex={hidden ? -1 : undefined}
-            className={`flex min-h-[46px] flex-1 flex-col items-center justify-center gap-0.5 whitespace-nowrap rounded-full px-0.5 text-[9.5px] font-black leading-none transition-colors ${
-              moreOpen || moreIsActive
-                ? "bg-[#E8F0FE] text-[var(--bb-accent,#2f7fe8)]"
-                : "text-[var(--bb-text-muted,#6b7280)]"
-            }`}
-          >
-            <span className="text-[17px] leading-none" aria-hidden="true">
-              ☰
-            </span>
-            More
-          </button>
         </div>
       </nav>
 

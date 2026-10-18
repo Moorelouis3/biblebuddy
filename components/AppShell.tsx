@@ -3436,25 +3436,43 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       🔖 Bookmarks
                     </Link>
 
-                    {/* SETTINGS */}
+                    {/* SETTINGS
+
+                        A plain link to /settings, which is the whole fix
+                        (Louis, 2026-10-18: "make sure the settings button
+                        works cause it don't now").
+
+                        It used to push /dashboard, set a localStorage flag and
+                        fire bb:dashboard-show-settings-tab, asking the
+                        dashboard to switch to a settings slide inside itself.
+                        That is the same mechanism the More sheet abandoned
+                        weeks ago for exactly this reason - it bounced people
+                        back to the dashboard instead of opening settings, and
+                        account deletion, which App Review checks for, had no
+                        dependable way in. /settings is a real route. */}
                     <Link
-                      href="/dashboard"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        setIsProfileMenuOpen(false);
-                        if (typeof window !== "undefined") {
-                          window.localStorage.setItem("bb:dashboard-open-settings", "1");
-                          window.dispatchEvent(new CustomEvent("bb:dashboard-show-settings-tab"));
-                        }
-                        router.push("/dashboard");
-                      }}
+                      href="/settings"
+                      onClick={() => setIsProfileMenuOpen(false)}
                       className={`block px-4 py-2 text-sm ${
                         pathname?.startsWith("/settings")
                           ? "bg-sky-100 text-black font-medium"
                           : "text-gray-700 hover:bg-gray-100"
                       }`}
                     >
-                      Settings
+                      ⚙️ Settings
+                    </Link>
+
+                    {/* From the More sheet, which the TV tab replaced. */}
+                    <Link
+                      href="/ambassador"
+                      onClick={() => setIsProfileMenuOpen(false)}
+                      className={`block px-4 py-2 text-sm ${
+                        pathname?.startsWith("/ambassador")
+                          ? "bg-sky-100 text-black font-medium"
+                          : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      💌 Invite a Buddy
                     </Link>
 
                     <Link
@@ -3510,13 +3528,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       Updates
                     </Link>
 
-                    <Link
-                      href="/dashboard?view=group"
-                      onClick={() => setIsProfileMenuOpen(false)}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Group
-                    </Link>
+                    {/* No Group entry. It pointed at /dashboard?view=group,
+                        which redirects to the feed now, and the feed has its
+                        own tab in the bar. */}
 
 
                     {/* ANALYTICS (ADMIN ONLY) */}
