@@ -592,7 +592,7 @@ export default function LandingPage() {
             "The Testing of Joseph",
             "The Wisdom of Proverbs",
             "The Disciples of Jesus",
-            "Women of the Bible",
+            "21 Women of the Bible",
             "The Heart of David",
           ];
           const aIndex = preferred.indexOf(a.title);

@@ -62,6 +62,7 @@ function isNewTestamentDay(day: (typeof GENESIS_BIBLE_IN_ONE_YEAR_SERIES)[number
 const FEATURED_STUDY_ORDER = [
   "The Wisdom of Proverbs",
   "The Tempting of Jesus",
+  "21 Women of the Bible",
 ];
 
 /**
@@ -86,7 +87,7 @@ const FEATURED_STUDY_ORDER_INDEX = new Map(
 const CHAPTER_JOURNEY_TITLES = new Set([
   ...FEATURED_STUDY_ORDER,
   "The Obedience of Abraham",
-  "Women of the Bible",
+  "21 Women of the Bible",
   "The Calling of Moses",
   "The Heart of David",
   "The Rise of Esther",
@@ -122,7 +123,7 @@ function getStudyScriptureRange(title: string) {
     "The Rise of Esther": "Esther 1-10",
     "The Wisdom of Proverbs": "31 Days",
     "The Tempting of Jesus": "21 Days",
-    "Women of the Bible": "21 Days",
+    "21 Women of the Bible": "21 Days",
     "The Courage of Daniel": "Daniel 1-6",
   };
 
@@ -365,8 +366,8 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
     if (title === "The Disciples of Jesus") {
       return "/disciplesofjesusdevotional.png";
     }
-    if (title === "Women of the Bible") {
-      return "/womenofthebible.png";
+    if (title === "21 Women of the Bible") {
+      return "/21-women-of-the-bible-cover.png";
     }
     if (title === "The Wisdom of Proverbs") {
       return "/Wisdomofproverbsnewcover.png";

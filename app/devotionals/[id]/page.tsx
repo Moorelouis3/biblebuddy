@@ -7,7 +7,9 @@ function getCoverImage(title: string): string | null {
   if (title === "The Tempting of Jesus") return "/tempting-of-jesus-cover.png";
   if (title === "The Testing of Joseph") return "/TheTestingofJospehnewcover.png";
   if (title === "The Disciples of Jesus") return "/disciplesofjesusdevotional.png";
-  if (title === "Women of the Bible") return "/womenofthebible.png";
+  // The front of the printed book, cropped off the paperback wrap (2026-10-18),
+  // so the study and the book on Amazon look like the same thing.
+  if (title === "21 Women of the Bible") return "/21-women-of-the-bible-cover.png";
   if (title === "The Wisdom of Proverbs") return "/Wisdomofproverbsnewcover.png";
   if (title === "The Faith of Job") return "/faithofjob.png";
   if (title === "The Calling of Moses") return "/callingofmosesdevotional.png";
@@ -39,8 +41,8 @@ function getPreviewDescription(title: string, fallback: string): string {
       "Joseph's life turns fast.\n\nHe moves from favored son to betrayed brother, from slave to prisoner, and from forgotten man to ruler in Egypt.\n\nThis 14-chapter journey walks through:\n\n🧥 the coat and family tension\n🌙 the dreams that made everything louder\n🕳️ the pit, betrayal, and Egypt\n🔒 prison, waiting, and hidden faithfulness\n🌾 famine, wisdom, and promotion\n🤝 forgiveness, reunion, and God's providence\n\nEvery chapter keeps the same Bible Buddy flow: intro, Bible reading, notes, trivia, and reflection.\n\nIf you have ever wondered what God is doing in a long painful season, Joseph's story speaks right into that question.",
     "The Disciples of Jesus":
       "These men were not polished heroes when Jesus called them. They were ordinary, rough, unsure, and often slower to understand than they should have been. This Bible study follows their lives as Jesus teaches, corrects, stretches, and changes them from the inside out. You will watch fear turn into faith, confusion turn into conviction, and ordinary people become the foundation of a movement that changed the world. It is a story about calling, failure, growth, and what happens when people stay close to Jesus long enough to be transformed.",
-    "Women of the Bible":
-      "This Bible study follows the lives of women who stood in pain, pressure, courage, grief, wisdom, and faith across the whole Bible story. Some were queens, some were mothers, some were outsiders, and some were nearly forgotten by the people around them. But every one of them reveals something important about how God works through real lives, not perfect ones. Their stories hold heartbreak, bravery, loss, loyalty, and redemption. As you move through each day, you begin to see that these women were never side notes in Scripture. They carried moments that shaped the story of God's people in lasting ways.",
+    "21 Women of the Bible":
+      "Twenty one women, twenty one days. From Eve in the garden to Martha and Mary in the house at Bethany, these are the women God used to carry His story, and they were not on the margins of it.\n\nEach day gives you:\n\n📖 The passage, with what to watch for before you start\n📝 Her story told straight, with the Scripture on the page\n💬 Questions that are hard to dodge\n🎯 One concrete action\n🙏 A prayer to close the day\n\nSome are brave. Some are broken. Some did terrible things. Jezebel is here and so is Delilah, and none of them have been cleaned up. It does not pretend every story ends happily either. If you have ever felt overlooked, this is a study about the God who looks.",
     "The Wisdom of Proverbs":
       "The book of Proverbs is a practical guide to living with wisdom. Over the next 31 days, you'll read one chapter each day while learning how God's wisdom applies to everyday life.\n\nEach day includes:\n\n📖 The full Bible chapter for that day\n📝 Easy to understand study notes that explain the passage\n🎯 Five trivia questions to test what you learned\n💬 A discussion question to help you reflect and apply the chapter to your own life\n\nWhether you're reading Proverbs for the first time or studying it again, this plan will help you understand its wisdom one chapter at a time and grow in your walk with God.",
     "The Faith of Job":

@@ -29,7 +29,10 @@ const STUDY_SLUGS: Record<string, string> = {
   "temptation-of-jesus": "%Tempting of Jesus%",
   "tempting-of-jesus": "%Tempting of Jesus%",
 
-  "women-of-the-bible": "Women of the Bible%",
+  // Renamed to the book's title on 2026-10-18; the old slug still resolves so
+  // the links already out there in blog posts keep working.
+  "women-of-the-bible": "%Women of the Bible%",
+  "21-women-of-the-bible": "%Women of the Bible%",
   "disciples-of-jesus": "The Disciples of Jesus%",
   "faith-of-job": "The Faith of Job%",
   "heart-of-david": "The Heart of David%",

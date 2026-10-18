@@ -879,7 +879,6 @@ type NextStudyRecommendation = {
 const HIDDEN_STUDY_SWITCHER_TITLES = new Set([
   "The Tempting of Jesus",
   "The Disciples of Jesus",
-  "Women of the Bible",
 ]);
 
 const STUDY_SWITCHER_ORDER = [
@@ -902,6 +901,7 @@ const STUDY_SWITCHER_ORDER = [
   "The Rise of Esther",
   "The Faith of Job",
   "The Wisdom of Proverbs",
+  "21 Women of the Bible",
   "The Courage of Daniel",
   "The Transforming of Paul",
 ];

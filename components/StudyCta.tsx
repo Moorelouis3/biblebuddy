@@ -8,7 +8,7 @@ import Link from "next/link";
  *
  *   <StudyCta
  *     slug="women-of-the-bible"
- *     title="Women of the Bible"
+ *     title="21 Women of the Bible"
  *     description="A 21-day study through the women whose stories shaped Scripture — including Leah."
  *   />
  *
