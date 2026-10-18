@@ -66,6 +66,35 @@ type InlineMessageSegment =
   | { type: "text"; value: string }
   | { type: "link"; label: string; href: string };
 
+/**
+ * **bold**, in a direct message.
+ *
+ * Links already worked here - [Label](/path) becomes a button and a bare URL
+ * becomes a link - but bold printed its own asterisks, so a message written
+ * with emphasis arrived looking like it had been typed wrong. Louis writes
+ * the group's posts with headings and emphasis and expects a DM to carry the
+ * same weight.
+ *
+ * Only ** **, and only within a line. Nothing else here is markdown, and a
+ * DM is somewhere people paste things: anything cleverer would start eating
+ * punctuation that somebody meant literally.
+ */
+function splitBold(text: string): Array<{ bold: boolean; value: string }> {
+  const parts: Array<{ bold: boolean; value: string }> = [];
+  const pattern = /\*\*([^*\n]+)\*\*/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIndex) parts.push({ bold: false, value: text.slice(lastIndex, match.index) });
+    parts.push({ bold: true, value: match[1] });
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) parts.push({ bold: false, value: text.slice(lastIndex) });
+  return parts;
+}
+
 function splitInlineMessageLinks(text: string): InlineMessageSegment[] {
   const segments: InlineMessageSegment[] = [];
   const pattern = /\[([^\]]+)\]\((\/[^)\s]+)\)/g;
@@ -1118,12 +1147,23 @@ export default function ConversationPage({
                                             {segment.label}
                                           </button>
                                         ) : (
-                                            <MentionText
-                                              key={`msg-text:${msg.id}:${lineIndex}:${segmentIndex}`}
-                                              text={segment.value}
-                                              items={[]}
-                                              enableUrlLinks
-                                            />
+                                          splitBold(segment.value).map((part, partIndex) =>
+                                            part.bold ? (
+                                              <strong
+                                                key={`msg-bold:${msg.id}:${lineIndex}:${segmentIndex}:${partIndex}`}
+                                                className="font-black"
+                                              >
+                                                {part.value}
+                                              </strong>
+                                            ) : (
+                                              <MentionText
+                                                key={`msg-text:${msg.id}:${lineIndex}:${segmentIndex}:${partIndex}`}
+                                                text={part.value}
+                                                items={[]}
+                                                enableUrlLinks
+                                              />
+                                            ),
+                                          )
                                         ),
                                       )}
                                     </div>
