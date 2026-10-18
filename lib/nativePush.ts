@@ -140,7 +140,13 @@ export async function registerForNativePush(
   if (!isNativeApp()) {
     if (typeof window !== "undefined") {
       const capacitor = (window as unknown as { Capacitor?: { isNativePlatform?: () => boolean; getPlatform?: () => string } }).Capacitor;
-      const looksLikeTheApp = Boolean(capacitor) || navigator.userAgent.includes(NATIVE_APP_UA_MARKER);
+      // window.Capacitor exists on every page, web included - @capacitor/core
+      // is imported client-side for the Bible lock, and its web shim sets
+      // this global even outside the app. It is not evidence of being the
+      // app; the UA marker the shell actually adds is. Using hasCapacitor
+      // here was filing this report for every ordinary signed-in web visit
+      // (2026-10-17).
+      const looksLikeTheApp = navigator.userAgent.includes(NATIVE_APP_UA_MARKER);
       // Only when something suggests this really is the app. An ordinary
       // browser is not a bug report.
       if (looksLikeTheApp) {
