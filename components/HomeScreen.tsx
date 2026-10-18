@@ -25,6 +25,7 @@ import VerseOfTheDayCard from "./VerseOfTheDayCard";
 import { cardTint } from "../lib/cardTints";
 import CommunityEventBanner from "./CommunityEventBanner";
 import YourBookshelf from "./home/YourBookshelf";
+import BibleBuddyTvShelf from "./home/BibleBuddyTvShelf";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
 import { calculateBibleYearPosition } from "../lib/bibleYearProgress";
@@ -384,6 +385,12 @@ export default function HomeScreen() {
       {/* Recommended For You - above Look It Up since 2026-10-17 (Louis).
           Today's reading comes first, then something to read next; looking a
           name up is a tool you reach for, not a thing to be offered. */}
+      {/* Bible Buddy TV, above Quick Reads (Louis, 2026-10-18). The shows had
+          no door into them at all for six weeks; this is the one people walk
+          past every morning. Same shape as the bookshelf - what you left
+          unfinished first, then what you have not started. */}
+      <BibleBuddyTvShelf userId={userId} />
+
       <section aria-labelledby="home-recommended-heading">
         {/* "Quick Reads", not "Recommended For You" (Louis, 2026-10-17). The
             analytics key stays "recommended" so the history before the rename
