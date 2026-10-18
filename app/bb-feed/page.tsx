@@ -10,7 +10,6 @@ import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { FeedOnboardingModal } from "../../components/FeedOnboardingModal";
 import ReportBlockMenu from "../../components/ReportBlockMenu";
-import { activityLabel } from "../../lib/feedActivityLabels";
 import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
 import { BLOCKS_CHANGED_EVENT, getBlockedUserIds } from "../../lib/userBlocks";
 import { ModalShell } from "../../components/ModalShell";
@@ -54,19 +53,6 @@ interface FeedPost {
   group_post?: boolean;
 }
 
-interface FeedActivity {
-  id: string;
-  user_id: string;
-  activity_type: string;
-  activity_data: Record<string, string | number | null>;
-  group_id: string | null;
-  group_name: string | null;
-  created_at: string;
-  // joined
-  display_name: string | null;
-  username: string | null;
-  profile_image_url: string | null;
-}
 
 type Tab = "community" | "buddies" | "myfeed";
 type PostType = "thought" | "verse" | "prayer" | "prayer_request" | "photo" | "link" | "video";
@@ -165,47 +151,25 @@ const VIDEO_PLATFORM_META: Record<VideoPlatform, { icon: string; label: string }
 
 // ── Feed ranking ──────────────────────────────────────────────────────────────
 
-const OT_BOOKS = new Set(["Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job","Psalms","Proverbs","Ecclesiastes","Song of Solomon","Isaiah","Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi"]);
-const NT_BOOKS = new Set(["Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"]);
-
-type RankedFeedItem =
-  | ({ _kind: "post"; _score: number; _signals: Record<string, number> } & FeedPost)
-  | ({ _kind: "activity"; _score: number; _signals: Record<string, number> } & FeedActivity);
+type RankedFeedItem = { _kind: "post"; _score: number; _signals: Record<string, number> } & FeedPost;
 
 function rankCommunityFeed(
   posts: FeedPost[],
-  activities: FeedActivity[],
   buddyIds: Set<string>,
-  myRecentActivity: Array<{ activity_type: string; activity_data: Record<string, string | number | null> }>,
   myReactedPostIds: Set<string>
 ): RankedFeedItem[] {
   const now = Date.now();
 
-  type RawItem = ({ _kind: "post" } & FeedPost) | ({ _kind: "activity" } & FeedActivity);
-  const raw: RawItem[] = [
-    ...posts.map((p) => ({ ...p, _kind: "post" as const })),
-    ...activities.map((a) => ({ ...a, _kind: "activity" as const })),
-  ];
+  type RawItem = { _kind: "post" } & FeedPost;
+  const raw: RawItem[] = posts.map((p) => ({ ...p, _kind: "post" as const }));
 
   // Pre-compute engagement velocities for normalization
   const velocities = raw.map((item) => {
     const hours = Math.max(0.1, (now - new Date(item.created_at).getTime()) / 3_600_000);
-    if (item._kind === "post") {
-      const p = item as FeedPost & { _kind: "post" };
-      const reactions = Object.values(p.reaction_counts || {}).reduce((a, b) => a + b, 0);
-      return (reactions + p.comment_count * 2) / hours;
-    }
-    return 0;
+    const reactions = Object.values(item.reaction_counts || {}).reduce((a, b) => a + b, 0);
+    return (reactions + item.comment_count * 2) / hours;
   });
   const maxVelocity = Math.max(1, ...velocities);
-
-  // Personal relevance signals from recent activity
-  const recentOT = myRecentActivity.some(
-    (a) => a.activity_type === "chapter_read" && OT_BOOKS.has(String(a.activity_data?.book ?? ""))
-  );
-  const recentNT = myRecentActivity.some(
-    (a) => a.activity_type === "chapter_read" && NT_BOOKS.has(String(a.activity_data?.book ?? ""))
-  );
 
   // Score every item
   const scored: RankedFeedItem[] = [];
@@ -224,25 +188,13 @@ function rankCommunityFeed(
     // Signal 3 — Relationship proximity (20%)
     const proximity = buddyIds.has(item.user_id) ? 1.0 : 0.1;
 
-    // Signal 5 — Personal relevance (15%)
-    let relevance = 0;
-    if (item._kind === "post") {
-      const p = item as FeedPost & { _kind: "post" };
-      const ref = p.verse_ref ?? "";
-      if (p.post_type === "verse") {
-        const bookName = ref.split(" ").slice(0, p.verse_ref?.startsWith("1") || p.verse_ref?.startsWith("2") || p.verse_ref?.startsWith("3") ? 2 : 1).join(" ");
-        if (recentOT && OT_BOOKS.has(bookName)) relevance += 0.3;
-        if (recentNT && NT_BOOKS.has(bookName)) relevance += 0.3;
-      }
-    }
-
     // Base score (diversity = 0.10 applied in post-processing)
-    const score = recency * 0.30 + engagement * 0.25 + proximity * 0.20 + relevance * 0.15;
+    const score = recency * 0.30 + engagement * 0.25 + proximity * 0.20;
 
     scored.push({
       ...item,
       _score: score,
-      _signals: { recency, engagement, proximity, relevance },
+      _signals: { recency, engagement, proximity },
     } as RankedFeedItem);
   });
 
@@ -250,8 +202,8 @@ function rankCommunityFeed(
   scored.sort((a, b) => b._score - a._score);
 
   // Hard rule: push already-reacted posts down (below first 5)
-  const reacted = scored.filter((i) => i._kind === "post" && myReactedPostIds.has((i as FeedPost).id));
-  const notReacted = scored.filter((i) => !(i._kind === "post" && myReactedPostIds.has((i as FeedPost).id)));
+  const reacted = scored.filter((i) => myReactedPostIds.has(i.id));
+  const notReacted = scored.filter((i) => !myReactedPostIds.has(i.id));
   const reordered = [...notReacted.slice(0, 5), ...reacted, ...notReacted.slice(5)];
 
   // Signal 4 — Diversity pass (10%): greedy pick, look ahead up to 5 candidates
@@ -259,12 +211,6 @@ function rankCommunityFeed(
     if (result.length === 0) return false;
     // Never same author twice in a row
     if (result[result.length - 1].user_id === candidate.user_id) return true;
-    if (candidate._kind === "activity") {
-      // No more than 3 activity cards in a row
-      let run = 0;
-      for (let j = result.length - 1; j >= 0 && result[j]._kind === "activity"; j--) run++;
-      if (run >= 3) return true;
-    }
     if (candidate._kind === "post") {
       const pt = (candidate as FeedPost & { _kind: "post" }).post_type;
       const len = result.length;
@@ -1299,6 +1245,104 @@ function VideoBlock({ post }: { post: FeedPost }) {
   return null;
 }
 
+/**
+ * The body of a post: its own formatting, and long ones folded.
+ *
+ * Louis, 2026-10-18: "the formatting is terrible, this is not how it should
+ * show, it all jumbled, it should be formatted and have a read more button."
+ * He was looking at a Bible Buddy study post - a verse, a blank line, a
+ * paragraph, three bullets - arriving as one unbroken run of text with the
+ * bullet emoji stranded mid-sentence, because the pass that copied those posts
+ * off the wall turned every tag into a space and then collapsed every run of
+ * whitespace into one. The line breaks are back in the stored text; this
+ * renders them as what they are.
+ *
+ * Blank-line-separated blocks become paragraphs. A block of bullet lines
+ * becomes a list with hanging indents, so wrapped text lines up under its own
+ * first word rather than under the bullet. A post that opens on a quotation
+ * gets the quote rule, the same as a shared verse does.
+ *
+ * Long posts fold to about six lines behind a fade, because one study filling
+ * the whole screen is a wall nobody scrolls past. The fold is deliberately
+ * generous: most of what people write themselves is shorter than this and
+ * never sees a button at all.
+ */
+const FOLD_AFTER_CHARS = 420;
+const FOLD_AFTER_BLOCKS = 3;
+
+function PostBody({ content }: { content: string }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const blocks = content.split(/\n{2,}/).map((block) => block.trim()).filter(Boolean);
+  const foldable = content.length > FOLD_AFTER_CHARS || blocks.length > FOLD_AFTER_BLOCKS;
+  const folded = foldable && !expanded;
+
+  return (
+    <div>
+      <div className="relative overflow-hidden" style={folded ? { maxHeight: "9.5rem" } : undefined}>
+        {blocks.map((block, index) => {
+          const lines = block.split("\n").filter(Boolean);
+          const isList = lines.length > 0 && lines.every((line) => /^[\u2022\-*]\s+/.test(line));
+
+          if (isList) {
+            return (
+              <ul key={index} className={index > 0 ? "mt-2 space-y-1" : "space-y-1"}>
+                {lines.map((line, lineIndex) => (
+                  <li key={lineIndex} className="pl-4 -indent-4 text-sm text-gray-800 leading-relaxed">
+                    {line.replace(/^[\u2022\-*]\s+/, "\u2022 ")}
+                  </li>
+                ))}
+              </ul>
+            );
+          }
+
+          if (index === 0 && /^["\u201c]/.test(block)) {
+            return (
+              <p
+                key={index}
+                className="border-l-2 border-green-400 pl-3 text-sm italic text-gray-700 leading-relaxed whitespace-pre-wrap"
+              >
+                {block}
+              </p>
+            );
+          }
+
+          return (
+            <p
+              key={index}
+              className={index > 0
+                ? "mt-2 text-sm text-gray-800 leading-relaxed whitespace-pre-wrap"
+                : "text-sm text-gray-800 leading-relaxed whitespace-pre-wrap"}
+            >
+              {block}
+            </p>
+          );
+        })}
+
+        {folded && (
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-10"
+            style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0), #ffffff)" }}
+          />
+        )}
+      </div>
+
+      {foldable && (
+        <button
+          type="button"
+          onClick={() => setExpanded((value) => !value)}
+          className="mt-1 text-sm font-bold"
+          // Inline, because globals.css carries unlayered colour rules that
+          // outrank a utility class - see components/home/BibleLockBanner.
+          style={{ color: "#2f7fe8" }}
+        >
+          {expanded ? "Show less" : "Read more"}
+        </button>
+      )}
+    </div>
+  );
+}
+
 // ── Post Card ─────────────────────────────────────────────────────────────────
 
 function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId }: {
@@ -1456,9 +1500,7 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
       {post.verse_text && (
         <p className="text-sm italic text-gray-600 mb-2 border-l-2 border-green-400 pl-3">&ldquo;{post.verse_text}&rdquo;</p>
       )}
-      {post.content && (
-        <p className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap">{post.content}</p>
-      )}
+      {post.content && <PostBody content={post.content} />}
 
       {/* Photo — natural proportions, tap to expand */}
       {post.media_url && post.post_type !== "video" && (
@@ -1635,87 +1677,6 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   );
 }
 
-// ── Activity Card ─────────────────────────────────────────────────────────────
-
-function ActivityCard({ activity }: { activity: FeedActivity }) {
-  const displayName = activity.display_name || activity.username || "Bible Buddy";
-  return (
-    <div className="flex items-start gap-3 px-4 py-3 rounded-xl" style={{ backgroundColor: "#f8f8f8" }}>
-      <Link href={`/profile/${activity.user_id}`}>
-        <Avatar userId={activity.user_id} displayName={displayName} imageUrl={activity.profile_image_url} size={8} />
-      </Link>
-      <div className="flex-1 min-w-0">
-        <p className="text-sm text-gray-800">
-          <Link href={`/profile/${activity.user_id}`} className="font-semibold hover:underline">
-            {displayName}
-          </Link>{" "}
-          {activityLabel(activity.activity_type, activity.activity_data)}
-          {activity.group_name && (
-            <span
-              className="ml-1 text-xs font-semibold text-white rounded-full px-2 py-0.5"
-              style={{ backgroundColor: "#4a9b6f" }}
-            >
-              {activity.group_name}
-            </span>
-          )}
-        </p>
-        <p className="text-xs text-gray-400 mt-0.5">{timeAgo(activity.created_at)}</p>
-      </div>
-    </div>
-  );
-}
-
-// ── Activity Post Card ────────────────────────────────────────────────────────
-
-const ACTIVITY_TYPE_BADGE: Record<string, string> = {
-  devotional_day_completed: "📖 Bible Study",
-  study_group_joined:       "👥 Joined Group",
-  buddy_added:              "🤝 New Buddy",
-  verse_shared:             "📖 Verse",
-  prayer_shared:            "🙏 Prayer",
-  chapter_read:             "📖 Reading",
-};
-
-function ActivityPostCard({ activity }: { activity: FeedActivity }) {
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
-  const displayName = activity.display_name || activity.username || "Bible Buddy";
-  const badge = ACTIVITY_TYPE_BADGE[activity.activity_type] || activity.activity_type.replace(/_/g, " ");
-  const content = activityLabel(activity.activity_type, activity.activity_data);
-
-  return (
-    <div className="bb-community-post-card bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-      <div className="flex items-center gap-3 mb-3">
-        <Link href={`/profile/${activity.user_id}`}>
-          <Avatar userId={activity.user_id} displayName={displayName} imageUrl={activity.profile_image_url} />
-        </Link>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <Link href={`/profile/${activity.user_id}`} className="font-semibold text-sm text-gray-900 hover:underline truncate">
-              {displayName}
-            </Link>
-            <span className="text-xs text-gray-400 bg-gray-100 rounded-full px-2 py-0.5">{badge}</span>
-          </div>
-          <p className="text-xs text-gray-400">{timeAgo(activity.created_at)}</p>
-        </div>
-      </div>
-      <p className="text-sm text-gray-800 leading-relaxed">{content}</p>
-      {activity.group_name && (
-        <p className="mt-1 text-xs font-semibold" style={{ color: "#4a9b6f" }}>📍 {activity.group_name}</p>
-      )}
-      <div className="flex items-center gap-1 mt-4">
-        <button
-          onClick={() => { setLiked((v) => !v); setLikeCount((n) => liked ? Math.max(n - 1, 0) : n + 1); }}
-          className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-xs border transition ${liked ? "border-red-300 bg-red-50 text-red-600 font-semibold" : "border-gray-200 bg-gray-50 hover:border-gray-400 hover:bg-gray-100 text-gray-600"}`}
-        >
-          <span>❤️</span>
-          {likeCount > 0 && <span className="font-medium">{likeCount}</span>}
-        </button>
-      </div>
-    </div>
-  );
-}
-
 // ── Main Page ─────────────────────────────────────────────────────────────────
 
 function FeedUpgradeCard({ compact = false }: { compact?: boolean }) {
@@ -1825,7 +1786,6 @@ export default function BbFeedPage() {
 
   // My Feed tab state
   const [myFeedPosts, setMyFeedPosts] = useState<FeedPost[]>([]);
-  const [myFeedActivity, setMyFeedActivity] = useState<FeedActivity[]>([]);
   const [myFeedLoading, setMyFeedLoading] = useState(false);
   const [myFeedLoaded, setMyFeedLoaded] = useState(false);
 
@@ -1975,35 +1935,19 @@ export default function BbFeedPage() {
 
     const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
-    const [postsRes, activityRes, myActivityRes] = await Promise.all([
-      supabase
-        .from("feed_posts")
-        .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
-        .eq("visibility", "community")
-        .gte("created_at", sevenDaysAgo)
-        .order("created_at", { ascending: false })
-        .limit(200),
-      supabase
-        .from("feed_activity")
-        .select("id, user_id, activity_type, activity_data, group_id, group_name, created_at")
-        .eq("is_public", true)
-        .gte("created_at", sevenDaysAgo)
-        .order("created_at", { ascending: false })
-        .limit(200),
-      supabase
-        .from("feed_activity")
-        .select("activity_type, activity_data")
-        .eq("user_id", uid)
-        .order("created_at", { ascending: false })
-        .limit(30),
-    ]);
+    const { data: postRows } = await supabase
+      .from("feed_posts")
+      .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
+      .eq("visibility", "community")
+      .gte("created_at", sevenDaysAgo)
+      .order("created_at", { ascending: false })
+      .limit(200);
 
-    const buddyPosts = (postsRes.data || []).filter((row) => buddyIdSet.has(row.user_id));
-    const buddyActivity = (activityRes.data || []).filter((row) => buddyIdSet.has(row.user_id));
+    const buddyPosts = (postRows || []).filter((row) => buddyIdSet.has(row.user_id));
 
     // Profiles only for the handful of people who actually posted, rather
     // than for every buddy on the list.
-    const authorIds = [...new Set([...buddyPosts, ...buddyActivity].map((row) => row.user_id))];
+    const authorIds = [...new Set(buddyPosts.map((row) => row.user_id))];
     const profiles: Array<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }> = [];
     for (let i = 0; i < authorIds.length; i += 500) {
       const { data: pics } = await supabase
@@ -2014,10 +1958,9 @@ export default function BbFeedPage() {
     }
 
     const posts = await enrichWithProfiles(buddyPosts, profiles) as FeedPost[];
-    const activity = await enrichWithProfiles(buddyActivity, profiles) as FeedActivity[];
 
     const myReactedIds = new Set([...myReactions].map((k) => k.split(":")[0]));
-    const ranked = rankCommunityFeed(posts, activity, buddyIdSet, myActivityRes.data || [], myReactedIds);
+    const ranked = rankCommunityFeed(posts, buddyIdSet, myReactedIds);
 
     // Blocked both ways, and asked for here rather than read from state: the
     // list is cached for a minute inside lib/userBlocks, so this costs nothing
@@ -2033,28 +1976,18 @@ export default function BbFeedPage() {
     if (myFeedLoaded) return;
     setMyFeedLoading(true);
 
-    const [postsRes, activityRes] = await Promise.all([
-      supabase
-        .from("feed_posts")
-        .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
-        .eq("user_id", uid)
-        .order("created_at", { ascending: false })
-        .limit(100),
-      supabase
-        .from("feed_activity")
-        .select("id, user_id, activity_type, activity_data, group_id, group_name, created_at")
-        .eq("user_id", uid)
-        .order("created_at", { ascending: false })
-        .limit(100),
-    ]);
+    const { data: postRows } = await supabase
+      .from("feed_posts")
+      .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
+      .eq("user_id", uid)
+      .order("created_at", { ascending: false })
+      .limit(100);
 
     // Use already-loaded myProfile to avoid an extra fetch
     const profileArr = myProfile ? [{ user_id: uid, ...myProfile }] : [];
-    const posts = await enrichWithProfiles(postsRes.data || [], profileArr) as FeedPost[];
-    const activities = await enrichWithProfiles(activityRes.data || [], profileArr) as FeedActivity[];
+    const posts = await enrichWithProfiles(postRows || [], profileArr) as FeedPost[];
 
     setMyFeedPosts(posts);
-    setMyFeedActivity(activities);
     setMyFeedLoading(false);
     setMyFeedLoaded(true);
     void loadMyReactions(uid, posts.map((p) => p.id));
@@ -2067,15 +2000,8 @@ export default function BbFeedPage() {
 
     const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
-    // Fetch posts, activity, buddy IDs, and my recent activity in parallel
-    const [activityRes, postsRes, buddyRows, myActivityRes] = await Promise.all([
-      supabase
-        .from("feed_activity")
-        .select("id, user_id, activity_type, activity_data, group_id, group_name, created_at")
-        .eq("is_public", true)
-        .gte("created_at", sevenDaysAgo)
-        .order("created_at", { ascending: false })
-        .limit(100),
+    // The posts and the buddy list, in parallel
+    const [postsRes, buddyRows] = await Promise.all([
       supabase
         .from("feed_posts")
         .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
@@ -2093,24 +2019,13 @@ export default function BbFeedPage() {
         .or(`user_id_1.eq.${userId},user_id_2.eq.${userId}`)
         .order("created_at", { ascending: false })
         .limit(BUDDY_FEED_LIMIT),
-      supabase
-        .from("feed_activity")
-        .select("activity_type, activity_data")
-        .eq("user_id", userId)
-        .order("created_at", { ascending: false })
-        .limit(30),
     ]);
 
     const buddyIds = new Set(
       (buddyRows.data || []).map((b) => b.user_id_1 === userId ? b.user_id_2 : b.user_id_1)
     );
 
-    const allUserIds = [
-      ...new Set([
-        ...(activityRes.data || []).map((r) => r.user_id),
-        ...(postsRes.data || []).map((r) => r.user_id),
-      ]),
-    ];
+    const allUserIds = [...new Set((postsRes.data || []).map((r) => r.user_id))];
 
     // Fetch profiles in batches to avoid 1000-row limit
     const profileMap: Record<string, { user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }> = {};
@@ -2124,17 +2039,10 @@ export default function BbFeedPage() {
     const profiles = Object.values(profileMap);
 
     const enrichedPosts = await enrichWithProfiles(postsRes.data || [], profiles) as FeedPost[];
-    const enrichedActivity = await enrichWithProfiles(activityRes.data || [], profiles) as FeedActivity[];
     void loadMyReactions(userId, enrichedPosts.map((pt) => pt.id));
     const myReactedIds = new Set([...myReactions].map((k) => k.split(":")[0]));
 
-    const ranked = rankCommunityFeed(
-      enrichedPosts,
-      enrichedActivity,
-      buddyIds,
-      myActivityRes.data || [],
-      myReactedIds
-    );
+    const ranked = rankCommunityFeed(enrichedPosts, buddyIds, myReactedIds);
 
     const blocked = await getBlockedUserIds({ userId: userId ?? null });
     setRankedCommunityFeed(blocked.size ? ranked.filter((item) => !blocked.has(item.user_id)) : ranked);
@@ -2153,7 +2061,6 @@ export default function BbFeedPage() {
       const drop = <T extends { user_id: string }>(items: T[]) => items.filter((item) => !blocked.has(item.user_id));
       setRankedBuddiesFeed((prev) => drop(prev));
       setRankedCommunityFeed((prev) => drop(prev));
-      setMyFeedActivity((prev) => drop(prev));
     };
     window.addEventListener(BLOCKS_CHANGED_EVENT, prune);
     return () => {
@@ -2323,13 +2230,9 @@ export default function BbFeedPage() {
         {/* Posts and completions, in whatever order the ranking put them.
             Bible Buddy's own posts arrive as real feed posts (see
             lib/groupPostInsert.ts), so nothing here links out of the feed. */}
-        {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) =>
-          item._kind === "post" ? (
-            <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
-          ) : (
-            <ActivityPostCard key={`act-${item.id}`} activity={item as FeedActivity} />
-          )
-        )}
+        {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
+        ))}
       </div>
     );
   }
@@ -2339,14 +2242,9 @@ export default function BbFeedPage() {
       return <div className="text-sm text-gray-400 text-center py-16">Loading your feed...</div>;
     }
 
-    // Exclude redundant/noise activity types (post_created already shown as PostCard, login/signup irrelevant)
-    const EXCLUDED = new Set(["post_created", "login", "signup", "user_signed_in", "user_registered"]);
-
-    type UnifiedItem = ({ _kind: "post" } & FeedPost) | ({ _kind: "activity" } & FeedActivity);
-    const items: UnifiedItem[] = [
-      ...myFeedPosts.map((p) => ({ ...p, _kind: "post" as const })),
-      ...myFeedActivity.filter((a) => !EXCLUDED.has(a.activity_type)).map((a) => ({ ...a, _kind: "activity" as const })),
-    ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+    const items = [...myFeedPosts].sort(
+      (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    );
 
     if (items.length === 0) {
       return (
@@ -2360,9 +2258,8 @@ export default function BbFeedPage() {
 
     return (
       <div className="flex flex-col gap-3">
-        {interleaveUpgradeCards(items, myProfile?.is_paid !== true, (item) =>
-          item._kind === "post" ? (
-            <PostCard
+        {interleaveUpgradeCards(items, myProfile?.is_paid !== true, (item) => (
+          <PostCard
               key={`post-${item.id}`}
               post={item as FeedPost}
               myId={userId!}
@@ -2374,11 +2271,8 @@ export default function BbFeedPage() {
               onDelete={handleDeletePost}
               highlightPostId={highlightPostId}
               highlightCommentId={highlightCommentId}
-            />
-          ) : (
-            <ActivityPostCard key={`act-${item.id}`} activity={item as FeedActivity} />
-          )
-        )}
+          />
+        ))}
       </div>
     );
   }

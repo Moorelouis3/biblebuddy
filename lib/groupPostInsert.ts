@@ -1,4 +1,5 @@
 import { BIBLE_BUDDY_USER_ID } from "./bibleBuddyAccount";
+import { feedBodyFromGroupPost } from "./htmlToPlainText";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 function isStatementTimeoutError(message: string | null | undefined) {
@@ -125,7 +126,13 @@ export async function insertGroupPostWithRetry(
       // 2026-10-18, which never signs in and exists only to own these posts.
       user_id: BIBLE_BUDDY_USER_ID,
       post_type: payload.media_url ? "photo" : "thought",
-      content: payload.content,
+      // The group wall renders HTML; the feed renders text. Copying the markup
+      // across would print the tags, and replacing each tag with a space -
+      // which is what the first pass did - flattens a study into one run-on
+      // line. feedBodyFromGroupPost keeps the paragraphs and the bullets, and
+      // puts the heading from the title column on the first line, since the
+      // feed has no title of its own.
+      content: feedBodyFromGroupPost(payload.title, payload.content),
       media_url: payload.media_url ?? null,
       link_url: payload.link_url ?? null,
       visibility: "community",
