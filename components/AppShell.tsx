@@ -1855,6 +1855,29 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       if (cancelled) return;
       const { ensureDailyReminder } = await import("@/lib/nativeReminders");
       await ensureDailyReminder();
+
+      // Put this reader's milestones on the community wall.
+      //
+      // The scheduled sweep is deployed and other crons on the same secret are
+      // plainly running, yet the wall had nothing hours after twenty
+      // qualifying completions. Rather than keep guessing at Vercel's
+      // scheduler, the work also happens here, where somebody who finished
+      // something definitely has an app open. Repeats and the two-a-day cap
+      // are handled server side, so calling it every open is free.
+      if (cancelled) return;
+      try {
+        const { data } = await supabase.auth.getSession();
+        const accessToken = data.session?.access_token;
+        if (accessToken) {
+          await fetch("/api/feed/milestones/self", {
+            method: "POST",
+            headers: { authorization: `Bearer ${accessToken}` },
+            keepalive: true,
+          });
+        }
+      } catch {
+        // The wall missing a line is not worth a broken app open.
+      }
     })();
     return () => {
       cancelled = true;
