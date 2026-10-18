@@ -18,6 +18,7 @@ import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
 import { readStudyActivity } from "../../lib/communityMilestones";
 import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
 import { FEED_OPEN_POST_EVENT } from "../../components/AppShell";
+import AddBuddyButton, { type BuddyState } from "../../components/feed/AddBuddyButton";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -1408,7 +1409,7 @@ function PostBody({ content }: { content: string }) {
 
 // ── Post Card ─────────────────────────────────────────────────────────────────
 
-function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId, preview, pinned }: {
+function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId, preview, pinned, buddyState, onBuddyRequested }: {
   post: FeedPost;
   myId: string;
   myProfile: MyProfile;
@@ -1423,6 +1424,9 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   preview?: CommentPreview;
   /** Held at the top of the feed rather than ranked into it. */
   pinned?: boolean;
+  /** Where the reader stands with this post's author. */
+  buddyState?: BuddyState;
+  onBuddyRequested: (targetUserId: string) => void;
 }) {
   const isHighlighted = post.id === highlightPostId;
   const cardRef = useRef<HTMLDivElement>(null);
@@ -1532,6 +1536,20 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
             <p className="mt-0.5 text-xs text-gray-400">Study activity</p>
           ) : null}
         </div>
+
+        {/* Add them, from the post that made you want to.
+            Bible Buddy is an account rather than a person, so it is skipped -
+            there is nobody there to accept. */}
+        {post.user_id !== BIBLE_BUDDY_USER_ID ? (
+          <AddBuddyButton
+            targetUserId={post.user_id}
+            targetName={displayName}
+            myId={myId}
+            myName={myProfile?.display_name || myProfile?.username || "Someone"}
+            state={buddyState ?? "none"}
+            onRequested={onBuddyRequested}
+          />
+        ) : null}
         {/* My own post keeps this menu, because deleting is the only thing it
             offers. Somebody else's goes through the shared ReportBlockMenu,
             which also carries Block - this page's own menu had no way to block
@@ -2039,6 +2057,9 @@ export default function BbFeedPage() {
   // Faces and "New comment 12m ago", keyed by post id. See loadCommentPreviews.
   const [commentPreviews, setCommentPreviews] = useState<Record<string, CommentPreview>>({});
 
+  // Where I stand with each author on screen. See loadBuddyStates.
+  const [buddyStates, setBuddyStates] = useState<Record<string, BuddyState>>({});
+
   // The two controls above the feed. See applyFeedControls.
   const [postFilter, setPostFilter] = useState<"all" | "photos" | "study">("all");
   const [sortBy, setSortBy] = useState<"ranked" | "recent">("ranked");
@@ -2162,6 +2183,36 @@ export default function BbFeedPage() {
     return ids;
   }
 
+  /**
+   * Where I stand with everybody who posted, for the Add button on the card.
+   *
+   * Four queries for the whole page rather than three per card. Asked by the
+   * handful of people whose posts are on screen, not by my buddy list, which
+   * on Louis's account is 7,045 rows and would say nothing extra.
+   */
+  async function loadBuddyStates(uid: string, authorIds: string[]) {
+    const ids = [...new Set(authorIds)].filter((id) => id && id !== uid);
+    if (ids.length === 0) return;
+
+    const next: Record<string, BuddyState> = {};
+    for (const id of ids) next[id] = "none";
+
+    const [asFirst, asSecond, sent, received] = await Promise.all([
+      supabase.from("buddies").select("user_id_2").eq("user_id_1", uid).in("user_id_2", ids),
+      supabase.from("buddies").select("user_id_1").eq("user_id_2", uid).in("user_id_1", ids),
+      supabase.from("buddy_requests").select("receiver_id").eq("sender_id", uid).eq("status", "pending").in("receiver_id", ids),
+      supabase.from("buddy_requests").select("sender_id").eq("receiver_id", uid).eq("status", "pending").in("sender_id", ids),
+    ]);
+
+    for (const row of sent.data || []) next[row.receiver_id] = "pending_sent";
+    for (const row of received.data || []) next[row.sender_id] = "pending_received";
+    // Buddies last: an accepted pair outranks a stale pending row either way.
+    for (const row of asFirst.data || []) next[row.user_id_2] = "buddies";
+    for (const row of asSecond.data || []) next[row.user_id_1] = "buddies";
+
+    setBuddyStates((prev) => ({ ...prev, ...next }));
+  }
+
   async function getBuddyIds(uid: string): Promise<string[]> {
     const { data } = await supabase
       .from("buddies")
@@ -2264,6 +2315,7 @@ export default function BbFeedPage() {
     setBuddiesLoading(false);
     void loadMyReactions(uid, posts.map((p) => p.id));
     void loadCommentPreviews(posts.map((p) => p.id));
+    void loadBuddyStates(uid, posts.map((row) => row.user_id));
   }
 
   async function loadMyFeedTab(uid: string) {
@@ -2336,6 +2388,7 @@ export default function BbFeedPage() {
     const enrichedPosts = await enrichWithProfiles(postsRes.data || [], profiles) as FeedPost[];
     void loadMyReactions(userId, enrichedPosts.map((pt) => pt.id));
     void loadCommentPreviews(enrichedPosts.map((pt) => pt.id));
+    void loadBuddyStates(userId, enrichedPosts.map((row) => row.user_id));
     const myReactedIds = new Set([...myReactions].map((k) => k.split(":")[0]));
 
     const ranked = rankCommunityFeed(enrichedPosts, buddyIds, myReactedIds);
@@ -2382,6 +2435,7 @@ export default function BbFeedPage() {
         profile_image_url: profile?.profile_image_url ?? null,
       });
       void loadCommentPreviews([data.id]);
+      void loadBuddyStates(userId, [data.user_id]);
     })();
     return () => {
       cancelled = true;
@@ -2484,6 +2538,13 @@ export default function BbFeedPage() {
     }
   }
 
+  // One request, every card by that person. Somebody can easily have three
+  // posts on screen, and watching two of them still say Add after you tapped
+  // the third reads as the button not having worked.
+  function handleBuddyRequested(targetUserId: string) {
+    setBuddyStates((prev) => ({ ...prev, [targetUserId]: "pending_sent" }));
+  }
+
   // ── Delete post handler ────────────────────────────────────────────────────
 
   function handleDeletePost(postId: string) {
@@ -2574,7 +2635,7 @@ export default function BbFeedPage() {
     return (
       <div className="flex flex-col gap-3">
         {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} preview={commentPreviews[item.id]} />
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested} />
         ))}
       </div>
     );
@@ -2631,7 +2692,7 @@ export default function BbFeedPage() {
             onDelete={handleDeletePost}
             highlightPostId={highlightPostId}
             highlightCommentId={highlightCommentId}
-            preview={commentPreviews[focusedPost.id]}
+            preview={commentPreviews[focusedPost.id]} buddyState={buddyStates[focusedPost.user_id]} onBuddyRequested={handleBuddyRequested}
           />
         ) : null}
 
@@ -2651,7 +2712,7 @@ export default function BbFeedPage() {
             onDelete={handleDeletePost}
             highlightPostId={highlightPostId}
             highlightCommentId={highlightCommentId}
-            preview={commentPreviews[item.id]}
+            preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested}
             pinned
           />
         ))}
@@ -2660,7 +2721,7 @@ export default function BbFeedPage() {
             Bible Buddy's own posts arrive as real feed posts (see
             lib/groupPostInsert.ts), so nothing here links out of the feed. */}
         {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} preview={commentPreviews[item.id]} />
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested} />
         ))}
       </div>
     );
@@ -2700,7 +2761,7 @@ export default function BbFeedPage() {
               onDelete={handleDeletePost}
               highlightPostId={highlightPostId}
               highlightCommentId={highlightCommentId}
-              preview={commentPreviews[item.id]}
+              preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested}
           />
         ))}
       </div>

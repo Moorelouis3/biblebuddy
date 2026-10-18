@@ -364,11 +364,12 @@ export default function HomeScreen() {
         </div>
       </header>
 
-      {/* Verse of the Day leads - moved above the journey (Louis, 2026-09-04) */}
-      <VerseOfTheDayCard userId={userId} />
+      {/* Your Bookshelf leads (Louis, 2026-10-18): "the continue reading
+          should be first". The verse led since 2026-09-04 and the shelf sat
+          under it from 2026-10-17 - but the first thing somebody opening the
+          app wants is the book they are already in, and a verse to read is
+          something offered rather than something resumed.
 
-      {/* Continue Reading sits directly under the verse (Louis, 2026-10-17):
-          the first thing after today's verse should be the book you are in.
           It replaced two sections on 2026-10-16 - the community study day
           panel and the Bible in One Year day rail - and renders the Today
           Together card beneath itself. */}
@@ -377,6 +378,8 @@ export default function HomeScreen() {
         planDay={stats.planDay}
         planCompletedDays={completedDays}
       />
+
+      <VerseOfTheDayCard userId={userId} />
 
       {/* Recommended For You - above Look It Up since 2026-10-17 (Louis).
           Today's reading comes first, then something to read next; looking a

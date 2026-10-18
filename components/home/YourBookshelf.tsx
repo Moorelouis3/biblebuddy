@@ -219,7 +219,10 @@ export default function YourBookshelf({
                 className="flex items-center gap-1.5 whitespace-nowrap text-[17px] font-black text-[var(--bb-text-primary,#111827)] sm:text-2xl"
               >
                 <span aria-hidden className="text-base sm:text-2xl">📖</span>
-                Continue Reading
+                {/* "Your Bookshelf" (Louis, 2026-10-18), which is what the
+                    component has been called since it was built: a shelf of
+                    the books you have open, rather than one instruction. */}
+                Your Bookshelf
               </h2>
             </div>
             <Link
