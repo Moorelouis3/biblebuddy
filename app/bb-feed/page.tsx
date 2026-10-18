@@ -15,6 +15,7 @@ import { BLOCKS_CHANGED_EVENT, getBlockedUserIds } from "../../lib/userBlocks";
 import { ModalShell } from "../../components/ModalShell";
 import { logActionToMasterActions } from "../../lib/actionRecorder";
 import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
+import { readStudyActivity } from "../../lib/communityMilestones";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -54,7 +55,22 @@ interface FeedPost {
 }
 
 
-type Tab = "community" | "buddies" | "myfeed";
+/**
+ * The faces and the "New comment 12m ago" line under a post.
+ *
+ * Gathered for a whole page of posts in two queries rather than two per card,
+ * because the card is rendered fifty times and a request per card is how a
+ * feed takes a minute to settle. See loadCommentPreviews.
+ */
+type CommentPreviewPerson = {
+  user_id: string;
+  display_name: string | null;
+  username: string | null;
+  profile_image_url: string | null;
+};
+type CommentPreview = { people: CommentPreviewPerson[]; lastAt: string };
+
+type Tab = "community" | "myfeed";
 type PostType = "thought" | "verse" | "prayer" | "prayer_request" | "photo" | "link" | "video";
 
 interface FeedComment {
@@ -101,16 +117,6 @@ function timeAgo(dateStr: string): string {
   if (days < 7) return `${days}d ago`;
   return new Date(dateStr).toLocaleDateString("en-US", { month: "short", day: "numeric" });
 }
-
-const POST_TYPE_LABELS: Record<string, string> = {
-  thought:        "💭 Thought",
-  verse:          "📖 Verse",
-  prayer:         "🙏 Prayer",
-  prayer_request: "🙏 Prayer Request",
-  photo:          "📷 Photo",
-  link:           "🔗 Link",
-  video:          "🎬 Video",
-};
 
 // ── Video URL parsing ─────────────────────────────────────────────────────────
 
@@ -455,14 +461,32 @@ function PostComposer({ userId, userProfile, onPosted }: {
 
   if (!expanded) {
     return (
-      <button
-        onClick={() => setExpanded(true)}
-        className="bb-community-composer w-full flex items-center gap-3 bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-sm hover:border-gray-300 transition text-left mb-6"
-      >
-        <Avatar userId={userId} displayName={displayName} imageUrl={userProfile?.profile_image_url ?? null} size={9} />
-        <span className="text-sm text-gray-400 flex-1">Share a thought, prayer, or photo...</span>
-        <span className="text-xs text-white font-semibold px-3 py-1.5 rounded-full" style={{ backgroundColor: "#4a9b6f" }}>Post</span>
-      </button>
+      <div className="bb-community-composer mb-5 flex items-center gap-3 rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-sm">
+        <Avatar userId={userId} displayName={displayName} imageUrl={userProfile?.profile_image_url ?? null} size={10} />
+        <button
+          type="button"
+          onClick={() => setExpanded(true)}
+          // truncate, so a narrow phone keeps this a one-line pill. Wrapped,
+          // the rounded-full border balloons into a blob around three lines
+          // of placeholder.
+          className="min-w-0 flex-1 truncate rounded-full border border-gray-200 bg-gray-50/70 px-4 py-2.5 text-left text-sm text-gray-400 transition hover:border-gray-300 hover:bg-gray-50"
+        >
+          Share something with the community...
+        </button>
+        {/* Photo gets its own way in, because "add a picture" is a different
+            intention from "write something" and finding it behind a tab you
+            have to open first is why nobody adds pictures. */}
+        <button
+          type="button"
+          onClick={() => { setTab("photo"); setExpanded(true); }}
+          className="flex flex-shrink-0 items-center gap-1.5 rounded-full px-2 py-2 text-sm font-semibold text-gray-500 transition hover:bg-gray-50 hover:text-gray-700"
+        >
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+          <span className="hidden sm:inline">Photo</span>
+        </button>
+      </div>
     );
   }
 
@@ -646,6 +670,25 @@ function PostComposer({ userId, userProfile, onPosted }: {
 
 // ── Avatar ────────────────────────────────────────────────────────────────────
 
+/**
+ * Avatar sizes, written out rather than built up.
+ *
+ * This was `w-${size} h-${size}`, and Tailwind never sees a class spelled
+ * like that: it scans the source for literal names, so a size only had a
+ * width at all if some other file happened to contain the same utility. Every
+ * size here is a string the scanner can find, which is the difference between
+ * an avatar and a 0x0 box.
+ */
+const AVATAR_SIZES: Record<number, string> = {
+  6: "w-6 h-6",
+  7: "w-7 h-7",
+  8: "w-8 h-8",
+  9: "w-9 h-9",
+  10: "w-10 h-10",
+  11: "w-11 h-11",
+  12: "w-12 h-12",
+};
+
 function Avatar({ userId, displayName, imageUrl, size = 9 }: {
   userId: string;
   displayName: string;
@@ -653,7 +696,7 @@ function Avatar({ userId, displayName, imageUrl, size = 9 }: {
   size?: number;
 }) {
   const initials = displayName.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-  const cls = `w-${size} h-${size} rounded-full flex-shrink-0`;
+  const cls = `${AVATAR_SIZES[size] ?? AVATAR_SIZES[9]} rounded-full flex-shrink-0`;
   if (imageUrl) {
     return <img src={imageUrl} alt={displayName} className={`${cls} object-cover`} />;
   }
@@ -932,7 +975,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
         </Link>
         <div className="flex-1 min-w-0">
           <div className={`rounded-xl px-3 py-2 ${isHighlightComment ? "border border-[var(--bb-accent,#4a9b6f)] bg-[var(--bb-accent-soft,#ecfdf3)]" : "bg-[var(--bb-surface-soft,#f9fafb)]"}`}>
-            <Link href={`/profile/${comment.user_id}`} className="text-xs font-semibold text-[var(--bb-text-primary,#1f2937)] hover:underline">
+            <Link href={`/profile/${comment.user_id}`} className="text-sm font-bold text-[var(--bb-text-primary,#1f2937)] hover:underline">
               {name}
             </Link>
             {editingCommentId === comment.id ? (
@@ -965,18 +1008,18 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
                 </div>
               </div>
             ) : (
-              <p className="text-xs text-[var(--bb-text-secondary,#374151)] mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
+              <p className="text-sm text-[var(--bb-text-secondary,#374151)] mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
             )}
           </div>
           <div className="flex items-center gap-3 mt-0.5 px-1">
-            <span className="text-[10px] text-gray-400">{timeAgo(comment.created_at)}</span>
+            <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
             {!indent && (
               <button
                 onClick={() => {
                   setReplyingTo(replyingTo === comment.id ? null : comment.id);
                   setReplyText("");
                 }}
-                className="text-[10px] text-gray-400 hover:text-green-600 font-semibold transition"
+                className="text-xs text-gray-400 hover:text-green-600 font-semibold transition"
               >
                 Reply
               </button>
@@ -986,7 +1029,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
                 type="button"
                 onClick={() => void handleAutoReply(comment)}
                 disabled={autoReplyLoadingId === comment.id}
-                className="text-[10px] text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
+                className="text-xs text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
               >
                 {autoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
               </button>
@@ -1000,7 +1043,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
                   setReplyingTo(null);
                   setReplyText("");
                 }}
-                className="text-[10px] text-gray-400 hover:text-green-600 font-semibold transition"
+                className="text-xs text-gray-400 hover:text-green-600 font-semibold transition"
               >
                 Edit
               </button>
@@ -1009,7 +1052,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
               <button
                 type="button"
                 onClick={() => void handleDeleteComment(comment)}
-                className="text-[10px] text-gray-400 hover:text-red-500 font-semibold transition"
+                className="text-xs text-gray-400 hover:text-red-500 font-semibold transition"
               >
                 Delete
               </button>
@@ -1076,13 +1119,13 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
 
       {/* New top-level comment input */}
       <div className="flex gap-2 items-end mt-3">
-        <Avatar userId={myId} displayName={myProfile?.display_name || myProfile?.username || "You"} imageUrl={myProfile?.profile_image_url ?? null} size={6} />
+        <Avatar userId={myId} displayName={myProfile?.display_name || myProfile?.username || "You"} imageUrl={myProfile?.profile_image_url ?? null} size={8} />
         <textarea
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
-          placeholder="Add a comment..."
+          placeholder="Write a comment..."
           rows={1}
-          className="flex-1 text-xs px-3 py-2 border border-gray-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-green-400"
+          className="flex-1 rounded-full border border-gray-200 px-4 py-2.5 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-400"
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
@@ -1269,6 +1312,8 @@ function VideoBlock({ post }: { post: FeedPost }) {
  */
 const FOLD_AFTER_CHARS = 420;
 const FOLD_AFTER_BLOCKS = 3;
+/** Longer than this and an opening line is a sentence, not a heading. */
+const HEADLINE_MAX_CHARS = 90;
 
 function PostBody({ content }: { content: string }) {
   const [expanded, setExpanded] = useState(false);
@@ -1283,6 +1328,21 @@ function PostBody({ content }: { content: string }) {
         {blocks.map((block, index) => {
           const lines = block.split("\n").filter(Boolean);
           const isList = lines.length > 0 && lines.every((line) => /^[\u2022\-*]\s+/.test(line));
+
+          // A headline, when the post actually has one - never forced.
+          //
+          // Bible Buddy's own posts carry their heading on the first line
+          // (lib/htmlToPlainText), and people write that way too: a short line,
+          // then the thing itself. A first block that is short, single-line
+          // and followed by more is that heading; anything else is just the
+          // post opening with a sentence, and gets no special treatment.
+          if (index === 0 && !isList && lines.length === 1 && block.length <= HEADLINE_MAX_CHARS && blocks.length > 1) {
+            return (
+              <p key={index} className="text-[17px] font-bold leading-snug text-gray-900">
+                {block}
+              </p>
+            );
+          }
 
           if (isList) {
             return (
@@ -1345,7 +1405,7 @@ function PostBody({ content }: { content: string }) {
 
 // ── Post Card ─────────────────────────────────────────────────────────────────
 
-function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId }: {
+function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId, preview }: {
   post: FeedPost;
   myId: string;
   myProfile: MyProfile;
@@ -1356,6 +1416,8 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   onDelete: (postId: string) => void;
   highlightPostId?: string | null;
   highlightCommentId?: string | null;
+  /** Who has commented and when, for the row under the post. */
+  preview?: CommentPreview;
 }) {
   const isHighlighted = post.id === highlightPostId;
   const cardRef = useRef<HTMLDivElement>(null);
@@ -1427,23 +1489,34 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   const loveCount = post.reaction_counts?.["love"] ?? 0;
   const loveActive = myReactions.has(`${post.id}:love`);
 
+  // An automatic completion, or something somebody typed. Either way it is a
+  // post and gets the same card, the same like, the same comment thread -
+  // Louis, 2026-10-18: "everything needs to be in post form". The only thing
+  // this changes is the quiet label under the name and the study's title
+  // being set in bold.
+  const studyActivity = readStudyActivity(post.content);
+
   return (
     <div ref={cardRef} className={`bb-community-post-card bg-white border rounded-xl p-4 shadow-sm relative transition-all ${isHighlighted ? "border-green-400 ring-2 ring-green-200" : "border-gray-200"}`}>
-      {/* Header */}
-      <div className="flex items-center gap-3 mb-3">
-        <Link href={`/profile/${post.user_id}`}>
-          <Avatar userId={post.user_id} displayName={displayName} imageUrl={post.profile_image_url} />
+      {/* Header: who, when, and the menu. Nothing else.
+
+          The post type used to sit here as a grey pill - "Thought" on every
+          single post, including the automatic completions, which is both
+          noise and wrong. A photo announces itself by being a photo. The one
+          thing worth saying is when a post was not typed by a person, and
+          that is the Study activity line below. */}
+      <div className="flex items-start gap-3 mb-3">
+        <Link href={`/profile/${post.user_id}`} className="flex-shrink-0">
+          <Avatar userId={post.user_id} displayName={displayName} imageUrl={post.profile_image_url} size={11} />
         </Link>
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 flex-wrap">
-            <Link href={`/profile/${post.user_id}`} className="font-semibold text-sm text-gray-900 hover:underline truncate">
-              {displayName}
-            </Link>
-            <span className="text-xs text-gray-400 bg-gray-100 rounded-full px-2 py-0.5">
-              {POST_TYPE_LABELS[post.post_type] || post.post_type}
-            </span>
-          </div>
-          <p className="text-xs text-gray-400">{timeAgo(post.created_at)}</p>
+          <Link href={`/profile/${post.user_id}`} className="block truncate text-[15px] font-bold leading-tight text-gray-900 hover:underline">
+            {displayName}
+          </Link>
+          <p className="mt-0.5 text-xs text-gray-400">{timeAgo(post.created_at)}</p>
+          {studyActivity ? (
+            <p className="mt-0.5 text-xs text-gray-400">Study activity</p>
+          ) : null}
         </div>
         {/* My own post keeps this menu, because deleting is the only thing it
             offers. Somebody else's goes through the shared ReportBlockMenu,
@@ -1500,7 +1573,15 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
       {post.verse_text && (
         <p className="text-sm italic text-gray-600 mb-2 border-l-2 border-green-400 pl-3">&ldquo;{post.verse_text}&rdquo;</p>
       )}
-      {post.content && <PostBody content={post.content} />}
+      {studyActivity ? (
+        <p className="text-[15px] leading-relaxed text-gray-800">
+          {studyActivity.lead}
+          <span className="font-bold">{studyActivity.title}</span>
+          {studyActivity.trail}
+        </p>
+      ) : post.content ? (
+        <PostBody content={post.content} />
+      ) : null}
 
       {/* Photo — natural proportions, tap to expand */}
       {post.media_url && post.post_type !== "video" && (
@@ -1528,9 +1609,19 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
         </a>
       )}
 
-      {/* Reactions + comment toggle */}
-      <div className="flex items-center gap-1 mt-4 flex-wrap">
-        <div className={`flex items-center rounded-full text-xs border transition ${loveActive ? "border-green-400 bg-green-50" : "border-gray-200 bg-gray-50"}`}>
+      {/* Like and Comment, together, on the left.
+
+          Before this, liking was an emoji heart in a pill and Comment was
+          pushed to the far right edge by ml-auto, so the two halves of
+          engaging with a post sat at opposite ends of the card and neither
+          said what it was. They are one group now, left-aligned under the
+          content, each an icon with its word and its count - the shape every
+          feed uses, because it reads as a pair of verbs rather than two
+          decorations. The reaction row still writes "love", which is what
+          every existing like in the database is; only the face of it is a
+          thumb now. */}
+      <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-gray-100 pt-3">
+        <div className="flex items-center gap-1.5">
           <button
             type="button"
             onClick={() => {
@@ -1540,26 +1631,74 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
               }
               onReact(post.id, "love");
             }}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-full transition hover:scale-110 ${loveActive ? "text-green-700 font-semibold" : "text-gray-600"}`}
+            aria-pressed={loveActive}
+            className={`flex items-center gap-1.5 rounded-lg px-1.5 py-1 text-sm font-semibold transition hover:bg-gray-50 ${
+              loveActive ? "text-[#2f7fe8]" : "text-gray-500 hover:text-gray-700"
+            }`}
           >
-            <span className={loveAnimating ? "animate-heart-pop" : ""}>❤️</span>
+            <svg
+              className={`h-5 w-5 ${loveAnimating ? "animate-heart-pop" : ""}`}
+              fill={loveActive ? "currentColor" : "none"}
+              stroke="currentColor"
+              strokeWidth={1.8}
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.04 9.04 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.5 4.5 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H14.23c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904M6.633 10.25a2.25 2.25 0 0 1 .4 1.286c0 .414-.055.815-.159 1.197-.147.541.244 1.102.805 1.102H8.25M6.633 10.25H5.904m0 0a2.25 2.25 0 0 0-2.15 1.588 10.5 10.5 0 0 0-.454 3.065c0 1.456.296 2.843.832 4.104.306.721 1.030 1.143 1.812 1.143h.657" />
+            </svg>
+            <span>Like</span>
           </button>
-          {loveCount > 0 && (
-            <button type="button" onClick={openLikers} className={`pr-2.5 py-1 font-medium transition hover:underline ${loveActive ? "text-green-700" : "text-gray-600 hover:text-gray-900"}`}>
+          {loveCount > 0 ? (
+            <button
+              type="button"
+              onClick={openLikers}
+              className="text-sm font-semibold text-gray-500 transition hover:text-gray-800 hover:underline"
+            >
               {loveCount}
             </button>
-          )}
+          ) : null}
         </div>
-        <button
-          type="button"
-          onClick={() => setShowComments((v) => !v)}
-          className="ml-auto flex items-center gap-1 text-xs text-gray-400 hover:text-green-600 transition"
-        >
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
-          {localCommentCount > 0 ? localCommentCount : "Comment"}
-        </button>
+
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => setShowComments((v) => !v)}
+            className="flex items-center gap-1.5 rounded-lg px-1.5 py-1 text-sm font-semibold text-gray-500 transition hover:bg-gray-50 hover:text-gray-700"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            <span>Comment</span>
+          </button>
+          {localCommentCount > 0 ? (
+            <span className="text-sm font-semibold text-gray-500">{localCommentCount}</span>
+          ) : null}
+        </div>
+
+        {/* Who is already in the thread. Only when somebody is - an empty
+            post should not carry the furniture of a busy one. */}
+        {preview && preview.people.length > 0 ? (
+          <button
+            type="button"
+            onClick={() => setShowComments(true)}
+            className="flex items-center gap-2 text-left"
+          >
+            <span className="flex -space-x-2">
+              {preview.people.slice(0, 3).map((person) => (
+                <span key={person.user_id} className="rounded-full ring-2 ring-white">
+                  <Avatar
+                    userId={person.user_id}
+                    displayName={person.display_name || person.username || "Bible Buddy"}
+                    imageUrl={person.profile_image_url}
+                    size={7}
+                  />
+                </span>
+              ))}
+            </span>
+            <span className="text-sm font-semibold" style={{ color: "#2f7fe8" }}>
+              New comment {timeAgo(preview.lastAt)}
+            </span>
+          </button>
+        ) : null}
       </div>
 
       {showComments && (
@@ -1732,29 +1871,38 @@ function interleaveUpgradeCards<T extends { id: string }>(
 
 
 /**
- * How many buddies the feed pulls posts from, newest friendship first.
+ * How many buddies the community ranking looks at.
  *
- * The buddy graph is a star. Measured 2026-10-17: 7,054 rows over 7,046
- * people, median 1 buddy each, average 2.0 - and one account, Louis's, with
- * 7,045, because everybody becomes his buddy. The feed asks for posts with
- * .in(user_id, ...) chunked at 500, so the cost of a visit is
- * 2 + 3 x ceil(buddies / 500): five queries for a normal reader, and
- * forty-seven for him. He would have judged the feature by the one account it
- * is slowest for.
- *
- * 300 puts everybody on the same five queries. Nobody but that one account is
- * anywhere near the cap - the next busiest has four buddies - so for every
- * other reader in the database this changes nothing at all.
- *
- * What it costs him: the Buddies tab draws on his 300 newest buddies instead
- * of all 7,045, so a post from an older buddy can be missed. Raising this
- * number costs three queries per extra 500. The version that drops nothing is
- * to stop asking by author and ask by recency instead - fetch the last
- * week of posts, then keep the ones written by a buddy - because posts in a
- * week are few and bounded while buddies are neither. That is a change to
- * loadFriendsTab rather than a number, so it is not done here.
+ * The buddy list is only a signal here: a post by somebody you have added
+ * scores higher than a stranger's. Uncapped it would ship 7,045 rows to the
+ * phone to build a Set used for that one comparison, and the 300 most recent
+ * friendships decide it just as well.
  */
 const BUDDY_FEED_LIMIT = 300;
+
+/** A control that looks like the label it shows, not like a form field. */
+function FeedSelect<T extends string>({ value, onChange, options }: {
+  value: T;
+  onChange: (next: T) => void;
+  options: Array<{ value: T; label: string }>;
+}) {
+  return (
+    <div className="relative inline-flex items-center">
+      <select
+        value={value}
+        onChange={(event) => onChange(event.target.value as T)}
+        className="cursor-pointer appearance-none bg-transparent py-1 pl-1 pr-6 text-sm font-semibold text-gray-600 outline-none transition hover:text-gray-900"
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>{option.label}</option>
+        ))}
+      </select>
+      <svg className="pointer-events-none absolute right-0 h-4 w-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  );
+}
 
 export default function BbFeedPage() {
   const router = useRouter();
@@ -1778,9 +1926,6 @@ export default function BbFeedPage() {
     if (postId) setTab("community");
   }, []);
 
-  // Buddies tab state — single ranked list (posts only shown, activities used for ranking)
-  const [rankedBuddiesFeed, setRankedBuddiesFeed] = useState<RankedFeedItem[]>([]);
-
   // Community tab state — single ranked list
   const [rankedCommunityFeed, setRankedCommunityFeed] = useState<RankedFeedItem[]>([]);
 
@@ -1789,37 +1934,15 @@ export default function BbFeedPage() {
   const [myFeedLoading, setMyFeedLoading] = useState(false);
   const [myFeedLoaded, setMyFeedLoaded] = useState(false);
 
-  /**
-   * The Buddies tab, which now loads when it is opened rather than on arrival.
-   *
-   * Community is the tab you land on, but init awaited loadFriendsTab before it
-   * would show anything - so every visit paid for a tab most people never
-   * opened, and the page could not draw until the Buddies feed had been fetched
-   * and ranked.
-   *
-   * This drives the tab's own spinner. Without one the empty "No buddy posts
-   * yet" panel flashed up and was replaced by the posts a moment later, because
-   * nothing was waiting for the fetch any more.
-   */
-  const [buddiesLoading, setBuddiesLoading] = useState(false);
-  /**
-   * Whether the fetch has been started, as a ref rather than state.
-   *
-   * It is a ref for two reasons. State is not visible to another call in the
-   * same tick, and the effect that triggers this re-runs when userId arrives
-   * and when loadCommunityTab is rebuilt, with React invoking effects twice in
-   * development - so a state flag would let a second fetch through.
-   *
-   * And it is a flag at all, rather than a check on rankedBuddiesFeed.length,
-   * because the median reader has exactly one buddy and may genuinely have
-   * nothing to show. A length check would re-run the whole fetch every time
-   * they returned to an empty tab, which is precisely the case where it cannot
-   * help.
-   */
-  const buddiesLoadStarted = useRef(false);
-
   // Reactions the current user has already made — key: "postId:reactionType"
   const [myReactions, setMyReactions] = useState<Set<string>>(new Set());
+
+  // Faces and "New comment 12m ago", keyed by post id. See loadCommentPreviews.
+  const [commentPreviews, setCommentPreviews] = useState<Record<string, CommentPreview>>({});
+
+  // The two controls above the feed. See applyFeedControls.
+  const [postFilter, setPostFilter] = useState<"all" | "photos" | "study">("all");
+  const [sortBy, setSortBy] = useState<"ranked" | "recent">("ranked");
 
   useEffect(() => {
     async function init() {
@@ -1836,9 +1959,6 @@ export default function BbFeedPage() {
       if (!prof?.feed_onboarding_completed) {
         setShowFeedOnboarding(true);
       }
-      // The Buddies tab used to be fetched and ranked here, before the page
-      // would draw - on a tab you do not land on. It loads when it is opened,
-      // like Community and My Feed.
       setLoading(false);
     }
     init();
@@ -1846,27 +1966,60 @@ export default function BbFeedPage() {
 
   // ── Fetch helpers ──────────────────────────────────────────────────────────
   /**
-   * Everybody this account is buddies with - all of them, paginated.
+   * Who has commented on these posts, and when the last one landed.
    *
-   * getBuddyIds below caps at 300 for the ranking signal, which is fine for a
-   * weight but wrong for a filter: capped, the Buddies tab showed "no buddies
-   * post yet" to somebody with 7,045 of them. PostgREST stops at a thousand
-   * rows a page, so this walks the pages - eight requests for Louis, one for
-   * everybody else, and only when the Buddies tab is opened.
+   * The row under a post shows two or three faces and "New comment 12m ago",
+   * which means knowing something about each post's comments before anybody
+   * opens them. Done per card that is fifty round trips on a feed of fifty
+   * posts, on phones, for decoration - so it is two queries for the whole
+   * page: the comments on every post at once, then the profiles of the people
+   * who wrote them.
+   *
+   * Capped at the most recent 400 comments across the page. A post with
+   * eighty comments does not need all eighty to show three faces, and the
+   * ordering means the three shown are the three who spoke last.
    */
-  async function getAllBuddyIds(uid: string): Promise<Set<string>> {
-    const ids = new Set<string>();
-    for (let from = 0; from < 20_000; from += 1000) {
+  async function loadCommentPreviews(postIds: string[]) {
+    const ids = postIds.filter(Boolean);
+    if (ids.length === 0) return;
+
+    const rows: Array<{ post_id: string; user_id: string; created_at: string }> = [];
+    // Chunked, because .in() goes into the URL and a long enough list is
+    // rejected before it reaches the database.
+    for (let i = 0; i < ids.length; i += 150) {
       const { data } = await supabase
-        .from("buddies")
-        .select("user_id_1, user_id_2")
-        .or(`user_id_1.eq.${uid},user_id_2.eq.${uid}`)
-        .range(from, from + 999);
-      if (!data || data.length === 0) break;
-      for (const row of data) ids.add(row.user_id_1 === uid ? row.user_id_2 : row.user_id_1);
-      if (data.length < 1000) break;
+        .from("feed_post_comments")
+        .select("post_id, user_id, created_at")
+        .in("post_id", ids.slice(i, i + 150))
+        .order("created_at", { ascending: false })
+        .limit(400);
+      rows.push(...(data || []));
     }
-    return ids;
+    if (rows.length === 0) return;
+
+    const { data: profiles } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url")
+      .in("user_id", [...new Set(rows.map((row) => row.user_id))].slice(0, 500));
+
+    const byId = new Map((profiles || []).map((profile) => [profile.user_id, profile]));
+    const next: Record<string, CommentPreview> = {};
+
+    // rows are newest first, so the first time a post is seen is its latest
+    // comment, and people arrive in the order they last spoke.
+    for (const row of rows) {
+      const existing = next[row.post_id];
+      const person = byId.get(row.user_id);
+      if (!existing) {
+        next[row.post_id] = { people: person ? [person] : [], lastAt: row.created_at };
+        continue;
+      }
+      if (person && existing.people.length < 3 && !existing.people.some((p) => p.user_id === person.user_id)) {
+        existing.people.push(person);
+      }
+    }
+
+    setCommentPreviews((prev) => ({ ...prev, ...next }));
   }
 
   async function getBuddyIds(uid: string): Promise<string[]> {
@@ -1906,72 +2059,6 @@ export default function BbFeedPage() {
     });
   }
 
-  /**
-   * The Buddies tab: the same week of posts as Community, kept to buddies.
-   *
-   * It used to ask the other way round - "give me posts by these authors" -
-   * with the author list capped at 300 of the newest friendships. Louis is
-   * buddies with 7,045 people, so that cap decided his Buddies tab, and it
-   * showed "no buddies post yet" while the same posts sat in Community
-   * (2026-10-18: "I'm buddies with everybody, so technically my buddy feed
-   * should be kind of looking like the community feed").
-   *
-   * Asking by recency instead fixes the shape of it: a week of posts is
-   * small and bounded however many friends somebody has, and the buddy list
-   * is then only used to filter what came back. No cap, no chunking, two
-   * queries instead of thirty.
-   */
-  async function loadFriendsTab(uid: string) {
-    if (buddiesLoadStarted.current) return;
-    buddiesLoadStarted.current = true;
-    setBuddiesLoading(true);
-
-    const buddyIdSet = await getAllBuddyIds(uid);
-    if (buddyIdSet.size === 0) {
-      setRankedBuddiesFeed([]);
-      setBuddiesLoading(false);
-      return;
-    }
-
-    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-
-    const { data: postRows } = await supabase
-      .from("feed_posts")
-      .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
-      .eq("visibility", "community")
-      .gte("created_at", sevenDaysAgo)
-      .order("created_at", { ascending: false })
-      .limit(200);
-
-    const buddyPosts = (postRows || []).filter((row) => buddyIdSet.has(row.user_id));
-
-    // Profiles only for the handful of people who actually posted, rather
-    // than for every buddy on the list.
-    const authorIds = [...new Set(buddyPosts.map((row) => row.user_id))];
-    const profiles: Array<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }> = [];
-    for (let i = 0; i < authorIds.length; i += 500) {
-      const { data: pics } = await supabase
-        .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url")
-        .in("user_id", authorIds.slice(i, i + 500));
-      profiles.push(...(pics || []));
-    }
-
-    const posts = await enrichWithProfiles(buddyPosts, profiles) as FeedPost[];
-
-    const myReactedIds = new Set([...myReactions].map((k) => k.split(":")[0]));
-    const ranked = rankCommunityFeed(posts, buddyIdSet, myReactedIds);
-
-    // Blocked both ways, and asked for here rather than read from state: the
-    // list is cached for a minute inside lib/userBlocks, so this costs nothing
-    // after the first call, and it cannot race the feed loading before the
-    // block list has arrived.
-    const blocked = await getBlockedUserIds({ userId: uid });
-    setRankedBuddiesFeed(blocked.size ? ranked.filter((item) => !blocked.has(item.user_id)) : ranked);
-    setBuddiesLoading(false);
-    void loadMyReactions(uid, posts.map((p) => p.id));
-  }
-
   async function loadMyFeedTab(uid: string) {
     if (myFeedLoaded) return;
     setMyFeedLoading(true);
@@ -1991,6 +2078,7 @@ export default function BbFeedPage() {
     setMyFeedLoading(false);
     setMyFeedLoaded(true);
     void loadMyReactions(uid, posts.map((p) => p.id));
+    void loadCommentPreviews(posts.map((p) => p.id));
   }
 
   const loadCommunityTab = useCallback(async () => {
@@ -2040,6 +2128,7 @@ export default function BbFeedPage() {
 
     const enrichedPosts = await enrichWithProfiles(postsRes.data || [], profiles) as FeedPost[];
     void loadMyReactions(userId, enrichedPosts.map((pt) => pt.id));
+    void loadCommentPreviews(enrichedPosts.map((pt) => pt.id));
     const myReactedIds = new Set([...myReactions].map((k) => k.split(":")[0]));
 
     const ranked = rankCommunityFeed(enrichedPosts, buddyIds, myReactedIds);
@@ -2059,7 +2148,6 @@ export default function BbFeedPage() {
       const blocked = await getBlockedUserIds({ force: true, userId });
       if (cancelled || blocked.size === 0) return;
       const drop = <T extends { user_id: string }>(items: T[]) => items.filter((item) => !blocked.has(item.user_id));
-      setRankedBuddiesFeed((prev) => drop(prev));
       setRankedCommunityFeed((prev) => drop(prev));
     };
     window.addEventListener(BLOCKS_CHANGED_EVENT, prune);
@@ -2072,8 +2160,6 @@ export default function BbFeedPage() {
   useEffect(() => {
     if (tab === "community" && userId) {
       void loadCommunityTab();
-    } else if (tab === "buddies" && userId) {
-      void loadFriendsTab(userId);
     } else if (tab === "myfeed" && userId) {
       void loadMyFeedTab(userId);
     }
@@ -2100,15 +2186,7 @@ export default function BbFeedPage() {
         };
       });
 
-    if (tab === "buddies") {
-      setRankedBuddiesFeed((prev) =>
-        prev.map((item) =>
-          item._kind === "post" && (item as FeedPost).id === postId
-            ? { ...item, reaction_counts: { ...(item as FeedPost).reaction_counts, [reactionType]: Math.max(((item as FeedPost).reaction_counts?.[reactionType] ?? 0) + delta, 0) } }
-            : item
-        ) as RankedFeedItem[]
-      );
-    } else if (tab === "myfeed") {
+    if (tab === "myfeed") {
       setMyFeedPosts(updateCounts);
     } else {
       setRankedCommunityFeed((prev) =>
@@ -2147,7 +2225,6 @@ export default function BbFeedPage() {
 
   function handleDeletePost(postId: string) {
     const filterOut = (prev: RankedFeedItem[]) => prev.filter((item) => !(item._kind === "post" && (item as FeedPost).id === postId));
-    setRankedBuddiesFeed(filterOut);
     setRankedCommunityFeed(filterOut);
     setMyFeedPosts((prev) => prev.filter((p) => p.id !== postId));
   }
@@ -2161,42 +2238,36 @@ export default function BbFeedPage() {
           ? { ...item, comment_count: Math.max((item as FeedPost).comment_count + delta, 0) }
           : item
       ) as RankedFeedItem[];
-    setRankedBuddiesFeed(patchRanked);
     setRankedCommunityFeed(patchRanked);
     setMyFeedPosts((prev) => prev.map((p) => p.id === postId ? { ...p, comment_count: Math.max(p.comment_count + delta, 0) } : p));
   }
 
   // ── Render helpers ─────────────────────────────────────────────────────────
 
-  function renderFriendsTab() {
-    // Needed now that this tab loads on open. init used to await the fetch
-    // before the page drew, so by the time anybody saw this there was nothing
-    // left to wait for; without a loading state the empty "No buddy posts yet"
-    // panel would flash up first and then be replaced by the posts.
-    if (buddiesLoading) {
-      return <div className="text-sm text-gray-400 text-center py-16">Loading your buddies&apos; posts...</div>;
-    }
+  /**
+   * The two controls above the feed, applied to whichever list is on screen.
+   *
+   * Both are client-side on what has already been fetched, which is the whole
+   * reason they can exist: a week of posts is already in memory, so filtering
+   * and re-sorting it costs nothing and needs no round trip.
+   *
+   * Sort defaults to the ranking rather than to time. Community is what the
+   * algorithm chose - that is the thing being built - and "Most recent" is
+   * there for when somebody wants the raw firehose instead. On My Feed the
+   * list is your own wall and is always in time order, so only the filter
+   * shows there.
+   */
+  function applyFeedControls<T extends FeedPost>(list: T[]): T[] {
+    const filtered =
+      postFilter === "photos"
+        ? list.filter((item) => Boolean(item.media_url))
+        : postFilter === "study"
+          ? list.filter((item) => readStudyActivity(item.content) !== null)
+          : list;
 
-    if (rankedBuddiesFeed.filter((i) => i._kind === "post").length === 0) {
-      return (
-        <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
-          <p className="text-3xl mb-3">👥</p>
-          <h3 className="font-bold text-gray-900 mb-1">No buddy posts yet</h3>
-          <p className="text-sm text-gray-500 mb-5">Add Buddies from their profile to see their posts here.</p>
-          <Link href="/study-groups" className="inline-block px-4 py-2 rounded-xl text-sm font-semibold text-white transition hover:opacity-90" style={{ backgroundColor: "#4a9b6f" }}>
-            Find People
-          </Link>
-        </div>
-      );
-    }
-
-    const buddyPosts = rankedBuddiesFeed.filter((item) => item._kind === "post");
-    return (
-      <div className="flex flex-col gap-3">
-        {interleaveUpgradeCards(buddyPosts, myProfile?.is_paid !== true, (item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
-        ))}
-      </div>
+    if (sortBy !== "recent") return filtered;
+    return [...filtered].sort(
+      (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
     );
   }
 
@@ -2214,13 +2285,17 @@ export default function BbFeedPage() {
      * that is what an activity card is, and it is most of what this wall has
      * to show until people start writing posts of their own.
      */
-    const posts = rankedCommunityFeed;
+    const posts = applyFeedControls(rankedCommunityFeed);
     if (posts.length === 0) {
       return (
         <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
           <p className="text-3xl mb-3">🌎</p>
-          <h3 className="font-bold text-gray-900 mb-1">Community is quiet</h3>
-          <p className="text-sm text-gray-500">Be the first to share something!</p>
+          <h3 className="font-bold text-gray-900 mb-1">
+            {postFilter === "all" ? "Community is quiet" : "Nothing here yet"}
+          </h3>
+          <p className="text-sm text-gray-500">
+            {postFilter === "all" ? "Be the first to share something!" : "Try All posts."}
+          </p>
         </div>
       );
     }
@@ -2231,7 +2306,7 @@ export default function BbFeedPage() {
             Bible Buddy's own posts arrive as real feed posts (see
             lib/groupPostInsert.ts), so nothing here links out of the feed. */}
         {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} preview={commentPreviews[item.id]} />
         ))}
       </div>
     );
@@ -2242,8 +2317,8 @@ export default function BbFeedPage() {
       return <div className="text-sm text-gray-400 text-center py-16">Loading your feed...</div>;
     }
 
-    const items = [...myFeedPosts].sort(
-      (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    const items = applyFeedControls(
+      [...myFeedPosts].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()),
     );
 
     if (items.length === 0) {
@@ -2271,6 +2346,7 @@ export default function BbFeedPage() {
               onDelete={handleDeletePost}
               highlightPostId={highlightPostId}
               highlightCommentId={highlightCommentId}
+              preview={commentPreviews[item.id]}
           />
         ))}
       </div>
@@ -2310,26 +2386,44 @@ export default function BbFeedPage() {
         />
       )}
 
-      <div className="bb-community-content max-w-2xl mx-auto px-4 py-8">
+      {/* One column, nothing beside it.
 
+          740-800px is the width a feed wants: wider and a line of text runs
+          past what the eye tracks comfortably, narrower and photos get
+          postage-stamp sized. The old max-w-2xl was 672px, set when this
+          page was a list of short status lines rather than studies with
+          paragraphs in them. The bottom padding clears the floating nav bar,
+          which otherwise sits on top of the last post's Like and Comment. */}
+      <div
+        className="bb-community-content mx-auto w-full px-4 py-8"
+        style={{ maxWidth: "780px", paddingBottom: "calc(var(--bb-bottom-nav-h, 0px) + 3rem)" }}
+      >
         {/* No breadcrumb. The bottom bar says where you are and gets you
             anywhere else; a "Dashboard › Bible Buddy Feed" row above it was a
             second navigation saying less (Louis, 2026-10-18: "we have two
             breadcrumb menus and we don't need any, it's taking up space"). */}
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">🔥 Bible Buddy Feed</h1>
+        <h1 className="mb-4 text-3xl font-bold text-gray-900">Feed</h1>
 
-        {/* Tabs */}
-        <div className="bb-community-tab flex gap-1 bg-gray-100 rounded-xl p-1 mb-6">
+        {/* Two feeds, two tabs.
+
+            Everybody's posts, and your own. The Buddies tab was a third view
+            of the same posts filtered by who you had added, which on an
+            account with 7,045 buddies is the community tab with extra steps -
+            and on a new account it is an empty page telling somebody nobody
+            they know has posted. Underlined rather than a pill group, so the
+            tabs read as sections of one page instead of a switch. */}
+        <div className="bb-community-tab mb-5 flex gap-6 border-b border-gray-200">
           {([
-            { key: "community", label: "🌎 Community" },
-            { key: "buddies",   label: "🤝 Buddies" },
-            { key: "myfeed",    label: "👤 My Feed" },
+            { key: "community", label: "Community" },
+            { key: "myfeed",    label: "My Feed" },
           ] as { key: Tab; label: string }[]).map(({ key, label }) => (
             <button
               key={key}
               onClick={() => setTab(key)}
-              className={`flex-1 py-2 rounded-lg text-sm font-semibold transition ${
-                tab === key ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
+              className={`-mb-px border-b-2 px-1 pb-3 text-[15px] font-bold transition ${
+                tab === key
+                  ? "border-[#2f7fe8] text-[#2f7fe8]"
+                  : "border-transparent text-gray-500 hover:text-gray-800"
               }`}
             >
               {label}
@@ -2337,19 +2431,16 @@ export default function BbFeedPage() {
           ))}
         </div>
 
-        {/* The composer lives on My Feed, and only there.
+        {/* The composer, at the top of either tab.
 
-            Louis, 2026-10-18: "the post option should be under My Feed,
-            that's where I post to my wall, or users post to their walls...
-            then the algorithm picks posts from users and shows them in the
-            community."
-
-            That is the whole model in one sentence. You write on your own
-            wall; Community is not somewhere you post, it is what the ranking
-            chose out of everybody's walls. A composer sitting on Community
-            said the opposite - that it was a room you post into - which is
-            why the two tabs never felt like different things. */}
-        {!loading && userId && tab === "myfeed" && (
+            It was on My Feed alone, on the reasoning that you post to your own
+            wall and Community is only what the ranking picked out of
+            everybody's. True of where a post is stored - and it meant that the
+            tab people actually open had no way to write anything on it, which
+            is a strange thing to do to a feed. Posting from here writes the
+            same row either way: it lands on your wall and goes into the
+            ranking like everything else. */}
+        {!loading && userId && (
           <PostComposer
             userId={userId}
             userProfile={myProfile}
@@ -2369,11 +2460,36 @@ export default function BbFeedPage() {
           />
         )}
 
+        {/* What is in the feed, and in what order */}
+        {!loading && (
+          <div className="mb-3 flex items-center justify-between px-1">
+            <FeedSelect
+              value={postFilter}
+              onChange={setPostFilter}
+              options={[
+                { value: "all", label: "All posts" },
+                { value: "photos", label: "Photos" },
+                { value: "study", label: "Study activity" },
+              ]}
+            />
+            {tab === "community" ? (
+              <FeedSelect
+                value={sortBy}
+                onChange={setSortBy}
+                options={[
+                  { value: "ranked", label: "Top picks" },
+                  { value: "recent", label: "Most recent" },
+                ]}
+              />
+            ) : null}
+          </div>
+        )}
+
         {/* Content */}
         {loading ? (
           <div className="text-sm text-gray-400 text-center py-16">Loading feed...</div>
         ) : (
-          tab === "buddies" ? renderFriendsTab() : tab === "community" ? renderCommunityTab() : renderMyFeedTab()
+          tab === "community" ? renderCommunityTab() : renderMyFeedTab()
         )}
 
       </div>

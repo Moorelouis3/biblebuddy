@@ -137,6 +137,64 @@ export function milestoneSentence(actionType: ActionType, actionLabel?: string |
 }
 
 /**
+ * The shapes milestoneSentence writes, so the feed can recognise its own work.
+ *
+ * A completion is a post like any other - that is the whole point of writing
+ * it to feed_posts - but the card still has to say "Study activity" rather
+ * than label it "Thought", and it reads better with the study's name picked
+ * out. Which means telling a completion from something a person typed.
+ *
+ * post_type would be the obvious place for that, and it is not available:
+ * feed_posts.post_type carries a CHECK constraint that rejects anything new,
+ * exactly as group_posts.category rejected "milestone" and failed silently for
+ * hours. Changing a constraint on a live table for a label is the wrong trade,
+ * so the sentence identifies itself. It is machine-written and unmistakable,
+ * and the worst a false positive can do is put a quiet label on a post.
+ *
+ * These live next to milestoneSentence on purpose: change one, change both.
+ */
+const STUDY_ACTIVITY_SHAPES: Array<{ pattern: RegExp; titleGroup: number }> = [
+  { pattern: /^✅ Completed Day (\d+) of "(.+)"\.$/, titleGroup: 2 },
+  { pattern: /^✅ Completed Day (\d+) of (a Bible study)\.$/, titleGroup: 2 },
+  { pattern: /^✅ Finished Day (\d+) of (Bible in One Year)\.$/, titleGroup: 2 },
+  { pattern: /^📖 Finished the book of (.+)\.$/, titleGroup: 1 },
+];
+
+/**
+ * A completion post in three pieces - before the name, the name, after it -
+ * or null when a person wrote this.
+ *
+ * The leading tick is dropped, and so are the quotation marks around a study's
+ * title. Both were there to mark the line as an event, back when these sat in
+ * a list of events; the card now says "Study activity" under the name and sets
+ * the title in bold, which does the same job without shouting.
+ */
+export function readStudyActivity(
+  content: string | null | undefined,
+): { lead: string; title: string; trail: string } | null {
+  const text = String(content ?? "").trim();
+  if (!text) return null;
+
+  for (const { pattern, titleGroup } of STUDY_ACTIVITY_SHAPES) {
+    const match = text.match(pattern);
+    if (!match) continue;
+
+    const title = match[titleGroup];
+    const withoutEmoji = text.replace(/^[✅📖]\s*/, "");
+    const at = withoutEmoji.indexOf(title);
+    if (at < 0) return null;
+
+    return {
+      lead: withoutEmoji.slice(0, at).replace(/"$/, ""),
+      title,
+      trail: withoutEmoji.slice(at + title.length).replace(/^"/, ""),
+    };
+  }
+
+  return null;
+}
+
+/**
  * Put one milestone on the wall, unless it is a repeat or over the cap.
  *
  * Never throws. An announcement failing must not affect anything else; the
