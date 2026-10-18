@@ -427,7 +427,7 @@ export default function PublicProfilePage() {
        */
       const postsRes = await supabase
         .from("group_posts")
-        .select("id, category, content, media_url, created_at, parent_post_id")
+        .select("id, category, title, content, media_url, created_at, parent_post_id")
         .eq("user_id", profileUserId)
         .is("parent_post_id", null)
         .order("created_at", { ascending: false })
@@ -436,8 +436,10 @@ export default function PublicProfilePage() {
       const wallPosts = (postsRes.data || []).map((post) => ({
         id: post.id,
         // A milestone is machine-written and gets the tick; anything else is
-        // something they sat down and typed.
-        kind: post.category === "milestone" ? ("activity" as const) : ("post" as const),
+        // something they sat down and typed. Marked by title rather than
+        // category, because group_posts.category has a CHECK constraint that
+        // rejects "milestone" - see lib/communityMilestones.ts.
+        kind: post.title === "milestone" ? ("activity" as const) : ("post" as const),
         post_type: post.category ?? "general",
         content: post.content ?? "",
         verse_ref: null,

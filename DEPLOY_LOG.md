@@ -54,3 +54,4 @@
 2026-10-18T00:36:55Z | 1 commit | Bible Lock: locking no longer announces itself as unlocking, only one unlocked message appears instead of two, and the midnight countdown stays visible while locked
 2026-10-18T01:21:03Z | 1 commit | Milestones post when the app opens, not only when the schedule fires
 2026-10-18T01:42:27Z | 1 commit | One feed, not two: the community is the feed, the second feed loses its door, and profiles show community posts
+2026-10-18T03:08:47Z | 1 commit | Milestone posts were being rejected by a CHECK constraint on group_posts.category every single run

@@ -31,8 +31,28 @@ import type { ActionType } from "./actionTypes";
 export const COMMUNITY_GROUP_ID =
   process.env.COMMUNITY_GROUP_ID || "165bada5-0900-44f1-963b-54e86fe64b39";
 
-/** Marks a post as written by the app rather than by a person. */
-export const MILESTONE_CATEGORY = "milestone";
+/**
+ * How a milestone post is marked, and why it is not the category.
+ *
+ * group_posts.category carries a CHECK constraint, and "milestone" is not one
+ * of the values it allows - so every insert was rejected with
+ *
+ *   new row for relation "group_posts" violates check constraint
+ *   "group_posts_category_check"
+ *
+ * from the first run until 2026-10-18. The cron was firing the whole time and
+ * failing on the same line, silently, because the error was returned rather
+ * than thrown and nobody read it. I had tested the feed_activity insert and
+ * assumed this one; it is the only insert in the feature and I never ran it.
+ *
+ * So the category is "general", which the constraint allows and which the wall
+ * already renders, and the marker moves to title - a nullable column the
+ * community feed does not select, so it shows nothing and means everything.
+ * Changing the constraint would do this more tidily, but it is a migration
+ * against a live table for a label, and this is a label.
+ */
+export const MILESTONE_CATEGORY = "general";
+export const MILESTONE_MARKER = "milestone";
 
 /**
  * What gets announced, and why these three.
@@ -141,7 +161,7 @@ export async function postMilestoneToWall(
       .select("content, created_at")
       .eq("group_id", COMMUNITY_GROUP_ID)
       .eq("user_id", userId)
-      .eq("category", MILESTONE_CATEGORY)
+      .eq("title", MILESTONE_MARKER)
       .order("created_at", { ascending: false })
       .limit(200);
 
@@ -158,6 +178,7 @@ export async function postMilestoneToWall(
       user_id: userId,
       display_name: displayName,
       category: MILESTONE_CATEGORY,
+      title: MILESTONE_MARKER,
       content,
     });
     if (error) return { posted: false, reason: error.message };
