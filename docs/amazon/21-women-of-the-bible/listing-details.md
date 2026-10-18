@@ -31,11 +31,12 @@ and subtitle, which Amazon indexes anyway.
 
 ## Categories
 
-Three, chosen to sit beside the Proverbs book rather than compete with it:
+Three placements, as set on the draft. KDP offers no "Guides" placement under
+Bible Study & Reference, so the first one is General:
 
-1. Christian Books & Bibles → Bible Study & Reference → Bible Study → Guides
-2. Christian Books & Bibles → Christian Living → Women's Issues
-3. Christian Books & Bibles → Bibles → Devotionals
+1. Religion & Spirituality → Christian Books & Bibles → Bible Study & Reference → **General**
+2. Religion & Spirituality → Christian Books & Bibles → Christian Living → **Women's Issues**
+3. Religion & Spirituality → Christian Books & Bibles → Worship & Devotion → **Devotionals**
 
 ## Price
 
@@ -43,12 +44,19 @@ Three, chosen to sit beside the Proverbs book rather than compete with it:
 
 | Format | List (US) | Note |
 |---|---|---|
-| Paperback | $14.99 | in line with the Proverbs paperback |
-| Hardcover | $24.99 | gift price; check printing cost before saving |
+| Paperback | $19.99 | what every other Bible Buddy paperback sells at |
+| Hardcover | $29.99 | what Proverbs and The Tempting of Jesus sell at |
 
-Set the US price, let KDP convert the rest, then look at the royalty line on
-each before publishing. If hardcover printing comes in above about $9, raise to
-$26.99 rather than accept a thin royalty.
+These match the rest of the shelf rather than undercutting it: the Proverbs
+hardcover, the Proverbs journal and the Tempting of Jesus hardcover are all
+$29.99, and the paperbacks $19.99. Set the US price, let KDP convert the rest,
+and check the royalty line before publishing.
+
+## The draft
+
+Created 2026-10-18: KDP → Bookshelf → 21 Women of the Bible (hardcover, draft
+`Y6FDDBAVQMG`). Details are filled in and both files are uploaded. What is left
+is in `upload-instructions.md` under "What only Louis can do".
 
 ## What it is, for anyone writing ads later
 

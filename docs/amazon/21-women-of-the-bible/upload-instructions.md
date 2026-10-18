@@ -1,5 +1,21 @@
 # Publishing this — 21 Women of the Bible
 
+> **State on 2026-10-18.** The hardcover draft exists in KDP (`Y6FDDBAVQMG`)
+> with title, subtitle, author, description, keywords, the three categories,
+> cream paper, 6 x 9, no bleed, matte, and both files uploaded. Steps 1 and 2
+> below are done except for the three things under "What only Louis can do".
+
+## What only Louis can do
+
+1. **Assign the ISBN.** Content page → ISBN → *Get a free KDP ISBN* →
+   **Assign ISBN**. It cannot be undone or reused, which is why it was left.
+   Until it is assigned, KDP will not process the cover and the previewer stays
+   greyed out.
+2. **Answer the AI-Generated Content question.** It is a declaration about how
+   the book was made, so it is Louis's to answer, not an agent's.
+3. **Run the previewer, then price and publish.** Prices are in
+   `listing-details.md`.
+
 A new title, not an edit of an existing one: hardcover first, then paperback
 linked to it. The three print files are the ones built on 2026-10-18.
 
