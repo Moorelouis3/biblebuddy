@@ -81,6 +81,37 @@ export default function YourBookshelf({
     void (async () => {
       const studies = await fetchLibraryStudies();
       const progress = userId ? await fetchProgressByStudy(userId) : {};
+
+      /**
+       * The guide this reader chose, whichever kind it is.
+       *
+       * Two things can be chosen and they are stored differently. A study
+       * sets preferred_study_mode to "devotional" and names itself in
+       * louis_primary_devotional_id; Bible in One Year sets the mode to
+       * "bible_year" and names nothing, because it is a plan rather than a
+       * row in devotionals - which is also why it is the one book on this
+       * shelf whose key is not a uuid. 689 accounts are on bible_year and
+       * 169 on a devotional, so reading only the devotional id would have
+       * fixed this for the smaller half (Louis: "I need it for all guides,
+       * not just the 21 Women").
+       *
+       * "bible" is the third mode: reading the Bible itself, which is not a
+       * book on this shelf and so leads nothing here.
+       */
+      let chosenStudyId: string | null = null;
+      if (userId) {
+        const { data: plan } = await supabase
+          .from("profile_stats")
+          .select("preferred_study_mode, louis_primary_devotional_id")
+          .eq("user_id", userId)
+          .maybeSingle();
+        const row = plan as { preferred_study_mode?: string | null; louis_primary_devotional_id?: string | null } | null;
+        chosenStudyId =
+          row?.preferred_study_mode === "bible_year"
+            ? "bible-in-one-year"
+            : row?.louis_primary_devotional_id ?? null;
+      }
+
       if (cancelled) return;
 
       const studyBooks: ShelfBook[] = studies.map((s) => {
@@ -135,7 +166,34 @@ export default function YourBookshelf({
         return 0;
       });
 
-      setBooks([...started, ...rest]);
+      /**
+       * The study somebody chose leads the shelf, whatever their history.
+       *
+       * The shelf ordered by last activity and nothing else, so "Set as my
+       * reading plan" wrote louis_primary_devotional_id and the dashboard
+       * went on showing whatever had been touched most recently. Checked on
+       * Louis's own account, 2026-10-18: the button saved 21 Women of the
+       * Bible correctly and the shelf still led with The Wisdom of Proverbs,
+       * with 21 Women fourth, saying "Start this study". The write was never
+       * the problem; nothing read it.
+       *
+       * Louis: "I want that to be able to set, and then the one people set,
+       * it's the one we focus on." So the chosen study goes to the front -
+       * which also hands it the solid button, because the lead card is the
+       * one that wears it. A plan with no progress yet still leads: choosing
+       * it is the statement of intent, and being fourth on the shelf is how
+       * the old order answered that.
+       */
+      const ordered = [...started, ...rest];
+      const chosenIndex = chosenStudyId
+        ? ordered.findIndex((book) => book.key === chosenStudyId)
+        : -1;
+      if (chosenIndex > 0) {
+        const [chosen] = ordered.splice(chosenIndex, 1);
+        ordered.unshift(chosen);
+      }
+
+      setBooks(ordered);
       setLoading(false);
     })();
     return () => {
