@@ -162,12 +162,53 @@ export function withTotals(progress: StudyProgress | undefined, totalDays: numbe
  * badge at the same time. So a reader with any progress always sees their own
  * state; the date only speaks to people who have not started.
  */
+/**
+ * What time of day a study opens.
+ *
+ * available_from is a date column - it drops any time you write to it - so
+ * the hour lives here. 11:00 is when Higher Hope was set to land (Louis,
+ * 2026-10-18), and a study that opens at a stated hour rather than at
+ * midnight is the one people can actually be waiting for.
+ */
+export const RELEASE_HOUR = 11;
+
+/** The exact moment a study opens, or null if it is already out. */
+export function releaseAt(study: LibraryStudy): Date | null {
+  if (!study.available_from) return null;
+  const start = new Date(`${study.available_from}T00:00:00`);
+  start.setHours(RELEASE_HOUR, 0, 0, 0);
+  return start;
+}
+
+/**
+ * How long until it opens, as "6d 20h" / "20h 14m" / "14m".
+ *
+ * A date alone - "Starts 25 October" - is a fact you have to do arithmetic on.
+ * A countdown is the same fact already answered, which is what Louis asked
+ * for: "have it on the bookshelf as a countdown till next Sunday 11am for
+ * its release."
+ */
+export function countdownTo(target: Date, now = new Date()): string | null {
+  const ms = target.getTime() - now.getTime();
+  if (ms <= 0) return null;
+
+  const minutes = Math.floor(ms / 60_000);
+  const days = Math.floor(minutes / 1440);
+  const hours = Math.floor((minutes % 1440) / 60);
+  const mins = minutes % 60;
+
+  if (days > 0) return `${days}d ${hours}h`;
+  if (hours > 0) return `${hours}h ${mins}m`;
+  return `${mins}m`;
+}
+
 export function availability(study: LibraryStudy, hasProgress = false, now = new Date()) {
   if (!study.available_from || hasProgress) return { comingSoon: false, label: null as string | null };
-  const start = new Date(`${study.available_from}T00:00:00`);
-  if (start <= now) return { comingSoon: false, label: null };
+  const start = releaseAt(study);
+  if (!start || start <= now) return { comingSoon: false, label: null };
+  const remaining = countdownTo(start, now);
   return {
     comingSoon: true,
-    label: `Starts ${start.toLocaleDateString("en-GB", { day: "numeric", month: "long" })}`,
+    label: remaining ? `Releases in ${remaining}` : null,
   };
 }

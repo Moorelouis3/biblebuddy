@@ -15,6 +15,7 @@ import {
   fetchLibraryStudies,
   fetchProgressByStudy,
   withTotals,
+  type LibraryStudy,
 } from "../../lib/libraryCatalog";
 
 /**
@@ -52,7 +53,20 @@ type ShelfBook = {
   isCommunityToday: boolean;
   /** Set only for a study the reader has not started that opens later. */
   startsLabel: string | null;
+  /** The release date, so the countdown can be recomputed as the clock moves. */
+  availableFrom: string | null;
 };
+
+/**
+ * "Releases in 6d 20h" for a study that is not out yet, or null.
+ *
+ * Takes the clock as an argument so the card recomputes it on every tick
+ * rather than reading a string frozen when the shelf loaded.
+ */
+function countdownLabel(book: ShelfBook, now: number): string | null {
+  if (!book.availableFrom) return book.startsLabel;
+  return availability({ available_from: book.availableFrom } as LibraryStudy, false, new Date(now)).label;
+}
 
 export default function YourBookshelf({
   userId,
@@ -68,6 +82,18 @@ export default function YourBookshelf({
   /** The study this reader set as their plan; the shelf leads with it and marks it. */
   const [chosenKey, setChosenKey] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+
+  /**
+   * A clock, so a countdown counts.
+   *
+   * Every minute, because the label's smallest unit is a minute: anything
+   * faster re-renders the shelf to redraw text that has not changed.
+   */
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const id = window.setInterval(() => setNow(Date.now()), 60_000);
+    return () => window.clearInterval(id);
+  }, []);
 
 
   const event = useMemo(() => getActiveCommunityEvent(), []);
@@ -131,6 +157,7 @@ export default function YourBookshelf({
           lastActivityAt: p.lastActivityAt,
           isCommunityToday: Boolean(event && s.id === event.devotionalId && communityDay),
           startsLabel: availability(s, started).label,
+          availableFrom: started ? null : s.available_from,
         };
       });
 
@@ -148,6 +175,7 @@ export default function YourBookshelf({
         lastActivityAt: null,
         isCommunityToday: false,
         startsLabel: null,
+        availableFrom: null,
       };
 
       const all = [...studyBooks, bibleYear];
@@ -340,8 +368,11 @@ export default function YourBookshelf({
                     </p>
 
                     <div className="mt-1 flex-1">
-                      {book.startsLabel ? (
-                        <p className="text-[11px] font-black text-[#a57d2c]">{book.startsLabel}</p>
+                      {/* Recomputed against the ticking clock below, so the
+                          countdown counts rather than showing whatever it
+                          said when the shelf loaded. */}
+                      {countdownLabel(book, now) ? (
+                        <p className="text-[11px] font-black text-[#a57d2c]">{countdownLabel(book, now)}</p>
                       ) : book.isComplete ? (
                         <p className="flex items-center gap-1 text-[11px] font-bold text-[#2f8f5b]">
                           <span aria-hidden>✅</span> Completed
