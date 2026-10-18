@@ -1,27 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-import { drainGroupPostBroadcasts } from "@/lib/groupPostBroadcast";
 
-// Safety net for group post notifications: posts made by crons (weekly
-// series, blog shares) or a post whose immediate send was cut short still get
-// their notifications out within a few minutes.
+/**
+ * Switched off, 2026-10-18.
+ *
+ * This drained group_post_broadcast_queue into one notification per member
+ * per post - "Louis Moore posted in Bible Buddy Study Group", about six
+ * thousand of them every time he wrote anything. 461,515 of the 495,594 rows
+ * in the notifications table came out of here.
+ *
+ * Louis: "I used to have it so every time I push something they would be
+ * notified. I think that may be annoying - I would hate to be notified on
+ * social media every time somebody else posted something, so we can take that
+ * off." People are told when somebody likes or replies to their own post, and
+ * nothing else; a new post is something you find by opening the feed.
+ *
+ * The route stays as a 410 rather than disappearing, because its schedule may
+ * still be in vercel.json on a deployed build and a 404 there reads like a
+ * broken deploy. The database trigger that fills the queue is still in place
+ * and is Louis's to drop - nothing drains it now, so it writes to a queue
+ * nobody reads.
+ */
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 60;
 
-export async function GET(request: NextRequest) {
-  const secret = process.env.CRON_SECRET;
-  if (!secret || request.headers.get("authorization") !== `Bearer ${secret}`) {
-    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
-  }
-  const admin = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
-    auth: { autoRefreshToken: false, persistSession: false },
-  });
-  try {
-    const results = await drainGroupPostBroadcasts(admin, 50_000);
-    return NextResponse.json({ ok: true, results });
-  } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : "failed" }, { status: 500 });
-  }
+export async function GET(_request: NextRequest) {
+  return NextResponse.json(
+    { ok: false, retired: "Group post broadcasts were turned off on 2026-10-18." },
+    { status: 410 },
+  );
 }

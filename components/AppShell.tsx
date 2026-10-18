@@ -96,6 +96,26 @@ const DAILY_RECOMMENDATIONS_ENABLED = false;
 const AUTOMATIC_FEEDBACK_POPUPS_ENABLED = false;
 const AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED = false;
 const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
+
+/**
+ * Alerts that only say "somebody posted", which the bell no longer shows.
+ *
+ * Louis, 2026-10-18: "I would hate to be notified on social media every time
+ * somebody else posted something, so we can take that off."
+ *
+ * Measured the same day: 461,515 of the 495,594 rows in notifications are
+ * type 'group_post' and 451,782 of those are unread - 93% of every
+ * notification anybody has ever been sent, and the reason the bell opens on a
+ * wall of "Louis Moore posted in Bible Buddy Study Group". The fetch below
+ * asks for the most recent forty rows, so for most people all forty were
+ * these, and a real "someone replied to you" never reached the list at all.
+ *
+ * Filtered rather than deleted: deleting half a million rows is not something
+ * to do quietly, and the trigger that writes new ones lives in the database
+ * where this file cannot reach it. Both of those are Louis's to approve; this
+ * stops anybody seeing them in the meantime.
+ */
+const BROADCAST_NOTIFICATION_TYPES = ["group_post", "buddy_posted"];
 function isOwnerEmail(email: string | null | undefined) {
   return email?.toLowerCase() === "moorelouis3@gmail.com";
 }
@@ -1856,6 +1876,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       .from("notifications")
       .select("id, type, from_user_id, from_user_name, article_slug, comment_id, post_id, message, is_read, created_at")
       .eq("user_id", currentUserId)
+      .not("type", "in", `(${BROADCAST_NOTIFICATION_TYPES.join(",")})`)
       .order("created_at", { ascending: false })
       .limit(40);
     if (data) {
@@ -1986,26 +2007,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     return { postId, commentId };
   }
 
-  function openGroupNotificationTarget(notif: typeof notifications[0]) {
-    const { postId, commentId } = getGroupNotificationTarget(notif);
-    const params = new URLSearchParams();
-    params.set("view", "group");
-    if (postId) params.set("post", postId);
-    if (commentId) params.set("comment", commentId);
-
-    router.push(`/dashboard?${params.toString()}`);
-
-    if (typeof window !== "undefined") {
-      window.setTimeout(() => {
-        window.dispatchEvent(
-          new CustomEvent("bb:dashboard-open-group-post", {
-            detail: { postId, commentId },
-          }),
-        );
-      }, 150);
-    }
-  }
-
   async function handleNotifClick(notif: typeof notifications[0]) {
     // Mark this one as read
     await supabase.from("notifications").update({ is_read: true }).eq("id", notif.id);
@@ -2014,17 +2015,37 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     );
     setIsNotifOpen(false);
 
+    /**
+     * Anything about a post opens the feed, not the group.
+     *
+     * Every one of these used to go to /dashboard?view=group, because the
+     * group chat page is what wrote them - so tapping "Louis liked your post"
+     * took you to a part of the app that is no longer where anything happens
+     * (Louis, 2026-10-18: "the notifications are still based on the group
+     * information, they need to be cut off from that and rewired").
+     *
+     * The feed reads `post` and `comment` from the query string and scrolls
+     * to that post with its thread open. An older row carries a group post's
+     * id, which the feed will not find - it still lands in the feed, which is
+     * the right room, rather than on a group page.
+     */
     if (
       notif.type === "buddy_posted" ||
       notif.type === "feed_post_liked" ||
       notif.type === "feed_post_commented" ||
-      notif.type === "feed_post_replied"
+      notif.type === "feed_post_replied" ||
+      notif.type === "group_post_liked" ||
+      notif.type === "group_post_commented" ||
+      notif.type === "group_post_replied" ||
+      notif.type === "group_reply_liked" ||
+      notif.article_slug?.startsWith("/study-groups/")
     ) {
-      openGroupNotificationTarget(notif);
-      return;
-    }
-    if (notif.article_slug?.startsWith("/study-groups/")) {
-      openGroupNotificationTarget(notif);
+      const { postId, commentId } = getGroupNotificationTarget(notif);
+      const params = new URLSearchParams();
+      if (postId) params.set("post", postId);
+      if (commentId) params.set("comment", commentId);
+      const query = params.toString();
+      router.push(query ? `/bb-feed?${query}` : "/bb-feed");
       return;
     }
     if (notif.article_slug?.startsWith("/dashboard/")) {

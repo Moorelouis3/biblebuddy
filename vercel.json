@@ -117,10 +117,6 @@
       "schedule": "24 3 * * *"
     },
     {
-      "path": "/api/cron/group-post-broadcasts",
-      "schedule": "*/5 * * * *"
-    },
-    {
       "path": "/api/cron/friday-teaching",
       "schedule": "*/15 12-16 * * 5"
     },

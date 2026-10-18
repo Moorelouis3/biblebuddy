@@ -16,6 +16,7 @@ import { ModalShell } from "../../components/ModalShell";
 import { logActionToMasterActions } from "../../lib/actionRecorder";
 import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
 import { readStudyActivity } from "../../lib/communityMilestones";
+import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -788,6 +789,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
       setComments((prev) => [...prev, newC]);
       onCountChange(1);
       void logActionToMasterActions(myId, parentId ? "feed_post_replied" : "feed_post_commented", `post:${postId}`);
+
     }
     setNewComment("");
     setReplyText("");
@@ -1405,7 +1407,7 @@ function PostBody({ content }: { content: string }) {
 
 // ── Post Card ─────────────────────────────────────────────────────────────────
 
-function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId, preview }: {
+function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId, preview, pinned }: {
   post: FeedPost;
   myId: string;
   myProfile: MyProfile;
@@ -1418,6 +1420,8 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   highlightCommentId?: string | null;
   /** Who has commented and when, for the row under the post. */
   preview?: CommentPreview;
+  /** Held at the top of the feed rather than ranked into it. */
+  pinned?: boolean;
 }) {
   const isHighlighted = post.id === highlightPostId;
   const cardRef = useRef<HTMLDivElement>(null);
@@ -1498,6 +1502,15 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
 
   return (
     <div ref={cardRef} className={`bb-community-post-card bg-white border rounded-xl p-4 shadow-sm relative transition-all ${isHighlighted ? "border-green-400 ring-2 ring-green-200" : "border-gray-200"}`}>
+      {pinned ? (
+        <p className="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-gray-400">
+          <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.5 1a1 1 0 0 0-1 1v1.1L6.2 5.4A3 3 0 0 0 5.3 7.5v.8a1 1 0 0 0 1 1h2.7v6.2a1 1 0 0 0 2 0V9.3h2.7a1 1 0 0 0 1-1v-.8a3 3 0 0 0-.9-2.1L11.5 3.1V2a1 1 0 0 0-1-1h-1Z" />
+          </svg>
+          Pinned
+        </p>
+      ) : null}
+
       {/* Header: who, when, and the menu. Nothing else.
 
           The post type used to sit here as a grey pill - "Thought" on every
@@ -1879,6 +1892,39 @@ function interleaveUpgradeCards<T extends { id: string }>(
  * friendships decide it just as well.
  */
 const BUDDY_FEED_LIMIT = 300;
+
+/**
+ * The posts that sit above the feed, the way Skool keeps a few at the top.
+ *
+ * Louis, 2026-10-18: "we always have a group devotional going, and that should
+ * be the first pin at the top. It should be pinned there - like how in Skool,
+ * you can have three different pins."
+ *
+ * Today the rule finds one: the current day of the running study, which Bible
+ * Buddy posts every morning as "Day 18: The Wall That Isn't There". Pinned, it
+ * is in front of everybody who opens the tab, which is what it needs now that
+ * finding it no longer depends on an alert.
+ *
+ * Found by a rule rather than a flag on the row, because a pinned column is a
+ * change to a live table and that is Louis's to approve. The shape here takes
+ * three, so a hand-picked pin drops in beside this one once the column exists.
+ */
+const PINNED_MAX = 3;
+
+/** "Day 18: The Wall That Isn't There" - the daily study post, and nothing else. */
+const DEVOTIONAL_DAY_HEADLINE = /^Day \d+:\s/;
+
+function selectPinnedPosts<T extends FeedPost>(posts: T[]): T[] {
+  const pinned: T[] = [];
+  for (const post of posts) {
+    if (pinned.length >= PINNED_MAX) break;
+    if (post.user_id !== BIBLE_BUDDY_USER_ID) continue;
+    if (!DEVOTIONAL_DAY_HEADLINE.test(post.content.split("\n", 1)[0] ?? "")) continue;
+    pinned.push(post);
+    break; // one running study, one pin - the other two slots are for later.
+  }
+  return pinned;
+}
 
 /** A control that looks like the label it shows, not like a form field. */
 function FeedSelect<T extends string>({ value, onChange, options }: {
@@ -2459,8 +2505,14 @@ export default function BbFeedPage() {
      * that is what an activity card is, and it is most of what this wall has
      * to show until people start writing posts of their own.
      */
-    const posts = applyFeedControls(rankedCommunityFeed);
-    if (posts.length === 0) {
+    // Pins sit above the ranking and are not re-ranked. Only on the unfiltered
+    // view: asking for Photos and being shown a text post because it happens
+    // to be pinned is the control not working.
+    const pinned = postFilter === "all" ? selectPinnedPosts(rankedCommunityFeed) : [];
+    const pinnedIds = new Set(pinned.map((item) => item.id));
+    const posts = applyFeedControls(rankedCommunityFeed).filter((item) => !pinnedIds.has(item.id));
+
+    if (pinned.length === 0 && posts.length === 0) {
       return (
         <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
           <p className="text-3xl mb-3">🌎</p>
@@ -2476,6 +2528,27 @@ export default function BbFeedPage() {
 
     return (
       <div className="flex flex-col gap-3">
+        {/* The day's study, above everything, in the same card as the rest.
+            A pin is a position, not a different kind of post - it still takes
+            likes and comments where it sits. */}
+        {pinned.map((item) => (
+          <PostCard
+            key={`pinned-${item.id}`}
+            post={item as FeedPost}
+            myId={userId!}
+            myProfile={myProfile}
+            currentUserIsAdmin={currentUserIsAdmin}
+            myReactions={myReactions}
+            onReact={handleReact}
+            onCommentCountChange={handleCommentCountChange}
+            onDelete={handleDeletePost}
+            highlightPostId={highlightPostId}
+            highlightCommentId={highlightCommentId}
+            preview={commentPreviews[item.id]}
+            pinned
+          />
+        ))}
+
         {/* Posts and completions, in whatever order the ranking put them.
             Bible Buddy's own posts arrive as real feed posts (see
             lib/groupPostInsert.ts), so nothing here links out of the feed. */}

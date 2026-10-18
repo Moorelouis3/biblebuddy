@@ -385,8 +385,22 @@ async function runForEvent(
   // 2. Notifications. Only for the event's current day: a backfill of an
   // older day posts quietly. Deduped per post, so re-runs never double-notify
   // and a run that died halfway finishes the rest next time.
-  const remindersOnly = day !== 1;
-  const audience = remindersOnly ? "reminders_only" : "all_members";
+  /**
+   * Everybody in the study hears about each new day.
+   *
+   * Louis, 2026-10-18: "the daily notification can have a new day for
+   * everyone involved in it." This used to tell every member on day 1 and
+   * then only the ones who had switched reminders on, so by day 18 most
+   * people doing the study were never told a new day had opened.
+   *
+   * This is not the alert he asked to stop. That one went to all ~6,000
+   * members of the group every time anybody posted anything; this goes to the
+   * people who signed up for a 31-day study, once a day, about the thing they
+   * signed up for. Nobody outside the event is touched, and leaving the study
+   * still stops it.
+   */
+  const remindersOnly = false;
+  const audience = "all_members";
   if (liveDay === null || day !== liveDay) {
     return {
       ...base,
