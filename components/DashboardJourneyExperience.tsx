@@ -6497,16 +6497,29 @@ export default function DashboardJourneyExperience({
             Loading group...
           </div>
         ) : (
-          <div className="mx-auto w-full max-w-2xl overflow-hidden rounded-[28px] bg-[var(--bb-card,#ffffff)]">
-            <iframe
-              key={groupIframeKey}
-              title="Bible Buddy Group"
-              src={`/study-groups/${dashboardGroup.id}/chat?${groupDeepLinkParams.toString()}`}
-              className="w-full border-0 bg-[var(--bb-card,#ffffff)]"
-              style={{ height: `${dashboardGroupEmbedHeight}px` }}
-              referrerPolicy="same-origin"
-              scrolling="no"
-            />
+          /**
+           * The group used to be embedded here in an iframe.
+           *
+           * It is closed (Louis, 2026-10-18: "the group is gone and I want no
+           * entry"), and /study-groups now redirects, so the frame would have
+           * loaded the feed inside the dashboard - a page within a page. The
+           * slide itself is already unreachable, since ?view=group goes to the
+           * feed before it renders; this is the belt to that braces.
+           */
+          <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-6 text-center">
+            <p className="text-sm font-black text-[var(--bb-text-primary,#111827)]">
+              The group moved to the Feed.
+            </p>
+            <p className="max-w-sm text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+              Everybody posts in one place now, on the Community tab.
+            </p>
+            <Link
+              href="/bb-feed"
+              className="rounded-full px-4 py-2 text-sm font-black text-white"
+              style={{ backgroundColor: "#2b2150" }}
+            >
+              Open the Feed
+            </Link>
           </div>
         )}
       </section>

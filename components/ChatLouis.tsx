@@ -518,7 +518,10 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
     { match: /\b(the )?bible( reader)?\b/, href: "/bible", reply: "Okay.\n\nI’m opening the Bible reader now." },
     { match: /\b(devotionals?|bible studies?)\b/, href: "/plans", reply: "Okay.\n\nI’m taking you to Plans now." },
     { match: /\b(reading plans?|plans?)\b/, href: "/plans", reply: "Okay.\n\nI’m opening Plans now." },
-    { match: /\b(group|bible study group|the group)\b/, href: "/dashboard", reply: "Okay.\n\nI’m taking you to The Bible Study Group now." },
+    // Asking for the group gets the Feed, because that is where the group
+    // went (2026-10-18). Lil Louis was the last thing in the app that would
+    // still offer to take somebody there.
+    { match: /\b(group|bible study group|the group|community feed)\b/, href: "/bb-feed", reply: "The group moved — everybody posts in the Feed now.\n\nI’m opening it for you." },
     { match: /\b(tv|sermons?|bible buddy tv)\b/, href: "/biblebuddy-tv", reply: "Okay.\n\nI’m opening Bible Buddy TV now." },
     { match: /\b(profile)\b/, href: "/profile", reply: "Okay.\n\nI’m taking you to your profile now." },
     { match: /\b(settings?)\b/, href: "/settings", reply: "Okay.\n\nI’m opening settings now." },

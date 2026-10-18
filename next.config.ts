@@ -35,6 +35,24 @@ const nextConfig: NextConfig = {
     // 301s so old links, Pinterest pins, and any indexed URLs pass on to
     // the new canonical /blog addresses.
     return [
+      /**
+       * The group is closed. Every address under it goes to the feed.
+       *
+       * Louis, 2026-10-18: "I don't know how else to say it, the group is
+       * gone and I want no entry." Taking the links out of the app left the
+       * room standing behind a bookmark, a shared URL, an old email or
+       * anything else that still knows the address; this shuts the door
+       * rather than hiding the handle.
+       *
+       * Temporary (307) rather than permanent, because a 301 is cached by
+       * browsers for good and would outlive any decision to reopen it.
+       *
+       * It covers the pages only. /api/groups/... is untouched, which is
+       * what the daily study post, the Top Buddies board and the series
+       * machinery actually run on - none of them opens a page.
+       */
+      { source: "/study-groups", destination: "/bb-feed", permanent: false },
+      { source: "/study-groups/:path*", destination: "/bb-feed", permanent: false },
       // The Bible reader lives at lowercase /bible. Capital /Bible was a
       // half-finished rename: ecc877d17 renamed the index route in git,
       // core.ignorecase made the directory rename a no-op on Windows, and later

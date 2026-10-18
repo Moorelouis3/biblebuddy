@@ -489,7 +489,7 @@ export const FRIDAY_LESSONS: FridayLesson[] = [
       { type: "h3", text: "Come Say Hello" },
       { type: "p", html: "This week, introduce yourself or share one thing you’re studying." },
       { type: "p", html: "<strong>Your question might be the one someone else wanted to ask, too.</strong>" },
-      { type: "cta", label: "Join the Bible Buddy Study Group", url: "https://www.mybiblebuddy.net/study-groups" },
+      { type: "cta", label: "Join the conversation in the Feed", url: "https://www.mybiblebuddy.net/bb-feed" },
     ],
   },
   {

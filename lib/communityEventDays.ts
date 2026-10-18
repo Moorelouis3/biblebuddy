@@ -48,7 +48,14 @@ export function eventDayStudyPath(devotionalId: string, dayNumber: number) {
   return `/devotionals/${devotionalId}/day/${dayNumber}`;
 }
 
-/** Link to a day's discussion post in the Bible Buddy group feed. */
-export function eventDayDiscussionPath(groupId: string, postId: string) {
-  return `/study-groups/${groupId}/chat?post=${postId}`;
+/**
+ * Link to a day's discussion.
+ *
+ * The discussion was a group thread and the group is closed (2026-10-18), so
+ * this is the feed. The group id is kept in the signature because every
+ * caller still has one to hand and nothing is served by making them stop
+ * passing it.
+ */
+export function eventDayDiscussionPath(_groupId: string, _postId: string) {
+  return "/bb-feed";
 }
