@@ -172,7 +172,22 @@ export default function BibleBuddyTvEpisodeModal({
       setRatingLoading(true);
       const { data, error } = await supabase.from("tv_episode_ratings").select("user_id, rating").eq("episode_id", currentEpisode.id);
       if (error) {
-        console.error("[BibleBuddyTvEpisodeModal] Could not load episode ratings:", error);
+        /**
+         * tv_episode_ratings has never existed in this database.
+         *
+         * Every episode anybody opened fetched it, got PGRST205 - "Could not
+         * find the table 'public.tv_episode_ratings' in the schema cache" -
+         * and shouted it into the console, twice per open. Part of what "too
+         * buggy for now" meant when TV was taken off the menu on 2026-09-02.
+         *
+         * Nothing is broken by it: the stars simply have nothing to show. So
+         * a missing table is quiet and anything else still gets reported,
+         * which is the difference between a feature that is not set up and a
+         * feature that is failing.
+         */
+        if (error.code !== "PGRST205") {
+          console.error("[BibleBuddyTvEpisodeModal] Could not load episode ratings:", error);
+        }
         setRatingRows([]);
         setCurrentUserRating(0);
         setRatingLoading(false);
@@ -393,7 +408,10 @@ export default function BibleBuddyTvEpisodeModal({
       { episode_id: currentEpisode.id, user_id: userId, rating: nextRating, updated_at: new Date().toISOString() },
       { onConflict: "episode_id,user_id" }
     );
-    if (error) console.error("[BibleBuddyTvEpisodeModal] Could not save episode rating:", error);
+    // Same table, same silence when it is simply not there. See loadRatings.
+    if (error && error.code !== "PGRST205") {
+      console.error("[BibleBuddyTvEpisodeModal] Could not save episode rating:", error);
+    }
   }
 
   function closeSelectedTargetModal() {

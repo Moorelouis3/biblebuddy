@@ -73,8 +73,16 @@ const TABS: Tab[] = [
 ];
 
 const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
-  // Bible Buddy TV pulled from the UI 2026-09-02 - too buggy for now. The
-  // routes still exist; it just has no doors until it is fixed.
+  // Bible Buddy TV is back (Louis, 2026-10-18: "the buddy tube or whatever
+  // YouTube thing we had set up, can we bring that back? The issue is the
+  // videos loaded way too slow").
+  //
+  // It was pulled from the UI on 2026-09-02 as "too buggy for now" and never
+  // deleted - shows, episodes, My List and the whole browse surface have been
+  // sitting at /biblebuddy-tv ever since with no door into them, reachable
+  // only by asking Lil Louis for it. The slow start is fixed in
+  // components/YouTubeTrackedPlayer, so this is the door.
+  { label: "Bible Buddy TV", href: "/biblebuddy-tv", icon: "📺" },
   // Settings last used to be reachable only through the dashboard's own tab
   // strip, which switches slides inside one page. Louis found that it bounced
   // him back to the dashboard every time, so account deletion - the thing App
