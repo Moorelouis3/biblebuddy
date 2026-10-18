@@ -59,3 +59,4 @@
 2026-10-18T03:37:11Z | 1 commit | Feed takes the Group's place in the tab bar, and the group's current discussion is pinned to the top of the feed
 2026-10-18T03:44:27Z | 1 commit | The group's threads now sit in the feed and rank with everything else, and the daily Proverbs group post is switched off
 2026-10-18T04:00:50Z | 1 commit | Everything posts to the feed: Bible Buddy's automatic posts arrive as real feed posts, the composer moves to My Feed, and the group leaves the app
+2026-10-18T07:54:19Z | 1 commit | Bible Buddy's automatic posts come from a Bible Buddy account now, and the daily Proverbs post is back

@@ -1,3 +1,4 @@
+import { BIBLE_BUDDY_USER_ID } from "./bibleBuddyAccount";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 function isStatementTimeoutError(message: string | null | undefined) {
@@ -113,7 +114,16 @@ export async function insertGroupPostWithRetry(
    */
   try {
     await supabaseAdmin.from("feed_posts").insert({
-      user_id: payload.user_id,
+      // Posted by Bible Buddy, not by Louis.
+      //
+      // Every automatic post has always carried his personal user_id, so the
+      // weekly trivia, the poll and the daily reading all appeared under his
+      // name and his face - which is why the wall read as one man talking to
+      // himself, and why he asked whether this needed "a burner account".
+      //
+      // Not a burner: a brand account on his own domain, created
+      // 2026-10-18, which never signs in and exists only to own these posts.
+      user_id: BIBLE_BUDDY_USER_ID,
       post_type: payload.media_url ? "photo" : "thought",
       content: payload.content,
       media_url: payload.media_url ?? null,
