@@ -1885,6 +1885,30 @@ export default function BbFeedPage() {
   }, []);
 
   // ── Fetch helpers ──────────────────────────────────────────────────────────
+  /**
+   * Everybody this account is buddies with - all of them, paginated.
+   *
+   * getBuddyIds below caps at 300 for the ranking signal, which is fine for a
+   * weight but wrong for a filter: capped, the Buddies tab showed "no buddies
+   * post yet" to somebody with 7,045 of them. PostgREST stops at a thousand
+   * rows a page, so this walks the pages - eight requests for Louis, one for
+   * everybody else, and only when the Buddies tab is opened.
+   */
+  async function getAllBuddyIds(uid: string): Promise<Set<string>> {
+    const ids = new Set<string>();
+    for (let from = 0; from < 20_000; from += 1000) {
+      const { data } = await supabase
+        .from("buddies")
+        .select("user_id_1, user_id_2")
+        .or(`user_id_1.eq.${uid},user_id_2.eq.${uid}`)
+        .range(from, from + 999);
+      if (!data || data.length === 0) break;
+      for (const row of data) ids.add(row.user_id_1 === uid ? row.user_id_2 : row.user_id_1);
+      if (data.length < 1000) break;
+    }
+    return ids;
+  }
+
   async function getBuddyIds(uid: string): Promise<string[]> {
     const { data } = await supabase
       .from("buddies")
@@ -1922,14 +1946,28 @@ export default function BbFeedPage() {
     });
   }
 
+  /**
+   * The Buddies tab: the same week of posts as Community, kept to buddies.
+   *
+   * It used to ask the other way round - "give me posts by these authors" -
+   * with the author list capped at 300 of the newest friendships. Louis is
+   * buddies with 7,045 people, so that cap decided his Buddies tab, and it
+   * showed "no buddies post yet" while the same posts sat in Community
+   * (2026-10-18: "I'm buddies with everybody, so technically my buddy feed
+   * should be kind of looking like the community feed").
+   *
+   * Asking by recency instead fixes the shape of it: a week of posts is
+   * small and bounded however many friends somebody has, and the buddy list
+   * is then only used to filter what came back. No cap, no chunking, two
+   * queries instead of thirty.
+   */
   async function loadFriendsTab(uid: string) {
     if (buddiesLoadStarted.current) return;
     buddiesLoadStarted.current = true;
     setBuddiesLoading(true);
 
-    const buddyIds = await getBuddyIds(uid);
-
-    if (buddyIds.length === 0) {
+    const buddyIdSet = await getAllBuddyIds(uid);
+    if (buddyIdSet.size === 0) {
       setRankedBuddiesFeed([]);
       setBuddiesLoading(false);
       return;
@@ -1937,55 +1975,50 @@ export default function BbFeedPage() {
 
     const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
-    // Batch profile fetch to handle large buddy lists
-    const profileMap: Record<string, { user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }> = {};
-    for (let i = 0; i < buddyIds.length; i += 500) {
+    const [postsRes, activityRes, myActivityRes] = await Promise.all([
+      supabase
+        .from("feed_posts")
+        .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
+        .eq("visibility", "community")
+        .gte("created_at", sevenDaysAgo)
+        .order("created_at", { ascending: false })
+        .limit(200),
+      supabase
+        .from("feed_activity")
+        .select("id, user_id, activity_type, activity_data, group_id, group_name, created_at")
+        .eq("is_public", true)
+        .gte("created_at", sevenDaysAgo)
+        .order("created_at", { ascending: false })
+        .limit(200),
+      supabase
+        .from("feed_activity")
+        .select("activity_type, activity_data")
+        .eq("user_id", uid)
+        .order("created_at", { ascending: false })
+        .limit(30),
+    ]);
+
+    const buddyPosts = (postsRes.data || []).filter((row) => buddyIdSet.has(row.user_id));
+    const buddyActivity = (activityRes.data || []).filter((row) => buddyIdSet.has(row.user_id));
+
+    // Profiles only for the handful of people who actually posted, rather
+    // than for every buddy on the list.
+    const authorIds = [...new Set([...buddyPosts, ...buddyActivity].map((row) => row.user_id))];
+    const profiles: Array<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }> = [];
+    for (let i = 0; i < authorIds.length; i += 500) {
       const { data: pics } = await supabase
         .from("profile_stats")
         .select("user_id, display_name, username, profile_image_url")
-        .in("user_id", buddyIds.slice(i, i + 500));
-      (pics || []).forEach((p) => { profileMap[p.user_id] = p; });
-    }
-    const profiles = Object.values(profileMap);
-
-    // Fetch buddy posts + activity + my recent activity in parallel
-    // Split buddy IDs into chunks of 500 for .in() safety
-    const postChunks: FeedPost[] = [];
-    const activityChunks: FeedActivity[] = [];
-    for (let i = 0; i < buddyIds.length; i += 500) {
-      const chunk = buddyIds.slice(i, i + 500);
-      const [pr, ar] = await Promise.all([
-        supabase
-          .from("feed_posts")
-          .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
-          .in("user_id", chunk)
-          .gte("created_at", sevenDaysAgo)
-          .order("created_at", { ascending: false })
-          .limit(100),
-        supabase
-          .from("feed_activity")
-          .select("id, user_id, activity_type, activity_data, group_id, group_name, created_at")
-          .in("user_id", chunk)
-          .eq("is_public", true)
-          .gte("created_at", sevenDaysAgo)
-          .order("created_at", { ascending: false })
-          .limit(100),
-      ]);
-      postChunks.push(...(await enrichWithProfiles(pr.data || [], profiles) as FeedPost[]));
-      activityChunks.push(...(await enrichWithProfiles(ar.data || [], profiles) as FeedActivity[]));
+        .in("user_id", authorIds.slice(i, i + 500));
+      profiles.push(...(pics || []));
     }
 
-    const { data: myActivityData } = await supabase
-      .from("feed_activity")
-      .select("activity_type, activity_data")
-      .eq("user_id", uid)
-      .order("created_at", { ascending: false })
-      .limit(30);
+    const posts = await enrichWithProfiles(buddyPosts, profiles) as FeedPost[];
+    const activity = await enrichWithProfiles(buddyActivity, profiles) as FeedActivity[];
 
-    const buddyIdSet = new Set(buddyIds);
     const myReactedIds = new Set([...myReactions].map((k) => k.split(":")[0]));
+    const ranked = rankCommunityFeed(posts, activity, buddyIdSet, myActivityRes.data || [], myReactedIds);
 
-    const ranked = rankCommunityFeed(postChunks, activityChunks, buddyIdSet, myActivityData || [], myReactedIds);
     // Blocked both ways, and asked for here rather than read from state: the
     // list is cached for a minute inside lib/userBlocks, so this costs nothing
     // after the first call, and it cannot race the feed loading before the
@@ -1993,7 +2026,7 @@ export default function BbFeedPage() {
     const blocked = await getBlockedUserIds({ userId: uid });
     setRankedBuddiesFeed(blocked.size ? ranked.filter((item) => !blocked.has(item.user_id)) : ranked);
     setBuddiesLoading(false);
-    void loadMyReactions(uid, postChunks.map((p) => p.id));
+    void loadMyReactions(uid, posts.map((p) => p.id));
   }
 
   async function loadMyFeedTab(uid: string) {

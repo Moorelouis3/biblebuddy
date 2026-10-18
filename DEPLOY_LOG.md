@@ -62,3 +62,4 @@
 2026-10-18T07:54:19Z | 1 commit | Bible Buddy's automatic posts come from a Bible Buddy account now, and the daily Proverbs post is back
 2026-10-18T07:58:18Z | 1 commit | Mark all read now clears the conversations the badge actually counts, instead of the first thousand it happened to list
 2026-10-18T08:40:25Z | 1 commit | The community wall was dropping every completion one line before rendering it
+2026-10-18T08:54:39Z | 1 commit | Completions are real posts now so they can be liked, commented and reported, and the Buddies tab works for somebody with 7,045 buddies

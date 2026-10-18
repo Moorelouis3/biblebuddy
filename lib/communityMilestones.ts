@@ -157,41 +157,45 @@ export async function postMilestoneToWall(
     // Said once. People re-read chapters and redo studies, which is the point
     // of the app, and the wall should not say so twice.
     const { data: mine } = await admin
-      .from("feed_activity")
-      .select("activity_data, created_at")
+      .from("feed_posts")
+      .select("content, created_at")
       .eq("user_id", userId)
-      .eq("activity_type", actionType)
+      .eq("post_type", "thought")
       .order("created_at", { ascending: false })
       .limit(200);
 
-    // Stored as a phrase, not a sentence: the feed renders "<name> <phrase>",
-    // so "✅ Completed Day 2 of X." would come out as "Louis ✅ Completed Day 2
-    // of X." with a tick wedged into the middle of his name and the sentence.
-    const phrase = content
-      .replace(/^[^\p{L}]+/u, "")
-      .replace(/\.$/, "")
-      .replace(/^(\w)/, (first) => first.toLowerCase());
-
     const rows = mine || [];
-    const fingerprint = JSON.stringify({ sentence: phrase });
-    if (rows.some((row) => JSON.stringify(row.activity_data ?? {}) === fingerprint)) {
+    if (rows.some((row) => row.content === content)) {
       return { posted: false, reason: "already posted" };
     }
 
-    // No daily cap here any more.
-    //
-    // The cap existed because these were going into the community wall, where
-    // one person catching up on a plan would push everybody else off the
-    // screen - and that is exactly what Louis saw: "they are back to back same
-    // person and I don't like it there, it looks too crowded". On somebody's
-    // own wall that reasoning disappears. Fifteen of your own milestones on
-    // your own profile is a record of your week, not spam in a shared room;
-    // the feed's own ranking decides how many of them other people see.
-    const { error } = await admin.from("feed_activity").insert({
+    /**
+     * A real post, not an activity row.
+     *
+     * Louis, 2026-10-18: "under the community, all you have is the like - we
+     * need the full social media thing under there, like, comment, block that
+     * person, whatever it is, it all needs to be there."
+     *
+     * Activity rows could never have that. Comments hang off feed_post_comments
+     * by post_id and likes off feed_post_reactions, so a completion that was
+     * not a post could not be commented on, reported or blocked, and the wall
+     * he was looking at was almost entirely completions - a page of things
+     * nobody could answer.
+     *
+     * As a post it gets all of it for nothing: the like, the comment thread,
+     * the report and block menu, a place on the author's own wall. One row
+     * type in the feed instead of two is also one fewer thing to keep in step.
+     *
+     * The sentence keeps its tick, because here it is the body of a post
+     * rather than a phrase after somebody's name.
+     */
+    const { error } = await admin.from("feed_posts").insert({
       user_id: userId,
-      activity_type: actionType,
-      activity_data: { sentence: phrase },
-      is_public: true,
+      post_type: "thought",
+      content,
+      visibility: "community",
+      reaction_counts: {},
+      comment_count: 0,
     });
     if (error) return { posted: false, reason: error.message };
     return { posted: true };
