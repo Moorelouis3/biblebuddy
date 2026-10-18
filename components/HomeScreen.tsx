@@ -538,85 +538,11 @@ export default function HomeScreen() {
         </div>
       </section>
 
-      {/* 8. From Your Groups - the approved lavender community card. Real
-          count, real faces, real latest conversation; a failed query falls
-          back to the plain link copy, never fake activity. */}
-      <section aria-labelledby="home-groups-heading">
-        <SectionHeading label="From Your Groups" />
-        <Link
-          href="/bb-feed"
-          onClick={() => trackHomeEvent("home_group_click", { postsToday: group.postsToday })}
-          aria-label={`Study Group${group.postsToday ? ` - ${group.postsToday} new conversations today` : ""}`}
-          className="relative flex flex-col gap-3 overflow-hidden rounded-2xl border border-[#ddd6f3] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:flex-row sm:items-center sm:p-5"
-          style={{
-            backgroundColor: "#f5f2ff",
-            backgroundImage: "url(/home-cards/bg-group.jpg)",
-            backgroundSize: "cover",
-            backgroundPosition: "left bottom",
-          }}
-        >
-          <span className="flex items-center gap-4">
-            <span
-              className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-white text-3xl shadow-[0_6px_16px_rgba(124,104,180,0.25)]"
-              aria-hidden="true"
-            >
-              👥
-            </span>
-            <span className="min-w-0 sm:hidden">
-              <span className="block text-lg font-black text-[#2b2150]">Study Group</span>
-              <span className="block text-xs font-bold text-[#6a5aa8]">
-                {group.postsToday
-                  ? `${group.postsToday} new conversation${group.postsToday === 1 ? "" : "s"} today`
-                  : "See what your Bible Buddies are discussing."}
-              </span>
-            </span>
-          </span>
-          <span className="relative z-10 min-w-0 flex-1">
-            <span className="hidden text-lg font-black text-[#2b2150] sm:block">Study Group</span>
-            <span className="hidden text-xs font-bold text-[#6a5aa8] sm:block">
-              {group.postsToday
-                ? `● ${group.postsToday} new conversation${group.postsToday === 1 ? "" : "s"} today`
-                : "See what your Bible Buddies are discussing."}
-            </span>
-            {group.preview ? (
-              <span className="mt-1.5 flex items-start gap-1.5 text-xs font-semibold text-[#4c3f80]">
-                <span aria-hidden="true">💬</span>
-                <span className="line-clamp-1">{group.preview}</span>
-              </span>
-            ) : null}
-          </span>
-          {group.avatars.length ? (
-            <span className="flex shrink-0 items-center -space-x-2" aria-hidden="true">
-              {group.avatars.map((avatar) =>
-                avatar.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={avatar.userId}
-                    src={avatar.image}
-                    alt=""
-                    className="h-9 w-9 rounded-full border-2 border-white object-cover"
-                  />
-                ) : (
-                  <span
-                    key={avatar.userId}
-                    className="grid h-9 w-9 place-items-center rounded-full border-2 border-white bg-[#e3ddfa] text-[11px] font-black text-[#5b4a9e]"
-                  >
-                    {avatar.name.charAt(0).toUpperCase()}
-                  </span>
-                ),
-              )}
-              {group.extraCount > 0 ? (
-                <span className="grid h-9 w-9 place-items-center rounded-full border-2 border-white bg-[#5b4a9e] text-[10px] font-black text-white">
-                  +{group.extraCount}
-                </span>
-              ) : null}
-            </span>
-          ) : null}
-          <span className="relative z-10 flex min-h-[44px] shrink-0 items-center justify-center rounded-lg bg-[#111827] px-5 text-xs font-black uppercase tracking-wide text-white sm:min-h-[40px]">
-            Visit Group →
-          </span>
-        </Link>
-      </section>
+      {/* The From Your Groups banner is gone (Louis, 2026-10-18: "remove
+          the group purple banner at the bottom of the dashboard"). It was
+          the last thing on the dashboard still called a group, and it
+          pointed at the feed anyway - a second door to a room that is now
+          the Community tab. */}
     </div>
   );
 }
