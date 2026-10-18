@@ -79,6 +79,15 @@ const NEXT_UP_START_LABEL = "Starts 1 November";
 const NEXT_UP_EVENT_PATH = "/devotionals/tempting-of-jesus";
 
 const KEEP_DEVOTIONAL_TITLES = new Set(FEATURED_STUDY_ORDER);
+/**
+ * The studies a reader can open today. Anything else on the shelf is a grey
+ * "Coming Soon" card. This was the single title "The Wisdom of Proverbs" until
+ * 21 Women of the Bible went live (2026-10-18) and came up greyed out.
+ */
+const AVAILABLE_STUDY_TITLES = new Set([
+  "The Wisdom of Proverbs",
+  "21 Women of the Bible",
+]);
 const FEATURED_STUDY_ORDER_INDEX = new Map(
   FEATURED_STUDY_ORDER.map((title, index) => [title, index]),
 );
@@ -1109,7 +1118,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
               // either - it opens the sign-up page. Grey at rest, full colour
               // under the cursor on desktop (Louis, 2026-10-02).
               const isNextUp = devotional.title === NEXT_UP_STUDY_TITLE;
-              const isPlanAvailable = devotional.title === "The Wisdom of Proverbs";
+              const isPlanAvailable = AVAILABLE_STUDY_TITLES.has(devotional.title);
               const isLockedPreview = !isPlanAvailable && !isNextUp;
               const card = (
                 <div className={`bb-bible-study-card group flex h-full flex-col rounded-[18px] border p-2.5 shadow-sm transition-all duration-200 sm:p-3 ${
