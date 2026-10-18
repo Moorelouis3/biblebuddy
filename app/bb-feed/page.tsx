@@ -11,6 +11,7 @@ import { supabase } from "../../lib/supabaseClient";
 import { FeedOnboardingModal } from "../../components/FeedOnboardingModal";
 import ReportBlockMenu from "../../components/ReportBlockMenu";
 import { activityLabel } from "../../lib/feedActivityLabels";
+import TodayInTheGroup from "../../components/feed/TodayInTheGroup";
 import { BLOCKS_CHANGED_EVENT, getBlockedUserIds } from "../../lib/userBlocks";
 import { ModalShell } from "../../components/ModalShell";
 import { logActionToMasterActions } from "../../lib/actionRecorder";
@@ -2250,16 +2251,26 @@ export default function BbFeedPage() {
     const posts = rankedCommunityFeed.filter((item) => item._kind === "post");
     if (posts.length === 0) {
       return (
-        <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
-          <p className="text-3xl mb-3">🌎</p>
-          <h3 className="font-bold text-gray-900 mb-1">Community is quiet</h3>
-          <p className="text-sm text-gray-500">Be the first to share something!</p>
-        </div>
+        <>
+          {/* Even with nothing in the feed, the group usually has something
+              going on - and an empty feed is exactly when it is worth
+              pointing at. */}
+          <TodayInTheGroup />
+          <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+            <p className="text-3xl mb-3">🌎</p>
+            <h3 className="font-bold text-gray-900 mb-1">Community is quiet</h3>
+            <p className="text-sm text-gray-500">Be the first to share something!</p>
+          </div>
+        </>
       );
     }
 
     return (
       <div className="flex flex-col gap-3">
+        {/* The group, through the feed. Pinned above the ranking rather than
+            ranked with it: it is one room everybody shares, so it is not
+            competing with individual posts for a place. */}
+        <TodayInTheGroup />
         {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
           <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
         ))}

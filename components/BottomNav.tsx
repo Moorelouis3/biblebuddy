@@ -56,10 +56,15 @@ const TABS: Tab[] = [
   // worked through the old dashboard's slide logic, which the plan view
   // suppresses - so it silently landed people on their plan instead.
   {
-    label: "Group",
-    href: `/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`,
-    icon: "👥",
-    prefixes: ["/study-groups"],
+    // The Feed takes the spot the Group held (Louis, 2026-10-18: "feed should
+    // replace group, swap their spots"). The feed is where somebody posts
+    // their own thing and sees their own wall; the group is one shared room
+    // with the daily prompt and the weekly threads in it. The personal one
+    // belongs in the bar.
+    label: "Feed",
+    href: "/bb-feed",
+    icon: "📱",
+    prefixes: ["/bb-feed"],
   },
   // Lil Louis is BB Chat - same page, the name people actually use for it
   // (Louis, 2026-10-17). It was buried in the More sheet; the AI buddy is the
@@ -91,7 +96,12 @@ const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
   // Milestones go here, onto the poster's own wall, rather than into the group
   // where fifteen of them arrived back to back and crowded the conversation
   // out.
-  { label: "Feed", href: "/bb-feed", icon: "📱" },
+  // The Group moved here when the Feed took its place in the bar. It is not
+  // dead weight - it is the one shared room, where the daily prompt and the
+  // weekly trivia, poll and prayer threads land, and where every automated
+  // post goes. It is just not the thing somebody opens to post about
+  // themselves, which is what the bar is for.
+  { label: "Group", href: `/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`, icon: "👥" },
 ];
 
 /** Below this, a movement is a twitch or a bounce, not a scroll. */
