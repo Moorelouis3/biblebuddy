@@ -25,6 +25,7 @@ import VerseOfTheDayCard from "./VerseOfTheDayCard";
 import { cardTint } from "../lib/cardTints";
 import CommunityEventBanner from "./CommunityEventBanner";
 import YourBookshelf from "./home/YourBookshelf";
+import TodaysGroupStudy from "./home/TodaysGroupStudy";
 import BibleBuddyTvShelf from "./home/BibleBuddyTvShelf";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
@@ -452,6 +453,11 @@ export default function HomeScreen() {
         </section>
       ) : null}
 
+
+      {/* Today’s Group Study, down here above the games (Louis,
+          2026-10-18: "I want the group post to be at the bottom above the
+          trivia card"). */}
+      <TodaysGroupStudy />
 
       {/* 7. Test Your Knowledge - the approved Option 2 colorful pair.
           Decorative art is CSS/emoji, never baked text. No "daily challenge"
