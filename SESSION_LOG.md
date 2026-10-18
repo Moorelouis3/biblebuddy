@@ -8161,3 +8161,7 @@ Left open (diagnosis refined, can't confirm without reporter): the devotional Da
 ## 2026-10-18T06:58:38Z (hourly chapter notes run)
 Chapter: 1 Peter 3 | Duration: 12 min | Sections: 8 | Cards: 47 | Status: pass
 Next up: 1 Peter 4
+
+## 2026-10-18T08:00:29Z (hourly chapter notes run)
+Chapter: 1 Peter 4 | Duration: 14 min | Sections: 7 | Cards: 36 | Status: pass
+Next up: 1 Peter 5
