@@ -67733,6 +67733,59 @@
           "at": "2026-10-17T21:56:33Z"
         }
       ]
+    },
+    {
+      "book": "James",
+      "chapter": 1,
+      "startedAt": "2026-10-17T23:46:38Z",
+      "finishedAt": "2026-10-18T00:12:00Z",
+      "durationMinutes": 25,
+      "sections": 9,
+      "cards": 32,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty. Hebrews 1 through 13 is now fully complete on dedicated per-chapter files, so the canonical-order scan moved on to James. James, 1-2 Peter, 1-3 John, Jude, and Revelation currently have only a legacy bulk personal-notes file wired in per book (no dedicated per-chapter file), the exact state Hebrews was in before its per-chapter runs began, so James 1 is the correct next forward-progress target, not a redo. Fetched real KJV text for James 1 (27 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Split into 9 sections: 1 (James a servant of God, scattered abroad to the twelve tribes), 2-4 (count it all joy, the trying of faith, patience's perfect work), 5-8 (asking God for wisdom, liberal giving, nothing wavering, the double minded man), 9-11 (the brother of low degree, the rich made low, the flower of the grass), 12-15 (blessed is the man that endureth, tempted of God corrected, drawn away of his own lust, lust conceiving sin and death), 16-18 (do not err, every good and perfect gift, the Father of lights, begat with the word of truth), 19-21 (swift to hear slow to speak, the wrath of man, laying apart filthiness, the engrafted word), 22-25 (doers of the word not hearers only, the mirror, straightway forgetting, the perfect law of liberty), and 26-27 (bridling the tongue, pure religion defined, visiting the fatherless and widows, unspotted from the world). All 27 verses covered with no gaps or overlaps, 32 total cards, about 1.19 cards per verse, matching the density of recent Hebrews chapters. scripts/check_bible_note_style.py found 0 problems on the first automated pass: no hyphens, em dashes, semicolons, or contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on a scripture or implication emoji. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning rather than mechanics, and has no duplicate titles or repeated opening lines across all 32 cards. Parser check passed via getBibleReaderStudySections('james', 1): 9/9 sections, verse ranges 1/2-4/5-8/9-11/12-15/16-18/19-21/22-25/26-27 with no gaps covering all 27 verses, 32 cards rendering verbatim, preserveExactPhraseFormatting correctly true. npx tsc --noEmit ran clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/jamesOneSource.ts, a new james chapter 1 condition added to preserveExactPhraseBodies, new applyPersonalJamesOneStudySections() function calling replaceStudySectionsForBookRange('james', 1, 1, JAMES_ONE_PERSONAL_SECTIONS), invoked right after applyPersonalJamesOneThroughFiveStudySections() so it correctly overrides the legacy JAMES_1_5_PERSONAL_SECTIONS aggregate file for chapter 1 only. New chapter, normal forward progress, not a style redo. Chapters 2 through 5 of the legacy lib/jamesOneToFivePersonalNotes.ts file remain live and untouched for future runs. Next forward-progress target is James 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T23:46:38Z"
+        },
+        {
+          "name": "target chapter determined: James 1 (new chapter, normal forward progress; priority queue and style redo backlog both empty; James-Revelation only had legacy bulk personal-notes files, same state Hebrews was in before)",
+          "at": "2026-10-17T23:49:10Z"
+        },
+        {
+          "name": "KJV text fetched (James 1, 27 verses, aruljohn mirror)",
+          "at": "2026-10-17T23:49:33Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-17T23:50:05Z"
+        },
+        {
+          "name": "source file written: lib/jamesOneSource.ts (32 cards, 9 sections)",
+          "at": "2026-10-18T00:03:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-18T00:03:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies james chapter 1, applyPersonalJamesOneStudySections called after the bulk James apply)",
+          "at": "2026-10-18T00:04:00Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 32 cards, text verbatim, getBibleReaderStudySections('james', 1))",
+          "at": "2026-10-18T00:04:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-18T00:07:00Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-18T00:12:00Z"
+        }
+      ]
     }
   ]
 }
