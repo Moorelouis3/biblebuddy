@@ -65,7 +65,6 @@ import {
   readPendingSignupAttribution,
   type SignupAttribution,
 } from "../lib/signupAttribution";
-import FirstLoginOnboardingModal from "./FirstLoginOnboardingModal";
 const ConversationPage = dynamic(() => import("../app/messages/[conversationId]/page"), { ssr: false });
 
 const FeedbackModal = dynamic(() => import("./FeedbackModal").then((mod) => mod.FeedbackModal), {
@@ -97,16 +96,6 @@ const DAILY_RECOMMENDATIONS_ENABLED = false;
 const AUTOMATIC_FEEDBACK_POPUPS_ENABLED = false;
 const AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED = false;
 const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
-const LANDING_QUESTIONNAIRE_STORAGE_KEY = "bb:landing-questionnaire";
-
-type LandingOnboardingAnswers = {
-  goal?: string;
-  experience?: string;
-  studyFocus?: string;
-  time?: string;
-  difficulty?: string;
-};
-
 function isOwnerEmail(email: string | null | undefined) {
   return email?.toLowerCase() === "moorelouis3@gmail.com";
 }
@@ -203,36 +192,6 @@ function formatFirstLoginGoalLabel(goal: string | null | undefined) {
 
 function isMissingStudyNotesCompletedColumn(error: { message?: string | null } | null | undefined) {
   return /study_notes_completed/i.test(error?.message || "");
-}
-
-type PendingLandingOnboarding = {
-  answers: LandingOnboardingAnswers;
-  recommendation?: {
-    estimatedDays?: number;
-    studyRoute?: "bible_year" | "devotional";
-    selectedDevotionalId?: string | null;
-    selectedDevotionalTitle?: string | null;
-  };
-  landingAnalytics?: {
-    sessionId?: string;
-    source?: string;
-    referrer?: string | null;
-    pagePath?: string;
-  };
-};
-
-function readPendingLandingOnboarding(): PendingLandingOnboarding | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const parsed = JSON.parse(window.localStorage.getItem(LANDING_QUESTIONNAIRE_STORAGE_KEY) || "null");
-    if (!parsed || typeof parsed !== "object") return null;
-    const answers = "answers" in parsed ? parsed.answers : parsed;
-    if (!answers || typeof answers !== "object") return null;
-    if (!answers.goal || !answers.experience || !answers.studyFocus || !answers.time || !answers.difficulty) return null;
-    return { answers, recommendation: parsed.recommendation, landingAnalytics: parsed.landingAnalytics };
-  } catch {
-    return null;
-  }
 }
 
 function getAppShellLocalDateKey(date = new Date()) {
@@ -463,10 +422,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [fullNameLast, setFullNameLast] = useState("");
   const [fullNameSaving, setFullNameSaving] = useState(false);
   const [fullNameError, setFullNameError] = useState<string | null>(null);
-  const [showFirstLoginOnboarding, setShowFirstLoginOnboarding] = useState(false);
-  const [firstLoginOnboardingName, setFirstLoginOnboardingName] = useState("");
-  const [firstLoginOnboardingSaving, setFirstLoginOnboardingSaving] = useState(false);
-  const [firstLoginOnboardingError, setFirstLoginOnboardingError] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -922,52 +877,44 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     );
   }
 
-  async function checkOnboardingStatus(currentUserId: string) {
+  /**
+   * Make sure a signed-in account has the rows it needs, then get out of the way.
+   *
+   * There is no onboarding any more (Louis, 2026-10-18). Signing up IS the
+   * onboarding: email and password, and you are in the app. What used to sit
+   * between the two was a 10-slide first-login modal and then the /start
+   * chooser, and the numbers said both were costing more than they returned -
+   * of 174 accounts made in the twelve days after guest accounts were switched
+   * off, 17% ever finished the flow, and the two questions it asked (goal and
+   * Bible experience) saved to nothing at all.
+   *
+   * It was also actively broken. /start called ensureGuestSession() to find the
+   * current user, and that function returns `disabled` immediately now that
+   * guests are off - without ever looking for an existing session. So a person
+   * who had JUST signed up picked a plan, was told they were not signed in, and
+   * got bounced to /signup. Their study mode never saved, onboarding_completed
+   * stayed false, and the next page sent them back to /start again. You can see
+   * it in the data: before 6 October 37% of new accounts chose a plan other
+   * than the default, after it 11%.
+   *
+   * What survives is the part that was doing real work - creating the
+   * profile_stats row, recording where they came from, and putting Day 1 of
+   * the Bible in One Year in front of them. Name and profile picture are asked
+   * for later, once, by DisplayNamePromptGate, after the account finishes its
+   * first real thing. That is the whole of it.
+   */
+  async function ensureNewAccountSetUp(currentUserId: string) {
     try {
-      // Everyone who has not finished onboarding goes to the /start chooser -
-      // one question, three routes - rather than the 10-step first-login modal.
-      // Guests and email signups get the same front door.
-      //
-      // Already being on /start ends the redirect, otherwise this loops.
-      //
-      // A community event page runs its own sign-up (2026-09-19): someone who
-      // taps Join there gets a session mid-flow, and sending them to /start at
-      // that moment threw away the join they were half way through.
-      // The blog is content, not the app: a half finished account opening a
-      // post should read the post, not get pulled into the chooser.
-      // Same for the printed-book pages (/books/...), linked from social and email.
-      // Settings and account deletion are exempt for a different reason than
-      // the rest of this list (Louis, 2026-10-16). The others are places a
-      // half-finished account has a good reason to be. These two are places
-      // they must be ABLE to reach: App Review Guideline 5.1.1(v) requires
-      // account deletion to be reachable from inside the app, and until now a
-      // brand-new account was pushed to /start the moment it opened Settings -
-      // which is exactly what Louis hit trying to film the deletion flow for
-      // App Review, and what a reviewer creating their own account would hit
-      // too. Someone who wants to delete the account they just made must not
-      // have to finish onboarding first.
-      if (
-        pathname === "/start" ||
-        pathname === "/settings" ||
-        pathname === "/delete-account" ||
-        pathname?.startsWith("/events/") ||
-        pathname?.startsWith("/blog") ||
-        pathname?.startsWith("/books/")
-      ) {
-        setShowFirstLoginOnboarding(false);
-        return;
-      }
-
       let { data: profileStats, error: profileStatsError } = await supabase
         .from("profile_stats")
-        .select("onboarding_completed, traffic_source, bible_experience_level, display_name, username, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at, preferred_study_mode")
+        .select("onboarding_completed, traffic_source, display_name, username, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at, preferred_study_mode")
         .eq("user_id", currentUserId)
         .maybeSingle();
 
       if (profileStatsError && /preferred_study_mode/i.test(profileStatsError.message || "")) {
         const fallback = await supabase
           .from("profile_stats")
-          .select("onboarding_completed, traffic_source, bible_experience_level, display_name, username, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at")
+          .select("onboarding_completed, traffic_source, display_name, username, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at")
           .eq("user_id", currentUserId)
           .maybeSingle();
         profileStats = fallback.data as typeof profileStats;
@@ -975,7 +922,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       }
 
       if (profileStatsError) {
-        console.error("[ONBOARDING] Error loading onboarding status:", profileStatsError);
+        console.error("[ACCOUNT_SETUP] Error loading profile:", profileStatsError);
         return;
       }
 
@@ -988,12 +935,45 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         .limit(1);
       const hasExistingBibleYearProgress = Boolean(existingBibleYearProgressRows && existingBibleYearProgressRows.length > 0);
 
+      // Day 1 of the Bible in One Year, ready to open. Shared by the
+      // brand-new-account path and the repair path below.
+      async function ensureDayOne() {
+        if (hasExistingBibleYearProgress) return;
+        let { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
+          {
+            user_id: currentUserId,
+            day_number: 1,
+            reading_completed: false,
+            study_notes_completed: false,
+            trivia_completed: false,
+            reflection_completed: false,
+          },
+          { onConflict: "user_id,day_number" },
+        );
+        if (dayProgressError && isMissingStudyNotesCompletedColumn(dayProgressError)) {
+          await supabase.from("bible_year_day_progress").upsert(
+            {
+              user_id: currentUserId,
+              day_number: 1,
+              reading_completed: false,
+              trivia_completed: false,
+              reflection_completed: false,
+            },
+            { onConflict: "user_id,day_number" },
+          );
+        }
+      }
+
       if (!profileStats) {
         const signupAttribution = getCurrentSignupAttribution();
+        // onboarding_completed is true from the first moment now. Nothing asks
+        // the questions it used to gate, but dailyRecommendation and the weekly
+        // report both still read it as "is this account set up", and leaving it
+        // false would have them nagging people who have nothing left to finish.
         const { error: upsertError } = await supabase.from("profile_stats").upsert(
           {
             user_id: currentUserId,
-            onboarding_completed: false,
+            onboarding_completed: true,
             app_theme: "light",
             traffic_source: signupAttribution.source,
             preferred_study_mode: "bible_year",
@@ -1005,46 +985,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         );
 
         if (upsertError) {
-          console.error("[ONBOARDING] Error creating initialized profile_stats row:", upsertError);
+          console.error("[ACCOUNT_SETUP] Error creating profile_stats row:", upsertError);
         }
 
         void saveSignupAttributionForUser(currentUserId, username || "Bible Buddy User", signupAttribution);
 
-        if (!hasExistingBibleYearProgress) {
-          let { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
-            {
-              user_id: currentUserId,
-              day_number: 1,
-              reading_completed: false,
-              study_notes_completed: false,
-              trivia_completed: false,
-              reflection_completed: false,
-            },
-            { onConflict: "user_id,day_number" },
-          );
-          if (dayProgressError && isMissingStudyNotesCompletedColumn(dayProgressError)) {
-            const fallback = await supabase.from("bible_year_day_progress").upsert(
-              {
-                user_id: currentUserId,
-                day_number: 1,
-                reading_completed: false,
-                trivia_completed: false,
-                reflection_completed: false,
-              },
-              { onConflict: "user_id,day_number" },
-            );
-            dayProgressError = fallback.error;
-          }
-        }
-
-        const derivedName = headerProfileName !== "You" ? headerProfileName : username || userEmail?.split("@")[0] || "";
-        setFirstLoginOnboardingName(derivedName);
-        setShowFirstLoginOnboarding(false);
-        router.push("/start");
+        await ensureDayOne();
         return;
       }
 
-      const onboardingCompleted = profileStats.onboarding_completed === true;
       const isDevotionalMode = profileStats.preferred_study_mode === "devotional";
 
       if (!isDevotionalMode && (!profileStats.bible_year_started_at || !profileStats.bible_year_launch_seen_at)) {
@@ -1057,309 +1006,23 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           })
           .eq("user_id", currentUserId);
 
-        if (!hasExistingBibleYearProgress) {
-          let { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
-            {
-              user_id: currentUserId,
-              day_number: 1,
-              reading_completed: false,
-              study_notes_completed: false,
-              trivia_completed: false,
-              reflection_completed: false,
-            },
-            { onConflict: "user_id,day_number" },
-          );
-          if (dayProgressError && isMissingStudyNotesCompletedColumn(dayProgressError)) {
-            const fallback = await supabase.from("bible_year_day_progress").upsert(
-              {
-                user_id: currentUserId,
-                day_number: 1,
-                reading_completed: false,
-                trivia_completed: false,
-                reflection_completed: false,
-              },
-              { onConflict: "user_id,day_number" },
-            );
-            dayProgressError = fallback.error;
-          }
-        }
+        await ensureDayOne();
       }
 
-      if (!onboardingCompleted) {
-        const derivedName =
-          (typeof profileStats.display_name === "string" && profileStats.display_name.trim()) ||
-          (typeof profileStats.username === "string" && profileStats.username.trim()) ||
-          (headerProfileName !== "You" ? headerProfileName : "") ||
-          username ||
-          userEmail?.split("@")[0] ||
-          "";
-        setFirstLoginOnboardingName(derivedName);
-        setShowFirstLoginOnboarding(false);
-        router.push("/start");
+      // Anyone left stranded by the old flow - signed up after guests went off,
+      // bounced around /start, never got the flag set. Clear it so they stop
+      // being treated as half-finished.
+      if (profileStats.onboarding_completed !== true) {
+        await supabase
+          .from("profile_stats")
+          .update({ onboarding_completed: true })
+          .eq("user_id", currentUserId);
       }
-
     } catch (_err) {
-      console.error("[ONBOARDING] Unexpected onboarding status error:", _err);
-      return;
+      console.error("[ACCOUNT_SETUP] Unexpected error:", _err);
     }
   }
 
-  async function savePendingLandingOnboarding(currentUserId: string, email: string | null | undefined) {
-    const pending = readPendingLandingOnboarding();
-    if (!pending) return;
-
-    const displayName = headerProfileName && headerProfileName !== "You" ? headerProfileName : email?.split("@")[0] || "Bible Buddy";
-    const estimatedDays = Number(pending.recommendation?.estimatedDays || 365);
-    const pendingStudyRoute = "bible_year";
-    const pendingDevotionalId = null;
-    const signupAttribution = getCurrentSignupAttribution();
-
-    try {
-      await supabase.from("profile_stats").upsert(
-        {
-          user_id: currentUserId,
-          display_name: displayName,
-          username: displayName,
-          app_theme: "light",
-          traffic_source: signupAttribution.source,
-          bible_experience_level: normalizeLandingExperienceForProfile(pending.answers.experience),
-          onboarding_goal: normalizeLandingGoalForProfile(pending.answers.goal),
-          onboarding_study_focus: pending.answers.studyFocus,
-          preferred_study_mode: pendingStudyRoute,
-          ...(pendingDevotionalId ? { free_devotional_id: pendingDevotionalId, louis_primary_devotional_id: pendingDevotionalId } : {}),
-          louis_primary_devotional_day: 1,
-        },
-        { onConflict: "user_id" },
-      );
-    } catch (error) {
-      console.error("[LANDING_ONBOARDING] Profile stats save failed:", error);
-    }
-
-    try {
-      await supabase
-        .from("profile_stats")
-        .update({
-          landing_onboarding_completed: true,
-          onboarding_study_focus: pending.answers.studyFocus,
-          onboarding_time_commitment: pending.answers.time,
-          onboarding_difficulty: pending.answers.difficulty,
-        })
-        .eq("user_id", currentUserId);
-    } catch (error) {
-      console.error("[LANDING_ONBOARDING] Extra profile fields save failed:", error);
-    }
-
-    try {
-      await supabase.from("landing_onboarding_responses").upsert(
-        {
-          user_id: currentUserId,
-          full_name: displayName,
-          email: email ?? null,
-          goal: pending.answers.goal,
-          experience: pending.answers.experience,
-          study_focus: pending.answers.studyFocus,
-          time_commitment: pending.answers.time,
-          difficulty: pending.answers.difficulty,
-          recommended_journey: "Bible in One Year",
-          recommended_days: estimatedDays,
-          updated_at: new Date().toISOString(),
-        },
-        { onConflict: "user_id" },
-      );
-      await fetch("/api/landing-analytics", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          event_name: "created_account_successfully",
-          session_id: pending.landingAnalytics?.sessionId || `oauth-${currentUserId}`,
-          user_id: currentUserId,
-          source: pending.landingAnalytics?.source || "Direct",
-          referrer: pending.landingAnalytics?.referrer || null,
-          page_path: pending.landingAnalytics?.pagePath || "/",
-          metadata: {
-            authMethod: "google",
-            recommendationDays: estimatedDays,
-            selectedTime: pending.answers.time,
-            studyRoute: pendingStudyRoute,
-            selectedDevotionalId: pendingDevotionalId,
-          },
-        }),
-      });
-      window.localStorage.removeItem(LANDING_QUESTIONNAIRE_STORAGE_KEY);
-    } catch (error) {
-      console.error("[LANDING_ONBOARDING] Response save failed:", error);
-    }
-  }
-
-  async function handleFirstLoginOnboardingFinish(payload: {
-    answers: {
-      doomScrollMinutes: string;
-      bibleExperience: string;
-      mainGoal: string;
-      firstName: string;
-    };
-    projectedDays: number;
-    projectedLessonsPerDay: string;
-    projectedMinutesLabel: string;
-    // Onboarding is free-only (App Store prep, 2026-09-21): no checkout path.
-    path: "free";
-  }) {
-    if (!userId) {
-      setFirstLoginOnboardingError("We could not find your account. Refresh the page and try again.");
-      return;
-    }
-
-    const cleanFirstName = payload.answers.firstName.trim();
-    if (!cleanFirstName) {
-      setFirstLoginOnboardingError("Please add your first name before continuing.");
-      return;
-    }
-
-    setFirstLoginOnboardingSaving(true);
-    setFirstLoginOnboardingError(null);
-
-    try {
-      const nowIso = new Date().toISOString();
-      const todayKey = getAppShellLocalDateKey();
-      const doomScrollLabel = `${payload.projectedMinutesLabel} doom scrolling`;
-      const displayName = cleanFirstName;
-      const [{ data: existingProfile }, { data: existingBibleYearProgressRows }] = await Promise.all([
-        supabase
-          .from("profile_stats")
-          .select("bible_year_started_at, bible_year_launch_seen_at")
-          .eq("user_id", userId)
-          .maybeSingle(),
-        supabase
-          .from("bible_year_day_progress")
-          .select("day_number")
-          .eq("user_id", userId)
-          .limit(1),
-      ]);
-      const hasExistingBibleYearProgress = Boolean(existingBibleYearProgressRows && existingBibleYearProgressRows.length > 0);
-
-      const { error: authError } = await supabase.auth.updateUser({
-        data: {
-          firstName: cleanFirstName,
-          first_name: cleanFirstName,
-          display_name: displayName,
-          full_name: displayName,
-        },
-      });
-      if (authError) throw authError;
-
-      let { error: profileError } = await supabase
-        .from("profile_stats")
-        .upsert(
-          {
-            user_id: userId,
-            display_name: displayName,
-            username: displayName,
-            onboarding_completed: true,
-            landing_onboarding_completed: true,
-            app_theme: "light",
-            bible_experience_level: normalizeFirstLoginExperienceForProfile(payload.answers.bibleExperience),
-            onboarding_goal: normalizeFirstLoginGoalForProfile(payload.answers.mainGoal),
-            onboarding_study_focus: "bible_in_one_year",
-            onboarding_time_commitment: doomScrollLabel,
-            preferred_study_mode: "bible_year",
-            bible_year_started_at: existingProfile?.bible_year_started_at || todayKey,
-            bible_year_launch_seen_at: existingProfile?.bible_year_launch_seen_at || nowIso,
-            louis_primary_devotional_day: 1,
-            updated_at: nowIso,
-          },
-          { onConflict: "user_id" },
-        );
-
-      if (
-        profileError &&
-        /preferred_study_mode|onboarding_study_focus|onboarding_time_commitment|bible_year_started_at|bible_year_launch_seen_at/i.test(profileError.message || "")
-      ) {
-        const fallback = await supabase
-          .from("profile_stats")
-          .upsert(
-            {
-              user_id: userId,
-              display_name: displayName,
-              username: displayName,
-              onboarding_completed: true,
-              landing_onboarding_completed: true,
-              app_theme: "light",
-              bible_experience_level: normalizeFirstLoginExperienceForProfile(payload.answers.bibleExperience),
-              onboarding_goal: normalizeFirstLoginGoalForProfile(payload.answers.mainGoal),
-              updated_at: nowIso,
-            },
-            { onConflict: "user_id" },
-          );
-        profileError = fallback.error;
-      }
-      if (profileError) throw profileError;
-
-      const { error: responseSaveError } = await supabase.from("landing_onboarding_responses").upsert(
-        {
-          user_id: userId,
-          full_name: displayName,
-          email: userEmail ?? null,
-          goal: formatFirstLoginGoalLabel(payload.answers.mainGoal),
-          experience: formatFirstLoginExperienceLabel(payload.answers.bibleExperience),
-          study_focus: "Bible in One Year",
-          time_commitment: doomScrollLabel,
-          difficulty: "first_login_onboarding_v2",
-          recommended_journey: "Bible in One Year",
-          recommended_days: payload.projectedDays,
-          updated_at: nowIso,
-        },
-        { onConflict: "user_id" },
-      );
-      if (responseSaveError) {
-        console.warn("[FIRST_LOGIN_ONBOARDING] Response save skipped:", responseSaveError.message);
-      }
-
-      if (!hasExistingBibleYearProgress) {
-        let { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
-          {
-            user_id: userId,
-            day_number: 1,
-            reading_completed: false,
-            study_notes_completed: false,
-            trivia_completed: false,
-            reflection_completed: false,
-          },
-          { onConflict: "user_id,day_number" },
-        );
-        if (dayProgressError && isMissingStudyNotesCompletedColumn(dayProgressError)) {
-          const fallback = await supabase.from("bible_year_day_progress").upsert(
-            {
-              user_id: userId,
-              day_number: 1,
-              reading_completed: false,
-              trivia_completed: false,
-              reflection_completed: false,
-            },
-            { onConflict: "user_id,day_number" },
-          );
-          dayProgressError = fallback.error;
-        }
-        if (dayProgressError) {
-          console.warn("[FIRST_LOGIN_ONBOARDING] Day 1 seed skipped:", dayProgressError.message);
-        }
-      }
-
-      setHeaderProfileName(displayName);
-      setUsername(displayName);
-      setFirstLoginOnboardingName(displayName);
-      setShowFirstLoginOnboarding(false);
-
-      if (pathname !== "/dashboard") {
-        router.push("/dashboard");
-      }
-    } catch (error: any) {
-      console.error("[FIRST_LOGIN_ONBOARDING] Save failed:", error);
-      setFirstLoginOnboardingError(error?.message || "We could not finish setting up your Day 1 journey.");
-      setShowFirstLoginOnboarding(true);
-    } finally {
-      setFirstLoginOnboardingSaving(false);
-    }
-  }
 
   async function checkFullNameRequirement(currentUserId: string) {
     try {
@@ -2393,8 +2056,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     scheduleIdleWork(() => {
       void applyPendingInviteLink(currentUserId);
       void (async () => {
-        await savePendingLandingOnboarding(currentUserId, currentUserEmail);
-        await checkOnboardingStatus(currentUserId);
+        await ensureNewAccountSetUp(currentUserId);
       })();
       if (DAILY_RECOMMENDATIONS_ENABLED) {
         void checkDailyRecommendation(currentUserId);
@@ -2457,9 +2119,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         setHeaderCurrentLevel(1);
         setHeaderCurrentStreak(0);
         setHeaderProfileImageUrl(null);
-        setShowFirstLoginOnboarding(false);
-        setFirstLoginOnboardingError(null);
-        setFirstLoginOnboardingSaving(false);
       }
 
       setAppShellBooting(false);
@@ -2514,9 +2173,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           setHeaderCurrentLevel(1);
           setHeaderCurrentStreak(0);
           setHeaderProfileImageUrl(null);
-          setShowFirstLoginOnboarding(false);
-          setFirstLoginOnboardingError(null);
-          setFirstLoginOnboardingSaving(false);
         }
 
       }
@@ -3958,14 +3614,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           )}
         />
       ) : null}
-
-      <FirstLoginOnboardingModal
-        isOpen={showFirstLoginOnboarding && isLoggedIn}
-        initialFirstName={firstLoginOnboardingName}
-        submitting={firstLoginOnboardingSaving}
-        error={firstLoginOnboardingError}
-        onFinish={handleFirstLoginOnboardingFinish}
-      />
 
       {/* BUDDY CELEBRATION MODAL */}
       {showBuddyCelebration && celebrationData && (

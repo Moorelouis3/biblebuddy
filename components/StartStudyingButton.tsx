@@ -2,17 +2,21 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ensureGuestSession } from "@/lib/guestSession";
+import { supabase } from "@/lib/supabaseClient";
 
 /**
  * Landing page primary CTA.
  *
- * Click → guest account created → straight into Bible in One Year Day 1.
- * No signup form, no questionnaire, no payment.
+ * Click -> sign up -> the app. There is nothing in between any more (Louis,
+ * 2026-10-18): no questionnaire, no chooser, no first-login modal. Name and
+ * profile picture are asked for later, once, after the account finishes its
+ * first real thing - see DisplayNamePromptGate.
  *
- * If guest mode is unavailable (anonymous sign-ins turned off in Supabase, or a
- * network failure) it quietly falls back to /signup, so the landing page can
- * never end up with a dead button.
+ * This used to call ensureGuestSession() and send people to /start. Since guest
+ * accounts were switched off on 6 October that call returns "disabled" without
+ * ever checking for a session, so somebody who was already signed in was told
+ * they were not and pushed to /signup. Checking the session directly is both
+ * simpler and correct: signed in goes to the app, everyone else signs up.
  */
 export default function StartStudyingButton({
   clickedFrom,
@@ -35,18 +39,14 @@ export default function StartStudyingButton({
     onTrack?.(clickedFrom);
 
     try {
-      const result = await ensureGuestSession({ source: `landing_${clickedFrom}` });
-
-      if (result.ok) {
-        // One question, then straight into studying. The chooser saves the mode
-        // and routes; nothing else stands between the click and Scripture.
-        window.location.href = "/start";
+      const { data } = await supabase.auth.getSession();
+      if (data.session) {
+        window.location.href = "/dashboard";
         return;
       }
-
       router.push("/signup");
     } catch (err) {
-      console.error("[LANDING] Could not start guest journey:", err);
+      console.error("[LANDING] Could not start:", err);
       router.push("/signup");
     } finally {
       setStarting(false);

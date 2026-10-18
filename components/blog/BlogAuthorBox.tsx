@@ -89,7 +89,7 @@ const APP_CARD: EndCardContent = {
     { title: "Trivia Games", text: "Make learning fun", bubble: "#ece8fb", icon: "game" },
     { title: "A Supportive Community", text: "Study together", bubble: "#fdf1d8", icon: "people" },
   ],
-  visitorPath: "/start",
+  visitorPath: "/signup",
   visitorLabel: "Start Using Bible Buddy for Free",
   memberPath: "/dashboard",
   memberLabel: "Open Bible Buddy",

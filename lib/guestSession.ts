@@ -221,6 +221,19 @@ const GUESTS_ENABLED = false;
 export async function ensureGuestSession(options?: { source?: string }): Promise<GuestSessionResult> {
   const source = options?.source || "deep_link";
 
+  // Somebody who is already signed in is already a session, and this function
+  // answers "who is the current user" as much as it creates guests. Returning
+  // "disabled" to them was how /start came to tell people who had JUST signed
+  // up that they were not signed in, and bounce them back to /signup
+  // (2026-10-18). Check before the switch, not after it.
+  try {
+    const { data } = await supabase.auth.getSession();
+    const existingId = data.session?.user?.id;
+    if (existingId) return { ok: true, userId: existingId, created: false };
+  } catch {
+    // Fall through: no session we can see, carry on as before.
+  }
+
   if (!GUESTS_ENABLED) {
     return { ok: false, reason: "disabled", message: "Guest accounts are turned off - sign up instead." };
   }
