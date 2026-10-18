@@ -227,7 +227,9 @@ export default function YourBookshelf({
         .limit(12);
 
       const todaysPost = (pinned || []).find((post) =>
-        /^Day \d+:\s/.test(String(post.content).split("\n", 1)[0] ?? ""),
+        // Either headline shape: the study name was added in front of the day
+        // on 2026-10-18, and this card has to find the post either way.
+        /(?:^|·\s)Day \d+:\s/.test(String(post.content).split("\n", 1)[0] ?? ""),
       );
 
       if (!cancelled && todaysPost) {

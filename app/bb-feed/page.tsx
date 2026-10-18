@@ -1703,11 +1703,18 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
             onRequested={onBuddyRequested}
           />
         ) : null}
-        {/* My own post keeps this menu, because deleting is the only thing it
-            offers. Somebody else's goes through the shared ReportBlockMenu,
-            which also carries Block - this page's own menu had no way to block
-            anyone, and App Store guideline 1.2 wants both for user content. */}
-        {isMyPost ? (
+        {/* Delete: your own post, or anybody's if you are an admin.
+
+            Louis, 2026-10-18: "I need a delete option on all the posts in the
+            feed." He is the only person this changes anything for - everyone
+            else still sees Report and Block on somebody else's post, which is
+            what App Store guideline 1.2 wants there - and without it the only
+            way to take down something that should not be on the wall was to
+            open the database.
+
+            Somebody else's post, for everybody who is not an admin, goes
+            through the shared ReportBlockMenu below. */}
+        {isMyPost || currentUserIsAdmin ? (
           <div className="relative flex-shrink-0">
             <button
               onClick={() => setMenuOpen((v) => !v)}
@@ -2083,8 +2090,15 @@ const BUDDY_FEED_LIMIT = 300;
  */
 const PINNED_MAX = 3;
 
-/** "Day 18: The Wall That Isn't There" - the daily study post, and nothing else. */
-const DEVOTIONAL_DAY_HEADLINE = /^Day \d+:\s/;
+/**
+ * "The Wisdom of Proverbs · Day 18: The Wall That Isn't There" - the daily
+ * study post, and nothing else.
+ *
+ * The day used to open the headline; it is preceded by the study's name since
+ * 2026-10-18, so this matches either shape rather than only the old one. A
+ * rule that recognises the pinned post has to keep up with the post.
+ */
+const DEVOTIONAL_DAY_HEADLINE = /(?:^|·\s)Day \d+:\s/;
 
 function selectPinnedPosts<T extends FeedPost>(posts: T[]): T[] {
   const pinned: T[] = [];

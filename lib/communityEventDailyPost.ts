@@ -47,8 +47,22 @@ function escapeHtml(value: string) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
-export function buildPostTitle(entry: ProverbsDailyPost) {
-  return `Day ${entry.day}: ${entry.title}`;
+/**
+ * The headline, which has to say which study it is.
+ *
+ * It was "Day 18: The Wall That Isn't There" - a day number and a chapter
+ * title with nothing naming the study they belong to. On the group wall that
+ * was fine, because the only study being posted was the one everybody was in.
+ * In the feed it sits between a chapter explainer and somebody's photo, and
+ * Louis, 2026-10-18: "it doesn't say what study guide it is, it should be big
+ * in the first line what devotional it is and what day."
+ *
+ * The study name comes first because that is the thing being identified; the
+ * day follows it, and the chapter title finishes.
+ */
+export function buildPostTitle(entry: ProverbsDailyPost, eventTitle?: string) {
+  const dayAndTitle = `Day ${entry.day}: ${entry.title}`;
+  return eventTitle ? `${eventTitle} · ${dayAndTitle}` : dayAndTitle;
 }
 
 /**
@@ -56,7 +70,7 @@ export function buildPostTitle(entry: ProverbsDailyPost) {
  * written in the app (<p>..</p>, an empty <p> for a blank line). The feed
  * turns "Proverbs 1:7" into a tappable verse link on its own.
  */
-export function buildPostContent(entry: ProverbsDailyPost, totalDays = COMMUNITY_EVENT_TOTAL_DAYS, studyPath?: string) {
+export function buildPostContent(entry: ProverbsDailyPost, totalDays = COMMUNITY_EVENT_TOTAL_DAYS, studyPath?: string, eventTitle?: string) {
   const blank = "<p></p>";
   const lines = [`<p><strong>⭐ Day ${entry.day} of ${totalDays}: ${escapeHtml(entry.title)}</strong></p>`, blank];
   if (entry.milestone) lines.push(`<p><strong>${escapeHtml(entry.milestone)}</strong></p>`, blank);
@@ -89,7 +103,7 @@ export function buildPostContent(entry: ProverbsDailyPost, totalDays = COMMUNITY
     );
   }
 
-  return { title: buildPostTitle(entry), content: lines.join("") };
+  return { title: buildPostTitle(entry, eventTitle), content: lines.join("") };
 }
 
 /** Plain-text version of the same post, for the review doc and dry runs. */
@@ -329,7 +343,7 @@ async function runForEvent(
 
   const studyPath = eventDayStudyPath(event.devotionalId, day);
   const linkUrl = `${SITE_URL}${studyPath}`;
-  const { title, content } = buildPostContent(entry, event.totalDays, studyPath);
+  const { title, content } = buildPostContent(entry, event.totalDays, studyPath, event.title);
   const louis = await getLouis();
 
   // 1. The post.
