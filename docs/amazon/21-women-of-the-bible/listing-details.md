@@ -31,12 +31,17 @@ and subtitle, which Amazon indexes anyway.
 
 ## Categories
 
-Three placements, as set on the draft. KDP offers no "Guides" placement under
-Bible Study & Reference, so the first one is General:
+Three placements, identical on both drafts:
 
 1. Religion & Spirituality → Christian Books & Bibles → Bible Study & Reference → **General**
 2. Religion & Spirituality → Christian Books & Bibles → Christian Living → **Women's Issues**
-3. Religion & Spirituality → Christian Books & Bibles → Worship & Devotion → **Devotionals**
+3. Religion & Spirituality → Christian Books & Bibles → Christian Living → **Devotionals**
+
+Two things the form teaches you. KDP has no "Guides" placement under Bible
+Study & Reference, so the first one is General. And a Devotionals placement
+chosen under Worship & Devotion saves as Christian Living → Devotionals: both
+drafts were set that way and both came back the same, so it is KDP normalising
+it, not a mis-click.
 
 ## Price
 
@@ -52,11 +57,20 @@ hardcover, the Proverbs journal and the Tempting of Jesus hardcover are all
 $29.99, and the paperbacks $19.99. Set the US price, let KDP convert the rest,
 and check the royalty line before publishing.
 
-## The draft
+## The drafts
 
-Created 2026-10-18: KDP → Bookshelf → 21 Women of the Bible (hardcover, draft
-`Y6FDDBAVQMG`). Details are filled in and both files are uploaded. What is left
-is in `upload-instructions.md` under "What only Louis can do".
+Both created 2026-10-18, KDP → Bookshelf → 21 Women of the Bible:
+
+| Format | Draft | Files |
+|---|---|---|
+| Hardcover | `Y6FDDBAVQMG` | interior + `21_Women_Cover_Hardcover_FINAL.pdf` |
+| Paperback | `2YXFBBE31ZF` | interior + `21_Women_Cover_Paperback_FINAL.pdf` |
+
+Same title, subtitle, author, description, keywords and categories on both,
+pasted rather than retyped so KDP links the two formats onto one detail page.
+Both are cream, 6 x 9, no bleed, matte, barcode box unchecked. What is left is
+in `upload-instructions.md` under "What only Louis can do" - and it is the same
+two steps on each.
 
 ## What it is, for anyone writing ads later
 
