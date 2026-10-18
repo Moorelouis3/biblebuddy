@@ -67965,6 +67965,59 @@
           "at": "2026-10-18T03:00:40Z"
         }
       ]
+    },
+    {
+      "book": "James",
+      "chapter": 5,
+      "startedAt": "2026-10-18T03:47:36Z",
+      "finishedAt": "2026-10-18T03:58:14Z",
+      "durationMinutes": 10.63,
+      "sections": 5,
+      "cards": 38,
+      "verses": 20,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Verified git state before starting: HEAD was detached at 0fcfdb5 (Add James 4 study notes), one commit behind the true origin/main tip ed4fe41, confirmed a direct unmodified ancestor via git merge-base --is-ancestor, then moved onto that tip with git checkout --detach origin/main rather than touching any local branch ref. Priority queue (data/bible-notes-priority-queue.json) and style redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty against the verified tip, so this was normal forward progress right after James 4. Scanned canonical order and confirmed James 1 through 4 are wired as dedicated files while James 5 had no wired file, so James 5 was the correct next target. Fetched real KJV text for James 5 (20 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter closes the epistle: verses 1-6 warn rich landowners that their hoarded riches are already rotting and that wages stolen from harvest workers cry out to the Lord of sabaoth, naming economic fraud and self indulgent luxury as its own kind of violence against the just; verses 7-11 call for patience like a farmer waiting on the early and latter rain, warn against grudges since the judge stands at the door, and point to the prophets and the patience of Job as proof endurance is possible; verse 12 alone forbids oaths and calls for a plain yes or no that needs no reinforcement; verses 13-18 build a practical theology of prayer, the afflicted pray, the merry sing psalms, the sick call the church elders for anointing with oil and the prayer of faith, confession happens between believers, and Elijah is held up as proof one ordinary man's earnest prayer caused both a three and a half year drought and its ending; verses 19-20 close the letter on rescuing a brother who has wandered from the truth, saving a soul from death and hiding a multitude of sins. Chunked into 5 sections (1-6 a warning to the rich, 7-11 patient like the farmer, 12 let your yes mean yes, 13-18 a church that prays, 19-20 bringing a brother back). 38 cards across 20 verses, about 1.9 cards per verse, consistent with recent James and Hebrews density. scripts/check_bible_note_style.py found 7 problems on the first automated pass, all bullets slightly over the 8 word ceiling, fixed by trimming each one, clean on the second pass. A manual section 13 eye check caught one card (Kept Back By Fraud) opening with a recap of the verse instead of one of the four approved moves and reordered its lines to open by defining crieth first instead; confirmed every other card opens with one of the four moves, defines its key terms in plain language, closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji per card and the last bullet starting with the scripture point emoji, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 38 cards. Parser check passed exactly via getBibleReaderStudySections(james, 5) (5/5 sections, verse ranges 1-6/7-11/12/13-18/19-20 with no gaps, 38 total cards, text rendering verbatim, confirmed the same string shape as the already shipped James 4 cards). npx tsc --noEmit -p . ran clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/jamesFiveSource.ts, the james condition in preserveExactPhraseBodies widened from chapters 1 through 4 to chapters 1 through 5, new applyPersonalJamesFiveStudySections() function calling replaceStudySectionsForBookRange(james, 5, 5, JAMES_FIVE_PERSONAL_SECTIONS), invoked right after applyPersonalJamesFourStudySections() so it correctly overrides the legacy JAMES_1_5_PERSONAL_SECTIONS aggregate file for chapter 5, which completes dedicated per-chapter coverage for all of James 1 through 5. That legacy file no longer covers any live chapter in this book. New chapter, normal forward progress, not a style redo. Next forward-progress target is 1 Peter 1, since the legacy FIRST_PETER_1_5_PERSONAL_SECTIONS aggregate file still covers all of 1 Peter chapters 1 through 5 with no dedicated per-chapter files yet.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-18T03:47:36Z"
+        },
+        {
+          "name": "target chapter determined: James 5 (normal forward progress, priority queue and style redo backlog both empty, James 1-4 wired, James 5 not)",
+          "at": "2026-10-18T03:47:36Z"
+        },
+        {
+          "name": "KJV text fetched (James 5, 20 verses, aruljohn mirror)",
+          "at": "2026-10-18T03:47:48Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-18T03:50:45Z"
+        },
+        {
+          "name": "source file written: lib/jamesFiveSource.ts (38 cards, 5 sections)",
+          "at": "2026-10-18T03:52:21Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems after word count fixes)",
+          "at": "2026-10-18T03:53:15Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalJamesFiveStudySections)",
+          "at": "2026-10-18T03:53:34Z"
+        },
+        {
+          "name": "parser check passed (5/5 sections, 38 cards, text verbatim, no gaps 1-20)",
+          "at": "2026-10-18T03:54:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-18T03:56:38Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-18T03:58:14Z"
+        }
+      ]
     }
   ]
 }

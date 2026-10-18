@@ -1239,6 +1239,7 @@ import { JAMES_ONE_PERSONAL_SECTIONS } from "./jamesOneSource";
 import { JAMES_TWO_PERSONAL_SECTIONS } from "./jamesTwoSource";
 import { JAMES_THREE_PERSONAL_SECTIONS } from "./jamesThreeSource";
 import { JAMES_FOUR_PERSONAL_SECTIONS } from "./jamesFourSource";
+import { JAMES_FIVE_PERSONAL_SECTIONS } from "./jamesFiveSource";
 import { FIRST_PETER_1_5_PERSONAL_SECTIONS } from "./firstPeterOneToFivePersonalNotes";
 import { SECOND_PETER_1_3_PERSONAL_SECTIONS } from "./secondPeterOneToThreePersonalNotes";
 import { FIRST_JOHN_1_5_PERSONAL_SECTIONS } from "./firstJohnOneToFivePersonalNotes";
@@ -1583,7 +1584,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "titus" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "philemon" && section.chapter === 1) ||
     (normalizeBook(book) === "hebrews" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13)) ||
-    (normalizeBook(book) === "james" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4));
+    (normalizeBook(book) === "james" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -5058,6 +5059,10 @@ function applyPersonalJamesThreeStudySections() {
 
 function applyPersonalJamesFourStudySections() {
   replaceStudySectionsForBookRange("james", 4, 4, JAMES_FOUR_PERSONAL_SECTIONS);
+}
+
+function applyPersonalJamesFiveStudySections() {
+  replaceStudySectionsForBookRange("james", 5, 5, JAMES_FIVE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalFirstPeterOneThroughFiveStudySections() {
@@ -12861,6 +12866,7 @@ applyPersonalJamesOneStudySections();
 applyPersonalJamesTwoStudySections();
 applyPersonalJamesThreeStudySections();
 applyPersonalJamesFourStudySections();
+applyPersonalJamesFiveStudySections();
 applyPersonalFirstPeterOneThroughFiveStudySections();
 applyPersonalSecondPeterOneThroughThreeStudySections();
 applyPersonalFirstJohnOneThroughFiveStudySections();
