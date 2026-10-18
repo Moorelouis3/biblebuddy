@@ -64,3 +64,4 @@
 2026-10-18T08:40:25Z | 1 commit | The community wall was dropping every completion one line before rendering it
 2026-10-18T08:54:39Z | 1 commit | Completions are real posts now so they can be liked, commented and reported, and the Buddies tab works for somebody with 7,045 buddies
 2026-10-18T08:57:43Z | 1 commit | Both breadcrumb rows are gone from the app; the bottom bar already says where you are
+2026-10-18T12:53:02Z | 20 commits | The feed rebuilt around the post (one column, Like/Comment together, Read more, study activity labelled, Buddies back, filters), Add buddy on every post, the daily study pinned to the top of Community, notifications cut off from the group (461,521 broadcast alerts deleted, alerts open the exact post), share-to-feed after trivia/verse/chapter, Your Bookshelf leading the dashboard, and the 21 Women book study
