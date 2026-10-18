@@ -65,3 +65,4 @@
 2026-10-18T08:54:39Z | 1 commit | Completions are real posts now so they can be liked, commented and reported, and the Buddies tab works for somebody with 7,045 buddies
 2026-10-18T08:57:43Z | 1 commit | Both breadcrumb rows are gone from the app; the bottom bar already says where you are
 2026-10-18T12:53:02Z | 20 commits | The feed rebuilt around the post (one column, Like/Comment together, Read more, study activity labelled, Buddies back, filters), Add buddy on every post, the daily study pinned to the top of Community, notifications cut off from the group (461,521 broadcast alerts deleted, alerts open the exact post), share-to-feed after trivia/verse/chapter, Your Bookshelf leading the dashboard, and the 21 Women book study
+2026-10-18T13:26:49Z | 1 commit | Bible Buddy TV back in the More menu, with the player starting its iframe in parallel with YouTube instead of behind it, and the missing tv_episode_ratings table no longer logged as a failure
