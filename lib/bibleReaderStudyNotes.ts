@@ -1251,6 +1251,7 @@ import { SECOND_PETER_ONE_PERSONAL_SECTIONS } from "./secondPeterOneSource";
 import { SECOND_PETER_TWO_PERSONAL_SECTIONS } from "./secondPeterTwoSource";
 import { SECOND_PETER_THREE_PERSONAL_SECTIONS } from "./secondPeterThreeSource";
 import { FIRST_JOHN_1_5_PERSONAL_SECTIONS } from "./firstJohnOneToFivePersonalNotes";
+import { FIRST_JOHN_ONE_PERSONAL_SECTIONS } from "./firstJohnOneSource";
 import { SECOND_JOHN_1_PERSONAL_SECTIONS } from "./secondJohnOnePersonalNotes";
 import { THIRD_JOHN_1_PERSONAL_SECTIONS } from "./thirdJohnOnePersonalNotes";
 import { JUDE_1_PERSONAL_SECTIONS } from "./judeOnePersonalNotes";
@@ -1594,7 +1595,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "hebrews" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13)) ||
     (normalizeBook(book) === "james" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5)) ||
     (normalizeBook(book) === "1 peter" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5)) ||
-    (normalizeBook(book) === "2 peter" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3));
+    (normalizeBook(book) === "2 peter" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
+    (normalizeBook(book) === "1 john" && section.chapter === 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -5117,6 +5119,10 @@ function applyPersonalSecondPeterThreeStudySections() {
 
 function applyPersonalFirstJohnOneThroughFiveStudySections() {
   replaceStudySectionsForBookRange("1 john", 1, 5, FIRST_JOHN_1_5_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstJohnOneStudySections() {
+  replaceStudySectionsForBookRange("1 john", 1, 1, FIRST_JOHN_ONE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalSecondJohnOneStudySections() {
@@ -12920,6 +12926,7 @@ applyPersonalSecondPeterOneStudySections();
 applyPersonalSecondPeterTwoStudySections();
 applyPersonalSecondPeterThreeStudySections();
 applyPersonalFirstJohnOneThroughFiveStudySections();
+applyPersonalFirstJohnOneStudySections();
 applyPersonalSecondJohnOneStudySections();
 applyPersonalThirdJohnOneStudySections();
 applyPersonalJudeOneStudySections();

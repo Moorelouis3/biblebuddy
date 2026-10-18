@@ -68470,6 +68470,59 @@
           "at": "2026-10-18T11:58:26Z"
         }
       ]
+    },
+    {
+      "book": "1 John",
+      "chapter": 1,
+      "startedAt": "2026-10-18T12:46:40Z",
+      "finishedAt": "2026-10-18T12:55:52Z",
+      "durationMinutes": 9.2,
+      "sections": 4,
+      "cards": 17,
+      "verses": 10,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 729 packages, about 31s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after 2 Peter 3, the latest entry in this log, which completed all of 1 Peter and 2 Peter end to end. Confirmed no dedicated lib/firstJohnOneSource.ts existed yet, only the legacy bulk file lib/firstJohnOneToFivePersonalNotes.ts covering chapters 1 through 5. Fetched real KJV text for 1 John 1 (10 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv/master/1John.json. Read docs/bible-study-note-style.md in full before writing, plus .claude/skills/bible-notes/SKILL.md for the technical pipeline, and studied lib/genesisThirtyOneSource.ts and lib/firstPeterOneSource.ts as reference implementations for voice and file shape. 1 John 1 opens the epistle with John's eyewitness claim about the Word of life, something heard, seen, and physically handled, that was with the Father and has now been made visible (1-2); explains why John is writing, so readers share real fellowship with the apostles, the Father, and the Son, and so that joy may be full (3-4); states plainly that God is light with no darkness at all, exposes the contradiction of claiming fellowship with God while walking in darkness, and ties walking in the light to both fellowship with other believers and the blood of Jesus Christ cleansing from all sin (5-7); and closes by naming the self deception of claiming no sin, defining confession as agreeing with God rather than merely admitting a fact, describing God as faithful and just to forgive and cleanse from all unrighteousness, and warning that denying having sinned at all makes God himself a liar (8-10). Split into 4 sections (1-2, 3-4, 5-7, 8-10), all 10 verses covered with no gaps or overlaps, 17 total cards, about 1.7 cards per verse. scripts/check_bible_note_style.py found 4 problems on the first automated pass (three bullets one word over the 8 word ceiling, and one card's last bullet using the wrong closing emoji), fixed by trimming the long bullets and changing the closing bullet to an arrow emoji landing the takeaway; clean on the second pass across all 17 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (from the beginning, hands have handled, manifested, declare, fellowship, walk, confess, faithful and just, cleanse, unrighteousness), closes on meaning rather than mechanics, uses exactly four bullets per card each 3-8 words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 17 cards. Parser check passed: imported lib/bibleReaderStudyNotes.ts with tsx and called getBibleReaderStudySections('1 john', 1) directly, confirming 4/4 sections, verse ranges 1-2/3-4/5-7/8-10 with no gaps covering all 10 verses, 17 total cards rendering verbatim. npx tsc --noEmit -p . ran clean across the whole project with zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/firstJohnOneSource.ts, a new 1 john chapter 1 condition added to preserveExactPhraseBodies, new applyPersonalFirstJohnOneStudySections() function calling replaceStudySectionsForBookRange('1 john', 1, 1, FIRST_JOHN_ONE_PERSONAL_SECTIONS), invoked right after applyPersonalFirstJohnOneThroughFiveStudySections() so it correctly overrides the legacy FIRST_JOHN_1_5_PERSONAL_SECTIONS aggregate file for chapter 1 only. New chapter, normal forward progress, not a style redo. Chapters 2 through 5 of the legacy lib/firstJohnOneToFivePersonalNotes.ts file remain live and untouched for future runs. This begins dedicated per-chapter coverage of 1 John. Next forward progress target is 1 John 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-18T12:47:11Z"
+        },
+        {
+          "name": "target chapter determined: 1 John 1 (priority queue and style redo backlog both confirmed empty; normal forward progress; last progress-log entry was 2 Peter 3; no wired-in dedicated lib file existed yet for 1 John 1, only the legacy firstJohnOneToFivePersonalNotes.ts aggregate)",
+          "at": "2026-10-18T12:48:03Z"
+        },
+        {
+          "name": "KJV text fetched (1 John 1, 10 verses, raw.githubusercontent.com/aruljohn/Bible-kjv/master/1John.json)",
+          "at": "2026-10-18T12:48:48Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus .claude/skills/bible-notes/SKILL.md for the technical pipeline and reference files lib/genesisThirtyOneSource.ts and lib/firstPeterOneSource.ts",
+          "at": "2026-10-18T12:50:40Z"
+        },
+        {
+          "name": "source file written: lib/firstJohnOneSource.ts (17 cards, 4 sections)",
+          "at": "2026-10-18T12:52:30Z"
+        },
+        {
+          "name": "style checker clean on second pass after fixing 4 reported issues: 17 cards found, no problems",
+          "at": "2026-10-18T12:53:05Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import added, preserveExactPhraseBodies extended with 1 john chapter 1, applyPersonalFirstJohnOneStudySections added and called after applyPersonalFirstJohnOneThroughFiveStudySections)",
+          "at": "2026-10-18T12:53:40Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 17 total cards, verse ranges 1-2/3-4/5-7/8-10 covering all 10 verses with no gaps)",
+          "at": "2026-10-18T12:53:58Z"
+        },
+        {
+          "name": "npx tsc --noEmit clean across whole project, zero errors",
+          "at": "2026-10-18T12:54:10Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-18T12:55:52Z"
+        }
+      ]
     }
   ]
 }
