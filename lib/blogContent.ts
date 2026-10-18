@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-9-explained",
+    title: "Leviticus 9 Explained: Aaron's First Day and the Fire From the LORD",
+    description:
+      "Leviticus 9 explained verse by verse: Aaron's first sacrifice as priest and the fire that fell from the LORD.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-9-explained",
+    publishedAt: "2026-10-18",
+    readTime: "14 min read",
+    image: "/blog-banners/leviticus-9-explained.jpg",
+    groupPost: {
+      title: "Leviticus 9 Explained 📖",
+      content:
+        "Fire fell from the sky, and everyone saw it.\nAaron's first day as priest did not start with a blessing.\n\n📌 He offered for his own sin before he blessed anyone else.\n\n📖 Seven animals died on one single morning.\n📖 Aaron's own sons handed him the blood this time.\n📖 Fire from the LORD fell and the people shouted.\n\nNew article on:\n🟢 why Aaron still needed a **sin offering** for himself\n🟢 the **daily sacrifice** that kept running underneath it all\n🟢 how this fire connects to the next chapter's tragedy\n\nDid you know this was the first priestly blessing in the Bible? 🙏",
+    },
+  },
+  {
     slug: "leviticus-8-explained",
     title: "Leviticus 8 Explained: The Ordination of Aaron and His Sons",
     description:
