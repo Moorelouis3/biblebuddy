@@ -1252,6 +1252,7 @@ import { SECOND_PETER_TWO_PERSONAL_SECTIONS } from "./secondPeterTwoSource";
 import { SECOND_PETER_THREE_PERSONAL_SECTIONS } from "./secondPeterThreeSource";
 import { FIRST_JOHN_1_5_PERSONAL_SECTIONS } from "./firstJohnOneToFivePersonalNotes";
 import { FIRST_JOHN_ONE_PERSONAL_SECTIONS } from "./firstJohnOneSource";
+import { FIRST_JOHN_TWO_PERSONAL_SECTIONS } from "./firstJohnTwoSource";
 import { SECOND_JOHN_1_PERSONAL_SECTIONS } from "./secondJohnOnePersonalNotes";
 import { THIRD_JOHN_1_PERSONAL_SECTIONS } from "./thirdJohnOnePersonalNotes";
 import { JUDE_1_PERSONAL_SECTIONS } from "./judeOnePersonalNotes";
@@ -1596,7 +1597,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "james" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5)) ||
     (normalizeBook(book) === "1 peter" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5)) ||
     (normalizeBook(book) === "2 peter" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
-    (normalizeBook(book) === "1 john" && section.chapter === 1);
+    (normalizeBook(book) === "1 john" && (section.chapter === 1 || section.chapter === 2));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -5123,6 +5124,10 @@ function applyPersonalFirstJohnOneThroughFiveStudySections() {
 
 function applyPersonalFirstJohnOneStudySections() {
   replaceStudySectionsForBookRange("1 john", 1, 1, FIRST_JOHN_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalFirstJohnTwoStudySections() {
+  replaceStudySectionsForBookRange("1 john", 2, 2, FIRST_JOHN_TWO_PERSONAL_SECTIONS);
 }
 
 function applyPersonalSecondJohnOneStudySections() {
@@ -12927,6 +12932,7 @@ applyPersonalSecondPeterTwoStudySections();
 applyPersonalSecondPeterThreeStudySections();
 applyPersonalFirstJohnOneThroughFiveStudySections();
 applyPersonalFirstJohnOneStudySections();
+applyPersonalFirstJohnTwoStudySections();
 applyPersonalSecondJohnOneStudySections();
 applyPersonalThirdJohnOneStudySections();
 applyPersonalJudeOneStudySections();
