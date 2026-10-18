@@ -1,23 +1,35 @@
-# Publishing this — 21 Women of the Bible
+# Publishing this - 21 Women of the Bible
 
-> **State on 2026-10-18.** Both drafts exist in KDP — hardcover `Y6FDDBAVQMG`
-> and paperback `2YXFBBE31ZF` — each with title, subtitle, author, description,
-> keywords, the three categories, cream paper, 6 x 9, no bleed, matte, and the
-> interior and its own wrap uploaded. Steps 1, 2 and 4 below are done except
-> for what is under "What only Louis can do", which applies to each format.
+> **Both formats were submitted on 2026-10-18 and are In review at Amazon.**
+> Hardcover `Y6FDDBAVQMG`, ISBN 9798163402304, $29.99. Paperback `2YXFBBE31ZF`,
+> ISBN 9798163408092, $19.99. Free KDP ISBNs, worldwide rights, cream 6 x 9,
+> matte. Amazon normally takes up to 72 hours to put them on sale.
 
-## What only Louis can do
+## What KDP would not accept, and what fixed it
 
-Once on the hardcover, once on the paperback:
+These will bite the next book too.
 
-1. **Assign the ISBN.** Content page → ISBN → *Get a free KDP ISBN* →
-   **Assign ISBN**. It cannot be undone or reused, which is why it was left.
-   Until it is assigned, KDP will not process the files and the previewer stays
-   greyed out.
-2. **Answer the AI-Generated Content question.** It is a declaration about how
-   the book was made, so it is Louis's to answer, not an agent's.
-3. **Run the previewer, then price and publish.** Prices are in
-   `listing-details.md`.
+1. **Both wraps were the wrong width.** KDP wanted 14.361 x 10.417in for the
+   hardcover (the file was 14.303) and 12.847 x 9.250 for the paperback (it was
+   12.787). `scripts/resize-cover-wrap.mjs` redraws a wrap at the size KDP names.
+2. **Every interior page carried a full-bleed background rectangle**
+   (`1 .996078 .984314 rg` then `n -2 -2 436 652 re f*`). The previewer reads it
+   as an object sitting in the margins, marks it an ERROR and leaves Approve
+   greyed out - so the book cannot be published. The paper is cream anyway, so
+   `scripts/strip-pdf-page-background.mjs` removes it and changes nothing else.
+   Scaling the pages down does not help; the rectangle scales with them.
+3. **Re-uploading a file re-opens the AI declaration.** A confirm box appears
+   under it and Save and Continue silently does nothing until it is ticked.
+
+The files Amazon actually accepted are in Downloads as
+`21_Women_Interior_KDP.pdf`, `21_Women_Cover_Hardcover_KDP.pdf` and
+`21_Women_Cover_Paperback_KDP.pdf`.
+
+## The AI declaration, as every Bible Buddy book answers it
+
+Yes; Texts: entire work, with extensive editing (ChatGPT, Claude); Images: one
+or a few AI-generated images, with minimal or no editing (ChatGPT);
+Translations: none.
 
 A new title, not an edit of an existing one: hardcover first, then paperback
 linked to it. The three print files are the ones built on 2026-10-18.

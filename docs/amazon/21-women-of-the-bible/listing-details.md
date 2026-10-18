@@ -57,24 +57,15 @@ hardcover, the Proverbs journal and the Tempting of Jesus hardcover are all
 $29.99, and the paperbacks $19.99. Set the US price, let KDP convert the rest,
 and check the royalty line before publishing.
 
-## The drafts
+## Published
 
-Both created 2026-10-18, KDP → Bookshelf → 21 Women of the Bible:
+Both submitted 2026-10-18, In review at Amazon:
 
-| Format | Draft | Files |
-|---|---|---|
-| Hardcover | `Y6FDDBAVQMG` | interior + `21_Women_Cover_Hardcover_FINAL.pdf` |
-| Paperback | `2YXFBBE31ZF` | interior + `21_Women_Cover_Paperback_FINAL.pdf` |
+| Format | Draft | ISBN | Price |
+|---|---|---|---|
+| Hardcover | `Y6FDDBAVQMG` | 9798163402304 | $29.99 |
+| Paperback | `2YXFBBE31ZF` | 9798163408092 | $19.99 |
 
-Same title, subtitle, author, description, keywords and categories on both,
-pasted rather than retyped so KDP links the two formats onto one detail page.
-Both are cream, 6 x 9, no bleed, matte, barcode box unchecked. What is left is
-in `upload-instructions.md` under "What only Louis can do" - and it is the same
-two steps on each.
-
-## What it is, for anyone writing ads later
-
-A 21-day study, one woman a day, 47,000 words. The same text is the Women of
-the Bible study inside the app, so a reader who wants it free on a phone and a
-reader who wants it on paper are reading the same words. That is deliberate and
-worth saying in the A+ content.
+Free KDP ISBNs, worldwide rights, cream 6 x 9, matte, barcode box unchecked.
+Printing costs $8.52 hardcover and $4.13 paperback, so royalties are $9.48 and
+$8.13 at 60%. What KDP rejected on the way through is in `upload-instructions.md`.
