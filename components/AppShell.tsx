@@ -37,6 +37,7 @@ import WisdomProverbsPopup from "./WisdomProverbsPopup";
 import WisdomBookPopup from "./WisdomBookPopup";
 import ProverbsLaunchPopup from "./ProverbsLaunchPopup";
 import CommunityEventDayPopup from "./CommunityEventDayPopup";
+import WeeklyFeedPopup from "./WeeklyFeedPopup";
 import ReportProblemCard from "./ReportProblemCard";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import {
@@ -3708,6 +3709,30 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
           )}
         />
+      ) : null}
+
+      {/* The two weekly nudges to the feed: a prayer request on a Sunday
+          week, this week's poll on a Wednesday week. Each one is once a week
+          per person, and whichever popup gets there first takes the visit. */}
+      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
+        <>
+          <WeeklyFeedPopup
+            kind="prayer"
+            userId={userId}
+            pathname={pathname}
+            blocked={Boolean(
+              completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
+            )}
+          />
+          <WeeklyFeedPopup
+            kind="poll"
+            userId={userId}
+            pathname={pathname}
+            blocked={Boolean(
+              completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
+            )}
+          />
+        </>
       ) : null}
 
       {/* BUDDY CELEBRATION MODAL */}

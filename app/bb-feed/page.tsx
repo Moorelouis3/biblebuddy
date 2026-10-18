@@ -282,6 +282,30 @@ function PostComposer({ userId, userProfile, onPosted }: {
 
   const displayName = userProfile?.display_name || userProfile?.username || "Bible Buddy";
 
+  // /bb-feed?compose=prayer_request opens the composer already on Prayer ->
+  // Request. The weekly prayer popup sends people here, and a feed that opens
+  // on a blank box loses them (2026-10-18).
+  useEffect(() => {
+    let wanted = null;
+    try {
+      wanted = new URLSearchParams(window.location.search).get("compose");
+    } catch {
+      return;
+    }
+    if (wanted !== "prayer_request") return;
+
+    setExpanded(true);
+    setTab("prayer");
+    setPrayerIsRequest(true);
+    // Drop the parameter so a refresh does not reopen it.
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.delete("compose");
+      window.history.replaceState({}, "", url.toString());
+    } catch {}
+  }, []);
+
+
   function reset() {
     setContent(""); setPrayerIsRequest(false);
     setPhotoFile(null); setPhotoPreview(null);
