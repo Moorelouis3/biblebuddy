@@ -1,407 +1,498 @@
-import type { PersonalLeviticusPhraseSectionInput } from "./leviticusOneToTenPersonalNotes";
+export type ThirdJohnOnePersonalSection = {
+  chapter: number;
+  startVerse: number;
+  endVerse: number;
+  reference: string;
+  title: string;
+  icon: string;
+  phrases: Array<[string, string]>;
+};
 
-type ThirdJohnPhraseSectionInput = PersonalLeviticusPhraseSectionInput & { book: "3 John" };
+function parseThirdJohnOneRawNotes(rawText: string): ThirdJohnOnePersonalSection[] {
+  const lines = rawText.replace(/\r\n/g, "\n").trim().split("\n");
+  const sections: ThirdJohnOnePersonalSection[] = [];
+  let index = 0;
 
-export const THIRD_JOHN_1_PERSONAL_SECTIONS = [
-{
-      book: "3 John",
-      chapter: 1,
-      startVerse: 2,
-      endVerse: 2,
-      reference: "3 John 1:2",
-      title: "Even as Thy Soul Prospereth",
-      icon: "🌿",
-      phrases: [
-        [
-          "🔎 Even as Thy Soul Prospereth",
-          "Even as Thy Soul Prospereth gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "💛 Beloved I Wish Above All Things That Thou Mayest",
-          "Beloved I Wish Above All Things That Thou Mayest shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "🔎 I Wish Above All Things That Thou Mayest Prosper",
-          "I Wish Above All Things That Thou Mayest Prosper gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 Things That Thou Mayest Prosper and Be in Health",
-          "Things That Thou Mayest Prosper and Be in Health gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 Mayest Prosper and Be in Health Even as Thy",
-          "Mayest Prosper and Be in Health Even as Thy gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 Prosper and Be in Health Even as Thy Soul",
-          "Prosper and Be in Health Even as Thy Soul gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 Thou Mayest Prosper and Be in Health Even",
-          "Thou Mayest Prosper and Be in Health Even gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ]
-      ]
-    },
-    {
-      book: "3 John",
-      chapter: 1,
-      startVerse: 3,
-      endVerse: 3,
-      reference: "3 John 1:3",
-      title: "Even as Thou Walkest in the Truth",
-      icon: "✉️",
-      phrases: [
-        [
-          "📜 Even as Thou Walkest in the Truth",
-          "Even as Thou Walkest in the Truth teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ],
-        [
-          "🔎 I Rejoiced Greatly",
-          "I Rejoiced Greatly gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "📜 Testified of the Truth That Is in Thee Even",
-          "Testified of the Truth That Is in Thee Even teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ],
-        [
-          "📜 The Truth That Is in Thee Even as Thou",
-          "The Truth That Is in Thee Even as Thou teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ],
-        [
-          "📜 Truth That Is in Thee Even as Thou Walkest",
-          "Truth That Is in Thee Even as Thou Walkest teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ],
-        [
-          "📜 The Brethren Came and Testified of the Truth",
-          "The Brethren Came and Testified of the Truth teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ],
-        [
-          "💛 Rejoiced Greatly When the Brethren Came and Testified",
-          "Rejoiced Greatly When the Brethren Came and Testified shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ]
-      ]
-    },
-    {
-      book: "3 John",
-      chapter: 1,
-      startVerse: 4,
-      endVerse: 4,
-      reference: "3 John 1:4",
-      title: "Than to Hear That My Children Walk in Truth",
-      icon: "⚖️",
-      phrases: [
-        [
-          "📜 Than to Hear That My Children Walk in Truth",
-          "Than to Hear That My Children Walk in Truth teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ],
-        [
-          "🔥 Have No Greater Joy Than to Hear That My",
-          "Have No Greater Joy Than to Hear That My points to Christ's return, final judgment, heavenly worship, or the church's endurance.\n\nThese passages do not give future hope to satisfy curiosity. They call believers to worship, repent, endure, and trust the Lamb who reigns.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe phrase helps the reader hold warning and hope together."
-        ],
-        [
-          "🔥 No Greater Joy Than to Hear That My Children",
-          "No Greater Joy Than to Hear That My Children points to Christ's return, final judgment, heavenly worship, or the church's endurance.\n\nThese passages do not give future hope to satisfy curiosity. They call believers to worship, repent, endure, and trust the Lamb who reigns.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe phrase helps the reader hold warning and hope together."
-        ],
-        [
-          "🔥 Greater Joy Than to Hear That My Children Walk",
-          "Greater Joy Than to Hear That My Children Walk points to Christ's return, final judgment, heavenly worship, or the church's endurance.\n\nThese passages do not give future hope to satisfy curiosity. They call believers to worship, repent, endure, and trust the Lamb who reigns.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe phrase helps the reader hold warning and hope together."
-        ],
-        [
-          "🔥 I Have No Greater Joy Than to Hear",
-          "I Have No Greater Joy Than to Hear points to Christ's return, final judgment, heavenly worship, or the church's endurance.\n\nThese passages do not give future hope to satisfy curiosity. They call believers to worship, repent, endure, and trust the Lamb who reigns.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe phrase helps the reader hold warning and hope together."
-        ]
-      ]
-    },
-    {
-      book: "3 John",
-      chapter: 1,
-      startVerse: 6,
-      endVerse: 6,
-      reference: "3 John 1:6",
-      title: "Have Borne Witness of Thy Charity Before the Church",
-      icon: "📣",
-      phrases: [
-        [
-          "💛 Have Borne Witness of Thy Charity Before the Church",
-          "Have Borne Witness of Thy Charity Before the Church shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "🔎 Thou Shalt Do Well",
-          "Thou Shalt Do Well gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "💛 Borne Witness of Thy Charity Before the Church Whom",
-          "Borne Witness of Thy Charity Before the Church Whom shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "💛 Witness of Thy Charity Before the Church Whom If",
-          "Witness of Thy Charity Before the Church Whom If shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "💛 Thy Charity Before the Church Whom If Thou Bring",
-          "Thy Charity Before the Church Whom If Thou Bring shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "💛 Charity Before the Church Whom If Thou Bring Forward",
-          "Charity Before the Church Whom If Thou Bring Forward shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "🔎 Church Whom If Thou Bring Forward on Their Journey",
-          "Church Whom If Thou Bring Forward on Their Journey marks a turn in the writer's thought.\n\nWords like this often connect doctrine to response, warning to encouragement, or promise to endurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording helps the reader follow the flow instead of reading isolated lines."
-        ]
-      ]
-    },
-    {
-      book: "3 John",
-      chapter: 1,
-      startVerse: 7,
-      endVerse: 7,
-      reference: "3 John 1:7",
-      title: "That for His Name's Sake They Went Forth",
-      icon: "🎺",
-      phrases: [
-        [
-          "🔎 That for His Name's Sake They Went Forth",
-          "That for His Name's Sake They Went Forth marks a turn in the writer's thought.\n\nWords like this often connect doctrine to response, warning to encouragement, or promise to endurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording helps the reader follow the flow instead of reading isolated lines."
-        ],
-        [
-          "🔎 Taking Nothing of the Gentiles",
-          "Taking Nothing of the Gentiles gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 His Name's Sake They Went Forth Taking Nothing",
-          "His Name's Sake They Went Forth Taking Nothing marks a turn in the writer's thought.\n\nWords like this often connect doctrine to response, warning to encouragement, or promise to endurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording helps the reader follow the flow instead of reading isolated lines."
-        ],
-        [
-          "🔎 For His Name's Sake They Went Forth Taking",
-          "For His Name's Sake They Went Forth Taking marks a turn in the writer's thought.\n\nWords like this often connect doctrine to response, warning to encouragement, or promise to endurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording helps the reader follow the flow instead of reading isolated lines."
-        ]
-      ]
-    },
-    {
-      book: "3 John",
-      chapter: 1,
-      startVerse: 9,
-      endVerse: 9,
-      reference: "3 John 1:9",
-      title: "Who Loveth to Have the Preeminence Among Them",
-      icon: "🕊️",
-      phrases: [
-        [
-          "💛 Who Loveth to Have the Preeminence Among Them",
-          "Who Loveth to Have the Preeminence Among Them shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "🔎 I Wrote unto the Church",
-          "I Wrote unto the Church identifies the people or setting being addressed.\n\nThese letters and visions speak to real believers who need truth, correction, hope, endurance, and assurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording keeps the passage connected to the people receiving it."
-        ],
-        [
-          "🔎 Receiveth Us Not",
-          "Receiveth Us Not gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "💛 Loveth to Have the Preeminence Among Them Receiveth Us",
-          "Loveth to Have the Preeminence Among Them Receiveth Us shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "💛 Diotrephes Who Loveth to Have the Preeminence Among",
-          "Diotrephes Who Loveth to Have the Preeminence Among shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "💛 Church but Diotrephes Who Loveth to Have the Preeminence",
-          "Church but Diotrephes Who Loveth to Have the Preeminence shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "💛 Wrote unto the Church but Diotrephes Who Loveth",
-          "Wrote unto the Church but Diotrephes Who Loveth shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ]
-      ]
-    },
-    {
-      book: "3 John",
-      chapter: 1,
-      startVerse: 10,
-      endVerse: 10,
-      reference: "3 John 1:10",
-      title: "Prating Against Us with Malicious Words",
-      icon: "🌿",
-      phrases: [
-        [
-          "📜 Prating Against Us with Malicious Words",
-          "Prating Against Us with Malicious Words teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ],
-        [
-          "🔎 Casteth Them Out of the Church",
-          "Casteth Them Out of the Church identifies the people or setting being addressed.\n\nThese letters and visions speak to real believers who need truth, correction, hope, endurance, and assurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording keeps the passage connected to the people receiving it."
-        ],
-        [
-          "💛 Neither Doth He Himself Receive the Brethren",
-          "Neither Doth He Himself Receive the Brethren shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "🔎 I Will Remember His Deeds Which He Doeth",
-          "I Will Remember His Deeds Which He Doeth gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 If I Come",
-          "If I Come gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 Not Content Therewith",
-          "Not Content Therewith gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "📜 Against Us with Malicious Words and Not Content",
-          "Against Us with Malicious Words and Not Content teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ]
-      ]
-    },
-    {
-      book: "3 John",
-      chapter: 1,
-      startVerse: 11,
-      endVerse: 11,
-      reference: "3 John 1:11",
-      title: "He That Doeth Evil Hath Not Seen God",
-      icon: "✉️",
-      phrases: [
-        [
-          "🔎 He That Doeth Evil Hath Not Seen God",
-          "He That Doeth Evil Hath Not Seen God gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 He That Doeth Good Is of God",
-          "He That Doeth Good Is of God gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 Follow Not That Which Is Evil",
-          "Follow Not That Which Is Evil gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 That Which Is Good",
-          "That Which Is Good gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "💛 Beloved Follow Not",
-          "Beloved Follow Not shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "🔎 Doeth Good Is of God but He That Doeth",
-          "Doeth Good Is of God but He That Doeth marks a turn in the writer's thought.\n\nWords like this often connect doctrine to response, warning to encouragement, or promise to endurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording helps the reader follow the flow instead of reading isolated lines."
-        ],
-        [
-          "🔎 Good Is of God but He That Doeth Evil",
-          "Good Is of God but He That Doeth Evil marks a turn in the writer's thought.\n\nWords like this often connect doctrine to response, warning to encouragement, or promise to endurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording helps the reader follow the flow instead of reading isolated lines."
-        ]
-      ]
-    },
-    {
-      book: "3 John",
-      chapter: 1,
-      startVerse: 12,
-      endVerse: 12,
-      reference: "3 John 1:12",
-      title: "Of the Truth Itself",
-      icon: "⚖️",
-      phrases: [
-        [
-          "📜 Of the Truth Itself",
-          "Of the Truth Itself teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ],
-        [
-          "🔥 We Also Bear Record",
-          "We Also Bear Record points to Christ's return, final judgment, heavenly worship, or the church's endurance.\n\nThese passages do not give future hope to satisfy curiosity. They call believers to worship, repent, endure, and trust the Lamb who reigns.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe phrase helps the reader hold warning and hope together."
-        ],
-        [
-          "🔎 Demetrius Hath Good Report of All Men",
-          "Demetrius Hath Good Report of All Men gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 Ye Know That Our Record Is True",
-          "Ye Know That Our Record Is True marks a turn in the writer's thought.\n\nWords like this often connect doctrine to response, warning to encouragement, or promise to endurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording helps the reader follow the flow instead of reading isolated lines."
-        ],
-        [
-          "📜 Good Report of All Men and of the Truth",
-          "Good Report of All Men and of the Truth teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ],
-        [
-          "📜 The Truth Itself Yea and We Also Bear",
-          "The Truth Itself Yea and We Also Bear teaches how God's word, truth, doctrine, or testimony should be received and guarded.\n\nThe writers warn that truth can be neglected, twisted, or abandoned, so believers need clear teaching and faithful obedience.\n\n📜 Truth guarded\n👂 Hearing tested\n🧭 Doctrine clarified\n👣 Obedience shaped\n\nThe phrase helps the reader see why truth matters for daily faith."
-        ],
-        [
-          "🔥 Bear Record and Ye Know That Our Record",
-          "Bear Record and Ye Know That Our Record points to Christ's return, final judgment, heavenly worship, or the church's endurance.\n\nThese passages do not give future hope to satisfy curiosity. They call believers to worship, repent, endure, and trust the Lamb who reigns.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe phrase helps the reader hold warning and hope together."
-        ]
-      ]
-    },
-    {
-      book: "3 John",
-      chapter: 1,
-      startVerse: 13,
-      endVerse: 13,
-      reference: "3 John 1:13",
-      title: "I Will Not with Ink and Pen Write unto Thee",
-      icon: "🕯️",
-      phrases: [
-        [
-          "🔎 I Will Not with Ink and Pen Write unto Thee",
-          "I Will Not with Ink and Pen Write unto Thee gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 I Had Many Things to Write",
-          "I Had Many Things to Write gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 Had Many Things to Write but I Will Not",
-          "Had Many Things to Write but I Will Not marks a turn in the writer's thought.\n\nWords like this often connect doctrine to response, warning to encouragement, or promise to endurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording helps the reader follow the flow instead of reading isolated lines."
-        ],
-        [
-          "🔎 Things to Write but I Will Not with Ink",
-          "Things to Write but I Will Not with Ink marks a turn in the writer's thought.\n\nWords like this often connect doctrine to response, warning to encouragement, or promise to endurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording helps the reader follow the flow instead of reading isolated lines."
-        ],
-        [
-          "🔎 Write but I Will Not with Ink and Pen",
-          "Write but I Will Not with Ink and Pen marks a turn in the writer's thought.\n\nWords like this often connect doctrine to response, warning to encouragement, or promise to endurance.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe wording helps the reader follow the flow instead of reading isolated lines."
-        ]
-      ]
-    },
-    {
-      book: "3 John",
-      chapter: 1,
-      startVerse: 14,
-      endVerse: 14,
-      reference: "3 John 1:14",
-      title: "Peace Be to Thee",
-      icon: "📣",
-      phrases: [
-        [
-          "💛 Peace Be to Thee",
-          "Peace Be to Thee shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "🔎 I Trust I Shall Shortly See Thee",
-          "I Trust I Shall Shortly See Thee gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 We Shall Speak Face to Face",
-          "We Shall Speak Face to Face gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 Greet the Friends by Name",
-          "Greet the Friends by Name gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "🔎 Our Friends Salute Thee",
-          "Our Friends Salute Thee gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ],
-        [
-          "💛 Shall Speak Face to Face Peace",
-          "Shall Speak Face to Face Peace shows how love, fellowship, comfort, or care should shape believers.\n\nLove is not treated as a soft slogan. It is shown in hospitality, forgiveness, truthfulness, brotherly care, and faithful encouragement.\n\n💛 Love practiced\n👥 Community shaped\n🤲 Mercy shown\n🌿 Faith visible\n\nThe phrase helps the reader see what faith looks like toward people."
-        ],
-        [
-          "🔎 I Shall Shortly See Thee and We Shall Speak",
-          "I Shall Shortly See Thee and We Shall Speak gives the reader a specific part of the passage to slow down and understand.\n\nThe wording may carry doctrine, warning, encouragement, assurance, church instruction, or a practical command.\n\n🔎 Detail noticed\n📖 Passage followed\n🧭 Reader clarity\n🌿 Faith connection\n\nThe explanation stays close to the phrase so the reader can understand the text in front of them."
-        ]
-      ]
+  while (index < lines.length) {
+    const verseMatch = lines[index].trim().match(/^#\s*3\s*John\s+1:(\d+)(?:[-–—](\d+))?\s*$/i);
+
+    if (!verseMatch) {
+      index += 1;
+      continue;
     }
-] as const satisfies readonly ThirdJohnPhraseSectionInput[];
+
+    const startVerse = Number(verseMatch[1]);
+    const endVerse = Number(verseMatch[2] || verseMatch[1]);
+    index += 1;
+
+    while (index < lines.length && !lines[index].trim()) index += 1;
+    const titleMatch = lines[index]?.trim().match(/^#\s*(.+)$/);
+    if (!titleMatch) {
+      throw new Error("Missing 3 John 1 section title after verse " + startVerse);
+    }
+    const title = titleMatch[1].trim();
+    index += 1;
+
+    while (index < lines.length && (!lines[index].trim() || lines[index].trim() === "---")) index += 1;
+
+    const phrases: Array<[string, string]> = [];
+    while (index < lines.length && !/^#\s+3\s*John\s+1:/i.test(lines[index].trim())) {
+      const trimmed = lines[index].trim();
+      const phraseMatch = trimmed.match(/^##\s+(.+)$/);
+
+      if (!phraseMatch) {
+        index += 1;
+        continue;
+      }
+
+      const phraseHeading = phraseMatch[1].trim();
+      index += 1;
+      const bodyLines: string[] = [];
+
+      while (
+        index < lines.length &&
+        !/^##\s+/.test(lines[index].trim()) &&
+        !/^#\s+3\s*John\s+1:/i.test(lines[index].trim()) &&
+        lines[index].trim() !== "---"
+      ) {
+        bodyLines.push(lines[index].trimEnd());
+        index += 1;
+      }
+
+      while (bodyLines.length && !bodyLines[0].trim()) bodyLines.shift();
+      while (bodyLines.length && !bodyLines[bodyLines.length - 1].trim()) bodyLines.pop();
+
+      if (!bodyLines.length) {
+        throw new Error("Missing 3 John 1 explanation for " + phraseHeading);
+      }
+
+      phrases.push([phraseHeading, bodyLines.join("\n")]);
+      if (lines[index]?.trim() === "---") index += 1;
+    }
+
+    sections.push({
+      chapter: 1,
+      startVerse,
+      endVerse,
+      reference: startVerse === endVerse ? `3 John 1:${startVerse}` : `3 John 1:${startVerse}-${endVerse}`,
+      title,
+      icon: "",
+      phrases,
+    });
+  }
+
+  if (sections.length !== 6) {
+    throw new Error("Expected 6 3 John 1 sections, received " + sections.length);
+  }
+
+  return sections;
+}
+
+const THIRD_JOHN_ONE_RAW_NOTES = `# 3 John 1:1-2
+# 📜 The Elder Greets A Faithful Friend
+---
+## 📜 The Elder Unto The Wellbeloved Gaius
+
+"The elder" is a title, not John's given name.
+
+Early church writers believed the apostle John wrote this letter.
+
+John also calls himself "the elder" in his previous letter.
+
+"Gaius" was a common name across the Roman world.
+
+Unlike the lady in John's other letter, Gaius is a real named man.
+
+📜 Elder is a title not a name
+🧓 Many believe John wrote this
+👤 Gaius was a common Roman name
+📖 Gaius is a real named friend
+
+---
+## ❤️ Whom I Love In The Truth
+
+John's love for Gaius is anchored in shared belief.
+
+This is not ordinary affection between old friends.
+
+Truth comes first, and real love grows out of it.
+
+John loved his other readers this same way too.
+
+❤️ Love grows out of shared truth
+🙅 Not ordinary friendly affection alone
+✝️ Shared belief comes before this love
+📖 John loved every reader this way
+
+---
+## 🙏 That Thou Mayest Prosper And Be In Health
+
+John opens with a wish for Gaius's whole life.
+
+"Prosper" here means things going well, not becoming wealthy.
+
+Ancient letters often opened with a wish for good health.
+
+John follows that custom, then goes further than custom required.
+
+🙏 John wishes Gaius well all around
+💰 Prosper means things going well, not riches
+📜 Ancient letters often opened this way
+📖 John goes further than custom required
+
+---
+## 🌱 Even As Thy Soul Prospereth
+
+John compares two kinds of prospering in one line.
+
+One is physical health, the other is spiritual health.
+
+He says Gaius's soul was already prospering.
+
+That comparison shows John cared about more than Gaius's body.
+
+A healthy soul mattered more to John than a healthy body.
+
+🌱 Soul prospering means spiritual health
+🩺 Different from simple physical health
+👀 John already saw Gaius thriving in faith
+📖 Spiritual health mattered most to John
+
+# 3 John 1:3-4
+# 😊 Joy Over A Child Walking In Truth
+---
+## 📰 The Brethren Came And Testified Of The Truth That Is In Thee
+
+Traveling believers had visited John with a report about Gaius.
+
+"Testified" means they gave a firsthand, truthful account.
+
+Their report was not a rumor or secondhand guess.
+
+John trusted what these visitors told him in person.
+
+📰 Travelers brought John a firsthand report
+🔎 Testified means giving a truthful account
+🙅 This was not rumor or guesswork
+📖 John trusted what he was told
+
+---
+## 🚶 Even As Thou Walkest In The Truth
+
+"Walking in truth" describes a whole way of living.
+
+It covers daily choices, not just one stated belief.
+
+Gaius lived out his faith where others could see it.
+
+Real belief shows up in ordinary daily actions.
+
+🚶 Walking describes a whole way of life
+🗓️ It means daily choices, not one belief
+👀 Others could see Gaius living it out
+📖 Belief shows up in daily action
+
+---
+## 😊 I Have No Greater Joy Than To Hear That My Children Walk In Truth
+
+John calls Gaius one of his spiritual children.
+
+That title did not require being related by blood.
+
+It described someone John helped bring to faith or taught.
+
+No other news brought John greater joy than this.
+
+A teacher's greatest joy is seeing a student remain faithful.
+
+👨‍👦 Children here means spiritual, not blood family
+📚 John likely taught or led Gaius to faith
+😊 This news brought John his greatest joy
+📖 A teacher's joy is a faithful student
+
+# 3 John 1:5-6
+# 🤝 Faithful To Strangers
+---
+## 🤝 Thou Doest Faithfully Whatsoever Thou Doest To The Brethren And To Strangers
+
+Gaius helped fellow believers he already knew.
+
+He also helped strangers he had never met before.
+
+In the ancient world, travel without lodging was dangerous.
+
+Christian hospitality often meant housing and feeding traveling strangers.
+
+John praises Gaius for helping both groups faithfully.
+
+🤝 Gaius helped believers he already knew
+🚶 He also helped total strangers
+🏠 Hospitality meant housing traveling believers
+📖 Faithfulness covered friends and strangers alike
+
+---
+## 📣 Have Borne Witness Of Thy Charity Before The Church
+
+"Borne witness" means these travelers publicly reported Gaius's kindness.
+
+"Charity" here means practical love, not just warm feelings.
+
+The whole church had heard about Gaius's generosity.
+
+His private kindness became a public example.
+
+📣 Borne witness means a public report
+🤲 Charity means practical love, not a feeling
+🏛️ The whole church heard about it
+📖 Private kindness became a public example
+
+---
+## 🚶 Bring Forward On Their Journey After A Godly Sort
+
+Traveling teachers needed food, money, and lodging for the road.
+
+"Bring forward on their journey" meant helping supply all three.
+
+"After a godly sort" means doing it in a way that honored God.
+
+Gaius was asked to send these travelers off well equipped.
+
+John calls this ordinary kindness a very good thing to do.
+
+🧳 Travelers needed food, money, and lodging
+🚶 Bring forward means helping them on their way
+🙏 Godly sort means doing it to honor God
+📖 John calls this a very good thing
+
+# 3 John 1:7-8
+# ✝️ Partners In The Truth
+---
+## 🎺 For His Name's Sake They Went Forth
+
+These travelers were missionaries, not ordinary tourists.
+
+They left home specifically to spread the name of Jesus.
+
+"His name's sake" means their whole purpose was Christ's honor.
+
+Their travel had a clear mission behind it.
+
+🎺 These travelers were missionaries
+🚶 They left home to spread Christ's name
+🎯 Their purpose was Christ's honor
+📖 Travel with mission, not mere tourism
+
+---
+## 💰 Taking Nothing Of The Gentiles
+
+"Gentiles" here means people outside the Jewish and Christian faith.
+
+These missionaries refused payment from unbelievers for their work.
+
+Accepting money from Gentiles could make the gospel look like a business.
+
+Their refusal protected the honor of the message they carried.
+
+🌍 Gentiles means people outside the faith
+🙅 These missionaries refused their money
+💰 Payment could make the gospel look like business
+📖 Refusing money protected the message's honor
+
+---
+## 🤝 That We Might Be Fellowhelpers To The Truth
+
+"Fellowhelpers" means partners working toward the same goal.
+
+Gaius could not travel and preach himself.
+
+By housing and funding these missionaries, he still shared in their work.
+
+Supporting the mission made Gaius a true partner in it.
+
+🤝 Fellowhelpers means true working partners
+🏠 Gaius supported instead of traveling himself
+💪 Support counted as real partnership
+📖 Helping the mission means sharing in it
+
+# 3 John 1:9-11
+# 👑 Diotrephes And The Call To Do Good
+---
+## 👑 Diotrephes, Who Loveth To Have The Preeminence Among Them
+
+Diotrephes was a leader in this local church.
+
+"Preeminence" means wanting to rank above everyone else.
+
+He loved being first more than he loved serving others.
+
+John names this exact flaw instead of staying vague.
+
+👤 Diotrephes was a local church leader
+👑 Preeminence means wanting to rank first
+💔 He loved status more than serving
+📖 John names this flaw directly
+
+---
+## 🚪 Receiveth Us Not
+
+Diotrephes refused to welcome John's own messengers.
+
+This was a direct, personal rejection of John's authority.
+
+A church leader was shutting out the apostle's representatives.
+
+That refusal revealed exactly where his loyalty really stood.
+
+🚪 Diotrephes refused John's own messengers
+👎 This rejected John's authority directly
+⚠️ A leader shutting out an apostle's representatives
+📖 His refusal revealed his loyalty
+
+---
+## 🗣️ Prating Against Us With Malicious Words
+
+"Prating" means talking too much, usually about nothing worthwhile.
+
+"Malicious" means the words were meant to cause harm.
+
+Diotrephes was not just gossiping, he was spreading lies on purpose.
+
+Careless talk became a weapon aimed at John's reputation.
+
+🗣️ Prating means talking on and on
+🎯 Malicious means meant to cause harm
+😈 Diotrephes spread lies on purpose
+📖 Words became a weapon here
+
+---
+## 🚫 Casteth Them Out Of The Church
+
+Diotrephes went beyond words to actual exclusion.
+
+He physically removed faithful believers from the congregation.
+
+"Casteth out" describes a forceful, public removal.
+
+A leader meant to protect people was driving them away instead.
+
+🚫 Diotrephes removed believers from the church
+💪 Casteth out means forceful removal
+🔄 A protector became the one driving people away
+📖 Leadership was used to harm, not help
+
+---
+## ⚖️ Follow Not That Which Is Evil, But That Which Is Good
+
+John turns from describing Diotrephes to giving Gaius direction.
+
+"Follow" means more than admiring, it means imitating someone's pattern.
+
+Diotrephes was not someone worth imitating, even as a leader.
+
+Gaius needed a clear, simple standard to measure leaders by.
+
+⚖️ John shifts from warning to direction
+👣 Follow means imitating a pattern
+🙅 Even a leader can be the wrong pattern
+📖 Gaius needed a clear standard
+
+---
+## 💔 He That Doeth Evil Hath Not Seen God
+
+John sets up a sharp contrast between two kinds of people.
+
+Doing good consistently shows a real relationship with God.
+
+"Hath not seen God" means never truly knowing Him at all.
+
+Behavior reveals whether someone actually knows God or only claims to.
+
+⚖️ Two opposite patterns are contrasted here
+✅ Good actions show a real relationship with God
+💔 Hath not seen God means never knowing Him
+📖 Behavior reveals what someone really believes
+
+# 3 John 1:12-14
+# 🕊️ A Good Report And A Promise To Visit
+---
+## 🏅 Demetrius Hath Good Report Of All Men
+
+Demetrius is introduced as the clear opposite of Diotrephes.
+
+Everyone who knew him spoke well of his character.
+
+John likely wanted Gaius to welcome Demetrius on his travels.
+
+One good leader's example balances out one bad leader's example.
+
+🏅 Demetrius is the opposite of Diotrephes
+👥 Everyone who knew him spoke well of him
+🤝 John wanted Gaius to welcome him
+📖 A good example balances a bad one
+
+---
+## 📖 We Also Bear Record, And Ye Know That Our Record Is True
+
+John adds his own personal endorsement to Demetrius's good name.
+
+"Bear record" means giving sworn, firsthand testimony.
+
+Gaius already had reason to trust John's word.
+
+Two separate testimonies now stood behind Demetrius's character.
+
+🤝 John adds his own endorsement
+🔎 Bear record means sworn firsthand testimony
+✅ Gaius already trusted John's word
+➡️ Two testimonies secure Demetrius's good name
+
+---
+## 📜 I Had Many Things To Write, But I Will Not With Ink And Pen
+
+"Pen" here refers to a reed pen, not a modern ballpoint.
+
+John had much more he wanted to say to Gaius.
+
+He chose to hold most of it back on purpose.
+
+A letter could never fully replace a real conversation.
+
+🖊️ Pen here means an ancient reed pen
+✍️ John had much more he could say
+🤐 He held it back on purpose
+📖 A letter cannot replace real conversation
+
+---
+## 🗣️ We Shall Speak Face To Face
+
+John plans an actual visit, not another letter.
+
+"Face to face" pictures a real, direct conversation.
+
+Some things are only settled fully in person.
+
+John valued presence over paper whenever he had the choice.
+
+🚶 John plans a real visit in person
+🗣️ Face to face means a direct conversation
+⚖️ Some things are only settled in person
+📖 John valued presence over paper
+
+---
+## 👋 Greet The Friends By Name
+
+John closes with a personal touch instead of a generic goodbye.
+
+"By name" means greeting individuals, not just the whole group.
+
+Early churches functioned like close, connected family networks.
+
+A short closing line still showed real personal care.
+
+👋 John closes with a personal touch
+👤 By name means greeting individuals, not a group
+👨‍👩‍👧‍👦 Churches functioned like connected family networks
+📖 A short closing still showed real care
+`.trim();
+
+export const THIRD_JOHN_1_PERSONAL_SECTIONS = parseThirdJohnOneRawNotes(THIRD_JOHN_ONE_RAW_NOTES);

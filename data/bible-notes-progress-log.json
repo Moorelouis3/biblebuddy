@@ -68792,6 +68792,67 @@
           "at": "2026-10-18T19:58:00Z"
         }
       ]
+    },
+    {
+      "book": "3 John",
+      "chapter": 1,
+      "startedAt": "2026-10-18T20:46:48Z",
+      "finishedAt": "2026-10-18T20:58:51Z",
+      "durationMinutes": 12.1,
+      "sections": 6,
+      "cards": 24,
+      "verses": 14,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 736 packages, about 40s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty. The last progress-log entry was 2 John 1, so normal forward progress pointed at 3 John 1 next. Checking lib/ and the wiring in lib/bibleReaderStudyNotes.ts found that 3 John 1 was NOT actually unwritten: lib/thirdJohnOnePersonalNotes.ts already existed and was already wired in via applyPersonalThirdJohnOneStudySections(), exporting THIRD_JOHN_1_PERSONAL_SECTIONS. Reading that file showed it was generic templated filler with the KJV phrase substituted into a handful of repeated canned paragraphs, not real teaching, the same systemic pre spec problem already flagged for Hebrews through Revelation in MARCUS_HANDOFF.md. Confirming against the preserveExactPhraseBodies condition in lib/bibleReaderStudyNotes.ts showed 3 john was never included there at all, meaning this legacy content was also still being run through the generic auto formatter rather than rendering verbatim, a second signal it had never received real hand written content. Treated this the same way earlier runs carved 1 John 2 through 5 and 2 John 1 out of their own legacy bulk files: wrote real content for this one chapter from scratch, kept the exact same file path (lib/thirdJohnOnePersonalNotes.ts) and exported const name (THIRD_JOHN_1_PERSONAL_SECTIONS) so the existing wiring call needed no change, and switched the file internally from a flat array literal to the standard raw text plus parser shape used by lib/genesisThirtyOneSource.ts and lib/secondJohnOneSource.ts. Fetched real KJV text for 3 John 1 (14 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv/master/3John.json. Read docs/bible-study-note-style.md in full and studied lib/secondJohnOneSource.ts and .claude/skills/bible-notes/SKILL.md as reference. 3 John is the elder's personal letter to Gaius: the greeting and the wish that Gaius prosper in body as his soul already prospers (1-2); joy at hearing Gaius walks and leads others in truth (3-4); Gaius's faithful hospitality to traveling believers and strangers alike and the charge to send them on their way in a godly manner (5-6); those travelers going out for Christ's name while taking nothing from the Gentiles, making their supporters fellowhelpers to the truth (7-8); Diotrephes, who loves the preeminence, refusing John's messengers, spreading malicious talk, and casting faithful believers out of the church, set against the plain charge to follow good and not evil (9-11); Demetrius's good report from everyone including John himself, standing as the opposite example to Diotrephes (12); and the closing preference to finish in person rather than by letter, with peace and personal greetings (13-14). Split into 6 sections covering all 14 verses with no gaps or overlaps (1-2, 3-4, 5-6, 7-8, 9-11, 12-14), 24 total cards, about 1.71 cards per verse. scripts/check_bible_note_style.py ran clean on the first automated pass across all 24 cards: no hyphens, em dashes, semicolons, or contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3 to 8 words, every last bullet landing on 📖 or ➡️. A manual section 13 eye check before saving confirmed every card opens with one of the four approved moves, defines its key terms in plain language (the elder, prosper, walking in truth, borne witness, fellowhelpers, preeminence, prating, casteth out, bear record), and closes on meaning rather than mechanics. Wired into lib/bibleReaderStudyNotes.ts: the only change needed was extending preserveExactPhraseBodies to add a 3 john chapter 1 condition, which had been missing entirely; no new import, apply function, or replaceStudySectionsForBookRange call was needed since those already existed and already pointed at the right const. Parser check via getBibleReaderStudySections(\"3 john\", 1) confirmed 6 sections and 24 total cards matching the design exactly, with the printed text rendering verbatim once preserveExactPhraseBodies was extended. npx tsc --noEmit -p . came back clean across the whole project, zero errors. Jude 1 and both Revelation blocks (1-7 and 8-22) remain on the same legacy templated footing 3 John was just carved out of; that gap is already flagged generally in MARCUS_HANDOFF.md and forward progress will reach and carve out Jude 1 the same way on a future run. Next up: Jude 1.",
+      "steps": [
+        {
+          "name": "npm install done (fresh clone, 736 packages, about 40s)",
+          "at": "2026-10-18T20:46:48Z"
+        },
+        {
+          "name": "priority queue and style redo backlog checked, both remaining: [] confirmed empty",
+          "at": "2026-10-18T20:46:48Z"
+        },
+        {
+          "name": "checked lib/ and lib/bibleReaderStudyNotes.ts wiring: lib/thirdJohnOnePersonalNotes.ts already existed and was already wired via applyPersonalThirdJohnOneStudySections, but contained generic pre spec templated filler and was missing from preserveExactPhraseBodies entirely, confirming it had never received real content, matching the systemic gap already flagged in MARCUS_HANDOFF.md for Hebrews through Revelation",
+          "at": "2026-10-18T20:52:18Z"
+        },
+        {
+          "name": "target chapter determined: 3 John 1, carving real content out of the legacy templated lib/thirdJohnOnePersonalNotes.ts file, same established pattern used for 1 John 2 through 5 and 2 John 1",
+          "at": "2026-10-18T20:52:18Z"
+        },
+        {
+          "name": "KJV text fetched (3 John 1, 14 verses, raw.githubusercontent.com/aruljohn/Bible-kjv/master/3John.json)",
+          "at": "2026-10-18T20:52:18Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full, plus .claude/skills/bible-notes/SKILL.md and lib/secondJohnOneSource.ts studied as reference",
+          "at": "2026-10-18T20:52:18Z"
+        },
+        {
+          "name": "source file rewritten from scratch: lib/thirdJohnOnePersonalNotes.ts (24 cards, 6 sections), switched to the raw text plus parser shape, same exported const name THIRD_JOHN_1_PERSONAL_SECTIONS kept so wiring did not need to change",
+          "at": "2026-10-18T20:56:34Z"
+        },
+        {
+          "name": "style checker clean: scripts/check_bible_note_style.py clean on first automated pass across all 24 cards",
+          "at": "2026-10-18T20:56:34Z"
+        },
+        {
+          "name": "wired: extended preserveExactPhraseBodies to add a 3 john chapter 1 condition, which had been missing entirely; no other wiring changes needed",
+          "at": "2026-10-18T20:56:34Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 24 total cards, verse ranges 1-2/3-4/5-6/7-8/9-11/12-14 covering all 14 verses with no gaps, rendered text confirmed verbatim)",
+          "at": "2026-10-18T20:56:34Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean across whole project, zero errors",
+          "at": "2026-10-18T20:56:34Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-18T20:58:51Z"
+        }
+      ]
     }
   ]
 }

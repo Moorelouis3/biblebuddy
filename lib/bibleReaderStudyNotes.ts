@@ -1602,7 +1602,8 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "1 peter" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5)) ||
     (normalizeBook(book) === "2 peter" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3)) ||
     (normalizeBook(book) === "1 john" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5)) ||
-    (normalizeBook(book) === "2 john" && section.chapter === 1);
+    (normalizeBook(book) === "2 john" && section.chapter === 1) ||
+    (normalizeBook(book) === "3 john" && section.chapter === 1);
   const icon = repairMojibake(section.icon);
   return {
     book,
