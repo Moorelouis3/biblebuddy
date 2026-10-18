@@ -25,6 +25,25 @@ The files Amazon actually accepted are in Downloads as
 `21_Women_Interior_KDP.pdf`, `21_Women_Cover_Hardcover_KDP.pdf` and
 `21_Women_Cover_Paperback_KDP.pdf`.
 
+
+## The hardcover cover has to be fixed before it prints
+
+Caught 2026-10-18, after submission: a hardcover folds **0.7085in of every outer
+edge** round the board. The art was drawn flat to the edge, so the printed book
+loses the N of WOMEN, the E of BIBLE and the end of the subtitle. The paperback
+is fine - it only loses the 0.125in bleed.
+
+`scripts/fit-hardcover-wrap.mjs` rebuilds a wrap so the whole design lands
+inside what is seen: it scales the art to the surviving width, takes 0.21in off
+the top and bottom (sky and steps, never type), and mirrors the edge outwards to
+fill the fold. The corrected file is `21_Women_Cover_Hardcover_KDP_v2.pdf` in
+Downloads.
+
+**It could not be uploaded yet.** KDP locks a title while it is In review and
+sends the edit page back to the Bookshelf. As soon as the hardcover goes live
+(or the review ends), upload v2 under Edit hardcover content and submit again;
+the live edition keeps selling while the new cover is reviewed.
+
 ## The AI declaration, as every Bible Buddy book answers it
 
 Yes; Texts: entire work, with extensive editing (ChatGPT, Claude); Images: one
