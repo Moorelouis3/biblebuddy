@@ -79,6 +79,12 @@ const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
   { label: "Invite a Buddy", href: "/ambassador", icon: "💌" },
   // BB Chat left this sheet on 2026-10-17 - it is the Lil Louis tab now.
   { label: "Notes", href: "/notes", icon: "📝" },
+  // The buddy feed, restored 2026-10-17 after being deleted on 2026-05-26.
+  // Here rather than in the tab strip above on purpose: that strip already
+  // carries six and Louis has had to have it fixed once for crowding, and this
+  // feed has yet to prove anybody uses it. A door it has never had beats a
+  // seventh tab; promote it if the posting takes off.
+  { label: "Buddy Feed", href: "/bb-feed", icon: "👥" },
 ];
 
 /** Below this, a movement is a twitch or a bounce, not a scroll. */
