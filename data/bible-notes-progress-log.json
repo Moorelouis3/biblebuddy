@@ -66460,7 +66460,7 @@
       "chapter": 5,
       "startedAt": "2026-10-16T22:45:59Z",
       "finishedAt": "2026-10-16T22:58:01Z",
-      "durationMinutes": 12.0,
+      "durationMinutes": 12,
       "sections": 5,
       "cards": 44,
       "verses": 25,
@@ -66830,7 +66830,7 @@
       "chapter": 1,
       "startedAt": "2026-10-17T04:46:00Z",
       "finishedAt": "2026-10-17T04:58:00Z",
-      "durationMinutes": 12.0,
+      "durationMinutes": 12,
       "sections": 4,
       "cards": 36,
       "verses": 16,
@@ -67307,6 +67307,536 @@
         {
           "name": "progress files logged (BIBLE_BUDDY_NOTES_PROGRESS.md, bible-notes-progress-log.json)",
           "at": "2026-10-17T13:57:26Z"
+        }
+      ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 6,
+      "startedAt": "2026-10-17T14:45:52Z",
+      "finishedAt": "2026-10-17T14:56:29Z",
+      "durationMinutes": 10.6,
+      "sections": 5,
+      "cards": 42,
+      "verses": 20,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 711 packages, about 36s). Priority queue (data/bible-notes-priority-queue.json, remaining: []) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after Hebrews 5, the latest entry in this log, whose own notes already flagged Hebrews 6 as the next target. Confirmed no lib/hebrewsSixSource.ts existed yet, only the legacy aggregate file lib/hebrewsOneToThirteenPersonalNotes.ts (already carved down to chapters 6-13) still covering chapter 6 with generic templated filler. Fetched real KJV text for Hebrews 6 (20 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Chunked into 5 sections: 1-3 leaving elementary teaching and moving toward maturity, covering principles of the doctrine of Christ, going on unto perfection, not laying again the foundation of repentance from dead works and faith toward God, the doctrine of baptisms and laying on of hands, resurrection of the dead and eternal judgment, and the humble qualifier if God permit; 4-8 the warning against falling away, covering being once enlightened, tasting the heavenly gift, partaking of the Holy Ghost, tasting the good word of God and the powers of the world to come, falling away, crucifying the Son of God afresh, putting him to an open shame, and the farming parable of rain, herbs meet for the dresser, thorns and briers, and land nigh unto cursing whose end is to be burned; 9-12 confidence paired with a call to diligence, covering being persuaded of better things, things that accompany salvation, God not being unrighteous to forget labour of love, ministering to the saints, the full assurance of hope, not being slothful, and inheriting the promises through faith and patience; 13-15 God's oath to Abraham, covering God swearing by himself since he could swear by no greater, the doubled Hebrew blessing formula, and Abraham patiently enduring to obtain the promise; 16-20 the anchor of the soul, covering men swearing by the greater, an oath ending all strife, the heirs of promise, the immutability of God's counsel, the two immutable things in which God cannot lie, strong consolation, fleeing for refuge, the anchor of the soul both sure and stedfast, entering within the veil, Jesus as forerunner, and being made a high priest forever after the order of Melchisedec. Density 2.1 cards per verse (20 verses, 42 cards). scripts/check_bible_note_style.py found 2 problems on the first automated pass (two bullets one word over the 8 word ceiling), fixed by trimming each; clean on the second pass across all 42 cards: no hyphens outside verse reference lines, no em dashes, no semicolons, no contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖. One title (verse 8's nigh unto cursing clause) used a comma instead of the KJV's semicolon to satisfy the no-semicolon mechanical rule while keeping the exact phrase otherwise intact. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (principles, perfection, dead works, baptisms, laying on of hands, enlightened, tasted, partakers, powers of the world to come, fall away, afresh, open shame, herbs meet, dressed, thorns and briers, nigh unto cursing, persuaded, labour of love, ministered, diligence, full assurance, slothful, immutability, counsel, consolation, fled for refuge, anchor, stedfast, the veil, forerunner, Melchisedec), closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines across all 42 cards. Parser check passed via getBibleReaderStudySections('hebrews', 6): 5/5 sections, verse ranges 1-3/4-8/9-12/13-15/16-20 with no gaps covering all 20 verses, 42 total cards rendering verbatim, preserveExactPhraseFormatting correctly true. npx tsc --noEmit -p . ran clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/hebrewsSixSource.ts, the hebrews condition in preserveExactPhraseBodies widened from chapters 1 through 5 to chapters 1 through 6, new applyPersonalHebrewsSixSourceStudySections() function calling replaceStudySectionsForBookRange('hebrews', 6, 6, HEBREWS_SIX_PERSONAL_SECTIONS), invoked right after applyPersonalHebrewsFiveSourceStudySections() so it correctly overrides the legacy HEBREWS_1_13_PERSONAL_SECTIONS aggregate file for chapter 6 only; chapters 7-13 of that legacy file remain live and untouched for future runs to carve out one at a time. New chapter, normal forward progress, not a style redo. Next forward-progress target is Hebrews 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T14:46:30Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 6 (new chapter, normal forward progress; priority queue and style redo backlog both empty)",
+          "at": "2026-10-17T14:46:43Z"
+        },
+        {
+          "name": "KJV text fetched for Hebrews 6 (20 verses, aruljohn mirror)",
+          "at": "2026-10-17T14:46:52Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-17T14:48:30Z"
+        },
+        {
+          "name": "source file written: lib/hebrewsSixSource.ts (5 sections, 42 cards)",
+          "at": "2026-10-17T14:53:40Z"
+        },
+        {
+          "name": "style checker clean after fixing 2 flagged issues (0 problems, 42 cards)",
+          "at": "2026-10-17T14:54:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies hebrews chapter 6, applyPersonalHebrewsSixSourceStudySections added and called after applyPersonalHebrewsFiveSourceStudySections)",
+          "at": "2026-10-17T14:54:40Z"
+        },
+        {
+          "name": "parser check passed: getBibleReaderStudySections('hebrews', 6) -> 5 sections, 42 cards",
+          "at": "2026-10-17T14:55:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-17T14:55:40Z"
+        },
+        {
+          "name": "progress files logged (progress log JSON, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-17T14:56:29Z"
+        }
+      ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 7,
+      "startedAt": "2026-10-17T15:46:47Z",
+      "finishedAt": "2026-10-17T15:56:00Z",
+      "durationMinutes": 9.22,
+      "sections": 7,
+      "cards": 42,
+      "verses": 28,
+      "notes": "New chapter, normal forward progress (both the priority queue and style redo backlog were empty). Follows docs/bible-study-note-style.md exactly: four line body, exactly 4 bullets ending in a meaning takeaway. Next up: Hebrews 8.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T15:45:48Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 7 (new chapter, normal forward progress, both queues empty)",
+          "at": "2026-10-17T15:46:47Z"
+        },
+        {
+          "name": "KJV text fetched: Hebrews 7, 28 verses",
+          "at": "2026-10-17T15:46:55Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-17T15:48:30Z"
+        },
+        {
+          "name": "source file written: lib/hebrewsSevenSource.ts (7 sections, 42 cards)",
+          "at": "2026-10-17T15:52:13Z"
+        },
+        {
+          "name": "style checker clean (python3 scripts/check_bible_note_style.py)",
+          "at": "2026-10-17T15:52:24Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, applyPersonalHebrewsSevenSourceStudySections call)",
+          "at": "2026-10-17T15:52:56Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections Hebrews 7: 7 sections, 42 cards)",
+          "at": "2026-10-17T15:52:56Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-17T15:53:24Z"
+        },
+        {
+          "name": "progress files logged",
+          "at": "2026-10-17T15:56:00Z"
+        }
+      ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 8,
+      "startedAt": "2026-10-17T16:45:48Z",
+      "finishedAt": "2026-10-17T16:56:30Z",
+      "durationMinutes": 10.7,
+      "sections": 6,
+      "cards": 26,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style-redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress after Hebrews 7. Fetched real KJV text for Hebrews 8 (13 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Hebrews 8 opens the letter's argument for a better priesthood and a better covenant: verses 1-2 sum up the previous seven chapters in one line, naming Jesus as the high priest seated at God's right hand and minister of the true heavenly tabernacle; verses 3-5 explain that every priest needs something to offer, that Jesus's priesthood could not exist on earth since Levitical priests already held that role there, and that the earthly tabernacle was only a shadow built to the exact pattern God showed Moses on the mount; verses 6-7 name Jesus as mediator of a better covenant built on better promises, and argue that the very existence of a second covenant proves the first was not faultless; verses 8-9 open the long quotation of Jeremiah's new covenant prophecy, naming Israel's repeated covenant breaking as the reason a new covenant became necessary; verses 10-12 continue that quotation, describing a law written on the mind and heart instead of stone, a covenant formula running through the whole Bible, direct access to God no longer limited to a priestly go between, and complete forgiveness of sins; verse 13 closes by noting that calling it a new covenant already marked the first as old and fading, written probably while the Jerusalem temple still stood. Chunked into 6 sections (1-2 Such An High Priest, 3-5 According To The Pattern, 6-7 A Better Covenant, 8-9 Finding Fault With Them, 10-12 Written In Their Hearts, 13 Ready To Vanish Away). Density exactly 2.0 cards per verse (13 verses, 26 cards). scripts/check_bible_note_style.py found 1 problem on the first automated pass (banned hedge word 'somewhat', which had been used because it is the literal KJV word in verse 3), fixed by retitling that card to a different exact phrase from the same verse ('It Is Of Necessity') that teaches the same point without the banned word, second run clean with 0 problems across all 26 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (sum, Majesty, minister, sanctuary, true tabernacle, ordained, necessity, shadow, shewed, mediator, covenant, faultless, them, house of Israel, house of Judah, iniquities, remember no more, decayeth and waxeth old), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 26 cards. Parser check passed exactly via getBibleReaderStudySections('hebrews', 8) (6/6 sections, verse ranges 1-2/3-5/6-7/8-9/10-12/13 with no gaps, 26 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/hebrewsEightSource.ts, preserveExactPhraseBodies hebrews range extended from chapters 1-7 to 1-8, new function applyPersonalHebrewsEightSourceStudySections added and called right after applyPersonalHebrewsSevenSourceStudySections(). Next forward-progress target is Hebrews 9.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T16:45:48Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 8 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-17T16:46:39Z"
+        },
+        {
+          "name": "KJV text fetched (Hebrews 8, 13 verses, aruljohn mirror)",
+          "at": "2026-10-17T16:46:48Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and SKILL.md read in full",
+          "at": "2026-10-17T16:48:30Z"
+        },
+        {
+          "name": "source file written (lib/hebrewsEightSource.ts, 6 sections, 26 cards)",
+          "at": "2026-10-17T16:50:00Z"
+        },
+        {
+          "name": "style checker clean (1 problem found and fixed: banned hedge word 'somewhat', retitled card)",
+          "at": "2026-10-17T16:51:40Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-17T16:52:30Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('hebrews', 8): 6 sections, 26 cards)",
+          "at": "2026-10-17T16:53:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-17T16:54:26Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-17T16:56:00Z"
+        }
+      ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 9,
+      "startedAt": "2026-10-17T17:46:25Z",
+      "finishedAt": "2026-10-17T17:59:06Z",
+      "durationMinutes": 12.68,
+      "sections": 6,
+      "cards": 45,
+      "verses": 28,
+      "notes": "New chapter (not a redo), normal forward progress after Hebrews 8. Style checker clean on first automated pass across all 45 cards. Avoided the inline-list body tool to dodge a mechanical-checker edge case (it counts any emoji-leading line as a bullet). tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T17:46:25Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 9 (new chapter, redo backlog and priority queue both empty)",
+          "at": "2026-10-17T17:47:27Z"
+        },
+        {
+          "name": "KJV text fetched from raw.githubusercontent.com/aruljohn/Bible-kjv",
+          "at": "2026-10-17T17:47:37Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-17T17:47:41Z"
+        },
+        {
+          "name": "source file written: lib/hebrewsNineSource.ts (45 cards, 6 sections)",
+          "at": "2026-10-17T17:53:53Z"
+        },
+        {
+          "name": "style checker clean on first pass",
+          "at": "2026-10-17T17:55:16Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, apply call, preserveExactPhraseBodies range)",
+          "at": "2026-10-17T17:55:16Z"
+        },
+        {
+          "name": "parser check passed: 6 sections, 45 cards",
+          "at": "2026-10-17T17:55:36Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-17T17:55:56Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-17T17:59:06Z"
+        }
+      ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 10,
+      "startedAt": "2026-10-17T18:45:51Z",
+      "finishedAt": "2026-10-17T18:59:30Z",
+      "durationMinutes": 13.65,
+      "sections": 7,
+      "cards": 39,
+      "verses": 39,
+      "notes": "New chapter (not a redo), normal forward progress after Hebrews 9. Style checker clean after one fix (a 9 word bullet trimmed to 8). Parser check passed (7 sections, 39 cards). tsc clean.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T18:47:32Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 10 (new chapter, forward progress)",
+          "at": "2026-10-17T18:47:32Z"
+        },
+        {
+          "name": "KJV text fetched for Hebrews 10 (39 verses, raw GitHub mirror)",
+          "at": "2026-10-17T18:47:54Z"
+        },
+        {
+          "name": "style spec and skill read in full",
+          "at": "2026-10-17T18:48:28Z"
+        },
+        {
+          "name": "source file lib/hebrewsTenSource.ts written (7 sections, 39 cards)",
+          "at": "2026-10-17T18:54:55Z"
+        },
+        {
+          "name": "style checker clean on lib/hebrewsTenSource.ts",
+          "at": "2026-10-17T18:55:07Z"
+        },
+        {
+          "name": "wired Hebrews 10 into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, replaceStudySectionsForBookRange call)",
+          "at": "2026-10-17T18:55:32Z"
+        },
+        {
+          "name": "parser check passed (7 sections, 39 cards)",
+          "at": "2026-10-17T18:55:58Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-17T18:58:14Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-17T18:59:30Z"
+        }
+      ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 11,
+      "startedAt": "2026-10-17T19:46:11Z",
+      "finishedAt": "2026-10-17T19:56:30Z",
+      "durationMinutes": 10.3,
+      "sections": 13,
+      "cards": 52,
+      "verses": 40,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter (not a redo), normal forward progress after Hebrews 10 (priority queue and style redo backlog both confirmed empty). Hebrews 11 is the famous faith chapter, 40 verses long. Fetched real KJV text from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Split into 13 sections covering verses 1-3/4-6/7/8-10/11-12/13-16/17-19/20-22/23-28/29-31/32-34/35-38/39-40, 52 cards total (1.3 cards per verse). scripts/check_bible_note_style.py found 18 problems on the first pass: two cards were short a bullet because a numeral-plus-keycap emoji (1⃣/2⃣/7⃣) was not recognized as an emoji by the checker regex, several bullets ran over the 8 word ceiling, a few body lines ran over 20 words, and an initial verse-range mistake had both the 32-35 and 35-38 section headers claiming verse 35. Fixed all of it: swapped the numeral emoji for ordinary emoji, trimmed long bullets, split long body lines into two, and corrected the boundary to 32-34/35-38, updating the parser safety check from 12 to 13 expected sections to match. Second pass clean across all 52 cards. Manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms (substance, evidence, elders, framed, translated, diligently, condemned, heir, sojourned, tabernacles, strangers, pilgrims, tried, only begotten, figure, reproach of Christ, proper, assaying, harlot), and closes on meaning not mechanics, with no duplicate titles across all 52 cards. Parser check passed via getBibleReaderStudySections(\"hebrews\", 11): 13/13 sections, 52 cards, text verbatim, no gaps across all 40 verses. npx tsc --noEmit -p . clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/hebrewsElevenSource.ts, preserveExactPhraseBodies hebrews range extended from chapters 1-10 to 1-11, new applyPersonalHebrewsElevenSourceStudySections() added and called right after applyPersonalHebrewsTenSourceStudySections(), correctly overriding the legacy HEBREWS_1_13_PERSONAL_SECTIONS bulk file for chapter 11 only, chapters 12-13 of that legacy file left untouched. Next forward-progress target is Hebrews 12.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T19:46:45Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 11 (normal forward progress, redo backlog empty, last logged chapter was Hebrews 10)",
+          "at": "2026-10-17T19:46:50Z"
+        },
+        {
+          "name": "KJV text fetched (Hebrews 11, 40 verses, aruljohn mirror)",
+          "at": "2026-10-17T19:47:06Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-17T19:47:40Z"
+        },
+        {
+          "name": "source file written: lib/hebrewsElevenSource.ts (52 cards, 13 sections)",
+          "at": "2026-10-17T19:50:20Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 18 automated fixes across emoji, bullet length, line length, and a section-range overlap)",
+          "at": "2026-10-17T19:52:00Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalHebrewsElevenSourceStudySections)",
+          "at": "2026-10-17T19:52:05Z"
+        },
+        {
+          "name": "parser check passed (13/13 sections, 52 cards, text verbatim, after fixing section-count/verse-range bug)",
+          "at": "2026-10-17T19:52:45Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-17T19:53:25Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-17T19:56:00Z"
+        }
+      ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 12,
+      "startedAt": "2026-10-17T20:46:33Z",
+      "finishedAt": "2026-10-17T21:02:22Z",
+      "durationMinutes": 15.8,
+      "sections": 7,
+      "cards": 38,
+      "verses": 29,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. New chapter (not a redo), normal forward progress after Hebrews 11 (priority queue and style redo backlog both confirmed empty). Hebrews 12 is 29 verses long, moving from the cloud of witnesses and the race of faith into the Father's loving discipline, then into the contrast between Mount Sinai (the mountain that might be touched, full of fear) and Mount Sion (the heavenly Jerusalem, full of welcome), closing on God as a consuming fire. Fetched real KJV text from the raw.githubusercontent.com/aruljohn Bible-kjv mirror. Split into 7 sections covering verses 1-3/4-6/7-11/12-17/18-21/22-24/25-29, 38 cards total (1.31 cards per verse, matching Hebrews 11's density). scripts/check_bible_note_style.py found 0 problems on the first pass across all 38 cards: no hyphens, em dashes, semicolons, or contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖 or ➡️. Manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms (beset, author and finisher, despising the shame, chastening, bastards, the Father of spirits, partakers, exercised, peaceable fruit, root of bitterness, birthright, no place of repentance, Mount Sion, innumerable, church of the firstborn, mediator, blood of sprinkling, consuming fire), and closes on meaning not mechanics, with no duplicate titles across all 38 cards. Parser check passed via getBibleReaderStudySections(\"hebrews\", 12): 7/7 sections, 38 cards, text verbatim, no gaps across all 29 verses. npx tsc --noEmit -p . clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/hebrewsTwelveSource.ts, preserveExactPhraseBodies hebrews range extended from chapters 1-11 to 1-12, new applyPersonalHebrewsTwelveSourceStudySections() added and called right after applyPersonalHebrewsElevenSourceStudySections(), correctly overriding the legacy HEBREWS_1_13_PERSONAL_SECTIONS bulk file for chapter 12 only, chapter 13 of that legacy file left untouched. Next forward-progress target is Hebrews 13.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T20:49:44Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 12 (new chapter, normal forward progress)",
+          "at": "2026-10-17T20:49:44Z"
+        },
+        {
+          "name": "KJV text fetched for Hebrews 12 (29 verses) from raw.githubusercontent.com KJV mirror",
+          "at": "2026-10-17T20:49:58Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-17T20:57:10Z"
+        },
+        {
+          "name": "source file written: lib/hebrewsTwelveSource.ts (38 cards, 7 sections)",
+          "at": "2026-10-17T20:57:10Z"
+        },
+        {
+          "name": "style checker clean on first pass (38 cards, 0 problems)",
+          "at": "2026-10-17T20:57:16Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies hebrews range extended to 12, applyPersonalHebrewsTwelveSourceStudySections added and called)",
+          "at": "2026-10-17T20:57:46Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 38 cards, 29 verses, text verbatim)",
+          "at": "2026-10-17T20:58:37Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, exit code 0, zero errors",
+          "at": "2026-10-17T21:01:13Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json entry, docs/BIBLE_BUDDY_NOTES_PROGRESS.md row + running totals)",
+          "at": "2026-10-17T21:02:22Z"
+        }
+      ]
+    },
+    {
+      "book": "Hebrews",
+      "chapter": 13,
+      "startedAt": "2026-10-17T21:45:46Z",
+      "finishedAt": "2026-10-17T21:56:33Z",
+      "durationMinutes": 11,
+      "sections": 7,
+      "cards": 32,
+      "verses": 25,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Style redo backlog (data/bible-notes-style-redo-remaining.json) confirmed empty, so this was normal forward progress after Hebrews 12. Fetched real KJV text for Hebrews 13 (25 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens with the call to let brotherly love continue, hospitality to strangers who may be angels unawares, and remembering those in bonds and suffering adversity (1-3); moves into marriage honoured in all with the bed undefiled, contentment over covetousness resting on the promise never to be left or forsaken, and boldly naming the Lord as helper (4-6); turns to remembering leaders who spoke the word of God and following their faith, anchored by Jesus Christ the same yesterday, today, and for ever, with a warning against being carried about by strange doctrines concerning meats (7-9); explains the Christian altar in contrast to the tabernacle service, the sin offering burned without the camp on the Day of Atonement, Jesus suffering without the gate to sanctify the people, the call to bear his reproach, and the confession that believers seek a city to come since no earthly one continues (10-14); names the sacrifice of praise, the fruit of lips, doing good and communicating as true sacrifices, and the call to obey and submit to leaders who watch for souls and must give account (15-17); carries the writer's request for prayer and a good conscience, his hope to be restored to them the sooner, the benediction naming the God of peace and the great shepherd of the sheep raised through the blood of the everlasting covenant, and the prayer to be made perfect in every good work (18-21); and closes with the appeal to suffer the word of exhortation despite the letter's few words, the note that Timothy is set at liberty, the greeting from those of Italy, the salute to all the leaders and saints, and the closing grace to all (22-25). Split into 7 sections (1-3, 4-6, 7-9, 10-14, 15-17, 18-21, 22-25), all 25 verses covered with no gaps or overlaps, 32 total cards, about 1.28 cards per verse, matching the density range of recent Hebrews chapters. scripts/check_bible_note_style.py found 0 problems on the first automated pass across all 32 cards: no hyphens, em dashes, semicolons, or contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (philadelphia/brotherly love, entertain strangers, bonds, the bed undefiled, covetousness, divers and strange doctrines, the altar, burned without the camp, without the gate, bearing his reproach, no continuing city, the sacrifice of praise, communicate, obey and watch for souls, restored, the great shepherd, the blood of the everlasting covenant, perfect, exhortation, set at liberty, Italy salute you, salute), closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines across all 32 cards. Parser check passed exactly via getBibleReaderStudySections('hebrews', 13): 7/7 sections, verse ranges 1-3/4-6/7-9/10-14/15-17/18-21/22-25 with no gaps covering all 25 verses, 32 total cards rendering verbatim, preserveExactPhraseFormatting correctly true. npx tsc --noEmit -p . ran clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/hebrewsThirteenSource.ts, the hebrews condition in preserveExactPhraseBodies widened from chapters 1 through 12 to chapters 1 through 13, new applyPersonalHebrewsThirteenSourceStudySections() function calling replaceStudySectionsForBookRange(\"hebrews\", 13, 13, HEBREWS_THIRTEEN_PERSONAL_SECTIONS), invoked right after applyPersonalHebrewsTwelveSourceStudySections() so it correctly overrides the legacy HEBREWS_1_13_PERSONAL_SECTIONS aggregate file for chapter 13, its last remaining live chapter, completing dedicated per-chapter coverage for the entire book of Hebrews. New chapter, normal forward progress, not a style redo. This completes the book of Hebrews, all 13 chapters now on dedicated per-chapter files. Next forward-progress target is James 1, which currently only has the legacy bulk file lib/jamesOneToFivePersonalNotes.ts and no dedicated chapter file yet.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T21:45:46Z"
+        },
+        {
+          "name": "target chapter determined: Hebrews 13 (normal forward progress, style redo backlog empty, no existing wired file for Hebrews 13)",
+          "at": "2026-10-17T21:46:35Z"
+        },
+        {
+          "name": "KJV text fetched (Hebrews 13, 25 verses, aruljohn mirror)",
+          "at": "2026-10-17T21:46:42Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-17T21:47:30Z"
+        },
+        {
+          "name": "source file written: lib/hebrewsThirteenSource.ts (32 cards, 7 sections)",
+          "at": "2026-10-17T21:51:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-17T21:51:26Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies range, applyPersonalHebrewsThirteenSourceStudySections)",
+          "at": "2026-10-17T21:51:45Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 32 cards, text verbatim)",
+          "at": "2026-10-17T21:51:57Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-17T21:52:25Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-17T21:56:33Z"
+        }
+      ]
+    },
+    {
+      "book": "James",
+      "chapter": 1,
+      "startedAt": "2026-10-17T23:46:38Z",
+      "finishedAt": "2026-10-18T00:12:00Z",
+      "durationMinutes": 25,
+      "sections": 9,
+      "cards": 32,
+      "verses": 27,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue (data/bible-notes-priority-queue.json) and style redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty. Hebrews 1 through 13 is now fully complete on dedicated per-chapter files, so the canonical-order scan moved on to James. James, 1-2 Peter, 1-3 John, Jude, and Revelation currently have only a legacy bulk personal-notes file wired in per book (no dedicated per-chapter file), the exact state Hebrews was in before its per-chapter runs began, so James 1 is the correct next forward-progress target, not a redo. Fetched real KJV text for James 1 (27 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. Split into 9 sections: 1 (James a servant of God, scattered abroad to the twelve tribes), 2-4 (count it all joy, the trying of faith, patience's perfect work), 5-8 (asking God for wisdom, liberal giving, nothing wavering, the double minded man), 9-11 (the brother of low degree, the rich made low, the flower of the grass), 12-15 (blessed is the man that endureth, tempted of God corrected, drawn away of his own lust, lust conceiving sin and death), 16-18 (do not err, every good and perfect gift, the Father of lights, begat with the word of truth), 19-21 (swift to hear slow to speak, the wrath of man, laying apart filthiness, the engrafted word), 22-25 (doers of the word not hearers only, the mirror, straightway forgetting, the perfect law of liberty), and 26-27 (bridling the tongue, pure religion defined, visiting the fatherless and widows, unspotted from the world). All 27 verses covered with no gaps or overlaps, 32 total cards, about 1.19 cards per verse, matching the density of recent Hebrews chapters. scripts/check_bible_note_style.py found 0 problems on the first automated pass: no hyphens, em dashes, semicolons, or contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on a scripture or implication emoji. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning rather than mechanics, and has no duplicate titles or repeated opening lines across all 32 cards. Parser check passed via getBibleReaderStudySections('james', 1): 9/9 sections, verse ranges 1/2-4/5-8/9-11/12-15/16-18/19-21/22-25/26-27 with no gaps covering all 27 verses, 32 cards rendering verbatim, preserveExactPhraseFormatting correctly true. npx tsc --noEmit ran clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/jamesOneSource.ts, a new james chapter 1 condition added to preserveExactPhraseBodies, new applyPersonalJamesOneStudySections() function calling replaceStudySectionsForBookRange('james', 1, 1, JAMES_ONE_PERSONAL_SECTIONS), invoked right after applyPersonalJamesOneThroughFiveStudySections() so it correctly overrides the legacy JAMES_1_5_PERSONAL_SECTIONS aggregate file for chapter 1 only. New chapter, normal forward progress, not a style redo. Chapters 2 through 5 of the legacy lib/jamesOneToFivePersonalNotes.ts file remain live and untouched for future runs. Next forward-progress target is James 2.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-17T23:46:38Z"
+        },
+        {
+          "name": "target chapter determined: James 1 (new chapter, normal forward progress; priority queue and style redo backlog both empty; James-Revelation only had legacy bulk personal-notes files, same state Hebrews was in before)",
+          "at": "2026-10-17T23:49:10Z"
+        },
+        {
+          "name": "KJV text fetched (James 1, 27 verses, aruljohn mirror)",
+          "at": "2026-10-17T23:49:33Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-17T23:50:05Z"
+        },
+        {
+          "name": "source file written: lib/jamesOneSource.ts (32 cards, 9 sections)",
+          "at": "2026-10-18T00:03:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems on first pass)",
+          "at": "2026-10-18T00:03:30Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies james chapter 1, applyPersonalJamesOneStudySections called after the bulk James apply)",
+          "at": "2026-10-18T00:04:00Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 32 cards, text verbatim, getBibleReaderStudySections('james', 1))",
+          "at": "2026-10-18T00:04:30Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-18T00:07:00Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-18T00:12:00Z"
+        }
+      ]
+    },
+    {
+      "book": "James",
+      "chapter": 2,
+      "startedAt": "2026-10-18T00:46:18Z",
+      "finishedAt": "2026-10-18T00:58:43Z",
+      "durationMinutes": 12.42,
+      "sections": 7,
+      "cards": 32,
+      "verses": 26,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. Priority queue and style redo backlog (data/bible-notes-style-redo-remaining.json) both confirmed empty, so this was normal forward progress right after James 1. Fetched real KJV text for James 2 (26 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter opens by condemning favoritism toward a rich visitor over a poor one in the assembly, grounded in the Lord of glory himself (1-4); turns to God choosing the poor of this world rich in faith as heirs of the kingdom, while rich men oppress and blaspheme the worthy name believers are called by (5-7); explains the royal law of loving your neighbor, how breaking the law at any one point makes someone guilty of all of it, the law of liberty, and judgment without mercy for those who show none (8-13); argues that faith without works, pictured in a brother or sister left naked and hungry while only words of blessing are offered, is dead being alone (14-17); answers the objection that faith and works can be separated by pointing out even devils believe and tremble, calling the objector a vain man (18-20); grounds the whole argument in Abraham, justified by works when he offered Isaac, faith and works wrought together, and the title Friend of God (21-24); and closes with Rahab the harlot justified by works for hiding the messengers, and the closing picture that faith without works is dead exactly as a body without the spirit is dead (25-26). Split into 7 sections (1-4, 5-7, 8-13, 14-17, 18-20, 21-24, 25-26), all 26 verses covered with no gaps or overlaps, 32 total cards, about 1.23 cards per verse, matching the density of recent Hebrews and James chapters. scripts/check_bible_note_style.py found 2 problems on the first pass (a banned hedge word fairly, and one bullet at 9 words), both fixed immediately, then 0 problems: no hyphens, em dashes, semicolons, or contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on scripture or implication emoji. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning rather than mechanics, and has no duplicate titles or repeated opening lines across all 32 cards. Parser check passed via getBibleReaderStudySections('james', 2): 7/7 sections, verse ranges 1-4/5-7/8-13/14-17/18-20/21-24/25-26 with no gaps covering all 26 verses, 32 cards rendering verbatim, preserveExactPhraseFormatting correctly true. npx tsc --noEmit -p . ran clean, zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/jamesTwoSource.ts, the james condition in preserveExactPhraseBodies widened from chapter 1 only to chapters 1 or 2, new applyPersonalJamesTwoStudySections() function calling replaceStudySectionsForBookRange('james', 2, 2, JAMES_TWO_PERSONAL_SECTIONS), invoked right after applyPersonalJamesOneStudySections() so it correctly overrides the legacy JAMES_1_5_PERSONAL_SECTIONS aggregate file for chapter 2 only. New chapter, normal forward progress, not a style redo. Chapters 3 through 5 of the legacy lib/jamesOneToFivePersonalNotes.ts file remain live and untouched for future runs. Next forward-progress target is James 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-18T00:46:48Z"
+        },
+        {
+          "name": "target chapter determined: James 2 (new chapter, normal forward progress; priority queue and style redo backlog both empty, follows James 1)",
+          "at": "2026-10-18T00:47:07Z"
+        },
+        {
+          "name": "KJV text fetched (James 2, 26 verses, aruljohn mirror)",
+          "at": "2026-10-18T00:47:22Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-18T00:47:39Z"
+        },
+        {
+          "name": "source file written: lib/jamesTwoSource.ts (32 cards, 7 sections)",
+          "at": "2026-10-18T00:53:39Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, fixed 2 issues then 0 problems)",
+          "at": "2026-10-18T00:53:56Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies james range widened to chapters 1-2, applyPersonalJamesTwoStudySections added and called)",
+          "at": "2026-10-18T00:54:09Z"
+        },
+        {
+          "name": "parser check passed (7/7 sections, 32 cards, 26 verses, text verbatim, getBibleReaderStudySections('james', 2))",
+          "at": "2026-10-18T00:54:10Z"
+        },
+        {
+          "name": "npx tsc --noEmit -p . clean, exit code 0, zero errors",
+          "at": "2026-10-18T00:57:09Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-18T00:58:43Z"
         }
       ]
     }

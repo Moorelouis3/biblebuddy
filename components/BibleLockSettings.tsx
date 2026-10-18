@@ -30,6 +30,37 @@ export default function BibleLockSettings() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  /**
+   * How long until the apps lock themselves again.
+   *
+   * Midnight in the reader's own timezone, which is the same midnight the
+   * extension wakes on - it schedules against DateComponents(hour: 0), and iOS
+   * resolves that locally too. Counting to a UTC midnight would be hours out
+   * for most people and wrong in a way nobody could explain.
+   *
+   * Minutes, not seconds: a ticking second hand on a settings page is a
+   * distraction, and it would re-render this card sixty times a minute to say
+   * something that only changes once.
+   */
+  const [timeUntilMidnight, setTimeUntilMidnight] = useState("");
+
+  useEffect(() => {
+    const describe = () => {
+      const now = new Date();
+      const midnight = new Date(now);
+      midnight.setHours(24, 0, 0, 0);
+      const minutes = Math.max(0, Math.round((midnight.getTime() - now.getTime()) / 60_000));
+      const hours = Math.floor(minutes / 60);
+      const mins = minutes % 60;
+      if (hours === 0) return `${mins} minute${mins === 1 ? "" : "s"}`;
+      if (mins === 0) return `${hours} hour${hours === 1 ? "" : "s"}`;
+      return `${hours}h ${mins}m`;
+    };
+    setTimeUntilMidnight(describe());
+    const timer = setInterval(() => setTimeUntilMidnight(describe()), 30_000);
+    return () => clearInterval(timer);
+  }, []);
+
   const refresh = useCallback(async () => {
     const next = await bibleLockStatus();
     setStatus(next.supported ? next : null);
@@ -144,6 +175,26 @@ export default function BibleLockSettings() {
                 </button>
               )}
             </div>
+
+            {/* When the apps go back on (Louis, 2026-10-17: "it should be a
+                countdown to say when the next lock will happen (12am)").
+                Only worth saying when apps are chosen and nothing is locked
+                right now - while they are locked, the question is how to get
+                them back, not when they return. */}
+            {/* Shown whether or not the apps are locked right now. It was
+                hidden while locked, on the reasoning that somebody locked out
+                does not care when the next lock is - but Louis went looking
+                for it in that exact state and found it gone (2026-10-18: "then
+                no timer on settings"). A number that disappears reads as a
+                fault, and while locked the midnight line is still the useful
+                fact: finishing today's reading buys you the rest of today. */}
+            {status.chosen > 0 ? (
+              <p className="rounded-xl bg-[#f5f2ff] px-3 py-2 text-xs font-bold text-[#4a3d7a]">
+                {status.locked
+                  ? `Finish today's reading and your apps come back until midnight — ${timeUntilMidnight} from now.`
+                  : `Your apps lock again in ${timeUntilMidnight} — at midnight.`}
+              </p>
+            ) : null}
 
             <p className="text-xs text-gray-500">
               The lock clears itself the moment you finish today&apos;s reading.{" "}

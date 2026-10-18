@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
+import { cardTint } from "../../lib/cardTints";
 import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
 import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
 import { BIBLE_YEAR_PLAN_HREF } from "../../lib/bibleYearProgress";
@@ -172,7 +173,7 @@ export default function YourBookshelf({
   if (loading) {
     return (
       <section aria-labelledby="home-bookshelf-heading">
-        <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
+        <div>
           <div className="h-6 w-44 animate-pulse rounded bg-[var(--bb-surface-soft,#eef2f7)]" />
           <div className="mt-5 flex gap-3">
             {[0, 1, 2].map((i) => (
@@ -192,7 +193,21 @@ export default function YourBookshelf({
   return (
     <>
       <section aria-labelledby="home-bookshelf-heading">
-        <div className="rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-4 shadow-sm sm:p-5">
+        {/* No outer card. Louis, 2026-10-17: "you have the continue reading in
+            a white holder, remove that, it's pointless - look at the quick
+            reads, each banner has its own holder, no main holder, the page is
+            the external holder."
+
+            It was doing visible harm rather than nothing: once every book got
+            its own pastel card, a white box around them framed things that
+            were already framed, and the tints read as swatches inside a panel
+            instead of cards on the page. Quick Reads never had one. The
+            padding went with it, because HomeScreen's own px-4 already
+            provides the gutter - which is exactly how Quick Reads lines up.
+
+            The loading skeleton lost its box too, or the shelf would flash a
+            white panel and then drop it the moment the books arrived. */}
+        <div>
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               {/* Sized for a 375px phone first: at text-xl the two words wrapped
@@ -229,8 +244,18 @@ export default function YourBookshelf({
                 // The book they are furthest into wears the solid button; the
                 // rest are tinted, so the eye lands on one thing.
                 const isLead = index === 0;
+                // Each book on its own pastel card (Louis, 2026-10-17:
+                // "separate bgs for each banner, and the same for continue
+                // reading"). The width grew by exactly the padding, so the
+                // covers keep the size and portrait proportions they had - the
+                // frame is added around them rather than taken out of them.
+                const tint = cardTint(index);
                 return (
-                  <li key={book.key} className="flex w-[132px] shrink-0 snap-start flex-col sm:w-[158px]">
+                  <li
+                    key={book.key}
+                    className="flex w-[148px] shrink-0 snap-start flex-col rounded-2xl border p-2 shadow-sm sm:w-[174px]"
+                    style={{ backgroundColor: tint.bg, borderColor: tint.border }}
+                  >
                     <button
                       type="button"
                       onClick={() => router.push(book.href)}
@@ -313,7 +338,26 @@ export default function YourBookshelf({
           Together" until 2026-10-17; Louis wanted it to say what it is. */}
       {todayStrip ? (
         <section aria-labelledby="home-today-together-heading">
-          <div className="rounded-3xl border border-[#dbe7f4] bg-[var(--bb-accent-soft,#eaf5ff)] p-4 shadow-sm sm:p-5">
+          {/* The lavender community look, the same family as From Your Groups
+              further down the dashboard (Louis, 2026-10-17: the plain blue
+              container "doesn't match the more polished components").
+              bg-journey is the one illustrated background the dashboard was
+              not using - a path over soft hills - so the two community cards
+              are related without being the same picture twice.
+
+              The text colours are fixed rather than themed, as on From Your
+              Groups: the background is a fixed light illustration, so themed
+              text would turn white on it in dark mode. */}
+          <div
+            className="relative overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
+            style={{
+              backgroundColor: "#f5f2ff",
+              backgroundImage: "url(/home-cards/bg-journey.jpg)",
+              backgroundSize: "cover",
+              backgroundPosition: "left bottom",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
             {/* On a phone the button goes underneath, full width. Beside the
                 text it left the heading about 150px to live in, which broke it
                 across two lines (Louis, 2026-10-17). */}
@@ -321,22 +365,36 @@ export default function YourBookshelf({
               <div className="min-w-0 flex-1">
                 <h2
                   id="home-today-together-heading"
-                  className="flex items-center gap-2 whitespace-nowrap text-base font-black text-[var(--bb-text-primary,#111827)] sm:text-xl"
+                  className="flex items-center gap-2 whitespace-nowrap text-base font-black text-[#2b2150] sm:text-xl"
                 >
                   <span aria-hidden>👥</span>
                   Today&rsquo;s Group Study
                 </h2>
-                <p className="mt-1 text-sm font-black text-[var(--bb-text-primary,#111827)] sm:text-[15px]">
+                <p className="mt-1 text-sm font-black text-[#2b2150] sm:text-[15px]">
                   {todayStrip.reading}
                   {todayStrip.dayTitle ? <> &middot; {todayStrip.dayTitle}</> : null}
                 </p>
-                <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)] sm:text-sm">
+                <p className="mt-1 text-xs font-semibold text-[#6a5aa8] sm:text-sm">
                   Read, reflect, and join the discussion with others in the Bible Buddy community.
                 </p>
               </div>
               <Link
                 href={`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`}
-                className="block shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-5 py-2.5 text-center text-sm font-black text-[var(--bb-button-text,#ffffff)] transition hover:opacity-95 sm:py-3"
+                /* Dark ink rather than the accent blue (Louis's mock-up,
+                   2026-10-17). #2b2150 is not a new colour: it is the same
+                   deep purple this card's own heading uses, and the one From
+                   Your Groups uses, so the button sits inside the lavender
+                   family instead of being the one loud thing on a pastel
+                   card. Fixed, like the text above it, because the
+                   illustrated background stays light in dark mode. */
+                className="block shrink-0 rounded-full bg-[#2b2150] px-5 py-2.5 text-center text-sm font-black shadow-sm transition hover:bg-[#3a2d6b] sm:py-3"
+                /* The colour is inline, not a utility class, because
+                   globals.css carries an unlayered `a { color: inherit }`.
+                   Tailwind v4 puts utilities in @layer utilities, and
+                   unlayered CSS outranks any layer - so a colour class on an
+                   anchor silently loses and the label inherits the card's
+                   dark text. On this button that was black on near-black. */
+                style={{ color: "#ffffff" }}
               >
                 Join Discussion →
               </Link>
