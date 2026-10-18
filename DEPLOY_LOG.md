@@ -63,3 +63,4 @@
 2026-10-18T07:58:18Z | 1 commit | Mark all read now clears the conversations the badge actually counts, instead of the first thousand it happened to list
 2026-10-18T08:40:25Z | 1 commit | The community wall was dropping every completion one line before rendering it
 2026-10-18T08:54:39Z | 1 commit | Completions are real posts now so they can be liked, commented and reported, and the Buddies tab works for somebody with 7,045 buddies
+2026-10-18T08:57:43Z | 1 commit | Both breadcrumb rows are gone from the app; the bottom bar already says where you are

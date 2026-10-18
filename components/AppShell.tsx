@@ -3880,11 +3880,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             : ""
         }
       >
-        {shouldShowBreadcrumbs && (
-          <div className="max-w-5xl mx-auto px-4 pt-2">
-            <BibleStudyBreadcrumb items={breadcrumbItems} className="mb-2" />
-          </div>
-        )}
+        {/* The app-wide breadcrumb row is gone (Louis, 2026-10-18: "we have
+            two breadcrumb menus and we don't need any since we have the menu
+            at the bottom, it's taking up space").
+
+            He is right about both halves. The bottom bar already says which
+            section you are in and reaches every other one, so a "Home › Bb
+            Feed" strip repeated that in less space and with fewer
+            destinations - and on a phone it cost a line at the top of every
+            single screen. BibleStudyBreadcrumb and the items that fed it are
+            still here, unused, for whichever page eventually wants one. */}
         {/* The lock strip, at the top of EVERY app page (Louis, 2026-10-17: "a
             banner at the top on every page that says my apps are locked until
             you do a meaningful act"). It lived in HomeScreen, so somebody who

@@ -2418,13 +2418,10 @@ export default function BbFeedPage() {
 
       <div className="bb-community-content max-w-2xl mx-auto px-4 py-8">
 
-        {/* Breadcrumb */}
-        <nav className="text-sm text-gray-500 mb-6">
-          <Link href="/dashboard" className="hover:text-gray-700 transition">Dashboard</Link>
-          <span className="mx-2">›</span>
-          <span className="text-gray-800 font-medium">Bible Buddy Feed</span>
-        </nav>
-
+        {/* No breadcrumb. The bottom bar says where you are and gets you
+            anywhere else; a "Dashboard › Bible Buddy Feed" row above it was a
+            second navigation saying less (Louis, 2026-10-18: "we have two
+            breadcrumb menus and we don't need any, it's taking up space"). */}
         <h1 className="text-3xl font-bold text-gray-900 mb-6">🔥 Bible Buddy Feed</h1>
 
         {/* Tabs */}
