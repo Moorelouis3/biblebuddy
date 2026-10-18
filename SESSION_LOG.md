@@ -8197,3 +8197,35 @@ Next up: 1 John 4
 ## 2026-10-18T15:55:42Z (hourly chapter notes run)
 Chapter: 1 John 4 | Duration: 10 min | Sections: 7 | Cards: 34 | Status: pass
 Next up: 1 John 5
+
+## 2026-10-18 (night)
+Time spent: a full day, roughly 10 hours across one long session.
+Done:
+- Feed rebuilt around the post: one 780px column, header/body/left-aligned
+  Like+Comment, Read more, posts keep their formatting and their links,
+  completions labelled "Study activity", three tabs, filters, Add buddy on
+  every post, comment likes (new table + trigger), Top Buddies card, and the
+  mockup's lavender title card and peach rankings card.
+- The group is closed for good: /study-groups redirects to the feed, every
+  door removed (dashboard embed, Lil Louis, Friday email CTA, recommendation
+  card), and 13,387 group notifications deleted. Notifications now only tell
+  you what happened to your own posts and comments.
+- Alerts open the exact post again; the bell no longer prints URLs.
+- Bible Buddy TV: back in the app with a dashboard shelf and a nav tab (More
+  removed), and the player starts its iframe in parallel with YouTube's API
+  instead of behind it.
+- Settings opens Settings - it had been pushing /dashboard for weeks.
+- "Set as my reading plan" works end to end: the plan you set leads the
+  bookshelf and is marked "Your study"; covers Bible in One Year too.
+- 21 Women of the Bible published (21 days, already written); Higher Hope
+  added as a placeholder counting down to Sunday 11am.
+Not live yet: nothing - `npm run pending` reads empty, every commit was
+tagged and built on push, and DEPLOY_LOG is up to date.
+Still open:
+- Higher Hope has no days written; the card is deliberately unclickable
+  until it lands on 25 Oct at 11:00.
+- Two ideas from today not started: telling existing users the feed is alive,
+  and checking every verse/game result can be shared to the feed.
+- Top 100 rankings open inside the card; there is still no reader-facing
+  rankings page (the only full board is admin-only).
+Next: write Higher Hope's 60 days before Sunday.
