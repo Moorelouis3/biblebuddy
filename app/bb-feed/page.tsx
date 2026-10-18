@@ -2970,34 +2970,52 @@ export default function BbFeedPage() {
             anywhere else; a "Dashboard › Bible Buddy Feed" row above it was a
             second navigation saying less (Louis, 2026-10-18: "we have two
             breadcrumb menus and we don't need any, it's taking up space"). */}
-        <h1 className="mb-4 text-3xl font-bold text-gray-900">Feed</h1>
+        {/* Title and tabs in one lavender card, the dashboard's own.
 
-        {/* Two feeds, two tabs.
+            #f5f2ff with the #ddd6f3 border and bg-journey behind it is what
+            From Your Groups and the bookshelf's community strip already use,
+            so the top of the feed belongs to the same app as the home screen
+            rather than being a bare heading over a bare row (Louis's mockup,
+            2026-10-18).
 
-            Everybody's posts, and your own. The Buddies tab was a third view
-            of the same posts filtered by who you had added, which on an
-            account with 7,045 buddies is the community tab with extra steps -
-            and on a new account it is an empty page telling somebody nobody
-            they know has posted. Underlined rather than a pill group, so the
-            tabs read as sections of one page instead of a switch. */}
-        <div className="bb-community-tab mb-5 flex gap-6 border-b border-gray-200">
-          {([
-            { key: "community", label: "Community" },
-            { key: "buddies",   label: "Buddies" },
-            { key: "myfeed",    label: "My Feed" },
-          ] as { key: Tab; label: string }[]).map(({ key, label }) => (
-            <button
-              key={key}
-              onClick={() => setTab(key)}
-              className={`-mb-px border-b-2 px-1 pb-3 text-[15px] font-bold transition ${
-                tab === key
-                  ? "border-[#2f7fe8] text-[#2f7fe8]"
-                  : "border-transparent text-gray-500 hover:text-gray-800"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+            The text colours are fixed rather than themed, as on those cards:
+            the background is a fixed light illustration, so themed text would
+            turn white on it in dark mode. */}
+        <div
+          className="relative mb-3 overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
+          style={{
+            backgroundColor: "#f5f2ff",
+            backgroundImage: "url(/home-cards/bg-journey.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "left bottom",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <h1 className="text-[26px] font-black leading-tight text-[#2b2150] sm:text-3xl">
+            Bible Buddy Feed
+          </h1>
+
+          {/* Pills inside the card: the selected one white with the accent
+              blue, the rest dark enough to read on lavender. */}
+          <div className="bb-community-tab mt-3 flex gap-1 rounded-2xl bg-white/45 p-1">
+            {([
+              { key: "community", label: "Community" },
+              { key: "buddies",   label: "Buddies" },
+              { key: "myfeed",    label: "My Feed" },
+            ] as { key: Tab; label: string }[]).map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setTab(key)}
+                aria-pressed={tab === key}
+                className={`flex-1 rounded-xl px-2 py-2 text-[13px] font-black transition sm:text-[15px] ${
+                  tab === key ? "bg-white shadow-sm" : "hover:bg-white/50"
+                }`}
+                style={{ color: tab === key ? "#2f7fe8" : "#3b3263" }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Top Buddies, directly under the tabs and in the same place on all

@@ -142,7 +142,7 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
 
   if (failed) {
     return (
-      <div className="mb-3 flex items-center justify-between rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-sm">
+      <div className="mb-3 flex items-center justify-between rounded-2xl border border-[#f4dcc8] bg-[#fff3e6] px-4 py-3 shadow-sm">
         <p className="text-sm font-bold text-gray-500">Top Buddies could not load.</p>
         <button
           type="button"
@@ -158,13 +158,13 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
 
   if (!buddies) {
     return (
-      <div className="mb-3 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm" aria-busy="true">
-        <div className="h-4 w-32 animate-pulse rounded bg-gray-200" />
+      <div className="mb-3 rounded-2xl border border-[#f4dcc8] bg-[#fff3e6] p-4 shadow-sm" aria-busy="true">
+        <div className="h-4 w-32 animate-pulse rounded bg-[#f3ddc6]" />
         <div className="mt-4 flex justify-between">
           {Array.from({ length: PREVIEW_COUNT }).map((_, index) => (
             <div key={index} className="flex flex-col items-center gap-2">
-              <div className="h-12 w-12 animate-pulse rounded-full bg-gray-200" />
-              <div className="h-2.5 w-10 animate-pulse rounded bg-gray-200" />
+              <div className="h-12 w-12 animate-pulse rounded-full bg-[#f3ddc6]" />
+              <div className="h-2.5 w-10 animate-pulse rounded bg-[#f3ddc6]" />
             </div>
           ))}
         </div>
@@ -178,9 +178,16 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
   return (
     <section
       aria-labelledby="top-buddies-heading"
-      className="bb-community-panel mb-3 rounded-2xl border border-gray-200 bg-white shadow-sm"
+      className="bb-community-panel relative mb-3 overflow-hidden rounded-2xl border border-[#f4dcc8] shadow-sm"
+      style={{
+        backgroundColor: "#fff3e6",
+        backgroundImage: "url(/home-cards/bg-trivia.jpg)",
+        backgroundSize: "cover",
+        backgroundPosition: "left bottom",
+        backgroundRepeat: "no-repeat",
+      }}
     >
-      <h2 id="top-buddies-heading" className="flex items-center gap-2 px-4 pt-3 text-[15px] font-black text-gray-900">
+      <h2 id="top-buddies-heading" className="flex items-center gap-2 px-4 pt-3 text-[15px] font-black text-[#5b3a21]">
         <span aria-hidden>🏆</span> Top Buddies
       </h2>
 
@@ -189,10 +196,10 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
           {listed.map((buddy) => {
             const style = rankStyle(buddy.rank);
             return (
-              <li key={buddy.userId} className="border-t border-gray-100 first:border-t-0">
+              <li key={buddy.userId} className="border-t border-[#f4dcc8]/60 first:border-t-0">
                 <Link
                   href={`/profile/${buddy.userId}`}
-                  className="flex items-center gap-3 px-4 py-2.5 transition hover:bg-gray-50"
+                  className="flex items-center gap-3 px-4 py-2.5 transition hover:bg-white/50"
                 >
                   <span
                     className="flex h-7 w-9 flex-shrink-0 items-center justify-center rounded-full border text-xs font-black"
@@ -201,7 +208,7 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
                     #{buddy.rank}
                   </span>
                   <Face buddy={buddy} size={32} />
-                  <span className="min-w-0 flex-1 truncate text-sm font-bold text-gray-900">{fullName(buddy)}</span>
+                  <span className="min-w-0 flex-1 truncate text-sm font-bold text-[#4a3524]">{fullName(buddy)}</span>
                   <span aria-hidden className="flex-shrink-0 text-gray-300">›</span>
                 </Link>
               </li>
@@ -216,7 +223,7 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
               <Link
                 key={buddy.userId}
                 href={`/profile/${buddy.userId}`}
-                className="flex min-w-0 flex-1 flex-col items-center gap-1 rounded-xl px-1 py-1 transition hover:bg-gray-50"
+                className="flex min-w-0 flex-1 flex-col items-center gap-1 rounded-xl px-1 py-1 transition hover:bg-white/50"
               >
                 <span className="relative">
                   <Face buddy={buddy} size={52} />
@@ -227,7 +234,7 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
                     #{buddy.rank}
                   </span>
                 </span>
-                <span className="mt-1 w-full truncate text-center text-xs font-bold text-gray-700">
+                <span className="mt-1 w-full truncate text-center text-xs font-black text-[#5b3a21]">
                   {shortName(buddy)}
                 </span>
               </Link>
@@ -236,7 +243,7 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
         </div>
       )}
 
-      <div className="mt-2 flex flex-col items-center gap-2 border-t border-gray-100 px-4 py-2.5">
+      <div className="mt-2 flex flex-col items-center gap-2 border-t border-[#f4dcc8]/60 px-4 py-2.5">
         <button
           type="button"
           onClick={() => { setExpanded((value) => !value); setShowAll(false); }}
