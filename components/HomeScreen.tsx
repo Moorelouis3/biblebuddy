@@ -23,7 +23,6 @@ import { useSupabaseUser } from "../lib/useSupabaseUser";
 import { recordNewUser } from "../lib/guestSession";
 import VerseOfTheDayCard from "./VerseOfTheDayCard";
 import { cardTint } from "../lib/cardTints";
-import CommunityEventBanner from "./CommunityEventBanner";
 import YourBookshelf from "./home/YourBookshelf";
 import TodaysGroupStudy from "./home/TodaysGroupStudy";
 import BibleBuddyTvShelf from "./home/BibleBuddyTvShelf";
@@ -108,7 +107,6 @@ export default function HomeScreen() {
     displayName: null,
     flameId: null,
   });
-  const [communityEventJoined, setCommunityEventJoined] = useState(false);
   const [group, setGroup] = useState<GroupActivity>({
     loaded: false,
     postsToday: null,
@@ -435,24 +433,10 @@ export default function HomeScreen() {
           reading-time need, not an end-of-session one (Louis, 2026-10-12). */}
       <BibleReferenceCard onEvent={trackHomeEvent} />
 
-      {/* 5b. Upcoming Community Study - the EXACT banner from the group page.
-          One component, one event config, one signup page; only the
-          analytics source differs, so both spots stay in sync by
-          construction. The section disappears for anyone already signed up -
-          the homepage banner exists to recruit, the group page keeps
-          showing the joined state. */}
-      {!communityEventJoined ? (
-        <section aria-labelledby="home-community-study-heading">
-          <h2
-            id="home-community-study-heading"
-            className="mb-2 text-xs font-black uppercase tracking-wide text-[var(--bb-text-muted,#6b7280)]"
-          >
-            Upcoming Community Study
-          </h2>
-          <CommunityEventBanner userId={userId} source="homepage" onJoinedChange={setCommunityEventJoined} />
-        </section>
-      ) : null}
-
+      {/* The Upcoming Community Study banner lived here - the Proverbs "Day N
+          of 31" card with its Join the Study button. Taken off the dashboard
+          on 2026-10-18 (Louis: "we don't need it anymore"); the study itself
+          is still on the Plans tab and at /devotionals/wisdom-of-proverbs. */}
 
       {/* Today’s Group Study, down here above the games (Louis,
           2026-10-18: "I want the group post to be at the bottom above the

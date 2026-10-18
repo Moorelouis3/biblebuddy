@@ -1054,183 +1054,35 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
   const topLevel = comments.filter((c) => !c.parent_comment_id);
   const replies = (parentId: string) => comments.filter((c) => c.parent_comment_id === parentId);
 
-  function CommentRow({ comment, indent = false }: { comment: FeedComment; indent?: boolean }) {
-    const name = comment.display_name || comment.username || "Bible Buddy";
-    const isHighlightComment = comment.id === highlightCommentId;
-    const commentRowRef = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-      if (isHighlightComment && commentRowRef.current) {
-        const t = setTimeout(() => {
-          commentRowRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        }, 700);
-        return () => clearTimeout(t);
-      }
-    }, [isHighlightComment]);
-    return (
-      <div
-        ref={commentRowRef}
-        className={`flex gap-2 ${indent ? "mt-3 border-l border-[var(--bb-card-border,#e8ddd0)] pl-2 sm:pl-3" : "mt-2"} ${isHighlightComment ? "rounded-xl ring-2 ring-green-300 p-1 -mx-1" : ""}`}
-      >
-        <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
-          <Avatar userId={comment.user_id} displayName={name} imageUrl={comment.profile_image_url} size={indent ? 5 : 6} />
-        </Link>
-        <div className="flex-1 min-w-0">
-          <div className={`rounded-xl px-3 py-2 ${isHighlightComment ? "border border-[var(--bb-accent,#4a9b6f)] bg-[var(--bb-accent-soft,#ecfdf3)]" : "bg-[var(--bb-surface-soft,#f9fafb)]"}`}>
-            <Link href={`/profile/${comment.user_id}`} className="text-sm font-bold text-[var(--bb-text-primary,#1f2937)] hover:underline">
-              {name}
-            </Link>
-            {editingCommentId === comment.id ? (
-              <div className="mt-2 space-y-2">
-                <textarea
-                  value={editingCommentText}
-                  onChange={(e) => setEditingCommentText(e.target.value)}
-                  rows={3}
-                  className="w-full resize-none rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-400"
-                />
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => void handleSaveCommentEdit(comment)}
-                    disabled={savingCommentId === comment.id || !editingCommentText.trim()}
-                    className="rounded-xl bg-[#4a9b6f] px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
-                  >
-                    {savingCommentId === comment.id ? "Saving..." : "Save"}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setEditingCommentId(null);
-                      setEditingCommentText("");
-                    }}
-                    className="rounded-xl border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-100"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <p className="text-sm text-[var(--bb-text-secondary,#374151)] mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
-            )}
-          </div>
-          <div className="flex items-center gap-3 mt-0.5 px-1">
-            <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
-            {/* Liking a comment. The group had it and the feed never did, so
-                "somebody liked your comment" had nothing to fire on (Louis,
-                2026-10-18). The notification is written by a trigger on
-                feed_post_comment_likes, the same way post likes are. */}
-            <button
-              type="button"
-              onClick={() => void toggleCommentLike(comment)}
-              aria-pressed={likedComments.has(comment.id)}
-              className={`flex items-center gap-1 text-xs font-semibold transition ${
-                likedComments.has(comment.id) ? "text-[#2f7fe8]" : "text-gray-400 hover:text-gray-600"
-              }`}
-            >
-              <svg
-                className="h-3.5 w-3.5"
-                fill={likedComments.has(comment.id) ? "currentColor" : "none"}
-                stroke="currentColor"
-                strokeWidth={2}
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-              Like
-              {(commentLikeCounts[comment.id] ?? 0) > 0 ? ` ${commentLikeCounts[comment.id]}` : ""}
-            </button>
-            {!indent && (
-              <button
-                onClick={() => {
-                  setReplyingTo(replyingTo === comment.id ? null : comment.id);
-                  setReplyText("");
-                }}
-                className="text-xs text-gray-400 hover:text-green-600 font-semibold transition"
-              >
-                Reply
-              </button>
-            )}
-            {!indent && currentUserIsAdmin && (
-              <button
-                type="button"
-                onClick={() => void handleAutoReply(comment)}
-                disabled={autoReplyLoadingId === comment.id}
-                className="text-xs text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
-              >
-                {autoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
-              </button>
-            )}
-            {canEditComment(comment) && editingCommentId !== comment.id && (
-              <button
-                type="button"
-                onClick={() => {
-                  setEditingCommentId(comment.id);
-                  setEditingCommentText(comment.content);
-                  setReplyingTo(null);
-                  setReplyText("");
-                }}
-                className="text-xs text-gray-400 hover:text-green-600 font-semibold transition"
-              >
-                Edit
-              </button>
-            )}
-            {canDeleteComment(comment) && (
-              <button
-                type="button"
-                onClick={() => void handleDeleteComment(comment)}
-                className="text-xs text-gray-400 hover:text-red-500 font-semibold transition"
-              >
-                Delete
-              </button>
-            )}
-            {/* A comment needs reporting as much as a post does, and this is
-                where blocking reaches the person who is replying rather than
-                posting. The menu hides itself on your own comment. */}
-            <ReportBlockMenu
-              targetUserId={comment.user_id}
-              targetName={name}
-              contentType="feed_comment"
-              contentId={comment.id}
-              currentUserId={myId}
-              reportLabel="Report comment"
-              size="sm"
-              align="left"
-            />
-          </div>
-          {/* Reply input */}
-          {!indent && replyingTo === comment.id && (
-            <div className="ml-0 mt-1 flex gap-2 items-end">
-              <textarea
-                value={replyText}
-                onChange={(e) => setReplyText(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    void submitComment(replyText, comment.id);
-                  }
-                }}
-                placeholder={`Reply to ${name}...`}
-                rows={1}
-                autoFocus
-                className="flex-1 text-xs px-3 py-2 border border-gray-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-green-400"
-              />
-              <button
-                onClick={() => submitComment(replyText, comment.id)}
-                disabled={!replyText.trim() || submitting}
-                className="text-xs font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
-                style={{ backgroundColor: "#4a9b6f" }}
-              >
-                Reply
-              </button>
-            </div>
-          )}
-          {/* Nested replies (1 level only) */}
-          {!indent && replies(comment.id).map((reply) => (
-            <CommentRow key={reply.id} comment={reply} indent />
-          ))}
-        </div>
-      </div>
-    );
-  }
+  // Handed to CommentRow, which lives at module scope so the reply box is not
+  // rebuilt on every keystroke.
+  const commentRowContext: CommentRowContext = {
+    highlightCommentId,
+    editingCommentId,
+    editingCommentText,
+    setEditingCommentText,
+    handleSaveCommentEdit,
+    savingCommentId,
+    setEditingCommentId,
+    toggleCommentLike,
+    likedComments,
+    commentLikeCounts,
+    replyingTo,
+    setReplyingTo,
+    replyText,
+    setReplyText,
+    submitComment,
+    submitting,
+    currentUserIsAdmin,
+    handleAutoReply,
+    autoReplyLoadingId,
+    canEditComment,
+    canDeleteComment,
+    handleDeleteComment,
+    myId,
+    replies,
+  };
+
 
   return (
     <div className="mt-3 pt-3 border-t border-gray-100">
@@ -1238,7 +1090,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
         <p className="text-xs text-gray-400 text-center py-2">Loading comments...</p>
       ) : (
         <div>
-          {topLevel.map((c) => <CommentRow key={c.id} comment={c} />)}
+          {topLevel.map((c) => <CommentRow key={c.id} comment={c} ctx={commentRowContext} />)}
         </div>
       )}
 
@@ -1282,6 +1134,230 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
 }
 
 // ── Video Block (autoplay on scroll like IG) ──────────────────────────────────
+
+type CommentRowContext = {
+  highlightCommentId?: string | null;
+  editingCommentId: string | null;
+  editingCommentText: string;
+  setEditingCommentText: (value: string) => void;
+  handleSaveCommentEdit: (comment: FeedComment) => void | Promise<void>;
+  savingCommentId: string | null;
+  setEditingCommentId: (value: string | null) => void;
+  toggleCommentLike: (comment: FeedComment) => void | Promise<void>;
+  likedComments: Set<string>;
+  commentLikeCounts: Record<string, number>;
+  replyingTo: string | null;
+  setReplyingTo: (value: string | null) => void;
+  replyText: string;
+  setReplyText: (value: string) => void;
+  submitComment: (content: string, parentId: string | null) => void | Promise<void>;
+  submitting: boolean;
+  currentUserIsAdmin: boolean;
+  handleAutoReply: (comment: FeedComment) => void | Promise<void>;
+  autoReplyLoadingId: string | null;
+  canEditComment: (comment: FeedComment) => boolean;
+  canDeleteComment: (comment: FeedComment) => boolean;
+  handleDeleteComment: (comment: FeedComment) => void | Promise<void>;
+  myId: string;
+  replies: (parentId: string) => FeedComment[];
+};
+
+/**
+ * One comment, and the replies under it.
+ *
+ * This lives at module scope on purpose. It used to be declared inside
+ * CommentSection, which made it a brand new component type on every render -
+ * so every keystroke in the reply box unmounted the box, remounted it, and
+ * autoFocus put the caret back at the start. Typing "hello" produced "olleh"
+ * (Louis, 2026-10-18). Everything it needs now arrives in ctx.
+ */
+function CommentRow({
+  comment,
+  indent = false,
+  ctx,
+}: {
+  comment: FeedComment;
+  indent?: boolean;
+  ctx: CommentRowContext;
+}) {
+  const name = comment.display_name || comment.username || "Bible Buddy";
+  const isHighlightComment = comment.id === ctx.highlightCommentId;
+  const commentRowRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (isHighlightComment && commentRowRef.current) {
+      const t = setTimeout(() => {
+        commentRowRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 700);
+      return () => clearTimeout(t);
+    }
+  }, [isHighlightComment]);
+  return (
+    <div
+      ref={commentRowRef}
+      className={`flex gap-2 ${indent ? "mt-3 border-l border-[var(--bb-card-border,#e8ddd0)] pl-2 sm:pl-3" : "mt-2"} ${isHighlightComment ? "rounded-xl ring-2 ring-green-300 p-1 -mx-1" : ""}`}
+    >
+      <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
+        <Avatar userId={comment.user_id} displayName={name} imageUrl={comment.profile_image_url} size={indent ? 5 : 6} />
+      </Link>
+      <div className="flex-1 min-w-0">
+        <div className={`rounded-xl px-3 py-2 ${isHighlightComment ? "border border-[var(--bb-accent,#4a9b6f)] bg-[var(--bb-accent-soft,#ecfdf3)]" : "bg-[var(--bb-surface-soft,#f9fafb)]"}`}>
+          <Link href={`/profile/${comment.user_id}`} className="text-sm font-bold text-[var(--bb-text-primary,#1f2937)] hover:underline">
+            {name}
+          </Link>
+          {ctx.editingCommentId === comment.id ? (
+            <div className="mt-2 space-y-2">
+              <textarea
+                value={ctx.editingCommentText}
+                onChange={(e) => ctx.setEditingCommentText(e.target.value)}
+                rows={3}
+                className="w-full resize-none rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => void ctx.handleSaveCommentEdit(comment)}
+                  disabled={ctx.savingCommentId === comment.id || !ctx.editingCommentText.trim()}
+                  className="rounded-xl bg-[#4a9b6f] px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                >
+                  {ctx.savingCommentId === comment.id ? "Saving..." : "Save"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    ctx.setEditingCommentId(null);
+                    ctx.setEditingCommentText("");
+                  }}
+                  className="rounded-xl border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition hover:bg-gray-100"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          ) : (
+            <p className="text-sm text-[var(--bb-text-secondary,#374151)] mt-0.5 leading-relaxed whitespace-pre-wrap">{comment.content}</p>
+          )}
+        </div>
+        <div className="flex items-center gap-3 mt-0.5 px-1">
+          <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
+          {/* Liking a comment. The group had it and the feed never did, so
+              "somebody liked your comment" had nothing to fire on (Louis,
+              2026-10-18). The notification is written by a trigger on
+              feed_post_comment_likes, the same way post likes are. */}
+          <button
+            type="button"
+            onClick={() => void ctx.toggleCommentLike(comment)}
+            aria-pressed={ctx.likedComments.has(comment.id)}
+            className={`flex items-center gap-1 text-xs font-semibold transition ${
+              ctx.likedComments.has(comment.id) ? "text-[#2f7fe8]" : "text-gray-400 hover:text-gray-600"
+            }`}
+          >
+            <svg
+              className="h-3.5 w-3.5"
+              fill={ctx.likedComments.has(comment.id) ? "currentColor" : "none"}
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            Like
+            {(ctx.commentLikeCounts[comment.id] ?? 0) > 0 ? ` ${ctx.commentLikeCounts[comment.id]}` : ""}
+          </button>
+          <button
+            onClick={() => {
+              const closing = ctx.replyingTo === comment.id;
+              ctx.setReplyingTo(closing ? null : comment.id);
+              // Answering a reply opens with that person's name already in the
+              // box, so a thread reads as a conversation rather than a pile.
+              ctx.setReplyText(closing || !indent ? "" : `@${name} `);
+            }}
+            className="text-xs text-gray-400 hover:text-green-600 font-semibold transition"
+          >
+            Reply
+          </button>
+          {!indent && ctx.currentUserIsAdmin && (
+            <button
+              type="button"
+              onClick={() => void ctx.handleAutoReply(comment)}
+              disabled={ctx.autoReplyLoadingId === comment.id}
+              className="text-xs text-gray-400 hover:text-[#4a9b6f] font-semibold transition disabled:opacity-50"
+            >
+              {ctx.autoReplyLoadingId === comment.id ? "Writing..." : "Auto Reply"}
+            </button>
+          )}
+          {ctx.canEditComment(comment) && ctx.editingCommentId !== comment.id && (
+            <button
+              type="button"
+              onClick={() => {
+                ctx.setEditingCommentId(comment.id);
+                ctx.setEditingCommentText(comment.content);
+                ctx.setReplyingTo(null);
+                ctx.setReplyText("");
+              }}
+              className="text-xs text-gray-400 hover:text-green-600 font-semibold transition"
+            >
+              Edit
+            </button>
+          )}
+          {ctx.canDeleteComment(comment) && (
+            <button
+              type="button"
+              onClick={() => void ctx.handleDeleteComment(comment)}
+              className="text-xs text-gray-400 hover:text-red-500 font-semibold transition"
+            >
+              Delete
+            </button>
+          )}
+          {/* A comment needs reporting as much as a post does, and this is
+              where blocking reaches the person who is replying rather than
+              posting. The menu hides itself on your own comment. */}
+          <ReportBlockMenu
+            targetUserId={comment.user_id}
+            targetName={name}
+            contentType="feed_comment"
+            contentId={comment.id}
+            currentUserId={ctx.myId}
+            reportLabel="Report comment"
+            size="sm"
+            align="left"
+          />
+        </div>
+        {/* Reply input */}
+        {ctx.replyingTo === comment.id && (
+          <div className="ml-0 mt-1 flex gap-2 items-end">
+            <textarea
+              value={ctx.replyText}
+              onChange={(e) => ctx.setReplyText(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  void ctx.submitComment(ctx.replyText, indent ? comment.parent_comment_id ?? comment.id : comment.id);
+                }
+              }}
+              placeholder={`Reply to ${name}...`}
+              rows={1}
+              autoFocus
+              className="flex-1 text-xs px-3 py-2 border border-gray-200 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-green-400"
+            />
+            <button
+              onClick={() => ctx.submitComment(ctx.replyText, indent ? comment.parent_comment_id ?? comment.id : comment.id)}
+              disabled={!ctx.replyText.trim() || ctx.submitting}
+              className="text-xs font-semibold text-white px-3 py-2 rounded-xl transition disabled:opacity-40 flex-shrink-0"
+              style={{ backgroundColor: "#4a9b6f" }}
+            >
+              Reply
+            </button>
+          </div>
+        )}
+        {/* The replies under this comment. Answering any of them posts here too,
+            so a thread stays one level deep and reads top to bottom. */}
+        {!indent && ctx.replies(comment.id).map((reply) => (
+          <CommentRow key={reply.id} comment={reply} indent ctx={ctx} />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function VideoBlock({ post }: { post: FeedPost }) {
   const containerRef = useRef<HTMLDivElement>(null);
