@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-7-explained",
+    title: "Leviticus 7 Explained: The Peace Offering and the Law That Closes the Code",
+    description:
+      "Leviticus 7 explained verse by verse: the peace offering's three deadlines, the ban on fat and blood, the wave and heave offerings, and the verse that closes the whole sacrificial code.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-7-explained",
+    publishedAt: "2026-10-18",
+    readTime: "13 min read",
+    image: "/blog-banners/leviticus-7-explained.jpg",
+    groupPost: {
+      title: "Leviticus 7 Explained 📖",
+      content:
+        "Seven chapters of law.\nOne final line ties them all together.\n\n📌 It was one law, given on one mountain.\n\n📖 A thank offering had one day. A vow offering had two.\n📖 Fat and blood were never on the menu.\n📖 A wave offering and a heave offering paid the priests differently.\n\nNew article on:\n🟢 why the **fat** belonged to God alone\n🟢 what **wave and heave** offerings actually meant\n🟢 how this closes the whole **sacrificial code**\n\nDid you know this chapter names the exact mountain the law came from? 🙏",
+    },
+  },
+  {
     slug: "leviticus-6-explained",
     title: "Leviticus 6 Explained: The Trespass Offering and the Priest's Law",
     description:
