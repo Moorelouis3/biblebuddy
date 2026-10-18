@@ -2052,9 +2052,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
      * information, they need to be cut off from that and rewired").
      *
      * The feed reads `post` and `comment` from the query string and scrolls
-     * to that post with its thread open. An older row carries a group post's
-     * id, which the feed will not find - it still lands in the feed, which is
-     * the right room, rather than on a group page.
+     * to that post with its thread open.
+     *
+     * Except when the post is not in the feed at all. Louis, 2026-10-18: "the
+     * alert still doesn't load the actual post - mine says someone replied to
+     * my post, does that mean because we had group that's why it shows up
+     * still?" Yes. His latest one is a group_post_commented row carrying
+     * 75d14836-15f9-4ecc-a84c-bf52c9df207e, which is a row in group_posts and
+     * has never existed in feed_posts: only Bible Buddy's automatic posts were
+     * ever mirrored across, not the ones people wrote in the group themselves.
+     * So the feed opened, looked for a post it could not have, and showed
+     * nothing.
+     *
+     * One lookup decides it. The post is in the feed, or it is a group post
+     * and the group thread is the only place that writing exists - a retired
+     * room, but the real post beats an empty feed. New alerts all carry feed
+     * ids, so this is a tail that shrinks on its own.
      *
      * By type, deliberately, and not by "the link starts with /study-groups".
      * The weekly series writes series_reflection notifications whose links
@@ -2065,6 +2078,30 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
      */
     if (FEED_NOTIFICATION_TYPES.includes(notif.type ?? "")) {
       const { postId, commentId } = getGroupNotificationTarget(notif);
+
+      if (postId) {
+        const { data: feedPost } = await supabase
+          .from("feed_posts")
+          .select("id")
+          .eq("id", postId)
+          .maybeSingle();
+
+        if (!feedPost) {
+          const { data: groupPost } = await supabase
+            .from("group_posts")
+            .select("id, group_id")
+            .eq("id", postId)
+            .maybeSingle();
+
+          if (groupPost?.group_id) {
+            const groupParams = new URLSearchParams({ post: postId });
+            if (commentId) groupParams.set("comment", commentId);
+            router.push(`/study-groups/${groupPost.group_id}/chat?${groupParams.toString()}`);
+            return;
+          }
+        }
+      }
+
       const params = new URLSearchParams();
       if (postId) params.set("post", postId);
       if (commentId) params.set("comment", commentId);
