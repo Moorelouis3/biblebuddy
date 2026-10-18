@@ -68,15 +68,6 @@ export default function BibleLockBanner() {
    * the phone back.
    */
   const [locked, setLocked] = useState(false);
-  /**
-   * The apps came back just now, on this screen.
-   *
-   * Finishing the reading used to clear the shield in silence, which from the
-   * outside is indistinguishable from the feature being broken - and that is
-   * exactly how Louis read it on 2026-10-17: "no pop up, no new banner, no apps
-   * unlocked, nothing." The work had happened; nothing said so.
-   */
-  const [justLifted, setJustLifted] = useState(false);
 
   const read = useCallback(async () => {
     const status = await bibleLockStatus();
@@ -127,15 +118,25 @@ export default function BibleLockBanner() {
     const onVisible = () => {
       if (document.visibilityState === "visible") void read();
     };
-    const onLifted = () => {
-      setJustLifted(true);
+    // Re-read on either piece of news, and announce neither.
+    //
+    // This strip used to show its own green "Apps unlocked" panel on the
+    // lifted event, while BibleLockLiftedToast showed a toast saying the same
+    // thing - so an unlock produced two congratulations stacked on top of each
+    // other (Louis, 2026-10-18: "showing unlocked at the top then an unlocked
+    // other banner under"). The toast owns that message, because it works on
+    // whatever screen the reading was finished on; this strip only ever states
+    // the current state.
+    const onChanged = () => {
       void read();
     };
     document.addEventListener("visibilitychange", onVisible);
-    window.addEventListener("bb:bible-lock-lifted", onLifted);
+    window.addEventListener("bb:bible-lock-lifted", onChanged);
+    window.addEventListener("bb:bible-lock-changed", onChanged);
     return () => {
       document.removeEventListener("visibilitychange", onVisible);
-      window.removeEventListener("bb:bible-lock-lifted", onLifted);
+      window.removeEventListener("bb:bible-lock-lifted", onChanged);
+      window.removeEventListener("bb:bible-lock-changed", onChanged);
     };
   }, [read]);
 
@@ -147,44 +148,6 @@ export default function BibleLockBanner() {
       // Not remembering the dismissal is survivable; failing to close is not.
     }
   }
-
-  // The apps just came back. This outranks everything else the strip could be
-  // saying, including nothing, and it is the one piece of news worth a colour
-  // of its own.
-  if (justLifted && !locked) {
-    return (
-      <section aria-labelledby="home-bible-lock-heading" className={STRIP_WRAPPER}>
-        <div
-          role="status"
-          className="flex items-center gap-3 rounded-2xl border border-[#bfe4cd] bg-[#eafaf0] px-3 py-2.5 shadow-sm sm:gap-3.5 sm:px-4"
-        >
-          <span
-            aria-hidden
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-b from-[#58c98a] to-[#2f8f5b] text-base shadow-sm shadow-[#2f8f5b]/25 sm:h-10 sm:w-10 sm:text-lg"
-          >
-            🔓
-          </span>
-          <div className="min-w-0 flex-1">
-            <h2 id="home-bible-lock-heading" className="text-sm font-black leading-tight text-[#15502f] sm:text-base">
-              Apps unlocked
-            </h2>
-            <p className="truncate text-xs font-semibold leading-snug text-[#3d7a57] sm:text-[13px]">
-              You spent time with God. They lock again at midnight.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => setJustLifted(false)}
-            aria-label="Hide this"
-            className="grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-black text-[#5f9b7b] transition hover:bg-white/70 hover:text-[#15502f]"
-          >
-            ✕
-          </button>
-        </div>
-      </section>
-    );
-  }
-
   if (!show) return null;
 
   return (

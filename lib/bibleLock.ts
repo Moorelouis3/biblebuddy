@@ -232,6 +232,29 @@ export function announceBibleLockLifted(): void {
   }
 }
 
+/**
+ * The shield changed; whoever is showing its state should look again.
+ *
+ * Separate from "lifted" because the two are not the same news and must never
+ * be confused. BibleLockWatcher fired the lifted event after **locking** the
+ * apps, so locking announced itself as unlocking: the strip went green, a
+ * toast said "Congratulations - apps unlocked", and then the strip re-read,
+ * found the apps locked, and flipped back. Louis, 2026-10-18: "it glitched out
+ * unlocking before I did anything, then showing unlocked at the top, then
+ * another unlocked banner under, then it said locked again after that."
+ *
+ * Use this for any change. Use announceBibleLockLifted only when the apps have
+ * genuinely come back.
+ */
+export function announceBibleLockChanged(): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.dispatchEvent(new CustomEvent("bb:bible-lock-changed"));
+  } catch {
+    // Nothing to tell, nothing to break.
+  }
+}
+
 export async function clearBibleLock(): Promise<void> {
   if (!isNativeApp() || !nativePluginAvailable("BibleLock")) return;
   try {

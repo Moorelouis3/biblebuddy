@@ -2,7 +2,15 @@
 
 import { useCallback, useEffect, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { bibleLockLockedAt, bibleLockStatus, clearBibleLock, lockChosenApps, UNLOCKING_ACTIONS } from "@/lib/bibleLock";
+import {
+  announceBibleLockChanged,
+  announceBibleLockLifted,
+  bibleLockLockedAt,
+  bibleLockStatus,
+  clearBibleLock,
+  lockChosenApps,
+  UNLOCKING_ACTIONS,
+} from "@/lib/bibleLock";
 import { getBibleBuddyLocalDayKey, getBibleBuddyLocalDayStartIso } from "@/lib/louisDailyFlow";
 
 /**
@@ -75,7 +83,10 @@ export default function BibleLockWatcher({ userId }: { userId: string | null }) 
           window.localStorage.setItem(AUTO_LOCK_DAY_KEY, today);
         } catch {}
         await lockChosenApps();
-        window.dispatchEvent(new CustomEvent("bb:bible-lock-lifted"));
+        // Changed, not lifted. This branch has just PUT THE LOCK ON, and it
+        // used to fire the lifted event - so locking announced itself as
+        // unlocking and the strip flapped green then back to locked.
+        announceBibleLockChanged();
         return;
       }
 
@@ -110,10 +121,9 @@ export default function BibleLockWatcher({ userId }: { userId: string | null }) 
 
       if (done) {
         await clearBibleLock();
-        // The reader shows its own line when it unlocks on the spot. This path
-        // is the quieter one - the app coming back to find the day already
-        // done - so it says so once and gets out of the way.
-        window.dispatchEvent(new CustomEvent("bb:bible-lock-lifted"));
+        // Genuinely lifted: the apps are back. This is the one place in this
+        // file that may say so.
+        announceBibleLockLifted();
       }
     } catch {
       // A failed check leaves the shield exactly as it was, which is the safe

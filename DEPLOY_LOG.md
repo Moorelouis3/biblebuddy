@@ -51,3 +51,4 @@
 2026-10-17T18:23:35Z | 1 commit | Settings shows the installed app build and the website build, so a fix that has not reached the phone is distinguishable from a fix that does not work
 2026-10-17T18:29:01Z | 1 commit | Settings says whether the native push plugin is in the installed build, which separates iOS refusing from iOS never being asked
 2026-10-17T18:52:14Z | 1 commit | Two notification plugins were asking iOS for permission at the same moment on every app open, so neither prompt ever appeared; they are sequenced now
+2026-10-18T00:36:55Z | 1 commit | Bible Lock: locking no longer announces itself as unlocking, only one unlocked message appears instead of two, and the midnight countdown stays visible while locked
