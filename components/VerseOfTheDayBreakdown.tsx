@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useAccountGate } from "./AccountRequiredModal";
 import { useDailyVerseBookmark, type DailyVerseSource } from "../lib/useDailyVerseBookmark";
+import ShareToFeed from "./feed/ShareToFeed";
 import {
   getVotdBackground,
   getVotdShareUrl,
@@ -433,6 +434,19 @@ export default function VerseOfTheDayBreakdown({
           >
             {shareState === "copied" ? "✓ Link copied" : "↗ Share"}
           </button>
+        </div>
+
+        {/* Sharing the link sends somebody out of the app; this keeps them in
+            it. The verse travels in the post's own verse fields, so the card
+            on the wall shows the quotation above whatever they write about it.
+            On its own line because opening it turns the button into a box. */}
+        <div className="mt-3">
+          <ShareToFeed
+            defaultText={`${entry.reference} is my verse today.`}
+            verseRef={entry.reference}
+            verseText={entry.verse_text}
+            label="📣 Post to the feed"
+          />
         </div>
 
         {/* Quiet secondary links - the verse stays the focus. */}

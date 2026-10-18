@@ -15,6 +15,7 @@ import { FREE_TRIVIA_BOOK_KEYS } from "@/lib/bibleStudyGameCatalog";
 import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { dispatchLouisMoment } from "@/lib/louisMoments";
+import ShareToFeed from "@/components/feed/ShareToFeed";
 
 type TriviaGamePlayerProps = {
   bookName: string;
@@ -436,6 +437,17 @@ export default function TriviaGamePlayer({
           <p className="mt-5 text-base font-black leading-7 text-gray-950">
             Your trivia progress was saved.
           </p>
+
+          {/* A score is the easiest thing anybody has to say on the wall, and
+              trivia rounds are not posted automatically - 15 a day would be a
+              log, not a feed. So the offer is here, at the moment there is
+              something to say, prefilled and one tap from done. */}
+          <div className="mt-5 flex justify-center">
+            <ShareToFeed
+              defaultText={`Got ${correctCount} out of ${questions.length} on ${bookName} ${chapter.chapter} trivia.`}
+              label="Share your score"
+            />
+          </div>
           {onClose ? (
             <button
               type="button"

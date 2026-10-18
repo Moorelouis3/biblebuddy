@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabaseClient";
 import { markChapterDone, isChapterCompleted, getBookTotalChapters, getCompletedChapters, isBookComplete } from "../lib/readingProgress";
 import ChapterReaderSkeleton from "./ChapterReaderSkeleton";
 import { GENESIS_ONE_KJV, isGenesisOneKjv } from "../lib/genesisOneText";
+import ShareToFeed from "./feed/ShareToFeed";
 
 /** Confetti is only needed on a celebration, so it is fetched on demand. */
 async function confetti(options: Record<string, unknown>) {
@@ -3325,6 +3326,29 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
           >
             {isCompleted ? "Chapter Completed" : isSaving ? "Saving..." : "Mark Chapter Completed"}
           </button>
+        ) : null}
+
+        {/* The one moment a chapter read can reach the wall.
+            Chapters are deliberately not posted automatically - seventy-four a
+            day across the app would be a log nobody reads, and it would drown
+            the people actually writing something. But a chapter somebody just
+            finished is the thing they have most to say about, so the offer
+            appears here once it is done, with the sentence already written. */}
+        {isCompleted ? (
+          <div className="mx-auto mb-6 max-w-2xl rounded-2xl border border-emerald-200 bg-emerald-50 p-5 text-center">
+            <p className="text-sm font-black text-emerald-900">
+              You finished {bookDisplayName} {chapter}.
+            </p>
+            <p className="mx-auto mt-1 max-w-sm text-xs font-semibold text-emerald-800">
+              Say what stood out and it goes on the community wall.
+            </p>
+            <div className="mt-3 flex justify-center">
+              <ShareToFeed
+                defaultText={`Just finished reading ${bookDisplayName} ${chapter}.`}
+                label="Share to feed"
+              />
+            </div>
+          </div>
         ) : null}
 
         {!hideDiscussion && (!isGenesisOnePrototype || genesisOneTab === "play") ? <div className="mb-10" ref={reflectionSectionRef}>
