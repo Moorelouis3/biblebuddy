@@ -70,7 +70,7 @@ type CommentPreviewPerson = {
 };
 type CommentPreview = { people: CommentPreviewPerson[]; lastAt: string };
 
-type Tab = "community" | "myfeed";
+type Tab = "community" | "buddies" | "myfeed";
 type PostType = "thought" | "verse" | "prayer" | "prayer_request" | "photo" | "link" | "video";
 
 interface FeedComment {
@@ -1926,6 +1926,32 @@ export default function BbFeedPage() {
     if (postId) setTab("community");
   }, []);
 
+  // Buddies tab state — the same ranked list, kept to people you added
+  const [rankedBuddiesFeed, setRankedBuddiesFeed] = useState<RankedFeedItem[]>([]);
+
+  /**
+   * The Buddies tab loads when it is opened, not on arrival.
+   *
+   * init used to await it before the page would show anything, so every visit
+   * paid for a tab most people never opened. This drives the tab's own
+   * spinner; without one the empty panel flashes up and is replaced by posts
+   * a moment later.
+   */
+  const [buddiesLoading, setBuddiesLoading] = useState(false);
+  /**
+   * Whether the fetch has started, as a ref rather than state.
+   *
+   * State is not visible to another call in the same tick, and the effect that
+   * triggers this re-runs when userId arrives and when loadCommunityTab is
+   * rebuilt, with React invoking effects twice in development - so a state
+   * flag would let a second fetch through. It is a flag at all, rather than a
+   * check on rankedBuddiesFeed.length, because the median reader has exactly
+   * one buddy and may genuinely have nothing to show: a length check would
+   * re-run the whole fetch every time they returned to an empty tab, which is
+   * precisely the case where it cannot help.
+   */
+  const buddiesLoadStarted = useRef(false);
+
   // Community tab state — single ranked list
   const [rankedCommunityFeed, setRankedCommunityFeed] = useState<RankedFeedItem[]>([]);
 
@@ -2022,6 +2048,30 @@ export default function BbFeedPage() {
     setCommentPreviews((prev) => ({ ...prev, ...next }));
   }
 
+  /**
+   * Everybody this account is buddies with - all of them, paginated.
+   *
+   * getBuddyIds below caps at 300 for the ranking signal, which is fine for a
+   * weight and wrong for a filter: capped, the Buddies tab showed "no buddy
+   * posts yet" to somebody with 7,045 of them. PostgREST stops at a thousand
+   * rows a page, so this walks the pages - eight requests for Louis, one for
+   * everybody else, and only when the Buddies tab is opened.
+   */
+  async function getAllBuddyIds(uid: string): Promise<Set<string>> {
+    const ids = new Set<string>();
+    for (let from = 0; from < 20_000; from += 1000) {
+      const { data } = await supabase
+        .from("buddies")
+        .select("user_id_1, user_id_2")
+        .or(`user_id_1.eq.${uid},user_id_2.eq.${uid}`)
+        .range(from, from + 999);
+      if (!data || data.length === 0) break;
+      for (const row of data) ids.add(row.user_id_1 === uid ? row.user_id_2 : row.user_id_1);
+      if (data.length < 1000) break;
+    }
+    return ids;
+  }
+
   async function getBuddyIds(uid: string): Promise<string[]> {
     const { data } = await supabase
       .from("buddies")
@@ -2057,6 +2107,73 @@ export default function BbFeedPage() {
       const p = profiles.find((pr) => pr.user_id === row.user_id);
       return { ...row, display_name: p?.display_name ?? null, username: p?.username ?? null, profile_image_url: p?.profile_image_url ?? null };
     });
+  }
+
+  /**
+   * The Buddies tab: the same week of posts as Community, kept to buddies.
+   *
+   * It used to ask the other way round - "give me posts by these authors" -
+   * with the author list capped at 300 of the newest friendships. Louis is
+   * buddies with 7,045 people, so that cap decided his Buddies tab, and it
+   * showed "no buddy posts yet" while the same posts sat in Community
+   * (2026-10-18: "I'm buddies with everybody, so technically my buddy feed
+   * should be kind of looking like the community feed").
+   *
+   * Asking by recency instead fixes the shape of it: a week of posts is small
+   * and bounded however many friends somebody has, and the buddy list is then
+   * only used to filter what came back. No cap, no chunking, two queries
+   * instead of thirty.
+   */
+  async function loadFriendsTab(uid: string) {
+    if (buddiesLoadStarted.current) return;
+    buddiesLoadStarted.current = true;
+    setBuddiesLoading(true);
+
+    const buddyIdSet = await getAllBuddyIds(uid);
+    if (buddyIdSet.size === 0) {
+      setRankedBuddiesFeed([]);
+      setBuddiesLoading(false);
+      return;
+    }
+
+    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+
+    const { data: postRows } = await supabase
+      .from("feed_posts")
+      .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
+      .eq("visibility", "community")
+      .gte("created_at", sevenDaysAgo)
+      .order("created_at", { ascending: false })
+      .limit(200);
+
+    const buddyPosts = (postRows || []).filter((row) => buddyIdSet.has(row.user_id));
+
+    // Profiles only for the handful of people who actually posted, rather
+    // than for every buddy on the list.
+    const authorIds = [...new Set(buddyPosts.map((row) => row.user_id))];
+    const profiles: Array<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }> = [];
+    for (let i = 0; i < authorIds.length; i += 500) {
+      const { data: pics } = await supabase
+        .from("profile_stats")
+        .select("user_id, display_name, username, profile_image_url")
+        .in("user_id", authorIds.slice(i, i + 500));
+      profiles.push(...(pics || []));
+    }
+
+    const posts = await enrichWithProfiles(buddyPosts, profiles) as FeedPost[];
+
+    const myReactedIds = new Set([...myReactions].map((k) => k.split(":")[0]));
+    const ranked = rankCommunityFeed(posts, buddyIdSet, myReactedIds);
+
+    // Blocked both ways, and asked for here rather than read from state: the
+    // list is cached for a minute inside lib/userBlocks, so this costs nothing
+    // after the first call, and it cannot race the feed loading before the
+    // block list has arrived.
+    const blocked = await getBlockedUserIds({ userId: uid });
+    setRankedBuddiesFeed(blocked.size ? ranked.filter((item) => !blocked.has(item.user_id)) : ranked);
+    setBuddiesLoading(false);
+    void loadMyReactions(uid, posts.map((p) => p.id));
+    void loadCommentPreviews(posts.map((p) => p.id));
   }
 
   async function loadMyFeedTab(uid: string) {
@@ -2148,6 +2265,7 @@ export default function BbFeedPage() {
       const blocked = await getBlockedUserIds({ force: true, userId });
       if (cancelled || blocked.size === 0) return;
       const drop = <T extends { user_id: string }>(items: T[]) => items.filter((item) => !blocked.has(item.user_id));
+      setRankedBuddiesFeed((prev) => drop(prev));
       setRankedCommunityFeed((prev) => drop(prev));
     };
     window.addEventListener(BLOCKS_CHANGED_EVENT, prune);
@@ -2160,6 +2278,8 @@ export default function BbFeedPage() {
   useEffect(() => {
     if (tab === "community" && userId) {
       void loadCommunityTab();
+    } else if (tab === "buddies" && userId) {
+      void loadFriendsTab(userId);
     } else if (tab === "myfeed" && userId) {
       void loadMyFeedTab(userId);
     }
@@ -2186,7 +2306,15 @@ export default function BbFeedPage() {
         };
       });
 
-    if (tab === "myfeed") {
+    if (tab === "buddies") {
+      setRankedBuddiesFeed((prev) =>
+        prev.map((item) =>
+          item.id === postId
+            ? { ...item, reaction_counts: { ...item.reaction_counts, [reactionType]: Math.max((item.reaction_counts?.[reactionType] ?? 0) + delta, 0) } }
+            : item
+        ) as RankedFeedItem[]
+      );
+    } else if (tab === "myfeed") {
       setMyFeedPosts(updateCounts);
     } else {
       setRankedCommunityFeed((prev) =>
@@ -2225,6 +2353,7 @@ export default function BbFeedPage() {
 
   function handleDeletePost(postId: string) {
     const filterOut = (prev: RankedFeedItem[]) => prev.filter((item) => !(item._kind === "post" && (item as FeedPost).id === postId));
+    setRankedBuddiesFeed(filterOut);
     setRankedCommunityFeed(filterOut);
     setMyFeedPosts((prev) => prev.filter((p) => p.id !== postId));
   }
@@ -2238,6 +2367,7 @@ export default function BbFeedPage() {
           ? { ...item, comment_count: Math.max((item as FeedPost).comment_count + delta, 0) }
           : item
       ) as RankedFeedItem[];
+    setRankedBuddiesFeed(patchRanked);
     setRankedCommunityFeed(patchRanked);
     setMyFeedPosts((prev) => prev.map((p) => p.id === postId ? { ...p, comment_count: Math.max(p.comment_count + delta, 0) } : p));
   }
@@ -2268,6 +2398,50 @@ export default function BbFeedPage() {
     if (sortBy !== "recent") return filtered;
     return [...filtered].sort(
       (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+    );
+  }
+
+  /**
+   * Buddies: the same card, the same controls, the same everything.
+   *
+   * Louis, 2026-10-18: "I want the Buddies tab also and it should work the
+   * same way." The only difference from Community is which posts reach it -
+   * the ones written by people this account has added - so it runs through
+   * applyFeedControls and renders PostCard exactly as the other two tabs do.
+   */
+  function renderFriendsTab() {
+    if (buddiesLoading) {
+      return <div className="text-sm text-gray-400 text-center py-16">Loading your buddies&apos; posts...</div>;
+    }
+
+    const posts = applyFeedControls(rankedBuddiesFeed);
+    if (posts.length === 0) {
+      return (
+        <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+          <p className="text-3xl mb-3">👥</p>
+          <h3 className="font-bold text-gray-900 mb-1">
+            {postFilter === "all" ? "No buddy posts yet" : "Nothing here yet"}
+          </h3>
+          <p className="text-sm text-gray-500 mb-5">
+            {postFilter === "all"
+              ? "Add Buddies from their profile to see their posts here."
+              : "Try All posts."}
+          </p>
+          {postFilter === "all" ? (
+            <Link href="/study-groups" className="inline-block px-4 py-2 rounded-xl text-sm font-semibold text-white transition hover:opacity-90" style={{ backgroundColor: "#4a9b6f" }}>
+              Find People
+            </Link>
+          ) : null}
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex flex-col gap-3">
+        {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} preview={commentPreviews[item.id]} />
+        ))}
+      </div>
     );
   }
 
@@ -2415,6 +2589,7 @@ export default function BbFeedPage() {
         <div className="bb-community-tab mb-5 flex gap-6 border-b border-gray-200">
           {([
             { key: "community", label: "Community" },
+            { key: "buddies",   label: "Buddies" },
             { key: "myfeed",    label: "My Feed" },
           ] as { key: Tab; label: string }[]).map(({ key, label }) => (
             <button
@@ -2472,7 +2647,7 @@ export default function BbFeedPage() {
                 { value: "study", label: "Study activity" },
               ]}
             />
-            {tab === "community" ? (
+            {tab !== "myfeed" ? (
               <FeedSelect
                 value={sortBy}
                 onChange={setSortBy}
@@ -2489,7 +2664,7 @@ export default function BbFeedPage() {
         {loading ? (
           <div className="text-sm text-gray-400 text-center py-16">Loading feed...</div>
         ) : (
-          tab === "community" ? renderCommunityTab() : renderMyFeedTab()
+          tab === "community" ? renderCommunityTab() : tab === "buddies" ? renderFriendsTab() : renderMyFeedTab()
         )}
 
       </div>
