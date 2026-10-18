@@ -8157,3 +8157,7 @@ Next up: 1 Peter 3
 Fixed: a diagnostic added Oct 17 for the iPhone push notification issue had a bug of its own - it was filing a false "crash" report for basically every ordinary website visitor on their phone, not just the app. Fixed with a one-line change (commit ac0b830), no [deploy] tag, waits for the next scheduled deploy. Cleared 2 of the ~20 duplicate reports it had filed; the rest will clear as duplicates on the next couple of runs.
 Left open (no new info, same as yesterday): the /reading "something went wrong" report (Sep 24) and the /start "couldn't access the website" report (Oct 5) - both still one-off, unreproducible.
 Left open (diagnosis refined, can't confirm without reporter): the devotional Day 15 "Task 1 keeps repeating" report - likely the reader reached Day 15 by a link/notification instead of tapping Continue, so the app sends them back to their actual current day.
+
+## 2026-10-18T06:58:38Z (hourly chapter notes run)
+Chapter: 1 Peter 3 | Duration: 12 min | Sections: 8 | Cards: 47 | Status: pass
+Next up: 1 Peter 4
