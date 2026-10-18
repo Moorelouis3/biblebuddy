@@ -365,22 +365,20 @@ export default function HomeScreen() {
         </div>
       </header>
 
-      {/* Your Bookshelf leads (Louis, 2026-10-18): "the continue reading
-          should be first". The verse led since 2026-09-04 and the shelf sat
-          under it from 2026-10-17 - but the first thing somebody opening the
-          app wants is the book they are already in, and a verse to read is
-          something offered rather than something resumed.
+      {/* The page reads: verse, bookshelf, TV, Quick Reads (Louis,
+          2026-10-18). The verse led until this morning, the shelf took the
+          front for a few hours, and this puts it back - one short thing to
+          read before the shelf of long ones.
 
-          It replaced two sections on 2026-10-16 - the community study day
-          panel and the Bible in One Year day rail - and renders the Today
-          Together card beneath itself. */}
+          The bookshelf renders Today's Group Study above its own covers, so
+          the group study is still the first thing under the verse. */}
+      <VerseOfTheDayCard userId={userId} />
+
       <YourBookshelf
         userId={userId}
         planDay={stats.planDay}
         planCompletedDays={completedDays}
       />
-
-      <VerseOfTheDayCard userId={userId} />
 
       {/* Recommended For You - above Look It Up since 2026-10-17 (Louis).
           Today's reading comes first, then something to read next; looking a
