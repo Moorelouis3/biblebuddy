@@ -17,6 +17,7 @@ import { logActionToMasterActions } from "../../lib/actionRecorder";
 import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
 import { readStudyActivity } from "../../lib/communityMilestones";
 import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
+import { FEED_OPEN_POST_EVENT } from "../../components/AppShell";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -1963,13 +1964,39 @@ export default function BbFeedPage() {
   const [highlightPostId, setHighlightPostId] = useState<string | null>(null);
   const [highlightCommentId, setHighlightCommentId] = useState<string | null>(null);
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const postId = params.get("post");
-    const commentId = params.get("comment");
-    setHighlightPostId(postId);
-    setHighlightCommentId(commentId);
-    // Switch to community tab so the post is visible
-    if (postId) setTab("community");
+    const openFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const postId = params.get("post");
+      const commentId = params.get("comment");
+      setHighlightPostId(postId);
+      setHighlightCommentId(commentId);
+      // Switch to community tab so the post is visible
+      if (postId) setTab("community");
+    };
+    openFromUrl();
+
+    /**
+     * The same thing again, when the feed is already the page on screen.
+     *
+     * Tapping an alert from the feed pushes /bb-feed?post=… , and Next keeps
+     * this component mounted for a query-string change on the same route -
+     * so the read above, which runs on mount, never runs again. The URL
+     * changed and nothing moved, which is exactly what Louis saw: "I click it
+     * and it takes me to the feed page but nothing happens."
+     */
+    const openFromEvent = (event: Event) => {
+      const detail = (event as CustomEvent<{ postId?: string; commentId?: string | null }>).detail;
+      if (!detail?.postId) return;
+      setHighlightPostId(detail.postId);
+      setHighlightCommentId(detail.commentId ?? null);
+      setTab("community");
+    };
+    window.addEventListener(FEED_OPEN_POST_EVENT, openFromEvent);
+    window.addEventListener("popstate", openFromUrl);
+    return () => {
+      window.removeEventListener(FEED_OPEN_POST_EVENT, openFromEvent);
+      window.removeEventListener("popstate", openFromUrl);
+    };
   }, []);
 
   // Buddies tab state — the same ranked list, kept to people you added
@@ -2015,6 +2042,23 @@ export default function BbFeedPage() {
   // The two controls above the feed. See applyFeedControls.
   const [postFilter, setPostFilter] = useState<"all" | "photos" | "study">("all");
   const [sortBy, setSortBy] = useState<"ranked" | "recent">("ranked");
+
+  /**
+   * The post an alert was about, fetched on its own when the feed has not
+   * loaded it.
+   *
+   * Highlighting only works on a post that is on screen, and the community
+   * tab holds a week of posts that the ranking chose - so "Stefani replied to
+   * your post" about something from ten days ago, or about a post the ranking
+   * left out, scrolled to nothing. Louis: "the alert needs to show the exact
+   * post that was activity, not just the page where it is."
+   *
+   * So the post is fetched by id and shown at the top until the reader moves
+   * on. An id from an older group-era alert finds nothing, and then the feed
+   * simply opens, which is the honest outcome for a post that was never in
+   * this table.
+   */
+  const [focusedPost, setFocusedPost] = useState<FeedPost | null>(null);
 
   useEffect(() => {
     async function init() {
@@ -2300,6 +2344,51 @@ export default function BbFeedPage() {
     setRankedCommunityFeed(blocked.size ? ranked.filter((item) => !blocked.has(item.user_id)) : ranked);
   }, [rankedCommunityFeed.length, userId, myReactions]);
 
+  useEffect(() => {
+    if (!highlightPostId || !userId) {
+      setFocusedPost(null);
+      return;
+    }
+    const alreadyShown =
+      rankedCommunityFeed.some((item) => item.id === highlightPostId) ||
+      rankedBuddiesFeed.some((item) => item.id === highlightPostId) ||
+      myFeedPosts.some((item) => item.id === highlightPostId);
+    if (alreadyShown) {
+      setFocusedPost(null);
+      return;
+    }
+    if (focusedPost?.id === highlightPostId) return;
+
+    let cancelled = false;
+    void (async () => {
+      const { data } = await supabase
+        .from("feed_posts")
+        .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
+        .eq("id", highlightPostId)
+        .maybeSingle();
+      if (cancelled || !data) return;
+
+      const { data: profile } = await supabase
+        .from("profile_stats")
+        .select("display_name, username, profile_image_url")
+        .eq("user_id", data.user_id)
+        .maybeSingle();
+      if (cancelled) return;
+
+      setFocusedPost({
+        ...(data as FeedPost),
+        display_name: profile?.display_name ?? null,
+        username: profile?.username ?? null,
+        profile_image_url: profile?.profile_image_url ?? null,
+      });
+      void loadCommentPreviews([data.id]);
+    })();
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [highlightPostId, userId, rankedCommunityFeed, rankedBuddiesFeed, myFeedPosts]);
+
   // Blocking somebody from anywhere in the app clears them out of both feeds
   // here, without a reload. ReportBlockMenu fires BLOCKS_CHANGED_EVENT, and the
   // block may well have happened in the inbox or on a profile rather than on
@@ -2528,6 +2617,24 @@ export default function BbFeedPage() {
 
     return (
       <div className="flex flex-col gap-3">
+        {/* The post an alert was about, when the feed did not already hold it. */}
+        {focusedPost ? (
+          <PostCard
+            key={`focused-${focusedPost.id}`}
+            post={focusedPost}
+            myId={userId!}
+            myProfile={myProfile}
+            currentUserIsAdmin={currentUserIsAdmin}
+            myReactions={myReactions}
+            onReact={handleReact}
+            onCommentCountChange={handleCommentCountChange}
+            onDelete={handleDeletePost}
+            highlightPostId={highlightPostId}
+            highlightCommentId={highlightCommentId}
+            preview={commentPreviews[focusedPost.id]}
+          />
+        ) : null}
+
         {/* The day's study, above everything, in the same card as the rest.
             A pin is a position, not a different kind of post - it still takes
             likes and comments where it sits. */}

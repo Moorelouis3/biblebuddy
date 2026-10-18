@@ -116,6 +116,33 @@ const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
  * stops anybody seeing them in the meantime.
  */
 const BROADCAST_NOTIFICATION_TYPES = ["group_post", "buddy_posted"];
+
+/** Alerts about a post in the feed, wherever that post was originally written. */
+const FEED_NOTIFICATION_TYPES = [
+  "buddy_posted",
+  "feed_post_liked",
+  "feed_post_commented",
+  "feed_post_replied",
+  "group_post_liked",
+  "group_post_commented",
+  "group_post_replied",
+  "group_reply_liked",
+];
+
+/**
+ * Tells an already-open feed which post to go to.
+ *
+ * Louis, 2026-10-18: "I click it and it takes me to the feed page but nothing
+ * happens - we spent a lot of time on this in the group, the alert needs to
+ * show the exact post."
+ *
+ * Pushing /bb-feed?post=… is not enough on its own. If the feed is the page
+ * you are already on, Next keeps the component mounted and only the query
+ * string changes, so the effect that reads it on mount never runs again -
+ * the URL updates and the screen does not. The group solved this with an
+ * event, and this is the same answer for the feed.
+ */
+export const FEED_OPEN_POST_EVENT = "bb:feed-open-post";
 function isOwnerEmail(email: string | null | undefined) {
   return email?.toLowerCase() === "moorelouis3@gmail.com";
 }
@@ -2028,24 +2055,30 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
      * to that post with its thread open. An older row carries a group post's
      * id, which the feed will not find - it still lands in the feed, which is
      * the right room, rather than on a group page.
+     *
+     * By type, deliberately, and not by "the link starts with /study-groups".
+     * The weekly series writes series_reflection notifications whose links
+     * point into the group's series pages, and those are a different feature
+     * that still lives there - 918 of the 34,074 rows left in the table.
+     * Catching them by their link would drop somebody into the feed looking
+     * for a post id that belongs to a series reflection.
      */
-    if (
-      notif.type === "buddy_posted" ||
-      notif.type === "feed_post_liked" ||
-      notif.type === "feed_post_commented" ||
-      notif.type === "feed_post_replied" ||
-      notif.type === "group_post_liked" ||
-      notif.type === "group_post_commented" ||
-      notif.type === "group_post_replied" ||
-      notif.type === "group_reply_liked" ||
-      notif.article_slug?.startsWith("/study-groups/")
-    ) {
+    if (FEED_NOTIFICATION_TYPES.includes(notif.type ?? "")) {
       const { postId, commentId } = getGroupNotificationTarget(notif);
       const params = new URLSearchParams();
       if (postId) params.set("post", postId);
       if (commentId) params.set("comment", commentId);
       const query = params.toString();
       router.push(query ? `/bb-feed?${query}` : "/bb-feed");
+
+      // And tell the feed, in case it is already the page on screen.
+      if (postId && typeof window !== "undefined") {
+        window.setTimeout(() => {
+          window.dispatchEvent(
+            new CustomEvent(FEED_OPEN_POST_EVENT, { detail: { postId, commentId } }),
+          );
+        }, 150);
+      }
       return;
     }
     if (notif.article_slug?.startsWith("/dashboard/")) {
@@ -3029,17 +3062,30 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                           </div>
                         ) : (
                           notifications.map((notif) => {
-                            // Friendly label for the notification source
-                            const notifSourceLabel =
-                              notif.type === "buddy_posted" ? "Activity" :
-                              notif.type === "feed_post_liked" ? "Activity" :
-                              notif.type === "feed_post_commented" ? "Activity" :
-                              notif.type === "feed_post_replied" ? "Activity" :
-                              notif.article_slug?.startsWith("/dashboard/")
-                                ? "Study Group"
-                                : notif.article_slug
-                                  ? notif.article_slug.split("/").filter(Boolean).pop()?.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ") ?? ""
-                                  : "";
+                            // Friendly label for the notification source.
+                            //
+                            // This used to end with "take the last segment of
+                            // the link and title-case it", which is fine for
+                            // /blog/bible-chapter-proverbs-1 and became
+                            // "Bb Feed?post=75d14836 15f9 4ecc A84c…" the
+                            // moment feed alerts started carrying a query
+                            // string (Louis, 2026-10-18, with it circled in
+                            // green: "I got an alert and it looks bad").
+                            //
+                            // A label is a word for where this came from. If
+                            // there isn't one, there is no label - printing
+                            // the URL at somebody is not a fallback.
+                            const notifSourceLabel = (() => {
+                              if (FEED_NOTIFICATION_TYPES.includes(notif.type ?? "")) return "Feed";
+                              const path = (notif.article_slug || "").split(/[?#]/)[0];
+                              if (!path || path === "/") return "";
+                              if (path.startsWith("/bb-feed")) return "Feed";
+                              if (path.startsWith("/dashboard") || path.startsWith("/study-groups")) return "Study Group";
+                              if (path.startsWith("/messages")) return "";
+                              const last = path.split("/").filter(Boolean).pop() || "";
+                              if (!last || /^[0-9a-f-]{20,}$/i.test(last) || /^\d+$/.test(last)) return "";
+                              return last.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+                            })();
                             const timeStr = new Date(notif.created_at).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
 
                             // Buddy request — show Accept / Not Now buttons
