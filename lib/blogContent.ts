@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-8-explained",
+    title: "Leviticus 8 Explained: The Ordination of Aaron and His Sons",
+    description:
+      "Leviticus 8 explained verse by verse: Aaron's washing, anointing, the sin offering, and the seven days before the priesthood began.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-8-explained",
+    publishedAt: "2026-10-18",
+    readTime: "15 min read",
+    image: "/blog-banners/leviticus-8-explained.jpg",
+    groupPost: {
+      title: "Leviticus 8 Explained 📖",
+      content:
+        "One day everyone watched Aaron become a priest.\nNothing happened without Moses obeying exactly.\n\n📌 Aaron never anointed himself. Moses did, under command.\n\n📖 Oil and blood were sprinkled on Aaron together.\n📖 Blood touched his ear, his thumb, his toe.\n📖 Seven days he could not leave the tabernacle door.\n\nNew article on:\n🟢 why the **wave offering** broke its own rule this once\n🟢 what the **Urim and Thummim** actually were\n🟢 why leaving early carried the penalty of death\n\nDid you know Moses kept part of the sacrifice for himself? 🙏",
+    },
+  },
+  {
     slug: "leviticus-7-explained",
     title: "Leviticus 7 Explained: The Peace Offering and the Law That Closes the Code",
     description:
