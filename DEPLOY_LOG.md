@@ -55,3 +55,4 @@
 2026-10-18T01:21:03Z | 1 commit | Milestones post when the app opens, not only when the schedule fires
 2026-10-18T01:42:27Z | 1 commit | One feed, not two: the community is the feed, the second feed loses its door, and profiles show community posts
 2026-10-18T03:08:47Z | 1 commit | Milestone posts were being rejected by a CHECK constraint on group_posts.category every single run
+2026-10-18T03:25:51Z | 1 commit | The social feed is back in the menu with its own wall tab, and milestones post to the person's own wall instead of crowding the group

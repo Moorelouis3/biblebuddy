@@ -52,7 +52,7 @@ interface FeedActivity {
   profile_image_url: string | null;
 }
 
-type Tab = "community" | "buddies";
+type Tab = "community" | "buddies" | "myfeed";
 type PostType = "thought" | "verse" | "prayer" | "prayer_request" | "photo" | "link" | "video";
 
 interface FeedComment {
@@ -275,7 +275,6 @@ function rankCommunityFeed(
 
   return final;
 }
-
 
 // ── Post Composer ─────────────────────────────────────────────────────────────
 
@@ -1809,6 +1808,10 @@ export default function BbFeedPage() {
   const [rankedCommunityFeed, setRankedCommunityFeed] = useState<RankedFeedItem[]>([]);
 
   // My Feed tab state
+  const [myFeedPosts, setMyFeedPosts] = useState<FeedPost[]>([]);
+  const [myFeedActivity, setMyFeedActivity] = useState<FeedActivity[]>([]);
+  const [myFeedLoading, setMyFeedLoading] = useState(false);
+  const [myFeedLoaded, setMyFeedLoaded] = useState(false);
 
   /**
    * The Buddies tab, which now loads when it is opened rather than on arrival.
@@ -1977,6 +1980,37 @@ export default function BbFeedPage() {
     void loadMyReactions(uid, postChunks.map((p) => p.id));
   }
 
+  async function loadMyFeedTab(uid: string) {
+    if (myFeedLoaded) return;
+    setMyFeedLoading(true);
+
+    const [postsRes, activityRes] = await Promise.all([
+      supabase
+        .from("feed_posts")
+        .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
+        .eq("user_id", uid)
+        .order("created_at", { ascending: false })
+        .limit(100),
+      supabase
+        .from("feed_activity")
+        .select("id, user_id, activity_type, activity_data, group_id, group_name, created_at")
+        .eq("user_id", uid)
+        .order("created_at", { ascending: false })
+        .limit(100),
+    ]);
+
+    // Use already-loaded myProfile to avoid an extra fetch
+    const profileArr = myProfile ? [{ user_id: uid, ...myProfile }] : [];
+    const posts = await enrichWithProfiles(postsRes.data || [], profileArr) as FeedPost[];
+    const activities = await enrichWithProfiles(activityRes.data || [], profileArr) as FeedActivity[];
+
+    setMyFeedPosts(posts);
+    setMyFeedActivity(activities);
+    setMyFeedLoading(false);
+    setMyFeedLoaded(true);
+    void loadMyReactions(uid, posts.map((p) => p.id));
+  }
+
   const loadCommunityTab = useCallback(async () => {
     if (rankedCommunityFeed.length > 0) return; // already loaded
 
@@ -2072,6 +2106,7 @@ export default function BbFeedPage() {
       const drop = <T extends { user_id: string }>(items: T[]) => items.filter((item) => !blocked.has(item.user_id));
       setRankedBuddiesFeed((prev) => drop(prev));
       setRankedCommunityFeed((prev) => drop(prev));
+      setMyFeedActivity((prev) => drop(prev));
     };
     window.addEventListener(BLOCKS_CHANGED_EVENT, prune);
     return () => {
@@ -2085,6 +2120,8 @@ export default function BbFeedPage() {
       void loadCommunityTab();
     } else if (tab === "buddies" && userId) {
       void loadFriendsTab(userId);
+    } else if (tab === "myfeed" && userId) {
+      void loadMyFeedTab(userId);
     }
   }, [tab, userId, loadCommunityTab]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -2117,6 +2154,8 @@ export default function BbFeedPage() {
             : item
         ) as RankedFeedItem[]
       );
+    } else if (tab === "myfeed") {
+      setMyFeedPosts(updateCounts);
     } else {
       setRankedCommunityFeed((prev) =>
         prev.map((item) =>
@@ -2156,6 +2195,7 @@ export default function BbFeedPage() {
     const filterOut = (prev: RankedFeedItem[]) => prev.filter((item) => !(item._kind === "post" && (item as FeedPost).id === postId));
     setRankedBuddiesFeed(filterOut);
     setRankedCommunityFeed(filterOut);
+    setMyFeedPosts((prev) => prev.filter((p) => p.id !== postId));
   }
 
   // ── Comment count sync ─────────────────────────────────────────────────────
@@ -2169,6 +2209,7 @@ export default function BbFeedPage() {
       ) as RankedFeedItem[];
     setRankedBuddiesFeed(patchRanked);
     setRankedCommunityFeed(patchRanked);
+    setMyFeedPosts((prev) => prev.map((p) => p.id === postId ? { ...p, comment_count: Math.max(p.comment_count + delta, 0) } : p));
   }
 
   // ── Render helpers ─────────────────────────────────────────────────────────
@@ -2226,6 +2267,55 @@ export default function BbFeedPage() {
     );
   }
 
+  function renderMyFeedTab() {
+    if (myFeedLoading) {
+      return <div className="text-sm text-gray-400 text-center py-16">Loading your feed...</div>;
+    }
+
+    // Exclude redundant/noise activity types (post_created already shown as PostCard, login/signup irrelevant)
+    const EXCLUDED = new Set(["post_created", "login", "signup", "user_signed_in", "user_registered"]);
+
+    type UnifiedItem = ({ _kind: "post" } & FeedPost) | ({ _kind: "activity" } & FeedActivity);
+    const items: UnifiedItem[] = [
+      ...myFeedPosts.map((p) => ({ ...p, _kind: "post" as const })),
+      ...myFeedActivity.filter((a) => !EXCLUDED.has(a.activity_type)).map((a) => ({ ...a, _kind: "activity" as const })),
+    ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+
+    if (items.length === 0) {
+      return (
+        <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
+          <p className="text-3xl mb-3">✨</p>
+          <h3 className="font-bold text-gray-900 mb-1">Your feed is empty</h3>
+          <p className="text-sm text-gray-500">Your posts and activity will appear here as you use Bible Buddy.</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex flex-col gap-3">
+        {interleaveUpgradeCards(items, myProfile?.is_paid !== true, (item) =>
+          item._kind === "post" ? (
+            <PostCard
+              key={`post-${item.id}`}
+              post={item as FeedPost}
+              myId={userId!}
+              myProfile={myProfile}
+              currentUserIsAdmin={currentUserIsAdmin}
+              myReactions={myReactions}
+              onReact={handleReact}
+              onCommentCountChange={handleCommentCountChange}
+              onDelete={handleDeletePost}
+              highlightPostId={highlightPostId}
+              highlightCommentId={highlightCommentId}
+            />
+          ) : (
+            <ActivityPostCard key={`act-${item.id}`} activity={item as FeedActivity} />
+          )
+        )}
+      </div>
+    );
+  }
+
   // ── Page ───────────────────────────────────────────────────────────────────
 
   // Nothing until we know who is here.
@@ -2273,13 +2363,9 @@ export default function BbFeedPage() {
         {/* Tabs */}
         <div className="bb-community-tab flex gap-1 bg-gray-100 rounded-xl p-1 mb-6">
           {([
-            // My Feed left on 2026-10-17. It was your own posts and your own
-            // activity, which is what a profile is - so the app carried two
-            // walls and a feed, and your own things appeared in a tab beside
-            // everybody else's. The profile is the wall now. This is everybody
-            // else (Louis: "should their feed be their profile instead?").
             { key: "community", label: "🌎 Community" },
             { key: "buddies",   label: "🤝 Buddies" },
+            { key: "myfeed",    label: "👤 My Feed" },
           ] as { key: Tab; label: string }[]).map(({ key, label }) => (
             <button
               key={key}
@@ -2293,8 +2379,8 @@ export default function BbFeedPage() {
           ))}
         </div>
 
-        {/* Composer */}
-        {!loading && userId && (
+        {/* Composer — hidden on My Feed tab */}
+        {!loading && userId && tab !== "myfeed" && (
           <PostComposer
             userId={userId}
             userProfile={myProfile}
@@ -2313,7 +2399,7 @@ export default function BbFeedPage() {
         {loading ? (
           <div className="text-sm text-gray-400 text-center py-16">Loading feed...</div>
         ) : (
-          tab === "buddies" ? renderFriendsTab() : renderCommunityTab()
+          tab === "buddies" ? renderFriendsTab() : tab === "community" ? renderCommunityTab() : renderMyFeedTab()
         )}
 
       </div>

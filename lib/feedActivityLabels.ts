@@ -27,6 +27,11 @@ export const ACTIVITY_LABELS: Record<string, (data: ActivityData) => string> = {
 };
 
 export function activityLabel(type: string, data: ActivityData): string {
+  // A milestone writes its own phrase when it is recorded, because the wording
+  // lives beside the rule that decides what counts (lib/communityMilestones.ts)
+  // and should not be reassembled from fields here.
+  if (typeof data?.sentence === "string" && data.sentence.trim()) return data.sentence.trim();
+
   const fn = ACTIVITY_LABELS[type];
   return fn ? fn(data) : type.replace(/_/g, " ");
 }

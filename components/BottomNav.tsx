@@ -79,16 +79,19 @@ const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
   { label: "Invite a Buddy", href: "/ambassador", icon: "💌" },
   // BB Chat left this sheet on 2026-10-17 - it is the Lil Louis tab now.
   { label: "Notes", href: "/notes", icon: "📝" },
-  // No Buddy Feed door here. It was added on 2026-10-17 and taken out again
-  // the next day, because shipping it made the mistake obvious: the app then
-  // had two feeds, the community everybody already posts in and a second one
-  // with its own tables and nobody in it. Louis, 2026-10-18: "I wanted the
-  // feed to be the community, not 2 separate places - the community is the
-  // feed, which is the group."
+  // The social feed. Added 2026-10-17, removed the next morning when Louis
+  // said the community was the feed, and back the same day once he described
+  // what he actually meant: "a social feed on the menu that you click and it
+  // looks like Instagram or Facebook, and there you can post your own post and
+  // see your own wall in a tab on that menu option, where the main feed is set
+  // for the algorithm we make up."
   //
-  // So the Group tab is the feed. /bb-feed still exists unlinked, because its
-  // composer and card layout are worth lifting into the community page rather
-  // than rewriting, but nothing points at it.
+  // That is this page, not the group. The group is a room people talk in; this
+  // is a feed with a composer, a ranked main tab and your own wall beside it.
+  // Milestones go here, onto the poster's own wall, rather than into the group
+  // where fifteen of them arrived back to back and crowded the conversation
+  // out.
+  { label: "Feed", href: "/bb-feed", icon: "📱" },
 ];
 
 /** Below this, a movement is a twitch or a bounce, not a scroll. */
