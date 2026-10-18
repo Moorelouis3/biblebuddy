@@ -113,9 +113,13 @@ const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
  * updates, the daily reading reminder, and the feed's own alerts - somebody
  * liked or replied to YOUR post - which carry feed ids and open the post.
  *
- * Of the 34,074 rows still in the table, 816 are series_reflection and about
- * a hundred are group likes and replies. Hidden rather than deleted: the
- * delete is Louis's to approve and nobody can see these in the meantime.
+ * The rows themselves are gone: 13,387 of them deleted on 2026-10-18 once
+ * Louis said so - "delete them, I'm not going back, the next time we do
+ * groups it will be users creating their own, Skool type thing." The list
+ * stays because nothing stops an old build, a queued job or a trigger
+ * somebody forgot from writing one of these types again, and if that
+ * happens it should land somewhere nobody sees rather than in front of
+ * seven thousand people.
  */
 const BROADCAST_NOTIFICATION_TYPES = [
   "group_post",
@@ -127,6 +131,7 @@ const BROADCAST_NOTIFICATION_TYPES = [
   "series_reflection",
   "series_reflection_liked",
   "series_reflection_reply_liked",
+  "study_group_update",
 ];
 
 /**
