@@ -11,7 +11,6 @@ import {
   type StreakData,
   syncCurrentStreakToProfileStats,
 } from "../../../lib/profileStats";
-import { activityLabel } from "../../../lib/feedActivityLabels";
 import { syncNotesCount, shouldSyncNotesCount } from "../../../lib/syncNotesCount";
 
 /**
@@ -405,51 +404,50 @@ export default function PublicProfilePage() {
       }
       await loadBuddyCount();
 
-      // The wall: posts and activity together, newest first. RLS filters
-      // visibility automatically, so a buddies-only post simply does not come
-      // back for someone who is not a buddy - the filtering is not this page's
-      // job and must not look like it is.
-      const [postsRes, activityRes] = await Promise.all([
-        supabase
-          .from("feed_posts")
-          .select("id, post_type, content, verse_ref, media_url, visibility, created_at")
-          .eq("user_id", profileUserId)
-          .order("created_at", { ascending: false })
-          .limit(WALL_PAGE_SIZE),
-        supabase
-          .from("feed_activity")
-          .select("id, activity_type, activity_data, created_at")
-          .eq("user_id", profileUserId)
-          .order("created_at", { ascending: false })
-          .limit(WALL_PAGE_SIZE),
-      ]);
+      /**
+       * The wall: what this person has posted in the community.
+       *
+       * It used to read feed_posts and feed_activity - the buddy feed's own
+       * tables - which is why it was always empty. Those tables have eight
+       * rows between them and nobody writes to them, while the community has
+       * 1,855 posts and is where everybody actually is.
+       *
+       * Louis, 2026-10-18: "I wanted the feed to be the community, not 2
+       * separate places - the community is the feed, which is the group." A
+       * profile reading from a different table than the place people post in
+       * was the same mistake one level down.
+       *
+       * Milestones land here too, because they are community posts like any
+       * other - so a wall fills up as somebody reads, without them writing a
+       * word.
+       *
+       * Replies are left out: parent_post_id is null only for things this
+       * person started, and a wall of their replies to other people's threads
+       * is a different page.
+       */
+      const postsRes = await supabase
+        .from("group_posts")
+        .select("id, category, content, media_url, created_at, parent_post_id")
+        .eq("user_id", profileUserId)
+        .is("parent_post_id", null)
+        .order("created_at", { ascending: false })
+        .limit(WALL_PAGE_SIZE);
 
       const wallPosts = (postsRes.data || []).map((post) => ({
         id: post.id,
-        kind: "post" as const,
-        post_type: post.post_type,
+        // A milestone is machine-written and gets the tick; anything else is
+        // something they sat down and typed.
+        kind: post.category === "milestone" ? ("activity" as const) : ("post" as const),
+        post_type: post.category ?? "general",
         content: post.content ?? "",
-        verse_ref: post.verse_ref ?? null,
+        verse_ref: null,
         media_url: post.media_url ?? null,
-        visibility: post.visibility ?? "community",
+        visibility: "community",
         created_at: post.created_at,
       }));
 
-      const wallActivity = (activityRes.data || []).map((row) => ({
-        id: row.id,
-        kind: "activity" as const,
-        post_type: row.activity_type,
-        // Rendered as the sentence the feed uses, so the same event never reads
-        // two different ways in two places.
-        content: activityLabel(row.activity_type, row.activity_data || {}),
-        verse_ref: null,
-        media_url: null,
-        visibility: "community",
-        created_at: row.created_at,
-      }));
-
       setRecentPosts(
-        [...wallPosts, ...wallActivity]
+        [...wallPosts]
           .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
           .slice(0, WALL_PAGE_SIZE),
       );

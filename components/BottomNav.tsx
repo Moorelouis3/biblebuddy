@@ -79,12 +79,16 @@ const MORE_LINKS: Array<{ label: string; href: string; icon: string }> = [
   { label: "Invite a Buddy", href: "/ambassador", icon: "💌" },
   // BB Chat left this sheet on 2026-10-17 - it is the Lil Louis tab now.
   { label: "Notes", href: "/notes", icon: "📝" },
-  // The buddy feed, restored 2026-10-17 after being deleted on 2026-05-26.
-  // Here rather than in the tab strip above on purpose: that strip already
-  // carries six and Louis has had to have it fixed once for crowding, and this
-  // feed has yet to prove anybody uses it. A door it has never had beats a
-  // seventh tab; promote it if the posting takes off.
-  { label: "Buddy Feed", href: "/bb-feed", icon: "👥" },
+  // No Buddy Feed door here. It was added on 2026-10-17 and taken out again
+  // the next day, because shipping it made the mistake obvious: the app then
+  // had two feeds, the community everybody already posts in and a second one
+  // with its own tables and nobody in it. Louis, 2026-10-18: "I wanted the
+  // feed to be the community, not 2 separate places - the community is the
+  // feed, which is the group."
+  //
+  // So the Group tab is the feed. /bb-feed still exists unlinked, because its
+  // composer and card layout are worth lifting into the community page rather
+  // than rewriting, but nothing points at it.
 ];
 
 /** Below this, a movement is a twitch or a bounce, not a scroll. */
