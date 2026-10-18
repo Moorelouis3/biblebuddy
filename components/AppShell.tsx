@@ -897,9 +897,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
    * it in the data: before 6 October 37% of new accounts chose a plan other
    * than the default, after it 11%.
    *
-   * What survives is the part that was doing real work - creating the
-   * profile_stats row, recording where they came from, and putting Day 1 of
-   * the Bible in One Year in front of them. Name and profile picture are asked
+   * What survives is only what a signed-in account genuinely needs: the
+   * profile_stats row and a record of where they came from. No plan is picked
+   * for them - they land on the home screen with nothing chosen, and go to the
+   * Plans tab if and when they want one. Name and profile picture are asked
    * for later, once, by DisplayNamePromptGate, after the account finishes its
    * first real thing. That is the whole of it.
    */
@@ -907,14 +908,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     try {
       let { data: profileStats, error: profileStatsError } = await supabase
         .from("profile_stats")
-        .select("onboarding_completed, traffic_source, display_name, username, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at, preferred_study_mode")
+        .select("onboarding_completed, traffic_source, display_name, username, bible_year_started_at, bible_year_launch_seen_at, preferred_study_mode")
         .eq("user_id", currentUserId)
         .maybeSingle();
 
       if (profileStatsError && /preferred_study_mode/i.test(profileStatsError.message || "")) {
         const fallback = await supabase
           .from("profile_stats")
-          .select("onboarding_completed, traffic_source, display_name, username, free_devotional_id, louis_primary_devotional_id, louis_primary_devotional_day, bible_year_started_at, bible_year_launch_seen_at")
+          .select("onboarding_completed, traffic_source, display_name, username, bible_year_started_at, bible_year_launch_seen_at")
           .eq("user_id", currentUserId)
           .maybeSingle();
         profileStats = fallback.data as typeof profileStats;
@@ -926,60 +927,29 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         return;
       }
 
-      const todayKey = getAppShellLocalDateKey();
-      const nowIso = new Date().toISOString();
-      const { data: existingBibleYearProgressRows } = await supabase
-        .from("bible_year_day_progress")
-        .select("day_number")
-        .eq("user_id", currentUserId)
-        .limit(1);
-      const hasExistingBibleYearProgress = Boolean(existingBibleYearProgressRows && existingBibleYearProgressRows.length > 0);
-
-      // Day 1 of the Bible in One Year, ready to open. Shared by the
-      // brand-new-account path and the repair path below.
-      async function ensureDayOne() {
-        if (hasExistingBibleYearProgress) return;
-        let { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
-          {
-            user_id: currentUserId,
-            day_number: 1,
-            reading_completed: false,
-            study_notes_completed: false,
-            trivia_completed: false,
-            reflection_completed: false,
-          },
-          { onConflict: "user_id,day_number" },
-        );
-        if (dayProgressError && isMissingStudyNotesCompletedColumn(dayProgressError)) {
-          await supabase.from("bible_year_day_progress").upsert(
-            {
-              user_id: currentUserId,
-              day_number: 1,
-              reading_completed: false,
-              trivia_completed: false,
-              reflection_completed: false,
-            },
-            { onConflict: "user_id,day_number" },
-          );
-        }
-      }
-
       if (!profileStats) {
         const signupAttribution = getCurrentSignupAttribution();
-        // onboarding_completed is true from the first moment now. Nothing asks
-        // the questions it used to gate, but dailyRecommendation and the weekly
-        // report both still read it as "is this account set up", and leaving it
-        // false would have them nagging people who have nothing left to finish.
+        // No plan is chosen here. A brand-new account gets a row, a theme and
+        // its attribution, and lands on the home screen with nothing picked -
+        // Louis, 2026-10-18: "i dont want bible in one year to be waiting i
+        // want them to be dropped in the dashbaord right away".
+        //
+        // So no preferred_study_mode, no bible_year_started_at, and no seeded
+        // Day 1. Choosing a plan is a thing someone does from the Plans tab
+        // when they want one, not something the app does to them while they
+        // are still looking around. A null preferred_study_mode is a state the
+        // app already handles - every guest account ever made had one.
+        //
+        // onboarding_completed is true from the first moment. Nothing asks the
+        // questions it used to gate, but dailyRecommendation and the weekly
+        // report both read it as "is this account set up", and leaving it
+        // false would have them nagging people who have nothing to finish.
         const { error: upsertError } = await supabase.from("profile_stats").upsert(
           {
             user_id: currentUserId,
             onboarding_completed: true,
             app_theme: "light",
             traffic_source: signupAttribution.source,
-            preferred_study_mode: "bible_year",
-            bible_year_started_at: todayKey,
-            bible_year_launch_seen_at: nowIso,
-            louis_primary_devotional_day: 1,
           },
           { onConflict: "user_id" }
         );
@@ -989,24 +959,61 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         }
 
         void saveSignupAttributionForUser(currentUserId, username || "Bible Buddy User", signupAttribution);
-
-        await ensureDayOne();
         return;
       }
 
-      const isDevotionalMode = profileStats.preferred_study_mode === "devotional";
+      // Repair, for people who ARE on Bible in One Year but lost the dates off
+      // their profile. Deliberately keyed on an explicit preferred_study_mode
+      // of "bible_year" and nothing else: it used to run for anyone who was not
+      // on a devotional, which with no plan chosen now means everybody, and it
+      // would quietly enrol every new account in the plan this change exists to
+      // stop enrolling them in.
+      const todayKey = getAppShellLocalDateKey();
+      const nowIso = new Date().toISOString();
 
-      if (!isDevotionalMode && (!profileStats.bible_year_started_at || !profileStats.bible_year_launch_seen_at)) {
+      if (
+        profileStats.preferred_study_mode === "bible_year" &&
+        (!profileStats.bible_year_started_at || !profileStats.bible_year_launch_seen_at)
+      ) {
         await supabase
           .from("profile_stats")
           .update({
             bible_year_started_at: profileStats.bible_year_started_at || todayKey,
             bible_year_launch_seen_at: profileStats.bible_year_launch_seen_at || nowIso,
-            louis_primary_devotional_day: profileStats.louis_primary_devotional_id ? 1 : profileStats.louis_primary_devotional_day ?? 1,
           })
           .eq("user_id", currentUserId);
 
-        await ensureDayOne();
+        const { data: existingBibleYearProgressRows } = await supabase
+          .from("bible_year_day_progress")
+          .select("day_number")
+          .eq("user_id", currentUserId)
+          .limit(1);
+
+        if (!existingBibleYearProgressRows || existingBibleYearProgressRows.length === 0) {
+          const { error: dayProgressError } = await supabase.from("bible_year_day_progress").upsert(
+            {
+              user_id: currentUserId,
+              day_number: 1,
+              reading_completed: false,
+              study_notes_completed: false,
+              trivia_completed: false,
+              reflection_completed: false,
+            },
+            { onConflict: "user_id,day_number" },
+          );
+          if (dayProgressError && isMissingStudyNotesCompletedColumn(dayProgressError)) {
+            await supabase.from("bible_year_day_progress").upsert(
+              {
+                user_id: currentUserId,
+                day_number: 1,
+                reading_completed: false,
+                trivia_completed: false,
+                reflection_completed: false,
+              },
+              { onConflict: "user_id,day_number" },
+            );
+          }
+        }
       }
 
       // Anyone left stranded by the old flow - signed up after guests went off,
@@ -1022,7 +1029,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       console.error("[ACCOUNT_SETUP] Unexpected error:", _err);
     }
   }
-
 
   async function checkFullNameRequirement(currentUserId: string) {
     try {
