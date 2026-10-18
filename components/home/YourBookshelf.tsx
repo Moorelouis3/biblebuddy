@@ -321,10 +321,17 @@ export default function YourBookshelf({
                     className="flex w-[148px] shrink-0 snap-start flex-col rounded-2xl border p-2 shadow-sm sm:w-[174px]"
                     style={{ backgroundColor: tint.bg, borderColor: tint.border }}
                   >
+                    {/* Not out yet means not open yet (Louis, 2026-10-18:
+                        "it's just a placeholder for now, no need to allow it
+                        to click, we will do that later"). The cover and the
+                        countdown are the whole of it until the morning it
+                        lands, when the countdown runs out and the card
+                        becomes a button again on its own. */}
                     <button
                       type="button"
+                      disabled={Boolean(countdownLabel(book, now))}
                       onClick={() => router.push(book.href)}
-                      className="group relative block w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)]"
+                      className="group relative block w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] disabled:cursor-default"
                     >
                       {/* One main study at a time (Louis, 2026-10-18:
                           "people should only have one primary devotional, the
@@ -396,14 +403,17 @@ export default function YourBookshelf({
 
                     <button
                       type="button"
+                      disabled={Boolean(countdownLabel(book, now))}
                       onClick={() => router.push(book.href)}
                       className={`mt-2.5 w-full rounded-full px-2 py-2 text-center text-xs font-black transition sm:text-[13px] ${
-                        isLead
-                          ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] hover:opacity-95"
-                          : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] hover:bg-[#dceeff]"
+                        countdownLabel(book, now)
+                          ? "cursor-default bg-[#f3ece0] text-[#a57d2c]"
+                          : isLead
+                            ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] hover:opacity-95"
+                            : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] hover:bg-[#dceeff]"
                       }`}
                     >
-                      {primaryLabel}
+                      {countdownLabel(book, now) ? "Coming soon" : primaryLabel}
                     </button>
                   </li>
                 );
