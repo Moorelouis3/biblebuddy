@@ -40,26 +40,50 @@ export async function POST(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  // Identity comes from the token, never the body: the conversations are
-  // whichever ones this account is actually in.
-  const { data: conversations, error: convError } = await admin
-    .from("conversations")
-    .select("id")
-    .or(`user_id_1.eq.${currentUserId},user_id_2.eq.${currentUserId}`);
-  if (convError) return NextResponse.json({ error: convError.message }, { status: 500 });
+  /**
+   * Ask the counter which conversations are unread, and clear exactly those.
+   *
+   * This used to list the account's conversations and update messages in all
+   * of them:
+   *
+   *   .from("conversations").select("id").or(user_id_1.eq…,user_id_2.eq…)
+   *
+   * with no pagination, and PostgREST stops at a thousand rows. Louis has a
+   * conversation with very nearly every account in the app, so that page was
+   * a small and arbitrary slice of them - it marked a thousand conversations
+   * read, none of which had to be the unread ones, and the badge came back
+   * saying 46 the moment he reopened the app. Exactly 46, every time, because
+   * nothing it did touched them.
+   *
+   * get_unread_conversation_ids is the function the unread badge itself
+   * counts, so clearing what it returns cannot disagree with it. It is also a
+   * far smaller list - the unread ones, not every conversation ever had.
+   */
+  const { data: unreadRows, error: rpcError } = await (admin as any).rpc(
+    "get_unread_conversation_ids",
+    { p_user_id: currentUserId },
+  );
+  if (rpcError) return NextResponse.json({ error: rpcError.message }, { status: 500 });
 
-  const ids = (conversations || []).map((c) => c.id);
+  const ids = (unreadRows || []).map((row: any) => row.conversation_id).filter(Boolean);
   if (ids.length === 0) return NextResponse.json({ ok: true, cleared: 0 });
 
   const nowIso = new Date().toISOString();
-  const { data: updated, error: updateError } = await admin
-    .from("messages")
-    .update({ read_at: nowIso })
-    .in("conversation_id", ids)
-    .neq("sender_id", currentUserId)
-    .is("read_at", null)
-    .select("id");
-  if (updateError) return NextResponse.json({ error: updateError.message }, { status: 500 });
+  let cleared = 0;
+
+  // In chunks, because .in() goes into the URL and a long enough list is
+  // rejected before it reaches the database.
+  for (let i = 0; i < ids.length; i += 200) {
+    const { data: updated, error: updateError } = await admin
+      .from("messages")
+      .update({ read_at: nowIso })
+      .in("conversation_id", ids.slice(i, i + 200))
+      .neq("sender_id", currentUserId)
+      .is("read_at", null)
+      .select("id");
+    if (updateError) return NextResponse.json({ error: updateError.message }, { status: 500 });
+    cleared += (updated || []).length;
+  }
 
   // The dots in the notification list come from these, so they go too.
   await admin
@@ -69,5 +93,5 @@ export async function POST(request: NextRequest) {
     .eq("type", "direct_message")
     .eq("is_read", false);
 
-  return NextResponse.json({ ok: true, cleared: (updated || []).length });
+  return NextResponse.json({ ok: true, cleared });
 }
