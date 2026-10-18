@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-10-explained",
+    title: "Leviticus 10 Explained: Strange Fire, Sudden Death, and the Line Between Holy and Unholy",
+    description:
+      "Leviticus 10 explained verse by verse: Nadab and Abihu's strange fire, Aaron's silence, and the line between holy and unholy.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-10-explained",
+    publishedAt: "2026-10-18",
+    readTime: "15 min read",
+    image: "/blog-banners/leviticus-10-explained.jpg",
+    groupPost: {
+      title: "Leviticus 10 Explained 📖",
+      content:
+        "One day. Two fires. Two very different endings.\nAaron's sons brought fire God never asked for.\n\n📌 The same fire that brought joy one chapter earlier brought judgment in this one.\n\n📖 Aaron said nothing after losing two sons.\n📖 The priests were told not to mourn like everyone else could.\n📖 Moses got angry over a goat that was burned instead of eaten.\n\nNew article on:\n🟢 what **strange fire** actually means\n🟢 why priests were banned from **wine** at the tabernacle\n🟢 why Moses accepted Aaron's answer in the end\n\nDid you know Nadab and Abihu had already seen God once before? 🙏",
+    },
+  },
+  {
     slug: "leviticus-9-explained",
     title: "Leviticus 9 Explained: Aaron's First Day and the Fire From the LORD",
     description:
