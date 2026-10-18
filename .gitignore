@@ -72,3 +72,6 @@ data/shorts-schedule.backup-*.json
 # in CI, so they are output rather than source.
 /ios
 /android
+
+# Print files staged for a KDP upload; the originals live in Downloads
+.kdp-upload/
