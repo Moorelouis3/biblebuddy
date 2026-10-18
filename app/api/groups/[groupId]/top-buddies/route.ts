@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { ACTION_POINT_WEIGHTS, getLevelInfoFromPoints } from "@/lib/levelSystem";
+import { BIBLE_BUDDY_USER_ID } from "@/lib/bibleBuddyAccount";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -521,7 +522,17 @@ export async function GET(
     auth: { autoRefreshToken: false, persistSession: false },
   });
   const founderUserId = await resolveFounderUserId(supabaseAdmin, supabaseUrl, serviceKey);
-  const excludedUserIds = new Set([founderUserId].filter(Boolean) as string[]);
+  /**
+   * Who cannot be a Top Buddy.
+   *
+   * The founder was already out. Bible Buddy joins him (Louis, 2026-10-18:
+   * "remove Bible Buddy from the Top Buddies"): it is the brand account that
+   * posts the daily study, the verse and the chapter explainers, so it racks
+   * up more community score in a week than anybody could, and a leaderboard
+   * led by the app itself is not a leaderboard. Nobody signs into it either,
+   * so the place it won could never be taken by a person.
+   */
+  const excludedUserIds = new Set([founderUserId, BIBLE_BUDDY_USER_ID].filter(Boolean) as string[]);
 
   const { data: groupRow, error: groupError } = await supabaseAdmin
     .from("study_groups")
