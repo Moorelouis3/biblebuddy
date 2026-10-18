@@ -8241,3 +8241,7 @@ Next up: 3 John 1
 ## 2026-10-18T20:58:51Z (hourly chapter notes run)
 Chapter: 3 John 1 | Duration: 12 min | Sections: 6 | Cards: 24 | Status: pass
 Next up: Jude 1
+
+## 2026-10-18T21:58:00Z (hourly chapter notes run)
+Chapter: Jude 1 | Duration: 11 min | Sections: 9 | Cards: 52 | Status: pass
+Next up: Revelation 1
