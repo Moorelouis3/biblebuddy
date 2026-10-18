@@ -35,7 +35,7 @@ function DashboardRouter() {
       if (post) forward.set("post", post);
       if (comment) forward.set("comment", comment);
       const query = forward.toString();
-      router.replace(`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat${query ? `?${query}` : ""}`);
+      router.replace(query ? `/bb-feed?${query}` : "/bb-feed");
       return;
     }
     if (isPlan) {

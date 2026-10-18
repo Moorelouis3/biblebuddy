@@ -21,9 +21,31 @@
 
 const BLOCK_END = /<\s*\/\s*(p|div|section|article|h[1-6]|blockquote|ul|ol|tr)\s*>/gi;
 
+/**
+ * A link, kept as [label](href) for the feed to render.
+ *
+ * Dropping the tag and keeping the words is what the first version did, and
+ * it turned the daily study's "📖 Complete Day 18 here →" into a sentence
+ * that goes nowhere - the one line on the pinned post whose whole job is to
+ * open the day (Louis, 2026-10-18: "the pinned daily devotional day thing
+ * doesn't show the actual devotional day"). The same went for every "read
+ * the article" and "get it in print" line in every mirrored post.
+ *
+ * Markdown rather than the raw URL, because the label is what somebody wrote
+ * and a bare https://www.mybiblebuddy.net/devotionals/<uuid>/day/18 in the
+ * middle of a devotional is not something anybody meant to publish.
+ * components/feed PostBody turns these back into real links.
+ */
+const LINK = /<\s*a\b[^>]*\bhref\s*=\s*["']([^"']+)["'][^>]*>([\s\S]*?)<\s*\/\s*a\s*>/gi;
+
 export function htmlToPlainText(html: string | null | undefined): string {
   return String(html ?? "")
     .replace(/<\s*(script|style)[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi, "")
+    .replace(LINK, (_match, href: string, label: string) => {
+      const text = label.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+      if (!text) return href;
+      return `[${text}](${href})`;
+    })
     .replace(/<\s*br\s*\/?\s*>/gi, "\n")
     .replace(/<\s*li[^>]*>/gi, "\n• ")
     .replace(/<\s*\/\s*li\s*>/gi, "\n")

@@ -98,35 +98,50 @@ const AUTOMATIC_STREAK_RESCUE_POPUPS_ENABLED = false;
 const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
 
 /**
- * Alerts that only say "somebody posted", which the bell no longer shows.
+ * Everything the group ever wrote, which the bell no longer shows at all.
  *
- * Louis, 2026-10-18: "I would hate to be notified on social media every time
- * somebody else posted something, so we can take that off."
+ * Louis, 2026-10-18: "I don't want any alerts from the group to show to
+ * anyone, no one should be able to go there. It's the feed now, with the
+ * Community tab, the new spot for all users at once."
  *
- * Measured the same day: 461,515 of the 495,594 rows in notifications are
- * type 'group_post' and 451,782 of those are unread - 93% of every
- * notification anybody has ever been sent, and the reason the bell opens on a
- * wall of "Louis Moore posted in Bible Buddy Study Group". The fetch below
- * asks for the most recent forty rows, so for most people all forty were
- * these, and a real "someone replied to you" never reached the list at all.
+ * So this is not a noise filter any more, it is a closed door. Every type
+ * here was written by the group or its weekly series, and tapping one could
+ * only ever lead back into a room that is no longer part of the app. There
+ * is nowhere good to send them, so they are not shown.
  *
- * Filtered rather than deleted: deleting half a million rows is not something
- * to do quietly, and the trigger that writes new ones lives in the database
- * where this file cannot reach it. Both of those are Louis's to approve; this
- * stops anybody seeing them in the meantime.
+ * What that leaves in the bell: direct messages, buddy requests, bug
+ * updates, the daily reading reminder, and the feed's own alerts - somebody
+ * liked or replied to YOUR post - which carry feed ids and open the post.
+ *
+ * Of the 34,074 rows still in the table, 816 are series_reflection and about
+ * a hundred are group likes and replies. Hidden rather than deleted: the
+ * delete is Louis's to approve and nobody can see these in the meantime.
  */
-const BROADCAST_NOTIFICATION_TYPES = ["group_post", "buddy_posted"];
-
-/** Alerts about a post in the feed, wherever that post was originally written. */
-const FEED_NOTIFICATION_TYPES = [
+const BROADCAST_NOTIFICATION_TYPES = [
+  "group_post",
   "buddy_posted",
-  "feed_post_liked",
-  "feed_post_commented",
-  "feed_post_replied",
   "group_post_liked",
   "group_post_commented",
   "group_post_replied",
   "group_reply_liked",
+  "series_reflection",
+  "series_reflection_liked",
+  "series_reflection_reply_liked",
+];
+
+/**
+ * Alerts about a post in the feed.
+ *
+ * Only the feed's own types. The group's used to be in here too, routed to
+ * the feed and then, when the feed could not find their posts, to the group
+ * thread - which was the wrong answer twice over (Louis: "I don't want it to
+ * open the group, the group is gone"). They are not shown at all now, so
+ * there is nothing for this list to catch.
+ */
+const FEED_NOTIFICATION_TYPES = [
+  "feed_post_liked",
+  "feed_post_commented",
+  "feed_post_replied",
 ];
 
 /**
@@ -2043,65 +2058,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setIsNotifOpen(false);
 
     /**
-     * Anything about a post opens the feed, not the group.
+     * A feed alert opens that post in the feed.
      *
-     * Every one of these used to go to /dashboard?view=group, because the
-     * group chat page is what wrote them - so tapping "Louis liked your post"
-     * took you to a part of the app that is no longer where anything happens
-     * (Louis, 2026-10-18: "the notifications are still based on the group
-     * information, they need to be cut off from that and rewired").
+     * Only the feed's own alerts reach here now. The group's are not shown
+     * at all - see BROADCAST_NOTIFICATION_TYPES - which is the answer to the
+     * version of this that tried to be clever: it looked the post up, found
+     * it was a group post, and opened the group thread. Louis: "no, I don't
+     * want it to open the group, the group is gone, no one should be able to
+     * go there."
      *
-     * The feed reads `post` and `comment` from the query string and scrolls
-     * to that post with its thread open.
-     *
-     * Except when the post is not in the feed at all. Louis, 2026-10-18: "the
-     * alert still doesn't load the actual post - mine says someone replied to
-     * my post, does that mean because we had group that's why it shows up
-     * still?" Yes. His latest one is a group_post_commented row carrying
-     * 75d14836-15f9-4ecc-a84c-bf52c9df207e, which is a row in group_posts and
-     * has never existed in feed_posts: only Bible Buddy's automatic posts were
-     * ever mirrored across, not the ones people wrote in the group themselves.
-     * So the feed opened, looked for a post it could not have, and showed
-     * nothing.
-     *
-     * One lookup decides it. The post is in the feed, or it is a group post
-     * and the group thread is the only place that writing exists - a retired
-     * room, but the real post beats an empty feed. New alerts all carry feed
-     * ids, so this is a tail that shrinks on its own.
-     *
-     * By type, deliberately, and not by "the link starts with /study-groups".
-     * The weekly series writes series_reflection notifications whose links
-     * point into the group's series pages, and those are a different feature
-     * that still lives there - 918 of the 34,074 rows left in the table.
-     * Catching them by their link would drop somebody into the feed looking
-     * for a post id that belongs to a series reflection.
+     * The feed reads post and comment from the query string and scrolls to
+     * that post with its thread open; one that is not in the ranked week is
+     * fetched by id. Every alert written since the triggers were repointed
+     * carries a feed id, so there is nothing here that cannot be found.
      */
     if (FEED_NOTIFICATION_TYPES.includes(notif.type ?? "")) {
       const { postId, commentId } = getGroupNotificationTarget(notif);
-
-      if (postId) {
-        const { data: feedPost } = await supabase
-          .from("feed_posts")
-          .select("id")
-          .eq("id", postId)
-          .maybeSingle();
-
-        if (!feedPost) {
-          const { data: groupPost } = await supabase
-            .from("group_posts")
-            .select("id, group_id")
-            .eq("id", postId)
-            .maybeSingle();
-
-          if (groupPost?.group_id) {
-            const groupParams = new URLSearchParams({ post: postId });
-            if (commentId) groupParams.set("comment", commentId);
-            router.push(`/study-groups/${groupPost.group_id}/chat?${groupParams.toString()}`);
-            return;
-          }
-        }
-      }
-
       const params = new URLSearchParams();
       if (postId) params.set("post", postId);
       if (commentId) params.set("comment", commentId);

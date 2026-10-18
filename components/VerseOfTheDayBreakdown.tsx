@@ -187,7 +187,7 @@ function VotdDiscussion({ entry, userId }: { entry: VerseOfTheDayEntry; userId: 
         </button>
         {groupId ? (
           <Link
-            href={`/study-groups/${groupId}/chat?post=${postId}`}
+            href="/bb-feed"
             className="text-xs font-black text-[var(--bb-accent,#2563eb)] hover:underline"
           >
             View in the Group →

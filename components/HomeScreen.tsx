@@ -537,7 +537,7 @@ export default function HomeScreen() {
       <section aria-labelledby="home-groups-heading">
         <SectionHeading label="From Your Groups" />
         <Link
-          href={`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`}
+          href="/bb-feed"
           onClick={() => trackHomeEvent("home_group_click", { postsToday: group.postsToday })}
           aria-label={`Study Group${group.postsToday ? ` - ${group.postsToday} new conversations today` : ""}`}
           className="relative flex flex-col gap-3 overflow-hidden rounded-2xl border border-[#ddd6f3] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:flex-row sm:items-center sm:p-5"

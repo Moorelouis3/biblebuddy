@@ -382,7 +382,7 @@ export default function YourBookshelf({
                 </p>
               </div>
               <Link
-                href={`/study-groups/${BIBLE_STUDY_GROUP_ID}/chat`}
+                href="/bb-feed"
                 /* Dark ink rather than the accent blue (Louis's mock-up,
                    2026-10-17). #2b2150 is not a new colour: it is the same
                    deep purple this card's own heading uses, and the one From

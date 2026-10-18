@@ -1321,6 +1321,62 @@ const FOLD_AFTER_BLOCKS = 3;
 /** Longer than this and an opening line is a sentence, not a heading. */
 const HEADLINE_MAX_CHARS = 90;
 
+/**
+ * [label](href) and bare URLs, rendered as something you can tap.
+ *
+ * Bible Buddy's posts are written with links in them - "Complete Day 18
+ * here", "read the article", "get it in print" - and the pass that brought
+ * them into the feed used to keep the words and throw the destination away.
+ * A pinned devotional whose one job is to open today's day, that could not
+ * open it (Louis, 2026-10-18).
+ *
+ * An internal path goes through next/link so it stays inside the app; an
+ * outside address opens in a new tab with the usual rel.
+ */
+const MARKDOWN_LINK = /\[([^\]]+)\]\((https?:\/\/[^\s)]+|\/[^\s)]*)\)/g;
+
+function renderWithLinks(text: string, keyPrefix: string): ReactNode[] {
+  const out: ReactNode[] = [];
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+  const pattern = new RegExp(MARKDOWN_LINK.source, "g");
+
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > cursor) out.push(text.slice(cursor, match.index));
+    const [, label, href] = match;
+    const internal = href.startsWith("/") || href.startsWith("https://www.mybiblebuddy.net");
+    const path = href.replace(/^https:\/\/www\.mybiblebuddy\.net/, "") || "/";
+
+    out.push(
+      internal ? (
+        <Link
+          key={`${keyPrefix}-${match.index}`}
+          href={path}
+          className="font-bold underline"
+          style={{ color: "#2f7fe8" }}
+        >
+          {label}
+        </Link>
+      ) : (
+        <a
+          key={`${keyPrefix}-${match.index}`}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-bold underline"
+          style={{ color: "#2f7fe8" }}
+        >
+          {label}
+        </a>
+      ),
+    );
+    cursor = match.index + match[0].length;
+  }
+
+  if (cursor < text.length) out.push(text.slice(cursor));
+  return out;
+}
+
 function PostBody({ content }: { content: string }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -1345,7 +1401,7 @@ function PostBody({ content }: { content: string }) {
           if (index === 0 && !isList && lines.length === 1 && block.length <= HEADLINE_MAX_CHARS && blocks.length > 1) {
             return (
               <p key={index} className="text-[17px] font-bold leading-snug text-gray-900">
-                {block}
+                {renderWithLinks(block, `h${index}`)}
               </p>
             );
           }
@@ -1355,7 +1411,7 @@ function PostBody({ content }: { content: string }) {
               <ul key={index} className={index > 0 ? "mt-2 space-y-1" : "space-y-1"}>
                 {lines.map((line, lineIndex) => (
                   <li key={lineIndex} className="pl-4 -indent-4 text-sm text-gray-800 leading-relaxed">
-                    {line.replace(/^[\u2022\-*]\s+/, "\u2022 ")}
+                    {renderWithLinks(line.replace(/^[\u2022\-*]\s+/, "\u2022 "), `l${index}-${lineIndex}`)}
                   </li>
                 ))}
               </ul>
@@ -1368,7 +1424,7 @@ function PostBody({ content }: { content: string }) {
                 key={index}
                 className="border-l-2 border-green-400 pl-3 text-sm italic text-gray-700 leading-relaxed whitespace-pre-wrap"
               >
-                {block}
+                {renderWithLinks(block, `q${index}`)}
               </p>
             );
           }
@@ -1380,7 +1436,7 @@ function PostBody({ content }: { content: string }) {
                 ? "mt-2 text-sm text-gray-800 leading-relaxed whitespace-pre-wrap"
                 : "text-sm text-gray-800 leading-relaxed whitespace-pre-wrap"}
             >
-              {block}
+              {renderWithLinks(block, `p${index}`)}
             </p>
           );
         })}
@@ -2626,9 +2682,9 @@ export default function BbFeedPage() {
               : "Try All posts."}
           </p>
           {postFilter === "all" ? (
-            <Link href="/study-groups" className="inline-block px-4 py-2 rounded-xl text-sm font-semibold text-white transition hover:opacity-90" style={{ backgroundColor: "#4a9b6f" }}>
+            <button type="button" onClick={() => setTab("community")} className="inline-block px-4 py-2 rounded-xl text-sm font-semibold text-white transition hover:opacity-90" style={{ backgroundColor: "#4a9b6f" }}>
               Find People
-            </Link>
+            </button>
           ) : null}
         </div>
       );
