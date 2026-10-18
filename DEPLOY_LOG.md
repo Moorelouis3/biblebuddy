@@ -61,3 +61,4 @@
 2026-10-18T04:00:50Z | 1 commit | Everything posts to the feed: Bible Buddy's automatic posts arrive as real feed posts, the composer moves to My Feed, and the group leaves the app
 2026-10-18T07:54:19Z | 1 commit | Bible Buddy's automatic posts come from a Bible Buddy account now, and the daily Proverbs post is back
 2026-10-18T07:58:18Z | 1 commit | Mark all read now clears the conversations the badge actually counts, instead of the first thousand it happened to list
+2026-10-18T08:40:25Z | 1 commit | The community wall was dropping every completion one line before rendering it

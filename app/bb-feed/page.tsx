@@ -2261,7 +2261,20 @@ export default function BbFeedPage() {
   }
 
   function renderCommunityTab() {
-    const posts = rankedCommunityFeed.filter((item) => item._kind === "post");
+    /**
+     * Everything the ranking chose, not only the written posts.
+     *
+     * This filtered to _kind === "post" and threw the rest away, so every
+     * completion the ranker had just scored and ordered was discarded one
+     * line before it reached the screen. That is why Louis saw "Community is
+     * quiet" on a day with sixteen completions in it - the wall was being
+     * handed them and dropping them.
+     *
+     * "Sheila read chapter 33 of Genesis, Sheila got five out of six right" -
+     * that is what an activity card is, and it is most of what this wall has
+     * to show until people start writing posts of their own.
+     */
+    const posts = rankedCommunityFeed;
     if (posts.length === 0) {
       return (
         <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
@@ -2274,13 +2287,16 @@ export default function BbFeedPage() {
 
     return (
       <div className="flex flex-col gap-3">
-        {/* One kind of card. Bible Buddy's own posts arrive as real feed
-            posts now (see lib/groupPostInsert.ts), so nothing in this list
-            links out of the feed - which was the complaint: "the post in the
-            community opens back up in the group, that's wrong". */}
-        {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
-        ))}
+        {/* Posts and completions, in whatever order the ranking put them.
+            Bible Buddy's own posts arrive as real feed posts (see
+            lib/groupPostInsert.ts), so nothing here links out of the feed. */}
+        {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) =>
+          item._kind === "post" ? (
+            <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} />
+          ) : (
+            <ActivityPostCard key={`act-${item.id}`} activity={item as FeedActivity} />
+          )
+        )}
       </div>
     );
   }
