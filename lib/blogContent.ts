@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-6-explained",
+    title: "Leviticus 6 Explained: The Trespass Offering and the Priest's Law",
+    description:
+      "Leviticus 6 explained verse by verse: a deliberate trespass against a neighbor, restitution plus a fifth, and the law of offerings for the priests.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-6-explained",
+    publishedAt: "2026-10-18",
+    readTime: "14 min read",
+    image: "/blog-banners/leviticus-6-explained.jpg",
+    groupPost: {
+      title: "Leviticus 6 Explained 📖",
+      content:
+        "Five chapters talked to the worshipper.\nThis one turns and talks to the priest.\n\n📌 A priest could eat the people's offering, never his own.\n\n📖 Lying to a neighbor still counted as sin against God.\n📖 The altar fire could never be allowed to go out.\n📖 A clay pot got broken. A bronze pot just got washed.\n\nNew article on:\n🟢 why **restitution** came before the sacrifice\n🟢 what the **fire that never goes out** required\n🟢 why some offerings were **eaten**, and others only burned\n\nDid you know a priest could never eat his own offering? 🙏",
+    },
+  },
+  {
     slug: "leviticus-5-explained",
     title: "Leviticus 5 Explained: The Sliding Scale Sin Offering and the Trespass Offering",
     description:
