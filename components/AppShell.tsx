@@ -147,6 +147,7 @@ const FEED_NOTIFICATION_TYPES = [
   "feed_post_liked",
   "feed_post_commented",
   "feed_post_replied",
+  "feed_comment_liked",
 ];
 
 /**

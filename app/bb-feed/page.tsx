@@ -729,6 +729,16 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
   highlightCommentId?: string | null;
 }) {
   const [comments, setComments] = useState<FeedComment[]>([]);
+
+  /**
+   * Who liked which comment, and how many.
+   *
+   * Loaded with the thread in one query over all of its comments rather than
+   * one per row, and kept as a count plus a set of the ones this reader has
+   * liked - which is everything the row needs to draw.
+   */
+  const [commentLikeCounts, setCommentLikeCounts] = useState<Record<string, number>>({});
+  const [likedComments, setLikedComments] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [newComment, setNewComment] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -770,9 +780,70 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
         return { ...c, display_name: prof?.display_name ?? null, username: prof?.username ?? null, profile_image_url: prof?.profile_image_url ?? null };
       }));
       setLoading(false);
+
+      // Likes for the whole thread, in one query.
+      const { data: likes } = await supabase
+        .from("feed_post_comment_likes")
+        .select("comment_id, user_id")
+        .in("comment_id", visible.map((c) => c.id));
+
+      const counts: Record<string, number> = {};
+      const mine = new Set<string>();
+      for (const like of likes || []) {
+        counts[like.comment_id] = (counts[like.comment_id] ?? 0) + 1;
+        if (like.user_id === myId) mine.add(like.comment_id);
+      }
+      setCommentLikeCounts(counts);
+      setLikedComments(mine);
     }
     void load();
-  }, [postId]);
+  }, [postId, myId]);
+
+  /**
+   * Like, or take it back. Optimistic, because a like that waits for a round
+   * trip before it moves reads as a tap that did not register.
+   */
+  async function toggleCommentLike(comment: FeedComment) {
+    const liked = likedComments.has(comment.id);
+
+    setLikedComments((prev) => {
+      const next = new Set(prev);
+      if (liked) next.delete(comment.id);
+      else next.add(comment.id);
+      return next;
+    });
+    setCommentLikeCounts((prev) => ({
+      ...prev,
+      [comment.id]: Math.max((prev[comment.id] ?? 0) + (liked ? -1 : 1), 0),
+    }));
+
+    if (liked) {
+      await supabase
+        .from("feed_post_comment_likes")
+        .delete()
+        .eq("comment_id", comment.id)
+        .eq("user_id", myId);
+      return;
+    }
+
+    const { error } = await supabase
+      .from("feed_post_comment_likes")
+      .insert({ comment_id: comment.id, user_id: myId });
+
+    // Put it back if the insert was refused, rather than leaving a like on
+    // screen that the database never took.
+    if (error) {
+      setLikedComments((prev) => {
+        const next = new Set(prev);
+        next.delete(comment.id);
+        return next;
+      });
+      setCommentLikeCounts((prev) => ({
+        ...prev,
+        [comment.id]: Math.max((prev[comment.id] ?? 1) - 1, 0),
+      }));
+    }
+  }
 
   async function submitComment(content: string, parentId: string | null) {
     if (!content.trim() || submitting) return;
@@ -1019,6 +1090,30 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
           </div>
           <div className="flex items-center gap-3 mt-0.5 px-1">
             <span className="text-xs text-gray-400">{timeAgo(comment.created_at)}</span>
+            {/* Liking a comment. The group had it and the feed never did, so
+                "somebody liked your comment" had nothing to fire on (Louis,
+                2026-10-18). The notification is written by a trigger on
+                feed_post_comment_likes, the same way post likes are. */}
+            <button
+              type="button"
+              onClick={() => void toggleCommentLike(comment)}
+              aria-pressed={likedComments.has(comment.id)}
+              className={`flex items-center gap-1 text-xs font-semibold transition ${
+                likedComments.has(comment.id) ? "text-[#2f7fe8]" : "text-gray-400 hover:text-gray-600"
+              }`}
+            >
+              <svg
+                className="h-3.5 w-3.5"
+                fill={likedComments.has(comment.id) ? "currentColor" : "none"}
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              Like
+              {(commentLikeCounts[comment.id] ?? 0) > 0 ? ` ${commentLikeCounts[comment.id]}` : ""}
+            </button>
             {!indent && (
               <button
                 onClick={() => {
