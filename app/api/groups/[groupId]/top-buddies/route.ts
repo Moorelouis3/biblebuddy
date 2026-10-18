@@ -6,6 +6,16 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 1000;
+/**
+ * How many people the board is built down to.
+ *
+ * Both builders stopped at 10, which was the whole of what the group card
+ * showed. The feed's Top Buddies card opens to twenty and offers a hundred,
+ * and the ranking itself is already computed over everybody - the ten was a
+ * display decision living in the data layer. A caller still asks for what it
+ * wants with ?limit=; this only decides how deep the cached board goes.
+ */
+const BOARD_SIZE = 100;
 const LEADERBOARD_CACHE_MS = 10 * 60 * 1000;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
@@ -283,7 +293,7 @@ function buildProfileActionLeaderboard(profiles: ProfileRow[]): LeaderboardBuddy
     })
     .filter((buddy) => buddy.actions > 0)
     .sort((a, b) => b.actions - a.actions || (b.currentLevel || 0) - (a.currentLevel || 0))
-    .slice(0, 10)
+    .slice(0, BOARD_SIZE)
     .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 }
 
@@ -475,7 +485,7 @@ function buildLeaderboard(options: {
     })
     .filter((buddy) => buddy.score > 0 || buddy.actions > 0 || buddy.appXp > 0)
     .sort((a, b) => b.score - a.score || b.actions - a.actions || (b.scoreBreakdown?.community || 0) - (a.scoreBreakdown?.community || 0) || (b.currentLevel || 0) - (a.currentLevel || 0))
-    .slice(0, 10)
+    .slice(0, BOARD_SIZE)
     .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 }
 
@@ -531,6 +541,10 @@ export async function GET(
     const url = new URL(request.url);
     const mode = url.searchParams.get("mode");
     const useFastMode = mode === "fast";
+    // What this caller wants off the top of the board. The group card asks
+    // for nothing and gets the first ten, as it always did.
+    const requested = Number(url.searchParams.get("limit"));
+    const limit = Number.isFinite(requested) && requested > 0 ? Math.min(Math.trunc(requested), BOARD_SIZE) : 10;
     const forceRefresh = mode === "refresh";
     let weeklyBuddies = removeExcludedBuddies(leaderboardCache?.weeklyBuddies, excludedUserIds) || null;
 
@@ -691,9 +705,11 @@ export async function GET(
       };
     });
 
+    const visibleBuddies = (weeklyBuddies || []).slice(0, limit);
     return NextResponse.json({
-      buddies: weeklyBuddies,
-      weeklyBuddies,
+      buddies: visibleBuddies,
+      weeklyBuddies: visibleBuddies,
+      boardSize: (weeklyBuddies || []).length,
       allTimeBuddies: [],
       source: useFastMode ? "fast" : "full",
       cachedUntil: leaderboardCache?.expiresAt || null,

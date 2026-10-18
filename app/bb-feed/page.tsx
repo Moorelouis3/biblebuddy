@@ -19,6 +19,8 @@ import { readStudyActivity } from "../../lib/communityMilestones";
 import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
 import { FEED_OPEN_POST_EVENT } from "../../components/AppShell";
 import AddBuddyButton, { type BuddyState } from "../../components/feed/AddBuddyButton";
+import TopBuddiesCard from "../../components/feed/TopBuddiesCard";
+import { COMMUNITY_GROUP_ID } from "../../lib/communityMilestones";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -2846,6 +2848,11 @@ export default function BbFeedPage() {
             </button>
           ))}
         </div>
+
+        {/* Top Buddies, directly under the tabs and in the same place on all
+            three of them. The ranking is the one that already exists; this is
+            a second way of showing it (Louis, with a mockup, 2026-10-18). */}
+        {!loading && userId ? <TopBuddiesCard groupId={COMMUNITY_GROUP_ID} /> : null}
 
         {/* The composer, at the top of either tab.
 
