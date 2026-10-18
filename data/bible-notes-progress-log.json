@@ -68356,6 +68356,67 @@
           "at": "2026-10-18T09:46:49Z"
         }
       ]
+    },
+    {
+      "book": "2 Peter",
+      "chapter": 2,
+      "startedAt": "2026-10-18T10:46:16Z",
+      "finishedAt": "2026-10-18T10:59:37Z",
+      "durationMinutes": 13.35,
+      "sections": 6,
+      "cards": 49,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 711 packages, about 35s). Priority queue and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining: []) both confirmed empty, so this was normal forward progress after 2 Peter 1, the latest entry in this log. Confirmed 2 Peter 2 had no dedicated per-chapter file yet, only the legacy bulk file lib/secondPeterOneToThreePersonalNotes.ts still covering it (chapter 1 already overridden by its own dedicated file). Fetched real KJV text for 2 Peter 2 (22 verses) from raw.githubusercontent.com/aruljohn/Bible-kjv/master/2Peter.json (note: this book's filename on that mirror is '2Peter.json', not 'IIPeter.json'). Read docs/bible-study-note-style.md and .claude/skills/bible-notes/SKILL.md in full before writing. 2 Peter 2 is Peter's warning against false teachers, modeled heavily on Jude: it opens naming false prophets and false teachers who deny the Lord that bought them through covetousness and feigned words (1-3); gives three proof cases from Israel's history that God does judge real sin in real history, the angels that sinned, the flood that spared only Noah the eighth person, and Sodom and Gomorrha turned to ashes while just Lot was delivered, closing on the principle that the Lord knows how to deliver the godly and reserve the unjust unto judgment (4-9); describes the false teachers as presumptuous, selfwilled, brute beasts that perish in their own corruption, openly rioting in the daytime and spotting the very fellowship meals they shared with believers (10-13); describes their adultery, covetous hearts, and the way of Balaam the son of Bosor, whose own donkey spoke to rebuke his madness (14-16); pictures them as wells without water and storm driven clouds that never deliver what they promise, speaking swelling words of vanity and promising liberty while being themselves servants of corruption (17-19); and closes on the hard warning that escaping the world's pollution only to be entangled again leaves a person worse off than before, quoting the proverbs of the dog returning to its vomit and the washed sow returning to the mire (20-22). Split into 6 sections (1-3, 4-9, 10-13, 14-16, 17-19, 20-22), all 22 verses covered with no gaps or overlaps, 49 total cards, about 2.23 cards per verse. scripts/check_bible_note_style.py found 3 problems on the first automated pass (two cards ending their last bullet on the wrong emoji, not \ud83d\udcd6 or \u27a1\ufe0f, and one bullet at 9 words instead of 3-8), fixed all three, clean on the second pass across all 49 cards. A manual section 13 eye check also caught six card titles that were not genuinely contiguous exact-quote lifts from the KJV verse text (each skipped a word or short phrase in the middle), and rewrote each to a real contiguous phrase before saving: 'Lingereth Not, And Their Damnation Slumbereth Not', 'Delivered Them Into Chains Of Darkness', 'Bring Not Railing Accusation Against Them Before The Lord', 'Spots They Are And Blemishes', 'Eyes Full Of Adultery, And That Cannot Cease From Sin', and 'Better For Them Not To Have Known The Way Of Righteousness'. Confirmed every card opens with one of the four approved moves, defines its key terms in plain language (privily, heresies, Tartarus, chains of darkness, ensample, filthy conversation, selfwilled, railing accusation, brute beasts, beguiling, exercised, cursed children, Balaam, Bosor, Beor, wantonness, servants of corruption, pollutions, entangled, mire), closes on meaning rather than mechanics, uses exactly four bullets per card each 3-8 words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 49 cards. Parser check passed exactly via getBibleReaderStudySections('2 peter', 2): 6/6 sections, verse ranges 1-3/4-9/10-13/14-16/17-19/20-22 with no gaps covering all 22 verses, 49 total cards rendering verbatim. npx tsc --noEmit -p . ran clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/secondPeterTwoSource.ts, the existing 2 peter entry in preserveExactPhraseBodies widened from chapter 1 only to chapters 1-2, new applyPersonalSecondPeterTwoStudySections() function calling replaceStudySectionsForBookRange('2 peter', 2, 2, SECOND_PETER_TWO_PERSONAL_SECTIONS), invoked right after applyPersonalSecondPeterOneStudySections(), correctly overriding the legacy SECOND_PETER_1_3_PERSONAL_SECTIONS bulk file for chapter 2 only. New chapter, normal forward progress, not a style redo. Chapter 3 of the legacy lib/secondPeterOneToThreePersonalNotes.ts file remains live and untouched for a future run. Next forward-progress target is 2 Peter 3.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-18T10:46:55Z"
+        },
+        {
+          "name": "target chapter determined: 2 Peter 2 (priority queue and style redo backlog both empty; normal forward progress; last progress-log entry was 2 Peter 1; legacy lib/secondPeterOneToThreePersonalNotes.ts still covered 2 Peter 2-3 with no dedicated per-chapter file for chapter 2 yet)",
+          "at": "2026-10-18T10:46:58Z"
+        },
+        {
+          "name": "KJV text fetched (2 Peter 2, 22 verses, raw.githubusercontent.com/aruljohn/Bible-kjv mirror, filename 2Peter.json)",
+          "at": "2026-10-18T10:47:40Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and skill pipeline (.claude/skills/bible-notes/SKILL.md) read in full",
+          "at": "2026-10-18T10:48:30Z"
+        },
+        {
+          "name": "source file written: lib/secondPeterTwoSource.ts (49 cards, 6 sections)",
+          "at": "2026-10-18T10:53:40Z"
+        },
+        {
+          "name": "style checker: 3 problems found on first pass (2 last-bullet emoji, 1 bullet over word limit), fixed, clean on second pass across all 49 cards",
+          "at": "2026-10-18T10:54:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies widened to chapters 1-2, applyPersonalSecondPeterTwoStudySections added and called after applyPersonalSecondPeterOneStudySections)",
+          "at": "2026-10-18T10:54:20Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('2 peter', 2): 6/6 sections, verse ranges 1-3/4-9/10-13/14-16/17-19/20-22 covering all 22 verses with no gaps, 49 cards)",
+          "at": "2026-10-18T10:54:28Z"
+        },
+        {
+          "name": "npx tsc --noEmit clean, zero errors",
+          "at": "2026-10-18T10:56:10Z"
+        },
+        {
+          "name": "manual section 13 eye checklist: caught and rewrote 6 card titles that were not genuinely contiguous KJV quote lifts, then reconfirmed clean (checker + parser + tsc) after the fix",
+          "at": "2026-10-18T10:58:30Z"
+        },
+        {
+          "name": "mode: normal forward progress, not a style redo",
+          "at": "2026-10-18T10:46:58Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-18T10:59:37Z"
+        }
+      ]
     }
   ]
 }
