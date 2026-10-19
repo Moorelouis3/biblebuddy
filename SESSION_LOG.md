@@ -8269,3 +8269,7 @@ Next up: Revelation 6
 ## 2026-10-19T04:57:30Z (hourly chapter notes run)
 Chapter: Revelation 6 | Duration: 11 min | Sections: 6 | Cards: 31 | Status: pass
 Next up: Revelation 7
+
+## 2026-10-19T06:00:49Z (hourly chapter notes run)
+Chapter: Revelation 7 | Duration: 14 min | Sections: 5 | Cards: 31 | Status: pass
+Next up: Revelation 8
