@@ -69852,6 +69852,59 @@
           "at": "2026-10-19T17:00:27Z"
         }
       ]
+    },
+    {
+      "book": "Revelation",
+      "chapter": 19,
+      "startedAt": "2026-10-19T17:46:19Z",
+      "finishedAt": "2026-10-19T18:05:00Z",
+      "durationMinutes": 19,
+      "sections": 6,
+      "cards": 46,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 736 packages, about 42s). Priority queue (data/bible-notes-priority-queue.json, remaining=[]) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) both confirmed empty, so this was normal forward progress after Revelation 18, the latest entry in this log before this run. Confirmed no lib/revelationNineteenSource.ts existed yet; chapter 19 was still covered live by the legacy bulk file lib/revelationEightToTwentyTwoPersonalNotes.ts. Fetched real KJV text for Revelation 19 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers heaven shouting Alleluia over Babylon's fall, naming salvation, glory, honour, and power to God, affirming His judgments as true and righteous, and the twenty four elders and four beasts falling down to worship (1-5); the marriage of the Lamb, His wife made ready, and arrayed in fine linen that is the righteousness of saints, contrasted directly with Babylon's fine linen lost in chapter eighteen (6-8); the call to write down the blessing on those invited to the marriage supper, and John's own mistaken attempt to worship the angel who corrects him as a fellowservant and names the testimony of Jesus as the spirit of prophecy (9-10); the rider called Faithful and True on the white horse, distinguished from the earlier white horse rider of Revelation six, with eyes of fire, many crowns, an unknown name, a vesture dipped in blood, the title The Word of God, the armies of heaven following Him, the sword from His mouth, the rod of iron, the winepress of God's wrath, and the title King of Kings and Lord of Lords (11-16); the angel's grim invitation to the fowls for the supper of the great God, a deliberate echo and opposite of the marriage supper from verse nine, naming the flesh of kings, captains, and all men both free and bond, both small and great (17-18); and the beast and kings of the earth gathered for a war that is settled almost instantly, the beast and the false prophet cast alive into the lake of fire burning with brimstone, and the remnant slain by the sword proceeding from the rider's mouth, with the fowls filled with their flesh, closing the invitation from verse seventeen (19-21). Split into 6 sections covering all 21 verses with no gaps or overlaps (1-5, 6-8, 9-10, 11-16, 17-18, 19-21). 46 total cards, about 2.2 cards per verse, at or above the density of the prior three Revelation chapters and the hand written reference file lib/genesisThirtyOneSource.ts. scripts/check_bible_note_style.py found 1 problem on the first automated pass (one bullet at 9 words, over the 8 word ceiling), fixed by trimming it to 6 words; clean on the second pass across all 46 cards: no hyphens, em dashes, semicolons, or contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (Alleluia, omnipotent, fellowservant, diadem crowns, vesture, winepress, brimstone, fowls), closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines across all 46 cards. Parser check passed exactly via getBibleReaderStudySections('revelation', 19): 6/6 sections, verse ranges 1-5/6-8/9-10/11-16/17-18/19-21 covering all 21 verses with no gaps, 46 total cards rendering verbatim with no mojibake or duplication. npx tsc --noEmit -p . ran clean across the whole project with zero errors. Wired into lib/bibleReaderStudyNotes.ts: new import for lib/revelationNineteenSource.ts, the revelation condition in preserveExactPhraseBodies widened from chapters 1-18 to chapters 1-19, new applyPersonalRevelationNineteenStudySections() function calling replaceStudySectionsForBookRange('revelation', 19, 19, REVELATION_NINETEEN_PERSONAL_SECTIONS), invoked right after applyPersonalRevelationEighteenStudySections(). Also hit the same recurring stale local git ref bug logged on many prior runs: HEAD was detached from refs/heads/main at the true prior tip (7da700a, Add Revelation 18 Bible study notes), while local main and the cached origin/main remote-tracking ref were both stale at 9b2da29 (Chapter library: Exodus 26 Explained). git fetch origin main force updated the cached origin/main ref to the true tip and confirmed it matched the detached HEAD exactly, so nothing was at risk; pushed with git push origin HEAD:main. New chapter, normal forward progress, not a style redo. Chapters 20 through 22 of the legacy lib/revelationEightToTwentyTwoPersonalNotes.ts file remain live and untouched for future runs. Next forward progress target is Revelation 20.",
+      "steps": [
+        {
+          "name": "npm install done (fresh clone, 736 packages, about 42s)",
+          "at": "2026-10-19T17:47:05Z"
+        },
+        {
+          "name": "target chapter determined: Revelation 19 (normal forward progress; priority queue and style redo backlog both confirmed empty)",
+          "at": "2026-10-19T17:47:40Z"
+        },
+        {
+          "name": "KJV text fetched (Revelation 19, 21 verses, aruljohn mirror)",
+          "at": "2026-10-19T17:47:55Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and bible-notes skill read in full",
+          "at": "2026-10-19T17:49:30Z"
+        },
+        {
+          "name": "source file written: lib/revelationNineteenSource.ts (46 cards, 6 sections)",
+          "at": "2026-10-19T17:55:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 problem found and fixed on first pass, 0 on second)",
+          "at": "2026-10-19T17:56:10Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 19, applyPersonalRevelationNineteenStudySections added and called)",
+          "at": "2026-10-19T17:57:20Z"
+        },
+        {
+          "name": "parser check passed (6/6 sections, 46 cards, text verbatim)",
+          "at": "2026-10-19T17:58:05Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-19T17:59:40Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-19T18:05:00Z"
+        }
+      ]
     }
   ]
 }
