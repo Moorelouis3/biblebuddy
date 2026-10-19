@@ -1263,6 +1263,7 @@ import { JUDE_1_PERSONAL_SECTIONS } from "./judeOnePersonalNotes";
 import { REVELATION_1_7_PERSONAL_SECTIONS } from "./revelationOneToSevenPersonalNotes";
 import { REVELATION_8_22_PERSONAL_SECTIONS } from "./revelationEightToTwentyTwoPersonalNotes";
 import { REVELATION_ONE_PERSONAL_SECTIONS } from "./revelationOneSource";
+import { REVELATION_TWO_PERSONAL_SECTIONS } from "./revelationTwoSource";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -1606,7 +1607,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 john" && section.chapter === 1) ||
     (normalizeBook(book) === "3 john" && section.chapter === 1) ||
     (normalizeBook(book) === "jude" && section.chapter === 1) ||
-    (normalizeBook(book) === "revelation" && section.chapter === 1);
+    (normalizeBook(book) === "revelation" && (section.chapter === 1 || section.chapter === 2));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -5177,6 +5178,10 @@ function applyPersonalRevelationEightThroughTwentyTwoStudySections() {
 
 function applyPersonalRevelationOneStudySections() {
   replaceStudySectionsForBookRange("revelation", 1, 1, REVELATION_ONE_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRevelationTwoStudySections() {
+  replaceStudySectionsForBookRange("revelation", 2, 2, REVELATION_TWO_PERSONAL_SECTIONS);
 }
 
 function applyPersonalExodusTextureStudySections() {
@@ -12972,6 +12977,7 @@ applyPersonalJudeOneStudySections();
 applyPersonalRevelationOneThroughSevenStudySections();
 applyPersonalRevelationEightThroughTwentyTwoStudySections();
 applyPersonalRevelationOneStudySections();
+applyPersonalRevelationTwoStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 
