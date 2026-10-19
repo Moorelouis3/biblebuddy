@@ -8293,3 +8293,20 @@ Next up: Revelation 12
 ## 2026-10-19T10:59:47Z (hourly chapter notes run)
 Chapter: Revelation 12 | Duration: 13 min | Sections: 5 | Cards: 20 | Status: pass
 Next up: Revelation 13
+
+## 2026-10-19 (night)
+Time spent: long session (feed popups, poll, book cleanup).
+Done: weekly nudges fixed - popup is centered, one popup a day (claimed by a
+database row, not by timing), prayer popup sends people to the pinned weekly
+thread instead of starting a post each; the three stray prayer_request posts
+were moved into comments under that thread with their replies kept. The week's
+poll is a real pinned feed post that votes into the same row as the popup, and
+the results now show who voted for what (faces per option + "See who voted").
+Auto Reply also shows on replies now, with the parent comment as context.
+Not live yet: nothing - main was published with a [deploy] commit (7afe4933)
+ahead of Louis running out of Claude usage until Friday.
+Still open: the 21 Women hardcover cover swap is still waiting on KDP to
+unlock the title (scheduled task retries every 4h).
+Next: Louis is in storage mode until Friday; cloud routines (Note Writer,
+Chapter Blog Writer, Bug Fixer, Verse of the Day, Deploy) will not run while
+usage is exhausted, so check the Verse of the Day runway when back.
