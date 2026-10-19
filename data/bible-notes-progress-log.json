@@ -69265,6 +69265,59 @@
           "at": "2026-10-19T06:00:49Z"
         }
       ]
+    },
+    {
+      "book": "Revelation",
+      "chapter": 8,
+      "startedAt": "2026-10-19T06:47:29Z",
+      "finishedAt": "2026-10-19T06:58:58Z",
+      "durationMinutes": 12,
+      "sections": 6,
+      "cards": 18,
+      "verses": 13,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (fresh clone, 736 packages, about 36s). Priority queue (`data/bible-notes-priority-queue.json`, `remaining: []`) and style redo backlog (`data/bible-notes-style-redo-remaining.json`, `remaining: []`) both confirmed empty, so this was normal forward progress after Revelation 7, the latest entry in this log before this run. No dedicated `lib/revelationEightSource.ts` file existed yet; chapter 8 of the legacy bulk file `lib/revelationEightToTwentyTwoPersonalNotes.ts` still covered it live before this run, this being the first chapter carved out of that legacy file. Fetched real KJV text for Revelation 8 (13 verses) from `raw.githubusercontent.com/aruljohn/Bible-kjv/master/Revelation.json`. Read `docs/bible-study-note-style.md` in full and `.claude/skills/bible-notes/SKILL.md` for the technical pipeline, and studied `lib/genesisThirtyOneSource.ts` as the reference implementation of the style spec in code, using `lib/revelationSevenSource.ts` for file shape, parser format, and wiring convention. Split into 6 sections covering all 13 verses with no gaps or overlaps (1-2, 3-5, 6-7, 8-9, 10-11, 12-13): the seventh seal's half hour of silence in heaven and the seven angels given seven trumpets (1-2); the golden censer and the prayers of the saints offered on the golden altar, then that same altar's fire cast down to earth with voices, thunderings, lightnings, and an earthquake (3-5); the angels preparing to sound and the first trumpet's hail and fire mingled with blood burning up a third of the earth's trees and all the green grass (6-7); the second trumpet's great burning mountain cast into the sea, turning a third of the sea to blood and killing a third of its creatures and ships (8-9); the third trumpet's falling star named Wormwood turning a third of the fresh water bitter and deadly (10-11); and the fourth trumpet darkening a third of the sun, moon, and stars, closing with an angel's triple woe warning that three more trumpets are still to come (12-13). 18 total cards, about 1.38 cards per verse. `scripts/check_bible_note_style.py` found zero problems on the first automated pass across all 18 cards: no hyphens, em dashes, semicolons, or contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (censer, inhabiters, Wormwood as a real bitter plant already used as a symbol in the Old Testament, third part as partial rather than total judgment), grounds the trumpets in their Exodus plague parallels (hail and fire, water to blood, darkness) and Jeremiah's burning mountain image for Babylon, closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines across all 18 cards. Parser check passed exactly via `getBibleReaderStudySections('revelation', 8)`: 6/6 sections, verse ranges 1-2/3-5/6-7/8-9/10-11/12-13 covering all 13 verses with no gaps, 18 total cards rendering verbatim with no mojibake or duplication. `npx tsc --noEmit -p .` ran clean across the whole project with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import for `lib/revelationEightSource.ts`, the `revelation` condition in `preserveExactPhraseBodies` widened from chapters 1-7 to chapters 1-8, new `applyPersonalRevelationEightStudySections()` function calling `replaceStudySectionsForBookRange('revelation', 8, 8, REVELATION_EIGHT_PERSONAL_SECTIONS)`, invoked right after `applyPersonalRevelationSevenStudySections()`. New chapter, normal forward progress, not a style redo. This is the first chapter carved out of the legacy `lib/revelationEightToTwentyTwoPersonalNotes.ts` file; chapters 9 through 22 of it remain live and untouched for future runs. Next forward progress target is Revelation 9.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-19T06:47:29Z"
+        },
+        {
+          "name": "target chapter determined: Revelation 8 (normal forward progress, new chapter; priority queue and style redo backlog both empty)",
+          "at": "2026-10-19T06:48:23Z"
+        },
+        {
+          "name": "KJV text fetched (Revelation 8, 13 verses, raw.githubusercontent.com/aruljohn/Bible-kjv/master/Revelation.json)",
+          "at": "2026-10-19T06:48:50Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md, plus .claude/skills/bible-notes/SKILL.md for pipeline, lib/genesisThirtyOneSource.ts as reference)",
+          "at": "2026-10-19T06:50:00Z"
+        },
+        {
+          "name": "source file written: lib/revelationEightSource.ts (6 sections, 18 cards)",
+          "at": "2026-10-19T06:54:00Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py: no problems found on first pass, 18 cards)",
+          "at": "2026-10-19T06:54:29Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies widened to chapters 1-8, applyPersonalRevelationEightStudySections call after applyPersonalRevelationSevenStudySections)",
+          "at": "2026-10-19T06:54:50Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('revelation', 8): 6 sections, 18 cards, verbatim)",
+          "at": "2026-10-19T06:55:05Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-19T06:55:30Z"
+        },
+        {
+          "name": "progress files logged (progress log, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-19T06:58:58Z"
+        }
+      ]
     }
   ]
 }

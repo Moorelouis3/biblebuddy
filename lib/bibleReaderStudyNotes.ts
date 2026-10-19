@@ -1269,6 +1269,7 @@ import { REVELATION_FOUR_PERSONAL_SECTIONS } from "./revelationFourSource";
 import { REVELATION_FIVE_PERSONAL_SECTIONS } from "./revelationFiveSource";
 import { REVELATION_SIX_PERSONAL_SECTIONS } from "./revelationSixSource";
 import { REVELATION_SEVEN_PERSONAL_SECTIONS } from "./revelationSevenSource";
+import { REVELATION_EIGHT_PERSONAL_SECTIONS } from "./revelationEightSource";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -1612,7 +1613,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 john" && section.chapter === 1) ||
     (normalizeBook(book) === "3 john" && section.chapter === 1) ||
     (normalizeBook(book) === "jude" && section.chapter === 1) ||
-    (normalizeBook(book) === "revelation" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7));
+    (normalizeBook(book) === "revelation" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -5207,6 +5208,10 @@ function applyPersonalRevelationSixStudySections() {
 
 function applyPersonalRevelationSevenStudySections() {
   replaceStudySectionsForBookRange("revelation", 7, 7, REVELATION_SEVEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRevelationEightStudySections() {
+  replaceStudySectionsForBookRange("revelation", 8, 8, REVELATION_EIGHT_PERSONAL_SECTIONS);
 }
 
 function applyPersonalExodusTextureStudySections() {
@@ -13008,6 +13013,7 @@ applyPersonalRevelationFourStudySections();
 applyPersonalRevelationFiveStudySections();
 applyPersonalRevelationSixStudySections();
 applyPersonalRevelationSevenStudySections();
+applyPersonalRevelationEightStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 
