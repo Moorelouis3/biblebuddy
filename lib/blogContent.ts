@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-11-explained",
+    title: "Leviticus 11 Explained: Clean and Unclean Animals, and Why It Mattered",
+    description:
+      "Leviticus 11 explained verse by verse: the hoof and cud test, fins and scales, forbidden birds, and why God called Israel to be holy.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-11-explained",
+    publishedAt: "2026-10-19",
+    readTime: "16 min read",
+    image: "/blog-banners/leviticus-11-explained.jpg",
+    groupPost: {
+      title: "Leviticus 11 Explained 📖",
+      content:
+        "No altar. No sacrifice. Just a dinner table.\nGod suddenly cares what Israel eats.\n\n📌 A pig fails the test for a totally different reason than a camel does.\n\n📖 Rabbits get called cud chewers without a cow's stomach.\n📖 Touching a dead mouse could break a clay pot.\n📖 The whole chapter ends on one repeated reason.\n\nNew article on:\n🟢 the **hoof and cud** test for land animals\n🟢 why **shellfish** never passed the fins and scales rule\n🟢 what Peter's vision in Acts 10 has to do with this chapter\n\nDid you know locusts were never on the forbidden list? 🙏",
+    },
+  },
+  {
     slug: "leviticus-10-explained",
     title: "Leviticus 10 Explained: Strange Fire, Sudden Death, and the Line Between Holy and Unholy",
     description:
