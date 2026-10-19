@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-14-explained",
+    title: "Leviticus 14 Explained: Cleansing a Healed Leper and a Leprous House",
+    description:
+      "Leviticus 14 explained verse by verse: the two birds, the eighth day offering, the blood on ear, thumb, and toe, and what to do with a leprous house.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-14-explained",
+    publishedAt: "2026-10-19",
+    readTime: "15 min read",
+    image: "/blog-banners/leviticus-14-explained.jpg",
+    groupPost: {
+      title: "Leviticus 14 Explained 📖",
+      content:
+        "Fifty seven verses. Two problems. One matching ritual.\nA healed leper and a sick house, cleansed the same way.\n\n📌 One bird died. A second one flew off alive.\n\n📖 Blood went on his ear, thumb, and toe, same as a priest.\n📖 A poor man got the same cleansing with just two birds.\n📖 A house that never healed got torn down to the stones.\n\nNew article on:\n🟢 the **two birds** and what they picture\n🟢 why blood went on the exact spots a **priest** was marked\n🟢 what happened when a **house** could not be saved\n\nDid you know a healed leper was marked the same way a priest was ordained? 🙏",
+    },
+  },
+  {
     slug: "leviticus-13-explained",
     title: "Leviticus 13 Explained: Skin Disease, Leprosy, and the Priest's Test",
     description:
