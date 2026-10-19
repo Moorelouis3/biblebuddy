@@ -1,7 +1,13 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { getPollWeekKey } from "@/lib/groupWeeklyPoll";
-import { getPrayerWeekKey, weeklyPopupId, type WeeklyFeedPopupKind } from "@/lib/weeklyFeedPopups";
+import {
+  getPrayerWeekKey,
+  weeklyPopupDayId,
+  weeklyPopupId,
+  type WeeklyFeedPopupKind,
+} from "@/lib/weeklyFeedPopups";
+import { ensureWeeklyPollFeedPost, findPrayerThreadPost } from "@/lib/weeklyFeedPosts";
 import { ensureWeeklyGroupPollPost } from "@/lib/weeklyGroupPollAdmin";
 
 /**
@@ -12,7 +18,12 @@ import { ensureWeeklyGroupPollPost } from "@/lib/weeklyGroupPollAdmin";
  *
  * Both are remembered as a row in user_popups_seen under a week-stamped
  * popup_id, the same way the daily study nudge remembers its day, so a person
- * sees each one once a week on any device.
+ * sees each one once a week on any device - and showing either one writes a
+ * day row as well, so only one of them can land on a given day.
+ *
+ * Neither popup asks anyone to write a post. Each points at the post that is
+ * already pinned on the feed - the weekly prayer thread, and the week's poll -
+ * because the answers belong together under one post, not in fifty.
  *
  * The poll itself is the one the group poll bank is already rotating through.
  * It is ensured here rather than waited for, because the weekly cron writes it
@@ -46,17 +57,32 @@ export async function GET(request: Request) {
   const popupId = weeklyPopupId(kind, weekKey);
   const admin = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
 
+  const dayId = weeklyPopupDayId();
   const { data: seen, error: seenError } = await admin
     .from("user_popups_seen")
     .select("popup_id")
     .eq("user_id", userId)
-    .eq("popup_id", popupId)
-    .limit(1);
+    .in("popup_id", [popupId, dayId]);
   // If the seen-state cannot be read, say no rather than risk asking twice.
   if (seenError || seen?.length) return NextResponse.json({ eligible: false });
 
   if (kind === "prayer") {
-    return NextResponse.json({ eligible: true, kind, popupId, weekKey });
+    // People comment under the prayer thread that is already posted - one
+    // post a week, with everybody's requests under it. They do not each start
+    // a post of their own (Louis, 2026-10-19: "I don't need 50 different
+    // posts saying hey can you pray for me"). This finds the newest prayer
+    // prompt the Bible Buddy account has posted, so next week's thread takes
+    // over on its own.
+    const thread = await findPrayerThreadPost(admin);
+
+    return NextResponse.json({
+      eligible: true,
+      kind,
+      popupId,
+      dayId,
+      weekKey,
+      threadPostId: thread?.id ?? null,
+    });
   }
 
   const { data: groups } = await admin
@@ -104,11 +130,21 @@ export async function GET(request: Request) {
   const counts: Record<string, number> = {};
   for (const vote of votes || []) counts[vote.option_key] = (counts[vote.option_key] || 0) + 1;
 
+  const pollPostId = await ensureWeeklyPollFeedPost(admin, {
+    id: poll.id,
+    question: poll.question,
+    intro: poll.intro,
+    subjectTitle: poll.subject_title,
+    weekKey,
+  });
+
   return NextResponse.json({
     eligible: true,
     kind,
     popupId,
+    dayId,
     weekKey,
+    pollPostId,
     poll: {
       id: poll.id,
       groupId: poll.group_id,

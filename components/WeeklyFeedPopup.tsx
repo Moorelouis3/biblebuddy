@@ -5,14 +5,16 @@
  * prayer request, one asking this week's poll question.
  *
  * Each is shown to a person once a week - prayer on a Sunday week, the poll on
- * the Wednesday week the poll bank already rotates on - so nobody gets both in
- * the same visit and nobody gets the same one twice. A promo popup that has
- * already appeared this visit (PROMO_VISIT_KEY) wins, and the weekly one waits
- * for the next visit rather than stacking on top of it.
+ * the Wednesday week the poll bank already rotates on - and at most one of the
+ * two on any given day (Louis, 2026-10-19: "the pray pop up and the poll pop up
+ * came in the same day, I clearly said one pop up a day"). The day is claimed by
+ * inserting its row below, so whichever one gets there first takes the day and
+ * the other waits. A promo popup that already appeared this visit
+ * (PROMO_VISIT_KEY) wins over both.
  *
- * The poll is answered in the popup itself. The prayer one opens the feed with
- * the composer already on Prayer -> Request, because the ask is the whole point
- * and a feed that opens on a blank box loses people.
+ * The poll is answered in the popup itself. Either way the button opens the
+ * pinned post the answers live under - the week's prayer thread, or the week's
+ * poll post - because nobody should be starting a post of their own from here.
  *
  * Tracking: weekly_popup_impression / _dismissed / _poll_voted / _prayer_clicked.
  */
@@ -51,7 +53,16 @@ type PollPayload = {
   counts: Record<string, number>;
   totalVotes: number;
 };
-type Eligibility = { popupId: string; weekKey: string; poll?: PollPayload };
+type Eligibility = {
+  popupId: string;
+  /** Written as well, so only one of these two lands on a given day. */
+  dayId: string;
+  weekKey: string;
+  /** The pinned post the answer belongs under. */
+  threadPostId?: string | null;
+  pollPostId?: string | null;
+  poll?: PollPayload;
+};
 
 function track(eventName: string, userId: string, extra: Record<string, unknown> = {}) {
   try {
@@ -155,11 +166,20 @@ export default function WeeklyFeedPopup({
         }
 
         const now = new Date().toISOString();
-        const { error } = await supabase.from("user_popups_seen").upsert(
-          { user_id: userId, popup_id: eligibility.popupId, has_seen: true, seen_at: now, updated_at: now },
+        // One popup a day, settled by the database rather than by timing: both
+        // nudges are mounted at once, so the day row is inserted - not upserted -
+        // and the one whose insert comes back clean is the one that shows. The
+        // loser's unique violation sends it away until tomorrow.
+        const { error: dayError } = await supabase
+          .from("user_popups_seen")
+          .insert({ user_id: userId, popup_id: eligibility.dayId, has_seen: true, seen_at: now, updated_at: now });
+        if (dayError || cancelled) return;
+        // And the week row, so this particular nudge does not come back before
+        // its next week even once it is the only one left to show.
+        await supabase.from("user_popups_seen").upsert(
+          [{ user_id: userId, popup_id: eligibility.popupId, has_seen: true, seen_at: now, updated_at: now }],
           { onConflict: "user_id,popup_id", ignoreDuplicates: true },
         );
-        if (error || cancelled) return;
         try {
           window.localStorage.setItem(`bb-popup-done:${eligibility.popupId}:${userId}`, "seen");
           // Keeps the other weekly nudge, and the promos, out of this visit.
@@ -192,9 +212,12 @@ export default function WeeklyFeedPopup({
     (reason: "prayer" | "poll_results") => {
       track("weekly_popup_prayer_clicked", userId, { kind, reason, week: info?.weekKey });
       setOpen(false);
-      router.push(reason === "prayer" ? "/bb-feed?compose=prayer_request" : "/bb-feed");
+      // Straight to the pinned post, with its comments open. Nobody starts a
+      // post of their own from here: the week's answers belong under one post.
+      const postId = reason === "prayer" ? info?.threadPostId : info?.pollPostId;
+      router.push(postId ? `/bb-feed?post=${postId}` : "/bb-feed");
     },
-    [info?.weekKey, kind, router, userId],
+    [info?.pollPostId, info?.threadPostId, info?.weekKey, kind, router, userId],
   );
 
   const vote = useCallback(
@@ -244,7 +267,7 @@ export default function WeeklyFeedPopup({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[9999] flex items-end justify-center bg-black/55 p-0 backdrop-blur-[2px] sm:items-center sm:p-4"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/55 p-4 backdrop-blur-[2px]"
       onClick={() => close("backdrop")}
     >
       <div
@@ -252,7 +275,7 @@ export default function WeeklyFeedPopup({
         aria-modal="true"
         aria-labelledby="weekly-popup-title"
         onClick={(event) => event.stopPropagation()}
-        className="w-full max-w-md overflow-hidden rounded-t-3xl bg-white shadow-2xl sm:rounded-3xl"
+        className="w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl"
       >
         <div className="relative bg-gradient-to-br from-[#1f3a63] via-[#2f6fd0] to-[#5b9be8] px-6 py-7 text-center text-white">
           <button
@@ -280,15 +303,15 @@ export default function WeeklyFeedPopup({
           {kind === "prayer" ? (
             <>
               <p className="text-[15px] leading-relaxed text-[#2c3e55]">
-                Be as specific as you need, or just say <em>please pray for me</em>. Nothing is too small, and nobody
-                here is judging.
+                Add it under this week&rsquo;s prayer post and the Bible Buddy community prays with you. Be as specific
+                as you need, or just say <em>please pray for me</em>.
               </p>
               <button
                 type="button"
                 onClick={() => openFeed("prayer")}
                 className="mt-5 w-full rounded-full bg-[#2f6fd0] px-6 py-3.5 text-base font-bold text-white shadow-lg shadow-[#2f6fd0]/25 transition hover:bg-[#2559ab]"
               >
-                Share a prayer request
+                Add your prayer request
               </button>
             </>
           ) : (

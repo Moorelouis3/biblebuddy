@@ -33,3 +33,13 @@ export function getPrayerWeekKey(date = new Date()): string {
 export function weeklyPopupId(kind: WeeklyFeedPopupKind, weekKey: string) {
   return `weekly_${kind}_${weekKey}`;
 }
+
+/**
+ * One popup a day, whichever it is (Louis, 2026-10-19: both of them arrived on
+ * the same day). Showing either weekly nudge also writes this row, and neither
+ * is offered again until the date changes - so the prayer ask and the poll
+ * always land on different days.
+ */
+export function weeklyPopupDayId(date = new Date()) {
+  return `weekly_any_${toKey(new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate())))}`;
+}

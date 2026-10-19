@@ -19,6 +19,8 @@ import { readStudyActivity } from "../../lib/communityMilestones";
 import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
 import { FEED_OPEN_POST_EVENT } from "../../components/AppShell";
 import AddBuddyButton, { type BuddyState } from "../../components/feed/AddBuddyButton";
+import FeedPollBlock from "../../components/feed/FeedPollBlock";
+import { pollIdFromPost } from "../../lib/weeklyFeedPosts";
 import TopBuddiesCard from "../../components/feed/TopBuddiesCard";
 import { COMMUNITY_GROUP_ID } from "../../lib/communityMilestones";
 
@@ -281,29 +283,6 @@ function PostComposer({ userId, userProfile, onPosted }: {
   const videoInputRef = useRef<HTMLInputElement>(null);
 
   const displayName = userProfile?.display_name || userProfile?.username || "Bible Buddy";
-
-  // /bb-feed?compose=prayer_request opens the composer already on Prayer ->
-  // Request. The weekly prayer popup sends people here, and a feed that opens
-  // on a blank box loses them (2026-10-18).
-  useEffect(() => {
-    let wanted = null;
-    try {
-      wanted = new URLSearchParams(window.location.search).get("compose");
-    } catch {
-      return;
-    }
-    if (wanted !== "prayer_request") return;
-
-    setExpanded(true);
-    setTab("prayer");
-    setPrayerIsRequest(true);
-    // Drop the parameter so a refresh does not reopen it.
-    try {
-      const url = new URL(window.location.href);
-      url.searchParams.delete("compose");
-      window.history.replaceState({}, "", url.toString());
-    } catch {}
-  }, []);
 
 
   function reset() {
@@ -1016,10 +995,21 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
     setAutoReplyLoadingId(comment.id);
     setReplyingTo(comment.id);
 
+    // Answering a reply: the draft also gets the comment it hangs under, or
+    // it would be written blind to what the thread is actually about.
+    const parent = comment.parent_comment_id
+      ? comments.find((item) => item.id === comment.parent_comment_id)
+      : null;
+    const context = parent
+      ? [postContent || "", `Earlier in this thread, ${parent.display_name || parent.username || "someone"} wrote: ${parent.content}`]
+          .filter(Boolean)
+          .join("\n\n")
+      : postContent;
+
     try {
       const draft = await requestAutoReplyDraft({
         originalPostTitle: postTitle || null,
-        originalPostContent: postContent || null,
+        originalPostContent: context || null,
         targetCommentContent: comment.content,
         targetDisplayName: comment.display_name || comment.username || "Bible Buddy",
       });
@@ -1275,7 +1265,10 @@ function CommentRow({
           >
             Reply
           </button>
-          {!indent && ctx.currentUserIsAdmin && (
+          {/* Auto Reply sits on replies too, not just on the top comment:
+              a thread is where someone answers back, and that answer is the
+              one most worth helping Louis write (2026-10-19). */}
+          {ctx.currentUserIsAdmin && (
             <button
               type="button"
               onClick={() => void ctx.handleAutoReply(comment)}
@@ -1875,6 +1868,13 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
         <PostBody content={post.content} />
       ) : null}
 
+      {/* The week's poll, drawn inside its own post. Answering here and
+          answering in the popup write the same vote, so there is one set of
+          results and one comment thread under it. */}
+      {pollIdFromPost(post.link_url) ? (
+        <FeedPollBlock pollId={pollIdFromPost(post.link_url)!} userId={myId} />
+      ) : null}
+
       {/* Photo — natural proportions, tap to expand */}
       {post.media_url && post.post_type !== "video" && (
         <button
@@ -2200,14 +2200,25 @@ const PINNED_MAX = 3;
  */
 const DEVOTIONAL_DAY_HEADLINE = /(?:^|·\s)Day \d+:\s/;
 
+/**
+ * What sits at the top of the feed: this week's poll, this week's prayer
+ * thread, and the running study's day post - the newest of each, from the
+ * Bible Buddy account (Louis, 2026-10-19: "the poll and the prayer request
+ * should both be under the top pinned account, both pinned").
+ */
 function selectPinnedPosts<T extends FeedPost>(posts: T[]): T[] {
+  const official = posts.filter((post) => post.user_id === BIBLE_BUDDY_USER_ID);
+  const firstLine = (post: T) => post.content.split("\n", 1)[0] ?? "";
+
+  const poll = official.find((post) => pollIdFromPost(post.link_url));
+  const prayer = official.find((post) => /pray/i.test(post.content) && !pollIdFromPost(post.link_url));
+  const study = official.find((post) => DEVOTIONAL_DAY_HEADLINE.test(firstLine(post)));
+
   const pinned: T[] = [];
-  for (const post of posts) {
-    if (pinned.length >= PINNED_MAX) break;
-    if (post.user_id !== BIBLE_BUDDY_USER_ID) continue;
-    if (!DEVOTIONAL_DAY_HEADLINE.test(post.content.split("\n", 1)[0] ?? "")) continue;
-    pinned.push(post);
-    break; // one running study, one pin - the other two slots are for later.
+  for (const candidate of [poll, prayer, study]) {
+    if (!candidate || pinned.length >= PINNED_MAX) continue;
+    if (pinned.some((post) => post.id === candidate.id)) continue;
+    pinned.push(candidate);
   }
   return pinned;
 }
