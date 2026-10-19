@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-13-explained",
+    title: "Leviticus 13 Explained: Skin Disease, Leprosy, and the Priest's Test",
+    description:
+      "Leviticus 13 explained verse by verse: how a priest diagnosed leprosy in skin, boils, scalls, and a garment, and pronounced clean or unclean.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-13-explained",
+    publishedAt: "2026-10-19",
+    readTime: "15 min read",
+    image: "/blog-banners/leviticus-13-explained.jpg",
+    groupPost: {
+      title: "Leviticus 13 Explained 📖",
+      content:
+        "Fifty nine verses. One priest. No medicine anywhere in sight.\nJust careful looking, over and over again.\n\n📌 Being covered in white from head to foot actually made a person clean.\n\n📖 A healed boil could still turn leprous months later.\n📖 Plain baldness gets its own verse just to say it is not leprosy.\n📖 Mold in a coat got the exact same test as skin.\n\nNew article on:\n🟢 the **two signs** that made an instant unclean verdict\n🟢 why **total whiteness** counted as clean\n🟢 how **leprosy in a garment** could mean burning it in fire\n\nDid you know plain baldness was declared clean the moment the law named it? 🙏",
+    },
+  },
+  {
     slug: "leviticus-12-explained",
     title: "Leviticus 12 Explained: Childbirth and Mary's Offering",
     description:
