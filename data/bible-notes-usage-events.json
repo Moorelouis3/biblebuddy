@@ -376,6 +376,11 @@
       "type": "environment_anomaly",
       "timestamp": "2026-10-18T22:51:17Z",
       "detail": "Same recurring stale-local-git-ref bug hit again at session start, same family as many prior logged occurrences. After committing this run's block entry, HEAD was detached from refs/heads/main at the new commit, while local main and the cached origin/main remote-tracking ref were both stale at 9b2da29 (Chapter library: Exodus 26 Explained) -- 157+ chapters behind. git fetch origin main force-updated the cached origin/main ref to the true tip (df33ded, Rewrite Jude 1 study notes) and git merge-base --is-ancestor confirmed this run's commit was built directly on that true tip, not on the stale snapshot, so nothing was at risk. Pushed with git push origin HEAD:main rather than resetting or recreating the local main branch, same recovery used on 2026-10-18T02:48:10Z. Logging again per the standing instruction to always log this pattern."
+    },
+    {
+      "type": "environment_anomaly",
+      "timestamp": "2026-10-19T03:52:30Z",
+      "detail": "Same recurring stale-local-git-ref bug hit again this run, same family as many prior logged occurrences (most recently 2026-10-18T22:51:17Z). Starting HEAD was detached at 21352ba (Add Bible study notes for Revelation 4). After committing this run's Revelation 5 work, local main and the cached origin/main remote-tracking ref were both stale at 9b2da29 (Chapter library: Exodus 26 Explained), far behind the detached HEAD. git fetch origin main force-updated the cached origin/main ref to the true tip (21352ba), and git merge-base --is-ancestor confirmed this run's new commit (d23a5a8) was built directly on that true tip, so nothing was at risk of being lost or overwritten. Recovered by force-moving the local main branch pointer to this run's commit (git branch -f main d23a5a8), checking it out, and pushing normally (git push -u origin main), which fast-forwarded origin/main from 21352ba to d23a5a8 cleanly. Logging again per the standing instruction to always log this pattern so Louis has a continuous trail of how often it recurs."
     }
   ]
 }
