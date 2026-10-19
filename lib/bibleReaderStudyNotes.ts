@@ -1273,6 +1273,7 @@ import { REVELATION_EIGHT_PERSONAL_SECTIONS } from "./revelationEightSource";
 import { REVELATION_NINE_PERSONAL_SECTIONS } from "./revelationNineSource";
 import { REVELATION_TEN_PERSONAL_SECTIONS } from "./revelationTenSource";
 import { REVELATION_ELEVEN_PERSONAL_SECTIONS } from "./revelationElevenSource";
+import { REVELATION_TWELVE_PERSONAL_SECTIONS } from "./revelationTwelveSource";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -1616,7 +1617,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 john" && section.chapter === 1) ||
     (normalizeBook(book) === "3 john" && section.chapter === 1) ||
     (normalizeBook(book) === "jude" && section.chapter === 1) ||
-    (normalizeBook(book) === "revelation" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11));
+    (normalizeBook(book) === "revelation" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -5227,6 +5228,10 @@ function applyPersonalRevelationTenStudySections() {
 
 function applyPersonalRevelationElevenStudySections() {
   replaceStudySectionsForBookRange("revelation", 11, 11, REVELATION_ELEVEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRevelationTwelveStudySections() {
+  replaceStudySectionsForBookRange("revelation", 12, 12, REVELATION_TWELVE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalExodusTextureStudySections() {
@@ -13032,6 +13037,7 @@ applyPersonalRevelationEightStudySections();
 applyPersonalRevelationNineStudySections();
 applyPersonalRevelationTenStudySections();
 applyPersonalRevelationElevenStudySections();
+applyPersonalRevelationTwelveStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 

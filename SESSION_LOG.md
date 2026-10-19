@@ -8289,3 +8289,7 @@ Next up: Revelation 11
 ## 2026-10-19T09:57:44Z (hourly chapter notes run)
 Chapter: Revelation 11 | Duration: 11 min | Sections: 5 | Cards: 20 | Status: pass
 Next up: Revelation 12
+
+## 2026-10-19T10:59:47Z (hourly chapter notes run)
+Chapter: Revelation 12 | Duration: 13 min | Sections: 5 | Cards: 20 | Status: pass
+Next up: Revelation 13
