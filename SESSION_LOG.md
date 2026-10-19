@@ -8318,3 +8318,7 @@ Next up: Revelation 14
 ## 2026-10-19T12:58:10Z (hourly chapter notes run)
 Chapter: Revelation 14 | Duration: 13 min | Sections: 5 | Cards: 38 | Status: pass
 Next up: Revelation 15
+
+## 2026-10-19T14:01:00Z (hourly chapter notes run)
+Chapter: Revelation 15 | Duration: 14 min | Sections: 3 | Cards: 12 | Status: pass
+Next up: Revelation 16
