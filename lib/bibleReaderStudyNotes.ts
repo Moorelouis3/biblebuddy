@@ -1277,6 +1277,7 @@ import { REVELATION_TWELVE_PERSONAL_SECTIONS } from "./revelationTwelveSource";
 import { REVELATION_THIRTEEN_PERSONAL_SECTIONS } from "./revelationThirteenSource";
 import { REVELATION_FOURTEEN_PERSONAL_SECTIONS } from "./revelationFourteenSource";
 import { REVELATION_FIFTEEN_PERSONAL_SECTIONS } from "./revelationFifteenSource";
+import { REVELATION_SIXTEEN_PERSONAL_SECTIONS } from "./revelationSixteenSource";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -1620,7 +1621,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 john" && section.chapter === 1) ||
     (normalizeBook(book) === "3 john" && section.chapter === 1) ||
     (normalizeBook(book) === "jude" && section.chapter === 1) ||
-    (normalizeBook(book) === "revelation" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15));
+    (normalizeBook(book) === "revelation" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9 || section.chapter === 10 || section.chapter === 11 || section.chapter === 12 || section.chapter === 13 || section.chapter === 14 || section.chapter === 15 || section.chapter === 16));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -5247,6 +5248,10 @@ function applyPersonalRevelationFourteenStudySections() {
 
 function applyPersonalRevelationFifteenStudySections() {
   replaceStudySectionsForBookRange("revelation", 15, 15, REVELATION_FIFTEEN_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRevelationSixteenStudySections() {
+  replaceStudySectionsForBookRange("revelation", 16, 16, REVELATION_SIXTEEN_PERSONAL_SECTIONS);
 }
 
 function applyPersonalExodusTextureStudySections() {
@@ -13056,6 +13061,7 @@ applyPersonalRevelationTwelveStudySections();
 applyPersonalRevelationThirteenStudySections();
 applyPersonalRevelationFourteenStudySections();
 applyPersonalRevelationFifteenStudySections();
+applyPersonalRevelationSixteenStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 
