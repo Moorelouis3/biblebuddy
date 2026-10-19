@@ -69110,6 +69110,55 @@
           "at": "2026-10-19T02:56:30Z"
         }
       ]
+    },
+    {
+      "book": "Revelation",
+      "chapter": 5,
+      "startedAt": "2026-10-19T03:46:32Z",
+      "finishedAt": "2026-10-19T03:52:00Z",
+      "durationMinutes": 6,
+      "sections": 5,
+      "cards": 25,
+      "verses": 14,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (fresh clone, 736 packages). Priority queue (`data/bible-notes-priority-queue.json`, `remaining: []`) and style redo backlog (`data/bible-notes-style-redo-remaining.json`, `remaining: []`) both confirmed empty, so this was normal forward progress after Revelation 4, the latest entry in this log before this run. No dedicated lib file existed yet for Revelation 5; chapter 5 of the legacy bulk file `lib/revelationOneToSevenPersonalNotes.ts` still covered it live before this run. Fetched real KJV text for Revelation 5 (14 verses) from `raw.githubusercontent.com/aruljohn/Bible-kjv/master/Revelation.json`. Read `docs/bible-study-note-style.md` in full and `.claude/skills/bible-notes/SKILL.md` for the technical pipeline, and studied `lib/revelationFourSource.ts` as the immediately preceding chapter in the same book for file shape, parser format, and wiring convention. Split into 5 sections covering all 14 verses with no gaps or overlaps (1-2, 3-4, 5-7, 8-10, 11-14): the sealed scroll that no one in heaven, earth, or under the earth was worthy to open; John's weeping over the universal search coming up empty; the Lion of Juda turning out to be a slain Lamb with seven horns and seven eyes who receives the scroll; the new song celebrating redemption by blood from every kindred, tongue, people, and nation, with believers made kings and priests; and the widening circle of worship from an uncountable company of angels to every creature in heaven, earth, under the earth, and the sea, closing with the four beasts' Amen and the elders falling down. 25 total cards, about 1.79 cards per verse. `scripts/check_bible_note_style.py` found no problems on the first pass across all 25 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines. Parser check passed exactly via `getBibleReaderStudySections('revelation', 5)`: 5/5 sections, verse ranges 1-2/3-4/5-7/8-10/11-14 covering all 14 verses with no gaps, 25 total cards rendering verbatim with no mojibake or duplication. `npx tsc --noEmit -p .` ran clean across the whole project with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import for `lib/revelationFiveSource.ts`, the `revelation` condition in `preserveExactPhraseBodies` widened from chapters 1-4 to chapters 1-5, new `applyPersonalRevelationFiveStudySections()` function calling `replaceStudySectionsForBookRange('revelation', 5, 5, REVELATION_FIVE_PERSONAL_SECTIONS)`, invoked right after `applyPersonalRevelationFourStudySections()`. New chapter, normal forward progress, not a style redo. Chapters 6 and 7 of the legacy `lib/revelationOneToSevenPersonalNotes.ts` file remain live and untouched for future runs. Next forward progress target is Revelation 6.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-19T03:46:32Z"
+        },
+        {
+          "name": "target chapter determined: Revelation 5 (normal forward progress, new chapter; priority queue and style redo backlog both empty)",
+          "at": "2026-10-19T03:47:00Z"
+        },
+        {
+          "name": "KJV text fetched (Revelation 5, 14 verses, raw.githubusercontent.com/aruljohn/Bible-kjv/master/Revelation.json)",
+          "at": "2026-10-19T03:47:28Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-19T03:48:40Z"
+        },
+        {
+          "name": "source file written: lib/revelationFiveSource.ts (5 sections, 25 cards)",
+          "at": "2026-10-19T03:49:05Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py: no problems found, 25 cards)",
+          "at": "2026-10-19T03:49:10Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies widened to chapters 1-5, applyPersonalRevelationFiveStudySections call after applyPersonalRevelationFourStudySections)",
+          "at": "2026-10-19T03:49:20Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('revelation', 5): 5 sections, 25 cards, verbatim)",
+          "at": "2026-10-19T03:49:35Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-19T03:50:04Z"
+        }
+      ]
     }
   ]
 }
