@@ -912,3 +912,25 @@ redo backlog either, so the routine has nowhere left to go. This run logged a bl
 populate that backlog itself. Needs Louis (or whoever maintains the backlog file) to add Revelation 1-22
 to data/bible-notes-style-redo-remaining.json's `remaining` array; every hourly run from now until then
 will hit this exact same dead end and do nothing.
+
+## Bible Note Writer Agent: the whole Bible is done -- all 1189 chapters, Genesis 1 through Revelation 22 (2026-10-19)
+Whatever happened between the 2026-10-18 entry above and now, it worked: someone enumerated Revelation
+1-22 into data/bible-notes-style-redo-remaining.json, and the hourly routine drained it one chapter per
+run through today, finishing Revelation 22 at 2026-10-19T21:01:00Z. This run checked all three things
+the routine's own pipeline logic depends on and all three are now empty/exhausted: `remaining` is `[]` in
+both data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json, and a one-off
+verification script (written, run, then deleted -- never shipped) confirmed every one of the 1189
+canonical chapters across all 66 books (using the real per-book chapter counts from
+lib/groupPostMentions.ts) returns real wired sections via getBibleReaderStudySections, zero gaps. The
+Hebrews-through-Revelation "generic templated filler" problem flagged on 2026-10-16 and 2026-10-18 is
+fully resolved -- that was the last unredone stretch, and it's now on the real style spec like the rest
+of the Bible.
+
+Practically: there is no next chapter for this routine to find, this run or any future hourly run, until
+Louis gives it new scope. Options worth putting to him directly rather than guessing: (1) leave the
+hourly trigger running as a harmless no-op that just re-logs this same "nothing to do" block every hour
+(cheap but noisy in data/bible-notes-usage-events.json forever), (2) pause/disable the hourly trigger now
+that its job is done, or (3) give it a new mandate -- a quality audit pass over chapters written early in
+the project (before the style spec existed, and before the per-book redo pattern caught up to them), a
+second deeper pass on a particular book, or something else entirely. Did not disable the trigger or start
+any new work myself; that's a scope decision for Louis, not something to assume.
