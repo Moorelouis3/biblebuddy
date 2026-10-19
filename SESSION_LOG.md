@@ -8346,3 +8346,7 @@ Next up: Revelation 21
 ## 2026-10-19T20:00:20Z (hourly chapter notes run)
 Chapter: Revelation 21 | Duration: 14 min | Sections: 7 | Cards: 41 | Status: pass
 Next up: Revelation 22
+
+## 2026-10-19T21:00:08Z (hourly chapter notes run)
+Chapter: Revelation 22 | Duration: 14 min | Sections: 9 | Cards: 42 | Status: pass
+Next up: none, Revelation 22 is the final chapter of the Bible

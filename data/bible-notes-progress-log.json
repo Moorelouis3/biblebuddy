@@ -70023,6 +70023,67 @@
           "at": "2026-10-19T20:01:22Z"
         }
       ]
+    },
+    {
+      "book": "Revelation",
+      "chapter": 22,
+      "startedAt": "2026-10-19T20:47:14Z",
+      "finishedAt": "2026-10-19T21:01:00Z",
+      "durationMinutes": 14,
+      "sections": 9,
+      "cards": 42,
+      "verses": 21,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. This is the final chapter of the entire Bible (Genesis 1 through Revelation 22), closing out the canonical-order forward-progress sweep. npm install ran clean (fresh clone, 735 packages, about 33s). Priority queue (data/bible-notes-priority-queue.json, remaining=[]) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) both confirmed empty, so this was normal forward progress after Revelation 21, and there is no chapter after it. No lib/revelationTwentyTwoSource.ts existed yet; chapter 22 was still covered only by the legacy bulk file lib/revelationEightToTwentyTwoPersonalNotes.ts. Fetched real KJV text for Revelation 22 (21 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the river of water of life and the tree of life healing the nations (1-2); the end of the curse, God's throne among His people, seeing His face, and no more night (3-5); the angel's faithful and true sayings and the first of three repeats of Christ's promise to come quickly (6-7); John mistakenly falling down to worship the angel a second time in this book and being corrected, the command not to seal this prophecy unlike Daniel's, and the fixed outcome of final judgment (8-11); Jesus as Alpha and Omega bringing a reward based on works without contradicting salvation by grace (12-13); who may enter the city through the gates to the tree of life versus the list of who stays outside, echoing chapter twenty one (14-15); Jesus naming Himself directly as the root and offspring of David and the bright and morning star, and the Spirit, the bride, and the hearer all extending the last open invitation to take the water of life freely (16-17); the warning against adding to or taking away from the words of this prophecy (18-19); and the closing promise 'Surely I come quickly,' John's own answering prayer 'Amen. Even so, come, Lord Jesus,' and the final grace benediction that closes the whole Bible (20-21). Chunked into 9 sections. Density exactly 2 cards/verse (21 verses, 42 cards). scripts/check_bible_note_style.py found 4 mechanical problems on first pass (a keycap-style bullet emoji the checker's regex did not recognize as a bullet marker, so it miscounted that card at 3 bullets instead of 4, plus three separate bullets running to 9 words each), all fixed and confirmed clean with 0 problems on the second pass. Manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms (fellowservant, defileth, shortly, keepeth, whosoever, foursquare terms are not repeated since they belong to chapter 21), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card and the last bullet using the book or arrow emoji, and has no hyphens, em dashes, semicolons, or contractions, with no duplicate card titles and no forbidden filler-phrase openings. Parser check passed via getBibleReaderStudySections('revelation', 22) (9/9 sections, verse ranges 1-2/3-5/6-7/8-11/12-13/14-15/16-17/18-19/20-21 with no gaps and no overlaps, 42 total cards, text verbatim). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/revelationTwentyTwoSource.ts, preserveExactPhraseBodies Revelation range extended from chapters 1-21 to 1-22, new function applyPersonalRevelationTwentyTwoStudySections added and called right after applyPersonalRevelationTwentyOneStudySections(), overriding the legacy REVELATION_8_22_PERSONAL_SECTIONS bulk file for chapter 22, which was that legacy file's last remaining chapter, so it is now fully superseded end to end by dedicated per-chapter files. There is no next forward-progress chapter in canonical order, since this was the last chapter of the Bible; a future run of this agent should re-check both queues first, since the only remaining normal work is a future style-redo pass (none currently queued) or a Louis-requested detour.",
+      "steps": [
+        {
+          "name": "npm install done (fresh clone, 735 packages, about 33s)",
+          "at": "2026-10-19T20:47:14Z"
+        },
+        {
+          "name": "target chapter determined: Revelation 22, the final chapter of the Bible (new chapter, normal forward progress; priority queue and style redo backlog both confirmed empty)",
+          "at": "2026-10-19T20:47:14Z"
+        },
+        {
+          "name": "KJV text fetched (Revelation 22, 21 verses, aruljohn mirror)",
+          "at": "2026-10-19T20:47:36Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) and bible-notes skill read in full",
+          "at": "2026-10-19T20:47:36Z"
+        },
+        {
+          "name": "source file written: lib/revelationTwentyTwoSource.ts (42 cards, 9 sections)",
+          "at": "2026-10-19T20:54:27Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 0 problems after fixing 4 issues from first pass)",
+          "at": "2026-10-19T20:57:45Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies extended to 22, applyPersonalRevelationTwentyTwoStudySections added and called)",
+          "at": "2026-10-19T20:57:45Z"
+        },
+        {
+          "name": "parser check passed (9/9 sections, 42 cards, text verbatim)",
+          "at": "2026-10-19T20:57:45Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean, zero errors",
+          "at": "2026-10-19T20:57:45Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-19T21:00:08Z"
+        },
+        {
+          "name": "committed",
+          "at": "2026-10-19T21:00:40Z"
+        },
+        {
+          "name": "pushed to origin main",
+          "at": "2026-10-19T21:01:00Z"
+        }
+      ]
     }
   ]
 }
