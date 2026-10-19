@@ -69004,6 +69004,59 @@
           "at": "2026-10-19T00:59:28Z"
         }
       ]
+    },
+    {
+      "book": "Revelation",
+      "chapter": 3,
+      "startedAt": "2026-10-19T01:46:02Z",
+      "finishedAt": "2026-10-19T01:59:30Z",
+      "durationMinutes": 13,
+      "sections": 6,
+      "cards": 43,
+      "verses": 22,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (fresh clone, 736 packages, about 39s). Priority queue (`data/bible-notes-priority-queue.json`, `remaining: []`) and style redo backlog (`data/bible-notes-style-redo-remaining.json`, `remaining: []`) both confirmed empty, so this was normal forward progress after Revelation 2, the latest entry in this log before this run. No dedicated lib file existed yet for Revelation 3. Fetched real KJV text for Revelation 3 (22 verses) from `raw.githubusercontent.com/aruljohn/Bible-kjv/master/Revelation.json`. Read `docs/bible-study-note-style.md` in full and `.claude/skills/bible-notes/SKILL.md` for the technical pipeline, and studied `lib/genesisThirtyOneSource.ts` as the reference implementation of the style spec in code (not `lib/revelationTwoSource.ts`, which predates the spec in voice though its parser/file shape was still used as the wiring template). Split into 6 sections covering all 22 verses with no gaps or overlaps (1-3, 4-6, 7-9, 10-13, 14-18, 19-22): the letter to Sardis naming a church with a living reputation but a dead reality, warning it to be watchful and hold fast given the city's own history of falling to surprise attacks (1-3); the promise to the faithful remnant in Sardis who had not defiled their garments, of white raiment and a name kept in the book of life (4-6); the letter to Philadelphia, the key of David, the open door no man can shut, and a little strength kept faithful under real opposition (7-9); the promise to Philadelphia of being kept through the hour of temptation and made an unshakeable pillar in God's temple, tied to the city's real history of earthquakes (10-13); the letter to Laodicea naming it neither cold nor hot, grounded in the city's actual lukewarm aqueduct water, and the irony of a wealthy banking city blind to its own poverty, nakedness, and blindness despite its famous wool trade and eye medicine (14-18); and closing with Christ's call to repent, His knock at the door, the promise to sit with Him on His throne, and the refrain closing all seven letters (19-22). 43 total cards, about 1.95 cards per verse. `scripts/check_bible_note_style.py` found no problems on the first pass: no hyphens, em dashes, semicolons, or contractions, no banned filler or hedge words, no duplicate titles, no repeated emoji within a card, every bullet 3-8 words, every last bullet landing on 📖 or ➡️. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (wroth-adjacent words like defiled, raiment, blotted out, eyesalve, spue, chasten), draws on real history specific to each city (Sardis's two surprise conquests, Philadelphia's earthquakes and gateway location, Laodicea's lukewarm aqueduct water, banking wealth, black wool trade, and eye medicine school), closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines across all 43 cards. Parser check passed exactly via `getBibleReaderStudySections('revelation', 3)`: 6/6 sections, verse ranges 1-3/4-6/7-9/10-13/14-18/19-22 covering all 22 verses with no gaps, 43 total cards rendering verbatim with no mojibake or duplication. `npx tsc --noEmit -p .` ran clean across the whole project with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import for `lib/revelationThreeSource.ts`, the `revelation` condition in `preserveExactPhraseBodies` widened from chapters 1-2 to chapters 1-3, new `applyPersonalRevelationThreeStudySections()` function calling `replaceStudySectionsForBookRange('revelation', 3, 3, REVELATION_THREE_PERSONAL_SECTIONS)`, invoked right after `applyPersonalRevelationTwoStudySections()`. New chapter, normal forward progress, not a style redo. Next forward progress target is Revelation 4.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-19T01:46:41Z"
+        },
+        {
+          "name": "target chapter determined: Revelation 3 (normal forward progress, new chapter; priority queue and style redo backlog both empty)",
+          "at": "2026-10-19T01:46:55Z"
+        },
+        {
+          "name": "KJV text fetched (Revelation 3, 22 verses, raw.githubusercontent.com/aruljohn/Bible-kjv/master/Revelation.json)",
+          "at": "2026-10-19T01:47:16Z"
+        },
+        {
+          "name": "style spec read (docs/bible-study-note-style.md) and skill pipeline (.claude/skills/bible-notes/SKILL.md) reviewed",
+          "at": "2026-10-19T01:48:00Z"
+        },
+        {
+          "name": "source file written: lib/revelationThreeSource.ts (6 sections, 43 cards)",
+          "at": "2026-10-19T01:54:19Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py: no problems found, 43 cards)",
+          "at": "2026-10-19T01:54:25Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies widened to chapters 1-3, applyPersonalRevelationThreeStudySections call after applyPersonalRevelationTwoStudySections)",
+          "at": "2026-10-19T01:54:43Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('revelation', 3): 6 sections, 43 cards, verbatim)",
+          "at": "2026-10-19T01:55:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-19T01:57:55Z"
+        },
+        {
+          "name": "progress files logged (data/bible-notes-progress-log.json, docs/BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-19T01:59:00Z"
+        }
+      ]
     }
   ]
 }
