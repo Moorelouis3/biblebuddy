@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-15-explained",
+    title: "Leviticus 15 Explained: The Law of Bodily Issues and Uncleanness",
+    description:
+      "Leviticus 15 explained verse by verse: discharges, the monthly separation law, the shared cleansing ritual, and the bleeding woman Jesus healed in Mark 5.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-15-explained",
+    publishedAt: "2026-10-19",
+    readTime: "15 min read",
+    image: "/blog-banners/leviticus-15-explained.jpg",
+    groupPost: {
+      title: "Leviticus 15 Explained 📖",
+      content:
+        "Thirty three verses. No skin to examine this time.\nJust ordinary bodies, and a woman Jesus could have refused.\n\n📌 Touching a bed could spread uncleanness the same as touching a person.\n\n📖 A man's issue and a woman's issue get the same offering.\n📖 A normal cycle lasts seven days, not just one evening.\n📖 Mark 5 quotes this chapter almost word for word.\n\nNew article on:\n🟢 why **touching a bed** counted the same as touching the person\n🟢 the **two birds** that closed a chronic issue\n🟢 the woman Jesus healed who matches **this exact law**\n\nDid you know the bleeding woman in Mark 5 was breaking this very law when she touched Jesus? 🙏",
+    },
+  },
+  {
     slug: "leviticus-14-explained",
     title: "Leviticus 14 Explained: Cleansing a Healed Leper and a Leprous House",
     description:
