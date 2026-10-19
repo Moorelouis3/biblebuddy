@@ -8350,3 +8350,7 @@ Next up: Revelation 22
 ## 2026-10-19T21:00:08Z (hourly chapter notes run)
 Chapter: Revelation 22 | Duration: 14 min | Sections: 9 | Cards: 42 | Status: pass
 Next up: none, Revelation 22 is the final chapter of the Bible
+
+## 2026-10-19T22:12:35Z (blog writer run)
+Article: Why Doesn't God Answer Some Prayers? | Words: ~3050 | Category: Christian Foundations | Status: pass
+Queue remaining: 16

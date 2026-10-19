@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "why-god-doesnt-answer-prayers",
+    title: "Why Doesn't God Answer Some Prayers?",
+    description:
+      "Why doesn't God answer some prayers? What Paul's thorn and Jesus in Gethsemane teach about unanswered prayer, and trusting God when the answer is no.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/why-god-doesnt-answer-prayers",
+    publishedAt: "2026-10-20",
+    readTime: "15 min read",
+    image: "/why-god-doesnt-answer-prayers-banner.png",
+    groupPost: {
+      title: "Why Doesn't God Answer Some Prayers? 📖",
+      content:
+        "You prayed for it. More than once.\nAnd the answer never came.\n\n📌 Paul asked three times for one thing. He never got a yes.\n\n📖 Jesus asked for the cup to pass. It did not pass.\n📖 Scripture names some reasons prayers go unanswered.\n📖 It also leaves some of them a mystery, on purpose.\n\nNew article on:\n🟢 what happened when **Paul** asked three times\n🟢 why even **Jesus** got a no in the garden\n🟢 what to actually do with a prayer God never answered\n\nWhat is one prayer you are still waiting on? 🙏",
+    },
+  },
+  {
     slug: "leviticus-15-explained",
     title: "Leviticus 15 Explained: The Law of Bodily Issues and Uncleanness",
     description:
