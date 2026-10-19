@@ -1270,6 +1270,7 @@ import { REVELATION_FIVE_PERSONAL_SECTIONS } from "./revelationFiveSource";
 import { REVELATION_SIX_PERSONAL_SECTIONS } from "./revelationSixSource";
 import { REVELATION_SEVEN_PERSONAL_SECTIONS } from "./revelationSevenSource";
 import { REVELATION_EIGHT_PERSONAL_SECTIONS } from "./revelationEightSource";
+import { REVELATION_NINE_PERSONAL_SECTIONS } from "./revelationNineSource";
 
 export type BibleReaderStudyNoteCategory = {
   id: string;
@@ -1613,7 +1614,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     (normalizeBook(book) === "2 john" && section.chapter === 1) ||
     (normalizeBook(book) === "3 john" && section.chapter === 1) ||
     (normalizeBook(book) === "jude" && section.chapter === 1) ||
-    (normalizeBook(book) === "revelation" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8));
+    (normalizeBook(book) === "revelation" && (section.chapter === 1 || section.chapter === 2 || section.chapter === 3 || section.chapter === 4 || section.chapter === 5 || section.chapter === 6 || section.chapter === 7 || section.chapter === 8 || section.chapter === 9));
   const icon = repairMojibake(section.icon);
   return {
     book,
@@ -5212,6 +5213,10 @@ function applyPersonalRevelationSevenStudySections() {
 
 function applyPersonalRevelationEightStudySections() {
   replaceStudySectionsForBookRange("revelation", 8, 8, REVELATION_EIGHT_PERSONAL_SECTIONS);
+}
+
+function applyPersonalRevelationNineStudySections() {
+  replaceStudySectionsForBookRange("revelation", 9, 9, REVELATION_NINE_PERSONAL_SECTIONS);
 }
 
 function applyPersonalExodusTextureStudySections() {
@@ -13014,6 +13019,7 @@ applyPersonalRevelationFiveStudySections();
 applyPersonalRevelationSixStudySections();
 applyPersonalRevelationSevenStudySections();
 applyPersonalRevelationEightStudySections();
+applyPersonalRevelationNineStudySections();
 applyPersonalExodusTextureStudySections();
 enforceStudySectionVerseLimit(8);
 

@@ -8277,3 +8277,7 @@ Next up: Revelation 8
 ## 2026-10-19T06:58:58Z (hourly chapter notes run)
 Chapter: Revelation 8 | Duration: 12 min | Sections: 6 | Cards: 18 | Status: pass
 Next up: Revelation 9
+
+## 2026-10-19T07:59:03Z (hourly chapter notes run)
+Chapter: Revelation 9 | Duration: 13 min | Sections: 9 | Cards: 35 | Status: pass
+Next up: Revelation 10
