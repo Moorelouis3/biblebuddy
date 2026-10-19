@@ -69159,6 +69159,59 @@
           "at": "2026-10-19T03:50:04Z"
         }
       ]
+    },
+    {
+      "book": "Revelation",
+      "chapter": 6,
+      "startedAt": "2026-10-19T04:46:25Z",
+      "finishedAt": "2026-10-19T04:57:30Z",
+      "durationMinutes": 11,
+      "sections": 6,
+      "cards": 31,
+      "verses": 17,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. `npm install` ran clean (fresh clone, 736 packages). Priority queue (`data/bible-notes-priority-queue.json`, `remaining: []`) and style redo backlog (`data/bible-notes-style-redo-remaining.json`, `remaining: []`) both confirmed empty, so this was normal forward progress after Revelation 5, the latest entry in this log before this run. No dedicated lib file existed yet for Revelation 6; chapter 6 of the legacy bulk file `lib/revelationOneToSevenPersonalNotes.ts` still covered it live before this run. Fetched real KJV text for Revelation 6 (17 verses) from `raw.githubusercontent.com/aruljohn/Bible-kjv/master/Revelation.json`. Read `docs/bible-study-note-style.md` in full and `.claude/skills/bible-notes/SKILL.md` for the technical pipeline, and studied `lib/revelationFiveSource.ts` as the immediately preceding chapter in the same book for file shape, parser format, and wiring convention. Split into 6 sections covering all 17 verses with no gaps or overlaps (1-2, 3-4, 5-6, 7-8, 9-11, 12-17): the first seal's white horse rider given a bow and a crown who goes forth conquering; the second seal's red horse taking peace from the earth with a great sword; the third seal's black horse and balances picturing famine, wheat at famine prices while the deep rooted oil and wine are spared; the fourth seal's pale horse named Death with Hell following, given power over a fourth of the earth through sword, hunger, death, and wild beasts; the fifth seal's martyred souls under the altar crying how long before being given white robes and told to rest a little season until their fellowservants are fulfilled; and the sixth seal's cosmic terror, earthquake, blackened sun, blood moon, falling stars, the heaven departing as a scroll, and every class of person hiding from the wrath of the Lamb. 31 total cards, about 1.82 cards per verse. `scripts/check_bible_note_style.py` flagged one bullet over the 8 word limit on the first pass, fixed immediately, then ran clean across all 31 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language, closes on meaning rather than mechanics, and has no duplicate card titles or repeated opening lines. Parser check passed exactly via `getBibleReaderStudySections('revelation', 6)`: 6/6 sections, verse ranges 1-2/3-4/5-6/7-8/9-11/12-17 covering all 17 verses with no gaps, 31 total cards rendering verbatim with no mojibake or duplication. `npx tsc --noEmit -p .` ran clean across the whole project with zero errors. Wired into `lib/bibleReaderStudyNotes.ts`: new import for `lib/revelationSixSource.ts`, the `revelation` condition in `preserveExactPhraseBodies` widened from chapters 1-5 to chapters 1-6, new `applyPersonalRevelationSixStudySections()` function calling `replaceStudySectionsForBookRange('revelation', 6, 6, REVELATION_SIX_PERSONAL_SECTIONS)`, invoked right after `applyPersonalRevelationFiveStudySections()`. New chapter, normal forward progress, not a style redo. Chapter 7 of the legacy `lib/revelationOneToSevenPersonalNotes.ts` file remains live and untouched for a future run. Next forward progress target is Revelation 7.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-19T04:47:13Z"
+        },
+        {
+          "name": "target chapter determined: Revelation 6 (normal forward progress, new chapter; priority queue and style redo backlog both empty)",
+          "at": "2026-10-19T04:47:13Z"
+        },
+        {
+          "name": "KJV text fetched (Revelation 6, 17 verses, raw.githubusercontent.com/aruljohn/Bible-kjv/master/Revelation.json)",
+          "at": "2026-10-19T04:48:00Z"
+        },
+        {
+          "name": "style spec read in full (docs/bible-study-note-style.md)",
+          "at": "2026-10-19T04:48:30Z"
+        },
+        {
+          "name": "source file written: lib/revelationSixSource.ts (6 sections, 31 cards)",
+          "at": "2026-10-19T04:52:30Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py: 1 bullet word count issue found and fixed, then no problems found, 31 cards)",
+          "at": "2026-10-19T04:52:55Z"
+        },
+        {
+          "name": "wired into reader (lib/bibleReaderStudyNotes.ts: import, preserveExactPhraseBodies widened to chapters 1-6, applyPersonalRevelationSixStudySections call after applyPersonalRevelationFiveStudySections)",
+          "at": "2026-10-19T04:53:10Z"
+        },
+        {
+          "name": "parser check passed (getBibleReaderStudySections('revelation', 6): 6 sections, 31 cards, verbatim)",
+          "at": "2026-10-19T04:53:22Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-19T04:53:53Z"
+        },
+        {
+          "name": "progress files logged (progress log, BIBLE_BUDDY_NOTES_PROGRESS.md, SESSION_LOG.md)",
+          "at": "2026-10-19T04:57:00Z"
+        }
+      ]
     }
   ]
 }
