@@ -8338,3 +8338,7 @@ Next up: Revelation 19
 ## 2026-10-19T18:05:00Z (hourly chapter notes run)
 Chapter: Revelation 19 | Duration: 19 min | Sections: 6 | Cards: 46 | Status: pass
 Next up: Revelation 20
+
+## 2026-10-19T19:03:00Z (hourly chapter notes run)
+Chapter: Revelation 20 | Duration: 17 min | Sections: 4 | Cards: 34 | Status: pass
+Next up: Revelation 21
