@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-12-explained",
+    title: "Leviticus 12 Explained: Childbirth and Mary's Offering",
+    description:
+      "Leviticus 12 explained verse by verse: a mother's purification, the eighth day circumcision, and the offering Mary brought in Luke 2.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-12-explained",
+    publishedAt: "2026-10-19",
+    readTime: "13 min read",
+    image: "/blog-banners/leviticus-12-explained.jpg",
+    groupPost: {
+      title: "Leviticus 12 Explained 📖",
+      content:
+        "Eight verses. No altar scene you have read before.\nJust a mother, a newborn, and a waiting period.\n\n📌 A daughter's purification takes exactly double a son's.\n\n📖 The eighth day circumcision sits right inside her own waiting.\n📖 A poor family could bring two birds instead of a lamb.\n📖 Mary brought exactly that offering for Jesus.\n\nNew article on:\n🟢 why the **separation** word matches an earlier purity law\n🟢 the **forty days** before she could enter the sanctuary\n🟢 how Luke 2 quotes this chapter almost word for word\n\nDid you know Leviticus never explains why a daughter costs more days? 🙏",
+    },
+  },
+  {
     slug: "leviticus-11-explained",
     title: "Leviticus 11 Explained: Clean and Unclean Animals, and Why It Mattered",
     description:
