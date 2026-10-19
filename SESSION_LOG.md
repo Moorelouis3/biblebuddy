@@ -8330,3 +8330,7 @@ Next up: Revelation 17
 ## 2026-10-19T15:58:18Z (hourly chapter notes run)
 Chapter: Revelation 17 | Duration: 12 min | Sections: 6 | Cards: 34 | Status: pass
 Next up: Revelation 18
+
+## 2026-10-19T17:00:27Z (hourly chapter notes run)
+Chapter: Revelation 18 | Duration: 14 min | Sections: 7 | Cards: 46 | Status: pass
+Next up: Revelation 19
