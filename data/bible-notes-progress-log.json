@@ -69530,6 +69530,59 @@
           "at": "2026-10-19T10:59:47Z"
         }
       ]
+    },
+    {
+      "book": "Revelation",
+      "chapter": 13,
+      "startedAt": "2026-10-19T11:47:09Z",
+      "finishedAt": "2026-10-19T11:59:42Z",
+      "durationMinutes": 13,
+      "sections": 4,
+      "cards": 27,
+      "verses": 18,
+      "notes": "Scheduled hourly Bible Note Writer Agent run. npm install ran clean (fresh clone, 736 packages, about 35s). Priority queue (data/bible-notes-priority-queue.json, remaining=[]) and style redo backlog (data/bible-notes-style-redo-remaining.json, remaining=[]) both confirmed empty, so this was normal forward progress after Revelation 12, the latest entry in data/bible-notes-progress-log.json. Confirmed no dedicated lib/revelationThirteenSource.ts existed yet, only the legacy bulk file lib/revelationEightToTwentyTwoPersonalNotes.ts still covering chapter 13. Fetched real KJV text for Revelation 13 (18 verses) from the raw.githubusercontent.com/aruljohn/Bible-kjv mirror. The chapter covers the beast rising from the sea with the dragon's borrowed power, blasphemy, and a healed death wound that draws the world's worship (1-4); the beast's limited forty two month reign of blasphemy against God's name, tabernacle, and the saints in heaven, its war on the saints across every nation, and the promise that violence against them will be repaid (5-10); the second beast from the earth with lamb like horns and dragon speech, promoting the first beast through a counterfeit fire sign and a speaking image built to it, with death threatened for refusing to worship that image (11-15); and the mark of the beast controlling buying and selling, closing on the number six hundred threescore and six (16-18). Split into 4 sections (1-4 a beast rises from the sea, 5-10 the beast's reign of blasphemy, 11-15 a second beast from the earth, 16-18 the mark of the beast), all 18 verses covered with no gaps or overlaps. Density 1.5 cards per verse (18 verses, 27 cards). lib/revelationTwelveSource.ts was used as the structural and voice reference. scripts/check_bible_note_style.py found 1 problem on the first automated pass (a bullet using the digit keycap emoji, which the checker's emoji regex does not recognize as a leading bullet emoji since keycap sequences fall outside its Unicode ranges), fixed by swapping that one bullet to a star emoji, second run clean with 0 problems across all 27 cards. A manual section 13 eye check confirmed every card opens with one of the four approved moves, defines its key terms in plain language (blasphemy, seat, tabernacle, kindreds, tongues, nations, book of life, gematria, threescore), closes on meaning rather than mechanics, uses exactly four bullets each three to eight words with a distinct emoji within each card, and has no hyphens, em dashes, semicolons, or contractions anywhere in the finished file, with no duplicate card titles across all 27 cards. Parser check passed exactly via getBibleReaderStudySections('revelation', 13) (4/4 sections, verse ranges 1-4/5-10/11-15/16-18 with no gaps, 27 total cards). npx tsc --noEmit -p . clean with zero errors. Wired into lib/bibleReaderStudyNotes.ts: import added for lib/revelationThirteenSource.ts, preserveExactPhraseBodies revelation range extended from chapters 1-12 to 1-13, new function applyPersonalRevelationThirteenStudySections added and called right after applyPersonalRevelationTwelveStudySections(), overriding the legacy bulk file lib/revelationEightToTwentyTwoPersonalNotes.ts for chapter 13 only; chapters 14 through 22 of that legacy file remain live and untouched for future runs. Next forward-progress target is Revelation 14.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-19T11:47:09Z"
+        },
+        {
+          "name": "target chapter determined: Revelation 13 (normal forward progress, priority queue and redo backlog both empty)",
+          "at": "2026-10-19T11:48:02Z"
+        },
+        {
+          "name": "KJV text fetched (Revelation 13, 18 verses, aruljohn mirror)",
+          "at": "2026-10-19T11:48:02Z"
+        },
+        {
+          "name": "style spec (docs/bible-study-note-style.md) read in full",
+          "at": "2026-10-19T11:48:11Z"
+        },
+        {
+          "name": "source file written: lib/revelationThirteenSource.ts (27 cards, 4 sections)",
+          "at": "2026-10-19T11:54:06Z"
+        },
+        {
+          "name": "style checker clean (scripts/check_bible_note_style.py, 1 automated fix)",
+          "at": "2026-10-19T11:54:43Z"
+        },
+        {
+          "name": "wired into lib/bibleReaderStudyNotes.ts (import, preserveExactPhraseBodies, applyPersonalRevelationThirteenStudySections)",
+          "at": "2026-10-19T11:54:43Z"
+        },
+        {
+          "name": "parser check passed (4/4 sections, 27 cards, text verbatim)",
+          "at": "2026-10-19T11:55:06Z"
+        },
+        {
+          "name": "tsc --noEmit clean, zero errors",
+          "at": "2026-10-19T11:57:57Z"
+        },
+        {
+          "name": "progress files logged (progress-log.json, BIBLE_BUDDY_NOTES_PROGRESS.md)",
+          "at": "2026-10-19T11:59:42Z"
+        }
+      ]
     }
   ]
 }
