@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-16-explained",
+    title: "Leviticus 16 Explained: The Day of Atonement and the Scapegoat",
+    description:
+      "Leviticus 16 explained verse by verse: the Day of Atonement, the two goats, the scapegoat sent into the wilderness, and how Hebrews says Christ fulfilled it once for all.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-16-explained",
+    publishedAt: "2026-10-20",
+    readTime: "14 min read",
+    image: "/blog-banners/leviticus-16-explained.jpg",
+    groupPost: {
+      title: "Leviticus 16 Explained 📖",
+      content:
+        "One day a year. One man behind the veil.\nEvery sin the whole nation carried, loaded onto a goat.\n\n📌 Aaron had to atone for his own sin before anyone else's.\n\n📖 Two goats, chosen by lot, two completely different endings.\n📖 One goat was sent into a land nobody lives in, for good.\n📖 Hebrews says Christ did this once, not once a year.\n\nNew article on:\n🟢 why only **Aaron** could go behind the veil, once a year\n🟢 what the **two goats** actually pictured\n🟢 how **Hebrews 9** says this day was finally answered\n\nDid you know the goat that carried Israel's sin away never came back? 🙏",
+    },
+  },
+  {
     slug: "why-god-doesnt-answer-prayers",
     title: "Why Doesn't God Answer Some Prayers?",
     description:
