@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-17-explained",
+    title: "Leviticus 17 Explained: The Law Against Eating Blood",
+    description:
+      "Leviticus 17 explained verse by verse: why every sacrifice had to go through one door, why eating blood was banned, and what Acts 15 does with that law.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-17-explained",
+    publishedAt: "2026-10-20",
+    readTime: "13 min read",
+    image: "/blog-banners/leviticus-17-explained.jpg",
+    groupPost: {
+      title: "Leviticus 17 Explained 📖",
+      content:
+        "One altar. One door. No exceptions.\nAnd blood was never allowed on the menu.\n\n📌 \"It is the blood that maketh an atonement for the soul.\"\n\n📖 Sacrificing anywhere else was tied to idol worship.\n📖 The ban on eating blood applied to foreigners too.\n📖 Acts 15 echoes this exact law for new believers.\n\nNew article on:\n🟢 why **one door** closed a loophole Israel kept using\n🟢 the verse that explains **every** sacrifice in Leviticus\n🟢 what **Acts 15** and **John 6** do with this law\n\nDid you know this one verse explains why blood mattered the whole book? 🙏",
+    },
+  },
+  {
     slug: "leviticus-16-explained",
     title: "Leviticus 16 Explained: The Day of Atonement and the Scapegoat",
     description:
