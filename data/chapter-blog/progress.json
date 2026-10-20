@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-10-20T06:44:45.257Z",
-  "nextChapter": "Leviticus 19",
+  "updatedAt": "2026-10-20T10:34:33.121Z",
+  "nextChapter": "Leviticus 20",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -954,21 +954,29 @@
     },
     "leviticus-16-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-20T02:34:09.029Z",
-      "committedAt": "2026-10-20T02:44:31.889Z"
+      "committedAt": "2026-10-20T02:44:31.889Z",
+      "publishedAt": "2026-10-20T10:34:32.929Z"
     },
     "leviticus-17-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-20T04:34:03.252Z",
-      "committedAt": "2026-10-20T04:44:38.965Z"
+      "committedAt": "2026-10-20T04:44:38.965Z",
+      "publishedAt": "2026-10-20T10:34:33.053Z"
     },
     "leviticus-18-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-20T06:34:57.282Z",
-      "committedAt": "2026-10-20T06:44:45.256Z"
+      "committedAt": "2026-10-20T06:44:45.256Z",
+      "publishedAt": "2026-10-20T10:34:33.121Z"
+    },
+    "leviticus-19-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-20T10:34:10.711Z"
     }
   },
   "priorityBooks": [
