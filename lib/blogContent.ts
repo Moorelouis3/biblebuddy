@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-18-explained",
+    title: "Leviticus 18 Explained: The Laws Against Sexual Immorality",
+    description:
+      "Leviticus 18 explained verse by verse: the family boundaries, the sister clause, Molech, and why the chapter says the land itself was defiled by these practices.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-18-explained",
+    publishedAt: "2026-10-20",
+    readTime: "14 min read",
+    image: "/blog-banners/leviticus-18-explained.jpg",
+    groupPost: {
+      title: "Leviticus 18 Explained 📖",
+      content:
+        "No altar in this chapter. No bird, no bullock.\nJust one word repeated over and over: nakedness.\n\n📌 \"I am the LORD\" answers it six times in thirty verses.\n\n📖 The chapter names Egypt and Canaan directly.\n📖 One verse closes a door Jacob's own marriage opened.\n📖 The land itself is said to pay for ignoring these lines.\n\nNew article on:\n🟢 why **uncover nakedness** repeats twenty four times\n🟢 the **sister clause**, and what it has to do with Jacob\n🟢 why the **land itself** is said to vomit people out\n\nDid you know this chapter says the land, not just the people, paid a price? 🙏",
+    },
+  },
+  {
     slug: "leviticus-17-explained",
     title: "Leviticus 17 Explained: The Law Against Eating Blood",
     description:
