@@ -58,6 +58,18 @@ async function saveSignupAttributionToProfile(userId: string, username: string, 
     username,
     app_theme: "light",
     traffic_source: attribution.source,
+    // Stamped here since 2026-10-23. It never was, because until anonymous
+    // guests were turned off on 2026-10-06 the only thing writing this column
+    // was the guest -> registered conversion in DashboardJourneyExperience:
+    // lib/guestSession.ts wrote "guest", the conversion rewrote "registered",
+    // and a signup that started here never passed through either.
+    //
+    // With guests gone, nothing set it at all, so 190 of October's 375
+    // profiles are real named accounts sitting at NULL. Every report that
+    // filters account_type = 'registered' therefore reads ZERO for October -
+    // which is how the blog, and every other channel, came to look like it
+    // converts nobody.
+    account_type: "registered",
   };
   const fullPayload = {
     ...basePayload,

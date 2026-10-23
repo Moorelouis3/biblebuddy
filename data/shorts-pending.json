@@ -9438,5 +9438,1181 @@
     "originViews": 1,
     "originRate": 100,
     "extractError": "Expected ',' or ']' after array element in JSON at position 66 (line 3 column 49)"
+  },
+  {
+    "id": "t-7e39b8fe-268f-4c3e-9c79-5379941683c4",
+    "sourceId": "7e39b8fe-268f-4c3e-9c79-5379941683c4",
+    "score": 9463,
+    "posted": "2026-09-15",
+    "sourceText": "I want to see more Christians building businesses.",
+    "title": "Building Christian Businesses",
+    "lines": [
+      "I want to see more",
+      "Christians building businesses."
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-7e39b8fe-268f-4c3e-9c79-5379941683c4.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-4a3a8cd8-c713-46ae-af66-8309030adf7d",
+    "sourceId": "4a3a8cd8-c713-46ae-af66-8309030adf7d",
+    "score": 8473,
+    "posted": "2026-09-15",
+    "sourceText": "Quitting sin is hard.\nHearing \"Depart from me\" will be harder.\nChoose your hard.",
+    "title": "Choose Your Hard",
+    "lines": [
+      "QUITTING SIN IS HARD.",
+      "HEARING 'DEPART FROM ME' WILL BE HARDER.",
+      "CHOOSE YOUR HARD."
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-4a3a8cd8-c713-46ae-af66-8309030adf7d.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-4f70a6b3-e940-4574-99a5-b3e54cc72114",
+    "sourceId": "4f70a6b3-e940-4574-99a5-b3e54cc72114",
+    "score": 8221,
+    "posted": "2026-08-18",
+    "sourceText": "Go to the gym.\n\nRead your Bible.\n\nBuild a body that can carry the weight and a spirit that refuses to break.",
+    "title": "Build Strength",
+    "lines": [
+      "Go to the gym.",
+      "",
+      "Read your Bible.",
+      "",
+      "Build a body that can carry the weight",
+      "and a spirit that refuses to break."
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-4f70a6b3-e940-4574-99a5-b3e54cc72114.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2c005e0c-cfb2-4504-904b-8ec492ed5a10",
+    "sourceId": "2c005e0c-cfb2-4504-904b-8ec492ed5a10",
+    "score": 4794,
+    "posted": "2026-08-21",
+    "sourceText": "It really hit when C.S. Lewis said:\n\n“The fact that our heart yearns for something earth can’t supply is proof that heaven must be our home.”\n\nMaybe the reason nothing in this world completely satisfies us is because we were created for something beyond it.",
+    "title": "Yearning For Home",
+    "lines": [
+      "It really hit when C.S. Lewis said:",
+      "“The fact that our heart yearns for something earth can’t supply",
+      "is proof that heaven must be our home.”",
+      "Maybe the reason nothing in this world completely satisfies us",
+      "is because we were created for something beyond it."
+    ],
+    "bg": "01.mp4",
+    "preview": "t-2c005e0c-cfb2-4504-904b-8ec492ed5a10.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-f436b013-c2cf-4746-a1c5-c0f8dd9669f2",
+    "sourceId": "f436b013-c2cf-4746-a1c5-c0f8dd9669f2",
+    "score": 3350,
+    "posted": "2026-08-24",
+    "sourceText": "Go to the gym.\n\nRead your Bible.\n\nBuild a body that can carry the weight and a spirit that refuses to break.",
+    "title": "Build Strength",
+    "lines": [
+      "Go to the gym.",
+      "",
+      "Read your Bible.",
+      "",
+      "Build a body that can carry the weight",
+      "and a spirit that refuses to break."
+    ],
+    "bg": "02.mp4",
+    "preview": "t-f436b013-c2cf-4746-a1c5-c0f8dd9669f2.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6ba03866-545c-42ec-9743-c65f76d86b65",
+    "sourceId": "6ba03866-545c-42ec-9743-c65f76d86b65",
+    "score": 3237,
+    "posted": "2026-09-21",
+    "sourceText": "Why are there so many Christian denominations? 🤔\n\nCatholic.\nBaptist.\nMethodist.\nPentecostal.\n\nIf they all believe in Jesus, why are there so many different types of Christians?",
+    "title": "Christian Denominations",
+    "lines": [
+      "Why are there so many Christian denominations?",
+      "Catholic.",
+      "Baptist.",
+      "Methodist.",
+      "Pentecostal.",
+      "If they all believe in Jesus, why are there so many different types of Christians?"
+    ],
+    "bg": "03.mp4",
+    "preview": "t-6ba03866-545c-42ec-9743-c65f76d86b65.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-c77a4740-32d9-4195-a775-2e90314af04b",
+    "sourceId": "c77a4740-32d9-4195-a775-2e90314af04b",
+    "score": 3130,
+    "posted": "2026-09-08",
+    "sourceText": "The more I read the Bible, the more I realize how many opinions about Christianity come from people who haven't read it.",
+    "title": "Understanding Christianity",
+    "lines": [
+      "The more I read the Bible,",
+      "the more I realize",
+      "how many opinions about Christianity",
+      "come from people who haven't read it."
+    ],
+    "bg": "04.mp4",
+    "preview": "t-c77a4740-32d9-4195-a775-2e90314af04b.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-5b173859-69c7-4266-a936-d91631a36abe",
+    "sourceId": "5b173859-69c7-4266-a936-d91631a36abe",
+    "score": 2237,
+    "posted": "2026-08-09",
+    "sourceText": "Question for y’all atheists.\n\nHow come y’all never blame Ra for anything?\n\nI never hear:\n\n“Ra, the sun god, how could you let so much tragedy happen in the world?”\n\nNobody asks Zeus why children suffer.\n\nNobody asks Odin why wars happen.\n\nBut when it comes to the God of the Bible:\n\n“If God is real, why did He let this happen?”\n\n“If God loves us, why is there so much suffering?”\n\n“How could God allow this?”\n\nAnd then somehow that becomes part of the reason for not believing in Him.",
+    "title": "Question for Atheists",
+    "lines": [
+      "Question for y’all atheists.",
+      "How come y’all never blame Ra for anything?",
+      "I never hear:",
+      "“Ra, the sun god, how could you let so much tragedy happen in the world?”",
+      "Nobody asks Zeus why children suffer.",
+      "Nobody asks Odin why wars happen.",
+      "But when it comes to the God of the Bible:",
+      "“If God is real, why did He let this happen?”",
+      "“If God loves us, why is there so much suffering?”",
+      "“How could God allow this?”",
+      "And then somehow that becomes part of the reason for not believing in Him."
+    ],
+    "bg": "05.mp4",
+    "preview": "t-5b173859-69c7-4266-a936-d91631a36abe.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-1434d447-d8dc-4566-a14f-52b55d885321",
+    "sourceId": "1434d447-d8dc-4566-a14f-52b55d885321",
+    "score": 2011,
+    "posted": "2026-09-23",
+    "sourceText": "Atheist love to comment on Christians posts… 😑",
+    "title": "Atheist Comments",
+    "lines": [
+      "ATHEISTS LOVE TO COMMENT",
+      "ON CHRISTIANS' POSTS..."
+    ],
+    "bg": "06.mp4",
+    "preview": "t-1434d447-d8dc-4566-a14f-52b55d885321.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-80ff0de8-d19a-43d7-803b-4be04bf00bb4",
+    "sourceId": "80ff0de8-d19a-43d7-803b-4be04bf00bb4",
+    "score": 1918,
+    "posted": "2026-09-20",
+    "sourceText": "4 Questions for y’all atheists.\n\nHow come y’all never blame Ra for anything?\n\nI never hear:\n\n“Ra, the sun god, how could you let so much tragedy happen in the world?”",
+    "title": "Questions for Atheists",
+    "lines": [
+      "4 QUESTIONS FOR Y’ALL ATHEISTS.",
+      "How come y’all never blame Ra for anything?",
+      "I never hear:",
+      "“Ra, the sun god, how could you let so much tragedy happen in the world?”"
+    ],
+    "bg": "07.mp4",
+    "preview": "t-80ff0de8-d19a-43d7-803b-4be04bf00bb4.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-d05c0f20-9dff-4e5f-a58c-8c7b491d862b",
+    "sourceId": "d05c0f20-9dff-4e5f-a58c-8c7b491d862b",
+    "score": 1751,
+    "posted": "2026-09-20",
+    "sourceText": "I'd rather be mocked for taking Jesus too seriously…\nthan discover I never took Him seriously enough.",
+    "title": "Taking Jesus Seriously",
+    "lines": [
+      "I'D RATHER BE MOCKED",
+      "FOR TAKING JESUS TOO SERIOUSLY…",
+      "THAN DISCOVER I NEVER",
+      "TOOK HIM SERIOUSLY ENOUGH."
+    ],
+    "bg": "08.mp4",
+    "preview": "t-d05c0f20-9dff-4e5f-a58c-8c7b491d862b.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-82106b4b-7b70-4cda-a0b9-302bf63c41ad",
+    "sourceId": "82106b4b-7b70-4cda-a0b9-302bf63c41ad",
+    "score": 1650,
+    "posted": "2026-09-13",
+    "sourceText": "They say Christians are brainwashed.\nWell if being brainwashed looks like being free from weed, alcohol, lying, stealing, the streets, depression, anger, poverty, grief, sexual immorality, loneliness etc then….\nCONSIDER ME BRAINWASHED 🌀🌀🌀",
+    "title": "Brainwashed Freedom",
+    "lines": [
+      "They say Christians are brainwashed.",
+      "Well if being brainwashed looks like being free from weed, alcohol, lying, stealing,",
+      "the streets, depression, anger, poverty, grief, sexual immorality, loneliness etc then….",
+      "CONSIDER ME BRAINWASHED"
+    ],
+    "bg": "09.mp4",
+    "preview": "t-82106b4b-7b70-4cda-a0b9-302bf63c41ad.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-b89b43b5-c286-420f-8a2b-5ae46357087b",
+    "sourceId": "b89b43b5-c286-420f-8a2b-5ae46357087b",
+    "score": 1592,
+    "posted": "2026-09-24",
+    "sourceText": "Christians ✝️\n\nDo you believe ALL sex before marriage is a sin?\n\nWhy?",
+    "title": "Sex Before Marriage",
+    "lines": [
+      "Do you believe ALL sex before marriage is a sin?",
+      "Why?"
+    ],
+    "bg": "10.mp4",
+    "preview": "t-b89b43b5-c286-420f-8a2b-5ae46357087b.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-b9349132-93cd-4fae-97bc-0fbf874fdaf7",
+    "sourceId": "b9349132-93cd-4fae-97bc-0fbf874fdaf7",
+    "score": 1548,
+    "posted": "2026-08-31",
+    "sourceText": "Who else declares with their whole heart that JESUS IS GOD!",
+    "title": "Whole Heart Declaration",
+    "lines": [
+      "WHO ELSE DECLARES",
+      "WITH THEIR WHOLE HEART",
+      "THAT JESUS IS GOD!"
+    ],
+    "bg": "11.mp4",
+    "preview": "t-b9349132-93cd-4fae-97bc-0fbf874fdaf7.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-631f3df1-1787-4c60-af0d-661f6a8990ac",
+    "sourceId": "631f3df1-1787-4c60-af0d-661f6a8990ac",
+    "score": 1422,
+    "posted": "2026-10-12",
+    "sourceText": "Question for the atheists:\n\nIf Christianity is just a fairy tale,\n\nwhy spend so much of your time arguing about it?\n\nMost people ignore things they don’t believe in.\n\nI’m not arguing about the Easter bunny on here…\n\nYou seem strangely invested.",
+    "title": "Question For Atheists",
+    "lines": [
+      "IF CHRISTIANITY IS JUST A FAIRY TALE,",
+      "why spend so much of your time arguing about it?",
+      "Most people ignore things they don’t believe in.",
+      "I’m not arguing about the Easter bunny on here…",
+      "You seem strangely invested."
+    ],
+    "bg": "12.mp4",
+    "preview": "t-631f3df1-1787-4c60-af0d-661f6a8990ac.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-952b5dee-531d-47bb-9c38-46a635e0f3c0",
+    "sourceId": "952b5dee-531d-47bb-9c38-46a635e0f3c0",
+    "score": 1398,
+    "posted": "2026-08-23",
+    "sourceText": "You will never regret reading the Bible and going to the gym✨",
+    "title": "Never Regret This",
+    "lines": [
+      "You will never regret",
+      "reading the Bible",
+      "and going to the gym"
+    ],
+    "bg": "13.mp4",
+    "preview": "t-952b5dee-531d-47bb-9c38-46a635e0f3c0.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2b3fd7bc-0f60-4f23-bf5f-158736b1dc07",
+    "sourceId": "2b3fd7bc-0f60-4f23-bf5f-158736b1dc07",
+    "score": 1391,
+    "posted": "2026-09-17",
+    "sourceText": "Christians, question:\n\n💍 Why does marriage change whether sex is right or wrong?",
+    "title": "Marriage and Morality",
+    "lines": [
+      "Why does marriage",
+      "change whether sex",
+      "is right or wrong?"
+    ],
+    "bg": "14.mp4",
+    "preview": "t-2b3fd7bc-0f60-4f23-bf5f-158736b1dc07.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-7679f790-c212-49af-9451-b1fe3f0c9691",
+    "sourceId": "7679f790-c212-49af-9451-b1fe3f0c9691",
+    "score": 1309,
+    "posted": "2026-09-17",
+    "sourceText": "So I’m back in Genesis.\n\nStudying Abraham for my next devotional.\n\nAnd I noticed something in the Tower of Babel story that I never caught before.",
+    "title": "Insights From Genesis",
+    "lines": [
+      "SO I’M BACK IN GENESIS.",
+      "Studying Abraham for my next devotional.",
+      "And I noticed something in the Tower of Babel story",
+      "that I never caught before."
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-7679f790-c212-49af-9451-b1fe3f0c9691.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-15cf9703-fbdb-4313-a9a0-e7c5fba8c253",
+    "sourceId": "15cf9703-fbdb-4313-a9a0-e7c5fba8c253",
+    "score": 1307,
+    "posted": "2026-09-21",
+    "sourceText": "As a Christian is there anything you don’t agree with in the Bible?",
+    "title": "Questions of Faith",
+    "lines": [
+      "As a Christian,",
+      "is there anything",
+      "you don’t agree with",
+      "in the Bible?"
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-15cf9703-fbdb-4313-a9a0-e7c5fba8c253.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-b8d09669-cc4a-4fdf-9893-da67c130569c",
+    "sourceId": "b8d09669-cc4a-4fdf-9893-da67c130569c",
+    "score": 1272,
+    "posted": "2026-09-09",
+    "sourceText": "Christians ✝️\n\nTwo people love each other, are committed to each other, and love God...\n\nbut aren’t married.\n\nIs sex still a sin?",
+    "title": "Love and Commitment",
+    "lines": [
+      "Two people love each other,",
+      "are committed to each other,",
+      "and love God...",
+      "but aren’t married.",
+      "Is sex still a sin?"
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-b8d09669-cc4a-4fdf-9893-da67c130569c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-367ff575-468f-4da8-9862-33e7f488549a",
+    "sourceId": "367ff575-468f-4da8-9862-33e7f488549a",
+    "score": 1266,
+    "posted": "2026-09-18",
+    "sourceText": "Who else declares with their whole heart that JESUS IS GOD!",
+    "title": "Heartfelt Declaration",
+    "lines": [
+      "WHO ELSE DECLARES",
+      "WITH THEIR WHOLE HEART",
+      "THAT JESUS IS GOD!"
+    ],
+    "bg": "s04.mp4",
+    "preview": "t-367ff575-468f-4da8-9862-33e7f488549a.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-78950589-debf-4d39-8348-b7404b060c51",
+    "sourceId": "78950589-debf-4d39-8348-b7404b060c51",
+    "score": 1264,
+    "posted": "2026-09-25",
+    "sourceText": "Christians, how do you feel about weed?\n\n🌿 Is using marijuana automatically a sin?",
+    "title": "Thoughts On Marijuana",
+    "lines": [
+      "CHRISTIANS, HOW DO YOU FEEL ABOUT WEED?",
+      "Is using marijuana automatically a sin?"
+    ],
+    "bg": "s06.mp4",
+    "preview": "t-78950589-debf-4d39-8348-b7404b060c51.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-373f9899-f1f6-4e99-871f-66b933461676",
+    "sourceId": "373f9899-f1f6-4e99-871f-66b933461676",
+    "score": 1262,
+    "posted": "2026-09-06",
+    "sourceText": "So I’m back in Genesis.\n\nStudying Abraham for my next devotional.\n\nAnd I noticed something in the Tower of Babel story that I never caught before.",
+    "title": "New Insights on Babel",
+    "lines": [
+      "SO I’M BACK IN GENESIS.",
+      "Studying Abraham for my next devotional.",
+      "And I noticed something in the Tower of Babel story",
+      "that I never caught before."
+    ],
+    "bg": "s07.mp4",
+    "preview": "t-373f9899-f1f6-4e99-871f-66b933461676.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-4e7fb534-ea2e-42ba-88ca-658f9b9651c1",
+    "sourceId": "4e7fb534-ea2e-42ba-88ca-658f9b9651c1",
+    "score": 1252,
+    "posted": "2026-09-06",
+    "sourceText": "Christians ✝️\n\nDo you believe EVERY Christian needs to read the Bible regularly?",
+    "title": "Bible Reading Importance",
+    "lines": [
+      "Do you believe",
+      "EVERY Christian needs",
+      "to read the Bible regularly?"
+    ],
+    "bg": "s08.mp4",
+    "preview": "t-4e7fb534-ea2e-42ba-88ca-658f9b9651c1.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-21e8827f-436d-400b-b94b-6d68eb994a2c",
+    "sourceId": "21e8827f-436d-400b-b94b-6d68eb994a2c",
+    "score": 1175,
+    "posted": "2026-09-17",
+    "sourceText": "Christianity requires you to believe in one miracle.\nScience requires billions.",
+    "title": "Miracles Compared",
+    "lines": [
+      "CHRISTIANITY REQUIRES YOU TO BELIEVE IN ONE MIRACLE.",
+      "SCIENCE REQUIRES BILLIONS."
+    ],
+    "bg": "s09.mp4",
+    "preview": "t-21e8827f-436d-400b-b94b-6d68eb994a2c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-e748f665-8ad0-418f-8bcd-088e7b5ba0bd",
+    "sourceId": "e748f665-8ad0-418f-8bcd-088e7b5ba0bd",
+    "score": 1129,
+    "posted": "2026-09-17",
+    "sourceText": "The more I actually study the Bible for myself…\nthe more I realize how much stuff people say about it that isn't actually in there.",
+    "title": "Studying The Bible",
+    "lines": [
+      "The more I actually study the Bible for myself…",
+      "the more I realize how much stuff",
+      "people say about it",
+      "that isn't actually in there."
+    ],
+    "bg": "s10.mp4",
+    "preview": "t-e748f665-8ad0-418f-8bcd-088e7b5ba0bd.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-458a9c67-3517-4f67-961c-08a9d9b16498",
+    "sourceId": "458a9c67-3517-4f67-961c-08a9d9b16498",
+    "score": 1096,
+    "posted": "2026-09-20",
+    "sourceText": "Christianity requires you to believe in one miracle.\nScience requires billions.",
+    "title": "Miracle Beliefs",
+    "lines": [
+      "CHRISTIANITY REQUIRES YOU TO BELIEVE IN ONE MIRACLE.",
+      "SCIENCE REQUIRES BILLIONS."
+    ],
+    "bg": "s11.mp4",
+    "preview": "t-458a9c67-3517-4f67-961c-08a9d9b16498.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-1661ac09-db86-46a2-99ba-1a0e09b7dede",
+    "sourceId": "1661ac09-db86-46a2-99ba-1a0e09b7dede",
+    "score": 1083,
+    "posted": "2026-09-11",
+    "sourceText": "Two investments I've never regretted:\nTime with God.\nTime in the gym.\nBoth make me stronger.",
+    "title": "Investments That Matter",
+    "lines": [
+      "Two investments I've never regretted:",
+      "Time with God.",
+      "Time in the gym.",
+      "Both make me stronger."
+    ],
+    "bg": "s12.mp4",
+    "preview": "t-1661ac09-db86-46a2-99ba-1a0e09b7dede.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2df843f9-96b1-4e53-bac5-f2ca0476dc63",
+    "sourceId": "2df843f9-96b1-4e53-bac5-f2ca0476dc63",
+    "score": 1039,
+    "posted": "2026-09-20",
+    "sourceText": "Did you know reading the Bible and going to the gym can transform your life?✨",
+    "title": "Transform Your Life",
+    "lines": [
+      "DID YOU KNOW",
+      "reading the Bible",
+      "and going to the gym",
+      "can transform your life?"
+    ],
+    "bg": "s13.mp4",
+    "preview": "t-2df843f9-96b1-4e53-bac5-f2ca0476dc63.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-07396607-3711-44df-b2fc-ad55a0b5848f",
+    "sourceId": "07396607-3711-44df-b2fc-ad55a0b5848f",
+    "score": 1039,
+    "posted": "2026-09-17",
+    "sourceText": "EVERYONE TALKS ABOUT RACHEL.\n\nBUT LEAH’S STORY\nMIGHT BE ONE OF THE MOST\nPOWERFUL STORIES\nIN THE ENTIRE BIBLE.\n\nMost people remember Leah\nas the woman Jacob didn’t want.\n\nBut there’s much more to her story. 🧵",
+    "title": "Leah's Powerful Story",
+    "lines": [
+      "EVERYONE TALKS ABOUT RACHEL.",
+      "",
+      "BUT LEAH’S STORY",
+      "MIGHT BE ONE OF THE MOST",
+      "POWERFUL STORIES",
+      "IN THE ENTIRE BIBLE.",
+      "",
+      "Most people remember Leah",
+      "as the woman Jacob didn’t want.",
+      "",
+      "But there’s much more to her story."
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-07396607-3711-44df-b2fc-ad55a0b5848f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-ece40314-5f32-499b-b2a6-59ab96b1c067",
+    "sourceId": "ece40314-5f32-499b-b2a6-59ab96b1c067",
+    "score": 891,
+    "posted": "2026-09-19",
+    "sourceText": "David wrote Psalms in caves.\n\nPaul wrote letters from prison.\n\nSome of the most powerful things God produces in us are formed in places we would never choose.\n\nDo not waste the hard season.",
+    "title": "Powerful Growth",
+    "lines": [
+      "David wrote Psalms in caves.",
+      "Paul wrote letters from prison.",
+      "Some of the most powerful things God produces in us",
+      "are formed in places we would never choose.",
+      "Do not waste the hard season."
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-ece40314-5f32-499b-b2a6-59ab96b1c067.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-4607b1d1-c7a8-4e9a-8d74-e004f2edf2a9",
+    "sourceId": "4607b1d1-c7a8-4e9a-8d74-e004f2edf2a9",
+    "score": 833,
+    "posted": "2026-09-21",
+    "sourceText": "You don’t believe God is real….\n\nWhy would I take your advice? 🤔",
+    "title": "Questioning Belief",
+    "lines": [
+      "YOU DON’T BELIEVE GOD IS REAL…",
+      "Why would I take your advice?"
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-4607b1d1-c7a8-4e9a-8d74-e004f2edf2a9.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-44b6fac0-9143-4996-ac76-6dc52a952a40",
+    "sourceId": "44b6fac0-9143-4996-ac76-6dc52a952a40",
+    "score": 779,
+    "posted": "2026-08-28",
+    "sourceText": "4 Questions for y’all atheists.\n\nHow come y’all never blame Ra for anything?\n\nI never hear:\n\n“Ra, the sun god, how could you let so much tragedy happen in the world?”",
+    "title": "Questions for Atheists",
+    "lines": [
+      "4 QUESTIONS FOR Y’ALL ATHEISTS.",
+      "How come y’all never blame Ra for anything?",
+      "I never hear:",
+      "“Ra, the sun god, how could you let so much tragedy happen in the world?”"
+    ],
+    "bg": "01.mp4",
+    "preview": "t-44b6fac0-9143-4996-ac76-6dc52a952a40.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6edf9133-69ba-4d93-82bd-c25aa6e3a5e1",
+    "sourceId": "6edf9133-69ba-4d93-82bd-c25aa6e3a5e1",
+    "score": 767,
+    "posted": "2026-09-21",
+    "sourceText": "🤔 One of the biggest complaints I hear from atheists about Christians is:\n\n“Christians won’t leave us alone.”\n\nThey’re always trying to convert us.\n\nThey’re always telling us about Jesus.\n\nThey won’t keep their religion to themselves.\n\nAnd I have a genuine question…\n\nHOW BAD IS IT? 😂\n\n🏠 Are Christians standing outside your house blocking your driveway until you accept Jesus?\n\n🛏️ Are Christians hiding underneath your bed waiting to ask if you’ve been saved?",
+    "title": "Christians and Atheists",
+    "lines": [
+      "One of the biggest complaints I hear from atheists about Christians is:",
+      "“Christians won’t leave us alone.”",
+      "They’re always trying to convert us.",
+      "They’re always telling us about Jesus.",
+      "They won’t keep their religion to themselves.",
+      "And I have a genuine question…",
+      "HOW BAD IS IT? 😂"
+    ],
+    "bg": "02.mp4",
+    "preview": "t-6edf9133-69ba-4d93-82bd-c25aa6e3a5e1.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6b0623d3-12cc-42da-92c5-170a5f2d86bc",
+    "sourceId": "6b0623d3-12cc-42da-92c5-170a5f2d86bc",
+    "score": 703,
+    "posted": "2026-09-21",
+    "sourceText": "Nobody has saved more lives than Jesus.\nAnd He's still saving them.",
+    "title": "Jesus Saves Lives",
+    "lines": [
+      "NOBODY HAS SAVED MORE LIVES THAN JESUS.",
+      "AND HE'S STILL SAVING THEM."
+    ],
+    "bg": "03.mp4",
+    "preview": "t-6b0623d3-12cc-42da-92c5-170a5f2d86bc.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-4f5bed08-5117-4224-8bb0-bd2267b8fbf6",
+    "sourceId": "4f5bed08-5117-4224-8bb0-bd2267b8fbf6",
+    "score": 690,
+    "posted": "2026-09-20",
+    "sourceText": "Christians ✝️\n\nBe honest:\n\nHow often do you actually read your Bible?",
+    "title": "Bible Reading Reflection",
+    "lines": [
+      "BE HONEST:",
+      "How often do you actually",
+      "read your Bible?"
+    ],
+    "bg": "04.mp4",
+    "preview": "t-4f5bed08-5117-4224-8bb0-bd2267b8fbf6.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-7e6bc812-2330-4fec-98cf-d132f64f67ea",
+    "sourceId": "7e6bc812-2330-4fec-98cf-d132f64f67ea",
+    "score": 673,
+    "posted": "2026-08-20",
+    "sourceText": "I’m a firm believer that Christians should work out.\n\nTraining your body teaches you discipline, consistency, and how to tell your flesh no.",
+    "title": "The Importance of Fitness",
+    "lines": [
+      "I’m a firm believer that Christians should work out.",
+      "",
+      "Training your body teaches you discipline,",
+      "consistency, and how to tell your flesh no."
+    ],
+    "bg": "05.mp4",
+    "preview": "t-7e6bc812-2330-4fec-98cf-d132f64f67ea.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-307cf824-6801-4d5c-9569-ef488b24c026",
+    "sourceId": "307cf824-6801-4d5c-9569-ef488b24c026",
+    "score": 669,
+    "posted": "2026-09-03",
+    "sourceText": "I'd rather be mocked for taking Jesus too seriously…\nthan discover I never took Him seriously enough.",
+    "title": "Taking Jesus Seriously",
+    "lines": [
+      "I'D RATHER BE MOCKED",
+      "FOR TAKING JESUS TOO SERIOUSLY…",
+      "THAN DISCOVER I NEVER",
+      "TOOK HIM SERIOUSLY ENOUGH."
+    ],
+    "bg": "06.mp4",
+    "preview": "t-307cf824-6801-4d5c-9569-ef488b24c026.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-8a4c3e64-e05e-4de2-9fff-2869d26d299d",
+    "sourceId": "8a4c3e64-e05e-4de2-9fff-2869d26d299d",
+    "score": 661,
+    "posted": "2026-10-19",
+    "sourceText": "I’ll probably get hate for this…\n\nBut I think many atheists aren’t rejecting God.\n\nThey’re rejecting bad theology, religious abuse, and hypocrisy.\n\nHonestly… \n\nI reject those too.",
+    "title": "Rejecting Bad Theology",
+    "lines": [
+      "I’ll probably get hate for this…",
+      "But I think many atheists aren’t rejecting God.",
+      "They’re rejecting bad theology,",
+      "religious abuse, and hypocrisy.",
+      "Honestly…",
+      "I reject those too."
+    ],
+    "bg": "07.mp4",
+    "preview": "t-8a4c3e64-e05e-4de2-9fff-2869d26d299d.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-a558bef9-07c6-4695-9f1a-abafaa699b66",
+    "sourceId": "a558bef9-07c6-4695-9f1a-abafaa699b66",
+    "score": 585,
+    "posted": "2026-09-19",
+    "sourceText": "The Bible doesn't contradict itself, it CONFIRMS itself…",
+    "title": "Bible Consistency",
+    "lines": [
+      "The Bible doesn't contradict itself,",
+      "it CONFIRMS itself…"
+    ],
+    "bg": "08.mp4",
+    "preview": "t-a558bef9-07c6-4695-9f1a-abafaa699b66.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-436f9606-b7c7-4f3d-b361-777584fc21d6",
+    "sourceId": "436f9606-b7c7-4f3d-b361-777584fc21d6",
+    "score": 563,
+    "posted": "2026-08-27",
+    "sourceText": "Ever wonder why Christians should prioritize fitness? \n\nTraining your body teaches you discipline, consistency, and how to tell your flesh no.",
+    "title": "Fitness and Faith",
+    "lines": [
+      "Ever wonder why Christians",
+      "should prioritize fitness?",
+      "Training your body teaches you",
+      "discipline, consistency,",
+      "and how to tell your flesh no."
+    ],
+    "bg": "09.mp4",
+    "preview": "t-436f9606-b7c7-4f3d-b361-777584fc21d6.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-f95902b3-7019-4578-9eda-d2464094fc5f",
+    "sourceId": "f95902b3-7019-4578-9eda-d2464094fc5f",
+    "score": 554,
+    "posted": "2026-09-08",
+    "sourceText": "Nobody has saved more lives than Jesus.\nAnd He's still saving them.",
+    "title": "Jesus Saves Lives",
+    "lines": [
+      "NOBODY HAS SAVED MORE LIVES THAN JESUS.",
+      "And He's still saving them."
+    ],
+    "bg": "10.mp4",
+    "preview": "t-f95902b3-7019-4578-9eda-d2464094fc5f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-507c5337-a87c-41d0-8c03-5f97dc957151",
+    "sourceId": "507c5337-a87c-41d0-8c03-5f97dc957151",
+    "score": 552,
+    "posted": "2026-09-20",
+    "sourceText": "I've read self-help books.\nBut nothing has exposed me, corrected me, encouraged me, and changed me like the Bible.",
+    "title": "Power Of The Bible",
+    "lines": [
+      "I've read self-help books.",
+      "But nothing has exposed me,",
+      "corrected me, encouraged me,",
+      "and changed me like the Bible."
+    ],
+    "bg": "11.mp4",
+    "preview": "t-507c5337-a87c-41d0-8c03-5f97dc957151.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-ccc19e18-69e2-4191-8ed3-a6e2b4fad743",
+    "sourceId": "ccc19e18-69e2-4191-8ed3-a6e2b4fad743",
+    "score": 501,
+    "posted": "2026-09-05",
+    "sourceText": "I've read self-help books.\nBut nothing has exposed me, corrected me, encouraged me, and changed me like the Bible.",
+    "title": "Power Of The Bible",
+    "lines": [
+      "I've read self-help books.",
+      "But nothing has exposed me,",
+      "corrected me,",
+      "encouraged me,",
+      "and changed me like the Bible."
+    ],
+    "bg": "12.mp4",
+    "preview": "t-ccc19e18-69e2-4191-8ed3-a6e2b4fad743.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-4920368c-3362-406e-bbbb-ecbf77e4834f",
+    "sourceId": "4920368c-3362-406e-bbbb-ecbf77e4834f",
+    "score": 481,
+    "posted": "2026-09-10",
+    "sourceText": "Christians ✝️\n\nJesus drank wine.\n\nSo why do some Christians believe drinking any alcohol is a sin?",
+    "title": "Alcohol And Christianity",
+    "lines": [
+      "JESUS DRANK WINE.",
+      "So why do some Christians believe drinking any alcohol is a sin?"
+    ],
+    "bg": "13.mp4",
+    "preview": "t-4920368c-3362-406e-bbbb-ecbf77e4834f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-5973c2b2-6589-4b32-9a2d-6bf57c90326c",
+    "sourceId": "5973c2b2-6589-4b32-9a2d-6bf57c90326c",
+    "score": 463,
+    "posted": "2026-10-11",
+    "sourceText": "One of the biggest complaints I hear from atheists is:\n\n“Christians won’t leave us alone. They’re always trying to convert us.”\n\nAnd I genuinely wonder… how bad is it? 😂\n\n🏠 Christians blocking your driveway?\n\n🛏️ Hiding under your bed with a Bible?\n\n💼 Showing up at work demanding you follow Jesus?\n\nBecause what I usually see online is different.\n\nA Christian posts about Jesus on THEIR page…\n\nand atheists come to the post to tell them Christianity is stupid.\n\nAt some point I have to ask:",
+    "title": "Atheist Complaints",
+    "lines": [
+      "ONE OF THE BIGGEST COMPLAINTS I HEAR FROM ATHEISTS IS:",
+      "\"Christians won’t leave us alone. They’re always trying to convert us.\"",
+      "And I genuinely wonder… how bad is it? 😂",
+      "Christians blocking your driveway?",
+      "Hiding under your bed with a Bible?",
+      "Showing up at work demanding you follow Jesus?",
+      "Because what I usually see online is different."
+    ],
+    "bg": "14.mp4",
+    "preview": "t-5973c2b2-6589-4b32-9a2d-6bf57c90326c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6fbd1cc3-c250-4cc9-9e48-b4bf6085146d",
+    "sourceId": "6fbd1cc3-c250-4cc9-9e48-b4bf6085146d",
+    "score": 459,
+    "posted": "2026-08-26",
+    "sourceText": "Something about Joseph being sent to prison never really made sense to me.\n\nPotiphar’s wife had just accused him of trying to sexually assault her.\n\nJoseph was a slave.\n\nPotiphar was an officer of Pharaoh and captain of the guard.\n\nAnd this supposedly happened inside Potiphar’s own house with Potiphar’s own wife.\n\nYet Joseph is still alive.\n\n🤔 That got me thinking.\n\nIf Potiphar completely believed his wife…\n\nwhy didn’t he unalive Joseph?\n\nInstead, Genesis 39:20 says:",
+    "title": "Questions About Joseph",
+    "lines": [
+      "Something about Joseph being sent to prison never really made sense to me.",
+      "",
+      "Potiphar’s wife had just accused him of trying to sexually assault her.",
+      "Joseph was a slave.",
+      "Potiphar was an officer of Pharaoh and captain of the guard.",
+      "And this supposedly happened inside Potiphar’s own house with Potiphar’s own wife.",
+      "Yet Joseph is still alive."
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-6fbd1cc3-c250-4cc9-9e48-b4bf6085146d.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-b5bc766c-f44b-4733-89fc-8a7389d85275",
+    "sourceId": "b5bc766c-f44b-4733-89fc-8a7389d85275",
+    "score": 455,
+    "posted": "2026-09-22",
+    "sourceText": "I’m a firm believer that Christians should work out.\n\nExercising teaches you discipline, consistency, and how to tell your flesh no.",
+    "title": "Faith and Fitness",
+    "lines": [
+      "I’m a firm believer that Christians should work out.",
+      "Exercising teaches you discipline,",
+      "consistency, and how to tell your flesh no."
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-b5bc766c-f44b-4733-89fc-8a7389d85275.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-00e2e615-5359-4337-8a45-f9d982c84857",
+    "sourceId": "00e2e615-5359-4337-8a45-f9d982c84857",
+    "score": 436,
+    "posted": "2026-09-22",
+    "sourceText": "Something about the way some atheists argue against God has always confused me.\n\nAnd before somebody says it:\n\nYes.\n\nI know what atheism means. 😂\n\nYou don’t believe any god exists.\n\nI understand that.\n\nBut here’s what I find interesting.\n\nA lot of the arguments I hear aren’t simply:\n\n“I haven’t seen enough evidence to believe God exists.”\n\nThey’re more like:\n\n💔 If God loved us, He wouldn’t allow this much suffering.\n\n👶 If God existed, innocent children wouldn’t suffer.",
+    "title": "Confusing Atheist Arguments",
+    "lines": [
+      "SOMETHING ABOUT THE WAY",
+      "some atheists argue against God",
+      "has always confused me.",
+      "",
+      "And before somebody says it:",
+      "Yes. I know what atheism means.",
+      "You don’t believe any god exists.",
+      "I understand that.",
+      "",
+      "But here’s what I find interesting.",
+      "A lot of the arguments I hear aren’t simply:",
+      "“I haven’t seen enough evidence to believe God exists.”",
+      "They’re more like:",
+      "“If God loved us, He wouldn’t allow this much suffering.”",
+      "“If God existed, innocent children wouldn’t suffer.”"
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-00e2e615-5359-4337-8a45-f9d982c84857.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-4d926170-5f4e-4bff-aa8c-381f6b4cbbee",
+    "sourceId": "4d926170-5f4e-4bff-aa8c-381f6b4cbbee",
+    "score": 422,
+    "posted": "2026-09-24",
+    "sourceText": "You don’t believe God is real….\n\nWhy would I take your advice? 🤔",
+    "title": "Questioning Belief",
+    "lines": [
+      "YOU DON’T BELIEVE GOD IS REAL…",
+      "Why would I take your advice?"
+    ],
+    "bg": "s04.mp4",
+    "preview": "t-4d926170-5f4e-4bff-aa8c-381f6b4cbbee.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-b2ac739a-80f2-46da-a25a-2bf0c4f7002e",
+    "sourceId": "b2ac739a-80f2-46da-a25a-2bf0c4f7002e",
+    "score": 408,
+    "posted": "2026-08-10",
+    "sourceText": "🤔 One of the biggest complaints I hear from atheists about Christians is:\n\n“Christians won’t leave us alone.”\n\nThey’re always trying to convert us.\n\nThey’re always telling us about Jesus.\n\nThey won’t keep their religion to themselves.\n\nAnd I have a genuine question…\n\nHOW BAD IS IT? 😂\n\n🏠 Are Christians standing outside your house blocking your driveway until you accept Jesus?\n\n🛏️ Are Christians hiding underneath your bed waiting to ask if you’ve been saved?",
+    "title": "Christians and Atheists",
+    "lines": [
+      "ONE OF THE BIGGEST COMPLAINTS I HEAR FROM ATHEISTS ABOUT CHRISTIANS IS:",
+      "“Christians won’t leave us alone.”",
+      "They’re always trying to convert us.",
+      "They’re always telling us about Jesus.",
+      "HOW BAD IS IT?",
+      "Are Christians standing outside your house blocking your driveway until you accept Jesus?",
+      "Are Christians hiding underneath your bed waiting to ask if you’ve been saved?"
+    ],
+    "bg": "s06.mp4",
+    "preview": "t-b2ac739a-80f2-46da-a25a-2bf0c4f7002e.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-d7a45880-a43a-425b-926d-30617b8dd237",
+    "sourceId": "d7a45880-a43a-425b-926d-30617b8dd237",
+    "score": 404,
+    "posted": "2026-08-13",
+    "sourceText": "I was reading Genesis 4 again this morning, and something stood out to me.\n\nAfter Cain kills Abel, God punishes him, and Cain says:\n\n“Every one that findeth me shall slay me.” Genesis 4:14\n\nAnd I thought...\n\n🤔 Who is “everyone”?\n\nBecause the picture that I had in my head was pretty simple.\n\nGod created Adam.\n\nThen Eve.\n\nThen they had Cain and Abel.\n\nCain killed Abel.\n\nSo now there are only three people left:\n\n👤 Adam\n👤 Eve\n👤 Cain\n\nWho exactly would Cain be afraid of?",
+    "title": "Cain's Fear",
+    "lines": [
+      "I was reading Genesis 4 again this morning,",
+      "and something stood out to me.",
+      "After Cain kills Abel, God punishes him,",
+      "and Cain says:",
+      "“Every one that findeth me shall slay me.”",
+      "And I thought...",
+      "Who is 'everyone'?",
+      "Because the picture that I had in my head was pretty simple."
+    ],
+    "bg": "s07.mp4",
+    "preview": "t-d7a45880-a43a-425b-926d-30617b8dd237.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-f0af0724-1447-42a3-9be7-ce3c0bd756b1",
+    "sourceId": "f0af0724-1447-42a3-9be7-ce3c0bd756b1",
+    "score": 389,
+    "posted": "2026-09-02",
+    "sourceText": "I used to think I'd never be one of those people always talking about the Bible.\nAnyway…\nhave you read your Bible today? 😂",
+    "title": "Bible Reflections",
+    "lines": [
+      "I USED TO THINK I'D NEVER BE ONE OF THOSE PEOPLE",
+      "ALWAYS TALKING ABOUT THE BIBLE.",
+      "",
+      "ANYWAY…",
+      "HAVE YOU READ YOUR BIBLE TODAY? 😂"
+    ],
+    "bg": "s08.mp4",
+    "preview": "t-f0af0724-1447-42a3-9be7-ce3c0bd756b1.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-a628b106-aea8-44b3-8cf6-23f3ec68d663",
+    "sourceId": "a628b106-aea8-44b3-8cf6-23f3ec68d663",
+    "score": 384,
+    "posted": "2026-09-25",
+    "sourceText": "Everybody is looking for the cheat code to life.\nMeanwhile, the Bible has been sitting there the whole time.",
+    "title": "Cheat Code To Life",
+    "lines": [
+      "EVERYBODY IS LOOKING FOR THE CHEAT CODE TO LIFE.",
+      "MEANWHILE, THE BIBLE HAS BEEN SITTING THERE THE WHOLE TIME."
+    ],
+    "bg": "s09.mp4",
+    "preview": "t-a628b106-aea8-44b3-8cf6-23f3ec68d663.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-d4c59ee1-2c45-4f33-a38a-3b09f07be5ac",
+    "sourceId": "d4c59ee1-2c45-4f33-a38a-3b09f07be5ac",
+    "score": 384,
+    "posted": "2026-10-11",
+    "sourceText": "I was called a bible thumper today. Never been so proud in my life lol",
+    "title": "Bible Thumper Pride",
+    "lines": [
+      "I was called a bible thumper today.",
+      "Never been so proud in my life lol"
+    ],
+    "bg": "s10.mp4",
+    "preview": "t-d4c59ee1-2c45-4f33-a38a-3b09f07be5ac.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2518b1be-7717-400f-a91f-5f8bfc4e14c4",
+    "sourceId": "2518b1be-7717-400f-a91f-5f8bfc4e14c4",
+    "score": 379,
+    "posted": "2026-08-23",
+    "sourceText": "Anybody wanna try the Bible app I built?",
+    "title": "Bible App Invitation",
+    "lines": [
+      "ANYBODY WANNA TRY",
+      "THE BIBLE APP I BUILT?"
+    ],
+    "bg": "s11.mp4",
+    "preview": "t-2518b1be-7717-400f-a91f-5f8bfc4e14c4.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-16eec9d6-4617-45e6-bc95-fc3bfcea57ff",
+    "sourceId": "16eec9d6-4617-45e6-bc95-fc3bfcea57ff",
+    "score": 373,
+    "posted": "2026-09-20",
+    "sourceText": "Anybody else actually get excited when it's time to study their Bible? 😂",
+    "title": "Excitement for Study",
+    "lines": [
+      "ANYBODY ELSE ACTUALLY GET EXCITED",
+      "WHEN IT'S TIME TO STUDY THEIR BIBLE?",
+      "😂"
+    ],
+    "bg": "s12.mp4",
+    "preview": "t-16eec9d6-4617-45e6-bc95-fc3bfcea57ff.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-d6fa57fc-c2c8-4911-8cc0-a59032ccdb6b",
+    "sourceId": "d6fa57fc-c2c8-4911-8cc0-a59032ccdb6b",
+    "score": 362,
+    "posted": "2026-09-15",
+    "sourceText": "I'm a firm believer that Christians should take physical discipline seriously.\nTraining your body teaches you how to tell your flesh \"no.\"",
+    "title": "Physical Discipline",
+    "lines": [
+      "I'm a firm believer",
+      "that Christians should take physical discipline seriously.",
+      "Training your body",
+      "teaches you how to tell your flesh \"no.\""
+    ],
+    "bg": "s13.mp4",
+    "preview": "t-d6fa57fc-c2c8-4911-8cc0-a59032ccdb6b.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-fae8988f-52a9-4896-96cd-580cbceabe0c",
+    "sourceId": "fae8988f-52a9-4896-96cd-580cbceabe0c",
+    "score": 357,
+    "posted": "2026-08-28",
+    "sourceText": "Go to the gym.\n\nStudy your Bible.\n\nBuild a body that can carry the weight and a spirit that refuses to break.",
+    "title": "Build Strength",
+    "lines": [
+      "Go to the gym.",
+      "",
+      "Study your Bible.",
+      "",
+      "Build a body that can carry the weight",
+      "and a spirit that refuses to break."
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-fae8988f-52a9-4896-96cd-580cbceabe0c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-ddc36ab4-1e4c-4c57-ac1e-30780a008d37",
+    "sourceId": "ddc36ab4-1e4c-4c57-ac1e-30780a008d37",
+    "score": 349,
+    "posted": "2026-09-02",
+    "sourceText": "Anybody else actually get excited when it's time to study their Bible? 😂",
+    "title": "Excited To Study",
+    "lines": [
+      "ANYBODY ELSE ACTUALLY GET EXCITED",
+      "WHEN IT'S TIME TO STUDY THEIR BIBLE?",
+      "😂"
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-ddc36ab4-1e4c-4c57-ac1e-30780a008d37.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-cb232182-c5d6-4347-ae84-fbe4577d8254",
+    "sourceId": "cb232182-c5d6-4347-ae84-fbe4577d8254",
+    "score": 346,
+    "posted": "2026-10-19",
+    "sourceText": "I can’t scientifically prove this.\n\nI just know what I’ve lived.\n\nThe more consistently I read the Bible…\n\n🤍 I have more peace.\n🤍 More patience.\n🤍 More hope.\n🤍 Less anxiety.\n🤍 Less emptiness.\n\nMaybe that’s exactly what God meant His Word to do.",
+    "title": "The Power of Scripture",
+    "lines": [
+      "I can’t scientifically prove this.",
+      "I just know what I’ve lived.",
+      "The more consistently I read the Bible…",
+      "I have more peace.",
+      "More patience.",
+      "More hope.",
+      "Less anxiety.",
+      "Less emptiness."
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-cb232182-c5d6-4347-ae84-fbe4577d8254.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-902dacce-dc19-46ab-9246-7c667c031b17",
+    "sourceId": "902dacce-dc19-46ab-9246-7c667c031b17",
+    "score": 339,
+    "posted": "2026-09-08",
+    "sourceText": "Christians ✝️\n\nIf someone uses weed but doesn’t believe it interferes with their relationship with God...\n\ndo you see a problem?",
+    "title": "Weed And Faith",
+    "lines": [
+      "If someone uses weed",
+      "but doesn’t believe",
+      "it interferes with their relationship with God...",
+      "do you see a problem?"
+    ],
+    "bg": "01.mp4",
+    "preview": "t-902dacce-dc19-46ab-9246-7c667c031b17.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-d7c322a2-927a-4c27-a14d-bb9cec7506a9",
+    "sourceId": "d7c322a2-927a-4c27-a14d-bb9cec7506a9",
+    "score": 339,
+    "posted": "2026-09-22",
+    "sourceText": "Damn, People will do anything but find God 😩",
+    "title": "Finding God",
+    "lines": [
+      "DAMN,",
+      "People will do anything",
+      "but find God"
+    ],
+    "bg": "02.mp4",
+    "preview": "t-d7c322a2-927a-4c27-a14d-bb9cec7506a9.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-7e66418e-6192-419a-9426-7ce788be0e57",
+    "sourceId": "7e66418e-6192-419a-9426-7ce788be0e57",
+    "score": 332,
+    "posted": "2026-09-26",
+    "sourceText": "Nobody tells you this: skip your Bible for a few days and everything starts to feel slightly off.",
+    "title": "The Importance Of Scripture",
+    "lines": [
+      "NOBODY TELLS YOU THIS:",
+      "skip your Bible for a few days",
+      "and everything starts to feel",
+      "slightly off."
+    ],
+    "bg": "03.mp4",
+    "preview": "t-7e66418e-6192-419a-9426-7ce788be0e57.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-1c52365a-c32e-445b-a331-7d129eae4012",
+    "sourceId": "1c52365a-c32e-445b-a331-7d129eae4012",
+    "score": 331,
+    "posted": "2026-09-22",
+    "sourceText": "You’ve heard the word “Jezebel.”\n\nMost people use it for a promiscuous woman.\n\nBut in the Bible…\n\nit meant something deeper.",
+    "title": "Understanding Jezebel",
+    "lines": [
+      "YOU’VE HEARD THE WORD 'JEZEBEL.'",
+      "Most people use it for a promiscuous woman.",
+      "But in the Bible…",
+      "it meant something deeper."
+    ],
+    "bg": "04.mp4",
+    "preview": "t-1c52365a-c32e-445b-a331-7d129eae4012.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6166d4e7-5ff9-4728-9633-348471336c74",
+    "sourceId": "6166d4e7-5ff9-4728-9633-348471336c74",
+    "score": 321,
+    "posted": "2026-09-13",
+    "sourceText": "I'm reading through the entire Bible.\nNo deadline.\nNo race.\nI want to actually understand who God is, not just say I finished it.",
+    "title": "Understanding God",
+    "lines": [
+      "I'M READING THROUGH THE ENTIRE BIBLE.",
+      "No deadline.",
+      "No race.",
+      "I want to actually understand who God is,",
+      "not just say I finished it."
+    ],
+    "bg": "05.mp4",
+    "preview": "t-6166d4e7-5ff9-4728-9633-348471336c74.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-90ddb874-722a-42c8-820a-95d12363ab58",
+    "sourceId": "90ddb874-722a-42c8-820a-95d12363ab58",
+    "score": 318,
+    "posted": "2026-09-27",
+    "sourceText": "Genesis 1:1 and 2 are only two verses...\n\nBut they answer some of the biggest questions in the entire Bible. 👀\n\nLet's break them down phrase by phrase. 🧵",
+    "title": "Breaking Down Genesis",
+    "lines": [
+      "GENESIS 1:1 AND 2 ARE ONLY TWO VERSES...",
+      "BUT THEY ANSWER SOME OF THE BIGGEST QUESTIONS IN THE ENTIRE BIBLE.",
+      "LET'S BREAK THEM DOWN PHRASE BY PHRASE."
+    ],
+    "bg": "06.mp4",
+    "preview": "t-90ddb874-722a-42c8-820a-95d12363ab58.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-1d6eb3c7-6ed2-4a51-92c0-a340cbb6fc00",
+    "sourceId": "1d6eb3c7-6ed2-4a51-92c0-a340cbb6fc00",
+    "score": 315,
+    "posted": "2026-10-14",
+    "sourceText": "Reading the Bible will humble you QUICK 😭\nSome people disobeyed God and judgment came immediately.\nThe grace we live under should never be taken lightly.",
+    "title": "The Power Of Grace",
+    "lines": [
+      "READING THE BIBLE WILL HUMBLE YOU QUICK",
+      "Some people disobeyed God and judgment came immediately.",
+      "The grace we live under should never be taken lightly."
+    ],
+    "bg": "07.mp4",
+    "preview": "t-1d6eb3c7-6ed2-4a51-92c0-a340cbb6fc00.jpg",
+    "status": "pending"
   }
 ]

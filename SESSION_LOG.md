@@ -8354,3 +8354,25 @@ Next up: none, Revelation 22 is the final chapter of the Bible
 ## 2026-10-19T22:12:35Z (blog writer run)
 Article: Why Doesn't God Answer Some Prayers? | Words: ~3050 | Category: Christian Foundations | Status: pass
 Queue remaining: 16
+
+## 2026-10-23 (blog analysis + account_type fix)
+Reframed the blog analysis around acquisition only (visitors -> Join clicks ->
+registrations), per Louis. Investigated the existing promo system rather than
+rebuilding it: PromoSlot inline banners plus the BlogAuthorBox end card,
+already tracked end to end in blog_promo_events and stamped into
+signup_source_detail as blog:<post>:<promo>.
+Findings: traffic ~2,900 monthly visitors at four months, doubling monthly;
+search is the fastest-growing channel (+141%/day Sep->Oct); the end card
+converts at 4.89% against 0.74-1.98% for inline banners; felt-need posts
+out-convert reference posts about 10x; 128 posts sit at "Discovered -
+currently not indexed" in Search Console.
+Found and fixed a real bug: account_type was never stamped on the signup
+paths, so since guests were turned off on 2026-10-06 every real signup lands
+NULL and every conversion report reads zero. Fixed in app/signup/page.tsx and
+components/AppShell.tsx (OAuth/native path).
+Not live yet: 6 commits on main including this fix; next deploy Sat 10:05
+Berlin.
+Still open: BACKFILL_ACCOUNT_TYPE_REGISTERED.sql is written but NOT run -
+Louis runs it to make October measurable retroactively. The end-cta promo
+still records clicks with no impressions.
+Next: the four non-bug priorities in docs/blog-acquisition-report-2026-10.md.
