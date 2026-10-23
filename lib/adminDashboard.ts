@@ -611,10 +611,46 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     .sort((a, b) => b.value - a.value);
 
   // ----- email -----
+  //
+  // "Last email" used to be max(email_campaign_stats.sent_at), and the sync
+  // writes sent_at = campaign.started_at. That is the date a campaign was
+  // ARMED, not the date anything was last sent, and for a rolling
+  // transactional campaign it never moves: welcome was started on 10 October
+  // and has been sending every day since, so the card sat on the newest
+  // *marketing* start date (18 October) while mail went out daily.
+  //
+  // Both facts are now carried separately, and neither is guessed: the last
+  // actual send comes from email_campaign_sends, and stats freshness from the
+  // sync's own checked_at so a stalled sync is visible instead of silent.
+  const [lastSendRes, freshnessRes] = await Promise.all([
+    admin
+      .from("email_campaign_sends")
+      .select("sent_at, campaign_id")
+      .eq("status", "sent")
+      .not("sent_at", "is", null)
+      .order("sent_at", { ascending: false })
+      .limit(1),
+    admin.from("email_campaign_stats").select("checked_at").order("checked_at", { ascending: false }).limit(1),
+  ]);
+  const lastSend = (lastSendRes.data || [])[0] as { sent_at: string; campaign_id: string } | undefined;
+  const statsCheckedAt = ((freshnessRes.data || [])[0] as { checked_at: string | null } | undefined)?.checked_at ?? null;
+
   const lastEmail = (emailRowsAll.data || [])[0] as
     | { name: string; sent_at: string; recipients: number | null; opens: number | null; clicks: number | null }
     | undefined;
-  let email: null | { subject: string; sentAt: string; sent: number; opens: number; clicks: number; newUsers: number } = null;
+  let email: null | {
+    subject: string;
+    sentAt: string;
+    sent: number;
+    opens: number;
+    clicks: number;
+    newUsers: number;
+    /** When mail was genuinely last sent, from email_campaign_sends. */
+    lastSendAt: string | null;
+    lastSendCampaign: string | null;
+    /** When the stats sync last ran, so a stalled sync is visible. */
+    statsCheckedAt: string | null;
+  } = null;
   if (lastEmail) {
     const sentAt = new Date(lastEmail.sent_at);
     const until = new Date(sentAt.getTime() + 7 * DAY_MS);
@@ -625,6 +661,9 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       .lt("created_at", until.toISOString())
       .limit(5000);
     email = {
+      lastSendAt: lastSend?.sent_at ?? null,
+      lastSendCampaign: lastSend?.campaign_id ?? null,
+      statsCheckedAt,
       subject: lastEmail.name,
       sentAt: lastEmail.sent_at,
       sent: lastEmail.recipients || 0,

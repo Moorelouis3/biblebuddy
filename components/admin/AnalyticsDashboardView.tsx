@@ -649,8 +649,18 @@ export default function AnalyticsDashboardView({
                   </div>
                   {d.email ? (
                     <>
-                      <p className="text-xs font-bold text-[#64748b]">Last email · {new Date(d.email.sentAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</p>
-                      <p className="font-black">&ldquo;{d.email.subject}&rdquo;</p>
+                      <p className="text-xs font-bold text-[#64748b]">
+                        Last send ·{" "}
+                        {d.email.lastSendAt
+                          ? new Date(d.email.lastSendAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })
+                          : "N/A"}
+                      </p>
+                      <p className="mt-0.5 text-[11px] font-semibold text-[#94a3b8]">
+                        Newest campaign started{" "}
+                        {new Date(d.email.sentAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })} ·
+                        stats refreshed {d.email.statsCheckedAt ? ago(d.email.statsCheckedAt) : "never"}
+                      </p>
+                      <p className="mt-1 font-black">&ldquo;{d.email.subject}&rdquo;</p>
                       <div className="mt-3 grid grid-cols-4 gap-2 text-center">
                         {[
                           ["Sent", d.email.sent],
@@ -664,6 +674,10 @@ export default function AnalyticsDashboardView({
                           </div>
                         ))}
                       </div>
+                      <p className="mt-2 text-[11px] font-semibold text-[#94a3b8]">
+                        Opens are unreliable: every open on record has been a proxy or scanner fetching the pixel, and
+                        Apple Mail pre-fetches it too. Clicks are the number to trust.
+                      </p>
                     </>
                   ) : (
                     <p className="text-sm text-[#64748b]">No email recorded yet.</p>
