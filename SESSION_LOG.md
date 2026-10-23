@@ -8376,3 +8376,7 @@ Still open: BACKFILL_ACCOUNT_TYPE_REGISTERED.sql is written but NOT run -
 Louis runs it to make October measurable retroactively. The end-cta promo
 still records clicks with no impressions.
 Next: the four non-bug priorities in docs/blog-acquisition-report-2026-10.md.
+
+## 2026-10-23T22:14:04Z (blog writer run)
+Article: How to Pray When You Don't Know What to Say | Words: ~3085 | Category: Bible Study Tips | Status: pass
+Queue remaining: 15

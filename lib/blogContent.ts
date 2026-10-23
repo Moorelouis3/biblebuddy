@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "how-to-pray-when-you-dont-know-what-to-say",
+    title: "How to Pray When You Don't Know What to Say",
+    description:
+      "How to pray when you don't know what to say: what Jesus taught, what the Psalms allow, and a simple pattern you can use tonight.",
+    category: "Bible Study Tips",
+    categorySlug: "bible-study-tips",
+    canonicalPath: "/blog/how-to-pray-when-you-dont-know-what-to-say",
+    publishedAt: "2026-10-24",
+    readTime: "15 min read",
+    image: "/how-to-pray-when-you-dont-know-what-to-say-banner.png",
+    groupPost: {
+      title: "How to Pray When You Don't Know What to Say 📖",
+      content:
+        "You kneel down to pray and nothing comes out.\nJust silence, and a tired mind.\n\n📌 God already knows what you need before you ask.\n\n📖 David prayed in tears all night.\n📖 Hannah poured out her soul with no words left.\n📖 Paul admitted he didn't know what to pray.\n\nNew article on:\n🟢 why the **Lord's Prayer** is a frame, not a script\n🟢 what the **Psalms** give you permission to say\n🟢 a simple pattern you can pray **tonight**\n\nWhat do you do when the words won't come? 🙏",
+    },
+  },
+  {
     slug: "leviticus-19-explained",
     title: "Leviticus 19 Explained: Love Your Neighbor as Yourself",
     description:
