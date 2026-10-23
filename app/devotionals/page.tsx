@@ -7,6 +7,7 @@ import { ACTION_TYPE } from "../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "../../lib/bibleInOneYearPlan";
 import { BLOG_ARTICLES, BLOG_CATEGORIES } from "../../lib/blogContent";
+import { FEATURED_STUDY_ORDER, AVAILABLE_STUDY_TITLES, UPCOMING_STUDIES } from "@/lib/studyLibrary";
 
 interface Devotional {
   id: string;
@@ -53,58 +54,8 @@ function isNewTestamentDay(day: (typeof GENESIS_BIBLE_IN_ONE_YEAR_SERIES)[number
   return firstBook ? NEW_TESTAMENT_BOOKS.has(firstBook) : false;
 }
 
-/**
- * What the Plans page lists (Louis, 2026-10-02): the study running now and the
- * one that starts next, nothing else. A grid of greyed-out studies with no
- * dates read as a catalogue of things that do not work, so a study appears
- * here when it is live or when it has a start date people can plan around.
- */
-const FEATURED_STUDY_ORDER = [
-  "The Wisdom of Proverbs",
-  "The Tempting of Jesus",
-  "21 Women of the Bible",
-  "Higher Hope",
-];
-
-/**
- * The study that starts next. Its card is grey until the cursor is on it.
- *
- * Louis, 2026-10-16: Abraham comes off the shelf and The Tempting of Jesus
- * takes the 1 November slot, the day its 21 days were rebased on the second
- * edition of the book. It has no community event, so "Sign up" goes to its own
- * public page rather than /events/<slug>; that page carries the same pitch and
- * sends people into the study through signup.
- */
-/**
- * Studies that are announced but not open yet. Was a single title until
- * Higher Hope was added (2026-10-23) and there were two at once: Higher Hope
- * on the 25th and The Tempting of Jesus on 1 November.
- *
- * A study belongs here rather than in AVAILABLE_STUDY_TITLES until its days
- * are actually written - Higher Hope is 60 days long and had 0 of them in the
- * database when it was listed, so opening it would have shown an empty study.
- * Move a title to AVAILABLE_STUDY_TITLES once its days exist.
- *
- * Higher Hope has no slug landing page of its own, so it opens on its id.
- */
-const UPCOMING_STUDIES = new Map<string, { startLabel: string; path: string }>([
-  ["The Tempting of Jesus", { startLabel: "Starts 1 November", path: "/devotionals/tempting-of-jesus" }],
-  [
-    "Higher Hope",
-    { startLabel: "Starts 25 October", path: "/devotionals/170cb29a-39fc-47b7-9083-db1664df04f6" },
-  ],
-]);
 
 const KEEP_DEVOTIONAL_TITLES = new Set(FEATURED_STUDY_ORDER);
-/**
- * The studies a reader can open today. Anything else on the shelf is a grey
- * "Coming Soon" card. This was the single title "The Wisdom of Proverbs" until
- * 21 Women of the Bible went live (2026-10-18) and came up greyed out.
- */
-const AVAILABLE_STUDY_TITLES = new Set([
-  "The Wisdom of Proverbs",
-  "21 Women of the Bible",
-]);
 const FEATURED_STUDY_ORDER_INDEX = new Map(
   FEATURED_STUDY_ORDER.map((title, index) => [title, index]),
 );

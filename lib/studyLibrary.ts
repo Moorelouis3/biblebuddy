@@ -13,13 +13,19 @@
  * studies that were retired from the shelf long ago.
  */
 
-/** Every study on the shelf, in the order the Plans page shows them. */
-export const FEATURED_STUDY_ORDER = [
+/**
+ * Every study on the shelf, in the order the Plans page shows them.
+ *
+ * Typed readonly string[] rather than `as const`: callers pass a title that
+ * came out of the database, which is a plain string, and a literal union would
+ * reject it.
+ */
+export const FEATURED_STUDY_ORDER: readonly string[] = [
   "The Wisdom of Proverbs",
   "The Tempting of Jesus",
   "21 Women of the Bible",
   "Higher Hope",
-] as const;
+];
 
 /**
  * The studies a reader can open today. Anything else on the shelf is a grey
@@ -49,4 +55,4 @@ export const UPCOMING_STUDIES: ReadonlyMap<string, { startLabel: string; path: s
 ]);
 
 export const isInLibrary = (title: string | null | undefined): boolean =>
-  !!title && (FEATURED_STUDY_ORDER as readonly string[]).includes(title);
+  !!title && FEATURED_STUDY_ORDER.includes(title);

@@ -612,7 +612,9 @@ export default function AnalyticsDashboardView({
             ) : null}
 
             {tab === "blog" ? (
-              <div className="grid gap-5 lg:grid-cols-[1.35fr_1fr]">
+              // Stacked rather than two columns: the article table is wide and
+              // was unreadable squeezed into a third of the row.
+              <div className="space-y-5">
               <Section summary={<SectionSummary icon="📝" title="Blog performance" line={`${fmt(d.blog.views)} views (${d.blog.change >= 0 ? "+" : "−"}${pct(Math.abs(d.blog.change))})`} />}>
                 <div className="hidden lg:block">
                   <CardTitle icon="📝">Blog performance</CardTitle>
@@ -687,6 +689,59 @@ export default function AnalyticsDashboardView({
                   <span className="font-black">{pct(d.blog.promo.ctr)} click rate</span>
                 </div>
               </Section>
+                <Card>
+                  <CardTitle icon="🔎">Article detail</CardTitle>
+                  <p className="text-[11px] font-semibold text-[#94a3b8]">
+                    Views are page loads. &quot;Readers&quot; counts distinct browser sessions, not people: blog views
+                    carry no user id, so one person on a phone and a laptop is two readers, and a signup cannot be
+                    traced back to the article that produced it.
+                  </p>
+                  {([
+                    ["Most read", d.blog.topPosts],
+                    ["Least read", d.blog.bottomPosts],
+                  ] as const).map(([heading, posts]) => (
+                    <div key={heading} className="mt-4">
+                      <p className="mb-2 text-sm font-black">{heading}</p>
+                      <div className="overflow-x-auto">
+                        <table className="w-full min-w-[460px] text-left text-xs">
+                          <thead>
+                            <tr className="text-[11px] font-bold uppercase tracking-wide text-[#64748b]">
+                              <th className="py-1.5 pr-2 font-bold">Article</th>
+                              <th className="py-1.5 pr-2 font-bold">Category</th>
+                              <th className="py-1.5 pr-2 font-bold">Published</th>
+                              <th className="py-1.5 pr-2 text-right font-bold">Views</th>
+                              <th className="py-1.5 text-right font-bold">Readers</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {posts.length ? (
+                              posts.map((p) => (
+                                <tr key={p.slug} className="border-t border-[#eef2f8]">
+                                  <td className="max-w-[220px] truncate py-1.5 pr-2">
+                                    <Link href={p.path} className="font-semibold text-[#334155] hover:text-[#2563eb]">
+                                      {p.title}
+                                    </Link>
+                                  </td>
+                                  <td className="py-1.5 pr-2 text-[#64748b]">{p.category || "—"}</td>
+                                  <td className="py-1.5 pr-2 text-[#64748b]">{p.publishedAt || "—"}</td>
+                                  <td className="py-1.5 pr-2 text-right font-bold">{fmt(p.views)}</td>
+                                  <td className="py-1.5 text-right font-bold">{fmt(p.readers)}</td>
+                                </tr>
+                              ))
+                            ) : (
+                              <tr>
+                                <td colSpan={5} className="py-3 text-center text-[#94a3b8]">
+                                  No articles in this period.
+                                </td>
+                              </tr>
+                            )}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  ))}
+                </Card>
+
                 <Section summary={<SectionSummary icon="📚" title="Content progress" line={`${fmt(d.content.published)} / ${fmt(d.content.total)} chapter articles`} />}>
                   <div className="hidden lg:block">
                     <CardTitle icon="📚">Content progress</CardTitle>
@@ -802,7 +857,85 @@ export default function AnalyticsDashboardView({
             ) : null}
 
             {tab === "guides" ? (
-              <div className="grid gap-5 lg:grid-cols-2">
+              <div className="space-y-5">
+                <Card>
+                  <CardTitle icon="📖">Every study on the shelf</CardTitle>
+                  <p className="text-[11px] font-semibold text-[#94a3b8]">
+                    The {d.studyGuides.length} studies the Plans page lists, read from the same list it renders from.
+                    Retired studies are not shown: none has had any activity in 30 days.
+                  </p>
+                  <div className="mt-4 space-y-4">
+                    {d.studyGuides.map((g) => {
+                      const writtenPct = g.totalDays ? Math.round((g.daysWritten / g.totalDays) * 100) : 0;
+                      const peak = Math.max(1, ...g.dayReach.map((p) => p.users));
+                      return (
+                        <div key={g.id} className="rounded-xl border border-[#e8eef7] p-3 sm:p-4">
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                            <p className="text-sm font-black sm:text-base">{g.title}</p>
+                            <span
+                              className={`rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-wide ${
+                                g.isOpen ? "bg-[#dcfce7] text-[#166534]" : "bg-[#fef3c7] text-[#92400e]"
+                              }`}
+                            >
+                              {g.isOpen ? "Open" : g.startLabel || "Not open"}
+                            </span>
+                          </div>
+
+                          <div className="mt-3 grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
+                            {[
+                              ["Started", fmt(g.started)],
+                              ["Finished a day", fmt(g.participants)],
+                              ["Active this period", fmt(g.activeInWindow)],
+                              ["Completed it", g.completionRate === null ? "N/A" : `${fmt(g.completed)} · ${pct(g.completionRate)}`],
+                            ].map(([label, value]) => (
+                              <div key={label}>
+                                <p className="text-[10px] font-bold text-[#64748b]">{label}</p>
+                                <p className="text-base font-black sm:text-lg">{value}</p>
+                              </div>
+                            ))}
+                          </div>
+
+                          <p className="mt-3 text-[11px] font-bold text-[#64748b]">
+                            Written: {fmt(g.daysWritten)} of {fmt(g.totalDays)} days ({writtenPct}%)
+                            {g.daysWritten < g.totalDays ? " — finish rate is N/A until it is fully written" : ""}
+                          </p>
+                          <div className="mt-1 h-2 overflow-hidden rounded-full bg-[#eef2f8]">
+                            <div className="h-full rounded-full bg-[#2563eb]" style={{ width: `${writtenPct}%` }} />
+                          </div>
+
+                          {g.dayReach.some((p) => p.users > 0) ? (
+                            <>
+                              <p className="mt-3 text-[11px] font-bold text-[#64748b]">How far people get</p>
+                              <div className="mt-1 flex items-end gap-[2px]" style={{ height: 44 }}>
+                                {g.dayReach.map((p) => (
+                                  <div
+                                    key={p.day}
+                                    title={`Day ${p.day}: ${p.users}`}
+                                    className="flex-1 rounded-t-sm bg-[#93c5fd]"
+                                    style={{ height: `${Math.max(2, (p.users / peak) * 100)}%` }}
+                                  />
+                                ))}
+                              </div>
+                              <p className="mt-1 text-[10px] font-semibold text-[#94a3b8]">
+                                Day 1 to {g.dayReach.length} · peak {fmt(peak)} on a single day
+                              </p>
+                            </>
+                          ) : (
+                            <p className="mt-3 text-[11px] font-semibold text-[#94a3b8]">
+                              No completed days recorded yet.
+                            </p>
+                          )}
+
+                          <p className="mt-2 text-[10px] font-semibold text-[#94a3b8]">
+                            Last activity: {g.lastActivityAt ? ago(g.lastActivityAt) : "none recorded"}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </Card>
+
+                <div className="grid gap-5 lg:grid-cols-2">
               <Section summary={<SectionSummary icon="⚡" title="Popular activities" line={d.popularActivities[0] ? `${d.popularActivities[0].label}: ${fmt(d.popularActivities[0].value)}` : "Nothing yet"} />}>
                 <div className="hidden lg:block">
                   <CardTitle icon="⚡">Popular activities</CardTitle>
@@ -836,6 +969,7 @@ export default function AnalyticsDashboardView({
                     ))}
                   </div>
                 </Section>
+              </div>
               </div>
             ) : null}
 

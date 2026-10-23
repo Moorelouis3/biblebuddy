@@ -2,7 +2,9 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { readAnalyticsSnapshot, writeAnalyticsSnapshot } from "@/lib/adminAnalyticsSnapshots";
 import { BLOG_ARTICLES } from "@/lib/blogContent";
 import { isQualifyingAction, isMeaningfulAction } from "@/lib/activityDefinitions";
+import { TOTAL_BIBLE_CHAPTERS } from "@/lib/bibleBookChapters";
 import chapterProgress from "@/data/chapter-blog/progress.json";
+import { FEATURED_STUDY_ORDER, AVAILABLE_STUDY_TITLES, UPCOMING_STUDIES } from "@/lib/studyLibrary";
 
 /**
  * The owner analytics dashboard (2026-09-21), built from Louis's mockup.
@@ -559,10 +561,43 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   const slugOf = (raw: string) => raw.split("?")[0].replace(/\/$/, "").split("/").pop() || raw;
   const postCounts: Record<string, number> = {};
   for (const v of blogCur) postCounts[slugOf(v.article_slug)] = (postCounts[slugOf(v.article_slug)] || 0) + 1;
+  // Readers per post, counted as distinct sessions. blog_page_views.user_id is
+  // null on every row we have (checked 2026-10-23, 1000/1000 sampled), so a
+  // "unique reader" here is a browser session and cannot be a person - two
+  // visits from one person on two devices are two readers. Labelled as such in
+  // the UI rather than quietly called people.
+  const postSessions = new Map<string, Set<string>>();
+  for (const v of blogCur) {
+    const slug = slugOf(v.article_slug);
+    const set = postSessions.get(slug) || new Set<string>();
+    set.add(v.session_id || v.created_at);
+    postSessions.set(slug, set);
+  }
+  const articleBySlug = new Map(BLOG_ARTICLES.map((a) => [a.slug, a]));
+  const describePost = (slug: string, views: number) => {
+    const article = articleBySlug.get(slug);
+    return {
+      slug,
+      title: titleBySlug.get(slug) || slug.replace(/-/g, " "),
+      views,
+      readers: postSessions.get(slug)?.size ?? 0,
+      category: article?.category ?? null,
+      publishedAt: article?.publishedAt ?? null,
+      path: article?.canonicalPath ?? `/blog/${slug}`,
+    };
+  };
+
   const topPosts = Object.entries(postCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 10)
-    .map(([slug, views]) => ({ slug, title: titleBySlug.get(slug) || slug.replace(/-/g, " "), views }));
+    .map(([slug, views]) => describePost(slug, views));
+
+  // The other end of the same list. Articles with NO views in the window are
+  // included - they are the ones worth knowing about - so this is built from
+  // BLOG_ARTICLES rather than from the rows that happen to exist.
+  const bottomPosts = BLOG_ARTICLES.map((a) => describePost(a.slug, postCounts[a.slug] || 0))
+    .sort((a, b) => a.views - b.views || (a.publishedAt || "").localeCompare(b.publishedAt || ""))
+    .slice(0, 10);
   const blogSourceCounts: Record<string, number> = {};
   for (const v of blogCur) {
     const s = sourceFromText(v.referrer || "");
@@ -724,6 +759,105 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     groupPosts: groupPosts.filter((g) => inCur(g.created_at)).length,
   };
 
+  // ----- study guides -----
+  //
+  // Every study on the shelf, not just Proverbs, and read from the same list
+  // the Plans page renders from (lib/studyLibrary) so the two cannot disagree.
+  // The devotionals table holds 25 rows; 4 are in the library and the rest were
+  // retired, so a query by is_published would report on studies nobody can see.
+  //
+  // Two different completions are kept apart on purpose:
+  //   daysWritten  how much of the study EXISTS (content progress)
+  //   completed    how many PEOPLE finished it (user progress)
+  // Higher Hope is the case that makes this matter: 60 days promised, 0
+  // written, 0 participants. One number alone would read as a healthy study
+  // nobody has started, or an empty one.
+  const guideRows = await fetchAll<{ id: string; title: string; total_days: number | null; cover_image: string | null }>(
+    admin,
+    "devotionals",
+    "id, title, total_days, cover_image",
+    (q) => q.in("title", FEATURED_STUDY_ORDER as string[]),
+  );
+  const guideIds = guideRows.map((g) => g.id);
+  // Not filtered to is_completed: starting a day and finishing it are
+  // different things and the tab reports both. Proverbs has 170 people with a
+  // row and 133 who have finished at least one day; calling either of those
+  // "participants" without saying which would be a quiet lie.
+  const guideProgress = guideIds.length
+    ? await fetchAll<{ devotional_id: string; user_id: string; day_number: number; is_completed: boolean | null; completed_at: string | null }>(
+        admin,
+        "devotional_progress",
+        "devotional_id, user_id, day_number, is_completed, completed_at",
+        (q) => q.in("devotional_id", guideIds),
+      )
+    : [];
+  const guideDays = guideIds.length
+    ? await fetchAll<{ devotional_id: string; day_number: number }>(admin, "devotional_days", "devotional_id, day_number", (q) =>
+        q.in("devotional_id", guideIds),
+      )
+    : [];
+
+  const studyGuides = guideRows
+    .map((guide) => {
+      const rows = guideProgress.filter((r) => r.devotional_id === guide.id);
+      const totalDays = Number(guide.total_days) || 0;
+      const daysWritten = new Set(guideDays.filter((d) => d.devotional_id === guide.id).map((d) => d.day_number)).size;
+
+      // started: has a row at all. daysByUser: days actually finished.
+      const started = new Set<string>();
+      const daysByUser = new Map<string, Set<number>>();
+      let lastActivityAt: string | null = null;
+      const activeInWindow = new Set<string>();
+      for (const row of rows) {
+        started.add(row.user_id);
+        if (row.is_completed) {
+          const set = daysByUser.get(row.user_id) || new Set<number>();
+          set.add(row.day_number);
+          daysByUser.set(row.user_id, set);
+        }
+        if (row.completed_at) {
+          if (!lastActivityAt || row.completed_at > lastActivityAt) lastActivityAt = row.completed_at;
+          if (inCur(row.completed_at)) activeInWindow.add(row.user_id);
+        }
+      }
+
+      // How far people got. Day N counts everyone who finished day N, so the
+      // curve only falls, which is what makes a drop-off visible.
+      const dayReach = Array.from({ length: Math.min(totalDays || daysWritten, 60) }, (_, i) => {
+        const day = i + 1;
+        return { day, users: [...daysByUser.values()].filter((days) => days.has(day)).length };
+      });
+
+      // Finished = did every day that EXISTS, and the study is fully written.
+      const finishedTarget = daysWritten > 0 && daysWritten >= totalDays ? totalDays : 0;
+      const completed = finishedTarget
+        ? [...daysByUser.values()].filter((days) => days.size >= finishedTarget).length
+        : 0;
+
+      return {
+        id: guide.id,
+        title: guide.title,
+        coverImage: guide.cover_image,
+        totalDays,
+        daysWritten,
+        isOpen: AVAILABLE_STUDY_TITLES.has(guide.title),
+        startLabel: UPCOMING_STUDIES.get(guide.title)?.startLabel ?? null,
+        /** Opened at least one day. */
+        started: started.size,
+        /** Finished at least one day. Always <= started. */
+        participants: daysByUser.size,
+        activeInWindow: activeInWindow.size,
+        completed,
+        // null rather than 0 when the study has no finishable content yet:
+        // Higher Hope has 60 days promised and 0 written, and "0% finish rate"
+        // would read as a study people abandon rather than one not written.
+        completionRate: finishedTarget && started.size ? rate(completed, started.size) : null,
+        lastActivityAt,
+        dayReach,
+      };
+    })
+    .sort((a, b) => FEATURED_STUDY_ORDER.indexOf(a.title) - FEATURED_STUDY_ORDER.indexOf(b.title));
+
   // ----- printed books (Wisdom of Proverbs) -----
   // From the landing-analytics events the books page, the event-page banner
   // and the book popup send (lib/wisdomOfProverbsProducts.ts). "People" =
@@ -780,7 +914,11 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   const chapters =(chapterProgress as { chapters: Record<string, { status: string }>; nextChapter?: string; paused?: boolean }).chapters;
   const content = {
     published: Object.values(chapters).filter((c) => c.status === "published" || c.status === "committed").length,
-    total: 1189,
+    // Was the literal 1189. Same number, now summed from the per-book chapter
+    // counts, so a corrected book count moves the total instead of leaving it
+    // quietly disagreeing. progress.json cannot supply it: it only lists the
+    // 140 chapters worked on so far, not all 1,189.
+    total: TOTAL_BIBLE_CHAPTERS,
     next: (chapterProgress as { nextChapter?: string }).nextChapter || null,
   };
 
@@ -834,6 +972,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       change: change(blogCur.length, blogPrevCount),
       newUsers: newUsersFromBlog,
       topPosts,
+      bottomPosts,
       sources: blogSources,
       promo: { impressions: promoImpressions, clicks: promoClicks, ctr: rate(promoClicks, promoImpressions) },
       readers: blogReaders,
@@ -848,6 +987,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     email,
     emails,
     community,
+    studyGuides,
     books,
     content,
   };
