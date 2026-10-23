@@ -188,17 +188,40 @@ export async function processComment(
 // Sends are queued one at a time with a small gap rather than fired in
 // parallel. Meta documents roughly 2 messaging calls per second per account,
 // and a burst from one popular post is exactly how an app gets throttled.
+/**
+ * Bible Buddy does not answer comments. Content Buddy does.
+ *
+ * Louis, 2026-10-23: "contentbuddy answers, i dont want bible buddy has a
+ * closer." Content Buddy has replied to every trigger comment for months -
+ * 5,963 links sent, 8,755 clicks - and this closer has never sent a single
+ * message in 9,686 events, because the config row happens to carry
+ * dry_run = true.
+ *
+ * That was one database edit away from disaster: flip that row and both
+ * systems answer the same comment, so everyone who asks for the app gets two
+ * replies and two different links. The intent belongs in code where it can be
+ * read, not in a row somebody can toggle.
+ *
+ * The webhook still receives and records comments; only the replying stops.
+ * BIBLE_BUDDY_CLOSER_ENABLED=1 is the deliberate override, and turning it on
+ * means deciding which of the two systems answers first.
+ */
+const CLOSER_HANDED_TO_CONTENT_BUDDY = process.env.BIBLE_BUDDY_CLOSER_ENABLED !== '1';
+
 export async function processCommentsSequentially(
   supabase: SupabaseClient,
   comments: CloserComment[],
   senders: CloserSenders = REAL_SENDERS,
 ): Promise<ProcessOutcome[]> {
   const config = await loadCloserConfig(supabase);
+  // Forced on regardless of the stored config, so a dry_run flipped to false
+  // cannot start a second system replying to the same people.
+  const effective = CLOSER_HANDED_TO_CONTENT_BUDDY ? { ...config, dryRun: true } : config;
   const outcomes: ProcessOutcome[] = [];
 
   for (const comment of comments) {
-    outcomes.push(await processComment(supabase, comment, config, senders));
-    if (!config.dryRun) await sleep(600);
+    outcomes.push(await processComment(supabase, comment, effective, senders));
+    if (!effective.dryRun) await sleep(600);
   }
 
   return outcomes;
