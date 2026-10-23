@@ -107,16 +107,31 @@ Louis's own channels, October's are cold search and Pinterest visitors.
 
 ### Where the clicks actually come from
 
+Measured from 17 September, which is the date the current end card replaced
+the old one. The retired `end-cta` component only ever recorded clicks, never
+impressions, so including it inflates the end card's rate against impressions
+that were never counted. (An earlier draft of this report made exactly that
+mistake and reported 4.89%.)
+
 | Placement | Impressions | Clicks | CTR |
 |---|---|---|---|
-| **End card (slot 99)** | 1,003 | 49 | **4.89%** |
-| Inline slot 0 | 1,021 | 20 | 1.96% |
-| Inline slot 2 | 202 | 4 | 1.98% |
-| Inline slot 1 | 675 | 5 | 0.74% |
+| **End card (slot 99)** | 1,005 | 22 | **2.19%** |
+| Inline slot 0 (first in body) | 823 | 17 | 2.07% |
+| Inline slot 2 | 203 | 4 | 1.97% |
+| **Inline slot 1** | 533 | 2 | **0.38%** |
 
-**The end card does roughly two thirds of the work at a quarter of the
-placements.** Every one of the three confirmed real signups since 6 October
-came from the end card.
+Overall promo CTR is 1.75%.
+
+**The end card is the best placement, but only just** — 2.19% against 2.07%
+for the first inline banner. It takes 49% of the clicks from 39% of the
+impressions. A real edge, not a transformational one.
+
+**The actual outlier is inline slot 1, at 0.38%** — roughly five times worse
+than the slots either side of it, on a healthy 533 impressions. Whatever
+position that slot lands in mid-article, readers are not acting on it.
+
+Separately, all three confirmed real signups since 6 October came from the end
+card. With n=3 that is suggestive, not conclusive.
 
 ### Registrations: the number is small but it is finally real
 
@@ -154,10 +169,14 @@ for October, which is exactly why this channel has looked dead. One field, one
 line. This is the single highest-value fix in this document, because without
 it nothing else here can be tracked next month.
 
-**b) The `end-cta` promo records clicks but no impressions.** 27 clicks, 0
-impressions, so its CTR is unmeasurable and the end card's real performance is
-understated. A naming gap between the click handler and the impression
-handler, not a design problem.
+**b) `end-cta` has 27 clicks and 0 impressions — but this is not a live bug.**
+Checked on 23 October: `end-cta` ran from 9 August to 17 September, and the
+current `end-card` component took over on that same day with both impressions
+and clicks tracked. Nothing in the codebase emits `end-cta` any more. It is
+dead data from a retired component, not a gap in the current tracking, and
+there is nothing to fix. It matters only because mixing those click-only rows
+into the current numbers overstates the end card, which is what the corrected
+table above avoids.
 
 Working correctly, for the record: first-touch attribution is populated on
 153 of 185 named signups since the cutover.
@@ -270,13 +289,19 @@ Five actions, ordered. All serve visitors-in and signups-out.
 this report reads zero next month and the channel looks dead when it is not.
 This is the only item here that is strictly a bug fix.
 
-**2. Put the end card's offer on the high-traffic reference posts.** The end
-card converts at 4.89% against 0.74-1.98% for the inline banners, and it
-produced all three real signups. `names-of-god-meanings`,
+**2. Change what is offered on the high-traffic reference posts.** Not where
+it is offered. Placement is close to a solved problem: end card 2.19%, first
+inline banner 2.07%, and the whole system averages 1.75%. The gap that is
+worth 10x is not placement, it is the post —
+`names-of-god-meanings` converts at 1.4% and `when-you-dont-feel-god-anymore`
+at 19%, with the same banners. `names-of-god-meanings`,
 `garden-of-eden-four-rivers`, `who-was-adam` and `moses` are where the
-visitors already are and where conversion is worst. Strengthening what is
-offered on those specific posts, rather than adding more placements, is the
-highest-leverage change available.
+visitors already are and where conversion is worst, so the offer on those
+specific posts is where the leverage is.
+
+The one placement change worth making: **inline slot 1 converts at 0.38%
+against ~2% for the slots either side.** Worth looking at where it actually
+lands in a long post before deciding whether to move it or drop it.
 
 **3. Shift some publishing weight toward felt-need titles.** The 19% and 8%
 converters all leave the reader with an unresolved problem. The chapter
@@ -288,9 +313,11 @@ mix materially.
 position 9-15 posts.** Search is already the fastest-growing channel at +141%
 a month; this is how it keeps compounding.
 
-**5. Fix the `end-cta` impression tracking.** Small, but it is currently
-hiding the true performance of the best-converting placement, and that is the
-placement every decision above depends on.
+**5. Nothing to fix in the promo tracking.** This slot was going to be the
+`end-cta` impression gap; on inspection it is a retired component, not a bug
+(see section 3b). The promo system is sound and correctly instrumented. The
+only change it needs is the inline slot 1 question in item 2, and that is a
+placement decision rather than a repair.
 
 ---
 
