@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { selectWeeklyArticles, renderWeeklyNewsletter, pruneUnpublished } from "@/lib/email/weeklyNewsletter";
+import { fetchFeaturedDevotional } from "@/lib/email/featuredDevotional";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -69,17 +70,28 @@ export async function GET(request: NextRequest) {
   // exists, not what has been deployed. See pruneUnpublished.
   const { selection, dropped } = await pruneUnpublished(raw);
 
-  // Nothing published this week. Say so and stop - an empty newsletter is
-  // worse than no newsletter.
-  if (!selection.features.length && !selection.chapterRun) {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!supabaseUrl || !serviceKey) {
+    return NextResponse.json({ error: "Server not configured" }, { status: 500 });
+  }
+  const db = createClient(supabaseUrl, serviceKey, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+
+  // The devotional we are pushing. It leads the email.
+  const devotional = await fetchFeaturedDevotional(db, now);
+
+  // Nothing to say at all. An empty newsletter is worse than no newsletter.
+  if (!selection.features.length && !devotional) {
     return NextResponse.json({
       ok: true,
       skipped: true,
-      reason: `nothing published between ${selection.since} and ${selection.weekOf}`,
+      reason: `no devotional available and nothing written between ${selection.since} and ${selection.weekOf}`,
     });
   }
 
-  const rendered = renderWeeklyNewsletter(selection);
+  const rendered = renderWeeklyNewsletter(selection, devotional);
   const campaignId = `newsletter-${selection.weekOf}`;
 
   if (dryRun) {
@@ -95,27 +107,12 @@ export async function GET(request: NextRequest) {
         weekOf: selection.weekOf,
         totalInWindow: selection.totalInWindow,
         features: selection.features.map((a) => ({ title: a.title, category: a.category, path: a.canonicalPath })),
-        chapterRun: selection.chapterRun
-          ? {
-              book: selection.chapterRun.book,
-              range: `${selection.chapterRun.from}-${selection.chapterRun.to}`,
-              count: selection.chapterRun.count,
-            }
-          : null,
+        devotional: devotional ? { title: devotional.title, days: devotional.totalDays, id: devotional.id } : null,
       },
       html: rendered.html,
       text: rendered.text,
     });
   }
-
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!supabaseUrl || !serviceKey) {
-    return NextResponse.json({ error: "Server not configured" }, { status: 500 });
-  }
-  const db = createClient(supabaseUrl, serviceKey, {
-    auth: { autoRefreshToken: false, persistSession: false },
-  });
 
   // Already built this week. Not an error - this is what makes a retry safe.
   const { data: existing, error: existingError } = await db
@@ -161,7 +158,7 @@ export async function GET(request: NextRequest) {
     subject: rendered.subject,
     features: selection.features.length,
     droppedBecauseNotLiveYet: dropped,
-    chapterRun: selection.chapterRun ? `${selection.chapterRun.book} ${selection.chapterRun.from}-${selection.chapterRun.to}` : null,
+    devotional: devotional?.title ?? null,
     note: "Armed. /api/cron/email-campaign-send posts it in batches from here.",
   });
 }
