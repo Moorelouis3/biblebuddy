@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { readAnalyticsSnapshot, writeAnalyticsSnapshot } from "@/lib/adminAnalyticsSnapshots";
 import { BLOG_ARTICLES } from "@/lib/blogContent";
+import { isQualifyingAction, isMeaningfulAction } from "@/lib/activityDefinitions";
 import chapterProgress from "@/data/chapter-blog/progress.json";
 
 /**
@@ -371,6 +372,18 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   const blogPrevCount = blogViews.filter((v) => inPrev(v.created_at)).length;
   const rate = (a: number, b: number) => (b ? Math.round((a / b) * 1000) / 10 : 0);
 
+  /**
+   * A rate that refuses to invent a zero.
+   *
+   * rate() returns 0 when the denominator is 0, which is right for "0% of
+   * visitors signed up" and badly wrong for retention: on the Today window
+   * NOBODY is eligible for next-day return yet - their next day has not
+   * happened - so the card read "0% Next-day return" as though everyone had
+   * churned, when the honest answer is "ask again tomorrow". Returns null so
+   * the UI can say so.
+   */
+  const rateOrNull = (a: number, b: number) => (b > 0 ? Math.round((a / b) * 1000) / 10 : null);
+
   // Sparkline points: hourly for single days, daily otherwise.
   const bucketsFor = () => {
     if (window === "today" || window === "yesterday") {
@@ -500,23 +513,46 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     .map((k) => ({ page: k, newUsers: landingCounts[k], percent: rate(landingCounts[k], landingKnown) }));
 
   // ----- returning people -----
+  // "Active today" used to be any master_actions row at all, so opening the
+  // dashboard counted exactly as much as finishing a chapter. It now uses the
+  // same rule the email sender uses to decide who is active - see
+  // lib/activityDefinitions - and reports a stricter "finished something"
+  // number beside it, because the two answer different questions.
   const activeToday = new Set<string>();
+  const studiedToday = new Set<string>();
   const todayStart = berlinMidnight(today);
-  const todayActions = await fetchAll<{ user_id: string | null; created_at: string }>(admin, "master_actions", "user_id, created_at", (q) =>
-    q.gte("created_at", todayStart.toISOString()).not("user_id", "is", null),
+  const todayActions = await fetchAll<{ user_id: string | null; action_type: string | null; created_at: string }>(
+    admin,
+    "master_actions",
+    "user_id, action_type, created_at",
+    (q) => q.gte("created_at", todayStart.toISOString()).not("user_id", "is", null),
   );
-  todayActions.forEach((a) => a.user_id && a.user_id !== OWNER_USER_ID && activeToday.add(a.user_id));
+  todayActions.forEach((a) => {
+    if (!a.user_id || a.user_id === OWNER_USER_ID) return;
+    if (isQualifyingAction(a.action_type)) activeToday.add(a.user_id);
+    if (isMeaningfulAction(a.action_type)) studiedToday.add(a.user_id);
+  });
   events.forEach((e) => e.user_id && e.user_id !== OWNER_USER_ID && new Date(e.created_at) >= todayStart && activeToday.add(e.user_id));
+  // NOTE: blog_page_views.user_id is null on every row we have (checked
+  // 2026-10-23, 1000/1000 sampled), so blog reading cannot contribute to
+  // activity today. Kept so it starts working if that column is ever filled.
   blogViews.forEach((v) => v.user_id && v.user_id !== OWNER_USER_ID && new Date(v.created_at) >= todayStart && activeToday.add(v.user_id));
 
+  // Exact-day retention: active ON day N, not "by" day N. The curve is what
+  // the chart draws.
   const retention = Array.from({ length: 8 }, (_, day) => {
     const active = cohort.filter((p) => activeDays.get(p.user_id)?.has(addDays(berlinDay(p.created_at), day))).length;
     return { day, percent: rate(active, cohort.length) };
   });
-  const activeAfter7 = cohort.filter((p) => {
+
+  // Two different day-7 numbers were being shown as one. Both are kept and
+  // both are now named: "still here" is anyone active on or after day 7,
+  // "exactly day 7" is the point on the curve above.
+  const stillHereAfter7 = cohort.filter((p) => {
     const start = addDays(berlinDay(p.created_at), 7);
     return Array.from(activeDays.get(p.user_id) || []).some((d) => d >= start);
   }).length;
+  const onDay7 = cohort.filter((p) => activeDays.get(p.user_id)?.has(addDays(berlinDay(p.created_at), 7))).length;
 
   // ----- blog -----
   const titleBySlug = new Map(BLOG_ARTICLES.map((a) => [a.slug, a.title]));
@@ -744,8 +780,13 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     firstLandingPages,
     returning: {
       activeToday: activeToday.size,
-      nextDayReturn: rate(returnedNextDay, eligibleNextDay.length),
-      activeAfter7: rate(activeAfter7, cohort.length),
+      studiedToday: studiedToday.size,
+      // null, not 0, when nobody is eligible yet. See rateOrNull.
+      nextDayReturn: rateOrNull(returnedNextDay, eligibleNextDay.length),
+      nextDayEligible: eligibleNextDay.length,
+      nextDayReturned: returnedNextDay,
+      activeAfter7: rateOrNull(stillHereAfter7, cohort.length),
+      onDay7: rateOrNull(onDay7, cohort.length),
       retention,
       cohortSize: cohort.length,
     },

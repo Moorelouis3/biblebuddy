@@ -19,6 +19,12 @@ export const WINDOWS: Array<{ key: DashboardWindow; label: string; short: string
 
 const fmt = (n: number) => new Intl.NumberFormat("en-US").format(Math.round(n));
 const pct = (n: number) => `${Math.round(n * 10) / 10}%`;
+/**
+ * For rates that can legitimately have nobody to measure yet. A retention
+ * number with an empty cohort is not 0% - it is "not yet known", and printing
+ * 0% reads as "everybody churned".
+ */
+const pctOrNA = (n: number | null | undefined) => (n === null || n === undefined ? "N/A" : pct(n));
 
 function ago(iso?: string) {
   if (!iso) return "";
@@ -511,19 +517,32 @@ export default function AnalyticsDashboardView({
                   <div className="px-2">
                     <p className="text-xs font-bold text-[#64748b]">Active today</p>
                     <p className="mt-1 text-2xl font-black sm:text-3xl">{fmt(d.returning.activeToday)}</p>
+                    <p className="mt-1 text-[10px] font-semibold text-[#94a3b8]">
+                      {fmt(d.returning.studiedToday)} finished something
+                    </p>
                   </div>
                   <div className="px-2">
                     <p className="text-xs font-bold text-[#64748b]">Next-day return</p>
-                    <p className="mt-1 text-2xl font-black sm:text-3xl">{pct(d.returning.nextDayReturn)}</p>
+                    <p className="mt-1 text-2xl font-black sm:text-3xl">{pctOrNA(d.returning.nextDayReturn)}</p>
+                    <p className="mt-1 text-[10px] font-semibold text-[#94a3b8]">
+                      {d.returning.nextDayEligible > 0
+                        ? `${fmt(d.returning.nextDayReturned)} of ${fmt(d.returning.nextDayEligible)} came back`
+                        : "nobody's next day has passed yet"}
+                    </p>
                   </div>
                   <div className="px-2">
-                    <p className="text-xs font-bold text-[#64748b]">Active after 7 days</p>
-                    <p className="mt-1 text-2xl font-black sm:text-3xl">{pct(d.returning.activeAfter7)}</p>
+                    <p className="text-xs font-bold text-[#64748b]">Still here after 7 days</p>
+                    <p className="mt-1 text-2xl font-black sm:text-3xl">{pctOrNA(d.returning.activeAfter7)}</p>
+                    <p className="mt-1 text-[10px] font-semibold text-[#94a3b8]">
+                      {pctOrNA(d.returning.onDay7)} on day 7 exactly
+                    </p>
                   </div>
                 </div>
                 <p className="mt-5 text-sm font-black">User retention</p>
                 <p className="text-[11px] font-semibold text-[#94a3b8]">
-                  Share of people who signed up 7 to 37 days ago ({fmt(d.returning.cohortSize)}) who were active each day after signing up.
+                  Of the {fmt(d.returning.cohortSize)} people who signed up 7 to 37 days ago, the share active on each
+                  exact day after signing up. &quot;Still here after 7 days&quot; above counts anyone active on day 7 or
+                  later, so it is always the higher number.
                 </p>
                 <RetentionChart points={d.returning.retention} />
               </Card>
