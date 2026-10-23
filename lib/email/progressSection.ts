@@ -22,17 +22,19 @@ import { continueHref, type RecipientProgress } from "./newsletterProgress";
  */
 
 /**
- * Palette sampled from the newsletter banner rather than picked by eye:
- * #103d3e is the teal behind the "BIBLE BUDDY" wordmark and #f0c678 the
- * average of the gold in the headline. ACCENT is that teal darkened slightly
- * so it still passes contrast as a link on white, and the button inverts the
- * banner's gold-on-teal into teal-on-gold.
+ * Back to the standard email palette (2026-10-23).
+ *
+ * These were briefly teal and gold, sampled from the one-off "A Little Wisdom
+ * for Your Week" banner. That artwork belonged to a single issue and the brand
+ * went back to Bible Buddy on 10-15, so a teal card with a gold button now sits
+ * in an otherwise blue email looking like a mistake. Same values the rest of
+ * the newsletter uses.
  */
-const ACCENT = "#15595b";
-const HEADING = "#0e3233";
-const BODY = "#243330";
-const GOLD = "#e8c06a";
-const CARD_BG = "#f2f7f6";
+const ACCENT = "#5268a7";
+const HEADING = "#17233b";
+const BODY = "#263244";
+const BUTTON_TEXT = "#ffffff";
+const CARD_BG = "#f7f8fb";
 
 function escapeHtml(value: string): string {
   return value
@@ -174,7 +176,7 @@ export function renderProgressSectionHtml(progress: RecipientProgress): string {
 <tr><td style="background:${CARD_BG};border-left:4px solid ${ACCENT};padding:22px 24px;">
 <h3 style="margin:0 0 12px;font-size:20px;line-height:1.3;color:${HEADING};">${escapeHtml(emoji)}&nbsp;&nbsp;${escapeHtml(heading)}</h3>
 ${paragraphs}
-<p style="margin:16px 0 0;"><a href="${escapeHtml(href)}" style="display:inline-block;background:${GOLD};color:${HEADING};text-decoration:none;padding:12px 22px;font-size:15px;font-weight:bold;">${escapeHtml(cta)} →</a></p>
+<p style="margin:16px 0 0;"><a href="${escapeHtml(href)}" style="display:inline-block;background:${ACCENT};color:${BUTTON_TEXT};text-decoration:none;padding:12px 22px;font-size:15px;font-weight:bold;">${escapeHtml(cta)} →</a></p>
 </td></tr>
 </table>`;
 }
