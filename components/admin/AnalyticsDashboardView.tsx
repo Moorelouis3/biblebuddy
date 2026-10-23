@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import type { DashboardData, DashboardWindow } from "@/lib/adminDashboard";
 
 /**
@@ -9,6 +9,28 @@ import type { DashboardData, DashboardWindow } from "@/lib/adminDashboard";
  * Only what he actually uses: growth, where people come from, what they do,
  * and whether they come back. The old page lives at /admin/analytics/legacy.
  */
+
+/**
+ * Five tabs (Louis, 2026-10-23). Overview was one long scroll through blog,
+ * email, community and book analytics; now it holds growth and retention and
+ * everything else has its own place.
+ *
+ * The tab lives in the URL (?tab=blog) so a refresh keeps your place and a
+ * link can point at one. Written with replaceState rather than a router push:
+ * flipping a tab should not add a history entry per click.
+ */
+export const TABS = [
+  { key: "overview", label: "Overview" },
+  { key: "blog", label: "Blog" },
+  { key: "email", label: "Email" },
+  { key: "guides", label: "Study Guides" },
+  { key: "books", label: "Books" },
+] as const;
+
+export type AnalyticsTab = (typeof TABS)[number]["key"];
+
+const isTab = (value: string | null): value is AnalyticsTab =>
+  TABS.some((t) => t.key === value);
 
 export const WINDOWS: Array<{ key: DashboardWindow; label: string; short: string }> = [
   { key: "today", label: "Today", short: "Today" },
@@ -267,6 +289,22 @@ export default function AnalyticsDashboardView({
   error: string | null;
 }) {
   const windowLabel = WINDOWS.find((w) => w.key === windowKey)?.label || "";
+
+  // Read once on mount rather than from useSearchParams, which would force
+  // this page into a Suspense boundary for a value that only matters here.
+  const [tab, setTabState] = useState<AnalyticsTab>("overview");
+  useEffect(() => {
+    const fromUrl = new URLSearchParams(window.location.search).get("tab");
+    if (isTab(fromUrl)) setTabState(fromUrl);
+  }, []);
+  const setTab = (next: AnalyticsTab) => {
+    setTabState(next);
+    const url = new URL(window.location.href);
+    if (next === "overview") url.searchParams.delete("tab");
+    else url.searchParams.set("tab", next);
+    window.history.replaceState(null, "", url.toString());
+  };
+
   return (
     <div className="min-h-screen bg-[#f5f8fc] px-4 pb-28 pt-5 text-[#0b1633] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1440px]">
@@ -325,6 +363,27 @@ export default function AnalyticsDashboardView({
           </div>
         </header>
 
+        <nav
+          aria-label="Analytics sections"
+          className="mt-5 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0"
+        >
+          <div className="inline-flex min-w-full gap-1 rounded-xl border border-[#dbe3ee] bg-white p-1 text-sm font-bold sm:min-w-0">
+            {TABS.map((t) => (
+              <button
+                key={t.key}
+                type="button"
+                onClick={() => setTab(t.key)}
+                aria-current={tab === t.key ? "page" : undefined}
+                className={`whitespace-nowrap rounded-lg px-3 py-2 transition sm:px-4 ${
+                  tab === t.key ? "bg-[#2563eb] text-white shadow" : "text-[#334155] hover:bg-[#f1f5fb]"
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+        </nav>
+
         {error ? (
           <p className="mt-6 rounded-xl border border-[#fecaca] bg-[#fef2f2] p-4 text-sm font-bold text-[#b91c1c]">{error}</p>
         ) : null}
@@ -333,6 +392,8 @@ export default function AnalyticsDashboardView({
           <p className="mt-10 text-center text-sm font-bold text-[#64748b]">Loading {windowLabel.toLowerCase()}…</p>
         ) : d ? (
           <div className={`mt-6 space-y-5 transition ${loading ? "opacity-50" : ""}`}>
+            {tab === "overview" ? (
+              <>
             {/* Total users - all-time, so it sits above the window-scoped
                 cards. Guarded: saved snapshots written before this card
                 existed have no totalUsers, and the page reads a snapshot
@@ -547,9 +608,11 @@ export default function AnalyticsDashboardView({
                 <RetentionChart points={d.returning.retention} />
               </Card>
             </div>
+              </>
+            ) : null}
 
-            {/* Blog / activities / right column */}
-            <div className="grid gap-5 lg:grid-cols-[1.35fr_1fr_1fr]">
+            {tab === "blog" ? (
+              <div className="grid gap-5 lg:grid-cols-[1.35fr_1fr]">
               <Section summary={<SectionSummary icon="📝" title="Blog performance" line={`${fmt(d.blog.views)} views (${d.blog.change >= 0 ? "+" : "−"}${pct(Math.abs(d.blog.change))})`} />}>
                 <div className="hidden lg:block">
                   <CardTitle icon="📝">Blog performance</CardTitle>
@@ -624,23 +687,33 @@ export default function AnalyticsDashboardView({
                   <span className="font-black">{pct(d.blog.promo.ctr)} click rate</span>
                 </div>
               </Section>
-
-              <Section summary={<SectionSummary icon="⚡" title="Popular activities" line={d.popularActivities[0] ? `${d.popularActivities[0].label}: ${fmt(d.popularActivities[0].value)}` : "Nothing yet"} />}>
-                <div className="hidden lg:block">
-                  <CardTitle icon="⚡">Popular activities</CardTitle>
-                </div>
-                <div className="space-y-2.5">
-                  {d.popularActivities.map((a) => (
-                    <div key={a.label} className="grid grid-cols-[1fr_0.9fr_auto] items-center gap-3 text-sm">
-                      <span className="font-semibold text-[#334155]">{a.label}</span>
-                      <Bar value={a.value} max={d.popularActivities[0]?.value || 1} />
-                      <span className="w-10 text-right font-bold">{fmt(a.value)}</span>
+                <Section summary={<SectionSummary icon="📚" title="Content progress" line={`${fmt(d.content.published)} / ${fmt(d.content.total)} chapter articles`} />}>
+                  <div className="hidden lg:block">
+                    <CardTitle icon="📚">Content progress</CardTitle>
+                  </div>
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <p className="text-xs font-bold text-[#64748b]">Chapter articles published</p>
+                      <p className="text-xl font-black">
+                        {fmt(d.content.published)} / {fmt(d.content.total)}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              </Section>
+                    {d.content.next ? (
+                      <div className="text-right">
+                        <p className="text-xs font-bold text-[#64748b]">Next</p>
+                        <p className="font-black">{d.content.next}</p>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="mt-2">
+                    <Bar value={d.content.published} max={d.content.total} color="#16a34a" />
+                  </div>
+                </Section>
+              </div>
+            ) : null}
 
-              <div className="space-y-5">
+            {tab === "email" ? (
+              <div className="grid gap-5">
                 <Section
                   summary={<SectionSummary icon="✉️" title="Email" line={d.email ? `${fmt(d.email.opens)} opens · ${fmt(d.email.clicks)} clicks` : "No email recorded"} />}
                 >
@@ -725,7 +798,25 @@ export default function AnalyticsDashboardView({
                     </div>
                   ) : null}
                 </Section>
+              </div>
+            ) : null}
 
+            {tab === "guides" ? (
+              <div className="grid gap-5 lg:grid-cols-2">
+              <Section summary={<SectionSummary icon="⚡" title="Popular activities" line={d.popularActivities[0] ? `${d.popularActivities[0].label}: ${fmt(d.popularActivities[0].value)}` : "Nothing yet"} />}>
+                <div className="hidden lg:block">
+                  <CardTitle icon="⚡">Popular activities</CardTitle>
+                </div>
+                <div className="space-y-2.5">
+                  {d.popularActivities.map((a) => (
+                    <div key={a.label} className="grid grid-cols-[1fr_0.9fr_auto] items-center gap-3 text-sm">
+                      <span className="font-semibold text-[#334155]">{a.label}</span>
+                      <Bar value={a.value} max={d.popularActivities[0]?.value || 1} />
+                      <span className="w-10 text-right font-bold">{fmt(a.value)}</span>
+                    </div>
+                  ))}
+                </div>
+              </Section>
                 <Section summary={<SectionSummary icon="👥" title="Community" line={`${fmt(d.community.proverbsTotal)} in Proverbs · ${fmt(d.community.proverbsJoined)} joined this period`} />}>
                   <div className="hidden lg:block">
                     <CardTitle icon="👥">Community</CardTitle>
@@ -745,33 +836,11 @@ export default function AnalyticsDashboardView({
                     ))}
                   </div>
                 </Section>
-
-                <Section summary={<SectionSummary icon="📚" title="Content progress" line={`${fmt(d.content.published)} / ${fmt(d.content.total)} chapter articles`} />}>
-                  <div className="hidden lg:block">
-                    <CardTitle icon="📚">Content progress</CardTitle>
-                  </div>
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <p className="text-xs font-bold text-[#64748b]">Chapter articles published</p>
-                      <p className="text-xl font-black">
-                        {fmt(d.content.published)} / {fmt(d.content.total)}
-                      </p>
-                    </div>
-                    {d.content.next ? (
-                      <div className="text-right">
-                        <p className="text-xs font-bold text-[#64748b]">Next</p>
-                        <p className="font-black">{d.content.next}</p>
-                      </div>
-                    ) : null}
-                  </div>
-                  <div className="mt-2">
-                    <Bar value={d.content.published} max={d.content.total} color="#16a34a" />
-                  </div>
-                </Section>
               </div>
-            </div>
+            ) : null}
 
-            {/* Printed books: The Wisdom of Proverbs */}
+            {tab === "books" ? (
+              <>
             {d.books ? (
               <Section
                 summary={
@@ -849,6 +918,8 @@ export default function AnalyticsDashboardView({
                   </div>
                 </div>
               </Section>
+            ) : null}
+              </>
             ) : null}
           </div>
         ) : null}
