@@ -109,6 +109,47 @@ If the GET returns `{"paused": true}`, Louis has stopped the automation.
 Stop. Do not commit, do not post, do not retry - end the run with "paused".
 POSTs are refused with 423 while it is off.
 
+## What "needs Louis" actually means
+
+Louis is not a developer and he is not your fallback. `needs_louis` is only
+for things **nobody but him can do**:
+
+- money: topping up an account, a refund, a bill
+- an outside account or password he holds
+- a decision about content, wording or what the product should do
+- anything legal, or anything involving his own accounts
+
+It is **not** for: looking a user's record up in the database, restoring
+someone's progress, working out whether a reporter already has an account,
+a code change you find awkward, or a screen you are unsure about. Those are
+your job. Write what you found and do them.
+
+Before writing `louis_action`, read it back and ask: is this a sentence
+Louis would simply forward to an agent? If so, it is not his - do it.
+
+## Clear your own backlog first
+
+**Step 1 of every run, before picking up anything new:** fetch the open
+list, look at everything sitting in `needs_louis` or `awaiting_approval`
+older than five days, and check whether the cause is still real.
+
+On 2026-10-23 eleven reports were waiting on Louis. Every single one was
+stale: five said "top up the OpenAI account" when chat had been answering
+again for weeks, one asked him to restore a reader's plan day when that
+reader was already forty days further on, three were caused by a guest
+sign-up flow that was switched off on 6 October, and the last two were
+about a screen that no longer exists. Nothing had ever gone back to check,
+so the list read like a to-do list for him.
+
+Check, then close with `fixed` (the cause is genuinely gone and you have
+verified it) or `closed` (it no longer applies), and say in `fix_summary`
+what you checked and when. Do not message the reporter again if
+`reply_sent_at` is already set.
+
+And one cause gets one report. Five people reporting "chat is down" is one
+problem - mark the later ones `duplicate` with `duplicate_of` set, rather
+than asking Louis the same thing five times.
+
 ## Three attempts
 
 Each time you move a report to `fixing` it counts an attempt, and the queue
