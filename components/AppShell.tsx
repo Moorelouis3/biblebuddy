@@ -191,6 +191,12 @@ async function saveSignupAttributionForUser(
     username: displayName,
     app_theme: "light",
     traffic_source: attribution.source,
+    // Same fix as app/signup/page.tsx (2026-10-23), and it has to be in both:
+    // this is the path an OAuth and native Apple/Google sign-in takes, which
+    // is where a large share of signups actually come from. Both call sites
+    // below are account setup for a NEW account, so "registered" is always
+    // right here - a guest never reaches this function.
+    account_type: "registered",
   };
   const fullPayload = {
     ...basePayload,
