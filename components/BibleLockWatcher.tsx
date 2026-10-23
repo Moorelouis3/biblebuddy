@@ -5,8 +5,9 @@ import { supabase } from "@/lib/supabaseClient";
 import {
   announceBibleLockChanged,
   announceBibleLockLifted,
-  bibleLockLockedAt,
+  bibleLockPeriodStartIso,
   bibleLockStatus,
+  bibleLockUnlockedThisPeriod,
   clearBibleLock,
   lockChosenApps,
   UNLOCKING_ACTIONS,
@@ -58,6 +59,11 @@ export default function BibleLockWatcher({ userId }: { userId: string | null }) 
       // time it is opened on a day where nothing has been read.
       if (!status.locked) {
         if (status.chosen === 0) return;
+        // The device says the apps were given back in the period it is in
+        // now, so the reading is done and today is over as far as the lock is
+        // concerned. Re-locking here is what made the apps flap between
+        // locked and unlocked across a force-quit.
+        if (bibleLockUnlockedThisPeriod(status)) return;
         const today = getBibleBuddyLocalDayKey();
         let lastAutoLock: string | null = null;
         try {
@@ -90,10 +96,23 @@ export default function BibleLockWatcher({ userId }: { userId: string | null }) 
         return;
       }
 
-      // Since the lock went on, not since midnight. Somebody who reads in the
-      // morning and locks their apps at lunch would otherwise be unlocked by
-      // breakfast, every time the app opened.
-      const since = bibleLockLockedAt() || getBibleBuddyLocalDayStartIso();
+      /**
+       * The start of THIS lock period, and never earlier.
+       *
+       * This line used to read `bibleLockLockedAt() || dayStart`, and that
+       * single `||` is the whole of the bug Louis reported on 2026-10-23.
+       * bibleLockLockedAt() is localStorage, written only when the app itself
+       * locks; the daily re-lock happens in the DeviceActivity extension while
+       * the app is closed, so on the first launch of a new day that value was
+       * whatever day the app last locked on - often days back. Yesterday's
+       * chapter sat inside the window, so the app cleared the shield and said
+       * congratulations before the reader had done anything.
+       *
+       * bibleLockPeriodStartIso takes the latest of the device's own
+       * lockedAt, the remembered one, and the start of today, so a stale value
+       * can only make the rule stricter.
+       */
+      const since = bibleLockPeriodStartIso(status, getBibleBuddyLocalDayStartIso());
 
       const { data } = await supabase
         .from("master_actions")
@@ -119,12 +138,21 @@ export default function BibleLockWatcher({ userId }: { userId: string | null }) 
         done = Boolean(chapters && chapters.length > 0);
       }
 
-      if (done) {
-        await clearBibleLock();
-        // Genuinely lifted: the apps are back. This is the one place in this
-        // file that may say so.
-        announceBibleLockLifted();
-      }
+      if (!done) return;
+
+      // Read the shield again before touching it. Both queries above are
+      // network round trips, and in that time the day can have turned over or
+      // another tab can have cleared the lock already - acting on the status
+      // we fetched at the top would be acting on a stale answer, which is one
+      // of the ways a congratulations appeared for nothing.
+      const now = await bibleLockStatus();
+      if (!now.supported || !now.locked) return;
+      if (now.periodKey && status.periodKey && now.periodKey !== status.periodKey) return;
+
+      await clearBibleLock();
+      // Genuinely lifted: the apps are back. This is the one place in this
+      // file that may say so.
+      announceBibleLockLifted();
     } catch {
       // A failed check leaves the shield exactly as it was, which is the safe
       // side: the way out is always in Settings.

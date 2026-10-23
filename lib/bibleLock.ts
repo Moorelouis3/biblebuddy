@@ -85,6 +85,21 @@ export type BibleLockStatus = {
   /** How many apps and categories are selected. Never which. */
   chosen: number;
   locked: boolean;
+  /**
+   * The lock period, as the device knows it, and what happened in it.
+   *
+   * All four are absent on an installed build older than 2026-10-23, so every
+   * reader of these must cope with undefined rather than assume.
+   */
+  /** The current local day on the device, which is one lock period. */
+  periodKey?: string | null;
+  /** When the shield was applied, ISO. Written by the app AND the extension. */
+  lockedAt?: string | null;
+  /** The period the shield was applied in. */
+  lockedPeriod?: string | null;
+  unlockedAt?: string | null;
+  /** The period the apps were last given back in. */
+  unlockedPeriod?: string | null;
 };
 
 type BibleLockPlugin = {
@@ -170,6 +185,53 @@ export function bibleLockLockedAt(): string | null {
   } catch {
     return null;
   }
+}
+
+/**
+ * The moment this lock period began - the earliest a completion may count.
+ *
+ * The strictest of three answers wins, and that is the whole fix for the bug
+ * Louis hit on 2026-10-23 ("it says congratulations you're unlocked and I
+ * haven't done anything"):
+ *
+ * 1. `lockedAt` from the device. The extension shields at midnight while the
+ *    app is closed, and only the device can say so.
+ * 2. The locked-at in localStorage, for an installed build whose native half
+ *    predates (1) - and for the person who locks at lunch, which is later than
+ *    midnight and so wins on its own.
+ * 3. The start of today, which is the floor. A lock period is a local day, so
+ *    nothing finished yesterday can ever buy back today's phone - and that is
+ *    precisely what the old code allowed.
+ *
+ * Taking the latest of the three means a stale value can only ever make the
+ * rule stricter, never looser. There is no combination of old app, old native
+ * build and blocked storage that unlocks a phone nobody has read on.
+ */
+export function bibleLockPeriodStartIso(status: BibleLockStatus, dayStartIso: string): string {
+  const candidates = [dayStartIso];
+  if (status.lockedAt) candidates.push(status.lockedAt);
+  const remembered = bibleLockLockedAt();
+  if (remembered) candidates.push(remembered);
+
+  return candidates.reduce((latest, candidate) => {
+    const a = Date.parse(latest);
+    const b = Date.parse(candidate);
+    if (Number.isNaN(b)) return latest;
+    if (Number.isNaN(a)) return candidate;
+    return b > a ? candidate : latest;
+  }, dayStartIso);
+}
+
+/**
+ * Has this period already been earned on the device?
+ *
+ * True only when the device itself recorded an unlock stamped with the period
+ * it is in now. Unknown (an older native build) is false, which leaves the
+ * old behaviour rather than inventing an unlock.
+ */
+export function bibleLockUnlockedThisPeriod(status: BibleLockStatus): boolean {
+  if (!status.periodKey || !status.unlockedPeriod) return false;
+  return status.periodKey === status.unlockedPeriod;
 }
 
 export async function lockChosenApps(): Promise<boolean> {

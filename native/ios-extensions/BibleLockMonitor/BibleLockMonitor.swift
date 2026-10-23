@@ -44,5 +44,14 @@ class BibleLockMonitor: DeviceActivityMonitor {
         store.shield.applicationCategories = chosen.categoryTokens.isEmpty
             ? nil
             : .specific(chosen.categoryTokens)
+        // Stamp the period, so the app can tell a shield applied at midnight
+        // from one applied days ago. Without this the app read its own
+        // localStorage, which this process cannot write, and unlocked on first
+        // launch for a chapter finished yesterday.
+        //
+        // force: false on purpose - iOS delivers both ends of the window and a
+        // second stamp would move the start of the period past a reading that
+        // already happened inside it.
+        BibleLockSharedState.markLocked(force: false)
     }
 }

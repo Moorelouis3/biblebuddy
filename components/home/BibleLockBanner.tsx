@@ -206,12 +206,14 @@ export default function BibleLockBanner() {
           <AppTile className="bg-[#ff0033] text-white">▶</AppTile>
         </div>
 
-        {/* Locked: the dashboard, not the Bible reader. "Read now" sent people
-            to the one way in and implied it was the only one; the dashboard
-            carries the day's task and what to do next, whichever of the
-            twenty-one that turns out to be. */}
+        {/* Locked: the short list of ways out, not the dashboard. "Read now"
+            sent people to the one way in and implied it was the only one, and
+            the dashboard it was changed to just dropped them on the home
+            screen to find a task for themselves (Louis, 2026-10-23: "tapping
+            Tasks just takes me back to the dashboard"). /bible-lock/tasks
+            opens the four, each at the place they left it. */}
         <Link
-          href={locked ? "/" : "/bible-lock"}
+          href={locked ? "/bible-lock/tasks" : "/bible-lock"}
           className="shrink-0 rounded-full bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] px-3.5 py-2 text-xs font-black shadow-sm shadow-[#2f7fe8]/25 transition hover:opacity-95 sm:px-5 sm:text-sm"
           /* Inline, because globals.css has an unlayered `a { color: inherit }`
              and Tailwind v4 keeps utilities in @layer utilities - unlayered

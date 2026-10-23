@@ -60,6 +60,8 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
         }
         let authorized = AuthorizationCenter.shared.authorizationStatus == .approved
         let chosen = BibleLockSharedSelection.load()
+        let state = BibleLockSharedState.load()
+        let iso = ISO8601DateFormatter()
         call.resolve([
             "supported": true,
             "authorized": authorized,
@@ -67,7 +69,17 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
             // tell anyone which apps these are.
             "chosen": chosen.applicationTokens.count + chosen.categoryTokens.count,
             "locked": store.shield.applications?.isEmpty == false
-                || store.shield.applicationCategories != nil
+                || store.shield.applicationCategories != nil,
+            // The period, from the device that owns the shield. The app used
+            // to answer this from its own localStorage, which the extension
+            // cannot write - so a shield applied at midnight looked, to the
+            // app, like one applied whenever it last locked, and yesterday's
+            // reading unlocked today's phone on first launch.
+            "periodKey": BibleLockSharedState.periodKey(),
+            "lockedAt": state.lockedAt.map { iso.string(from: $0) } as Any,
+            "lockedPeriod": state.lockedPeriod as Any,
+            "unlockedAt": state.unlockedAt.map { iso.string(from: $0) } as Any,
+            "unlockedPeriod": state.unlockedPeriod as Any
         ])
     }
 
@@ -152,6 +164,9 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
         store.shield.applicationCategories = chosen.categoryTokens.isEmpty
             ? nil
             : .specific(chosen.categoryTokens)
+        // A person tapping Lock moves the boundary to now: what they read an
+        // hour before locking does not buy the apps straight back.
+        BibleLockSharedState.markLocked(force: true)
         scheduleDailyRelock()
         call.resolve(["locked": true])
     }
@@ -168,6 +183,9 @@ public class BibleLockPlugin: CAPPlugin, CAPBridgedPlugin {
         // picker, which stops the extension finding anything to shield.
         store.shield.applications = nil
         store.shield.applicationCategories = nil
+        // Which period this unlock belongs to, so reopening the app does not
+        // put the lock straight back on a day that has already been earned.
+        BibleLockSharedState.markUnlocked()
         call.resolve(["locked": false])
     }
 
