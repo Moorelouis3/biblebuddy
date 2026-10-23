@@ -63,6 +63,7 @@ const FEATURED_STUDY_ORDER = [
   "The Wisdom of Proverbs",
   "The Tempting of Jesus",
   "21 Women of the Bible",
+  "Higher Hope",
 ];
 
 /**
@@ -74,9 +75,25 @@ const FEATURED_STUDY_ORDER = [
  * public page rather than /events/<slug>; that page carries the same pitch and
  * sends people into the study through signup.
  */
-const NEXT_UP_STUDY_TITLE = "The Tempting of Jesus";
-const NEXT_UP_START_LABEL = "Starts 1 November";
-const NEXT_UP_EVENT_PATH = "/devotionals/tempting-of-jesus";
+/**
+ * Studies that are announced but not open yet. Was a single title until
+ * Higher Hope was added (2026-10-23) and there were two at once: Higher Hope
+ * on the 25th and The Tempting of Jesus on 1 November.
+ *
+ * A study belongs here rather than in AVAILABLE_STUDY_TITLES until its days
+ * are actually written - Higher Hope is 60 days long and had 0 of them in the
+ * database when it was listed, so opening it would have shown an empty study.
+ * Move a title to AVAILABLE_STUDY_TITLES once its days exist.
+ *
+ * Higher Hope has no slug landing page of its own, so it opens on its id.
+ */
+const UPCOMING_STUDIES = new Map<string, { startLabel: string; path: string }>([
+  ["The Tempting of Jesus", { startLabel: "Starts 1 November", path: "/devotionals/tempting-of-jesus" }],
+  [
+    "Higher Hope",
+    { startLabel: "Starts 25 October", path: "/devotionals/170cb29a-39fc-47b7-9083-db1664df04f6" },
+  ],
+]);
 
 const KEEP_DEVOTIONAL_TITLES = new Set(FEATURED_STUDY_ORDER);
 /**
@@ -1117,7 +1134,8 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
               // The next study is not playable yet, but its card is not dead
               // either - it opens the sign-up page. Grey at rest, full colour
               // under the cursor on desktop (Louis, 2026-10-02).
-              const isNextUp = devotional.title === NEXT_UP_STUDY_TITLE;
+              const upcoming = UPCOMING_STUDIES.get(devotional.title);
+              const isNextUp = Boolean(upcoming);
               const isPlanAvailable = AVAILABLE_STUDY_TITLES.has(devotional.title);
               const isLockedPreview = !isPlanAvailable && !isNextUp;
               const card = (
@@ -1151,7 +1169,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                     </p>
                     {isNextUp ? (
                       <p className="mt-1 text-[11px] font-black uppercase tracking-wide text-[#a57d2c] sm:text-xs">
-                        {NEXT_UP_START_LABEL}
+                        {upcoming?.startLabel}
                       </p>
                     ) : null}
                     <div className="mt-auto pt-3">
@@ -1193,7 +1211,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                       }).catch((error) => console.error("[NAV] Failed to track devotional click:", error));
                     }
                     if (isNextUp) {
-                      router.push(NEXT_UP_EVENT_PATH);
+                      router.push(upcoming!.path);
                     } else if (embedded && onStudySelect) {
                       onStudySelect(devotional.id);
                     } else {
@@ -1214,7 +1232,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
                         }).catch((error) => console.error("[NAV] Failed to track devotional click:", error));
                       }
                       if (isNextUp) {
-                        router.push(NEXT_UP_EVENT_PATH);
+                        router.push(upcoming!.path);
                       } else if (embedded && onStudySelect) {
                         onStudySelect(devotional.id);
                       } else {
