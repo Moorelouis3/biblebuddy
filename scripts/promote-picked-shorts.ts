@@ -15,7 +15,20 @@ const ROOT = process.cwd();
 const PENDING = join(ROOT, "data", "shorts-pending.json");
 const QUEUE = join(ROOT, "data", "shorts-queue.json");
 const SCHEDULE = join(ROOT, "data", "shorts-schedule.json");
-const SLOTS = ["02:00", "06:00", "12:00", "16:00", "20:00"];
+/**
+ * Two a day, morning and evening.
+ *
+ * Louis, 2026-10-23: "i want them posted on facebook and IG also like 2xs a
+ * day also like 5pm and 5am." Five slots a day emptied the approved batch in a
+ * week and then nothing posted for three weeks; two is a pace the approval
+ * queue can actually keep up with.
+ *
+ * These times are US EASTERN, which is what this file has always held and what
+ * upload-shorts.mjs converts from (--tz-offset=-04:00 in the daily task). That
+ * puts them at 11:00 and 23:00 Berlin. If Louis meant his own clock, this line
+ * becomes ["11:00", "23:00"] and nothing else changes.
+ */
+const SLOTS = ["05:00", "17:00"];
 const dryRun = process.argv.includes("--dry-run");
 
 const readJson = <T,>(p: string, fallback: T): T =>
