@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-19-explained",
+    title: "Leviticus 19 Explained: Love Your Neighbor as Yourself",
+    description:
+      "Leviticus 19 explained verse by verse: the holiness code, the gleaning laws behind Ruth, love thy neighbour as thyself, and the law for honest scales.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-19-explained",
+    publishedAt: "2026-10-23",
+    readTime: "14 min read",
+    image: "/blog-banners/leviticus-19-explained.jpg",
+    groupPost: {
+      title: "Leviticus 19 Explained 📖",
+      content:
+        "Thirty seven verses. No altar. No priest.\nJust how you treat the people around you.\n\n📌 Jesus later calls one line here the second greatest command.\n\n📖 Farmers had to leave field corners for the poor.\n📖 \"Love thy neighbour as thyself\" closes a list on hatred.\n📖 Honest scales get the same weight as honoring parents.\n\nNew article on:\n🟢 the **gleaning law** behind Ruth's whole story\n🟢 why love thy neighbour sits next to **mixed fabric**\n🟢 the command to **love the stranger** the same way\n\nDid you know Jesus quoted a line from this exact chapter? 🙏",
+    },
+  },
+  {
     slug: "leviticus-18-explained",
     title: "Leviticus 18 Explained: The Laws Against Sexual Immorality",
     description:
