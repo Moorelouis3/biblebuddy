@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { recordBugReport } from "@/lib/bugReports";
+import { platformFromUserAgent, recordBugReport } from "@/lib/bugReports";
 
 // Crash reports from app/error.tsx and app/global-error.tsx. Before these
 // existed a crash showed people the raw "Application error" screen and
@@ -77,6 +77,9 @@ export async function POST(request: NextRequest) {
         autoReloaded: Boolean(body?.autoReloaded),
       },
       fingerprint,
+      // A crash in the native shell and the same crash in Safari are not the
+      // same bug: one of them needs an App Store release to fix.
+      platform: platformFromUserAgent(request.headers.get("user-agent")),
       reporterUserId,
       reporterName,
     });

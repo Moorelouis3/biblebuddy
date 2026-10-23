@@ -67,6 +67,55 @@ automatically pings Louis's notification bell. Build the JSON body with
 4. If you pushed any fix, append one line per fix to `SESSION_LOG.md` under
    today's date so Life Buddy's report picks it up.
 
+## The statuses (widened 2026-10-23)
+
+`new` · `triaging` · `investigating` · `fixing` · `testing` ·
+`awaiting_approval` · `fixed` · `cannot_reproduce` · `needs_info` ·
+`needs_louis` · `not_a_bug` · `duplicate` · `closed`
+
+Use them as you go, not only at the end: `triaging` when you pick a report
+up, `investigating` while you read code, `fixing` when you start changing
+it, `testing` while `tsc` runs. Louis watches this page; a report that sits
+on `new` for an hour looks abandoned even when it is being worked.
+
+Along with a status you may send any of: `severity` (critical/high/medium/
+low), `confidence` (high/medium/low), `steps_to_reproduce` plus
+`steps_source` ("reporter" or "ai" - always say which), `expected_behavior`,
+`actual_behavior`, `tests_result`, `branch_name`, `pr_url`, `last_error`.
+
+## The approval gate - you do not decide this one
+
+Some areas cannot be released on your word: **auth, permissions, payments,
+privacy, secrets, database schema, native iOS / Screen Time, security**, and
+anything you marked `critical` or `low` confidence, or where the tests did
+not pass.
+
+Posting `fixed` on one of those comes back as `awaiting_approval` whether or
+not you intended it, with `escalated: true` in the response. That is the
+endpoint deciding, not the prompt asking. When it happens:
+
+- **Do not** write a reply saying it is fixed. Write nothing, or a reply
+  that says you are looking into it.
+- Put what you changed in `fix_summary`, the risk in `louis_action`, and
+  leave it. Louis approves or rejects at /admin/bugs, and an approved one
+  comes back to you as `fixing` to finish.
+
+A bug is never `fixed` because a change was written. It is `fixed` when the
+change is in `main` and you have checked it does what the report asked for.
+
+## When the loop is paused
+
+If the GET returns `{"paused": true}`, Louis has stopped the automation.
+Stop. Do not commit, do not post, do not retry - end the run with "paused".
+POSTs are refused with 423 while it is off.
+
+## Three attempts
+
+Each time you move a report to `fixing` it counts an attempt, and the queue
+stops offering it after three. A report you could not fix twice does not
+need a third identical go: write what you found in `diagnosis` and mark it
+`needs_louis`.
+
 ## Hard limits
 
 - Never touch: payments/Stripe, authentication, database schema, the
@@ -93,7 +142,17 @@ looks like a real name.
 - needs_louis: "Thanks for reporting this! I'm on it and will get it fixed
   this week."
 - not_a_bug (question): answer the question simply.
+- needs_info: ask for the one thing you actually need - what they tapped,
+  what they saw, which phone. One question, not a form. These send straight
+  away rather than waiting for a deploy.
+- cannot_reproduce: say honestly that you could not make it happen and ask
+  what they were doing just before.
+- awaiting_approval: no reply at all until Louis has approved it.
 - Crashes with no reporter: no reply needed.
+
+The person who reported it is not always the only one: repeats are folded
+into one report, and every reporter on it gets the same reply when it
+sends. Write for all of them, not one name, when `occurrences` is above 1.
 
 Never promise a date for `needs_louis` beyond "this week". Never mention
 AI, agents or automation.

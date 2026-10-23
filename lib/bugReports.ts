@@ -7,10 +7,70 @@ import type { SupabaseClient } from "@supabase/supabase-js";
  * notification whenever one is fixed or needs him. See docs/BUG_FIXER_AGENT.md.
  */
 
-export const BUG_STATUSES = ["new", "fixing", "fixed", "needs_louis", "not_a_bug", "duplicate"] as const;
+/**
+ * The statuses a report moves through (widened 2026-10-23).
+ *
+ * The first six are the originals and keep their exact spelling, because 135
+ * reports are already stored with them and a rename would orphan every one.
+ * The rest are the steps that used to happen invisibly inside a single
+ * "fixing": triage, investigation, tests, and the wait for Louis when the fix
+ * touches something that must not go out unseen.
+ */
+export const BUG_STATUSES = [
+  "new",
+  "triaging",
+  "investigating",
+  "fixing",
+  "testing",
+  "awaiting_approval",
+  "fixed",
+  "cannot_reproduce",
+  "needs_info",
+  "needs_louis",
+  "not_a_bug",
+  "duplicate",
+  "closed",
+] as const;
 export type BugStatus = (typeof BUG_STATUSES)[number];
 
-export const OPEN_BUG_STATUSES: BugStatus[] = ["new", "fixing"];
+/** What each one is called on the page, in Louis's words rather than ours. */
+export const BUG_STATUS_LABEL: Record<BugStatus, string> = {
+  new: "New",
+  triaging: "Triaging",
+  investigating: "Investigating",
+  fixing: "Fix in progress",
+  testing: "Testing",
+  awaiting_approval: "Awaiting approval",
+  fixed: "Fixed",
+  cannot_reproduce: "Unable to reproduce",
+  needs_info: "Needs more information",
+  needs_louis: "Needs you",
+  not_a_bug: "Not a bug",
+  duplicate: "Duplicate",
+  closed: "Closed",
+};
+
+/** Still being worked. The agent asks for these. */
+export const OPEN_BUG_STATUSES: BugStatus[] = [
+  "new",
+  "triaging",
+  "investigating",
+  "fixing",
+  "testing",
+  "needs_info",
+];
+
+/** Done, one way or another. Setting one of these stamps resolved_at. */
+export const FINISHED_BUG_STATUSES: BugStatus[] = [
+  "fixed",
+  "cannot_reproduce",
+  "not_a_bug",
+  "duplicate",
+  "closed",
+];
+
+/** Waiting on Louis, and the only thing the page shows first. */
+export const ATTENTION_BUG_STATUSES: BugStatus[] = ["awaiting_approval", "needs_louis"];
 
 export type NewBugReport = {
   source: "problem_card" | "crash" | "dm";
@@ -23,9 +83,125 @@ export type NewBugReport = {
   reporterUserId?: string | null;
   reporterName?: string | null;
   conversationId?: string | null;
+  /** ios | android | web, worked out from the user agent. */
+  platform?: string | null;
+  appVersion?: string | null;
 };
 
+/**
+ * Which app this came from, from the user agent alone.
+ *
+ * The iOS shell appends "BibleBuddyApp" to its user agent, which is the only
+ * reason a crash in the native app can be told apart from the same crash in
+ * Safari - and they are not the same bug, because one of them needs an App
+ * Store release to fix.
+ */
+export function platformFromUserAgent(userAgent: string | null | undefined): string | null {
+  if (!userAgent) return null;
+  const native = /BibleBuddyApp/i.test(userAgent);
+  if (/iPhone|iPad|iPod/i.test(userAgent)) return native ? "ios-app" : "ios-web";
+  if (/Android/i.test(userAgent)) return native ? "android-app" : "android-web";
+  return native ? "app" : "web";
+}
+
 const clip = (value: string | null | undefined, max: number) => (value ? value.slice(0, max) : null);
+
+/**
+ * Areas where a wrong fix costs more than a slow one.
+ *
+ * This is the approval gate, and it is deliberately a list of words rather
+ * than a judgement call left to the agent: an agent that decides for itself
+ * whether something is risky will eventually decide wrong, at 3am, on the
+ * login screen. Anything matching here cannot be marked fixed without Louis
+ * saying so - the endpoint refuses it, not the prompt.
+ */
+const RISK_PATTERNS: Array<[string, RegExp]> = [
+  ["auth", /\b(login|log in|sign ?in|sign ?up|signup|password|auth|session|token|account access|locked out)\b/i],
+  ["permissions", /\b(admin|permission|role|rls|policy|access control)\b/i],
+  ["payments", /\b(payment|billing|subscription|stripe|refund|charge|price|purchase|checkout)\b/i],
+  ["privacy", /\b(privacy|gdpr|personal data|delete (my )?account|export my data)\b/i],
+  ["secrets", /\b(secret|api key|service[_ ]role|env var|credential)\b/i],
+  ["database", /\b(migration|schema|drop (table|column)|alter table|truncate|delete from)\b/i],
+  ["native_ios", /\b(screen ?time|family ?controls|entitlement|testflight|app store|capacitor|native app|bible lock)\b/i],
+  ["security", /\b(security|xss|csrf|injection|vulnerab|exploit)\b/i],
+];
+
+export type RiskyBugInput = {
+  area?: string | null;
+  category?: string | null;
+  page?: string | null;
+  message?: string | null;
+  diagnosis?: string | null;
+  fix_summary?: string | null;
+  severity?: string | null;
+};
+
+/** Which risky areas this report touches. Empty means a routine fix. */
+export function classifyBugRisk(bug: RiskyBugInput): string[] {
+  const haystack = [bug.area, bug.category, bug.page, bug.message, bug.diagnosis, bug.fix_summary]
+    .filter(Boolean)
+    .join("\n");
+  const hits = RISK_PATTERNS.filter(([, pattern]) => pattern.test(haystack)).map(([name]) => name);
+  return [...new Set(hits)];
+}
+
+/**
+ * May a fix for this report go out without Louis?
+ *
+ * No if it touches a risky area, and no if whoever worked it said they were
+ * not sure. "Low confidence but the tests passed" is exactly the case that
+ * should wait for a human.
+ */
+export function bugNeedsApproval(bug: RiskyBugInput & { confidence?: string | null; tests_result?: string | null }): {
+  needed: boolean;
+  risks: string[];
+  reason: string | null;
+} {
+  const risks = classifyBugRisk(bug);
+  if (risks.length) return { needed: true, risks, reason: `touches ${risks.join(", ")}` };
+  if ((bug.severity || "").toLowerCase() === "critical") {
+    return { needed: true, risks, reason: "marked critical" };
+  }
+  if ((bug.confidence || "").toLowerCase() === "low") {
+    return { needed: true, risks, reason: "the fix is a guess, not a diagnosis" };
+  }
+  if (bug.tests_result && /fail|error/i.test(bug.tests_result)) {
+    return { needed: true, risks, reason: "the tests did not pass" };
+  }
+  return { needed: false, risks, reason: null };
+}
+
+/** How many times the agent may pick up one report before it has to stop. */
+export const MAX_FIX_ATTEMPTS = 3;
+
+export type BugEventActor = "system" | "agent" | "louis" | "reporter";
+
+/**
+ * One line in a report's history.
+ *
+ * Never throws: a timeline that cannot be written must not take an
+ * acknowledgment or a fix down with it.
+ */
+export async function logBugEvent(
+  admin: SupabaseClient,
+  bugId: string,
+  actor: BugEventActor,
+  kind: string,
+  detail?: string | null,
+  meta?: Record<string, unknown> | null,
+) {
+  try {
+    await admin.from("bug_report_events").insert({
+      bug_id: bugId,
+      actor,
+      kind,
+      detail: clip(detail, 2000),
+      meta: meta ?? null,
+    });
+  } catch {
+    // History is worth having, never worth failing for.
+  }
+}
 
 /**
  * Saves a report. Crashes with a fingerprint already seen in the last 14
@@ -51,7 +227,18 @@ export async function recordBugReport(admin: SupabaseClient, report: NewBugRepor
         .from("bug_reports")
         .update({ occurrences: (existing.occurrences || 1) + 1, last_seen_at: now, updated_at: now, ...reopened })
         .eq("id", existing.id);
-      return existing.id as string;
+      // Keep this person too. Folding a repeat into one row is right, but the
+      // second reporter used to disappear with it - name, thread and all - so
+      // there was nobody to tell when it was fixed.
+      await attachReporter(admin, existing.id as string, report);
+      await logBugEvent(
+        admin,
+        existing.id as string,
+        "system",
+        "reported_again",
+        `Reported again${report.reporterName ? ` by ${report.reporterName}` : ""}${reopened.status ? " - reopened" : ""}`,
+      );
+      return { id: existing.id as string, isNew: false };
     }
   }
 
@@ -68,12 +255,126 @@ export async function recordBugReport(admin: SupabaseClient, report: NewBugRepor
       reporter_user_id: report.reporterUserId ?? null,
       reporter_name: clip(report.reporterName, 120),
       conversation_id: report.conversationId ?? null,
+      platform: clip(report.platform, 40),
+      app_version: clip(report.appVersion, 40),
       last_seen_at: now,
     })
     .select("id")
     .single();
   if (error) throw new Error(error.message);
-  return data.id as string;
+
+  const id = data.id as string;
+  await attachReporter(admin, id, report);
+  await logBugEvent(
+    admin,
+    id,
+    "system",
+    "reported",
+    `${report.area || "App"} - reported via ${report.source}${report.reporterName ? ` by ${report.reporterName}` : ""}`,
+    { page: report.page ?? null, category: report.category ?? null },
+  );
+  return { id, isNew: true };
+}
+
+/** Remember everyone who has hit this, so everyone can be answered. */
+async function attachReporter(admin: SupabaseClient, bugId: string, report: NewBugReport) {
+  if (!report.reporterUserId) return;
+  try {
+    // Look first, then insert. The unique index on this table is partial
+    // (only where reporter_user_id is not null), and PostgREST cannot infer
+    // a conflict target from a partial index - an upsert here silently wrote
+    // nothing, which is how the same person got acknowledged twice in
+    // testing on 2026-10-23.
+    const { data: already } = await admin
+      .from("bug_report_reporters")
+      .select("id")
+      .eq("bug_id", bugId)
+      .eq("reporter_user_id", report.reporterUserId)
+      .maybeSingle();
+    if (already?.id) return;
+
+    await admin.from("bug_report_reporters").insert({
+      bug_id: bugId,
+      reporter_user_id: report.reporterUserId,
+      reporter_name: clip(report.reporterName, 120),
+      conversation_id: report.conversationId ?? null,
+    });
+  } catch {
+    // The report itself is already saved; this is only who else to tell.
+  }
+}
+
+/** Is the whole repair automation switched off right now? */
+export async function bugAutomationPaused(admin: SupabaseClient): Promise<boolean> {
+  try {
+    const { data } = await admin.from("bug_automation").select("paused").eq("id", true).maybeSingle();
+    return Boolean(data?.paused);
+  } catch {
+    // Unknown is not paused: a missing settings row must not stop the loop.
+    return false;
+  }
+}
+
+/**
+ * "Thanks, we have it, we are looking."
+ *
+ * Sent once per reporter per report, the moment it arrives, through the DM
+ * thread the report already opened - no new channel, no new inbox. It
+ * promises nothing: the only other message anybody gets is after a fix is
+ * actually live (see /api/cron/bug-replies).
+ */
+export const BUG_ACK_TEXT =
+  "Thanks for reporting this! I've got it and I'm looking into it. I'll message you here as soon as there's news.";
+
+export async function acknowledgeBugReport(
+  admin: SupabaseClient,
+  bugId: string,
+  reporterUserId: string,
+  conversationId: string | null,
+) {
+  const { data: bug } = await admin
+    .from("bug_reports")
+    .select("id, ack_sent_at")
+    .eq("id", bugId)
+    .maybeSingle();
+  if (!bug) return false;
+
+  // One acknowledgment per person per report, whatever happens upstream.
+  const { data: mine } = await admin
+    .from("bug_report_reporters")
+    .select("id, ack_sent_at")
+    .eq("bug_id", bugId)
+    .eq("reporter_user_id", reporterUserId)
+    .maybeSingle();
+  if (mine?.ack_sent_at) return false;
+  // No row for this person yet (an older report, or the insert lost a race)
+  // and the report has already been acknowledged: that was them. Saying it
+  // twice is worse than not saying it again.
+  if (!mine && bug.ack_sent_at) return false;
+
+  const louisUserId = await resolveLouisUserId(admin);
+  if (!louisUserId || louisUserId === reporterUserId) return false;
+
+  const now = new Date().toISOString();
+  try {
+    const thread = await sendBugReply(admin, {
+      louisUserId,
+      reporterUserId,
+      conversationId,
+      content: BUG_ACK_TEXT,
+    });
+    if (mine?.id) {
+      await admin.from("bug_report_reporters").update({ ack_sent_at: now, conversation_id: thread }).eq("id", mine.id);
+    }
+    if (!bug.ack_sent_at) {
+      await admin.from("bug_reports").update({ ack_sent_at: now }).eq("id", bugId);
+    }
+    await logBugEvent(admin, bugId, "system", "acknowledged", "Told the reporter we have it and are looking.");
+    return true;
+  } catch {
+    // A failed acknowledgment is a missed hello, not a lost report.
+    return false;
+  }
 }
 
 /** A bell notification for Louis that opens the tracker when tapped. */

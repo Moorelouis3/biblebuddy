@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { recordBugReport } from "@/lib/bugReports";
+import { acknowledgeBugReport, platformFromUserAgent, recordBugReport } from "@/lib/bugReports";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -228,7 +228,7 @@ export async function POST(request: NextRequest) {
   // Also into the bug tracker, so reports are worked and followed up
   // instead of sitting in DMs. Never fail the report over it.
   try {
-    await recordBugReport(supabaseAdmin, {
+    const tracked = await recordBugReport(supabaseAdmin, {
       source: "problem_card",
       category,
       area,
@@ -236,10 +236,17 @@ export async function POST(request: NextRequest) {
       message: [dayNumber ? `Day ${dayNumber}${dayTitle ? ` - ${dayTitle}` : ""}` : null, reference, message]
         .filter(Boolean)
         .join("\n"),
+      platform: platformFromUserAgent(request.headers.get("user-agent")),
       reporterUserId: currentUser.id,
       reporterName: reporterProfile?.display_name || reporterProfile?.username || null,
       conversationId,
     });
+
+    // Say hello back straight away, in the thread they just wrote in. Before
+    // this, the first thing anyone heard was the fix days later, which reads
+    // as nobody listening (2026-10-23). It promises nothing beyond "I'm
+    // looking" - the "it's fixed" message still waits for a live deploy.
+    await acknowledgeBugReport(supabaseAdmin, tracked.id, currentUser.id, conversationId);
   } catch (trackerError) {
     console.warn("[SUPPORT_REPORT] bug tracker insert failed", trackerError);
   }
