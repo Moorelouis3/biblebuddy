@@ -162,11 +162,32 @@ export async function GET(request: NextRequest) {
 
     let sentAny = false;
     let lastError: string | null = null;
+    /**
+     * Kept separate, and never erased (Louis, 2026-10-24).
+     *
+     * This is the bug that hid the real one for a fortnight. sentAny was set
+     * by EITHER channel, and last_error was written as `sentAny ? null :
+     * lastError` - so whenever the web subscription succeeded, the job was
+     * marked "sent" and the APNs failure was thrown away. Three notifications
+     * read "sent" with no error while Louis's phone showed nothing, and I
+     * twice told him that proved his phone had received them. It proved only
+     * that a stale Safari web-push subscription from 7 October was still
+     * accepting them.
+     *
+     * Louis said it was the web notifications from the first hour. It was.
+     */
+    let apnsError: string | null = null;
 
     if (deviceTokens.length > 0) {
       const apns = await sendApnsPush(deviceTokens, normalizedPayload);
       if (apns.sent > 0) sentAny = true;
-      if (apns.lastError) lastError = apns.lastError;
+      if (apns.lastError) {
+        lastError = apns.lastError;
+        apnsError = apns.lastError;
+      }
+      if (apns.sent === 0 && !apns.lastError) {
+        apnsError = "APNs accepted nothing and reported no error";
+      }
       // A token Apple has disowned will never work again; keeping it only
       // guarantees an error on every future notification.
       for (const dead of apns.dead) {
@@ -174,7 +195,18 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    for (const subscription of userSubscriptions) {
+    /**
+     * A phone wins outright over a browser subscription.
+     *
+     * Louis has an app install AND a Safari web-push subscription from
+     * before it existed. Sending to both means a doubled notification at
+     * best, and at worst exactly what happened here: the browser one quietly
+     * succeeds and nothing ever investigates the phone. Web push is for
+     * people without the app.
+     */
+    const webTargets = deviceTokens.length > 0 ? [] : userSubscriptions;
+
+    for (const subscription of webTargets) {
       try {
         await webpush.sendNotification(
           {
@@ -203,7 +235,9 @@ export async function GET(request: NextRequest) {
         status: sentAny ? "sent" : "failed",
         attempts: job.attempts + 1,
         sent_at: sentAny ? new Date().toISOString() : null,
-        last_error: sentAny ? null : lastError,
+        // An APNs failure is recorded even when something else succeeded.
+        // Erasing it is what made this invisible.
+        last_error: apnsError ?? (sentAny ? null : lastError),
         updated_at: new Date().toISOString(),
       })
       .eq("id", job.id);
