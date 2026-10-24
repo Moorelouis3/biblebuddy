@@ -169,6 +169,23 @@ function isOwnerEmail(email: string | null | undefined) {
   return email?.toLowerCase() === "moorelouis3@gmail.com";
 }
 
+/**
+ * A reply notification on a chapter's reading discussion (the task used both
+ * on /bible/<book>/<chapter> and inside a devotional day) carries the
+ * discussion's storage key as its article_slug - "bible-chapter-proverbs-15"
+ * - not a page path, because that key is shared by whichever screen the
+ * reader is on. Routing straight to it 404s, which is why tapping the bell
+ * for one of these never lands anywhere (reported 2026-10-19). Resolve it to
+ * the actual chapter page instead.
+ */
+function chapterDiscussionSlugToPath(slug: string | null | undefined): string | null {
+  const match = /^bible-chapter-(.+)-(\d+)$/.exec(slug ?? "");
+  if (!match) return null;
+  const book = match[1].replace(/-/g, " ");
+  const chapter = match[2];
+  return `/bible/${encodeURIComponent(book)}/${chapter}`;
+}
+
 function isMissingSignupAttributionColumn(error: { message?: string } | null | undefined) {
   return /signup_source|signup_source_detail|signup_referrer_url|signup_landing_session_id|signup_utm_source|signup_utm_medium|signup_utm_campaign|signup_source_recorded_at|schema cache|column/i.test(
     error?.message || "",
@@ -2108,7 +2125,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       return;
     }
     const hash = notif.comment_id ? `#comment-${notif.comment_id}` : "";
-    router.push(`${notif.article_slug ?? "/dashboard"}${hash}`);
+    const chapterDiscussionPath = chapterDiscussionSlugToPath(notif.article_slug);
+    router.push(`${chapterDiscussionPath ?? notif.article_slug ?? "/dashboard"}${hash}`);
   }
 
   function runCriticalSessionBoot(session: Session) {
