@@ -118,6 +118,13 @@ async function withTimeout<T>(work: Promise<T>, ms: number): Promise<T | null> {
  */
 type NativeBridge = {
   nativePromise?: (pluginName: string, methodName: string, options?: unknown) => Promise<unknown>;
+  /** How the native side delivers plugin EVENTS, which is how a token arrives. */
+  nativeCallback?: (
+    pluginName: string,
+    methodName: string,
+    options: unknown,
+    callback: (data: unknown) => void,
+  ) => void;
   Plugins?: Record<string, unknown>;
 };
 
@@ -140,6 +147,30 @@ async function nativeCall(plugin: string, method: string, options: unknown = {})
   const cap = bridge();
   if (typeof cap?.nativePromise !== "function") return null;
   return cap.nativePromise(plugin, method, options);
+}
+
+/**
+ * Listen for a native plugin event, past registerPlugin.
+ *
+ * The APNs token does not come back from register(); it arrives later as a
+ * "registration" EVENT. Capacitor's native proxy subscribes by calling
+ * cap.nativeCallback(plugin, "addListener", {eventName}, cb) - so if the
+ * object we called addListener on was the web implementation, the native
+ * event had nowhere to land. Apple returned a token and nobody was
+ * listening, which is native_push_tokens sitting empty while everything
+ * else looked fine (Louis, 2026-10-24).
+ *
+ * Returns whether the listener actually attached.
+ */
+function nativeListen(plugin: string, eventName: string, callback: (data: unknown) => void): boolean {
+  const cap = bridge();
+  if (typeof cap?.nativeCallback !== "function") return false;
+  try {
+    cap.nativeCallback(plugin, "addListener", { eventName }, callback);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 /** Read the real iOS authorization, not the browser's idea of it. */
@@ -661,7 +692,28 @@ async function runRegistration(
     // native_push_tokens and no error anywhere to explain it. The same trap
     // already cost a day on native sign-in; the listener is attached
     // synchronously either way.
+    // Clear first. Doing this AFTER attaching the bridge listeners below
+    // would tear down the very ones that receive the token.
     void push.removeAllListeners();
+
+    /**
+     * Over the bridge first: this is the listener that actually receives the
+     * token. The plugin-proxy ones below stay as a fallback for the website
+     * and for any build where the bridge is not there.
+     */
+    const listening = nativeListen("PushNotifications", "registration", (data) => {
+      const value = (data as { value?: string } | null)?.value;
+      if (typeof value === "string") void storeToken(value);
+    });
+    nativeListen("PushNotifications", "registrationError", (data) => {
+      void reportPushFailure("APNs refused to issue a token", data);
+    });
+    nativeListen("PushNotifications", "pushNotificationActionPerformed", (data) => {
+      const url = (data as { notification?: { data?: { url?: unknown } } } | null)?.notification?.data?.url;
+      if (typeof url === "string" && url.startsWith("/")) onOpenUrl?.(url);
+    });
+    mark(listening ? "listening for the token (bridge)" : "listening for the token (plugin only)");
+
     void push.addListener("registration", (token) => {
       void storeToken(token.value);
     });
