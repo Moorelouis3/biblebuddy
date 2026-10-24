@@ -1,6 +1,18 @@
 # Publishing this — Bible in One Year
 
-> **NOT SUBMITTED. One thing blocks it: the paperback wrap does not exist.**
+> **Files are complete as of 2026-10-24. Nothing is blocked.**
+>
+> Paperback wrap: `Bible_in_One_Year_Paperback_Corrected_17.763x11.250.pdf`
+> in Downloads - verified at 17.763 x 11.250in, one page, artwork 5329 x 3375px
+> (exactly 300 DPI across the wrap).
+>
+> Its first version was rejected here before upload: the back cover promised
+> "thought-provoking questions" the book does not contain, and quoted Psalm
+> 119:105 in a modern translation while labelling it KJV. Both are fixed, and
+> the paperback back now matches the hardcover word for word. If this cover is
+> ever regenerated, check those two things again.
+>
+> **Old note, kept for the record: the paperback wrap did not exist.**
 > Price is settled — $29.99 both formats (Louis, 2026-10-24). The wrap size to
 > draw is **17.763 x 11.250 in** on white paper; see `listing-details.md` for
 > the cream alternative and why white is the likelier answer.
