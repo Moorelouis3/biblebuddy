@@ -8416,3 +8416,27 @@ page assets can pull a version out of review. Do it after approval. Feed
 problems Louis hit while testing: tapping a name in the feed does nothing,
 and he does not appear in the burner account's feed.
 Next: wait on App Review; then the header image and the feed issues.
+
+## 2026-10-24 (Higher Hope build + Bible in One Year KDP prep)
+Done:
+- Higher Hope written in full. All 60 days now in devotional_days (there were
+  0 this morning, and the study opens to readers on the 25th). Six parts:
+  telling the truth, the God who already knows, turning, rebuilding, when you
+  fall, and a life bigger than this. 26 books of the Bible, every Scripture
+  quote checked word for word against bible_chapters.
+- Its own landing page and signup link at /devotionals/higher-hope, modelled
+  on Wisdom of Proverbs as Louis asked, plus an OG share card.
+- data/higher-hope/*.json and scripts/seed-higher-hope.ts, so days are
+  reviewable in git and re-seeding is idempotent.
+- "Higher Hope" moved from UPCOMING_STUDIES into AVAILABLE_STUDY_TITLES.
+- docs/amazon/bible-in-one-year/ prepared from the two PDFs: description,
+  keywords, categories, upload instructions, and the file measurements
+  (interior 450pp at 8.25x11; wrap 19.390x12.417).
+Not live yet: everything above is committed untagged. Run `npm run pending`.
+Still open:
+- KDP is NOT submitted and is blocked on two things that need Louis: there is
+  no paperback wrap (only a hardcover one exists, and it cannot be reused),
+  and no price is set. I did not invent a price for a real product.
+- The hardcover wrap's page size does allow the 0.7085in board fold, but the
+  artwork still needs the fold check in KDP's previewer before approving.
+Next: paperback wrap + price, then the KDP submission itself.
