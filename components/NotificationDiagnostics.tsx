@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { isNativeApp, nativePlatform } from "@/lib/nativeApp";
-import { nativePushEnabled, registerForNativePush } from "@/lib/nativePush";
+import { lastPluginLoadError, nativePushEnabled, registerForNativePush } from "@/lib/nativePush";
 import { supabase } from "@/lib/supabaseClient";
 
 /**
@@ -260,7 +260,9 @@ export default function NotificationDiagnostics() {
                       ? `The push plugin is not in app build ${prev.appBuild}. iOS was never asked, because the app is running the browser version of it, which iOS cannot show a prompt for. This needs a new TestFlight build. Native plugins present: ${names.join(", ") || "none"}.`
                       : names && !names.includes("LocalNotifications")
                         ? `Neither plugin that can raise the prompt is in app build ${prev.appBuild}. This needs a new TestFlight build. Native plugins present: ${names.join(", ") || "none"}.`
-                        : "iPhone did not grant permission, or it never answered. Reported. If no prompt appeared at all, force-close the app and tap this once more.",
+                        : lastPluginLoadError()
+                          ? `Could not load the push plugin's JavaScript: ${lastPluginLoadError()}. The native side has it, so this is the web half.`
+                          : "iPhone did not grant permission, or it never answered. Reported. If no prompt appeared at all, force-close the app and tap this once more.",
                 }));
               }
               // The token arrives on a listener, so give it a moment.

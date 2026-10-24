@@ -42,15 +42,79 @@ export function nativePushEnabled(): boolean {
   return isNativeApp() && process.env.NEXT_PUBLIC_NATIVE_PUSH_ENABLED !== "off";
 }
 
-/** Loaded on demand: a top-level Capacitor import lands in the server bundle. */
-async function pushPlugin() {
+/** Type only - never emits an import, so nothing lands in the server bundle. */
+type PushApi = typeof import("@capacitor/push-notifications").PushNotifications;
+
+/**
+ * Why the plugin could not be loaded, kept for the Settings panel.
+ *
+ * It used to be swallowed by a bare `catch {}`, which is how a failure here
+ * stayed invisible for a fortnight.
+ */
+let pluginLoadError: string | null = null;
+
+export function lastPluginLoadError(): string | null {
+  return pluginLoadError;
+}
+
+/** Give any promise a deadline. Resolves to null rather than throwing. */
+async function withTimeout<T>(work: Promise<T>, ms: number): Promise<T | null> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const result = await Promise.race([
+    work.catch((error) => {
+      pluginLoadError = error instanceof Error ? error.message : String(error);
+      return null;
+    }),
+    new Promise<null>((resolve) => {
+      timer = setTimeout(() => resolve(null), ms);
+    }),
+  ]);
+  if (timer) clearTimeout(timer);
+  return result;
+}
+
+/**
+ * Loaded on demand, and never from only one place (Louis, 2026-10-24).
+ *
+ * THE BUG. This returned null on Louis's phone while the Settings panel sat
+ * one line above saying "Native push plugin: in this build" - because those
+ * are two different questions. The panel reads Capacitor.PluginHeaders, which
+ * is the NATIVE side reporting what is compiled into the binary. This loads
+ * the JAVASCRIPT module through the bundler, and that is what was failing.
+ *
+ * When it returns null the caller reports a failure and gives up, so
+ * requestPermissions is never reached: no prompt, ever, on any build. That is
+ * the whole fortnight, and it was never an iOS permission problem.
+ *
+ * So the bridge is now the fallback. window.Capacitor.Plugins.PushNotifications
+ * is registered by the native side at startup and needs no chunk fetched, no
+ * bundler and no network - if the plugin is in the binary, it is there. The
+ * import is still tried first, bounded by a deadline so a chunk that never
+ * arrives cannot hang the button, and whatever went wrong is kept for the
+ * panel instead of being swallowed.
+ */
+async function pushPlugin(): Promise<PushApi | null> {
   if (!nativePushEnabled()) return null;
+  pluginLoadError = null;
+
+  const mod = await withTimeout(import("@capacitor/push-notifications"), 8_000);
+  if (mod?.PushNotifications) return mod.PushNotifications;
+
+  if (!pluginLoadError) pluginLoadError = "the plugin chunk did not arrive within 8s";
+
   try {
-    const mod = await import("@capacitor/push-notifications");
-    return mod.PushNotifications;
-  } catch {
-    return null;
+    const fromBridge = (window as unknown as {
+      Capacitor?: { Plugins?: { PushNotifications?: PushApi } };
+    }).Capacitor?.Plugins?.PushNotifications;
+    if (fromBridge) {
+      pluginLoadError = `${pluginLoadError} - used the native bridge instead`;
+      return fromBridge;
+    }
+  } catch (error) {
+    pluginLoadError = `${pluginLoadError}; bridge lookup threw (${error instanceof Error ? error.message : "no detail"})`;
   }
+
+  return null;
 }
 
 async function storeToken(token: string): Promise<void> {
@@ -60,8 +124,13 @@ async function storeToken(token: string): Promise<void> {
     const { data } = await supabase.auth.getSession();
     const accessToken = data.session?.access_token;
     if (!accessToken) return;
-    await fetch("/api/push/register-device", {
+    // Absolute and bounded, for the same reason as reportPushFailure: a
+    // relative url through CapacitorHttp's patched fetch can hang forever, and
+    // this is the call that was meant to put a row in native_push_tokens -
+    // which has never held one.
+    await fetch(`${window.location.origin}/api/push/register-device`, {
       method: "POST",
+      signal: AbortSignal.timeout(10_000),
       headers: { "content-type": "application/json", authorization: `Bearer ${accessToken}` },
       body: JSON.stringify({ token, platform }),
     });
@@ -87,8 +156,22 @@ async function storeToken(token: string): Promise<void> {
 async function reportPushFailure(stage: string, detail?: unknown): Promise<void> {
   if (typeof window === "undefined") return;
   try {
-    await fetch("/api/bug-reports/crash", {
+    /**
+     * Absolute, and on a deadline (Louis, 2026-10-24).
+     *
+     * This await is the second half of the fortnight. CapacitorHttp is in the
+     * binary and it replaces window.fetch with a native one, which does not
+     * reliably resolve a RELATIVE url inside the app - Supabase kept working
+     * throughout because its urls are absolute. So reporting a failure hung
+     * forever, and because the report sat between the failure and the button's
+     * error message, the button simply never came back. Every "it just hangs"
+     * was this line, not the thing it was reporting.
+     *
+     * No report is worth freezing the app for, so it is now bounded as well.
+     */
+    await fetch(`${window.location.origin}/api/bug-reports/crash`, {
       method: "POST",
+      signal: AbortSignal.timeout(8_000),
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         name: "PushRegistration",
@@ -191,11 +274,19 @@ type PushPermission = Awaited<ReturnType<PushPlugin["checkPermissions"]>>;
  * UNUserNotificationCenter.requestAuthorization. They are interchangeable for
  * the purpose of getting the prompt on screen - see askForAuthorization.
  */
-async function localPlugin() {
+type LocalApi = typeof import("@capacitor/local-notifications").LocalNotifications;
+
+async function localPlugin(): Promise<LocalApi | null> {
   if (!isNativeApp()) return null;
+  // Bounded, with the same bridge fallback as pushPlugin - this is the plugin
+  // that actually raises the prompt, so it must not be the next thing to hang.
+  const mod = await withTimeout(import("@capacitor/local-notifications"), 8_000);
+  if (mod?.LocalNotifications) return mod.LocalNotifications;
   try {
-    const mod = await import("@capacitor/local-notifications");
-    return mod.LocalNotifications;
+    return (
+      (window as unknown as { Capacitor?: { Plugins?: { LocalNotifications?: LocalApi } } })
+        .Capacitor?.Plugins?.LocalNotifications ?? null
+    );
   } catch {
     return null;
   }
