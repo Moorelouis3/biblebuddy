@@ -2,7 +2,13 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { isNativeApp, nativePlatform } from "@/lib/nativeApp";
-import { lastPluginLoadError, nativePushEnabled, registerForNativePush } from "@/lib/nativePush";
+import {
+  lastPluginLoadError,
+  nativeBridgeCallable,
+  nativePermission,
+  nativePushEnabled,
+  registerForNativePush,
+} from "@/lib/nativePush";
 import { supabase } from "@/lib/supabaseClient";
 
 /**
@@ -131,13 +137,26 @@ export default function NotificationDiagnostics() {
       appBuild = `unavailable (${error instanceof Error ? error.message : "no detail"})`;
     }
 
+    /**
+     * The REAL iOS permission, over the native bridge.
+     *
+     * This used to go through the plugin module, which on this app is the WEB
+     * implementation - it reads Notification.permission and answers "prompt"
+     * forever, knowing nothing about what iOS thinks. That row said "prompt"
+     * every day for a fortnight while iOS had no record of the app at all.
+     */
     let permission = "unknown";
-    try {
-      const mod = await import("@capacitor/push-notifications");
-      const result = await mod.PushNotifications.checkPermissions();
-      permission = result.receive;
-    } catch (error) {
-      permission = `plugin missing (${error instanceof Error ? error.message : "no detail"})`;
+    const viaBridge = await nativePermission();
+    if (viaBridge) {
+      permission = viaBridge;
+    } else {
+      try {
+        const mod = await import("@capacitor/push-notifications");
+        const result = await mod.PushNotifications.checkPermissions();
+        permission = `${result.receive} (web plugin, not iOS)`;
+      } catch (error) {
+        permission = `plugin missing (${error instanceof Error ? error.message : "no detail"})`;
+      }
     }
 
     let tokenStored: boolean | null = null;
@@ -238,6 +257,15 @@ export default function NotificationDiagnostics() {
         {/* Everything the binary actually published, so nobody has to guess
             which plugins made it into a build again. */}
         <Row label="Plugins in this build" value={(nativePluginNames() ?? ["no bridge"]).join(", ") || "none"} />
+        {/* The row that matters most. Without the native bridge, every
+            notification call quietly runs the BROWSER version of the plugin,
+            whose requestPermission never returns in a WKWebView - which is
+            why iOS was never asked once in a fortnight. */}
+        <Row
+          label="Native bridge"
+          value={nativeBridgeCallable() ? "callable - iOS is reachable" : "MISSING - web plugin only"}
+          good={nativeBridgeCallable()}
+        />
         <Row label="Registering is on" value={nativePushEnabled() ? "yes" : "no"} good={nativePushEnabled()} />
         <Row
           label="iPhone permission"

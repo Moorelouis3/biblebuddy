@@ -93,6 +93,66 @@ async function withTimeout<T>(work: Promise<T>, ms: number): Promise<T | null> {
  * arrives cannot hang the button, and whatever went wrong is kept for the
  * panel instead of being swallowed.
  */
+/**
+ * Speak to the native side directly, past every JavaScript abstraction.
+ *
+ * THE THING THAT WAS ACTUALLY WRONG (Louis, 2026-10-24). On his phone,
+ * iPhone Settings > Notifications does not list Bible Buddy at all - and an
+ * app only appears there once it has asked iOS for authorization. So in two
+ * weeks and four builds, iOS was never asked once. Not refused: never asked.
+ *
+ * Every route we tried ran through `registerPlugin`, and registerPlugin hands
+ * back the WEB implementation whenever the bundled @capacitor/core believes it
+ * is on the web. That web implementation calls Notification.requestPermission(),
+ * which WKWebView does not support and which never settles - the hang - while
+ * its checkPermissions cheerfully reads Notification.permission and answers
+ * "prompt", which is why the panel looked healthy throughout. Reading
+ * window.Capacitor.Plugins does not escape it either: that is the same
+ * registry registerPlugin writes into.
+ *
+ * `nativePromise` is different. It is defined only by native-bridge.js, which
+ * the native shell injects into the page, and it posts the call straight over
+ * the WKWebView message handler. If it exists, we are genuinely in the app and
+ * the call genuinely reaches Swift. There is no web implementation to fall
+ * into.
+ */
+type NativeBridge = {
+  nativePromise?: (pluginName: string, methodName: string, options?: unknown) => Promise<unknown>;
+  Plugins?: Record<string, unknown>;
+};
+
+function bridge(): NativeBridge | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return (window as unknown as { Capacitor?: NativeBridge }).Capacitor ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** Whether the native bridge can be called directly at all. */
+export function nativeBridgeCallable(): boolean {
+  return typeof bridge()?.nativePromise === "function";
+}
+
+/** One native plugin call. Returns null when the bridge is not there. */
+async function nativeCall(plugin: string, method: string, options: unknown = {}): Promise<unknown | null> {
+  const cap = bridge();
+  if (typeof cap?.nativePromise !== "function") return null;
+  return cap.nativePromise(plugin, method, options);
+}
+
+/** Read the real iOS authorization, not the browser's idea of it. */
+export async function nativePermission(): Promise<string | null> {
+  try {
+    const result = await withTimeout(nativeCall("PushNotifications", "checkPermissions"), 6_000);
+    const receive = (result as { receive?: string } | null)?.receive;
+    return typeof receive === "string" ? receive : null;
+  } catch {
+    return null;
+  }
+}
+
 function fromBridge<T>(name: string): T | null {
   if (typeof window === "undefined") return null;
   try {
@@ -364,14 +424,33 @@ async function askForAuthorization(
    * Whatever answer arrives is read back off push.checkPermissions below,
    * which has always worked, so the two plugins cannot disagree about it.
    */
-  onStage?.("loading the local-notifications plugin");
-  const local = await localPlugin();
-  onStage?.(local ? "asking iOS (via LocalNotifications)" : "asking iOS (via PushNotifications)");
-  if (local) {
+  /**
+   * The native bridge first, because it is the only route that cannot end up
+   * in the web implementation. See nativeCall above for why that matters:
+   * every previous attempt went through registerPlugin and got handed
+   * Notification.requestPermission(), which WKWebView never settles.
+   */
+  if (nativeBridgeCallable()) {
+    onStage?.("asking iOS over the native bridge");
+    void nativeCall("PushNotifications", "requestPermissions")
+      .then((result) => {
+        const receive = (result as { receive?: string } | null)?.receive;
+        if (typeof receive === "string") asked.status = { receive } as PushPermission;
+      })
+      .catch((error) => {
+        asked.threw = true;
+        console.warn("[PUSH] native requestPermissions threw:", error);
+      });
+  } else if (await localPlugin().then((local) => {
+    if (!local) return false;
+    onStage?.("asking iOS (via LocalNotifications)");
     void local.requestPermissions().catch((error) => {
       asked.threw = true;
       console.warn("[PUSH] local-notifications requestPermissions threw:", error);
     });
+    return true;
+  })) {
+    // Asked above; nothing further to start here.
   } else {
     // No local plugin in this build: nothing to lose by asking the old way.
     void push
@@ -395,10 +474,15 @@ async function askForAuthorization(
     if (answered) return answered;
 
     try {
-      const status = await push.checkPermissions();
-      if (status.receive === "granted" || status.receive === "denied") return status;
+      // Over the bridge when we can. push.checkPermissions() may be the web
+      // implementation reading Notification.permission, which answers "prompt"
+      // forever and knows nothing about what iOS thinks.
+      const receive = nativeBridgeCallable()
+        ? await nativePermission()
+        : (await push.checkPermissions()).receive;
+      if (receive === "granted" || receive === "denied") return { receive } as PushPermission;
       // Proof of life, and what iOS currently thinks, on every pass.
-      onStage?.(`waiting - iOS still says "${status.receive}"`);
+      onStage?.(`waiting - iOS still says "${receive ?? "nothing"}"`);
     } catch (error) {
       // One failed read of the status is not an answer. Keep waiting.
       onStage?.(`waiting - could not read permission (${error instanceof Error ? error.message : "no detail"})`);

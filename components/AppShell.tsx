@@ -868,6 +868,22 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     setPushLoading(true);
     setPushError(null);
     try {
+      /**
+       * Never the browser's permission request inside the app (Louis,
+       * 2026-10-24, and he said so first).
+       *
+       * ensurePushSubscription below bails on isNativeApp(), but this runs
+       * BEFORE it, so the guard was never reached. In WKWebView
+       * Notification.requestPermission() does not resolve and does not
+       * reject - it simply never comes back, taking whatever awaited it with
+       * it, and iOS is never told anything. pushSupported already hides the
+       * button that leads here, so this is the belt to that braces.
+       */
+      if (isNativeApp()) {
+        throw new Error(
+          "Use Settings > Notifications in the app to turn these on - the iPhone handles them, not the browser.",
+        );
+      }
       if (typeof window === "undefined" || !("Notification" in window)) {
         throw new Error("Push notifications are not supported on this device.");
       }

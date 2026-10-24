@@ -2476,6 +2476,14 @@ export default function GroupChatPage() {
     setPushSetupError(null);
 
     try {
+      // Not in the app: Notification.requestPermission() never settles in
+      // WKWebView, so this would hang here exactly as it did in AppShell
+      // (Louis, 2026-10-24). Remote notifications in the app go through APNs.
+      if (isNativeApp()) {
+        throw new Error(
+          "Use Settings > Notifications in the app to turn these on - the iPhone handles them, not the browser.",
+        );
+      }
       if (typeof window === "undefined" || !("Notification" in window)) {
         throw new Error("Push notifications are not supported on this device.");
       }
