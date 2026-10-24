@@ -1,7 +1,9 @@
 # Publishing this — Bible in One Year
 
-> **NOT SUBMITTED. Two things block it, and both need Louis.** See *Blockers*
-> immediately below. Everything else is ready.
+> **NOT SUBMITTED. One thing blocks it: the paperback wrap does not exist.**
+> Price is settled — $29.99 both formats (Louis, 2026-10-24). The wrap size to
+> draw is **17.763 x 11.250 in** on white paper; see `listing-details.md` for
+> the cream alternative and why white is the likelier answer.
 
 Written 2026-10-24 from the two files Louis supplied in `C:\Users\Moore\Downloads`:
 
@@ -14,28 +16,33 @@ Both were measured from the files, not assumed.
 
 ---
 
-## Blockers
+## Blocker: there is no paperback wrap
 
-**1. There is no paperback wrap.** Louis asked for hardcover *and* softcover.
-Only a hardcover wrap exists. A paperback cover is a different size — it has
-no board wrap and no hinge allowance — so the hardcover file cannot be reused.
+Louis asked for hardcover *and* softcover. Only a hardcover wrap exists, and a
+paperback cover is a different shape — no board fold, no hinge — so the
+hardcover file cannot be reused or trimmed down.
 
-For 450 pages at 8.25 x 11in, a paperback wrap is roughly **17.76 x 11.25in**
-on white paper (0.125in bleed all round, spine ≈ 1.013in at 0.002252in per
-page) or about **17.88in** wide on cream (spine ≈ 1.125in). Treat those as
-the target to design to, **not as gospel** — KDP states the exact required
-size on the upload screen, and `scripts/resize-cover-wrap.mjs` redraws a wrap
-to whatever size it names. The paper choice has to be decided first, because
-it changes the spine.
+**Draw it at 17.763 x 11.250 in** (white paper). On cream it is 17.875 x
+11.250 in. The full working is in `listing-details.md`, along with why white
+is the likelier answer for this book despite the other Bible Buddy titles
+being cream.
 
-**2. There is no price.** `listing-details.md` in this folder has the field
-and it is deliberately blank. I will not invent a price for a real product.
-450 pages is well over double 21 Women's 239, so the printing cost — and
-therefore the floor — is much higher; set the US price from what KDP's
-calculator shows once the interior is uploaded, then let it convert the rest.
+Two things about that number:
 
-Nothing else is outstanding. The description, keywords and categories in this
-folder are written and ready to paste.
+- It is KDP's own formula — width = bleed + trim + spine + trim + bleed —
+  applied to a measured 450 pages at a measured 8.25 x 11in trim. It is not an
+  estimate of the trim or the page count.
+- KDP still states the exact size it wants on the upload screen, and it has
+  rejected a wrap for being 0.058in out before. If it names a different
+  number, `scripts/resize-cover-wrap.mjs` redraws the wrap to it rather than
+  anybody redrawing by hand.
+
+Unlike the hardcover, only the 0.125in bleed is lost on a paperback, so the
+art can run close to the edge without the 0.7085in fold problem.
+
+Everything else is ready: price is set at $29.99 for both formats, and the
+description, keywords and categories in this folder are written and ready to
+paste.
 
 ---
 
@@ -118,7 +125,11 @@ Translations: none.
 
 ## 3. Price
 
-`listing-details.md` holds the field. It is blank on purpose — see *Blockers*.
+`listing-details.md` holds it: **$29.99**, hardcover and paperback, set by Louis
+on 2026-10-24. Check the royalty KDP shows rather than assuming it clears -
+at 450 pages the print cost is far above 21 Women's, and the hardcover has a
+higher minimum list price than the paperback. If KDP refuses $29.99 it names
+its minimum.
 
 ## 4. Then the paperback
 
