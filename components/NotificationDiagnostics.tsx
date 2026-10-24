@@ -32,6 +32,8 @@ type State = {
   webBuild: string;
   /** What the SERVER says is live right now, so staleness is visible. */
   liveBuild: string | null;
+  /** Whether the phone itself has the daily reminder scheduled. */
+  reminderOn: boolean | null;
   /** Whether the server holds Apple's push keys. Permission alone sends nothing. */
   apns: boolean | null;
 };
@@ -104,6 +106,7 @@ export default function NotificationDiagnostics() {
     webBuild: WEB_BUILD,
     liveBuild: null,
     apns: null,
+    reminderOn: null,
   });
   const [busy, setBusy] = useState(false);
   /**
@@ -198,6 +201,24 @@ export default function NotificationDiagnostics() {
       // Offline, or the request hung. Not knowing is better than claiming.
     }
 
+    /**
+     * Is the daily reminder actually scheduled on this phone?
+     *
+     * A real feature, and the test that splits the last two possibilities
+     * apart (Louis, 2026-10-24). A local notification involves no server, no
+     * APNs and no token - just the phone. If one is scheduled, then native
+     * calls and the notification system are working and the only thing
+     * broken is Apple's token. If not, something far more basic is wrong and
+     * no amount of push work would ever have helped.
+     */
+    let reminderOn: boolean | null = null;
+    try {
+      const { isDailyReminderOn } = await import("@/lib/nativeReminders");
+      reminderOn = await isDailyReminderOn();
+    } catch {
+      // Leave it unknown rather than guess.
+    }
+
     // Whether the server can send at all. Permission and a token still
     // deliver nothing if Apple's keys are missing from the environment.
     let apns: boolean | null = null;
@@ -212,7 +233,7 @@ export default function NotificationDiagnostics() {
       // Unknown beats guessing.
     }
 
-    setState((prev) => ({ ...prev, permission, tokenStored, appBuild, liveBuild, apns }));
+    setState((prev) => ({ ...prev, permission, tokenStored, appBuild, liveBuild, apns, reminderOn }));
   }, []);
 
   useEffect(() => {
