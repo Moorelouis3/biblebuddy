@@ -32,6 +32,8 @@ type State = {
   webBuild: string;
   /** What the SERVER says is live right now, so staleness is visible. */
   liveBuild: string | null;
+  /** Whether the server holds Apple's push keys. Permission alone sends nothing. */
+  apns: boolean | null;
 };
 
 /**
@@ -101,6 +103,7 @@ export default function NotificationDiagnostics() {
     appBuild: "checking…",
     webBuild: WEB_BUILD,
     liveBuild: null,
+    apns: null,
   });
   const [busy, setBusy] = useState(false);
   /**
@@ -195,7 +198,21 @@ export default function NotificationDiagnostics() {
       // Offline, or the request hung. Not knowing is better than claiming.
     }
 
-    setState((prev) => ({ ...prev, permission, tokenStored, appBuild, liveBuild }));
+    // Whether the server can send at all. Permission and a token still
+    // deliver nothing if Apple's keys are missing from the environment.
+    let apns: boolean | null = null;
+    try {
+      const res = await fetch(`${window.location.origin}/api/push/status`, {
+        cache: "no-store",
+        signal: AbortSignal.timeout(8_000),
+      });
+      const body = (await res.json()) as { apns?: boolean };
+      if (typeof body.apns === "boolean") apns = body.apns;
+    } catch {
+      // Unknown beats guessing.
+    }
+
+    setState((prev) => ({ ...prev, permission, tokenStored, appBuild, liveBuild, apns }));
   }, []);
 
   useEffect(() => {
@@ -271,6 +288,14 @@ export default function NotificationDiagnostics() {
           label="iPhone permission"
           value={state.permission}
           good={state.permission === "granted" ? true : state.permission === "denied" ? false : null}
+        />
+        {/* The last link in the chain. Without Apple's keys the server skips
+            every device token in silence, which looks identical to
+            notifications simply not working. */}
+        <Row
+          label="Server can send to Apple"
+          value={state.apns === null ? "could not ask" : state.apns ? "yes" : "NO - Apple keys missing"}
+          good={state.apns}
         />
         <Row
           label="This phone registered"
