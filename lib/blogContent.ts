@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-24-explained",
+    title: "Leviticus 24 Explained: The Eternal Lamp and the Blasphemer Stoned",
+    description:
+      "Leviticus 24 explained verse by verse: the lamp that burned continually, the twelve loaves of bread, and the man stoned for cursing God's name.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-24-explained",
+    publishedAt: "2026-10-24",
+    readTime: "13 min read",
+    image: "/blog-banners/leviticus-24-explained.jpg",
+    groupPost: {
+      title: "Leviticus 24 Explained 📖",
+      content:
+        "A lamp that never goes dark.\nBread replaced every single week.\nThen a curse shouted in the camp.\n\n📌 Every rule here guards one thing: God's name.\n\n📖 The lamp was tended with the purest oil in Israel.\n📖 Twelve loaves sat before the LORD for every tribe.\n📖 One law bound the stranger and the native alike.\n\nNew article on:\n🟢 the real meaning of **eye for eye, tooth for tooth**\n🟢 why the **whole congregation** had to join the stoning\n🟢 how this exact charge later landed on **Jesus Himself**\n\nDid you know this chapter's law gets turned on Jesus later? 🙏",
+    },
+  },
+  {
     slug: "leviticus-23-explained",
     title: "Leviticus 23 Explained: Israel's Seven Feasts of the LORD",
     description:
