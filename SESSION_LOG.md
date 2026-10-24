@@ -8380,3 +8380,12 @@ Next: the four non-bug priorities in docs/blog-acquisition-report-2026-10.md.
 ## 2026-10-23T22:14:04Z (blog writer run)
 Article: How to Pray When You Don't Know What to Say | Words: ~3085 | Category: Bible Study Tips | Status: pass
 Queue remaining: 15
+
+## 2026-10-24 (bug fixer run)
+Fixed: lesson-reply notification bell going nowhere (bug 6a14d918, reported
+by Vickie James) - the alert's link pointed to an internal lookup name
+instead of a real page. Commit 515f49b.
+Asked for more info (sent to reporters, no deploy needed): the Oct 24
+reading-error report, the Proverbs "Task 1 repeating" report, and the
+Proverbs day-9-locked report - each now has one specific question out to
+the reporter instead of sitting unconfirmed.
