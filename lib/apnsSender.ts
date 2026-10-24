@@ -1,4 +1,5 @@
 import { createSign } from "crypto";
+import http2 from "node:http2";
 
 /**
  * Send a push to an iPhone (Louis, 2026-10-17: "I don't get notifications when
@@ -14,7 +15,18 @@ import { createSign } from "crypto";
  * hour (Apple rejects a token refreshed more often than every 20 minutes, and
  * expects a new one at least once a day).
  *
- * No dependency. Apple's API is an HTTP/2 POST and node's fetch does it.
+ * No dependency, but node:http2 rather than fetch (Louis, 2026-10-24).
+ *
+ * THE BUG. This said "Apple's API is an HTTP/2 POST and node's fetch does
+ * it". It does not. APNs accepts HTTP/2 only, and node's fetch is undici,
+ * which speaks HTTP/1.1 - so every call threw "fetch failed" before a byte
+ * reached Apple. Not one notification has ever been delivered to an iPhone.
+ *
+ * It stayed invisible because /api/push/process marked a job "sent" if
+ * EITHER channel worked and then erased the APNs error, and Louis had a
+ * stale Safari web-push subscription that kept succeeding. He said it was
+ * the web notifications within the first hour and he was right twice over:
+ * the web path was both masking this and swallowing the evidence.
  *
  * Needs three values in the environment:
  *   APNS_KEY_ID     the ten characters Apple shows beside the key
@@ -57,6 +69,66 @@ function authToken(): string {
   return value;
 }
 
+/**
+ * One POST to APNs over an open HTTP/2 session.
+ *
+ * Written out by hand because node's http2 client is event-based and this is
+ * the only place that needs it. Every path settles: a response, a stream
+ * error, or the timeout - a push that hangs must not hold the cron open.
+ */
+function sendOne(
+  session: http2.ClientHttp2Session,
+  deviceToken: string,
+  payload: string,
+  jwt: string,
+): Promise<{ status: number; body: string }> {
+  return new Promise((resolve, reject) => {
+    const request = session.request({
+      ":method": "POST",
+      ":path": `/3/device/${deviceToken}`,
+      authorization: `bearer ${jwt}`,
+      "apns-topic": BUNDLE_ID,
+      "apns-push-type": "alert",
+      // 10 is "deliver now", which is what a message is.
+      "apns-priority": "10",
+      /**
+       * Store it and keep trying for a day.
+       *
+       * Omitting this means an expiry of 0, and Apple's rule for 0 is
+       * "attempt delivery only once and do not store it" - so a phone that
+       * is briefly unreachable loses the notification outright.
+       */
+      "apns-expiration": String(Math.floor(Date.now() / 1000) + 86_400),
+      "content-type": "application/json",
+    });
+
+    let status = 0;
+    let body = "";
+    const timer = setTimeout(() => {
+      request.close();
+      reject(new Error("APNs did not answer within 10s"));
+    }, 10_000);
+
+    request.on("response", (headers) => {
+      status = Number(headers[":status"]) || 0;
+    });
+    request.setEncoding("utf8");
+    request.on("data", (chunk: string) => {
+      body += chunk;
+    });
+    request.on("end", () => {
+      clearTimeout(timer);
+      resolve({ status, body });
+    });
+    request.on("error", (error) => {
+      clearTimeout(timer);
+      reject(error);
+    });
+
+    request.end(payload);
+  });
+}
+
 export type ApnsResult = {
   sent: number;
   /** Tokens Apple says are dead. The caller deletes these rows. */
@@ -88,56 +160,38 @@ export async function sendApnsPush(
 
   const token = authToken();
 
-  for (const deviceToken of deviceTokens) {
-    try {
-      const response = await fetch(`${APNS_HOST}/3/device/${deviceToken}`, {
-        method: "POST",
-        headers: {
-          authorization: `bearer ${token}`,
-          "apns-topic": BUNDLE_ID,
-          "apns-push-type": "alert",
-          // 10 is "deliver now", which is what a message is.
-          "apns-priority": "10",
-          /**
-           * Store it and keep trying for a day (Louis, 2026-10-24).
-           *
-           * Omitting this means an expiry of 0, and Apple's rule for 0 is
-           * "attempt delivery only once and do not store it". APNs still
-           * answers 200 - it accepted the notification - so a push that is
-           * dropped because the phone's push connection was not live at that
-           * exact second is indistinguishable, from here, from one that was
-           * delivered. Three notifications were accepted for Louis's phone
-           * and none of them ever appeared, not even in Notification Centre,
-           * which is what that looks like.
-           *
-           * APNs keeps its own long-lived connection on port 5223, and
-           * plenty of home routers and ISPs block it while every other kind
-           * of traffic works. With an expiry set, Apple holds the
-           * notification and delivers it when the phone reconnects, instead
-           * of throwing it away.
-           */
-          "apns-expiration": String(Math.floor(Date.now() / 1000) + 86_400),
-          "content-type": "application/json",
-        },
-        body: payload,
-      });
+  // One HTTP/2 session for every device this reader has, closed at the end.
+  const session = http2.connect(APNS_HOST);
+  const sessionFailed = new Promise<never>((_, reject) => {
+    session.on("error", reject);
+  });
 
-      if (response.ok) {
-        result.sent += 1;
-        continue;
-      }
+  try {
+    for (const deviceToken of deviceTokens) {
+      try {
+        const { status, body } = await Promise.race([
+          sendOne(session, deviceToken, payload, token),
+          sessionFailed,
+        ]);
 
-      const text = await response.text();
-      result.lastError = `${response.status} ${text}`;
-      // 410 is the device token no longer being valid - app deleted, or the
-      // reader turned notifications off. 400 BadDeviceToken means the same in
-      // practice. Both are worth forgetting rather than retrying forever.
-      if (response.status === 410 || /BadDeviceToken|Unregistered/.test(text)) {
-        result.dead.push(deviceToken);
+        if (status >= 200 && status < 300) {
+          result.sent += 1;
+          continue;
+        }
+
+        result.lastError = `${status} ${body}`;
+        // 410 is the device token no longer being valid - app deleted, or the
+        // reader turned notifications off. 400 BadDeviceToken means the same in
+        // practice. Both are worth forgetting rather than retrying forever.
+        if (status === 410 || /BadDeviceToken|Unregistered/.test(body)) {
+          result.dead.push(deviceToken);
+        }
+      } catch (error) {
+        result.lastError = error instanceof Error ? error.message : "APNs request failed";
       }
-    } catch (error) {
-      result.lastError = error instanceof Error ? error.message : "APNs request failed";
     }
+  } finally {
+    session.close();
   }
 
   return result;
