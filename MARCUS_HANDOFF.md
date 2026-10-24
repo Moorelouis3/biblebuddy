@@ -934,3 +934,13 @@ that its job is done, or (3) give it a new mandate -- a quality audit pass over 
 the project (before the style spec existed, and before the per-book redo pattern caught up to them), a
 second deeper pass on a particular book, or something else entirely. Did not disable the trigger or start
 any new work myself; that's a scope decision for Louis, not something to assume.
+
+## Bible Note Writer Agent: the entry above is still open, 5 days and 28 no-op runs later (2026-10-24)
+The "whole Bible is done" entry directly above this one is still unresolved -- Louis has not yet given
+the hourly routine new scope. A run earlier today (2026-10-24T03:50:00Z) incorrectly logged that this
+entry "had been cleared" by Life Buddy; it had not -- `git log` confirms MARCUS_HANDOFF.md has not been
+touched by any commit since long before that entry was written, so it was never possible for it to have
+been cleared. That run's check was simply wrong (full correction logged in
+data/bible-notes-usage-events.json, 2026-10-24T04:51:00Z entry). Re-flagging for real this time: the
+routine has now run 28 consecutive hours finding nothing to do, and still needs one of the three options
+above decided.
