@@ -93,27 +93,42 @@ async function withTimeout<T>(work: Promise<T>, ms: number): Promise<T | null> {
  * arrives cannot hang the button, and whatever went wrong is kept for the
  * panel instead of being swallowed.
  */
+function fromBridge<T>(name: string): T | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const plugins = (window as unknown as { Capacitor?: { Plugins?: Record<string, unknown> } })
+      .Capacitor?.Plugins;
+    return (plugins?.[name] as T | undefined) ?? null;
+  } catch {
+    return null;
+  }
+}
+
 async function pushPlugin(): Promise<PushApi | null> {
   if (!nativePushEnabled()) return null;
   pluginLoadError = null;
 
+  /**
+   * The bridge FIRST, and the bundler only as a fallback (Louis, 2026-10-24).
+   *
+   * Bounding the dynamic import was not enough - the button still sat on
+   * "loading push plugin" past the deadline - so the import is no longer on
+   * the path at all. window.Capacitor.Plugins is populated by the NATIVE side
+   * at startup and reading it is synchronous: no chunk to fetch, no bundler,
+   * no network, nothing that can hang. If the plugin is in the binary, and
+   * Capacitor.PluginHeaders says it is, this cannot fail.
+   *
+   * The import stays as a fallback for the WEBSITE, where there is no bridge
+   * and the module is the only way in. It is bounded there too.
+   */
+  const bridged = fromBridge<PushApi>("PushNotifications");
+  if (bridged) return bridged;
+
+  pluginLoadError = "not on the Capacitor bridge";
   const mod = await withTimeout(import("@capacitor/push-notifications"), 8_000);
   if (mod?.PushNotifications) return mod.PushNotifications;
 
-  if (!pluginLoadError) pluginLoadError = "the plugin chunk did not arrive within 8s";
-
-  try {
-    const fromBridge = (window as unknown as {
-      Capacitor?: { Plugins?: { PushNotifications?: PushApi } };
-    }).Capacitor?.Plugins?.PushNotifications;
-    if (fromBridge) {
-      pluginLoadError = `${pluginLoadError} - used the native bridge instead`;
-      return fromBridge;
-    }
-  } catch (error) {
-    pluginLoadError = `${pluginLoadError}; bridge lookup threw (${error instanceof Error ? error.message : "no detail"})`;
-  }
-
+  pluginLoadError = `${pluginLoadError}; the module did not load either`;
   return null;
 }
 
@@ -450,7 +465,7 @@ async function runRegistration(
       // Only when something suggests this really is the app. An ordinary
       // browser is not a bug report.
       if (looksLikeTheApp) {
-        await reportPushFailure("the app was not recognised as the app", {
+        void reportPushFailure("the app was not recognised as the app", {
           hasCapacitor: Boolean(capacitor),
           isNativePlatform: (() => {
             try {
@@ -474,20 +489,49 @@ async function runRegistration(
     return false;
   }
 
-  onStage?.("loading the push plugin");
+  /**
+   * A trace, not a stage (Louis, 2026-10-24).
+   *
+   * A single "what I am doing now" line cannot say what already happened, so
+   * every answer so far has cost another deploy and another tap. This keeps
+   * the whole path in one string - "plugin ok 40ms > permission TIMEOUT 6000ms
+   * > ask..." - and because every step below has its own deadline, the attempt
+   * always finishes and always leaves a readable trail, even when a step is
+   * the thing that is broken.
+   */
+  const trail: string[] = [];
+  const mark = (note: string) => {
+    trail.push(note);
+    onStage?.(trail.join(" > "));
+  };
+  const step = async <T>(label: string, work: Promise<T>, ms: number): Promise<T | null> => {
+    const started = Date.now();
+    const value = await withTimeout(work, ms);
+    mark(`${label} ${value === null ? "FAILED/TIMEOUT" : "ok"} ${Date.now() - started}ms`);
+    return value;
+  };
+
+  mark("loading push plugin");
   const push = await pushPlugin();
   if (!push) {
-    await reportPushFailure("plugin not available in this build");
+    mark(`push plugin NULL (${pluginLoadError ?? "no reason recorded"})`);
+    void reportPushFailure(`plugin not available: ${pluginLoadError ?? "no reason"}`);
     return false;
   }
 
   try {
-    onStage?.("reading the current permission");
-    let permission = await push.checkPermissions();
+    const permission0 = await step("permission", push.checkPermissions(), 6_000);
+    if (!permission0) {
+      // checkPermissions itself is the thing hanging. Nothing below can run,
+      // and saying so beats another silent stall.
+      void reportPushFailure("checkPermissions never came back", { trail });
+      return false;
+    }
+    let permission = permission0;
     if (permission.receive === "prompt" || permission.receive === "prompt-with-rationale") {
-      const decided = await askForAuthorization(push, onStage);
+      const decided = await askForAuthorization(push, mark);
       if (!decided) {
-        await reportPushFailure("iOS never recorded an answer to the permission prompt", {
+        void reportPushFailure("iOS never recorded an answer to the permission prompt", {
           checkPermissionsSaid: permission.receive,
         });
         return false;
@@ -495,7 +539,7 @@ async function runRegistration(
       permission = decided;
     }
     if (permission.receive !== "granted") {
-      await reportPushFailure(`permission is "${permission.receive}"`);
+      void reportPushFailure(`permission is "${permission.receive}"`);
       return false;
     }
 
@@ -526,7 +570,7 @@ async function runRegistration(
     return true;
   } catch (error) {
     console.warn("[PUSH] could not register:", error);
-    await reportPushFailure("threw while registering", error);
+    void reportPushFailure("threw while registering", error);
     return false;
   }
 }

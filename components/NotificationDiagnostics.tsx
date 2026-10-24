@@ -24,6 +24,8 @@ type State = {
   appBuild: string;
   /** The website build the app is showing, which is a separate thing entirely. */
   webBuild: string;
+  /** What the SERVER says is live right now, so staleness is visible. */
+  liveBuild: string | null;
 };
 
 /**
@@ -92,6 +94,7 @@ export default function NotificationDiagnostics() {
     error: null,
     appBuild: "checking…",
     webBuild: WEB_BUILD,
+    liveBuild: null,
   });
   const [busy, setBusy] = useState(false);
   /**
@@ -152,7 +155,28 @@ export default function NotificationDiagnostics() {
       // this unknown rather than wrong.
     }
 
-    setState((prev) => ({ ...prev, permission, tokenStored, appBuild }));
+    /**
+     * What is actually live, asked of the server.
+     *
+     * Three separate times now a fix has been live for an hour while the
+     * phone quietly ran the old page, and each time it cost a round of
+     * "nothing changed" before anybody thought to compare the two numbers.
+     * The app asks instead. Absolute url and a deadline, because CapacitorHttp
+     * replaces fetch and a relative one can hang forever in here.
+     */
+    let liveBuild: string | null = null;
+    try {
+      const res = await fetch(`${window.location.origin}/api/build-id`, {
+        cache: "no-store",
+        signal: AbortSignal.timeout(8_000),
+      });
+      const body = (await res.json()) as { id?: string };
+      if (typeof body.id === "string") liveBuild = body.id.slice(0, 7);
+    } catch {
+      // Offline, or the request hung. Not knowing is better than claiming.
+    }
+
+    setState((prev) => ({ ...prev, permission, tokenStored, appBuild, liveBuild }));
   }, []);
 
   useEffect(() => {
@@ -177,7 +201,12 @@ export default function NotificationDiagnostics() {
             apart is the difference between "the fix has not reached you" and
             "the fix does not work". */}
         <Row label="App build" value={state.appBuild} />
-        <Row label="Website build" value={state.webBuild} />
+        <Row
+          label="Website build"
+          value={state.webBuild}
+          good={state.liveBuild ? state.liveBuild === state.webBuild : null}
+        />
+        <Row label="Newest build on the server" value={state.liveBuild ?? "could not ask"} />
         {/* The line that separates "iOS refused" from "iOS was never asked,
             because the app is running the browser version of the plugin". */}
         <Row
@@ -221,6 +250,33 @@ export default function NotificationDiagnostics() {
           good={state.tokenStored}
         />
       </div>
+
+      {/* Stale page, said out loud. Every "nothing changed" so far has had a
+          decent chance of being this, and it is not something anyone should
+          have to work out by comparing two hex strings by eye. */}
+      {state.liveBuild && state.liveBuild !== state.webBuild ? (
+        <div className="mt-4 rounded-lg border border-amber-300 bg-amber-50 px-3 py-3">
+          <p className="text-sm font-bold text-amber-900">
+            This page is out of date. It is build {state.webBuild}; {state.liveBuild} is live.
+          </p>
+          <p className="mt-1 text-xs font-medium text-amber-800">
+            Nothing here reflects the newest fix until you load it.
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              // A fresh url defeats whatever the webview is holding on to,
+              // which force-quitting the app demonstrably does not.
+              const url = new URL(window.location.href);
+              url.searchParams.set("v", String(Date.now()));
+              window.location.replace(url.toString());
+            }}
+            className="mt-3 w-full rounded-xl bg-amber-600 px-4 py-2 text-sm font-black"
+          >
+            <span style={{ color: "#ffffff" }}>Load the newest version</span>
+          </button>
+        </div>
+      ) : null}
 
       {state.error ? (
         <p className="mt-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm font-semibold text-red-700">
