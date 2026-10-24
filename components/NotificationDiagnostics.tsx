@@ -221,6 +221,50 @@ export default function NotificationDiagnostics() {
     if (inApp) void read();
   }, [read]);
 
+  /**
+   * One attempt, usable from both states.
+   *
+   * It used to live inline on the "Turn on notifications" button, which the
+   * granted state then hid - so the moment permission succeeded there was no
+   * way left to run the check, and the trail is the only thing that says
+   * where registration stops (Louis, 2026-10-24: permission on, Apple's keys
+   * set, and still no token).
+   */
+  const attempt = useCallback(async () => {
+    setBusy(true);
+    setStage("starting");
+    setState((prev) => ({ ...prev, error: null }));
+    try {
+      // Must always come back, whatever native does: a dead button leaves
+      // nothing to do but close the app.
+      const ok = await Promise.race([
+        registerForNativePush(undefined, setStage),
+        new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 135_000)),
+      ]);
+      if (!ok) {
+        const names = nativePluginNames();
+        setState((prev) => ({
+          ...prev,
+          error:
+            names && !names.includes("PushNotifications")
+              ? `The push plugin is not in app build ${prev.appBuild}. This needs a new TestFlight build. Native plugins present: ${names.join(", ") || "none"}.`
+              : lastPluginLoadError()
+                ? `Could not load the push plugin's JavaScript: ${lastPluginLoadError()}. The native side has it, so this is the web half.`
+                : "iPhone did not grant permission, or it never answered. Reported.",
+        }));
+      }
+      // The token arrives on a listener, so give it a moment.
+      await new Promise((resolve) => setTimeout(resolve, 2_500));
+      await read();
+    } catch (error) {
+      setState((prev) => ({
+        ...prev,
+        error: error instanceof Error ? error.message : "Could not ask for permission.",
+      }));
+    }
+    setBusy(false);
+  }, [read]);
+
   if (!native) return null;
 
   return (
@@ -351,6 +395,21 @@ export default function NotificationDiagnostics() {
           <p className="mt-1 text-xs font-medium text-[#2c3e55]">
             To turn them off, open iPhone Settings → Notifications → Bible Buddy.
           </p>
+          {/* Permission can be on while this phone still has no address at
+              Apple, and then nothing arrives and nothing says why. This runs
+              the registration again and prints where it stops. */}
+          {state.tokenStored !== true ? (
+            <button
+              type="button"
+              disabled={busy}
+              onClick={attempt}
+              className="mt-3 w-full rounded-xl bg-[#1f6b45] px-4 py-2 text-sm font-black disabled:opacity-60"
+            >
+              <span style={{ color: "#ffffff" }}>
+                {busy ? `Registering… ${elapsed}s` : "Register this phone"}
+              </span>
+            </button>
+          ) : null}
         </div>
       ) : state.permission === "denied" ? (
         <p className="mt-3 rounded-lg bg-[var(--bb-surface-soft,#f3f8ff)] px-3 py-2 text-sm font-medium text-[var(--bb-text-secondary,#2c3e55)]">
@@ -360,46 +419,7 @@ export default function NotificationDiagnostics() {
         <button
           type="button"
           disabled={busy}
-          onClick={async () => {
-            setBusy(true);
-            setStage("starting");
-            setState((prev) => ({ ...prev, error: null }));
-            try {
-              // The button must always come back, whatever native does. It
-              // has sat on "Asking..." indefinitely more than once, and a
-              // dead button is worse than a failure message because there is
-              // nothing to do but close the app.
-              const ok = await Promise.race([
-                registerForNativePush(undefined, setStage),
-                new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 135_000)),
-              ]);
-              if (!ok) {
-                // Say which of the two it was. "Did not grant permission, or
-                // the plugin is missing" told Louis nothing three times over.
-                const names = nativePluginNames();
-                setState((prev) => ({
-                  ...prev,
-                  error:
-                    names && !names.includes("PushNotifications")
-                      ? `The push plugin is not in app build ${prev.appBuild}. iOS was never asked, because the app is running the browser version of it, which iOS cannot show a prompt for. This needs a new TestFlight build. Native plugins present: ${names.join(", ") || "none"}.`
-                      : names && !names.includes("LocalNotifications")
-                        ? `Neither plugin that can raise the prompt is in app build ${prev.appBuild}. This needs a new TestFlight build. Native plugins present: ${names.join(", ") || "none"}.`
-                        : lastPluginLoadError()
-                          ? `Could not load the push plugin's JavaScript: ${lastPluginLoadError()}. The native side has it, so this is the web half.`
-                          : "iPhone did not grant permission, or it never answered. Reported. If no prompt appeared at all, force-close the app and tap this once more.",
-                }));
-              }
-              // The token arrives on a listener, so give it a moment.
-              await new Promise((resolve) => setTimeout(resolve, 1500));
-              await read();
-            } catch (error) {
-              setState((prev) => ({
-                ...prev,
-                error: error instanceof Error ? error.message : "Could not ask for permission.",
-              }));
-            }
-            setBusy(false);
-          }}
+          onClick={attempt}
           className="mt-4 w-full rounded-2xl px-5 py-3 text-sm font-black transition hover:opacity-90 disabled:opacity-60"
           style={{ backgroundColor: "var(--bb-button, #2f7fe8)" }}
         >
@@ -418,8 +438,11 @@ export default function NotificationDiagnostics() {
 
       {/* The live stage. If the seconds above are moving, JavaScript is fine
           and iOS is not answering; if they are stuck, native owns the thread. */}
-      {busy && stage ? (
-        <p className="mt-2 text-center text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+      {/* Kept on screen after the attempt ends, not just during it. The
+          trail is the whole point and it used to disappear at exactly the
+          moment it became readable. */}
+      {stage ? (
+        <p className="mt-2 break-words text-center text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">
           {stage}
         </p>
       ) : null}
