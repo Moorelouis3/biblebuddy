@@ -1,0 +1,51 @@
+Dear App Review Team,
+
+I am submitting an updated build of Bible Buddy following our previous correspondence regarding Guideline 2.1.
+
+On October 16 I answered all six requested information categories and submitted a physical-device demonstration video. More than seven days passed without a response, despite two follow-up messages and an expedited review request. I have therefore submitted an updated build with the requested information included directly below.
+
+1. DEMONSTRATION VIDEO
+A screen recording captured on a physical iPhone is attached to this submission. It shows app launch, account registration, sign-in, the community feed with Report and Block controls on posts and profiles, the Bible reading flow, and account deletion. Bible Buddy is free and has no in-app purchases.
+
+2. PURPOSE AND TARGET AUDIENCE
+Bible Buddy is a free Bible reading and study app that helps people understand Scripture as they read it. The King James Version contains historical language and references to people, places and customs that are difficult for modern readers. Most Bible apps present the text alone. Bible Buddy adds chapter-by-chapter explanations, definitions and context so a reader can follow it without theological training.
+
+Audience: adults interested in studying the Bible, including Christians seeking a consistent reading habit and people exploring Christianity. The app is English-only and is particularly relevant to users in the United States.
+
+3. ACCESSING THE MAIN FEATURES
+A demo account is provided in the Sign-In Information fields of this submission. On the welcome screen choose "Continue with email" and use those credentials. The account has existing reading history. No sample files or additional setup are required.
+
+Main sections, from the bar at the bottom of the screen:
+Home - daily reading, reading streak, next steps.
+Bible - reader with book and chapter navigation. Study Mode explains underlined phrases. Audio plays narrated chapters.
+Library - devotional reading plans and the Bible in One Year programme.
+Games - Bible trivia and a scrambled-verse game.
+Feed - community feed of user-generated posts. Report and Block controls are available on posts, on comments and on user profiles.
+
+Settings, personal notes and account deletion are reached from the profile menu at the top of the screen. Account deletion is Settings > Delete my account, which permanently removes the account and its data.
+
+Registration is by Sign in with Apple, Google Sign-In, or email and password.
+
+4. EXTERNAL SERVICES
+Supabase - user accounts, authentication, database, file storage.
+Sign in with Apple - authentication.
+Google Sign-In - authentication.
+OpenAI - Bible study assistant, and spoken narration of Scripture and devotionals.
+Amazon SES - transactional and newsletter email.
+Vercel - application hosting and anonymous usage analytics.
+Stripe - legacy integration from a discontinued website subscription.
+
+Bible Buddy is free. There are no in-app purchases and no purchase path is reachable inside the iOS app.
+
+5. REGIONAL DIFFERENCES
+Bible Buddy operates identically in every region where it is available. All features and content are the same regardless of country. The app is English-only and uses the King James Version everywhere. There are no country-specific restrictions or regional feature differences.
+
+6. REGULATED INDUSTRIES AND THIRD-PARTY CONTENT
+Bible Buddy is a Bible reading and educational application. It does not provide medical, financial, legal or other regulated professional services.
+
+Scripture content uses the King James Version, which is in the public domain in the United States. The chapter explanations, devotionals, study notes, trivia questions and audio narration were created for Bible Buddy. No unauthorised third-party copyrighted material is used.
+
+Thank you for reviewing Bible Buddy.
+
+Kind regards,
+Louis Moore III

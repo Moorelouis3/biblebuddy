@@ -8389,3 +8389,30 @@ Asked for more info (sent to reporters, no deploy needed): the Oct 24
 reading-error report, the Proverbs "Task 1 repeating" report, and the
 Proverbs day-9-locked report - each now has one specific question out to
 the reporter instead of sitting unconfirmed.
+
+## 2026-10-24 (night)
+Time spent: ~6 hours, almost all of it on one thing.
+Done: iOS push notifications work, end to end, for the first time. Five
+separate bugs, each hiding the next: two callers racing iOS for the one
+permission prompt; `registerPlugin` handing back the WEB plugin, whose
+`Notification.requestPermission()` never settles in WKWebView (Louis called
+this in the first hour, I checked the wrong half and told him no); the
+generated `AppDelegate.swift` never forwarding Apple's device token, which is
+why `native_push_tokens` had held zero rows since it was created; web push
+marking jobs "sent" and then ERASING the APNs error, which is what kept the
+real failure invisible; and finally `fetch` being used to talk to APNs, which
+accepts HTTP/2 only - proved against api.push.apple.com rather than guessed.
+Also: App Store resubmission is in - version 1.0 Waiting for Review, build
+1.16 (16), review notes rewritten to explain the cancelled submission, video
+attached (verified on the field, not assumed).
+Not live yet: `npm run pending` lists 29 commits, but every notification fix
+was tagged and has already built - 31176cb4 is serving now. The untagged ones
+are `64fc1a78` (show pushes while the app is open; needs a TestFlight build
+anyway, not a deploy) and the AppDelegate/Codemagic work, which is already in
+build 16. Next scheduled build Sat 18:05 Berlin.
+Still open: product page header image (`Bible Buddy_ Golden Valley
+Reflection.png`, 2056x765) - deliberately NOT added, because editing product
+page assets can pull a version out of review. Do it after approval. Feed
+problems Louis hit while testing: tapping a name in the feed does nothing,
+and he does not appear in the burner account's feed.
+Next: wait on App Review; then the header image and the feed issues.
