@@ -395,21 +395,14 @@ export default function NotificationDiagnostics() {
           <p className="mt-1 text-xs font-medium text-[#2c3e55]">
             To turn them off, open iPhone Settings → Notifications → Bible Buddy.
           </p>
-          {/* Permission can be on while this phone still has no address at
-              Apple, and then nothing arrives and nothing says why. This runs
-              the registration again and prints where it stops. */}
-          {state.tokenStored !== true ? (
-            <button
-              type="button"
-              disabled={busy}
-              onClick={attempt}
-              className="mt-3 w-full rounded-xl bg-[#1f6b45] px-4 py-2 text-sm font-black disabled:opacity-60"
-            >
-              <span style={{ color: "#ffffff" }}>
-                {busy ? `Registering… ${elapsed}s` : "Register this phone"}
-              </span>
-            </button>
-          ) : null}
+          {/* No "register this phone" button here, deliberately (Louis,
+              2026-10-24: "I have never had to register a phone for
+              notifications in an app"). Quite right - getting the device
+              address from Apple is something every iOS app does invisibly,
+              and asking someone to do it by hand is a developer's debugging
+              tool wearing a feature's clothes. It happens on open, and when
+              it fails the app files the trail itself rather than asking
+              anyone to read diagnostics off a screen. */}
         </div>
       ) : state.permission === "denied" ? (
         <p className="mt-3 rounded-lg bg-[var(--bb-surface-soft,#f3f8ff)] px-3 py-2 text-sm font-medium text-[var(--bb-text-secondary,#2c3e55)]">

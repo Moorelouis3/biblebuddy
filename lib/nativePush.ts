@@ -223,7 +223,11 @@ async function pushPlugin(): Promise<PushApi | null> {
   return null;
 }
 
+/** Whether a token has actually reached us this session. */
+let tokenSeen = false;
+
 async function storeToken(token: string): Promise<void> {
+  tokenSeen = true;
   const platform = nativePlatform();
   if (platform === "web") return;
   try {
@@ -744,6 +748,31 @@ async function runRegistration(
         // Already registered through the plugin; this is only belt and braces.
       });
     }
+
+    /**
+     * File the trail ourselves when no token turns up (Louis, 2026-10-24).
+     *
+     * "Registration finished and Apple sent nothing" is the one failure that
+     * reports nothing, looks like success, and leaves the reader with
+     * notifications that silently never arrive. It has cost Louis an evening
+     * of reading diagnostic lines off his own phone and telling them to me,
+     * which is not his job - nobody should have to register a phone by hand
+     * for a feature every other app has working out of the box.
+     *
+     * So the app says it instead. Twenty seconds is far longer than APNs
+     * takes to answer, and this never blocks anything: it is deliberately not
+     * awaited, and it only ever fires when the token genuinely did not come.
+     */
+    void (async () => {
+      await new Promise((resolve) => setTimeout(resolve, 20_000));
+      if (tokenSeen) return;
+      void reportPushFailure("registration finished but APNs never sent a token", {
+        trail,
+        listenedOverBridge: listening,
+        bridge: nativeBridgeCallable(),
+      });
+    })();
+
     return true;
   } catch (error) {
     console.warn("[PUSH] could not register:", error);
