@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-20-explained",
+    title: "Leviticus 20 Explained: The Death Penalty Chapter of the Law",
+    description:
+      "Leviticus 20 explained verse by verse: the death penalties attached to Leviticus 18's laws, the parent curse law, and why the sentences are not all the same.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-20-explained",
+    publishedAt: "2026-10-24",
+    readTime: "14 min read",
+    image: "/blog-banners/leviticus-20-explained.jpg",
+    groupPost: {
+      title: "Leviticus 20 Explained 📖",
+      content:
+        "Twenty seven verses. Ten death sentences.\nAnd they are not all delivered the same way.\n\n📌 This chapter answers what Leviticus 18 left open, the penalty.\n\n📖 Molech worship gets the death penalty, by stoning.\n📖 Cursing a parent carries the exact same weight.\n📖 Some sins here get a lighter sentence than you would expect.\n\nNew article on:\n🟢 why God says He will judge a whole **family**\n🟢 the sins that end in **being cut off**, not death\n🟢 why the chapter closes with **clean and unclean animals**\n\nDid you expect every sentence in this chapter to be the same? 🙏",
+    },
+  },
+  {
     slug: "how-to-pray-when-you-dont-know-what-to-say",
     title: "How to Pray When You Don't Know What to Say",
     description:
