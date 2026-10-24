@@ -170,7 +170,34 @@ type PushPlugin = NonNullable<Awaited<ReturnType<typeof pushPlugin>>>;
 type PushPermission = Awaited<ReturnType<PushPlugin["checkPermissions"]>>;
 
 /**
- * Ask iOS, then believe the OS rather than the promise (Louis, 2026-10-24).
+ * The OTHER plugin that can raise the same prompt.
+ *
+ * iOS has one notification authorization per app. @capacitor/push-notifications
+ * and @capacitor/local-notifications both ask for that single thing, through
+ * UNUserNotificationCenter.requestAuthorization. They are interchangeable for
+ * the purpose of getting the prompt on screen - see askForAuthorization.
+ */
+async function localPlugin() {
+  if (!isNativeApp()) return null;
+  try {
+    const mod = await import("@capacitor/local-notifications");
+    return mod.LocalNotifications;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Get the iOS prompt on screen, by any plugin that works, and then believe
+ * the OS rather than the promise (Louis, 2026-10-24).
+ *
+ * Two separate faults, found the same day:
+ *
+ * 1. The ASK went through the push plugin, whose requestPermissions never
+ *    returns on this app and never shows a prompt. Fixed below by asking
+ *    through local-notifications instead, which raises the identical iOS
+ *    authorization prompt and is known to work here.
+ * 2. The WAIT was a six second timer, treated as failure when it won.
  *
  * This used to race requestPermissions against a six second timer and call
  * the timer winning a failure. That made sense while the request genuinely
@@ -195,15 +222,43 @@ async function askForAuthorization(push: PushPlugin): Promise<PushPermission | n
     threw: false,
   };
 
-  void push
-    .requestPermissions()
-    .then((status) => {
-      asked.status = status;
-    })
-    .catch((error) => {
+  /**
+   * Ask through LOCAL notifications, not push (Louis, 2026-10-24).
+   *
+   * The push plugin's requestPermissions is the call that hangs. It has hung
+   * on every build since 2026-10-11, through four of them, and it hangs
+   * without a prompt appearing and without ever coming back - the button sits
+   * on "Asking..." and even a JavaScript timer beside it stops firing.
+   *
+   * iOS has ONE notification authorization per app, and both plugins ask for
+   * that same one through UNUserNotificationCenter. So the prompt does not
+   * have to come from the broken plugin. local-notifications is linked into
+   * the same binary and is demonstrably working - it is what schedules the
+   * daily reading reminder - so it raises the prompt, and push is left to do
+   * the one thing only it can: fetch the APNs token, afterwards, once
+   * permission already exists.
+   *
+   * Whatever answer arrives is read back off push.checkPermissions below,
+   * which has always worked, so the two plugins cannot disagree about it.
+   */
+  const local = await localPlugin();
+  if (local) {
+    void local.requestPermissions().catch((error) => {
       asked.threw = true;
-      console.warn("[PUSH] requestPermissions threw:", error);
+      console.warn("[PUSH] local-notifications requestPermissions threw:", error);
     });
+  } else {
+    // No local plugin in this build: nothing to lose by asking the old way.
+    void push
+      .requestPermissions()
+      .then((status) => {
+        asked.status = status;
+      })
+      .catch((error) => {
+        asked.threw = true;
+        console.warn("[PUSH] requestPermissions threw:", error);
+      });
+  }
 
   // Two minutes, read once a second. Long enough to answer a phone call and
   // come back to the dialog; short enough that a true hang still reports.

@@ -172,6 +172,24 @@ export default function NotificationDiagnostics() {
           }
           good={nativePluginNames()?.includes("PushNotifications") ?? null}
         />
+        {/* Which plugin raises the prompt. The push plugin's own
+            requestPermissions has never returned on this app, so the ask goes
+            through local-notifications, which asks iOS for the same single
+            authorization. If this says missing, that route is gone too. */}
+        <Row
+          label="Prompt comes from"
+          value={
+            nativePluginNames() === null
+              ? "no bridge"
+              : nativePluginNames()?.includes("LocalNotifications")
+                ? "LocalNotifications"
+                : "MISSING - no plugin can ask"
+          }
+          good={nativePluginNames()?.includes("LocalNotifications") ?? null}
+        />
+        {/* Everything the binary actually published, so nobody has to guess
+            which plugins made it into a build again. */}
+        <Row label="Plugins in this build" value={(nativePluginNames() ?? ["no bridge"]).join(", ") || "none"} />
         <Row label="Registering is on" value={nativePushEnabled() ? "yes" : "no"} good={nativePushEnabled()} />
         <Row
           label="iPhone permission"
@@ -203,7 +221,14 @@ export default function NotificationDiagnostics() {
             setBusy(true);
             setState((prev) => ({ ...prev, error: null }));
             try {
-              const ok = await registerForNativePush();
+              // The button must always come back, whatever native does. It
+              // has sat on "Asking..." indefinitely more than once, and a
+              // dead button is worse than a failure message because there is
+              // nothing to do but close the app.
+              const ok = await Promise.race([
+                registerForNativePush(),
+                new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 135_000)),
+              ]);
               if (!ok) {
                 // Say which of the two it was. "Did not grant permission, or
                 // the plugin is missing" told Louis nothing three times over.
@@ -213,7 +238,9 @@ export default function NotificationDiagnostics() {
                   error:
                     names && !names.includes("PushNotifications")
                       ? `The push plugin is not in app build ${prev.appBuild}. iOS was never asked, because the app is running the browser version of it, which iOS cannot show a prompt for. This needs a new TestFlight build. Native plugins present: ${names.join(", ") || "none"}.`
-                      : "iPhone did not grant permission, or the request never came back. It has been reported.",
+                      : names && !names.includes("LocalNotifications")
+                        ? `Neither plugin that can raise the prompt is in app build ${prev.appBuild}. This needs a new TestFlight build. Native plugins present: ${names.join(", ") || "none"}.`
+                        : "iPhone did not grant permission, or it never answered. Reported. If no prompt appeared at all, force-close the app and tap this once more.",
                 }));
               }
               // The token arrives on a listener, so give it a moment.
