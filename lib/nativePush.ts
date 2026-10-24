@@ -134,9 +134,23 @@ async function reportPushFailure(stage: string, detail?: unknown): Promise<void>
  */
 let registrationInFlight: Promise<boolean> | null = null;
 
-export function registerForNativePush(onOpenUrl?: (url: string) => void): Promise<boolean> {
+/**
+ * Say which step we are on, so a stuck button can be read.
+ *
+ * "Asking..." forever says nothing: it cannot tell a native call that never
+ * returns from a WebView whose main thread is blocked, and those two have
+ * completely different fixes. The Settings panel shows this live with a
+ * second counter beside it - if the counter moves, JavaScript is alive and
+ * native is simply not answering; if it freezes, the thread is blocked.
+ */
+export type StageReport = (stage: string) => void;
+
+export function registerForNativePush(
+  onOpenUrl?: (url: string) => void,
+  onStage?: StageReport,
+): Promise<boolean> {
   if (registrationInFlight) return registrationInFlight;
-  registrationInFlight = runRegistration(onOpenUrl).finally(() => {
+  registrationInFlight = runRegistration(onOpenUrl, onStage).finally(() => {
     registrationInFlight = null;
   });
   return registrationInFlight;
@@ -213,7 +227,10 @@ async function localPlugin() {
  * resolves, so the status is polled alongside, and whichever arrives first
  * wins. Only two minutes of the status staying undecided is a real hang.
  */
-async function askForAuthorization(push: PushPlugin): Promise<PushPermission | null> {
+async function askForAuthorization(
+  push: PushPlugin,
+  onStage?: StageReport,
+): Promise<PushPermission | null> {
   // A holder rather than a bare variable: the promise below assigns from a
   // callback, which TypeScript cannot see, and a plain `let` would stay
   // narrowed to null.
@@ -241,7 +258,9 @@ async function askForAuthorization(push: PushPlugin): Promise<PushPermission | n
    * Whatever answer arrives is read back off push.checkPermissions below,
    * which has always worked, so the two plugins cannot disagree about it.
    */
+  onStage?.("loading the local-notifications plugin");
   const local = await localPlugin();
+  onStage?.(local ? "asking iOS (via LocalNotifications)" : "asking iOS (via PushNotifications)");
   if (local) {
     void local.requestPermissions().catch((error) => {
       asked.threw = true;
@@ -272,8 +291,11 @@ async function askForAuthorization(push: PushPlugin): Promise<PushPermission | n
     try {
       const status = await push.checkPermissions();
       if (status.receive === "granted" || status.receive === "denied") return status;
-    } catch {
+      // Proof of life, and what iOS currently thinks, on every pass.
+      onStage?.(`waiting - iOS still says "${status.receive}"`);
+    } catch (error) {
       // One failed read of the status is not an answer. Keep waiting.
+      onStage?.(`waiting - could not read permission (${error instanceof Error ? error.message : "no detail"})`);
     }
 
     if (asked.threw) {
@@ -303,6 +325,7 @@ async function askForAuthorization(push: PushPlugin): Promise<PushPermission | n
  */
 async function runRegistration(
   onOpenUrl?: (url: string) => void,
+  onStage?: StageReport,
 ): Promise<boolean> {
   /**
    * The silent bail, which is why we have learned nothing for a week.
@@ -360,6 +383,7 @@ async function runRegistration(
     return false;
   }
 
+  onStage?.("loading the push plugin");
   const push = await pushPlugin();
   if (!push) {
     await reportPushFailure("plugin not available in this build");
@@ -367,9 +391,10 @@ async function runRegistration(
   }
 
   try {
+    onStage?.("reading the current permission");
     let permission = await push.checkPermissions();
     if (permission.receive === "prompt" || permission.receive === "prompt-with-rationale") {
-      const decided = await askForAuthorization(push);
+      const decided = await askForAuthorization(push, onStage);
       if (!decided) {
         await reportPushFailure("iOS never recorded an answer to the permission prompt", {
           checkPermissionsSaid: permission.receive,
@@ -405,6 +430,7 @@ async function runRegistration(
       if (typeof url === "string" && url.startsWith("/")) onOpenUrl?.(url);
     });
 
+    onStage?.("registering with APNs");
     await push.register();
     return true;
   } catch (error) {

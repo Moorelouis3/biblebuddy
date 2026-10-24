@@ -94,6 +94,25 @@ export default function NotificationDiagnostics() {
     webBuild: WEB_BUILD,
   });
   const [busy, setBusy] = useState(false);
+  /**
+   * What the attempt is doing, and for how long.
+   *
+   * "Asking..." on its own cannot tell a native call that never returns from a
+   * WebView whose main thread is blocked - and those need completely different
+   * fixes. The seconds tick from a plain setInterval, so if this number moves
+   * JavaScript is alive and iOS is simply not answering; if it freezes at the
+   * same number, native has the thread and nothing in JavaScript can help.
+   */
+  const [stage, setStage] = useState<string | null>(null);
+  const [elapsed, setElapsed] = useState(0);
+
+  useEffect(() => {
+    if (!busy) return;
+    setElapsed(0);
+    const started = Date.now();
+    const timer = setInterval(() => setElapsed(Math.round((Date.now() - started) / 1000)), 1_000);
+    return () => clearInterval(timer);
+  }, [busy]);
 
   const read = useCallback(async () => {
     if (!isNativeApp()) return;
@@ -219,6 +238,7 @@ export default function NotificationDiagnostics() {
           disabled={busy}
           onClick={async () => {
             setBusy(true);
+            setStage("starting");
             setState((prev) => ({ ...prev, error: null }));
             try {
               // The button must always come back, whatever native does. It
@@ -226,7 +246,7 @@ export default function NotificationDiagnostics() {
               // dead button is worse than a failure message because there is
               // nothing to do but close the app.
               const ok = await Promise.race([
-                registerForNativePush(),
+                registerForNativePush(undefined, setStage),
                 new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 135_000)),
               ]);
               if (!ok) {
@@ -264,9 +284,19 @@ export default function NotificationDiagnostics() {
               several button selectors, and an !important rule outranks the
               inline colour that used to be on the button itself; the span is
               not what those rules match. */}
-          <span style={{ color: "#ffffff" }}>{busy ? "Asking…" : "Turn on notifications"}</span>
+          <span style={{ color: "#ffffff" }}>
+            {busy ? `Asking… ${elapsed}s` : "Turn on notifications"}
+          </span>
         </button>
       )}
+
+      {/* The live stage. If the seconds above are moving, JavaScript is fine
+          and iOS is not answering; if they are stuck, native owns the thread. */}
+      {busy && stage ? (
+        <p className="mt-2 text-center text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">
+          {stage}
+        </p>
+      ) : null}
     </div>
   );
 }
