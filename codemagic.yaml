@@ -56,6 +56,14 @@ workflows:
         # depends on. Without this xcodebuild cannot read the project at all.
         script: bash scripts/ios-deployment-target.sh
 
+      - name: Forward the APNs token to Capacitor
+        # Apple hands the device token to the AppDelegate and nowhere
+        # else, and the generated AppDelegate does not pass it on - so
+        # every build so far received a token and silently dropped it.
+        # native_push_tokens has held zero rows since the day it was
+        # created. See the script.
+        script: bash scripts/ios-push-appdelegate.sh
+
       - name: Write the Info.plist keys Apple requires
         script: bash scripts/ios-info-plist.sh
 
@@ -193,6 +201,14 @@ workflows:
         # resolve a graph where the app asks for less than a package it
         # depends on. Without this xcodebuild cannot read the project at all.
         script: bash scripts/ios-deployment-target.sh
+
+      - name: Forward the APNs token to Capacitor
+        # Apple hands the device token to the AppDelegate and nowhere
+        # else, and the generated AppDelegate does not pass it on - so
+        # every build so far received a token and silently dropped it.
+        # native_push_tokens has held zero rows since the day it was
+        # created. See the script.
+        script: bash scripts/ios-push-appdelegate.sh
 
       - name: Write the Info.plist keys Apple requires
         script: bash scripts/ios-info-plist.sh
