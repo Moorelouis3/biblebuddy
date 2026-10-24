@@ -5,6 +5,7 @@ import { isNativeApp, nativePlatform } from "@/lib/nativeApp";
 import {
   lastPluginLoadError,
   nativeBridgeCallable,
+  nativeListen,
   nativePermission,
   nativePushEnabled,
   registerForNativePush,
@@ -120,6 +121,28 @@ export default function NotificationDiagnostics() {
    */
   const [stage, setStage] = useState<string | null>(null);
   const [elapsed, setElapsed] = useState(0);
+
+  /**
+   * Do native EVENTS reach JavaScript at all?
+   *
+   * The last question standing (Louis, 2026-10-24). A clean reinstall still
+   * gives "register (bridge) ok 1ms" and then nothing - no token and no
+   * error - and the bridge demonstrably reaches Swift, because
+   * checkPermissions over the same bridge returns the real iOS answer. So
+   * either Apple genuinely sends nothing, or the token DOES arrive and the
+   * listener never receives it. Those need opposite fixes.
+   *
+   * appStateChange settles it. It is the same event mechanism the token
+   * uses, from a plugin that is definitely in the build, and it fires every
+   * time the app is backgrounded or reopened - so it can be tested in two
+   * seconds without a new build.
+   */
+  const [eventsSeen, setEventsSeen] = useState(0);
+
+  useEffect(() => {
+    if (!isNativeApp()) return;
+    nativeListen("App", "appStateChange", () => setEventsSeen((n) => n + 1));
+  }, []);
 
   useEffect(() => {
     if (!busy) return;
@@ -389,6 +412,11 @@ export default function NotificationDiagnostics() {
         {/* The last link in the chain. Without Apple's keys the server skips
             every device token in silence, which looks identical to
             notifications simply not working. */}
+        <Row
+          label="Events reaching the app"
+          value={eventsSeen > 0 ? `yes (${eventsSeen})` : "none yet - switch apps and come back"}
+          good={eventsSeen > 0 ? true : null}
+        />
         <Row
           label="Daily reminder on this phone"
           value={state.reminderOn === null ? "could not ask" : state.reminderOn ? "scheduled" : "not scheduled"}

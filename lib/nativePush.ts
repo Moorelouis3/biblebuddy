@@ -162,7 +162,7 @@ async function nativeCall(plugin: string, method: string, options: unknown = {})
  *
  * Returns whether the listener actually attached.
  */
-function nativeListen(plugin: string, eventName: string, callback: (data: unknown) => void): boolean {
+export function nativeListen(plugin: string, eventName: string, callback: (data: unknown) => void): boolean {
   const cap = bridge();
   if (typeof cap?.nativeCallback !== "function") return false;
   try {
