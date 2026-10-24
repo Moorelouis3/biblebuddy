@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-23-explained",
+    title: "Leviticus 23 Explained: Israel's Seven Feasts of the LORD",
+    description:
+      "Leviticus 23 explained verse by verse: the seven feasts of the LORD, from Passover and firstfruits to the Day of Atonement and Tabernacles.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-23-explained",
+    publishedAt: "2026-10-24",
+    readTime: "13 min read",
+    image: "/blog-banners/leviticus-23-explained.jpg",
+    groupPost: {
+      title: "Leviticus 23 Explained 📖",
+      content:
+        "One chapter. An entire year already planned out.\nEvery date set by God, not by Israel.\n\n📌 Each feast remembers something God already did.\n\n📖 Passover and firstfruits both happen in the very same week.\n📖 One feast's loaves are baked WITH leaven, breaking the usual rule.\n📖 A law for the poor interrupts the festival list mid chapter.\n\nNew article on:\n🟢 why the **weekly Sabbath** opens a chapter about yearly feasts\n🟢 the **fifty day count** that lands on the Day of Pentecost\n🟢 why Israel had to **sleep in booths** even after they had houses\n\nDid you know these feasts map onto Jesus's own story? 🙏",
+    },
+  },
+  {
     slug: "leviticus-22-explained",
     title: "Leviticus 22 Explained: Who Could Eat the Holy Things",
     description:
