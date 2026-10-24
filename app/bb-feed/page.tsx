@@ -22,6 +22,7 @@ import AddBuddyButton, { type BuddyState } from "../../components/feed/AddBuddyB
 import FeedPollBlock from "../../components/feed/FeedPollBlock";
 import { pollIdFromPost } from "../../lib/weeklyFeedPosts";
 import TopBuddiesCard from "../../components/feed/TopBuddiesCard";
+import ProfileSummaryCard from "../../components/profile/ProfileSummaryCard";
 import { COMMUNITY_GROUP_ID } from "../../lib/communityMilestones";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -2252,7 +2253,20 @@ export default function BbFeedPage() {
   const [userId, setUserId] = useState<string | null>(null);
   const [myProfile, setMyProfile] = useState<MyProfile>(null);
   const [currentUserIsAdmin, setCurrentUserIsAdmin] = useState(false);
-  const [tab, setTab] = useState<Tab>("community");
+  /**
+   * My Feed first, and selected by default (Louis, 2026-10-24).
+   *
+   * The feed is the reader's own page now, with their profile above it, so it
+   * opens on their own posts rather than on everybody else's. A reader with
+   * nothing posted yet lands on an empty My Feed, which is the one cost of
+   * this order - renderMyFeedTab answers that with an empty state pointing at
+   * Community rather than silently switching tabs, which would leave someone
+   * wondering which tab they were actually on.
+   *
+   * A deep link to a post still forces Community (see the postId effect
+   * below), so notification links are unaffected.
+   */
+  const [tab, setTab] = useState<Tab>("myfeed");
   const [loading, setLoading] = useState(true);
   const [showFeedOnboarding, setShowFeedOnboarding] = useState(false);
 
@@ -3016,10 +3030,26 @@ export default function BbFeedPage() {
 
     if (items.length === 0) {
       return (
+        /* My Feed is the tab the app now opens on, so this is the first
+           thing a reader with no posts sees. It says what this tab is for
+           and offers the obvious way out - Community - rather than leaving a
+           dead end. Deliberately NOT an automatic switch to another tab:
+           that leaves someone unsure which tab they are even on (Louis,
+           2026-10-24). */
         <div className="bb-community-panel bg-white border border-gray-200 rounded-xl p-10 text-center shadow-sm">
           <p className="text-3xl mb-3">✨</p>
-          <h3 className="font-bold text-gray-900 mb-1">Your feed is empty</h3>
-          <p className="text-sm text-gray-500">Your posts and activity will appear here as you use Bible Buddy.</p>
+          <h3 className="font-bold text-gray-900 mb-1">Nothing here yet</h3>
+          <p className="text-sm text-gray-500">
+            Your own posts and activity show up here. Share something above, or see what everyone else is reading.
+          </p>
+          <button
+            type="button"
+            onClick={() => setTab("community")}
+            className="mt-4 inline-flex min-h-[40px] items-center rounded-xl px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+            style={{ backgroundColor: "#4a9b6f" }}
+          >
+            Go to Community
+          </button>
         </div>
       );
     }
@@ -3106,6 +3136,12 @@ export default function BbFeedPage() {
             The text colours are fixed rather than themed, as on those cards:
             the background is a fixed light illustration, so themed text would
             turn white on it in dark mode. */}
+        {/* The reader's own profile, above their own feed.
+            One identity and one feed on one page (Louis, 2026-10-24). The
+            card reads the same profile_stats row the profile page reads, and
+            links to it for editing and for the deeper sections. */}
+        {userId ? <ProfileSummaryCard userId={userId} isSelf /> : null}
+
         <div
           className="relative mb-3 overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
           style={{
@@ -3124,9 +3160,9 @@ export default function BbFeedPage() {
               blue, the rest dark enough to read on lavender. */}
           <div className="bb-community-tab mt-3 flex gap-1 rounded-2xl bg-white/45 p-1">
             {([
-              { key: "community", label: "Community" },
-              { key: "buddies",   label: "Buddies" },
               { key: "myfeed",    label: "My Feed" },
+              { key: "buddies",   label: "Buddies" },
+              { key: "community", label: "Community" },
             ] as { key: Tab; label: string }[]).map(({ key, label }) => (
               <button
                 key={key}

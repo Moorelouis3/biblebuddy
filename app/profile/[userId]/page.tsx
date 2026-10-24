@@ -28,6 +28,7 @@ import { isBookComplete } from "../../../lib/readingProgress";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { buildFullName, hasRequiredFullName, splitFullName } from "@/lib/profileName";
 import UserBadge from "@/components/UserBadge";
+import CollapsibleSection from "@/components/ui/CollapsibleSection";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import ReportBlockMenu from "@/components/ReportBlockMenu";
 import { BLOCKS_CHANGED_EVENT, getUsersIBlocked, unblockUser } from "@/lib/userBlocks";
@@ -149,6 +150,42 @@ export default function PublicProfilePage() {
   const params = useParams();
   const router = useRouter();
   const profileUserId = params.userId as string;
+
+  /**
+   * Your own profile IS the feed now (Louis, 2026-10-24).
+   *
+   * "No disconnected Profile page. No duplicate systems." Clicking your own
+   * name anywhere - a post, a comment, a liker list - lands here, and here
+   * sends you to /bb-feed, where your profile sits above your own posts.
+   *
+   * `?details=1` is the way back in, and it has to exist: Edit Profile, the
+   * six month activity calendar, the action log and study groups all live on
+   * this page, so an unconditional redirect would make them unreachable.
+   * ProfileSummaryCard links here with that flag.
+   *
+   * Somebody ELSE's profile is untouched by this - that page is theirs, with
+   * their posts under it, exactly as before.
+   */
+  const [selfRedirecting, setSelfRedirecting] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (new URLSearchParams(window.location.search).has("details")) return;
+
+    let cancelled = false;
+    void (async () => {
+      const { data } = await supabase.auth.getUser();
+      if (cancelled) return;
+      if (data.user && data.user.id === profileUserId) {
+        setSelfRedirecting(true);
+        router.replace("/bb-feed");
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [profileUserId, router]);
 
   const [viewerUserId, setViewerUserId] = useState<string | null>(null);
   const [viewerEmail, setViewerEmail] = useState<string | null>(null);
@@ -913,7 +950,9 @@ export default function PublicProfilePage() {
   }
 
   // --- Loading ---
-  if (loading) {
+  // On the way to /bb-feed: show the same quiet line rather than letting a
+  // whole profile paint and then disappear.
+  if (loading || selfRedirecting) {
     return (
       <div className="min-h-screen bg-gray-50 pb-12">
         <div className="max-w-2xl mx-auto px-4 py-8">
@@ -1250,7 +1289,10 @@ export default function PublicProfilePage() {
         )}
 
         {/* â”€â”€ DAILY STREAK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-        <div className="profile-skin-card bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-6">
+        <CollapsibleSection
+          title="Daily activity"
+          summary={`${displayStreak.currentStreak} day streak · past 6 months`}
+        >
           <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
             <div>
               <h2 className="text-xl font-semibold mb-1">{displayStreak.currentStreak} day streak</h2>
@@ -1362,7 +1404,7 @@ export default function PublicProfilePage() {
           ) : (
             <div className="text-sm text-gray-500 text-center py-2">No streak data available</div>
           )}
-        </div>
+        </CollapsibleSection>
 
         {/* â”€â”€ STATS ROW 1 â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="-mx-4 mb-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:overflow-visible sm:px-0 sm:pb-0 [&::-webkit-scrollbar]:hidden">
@@ -1444,8 +1486,10 @@ export default function PublicProfilePage() {
         </div>
 
         {/* â”€â”€ STUDY GROUPS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
-        <div className="profile-skin-card bg-white border border-gray-200 rounded-xl shadow-sm mb-6 p-5">
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">Study Groups</h2>
+        <CollapsibleSection
+          title="Study Groups"
+          summary={userGroups.length ? `${userGroups.length} group${userGroups.length === 1 ? "" : "s"}` : "none yet"}
+        >
           {userGroups.length === 0 ? (
             <p className="text-sm text-gray-400">Not in any groups yet.</p>
           ) : (
@@ -1474,14 +1518,20 @@ export default function PublicProfilePage() {
               ))}
             </div>
           )}
-        </div>
+        </CollapsibleSection>
 
         {/* â”€â”€ RECENT POSTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {recentPosts.length > 0 && (
           <div className="bg-white border border-gray-200 rounded-xl shadow-sm mb-6 p-5">
+            {/* This IS their feed now, so there is nowhere else to send
+                anyone (Louis, 2026-10-24: "no separate profile page"). The
+                old "View Feed →" link pointed at /bb-feed, which is the
+                VIEWER's feed - on someone else's profile that was simply the
+                wrong destination. */}
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-gray-900">Posts</h2>
-              <Link href="/bb-feed" className="text-xs text-green-600 hover:underline font-medium">View Feed →</Link>
+              <h2 className="text-lg font-semibold text-gray-900">
+                {isOwner ? "Your posts" : `${displayName.split(" ")[0]}'s posts`}
+              </h2>
             </div>
             <div className="flex flex-col gap-2">
               {recentPosts.map((post) => {
@@ -1529,14 +1579,14 @@ export default function PublicProfilePage() {
         )}
 
         {/* --- ACTION LOG --- */}
-        <div className="profile-skin-card bg-white border border-gray-200 rounded-xl shadow-sm">
-          <div className="px-6 py-4 border-b border-gray-100">
-            <h2 className="text-xl font-semibold">Action Log</h2>
-          </div>
+        <CollapsibleSection
+          title="Action Log"
+          summary={actionLog.length ? `${actionLog.length} recent` : "nothing yet"}
+        >
           {actionLog.length === 0 ? (
-            <p className="text-sm text-gray-500 py-4 px-6">No actions recorded yet.</p>
+            <p className="text-sm text-gray-500">No actions recorded yet.</p>
           ) : (
-            <div className="overflow-y-auto max-h-96">
+            <div className="-mx-5 overflow-y-auto max-h-96">
               {actionLog.map((action, index) => (
                 action.url ? (
                   <a
@@ -1562,7 +1612,7 @@ export default function PublicProfilePage() {
               ))}
             </div>
           )}
-        </div>
+        </CollapsibleSection>
 
         {/* --- EDIT PROFILE MODAL --- */}
         {showEditModal && (
