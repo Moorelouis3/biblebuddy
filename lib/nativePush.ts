@@ -323,6 +323,31 @@ export function registerForNativePush(
  * now the button's job alone; this only picks up the token for somebody who
  * already granted it on a previous run.
  */
+/**
+ * Set notifications up on app open, asking if iOS has not been asked yet.
+ *
+ * Louis, 2026-10-24, the moment the prompt finally worked: "it should ask
+ * people right away, not have them go into the settings to cut it on
+ * themselves." Quite right - nobody finds a diagnostics panel, and the
+ * Settings button only ever existed because the prompt was broken.
+ *
+ * Safe to call on every open now that the ask reaches iOS properly:
+ * requestPermissions is only reached when the status is undetermined, a
+ * refusal is final and silent, and the in-flight lock means this and the
+ * Settings button can never both be asking at once.
+ */
+export async function ensureNativeNotifications(
+  onOpenUrl?: (url: string) => void,
+): Promise<boolean> {
+  if (!isNativeApp()) return false;
+  // The real iOS status, not the web plugin's idea of it.
+  const current = await nativePermission();
+  // A no is a no. Asking again is how an app gets deleted, and iOS would not
+  // show a second prompt anyway.
+  if (current === "denied") return false;
+  return registerForNativePush(onOpenUrl);
+}
+
 export async function registerIfPermissionGranted(
   onOpenUrl?: (url: string) => void,
 ): Promise<boolean> {
@@ -649,8 +674,24 @@ async function runRegistration(
       if (typeof url === "string" && url.startsWith("/")) onOpenUrl?.(url);
     });
 
-    onStage?.("registering with APNs");
-    await push.register();
+    /**
+     * Register over the bridge as well as through the plugin.
+     *
+     * Same reasoning as the ask: if `push` is the web implementation,
+     * register() is a no-op that reports success, and the token never
+     * arrives - which is what native_push_tokens having zero rows has
+     * looked like all along. The bridge call cannot be a no-op. Registering
+     * twice is free: the token is the primary key, so the second one
+     * updates last_seen_at rather than adding a row.
+     */
+    const registered = await step("register", push.register(), 8_000);
+    if (registered === null && nativeBridgeCallable()) {
+      await step("register (bridge)", nativeCall("PushNotifications", "register"), 8_000);
+    } else if (nativeBridgeCallable()) {
+      void nativeCall("PushNotifications", "register").catch(() => {
+        // Already registered through the plugin; this is only belt and braces.
+      });
+    }
     return true;
   } catch (error) {
     console.warn("[PUSH] could not register:", error);

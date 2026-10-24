@@ -1628,11 +1628,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
        * allowed to spend the one prompt iOS gives an app. Once that has been
        * answered yes, the two calls below find it granted and carry on.
        */
-      const { registerIfPermissionGranted } = await import("@/lib/nativePush");
-      // Only picks up a token if the reader already granted permission. Asking
-      // is the Settings button's job: iOS allows one prompt, and spending it
-      // here on launch is what deadlocked the button (see lib/nativePush).
-      await registerIfPermissionGranted((url) => {
+      const { ensureNativeNotifications } = await import("@/lib/nativePush");
+      // Asks here, on open, when iOS has not been asked yet - which is what
+      // anyone would expect and what the Settings button was only ever
+      // standing in for while the prompt was broken (Louis, 2026-10-24).
+      // A refusal is final, and the in-flight lock stops this and the button
+      // asking at the same time.
+      await ensureNativeNotifications((url) => {
         // Tapping the notification opens what it was about.
         if (!cancelled) router.push(url);
       });

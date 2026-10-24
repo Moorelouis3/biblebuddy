@@ -312,7 +312,22 @@ export default function NotificationDiagnostics() {
         </p>
       ) : null}
 
-      {state.permission === "denied" ? (
+      {/* On. Say so, instead of offering to turn on what is already on
+          (Louis, 2026-10-24, the first time the prompt ever worked).
+          There is deliberately no "turn off" here: iOS does not let an app
+          revoke its own permission, so a button that pretended to would be
+          a lie. It says where the real switch is instead. */}
+      {state.permission === "granted" ? (
+        <div className="mt-4 rounded-xl border border-[#bfe3cd] bg-[#f1faf4] px-4 py-3">
+          <p className="text-sm font-black text-[#1f6b45]">
+            Notifications are on
+            {state.tokenStored === false ? " - finishing setup…" : ""}
+          </p>
+          <p className="mt-1 text-xs font-medium text-[#2c3e55]">
+            To turn them off, open iPhone Settings → Notifications → Bible Buddy.
+          </p>
+        </div>
+      ) : state.permission === "denied" ? (
         <p className="mt-3 rounded-lg bg-[var(--bb-surface-soft,#f3f8ff)] px-3 py-2 text-sm font-medium text-[var(--bb-text-secondary,#2c3e55)]">
           iPhone only asks once. Turn them on in iPhone Settings, under Bible Buddy.
         </p>
