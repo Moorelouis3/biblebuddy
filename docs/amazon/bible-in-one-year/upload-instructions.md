@@ -156,3 +156,76 @@ subtitle and author match exactly, so they must be pasted, not retyped.
   exists.
 - Point the app at it: the `devotionals` table has a `paperback_url` column,
   which is how a study links to its printed edition.
+
+---
+
+# What actually happened on 2026-10-24
+
+The hardcover was built in KDP up to the final button and **saved as a draft,
+not published**. Bookshelf shows: *Bible in One Year: A 365 Day Journey
+Through God's Word* — Hardcover — Draft — $29.99.
+
+| | |
+|---|---|
+| KDP title id | `6GJ3DH261ZR` |
+| ISBN (free KDP) | **9798164849498** |
+| Imprint | Independently published |
+| Print options | B&W, **white paper**, 8.25 x 11in, no bleed, matte, 450 pages |
+
+## The numbers, read off KDP rather than estimated
+
+- **Printing cost: $13.30 per copy** on Amazon.com.
+- **Minimum list price: $22.17.** $29.99 clears it.
+- At $29.99 the royalty is **60% → $4.69 per copy** (UK £22.42 → £3.90, EU
+  €26,77 → €4,21, all converted by KDP from the US price).
+
+Worth knowing before repeating this price on other big books: 21 Women is 239
+pages and earns far more per copy at the same $29.99, because this book's
+print cost is nearly double. $29.99 works here; it is just a thinner margin
+than the rest of the shelf.
+
+## Two things the earlier notes got wrong about categories
+
+Checked live in the form, so trust this over the older guesses:
+
+- **There is no "Guides" placement** under Bible Study & Reference. Confirmed.
+- **There IS a "Devotionals" placement** under Christian Living — it sits low
+  in the left column and is easy to miss behind the fold.
+
+The three placements actually used:
+
+1. Books › Religion & Spirituality › Christian Books & Bibles › Bible Study & Reference › **General**
+2. Books › Religion & Spirituality › Christian Books & Bibles › Christian Living › **Spiritual Growth**
+3. Books › Religion & Spirituality › Christian Books & Bibles › Christian Living › **Devotionals**
+
+## The fold check passed
+
+This is the thing that cost 21 Women its cover. It is fine here.
+
+In the previewer with guides on, every element sits inside the safe area: the
+front title, the subtitle, the author block, the spine text, the back cover
+copy, the feature panel, the verse and the Bible Buddy logo. The previewer
+reported **450 pages and no issues**, and Approve was enabled without
+argument.
+
+The barcode checkbox was left unchecked, as the 21 Women notes advise. KDP
+placed its own barcode on the back cover in clear space, not over any text.
+
+## Description entry: use the Source button
+
+The description field is a CKEditor. Clicking **Source** in its toolbar
+switches it to HTML, so `description.html` goes in as real markup rather than
+as literal tags. The character counter updating is how you know KDP registered
+it.
+
+## Still to do
+
+1. **Publish the hardcover** — one click, pending Louis confirming $29.99
+   against the $4.69 royalty.
+2. **The paperback.** Repeat with Create Paperback, same metadata pasted not
+   retyped, same interior, and
+   `Bible_in_One_Year_Paperback_Corrected_17.763x11.250.pdf`. Note the house
+   pattern is $19.99 for paperbacks; Louis said $29.99, which is worth
+   confirming since every other Bible Buddy paperback is $19.99.
+3. The three print files are copied into `tmp/` (gitignored) because the
+   browser upload tool can only read files inside the project.
