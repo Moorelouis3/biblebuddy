@@ -132,16 +132,44 @@ export default function NotificationDiagnostics() {
   const read = useCallback(async () => {
     if (!isNativeApp()) return;
 
+    /**
+     * Never let one slow answer blank the whole panel (Louis, 2026-10-24:
+     * "everything is worse now, nothing is connecting").
+     *
+     * He was right and it was mine. Every row was written by a single
+     * setState at the END of this function, so when the daily-reminder check
+     * I had just added hung on the same web plugin as everything else, not
+     * one row ever updated: App build and permission sat on "checking...",
+     * the rest on "could not ask". The panel looked broken, and worse, it
+     * looked like the APP had got worse.
+     *
+     * So every question is bounded and each answer is written as it arrives.
+     * A check that hangs now costs its own row and nothing else.
+     */
+    const ask = async <T,>(work: Promise<T>, ms: number, fallback: T): Promise<T> => {
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      const value = await Promise.race([
+        work.catch(() => fallback),
+        new Promise<T>((resolve) => {
+          timer = setTimeout(() => resolve(fallback), ms);
+        }),
+      ]);
+      if (timer) clearTimeout(timer);
+      return value;
+    };
+
     // The installed TestFlight build. A separate question from the website
     // build above it, and the one nobody could answer all evening.
-    let appBuild = "unknown";
-    try {
-      const appMod = await import("@capacitor/app");
-      const info = await appMod.App.getInfo();
-      appBuild = `${info.version} (${info.build})`;
-    } catch (error) {
-      appBuild = `unavailable (${error instanceof Error ? error.message : "no detail"})`;
-    }
+    const appBuild = await ask(
+      (async () => {
+        const appMod = await import("@capacitor/app");
+        const info = await appMod.App.getInfo();
+        return `${info.version} (${info.build})`;
+      })(),
+      6_000,
+      "could not read",
+    );
+    setState((prev) => ({ ...prev, appBuild }));
 
     /**
      * The REAL iOS permission, over the native bridge.
@@ -164,6 +192,8 @@ export default function NotificationDiagnostics() {
         permission = `plugin missing (${error instanceof Error ? error.message : "no detail"})`;
       }
     }
+
+    setState((prev) => ({ ...prev, permission }));
 
     let tokenStored: boolean | null = null;
     try {
@@ -211,13 +241,15 @@ export default function NotificationDiagnostics() {
      * broken is Apple's token. If not, something far more basic is wrong and
      * no amount of push work would ever have helped.
      */
-    let reminderOn: boolean | null = null;
-    try {
-      const { isDailyReminderOn } = await import("@/lib/nativeReminders");
-      reminderOn = await isDailyReminderOn();
-    } catch {
-      // Leave it unknown rather than guess.
-    }
+    const reminderOn = await ask<boolean | null>(
+      (async () => {
+        const { isDailyReminderOn } = await import("@/lib/nativeReminders");
+        return await isDailyReminderOn();
+      })(),
+      6_000,
+      null,
+    );
+    setState((prev) => ({ ...prev, reminderOn }));
 
     // Whether the server can send at all. Permission and a token still
     // deliver nothing if Apple's keys are missing from the environment.
@@ -233,7 +265,7 @@ export default function NotificationDiagnostics() {
       // Unknown beats guessing.
     }
 
-    setState((prev) => ({ ...prev, permission, tokenStored, appBuild, liveBuild, apns, reminderOn }));
+    setState((prev) => ({ ...prev, tokenStored, liveBuild, apns }));
   }, []);
 
   useEffect(() => {
@@ -357,6 +389,11 @@ export default function NotificationDiagnostics() {
         {/* The last link in the chain. Without Apple's keys the server skips
             every device token in silence, which looks identical to
             notifications simply not working. */}
+        <Row
+          label="Daily reminder on this phone"
+          value={state.reminderOn === null ? "could not ask" : state.reminderOn ? "scheduled" : "not scheduled"}
+          good={state.reminderOn}
+        />
         <Row
           label="Server can send to Apple"
           value={state.apns === null ? "could not ask" : state.apns ? "yes" : "NO - Apple keys missing"}
