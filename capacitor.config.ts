@@ -53,6 +53,25 @@ const config: CapacitorConfig = {
     allowNavigation: ["mybiblebuddy.net", "www.mybiblebuddy.net"],
   },
 
+  plugins: {
+    PushNotifications: {
+      /**
+       * Show notifications even while the app is open (Louis, 2026-10-24).
+       *
+       * iOS hands a push that arrives in the FOREGROUND to the app and shows
+       * nothing by itself; the app has to say it wants a banner. Without
+       * this, a notification can be sent, accepted by Apple and delivered to
+       * the phone while looking, to the person holding it, exactly like
+       * nothing happened - which is the last thing that looked broken after
+       * the token finally started arriving.
+       *
+       * Louis is being messaged while sitting in the app, which is the
+       * normal case for testing and a common one in real use.
+       */
+      presentationOptions: ["badge", "sound", "alert"],
+    },
+  },
+
   ios: {
     // Let the page handle the safe area itself; the site already does.
     contentInset: "never",
