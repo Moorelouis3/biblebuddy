@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-21-explained",
+    title: "Leviticus 21 Explained: The Holiness Rules for God's Priests",
+    description:
+      "Leviticus 21 explained verse by verse: the mourning and marriage rules for priests, the high priest's stricter standard, and the blemish list at the altar.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-21-explained",
+    publishedAt: "2026-10-24",
+    readTime: "14 min read",
+    image: "/blog-banners/leviticus-21-explained.jpg",
+    groupPost: {
+      title: "Leviticus 21 Explained 📖",
+      content:
+        "Twenty chapters for the whole nation.\nThis one narrows to one family.\n\n📌 Priests were held to a higher standard than everyone else.\n\n📖 An ordinary priest could mourn six close relatives, no more.\n📖 The high priest could not even mourn his own parents.\n📖 A blemished priest still ate the holy bread, just not at the altar.\n\nNew article on:\n🟢 the **anointing oil** behind the high priest's hardest rule\n🟢 why a priest's daughter faced a **harsher penalty**\n🟢 what the **blemish list** does and does not take away\n\nDid you know this chapter still provides for the priest it restricts? 🙏",
+    },
+  },
+  {
     slug: "leviticus-20-explained",
     title: "Leviticus 20 Explained: The Death Penalty Chapter of the Law",
     description:
