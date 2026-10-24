@@ -740,13 +740,24 @@ async function runRegistration(
      * twice is free: the token is the primary key, so the second one
      * updates last_seen_at rather than adding a row.
      */
-    const registered = await step("register", push.register(), 8_000);
-    if (registered === null && nativeBridgeCallable()) {
-      await step("register (bridge)", nativeCall("PushNotifications", "register"), 8_000);
-    } else if (nativeBridgeCallable()) {
-      void nativeCall("PushNotifications", "register").catch(() => {
-        // Already registered through the plugin; this is only belt and braces.
-      });
+    /**
+     * The bridge is the REAL register, and it goes first (Louis, 2026-10-24).
+     *
+     * His trail read "register ok 1ms". A call that crosses into Swift,
+     * reaches UIApplication.registerForRemoteNotifications and comes back
+     * cannot do it in a millisecond: that is the web implementation
+     * resolving instantly and doing nothing. It does not fail, it reports
+     * success - so having the bridge as a FALLBACK for failure never helped,
+     * because there was never a failure to fall back from. Apple was simply
+     * never asked, which is why there is no token and no error.
+     *
+     * So the bridge call is the one we await and time. The plugin call stays
+     * for the website, where there is no bridge.
+     */
+    if (nativeBridgeCallable()) {
+      await step("register (bridge)", nativeCall("PushNotifications", "register"), 10_000);
+    } else {
+      await step("register (plugin)", push.register(), 10_000);
     }
 
     /**
