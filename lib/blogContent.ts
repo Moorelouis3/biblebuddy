@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-22-explained",
+    title: "Leviticus 22 Explained: Who Could Eat the Holy Things",
+    description:
+      "Leviticus 22 explained verse by verse: who could eat the holy things, why offerings had to be unblemished, and the mother and young rule.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-22-explained",
+    publishedAt: "2026-10-24",
+    readTime: "14 min read",
+    image: "/blog-banners/leviticus-22-explained.jpg",
+    groupPost: {
+      title: "Leviticus 22 Explained 📖",
+      content:
+        "Last chapter set the rules for priests.\nThis one sets rules for their food, and their offerings.\n\n📌 The same unblemished standard applied to the man and the animal.\n\n📖 Uncleanness could stop a priest from eating his own holy food.\n📖 A newborn animal had to wait seven days before it could be offered.\n📖 Killing a mother and her young on the same day was forbidden.\n\nNew article on:\n🟢 who in a priest's house could actually **eat the holy things**\n🟢 why the **blemish list** for animals matches the one for priests\n🟢 the one line of **mercy** tucked into a chapter about sacrifice\n\nDid you catch the connection to the chapter right before this one? 🙏",
+    },
+  },
+  {
     slug: "leviticus-21-explained",
     title: "Leviticus 21 Explained: The Holiness Rules for God's Priests",
     description:
