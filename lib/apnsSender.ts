@@ -98,6 +98,25 @@ export async function sendApnsPush(
           "apns-push-type": "alert",
           // 10 is "deliver now", which is what a message is.
           "apns-priority": "10",
+          /**
+           * Store it and keep trying for a day (Louis, 2026-10-24).
+           *
+           * Omitting this means an expiry of 0, and Apple's rule for 0 is
+           * "attempt delivery only once and do not store it". APNs still
+           * answers 200 - it accepted the notification - so a push that is
+           * dropped because the phone's push connection was not live at that
+           * exact second is indistinguishable, from here, from one that was
+           * delivered. Three notifications were accepted for Louis's phone
+           * and none of them ever appeared, not even in Notification Centre,
+           * which is what that looks like.
+           *
+           * APNs keeps its own long-lived connection on port 5223, and
+           * plenty of home routers and ISPs block it while every other kind
+           * of traffic works. With an expiry set, Apple holds the
+           * notification and delivers it when the phone reconnects, instead
+           * of throwing it away.
+           */
+          "apns-expiration": String(Math.floor(Date.now() / 1000) + 86_400),
           "content-type": "application/json",
         },
         body: payload,
