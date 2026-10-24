@@ -1601,11 +1601,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
        * plugins hanging, from 2026-10-11 until tonight. It looked like a broken
        * plugin because both were broken, and they were breaking each other.
        *
-       * registerForNativePush is awaited first and owns the prompt. It cannot
-       * hang the reminder for long - it races a six second timeout internally -
-       * and once it has settled, whatever the reader answered is already
-       * recorded, so the reminder only has to read the permission, not ask for
-       * it again.
+       * Ordering them was not enough (Louis, 2026-10-24). Push went first and
+       * raced a six second timeout, which stops OUR code waiting but cannot
+       * cancel the request iOS is still holding - so the reminder asked on top
+       * of an open one anyway, and iOS answered neither. Through four builds
+       * no prompt ever appeared.
+       *
+       * So neither of these asks any more. Both only read the permission;
+       * the "Turn on notifications" button in Settings is the single place
+       * allowed to spend the one prompt iOS gives an app. Once that has been
+       * answered yes, the two calls below find it granted and carry on.
        */
       const { registerIfPermissionGranted } = await import("@/lib/nativePush");
       // Only picks up a token if the reader already granted permission. Asking
