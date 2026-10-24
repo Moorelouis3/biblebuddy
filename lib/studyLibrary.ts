@@ -35,23 +35,24 @@ export const FEATURED_STUDY_ORDER: readonly string[] = [
 export const AVAILABLE_STUDY_TITLES: ReadonlySet<string> = new Set([
   "The Wisdom of Proverbs",
   "21 Women of the Bible",
+  // Moved out of UPCOMING_STUDIES on 2026-10-24, once all 60 days existed in
+  // devotional_days. The devotionals row still carries available_from
+  // 2026-10-25, which is what actually gates the reader, so this does not open
+  // it early - it just stops the card being a grey "Coming Soon" on the day it
+  // does open.
+  "Higher Hope",
 ]);
 
 /**
- * Studies that are announced but not open yet. Was a single title until
- * Higher Hope was added (2026-10-23) and there were two at once: Higher Hope
- * on the 25th and The Tempting of Jesus on 1 November.
+ * Studies that are announced but not open yet.
  *
  * A study belongs here rather than in AVAILABLE_STUDY_TITLES until its days
- * are actually written - Higher Hope is 60 days long and had 0 of them in the
- * database when it was listed, so opening it would have shown an empty study.
- * Move a title to AVAILABLE_STUDY_TITLES once its days exist.
- *
- * Higher Hope has no slug landing page of its own, so it opens on its id.
+ * are actually written - Higher Hope sat here from 2026-10-23 because it is 60
+ * days long and had 0 of them in the database, so opening it would have shown
+ * an empty study. Move a title across once its days exist.
  */
 export const UPCOMING_STUDIES: ReadonlyMap<string, { startLabel: string; path: string }> = new Map([
   ["The Tempting of Jesus", { startLabel: "Starts 1 November", path: "/devotionals/tempting-of-jesus" }],
-  ["Higher Hope", { startLabel: "Starts 25 October", path: "/devotionals/170cb29a-39fc-47b7-9083-db1664df04f6" }],
 ]);
 
 export const isInLibrary = (title: string | null | undefined): boolean =>
