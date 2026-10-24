@@ -109,13 +109,71 @@ async function reportPushFailure(stage: string, detail?: unknown): Promise<void>
 }
 
 /**
+ * Only one request to iOS, ever, at a time (Louis, 2026-10-24).
+ *
+ * THE BUG THIS FIXES. Two different places called registerForNativePush:
+ * AppShell on mount, and the "Turn on notifications" button in Settings.
+ * Neither knew about the other, so AppShell's automatic call spent the
+ * authorization request on launch; the six second race gave up in JavaScript
+ * but the NATIVE request stays outstanding - a timeout stops us waiting, it
+ * cannot cancel iOS. Tapping the button then issued a SECOND
+ * requestPermissions while the first was still open, and iOS answered
+ * neither. The button sat on "Asking..." forever and permission stayed at
+ * "prompt".
+ *
+ * That is exactly what Louis's phone showed on 2026-10-24: running ios, plugin
+ * present, registering on, permission prompt, registered "not yet", button
+ * stuck. native_push_tokens had zero rows, for anyone, ever.
+ *
+ * The earlier fix on 2026-10-17 stopped two PLUGINS colliding
+ * (push-notifications and local-notifications). It did not stop two callers of
+ * the same plugin, which is what was left.
+ *
+ * Every caller now shares one promise, so a second call can never reach iOS
+ * while the first is open.
+ */
+let registrationInFlight: Promise<boolean> | null = null;
+
+export function registerForNativePush(onOpenUrl?: (url: string) => void): Promise<boolean> {
+  if (registrationInFlight) return registrationInFlight;
+  registrationInFlight = runRegistration(onOpenUrl).finally(() => {
+    registrationInFlight = null;
+  });
+  return registrationInFlight;
+}
+
+/**
+ * Register only if the reader has ALREADY said yes.
+ *
+ * For callers that run on their own, without anybody asking - AppShell on
+ * mount. iOS gives an app one notification prompt, and spending it silently on
+ * launch is both a wasted prompt and the cause of the deadlock above. Asking is
+ * now the button's job alone; this only picks up the token for somebody who
+ * already granted it on a previous run.
+ */
+export async function registerIfPermissionGranted(
+  onOpenUrl?: (url: string) => void,
+): Promise<boolean> {
+  if (!isNativeApp()) return false;
+  const push = await pushPlugin();
+  if (!push) return false;
+  try {
+    const permission = await push.checkPermissions();
+    if (permission.receive !== "granted") return false;
+  } catch {
+    return false;
+  }
+  return registerForNativePush(onOpenUrl);
+}
+
+/**
  * Ask for permission, register with APNs, and remember the token.
  *
  * Call it once per session for a signed-in reader. Safe to call repeatedly:
  * the token is the primary key, so re-registering updates last_seen_at
  * rather than piling up rows.
  */
-export async function registerForNativePush(
+async function runRegistration(
   onOpenUrl?: (url: string) => void,
 ): Promise<boolean> {
   /**

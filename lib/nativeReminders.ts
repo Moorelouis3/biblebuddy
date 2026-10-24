@@ -68,10 +68,22 @@ export async function scheduleDailyReminder(hour = DEFAULT_REMINDER_HOUR): Promi
   if (!notifications) return false;
 
   try {
-    let permission = await notifications.checkPermissions();
-    if (permission.display === "prompt" || permission.display === "prompt-with-rationale") {
-      permission = await notifications.requestPermissions();
-    }
+    /**
+     * This no longer asks (Louis, 2026-10-24).
+     *
+     * It used to, and it ran straight after registerForNativePush in AppShell.
+     * That call races a six second timeout, which stops OUR code waiting but
+     * cannot cancel the request iOS is still holding - so six seconds later
+     * this asked on top of it. Two open authorization requests, and iOS
+     * answers neither. No prompt ever appeared, on a launch where the reader
+     * had touched nothing.
+     *
+     * iOS gives an app one notification prompt. Exactly one place is allowed
+     * to spend it now: the "Turn on notifications" button in Settings. Both
+     * plugins map to the same iOS authorization, so once that button has been
+     * answered yes, the reminder below simply finds it granted.
+     */
+    const permission = await notifications.checkPermissions();
     if (permission.display !== "granted") return false;
 
     // Replacing the same id rather than cancelling first: schedule() with an

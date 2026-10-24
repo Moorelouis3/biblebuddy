@@ -1607,8 +1607,11 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
        * recorded, so the reminder only has to read the permission, not ask for
        * it again.
        */
-      const { registerForNativePush } = await import("@/lib/nativePush");
-      await registerForNativePush((url) => {
+      const { registerIfPermissionGranted } = await import("@/lib/nativePush");
+      // Only picks up a token if the reader already granted permission. Asking
+      // is the Settings button's job: iOS allows one prompt, and spending it
+      // here on launch is what deadlocked the button (see lib/nativePush).
+      await registerIfPermissionGranted((url) => {
         // Tapping the notification opens what it was about.
         if (!cancelled) router.push(url);
       });
