@@ -166,6 +166,79 @@ export async function registerIfPermissionGranted(
   return registerForNativePush(onOpenUrl);
 }
 
+type PushPlugin = NonNullable<Awaited<ReturnType<typeof pushPlugin>>>;
+type PushPermission = Awaited<ReturnType<PushPlugin["checkPermissions"]>>;
+
+/**
+ * Ask iOS, then believe the OS rather than the promise (Louis, 2026-10-24).
+ *
+ * This used to race requestPermissions against a six second timer and call
+ * the timer winning a failure. That made sense while the request genuinely
+ * hung - two callers were asking at once, see above - but as a general rule
+ * it is wrong, and fixing the deadlock turned it into the NEXT bug: somebody
+ * who takes seven seconds to read the dialog and tap Allow would have been
+ * told it failed. Worse, register() would never run, so permission would be
+ * granted with no token to show for it, which looks identical from the
+ * outside to the thing we have spent a fortnight chasing.
+ *
+ * So no timer decides anything now. iOS records the answer in the
+ * authorization status whether or not the promise that asked for it ever
+ * resolves, so the status is polled alongside, and whichever arrives first
+ * wins. Only two minutes of the status staying undecided is a real hang.
+ */
+async function askForAuthorization(push: PushPlugin): Promise<PushPermission | null> {
+  // A holder rather than a bare variable: the promise below assigns from a
+  // callback, which TypeScript cannot see, and a plain `let` would stay
+  // narrowed to null.
+  const asked: { status: PushPermission | null; threw: boolean } = {
+    status: null,
+    threw: false,
+  };
+
+  void push
+    .requestPermissions()
+    .then((status) => {
+      asked.status = status;
+    })
+    .catch((error) => {
+      asked.threw = true;
+      console.warn("[PUSH] requestPermissions threw:", error);
+    });
+
+  // Two minutes, read once a second. Long enough to answer a phone call and
+  // come back to the dialog; short enough that a true hang still reports.
+  const deadline = Date.now() + 120_000;
+  while (Date.now() < deadline) {
+    await new Promise((resolve) => setTimeout(resolve, 1_000));
+
+    const answered = asked.status;
+    if (answered) return answered;
+
+    try {
+      const status = await push.checkPermissions();
+      if (status.receive === "granted" || status.receive === "denied") return status;
+    } catch {
+      // One failed read of the status is not an answer. Keep waiting.
+    }
+
+    if (asked.threw) {
+      // The ask itself failed. Give the status a moment in case iOS put the
+      // dialog up regardless, then stop - sitting out the full two minutes
+      // for an error we already have helps nobody.
+      await new Promise((resolve) => setTimeout(resolve, 2_000));
+      try {
+        const status = await push.checkPermissions();
+        if (status.receive === "granted" || status.receive === "denied") return status;
+      } catch {
+        // Fall through to the failure report.
+      }
+      return null;
+    }
+  }
+
+  return null;
+}
+
 /**
  * Ask for permission, register with APNs, and remember the token.
  *
@@ -241,40 +314,14 @@ async function runRegistration(
   try {
     let permission = await push.checkPermissions();
     if (permission.receive === "prompt" || permission.receive === "prompt-with-rationale") {
-      /**
-       * A hang is a failure, and it has to report like one.
-       *
-       * Louis tapped "Turn on notifications" on 2026-10-17: the button went to
-       * its disabled state and stayed there for over a minute with no iOS
-       * prompt. checkPermissions had just answered "prompt" on the same screen,
-       * so the bridge works - it is this call that goes out and never comes
-       * back. Every error path here reports, but a promise that never settles
-       * reaches no catch, so the one failure we were actually hitting was the
-       * one that stayed invisible.
-       *
-       * Ten seconds is far longer than asking iOS for permission takes; it is
-       * a hang, not a slow phone.
-       */
-      const TIMED_OUT = Symbol("timed-out");
-      let timer: ReturnType<typeof setTimeout> | undefined;
-      const outcome = await Promise.race([
-        push.requestPermissions(),
-        new Promise<typeof TIMED_OUT>((resolve) => {
-          // Six, not ten. Louis has sat watching this button three times
-          // tonight; ten seconds of a disabled button reads as broken whether
-          // or not it is.
-          timer = setTimeout(() => resolve(TIMED_OUT), 6_000);
-        }),
-      ]);
-      if (timer) clearTimeout(timer);
-
-      if (outcome === TIMED_OUT) {
-        await reportPushFailure("requestPermissions never came back after 10s", {
+      const decided = await askForAuthorization(push);
+      if (!decided) {
+        await reportPushFailure("iOS never recorded an answer to the permission prompt", {
           checkPermissionsSaid: permission.receive,
         });
         return false;
       }
-      permission = outcome;
+      permission = decided;
     }
     if (permission.receive !== "granted") {
       await reportPushFailure(`permission is "${permission.receive}"`);
