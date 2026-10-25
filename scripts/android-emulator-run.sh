@@ -22,10 +22,21 @@ set -euo pipefail
 APP_ID="net.mybiblebuddy.app"
 OUT="${1:-build/emulator-screenshots}"
 AVD_NAME="biblebuddy-ci"
+# The ABI has to match the machine, not the app. An x86_64 system image will
+# not boot on Apple Silicon at all, and this build moved to a Mac mini M2 on
+# 2026-10-25 because Codemagic's free plan has no Linux instances. Hard-coding
+# x86_64 here is the same shape of mistake the iOS script made with device
+# names, so it is read off the host instead.
+case "$(uname -m)" in
+  arm64|aarch64) ABI="arm64-v8a" ;;
+  *)             ABI="x86_64" ;;
+esac
+echo "==> Host is $(uname -m), using $ABI system images"
+
 # The emulator image, which is NOT the app's target. The app targets 36; an
 # emulator a level or two back boots faster and more reliably, and minSdk is
 # 24, so running there proves as much.
-FALLBACK_IMAGE="system-images;android-35;google_apis;x86_64"
+FALLBACK_IMAGE="system-images;android-35;google_apis;$ABI"
 
 mkdir -p "$OUT"
 
@@ -78,7 +89,7 @@ echo "==> Built $APK"
 IMAGE=""
 if [ -n "$SDKMANAGER" ]; then
   IMAGE="$("$SDKMANAGER" --list_installed 2>/dev/null \
-    | grep -oE 'system-images;android-[0-9]+;google_apis[a-z_]*;x86_64' \
+    | grep -oE "system-images;android-[0-9]+;google_apis[a-z_]*;$ABI" \
     | sort -t';' -k2 -V \
     | tail -1 || true)"
 fi

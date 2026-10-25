@@ -121,16 +121,20 @@ export default function CommunityEventBanner({
   const heading =
     state.phase === "live" ? `Day ${state.communityDay} of ${event.totalDays}` : event.title;
 
+  // These three lines used to be Proverbs wording sitting in the markup, which
+  // would have had the November banner reading "Today: Proverbs 8" over a
+  // Genesis study. They come off the event now, like the rest of the copy.
   const sub =
     state.phase === "countdown"
-      ? "A 31-day devotional · Starting October 1"
+      ? event.countdownSub
       : state.phase === "live"
-        ? `Today: Proverbs ${state.communityDay}`
-        : "Grow in wisdom one chapter at a time.";
+        ? event.liveSub.replace("{day}", String(state.communityDay))
+        : event.evergreenSub;
 
   // The study itself is still being built, so members just see that they are
   // in - nothing to view yet. Louis, 2026-09-02.
-  const cta = joined ? "YOU'RE IN ✓" : state.phase === "evergreen" ? "START THE 31-DAY JOURNEY" : "JOIN THE STUDY";
+  const cta =
+    joined ? "YOU'RE IN ✓" : state.phase === "evergreen" ? `START THE ${event.totalDays}-DAY JOURNEY` : "JOIN THE STUDY";
 
   return (
     <Link

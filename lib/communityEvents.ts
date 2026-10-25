@@ -24,6 +24,12 @@ export type CommunityEvent = {
   printBooksPath: string | null;
   /** "October 1-31" - the eyebrow over the title and the footer line. */
   dateRangeLabel: string;
+  /** Banner line while the study is still counting down. */
+  countdownSub: string;
+  /** Banner line on a live day. "{day}" becomes the community day number. */
+  liveSub: string;
+  /** Banner line once the dated window has passed. */
+  evergreenSub: string;
   /** The paragraph under the header: what the study is and how it paces. */
   intro: string;
   /** The two paragraphs inside "How does the community study work?". */
@@ -52,6 +58,9 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     bookUrl: null,
     printBooksPath: "/books/wisdom-of-proverbs",
     dateRangeLabel: "October 1–31",
+    countdownSub: "A 31-day devotional · Starting October 1",
+    liveSub: "Today: Proverbs {day}",
+    evergreenSub: "Grow in wisdom one chapter at a time.",
     intro:
       "Study all 31 chapters of Proverbs alongside Bible Buddies around the world. A new day becomes available every day throughout October. You do not have to join at a particular time. Complete each day whenever it fits your schedule, then meet the community in the daily discussion.",
     howItWorks: [
@@ -62,24 +71,29 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     evergreenLine: "All 31 days are open. Go at your own pace, one chapter at a time.",
   },
   {
-    slug: "obedience-of-abraham",
-    title: "The Obedience of Abraham",
+    slug: "beginning-of-everything",
+    title: "The Beginning of Everything",
     subtitle: "A 21-Day Bible Buddy Community Devotional",
-    devotionalId: "2c7641c1-0280-4847-b36e-e89004a58534",
+    devotionalId: "486cff66-b50e-488d-9330-3951589e6fa8",
     startDate: "2026-11-01",
     totalDays: 21,
-    bannerArt: "/events/abraham-banner-art.png",
+    bannerArt: "/events/beginning-of-everything-banner-art.webp",
     bookUrl: null,
     printBooksPath: null,
     dateRangeLabel: "November 1–21",
+    countdownSub: "A 21-day devotional · Starting November 1",
+    liveSub: "Day {day} of Genesis 1-8",
+    evergreenSub: "Start where the Bible starts, one day at a time.",
     intro:
-      "Walk through Abraham's life with Bible Buddies around the world - the call he answered, the years he waited, the covenant God kept, and the mistakes he made on the way - and finish where the New Testament looks back at him in Hebrews, Romans, James and Galatians. A new day opens every day from the 1st to the 21st of November. Join whenever you like and study each day when it suits you, then meet the community in the daily discussion.",
+      "Read the first eight chapters of the Bible with Bible Buddies around the world - the light on the first morning, the garden, the question the serpent asked, the first family and the first murder, the long line of names from Adam to Noah, the flood, and the morning one family stepped out onto dry ground. A new day opens every day from the 1st to the 21st of November. Join whenever you like and study each day when it suits you, then meet the community in the daily discussion.",
     howItWorks: [
-      "A new devotional unlocks each day. Read or listen, read that day's chapter, take the trivia, and answer the daily discussion question—whenever you have time.",
-      "We read the same chapter each day and meet in the discussion afterward.",
+      // Genesis 1 alone takes four days here, so this study paces by passage
+      // rather than by chapter. The copy says passage for that reason.
+      "A new devotional unlocks each day. Read or listen, read that day's passage in Genesis, take the trivia, and answer the daily discussion question—whenever you have time.",
+      "We read the same passage each day and meet in the discussion afterward.",
     ],
-    joinedLine: "walk through Abraham's story together",
-    evergreenLine: "All 21 days are open. Go at your own pace, one chapter at a time.",
+    joinedLine: "read Genesis together",
+    evergreenLine: "All 21 days are open. Go at your own pace, one day at a time.",
   },
 ];
 

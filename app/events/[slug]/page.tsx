@@ -4,7 +4,8 @@ export const dynamic = "force-dynamic";
 
 /**
  * The community event page - sign-up and information for every community
- * devotional: Proverbs in October, Abraham in November, whatever follows.
+ * devotional: Proverbs in October, The Beginning of Everything in November,
+ * whatever follows.
  * All of the copy comes from lib/communityEvents.ts, so a new study is a
  * config entry and never carries the previous study's wording.
  *
@@ -25,7 +26,13 @@ import ProverbsBooksPromo from "../../../components/ProverbsBooksPromo";
 import { WISDOM_BOOKS_ON_SALE } from "../../../lib/wisdomOfProverbsProducts";
 import { joinCommunityEvent } from "../../../lib/communityEventJoin";
 import { ensureGuestSession } from "../../../lib/guestSession";
-import { getCommunityEvent, getCommunityEventState, type CommunityEventState } from "../../../lib/communityEvents";
+import {
+  getCommunityEvent,
+  getCommunityEventState,
+  isCommunityEventDayUnlocked,
+  type CommunityEventState,
+} from "../../../lib/communityEvents";
+import { eventDayStudyPath } from "../../../lib/communityEventDays";
 import EventTodayCard from "../../../components/community-event/EventTodayCard";
 import EventProgressTracker from "../../../components/community-event/EventProgressTracker";
 import { useEventProgress } from "../../../components/community-event/useEventProgress";
@@ -70,7 +77,6 @@ export default function CommunityEventPage() {
   const [joined, setJoined] = useState(false);
   const { ensureFullAccount, accountGateModal } = useAccountGate("join the study");
   const [joining, setJoining] = useState(false);
-  const [justJoined, setJustJoined] = useState(false);
   const [reminders, setReminders] = useState(false);
   const [howOpen, setHowOpen] = useState(false);
   // The printed-book banner stays hidden until the hardcover Amazon link is
@@ -252,10 +258,22 @@ export default function CommunityEventPage() {
         setJoined(true);
       } else if (result.ok) {
         setJoined(true);
-        setJustJoined(true);
         setTotalMembers((count) => (count === null ? 1 : count + 1));
         track("community_event_joined", { event: event.slug });
         if (reminders) track("community_event_reminder_optin", { event: event.slug });
+
+        // Joining IS starting (Louis, 2026-10-25). In October 252 people
+        // signed up and 64 ever opened a day: the confirmation card was the
+        // end of the funnel for three out of four of them. A new member now
+        // lands in day 1 instead of being told they are in. Before the study
+        // opens there is no day to send them to, so the welcome card below
+        // still does that job during the countdown.
+        if (isCommunityEventDayUnlocked(event, 1)) {
+          track("community_event_day_started", { event: event.slug, day: 1, source: "join" });
+          router.push(eventDayStudyPath(event.devotionalId, 1));
+          return;
+        }
+
         // Straight into the grid with their own photo and first name.
         try {
           const { data: me } = await supabase
@@ -309,8 +327,10 @@ export default function CommunityEventPage() {
     timeZone: "UTC",
   });
 
-  // Once someone is in, the buttons disappear - this is a sign-up page for a
-  // study that is still being built, so there is nothing to view yet.
+  // Once someone is in, the buttons disappear. A member who comes back here
+  // during the study has the Today card above to open; one who joined during
+  // the countdown has the welcome card. The join itself no longer stops on
+  // this page at all once a day is unlocked - see join().
   const joinButton = joined ? null : (
     <button
       type="button"
