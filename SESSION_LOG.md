@@ -8673,3 +8673,35 @@ Still open:
   book numbers are as unattributable as October's.
 - Queue the four November weekly emails.
 Next: the November config swap and banner art, then join-equals-start.
+
+## 2026-10-25 (November community event swapped over)
+Done:
+- **COMMUNITY_EVENTS now runs The Beginning of Everything from 1 November**,
+  21 days, devotional 486cff66. The Abraham entry is gone - its devotional has
+  15 of its 21 days seeded, so it was never going to run.
+- **Banner art made from the book cover**: a square crop of the Eden scene
+  (couple, lion, lamb, waterfall, sunrise) with no text in it, so the event
+  banner, the Library card and Amazon all show the same artwork.
+  /events/beginning-of-everything-banner-art.webp, 790x790, 98kb.
+- **Found more Proverbs wording hiding in the markup.** The banner's three
+  subtitle lines and its evergreen CTA were hardcoded: in November it would
+  have read "Today: Proverbs 8" over a Genesis study and offered a "31-DAY
+  JOURNEY" for a 21-day one. They are config fields now (countdownSub,
+  liveSub, evergreenSub) and the CTA counts event.totalDays. The daily popup
+  said "Day N of 21 - Proverbs N" too; it shows the day's own title instead.
+- Verified: /events/beginning-of-everything renders November 1-21, 7 DAYS TO
+  GO, the Genesis intro and JOIN THE 21-DAY STUDY. Checked the new art in the
+  exact CSS of all three surfaces (desktop banner, mobile banner, day popup).
+  tsc clean.
+Not live yet: 2 commits, next build Sun 17:05 Berlin. Step 3 - nothing is
+broken today, and the build lands six days before 1 November.
+Still open:
+- **Three people joined obedience-of-abraham before it was removed.** Their
+  rows are untouched, so they are enrolled in a study with no page. Louis's
+  call: move them to the new study, or leave them.
+- Join-equals-start (open day 1 in the join click) - still the highest-value
+  retention fix in the October report.
+- Amazon Associates tag on outbound book links, before November.
+- The four November weekly emails are not queued.
+- The one-time join popup for the new study is not built.
+Next: join-equals-start, then the November emails.

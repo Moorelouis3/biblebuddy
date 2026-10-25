@@ -4,7 +4,8 @@ export const dynamic = "force-dynamic";
 
 /**
  * The community event page - sign-up and information for every community
- * devotional: Proverbs in October, Abraham in November, whatever follows.
+ * devotional: Proverbs in October, The Beginning of Everything in November,
+ * whatever follows.
  * All of the copy comes from lib/communityEvents.ts, so a new study is a
  * config entry and never carries the previous study's wording.
  *

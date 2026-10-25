@@ -219,7 +219,9 @@ export default function CommunityEventDayPopup({
             Day {info.day} is ready
           </h2>
           <p className="mt-2 text-sm font-black uppercase tracking-[0.16em] text-[#cfa147]">
-            Day {info.day} of {info.totalDays} · Proverbs {info.day}
+            {/* The day's own title follows on the next line, so this stays
+                study-agnostic - it used to say "Proverbs {day}". */}
+            Day {info.day} of {info.totalDays}
           </p>
           {info.title ? <p className="mt-3 text-[15px] font-semibold leading-6 text-[#eadcc2]">{info.title}</p> : null}
           <button

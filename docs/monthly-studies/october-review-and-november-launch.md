@@ -322,14 +322,20 @@ the normal build.
 
 **Before 1 November, ordered by what blocks what**
 
-- [ ] Swap the November entry in `lib/communityEvents.ts` to The Beginning of
+- [x] Swap the November entry in `lib/communityEvents.ts` to The Beginning of
       Everything. Slug `beginning-of-everything`, 21 days, start
-      `2026-11-01`, `dateRangeLabel` "November 1–21".
-- [ ] Commit `/events/beginning-of-everything-banner-art.png`.
-- [ ] Write the four copy fields (`intro`, `howItWorks`, `joinedLine`,
-      `evergreenLine`) for Genesis, not Abraham.
-- [ ] Decide what happens to the Abraham entry — remove it, or give it a 2027
-      start date so it stops being November.
+      `2026-11-01`, `dateRangeLabel` "November 1–21". *(Done 25 Oct.)*
+- [x] Commit `/events/beginning-of-everything-banner-art.webp` — a square
+      crop of the book cover, so the banner, the Library card and Amazon all
+      show the same artwork. *(Done 25 Oct.)*
+- [x] Write the copy fields for Genesis, not Abraham. *(Done 25 Oct. Three
+      more were added — `countdownSub`, `liveSub`, `evergreenSub` — because
+      the banner still had Proverbs wording in its markup and would have read
+      "Today: Proverbs 8" over a Genesis study.)*
+- [x] Decide what happens to the Abraham entry — removed, because its
+      devotional has 15 of its 21 days seeded. **Three people had already
+      joined `obedience-of-abraham`; their rows are untouched and they are now
+      enrolled in a study with no page. Louis's call what to do with them.**
 - [ ] Make the join action open day 1 in the same click (the October fix that
       matters most).
 - [ ] Add the Amazon Associates tag to every outbound book link.
