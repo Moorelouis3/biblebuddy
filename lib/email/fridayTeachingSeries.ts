@@ -33,6 +33,32 @@ export const SERIES_START = "2026-10-16";
 export const SERIES_TIMEZONE = "America/New_York";
 export const SERIES_SEND_HOUR = 8;
 
+/**
+ * Fridays the series stays quiet (Louis, 2026-10-25: "make sure they fit
+ * around holidays").
+ *
+ * Nobody loses a lesson by skipping. Where a reader is up to is derived from
+ * what they have already been sent, not from the date, so a skipped Friday
+ * simply moves their next lesson to the following week and the whole series
+ * shifts with it.
+ *
+ * Two of these land ON the Friday - Christmas Day and New Year's Day 2027 -
+ * and the third is the day after US Thanksgiving, when every retailer alive
+ * is in the inbox and a teaching email is wallpaper.
+ *
+ * Dates are the local Friday in SERIES_TIMEZONE, written as YYYY-MM-DD.
+ */
+export const SERIES_SKIP_FRIDAYS: ReadonlyArray<string> = [
+  "2026-11-27", // day after US Thanksgiving
+  "2026-12-25", // Christmas Day
+  "2027-01-01", // New Year's Day
+];
+
+/** Whether the series should stay silent on this local Friday. */
+export function isSkippedFriday(localDate: string): boolean {
+  return SERIES_SKIP_FRIDAYS.includes(localDate);
+}
+
 export function lessonById(id: string): FridayLesson | undefined {
   return FRIDAY_LESSONS.find((l) => l.id === id);
 }
