@@ -154,9 +154,43 @@ ${devotional.description ? `<p style="margin:0 0 16px;">${escapeHtml(devotional.
 <p style="margin:0 0 28px;"><a href="${SITE_URL}/devotionals/${escapeHtml(devotional.id)}" style="display:inline-block;background:${ACCENT};color:#ffffff;text-decoration:none;padding:14px 26px;font-size:16px;font-weight:bold;">Start ${escapeHtml(devotional.title)} &rarr;</a></p>`
     : "";
 
-  const featuresHtml = features.length
-    ? `${devotional ? rule() : ""}<h3 style="margin:0 0 18px;font-size:16px;font-weight:bold;letter-spacing:1px;color:${ACCENT};text-transform:uppercase;">Also written this week</h3>
-${features
+  /**
+   * One article leads, with something to actually read (Louis, 2026-10-25:
+   * "the auto email isn't deep enough, it's still a lil shallow").
+   *
+   * The newsletter was three links and a progress block - a table of
+   * contents, not a read. The lead article now carries its own teaser,
+   * which is already written in Louis's voice for the study group share
+   * (groupPost.content, present on 210 posts). Nothing is generated: if an
+   * article has no teaser it simply keeps the old title-and-description
+   * shape, and the rest of the week's posts stay a short list underneath so
+   * the email does not turn into a wall.
+   */
+  const rest = features.slice(1);
+  const leadTeaser = lead?.groupPost?.content?.trim() || "";
+
+  const teaserHtml = leadTeaser
+    ? leadTeaser
+        .split(/\n{2,}/)
+        .map(
+          (para) =>
+            `<p style="margin:0 0 12px;color:#3c4858;line-height:1.6;">${escapeHtml(para)
+              .replace(/\n/g, "<br>")
+              .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")}</p>`,
+        )
+        .join("\n")
+    : "";
+
+  const leadHtml = lead
+    ? `${devotional ? rule() : ""}<h3 style="margin:0 0 18px;font-size:16px;font-weight:bold;letter-spacing:1px;color:${ACCENT};text-transform:uppercase;">This week's read</h3>
+<p style="margin:0 0 10px;font-size:22px;line-height:1.3;"><a href="${escapeHtml(absolute(lead.canonicalPath))}" style="color:${INK};font-weight:bold;text-decoration:none;">${escapeHtml(lead.title)}</a></p>
+${teaserHtml || `<p style="margin:0 0 12px;color:#4a5668;">${escapeHtml(lead.description)}</p>`}
+<p style="margin:0 0 28px;"><a href="${escapeHtml(absolute(lead.canonicalPath))}" style="color:${ACCENT};font-weight:bold;text-decoration:underline;">Read it &rarr;</a></p>`
+    : "";
+
+  const restHtml = rest.length
+    ? `<h3 style="margin:0 0 14px;font-size:16px;font-weight:bold;letter-spacing:1px;color:${ACCENT};text-transform:uppercase;">Also this week</h3>
+${rest
   .map(
     (a) => `<p style="margin:0 0 6px;font-size:18px;line-height:1.35;"><a href="${escapeHtml(absolute(a.canonicalPath))}" style="color:${INK};font-weight:bold;text-decoration:none;">${escapeHtml(a.title)}</a></p>
 <p style="margin:0 0 8px;color:#4a5668;">${escapeHtml(a.description)}</p>
@@ -164,6 +198,8 @@ ${features
   )
   .join("\n")}`
     : "";
+
+  const featuresHtml = `${leadHtml}${restHtml}`;
 
   const html = `<!doctype html>
 <html lang="en">
@@ -223,8 +259,21 @@ ${featuresHtml}
           "",
         ]
       : []),
-    ...(features.length ? ["ALSO WRITTEN THIS WEEK", ""] : []),
-    ...features.flatMap((a) => [a.title, a.description, `Read it: ${absolute(a.canonicalPath)}`, ""]),
+    // Same shape as the HTML: the lead gets its teaser, the rest a list.
+    ...(lead
+      ? [
+          "THIS WEEK'S READ",
+          "",
+          lead.title,
+          "",
+          (leadTeaser || lead.description).replace(/\*\*(.+?)\*\*/g, "$1"),
+          "",
+          `Read it: ${absolute(lead.canonicalPath)}`,
+          "",
+        ]
+      : []),
+    ...(rest.length ? ["ALSO THIS WEEK", ""] : []),
+    ...rest.flatMap((a) => [a.title, a.description, `Read it: ${absolute(a.canonicalPath)}`, ""]),
     ...(features.length ? ["---", ""] : []),
     "{{progress_section}}",
     "",
