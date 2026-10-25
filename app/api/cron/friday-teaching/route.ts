@@ -8,6 +8,7 @@ import {
   firstFridayFor,
   orderedLessons,
 } from "@/lib/email/fridayTeachingSeries";
+import { themedFridayOn } from "@/lib/email/fridayThemedEmails";
 
 export const runtime = "nodejs";
 export const maxDuration = 300;
@@ -97,6 +98,34 @@ export async function GET(request: NextRequest) {
       { error: "forcing a live send requires CRON_SECRET; add dry=1 to simulate" },
       { status: 403 },
     );
+  }
+
+  /**
+   * THE DRIP STANDS DOWN ON A THEMED FRIDAY (Louis, 2026-10-25).
+   *
+   * Four Fridays carry a dated email of their own - Thanksgiving, the last
+   * Friday before Christmas, Christmas Day, New Year's Day - posted by
+   * /api/cron/email-campaign-send from its own scheduled campaign row.
+   * Without this, everybody would get two emails on Christmas morning:
+   * their next lesson and the Christmas one.
+   *
+   * Nobody loses a lesson by standing down. Somebody's position is the
+   * first lesson they have no send row for, not a count of Fridays, so a
+   * skipped week simply arrives the Friday after.
+   *
+   * Checked before the send window so that `?dry=1&asof=2026-12-25` says so
+   * plainly rather than reporting the wrong hour.
+   */
+  const themed = themedFridayOn(now.date);
+  if (themed) {
+    return NextResponse.json({
+      ok: true,
+      idle: true,
+      reason: "a themed Friday email goes out today instead of the series",
+      themed: { id: themed.id, subject: themed.subject, sendAtUtc: themed.sendAtUtc },
+      sentBy: "/api/cron/email-campaign-send",
+      eastern: now,
+    });
   }
 
   const inWindow =

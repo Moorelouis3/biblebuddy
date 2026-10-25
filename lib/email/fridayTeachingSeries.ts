@@ -43,16 +43,18 @@ export const SERIES_SEND_HOUR = 8;
  * Thanksgiving email belongs on the Friday BEFORE Thanksgiving, which is a
  * question of what a lesson SAYS, not whether it sends.
  *
- * The Fridays worth writing to, for whenever the content is swapped:
+ * Those four Fridays now carry an email of their own, and they are NOT
+ * lessons 13-16; see lib/email/fridayThemedEmails.ts for why position and
+ * date are different problems. The drip stands down on each of them:
  *
  *   2026-11-20  the Friday before US Thanksgiving (26 Nov)
  *   2026-12-18  the last Friday before Christmas
  *   2026-12-25  Christmas Day itself
  *   2027-01-01  New Year's Day
  *
- * Reordering is safe: a send is recorded against the lesson's stable id, not
- * its position, so moving a themed lesson into one of those slots cannot
- * resend anything anyone already has.
+ * Standing down costs nobody a lesson. A send is recorded against the
+ * lesson's stable id rather than against a date or a position, so a skipped
+ * week arrives the following Friday instead.
  */
 
 export function lessonById(id: string): FridayLesson | undefined {

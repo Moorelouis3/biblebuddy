@@ -6,6 +6,8 @@
  *   npx tsx scripts/install-friday-series.ts --test you@example.com [--lesson 1]
  *   npx tsx scripts/install-friday-series.ts --arm      # let the Friday cron send
  *   npx tsx scripts/install-friday-series.ts --disarm   # pause the whole series
+ *   npx tsx scripts/install-friday-series.ts --themed     # the 4 dated Fridays, armed
+ *   npx tsx scripts/install-friday-series.ts --themed-off # pause those 4 only
  *
  * Installing is safe to repeat: it refreshes subject, body and settings and
  * leaves send history alone. It will not arm anything - that is --arm, and
@@ -20,6 +22,7 @@ import {
   renderFridayLessonText,
   SERIES_START,
 } from "../lib/email/fridayTeachingSeries";
+import { THEMED_FRIDAYS } from "../lib/email/fridayThemedEmails";
 
 config({ path: ".env.local", quiet: true });
 
@@ -101,6 +104,59 @@ async function install() {
   }
 }
 
+/**
+ * The four dated Friday emails.
+ *
+ * Installed ARMED and with their send date already on the row, because the
+ * whole point of them is set-and-forget: written in October, posted on the
+ * morning they are about. A future scheduled_for is what holds them - the
+ * batch sender only takes a row whose date has passed - so nothing moves
+ * until that Friday, and the copy can be edited in /admin/campaigns right
+ * up to it.
+ *
+ * `--themed-off` pauses all four without touching the twelve.
+ */
+async function installThemed(armed = true) {
+  const db = admin();
+  for (const email of THEMED_FRIDAYS) {
+    const row = {
+      campaign_id: email.id,
+      subject: email.subject,
+      html: renderFridayLessonHtml(email),
+      text: renderFridayLessonText(email),
+      status: armed ? "sending" : "paused",
+      kind: "marketing",
+      target_groups: ["active", "quiet", "inactive"],
+      scheduled_for: email.sendAtUtc,
+      rate_per_second: 5,
+      max_per_run: 900,
+      notes:
+        `Dated Friday email for ${email.sendDate}, 8am Eastern. Posted by ` +
+        `/api/cron/email-campaign-send, NOT by the Friday drip, which stands ` +
+        `down that day. DO NOT CLEAR scheduled_for: an armed row with no date ` +
+        `reads to the batch sender as "send to everybody now". ` +
+        `Source copy: lib/email/fridayThemedEmails.ts.`,
+    };
+    const { error } = await db.from("email_campaigns").upsert(row, { onConflict: "campaign_id" });
+    if (error) throw new Error(`${email.id}: ${error.message}`);
+    console.log(`  ${email.sendDate}  ${email.id.padEnd(36)} [${row.status}]  ${email.subject}`);
+  }
+}
+
+async function previewThemed() {
+  mkdirSync("tmp/friday-preview", { recursive: true });
+  for (const email of THEMED_FRIDAYS) {
+    const file = `tmp/friday-preview/themed-${email.sendDate}-${email.id}.html`;
+    writeFileSync(
+      file,
+      renderFridayLessonHtml(email)
+        .replace(/\{\{first_name\}\}/g, "Louis")
+        .replace(/\{\{UNSUBSCRIBE\}\}/g, "https://www.mybiblebuddy.net/api/email/unsubscribe?e=preview"),
+    );
+    console.log(`  ${file}`);
+  }
+}
+
 async function setArmed(armed: boolean) {
   const db = admin();
   const { error } = await db
@@ -137,9 +193,14 @@ async function test(to: string) {
 }
 
 async function main() {
-  if (has("--preview")) return preview();
+  if (has("--preview")) {
+    await preview();
+    return previewThemed();
+  }
   if (has("--arm")) return setArmed(true);
   if (has("--disarm")) return setArmed(false);
+  if (has("--themed")) return installThemed(true);
+  if (has("--themed-off")) return installThemed(false);
   const to = value("--test");
   if (to) return test(to);
   await install();
