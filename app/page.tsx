@@ -1529,7 +1529,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
                   onTrack={onStartJourney}
                   className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#1f8a4c] px-7 py-3.5 text-[0.95rem] font-black text-white shadow-[0_18px_44px_rgba(31,138,76,0.26)] transition hover:-translate-y-0.5"
                 >
-                  Meet the Buddies
+                  Start Studying Now
                   <LandingLineIcon name="arrow" light />
                 </StartStudyingButton>
               </div>
