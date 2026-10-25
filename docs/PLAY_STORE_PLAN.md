@@ -299,8 +299,17 @@ second is the one to look at first:
    account. Nothing in Google's documentation says an emulator counts, and the
    wording is "real device", so do not plan around one.
 
-   A closed-track release is a publish, so this gates the opt-in link too, not
-   just production.
+   **Tested on 2026-10-25, and it is worse than "before you can publish":**
+   clicking Create app with the checks outstanding returns *"Complete account
+   verifications to create apps"*. So it is not something to defer to the end
+   of the build work - no app record, no track and no opt-in link exist until
+   it clears.
+
+   **But nothing is waiting on the phone today.** The identity documents are
+   already uploaded and under review, Google says that takes a few days, and
+   the Console states the phone-number check cannot even start until those
+   documents are approved. The device check is the only one that can be done
+   out of order, so there are several days of slack to find an Android.
 
    Two ways through, and they are not alternatives - do both, in order.
    **Borrow an Android for five minutes** to clear the check today; the
