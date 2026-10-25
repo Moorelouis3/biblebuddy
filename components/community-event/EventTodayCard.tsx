@@ -94,7 +94,9 @@ export default function EventTodayCard({
         {completedToday ? "✓ Completed" : "Today"}
       </p>
       <p className="mt-1 text-sm font-black tracking-widest" style={{ color: palette.dayLine }}>
-        DAY {day} OF {event.totalDays} — PROVERBS {day}
+        {/* The day's own title is right below, so this stays study-agnostic -
+            it used to add "— PROVERBS {day}", which only held for October. */}
+        DAY {day} OF {event.totalDays}
       </p>
       {ready && dayTitle ? (
         <h2 className="mt-2 text-xl font-black leading-tight" style={{ color: palette.title }}>

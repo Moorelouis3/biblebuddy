@@ -8705,3 +8705,45 @@ Still open:
 - The four November weekly emails are not queued.
 - The one-time join popup for the new study is not built.
 Next: join-equals-start, then the November emails.
+
+## 2026-10-25 (join equals start)
+Done:
+- **Joining a community study now opens day 1 in the same click.** Both join
+  surfaces: the event page, and the one-time popup that produced 131 of
+  October's 252 joins and used to hand people a page saying they were signed
+  up. October's number for this was 252 signups and 64 who ever opened a day.
+- The guard is isCommunityEventDayUnlocked(event, 1), so during the countdown
+  nothing changes - there is no day to open yet and the welcome card still
+  says when the study begins. Checked the branch against five phases
+  (Proverbs live today, Beginning in countdown, on 1 Nov, mid-study, and
+  evergreen in December).
+- The jump fires community_event_day_started with source "join". That event
+  name was already on the analytics allow list and had never been emitted by
+  anything, so from November the signup-to-day-1 rate is finally measurable
+  rather than inferred from two tables that disagree.
+- **One more piece of Proverbs wording in the markup**: the event page's Today
+  card read "DAY 25 OF 31 - PROVERBS 25". It shows the day's own title below
+  it, so the hardcoded half is gone.
+- Removed justJoined, a useState that was set on every join and never read.
+Verified: /events/wisdom-of-proverbs renders DAY 25 OF 31 with no "PROVERBS
+25", and day 1 of both studies loads for a non-member. tsc reports nothing in
+any file touched here (three errors remain in generated .next type files for
+pages this change does not go near; they are not from this work).
+Not live yet: 1 commit, next build Sun 17:05 Berlin. Step 3.
+Still open:
+- **Did not click Join to prove the jump end to end.** The preview browser is
+  signed in as a real production account that is not a Proverbs member, and
+  joining would have written a real row into the 252 I reported on this
+  morning. The branch is proved by logic and the destination page loads;
+  the router.push itself is one typechecked line. Worth one real click on the
+  1st.
+- **Noticed, not fixed:** /devotionals/<beginning>/day/1 opens today by direct
+  link even though available_from is 2026-11-01. available_from gates the
+  Library card, not the day page. Nothing links there yet, so nobody lands on
+  it by accident.
+- Three people are still enrolled in the removed obedience-of-abraham event.
+- Amazon Associates tag on outbound book links.
+- The four November weekly emails are not queued.
+- The join popup for the new study is not built (the current one is Proverbs
+  only and stops showing when Proverbs goes evergreen on 1 November).
+Next: the November emails, or the Associates tag.

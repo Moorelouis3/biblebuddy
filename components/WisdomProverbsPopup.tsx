@@ -8,8 +8,9 @@
  * been shown it. "Shown" is saved to their account in user_popups_seen
  * (popup_id below) the moment it appears, so it never comes back on another
  * device or browser; localStorage is only a fast skip. Join reuses the same
- * joinCommunityEvent() as the event page, then sends them to that page,
- * which already shows them as signed up.
+ * joinCommunityEvent() as the event page and then, like the event page,
+ * drops them straight into day 1 once the study is open - only during the
+ * countdown does it fall back to the event page.
  *
  * Tracking goes through /api/landing-analytics with user_id:
  * wisdom_proverbs_popup_impression / _dismissed / _join_clicked /
@@ -25,7 +26,8 @@ import { lockDocumentScroll } from "../hooks/useDocumentScrollLock";
 import { supabase } from "../lib/supabaseClient";
 import { checkFullAccount, type AccountGateState } from "../lib/accountGate";
 import { isCommunityEventMember, joinCommunityEvent } from "../lib/communityEventJoin";
-import { getCommunityEvent, getCommunityEventState } from "../lib/communityEvents";
+import { getCommunityEvent, getCommunityEventState, isCommunityEventDayUnlocked } from "../lib/communityEvents";
+import { eventDayStudyPath } from "../lib/communityEventDays";
 
 const PROMOTION_ID = "wisdom_proverbs_2026";
 const EVENT_SLUG = "wisdom-of-proverbs";
@@ -197,6 +199,17 @@ export default function WisdomProverbsPopup({
     } catch {}
     setOpen(false);
     setJoining(false);
+    // Joining IS starting (Louis, 2026-10-25) - the same rule as the event
+    // page. This popup produced 131 of October's 252 joins and then handed
+    // everybody a page that just said they were signed up. Once a day is
+    // unlocked they go into day 1; before the study opens the event page is
+    // still the only thing there is to show them.
+    const event = getCommunityEvent(EVENT_SLUG);
+    if (event && isCommunityEventDayUnlocked(event, 1)) {
+      track("community_event_day_started", userId, { event: EVENT_SLUG, day: 1, source: "join" });
+      router.push(eventDayStudyPath(event.devotionalId, 1));
+      return;
+    }
     router.push(`/events/${EVENT_SLUG}`);
   }, [router, userId]);
 

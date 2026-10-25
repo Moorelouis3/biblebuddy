@@ -336,8 +336,12 @@ the normal build.
       devotional has 15 of its 21 days seeded. **Three people had already
       joined `obedience-of-abraham`; their rows are untouched and they are now
       enrolled in a study with no page. Louis's call what to do with them.**
-- [ ] Make the join action open day 1 in the same click (the October fix that
-      matters most).
+- [x] Make the join action open day 1 in the same click (the October fix that
+      matters most). *(Done 25 Oct, on both join surfaces — the event page and
+      the popup that produced 131 of October's 252 joins. During the countdown
+      there is no unlocked day, so the welcome card still does that job. The
+      jump fires `community_event_day_started` with `source: "join"`, which is
+      how November's signup → day 1 rate gets measured.)*
 - [ ] Add the Amazon Associates tag to every outbound book link.
 - [ ] Set `paperback_url` on the devotional row **if** a Genesis 1–8 paperback
       exists. If it does not, leave it null — the book strip hides itself, and
