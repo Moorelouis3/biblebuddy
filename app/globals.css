@@ -4634,6 +4634,24 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-hero-gold,
   color: #7BAFD4 !important;
 }
 
+/* Text sitting on a dark band of the landing page.
+ *
+ * The catch-all above forces #111827 on every heading, paragraph, span and
+ * div inside .bb-public-landing with !important, which is right for a white
+ * page and wrong the moment a section has a dark background: the closing
+ * call to action is solid #0056FD, and its white headline came out navy on
+ * blue. A Tailwind text-white cannot win against !important, so this is the
+ * same escape hatch bb-brand-blue and bb-cta-blue already use.
+ *
+ * Put it on the individual pieces of text, not the section, or it will also
+ * repaint a white button's blue label.
+ */
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-on-dark,
+.bb-public-landing .bb-on-dark {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
 /* Brand-blue accent text on the public landing page. Must out-specify the
    catch-all above that forces #111827 on every span/heading. */
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-brand-blue,

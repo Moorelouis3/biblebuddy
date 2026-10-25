@@ -1613,10 +1613,10 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
         --------------------------------------------------------------- */}
         <section className="bg-[#0056FD] py-14 text-white sm:py-16">
           <div className="mx-auto max-w-[1080px] px-5 text-center sm:px-8">
-            <h2 className="text-[clamp(1.5rem,3.8vw,2.2rem)] font-black leading-tight">
+            <h2 className="text-[clamp(1.5rem,3.8vw,2.2rem)] font-black leading-tight bb-on-dark">
               Ready to grow in God&apos;s Word?
             </h2>
-            <p className="mx-auto mt-3 max-w-[460px] text-sm font-semibold leading-6 text-white/85 sm:text-base">
+            <p className="mx-auto mt-3 max-w-[460px] text-sm font-semibold leading-6 bb-on-dark sm:text-base">
               Join over 5,000 Christians who are already studying with Bible Buddy.
             </p>
             <div className="mt-7 flex flex-col items-center gap-3">
@@ -1628,7 +1628,7 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
                 Start Studying Now
                 <LandingLineIcon name="arrow" />
               </StartStudyingButton>
-              <p className="text-xs font-bold text-white/75">Free account. No credit card.</p>
+              <p className="text-xs font-bold bb-on-dark opacity-90">Free account. No credit card.</p>
               <StoreBadges onDark />
             </div>
           </div>
@@ -1716,7 +1716,7 @@ const LANDING_BUDDIES = [
 ] as const;
 
 const LANDING_STEPS = [
-  { title: "Create your free account", body: "No card, no credit limit, no catch." },
+  { title: "Create your free account", body: "No card, nothing to pay, ever." },
   { title: "Start your daily reading", body: "A devotional, or the Bible in one year." },
   { title: "Ask questions", body: "Get clear, Bible-based answers." },
   { title: "Build your habit", body: "Track your progress and keep showing up." },
