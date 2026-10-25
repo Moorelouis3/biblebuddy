@@ -8547,3 +8547,26 @@ Still open:
 - The Christian Holidays banners do not exist; the four anchors borrowed
   existing artwork.
 Next: watch the first real run tomorrow, then banners.
+
+## 2026-10-25 (night)
+Time spent: long session, several workstreams.
+Done:
+- The three behaviour-triggered emails are ARMED and live (build fcbff90):
+  stalled study 15:00 UTC, streak-at-risk 23:00 UTC, finished devotional
+  16:00 UTC. `scripts/install-trigger-emails.ts --status|--arm|--disarm` is
+  the switch; `--disarm` turns all three off without a deploy.
+- Four dated Friday emails written against this morning's blog posts and
+  installed armed with their dates: 20 Nov Thanksgiving, 18 Dec the first
+  Christmas, 25 Dec Christmas Day, 1 Jan reading plans. They are scheduled
+  campaigns, not lessons 13-16, because the twelve-lesson series is a
+  per-person drip and a fixed position would have landed Christmas in
+  February. The drip stands down on those four Fridays.
+Not live yet: 62 commits waiting; next build Sun 09:05 Berlin, which also
+publishes the four blog posts. The only part of tonight's work that needs
+that build is the drip stand-down, and it has until 20 Nov.
+Still open:
+- Louis has not read the four themed emails yet. They are armed and dated,
+  so they go out unless he edits or pauses them; 26 days of margin.
+- Whether 3 emails a week is right at all, given 150 of 5,351 subscribers
+  have ever clicked one.
+Next: his call on the themed copy, then watch the first trigger sends.
