@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-25-explained",
+    title: "Leviticus 25 Explained: The Sabbath Year and the Year of Jubilee",
+    description:
+      "Leviticus 25 explained verse by verse: the sabbath year, the Year of Jubilee, fair land prices, and caring for a brother who falls on hard times.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-25-explained",
+    publishedAt: "2026-10-25",
+    readTime: "15 min read",
+    image: "/blog-banners/leviticus-25-explained.jpg",
+    groupPost: {
+      title: "Leviticus 25 Explained 📖",
+      content:
+        "Forty nine years. Then everything resets.\nLand, debts, even people sold into service.\n\n📌 Nothing in Israel belonged to anyone forever but God.\n\n📖 Every seventh year the land got a full year of rest.\n📖 Land prices were set by years left until Jubilee.\n📖 One line here is engraved on the Liberty Bell.\n\nNew article on:\n🟢 why **Israel's land** was never truly for sale\n🟢 the **Jubilee trumpet** and what it actually freed\n🟢 how **Jesus** later claimed this chapter's language as His own\n\nDid you know the Liberty Bell quotes this exact chapter? 🙏",
+    },
+  },
+  {
     slug: "leviticus-24-explained",
     title: "Leviticus 24 Explained: The Eternal Lamp and the Blasphemer Stoned",
     description:
