@@ -853,6 +853,13 @@ type DevotionalOption = {
   id: string;
   title: string;
   total_days: number | null;
+  /**
+   * The study's artwork from the row. getDashboardStudyCover is a hand-kept
+   * list of titles and anything missing from it fell through to a blank tile,
+   * which is how Higher Hope reached the switcher with no cover despite
+   * having one (2026-10-25).
+   */
+  cover_image?: string | null;
 };
 
 type CurrentStudyChapter = {
@@ -3691,7 +3698,7 @@ export default function DashboardJourneyExperience({
 
       const { data, error } = await supabase
         .from("devotionals")
-        .select("id, title, total_days")
+        .select("id, title, total_days, cover_image")
         .order("title", { ascending: true })
         .limit(100);
 
@@ -17648,7 +17655,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                           <>
                           {renderBibleYearPlanOption()}
                           {devotionalOptions.map((devotional) => {
-                            const cover = getDashboardStudyCover(devotional.title);
+                            const cover = getDashboardStudyCover(devotional.title) ?? devotional.cover_image ?? null;
                             const selected = selectedDevotionalId === devotional.id;
                             return (
                               <button
@@ -18901,7 +18908,7 @@ Before we understand redemption, we need to understand what God made humanity fo
                 <>
                 {renderBibleYearPlanOption()}
                 {devotionalOptions.map((devotional) => {
-                  const cover = getDashboardStudyCover(devotional.title);
+                  const cover = getDashboardStudyCover(devotional.title) ?? devotional.cover_image ?? null;
                   const selected = selectedDevotionalId === devotional.id;
                   return (
                     <button

@@ -135,6 +135,12 @@ interface Devotional {
   total_days: number;
   /** Set on the studies that have a printed edition; null on the rest. */
   paperback_url?: string | null;
+  /**
+   * The study's artwork, as stored on the row. getCoverImage above is a
+   * hand-kept override list that predates this column; anything not named
+   * there falls back to this. See app/devotionals/page.tsx for why.
+   */
+  cover_image?: string | null;
 }
 
 interface DevotionalDay {
@@ -1973,9 +1979,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         <section className="overflow-hidden rounded-[30px] border border-[color-mix(in_srgb,var(--bb-accent,#2f7fe8)_24%,var(--bb-card-border,#dbe7f4))] bg-[linear-gradient(180deg,var(--bb-card,#ffffff),color-mix(in_srgb,var(--bb-accent-soft,#eaf5ff)_58%,var(--bb-card,#ffffff)))] p-4 shadow-[0_18px_48px_rgba(38,63,99,0.14)] sm:p-5">
           <div className="grid gap-5 md:grid-cols-[190px_1fr] md:items-center">
             <div className="mx-auto w-full max-w-[190px]">
-              {getCoverImage(devotional.title) ? (
+              {(getCoverImage(devotional.title) ?? devotional.cover_image) ? (
                 <img
-                  src={getCoverImage(devotional.title)!}
+                  src={(getCoverImage(devotional.title) ?? devotional.cover_image)!}
                   alt={`${devotional.title} cover`}
                   className="aspect-[3/4] w-full object-contain drop-shadow-xl"
                 />
