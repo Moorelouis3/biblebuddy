@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-2-explained",
+    title: "Numbers 2 Explained: Arranging Israel's Camp Around the Tabernacle",
+    description:
+      "Numbers 2 explained verse by verse: why Judah camped east, the Levites held the center, and what Reuben and Dan's positions in the camp reveal.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-2-explained",
+    publishedAt: "2026-10-25",
+    readTime: "12 min read",
+    image: "/blog-banners/numbers-2-explained.jpg",
+    groupPost: {
+      title: "Numbers 2 Explained 📖",
+      content:
+        "Two million people, and not one tent pitched at random.\nGod hands Moses a map before anyone moves.\n\n📌 God camped in the center, not off to the side.\n\n📖 Judah faced the tabernacle's one gate and led the march.\n📖 The Levites carried the tabernacle in the exact middle.\n📖 Dan's camp went last, covering the rear of the whole nation.\n\nNew article on:\n🟢 why **Judah** camped facing the tabernacle's only gate\n🟢 why the **Levites** marched in the dead center of Israel\n🟢 why going last was still a real **assignment** for Dan\n\nWhat part of your life feels like it's marching last right now? 🙏",
+    },
+  },
+  {
     slug: "numbers-1-explained",
     title: "Numbers 1 Explained: Counting Israel's Army in the Wilderness",
     description:
