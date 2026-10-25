@@ -356,3 +356,89 @@ workflows:
         notify:
           success: true
           failure: true
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # Android. The whole reason this is a separate workflow and not a step in the
+  # iOS one is cost: this runs on Linux, which is cheaper and faster per minute
+  # than a Mac, and the free plan's 500 minutes are macOS minutes that the
+  # iPhone build is already spending. Nothing here needs a Mac.
+  #
+  # Manual only, no `triggering` block, for the same reason the iOS workflows
+  # have none: two routines commit to main all day - the hourly Bible notes
+  # writer and the chapter library - and a changeset filter was tried on
+  # 2026-10-13 and did not skip. The shell only changes when somebody
+  # deliberately changes it.
+  #
+  # There is no android-release workflow yet on purpose. Signing a release
+  # needs an upload keystore, and that needs the Play Console account to exist
+  # first - see docs/PLAY_STORE_PLAN.md, phases 0 and 3. This workflow proves
+  # the thing compiles, installs and opens, which is everything that can be
+  # proved before Louis has an account.
+  android-build:
+    name: Bible Buddy Android
+    instance_type: linux_x2
+    max_build_duration: 40
+
+    environment:
+      node: 22
+      java: 21
+
+    scripts:
+      - name: Install dependencies
+        script: npm ci --no-audit --no-fund
+
+      - name: Generate the Android project
+        # android/ is gitignored exactly as ios/ is - it is generated output,
+        # rebuilt here rather than left to drift out of step with
+        # capacitor.config.ts. @capacitor/android is a RUNTIME dependency for
+        # this reason: `npx cap add` reads the platform out of node_modules,
+        # and a --omit=dev install would not have it.
+        script: npx cap add android
+
+      - name: Sync web assets and plugins
+        script: npx cap sync android
+
+      - name: Show the target API level
+        # Play has required targetSdk 36 for new submissions since 31 August
+        # 2026. Capacitor 8 already sets it, and this prints it rather than
+        # enforcing it - a wrong value fails at upload, hours later, with an
+        # error that does not mention this file. Here it is one line in the
+        # log.
+        script: |
+          grep -E "minSdkVersion|compileSdkVersion|targetSdkVersion" android/variables.gradle
+          grep -E "applicationId|versionCode|versionName" android/app/build.gradle
+
+      - name: Install the app icon
+        # Otherwise the app wears Capacitor's grey placeholder on the home
+        # screen and in the Play listing. Android needs an adaptive icon - two
+        # layers, cropped to whatever shape the launcher uses - so this is a
+        # real script rather than the one-line copy the iOS build does.
+        script: node scripts/android-app-icon.mjs
+
+      - name: Show which plugins linked
+        script: npx cap ls android
+
+      - name: Run it in an emulator and photograph what happens
+        # Builds, installs, launches and screenshots. The iPhone build went
+        # nine rounds before anybody saw the app open; this one does not have
+        # to.
+        script: bash scripts/android-emulator-run.sh
+
+    artifacts:
+      # The point of the whole build: pictures of the app running, and the
+      # log that explains a white screen when there is one.
+      - build/emulator-screenshots/*.png
+      - build/emulator-screenshots/*.txt
+      - build/emulator-screenshots/*.log
+      - android/app/build/outputs/apk/debug/*.apk
+      # So the generated project can be read without an Android machine.
+      - android/app/src/main/AndroidManifest.xml
+      - android/variables.gradle
+
+    publishing:
+      email:
+        recipients:
+          - moorelouis3@gmail.com
+        notify:
+          success: true
+          failure: true

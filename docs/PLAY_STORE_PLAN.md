@@ -59,22 +59,40 @@ exactly the reason written at the top of `capacitor.config.ts`: CI installs with
 `npx cap add android`. `android/` gets gitignored the way `ios/` is - it is
 generated output and should be rebuilt every build rather than drift.
 
-**Check on the first build:** Play has required **targetSdk 36 (Android 16)**
-for all new submissions since 31 August 2026. Capacitor 8 should already target
-36, but this is the kind of thing that fails at upload rather than at compile,
-so read it out of `android/variables.gradle` on build one and raise it with a
-script if it is low - the same shape as `scripts/ios-deployment-target.sh`.
+**Settled, 2026-10-25.** Done. `@capacitor/android@8.5.3` is a runtime
+dependency and `android/` is gitignored beside `ios/`, which it already was.
 
-### 2. Icon and splash - an hour
+Play has required **targetSdk 36 (Android 16)** for all new submissions since
+31 August 2026, and the worry was that this would need a script of its own, the
+shape of `scripts/ios-deployment-target.sh`. It does not: the generated
+`android/variables.gradle` already reads `minSdk 24, compileSdk 36,
+targetSdk 36`. The workflow prints those three lines on every build instead of
+enforcing them, because a wrong value fails at upload hours later with an error
+that never mentions the file.
+
+### 2. Icon and splash - done, 2026-10-25
 
 Android does not take a single 1024px square. It wants an **adaptive icon**: a
-foreground layer and a background layer, with the outer ~18% of each safe to be
-masked away by whatever shape the launcher uses. A
-`scripts/android-app-icon.sh` mirroring `scripts/ios-app-icon.sh` generates the
-density buckets from the existing art. Without it the app wears Capacitor's grey
-placeholder on the home screen and in the store listing, same as iOS did.
+foreground layer and a background layer, which the launcher composites and then
+crops to a circle, a squircle or a rounded square depending on the phone.
 
-### 3. The build pipeline - half a day
+`scripts/android-app-icon.mjs` builds all of it from the same
+`native/appstore/app-icon-1024.png` the iPhone uses: the brand blue as a flat
+background colour, the white mark alone on transparency as the foreground, the
+legacy square and round icons for Android 7 and below, and a 512px
+`native/appstore/play-store-icon-512.png` with the alpha flattened, which is
+what the listing form accepts. The mark is lifted off its background by
+luminance rather than by matching the blue, so the anti-aliased curves keep
+clean edges instead of a blue fringe.
+
+**The sizing trap, found by rendering it:** only the central 72 of the 108dp
+layer survives the crop, and that area is a CIRCLE - so a square does not fit at
+its own width. The first pass put the mark at 62% of the layer and the preview
+showed the top and bottom of the "B" sliced off on a round launcher. It is 50%
+now, which is 54dp against a 69dp diagonal. Against the 72dp the user actually
+sees, it still reads at three quarters of the icon.
+
+### 3. The build pipeline - done, 2026-10-25
 
 `codemagic.yaml` gets `android-build` and `android-release` workflows on a
 **Linux instance**, not `mac_mini_m2`. Two reasons: Linux minutes are cheaper
@@ -89,6 +107,20 @@ Steal the best idea from the iOS workflow - **`scripts/android-emulator-run.sh`,
 which boots an emulator, installs the APK, launches it and photographs what
 happens.** "It compiles" was never the same as "it runs", and on iOS that step
 is the only reason anyone has seen the app open.
+
+The `android-build` workflow is in `codemagic.yaml` now, on `linux_x2`, manual
+trigger only, with Java 21 and Node 22. There is deliberately **no
+android-release workflow yet**: signing needs an upload keystore, and that
+needs the Play Console account, so it arrives with phase 3.
+
+**Not yet proved:** nothing here has been compiled. There is no JDK and no
+Android SDK on Louis's Windows machine, so the first Codemagic run is the first
+time `./gradlew assembleDebug` executes at all. What has been checked locally
+is that the platform generates, the eight plugins link, `cap sync` is clean,
+the config carries `appendUserAgent: "BibleBuddyApp"` into
+`android/app/src/main/assets/capacitor.config.json`, the manifest has INTERNET,
+the icon output renders correctly under all three launcher masks, and the YAML
+parses.
 
 ### 4. Signing - Louis, 20 minutes, and one thing to never lose
 
@@ -189,7 +221,7 @@ currently works.
 |---|---|---|---|
 | **0** | Create the Play Console account, pay the $25, clear identity verification | Louis | Yes - nothing submits before this |
 | **0b** | Start recruiting 12 testers | Louis | Yes - it is the long pole |
-| **1** | Platform scaffold, icon, Linux Codemagic workflow, emulator screenshot step | agent, ~1 day | No |
+| **1** | ~~Platform scaffold, icon, Linux Codemagic workflow, emulator screenshot step~~ **done 2026-10-25**, unrun | agent | No |
 | **2** | FCM sender + Firebase project + Android OAuth client; push and Google sign-in proven on a real phone | agent, ~1 day | No |
 | **3** | Upload keystore, first AAB to the internal testing track | Louis + agent | Needs 0 |
 | **4** | Closed test: 12 testers, 14 continuous days | Louis | **This is the schedule** |
