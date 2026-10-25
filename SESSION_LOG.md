@@ -8488,3 +8488,36 @@ docs/PLAY_STORE_PLAN.md - engineering is ~3 days, but a new personal Play
 account needs 12 testers for 14 continuous days before it can go to
 production, so the calendar is 3-4 weeks and tester recruiting is the long
 pole.
+
+## 2026-10-25 (Christian Holidays series + the four Friday anchors)
+Done:
+- Four Friday teaching anchors written, gated and pushed. Slugs:
+  `thanksgiving-when-the-year-has-been-hard` (20 Nov),
+  `what-the-first-christmas-actually-looked-like` (18 Dec),
+  `christmas-day-one-thing-to-carry` (25 Dec, focused),
+  `how-to-read-the-bible-in-a-year-without-quitting` (1 Jan).
+  3,005 / 3,060 / 1,007 / 3,038 words. Every KJV quote verified against the
+  source, 4 to 6 working internal links each, groupPost teaser on all four.
+- `publishedAt` is 2026-10-25, not the Friday dates: they go live at the next
+  deploy, and a future date would put a lie in the sitemap and the schema.
+- Christian Holidays series built: `scripts/holiday-blog-queue.mjs` (60 topic
+  plan, day counter, quality gate), `data/holiday-blog/progress.json`,
+  `docs/HOLIDAY_BLOG_WRITER_AGENT.md`, and a `christian-holidays` category.
+- Cloud routine `trig_01XodzZRfKw4i9sFx3VWFSmF` created and enabled, cron
+  `15 1,5,9,15` UTC, one article per run. Day one is spent (the four anchors),
+  so it no-ops today and starts at Reformation Day tomorrow.
+- A rebase wrote conflict markers into my commit while another session was
+  committing. Caught before the push; the remote tip is clean.
+Not live yet: run `npm run pending`. All of it is step 3, no [deploy] tag.
+Still open:
+- Could not render the four pages in a browser. Another session holds
+  `.next/dev/lock` with a dev server that 500s on every route, and stopping
+  it was refused. tsc, eslint, the gate and a registry/metadata check all
+  pass; the pages are unrendered.
+- The live Content Buddy Blog Writer routine still tells itself the [deploy]
+  tag is REQUIRED, which Louis removed on 2026-10-10. That is 3 extra Vercel
+  builds a week. docs/BLOG_WRITER_AGENT.md's body is right and its pasted
+  prompt section is stale.
+- The Christian Holidays banners do not exist; the four anchors borrowed
+  existing artwork.
+Next: watch the first real run tomorrow, then banners.
