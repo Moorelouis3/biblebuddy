@@ -3,41 +3,32 @@ import type { FridayLesson } from "./fridayTeachingSeriesContent";
 /**
  * The four dated Friday emails (Louis, 2026-10-25).
  *
- * WHY THESE ARE NOT LESSONS 13-16.
+ * Thanksgiving, the last Friday before Christmas, Christmas Day and New
+ * Year's Day. Each is written against one of the four blog posts published
+ * on 2026-10-25, and its CTA is that post.
  *
- * The twelve-lesson series is a per-person drip: your next lesson is the
- * first one email_campaign_sends has no row for. Two people who joined a
- * month apart are on different lessons on the same Friday, and somebody who
- * signs up on 24 December is on lesson 1 the next morning. So a Christmas
- * lesson at a fixed POSITION would reach most of the list in February and
- * nobody at all on Christmas Day. Position and date are different things,
- * and these four are date things.
+ * These are the fixed points in FRIDAY_CALENDAR - the dates that cannot
+ * move, because the email is about the week it lands in - and the twelve
+ * lessons fill the Fridays around them. They are not lessons 13-16 and are
+ * not numbered as such; `position` only exists because the FridayLesson type
+ * requires it, so they are numbered from 101 to keep them visibly separate.
  *
- * So they are ordinary scheduled campaigns instead: one row each, armed,
- * with a real scheduled_for, posted by /api/cron/email-campaign-send - the
- * same sender that has always handled dated broadcasts. That gives pacing,
- * duplicate protection, open and click stats, a real date in the dashboard
- * schedule and the /admin/campaigns editor, with no new sending code.
- *
- * The only thing the drip has to know is to STAND DOWN on these four
- * Fridays, so nobody gets two emails on Christmas morning. That is
- * THEMED_FRIDAY_DATES, read by /api/cron/friday-teaching. A stood-down
- * Friday costs nobody a lesson: they simply receive it the following week,
- * because position is derived from what somebody has received rather than
- * from a date.
- *
- * Each is written against a blog post published on 2026-10-25, and the CTA
- * is that post.
+ * Needing an email that is true on a particular morning is what finished off
+ * the per-person drip. A drip can never do a holiday, because no two people
+ * are on the same lesson. Now every Friday is a date, so all sixteen work
+ * the same way; see lib/email/fridayTeachingSeries.ts.
  */
 
 /**
  * Same shape as a lesson, so renderFridayLessonHtml/Text render these too and
- * every Friday email looks identical in an inbox. `position` is required by
- * the type and means nothing here, so these are numbered from 101 to keep
- * them visibly out of the twelve.
+ * every Friday email looks identical in an inbox.
+ *
+ * sendDate is the date these are ABOUT, kept here next to the copy. The date
+ * they are SENT on is FRIDAY_CALENDAR's, which is the one the installer
+ * writes to scheduled_for; the two agree, and the calendar is what wins.
  */
 export type ThemedFriday = FridayLesson & {
-  /** The Friday it goes out, Eastern. */
+  /** The Friday this email is about, Eastern. */
   sendDate: string;
   /** 8am Eastern on that date, as UTC. All four fall inside EST (UTC-5). */
   sendAtUtc: string;
@@ -161,9 +152,6 @@ export const THEMED_FRIDAYS: ThemedFriday[] = [
     ],
   },
 ];
-
-/** The Fridays the twelve-lesson drip stands down on. */
-export const THEMED_FRIDAY_DATES = new Set(THEMED_FRIDAYS.map((t) => t.sendDate));
 
 export function themedFridayOn(date: string): ThemedFriday | undefined {
   return THEMED_FRIDAYS.find((t) => t.sendDate === date);

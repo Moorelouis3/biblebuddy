@@ -133,10 +133,6 @@
       "schedule": "24 3 * * *"
     },
     {
-      "path": "/api/cron/friday-teaching",
-      "schedule": "*/15 12-16 * * 5"
-    },
-    {
       "path": "/api/cron/community-event-daily",
       "schedule": "0 1 * * *"
     }

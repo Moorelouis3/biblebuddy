@@ -1,135 +1,125 @@
 import { FRIDAY_LESSONS, type FridayLesson, type FridayLessonBlock } from "./fridayTeachingSeriesContent";
+import { THEMED_FRIDAYS } from "./fridayThemedEmails";
 
 export { FRIDAY_LESSONS };
 export type { FridayLesson, FridayLessonBlock };
 
+
 /**
- * The Friday teaching series: 12 lessons, one a week, in a fixed order.
+ * The Friday email: one email, to everybody, every Friday (Louis, 2026-10-25).
+ *
+ * THIS USED TO BE A DRIP AND IS NOT ANY MORE.
+ *
+ * Until today each subscriber walked the twelve lessons from their own
+ * position: your next lesson was the first one email_campaign_sends had no
+ * row for, so somebody who joined in January would have started at lesson 1
+ * in January while everybody else was on lesson 11. Louis killed that:
+ *
+ *   "just make the damn friday emails go out weekly and that's it, nobody
+ *    needs to get the first one if they weren't there, we have more than
+ *    enough content to have fresh emails"
+ *
+ * Which is right, and it deletes a whole machine. A Friday is now a DATE,
+ * not a position. Everybody on the list gets the same email on the same
+ * morning; somebody who joins in week nine starts at week nine and has
+ * missed weeks one to eight, exactly as they would have missed a newsletter.
+ *
+ * WHAT THAT BUYS, beyond being easier to think about:
+ *
+ *   - every Friday email can be about something that is true that week -
+ *     a holiday, a new study, this week's blog post - which a drip can
+ *     never do, because no two people are on the same lesson;
+ *   - there is no sender to maintain. These are ordinary scheduled
+ *     campaigns posted by /api/cron/email-campaign-send, the same path as
+ *     every other dated broadcast, so pacing, duplicate protection, open
+ *     and click stats, the dashboard schedule and the /admin/campaigns
+ *     editor are all already there;
+ *   - /api/cron/friday-teaching is deleted, along with the enrolment
+ *     arithmetic, the per-person position lookup and the paging over every
+ *     subscriber and every send row that it did weekly.
+ *
+ * Nobody gets anything twice: email_campaign_sends is still keyed
+ * (campaign_id, email). The 917 people who received lesson 1 on 13 October
+ * are simply skipped when it goes out to the rest of the list.
  *
  * The copy lives in fridayTeachingSeriesContent.ts (generated from the PDF
- * Louis approved on 2026-10-12). This file turns a lesson into the branded
- * email, and owns the scheduling arithmetic.
- *
- * WHY THESE ARE CAMPAIGNS. Each lesson is installed as its own row in
- * email_campaigns, keyed by the lesson id. That is not incidental - it is what
- * gives us, for free and already built:
- *
- *   - duplicate protection, because email_campaign_sends is keyed
- *     (campaign_id, email), so a person cannot receive a lesson twice however
- *     many times a run is retried;
- *   - per-lesson open and click numbers through ses_campaign_stats;
- *   - the existing /admin/campaigns preview and editor.
- *
- * It is also what satisfies the handoff's requirement that "edits or
- * reordering must not send an already received email again": the send record
- * is keyed to the lesson's stable id, not to its position, so renumbering the
- * series cannot resend anything.
+ * Louis approved on 2026-10-12) and fridayThemedEmails.ts (the dated four).
+ * This file holds the calendar and turns either into the branded email.
  */
 
-/** Where the sequence is anchored. The launch group's first Friday. */
-export const SERIES_START = "2026-10-16";
-
-/** Fridays, 8am, in Louis's audience's timezone - not a fixed UTC offset. */
+/** Fridays, 8am, in Louis's audience's timezone. */
 export const SERIES_TIMEZONE = "America/New_York";
 export const SERIES_SEND_HOUR = 8;
 
 /**
- * The series never skips a Friday, holidays included (Louis, 2026-10-25).
+ * Every Friday that has an email on it, in order.
  *
- * A skip list briefly existed here and was wrong twice over. Christmas Day
- * and New Year's Day both fall on a Friday this run, and for a Bible
- * teaching series those are the best Fridays of the year to be in somebody's
- * inbox, not the worst. And "fit around holidays" never meant avoid them: a
- * Thanksgiving email belongs on the Friday BEFORE Thanksgiving, which is a
- * question of what a lesson SAYS, not whether it sends.
+ * The four dated ones are fixed points - they are about the week they land
+ * in - and the twelve lessons fill the Fridays around them. 30 Oct is the
+ * only one in EDT (US clocks go back on 1 Nov), hence 12:00 rather than
+ * 13:00 UTC.
  *
- * Those four Fridays now carry an email of their own, and they are NOT
- * lessons 13-16; see lib/email/fridayThemedEmails.ts for why position and
- * date are different problems. The drip stands down on each of them:
- *
- *   2026-11-20  the Friday before US Thanksgiving (26 Nov)
- *   2026-12-18  the last Friday before Christmas
- *   2026-12-25  Christmas Day itself
- *   2027-01-01  New Year's Day
- *
- * Standing down costs nobody a lesson. A send is recorded against the
- * lesson's stable id rather than against a date or a position, so a skipped
- * week arrives the following Friday instead.
+ * To add a Friday: write the email, give it a row here, run
+ * `install-friday-series.ts --schedule`. To move one, change its date and
+ * re-run; a date change cannot resend anything, because the send record is
+ * keyed to the id.
  */
+export type FridaySlot = {
+  /** The Friday it goes out, Eastern. */
+  date: string;
+  /** 8am Eastern on that date, as UTC. */
+  utc: string;
+  /** A lesson id, or a themed email id. */
+  id: string;
+};
+
+export const FRIDAY_CALENDAR: FridaySlot[] = [
+  { date: "2026-10-30", utc: "2026-10-30T12:00:00Z", id: "friday-01-understand-the-bible" },
+  { date: "2026-11-06", utc: "2026-11-06T13:00:00Z", id: "friday-02-what-is-the-bible" },
+  { date: "2026-11-13", utc: "2026-11-13T13:00:00Z", id: "friday-03-study-guides" },
+  { date: "2026-11-20", utc: "2026-11-20T13:00:00Z", id: "friday-themed-thanksgiving-2026" },
+  { date: "2026-11-27", utc: "2026-11-27T13:00:00Z", id: "friday-04-read-the-context" },
+  { date: "2026-12-04", utc: "2026-12-04T13:00:00Z", id: "friday-05-highlight-with-purpose" },
+  { date: "2026-12-11", utc: "2026-12-11T13:00:00Z", id: "friday-06-people-and-places" },
+  { date: "2026-12-18", utc: "2026-12-18T13:00:00Z", id: "friday-themed-first-christmas-2026" },
+  { date: "2026-12-25", utc: "2026-12-25T13:00:00Z", id: "friday-themed-christmas-day-2026" },
+  { date: "2027-01-01", utc: "2027-01-01T13:00:00Z", id: "friday-themed-new-year-2027" },
+  { date: "2027-01-08", utc: "2027-01-08T13:00:00Z", id: "friday-07-take-notes" },
+  { date: "2027-01-15", utc: "2027-01-15T13:00:00Z", id: "friday-08-review-what-you-read" },
+  { date: "2027-01-22", utc: "2027-01-22T13:00:00Z", id: "friday-09-fit-your-life" },
+  { date: "2027-01-29", utc: "2027-01-29T13:00:00Z", id: "friday-10-study-together" },
+  { date: "2027-02-05", utc: "2027-02-05T13:00:00Z", id: "friday-11-ask-your-question" },
+  { date: "2027-02-12", utc: "2027-02-12T13:00:00Z", id: "friday-12-build-your-routine" },
+];
+
+/** Both sets of copy, by id. */
+export function fridayEmailById(id: string): FridayLesson | undefined {
+  return FRIDAY_LESSONS.find((l) => l.id === id) ?? THEMED_FRIDAYS.find((t) => t.id === id);
+}
 
 export function lessonById(id: string): FridayLesson | undefined {
   return FRIDAY_LESSONS.find((l) => l.id === id);
 }
 
-/** Lessons in send order. */
+/** Lessons in their original course order. The calendar decides send order. */
 export function orderedLessons(): FridayLesson[] {
   return [...FRIDAY_LESSONS].sort((a, b) => a.position - b.position);
 }
 
-// ---------------------------------------------------------------------------
-// Dates
-//
-// Everything here works in America/New_York rather than the server's clock,
-// because the handoff is explicit that the weekday rules are decided in
-// Eastern time and that daylight saving must be honoured. Intl is the only
-// thing in the runtime that knows when the US changes its clocks.
-// ---------------------------------------------------------------------------
-
-const PARTS = new Intl.DateTimeFormat("en-US", {
-  timeZone: SERIES_TIMEZONE,
-  year: "numeric",
-  month: "2-digit",
-  day: "2-digit",
-  hour: "2-digit",
-  weekday: "short",
-  hour12: false,
-});
-
-type EasternNow = { date: string; hour: number; weekday: string };
-
-/** What the calendar and clock say in Eastern time at `at`. */
-export function easternNow(at: Date = new Date()): EasternNow {
-  const parts = PARTS.formatToParts(at);
-  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "";
-  return {
-    date: `${get("year")}-${get("month")}-${get("day")}`,
-    // Intl renders midnight as "24" in some ICU versions.
-    hour: Number(get("hour")) % 24,
-    weekday: get("weekday"),
-  };
+/** Every calendar slot with its copy attached, soonest first. */
+export function scheduledFridays(): Array<FridaySlot & { email: FridayLesson }> {
+  return FRIDAY_CALENDAR.map((slot) => {
+    const email = fridayEmailById(slot.id);
+    if (!email) throw new Error(`FRIDAY_CALENDAR: no copy for "${slot.id}"`);
+    return { ...slot, email };
+  }).sort((a, b) => a.date.localeCompare(b.date));
 }
 
-/** True when it is the 8am Eastern hour on a Friday. */
-export function isFridaySendHour(at: Date = new Date()): boolean {
-  const now = easternNow(at);
-  return now.weekday === "Fri" && now.hour === SERIES_SEND_HOUR;
+/** The next Friday email due after `at`, or null once the calendar runs out. */
+export function nextFriday(at: Date = new Date()): (FridaySlot & { email: FridayLesson }) | null {
+  const now = at.toISOString();
+  return scheduledFridays().find((slot) => slot.utc > now) ?? null;
 }
-
-/**
- * The first Friday on which someone who signed up on `signupDate` may receive
- * lesson 1, as a YYYY-MM-DD date in Eastern time.
- *
- * The handoff's rules, which this one line satisfies together:
- *   - new subscribers start with lesson 1 on the NEXT Friday;
- *   - a Thursday signup may receive lesson 1 the very next day;
- *   - a FRIDAY signup skips that day's email and waits a week, whatever time
- *     of day they signed up.
- *
- * Taking the next Friday STRICTLY AFTER the signup day gives all three:
- * Thursday -> tomorrow, Saturday -> in six days, and Friday -> in seven,
- * because the same day never counts as "after".
- */
-export function firstFridayFor(signupDate: string): string {
-  const [y, m, d] = signupDate.split("-").map(Number);
-  // Fixed to midday UTC so that adding whole days can never slip across a
-  // boundary through a DST change.
-  const day = new Date(Date.UTC(y, m - 1, d, 12));
-  do {
-    day.setUTCDate(day.getUTCDate() + 1);
-  } while (day.getUTCDay() !== 5);
-  return day.toISOString().slice(0, 10);
-}
-
 // ---------------------------------------------------------------------------
 // Rendering
 //

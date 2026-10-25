@@ -4,7 +4,7 @@ import { sendCampaign } from "@/lib/email/sendCampaign";
 import { sesSendingEnabled } from "@/lib/email/sesSender";
 import { fetchProgressForBatch, resolveProgressWindow } from "@/lib/email/newsletterProgress";
 import { renderProgressSectionHtml, renderProgressSectionText } from "@/lib/email/progressSection";
-import { FRIDAY_LESSONS } from "@/lib/email/fridayTeachingSeries";
+
 
 export const runtime = "nodejs";
 export const maxDuration = 300;
@@ -77,21 +77,22 @@ export async function GET(request: NextRequest) {
   //
   // CAMPAIGNS OWNED BY ANOTHER SENDER ARE EXCLUDED BY ID (2026-10-13).
   //
-  // A campaign row is not automatically this cron's to send. Two other senders
-  // own rows in this table, and both would be a disaster here:
+  // A campaign row is not automatically this cron's to send. Another sender
+  // owns rows in this table and would be a disaster here: the welcome email,
+  // posted one person at a time by /api/cron/welcome-email, kept out by
+  // kind='transactional'.
   //
-  //   - the welcome email, posted one person at a time by
-  //     /api/cron/welcome-email. It is kept out by kind='transactional'.
-  //   - the twelve Friday teaching lessons, dripped one per subscriber per week
-  //     by /api/cron/friday-teaching. Those are genuinely marketing and carry
-  //     no send date, because the Friday cron decides who is due from each
-  //     person's own position in the series rather than from a column. To this
-  //     query that looks exactly like "armed, undated, send it now" - so
-  //     arming the series would have posted lesson 1 to the whole list on the
-  //     spot, instead of lesson by lesson on Fridays, and burned the entire
-  //     twelve-week course in a few runs.
+  // THE FRIDAY LESSONS USED TO BE EXCLUDED HERE AND ARE NOT ANY MORE
+  // (2026-10-25). They were dripped per subscriber by
+  // /api/cron/friday-teaching and carried no send date, which to this query
+  // read as "armed, undated, send it now" - so arming the series would have
+  // posted lesson 1 to the whole list on the spot. That cron is deleted:
+  // every Friday email is now a dated campaign on the calendar in
+  // lib/email/fridayTeachingSeries.ts, and THIS is the sender for all of
+  // them. A future scheduled_for is what holds each one, which is why the
+  // installer refuses to write a Friday row without one.
   //
-  // Excluding them by id rather than by a far-future date: a date is a value
+  // Excluding by id rather than by a far-future date: a date is a value
   // somebody can clear by accident from the dashboard, whereas this cannot be
   // undone by editing a row.
   /**
@@ -109,7 +110,7 @@ export async function GET(request: NextRequest) {
    */
   const TRIGGER_IDS = ["study-nudge", "streak-at-risk", "finished-devotional"];
 
-  const foreignIds = [...FRIDAY_LESSONS.map((lesson) => lesson.id), ...TRIGGER_IDS];
+  const foreignIds = TRIGGER_IDS;
 
   const { data, error } = await db
     .from("email_campaigns")

@@ -1,28 +1,36 @@
 /**
- * Installs the 12 Friday teaching lessons as campaign rows.
+ * Installs the Friday emails as dated campaign rows.
  *
- *   npx tsx scripts/install-friday-series.ts            # install / refresh copy
- *   npx tsx scripts/install-friday-series.ts --preview  # write HTML to tmp/, send nothing
+ *   npx tsx scripts/install-friday-series.ts             # install / refresh copy + dates
+ *   npx tsx scripts/install-friday-series.ts --preview   # write HTML to tmp/, send nothing
+ *   npx tsx scripts/install-friday-series.ts --schedule  # print the calendar
  *   npx tsx scripts/install-friday-series.ts --test you@example.com [--lesson 1]
- *   npx tsx scripts/install-friday-series.ts --arm      # let the Friday cron send
- *   npx tsx scripts/install-friday-series.ts --disarm   # pause the whole series
- *   npx tsx scripts/install-friday-series.ts --themed     # the 4 dated Fridays, armed
- *   npx tsx scripts/install-friday-series.ts --themed-off # pause those 4 only
+ *   npx tsx scripts/install-friday-series.ts --arm       # let the Fridays send
+ *   npx tsx scripts/install-friday-series.ts --disarm    # pause every Friday
  *
- * Installing is safe to repeat: it refreshes subject, body and settings and
- * leaves send history alone. It will not arm anything - that is --arm, and
- * Louis makes that call after reading the preview.
+ * ONE EMAIL, TO EVERYBODY, EVERY FRIDAY (Louis, 2026-10-25). This was a
+ * per-person drip until today, sent by /api/cron/friday-teaching, which is
+ * now deleted. Each Friday is a date on FRIDAY_CALENDAR, and the ordinary
+ * batch sender at /api/cron/email-campaign-send posts it.
+ *
+ * Installing is safe to repeat: it refreshes subject, body and date and
+ * leaves send history alone, so nobody can receive a Friday twice. It will
+ * not arm anything - that is --arm.
+ *
+ * EVERY ROW GETS A scheduled_for, with no way to skip it. An armed Friday row
+ * with no date reads to the batch sender as "send this to everybody now", and
+ * that is how lesson 1 reached 917 people on a Tuesday in October.
  */
 import { config } from "dotenv";
 import { createClient } from "@supabase/supabase-js";
 import { mkdirSync, writeFileSync } from "node:fs";
 import {
+  FRIDAY_CALENDAR,
   orderedLessons,
   renderFridayLessonHtml,
   renderFridayLessonText,
-  SERIES_START,
+  scheduledFridays,
 } from "../lib/email/fridayTeachingSeries";
-import { THEMED_FRIDAYS } from "../lib/email/fridayThemedEmails";
 
 config({ path: ".env.local", quiet: true });
 
@@ -40,33 +48,48 @@ function admin() {
   return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
 }
 
-const lessons = orderedLessons();
+const fridays = scheduledFridays();
+
+function schedule() {
+  console.log(`\n  ${fridays.length} Fridays, 8am Eastern:\n`);
+  for (const slot of fridays) {
+    console.log(`  ${slot.date}  ${slot.id.padEnd(36)} ${slot.email.subject}`);
+  }
+  const lessonIds = new Set(orderedLessons().map((l) => l.id));
+  const unscheduled = orderedLessons().filter((l) => !FRIDAY_CALENDAR.some((s) => s.id === l.id));
+  if (unscheduled.length) {
+    console.log(`\n  NOT ON THE CALENDAR: ${unscheduled.map((l) => l.id).join(", ")}`);
+  }
+  const strays = FRIDAY_CALENDAR.filter((s) => !lessonIds.has(s.id) && !s.id.startsWith("friday-themed-"));
+  if (strays.length) console.log(`\n  unrecognised ids: ${strays.map((s) => s.id).join(", ")}`);
+}
 
 async function preview() {
   mkdirSync("tmp/friday-preview", { recursive: true });
-  for (const lesson of lessons) {
-    const file = `tmp/friday-preview/${String(lesson.position).padStart(2, "0")}-${lesson.id}.html`;
+  for (const slot of fridays) {
+    const file = `tmp/friday-preview/${slot.date}-${slot.id}.html`;
     // The preview fills the placeholders so it looks like a real delivery.
-    const html = renderFridayLessonHtml(lesson)
-      .replace(/\{\{first_name\}\}/g, "Louis")
-      .replace(/\{\{UNSUBSCRIBE\}\}/g, "https://www.mybiblebuddy.net/api/email/unsubscribe?e=preview");
-    writeFileSync(file, html);
+    writeFileSync(
+      file,
+      renderFridayLessonHtml(slot.email)
+        .replace(/\{\{first_name\}\}/g, "Louis")
+        .replace(/\{\{UNSUBSCRIBE\}\}/g, "https://www.mybiblebuddy.net/api/email/unsubscribe?e=preview"),
+    );
     console.log(`  ${file}`);
   }
-  // One index so all twelve can be read in a single pass.
-  const index = lessons
+  const index = fridays
     .map(
-      (l) =>
-        `<li style="margin:0 0 10px;"><a href="${String(l.position).padStart(2, "0")}-${l.id}.html">` +
-        `<strong>${l.position}. ${l.subject}</strong></a><br>` +
-        `<span style="color:#667085;font-size:13px;">${l.id}</span></li>`,
+      (slot) =>
+        `<li style="margin:0 0 10px;"><a href="${slot.date}-${slot.id}.html">` +
+        `<strong>${slot.date} &middot; ${slot.email.subject}</strong></a><br>` +
+        `<span style="color:#667085;font-size:13px;">${slot.id}</span></li>`,
     )
     .join("\n");
   writeFileSync(
     "tmp/friday-preview/index.html",
-    `<!doctype html><meta charset="utf-8"><title>Friday series preview</title>` +
+    `<!doctype html><meta charset="utf-8"><title>Friday emails</title>` +
       `<body style="font-family:Arial,sans-serif;max-width:640px;margin:40px auto;padding:0 16px;">` +
-      `<h1>Friday teaching series</h1><p>12 lessons, Fridays 8am Eastern, starting ${SERIES_START}.</p>` +
+      `<h1>Friday emails</h1><p>One email to everybody, Fridays 8am Eastern.</p>` +
       `<ol style="line-height:1.5;padding-left:20px;">${index}</ol></body>`,
   );
   console.log("  tmp/friday-preview/index.html");
@@ -77,96 +100,51 @@ async function install() {
   const { data: existing } = await db
     .from("email_campaigns")
     .select("campaign_id, status")
-    .in("campaign_id", lessons.map((l) => l.id));
+    .in("campaign_id", fridays.map((s) => s.id));
   const statusOf = new Map((existing ?? []).map((r) => [r.campaign_id, r.status]));
 
-  for (const lesson of lessons) {
-    // Never flip a live lesson back to paused by re-running an install.
-    const status = statusOf.get(lesson.id) ?? "paused";
+  for (const slot of fridays) {
+    // Never flip a live Friday back to paused by re-running an install, and
+    // never un-finish one that has already gone out.
+    const status = statusOf.get(slot.id) ?? "paused";
     const row = {
-      campaign_id: lesson.id,
-      subject: lesson.subject,
-      html: renderFridayLessonHtml(lesson),
-      text: renderFridayLessonText(lesson),
+      campaign_id: slot.id,
+      subject: slot.email.subject,
+      html: renderFridayLessonHtml(slot.email),
+      text: renderFridayLessonText(slot.email),
       status,
       kind: "marketing",
       target_groups: ["active", "quiet", "inactive"],
+      scheduled_for: slot.utc,
       rate_per_second: 5,
       max_per_run: 900,
       notes:
-        `Friday teaching series, lesson ${lesson.position} of 12. ` +
-        `Sent by /api/cron/friday-teaching, Fridays 8am America/New_York. ` +
-        `Source copy: lib/email/fridayTeachingSeriesContent.ts.`,
+        `Friday email for ${slot.date}, 8am Eastern. Posted by ` +
+        `/api/cron/email-campaign-send. DO NOT CLEAR scheduled_for: an armed ` +
+        `row with no date reads to the batch sender as "send to everybody now". ` +
+        `Source copy: lib/email/fridayTeachingSeriesContent.ts and ` +
+        `lib/email/fridayThemedEmails.ts; calendar in fridayTeachingSeries.ts.`,
     };
     const { error } = await db.from("email_campaigns").upsert(row, { onConflict: "campaign_id" });
-    if (error) throw new Error(`${lesson.id}: ${error.message}`);
-    console.log(`  ${statusOf.has(lesson.id) ? "updated" : "created"}  ${lesson.id.padEnd(34)} [${status}]`);
-  }
-}
-
-/**
- * The four dated Friday emails.
- *
- * Installed ARMED and with their send date already on the row, because the
- * whole point of them is set-and-forget: written in October, posted on the
- * morning they are about. A future scheduled_for is what holds them - the
- * batch sender only takes a row whose date has passed - so nothing moves
- * until that Friday, and the copy can be edited in /admin/campaigns right
- * up to it.
- *
- * `--themed-off` pauses all four without touching the twelve.
- */
-async function installThemed(armed = true) {
-  const db = admin();
-  for (const email of THEMED_FRIDAYS) {
-    const row = {
-      campaign_id: email.id,
-      subject: email.subject,
-      html: renderFridayLessonHtml(email),
-      text: renderFridayLessonText(email),
-      status: armed ? "sending" : "paused",
-      kind: "marketing",
-      target_groups: ["active", "quiet", "inactive"],
-      scheduled_for: email.sendAtUtc,
-      rate_per_second: 5,
-      max_per_run: 900,
-      notes:
-        `Dated Friday email for ${email.sendDate}, 8am Eastern. Posted by ` +
-        `/api/cron/email-campaign-send, NOT by the Friday drip, which stands ` +
-        `down that day. DO NOT CLEAR scheduled_for: an armed row with no date ` +
-        `reads to the batch sender as "send to everybody now". ` +
-        `Source copy: lib/email/fridayThemedEmails.ts.`,
-    };
-    const { error } = await db.from("email_campaigns").upsert(row, { onConflict: "campaign_id" });
-    if (error) throw new Error(`${email.id}: ${error.message}`);
-    console.log(`  ${email.sendDate}  ${email.id.padEnd(36)} [${row.status}]  ${email.subject}`);
-  }
-}
-
-async function previewThemed() {
-  mkdirSync("tmp/friday-preview", { recursive: true });
-  for (const email of THEMED_FRIDAYS) {
-    const file = `tmp/friday-preview/themed-${email.sendDate}-${email.id}.html`;
-    writeFileSync(
-      file,
-      renderFridayLessonHtml(email)
-        .replace(/\{\{first_name\}\}/g, "Louis")
-        .replace(/\{\{UNSUBSCRIBE\}\}/g, "https://www.mybiblebuddy.net/api/email/unsubscribe?e=preview"),
-    );
-    console.log(`  ${file}`);
+    if (error) throw new Error(`${slot.id}: ${error.message}`);
+    console.log(`  ${slot.date}  ${slot.id.padEnd(36)} [${status}]`);
   }
 }
 
 async function setArmed(armed: boolean) {
   const db = admin();
-  const { error } = await db
-    .from("email_campaigns")
-    .update({ status: armed ? "sending" : "paused" })
-    .in("campaign_id", lessons.map((l) => l.id));
-  if (error) throw new Error(error.message);
+  // Arming without a date is the one mistake that mails the whole list at
+  // once, so the dates go on in the same statement.
+  for (const slot of fridays) {
+    const { error } = await db
+      .from("email_campaigns")
+      .update({ status: armed ? "sending" : "paused", scheduled_for: slot.utc })
+      .eq("campaign_id", slot.id);
+    if (error) throw new Error(`${slot.id}: ${error.message}`);
+  }
   console.log(armed
-    ? "ARMED. The Friday cron will now send these on Fridays, 8am Eastern."
-    : "Paused. Nothing in the series will send.");
+    ? `ARMED. ${fridays.length} Fridays, each held by its own date. First: ${fridays[0].date}.`
+    : "Paused. No Friday email will send.");
 }
 
 async function test(to: string) {
@@ -175,36 +153,32 @@ async function test(to: string) {
   if (!sesSendingEnabled()) throw new Error("SES is not configured in this environment.");
 
   const which = Number(value("--lesson") || 1);
-  const lesson = lessons.find((l) => l.position === which);
-  if (!lesson) throw new Error(`no lesson at position ${which}`);
+  const slot = fridays[which - 1];
+  if (!slot) throw new Error(`no Friday at slot ${which} (1-${fridays.length})`);
 
   const fill = (v: string) => v.replace(/\{\{first_name\}\}/g, "Louis");
   const result = await sendEmail({
     to,
-    subject: `[TEST] ${fill(lesson.subject)}`,
-    html: fill(renderFridayLessonHtml(lesson)),
-    text: fill(renderFridayLessonText(lesson)),
+    subject: `[TEST] ${fill(slot.email.subject)}`,
+    html: fill(renderFridayLessonHtml(slot.email)),
+    text: fill(renderFridayLessonText(slot.email)),
     unsubscribeUrl: unsubscribeUrl(to),
-    tags: { campaign: `test-${lesson.id}` },
+    tags: { campaign: `test-${slot.id}` },
   });
   // Deliberately NOT recorded in email_campaign_sends: a test must not consume
   // the real send slot for that address.
-  console.log(result.sent ? `Test lesson ${which} sent to ${to}.` : `Not sent: ${result.reason} ${result.detail ?? ""}`);
+  console.log(result.sent ? `Test (${slot.date}) sent to ${to}.` : `Not sent: ${result.reason} ${result.detail ?? ""}`);
 }
 
 async function main() {
-  if (has("--preview")) {
-    await preview();
-    return previewThemed();
-  }
+  if (has("--schedule")) return schedule();
+  if (has("--preview")) return preview();
   if (has("--arm")) return setArmed(true);
   if (has("--disarm")) return setArmed(false);
-  if (has("--themed")) return installThemed(true);
-  if (has("--themed-off")) return installThemed(false);
   const to = value("--test");
   if (to) return test(to);
   await install();
-  console.log("\nInstalled, all paused. Nothing sends until --arm.");
+  console.log("\nInstalled with dates. Each row kept whatever status it had; --arm turns them all on.");
 }
 
 main().catch((error) => {
