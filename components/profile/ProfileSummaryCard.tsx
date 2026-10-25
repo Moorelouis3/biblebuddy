@@ -51,6 +51,27 @@ function avatarColor(uid: string): string {
   return colors[sum % colors.length];
 }
 
+/** One pastel stat tile: icon, a big number, and what it counts. */
+function StatCard({
+  tone,
+  icon,
+  value,
+  label,
+}: {
+  tone: string;
+  icon: string;
+  value: string;
+  label: string;
+}) {
+  return (
+    <div className={`profile-skin-stat-card rounded-2xl border p-3.5 shadow-sm ${tone}`}>
+      <div aria-hidden="true" className="text-lg leading-none">{icon}</div>
+      <div className="mt-1.5 text-[26px] font-black leading-none text-gray-900">{value}</div>
+      <div className="mt-1 text-[13px] font-medium text-gray-600">{label}</div>
+    </div>
+  );
+}
+
 function joinedLabel(iso: string | null): string | null {
   if (!iso) return null;
   const d = new Date(iso);
@@ -207,28 +228,40 @@ export default function ProfileSummaryCard({
 
         {/* The same four pastel cards as the profile page, scrollable on a
             phone rather than squeezed into a four column grid. */}
-        <div className="-mx-5 mt-4 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden">
-          <div className="flex snap-x gap-3 sm:grid sm:grid-cols-4">
-            <div className="profile-skin-stat-card w-[40vw] shrink-0 snap-start rounded-xl border border-blue-200 bg-blue-100 p-4 shadow-sm sm:w-auto">
-              <div className="text-2xl font-bold">{summary?.current_streak ?? 0}</div>
-              <div className="text-sm text-gray-700">Day Streak</div>
-            </div>
-            <div className="profile-skin-stat-card w-[40vw] shrink-0 snap-start rounded-xl border border-purple-200 bg-purple-100 p-4 shadow-sm sm:w-auto">
-              <div className="text-2xl font-bold">{summary?.total_actions ?? 0}</div>
-              <div className="text-sm text-gray-700">Total Actions</div>
-            </div>
-            <div className="profile-skin-stat-card w-[40vw] shrink-0 snap-start rounded-xl border border-green-200 bg-green-100 p-4 shadow-sm sm:w-auto">
-              <div className="text-2xl font-bold">{summary?.chapters_completed_count ?? chapters}</div>
-              <div className="text-sm text-gray-700">Chapters Read</div>
-            </div>
-            <div className="profile-skin-stat-card w-[40vw] shrink-0 snap-start rounded-xl border border-orange-200 bg-orange-100 p-4 shadow-sm sm:w-auto">
-              <div className="text-2xl font-bold">{completion}%</div>
-              <div className="text-sm text-gray-700">Bible Completion</div>
-            </div>
-          </div>
+        {/* Four stats, each with its own icon and its own soft colour
+            (Louis's mockup, 2026-10-25). Two columns on a phone rather than a
+            sideways scroll - a stat you have to swipe to reach is a stat
+            nobody reads - and four across from `sm` up. */}
+        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatCard
+            tone="bg-[#eaf1ff] border-[#cfe0ff]"
+            icon="🔥"
+            value={String(summary?.current_streak ?? 0)}
+            label="Day Streak"
+          />
+          <StatCard
+            tone="bg-[#f1ecff] border-[#ddd2f8]"
+            icon="👥"
+            value={String(summary?.total_actions ?? 0)}
+            label="Total Actions"
+          />
+          <StatCard
+            tone="bg-[#e7f7ee] border-[#c7ebd7]"
+            icon="📖"
+            value={String(summary?.chapters_completed_count ?? chapters)}
+            label="Chapters Read"
+          />
+          <StatCard
+            tone="bg-[#fff0e3] border-[#ffd9bb]"
+            icon="◐"
+            value={`${completion}%`}
+            label="Bible Completion"
+          />
         </div>
 
         {isSelf ? (
+          // A quiet line, not another section: the heavy profile lives behind
+          // it and should not take up room here.
           <div className="mt-3 text-right">
             <Link
               href={`/profile/${userId}?details=1`}

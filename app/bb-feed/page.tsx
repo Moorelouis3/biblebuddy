@@ -1684,7 +1684,7 @@ function PostBody({ content }: { content: string }) {
 
 // ── Post Card ─────────────────────────────────────────────────────────────────
 
-function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId, preview, pinned, buddyState, onBuddyRequested }: {
+function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onReact, onCommentCountChange, onDelete, highlightPostId, highlightCommentId, preview, pinned, buddyState, onBuddyRequested, studyCovers = {} }: {
   post: FeedPost;
   myId: string;
   myProfile: MyProfile;
@@ -1699,6 +1699,8 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   preview?: CommentPreview;
   /** Held at the top of the feed rather than ranked into it. */
   pinned?: boolean;
+  /** Devotional title -> cover image, for the milestone card. */
+  studyCovers?: Record<string, string>;
   /** Where the reader stands with this post's author. */
   buddyState?: BuddyState;
   onBuddyRequested: (targetUserId: string) => void;
@@ -1780,6 +1782,20 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
   // being set in bold.
   const studyActivity = readStudyActivity(post.content);
 
+  /**
+   * "Completed Day 9!" - taken from the post, never composed.
+   *
+   * The sentence is `✅ Completed Day 9 of "The Wisdom of Proverbs".`, so the
+   * lead already reads "Completed Day 9 of ". Trimming the trailing "of"
+   * turns it into a headline without inventing a word. Anything that does not
+   * match that shape keeps its own lead, so a different kind of milestone
+   * still reads correctly.
+   */
+  const milestoneHeadline = studyActivity
+    ? `${studyActivity.lead.replace(/\s*\bof\s*$/i, "").trim()}!`
+    : "";
+  const studyCover = studyActivity ? studyCovers[studyActivity.title] : undefined;
+
   return (
     <div ref={cardRef} className={`bb-community-post-card bg-white border rounded-xl p-4 shadow-sm relative transition-all ${isHighlighted ? "border-green-400 ring-2 ring-green-200" : "border-gray-200"}`}>
       {pinned ? (
@@ -1807,9 +1823,9 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
             {displayName}
           </Link>
           <p className="mt-0.5 text-xs text-gray-400">{timeAgo(post.created_at)}</p>
-          {studyActivity ? (
-            <p className="mt-0.5 text-xs text-gray-400">Study activity</p>
-          ) : null}
+          {/* The "Study Activity" label moved into the milestone card below,
+              where it sits beside the cover. Repeating it under the timestamp
+              said the same thing twice (2026-10-25). */}
         </div>
 
         {/* Add them, from the post that made you want to.
@@ -1888,11 +1904,55 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
         <p className="text-sm italic text-gray-600 mb-2 border-l-2 border-green-400 pl-3">&ldquo;{post.verse_text}&rdquo;</p>
       )}
       {studyActivity ? (
-        <p className="text-[15px] leading-relaxed text-gray-800">
-          {studyActivity.lead}
-          <span className="font-bold">{studyActivity.title}</span>
-          {studyActivity.trail}
-        </p>
+        /**
+         * A finished day, as a milestone rather than a sentence (Louis's
+         * mockup, 2026-10-25).
+         *
+         * Only generated study activity gets this treatment; an ordinary post
+         * stays a plain white card with the person's own words, which is the
+         * whole point of telling them apart. Everything shown here is read
+         * from the post - the day, the study's title - or looked up by that
+         * title. Nothing is invented: no Scripture, no description, no
+         * progress bar.
+         *
+         * The landscape is bg-journey.jpg, the dashboard's own, at low
+         * opacity - a reused asset rather than new art.
+         */
+        <div className="relative overflow-hidden rounded-xl border border-[#e4ddf7] bg-gradient-to-br from-[#f3efff] via-[#f7f2fb] to-[#fdeef2] p-3.5">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-20 opacity-25"
+            style={{
+              backgroundImage: "url(/home-cards/bg-journey.jpg)",
+              backgroundSize: "cover",
+              backgroundPosition: "center bottom",
+            }}
+          />
+          <div className="relative flex items-center gap-3.5">
+            {studyCover ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={studyCover}
+                alt={studyActivity.title}
+                className="h-[76px] w-[56px] flex-shrink-0 rounded-lg object-cover shadow-md"
+              />
+            ) : (
+              // No cover on file: the app's own book mark, not a gap.
+              <div className="flex h-[76px] w-[56px] flex-shrink-0 items-center justify-center rounded-lg bg-white/70 text-2xl shadow-md">
+                📖
+              </div>
+            )}
+            <div className="min-w-0">
+              <p className="mb-1 inline-flex items-center gap-1.5 rounded-full bg-white/70 px-2 py-0.5 text-[11px] font-bold text-[#6b5ba8]">
+                <span aria-hidden>📘</span> Study Activity
+              </p>
+              <p className="text-[19px] font-black leading-tight text-gray-900">
+                {milestoneHeadline}
+              </p>
+              <p className="truncate text-sm font-semibold text-gray-600">{studyActivity.title}</p>
+            </div>
+          </div>
+        </div>
       ) : post.content ? (
         <PostBody content={post.content} />
       ) : null}
@@ -2386,6 +2446,16 @@ export default function BbFeedPage() {
    * care how busy the week was.
    */
   const [pinnedPosts, setPinnedPosts] = useState<RankedFeedItem[]>([]);
+  /**
+   * Devotional title -> cover image, for the milestone cards.
+   *
+   * A completion post stores only its sentence - `✅ Completed Day 9 of "The
+   * Wisdom of Proverbs".` - with no media and no link, so the cover has to be
+   * looked up by title. One small read of a published, public table, done
+   * once for the page and shared by every card (Louis, 2026-10-25: "use the
+   * actual devotional cover ... do not invent").
+   */
+  const [studyCovers, setStudyCovers] = useState<Record<string, string>>({});
 
   // My Feed tab state
   const [myFeedPosts, setMyFeedPosts] = useState<FeedPost[]>([]);
@@ -2815,6 +2885,22 @@ export default function BbFeedPage() {
   }, [userId, loadPinnedPosts]);
 
   useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      const { data } = await supabase.from("devotionals").select("title, cover_image");
+      if (cancelled || !data) return;
+      const map: Record<string, string> = {};
+      for (const row of data as Array<{ title: string | null; cover_image: string | null }>) {
+        if (row.title && row.cover_image) map[row.title] = row.cover_image;
+      }
+      setStudyCovers(map);
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
     if (!highlightPostId || !userId) {
       setFocusedPost(null);
       return;
@@ -3052,7 +3138,7 @@ export default function BbFeedPage() {
     return (
       <div className="flex flex-col gap-3">
         {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested} />
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested} studyCovers={studyCovers} />
         ))}
       </div>
     );
@@ -3109,7 +3195,7 @@ export default function BbFeedPage() {
             onDelete={handleDeletePost}
             highlightPostId={highlightPostId}
             highlightCommentId={highlightCommentId}
-            preview={commentPreviews[focusedPost.id]} buddyState={buddyStates[focusedPost.user_id]} onBuddyRequested={handleBuddyRequested}
+            preview={commentPreviews[focusedPost.id]} buddyState={buddyStates[focusedPost.user_id]} onBuddyRequested={handleBuddyRequested} studyCovers={studyCovers}
           />
         ) : null}
 
@@ -3129,7 +3215,7 @@ export default function BbFeedPage() {
             onDelete={handleDeletePost}
             highlightPostId={highlightPostId}
             highlightCommentId={highlightCommentId}
-            preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested}
+            preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested} studyCovers={studyCovers}
             pinned
           />
         ))}
@@ -3138,7 +3224,7 @@ export default function BbFeedPage() {
             Bible Buddy's own posts arrive as real feed posts (see
             lib/groupPostInsert.ts), so nothing here links out of the feed. */}
         {interleaveUpgradeCards(posts, myProfile?.is_paid !== true, (item) => (
-          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested} />
+          <PostCard key={`post-${item.id}`} post={item as FeedPost} myId={userId!} myProfile={myProfile} currentUserIsAdmin={currentUserIsAdmin} myReactions={myReactions} onReact={handleReact} onCommentCountChange={handleCommentCountChange} onDelete={handleDeletePost} highlightPostId={highlightPostId} highlightCommentId={highlightCommentId} preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested} studyCovers={studyCovers} />
         ))}
       </div>
     );
@@ -3194,7 +3280,7 @@ export default function BbFeedPage() {
               onDelete={handleDeletePost}
               highlightPostId={highlightPostId}
               highlightCommentId={highlightCommentId}
-              preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested}
+              preview={commentPreviews[item.id]} buddyState={buddyStates[item.user_id]} onBuddyRequested={handleBuddyRequested} studyCovers={studyCovers}
           />
         ))}
       </div>
