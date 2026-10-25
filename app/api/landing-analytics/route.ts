@@ -29,6 +29,19 @@ const ALLOWED_EVENTS = new Set([
   "proverbs_launch_popup_impression",
   "proverbs_launch_popup_dismissed",
   "proverbs_launch_popup_clicked",
+  // Study landing pages that are not community events: a share link lands
+  // here, reads about the study and signs up. Metadata: {study, placement,
+  // destination, signed_in, opened}.
+  //
+  // Higher Hope's two were missing from this list from the day its page
+  // shipped (2026-10-24), so every call 400'd and the page launched with no
+  // measurement at all. The tracker swallows the error, which is why nothing
+  // looked wrong. Adding a landing page means adding its events here.
+  "higher_hope_page_view",
+  "higher_hope_start_click",
+  "beginning_page_view",
+  "beginning_start_click",
+  "beginning_book_click",
   // Daily "Day N is ready" reminder for community study members.
   "community_event_day_popup_impression",
   "community_event_day_popup_dismissed",
