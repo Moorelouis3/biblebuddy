@@ -205,8 +205,35 @@ function isWomenOfTheBibleTitle(title: string | null | undefined) {
   return normalized === "women of the bible" || normalized === "the women of the bible";
 }
 
+function isHigherHopeTitle(title: string | null | undefined) {
+  return normalizeStudyTitle(title) === "higher hope";
+}
+
+/**
+ * The modern study layout - the one Proverbs uses: a day count under the
+ * title, progress measured across the four tasks of each day, and no
+ * Complete/Current/Left tiles.
+ *
+ * Higher Hope launched on 2026-10-25 wearing the OLD layout instead, because
+ * this is a hand-kept list of titles and nobody added it (Louis: "make sure
+ * it follows the proverbs study guide i shouldnt have to check everything").
+ * That is the second time in one day a new study came up wrong for exactly
+ * this reason - the cover had the same cause a few hours earlier.
+ *
+ * Checked before adding it rather than assumed: the four tasks are the day's
+ * overview, its Bible reading, that chapter's trivia and that chapter's
+ * reflection. All four are keyed off the day's own book and chapter, so they
+ * work for Romans 7 exactly as they do for Proverbs 1 - none of it is
+ * Proverbs-specific, and the free-plan gate that used to hang off this flag
+ * is dead code now that CORE_STUDY_IS_FREE is on.
+ *
+ * Seven other studies are still falling through this list the same way. See
+ * docs/STUDY_LAYOUT_LISTS.md - they are left alone here because flipping them
+ * changes the progress maths under readers who are mid-study, which is
+ * Louis's call and not a side effect of fixing Higher Hope.
+ */
 function isModernStudyPlanTitle(title: string | null | undefined) {
-  return isWisdomOfProverbsTitle(title) || isWomenOfTheBibleTitle(title);
+  return isWisdomOfProverbsTitle(title) || isWomenOfTheBibleTitle(title) || isHigherHopeTitle(title);
 }
 
 function getStudyPlanTaskTotal(title: string | null | undefined) {
@@ -239,6 +266,7 @@ function isChapterJourneyStudyTitle(title: string | null | undefined) {
 function getStudyScriptureRange(title: string | null | undefined) {
   if (isWisdomOfProverbsTitle(title)) return "31 Days";
   if (isWomenOfTheBibleTitle(title)) return "21 Days";
+  if (isHigherHopeTitle(title)) return "60 Days";
 
   const ranges: Record<string, string> = {
     "The Creation of the World": "Genesis 1 & 2",
