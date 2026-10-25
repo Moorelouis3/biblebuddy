@@ -98,6 +98,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-26-explained",
+    title: "Leviticus 26 Explained: The Covenant's Blessings and Curses",
+    description:
+      "Leviticus 26 explained verse by verse: the blessings for obedience, five escalating stages of curses for rebellion, and the covenant God never fully breaks.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-26-explained",
+    publishedAt: "2026-10-25",
+    readTime: "14 min read",
+    image: "/blog-banners/leviticus-26-explained.jpg",
+    groupPost: {
+      title: "Leviticus 26 Explained 📖",
+      content:
+        "Rain in due season, or heaven turned to iron.\nPeace in the land, or a sword that still finds you.\n\n📌 Every blessing and curse here hangs on one word: if.\n\n📖 The curses build in five stages, not one sudden blow.\n📖 \"Seven times more\" shows up four separate times.\n📖 Verse 29's famine is recorded actually happening, twice.\n\nNew article on:\n🟢 why **rain itself** depended on Israel's obedience\n🟢 the **five stages** of discipline, each giving one more chance\n🟢 how **exile** still couldn't break God's covenant for good\n\nDid you know this chapter's worst curse is recorded as real history? 🙏",
+    },
+  },
+  {
     slug: "leviticus-25-explained",
     title: "Leviticus 25 Explained: The Sabbath Year and the Year of Jubilee",
     description:
