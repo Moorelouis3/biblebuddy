@@ -24,7 +24,6 @@ import { recordNewUser } from "../lib/guestSession";
 import VerseOfTheDayCard from "./VerseOfTheDayCard";
 import { cardTint } from "../lib/cardTints";
 import YourBookshelf from "./home/YourBookshelf";
-import YourNotes from "./home/YourNotes";
 import TodaysGroupStudy from "./home/TodaysGroupStudy";
 import BibleBuddyTvShelf from "./home/BibleBuddyTvShelf";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
@@ -380,16 +379,12 @@ export default function HomeScreen() {
         planCompletedDays={completedDays}
       />
 
-      {/* Your Notes, under the shelf rather than above it (Louis, 2026-10-25:
-          "leave notes there!!! i wanna add it to the dashboard somehow").
-
-          Under, because the card is about the chapter you have already
-          finished - it asks what stood out and writes the note from here. Put
-          above the shelf it would interrupt the reading to ask about the
-          reading. Put any lower and it is back where it has been since May,
-          which is nowhere anybody looks: 134 notes ever, none in five
-          months. */}
-      <YourNotes userId={userId} />
+      {/* Your Notes sat here for part of 2026-10-25 and was pulled the same
+          day: the list of recent notes rendered their stored HTML as plain
+          text, so the dashboard showed rows of "<h1><strong>..." to anyone who
+          had notes. The notes feature itself is untouched and /notes still
+          works. If this card comes back, the previews have to strip the markup
+          before anything else. */}
 
       {/* Recommended For You - above Look It Up since 2026-10-17 (Louis).
           Today's reading comes first, then something to read next; looking a
