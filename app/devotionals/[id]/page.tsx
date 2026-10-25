@@ -200,9 +200,31 @@ function isWisdomOfProverbsTitle(title: string | null | undefined) {
   return normalized === "wisdom of proverbs" || normalized === "the wisdom of proverbs";
 }
 
+/**
+ * The study is called "21 Women of the Bible" and this only matched "Women of
+ * the Bible" - so a rename quietly dropped it out of the modern study plan and
+ * nobody noticed for weeks. The intent was never in doubt: getStudyScriptureRange
+ * below has had a "21 Days" line waiting for this matcher the whole time.
+ *
+ * What it cost, reported by Vickie James on 2026-10-25: "I read & answered the
+ * question but it did not give me credit & it won't let me open the next one."
+ * Exactly right, and not her fault. Outside the modern plan the four-task
+ * progress for a day is never loaded, so answering the reflection shows no
+ * credit anywhere, and the only thing that can open day 2 is a
+ * devotional_progress row on day 1 that answering a question does not write.
+ * She had no rows at all on this study - the reflection she filled in left
+ * nothing behind that the day list could see.
+ *
+ * The old spellings stay so that renaming it back, or to "The Women of the
+ * Bible", cannot break it a third time.
+ */
 function isWomenOfTheBibleTitle(title: string | null | undefined) {
   const normalized = normalizeStudyTitle(title);
-  return normalized === "women of the bible" || normalized === "the women of the bible";
+  return (
+    normalized === "21 women of the bible" ||
+    normalized === "women of the bible" ||
+    normalized === "the women of the bible"
+  );
 }
 
 function isHigherHopeTitle(title: string | null | undefined) {
