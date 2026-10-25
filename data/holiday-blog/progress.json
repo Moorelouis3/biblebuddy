@@ -17,29 +17,33 @@
   "articles": {
     "thanksgiving-when-the-year-has-been-hard": {
       "attempts": 0,
-      "status": "committed",
+      "status": "published",
       "committedAt": "2026-10-25T05:03:58.899Z",
-      "note": "Friday email anchor, written by hand on day one"
+      "note": "Friday email anchor, written by hand on day one",
+      "publishedAt": "2026-10-25T09:16:43.214Z"
     },
     "what-the-first-christmas-actually-looked-like": {
       "attempts": 0,
-      "status": "committed",
+      "status": "published",
       "committedAt": "2026-10-25T05:03:59.027Z",
-      "note": "Friday email anchor, written by hand on day one"
+      "note": "Friday email anchor, written by hand on day one",
+      "publishedAt": "2026-10-25T09:16:43.356Z"
     },
     "christmas-day-one-thing-to-carry": {
       "attempts": 0,
-      "status": "committed",
+      "status": "published",
       "committedAt": "2026-10-25T05:03:59.163Z",
-      "note": "Friday email anchor, written by hand on day one"
+      "note": "Friday email anchor, written by hand on day one",
+      "publishedAt": "2026-10-25T09:16:43.455Z"
     },
     "how-to-read-the-bible-in-a-year-without-quitting": {
       "attempts": 0,
-      "status": "committed",
+      "status": "published",
       "committedAt": "2026-10-25T05:03:59.380Z",
-      "note": "Friday email anchor, written by hand on day one"
+      "note": "Friday email anchor, written by hand on day one",
+      "publishedAt": "2026-10-25T09:16:43.639Z"
     }
   },
   "nextTopic": "what-is-reformation-day",
-  "updatedAt": "2026-10-25T05:17:02.477Z"
+  "updatedAt": "2026-10-25T09:16:43.640Z"
 }
