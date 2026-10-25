@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef, type ReactNode } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import { triggerPostSuccess } from "@/components/PostSuccessEffect";
 import { triggerToast } from "@/components/AppToast";
@@ -1202,12 +1202,12 @@ function CommentRow({
       ref={commentRowRef}
       className={`flex gap-2 ${indent ? "mt-3 border-l border-[var(--bb-card-border,#e8ddd0)] pl-2 sm:pl-3" : "mt-2"} ${isHighlightComment ? "rounded-xl ring-2 ring-green-300 p-1 -mx-1" : ""}`}
     >
-      <Link href={`/profile/${comment.user_id}`} className="flex-shrink-0 mt-0.5">
+      <Link href={`/bb-feed?user=${comment.user_id}`} className="flex-shrink-0 mt-0.5">
         <Avatar userId={comment.user_id} displayName={name} imageUrl={comment.profile_image_url} size={indent ? 5 : 6} />
       </Link>
       <div className="flex-1 min-w-0">
         <div className={`rounded-xl px-3 py-2 ${isHighlightComment ? "border border-[var(--bb-accent,#4a9b6f)] bg-[var(--bb-accent-soft,#ecfdf3)]" : "bg-[var(--bb-surface-soft,#f9fafb)]"}`}>
-          <Link href={`/profile/${comment.user_id}`} className="text-sm font-bold text-[var(--bb-text-primary,#1f2937)] hover:underline">
+          <Link href={`/bb-feed?user=${comment.user_id}`} className="text-sm font-bold text-[var(--bb-text-primary,#1f2937)] hover:underline">
             {name}
           </Link>
           {ctx.editingCommentId === comment.id ? (
@@ -1815,11 +1815,11 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
           thing worth saying is when a post was not typed by a person, and
           that is the Study activity line below. */}
       <div className="flex items-start gap-3 mb-3">
-        <Link href={`/profile/${post.user_id}`} className="flex-shrink-0">
+        <Link href={`/bb-feed?user=${post.user_id}`} className="flex-shrink-0">
           <Avatar userId={post.user_id} displayName={displayName} imageUrl={post.profile_image_url} size={11} />
         </Link>
         <div className="flex-1 min-w-0">
-          <Link href={`/profile/${post.user_id}`} className="block truncate text-[15px] font-bold leading-tight text-gray-900 hover:underline">
+          <Link href={`/bb-feed?user=${post.user_id}`} className="block truncate text-[15px] font-bold leading-tight text-gray-900 hover:underline">
             {displayName}
           </Link>
           <p className="mt-0.5 text-xs text-gray-400">{timeAgo(post.created_at)}</p>
@@ -2164,16 +2164,16 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
                 const name = u.display_name || u.username || "Bible Buddy";
                 return (
                   <div key={u.user_id} className="flex items-center gap-3 px-5 py-2.5 hover:bg-gray-50 transition">
-                    <Link href={`/profile/${u.user_id}`} onClick={() => setLikersOpen(false)} className="flex-shrink-0">
+                    <Link href={`/bb-feed?user=${u.user_id}`} onClick={() => setLikersOpen(false)} className="flex-shrink-0">
                       <Avatar userId={u.user_id} displayName={name} imageUrl={u.profile_image_url} size={9} />
                     </Link>
                     <div className="flex-1 min-w-0">
-                      <Link href={`/profile/${u.user_id}`} onClick={() => setLikersOpen(false)} className="text-sm font-semibold text-gray-900 hover:underline truncate block">
+                      <Link href={`/bb-feed?user=${u.user_id}`} onClick={() => setLikersOpen(false)} className="text-sm font-semibold text-gray-900 hover:underline truncate block">
                         {name}
                       </Link>
                     </div>
                     <Link
-                      href={`/profile/${u.user_id}`}
+                      href={`/bb-feed?user=${u.user_id}`}
                       onClick={() => setLikersOpen(false)}
                       className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition flex-shrink-0"
                     >
@@ -2366,6 +2366,20 @@ export default function BbFeedPage() {
 
   // Notification deep-link params
   const [highlightPostId, setHighlightPostId] = useState<string | null>(null);
+  /**
+   * Whose wall this is, read from ?user= rather than kept in state.
+   *
+   * Tapping a name while the feed is ALREADY the page on screen is a
+   * client-side navigation, and that does not fire popstate - so a state copy
+   * would never update, and the first name anyone tapped from the feed would
+   * appear to do nothing. useSearchParams re-renders on every navigation,
+   * including the back button.
+   */
+  const searchParams = useSearchParams();
+  const viewingUserId = searchParams.get("user");
+  const [wallPosts, setWallPosts] = useState<FeedPost[]>([]);
+  const [wallLoading, setWallLoading] = useState(false);
+  const [wallName, setWallName] = useState<string>("");
   const [highlightCommentId, setHighlightCommentId] = useState<string | null>(null);
   useEffect(() => {
     const openFromUrl = () => {
@@ -2884,6 +2898,53 @@ export default function BbFeedPage() {
     void loadPinnedPosts();
   }, [userId, loadPinnedPosts]);
 
+  /**
+   * One person's wall: their posts, newest first.
+   *
+   * Community visibility only, which is what everyone can already see in the
+   * feed - opening somebody's page must not reveal more than scrolling past
+   * them would.
+   */
+  useEffect(() => {
+    if (!viewingUserId || !userId) return;
+    let cancelled = false;
+
+    void (async () => {
+      setWallLoading(true);
+      const [postsRes, profRes] = await Promise.all([
+        supabase
+          .from("feed_posts")
+          .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
+          .eq("user_id", viewingUserId)
+          .eq("visibility", "community")
+          .order("created_at", { ascending: false })
+          .limit(100),
+        supabase
+          .from("profile_stats")
+          .select("user_id, display_name, username, profile_image_url")
+          .eq("user_id", viewingUserId)
+          .maybeSingle(),
+      ]);
+      if (cancelled) return;
+
+      const prof = profRes.data as { user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null } | null;
+      setWallName(prof?.display_name || prof?.username || "Bible Buddy Member");
+      const posts = (await enrichWithProfiles(postsRes.data || [], prof ? [prof] : [])) as FeedPost[];
+      if (cancelled) return;
+
+      setWallPosts(posts);
+      setWallLoading(false);
+      void loadMyReactions(userId, posts.map((p) => p.id));
+      void loadCommentPreviews(posts.map((p) => p.id));
+      void loadBuddyStates(userId, [viewingUserId]);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewingUserId, userId]);
+
   useEffect(() => {
     let cancelled = false;
     void (async () => {
@@ -3230,6 +3291,53 @@ export default function BbFeedPage() {
     );
   }
 
+  /**
+   * One person's wall, in the feed's own cards.
+   *
+   * The same PostCard as everywhere else, so likes, comments, reporting and
+   * the milestone styling all behave identically - which is the reason this
+   * lives in the feed instead of being a second profile page.
+   */
+  function renderWall() {
+    if (wallLoading) {
+      return <div className="py-16 text-center text-sm text-gray-400">Loading posts…</div>;
+    }
+    if (wallPosts.length === 0) {
+      return (
+        <div className="bb-community-panel rounded-xl border border-gray-200 bg-white p-10 text-center shadow-sm">
+          <p className="mb-3 text-3xl">🕊️</p>
+          <h3 className="mb-1 font-bold text-gray-900">No posts yet</h3>
+          <p className="text-sm text-gray-500">
+            {(wallName || "This member").split(" ")[0]} has not shared anything with the community yet.
+          </p>
+        </div>
+      );
+    }
+    return (
+      <div className="flex flex-col gap-3">
+        {wallPosts.map((item) => (
+          <PostCard
+            key={`wall-${item.id}`}
+            post={item}
+            myId={userId!}
+            myProfile={myProfile}
+            currentUserIsAdmin={currentUserIsAdmin}
+            myReactions={myReactions}
+            onReact={handleReact}
+            onCommentCountChange={handleCommentCountChange}
+            onDelete={handleDeletePost}
+            highlightPostId={highlightPostId}
+            highlightCommentId={highlightCommentId}
+            preview={commentPreviews[item.id]}
+            buddyState={buddyStates[item.user_id]}
+            onBuddyRequested={handleBuddyRequested}
+            studyCovers={studyCovers}
+          />
+        ))}
+      </div>
+    );
+  }
+
   function renderMyFeedTab() {
     if (myFeedLoading) {
       return <div className="text-sm text-gray-400 text-center py-16">Loading your feed...</div>;
@@ -3360,13 +3468,29 @@ export default function BbFeedPage() {
           {/* The title says which feed you are looking at (Louis,
               2026-10-25). The card and its tabs sit at the very top; what
               comes underneath them belongs to the selected tab. */}
+          {viewingUserId ? (
+            <button
+              type="button"
+              onClick={() => router.push("/bb-feed")}
+              className="mb-1 inline-flex min-h-[32px] items-center gap-1 text-sm font-bold text-[#4a3f7a] hover:underline"
+            >
+              ← Back to the feed
+            </button>
+          ) : null}
           <h1 className="text-[26px] font-black leading-tight text-[#2b2150] sm:text-3xl">
-            {tab === "myfeed" ? "My Bible Buddy Feed" : tab === "buddies" ? "My Buddy Feed" : "Bible Buddy Community"}
+            {viewingUserId
+              ? wallName || "Loading…"
+              : tab === "myfeed"
+                ? "My Bible Buddy Feed"
+                : tab === "buddies"
+                  ? "My Buddy Feed"
+                  : "Bible Buddy Community"}
           </h1>
 
           {/* Pills inside the card: the selected one white with the accent
               blue, the rest dark enough to read on lavender. */}
-          <div className="bb-community-tab mt-3 flex gap-1 rounded-2xl bg-white/45 p-1">
+          {/* No tabs on somebody's wall: there is only their wall. */}
+          <div className={`bb-community-tab mt-3 flex gap-1 rounded-2xl bg-white/45 p-1 ${viewingUserId ? "hidden" : ""}`}>
             {/* Community, Buddies, My Feed - the order Louis settled on
                 2026-10-25, which also puts the tab that opens first in the
                 row rather than third. */}
@@ -3403,7 +3527,26 @@ export default function BbFeedPage() {
             only difference, and the Buddies tab already has that set in hand
             from its own query, so narrowing it costs no extra requests. */}
         {!loading && userId ? (
-          tab === "myfeed" ? (
+          viewingUserId ? (
+            // Their card, with the buddy control where Edit Profile sits on
+            // your own. This is the whole point of the page.
+            <ProfileSummaryCard
+              userId={viewingUserId}
+              isSelf={false}
+              actions={
+                viewingUserId !== userId ? (
+                  <AddBuddyButton
+                    targetUserId={viewingUserId}
+                    targetName={wallName || "Bible Buddy Member"}
+                    myId={userId}
+                    myName={myProfile?.display_name || myProfile?.username || "A Bible Buddy"}
+                    state={buddyStates[viewingUserId] ?? "none"}
+                    onRequested={handleBuddyRequested}
+                  />
+                ) : null
+              }
+            />
+          ) : tab === "myfeed" ? (
             <ProfileSummaryCard userId={userId} isSelf />
           ) : (
             <TopBuddiesCard
@@ -3422,7 +3565,9 @@ export default function BbFeedPage() {
             is a strange thing to do to a feed. Posting from here writes the
             same row either way: it lands on your wall and goes into the
             ranking like everything else. */}
-        {!loading && userId && (
+        {/* Never a composer on somebody else's wall: a box that looks like it
+            posts as them is a lie, even if the row would say otherwise. */}
+        {!loading && userId && !viewingUserId && (
           <PostComposer
             userId={userId}
             userProfile={myProfile}
@@ -3470,6 +3615,8 @@ export default function BbFeedPage() {
         {/* Content */}
         {loading ? (
           <div className="text-sm text-gray-400 text-center py-16">Loading feed...</div>
+        ) : viewingUserId ? (
+          renderWall()
         ) : (
           tab === "community" ? renderCommunityTab() : tab === "buddies" ? renderFriendsTab() : renderMyFeedTab()
         )}

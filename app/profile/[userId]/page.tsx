@@ -179,7 +179,22 @@ export default function PublicProfilePage() {
       if (data.user && data.user.id === profileUserId) {
         setSelfRedirecting(true);
         router.replace("/bb-feed");
+        return;
       }
+      /**
+       * Somebody else's page is the feed too now (Louis, 2026-10-25: "the
+       * old profile the names are linked to, I want to retire").
+       *
+       * /bb-feed?user=<id> shows their summary card, the buddy control and
+       * their wall, in the feed's own post cards - so likes, comments and
+       * reporting behave exactly as they do everywhere else, instead of a
+       * second screen with the same data in different clothes.
+       *
+       * This page keeps every old link, notification and bookmark working by
+       * forwarding them, rather than leaving dead URLs behind.
+       */
+      setSelfRedirecting(true);
+      router.replace(`/bb-feed?user=${profileUserId}`);
     })();
 
     return () => {
