@@ -17,7 +17,20 @@ export type CommunityEvent = {
   startDate: string;
   /** Length in days; day N maps to devotional_days.day_number N. */
   totalDays: number;
+  /** Square-ish art for the recruiting banner and the daily popup, which crop it. */
   bannerArt: string;
+  /**
+   * A finished wide banner with the study's name already set in it, shown
+   * full width at the top of the signup page.
+   *
+   * Separate from bannerArt rather than replacing it (Louis, 2026-10-25).
+   * bannerArt is painted behind a gradient at `right top / auto 100%` with the
+   * title typeset over it, so dropping artwork that carries its own title in
+   * there would print the name twice and bury half the art. Where this is set
+   * the signup header shows the image instead of the typeset title; the other
+   * two surfaces keep cropping the square.
+   */
+  heroBanner?: string | null;
   /** Book/journal promo stays hidden until a real link is configured. */
   bookUrl: string | null;
   /** Internal printed-books page, promoted on the event page after signup. */
@@ -78,6 +91,7 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     startDate: "2026-11-01",
     totalDays: 21,
     bannerArt: "/events/beginning-of-everything-banner-art.webp",
+    heroBanner: "/events/beginning-of-everything-hero.webp",
     bookUrl: null,
     printBooksPath: null,
     dateRangeLabel: "November 1–21",

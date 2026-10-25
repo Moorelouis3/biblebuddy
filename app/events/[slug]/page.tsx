@@ -347,16 +347,43 @@ export default function CommunityEventPage() {
     <div className="mx-auto flex w-full max-w-2xl flex-col gap-5 px-4 pb-28 pt-4">
       {accountGateModal}
       <header
-        className="overflow-hidden rounded-[28px] border border-[#3a2c14] p-6 text-center"
-        style={{
-          background: `linear-gradient(100deg, #0c0804 0%, #17100a 55%, rgba(23,16,10,0.65) 100%), url(${event.bannerArt}) right top / auto 100% no-repeat`,
-        }}
+        className={`overflow-hidden rounded-[28px] border border-[#3a2c14] text-center ${event.heroBanner ? "pb-6" : "p-6"}`}
+        style={
+          event.heroBanner
+            ? // A flat colour would be thrown away: globals.css carries
+              // `header { background-color: var(--bb-background) !important }`
+              // for every theme, so the panel came out white and the cream
+              // subtitle vanished into it. A gradient is a background-IMAGE,
+              // which that rule does not touch - the same reason the painted
+              // version below has always worked.
+              { background: "linear-gradient(#0c0804, #0c0804)" }
+            : {
+                background: `linear-gradient(100deg, #0c0804 0%, #17100a 55%, rgba(23,16,10,0.65) 100%), url(${event.bannerArt}) right top / auto 100% no-repeat`,
+              }
+        }
       >
+        {/* Artwork that already says what the study is called: it replaces the
+            typeset title rather than sitting behind it. */}
+        {event.heroBanner ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={event.heroBanner}
+            alt={`${event.title} - ${event.subtitle}`}
+            className="mb-5 block w-full"
+          />
+        ) : null}
+        <div className={event.heroBanner ? "px-6" : undefined}>
         <p className="text-xs font-black uppercase tracking-[0.2em] text-[#bfa877]">{event.dateRangeLabel}</p>
-        <h1 className="mt-2 text-3xl font-black leading-tight" style={{ color: "#e8c877" }}>
-          {event.title}
-        </h1>
-        <p className="mt-1 text-sm font-bold text-[#f4ecdd]">{event.subtitle}</p>
+        {event.heroBanner ? (
+          <p className="mt-2 text-sm font-bold text-[#f4ecdd]">{event.subtitle}</p>
+        ) : (
+          <>
+            <h1 className="mt-2 text-3xl font-black leading-tight" style={{ color: "#e8c877" }}>
+              {event.title}
+            </h1>
+            <p className="mt-1 text-sm font-bold text-[#f4ecdd]">{event.subtitle}</p>
+          </>
+        )}
         {state?.phase === "countdown" ? (
           <p className="mt-3 inline-block rounded-full border border-[#8a6b2f] px-4 py-1.5 text-xs font-black tracking-widest text-[#e8c877]">
             {state.daysToGo} DAY{state.daysToGo === 1 ? "" : "S"} TO GO
@@ -366,6 +393,7 @@ export default function CommunityEventPage() {
             DAY {state.communityDay} OF {event.totalDays}
           </p>
         ) : null}
+        </div>
       </header>
 
       <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#4b5563)]">
