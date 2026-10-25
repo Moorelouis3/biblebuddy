@@ -358,10 +358,17 @@ workflows:
           failure: true
 
   # ───────────────────────────────────────────────────────────────────────────
-  # Android. The whole reason this is a separate workflow and not a step in the
-  # iOS one is cost: this runs on Linux, which is cheaper and faster per minute
-  # than a Mac, and the free plan's 500 minutes are macOS minutes that the
-  # iPhone build is already spending. Nothing here needs a Mac.
+  # Android. A separate workflow from the iOS one because nothing here needs
+  # Xcode and a failed Android build should not cost an iOS build its place.
+  #
+  # It runs on mac_mini_m2, not Linux, and that was not the plan. The plan said
+  # Linux - cheaper per minute, and the free plan's 500 minutes are macOS ones
+  # the iPhone build is already spending. Tried on 2026-10-25 and Codemagic
+  # refused the build outright: "The selected instance type is not available
+  # with the current billing plan." Linux instances need a paid subscription;
+  # the free tier is macOS only. So Android shares the 500 macOS minutes until
+  # somebody decides to pay, and the emulator step picks its system image by
+  # architecture because this machine is Apple Silicon.
   #
   # Manual only, no `triggering` block, for the same reason the iOS workflows
   # have none: two routines commit to main all day - the hourly Bible notes
@@ -369,14 +376,11 @@ workflows:
   # 2026-10-13 and did not skip. The shell only changes when somebody
   # deliberately changes it.
   #
-  # There is no android-release workflow yet on purpose. Signing a release
-  # needs an upload keystore, and that needs the Play Console account to exist
-  # first - see docs/PLAY_STORE_PLAN.md, phases 0 and 3. This workflow proves
-  # the thing compiles, installs and opens, which is everything that can be
-  # proved before Louis has an account.
+  # This workflow proves the thing compiles, installs and opens. The signed
+  # bundle that actually goes to Play is android-release, below.
   android-build:
     name: Bible Buddy Android
-    instance_type: linux_x2
+    instance_type: mac_mini_m2
     max_build_duration: 40
 
     environment:
@@ -468,7 +472,7 @@ workflows:
   # Manual only, same as every other workflow in this file.
   android-release:
     name: Bible Buddy Android — signed bundle
-    instance_type: linux_x2
+    instance_type: mac_mini_m2
     max_build_duration: 40
 
     environment:
