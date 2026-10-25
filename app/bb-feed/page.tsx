@@ -2192,31 +2192,37 @@ const BUDDY_FEED_LIMIT = 300;
 const PINNED_MAX = 3;
 
 /**
- * "The Wisdom of Proverbs · Day 18: The Wall That Isn't There" - the daily
- * study post, and nothing else.
+ * What sits at the top of the feed: this week's poll and this week's prayer
+ * thread - the newest of each, from the Bible Buddy account (Louis,
+ * 2026-10-19: "the poll and the prayer request should both be under the top
+ * pinned account, both pinned").
  *
- * The day used to open the headline; it is preceded by the study's name since
- * 2026-10-18, so this matches either shape rather than only the old one. A
- * rule that recognises the pinned post has to keep up with the post.
- */
-const DEVOTIONAL_DAY_HEADLINE = /(?:^|·\s)Day \d+:\s/;
-
-/**
- * What sits at the top of the feed: this week's poll, this week's prayer
- * thread, and the running study's day post - the newest of each, from the
- * Bible Buddy account (Louis, 2026-10-19: "the poll and the prayer request
- * should both be under the top pinned account, both pinned").
+ * The daily study post used to be pinned here too and no longer is (Louis,
+ * 2026-10-25: "the daily proverbs post can stop, it's there for no reason").
+ * It still appears in the feed like any other post; it simply stopped
+ * occupying a pin, which is meant for the one poll and the one prayer thread
+ * that have to last the week.
  */
 function selectPinnedPosts<T extends FeedPost>(posts: T[]): T[] {
   const official = posts.filter((post) => post.user_id === BIBLE_BUDDY_USER_ID);
-  const firstLine = (post: T) => post.content.split("\n", 1)[0] ?? "";
 
   const poll = official.find((post) => pollIdFromPost(post.link_url));
-  const prayer = official.find((post) => /pray/i.test(post.content) && !pollIdFromPost(post.link_url));
-  const study = official.find((post) => DEVOTIONAL_DAY_HEADLINE.test(firstLine(post)));
+  /**
+   * The weekly thread itself - "Drop your prayer request for the week" - and
+   * not merely a post that mentions praying.
+   *
+   * This was /pray/i against the whole body, which on 2026-10-25 handed the
+   * pin to "Proverbs 30 Explained 📖": it is from the same account, its body
+   * mentions prayer, and it was a day newer than the real thread. Matching
+   * the headline keeps the pin on the post that is supposed to hold it for
+   * the week.
+   */
+  const prayer = official.find(
+    (post) => /prayer request/i.test(post.content.split("\n", 1)[0] ?? "") && !pollIdFromPost(post.link_url),
+  );
 
   const pinned: T[] = [];
-  for (const candidate of [poll, prayer, study]) {
+  for (const candidate of [poll, prayer]) {
     if (!candidate || pinned.length >= PINNED_MAX) continue;
     if (pinned.some((post) => post.id === candidate.id)) continue;
     pinned.push(candidate);
@@ -2254,19 +2260,19 @@ export default function BbFeedPage() {
   const [myProfile, setMyProfile] = useState<MyProfile>(null);
   const [currentUserIsAdmin, setCurrentUserIsAdmin] = useState(false);
   /**
-   * My Feed first, and selected by default (Louis, 2026-10-24).
+   * My Feed is first in the row; Community is what OPENS (Louis, 2026-10-25).
    *
-   * The feed is the reader's own page now, with their profile above it, so it
-   * opens on their own posts rather than on everybody else's. A reader with
-   * nothing posted yet lands on an empty My Feed, which is the one cost of
-   * this order - renderMyFeedTab answers that with an empty state pointing at
-   * Community rather than silently switching tabs, which would leave someone
-   * wondering which tab they were actually on.
+   * He asked for My Feed as the default on 2026-10-24 and changed his mind
+   * the moment he saw it, for a good reason: "I want community to be the
+   * first tab open, that way people get the dopamine of seeing others." An
+   * empty page is a bad greeting, and the community wall is the thing worth
+   * walking into.
    *
-   * A deep link to a post still forces Community (see the postId effect
-   * below), so notification links are unaffected.
+   * The ORDER still reads My Feed | Buddies | Community, which is his; only
+   * the selected tab changed. The My Feed empty state stays, because anyone
+   * who taps that tab early still needs somewhere to go.
    */
-  const [tab, setTab] = useState<Tab>("myfeed");
+  const [tab, setTab] = useState<Tab>("community");
   const [loading, setLoading] = useState(true);
   const [showFeedOnboarding, setShowFeedOnboarding] = useState(false);
 
@@ -2337,6 +2343,21 @@ export default function BbFeedPage() {
 
   // Community tab state — single ranked list
   const [rankedCommunityFeed, setRankedCommunityFeed] = useState<RankedFeedItem[]>([]);
+  /**
+   * The pinned posts, fetched on their own rather than picked out of the feed.
+   *
+   * THE BUG (Louis, 2026-10-25: "my poll of the week pin is no longer there,
+   * it stays there the whole week and then gets replaced"). Pins used to be
+   * chosen from rankedCommunityFeed, which is the newest 100 posts of the
+   * last seven days. There were 295 community posts in those seven days when
+   * he reported it, and Monday's poll sat at position 163 - so the pin
+   * silently vanished partway through the week, and will do it earlier the
+   * more the community grows.
+   *
+   * Asking for them directly is a tiny query against one account and does not
+   * care how busy the week was.
+   */
+  const [pinnedPosts, setPinnedPosts] = useState<RankedFeedItem[]>([]);
 
   // My Feed tab state
   const [myFeedPosts, setMyFeedPosts] = useState<FeedPost[]>([]);
@@ -2727,6 +2748,44 @@ export default function BbFeedPage() {
     setRankedCommunityFeed(blocked.size ? ranked.filter((item) => !blocked.has(item.user_id)) : ranked);
   }, [rankedCommunityFeed.length, userId, myReactions]);
 
+  /**
+   * This week's poll and prayer thread, asked for by name.
+   *
+   * Independent of the feed page, so a busy week cannot push them off the
+   * top. Fourteen days rather than seven: a pin should survive a cron that
+   * runs late or misses once, and the newest of each still wins, so a fresh
+   * poll replaces the old one the moment it is posted.
+   */
+  const loadPinnedPosts = useCallback(async () => {
+    const fourteenDaysAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString();
+    const { data } = await supabase
+      .from("feed_posts")
+      .select("id, user_id, post_type, content, verse_ref, verse_text, media_url, link_url, link_title, visibility, reaction_counts, comment_count, created_at")
+      .eq("user_id", BIBLE_BUDDY_USER_ID)
+      .eq("visibility", "community")
+      .gte("created_at", fourteenDaysAgo)
+      .order("created_at", { ascending: false })
+      .limit(60);
+    if (!data || data.length === 0) {
+      setPinnedPosts([]);
+      return;
+    }
+
+    const { data: prof } = await supabase
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url")
+      .eq("user_id", BIBLE_BUDDY_USER_ID)
+      .maybeSingle();
+
+    const enriched = (await enrichWithProfiles(data, prof ? [prof] : [])) as RankedFeedItem[];
+    setPinnedPosts(selectPinnedPosts(enriched));
+  }, []);
+
+  useEffect(() => {
+    if (!userId) return;
+    void loadPinnedPosts();
+  }, [userId, loadPinnedPosts]);
+
   useEffect(() => {
     if (!highlightPostId || !userId) {
       setFocusedPost(null);
@@ -2988,7 +3047,7 @@ export default function BbFeedPage() {
     // Pins sit above the ranking and are not re-ranked. Only on the unfiltered
     // view: asking for Photos and being shown a text post because it happens
     // to be pinned is the control not working.
-    const pinned = postFilter === "all" ? selectPinnedPosts(rankedCommunityFeed) : [];
+    const pinned = postFilter === "all" ? pinnedPosts : [];
     const pinnedIds = new Set(pinned.map((item) => item.id));
     const posts = applyFeedControls(rankedCommunityFeed).filter((item) => !pinnedIds.has(item.id));
 
