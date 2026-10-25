@@ -8599,3 +8599,77 @@ Still open:
   paperback_url. Left alone, different book, one command whenever Louis wants.
 - A+ content for Higher Hope and Bible in One Year, once the ASINs settle.
 Next: link both books in the app when the ASINs land.
+
+## 2026-10-25 (21 Women listing, and the study cover bug)
+Done:
+- **21 Women is one listing now.** The hardcover was a separate title record
+  sitting as a second bookshelf row. KDP's "Link existing hardcover" on the
+  live paperback merged them, and the hardcover moved onto the paperback's
+  title id 2YXFBBE31ZF keeping its ISBN 9798163402304. Note KDP's own wording:
+  linking joins the Bookshelf rows, not the Amazon detail pages, so watch
+  whether Amazon merges those once the hardcover is live.
+- **The messed up cover is fixed and published.** The 2026-10-18 defect was
+  the hardcover losing the N of WOMEN and the E of BIBLE into the 0.7085in
+  board fold. `21_Women_Cover_Hardcover_KDP_v2.pdf` was built back then but
+  could not be uploaded while the title was locked in review. Uploaded now,
+  checked in KDP's previewer with guides, and submitted at $29.99 (prints
+  $8.52, pays $9.48, the best margin on the shelf).
+- `devotionals.paperback_url` set for 21 Women (B0HNHF5NC8).
+- **Found a real bug while checking the library.** Higher Hope launched today
+  with a cover_image on its row and a live file, and still showed the emoji
+  placeholder. Three places resolve a study's artwork from a hand-kept list of
+  titles and none of them read devotionals.cover_image. The list stays as the
+  override; the row is now the fallback. Plans card, study detail header and
+  study switcher all fixed, and the dashboard query now selects the column.
+Not live yet: 12 commits, next build Sun 17:05 Berlin. All step 3.
+Still open:
+- Could not render the signed-in Plans page to prove the cover fix; the page
+  needs a session the preview browser does not have. Verified the data, the
+  file and the code path, and the page compiles. Worth a look after 17:05.
+- Higher Hope and 21 Women hardcover both waiting on Amazon review.
+Next: check both covers on Amazon once live, then A+ content.
+
+## 2026-10-25 (October Proverbs review, November launch plan)
+Marching orders: no PLAN.md in this repo, so the brief itself was the orders -
+analyse the October Proverbs experiment from real data, plan the November
+launch of The Beginning of Everything, and judge the twelve-month model.
+Today: query production for the real October numbers, then write the report,
+the launch checklist and the growth plan.
+
+Done:
+- **252 signups verified** (community_event_members), not ~250. But only 64 of
+  them ever opened a day, and 63 completed one. 188 people signed up and never
+  started. That is the biggest hole in the funnel by a wide margin.
+- 173 people read Proverbs in total; 109 of them never joined the event at all.
+  Signup and reader are two different tables and we had been conflating them.
+- Median participant completed **one day**. 136 completed 1+, 17 reached 7, 7
+  reached 15, nobody can have finished 31 yet (today is day 25).
+- Day 1 to day 2 loses 62%. After day 7 the line is flat.
+- **90% of all community activity in the app in October came from Proverbs
+  participants** (37 of 38 discussion repliers; 53 of 59 feed-active users).
+  That is the real case for running a study every month.
+- **Four people have ever clicked an Amazon link** for the Proverbs books; two
+  clicks in October. No sales data exists anywhere, and with no Associates tag
+  nothing is attributable. Said so rather than estimating.
+- "Weekly emails" was one send in 25 days (5,019 delivered, 92 unique
+  clickers, 1.8%).
+- **Found a live break for 1 November:** COMMUNITY_EVENTS still has
+  obedience-of-abraham as the November event, pointing at a devotional with 15
+  of 21 days seeded, with a bannerArt file that does not exist. At midnight
+  Berlin on the 1st the banner, home card, daily popup and event page would
+  all advertise the wrong study. The Beginning of Everything itself is fine -
+  21 days seeded, published, available_from 2026-11-01.
+- Report, launch checklist and 12-month plan in
+  docs/monthly-studies/october-review-and-november-launch.md.
+Not live yet: the doc is a step 3 commit, next build Sun 17:05 Berlin. The
+November config fix is not written yet - it is step 1 only if it is still
+wrong on 1 November, step 3 if done before.
+Still open:
+- The COMMUNITY_EVENTS swap to The Beginning of Everything, plus a real
+  /events/ banner art file. Needs doing before the 1st.
+- Join-equals-start (open day 1 in the join click) - the single highest-value
+  retention fix in the report.
+- Amazon Associates tag on outbound book links, before November, or November's
+  book numbers are as unattributable as October's.
+- Queue the four November weekly emails.
+Next: the November config swap and banner art, then join-equals-start.

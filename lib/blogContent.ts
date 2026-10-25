@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-1-explained",
+    title: "Numbers 1 Explained: Counting Israel's Army in the Wilderness",
+    description:
+      "Numbers 1 explained verse by verse: why Moses counted every tribe's fighting men, left out the Levites, and what 603,550 revealed about Israel.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-1-explained",
+    publishedAt: "2026-10-25",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-1-explained.jpg",
+    groupPost: {
+      title: "Numbers 1 Explained 📖",
+      content:
+        "A whole book opens with a headcount.\nMoses lines up every tribe to count its soldiers.\n\n📌 Being left off one list meant a bigger job, not a smaller one.\n\n📖 603,550 fighting men, the same total Exodus 38 already named.\n📖 The Levites were never counted. They were given the tabernacle instead.\n📖 Reuben still goes first, even after losing his birthright.\n\nNew article on:\n🟢 why the **Levites** were left out of Israel's army count\n🟢 what the **603,550 total** reveals about the whole nation\n🟢 why **Reuben** still opens the roll call\n\nWhat is one ordinary task you are doing right now that feels like paperwork? 🙏",
+    },
+  },
+  {
     slug: "leviticus-27-explained",
     title: "Leviticus 27 Explained: The Law of Vows and Valuations",
     description:
@@ -153,7 +170,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/how-to-read-the-bible-in-a-year-without-quitting",
     publishedAt: "2026-10-25",
     readTime: "15 min read",
-    image: "/blog-banners/how-to-read-the-bible.jpg",
+    image: "/blog-banners/how-to-read-the-bible-in-a-year-without-quitting.jpg",
     groupPost: {
       title: "Read The Bible In A Year Without Quitting 📖",
       content:
@@ -170,7 +187,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/christmas-day-one-thing-to-carry",
     publishedAt: "2026-10-25",
     readTime: "5 min read",
-    image: "/blog-banners/who-was-mary.jpg",
+    image: "/blog-banners/christmas-day-one-thing-to-carry.jpg",
     groupPost: {
       title: "Christmas Day: One Thing To Carry 🙏",
       content:
@@ -187,7 +204,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/what-the-first-christmas-actually-looked-like",
     publishedAt: "2026-10-25",
     readTime: "15 min read",
-    image: "/blog-banners/who-was-mary.jpg",
+    image: "/blog-banners/what-the-first-christmas-actually-looked-like.jpg",
     groupPost: {
       title: "What The First Christmas Actually Looked Like 📖",
       content:
@@ -204,7 +221,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/thanksgiving-when-the-year-has-been-hard",
     publishedAt: "2026-10-25",
     readTime: "15 min read",
-    image: "/blog-banners/what-does-the-bible-say-about-anxiety.jpg",
+    image: "/blog-banners/thanksgiving-when-the-year-has-been-hard.jpg",
     groupPost: {
       title: "Gratitude When The Year Has Been Hard 🙏",
       content:
@@ -1014,7 +1031,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/have-they-found-noahs-ark",
     publishedAt: "2026-10-12",
     readTime: "11 min read",
-    image: "/blog-banners/christian-news-noahs-ark.png",
+    image: "/blog-banners/have-they-found-noahs-ark.jpg",
     excludeFromGroupShare: true,
   },
   {
@@ -1027,7 +1044,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/shroud-of-turin-what-the-science-says",
     publishedAt: "2026-10-12",
     readTime: "13 min read",
-    image: "/blog-banners/christian-news-shroud.png",
+    image: "/blog-banners/shroud-of-turin-what-the-science-says.jpg",
     excludeFromGroupShare: true,
   },
   {
@@ -1040,7 +1057,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/laminin-the-cross-shaped-protein",
     publishedAt: "2026-10-12",
     readTime: "11 min read",
-    image: "/blog-banners/christian-news-laminin.png",
+    image: "/blog-banners/laminin-the-cross-shaped-protein.jpg",
     excludeFromGroupShare: true,
   },
   {

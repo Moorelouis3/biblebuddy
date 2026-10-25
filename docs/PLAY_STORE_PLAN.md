@@ -219,17 +219,26 @@ currently works.
 
 | | What | Who | Blocking? |
 |---|---|---|---|
-| **0** | Create the Play Console account, pay the $25, clear identity verification | Louis | **in progress 2026-10-25** - see below |
-| **0b** | Start recruiting 12 testers | Louis | Yes - it is the long pole |
+| **0** | ~~Create the Play Console account, pay the $25~~ **done 2026-10-25** | Louis | - |
+| **0b** | Finish account setup: identity documents, Android device check, phone verification | Louis | **Yes - no app can be created until this clears** |
 | **1** | ~~Platform scaffold, icon, Linux Codemagic workflow, emulator screenshot step~~ **done 2026-10-25**, unrun | agent | No |
 | **2** | FCM sender + Firebase project + Android OAuth client; push and Google sign-in proven on a real phone | agent, ~1 day | No |
-| **3** | Upload keystore, first AAB to the internal testing track | Louis + agent | Needs 0 |
-| **4** | Closed test: 12 testers, 14 continuous days | Louis | **This is the schedule** |
-| **5** | Apply for production access, submit, answer review | both | Needs 4 |
+| **3** | Upload keystore and a signed AAB, create the app, open the closed track | Louis + agent | Needs 0b |
+| **4** | **The opt-in link exists.** Now email the list and ask | Louis | Needs 3 |
+| **5** | Closed test: 12 testers, 14 continuous days | Louis | **This is the schedule** |
+| **6** | Apply for production access, submit, answer review | both | Needs 5 |
 
-Phases 1 and 2 happen *while* phase 4's clock runs, if the testers are recruited
-early enough. That is the whole scheduling trick, and it is why recruiting comes
-before any code.
+**An earlier draft of this plan had step 4 at the top, as "start recruiting
+now".** That was wrong, and Louis said so: "we have no link to send them.. what
+u wanna email? hey can you do me a favor use the app for android... but we don't
+have the link yet?" Exactly right. Google generates the opt-in URL only once a
+closed testing track exists with a build on it, so there is nothing to ask
+anyone for until step 3 lands. Asking people to stand by, and then going quiet
+for a week while a keystore gets sorted out, is how you lose the twelve you
+had.
+
+The 14-day clock therefore starts at step 5, not today. Steps 1 and 2 are the
+only things that can run in parallel, and 1 is already done.
 
 ## Account facts (signup, 2026-10-25)
 
@@ -267,15 +276,54 @@ Store and Google Pay already use. The profile fixes the developer account's
 country permanently and identity verification has to match it, so it has to be
 where Louis actually lives.
 
-**What is left, and it is only Louis:**
+**The account exists as of 2026-10-25.** Louis finished the phone number, the
+Developer Distribution Agreement and the USD 25 himself. Account ID
+`7337921392900834938`.
 
-1. The contact phone number, with `+` and country code.
-2. The Google Play Developer Distribution Agreement, on the Terms step.
-3. The USD 25 registration fee.
+### The setup checklist, which blocks everything
 
-Then identity verification (ID and address) runs separately and can take days.
-Nothing here can be done by an agent: the first is personal data, the second is
-a contract, the third is a payment.
+Play Console opens on "Finish setting up your developer account" and will not
+let an app be created until three things clear. All three are Louis's, and the
+second is the one to look at first:
+
+1. **Verify your identity** - upload an official document. Google says the
+   review "may take a few days", so start it before anything else.
+2. **Verify that you have access to an Android device** - sign in to the Play
+   Console *mobile app* on an Android phone. **Louis does not own one**, which
+   makes this the hard blocker rather than identity.
+
+   Checked on 2026-10-25: Google's own page says a **real Android mobile
+   device**, required of new personal accounts before they can publish, done
+   by scanning the QR code on the Console home page and tapping Verify in the
+   app. Only the account owner can do it, signed in with the same Google
+   account. Nothing in Google's documentation says an emulator counts, and the
+   wording is "real device", so do not plan around one.
+
+   **Tested on 2026-10-25, and it is worse than "before you can publish":**
+   clicking Create app with the checks outstanding returns *"Complete account
+   verifications to create apps"*. So it is not something to defer to the end
+   of the build work - no app record, no track and no opt-in link exist until
+   it clears.
+
+   **But nothing is waiting on the phone today.** The identity documents are
+   already uploaded and under review, Google says that takes a few days, and
+   the Console states the phone-number check cannot even start until those
+   documents are approved. The device check is the only one that can be done
+   out of order, so there are several days of slack to find an Android.
+
+   Two ways through, and they are not alternatives - do both, in order.
+   **Borrow an Android for five minutes** to clear the check today; the
+   verification attaches to the account, not the phone, so it can be signed
+   out afterwards (and the session revoked from Google account settings).
+   Then **buy a cheap used Android before the closed test starts**, because
+   the real problem is not the checkbox: Bible Buddy is about to ship to the
+   one in five of its users who are on Android, and nobody on this side has
+   any way to open it. CI screenshots from an emulator are not the same as
+   holding the thing. Sixty euros against everything already spent.
+3. **Verify your contact phone number** - a code to the number given at signup.
+
+A QR-code dialog offering to continue verification on a phone opens over the
+console on load; it is step 2 asking, not an error.
 
 ## The testers
 

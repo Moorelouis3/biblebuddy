@@ -14,6 +14,14 @@ interface Devotional {
   title: string;
   description: string;
   total_days: number;
+  /**
+   * The study's artwork, as stored on the row. getCoverImage below is a
+   * hand-kept override list that predates this column; anything not named
+   * there falls back to this. Higher Hope had a cover_image and a real file
+   * from the day it shipped and still came up as the emoji placeholder,
+   * because nobody had added a line to the list (2026-10-25).
+   */
+  cover_image?: string | null;
 }
 
 type DevotionalDayRow = {
@@ -389,7 +397,7 @@ export default function DevotionalsPage({ embedded = false, onStudySelect }: Dev
   };
 
   const getDevotionalVisual = (devotional: Devotional) => {
-    const coverImage = getCoverImage(devotional.title);
+    const coverImage = getCoverImage(devotional.title) ?? devotional.cover_image ?? null;
     if (coverImage) {
       return (
         <div className="overflow-visible rounded-xl">
