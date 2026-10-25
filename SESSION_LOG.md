@@ -8479,3 +8479,30 @@ Still open:
   and the articles are held out of the study group pending Louis's read.
 Next: watch for the two Live emails from Amazon, then A+ content and the app's
 paperback links. Then the email plan, once Louis answers the four questions.
+
+## 2026-10-25 (night)
+Time spent: a long one, straight through from the 24th.
+Done: feed redesign shipped and live (unified feed+profile, names open a
+person's wall inside the feed, milestone cards with real devotional covers,
+pastel stat tiles, Community-first tabs, written posts ranked above generated
+completions, Report/Block restored on profiles - that last one was a
+compliance regression I had caused). Video embeds fixed: Bunny rejects
+loop=1, wants loop=true, proven 400 vs 200 against the real embed. Two dead
+video posts deleted at Louis's request; his new Solomon video plays.
+Email: 25 Sunday `systeme-*` campaigns PAUSED (not deleted) - they were
+running quietly and would have made three sends a week. 12 Friday teaching
+lessons ARMED, lesson 1 on 30 Oct, every Friday including Christmas and New
+Year (I added a holiday skip, Louis correctly called it backwards, reverted).
+Weekly newsletter now leads with one real read using the article's own
+groupPost teaser instead of three bare links. Email tab lists every campaign
+scheduled and sent, each row opening the existing editor.
+Not live yet: `npm run pending`. Trigger 1 (study-nudge) is on main and
+GATED - it cannot send without an armed campaign row, and there is none.
+Triggers 2 and 3 are committed on feature/unified-feed-profile and NOT
+pushed, awaiting approval.
+Still open: four holiday blog posts Louis is writing today, which the themed
+Friday emails will be built against. Whether to fold trigger 1 into the
+shared triggerEmails module. Whether three emails a week is right - 150 of
+5,351 people have ever clicked.
+Next: Louis approves or changes the three triggers; then arm them one at a
+time and watch the first sends.
