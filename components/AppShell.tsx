@@ -39,7 +39,7 @@ import {
 } from "../lib/notificationTargets";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import BottomNav from "./BottomNav";
-import WisdomProverbsPopup from "./WisdomProverbsPopup";
+import BeginningOfEverythingPopup from "./BeginningOfEverythingPopup";
 import WisdomBookPopup from "./WisdomBookPopup";
 import ProverbsLaunchPopup from "./ProverbsLaunchPopup";
 import CommunityEventDayPopup from "./CommunityEventDayPopup";
@@ -3759,10 +3759,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           profiles, embeds - which are not the app. */}
       {showBottomNav ? <BottomNav /> : null}
 
-      {/* One-time Wisdom of Proverbs promo - it decides eligibility itself
-          (not a member, never shown) and waits for a quiet moment. */}
+      {/* One-time promo for the study that is next, which from 2026-10-25 is
+          The Beginning of Everything - Proverbs finishes on the 31st and
+          nobody joining now would catch it. One popup at a time: two at once
+          is how a free app starts to feel like an advert. It decides
+          eligibility itself (not a member, never shown) and waits for a quiet
+          moment. */}
       {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
-        <WisdomProverbsPopup
+        <BeginningOfEverythingPopup
           userId={userId}
           pathname={pathname}
           blocked={Boolean(
