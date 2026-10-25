@@ -44,13 +44,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    // The shareable Proverbs entry page. Until this was added the sitemap listed
-    // only the homepage and the blog (2026-10-06).
-    {
-      url: `${SITE_URL}/devotionals/wisdom-of-proverbs`,
+    // The shareable study entry pages. Proverbs was added on 2026-10-06, when
+    // the sitemap listed only the homepage and the blog; the other two were
+    // simply never added after it, so Google has never been told they exist
+    // (noticed 2026-10-25). Every one of these is a real door into the app
+    // for somebody who has never heard of it.
+    ...[
+      "/devotionals/wisdom-of-proverbs",
+      "/devotionals/higher-hope",
+      "/bible-in-one-year",
+    ].map((path) => ({
+      url: `${SITE_URL}${path}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.9,
-    },
+    })),
   ];
 }
