@@ -8570,3 +8570,32 @@ Still open:
 - Whether 3 emails a week is right at all, given 150 of 5,351 subscribers
   have ever clicked one.
 Next: his call on the themed copy, then watch the first trigger sends.
+
+## 2026-10-25 (Higher Hope on KDP)
+Done:
+- **Higher Hope submitted to KDP in both formats**, on one detail page, both
+  In review. Hardcover $29.99 (prints $12.03, pays $5.96), paperback $19.99
+  (prints $7.38, pays $4.61). 532 pages, 6x9, white, matte. ISBNs
+  9798165105036 and 9798165107221, title id 6P7VAMRR3N8.
+- The paperback wrap did not exist again, so this time it is a script:
+  `scripts/paperback-wrap-from-hardcover.mjs` derives one by lifting the cover
+  panels and the middle of the spine zone out of the hardcover art rather than
+  squeezing it. KDP took 13.448 x 9.250 without naming a different size and
+  its previewer put the spine text cleanly inside the spine.
+- Both checks that caught defects on Bible in One Year passed: the cover's
+  "thought provoking questions" claim is true, and the hardcover artwork
+  clears the 0.7085in board fold on every edge.
+- Third category is Health, Fitness & Dieting > Addiction & Recovery >
+  General, deliberately outside Religion, because that is the placement that
+  reaches somebody searching for help rather than for a devotional.
+- `scripts/link-printed-edition.mjs` written for the day the ASINs arrive.
+- Noted in passing: Bible in One Year went Live overnight (hardcover
+  B0HP6YYG6V, paperback B0HP72CBJ2).
+Not live yet: run `npm run pending`. The docs and scripts are untagged, step 3.
+Still open:
+- The in-app link for Higher Hope cannot be set until Amazon issues the ASIN
+  (up to 72 hours). One command when it does.
+- 21 Women of the Bible is Live (paperback B0HNHF5NC8) and still has no
+  paperback_url. Left alone, different book, one command whenever Louis wants.
+- A+ content for Higher Hope and Bible in One Year, once the ASINs settle.
+Next: link both books in the app when the ASINs land.
