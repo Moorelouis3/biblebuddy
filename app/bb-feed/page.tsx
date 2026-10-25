@@ -2351,6 +2351,13 @@ export default function BbFeedPage() {
 
   // Where I stand with each author on screen. See loadBuddyStates.
   const [buddyStates, setBuddyStates] = useState<Record<string, BuddyState>>({});
+  /**
+   * Everyone this reader is buddies with, once the Buddies tab has loaded.
+   *
+   * Only used to narrow the Top Buddies board on that tab. Null until then,
+   * which the board treats as "no filter yet" rather than "no buddies".
+   */
+  const [buddyIdSet, setBuddyIdSet] = useState<Set<string> | null>(null);
 
   // The two controls above the feed. See applyFeedControls.
   const [postFilter, setPostFilter] = useState<"all" | "photos" | "study">("all");
@@ -2563,6 +2570,9 @@ export default function BbFeedPage() {
     setBuddiesLoading(true);
 
     const buddyIdSet = await getAllBuddyIds(uid);
+    // Kept so Top Buddies can be narrowed to these people without fetching
+    // the list a second time (it is eight requests for Louis).
+    setBuddyIdSet(buddyIdSet);
     if (buddyIdSet.size === 0) {
       setRankedBuddiesFeed([]);
       setBuddiesLoading(false);
@@ -2621,8 +2631,36 @@ export default function BbFeedPage() {
       .order("created_at", { ascending: false })
       .limit(100);
 
-    // Use already-loaded myProfile to avoid an extra fetch
-    const profileArr = myProfile ? [{ user_id: uid, ...myProfile }] : [];
+    /**
+     * Fall back to fetching the profile, instead of showing "Bible Buddy".
+     *
+     * This used myProfile alone, and an empty array makes enrichWithProfiles
+     * fall back to the generic name and BB avatar - so every one of your own
+     * posts was signed "Bible Buddy" (Louis, 2026-10-25, with a screenshot).
+     *
+     * It only started happening when My Feed became the default tab: this now
+     * runs on mount, which can be before the init effect has set myProfile.
+     * Community being the default used to hide it, because by the time anyone
+     * clicked My Feed the profile had long arrived. myFeedLoaded also stops
+     * this function re-running, so a later myProfile could never repair it.
+     */
+    type FeedAuthor = {
+      user_id: string;
+      display_name: string | null;
+      username: string | null;
+      profile_image_url: string | null;
+    };
+    let profileArr: FeedAuthor[] = myProfile
+      ? [{ user_id: uid, ...myProfile } as FeedAuthor]
+      : [];
+    if (profileArr.length === 0) {
+      const { data: prof } = await supabase
+        .from("profile_stats")
+        .select("display_name, username, profile_image_url, is_paid, member_badge")
+        .eq("user_id", uid)
+        .maybeSingle();
+      if (prof) profileArr = [{ user_id: uid, ...prof } as FeedAuthor];
+    }
     const posts = await enrichWithProfiles(postRows || [], profileArr) as FeedPost[];
 
     setMyFeedPosts(posts);
@@ -3136,12 +3174,6 @@ export default function BbFeedPage() {
             The text colours are fixed rather than themed, as on those cards:
             the background is a fixed light illustration, so themed text would
             turn white on it in dark mode. */}
-        {/* The reader's own profile, above their own feed.
-            One identity and one feed on one page (Louis, 2026-10-24). The
-            card reads the same profile_stats row the profile page reads, and
-            links to it for editing and for the deeper sections. */}
-        {userId ? <ProfileSummaryCard userId={userId} isSelf /> : null}
-
         <div
           className="relative mb-3 overflow-hidden rounded-3xl border border-[#ddd6f3] p-4 shadow-sm sm:p-5"
           style={{
@@ -3152,8 +3184,11 @@ export default function BbFeedPage() {
             backgroundRepeat: "no-repeat",
           }}
         >
+          {/* The title says which feed you are looking at (Louis,
+              2026-10-25). The card and its tabs sit at the very top; what
+              comes underneath them belongs to the selected tab. */}
           <h1 className="text-[26px] font-black leading-tight text-[#2b2150] sm:text-3xl">
-            Bible Buddy Feed
+            {tab === "myfeed" ? "My Bible Buddy Feed" : tab === "buddies" ? "My Buddy Feed" : "Bible Buddy Community"}
           </h1>
 
           {/* Pills inside the card: the selected one white with the accent
@@ -3179,10 +3214,28 @@ export default function BbFeedPage() {
           </div>
         </div>
 
-        {/* Top Buddies, directly under the tabs and in the same place on all
-            three of them. The ranking is the one that already exists; this is
-            a second way of showing it (Louis, with a mockup, 2026-10-18). */}
-        {!loading && userId ? <TopBuddiesCard groupId={COMMUNITY_GROUP_ID} /> : null}
+        {/* ONE header under the tabs, belonging to the selected tab - never
+            two (Louis, 2026-10-25: "it shouldn't be Louis Moore, all my
+            information at the top, AND top buddies when I'm on my feed. It
+            should just be one").
+
+              My Feed   - who you are, above your own posts.
+              Buddies   - the leaderboard narrowed to your buddies.
+              Community - the same leaderboard, everybody.
+
+            Top Buddies is a single component either way; `restrictTo` is the
+            only difference, and the Buddies tab already has that set in hand
+            from its own query, so narrowing it costs no extra requests. */}
+        {!loading && userId ? (
+          tab === "myfeed" ? (
+            <ProfileSummaryCard userId={userId} isSelf />
+          ) : (
+            <TopBuddiesCard
+              groupId={COMMUNITY_GROUP_ID}
+              restrictTo={tab === "buddies" ? buddyIdSet : null}
+            />
+          )
+        ) : null}
 
         {/* The composer, at the top of either tab.
 

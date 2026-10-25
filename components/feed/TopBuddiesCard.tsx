@@ -106,7 +106,24 @@ function Face({ buddy, size }: { buddy: Buddy; size: number }) {
   );
 }
 
-export default function TopBuddiesCard({ groupId }: { groupId: string }) {
+export default function TopBuddiesCard({
+  groupId,
+  /**
+   * Narrow the board to these people (Louis, 2026-10-25).
+   *
+   * The Buddies tab wants the same leaderboard, ranked the same way, but
+   * showing only the reader's own buddies; Community wants everybody. One
+   * board, one API call, one difference.
+   *
+   * Null means no filter - which is also what the Buddies tab passes before
+   * its buddy list has loaded, so the board shows the full ranking rather
+   * than claiming the reader has no buddies.
+   */
+  restrictTo = null,
+}: {
+  groupId: string;
+  restrictTo?: Set<string> | null;
+}) {
   const [buddies, setBuddies] = useState<Buddy[] | null>(null);
   const [failed, setFailed] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -172,8 +189,11 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
     );
   }
 
-  const listed = buddies.slice(0, showAll ? TOP_100_LIMIT : EXPANDED_COUNT);
-  const preview = buddies.slice(0, PREVIEW_COUNT);
+  // The ranking is the server's; this only removes people, so positions stay
+  // in the same order they were earned.
+  const ranked = restrictTo ? buddies.filter((b) => restrictTo.has(b.userId)) : buddies;
+  const listed = ranked.slice(0, showAll ? TOP_100_LIMIT : EXPANDED_COUNT);
+  const preview = ranked.slice(0, PREVIEW_COUNT);
 
   return (
     <section
@@ -188,7 +208,7 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
       }}
     >
       <h2 id="top-buddies-heading" className="flex items-center gap-2 px-4 pt-3 text-[15px] font-black text-[#5b3a21]">
-        <span aria-hidden>🏆</span> Top Buddies
+        <span aria-hidden>🏆</span> {restrictTo ? "Top Buddies · yours" : "Top Buddies"}
       </h2>
 
       {expanded ? (
@@ -258,7 +278,7 @@ export default function TopBuddiesCard({ groupId }: { groupId: string }) {
         {/* Top 100 opens here rather than on a rankings page: the only full
             board in the app is /admin/top-buddies, which is gated to Louis's
             own email, so a link would be a locked door for everybody else. */}
-        {expanded && !showAll && buddies.length > EXPANDED_COUNT ? (
+        {expanded && !showAll && ranked.length > EXPANDED_COUNT ? (
           <button
             type="button"
             onClick={() => setShowAll(true)}
