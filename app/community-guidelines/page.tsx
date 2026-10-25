@@ -69,7 +69,24 @@ export default function CommunityGuidelinesPage() {
         </ul>
       </LegalSection>
 
-      <LegalSection title="6. More Information">
+      {/* Moved here from the landing page on 2026-10-25. It is a real
+          transparency disclosure and it has to live somewhere people can
+          find it - but it sat on the home page immediately above the sign-up
+          button, which is the worst possible place to explain that some
+          profiles are run with automated help. Community Guidelines is where
+          somebody goes looking for it. */}
+      <LegalSection title="6. Moderator Accounts">
+        <p>
+          Profiles marked with the Moderator badge are part of the Bible Buddy moderation
+          and community team. Moderator accounts help welcome members, encourage discussion,
+          respond to posts, and keep the community active and supportive. Multiple moderator
+          profiles may sometimes be operated or assisted by the same Bible Buddy team member,
+          including through automated tools. All moderator activity remains subject to human
+          review and quality checks.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="7. More Information">
         <p>
           These guidelines are part of our{" "}
           <Link href="/terms">Terms of Service</Link>. To learn how we handle your
