@@ -3531,14 +3531,33 @@ export default function BbFeedPage() {
               isSelf={false}
               actions={
                 viewingUserId !== userId ? (
-                  <AddBuddyButton
-                    targetUserId={viewingUserId}
-                    targetName={wallName || "Bible Buddy Member"}
-                    myId={userId}
-                    myName={myProfile?.display_name || myProfile?.username || "A Bible Buddy"}
-                    state={buddyStates[viewingUserId] ?? "none"}
-                    onRequested={handleBuddyRequested}
-                  />
+                  <div className="flex items-center gap-2">
+                    <AddBuddyButton
+                      targetUserId={viewingUserId}
+                      targetName={wallName || "Bible Buddy Member"}
+                      myId={userId}
+                      myName={myProfile?.display_name || myProfile?.username || "A Bible Buddy"}
+                      state={buddyStates[viewingUserId] ?? "none"}
+                      onRequested={handleBuddyRequested}
+                    />
+                    {/* Report and Block on the profile itself, not only on
+                        posts (App Store Guideline 1.2, and Louis asked for it
+                        directly on 2026-10-25).
+
+                        The old profile page carried this and the redirect to
+                        the wall dropped it, which is a compliance regression
+                        as much as a missing feature: a reader has to be able
+                        to act on the PERSON, not just on something they
+                        happened to post. */}
+                    <ReportBlockMenu
+                      targetUserId={viewingUserId}
+                      targetName={wallName || "Bible Buddy Member"}
+                      contentType="profile"
+                      currentUserId={userId}
+                      reportLabel="Report profile"
+                      onBlocked={() => router.push("/bb-feed")}
+                    />
+                  </div>
                 ) : null
               }
             />
