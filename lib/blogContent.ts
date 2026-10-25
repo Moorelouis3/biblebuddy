@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "leviticus-27-explained",
+    title: "Leviticus 27 Explained: The Law of Vows and Valuations",
+    description:
+      "Leviticus 27 explained verse by verse: how a person, house, or field was valued when vowed to the LORD, and what could never be bought back.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/leviticus-27-explained",
+    publishedAt: "2026-10-25",
+    readTime: "13 min read",
+    image: "/blog-banners/leviticus-27-explained.jpg",
+    groupPost: {
+      title: "Leviticus 27 Explained 📖",
+      content:
+        "A man opens his mouth and promises God something.\nNow the book of Leviticus has to answer for it.\n\n📌 A vow was never free, and that was the point.\n\n📖 A person's vow was priced, then adjusted for the poor.\n📖 Swapping a good animal for a bad one cost double.\n📖 Some things, like the firstling, were never his to vow.\n\nNew article on:\n🟢 why a **poor man's vow** was never priced the same\n🟢 the **Jubilee clock** that set a field's redemption price\n🟢 what could **never be bought back**, no matter the offer\n\nWhat is one promise to God you still owe? 🙏",
+    },
+  },
+  {
     slug: "leviticus-26-explained",
     title: "Leviticus 26 Explained: The Covenant's Blessings and Curses",
     description:
