@@ -8747,3 +8747,28 @@ Still open:
 - The join popup for the new study is not built (the current one is Proverbs
   only and stops showing when Proverbs goes evergreen on 1 November).
 Next: the November emails, or the Associates tag.
+
+## 2026-10-25 (The Beginning of Everything)
+Done:
+- **New study built from the print interior Louis supplied**: The Beginning of
+  Everything, a 21 day study of Genesis 1-8, 271 pages. All 21 days extracted
+  from the PDF rather than rewritten, so the app and the book say the same
+  thing. Row published with available_from 2026-11-01.
+- Landing page at /devotionals/beginning-of-everything with its own OG card.
+  It carries the open date in one constant and switches itself over on the
+  day, and its buy-the-book section reads devotionals.paperback_url so it
+  appears the moment the ASIN exists, without a deploy.
+- Study cover cropped off the paperback wrap front panel, same as 21 Women.
+- **Both formats on KDP, scheduled for 1 November.** Hardcover $29.99 (prints
+  $8.90, pays $9.09), paperback $19.99 (prints $4.25, pays $7.74). Cream
+  paper, proved from the wrap geometry rather than guessed.
+- seed-higher-hope.ts generalised into scripts/seed-study-days.mjs.
+- **Found a real bug**: /api/landing-analytics rejects events not on its allow
+  list, and Higher Hope's two were never added, so its landing page has been
+  400ing silently since it shipped yesterday. Fixed, along with this study's.
+Not live yet: run `npm run pending`. All step 3.
+Still open:
+- Could not render the signed-in Plans page to prove yesterday's cover fix.
+- Link both new books in the app when the ASINs land (one command each).
+- A+ content for Higher Hope, Bible in One Year and this one.
+Next: watch for the ASINs, then the in-app book links.
