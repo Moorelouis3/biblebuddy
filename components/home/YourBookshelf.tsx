@@ -145,10 +145,21 @@ export default function YourBookshelf({
           key: s.id,
           title: s.title,
           cover: s.cover_image || "",
-          // Started readers go straight to their day; everyone else to the
-          // study's own page, which is where you choose where to begin.
+          /**
+           * THE STUDY'S OWN PAGE, NOT THE NEXT DAY (Louis, 2026-10-25,
+           * reporting Rachel's message: "people can't get to the past days").
+           *
+           * This used to jump a started reader straight to their next day,
+           * which made that day the only day they could reach: there was no
+           * way back to day 3 to re-read it, finish one they skipped, or just
+           * see how far through they were. Tapping a book should open the
+           * book. The day list on /devotionals/[id] is where every day lives,
+           * the next one included, so nothing is further away than it was -
+           * it is one tap instead of nought, and the other N days went from
+           * unreachable to one tap.
+           */
           href: started
-            ? `/devotionals/${s.id}/day/${p.nextDay}`
+            ? `/devotionals/${s.id}`
             : `/plan?view=bible_studies&study=${encodeURIComponent(s.id)}`,
           currentDay: started ? p.nextDay : null,
           totalDays: s.total_days,

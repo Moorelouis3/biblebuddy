@@ -995,15 +995,59 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     window.localStorage.setItem(expandedDayStorageKey, String(expandedDayNumber));
   }, [expandedDayNumber, expandedDayStorageKey]);
 
+  /**
+   * Which days a reader may open.
+   *
+   * REWRITTEN 2026-10-25, from Rachel's message: "on the Proverbs study day 9
+   * is locked and day 11 and 15 are greyed out. I can back into some of the
+   * days that are done but not all of them."
+   *
+   * She was right, and her own data says why. She has all 24 days she has
+   * reached marked completed in devotional_progress - and on a study like
+   * Proverbs this used to ask something else entirely: whether the day BEFORE
+   * had all FOUR of its tasks ticked (day completed, reading completed,
+   * trivia played, a reflection posted). Trivia and a comment are extras.
+   * Finishing the devotional and not playing the trivia left her locked out
+   * of a day she had already finished, with no way back into it.
+   *
+   * Two rules now, and the first is the one that was missing:
+   *
+   *   1. A day you have already been into never closes again. Anything at all
+   *      recorded against it - completed, read, one task - keeps it open, for
+   *      ever. There is no version of this app where re-reading day 11 should
+   *      be forbidden.
+   *   2. Going FORWARD only asks that the day before was read, not that its
+   *      extras were ticked. Reading the thing is the study; the rest is on
+   *      top of it.
+   *
+   * Nothing that is open today closes under this - both rules only ever add.
+   */
   const isDayUnlocked = (dayNumber: number) => {
     if (userEmail === "moorelouis3@gmail.com") return true;
     if (dayNumber === 1) return true;
-    if (isChapterJourneyStudy) {
-      const prevChapterProgress = chapterTaskProgress.get(dayNumber - 1);
-      return prevChapterProgress?.completed === prevChapterProgress?.total;
-    }
+
+    // 1. Already been in it.
+    const own = progress.get(dayNumber);
+    if (own?.is_completed === true || own?.reading_completed === true) return true;
+    if ((chapterTaskProgress.get(dayNumber)?.completed ?? 0) > 0) return true;
+
+    // 2. The day before was read.
     const prevDayProgress = progress.get(dayNumber - 1);
-    return prevDayProgress?.is_completed === true;
+    if (prevDayProgress?.is_completed === true || prevDayProgress?.reading_completed === true) {
+      return true;
+    }
+
+    if (isChapterJourneyStudy) {
+      // Kept as a fallback for the journeys whose tasks can be finished
+      // without a devotional_progress row. `Boolean(prev) &&` is deliberate:
+      // this used to read `prev?.completed === prev?.total`, which compared
+      // undefined with undefined and returned TRUE for a day with no
+      // progress at all.
+      const prevChapterProgress = chapterTaskProgress.get(dayNumber - 1);
+      return Boolean(prevChapterProgress) && prevChapterProgress!.completed >= prevChapterProgress!.total;
+    }
+
+    return false;
   };
 
   const updateWisdomTaskProgress = (

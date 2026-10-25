@@ -123,9 +123,11 @@ export default function LibraryPage() {
               <button
                 key={study.id}
                 type="button"
-                // Straight to the day itself, on the existing day route - never
-                // back through an intro or a signup step.
-                onClick={() => router.push(`/devotionals/${study.id}/day/${p.nextDay}`)}
+                // The study's own page, where every day is listed - not just
+                // the next one. Same reason as the dashboard shelf: jumping
+                // straight to the next day left no way back to the days
+                // before it. Never back through an intro or a signup step.
+                onClick={() => router.push(`/devotionals/${study.id}`)}
                 className="flex w-full items-center gap-4 rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 text-left shadow-sm transition hover:border-[var(--bb-accent,#2f7fe8)]"
               >
                 {study.cover_image ? (
