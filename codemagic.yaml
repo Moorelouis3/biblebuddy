@@ -442,3 +442,87 @@ workflows:
         notify:
           success: true
           failure: true
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # The signed Android build: what produces the .aab that goes to Play, and so
+  # the thing that produces the tester opt-in link. Nothing can be asked of a
+  # tester until a bundle from here is sitting on a closed track.
+  #
+  # ONE SETUP STEP, and like the iOS one it is the only thing an agent cannot
+  # do, because it means holding a secret:
+  #
+  #   1. Codemagic → Teams/Personal Account → Code signing identities →
+  #      Android keystores → Generate keystore (or upload one).
+  #   2. Name the reference exactly:  BibleBuddy Upload
+  #   3. Run this workflow.
+  #
+  # Codemagic keeps the keystore and exports CM_KEYSTORE_PATH and friends into
+  # the build; scripts/android-release-config.mjs wires those into the
+  # generated gradle file. Nothing secret is ever committed here.
+  #
+  # LOSE THAT KEYSTORE AND THE LISTING IS DEAD. Google signs the app you ship
+  # with its own key, but it only accepts uploads signed with this one, and
+  # there is no self-service way back. Download a copy out of Codemagic the
+  # day it is created and put it somewhere that is not one laptop.
+  #
+  # Manual only, same as every other workflow in this file.
+  android-release:
+    name: Bible Buddy Android — signed bundle
+    instance_type: linux_x2
+    max_build_duration: 40
+
+    environment:
+      node: 22
+      java: 21
+      android_signing:
+        - BibleBuddy Upload
+      vars:
+        # The version people see is "<this>.<build>" - 1.09 is version 1,
+        # build 9, matching the iPhone build's convention so the two stores
+        # do not drift into different numbering.
+        APP_MAJOR_VERSION: "1"
+
+    scripts:
+      - name: Install dependencies
+        script: npm ci --no-audit --no-fund
+
+      - name: Generate the Android project
+        script: npx cap add android
+
+      - name: Sync web assets and plugins
+        script: npx cap sync android
+
+      - name: Install the app icon
+        script: node scripts/android-app-icon.mjs
+
+      - name: Set the version and wire up signing
+        # versionCode has to rise on every upload or Play rejects the bundle
+        # after it has already been transferred. $BUILD_NUMBER is Codemagic's
+        # own counter, so it always does.
+        script: node scripts/android-release-config.mjs
+
+      - name: Build the app bundle
+        # bundleRelease, not assembleRelease: Play wants an .aab. An .apk is
+        # only good for sideloading onto a test device.
+        script: cd android && ./gradlew --no-daemon bundleRelease
+
+      - name: Show what came out
+        script: |
+          ls -la android/app/build/outputs/bundle/release/
+          grep -E "versionCode|versionName" android/app/build.gradle
+
+    artifacts:
+      - android/app/build/outputs/bundle/release/*.aab
+      - android/app/build/outputs/mapping/release/mapping.txt
+
+    # No `publishing: google_play:` block yet. Uploading straight from CI needs
+    # a service account JSON from the Play Console, and the Console will not
+    # issue one until the account's identity checks clear and an app exists.
+    # The first bundle gets uploaded by hand; automate it after that.
+    publishing:
+      email:
+        recipients:
+          - moorelouis3@gmail.com
+        notify:
+          success: true
+          failure: true
