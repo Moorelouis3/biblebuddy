@@ -289,10 +289,28 @@ second is the one to look at first:
 1. **Verify your identity** - upload an official document. Google says the
    review "may take a few days", so start it before anything else.
 2. **Verify that you have access to an Android device** - sign in to the Play
-   Console *mobile app* on an Android phone or tablet. **Louis is on an
-   iPhone.** This needs a borrowed Android, an old one in a drawer, or an
-   emulator signed in with the account. It is not optional and it is not
-   something an agent can do.
+   Console *mobile app* on an Android phone. **Louis does not own one**, which
+   makes this the hard blocker rather than identity.
+
+   Checked on 2026-10-25: Google's own page says a **real Android mobile
+   device**, required of new personal accounts before they can publish, done
+   by scanning the QR code on the Console home page and tapping Verify in the
+   app. Only the account owner can do it, signed in with the same Google
+   account. Nothing in Google's documentation says an emulator counts, and the
+   wording is "real device", so do not plan around one.
+
+   A closed-track release is a publish, so this gates the opt-in link too, not
+   just production.
+
+   Two ways through, and they are not alternatives - do both, in order.
+   **Borrow an Android for five minutes** to clear the check today; the
+   verification attaches to the account, not the phone, so it can be signed
+   out afterwards (and the session revoked from Google account settings).
+   Then **buy a cheap used Android before the closed test starts**, because
+   the real problem is not the checkbox: Bible Buddy is about to ship to the
+   one in five of its users who are on Android, and nobody on this side has
+   any way to open it. CI screenshots from an emulator are not the same as
+   holding the thing. Sixty euros against everything already spent.
 3. **Verify your contact phone number** - a code to the number given at signup.
 
 A QR-code dialog offering to continue verification on a phone opens over the
