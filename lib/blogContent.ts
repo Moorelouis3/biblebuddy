@@ -88,6 +88,18 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
   // not fit the nine-section teaching shape, and because this category needs
   // two rules the others do not: no old discovery is dressed up as breaking
   // news, and a disputed claim stays disputed in our wording.
+  // Added 2026-10-25 for the Christian Holidays series (60 articles, 4 a day,
+  // written by the Holiday Blog Writer routine - see
+  // docs/HOLIDAY_BLOG_WRITER_AGENT.md). Its own category rather than spread
+  // across Christian History and Character Studies: 60 articles that all
+  // answer "what is this day and what does it mean" are a cluster, and a
+  // cluster that links to itself is worth more in search than sixty orphans.
+  {
+    slug: "christian-holidays",
+    name: "Christian Holidays",
+    description:
+      "Christian holidays, feast days and saints explained: where each day came from, what the Bible says, and how different churches keep it.",
+  },
   {
     slug: "christian-news",
     name: "Christian News",
@@ -112,6 +124,74 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       title: "Leviticus 26 Explained 📖",
       content:
         "Rain in due season, or heaven turned to iron.\nPeace in the land, or a sword that still finds you.\n\n📌 Every blessing and curse here hangs on one word: if.\n\n📖 The curses build in five stages, not one sudden blow.\n📖 \"Seven times more\" shows up four separate times.\n📖 Verse 29's famine is recorded actually happening, twice.\n\nNew article on:\n🟢 why **rain itself** depended on Israel's obedience\n🟢 the **five stages** of discipline, each giving one more chance\n🟢 how **exile** still couldn't break God's covenant for good\n\nDid you know this chapter's worst curse is recorded as real history? 🙏",
+    },
+  },
+  {
+    slug: "how-to-read-the-bible-in-a-year-without-quitting",
+    title: "How to Read the Bible in a Year Without Quitting in February",
+    description:
+      "Why Bible reading plans fail in February, what to do with the day you miss, and why starting again on day nine is not failure but the only move that works.",
+    category: "Bible Study Tips",
+    categorySlug: "bible-study-tips",
+    canonicalPath: "/blog/how-to-read-the-bible-in-a-year-without-quitting",
+    publishedAt: "2026-10-25",
+    readTime: "15 min read",
+    image: "/blog-banners/how-to-read-the-bible.jpg",
+    groupPost: {
+      title: "Read The Bible In A Year Without Quitting 📖",
+      content:
+        "Genesis is great. Exodus holds up.\nThen February arrives and the bookmark stops moving.\n\n📌 The missed day is not a debt. Nobody is counting.\n\n📖 Most plans die in Leviticus, not from a lack of discipline.\n📖 Catching up is what kills a year. Open today, read today.\n📖 Starting again on day 9 is the only move that ever works.\n\nNew article on:\n🟢 what **Leviticus is actually doing** and why that gets you through it\n🟢 the one **question to carry** through all 66 books\n🟢 how to decide **in advance** what a missed day means\n\nWhere did your last reading plan stop? 🙏",
+    },
+  },
+  {
+    slug: "christmas-day-one-thing-to-carry",
+    title: "Christmas Day: One Thing to Carry Into Today",
+    description:
+      "A short Christmas Day reading for a busy house. One passage from Luke 2, three small phrases, and one thing to carry into the rest of the day.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/christmas-day-one-thing-to-carry",
+    publishedAt: "2026-10-25",
+    readTime: "5 min read",
+    image: "/blog-banners/who-was-mary.jpg",
+    groupPost: {
+      title: "Christmas Day: One Thing To Carry 🙏",
+      content:
+        "You are reading this on a phone.\nThere are people in the house. So this is short.\n\n📌 He was born unto you, and today is the day.\n\n📖 Fear not came before the good news, not after it.\n📖 This day turned a centuries old promise into a date.\n📖 The first people told were working outside in the dark.\n\nNew article on:\n🟢 the **three phrases** in the first Christmas sermon\n🟢 why you do not have to **feel festive** for today to be true\n🟢 one line to say when the day gets **loud or too quiet**\n\nWhat is one thing you are carrying into today? 🙏",
+    },
+  },
+  {
+    slug: "what-the-first-christmas-actually-looked-like",
+    title: "What the First Christmas Actually Looked Like",
+    description:
+      "What the first Christmas was really like: an unmarried girl, a census nobody asked for, and a feeding trough. God arrived before the room was ready.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/what-the-first-christmas-actually-looked-like",
+    publishedAt: "2026-10-25",
+    readTime: "15 min read",
+    image: "/blog-banners/who-was-mary.jpg",
+    groupPost: {
+      title: "What The First Christmas Actually Looked Like 📖",
+      content:
+        "The card on your shelf is lying to you.\nNot on purpose. But it is.\n\n📌 God arrived before the room was ready. That is the whole story.\n\n📖 Joseph had already planned how to end the engagement quietly.\n📖 A census nobody asked for moved them at the worst possible time.\n📖 Luke never says stable. He says manger, and no room.\n\nNew article on:\n🟢 what the text says and what came from **carols and art**\n🟢 why the announcement went to **men working the night shift**\n🟢 what the shepherds did **the morning after**\n\nWhat part of the Christmas story did you always assume was in the Bible? 🙏",
+    },
+  },
+  {
+    slug: "thanksgiving-when-the-year-has-been-hard",
+    title: "Gratitude When the Year Has Been Hard: What Thanksgiving Really Means",
+    description:
+      "How to be thankful when life is hard. What the Bible actually commands, why Paul sang in prison, and how the Psalms complain and thank in the same breath.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/thanksgiving-when-the-year-has-been-hard",
+    publishedAt: "2026-10-25",
+    readTime: "15 min read",
+    image: "/blog-banners/what-does-the-bible-say-about-anxiety.jpg",
+    groupPost: {
+      title: "Gratitude When The Year Has Been Hard 🙏",
+      content:
+        "Somebody is going to ask what you are thankful for.\nAnd this year the honest answer is heavy.\n\n📌 The verse says IN every thing give thanks. Not FOR every thing.\n\n📖 Paul wrote his most joyful letter from a prison cell.\n📖 Psalm 13 accuses God of forgetting, then sings six verses later.\n📖 Habakkuk lists an empty farm, then says one word: yet.\n\nNew article on:\n🟢 why **counting your blessings** is not what Scripture asks\n🟢 the **complaint first** pattern every thankful person in the Bible used\n🟢 what to say at the table when the year **actually hurt**\n\nWhat is one true thing you can thank God for today? 🙏",
     },
   },
   {

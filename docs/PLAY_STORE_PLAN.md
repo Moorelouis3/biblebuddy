@@ -1,0 +1,230 @@
+# Google Play: the plan
+
+Written 2026-10-25, after the iOS build was handed to Apple and started
+waiting. The question was "how hard is this?", and the honest answer has two
+halves that point in opposite directions.
+
+**The engineering is much easier than iOS.** Two to three days of real work,
+not six weeks. Android needs no Mac, no certificates on anyone's machine, no
+provisioning profiles, no entitlement that Apple refuses to issue. Louis's own
+Windows laptop can build a signed Android release, which was never true of the
+iPhone build for a single day.
+
+**The calendar is worse.** Google will not let a new personal developer account
+publish to production until it has run a closed test with **at least 12 testers
+opted in for 14 continuous days**. That is policy, not a queue, and it cannot be
+paid past or hurried. It is the critical path for this whole project, and the
+only part of it that is about people rather than code.
+
+So: roughly three to four weeks to live, of which about three days is building.
+Start recruiting the twelve testers on day one, because everything else finishes
+while that clock is still running.
+
+---
+
+## What already works on Android with no work at all
+
+The shell was built platform-neutral, mostly by accident and partly on purpose,
+and it pays off here:
+
+- **`capacitor.config.ts`** needs no Android branch. `appId`, `appName`,
+  `server.url` (`/app`, not `/` - see the comment in that file), `errorPath`,
+  `allowNavigation` and `webDir` are all read identically by the Android
+  platform. The only iOS-specific block is `ios: {}` at the bottom.
+- **`appendUserAgent: "BibleBuddyApp"`** is the load-bearing line, and it is
+  platform-neutral too. Every native switch already shipped - hiding install
+  banners, web push, the service worker, ads - keys off that string, and it will
+  be in the Android webview's user agent on the first build.
+- **`lib/nativeApp.ts:36`** - `nativePlatform()` already returns `"android"`.
+  Nobody has to teach the app what Android is.
+- **`app/api/push/register-device/route.ts:38`** already accepts
+  `platform: "android"` and stores the token. The *sending* side does not (below).
+- **`lib/installEnvironment.ts`** and the onboarding analytics already count
+  Android as its own install platform, so the numbers will separate themselves.
+- **Plugins**: `@capacitor/app`, `browser`, `haptics`, `local-notifications`,
+  `push-notifications`, `share` are all cross-platform and need no replacement.
+- **The listing**: most of `docs/APP_STORE_LISTING.md` is reusable - the
+  description, the data-collection answers, the 13+ reasoning, the review notes.
+  Play asks the same questions in different forms.
+- **`native/appstore/app-icon-1024.png`** is the source art for the Android icon
+  too, though Android needs it cut differently (below).
+
+## What is genuinely new work
+
+### 1. The platform scaffold - half a day
+
+`npm i @capacitor/android@^8.5.3` (a **runtime** dependency, not a dev one, for
+exactly the reason written at the top of `capacitor.config.ts`: CI installs with
+`--omit=dev` and `npx cap add` reads the platform out of `node_modules`), then
+`npx cap add android`. `android/` gets gitignored the way `ios/` is - it is
+generated output and should be rebuilt every build rather than drift.
+
+**Check on the first build:** Play has required **targetSdk 36 (Android 16)**
+for all new submissions since 31 August 2026. Capacitor 8 should already target
+36, but this is the kind of thing that fails at upload rather than at compile,
+so read it out of `android/variables.gradle` on build one and raise it with a
+script if it is low - the same shape as `scripts/ios-deployment-target.sh`.
+
+### 2. Icon and splash - an hour
+
+Android does not take a single 1024px square. It wants an **adaptive icon**: a
+foreground layer and a background layer, with the outer ~18% of each safe to be
+masked away by whatever shape the launcher uses. A
+`scripts/android-app-icon.sh` mirroring `scripts/ios-app-icon.sh` generates the
+density buckets from the existing art. Without it the app wears Capacitor's grey
+placeholder on the home screen and in the store listing, same as iOS did.
+
+### 3. The build pipeline - half a day
+
+`codemagic.yaml` gets `android-build` and `android-release` workflows on a
+**Linux instance**, not `mac_mini_m2`. Two reasons: Linux minutes are cheaper
+and faster, and the 500 free minutes on the individual plan are macOS minutes
+that the iOS build is already spending.
+
+Manual trigger only, no `triggering:` block, for the same reason the iOS
+workflows have none: two routines commit to `main` all day and would otherwise
+queue a build per chapter of Bible notes.
+
+Steal the best idea from the iOS workflow - **`scripts/android-emulator-run.sh`,
+which boots an emulator, installs the APK, launches it and photographs what
+happens.** "It compiles" was never the same as "it runs", and on iOS that step
+is the only reason anyone has seen the app open.
+
+### 4. Signing - Louis, 20 minutes, and one thing to never lose
+
+Play uses **Play App Signing**: Louis generates an *upload* keystore, Google
+holds the real app signing key. Codemagic can generate and store the upload
+keystore so it never sits on the Windows machine.
+
+**The warning that matters:** lose the upload keystore and you cannot ship an
+update to the app ever again under that listing. It gets backed up somewhere
+that is not one laptop, on the day it is created.
+
+### 5. Push notifications = FCM, and this is the biggest build - one day
+
+Android push does not go through APNs. It goes through **Firebase Cloud
+Messaging**, and the server does not speak it yet:
+`app/api/push/process/route.ts:4` imports only `sendApnsPush`, and
+`apnsConfigured()` gates the whole send.
+
+What this needs:
+
+- a Firebase project, with `google-services.json` dropped into
+  `android/app/` during the build (another generated-file script);
+- **`lib/fcmSender.ts`** - FCM HTTP v1, which means minting an OAuth token from
+  a service-account key rather than the certificate dance APNs uses;
+- a platform branch in `app/api/push/process/route.ts` so iOS tokens go to APNs
+  and Android tokens go to FCM, with dead-token cleanup handled for both.
+
+`native_push_tokens` already stores the platform per row, so the data model
+needs nothing. This is a day of focused work and it is the one piece of the
+Android app that is a real feature rather than a wrapper detail.
+
+**Decision to make:** build this before the closed test opens, or ship the
+closed test without Android push and add it during the 14 days. The daily post
+and the reading reminders are a real part of the product, so the recommendation
+is to build it in phase 2, before testers ever see it.
+
+### 6. Google sign-in - no new client code, but one trap
+
+`lib/nativeAuth.ts:579` already initialises `@capgo/capacitor-social-login` with
+`webClientId`, which is the id Android uses. The code path works as written.
+
+What is needed outside the code is an **Android OAuth client** in Google Cloud,
+registered with the package name and the signing certificate's **SHA-1
+fingerprint**.
+
+**The trap:** because Play App Signing re-signs the app, the fingerprint on the
+app users install is *not* the upload key's fingerprint, and Play only shows you
+the app signing certificate's SHA-1 after the first build is uploaded. Register
+**both** - the upload cert's and Play's app signing cert's - or sign-in works in
+local testing and fails for every real installer. This is a well-worn way to
+lose a day.
+
+### 7. Sign in with Apple - hide it on Android
+
+Apple's Guideline 4.8 forces Apple sign-in alongside Google *on iOS*. Google has
+no equivalent rule, and the Apple sheet on Android would be a web redirect -
+exactly the fragile shape `lib/nativeAuth.ts` abandoned for good reasons. Android
+shows Google and email.
+
+Also confirm the `@capacitor-community/apple-sign-in` import does not break the
+Android build. It is guarded by `nativePluginAvailable()`, so it should be a
+no-op, but it has never been compiled for Android.
+
+### 8. The Bible lock does not ship on Android v1
+
+This is the one feature that genuinely does not cross over.
+`native/plugins/bible-lock` is Swift against Apple's Family Controls and Screen
+Time APIs. Android's nearest equivalents are `UsageStatsManager` plus a drawn
+overlay, or an `AccessibilityService` - and Play's Accessibility API policy and
+Restricted Permissions declarations make that its own review fight, on an
+account that has not shipped anything yet.
+
+Hide the lock UI when `nativePlatform() === "android"`, ship without it, and
+treat it as a version 2 question. Worth noting that the iOS version is *also*
+still waiting on an entitlement Apple has not issued
+(`docs/bible-lock-entitlement-evidence.md`), so nobody is missing a feature that
+currently works.
+
+### 9. Play Console paperwork - Louis, spread over a few days
+
+- **$25, one time, forever.** Not $99 a year.
+- **Identity verification**: a personal account needs ID and address confirmed.
+  This can take several days and nothing else can be submitted until it clears,
+  which is why it is step one.
+- **Data safety form** - Play's version of the privacy nutrition label. The
+  answers in `docs/APP_STORE_LISTING.md` map across almost directly.
+- **Content rating** - an IARC questionnaire. Same answers as the 13+ reasoning.
+- **Privacy policy URL** - already live on the site.
+- **App access instructions** - reviewers need a working test account, because
+  anonymous accounts were turned off on 2026-10-06 and there is no guest path
+  past the sign-in wall any more. Apple needed this too.
+
+---
+
+## The order, and who does what
+
+| | What | Who | Blocking? |
+|---|---|---|---|
+| **0** | Create the Play Console account, pay the $25, clear identity verification | Louis | Yes - nothing submits before this |
+| **0b** | Start recruiting 12 testers | Louis | Yes - it is the long pole |
+| **1** | Platform scaffold, icon, Linux Codemagic workflow, emulator screenshot step | agent, ~1 day | No |
+| **2** | FCM sender + Firebase project + Android OAuth client; push and Google sign-in proven on a real phone | agent, ~1 day | No |
+| **3** | Upload keystore, first AAB to the internal testing track | Louis + agent | Needs 0 |
+| **4** | Closed test: 12 testers, 14 continuous days | Louis | **This is the schedule** |
+| **5** | Apply for production access, submit, answer review | both | Needs 4 |
+
+Phases 1 and 2 happen *while* phase 4's clock runs, if the testers are recruited
+early enough. That is the whole scheduling trick, and it is why recruiting comes
+before any code.
+
+## The testers
+
+Twelve real people with Google accounts, opted in and staying opted in for
+fourteen unbroken days. A tester who opts out and back in resets. Sources, in
+order of how likely they are to actually stay:
+
+1. The email list - there is a real one now, and this is a genuine "be first"
+   ask rather than a favour.
+2. The study group members who already comment.
+3. Friends and family, who will opt in and then need reminding not to uninstall.
+
+Recruit fifteen or sixteen, not twelve. Some will drop.
+
+## Deploy note
+
+Everything in phases 1 and 2 is step 3 under the deploy test in `CLAUDE.md` -
+nobody's Bible Buddy is broken because Android does not exist yet. Commits go in
+untagged and ride the next scheduled build. The one exception would be if the
+FCM branch touched the live push path badly enough to break iOS sends, which is
+a reason to keep that change narrow and behind a configured check, the way
+`apnsConfigured()` already works.
+
+## Sources for the two dated claims
+
+- Closed testing, 12 testers / 14 days, personal accounts created after
+  13 November 2023:
+  <https://support.google.com/googleplay/android-developer/answer/14151465>
+- Target API level 36 required for new submissions from 31 August 2026:
+  <https://developer.android.com/google/play/requirements/target-sdk>
