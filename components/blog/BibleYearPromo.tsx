@@ -71,9 +71,24 @@ export default function BibleYearPromo({
   if (loading) return null;
 
   const isMember = Boolean(userId);
+  /**
+   * 2026-10-25: this pointed at /start, which is a 404.
+   *
+   * /start created a guest and dropped them into the app. Anonymous accounts
+   * were turned off on 2026-10-06 and the route went with them, but every
+   * promo that fed it was left pointing at it - so for nearly three weeks
+   * every logged-out reader of these posts who tapped the banner got Amazon's
+   * least favourite page: a 404 on the fastest-growing channel.
+   *
+   * It now goes to the study's own landing page, which is better than /start
+   * ever was for this series: it says what Bible in One Year is before asking
+   * for anything, and its own button carries on to signup (Louis: "promote
+   * the Bible in One Year landing page on those blog posts"). The tracking
+   * params ride along unchanged so the four banners stay comparable.
+   */
   const href = isMember
     ? `/dashboard?view=bible-year&day=${day}`
-    : `/start?src=blog&promo=${version.name}&post=${encodeURIComponent(postSlug)}`;
+    : `/bible-in-one-year?src=blog&promo=${version.name}&post=${encodeURIComponent(postSlug)}`;
 
   return (
     <Link

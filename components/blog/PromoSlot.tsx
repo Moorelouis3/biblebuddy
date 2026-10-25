@@ -38,17 +38,23 @@ type PromoSlotProps = {
   slotIndex?: number;
 };
 
-// A full-width promo banner for blog posts. The whole image is one link to
-// /start - which creates a guest and goes straight into the app - carrying
-// tracking params so entries can be attributed to the post and the exact
-// banner that converted. It used to point at /signup, which asked readers for
-// an email before letting them read anything. Logs an impression the
-// first time it scrolls into view and a click event on tap.
+// A full-width promo banner for blog posts. The whole image is one link,
+// carrying tracking params so entries can be attributed to the post and the
+// exact banner that converted. Logs an impression the first time it scrolls
+// into view and a click event on tap.
+//
+// It pointed at /start until 2026-10-25, and /start has been a 404 since
+// anonymous accounts were turned off on 2026-10-06 - the route created a
+// guest, so it went when guests did, and nothing that fed it was updated.
+// Every banner on every post has been a dead end for nearly three weeks.
+//
+// Signup is the door now, which is the decision that retired /start in the
+// first place, so that is where this goes.
 export default function PromoSlot({ postSlug, slotIndex = 0 }: PromoSlotProps) {
   const { loading: authLoading, userId } = useSupabaseUser();
   const file = pickPromoBanner(postSlug, slotIndex);
   const promoName = file.replace(/\.[a-z]+$/, "");
-  const href = `/start?src=blog&promo=${encodeURIComponent(promoName)}&post=${encodeURIComponent(postSlug)}`;
+  const href = `/signup?src=blog&promo=${encodeURIComponent(promoName)}&post=${encodeURIComponent(postSlug)}`;
 
   const containerRef = useRef<HTMLAnchorElement | null>(null);
   const impressionSent = useRef(false);

@@ -82,8 +82,10 @@ export default function BlogTopNav() {
           <>
             <a href="/#about" className="transition hover:text-[#0056fd]">About</a>
             <Link href="/blog" className="transition hover:text-[#0056fd]">Blog</Link>
+            {/* /start 404s since guests were turned off on 2026-10-06 - see
+                components/blog/PromoSlot.tsx. Signup is the door now. */}
             <Link
-              href="/start?src=blog&promo=nav"
+              href="/signup?src=blog&promo=nav"
               className="rounded-full bg-[#0056fd] px-3.5 py-1.5 text-white transition hover:bg-[#0049d8]"
             >
               Start&nbsp;Studying
