@@ -18,6 +18,7 @@ import { isNativeApp } from "@/lib/nativeApp";
 import { markTermsAcceptancePending, TERMS_VERSION } from "@/lib/termsAcceptance";
 import { signInWithProviderNatively } from "@/lib/nativeAuth";
 import { reportCloserSignup } from "@/lib/closerSignup";
+import { APP_STORE_ID, PLAY_PACKAGE } from "@/lib/appReviewPrompt";
 
 type PreviewPanel = "watch" | "study" | "trivia";
 type StudyTab = "bible" | "notes";
@@ -510,6 +511,20 @@ export default function LandingPage() {
       }
     }, hadCachedSession ? 1400 : 3000);
 
+    /**
+     * /?preview=1 keeps the landing page on screen for a browser that is
+     * already signed in, instead of bouncing it to the dashboard.
+     *
+     * Louis needs this to check the public page on his own phone, where he
+     * is permanently logged in - otherwise reviewing a landing change means
+     * logging out or opening a private tab every time. It costs nothing and
+     * exposes nothing: somebody has to type the parameter, and all they get
+     * is the page every signed-out visitor already sees.
+     */
+    const landingPreview =
+      typeof window !== "undefined" &&
+      new URLSearchParams(window.location.search).has("preview");
+
     const checkSession = async () => {
       try {
         const {
@@ -517,7 +532,7 @@ export default function LandingPage() {
         } = await supabase.auth.getSession();
         settled = true;
         window.clearTimeout(fallbackTimer);
-        if (session) {
+        if (session && !landingPreview) {
           setIsChecking(false);
           router.replace("/dashboard");
           return;
@@ -541,7 +556,7 @@ export default function LandingPage() {
         setIsChecking(false);
         return;
       }
-      if (session) {
+      if (session && !landingPreview) {
         setIsChecking(false);
         router.replace("/dashboard");
       } else {
@@ -1123,6 +1138,24 @@ function LandingThemeStyles() {
         --bb-blue: #135397;
         --bb-gold: #e7bc67;
       }
+      /* The hero's warm band, and the sunburst behind Lil Louis. Both are
+         drawn rather than loaded: the mockup's decorative shapes are a
+         gradient and a conic sweep, which cost nothing and scale to any
+         screen, where an image would be another download on the slowest
+         part of the page. */
+      /* The cream band behind the hero.
+       *
+       * The header+class selector is deliberate. globals.css carries
+       *   .bb-public-landing header { background: none #F5F7FA !important; }
+       * which is (0,1,1) and beat a plain .bb-landing-hero-bg at (0,1,0)
+       * even with !important on both - so the hero rendered flat grey and
+       * Louis sat on an empty rectangle. This is (0,2,1) and wins.
+       *
+       * No backticks in here: this whole block lives inside a template
+       * literal, and one backtick ends it mid-stylesheet. */
+      .bb-public-landing header.bb-landing-hero-bg {
+        background: linear-gradient(180deg, #fdf4e3 0%, #fdf4e3 68%, #fffdf8 100%) !important;
+      }
       .bb-public-landing .bb-public-button,
       .bb-public-landing .bb-public-button * {
         color: #ffffff !important;
@@ -1290,7 +1323,11 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
     },
     {
       q: "Is Bible Buddy really free?",
-      a: "Yes - completely free. Every chapter, every study note, every devotional, all the audio and all the trivia. There is no Pro tier, no credits and no daily limit. You do not even need an account to start; create one when you want Bible Buddy to remember your progress across devices.",
+      // "You do not even need an account to start" lived here until
+      // 2026-10-25. It was written for the guest flow, and guest accounts
+      // were switched off on 6 October, so it had been untrue for nineteen
+      // days: everybody needs an account now, and it is still free.
+      a: "Yes - completely free. Every chapter, every study note, every devotional, all the audio and all the trivia. There is no Pro tier, no credits and no daily limit. You create a free account so Bible Buddy can remember your progress across devices - there is no card and nothing to pay, ever.",
     },
     {
       q: "What Bible translation do you use?",
@@ -1319,145 +1356,429 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
       <LegalPageThemeReset />
       <LandingThemeStyles />
 
-      <main className="mx-auto max-w-[860px] px-5 pb-10 sm:px-8">
-        {/* THIS is the header the live landing page renders - the earlier one
-            in this file belongs to a variant that is not currently reached.
-            It needs the status bar inset itself: "/" is in AppShell's
-            HIDDEN_ROUTES so bb-safe-top-header never runs here, and the iOS
-            shell draws under a transparent status bar, which is why the logo
-            and nav sat on top of the clock and battery on build 5. */}
-        <header className="flex items-center justify-between gap-3 pb-4 pt-4">
+      {/* THIS is the header the live landing page renders - the earlier one
+          in this file belongs to a variant that is not currently reached.
+          It needs the status bar inset itself: "/" is in AppShell's
+          HIDDEN_ROUTES so bb-safe-top-header never runs here, and the iOS
+          shell draws under a transparent status bar, which is why the logo
+          and nav sat on top of the clock and battery on build 5. */}
+      <header className="bb-landing-hero-bg">
+        <div className="mx-auto flex max-w-[1080px] items-center justify-between gap-3 px-5 pb-4 pt-4 sm:px-8">
           <BibleBuddyMark />
           <nav className="flex items-center gap-5 text-sm font-black text-[#07162f] sm:gap-7">
+            <a href="#features" className="hidden transition hover:text-[#0056FD] sm:inline">Features</a>
             <a href="#about" className="transition hover:text-[#0056FD]">About</a>
             <Link href="/blog" className="transition hover:text-[#0056FD]">Blog</Link>
             <Link href="/login" className="transition hover:text-[#0056FD]">Login</Link>
           </nav>
-        </header>
+        </div>
 
-        <section className="pt-8 text-center sm:pt-12">
-          <h1 className="mx-auto max-w-[640px] text-[clamp(2.1rem,5.4vw,3.4rem)] font-black leading-[1.08] tracking-[-0.02em]">
-            Finally <span className="bb-brand-blue">Understand God&apos;s Word.</span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-[560px] text-[1.02rem] font-black leading-7 sm:text-lg">
-            Most Bible apps help you read the Bible.
-            <br />
-            Bible Buddy helps you <span className="bb-brand-blue underline decoration-2 underline-offset-4">understand</span> it.
-          </p>
-          <p className="mx-auto mt-4 max-w-[520px] text-[0.98rem] font-semibold leading-7 text-[#40516b]">
-            Verse-by-verse explanations in plain English, guided audio, and simple study tools to help you truly understand Scripture.
-          </p>
-        </section>
+        {/* ---------------------------------------------------------------
+            HERO
 
-        {/* Hidden with CSS instead of unmounted on error - removing this
-            node from the React tree while a mobile browser's own video
-            engine is still touching it can crash the app with a
-            removeChild mismatch. Staying mounted-but-hidden avoids that. */}
-        <section className={`mt-8 ${videoAvailable ? "" : "hidden"}`}>
-          <video
-            controls
-            preload="metadata"
-            playsInline
-            src="/landing-video.mp4"
-            poster="/landing-video-poster.jpg?v=2"
-            onError={() => setVideoAvailable(false)}
-            onPlay={() => trackVideoMilestone("video_played", "video-play", {})}
-            onTimeUpdate={handleVideoTimeUpdate}
-            onEnded={(event) =>
-              trackVideoMilestone("video_completed", "video-complete", {
-                percent: 100,
-                seconds: Math.round(event.currentTarget.duration || 0),
-              })
-            }
-            className="aspect-video w-full rounded-[22px] bg-[#0b1220] shadow-[0_30px_80px_rgba(7,22,47,0.18)]"
-          >
-            Your browser does not support video playback.
-          </video>
-        </section>
+            The button sits beside the headline, not under a video (Louis,
+            2026-10-25: "button should be after the headline"). On the old
+            layout the whole first phone screen was headline, paragraph and a
+            1:35 video player, so nothing clickable was visible until you
+            scrolled. The video is still here, further down, for the people
+            who want it.
+        --------------------------------------------------------------- */}
+        {/* Two columns only from `lg`. At `md` the text column is about
+            380px, which is too narrow for a 3.3rem headline - "Build a real
+            habit." broke across two lines and the whole block looked
+            ragged. Tablets get the stacked phone layout instead, which
+            reads cleanly at any width. */}
+        <div className="mx-auto grid max-w-[1080px] items-center gap-4 px-5 pb-10 pt-6 sm:gap-8 sm:px-8 lg:grid-cols-[1fr_1.08fr] lg:gap-0 lg:pb-16 lg:pt-10">
+          <div className="text-center lg:text-left">
+            <h1 className="text-[clamp(1.95rem,4vw,2.9rem)] font-black leading-[1.08] tracking-[-0.02em]">
+              Understand the Bible.
+              <br />
+              Build a real habit.
+              <br />
+              <span className="bb-brand-blue">Grow with Jesus.</span>
+            </h1>
+            <p className="mx-auto mt-5 max-w-[460px] text-[1rem] font-semibold leading-7 text-[#40516b] lg:mx-0 sm:text-[1.05rem]">
+              Verse-by-verse explanations in plain English, guided audio, and a friendly
+              guide by your side - so you finally understand what you are reading.
+            </p>
 
-        <section className="mt-10 text-center">
-          <h2 className="text-xl font-black sm:text-2xl">Ready to start understanding the Bible?</h2>
-          <p className="mt-2 text-sm font-semibold text-[#40516b] sm:text-base">
-            Join over 5,000 Christians who are growing in their faith every day.
-          </p>
-          <div className="mt-5">
-            <StartStudyingButton
-              clickedFrom="video_hero"
-              onTrack={onStartJourney}
-              className="bb-cta-blue bb-cta-pulse inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
-            >
-              Start Studying Now
-              <LandingLineIcon name="arrow" light />
-            </StartStudyingButton>
-            <p className="mt-3 text-xs font-bold text-[#6d7789]">Free account. No credit card.</p>
-          </div>
-        </section>
-
-        <section id="faq" className="mt-14">
-          <h2 className="text-center text-xl font-black sm:text-2xl">Frequently Asked Questions</h2>
-          <div className="mt-4 space-y-3">
-            {faqs.map((item) => (
-              <details key={item.q} className="group rounded-2xl border border-[#dce7f5] bg-white px-5 py-4 shadow-[0_10px_30px_rgba(7,22,47,0.04)]">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-[0.95rem] font-black text-[#07162f] [&::-webkit-details-marker]:hidden">
-                  {item.q}
-                  <span className="shrink-0 text-[#6d7789] transition group-open:rotate-180">
-                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
-                  </span>
-                </summary>
-                <p className="mt-3 text-sm font-semibold leading-6 text-[#40516b]">{item.a}</p>
-              </details>
-            ))}
-          </div>
-        </section>
-
-        <section id="about" className="mt-14 rounded-[24px] border border-[#dce7f5] bg-[#f7fbff] p-6 text-center sm:p-8">
-          <p className="text-sm font-semibold leading-7 text-[#40516b] sm:text-base">
-            Bible Buddy is currently in beta &bull; a free {inNativeApp ? "app" : "web app"} built by one person with one mission: helping people understand God&apos;s Word. New features are added every week.
-          </p>
-          <p className="mt-3 text-sm font-black text-[#07162f]">&mdash; Louis, founder of Bible Buddy</p>
-          <p className="mt-5 border-t border-[#dce7f5] pt-5 text-xs font-semibold leading-6 text-[#6d7789]">
-            Profiles marked with the Moderator badge are part of the Bible Buddy moderation and community team.
-            Moderator accounts help welcome members, encourage discussion, respond to posts, and keep the community
-            active and supportive. Multiple moderator profiles may sometimes be operated or assisted by the same
-            Bible Buddy team member, including through automated tools. All moderator activity remains subject to
-            human review and quality checks.
-          </p>
-        </section>
-
-        <section className="mt-14 text-center">
-          <h2 className="text-2xl font-black sm:text-3xl">Ready to Understand God&apos;s Word?</h2>
-          <p className="mt-2 text-sm font-semibold text-[#40516b] sm:text-base">
-            Start studying in seconds. No account, no payment, no catch.
-          </p>
-          <div className="mt-5">
-            <StartStudyingButton
-              clickedFrom="bottom_cta"
-              onTrack={onStartJourney}
-              className="bb-cta-blue bb-cta-pulse inline-flex items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5"
-            >
-              Start Studying Now
-              <LandingLineIcon name="arrow" light />
-            </StartStudyingButton>
-            <p className="mt-3 text-xs font-bold text-[#6d7789]">Free account. No credit card.</p>
-          </div>
-        </section>
-
-        <footer className="mt-14 border-t border-[#dce7f5] pt-7">
-          <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
-            <BibleBuddyMark small />
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-bold text-[#526075]">
-              <a href="#about" className="transition hover:text-[#0056FD]">About</a>
-              <a href="#faq" className="transition hover:text-[#0056FD]">FAQ</a>
-              <Link href="/blog" className="transition hover:text-[#0056FD]">Blog</Link>
-              <Link href="/contact" className="transition hover:text-[#0056FD]">Contact</Link>
-              <Link href="/privacy" className="transition hover:text-[#0056FD]">Privacy</Link>
-              <Link href="/terms" className="transition hover:text-[#0056FD]">Terms</Link>
+            <div className="mt-7 flex flex-col items-center gap-3 lg:items-start">
+              <StartStudyingButton
+                clickedFrom="hero"
+                onTrack={onStartJourney}
+                className="bb-cta-blue bb-cta-pulse inline-flex w-full max-w-[320px] items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5 lg:w-auto"
+              >
+                Start Studying Now
+                <LandingLineIcon name="arrow" light />
+              </StartStudyingButton>
+              <p className="text-xs font-bold text-[#6d7789]">Free account. No credit card.</p>
+              <StoreBadges />
             </div>
-            <p className="text-xs font-bold text-[#6d7789]">&copy; 2026 Bible Buddy</p>
+
+            {/* Social proof, and only the part that is true. The approved
+                mockup carried "4.8 stars" next to this line; there is no App
+                Store listing yet, so there is no rating to show. The account
+                number is real and comes from the same place the rest of the
+                site quotes it from. */}
+            <p className="mt-6 text-sm font-bold text-[#526075]">
+              Join over 7,000 Christians growing in their faith.
+            </p>
           </div>
-        </footer>
+
+          <div className="relative mx-auto -mt-2 w-full max-w-[270px] sm:max-w-[320px] lg:mt-0 lg:max-w-none lg:pt-8">
+            {/* Lil Louis, drawn for this hero: waist-up, no frame, on
+                transparency. The circular buddy-picker portrait stood in
+                here first and looked like a sticker at this size. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/louis-hero.webp"
+              alt="Lil Louis, your Bible Buddy, waving and holding a Bible"
+              width={1330}
+              height={1182}
+              fetchPriority="high"
+              className="relative z-10 mx-auto w-full max-w-[720px] drop-shadow-[0_18px_38px_rgba(7,22,47,0.14)]"
+            />
+            {/* Pinned to Louis's shoulder rather than the corner of the
+                column, so it reads as him speaking instead of a stray card
+                floating in the margin. */}
+            <div className="absolute right-0 top-0 z-20 max-w-[130px] rounded-2xl rounded-bl-sm bg-white px-3 py-2 text-[0.68rem] font-black leading-4 text-[#07162f] shadow-[0_14px_40px_rgba(7,22,47,0.16)] sm:max-w-[150px] sm:px-4 sm:py-3 sm:text-[0.78rem] sm:leading-5 lg:max-w-[165px] lg:text-[0.85rem]">
+              Hey! Let&apos;s grow in God&apos;s Word together!
+              <span
+                aria-hidden
+                className="absolute -bottom-2 left-5 h-0 w-0 border-l-[10px] border-r-[10px] border-t-[12px] border-l-transparent border-r-transparent border-t-white"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        {/* ---------------------------------------------------------------
+            FEATURES
+        --------------------------------------------------------------- */}
+        <section id="features" className="bg-[#eaf3ff] py-14 sm:py-16">
+          <div className="mx-auto max-w-[1080px] px-5 sm:px-8">
+            <h2 className="text-center text-[clamp(1.5rem,3.6vw,2.1rem)] font-black leading-tight">
+              Everything you need
+              <br className="sm:hidden" /> for your Bible journey
+            </h2>
+            <div className="mt-9 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-5">
+              {LANDING_FEATURES.map((feature) => (
+                <div
+                  key={feature.title}
+                  className="flex flex-col items-center rounded-3xl bg-white px-4 py-6 text-center shadow-[0_12px_34px_rgba(7,22,47,0.06)]"
+                >
+                  <span
+                    className="flex h-14 w-14 items-center justify-center rounded-2xl text-white"
+                    style={{ background: feature.color }}
+                  >
+                    <FeatureGlyph name={feature.icon} />
+                  </span>
+                  <p className="mt-4 text-[0.95rem] font-black leading-5">{feature.title}</p>
+                  <p className="mt-2 text-xs font-semibold leading-5 text-[#526075]">{feature.body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ---------------------------------------------------------------
+            MEET YOUR BIBLE BUDDY
+
+            Four portraits in a row rather than one group illustration: these
+            four images already exist and are the characters people actually
+            meet in the app. A single group piece is a nicer picture and is
+            the one asset worth commissioning later.
+        --------------------------------------------------------------- */}
+        <section className="bg-[#e9f6ee] py-14 sm:py-16">
+          <div className="mx-auto grid max-w-[1080px] items-center gap-9 px-5 sm:px-8 md:grid-cols-[1.1fr_0.9fr]">
+            {/* The four of them together, drawn as one banner. Four separate
+                circular portraits stood here first and read as four
+                stickers rather than a group. Names sit underneath in text,
+                so nothing has to be baked into the artwork. */}
+            <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/buddies-group.webp"
+                alt="Lil Louis, Walter, Lindsey and Steve, the four Bible Buddies"
+                width={1774}
+                height={887}
+                loading="lazy"
+                className="mx-auto w-full drop-shadow-[0_18px_38px_rgba(7,22,47,0.14)]"
+              />
+              <div className="mt-2 grid grid-cols-4 gap-1 text-center">
+                {LANDING_BUDDIES.map((buddy) => (
+                  <div key={buddy.name}>
+                    <p className="text-[0.72rem] font-black leading-4 sm:text-sm">{buddy.name}</p>
+                    <p className="text-[0.6rem] font-semibold leading-4 text-[#527062] sm:text-xs">{buddy.title}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="text-center md:text-left">
+              <h2 className="text-[clamp(1.5rem,3.6vw,2.1rem)] font-black leading-tight">
+                Meet your Bible Buddy
+              </h2>
+              <p className="mt-4 text-[0.98rem] font-semibold leading-7 text-[#3c5a4a]">
+                Pick a friendly guide to walk with you through Scripture. Each one explains
+                things their own way - and you can change your mind whenever you like.
+              </p>
+              <div className="mt-6">
+                <StartStudyingButton
+                  clickedFrom="buddies"
+                  onTrack={onStartJourney}
+                  className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#1f8a4c] px-7 py-3.5 text-[0.95rem] font-black text-white shadow-[0_18px_44px_rgba(31,138,76,0.26)] transition hover:-translate-y-0.5"
+                >
+                  Meet the Buddies
+                  <LandingLineIcon name="arrow" light />
+                </StartStudyingButton>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ---------------------------------------------------------------
+            HOW IT WORKS
+
+            Step one is creating an account, not downloading anything. The
+            approved mockup said "Download the app - get it on iPhone or
+            Android"; neither store has a listing yet, so that step would
+            have been an instruction nobody could follow.
+        --------------------------------------------------------------- */}
+        <section className="bg-[#f1f0ff] py-14 sm:py-16">
+          <div className="mx-auto max-w-[1080px] px-5 sm:px-8">
+            <h2 className="text-center text-[clamp(1.5rem,3.6vw,2.1rem)] font-black leading-tight">How it works</h2>
+            <ol className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {LANDING_STEPS.map((step, index) => (
+                <li
+                  key={step.title}
+                  className="rounded-3xl bg-white px-5 py-6 text-center shadow-[0_12px_34px_rgba(7,22,47,0.06)]"
+                >
+                  <span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-[#0056FD] text-sm font-black text-white">
+                    {index + 1}
+                  </span>
+                  <p className="mt-4 text-[0.95rem] font-black leading-5">{step.title}</p>
+                  <p className="mt-2 text-xs font-semibold leading-5 text-[#526075]">{step.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <div className="mx-auto max-w-[860px] px-5 pb-10 sm:px-8">
+          {/* The founder video. It used to be the first thing on the page,
+              above every button; now it is here, for the people who want it. */}
+          <section className={`pt-14 ${videoAvailable ? "" : "hidden"}`}>
+            <h2 className="text-center text-xl font-black sm:text-2xl">See how it works</h2>
+            <video
+              controls
+              preload="metadata"
+              playsInline
+              src="/landing-video.mp4"
+              poster="/landing-video-poster.jpg?v=2"
+              onError={() => setVideoAvailable(false)}
+              onPlay={() => trackVideoMilestone("video_played", "video-play", {})}
+              onTimeUpdate={handleVideoTimeUpdate}
+              onEnded={(event) =>
+                trackVideoMilestone("video_completed", "video-complete", {
+                  percent: 100,
+                  seconds: Math.round(event.currentTarget.duration || 0),
+                })
+              }
+              className="mt-5 aspect-video w-full rounded-[22px] bg-[#0b1220] shadow-[0_30px_80px_rgba(7,22,47,0.18)]"
+            >
+              Your browser does not support video playback.
+            </video>
+          </section>
+
+          <section id="faq" className="mt-14">
+            <h2 className="text-center text-xl font-black sm:text-2xl">Frequently Asked Questions</h2>
+            <div className="mt-4 space-y-3">
+              {faqs.map((item) => (
+                <details key={item.q} className="group rounded-2xl border border-[#dce7f5] bg-white px-5 py-4 shadow-[0_10px_30px_rgba(7,22,47,0.04)]">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-[0.95rem] font-black text-[#07162f] [&::-webkit-details-marker]:hidden">
+                    {item.q}
+                    <span className="shrink-0 text-[#6d7789] transition group-open:rotate-180">
+                      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm font-semibold leading-6 text-[#40516b]">{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          <section id="about" className="mt-14 rounded-[24px] border border-[#dce7f5] bg-[#f7fbff] p-6 text-center sm:p-8">
+            <p className="text-sm font-semibold leading-7 text-[#40516b] sm:text-base">
+              Bible Buddy is currently in beta &bull; a free {inNativeApp ? "app" : "web app"} built by one person with one mission: helping people understand God&apos;s Word. New features are added every week.
+            </p>
+            <p className="mt-3 text-sm font-black text-[#07162f]">&mdash; Louis, founder of Bible Buddy</p>
+          </section>
+        </div>
+
+        {/* ---------------------------------------------------------------
+            FINAL CALL TO ACTION
+        --------------------------------------------------------------- */}
+        <section className="bg-[#0056FD] py-14 text-white sm:py-16">
+          <div className="mx-auto max-w-[1080px] px-5 text-center sm:px-8">
+            <h2 className="text-[clamp(1.5rem,3.8vw,2.2rem)] font-black leading-tight bb-on-dark">
+              Ready to grow in God&apos;s Word?
+            </h2>
+            <p className="mx-auto mt-3 max-w-[460px] text-sm font-semibold leading-6 bb-on-dark sm:text-base">
+              Join over 7,000 Christians who are already studying with Bible Buddy.
+            </p>
+            <div className="mt-7 flex flex-col items-center gap-3">
+              <StartStudyingButton
+                clickedFrom="bottom_cta"
+                onTrack={onStartJourney}
+                className="inline-flex w-full max-w-[320px] items-center justify-center gap-3 rounded-2xl bg-white px-8 py-4 text-base font-black text-[#0056FD] shadow-[0_24px_60px_rgba(7,22,47,0.25)] transition hover:-translate-y-0.5 sm:w-auto"
+              >
+                Start Studying Now
+                <LandingLineIcon name="arrow" />
+              </StartStudyingButton>
+              <p className="text-xs font-bold bb-on-dark opacity-90">Free account. No credit card.</p>
+              <StoreBadges onDark />
+            </div>
+          </div>
+        </section>
+
+        <div className="mx-auto max-w-[1080px] px-5 sm:px-8">
+          <footer className="border-t border-[#dce7f5] py-9">
+            <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
+              <BibleBuddyMark small />
+              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-bold text-[#526075]">
+                <a href="#about" className="transition hover:text-[#0056FD]">About</a>
+                <a href="#faq" className="transition hover:text-[#0056FD]">FAQ</a>
+                <Link href="/blog" className="transition hover:text-[#0056FD]">Blog</Link>
+                <Link href="/contact" className="transition hover:text-[#0056FD]">Contact</Link>
+                <Link href="/community-guidelines" className="transition hover:text-[#0056FD]">Community</Link>
+                <Link href="/privacy" className="transition hover:text-[#0056FD]">Privacy</Link>
+                <Link href="/terms" className="transition hover:text-[#0056FD]">Terms</Link>
+              </div>
+              <p className="text-xs font-bold text-[#6d7789]">&copy; 2026 Bible Buddy</p>
+            </div>
+          </footer>
+        </div>
       </main>
     </div>
+  );
+}
+
+/**
+ * The App Store and Play Store badges, which render NOTHING until the
+ * listings exist (Louis, 2026-10-25: "you can have sign up now as the
+ * buttons then we can add app store and play store as they are approved").
+ *
+ * The approved mockup put both badges in the hero, in How It Works and in
+ * the closing call to action. Checked on the day: the App Store lookup for
+ * 6822155944 returns no result, and play.google.com 404s for
+ * net.mybiblebuddy.app. Shipping them would have pointed every call to
+ * action on the page at something that does not exist.
+ *
+ * Turning them on is one line each: fill in APP_STORE_ID in
+ * lib/appReviewPrompt.ts when Apple approves the build, and set
+ * PLAY_LIVE once the Play listing is published.
+ */
+const PLAY_LIVE = false;
+
+function StoreBadges({ onDark = false }: { onDark?: boolean }) {
+  const iosHref = APP_STORE_ID ? `https://apps.apple.com/app/id${APP_STORE_ID}` : null;
+  const androidHref = PLAY_LIVE ? `https://play.google.com/store/apps/details?id=${PLAY_PACKAGE}` : null;
+  if (!iosHref && !androidHref) return null;
+
+  const base = `inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-black transition hover:-translate-y-0.5 ${
+    onDark ? "bg-white text-[#07162f]" : "bg-[#07162f] text-white"
+  }`;
+
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-3">
+      {iosHref ? (
+        <a href={iosHref} className={base} target="_blank" rel="noopener noreferrer">
+          Download on the App Store
+        </a>
+      ) : null}
+      {androidHref ? (
+        <a href={androidHref} className={base} target="_blank" rel="noopener noreferrer">
+          Get it on Google Play
+        </a>
+      ) : null}
+    </div>
+  );
+}
+
+/** The five things the app actually does. */
+const LANDING_FEATURES = [
+  { title: "Daily Devotionals", body: "Practical, easy to follow studies", icon: "book", color: "#2fa360" },
+  { title: "Bible in One Year", body: "A simple plan to stay consistent", icon: "calendar", color: "#7a6ff0" },
+  { title: "Ask Bible Buddy", body: "Get Bible-based answers anytime", icon: "chat", color: "#ef5a8e" },
+  { title: "Track Your Progress", body: "See your growth and build a habit", icon: "chart", color: "#f0912f" },
+  { title: "Community", body: "Grow with others around the world", icon: "people", color: "#f2b728" },
+] as const;
+
+/** The four buddies, in the order the app unlocks them. */
+const LANDING_BUDDIES = [
+  { name: "Lil Louis", title: "Bible Teacher", image: "/Newlouiswave.png" },
+  { name: "Walter", title: "Retired Preacher", image: "/Walterwaving.png" },
+  { name: "Lindsey", title: "Life Coach", image: "/Lindseywaving.png" },
+  { name: "Steve", title: "Youth Pastor", image: "/Stevewaving.png" },
+] as const;
+
+const LANDING_STEPS = [
+  { title: "Create your free account", body: "No card, nothing to pay, ever." },
+  { title: "Start your daily reading", body: "A devotional, or the Bible in one year." },
+  { title: "Ask questions", body: "Get clear, Bible-based answers." },
+  { title: "Build your habit", body: "Track your progress and keep showing up." },
+] as const;
+
+function FeatureGlyph({ name }: { name: (typeof LANDING_FEATURES)[number]["icon"] }) {
+  const common = {
+    viewBox: "0 0 24 24",
+    className: "h-7 w-7",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 2,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+  if (name === "book") {
+    return (
+      <svg {...common}>
+        <path d="M12 6.5S10 5 7 5H4v13h3c3 0 5 1.5 5 1.5s2-1.5 5-1.5h3V5h-3c-3 0-5 1.5-5 1.5Z" />
+        <path d="M12 6.5v13" />
+      </svg>
+    );
+  }
+  if (name === "calendar") {
+    return (
+      <svg {...common}>
+        <rect x="3" y="5" width="18" height="16" rx="3" />
+        <path d="M8 3v4M16 3v4M3 10h18" />
+      </svg>
+    );
+  }
+  if (name === "chat") {
+    return (
+      <svg {...common}>
+        <path d="M21 12a8 8 0 1 1-3.2-6.4" />
+        <path d="M21 4v5h-5" />
+        <path d="M8 11h.01M12 11h.01M16 11h.01" />
+      </svg>
+    );
+  }
+  if (name === "chart") {
+    return (
+      <svg {...common}>
+        <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+      </svg>
+    );
+  }
+  return (
+    <svg {...common}>
+      <circle cx="9" cy="8" r="3" />
+      <path d="M3 20a6 6 0 0 1 12 0" />
+      <path d="M16 6a3 3 0 0 1 0 6M18 20a6 6 0 0 0-2.5-4.9" />
+    </svg>
   );
 }
 
