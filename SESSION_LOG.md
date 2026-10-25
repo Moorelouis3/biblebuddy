@@ -8599,3 +8599,32 @@ Still open:
   paperback_url. Left alone, different book, one command whenever Louis wants.
 - A+ content for Higher Hope and Bible in One Year, once the ASINs settle.
 Next: link both books in the app when the ASINs land.
+
+## 2026-10-25 (21 Women listing, and the study cover bug)
+Done:
+- **21 Women is one listing now.** The hardcover was a separate title record
+  sitting as a second bookshelf row. KDP's "Link existing hardcover" on the
+  live paperback merged them, and the hardcover moved onto the paperback's
+  title id 2YXFBBE31ZF keeping its ISBN 9798163402304. Note KDP's own wording:
+  linking joins the Bookshelf rows, not the Amazon detail pages, so watch
+  whether Amazon merges those once the hardcover is live.
+- **The messed up cover is fixed and published.** The 2026-10-18 defect was
+  the hardcover losing the N of WOMEN and the E of BIBLE into the 0.7085in
+  board fold. `21_Women_Cover_Hardcover_KDP_v2.pdf` was built back then but
+  could not be uploaded while the title was locked in review. Uploaded now,
+  checked in KDP's previewer with guides, and submitted at $29.99 (prints
+  $8.52, pays $9.48, the best margin on the shelf).
+- `devotionals.paperback_url` set for 21 Women (B0HNHF5NC8).
+- **Found a real bug while checking the library.** Higher Hope launched today
+  with a cover_image on its row and a live file, and still showed the emoji
+  placeholder. Three places resolve a study's artwork from a hand-kept list of
+  titles and none of them read devotionals.cover_image. The list stays as the
+  override; the row is now the fallback. Plans card, study detail header and
+  study switcher all fixed, and the dashboard query now selects the column.
+Not live yet: 12 commits, next build Sun 17:05 Berlin. All step 3.
+Still open:
+- Could not render the signed-in Plans page to prove the cover fix; the page
+  needs a session the preview browser does not have. Verified the data, the
+  file and the code path, and the page compiles. Worth a look after 17:05.
+- Higher Hope and 21 Women hardcover both waiting on Amazon review.
+Next: check both covers on Amazon once live, then A+ content.
