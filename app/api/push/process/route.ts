@@ -2,6 +2,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import webpush from "web-push";
 import { apnsConfigured, sendApnsPush } from "@/lib/apnsSender";
+import {
+  GROUP_ERA_NOTIFICATION_TYPES,
+  repairNotificationUrl,
+  resolveCommunityStudyTargets,
+} from "@/lib/notificationTargets";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -105,6 +110,26 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ ok: true, processed: 0 });
   }
 
+  /**
+   * Where each of these should actually open.
+   *
+   * The payload's url is whatever article_slug the notifications trigger
+   * wrote, and two of those routes have moved since - see
+   * lib/notificationTargets.ts. The post and comment ids are already in the
+   * query string the trigger built, so they are read back out of it rather
+   * than joining notifications again.
+   */
+  const jobLinks = new Map<string, { postId: string | null; commentId: string | null }>();
+  for (const job of pendingJobs) {
+    const url = job.payload?.url || "";
+    const query = url.includes("?") ? new URLSearchParams(url.slice(url.indexOf("?") + 1)) : null;
+    jobLinks.set(job.id, { postId: query?.get("post") || null, commentId: query?.get("comment") || null });
+  }
+  const studyTargets = await resolveCommunityStudyTargets(
+    supabase,
+    [...jobLinks.values()].map((link) => link.postId),
+  );
+
   const userIds = [...new Set(pendingJobs.map((job) => job.user_id))];
   const { data: subscriptions, error: subscriptionsError } = await supabase
     .from("push_subscriptions")
@@ -143,6 +168,42 @@ export async function GET(request: NextRequest) {
   for (const job of pendingJobs) {
     const userSubscriptions = subsByUser.get(job.user_id) || [];
     const normalizedPayload = normalizePushPayload(job.payload);
+    const link = jobLinks.get(job.id);
+    const repaired = repairNotificationUrl(
+      normalizedPayload.url,
+      link?.postId,
+      link?.commentId,
+      studyTargets,
+    );
+    // The repaired url is written back to the job as well, so what was sent
+    // and what is on record are the same thing.
+    if (repaired) normalizedPayload.url = repaired;
+
+    /**
+     * Nothing the app refuses to show is allowed to buzz a phone.
+     *
+     * A group-era alert with no study day behind it is not in the bell and
+     * has nowhere to open, so sending it can only produce the thing Louis
+     * reported: a notification that is not there when you go looking. The
+     * ones that DO point at a study day were just repaired above and go out
+     * as normal.
+     */
+    const orphanedGroupAlert =
+      GROUP_ERA_NOTIFICATION_TYPES.includes(normalizedPayload.type as never) &&
+      !(link?.postId && studyTargets.has(link.postId));
+    if (orphanedGroupAlert) {
+      await supabase
+        .from("push_notification_jobs")
+        .update({
+          status: "skipped",
+          attempts: job.attempts + 1,
+          last_error: "Group-era alert with no live destination; the app does not show it either.",
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", job.id);
+      processed += 1;
+      continue;
+    }
 
     const deviceTokens = tokensByUser.get(job.user_id) || [];
 

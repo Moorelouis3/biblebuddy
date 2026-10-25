@@ -31,6 +31,12 @@ import { SELECTED_BUDDY_STORAGE_KEY, getBuddyAvatar, normalizeBuddyAvatarId, typ
 import { normalizeCustomMemberBadge } from "../lib/userBadges";
 import { buildFullName, hasRequiredFullName, splitFullName } from "../lib/profileName";
 import { extractLegacyDirectMessageAction } from "../lib/directMessageActions";
+import {
+  GROUP_ERA_NOTIFICATION_TYPES,
+  communityStudyDiscussionPath,
+  resolveCommunityStudyTargets,
+  type CommunityStudyTarget,
+} from "../lib/notificationTargets";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import BottomNav from "./BottomNav";
 import WisdomProverbsPopup from "./WisdomProverbsPopup";
@@ -116,24 +122,16 @@ const PENDING_REFERRER_STORAGE_KEY = "bb:pending-referrer-user-id";
  *
  * The rows themselves are gone: 13,387 of them deleted on 2026-10-18 once
  * Louis said so - "delete them, I'm not going back, the next time we do
- * groups it will be users creating their own, Skool type thing." The list
- * stays because nothing stops an old build, a queued job or a trigger
- * somebody forgot from writing one of these types again, and if that
- * happens it should land somewhere nobody sees rather than in front of
- * seven thousand people.
+ * groups it will be users creating their own, Skool type thing."
+ *
+ * ONE EXCEPTION, FOUND 2026-10-25. The community study's daily posts are
+ * group posts, so its alerts carry these types too, and a blanket hide threw
+ * them away while push kept delivering them to people's phones. The list
+ * itself now lives in lib/notificationTargets.ts as
+ * GROUP_ERA_NOTIFICATION_TYPES, and the rule is no longer "never show" but
+ * "show only if the post is a study day, and open that day" - everything
+ * else still lands where nobody sees it.
  */
-const BROADCAST_NOTIFICATION_TYPES = [
-  "group_post",
-  "buddy_posted",
-  "group_post_liked",
-  "group_post_commented",
-  "group_post_replied",
-  "group_reply_liked",
-  "series_reflection",
-  "series_reflection_liked",
-  "series_reflection_reply_liked",
-  "study_group_update",
-];
 
 /**
  * Alerts about a post in the feed.
@@ -767,6 +765,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     message: string | null;
     is_read: boolean;
     created_at: string;
+    /** Set when the alert is about a community study day - see lib/notificationTargets.ts. */
+    studyTarget?: CommunityStudyTarget | null;
   }>>([]);
   const [buddyActionLoadingId, setBuddyActionLoadingId] = useState<string | null>(null);
   const [showBuddyCelebration, setShowBuddyCelebration] = useState(false);
@@ -2040,17 +2040,40 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }
 
   async function fetchNotifications(currentUserId: string) {
+    /**
+     * The group-era types are no longer excluded in SQL (Louis, 2026-10-25).
+     *
+     * Hiding all ten of them was right while they all led back into the
+     * closed group, but the community study's day posts are group posts too:
+     * "Louis posted Day 25 of The Wisdom of Proverbs" and everyone answering
+     * that day's question were being binned with the rest, while push kept
+     * delivering them to the phone. They are fetched now and kept only if
+     * their post resolves to a study day, which is also where they open.
+     *
+     * The limit is higher than the 20 shown because the filtering moved from
+     * SQL to here, and orphaned group rows must not crowd out real alerts.
+     */
     const { data } = await supabase
       .from("notifications")
       .select("id, type, from_user_id, from_user_name, article_slug, comment_id, post_id, message, is_read, created_at")
       .eq("user_id", currentUserId)
-      .not("type", "in", `(${BROADCAST_NOTIFICATION_TYPES.join(",")})`)
       .order("created_at", { ascending: false })
-      .limit(40);
+      .limit(60);
     if (data) {
+      const groupEra = data.filter((n) => GROUP_ERA_NOTIFICATION_TYPES.includes((n.type ?? "") as never));
+      const studyTargets = groupEra.length
+        ? await resolveCommunityStudyTargets(supabase, groupEra.map((n) => n.post_id))
+        : new Map<string, CommunityStudyTarget>();
+
       const visibleNotifications = data
         .filter((n) => n.type !== "direct_message")
         .filter((n) => !n.from_user_id || n.from_user_id !== currentUserId)
+        .filter((n) => {
+          if (!GROUP_ERA_NOTIFICATION_TYPES.includes((n.type ?? "") as never)) return true;
+          // A group alert with no study day behind it has nowhere to open.
+          return Boolean(n.post_id && studyTargets.has(n.post_id));
+        })
+        .map((n) => ({ ...n, studyTarget: (n.post_id ? studyTargets.get(n.post_id) : null) ?? null }))
         .slice(0, 20);
       setNotifications(visibleNotifications);
       // Trigger celebration for the sender when they see an unread buddy_accepted notification
@@ -2182,6 +2205,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       prev.map((n) => (n.id === notif.id ? { ...n, is_read: true } : n))
     );
     setIsNotifOpen(false);
+
+    /**
+     * A community study alert opens that day's Discussion task.
+     *
+     * This is the half that was broken rather than missing: the alert existed,
+     * push delivered it, and its link went to /study-groups/<id>/chat, which
+     * redirects to /bb-feed - a page that reads feed_posts and so could never
+     * find a group_posts id. The reply is in the day's thread, so that is
+     * where this goes.
+     */
+    if (notif.studyTarget) {
+      router.push(communityStudyDiscussionPath(notif.studyTarget));
+      return;
+    }
 
     /**
      * A feed alert opens that post in the feed.
