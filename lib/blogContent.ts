@@ -170,7 +170,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/how-to-read-the-bible-in-a-year-without-quitting",
     publishedAt: "2026-10-25",
     readTime: "15 min read",
-    image: "/blog-banners/how-to-read-the-bible.jpg",
+    image: "/blog-banners/how-to-read-the-bible-in-a-year-without-quitting.jpg",
     groupPost: {
       title: "Read The Bible In A Year Without Quitting 📖",
       content:
@@ -187,7 +187,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/christmas-day-one-thing-to-carry",
     publishedAt: "2026-10-25",
     readTime: "5 min read",
-    image: "/blog-banners/who-was-mary.jpg",
+    image: "/blog-banners/christmas-day-one-thing-to-carry.jpg",
     groupPost: {
       title: "Christmas Day: One Thing To Carry 🙏",
       content:
@@ -204,7 +204,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/what-the-first-christmas-actually-looked-like",
     publishedAt: "2026-10-25",
     readTime: "15 min read",
-    image: "/blog-banners/who-was-mary.jpg",
+    image: "/blog-banners/what-the-first-christmas-actually-looked-like.jpg",
     groupPost: {
       title: "What The First Christmas Actually Looked Like 📖",
       content:
@@ -221,7 +221,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/thanksgiving-when-the-year-has-been-hard",
     publishedAt: "2026-10-25",
     readTime: "15 min read",
-    image: "/blog-banners/what-does-the-bible-say-about-anxiety.jpg",
+    image: "/blog-banners/thanksgiving-when-the-year-has-been-hard.jpg",
     groupPost: {
       title: "Gratitude When The Year Has Been Hard 🙏",
       content:
@@ -1031,7 +1031,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/have-they-found-noahs-ark",
     publishedAt: "2026-10-12",
     readTime: "11 min read",
-    image: "/blog-banners/christian-news-noahs-ark.png",
+    image: "/blog-banners/have-they-found-noahs-ark.jpg",
     excludeFromGroupShare: true,
   },
   {
@@ -1044,7 +1044,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/shroud-of-turin-what-the-science-says",
     publishedAt: "2026-10-12",
     readTime: "13 min read",
-    image: "/blog-banners/christian-news-shroud.png",
+    image: "/blog-banners/shroud-of-turin-what-the-science-says.jpg",
     excludeFromGroupShare: true,
   },
   {
@@ -1057,7 +1057,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     canonicalPath: "/blog/laminin-the-cross-shaped-protein",
     publishedAt: "2026-10-12",
     readTime: "11 min read",
-    image: "/blog-banners/christian-news-laminin.png",
+    image: "/blog-banners/laminin-the-cross-shaped-protein.jpg",
     excludeFromGroupShare: true,
   },
   {
