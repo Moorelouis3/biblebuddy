@@ -5,6 +5,7 @@ import { supabase } from "../../lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
+import SettingsSection from "../../components/SettingsSection";
 import {
   APP_THEMES,
   applyAppThemeToDocument,
@@ -698,11 +699,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         ) : null}
 
         {/* App Theme Section - the full color catalog came back 2026-09-02 */}
-        <div className="mb-6 rounded-xl bg-[var(--bb-card,#ffffff)] p-6 text-[var(--bb-text-primary,#111827)] shadow-sm">
-          <h2 className="text-xl font-semibold">App theme</h2>
-          <p className="mt-1 text-sm text-[var(--bb-text-secondary,#4b5563)]">
-            Pick the color Bible Buddy wears everywhere - it saves to your account.
-          </p>
+        <SettingsSection title="App theme" icon="🎨" description="Pick the color Bible Buddy wears everywhere - it saves to your account.">
           <div className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-4">
             {APP_THEMES.map((theme) => {
               const active = selectedTheme === theme.id;
@@ -736,14 +733,10 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               );
             })}
           </div>
-        </div>
+        </SettingsSection>
 
         {/* Bible Buddy Section */}
-        <div className="bg-white rounded-xl p-4 shadow-sm mb-6 sm:p-6">
-          <h2 className="text-xl font-semibold mb-2">Bible Buddy</h2>
-          <p className="mb-4 text-sm text-gray-600">
-            Pick the Buddy that should show across your dashboard, menu, popups, games, and study areas.
-          </p>
+        <SettingsSection title="Bible Buddy" icon="🧑" description="Pick the Buddy that shows across your dashboard, menu, popups, games and study areas.">
 
           {activeBuddy ? (
             <div className="relative mx-auto max-w-[620px] px-0 sm:px-14">
@@ -848,12 +841,10 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               No Bible Buddies are available yet.
             </p>
           )}
-        </div>
+        </SettingsSection>
 
         {/* Profile Section */}
-        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-4">Profile</h2>
-          
+        <SettingsSection title="Profile" icon="👤" description="Your name and email address.">
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -902,27 +893,10 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               {saving ? "Saving..." : "Save Changes"}
             </button>
           </div>
-        </div>
-
-        {/* Help Section */}
-        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-2">Help</h2>
-          <p className="mb-4 text-sm text-gray-600">
-            Replay the dashboard walkthrough anytime if you want a quick refresher on the daily flow.
-          </p>
-          <button
-            type="button"
-            onClick={handleReplayDashboardIntro}
-            className="rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
-          >
-            Replay Dashboard Walkthrough
-          </button>
-        </div>
+        </SettingsSection>
 
         {/* Password Section */}
-        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-4">Password</h2>
-          
+        <SettingsSection title="Password" icon="🔒" description="Send yourself a link to set a new one.">
           <div className="space-y-4">
             <p className="text-sm text-gray-600">
               Reset your password by email. We'll send you a link to create a new password.
@@ -942,7 +916,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               {resetPasswordLoading ? "Sending..." : "Reset Password"}
             </button>
           </div>
-        </div>
+        </SettingsSection>
 
         {/* The Bible lock renders nothing unless this device can do it, so it
             costs the website and Android nothing to have it here. */}
@@ -953,9 +927,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
         <BibleLockSettings />
 
         {/* Reading Plan Section */}
-        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-4">Reading Plan</h2>
-          
+        <SettingsSection title="Reading Plan" icon="📖" description="Reset your Bible reading progress back to the beginning.">
           <div className="space-y-4">
             {!showResetConfirm ? (
               <>
@@ -998,12 +970,10 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               </>
             )}
           </div>
-        </div>
+        </SettingsSection>
 
         {/* Account Section */}
-        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-4">Account</h2>
-          
+        <SettingsSection title="Account" icon="🪪" description="Your user ID and when you joined.">
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -1032,12 +1002,21 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               Logout
             </button>
           </div>
-        </div>
+        </SettingsSection>
+
+        {/* Help Section */}
+        <SettingsSection title="Help" icon="❓" description="Replay the dashboard walkthrough whenever you want a refresher.">
+          <button
+            type="button"
+            onClick={handleReplayDashboardIntro}
+            className="rounded-full bg-[var(--bb-button,#2563eb)] px-6 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm transition hover:brightness-95"
+          >
+            Replay Dashboard Walkthrough
+          </button>
+        </SettingsSection>
 
         {/* Delete Account Section */}
-        <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
-          <h2 className="text-xl font-semibold mb-4">Delete my account</h2>
-
+        <SettingsSection title="Delete my account" icon="⚠️" tone="danger" description="Permanently remove your account and all of your data.">
           <div className="space-y-4">
             {accountDeleted ? (
               <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
@@ -1113,7 +1092,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               </>
             )}
           </div>
-        </div>
+        </SettingsSection>
 
         <p className="text-center text-xs text-[var(--bb-text-secondary,#9ca3af)]">
           <Link href="/privacy" className="underline hover:opacity-80">Privacy Policy</Link>

@@ -8479,3 +8479,12 @@ Still open:
   and the articles are held out of the study group pending Louis's read.
 Next: watch for the two Live emails from Amazon, then A+ content and the app's
 paperback links. Then the email plan, once Louis answers the four questions.
+
+## 2026-10-25 (morning)
+Marching orders: PLAN.md is empty, so nothing from the plan file.
+Today: Louis asked how hard Google Play is now that iOS is submitted and
+waiting. Audited the Capacitor shell for what crosses over and wrote
+docs/PLAY_STORE_PLAN.md - engineering is ~3 days, but a new personal Play
+account needs 12 testers for 14 continuous days before it can go to
+production, so the calendar is 3-4 weeks and tester recruiting is the long
+pole.

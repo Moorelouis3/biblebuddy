@@ -3,34 +3,35 @@ import { existsSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
 
 /**
- * Picks, renders and books shorts without anyone approving them.
+ * Keeps shorts posting without anyone touching it.
  *
- * Louis, 2026-10-23: "i dont need to approve them just start sending but make
- * sure its real post that make sense, no atheist post, or long post that get
- * cut off." Approval was the bottleneck - the schedule ran dry on 30 September
- * and 83 candidates sat waiting - so the judgement that used to happen by eye
- * happens here instead, and it has to be strict because nothing looks at these
- * before they are public.
+ * Louis, 2026-10-23: "why can you just take the best threads and make shorts...
+ * then post 2 of them a day on facebook and IG and i wanna increase youtube
+ * shorts to 12 a day, 1 every other hour starting from now... and it
+ * automaticly refills itself i wanna be out of it.. everything stems from
+ * threads."
  *
- * WHAT IS REFUSED, and why each rule exists:
+ * So this is the whole loop in one pass, and it is meant to be run on a timer
+ * rather than by a person:
  *
- *  - Anything about atheists or atheism. Louis asked for it directly, and his
- *    own Threads data agrees: those posts draw an argument, not a reader.
- *  - Anything that would be cut off on screen. The limits are not invented -
- *    they are the 90th percentile of the 312 shorts that have actually gone
- *    out, so nine in ten of his own published shorts would still pass.
- *  - Anything without finished text and a background. The YouTube-origin
- *    candidates are remakes that need a vision pass first; they are not ready
- *    and would render empty.
- *  - Anything already rendered or already scheduled, so a rerun is safe.
+ *   1. if the candidate pool is low, build more from the best Threads posts;
+ *   2. refuse anything that should not go out (see `why`);
+ *   3. render what is left;
+ *   4. book it, keeping a few days always in hand.
+ *
+ * TWELVE a day to YouTube, every other hour, and TWO of those twelve also go
+ * to Facebook and Instagram. The slot grid runs on odd hours from 05:00 so
+ * that 05:00 and 17:00 - the two he asked for - are part of the twelve rather
+ * than extra posts on top.
  *
  *   npx tsx scripts/auto-schedule-shorts.ts --dry-run
- *   npx tsx scripts/auto-schedule-shorts.ts --limit=14
+ *   npx tsx scripts/auto-schedule-shorts.ts
  */
 
 const ROOT = process.cwd();
 const PENDING = join(ROOT, "data", "shorts-pending.json");
 const SCHEDULE = join(ROOT, "data", "shorts-schedule.json");
+const QUEUE = join(ROOT, "data", "shorts-queue.json");
 const OUT_DIR = join(ROOT, "tmp", "shorts", "out");
 
 const arg = (name: string, fallback?: string) => {
@@ -38,18 +39,16 @@ const arg = (name: string, fallback?: string) => {
   return hit ? hit.split("=").slice(1).join("=") : fallback;
 };
 const DRY = process.argv.includes("--dry-run");
-const LIMIT = Number(arg("limit", "14"));
 
-/**
- * The two slots, on Louis's clock.
- *
- * The schedule file holds US EASTERN - upload-shorts.mjs is run with
- * --tz-offset=-04:00 - so a Berlin time has to be converted per date rather
- * than once. It genuinely matters this month: Berlin leaves summer time on 25
- * October and the US on 1 November, so for that week the gap is five hours
- * instead of six, and a fixed Eastern time would drift an hour off.
- */
-const BERLIN_SLOTS = ["05:00", "17:00"];
+/** Twelve a day, every other hour, on Louis's clock. */
+const BERLIN_SLOTS = ["05:00", "07:00", "09:00", "11:00", "13:00", "15:00", "17:00", "19:00", "21:00", "23:00", "01:00", "03:00"];
+/** The two of the twelve that also go to Facebook and Instagram. */
+const CROSSPOST_AT = new Set(["05:00", "17:00"]);
+/** How far ahead to keep booked. Enough that a failed run is not a gap. */
+const DAYS_AHEAD = Number(arg("days", "3"));
+/** Build more candidates when fewer than this are usable. */
+const REFILL_BELOW = 40;
+const REFILL_COUNT = 60;
 
 function offsetMinutes(timeZone: string, at: Date): number {
   const f = new Intl.DateTimeFormat("en-US", {
@@ -62,24 +61,29 @@ function offsetMinutes(timeZone: string, at: Date): number {
   return (asUtc - at.getTime()) / 60000;
 }
 
-/** A Berlin wall-clock slot on a given day, as the Eastern date and time to store. */
-function berlinSlotAsEastern(ymd: string, hhmm: string): { date: string; time: string } {
+/**
+ * A Berlin wall-clock slot, as the US Eastern date and time the schedule file
+ * stores, plus the instant itself so past slots can be skipped.
+ *
+ * Converted per date, not once: Berlin and the States change clocks a week
+ * apart, and a fixed offset would drift an hour across that week.
+ */
+function berlinSlot(ymd: string, hhmm: string) {
   const [y, m, d] = ymd.split("-").map(Number);
   const [hh, mm] = hhmm.split(":").map(Number);
   const guess = Date.UTC(y, m - 1, d, hh, mm, 0);
-  // Two passes: the offset depends on the instant, which depends on the offset.
   let instant = new Date(guess - offsetMinutes("Europe/Berlin", new Date(guess)) * 60000);
   instant = new Date(guess - offsetMinutes("Europe/Berlin", instant) * 60000);
-  const east = new Intl.DateTimeFormat("en-CA", {
+  const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/New_York", hour12: false,
     year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit",
   }).formatToParts(instant);
-  const p = Object.fromEntries(east.map((x) => [x.type, x.value])) as Record<string, string>;
-  return { date: `${p.year}-${p.month}-${p.day}`, time: `${p.hour === "24" ? "00" : p.hour}:${p.minute}` };
+  const p = Object.fromEntries(parts.map((x) => [x.type, x.value])) as Record<string, string>;
+  return { date: `${p.year}-${p.month}-${p.day}`, time: `${p.hour === "24" ? "00" : p.hour}:${p.minute}`, instant, berlin: hhmm };
 }
 
-// Limits from the 312 shorts that have actually been published - the 90th
-// percentile of each, so nine in ten of his own published shorts would pass.
+// Limits from the 312 shorts already published - the 90th percentile of each,
+// so nine in ten of his own would still pass.
 const MAX_LINES = 10;
 const MAX_CHARS = 320;
 const MAX_LINE = 75;
@@ -87,134 +91,127 @@ const REFUSED = /\b(atheis[mt]|atheists)\b/i;
 
 type Candidate = {
   id: string; title?: string; lines?: string[]; bg?: string; sourceText?: string;
-  status?: string; origin?: string; score?: number;
+  status?: string; origin?: string; score?: number; posted?: string;
 };
 
-const rows: Candidate[] = JSON.parse(readFileSync(PENDING, "utf8"));
-const schedule: any[] = existsSync(SCHEDULE) ? JSON.parse(readFileSync(SCHEDULE, "utf8")) : [];
-const QUEUE = join(ROOT, "data", "shorts-queue.json");
-// shorts-queue.json is {_note, shorts}, not a bare array.
-const queueRaw: any = existsSync(QUEUE) ? JSON.parse(readFileSync(QUEUE, "utf8")) : { shorts: [] };
-const queueWrapper = Array.isArray(queueRaw) ? null : queueRaw;
-const queueShorts: any[] = Array.isArray(queueRaw) ? queueRaw : (queueRaw.shorts || []);
-const alreadyBooked = new Set(schedule.map((s) => s.file));
+const readJson = <T,>(p: string, fallback: T): T => (existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : fallback);
 
-function why(c: Candidate): string | null {
-  if (!c.lines?.length || !c.bg) return "no finished text or background";
-  const text = c.lines.join(" ");
-  if (REFUSED.test(text) || REFUSED.test(c.sourceText || "") || REFUSED.test(c.title || "")) return "about atheism";
-  if (c.lines.length > MAX_LINES) return `${c.lines.length} lines, over ${MAX_LINES}`;
-  if (text.length > MAX_CHARS) return `${text.length} characters, over ${MAX_CHARS}`;
-  const longest = Math.max(...c.lines.map((l) => l.length));
-  if (longest > MAX_LINE) return `a line of ${longest} characters, over ${MAX_LINE}`;
-  if (alreadyBooked.has(`${c.id}.mp4`)) return "already scheduled";
-  return null;
+function usable(rows: Candidate[], booked: Set<string>) {
+  const refusals: Record<string, number> = {};
+  const passed: Candidate[] = [];
+  for (const c of rows.filter((r) => r.status === "pending")) {
+    const note = (r: string) => { refusals[r.replace(/\d+/g, "N")] = (refusals[r.replace(/\d+/g, "N")] || 0) + 1; };
+    if (!c.lines?.length || !c.bg) { note("no finished text or background"); continue; }
+    const text = c.lines.join(" ");
+    if (REFUSED.test(text) || REFUSED.test(c.sourceText || "") || REFUSED.test(c.title || "")) { note("about atheism"); continue; }
+    if (c.lines.length > MAX_LINES) { note(`${c.lines.length} lines, over ${MAX_LINES}`); continue; }
+    if (text.length > MAX_CHARS) { note(`${text.length} characters, over ${MAX_CHARS}`); continue; }
+    if (Math.max(...c.lines.map((l) => l.length)) > MAX_LINE) { note("a line too long for the screen"); continue; }
+    if (booked.has(`${c.id}.mp4`)) { note("already scheduled"); continue; }
+    passed.push(c);
+  }
+  passed.sort((a, b) => (b.score || 0) - (a.score || 0));
+  // The same post run several times on Threads becomes several identical
+  // candidates. Strongest airing wins; the rest go.
+  const seen = new Set<string>();
+  const good: Candidate[] = [];
+  for (const c of passed) {
+    const key = c.lines!.join(" ").toLowerCase().replace(/[^a-z0-9 ]+/g, "").replace(/\s+/g, " ").trim();
+    if (seen.has(key)) { refusals["the same words as another candidate"] = (refusals["the same words as another candidate"] || 0) + 1; continue; }
+    seen.add(key);
+    good.push(c);
+  }
+  return { good, refusals };
 }
 
-const candidates = rows.filter((r) => r.status === "pending");
-const refusals: Record<string, number> = {};
-const passed: Candidate[] = [];
-for (const c of candidates) {
-  const reason = why(c);
-  if (reason) { refusals[reason.replace(/\d+/g, "N")] = (refusals[reason.replace(/\d+/g, "N")] || 0) + 1; continue; }
-  passed.push(c);
-}
-// Strongest first: score is the engagement the original Threads post earned.
-passed.sort((a, b) => (b.score || 0) - (a.score || 0));
+let rows = readJson<Candidate[]>(PENDING, []);
+let schedule = readJson<any[]>(SCHEDULE, []);
+let booked = new Set(schedule.map((s) => s.file));
 
-/**
- * The same short, twice.
- *
- * A post Louis ran several times on Threads becomes several candidates with
- * the same words - three of "Go to the gym. Read your Bible." were queued on
- * consecutive days in the first dry run. Two of them were character-identical
- * and the third swapped one verb. Posting that is the repetition he killed a
- * whole lane over, so the strongest airing of a text wins and the rest go.
- *
- * Compared on the words alone, ignoring case, punctuation and spacing, so a
- * swapped verb is still caught as different but a reflowed line is not.
- */
-const seen = new Set<string>();
-const good: Candidate[] = [];
-for (const c of passed) {
-  const key = c.lines!.join(" ").toLowerCase().replace(/[^a-z0-9 ]+/g, "").replace(/\s+/g, " ").trim();
-  if (seen.has(key)) { refusals["the same words as another candidate"] = (refusals["the same words as another candidate"] || 0) + 1; continue; }
-  seen.add(key);
-  good.push(c);
+// 1. Refill from the best Threads posts when the pool runs down. This is the
+//    "everything stems from threads" step, and the reason nobody has to feed it.
+let { good, refusals } = usable(rows, booked);
+if (good.length < REFILL_BELOW && !DRY) {
+  console.log(`only ${good.length} usable candidates - building ${REFILL_COUNT} more from the best Threads posts`);
+  try {
+    execFileSync("npx", ["tsx", "scripts/build-shorts-batch.ts", `--count=${REFILL_COUNT}`, "--months=6"],
+      { cwd: ROOT, stdio: "ignore", shell: true });
+    rows = readJson<Candidate[]>(PENDING, []);
+    ({ good, refusals } = usable(rows, booked));
+  } catch (e) {
+    console.log(`  refill failed, carrying on with what is here: ${String((e as Error).message).slice(0, 90)}`);
+  }
 }
-const take = good.slice(0, LIMIT);
 
-console.log(`${candidates.length} waiting, ${good.length} pass the rules, taking ${take.length}`);
+// 2. Which slots are still empty, between now and DAYS_AHEAD out.
+const taken = new Set(schedule.map((s) => `${s.date} ${s.time}`));
+const now = Date.now();
+const wanted: ReturnType<typeof berlinSlot>[] = [];
+for (let day = 0; day <= DAYS_AHEAD; day++) {
+  const ymd = new Date(now + day * 86400000).toISOString().slice(0, 10);
+  for (const hhmm of BERLIN_SLOTS) {
+    const slot = berlinSlot(ymd, hhmm);
+    if (slot.instant.getTime() <= now + 15 * 60000) continue;   // past, or too soon to upload
+    if (taken.has(`${slot.date} ${slot.time}`)) continue;
+    wanted.push(slot);
+  }
+}
+wanted.sort((a, b) => a.instant.getTime() - b.instant.getTime());
+
+console.log(`${good.length} usable candidates, ${wanted.length} empty slots in the next ${DAYS_AHEAD} days`);
 if (Object.keys(refusals).length) {
   console.log("refused:");
   for (const [r, n] of Object.entries(refusals).sort((a, b) => b[1] - a[1])) console.log(`   ${n} - ${r}`);
 }
 
-/** The next free slot, from tomorrow, never backdating. */
-function nextSlots(count: number) {
-  const used = new Set(schedule.map((s) => `${s.date} ${s.time}`));
-  const out: { date: string; time: string }[] = [];
-  const day = new Date();
-  day.setUTCDate(day.getUTCDate() + 1);
-  for (let i = 0; out.length < count && i < 400; i++) {
-    const ymd = new Date(day.getTime() + i * 86400000).toISOString().slice(0, 10);
-    for (const slot of BERLIN_SLOTS) {
-      if (out.length >= count) break;
-      const booked = berlinSlotAsEastern(ymd, slot);
-      const key = `${booked.date} ${booked.time}`;
-      if (used.has(key)) continue;
-      used.add(key);
-      out.push(booked);
-    }
-  }
-  return out;
-}
+const queueRaw = readJson<any>(QUEUE, { shorts: [] });
+const queueWrapper = Array.isArray(queueRaw) ? null : queueRaw;
+const queueShorts: any[] = Array.isArray(queueRaw) ? queueRaw : (queueRaw.shorts || []);
 
-const slots = nextSlots(take.length);
-let booked = 0;
-for (let i = 0; i < take.length; i++) {
-  const c = take[i];
+const take = Math.min(good.length, wanted.length);
+let bookedCount = 0;
+const crossposted: string[] = [];
+for (let i = 0; i < take; i++) {
+  const c = good[i];
+  const slot = wanted[i];
   const file = `${c.id}.mp4`;
-  const slot = slots[i];
-  const berlin = BERLIN_SLOTS[i % BERLIN_SLOTS.length];
-  console.log(`  ${slot.date} ${slot.time} ET (${berlin} Berlin)  ${String(c.title || "").slice(0, 36).padEnd(36)} ${c.lines!.length} lines`);
+  const alsoSocial = CROSSPOST_AT.has(slot.berlin);
+  console.log(`  ${slot.berlin} Berlin ${slot.date} ${slot.time} ET  ${alsoSocial ? "YT+FB+IG" : "YT only "}  ${String(c.title || "").slice(0, 32)}`);
   if (DRY) continue;
 
   if (!existsSync(join(OUT_DIR, file))) {
-    // render-short.ts renders from shorts-queue.json, not from the candidate
-    // list, so the candidate has to be put there first - the same copy the
-    // approval server does when someone clicks approve. Without this every
-    // render fails with "No short matched --id=".
+    // render-short.ts renders from shorts-queue.json, so the candidate has to
+    // be copied there first - the same thing the approval server does.
     if (!queueShorts.some((s: any) => s.id === c.id)) {
-      queueShorts.push({ id: c.id, likes: c.score, posted: (c as any).posted, title: c.title, lines: c.lines, bg: c.bg });
+      queueShorts.push({ id: c.id, likes: c.score, posted: c.posted, title: c.title, lines: c.lines, bg: c.bg });
       writeFileSync(QUEUE, `${JSON.stringify(queueWrapper ? { ...queueWrapper, shorts: queueShorts } : queueShorts, null, 2)}\n`);
     }
     try {
       execFileSync("npx", ["tsx", "scripts/render-short.ts", `--id=${c.id}`], { cwd: ROOT, stdio: "ignore", shell: true });
     } catch (e) {
-      console.log(`     render FAILED - left pending: ${String((e as Error).message).slice(0, 90)}`);
+      console.log(`     render failed, left pending: ${String((e as Error).message).slice(0, 80)}`);
       continue;
     }
   }
-  if (!existsSync(join(OUT_DIR, file))) { console.log("     render produced no file - left pending"); continue; }
+  if (!existsSync(join(OUT_DIR, file))) { console.log("     render produced no file, left pending"); continue; }
 
   schedule.push({
-    file,
-    title: c.title || "Bible Buddy",
-    likes: c.score || 0,
-    date: slot.date,
-    time: slot.time,
+    file, title: c.title || "Bible Buddy", likes: c.score || 0,
+    date: slot.date, time: slot.time,
     caption: (c.sourceText || c.lines!.join(" ")).replace(/\s+/g, " ").trim().slice(0, 280),
+    crosspost: alsoSocial,
   });
+  booked.add(file);
   const row = rows.find((r) => r.id === c.id);
   if (row) row.status = "approved";
-  booked++;
+  if (alsoSocial) crossposted.push(file);
+  bookedCount++;
 }
 
-if (!DRY) {
+if (!DRY && bookedCount) {
   writeFileSync(PENDING, `${JSON.stringify(rows, null, 2)}\n`);
   writeFileSync(SCHEDULE, `${JSON.stringify(schedule, null, 2)}\n`);
-  console.log(`booked ${booked} of ${take.length} attempted; schedule now holds ${schedule.length}`);
-} else {
-  console.log("dry run - nothing rendered or booked");
 }
+console.log(DRY
+  ? "dry run - nothing rendered or booked"
+  : `booked ${bookedCount}; ${crossposted.length} of them also go to Facebook and Instagram; schedule holds ${schedule.length}`);

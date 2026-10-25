@@ -390,6 +390,75 @@ async function getSessionWithRefreshGrace() {
   return retryData.session;
 }
 
+/**
+ * The profile menu's rows and headings (Louis, 2026-10-25: "when you click the
+ * profile picture, there's a lot of stuff. It should be in more order").
+ *
+ * It had grown to fourteen rows in one flat run - some wearing an emoji, some
+ * not, Logout the only thing a divider separated - because every feature that
+ * lost its place in the bottom bar landed here. These two components give it
+ * one shape instead: an icon column so the labels line up whatever is in the
+ * list, and headings with dividers so You / App / Help / Admin read as four
+ * short lists rather than one long one.
+ *
+ * The container also scrolls now. With the admin rows showing, the menu is
+ * fourteen items tall, which ran off the bottom of a 375x812 phone and put
+ * Logout somewhere unreachable.
+ */
+type ProfileMenuRowProps = {
+  /** Decorative - hidden from screen readers, there to align the labels. */
+  icon: string;
+  label: string;
+  /** A link row; leave it out for a row that runs an action instead. */
+  href?: string;
+  active?: boolean;
+  badge?: string;
+  onSelect: () => void;
+};
+
+function ProfileMenuRow({ icon, label, href, active, badge, onSelect }: ProfileMenuRowProps) {
+  const className = `flex w-full items-center gap-3 px-4 py-2 text-left text-sm transition-colors ${
+    active ? "bg-sky-100 font-medium text-black" : "text-gray-700 hover:bg-gray-100"
+  }`;
+
+  const body = (
+    <>
+      <span aria-hidden="true" className="w-5 shrink-0 text-center text-base leading-none">
+        {icon}
+      </span>
+      <span className="flex-1 truncate">{label}</span>
+      {badge ? (
+        <span className="rounded-full bg-red-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-white shadow-sm animate-pulse">
+          {badge}
+        </span>
+      ) : null}
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link href={href} onClick={onSelect} className={className}>
+        {body}
+      </Link>
+    );
+  }
+
+  return (
+    <button type="button" onClick={onSelect} className={className}>
+      {body}
+    </button>
+  );
+}
+
+function ProfileMenuHeading({ children }: { children: string }) {
+  return (
+    <div className="px-4 pb-1 pt-2 text-[10px] font-black uppercase tracking-wider text-gray-400">
+      {children}
+    </div>
+  );
+}
+
+
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -488,6 +557,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [resendConfirmationMessage, setResendConfirmationMessage] = useState<string | null>(null);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const profileMenuRef = useRef<HTMLDivElement>(null);
+  const closeProfileMenu = () => setIsProfileMenuOpen(false);
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false);
   const navMenuRef = useRef<HTMLDivElement>(null);
   const [isDashboardStoreOpen, setIsDashboardStoreOpen] = useState(false);
@@ -3436,231 +3506,170 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
                 {/* DROPDOWN MENU */}
                 {isProfileMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-56 bg-[var(--bb-card,#19212c)] rounded-lg shadow-lg border border-[var(--bb-card-border,#374151)] py-1 z-50">
-                    {/* HOME */}
-                    <Link
+                  <div className="absolute right-0 mt-2 w-60 max-h-[calc(100vh-5rem)] overflow-y-auto overscroll-contain bg-[var(--bb-card,#19212c)] rounded-lg shadow-lg border border-[var(--bb-card-border,#374151)] py-1.5 z-50">
+                    <ProfileMenuHeading>You</ProfileMenuHeading>
+                    <ProfileMenuRow
                       href="/dashboard"
-                      onClick={() => setIsProfileMenuOpen(false)}
-                      className={`block px-4 py-2 text-sm ${
-                        pathname?.startsWith("/dashboard")
-                          ? "bg-sky-100 text-black font-medium"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      Home
-                    </Link>
-
-                    {/* PROFILE */}
-                    <Link
+                      icon="🏠"
+                      label="Home"
+                      active={pathname?.startsWith("/dashboard")}
+                      onSelect={closeProfileMenu}
+                    />
+                    <ProfileMenuRow
                       href="/profile"
-                      onClick={() => setIsProfileMenuOpen(false)}
-                      className={`block px-4 py-2 text-sm ${
-                        pathname?.startsWith("/profile")
-                          ? "bg-sky-100 text-black font-medium"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      Profile
-                    </Link>
-
-                    <Link
+                      icon="👤"
+                      label="Profile"
+                      active={pathname?.startsWith("/profile")}
+                      onSelect={closeProfileMenu}
+                    />
+                    {/* Notes stays (Louis, 2026-10-25: "leave notes there!!! i
+                        wanna add it to the dashboard somehow"). The numbers say
+                        almost nobody writes one - 134 ever, none between May and
+                        October - but that is a reason to surface it better, not
+                        to take the only way into it away from the people who
+                        have notes saved. */}
+                    <ProfileMenuRow
                       href="/notes"
-                      onClick={() => setIsProfileMenuOpen(false)}
-                      className={`block px-4 py-2 text-sm ${
-                        pathname?.startsWith("/notes")
-                          ? "bg-sky-100 text-black font-medium"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      Notes
-                    </Link>
-
-                    <Link
+                      icon="📝"
+                      label="Notes"
+                      active={pathname?.startsWith("/notes")}
+                      onSelect={closeProfileMenu}
+                    />
+                    <ProfileMenuRow
                       href="/bookmarks"
-                      onClick={() => setIsProfileMenuOpen(false)}
-                      className={`block px-4 py-2 text-sm ${
-                        pathname?.startsWith("/bookmarks")
-                          ? "bg-sky-100 text-black font-medium"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      🔖 Bookmarks
-                    </Link>
+                      icon="🔖"
+                      label="Bookmarks"
+                      active={pathname?.startsWith("/bookmarks")}
+                      onSelect={closeProfileMenu}
+                    />
 
-                    {/* SETTINGS
-
-                        A plain link to /settings, which is the whole fix
-                        (Louis, 2026-10-18: "make sure the settings button
-                        works cause it don't now").
+                    <div className="my-1 border-t border-gray-200" />
+                    <ProfileMenuHeading>App</ProfileMenuHeading>
+                    {/* A plain link to /settings, which is the whole fix (Louis,
+                        2026-10-18: "make sure the settings button works cause it
+                        don't now").
 
                         It used to push /dashboard, set a localStorage flag and
-                        fire bb:dashboard-show-settings-tab, asking the
-                        dashboard to switch to a settings slide inside itself.
-                        That is the same mechanism the More sheet abandoned
-                        weeks ago for exactly this reason - it bounced people
-                        back to the dashboard instead of opening settings, and
-                        account deletion, which App Review checks for, had no
-                        dependable way in. /settings is a real route. */}
-                    <Link
+                        fire bb:dashboard-show-settings-tab, asking the dashboard
+                        to switch to a settings slide inside itself. That is the
+                        same mechanism the More sheet abandoned weeks ago for
+                        exactly this reason - it bounced people back to the
+                        dashboard instead of opening settings, and account
+                        deletion, which App Review checks for, had no dependable
+                        way in. /settings is a real route. */}
+                    <ProfileMenuRow
                       href="/settings"
-                      onClick={() => setIsProfileMenuOpen(false)}
-                      className={`block px-4 py-2 text-sm ${
-                        pathname?.startsWith("/settings")
-                          ? "bg-sky-100 text-black font-medium"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      ⚙️ Settings
-                    </Link>
-
+                      icon="⚙️"
+                      label="Settings"
+                      active={pathname?.startsWith("/settings")}
+                      onSelect={closeProfileMenu}
+                    />
                     {/* From the More sheet, which the TV tab replaced. */}
-                    <Link
+                    <ProfileMenuRow
                       href="/ambassador"
-                      onClick={() => setIsProfileMenuOpen(false)}
-                      className={`block px-4 py-2 text-sm ${
-                        pathname?.startsWith("/ambassador")
-                          ? "bg-sky-100 text-black font-medium"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      💌 Invite a Buddy
-                    </Link>
+                      icon="💌"
+                      label="Invite a Buddy"
+                      active={pathname?.startsWith("/ambassador")}
+                      onSelect={closeProfileMenu}
+                    />
 
                     {/* No buddy row here (Louis, 2026-10-18: "remove Lil Louis
-                        from the menu"). It was the /change-buddy link wearing
-                        the selected buddy's name, so it read "Lil Louis" and
+                        from the menu"). It was the /change-buddy link wearing the
+                        selected buddy's name, so it read "Lil Louis" and
                         duplicated the tab in the bar - which goes to the chat
                         people actually want, not to a picker. Choosing a
-                        different buddy lives in Settings, which the menu links
-                        to and which now opens. */}
+                        different buddy lives in Settings.
 
-                    {/* CONTACT US */}
-                    <button
-                      type="button"
-                      onClick={() => {
+                        No Group entry either. It pointed at /dashboard?view=group,
+                        which redirects to the feed now, and the feed has its own
+                        tab in the bar. */}
+
+                    <div className="my-1 border-t border-gray-200" />
+                    <ProfileMenuHeading>Help</ProfileMenuHeading>
+                    <ProfileMenuRow
+                      href="/lessons"
+                      icon="🧭"
+                      label="How to Use"
+                      active={pathname?.startsWith("/lessons")}
+                      onSelect={closeProfileMenu}
+                    />
+                    <ProfileMenuRow
+                      icon="✉️"
+                      label="Contact Us"
+                      onSelect={() => {
                         setIsProfileMenuOpen(false);
                         setShowContactUsModal(true);
                       }}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      👉 Contact Us
-                    </button>
-
-                    {/* HOW TO USE BIBLEBUDDY */}
-                    <Link
-                      href="/lessons"
-                      onClick={() => setIsProfileMenuOpen(false)}
-                      className={`block px-4 py-2 text-sm ${
-                        pathname?.startsWith("/lessons")
-                          ? "bg-sky-100 text-black font-medium"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      How to Use
-                    </Link>
-
-                    {/* UPDATES */}
-                    <Link
+                    />
+                    <ProfileMenuRow
                       href="/updates"
-                      onClick={() => setIsProfileMenuOpen(false)}
-                      className={`block px-4 py-2 text-sm ${
-                        pathname?.startsWith("/updates")
-                          ? "bg-sky-100 text-black font-medium"
-                          : "text-gray-700 hover:bg-gray-100"
-                      }`}
-                    >
-                      Updates
-                    </Link>
+                      icon="📣"
+                      label="Updates"
+                      active={pathname?.startsWith("/updates")}
+                      onSelect={closeProfileMenu}
+                    />
 
-                    {/* No Group entry. It pointed at /dashboard?view=group,
-                        which redirects to the feed now, and the feed has its
-                        own tab in the bar. */}
-
-
-                    {/* ANALYTICS (ADMIN ONLY) */}
                     {(isAdmin || isModerator) && (
                       <>
+                        <div className="my-1 border-t border-gray-200" />
+                        <ProfileMenuHeading>Admin</ProfileMenuHeading>
                         {isAdmin && (
                           <>
-                            <Link
+                            <ProfileMenuRow
                               href="/admin/analytics"
-                              onClick={() => setIsProfileMenuOpen(false)}
-                              className={`block px-4 py-2 text-sm ${
-                                pathname?.startsWith("/admin/analytics")
-                                  ? "bg-sky-100 text-black font-medium"
-                                  : "text-gray-700 hover:bg-gray-100"
-                              }`}
-                            >
-                              Analytics
-                            </Link>
+                              icon="📊"
+                              label="Analytics"
+                              active={pathname?.startsWith("/admin/analytics")}
+                              onSelect={closeProfileMenu}
+                            />
                             {/* Louis, 2026-10-10: the broadcast screen existed
                                 but there was no way into it from the app. */}
-                            <Link
+                            <ProfileMenuRow
                               href="/admin/campaigns"
-                              onClick={() => setIsProfileMenuOpen(false)}
-                              className={`block px-4 py-2 text-sm ${
-                                pathname?.startsWith("/admin/campaigns") || pathname?.startsWith("/admin/email-broadcasts")
-                                  ? "bg-sky-100 text-black font-medium"
-                                  : "text-gray-700 hover:bg-gray-100"
-                              }`}
-                            >
-                              Email
-                            </Link>
-                            <Link
+                              icon="📧"
+                              label="Email"
+                              active={
+                                pathname?.startsWith("/admin/campaigns") ||
+                                pathname?.startsWith("/admin/email-broadcasts")
+                              }
+                              onSelect={closeProfileMenu}
+                            />
+                            <ProfileMenuRow
                               href="/admin/top-buddies"
-                              onClick={() => setIsProfileMenuOpen(false)}
-                              className={`block px-4 py-2 text-sm ${
-                                pathname?.startsWith("/admin/top-buddies")
-                                  ? "bg-sky-100 text-black font-medium"
-                                  : "text-gray-700 hover:bg-gray-100"
-                              }`}
-                            >
-                              Top Buddies
-                            </Link>
-                            <Link
+                              icon="🏆"
+                              label="Top Buddies"
+                              active={pathname?.startsWith("/admin/top-buddies")}
+                              onSelect={closeProfileMenu}
+                            />
+                            <ProfileMenuRow
                               href="/admin/little-louis"
-                              onClick={() => setIsProfileMenuOpen(false)}
-                              className={`block px-4 py-2 text-sm ${
-                                pathname?.startsWith("/admin/little-louis")
-                                  ? "bg-sky-100 text-black font-medium"
-                                  : "text-gray-700 hover:bg-gray-100"
-                              }`}
-                            >
-                              Little Louis
-                            </Link>
+                              icon="🧸"
+                              label="Little Louis"
+                              active={pathname?.startsWith("/admin/little-louis")}
+                              onSelect={closeProfileMenu}
+                            />
                           </>
                         )}
-                        <Link
+                        <ProfileMenuRow
                           href="/comments-admin"
-                          onClick={() => setIsProfileMenuOpen(false)}
-                          className={`flex items-center justify-between gap-3 px-4 py-2 text-sm ${
-                            pathname === "/comments-admin"
-                              ? "bg-sky-100 text-black font-medium"
-                              : "text-gray-700 hover:bg-gray-100"
-                          }`}
-                        >
-                          <span>Moderator Dashboard</span>
-                          <span className="rounded-full bg-red-500 px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-white shadow-sm animate-pulse">
-                            New
-                          </span>
-                        </Link>
+                          icon="🛡️"
+                          label="Moderator Dashboard"
+                          badge="New"
+                          active={pathname === "/comments-admin"}
+                          onSelect={closeProfileMenu}
+                        />
                       </>
                     )}
 
-                    {/* DIVIDER */}
-                    <div className="border-t border-gray-200 my-1" />
-
-                    {/* LOGOUT */}
-                    <button
-                      type="button"
-                      onClick={() => {
+                    <div className="my-1 border-t border-gray-200" />
+                    <ProfileMenuRow
+                      icon="🚪"
+                      label="Logout"
+                      onSelect={() => {
                         setIsProfileMenuOpen(false);
                         handleLogout();
                       }}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Logout
-                    </button>
+                    />
                   </div>
                 )}
               </div>
