@@ -2490,7 +2490,6 @@ export default function BbFeedPage() {
    * Only used to narrow the Top Buddies board on that tab. Null until then,
    * which the board treats as "no filter yet" rather than "no buddies".
    */
-  const [buddyIdSet, setBuddyIdSet] = useState<Set<string> | null>(null);
 
   // The two controls above the feed. See applyFeedControls.
   const [postFilter, setPostFilter] = useState<"all" | "photos" | "study">("all");
@@ -2703,9 +2702,6 @@ export default function BbFeedPage() {
     setBuddiesLoading(true);
 
     const buddyIdSet = await getAllBuddyIds(uid);
-    // Kept so Top Buddies can be narrowed to these people without fetching
-    // the list a second time (it is eight requests for Louis).
-    setBuddyIdSet(buddyIdSet);
     if (buddyIdSet.size === 0) {
       setRankedBuddiesFeed([]);
       setBuddiesLoading(false);
@@ -3549,9 +3545,13 @@ export default function BbFeedPage() {
           ) : tab === "myfeed" ? (
             <ProfileSummaryCard userId={userId} isSelf />
           ) : (
+            // key on the tab so switching between Buddies and Community
+            // remounts it: the card caches its board for ten minutes, so
+            // without this the second tab would show the first tab's board.
             <TopBuddiesCard
+              key={tab}
               groupId={COMMUNITY_GROUP_ID}
-              restrictTo={tab === "buddies" ? buddyIdSet : null}
+              buddiesOf={tab === "buddies" ? userId : null}
             />
           )
         ) : null}

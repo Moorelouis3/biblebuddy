@@ -109,20 +109,19 @@ function Face({ buddy, size }: { buddy: Buddy; size: number }) {
 export default function TopBuddiesCard({
   groupId,
   /**
-   * Narrow the board to these people (Louis, 2026-10-25).
+   * Rank only this person's buddies (Louis, 2026-10-25).
    *
-   * The Buddies tab wants the same leaderboard, ranked the same way, but
-   * showing only the reader's own buddies; Community wants everybody. One
-   * board, one API call, one difference.
-   *
-   * Null means no filter - which is also what the Buddies tab passes before
-   * its buddy list has loaded, so the board shows the full ranking rather
-   * than claiming the reader has no buddies.
+   * The server does it, not this component. Filtering the top 100 here was
+   * the first attempt and it only works for someone with thousands of
+   * buddies: with five, almost none of them are in the global top 100, so
+   * the board came back empty. ?buddiesOf= filters a much deeper ranking and
+   * renumbers it, so it is a real leaderboard of your buddies rather than
+   * the community board with people removed.
    */
-  restrictTo = null,
+  buddiesOf = null,
 }: {
   groupId: string;
-  restrictTo?: Set<string> | null;
+  buddiesOf?: string | null;
 }) {
   const [buddies, setBuddies] = useState<Buddy[] | null>(null);
   const [failed, setFailed] = useState(false);
@@ -137,19 +136,28 @@ export default function TopBuddiesCard({
     try {
       const { data: session } = await supabase.auth.getSession();
       const token = session.session?.access_token;
-      const response = await fetch(`/api/groups/${groupId}/top-buddies?mode=fast&limit=${TOP_100_LIMIT}`, {
+      const response = await fetch(`/api/groups/${groupId}/top-buddies?mode=fast&limit=${TOP_100_LIMIT}${buddiesOf ? `&buddiesOf=${buddiesOf}` : ""}`, {
         headers: token ? { Authorization: `Bearer ${token}` } : undefined,
       });
       if (!response.ok) throw new Error(String(response.status));
       const json = await response.json();
       const rows = normalise((json.buddies || json.weeklyBuddies || []) as RawBuddy[]);
-      if (rows.length === 0) throw new Error("empty");
+      /**
+       * Empty means different things on the two boards.
+       *
+       * An empty COMMUNITY board is suspicious - thousands of people, a week
+       * of activity, nobody on it - so that stays an error worth retrying.
+       * An empty BUDDIES board is ordinary: someone with four buddies who all
+       * had a quiet week. Treating that as a failure put "Top Buddies could
+       * not load" in front of them, which is both wrong and alarming.
+       */
+      if (rows.length === 0 && !buddiesOf) throw new Error("empty");
       setBuddies(rows);
       loadedAt.current = Date.now();
     } catch {
       setFailed(true);
     }
-  }, [groupId, buddies]);
+  }, [groupId, buddies, buddiesOf]);
 
   useEffect(() => {
     void load();
@@ -189,9 +197,20 @@ export default function TopBuddiesCard({
     );
   }
 
-  // The ranking is the server's; this only removes people, so positions stay
-  // in the same order they were earned.
-  const ranked = restrictTo ? buddies.filter((b) => restrictTo.has(b.userId)) : buddies;
+  // A buddies board with nobody on it: say so, rather than showing an empty
+  // trophy card or the error above.
+  if (buddiesOf && buddies.length === 0) {
+    return (
+      <div className="mb-3 rounded-2xl border border-[#f4dcc8] bg-[#fff3e6] px-4 py-3 shadow-sm">
+        <p className="text-[15px] font-black text-[#5b3a21]">🏆 Top Buddies · yours</p>
+        <p className="mt-1 text-sm font-medium text-[#8a6a4e]">
+          None of your buddies have been active this week yet.
+        </p>
+      </div>
+    );
+  }
+
+  const ranked = buddies;
   const listed = ranked.slice(0, showAll ? TOP_100_LIMIT : EXPANDED_COUNT);
   const preview = ranked.slice(0, PREVIEW_COUNT);
 
@@ -208,7 +227,7 @@ export default function TopBuddiesCard({
       }}
     >
       <h2 id="top-buddies-heading" className="flex items-center gap-2 px-4 pt-3 text-[15px] font-black text-[#5b3a21]">
-        <span aria-hidden>🏆</span> {restrictTo ? "Top Buddies · yours" : "Top Buddies"}
+        <span aria-hidden>🏆</span> {buddiesOf ? "Top Buddies · yours" : "Top Buddies"}
       </h2>
 
       {expanded ? (

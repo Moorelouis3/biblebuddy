@@ -17,6 +17,21 @@ const PAGE_SIZE = 1000;
  * wants with ?limit=; this only decides how deep the cached board goes.
  */
 const BOARD_SIZE = 100;
+
+/**
+ * How deep the CACHED ranking goes, as opposed to how much is returned.
+ *
+ * The board shown is the top 100, and that was all this cached - which made a
+ * buddies-only board impossible: someone with five buddies would almost never
+ * have one of them inside the global top 100, so filtering the board left it
+ * empty (Louis, 2026-10-25, asking for a real one).
+ *
+ * The expensive half is gathering a week of activity, and that happens either
+ * way. Keeping more of the result costs memory, not queries. Entries with no
+ * activity are dropped before this, so in practice it is the active members
+ * of the group rather than all seven thousand.
+ */
+const CACHED_BOARD_DEPTH = 5000;
 const LEADERBOARD_CACHE_MS = 10 * 60 * 1000;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const LOUIS_EMAIL = "moorelouis3@gmail.com";
@@ -307,6 +322,8 @@ function buildLeaderboard(options: {
   groupLikes: GroupLikeRow[];
   scope: "week" | "allTime";
   excludedUserIds?: Set<string>;
+  /** How many ranked rows to keep. Defaults to the visible board size. */
+  depth?: number;
 }) {
   const sinceIso = getWindowStart(options.scope);
   const endIso = options.scope === "week" ? getWeeklyBoardWindow().end : null;
@@ -486,7 +503,7 @@ function buildLeaderboard(options: {
     })
     .filter((buddy) => buddy.score > 0 || buddy.actions > 0 || buddy.appXp > 0)
     .sort((a, b) => b.score - a.score || b.actions - a.actions || (b.scoreBreakdown?.community || 0) - (a.scoreBreakdown?.community || 0) || (b.currentLevel || 0) - (a.currentLevel || 0))
-    .slice(0, BOARD_SIZE)
+    .slice(0, options.depth ?? BOARD_SIZE)
     .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
 }
 
@@ -667,6 +684,9 @@ export async function GET(
         groupLikes: likeRows,
         scope: "week",
         excludedUserIds,
+        // Cache deeper than the board shown, so a buddies-only view has
+        // people to find. See CACHED_BOARD_DEPTH.
+        depth: CACHED_BOARD_DEPTH,
       });
       leaderboardCache = {
         expiresAt: Date.now() + LEADERBOARD_CACHE_MS,
@@ -716,11 +736,44 @@ export async function GET(
       };
     });
 
-    const visibleBuddies = (weeklyBuddies || []).slice(0, limit);
+    /**
+     * ?buddiesOf=<userId> narrows the board to that person's buddies.
+     *
+     * Same ranking, same week, same scoring - only fewer people in it, and
+     * renumbered 1..n so it reads as its own leaderboard rather than a board
+     * with gaps where everybody else used to be.
+     *
+     * It filters the cached ranking instead of computing a second one, which
+     * is why CACHED_BOARD_DEPTH matters: with only the visible top 100 kept,
+     * anyone with a handful of buddies would get an empty board.
+     */
+    const buddiesOf = url.searchParams.get("buddiesOf");
+    let ranked = weeklyBuddies || [];
+
+    if (buddiesOf) {
+      const buddyIds = new Set<string>();
+      for (let from = 0; from < 20_000; from += 1000) {
+        const { data } = await supabaseAdmin
+          .from("buddies")
+          .select("user_id_1, user_id_2")
+          .or(`user_id_1.eq.${buddiesOf},user_id_2.eq.${buddiesOf}`)
+          .range(from, from + 999);
+        if (!data || data.length === 0) break;
+        for (const row of data) {
+          buddyIds.add(row.user_id_1 === buddiesOf ? row.user_id_2 : row.user_id_1);
+        }
+        if (data.length < 1000) break;
+      }
+      ranked = ranked
+        .filter((buddy) => buddyIds.has(buddy.userId))
+        .map((buddy, index) => ({ ...buddy, rank: index + 1 }));
+    }
+
+    const visibleBuddies = ranked.slice(0, limit);
     return NextResponse.json({
       buddies: visibleBuddies,
       weeklyBuddies: visibleBuddies,
-      boardSize: (weeklyBuddies || []).length,
+      boardSize: ranked.length,
       allTimeBuddies: [],
       source: useFastMode ? "fast" : "full",
       cachedUntil: leaderboardCache?.expiresAt || null,
