@@ -64,6 +64,24 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ ok: true, idle: true, reason: "SES is not configured" });
   }
 
+  /**
+   * NOTHING SENDS UNTIL LOUIS ARMS IT.
+   *
+   * Same gate as the Friday series: this route only sends when an
+   * email_campaigns row named `study-nudge` exists AND says 'sending'. No
+   * row, or a paused one, means a dry run in all but name - it still reports
+   * who it WOULD reach, which is the useful half while deciding.
+   *
+   * It is a behaviour trigger, so it fires on its own the moment it is
+   * deployed. Without this, shipping it would be the same as approving it.
+   */
+  const { data: campaign } = await db
+    .from("email_campaigns")
+    .select("campaign_id, status")
+    .eq("campaign_id", CAMPAIGN_ID)
+    .maybeSingle();
+  const armed = campaign?.status === "sending";
+
   const now = Date.now();
   const windowStart = new Date(now - MAX_QUIET_DAYS * 86_400_000).toISOString();
   const windowEnd = new Date(now - MIN_QUIET_DAYS * 86_400_000).toISOString();
@@ -132,10 +150,12 @@ export async function GET(request: NextRequest) {
     .filter(([userId]) => !sentAlready.has(reachable.get(userId)!.email.toLowerCase()))
     .slice(0, MAX_PER_RUN);
 
-  if (dryRun) {
+  if (dryRun || !armed) {
     return NextResponse.json({
       ok: true,
       dryRun: true,
+      armed,
+      reason: armed ? undefined : `no armed '${CAMPAIGN_ID}' campaign row - reporting only, nothing sent`,
       considered: latest.size,
       stalled: stalled.length,
       reachable: queue.length,
