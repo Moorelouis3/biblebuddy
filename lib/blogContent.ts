@@ -110,7 +110,6 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
-<<<<<<< Updated upstream
     slug: "leviticus-26-explained",
     title: "Leviticus 26 Explained: The Covenant's Blessings and Curses",
     description:
@@ -125,7 +124,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       title: "Leviticus 26 Explained 📖",
       content:
         "Rain in due season, or heaven turned to iron.\nPeace in the land, or a sword that still finds you.\n\n📌 Every blessing and curse here hangs on one word: if.\n\n📖 The curses build in five stages, not one sudden blow.\n📖 \"Seven times more\" shows up four separate times.\n📖 Verse 29's famine is recorded actually happening, twice.\n\nNew article on:\n🟢 why **rain itself** depended on Israel's obedience\n🟢 the **five stages** of discipline, each giving one more chance\n🟢 how **exile** still couldn't break God's covenant for good\n\nDid you know this chapter's worst curse is recorded as real history? 🙏",
-=======
+    },
+  },
+  {
     slug: "how-to-read-the-bible-in-a-year-without-quitting",
     title: "How to Read the Bible in a Year Without Quitting in February",
     description:
@@ -191,7 +192,6 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       title: "Gratitude When The Year Has Been Hard 🙏",
       content:
         "Somebody is going to ask what you are thankful for.\nAnd this year the honest answer is heavy.\n\n📌 The verse says IN every thing give thanks. Not FOR every thing.\n\n📖 Paul wrote his most joyful letter from a prison cell.\n📖 Psalm 13 accuses God of forgetting, then sings six verses later.\n📖 Habakkuk lists an empty farm, then says one word: yet.\n\nNew article on:\n🟢 why **counting your blessings** is not what Scripture asks\n🟢 the **complaint first** pattern every thankful person in the Bible used\n🟢 what to say at the table when the year **actually hurt**\n\nWhat is one true thing you can thank God for today? 🙏",
->>>>>>> Stashed changes
     },
   },
   {
