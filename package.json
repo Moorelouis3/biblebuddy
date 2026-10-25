@@ -45,6 +45,7 @@
     "start": "next start",
     "lint": "eslint",
     "pending": "node scripts/pending-deploy.mjs",
+    "links": "node scripts/check-internal-links.mjs",
     "signups": "node scripts/signup-report.mjs",
     "campaign": "node scripts/campaign.mjs",
     "backfill-subscribers": "node scripts/backfill-subscribers.mjs"
