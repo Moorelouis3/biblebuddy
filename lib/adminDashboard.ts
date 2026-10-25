@@ -922,6 +922,89 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     next: (chapterProgress as { nextChapter?: string }).nextChapter || null,
   };
 
+  /**
+   * Every email, sent and not yet sent, in one list (Louis, 2026-10-25:
+   * "I should see future and past emails and their stats in rows").
+   *
+   * Two sources, because they answer different halves and do not share a
+   * key: email_campaign_stats records what WENT OUT (and has no campaign_id,
+   * only the subject as `name`), while email_campaigns holds what EXISTS and
+   * what is armed. Past rows are matched back to a campaign by subject where
+   * one matches, which is what lets a row open its own editor; a row that
+   * cannot be matched still shows its numbers.
+   *
+   * Cron-driven series - the Tuesday newsletter and the twelve Friday
+   * lessons - have no scheduled_for by design, since the cron decides who is
+   * due rather than a column. They are listed as armed rather than given a
+   * false date.
+   */
+  const [scheduleCampaignsRes, scheduleStatsRes] = await Promise.all([
+    admin
+      .from("email_campaigns")
+      .select("campaign_id, subject, status, kind, scheduled_for, created_at")
+      .order("created_at", { ascending: false })
+      .limit(60),
+    admin
+      .from("email_campaign_stats")
+      .select("name, sent_at, recipients, opens, clicks, site_visits")
+      .not("sent_at", "is", null)
+      .order("sent_at", { ascending: false })
+      .limit(40),
+  ]);
+
+  type ScheduleRow = {
+    campaignId: string | null;
+    subject: string;
+    kind: string | null;
+    /** sent | armed | scheduled | paused | draft */
+    state: string;
+    when: string | null;
+    recipients: number | null;
+    opens: number | null;
+    clicks: number | null;
+    visits: number | null;
+  };
+
+  const campaignRows = (scheduleCampaignsRes.data || []) as Array<{
+    campaign_id: string; subject: string | null; status: string | null; kind: string | null; scheduled_for: string | null;
+  }>;
+  const bySubject = new Map(campaignRows.filter((c) => c.subject).map((c) => [c.subject as string, c]));
+
+  const sentRows: ScheduleRow[] = ((scheduleStatsRes.data || []) as Array<{
+    name: string | null; sent_at: string; recipients: number | null; opens: number | null; clicks: number | null; site_visits: number | null;
+  }>).map((s) => ({
+    campaignId: (s.name && bySubject.get(s.name)?.campaign_id) || null,
+    subject: s.name || "(no subject)",
+    kind: (s.name && bySubject.get(s.name)?.kind) || null,
+    state: "sent",
+    when: s.sent_at,
+    recipients: s.recipients,
+    opens: s.opens,
+    clicks: s.clicks,
+    visits: s.site_visits,
+  }));
+
+  const sentSubjects = new Set(sentRows.map((r) => r.subject));
+  const upcomingRows: ScheduleRow[] = campaignRows
+    .filter((c) => c.status !== "done" && !sentSubjects.has(c.subject || ""))
+    .map((c) => ({
+      campaignId: c.campaign_id,
+      subject: c.subject || c.campaign_id,
+      kind: c.kind,
+      state: c.scheduled_for ? "scheduled" : c.status === "sending" ? "armed" : c.status || "draft",
+      when: c.scheduled_for,
+      recipients: null,
+      opens: null,
+      clicks: null,
+      visits: null,
+    }));
+
+  const emailSchedule = {
+    // Soonest first for things still to come, newest first for things sent.
+    upcoming: upcomingRows.sort((a, b) => (a.when || "9999").localeCompare(b.when || "9999")),
+    sent: sentRows,
+  };
+
   return {
     window,
     range: { start: current.start.toISOString(), end: current.end.toISOString() },
@@ -985,6 +1068,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     },
     popularActivities,
     email,
+    emailSchedule,
     emails,
     community,
     studyGuides,

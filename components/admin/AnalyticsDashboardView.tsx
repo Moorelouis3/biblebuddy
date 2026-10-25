@@ -271,6 +271,92 @@ function SectionSummary({ icon, title, line }: { icon: string; title: string; li
   );
 }
 
+/**
+ * Every email in one table: what is queued, what went out, how it did.
+ *
+ * Deliberately read-plus-one-click. Opening a row goes to
+ * /admin/campaigns?open=<id>, which already holds the full email, the
+ * preview and the subject and schedule editor. A second editor here would be
+ * a second place for the two to disagree.
+ *
+ * A sent row has no campaign id when its subject no longer matches a
+ * campaign row - renamed, or sent from somewhere else - so it still shows
+ * its numbers but is not clickable, rather than linking somewhere wrong.
+ */
+function EmailScheduleTable({
+  schedule,
+}: {
+  schedule?: DashboardData["emailSchedule"];
+}) {
+  if (!schedule || (!schedule.upcoming.length && !schedule.sent.length)) {
+    return <p className="text-sm font-semibold text-[#94a3b8]">No campaigns yet.</p>;
+  }
+
+  const when = (iso: string | null) =>
+    iso ? new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "—";
+
+  const STATE_TONE: Record<string, string> = {
+    sent: "bg-[#e7f7ee] text-[#1f6b45]",
+    armed: "bg-[#eaf1ff] text-[#2f4fa8]",
+    scheduled: "bg-[#fff0e3] text-[#9a5a00]",
+    paused: "bg-[#f1f5f9] text-[#64748b]",
+    draft: "bg-[#f1f5f9] text-[#64748b]",
+  };
+
+  const Row = ({ r }: { r: DashboardData["emailSchedule"]["sent"][number] }) => {
+    const inner = (
+      <>
+        <span className="min-w-0 flex-1 truncate font-bold text-[#0f172a]">{r.subject}</span>
+        <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-black ${STATE_TONE[r.state] ?? STATE_TONE.draft}`}>
+          {r.state}
+        </span>
+        <span className="w-14 shrink-0 text-right text-[11px] font-bold text-[#64748b]">{when(r.when)}</span>
+        <span className="w-28 shrink-0 text-right text-[11px] font-semibold text-[#94a3b8]">
+          {r.state === "sent"
+            ? `${(r.recipients ?? 0).toLocaleString()} · ${r.clicks ?? 0} clicks`
+            : "not sent yet"}
+        </span>
+      </>
+    );
+
+    const className =
+      "flex items-center gap-3 border-b border-[#eef2f7] py-2.5 text-sm last:border-b-0";
+
+    return r.campaignId ? (
+      <a
+        href={`/admin/campaigns?open=${encodeURIComponent(r.campaignId)}`}
+        className={`${className} -mx-2 rounded-lg px-2 transition hover:bg-[#f8fafc]`}
+      >
+        {inner}
+      </a>
+    ) : (
+      <div className={className}>{inner}</div>
+    );
+  };
+
+  return (
+    <div className="mt-1">
+      {schedule.upcoming.length ? (
+        <>
+          <p className="mb-1 text-[11px] font-black uppercase tracking-wide text-[#94a3b8]">Coming up</p>
+          {schedule.upcoming.map((r) => (
+            <Row key={`u-${r.campaignId ?? r.subject}`} r={r} />
+          ))}
+        </>
+      ) : null}
+
+      {schedule.sent.length ? (
+        <>
+          <p className="mb-1 mt-4 text-[11px] font-black uppercase tracking-wide text-[#94a3b8]">Already sent</p>
+          {schedule.sent.map((r) => (
+            <Row key={`s-${r.subject}-${r.when}`} r={r} />
+          ))}
+        </>
+      ) : null}
+    </div>
+  );
+}
+
 export default function AnalyticsDashboardView({
   data: d,
   windowKey,
@@ -769,6 +855,27 @@ export default function AnalyticsDashboardView({
 
             {tab === "email" ? (
               <div className="grid gap-5">
+                {/* Every email, scheduled and sent, in rows you can open
+                    (Louis, 2026-10-25). The point is set-and-forget: write
+                    them now, see them queued here, click one to read or edit
+                    it. Editing lives on /admin/campaigns, which already has
+                    the preview and the editor - this links into it rather
+                    than growing a second one that can disagree. */}
+                <Section
+                  summary={
+                    <SectionSummary
+                      icon="🗓"
+                      title="Scheduled & sent"
+                      line={`${d.emailSchedule?.upcoming.length ?? 0} queued · ${d.emailSchedule?.sent.length ?? 0} sent`}
+                    />
+                  }
+                >
+                  <div className="hidden lg:block">
+                    <CardTitle icon="🗓">Scheduled &amp; sent</CardTitle>
+                  </div>
+                  <EmailScheduleTable schedule={d.emailSchedule} />
+                </Section>
+
                 <Section
                   summary={<SectionSummary icon="✉️" title="Email" line={d.email ? `${fmt(d.email.opens)} opens · ${fmt(d.email.clicks)} clicks` : "No email recorded"} />}
                 >

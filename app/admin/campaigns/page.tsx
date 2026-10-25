@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import {
   ENGAGEMENT_GROUPS,
@@ -144,6 +144,27 @@ export default function CampaignsPage() {
   useEffect(() => {
     void load();
   }, [load]);
+
+  /**
+   * ?open=<campaignId> opens that email straight away.
+   *
+   * So a row in the Email tab of the analytics dashboard lands on the actual
+   * email rather than on a list to search through (Louis, 2026-10-25: "click
+   * on the row to open up more info and see the full email also and edit
+   * it"). Runs once: re-opening the modal every render would make it
+   * impossible to close.
+   */
+  const deepLinked = useRef(false);
+  useEffect(() => {
+    if (deepLinked.current) return;
+    const wanted = new URLSearchParams(window.location.search).get("open");
+    if (!wanted) return;
+    deepLinked.current = true;
+    void openPreview(wanted);
+    // openPreview is stable for this purpose; re-running on identity changes
+    // would reopen a modal the reader has just closed.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const anyModalOpen = Boolean(preview || groupView);
   useEffect(() => {
