@@ -286,11 +286,21 @@ Play Console opens on "Finish setting up your developer account" and will not
 let an app be created until three things clear. All three are Louis's, and the
 second is the one to look at first:
 
+**State on 2026-10-25, evening:** the device check is **done** - Louis borrowed
+Jessica's Android and cleared it in five minutes, and it has dropped off the
+Console's list. Identity documents are uploaded and with Google. The phone
+number cannot be verified until those documents are approved, so **nothing is
+waiting on Louis or an agent right now** - clicking Create app still answers
+"Complete account verifications to create apps", and it will until Google
+finishes. Checked by trying it, not assumed.
+
 1. **Verify your identity** - upload an official document. Google says the
    review "may take a few days", so start it before anything else.
-2. **Verify that you have access to an Android device** - sign in to the Play
-   Console *mobile app* on an Android phone. **Louis does not own one**, which
-   makes this the hard blocker rather than identity.
+2. ~~**Verify that you have access to an Android device**~~ - **cleared
+   2026-10-25.** Kept below because the next person to read this will want to
+   know what it took. Sign in to the Play Console *mobile app* on an Android
+   phone. **Louis does not own one**, which made this the hard blocker rather
+   than identity.
 
    Checked on 2026-10-25: Google's own page says a **real Android mobile
    device**, required of new personal accounts before they can publish, done
