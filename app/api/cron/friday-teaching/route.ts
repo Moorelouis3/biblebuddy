@@ -7,7 +7,6 @@ import {
   easternNow,
   firstFridayFor,
   orderedLessons,
-  isSkippedFriday,
 } from "@/lib/email/fridayTeachingSeries";
 
 export const runtime = "nodejs";
@@ -98,28 +97,6 @@ export async function GET(request: NextRequest) {
       { error: "forcing a live send requires CRON_SECRET; add dry=1 to simulate" },
       { status: 403 },
     );
-  }
-
-  /**
-   * Quiet on the holiday Fridays, even when armed.
-   *
-   * Checked before the window so a dry run on one of those dates says so
-   * plainly rather than looking like a broken schedule. Skipping costs
-   * nobody a lesson: where a reader is up to comes from what they have been
-   * sent, not from the calendar, so the series just shifts a week.
-   *
-   * `force` does NOT override this - forcing is for testing the send path,
-   * and sending the series on Christmas morning by accident is exactly the
-   * thing this exists to prevent.
-   */
-  if (isSkippedFriday(now.date)) {
-    return NextResponse.json({
-      ok: true,
-      idle: true,
-      skippedHoliday: now.date,
-      reason: `the series is deliberately quiet on ${now.date}; everyone's next lesson moves to the following Friday`,
-      eastern: now,
-    });
   }
 
   const inWindow =

@@ -34,30 +34,26 @@ export const SERIES_TIMEZONE = "America/New_York";
 export const SERIES_SEND_HOUR = 8;
 
 /**
- * Fridays the series stays quiet (Louis, 2026-10-25: "make sure they fit
- * around holidays").
+ * The series never skips a Friday, holidays included (Louis, 2026-10-25).
  *
- * Nobody loses a lesson by skipping. Where a reader is up to is derived from
- * what they have already been sent, not from the date, so a skipped Friday
- * simply moves their next lesson to the following week and the whole series
- * shifts with it.
+ * A skip list briefly existed here and was wrong twice over. Christmas Day
+ * and New Year's Day both fall on a Friday this run, and for a Bible
+ * teaching series those are the best Fridays of the year to be in somebody's
+ * inbox, not the worst. And "fit around holidays" never meant avoid them: a
+ * Thanksgiving email belongs on the Friday BEFORE Thanksgiving, which is a
+ * question of what a lesson SAYS, not whether it sends.
  *
- * Two of these land ON the Friday - Christmas Day and New Year's Day 2027 -
- * and the third is the day after US Thanksgiving, when every retailer alive
- * is in the inbox and a teaching email is wallpaper.
+ * The Fridays worth writing to, for whenever the content is swapped:
  *
- * Dates are the local Friday in SERIES_TIMEZONE, written as YYYY-MM-DD.
+ *   2026-11-20  the Friday before US Thanksgiving (26 Nov)
+ *   2026-12-18  the last Friday before Christmas
+ *   2026-12-25  Christmas Day itself
+ *   2027-01-01  New Year's Day
+ *
+ * Reordering is safe: a send is recorded against the lesson's stable id, not
+ * its position, so moving a themed lesson into one of those slots cannot
+ * resend anything anyone already has.
  */
-export const SERIES_SKIP_FRIDAYS: ReadonlyArray<string> = [
-  "2026-11-27", // day after US Thanksgiving
-  "2026-12-25", // Christmas Day
-  "2027-01-01", // New Year's Day
-];
-
-/** Whether the series should stay silent on this local Friday. */
-export function isSkippedFriday(localDate: string): boolean {
-  return SERIES_SKIP_FRIDAYS.includes(localDate);
-}
 
 export function lessonById(id: string): FridayLesson | undefined {
   return FRIDAY_LESSONS.find((l) => l.id === id);
