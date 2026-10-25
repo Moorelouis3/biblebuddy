@@ -887,10 +887,41 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const completedDays = isChapterJourneyStudy
     ? Array.from(chapterTaskProgress.values()).filter((p) => p.completed >= p.total).length
     : Array.from(progress.values()).filter((p) => p.is_completed).length;
+
+  /**
+   * HOW MUCH OF THE STUDY IS DONE, COUNTED IN TASKS (Louis, 2026-10-25).
+   *
+   * "I don't like that she can skip the trivia and the discussion. She
+   * should be able to, but not get forced. But if they only do half of the
+   * events then they should only get 50% of the devotional done. You can
+   * finish it but you didn't do everything and it should show that."
+   *
+   * So nothing is compulsory - isDayUnlocked no longer gates on the extras -
+   * and the bar tells the truth instead. The percentage is now every task
+   * ticked over every task there is, so reading all 31 days and playing no
+   * trivia reads as half a study rather than a whole one, and the two
+   * numbers answer different questions: how far through you are, and how
+   * much of it you actually did.
+   *
+   * Only the modern study plans, which are the ones with optional extras.
+   * The day counter beside it becomes days you have BEEN INTO, because
+   * "8/31" for somebody who has read 24 days is the misleading half of the
+   * old pair.
+   */
+  const modernTaskTotal = getStudyPlanTaskTotal(devotional?.title);
+  const tasksDone = isModernStudyPlanTitle(devotional?.title)
+    ? Array.from(chapterTaskProgress.values()).reduce((sum, p) => sum + p.completed, 0)
+    : 0;
+  const daysTouched = isModernStudyPlanTitle(devotional?.title)
+    ? Array.from(chapterTaskProgress.values()).filter((p) => p.completed > 0).length
+    : 0;
+
   const progressPercent = devotional
-    ? isChapterJourneyStudy
-      ? (completedDays / Math.max(devotional.total_days, 1)) * 100
-      : (completedDays / devotional.total_days) * 100
+    ? isModernStudyPlanTitle(devotional.title)
+      ? (tasksDone / Math.max(devotional.total_days * modernTaskTotal, 1)) * 100
+      : isChapterJourneyStudy
+        ? (completedDays / Math.max(devotional.total_days, 1)) * 100
+        : (completedDays / devotional.total_days) * 100
     : 0;
   const previewDescription = devotional
     ? getPreviewDescription(devotional.title, devotional.description)
@@ -1968,7 +1999,10 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                 </div>
                 <div className="mt-2 flex items-center justify-between text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">
                   <span>{Math.round(progressPercent)}% complete</span>
-                  <span>{completedDays}/{totalUnits} {isChapterJourneyStudy ? (isModernStudyPlan ? "days" : "chapters") : "sections"}</span>
+                  <span>
+                    {isModernStudyPlan ? daysTouched : completedDays}/{totalUnits}{" "}
+                    {isChapterJourneyStudy ? (isModernStudyPlan ? "days" : "chapters") : "sections"}
+                  </span>
                 </div>
               </div>
             </div>
@@ -2124,7 +2158,9 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Progress Map</p>
               <h2 className="mt-1 text-xl font-black text-[var(--bb-text-primary,#111827)]">{isModernStudyPlan ? "Days" : isChapterJourneyStudy ? "Chapters" : "Sections"}</h2>
             </div>
-            <p className="text-xs font-black text-[var(--bb-text-muted,#6b7280)]">{completedDays}/{totalUnits} done</p>
+            <p className="text-xs font-black text-[var(--bb-text-muted,#6b7280)]">
+              {isModernStudyPlan ? daysTouched : completedDays}/{totalUnits} done
+            </p>
           </div>
           <div className="grid gap-3">
             {orderedDays.map((day) => {
