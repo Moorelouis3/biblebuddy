@@ -380,11 +380,14 @@ export default function HomeScreen() {
       />
 
       {/* Your Notes sat here for part of 2026-10-25 and was pulled the same
-          day: the list of recent notes rendered their stored HTML as plain
-          text, so the dashboard showed rows of "<h1><strong>..." to anyone who
-          had notes. The notes feature itself is untouched and /notes still
-          works. If this card comes back, the previews have to strip the markup
-          before anything else. */}
+          day. Louis: the dashboard is prime real estate and the card made it
+          ugly. It did not belong here, and that is the reason - not the
+          separate bug where the previews printed their stored HTML as text.
+          Fixing that markup would not earn the space back.
+
+          So do not re-mount this on the dashboard. The notes feature, the
+          table and /notes are all untouched; if notes need a way in, find it
+          somewhere that is not the first screen everybody opens. */}
 
       {/* Recommended For You - above Look It Up since 2026-10-17 (Louis).
           Today's reading comes first, then something to read next; looking a
