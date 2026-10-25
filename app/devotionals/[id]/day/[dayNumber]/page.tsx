@@ -243,7 +243,7 @@ function CollapsibleTask({
   children: React.ReactNode;
 }) {
   return (
-    <section className={`overflow-hidden rounded-xl border bg-white shadow-sm ${done ? "border-emerald-300 shadow-[0_0_0_3px_rgba(16,185,129,0.14),0_10px_24px_rgba(16,185,129,0.12)]" : "border-gray-200"}`}>
+    <section id={`task-${taskNumber}`} className={`overflow-hidden rounded-xl border bg-white shadow-sm ${done ? "border-emerald-300 shadow-[0_0_0_3px_rgba(16,185,129,0.14),0_10px_24px_rgba(16,185,129,0.12)]" : "border-gray-200"}`}>
       <button
         type="button"
         onClick={onToggle}
@@ -291,6 +291,28 @@ export default function ProverbsStudyDayPage() {
   const [eventDayPost, setEventDayPost] = useState<EventDayPost | null>(null);
   const [loading, setLoading] = useState(true);
   const [openTask, setOpenTask] = useState<number | null>(null);
+  /**
+   * ?task=discussion opens that task and scrolls to it (2026-10-25).
+   *
+   * The Today card on the dashboard says "6 people answered today" and links
+   * here. Landing on a page with all four tasks shut, and having to work out
+   * which one holds the discussion, is the extra step that card exists to
+   * remove. Names rather than numbers so the link survives a reordering.
+   */
+  const taskAnchorApplied = useRef(false);
+  useEffect(() => {
+    if (loading || taskAnchorApplied.current) return;
+    const raw = (new URLSearchParams(window.location.search).get("task") || "").toLowerCase();
+    const byName: Record<string, number> = { intro: 1, reading: 2, trivia: 3, discussion: 4 };
+    const target = byName[raw] ?? (/^[1-4]$/.test(raw) ? Number(raw) : null);
+    if (!target) return;
+    taskAnchorApplied.current = true;
+    setOpenTask(target);
+    // After the open animation has somewhere to scroll to.
+    window.setTimeout(() => {
+      document.getElementById(`task-${target}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 250);
+  }, [loading]);
   const completionWatcherReadyRef = useRef(false);
   const previousDayCompleteRef = useRef(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);

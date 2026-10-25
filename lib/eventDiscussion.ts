@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getEventDayPosts, type EventDayPost } from "./communityEventDays";
+import { COMMUNITY_EVENTS } from "./communityEvents";
 
 // Devotional <-> community event wiring (2026-09-22). When a devotional runs as
 // a community event, each day's discussion is the replies on that day's post
@@ -9,9 +10,19 @@ import { getEventDayPosts, type EventDayPost } from "./communityEventDays";
 
 export const WISDOM_OF_PROVERBS_DEVOTIONAL_ID = "c0ca300a-c0e9-47b8-84c5-99aca743a203";
 
-const DEVOTIONAL_EVENT_SLUGS: Record<string, string> = {
-  [WISDOM_OF_PROVERBS_DEVOTIONAL_ID]: "wisdom-of-proverbs",
-};
+/**
+ * Devotional id -> event slug, read off COMMUNITY_EVENTS.
+ *
+ * This was a hand-written object holding Proverbs alone, which meant the day
+ * page asked for an event slug, got null, and quietly fell back to
+ * article_comments - so the second community study would have opened on
+ * 1 November with no group discussion at all, and every reader answering into
+ * a thread nobody else could see. Deriving it means adding an event to
+ * lib/communityEvents.ts is the only step.
+ */
+const DEVOTIONAL_EVENT_SLUGS: Record<string, string> = Object.fromEntries(
+  COMMUNITY_EVENTS.map((event) => [event.devotionalId, event.slug]),
+);
 
 /** The community event slug a devotional belongs to, or null. */
 export function eventSlugForDevotional(devotionalId: string | null | undefined): string | null {
@@ -96,4 +107,66 @@ export async function getEventDayRepliers(
     .order("created_at", { ascending: false })
     .limit(1000);
   return (data || []) as Array<{ user_id: string; created_at: string | null }>;
+}
+
+export type DayAnswerFace = {
+  user_id: string;
+  display_name: string;
+  profile_image_url: string | null;
+};
+
+/**
+ * Who answered a day's question, for the social proof on the Today card.
+ *
+ * Counts DISTINCT people who replied directly to the day post - a reply to
+ * someone else's answer is conversation, not an answer, and counting it would
+ * let one talkative thread read as a crowd. Faces come back newest first, so
+ * the card shows who turned up most recently.
+ *
+ * Never throws: the card is decoration on top of a working button, so a
+ * failure here returns zero rather than taking the card down.
+ */
+export async function getEventDayAnswers(
+  client: SupabaseClient,
+  groupPostId: string,
+  faceLimit = 5,
+): Promise<{ count: number; faces: DayAnswerFace[] }> {
+  let repliers: Array<{ user_id: string; created_at: string | null }>;
+  try {
+    repliers = await getEventDayRepliers(client, groupPostId);
+  } catch {
+    return { count: 0, faces: [] };
+  }
+
+  const order: string[] = [];
+  for (const row of repliers) {
+    if (!row.user_id || order.includes(row.user_id)) continue;
+    order.push(row.user_id);
+  }
+  if (order.length === 0) return { count: 0, faces: [] };
+
+  const wanted = order.slice(0, faceLimit);
+  let profiles: Array<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }> = [];
+  try {
+    const { data } = await client
+      .from("profile_stats")
+      .select("user_id, display_name, username, profile_image_url")
+      .in("user_id", wanted);
+    profiles = (data || []) as typeof profiles;
+  } catch {
+    /* names are optional; the count is the point */
+  }
+  const byId = new Map(profiles.map((profile) => [profile.user_id, profile]));
+
+  return {
+    count: order.length,
+    faces: wanted.map((userId) => {
+      const profile = byId.get(userId);
+      return {
+        user_id: userId,
+        display_name: profile?.display_name || profile?.username || "Buddy",
+        profile_image_url: profile?.profile_image_url || null,
+      };
+    }),
+  };
 }

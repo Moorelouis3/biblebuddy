@@ -135,6 +135,10 @@
     {
       "path": "/api/cron/community-event-daily",
       "schedule": "0 1 * * *"
+    },
+    {
+      "path": "/api/cron/community-study-start",
+      "schedule": "0,30 8 * * *"
     }
   ],
   "functions": {
