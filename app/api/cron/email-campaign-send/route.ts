@@ -94,7 +94,22 @@ export async function GET(request: NextRequest) {
   // Excluding them by id rather than by a far-future date: a date is a value
   // somebody can clear by accident from the dashboard, whereas this cannot be
   // undone by editing a row.
-  const foreignIds = FRIDAY_LESSONS.map((lesson) => lesson.id);
+  /**
+   * The behaviour triggers belong to their own crons too (2026-10-25).
+   *
+   * Their rows are armed with no scheduled_for - the trigger decides who is
+   * due from somebody's own behaviour, not from a column - which to the query
+   * below looks exactly like "armed, undated, send it now". Arming the study
+   * nudge would have posted it to the entire list in one run instead of to
+   * the twenty-odd people who actually stalled.
+   *
+   * They are also kind 'transactional', which this query already filters out,
+   * so this is the second lock rather than the only one. Excluding by id is
+   * what survives somebody changing a row's kind from the dashboard.
+   */
+  const TRIGGER_IDS = ["study-nudge", "streak-at-risk", "finished-devotional"];
+
+  const foreignIds = [...FRIDAY_LESSONS.map((lesson) => lesson.id), ...TRIGGER_IDS];
 
   const { data, error } = await db
     .from("email_campaigns")
