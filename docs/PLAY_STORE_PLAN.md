@@ -219,7 +219,7 @@ currently works.
 
 | | What | Who | Blocking? |
 |---|---|---|---|
-| **0** | Create the Play Console account, pay the $25, clear identity verification | Louis | Yes - nothing submits before this |
+| **0** | Create the Play Console account, pay the $25, clear identity verification | Louis | **in progress 2026-10-25** - see below |
 | **0b** | Start recruiting 12 testers | Louis | Yes - it is the long pole |
 | **1** | ~~Platform scaffold, icon, Linux Codemagic workflow, emulator screenshot step~~ **done 2026-10-25**, unrun | agent | No |
 | **2** | FCM sender + Firebase project + Android OAuth client; push and Google sign-in proven on a real phone | agent, ~1 day | No |
@@ -230,6 +230,52 @@ currently works.
 Phases 1 and 2 happen *while* phase 4's clock runs, if the testers are recruited
 early enough. That is the whole scheduling trick, and it is why recruiting comes
 before any code.
+
+## Account facts (signup, 2026-10-25)
+
+Filled in during the signup at `play.google.com/console/signup`. Everything
+below is answered and saved; the form is sitting on the last two steps.
+
+**This repository is public** (github.com/Moorelouis3/biblebuddy), so the
+addresses, the account email and the phone number are deliberately not written
+here. The full table lives in the agent memory note `play-console-account`,
+which is local.
+
+| | |
+|---|---|
+| Account type | **Yourself** (personal), not an organization |
+| Owning Google account | the usual one - **cannot be changed later** |
+| Developer name (public) | **Bible Buddy** |
+| Payments profile | the German one, so the account's country is **Germany (DE)** |
+| Public profile email | `support@mybiblebuddy.net`, verified by code |
+| Contact (private) | the usual Google account, verified through it |
+| Preferred language | English (United States) |
+| Apps in 12 months | 1 |
+| Earning money | **No** - keeps the full legal address off the public listing |
+| App categories | None of the above |
+| Other Play Console accounts | No |
+
+**Why personal and not an organization.** An organization account is exempt
+from the 12-tester rule, which is tempting - but it needs a D-U-N-S number for
+a registered business, that takes weeks to issue, and until the organization is
+verified Google treats the account as personal anyway. Louis said the twelve
+testers are gettable, so the personal account is the faster road.
+
+**Why the German payments profile.** Two were already on the Google account, a
+US one and a German one, and the German one is the one Google Play, Google
+Store and Google Pay already use. The profile fixes the developer account's
+country permanently and identity verification has to match it, so it has to be
+where Louis actually lives.
+
+**What is left, and it is only Louis:**
+
+1. The contact phone number, with `+` and country code.
+2. The Google Play Developer Distribution Agreement, on the Terms step.
+3. The USD 25 registration fee.
+
+Then identity verification (ID and address) runs separately and can take days.
+Nothing here can be done by an agent: the first is personal data, the second is
+a contract, the third is a payment.
 
 ## The testers
 
