@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { cardTint } from "../../lib/cardTints";
 import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
-import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
+import { COMMUNITY_EVENTS, getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
 import { BIBLE_YEAR_PLAN_HREF } from "../../lib/bibleYearProgress";
 import {
   BIBLE_YEAR_SHELF_COVER,
@@ -51,6 +51,17 @@ type ShelfBook = {
   isComplete: boolean;
   lastActivityAt: string | null;
   isCommunityToday: boolean;
+  /**
+   * The event page for a community study that has been announced but has not
+   * started, e.g. /events/beginning-of-everything through October.
+   *
+   * A dated study used to sit on the shelf as a dead "Coming soon" tile, which
+   * is the one moment somebody is actually interested and the card had nothing
+   * for them to do (Louis, 2026-10-25). When this is set the card takes a
+   * "Sign up" button instead, and the countdown moves under the cover where it
+   * still tells them when it starts.
+   */
+  signUpHref: string | null;
   /** Set only for a study the reader has not started that opens later. */
   startsLabel: string | null;
   /** The release date, so the countdown can be recomputed as the clock moves. */
@@ -66,6 +77,21 @@ type ShelfBook = {
 function countdownLabel(book: ShelfBook, now: number): string | null {
   if (!book.availableFrom) return book.startsLabel;
   return availability({ available_from: book.availableFrom } as LibraryStudy, false, new Date(now)).label;
+}
+
+/**
+ * The /events page for a study that has been announced and has not begun, or
+ * null.
+ *
+ * Deliberately looks at every community event rather than asking
+ * getActiveCommunityEvent: through October the active event is Proverbs, which
+ * is running, while the one somebody can actually sign up for is the next one.
+ * Both belong on the shelf and they are not the same study.
+ */
+function upcomingEventHref(devotionalId: string): string | null {
+  const event = COMMUNITY_EVENTS.find((e) => e.devotionalId === devotionalId);
+  if (!event) return null;
+  return getCommunityEventState(event).phase === "countdown" ? `/events/${event.slug}` : null;
 }
 
 export default function YourBookshelf({
@@ -167,6 +193,7 @@ export default function YourBookshelf({
           isComplete: p.isComplete,
           lastActivityAt: p.lastActivityAt,
           isCommunityToday: Boolean(event && s.id === event.devotionalId && communityDay),
+          signUpHref: started ? null : upcomingEventHref(s.id),
           startsLabel: availability(s, started).label,
           availableFrom: started ? null : s.available_from,
         };
@@ -185,6 +212,7 @@ export default function YourBookshelf({
         isComplete: planCompletedDays >= PLAN_TOTAL_DAYS,
         lastActivityAt: null,
         isCommunityToday: false,
+        signUpHref: null,
         startsLabel: null,
         availableFrom: null,
       };
@@ -197,6 +225,10 @@ export default function YourBookshelf({
       // Nothing started yet: the community study leads, then Bible in One Year.
       rest.sort((a, b) => {
         if (a.isCommunityToday !== b.isCommunityToday) return a.isCommunityToday ? -1 : 1;
+        // Next to the study of the month, not buried behind the back
+        // catalogue (Louis, 2026-10-25). The study running and the study
+        // opening are the two this shelf is actually about.
+        if (Boolean(a.signUpHref) !== Boolean(b.signUpHref)) return a.signUpHref ? -1 : 1;
         if ((a.key === "bible-in-one-year") !== (b.key === "bible-in-one-year")) {
           return a.key === "bible-in-one-year" ? -1 : 1;
         }
@@ -412,19 +444,26 @@ export default function YourBookshelf({
                       )}
                     </div>
 
+                    {/* A study that is announced but not open gets "Sign up"
+                        rather than a dead "Coming soon": the countdown is
+                        already printed above the button, so the button is free
+                        to do the one useful thing. Everything without an event
+                        behind it keeps the old disabled tile. */}
                     <button
                       type="button"
-                      disabled={Boolean(countdownLabel(book, now))}
-                      onClick={() => router.push(book.href)}
+                      disabled={Boolean(countdownLabel(book, now)) && !book.signUpHref}
+                      onClick={() => router.push(book.signUpHref || book.href)}
                       className={`mt-2.5 w-full rounded-full px-2 py-2 text-center text-xs font-black transition sm:text-[13px] ${
-                        countdownLabel(book, now)
-                          ? "cursor-default bg-[#f3ece0] text-[#a57d2c]"
-                          : isLead
-                            ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] hover:opacity-95"
-                            : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] hover:bg-[#dceeff]"
+                        book.signUpHref
+                          ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] hover:opacity-95"
+                          : countdownLabel(book, now)
+                            ? "cursor-default bg-[#f3ece0] text-[#a57d2c]"
+                            : isLead
+                              ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] hover:opacity-95"
+                              : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] hover:bg-[#dceeff]"
                       }`}
                     >
-                      {countdownLabel(book, now) ? "Coming soon" : primaryLabel}
+                      {book.signUpHref ? "Sign up →" : countdownLabel(book, now) ? "Coming soon" : primaryLabel}
                     </button>
                   </li>
                 );
