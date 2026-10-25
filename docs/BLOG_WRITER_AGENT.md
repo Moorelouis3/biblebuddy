@@ -248,7 +248,9 @@ from an agent session. Two reasons:
 2. The existing routine was created via the HTTP API, so agent sessions
    are refused when they try to update it.
 
-**Schedule:** `0 22 * * 0,2,4`
+**Schedule:** `0 22 * * 1,3,5`
+
+**Prompt to paste.** The live routine is `trig_01FTCssNQxWcsxiPXQZCkW6P`, it runs out of the content-buddy repo, and its stored prompt is the real one - this copy drifted from it between 2026-10-10 and 2026-10-25, which is how the [deploy] tag survived its own removal for a fortnight. If you change one, change both.
 
 **Prompt to paste:**
 
@@ -277,7 +279,7 @@ The steps, summarized (the doc is authoritative where they differ):
 
 7. Verify before committing: `npx tsc --noEmit` clean, every verse exact KJV, word count meets the length the entry calls for (about 1,000-1,600 focused and led by the subject, 3,000-3,500 standard, 4,500-5,000 pillar), and 4-6 internal links to other Bible Buddy posts woven into sentences through the body rather than clustered at the end. If tsc fails and you cannot fix it, do NOT commit broken code - log the block to MARCUS_HANDOFF.md, commit only that, and stop.
 
-8. Append a "(blog writer run)" entry to SESSION_LOG.md, then commit every changed file with the message 'Add blog article: <title> [deploy]'. The [deploy] tag is REQUIRED here - Vercel only builds tagged commits and these posts must be live the moment the run finishes. This is the documented exception to the usual no-[deploy] rule in CLAUDE.md. Push to origin main and CONFIRM the push succeeded before finishing.
+8. Append a "(blog writer run)" entry to SESSION_LOG.md, then commit every changed file with the message 'Add blog article: <title>'. Do NOT add a [deploy] tag - Louis removed that exception on 2026-10-10 after six builds in one day. The post goes live at the next scheduled deploy like everything else, and the run report should say so. Push to origin main and CONFIRM the push succeeded before finishing.
 
 Louis does NOT review these posts before they publish. The format spec is the agreed standard, so the verification in step 7 is what stands in for his review - do not skip any of it.
 
