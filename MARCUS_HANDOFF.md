@@ -944,3 +944,12 @@ been cleared. That run's check was simply wrong (full correction logged in
 data/bible-notes-usage-events.json, 2026-10-24T04:51:00Z entry). Re-flagging for real this time: the
 routine has now run 28 consecutive hours finding nothing to do, and still needs one of the three options
 above decided.
+
+## Chapter Blog Writer Agent: docs/CHAPTER_BLOG_WRITER_AGENT.md still says "PAUSED 2026-09-18"
+The doc's banner at the top says the routine is paused and tells any run that fires to write and
+commit nothing. That is stale: `data/chapter-blog/progress.json` shows `"paused": false`, unpaused
+by Louis on 2026-09-20 ("chapter articles match what people actually search and pin, so this is the
+production priority again"), and the library has been running normally since (now through Leviticus
+25). This run trusted the actual state file over the doc text and proceeded normally, but the doc's
+own banner should be updated or removed so a future run (or Louis skimming the doc) isn't told the
+routine is paused when it is not.

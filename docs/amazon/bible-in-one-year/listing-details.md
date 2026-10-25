@@ -23,7 +23,7 @@ Taken from the book's own title page, so it matches what is printed inside.
 | Field | Value |
 |---|---|
 | Interior | Black & white |
-| Paper | Cream |
+| Paper | **White** (confirmed by the hardcover upload) |
 | Trim | 8.25 x 11 in |
 | Bleed | No bleed |
 | Cover finish | Matte |
@@ -34,17 +34,55 @@ The trim and page count are measured from
 ever edited the page count changes, and both wraps then have to be rebuilt
 because the spine moves.
 
+**Paper is not a free choice here, because it sets the spine.** The other
+Bible Buddy books are cream; this one is white. The hardcover wrap's width
+leaves 1.473in for the spine plus both hinges, which only works on white
+(0.230in per hinge, against 0.174in on cream), and both uploads went through on
+white without KDP arguing. If the interior is ever reflowed, re-check this
+before redrawing either wrap.
+
+## Paperback wrap size
+
+Settled. The wrap KDP accepted is **17.763 x 11.250 in** on white paper - one
+page, artwork 5329 x 3375px, exactly 300 DPI. KDP's formula is width = bleed +
+trim + spine + trim + bleed, height = trim + both bleeds, with spine = page
+count x paper thickness.
+
+| Paper | Spine | Wrap size |
+|---|---|---|
+| **White** (0.002252in/page) - what was used | 1.013in | **17.763 x 11.250 in** |
+| Cream (0.0025in/page) | 1.125in | 17.875 x 11.250 in |
+
+Both assume 450 pages, 8.25 x 11in trim and 0.125in bleed on every edge. White
+was the right call: the hardcover upload confirmed it, and KDP took the
+paperback wrap at this size without complaint.
+
+A paperback has no board fold, so unlike the hardcover there is no 0.7085in of
+invisible edge - only the 0.125in bleed is trimmed off. Art can run much closer
+to the edge than on the case wrap.
+
+**One trap:** 8.25 x 11 is not in KDP's paperback trim list, only the
+hardcover's. Choose **Custom** and type width 8.25, height 11.
+
 ## Price
 
-| | US list price |
-|---|---|
-| Hardcover | **(not set — see upload-instructions.md)** |
-| Paperback | **(not set)** |
+| | US list price | Printing cost | Royalty (60%) |
+|---|---|---|---|
+| Hardcover | **$29.99** | $13.30 | $4.69 |
+| Paperback | **$19.99** | $8.65 | $3.34 |
 
-Deliberately blank. 450 pages is nearly double 21 Women's 239, so the printing
-cost is much higher and the old prices are no guide. Set the US price from
-KDP's own calculator once the interior is uploaded and it shows the print
-cost, then let KDP convert the other marketplaces.
+Hardcover set by Louis 2026-10-24; paperback set the same day at the house
+$19.99, matching every other Bible Buddy paperback. All four numbers were read
+off the KDP pricing screen, not estimated.
+
+Minimum list prices KDP enforced: $22.17 hardcover, $14.42 paperback. KDP
+converts the other marketplaces from the US price (paperback UK 14.94 GBP ->
+2.71 GBP, EU 17,84 EUR -> 2,75 EUR).
+
+Worth knowing before repeating these prices on other big books: 21 Women is 239
+pages and earns far more per copy at the same prices, because this book's print
+cost is nearly double. These prices work; the margin is just thinner than the
+rest of the shelf.
 
 ## Keywords
 
@@ -56,20 +94,19 @@ and subtitle, which Amazon indexes anyway.
 3. 365 day devotional for adults
 4. whole bible study guide genesis to revelation
 5. kjv scripture reading plan book
-6. christian daily devotional hardcover gift
+6. christian daily devotional hardcover gift  (on the paperback this slot reads "christian daily devotional paperback gift" instead)
 7. bible reading companion for small groups
 
 ## Categories
 
-Three placements, identical on both drafts:
+Three placements, identical on both formats. Checked live in the form, so trust
+these over the older guesses: there is **no "Guides" placement** under Bible
+Study & Reference, and there **is** a "Devotionals" placement under Christian
+Living (low in the left column, easy to miss behind the fold).
 
-1. Religion & Spirituality → Christian Books & Bibles → Bible Study & Reference → **Guides**
-2. Religion & Spirituality → Christian Books & Bibles → Bible Study & Reference → **General**
-3. Religion & Spirituality → Christian Books & Bibles → Christian Living → **Devotionals**
-
-If KDP has no **Guides** placement under Bible Study & Reference when you get
-there — it did not for 21 Women — take **General** and use the third slot for
-Christian Living → **Spiritual Growth** instead.
+1. Religion & Spirituality -> Christian Books & Bibles -> Bible Study & Reference -> **General**
+2. Religion & Spirituality -> Christian Books & Bibles -> Christian Living -> **Spiritual Growth**
+3. Religion & Spirituality -> Christian Books & Bibles -> Christian Living -> **Devotionals**
 
 ## Age range and adult content
 

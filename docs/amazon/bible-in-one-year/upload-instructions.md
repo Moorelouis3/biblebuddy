@@ -1,41 +1,39 @@
 # Publishing this — Bible in One Year
 
-> **NOT SUBMITTED. Two things block it, and both need Louis.** See *Blockers*
-> immediately below. Everything else is ready.
+> **Both formats were submitted to KDP on 2026-10-24 and are in review.**
+> Hardcover $29.99, paperback $19.99, linked on one detail page. Nothing is
+> outstanding except Amazon's own review (up to 72 hours).
+>
+> Everything below is the record of how it was done, kept for the next book.
 
-Written 2026-10-24 from the two files Louis supplied in `C:\Users\Moore\Downloads`:
+Written 2026-10-24 from the three files Louis supplied in `C:\Users\Moore\Downloads`:
 
 | File | What it actually is |
 |---|---|
-| `Bible_in_One_Year_Hardcover_PRINT_READY.pdf` | The interior. **450 pages, 8.25 x 11in.** No full-bleed background rectangle (so unlike 21 Women, it needs no stripping). |
+| `Bible_in_One_Year_Hardcover_PRINT_READY.pdf` | The interior, used for **both** formats. **450 pages, 8.25 x 11in.** No full-bleed background rectangle (so unlike 21 Women, it needs no stripping). |
 | `Bible_in_One_Year_Hardcover_COVER.pdf` | The hardcover wrap. One page, **19.390 x 12.417in**. |
+| `Bible_in_One_Year_Paperback_Corrected_17.763x11.250.pdf` | The paperback wrap, drawn after the hardcover went in. One page, **17.763 x 11.250in**, artwork 5329 x 3375px = exactly 300 DPI. |
 
-Both were measured from the files, not assumed.
+All three were measured from the files, not assumed.
 
 ---
 
-## Blockers
+## The paperback wrap was rejected once, before it was ever uploaded
 
-**1. There is no paperback wrap.** Louis asked for hardcover *and* softcover.
-Only a hardcover wrap exists. A paperback cover is a different size — it has
-no board wrap and no hinge allowance — so the hardcover file cannot be reused.
+Worth reading before any future cover goes near KDP. The first version had
+three defects, all caught by reading it against the book rather than by KDP:
 
-For 450 pages at 8.25 x 11in, a paperback wrap is roughly **17.76 x 11.25in**
-on white paper (0.125in bleed all round, spine ≈ 1.013in at 0.002252in per
-page) or about **17.88in** wide on cream (spine ≈ 1.125in). Treat those as
-the target to design to, **not as gospel** — KDP states the exact required
-size on the upload screen, and `scripts/resize-cover-wrap.mjs` redraws a wrap
-to whatever size it names. The paper choice has to be decided first, because
-it changes the spine.
+1. It promised "thought-provoking questions". The book does not contain them —
+   checked by scanning all 450 pages; the phrase appears on 15 pages, scattered,
+   as ordinary prose.
+2. Its feature tiles did not match the hardcover's.
+3. It quoted Psalm 119:105 as "Your word is a lamp to my feet" while labelling
+   it (KJV). The KJV reads "Thy word is a lamp unto my feet, and a light unto
+   my path."
 
-**2. There is no price.** `listing-details.md` in this folder has the field
-and it is deliberately blank. I will not invent a price for a real product.
-450 pages is well over double 21 Women's 239, so the printing cost — and
-therefore the floor — is much higher; set the US price from what KDP's
-calculator shows once the interior is uploaded, then let it convert the rest.
-
-Nothing else is outstanding. The description, keywords and categories in this
-folder are written and ready to paste.
+The corrected wrap fixes all three and the paperback back now matches the
+hardcover word for word. **If either cover is ever regenerated, check those
+three things again** — a cover is the one artefact nobody proofreads twice.
 
 ---
 
@@ -102,7 +100,7 @@ Translations: none.
 
 1. ISBN: **Get a free KDP ISBN** (the hardcover and the paperback each need
    their own; KDP issues both).
-2. Print options: Black & white interior, **cream paper**, **8.25 x 11in**,
+2. Print options: Black & white interior, **white paper**, **8.25 x 11in**,
    bleed: **No bleed**, cover finish: **Matte**.
 3. Upload `Bible_in_One_Year_Hardcover_PRINT_READY.pdf`.
 4. Upload `Bible_in_One_Year_Hardcover_COVER.pdf`.
@@ -118,14 +116,26 @@ Translations: none.
 
 ## 3. Price
 
-`listing-details.md` holds the field. It is blank on purpose — see *Blockers*.
+`listing-details.md` holds the four numbers, all read off the KDP screen:
+hardcover **$29.99** (prints at $13.30, royalty $4.69), paperback **$19.99**
+(prints at $8.65, royalty $3.34). Set the US price and let KDP convert the rest.
+At 450 pages the print cost is far above 21 Women's, so check the royalty on
+screen rather than assuming; if KDP refuses a price it names its minimum.
 
 ## 4. Then the paperback
 
-Blocked until the wrap exists. When it does: repeat from step 1 with **Create
-Paperback**, the same metadata word for word, the same interior, and the new
-wrap. KDP links the two formats on one detail page automatically when title,
-subtitle and author match exactly, so they must be pasted, not retyped.
+Do **not** start it from + Create. Open the published hardcover's row and use
+**+ Create paperback**: that copies the metadata character for character, which
+is the only reliable way to get the two formats onto one Amazon detail page.
+Then:
+
+1. Change keyword 6 from "hardcover gift" to "paperback gift". Everything else
+   stays as pasted.
+2. Get its own free KDP ISBN — the formats cannot share one.
+3. Trim: **Custom**, 8.25 x 11 (it is not in the paperback preset list).
+4. Same interior PDF, and the paperback wrap
+   `Bible_in_One_Year_Paperback_Corrected_17.763x11.250.pdf`.
+5. Previewer must report 450 pages and no issues before Approve.
 
 ## 5. After it is live
 
@@ -133,3 +143,70 @@ subtitle and author match exactly, so they must be pasted, not retyped.
   exists.
 - Point the app at it: the `devotionals` table has a `paperback_url` column,
   which is how a study links to its printed edition.
+
+---
+
+# What actually happened on 2026-10-24
+
+Both formats went in. They share one detail page because the paperback was
+created with **+ Create paperback** from the published hardcover, which copies
+the metadata character for character — the only reliable way to get KDP to
+link them.
+
+| | Hardcover | Paperback |
+|---|---|---|
+| Status | In review | In review |
+| ISBN (free KDP) | 9798164849498 | 9798164860127 |
+| List price | $29.99 | $19.99 |
+| Printing cost | $13.30 | $8.65 |
+| Minimum list KDP allowed | $22.17 | $14.42 |
+| Royalty at list | 60% → $4.69 | 60% → $3.34 |
+
+KDP title id `6GJ3DH261ZR`. Imprint: Independently published. Print options on
+both: B&W, **white paper**, 8.25 x 11in, no bleed, matte, 450 pages.
+
+## Six things the form does that are not obvious
+
+Every one of these cost time today. They apply to the next book too.
+
+1. **The description field is a CKEditor.** Click **Source** in its toolbar and
+   `description.html` goes in as real markup. The character counter moving is
+   how you know KDP registered it.
+2. **8.25 x 11 is not in the paperback trim list** — only the hardcover's. Pick
+   **Custom** and type 8.25 x 11.
+3. **The trim-size and AI-declaration dropdowns are DIVs, not `<select>`s.**
+   Setting them programmatically does nothing; they have to be clicked open and
+   the option clicked.
+4. **Leave the barcode checkbox unchecked.** With it ticked the previewer hard
+   errors on this kind of wrap. KDP placed its own barcode in clear space on
+   the back.
+5. **Re-uploading a file re-opens the AI declaration**, with a confirm box under
+   it that Save and Continue silently ignores until it is ticked.
+6. **There is no "Guides" placement** under Bible Study & Reference, and there
+   **is** a "Devotionals" placement under Christian Living, low in the left
+   column behind the fold.
+
+## The fold check passed on the hardcover
+
+This is the thing that cost 21 Women the N of WOMEN and the E of BIBLE. It is
+fine here. A KDP hardcover folds 0.7085in of every outer edge around the board,
+and this wrap is 12.417in tall where 11 + (2 x 0.7085) = 12.417 exactly — so it
+was built for the fold. In the previewer with guides on, every element sits
+inside the safe area: front title, subtitle, author block, spine text, back
+copy, feature panel, verse, logo. 450 pages, no issues, Approve enabled.
+
+The paperback previewer also reported 450 pages and no issues, and a zoom
+confirmed all three cover corrections are live in KDP's own render.
+
+## Still to do
+
+1. **Amazon's review.** Up to 72 hours, then both go Live and get ASINs.
+2. **A+ content** once the ASINs exist, following the Proverbs folder's pattern.
+3. **Point the app at it.** The `devotionals` table has a `paperback_url`
+   column, which is how a study links to its printed edition.
+4. **Louis's tax profile.** KDP shows a banner on the Bookshelf saying it is
+   incomplete and that this may delay payment. Nothing to do with these books,
+   but it affects every title on the shelf.
+
+The three print files are copied into `tmp/` (gitignored) because the browser
+upload tool can only read files inside the project.

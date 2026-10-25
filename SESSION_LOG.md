@@ -8440,3 +8440,42 @@ Still open:
 - The hardcover wrap's page size does allow the 0.7085in board fold, but the
   artwork still needs the fold check in KDP's previewer before approving.
 Next: paperback wrap + price, then the KDP submission itself.
+
+## 2026-10-24 (night)
+Time spent: a long one - Higher Hope written end to end, then the whole KDP run.
+Done:
+- **Bible in One Year is submitted to KDP in both formats.** Hardcover $29.99
+  and paperback $19.99, on one detail page, both In review. Real numbers off
+  the KDP screen: hardcover prints at $13.30 and pays $4.69; paperback prints
+  at $8.65 and pays $3.34. ISBNs 9798164849498 and 9798164860127.
+- Threw the first paperback wrap away before uploading it. It promised
+  "thought-provoking questions" the book does not contain (checked all 450
+  pages), its feature tiles did not match the hardcover, and it quoted Psalm
+  119:105 in a modern translation while labelling it KJV. The corrected wrap
+  fixes all three, and I confirmed all three in KDP's own render.
+- Higher Hope: 60 days, landing page, signup link, seeder. It opens to readers
+  on the 25th and all of it is already live.
+- Three Christian News articles built (Noah's Ark, Shroud of Turin, Laminin)
+  with a claims component that separates what is established from what is not.
+- Blog acquisition report rewritten after Louis pushed back: search going 3% ->
+  16% is good, and Google's 128 "Discovered - currently not indexed" pages are
+  the actual ceiling, not a penalty.
+- Found and fixed a real bug: signup never wrote `account_type`, so every
+  acquisition channel read zero. Both write paths patched.
+- Corrected my own stat: I had the end card at 4.89% CTR. It is 2.19%, against
+  2.07% for the first inline banner. Placement barely matters; the post does.
+Not live yet: 7 commits waiting, next build Sun 09:05 Berlin. All of it is
+step 3 - the KDP notes, the Christian News articles, the blog reports and the
+`account_type` fix. Nothing timed is stuck: Higher Hope shipped in the 16:03
+build and opens on the 25th as planned.
+Still open:
+- KDP review takes up to 72 hours. A+ content and `paperback_url` wait on ASINs.
+- KDP is showing a banner that Louis's tax profile is incomplete and payment
+  may be delayed. Affects every title, not just this one.
+- `BACKFILL_ACCOUNT_TYPE_REGISTERED.sql` is written but deliberately not run.
+- The email plan is still entirely unbuilt, blocked on four questions about the
+  Friday sequence and the weekly-cap decision.
+- The three Christian News banners are generated placeholders, not real art,
+  and the articles are held out of the study group pending Louis's read.
+Next: watch for the two Live emails from Amazon, then A+ content and the app's
+paperback links. Then the email plan, once Louis answers the four questions.
