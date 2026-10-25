@@ -62,8 +62,25 @@ export default function FeedPollBlock({ pollId, userId }: { pollId: string; user
   const [myVote, setMyVote] = useState<string | null>(null);
   const [busy, setBusy] = useState<string | null>(null);
   const [showNames, setShowNames] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const loadVotes = useCallback(async () => {
+  /**
+   * `justVoted` is the option this person has just chosen, if they have.
+   *
+   * Without it this reload could UNDO a vote that had been saved perfectly
+   * well (Louis, 2026-10-25: "the poll question doesn't accept my vote when
+   * I use my burner account"). The row was in the table every time; the vote
+   * came back from the server, this read ran a moment later, and anything
+   * that stopped it seeing the new row - a read that lands before the write
+   * is visible, a read that comes back empty - set myVote to null and put
+   * the unanswered options straight back on screen. Clicking again just
+   * rewrote the same row, so it never looked any different.
+   *
+   * The popup asking the same question never had this, because it sets the
+   * answer and stops. Now so does this: the reload may add other people's
+   * faces, and may not take your own answer away.
+   */
+  const loadVotes = useCallback(async (justVoted?: string) => {
     const { data: votes } = await supabase
       .from("weekly_group_poll_votes")
       .select("user_id, option_key, created_at")
@@ -97,7 +114,7 @@ export default function FeedPollBlock({ pollId, userId }: { pollId: string; user
 
     setVoters(next);
     setTotal(votes.length);
-    setMyVote(votes.find((vote) => vote.user_id === userId)?.option_key ?? null);
+    setMyVote(votes.find((vote) => vote.user_id === userId)?.option_key ?? justVoted ?? null);
   }, [pollId, userId]);
 
   useEffect(() => {
@@ -123,22 +140,35 @@ export default function FeedPollBlock({ pollId, userId }: { pollId: string; user
     async (optionKey: string) => {
       if (!poll || myVote || busy) return;
       setBusy(optionKey);
+      setError(null);
       try {
         const { data } = await supabase.auth.getSession();
         const token = data.session?.access_token;
-        if (!token) return;
+        if (!token) {
+          setError("Sign in again to answer this one.");
+          return;
+        }
         const res = await fetch(`/api/groups/${poll.group_id}/weekly-poll/vote`, {
           method: "POST",
           headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
           body: JSON.stringify({ pollId: poll.id, optionKey }),
         });
-        if (!res.ok) return;
-        // Reload rather than guess, so the new face appears with everyone
-        // else's and the counts cannot drift apart.
+        if (!res.ok) {
+          // Say so. This used to return in silence, so a poll that was
+          // refusing votes looked exactly like a poll being ignored, and
+          // there was nothing on screen or in the console to tell anyone
+          // which it was.
+          const detail = (await res.json().catch(() => null)) as { error?: string } | null;
+          setError(detail?.error || "That did not save. Try again in a moment.");
+          return;
+        }
+        // Reload so the new face appears with everyone else's and the counts
+        // cannot drift apart - but tell it what was just chosen, so a read
+        // that misses the fresh row cannot take the answer back off screen.
         setMyVote(optionKey);
-        await loadVotes();
+        await loadVotes(optionKey);
       } catch {
-        // A vote that does not land leaves the options up rather than lying.
+        setError("That did not save. Try again in a moment.");
       } finally {
         setBusy(null);
       }
@@ -208,6 +238,12 @@ export default function FeedPollBlock({ pollId, userId }: { pollId: string; user
           </div>
         );
       })}
+
+      {error ? (
+        <p role="status" className="px-1 text-xs font-semibold text-[#b42318]">
+          {error}
+        </p>
+      ) : null}
 
       <div className="flex items-center justify-between gap-3 pt-0.5">
         <p className="text-xs text-gray-400">
