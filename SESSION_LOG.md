@@ -9149,3 +9149,20 @@ Chapter Blog Writer routine. Already escalated to Louis via MARCUS_HANDOFF.md
 run 79, 2026-10-26T07:49:31Z). Nothing material has changed since, so no new
 notification sent this run.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-26T14:34 (bug fixer run)
+Fixed: group-discussion days (the ones tied to a Bible Buddy group post
+thread, e.g. Proverbs day 26) had no way to edit your own reply, only
+delete - the regular discussion box elsewhere has an Edit button, this one
+didn't. Added the same Edit/Save/Cancel to GroupPostThread.tsx and a
+matching case in /api/comments/edit. Commit f1da598, pushed to main, no
+[deploy] tag. Came back as awaiting_approval (touches the shared
+comment-edit endpoint) rather than fixed - waiting on Louis at /admin/bugs.
+Needs Louis: chapter audio is down app-wide - the OpenAI narration account
+is out of credit (confirmed directly: "no credits remaining" on multiple
+chapters). Only he can add funds; posted as needs_louis.
+Left alone (no change since diagnosis, still waiting on the reporter):
+three older needs_info reports (generic reading-error screen, Proverbs
+"Task 1 repeating", Proverbs day-9-locked) and today's crash report from a
+solo-study screen - all already asked their one clarifying question in an
+earlier run.
