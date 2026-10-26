@@ -82,6 +82,8 @@ export default function AccountRequiredModal({
   const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  /** Shown instead of a raw error when the email belongs to another account. */
+  const [emailTaken, setEmailTaken] = useState(false);
   const [emailPendingConfirm, setEmailPendingConfirm] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
@@ -93,6 +95,7 @@ export default function AccountRequiredModal({
     setPhotoPreview(gate.profileImageUrl);
     setPhotoFile(null);
     setError(null);
+    setEmailTaken(false);
     setEmailPendingConfirm(false);
   }, [isOpen, gate]);
 
@@ -118,6 +121,7 @@ export default function AccountRequiredModal({
       return;
     }
     setSaving(true);
+    setEmailTaken(false);
     setError(null);
     try {
       let imageUrl = gate.profileImageUrl;
@@ -169,7 +173,31 @@ export default function AccountRequiredModal({
         onClose();
       }
     } catch (saveError) {
-      setError(saveError instanceof Error ? saveError.message : "Could not save your account.");
+      const raw = saveError instanceof Error ? saveError.message : "";
+      /**
+       * "That email is already registered" is the one failure here that is not
+       * the person's mistake, and until 2026-10-26 it was shown as Supabase
+       * wrote it, with no way forward.
+       *
+       * Anthony Elem hit it on 21 October and again on the 25th: "The app
+       * acting like I don't exist keep asking for my email then when I put it
+       * in to add post it tells me the email already exists." He has a 46-day
+       * streak, 168 chapters and 49 answers on the account he is signed in to,
+       * and an older dormant account holding the email he wants to use. Four
+       * days stuck on a dead end.
+       *
+       * The honest message has to say the thing the old wording hid: logging
+       * in with that email opens the OTHER account, and the reading he has
+       * done here stays here. That is why this does not just offer a login
+       * link - someone in his position needs to know the choice before they
+       * make it, and to know that asking is a real option.
+       */
+      if (/already (been )?registered|already exists|email_exists/i.test(raw)) {
+        setEmailTaken(true);
+        setError(null);
+      } else {
+        setError(raw || "Could not save your account.");
+      }
     } finally {
       setSaving(false);
     }
@@ -298,6 +326,41 @@ export default function AccountRequiredModal({
                 }}
               />
             </label>
+
+            {emailTaken ? (
+              <div className="space-y-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-3 text-sm text-amber-900">
+                <p className="font-black">You already have an account with that email.</p>
+                <p className="font-medium leading-relaxed">
+                  You can sign in to it — but it is a different account, so the reading, answers
+                  and streak you have built up here would stay here, not move across.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {/* Plain /login - the page does not read an email query
+                      param, and a link that pretends to prefill and then does
+                      not is worse than one that does not promise. */}
+                  <a
+                    href="/login"
+                    className="rounded-xl bg-amber-900 px-4 py-2 text-xs font-black text-white"
+                  >
+                    Sign in to that account
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEmailTaken(false);
+                      setEmail("");
+                    }}
+                    className="rounded-xl border border-amber-300 bg-white px-4 py-2 text-xs font-black text-amber-900"
+                  >
+                    Use a different email
+                  </button>
+                </div>
+                <p className="leading-relaxed">
+                  Want to keep everything you have done here and still use that email? Message
+                  Louis and he will move it over for you — that is a normal request, not a bother.
+                </p>
+              </div>
+            ) : null}
 
             {error ? (
               <div className="rounded-xl border border-rose-200 bg-rose-50 px-3 py-2.5 text-sm font-semibold text-rose-700">
