@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-liturgical-calendar",
+    title: "What Is the Liturgical Calendar? A Beginner's Guide to the Christian Year",
+    description:
+      "What is the liturgical calendar? The two seasons of the Christian year, where it comes from in Scripture, and how Catholics, Orthodox, and Protestants differ.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-the-liturgical-calendar",
+    publishedAt: "2026-10-26",
+    readTime: "16 min read",
+    image: "/blog-banners/what-is-the-liturgical-calendar.jpg",
+    groupPost: {
+      title: "What Is the Liturgical Calendar? 📖",
+      content:
+        "Most Christians live by it every December and every spring and have never once heard its name.\nNobody ever sat you down and explained it.\n\n📌 The liturgical calendar is the yearly cycle churches use to walk through the story of Jesus one season at a time, instead of preaching whatever comes to mind.\n\n📖 God handed Israel an appointed calendar centuries before the church ever had one.\n📖 One argument over a single date split the early church for generations.\n📖 Some Christians rejected the whole idea, on principle, and meant it as faithfulness.\n\nNew article on:\n🟢 the two big arcs behind every **Advent wreath** and every **Lent**\n🟢 what the **Catholic Church** officially teaches about the year\n🟢 why **Reformed churches** kept only one day on their calendar\n\nDoes the shape of your year actually keep bringing you back to the story of Jesus? 🙏",
+    },
+  },
+  {
     slug: "numbers-7-explained",
     title: "Numbers 7 Explained: Twelve Princes, One Identical Gift",
     description:

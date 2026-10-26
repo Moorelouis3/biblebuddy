@@ -14,11 +14,12 @@
       ]
     },
     "2026-10-26": {
-      "committed": 3,
+      "committed": 4,
       "slugs": [
         "what-is-reformation-day",
         "what-is-all-saints-day",
-        "what-is-christmas"
+        "what-is-christmas",
+        "what-is-the-liturgical-calendar"
       ]
     }
   },
@@ -73,10 +74,11 @@
     },
     "what-is-the-liturgical-calendar": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-26T15:23:57.008Z"
+      "status": "committed",
+      "startedAt": "2026-10-26T15:23:57.008Z",
+      "committedAt": "2026-10-26T15:37:49.378Z"
     }
   },
   "nextTopic": "when-does-advent-begin",
-  "updatedAt": "2026-10-26T15:23:57.008Z"
+  "updatedAt": "2026-10-26T15:37:49.400Z"
 }
