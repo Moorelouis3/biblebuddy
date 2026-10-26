@@ -96,6 +96,9 @@ export default function GroupPostThread({
   const [error, setError] = useState<string | null>(null);
   const [pendingDelete, setPendingDelete] = useState<ThreadReply | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingText, setEditingText] = useState("");
+  const [savingEditId, setSavingEditId] = useState<string | null>(null);
 
   const loadThread = useCallback(async () => {
     const { data: parent } = await supabase
@@ -338,6 +341,35 @@ export default function GroupPostThread({
     setDeletingId(null);
   }
 
+  async function saveEdit(reply: ThreadReply) {
+    const nextContent = editingText.trim();
+    if (!nextContent || savingEditId) return;
+    setSavingEditId(reply.id);
+    setError(null);
+    try {
+      const { data: sessionData } = await supabase.auth.getSession();
+      const accessToken = sessionData.session?.access_token;
+      if (!accessToken) throw new Error("Could not verify your session.");
+
+      const response = await fetch("/api/comments/edit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` },
+        body: JSON.stringify({ kind: "group_feed_comment", commentId: reply.id, content: nextContent }),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || "Could not save your edit.");
+
+      setReplies((prev) =>
+        prev.map((item) => (item.id === reply.id ? { ...item, content: payload.comment?.content ?? nextContent } : item)),
+      );
+      setEditingId(null);
+      setEditingText("");
+    } catch (editError) {
+      setError(editError instanceof Error ? editError.message : "Could not save your edit.");
+    }
+    setSavingEditId(null);
+  }
+
   // Blocked users' comments (and replies under them) are hidden, like the group feed.
   const visible = blockedUserIds.size > 0 ? replies.filter((reply) => !blockedUserIds.has(reply.user_id)) : replies;
   const topLevel = visible.filter((reply) => reply.parent_post_id === postId);
@@ -346,6 +378,7 @@ export default function GroupPostThread({
   function renderReply(reply: ThreadReply, depth: number): ReactNode {
     const name = reply.display_name || "Buddy";
     const canDelete = Boolean(userId) && (reply.user_id === userId || me.can_moderate);
+    const canEdit = Boolean(userId) && reply.user_id === userId;
     return (
       <div
         key={reply.id}
@@ -363,7 +396,39 @@ export default function GroupPostThread({
               </Link>
               <span className="text-[11px] text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(reply.created_at)}</span>
             </div>
-            <p className="mt-0.5 whitespace-pre-wrap text-sm leading-6 text-[var(--bb-text-secondary,#374151)]">{reply.content}</p>
+            {editingId === reply.id ? (
+              <div className="mt-2 space-y-2">
+                <textarea
+                  value={editingText}
+                  onChange={(event) => setEditingText(event.target.value)}
+                  rows={2}
+                  autoFocus
+                  className="w-full resize-none rounded-xl border border-[var(--bb-card-border,#dbe7f4)] bg-white px-3 py-2 text-sm text-[var(--bb-text-primary,#111827)] focus:outline-none focus:ring-2 focus:ring-[var(--bb-accent,#2f7fe8)]/30"
+                />
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => void saveEdit(reply)}
+                    disabled={savingEditId === reply.id || !editingText.trim()}
+                    className="rounded-xl bg-[var(--bb-accent,#2f7fe8)] px-3 py-1.5 text-xs font-semibold text-white disabled:opacity-50"
+                  >
+                    {savingEditId === reply.id ? "Saving..." : "Save"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setEditingId(null);
+                      setEditingText("");
+                    }}
+                    className="rounded-xl border border-[var(--bb-card-border,#dbe7f4)] px-3 py-1.5 text-xs font-medium text-[var(--bb-text-muted,#9ca3af)] transition hover:bg-gray-50"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p className="mt-0.5 whitespace-pre-wrap text-sm leading-6 text-[var(--bb-text-secondary,#374151)]">{reply.content}</p>
+            )}
             <div className="mt-1 flex items-center gap-3">
               <button
                 type="button"
@@ -375,6 +440,19 @@ export default function GroupPostThread({
               >
                 Reply
               </button>
+              {canEdit && editingId !== reply.id && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEditingId(reply.id);
+                    setEditingText(reply.content);
+                    setReplyingTo(null);
+                  }}
+                  className="text-[11px] font-semibold text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-accent,#2f7fe8)]"
+                >
+                  Edit
+                </button>
+              )}
               {canDelete && (
                 <button
                   type="button"

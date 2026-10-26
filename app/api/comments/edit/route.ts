@@ -7,6 +7,7 @@ const ADMIN_EMAIL = "moorelouis3@gmail.com";
 type EditKind =
   | "article_comment"
   | "feed_post_comment"
+  | "group_feed_comment"
   | "series_post_comment"
   | "series_reflection";
 
@@ -111,6 +112,39 @@ export async function POST(request: NextRequest) {
 
     if (updateError || !updated) {
       return NextResponse.json({ error: updateError?.message || "Could not save comment." }, { status: 500 });
+    }
+
+    return NextResponse.json({ ok: true, comment: updated });
+  }
+
+  if (kind === "group_feed_comment") {
+    const { data: target, error } = await supabaseAdmin
+      .from("group_posts")
+      .select("id, user_id, parent_post_id")
+      .eq("id", commentId)
+      .maybeSingle();
+
+    if (error || !target) {
+      return NextResponse.json({ error: "Comment not found." }, { status: 404 });
+    }
+
+    if (!target.parent_post_id) {
+      return NextResponse.json({ error: "Only comments can be edited here." }, { status: 400 });
+    }
+
+    if (!isAdmin && !isGlobalModerator && target.user_id !== requester.id) {
+      return NextResponse.json({ error: "Forbidden." }, { status: 403 });
+    }
+
+    const { data: updated, error: updateError } = await supabaseAdmin
+      .from("group_posts")
+      .update({ content })
+      .eq("id", commentId)
+      .select("id, content")
+      .maybeSingle();
+
+    if (updateError || !updated) {
+      return NextResponse.json({ error: updateError?.message || "Could not update comment." }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true, comment: updated });
