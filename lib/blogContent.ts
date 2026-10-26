@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-4-explained",
+    title: "Numbers 4 Explained: Carrying the Ark Without Touching It",
+    description:
+      "Numbers 4 explained verse by verse: why the Kohathites could carry the ark but never touch it, and what Gershon and Merari carried instead.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-4-explained",
+    publishedAt: "2026-10-26",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-4-explained.jpg",
+    groupPost: {
+      title: "Numbers 4 Explained 📖",
+      content:
+        "The men who carried the ark could never touch it.\nOne wrong move around it meant death, no exceptions.\n\n📌 God covered the ark so the men carrying it never saw it uncovered.\n\n📖 Aaron and his sons wrapped every holy object by hand.\n📖 The Kohathites lifted it by the poles, never the ark itself.\n📖 Eleazar personally oversaw the most dangerous job in camp.\n\nNew article on:\n🟢 why the **Kohathites** could carry the ark but not touch it\n🟢 why **Eleazar** watched over the riskiest work in the tabernacle\n🟢 what **Gershon and Merari** carried instead\n\nWhat boundary has God set in your life that has actually been protecting you? 🙏",
+    },
+  },
+  {
     slug: "numbers-3-explained",
     title: "Numbers 3 Explained: The Levites Given in Place of Israel's Firstborn",
     description:
