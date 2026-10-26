@@ -9250,3 +9250,25 @@ MARCUS_HANDOFF.md (2026-10-19, re-flagged 2026-10-24, escalated directly with a
 push notification on run 79, 2026-10-26T07:49:31Z, now ~11 hours / 11 no-op runs
 old). Nothing material has changed since, so no new notification sent this run.
 Next up: whatever Louis decides the next mandate is.
+## 2026-10-26T20:01:51Z (hourly chapter notes run)
+Chapter: none | Status: block (no chapter available)
+All 1189 canonical chapters, Genesis 1 through Revelation 22, are still wired and
+verified. Priority queue and style-redo backlog are both still empty. This is the
+91st consecutive no-op run since completion on 2026-10-19T21:01:00Z. This run made
+a real mistake before catching it: it picked 3 John 1 as the next forward-progress
+chapter based only on lib/*Source.ts filename existence, missing that 3 John 1 and
+Jude 1 were already completed on 2026-10-18 by rewriting their original legacy
+files (lib/thirdJohnOnePersonalNotes.ts, lib/judeOnePersonalNotes.ts) in place to
+the current spec, keeping the old filenames. Caught this by reading both files in
+full and cross-checking data/bible-notes-progress-log.json (both logged finished
+2026-10-18). Deleted the lib/thirdJohnOneSource.ts file this run had written and
+reverted the lib/bibleReaderStudyNotes.ts wiring edit before anything was
+committed, so no bad state reached git. Re-verified all three pipeline files
+fresh: priority queue and style-redo backlog both `[]`, progress log still ends
+at Revelation 22 (1262 entries, goal 1189). lib/bibleReaderStudyNotes.ts still
+wires every chapter (1281 replaceStudySectionsForBookRange calls, unchanged) and
+lib/ still has 1187 *Source.ts files, unchanged. Already escalated to Louis via
+MARCUS_HANDOFF.md (2026-10-19, re-flagged 2026-10-24, escalated directly with a
+push notification on run 79, 2026-10-26T07:49:31Z, now ~12 hours / 12 no-op runs
+old). Nothing material has changed since, so no new notification sent this run.
+Next up: whatever Louis decides the next mandate is.
