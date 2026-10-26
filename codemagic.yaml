@@ -22,6 +22,24 @@ workflows:
     environment:
       node: 22
       xcode: latest
+      vars:
+        # ON here too, and this is not cosmetic (2026-10-26).
+        #
+        # This workflow adds the Bible Lock extension, which compiles the
+        # Screen Time APIs into the app, but it never set this - and
+        # scripts/ios-entitlements.sh defaults to off. So a build from here
+        # ships Screen Time code with no Family Controls entitlement, which
+        # is precisely what Apple's automated review rejects:
+        #
+        #   "An automated analysis indicates the app uses one or more Screen
+        #   Time APIs but the app has not been submitted with the Family
+        #   Controls entitlement."
+        #
+        # It did not cause the 2026-10-26 rejection - that build came from
+        # ios-release, which does set it - but only because this workflow
+        # does not upload. Either both carry the entitlement or neither
+        # compiles the APIs; a split between them is a trap.
+        BIBLE_LOCK_ENTITLEMENT: "on"
 
     # Manual only. There is no triggering block on purpose.
     #
