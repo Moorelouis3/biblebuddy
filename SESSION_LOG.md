@@ -9308,3 +9308,18 @@ Next up: whatever Louis decides the next mandate is.
 Article: What Is Fasting and Should I Do It? | Words: ~3,140 | Category: Bible Study Tips | Status: pass
 Queue remaining: 14
 Not deployed with this commit (no [deploy] tag, per Louis's 2026-10-10 change) - goes live at the next scheduled deploy (08:05 Berlin), not immediately.
+## 2026-10-26T22:49:45Z (hourly chapter notes run)
+Chapter: none | Status: block (no chapter available)
+All 1189 canonical chapters, Genesis 1 through Revelation 22, are still wired and
+verified. Priority queue and style-redo backlog are both still empty. This is the
+94th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Re-verified
+all three pipeline files fresh: priority queue and style-redo backlog both `[]`,
+progress log still ends at Revelation 22 (1262 entries, goal 1189). Independently
+ran getBibleReaderStudySections() for all 1189 canonical book/chapter pairs and
+confirmed zero return empty, zero throw. lib/ still has 1187 *Source.ts files and
+lib/bibleReaderStudyNotes.ts still has 1281 replaceStudySectionsForBookRange
+calls, both unchanged. Git state was clean this run. Already escalated to Louis
+via MARCUS_HANDOFF.md (2026-10-19, re-flagged 2026-10-24, direct push notification
+on run 79, 2026-10-26T07:49:31Z, now ~15 hours / 15 no-op runs old). Nothing
+material has changed since, so no new notification sent this run.
+Next up: whatever Louis decides the next mandate is.
