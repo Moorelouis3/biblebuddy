@@ -42,8 +42,13 @@
       "committedAt": "2026-10-25T05:03:59.380Z",
       "note": "Friday email anchor, written by hand on day one",
       "publishedAt": "2026-10-25T09:16:43.639Z"
+    },
+    "what-is-reformation-day": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-26T01:16:44.005Z"
     }
   },
-  "nextTopic": "what-is-reformation-day",
-  "updatedAt": "2026-10-26T01:16:28.618Z"
+  "nextTopic": "what-is-all-saints-day",
+  "updatedAt": "2026-10-26T01:16:44.006Z"
 }
