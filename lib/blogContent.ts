@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-reformation-day",
+    title: "What Is Reformation Day? History, Meaning, and Why October 31 Matters",
+    description:
+      "What is Reformation Day? The real story behind Luther's 95 Theses, what changed on October 31, 1517, and how Catholics and Protestants see it today.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-reformation-day",
+    publishedAt: "2026-10-26",
+    readTime: "15 min read",
+    image: "/blog-banners/catholic-vs-protestant-church-calendars.jpg",
+    groupPost: {
+      title: "What Is Reformation Day? 📖",
+      content:
+        "Halloween is not the only thing on the calendar October 31.\nFor a lot of churches, that date means something older.\n\n📌 A German monk's 95 arguments ended up splitting a continent.\n\n📖 The theses mostly attacked how indulgences were being sold.\n📖 Whether he really nailed them to a door is actually disputed.\n📖 Rome kept indulgences. It abolished selling them for money.\n\nNew article on:\n🟢 what **Martin Luther** actually objected to in 1517\n🟢 what the **Catholic Church** teaches about indulgences today\n🟢 the **four verses** that became the heartbeat of the Reformation\n\nWhere do you catch yourself trying to earn grace instead of receiving it? 🙏",
+    },
+  },
+  {
     slug: "numbers-2-explained",
     title: "Numbers 2 Explained: Arranging Israel's Camp Around the Tabernacle",
     description:

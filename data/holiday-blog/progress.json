@@ -12,6 +12,12 @@
         "christmas-day-one-thing-to-carry",
         "how-to-read-the-bible-in-a-year-without-quitting"
       ]
+    },
+    "2026-10-26": {
+      "committed": 1,
+      "slugs": [
+        "what-is-reformation-day"
+      ]
     }
   },
   "articles": {
@@ -45,10 +51,11 @@
     },
     "what-is-reformation-day": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-26T01:16:44.005Z"
+      "status": "committed",
+      "startedAt": "2026-10-26T01:16:44.005Z",
+      "committedAt": "2026-10-26T01:26:42.724Z"
     }
   },
   "nextTopic": "what-is-all-saints-day",
-  "updatedAt": "2026-10-26T01:16:44.006Z"
+  "updatedAt": "2026-10-26T01:26:42.745Z"
 }

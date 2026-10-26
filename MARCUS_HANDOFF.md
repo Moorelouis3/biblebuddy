@@ -953,3 +953,7 @@ production priority again"), and the library has been running normally since (no
 25). This run trusted the actual state file over the doc text and proceeded normally, but the doc's
 own banner should be updated or removed so a future run (or Louis skimming the doc) isn't told the
 routine is paused when it is not.
+
+## Christian Holidays series: articles waiting on real banner artwork
+what-is-reformation-day (reused catholic-vs-protestant-church-calendars.jpg, nearest existing banner).
+This is one line, updated by each Holiday Blog Writer run rather than a new block per article.
