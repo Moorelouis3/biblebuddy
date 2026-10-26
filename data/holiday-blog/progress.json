@@ -54,8 +54,13 @@
       "status": "committed",
       "startedAt": "2026-10-26T01:16:44.005Z",
       "committedAt": "2026-10-26T01:26:42.724Z"
+    },
+    "what-is-all-saints-day": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-26T05:17:11.494Z"
     }
   },
-  "nextTopic": "what-is-all-saints-day",
-  "updatedAt": "2026-10-26T05:16:52.927Z"
+  "nextTopic": "what-is-christmas",
+  "updatedAt": "2026-10-26T05:17:11.494Z"
 }
