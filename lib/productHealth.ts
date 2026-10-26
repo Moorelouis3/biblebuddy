@@ -168,11 +168,38 @@ async function countOf(
 ): Promise<{ count: number | null; error?: string }> {
   try {
     const res = await apply(admin.from(table).select("*", { count: "exact", head: true }));
-    if (res.error) return { count: null, error: res.error.message };
-    return { count: res.count ?? 0 };
+    // An error with an empty message is still an error. This is not
+    // hypothetical: a head:true count on email_engagement came back with
+    // exactly that, the empty string read as falsy at the call site, and the
+    // landing page conversion rendered as 0% of 6,064 visits instead of 4.4%.
+    // A silent zero from a failed query is the one thing this file exists to
+    // prevent, so any error at all is reported, named or not.
+    if (res.error) return { count: null, error: res.error.message || `${table}: query rejected` };
+    if (res.count == null) return { count: null, error: `${table}: no count returned` };
+    return { count: res.count };
   } catch (error) {
     return { count: null, error: error instanceof Error ? error.message : "query failed" };
   }
+}
+
+/**
+ * Count by reading the rows back.
+ *
+ * Slower than a head count and used only where the head count is unreliable.
+ * PostgREST returns no count for some filter combinations on views, and a
+ * missing count must never be mistaken for zero.
+ */
+async function countByRows(
+  admin: SupabaseClient,
+  table: string,
+  column: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  apply: (q: any) => any,
+  orderColumn: string,
+): Promise<{ count: number | null; error?: string }> {
+  const res = await pageRows<Record<string, unknown>>(admin, table, column, apply, orderColumn);
+  if (res.error) return { count: null, error: res.error };
+  return { count: res.rows.length };
 }
 
 /**
@@ -213,9 +240,26 @@ const pct = (n: number, d: number) => (d > 0 ? Math.round((n / d) * 1000) / 10 :
 
 /** Rate metric that tells the truth about a small denominator. */
 function rate(label: string, numerator: number, denominator: number, previous?: number | null, note?: string): Metric {
+  const value = pct(numerator, denominator);
+  /**
+   * A share above 100% is never a fact about people, it is a sign the two
+   * numbers do not belong to each other. It is reported as a broken
+   * definition rather than printed. This caught a 909% day-completion rate
+   * built on an event that barely fires.
+   */
+  if (value > 100) {
+    return {
+      label,
+      value: null,
+      denominator,
+      unit: "percent",
+      evidence: "source_unavailable",
+      note: `Definition error: ${numerator} over ${denominator} is ${value}%. The numerator and denominator are not measuring the same thing, so no rate is shown.`,
+    };
+  }
   return {
     label,
-    value: pct(numerator, denominator),
+    value,
     denominator,
     previous: previous ?? null,
     unit: "percent",
@@ -309,10 +353,21 @@ export async function signupCohortBefore(admin: SupabaseClient, before: Date, lo
   );
 }
 
-/** How many registered in a window, as a count rather than rows. */
+/**
+ * How many registered in a window.
+ *
+ * Counted by reading the rows, not by a head count: PostgREST returns no
+ * count for this particular set of filters on email_engagement, and that
+ * missing count is what produced a 0% landing conversion before.
+ */
 export async function countSignups(admin: SupabaseClient, from: Date, to: Date) {
-  return countOf(admin, SIGNUP_TABLE, (q) =>
-    q.gte(SIGNUP_DATE, iso(from)).lt(SIGNUP_DATE, iso(to)).not("user_id", "is", null).neq("user_id", OWNER_USER_ID),
+  return countByRows(
+    admin,
+    SIGNUP_TABLE,
+    "user_id",
+    (q) =>
+      q.gte(SIGNUP_DATE, iso(from)).lt(SIGNUP_DATE, iso(to)).not("user_id", "is", null).neq("user_id", OWNER_USER_ID),
+    SIGNUP_DATE,
   );
 }
 
@@ -606,18 +661,48 @@ async function computeSystems(
         note: "Views are measured. Blog reader to signup is not: nothing links a blog session to a later registration, so that conversion is not reported.",
       };
 
-  /* Devotionals: start -> finish. */
-  const devStart = await countOf(admin, "master_actions", (q) =>
-    q.eq("action_type", "devotional_day_started").gte("created_at", iso(current.start)).lt("created_at", iso(current.end)),
+  /**
+   * Devotionals: opened -> finished.
+   *
+   * NOT devotional_day_started. That action type is declared in
+   * lib/actionTypes.ts and has never been recorded once in the history of the
+   * table - nothing emits it. Using it gave a denominator of 0 and a rate of
+   * 0%, which reads as "nobody finishes anything" when what it really meant
+   * was "nobody measured the start". devotional_day_opened is really written,
+   * so it is the one used, and the note says which event it is.
+   */
+  const devOpened = await countOf(admin, "master_actions", (q) =>
+    q.in("action_type", ["devotional_day_opened", "devotional_day_viewed"]).gte("created_at", iso(current.start)).lt("created_at", iso(current.end)),
   );
   const devDone = await countOf(admin, "master_actions", (q) =>
     q.eq("action_type", "devotional_day_completed").gte("created_at", iso(current.start)).lt("created_at", iso(current.end)),
   );
-  const devotionals: Metric =
-    devStart.error || devDone.error
-      ? unavailable("Day start → finish", "percent", devStart.error || devDone.error || "")
-      : rate("Day start → finish", devDone.count ?? 0, devStart.count ?? 0, null,
-          "Day-level, not study-level: finishing a day is not finishing a study.");
+  /**
+   * There is no measurable start-to-finish funnel for a devotional day, and
+   * saying so is more use than a number that looks like one.
+   *
+   * Three candidates were tried against the data and all three are artefacts:
+   *  - devotional_day_started: declared in lib/actionTypes.ts, never recorded
+   *    once. Denominator 0.
+   *  - devotional_day_opened + _viewed: 43 events in 30 days against 391
+   *    completions, because the open is barely emitted. That produced a 909%
+   *    completion rate.
+   *  - devotional_progress rows: 99.4% complete, because the row is written
+   *    when the day is finished. It cannot describe people who did not.
+   *
+   * So the completion count is reported, which is real, and the funnel is
+   * reported as untracked with the instrumentation it would need.
+   */
+  const devotionals: Metric = devDone.error
+    ? unavailable("Days completed", "count", devDone.error)
+    : {
+        label: "Days completed",
+        value: devDone.count,
+        unit: "count",
+        evidence: "live",
+        note:
+          `Completions are measured. Start → finish is not: the open event fired ${devOpened.count ?? 0} times against ${devDone.count ?? 0} completions, and a devotional_progress row is only written once a day is finished. Measuring drop-off needs a day-opened event that actually fires.`,
+      };
 
   /* Community: buddy acceptance. */
   const sent = await countOf(admin, "buddy_requests", (q) =>

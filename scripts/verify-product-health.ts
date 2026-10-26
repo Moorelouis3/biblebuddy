@@ -94,6 +94,37 @@ async function main() {
   const activation = o.headline.find((m) => m.label === "First-study activation");
   check("activation denominator equals registrations in the period (email_engagement)", activation?.denominator === (signupsDirect ?? 0), `dashboard ${activation?.denominator} vs table ${signupsDirect}`);
 
+  // The bug these guard against: a query that fails with an EMPTY error
+  // message, whose null count is then read as 0, turning a failed read into a
+  // confident zero. It rendered the landing conversion as 0% of 6,064 visits.
+  const { countSignups } = await import("../lib/productHealth");
+  const signupCount = await countSignups(db as never, current.start, current.end);
+  check("countSignups returns a number, never a silent null", signupCount.count != null, JSON.stringify(signupCount));
+  check("countSignups agrees with the table", signupCount.count === signupsDirect, `helper ${signupCount.count} vs table ${signupsDirect}`);
+
+  const landingRow = o.systems.find((s) => s.system === "Landing page");
+  const landingNumerator =
+    landingRow && landingRow.metric.value != null && landingRow.metric.denominator
+      ? Math.round((landingRow.metric.value / 100) * landingRow.metric.denominator)
+      : null;
+  check(
+    "landing conversion is built on the real signup count",
+    landingNumerator != null && Math.abs(landingNumerator - signupsDirect) <= 3,
+    `implied ${landingNumerator} vs signups ${signupsDirect}`,
+  );
+
+  const devRow = o.systems.find((s) => s.system === "Devotionals");
+  check(
+    "a zero denominator is never shown as a 0% rate",
+    !devRow || devRow.metric.denominator !== 0 || devRow.metric.evidence !== "live",
+    devRow ? `${devRow.metric.value} of ${devRow.metric.denominator} [${devRow.metric.evidence}]` : "",
+  );
+  check(
+    "no percentage anywhere exceeds 100",
+    [...o.headline, ...o.systems.map((s) => s.metric)].every((m) => m.unit !== "percent" || m.value == null || m.value <= 100),
+    [...o.headline, ...o.systems.map((s) => s.metric)].filter((m) => (m.value ?? 0) > 100 && m.unit === "percent").map((m) => `${m.label}=${m.value}%`).join(", "),
+  );
+
   console.log("\n--- date boundaries ---");
   const r7 = dashboardRanges("7d", now);
   const r30 = dashboardRanges("30d", now);
