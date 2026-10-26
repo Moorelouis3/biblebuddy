@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
@@ -37,6 +36,17 @@ import AppLoadingScreen from "@/components/AppLoadingScreen";
 const CREAM = "#FAF7EF";
 const NAVY = "#102D4D";
 const SLATE = "#596575";
+/**
+ * The desktop landing page's three, so the app and the website read as one
+ * brand (Louis, 2026-10-26). Taken from app/page.tsx rather than picked by
+ * eye: #0E1A3A is what its headings use, #0056FD is the accent the theme
+ * system already ships as --bb-accent, and #526075 is its muted body colour.
+ */
+const INK = "#0E1A3A";
+const ROYAL = "#0056FD";
+const MUTED = "#526075";
+/** Pale blue behind the feature pills. */
+const PILL = "#E8F0FE";
 
 /** Which button is mid-flight. Nothing else may be pressed while one is. */
 type Pending = "apple" | "google" | null;
@@ -147,70 +157,92 @@ export default function AppEntryPage() {
     >
       <div className="mx-auto flex w-full max-w-[460px] flex-1 flex-col">
         {/* ---------------------------------------------------------------
-            Hero: the copy sits on the cream wall of the photograph, and the
-            Bible fills the band underneath it. The artwork is a background
-            layer, so growing text (accessibility sizes, a longer headline)
-            pushes the whole section taller instead of landing on the book.
+            Hero (Louis, 2026-10-26): the same brand as the desktop landing
+            page. Heavy sans headline, royal blue on the last line, and Lil
+            Louis with his sunburst where the photographed open Bible used to
+            be. That photo was its own look and nothing else in the product
+            wore it.
+
+            Louis is `public/louis-hero.webp`, the identical file the landing
+            page uses - transparent, sunburst baked in, so there is nothing to
+            recreate and nothing to keep in sync.
+
+            The order here is deliberate. Everything above the buttons is
+            allowed to shrink: the mascot first, then the gaps, and the
+            headline last. Nothing is given a fixed height, so a long
+            accessibility size pushes the page taller and it scrolls rather
+            than cropping the footer.
             --------------------------------------------------------------- */}
-        <section className="relative flex flex-1 flex-col overflow-hidden">
-          <div aria-hidden className="pointer-events-none absolute inset-0">
-            <Image
-              src="/app-welcome-bible.webp"
-              alt=""
-              fill
-              priority
-              sizes="(max-width: 460px) 100vw, 460px"
-              // Anchored to the bottom so the open book and its ribbon survive
-              // every crop; what gets trimmed is wall, which the copy covers.
-              className="object-cover object-bottom"
-            />
-            {/* Cream over the top two-thirds so the headline never fights the
-                shadows, then clear by the time the book starts. */}
-            <div
-              className="absolute inset-0"
-              style={{
-                background: `linear-gradient(to bottom, ${CREAM} 0%, ${CREAM} 34%, rgba(250,247,239,0.86) 48%, rgba(250,247,239,0.35) 62%, rgba(250,247,239,0) 76%)`,
-              }}
-            />
-            {/* And back to cream at the very bottom, so the table edge melts
-                into the page rather than ending on a line. */}
-            <div
-              className="absolute inset-x-0 bottom-0 h-16"
-              style={{
-                background: `linear-gradient(to top, ${CREAM} 0%, rgba(250,247,239,0.75) 45%, rgba(250,247,239,0) 100%)`,
-              }}
-            />
-          </div>
+        <div className="flex items-center justify-center gap-2.5 px-6 pt-1">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/TherealiconforBB.png"
+            alt=""
+            width={40}
+            height={40}
+            className="h-[34px] w-[34px] rounded-[10px]"
+          />
+          <span className="text-[25px] font-black tracking-[-0.02em]" style={{ color: INK }}>
+            Bible Buddy
+          </span>
+        </div>
 
-          <div className="relative flex flex-1 flex-col px-6 pt-6 text-center">
-            <h1 className="bb-app-serif text-[28px] font-bold leading-none tracking-[-0.01em]">
-              Bible Buddy
-            </h1>
+        {/* Three sentences, three blocks: each wraps on its own on a narrow
+            phone instead of breaking in the middle of the one before it. */}
+        <h1
+          className="mt-5 px-5 text-center text-[clamp(28px,8.4vw,37px)] font-black leading-[1.07] tracking-[-0.025em]"
+          style={{ color: INK }}
+        >
+          <span className="block">Understand the Bible.</span>
+          <span className="block">Build a real habit.</span>
+          <span className="block" style={{ color: ROYAL }}>
+            Grow with Jesus.
+          </span>
+        </h1>
 
-            <p className="mx-auto mt-6 max-w-[21rem] text-[16px] leading-snug">
-              Most Bible apps help you read the Bible.
-            </p>
+        <p
+          className="mx-auto mt-3 max-w-[21rem] px-6 text-center text-[15px] font-medium leading-[1.45]"
+          style={{ color: MUTED }}
+        >
+          Clear explanations, guided studies, and a friendly guide by your side.
+        </p>
 
-            <p className="bb-app-serif mx-auto mt-1.5 max-w-[19rem] text-balance text-[31px] font-extrabold leading-[1.08] tracking-[-0.015em]">
-              Bible Buddy helps you understand it.
-            </p>
-
-            <p
-              className="mx-auto mt-3.5 max-w-[20.5rem] text-[15px] leading-[1.45]"
-              style={{ color: SLATE }}
-            >
-              Explore Scripture with clear explanations, guided studies, and daily devotionals.
-            </p>
-
-            {/* The band the Bible occupies. It is the artwork's room, not a
-                spacer standing in for the blank top of the photograph - the
-                copy above is already sitting on that. */}
-            <div className="min-h-[clamp(140px,38vw,200px)] flex-1" />
-          </div>
+        <section className="relative mt-1 flex min-h-0 flex-1 items-end justify-center overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/louis-hero.webp"
+            alt="Lil Louis, your Bible Buddy, waving and holding a Bible"
+            width={1330}
+            height={1182}
+            fetchPriority="high"
+            // h-full is what lets him give way. With an intrinsic height he
+            // would keep it and the section, which clips, would eat the
+            // footer instead - which is exactly what happened once the Apple
+            // button appeared and made the stack 65px taller. object-contain
+            // keeps his proportions whatever height is left.
+            // 30vh, measured rather than guessed: everything else on this
+            // screen comes to 589px, so on a 852px iPhone he has 263px to
+            // play with and 30vh is 255. A taller phone gives him more, a
+            // shorter one gives him less and then the page scrolls, which is
+            // the order the brief asks for - decoration goes before text or
+            // buttons do.
+            className="h-full max-h-[min(30vh,290px)] w-[min(88%,350px)] object-contain object-bottom"
+          />
+          {/* The artwork is cut off square at the bottom edge of its own file,
+              so without this it ends on a line across the page. */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-9"
+            style={{ background: `linear-gradient(to top, ${CREAM} 0%, rgba(250,247,239,0) 100%)` }}
+          />
         </section>
 
         {/* Feature highlights. Not buttons - no handlers, no button role. */}
-        <ul className="mt-1 flex flex-wrap items-center justify-center gap-1.5 px-3">
+        {/* flex-wrap is the fallback, not the plan: at 375px the three of
+            them come to just under the width, so they hold one row on the
+            narrowest iPhone still sold and drop to two only if the text
+            scales up. */}
+        <ul className="mt-1 flex flex-wrap items-center justify-center gap-1.5 px-2">
           {[
             { label: "Bible study", icon: <BookIcon /> },
             { label: "Daily devotionals", icon: <SproutIcon /> },
@@ -218,7 +250,8 @@ export default function AppEntryPage() {
           ].map((chip) => (
             <li
               key={chip.label}
-              className="flex items-center gap-1.5 rounded-full bg-[#E7EEF6] px-2.5 py-2 text-[12.5px] font-semibold"
+              className="flex items-center gap-1.5 rounded-full px-2.5 py-2 text-[12px] font-bold"
+              style={{ backgroundColor: PILL, color: INK }}
             >
               {chip.icon}
               <span>{chip.label}</span>
@@ -290,22 +323,26 @@ export default function AppEntryPage() {
             onClick={(event) => {
               if (busy) event.preventDefault();
             }}
-            className={`${BUTTON} mt-[11px] text-white focus-visible:outline-[#102D4D] ${
+            className={`${BUTTON} mt-[11px] text-white focus-visible:outline-[#0056FD] ${
               busy ? "pointer-events-none opacity-60" : ""
             }`}
-            style={{ backgroundColor: NAVY, color: "#FFFFFF" }}
+            style={{ backgroundColor: ROYAL, color: "#FFFFFF" }}
           >
             <EnvelopeIcon />
             <span>Continue with email</span>
           </Link>
 
-          <p className="mt-3.5 text-center text-[12px] leading-relaxed" style={{ color: SLATE }}>
+          <p className="mt-3.5 text-center text-[12.5px] font-semibold leading-relaxed" style={{ color: MUTED }}>
+            Free account. No credit card.
+          </p>
+
+          <p className="mt-1 text-center text-[12px] leading-relaxed" style={{ color: SLATE }}>
             By continuing, you agree to our{" "}
-            <Link href="/terms" className="underline" style={{ color: NAVY }}>
+            <Link href="/terms" className="underline" style={{ color: ROYAL }}>
               Terms
             </Link>{" "}
             and{" "}
-            <Link href="/privacy" className="underline" style={{ color: NAVY }}>
+            <Link href="/privacy" className="underline" style={{ color: ROYAL }}>
               Privacy Policy
             </Link>
             .
@@ -313,9 +350,7 @@ export default function AppEntryPage() {
         </div>
       </div>
 
-      <style>{`
-        .bb-app-serif { font-family: var(--font-bb-serif), "Playfair Display", Georgia, serif; }
-        /* The theme system writes a background straight onto html/body, which
+      <style>{`        /* The theme system writes a background straight onto html/body, which
            would show as a grey-blue strip when the screen rubber-bands past the
            top or bottom. Cream to the edges instead. */
         html, body { background-color: ${CREAM} !important; background-image: none !important; }
@@ -348,7 +383,7 @@ const CHIP_ICON = {
   height: 16,
   viewBox: "0 0 24 24",
   fill: "none",
-  stroke: NAVY,
+  stroke: INK,
   strokeWidth: 1.7,
   strokeLinecap: "round",
   strokeLinejoin: "round",
