@@ -1216,8 +1216,22 @@ export default function ProverbsStudyDayPage() {
           dayNumber={dayNumber}
           devotionalTitle={devotional.title}
           onClose={() => setShowCompletionModal(false)}
-          primaryButtonText={dayNumber < Math.max(1, Number(devotional.total_days || 1)) ? "Continue" : "Finish Study"}
+          /**
+           * The labels now name where the button actually goes
+           * (Louis, 2026-10-26). continueAfterDayComplete pushes
+           * /day/{n+1} mid-study and the study page on the last day - so
+           * "Continue" was vague and "Finish Study" was wrong: nothing is
+           * finished by pressing it, the study is already complete and it
+           * just takes you back to the day list.
+           */
+          primaryButtonText={
+            dayNumber < Math.max(1, Number(devotional.total_days || 1))
+              ? `Start Day ${dayNumber + 1}`
+              : "Back to the study"
+          }
           onPrimary={continueAfterDayComplete}
+          secondaryButtonText="Back to bookshelf"
+          onSecondary={() => router.push("/dashboard")}
         />
       ) : null}
 

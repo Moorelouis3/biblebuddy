@@ -33,6 +33,20 @@ type LouisAvatarProps = {
   buddyId?: BuddyAvatarId;
   plain?: boolean;
   unframed?: boolean;
+  /**
+   * Who to draw for a reader who has never picked a buddy.
+   *
+   * Without this the component renders a blank space of the right size
+   * (1f5f799f8, 2026-05-19) so that the server and the client agree on the
+   * first paint - the server cannot know what is in localStorage, so guessing
+   * "louis" there and finding "walter" on the client flashed the wrong
+   * character. That is still the right default for an avatar sitting in a
+   * layout. It is the wrong default for a popup BUILT around the character,
+   * so those pass a fallback. It is applied after mount, inside the same
+   * effect that reads localStorage, which leaves the first paint blank and
+   * the hydration fix intact.
+   */
+  fallbackBuddyId?: BuddyAvatarId;
 };
 
 const moodToFile: Record<LouisMood, string> = {
@@ -210,7 +224,7 @@ function BuddyIllustration({ buddyId, mood, size, plain = false }: { buddyId: Bu
   );
 }
 
-export function LouisAvatar({ mood = "wave", size = 72, buddyId, plain = false, unframed = false }: LouisAvatarProps) {
+export function LouisAvatar({ mood = "wave", size = 72, buddyId, plain = false, unframed = false, fallbackBuddyId }: LouisAvatarProps) {
   const [selectedBuddy, setSelectedBuddy] = useState<BuddyAvatarId | null>(buddyId ?? null);
   const imageClassName = unframed
     ? "h-full w-full object-contain select-none"
@@ -231,7 +245,7 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId, plain = false, 
       if (detailBuddyId || storedBuddyId) {
         setSelectedBuddy(normalizeBuddyAvatarId(detailBuddyId || storedBuddyId));
       } else {
-        setSelectedBuddy(null);
+        setSelectedBuddy(fallbackBuddyId ?? null);
       }
     }
 
@@ -242,7 +256,7 @@ export function LouisAvatar({ mood = "wave", size = 72, buddyId, plain = false, 
       window.removeEventListener("bb:selected-buddy-avatar-changed", loadSelectedBuddy);
       window.removeEventListener("storage", loadSelectedBuddy);
     };
-  }, [buddyId]);
+  }, [buddyId, fallbackBuddyId]);
 
   if (!selectedBuddy) {
     return (
