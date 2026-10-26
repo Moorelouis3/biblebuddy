@@ -9231,3 +9231,22 @@ MARCUS_HANDOFF.md (2026-10-19, re-flagged 2026-10-24, escalated directly with a
 push notification on run 79, 2026-10-26T07:49:31Z). Nothing material has changed
 since, so no new notification sent this run.
 Next up: whatever Louis decides the next mandate is.
+## 2026-10-26T18:49:22Z (hourly chapter notes run)
+Chapter: none | Status: block (no chapter available)
+All 1189 canonical chapters, Genesis 1 through Revelation 22, are still wired and
+verified. Priority queue and style-redo backlog are both still empty. This is the
+90th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Session started
+on a stale local git ref again (same recurring shallow-clone environment anomaly as
+every prior run -- the shallow clone depth is shorter than the real distance to
+origin/main, so git reports a misleading "forced update" even though no history was
+actually rewritten); resolved cleanly with `git reset --hard origin/main` after
+confirming origin/main carries the full 1262-entry progress log including
+Revelation 22, zero drift, zero risk. Re-verified all three pipeline files fresh:
+priority queue and style-redo backlog both `[]`, progress log still ends at
+Revelation 22 (1262 entries, goal 1189). lib/bibleReaderStudyNotes.ts still wires
+every chapter (1281 replaceStudySectionsForBookRange calls, unchanged) and lib/
+still has 1187 *Source.ts files, unchanged. Already escalated to Louis via
+MARCUS_HANDOFF.md (2026-10-19, re-flagged 2026-10-24, escalated directly with a
+push notification on run 79, 2026-10-26T07:49:31Z, now ~11 hours / 11 no-op runs
+old). Nothing material has changed since, so no new notification sent this run.
+Next up: whatever Louis decides the next mandate is.
