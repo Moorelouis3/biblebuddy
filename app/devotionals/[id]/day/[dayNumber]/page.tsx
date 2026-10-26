@@ -92,6 +92,31 @@ const DEFAULT_TASK_ESTIMATES: ChapterTaskTimeEstimates = {
   reflection: { label: "3 min", detail: "Reflection response" },
 };
 
+/**
+ * Which studies this page is built for. Anything else is bounced to the
+ * study page (see the redirect below).
+ *
+ * THIS LIST HAS DRIFTED FROM ITS TWIN and the two are supposed to mean the
+ * same thing. app/devotionals/[id]/page.tsx has its own
+ * isChapterJourneyStudyTitle, and that one also counts 21 Women of the
+ * Bible and Higher Hope, because it folds in isModernStudyPlanTitle. This
+ * one does not. So the study page treats those two as journey studies and
+ * this page does not.
+ *
+ * It causes no visible damage today only because nothing routes those two
+ * here - the dashboard journey links to /bible-studies/{id}?day=N, never to
+ * /day/{n} - so the bounce almost never fires. It is still a trap: the first
+ * time anything links a reader here, they get bounced straight back out.
+ *
+ * Checked 2026-10-26 while fixing the missing completion celebration. The
+ * celebration was NOT blocked by this list - it was missing because the
+ * other four published studies finish a day through handleDayComplete on
+ * the study page or completeDevotionalDay on the dashboard, and neither
+ * showed a popup. Both do now. Unifying these two lists is a separate
+ * routing change, and flipping a study between buckets moves the progress
+ * maths under readers who are mid-study, so it is Louis's call.
+ * See docs/STUDY_LAYOUT_LISTS.md.
+ */
 const CHAPTER_JOURNEY_STUDY_TITLES = new Set([
   "The Wisdom of Proverbs",
   "The Testing of Joseph",

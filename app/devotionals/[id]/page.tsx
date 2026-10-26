@@ -473,6 +473,16 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   const [showCreditBlocked, setShowCreditBlocked] = useState(false);
   const [showReadingRequiredModal, setShowReadingRequiredModal] = useState(false);
   const [showProModal, setShowProModal] = useState(false);
+  /**
+   * The day that was just finished, or null.
+   *
+   * This page is where four of the five published studies actually finish a
+   * day - only Proverbs reaches the dedicated day page, which has had the
+   * celebration since it was written. Set from handleDayComplete inside its
+   * existing !wasAlreadyCompleted guard, so re-opening a finished day stays
+   * silent.
+   */
+  const [celebrationDay, setCelebrationDay] = useState<number | null>(null);
   const [freeDevotionalId, setFreeDevotionalId] = useState<string | null | undefined>(undefined);
   const [showChooseFreeModal, setShowChooseFreeModal] = useState(false);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
@@ -1559,8 +1569,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       // Close day modal
       setSelectedDay(null);
 
-      // Log feed activity for new completions only
+      // New completions only: celebrate it, and log it to the feed. Re-opening
+      // a day that was already finished does neither.
       if (!wasAlreadyCompleted && devotional) {
+        setCelebrationDay(dayNumber);
+
         void supabase.rpc("log_feed_activity", {
           p_activity_type: "devotional_day_completed",
           p_activity_data: {
@@ -2748,6 +2761,31 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         />
       )}
 
+      {celebrationDay !== null && devotional && (
+        <DevotionalDayCompletionModal
+          dayNumber={celebrationDay}
+          devotionalTitle={devotional.title}
+          onClose={() => setCelebrationDay(null)}
+          primaryButtonText={
+            celebrationDay < Math.max(1, Number(devotional.total_days || 1))
+              ? `Start Day ${celebrationDay + 1}`
+              : "Back to the study"
+          }
+          onPrimary={() => {
+            const next = days.find((d) => d.day_number === celebrationDay + 1);
+            setCelebrationDay(null);
+            // handleDayClick, not setSelectedDay: it carries the unlock and
+            // credit checks, and routes journey studies to the dashboard the
+            // same way tapping the day in the list does.
+            if (next) void handleDayClick(next);
+          }}
+          secondaryButtonText="Back to bookshelf"
+          onSecondary={() => {
+            setCelebrationDay(null);
+            router.push("/dashboard");
+          }}
+        />
+      )}
       {selectedBibleReading && (
         <BibleReadingModal
           book={selectedBibleReading.book}

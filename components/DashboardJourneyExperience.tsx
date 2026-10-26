@@ -8,6 +8,7 @@ import confetti from "canvas-confetti";
 import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
+import DevotionalDayCompletionModal from "./DevotionalDayCompletionModal";
 import DashboardDailyTaskCallout, { DatabaseTermTakeover, type BibleDatabaseTerm } from "./DashboardDailyTaskCallout";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import BibleYearDeepStudySectionCards from "./BibleYearDeepStudySectionCards";
@@ -2346,6 +2347,12 @@ export default function DashboardJourneyExperience({
   const [completedBibleChapterKeys, setCompletedBibleChapterKeys] = useState<string[]>([]);
   const [embeddedBibleChapterLoading, setEmbeddedBibleChapterLoading] = useState<string | null>(null);
   const [embeddedBibleSearchMessage, setEmbeddedBibleSearchMessage] = useState<string | null>(null);
+  /** The devotional day just finished here, waiting to be celebrated. */
+  const [journeyCelebration, setJourneyCelebration] = useState<{
+    dayNumber: number;
+    devotionalTitle: string;
+    nextDay: CurrentStudyChapter | null;
+  } | null>(null);
   const [embeddedBibleStudyId, setEmbeddedBibleStudyId] = useState<string | null>(null);
   const [buddiesDashboard, setBuddiesDashboard] = useState<BuddiesDashboardPayload | null>(null);
   const [buddiesDashboardLoading, setBuddiesDashboardLoading] = useState(false);
@@ -12827,7 +12834,10 @@ Before we understand redemption, we need to understand what God made humanity fo
    * Finish a devotional day and move to the next one.
    *
    * Same behaviour as Bible in One Year: completing the day unlocks and opens
-   * the next one. No panel, no popup, no confirmation - Day 1 leads to Day 2.
+   * the next one. It used to do that silently - no panel, no popup, no
+   * confirmation. Since 2026-10-26 the day-complete celebration goes up first
+   * and its primary button performs the advance, so the destination is
+   * unchanged and only the timing moved.
    */
   async function completeDevotionalDay(day: CurrentStudyChapter) {
     if (!userId || !currentDevotionalId) return;
@@ -12864,17 +12874,17 @@ Before we understand redemption, we need to understand what God made humanity fo
         await markChapterDone(userId, String(day.bible_reading_book), Number(day.bible_reading_chapter));
       }
 
-      if (nextDay?.bible_reading_book && nextDay.bible_reading_chapter) {
-        void loadEmbeddedBibleStudyChapter({
-          devotionalId: currentDevotionalId,
-          devotionalTitle: currentDevotionalTitle || "Your devotional",
-          dayNumber: nextDay.day_number,
-          book: String(nextDay.bible_reading_book),
-          chapter: Number(nextDay.bible_reading_chapter),
-        });
-      } else {
-        onDevotionalChanged();
-      }
+      // Day 1 still leads to Day 2 - the celebration just gets a say first.
+      // Louis asked for it on every published study (2026-10-26) and this is
+      // where 21 Women and Higher Hope readers finish a day; only Proverbs
+      // reaches the dedicated day page that already had it. The advance that
+      // used to happen here now hangs off the popup's primary button, so
+      // nothing is lost, it just waits for a tap.
+      setJourneyCelebration({
+        dayNumber: day.day_number,
+        devotionalTitle: currentDevotionalTitle || "Your devotional",
+        nextDay,
+      });
     } catch (error) {
       console.error("[DASHBOARD] Could not complete devotional day:", error);
     }
@@ -18847,6 +18857,35 @@ Before we understand redemption, we need to understand what God made humanity fo
                 ? previous
                 : [...previous, embeddedBibleReading.chapter].sort((a, b) => a - b),
             );
+          }}
+        />
+      ) : null}
+
+      {journeyCelebration ? (
+        <DevotionalDayCompletionModal
+          dayNumber={journeyCelebration.dayNumber}
+          devotionalTitle={journeyCelebration.devotionalTitle}
+          onClose={() => setJourneyCelebration(null)}
+          primaryButtonText={
+            journeyCelebration.nextDay
+              ? `Start Day ${journeyCelebration.nextDay.day_number}`
+              : "Back to my studies"
+          }
+          onPrimary={() => {
+            const next = journeyCelebration.nextDay;
+            setJourneyCelebration(null);
+            // Exactly what completing the day used to do on its own.
+            if (next?.bible_reading_book && next.bible_reading_chapter && currentDevotionalId) {
+              void loadEmbeddedBibleStudyChapter({
+                devotionalId: currentDevotionalId,
+                devotionalTitle: journeyCelebration.devotionalTitle,
+                dayNumber: next.day_number,
+                book: String(next.bible_reading_book),
+                chapter: Number(next.bible_reading_chapter),
+              });
+            } else {
+              onDevotionalChanged();
+            }
           }}
         />
       ) : null}
