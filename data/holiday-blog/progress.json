@@ -70,8 +70,13 @@
       "status": "committed",
       "startedAt": "2026-10-26T09:19:42.387Z",
       "committedAt": "2026-10-26T09:32:22.009Z"
+    },
+    "what-is-the-liturgical-calendar": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-26T15:23:57.008Z"
     }
   },
-  "nextTopic": "what-is-the-liturgical-calendar",
-  "updatedAt": "2026-10-26T15:23:33.926Z"
+  "nextTopic": "when-does-advent-begin",
+  "updatedAt": "2026-10-26T15:23:57.008Z"
 }
