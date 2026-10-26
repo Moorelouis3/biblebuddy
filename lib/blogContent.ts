@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-5-explained",
+    title: "Numbers 5 Explained: Camp Purity, Restitution, and the Law of Jealousy",
+    description:
+      "Numbers 5 explained verse by verse: why the unclean were put outside camp, the law of restitution, and a husband's test of jealousy.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-5-explained",
+    publishedAt: "2026-10-26",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-5-explained.jpg",
+    groupPost: {
+      title: "Numbers 5 Explained 📖",
+      content:
+        "A husband's suspicion. No witness. No proof.\nNumbers 5 built an actual process for it.\n\n📌 An innocent wife didn't just go free. She got a future.\n\n📖 Lepers and the unclean were sent outside the camp.\n📖 A wrong against your neighbor cost extra, not just repayment.\n📖 A jealous husband faced no penalty for a false accusation.\n\nNew article on:\n🟢 why **uncleanness** meant leaving the camp entirely\n🟢 why repaying a debt required adding **twenty percent**\n🟢 the **bitter water** test for a suspected wife\n\nWhat have you been settling quietly instead of confessing out loud? 🙏",
+    },
+  },
+  {
     slug: "what-is-all-saints-day",
     title: "What Is All Saints' Day? Meaning, History, and How Christians Celebrate",
     description:
