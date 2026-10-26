@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-6-explained",
+    title: "Numbers 6 Explained: The Nazarite Vow and the Priestly Blessing",
+    description:
+      "Numbers 6 explained verse by verse: the Nazarite vow's three rules, what happened if it broke by accident, and the priestly blessing that closes the chapter.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-6-explained",
+    publishedAt: "2026-10-26",
+    readTime: "12 min read",
+    image: "/blog-banners/numbers-6-explained.jpg",
+    groupPost: {
+      title: "Numbers 6 Explained 📖",
+      content:
+        "No wine. No haircut. No funerals for your own family.\nOne vow in Numbers 6 demanded all three.\n\n📌 Nobody made this vow. Everybody who kept it answered to it completely.\n\n📖 Grapes and raisins were banned, not just wine.\n📖 One accidental brush with death erased the whole vow.\n📖 The chapter ends with a blessing still spoken today.\n\nNew article on:\n🟢 the three rules of the **Nazarite vow**\n🟢 what happened when the vow broke **by accident**\n🟢 the **priestly blessing** closing the chapter\n\nWhat would you give up for a season, on purpose, for God? 🙏",
+    },
+  },
+  {
     slug: "what-is-christmas",
     title: "What Is Christmas? The Biblical Meaning of Jesus' Birth",
     description:
