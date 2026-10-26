@@ -8966,3 +8966,41 @@ via MARCUS_HANDOFF.md (2026-10-19, re-flagged 2026-10-24) and a push notificatio
 (run 48, 2026-10-25T00:52:00Z). Nothing material has changed, so no new notification
 sent this run.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-25 (night)
+Time spent: a long one, morning through to early hours.
+Done:
+- Play Store: account created and paid, device check cleared on Jessica's
+  Android. Phase 1 built (Capacitor Android, adaptive icon script, Linux
+  Codemagic build + signed-bundle workflow). docs/PLAY_STORE_PLAN.md is the
+  plan of record.
+- Settings became collapsible sections; the profile menu reads as You / App /
+  Help / Admin.
+- Your Notes card on the dashboard (later pulled by Louis).
+- Higher Hope got the Proverbs layout; Bible in One Year got a landing page
+  at /bible-in-one-year.
+- Found every call to action on the blog pointing at /start, a 404 since
+  6 Oct. Fixed and deployed. Added `npm run links` so it cannot happen quietly
+  again.
+- Vickie James could not get past day 1 of 21 Women: a rename had dropped the
+  study out of the task system, so her reading, trivia and answer counted for
+  nothing. Fixed, deployed, and replied to her.
+- Built the Inbox Watch routine (hourly) and /api/inbox/agent behind it.
+Not live yet: 23 commits waiting, next build Mon 09:05 Berlin. Among them the
+Bible in One Year landing page, the inbox endpoint and the link checker. The
+21 Women fix and the blog CTA fix went out tagged and are already live.
+Still open:
+- Inbox Watch is DISABLED. It needs BUG_AGENT_TOKEN added to its routine
+  environment, and the endpoint live (Mon 09:05) before switching on.
+- Anthony Elem, reported 21 Oct and again 18:12 on the 25th: cannot post in a
+  discussion, being asked for email and password, wants a reset. Four days
+  stuck. Untouched - sign-in related.
+- Play Store waits on Google: identity documents under review, and the phone
+  check cannot start until they clear. Then keystore, app, closed track, link,
+  12 testers for 14 days.
+- Seven studies still wear the wrong layout (docs/STUDY_LAYOUT_LISTS.md). 21
+  Women was one of them and it was not cosmetic; the other six are Louis's
+  call because the progress maths shifts under readers mid-study.
+- Day 2 still needs day 1's reading ticked. Vickie did everything else and is
+  still gated on that one box - worth loosening.
+Next: Google's email, then the Play keystore and first bundle.
