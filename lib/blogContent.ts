@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-fasting",
+    title: "What Is Fasting and Should I Do It?",
+    description:
+      "What is fasting in the Bible, and should you do it? What biblical fasting actually means, why Esther, Daniel, and Jesus fasted, and how to start safely.",
+    category: "Bible Study Tips",
+    categorySlug: "bible-study-tips",
+    canonicalPath: "/blog/what-is-fasting",
+    publishedAt: "2026-10-26",
+    readTime: "16 min read",
+    image: "/what-is-fasting-banner.png",
+    groupPost: {
+      title: "What Is Fasting and Should I Do It? 📖",
+      content:
+        "Jesus never said if you fast. He said when.\nMost Christians were never actually taught what that means.\n\n📌 Fasting was never a hunger strike to force God's hand.\n\n📖 Esther fasted three days before risking her life.\n📖 Jesus fasted forty days before His ministry even started.\n📖 The fast God actually wants reaches further than food.\n\nNew article on:\n🟢 what **biblical fasting** really is and is not\n🟢 why real people in the Bible actually fasted\n🟢 how to start small and safely as a beginner\n\nHave you ever tried fasting, and what did it teach you? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-liturgical-calendar",
     title: "What Is the Liturgical Calendar? A Beginner's Guide to the Christian Year",
     description:
