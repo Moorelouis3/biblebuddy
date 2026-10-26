@@ -14,9 +14,10 @@
       ]
     },
     "2026-10-26": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "what-is-reformation-day"
+        "what-is-reformation-day",
+        "what-is-all-saints-day"
       ]
     }
   },
@@ -57,10 +58,11 @@
     },
     "what-is-all-saints-day": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-26T05:17:11.494Z"
+      "status": "committed",
+      "startedAt": "2026-10-26T05:17:11.494Z",
+      "committedAt": "2026-10-26T05:30:05.739Z"
     }
   },
   "nextTopic": "what-is-christmas",
-  "updatedAt": "2026-10-26T05:17:11.494Z"
+  "updatedAt": "2026-10-26T05:30:05.754Z"
 }

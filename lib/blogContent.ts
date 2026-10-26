@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-all-saints-day",
+    title: "What Is All Saints' Day? Meaning, History, and How Christians Celebrate",
+    description:
+      "What is All Saints' Day? The real history behind November 1, what Catholics believe about the saints in heaven, and what the Bible calls a saint.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-all-saints-day",
+    publishedAt: "2026-10-26",
+    readTime: "16 min read",
+    image: "/blog-banners/what-is-all-saints-day.jpg",
+    groupPost: {
+      title: "What Is All Saints' Day? 📖",
+      content:
+        "Halloween gets all the attention on October 31.\nThe very next day belongs to a much older crowd.\n\n📌 All Saints' Day remembers every believer in heaven, not just the famous ones.\n\n📖 It took two popes named Gregory to settle the date on November 1.\n📖 Catholics call it a holy day of obligation, Protestants are split on keeping it at all.\n📖 The New Testament calls every believer a saint, long before anyone added a statue.\n\nNew article on:\n🟢 how **Pope Gregory III** and **Pope Gregory IV** fixed the date\n🟢 what the **Catholic Church** actually teaches about the saints in heaven\n🟢 what the word **saint** really means in the New Testament\n\nWho finished their race in faith before you, that you could thank God for today? 🙏",
+    },
+  },
+  {
     slug: "numbers-4-explained",
     title: "Numbers 4 Explained: Carrying the Ark Without Touching It",
     description:
