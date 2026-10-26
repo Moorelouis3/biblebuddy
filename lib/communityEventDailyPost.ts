@@ -3,6 +3,7 @@ import { COMMUNITY_EVENTS, getCommunityEventState, isCommunityEventDayUnlocked, 
 import { BIBLE_BUDDY_GROUP_ID, eventDayStudyPath, type EventDayPost } from "@/lib/communityEventDays";
 import { insertGroupPostWithRetry } from "@/lib/groupPostInsert";
 import { getProverbsDailyPost, type ProverbsDailyPost } from "@/lib/proverbsDailyPosts";
+import { getBeginningDailyPost } from "@/lib/beginningDailyPosts";
 import { WISDOM_BOOKS_ON_SALE, WISDOM_BOOKS_PAGE_PATH } from "@/lib/wisdomOfProverbsProducts";
 
 // Community event daily post (2026-09-22, The Wisdom of Proverbs).
@@ -41,7 +42,23 @@ const PAGE_SIZE = 1000;
 /** Which daily-post content belongs to which event. */
 const DAILY_POSTS_BY_EVENT: Record<string, (day: number) => ProverbsDailyPost | null> = {
   "wisdom-of-proverbs": getProverbsDailyPost,
+  "beginning-of-everything": getBeginningDailyPost,
 };
+
+/**
+ * The book advert at the foot of a daily post, per event.
+ *
+ * It used to be one module-level constant, which was fine while Proverbs was
+ * the only study running - but it would have put "Get The Wisdom of Proverbs
+ * in print" under 21 days of Genesis. An event with no printBooksPath gets no
+ * advert at all, which is the right default for a study with no book yet.
+ */
+function booksCtaFor(event: CommunityEvent): { path: string; label: string } | null {
+  if (event.slug === "wisdom-of-proverbs" && BOOKS_CTA_PATH) {
+    return { path: BOOKS_CTA_PATH, label: "Get The Wisdom of Proverbs in print" };
+  }
+  return null;
+}
 
 function escapeHtml(value: string) {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -70,11 +87,19 @@ export function buildPostTitle(entry: ProverbsDailyPost, eventTitle?: string) {
  * written in the app (<p>..</p>, an empty <p> for a blank line). The feed
  * turns "Proverbs 1:7" into a tappable verse link on its own.
  */
-export function buildPostContent(entry: ProverbsDailyPost, totalDays = COMMUNITY_EVENT_TOTAL_DAYS, studyPath?: string, eventTitle?: string) {
+export function buildPostContent(
+  entry: ProverbsDailyPost,
+  totalDays = COMMUNITY_EVENT_TOTAL_DAYS,
+  studyPath?: string,
+  eventTitle?: string,
+  booksCta: { path: string; label: string } | null = BOOKS_CTA_PATH
+    ? { path: BOOKS_CTA_PATH, label: "Get The Wisdom of Proverbs in print" }
+    : null,
+) {
   const blank = "<p></p>";
   const lines = [`<p><strong>⭐ Day ${entry.day} of ${totalDays}: ${escapeHtml(entry.title)}</strong></p>`, blank];
   if (entry.milestone) lines.push(`<p><strong>${escapeHtml(entry.milestone)}</strong></p>`, blank);
-  lines.push(`<p>📖 <strong>Today&rsquo;s Reading: Proverbs ${entry.chapter}</strong></p>`, blank);
+  lines.push(`<p>📖 <strong>Today&rsquo;s Reading: ${escapeHtml(entry.reading ?? `Proverbs ${entry.chapter}`)}</strong></p>`, blank);
   for (const paragraph of entry.paragraphs) lines.push(`<p>${escapeHtml(paragraph)}</p>`, blank);
   lines.push(
     `<p>📜 <strong>Key Verse</strong></p>`,
@@ -96,10 +121,10 @@ export function buildPostContent(entry: ProverbsDailyPost, totalDays = COMMUNITY
     `<p>❤️ Read somebody else&rsquo;s response and encourage them in the comments</p>`,
   );
   for (const closing of entry.closing) lines.push(blank, `<p><strong>${escapeHtml(closing)}</strong></p>`);
-  if (BOOKS_CTA_PATH) {
+  if (booksCta) {
     lines.push(
       blank,
-      `<p>📕 <em>Prefer paper? <a href="${escapeHtml(BOOKS_CTA_PATH)}">Get The Wisdom of Proverbs in print →</a></em></p>`,
+      `<p>📕 <em>Prefer paper? <a href="${escapeHtml(booksCta.path)}">${escapeHtml(booksCta.label)} →</a></em></p>`,
     );
   }
 
@@ -107,12 +132,19 @@ export function buildPostContent(entry: ProverbsDailyPost, totalDays = COMMUNITY
 }
 
 /** Plain-text version of the same post, for the review doc and dry runs. */
-export function buildPostPlainText(entry: ProverbsDailyPost, totalDays = COMMUNITY_EVENT_TOTAL_DAYS, studyPath?: string) {
+export function buildPostPlainText(
+  entry: ProverbsDailyPost,
+  totalDays = COMMUNITY_EVENT_TOTAL_DAYS,
+  studyPath?: string,
+  booksCta: { path: string; label: string } | null = BOOKS_CTA_PATH
+    ? { path: BOOKS_CTA_PATH, label: "Get The Wisdom of Proverbs in print" }
+    : null,
+) {
   return [
     `⭐ Day ${entry.day} of ${totalDays}: ${entry.title}`,
     "",
     ...(entry.milestone ? [entry.milestone, ""] : []),
-    `📖 Today's Reading: Proverbs ${entry.chapter}`,
+    `📖 Today's Reading: ${entry.reading ?? `Proverbs ${entry.chapter}`}`,
     "",
     ...entry.paragraphs.flatMap((p) => [p, ""]),
     "📜 Key Verse",
@@ -127,7 +159,7 @@ export function buildPostPlainText(entry: ProverbsDailyPost, totalDays = COMMUNI
     "✍🏾 Share your answer to today's question below",
     "❤️ Read somebody else's response and encourage them in the comments",
     ...entry.closing.flatMap((c) => ["", c]),
-    ...(BOOKS_CTA_PATH ? ["", `📕 Prefer paper? Get The Wisdom of Proverbs in print → ${BOOKS_CTA_PATH}`] : []),
+    ...(booksCta ? ["", `📕 Prefer paper? ${booksCta.label} → ${booksCta.path}`] : []),
   ].join("\n");
 }
 
@@ -343,7 +375,7 @@ async function runForEvent(
 
   const studyPath = eventDayStudyPath(event.devotionalId, day);
   const linkUrl = `${SITE_URL}${studyPath}`;
-  const { title, content } = buildPostContent(entry, event.totalDays, studyPath, event.title);
+  const { title, content } = buildPostContent(entry, event.totalDays, studyPath, event.title, booksCtaFor(event));
   const louis = await getLouis();
 
   // 1. The post.
@@ -393,7 +425,7 @@ async function runForEvent(
     title,
     category: COMMUNITY_EVENT_POST_CATEGORY,
     linkUrl,
-    preview: options.dryRun ? buildPostPlainText(entry, event.totalDays, studyPath) : undefined,
+    preview: options.dryRun ? buildPostPlainText(entry, event.totalDays, studyPath, booksCtaFor(event)) : undefined,
   };
 
   // 2. Notifications. Only for the event's current day: a backfill of an

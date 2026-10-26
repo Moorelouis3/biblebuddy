@@ -12,6 +12,15 @@
 export type ProverbsDailyPost = {
   day: number;
   chapter: number;
+  /**
+   * The reading line, when one chapter per day is not the shape of the study.
+   *
+   * Proverbs runs a chapter a day, so these entries leave it out and the post
+   * says "Proverbs {chapter}". The Beginning of Everything paces by passage -
+   * Genesis 1 alone takes four days - so its entries set this to the passage
+   * itself, e.g. "Genesis 1:3-13".
+   */
+  reading?: string;
   title: string;
   /** Milestone line above the reading (day 1, 7, 10, 15, 21, 25, 28, 30, 31). */
   milestone: string | null;
