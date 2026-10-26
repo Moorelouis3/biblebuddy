@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-7-explained",
+    title: "Numbers 7 Explained: Twelve Princes, One Identical Gift",
+    description:
+      "Numbers 7 explained verse by verse: why the same gift repeats twelve times, the wagons withheld from Kohath, and the voice from the mercy seat.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-7-explained",
+    publishedAt: "2026-10-26",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-7-explained.jpg",
+    groupPost: {
+      title: "Numbers 7 Explained 📖",
+      content:
+        "Twelve princes. Twelve days. The exact same gift, every time.\nScripture still wrote every single one down in full.\n\n📌 The repeating gift was never the boring part. It was the point.\n\n📖 Kohath got zero wagons, and verse 9 says exactly why.\n📖 This chapter actually happened before Numbers 1.\n📖 The totals add up perfectly, down to the shekel.\n\nNew article on:\n🟢 why the **same gift** repeats twelve times\n🟢 the **wagons** two Levite families got, and one did not\n🟢 the voice Moses finally hears from the **mercy seat**\n\nDoes God notice your gift even when it looks just like everyone else's? 🙏",
+    },
+  },
+  {
     slug: "numbers-6-explained",
     title: "Numbers 6 Explained: The Nazarite Vow and the Priestly Blessing",
     description:
