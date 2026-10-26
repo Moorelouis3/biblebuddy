@@ -957,3 +957,17 @@ routine is paused when it is not.
 ## Christian Holidays series: articles waiting on real banner artwork
 what-is-reformation-day (reused catholic-vs-protestant-church-calendars.jpg, nearest existing banner).
 This is one line, updated by each Holiday Blog Writer run rather than a new block per article.
+
+## Bible Note Writer Agent: "whole Bible is done" still open 7 days / 79 no-op runs later, escalated directly to Louis (2026-10-26)
+The entry above from 2026-10-19 (re-flagged 2026-10-24) is still unresolved: all 1189 canonical
+chapters, Genesis 1 through Revelation 22, have been on the real style spec since 2026-10-19T21:01:00Z,
+and the hourly Bible Note Writer routine has found nothing to do on every run since -- this is the 79th
+consecutive no-op run. Re-verified fresh this run: both backlog files (`bible-notes-priority-queue.json`,
+`bible-notes-style-redo-remaining.json`) still have empty `remaining` arrays, the progress log still ends
+at Revelation 22, and lib/bibleReaderStudyNotes.ts still wires every chapter. Nothing has changed in a
+week. Rather than add a third silent re-flag here, this run also sent Louis a direct push notification,
+since a week of hourly no-op runs sitting in a handoff file he hasn't acted on is exactly the kind of
+thing that should interrupt him rather than wait to be noticed. The three options from the 2026-10-19
+entry are still on the table: (1) leave the hourly trigger as a harmless no-op, (2) disable/pause it now
+that the job is done, or (3) give it a new mandate (quality audit pass, deeper pass on a specific book,
+etc). Still not deciding this myself -- it's Louis's call.
