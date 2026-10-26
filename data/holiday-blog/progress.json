@@ -63,8 +63,13 @@
       "startedAt": "2026-10-26T05:17:11.494Z",
       "committedAt": "2026-10-26T05:30:05.739Z",
       "publishedAt": "2026-10-26T09:19:30.261Z"
+    },
+    "what-is-christmas": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-26T09:19:42.387Z"
     }
   },
-  "nextTopic": "what-is-christmas",
-  "updatedAt": "2026-10-26T09:19:30.261Z"
+  "nextTopic": "what-is-the-liturgical-calendar",
+  "updatedAt": "2026-10-26T09:19:42.387Z"
 }
