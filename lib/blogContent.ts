@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-3-explained",
+    title: "Numbers 3 Explained: The Levites Given in Place of Israel's Firstborn",
+    description:
+      "Numbers 3 explained verse by verse: why Aaron's sons died, how the Levites stood in for Israel's firstborn, and what each family carried.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-3-explained",
+    publishedAt: "2026-10-26",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-3-explained.jpg",
+    groupPost: {
+      title: "Numbers 3 Explained 📖",
+      content:
+        "One priestly family loses two sons in a single verse.\nOne whole tribe gets handed a debt that belonged to everyone.\n\n📌 God traded one tribe for every firstborn son in Israel.\n\n📖 Gershon carried the tent. Merari carried its frame.\n📖 Kohath carried the ark itself, under Moses and Aaron's own kin.\n📖 273 leftover firstborn sons were bought back with silver.\n\nNew article on:\n🟢 why **Aaron's own sons** never make it past verse 4\n🟢 why the **Levites** stood in for Israel's firstborn\n🟢 the **273 sons** redeemed with silver instead\n\nWhat obligation to God have you been treating as optional? 🙏",
+    },
+  },
+  {
     slug: "what-is-reformation-day",
     title: "What Is Reformation Day? History, Meaning, and Why October 31 Matters",
     description:
