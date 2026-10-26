@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-christmas",
+    title: "What Is Christmas? The Biblical Meaning of Jesus' Birth",
+    description:
+      "What is Christmas? The Bible's account of Jesus' birth, where the name and the date came from, and how Catholics, Orthodox, and Protestants mark it.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-christmas",
+    publishedAt: "2026-10-26",
+    readTime: "15 min read",
+    image: "/blog-banners/what-is-christmas.jpg",
+    groupPost: {
+      title: "What Is Christmas? 📖",
+      content:
+        "Halfway through the Christmas season, most people still can't say what the day is actually about.\nNot the tree. Not the lights. The actual thing.\n\n📌 Christmas marks one claim bigger than any other in history: God put on a body and moved into the neighborhood.\n\n📖 The first Christians didn't even agree on a date for two centuries.\n📖 Rome's own Catholic Church still lists it as one of the days you don't skip.\n📖 Millions of Orthodox Christians are opening presents on a completely different day.\n\nNew article on:\n🟢 where the word **Christmas** actually comes from\n🟢 what the **Catholic Church** officially teaches about the day\n🟢 why some Christians historically wanted it **banned** outright\n\nWhat would change if you treated today as the day God moved in, not just a deadline on a calendar? 🙏",
+    },
+  },
+  {
     slug: "numbers-5-explained",
     title: "Numbers 5 Explained: Camp Purity, Restitution, and the Law of Jealousy",
     description:

@@ -14,10 +14,11 @@
       ]
     },
     "2026-10-26": {
-      "committed": 2,
+      "committed": 3,
       "slugs": [
         "what-is-reformation-day",
-        "what-is-all-saints-day"
+        "what-is-all-saints-day",
+        "what-is-christmas"
       ]
     }
   },
@@ -66,10 +67,11 @@
     },
     "what-is-christmas": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-26T09:19:42.387Z"
+      "status": "committed",
+      "startedAt": "2026-10-26T09:19:42.387Z",
+      "committedAt": "2026-10-26T09:32:22.009Z"
     }
   },
   "nextTopic": "what-is-the-liturgical-calendar",
-  "updatedAt": "2026-10-26T09:19:42.387Z"
+  "updatedAt": "2026-10-26T09:32:22.024Z"
 }
