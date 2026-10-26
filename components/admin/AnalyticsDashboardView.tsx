@@ -401,7 +401,14 @@ export default function AnalyticsDashboardView({
               <h1 className="flex items-center gap-2 whitespace-nowrap text-[21px] font-black sm:text-[32px]">
                 <span className="text-[#2563eb]">📖</span> Bible Buddy <span className="text-[#cbd5e1]">|</span> Analytics
               </h1>
-              <p className="mt-1 text-sm font-medium text-[#64748b]">Growth, engagement, and retention at a glance.</p>
+              <p className="mt-1 text-sm font-medium text-[#64748b]">
+                Growth, engagement, and retention at a glance.{" "}
+                {/* The two pages answer different questions: this one is how
+                    much happened, Product Health is whether it worked. */}
+                <a href="/admin/product-health" className="font-bold text-[#0056FD] underline">
+                  Product Health →
+                </a>
+              </p>
             </div>
             <button
               type="button"

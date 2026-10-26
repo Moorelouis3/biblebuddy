@@ -48,7 +48,8 @@
     "links": "node scripts/check-internal-links.mjs",
     "signups": "node scripts/signup-report.mjs",
     "campaign": "node scripts/campaign.mjs",
-    "backfill-subscribers": "node scripts/backfill-subscribers.mjs"
+    "backfill-subscribers": "node scripts/backfill-subscribers.mjs",
+    "verify:product-health": "tsx scripts/verify-product-health.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",
