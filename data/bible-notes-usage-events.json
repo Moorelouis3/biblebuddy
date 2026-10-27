@@ -887,12 +887,62 @@
       "chaptersCompletedSoFarTonight": 0,
       "detail": "Not a usage/rate limit. 95th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Session started on a detached HEAD (same recurring environment anomaly as many prior runs); resolved cleanly with git checkout main && git pull origin main, confirmed HEAD matched origin/main exactly, zero drift. npm install ran clean (fresh clone, ~28s). Re-verified fresh: data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json both have empty remaining arrays; data/bible-notes-progress-log.json still ends at Revelation 22 (1262 entries, goal 1189). lib/bibleReaderStudyNotes.ts still has 1281 replaceStudySectionsForBookRange calls and lib/ still has 1187 *Source.ts files, both unchanged from run 94. Ran a fresh throwaway tsx spot-check calling getBibleReaderStudySections() across a spread of canonical book/chapter pairs (Genesis 1, Genesis 50, Exodus 1, Psalms 150, Matthew 1, Revelation 22, Malachi 4, Jude 1) and confirmed zero return empty and zero throw. `npx tsc --noEmit` ran clean (exit 0). Already escalated to Louis via MARCUS_HANDOFF.md (2026-10-19, re-flagged 2026-10-24, direct push notification on run 79, 2026-10-26T07:49:31Z, now ~16 hours / 16 no-op runs old). Nothing material has changed since the last run entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run, consistent with runs 80-94. Stopping cleanly per the routine's own instruction to stop rather than spin or invent work when there is no target chapter.",
       "steps": [
-        { "name": "git state checked (detached HEAD, resolved to main)", "at": "2026-10-26T23:46:32Z" },
-        { "name": "npm install done", "at": "2026-10-26T23:47:49Z" },
-        { "name": "target chapter determined: none -- redo-remaining, priority-queue empty, progress-log ends Revelation 22", "at": "2026-10-26T23:48:10Z" },
-        { "name": "spot-check parser run across 8 canonical chapters, zero throws/empties", "at": "2026-10-26T23:49:05Z" },
-        { "name": "tsc --noEmit clean", "at": "2026-10-26T23:49:40Z" },
-        { "name": "usage-events block logged", "at": "2026-10-26T23:50:30Z" }
+        {
+          "name": "git state checked (detached HEAD, resolved to main)",
+          "at": "2026-10-26T23:46:32Z"
+        },
+        {
+          "name": "npm install done",
+          "at": "2026-10-26T23:47:49Z"
+        },
+        {
+          "name": "target chapter determined: none -- redo-remaining, priority-queue empty, progress-log ends Revelation 22",
+          "at": "2026-10-26T23:48:10Z"
+        },
+        {
+          "name": "spot-check parser run across 8 canonical chapters, zero throws/empties",
+          "at": "2026-10-26T23:49:05Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-26T23:49:40Z"
+        },
+        {
+          "name": "usage-events block logged",
+          "at": "2026-10-26T23:50:30Z"
+        }
+      ]
+    },
+    {
+      "timestamp": "2026-10-27T00:52:00Z",
+      "type": "block",
+      "chaptersCompletedSoFarTonight": 0,
+      "detail": "Not a usage/rate limit. 96th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Session started on a detached HEAD (same recurring environment anomaly as many prior runs); resolved cleanly with git checkout main && git pull origin main, which brought in one unrelated blog-article commit already merged to main -- zero drift from origin/main otherwise. npm install ran clean (fresh clone, 737 packages, ~30s, 26 pre-existing vulnerabilities unrelated to this routine). Re-verified fresh: data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json both have empty remaining arrays; data/bible-notes-progress-log.json still ends at Revelation 22 (1262 entries, goal 1189). lib/bibleReaderStudyNotes.ts still has 1281 replaceStudySectionsForBookRange calls and lib/ still has 1187 *Source.ts files, both unchanged from run 95. Ran a fresh throwaway tsx spot-check (written to repo root, run, deleted before anything was committed) calling getBibleReaderStudySections() across a spread of canonical book/chapter pairs (Genesis 1, Genesis 50, Leviticus 1, Psalms 150, Isaiah 53, Matthew 1, Romans 8, Revelation 22) and confirmed zero return empty and zero throw. `npx tsc --noEmit` ran clean (exit 0). Already escalated to Louis via MARCUS_HANDOFF.md (2026-10-19, re-flagged 2026-10-24, direct push notification on run 79, 2026-10-26T07:49:31Z, now ~17 hours / 17 no-op runs old). Nothing material has changed since the last run entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run, consistent with runs 80-95. Stopping cleanly per the routine's own instruction to stop rather than spin or invent work when there is no target chapter.",
+      "steps": [
+        {
+          "name": "git state checked (detached HEAD, resolved to main via checkout + pull)",
+          "at": "2026-10-27T00:46:19Z"
+        },
+        {
+          "name": "npm install done",
+          "at": "2026-10-27T00:46:59Z"
+        },
+        {
+          "name": "target chapter determined: none -- redo-remaining and priority-queue both empty, progress-log ends Revelation 22",
+          "at": "2026-10-27T00:47:35Z"
+        },
+        {
+          "name": "spot-check parser run across 8 canonical chapters, zero throws/empties",
+          "at": "2026-10-27T00:48:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean",
+          "at": "2026-10-27T00:48:16Z"
+        },
+        {
+          "name": "usage-events block logged",
+          "at": "2026-10-27T00:52:00Z"
+        }
       ]
     }
   ]
