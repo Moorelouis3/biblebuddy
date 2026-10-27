@@ -89,17 +89,19 @@
     },
     "when-does-advent-begin": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-27T01:16:59.392Z",
-      "committedAt": "2026-10-27T01:28:33.391Z"
+      "committedAt": "2026-10-27T01:28:33.391Z",
+      "publishedAt": "2026-10-27T09:16:50.718Z"
     },
     "what-is-epiphany": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-27T05:17:19.030Z",
-      "committedAt": "2026-10-27T05:29:36.032Z"
+      "committedAt": "2026-10-27T05:29:36.032Z",
+      "publishedAt": "2026-10-27T09:16:50.885Z"
     }
   },
   "nextTopic": "what-is-all-souls-day",
-  "updatedAt": "2026-10-27T05:29:36.045Z"
+  "updatedAt": "2026-10-27T09:16:50.885Z"
 }
