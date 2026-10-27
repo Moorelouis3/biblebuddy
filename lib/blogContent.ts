@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-9-explained",
+    title: "Numbers 9 Explained: The Second Passover and the Pillar of Cloud",
+    description:
+      "Numbers 9 explained verse by verse: the second Passover for the unclean, the stranger's ordinance, and the cloud and fire that told Israel's camp when to move.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-9-explained",
+    publishedAt: "2026-10-27",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-9-explained.jpg",
+    groupPost: {
+      title: "Numbers 9 Explained 📖",
+      content:
+        "A man touches a dead body. Now he cannot keep the Passover.\nNumbers 9 refuses to just leave it there.\n\n📌 Being unable is never the same as being unwilling.\n\n📖 God built a second Passover just for men like him.\n📖 This chapter actually happened before Numbers 1.\n📖 A cloud decided every single stop, for forty years.\n\nNew article on:\n🟢 the **second Passover** God built into the law\n🟢 the warning sitting right beside that mercy\n🟢 the **cloud and fire** that moved Israel's whole camp\n\nAre you waiting for God's signal, or just setting your own schedule? 🙏",
+    },
+  },
+  {
     slug: "when-does-advent-begin",
     title: "When Does Advent Begin? Dates, Meaning, and Traditions",
     description:
