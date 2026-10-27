@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-12-explained",
+    title: "Numbers 12 Explained: Miriam, Aaron, and the Woman Moses Married",
+    description:
+      "Numbers 12 explained verse by verse: Miriam and Aaron's complaint, God's defense of Moses, Miriam's leprosy, and the seven days the camp waited for her.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-12-explained",
+    publishedAt: "2026-10-27",
+    readTime: "15 min read",
+    image: "/blog-banners/numbers-12-explained.jpg",
+    groupPost: {
+      title: "Numbers 12 Explained 📖",
+      content:
+        "One sentence about a marriage hides a much bigger fight.\nNumbers 12 shows what jealousy looks like dressed up small.\n\n📌 Two leaders with real authority still wanted more of it.\n\n📖 God calls Miriam and Aaron out suddenly, with no warning.\n📖 Miriam is struck with leprosy right outside the camp.\n📖 The whole nation waits seven days before moving on.\n\nNew article on:\n🟢 why God defends **Moses** instead of letting him argue\n🟢 what made **Miriam and Aaron's** complaint so serious\n🟢 why an entire camp waited on **one woman's** healing\n\nIs any part of you quietly wanting someone else's calling? 🙏",
+    },
+  },
+  {
     slug: "numbers-11-explained",
     title: "Numbers 11 Explained: Complaining, Quail, and Seventy Elders",
     description:
