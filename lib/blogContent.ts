@@ -161,6 +161,23 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     },
   },
   {
+    slug: "numbers-8-explained",
+    title: "Numbers 8 Explained: Cleansing the Levites and the Age of Service",
+    description:
+      "Numbers 8 explained verse by verse: the Levites' cleansing, the hands laid on them, the firstborn debt from Egypt, and the age of service.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-8-explained",
+    publishedAt: "2026-10-27",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-8-explained.jpg",
+    groupPost: {
+      title: "Numbers 8 Explained 📖",
+      content:
+        "Shaved heads. Washed clothes. The whole nation laying hands on one tribe.\nNumbers 8 is more physical than it sounds.\n\n📌 Being chosen was never the same as being exempt from being cleansed.\n\n📖 The Levites still needed a sin offering before they could serve.\n📖 This chapter settles a debt going back to Egypt's firstborn.\n📖 Service had a clear start age and a clear stop age.\n\nNew article on:\n🟢 why the whole nation laid **hands** on the Levites\n🟢 the old **firstborn** debt this chapter finally pays\n🟢 the exact **age of service** God gave this one tribe\n\nHas God ever asked you to be cleansed before He used you? 🙏",
+    },
+  },
+  {
     slug: "numbers-7-explained",
     title: "Numbers 7 Explained: Twelve Princes, One Identical Gift",
     description:
