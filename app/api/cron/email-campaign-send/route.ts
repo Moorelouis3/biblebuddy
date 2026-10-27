@@ -110,6 +110,22 @@ export async function GET(request: NextRequest) {
    */
   const TRIGGER_IDS = ["study-nudge", "streak-at-risk", "finished-devotional"];
 
+  /**
+   * The community study start emails, one row per study
+   * (community-start-beginning-of-everything, and whatever comes after).
+   *
+   * Same shape as the triggers above and the same danger: armed, undated,
+   * and owned by a different sender - /api/cron/community-study-start, which
+   * picks the recipients itself from community_event_members on the morning
+   * the study opens. To the query below that row looks like "send this to
+   * everybody now", and the 18 people who joined would become the whole
+   * list.
+   *
+   * Matched by prefix rather than by id so the next study cannot ship
+   * without this lock by somebody forgetting to add it here.
+   */
+  const COMMUNITY_START_PREFIX = "community-start-";
+
   const foreignIds = TRIGGER_IDS;
 
   const { data, error } = await db
@@ -121,6 +137,7 @@ export async function GET(request: NextRequest) {
     .eq("kind", "marketing")
     .eq("status", "sending")
     .not("campaign_id", "in", `(${foreignIds.join(",")})`)
+    .not("campaign_id", "like", `${COMMUNITY_START_PREFIX}%`)
     .or(`scheduled_for.is.null,scheduled_for.lte.${new Date().toISOString()}`)
     .order("scheduled_for", { ascending: true, nullsFirst: false })
     .order("created_at", { ascending: true })
