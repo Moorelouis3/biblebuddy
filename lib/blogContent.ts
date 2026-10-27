@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-all-souls-day",
+    title: "What Is All Souls' Day? Catholic Traditions, Prayer, and Remembering the Dead",
+    description:
+      "What is All Souls' Day? The history behind November 2, Catholic teaching on purgatory, and how Orthodox and Protestant Christians see the dead.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-all-souls-day",
+    publishedAt: "2026-10-27",
+    readTime: "15 min read",
+    image: "/blog-banners/what-is-all-souls-day.jpg",
+    groupPost: {
+      title: "What Is All Souls' Day? 📖",
+      content:
+        "November 2 sits one day after All Saints' Day, and most people walk right past it.\nIt is the day the Church set aside just to pray for the dead.\n\n📌 All Souls' Day asks what happens between death and heaven, and not every church answers it the same way.\n\n📖 One French abbot gave the whole West this one date.\n📖 The Catholic Church still grants an indulgence for visiting a grave this week.\n📖 Protestants read the same Bible and land on no purgatory at all.\n\nNew article on:\n🟢 the **Catholic Church's** own teaching on purgatory\n🟢 how the **Eastern Orthodox Church** keeps its own Soul Saturdays\n🟢 why most Protestants pray **for** the grieving, never **for** the dead\n\nWho do you still need to thank God for today, even though they are already gone? 🙏",
+    },
+  },
+  {
     slug: "numbers-10-explained",
     title: "Numbers 10 Explained: The Silver Trumpets and the First March",
     description:
