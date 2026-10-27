@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-11-explained",
+    title: "Numbers 11 Explained: Complaining, Quail, and Seventy Elders",
+    description:
+      "Numbers 11 explained verse by verse: the fire at Taberah, Israel's craving for meat, Moses breaking under the weight, the seventy elders, and the quail.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-11-explained",
+    publishedAt: "2026-10-27",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-11-explained.jpg",
+    groupPost: {
+      title: "Numbers 11 Explained 📖",
+      content:
+        "Three days into the march, and the complaining already starts.\nNumbers 11 shows what happens when Moses finally breaks.\n\n📌 Being fed and being grateful are not the same thing.\n\n📖 A fire burns through the camp over one unnamed complaint.\n📖 God gives seventy elders the same spirit Moses carries.\n📖 A month of meat arrives with a warning built in.\n\nNew article on:\n🟢 the **seventy elders** who shared Moses' burden\n🟢 why God sent **quail** as both a gift and a warning\n🟢 Joshua's jealousy over **Eldad and Medad** prophesying\n\nAre you remembering what God gave you, or only what you miss? 🙏",
+    },
+  },
+  {
     slug: "what-is-all-souls-day",
     title: "What Is All Souls' Day? Catholic Traditions, Prayer, and Remembering the Dead",
     description:
