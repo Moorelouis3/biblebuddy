@@ -9388,3 +9388,28 @@ calls, both unchanged. Already escalated to Louis via MARCUS_HANDOFF.md
 is still sitting in MARCUS_HANDOFF.md unresolved. Nothing material has changed
 since, so no new notification sent this run.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-27T02:50:16Z (hourly chapter notes run)
+Chapter: none | Status: block (no chapter available)
+All 1189 canonical chapters, Genesis 1 through Revelation 22, are still wired and
+verified. Priority queue and style-redo backlog are both still empty. This is the
+98th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Session
+started on a detached HEAD again; resolved with git checkout main && git pull
+origin main (fast-forwarded in 2 unrelated commits -- a Chapter Library blog
+article and its own progress log, zero drift otherwise). Re-verified all three
+pipeline files fresh: priority queue and style-redo backlog both `[]`, progress
+log still ends at Revelation 22 (1262 entries, goal 1189). Independently
+recomputed the canonical 66-book chapter-count total (1189) and confirmed it
+matches goalTotalChapters. Ran a fresh throwaway tsx spot-check calling
+getBibleReaderStudySections() across 12 canonical book/chapter pairs (Genesis 1,
+Genesis 50, Leviticus 1, Numbers 36, Psalms 150, Isaiah 53, Matthew 1, Romans 8,
+3 John 1, Jude 1, Revelation 22, Obadiah 1) -- zero empty, zero throw, real
+section counts on every one. `npx tsc --noEmit` clean. lib/ still has 1187
+*Source.ts files and lib/bibleReaderStudyNotes.ts still has 1281
+replaceStudySectionsForBookRange calls, both unchanged. Already escalated to
+Louis via MARCUS_HANDOFF.md (2026-10-19, re-flagged 2026-10-24, direct push
+notification on run 79, 2026-10-26T07:49:31Z, now ~19 hours / 19 no-op runs old)
+and that handoff entry is still sitting in MARCUS_HANDOFF.md unresolved -- read
+it fresh this run, no new reply from Louis. Nothing material has changed since,
+so no new notification sent this run.
+Next up: whatever Louis decides the next mandate is.
