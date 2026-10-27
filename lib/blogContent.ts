@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-does-the-bible-say-about-the-birth-of-jesus",
+    title: "What Does the Bible Say About the Birth of Jesus?",
+    description:
+      "What does the Bible say about the birth of Jesus? The prophecy, Mary's angel, the night in Bethlehem, and the wise men, straight from Luke and Matthew.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-does-the-bible-say-about-the-birth-of-jesus",
+    publishedAt: "2026-10-27",
+    readTime: "15 min read",
+    image: "/blog-banners/what-does-the-bible-say-about-the-birth-of-jesus.jpg",
+    groupPost: {
+      title: "What Does the Bible Say About the Birth of Jesus? 📖",
+      content:
+        "Shepherds and wise men never actually knelt at the same manger.\nThe real story is better than the version on the Christmas card.\n\n📌 Luke and Matthew tell two different halves of one true story, and reading them separately changes what you see.\n\n📖 An angel tells a teenage girl she will carry God's own Son.\n📖 A government census puts the family exactly where an old prophet said it would.\n📖 A frightened king orders soldiers out, and a dream gets the family out first.\n\nNew article on:\n🟢 why **Joseph** almost ended the engagement quietly\n🟢 what Luke's **manger** actually says, and does not say\n🟢 why the **wise men** probably arrived months later, not that night\n\nHave you ever let the familiar parts of this story go soft from repetition? 🙏",
+    },
+  },
+  {
     slug: "numbers-12-explained",
     title: "Numbers 12 Explained: Miriam, Aaron, and the Woman Moses Married",
     description:

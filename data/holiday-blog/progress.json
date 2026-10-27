@@ -23,11 +23,12 @@
       ]
     },
     "2026-10-27": {
-      "committed": 3,
+      "committed": 4,
       "slugs": [
         "when-does-advent-begin",
         "what-is-epiphany",
-        "what-is-all-souls-day"
+        "what-is-all-souls-day",
+        "what-does-the-bible-say-about-the-birth-of-jesus"
       ]
     }
   },
@@ -110,10 +111,11 @@
     },
     "what-does-the-bible-say-about-the-birth-of-jesus": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-27T15:25:31.900Z"
+      "status": "committed",
+      "startedAt": "2026-10-27T15:25:31.900Z",
+      "committedAt": "2026-10-27T15:38:15.342Z"
     }
   },
   "nextTopic": "is-christmas-pagan",
-  "updatedAt": "2026-10-27T15:25:31.900Z"
+  "updatedAt": "2026-10-27T15:38:15.357Z"
 }
