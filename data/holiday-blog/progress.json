@@ -68,17 +68,19 @@
     },
     "what-is-christmas": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-26T09:19:42.387Z",
-      "committedAt": "2026-10-26T09:32:22.009Z"
+      "committedAt": "2026-10-26T09:32:22.009Z",
+      "publishedAt": "2026-10-27T01:16:46.963Z"
     },
     "what-is-the-liturgical-calendar": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-26T15:23:57.008Z",
-      "committedAt": "2026-10-26T15:37:49.378Z"
+      "committedAt": "2026-10-26T15:37:49.378Z",
+      "publishedAt": "2026-10-27T01:16:47.109Z"
     }
   },
   "nextTopic": "when-does-advent-begin",
-  "updatedAt": "2026-10-26T15:37:49.400Z"
+  "updatedAt": "2026-10-27T01:16:47.109Z"
 }
