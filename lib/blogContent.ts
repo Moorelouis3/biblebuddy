@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "when-does-advent-begin",
+    title: "When Does Advent Begin? Dates, Meaning, and Traditions",
+    description:
+      "When does Advent begin? The exact date rule, this year's date, what the season means, and how Catholics, Orthodox, and Protestants mark it differently.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/when-does-advent-begin",
+    publishedAt: "2026-10-27",
+    readTime: "15 min read",
+    image: "/blog-banners/when-does-advent-begin.jpg",
+    groupPost: {
+      title: "When Does Advent Begin? 📖",
+      content:
+        "Most Christians could not tell you when Advent actually starts.\nThe real answer surprises almost everyone.\n\n📌 Advent begins the Sunday closest to November 30, not December 1.\n\n📖 This year it lands on November 29.\n📖 The season points at two comings of Christ, not one.\n📖 Orthodox Christians keep a separate 40 day fast instead.\n\nNew article on:\n🟢 the exact rule behind **Advent's start date**\n🟢 why the season watches for **two comings**, not one\n🟢 how **Orthodox and Reformed Christians** mark it differently\n\nWill you actually wait this Advent, or just count the days? 🙏",
+    },
+  },
+  {
     slug: "what-is-fasting",
     title: "What Is Fasting and Should I Do It?",
     description:

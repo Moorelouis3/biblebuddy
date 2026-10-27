@@ -21,6 +21,12 @@
         "what-is-christmas",
         "what-is-the-liturgical-calendar"
       ]
+    },
+    "2026-10-27": {
+      "committed": 1,
+      "slugs": [
+        "when-does-advent-begin"
+      ]
     }
   },
   "articles": {
@@ -82,10 +88,11 @@
     },
     "when-does-advent-begin": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-27T01:16:59.392Z"
+      "status": "committed",
+      "startedAt": "2026-10-27T01:16:59.392Z",
+      "committedAt": "2026-10-27T01:28:33.391Z"
     }
   },
   "nextTopic": "what-is-epiphany",
-  "updatedAt": "2026-10-27T01:16:59.392Z"
+  "updatedAt": "2026-10-27T01:28:33.404Z"
 }
