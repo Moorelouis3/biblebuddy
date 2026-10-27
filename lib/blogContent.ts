@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-10-explained",
+    title: "Numbers 10 Explained: The Silver Trumpets and the First March",
+    description:
+      "Numbers 10 explained verse by verse: the silver trumpets, the order of march out of Sinai, Moses and Hobab, and the ark leading the way.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-10-explained",
+    publishedAt: "2026-10-27",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-10-explained.jpg",
+    groupPost: {
+      title: "Numbers 10 Explained 📖",
+      content:
+        "Two silver trumpets, and a camp of two million finally starts walking.\nNumbers 10 is the sound of a year of waiting turning into motion.\n\n📌 Every part of the march was assigned before anyone took a step.\n\n📖 The trumpets had three totally different jobs.\n📖 The tabernacle traveled in the middle of the line, not the front.\n📖 Moses still asked Hobab to stay, cloud or no cloud.\n\nNew article on:\n🟢 what the **silver trumpets** actually signaled\n🟢 why the **Levites** marched in that exact order\n🟢 Moses asking **Hobab** to stay as a guide\n\nWhen it was finally time to move, were you actually ready? 🙏",
+    },
+  },
+  {
     slug: "what-is-epiphany",
     title: "What Is Epiphany? The Meaning of Three Kings' Day on January 6",
     description:
