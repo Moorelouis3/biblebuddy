@@ -100,8 +100,13 @@
       "startedAt": "2026-10-27T05:17:19.030Z",
       "committedAt": "2026-10-27T05:29:36.032Z",
       "publishedAt": "2026-10-27T09:16:50.885Z"
+    },
+    "what-is-all-souls-day": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-27T09:17:03.165Z"
     }
   },
-  "nextTopic": "what-is-all-souls-day",
-  "updatedAt": "2026-10-27T09:16:50.885Z"
+  "nextTopic": "what-does-the-bible-say-about-the-birth-of-jesus",
+  "updatedAt": "2026-10-27T09:17:03.165Z"
 }
