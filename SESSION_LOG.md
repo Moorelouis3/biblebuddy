@@ -9723,3 +9723,38 @@ MARCUS_HANDOFF.md entry and no new push notification this run, consistent with
 runs 80-108. Stopping cleanly per the routine's own instruction to stop rather than
 spin or invent work when there is no target chapter.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-27T14:53:54Z (hourly chapter notes run)
+Chapter: none | Status: block (no chapter available)
+All 1189 canonical chapters, Genesis 1 through Revelation 22, are still wired and
+verified. Priority queue and style-redo backlog are both still empty. This is the
+110th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Session
+started on a detached HEAD matching origin/main's real tip (c6541f7, "Bible Note
+Writer Agent: 109th consecutive no-op run" -- this same pipeline's own prior run);
+ran git checkout -B main origin/main to sync the local main ref onto that tip (HEAD
+already matched origin/main exactly, so zero commits fast-forwarded, zero drift).
+npm install ran clean (fresh clone, 737 packages). Re-verified all pipeline files
+fresh: data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json
+both still have empty `remaining` arrays, data/bible-notes-progress-log.json still
+ends at Revelation 22 (1262 entries, goal 1189). lib/ still has 1187 *Source.ts
+files and lib/bibleReaderStudyNotes.ts still has 1281 replaceStudySectionsForBookRange
+calls, both unchanged from run 109. Rebuilt the full coverage map with a fresh
+throwaway tsx script iterating getBibleReaderStudySections() across all 1189
+canonical chapters in all 66 books (using the real per-book chapter counts from
+lib/bibleBookChapters.ts) -- an early pass showed 237 false "empty" chapters (all
+in books whose canonical name contains a space, e.g. "1 Samuel") because the
+script's own book-name lookup had stripped spaces before calling the normalizer,
+which keeps them; fixed the script to pass the plain lowercased book name, re-ran,
+got zero empty, zero throws, all 1189 accounted for. That was a bug in this run's
+disposable verification script, not in the product -- lib/bibleReaderStudyNotes.ts
+itself was never touched. Script deleted after the check, not committed. `npx tsc
+--noEmit -p .` clean (exit 0). Already escalated to Louis via MARCUS_HANDOFF.md
+(2026-10-19, re-flagged 2026-10-24, direct push notification on run 79,
+2026-10-26T07:49:31Z, now ~31 hours / 31 no-op runs old since that notification)
+and that handoff entry is still sitting in MARCUS_HANDOFF.md unresolved -- read it
+fresh this run, no new reply or decision from Louis. Nothing material has changed
+since the run-109 entry, so no new MARCUS_HANDOFF.md entry and no new push
+notification this run, consistent with runs 80-109. Stopping cleanly per the
+routine's own instruction to stop rather than spin or invent work when there is no
+target chapter.
+Next up: whatever Louis decides the next mandate is.
