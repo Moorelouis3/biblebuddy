@@ -9361,3 +9361,30 @@ calls, both unchanged. Already escalated to Louis via MARCUS_HANDOFF.md
 2026-10-26T07:49:31Z, now ~17 hours / 17 no-op runs old). Nothing material has
 changed since, so no new notification sent this run.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-27T01:53:30Z (hourly chapter notes run)
+Chapter: none | Status: block (no chapter available)
+All 1189 canonical chapters, Genesis 1 through Revelation 22, are still wired and
+verified. Priority queue and style-redo backlog are both still empty. This is the
+97th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Session
+started on a detached HEAD again; resolved with git checkout main && git pull
+origin main (fast-forwarded in 6 unrelated commits -- Christian Holidays blog
+articles and their own log appends -- zero drift otherwise). Re-verified all
+three pipeline files fresh: priority queue and style-redo backlog both `[]`,
+progress log still ends at Revelation 22 (1262 entries, goal 1189). This run also
+did a from-scratch independent audit rather than just trusting the counts:
+parsed every lib/*Source.ts filename (plus the two differently-named
+single-chapter files, thirdJohnOnePersonalNotes.ts and judeOnePersonalNotes.ts)
+into (book, chapter) pairs and diffed the full set against the canonical
+1189-chapter list -- zero gaps found. Ran a fresh throwaway tsx spot-check
+calling getBibleReaderStudySections() across a spread of canonical book/chapter
+pairs (Genesis 1, Genesis 50, Exodus 1, Psalms 150, Isaiah 53, Matthew 1, Romans
+8, 3 John 1, Jude 1, Revelation 22) -- zero empty, zero throw, real card counts
+on every one. `npx tsc --noEmit` clean. lib/ still has 1187 *Source.ts files and
+lib/bibleReaderStudyNotes.ts still has 1281 replaceStudySectionsForBookRange
+calls, both unchanged. Already escalated to Louis via MARCUS_HANDOFF.md
+(2026-10-19, re-flagged 2026-10-24, direct push notification on run 79,
+2026-10-26T07:49:31Z, now ~18 hours / 18 no-op runs old) and that handoff entry
+is still sitting in MARCUS_HANDOFF.md unresolved. Nothing material has changed
+since, so no new notification sent this run.
+Next up: whatever Louis decides the next mandate is.
