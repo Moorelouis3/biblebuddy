@@ -91,8 +91,13 @@
       "status": "committed",
       "startedAt": "2026-10-27T01:16:59.392Z",
       "committedAt": "2026-10-27T01:28:33.391Z"
+    },
+    "what-is-epiphany": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-27T05:17:19.030Z"
     }
   },
-  "nextTopic": "what-is-epiphany",
-  "updatedAt": "2026-10-27T05:17:03.698Z"
+  "nextTopic": "what-is-all-souls-day",
+  "updatedAt": "2026-10-27T05:17:19.030Z"
 }
