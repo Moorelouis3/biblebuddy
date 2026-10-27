@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-epiphany",
+    title: "What Is Epiphany? The Meaning of Three Kings' Day on January 6",
+    description:
+      "What is Epiphany? The meaning of January 6, the Magi's visit, Theophany in the Eastern Church, and how Catholics and Protestants mark the day.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-epiphany",
+    publishedAt: "2026-10-27",
+    readTime: "14 min read",
+    image: "/blog-banners/what-is-epiphany.jpg",
+    groupPost: {
+      title: "What Is Epiphany? 📖",
+      content:
+        "Most people think the Christmas season ends on New Year's Day.\nThe Church actually gave it one more stop, on January 6.\n\n📌 Epiphany remembers the Magi reaching Jesus, and in the East, Christ's own baptism.\n\n📖 Wise men followed a star for months, not days.\n📖 The Eastern Church calls this same day Theophany instead.\n📖 In the US the feast moves to a Sunday, not January 6 itself.\n\nNew article on:\n🟢 what the **Magi** actually found when they arrived\n🟢 why the **Eastern Church** celebrates something different that same day\n🟢 the old tradition of **chalking the door** for the new year\n\nHas your Christmas season actually ended yet, or does Epiphany still have a say? 🙏",
+    },
+  },
+  {
     slug: "numbers-9-explained",
     title: "Numbers 9 Explained: The Second Passover and the Pillar of Cloud",
     description:
