@@ -79,8 +79,13 @@
       "startedAt": "2026-10-26T15:23:57.008Z",
       "committedAt": "2026-10-26T15:37:49.378Z",
       "publishedAt": "2026-10-27T01:16:47.109Z"
+    },
+    "when-does-advent-begin": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-27T01:16:59.392Z"
     }
   },
-  "nextTopic": "when-does-advent-begin",
-  "updatedAt": "2026-10-27T01:16:47.109Z"
+  "nextTopic": "what-is-epiphany",
+  "updatedAt": "2026-10-27T01:16:59.392Z"
 }
