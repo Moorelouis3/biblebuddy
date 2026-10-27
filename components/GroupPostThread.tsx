@@ -11,6 +11,7 @@
  */
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
+import { checkContent } from "@/lib/contentFilter";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
@@ -256,6 +257,13 @@ export default function GroupPostThread({
       profileImage = profile?.profile_image_url ?? null;
       setUserId(uid);
       setMe((prev) => ({ ...prev, display_name: displayName, profile_image_url: profileImage }));
+    }
+
+    // Guideline 1.2: objectionable content is filtered before it is stored.
+    const filtered = checkContent(text);
+    if (!filtered.ok) {
+      setError(filtered.reason);
+      return;
     }
 
     setSubmitting(true);

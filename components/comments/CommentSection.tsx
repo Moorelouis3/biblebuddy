@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { checkContent } from "@/lib/contentFilter";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
@@ -389,6 +390,12 @@ export default function CommentSection({
       setProfileLastName(nameParts.lastName);
       setProfileImagePreview(currentUserProfileImage);
       setCompleteProfileOpen(true);
+      return;
+    }
+    // Guideline 1.2: objectionable content is filtered before it is stored.
+    const filtered = checkContent(content);
+    if (!filtered.ok) {
+      window.alert(filtered.reason);
       return;
     }
     setLoading(true);

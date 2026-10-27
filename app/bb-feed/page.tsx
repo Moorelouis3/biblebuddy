@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef, type ReactNode } from "react";
+import { checkContent } from "@/lib/contentFilter";
 import { useRouter, useSearchParams } from "next/navigation";
 import { triggerSmokeDelete } from "@/components/SmokeDeleteEffect";
 import { triggerPostSuccess } from "@/components/PostSuccessEffect";
@@ -866,6 +867,12 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
 
   async function submitComment(content: string, parentId: string | null) {
     if (!content.trim() || submitting) return;
+    // Guideline 1.2: objectionable content is filtered before it is stored.
+    const filtered = checkContent(content);
+    if (!filtered.ok) {
+      window.alert(filtered.reason);
+      return;
+    }
     setSubmitting(true);
     const { data, error } = await supabase
       .from("feed_post_comments")

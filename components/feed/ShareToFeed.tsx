@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { checkContent } from "@/lib/contentFilter";
 import { supabase } from "@/lib/supabaseClient";
 
 /**
@@ -93,6 +94,13 @@ export default function ShareToFeed({ defaultText, verseRef, verseText, label, c
           type="button"
           disabled={busy || !text.trim()}
           onClick={async () => {
+            // Guideline 1.2: objectionable content is filtered before it is
+            // stored, not reported after it is live.
+            const filtered = checkContent(text);
+            if (!filtered.ok) {
+              setError(filtered.reason);
+              return;
+            }
             setBusy(true);
             setError(null);
             try {
