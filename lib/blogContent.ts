@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-13-explained",
+    title: "Numbers 13 Explained: The Twelve Spies and the Giants of Canaan",
+    description:
+      "Numbers 13 explained verse by verse: the twelve spies, the cluster of grapes from Eshcol, the sons of Anak, and why ten true reports led to one false conclusion.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-13-explained",
+    publishedAt: "2026-10-28",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-13-explained.jpg",
+    groupPost: {
+      title: "Numbers 13 Explained 📖",
+      content:
+        "Twelve men see the same land. Ten come back afraid.\nNumbers 13 shows how true facts can still lead to a false conclusion.\n\n📌 Every spy agreed on what they saw. They disagreed on what it meant.\n\n📖 A grape cluster from Eshcol takes two men to carry.\n📖 The sons of Anak make ten spies feel like grasshoppers.\n📖 Caleb stands alone and says Israel is well able to go up.\n\nNew article on:\n🟢 why Moses renames **Oshea** to Joshua right before this mission\n🟢 what the **grapes of Eshcol** actually proved\n🟢 why **Caleb** alone speaks up in this chapter\n\nAre you measuring what's in front of you against the obstacle, or against God? 🙏",
+    },
+  },
+  {
     slug: "is-christmas-pagan",
     title: "Is Christmas Pagan? What History Actually Tells Us",
     description:
