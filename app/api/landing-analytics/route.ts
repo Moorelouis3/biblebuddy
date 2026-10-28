@@ -42,6 +42,9 @@ const ALLOWED_EVENTS = new Set([
   "beginning_page_view",
   "beginning_start_click",
   "beginning_book_click",
+  // The companion book banner on the Genesis signup page (2026-10-28).
+  // Metadata: {study, placement}.
+  "genesis_book_amazon_click",
   // Daily "Day N is ready" reminder for community study members.
   "community_event_day_popup_impression",
   "community_event_day_popup_dismissed",

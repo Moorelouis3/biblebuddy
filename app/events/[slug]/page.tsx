@@ -23,6 +23,7 @@ import { supabase } from "../../../lib/supabaseClient";
 import { useSupabaseUser } from "../../../lib/useSupabaseUser";
 import { useBlockedUserIds } from "../../../lib/userBlocks";
 import ProverbsBooksPromo from "../../../components/ProverbsBooksPromo";
+import GenesisBookBanner from "../../../components/community-event/GenesisBookBanner";
 import { WISDOM_BOOKS_ON_SALE } from "../../../lib/wisdomOfProverbsProducts";
 import { joinCommunityEvent } from "../../../lib/communityEventJoin";
 import { ensureGuestSession } from "../../../lib/guestSession";
@@ -420,6 +421,12 @@ export default function CommunityEventPage() {
           </p>
         </div>
       ) : null}
+
+      {/* The companion book. Deliberately NOT gated on `joined`: somebody
+          still deciding should see the book too, which is the one difference
+          from the Proverbs promo above. It renders nothing until the study's
+          paperback_url is set, so it cannot show a dead button. */}
+      {event.slug === "beginning-of-everything" ? <GenesisBookBanner /> : null}
 
       {/* The tracker only appears once the study is running (Oct 1). Before
           then there is nothing to track, so members just see the welcome card.
