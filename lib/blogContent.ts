@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "when-is-saint-nicholas-day",
+    title: "When Is Saint Nicholas Day? Who Was Saint Nicholas and Why December 6 Is Celebrated",
+    description:
+      "Who was Saint Nicholas, the real bishop behind Santa Claus? The true story of his generosity, imprisonment, the Council of Nicaea, and December 6.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/when-is-saint-nicholas-day",
+    publishedAt: "2026-10-28",
+    readTime: "12 min read",
+    image: "/blog-banners/when-is-saint-nicholas-day.jpg",
+    groupPost: {
+      title: "When Is Saint Nicholas Day? Who Was Saint Nicholas and Why December 6 Is Celebrated 📖",
+      content:
+        "Santa Claus did not start in a toy workshop.\nHe started as a bishop who went to prison for his faith.\n\n📌 Saint Nicholas Day falls on December 6, and the real story beats the legend.\n\n📖 He gave away an entire inheritance, then kept giving in secret.\n📖 He may have slapped a heretic at a famous council.\n📖 His bones ended up in Italy, centuries after his death.\n\nNew article on:\n🟢 the true story behind the **three gold coins**\n🟢 what actually happened at the **Council of Nicaea**\n🟢 how one bishop became **Santa Claus**\n\nWhich version of this story did you grow up believing? 🙏",
+    },
+  },
+  {
     slug: "numbers-14-explained",
     title: "Numbers 14 Explained: Israel's Rebellion and God's Mercy",
     description:

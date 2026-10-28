@@ -32,9 +32,10 @@
       ]
     },
     "2026-10-28": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "is-christmas-pagan"
+        "is-christmas-pagan",
+        "when-is-saint-nicholas-day"
       ]
     }
   },
@@ -131,10 +132,11 @@
     },
     "when-is-saint-nicholas-day": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-28T05:16:47.861Z"
+      "status": "committed",
+      "startedAt": "2026-10-28T05:16:47.861Z",
+      "committedAt": "2026-10-28T05:27:09.049Z"
     }
   },
   "nextTopic": "who-was-saint-martin-of-tours",
-  "updatedAt": "2026-10-28T05:16:47.861Z"
+  "updatedAt": "2026-10-28T05:27:09.063Z"
 }
