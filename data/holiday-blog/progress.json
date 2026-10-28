@@ -116,8 +116,13 @@
       "startedAt": "2026-10-27T15:25:31.900Z",
       "committedAt": "2026-10-27T15:38:15.342Z",
       "publishedAt": "2026-10-28T01:17:16.682Z"
+    },
+    "is-christmas-pagan": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-28T01:17:27.392Z"
     }
   },
-  "nextTopic": "is-christmas-pagan",
-  "updatedAt": "2026-10-28T01:17:16.683Z"
+  "nextTopic": "when-is-saint-nicholas-day",
+  "updatedAt": "2026-10-28T01:17:27.392Z"
 }
