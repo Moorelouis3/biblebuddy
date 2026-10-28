@@ -144,8 +144,13 @@
       "status": "committed",
       "startedAt": "2026-10-28T09:17:49.994Z",
       "committedAt": "2026-10-28T09:30:19.537Z"
+    },
+    "was-jesus-really-born-on-december-25": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-28T15:25:45.226Z"
     }
   },
-  "nextTopic": "was-jesus-really-born-on-december-25",
-  "updatedAt": "2026-10-28T15:25:18.460Z"
+  "nextTopic": "what-is-the-feast-of-christ-the-king",
+  "updatedAt": "2026-10-28T15:25:45.226Z"
 }
