@@ -7,11 +7,11 @@ import { supabase } from "../../lib/supabaseClient";
  * The companion book for The Beginning of Everything, on the signup page
  * (Louis, 2026-10-28).
  *
- * THE LINK IS NOT HARD-CODED, and that is the whole design. The brief said to
- * use the real Amazon listing and not to invent one - and at the time of
- * writing there is no listing: devotionals.paperback_url is null for this
- * study, no ASIN appears anywhere in the repo, and an Amazon search for the
- * title and author returns nothing. The other three books all have one.
+ * THE LINK IS NOT HARD-CODED, and that is the whole design. The book IS on
+ * KDP - both bindings were submitted on 2026-10-25, paperback B0HP7Z9HCF and
+ * hardcover B0HP8B21L3 - but it is a SCHEDULED release for 1 November, so the
+ * Amazon detail page 404s until that morning and no search finds it. Hard-coding
+ * the URL today would ship a dead link for four days.
  *
  * So the banner reads paperback_url from the devotional row, exactly as the
  * printed Proverbs, Tempting and 21 Women editions already do, and renders
@@ -20,10 +20,11 @@ import { supabase } from "../../lib/supabaseClient";
  *   node --env-file=.env.local scripts/link-printed-edition.mjs \
  *     "The Beginning of Everything" <ASIN>
  *
- * the banner appears everywhere, with no code change and no deploy. That
- * script already checks the ASIN's shape and fetches the URL to confirm it
- * loads before writing it, so a typo cannot put a dead link in front of
- * readers.
+ * on release morning, the banner appears everywhere, with no code change and
+ * no deploy. That script fetches the URL to confirm it loads before writing it,
+ * which is also why it cannot be run early: it correctly refuses the ASIN
+ * today. docs/amazon/beginning-of-everything/upload-instructions.md carries the
+ * command.
  *
  * Showing a disabled button, or a button pointing at a search page, was the
  * alternative. Both teach people the button does not work.

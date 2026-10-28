@@ -91,15 +91,39 @@ was previously published" and explains *"Scheduled release titles cannot be
 previously published."* That is the reason the option is disabled, not a
 complaint about your selection.
 
+## The ASINs
+
+Both were assigned when KDP accepted the files. Read off the Bookshelf
+2026-10-28, and written down here because an Amazon *search* will not find them
+before release day - the detail pages 404 until 1 November, which is what makes
+the book look unsubmitted when it is not.
+
+| Format | ASIN | Price | State |
+|---|---|---|---|
+| Paperback | `B0HP7Z9HCF` | $19.99 | Release scheduled, ready for release |
+| Hardcover | `B0HP8B21L3` | $29.99 | Release scheduled, ready for release |
+
+Only the paperback ASIN is needed in the app: `devotionals.paperback_url` is the
+single link every surface uses, and KDP puts both bindings on one detail page,
+so that URL sells the hardcover too.
+
 ## Still to do
 
-1. **The release.** Both go on sale 1 November. Edits are locked from 26
-   October 11:59 PM GMT.
-2. **Link it in the app** once the ASINs exist:
-   `node --env-file=.env.local scripts/link-printed-edition.mjs "The Beginning of Everything" <paperback ASIN>`
-   That fills in the buy section on /devotionals/beginning-of-everything and the
-   PaperbackStrip on every day page. Both are already written and wait on the URL.
-3. **A+ content** once the ASINs exist.
+1. **The release.** Both go on sale 1 November - the same morning the community
+   study opens. Edits were locked from 26 October 11:59 PM GMT.
+2. **Link it in the app, on 1 November.** It cannot be done sooner: the link
+   script fetches the URL first and refuses a 404, which is what `B0HP7Z9HCF`
+   returns today.
+
+   ```
+   node --env-file=.env.local scripts/link-printed-edition.mjs "The Beginning of Everything" B0HP7Z9HCF
+   ```
+
+   That one write lights up three surfaces that are already built and waiting:
+   the buy section on /devotionals/beginning-of-everything, the PaperbackStrip on
+   every day page, and GenesisBookBanner on the signup page. No deploy needed -
+   they all read the column at runtime.
+3. **A+ content.**
 
 The print files are copied into `tmp/boe/print/` (gitignored) because the
 browser upload tool can only read files inside the project, and this repo is
