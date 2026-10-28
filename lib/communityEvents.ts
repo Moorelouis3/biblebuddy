@@ -88,18 +88,18 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     title: "The Beginning of Everything",
     subtitle: "A 21-Day Bible Buddy Community Devotional",
     devotionalId: "486cff66-b50e-488d-9330-3951589e6fa8",
-    startDate: "2026-11-01",
+    startDate: "2026-11-08",
     totalDays: 21,
     bannerArt: "/events/beginning-of-everything-banner-art.webp",
     heroBanner: "/events/beginning-of-everything-hero.webp",
     bookUrl: null,
     printBooksPath: null,
-    dateRangeLabel: "November 1–21",
-    countdownSub: "A 21-day devotional · Starting November 1",
+    dateRangeLabel: "November 8–28",
+    countdownSub: "A 21-day devotional · Starting November 8",
     liveSub: "Day {day} of Genesis 1-8",
     evergreenSub: "Start where the Bible starts, one day at a time.",
     intro:
-      "Read the first eight chapters of the Bible with Bible Buddies around the world - the light on the first morning, the garden, the question the serpent asked, the first family and the first murder, the long line of names from Adam to Noah, the flood, and the morning one family stepped out onto dry ground. A new day opens every day from the 1st to the 21st of November. Join whenever you like and study each day when it suits you, then meet the community in the daily discussion.",
+      "Read the first eight chapters of the Bible with Bible Buddies around the world - the light on the first morning, the garden, the question the serpent asked, the first family and the first murder, the long line of names from Adam to Noah, the flood, and the morning one family stepped out onto dry ground. A new day opens every day from the 8th to the 28th of November. Join whenever you like and study each day when it suits you, then meet the community in the daily discussion.",
     howItWorks: [
       // Genesis 1 alone takes four days here, so this study paces by passage
       // rather than by chapter. The copy says passage for that reason.

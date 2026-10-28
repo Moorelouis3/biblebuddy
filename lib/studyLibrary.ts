@@ -55,9 +55,9 @@ export const AVAILABLE_STUDY_TITLES: ReadonlySet<string> = new Set([
 export const UPCOMING_STUDIES: ReadonlyMap<string, { startLabel: string; path: string }> = new Map([
   ["The Tempting of Jesus", { startLabel: "Starts 1 November", path: "/devotionals/tempting-of-jesus" }],
   // All 21 days are already in devotional_days; the devotionals row's
-  // available_from of 2026-11-01 is what actually gates the reader, and this
+  // available_from of 2026-11-08 is what actually gates the reader, and this
   // entry is what makes the card say so instead of looking broken.
-  ["The Beginning of Everything", { startLabel: "Starts 1 November", path: "/devotionals/beginning-of-everything" }],
+  ["The Beginning of Everything", { startLabel: "Starts 8 November", path: "/devotionals/beginning-of-everything" }],
 ]);
 
 export const isInLibrary = (title: string | null | undefined): boolean =>

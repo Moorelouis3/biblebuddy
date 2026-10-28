@@ -13,8 +13,9 @@ import { getLandingSessionId, markShareLandingClick } from "@/lib/shareLandingRe
  * Modelled on components/higherhope/HigherHopeLandingPage.tsx, with two
  * differences that matter:
  *
- *  1. **It opens on 1 November, and the page says so.** The row's
- *     available_from is 2026-11-01, so until then the honest CTA is "save my
+ *  1. **It opens on 8 November, and the page says so.** The row's
+ *     available_from is 2026-11-08 - moved out a week from the 1st on
+ *     2026-10-28, to give people longer to join - so until then the CTA is "save my
  *     place", not "start day 1". The date is read from one constant below
  *     rather than hard coded into the copy in four places, and the page
  *     switches itself over on the day - nobody has to remember to edit it.
@@ -29,7 +30,7 @@ const PAGE_PATH = "/devotionals/beginning-of-everything";
 const DEVOTIONAL_ID = "486cff66-b50e-488d-9330-3951589e6fa8";
 const STUDY_PATH = `/devotionals/${DEVOTIONAL_ID}`;
 /** Matches devotionals.available_from. The reader is gated by the row, not by this. */
-const OPENS_ON = "2026-11-01";
+const OPENS_ON = "2026-11-08";
 
 function hasOpened() {
   // Compare dates, not instants: the study opens on the 1st wherever you are.
@@ -126,7 +127,7 @@ export default function BeginningOfEverythingLandingPage() {
       ? "Open the study"
       : "Start Day 1 — it is free"
     : userId
-      ? "You are in — opens 1 November"
+      ? "You are in — opens 8 November"
       : "Save my place — it is free";
 
   const handleStartClick = (placement: string) => {
@@ -213,7 +214,7 @@ export default function BeginningOfEverythingLandingPage() {
 
         <div className="mt-8 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-[#e4f0e4] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#3f7a46]">
-            {open ? "✓ Free · 21 Days · Genesis 1–8" : "Opens 1 November · Free · 21 Days"}
+            {open ? "✓ Free · 21 Days · Genesis 1–8" : "Opens 8 November · Free · 21 Days"}
           </span>
           <h1 className="mt-5 text-3xl font-bold leading-tight text-[#10213a] sm:text-[2.6rem]">
             Before you can understand

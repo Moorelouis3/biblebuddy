@@ -18,7 +18,7 @@ const url = "https://www.mybiblebuddy.net/devotionals/beginning-of-everything";
 const image = "https://www.mybiblebuddy.net/og/beginning-of-everything.png";
 const title = "The Beginning of Everything | A Free 21-Day Study of Genesis 1-8";
 const description =
-  "Twenty one days through the first eight chapters of the Bible. Creation, the garden, the fall, Cain and Abel, and the flood. Free, self-paced, and written for beginners. Opens 1 November.";
+  "Twenty one days through the first eight chapters of the Bible. Creation, the garden, the fall, Cain and Abel, and the flood. Free, self-paced, and written for beginners. Opens 8 November.";
 const alt = "The Beginning of Everything — a free 21-day study of Genesis 1 to 8, from Bible Buddy";
 
 export const metadata: Metadata = {
