@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "was-jesus-really-born-on-december-25",
+    title: "Was Jesus Really Born on December 25?",
+    description:
+      "Was Jesus really born on December 25? What the shepherds, Clement of Alexandria, and the Star of Bethlehem actually tell us about the real date.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/was-jesus-really-born-on-december-25",
+    publishedAt: "2026-10-28",
+    readTime: "17 min read",
+    image: "/blog-banners/is-christmas-pagan.jpg",
+    groupPost: {
+      title: "Was Jesus Really Born on December 25? 📖",
+      content:
+        "Your kid asks you a question on Christmas morning you were not ready for.\n\"Is this actually the day Jesus was born?\"\n\n📌 The honest answer: nobody can prove it, and even the Catholic Church does not teach it as documented fact.\n\n📖 The earliest Christians on record could not agree on a month, let alone a day.\n📖 The shepherds verse everyone leans on turns out to be a real, unsettled argument.\n📖 Scholars still debate which year Herod died in, let alone which day Jesus was born.\n\nNew article on:\n🟢 what the **shepherds in the field** actually proves, and does not prove\n🟢 why the earliest Christians guessed wildly different **birth dates**\n🟢 whether the **Star of Bethlehem** can pin down an exact night\n\nWhat would you tell your own kid, the next time they ask you this on Christmas morning? 🙏",
+    },
+  },
+  {
     slug: "numbers-17-explained",
     title: "Numbers 17 Explained: Aaron's Rod That Budded",
     description:

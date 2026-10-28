@@ -32,11 +32,12 @@
       ]
     },
     "2026-10-28": {
-      "committed": 3,
+      "committed": 4,
       "slugs": [
         "is-christmas-pagan",
         "when-is-saint-nicholas-day",
-        "who-was-saint-martin-of-tours"
+        "who-was-saint-martin-of-tours",
+        "was-jesus-really-born-on-december-25"
       ]
     }
   },
@@ -147,10 +148,11 @@
     },
     "was-jesus-really-born-on-december-25": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-28T15:25:45.226Z"
+      "status": "committed",
+      "startedAt": "2026-10-28T15:25:45.226Z",
+      "committedAt": "2026-10-28T15:38:31.902Z"
     }
   },
   "nextTopic": "what-is-the-feast-of-christ-the-king",
-  "updatedAt": "2026-10-28T15:25:45.226Z"
+  "updatedAt": "2026-10-28T15:38:31.915Z"
 }

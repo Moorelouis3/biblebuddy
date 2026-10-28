@@ -955,7 +955,7 @@ own banner should be updated or removed so a future run (or Louis skimming the d
 routine is paused when it is not.
 
 ## Christian Holidays series: articles waiting on real banner artwork
-what-is-reformation-day (reused catholic-vs-protestant-church-calendars.jpg, nearest existing banner).
+what-is-reformation-day (reused catholic-vs-protestant-church-calendars.jpg, nearest existing banner); was-jesus-really-born-on-december-25 (reused is-christmas-pagan.jpg, nearest existing banner).
 This is one line, updated by each Holiday Blog Writer run rather than a new block per article.
 
 ## Bible Note Writer Agent: "whole Bible is done" still open 7 days / 79 no-op runs later, escalated directly to Louis (2026-10-26)
