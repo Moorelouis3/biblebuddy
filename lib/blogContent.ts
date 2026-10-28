@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "is-christmas-pagan",
+    title: "Is Christmas Pagan? What History Actually Tells Us",
+    description:
+      "Is Christmas pagan? What history actually shows about December 25, Sol Invictus, Saturnalia, the Christmas tree, and the Jeremiah 10 verse people misquote.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/is-christmas-pagan",
+    publishedAt: "2026-10-28",
+    readTime: "17 min read",
+    image: "/blog-banners/is-christmas-pagan.jpg",
+    groupPost: {
+      title: "Is Christmas Pagan? What History Actually Tells Us 📖",
+      content:
+        "Somebody says it every December, usually with a smirk.\n\"You know Christmas is just repackaged paganism, right?\"\n\n📌 The honest answer has two halves, and most people online only ever hear one of them.\n\n📖 The Gospels never give Jesus a birth date at all.\n📖 Historians still argue over why December 25 was chosen, and it is not settled either way.\n📖 Some familiar customs really did start outside the church, centuries after the date did.\n\nNew article on:\n🟢 what actually started the **Christmas is pagan** theory, and when\n🟢 the real history behind the **Christmas tree** and **mistletoe**\n🟢 what **Jeremiah 10** is actually talking about\n\nWhat would you say back, the next time somebody brings this up at your table? 🙏",
+    },
+  },
+  {
     slug: "what-does-the-bible-say-about-the-birth-of-jesus",
     title: "What Does the Bible Say About the Birth of Jesus?",
     description:
