@@ -154,12 +154,27 @@ export type RenderableLesson = Omit<FridayLesson, "blocks"> & {
   blocks: Array<FridayLessonBlock | ScriptureBlock>;
   /** Overrides the default "Louis / Founder of Bible Buddy". */
   signoff?: { name: string; title: string };
+  /**
+   * A hero image across the top, hosted on a public URL (2026-10-28).
+   *
+   * It must be an absolute https URL to a JPEG or PNG on a host that is
+   * already live - NOT a /public path, which does not exist until the next
+   * deploy, and NOT a webp, which Outlook on Windows cannot render at all.
+   *
+   * When a banner is set the email's first h1 is dropped: the banner already
+   * carries the headline, and two headlines stacked looks like a mistake.
+   */
+  banner?: { url: string; alt: string };
 };
 
 export function renderFridayLessonHtml(lesson: RenderableLesson): string {
   const parts: string[] = [];
 
-  for (const block of lesson.blocks) {
+  const blocks = lesson.banner
+    ? lesson.blocks.filter((b, i) => !(i === 0 && b.type === "h1"))
+    : lesson.blocks;
+
+  for (const block of blocks) {
     if (block.type === "h1") {
       parts.push(
         `<h1 style="margin:0 0 20px;font-size:28px;line-height:1.25;color:#17233b;">${escapeHtml(block.text)}</h1>`,
@@ -221,7 +236,11 @@ export function renderFridayLessonHtml(lesson: RenderableLesson): string {
 <td align="center" style="padding:24px 12px;">
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;background:#ffffff;"><tr>
 <td style="padding:32px 28px;font-size:16px;line-height:1.65;">
-<p style="margin:0 0 24px;font-size:13px;font-weight:bold;letter-spacing:2px;color:#5268a7;">BIBLE BUDDY</p>
+${
+  lesson.banner
+    ? `<img src="${lesson.banner.url}" alt="${escapeHtml(lesson.banner.alt)}" width="600" style="display:block;width:100%;max-width:600px;height:auto;border:0;margin:0 0 24px;" />`
+    : `<p style="margin:0 0 24px;font-size:13px;font-weight:bold;letter-spacing:2px;color:#5268a7;">BIBLE BUDDY</p>`
+}
 ${parts.join("\n")}
 </td>
 </tr></table>

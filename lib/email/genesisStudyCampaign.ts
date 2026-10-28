@@ -58,6 +58,16 @@ const SIGNUP = "https://www.mybiblebuddy.net/devotionals/beginning-of-everything
 const cta = (content: string) =>
   `${SIGNUP}?utm_source=email&utm_medium=campaign&utm_campaign=genesis-study&utm_content=${content}`;
 
+/**
+ * Louis's four banners (2026-10-28).
+ *
+ * Served from Supabase storage, NOT from /public: an email sent today cannot
+ * point at a file that only exists after the next deploy. Converted from
+ * webp to JPEG for the same reason Outlook on Windows cannot show a webp at
+ * all. Each one was fetched and checked for a 200 before being used here.
+ */
+const BANNER = "https://dntaonyrfdzedukvwcwk.supabase.co/storage/v1/object/public/post-media/email/genesis-study";
+
 const SIGNOFF = { name: "Louis Moore III", title: "Founder, Bible Buddy \u{1F4D6}\u{1F49A}" };
 
 const HELLO = "Hey Bible Buddy! \u{1F44B}\u{1F3FD}";
@@ -82,6 +92,7 @@ export const GENESIS_EMAILS: GenesisEmail[] = [
     // the sender reads as "post this to the whole list right now" - true
     // here, but a habit that has already cost this project one accident.
     sendAtUtc: "2026-10-28T12:00:00Z",
+    banner: { url: `${BANNER}/genesis-01-cain.jpg`, alt: "Who was Cain afraid of after killing Abel? One of the biggest mysteries in Genesis 4. The Beginning of Everything, a 21-day Genesis study." },
     subject: "\u{1F92F} Who was Cain afraid of?",
     preheader: "One of Genesis's biggest mysteries has a surprisingly simple answer.",
     bullet: "\u{1F4D6}",
@@ -135,6 +146,7 @@ export const GENESIS_EMAILS: GenesisEmail[] = [
     position: 2,
     sendDate: "2026-11-01",
     sendAtUtc: "2026-11-01T13:00:00Z",
+    banner: { url: `${BANNER}/genesis-02-chapter-2.jpg`, alt: "Does Genesis chapter 2 contradict chapter 1? Or are they two parts of the same story? The Beginning of Everything, a 21-day Genesis study." },
     subject: "\u{1F914} Does the Bible contradict itself in chapter 2?",
     preheader: "God creates humanity in Genesis 1. So why does Genesis 2 start over?",
     bullet: "\u{1F4D6}",
@@ -194,6 +206,7 @@ export const GENESIS_EMAILS: GenesisEmail[] = [
     position: 3,
     sendDate: "2026-11-06",
     sendAtUtc: "2026-11-06T13:00:00Z",
+    banner: { url: `${BANNER}/genesis-03-ark.jpg`, alt: "How big was Noah's ark? The real dimensions and what it could hold. The Beginning of Everything, a 21-day Genesis study." },
     subject: "\u{1FAB5} What exactly was gopher wood?",
     preheader: "The Bible uses this word once. Then never again.",
     bullet: "\u{1F6A2}",
@@ -292,6 +305,7 @@ export const GENESIS_EMAILS: GenesisEmail[] = [
     position: 4,
     sendDate: "2026-11-08",
     sendAtUtc: "2026-11-08T13:00:00Z",
+    banner: { url: `${BANNER}/genesis-04-trinity.jpg`, alt: "Is the Trinity real? What does the Bible actually say? The Beginning of Everything, a 21-day Genesis study." },
     subject: "\u{1F440} Who was God talking to?",
     preheader: "Three little words in Genesis raise one very big question.",
     bullet: "\u{1F440}",
