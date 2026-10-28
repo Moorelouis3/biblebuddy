@@ -1215,32 +1215,27 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       );
     }
 
-    const [{ error: profileError }, { error: progressError }] = await Promise.all([
-      supabase
-        .from("profile_stats")
-        .upsert(
-          {
-            user_id: userId,
-            free_devotional_id: devotionalId,
-            louis_primary_devotional_id: devotionalId,
-            louis_primary_devotional_day: day.day_number,
-          },
-          { onConflict: "user_id" },
-        ),
-      supabase.from("devotional_progress").upsert(
+    // Only points the dashboard at this day; it must never touch
+    // devotional_progress. Clicking into a day you already finished used to
+    // upsert is_completed/reading_completed back to false here, wiping out
+    // real progress and re-locking later days (Rachel Moore, day 9/11/15)
+    // and making the dashboard checklist show Task 1 again forever
+    // (sabmarnew03 Newkirk, day 15). The day page itself writes
+    // devotional_progress correctly when a task is actually completed.
+    const { error: profileError } = await supabase
+      .from("profile_stats")
+      .upsert(
         {
           user_id: userId,
-          devotional_id: devotionalId,
-          day_number: day.day_number,
-          is_completed: false,
-          reading_completed: false,
+          free_devotional_id: devotionalId,
+          louis_primary_devotional_id: devotionalId,
+          louis_primary_devotional_day: day.day_number,
         },
-        { onConflict: "user_id,devotional_id,day_number" },
-      ),
-    ]);
+        { onConflict: "user_id" },
+      );
 
-    if (profileError || progressError) {
-      console.error("[BIBLE_STUDY] Could not set dashboard chapter:", profileError || progressError);
+    if (profileError) {
+      console.error("[BIBLE_STUDY] Could not set dashboard chapter:", profileError);
       return;
     }
 
