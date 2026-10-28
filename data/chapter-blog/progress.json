@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-10-28T06:34:41.864Z",
-  "nextChapter": "Numbers 15",
+  "updatedAt": "2026-10-28T06:34:57.732Z",
+  "nextChapter": "Numbers 16",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -1131,6 +1131,11 @@
       "status": "committed",
       "startedAt": "2026-10-28T04:34:58.016Z",
       "committedAt": "2026-10-28T04:44:31.855Z"
+    },
+    "numbers-15-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-28T06:34:57.732Z"
     }
   },
   "priorityBooks": [
