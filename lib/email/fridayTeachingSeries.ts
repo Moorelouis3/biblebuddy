@@ -249,7 +249,16 @@ export function renderFridayLessonText(lesson: RenderableLesson): string {
       .replace(/&amp;/g, "&")
       .replace(/&lt;/g, "<")
       .replace(/&gt;/g, ">")
-      .replace(/&nbsp;/g, " ");
+      .replace(/&nbsp;/g, " ")
+      // The curly quotes and dashes the copy actually uses. Without these
+      // the plain-text alternative ships literal "&ldquo;" to anyone whose
+      // client prefers text - which the themed Friday emails were already
+      // doing before this was spotted on 2026-10-28.
+      .replace(/&ldquo;|&rdquo;/g, '"')
+      .replace(/&lsquo;|&rsquo;/g, "'")
+      .replace(/&mdash;/g, "\u2014")
+      .replace(/&ndash;/g, "\u2013")
+      .replace(/&hellip;/g, "\u2026");
 
   const lines: string[] = [];
   for (const block of lesson.blocks) {
