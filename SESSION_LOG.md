@@ -10371,3 +10371,30 @@ pushed to main, no [deploy] tag. The other 3 open reports (generic
 "something went wrong" screen, a browser crash with no specifics, a chat
 retry error) were already asked for the one missing detail on an earlier
 run; no new info has come back, so left as needs_info, nothing new to add.
+
+## 2026-10-28T14:59:00Z (hourly chapter notes run)
+Chapter: none | Status: block (no chapter available)
+All 1189 canonical chapters, Genesis 1 through Revelation 22, are still wired and
+verified. Priority queue and style-redo backlog are both still empty, confirmed
+fresh this run. This is the 134th consecutive no-op run since completion on
+2026-10-19T21:01:00Z. npm install ran clean (fresh clone, 737 packages).
+data/bible-notes-progress-log.json still has 1262 entries, last entry Revelation
+22 finished 2026-10-19T21:01:00Z. lib/ still has exactly 1187 *Source.ts files
+and lib/bibleReaderStudyNotes.ts still has exactly 1281
+replaceStudySectionsForBookRange calls, both identical to run 133's counts. Ran
+a fresh programmatic cross-check this run (scratchpad script, never shipped):
+parsed every replaceStudySectionsForBookRange("book", start, end, ...) call
+(correcting for two-word book keys like "1 samuel"), unioned the chapter
+ranges per book, and compared against the real per-book canonical chapter
+counts for all 66 books -- zero gaps, whole Bible still fully wired
+(1189/1189). Ran `npx tsc --noEmit -p .`, finished clean, exit 0. Session
+started on a detached HEAD at a stale cached commit (same recurring
+environment ref anomaly as runs 126-133); ran `git fetch origin main` then
+`git checkout -B main origin/main`, landing cleanly on origin/main's real tip.
+Read MARCUS_HANDOFF.md fresh (973 lines, unchanged): the "whole Bible is done"
+escalation (2026-10-19, re-flagged 2026-10-24, direct push notification on run
+79 at 2026-10-26T07:49:31Z) is still sitting there unresolved, with no new
+reply or decision from Louis. Nothing material has changed since the run-133
+entry, so no new MARCUS_HANDOFF.md entry and no new push notification this
+run, consistent with runs 80-133.
+Next up: whatever Louis decides the next mandate is.
