@@ -10360,3 +10360,14 @@ reply or decision from Louis. Nothing material has changed since the run-132
 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this
 run, consistent with runs 80-132.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-28 (Bug Fixer, 14:30 UTC run)
+Bug fixed: opening a Bible study day you had already finished was quietly
+resetting that day's saved progress back to not-started, every single time.
+That caused two separate reports on the same study (Wisdom of Proverbs):
+sabmarnew03's "Task 1 keeps repeating" on day 15, and Rachel Moore's day
+9 locked / 11 and 15 greyed out. Same root cause, one fix. Commit 1db2dc3,
+pushed to main, no [deploy] tag. The other 3 open reports (generic
+"something went wrong" screen, a browser crash with no specifics, a chat
+retry error) were already asked for the one missing detail on an earlier
+run; no new info has come back, so left as needs_info, nothing new to add.
