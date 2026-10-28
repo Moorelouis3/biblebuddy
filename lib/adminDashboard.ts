@@ -1054,7 +1054,11 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
 
   // What is happening now, then what is coming, then what never went. Sorting
   // purely by date put a missed October email above today's live send.
-  const RANK: Record<string, number> = { sending: 0, armed: 1, scheduled: 2, paused: 3, draft: 3, missed: 4 };
+  // One chronological list, which is how Louis reads this panel. The only
+  // rows that break date order are the one posting RIGHT NOW, which belongs
+  // at the top, and the ones whose date passed without them going, which
+  // belong at the bottom instead of above everything still to come.
+  const RANK: Record<string, number> = { sending: 0, armed: 1, scheduled: 1, paused: 1, draft: 1, missed: 2 };
   const emailSchedule = {
     upcoming: upcomingRows.sort((a, b) => {
       const byState = (RANK[a.state] ?? 3) - (RANK[b.state] ?? 3);
