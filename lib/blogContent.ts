@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-was-saint-martin-of-tours",
+    title: "Who Was Saint Martin of Tours? The Meaning of St. Martin's Day",
+    description:
+      "Who was Saint Martin of Tours, the soldier who became a bishop? The true story behind St. Martin's Day, the cloak, and why Martin Luther bears his name.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/who-was-saint-martin-of-tours",
+    publishedAt: "2026-10-28",
+    readTime: "12 min read",
+    image: "/blog-banners/who-was-saint-martin-of-tours.jpg",
+    groupPost: {
+      title: "Who Was Saint Martin of Tours? The Meaning of St. Martin's Day 📖",
+      content:
+        "A Roman soldier cuts his cloak in half and gives away the warmer side.\nThat one decision is why kids still carry lanterns for him every November.\n\n📌 Saint Martin of Tours went from a reluctant soldier to a bishop who tore down pagan shrines across Gaul.\n\n📖 He saw Christ Himself wearing the half cloak he had given away.\n📖 Villagers once hid him from a job he did not want, or so the legend goes.\n📖 A German boy born in 1483 was named after him, and became Martin Luther.\n\nNew article on:\n🟢 the vision that came the night after the **cloak**\n🟢 why he was dragged into being **bishop of Tours**\n🟢 how his feast day became the start of the real **Advent fast**\n\nWhat is the smallest thing you have given away that actually cost you something? 🙏",
+    },
+  },
+  {
     slug: "numbers-15-explained",
     title: "Numbers 15 Explained: Offerings, the Sabbath, and the Fringe",
     description:
