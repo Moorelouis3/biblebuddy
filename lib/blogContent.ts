@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-14-explained",
+    title: "Numbers 14 Explained: Israel's Rebellion and God's Mercy",
+    description:
+      "Numbers 14 explained verse by verse: the camp's rebellion, God's offer to Moses, His pardon and judgment together, and the defeat at Hormah.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-14-explained",
+    publishedAt: "2026-10-28",
+    readTime: "16 min read",
+    image: "/blog-banners/numbers-14-explained.jpg",
+    groupPost: {
+      title: "Numbers 14 Explained 📖",
+      content:
+        "The whole camp wept and talked of going back to Egypt.\nGod's answer holds mercy and judgment together.\n\n📌 God pardons the nation, and the consequence still stands.\n\n📖 Moses prays God's own words about Himself back to Him.\n📖 Caleb and Joshua alone are spared from that generation.\n📖 A group climbs the hill without the ark, and loses at Hormah.\n\nNew article on:\n🟢 why God's offer to Moses echoes the **golden calf**\n🟢 what **forty years for forty days** actually means\n🟢 why obeying a day late still ended in defeat\n\nAre you measuring your fear against the obstacle, or against God? 🙏",
+    },
+  },
+  {
     slug: "numbers-13-explained",
     title: "Numbers 13 Explained: The Twelve Spies and the Giants of Canaan",
     description:
