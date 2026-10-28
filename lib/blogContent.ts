@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "should-christians-tithe",
+    title: "Should Christians Tithe?",
+    description:
+      "Should Christians tithe? See what Leviticus, Malachi, and the New Testament actually say about giving, guilt, and grace.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/should-christians-tithe",
+    publishedAt: "2026-10-28",
+    readTime: "23 min read",
+    image: "/should-christians-tithe-banner.png",
+    groupPost: {
+      title: "Should Christians Tithe? 📖",
+      content:
+        "Tithing gets used to guilt people into giving.\nHere is what the Bible actually says.\n\n📌 The Old Testament commanded a tithe. The New Testament never repeats that command.\n\n📖 Abraham tithed before any law existed.\n📖 Jesus rebuked tithing without justice or mercy.\n📖 Paul taught cheerful, willing giving instead.\n\nNew article on:\n🟢 where the **tithe** actually came from\n🟢 why giving has been used as **control**\n🟢 what the New Testament really asks of your **wallet**\n\nHas giving ever felt like fear instead of trust? 🙏",
+    },
+  },
+  {
     slug: "was-jesus-really-born-on-december-25",
     title: "Was Jesus Really Born on December 25?",
     description:

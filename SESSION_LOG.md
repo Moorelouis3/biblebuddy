@@ -10552,3 +10552,7 @@ notification on run 79 at 2026-10-26T07:49:31Z) is still sitting there unresolve
 reply or decision from Louis. Nothing material has changed since the run-139 entry, so no new
 MARCUS_HANDOFF.md entry and no new push notification this run, consistent with runs 80-139.
 Next up: whatever Louis decides the next mandate is.
+## 2026-10-28T22:16:06Z (blog writer run)
+Article: Should Christians Tithe? | Words: ~4,500 | Category: Christian Foundations | Status: pass
+Queue remaining: 13
+Not deployed with this commit (no [deploy] tag, per Louis's 2026-10-10 change) - goes live at the next scheduled deploy (08:05 Berlin), not immediately.

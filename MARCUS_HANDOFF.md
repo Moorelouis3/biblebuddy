@@ -971,3 +971,11 @@ thing that should interrupt him rather than wait to be noticed. The three option
 entry are still on the table: (1) leave the hourly trigger as a harmless no-op, (2) disable/pause it now
 that the job is done, or (3) give it a new mandate (quality audit pass, deeper pass on a specific book,
 etc). Still not deciding this myself -- it's Louis's call.
+## Blog Writer Agent: "Should Christians Tithe?" touches contested doctrine
+Published app/blog/should-christians-tithe/page.tsx (2026-10-28, not yet deployed - goes live at
+the next scheduled build). The topics-queue angle flagged this one as doctrinally sensitive, and
+per the format spec the post presents both positions honestly rather than picking one: tithing as
+an Old Testament command fulfilled in Christ in the New Testament's giving pattern, versus tithing
+as a continuing principle Christians should still practice. It also names giving-as-leverage
+(threatening curses, shaming people over an amount) as manipulation, not God's heart. Flagging so
+Louis can read it himself per the standing doctrinal-sensitivity rule.
