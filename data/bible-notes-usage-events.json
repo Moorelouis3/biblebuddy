@@ -1842,6 +1842,54 @@
           "at": "2026-10-28T06:52:49Z"
         }
       ]
+    },
+    {
+      "timestamp": "2026-10-28T07:54:00Z",
+      "type": "block",
+      "chaptersCompletedSoFarTonight": 0,
+      "detail": "Not a usage/rate limit. 127th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Session started on a detached HEAD at 71f16c1 (run 126's own commit) with a stale local main ref vs a cached origin/main; a fresh 'git fetch origin main' forced-updated the tracking ref, showing 0 real divergence once re-fetched, the same recurring environment ref anomaly logged in many prior runs. Checked out main cleanly with 'git checkout -B main origin/main'. npm install ran clean (fresh clone, 737 packages). Re-verified fresh: data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json both still have empty remaining arrays. docs/BIBLE_BUDDY_NOTES_PROGRESS.md's own top-of-file note still states Revelation 22 was the final forward-progress chapter of the whole Bible. lib/ still has exactly 1187 *Source.ts files and lib/bibleReaderStudyNotes.ts still has exactly 1281 replaceStudySectionsForBookRange calls, both identical to run 126's counts. Ran npx tsc --noEmit -p . directly, finished clean, exit 0. Ran a fresh programmatic cross-check this run (a temporary scripts/tmp-check-coverage-127.ts script, written and deleted, never shipped): called getBibleReaderStudySections for every one of the 66 books and all 1189 canonical chapters using the real per-book chapter counts -- zero chapters returned empty, confirming the whole Bible is still fully wired with no gaps. Also independently verified 3 John 1 and Jude 1 (the two single-chapter books still filed under their legacy *PersonalNotes.ts names rather than *Source.ts) were already rewritten to the real style spec in a past run, per docs/BIBLE_BUDDY_NOTES_PROGRESS.md's own entries for them -- not stale, not a redo candidate, correctly absent from the redo backlog. Read MARCUS_HANDOFF.md fresh (973 lines, unchanged) and IDEAS.md (unrelated bug-report ideas only): the 'whole Bible is done' escalation (2026-10-19, re-flagged 2026-10-24, direct push notification on run 79 at 2026-10-26T07:49:31Z) is still sitting there unresolved, with no new reply or decision from Louis. Nothing material has changed since the run-126 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run, consistent with runs 80-126.",
+      "steps": [
+        {
+          "name": "Run started: git status/log checked -- detached HEAD at 71f16c1 (run 126's own commit), stale local main ref vs origin/main; fresh fetch showed forced ref update, 0 real divergence after checkout",
+          "at": "2026-10-28T07:46:24Z"
+        },
+        {
+          "name": "npm install done (fresh clone, 737 packages)",
+          "at": "2026-10-28T07:46:54Z"
+        },
+        {
+          "name": "data/bible-notes-priority-queue.json read: remaining array empty",
+          "at": "2026-10-28T07:47:30Z"
+        },
+        {
+          "name": "data/bible-notes-style-redo-remaining.json read: remaining array empty",
+          "at": "2026-10-28T07:47:40Z"
+        },
+        {
+          "name": "Canonical-order sweep: programmatically checked every book/chapter for an existing wired-in lib file (Source.ts or PersonalNotes.ts) -- zero gaps across all 66 books, confirmed by docs/BIBLE_BUDDY_NOTES_PROGRESS.md top-of-file note that Revelation 22 was the final forward-progress chapter -- target chapter determined: none, whole Bible still complete",
+          "at": "2026-10-28T07:50:20Z"
+        },
+        {
+          "name": "git checkout -B main origin/main (clean checkout, landed on 71f16c1, 0 real divergence)",
+          "at": "2026-10-28T07:49:20Z"
+        },
+        {
+          "name": "wiring cross-check: 1187 lib/*Source.ts files, 1281 replaceStudySectionsForBookRange calls in lib/bibleReaderStudyNotes.ts -- identical to run 126's counts",
+          "at": "2026-10-28T07:50:35Z"
+        },
+        {
+          "name": "tsc --noEmit -p . clean (exit 0)",
+          "at": "2026-10-28T07:51:40Z"
+        },
+        {
+          "name": "programmatic cross-check: getBibleReaderStudySections called for all 66 books / 1189 canonical chapters via temporary scripts/tmp-check-coverage-127.ts (written and deleted, never shipped) -- zero gaps",
+          "at": "2026-10-28T07:52:55Z"
+        },
+        {
+          "name": "MARCUS_HANDOFF.md and IDEAS.md re-read fresh (973 lines, unchanged) -- run-79 escalation still unresolved, no new reply or decision from Louis; no new MARCUS_HANDOFF entry and no new push notification this run, consistent with runs 80-126",
+          "at": "2026-10-28T07:53:35Z"
+        }
+      ]
     }
   ]
 }

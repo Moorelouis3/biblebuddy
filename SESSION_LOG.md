@@ -10221,3 +10221,36 @@ entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run,
 consistent with runs 80-125. Stopping cleanly per the routine's own instruction
 to stop rather than spin or invent work when there is no target chapter.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-28T07:54:00Z (hourly chapter notes run)
+Chapter: none | Status: block (no chapter available)
+All 1189 canonical chapters, Genesis 1 through Revelation 22, are still wired and
+verified. Priority queue and style-redo backlog are both still empty. This is the
+127th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Session
+started on a detached HEAD at 71f16c1 (run 126's own commit) with a stale local
+main ref vs a cached origin/main; a fresh `git fetch origin main` forced-updated
+the tracking ref, showing 0 real divergence once re-fetched, the same recurring
+environment ref anomaly logged in many prior runs. Checked out main cleanly with
+`git checkout -B main origin/main`. npm install ran clean (fresh clone, 737
+packages). Re-verified fresh: data/bible-notes-priority-queue.json and
+data/bible-notes-style-redo-remaining.json both still have empty remaining
+arrays. docs/BIBLE_BUDDY_NOTES_PROGRESS.md's own top-of-file note still states
+Revelation 22 was the final forward-progress chapter. lib/ still has exactly
+1187 *Source.ts files and lib/bibleReaderStudyNotes.ts still has exactly 1281
+replaceStudySectionsForBookRange calls, both identical to run 126's counts. Ran
+a fresh programmatic cross-check this run (temporary
+scripts/tmp-check-coverage-127.ts, written and deleted, never shipped): called
+getBibleReaderStudySections for all 66 books and 1189 canonical chapters using
+the real per-book chapter counts -- zero gaps, whole Bible still fully wired.
+Ran `npx tsc --noEmit -p .`, finished clean, exit 0. Also independently
+confirmed 3 John 1 and Jude 1 (the two single-chapter books still filed under
+legacy *PersonalNotes.ts names) were already rewritten to the real style spec
+in a past run -- not a redo candidate. Read MARCUS_HANDOFF.md fresh (973 lines,
+unchanged): the "whole Bible is done" escalation (2026-10-19, re-flagged
+2026-10-24, direct push notification on run 79 at 2026-10-26T07:49:31Z) is
+still sitting there unresolved, with no new reply or decision from Louis.
+Nothing material has changed since the run-126 entry, so no new
+MARCUS_HANDOFF.md entry and no new push notification this run, consistent with
+runs 80-126. Stopping cleanly per the routine's own instruction to stop rather
+than spin or invent work when there is no target chapter.
+Next up: whatever Louis decides the next mandate is.
