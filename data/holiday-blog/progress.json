@@ -137,8 +137,13 @@
       "startedAt": "2026-10-28T05:16:47.861Z",
       "committedAt": "2026-10-28T05:27:09.049Z",
       "publishedAt": "2026-10-28T09:17:39.276Z"
+    },
+    "who-was-saint-martin-of-tours": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-28T09:17:49.994Z"
     }
   },
-  "nextTopic": "who-was-saint-martin-of-tours",
-  "updatedAt": "2026-10-28T09:17:39.276Z"
+  "nextTopic": "was-jesus-really-born-on-december-25",
+  "updatedAt": "2026-10-28T09:17:49.994Z"
 }
