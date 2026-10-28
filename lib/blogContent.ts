@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-15-explained",
+    title: "Numbers 15 Explained: Offerings, the Sabbath, and the Fringe",
+    description:
+      "Numbers 15 explained verse by verse: offerings for a land not yet reached, an honest mistake vs a high hand, the Sabbath breaker, and the fringe command.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-15-explained",
+    publishedAt: "2026-10-28",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-15-explained.jpg",
+    groupPost: {
+      title: "Numbers 15 Explained 📖",
+      content:
+        "Right after Israel's sentence, God talks about the land again.\nAs if the promise never moved.\n\n📌 A high hand sin and an honest mistake are never the same thing.\n\n📖 A man gathers sticks on the Sabbath, and the camp waits for God's answer.\n📖 A blue thread gets stitched into clothing to catch a wandering eye.\n📖 One law covers the stranger exactly like it covers Israel.\n\nNew article on:\n🟢 why God gives **land laws** right after judging a generation\n🟢 what **with a high hand** actually means\n🟢 the real reason behind the **fringe command**\n\nWhat is your own version of the fringe, the thing that pulls your eyes back? 🙏",
+    },
+  },
+  {
     slug: "when-is-saint-nicholas-day",
     title: "When Is Saint Nicholas Day? Who Was Saint Nicholas and Why December 6 Is Celebrated",
     description:
