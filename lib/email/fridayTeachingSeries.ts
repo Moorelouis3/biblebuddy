@@ -138,7 +138,25 @@ const escapeHtml = (value: string) =>
  * to "friend". `{{UNSUBSCRIBE}}` is replaced by sesSender with the signed
  * one-click link. They are the only two placeholders left in a rendered body.
  */
-export function renderFridayLessonHtml(lesson: FridayLesson): string {
+/**
+ * A pulled-out KJV quote, and an optional sign-off (2026-10-28).
+ *
+ * Added for the Genesis study campaign, which quotes Scripture far more often
+ * than a Friday lesson does and wanted it to read as a quote rather than as
+ * another paragraph. Purely additive: every existing block type renders
+ * exactly as before, the 16 Friday emails are untouched, and the extension
+ * lives here rather than in fridayTeachingSeriesContent.ts because that file
+ * is generated and would lose it on the next regeneration.
+ */
+export type ScriptureBlock = { type: "scripture"; reference: string; text: string };
+
+export type RenderableLesson = Omit<FridayLesson, "blocks"> & {
+  blocks: Array<FridayLessonBlock | ScriptureBlock>;
+  /** Overrides the default "Louis / Founder of Bible Buddy". */
+  signoff?: { name: string; title: string };
+};
+
+export function renderFridayLessonHtml(lesson: RenderableLesson): string {
   const parts: string[] = [];
 
   for (const block of lesson.blocks) {
@@ -163,6 +181,14 @@ export function renderFridayLessonHtml(lesson: FridayLesson): string {
       parts.push(
         `<ul style="margin:0 0 18px;padding:0;list-style:none;">${items}</ul>`,
       );
+    } else if (block.type === "scripture") {
+      parts.push(
+        `<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:22px 0;">` +
+          `<tr><td style="border-left:4px solid #334f91;background:#f7f8fb;padding:14px 18px;">` +
+          `<p style="margin:0 0 6px;font-size:13px;font-weight:bold;letter-spacing:1px;color:#5268a7;">${escapeHtml(block.reference)}</p>` +
+          `<p style="margin:0;font-size:17px;line-height:1.55;color:#17233b;">&ldquo;${escapeHtml(block.text)}&rdquo;</p>` +
+          `</td></tr></table>`,
+      );
     } else if (block.type === "cta") {
       parts.push(
         `<table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:26px 0;">` +
@@ -175,9 +201,11 @@ export function renderFridayLessonHtml(lesson: FridayLesson): string {
 
   // Louis signs these personally, so the sign-off is part of the template
   // rather than the copy - it is identical in all twelve.
+  const signName = lesson.signoff?.name ?? "Louis";
+  const signTitle = lesson.signoff?.title ?? "Founder of Bible Buddy";
   parts.push(
-    `<p style="margin:26px 0 0;">Louis<br>` +
-      `<span style="color:#667085;">Founder of Bible Buddy</span></p>`,
+    `<p style="margin:26px 0 0;">${escapeHtml(signName)}<br>` +
+      `<span style="color:#667085;">${escapeHtml(signTitle)}</span></p>`,
   );
 
   return `<!doctype html>
@@ -214,7 +242,7 @@ Bible Buddy &middot; You are receiving this because you created a Bible Buddy ac
 }
 
 /** The plain-text alternative. Every send carries both. */
-export function renderFridayLessonText(lesson: FridayLesson): string {
+export function renderFridayLessonText(lesson: RenderableLesson): string {
   const strip = (value: string) =>
     value
       .replace(/<[^>]+>/g, "")
@@ -231,11 +259,13 @@ export function renderFridayLessonText(lesson: FridayLesson): string {
     else if (block.type === "ul") {
       for (const item of block.items) lines.push(`- ${strip(item)}`);
       lines.push("");
+    } else if (block.type === "scripture") {
+      lines.push(`"${strip(block.text)}" - ${strip(block.reference)}`, "");
     } else if (block.type === "cta") {
       lines.push(`${strip(block.label)}:`, block.url, "");
     }
   }
-  lines.push("Louis", "Founder of Bible Buddy", "");
+  lines.push(lesson.signoff?.name ?? "Louis", lesson.signoff?.title ?? "Founder of Bible Buddy", "");
   lines.push(
     "---",
     "Bible Buddy - You are receiving this because you created a Bible Buddy account.",
