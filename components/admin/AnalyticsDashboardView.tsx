@@ -297,7 +297,9 @@ function EmailScheduleTable({
 
   const STATE_TONE: Record<string, string> = {
     sent: "bg-[#e7f7ee] text-[#1f6b45]",
+    sending: "bg-[#dcfce7] text-[#15803d]",
     armed: "bg-[#eaf1ff] text-[#2f4fa8]",
+    missed: "bg-[#fee2e2] text-[#b91c1c]",
     scheduled: "bg-[#fff0e3] text-[#9a5a00]",
     paused: "bg-[#f1f5f9] text-[#64748b]",
     draft: "bg-[#f1f5f9] text-[#64748b]",
@@ -314,7 +316,11 @@ function EmailScheduleTable({
         <span className="w-28 shrink-0 text-right text-[11px] font-semibold text-[#94a3b8]">
           {r.state === "sent"
             ? `${(r.recipients ?? 0).toLocaleString()} · ${r.clicks ?? 0} clicks`
-            : "not sent yet"}
+            : r.state === "sending"
+              ? `${(r.sentSoFar ?? 0).toLocaleString()} sent so far`
+              : r.state === "missed"
+                ? "never sent"
+                : "not sent yet"}
         </span>
       </>
     );

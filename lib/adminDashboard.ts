@@ -956,8 +956,10 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     campaignId: string | null;
     subject: string;
     kind: string | null;
-    /** sent | armed | scheduled | paused | draft */
+    /** sent | sending | armed | scheduled | paused | missed | draft */
     state: string;
+    /** Rows actually delivered so far, read live from email_campaign_sends. */
+    sentSoFar: number | null;
     when: string | null;
     recipients: number | null;
     opens: number | null;
@@ -977,6 +979,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     subject: s.name || "(no subject)",
     kind: (s.name && bySubject.get(s.name)?.kind) || null,
     state: "sent",
+    sentSoFar: s.recipients ?? null,
     when: s.sent_at,
     recipients: s.recipients,
     opens: s.opens,
@@ -985,23 +988,79 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   }));
 
   const sentSubjects = new Set(sentRows.map((r) => r.subject));
-  const upcomingRows: ScheduleRow[] = campaignRows
-    .filter((c) => c.status !== "done" && !sentSubjects.has(c.subject || ""))
-    .map((c) => ({
-      campaignId: c.campaign_id,
-      subject: c.subject || c.campaign_id,
-      kind: c.kind,
-      state: c.scheduled_for ? "scheduled" : c.status === "sending" ? "armed" : c.status || "draft",
-      when: c.scheduled_for,
-      recipients: null,
-      opens: null,
-      clicks: null,
-      visits: null,
-    }));
+  const pending = campaignRows.filter((c) => c.status !== "done" && !sentSubjects.has(c.subject || ""));
 
+  /**
+   * HOW MANY HAVE ACTUALLY GONE OUT, READ LIVE (2026-10-28).
+   *
+   * This panel used to decide everything from email_campaign_stats, which is
+   * keyed by SUBJECT and only filled by /api/cron/email-stats-sync every six
+   * hours. So a campaign posting to five thousand people right now showed
+   * "scheduled / not sent yet" for up to six hours after it started, which is
+   * exactly what Louis caught on the day the Genesis campaign went out.
+   *
+   * email_campaign_sends is the truth and it is written as each address is
+   * claimed, so it is current to the second. One head count per campaign,
+   * all in parallel, capped so this cannot turn into sixty round trips.
+   */
+  const COUNTED = 30;
+  const counts = new Map<string, number>();
+  await Promise.all(
+    pending.slice(0, COUNTED).map(async (c) => {
+      const { count } = await admin
+        .from("email_campaign_sends")
+        .select("*", { count: "exact", head: true })
+        .eq("campaign_id", c.campaign_id)
+        .eq("status", "sent");
+      counts.set(c.campaign_id, count ?? 0);
+    }),
+  );
+
+  const nowIso = new Date().toISOString();
+
+  /**
+   * The status column and the date BOTH matter. This used to read
+   * `c.scheduled_for ? "scheduled" : ...`, so any row with a date said
+   * "scheduled" no matter what its status was - a paused campaign and a
+   * campaign mid-send looked identical, and both looked like they were
+   * waiting their turn.
+   */
+  const stateOf = (c: (typeof pending)[number]): string => {
+    const delivered = counts.get(c.campaign_id) ?? 0;
+    const due = !c.scheduled_for || c.scheduled_for <= nowIso;
+    if (c.status === "sending") {
+      if (delivered > 0) return "sending";
+      return due ? "armed" : "scheduled";
+    }
+    // Not armed. A date that has already passed with nothing sent did not
+    // happen, and calling that "scheduled" is how the 25 October email sat at
+    // the top of COMING UP three days after its date.
+    if (c.status === "paused") return due && delivered === 0 ? "missed" : "paused";
+    return c.status || "draft";
+  };
+
+  const upcomingRows: ScheduleRow[] = pending.map((c) => ({
+    campaignId: c.campaign_id,
+    subject: c.subject || c.campaign_id,
+    kind: c.kind,
+    state: stateOf(c),
+    sentSoFar: counts.get(c.campaign_id) ?? null,
+    when: c.scheduled_for,
+    recipients: null,
+    opens: null,
+    clicks: null,
+    visits: null,
+  }));
+
+  // What is happening now, then what is coming, then what never went. Sorting
+  // purely by date put a missed October email above today's live send.
+  const RANK: Record<string, number> = { sending: 0, armed: 1, scheduled: 2, paused: 3, draft: 3, missed: 4 };
   const emailSchedule = {
-    // Soonest first for things still to come, newest first for things sent.
-    upcoming: upcomingRows.sort((a, b) => (a.when || "9999").localeCompare(b.when || "9999")),
+    upcoming: upcomingRows.sort((a, b) => {
+      const byState = (RANK[a.state] ?? 3) - (RANK[b.state] ?? 3);
+      if (byState !== 0) return byState;
+      return (a.when || "9999").localeCompare(b.when || "9999");
+    }),
     sent: sentRows,
   };
 
