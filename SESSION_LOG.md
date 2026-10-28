@@ -10254,3 +10254,26 @@ MARCUS_HANDOFF.md entry and no new push notification this run, consistent with
 runs 80-126. Stopping cleanly per the routine's own instruction to stop rather
 than spin or invent work when there is no target chapter.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-28T08:51:44Z (hourly chapter notes run)
+Chapter: none | Status: block (no chapter available)
+All 1189 canonical chapters, Genesis 1 through Revelation 22, are still wired and
+verified. Priority queue and style-redo backlog are both still empty, confirmed
+fresh this run. This is the 128th consecutive no-op run since completion on
+2026-10-19T21:01:00Z. npm install ran clean (fresh clone). Re-verified fresh:
+data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json
+both still have empty remaining arrays. lib/ still has exactly 1187 *Source.ts
+files and lib/bibleReaderStudyNotes.ts still has exactly 1281
+replaceStudySectionsForBookRange calls, both identical to run 127's counts. Ran a
+fresh programmatic cross-check this run (scratchpad script, never shipped):
+parsed every replaceStudySectionsForBookRange("book", start, end, ...) call,
+unioned the chapter ranges per book, and compared against the real per-book
+canonical chapter counts for all 66 books -- zero gaps, zero overlaps missed,
+whole Bible still fully wired (1189/1189). Ran `npx tsc --noEmit`, finished
+clean, exit 0. Read MARCUS_HANDOFF.md fresh: the "whole Bible is done"
+escalation (2026-10-19, re-flagged 2026-10-24, direct push notification on run
+79 at 2026-10-26T07:49:31Z) is still sitting there unresolved, with no new reply
+or decision from Louis. Nothing material has changed since the run-127 entry,
+so no new MARCUS_HANDOFF.md entry and no new push notification this run,
+consistent with runs 80-127.
+Next up: whatever Louis decides the next mandate is.

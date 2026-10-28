@@ -1890,6 +1890,42 @@
           "at": "2026-10-28T07:53:35Z"
         }
       ]
+    },
+    {
+      "timestamp": "2026-10-28T08:51:44Z",
+      "type": "block",
+      "chaptersCompletedSoFarTonight": 0,
+      "detail": "Not a usage/rate limit. 128th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Ran npm install clean. Re-verified fresh: data/bible-notes-priority-queue.json and data/bible-notes-style-redo-remaining.json both still have empty remaining arrays. lib/ still has exactly 1187 *Source.ts files and lib/bibleReaderStudyNotes.ts still has exactly 1281 replaceStudySectionsForBookRange calls, both identical to run 127's counts. Ran a fresh programmatic cross-check this run (a scratchpad Python script, never shipped): parsed every replaceStudySectionsForBookRange(\"book\", start, end, ...) call in lib/bibleReaderStudyNotes.ts, unioned the chapter ranges per book, and compared against the real per-book canonical chapter counts for all 66 books -- 1189/1189 chapters covered, zero gaps. Ran npx tsc --noEmit directly, finished clean, exit 0. MARCUS_HANDOFF.md re-read fresh: the run-79 escalation (2026-10-26) is still unresolved, no new reply or decision from Louis. No new MARCUS_HANDOFF entry and no new push notification this run, consistent with runs 80-127. Stopping cleanly per the routine's own instruction to stop rather than spin or invent work when there is no target chapter.",
+      "steps": [
+        {
+          "name": "npm install done",
+          "at": "2026-10-28T08:47:52Z"
+        },
+        {
+          "name": "target chapter determined: none -- both priority queue and style-redo backlog remaining arrays empty, 128th consecutive no-op",
+          "at": "2026-10-28T08:46:30Z"
+        },
+        {
+          "name": "lib/*Source.ts count re-checked: 1187 (matches run 127)",
+          "at": "2026-10-28T08:48:10Z"
+        },
+        {
+          "name": "replaceStudySectionsForBookRange call count re-checked: 1281 (matches run 127)",
+          "at": "2026-10-28T08:48:10Z"
+        },
+        {
+          "name": "programmatic coverage cross-check: all 66 books / 1189 canonical chapters confirmed wired via scratchpad script -- zero gaps",
+          "at": "2026-10-28T08:50:10Z"
+        },
+        {
+          "name": "tsc --noEmit clean (exit 0)",
+          "at": "2026-10-28T08:51:44Z"
+        },
+        {
+          "name": "MARCUS_HANDOFF.md re-read fresh -- run-79 escalation still unresolved, no new reply from Louis; no new MARCUS_HANDOFF entry and no new push notification this run, consistent with runs 80-127",
+          "at": "2026-10-28T08:51:30Z"
+        }
+      ]
     }
   ]
 }
