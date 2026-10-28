@@ -128,8 +128,13 @@
       "status": "committed",
       "startedAt": "2026-10-28T01:17:27.392Z",
       "committedAt": "2026-10-28T01:28:26.450Z"
+    },
+    "when-is-saint-nicholas-day": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-28T05:16:47.861Z"
     }
   },
-  "nextTopic": "when-is-saint-nicholas-day",
-  "updatedAt": "2026-10-28T05:16:29.239Z"
+  "nextTopic": "who-was-saint-martin-of-tours",
+  "updatedAt": "2026-10-28T05:16:47.861Z"
 }
