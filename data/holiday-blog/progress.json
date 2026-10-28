@@ -126,17 +126,19 @@
     },
     "is-christmas-pagan": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-28T01:17:27.392Z",
-      "committedAt": "2026-10-28T01:28:26.450Z"
+      "committedAt": "2026-10-28T01:28:26.450Z",
+      "publishedAt": "2026-10-28T09:17:38.987Z"
     },
     "when-is-saint-nicholas-day": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-28T05:16:47.861Z",
-      "committedAt": "2026-10-28T05:27:09.049Z"
+      "committedAt": "2026-10-28T05:27:09.049Z",
+      "publishedAt": "2026-10-28T09:17:39.276Z"
     }
   },
   "nextTopic": "who-was-saint-martin-of-tours",
-  "updatedAt": "2026-10-28T05:27:09.063Z"
+  "updatedAt": "2026-10-28T09:17:39.276Z"
 }
