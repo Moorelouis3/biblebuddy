@@ -75,7 +75,6 @@ export type FridaySlot = {
 
 export const FRIDAY_CALENDAR: FridaySlot[] = [
   { date: "2026-10-30", utc: "2026-10-30T12:00:00Z", id: "friday-01-understand-the-bible" },
-  { date: "2026-11-06", utc: "2026-11-06T13:00:00Z", id: "friday-02-what-is-the-bible" },
   { date: "2026-11-13", utc: "2026-11-13T13:00:00Z", id: "friday-03-study-guides" },
   { date: "2026-11-20", utc: "2026-11-20T13:00:00Z", id: "friday-themed-thanksgiving-2026" },
   { date: "2026-11-27", utc: "2026-11-27T13:00:00Z", id: "friday-04-read-the-context" },
@@ -90,6 +89,8 @@ export const FRIDAY_CALENDAR: FridaySlot[] = [
   { date: "2027-01-29", utc: "2027-01-29T13:00:00Z", id: "friday-10-study-together" },
   { date: "2027-02-05", utc: "2027-02-05T13:00:00Z", id: "friday-11-ask-your-question" },
   { date: "2027-02-12", utc: "2027-02-12T13:00:00Z", id: "friday-12-build-your-routine" },
+  // Displaced by the Genesis study campaign, which takes 6 Nov (2026-10-28).
+  { date: "2027-02-19", utc: "2027-02-19T13:00:00Z", id: "friday-02-what-is-the-bible" },
 ];
 
 /** Both sets of copy, by id. */
