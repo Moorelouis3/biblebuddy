@@ -10194,3 +10194,30 @@ push notification this run, consistent with runs 80-124. Stopping cleanly per
 the routine's own instruction to stop rather than spin or invent work when there
 is no target chapter.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-28T06:53:11Z (hourly chapter notes run)
+Chapter: none | Status: block (no chapter available)
+All 1189 canonical chapters, Genesis 1 through Revelation 22, are still wired and
+verified. Priority queue and style-redo backlog are both still empty. This is the
+126th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Session
+started cleanly on main at ddf044c (an unrelated Chapter library commit), no
+detached-HEAD/stale-ref anomaly this run. npm install ran clean (fresh clone, 737
+packages). Re-verified fresh: data/bible-notes-style-redo-remaining.json still
+has an empty remaining array. data/bible-notes-progress-log.json still has 1262
+entries ending at Revelation 22 (goal 1189, 40 pre-existing gold-standard
+chapters). lib/ still has exactly 1187 *Source.ts files and
+lib/bibleReaderStudyNotes.ts still has exactly 1281
+replaceStudySectionsForBookRange calls, both identical to run 125's counts. Ran
+a fresh programmatic cross-check this run (temporary scripts/tmp-check-
+coverage.ts, written and deleted, never shipped): called
+getBibleReaderStudySections for all 66 books and 1189 canonical chapters using
+the real per-book chapter counts from lib/bibleBookChapters.ts -- zero gaps,
+whole Bible still fully wired. Ran `npx tsc --noEmit -p .`, finished clean, exit
+0. Read MARCUS_HANDOFF.md fresh (973 lines, unchanged): the "whole Bible is
+done" escalation (2026-10-19, re-flagged 2026-10-24, direct push notification on
+run 79 at 2026-10-26T07:49:31Z) is still sitting there unresolved, with no new
+reply or decision from Louis. Nothing material has changed since the run-125
+entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run,
+consistent with runs 80-125. Stopping cleanly per the routine's own instruction
+to stop rather than spin or invent work when there is no target chapter.
+Next up: whatever Louis decides the next mandate is.
