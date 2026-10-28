@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-17-explained",
+    title: "Numbers 17 Explained: Aaron's Rod That Budded",
+    description:
+      "Numbers 17 explained verse by verse: the twelve rods, Aaron's rod that budded and bore almonds overnight, and why the people still feared the tabernacle.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-17-explained",
+    publishedAt: "2026-10-28",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-17-explained.jpg",
+    groupPost: {
+      title: "Numbers 17 Explained 📖",
+      content:
+        "Twelve dry sticks go into a tent overnight.\nOnly one comes out alive.\n\n📌 God proves His choice through life this time, not judgment.\n\n📖 Aaron's rod buds, blooms, and bears almonds in one night.\n📖 Every prince takes his own rod back and checks it himself.\n📖 The people still cry out that they will die near the tabernacle.\n\nNew article on:\n🟢 why God chose **a growing rod** over fire this time\n🟢 what happened to **Aaron's rod** afterward\n🟢 why a peaceful sign still left Israel **afraid**\n\nWhat answer from God do you keep reopening instead of letting it stand? 🙏",
+    },
+  },
+  {
     slug: "numbers-16-explained",
     title: "Numbers 16 Explained: Korah's Rebellion Against Moses and Aaron",
     description:
