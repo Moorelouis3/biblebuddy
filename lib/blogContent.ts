@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-16-explained",
+    title: "Numbers 16 Explained: Korah's Rebellion Against Moses and Aaron",
+    description:
+      "Numbers 16 explained verse by verse: Korah's rebellion, the earth swallowing Dathan and Abiram, the 250 princes, and the plague Aaron stopped.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-16-explained",
+    publishedAt: "2026-10-28",
+    readTime: "16 min read",
+    image: "/blog-banners/numbers-16-explained.jpg",
+    groupPost: {
+      title: "Numbers 16 Explained 📖",
+      content:
+        "Korah tells Moses he has taken too much power.\nThe ground answers before Moses even does.\n\n📌 Real authority looks like intercession, not self defense.\n\n📖 250 respected princes back Korah's complaint with their names.\n📖 Dathan and Abiram call Egypt the land of milk and honey.\n📖 A plague starts the very next day, and Aaron stops it.\n\nNew article on:\n🟢 what Korah actually wanted from **the priesthood**\n🟢 why the earth opened for some and **fire fell** on others\n🟢 how Aaron stood **between the dead and the living**\n\nHas envy over someone else's role ever dressed itself up as a question about fairness? 🙏",
+    },
+  },
+  {
     slug: "who-was-saint-martin-of-tours",
     title: "Who Was Saint Martin of Tours? The Meaning of St. Martin's Day",
     description:
