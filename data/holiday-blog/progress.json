@@ -174,8 +174,13 @@
       "startedAt": "2026-10-29T05:16:54.934Z",
       "committedAt": "2026-10-29T05:26:51.138Z",
       "publishedAt": "2026-10-29T09:17:09.158Z"
+    },
+    "what-is-totensonntag": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-29T09:17:22.547Z"
     }
   },
-  "nextTopic": "what-is-totensonntag",
-  "updatedAt": "2026-10-29T09:17:09.158Z"
+  "nextTopic": "what-is-christmas-eve",
+  "updatedAt": "2026-10-29T09:17:22.547Z"
 }
