@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-totensonntag",
+    title: "What Is Totensonntag? Germany's Sunday of Remembrance Explained",
+    description:
+      "What is Totensonntag? The history behind Germany's Protestant Sunday of the Dead, its 1816 origin, and what the Bible says about remembering those who died.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-totensonntag",
+    publishedAt: "2026-10-29",
+    readTime: "13 min read",
+    image: "/blog-banners/what-is-totensonntag.jpg",
+    groupPost: {
+      title: "What Is Totensonntag? 📖",
+      content:
+        "A German law protects total silence on one Sunday a year.\nA king created the day two centuries ago.\n\n📌 Totensonntag is the Protestant Sunday set aside to remember the dead.\n\n📖 King Friedrich Wilhelm III ordered it in 1816.\n📖 German states still restrict dancing and music that day.\n📖 The Gospel reading is the parable of the ten virgins.\n\nNew article on:\n🟢 why a Prussian **king** created this day\n🟢 what actually happens in **church** that Sunday\n🟢 how it compares to Catholic **All Souls Day**\n\nWho do you still carry with you on a quiet Sunday? 🙏",
+    },
+  },
+  {
     slug: "numbers-20-explained",
     title: "Numbers 20 Explained: Moses Strikes the Rock and Loses the Promised Land",
     description:
