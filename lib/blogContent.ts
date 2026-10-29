@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-christmas-eve",
+    title: "What Is Christmas Eve? History, Meaning, and Christian Traditions",
+    description:
+      "What is Christmas Eve? The history behind the Vigil of the Nativity, Midnight Mass, and how Catholics, Protestants, and Orthodox Christians keep December 24.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-christmas-eve",
+    publishedAt: "2026-10-29",
+    readTime: "14 min read",
+    image: "/blog-banners/what-is-christmas-eve.jpg",
+    groupPost: {
+      title: "What Is Christmas Eve? 📖",
+      content:
+        "A pilgrim's journal from the year 381 already describes this night.\nSo does the Bible, long before any church service existed.\n\n📌 Christmas Eve is the vigil of Christ's birth, built around watching, not just waiting.\n\n📖 Luke says shepherds heard the news at night, in a field.\n📖 Catholics can choose from up to four Christmas Masses.\n📖 Orthodox Christians call it Paramony, meaning preparation.\n\nNew article on:\n🟢 where the tradition of **Midnight Mass** actually started\n🟢 how **Lutherans, Anglicans, and Orthodox** Christians mark the same night\n🟢 what families from **Germany to the Philippines** do on December 24\n\nWhat would it look like to actually watch tonight instead of just surviving it? 🙏",
+    },
+  },
+  {
     slug: "numbers-22-explained",
     title: "Numbers 22 Explained: Balaam, Balak, and the Donkey That Talked",
     description:
