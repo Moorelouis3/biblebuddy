@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-21-explained",
+    title: "Numbers 21 Explained: The Bronze Serpent and Sihon's Defeat",
+    description:
+      "Numbers 21 explained verse by verse: the fiery serpents, the bronze serpent on a pole, the song at the well, and Israel's defeat of Sihon and Og.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-21-explained",
+    publishedAt: "2026-10-29",
+    readTime: "12 min read",
+    image: "/blog-banners/numbers-21-explained.jpg",
+    groupPost: {
+      title: "Numbers 21 Explained 📖",
+      content:
+        "Snakes bite the camp after one more complaint.\nGod answers with a cure shaped like the curse.\n\n📌 Jesus later points straight back to this chapter as a picture of Himself.\n\n📖 A bronze serpent on a pole heals anyone who looks at it.\n📖 Israel sings over a well after complaining about thirst.\n📖 Two kings, Sihon and Og, fall in this one chapter.\n\nNew article on:\n🟢 why the **bronze serpent** was not an idol\n🟢 how **John 3** quotes this chapter directly\n🟢 why beating **Sihon and Og** mattered so much\n\nWhat do you need to look up and trust God with today? 🙏",
+    },
+  },
+  {
     slug: "what-is-totensonntag",
     title: "What Is Totensonntag? Germany's Sunday of Remembrance Explained",
     description:
