@@ -142,17 +142,19 @@
     },
     "who-was-saint-martin-of-tours": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-28T09:17:49.994Z",
-      "committedAt": "2026-10-28T09:30:19.537Z"
+      "committedAt": "2026-10-28T09:30:19.537Z",
+      "publishedAt": "2026-10-29T01:16:47.257Z"
     },
     "was-jesus-really-born-on-december-25": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-28T15:25:45.226Z",
-      "committedAt": "2026-10-28T15:38:31.902Z"
+      "committedAt": "2026-10-28T15:38:31.902Z",
+      "publishedAt": "2026-10-29T01:16:47.380Z"
     }
   },
   "nextTopic": "what-is-the-feast-of-christ-the-king",
-  "updatedAt": "2026-10-28T15:38:31.915Z"
+  "updatedAt": "2026-10-29T01:16:47.380Z"
 }
