@@ -153,8 +153,13 @@
       "startedAt": "2026-10-28T15:25:45.226Z",
       "committedAt": "2026-10-28T15:38:31.902Z",
       "publishedAt": "2026-10-29T01:16:47.380Z"
+    },
+    "what-is-the-feast-of-christ-the-king": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-29T01:16:57.141Z"
     }
   },
-  "nextTopic": "what-is-the-feast-of-christ-the-king",
-  "updatedAt": "2026-10-29T01:16:47.380Z"
+  "nextTopic": "most-important-christian-holidays",
+  "updatedAt": "2026-10-29T01:16:57.141Z"
 }
