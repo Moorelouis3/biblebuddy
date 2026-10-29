@@ -10779,3 +10779,22 @@ notification on run 79 at 2026-10-26T07:49:31Z) is still sitting there unresolve
 decision from Louis. Nothing material has changed since the run-150 entry, so no new MARCUS_HANDOFF.md
 entry and no new push notification this run, consistent with runs 80-150.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-29T09:52:10Z (hourly chapter notes run)
+Chapter: none -- whole Bible (1189/1189) still complete | Duration: 5 min | Sections: n/a | Cards: n/a | Status: block
+152nd consecutive no-op run since completion on 2026-10-19T21:01:00Z. `data/bible-notes-priority-queue.json`
+and `data/bible-notes-style-redo-remaining.json` still have empty `remaining` arrays. `data/bible-notes-progress-log.json`
+still has 1262 entries, last entry Revelation 22 finished 2026-10-19T21:01:00Z, goalTotalChapters 1189.
+lib/ still has exactly 1187 *Source.ts files and lib/bibleReaderStudyNotes.ts still has exactly 1281
+replaceStudySectionsForBookRange occurrences, identical to run 151's counts. Ran a fresh programmatic
+coverage cross-check this run (a tsx script calling getBibleReaderStudySections directly for all 1189
+canonical book/chapter pairs, written then deleted, not shipped): confirmed every one of the 1189
+canonical chapters is covered -- zero gaps. Session started on a detached HEAD matching origin/main
+exactly (9f296a2, run 151's own commit, no unrelated commits since); `git checkout -B main origin/main`
+landed on a proper branch before committing. `npx tsc --noEmit -p .` ran clean, exit 0. Read
+MARCUS_HANDOFF.md fresh and IDEAS.md fresh (2 lines, two unrelated bug-report entries, no Bible-notes
+mandate): the "whole Bible is done" escalation (2026-10-19, re-flagged 2026-10-24, direct push
+notification on run 79 at 2026-10-26T07:49:31Z) is still sitting there unresolved, with no new reply or
+decision from Louis. Nothing material has changed since the run-151 entry, so no new MARCUS_HANDOFF.md
+entry and no new push notification this run, consistent with runs 80-151.
+Next up: whatever Louis decides the next mandate is.
