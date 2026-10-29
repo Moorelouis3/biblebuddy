@@ -44,12 +44,6 @@ const TRIVIA_GUIDE: LouisPageGuide = {
   title: "Bible Study Games",
 };
 
-const TV_GUIDE: LouisPageGuide = {
-  id: "bible_buddy_tv",
-  featureKey: "bible_buddy_tv",
-  title: "Bible Buddy TV",
-};
-
 const DEVOTIONALS_GUIDE: LouisPageGuide = {
   id: "devotionals",
   featureKey: "guided_studies",
@@ -83,7 +77,6 @@ export function getLouisPageGuide(pathname: string | null): LouisPageGuide | nul
   ) {
     return TRIVIA_GUIDE;
   }
-  if (pathname === "/biblebuddy-tv" || pathname.startsWith("/biblebuddy-tv/")) return TV_GUIDE;
   if (pathname === "/devotionals" || pathname === "/bible-studies") return DEVOTIONALS_GUIDE;
   if (pathname === "/bible-reference" || pathname === "/bible-references") return REFERENCES_GUIDE;
 

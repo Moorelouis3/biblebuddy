@@ -25,7 +25,6 @@ import VerseOfTheDayCard from "./VerseOfTheDayCard";
 import { cardTint } from "../lib/cardTints";
 import YourBookshelf from "./home/YourBookshelf";
 import TodaysGroupStudy from "./home/TodaysGroupStudy";
-import BibleBuddyTvShelf from "./home/BibleBuddyTvShelf";
 import { trackVotdEvent as trackHomeEvent } from "../lib/verseOfTheDayContent";
 import { BLOG_ARTICLES } from "../lib/blogContent";
 import { calculateBibleYearPosition } from "../lib/bibleYearProgress";
@@ -396,7 +395,6 @@ export default function HomeScreen() {
           no door into them at all for six weeks; this is the one people walk
           past every morning. Same shape as the bookshelf - what you left
           unfinished first, then what you have not started. */}
-      <BibleBuddyTvShelf userId={userId} />
 
       <section aria-labelledby="home-recommended-heading">
         {/* "Quick Reads", not "Recommended For You" (Louis, 2026-10-17). The

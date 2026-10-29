@@ -635,30 +635,6 @@ function isScrambledPromoPost(post: Pick<Post, "link_url" | "title" | "content">
   return promoText.includes("scrambled");
 }
 
-function parseBibleBuddyTvSharePath(linkUrl: string | null | undefined) {
-  if (!linkUrl) return null;
-
-  try {
-    const parsed = new URL(linkUrl, "https://biblebuddy.local");
-    const match = parsed.pathname.match(/^\/biblebuddy-tv\/shows\/([^/?#]+)/i);
-    if (!match) return null;
-
-    return {
-      slug: decodeURIComponent(match[1]),
-      episodeId: parsed.searchParams.get("episode"),
-    };
-  } catch {
-    return null;
-  }
-}
-
-function isBibleBuddyTvSharePost(post: Pick<Post, "link_url" | "title">) {
-  // TV shares are titled "📺 <show> — <label>: <episode>" by
-  // app/api/biblebuddy-tv/share-to-group. The emoji here had been mangled to
-  // "??", so this never matched and TV shares fell through to the generic
-  // link card.
-  return Boolean(parseBibleBuddyTvSharePath(post.link_url) && (post.title || "").includes("📺"));
-}
 
 // Blog article shares (posted by the blog-group-post cron) carry an absolute
 // mybiblebuddy.net URL. Returns the internal path so they can render as a real
@@ -5281,11 +5257,10 @@ export default function GroupChatPage() {
   const activeFeedCoverPost = activeFeedPost ? isHomeFeedCoverPost(activeFeedPost) : false;
   const activeFeedScrambledShare = activeFeedPost ? isScrambledScoreShare(activeFeedPost) : false;
   const activeFeedScrambledPromo = activeFeedPost ? isScrambledPromoPost(activeFeedPost) : false;
-  const activeFeedBibleBuddyTvShare = activeFeedPost ? isBibleBuddyTvSharePost(activeFeedPost) : false;
   const activeFeedBlogArticlePath = activeFeedPost ? parseBlogArticlePath(activeFeedPost.link_url) : null;
   const activeFeedStudyPath = activeFeedPost ? parseInternalStudyPath(activeFeedPost.link_url) : null;
   const activeFeedPlainLinkUrl =
-    activeFeedPost?.link_url && !activeFeedBlogArticlePath && !activeFeedStudyPath && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare
+    activeFeedPost?.link_url && !activeFeedBlogArticlePath && !activeFeedStudyPath && !activeFeedScrambledShare && !activeFeedScrambledPromo
       ? activeFeedPost.link_url
       : null;
   const modalTopBuddies = topBuddies;
@@ -7521,7 +7496,7 @@ export default function GroupChatPage() {
               <UserBadge customBadge={activeFeedPost.member_badge} isPaid={activeFeedPost.is_paid} groupRole={activeFeedPost.role} skinId={activeFeedPost.active_premium_skin} />
               <span className="text-xs text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(activeFeedPost.created_at)}</span>
             </div>
-            {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
+            {activeFeedPost.title && !activeFeedCoverPost && !activeFeedScrambledShare && !activeFeedScrambledPromo && (
               <h2 className="mt-2 text-xl font-black leading-snug text-[var(--bb-text-primary,#111827)]">{activeFeedPost.title}</h2>
             )}
           </div>
@@ -7622,9 +7597,8 @@ export default function GroupChatPage() {
         <div className="px-5 py-5">
           {activeFeedScrambledShare && renderScrambledShareCard(activeFeedPost)}
           {activeFeedScrambledPromo && renderScrambledPromoCard(activeFeedPost)}
-          {activeFeedBibleBuddyTvShare && renderBibleBuddyTvShareCard(activeFeedPost)}
 
-          {!activeFeedCoverPost && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && !activeFeedScrambledPromo && !activeFeedBibleBuddyTvShare && (
+          {!activeFeedCoverPost && !activeFeedTriviaSet && !activeFeedQuestionSet && activeFeedPost.content && !activeFeedScrambledShare && !activeFeedScrambledPromo && (
             <div
               className={`prose prose-sm max-w-none leading-relaxed text-[var(--bb-text-secondary,#374151)] [&_*]:text-[var(--bb-text-secondary,#374151)] [&_h1]:mb-4 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:text-[var(--bb-text-primary,#111827)] [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-[var(--bb-text-primary,#111827)] [&_li]:my-1.5 [&_p]:my-4 [&_ul]:my-4 [&_ul]:pl-5 ${activeFeedPollSet ? "mb-4" : ""}`}
               onClick={handleScriptureClick}
@@ -7829,7 +7803,6 @@ export default function GroupChatPage() {
           const isCoverOnlyFeedPost = isHomeFeedCoverPost(post);
           const isScrambledSharePost = isScrambledScoreShare(post);
           const isScrambledPromo = isScrambledPromoPost(post);
-          const isBibleBuddyTvShare = isBibleBuddyTvSharePost(post);
           const blogArticlePath = parseBlogArticlePath(post.link_url);
           const studyPath = parseInternalStudyPath(post.link_url);
           const triviaSet = weeklyTriviaByPostId[post.id];
@@ -7943,11 +7916,10 @@ export default function GroupChatPage() {
                 />
               )}
             </div>
-              {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && <h3 className={`font-black text-[var(--bb-text-primary,#111827)] leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
+              {post.title && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && <h3 className={`font-black text-[var(--bb-text-primary,#111827)] leading-snug ${hasImagePost ? "text-base mt-3" : "text-lg mt-3"}`}>{post.title}</h3>}
               {isScrambledSharePost && renderScrambledShareCard(post, true)}
               {isScrambledPromo && renderScrambledPromoCard(post, true)}
-              {isBibleBuddyTvShare && renderBibleBuddyTvShareCard(post, true)}
-              {!triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (
+              {!triviaSet && !questionSet && post.content && !isCoverOnlyFeedPost && !isScrambledSharePost && !isScrambledPromo && (
                 <p className={`text-[15px] text-[var(--bb-text-secondary,#374151)] mt-3 leading-relaxed whitespace-pre-line line-clamp-4`}>
                   {getPostPreviewText(post.content)}
                 </p>
@@ -8013,7 +7985,7 @@ export default function GroupChatPage() {
                   {studyPath.label}
                 </Link>
               )}
-              {post.link_url && !blogArticlePath && !studyPath && !isScrambledSharePost && !isScrambledPromo && !isBibleBuddyTvShare && (() => {
+              {post.link_url && !blogArticlePath && !studyPath && !isScrambledSharePost && !isScrambledPromo && (() => {
               const parsed = parseVideoEmbed(post.link_url);
               if (parsed.embedUrl) {
                 if (!parsed.portrait) {
@@ -8189,55 +8161,6 @@ export default function GroupChatPage() {
       );
     }
 
-  function renderBibleBuddyTvShareCard(post: Post, compact = false) {
-    return (
-      <div className={`mt-3 overflow-hidden rounded-[24px] border border-[#d8e4fb] bg-[linear-gradient(135deg,#eef4ff_0%,#f9fbff_55%,#eef8ff_100%)] ${compact ? "p-4" : "p-5"}`}>
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-          {post.media_url ? (
-            <div className={`relative overflow-hidden rounded-2xl border border-[#d8e4fb] bg-white/80 shadow-sm ${compact ? "h-28 w-full sm:w-40" : "h-32 w-full sm:w-48"}`}>
-              <img
-                src={post.media_url}
-                alt={post.title || "Bible Buddy TV thumbnail"}
-                className="h-full w-full object-cover"
-              />
-            </div>
-          ) : null}
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-3">
-              <div className="rounded-full border border-[#d8e4fb] bg-white/90 p-1 shadow-sm">
-                <LouisAvatar mood="wave" size={compact ? 42 : 50} />
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5d7fc0]">Bible Buddy TV</p>
-                <h3 className={`mt-1 font-bold leading-snug text-gray-900 ${compact ? "text-base" : "text-lg"}`}>
-                  {post.title || "Bible Buddy TV"}
-                </h3>
-              </div>
-            </div>
-            {post.content ? (
-              <p className={`mt-3 leading-relaxed text-gray-700 ${compact ? "text-sm" : "text-[15px]"}`}>
-                {stripHtml(post.content)}
-              </p>
-            ) : null}
-            <div className="mt-4 flex flex-wrap items-center gap-3">
-              <div className="rounded-full border border-[#d8e4fb] bg-white/85 px-3 py-1 text-xs font-semibold text-[#4e6795]">
-                Shared Video
-              </div>
-              {post.link_url ? (
-                <Link
-                  href={post.link_url}
-                  onClick={(event) => event.stopPropagation()}
-                  className="rounded-full bg-[#4768af] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#35508a]"
-                >
-                  Watch in Bible Buddy TV
-                </Link>
-              ) : null}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   function renderUpdateCard() {
     const missingProfilePhoto = !userProfileImage;

@@ -369,7 +369,6 @@ function buildLouisPageContext(pathname: string | null | undefined, searchParams
     if (segments[0] === "bible-trivia") return "trivia";
     if (segments[0] === "scrambled") return "scrambled";
     if (segments[0] === "dashboard") return "dashboard";
-    if (segments[0] === "biblebuddy-tv") return "tv";
     if (segments[0] === "profile") return "profile";
     return "other";
   })();
@@ -522,7 +521,6 @@ function buildDirectRouteFromMessage(message: string, currentPage: LouisPageCont
     // went (2026-10-18). Lil Louis was the last thing in the app that would
     // still offer to take somebody there.
     { match: /\b(group|bible study group|the group|community feed)\b/, href: "/bb-feed", reply: "The group moved — everybody posts in the Feed now.\n\nI’m opening it for you." },
-    { match: /\b(tv|sermons?|bible buddy tv)\b/, href: "/biblebuddy-tv", reply: "Okay.\n\nI’m opening Bible Buddy TV now." },
     { match: /\b(profile)\b/, href: "/profile", reply: "Okay.\n\nI’m taking you to your profile now." },
     { match: /\b(settings?)\b/, href: "/settings", reply: "Okay.\n\nI’m opening settings now." },
     { match: /\b(study tools?|guided studies?)\b/, href: "/guided-studies", reply: "Okay.\n\nI’m taking you to the study tools now." },
@@ -1140,20 +1138,6 @@ function buildBehaviorRecommendations(context: LouisBehaviorContext) {
     });
   }
 
-  if (context.strongestPreference === "tv") {
-    candidates.push({
-      key: "tv-habit",
-      kind: "default",
-      category: "tv",
-      score: 8,
-      summaryLines: [`Your best move today is one sermon in Bible Buddy TV${context.lastTvLabel ? ` that fits with ${context.lastTvLabel}.` : "."}`],
-      whyLine: "That matches the teaching content you already spend time with in here.",
-      question: "Want to watch it now?",
-      href: "/biblebuddy-tv",
-      yesFollowUp: "Let's get you into Bible Buddy TV and keep you growing.",
-    });
-  }
-
   if (false && context.currentPollQuestion && !context.hasAnsweredCurrentPoll) {
     candidates.push({
       key: "group-poll",
@@ -1283,16 +1267,6 @@ function buildHabitNudgeFromCards(openedCards: string[]): LouisHabitNudge | null
     };
   }
 
-  if (!seen.has("Bible Buddy TV")) {
-    return {
-      key: "tv",
-      summary:
-        "You still haven't tried Bible Buddy TV. If you want something easier to ease into today, that could be a good move.",
-      label: "Try Bible Buddy TV",
-      href: "/biblebuddy-tv",
-    };
-  }
-
   if (!seen.has("Bible Study Tools")) {
     return {
       key: "notes",
@@ -1357,18 +1331,6 @@ function summarizeLastMasterAction(action: {
     };
   }
 
-  if (
-    action.action_type === "bible_buddy_tv_video_started" ||
-    action.action_type === "bible_buddy_tv_title_opened"
-  ) {
-    return {
-      summary: label ? `Last time you were watching ${label}.` : "Last time you were in Bible Buddy TV.",
-      followUp: "Do you want to pick that back up?",
-      continueLabel: "Open Bible Buddy TV",
-      continueHref: "/biblebuddy-tv",
-    };
-  }
-
   if (action.action_type === "trivia_question_answered") {
     return {
       summary: label ? `Last time you were working through ${label}.` : "Last time you were in Bible Trivia.",
@@ -1388,8 +1350,6 @@ function summarizeLastMasterAction(action: {
           ? null
           : label === "Bible Study Tools"
             ? "/guided-studies"
-            : label === "Bible Buddy TV"
-              ? "/biblebuddy-tv"
               : label === "Bible Study Games"
                 ? "/bible-trivia"
                 : null;
@@ -1594,25 +1554,6 @@ function buildLouisJourneyRecommendation({
       recommendationKey: "louis-journey-notes-expansion",
       category: "general",
       journeyType: "notes_expansion",
-    };
-  }
-
-  if (currentStreak >= 5 && !hasTriedTv) {
-    return {
-      greeting: "You might want an easier learning lane today.",
-      contextLine: "Bible Buddy TV is good when you want to stay in the app but change the pace a little.",
-      recommendationLine:
-        "Try a sermon, documentary, or Bible show in Bible Buddy TV and let it reinforce what you're already learning.",
-      primaryButtonText: "Open Bible Buddy TV",
-      primaryButtonHref: "/biblebuddy-tv",
-      level: 2,
-      cardTitle: "Try Bible Buddy TV",
-      cardSubtitle: "A good secondary lane once the habit is forming.",
-      cardEyebrow: "Expansion",
-      cardTheme: "blue",
-      recommendationKey: "louis-journey-tv-expansion",
-      category: "general",
-      journeyType: "tv_expansion",
     };
   }
 

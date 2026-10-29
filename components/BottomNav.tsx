@@ -24,7 +24,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { isNativeApp } from "../lib/nativeApp";
 
 type Tab = {
   label: string;
@@ -80,7 +79,6 @@ const TABS: Tab[] = [
    * an eighth tab would have squeezed "Lil Louis" past what its own width
    * allows on a 375px phone.
    */
-  { label: "TV", href: "/biblebuddy-tv", icon: "📺", prefixes: ["/biblebuddy-tv"] },
 ];
 
 /** Below this, a movement is a twitch or a bounce, not a scroll. */
@@ -209,15 +207,7 @@ export default function BottomNav() {
   const pathname = usePathname();
   const navRef = useRef<HTMLElement | null>(null);
 
-  /**
-   * Bible Buddy TV is hidden in the store apps (2026-10-29, Guideline 5.2.3).
-   * The catalogue is other people's films and series, so it ships on the
-   * website only. app/biblebuddy-tv/layout.tsx is the real block - this is
-   * just the door into it.
-   */
-  const [native, setNative] = useState(false);
-  useEffect(() => setNative(isNativeApp()), []);
-  const tabs = native ? TABS.filter((t) => t.href !== "/biblebuddy-tv") : TABS;
+  const tabs = TABS;
 
   const scrolledAway = useHideOnScroll(pathname);
   const keyboardOpen = useKeyboardOpen();

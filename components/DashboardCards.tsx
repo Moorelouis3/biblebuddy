@@ -3,7 +3,6 @@
 import Link from "next/link";
 import React from "react";
 import { LouisAvatar } from "./LouisAvatar";
-import { isNativeApp } from "../lib/nativeApp";
 
 interface DashboardCardsProps {
   profile: {
@@ -41,15 +40,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
   onInviteBuddy,
   dashboardTourSpotlight = null,
 }) => {
-  /**
-   * Bible Buddy TV is hidden in the store apps (2026-10-29, Guideline 5.2.3).
-   * The catalogue is other people's films and series, so it ships on the
-   * website only. app/biblebuddy-tv/layout.tsx is the real block - this is
-   * one of the doors into it.
-   */
-  const [bbTvNative, setBbTvNative] = React.useState(false);
-  React.useEffect(() => setBbTvNative(isNativeApp()), []);
-
   const showFreeUpgradeCard = membershipStatus !== "pro" && profile?.is_paid !== true;
   const safeDailyTaskTotal = 5;
   const safeDailyTaskCompletedCount = Math.max(0, Math.min(safeDailyTaskTotal, dailyTaskCompletedCount || 0));
@@ -208,15 +198,6 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           <p className="bb-text-secondary mt-1">A collection of Bible study tools</p>
         </div>
       </Link>
-
-      {!bbTvNative && (
-        <Link href="/biblebuddy-tv" onClick={(event) => handleCardClick(event, "bible_buddy_tv", "/biblebuddy-tv")}>
-          <div className="bb-card cursor-pointer rounded-xl border p-5 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md">
-            <h2 className="bb-text-primary text-xl font-semibold">ðŸ“º Bible Buddy TV</h2>
-            <p className="bb-text-secondary mt-1">Stream Bible shows, movies, sermons, and more</p>
-          </div>
-        </Link>
-      )}
 
       <Link href="/bible-study-games" onClick={(event) => handleCardClick(event, "bible_trivia", "/bible-study-games")}>
         <div

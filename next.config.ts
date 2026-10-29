@@ -51,6 +51,12 @@ const nextConfig: NextConfig = {
        * what the daily study post, the Top Buddies board and the series
        * machinery actually run on - none of them opens a page.
        */
+      // Bible Buddy TV was removed on 2026-10-29 (Guideline 5.2.3): the
+      // catalogue was other people's films and series. Old shared links and
+      // bookmarks land on the home page instead of a 404. Not permanent, so
+      // the path is free if it ever comes back with licensed or own content.
+      { source: "/biblebuddy-tv", destination: "/", permanent: false },
+      { source: "/biblebuddy-tv/:path*", destination: "/", permanent: false },
       { source: "/study-groups", destination: "/bb-feed", permanent: false },
       { source: "/study-groups/:path*", destination: "/bb-feed", permanent: false },
       // The Bible reader lives at lowercase /bible. Capital /Bible was a

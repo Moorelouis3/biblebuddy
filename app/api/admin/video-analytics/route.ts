@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { bibleBuddyTvTitles } from "@/lib/bibleBuddyTvContent";
 import { requireOwner } from "@/lib/requireOwner";
 
 type TimeFilter = "24h" | "7d" | "30d" | "1y" | "all";
@@ -63,15 +62,8 @@ export async function GET(request: NextRequest) {
     { episodeTitle: string; seriesTitle: string; category: string }
   >();
 
-  for (const title of bibleBuddyTvTitles) {
-    for (const episode of title.episodes) {
-      episodeMap.set(episode.id, {
-        episodeTitle: episode.title,
-        seriesTitle: title.title,
-        category: title.category,
-      });
-    }
-  }
+  // Bible Buddy TV was removed on 2026-10-29, so there are no episodes left
+  // to name. Historic rows keep their ids and fall back to "Unknown" below.
 
   const rows = data || [];
   const uniqueViewers = new Set(

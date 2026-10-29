@@ -49,13 +49,6 @@ import {
 } from "../lib/freePlanGating";
 import { TASK_REWARD_LABELS } from "../lib/progressionRewards";
 import {
-  bibleBuddyTvCategories,
-  bibleBuddyTvTitles,
-  type BibleBuddyTvEpisode,
-  type BibleBuddyTvTitle,
-} from "../lib/bibleBuddyTvContent";
-import { buildBibleBuddyTvWatchLabel, recordBibleBuddyTvWatchOnce } from "../lib/bibleBuddyTvRewards";
-import {
   SELECTED_BUDDY_STORAGE_KEY,
   getBuddyAvatar,
   normalizeBuddyAvatarId,
@@ -2357,10 +2350,6 @@ export default function DashboardJourneyExperience({
   const [buddiesDashboard, setBuddiesDashboard] = useState<BuddiesDashboardPayload | null>(null);
   const [buddiesDashboardLoading, setBuddiesDashboardLoading] = useState(false);
   const [buddiesDashboardError, setBuddiesDashboardError] = useState<string | null>(null);
-  const [embeddedTvSelection, setEmbeddedTvSelection] = useState<{
-    title: BibleBuddyTvTitle;
-    episode: BibleBuddyTvEpisode;
-  } | null>(null);
   const [pendingStudyDashboardHandoff, setPendingStudyDashboardHandoff] = useState<{
     journeyKey: string;
     chapterLabel: string;
@@ -6548,171 +6537,10 @@ export default function DashboardJourneyExperience({
     </section>
   );
 
-  function getTvEpisodeEmbedUrl(url?: string) {
-    if (!url) return null;
-    const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([A-Za-z0-9_-]+)/);
-    return match?.[1] ? `https://www.youtube.com/embed/${match[1]}?autoplay=1&rel=0` : null;
-  }
-
-  async function openEmbeddedTvEpisode(title: BibleBuddyTvTitle, episode: BibleBuddyTvEpisode) {
-    setEmbeddedTvSelection({ title, episode });
-
-    if (!userId || !episode.available) return;
-
-    const categoryLabel = bibleBuddyTvCategories.find((category) => category.id === title.category)?.label || "Bible Buddy TV";
-    const actionLabel = buildBibleBuddyTvWatchLabel({
-      categoryLabel,
-      title: title.title,
-      episodeLabel: episode.contentLabel || (title.contentType === "movie" ? "Movie" : `Episode ${episode.episodeNumber}`),
-      episodeTitle: episode.title,
-      episodeId: episode.id,
-    });
-
-    try {
-      await recordBibleBuddyTvWatchOnce({ userId, username: userName, actionLabel });
-    } catch (error) {
-      console.error("[DASHBOARD TV] Could not record TV watch:", error);
-    }
-  }
-
-  const renderEmbeddedTvPage = () => {
-    const availableTitles = bibleBuddyTvTitles.filter((title) => title.episodes.some((episode) => episode.available));
-    const featuredTitle = availableTitles[0] ?? bibleBuddyTvTitles[0];
-    const featuredEpisode = featuredTitle?.episodes.find((episode) => episode.available) ?? featuredTitle?.episodes[0];
-    const continueEpisodes = availableTitles
-      .flatMap((title) =>
-        title.episodes
-          .filter((episode) => episode.available)
-          .slice(0, 2)
-          .map((episode) => ({ title, episode })),
-      )
-      .slice(0, 8);
-    const sermonEpisodes = availableTitles
-      .filter((title) => title.category === "sermons")
-      .flatMap((title) => title.episodes.filter((episode) => episode.available).slice(0, 1).map((episode) => ({ title, episode })))
-      .slice(0, 6);
-    const storyEpisodes = availableTitles
-      .filter((title) => title.category !== "sermons")
-      .flatMap((title) => title.episodes.filter((episode) => episode.available).slice(0, 1).map((episode) => ({ title, episode })))
-      .slice(0, 6);
-
-    const renderEpisodeCard = ({ title, episode }: { title: BibleBuddyTvTitle; episode: BibleBuddyTvEpisode }) => (
-      <button
-        key={`${title.id}-${episode.id}`}
-        type="button"
-        onClick={() => void openEmbeddedTvEpisode(title, episode)}
-        className="group w-[168px] shrink-0 overflow-hidden rounded-[18px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-      >
-        <div className="relative aspect-video overflow-hidden bg-[var(--bb-surface-soft,#f8fbff)]">
-          <img src={episode.thumbnail || title.poster} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-300 group-hover:scale-105" />
-          <span className="absolute bottom-2 right-2 rounded-full bg-black/75 px-2 py-0.5 text-[10px] font-black text-white">{episode.duration}</span>
-        </div>
-        <div className="p-3">
-          <p className="line-clamp-1 text-[11px] font-black uppercase tracking-[0.12em] text-[var(--bb-accent,#2f7fe8)]">{episode.contentLabel || title.badge}</p>
-          <h3 className="mt-1 line-clamp-2 text-sm font-black leading-5 text-[var(--bb-text-primary,#111827)]">{episode.title}</h3>
-          <p className="mt-1 line-clamp-1 text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">{title.title}</p>
-        </div>
-      </button>
-    );
-
-    if (embeddedTvSelection) {
-      const { title, episode } = embeddedTvSelection;
-      const embedUrl = getTvEpisodeEmbedUrl(episode.youtubeUrl);
-      return (
-        <section className="w-full px-1">
-          <div className="mx-auto max-w-xl pb-7">
-            <div className="overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] shadow-[0_14px_36px_rgba(38,63,99,0.10)]">
-              <div className="flex items-start justify-between gap-3 border-b border-[var(--bb-card-border,#dbe7f4)] px-4 py-4">
-                <div className="min-w-0">
-                  <p className="text-xs font-black uppercase tracking-[0.16em] text-[var(--bb-accent,#2f7fe8)]">Now Playing</p>
-                  <h2 className="mt-1 text-xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">{episode.title}</h2>
-                  <p className="mt-1 text-xs font-semibold text-[var(--bb-text-secondary,#5f6368)]">{title.title} Ã¢â‚¬Â¢ {episode.duration}</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setEmbeddedTvSelection(null)}
-                  className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface,#f8fbff)] text-lg font-black text-[var(--bb-text-primary,#111827)]"
-                  aria-label="Close video"
-                >
-                  Ãƒâ€”
-                </button>
-              </div>
-              <div className="bg-black">
-                {embedUrl ? (
-                  <iframe
-                    title={episode.title}
-                    src={embedUrl}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="aspect-video w-full border-0"
-                  />
-                ) : (
-                  <div className="grid aspect-video place-items-center px-6 text-center text-white">
-                    <p className="text-sm font-black">Video link coming soon.</p>
-                  </div>
-                )}
-              </div>
-              <div className="space-y-3 px-4 py-4">
-                <p className="text-sm font-semibold leading-6 text-[var(--bb-text-secondary,#5f6368)]">{episode.summary}</p>
-                <button
-                  type="button"
-                  onClick={() => setEmbeddedTvSelection(null)}
-                  className="w-full rounded-full bg-[var(--bb-button,#2f7fe8)] px-5 py-3 text-sm font-black text-[var(--bb-button-text,#ffffff)] shadow-sm"
-                >
-                  Back to TV
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-      );
-    }
-
-    return (
-      <section className="w-full px-1">
-        <div className="mx-auto flex max-w-xl flex-col gap-4 pb-7">
-          {featuredTitle && featuredEpisode ? (
-            <button
-              type="button"
-              onClick={() => void openEmbeddedTvEpisode(featuredTitle, featuredEpisode)}
-              className="relative overflow-hidden rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-black text-left shadow-[0_14px_36px_rgba(38,63,99,0.16)]"
-            >
-              <img src={featuredEpisode.thumbnail || featuredTitle.heroImage || featuredTitle.poster} alt="" loading="lazy" decoding="async" className="h-64 w-full object-cover opacity-75" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-                <p className="text-xs font-black uppercase tracking-[0.18em] text-white/80">Bible Buddy TV</p>
-                <h2 className="mt-1 text-3xl font-black leading-tight">{featuredTitle.title}</h2>
-                <p className="mt-2 line-clamp-2 text-sm font-semibold leading-5 text-white/85">{featuredEpisode.summary}</p>
-                <span className="mt-4 inline-flex rounded-full bg-white px-5 py-2.5 text-sm font-black text-black">Ã¢â€“Â¶ Play</span>
-              </div>
-            </button>
-          ) : null}
-
-          <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-4 shadow-sm">
-            <h2 className="text-xl font-black text-[var(--bb-text-primary,#111827)]">Watch next</h2>
-            <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">Watch Bible-centered teaching without leaving your study flow.</p>
-            <div className="-mx-4 mt-4 flex gap-3 overflow-x-auto px-4 pb-2">
-              {continueEpisodes.map(renderEpisodeCard)}
-            </div>
-          </div>
-
-          <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-4 shadow-sm">
-            <h2 className="text-xl font-black text-[var(--bb-text-primary,#111827)]">Sermons</h2>
-            <div className="-mx-4 mt-4 flex gap-3 overflow-x-auto px-4 pb-2">
-              {sermonEpisodes.map(renderEpisodeCard)}
-            </div>
-          </div>
-
-          <div className="rounded-[28px] border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-4 py-4 shadow-sm">
-            <h2 className="text-xl font-black text-[var(--bb-text-primary,#111827)]">Stories & documentaries</h2>
-            <div className="-mx-4 mt-4 flex gap-3 overflow-x-auto px-4 pb-2">
-              {storyEpisodes.map(renderEpisodeCard)}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  };
+  // Bible Buddy TV was removed on 2026-10-29 (Guideline 5.2.3): the
+  // catalogue was other people’s films and series. The embedded TV page
+  // that lived here was already unreachable - nothing called it - so it
+  // went with the rest.
 
   const renderEmbeddedGamesPage = () => {
     const triviaTask = visibleTasks.find((task) => task.kind === "trivia") ?? null;
@@ -18653,7 +18481,6 @@ Before we understand redemption, we need to understand what God made humanity fo
             { label: "Home", href: "/dashboard", icon: "Ã¢Å’â€š", active: true },
             { label: "Bible", href: "/reading", icon: "Ã°Å¸â€œâ€“" },
             { label: "Group", href: "/dashboard?view=group", icon: "Ã°Å¸â€˜Â¥" },
-            { label: "TV", href: "/biblebuddy-tv", icon: "Ã¢â€“Â¶" },
             { label: "Games", href: "/bible-study-games", icon: "Ã°Å¸Å½Â®" },
           ].map((item) => (
             <Link

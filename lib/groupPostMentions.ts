@@ -1,7 +1,6 @@
 ﻿import { BIBLE_KEYWORDS_LIST } from "./bibleKeywordsList";
 import { BIBLE_PEOPLE_LIST } from "./biblePeopleList";
 import { BIBLE_PLACES_LIST } from "./biblePlacesList";
-import { bibleBuddyTvTitles } from "./bibleBuddyTvContent";
 
 export type MentionCatalogItem = {
   key: string;
@@ -193,15 +192,6 @@ function buildStaticMentions() {
       label: term,
       href: `/keywords-in-the-bible?keyword=${encodeURIComponent(term)}`,
       kind: "keyword",
-    });
-  });
-
-  bibleBuddyTvTitles.forEach((title) => {
-    add({
-      key: `tv_title:${title.id}`,
-      label: title.title,
-      href: `/biblebuddy-tv/shows/${title.slug}`,
-      kind: "tv_title",
     });
   });
 

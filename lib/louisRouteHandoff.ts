@@ -121,12 +121,6 @@ export async function buildLouisRecommendationHandoff(
     ]);
   } else if (targetPath.startsWith("/dashboard")) {
     message = await buildGroupRecommendationMessage(recommendation, seed);
-  } else if (targetPath.startsWith("/biblebuddy-tv")) {
-    message = pickVariant(seed, [
-      `You are watching ${label} now.\n\nDo not just play it in the background and move on.\n\nPay attention to what lines up with what you have been reading lately.\n\nIf you want to talk through it after, ask me.`,
-      `This is a good next watch.\n\nStay present with it and listen for what connects back to Scripture.\n\nGood teaching lands better when you actually slow down and take it in.\n\nI am here if you want to talk about it after.`,
-      `You are in Bible Buddy TV now.\n\nWatch this with intention and look for what God might be trying to highlight.\n\nA good teaching can deepen what you have already been reading.\n\nIf anything stands out, come tell me.`,
-    ]);
   } else if (targetPath.startsWith("/bible-trivia") || targetPath.startsWith("/bible-study-games")) {
     message = pickVariant(seed, [
       `You are testing what stuck now.\n\nTake your time and actually think through the answers.\n\nThis is one of the easiest ways to lock in what you have been learning.\n\nAfter you finish, come back and tell me how it went.`,
