@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-18-explained",
+    title: "Numbers 18 Explained: Aaron's Priesthood and the Levites' Reward",
+    description:
+      "Numbers 18 explained verse by verse: Aaron's priesthood, the heave offerings, firstborn redemption, and why the Levites tithe their own tithe.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-18-explained",
+    publishedAt: "2026-10-29",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-18-explained.jpg",
+    groupPost: {
+      title: "Numbers 18 Explained 📖",
+      content:
+        "Israel just cried out that the tabernacle meant death.\nGod answers with a plan, not a punishment.\n\n📌 Aaron and the Levites step into that danger permanently.\n\n📖 The priesthood is called a gift, with a cost attached.\n📖 Aaron gets no land. God Himself is his portion.\n📖 Levites tithe a tenth of the tithe they collect.\n\nNew article on:\n🟢 why God speaks to **Aaron** directly this time\n🟢 who the **stranger** warning actually targets\n🟢 how the **tithe of the tithe** keeps the system honest\n\nWho in your life carries a weight so you do not have to? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-feast-of-christ-the-king",
     title: "What Is the Feast of Christ the King? Meaning and Biblical Significance",
     description:
