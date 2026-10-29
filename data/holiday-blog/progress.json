@@ -181,8 +181,13 @@
       "status": "committed",
       "startedAt": "2026-10-29T09:17:22.547Z",
       "committedAt": "2026-10-29T09:25:59.596Z"
+    },
+    "what-is-christmas-eve": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-29T15:38:57.838Z"
     }
   },
-  "nextTopic": "what-is-christmas-eve",
-  "updatedAt": "2026-10-29T15:38:24.244Z"
+  "nextTopic": "what-is-a-holy-day-of-obligation",
+  "updatedAt": "2026-10-29T15:38:57.839Z"
 }
