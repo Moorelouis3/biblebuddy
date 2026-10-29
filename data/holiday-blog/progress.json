@@ -165,8 +165,13 @@
       "status": "committed",
       "startedAt": "2026-10-29T01:16:57.141Z",
       "committedAt": "2026-10-29T01:28:32.605Z"
+    },
+    "most-important-christian-holidays": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-29T05:16:54.934Z"
     }
   },
-  "nextTopic": "most-important-christian-holidays",
-  "updatedAt": "2026-10-29T05:16:31.660Z"
+  "nextTopic": "what-is-totensonntag",
+  "updatedAt": "2026-10-29T05:16:54.935Z"
 }
