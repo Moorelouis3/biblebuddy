@@ -41,9 +41,10 @@
       ]
     },
     "2026-10-29": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "what-is-the-feast-of-christ-the-king"
+        "what-is-the-feast-of-christ-the-king",
+        "most-important-christian-holidays"
       ]
     }
   },
@@ -168,10 +169,11 @@
     },
     "most-important-christian-holidays": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-29T05:16:54.934Z"
+      "status": "committed",
+      "startedAt": "2026-10-29T05:16:54.934Z",
+      "committedAt": "2026-10-29T05:26:51.138Z"
     }
   },
   "nextTopic": "what-is-totensonntag",
-  "updatedAt": "2026-10-29T05:16:54.935Z"
+  "updatedAt": "2026-10-29T05:26:51.153Z"
 }

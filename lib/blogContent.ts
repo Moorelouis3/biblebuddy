@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "most-important-christian-holidays",
+    title: "What Are the Most Important Christian Holidays and What Do They Mean?",
+    description:
+      "What are the most important Christian holidays and what do they mean? A guide to Easter, Christmas, Lent, Advent, Pentecost, and Epiphany.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/most-important-christian-holidays",
+    publishedAt: "2026-10-29",
+    readTime: "17 min read",
+    image: "/blog-banners/most-important-christian-holidays.jpg",
+    groupPost: {
+      title: "What Are the Most Important Christian Holidays? 📖",
+      content:
+        "Christmas and Easter are not the only holidays that matter.\nHere is what the whole church calendar is actually built on.\n\n📌 Every Christian holiday points back to something Jesus actually did.\n\n📖 Easter moves every year because it follows the spring full moon.\n📖 Lent borrows its forty days from Jesus in the wilderness.\n📖 Pentecost falls exactly fifty days after Easter Sunday.\n\nNew article on:\n🟢 why **Easter** outranks every other holiday\n🟢 what **Advent** and **Lent** are actually waiting for\n🟢 how Catholics, Orthodox, and Protestants keep these days differently\n\nWhich of these holidays does your own church actually keep? 🙏",
+    },
+  },
+  {
     slug: "numbers-19-explained",
     title: "Numbers 19 Explained: The Law of the Red Heifer",
     description:
