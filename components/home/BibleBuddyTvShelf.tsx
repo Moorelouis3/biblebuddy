@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { cardTint } from "../../lib/cardTints";
 import { bibleBuddyTvTitles, type BibleBuddyTvTitle } from "../../lib/bibleBuddyTvContent";
+import { isNativeApp } from "../../lib/nativeApp";
 
 /**
  * Bible Buddy TV on the dashboard, shaped like the bookshelf.
@@ -36,6 +37,15 @@ type ShelfShow = {
 export default function BibleBuddyTvShelf({ userId }: { userId: string | null }) {
   const router = useRouter();
   const [shows, setShows] = useState<ShelfShow[] | null>(null);
+
+  /**
+   * Bible Buddy TV is hidden in the store apps (2026-10-29, Guideline 5.2.3).
+   * The catalogue is other people's films and series, so it ships on the
+   * website only. app/biblebuddy-tv/layout.tsx is the real block - these are
+   * the doors into it.
+   */
+  const [native, setNative] = useState(false);
+  useEffect(() => setNative(isNativeApp()), []);
 
   useEffect(() => {
     let cancelled = false;
@@ -103,6 +113,7 @@ export default function BibleBuddyTvShelf({ userId }: { userId: string | null })
     };
   }, [userId]);
 
+  if (native) return null;
   if (!shows || shows.length === 0) return null;
 
   return (

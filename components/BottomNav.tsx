@@ -24,6 +24,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { isNativeApp } from "../lib/nativeApp";
 
 type Tab = {
   label: string;
@@ -207,6 +208,17 @@ function useKeyboardOpen() {
 export default function BottomNav() {
   const pathname = usePathname();
   const navRef = useRef<HTMLElement | null>(null);
+
+  /**
+   * Bible Buddy TV is hidden in the store apps (2026-10-29, Guideline 5.2.3).
+   * The catalogue is other people's films and series, so it ships on the
+   * website only. app/biblebuddy-tv/layout.tsx is the real block - this is
+   * just the door into it.
+   */
+  const [native, setNative] = useState(false);
+  useEffect(() => setNative(isNativeApp()), []);
+  const tabs = native ? TABS.filter((t) => t.href !== "/biblebuddy-tv") : TABS;
+
   const scrolledAway = useHideOnScroll(pathname);
   const keyboardOpen = useKeyboardOpen();
 
@@ -257,7 +269,7 @@ export default function BottomNav() {
         }`}
       >
         <div className="mx-auto flex max-w-md items-stretch gap-0.5 rounded-full border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] px-1.5 py-1.5 shadow-[0_10px_30px_rgba(15,23,42,0.14)]">
-          {TABS.map((tab) => {
+          {tabs.map((tab) => {
             const active = isActive(pathname, tab);
             return (
               <Link
