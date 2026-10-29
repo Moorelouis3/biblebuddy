@@ -163,17 +163,19 @@
     },
     "what-is-the-feast-of-christ-the-king": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-29T01:16:57.141Z",
-      "committedAt": "2026-10-29T01:28:32.605Z"
+      "committedAt": "2026-10-29T01:28:32.605Z",
+      "publishedAt": "2026-10-29T09:17:09.056Z"
     },
     "most-important-christian-holidays": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-29T05:16:54.934Z",
-      "committedAt": "2026-10-29T05:26:51.138Z"
+      "committedAt": "2026-10-29T05:26:51.138Z",
+      "publishedAt": "2026-10-29T09:17:09.158Z"
     }
   },
   "nextTopic": "what-is-totensonntag",
-  "updatedAt": "2026-10-29T05:26:51.153Z"
+  "updatedAt": "2026-10-29T09:17:09.158Z"
 }
