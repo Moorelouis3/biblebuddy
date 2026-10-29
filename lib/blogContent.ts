@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-20-explained",
+    title: "Numbers 20 Explained: Moses Strikes the Rock and Loses the Promised Land",
+    description:
+      "Numbers 20 explained verse by verse: Miriam's death, Moses striking the rock at Meribah, why both leaders lost the promised land, and Aaron's death on Mount Hor.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-20-explained",
+    publishedAt: "2026-10-29",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-20-explained.jpg",
+    groupPost: {
+      title: "Numbers 20 Explained 📖",
+      content:
+        "Forty years of faithful leadership.\nOne angry moment at a rock ends it.\n\n📌 God still gives the water. He still disciplines the man who disobeyed Him.\n\n📖 Moses was told to speak to the rock, not strike it.\n📖 Both Moses and Aaron lose the promised land over it.\n📖 Aaron dies on Mount Hor the same chapter.\n\nNew article on:\n🟢 why **striking the rock** was wrong this time\n🟢 why **Aaron** lost the land too\n🟢 why **Edom** refused to let Israel pass\n\nHas one tired moment ever cost you more than you expected? 🙏",
+    },
+  },
+  {
     slug: "most-important-christian-holidays",
     title: "What Are the Most Important Christian Holidays and What Do They Mean?",
     description:
