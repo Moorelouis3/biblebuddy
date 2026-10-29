@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-22-explained",
+    title: "Numbers 22 Explained: Balaam, Balak, and the Donkey That Talked",
+    description:
+      "Numbers 22 explained verse by verse: Balak hires Balaam to curse Israel, and the angel and talking donkey that stop him on the road.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-22-explained",
+    publishedAt: "2026-10-29",
+    readTime: "15 min read",
+    image: "/blog-banners/numbers-22-explained.jpg",
+    groupPost: {
+      title: "Numbers 22 Explained 📖",
+      content:
+        "A king pays a prophet to curse Israel.\nGod answers him twice, and means both answers.\n\n📌 The man hired for his vision cannot see what his own donkey sees.\n\n📖 God tells Balaam no, flatly, the first time he asks.\n📖 An angel with a drawn sword waits in the road.\n📖 Balaam's donkey turns and speaks before Balaam's own eyes open.\n\nNew article on:\n🟢 why God let **Balaam** go after already saying no\n🟢 what the **talking donkey** actually saw first\n🟢 why the New Testament remembers **Balaam** as a warning\n\nWhat answer have you already been given that you keep asking again? 🙏",
+    },
+  },
+  {
     slug: "numbers-21-explained",
     title: "Numbers 21 Explained: The Bronze Serpent and Sihon's Defeat",
     description:
