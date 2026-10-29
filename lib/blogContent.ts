@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-19-explained",
+    title: "Numbers 19 Explained: The Law of the Red Heifer",
+    description:
+      "Numbers 19 explained verse by verse: the red heifer, the water of separation, and why touching a dead body made an Israelite unclean for seven days.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-19-explained",
+    publishedAt: "2026-10-29",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-19-explained.jpg",
+    groupPost: {
+      title: "Numbers 19 Explained 📖",
+      content:
+        "A dead body makes you unclean for seven days.\nEven touching a grave counts.\n\n📌 God gives one ritual to wash it all away.\n\n📖 A red heifer, burned completely outside the camp.\n📖 Its ashes mixed with water for years of use.\n📖 Refusing to purify meant being cut off from Israel.\n\nNew article on:\n🟢 why the **red heifer** had to be one of a kind\n🟢 what the **water of separation** actually washed away\n🟢 why even touching a bone made someone unclean\n\nHave you ever felt unclean after being near death? 🙏",
+    },
+  },
+  {
     slug: "numbers-18-explained",
     title: "Numbers 18 Explained: Aaron's Priesthood and the Levites' Reward",
     description:
