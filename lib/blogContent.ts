@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-feast-of-christ-the-king",
+    title: "What Is the Feast of Christ the King? Meaning and Biblical Significance",
+    description:
+      "What is the Feast of Christ the King? The history behind this Catholic holiday, why Pius XI created it in 1925, and what the Bible says about Christ as king.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-the-feast-of-christ-the-king",
+    publishedAt: "2026-10-29",
+    readTime: "13 min read",
+    image: "/blog-banners/what-is-the-feast-of-christ-the-king.jpg",
+    groupPost: {
+      title: "What Is the Feast of Christ the King? 📖",
+      content:
+        "A pope creates a brand new holiday in 1925.\nHe names it after a king with no army.\n\n📌 The Feast of Christ the King began less than a century ago.\n\n📖 Pope Pius XI wrote it right after World War One.\n📖 The date later moved to the Sunday before Advent.\n📖 Jesus defined His own kingship to Pilate in John 18.\n\nNew article on:\n🟢 why Pius XI created a brand new **feast**\n🟢 how the date moved after **Vatican II**\n🟢 what the Bible says about this kind of **king**\n\nWhat actually sits on the throne of your own life right now? 🙏",
+    },
+  },
+  {
     slug: "should-christians-tithe",
     title: "Should Christians Tithe?",
     description:
