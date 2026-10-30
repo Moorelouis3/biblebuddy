@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-a-holy-day-of-obligation",
+    title: "What Is a Holy Day of Obligation? Catholic Meaning and Requirements",
+    description:
+      "What is a holy day of obligation? The canon law behind it, the six days the US keeps, what fulfills it, and how Protestants view required worship differently.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-a-holy-day-of-obligation",
+    publishedAt: "2026-10-30",
+    readTime: "16 min read",
+    image: "/blog-banners/what-is-a-holy-day-of-obligation.jpg",
+    groupPost: {
+      title: "What Is a Holy Day of Obligation? 📖",
+      content:
+        "A Catholic bulletin lists Mass times for a random Tuesday.\nHere is what that one phrase actually binds you to.\n\n📌 A holy day of obligation is Sunday's rule, applied to a weekday Rome names.\n\n📖 Canon law lists ten days worldwide, but the US keeps only six.\n📖 A 2024 Vatican letter just reopened an old Saturday and Monday exception.\n📖 Protestants read the same calendar question very differently.\n\nNew article on:\n🟢 which **six days** actually carry the obligation in America\n🟢 what counts as **fulfilling** it, including the evening Mass\n🟢 why **Colossians 2:16** is the Protestant answer to this whole question\n\nWhat day do you treat as genuinely set apart for worship? 🙏",
+    },
+  },
+  {
     slug: "what-is-christmas-eve",
     title: "What Is Christmas Eve? History, Meaning, and Christian Traditions",
     description:

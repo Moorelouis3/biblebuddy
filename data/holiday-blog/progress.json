@@ -48,6 +48,12 @@
         "what-is-totensonntag",
         "what-is-christmas-eve"
       ]
+    },
+    "2026-10-30": {
+      "committed": 1,
+      "slugs": [
+        "what-is-a-holy-day-of-obligation"
+      ]
     }
   },
   "articles": {
@@ -193,10 +199,11 @@
     },
     "what-is-a-holy-day-of-obligation": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-30T01:16:28.776Z"
+      "status": "committed",
+      "startedAt": "2026-10-30T01:16:28.776Z",
+      "committedAt": "2026-10-30T01:30:16.452Z"
     }
   },
   "nextTopic": "who-was-saint-andrew",
-  "updatedAt": "2026-10-30T01:16:28.776Z"
+  "updatedAt": "2026-10-30T01:30:16.479Z"
 }
