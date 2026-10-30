@@ -211,8 +211,13 @@
       "startedAt": "2026-10-30T05:16:51.136Z",
       "committedAt": "2026-10-30T05:29:34.994Z",
       "publishedAt": "2026-10-30T09:18:59.492Z"
+    },
+    "why-is-christmas-on-january-7": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-30T09:19:09.741Z"
     }
   },
-  "nextTopic": "why-is-christmas-on-january-7",
-  "updatedAt": "2026-10-30T09:18:59.492Z"
+  "nextTopic": "what-is-christmastide",
+  "updatedAt": "2026-10-30T09:19:09.741Z"
 }
