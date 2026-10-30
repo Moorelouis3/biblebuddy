@@ -50,11 +50,12 @@
       ]
     },
     "2026-10-30": {
-      "committed": 3,
+      "committed": 4,
       "slugs": [
         "what-is-a-holy-day-of-obligation",
         "who-was-saint-andrew",
-        "why-is-christmas-on-january-7"
+        "why-is-christmas-on-january-7",
+        "what-is-christmastide"
       ]
     }
   },
@@ -221,10 +222,11 @@
     },
     "what-is-christmastide": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-30T15:18:06.437Z"
+      "status": "committed",
+      "startedAt": "2026-10-30T15:18:06.437Z",
+      "committedAt": "2026-10-30T15:30:25.597Z"
     }
   },
   "nextTopic": "catholic-vs-protestant-church-calendars",
-  "updatedAt": "2026-10-30T15:18:06.437Z"
+  "updatedAt": "2026-10-30T15:30:25.613Z"
 }

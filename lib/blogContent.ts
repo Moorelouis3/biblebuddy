@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-christmastide",
+    title: "What Is Christmastide? The Twelve Days of Christmas Explained",
+    description:
+      "What is Christmastide? The real Twelve Days of Christmas, the Octave's saints, the Baptism of the Lord, and how Orthodox and Protestants differ.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-christmastide",
+    publishedAt: "2026-10-30",
+    readTime: "14 min read",
+    image: "/blog-banners/what-is-christmastide.jpg",
+    groupPost: {
+      title: "What Is Christmastide? The Twelve Days of Christmas Explained 📖",
+      content:
+        "The tree comes down December 26. Everyone calls Christmas over.\nMost of Christian history would disagree with you.\n\n📌 December 25 was never the whole party. It was day one of twelve.\n\n📖 The Nativity has its own eight day Octave, ending January 1.\n📖 Saint Stephen and the Holy Innocents both get remembered inside it.\n📖 Catholics actually keep the season even longer, to the Baptism of the Lord.\n\nNew article on:\n🟢 what the **Octave of Christmas** actually covers, day by day\n🟢 why **Twelfth Night** on January 5 matters at all\n🟢 how **Orthodox Christians** keep the same twelve days differently\n\nHow long do you let the news of Christmas actually sink in before life goes back to normal? 🙏",
+    },
+  },
+  {
     slug: "numbers-27-explained",
     title: "Numbers 27 Explained: A New Inheritance and a New Leader",
     description:
