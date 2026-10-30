@@ -218,8 +218,13 @@
       "status": "committed",
       "startedAt": "2026-10-30T09:19:09.741Z",
       "committedAt": "2026-10-30T09:30:21.722Z"
+    },
+    "what-is-christmastide": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-30T15:18:06.437Z"
     }
   },
-  "nextTopic": "what-is-christmastide",
-  "updatedAt": "2026-10-30T15:17:42.968Z"
+  "nextTopic": "catholic-vs-protestant-church-calendars",
+  "updatedAt": "2026-10-30T15:18:06.437Z"
 }
