@@ -11548,3 +11548,23 @@ Queue remaining: 12
 Not live yet: this commit has no [deploy] tag per the 2026-10-10 cadence change (run fires off cycle,
 next scheduled deploy publishes it like everything else). Flagged as doctrinally sensitive in
 MARCUS_HANDOFF.md per the format spec.
+
+## 2026-10-30T22:51:00Z (hourly chapter notes run)
+Chapter: none -- whole Bible (1189/1189) still complete | Duration: 5 min | Sections: n/a | Cards: n/a | Status: block
+189th consecutive no-op run since completion on 2026-10-19T21:01:00Z. Session started on a detached
+HEAD again (same recurring environment anomaly); origin/main was one commit ahead of run 188's own
+commit (83039e9, an interleaved blog-writer run), realigned via git checkout main + git reset --hard
+origin/main, zero uncommitted work lost. `data/bible-notes-style-redo-remaining.json` and
+`data/bible-notes-priority-queue.json` both still have empty `remaining` arrays.
+`data/bible-notes-progress-log.json` still has 1262 entries, last entry Revelation 22 finished
+2026-10-19T21:01:00Z, goalTotalChapters 1189, unchanged from run 188. lib/ still has exactly 1187
+*Source.ts files and lib/bibleReaderStudyNotes.ts still has exactly 1281 replaceStudySectionsForBookRange
+occurrences, identical to run 188's counts; independently re-verified via a per-book canonical-range
+coverage script that zero chapters are missing across all 66 books, Genesis 1 through Revelation 22.
+Re-verified this run via `npx tsc --noEmit -p .` (clean, exit 0). Read MARCUS_HANDOFF.md and IDEAS.md fresh: IDEAS.md still has only the same 2 unrelated
+bug-report entries, no Bible-notes mandate; MARCUS_HANDOFF.md's tail is still the same open escalation
+on the "whole Bible is done" question (2026-10-19, re-flagged 2026-10-24, direct push notification sent
+on run 79 at 2026-10-26T07:49:31Z), with no new reply or decision from Louis. Nothing material has
+changed since the run-188 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this
+run, consistent with runs 80-188.
+Next up: whatever Louis decides the next mandate is.
