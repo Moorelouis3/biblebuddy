@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-25-explained",
+    title: "Numbers 25 Explained: Phinehas and the Covenant of Peace",
+    description:
+      "Numbers 25 explained verse by verse: Israel's sin at Baalpeor, the plague, Phinehas and the covenant of peace, and the 24,000 versus 23,000 question.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-25-explained",
+    publishedAt: "2026-10-30",
+    readTime: "15 min read",
+    image: "/blog-banners/numbers-25-explained.jpg",
+    groupPost: {
+      title: "Numbers 25 Explained 📖",
+      content:
+        "No curse ever touched Israel.\nOne choice from inside the camp nearly did.\n\n📌 One man's zeal stops a plague that already killed thousands.\n\n📖 Israel joins itself to Baalpeor at Shittim.\n📖 Phinehas acts before anyone commands him to.\n📖 God grants his family a covenant of peace.\n\nNew article on:\n🟢 what actually happened at **Baalpeor**\n🟢 why God grants **Phinehas** an everlasting priesthood\n🟢 the honest answer to the **24,000 versus 23,000** question\n\nWhat has gotten into your camp quietly, that no outside attack ever could? 🙏",
+    },
+  },
+  {
     slug: "who-was-saint-andrew",
     title: "Who Was Saint Andrew? The Apostle's Story and Feast Day",
     description:
