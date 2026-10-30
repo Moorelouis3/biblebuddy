@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-was-saint-andrew",
+    title: "Who Was Saint Andrew? The Apostle's Story and Feast Day",
+    description:
+      "Who was Saint Andrew? The fisherman who brought Peter to Jesus, the First Called apostle, his martyrdom at Patras, and why his feast day opens Advent.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/who-was-saint-andrew",
+    publishedAt: "2026-10-30",
+    readTime: "11 min read",
+    image: "/blog-banners/who-was-saint-andrew.jpg",
+    groupPost: {
+      title: "Who Was Saint Andrew? 📖",
+      content:
+        "He brought his own brother to Jesus, then vanished from the story.\nMost people cannot name a single thing Andrew actually did.\n\n📌 Andrew is the apostle standing behind nearly every other apostle's biggest moment.\n\n📖 He met Jesus a full day before Peter did.\n📖 He pointed a boy with five loaves toward Jesus.\n📖 Tradition says he died bound to a cross at Patras.\n\nNew article on:\n🟢 why Andrew is called the **First Called** apostle\n🟢 what is legend and what is history in his **martyrdom**\n🟢 how his feast day sets the date for **Advent**\n\nWho have you quietly introduced to Jesus lately? 🙏",
+    },
+  },
+  {
     slug: "numbers-24-explained",
     title: "Numbers 24 Explained: A Star Out of Jacob, a Sceptre Out of Israel",
     description:

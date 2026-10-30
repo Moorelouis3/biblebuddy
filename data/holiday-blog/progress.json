@@ -50,9 +50,10 @@
       ]
     },
     "2026-10-30": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "what-is-a-holy-day-of-obligation"
+        "what-is-a-holy-day-of-obligation",
+        "who-was-saint-andrew"
       ]
     }
   },
@@ -205,10 +206,11 @@
     },
     "who-was-saint-andrew": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-30T05:16:51.136Z"
+      "status": "committed",
+      "startedAt": "2026-10-30T05:16:51.136Z",
+      "committedAt": "2026-10-30T05:29:34.994Z"
     }
   },
   "nextTopic": "why-is-christmas-on-january-7",
-  "updatedAt": "2026-10-30T05:16:51.136Z"
+  "updatedAt": "2026-10-30T05:29:35.007Z"
 }
