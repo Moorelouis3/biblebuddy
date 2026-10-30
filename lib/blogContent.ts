@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-23-explained",
+    title: "Numbers 23 Explained: Balaam's Two Blessings Over Israel",
+    description:
+      "Numbers 23 explained verse by verse: Balaam's two oracles over Israel, why God is not a man that He should lie, and why Balak's rituals keep failing.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-23-explained",
+    publishedAt: "2026-10-30",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-23-explained.jpg",
+    groupPost: {
+      title: "Numbers 23 Explained 📖",
+      content:
+        "A king builds altars twice, hoping for a different answer.\nBoth times the hired prophet blesses Israel instead.\n\n📌 God is not a man, that he should lie or change his mind.\n\n📖 Balaam builds seven altars on two separate mountains.\n📖 He admits his own divination has no power over Israel.\n📖 Balak finally begs him to just stop talking.\n\nNew article on:\n🟢 what **God is not a man, that he should lie** really means\n🟢 why moving **mountains** changed nothing about the message\n🟢 why even **Balaam** ends up telling the truth\n\nWhat has God already settled that you keep asking Him to repeat? 🙏",
+    },
+  },
+  {
     slug: "what-is-a-holy-day-of-obligation",
     title: "What Is a Holy Day of Obligation? Catholic Meaning and Requirements",
     description:
