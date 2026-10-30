@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-27-explained",
+    title: "Numbers 27 Explained: A New Inheritance and a New Leader",
+    description:
+      "Numbers 27 explained verse by verse: Zelophehad's daughters win an inheritance, Moses learns he will die on Mount Abarim, and Joshua is commissioned.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-27-explained",
+    publishedAt: "2026-10-30",
+    readTime: "15 min read",
+    image: "/blog-banners/numbers-27-explained.jpg",
+    groupPost: {
+      title: "Numbers 27 Explained 📖",
+      content:
+        "Five daughters walk up with no man to speak for them.\nTheir request becomes law for the whole nation.\n\n📌 In the same chapter, Moses learns exactly how he will die.\n\n📖 Zelophehad's daughters ask for their father's inheritance.\n📖 God grants it, then makes it a statute for all Israel.\n📖 Moses asks for a shepherd before he asks for anything else.\n\nNew article on:\n🟢 why **Zelophehad's daughters** change the inheritance law\n🟢 why God names **Meribah** again right before Moses dies\n🟢 how **Joshua** is publicly commissioned to lead\n\nWho are you quietly leaving as sheep with no shepherd? 🙏",
+    },
+  },
+  {
     slug: "numbers-26-explained",
     title: "Numbers 26 Explained: The Census That Only Two Men Survived",
     description:
