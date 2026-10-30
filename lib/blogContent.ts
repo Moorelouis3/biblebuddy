@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "why-is-christmas-on-january-7",
+    title: "Why Do Some Christians Celebrate Christmas on January 7?",
+    description:
+      "Why do some Christians celebrate Christmas on January 7? The Julian calendar, the 1923 Orthodox split, and why Ukraine just changed its own date.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/why-is-christmas-on-january-7",
+    publishedAt: "2026-10-30",
+    readTime: "15 min read",
+    image: "/blog-banners/why-is-christmas-on-january-7.jpg",
+    groupPost: {
+      title: "Why Do Some Christians Celebrate Christmas on January 7? 📖",
+      content:
+        "A coworker tells you her Christmas is still two weeks away.\nShe is not wrong, and she is not celebrating a different birthday.\n\n📌 Every January 7 Christmas is still December 25, read off an older calendar.\n\n📖 Julius Caesar's calendar ran eleven minutes too long every year.\n📖 Sixteen centuries later that error had grown to thirteen days.\n📖 Ukraine just switched its own answer to this question in 2023.\n\nNew article on:\n🟢 how a tiny **Julian calendar** error became a thirteen day gap\n🟢 which churches kept **January 7** and which moved back to December 25\n🟢 why **Armenia** celebrates on January 6 for a totally different reason\n\nDoes the date on a calendar change what actually happened at Bethlehem? 🙏",
+    },
+  },
+  {
     slug: "numbers-25-explained",
     title: "Numbers 25 Explained: Phinehas and the Covenant of Peace",
     description:
