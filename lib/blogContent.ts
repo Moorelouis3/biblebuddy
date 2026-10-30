@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-24-explained",
+    title: "Numbers 24 Explained: A Star Out of Jacob, a Sceptre Out of Israel",
+    description:
+      "Numbers 24 explained verse by verse: Balaam's last two oracles over Israel, the Star and Sceptre prophecy, and why he still ends up a warning.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-24-explained",
+    publishedAt: "2026-10-30",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-24-explained.jpg",
+    groupPost: {
+      title: "Numbers 24 Explained 📖",
+      content:
+        "Balaam stops building altars.\nThe blessing comes anyway, bigger than before.\n\n📌 A Star out of Jacob, a Sceptre out of Israel, named centuries early.\n\n📖 Balaam blesses Israel a third time, with no ritual at all.\n📖 He speaks of a King not yet born.\n📖 Balak finally tells him to just go home.\n\nNew article on:\n🟢 what the **Star out of Jacob** prophecy actually points to\n🟢 why **Balaam** keeps telling the truth anyway\n🟢 what happens to **Amalek** and the nations watching nearby\n\nWhat has God already spoken that you are still waiting to see up close? 🙏",
+    },
+  },
+  {
     slug: "numbers-23-explained",
     title: "Numbers 23 Explained: Balaam's Two Blessings Over Israel",
     description:
