@@ -202,8 +202,13 @@
       "status": "committed",
       "startedAt": "2026-10-30T01:16:28.776Z",
       "committedAt": "2026-10-30T01:30:16.452Z"
+    },
+    "who-was-saint-andrew": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-30T05:16:51.136Z"
     }
   },
-  "nextTopic": "who-was-saint-andrew",
-  "updatedAt": "2026-10-30T05:16:26.822Z"
+  "nextTopic": "why-is-christmas-on-january-7",
+  "updatedAt": "2026-10-30T05:16:51.136Z"
 }
