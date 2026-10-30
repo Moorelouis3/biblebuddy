@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-26-explained",
+    title: "Numbers 26 Explained: The Census That Only Two Men Survived",
+    description:
+      "Numbers 26 explained verse by verse: the second census, Simeon's sharp drop, Zelophehad's daughters, and why only Caleb and Joshua were left alive.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-26-explained",
+    publishedAt: "2026-10-30",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-26-explained.jpg",
+    groupPost: {
+      title: "Numbers 26 Explained 📖",
+      content:
+        "No battle in this chapter.\nJust a headcount that quietly closes a 38 year sentence.\n\n📌 Only two men remain from the first census taken at Sinai.\n\n📖 Israel takes a second census after the plague at Baalpeor.\n📖 Simeon's number collapses more than any other tribe.\n📖 The land gets divided by size, then placed by lot.\n\nNew article on:\n🟢 why **Simeon** shrank so much after Baalpeor\n🟢 what **Zelophehad's daughters** set up for the next chapter\n🟢 why only **Caleb and Joshua** were left alive\n\nWhat promise from God are you still waiting to see confirmed? 🙏",
+    },
+  },
+  {
     slug: "why-is-christmas-on-january-7",
     title: "Why Do Some Christians Celebrate Christmas on January 7?",
     description:
