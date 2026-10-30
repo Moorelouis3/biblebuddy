@@ -190,8 +190,13 @@
       "startedAt": "2026-10-29T15:38:57.838Z",
       "committedAt": "2026-10-29T15:49:49.325Z",
       "publishedAt": "2026-10-30T01:16:18.673Z"
+    },
+    "what-is-a-holy-day-of-obligation": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-30T01:16:28.776Z"
     }
   },
-  "nextTopic": "what-is-a-holy-day-of-obligation",
-  "updatedAt": "2026-10-30T01:16:18.673Z"
+  "nextTopic": "who-was-saint-andrew",
+  "updatedAt": "2026-10-30T01:16:28.776Z"
 }
