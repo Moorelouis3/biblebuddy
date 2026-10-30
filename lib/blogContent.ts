@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "is-drinking-alcohol-a-sin",
+    title: "Is Drinking Alcohol a Sin?",
+    description:
+      "Is drinking alcohol a sin? See what the Bible actually says about wine, drunkenness, Romans 14, and the real line between freedom and being mastered.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/is-drinking-alcohol-a-sin",
+    publishedAt: "2026-10-30",
+    readTime: "17 min read",
+    image: "/is-drinking-alcohol-a-sin-banner.png",
+    groupPost: {
+      title: "Is Drinking Alcohol a Sin? 📖",
+      content:
+        "You poured a drink and felt a flicker of guilt.\nYou're not the only one who's wondered this.\n\n📌 The Bible never calls alcohol itself a sin.\n\n📖 Jesus made wine as His first miracle.\n📖 Paul told Timothy to drink a little wine.\n📖 But drunkenness is named as sin again and again.\n\nNew article on:\n🟢 why the **glass** was never the real issue\n🟢 what **Romans 14** says about your conscience and your brother\n🟢 what to do if alcohol already has **power** over you\n\nWhere do you land on this one? 🙏",
+    },
+  },
+  {
     slug: "what-is-christmastide",
     title: "What Is Christmastide? The Twelve Days of Christmas Explained",
     description:

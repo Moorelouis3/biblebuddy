@@ -11541,3 +11541,10 @@ on run 79 at 2026-10-26T07:49:31Z), with no new reply or decision from Louis. No
 changed since the run-187 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this
 run, consistent with runs 80-187.
 Next up: whatever Louis decides the next mandate is.
+
+## 2026-10-30T22:13:39Z (blog writer run)
+Article: Is Drinking Alcohol a Sin? | Words: ~3350 | Category: Christian Foundations | Status: pass
+Queue remaining: 12
+Not live yet: this commit has no [deploy] tag per the 2026-10-10 cadence change (run fires off cycle,
+next scheduled deploy publishes it like everything else). Flagged as doctrinally sensitive in
+MARCUS_HANDOFF.md per the format spec.

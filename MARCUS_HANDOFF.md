@@ -979,3 +979,18 @@ an Old Testament command fulfilled in Christ in the New Testament's giving patte
 as a continuing principle Christians should still practice. It also names giving-as-leverage
 (threatening curses, shaming people over an amount) as manipulation, not God's heart. Flagging so
 Louis can read it himself per the standing doctrinal-sensitivity rule.
+
+## New blog post touches contested doctrine: drinking alcohol
+"Is Drinking Alcohol a Sin?" (/blog/is-drinking-alcohol-a-sin) covers a
+topic the topic queue entry itself flagged as doctrinally sensitive. It
+takes the position that the Bible names drunkenness as sin repeatedly
+(Ephesians 5:18, Galatians 5:19-21, Proverbs 20:1, 23:29-32) but never
+calls alcohol itself sinful (John 2:9-10, 1 Timothy 5:23, Proverbs
+31:6-7), then covers Romans 14 and 1 Corinthians 8 on conscience and not
+causing a brother to stumble, and states plainly that sincere Christians
+land in different places (some abstain out of conviction, some drink
+with a clear conscience) without either side holding the other in
+contempt. It also tells any reader who already has a drinking problem
+directly that the article is not permission and to get real help.
+Flagging per the format spec's doctrinal-sensitivity rule so Louis can
+read it himself before wide promotion.
