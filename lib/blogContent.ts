@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "catholic-vs-protestant-church-calendars",
+    title: "What Is the Difference Between Catholic and Protestant Church Calendars?",
+    description:
+      "What is the difference between Catholic and Protestant church calendars? How Rome, Luther, Geneva, and Baptists each answer it.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/catholic-vs-protestant-church-calendars",
+    publishedAt: "2026-10-31",
+    readTime: "13 min read",
+    image: "/blog-banners/catholic-vs-protestant-church-calendars.jpg",
+    groupPost: {
+      title: "What Is the Difference Between Catholic and Protestant Church Calendars? 📖",
+      content:
+        "Your Catholic coworker gives up chocolate for Lent.\nYour own church has never once mentioned it.\n\n📌 Catholics follow a detailed yearly calendar. Protestants split into three different answers.\n\n📖 The Catholic calendar ranks days: solemnities, feasts, memorials.\n📖 Luther kept Christmas and Easter, then cut the saints' days.\n📖 Reformed churches kept only one holy day: the Lord's Day.\n\nNew article on:\n🟢 why the **Catholic Lectionary** reads different Gospels each year\n🟢 what **Martin Luther** actually kept and actually cut\n🟢 why some **Baptists** are now observing Lent\n\nDoes your own church follow a calendar, or plan its own week by week? 🙏",
+    },
+  },
+  {
     slug: "is-drinking-alcohol-a-sin",
     title: "Is Drinking Alcohol a Sin?",
     description:

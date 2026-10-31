@@ -57,6 +57,12 @@
         "why-is-christmas-on-january-7",
         "what-is-christmastide"
       ]
+    },
+    "2026-10-31": {
+      "committed": 1,
+      "slugs": [
+        "catholic-vs-protestant-church-calendars"
+      ]
     }
   },
   "articles": {
@@ -230,10 +236,11 @@
     },
     "catholic-vs-protestant-church-calendars": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-31T09:16:50.889Z"
+      "status": "committed",
+      "startedAt": "2026-10-31T09:16:50.889Z",
+      "committedAt": "2026-10-31T09:35:01.471Z"
     }
   },
   "nextTopic": "what-is-the-immaculate-conception",
-  "updatedAt": "2026-10-31T09:16:50.889Z"
+  "updatedAt": "2026-10-31T09:35:01.498Z"
 }
