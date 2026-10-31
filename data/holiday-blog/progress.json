@@ -216,17 +216,19 @@
     },
     "why-is-christmas-on-january-7": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-30T09:19:09.741Z",
-      "committedAt": "2026-10-30T09:30:21.722Z"
+      "committedAt": "2026-10-30T09:30:21.722Z",
+      "publishedAt": "2026-10-31T09:16:39.920Z"
     },
     "what-is-christmastide": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-10-30T15:18:06.437Z",
-      "committedAt": "2026-10-30T15:30:25.597Z"
+      "committedAt": "2026-10-30T15:30:25.597Z",
+      "publishedAt": "2026-10-31T09:16:40.134Z"
     }
   },
   "nextTopic": "catholic-vs-protestant-church-calendars",
-  "updatedAt": "2026-10-30T15:30:25.613Z"
+  "updatedAt": "2026-10-31T09:16:40.134Z"
 }
