@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-28-explained",
+    title: "Numbers 28 Explained: The Offering Calendar Israel Could Never Skip",
+    description:
+      "Numbers 28 explained verse by verse: the daily offering, the Sabbath, the new moon, Passover week, and the day of firstfruits.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-28-explained",
+    publishedAt: "2026-10-31",
+    readTime: "12 min read",
+    image: "/blog-banners/numbers-28-explained.jpg",
+    groupPost: {
+      title: "Numbers 28 Explained 📖",
+      content:
+        "No battle in this chapter.\nJust a calendar nobody was allowed to skip.\n\n📌 The same lamb got offered every morning and every evening for forty years straight.\n\n📖 The Sabbath doubled the daily offering instead of cutting it.\n📖 Passover week repeated one sacrifice formula for all seven days.\n📖 Firstfruits counts out the same weeks later called Pentecost.\n\nNew article on:\n🟢 why the **daily offering** never once took a day off\n🟢 what **Numbers 28 and Leviticus 23** actually disagree on\n🟢 why **firstfruits** points straight at Pentecost\n\nWhat is the one ordinary thing you keep treating as optional? 🙏",
+    },
+  },
+  {
     slug: "catholic-vs-protestant-church-calendars",
     title: "What Is the Difference Between Catholic and Protestant Church Calendars?",
     description:
