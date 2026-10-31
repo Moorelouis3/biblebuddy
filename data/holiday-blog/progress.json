@@ -239,8 +239,13 @@
       "status": "committed",
       "startedAt": "2026-10-31T09:16:50.889Z",
       "committedAt": "2026-10-31T09:35:01.471Z"
+    },
+    "what-is-the-immaculate-conception": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-31T15:16:58.427Z"
     }
   },
-  "nextTopic": "what-is-the-immaculate-conception",
-  "updatedAt": "2026-10-31T15:16:31.475Z"
+  "nextTopic": "what-is-the-solemnity-of-mary",
+  "updatedAt": "2026-10-31T15:16:58.427Z"
 }
