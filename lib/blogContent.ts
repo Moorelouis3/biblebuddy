@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-immaculate-conception",
+    title: "What Is the Feast of the Immaculate Conception? Catholic Beliefs Explained",
+    description:
+      "What is the Immaculate Conception? The Catholic belief about Mary explained: what it actually claims, its 1854 history, and why Protestants differ.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-the-immaculate-conception",
+    publishedAt: "2026-10-31",
+    readTime: "16 min read",
+    image: "/blog-banners/what-is-the-immaculate-conception.jpg",
+    groupPost: {
+      title: "What Is the Feast of the Immaculate Conception? 📖",
+      content:
+        "Your Catholic friend says \"Immaculate Conception.\"\nYou assume she means Jesus. She does not.\n\n📌 It is about Mary's own conception, not Christ's.\n\n📖 Catholics teach Mary was kept free from original sin from conception.\n📖 Aquinas and Scotus argued about it for centuries before it was official.\n📖 Pope Pius IX made it dogma on December 8, 1854.\n\nNew article on:\n🟢 why **Duns Scotus** said \"He could, it was fitting, so He did\"\n🟢 what **Romans 3:23** has to do with the Protestant objection\n🟢 why Mary calls God **her own Saviour** in Luke 1\n\nDid you know this was about Mary and not Jesus before today? 🙏",
+    },
+  },
+  {
     slug: "numbers-29-explained",
     title: "Numbers 29 Explained: The Busiest Month on Israel's Calendar",
     description:

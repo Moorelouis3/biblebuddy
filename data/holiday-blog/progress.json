@@ -59,9 +59,10 @@
       ]
     },
     "2026-10-31": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "catholic-vs-protestant-church-calendars"
+        "catholic-vs-protestant-church-calendars",
+        "what-is-the-immaculate-conception"
       ]
     }
   },
@@ -242,10 +243,11 @@
     },
     "what-is-the-immaculate-conception": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-10-31T15:16:58.427Z"
+      "status": "committed",
+      "startedAt": "2026-10-31T15:16:58.427Z",
+      "committedAt": "2026-10-31T15:27:53.109Z"
     }
   },
   "nextTopic": "what-is-the-solemnity-of-mary",
-  "updatedAt": "2026-10-31T15:16:58.427Z"
+  "updatedAt": "2026-10-31T15:27:53.129Z"
 }
