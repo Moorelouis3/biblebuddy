@@ -227,8 +227,13 @@
       "startedAt": "2026-10-30T15:18:06.437Z",
       "committedAt": "2026-10-30T15:30:25.597Z",
       "publishedAt": "2026-10-31T09:16:40.134Z"
+    },
+    "catholic-vs-protestant-church-calendars": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-10-31T09:16:50.889Z"
     }
   },
-  "nextTopic": "catholic-vs-protestant-church-calendars",
-  "updatedAt": "2026-10-31T09:16:40.134Z"
+  "nextTopic": "what-is-the-immaculate-conception",
+  "updatedAt": "2026-10-31T09:16:50.889Z"
 }
