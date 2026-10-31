@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-29-explained",
+    title: "Numbers 29 Explained: The Busiest Month on Israel's Calendar",
+    description:
+      "Numbers 29 explained verse by verse: the feast of trumpets, the day of atonement, the seven days of tabernacles, and the solemn eighth day.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-29-explained",
+    publishedAt: "2026-10-31",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-29-explained.jpg",
+    groupPost: {
+      title: "Numbers 29 Explained 📖",
+      content:
+        "One month. One trumpet blast to open it.\nThen the busiest forty days on Israel's whole calendar.\n\n📌 The month opens and closes on the exact same small offering.\n\n📖 The Day of Atonement banned all work, no exceptions.\n📖 Tabernacles asked for thirteen bullocks on day one alone.\n📖 The bullock count fell by one every day for a week.\n\nNew article on:\n🟢 why **trumpets** came before the fast, and the fast before the feast\n🟢 what **seventy bullocks** across one week might actually mean\n🟢 how **the Day of Atonement** points straight at the cross\n\nWhat season are you in right now that feels this crowded? 🙏",
+    },
+  },
+  {
     slug: "numbers-28-explained",
     title: "Numbers 28 Explained: The Offering Calendar Israel Could Never Skip",
     description:
