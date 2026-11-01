@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "saint-nicholas-facts-and-legends",
+    title: "Who Was Saint Nicholas? Historical Facts Versus Modern Legends",
+    description:
+      "Which Saint Nicholas stories are real history? The bones scientists examined, the relic they radiocarbon dated, and the legends that never happened.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/saint-nicholas-facts-and-legends",
+    publishedAt: "2026-11-01",
+    readTime: "11 min read",
+    image: "/blog-banners/saint-nicholas-facts-and-legends.jpg",
+    groupPost: {
+      title: "Who Was Saint Nicholas? Historical Facts Versus Modern Legends 📖",
+      content:
+        "In 1953, workmen opened a tomb in Bari that had not been touched in centuries.\nAn anatomy professor walked in with a camera and a measuring tape.\n\n📌 Most legends stay stories. This one got X-rayed.\n\n📖 Scientists radiocarbon dated a relic claimed to be his, to the exact right century.\n📖 A forensic team tried to rebuild his face from an actual skull's measurements.\n📖 Some of the most famous stories about him never happened at all.\n\nNew article on:\n🟢 the real **bones** researchers have actually examined\n🟢 which famous Saint Nicholas stories are **documented** and which are legend\n🟢 what the **facial reconstruction** actually showed, and what it did not\n\nWhich version of this story did you grow up believing? 🙏",
+    },
+  },
+  {
     slug: "numbers-34-explained",
     title: "Numbers 34 Explained: The Borders of Canaan and the Men Who Drew Them",
     description:

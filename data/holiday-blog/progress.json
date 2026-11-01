@@ -66,11 +66,12 @@
       ]
     },
     "2026-11-01": {
-      "committed": 3,
+      "committed": 4,
       "slugs": [
         "what-is-the-solemnity-of-mary",
         "was-jesus-born-in-a-stable",
-        "most-important-catholic-holy-days"
+        "most-important-catholic-holy-days",
+        "saint-nicholas-facts-and-legends"
       ]
     }
   },
@@ -277,10 +278,11 @@
     },
     "saint-nicholas-facts-and-legends": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-01T15:17:31.929Z"
+      "status": "committed",
+      "startedAt": "2026-11-01T15:17:31.929Z",
+      "committedAt": "2026-11-01T15:26:45.874Z"
     }
   },
   "nextTopic": "what-is-candlemas",
-  "updatedAt": "2026-11-01T15:17:31.929Z"
+  "updatedAt": "2026-11-01T15:26:45.897Z"
 }
