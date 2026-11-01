@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-32-explained",
+    title: "Numbers 32 Explained: Gad, Reuben, and the Land East of Jordan",
+    description:
+      "Numbers 32 explained verse by verse: Gad and Reuben's request for land east of the Jordan, Moses' warning, and the vow that settled it.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-32-explained",
+    publishedAt: "2026-11-01",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-32-explained.jpg",
+    groupPost: {
+      title: "Numbers 32 Explained 📖",
+      content:
+        "Two tribes ask to skip the hardest part.\nMoses hears the spies all over again.\n\n📌 A good reason can still support the wrong request.\n\n📖 Gad and Reuben wanted land already won from two defeated kings.\n📖 Moses compared their ask to the sin at Kadesh Barnea.\n📖 They agreed to fight first and settle only after.\n\nNew article on:\n🟢 why **be sure your sin will find you out** is not a general promise\n🟢 how the **half tribe of Manasseh** got included without asking\n🟢 what happened to these tribes **generations later**\n\nWhat request have you tried to keep the reward without the cost? 🙏",
+    },
+  },
+  {
     slug: "was-jesus-born-in-a-stable",
     title: "Was Jesus Born in a Stable? What the Bible Actually Says",
     description:
