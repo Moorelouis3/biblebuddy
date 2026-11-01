@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-30-explained",
+    title: "Numbers 30 Explained: The Law of Vows and Who Could Undo One",
+    description:
+      "Numbers 30 explained verse by verse: the vow law for men, daughters, wives, and widows, and when a father or husband could undo one.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-30-explained",
+    publishedAt: "2026-11-01",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-30-explained.jpg",
+    groupPost: {
+      title: "Numbers 30 Explained 📖",
+      content:
+        "Sixteen verses. One subject.\nWhose vow actually gets to stand.\n\n📌 A vow bound you the moment it left your mouth.\n\n📖 A man's own vow needed no one else's approval.\n📖 A father or husband had one single day to disallow one.\n📖 A widow's vow always stood, no guardian required.\n\nNew article on:\n🟢 why this law is addressed only to the **heads of the tribes**\n🟢 what happens to a husband who **waits too long** to object\n🟢 how **Jephthah's vow** in Judges 11 shows this law at its most severe\n\nIs there a promise you have gone quiet on instead of deciding it? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-solemnity-of-mary",
     title: "What Is the Solemnity of Mary, Mother of God? Why January 1 Matters",
     description:
