@@ -260,8 +260,13 @@
       "status": "committed",
       "startedAt": "2026-11-01T01:17:07.312Z",
       "committedAt": "2026-11-01T01:25:51.413Z"
+    },
+    "was-jesus-born-in-a-stable": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-01T05:17:15.572Z"
     }
   },
-  "nextTopic": "was-jesus-born-in-a-stable",
-  "updatedAt": "2026-11-01T05:17:01.608Z"
+  "nextTopic": "most-important-catholic-holy-days",
+  "updatedAt": "2026-11-01T05:17:15.572Z"
 }
