@@ -267,8 +267,13 @@
       "status": "committed",
       "startedAt": "2026-11-01T05:17:15.572Z",
       "committedAt": "2026-11-01T05:28:02.824Z"
+    },
+    "most-important-catholic-holy-days": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-01T09:17:44.202Z"
     }
   },
-  "nextTopic": "most-important-catholic-holy-days",
-  "updatedAt": "2026-11-01T09:17:01.437Z"
+  "nextTopic": "saint-nicholas-facts-and-legends",
+  "updatedAt": "2026-11-01T09:17:44.202Z"
 }
