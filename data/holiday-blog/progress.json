@@ -274,8 +274,13 @@
       "status": "committed",
       "startedAt": "2026-11-01T09:17:44.202Z",
       "committedAt": "2026-11-01T09:27:13.439Z"
+    },
+    "saint-nicholas-facts-and-legends": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-01T15:17:31.929Z"
     }
   },
-  "nextTopic": "saint-nicholas-facts-and-legends",
-  "updatedAt": "2026-11-01T15:17:13.451Z"
+  "nextTopic": "what-is-candlemas",
+  "updatedAt": "2026-11-01T15:17:31.929Z"
 }
