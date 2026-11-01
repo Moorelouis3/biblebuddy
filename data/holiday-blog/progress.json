@@ -248,8 +248,13 @@
       "startedAt": "2026-10-31T15:16:58.427Z",
       "committedAt": "2026-10-31T15:27:53.109Z",
       "publishedAt": "2026-11-01T01:16:57.028Z"
+    },
+    "what-is-the-solemnity-of-mary": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-01T01:17:07.312Z"
     }
   },
-  "nextTopic": "what-is-the-solemnity-of-mary",
-  "updatedAt": "2026-11-01T01:16:57.028Z"
+  "nextTopic": "was-jesus-born-in-a-stable",
+  "updatedAt": "2026-11-01T01:17:07.312Z"
 }
