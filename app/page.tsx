@@ -251,14 +251,20 @@ type LandingAnalyticsEvent =
 function getLandingSessionId() {
   if (typeof window === "undefined") return "server";
   const key = "bb:landing-session-id";
-  const existing = window.localStorage.getItem(key);
-  if (existing) return existing;
-  const next =
-    typeof window.crypto?.randomUUID === "function"
-      ? window.crypto.randomUUID()
-      : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
-  window.localStorage.setItem(key, next);
-  return next;
+  try {
+    const existing = window.localStorage.getItem(key);
+    if (existing) return existing;
+    const next =
+      typeof window.crypto?.randomUUID === "function"
+        ? window.crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    window.localStorage.setItem(key, next);
+    return next;
+  } catch {
+    // Storage can be blocked (private browsing, in-app browsers, locked-down
+    // Safari). Analytics should never crash the page over it.
+    return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  }
 }
 
 function normalizeLandingSource(value: string | null) {
@@ -276,14 +282,22 @@ function normalizeLandingSource(value: string | null) {
 function getLandingSource() {
   if (typeof window === "undefined") return "Direct";
   const storageKey = "bb:landing-source";
-  const stored = window.sessionStorage.getItem(storageKey);
-  if (stored) return stored;
+  try {
+    const stored = window.sessionStorage.getItem(storageKey);
+    if (stored) return stored;
 
-  const params = new URLSearchParams(window.location.search);
-  const utmSource = params.get("utm_source") || params.get("source") || params.get("ref");
-  const detected = normalizeLandingSource(utmSource || document.referrer || null);
-  window.sessionStorage.setItem(storageKey, detected);
-  return detected;
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get("utm_source") || params.get("source") || params.get("ref");
+    const detected = normalizeLandingSource(utmSource || document.referrer || null);
+    window.sessionStorage.setItem(storageKey, detected);
+    return detected;
+  } catch {
+    // Storage can be blocked (private browsing, in-app browsers, locked-down
+    // Safari). Analytics should never crash the page over it.
+    const params = new URLSearchParams(window.location.search);
+    const utmSource = params.get("utm_source") || params.get("source") || params.get("ref");
+    return normalizeLandingSource(utmSource || document.referrer || null);
+  }
 }
 
 function trackLandingEvent(eventName: LandingAnalyticsEvent, metadata: Record<string, unknown> = {}, userId?: string) {
@@ -312,8 +326,13 @@ function trackLandingEvent(eventName: LandingAnalyticsEvent, metadata: Record<st
 function trackLandingEventOnce(eventName: LandingAnalyticsEvent, metadata: Record<string, unknown> = {}, userId?: string) {
   if (typeof window === "undefined") return;
   const eventKey = `bb:landing-event:${getLandingSessionId()}:${eventName}:${String(metadata.stepKey || metadata.question_id || "")}`;
-  if (window.sessionStorage.getItem(eventKey) === "1") return;
-  window.sessionStorage.setItem(eventKey, "1");
+  try {
+    if (window.sessionStorage.getItem(eventKey) === "1") return;
+    window.sessionStorage.setItem(eventKey, "1");
+  } catch {
+    // Storage can be blocked (private browsing, in-app browsers, locked-down
+    // Safari). Fall through and still send the event once rather than crash.
+  }
   trackLandingEvent(eventName, metadata, userId);
 }
 
