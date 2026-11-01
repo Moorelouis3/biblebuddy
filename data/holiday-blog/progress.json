@@ -66,9 +66,10 @@
       ]
     },
     "2026-11-01": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "what-is-the-solemnity-of-mary"
+        "what-is-the-solemnity-of-mary",
+        "was-jesus-born-in-a-stable"
       ]
     }
   },
@@ -263,10 +264,11 @@
     },
     "was-jesus-born-in-a-stable": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-01T05:17:15.572Z"
+      "status": "committed",
+      "startedAt": "2026-11-01T05:17:15.572Z",
+      "committedAt": "2026-11-01T05:28:02.824Z"
     }
   },
   "nextTopic": "most-important-catholic-holy-days",
-  "updatedAt": "2026-11-01T05:17:15.572Z"
+  "updatedAt": "2026-11-01T05:28:02.839Z"
 }

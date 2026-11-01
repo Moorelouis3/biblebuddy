@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "was-jesus-born-in-a-stable",
+    title: "Was Jesus Born in a Stable? What the Bible Actually Says",
+    description:
+      "Was Jesus born in a stable? Luke never says so. What the Greek word for \"inn\" really means, the ancient cave tradition, and where Christians differ.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/was-jesus-born-in-a-stable",
+    publishedAt: "2026-11-01",
+    readTime: "15 min read",
+    image: "/blog-banners/was-jesus-born-in-a-stable.jpg",
+    groupPost: {
+      title: "Was Jesus Born in a Stable? 📖",
+      content:
+        "Every nativity set has the same wooden shed.\nThe Bible never actually says stable.\n\n📌 Luke only gives you a manger and no room in the inn.\n\n📖 The Greek word for \"inn\" is also used for a private guest room.\n📖 Christians were already describing a cave by the second century.\n📖 Even Francis of Assisi's first nativity scene was staged in a cave.\n\nNew article on:\n🟢 what **kataluma** actually means in Luke 2:7\n🟢 why the **cave tradition** is way older than the wooden stable\n🟢 how a church in **Bethlehem** still marks the spot today\n\nDid your own nativity set have an ox and a donkey nobody in Luke mentioned? 🙏",
+    },
+  },
+  {
     slug: "numbers-31-explained",
     title: "Numbers 31 Explained: The War Against Midian and Balaam's Death",
     description:
