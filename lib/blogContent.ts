@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-solemnity-of-mary",
+    title: "What Is the Solemnity of Mary, Mother of God? Why January 1 Matters",
+    description:
+      "What is the Solemnity of Mary, Mother of God? Why Catholics open the year with the Council of Ephesus, Mary as Theotokos, and the World Day of Peace.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-the-solemnity-of-mary",
+    publishedAt: "2026-11-01",
+    readTime: "16 min read",
+    image: "/blog-banners/what-is-the-solemnity-of-mary.jpg",
+    groupPost: {
+      title: "What Is the Solemnity of Mary, Mother of God? 📖",
+      content:
+        "You walk into Mass on January 1 expecting a New Year blessing.\nInstead the priest is talking about a council from the year 431.\n\n📌 The title \"Mother of God\" was never really about Mary. It was about Jesus.\n\n📖 The Council of Ephesus affirmed Jesus as one undivided person, fully God.\n📖 January 1 is also the day Jesus was circumcised and named, eight days after His birth.\n📖 Pope Paul VI later attached the World Day of Peace to this same date on purpose.\n\nNew article on:\n🟢 why **Theotokos** means God bearer, not \"Mary is divine\"\n🟢 what the bishop **Nestorius** argued, and why Rome said no\n🟢 why this is one of the few Marian questions most **Protestants** mostly agree with\n\nDid you know January 1 used to be called the Feast of the Circumcision? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-immaculate-conception",
     title: "What Is the Feast of the Immaculate Conception? Catholic Beliefs Explained",
     description:

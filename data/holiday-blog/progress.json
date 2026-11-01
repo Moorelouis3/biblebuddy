@@ -64,6 +64,12 @@
         "catholic-vs-protestant-church-calendars",
         "what-is-the-immaculate-conception"
       ]
+    },
+    "2026-11-01": {
+      "committed": 1,
+      "slugs": [
+        "what-is-the-solemnity-of-mary"
+      ]
     }
   },
   "articles": {
@@ -251,10 +257,11 @@
     },
     "what-is-the-solemnity-of-mary": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-01T01:17:07.312Z"
+      "status": "committed",
+      "startedAt": "2026-11-01T01:17:07.312Z",
+      "committedAt": "2026-11-01T01:25:51.413Z"
     }
   },
   "nextTopic": "was-jesus-born-in-a-stable",
-  "updatedAt": "2026-11-01T01:17:07.312Z"
+  "updatedAt": "2026-11-01T01:25:51.426Z"
 }
