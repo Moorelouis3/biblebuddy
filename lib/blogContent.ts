@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "most-important-catholic-holy-days",
+    title: "What Are the Most Important Catholic Holy Days?",
+    description:
+      "What are the most important Catholic holy days? How the church ranks Easter above Christmas, and where the six obligatory days fit in.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/most-important-catholic-holy-days",
+    publishedAt: "2026-11-01",
+    readTime: "14 min read",
+    image: "/blog-banners/most-important-catholic-holy-days.jpg",
+    groupPost: {
+      title: "What Are the Most Important Catholic Holy Days? 📖",
+      content:
+        "Most people say Christmas is the biggest day on the Catholic calendar.\nThe church itself does not rank it first.\n\n📌 Its own rule book puts the Easter Triduum above everything else, Christmas included.\n\n📖 The Triduum runs from Holy Thursday evening through Easter Sunday.\n📖 The Catechism calls Easter the \"Feast of feasts.\"\n📖 Solemnities of the Lord outrank every solemnity of Mary and the saints.\n\nNew article on:\n🟢 why **Pentecost** shares the same top tier as Christmas\n🟢 the difference between a church **rank** and a holy day of **obligation**\n🟢 why the **Immaculate Conception** never outranks Easter\n\nDid you know Christmas is only the second most important day on the Catholic calendar? 🙏",
+    },
+  },
+  {
     slug: "numbers-32-explained",
     title: "Numbers 32 Explained: Gad, Reuben, and the Land East of Jordan",
     description:
