@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-31-explained",
+    title: "Numbers 31 Explained: The War Against Midian and Balaam's Death",
+    description:
+      "Numbers 31 explained verse by verse: the war against Midian, the death of Balaam, Moses' anger at the captives, and how Israel divided the spoil.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-31-explained",
+    publishedAt: "2026-11-01",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-31-explained.jpg",
+    groupPost: {
+      title: "Numbers 31 Explained 📖",
+      content:
+        "A plague already killed twenty four thousand people.\nNow God tells Moses to finish what caused it.\n\n📌 This war settles one account, for one sin, against the nation that caused it.\n\n📖 Five Midianite kings died, including Cozbi's own father.\n📖 Balaam died for counsel he gave, not a curse he spoke.\n📖 The officers came home without losing one man, and felt they owed God for it.\n\nNew article on:\n🟢 why **Balaam** died even though he never cursed Israel out loud\n🟢 what the **water of separation** had to do with the army's return\n🟢 why the officers brought **gold** nobody asked them for\n\nWhat is the last piece of advice you gave someone in private? 🙏",
+    },
+  },
+  {
     slug: "numbers-30-explained",
     title: "Numbers 30 Explained: The Law of Vows and Who Could Undo One",
     description:
