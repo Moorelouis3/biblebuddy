@@ -12151,3 +12151,19 @@ Bible is done" question (2026-10-19, re-flagged 2026-10-24, direct push notifica
 run-220 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run, consistent with runs
 80-220.
 Next up: none -- awaiting a decision from Louis (leave the trigger as a no-op, pause it, or give it new scope)
+
+## 2026-11-01T14:39:58Z (Bug Fixer run)
+Checked the backlog first: the 4 other open reports (generic "something went
+wrong" screen, a browser crash with no specifics, a chat retry error, Jose's
+"Lil Louis" retry error) are all still needs_info with no new reply from the
+reporter since an earlier run, so left as-is, nothing new to add. One new
+crash report (anonymous, iOS Safari, page "/"): found the cause -- the home
+page's visit-tracking code read/wrote the phone's browser storage with no
+error handling, and on iPhones where storage is blocked (private browsing,
+in-app browsers, Lockdown Mode) that crashed the whole home page. Fixed by
+wrapping those storage calls so a blocked browser just skips the tracking
+ping instead of crashing. Commit abc9ebb, pushed to main, no [deploy] tag,
+tsc clean. The bug tracker auto-flagged this one for Louis's approval since
+it touches privacy/tracking code, so it's sitting as awaiting_approval at
+/admin/bugs rather than closed out -- no reply sent, nothing more to do
+until he approves it.
