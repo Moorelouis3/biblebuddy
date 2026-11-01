@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-34-explained",
+    title: "Numbers 34 Explained: The Borders of Canaan and the Men Who Drew Them",
+    description:
+      "Numbers 34 explained verse by verse: the four borders of Canaan, why Reuben and Gad sit outside them, and the twelve men chosen to divide the land.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-34-explained",
+    publishedAt: "2026-11-01",
+    readTime: "12 min read",
+    image: "/blog-banners/numbers-34-explained.jpg",
+    groupPost: {
+      title: "Numbers 34 Explained 📖",
+      content:
+        "A promise finally gets an address.\nTwenty nine verses turn it into a shape on a map.\n\n📌 A promise with named borders is hard to doubt.\n\n📖 Four borders: Zin, the Great Sea, mount Hor, and the Jordan.\n📖 Reuben and Gad already sit outside these lines.\n📖 Twelve men are named to divide what is left.\n\nNew article on:\n🟢 why the **river of Egypt** is not the Nile\n🟢 which **mount Hor** this is, and which one is not\n🟢 why **Levi** has no prince on this list\n\nWhat promise in your life still needs a specific shape? 🙏",
+    },
+  },
+  {
     slug: "numbers-33-explained",
     title: "Numbers 33 Explained: Every Camp on the Way to the Promised Land",
     description:
