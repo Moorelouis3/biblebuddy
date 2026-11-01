@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-33-explained",
+    title: "Numbers 33 Explained: Every Camp on the Way to the Promised Land",
+    description:
+      "Numbers 33 explained verse by verse: every camp of Israel's wilderness journey, Aaron's death at Mount Hor, and God's command to drive out Canaan.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-33-explained",
+    publishedAt: "2026-11-01",
+    readTime: "14 min read",
+    image: "/blog-banners/numbers-33-explained.jpg",
+    groupPost: {
+      title: "Numbers 33 Explained 📖",
+      content:
+        "Forty two camps. Forty years. One list.\nMost of the names show up only once.\n\n📌 A promise means more when it is tied to real ground.\n\n📖 Twelve stops in a row are named nowhere else in the Bible.\n📖 Aaron's death gets dated to the exact fortieth year.\n📖 The chapter ends with a command to finish the job completely.\n\nNew article on:\n🟢 why most of the **thirty eight lost years** get no story at all\n🟢 the mismatch between **Mount Hor** and Deuteronomy's Mosera\n🟢 what **pricks in your eyes** actually warns about\n\nWhat have you left undriven out instead of finished? 🙏",
+    },
+  },
+  {
     slug: "most-important-catholic-holy-days",
     title: "What Are the Most Important Catholic Holy Days?",
     description:
