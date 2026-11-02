@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-2-explained",
+    title: "Deuteronomy 2 Explained: Esau, Moab, Ammon, and Sihon's Defeat",
+    description:
+      "Deuteronomy 2 explained verse by verse: why Israel skipped fighting Esau, Moab and Ammon, the giants already defeated, and the total victory over Sihon.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-2-explained",
+    publishedAt: "2026-11-02",
+    readTime: "12 min read",
+    image: "/blog-banners/deuteronomy-2-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 2 Explained 📖",
+      content:
+        "Three nations Israel could crush. God said leave them alone.\nThen one king who would not even let them pass through.\n\n📌 God had already settled Edom, Moab and Ammon on land of their own.\n\n📖 Esau's descendants, and Lot's two sons, both get protected borders.\n📖 Real giants lived there first, and God already removed them.\n📖 Sihon refused peace, so Israel destroyed his whole kingdom.\n\nNew article on:\n🟢 why Israel skipped fighting **Edom, Moab and Ammon**\n🟢 the real **Emims and Zamzummims**, giants history forgot\n🟢 why God hardened **Sihon's heart** before the battle\n\nIs there ground you are strong enough to take that was never actually yours? 🙏",
+    },
+  },
+  {
     slug: "what-is-an-advent-wreath",
     title: "What Is an Advent Wreath? The Meaning of the Four Candles",
     description:
