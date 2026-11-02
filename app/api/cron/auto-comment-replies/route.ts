@@ -119,8 +119,12 @@ export async function GET(request: NextRequest) {
   if (request.headers.get("authorization") !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
-  if ((process.env.AUTO_COMMENT_REPLIES || "").toLowerCase() === "off") {
-    return NextResponse.json({ ok: true, skipped: "AUTO_COMMENT_REPLIES=off" });
+  // Off by default since 2026-11-02 (Louis: "OpenAI is not used by anything
+  // but the Louis AI chat bot. no extra stuff we dont need"). The switch used
+  // to be opt-out; it is opt-in now, so a stray deploy cannot start it writing
+  // comments again. Set AUTO_COMMENT_REPLIES=on to resume.
+  if ((process.env.AUTO_COMMENT_REPLIES || "").toLowerCase() !== "on") {
+    return NextResponse.json({ ok: true, skipped: "AUTO_COMMENT_REPLIES is not on" });
   }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;

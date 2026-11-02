@@ -23,10 +23,20 @@ function clip(text: string, max = 1200) {
   return normalized.length > max ? `${normalized.slice(0, max).trim()}...` : normalized;
 }
 
+// OFF since 2026-11-02 (Louis: "OpenAI is not used by anything but the Louis
+// AI chat bot"). Study groups are closed anyway - /study-groups redirects to
+// the dashboard - so this had nothing left to answer.
 export async function POST(
   request: NextRequest,
   { params }: { params: Promise<{ groupId: string }> },
 ) {
+  if ((process.env.GROUP_AUTO_REPLY || "").toLowerCase() !== "on") {
+    return NextResponse.json(
+      { error: "Group auto-reply is turned off.", disabled: true },
+      { status: 503 },
+    );
+  }
+
   const { groupId } = await params;
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;

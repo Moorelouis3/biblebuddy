@@ -24,7 +24,19 @@ function clip(text: string, max = 1200) {
   return normalized.length > max ? `${normalized.slice(0, max).trim()}...` : normalized;
 }
 
+// OFF since 2026-11-02 (Louis: "OpenAI is not used by anything but the Louis
+// AI chat bot. no extra stuff we dont need"). This drafted a reply for the
+// button in the feed, the comments admin and the study-group series pages.
+// Set AUTO_REPLY_DRAFTS=on to bring it back; nothing else needs changing.
+const AUTO_REPLY_DRAFTS_ON = (process.env.AUTO_REPLY_DRAFTS || "").toLowerCase() === "on";
+
 export async function POST(request: NextRequest) {
+  if (!AUTO_REPLY_DRAFTS_ON) {
+    return NextResponse.json(
+      { error: "Auto-reply drafting is turned off.", disabled: true },
+      { status: 503 },
+    );
+  }
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;

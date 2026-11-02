@@ -289,6 +289,14 @@ export async function generateModeratorComment(
   extraInstructions?: string | null,
   prohibitedTopics?: string | null,
 ): Promise<{ text: string | null; error: string | null }> {
+  // Off by default since 2026-11-02 (Louis: "OpenAI is not used by anything
+  // but the Louis AI chat bot"). The moderator personas wrote community
+  // comments with gpt-4o-mini; its cron was never in vercel.json, so this only
+  // ever ran when something called it by hand. Set MODERATOR_ENGAGEMENT=on to
+  // bring it back.
+  if ((process.env.MODERATOR_ENGAGEMENT || "").toLowerCase() !== "on") {
+    return { text: null, error: "Moderator engagement is turned off" };
+  }
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return { text: null, error: "OPENAI_API_KEY not configured" };
   const context =
