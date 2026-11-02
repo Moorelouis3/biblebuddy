@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-does-the-bible-say-about-tattoos",
+    title: "What Does the Bible Say About Tattoos?",
+    description:
+      "What does the Bible say about tattoos? What Leviticus 19:28 actually meant, why it was written, and how to decide with a clear conscience today.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/what-does-the-bible-say-about-tattoos",
+    publishedAt: "2026-11-02",
+    readTime: "18 min read",
+    image: "/what-does-the-bible-say-about-tattoos-banner.png",
+    groupPost: {
+      title: "What Does the Bible Say About Tattoos? 📖",
+      content:
+        "Somebody probably quoted Leviticus 19:28 at you.\nHere is what that verse is actually talking about.\n\n📌 It was never a ban on every tattoo ever made.\n\n📖 The verse sits next to laws nobody keeps today.\n📖 It was written against pagan mourning rites, not ink.\n📖 The New Testament raises a bigger question instead.\n\nNew article on:\n🟢 what **Leviticus 19:28** actually meant in context\n🟢 why **your body as a temple** matters more than one verse\n🟢 how to decide with a clear **conscience**\n\nDo you already have tattoos, or still deciding? 🙏",
+    },
+  },
+  {
     slug: "who-were-the-wise-men",
     title: "Who Were the Wise Men? What the Bible Says About the Magi",
     description:
