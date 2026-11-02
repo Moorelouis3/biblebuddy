@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-3-explained",
+    title: "Deuteronomy 3 Explained: Og of Bashan and the Giant's Iron Bed",
+    description:
+      "Deuteronomy 3 explained verse by verse: the defeat of Og of Bashan, his giant iron bed, the land given to Reuben, Gad and Manasseh, and Moses' refused plea.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-3-explained",
+    publishedAt: "2026-11-02",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-3-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 3 Explained 📖",
+      content:
+        "A king named Og marched out to fight Israel.\nHis bed alone needed its own verse to describe.\n\n📌 Moses wins two kingdoms, then asks God for one more thing.\n\n📖 Og was the last king left from a line of giants.\n📖 His iron bed measured about thirteen feet long.\n📖 God says no to Moses, then offers him Pisgah instead.\n\nNew article on:\n🟢 how big **Og's bed** really was\n🟢 why **Reuben and Gad** had to fight before going home\n🟢 why God's no still came with real kindness\n\nAre you still arguing with a no God already gave you? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-2-explained",
     title: "Deuteronomy 2 Explained: Esau, Moab, Ammon, and Sihon's Defeat",
     description:
