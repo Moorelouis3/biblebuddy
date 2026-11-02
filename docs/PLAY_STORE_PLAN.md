@@ -192,6 +192,29 @@ out of `KEYSTORE-CREDENTIALS.txt`. It is a single form with a single save.
 
 **Back it up the same day.** Both files, somewhere that is not this laptop.
 
+**The keystore is in Codemagic and the first signed bundle exists (2026-11-02).**
+Louis uploaded the file and typed the two passwords; the reference name
+`BibleBuddy Upload` was filled in and saved from there. Build
+`6ae87703e83a9019991c43a3` on `main` then ran the `android-release` workflow
+green in **3m 59s** and produced **`app-release.aab`, 5.84 MB**. "Set up code
+signing identities" resolved in 2 seconds, which is how you know the
+reference name matched.
+
+**It built on a Mac mini M2, which was a mistake in this file.** Both Android
+workflows asked for `mac_mini_m2` while the comment above them said "nothing
+here needs macOS". Both are now `linux_x2`: roughly half the per-minute rate,
+and the emulator step actually prefers Linux, because Codemagic's Linux images
+have KVM where an M2 can only run arm64 system images. The next Android build
+will be the first on Linux, so watch it rather than assuming.
+
+**Two things an agent cannot do here, both tried and both correctly refused.**
+Uploading the keystore to codemagic.io was blocked twice - once because the
+file looks like a credential, then by the browser-file-upload classifier
+outright. The artifact also cannot be fetched with `curl`: the download URL
+is authenticated and returns 401 without a session. So downloading the `.aab`
+from the build page and uploading it to the closed track is Louis's, in the
+browser, with his session.
+
 **The warning that matters:** lose the upload keystore and you cannot ship an
 update to the app ever again under that listing. It gets backed up somewhere
 that is not one laptop, on the day it is created.
