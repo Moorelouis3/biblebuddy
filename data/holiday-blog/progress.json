@@ -306,8 +306,13 @@
       "startedAt": "2026-11-02T05:17:18.766Z",
       "committedAt": "2026-11-02T05:28:51.712Z",
       "publishedAt": "2026-11-02T09:21:36.786Z"
+    },
+    "what-is-an-advent-wreath": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-02T09:21:48.503Z"
     }
   },
-  "nextTopic": "what-is-an-advent-wreath",
-  "updatedAt": "2026-11-02T09:21:36.786Z"
+  "nextTopic": "who-were-the-wise-men",
+  "updatedAt": "2026-11-02T09:21:48.503Z"
 }
