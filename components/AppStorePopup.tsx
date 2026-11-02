@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { APP_STORE_ID } from "../lib/appReviewPrompt";
-import { canAskForAppStore, silenceAppStoreAsk, snoozeAppStoreAsk } from "../lib/appStoreAsk";
+import { canAskForAppStore, recordAppStoreTap, silenceAppStoreAsk, snoozeAppStoreAsk } from "../lib/appStoreAsk";
 import { isIOS, isStandalone } from "../lib/installEnvironment";
 import { isNativeApp } from "../lib/nativeApp";
 
@@ -154,7 +154,7 @@ export default function AppStorePopup({ enabled }: { enabled: boolean }) {
           href={`https://apps.apple.com/app/id${APP_STORE_ID}`}
           onClick={() => {
             logTapBeacon(session);
-            silenceAppStoreAsk();
+            recordAppStoreTap();
             setOpen(false);
           }}
           className="mt-5 flex w-full items-center justify-center gap-3 rounded-2xl bg-[#07162f] px-5 py-3.5 text-white transition hover:opacity-90"

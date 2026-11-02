@@ -7,7 +7,7 @@ import { supabase } from "../lib/supabaseClient";
 import { getInstallEnvironment, getInstallPlatform, isStandalone } from "../lib/installEnvironment";
 import { isNativeApp } from "../lib/nativeApp";
 import { APP_STORE_ID } from "../lib/appReviewPrompt";
-import { canAskForAppStore, silenceAppStoreAsk, snoozeAppStoreAsk } from "../lib/appStoreAsk";
+import { canAskForAppStore, recordAppStoreTap, silenceAppStoreAsk, snoozeAppStoreAsk } from "../lib/appStoreAsk";
 import {
   INSTALL_PROMPT_STORAGE_KEY,
   clearCapturedInstallPrompt,
@@ -95,9 +95,9 @@ const APP_STORE_COPY = {
  */
 export function openAppStore(placement: string) {
   if (!APP_STORE_ID) return;
-  // They are going to the listing. Whether they install is something iOS
-  // will never tell us, but either way they do not need asking again.
-  silenceAppStoreAsk();
+  // A tap is not an install, so this quiets the asks for three weeks rather
+  // than forever - see recordAppStoreTap.
+  recordAppStoreTap();
   void logInstallBannerEvent("install_banner_app_store_clicked", "App Store tapped", {
     store: "ios",
     placement,
