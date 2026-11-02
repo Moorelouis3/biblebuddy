@@ -12575,3 +12575,51 @@ as Louis's own next action at `claude.ai/code/routines` -- but it sent a push no
 and its recommendation now, since this is new, material, time-sensitive information the prior "nothing changed,
 stay quiet" runs (80-243) did not have.
 Next up: none -- awaiting Louis's decision on his own audit's recommendation to pause this routine.
+
+## 2026-11-02 (auto-commenter cost audit)
+Marching orders: Louis believed the social-media auto-commenter was burning
+OpenAI credits generating original replies that could be templated, and
+suspected 90-99% of comments did not need AI.
+Done:
+- **Audit written to docs/auto-commenter-cost-audit.md.** Audit only, no code
+  changed, nothing deployed.
+- **The social commenter does not use AI.** Closer (Instagram/Facebook/
+  Threads) is already a template system: closer_config holds the trigger
+  words, DM template, fallback comment and public reply, editable without a
+  deploy, hourly cap 100, dry_run defaults true. Zero OpenAI anywhere in it.
+- **The thing that calls OpenAI is the in-app study comment replier**, not
+  social media. gpt-4o-mini, one call per reply, no classification call, no
+  moderation call, no retries, no caching.
+- **It has cost about $0.03 in total**, across all 477 replies ever sent. A
+  year at current volume is ~$0.05. Measured token profile: 210 in, 52 out.
+- **The 90-99% hypothesis is wrong: it is 0.4%.** 567 of 571 incoming
+  comments are unique after normalisation; four texts repeat, covering eight
+  comments. Zero of the 477 replies repeat verbatim. Backtested the full
+  five-level router over every real comment: 15 skipped, 2 reusable, 0
+  templatable, 554 still needing AI.
+- The comments are not reactions. Median 86 chars; 92% are substantive
+  reflections; ONE comment in 571 is a short agreement; none is emoji-only;
+  none is spam.
+- **Two real problems found, neither of them cost.** It has been dead since
+  25 Oct 02:15 with 44 comments waiting (route still deploys, 401 like any
+  other cron; route and vercel.json unchanged in git). And on 17 October it
+  sent 369 replies in 22 hours to 66 people - one person got 36 in a day,
+  nine got 10+, median comment answered was 77 days old. The per-run caps
+  bound a run, not a day: the ceiling is 960/day and there is no per-person
+  cap.
+- Also: failed replies are never marked, so a permanently failing comment is
+  retried every 15 minutes forever; and the model never sees the article or
+  the reflection question, only a slug-derived title.
+- Recommended four small fixes instead of the library: find out why it
+  stopped, cap per person and per day, mark failures, send the real study
+  context.
+Not live yet: 1 commit, docs only. Run `npm run pending` for the build time.
+Still open:
+- **Why the cron stopped on 25 October** - needs Vercel env vars
+  (AUTO_COMMENT_REPLIES) and cron logs, which an agent cannot read from here.
+- Whether app/api/groups/[groupId]/auto-reply is dead code now groups are
+  closed.
+- Louis's call on whether the replier should be switched back on at all.
+- The Note Writer routine decision from this morning's subscription audit is
+  still open.
+Next: Louis's call on the auto-replier, then the caps if he wants it back on.
