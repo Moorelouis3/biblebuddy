@@ -13,7 +13,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { classify } from "../lib/commentReplies/classify";
 import { selectTemplate } from "../lib/commentReplies/selectTemplate";
-import { CATEGORIES, RULES, TEMPLATES } from "../lib/commentReplies/seed";
+import { CATEGORIES, FALLBACK_BY_SOURCE, RULES, TEMPLATES } from "../lib/commentReplies/seed";
 
 let failures = 0;
 const check = (name: string, ok: boolean, detail = "") => {
@@ -142,6 +142,50 @@ for (const text of mustNotReply) {
 for (const text of ["Follow me and check my profile for free money", "👍", "🙏🙏🙏"]) {
   const d = classify(text, CATEGORIES, RULES);
   check(`silently skips "${text.slice(0, 24)}"`, d.action === "skipped", d.action);
+}
+
+// ---------------------------------------------------------------------------
+// With the study-guide fallback on - the mode that actually runs on articles
+// ---------------------------------------------------------------------------
+// This is the half that matters most. Under a study every commenter gets a
+// reply, so the blockers are the only thing standing between a canned line and
+// somebody's bereavement. If one of them stops firing, it fails here.
+console.log("\nRUNTIME — study-guide fallback");
+const FB = FALLBACK_BY_SOURCE.article;
+
+for (const text of mustNotReply) {
+  const d = classify(text, CATEGORIES, RULES, FB);
+  check(`still never answers "${text.slice(0, 32)}..."`, d.action !== "replied", d.action);
+}
+
+// More ways of saying the same awful things, since the fallback means anything
+// unrecognised now gets answered rather than skipped.
+const alsoMustNotReply = [
+  "We buried my father on Saturday and I read this on the train home",
+  "My wife has been in hospital since Tuesday and I am scared",
+  "I have been struggling with addiction for years and this chapter found me",
+  "Going through the hardest time of my life right now",
+  "Can someone explain what this verse means",
+  "My marriage is falling apart",
+  "I feel hopeless most days",
+  "She lost her baby last month",
+];
+for (const text of alsoMustNotReply) {
+  const d = classify(text, CATEGORIES, RULES, FB);
+  check(`blocked: "${text.slice(0, 40)}..."`, d.action !== "replied", `${d.action} (${d.categorySlug ?? "-"})`);
+}
+
+// And the thing the fallback exists for: an ordinary reflection gets answered.
+const shouldReply = [
+  "Covenant love to me means something carried out, with honour and integrity",
+  "My favourite Bible character is Paul because of his determination",
+  "As we draw closer to God the things He values become our values",
+  "Book of Psalms",
+];
+for (const text of shouldReply) {
+  const d = classify(text, CATEGORIES, RULES, FB);
+  const t = d.action === "replied" ? selectTemplate(TEMPLATES.filter((x) => x.categorySlug === d.categorySlug), { random: () => 0.5 }) : null;
+  check(`answers the reflection "${text.slice(0, 34)}..."`, d.action === "replied" && Boolean(t), d.action);
 }
 
 globalThis.fetch = realFetch;

@@ -16,7 +16,7 @@ import { createClient } from "@supabase/supabase-js";
 import fs from "node:fs";
 import { classify } from "../lib/commentReplies/classify";
 import { selectTemplate } from "../lib/commentReplies/selectTemplate";
-import { CATEGORIES, RULES, TEMPLATES } from "../lib/commentReplies/seed";
+import { CATEGORIES, FALLBACK_BY_SOURCE, RULES, TEMPLATES } from "../lib/commentReplies/seed";
 import { fingerprint, wordCount } from "../lib/commentReplies/normalise";
 
 const env = fs.readFileSync(".env.local", "utf8");
@@ -55,15 +55,28 @@ const louisId = [...replyCount.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
 
 const incoming = rows.filter((r) => !r.is_deleted && !r.parent_id && r.user_id && r.user_id !== louisId);
 
+// The rolling "recently used" list the cron keeps, and the per-article list it
+// reads back from the database, both simulated here - otherwise selectTemplate
+// always returns the same first entry and the output looks far more repetitive
+// than what actually gets posted.
+const recent: string[] = [];
+const usedPerArticle = new Map<string, string[]>();
+
 const results = incoming.map((c) => {
-  const decision = classify(c.content, CATEGORIES, RULES);
-  const template =
-    decision.action === "replied"
-      ? selectTemplate(
-          TEMPLATES.filter((t) => t.categorySlug === decision.categorySlug),
-          { random: () => 0.5 },
-        )
-      : null;
+  const decision = classify(c.content, CATEGORIES, RULES, FALLBACK_BY_SOURCE.article);
+  let template = null;
+  if (decision.action === "replied") {
+    const here = usedPerArticle.get(c.article_slug) ?? [];
+    template = selectTemplate(
+      TEMPLATES.filter((t) => t.categorySlug === decision.categorySlug),
+      { usedOnArticle: here, recentlyUsed: recent.slice(0, 12) },
+    );
+    if (template) {
+      here.push(template.body);
+      usedPerArticle.set(c.article_slug, here);
+      recent.unshift(template.body);
+    }
+  }
   return { comment: c, decision, template, words: wordCount(c.content) };
 });
 
@@ -89,14 +102,28 @@ for (const [slug, e] of [...byCategory.entries()].sort((a, b) => (b[1].replied +
   console.log(`    ${slug.padEnd(14)} replied ${String(e.replied).padStart(3)}  review ${String(e.review).padStart(3)}  skipped ${String(e.skipped).padStart(3)}`);
 }
 
-// Safety check: nothing long should ever be in the replied pile.
-const longReplies = results.filter((r) => r.decision.action === "replied" && r.words > 10);
+// Safety.
+//
+// The check here used to be "nothing over 10 words gets answered". That
+// stopped being the invariant when Louis asked for every commenter on a study
+// to get a reply - long reflections are now meant to be answered. What must
+// still never happen is a template landing under grief, a prayer request, a
+// direct question, or an argument.
+const BLOCKED: Array<[RegExp, string]> = [
+  [/\b(passed away|died|dying|cancer|funeral|grief|grieving|suicide|lost my|hospital|chemo|diagnos|miscarriage|divorce|abuse)\b/i, "grief or crisis"],
+  [/\b(pray for me|please pray|prayer request|need prayer)\b/i, "a prayer request"],
+  [/\?/, "a question"],
+  [/\b(disagree|heresy|not true|mistranslat)/i, "disagreement"],
+];
 console.log(`\n  SAFETY`);
-console.log(`    replies to comments over 10 words: ${longReplies.length}  (must be 0)`);
-const personalReplies = results.filter(
-  (r) => r.decision.action === "replied" && /\b(i am|i'm|my son|my daughter|my husband|my wife|i lost|i feel)\b/i.test(r.comment.content),
-);
-console.log(`    replies to first-person comments:  ${personalReplies.length}  (must be 0)`);
+let unsafe = 0;
+for (const [re, label] of BLOCKED) {
+  const hits = results.filter((r) => r.decision.action === "replied" && re.test(r.comment.content));
+  unsafe += hits.length;
+  console.log(`    answered despite ${label.padEnd(18)} ${hits.length}  (must be 0)`);
+  for (const h of hits.slice(0, 3)) console.log(`        !! ${h.comment.content.replace(/\s+/g, " ").slice(0, 95)}`);
+}
+console.log(`    total unsafe: ${unsafe}`);
 
 // Repeats: how often the same body would land under one article.
 const perArticle = new Map<string, string[]>();

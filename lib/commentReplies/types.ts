@@ -18,7 +18,17 @@ export type Category = {
   enabled: boolean;
 };
 
-export type RuleKind = "exact" | "phrase" | "regex";
+/**
+ * `exact`, `phrase` and `regex` all run against the NORMALISED comment, which
+ * has had its punctuation stripped so that "Amen!!" and "amen" are one thing.
+ *
+ * `raw` exists because of what that costs: a rule looking for a question mark
+ * could never match, since normalising removes it. The question blocker was
+ * written as regex `\?` and silently did nothing until 2026-11-02, when a
+ * backtest caught five questions being answered with a template. Anything that
+ * depends on punctuation must be `raw`.
+ */
+export type RuleKind = "exact" | "phrase" | "regex" | "raw";
 
 export type Rule = {
   id: string;

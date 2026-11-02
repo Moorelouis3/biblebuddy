@@ -5,6 +5,7 @@ import { classify } from "@/lib/commentReplies/classify";
 import { selectTemplate } from "@/lib/commentReplies/selectTemplate";
 import { fingerprint, wordCount } from "@/lib/commentReplies/normalise";
 import { loadLibrary, logDecision, notePattern } from "@/lib/commentReplies/store";
+import { FALLBACK_BY_SOURCE } from "@/lib/commentReplies/seed";
 import { SOURCES, type Candidate } from "@/lib/commentReplies/sources";
 
 /**
@@ -136,7 +137,12 @@ export async function GET(request: NextRequest) {
     const recent: string[] = [];
 
     for (const candidate of open) {
-      const decision = classify(candidate.content, library.categories, library.rules);
+      const decision = classify(
+        candidate.content,
+        library.categories,
+        library.rules,
+        FALLBACK_BY_SOURCE[source.name] ?? null,
+      );
       const fp = fingerprint(candidate.content);
       const words = wordCount(candidate.content);
       const logContext = `${source.name}:${candidate.context}`;

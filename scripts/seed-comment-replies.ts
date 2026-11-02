@@ -34,9 +34,31 @@ async function main() {
 
   // Rules and templates have generated uuid primary keys, so "already there"
   // means the same category + pattern (or body), not the same id.
+  //
+  // With --force, every seed-managed rule is deleted and rewritten. A rule
+  // carries its seed id in `notes`, so anything Louis added by hand - which
+  // has no seed id - survives. Without this, changing a rule in seed.ts would
+  // leave the old version live in the database alongside the new one: that is
+  // how the un-firing question blocker would have stayed un-firing even after
+  // being fixed in code.
+  if (force) {
+    // Every seed-managed row goes, not just the ones still named in seed.ts.
+    // Deleting only the current ids leaves RETIRED rules behind, still enabled
+    // and still firing - which is exactly what happened to the old blocking
+    // "block-personal" rule: it kept sending reflections to review after the
+    // code had stopped doing so. A rule added by hand has no seed id in
+    // `notes`, so it survives.
+    const { error, count } = await db
+      .from("comment_reply_rules")
+      .delete({ count: "exact" })
+      .not("notes", "is", null);
+    if (error) throw new Error(`clearing seed rules: ${error.message}`);
+    console.log(`rules: cleared ${count ?? 0} seed-managed rows (hand-added rules kept)`);
+  }
+
   const { data: existingRules } = await db.from("comment_reply_rules").select("category_slug, pattern");
   const haveRule = new Set((existingRules || []).map((r) => `${r.category_slug}::${r.pattern}`));
-  const newRules = RULES.filter((r) => force || !haveRule.has(`${r.categorySlug}::${r.pattern}`)).map((r) => ({
+  const newRules = RULES.filter((r) => !haveRule.has(`${r.categorySlug}::${r.pattern}`)).map((r) => ({
     category_slug: r.categorySlug,
     kind: r.kind,
     pattern: r.pattern,

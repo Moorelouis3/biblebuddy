@@ -46,6 +46,9 @@ create table if not exists public.comment_reply_categories (
 --   exact  - the whole normalised comment equals the pattern
 --   phrase - the pattern appears as a whole word/phrase inside the comment
 --   regex  - a JS regular expression, tested against the normalised comment
+--   raw    - the same, but against the ORIGINAL text. Normalising strips
+--            punctuation, so a rule looking for a question mark can only
+--            ever work as raw.
 --
 -- `weight` is added up per category; the winner needs to clear the confidence
 -- floor in lib/commentReplies/classify.ts. `blocks` marks a rule that DISQUALIFIES
@@ -53,7 +56,7 @@ create table if not exists public.comment_reply_categories (
 create table if not exists public.comment_reply_rules (
   id            uuid primary key default gen_random_uuid(),
   category_slug text not null references public.comment_reply_categories(slug) on delete cascade,
-  kind          text not null check (kind in ('exact', 'phrase', 'regex')),
+  kind          text not null check (kind in ('exact', 'phrase', 'regex', 'raw')),
   pattern       text not null,
   weight        numeric not null default 1,
   blocks        boolean not null default false,

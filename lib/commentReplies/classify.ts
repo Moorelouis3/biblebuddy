@@ -36,7 +36,7 @@ function toConfidence(score: number): number {
   return Math.max(0, Math.min(1, score / 4));
 }
 
-function ruleMatches(rule: Rule, normalised: string): boolean {
+function ruleMatches(rule: Rule, normalised: string, raw: string): boolean {
   if (!rule.enabled) return false;
   switch (rule.kind) {
     case "exact":
@@ -44,8 +44,11 @@ function ruleMatches(rule: Rule, normalised: string): boolean {
     case "phrase":
       return normalised.includes(rule.pattern);
     case "regex":
+    case "raw":
       try {
-        return new RegExp(rule.pattern, "u").test(normalised);
+        // "raw" keeps the punctuation, which is the only way a rule can look
+        // for a question mark - normalising strips it.
+        return new RegExp(rule.pattern, "iu").test(rule.kind === "raw" ? raw : normalised);
       } catch {
         // A rule someone typed wrong must not take the whole run down with it.
         return false;
@@ -59,6 +62,19 @@ export function classify(
   rawText: string,
   categories: Category[],
   rules: Rule[],
+  /**
+   * Where a comment goes when nothing matched it.
+   *
+   * The study guides pass "reflection" here: Louis wants everyone who
+   * commented under a chapter answered, and most of those comments contain no
+   * keyword worth matching - they are someone thinking out loud about
+   * Proverbs. The social feed passes nothing, so an unmatched comment there is
+   * still a skip.
+   *
+   * A blocked comment never reaches this. Grief, prayer requests, questions
+   * and criticism are decided before any scoring happens.
+   */
+  fallbackCategorySlug?: string | null,
 ): Decision {
   const normalised = fingerprint(rawText);
   const words = wordCount(rawText);
@@ -75,7 +91,7 @@ export function classify(
 
   // 2. Blocking rules win outright.
   for (const rule of active) {
-    if (!rule.blocks || !ruleMatches(rule, normalised)) continue;
+    if (!rule.blocks || !ruleMatches(rule, normalised, rawText)) continue;
     const category = byCategory.get(rule.categorySlug);
     return {
       action: category?.strategy === "skip" ? "skipped" : "review",
@@ -92,7 +108,7 @@ export function classify(
   // Louis asks why a comment got answered the way it did.
   const scores = new Map<string, { score: number; ruleId: string; heaviest: number }>();
   for (const rule of active) {
-    if (rule.blocks || !ruleMatches(rule, normalised)) continue;
+    if (rule.blocks || !ruleMatches(rule, normalised, rawText)) continue;
     const prev = scores.get(rule.categorySlug);
     if (!prev) {
       scores.set(rule.categorySlug, { score: rule.weight, ruleId: rule.id, heaviest: rule.weight });
@@ -106,7 +122,20 @@ export function classify(
   }
 
   if (scores.size === 0) {
-    return { action: "skipped", categorySlug: null, ruleId: null, confidence: 0, reason: "no rule matched" };
+    const fallback = fallbackCategorySlug ? byCategory.get(fallbackCategorySlug) : undefined;
+    if (!fallback || fallback.strategy !== "reply" || fallback.enabled === false) {
+      return { action: "skipped", categorySlug: null, ruleId: null, confidence: 0, reason: "no rule matched" };
+    }
+    if (words > fallback.maxWords) {
+      return {
+        action: "review",
+        categorySlug: fallback.slug,
+        ruleId: null,
+        confidence: 0,
+        reason: `${words} words is past the ${fallback.maxWords}-word ceiling for ${fallback.slug}`,
+      };
+    }
+    return { action: "replied", categorySlug: fallback.slug, ruleId: null, confidence: 1, reason: `fell back to ${fallback.slug}` };
   }
 
   const [winnerSlug, winner] = [...scores.entries()].sort((a, b) => b[1].score - a[1].score)[0];
