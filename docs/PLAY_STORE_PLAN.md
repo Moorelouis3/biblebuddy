@@ -154,6 +154,44 @@ reference name must be exactly `BibleBuddy Upload` - that string is what
 as CM_KEYSTORE_PATH / CM_KEYSTORE_PASSWORD / CM_KEY_ALIAS / CM_KEY_PASSWORD
 for scripts/android-release-config.mjs to wire into gradle.
 
+**Done 2026-11-02: route 1 was taken and the keystore exists.**
+`winget install Microsoft.OpenJDK.21` put a JDK at
+`C:Program FilesMicrosoftjdk-21.0.13.21-hotspot`, and the keystore was
+generated with a 30-character random password by a script that never printed
+the password to stdout, so it is not in any agent transcript.
+
+| | |
+|---|---|
+| Keystore | `C:UsersMooreDesktopiblebuddy-android-signingiblebuddy-upload.p12` |
+| Credentials | `KEYSTORE-CREDENTIALS.txt` in the same folder |
+| Type | PKCS12, RSA 2048, SHA384withRSA |
+| Alias | `upload` |
+| Valid until | 2054-03-20, comfortably past Google's 2033 floor |
+| Upload cert SHA-1 | `4B:1B:4A:D2:8F:E5:AC:A7:68:5E:DF:9E:E4:F4:69:C0:12:86:E4:B8` |
+
+The folder is on the Desktop, **outside this repository on purpose** - the
+repo is public ([[repo-is-public]]) and a keystore in it would be the same
+mistake as the service-role key that once sat in `scripts/`. PKCS12 uses one
+password for both the store and the key, so the same value goes in both of
+Codemagic's password fields.
+
+**Fingerprints and Google sign-in.** The SHA-1 above is the *upload*
+certificate. Google re-signs with its own key, so the Android OAuth client
+for Google sign-in (section 6) needs **both**: this one, for builds
+installed from CI or sideloaded, and the *app signing* SHA-1 that Play
+Console shows under Setup > App signing once the first bundle is uploaded.
+Registering only one is the usual reason Google sign-in works in testing and
+fails from the store, or the other way round.
+
+**What is left is Louis's, and it is one form.** Both halves were tried and
+both are correctly refused to an agent: typing the passwords into a web form,
+and uploading the keystore itself, which the file-upload guard blocked
+because the file is a credential. So: Codemagic > Settings > Code signing
+identities > Android keystores > Choose a file, then paste the four values
+out of `KEYSTORE-CREDENTIALS.txt`. It is a single form with a single save.
+
+**Back it up the same day.** Both files, somewhere that is not this laptop.
+
 **The warning that matters:** lose the upload keystore and you cannot ship an
 update to the app ever again under that listing. It gets backed up somewhere
 that is not one laptop, on the day it is created.
