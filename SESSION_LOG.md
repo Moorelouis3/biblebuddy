@@ -12512,3 +12512,43 @@ at 2026-10-26T07:49:31Z) still has no new reply or decision from Louis. Nothing 
 run-242 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run, consistent with runs
 80-242.
 Next up: none -- awaiting a decision from Louis (leave the trigger as a no-op, pause it, or give it new scope)
+
+## 2026-11-02 (Claude subscription audit)
+Marching orders: Louis asked whether the ~€100 Max plan can drop to Pro now
+that the iOS app has launched and development is winding down.
+Done:
+- **Audit written to docs/claude-subscription-audit.md.** Audit only, nothing
+  changed, no subscription touched.
+- Verified: Max plan, weekly all-models at 14% - but that window is 43%
+  elapsed, not 14%, so the real run rate is ~33% of a Max week. 5-hour at 22%.
+  Extra usage off, €0 spent, €75/mo cap configured.
+- **Downgrading cannot affect users.** Every AI call in app/api reads
+  OPENAI_API_KEY (9 references), there is no Anthropic reference in runtime
+  code, and no ANTHROPIC_API_KEY in .env.local or .env. The only Anthropic
+  code is four offline shorts/devotional scripts with no key configured.
+- **What the subscription actually pays for: 7 enabled cloud routines, ~40
+  runs a day, ~283 a week.** They fire whether or not Louis opens a laptop.
+- **The Note Writer has produced nothing for 243 consecutive runs** since the
+  Bible was finished on 2026-10-19. Each run is 44 turns and ~7.5 minutes -
+  a full npm install and a full tsc - to append two bookkeeping lines.
+  207 of the last fortnight's 694 commits are its no-ops. It has been asking
+  Louis for a decision since run 79 on 26 October.
+- Commit volume has not dropped post-launch: 53 on 1 Nov, 45 by midday 2 Nov,
+  against ~50/day mid-October. The wind-down is Louis's intent, not yet the
+  account's behaviour.
+- Maintenance workload is genuinely small: 158 bug reports since 1 Sep, 18
+  last week, only 35 of the 158 ever needed a code change, 3 on Louis now.
+- Recommendation: do not downgrade yet. Pause the Note Writer today, decide
+  on the content routines, read one clean weekly window (resets Fri 6 Nov
+  12:00 UTC, so read ~13 Nov), get the Play track rolling, then downgrade.
+  At today's rate Pro would be exhausted mid-week every week.
+Not live yet: 1 commit, docs only. Run `npm run pending` for the build time.
+Still open:
+- **The Note Writer decision is Louis's** - I did not pause it. One click at
+  claude.ai/code/routines.
+- Whether the Chapter Blog Writer (5/day) and Holiday Blog Writer (4/day)
+  still earn their place now the growth push is over.
+- Could not verify usage history beyond the current windows, per-routine
+  attribution, or whether extra usage and mid-month re-upgrades work the same
+  on Pro. Named in the doc as unverified with where to look.
+Next: Louis's call on the routines, then re-read usage on 13 November.
