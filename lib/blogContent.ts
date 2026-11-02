@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "all-saints-day-vs-all-souls-day",
+    title: "What Is the Difference Between All Saints' Day and All Souls' Day?",
+    description:
+      "What is the difference between All Saints' Day and All Souls' Day? One celebrates the saints in heaven, the other prays for souls in purgatory.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/all-saints-day-vs-all-souls-day",
+    publishedAt: "2026-11-02",
+    readTime: "11 min read",
+    image: "/blog-banners/all-saints-day-vs-all-souls-day.jpg",
+    groupPost: {
+      title: "What Is the Difference Between All Saints' Day and All Souls' Day? 📖",
+      content:
+        "Two days in a row on the calendar. Two names that sound almost the same.\nMost people could not tell you what either one is actually for.\n\n📌 One day celebrates the saints who already made it. The next day prays for souls still on the way.\n\n📖 All Saints' Day honors every believer already with God, famous or never named.\n📖 All Souls' Day prays for the faithful who may still be in purgatory.\n📖 Only one of the two carries a Mass obligation.\n\nNew article on:\n🟢 where both days actually came from, a pope in Rome and one abbot's rule in **Cluny**\n🟢 why **purgatory** is the doctrine the second day is built on\n🟢 how Orthodox and Protestant Christians mark these same two dates differently\n\nWho is in your own cloud of witnesses this week? 🙏",
+    },
+  },
+  {
     slug: "numbers-36-explained",
     title: "Numbers 36 Explained: The Daughters of Zelophehad and the Last Word of Numbers",
     description:
