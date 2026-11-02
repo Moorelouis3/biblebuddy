@@ -12552,3 +12552,26 @@ Still open:
   attribution, or whether extra usage and mid-month re-upgrades work the same
   on Pro. Named in the doc as unverified with where to look.
 Next: Louis's call on the routines, then re-read usage on 13 November.
+
+## 2026-11-02T13:00:00Z (hourly chapter notes run)
+Chapter: none -- whole Bible (1189/1189) still complete | Duration: 13 min | Sections: n/a | Cards: n/a | Status: block
+244th consecutive no-op run since completion on 2026-10-19T21:01:00Z. `data/bible-notes-priority-queue.json` and
+`data/bible-notes-style-redo-remaining.json` still both have empty `remaining` arrays. `data/bible-notes-progress-log.json`
+still has 1262 entries, last entry Revelation 22 finished 2026-10-19T21:01:00Z, goalTotalChapters 1189, unchanged
+from run 243. `lib/` still has exactly 1187 `*Source.ts` files and `lib/bibleReaderStudyNotes.ts` still has 1281
+`replaceStudySectionsForBookRange(...)` occurrences, identical to run 243's counts. `npx tsc --noEmit -p .` ran
+clean (exit 0, backgrounded past its 3-minute foreground timeout). This container's local `main` was a stale
+shallow-clone artifact pointing at the old "190th no-op" commit (the same recurring anomaly logged before,
+`git rev-parse --is-shallow-repository` confirmed true again); reset to `origin/main`'s real tip (`8a90d58`)
+rather than treating it as real divergence -- no work was at risk, origin was unambiguously ahead and authoritative.
+
+New this run: `origin/main` now carries Louis's own commit `488b186` ("Claude subscription audit: the bill is
+routines, not coding"), landed about an hour before this run, adding `docs/claude-subscription-audit.md`. Its
+top-line, first-listed next step: *"Today -- turn off the hourly Note Writer routine. It has produced nothing
+since 19 October and fires 24 times a day. Zero risk, zero loss."* That is a direct answer to the question this
+routine has been asking since run 79 on 26 October. This run did not pause or modify the schedule itself --
+disabling a scheduled task is an account-level change outside a single run's job, and the audit itself frames it
+as Louis's own next action at `claude.ai/code/routines` -- but it sent a push notification surfacing the audit
+and its recommendation now, since this is new, material, time-sensitive information the prior "nothing changed,
+stay quiet" runs (80-243) did not have.
+Next up: none -- awaiting Louis's decision on his own audit's recommendation to pause this routine.
