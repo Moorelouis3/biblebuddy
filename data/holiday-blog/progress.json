@@ -314,8 +314,13 @@
       "startedAt": "2026-11-02T09:21:48.503Z",
       "committedAt": "2026-11-02T09:32:11.442Z",
       "publishedAt": "2026-11-02T16:11:32.676Z"
+    },
+    "who-were-the-wise-men": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-02T16:11:43.398Z"
     }
   },
-  "nextTopic": "who-were-the-wise-men",
-  "updatedAt": "2026-11-02T16:11:32.676Z"
+  "nextTopic": "why-some-christians-do-not-celebrate-christmas",
+  "updatedAt": "2026-11-02T16:11:43.398Z"
 }
