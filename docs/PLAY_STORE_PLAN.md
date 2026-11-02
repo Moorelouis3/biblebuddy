@@ -532,6 +532,25 @@ an agreement entered in his name.
 **A quirk worth knowing:** the questionnaire's Next button stays greyed out
 even once every question is answered. Pressing **Save** first enables it.
 
+### Data safety: DONE 2026-11-02, and the file that rebuilds it
+
+Saved, and the Console reads "Change saved. Send for review in Publishing
+overview." The store listing preview says **"No data shared with third
+parties"**, which is the line that matters.
+
+**`docs/play-data-safety.csv` is the whole declaration**, in Google's own
+export format. If the answers are ever lost again, or a new data type gets
+added, edit that file and use **Import from CSV** on the Data safety page -
+ten data types in one upload, about four tool calls, instead of eighty
+careful clicks. That is how it was finally filled in after the clicking
+approach lost seven types (below).
+
+The format is plain: `Question ID, Response ID, Response value, ...`, and
+`true` in the third column means selected. A per-type block looks like
+`PSL_DATA_USAGE_RESPONSES:<TYPE>:<QUESTION>,<ANSWER>,true`. Export first,
+edit, re-import - never hand-write one, because the file carries every
+possible answer and the importer overwrites the form wholesale.
+
 ### Data safety: the trap that eats your work
 
 **The Save button inside each per-type dialog does not persist anything.** It
