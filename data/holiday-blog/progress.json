@@ -297,8 +297,13 @@
       "status": "committed",
       "startedAt": "2026-11-02T01:16:44.298Z",
       "committedAt": "2026-11-02T01:27:42.111Z"
+    },
+    "all-saints-day-vs-all-souls-day": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-02T05:17:18.766Z"
     }
   },
-  "nextTopic": "all-saints-day-vs-all-souls-day",
-  "updatedAt": "2026-11-02T05:16:58.854Z"
+  "nextTopic": "what-is-an-advent-wreath",
+  "updatedAt": "2026-11-02T05:17:18.766Z"
 }
