@@ -398,12 +398,15 @@ workflows:
   # bundle that actually goes to Play is android-release, below.
   android-build:
     name: Bible Buddy Android
-    # Linux, not a Mac mini. This file already said "nothing here needs
-    # macOS" and then asked for a Mac anyway (caught 2026-11-02, after the
-    # first signed bundle had already been built on one). Linux is about half
-    # the per-minute rate, and the emulator step actually prefers it - Codemagic's
-    # Linux images have KVM, where an M2 can only run arm64 system images.
-    instance_type: linux_x2
+    # A Mac mini for an Android build looks wrong, and it is - nothing here
+    # needs macOS, and Linux is about half the per-minute rate. It was changed
+    # to linux_x2 on 2026-11-02 and changed straight back the same day: the
+    # build died before it started with "The selected instance type is not
+    # available with the current billing plan". Linux and Windows instances
+    # are a paid tier; the free plan is macOS only. So the cheaper machine is
+    # not actually available to us, and switching costs more than it saves.
+    # Revisit only if the Codemagic plan changes.
+    instance_type: mac_mini_m2
     max_build_duration: 40
 
     environment:
@@ -495,8 +498,9 @@ workflows:
   # Manual only, same as every other workflow in this file.
   android-release:
     name: Bible Buddy Android — signed bundle
-    # Linux for the same reason as android-build above.
-    instance_type: linux_x2
+    # macOS for the same reason as android-build above - the Linux instances
+    # are not on our Codemagic plan.
+    instance_type: mac_mini_m2
     max_build_duration: 40
 
     environment:
