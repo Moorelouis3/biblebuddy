@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-36-explained",
+    title: "Numbers 36 Explained: The Daughters of Zelophehad and the Last Word of Numbers",
+    description:
+      "Numbers 36 explained verse by verse: why the daughters of Zelophehad had to marry within their tribe, what the Year of Jubile had to do with it, and how Numbers ends.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-36-explained",
+    publishedAt: "2026-11-02",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-36-explained.jpg",
+    groupPost: {
+      title: "Numbers 36 Explained 📖",
+      content:
+        "Five sisters married carefully.\nOne tribe's land stayed put.\n\n📌 Numbers ends on a promise nobody let slip away.\n\n📖 The daughters of Zelophehad get the final word in Numbers.\n📖 Marrying outside the tribe could have moved their land forever.\n📖 Even the Year of Jubile would not have fixed that.\n\nNew article on:\n🟢 why the **Year of Jubile** made this problem permanent\n🟢 how **freedom and boundary** sit in the very same verse\n🟢 why the last chapter of Numbers ends on five women, not a king\n\nWhat has God given you that you need to guard on purpose? 🙏",
+    },
+  },
+  {
     slug: "numbers-35-explained",
     title: "Numbers 35 Explained: Cities of Refuge and the Law of Blood Guilt",
     description:
