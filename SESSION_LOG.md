@@ -12710,3 +12710,25 @@ only about an hour having passed. Nothing material changed since the run-244 ent
 entry and no new push notification this run (one was already sent an hour ago for this same, still-unactioned
 finding; re-sending now would be a near-duplicate ping with no new information).
 Next up: none -- awaiting Louis's decision on his own audit's recommendation to pause this routine.
+
+## 2026-11-02T15:30:00Z (hourly chapter notes run)
+Chapter: none -- whole Bible (1189/1189) still complete | Duration: 7 min | Sections: n/a | Cards: n/a | Status: block
+246th consecutive no-op run since completion on 2026-10-19T21:01:00Z. `data/bible-notes-style-redo-remaining.json`
+and `data/bible-notes-priority-queue.json` still both have empty `remaining` arrays. `data/bible-notes-progress-log.json`
+still has 1262 entries, last entry Revelation 22 finished 2026-10-19T21:01:00Z, goalTotalChapters 1189, unchanged
+from run 245. Cross-checked progress-log entries against the full 66-book canonical KJV chapter-count table; the
+only apparent gaps were Genesis chapters already covered by the documented pre-existing gold-standard files
+(confirmed present on disk via `lib/genesis*Source.ts`, not logged in progress-log but already wired) -- zero
+real gaps. `lib/` still has exactly 1187 `*Source.ts` files and `lib/bibleReaderStudyNotes.ts` still has 1281
+`replaceStudySectionsForBookRange(...)` occurrences, identical to run 245's counts. `npx tsc --noEmit -p .` ran
+clean (exit 0). `git fetch origin main` showed new commits since run 245 -- Play Store data-safety/target-audience/
+content-rating work only -- nothing touching this routine's data files or trigger state.
+
+The routine is still enabled and fired on schedule this run, about 1h16m after run 245 and about 2h39m after
+Louis's own commit `488b186` ("Claude subscription audit: the bill is routines, not coding") named "pause the
+Note Writer today" as the first next step, and after run 244 already sent a push notification surfacing that
+recommendation. No reply from Louis and no change to this trigger's enabled state since then. Nothing material
+changed since the run-245 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run (one
+was already sent for this same, still-unactioned finding; re-sending on an unchanged situation would be a
+near-duplicate ping with no new information).
+Next up: none -- awaiting Louis's decision on his own audit's recommendation to pause this routine.
