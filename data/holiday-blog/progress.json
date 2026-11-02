@@ -260,29 +260,33 @@
     },
     "what-is-the-solemnity-of-mary": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-01T01:17:07.312Z",
-      "committedAt": "2026-11-01T01:25:51.413Z"
+      "committedAt": "2026-11-01T01:25:51.413Z",
+      "publishedAt": "2026-11-02T01:16:33.667Z"
     },
     "was-jesus-born-in-a-stable": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-01T05:17:15.572Z",
-      "committedAt": "2026-11-01T05:28:02.824Z"
+      "committedAt": "2026-11-01T05:28:02.824Z",
+      "publishedAt": "2026-11-02T01:16:33.794Z"
     },
     "most-important-catholic-holy-days": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-01T09:17:44.202Z",
-      "committedAt": "2026-11-01T09:27:13.439Z"
+      "committedAt": "2026-11-01T09:27:13.439Z",
+      "publishedAt": "2026-11-02T01:16:33.938Z"
     },
     "saint-nicholas-facts-and-legends": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-01T15:17:31.929Z",
-      "committedAt": "2026-11-01T15:26:45.874Z"
+      "committedAt": "2026-11-01T15:26:45.874Z",
+      "publishedAt": "2026-11-02T01:16:34.081Z"
     }
   },
   "nextTopic": "what-is-candlemas",
-  "updatedAt": "2026-11-01T15:26:45.897Z"
+  "updatedAt": "2026-11-02T01:16:34.081Z"
 }
