@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-were-the-wise-men",
+    title: "Who Were the Wise Men? What the Bible Says About the Magi",
+    description:
+      "Who were the wise men in the Bible? What Matthew 2 actually says about the magi, the star of Bethlehem, their gifts, and what is legend versus Scripture.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/who-were-the-wise-men",
+    publishedAt: "2026-11-02",
+    readTime: "13 min read",
+    image: "/blog-banners/who-were-the-wise-men.jpg",
+    groupPost: {
+      title: "Who Were the Wise Men? What the Bible Says About the Magi 📖",
+      content:
+        "Every nativity set has three kings kneeling at the manger.\nMatthew never calls them kings, and he never says there were three.\n\n📌 They did not even arrive on the night Jesus was born, and the dream that saved them triggered a king's rage.\n\n📖 Matthew 2 calls them magi, trained sky watchers from a land he never names.\n📖 The star led them to a house, not a stable, possibly up to two years later.\n📖 The same news that filled them with joy sent Herod into a killing rage.\n\nNew article on:\n🟢 what the **gold, frankincense, and myrrh** actually meant\n🟢 why the names **Caspar, Melchior, and Balthasar** are not in the Bible\n🟢 the honest truth about every **star of Bethlehem** theory ever proposed\n\nDid your own nativity set ever get this story right? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-3-explained",
     title: "Deuteronomy 3 Explained: Og of Bashan and the Giant's Iron Bed",
     description:

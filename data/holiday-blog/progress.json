@@ -75,11 +75,12 @@
       ]
     },
     "2026-11-02": {
-      "committed": 3,
+      "committed": 4,
       "slugs": [
         "what-is-candlemas",
         "all-saints-day-vs-all-souls-day",
-        "what-is-an-advent-wreath"
+        "what-is-an-advent-wreath",
+        "who-were-the-wise-men"
       ]
     }
   },
@@ -317,10 +318,11 @@
     },
     "who-were-the-wise-men": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-02T16:11:43.398Z"
+      "status": "committed",
+      "startedAt": "2026-11-02T16:11:43.398Z",
+      "committedAt": "2026-11-02T16:24:19.921Z"
     }
   },
   "nextTopic": "why-some-christians-do-not-celebrate-christmas",
-  "updatedAt": "2026-11-02T16:11:43.398Z"
+  "updatedAt": "2026-11-02T16:24:19.942Z"
 }
