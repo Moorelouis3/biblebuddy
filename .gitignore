@@ -75,3 +75,11 @@ data/shorts-schedule.backup-*.json
 
 # Print files staged for a KDP upload; the originals live in Downloads
 .kdp-upload/
+
+# Private keys. App Store Connect hands you a .p8 exactly once and this
+# repository is public - a stray key here would be published, and other
+# sessions commit with `git add -A`. Keys belong in .env.local.
+*.p8
+*.p12
+*.mobileprovision
+secrets/
