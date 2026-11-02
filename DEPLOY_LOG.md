@@ -95,3 +95,4 @@
 2026-11-02T12:25:39.908Z | 16 commits | App Store CTAs on the landing page, the iPhone download prompt, native-app usage tracking, the Vercel build-cost fixes and the Play Store keystore work
 2026-11-02T12:53:10.752Z | 3 commits | The App tab on admin analytics, plus Play Store bundle progress
 2026-11-02T13:09:26.744Z | iPhone sign-in popup for the App Store, so Louis can test it on his phone
+2026-11-02T16:47:35Z | 25 commits | Deuteronomy 3 chapter library entry, Christian Holidays post on the Wise Men/Magi, the new auto comment-replies system (social feed only, 3-hour wait, no AI except Lil Louis), Play Store data safety answers, App Store popup no-count fix, daily audio generation cap, and Android advertising-ID permission removal with the Codemagic build fix
