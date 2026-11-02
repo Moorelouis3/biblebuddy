@@ -89,6 +89,9 @@ export async function ensureDevotionalOverviewTtsAudio(
   dayNumber: number,
   supabase: SupabaseAdmin,
   force = false,
+  // Only consulted on a cache miss. Routes pass one so a paid generation is
+  // capped; the offline scripts pass none. See lib/ttsGenerationGuard.ts.
+  guard?: { before: () => Promise<unknown>; after: (path: string) => Promise<unknown> },
 ) {
   const text = await getDevotionalOverviewSpeechText(devotionalId, dayNumber, supabase);
   const path = getDevotionalOverviewTtsPath(devotionalId, dayNumber, text);
@@ -98,7 +101,10 @@ export async function ensureDevotionalOverviewTtsAudio(
     if (cached) return { audio: Buffer.from(cached), path, source: "cache" as const, textLength: text.length };
   }
 
+  // Nothing cached: this is the line that spends money.
+  if (guard) await guard.before();
   const audio = await generateOpenAiSpeech(text);
   await uploadCachedDevotionalOverviewAudio(supabase, path, audio);
+  if (guard) await guard.after(path);
   return { audio, path, source: "generated" as const, textLength: text.length };
 }

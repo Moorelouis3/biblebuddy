@@ -3,6 +3,7 @@ import {
   createDevotionalOverviewTtsAdminClient,
   ensureDevotionalOverviewTtsAudio,
 } from "@/lib/devotionalOverviewTtsAudio";
+import { buildTtsGuard, TtsGenerationBlocked } from "@/lib/ttsGenerationGuard";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -35,9 +36,21 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const result = await ensureDevotionalOverviewTtsAudio(devotionalId, dayNumber, supabase);
+    const result = await ensureDevotionalOverviewTtsAudio(
+      devotionalId,
+      dayNumber,
+      supabase,
+      false,
+      buildTtsGuard(supabase, request, "devotional-overview"),
+    );
     return audioResponse(result.audio, result.source, result.path);
   } catch (error) {
+    if (error instanceof TtsGenerationBlocked) {
+      return NextResponse.json(
+        { error: "This audio is not ready yet. Please try again tomorrow.", reason: error.reason },
+        { status: 429 },
+      );
+    }
     console.error("[DEVOTIONAL_OVERVIEW_TTS] Failed to load audio:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Could not load devotional overview audio." },

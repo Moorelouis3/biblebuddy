@@ -4,6 +4,7 @@ import {
   resolveBibleChapterTtsAudio,
 } from "@/lib/bibleChapterTtsAudio";
 import type { BibleChapterTtsTranslation } from "@/lib/bibleChapterTts";
+import { buildTtsGuard, TtsGenerationBlocked } from "@/lib/ttsGenerationGuard";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -39,7 +40,13 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const result = await resolveBibleChapterTtsAudio(book, chapter, translation, supabase);
+    const result = await resolveBibleChapterTtsAudio(
+      book,
+      chapter,
+      translation,
+      supabase,
+      buildTtsGuard(supabase, request, "bible-chapter"),
+    );
 
     // Cached audio is handed off as a signed storage URL so the browser streams
     // it straight from Supabase - with range requests, so scrubbing works -
@@ -58,6 +65,15 @@ export async function GET(request: NextRequest) {
 
     return audioResponse(result.audio!, result.source, result.path);
   } catch (error) {
+    if (error instanceof TtsGenerationBlocked) {
+      // The chapter has no audio yet and today's budget for making new audio
+      // is spent (or this did not come from our own app). Nothing cached is
+      // ever refused here - only the paid step.
+      return NextResponse.json(
+        { error: "Audio for this chapter is not ready yet. Please try again tomorrow.", reason: error.reason },
+        { status: 429 },
+      );
+    }
     console.error("[BIBLE_CHAPTER_TTS] Failed to load audio:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Could not load Bible chapter audio." },

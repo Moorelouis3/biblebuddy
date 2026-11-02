@@ -197,7 +197,14 @@ export async function generateOpenAiSpeech(text: string) {
   return Buffer.concat(audioChunks);
 }
 
-export async function ensureGenesisOneTtsAudio(kind: GenesisOneTtsKind, supabase: SupabaseAdmin, force = false) {
+export async function ensureGenesisOneTtsAudio(
+  kind: GenesisOneTtsKind,
+  supabase: SupabaseAdmin,
+  force = false,
+  // Only consulted on a cache miss. Routes pass one so a paid generation is
+  // capped; the offline scripts pass none. See lib/ttsGenerationGuard.ts.
+  guard?: { before: () => Promise<unknown>; after: (path: string) => Promise<unknown> },
+) {
   const text = await getGenesisOneSpeechText(kind, supabase);
   const path = getGenesisOneTtsPath(kind, text);
 
@@ -206,7 +213,10 @@ export async function ensureGenesisOneTtsAudio(kind: GenesisOneTtsKind, supabase
     if (cached) return { audio: Buffer.from(cached), path, source: "cache" as const, textLength: text.length };
   }
 
+  // Nothing cached: this is the line that spends money.
+  if (guard) await guard.before();
   const audio = await generateOpenAiSpeech(text);
   await uploadCachedGenesisOneAudio(supabase, path, audio);
+  if (guard) await guard.after(path);
   return { audio, path, source: "generated" as const, textLength: text.length };
 }

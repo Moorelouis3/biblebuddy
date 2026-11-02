@@ -5,6 +5,7 @@ import {
   ensureGenesisOneTtsAudio,
   GENESIS_ONE_TTS_KINDS,
 } from "@/lib/genesisOneTtsAudio";
+import { buildTtsGuard, TtsGenerationBlocked } from "@/lib/ttsGenerationGuard";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -35,9 +36,20 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const result = await ensureGenesisOneTtsAudio(kind, supabase);
+    const result = await ensureGenesisOneTtsAudio(
+      kind,
+      supabase,
+      false,
+      buildTtsGuard(supabase, request, "study-notes"),
+    );
     return audioResponse(result.audio, result.source, result.path);
   } catch (error) {
+    if (error instanceof TtsGenerationBlocked) {
+      return NextResponse.json(
+        { error: "This audio is not ready yet. Please try again tomorrow.", reason: error.reason },
+        { status: 429 },
+      );
+    }
     console.error("[GENESIS_ONE_TTS] Failed to load audio:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Could not load Genesis 1 audio." },

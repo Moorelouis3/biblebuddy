@@ -60,6 +60,12 @@ const ALLOWED_EVENTS = new Set([
   "votd_share",
   "votd_open_in_bible",
   "votd_page_view",
+  // Paid text-to-speech renders and the ones the daily cap refused
+  // (2026-11-02). Written server-side by lib/ttsGenerationGuard.ts, not from
+  // the browser; listed here so the event names are documented in one place.
+  // Metadata: {kind, client, path} or {kind, client, reason}.
+  "tts_audio_generated",
+  "tts_audio_blocked",
   "votd_reflection_posted",
   // Daily Verse archive + Bookmarks (2026-09-13). Metadata: {daily_verse_id, date, source}.
   "daily_verse_archive_opened",

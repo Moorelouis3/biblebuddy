@@ -238,6 +238,10 @@ export async function resolveBibleChapterTtsAudio(
   chapter: number,
   translation: BibleChapterTtsTranslation,
   supabase: SupabaseAdmin,
+  // Optional, and only consulted on a cache miss. The route passes one so a
+  // paid generation is capped; the offline render scripts pass none, because
+  // a bulk render is a deliberate decision. See lib/ttsGenerationGuard.ts.
+  guard?: { before: () => Promise<unknown>; after: (path: string) => Promise<unknown> },
 ) {
   const text = await getBibleChapterSpeechText(book, chapter, translation, supabase);
   const path = getBibleChapterTtsPath(book, chapter, translation, text);
@@ -255,8 +259,11 @@ export async function resolveBibleChapterTtsAudio(
     }
   }
 
+  // Nothing cached: this is the line that spends money.
+  if (guard) await guard.before();
   const audio = await generateOpenAiSpeech(text);
   await uploadCachedBibleChapterAudio(supabase, path, audio);
+  if (guard) await guard.after(path);
 
   const signed = await supabase.storage
     .from(BIBLE_CHAPTER_TTS_BUCKET)

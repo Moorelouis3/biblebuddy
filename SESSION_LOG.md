@@ -12623,3 +12623,66 @@ Still open:
 - The Note Writer routine decision from this morning's subscription audit is
   still open.
 Next: Louis's call on the auto-replier, then the caps if he wants it back on.
+
+## 2026-11-02 (night)
+Time spent: ~1.5h
+Done: Audited Lil Louis cost/usage. First pass was wrong - the OpenAI usage page
+opens scoped to "Default project" and hid the second project (Life Buddy)
+entirely. Corrected, org-wide: October $147.17. Last two weeks (17 Oct - 2 Nov)
+$24.23, so the ~$25 added on 17 Oct really was gone in about nine days, exactly
+as Louis said. That $24.23 splits: gpt-4o $19.12 (of which $16.23 on the
+"Life Buddy API" key, 3,376 requests in 16 days), TTS $4.97, and every
+gpt-4o-mini call in Bible Buddy $0.135. Root cause of the gpt-4o burn found:
+second-brain/threadsSuggestions.js falls back to full-price gpt-4o whenever the
+Anthropic call returns non-OK, silently and unthrottled. Separately: the credit
+balance is $0 with auto-reload off, so Lil Louis, chapter TTS and auto-replies
+have been dead since ~26 Oct behind a generic "something went wrong".
+Chat usage for context: 128 messages / 21 people in 30 days, 203 opens.
+Not live yet: nothing committed this session; no code changed.
+Still open: credits need topping up (Louis only - payment). Life Buddy's fallback
+model needs pinning to mini plus an alert when it fires. Bible Buddy side: honest
+error on insufficient_quota, a spend alert, more locally-answered intents so the
+chat survives an outage, streaming replies, and splitting the ~10 non-chat
+callers off /api/chat so they stop paying for the persona prompt.
+Next: whichever of those Louis picks.
+
+## 2026-11-02 (a daily cap on new TTS audio)
+Done:
+- **The audio endpoints had no account and no limit.** Confirmed from outside
+  the app: an anonymous GET to /api/tts/bible-chapter is served, and a chapter
+  with no cached audio would have been generated and billed. A loop over 1,201
+  chapters x 3 translations is roughly $500 that anyone could spend. Real use
+  is about three chapters a day.
+- **lib/ttsGenerationGuard.ts**: a global cap of 60 new renders a day (worst
+  case ~$8), a per-client cap of 10, and a same-origin check. Wired into all
+  three TTS routes - bible-chapter, devotional-overview, genesis-one - and
+  into the three libs behind them at the exact line that spends money.
+- **Cached audio is untouched.** The guard sits after the cache lookup, so
+  every chapter already rendered keeps playing for everybody, capped or not,
+  signed in or not. The offline render scripts pass no guard, because a bulk
+  render is a deliberate decision.
+- Counter lives in landing_page_events (tts_audio_generated /
+  tts_audio_blocked) rather than a new table, so there is no migration to run
+  and the renders show up where Louis already reads events. Blocked requests
+  log their reason, so if real readers are ever caught it is visible.
+- Verified: tsc clean (0 real errors). Guard unit-tested against the real
+  database, all 12 cases pass - bare curl and a faked foreign referer are
+  blocked as not_own_client; sec-fetch-site, our own referer, localhost and
+  the BibleBuddyApp shell are all allowed. The count queries, the
+  metadata->>client filter and the insert were each checked against
+  production first, and the self-test rows were deleted.
+Not live yet: 1 commit. Run `npm run pending` for the build time. Step 3 -
+nothing is broken today, this is a ceiling on a bill.
+Still open:
+- **Not tested end to end with a real paid generation**, because that spends
+  money. The allow path is the original code path with one `await
+  guard.before()` in front of it.
+- Could not test over HTTP: another `next dev` holds the .next lock, so the
+  dev server would not start. Another session is working in this repo.
+- A real login gate is NOT in this change. Audio plays through
+  `new Audio(src)`, which cannot carry an auth token, and an access token has
+  no business in a URL. Doing it properly means reworking BrowserTtsButton and
+  the global audio player to fetch a signed URL first.
+- The Note Writer routine decision is still open from this morning.
+Next: watch tts_audio_blocked for a week; if no real readers are caught, the
+same-origin check can stay as the main defence.
