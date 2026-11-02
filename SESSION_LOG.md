@@ -12475,3 +12475,21 @@ on run 79 at 2026-10-26T07:49:31Z) still has no new reply or decision from Louis
 since the run-240 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run, consistent with
 runs 80-240.
 Next up: none -- awaiting a decision from Louis (leave the trigger as a no-op, pause it, or give it new scope)
+
+## 2026-11-02T10:54:00Z (hourly chapter notes run)
+Chapter: none -- whole Bible (1189/1189) still complete | Duration: 5 min | Sections: n/a | Cards: n/a | Status: block
+242nd consecutive no-op run since completion on 2026-10-19T21:01:00Z. `data/bible-notes-style-redo-remaining.json`
+and `data/bible-notes-priority-queue.json` still both have empty `remaining` arrays. `data/bible-notes-progress-log.json`
+still has 1262 entries, last entry Revelation 22 finished 2026-10-19T21:01:00Z, goalTotalChapters 1189, unchanged
+from run 241. `lib/` still has exactly 1187 `*Source.ts` files and `lib/bibleReaderStudyNotes.ts` still has 1281
+`replaceStudySectionsForBookRange(...)` calls, identical to run 241's counts. Independently re-derived the full
+66-book/1189-chapter canonical KJV chapter-count table and confirmed every chapter resolves to either a progress-log
+entry or the documented pre-existing Genesis 1-40 gold-standard set -- zero real gaps. `npx tsc --noEmit -p .` ran
+clean (exit 0). `git fetch origin main` confirmed this session's checkout already matched origin/main's real tip
+(0b61e90, an unrelated commit), zero drift. Read MARCUS_HANDOFF.md and IDEAS.md fresh: IDEAS.md still has only
+the same 2 unrelated bug-report entries, no Bible-notes mandate; MARCUS_HANDOFF.md's open escalation on the
+"whole Bible is done" question (2026-10-19, re-flagged 2026-10-24, direct push notification sent on run 79 at
+2026-10-26T07:49:31Z) still has no new reply or decision from Louis. Nothing material has changed since the
+run-241 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run, consistent with runs
+80-241.
+Next up: none -- awaiting a decision from Louis (leave the trigger as a no-op, pause it, or give it new scope)
