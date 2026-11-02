@@ -12493,3 +12493,22 @@ the same 2 unrelated bug-report entries, no Bible-notes mandate; MARCUS_HANDOFF.
 run-241 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run, consistent with runs
 80-241.
 Next up: none -- awaiting a decision from Louis (leave the trigger as a no-op, pause it, or give it new scope)
+
+## 2026-11-02T11:53:24Z (hourly chapter notes run)
+Chapter: none -- whole Bible (1189/1189) still complete | Duration: 6 min | Sections: n/a | Cards: n/a | Status: block
+243rd consecutive no-op run since completion on 2026-10-19T21:01:00Z. `data/bible-notes-priority-queue.json`
+and `data/bible-notes-style-redo-remaining.json` still both have empty `remaining` arrays. `data/bible-notes-progress-log.json`
+still has 1262 entries, last entry Revelation 22 finished 2026-10-19T21:01:00Z, goalTotalChapters 1189, unchanged
+from run 242. Independently re-derived the wired chapter set straight from `lib/bibleReaderStudyNotes.ts` (parsed
+every `replaceStudySectionsForBookRange` call rather than trusting the progress log) and confirmed all 66 books
+resolve to their full canonical KJV chapter count, 1189/1189, zero gaps. `lib/` still has exactly 1187 `*Source.ts`
+files and `lib/bibleReaderStudyNotes.ts` still has 1281 `replaceStudySectionsForBookRange(...)` occurrences,
+identical to run 242's counts. `npx tsc --noEmit -p .` ran clean (exit 0). `git fetch origin main` found origin
+one commit ahead (2a7a420, an unrelated Android/Play Store signed-bundle commit); fast-forwarded local main to
+match, nothing Bible-notes-related in the diff. Read MARCUS_HANDOFF.md and IDEAS.md fresh: IDEAS.md has one new
+unrelated "Handled" bug-report item since run 242, no Bible-notes mandate; MARCUS_HANDOFF.md's open escalation
+on the "whole Bible is done" question (2026-10-19, re-flagged 2026-10-24, direct push notification sent on run 79
+at 2026-10-26T07:49:31Z) still has no new reply or decision from Louis. Nothing material has changed since the
+run-242 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run, consistent with runs
+80-242.
+Next up: none -- awaiting a decision from Louis (leave the trigger as a no-op, pause it, or give it new scope)
