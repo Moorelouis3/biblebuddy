@@ -447,6 +447,49 @@ finishes. Checked by trying it, not assumed.
 A QR-code dialog offering to continue verification on a phone opens over the
 console on load; it is step 2 asking, not an error.
 
+## Play Console state, 2026-11-02
+
+The bundle is on the track as a **draft release** and the account paperwork is
+part done. Track id `4698469498250476300` ("Closed testing - Alpha", which
+already existed), release `1 (1.01)`.
+
+**The bundle was accepted**: target SDK 36, API 24+, 4 ABIs, 4 screen layouts,
+"Enhanced" app bundle. Target SDK 36 is the current Play requirement, so that
+gate is passed.
+
+### Done
+
+| Item | Answer | Why that answer |
+|---|---|---|
+| Countries / regions | all **178** | Bible Buddy is global, same as the web |
+| Privacy policy | `https://www.mybiblebuddy.net/privacy` | `app/privacy` exists; canonical host is the www one from `app/layout.tsx` |
+| Financial features | none | no billing or IAP anywhere in the Capacitor build; the app is free and the books are sold on KDP, outside it |
+| Health | none | not a health app, collects no health data |
+| Government apps | No | - |
+| Ads | **No** | verified, not assumed: `components/AdSenseScript.tsx` returns early on `isNativeApp()`, and `appendUserAgent: "BibleBuddyApp"` is set at the top level of `capacitor.config.ts` so it covers Android as well as iOS. `isNativeApp()` also checks `Capacitor.isNativePlatform()`, so there are two independent signals. If that user-agent marker ever stops being appended, the app would start showing AdSense and this declaration would become false - see [[app-store-wrapper]]. |
+| Release notes | written | en-US only |
+
+### Still open, and who each one belongs to
+
+| Item | Whose | Note |
+|---|---|---|
+| **Sign in details** | Louis | Google's reviewers need a working demo account, and `docs/APP_STORE_LISTING.md` already records that this account **does not exist** - it was the same gap at Apple. It needs real data in it, not an empty shell. |
+| **Target audience** | Louis | The age bands are a policy decision, not a fact: anything that includes under-13s pulls the app into Google Play Families policy with extra requirements. Recommend 13+ and staying out of Families. |
+| Content rating | agent, after target audience | IARC questionnaire. Answers are factual (no violence, sex, drugs; religious reference content) but it ends in a submission that issues real ratings. |
+| Data safety | agent, for Louis to check | Draftable from the code - Supabase auth, email, display name, photo, study progress, device identifiers for push - but it is a declaration about what is collected, so it wants a read before it is sent. |
+| App category + contact details | agent | Books & Reference, `support@mybiblebuddy.net`. |
+| Store listing | agent + one asset gap | Short and full description are writing work. The 512 icon already exists from `scripts/android-app-icon.mjs`. A 1024x500 feature graphic and phone screenshots do not, and screenshots need a real device or the emulator step. |
+| **Select testers** | Louis | The last track task. Needs real Google accounts. Nothing to email anyone until this and the rollout are done, because the opt-in link does not exist before then. |
+
+### What an agent is blocked on here, tried rather than assumed
+
+Browser file uploads are denied outright by the classifier, so the keystore
+and the `.aab` both had to go in by hand. Play Console's own deep URL for the
+closed-testing track returns **"An unexpected error has occurred (43DDCBDC)"**;
+going in through Test and release > Closed testing > Manage track works. And
+screenshots of the Console time out often enough that the accessibility tree
+is the reliable way to read it.
+
 ## The testers
 
 Twelve real people with Google accounts, opted in and staying opted in for
