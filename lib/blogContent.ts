@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-candlemas",
+    title: "What Is Candlemas? The Christian Feast of the Presentation of Jesus",
+    description:
+      "What is Candlemas? The Christian feast on February 2 remembering Jesus presented in the temple, Simeon's prayer, and the real history behind Groundhog Day.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-candlemas",
+    publishedAt: "2026-11-02",
+    readTime: "16 min read",
+    image: "/blog-banners/what-is-candlemas.jpg",
+    groupPost: {
+      title: "What Is Candlemas? The Christian Feast of the Presentation of Jesus 📖",
+      content:
+        "Every February 2, some church bulletins mention a feast nobody explained to you.\nGroundhog Day traditions actually came out of it.\n\n📌 Candlemas remembers Jesus being presented in the temple, forty days after His birth.\n\n📖 Simeon held Him and prayed words still sung in churches every night.\n📖 Anna the prophetess, eighty four years old, recognized Him too.\n📖 The candle blessing custom only entered the feast around the eleventh century.\n\nNew article on:\n🟢 why Simeon's prayer is called the **Nunc Dimittis**\n🟢 how a German **hedgehog** legend became the American groundhog\n🟢 how Catholic, Orthodox, Anglican, and Lutheran churches each keep this day\n\nDid you know Groundhog Day's weird logic came straight out of a church custom? 🙏",
+    },
+  },
+  {
     slug: "saint-nicholas-facts-and-legends",
     title: "Who Was Saint Nicholas? Historical Facts Versus Modern Legends",
     description:

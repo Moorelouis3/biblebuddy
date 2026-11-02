@@ -73,6 +73,12 @@
         "most-important-catholic-holy-days",
         "saint-nicholas-facts-and-legends"
       ]
+    },
+    "2026-11-02": {
+      "committed": 1,
+      "slugs": [
+        "what-is-candlemas"
+      ]
     }
   },
   "articles": {
@@ -288,10 +294,11 @@
     },
     "what-is-candlemas": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-02T01:16:44.298Z"
+      "status": "committed",
+      "startedAt": "2026-11-02T01:16:44.298Z",
+      "committedAt": "2026-11-02T01:27:42.111Z"
     }
   },
   "nextTopic": "all-saints-day-vs-all-souls-day",
-  "updatedAt": "2026-11-02T01:16:44.298Z"
+  "updatedAt": "2026-11-02T01:27:42.127Z"
 }
