@@ -285,8 +285,13 @@
       "startedAt": "2026-11-01T15:17:31.929Z",
       "committedAt": "2026-11-01T15:26:45.874Z",
       "publishedAt": "2026-11-02T01:16:34.081Z"
+    },
+    "what-is-candlemas": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-02T01:16:44.298Z"
     }
   },
-  "nextTopic": "what-is-candlemas",
-  "updatedAt": "2026-11-02T01:16:34.081Z"
+  "nextTopic": "all-saints-day-vs-all-souls-day",
+  "updatedAt": "2026-11-02T01:16:44.298Z"
 }
