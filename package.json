@@ -50,7 +50,10 @@
     "campaign": "node scripts/campaign.mjs",
     "backfill-subscribers": "node scripts/backfill-subscribers.mjs",
     "verify:product-health": "tsx scripts/verify-product-health.ts",
-    "check:content-filter": "tsx scripts/check-content-filter.ts"
+    "check:content-filter": "tsx scripts/check-content-filter.ts",
+    "comments:seed": "tsx scripts/seed-comment-replies.ts",
+    "comments:backtest": "tsx scripts/backtest-comment-replies.ts",
+    "comments:verify": "tsx scripts/verify-comment-replies-no-ai.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",

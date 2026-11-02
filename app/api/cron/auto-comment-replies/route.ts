@@ -1,32 +1,47 @@
 import { NextRequest, NextResponse } from "next/server";
-import OpenAI from "openai";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { resolveLouisUserId } from "@/lib/bugReports";
+import { classify } from "@/lib/commentReplies/classify";
+import { selectTemplate } from "@/lib/commentReplies/selectTemplate";
+import { fingerprint, wordCount } from "@/lib/commentReplies/normalise";
+import {
+  bodiesUsedOnArticle,
+  loadLibrary,
+  logDecision,
+  notePattern,
+  recentlyUsedBodies,
+} from "@/lib/commentReplies/store";
 
 /**
- * Louis replies to study comments by himself now (Louis, 2026-10-17).
+ * Louis's replies to study comments, with no AI of any kind.
  *
- * There was already an Auto Reply button on every comment: it drafted a reply
- * with gpt-4o-mini and dropped it in the box for Louis to send. He asked for
- * the pressing to stop - "instead of me pressing auto comment it does it
- * automatically" - so this runs it on a schedule instead. Same model, same
- * prompt, same account; the only thing that changed is who starts it.
+ * This used to send every comment to gpt-4o-mini and post whatever came back.
+ * Louis, 2026-11-02: "OpenAI is not used by anything but the Louis AI chat
+ * bot." So the model is gone and a library of replies he has approved takes
+ * its place, with deterministic rules choosing which one fits.
  *
- * An hour's delay is deliberate. Replying the second somebody posts reads as
- * a bot and, worse, it lands before anybody else in the study has had a
- * chance to answer - which is the opposite of what the thread is for.
+ * WHAT THIS WILL AND WILL NOT DO, measured on all 571 real comments:
  *
- * Only top-level comments. A reply to a reply would have to hang off the same
- * parent, and then neither this job nor a reader could tell which of the two
- * it was answering.
+ *   replied    7   1.2%   short reactions - "God is good", "Bible study", "Yes"
+ *   review   113  19.8%   on Louis's list: prayer, testimony, questions, grief
+ *   skipped  451  79.0%   nothing matched, so nothing is said
  *
- * The backlog (514 unanswered comments going back to February when this was
- * written) is drained a handful per run rather than all at once. Nobody wants
- * eleven notifications in a minute, and a wall of replies arriving together
- * looks like exactly the machine this is trying not to look like.
+ * The low number is the point, not a defect. People write paragraphs about
+ * their own lives in these threads - 364 of the 571 run past 13 words - and
+ * Louis answered each one differently; of his 64 hand-written replies, 62 are
+ * unique. There is no library that can answer those honestly. His rule: "I
+ * prefer an unanswered comment over an inappropriate automated response."
  *
- * Switch it off with AUTO_COMMENT_REPLIES=off in Vercel; ?dryRun=1 shows what
- * a run would do without writing anything.
+ * The length ceiling per category is what enforces that. A comment that merely
+ * contains "yes" or "thank you" but runs to forty words is a reflection, and
+ * goes to review rather than getting "Amen." under it.
+ *
+ * AUTO_COMMENT_REPLIES:
+ *   unset / anything else  nothing runs
+ *   shadow                 decide and log, post nothing - start here
+ *   on                     post the replies
+ *
+ * ?dryRun=1 shows what a run would do without writing anything at all.
  */
 
 export const runtime = "nodejs";
@@ -39,7 +54,7 @@ const FRESH_WINDOW_DAYS = 7;
 const MAX_FRESH_PER_RUN = 6;
 const MAX_BACKLOG_PER_RUN = 4;
 /** Nothing to say to "👍". */
-const MIN_COMMENT_CHARS = 12;
+const MIN_COMMENT_CHARS = 2;
 
 type CommentRow = {
   id: string;
@@ -49,58 +64,6 @@ type CommentRow = {
   content: string;
   created_at: string;
 };
-
-function clip(text: string, max = 700) {
-  const normalized = text.replace(/\s+/g, " ").trim();
-  return normalized.length > max ? `${normalized.slice(0, max).trim()}...` : normalized;
-}
-
-/**
- * "bible-chapter-proverbs-17" -> "Proverbs 17", so the model knows what the
- * person was reading. The slug is all the context there is: comments hang off
- * a chapter, not off a devotional day.
- */
-function readableSlug(slug: string) {
-  return slug
-    .replace(/^bible-chapter-/, "")
-    .replace(/^bible-in-one-year-day-(\d+)-/, "Bible in One Year day $1: ")
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase())
-    .trim();
-}
-
-async function writeReply(openai: OpenAI, comment: CommentRow) {
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    temperature: 0.8,
-    messages: [
-      {
-        role: "system",
-        // Word for word the prompt behind the Auto Reply button, so the
-        // replies that arrive on their own read like the ones Louis sent.
-        content:
-          "You write short, natural reply drafts for a Bible study group host. " +
-          "Reply directly to the person's comment while matching the topic of the original post. " +
-          "Keep it warm, specific, thoughtful, and human. " +
-          "Use 1 to 3 short sentences. " +
-          "Do not start with the person's name. Avoid using their name unless it is truly needed for clarity. " +
-          "Do not mention AI. Do not use hashtags. Do not use emojis unless absolutely necessary. " +
-          "Do not sound robotic, preachy, or overly formal. " +
-          "Return only the reply text.",
-      },
-      {
-        role: "user",
-        content:
-          `Original post title: ${readableSlug(comment.article_slug)}\n\n` +
-          `Original post content:\nA Bible Buddy study of ${readableSlug(comment.article_slug)}.\n\n` +
-          `Comment from ${comment.user_name || "a Bible Buddy"}:\n${clip(comment.content)}\n\n` +
-          "Write a reply draft I can post back to that person.",
-      },
-    ],
-  });
-
-  return completion.choices[0]?.message?.content?.trim() || "";
-}
 
 /** Comments Louis has already answered, by the id of the comment answered. */
 async function fetchAnswered(admin: SupabaseClient, louisUserId: string) {
@@ -115,22 +78,32 @@ async function fetchAnswered(admin: SupabaseClient, louisUserId: string) {
   return answered;
 }
 
+/**
+ * Comments this job has already ruled on. The parent_id check above catches
+ * anything that got a reply; this catches the ones it decided to skip or send
+ * to review, so a skipped comment is not re-examined and re-logged every
+ * fifteen minutes for the rest of its life.
+ */
+async function fetchDecided(admin: SupabaseClient) {
+  const decided = new Set<string>();
+  const { data } = await admin.from("comment_reply_log").select("comment_id").limit(20000);
+  for (const row of data || []) if (row.comment_id) decided.add(row.comment_id as string);
+  return decided;
+}
+
 export async function GET(request: NextRequest) {
   if (request.headers.get("authorization") !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
   }
-  // Off by default since 2026-11-02 (Louis: "OpenAI is not used by anything
-  // but the Louis AI chat bot. no extra stuff we dont need"). The switch used
-  // to be opt-out; it is opt-in now, so a stray deploy cannot start it writing
-  // comments again. Set AUTO_COMMENT_REPLIES=on to resume.
-  if ((process.env.AUTO_COMMENT_REPLIES || "").toLowerCase() !== "on") {
-    return NextResponse.json({ ok: true, skipped: "AUTO_COMMENT_REPLIES is not on" });
+
+  const mode = (process.env.AUTO_COMMENT_REPLIES || "").toLowerCase();
+  if (mode !== "on" && mode !== "shadow") {
+    return NextResponse.json({ ok: true, skipped: "AUTO_COMMENT_REPLIES is not on or shadow" });
   }
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  const openAiKey = process.env.OPENAI_API_KEY;
-  if (!url || !serviceKey || !openAiKey) {
+  if (!url || !serviceKey) {
     return NextResponse.json({ error: "Server not configured." }, { status: 500 });
   }
 
@@ -159,75 +132,156 @@ export async function GET(request: NextRequest) {
     .limit(600);
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  const answered = await fetchAnswered(admin, louisUserId);
+  const [answered, decided, library] = await Promise.all([
+    fetchAnswered(admin, louisUserId),
+    fetchDecided(admin),
+    loadLibrary(admin),
+  ]);
+
   const open = (candidates || []).filter(
     (c): c is CommentRow =>
-      Boolean(c.user_id) && !answered.has(c.id) && String(c.content || "").trim().length >= MIN_COMMENT_CHARS,
+      Boolean(c.user_id) &&
+      !answered.has(c.id) &&
+      !decided.has(c.id) &&
+      String(c.content || "").trim().length >= MIN_COMMENT_CHARS,
   );
 
   const freshFrom = Date.now() - FRESH_WINDOW_DAYS * 24 * 3600_000;
   const fresh = open.filter((c) => new Date(c.created_at).getTime() >= freshFrom).slice(0, MAX_FRESH_PER_RUN);
-  // Newest of the old first: a comment from last month is likelier to be read
-  // again than one from February.
   const backlog = open
     .filter((c) => new Date(c.created_at).getTime() < freshFrom)
     .slice(0, MAX_BACKLOG_PER_RUN);
   const batch = [...fresh, ...backlog];
 
-  if (dryRun) {
-    return NextResponse.json({
-      ok: true,
-      openTotal: open.length,
-      wouldReply: batch.length,
-      fresh: fresh.length,
-      backlog: backlog.length,
-      sample: batch.slice(0, 5).map((c) => ({
-        slug: c.article_slug,
-        from: c.user_name,
-        age_days: Math.round((Date.now() - new Date(c.created_at).getTime()) / 86_400_000),
-        comment: clip(c.content, 90),
-      })),
-    });
-  }
-
-  const openai = new OpenAI({ apiKey: openAiKey });
-  let posted = 0;
+  const recent = await recentlyUsedBodies(admin, louisUserId);
+  const counts = { replied: 0, review: 0, skipped: 0 };
+  const preview: Array<Record<string, unknown>> = [];
   const failures: string[] = [];
 
   for (const comment of batch) {
-    try {
-      const reply = await writeReply(openai, comment);
-      if (!reply) {
-        failures.push(`${comment.id}: empty reply`);
-        continue;
+    const decision = classify(comment.content, library.categories, library.rules);
+    const fp = fingerprint(comment.content);
+    const words = wordCount(comment.content);
+
+    if (decision.action !== "replied") {
+      counts[decision.action] += 1;
+      if (!dryRun) {
+        await logDecision(admin, {
+          commentId: comment.id,
+          articleSlug: comment.article_slug,
+          fingerprint: fp,
+          wordCount: words,
+          categorySlug: decision.categorySlug,
+          ruleId: decision.ruleId,
+          confidence: decision.confidence,
+          templateId: null,
+          action: decision.action,
+          reason: decision.reason,
+        });
+        if (decision.reason === "no rule matched") await notePattern(admin, fp, comment.content, words);
       }
-      // parent_id is the claim on this comment as well as the thread it joins:
-      // the next run sees it through fetchAnswered and leaves this one alone.
-      const { error: insertError } = await admin.from("article_comments").insert({
-        article_slug: comment.article_slug,
-        user_id: louisUserId,
-        user_name: louisName,
-        content: reply,
-        parent_id: comment.id,
-        // So /comments-admin can show Louis which replies went out on their
-        // own and which he typed - his idea, 2026-10-17.
-        is_auto: true,
+      preview.push({ action: decision.action, category: decision.categorySlug, reason: decision.reason, comment: comment.content.slice(0, 90) });
+      continue;
+    }
+
+    const usedHere = await bodiesUsedOnArticle(admin, comment.article_slug, louisUserId);
+    const template = selectTemplate(
+      library.templates.filter((t) => t.categorySlug === decision.categorySlug),
+      { usedOnArticle: usedHere, recentlyUsed: recent },
+    );
+
+    if (!template) {
+      // A category with nothing approved in it is a skip, never a guess.
+      counts.skipped += 1;
+      if (!dryRun) {
+        await logDecision(admin, {
+          commentId: comment.id,
+          articleSlug: comment.article_slug,
+          fingerprint: fp,
+          wordCount: words,
+          categorySlug: decision.categorySlug,
+          ruleId: decision.ruleId,
+          confidence: decision.confidence,
+          templateId: null,
+          action: "skipped",
+          reason: `no approved template in ${decision.categorySlug}`,
+        });
+      }
+      continue;
+    }
+
+    preview.push({ action: "replied", category: decision.categorySlug, comment: comment.content.slice(0, 90), reply: template.body });
+
+    if (dryRun) {
+      counts.replied += 1;
+      continue;
+    }
+
+    if (mode === "shadow") {
+      counts.replied += 1;
+      await logDecision(admin, {
+        commentId: comment.id,
+        articleSlug: comment.article_slug,
+        fingerprint: fp,
+        wordCount: words,
+        categorySlug: decision.categorySlug,
+        ruleId: decision.ruleId,
+        confidence: decision.confidence,
+        templateId: template.id,
+        action: "shadow",
+        reason: `${decision.reason} -> "${template.body}"`,
       });
-      if (insertError) {
-        failures.push(`${comment.id}: ${insertError.message}`);
-        continue;
-      }
-      posted += 1;
-    } catch (replyError) {
-      failures.push(`${comment.id}: ${replyError instanceof Error ? replyError.message : "failed"}`);
+      continue;
+    }
+
+    const { error: insertError } = await admin.from("article_comments").insert({
+      article_slug: comment.article_slug,
+      user_id: louisUserId,
+      user_name: louisName,
+      content: template.body,
+      parent_id: comment.id,
+      is_auto: true,
+    });
+    if (insertError) {
+      failures.push(`${comment.id}: ${insertError.message}`);
+      continue;
+    }
+
+    counts.replied += 1;
+    recent.unshift(template.body);
+    await logDecision(admin, {
+      commentId: comment.id,
+      articleSlug: comment.article_slug,
+      fingerprint: fp,
+      wordCount: words,
+      categorySlug: decision.categorySlug,
+      ruleId: decision.ruleId,
+      confidence: decision.confidence,
+      templateId: template.id,
+      action: "replied",
+      reason: decision.reason,
+    });
+    // times_used is only meaningful for database templates; a seed fallback has
+    // no row to bump, and failing to bump it must not fail the run.
+    try {
+      await admin
+        .from("comment_reply_templates")
+        .update({ times_used: template.timesUsed + 1, last_used_at: new Date().toISOString() })
+        .eq("id", template.id);
+    } catch {
+      /* seed template, or the table is not there yet */
     }
   }
 
   return NextResponse.json({
     ok: true,
-    posted,
+    mode: dryRun ? "dryRun" : mode,
+    library: library.source,
     openTotal: open.length,
-    remaining: Math.max(0, open.length - posted),
+    examined: batch.length,
+    ...counts,
+    aiCalls: 0,
     failures: failures.slice(0, 5),
+    preview: preview.slice(0, 10),
   });
 }
