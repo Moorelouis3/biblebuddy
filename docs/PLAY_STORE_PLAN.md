@@ -532,6 +532,36 @@ an agreement entered in his name.
 **A quirk worth knowing:** the questionnaire's Next button stays greyed out
 even once every question is answered. Pressing **Save** first enables it.
 
+### The advertising ID block, and why the first bundle has to be rebuilt
+
+Submission was stopped by one pre-review issue: **"Incomplete advertising ID
+declaration"**. Opening it showed the thing our own source could not:
+
+> Your manifest file includes the com.google.android.gms.permission.AD_ID
+> permission. This means your app declares the use of advertising ID. Answer
+> 'yes' or remove this permission from your manifest.
+
+Nothing in `android/app/src/main/AndroidManifest.xml` asks for it and there is
+no ads SDK in the gradle files. It arrives through the merger:
+`@capacitor/push-notifications` pulls Firebase Messaging, which pulls
+`play-services-ads-identifier`, which declares AD_ID in its own library
+manifest.
+
+**Answering "yes" was not an option.** The app shows no ads, never reads the
+advertising ID, and its own store listing says so - and the ads declaration
+already filed says No. So the permission gets removed instead, which is the
+other half of Google's own sentence.
+
+`scripts/android-release-config.mjs` now does it on every build:
+`tools:node="remove"` on the AD_ID permission, plus the `xmlns:tools`
+namespace that the generated manifest does not carry. Verified against the
+real generated manifest, not just read.
+
+**This means the bundle already on the track is stale.** The fix lives in the
+build, so the next step is: run `android-release` again (the first run on
+`linux_x2`), download the new `.aab`, upload it to the Alpha track, answer the
+advertising ID question No, and submit. Everything else is already in place.
+
 ### Data safety: DONE 2026-11-02, and the file that rebuilds it
 
 Saved, and the Console reads "Change saved. Send for review in Publishing

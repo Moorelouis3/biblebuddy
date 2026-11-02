@@ -25,12 +25,73 @@
  * 2026-10-17: "so I know it's version 1 build 9") - 1.09 is version 1, build
  * 9, padded to two digits so the numbers keep rising past 1.99 into 1.100.
  *
+ * It also strips the advertising-ID permission - see stripAdIdPermission.
+ *
  *   node scripts/android-release-config.mjs
  */
 
 import fs from "node:fs";
 
 const GRADLE = "android/app/build.gradle";
+const MANIFEST = "android/app/src/main/AndroidManifest.xml";
+
+/**
+ * Remove com.google.android.gms.permission.AD_ID from the merged manifest.
+ *
+ * Bible Buddy shows no ads and never reads the advertising ID, but
+ * @capacitor/push-notifications pulls in Firebase Messaging, which pulls in
+ * play-services-ads-identifier, which declares AD_ID in its own library
+ * manifest. The merger folds it into ours without anyone asking.
+ *
+ * Play notices, and it blocked the first submission over it. The Advertising
+ * ID page says in as many words: "Your manifest file includes the
+ * com.google.android.gms.permission.AD_ID permission. This means your app
+ * declares the use of advertising ID. Answer 'yes' or remove this permission
+ * from your manifest." Answering yes would be false, and would put "may use
+ * advertising ID" on the listing of an app whose own description says there
+ * are no ads. So remove it.
+ *
+ * tools:node="remove" is the merger's own opt-out. It needs the tools
+ * namespace on <manifest>, which the generated file does not carry.
+ */
+function stripAdIdPermission() {
+  if (!fs.existsSync(MANIFEST)) {
+    console.error(`No ${MANIFEST} - run 'npx cap add android' first.`);
+    process.exit(1);
+  }
+
+  let manifest = fs.readFileSync(MANIFEST, "utf8");
+
+  if (manifest.includes("com.google.android.gms.permission.AD_ID")) {
+    console.log("AD_ID removal already present; leaving it alone.");
+    return;
+  }
+
+  if (!manifest.includes("xmlns:tools=")) {
+    const before = manifest;
+    manifest = manifest.replace(
+      "<manifest ",
+      '<manifest xmlns:tools="http://schemas.android.com/tools" ',
+    );
+    if (manifest === before) {
+      console.error("Could not add the tools namespace to the manifest.");
+      process.exit(1);
+    }
+  }
+
+  if (!manifest.includes("</manifest>")) {
+    console.error("Could not find </manifest> to insert the AD_ID removal before.");
+    process.exit(1);
+  }
+  const removal = [
+    '    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove" />',
+    "</manifest>",
+  ].join("\n");
+  manifest = manifest.replace("</manifest>", removal);
+
+  fs.writeFileSync(MANIFEST, manifest);
+  console.log("AD_ID permission marked for removal from the merged manifest");
+}
 
 const major = process.env.APP_MAJOR_VERSION || "1";
 // Codemagic's own counter, which only ever goes up.
@@ -91,6 +152,8 @@ if (signingWanted) {
 }
 
 fs.writeFileSync(GRADLE, gradle);
+
+stripAdIdPermission();
 
 console.log(`versionCode ${versionCode}, versionName ${versionName}`);
 console.log(`release signing: ${signingWanted ? "wired to the Codemagic keystore" : "not configured"}`);
