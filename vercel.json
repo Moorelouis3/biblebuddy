@@ -6,7 +6,7 @@
     },
     {
       "path": "/api/push/process",
-      "schedule": "* * * * *"
+      "schedule": "*/5 * * * *"
     },
     {
       "path": "/api/cron/publish-group-feed-carousel",

@@ -197,5 +197,3 @@ sends. Write for all of them, not one name, when `occurrences` is above 1.
 
 Never promise a date for `needs_louis` beyond "this week". Never mention
 AI, agents or automation.
-
-<!-- vercel skip-ci probe 2026-11-02 -->
