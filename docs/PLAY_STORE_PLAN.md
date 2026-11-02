@@ -469,6 +469,37 @@ gate is passed.
 | Ads | **No** | verified, not assumed: `components/AdSenseScript.tsx` returns early on `isNativeApp()`, and `appendUserAgent: "BibleBuddyApp"` is set at the top level of `capacitor.config.ts` so it covers Android as well as iOS. `isNativeApp()` also checks `Capacitor.isNativePlatform()`, so there are two independent signals. If that user-agent marker ever stops being appended, the app would start showing AdSense and this declaration would become false - see [[app-store-wrapper]]. |
 | Release notes | written | en-US only |
 
+### Also done, 2026-11-02 afternoon
+
+| Item | What went in |
+|---|---|
+| App category | Books & Reference |
+| Contact details | `support@mybiblebuddy.net`, `https://www.mybiblebuddy.net`. Phone left blank on purpose - it is optional and it is personal data on a public listing. |
+| **Store listing** | Saved, and the Console now reads **"Ready to send for review"**. Short description, full description, the 512 icon, the new feature graphic and three phone screenshots. |
+
+The listing copy deliberately does not mention the books ([[never-bring-up-the-book]]),
+and it says there are no ads in the app, which has to stay true for the ads
+declaration to stay true.
+
+Screenshots are real captures of the live site at a 540x960 phone viewport -
+the reader on Genesis 1, Study Mode on with the Insight Cards under each
+verse, and the Bible in One Year page. The reader is public, so none of them
+needed a signed-in session or show anyone's account. All three are 1.78:1,
+inside Play's "long side at most twice the short side" rule.
+
+### The dependency that stops the rest
+
+**Sign in details gates Target audience and Content rating.** Opening Target
+audience says so in as many words: "You must complete the Sign in details
+section before starting the Target audience and content questionnaire."
+
+And Sign in details cannot be completed by an agent. The app requires an
+account (guests are off, [[guests-turned-off]]), so the honest answer is that
+access is restricted, and Google then demands working credentials - its own
+wording is "We can't create new accounts... to review your app". Creating an
+account and typing a password into a web form are both off-limits to an
+agent, so this one item is Louis's, and three others sit behind it.
+
 ### Still open, and who each one belongs to
 
 | Item | Whose | Note |
