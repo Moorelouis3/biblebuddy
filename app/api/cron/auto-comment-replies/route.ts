@@ -49,10 +49,23 @@ export const dynamic = "force-dynamic";
 
 /** How long a comment is left for the humans before Louis answers it. */
 const MIN_AGE_MINUTES = 60;
-/** Newer than this counts as "fresh" and is answered first. */
-const FRESH_WINDOW_DAYS = 7;
-const MAX_FRESH_PER_RUN = 6;
-const MAX_BACKLOG_PER_RUN = 4;
+
+/**
+ * Newest first, then back through the history, and as many as it can manage
+ * in one go (Louis, 2026-11-02: "we own the app... we dont need to trickle
+ * what would block us?").
+ *
+ * He is right, and the old per-run caps were me being careful about nothing.
+ * There is no model, so no cost per comment; these are our own tables, so no
+ * platform rate limit; and the backtest says only about 1% of comments get a
+ * reply at all - 6 of 571. "All of them at once" is six replies. The caution
+ * was protecting against a flood that cannot happen.
+ *
+ * The one limit left is the query's own 600-row page, which is well past the
+ * whole history.
+ */
+const EXAMINE_PER_RUN = 600;
+
 /** Nothing to say to "👍". */
 const MIN_COMMENT_CHARS = 2;
 
@@ -146,12 +159,10 @@ export async function GET(request: NextRequest) {
       String(c.content || "").trim().length >= MIN_COMMENT_CHARS,
   );
 
-  const freshFrom = Date.now() - FRESH_WINDOW_DAYS * 24 * 3600_000;
-  const fresh = open.filter((c) => new Date(c.created_at).getTime() >= freshFrom).slice(0, MAX_FRESH_PER_RUN);
-  const backlog = open
-    .filter((c) => new Date(c.created_at).getTime() < freshFrom)
-    .slice(0, MAX_BACKLOG_PER_RUN);
-  const batch = [...fresh, ...backlog];
+  // `open` is already newest first - the query orders by created_at desc and
+  // the filters below it preserve that - so taking the head of it is "start
+  // with the newest and work back" without any extra sorting.
+  const batch = open.slice(0, EXAMINE_PER_RUN);
 
   const recent = await recentlyUsedBodies(admin, louisUserId);
   const counts = { replied: 0, review: 0, skipped: 0 };
