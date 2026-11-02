@@ -268,6 +268,22 @@ lock-screen audio controls and a daily reading reminder.
 
 ---
 
+## The demo account
+
+**It is `joinhopenation2024@gmail.com`** - the same account Apple review used,
+confirmed 2026-11-02 against the live database. Created 2026-01-02, last
+signed in 2026-10-27, and not empty: display name "Mike James", 7 chapters
+read, 985 points, a streak of 1. That is the thing that matters, because a
+reviewer who opens an empty app is the reason Guideline 4.2 gets invoked.
+
+An earlier draft of this file said the account was
+`appreview@mybiblebuddy.net` and did not exist. Both were wrong.
+
+**The password is deliberately not in this repository**, which is public
+([[repo-is-public]]). Google Play needs the same email and password in
+App content > Sign in details, and an agent cannot type it there - see
+docs/PLAY_STORE_PLAN.md.
+
 ## App Review notes
 
 Paste into the App Review Information box. **Create the demo account first
@@ -276,8 +292,9 @@ to invoke Guideline 4.2.
 
 ```
 DEMO ACCOUNT
-Email:    appreview@mybiblebuddy.net
-Password: [set one and put it here]
+Email:    joinhopenation2024@gmail.com
+Password: [not written here - this repo is public. It is in Louis's
+          password manager and in the App Store Connect submission.]
 
 This account has a reading plan in progress, saved notes and study group
 membership, so the app is not empty on first open.
