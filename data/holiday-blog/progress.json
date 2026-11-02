@@ -75,10 +75,11 @@
       ]
     },
     "2026-11-02": {
-      "committed": 2,
+      "committed": 3,
       "slugs": [
         "what-is-candlemas",
-        "all-saints-day-vs-all-souls-day"
+        "all-saints-day-vs-all-souls-day",
+        "what-is-an-advent-wreath"
       ]
     }
   },
@@ -309,10 +310,11 @@
     },
     "what-is-an-advent-wreath": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-02T09:21:48.503Z"
+      "status": "committed",
+      "startedAt": "2026-11-02T09:21:48.503Z",
+      "committedAt": "2026-11-02T09:32:11.442Z"
     }
   },
   "nextTopic": "who-were-the-wise-men",
-  "updatedAt": "2026-11-02T09:21:48.503Z"
+  "updatedAt": "2026-11-02T09:32:11.457Z"
 }

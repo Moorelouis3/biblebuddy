@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-an-advent-wreath",
+    title: "What Is an Advent Wreath? The Meaning of the Four Candles",
+    description:
+      "What is an Advent wreath? The meaning of the circle, the evergreens, and the four candles, three purple and one rose, lit each Sunday before Christmas.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-an-advent-wreath",
+    publishedAt: "2026-11-02",
+    readTime: "11 min read",
+    image: "/blog-banners/what-is-an-advent-wreath.jpg",
+    groupPost: {
+      title: "What Is an Advent Wreath? The Meaning of the Four Candles 📖",
+      content:
+        "A lot of churches light one every December. Almost nobody explains why.\nFour candles, three purple and one pink, one lit per week.\n\n📌 The circle and the evergreens were chosen on purpose, long before anyone picked a candle color.\n\n📖 The growing light each week pictures a world waiting in darkness for Christ.\n📖 A Lutheran pastor is behind the version most homes use today, not a pope.\n📖 No single church agrees on which candle gets which name.\n\nNew article on:\n🟢 what the **circle and evergreens** actually symbolize\n🟢 why three candles are **purple** and one is **rose**\n🟢 the real Scripture behind **hope, peace, joy,** and love\n\nDid your family ever agree on which candle means which thing? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-1-explained",
     title: "Deuteronomy 1 Explained: Why Forty Years Replaced Eleven Days",
     description:
