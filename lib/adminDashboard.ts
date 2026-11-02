@@ -929,7 +929,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   // master_actions (signed in). Neither alone is the total.
   const appActionRows = await fetchAll<ActionRow>(admin, "master_actions", "user_id, action_type, created_at", (q) =>
     q
-      .in("action_type", ["native_app_session", "install_banner_app_store_clicked"])
+      .in("action_type", ["native_app_session", "install_banner_app_store_clicked", "appstore_popup_clicked"])
       .gte("created_at", previous.start.toISOString())
       .lt("created_at", current.end.toISOString())
       .neq("user_id", OWNER_USER_ID),
@@ -951,6 +951,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     buddies: "Landing page - meet your buddy",
     bottom_cta: "Landing page - bottom",
     home_banner: "In-app banner",
+    login_popup: "iPhone popup on sign-in",
   };
 
   const tapsIn = (r: Range) => {
@@ -963,8 +964,13 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       total += 1;
     }
     for (const a of appActionRows) {
-      if (a.action_type !== "install_banner_app_store_clicked" || !within(a.created_at, r)) continue;
-      byPlacement.set("home_banner", (byPlacement.get("home_banner") || 0) + 1);
+      if (!within(a.created_at, r)) continue;
+      const key =
+        a.action_type === "install_banner_app_store_clicked" ? "home_banner"
+        : a.action_type === "appstore_popup_clicked" ? "login_popup"
+        : null;
+      if (!key) continue;
+      byPlacement.set(key, (byPlacement.get(key) || 0) + 1);
       total += 1;
     }
     return { total, byPlacement };

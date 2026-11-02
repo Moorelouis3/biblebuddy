@@ -68,7 +68,7 @@ const INSTALL_EVENT_LOGGED_KEY = "bb-install-event-logged";
  * puts the old behaviour back rather than leaving a dead link on the home
  * screen of every iPhone visitor.
  */
-function shouldOfferAppStore(): boolean {
+export function shouldOfferAppStore(): boolean {
   if (typeof window === "undefined") return false;
   if (isNativeApp()) return false;
   if (!APP_STORE_ID) return false;
@@ -79,6 +79,32 @@ const APP_STORE_COPY = {
   headline: "Get Bible Buddy on the App Store",
   subline: "The real iPhone app. Free, and your streak comes with you.",
 };
+
+/**
+ * Send someone to the App Store and record which surface sent them.
+ *
+ * Shared rather than duplicated because there are two places that ask: this
+ * banner, and the popup after a reading is finished (AppShell). They are
+ * different moments and want different copy, but the destination, the event
+ * and the "hide it for this visit" bookkeeping are identical - and when they
+ * were not shared, only one of them got updated when the app went live.
+ */
+export function openAppStore(placement: string) {
+  if (!APP_STORE_ID) return;
+  void logInstallBannerEvent("install_banner_app_store_clicked", "App Store tapped", {
+    store: "ios",
+    placement,
+  });
+  // iOS cannot tell us whether they installed, so never hide it forever on a
+  // tap - just for this visit.
+  try {
+    window.sessionStorage.setItem(SESSION_HIDE_KEY, "1");
+  } catch {
+    // ignore
+  }
+  void writeInstallPromptColumns({ install_prompt_last_shown: new Date().toISOString() });
+  window.location.href = `https://apps.apple.com/app/id${APP_STORE_ID}`;
+}
 
 /** Analytics event for the admin App Installs dashboard. Fire-and-forget. */
 async function logInstallBannerEvent(
@@ -234,23 +260,19 @@ export default function HomeInstallBanner() {
 
   const handleAdd = async () => {
     const env = getInstallEnvironment();
-    const offeringAppStore = shouldOfferAppStore();
-    void logInstallBannerEvent(
-      offeringAppStore ? "install_banner_app_store_clicked" : "install_banner_add_clicked",
-      offeringAppStore ? "Install banner App Store tapped" : "Install banner Add tapped",
-      {
+    // The App Store tap is logged inside openAppStore, so only the
+    // home-screen-install path needs its own event here.
+    if (!shouldOfferAppStore()) {
+      void logInstallBannerEvent("install_banner_add_clicked", "Install banner Add tapped", {
         context: env.isInAppBrowser
           ? "in_app_blocked"
-          : offeringAppStore
-            ? "app_store"
-            : env.isIOS
-              ? "ios_sheet"
-              : promptEvent
-                ? "native_prompt"
-                : "no_prompt_available",
-        ...(offeringAppStore ? { store: "ios", placement: "home_banner" } : {}),
-      },
-    );
+          : env.isIOS
+            ? "ios_sheet"
+            : promptEvent
+              ? "native_prompt"
+              : "no_prompt_available",
+      });
+    }
 
     if (env.isInAppBrowser) {
       setBlockedMessage({
@@ -262,17 +284,8 @@ export default function HomeInstallBanner() {
 
     if (env.isIOS) {
       if (shouldOfferAppStore()) {
-        // Hide for this visit only. iOS cannot tell us whether they actually
-        // installed, and the banner going quiet forever on a tap would lose
-        // the people who tapped, looked, and came back later.
-        try {
-          window.sessionStorage.setItem(SESSION_HIDE_KEY, "1");
-        } catch {
-          // ignore
-        }
         setVisible(false);
-        void writeInstallPromptColumns({ install_prompt_last_shown: new Date().toISOString() });
-        window.location.href = `https://apps.apple.com/app/id${APP_STORE_ID}`;
+        openAppStore("home_banner");
         return;
       }
       setSheetOpen(true);

@@ -11,11 +11,18 @@ import { syncNotesCount, shouldSyncNotesCount } from "../lib/syncNotesCount";
 // at bundle load, before React hydrates, so the early Chrome event isn't missed.
 import "../hooks/useInstallPrompt";
 import { clearCapturedInstallPrompt, useInstallPrompt } from "../hooks/useInstallPrompt";
-import { recordAppInstalled, recordInstallAskShown, shouldShowInstallBanner } from "./HomeInstallBanner";
+import {
+  openAppStore,
+  recordAppInstalled,
+  recordInstallAskShown,
+  shouldOfferAppStore,
+  shouldShowInstallBanner,
+} from "./HomeInstallBanner";
 import { getInstallEnvironment } from "../lib/installEnvironment";
 import InstallIOSSheet from "./InstallIOSSheet";
 import { isNativeApp } from "../lib/nativeApp";
 import { recordNativeAppUse } from "../lib/nativeUsage";
+import AppStorePopup from "./AppStorePopup";
 import BibleLockWatcher from "./BibleLockWatcher";
 import BibleLockLiftedToast from "./BibleLockLiftedToast";
 import BibleLockBanner from "./home/BibleLockBanner";
@@ -2918,6 +2925,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
+      {/* APP STORE POPUP - signed in, on an iPhone, not already in the app.
+          Held back while a full-name prompt or the email gate is up, so two
+          dialogs never stack on top of each other. */}
+      <AppStorePopup
+        enabled={Boolean(isLoggedIn && userId && !showFullNameModal && !showEmailConfirmationGate)}
+      />
+
       {/* FEEDBACK MODAL */}
       {isLoggedIn && userId && !showFullNameModal && !showEmailConfirmationGate && (
         <FeedbackModal
@@ -3902,7 +3916,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             </h2>
             <p className="mt-2 text-sm font-semibold text-gray-600">
               {completionInstallBlocked ||
-                "Put Bible Buddy on your phone so tomorrow is one tap away - no searching, no typing, just your icon."}
+                (shouldOfferAppStore()
+                  ? "Get the real iPhone app so tomorrow is one tap away - free, and your streak comes with you."
+                  : "Put Bible Buddy on your phone so tomorrow is one tap away - no searching, no typing, just your icon.")}
             </p>
             {!completionInstallBlocked ? (
               <button
@@ -3917,6 +3933,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   }
                   if (env.isIOS) {
                     setCompletionInstallDay(null);
+                    // The real app beats a home-screen bookmark, so once the
+                    // listing exists this is where an iPhone goes. The sheet
+                    // stays for when it does not.
+                    if (shouldOfferAppStore()) {
+                      openAppStore("completion_popup");
+                      return;
+                    }
                     setCompletionInstallSheetOpen(true);
                     return;
                   }
@@ -3939,7 +3962,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 className="mt-4 w-full rounded-2xl px-5 py-3 text-sm font-black transition hover:opacity-90"
                 style={{ backgroundColor: "var(--bb-button, #2f7fe8)", color: "var(--bb-button-text, #ffffff)" }}
               >
-                Add to Home Screen
+                {shouldOfferAppStore() ? "Get it on the App Store" : "Add to Home Screen"}
               </button>
             ) : null}
             <button
