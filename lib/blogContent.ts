@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "numbers-35-explained",
+    title: "Numbers 35 Explained: Cities of Refuge and the Law of Blood Guilt",
+    description:
+      "Numbers 35 explained verse by verse: the Levites' cities, the six cities of refuge, the line between murder and manslaughter, and why blood guilt could not be bought off.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/numbers-35-explained",
+    publishedAt: "2026-11-02",
+    readTime: "13 min read",
+    image: "/blog-banners/numbers-35-explained.jpg",
+    groupPost: {
+      title: "Numbers 35 Explained 📖",
+      content:
+        "Six cities get a job before anyone needs them.\nNobody has killed anyone yet.\n\n📌 Mercy and justice both get built into the map early.\n\n📖 Forty eight cities for the Levites, six doing double duty as refuge.\n📖 One witness could never convict anyone of murder.\n📖 No amount of money could buy off a killing.\n\nNew article on:\n🟢 why leaving a **city of refuge** too soon could get you killed\n🟢 what actually separates a **murderer** from an honest accident\n🟢 why the **stranger** living among Israel got the same protection\n\nWhat line have you been quietly testing how far past you can go? 🙏",
+    },
+  },
+  {
     slug: "what-is-candlemas",
     title: "What Is Candlemas? The Christian Feast of the Presentation of Jesus",
     description:
