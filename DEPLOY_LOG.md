@@ -94,3 +94,4 @@
 2026-11-02T08:12:26Z | 34 commits | Deuteronomy 1 Explained chapter library entry, Numbers 35-36 Explained chapter library entries, two Christian Holidays articles (What Is Candlemas?, All Saints' Day vs. All Souls' Day), the landing page switched to App Store download as the primary call to action, Play Store app record created, iOS app-use measurement/real-app offer for iPhone visitors, a Vercel cost cron slowdown, and routine Bible Note Writer no-op confirmations
 2026-11-02T12:25:39.908Z | 16 commits | App Store CTAs on the landing page, the iPhone download prompt, native-app usage tracking, the Vercel build-cost fixes and the Play Store keystore work
 2026-11-02T12:53:10.752Z | 3 commits | The App tab on admin analytics, plus Play Store bundle progress
+2026-11-02T13:09:26.744Z | iPhone sign-in popup for the App Store, so Louis can test it on his phone
