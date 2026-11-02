@@ -1774,9 +1774,10 @@ function LandingStoreCtas({
       ) : null}
 
       {/* Still the original signup flow - same component, same destination,
-          only the label changed. Signed in goes to the app, everyone else
-          to /signup. The white fill is kept on the blue closing section too,
-          where an outline alone would disappear into the background. */}
+          only the label changed. Everyone goes to /signup, which forwards
+          anyone already signed in on to the dashboard. The white fill is
+          kept on the blue closing section too, where an outline alone would
+          disappear into the background. */}
       <StartStudyingButton
         clickedFrom={placement}
         onTrack={onStartJourney}

@@ -1,22 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
 
 /**
- * Landing page primary CTA.
+ * Landing page primary CTA - the "Continue on Web Version" button at all
+ * three call-to-action points.
  *
  * Click -> sign up -> the app. There is nothing in between any more (Louis,
  * 2026-10-18): no questionnaire, no chooser, no first-login modal. Name and
  * profile picture are asked for later, once, after the account finishes its
  * first real thing - see DisplayNamePromptGate.
  *
- * This used to call ensureGuestSession() and send people to /start. Since guest
- * accounts were switched off on 6 October that call returns "disabled" without
- * ever checking for a session, so somebody who was already signed in was told
- * they were not and pushed to /signup. Checking the session directly is both
- * simpler and correct: signed in goes to the app, everyone else signs up.
+ * It is a plain <a>, not a <button> with router.push, and that is the whole
+ * point (Louis, 2026-11-02, after the button did nothing on the live site):
+ * the landing page throws an uncaught hydration error, which leaves Next's
+ * client router unable to finish a navigation - the /signup RSC request goes
+ * out and is aborted, and the visitor just sits on the landing page. A real
+ * link is a browser navigation. Nothing in our JavaScript can swallow it,
+ * so the front door cannot be closed again by anything that breaks on the
+ * page around it. Not next/link either, for the same reason.
+ *
+ * There is also no session check here any more. It used to ask Supabase
+ * whether you were signed in so it could send you to /dashboard instead,
+ * which meant an await standing between the click and the navigation.
+ * /signup already forwards anyone with a session on to the dashboard, so
+ * the check bought nothing and cost everything.
  */
 export default function StartStudyingButton({
   clickedFrom,
@@ -30,32 +38,24 @@ export default function StartStudyingButton({
   className?: string;
   children?: React.ReactNode;
 }) {
-  const router = useRouter();
   const [starting, setStarting] = useState(false);
 
-  async function handleClick() {
-    if (starting) return;
+  // Fires the analytics event and shows feedback while the page loads, but
+  // never preventDefault() and never awaits: the browser is already on its
+  // way to /signup, and the event is sent with keepalive so it survives the
+  // page unload. If anything in here throws, the link still works.
+  function handleClick() {
     setStarting(true);
-    onTrack?.(clickedFrom);
-
     try {
-      const { data } = await supabase.auth.getSession();
-      if (data.session) {
-        window.location.href = "/dashboard";
-        return;
-      }
-      router.push("/signup");
+      onTrack?.(clickedFrom);
     } catch (err) {
-      console.error("[LANDING] Could not start:", err);
-      router.push("/signup");
-    } finally {
-      setStarting(false);
+      console.error("[LANDING] Could not track the start click:", err);
     }
   }
 
   return (
-    <button type="button" onClick={handleClick} disabled={starting} className={className}>
+    <a href="/signup" onClick={handleClick} className={className}>
       {starting ? "Starting..." : children}
-    </button>
+    </a>
   );
 }
