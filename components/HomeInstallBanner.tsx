@@ -6,6 +6,7 @@ import InstallIOSSheet from "./InstallIOSSheet";
 import { supabase } from "../lib/supabaseClient";
 import { getInstallEnvironment, getInstallPlatform, isStandalone } from "../lib/installEnvironment";
 import { isNativeApp } from "../lib/nativeApp";
+import { APP_STORE_ID } from "../lib/appReviewPrompt";
 import {
   INSTALL_PROMPT_STORAGE_KEY,
   clearCapturedInstallPrompt,
@@ -55,13 +56,38 @@ export function shouldShowInstallBanner(): boolean {
 
 const INSTALL_EVENT_LOGGED_KEY = "bb-install-event-logged";
 
+/**
+ * On an iPhone we now have something better than "Add to Home Screen": the
+ * real app (live 2026-11-01). A home-screen shortcut is a bookmark - no push
+ * notifications worth the name, no Screen Time integration, and it drops out
+ * the moment Safari evicts its storage. So when the listing exists, the iOS
+ * branch of this banner offers the App Store instead of the manual-steps
+ * sheet, and the sheet stays only as the fallback for when it does not.
+ *
+ * Gated on APP_STORE_ID rather than hardcoded, so clearing that one constant
+ * puts the old behaviour back rather than leaving a dead link on the home
+ * screen of every iPhone visitor.
+ */
+function shouldOfferAppStore(): boolean {
+  if (typeof window === "undefined") return false;
+  if (isNativeApp()) return false;
+  if (!APP_STORE_ID) return false;
+  return getInstallEnvironment().isIOS;
+}
+
+const APP_STORE_COPY = {
+  headline: "Get Bible Buddy on the App Store",
+  subline: "The real iPhone app. Free, and your streak comes with you.",
+};
+
 /** Analytics event for the admin App Installs dashboard. Fire-and-forget. */
 async function logInstallBannerEvent(
   actionType:
     | "install_banner_add_clicked"
     | "install_banner_installed"
     | "install_banner_never_clicked"
-    | "install_banner_ios_sheet_closed",
+    | "install_banner_ios_sheet_closed"
+    | "install_banner_app_store_clicked",
   actionLabel: string,
   metadata: Record<string, unknown> = {},
 ) {
@@ -195,6 +221,8 @@ export default function HomeInstallBanner() {
 
   if (!visible) return null;
 
+  const appStoreOffer = shouldOfferAppStore();
+
   const markInstalled = () => {
     writeLocalInstallState("installed");
     setVisible(false);
@@ -206,9 +234,23 @@ export default function HomeInstallBanner() {
 
   const handleAdd = async () => {
     const env = getInstallEnvironment();
-    void logInstallBannerEvent("install_banner_add_clicked", "Install banner Add tapped", {
-      context: env.isInAppBrowser ? "in_app_blocked" : env.isIOS ? "ios_sheet" : promptEvent ? "native_prompt" : "no_prompt_available",
-    });
+    const offeringAppStore = shouldOfferAppStore();
+    void logInstallBannerEvent(
+      offeringAppStore ? "install_banner_app_store_clicked" : "install_banner_add_clicked",
+      offeringAppStore ? "Install banner App Store tapped" : "Install banner Add tapped",
+      {
+        context: env.isInAppBrowser
+          ? "in_app_blocked"
+          : offeringAppStore
+            ? "app_store"
+            : env.isIOS
+              ? "ios_sheet"
+              : promptEvent
+                ? "native_prompt"
+                : "no_prompt_available",
+        ...(offeringAppStore ? { store: "ios", placement: "home_banner" } : {}),
+      },
+    );
 
     if (env.isInAppBrowser) {
       setBlockedMessage({
@@ -219,6 +261,20 @@ export default function HomeInstallBanner() {
     }
 
     if (env.isIOS) {
+      if (shouldOfferAppStore()) {
+        // Hide for this visit only. iOS cannot tell us whether they actually
+        // installed, and the banner going quiet forever on a tap would lose
+        // the people who tapped, looked, and came back later.
+        try {
+          window.sessionStorage.setItem(SESSION_HIDE_KEY, "1");
+        } catch {
+          // ignore
+        }
+        setVisible(false);
+        void writeInstallPromptColumns({ install_prompt_last_shown: new Date().toISOString() });
+        window.location.href = `https://apps.apple.com/app/id${APP_STORE_ID}`;
+        return;
+      }
       setSheetOpen(true);
       return;
     }
@@ -279,9 +335,10 @@ export default function HomeInstallBanner() {
       <InstallBanner
         onAdd={blockedMessage ? undefined : handleAdd}
         onDontShowAgain={handleDontShowAgain}
-        headline={blockedMessage?.headline}
-        subline={blockedMessage?.subline}
+        headline={blockedMessage?.headline ?? (appStoreOffer ? APP_STORE_COPY.headline : undefined)}
+        subline={blockedMessage?.subline ?? (appStoreOffer ? APP_STORE_COPY.subline : undefined)}
         showAddLink={!blockedMessage}
+        addLabel={appStoreOffer ? "Get" : "Add"}
       />
       <InstallIOSSheet isOpen={sheetOpen} onClose={handleSheetClose} />
     </>

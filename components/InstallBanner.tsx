@@ -14,6 +14,8 @@ type InstallBannerProps = {
   subline?: string;
   /** Hide the Add link when tapping it can't do anything (in-app browsers). */
   showAddLink?: boolean;
+  /** "Add" for a home-screen install, "Get" when it opens the App Store. */
+  addLabel?: string;
 };
 
 export default function InstallBanner({
@@ -22,6 +24,7 @@ export default function InstallBanner({
   headline = "Add Bible Buddy to your home screen",
   subline = "Opens like an app. Keeps your streak in reach.",
   showAddLink = true,
+  addLabel = "Add",
 }: InstallBannerProps) {
   // Never shown inside the App Store / Play Store app.
   if (isNativeApp()) return null;
@@ -67,7 +70,7 @@ export default function InstallBanner({
               onClick={onAdd}
               className="bb-install-pulse -ml-1.5 rounded-lg px-1.5 py-0.5 text-sm font-extrabold text-[var(--bb-accent,#2f7fe8)]"
             >
-              Add
+              {addLabel}
             </button>
           ) : null}
           <button

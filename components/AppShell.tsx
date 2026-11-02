@@ -15,6 +15,7 @@ import { recordAppInstalled, recordInstallAskShown, shouldShowInstallBanner } fr
 import { getInstallEnvironment } from "../lib/installEnvironment";
 import InstallIOSSheet from "./InstallIOSSheet";
 import { isNativeApp } from "../lib/nativeApp";
+import { recordNativeAppUse } from "../lib/nativeUsage";
 import BibleLockWatcher from "./BibleLockWatcher";
 import BibleLockLiftedToast from "./BibleLockLiftedToast";
 import BibleLockBanner from "./home/BibleLockBanner";
@@ -2264,6 +2265,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   function runCriticalSessionBoot(session: Session) {
     setUserId(session.user.id);
+    // One row a day per account, native app only, so retention can be split
+    // by app vs browser later. No-op on the web. See lib/nativeUsage.ts.
+    void recordNativeAppUse(session.user.id);
     setIsAnonymousGuest(Boolean((session.user as any).is_anonymous || !session.user.email || session.user.identities?.length === 0));
     const meta: any = session.user.user_metadata || {};
     const extractedUsername =
