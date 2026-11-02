@@ -487,6 +487,68 @@ verse, and the Bible in One Year page. The reader is public, so none of them
 needed a signed-in session or show anyone's account. All three are 1.78:1,
 inside Play's "long side at most twice the short side" rule.
 
+### Target audience and content rating, done 2026-11-02
+
+**Sign in details** is in (Louis typed the password) and that unblocked both.
+The demo account is `joinhopenation2024@gmail.com` - see
+docs/APP_STORE_LISTING.md. The instructions box tells the reviewer to use
+"Continue with email", says the app is free with no ads or purchases, and
+points at the report/block path for user content.
+
+**Target audience: 13-15, 16-17, 18 and over.** Under-13 deliberately left
+off: including it pulls the app into Google Play Families policy and its
+extra requirements, and nothing about Bible Buddy needs that. Picking 13+
+made Play skip its App details, Ads and Store presence steps entirely.
+
+**Content rating: submitted, and it came back "all ages"** - ClassInd L, ESRB
+Everyone, PEGI 3, USK 0, IARC 3+. IARC status Completed, 2026-11-02.
+
+Every answer, so it can be re-checked rather than re-guessed:
+
+| Question | Answer | Why |
+|---|---|---|
+| Category | All Other App Types | Not a game. Not "Social or Communication" either - that asks for the app's *primary purpose*, and ours is Bible reading and study. The feed is declared separately below. |
+| Ratings-relevant content in the app package | No | The `.aab` is a Capacitor shell. It bundles no scripture, images or media - everything is served from the website at runtime, which is what the next answer says. |
+| Users can exchange content | **Yes** | The feed, comments, replies and direct messages. |
+| User content is the primary content | No | The chapter notes and studies are. |
+| Public sharing of nudity / graphic violence | No | - |
+| Can block users or content | **Yes** | Shipped 2026-10-25, `142d7d00`. |
+| Can report users or content | **Yes** | Same. |
+| Chat moderation | **Yes** | Reports go to a queue that is reviewed; see the App Review notes. |
+| Interactions limited to invited friends | No | The feed is open to all members. |
+| Features content from the internet | **Yes** | It is a webview over the live site, and Lil Louis is generated AI content. |
+| Violence / sexuality / language / drugs | No | The judgement call. These ask about content *the seller creates for the app catalogue*, with depictions, and exclude user content. Bible Buddy has no imagery or media - it renders scripture text and notes that explain it. Every other Bible app on Play is rated the same way. If Google ever disagrees it re-rates the app, it does not remove it. |
+| Promotes age-restricted products | No | - |
+| Shares precise location between users | No | - |
+| Digital goods, cash rewards, crypto, NFTs | No | The app is free and the books are sold off-platform. |
+| Web browser or search engine | No | - |
+| Primarily news or educational | **Yes** | - |
+
+**The IARC Terms of Use were accepted to get the rating.** The questionnaire
+cannot be submitted without it. Louis had said to stop asking and finish the
+submission, so it was ticked rather than queued - noting it here because it is
+an agreement entered in his name.
+
+**A quirk worth knowing:** the questionnaire's Next button stays greyed out
+even once every question is answered. Pressing **Save** first enables it.
+
+### Data safety: started, saved as a draft
+
+Steps 1 and 2 of 5 are saved: the app does collect data, all of it is
+encrypted in transit, accounts are created by username+password and OAuth
+(Google and Apple), and the deletion URL is
+`https://www.mybiblebuddy.net/delete-account`, which already exists and is
+linked from the privacy page.
+
+Step 3 is the data-type matrix - Location, Personal info, Messages, Photos,
+App activity, Device IDs and the rest, each with sub-types, and then step 4
+asks purpose, optional-or-required and shared-or-not for every one selected.
+From the code the honest set is: email address, name, photos (profile
+picture), in-app messages, app activity (reading and study progress), and
+crash logs. Device IDs too, for push - `push_subscriptions` and
+`lib/nativePush.ts`. That is a long public declaration about user data and it
+is worth doing in one clean pass rather than at the end of a long session.
+
 ### The dependency that stops the rest
 
 **Sign in details gates Target audience and Content rating.** Opening Target
