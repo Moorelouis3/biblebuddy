@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-1-explained",
+    title: "Deuteronomy 1 Explained: Why Forty Years Replaced Eleven Days",
+    description:
+      "Deuteronomy 1 explained verse by verse: Moses retells Horeb, the twelve spies, Israel's rebellion at Kadeshbarnea, and why an eleven day journey took forty years.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-1-explained",
+    publishedAt: "2026-11-02",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-1-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 1 Explained 📖",
+      content:
+        "Horeb to Kadeshbarnea is eleven days on foot.\nIsrael took forty years to make the trip.\n\n📌 Moses names the gap on purpose, and lets the number preach.\n\n📖 He retells the whole story to a generation who never saw Horeb.\n📖 Ten spies saw the same land Caleb did, and still lost heart.\n📖 Moses ties his own exclusion to the people's unbelief, not just the rock.\n\nNew article on:\n🟢 why an **eleven day journey** took forty years\n🟢 how **fear rewrites** what you believe about God\n🟢 why **Caleb alone** wholly followed the LORD\n\nIs a delay in your own life really God's timing, or unbelief wearing timing as a disguise? 🙏",
+    },
+  },
+  {
     slug: "all-saints-day-vs-all-souls-day",
     title: "What Is the Difference Between All Saints' Day and All Souls' Day?",
     description:
