@@ -532,6 +532,40 @@ an agreement entered in his name.
 **A quirk worth knowing:** the questionnaire's Next button stays greyed out
 even once every question is answered. Pressing **Save** first enables it.
 
+### Data safety: the answer key
+
+Steps 1-3 are saved. Step 4 asks the same four questions for each of the ten
+data types, and 2 of 10 are done (Name, Email address). The rest are
+mechanical - here is every answer, decided from the code, so nobody has to
+work them out again:
+
+| Data type | Required or optional | Why collected |
+|---|---|---|
+| Name | optional | App functionality |
+| Email address | **required** | App functionality, Account management |
+| User IDs | **required** | App functionality, Account management |
+| Other in-app messages | optional | App functionality |
+| Photos | optional | App functionality |
+| Videos | optional | App functionality |
+| App interactions | **required** | App functionality |
+| Other user-generated content | optional | App functionality |
+| Crash logs | **required** | App functionality |
+| Device or other IDs | optional | App functionality |
+
+Every one is **Collected, not Shared** - Supabase and Bunny are processors
+that run the app, not third parties we hand data to - and every one is
+**not processed ephemerally**, because it is stored.
+
+Name is optional because the app no longer asks for it at signup
+([[onboarding-removed]]); device IDs are optional because push is opt-in.
+
+**A warning for whoever finishes this.** The per-type dialog re-renders after
+every click and **reassigns its element refs** - the same ref was "Account
+management", then "Analytics", then "Fraud prevention" within one dialog.
+Three wrong boxes got ticked and had to be undone. On a form that is a public
+declaration about user data, do not batch clicks here: one click, one
+screenshot, verify, then the next. It is slow and that is the correct speed.
+
 ### Data safety: started, saved as a draft
 
 Steps 1 and 2 of 5 are saved: the app does collect data, all of it is
