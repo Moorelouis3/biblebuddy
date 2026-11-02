@@ -15,17 +15,23 @@ import type { SupabaseClient } from "@supabase/supabase-js";
  * source below decides for itself what "aimed at us" means, and nothing that
  * fails that test is ever looked at again.
  *
- * Live surfaces, measured 2026-11-02 over the previous 30 days:
+ * Two surfaces, and only two:
  *
- *   group_posts         382 comments, 369 of them on Louis's own posts
- *   article_comments    631 comments (bible-chapter, bible-in-one-year, /bible)
- *   feed_post_comments   65 comments, only 15 on Louis's own posts
+ *   article_comments    the study guides - bible-chapter, bible-in-one-year,
+ *                       /bible pages and blog posts. 631 comments in 30 days.
+ *   feed_post_comments  the social feed. 65 comments in 30 days, of which 15
+ *                       sit under Louis's own posts.
  *
- * group_series_post_comments and series_reflections both had zero: the study
- * groups are closed, so they are deliberately not wired up.
+ * NOT the groups. `group_posts` still has traffic in it and a first pass here
+ * wired it up because of that - Louis, 2026-11-02: "we dont have a group feed
+ * any more, i been said close that shit off. we only have the social feed."
+ * The groups were closed and /study-groups redirects to the feed; rows still
+ * arriving in that table do not make it a surface we post to. Same for
+ * group_series_post_comments and series_reflections, both of which had zero
+ * comments in 30 days anyway.
  */
 
-export type SourceName = "article" | "feed" | "group";
+export type SourceName = "article" | "feed";
 
 export type Candidate = {
   source: SourceName;
@@ -172,77 +178,4 @@ const feedSource: Source = {
   },
 };
 
-// ---------------------------------------------------------------------------
-// The group feed on the dashboard
-// ---------------------------------------------------------------------------
-// group_posts is one table holding both posts and their replies, nested through
-// parent_post_id. Two conditions, and both matter:
-//
-//   * the parent must be a ROOT post (parent_post_id is null), so this is a
-//     comment on a post rather than a reply to somebody else's comment;
-//   * that root post must be Louis's.
-//
-// Together they mean we only ever answer someone who commented on Louis's own
-// post. A reply underneath another member's comment is two people talking, and
-// it is skipped before it is even read.
-const groupSource: Source = {
-  name: "group",
-  async fetchOpen(db, louisId, cutoffIso, limit) {
-    const { data: myRoots } = await db
-      .from("group_posts")
-      .select("id")
-      .eq("user_id", louisId)
-      .is("parent_post_id", null)
-      .limit(2000);
-    const roots = new Set((myRoots || []).map((p) => String(p.id)));
-    if (roots.size === 0) return [];
-
-    const { data } = await db
-      .from("group_posts")
-      .select("id, group_id, user_id, display_name, content, parent_post_id, created_at")
-      .not("parent_post_id", "is", null)
-      .neq("user_id", louisId)
-      .lte("created_at", cutoffIso)
-      .order("created_at", { ascending: false })
-      .limit(limit);
-    const answered = await answeredParents(db, "group_posts", "parent_post_id", louisId);
-    return (data || [])
-      .filter((c) => c.user_id && roots.has(String(c.parent_post_id)) && !answered.has(String(c.id)))
-      .map((c) => ({
-        source: "group" as const,
-        id: String(c.id),
-        authorId: String(c.user_id),
-        authorName: (c.display_name as string) ?? null,
-        content: String(c.content ?? ""),
-        createdAt: String(c.created_at),
-        // The root post, so a line is not repeated under one post - and the
-        // group id travels with it, since a reply row needs it.
-        context: `${c.group_id}:${c.parent_post_id}`,
-      }));
-  },
-  async bodiesUsedHere(db, candidate, louisId) {
-    const [, rootId] = candidate.context.split(":");
-    const { data } = await db
-      .from("group_posts")
-      .select("content")
-      .eq("parent_post_id", rootId)
-      .eq("user_id", louisId)
-      .limit(100);
-    return (data || []).map((r) => String(r.content ?? ""));
-  },
-  async postReply(db, candidate, body, louis) {
-    const [groupId] = candidate.context.split(":");
-    const { error } = await db.from("group_posts").insert({
-      group_id: groupId,
-      user_id: louis.id,
-      display_name: louis.name,
-      content: body,
-      // Hangs off the COMMENT, which is what makes it read as an answer to
-      // that person rather than another comment on the post.
-      parent_post_id: candidate.id,
-    });
-    return error?.message ?? null;
-  },
-};
-
-export const SOURCES: Source[] = [articleSource, feedSource, groupSource];
+export const SOURCES: Source[] = [articleSource, feedSource];

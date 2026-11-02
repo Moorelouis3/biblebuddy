@@ -15,10 +15,9 @@ import { SOURCES, type Candidate } from "@/lib/commentReplies/sources";
  * bot." A library of replies he has approved takes its place, with
  * deterministic rules choosing which one fits.
  *
- * THREE SURFACES, one rule between them (lib/commentReplies/sources.ts):
+ * TWO SURFACES, one rule between them (lib/commentReplies/sources.ts):
  *
  *   article  study chapters, Bible in One Year days, /bible pages, blog posts
- *   group    the dashboard group feed - only comments on Louis's own posts
  *   feed     the social feed - only comments on Louis's own posts
  *
  * Louis: "i can comment for people except if its them talking to another
