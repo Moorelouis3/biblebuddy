@@ -113,14 +113,22 @@ export async function fetchSalesDay(date: string): Promise<SalesDay | null> {
   return { date, units, byCountry };
 }
 
+/** 1.0 reached the App Store on this date; there is nothing before it. */
+export const APP_STORE_LAUNCH_DATE = "2026-11-01";
+
 /** The last `days` days of units, oldest first. Days Apple has no report for are omitted. */
 export async function fetchRecentSales(days = 14): Promise<SalesDay[]> {
   if (!appStoreConnectConfigured()) return [];
   const out: SalesDay[] = [];
   const today = Date.now();
   const wanted: string[] = [];
-  // Skip today: Apple has never generated it yet.
-  for (let i = days; i >= 1; i--) wanted.push(new Date(today - i * 86_400_000).toISOString().slice(0, 10));
+  // Skip today: Apple has never generated it yet. And never ask about a day
+  // before the app existed - those are guaranteed-empty round trips, and the
+  // dashboard would make one per day of the window on every load.
+  for (let i = days; i >= 1; i--) {
+    const d = new Date(today - i * 86_400_000).toISOString().slice(0, 10);
+    if (d >= APP_STORE_LAUNCH_DATE) wanted.push(d);
+  }
   const results = await Promise.all(wanted.map((d) => fetchSalesDay(d).catch(() => null)));
   for (const r of results) if (r) out.push(r);
   return out;

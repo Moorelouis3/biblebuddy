@@ -25,6 +25,7 @@ export const TABS = [
   { key: "email", label: "Email" },
   { key: "guides", label: "Study Guides" },
   { key: "books", label: "Books" },
+  { key: "app", label: "App" },
 ] as const;
 
 export type AnalyticsTab = (typeof TABS)[number]["key"];
@@ -1091,6 +1092,126 @@ export default function AnalyticsDashboardView({
                 </Section>
               </div>
               </div>
+            ) : null}
+
+            {tab === "app" ? (
+              <>
+            {d.appStore ? (
+              <Section
+                summary={
+                  <SectionSummary
+                    icon="📱"
+                    title="The iPhone app"
+                    line={`${fmt(d.appStore.taps)} taps · ${d.appStore.downloadsWaiting ? "downloads pending" : `${fmt(d.appStore.downloads)} downloads`} · ${fmt(d.appStore.appUsers)} using it`}
+                  />
+                }
+              >
+                <div className="hidden lg:block">
+                  <CardTitle
+                    icon="📱"
+                    right={
+                      <a
+                        href="https://apps.apple.com/app/id6822155944"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-bold text-[#2563eb]"
+                      >
+                        Open App Store listing →
+                      </a>
+                    }
+                  >
+                    The iPhone app
+                  </CardTitle>
+                </div>
+
+                {/* Three numbers that are easy to confuse, so they are
+                    labelled with what they actually mean rather than with
+                    the jargon. */}
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  <div className="rounded-xl bg-[#eef4ff] px-4 py-3">
+                    <p className="text-xs font-bold text-[#2d4f8a]">Tapped &ldquo;get the app&rdquo;</p>
+                    <p className="text-2xl font-black">{fmt(d.appStore.taps)}</p>
+                    <p className="text-xs font-semibold text-[#64748b]">on our site and in the app</p>
+                    <Change value={d.appStore.tapsChange} />
+                  </div>
+
+                  <div className="rounded-xl bg-[#f0fbf4] px-4 py-3">
+                    <p className="text-xs font-bold text-[#1f7a4c]">Actually downloaded</p>
+                    {d.appStore.downloadsWaiting ? (
+                      <>
+                        <p className="text-2xl font-black text-[#94a3b8]">—</p>
+                        <p className="text-xs font-semibold text-[#64748b]">
+                          {d.appStore.configured
+                            ? "Apple publishes this about a day late"
+                            : "App Store Connect key not installed"}
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <p className="text-2xl font-black">{fmt(d.appStore.downloads)}</p>
+                        <p className="text-xs font-semibold text-[#64748b]">counted by Apple</p>
+                      </>
+                    )}
+                  </div>
+
+                  <div className="rounded-xl bg-[#fff7e8] px-4 py-3">
+                    <p className="text-xs font-bold text-[#8a6124]">Taps that became downloads</p>
+                    <p className="text-2xl font-black">
+                      {d.appStore.tapToDownload === null ? "—" : `${d.appStore.tapToDownload}%`}
+                    </p>
+                    <p className="text-xs font-semibold text-[#64748b]">
+                      {d.appStore.tapToDownload === null ? "needs both numbers" : "ratio, not a funnel"}
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl bg-[#f5f0ff] px-4 py-3">
+                    <p className="text-xs font-bold text-[#5b3fa8]">People using the app</p>
+                    <p className="text-2xl font-black">{fmt(d.appStore.appUsers)}</p>
+                    <p className="text-xs font-semibold text-[#64748b]">
+                      {fmt(d.appStore.appSessions)} opens in {windowLabel.toLowerCase()}
+                    </p>
+                    <Change value={d.appStore.appUsersChange} />
+                  </div>
+                </div>
+
+                {d.appStore.tapsByPlacement.length ? (
+                  <div className="mt-4">
+                    <p className="mb-2 text-xs font-bold text-[#64748b]">Where people tapped</p>
+                    <div className="space-y-2">
+                      {d.appStore.tapsByPlacement.map((p) => (
+                        <div key={p.placement} className="flex items-center gap-3">
+                          <span className="w-56 shrink-0 truncate text-sm font-semibold">{p.placement}</span>
+                          <Bar
+                            value={p.count}
+                            max={Math.max(...d.appStore.tapsByPlacement.map((x) => x.count))}
+                            color="#2563eb"
+                          />
+                          <span className="w-12 shrink-0 text-right text-sm font-black">{fmt(p.count)}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <p className="mt-4 text-sm font-semibold text-[#64748b]">
+                    No taps yet in {windowLabel.toLowerCase()}.
+                  </p>
+                )}
+
+                {d.appStore.downloadDays.length ? (
+                  <div className="mt-5">
+                    <p className="mb-2 text-xs font-bold text-[#64748b]">Downloads per day</p>
+                    <LineChart points={d.appStore.downloadDays.map((x) => ({ label: x.date.slice(5), value: x.units }))} />
+                  </div>
+                ) : null}
+
+                <p className="mt-4 text-xs font-semibold leading-5 text-[#64748b]">
+                  A tap is not a download and a download is not a user. Apple can only
+                  ever tell us totals, so &ldquo;people using the app&rdquo; is the one
+                  number here that can answer whether the app keeps people coming back.
+                </p>
+              </Section>
+            ) : null}
+              </>
             ) : null}
 
             {tab === "books" ? (

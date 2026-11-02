@@ -21,6 +21,8 @@ import { FEATURED_STUDY_ORDER, AVAILABLE_STUDY_TITLES, UPCOMING_STUDIES } from "
  * All day boundaries are Berlin midnight.
  */
 
+import { appStoreConnectConfigured, fetchRecentSales } from "@/lib/appStoreConnect";
+
 export type DashboardWindow = "today" | "yesterday" | "7d" | "30d";
 export const DASHBOARD_WINDOWS: DashboardWindow[] = ["today", "yesterday", "7d", "30d"];
 
@@ -910,6 +912,117 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       .map(([source, views]) => ({ source, views })),
   };
 
+  // ----- the iPhone app (2026-11-02) -----
+  //
+  // Three different things, deliberately kept apart, because collapsing them
+  // is how you end up believing a tap is a download:
+  //
+  //   taps      - somebody pressed a "get the app" button. Ours, exact.
+  //   downloads - Apple actually installed it. Only Apple knows, and only
+  //               about a day late. See lib/appStoreConnect.ts.
+  //   app users - somebody OPENED the app. The only one of the three that
+  //               says anything about whether the app is keeping people,
+  //               which is the question Louis actually wants answered.
+  //
+  // Taps arrive on two different rails: the public landing page writes
+  // landing_page_events (no account yet), while the in-app banner writes
+  // master_actions (signed in). Neither alone is the total.
+  const appActionRows = await fetchAll<ActionRow>(admin, "master_actions", "user_id, action_type, created_at", (q) =>
+    q
+      .in("action_type", ["native_app_session", "install_banner_app_store_clicked"])
+      .gte("created_at", previous.start.toISOString())
+      .lt("created_at", current.end.toISOString())
+      .neq("user_id", OWNER_USER_ID),
+  );
+
+  // A separate, tiny query rather than adding metadata to the main events
+  // fetch: placement only matters for this one event, and the main fetch
+  // pulls every landing event in the window.
+  type TapRow = { user_id: string | null; session_id: string | null; metadata: Record<string, unknown> | null; created_at: string };
+  const appTapRows = await fetchAll<TapRow>(admin, "landing_page_events", "user_id, session_id, metadata, created_at", (q) =>
+    q
+      .eq("event_name", "clicked_app_store")
+      .gte("created_at", previous.start.toISOString())
+      .lt("created_at", current.end.toISOString()),
+  );
+
+  const PLACEMENT_LABEL: Record<string, string> = {
+    hero: "Landing page - top",
+    buddies: "Landing page - meet your buddy",
+    bottom_cta: "Landing page - bottom",
+    home_banner: "In-app banner",
+  };
+
+  const tapsIn = (r: Range) => {
+    const byPlacement = new Map<string, number>();
+    let total = 0;
+    for (const t of appTapRows) {
+      if (!within(t.created_at, r)) continue;
+      const key = String((t.metadata as { clickedFrom?: string } | null)?.clickedFrom || "unknown");
+      byPlacement.set(key, (byPlacement.get(key) || 0) + 1);
+      total += 1;
+    }
+    for (const a of appActionRows) {
+      if (a.action_type !== "install_banner_app_store_clicked" || !within(a.created_at, r)) continue;
+      byPlacement.set("home_banner", (byPlacement.get("home_banner") || 0) + 1);
+      total += 1;
+    }
+    return { total, byPlacement };
+  };
+
+  const tapsCur = tapsIn(current);
+  const tapsPrev = tapsIn(previous);
+
+  const appUsersIn = (r: Range) =>
+    new Set(
+      appActionRows
+        .filter((a) => a.action_type === "native_app_session" && within(a.created_at, r) && a.user_id)
+        .map((a) => a.user_id as string),
+    );
+  const appUsersCur = appUsersIn(current);
+
+  // Apple's numbers, if the key is installed and Apple has published them.
+  // Never allowed to break the dashboard: a slow or failing Apple is a
+  // missing number, not a 500 on a page Louis opens every day.
+  let downloads: { total: number; days: Array<{ date: string; units: number }>; waiting: boolean } = {
+    total: 0,
+    days: [],
+    waiting: true,
+  };
+  if (appStoreConnectConfigured()) {
+    try {
+      const windowDays = Math.max(1, Math.ceil((current.end.getTime() - current.start.getTime()) / 86_400_000));
+      const sales = await fetchRecentSales(Math.min(30, windowDays + 1));
+      const inWindow = sales.filter((s) => within(`${s.date}T12:00:00.000Z`, current));
+      downloads = {
+        total: inWindow.reduce((sum, s) => sum + s.units, 0),
+        days: inWindow.map((s) => ({ date: s.date, units: s.units })),
+        waiting: inWindow.length === 0,
+      };
+    } catch {
+      downloads = { total: 0, days: [], waiting: true };
+    }
+  }
+
+  const appStore = {
+    configured: appStoreConnectConfigured(),
+    taps: tapsCur.total,
+    tapsChange: change(tapsCur.total, tapsPrev.total),
+    tapsByPlacement: [...tapsCur.byPlacement.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([key, count]) => ({ placement: PLACEMENT_LABEL[key] || key, count })),
+    downloads: downloads.total,
+    downloadsWaiting: downloads.waiting,
+    downloadDays: downloads.days,
+    // Only meaningful once both halves exist. Taps can exceed downloads
+    // (people look and leave) and downloads can exceed taps (App Store
+    // search, word of mouth), so this is a ratio, never a funnel.
+    tapToDownload: downloads.waiting || !tapsCur.total ? null : Math.round((downloads.total / tapsCur.total) * 1000) / 10,
+    appUsers: appUsersCur.size,
+    appUsersChange: change(appUsersCur.size, appUsersIn(previous).size),
+    appSessions: appActionRows.filter((a) => a.action_type === "native_app_session" && inCur(a.created_at)).length,
+  };
+
   // ----- content -----
   const chapters =(chapterProgress as { chapters: Record<string, { status: string }>; nextChapter?: string; paused?: boolean }).chapters;
   const content = {
@@ -1136,6 +1249,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     community,
     studyGuides,
     books,
+    appStore,
     content,
   };
 }
