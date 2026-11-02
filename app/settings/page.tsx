@@ -1020,15 +1020,16 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
           <div className="space-y-4">
             {accountDeleted ? (
               <div className="p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-sm">
-                You are signed out and your account can no longer be used. Removing the rest of
-                your data takes a few minutes, and we will email you when it is done. You are welcome
-                back any time - just sign up again.
+                You are signed out and your account can no longer be used. Everything in it will be
+                permanently deleted in 30 days, and we have emailed you the date. If you change your
+                mind before then, just sign in again and it all carries on as it was.
               </div>
             ) : !showDeleteAccount ? (
               <>
                 <p className="text-sm text-gray-600">
-                  Permanently delete your Bible Buddy account and everything tied to it: your profile, progress,
+                  Delete your Bible Buddy account and everything tied to it: your profile, progress,
                   notes, highlights, bookmarks, posts, comments, messages, and chats with Little Louis.
+                  You are signed out straight away and it is all permanently deleted 30 days later.
                 </p>
                 <button
                   onClick={() => {
@@ -1045,10 +1046,12 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
               <>
                 <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
                   <p className="text-sm font-semibold text-red-800 mb-2">
-                    This cannot be undone
+                    You have 30 days to change your mind
                   </p>
                   <p className="text-sm text-red-700">
-                    Your account, progress, and everything you have posted will be permanently deleted.
+                    You will be signed out everywhere immediately and your account stops working. Your
+                    progress and everything you have posted is then permanently deleted 30 days from
+                    now, and after that it cannot be recovered. Sign in again before then to cancel.
                     Type <span className="font-bold">DELETE</span> below to confirm.
                   </p>
                 </div>

@@ -139,6 +139,10 @@
     {
       "path": "/api/cron/community-study-start",
       "schedule": "0,30 8 * * *"
+    },
+    {
+      "path": "/api/cron/purge-deleted-accounts",
+      "schedule": "20 3 * * *"
     }
   ],
   "functions": {

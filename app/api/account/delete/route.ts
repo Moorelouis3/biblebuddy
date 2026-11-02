@@ -1,23 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
 import { after } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { deleteUserAccount, PROTECTED_ACCOUNT_EMAILS } from "@/lib/accountDeletion";
+import { PROTECTED_ACCOUNT_EMAILS } from "@/lib/accountDeletion";
+import { formatPurgeDate, scheduleAccountDeletion } from "@/lib/accountDeletionSchedule";
 import { sendEmail } from "@/lib/email/sesSender";
 
-// Permanently deletes the signed-in user's account and data.
+// Schedules deletion of the signed-in user's account and data.
 // Called from Settings -> Delete my account with the user's bearer token.
 //
-// The deletion itself is thorough - child rows first across every table that
-// references the user, then their files, then the login - and on a small
-// database that takes minutes. It used to run with the person watching a
-// spinner the whole time: Louis measured four. Nobody should sit through that
-// to leave, and a reviewer watching a spinner for four minutes reasonably
-// concludes the feature is broken.
+// What the person experiences is unchanged: every session is revoked before
+// this responds, so they are signed out everywhere and the account cannot be
+// used from the moment they ask.
 //
-// So the part that matters to them happens immediately - every session is
-// revoked, so they are signed out everywhere before this responds - and the
-// purge runs on after(), which Next keeps alive past the response. An email
-// confirms it when it is done. Nothing about the account is usable in between.
+// What changed on 2026-11-02 is what happens next. This used to run the full
+// wipe straight away on after(). It is now recorded in account_deletions and
+// purged by /api/cron/purge-deleted-accounts once the 30 day grace period is
+// up, so signing in again before then simply cancels it.
+//
+// The reason is a real case: Jessica had used the app since 2025-12-06,
+// deleted her account, and signed up again days later on the same email.
+// Eleven months of reading history. Supabase keeps 7 daily backups; she was
+// outside the window, and neither the live database nor the oldest backup had
+// anything left. Nothing could be given back. See
+// lib/accountDeletionSchedule.ts.
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -61,60 +66,60 @@ export async function POST(request: NextRequest) {
     console.warn("[ACCOUNT_DELETE] could not revoke sessions", userId, signOutError);
   }
 
+  // Their display name, read now for the same reason as the email: so the
+  // record stands on its own once the auth user is gone.
+  const { data: profile } = await admin
+    .from("profile_stats")
+    .select("display_name")
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  const scheduled = await scheduleAccountDeletion(admin, {
+    id: userId,
+    email: email || null,
+    displayName: (profile?.display_name as string) ?? null,
+  });
+
+  if (!scheduled.ok) {
+    // Could not record it. Say so rather than silently doing nothing - and do
+    // NOT fall back to the old immediate wipe, because an unrecorded hard
+    // delete is exactly the hole this replaced.
+    console.error("[ACCOUNT_DELETE] could not schedule", userId, scheduled.error);
+    return NextResponse.json(
+      { error: "We could not process that just now. Please try again, or write to support@mybiblebuddy.net." },
+      { status: 500 },
+    );
+  }
+
+  const when = formatPurgeDate(scheduled.purgeAfter);
+  console.log("[ACCOUNT_DELETE] scheduled", userId, "purge after", scheduled.purgeAfter);
+
   after(async () => {
-    const result = await deleteUserAccount(admin, userId);
-
-    if (!result.ok) {
-      console.error("[ACCOUNT_DELETE] failed", userId, result.error, result.warnings);
-      if (email) {
-        await sendEmail({
-          to: email,
-          transactional: true,
-          subject: "We could not finish deleting your Bible Buddy account",
-          text:
-            "You asked us to delete your Bible Buddy account. You have been signed out and the " +
-            "account can no longer be used, but something went wrong while removing the rest of " +
-            "your data and we have not finished.\n\n" +
-            "We have been alerted and will finish it by hand. If you would like confirmation, or " +
-            "you would rather we stopped, reply to this email or write to " +
-            "support@mybiblebuddy.net.",
-          html:
-            "<p>You asked us to delete your Bible Buddy account. You have been signed out and the " +
-            "account can no longer be used, but something went wrong while removing the rest of " +
-            "your data and we have not finished.</p>" +
-            "<p>We have been alerted and will finish it by hand. If you would like confirmation, " +
-            "or you would rather we stopped, reply to this email or write to " +
-            "<a href=\"mailto:support@mybiblebuddy.net\">support@mybiblebuddy.net</a>.</p>",
-          tags: { campaign_id: "account-deleted-failed" },
-        }).catch(() => undefined);
-      }
-      return;
-    }
-
-    console.log("[ACCOUNT_DELETE] deleted", userId, result.cleared, result.storageFilesRemoved, result.warnings);
-
     if (!email) return;
     await sendEmail({
       to: email,
       transactional: true,
-      subject: "Your Bible Buddy account has been deleted",
+      subject: "Your Bible Buddy account is scheduled for deletion",
       text:
-        "Your Bible Buddy account and everything in it has been deleted. Your reading progress, " +
-        "notes, posts and photos are gone, and this is the last email you will get from us.\n\n" +
-        "If you ever want to come back, you are welcome to - just sign up again at " +
-        "https://www.mybiblebuddy.net. It will be a fresh start rather than your old account; " +
-        "there is nothing left to restore.\n\n" +
-        "Thank you for the time you spent in the Word with us.",
+        `You asked us to delete your Bible Buddy account. You have been signed out everywhere and ` +
+        `the account can no longer be used.\n\n` +
+        `Everything in it will be permanently deleted on ${when} - your reading progress, notes, ` +
+        `posts and photos. After that it cannot be recovered by us or by anyone else.\n\n` +
+        `Changed your mind? Sign in again before ${when} at https://www.mybiblebuddy.net and your ` +
+        `account carries on exactly as it was. Nothing has been lost yet.\n\n` +
+        `Thank you for the time you spent in the Word with us.`,
       html:
-        "<p>Your Bible Buddy account and everything in it has been deleted. Your reading progress, " +
-        "notes, posts and photos are gone, and this is the last email you will get from us.</p>" +
-        "<p>If you ever want to come back, you are welcome to - just " +
-        "<a href=\"https://www.mybiblebuddy.net\">sign up again</a>. It will be a fresh start " +
-        "rather than your old account; there is nothing left to restore.</p>" +
-        "<p>Thank you for the time you spent in the Word with us.</p>",
-      tags: { campaign_id: "account-deleted" },
+        `<p>You asked us to delete your Bible Buddy account. You have been signed out everywhere ` +
+        `and the account can no longer be used.</p>` +
+        `<p>Everything in it will be <strong>permanently deleted on ${when}</strong> - your reading ` +
+        `progress, notes, posts and photos. After that it cannot be recovered by us or by anyone ` +
+        `else.</p>` +
+        `<p>Changed your mind? <a href="https://www.mybiblebuddy.net">Sign in again</a> before ` +
+        `${when} and your account carries on exactly as it was. Nothing has been lost yet.</p>` +
+        `<p>Thank you for the time you spent in the Word with us.</p>`,
+      tags: { campaign_id: "account-deletion-scheduled" },
     }).catch(() => undefined);
   });
 
-  return NextResponse.json({ ok: true, background: true }, { status: 202 });
+  return NextResponse.json({ ok: true, scheduled: true, purgeAfter: scheduled.purgeAfter, purgeDate: when }, { status: 202 });
 }

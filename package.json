@@ -53,7 +53,8 @@
     "check:content-filter": "tsx scripts/check-content-filter.ts",
     "comments:seed": "tsx scripts/seed-comment-replies.ts",
     "comments:backtest": "tsx scripts/backtest-comment-replies.ts",
-    "comments:verify": "tsx scripts/verify-comment-replies-no-ai.ts"
+    "comments:verify": "tsx scripts/verify-comment-replies-no-ai.ts",
+    "verify:deletion-grace": "tsx scripts/verify-deletion-grace-period.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",

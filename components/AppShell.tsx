@@ -23,6 +23,7 @@ import InstallIOSSheet from "./InstallIOSSheet";
 import { isNativeApp } from "../lib/nativeApp";
 import { recordNativeAppUse } from "../lib/nativeUsage";
 import AppStorePopup from "./AppStorePopup";
+import DeletionCancelledNotice from "./DeletionCancelledNotice";
 import BibleLockWatcher from "./BibleLockWatcher";
 import BibleLockLiftedToast from "./BibleLockLiftedToast";
 import BibleLockBanner from "./home/BibleLockBanner";
@@ -2931,6 +2932,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       <AppStorePopup
         enabled={Boolean(isLoggedIn && userId && !showFullNameModal && !showEmailConfirmationGate)}
       />
+
+      {/* Someone who asked to delete and then signed in again inside the 30
+          day grace period. Renders nothing for everybody else. */}
+      {isLoggedIn && userId && <DeletionCancelledNotice />}
 
       {/* FEEDBACK MODAL */}
       {isLoggedIn && userId && !showFullNameModal && !showEmailConfirmationGate && (
