@@ -186,9 +186,9 @@ export async function maybeRequestAppReview(opts: {
  * outright, which is allowed, is not rate-limited, and does NOT consume one of
  * the three sheets - so it is the right home for a permanent link.
  *
- * Fill APP_STORE_ID in once App Store Connect issues it.
+ * App Store Connect issued the id when 1.0 went live on 2026-11-01.
  */
-export const APP_STORE_ID = ""; // e.g. "1234567890"
+export const APP_STORE_ID = "6822155944";
 export const PLAY_PACKAGE = "net.mybiblebuddy.app";
 
 export function openStoreListingForReview() {

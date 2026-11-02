@@ -103,6 +103,11 @@ const ALLOWED_EVENTS = new Set([
   "home_group_impression",
   "landing_page_visit",
   "clicked_start_journey",
+  // The black App Store button on the landing page (2026-11-02). Metadata:
+  // {clickedFrom: hero|buddies|bottom_cta, store: ios|android}. The web
+  // button beside it keeps firing clicked_start_journey, so the two are
+  // comparable per placement.
+  "clicked_app_store",
   "started_onboarding",
   "viewed_onboarding_intro",
   "viewed_question_1",

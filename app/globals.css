@@ -4652,6 +4652,32 @@ html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-on-dark,
   -webkit-text-fill-color: #FFFFFF !important;
 }
 
+/* The two download buttons at each of the landing page's three calls to
+   action (2026-11-02). Same escape hatch as bb-cta-blue below, and needed
+   for the same reason: the catch-all above repaints every span and svg
+   #111827 with !important, which painted the black App Store button's own
+   label and Apple mark navy-on-navy - invisible - and turned the web
+   button's icon and arrow grey instead of blue.
+ *
+ * The descendant "*" matters. Putting the colour on the button alone is not
+ * enough, because the catch-all selects the span and svg inside it directly
+ * rather than letting them inherit. */
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-store-cta,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-store-cta *,
+.bb-public-landing .bb-store-cta,
+.bb-public-landing .bb-store-cta * {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-web-cta,
+html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-web-cta *,
+.bb-public-landing .bb-web-cta,
+.bb-public-landing .bb-web-cta * {
+  color: #0056FD !important;
+  -webkit-text-fill-color: #0056FD !important;
+}
+
 /* Brand-blue accent text on the public landing page. Must out-specify the
    catch-all above that forces #111827 on every span/heading. */
 html[data-bb-skin]:not([data-bb-skin="none"]) .bb-public-landing .bb-brand-blue,

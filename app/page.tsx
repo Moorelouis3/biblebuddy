@@ -246,7 +246,8 @@ type LandingAnalyticsEvent =
   | "closed_onboarding"
   | "video_played"
   | "video_progress"
-  | "video_completed";
+  | "video_completed"
+  | "clicked_app_store";
 
 function getLandingSessionId() {
   if (typeof window === "undefined") return "server";
@@ -1409,29 +1410,26 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
             reads cleanly at any width. */}
         <div className="mx-auto grid max-w-[1080px] items-center gap-4 px-5 pb-10 pt-6 sm:gap-8 sm:px-8 lg:grid-cols-[1fr_1.08fr] lg:gap-0 lg:pb-16 lg:pt-10">
           <div className="text-center lg:text-left">
+            {/* Two sentences, and the second is the one that has to land:
+                every Bible app reads you the text, ours explains it. The
+                first line is deliberately the smaller of the two so the eye
+                finishes on "understand it." (Louis, 2026-11-02). */}
             <h1 className="text-[clamp(1.95rem,4vw,2.9rem)] font-black leading-[1.08] tracking-[-0.02em]">
-              Understand the Bible.
-              <br />
-              Build a real habit.
-              <br />
-              <span className="bb-brand-blue">Grow with Jesus.</span>
+              <span className="block text-[0.72em] leading-[1.15] text-[#40516b]">
+                Most Bible apps help you read the Bible.
+              </span>
+              <span className="mt-2 block">
+                Bible Buddy helps you <span className="bb-brand-blue">understand it.</span>
+              </span>
             </h1>
             <p className="mx-auto mt-5 max-w-[460px] text-[1rem] font-semibold leading-7 text-[#40516b] lg:mx-0 sm:text-[1.05rem]">
-              Verse-by-verse explanations in plain English, guided audio, and a friendly
-              guide by your side - so you finally understand what you are reading.
+              Get verse-by-verse explanations in plain English, guided audio, and a
+              friendly Bible Buddy by your side.
             </p>
 
             <div className="mt-7 flex flex-col items-center gap-3 lg:items-start">
-              <StartStudyingButton
-                clickedFrom="hero"
-                onTrack={onStartJourney}
-                className="bb-cta-blue bb-cta-pulse inline-flex w-full max-w-[320px] items-center justify-center gap-3 rounded-2xl bg-[#0056FD] px-8 py-4 text-base font-black text-white shadow-[0_24px_60px_rgba(0,86,253,0.25)] transition hover:-translate-y-0.5 lg:w-auto"
-              >
-                Start Studying Now
-                <LandingLineIcon name="arrow" light />
-              </StartStudyingButton>
+              <LandingStoreCtas placement="hero" onStartJourney={onStartJourney} />
               <p className="text-xs font-bold text-[#6d7789]">Free account. No credit card.</p>
-              <StoreBadges />
             </div>
 
             {/* Social proof, and only the part that is true. The approved
@@ -1542,15 +1540,8 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
                 Pick a friendly guide to walk with you through Scripture. Each one explains
                 things their own way - and you can change your mind whenever you like.
               </p>
-              <div className="mt-6">
-                <StartStudyingButton
-                  clickedFrom="buddies"
-                  onTrack={onStartJourney}
-                  className="inline-flex items-center justify-center gap-3 rounded-2xl bg-[#1f8a4c] px-7 py-3.5 text-[0.95rem] font-black text-white shadow-[0_18px_44px_rgba(31,138,76,0.26)] transition hover:-translate-y-0.5"
-                >
-                  Start Studying Now
-                  <LandingLineIcon name="arrow" light />
-                </StartStudyingButton>
+              <div className="mt-6 flex flex-col items-center gap-3 md:items-start">
+                <LandingStoreCtas placement="buddies" onStartJourney={onStartJourney} />
               </div>
             </div>
           </div>
@@ -1647,16 +1638,8 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
               Join over 7,000 Christians who are already studying with Bible Buddy.
             </p>
             <div className="mt-7 flex flex-col items-center gap-3">
-              <StartStudyingButton
-                clickedFrom="bottom_cta"
-                onTrack={onStartJourney}
-                className="inline-flex w-full max-w-[320px] items-center justify-center gap-3 rounded-2xl bg-white px-8 py-4 text-base font-black text-[#0056FD] shadow-[0_24px_60px_rgba(7,22,47,0.25)] transition hover:-translate-y-0.5 sm:w-auto"
-              >
-                Start Studying Now
-                <LandingLineIcon name="arrow" />
-              </StartStudyingButton>
+              <LandingStoreCtas placement="bottom_cta" onStartJourney={onStartJourney} onDark />
               <p className="text-xs font-bold bb-on-dark opacity-90">Free account. No credit card.</p>
-              <StoreBadges onDark />
             </div>
           </div>
         </section>
@@ -1684,44 +1667,128 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
 }
 
 /**
- * The App Store and Play Store badges, which render NOTHING until the
- * listings exist (Louis, 2026-10-25: "you can have sign up now as the
- * buttons then we can add app store and play store as they are approved").
- *
- * The approved mockup put both badges in the hero, in How It Works and in
- * the closing call to action. Checked on the day: the App Store lookup for
- * 6822155944 returns no result, and play.google.com 404s for
- * net.mybiblebuddy.app. Shipping them would have pointed every call to
- * action on the page at something that does not exist.
- *
- * Turning them on is one line each: fill in APP_STORE_ID in
- * lib/appReviewPrompt.ts when Apple approves the build, and set
- * PLAY_LIVE once the Play listing is published.
+ * Play has no listing yet. Set this true once it does and the Android button
+ * below starts rendering beside the Apple one; nothing else needs touching.
+ * Until then there is no "coming soon" placeholder - a button nobody can
+ * press is worse than no button (Louis, 2026-11-02).
  */
 const PLAY_LIVE = false;
 
-function StoreBadges({ onDark = false }: { onDark?: boolean }) {
+/** Apple's mark, as used on the standard black download badge. */
+function AppleGlyph() {
+  return (
+    <svg viewBox="0 0 384 512" aria-hidden="true" className="h-7 w-7 shrink-0 fill-current">
+      <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+    </svg>
+  );
+}
+
+/** The laptop on the web button, so the two options read as two places. */
+function WebGlyph() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className="h-5 w-5 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="3" y="4" width="18" height="12" rx="2" />
+      <path d="M2 20h20" />
+    </svg>
+  );
+}
+
+/**
+ * The two ways in, used at all three call-to-action points on the page
+ * (Louis, 2026-11-02, the morning after 1.0 reached the App Store): get the
+ * iPhone app, or carry on in the browser.
+ *
+ * Both are shown to everyone, and there is deliberately no device sniffing
+ * and no redirect. About half the people who open this page on a phone are
+ * on Android and a third of all traffic is desktop, so sending anyone to a
+ * store they cannot use - or hiding the web button from them - would shut
+ * the door on most of the audience.
+ *
+ * Renders the Apple button only while APP_STORE_ID is set, so clearing the
+ * id takes the button with it rather than leaving a dead link behind.
+ */
+function LandingStoreCtas({
+  placement,
+  onStartJourney,
+  onDark = false,
+}: {
+  /** Which of the three CTAs this is - "hero" / "buddies" / "bottom_cta". */
+  placement: string;
+  onStartJourney: (clickedFrom: string) => void;
+  /** True inside the blue closing section, where the web button inverts. */
+  onDark?: boolean;
+}) {
   const iosHref = APP_STORE_ID ? `https://apps.apple.com/app/id${APP_STORE_ID}` : null;
   const androidHref = PLAY_LIVE ? `https://play.google.com/store/apps/details?id=${PLAY_PACKAGE}` : null;
-  if (!iosHref && !androidHref) return null;
 
-  const base = `inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-black transition hover:-translate-y-0.5 ${
-    onDark ? "bg-white text-[#07162f]" : "bg-[#07162f] text-white"
-  }`;
+  // One width for both buttons so they stack as a pair rather than as two
+  // unrelated things that happen to sit together.
+  // gap-2 and px-4 rather than anything roomier: at 375px "Continue on Web
+  // Version" wrapped onto a second line and the button grew to two rows.
+  const shared =
+    "inline-flex w-full max-w-[320px] items-center justify-center gap-2 whitespace-nowrap rounded-2xl px-4 py-3.5 transition hover:-translate-y-0.5";
+  const storeButton = `${shared} bb-store-cta bg-[#07162f] text-white shadow-[0_18px_44px_rgba(7,22,47,0.28)]`;
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-3">
+    <>
       {iosHref ? (
-        <a href={iosHref} className={base} target="_blank" rel="noopener noreferrer">
-          Download on the App Store
+        <a
+          href={iosHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackLandingEvent("clicked_app_store", { clickedFrom: placement, store: "ios" })}
+          className={storeButton}
+        >
+          <AppleGlyph />
+          <span className="text-left leading-none">
+            <span className="block text-[0.68rem] font-semibold tracking-[0.01em]">Download on the</span>
+            <span className="mt-0.5 block text-[1.1rem] font-black leading-none">App Store</span>
+          </span>
+          <LandingLineIcon name="arrow" light />
         </a>
       ) : null}
+
       {androidHref ? (
-        <a href={androidHref} className={base} target="_blank" rel="noopener noreferrer">
-          Get it on Google Play
+        <a
+          href={androidHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackLandingEvent("clicked_app_store", { clickedFrom: placement, store: "android" })}
+          className={storeButton}
+        >
+          <span className="text-left leading-none">
+            <span className="block text-[0.68rem] font-semibold tracking-[0.01em]">Get it on</span>
+            <span className="mt-0.5 block text-[1.1rem] font-black leading-none">Google Play</span>
+          </span>
+          <LandingLineIcon name="arrow" light />
         </a>
       ) : null}
-    </div>
+
+      {/* Still the original signup flow - same component, same destination,
+          only the label changed. Signed in goes to the app, everyone else
+          to /signup. The white fill is kept on the blue closing section too,
+          where an outline alone would disappear into the background. */}
+      <StartStudyingButton
+        clickedFrom={placement}
+        onTrack={onStartJourney}
+        className={`${shared} bb-web-cta border-2 border-[#0056FD] bg-white text-[0.92rem] font-black text-[#0056FD] ${
+          onDark ? "border-white shadow-[0_18px_44px_rgba(7,22,47,0.22)]" : ""
+        }`}
+      >
+        <WebGlyph />
+        Continue on Web Version
+        <LandingLineIcon name="arrow" small />
+      </StartStudyingButton>
+    </>
   );
 }
 
