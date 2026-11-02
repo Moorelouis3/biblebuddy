@@ -128,6 +128,32 @@ Play uses **Play App Signing**: Louis generates an *upload* keystore, Google
 holds the real app signing key. Codemagic can generate and store the upload
 keystore so it never sits on the Windows machine.
 
+**Checked in the Codemagic UI, 2026-11-02 - it cannot generate one.** Team
+settings > Code signing identities > Android keystores offers an *upload*
+control only ("Choose a file / or drag it here"); the password, alias and
+reference-name fields appear after a file is uploaded. There is no generate
+button, in team settings or app settings. So the keystore has to be made
+somewhere else first.
+
+**And there is no Java on the Windows machine** - no `keytool`, no JDK under
+Program Files, no Android Studio, `JAVA_HOME` unset. Two ways round, pick one:
+
+1. `winget install Microsoft.OpenJDK.21`, then generate the keystore locally.
+   An agent can run the generation with a strong random password and write
+   the keystore plus a credentials file to a folder **outside this repo**,
+   because the repo is public ([[repo-is-public]]).
+2. Generate it on Codemagic's own Linux machine, which already has Java 21,
+   and download it as a build artifact. Installs nothing, but the keystore
+   travels through build artifacts.
+
+**The last step is Louis's either way.** Uploading the file is fine for an
+agent, but the keystore password, key password and alias have to be typed
+into codemagic.io, and an agent does not type secrets into web forms. The
+reference name must be exactly `BibleBuddy Upload` - that string is what
+`codemagic.yaml` declares under `android_signing`, and the build exports it
+as CM_KEYSTORE_PATH / CM_KEYSTORE_PASSWORD / CM_KEY_ALIAS / CM_KEY_PASSWORD
+for scripts/android-release-config.mjs to wire into gradle.
+
 **The warning that matters:** lose the upload keystore and you cannot ship an
 update to the app ever again under that listing. It gets backed up somewhere
 that is not one laptop, on the day it is created.
