@@ -994,6 +994,3 @@ contempt. It also tells any reader who already has a drinking problem
 directly that the article is not permission and to get real help.
 Flagging per the format spec's doctrinal-sensitivity rule so Louis can
 read it himself before wide promotion.
-
-## main was force-pushed before the 2026-11-02 08:00 deploy run
-During this morning's Deploy routine, `git pull --rebase origin main` reported a forced update on origin/main (old tip 4f2f3cd -> new tip 52fafe1) and left 50 local commits disconnected from any branch. Someone or something rewrote main's history on GitHub before this run. The deploy routine proceeded normally on the new history (34 commits published, DEPLOY_LOG.md updated), but the force-push itself should be looked into -- it's not something the deploy routine causes or expects.
