@@ -532,6 +532,27 @@ an agreement entered in his name.
 **A quirk worth knowing:** the questionnaire's Next button stays greyed out
 even once every question is answered. Pressing **Save** first enables it.
 
+### Data safety: the trap that eats your work
+
+**The Save button inside each per-type dialog does not persist anything.** It
+says "Your changes have been saved", it closes the dialog, and the row flips
+to Completed - and all of that is in-page state only. Only the page-level
+**Save draft** at the bottom writes it to Google.
+
+Found out the hard way on 2026-11-02: eight types were filled in, each
+dialog-saved, the page was then reloaded to clear a rendering glitch, and
+seven of them were gone. Only Name and Email survived, because a page-level
+Save draft happened to be clicked after those two.
+
+**So: click Save draft at the bottom of the page after every single type.**
+Never navigate, never reload, until you have.
+
+**Consider the CSV route instead.** The page has Export to CSV and Import
+from CSV in the top right, and the import dialog offers a sample file. Ten
+data types in one upload is both faster and immune to the re-render problem
+below. The import warns that it overwrites what is in the form, which is
+fine when the CSV carries every answer.
+
 ### Data safety: the answer key
 
 Steps 1-3 are saved. Step 4 asks the same four questions for each of the ten
