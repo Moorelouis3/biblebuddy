@@ -557,10 +557,49 @@ other half of Google's own sentence.
 namespace that the generated manifest does not carry. Verified against the
 real generated manifest, not just read.
 
-**This means the bundle already on the track is stale.** The fix lives in the
-build, so the next step is: run `android-release` again (the first run on
-`linux_x2`), download the new `.aab`, upload it to the Alpha track, answer the
-advertising ID question No, and submit. Everything else is already in place.
+**The bundle already on the track was therefore stale, and was replaced.** A
+fresh `android-release` build produced versionCode 3 / 1.03, which went onto
+the Alpha track in place of versionCode 1. Verified rather than assumed: an
+.aab is a zip, so `unzip base/manifest/AndroidManifest.xml` and grep it. The
+old bundle contained `com.google.android.gms.permission.AD_ID`; the new one
+does not. Device support was unchanged by the removal - 12,601 phones before
+and after - so nothing was lost by dropping it.
+
+Note that `android.permission.ACCESS_ADSERVICES_AD_ID` is still in the
+manifest. That is the Privacy Sandbox permission, a different string, and it
+is not what Play's declaration check reads. Play accepted the bundle with it
+present. If the ad ID question ever blocks a release again, that is the next
+thing to strip.
+
+### What a cheaper build machine cost
+
+The same day, both Android workflows were moved from `mac_mini_m2` to
+`linux_x2` on the reasoning that nothing in them needs macOS and Linux is
+about half the per-minute rate. The first build on it failed in seconds:
+
+> The selected instance type is not available with the current billing plan.
+
+Linux and Windows instances are a paid Codemagic tier; the free plan is macOS
+only. Both workflows went back to `mac_mini_m2` with the reason written beside
+them, so the same saving does not get re-applied later. The rate was right and
+the availability was never checked - worth remembering before the next
+"obvious" infrastructure saving.
+
+### Submitted 2026-11-02
+
+With 1.03 on the track the advertising ID page stopped objecting and the
+blocking issue on the publishing overview cleared. All 15 changes went to
+Google: the Alpha release, 178 countries, the tester group, the feedback
+address, the store listing and the app content answers. The console now reads
+**Changes in review**, with Google's own quick checks running first (quoted at
+up to 13 minutes) and the review itself quoted at up to 7 days, though the iOS
+submission came back in under two.
+
+**Nothing is waiting on us.** When it is approved, the Alpha track produces a
+join link, and that link plus the group invitation goes out in one email to
+the list - the plan Louis set, rather than collecting addresses first. Twelve
+testers have to keep it installed for fourteen unbroken days before production
+opens.
 
 ### Data safety: DONE 2026-11-02, and the file that rebuilds it
 
