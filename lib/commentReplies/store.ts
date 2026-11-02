@@ -113,12 +113,21 @@ export async function logDecision(
     templateId: string | null;
     action: "replied" | "skipped" | "review" | "shadow";
     reason: string;
+    /**
+     * A copy of what the person wrote. Kept on the row rather than fetched
+     * back later because the three sources live in three different tables -
+     * the review list would otherwise need a join per source, and a deleted
+     * comment would leave a blank line on Louis's list with no way to tell
+     * what it had been.
+     */
+    commentText?: string;
   },
 ) {
   try {
     await db.from("comment_reply_log").insert({
       comment_id: entry.commentId,
       article_slug: entry.articleSlug,
+      comment_text: entry.commentText ? entry.commentText.slice(0, 2000) : null,
       fingerprint: entry.fingerprint,
       word_count: entry.wordCount,
       category_slug: entry.categorySlug,

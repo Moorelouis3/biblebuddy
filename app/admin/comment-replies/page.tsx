@@ -21,7 +21,9 @@ type LogRow = {
   confidence: number;
   reason: string;
   created_at: string;
-  comment: { article_slug: string; user_name: string | null; content: string; created_at: string } | null;
+  /** "article:genesis-1", "group:<group>:<post>", "feed:<post>" */
+  article_slug: string | null;
+  comment_text: string | null;
 };
 type Pattern = { fingerprint: string; sample_text: string; seen_count: number; word_count: number };
 
@@ -113,11 +115,9 @@ export default function CommentRepliesAdminPage() {
         {data.review.map((r) => (
           <div key={r.id} style={{ borderTop: "1px solid #eee", padding: "10px 0" }}>
             <div style={{ fontSize: 12, color: "#888" }}>
-              {r.category_slug || "—"} · {r.reason} · {r.comment?.article_slug || ""}
+              {(r.article_slug || "").split(":")[0] || "—"} · {r.category_slug || "—"} · {r.reason}
             </div>
-            <div style={{ marginTop: 4 }}>
-              <strong>{r.comment?.user_name || "Someone"}:</strong> {r.comment?.content || "(comment not found)"}
-            </div>
+            <div style={{ marginTop: 4 }}>{r.comment_text || "(comment text not recorded)"}</div>
           </div>
         ))}
       </section>

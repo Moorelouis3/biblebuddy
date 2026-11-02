@@ -96,6 +96,11 @@ create table if not exists public.comment_reply_log (
   comment_id    uuid not null,
   article_slug  text,
   fingerprint   text not null,        -- normalised text, so repeats group together
+  -- A copy of what the person wrote. The three sources live in three
+  -- different tables, so the review list would otherwise need a join per
+  -- source, and a deleted comment would leave a blank line with no way to
+  -- tell what it had been.
+  comment_text  text,
   word_count    integer not null default 0,
   category_slug text,
   rule_id       uuid,

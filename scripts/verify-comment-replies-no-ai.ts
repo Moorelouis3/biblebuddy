@@ -30,8 +30,13 @@ const WATCHED = [
   "lib/commentReplies/normalise.ts",
   "lib/commentReplies/selectTemplate.ts",
   "lib/commentReplies/seed.ts",
+  "lib/commentReplies/sources.ts",
   "lib/commentReplies/store.ts",
   "lib/commentReplies/types.ts",
+  // The admin page can create templates, so it is on the list too: a panel
+  // that could write a reply with a model would be the same leak by another
+  // door.
+  "app/api/admin/comment-replies/route.ts",
 ];
 
 // "openai" appears in the route's own comments explaining why it is gone, so

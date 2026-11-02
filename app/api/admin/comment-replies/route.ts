@@ -57,12 +57,11 @@ export async function GET(request: NextRequest) {
 
   // The review list is the useful half of this page: comments the system
   // deliberately refused to answer, newest first, for Louis to answer himself.
+  //
+  // The text comes off the log row rather than from a join. The three sources
+  // are three different tables, and a comment that has since been deleted
+  // would otherwise show up as a blank line with no way to tell what it was.
   const review = rows.filter((r) => r.action === "review").slice(0, 60);
-  const reviewIds = review.map((r) => r.comment_id as string);
-  const { data: reviewComments } = reviewIds.length
-    ? await db.from("article_comments").select("id, article_slug, user_name, content, created_at").in("id", reviewIds)
-    : { data: [] as Array<Record<string, unknown>> };
-  const byId = new Map((reviewComments || []).map((c) => [c.id as string, c]));
 
   return NextResponse.json({
     librarySource: library.source,
@@ -78,10 +77,7 @@ export async function GET(request: NextRequest) {
       // The whole point, stated plainly on the page.
       aiCalls: 0,
     },
-    review: review.map((r) => ({
-      ...r,
-      comment: byId.get(r.comment_id as string) ?? null,
-    })),
+    review,
     patterns: patterns.data || [],
   });
 }
