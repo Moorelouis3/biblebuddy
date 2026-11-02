@@ -220,10 +220,10 @@ currently works.
 | | What | Who | Blocking? |
 |---|---|---|---|
 | **0** | ~~Create the Play Console account, pay the $25~~ **done 2026-10-25** | Louis | - |
-| **0b** | Finish account setup: identity documents, Android device check, phone verification | Louis | **Yes - no app can be created until this clears** |
+| **0b** | ~~Finish account setup: identity documents, Android device check, phone verification~~ **all three cleared 2026-11-02** | Louis | - |
 | **1** | ~~Platform scaffold, icon, Linux Codemagic workflow, emulator screenshot step~~ **done 2026-10-25**, unrun | agent | No |
 | **2** | FCM sender + Firebase project + Android OAuth client; push and Google sign-in proven on a real phone | agent, ~1 day | No |
-| **3** | Upload keystore and a signed AAB, create the app, open the closed track | Louis + agent | Needs 0b |
+| **3** | ~~Create the app~~ **done 2026-11-02**. Still to do: upload keystore, signed AAB, open the closed track | Louis + agent | - |
 | **4** | **The opt-in link exists.** Now email the list and ask | Louis | Needs 3 |
 | **5** | Closed test: 12 testers, 14 continuous days | Louis | **This is the schedule** |
 | **6** | Apply for production access, submit, answer review | both | Needs 5 |
@@ -286,7 +286,32 @@ Play Console opens on "Finish setting up your developer account" and will not
 let an app be created until three things clear. All three are Louis's, and the
 second is the one to look at first:
 
-**State on 2026-10-25, evening:** the device check is **done** - Louis borrowed
+**State on 2026-11-02: all three are cleared and the app exists.** Google
+approved the identity documents overnight (email 08:16, console confirmed
+08:19), which unblocked the phone number, and that verified straight after.
+The console went from "Complete account verifications to create apps" to
+"Create your first app" without anything else being asked for.
+
+**The app record, created 2026-11-02:**
+
+| | |
+|---|---|
+| App name | Bible Buddy |
+| Package name | `net.mybiblebuddy.app` - same as the iOS bundle id and the Gradle applicationId, checked against all three before submitting, and permanent |
+| Type | App, Free (Free cannot be changed to Paid after publishing) |
+| Default language | English (United States) |
+| App ID | `4974767716805005449` |
+
+Play App Signing was accepted at creation, so Google holds the real signing
+key and the upload keystore is the thing that must never be lost.
+
+An **"Apply for access to production"** dialog opens by itself on the new
+app's dashboard with an Error on step 1, "About your closed test". That is
+not a fault - it is the 12-tester rule asking for a closed test that has not
+happened yet. Close it; it comes back when there is something to tell it.
+
+**Historic, from 2026-10-25 (kept because it says what the device check
+took):** the device check was **done** - Louis borrowed
 Jessica's Android and cleared it in five minutes, and it has dropped off the
 Console's list. Identity documents are uploaded and with Google. The phone
 number cannot be verified until those documents are approved, so **nothing is

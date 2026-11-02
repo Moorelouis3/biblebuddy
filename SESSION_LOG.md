@@ -12427,3 +12427,13 @@ sent on run 79 at 2026-10-26T07:49:31Z) still has no new reply or decision from 
 changed since the run-238 entry, so no new MARCUS_HANDOFF.md entry and no new push notification this run,
 consistent with runs 80-238.
 Next up: none -- awaiting a decision from Louis (leave the trigger as a no-op, pause it, or give it new scope)
+## 2026-11-02 (morning)
+Marching orders: no PLAN.md in this project; the live plan is
+docs/PLAY_STORE_PLAN.md, which puts everything behind step 0b - the Play
+Console account verifications.
+Today: 0b cleared overnight (Google approved the identity documents at 08:16,
+phone verified straight after), so the Play Console app record got created:
+Bible Buddy, net.mybiblebuddy.app, App, Free, app ID 4974767716805005449.
+Next in that plan is the upload keystore and the first signed AAB, then the
+closed track and its opt-in link - the 14-day, 12-tester clock only starts
+once that link exists.
