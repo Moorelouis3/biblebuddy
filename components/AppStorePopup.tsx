@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { APP_STORE_ID } from "../lib/appReviewPrompt";
+import { canAskForAppStore, silenceAppStoreAsk, snoozeAppStoreAsk } from "../lib/appStoreAsk";
 import { isIOS, isStandalone } from "../lib/installEnvironment";
 import { isNativeApp } from "../lib/nativeApp";
 
@@ -25,32 +26,8 @@ import { isNativeApp } from "../lib/nativeApp";
  * that is not an iPhone or iPad, or once the listing id is cleared.
  */
 
-const STORAGE_KEY = "bb:appstore-popup";
-/** "Not now" is not "never" - it comes back, but not soon enough to nag. */
-const LATER_DAYS = 5;
 /** Let the page settle first; a modal over a half-drawn dashboard reads as an error. */
 const DELAY_MS = 2500;
-
-type Decision = "pending" | "later" | "never";
-
-function readState(): { decision: Decision; at: number } {
-  try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { decision: "pending", at: 0 };
-    const [decision, at] = raw.split(":");
-    return { decision: (decision as Decision) || "pending", at: Number(at) || 0 };
-  } catch {
-    return { decision: "pending", at: 0 };
-  }
-}
-
-function writeState(decision: Decision) {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, `${decision}:${Date.now()}`);
-  } catch {
-    // Private mode. Worst case it asks again next visit, which is survivable.
-  }
-}
 
 type Session = { userId: string; accessToken: string };
 
@@ -129,9 +106,8 @@ export default function AppStorePopup({ enabled }: { enabled: boolean }) {
     // shortcut, and interrupting that with a different install is rude.
     if (isStandalone()) return;
 
-    const { decision, at } = readState();
-    if (decision === "never") return;
-    if (decision === "later" && Date.now() - at < LATER_DAYS * 86_400_000) return;
+    // One shared answer across every surface that asks - see lib/appStoreAsk.
+    if (!canAskForAppStore()) return;
 
     const timer = window.setTimeout(() => {
       setOpen(true);
@@ -147,8 +123,8 @@ export default function AppStorePopup({ enabled }: { enabled: boolean }) {
 
   if (!open) return null;
 
-  const close = (decision: Decision, action: string, label: string) => {
-    writeState(decision);
+  const close = (decide: () => void, action: string, label: string) => {
+    decide();
     setOpen(false);
     void log(action, label);
   };
@@ -178,7 +154,7 @@ export default function AppStorePopup({ enabled }: { enabled: boolean }) {
           href={`https://apps.apple.com/app/id${APP_STORE_ID}`}
           onClick={() => {
             logTapBeacon(session);
-            writeState("never");
+            silenceAppStoreAsk();
             setOpen(false);
           }}
           className="mt-5 flex w-full items-center justify-center gap-3 rounded-2xl bg-[#07162f] px-5 py-3.5 text-white transition hover:opacity-90"
@@ -192,14 +168,14 @@ export default function AppStorePopup({ enabled }: { enabled: boolean }) {
 
         <button
           type="button"
-          onClick={() => close("later", "appstore_popup_later", "App Store popup - not now")}
+          onClick={() => close(snoozeAppStoreAsk, "appstore_popup_later", "App Store popup - not now")}
           className="mt-2 w-full rounded-2xl px-5 py-2.5 text-sm font-bold text-gray-500 transition hover:text-gray-700"
         >
           Not now
         </button>
         <button
           type="button"
-          onClick={() => close("never", "appstore_popup_never", "App Store popup dismissed forever")}
+          onClick={() => close(silenceAppStoreAsk, "appstore_popup_never", "App Store popup dismissed forever")}
           className="mt-1 w-full px-5 py-1 text-xs font-semibold text-gray-400 transition hover:text-gray-600"
         >
           Don&apos;t show this again

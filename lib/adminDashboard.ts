@@ -927,7 +927,8 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   // Taps arrive on two different rails: the public landing page writes
   // landing_page_events (no account yet), while the in-app banner writes
   // master_actions (signed in). Neither alone is the total.
-  const appActionRows = await fetchAll<ActionRow>(admin, "master_actions", "user_id, action_type, created_at", (q) =>
+  type AppActionRow = ActionRow & { event_metadata: { placement?: string } | null };
+  const appActionRows = await fetchAll<AppActionRow>(admin, "master_actions", "user_id, action_type, created_at, event_metadata", (q) =>
     q
       .in("action_type", ["native_app_session", "install_banner_app_store_clicked", "appstore_popup_clicked"])
       .gte("created_at", previous.start.toISOString())
@@ -952,6 +953,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     bottom_cta: "Landing page - bottom",
     home_banner: "In-app banner",
     login_popup: "iPhone popup on sign-in",
+    completion_popup: "After finishing a reading",
   };
 
   const tapsIn = (r: Range) => {
@@ -965,10 +967,14 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     }
     for (const a of appActionRows) {
       if (!within(a.created_at, r)) continue;
+      // Both the dashboard banner and the after-a-reading popup write
+      // install_banner_app_store_clicked, so the action type alone cannot
+      // tell them apart - the placement in the metadata can.
       const key =
-        a.action_type === "install_banner_app_store_clicked" ? "home_banner"
-        : a.action_type === "appstore_popup_clicked" ? "login_popup"
-        : null;
+        a.action_type === "appstore_popup_clicked" ? "login_popup"
+        : a.action_type === "install_banner_app_store_clicked"
+          ? a.event_metadata?.placement || "home_banner"
+          : null;
       if (!key) continue;
       byPlacement.set(key, (byPlacement.get(key) || 0) + 1);
       total += 1;

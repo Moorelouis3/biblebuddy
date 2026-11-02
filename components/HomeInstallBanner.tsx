@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabaseClient";
 import { getInstallEnvironment, getInstallPlatform, isStandalone } from "../lib/installEnvironment";
 import { isNativeApp } from "../lib/nativeApp";
 import { APP_STORE_ID } from "../lib/appReviewPrompt";
+import { canAskForAppStore, silenceAppStoreAsk, snoozeAppStoreAsk } from "../lib/appStoreAsk";
 import {
   INSTALL_PROMPT_STORAGE_KEY,
   clearCapturedInstallPrompt,
@@ -44,6 +45,9 @@ export function shouldShowInstallBanner(): boolean {
   if (isNativeApp()) return false;
   const env = getInstallEnvironment();
   if (env.isStandalone) return false;
+  // On an iPhone this banner only ever offers the App Store, so a "no" given
+  // to any of the other asks silences it too.
+  if (shouldOfferAppStore() && !canAskForAppStore()) return false;
   const state = readLocalInstallState();
   if (state === "never" || state === "installed") return false;
   try {
@@ -91,6 +95,9 @@ const APP_STORE_COPY = {
  */
 export function openAppStore(placement: string) {
   if (!APP_STORE_ID) return;
+  // They are going to the listing. Whether they install is something iOS
+  // will never tell us, but either way they do not need asking again.
+  silenceAppStoreAsk();
   void logInstallBannerEvent("install_banner_app_store_clicked", "App Store tapped", {
     store: "ios",
     placement,
@@ -322,6 +329,7 @@ export default function HomeInstallBanner() {
   };
 
   const handleDontShowAgain = () => {
+    if (shouldOfferAppStore()) silenceAppStoreAsk();
     writeLocalInstallState("never");
     setVisible(false);
     void writeInstallPromptColumns({ install_prompt_state: "never" });
@@ -329,6 +337,7 @@ export default function HomeInstallBanner() {
   };
 
   const handleSheetClose = () => {
+    snoozeAppStoreAsk();
     setSheetOpen(false);
     // iOS can't confirm the install, so hide for this visit only — the banner
     // returns next visit until the app is launched from the home screen icon
