@@ -343,8 +343,13 @@
       "startedAt": "2026-11-03T05:16:59.571Z",
       "committedAt": "2026-11-03T05:30:46.652Z",
       "publishedAt": "2026-11-03T09:16:52.440Z"
+    },
+    "advent-vs-christmas": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-03T09:17:03.804Z"
     }
   },
-  "nextTopic": "advent-vs-christmas",
-  "updatedAt": "2026-11-03T09:16:52.440Z"
+  "nextTopic": "who-was-saint-lucy",
+  "updatedAt": "2026-11-03T09:17:03.804Z"
 }
