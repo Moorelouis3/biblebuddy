@@ -82,6 +82,12 @@
         "what-is-an-advent-wreath",
         "who-were-the-wise-men"
       ]
+    },
+    "2026-11-03": {
+      "committed": 1,
+      "slugs": [
+        "why-some-christians-do-not-celebrate-christmas"
+      ]
     }
   },
   "articles": {
@@ -325,10 +331,11 @@
     },
     "why-some-christians-do-not-celebrate-christmas": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-03T01:17:08.788Z"
+      "status": "committed",
+      "startedAt": "2026-11-03T01:17:08.788Z",
+      "committedAt": "2026-11-03T01:26:58.828Z"
     }
   },
   "nextTopic": "who-was-saint-stephen",
-  "updatedAt": "2026-11-03T01:17:08.788Z"
+  "updatedAt": "2026-11-03T01:26:58.848Z"
 }

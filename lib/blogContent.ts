@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "why-some-christians-do-not-celebrate-christmas",
+    title: "Why Do Some Christians Not Celebrate Christmas?",
+    description:
+      "Why do some Christians not celebrate Christmas? What Jehovah's Witnesses, Reformed Christians, and Quakers each actually believe, and what the Bible says.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/why-some-christians-do-not-celebrate-christmas",
+    publishedAt: "2026-11-03",
+    readTime: "14 min read",
+    image: "/blog-banners/why-some-christians-do-not-celebrate-christmas.jpg",
+    groupPost: {
+      title: "Why Do Some Christians Not Celebrate Christmas? 📖",
+      content:
+        "Some Christians skip Christmas entirely, and they do not all share one reason.\nThree groups, three completely different arguments.\n\n📌 Puritans once made celebrating Christmas an actual crime, with a real fine attached.\n\n📖 Jehovah's Witnesses cite pagan roots and a birth date the Bible never states.\n📖 Reformed Christians under the regulative principle reject any worship God never commanded.\n📖 Quakers hold that every single day already belongs equally to God.\n\nNew article on:\n🟢 the real history of **Christmas bans** in England, Scotland, and New England\n🟢 what the **regulative principle of worship** actually argues\n🟢 what **Romans 14** says to both sides of this disagreement\n\nDoes your own church keep Christmas, or skip it? 🙏",
+    },
+  },
+  {
     slug: "what-does-the-bible-say-about-tattoos",
     title: "What Does the Bible Say About Tattoos?",
     description:
