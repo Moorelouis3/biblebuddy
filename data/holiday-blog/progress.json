@@ -84,10 +84,11 @@
       ]
     },
     "2026-11-03": {
-      "committed": 2,
+      "committed": 3,
       "slugs": [
         "why-some-christians-do-not-celebrate-christmas",
-        "who-was-saint-stephen"
+        "who-was-saint-stephen",
+        "advent-vs-christmas"
       ]
     }
   },
@@ -346,10 +347,11 @@
     },
     "advent-vs-christmas": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-03T09:17:03.804Z"
+      "status": "committed",
+      "startedAt": "2026-11-03T09:17:03.804Z",
+      "committedAt": "2026-11-03T09:31:16.145Z"
     }
   },
   "nextTopic": "who-was-saint-lucy",
-  "updatedAt": "2026-11-03T09:17:03.804Z"
+  "updatedAt": "2026-11-03T09:31:16.164Z"
 }

@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "advent-vs-christmas",
+    title: "What Is the Difference Between Advent and Christmas?",
+    description:
+      "What is the difference between Advent and Christmas? Why Advent is a season of waiting, when Christmas actually starts and ends, and how churches differ.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/advent-vs-christmas",
+    publishedAt: "2026-11-03",
+    readTime: "11 min read",
+    image: "/blog-banners/advent-vs-christmas.jpg",
+    groupPost: {
+      title: "What Is the Difference Between Advent and Christmas? 📖",
+      content:
+        "Your tree is up. Your church is still lighting one purple candle.\nThose are not the same season.\n\n📌 Advent waits. Christmas celebrates. They are not just two words for December.\n\n📖 Christmas actually starts later than most people think.\n📖 The season also runs weeks longer than one single morning.\n\nNew article on:\n🟢 why Advent is **not** an early Christmas\n🟢 the real **colors and dates** behind each season\n🟢 why Catholics and Protestants mark this **differently**\n\nDid your family treat Advent as its own season growing up? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-6-explained",
     title: "Deuteronomy 6 Explained: The Shema and Total Love for God",
     description:
