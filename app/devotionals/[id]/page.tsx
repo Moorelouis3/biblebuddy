@@ -2061,8 +2061,19 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                     style={{ width: `${Math.min(100, Math.max(0, progressPercent))}%` }}
                   />
                 </div>
+                {/* WHY THE PERCENTAGE AND THE DAY COUNT DISAGREE.
+                    On a modern study plan the bar is every task ticked over
+                    every task there is (Louis, 2026-10-25 - see the note on
+                    progressPercent above), so somebody who has read 24 of 31
+                    days and skipped the trivia is genuinely 39% through the
+                    work, not 77%. The maths is right and deliberate; what was
+                    wrong was the word "complete" beside it, which made the two
+                    numbers look like one of them was broken. So the label now
+                    says what it counts. Nothing stored changed. */}
                 <div className="mt-2 flex items-center justify-between text-xs font-black text-[var(--bb-text-secondary,#5f6368)]">
-                  <span>{Math.round(progressPercent)}% complete</span>
+                  <span>
+                    {Math.round(progressPercent)}%{isModernStudyPlan ? " of all tasks done" : " complete"}
+                  </span>
                   <span>
                     {isModernStudyPlan ? daysTouched : completedDays}/{totalUnits}{" "}
                     {isChapterJourneyStudy ? (isModernStudyPlan ? "days" : "chapters") : "sections"}

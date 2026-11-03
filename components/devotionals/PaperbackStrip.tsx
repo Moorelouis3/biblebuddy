@@ -13,7 +13,16 @@
  * to stay out of the way of the person who is here to read. Renders nothing
  * at all when the study has no paperback_url, so studies without a printed
  * edition are untouched.
+ *
+ * 2026-11-03: the words and the gold are now the ones on the full-size Amazon
+ * button in components/library/studyGuideShared, so a reader meets the same
+ * offer in the same language wherever it appears - "Buy the Physical Copy on
+ * Amazon", never "paperback" in one place and "hardcover" in another. The
+ * shape stays a strip, because where it sits was a separate decision and it
+ * still holds: above somebody who is here to read.
  */
+const AMAZON_GOLD_EDGE = "#c39037";
+
 export default function PaperbackStrip({ href, title }: { href: string | null | undefined; title?: string }) {
   if (!href) return null;
 
@@ -22,20 +31,24 @@ export default function PaperbackStrip({ href, title }: { href: string | null | 
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="mb-4 flex items-center gap-3 rounded-2xl border border-[var(--bb-card-border,#e3ecf8)] bg-[var(--bb-surface-soft,#f7faff)] px-4 py-3 transition hover:border-[var(--bb-accent,#2f7fe8)] hover:bg-[var(--bb-accent-soft,#eaf5ff)]"
+      className="mb-4 flex items-center gap-3 rounded-2xl border bg-[#fffaf1] px-4 py-3 transition hover:brightness-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c99a45] focus-visible:ring-offset-2"
+      style={{ borderColor: AMAZON_GOLD_EDGE }}
     >
       <span aria-hidden className="text-xl">
         📕
       </span>
       <span className="min-w-0 flex-1">
-        <span className="block text-sm font-black text-[var(--bb-text-primary,#111827)]">
-          Prefer it in print?
-        </span>
-        <span className="block text-xs font-semibold text-[var(--bb-text-muted,#6b7280)]">
-          {title ? `${title} as a paperback` : "Get the paperback"}
+        <span className="block text-sm font-black text-[#1d1208]">Prefer it in print?</span>
+        <span className="block text-xs font-semibold text-[#8a6124]">
+          {title ? `${title}, as a real book` : "Get the printed edition"}
         </span>
       </span>
-      <span className="shrink-0 text-sm font-black text-[var(--bb-accent,#2f7fe8)]">Buy →</span>
+      {/* The full wording needs room; a narrow phone gets the short form
+          rather than a wrapped or clipped one. */}
+      <span className="shrink-0 text-sm font-black text-[#8a6124]">
+        <span className="hidden sm:inline">Buy the Physical Copy on Amazon →</span>
+        <span className="sm:hidden">Buy →</span>
+      </span>
     </a>
   );
 }

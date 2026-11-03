@@ -50,6 +50,51 @@ export const BIBLE_YEAR_SHELF_COVER = "/bible-in-one-year-cover.png";
 export const BIBLE_YEAR_SHELF_TITLE = "Bible in One Year";
 export const BIBLE_YEAR_SHELF_SUBTITLE = "A 365-Day Journey Through God's Word";
 
+/**
+ * 2026-11-03: the shelf entry grew up into a study guide.
+ *
+ * Louis: "wisdom of proverbs is the Template!" Bible in One Year used to open
+ * its own screen - a hero, three filter pills and 365 day cards - and now it
+ * opens the same detail page every other guide opens, so it stops reading as
+ * a separate product and reads as the longest study in the Library.
+ *
+ * There is still no `devotionals` row behind it and there deliberately is not
+ * one: its days, its progress and its covers live in their own tables and in
+ * lib/bibleInOneYearPlan.ts, and none of that moved. This is the row the
+ * catalog would have if it existed, built in memory so the shared components
+ * can read a plan the same way they read a devotional.
+ *
+ * `paperback_url` stays null until Amazon issues the ASIN - both formats went
+ * to KDP on 2026-10-24 and a guessed URL is a dead link on a live page. The
+ * same note sits on PAPERBACK_URL in components/bibleinoneyear/
+ * BibleInOneYearLandingPage.tsx; set both when the Live email arrives.
+ */
+export const BIBLE_YEAR_TOTAL_CHAPTERS = 1189;
+
+export function bibleYearShelfStudy(): LibraryStudy {
+  return {
+    id: BIBLE_YEAR_SHELF_ID,
+    title: BIBLE_YEAR_SHELF_TITLE,
+    subtitle: "A 365-Day Bible Buddy Study",
+    description:
+      "Read the whole Bible in a year, with study notes that explain every day as you go. " +
+      "Free, self-paced, and nothing locks or expires if you fall behind. " +
+      `All ${BIBLE_YEAR_TOTAL_CHAPTERS} chapters of Scripture, split across 365 days.`,
+    total_days: 365,
+    category: null,
+    cover_image: BIBLE_YEAR_SHELF_COVER,
+    is_published: true,
+    available_from: null,
+    paperback_url: null,
+    sort_order: null,
+  };
+}
+
+/** True for the one shelf entry that is a reading plan rather than a devotional. */
+export function isBibleYearStudyId(id: string) {
+  return id === BIBLE_YEAR_SHELF_ID;
+}
+
 /** The filter pills. `null` category studies appear only under All Studies. */
 export const LIBRARY_CATEGORIES: Array<{ value: string; label: string }> = [
   { value: "all", label: "All Studies" },

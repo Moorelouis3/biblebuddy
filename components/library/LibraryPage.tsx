@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
-import { bibleYearHref, fetchBibleYearPosition, BIBLE_YEAR_TOTAL_DAYS } from "../../lib/bibleYearProgress";
+import { fetchBibleYearPosition, BIBLE_YEAR_TOTAL_DAYS } from "../../lib/bibleYearProgress";
 import {
   BIBLE_YEAR_SHELF_COVER,
   BIBLE_YEAR_SHELF_ID,
@@ -241,14 +241,16 @@ export default function LibraryPage() {
                 </button>
               );
             })}
-            {/* Bible in One Year sits on the shelf like a book, but it is a
-                reading plan: the card is new, the pages behind it are the same
-                ones it always opened. It carries no category, so it shows
-                under All Studies only. */}
+            {/* Bible in One Year sits on the shelf like a book and now opens
+                like one: the same detail page every other guide opens, not its
+                old hero-and-365-cards screen. Louis, 2026-11-03: "wisdom of
+                proverbs is the Template!" The plan itself, its days and its
+                progress are untouched - only the way in changed. It carries no
+                category, so it shows under All Studies only. */}
             {category === "all" && bibleYear ? (
               <button
                 type="button"
-                onClick={() => router.push(bibleYearHref())}
+                onClick={() => openStudy(BIBLE_YEAR_SHELF_ID)}
                 className="group text-left"
               >
                 <div className="overflow-hidden rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-surface-soft,#f1f5fa)] shadow-sm transition group-hover:border-[var(--bb-accent,#2f7fe8)]">

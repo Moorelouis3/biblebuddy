@@ -22,12 +22,20 @@ export type BibleYearPosition = {
   planFinished: boolean;
   /** The furthest day actually finished, which differs from planDay - 1 for anyone who skipped. */
   highestReadDay: number;
+  /**
+   * How many days are actually finished. Not highestReadDay: somebody on day
+   * 91 who skipped six days has read 85. The progress bar and the "N of 365"
+   * figure want this one, because it is the only one that cannot overstate.
+   */
+  completedDays: number;
+  /** Every finished day, for the progress map's per-day state. */
+  completedDayNumbers: number[];
 };
 
 export function calculateBibleYearPosition(
   rows: Array<{ day_number: number | string; reading_completed: boolean | null }> | null | undefined,
 ): BibleYearPosition {
-  if (!Array.isArray(rows)) return { planDay: null, planFinished: false, highestReadDay: 0 };
+  if (!Array.isArray(rows)) return EMPTY_POSITION;
 
   const readDays = new Set(
     rows.filter((row) => row.reading_completed === true).map((row) => Number(row.day_number)),
@@ -41,12 +49,23 @@ export function calculateBibleYearPosition(
     planDay: nextDay ? nextDay.dayNumber : BIBLE_YEAR_TOTAL_DAYS,
     planFinished: !nextDay,
     highestReadDay: highestRead,
+    completedDays: readDays.size,
+    completedDayNumbers: [...readDays].sort((a, b) => a - b),
   };
 }
 
+/** Signed out, or nothing read yet. */
+export const EMPTY_POSITION: BibleYearPosition = {
+  planDay: null,
+  planFinished: false,
+  highestReadDay: 0,
+  completedDays: 0,
+  completedDayNumbers: [],
+};
+
 /** The same position, fetched for a user. Returns the empty position when signed out. */
 export async function fetchBibleYearPosition(userId: string | null): Promise<BibleYearPosition> {
-  if (!userId) return { planDay: null, planFinished: false, highestReadDay: 0 };
+  if (!userId) return EMPTY_POSITION;
   const { data, error } = await supabase
     .from("bible_year_day_progress")
     .select("day_number, reading_completed")
@@ -54,7 +73,7 @@ export async function fetchBibleYearPosition(userId: string | null): Promise<Bib
 
   if (error) {
     console.error("[BIBLE YEAR] Could not load progress:", error.message);
-    return { planDay: null, planFinished: false, highestReadDay: 0 };
+    return EMPTY_POSITION;
   }
   return calculateBibleYearPosition(data as any);
 }
@@ -93,6 +112,40 @@ export function bibleYearHref() {
  * Order does not matter to URLSearchParams, but solo=1 comes first here as a
  * reminder of what makes it work.
  */
+/**
+ * The Progress Map's groups: Days 1-30, 31-60, ... 361-365.
+ *
+ * 365 day cards in one list is not a map, it is a scroll. Thirteen groups with
+ * one open at a time means at most 30 rows are ever in the DOM, and a reader
+ * going to Day 300 opens one group instead of passing 299 cards.
+ *
+ * Here rather than in the component so the arithmetic can be checked without
+ * rendering anything - see scripts/verify-bible-year-overview.ts.
+ */
+export const BIBLE_YEAR_RANGE_SIZE = 30;
+
+export type BibleYearRange = { start: number; end: number; label: string };
+
+export const BIBLE_YEAR_RANGES: BibleYearRange[] = (() => {
+  const out: BibleYearRange[] = [];
+  for (let start = 1; start <= BIBLE_YEAR_TOTAL_DAYS; start += BIBLE_YEAR_RANGE_SIZE) {
+    const end = Math.min(start + BIBLE_YEAR_RANGE_SIZE - 1, BIBLE_YEAR_TOTAL_DAYS);
+    out.push({ start, end, label: `Days ${start}–${end}` });
+  }
+  return out;
+})();
+
+/** Which group holds a day. Out-of-range days fall back to the first group. */
+export function bibleYearRangeIndexFor(day: number): number {
+  const index = BIBLE_YEAR_RANGES.findIndex((r) => day >= r.start && day <= r.end);
+  return index === -1 ? 0 : index;
+}
+
+/** How far through the plan, as a whole percent. Never over 100. */
+export function bibleYearPercent(completedDays: number): number {
+  return Math.min(100, Math.round((completedDays / BIBLE_YEAR_TOTAL_DAYS) * 100));
+}
+
 export function bibleYearDayHref(dayNumber: number): string {
   const day = Math.min(Math.max(Math.round(dayNumber), 1), BIBLE_YEAR_TOTAL_DAYS);
   return `/plan?solo=1&view=bible-year&day=${day}`;
