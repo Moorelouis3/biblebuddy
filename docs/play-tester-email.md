@@ -18,12 +18,25 @@ is why the email welcomes more.
 The two steps cannot be merged: joining the group is what grants permission
 to see the test, and the second link is what installs it.
 
-**One known rough edge.** Someone who taps step 2 before step 1 has gone
-through is told they are not a tester, which reads like a broken link rather
-than a missing step. The copy below does not warn about that - a deliberate
-choice to keep it short. If replies start coming in saying the link is
-broken, the answer is "join the group first, then try again", and it is worth
-adding a line.
+**The red box is load-bearing.** Someone who taps step 2 before step 1 has
+gone through is told they are not a tester, which reads like a broken link
+rather than a missing step - and the people most likely to get it wrong are
+the ones skimming on a phone. Hence Louis's call: "make STEP 1 big and red
+or something like do step 1 first please!" The warning sits above both
+buttons, in red, with its own border, and step 1's button is red while step
+2's is the usual teal.
+
+## Where it lives
+
+- `drafts/play-android-testers.html` - what actually gets sent
+- `drafts/play-android-testers.txt` - the plain-text part
+- Campaign id `play-android-testers`, created as a draft, audience 5,473
+  (the whole list, no tag)
+
+Drive it with `npm run campaign -- status|start|pause play-android-testers`.
+A test copy needs `CRON_SECRET` in `.env.local`, which is not there - it only
+exists on Vercel - so the proof before sending was a local render rather than
+a real test send.
 
 Send to the whole list. Twelve out of several thousand is a low bar.
 
