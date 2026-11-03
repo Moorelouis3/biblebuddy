@@ -21,6 +21,7 @@ import {
 import { getInstallEnvironment } from "../lib/installEnvironment";
 import InstallIOSSheet from "./InstallIOSSheet";
 import { isNativeApp } from "../lib/nativeApp";
+import { signupSurface } from "../lib/appDownload";
 import { recordNativeAppUse } from "../lib/nativeUsage";
 import AppStorePopup from "./AppStorePopup";
 import DeletionCancelledNotice from "./DeletionCancelledNotice";
@@ -1402,11 +1403,17 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             email: null,
           });
 
+          // This is the path every Apple and Google account takes: the
+          // provider sends them straight to the dashboard, so /signup never
+          // gets to record them. Stamping the surface here is what makes the
+          // app-versus-browser split cover all of them and not just the
+          // handful who typed an email and a password.
           await supabase.from("master_actions").insert({
             user_id: userId,
             username: displayName,
             action_type: ACTION_TYPE.user_signup,
             action_label: "Signed up for Bible Buddy",
+            event_metadata: signupSurface(),
             created_at: new Date().toISOString(),
           });
         }

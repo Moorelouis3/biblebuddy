@@ -26,6 +26,8 @@
  * is advertised to readers as a working Play listing.
  */
 
+import { isNativeApp } from "@/lib/nativeApp";
+
 export type StorePlatform = "ios" | "android" | "other";
 
 type StoreLinks = {
@@ -81,4 +83,27 @@ export function storeHref(platform: StorePlatform): string {
  */
 export function showsBothStores(platform: StorePlatform): boolean {
   return androidIsLive() && platform === "other";
+}
+
+/** Where an account was created: in the store app or a browser, and on what. */
+export type SignupSurface = { surface: "app" | "web"; platform: StorePlatform };
+
+/**
+ * Stamped on the signup event so "how many of today's new people came from
+ * the app" is a question with an answer (Louis, 2026-11-03).
+ *
+ * Until now the only clue was the sign-in provider: an Apple account almost
+ * certainly means an iPhone, but it cannot tell the app apart from Safari on
+ * the same phone, and it says nothing at all about a Google or email signup.
+ * The shell already appends NATIVE_APP_UA_MARKER to its user agent, so the
+ * answer was being thrown away rather than missing.
+ *
+ * Read on the client at the moment of signup - the server never sees this.
+ */
+export function signupSurface(): SignupSurface {
+  if (typeof navigator === "undefined") return { surface: "web", platform: "other" };
+  return {
+    surface: isNativeApp() ? "app" : "web",
+    platform: detectStorePlatform(navigator.userAgent, navigator.maxTouchPoints ?? 0),
+  };
 }

@@ -10,6 +10,7 @@ import BrandHomeLink from "@/components/BrandHomeLink";
 import { supabase } from "../../lib/supabaseClient";
 import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending, recordTermsAcceptance } from "../../lib/termsAcceptance";
+import { signupSurface } from "@/lib/appDownload";
 import { signInWithProviderNatively } from "../../lib/nativeAuth";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { reportCloserSignup } from "../../lib/closerSignup";
@@ -211,6 +212,7 @@ export default function SignupPage() {
           username,
           action_type: ACTION_TYPE.user_signup,
           action_label: "Signed up for Bible Buddy",
+          event_metadata: signupSurface(),
           created_at: new Date().toISOString(),
         });
       }

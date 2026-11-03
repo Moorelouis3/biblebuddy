@@ -46,10 +46,22 @@ export function shouldShowInstallBanner(): boolean {
   const env = getInstallEnvironment();
   if (env.isStandalone) return false;
   // On an iPhone this banner only ever offers the App Store, so a "no" given
-  // to any of the other asks silences it too.
-  if (shouldOfferAppStore() && !canAskForAppStore()) return false;
-  const state = readLocalInstallState();
-  if (state === "never" || state === "installed") return false;
+  // to any of the other asks silences it too - and ONLY those asks.
+  //
+  // It used to fall through to the Add to Home Screen bookkeeping as well,
+  // which quietly shut the App Store ask for everyone who had ever taken the
+  // home-screen shortcut (241 of them) or said never to it. That is the one
+  // thing lib/appStoreAsk.ts says must not happen: a bookmark somebody took
+  // in August is not an answer to "do you want the real app", which did not
+  // exist until 2026-11-01. It showed: install_banner_app_store_clicked was
+  // zero for its whole life, and iPhone traffic on this banner stopped dead
+  // on 14 October.
+  if (shouldOfferAppStore()) {
+    if (!canAskForAppStore()) return false;
+  } else {
+    const state = readLocalInstallState();
+    if (state === "never" || state === "installed") return false;
+  }
   try {
     if (window.sessionStorage.getItem(SESSION_HIDE_KEY) === "1") return false;
   } catch {
