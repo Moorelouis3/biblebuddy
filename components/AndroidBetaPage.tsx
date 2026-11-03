@@ -100,7 +100,8 @@ export default function AndroidBetaPage() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => track("android_page_step1")}
-            className="mt-3 flex w-full items-center justify-center rounded-2xl bg-[#c62828] px-5 py-4 text-base font-black text-white transition hover:-translate-y-0.5"
+            className="mt-3 flex w-full items-center justify-center rounded-2xl bg-[#c62828] px-5 py-4 text-base font-black transition hover:-translate-y-0.5"
+            style={{ color: "#ffffff" }}
           >
             Join the group
           </a>
@@ -114,6 +115,23 @@ export default function AndroidBetaPage() {
           <p className="mt-1 text-sm font-semibold leading-6 text-[#3c4a63]">
             Only works once Step 1 has gone through. Give it a minute if it does not.
           </p>
+          {/* Light blue, and the colour is an inline style, not a class
+              (Louis, 2026-11-03: "cant read the button").
+
+              This shipped as bg-[#07162f] text-white and rendered as a solid
+              navy block with no text on it at all. The reason is a cascade
+              trap worth knowing, because it applies to every <a> on the site:
+              globals.css declares `a { color: inherit }` OUTSIDE any @layer,
+              and unlayered CSS beats layered CSS. Tailwind v4 puts its
+              utilities in a layer, so on an anchor every text-colour class -
+              text-white, text-[#fff], any of them - loses to that rule and
+              the link just inherits its parent's colour. Here the parent is
+              <main className="text-[#07162f]">, so it painted navy on navy.
+
+              Measured on the live site: .text-white on a <div> gives white,
+              on an <a> gives #101827. A <span> inside the anchor would also
+              work; an inline style is simpler and cannot be undone by a
+              later class. Do not replace these with a text-* class. */}
           <a
             href={TESTER_OPT_IN_URL}
             target="_blank"
@@ -122,7 +140,8 @@ export default function AndroidBetaPage() {
               recordPlayStoreTap();
               track("android_page_step2");
             }}
-            className="mt-3 flex w-full items-center justify-center rounded-2xl bg-[#07162f] px-5 py-4 text-base font-black text-white transition hover:-translate-y-0.5"
+            className="mt-3 flex w-full items-center justify-center rounded-2xl bg-[#9fd0ff] px-5 py-4 text-base font-black transition hover:-translate-y-0.5 hover:bg-[#8ac5ff]"
+            style={{ color: "#07162f" }}
           >
             Download on Google Play
           </a>
