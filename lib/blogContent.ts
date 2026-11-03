@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-4-explained",
+    title: "Deuteronomy 4 Explained: No Graven Image and a Future Foretold",
+    description:
+      "Deuteronomy 4 explained verse by verse: the ban on graven images, Moses' prophecy of exile and return, Israel's unique experience of God, and the first cities of refuge.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-4-explained",
+    publishedAt: "2026-11-03",
+    readTime: "15 min read",
+    image: "/blog-banners/deuteronomy-4-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 4 Explained 📖",
+      content:
+        "Israel heard God's voice out of fire.\nThey never saw a shape to go with it.\n\n📌 Moses says that gap is exactly why no image of God is allowed.\n\n📖 God calls Himself a consuming fire, and also merciful.\n📖 Moses predicts exile centuries before it happens.\n📖 Three cities of refuge get set apart before the sermon even ends.\n\nNew article on:\n🟢 why **no similitude** was ever shown at Horeb\n🟢 the **exile and return** Moses forecasts in one breath\n🟢 what it means that **there is none else**\n\nWhat has quietly taken the place only God was meant to hold in your life? 🙏",
+    },
+  },
+  {
     slug: "why-some-christians-do-not-celebrate-christmas",
     title: "Why Do Some Christians Not Celebrate Christmas?",
     description:
