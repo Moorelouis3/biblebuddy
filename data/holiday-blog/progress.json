@@ -334,8 +334,13 @@
       "status": "committed",
       "startedAt": "2026-11-03T01:17:08.788Z",
       "committedAt": "2026-11-03T01:26:58.828Z"
+    },
+    "who-was-saint-stephen": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-03T05:16:59.571Z"
     }
   },
-  "nextTopic": "who-was-saint-stephen",
-  "updatedAt": "2026-11-03T05:16:33.273Z"
+  "nextTopic": "advent-vs-christmas",
+  "updatedAt": "2026-11-03T05:16:59.571Z"
 }
