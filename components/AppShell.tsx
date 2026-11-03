@@ -24,6 +24,7 @@ import { isNativeApp } from "../lib/nativeApp";
 import { signupSurface } from "../lib/appDownload";
 import { recordNativeAppUse } from "../lib/nativeUsage";
 import AppStorePopup from "./AppStorePopup";
+import AndroidBetaPopup from "./AndroidBetaPopup";
 import DeletionCancelledNotice from "./DeletionCancelledNotice";
 import BibleLockWatcher from "./BibleLockWatcher";
 import BibleLockLiftedToast from "./BibleLockLiftedToast";
@@ -2937,6 +2938,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           Held back while a full-name prompt or the email gate is up, so two
           dialogs never stack on top of each other. */}
       <AppStorePopup
+        enabled={Boolean(isLoggedIn && userId && !showFullNameModal && !showEmailConfirmationGate)}
+      />
+
+      {/* ANDROID BETA POPUP - the same gate, the other half of the phones.
+          The two can never both appear: one requires an iPhone and the
+          other requires Android, so they are passed the same condition
+          rather than being sequenced. */}
+      <AndroidBetaPopup
         enabled={Boolean(isLoggedIn && userId && !showFullNameModal && !showEmailConfirmationGate)}
       />
 

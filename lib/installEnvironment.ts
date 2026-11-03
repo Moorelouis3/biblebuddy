@@ -32,6 +32,19 @@ export function isIOS(): boolean {
   return navigator.userAgent.includes("Macintosh") && navigator.maxTouchPoints > 1;
 }
 
+/**
+ * An Android phone or tablet in a browser.
+ *
+ * Deliberately a plain user-agent test. Android has no equivalent of the
+ * iPadOS-pretends-to-be-a-Mac problem, and Chrome on a Chromebook reports
+ * CrOS rather than Android, so it is not caught here - which is right, since
+ * a Chromebook cannot install from Play the way the beta asks.
+ */
+export function isAndroid(): boolean {
+  if (typeof navigator === "undefined") return false;
+  return /Android/i.test(navigator.userAgent);
+}
+
 export function isInAppBrowser(): boolean {
   if (typeof navigator === "undefined") return false;
   return /Instagram|FBAN|FBAV/i.test(navigator.userAgent);
@@ -44,7 +57,7 @@ export function getInstallPlatform(): InstallPlatform {
   if (typeof navigator === "undefined") return "desktop";
   if (isInAppBrowser()) return "in_app";
   if (isIOS()) return "iphone";
-  if (/Android/i.test(navigator.userAgent)) return "android";
+  if (isAndroid()) return "android";
   return "desktop";
 }
 

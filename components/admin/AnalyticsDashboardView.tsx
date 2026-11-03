@@ -1174,6 +1174,52 @@ export default function AnalyticsDashboardView({
                   </div>
                 </div>
 
+                {/* The Android closed beta, while it is running. Its own
+                    strip rather than rows in the placement chart: the
+                    numbers that matter are a funnel (page -> group -> Play),
+                    and the twelve that decide whether Bible Buddy can be
+                    listed publicly are not in our data at all. */}
+                {d.appStore.android.betaOpen ? (
+                  <div className="mt-5 rounded-xl border border-[#cfe0b4] bg-[#f3f8ec] px-4 py-3">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <p className="text-xs font-bold text-[#4d7c0f]">Android closed beta</p>
+                      <p className="text-xs font-semibold text-[#64748b]">
+                        needs {d.appStore.android.testersNeeded} testers for 14 days
+                      </p>
+                    </div>
+                    <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                      <div>
+                        <p className="text-xl font-black">{fmt(d.appStore.android.pageViews)}</p>
+                        <p className="text-xs font-semibold text-[#64748b]">opened the page</p>
+                        <Change value={d.appStore.android.pageViewsChange} />
+                      </div>
+                      <div>
+                        <p className="text-xl font-black">{fmt(d.appStore.android.joinedGroup)}</p>
+                        <p className="text-xs font-semibold text-[#64748b]">tapped step 1</p>
+                        <Change value={d.appStore.android.joinedGroupChange} />
+                      </div>
+                      <div>
+                        <p className="text-xl font-black">{fmt(d.appStore.android.wentToPlay)}</p>
+                        <p className="text-xs font-semibold text-[#64748b]">tapped step 2</p>
+                        <Change value={d.appStore.android.wentToPlayChange} />
+                      </div>
+                      <div>
+                        <p className="text-xl font-black">
+                          {fmt(d.appStore.android.landingTaps + d.appStore.android.popupTaps)}
+                        </p>
+                        <p className="text-xs font-semibold text-[#64748b]">
+                          got there ({fmt(d.appStore.android.popupTaps)} from the popup)
+                        </p>
+                      </div>
+                    </div>
+                    <p className="mt-3 text-xs font-semibold leading-5 text-[#64748b]">
+                      Step 2 is as far as we can see &mdash; Play never tells us who
+                      installed. The real tester count is in Play Console under
+                      Closed testing.
+                    </p>
+                  </div>
+                ) : null}
+
                 {d.appStore.tapsByPlacement.length ? (
                   <div className="mt-4">
                     <p className="mb-2 text-xs font-bold text-[#64748b]">Where people tapped</p>

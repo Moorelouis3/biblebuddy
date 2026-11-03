@@ -22,6 +22,7 @@ import { FEATURED_STUDY_ORDER, AVAILABLE_STUDY_TITLES, UPCOMING_STUDIES } from "
  */
 
 import { appStoreConnectConfigured, fetchRecentSales } from "@/lib/appStoreConnect";
+import { BETA_OPEN as ANDROID_BETA_OPEN, TESTERS_NEEDED as ANDROID_TESTERS_NEEDED } from "@/lib/androidBeta";
 
 export type DashboardWindow = "today" | "yesterday" | "7d" | "30d";
 export const DASHBOARD_WINDOWS: DashboardWindow[] = ["today", "yesterday", "7d", "30d"];
@@ -930,7 +931,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   type AppActionRow = ActionRow & { event_metadata: { placement?: string } | null };
   const appActionRows = await fetchAll<AppActionRow>(admin, "master_actions", "user_id, action_type, created_at, event_metadata", (q) =>
     q
-      .in("action_type", ["native_app_session", "install_banner_app_store_clicked", "appstore_popup_clicked"])
+      .in("action_type", ["native_app_session", "install_banner_app_store_clicked", "appstore_popup_clicked", "android_beta_popup_clicked"])
       .gte("created_at", previous.start.toISOString())
       .lt("created_at", current.end.toISOString())
       .neq("user_id", OWNER_USER_ID),
@@ -954,6 +955,11 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     home_banner: "In-app banner",
     login_popup: "iPhone popup on sign-in",
     completion_popup: "After finishing a reading",
+    android_popup: "Android popup on sign-in",
+    android_page_view: "Android beta page opened",
+    android_page_step1: "Android beta - joined group",
+    android_page_step2: "Android beta - went to Play",
+    android_page_ios_fallback: "Android beta page - went to iOS instead",
   };
 
   const tapsIn = (r: Range) => {
@@ -984,6 +990,47 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
 
   const tapsCur = tapsIn(current);
   const tapsPrev = tapsIn(previous);
+
+  /**
+   * The Android beta funnel, counted on its own.
+   *
+   * Google will not open the public listing until TESTERS_NEEDED people
+   * have kept the app installed for a fortnight, so the number that
+   * matters is not taps - it is how many reached step 2, the Play opt-in.
+   * Mixed into the iPhone total it is invisible, hence its own block.
+   *
+   * Still only our side of the line: Play does not tell us who installed,
+   * so step 2 is the furthest we can see. The real tester count lives in
+   * Play Console under Closed testing.
+   */
+  const androidIn = (r: Range) => {
+    const step = (placement: string) =>
+      appTapRows.filter(
+        (t) =>
+          within(t.created_at, r) &&
+          String((t.metadata as { clickedFrom?: string } | null)?.clickedFrom || "") === placement,
+      ).length;
+    const popupTaps = appActionRows.filter(
+      (a) => a.action_type === "android_beta_popup_clicked" && within(a.created_at, r),
+    ).length;
+    const landingTaps = appTapRows.filter(
+      (t) =>
+        within(t.created_at, r) &&
+        (t.metadata as { store?: string } | null)?.store === "android" &&
+        ["hero", "buddies", "bottom_cta"].includes(
+          String((t.metadata as { clickedFrom?: string } | null)?.clickedFrom || ""),
+        ),
+    ).length;
+    return {
+      landingTaps,
+      popupTaps,
+      pageViews: step("android_page_view"),
+      joinedGroup: step("android_page_step1"),
+      wentToPlay: step("android_page_step2"),
+    };
+  };
+  const androidCur = androidIn(current);
+  const androidPrev = androidIn(previous);
 
   const appUsersIn = (r: Range) =>
     new Set(
@@ -1033,6 +1080,18 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     appUsers: appUsersCur.size,
     appUsersChange: change(appUsersCur.size, appUsersIn(previous).size),
     appSessions: appActionRows.filter((a) => a.action_type === "native_app_session" && inCur(a.created_at)).length,
+    android: {
+      betaOpen: ANDROID_BETA_OPEN,
+      testersNeeded: ANDROID_TESTERS_NEEDED,
+      landingTaps: androidCur.landingTaps,
+      popupTaps: androidCur.popupTaps,
+      pageViews: androidCur.pageViews,
+      pageViewsChange: change(androidCur.pageViews, androidPrev.pageViews),
+      joinedGroup: androidCur.joinedGroup,
+      joinedGroupChange: change(androidCur.joinedGroup, androidPrev.joinedGroup),
+      wentToPlay: androidCur.wentToPlay,
+      wentToPlayChange: change(androidCur.wentToPlay, androidPrev.wentToPlay),
+    },
   };
 
   // ----- content -----

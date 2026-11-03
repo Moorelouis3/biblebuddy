@@ -18,7 +18,8 @@ import { isNativeApp } from "@/lib/nativeApp";
 import { markTermsAcceptancePending, TERMS_VERSION } from "@/lib/termsAcceptance";
 import { signInWithProviderNatively } from "@/lib/nativeAuth";
 import { reportCloserSignup } from "@/lib/closerSignup";
-import { APP_STORE_ID, PLAY_PACKAGE } from "@/lib/appReviewPrompt";
+import { APP_STORE_ID } from "@/lib/appReviewPrompt";
+import { BETA_OPEN, androidDestination } from "@/lib/androidBeta";
 
 type PreviewPanel = "watch" | "study" | "trivia";
 type StudyTab = "bible" | "notes";
@@ -1666,13 +1667,14 @@ function MinimalLandingPage({ onStartJourney }: { onStartJourney: (clickedFrom: 
   );
 }
 
-/**
- * Play has no listing yet. Set this true once it does and the Android button
- * below starts rendering beside the Apple one; nothing else needs touching.
- * Until then there is no "coming soon" placeholder - a button nobody can
- * press is worse than no button (Louis, 2026-11-02).
- */
-const PLAY_LIVE = false;
+/** The Play badge's triangle, so the two store buttons read as a pair. */
+function PlayGlyph() {
+  return (
+    <svg viewBox="0 0 512 512" aria-hidden="true" className="h-7 w-7 shrink-0 fill-current">
+      <path d="M47 32C34 39 26 52 26 70v372c0 18 8 31 21 38l208-224L47 32zm294 165L89 23l-3-2 236 254 19-78zM439 233l-60-33-24 97 84-45c13-7 20-17 20-29s-7-22-20-29l-20 39zM86 489l3-2 252-174-19-78-236 254z" />
+    </svg>
+  );
+}
 
 /** Apple's mark, as used on the standard black download badge. */
 function AppleGlyph() {
@@ -1728,7 +1730,11 @@ function LandingStoreCtas({
   onDark?: boolean;
 }) {
   const iosHref = APP_STORE_ID ? `https://apps.apple.com/app/id${APP_STORE_ID}` : null;
-  const androidHref = PLAY_LIVE ? `https://play.google.com/store/apps/details?id=${PLAY_PACKAGE}` : null;
+  // During the closed beta this is our own /android explainer rather than
+  // Play itself - see lib/androidBeta. Internal while that is true, so it
+  // must not open in a new tab.
+  const androidHref = androidDestination();
+  const androidExternal = !BETA_OPEN;
 
   // One width for both buttons so they stack as a pair rather than as two
   // unrelated things that happen to sit together.
@@ -1757,37 +1763,39 @@ function LandingStoreCtas({
         </a>
       ) : null}
 
-      {androidHref ? (
-        <a
-          href={androidHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => trackLandingEvent("clicked_app_store", { clickedFrom: placement, store: "android" })}
-          className={storeButton}
-        >
-          <span className="text-left leading-none">
-            <span className="block text-[0.68rem] font-semibold tracking-[0.01em]">Get it on</span>
-            <span className="mt-0.5 block text-[1.1rem] font-black leading-none">Google Play</span>
-          </span>
-          <LandingLineIcon name="arrow" light />
-        </a>
-      ) : null}
+      <a
+        href={androidHref}
+        {...(androidExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        onClick={() => trackLandingEvent("clicked_app_store", { clickedFrom: placement, store: "android" })}
+        className={storeButton}
+      >
+        <PlayGlyph />
+        <span className="text-left leading-none">
+          <span className="block text-[0.68rem] font-semibold tracking-[0.01em]">Get it on</span>
+          <span className="mt-0.5 block text-[1.1rem] font-black leading-none">Google Play</span>
+        </span>
+        <LandingLineIcon name="arrow" light />
+      </a>
 
-      {/* Still the original signup flow - same component, same destination,
-          only the label changed. Everyone goes to /signup, which forwards
-          anyone already signed in on to the dashboard. The white fill is
-          kept on the blue closing section too, where an outline alone would
-          disappear into the background. */}
+      {/* Demoted from a full button to a line of text under the two stores
+          (Louis, 2026-11-03: "then a text link small to continue to web
+          version under it"). Three equal-weight buttons made the stores
+          compete with the browser, and the apps are the thing being pushed
+          now - the Android one has fourteen days to find twelve testers.
+
+          Still the same component and the same destination: a plain <a> to
+          /signup, which forwards anyone already signed in to the dashboard.
+          It has to stay a link rather than a router push - see
+          components/StartStudyingButton. */}
       <StartStudyingButton
         clickedFrom={placement}
         onTrack={onStartJourney}
-        className={`${shared} bb-web-cta border-2 border-[#0056FD] bg-white text-[0.92rem] font-black text-[#0056FD] ${
-          onDark ? "border-white shadow-[0_18px_44px_rgba(7,22,47,0.22)]" : ""
+        className={`bb-web-cta inline-flex items-center justify-center gap-1.5 px-2 py-1 text-[0.86rem] font-bold underline underline-offset-4 transition hover:opacity-80 ${
+          onDark ? "text-white/90" : "text-[#44506a]"
         }`}
       >
         <WebGlyph />
-        Continue on Web Version
-        <LandingLineIcon name="arrow" small />
+        Continue on web version
       </StartStudyingButton>
     </>
   );
