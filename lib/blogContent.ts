@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-8-explained",
+    title: "Deuteronomy 8 Explained: Remember the Wilderness, Beware the Wealth",
+    description:
+      "Deuteronomy 8 explained verse by verse: the forty years of manna, man does not live by bread alone, the good land, and the warning not to credit your own hand.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-8-explained",
+    publishedAt: "2026-11-03",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-8-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 8 Explained 📖",
+      content:
+        "Forty years of manna. Clothes that never wore out.\nThen Moses warns about something harder than hunger.\n\n📌 Success can make you forget God faster than hunger ever did.\n\n📖 Man does not live by bread alone, the line Jesus later quotes.\n📖 The good land had everything the wilderness never gave.\n📖 Moses warns against saying my own hand earned this.\n\nNew article on:\n🟢 why God let Israel go **hungry** on purpose\n🟢 what **man does not live by bread alone** really means\n🟢 the exact sentence Moses tells Israel not to **say**\n\nIs there something right now you have been crediting to your own hand? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-7-explained",
     title: "Deuteronomy 7 Explained: No Covenant, No Compromise, No Fear",
     description:
