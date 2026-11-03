@@ -322,8 +322,13 @@
       "startedAt": "2026-11-02T16:11:43.398Z",
       "committedAt": "2026-11-02T16:24:19.921Z",
       "publishedAt": "2026-11-03T01:16:59.064Z"
+    },
+    "why-some-christians-do-not-celebrate-christmas": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-03T01:17:08.788Z"
     }
   },
-  "nextTopic": "why-some-christians-do-not-celebrate-christmas",
-  "updatedAt": "2026-11-03T01:16:59.065Z"
+  "nextTopic": "who-was-saint-stephen",
+  "updatedAt": "2026-11-03T01:17:08.788Z"
 }
