@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-6-explained",
+    title: "Deuteronomy 6 Explained: The Shema and Total Love for God",
+    description:
+      "Deuteronomy 6 explained verse by verse: the Shema, loving God with all your heart, teaching children daily, and the warning not to forget God in plenty.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-6-explained",
+    publishedAt: "2026-11-03",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-6-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 6 Explained 📖",
+      content:
+        "Six words, said twice a day for thousands of years.\nHear, O Israel, the LORD our God is one LORD.\n\n📌 Jesus later calls this exact verse the greatest commandment.\n\n📖 Love God with all heart, soul, and might, no part left out.\n📖 Moses warns Israel about a full table, not an empty one.\n📖 Jesus quotes this same chapter to refuse the devil in the wilderness.\n\nNew article on:\n🟢 what the **Shema** actually says\n🟢 why **prosperity** is named as the real danger\n🟢 why you cannot **tempt God** the way Israel did\n\nIs there one part of your life you have been loving God with less than everything? 🙏",
+    },
+  },
+  {
     slug: "who-was-saint-stephen",
     title: "Who Was Saint Stephen? Why Christians Remember Him on December 26",
     description:
