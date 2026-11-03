@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-5-explained",
+    title: "Deuteronomy 5 Explained: The Ten Commandments Retold",
+    description:
+      "Deuteronomy 5 explained verse by verse: the Ten Commandments repeated for a new generation, Israel's fear at Horeb, and God's longing for a heart that obeys.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-5-explained",
+    publishedAt: "2026-11-03",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-5-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 5 Explained 📖",
+      content:
+        "Moses says the Ten Commandments out loud again.\nForty years after Horeb, almost word for word.\n\n📌 But one reason behind them quietly changes.\n\n📖 Exodus roots the Sabbath in creation. Deuteronomy roots it in rescue.\n📖 Israel begs Moses to stand between them and God.\n📖 God calls their words well said, then still longs for more.\n\nNew article on:\n🟢 why the **covenant** was never just for one generation\n🟢 what changed in the **Sabbath command**\n🟢 why **well said** is not the same as **well done**\n\nHas a promise you made God ever outlasted the moment you made it? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-4-explained",
     title: "Deuteronomy 4 Explained: No Graven Image and a Future Foretold",
     description:
