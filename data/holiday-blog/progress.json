@@ -84,9 +84,10 @@
       ]
     },
     "2026-11-03": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "why-some-christians-do-not-celebrate-christmas"
+        "why-some-christians-do-not-celebrate-christmas",
+        "who-was-saint-stephen"
       ]
     }
   },
@@ -337,10 +338,11 @@
     },
     "who-was-saint-stephen": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-03T05:16:59.571Z"
+      "status": "committed",
+      "startedAt": "2026-11-03T05:16:59.571Z",
+      "committedAt": "2026-11-03T05:30:46.652Z"
     }
   },
   "nextTopic": "advent-vs-christmas",
-  "updatedAt": "2026-11-03T05:16:59.571Z"
+  "updatedAt": "2026-11-03T05:30:46.671Z"
 }

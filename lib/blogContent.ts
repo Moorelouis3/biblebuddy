@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-was-saint-stephen",
+    title: "Who Was Saint Stephen? Why Christians Remember Him on December 26",
+    description:
+      "Who was Saint Stephen? The first deacon and first Christian martyr in Acts 6 to 7, his trial, his death, and why churches remember him on December 26.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/who-was-saint-stephen",
+    publishedAt: "2026-11-03",
+    readTime: "11 min read",
+    image: "/blog-banners/who-was-saint-stephen.jpg",
+    groupPost: {
+      title: "Who Was Saint Stephen? Why Christians Remember Him on December 26 📖",
+      content:
+        "The day after Christmas, the church calendar does something strange.\nIt hands you a man being stoned to death.\n\n📌 Saint Stephen was the first deacon and the first Christian ever killed for his faith, and his last words were a prayer for the men killing him.\n\n📖 Acts 6 chooses him to serve widows, not to preach.\n📖 Acts 7 ends with him seeing Jesus standing at the right hand of God.\n📖 A young man named Saul held the coats, then became the apostle Paul.\n\nNew article on:\n🟢 why Stephen is called the **protomartyr**\n🟢 what actually happened at his **trial and stoning**\n🟢 why December 26 belongs to him in the **church calendar**\n\nHas forgiving someone ever cost you more than staying angry would have? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-5-explained",
     title: "Deuteronomy 5 Explained: The Ten Commandments Retold",
     description:
