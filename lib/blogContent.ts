@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-was-saint-lucy",
+    title: "Who Was Saint Lucy? The Meaning of Saint Lucy's Day",
+    description:
+      "Who was Saint Lucy? The real story of the Syracuse martyr behind Saint Lucy's Day, what is legend, and why Sweden crowns a girl with candles each December.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/who-was-saint-lucy",
+    publishedAt: "2026-11-03",
+    readTime: "12 min read",
+    image: "/blog-banners/who-was-saint-lucy.jpg",
+    groupPost: {
+      title: "Who Was Saint Lucy? The Meaning of Saint Lucy's Day 📖",
+      content:
+        "The shortest, darkest day of the old calendar belongs to a girl named after light.\nMost of her story comes down to us as legend, and the church says so plainly.\n\n📌 Saint Lucy was a teenage martyr in Syracuse who broke a forced engagement, gave away her own dowry, and was killed for it around the year 304.\n\n📖 Her mother is healed at the tomb of Saint Agatha.\n📖 A rejected suitor turns her in to the Roman governor.\n📖 Sweden still crowns a girl with candles in her name every December 13.\n\nNew article on:\n🟢 what actually happened at her **trial**\n🟢 why her name became linked to **light**\n🟢 how Sweden's **Lucia tradition** began\n\nHas keeping a quiet promise to God ever cost you more than you expected? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-8-explained",
     title: "Deuteronomy 8 Explained: Remember the Wilderness, Beware the Wealth",
     description:
