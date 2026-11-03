@@ -11,8 +11,6 @@ import BlogPostBottom from "@/components/blog/BlogPostBottom";
 import BlogTopNav from "@/components/blog/BlogTopNav";
 import BlogViewTracker from "@/components/blog/BlogViewTracker";
 import PromoSlot from "@/components/blog/PromoSlot";
-import BibleYearPromo from "@/components/blog/BibleYearPromo";
-import ProverbsStudyPromo from "@/components/blog/ProverbsStudyPromo";
 import { getArticleEngagementKey, getBlogArticle } from "@/lib/blogContent";
 
 const SITE_URL = "https://www.mybiblebuddy.net";
@@ -300,20 +298,18 @@ function weaveSectionBody(body: ReactNode[], budget?: InvitationBudget): ReactNo
 function withPromoSlots(
   children: ReactNode,
   postSlug: string,
-  bibleYear?: { day: number; reading?: string },
   introWords = 0,
 ): ReactNode[] {
-  // Bible in One Year Study Notes get their own promo for that day instead of
-  // the rotating generic banners (Louis, 2026-09-19). The Proverbs chapter
-  // posts are not routed through here at all - they weave the 31-day study
-  // invitation themselves, on a tighter word budget that can reach inside a
-  // long section card. See weaveStudyInvitations below.
-  const promo = (key: string, slotIndex: number) => {
-    if (bibleYear) {
-      return <BibleYearPromo key={key} day={bibleYear.day} reading={bibleYear.reading} postSlug={postSlug} slotIndex={slotIndex} />;
-    }
-    return <PromoSlot key={key} postSlug={postSlug} slotIndex={slotIndex} />;
-  };
+  // 2026-11-03: there is one promo on the blog again. Bible in One Year Study
+  // Notes used to carry their own artwork for that day (Louis, 2026-09-19)
+  // and the Proverbs chapters their own 31-day study invitation; Louis asked
+  // for both to be swapped for the four download banners, so every post now
+  // shows the same thing. The Proverbs posts still place theirs on their own
+  // tighter word budget, which can reach inside a long section card - see
+  // createInvitationPlacer.
+  const promo = (key: string, slotIndex: number) => (
+    <PromoSlot key={key} postSlug={postSlug} slotIndex={slotIndex} />
+  );
   const nodes = Children.toArray(children);
   const out: ReactNode[] = [];
   // The intro counts as words already read, and the first promo comes at
@@ -334,8 +330,7 @@ function withPromoSlots(
 
     if (isFaqSection) {
       const previous = out[out.length - 1];
-      const previousIsPromo = isValidElement(previous)
-        && (previous.type === PromoSlot || previous.type === BibleYearPromo);
+      const previousIsPromo = isValidElement(previous) && previous.type === PromoSlot;
       if (!previousIsPromo) {
         out.push(promo("promo-before-faq", slotIndex++));
       }
@@ -541,7 +536,7 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
 
   const isProverbsStudyPost = isProverbsChapterPost(article.slug);
   const studyInvitation = (slotIndex: number) => (
-    <ProverbsStudyPromo key={`proverbs-study-${slotIndex}`} postSlug={article.slug} slotIndex={slotIndex} />
+    <PromoSlot key={`proverbs-study-${slotIndex}`} postSlug={article.slug} slotIndex={slotIndex} />
   );
   // Two passes over the same walk: survey the legal breaks, pick the ones that
   // get a banner, then build the body for real. The intro counts as words
@@ -554,14 +549,7 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
     : undefined;
   const body = isProverbsStudyPost
     ? toSectionCards(anchoredChildren, invitationBudget)
-    : withPromoSlots(
-        toSectionCards(anchoredChildren),
-        article.slug,
-        article.bibleYearDay
-          ? { day: article.bibleYearDay, reading: article.bibleYearReading }
-          : undefined,
-        introWords,
-      );
+    : withPromoSlots(toSectionCards(anchoredChildren), article.slug, introWords);
 
   return (
     <>

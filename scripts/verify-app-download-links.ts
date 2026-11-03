@@ -129,10 +129,21 @@ for (const name of [...seen.keys()].sort()) {
   check(`${name}.jpg is there and a sensible size`, exists && kb < 350, exists ? `${kb}KB` : "missing");
 }
 
+// public/promos holds the blog's promo artwork and nothing else, so anything
+// in there that is not one of the four is a retired banner still shipping.
+const expected = new Set([...seen.keys()].map((name) => `${name}.jpg`));
 const leftovers = fs
   .readdirSync(path.join(process.cwd(), "public", "promos"))
-  .filter((f) => f.startsWith("promo-banner-"));
-check("the old banners are gone", leftovers.length === 0, leftovers.join(", "));
+  .filter((f) => !expected.has(f));
+check("no retired artwork is left", leftovers.length === 0, leftovers.join(", "));
+
+// 2026-11-03: Bible in One Year and Proverbs posts had their own promos and
+// Louis asked for both to be swapped for the download banners. If either
+// component comes back, some posts are quietly selling something else again.
+for (const retired of ["BibleYearPromo.tsx", "ProverbsStudyPromo.tsx"]) {
+  const file = path.join(process.cwd(), "components", "blog", retired);
+  check(`${retired} is still gone`, !fs.existsSync(file));
+}
 
 console.log(`\n${failures === 0 ? "ALL PASS" : `${failures} FAILED`}\n`);
 process.exit(failures === 0 ? 0 : 1);
