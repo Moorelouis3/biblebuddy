@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-7-explained",
+    title: "Deuteronomy 7 Explained: No Covenant, No Compromise, No Fear",
+    description:
+      "Deuteronomy 7 explained verse by verse: no covenant with the nations, why God chose the fewest of all people, the hornet, and why not even their gold was safe.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-7-explained",
+    publishedAt: "2026-11-03",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-7-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 7 Explained 📖",
+      content:
+        "Seven nations. No treaty. No marriage. No pity.\nThat sounds harsh until you see the reason.\n\n📌 God names the real danger himself: a heart turned toward other gods.\n\n📖 Israel was chosen for being the fewest, not the strongest.\n📖 Moses says do not fear nations bigger than you.\n📖 Even melted down idol gold was still called a snare.\n\nNew article on:\n🟢 why God chose Israel out of **love**, not size\n🟢 what the **hornet** in verse 20 actually means\n🟢 why even **gold** from an idol was off limits\n\nIs there a snare in your own life that still looks harmless? 🙏",
+    },
+  },
+  {
     slug: "advent-vs-christmas",
     title: "What Is the Difference Between Advent and Christmas?",
     description:
