@@ -13071,3 +13071,29 @@ handoff, and doctrinal-sensitivity flags on an alcohol post and a tithing post) 
 situation -- nothing new. Nothing material changed, so no new handoff entry and no new push notification this run
 either -- consistent with runs 80-271.
 Next up: none -- awaiting Louis's decision on his own audit's recommendation to pause this routine.
+
+## 2026-11-03T17:50:00Z (hourly chapter notes run)
+Chapter: none -- whole Bible (1189/1189) still complete | Duration: 5 min | Sections: n/a | Cards: n/a | Status: block
+273rd consecutive no-op run since completion on 2026-10-19T21:01:00Z. `npm install` ran clean (fresh clone, 737
+packages, 33s). `git fetch origin main` confirmed local `HEAD` already matched `origin/main`'s real tip (`f5dc0f5`)
+-- no anomaly. `data/bible-notes-priority-queue.json` and `data/bible-notes-style-redo-remaining.json` both
+confirmed `remaining: []`. `data/bible-notes-progress-log.json` still has 1262 entries, last entry Revelation 22
+finished 2026-10-19T21:01:00Z, `goalTotalChapters` 1189, unchanged from run 272. Independently re-derived the
+canonical-order coverage check this run with a disposable `tsx` script calling `getBibleReaderStudySections` for
+all 1189 canonical chapters (Genesis 1 through Revelation 22): zero missing, every chapter returns wired-in
+sections (script deleted after running, never committed). `lib/` still has exactly 1187 `*Source.ts` files and
+`lib/bibleReaderStudyNotes.ts` still has 1281 `replaceStudySectionsForBookRange(...)` occurrences, identical to
+run 272's counts. Skipped a full `npx tsc --noEmit` this run since no code changed and run 272's full check
+(15-20 minutes) already confirmed a clean baseline with identical counts -- re-running the same zero-change check
+seemed like exactly the avoidable cost the 2026-11-02 subscription audit is about.
+
+Re-checked the trigger via `get_trigger`: `trig_011apwFaaQ2u8kDDaHj7WMLA` ("Bible Buddy - Note Writer",
+`45 * * * *`) is still enabled, `updated_at` unchanged since 2026-09-17, `last_fired_at` 2026-11-03T17:45:35Z (this
+run). Louis has still not acted on his own `docs/claude-subscription-audit.md` recommendation (dated 2026-11-02,
+surfaced by run 244) to turn this routine off "today" -- that recommendation is now over a day old with zero
+action taken. Re-read the audit doc fresh: unchanged. Checked `MARCUS_HANDOFF.md` and `IDEAS.md` fresh: most
+recent entries (the run-79 escalation to Louis with a push notification on 2026-10-26, a deploy-cadence
+self-tagging handoff, and two doctrinal-sensitivity blog flags) are unrelated to this run or already acknowledged
+-- nothing new. Nothing material changed since run 272, and that run's no-notification call still holds -- no new
+push notification sent this run either, consistent with runs 80-272.
+Next up: none -- awaiting Louis's decision on his own audit's recommendation to turn off this routine.
