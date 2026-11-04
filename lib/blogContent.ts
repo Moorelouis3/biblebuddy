@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-11-explained",
+    title: "Deuteronomy 11 Explained: Your Own Eyes Have Seen",
+    description:
+      "Deuteronomy 11 explained verse by verse: why Moses says I speak not with your children, the rain dependent land ahead, and the blessing and curse at Gerizim and Ebal.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-11-explained",
+    publishedAt: "2026-11-04",
+    readTime: "12 min read",
+    image: "/blog-banners/deuteronomy-11-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 11 Explained 📖",
+      content:
+        "Moses says something strange to the crowd in front of him.\nI am not talking to your children.\n\n📌 This generation watched God act with their own eyes. The next one will only hear the story.\n\n📖 Egypt was watered by foot. Canaan only drinks rain from heaven.\n📖 Moses repeats the frontlets and doorposts command on purpose, before the eyewitnesses are gone.\n📖 A blessing and a curse get set on two real mountains, Gerizim and Ebal.\n\nNew article on:\n🟢 why Moses says **I speak not with your children**\n🟢 what it means that the land **drinketh water of the rain of heaven**\n🟢 the **blessing and curse** set before Israel\n\nWhat is one thing God has done in your life that you have never told someone younger than you? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-feast-of-the-holy-family",
     title: "What Is the Feast of the Holy Family? Meaning and Biblical Lessons",
     description:
