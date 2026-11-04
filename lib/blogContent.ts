@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "solemnity-feast-memorial-difference",
+    title: "What Is the Difference Between a Solemnity, Feast, and Memorial?",
+    description:
+      "What is the difference between a solemnity, a feast, and a memorial? The three ranks of the Catholic liturgical calendar, explained plainly.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/solemnity-feast-memorial-difference",
+    publishedAt: "2026-11-04",
+    readTime: "11 min read",
+    image: "/blog-banners/solemnity-feast-memorial-difference.jpg",
+    groupPost: {
+      title: "What Is the Difference Between a Solemnity, Feast, and Memorial? 📖",
+      content:
+        "The letters on your parish bulletin are not random.\nThey are telling you exactly how much weight that day carries.\n\n📌 A solemnity, a feast, and a memorial are three different ranks the Catholic Church gives its calendar days, from highest to lowest.\n\n📖 Memorial and feast are both already in Exodus 12:14, long before any missal existed.\n📖 A solemnity keeps the full Gloria and Creed. A feast loses the Creed. A memorial loses both.\n📖 The same saint's day can rank differently depending on where you live.\n\nNew article on:\n🟢 what the **S, F, and M** letters on a Catholic calendar mean\n🟢 why the Annunciation is actually ranked a **solemnity**, not a feast\n🟢 how one saint's day can be a **memorial** in one country and a **solemnity** somewhere else\n\nWhen was the last time something in church went unexplained until you finally asked? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-11-explained",
     title: "Deuteronomy 11 Explained: Your Own Eyes Have Seen",
     description:
