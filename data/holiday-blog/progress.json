@@ -384,11 +384,12 @@
     },
     "solemnity-feast-memorial-difference": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-04T09:17:12.624Z",
-      "committedAt": "2026-11-04T09:28:39.017Z"
+      "committedAt": "2026-11-04T09:28:39.017Z",
+      "publishedAt": "2026-11-04T15:17:35.326Z"
     }
   },
   "nextTopic": "what-is-gaudete-sunday",
-  "updatedAt": "2026-11-04T09:28:39.031Z"
+  "updatedAt": "2026-11-04T15:17:35.326Z"
 }
