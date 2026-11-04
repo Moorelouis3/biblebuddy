@@ -75,6 +75,27 @@ const nextConfig: NextConfig = {
       { source: "/Bible", destination: "/bible", permanent: true },
       { source: "/Bible/:book/:chapter", destination: "/bible/:book/:chapter", permanent: true },
 
+      // The Bible in One Year front door (Louis, 2026-11-04).
+      //
+      // The Library refactor made every study guide share one layout, but it
+      // rebuilt the Library route only. This path is where readers actually
+      // arrive - the dashboard, the Plans tab, the back button in the chapter
+      // reader, the weekly newsletter and group mentions all point here - and
+      // it still rendered the old 862-line hero-and-week-accordions page. So
+      // the one page nobody saw was the one that got fixed.
+      //
+      // A redirect rather than a rewrite of that page: the old implementation
+      // stays in git untouched, and this is one line to take back out if the
+      // new overview turns out to be missing something it did.
+      //
+      // Temporary on purpose. A 301 is cached by browsers for good, and this
+      // is a routing decision we may want to reverse.
+      {
+        source: "/reading-plans/bible-in-one-year",
+        destination: "/library/bible-in-one-year/progress",
+        permanent: false,
+      },
+
       // Proverbs' shareable page (2026-10-06). Doing this here rather than with
       // redirect() inside app/study/[slug]/page.tsx: by the time that component
       // runs the response has already started streaming, so Next falls back to a
