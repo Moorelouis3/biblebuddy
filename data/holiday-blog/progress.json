@@ -369,17 +369,19 @@
     },
     "what-is-the-feast-of-the-annunciation": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-04T01:17:24.514Z",
-      "committedAt": "2026-11-04T01:27:10.413Z"
+      "committedAt": "2026-11-04T01:27:10.413Z",
+      "publishedAt": "2026-11-04T09:17:01.850Z"
     },
     "what-is-the-feast-of-the-holy-family": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-04T05:17:38.523Z",
-      "committedAt": "2026-11-04T05:29:53.074Z"
+      "committedAt": "2026-11-04T05:29:53.074Z",
+      "publishedAt": "2026-11-04T09:17:02.015Z"
     }
   },
   "nextTopic": "solemnity-feast-memorial-difference",
-  "updatedAt": "2026-11-04T05:29:53.087Z"
+  "updatedAt": "2026-11-04T09:17:02.015Z"
 }
