@@ -12,6 +12,7 @@ import {
   signInWithProviderNatively,
   startNativeAuthListener,
 } from "@/lib/nativeAuth";
+import { nativePlatform } from "@/lib/nativeApp";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
 
 /**
@@ -57,6 +58,26 @@ export default function AppEntryPage() {
   const [pending, setPending] = useState<Pending>(null);
   const [error, setError] = useState<string | null>(null);
   const busy = pending !== null;
+
+  /**
+   * Apple is offered on iOS only (Louis, 2026-11-04, relaying a tester:
+   * "it says log in with your Apple account, but they don't have an Apple
+   * account").
+   *
+   * Continue with Apple sits at the top of this screen because Apple's
+   * Guideline 4.8 requires it wherever Google is offered - a rule that binds
+   * the iOS build and nothing else. On Android it is the first thing a new
+   * person sees and it is useless to most of them, which on the opening
+   * screen of a brand new app reads as the app being for somebody else.
+   *
+   * Resolved after mount rather than during render: the server cannot know
+   * the platform, and guessing would flash the wrong button. Until it
+   * resolves the screen shows Google and email, which are right everywhere.
+   */
+  const [showApple, setShowApple] = useState(false);
+  useEffect(() => {
+    setShowApple(nativePlatform() !== "android");
+  }, []);
 
   // Attach the deep-link listener before any button can be pressed, so a fast
   // tap cannot land back here with nothing listening.
@@ -275,7 +296,9 @@ export default function AppEntryPage() {
 
           {/* Apple first and at least as prominent as Google - Guideline 4.8
               asks for both. Inside the app this is the native sheet, so it
-              does not wait on the web environment flag. */}
+              does not wait on the web environment flag. iOS and web only;
+              see showApple above for why Android does not get it. */}
+          {showApple ? (
           <SignInWithAppleButton
             redirectTo={redirectTo}
             disabled={busy}
@@ -297,12 +320,13 @@ export default function AppEntryPage() {
               </>
             )}
           </SignInWithAppleButton>
+          ) : null}
 
           <button
             type="button"
             onClick={() => void continueWithGoogle()}
             disabled={busy}
-            className={`${BUTTON} mt-[11px] border border-[#DCE1E8] bg-white text-[#1F2937] focus-visible:outline-[#135397]`}
+            className={`${BUTTON} ${showApple ? "mt-[11px]" : ""} border border-[#DCE1E8] bg-white text-[#1F2937] focus-visible:outline-[#135397]`}
           >
             {pending === "google" ? (
               <Spinner label="Signing in with Google" dark />
