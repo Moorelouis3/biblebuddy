@@ -348,17 +348,19 @@
     },
     "advent-vs-christmas": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-03T09:17:03.804Z",
-      "committedAt": "2026-11-03T09:31:16.145Z"
+      "committedAt": "2026-11-03T09:31:16.145Z",
+      "publishedAt": "2026-11-04T01:17:12.103Z"
     },
     "who-was-saint-lucy": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-03T15:18:00.187Z",
-      "committedAt": "2026-11-03T15:27:39.568Z"
+      "committedAt": "2026-11-03T15:27:39.568Z",
+      "publishedAt": "2026-11-04T01:17:12.234Z"
     }
   },
   "nextTopic": "what-is-the-feast-of-the-annunciation",
-  "updatedAt": "2026-11-03T15:27:39.584Z"
+  "updatedAt": "2026-11-04T01:17:12.234Z"
 }
