@@ -115,7 +115,7 @@ export default function AndroidBetaPage() {
           <p className="mt-1 text-sm font-semibold leading-6 text-[#3c4a63]">
             Only works once Step 1 has gone through. Give it a minute if it does not.
           </p>
-          {/* Light blue, and the colour is an inline style, not a class
+          {/* Navy, and the colour is an inline style, not a class
               (Louis, 2026-11-03: "cant read the button").
 
               This shipped as bg-[#07162f] text-white and rendered as a solid
@@ -131,7 +131,14 @@ export default function AndroidBetaPage() {
               Measured on the live site: .text-white on a <div> gives white,
               on an <a> gives #101827. A <span> inside the anchor would also
               work; an inline style is simpler and cannot be undone by a
-              later class. Do not replace these with a text-* class. */}
+              later class. Do not replace these with a text-* class.
+
+              The first fix for that was a light blue fill with dark text,
+              which read perfectly well and made the wrong button look
+              important: pale next to Step 1's solid red, when Step 2 is the
+              one Google actually counts and the one people stall before. So
+              it is back to navy with the white supplied inline, the same way
+              Step 1 supplies its own. Readability was never about the fill. */}
           <a
             href={TESTER_OPT_IN_URL}
             target="_blank"
@@ -140,8 +147,8 @@ export default function AndroidBetaPage() {
               recordPlayStoreTap();
               track("android_page_step2");
             }}
-            className="mt-3 flex w-full items-center justify-center rounded-2xl bg-[#9fd0ff] px-5 py-4 text-base font-black transition hover:-translate-y-0.5 hover:bg-[#8ac5ff]"
-            style={{ color: "#07162f" }}
+            className="mt-3 flex w-full items-center justify-center rounded-2xl bg-[#07162f] px-5 py-4 text-base font-black transition hover:-translate-y-0.5 hover:bg-[#122744]"
+            style={{ color: "#ffffff" }}
           >
             Download on Google Play
           </a>
