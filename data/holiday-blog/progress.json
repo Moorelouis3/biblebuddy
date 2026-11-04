@@ -359,8 +359,13 @@
       "startedAt": "2026-11-03T15:18:00.187Z",
       "committedAt": "2026-11-03T15:27:39.568Z",
       "publishedAt": "2026-11-04T01:17:12.234Z"
+    },
+    "what-is-the-feast-of-the-annunciation": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-04T01:17:24.514Z"
     }
   },
-  "nextTopic": "what-is-the-feast-of-the-annunciation",
-  "updatedAt": "2026-11-04T01:17:12.234Z"
+  "nextTopic": "what-is-the-feast-of-the-holy-family",
+  "updatedAt": "2026-11-04T01:17:24.514Z"
 }
