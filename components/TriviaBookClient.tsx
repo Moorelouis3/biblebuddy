@@ -55,9 +55,15 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
       }
 
       const completedChapterKeys = new Set<string>();
+      // The score recorded when the chapter was finished. The completion
+      // label is written as "Genesis 1 - 3/5", so the result has always been
+      // sitting here and only the chapter number was ever read out of it.
+      const completedScores = new Map<string, number>();
       completionData?.forEach((entry) => {
         const label = typeof entry.action_label === "string" ? entry.action_label : "";
-        const match = label.match(new RegExp(`^${book.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s+(\\d+)\\b`, "i"));
+        const match = label.match(
+          new RegExp(`^${book.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s+(\\d+)\\b(?:\\s*-\\s*(\\d+)\\s*/)?`, "i"),
+        );
         if (!match) {
           return;
         }
@@ -66,6 +72,15 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
         const chapterConfig = book.chapters.find((chapter) => chapter.chapter === chapterNumber);
         if (chapterConfig) {
           completedChapterKeys.add(chapterConfig.progressKey);
+          if (match[2] !== undefined) {
+            const scored = Number(match[2]);
+            const best = completedScores.get(chapterConfig.progressKey);
+            // Keep the best of several rows rather than whichever came back
+            // last, so a retake can only ever improve what is shown.
+            if (best === undefined || scored > best) {
+              completedScores.set(chapterConfig.progressKey, scored);
+            }
+          }
         }
       });
 
@@ -88,7 +103,20 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
       book.chapters.forEach((chapter) => {
         const answeredCorrectly = chapterCorrect.get(chapter.progressKey)?.size ?? 0;
         const isComplete = completedChapterKeys.has(chapter.progressKey) || answeredCorrectly >= chapter.questions.length;
-        nextPlayedCounts[chapter.progressKey] = isComplete ? chapter.questions.length : answeredCorrectly;
+        // This was `isComplete ? chapter.questions.length : answeredCorrectly`,
+        // which made every finished chapter report a perfect score (Maleeka,
+        // 2026-11-04: "I got a couple wrong in genesis but the finished
+        // version says 5/5 correct"). The quiz was never wrong - all 5,945
+        // questions check out and the results screen shows the true count -
+        // only this list lied, because one number was doing duty as both "how
+        // far through you are" and "how many you got right", and the first
+        // meaning won.
+        //
+        // Prefer the score logged at the time, which survives a chapter
+        // finished before per-question rows were kept; otherwise count the
+        // questions actually answered correctly.
+        nextPlayedCounts[chapter.progressKey] =
+          completedScores.get(chapter.progressKey) ?? answeredCorrectly;
         if (isComplete) {
           nextCompletedCount += 1;
         }
@@ -151,6 +179,9 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-2">
               {visibleChapters.map((chapter) => {
                 const answeredCorrectly = playedCounts[chapter.progressKey] ?? 0;
+                // Finished means finished, not perfect. Now that the count is
+                // the honest score, a chapter completed with 3 out of 5 stays
+                // green on the strength of the completion record.
                 const isComplete = completedChapters.has(chapter.progressKey) || answeredCorrectly >= chapter.questions.length;
                 const cardClasses = isComplete
                   ? "bg-green-100 border-green-300 text-green-800 cursor-pointer"
