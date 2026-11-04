@@ -34,6 +34,75 @@ import fs from "node:fs";
 
 const GRADLE = "android/app/build.gradle";
 const MANIFEST = "android/app/src/main/AndroidManifest.xml";
+const MAIN_ACTIVITY = "android/app/src/main/java/net/mybiblebuddy/app/MainActivity.java";
+
+/**
+ * Make the login survive the app being closed.
+ *
+ * Jessica, through Louis, 2026-11-04: she logs in, and the app sends her
+ * back to the welcome screen. Her password was never the problem - auth
+ * recorded the sign-in and she reached the dashboard at 10:35 - she was
+ * being logged out again, and signed in twice inside fifteen minutes.
+ *
+ * The session lives in a cookie (lib/supabaseClient uses @supabase/ssr,
+ * which stores it there rather than in localStorage). Android's WebView
+ * keeps cookies written by JavaScript in memory and only syncs them to disk
+ * on its own schedule, so when Android kills the app process - which it does
+ * eagerly - anything unsynced is simply gone. The cookie already carries a
+ * year-long max-age, so this is not an expiry problem; it never reached disk.
+ * CookieManager.flush() is the documented way to force that sync, and
+ * ionic-team/capacitor#6216 is this exact symptom.
+ *
+ * iOS is unaffected, which is why only Android testers hit it: WKWebView
+ * owns its cookie store and persists it without being asked.
+ *
+ * onPause rather than onStop or onDestroy: onPause is the last callback
+ * Android guarantees before a process can be killed.
+ */
+function flushCookiesOnPause() {
+  if (!fs.existsSync(MAIN_ACTIVITY)) {
+    console.error(`No ${MAIN_ACTIVITY} - run 'npx cap add android' first.`);
+    process.exit(1);
+  }
+
+  let java = fs.readFileSync(MAIN_ACTIVITY, "utf8");
+
+  if (java.includes("CookieManager")) {
+    console.log("Cookie flush already present; leaving it alone.");
+    return;
+  }
+
+  if (!java.includes("import com.getcapacitor.BridgeActivity;")) {
+    console.error("MainActivity does not look like the generated one - not patching it.");
+    process.exit(1);
+  }
+  java = java.replace(
+    "import com.getcapacitor.BridgeActivity;",
+    "import android.webkit.CookieManager;\nimport com.getcapacitor.BridgeActivity;",
+  );
+
+  // The generated class body is empty: `public class MainActivity extends BridgeActivity {}`.
+  const empty = "public class MainActivity extends BridgeActivity {}";
+  const withOverride = [
+    "public class MainActivity extends BridgeActivity {",
+    "    @Override",
+    "    public void onPause() {",
+    "        super.onPause();",
+    "        // Without this the login is lost whenever Android kills the app.",
+    "        CookieManager.getInstance().flush();",
+    "    }",
+    "}",
+  ].join("\n");
+
+  if (!java.includes(empty)) {
+    console.error("MainActivity already has a body - not patching it blindly.");
+    process.exit(1);
+  }
+  java = java.replace(empty, withOverride);
+
+  fs.writeFileSync(MAIN_ACTIVITY, java);
+  console.log("MainActivity will flush cookies on pause, so the login survives a restart");
+}
 
 /**
  * Remove com.google.android.gms.permission.AD_ID from the merged manifest.
@@ -154,6 +223,7 @@ if (signingWanted) {
 fs.writeFileSync(GRADLE, gradle);
 
 stripAdIdPermission();
+flushCookiesOnPause();
 
 console.log(`versionCode ${versionCode}, versionName ${versionName}`);
 console.log(`release signing: ${signingWanted ? "wired to the Codemagic keystore" : "not configured"}`);
