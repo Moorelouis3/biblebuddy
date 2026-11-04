@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-10-explained",
+    title: "Deuteronomy 10 Explained: Circumcise Your Heart",
+    description:
+      "Deuteronomy 10 explained verse by verse: the new stone tables, Aaron's death, the Levites set apart, and what it means to circumcise your heart.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-10-explained",
+    publishedAt: "2026-11-04",
+    readTime: "12 min read",
+    image: "/blog-banners/deuteronomy-10-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 10 Explained 📖",
+      content:
+        "New stone tables. Same ten words.\nMoses closes the golden calf story and asks one question.\n\n📌 What does God actually require? Not a bigger sacrifice. A changed heart.\n\n📖 Moses builds an ark to hold the second tables.\n📖 The Levites get no land, only God as their inheritance.\n📖 Circumcise your heart means cut away what makes it stiffnecked.\n\nNew article on:\n🟢 what **circumcise your heart** really means\n🟢 why God commands Israel to **love the stranger**\n🟢 the short list of what God **requires**\n\nWhat would it look like for you to circumcise your own heart this week? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-9-explained",
     title: "Deuteronomy 9 Explained: Not For Your Righteousness",
     description:
