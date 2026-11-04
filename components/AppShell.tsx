@@ -3724,6 +3724,18 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               active={pathname?.startsWith("/admin/little-louis")}
                               onSelect={closeProfileMenu}
                             />
+                            {/* Louis, 2026-11-04: "in my menu, there's no
+                                way where I can track to see all the bugs".
+                                /admin/bugs has existed since the tracker
+                                shipped and nothing ever linked to it, so the
+                                only way in was to type the URL. */}
+                            <ProfileMenuRow
+                              href="/admin/bugs"
+                              icon="🐞"
+                              label="Bug Tracker"
+                              active={pathname?.startsWith("/admin/bugs")}
+                              onSelect={closeProfileMenu}
+                            />
                           </>
                         )}
                         <ProfileMenuRow

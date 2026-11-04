@@ -48,7 +48,14 @@ automatically pings Louis's notification bell. Build the JSON body with
       to find the route under `app/`. For crashes, read the stack trace.
       Check `recentlyFinished` — if it is the same problem already fixed,
       mark it `duplicate` with a short reply.
-   c. Decide which of these it is:
+   c. Read the card before you decide anything. It carries `category`,
+      `area`, `page`, `platform`, `app_version` and `error_details`, and
+      anything in those fields is already answered. Asking the reporter
+      for something the card states - "which page were you on" when
+      `page` is filled in - is the most irritating thing this agent can
+      do, and it has done it. See "Answer, do not interrogate".
+
+      Then decide which of these it is:
       - **A code bug you can fix with confidence** → fix it (smallest
         change that solves it, matching the surrounding code), run
         `npx tsc --noEmit -p .` and make sure you added no new errors,
@@ -62,7 +69,10 @@ automatically pings Louis's notification bell. Build the JSON body with
         designed) → POST `not_a_bug`. Feature requests: also append a line
         to `IDEAS.md` so Louis sees it.
       - **Can't reproduce / not sure** → leave it `new` with a `diagnosis`
-        explaining what you checked. Do not guess-fix.
+        explaining what you checked. Do not guess-fix, and do not fall
+        back on asking the reporter: "I looked and did not find it" is a
+        reason to look harder on the next run, not a reason to hand the
+        work back to the person who told you.
    d. Always write a `reply_draft` for anything with a reporter (see below).
 4. If you pushed any fix, append one line per fix to `SESSION_LOG.md` under
    today's date so Life Buddy's report picks it up.
@@ -170,6 +180,43 @@ need a third identical go: write what you found in `diagnosis` and mark it
 - If `tsc` shows new errors you cannot resolve, revert your change and mark
   the bug `needs_louis`.
 
+## Answer, do not interrogate
+
+Louis, 2026-11-04, reading a morning of replies: "the bug fixer is talking
+back and forth to people, asking questions like where did you find this bug
+at, but the bug report already says exactly where it is... I want it,
+somebody sends a card message, it reads the card message, it fixes the
+issue, and then it says, hey, the issue is fixed. Simple."
+
+Three of the six most recent reports sat on `needs_info`, and none of them
+should have:
+
+- **Anthony** could not open a day in The Tempting of Jesus. The diagnosis
+  written on his own report explained exactly why - days stay locked until
+  the one before is checked off. The answer was known and a question went
+  out anyway.
+- **Vickie** had reported the same thing on the same study two days
+  earlier and been given that answer. Nothing connected the two, so the
+  second person was asked about a cause already written down.
+- **Maleeka** said the trivia summary told her 5 out of 5 when she had got
+  some wrong. The reply asked which chapter in Genesis. The chapter cannot
+  matter - a summary that disagrees with the answers is wrong on every
+  chapter - and `page` was filled in regardless.
+
+So, in this order:
+
+1. **If you know the cause, the reply is the answer.** Somebody who can
+   unblock themselves in one sentence gets that sentence, not a question.
+   That is `not_a_bug` with a real answer, and it ends the exchange rather
+   than starting one.
+2. **If the card says it, do not ask it.**
+3. **Read the other open reports, not only `recentlyFinished`.** Two people
+   stuck on the same study in the same week is one cause, not two.
+4. **Only then**, if you truly cannot move without it, ask - one question.
+
+A needless question costs the reporter a trip back and Louis an inbox.
+Looking harder costs a run. Prefer looking harder.
+
 ## The reply
 
 Replies are sent from Louis's account at 08:45 / 16:45 UTC, after the
@@ -183,9 +230,11 @@ looks like a real name.
 - needs_louis: "Thanks for reporting this! I'm on it and will get it fixed
   this week."
 - not_a_bug (question): answer the question simply.
-- needs_info: ask for the one thing you actually need - what they tapped,
-  what they saw, which phone. One question, not a form. These send straight
-  away rather than waiting for a deploy.
+- needs_info: the last resort, and rarer than it looks. Only when you
+  cannot take a single step without the answer AND the card does not
+  already carry it. One question, not a form. These send immediately
+  rather than waiting for a deploy, so a needless one is in somebody's
+  hands within the hour.
 - cannot_reproduce: say honestly that you could not make it happen and ask
   what they were doing just before.
 - awaiting_approval: no reply at all until Louis has approved it.
