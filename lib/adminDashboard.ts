@@ -1043,23 +1043,31 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   // Apple's numbers, if the key is installed and Apple has published them.
   // Never allowed to break the dashboard: a slow or failing Apple is a
   // missing number, not a 500 on a page Louis opens every day.
-  let downloads: { total: number; days: Array<{ date: string; units: number }>; waiting: boolean } = {
-    total: 0,
-    days: [],
-    waiting: true,
-  };
+  let downloads: {
+    total: number;
+    days: Array<{ date: string; units: number }>;
+    waiting: boolean;
+    /** The newest day Apple HAS published, even when it falls outside the window. */
+    latest: { date: string; units: number } | null;
+  } = { total: 0, days: [], waiting: true, latest: null };
   if (appStoreConnectConfigured()) {
     try {
       const windowDays = Math.max(1, Math.ceil((current.end.getTime() - current.start.getTime()) / 86_400_000));
-      const sales = await fetchRecentSales(Math.min(30, windowDays + 1));
+      // At least three days, whatever the window. On Today or Yesterday the
+      // window alone asks only for days Apple has not published yet, and the
+      // card then has nothing to fall back on - which is the whole reason it
+      // sat on a dash while App Store Connect was showing real numbers.
+      const sales = await fetchRecentSales(Math.min(30, Math.max(3, windowDays + 1)));
       const inWindow = sales.filter((s) => within(`${s.date}T12:00:00.000Z`, current));
+      const newest = sales.length ? sales[sales.length - 1] : null;
       downloads = {
         total: inWindow.reduce((sum, s) => sum + s.units, 0),
         days: inWindow.map((s) => ({ date: s.date, units: s.units })),
         waiting: inWindow.length === 0,
+        latest: newest ? { date: newest.date, units: newest.units } : null,
       };
     } catch {
-      downloads = { total: 0, days: [], waiting: true };
+      downloads = { total: 0, days: [], waiting: true, latest: null };
     }
   }
 
@@ -1073,6 +1081,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     downloads: downloads.total,
     downloadsWaiting: downloads.waiting,
     downloadDays: downloads.days,
+    downloadsLatest: downloads.latest,
     // Only meaningful once both halves exist. Taps can exceed downloads
     // (people look and leave) and downloads can exceed taps (App Store
     // search, word of mouth), so this is a ratio, never a funnel.

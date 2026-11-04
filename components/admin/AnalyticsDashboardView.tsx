@@ -1138,12 +1138,21 @@ export default function AnalyticsDashboardView({
                   <div className="rounded-xl bg-[#f0fbf4] px-4 py-3">
                     <p className="text-xs font-bold text-[#1f7a4c]">Actually downloaded</p>
                     {d.appStore.downloadsWaiting ? (
+                      /* Apple runs about a day behind, so Today and Yesterday
+                         have no report of their own yet. Showing the newest day
+                         Apple HAS, with its date on it, beats a dash that never
+                         resolves - the number exists, it just isn't this
+                         window's. */
                       <>
-                        <p className="text-2xl font-black text-[#94a3b8]">—</p>
+                        <p className="text-2xl font-black text-[#94a3b8]">
+                          {d.appStore.downloadsLatest ? fmt(d.appStore.downloadsLatest.units) : "—"}
+                        </p>
                         <p className="text-xs font-semibold text-[#64748b]">
-                          {d.appStore.configured
-                            ? "Apple publishes this about a day late"
-                            : "App Store Connect key not installed"}
+                          {!d.appStore.configured
+                            ? "App Store Connect key not installed"
+                            : d.appStore.downloadsLatest
+                              ? `Apple's latest day, ${d.appStore.downloadsLatest.date} — not this period`
+                              : "Apple publishes this about a day late"}
                         </p>
                       </>
                     ) : (
