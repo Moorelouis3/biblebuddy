@@ -93,9 +93,10 @@
       ]
     },
     "2026-11-04": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "what-is-the-feast-of-the-annunciation"
+        "what-is-the-feast-of-the-annunciation",
+        "what-is-the-feast-of-the-holy-family"
       ]
     }
   },
@@ -374,10 +375,11 @@
     },
     "what-is-the-feast-of-the-holy-family": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-04T05:17:38.523Z"
+      "status": "committed",
+      "startedAt": "2026-11-04T05:17:38.523Z",
+      "committedAt": "2026-11-04T05:29:53.074Z"
     }
   },
   "nextTopic": "solemnity-feast-memorial-difference",
-  "updatedAt": "2026-11-04T05:17:38.523Z"
+  "updatedAt": "2026-11-04T05:29:53.087Z"
 }

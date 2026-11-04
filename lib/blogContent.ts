@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-feast-of-the-holy-family",
+    title: "What Is the Feast of the Holy Family? Meaning and Biblical Lessons",
+    description:
+      "What is the Feast of the Holy Family? The Bible story behind it, its Catholic history, and what Jesus, Mary, and Joseph teach every family today.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-the-feast-of-the-holy-family",
+    publishedAt: "2026-11-04",
+    readTime: "13 min read",
+    image: "/blog-banners/what-is-the-feast-of-the-holy-family.jpg",
+    groupPost: {
+      title: "What Is the Feast of the Holy Family? Meaning and Biblical Lessons 📖",
+      content:
+        "Forget the stained glass version for a second.\nThis family fled a death threat in the dark and once lost track of their own son for three days.\n\n📌 The Feast of the Holy Family honors Jesus, Mary, and Joseph as a real household, not a flawless one, kept on the Sunday between Christmas and New Year.\n\n📖 An angel warns Joseph to flee to Egypt by night.\n📖 Jesus stays behind in the temple at age twelve, and His parents search for Him three days.\n📖 Pope Leo XIII promoted the feast as an answer to family life breaking down in his own time.\n\nNew article on:\n🟢 what the Bible actually records about **the Holy Family**\n🟢 why the feast's **date keeps moving**\n🟢 where **Protestants and Catholics** land differently on this day\n\nWhat is the one ordinary, unremarkable thing your family keeps showing up to do? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-10-explained",
     title: "Deuteronomy 10 Explained: Circumcise Your Heart",
     description:
