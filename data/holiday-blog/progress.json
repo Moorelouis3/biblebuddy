@@ -93,11 +93,12 @@
       ]
     },
     "2026-11-04": {
-      "committed": 3,
+      "committed": 4,
       "slugs": [
         "what-is-the-feast-of-the-annunciation",
         "what-is-the-feast-of-the-holy-family",
-        "solemnity-feast-memorial-difference"
+        "solemnity-feast-memorial-difference",
+        "what-is-gaudete-sunday"
       ]
     }
   },
@@ -391,10 +392,11 @@
     },
     "what-is-gaudete-sunday": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-04T15:17:46.790Z"
+      "status": "committed",
+      "startedAt": "2026-11-04T15:17:46.790Z",
+      "committedAt": "2026-11-04T15:28:34.865Z"
     }
   },
   "nextTopic": "what-is-the-presentation-of-jesus",
-  "updatedAt": "2026-11-04T15:17:46.790Z"
+  "updatedAt": "2026-11-04T15:28:34.880Z"
 }

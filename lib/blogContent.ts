@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-gaudete-sunday",
+    title: "What Is Gaudete Sunday? Why Is One Advent Candle Pink?",
+    description:
+      "What is Gaudete Sunday? Why one Advent candle turns pink, what Gaudete actually means, and how Catholics and Protestants both mark this day of rejoicing.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-gaudete-sunday",
+    publishedAt: "2026-11-04",
+    readTime: "12 min read",
+    image: "/blog-banners/what-is-gaudete-sunday.jpg",
+    groupPost: {
+      title: "What Is Gaudete Sunday? Why Is One Advent Candle Pink? 📖",
+      content:
+        "The wreath has three purple candles and one that breaks the pattern completely.\nNobody explains why it is pink until someone finally asks.\n\n📌 Gaudete Sunday is the third Sunday of Advent, when the Church pauses its own penitential season on purpose to tell you to rejoice.\n\n📖 The name comes straight from the Mass's opening words, taken from Philippians 4.\n📖 The rose candle matches rose vestments allowed on exactly one other Sunday all year, Laetare Sunday in Lent.\n📖 This year's own readings call it in from two directions, Isaiah's good tidings and Paul's command to rejoice without ceasing.\n\nNew article on:\n🟢 what **Gaudete** actually means and where the word comes from\n🟢 why the **rose candle** gets a color none of the other three carry\n🟢 how **Protestant churches** keep their own version of this same pause\n\nHas waiting on God ever been interrupted by a flash of joy before the answer even arrived? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-13-explained",
     title: "Deuteronomy 13 Explained: The Prophet, the Loved One, the City",
     description:
