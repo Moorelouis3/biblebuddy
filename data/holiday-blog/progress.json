@@ -388,8 +388,13 @@
       "startedAt": "2026-11-04T09:17:12.624Z",
       "committedAt": "2026-11-04T09:28:39.017Z",
       "publishedAt": "2026-11-04T15:17:35.326Z"
+    },
+    "what-is-gaudete-sunday": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-04T15:17:46.790Z"
     }
   },
-  "nextTopic": "what-is-gaudete-sunday",
-  "updatedAt": "2026-11-04T15:17:35.326Z"
+  "nextTopic": "what-is-the-presentation-of-jesus",
+  "updatedAt": "2026-11-04T15:17:46.790Z"
 }
