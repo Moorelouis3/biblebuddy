@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-13-explained",
+    title: "Deuteronomy 13 Explained: The Prophet, the Loved One, the City",
+    description:
+      "Deuteronomy 13 explained verse by verse: the prophet whose sign comes true, the loved one who entices secretly, the city that turns to idols, and why loyalty mattered more than proof.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-13-explained",
+    publishedAt: "2026-11-04",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-13-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 13 Explained 📖",
+      content:
+        "A sign comes true. A brother whispers in private. A whole town agrees together.\n\n📌 Deuteronomy 13 tests loyalty to God through three cases, each harder to resist than the last.\n\n📖 A working miracle was never proof the message was true.\n📖 The closest people in your life get named first, not last.\n📖 Judgment on a whole city still ends on a promise of mercy.\n\nNew article on:\n🟢 why God lets a false prophet's **sign come true**\n🟢 why a **brother or friend** gets named as a real danger\n🟢 how this chapter ends on **mercy**, not ashes\n\nHas a convincing voice ever quietly pulled you away from God before you noticed? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-12-explained",
     title: "Deuteronomy 12 Explained: Why God Demanded One Place to Worship",
     description:
