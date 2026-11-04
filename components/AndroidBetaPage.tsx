@@ -81,13 +81,41 @@ export default function AndroidBetaPage() {
           it and keep it for {TESTER_DAYS} days. You can be one of them right now.
         </p>
 
-        {/* The one thing that can go wrong, said before either button. */}
+        {/* The three things that actually go wrong, said before either button.
+            The first two are not guesses: people wrote in on 2026-11-04 saying
+            the links "don't work", and both have the same two causes every
+            time.
+
+            One, Google refuses to sign anybody in inside an embedded browser,
+            which is what Instagram and Facebook open links in. The group page
+            needs you signed in, so it fails there and looks broken. Jessica
+            hit exactly this, copied the link to Chrome, and it worked.
+
+            Two, and this is the one that produces the "error on their side"
+            message at step 2: the Play Store on the phone is signed into a
+            different Google account from the one that joined the group. Play
+            then genuinely cannot see the test, because for that account it
+            does not exist. */}
         <div className="mt-7 rounded-2xl border-2 border-[#c62828] bg-[#fdf2f2] p-4">
-          <p className="text-[1.05rem] font-black text-[#c62828]">Please do Step 1 first</p>
-          <p className="mt-1 text-sm font-semibold leading-6 text-[#8c2f2f]">
-            Step 2 will not let you in until you have joined the group. If it says
-            you are not a tester, come back and do Step 1.
-          </p>
+          <p className="text-[1.05rem] font-black text-[#c62828]">Read this first, it saves the hassle</p>
+          <ul className="mt-2 space-y-2 text-sm font-semibold leading-6 text-[#8c2f2f]">
+            <li>
+              <strong>Do Step 1 before Step 2.</strong> Step 2 will not let you in
+              until you have joined the group.
+            </li>
+            <li>
+              <strong>Open this in Chrome, not inside Instagram or Facebook.</strong>{" "}
+              Their built-in browsers cannot sign you in to Google, so the group
+              page just fails. If you came from a social app, tap the three dots
+              and choose Open in browser.
+            </li>
+            <li>
+              <strong>Use the same Google account that is on your phone.</strong>{" "}
+              If you join the group with one account and your Play Store is signed
+              in with another, Step 2 will say the app is not available. That is
+              the most common reason it looks broken.
+            </li>
+          </ul>
         </div>
 
         <section className="mt-8">
@@ -154,6 +182,42 @@ export default function AndroidBetaPage() {
           </a>
           <p className="mt-2 text-xs font-semibold text-[#6d7789]">
             Tap <strong>Become a tester</strong>, then <strong>Download it on Google Play</strong>.
+          </p>
+        </section>
+
+        {/* Written from what people actually reported rather than from what
+            could in theory go wrong. Every message so far has been one of
+            these three. */}
+        <section className="mt-8 rounded-2xl border border-[#d6dee2] bg-white p-5">
+          <h2 className="text-base font-black">If it says the app is not available</h2>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[#3c4a63]">
+            Almost always one of these, and none of them mean it is broken:
+          </p>
+          <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm font-semibold leading-6 text-[#3c4a63]">
+            <li>
+              <strong>You are in Instagram or Facebook&apos;s browser.</strong> Copy
+              the link into Chrome and it will work.
+            </li>
+            <li>
+              <strong>Different Google accounts.</strong> Open the Play Store, tap
+              your picture at the top, and check the account showing there is the
+              same one you joined the group with. This is the big one.
+            </li>
+            <li>
+              <strong>You have just joined.</strong> Give it a few minutes, then
+              open Step 2 again.
+            </li>
+          </ol>
+          <p className="mt-3 text-sm font-semibold leading-6 text-[#3c4a63]">
+            Still stuck? Email{" "}
+            <a
+              href="mailto:support@mybiblebuddy.net"
+              style={{ color: "#0056FD" }}
+              className="font-black underline"
+            >
+              support@mybiblebuddy.net
+            </a>{" "}
+            and say which step, and we will sort it.
           </p>
         </section>
 
