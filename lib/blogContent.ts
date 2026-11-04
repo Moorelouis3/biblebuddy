@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-feast-of-the-annunciation",
+    title: "What Is the Feast of the Annunciation? The Day God Said It First",
+    description:
+      "What is the Feast of the Annunciation? The angel Gabriel's visit to Mary in Luke 1, why March 25 was chosen, and how it differs from the Immaculate Conception.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-the-feast-of-the-annunciation",
+    publishedAt: "2026-11-04",
+    readTime: "14 min read",
+    image: "/blog-banners/what-is-the-feast-of-the-annunciation.jpg",
+    groupPost: {
+      title: "What Is the Feast of the Annunciation? The Day God Said It First 📖",
+      content:
+        "March 25 sits exactly nine months before Christmas.\nThat is not a decorating accident. It is the whole point.\n\n📌 The Feast of the Annunciation celebrates the angel Gabriel telling Mary she would carry the Son of God, and her six word answer is the moment the church says eternity entered a human body.\n\n📖 Gabriel visits an unremarkable town, not a palace.\n📖 Mary asks an honest question before she ever says yes.\n📖 The church fixed March 25 centuries later, for reasons worth knowing.\n\nNew article on:\n🟢 what Gabriel actually **said to Mary**\n🟢 why the date is **not** from an eyewitness calendar\n🟢 how this differs from the **Immaculate Conception**\n\nHas news ever interrupted your own plans before you understood a single piece of it? 🙏",
+    },
+  },
+  {
     slug: "who-was-saint-lucy",
     title: "Who Was Saint Lucy? The Meaning of Saint Lucy's Day",
     description:

@@ -91,6 +91,12 @@
         "advent-vs-christmas",
         "who-was-saint-lucy"
       ]
+    },
+    "2026-11-04": {
+      "committed": 1,
+      "slugs": [
+        "what-is-the-feast-of-the-annunciation"
+      ]
     }
   },
   "articles": {
@@ -362,10 +368,11 @@
     },
     "what-is-the-feast-of-the-annunciation": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-04T01:17:24.514Z"
+      "status": "committed",
+      "startedAt": "2026-11-04T01:17:24.514Z",
+      "committedAt": "2026-11-04T01:27:10.413Z"
     }
   },
   "nextTopic": "what-is-the-feast-of-the-holy-family",
-  "updatedAt": "2026-11-04T01:17:24.514Z"
+  "updatedAt": "2026-11-04T01:27:10.428Z"
 }
