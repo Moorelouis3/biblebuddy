@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-12-explained",
+    title: "Deuteronomy 12 Explained: Why God Demanded One Place to Worship",
+    description:
+      "Deuteronomy 12 explained verse by verse: tearing down every high place, the one place God would choose, the blood prohibition, and the warning against Canaanite worship.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-12-explained",
+    publishedAt: "2026-11-04",
+    readTime: "12 min read",
+    image: "/blog-banners/deuteronomy-12-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 12 Explained 📖",
+      content:
+        "The first law in Deuteronomy is not about theft or marriage.\nIt is about where you are even allowed to worship.\n\n📌 Every pagan altar in the land has to come down, and God names exactly one place to replace them all.\n\n📖 Moses gives permission to eat meat at home for the first time.\n📖 The blood rule traces all the way back to Genesis 9.\n📖 The chapter ends warning against studying pagan worship out of curiosity.\n\nNew article on:\n🟢 why God never **names the place** He chose\n🟢 what **thou shalt not add thereto** really means\n🟢 why **curiosity** about other worship gets called a snare\n\nHas your own worship ever quietly borrowed a method from somewhere other than Scripture? 🙏",
+    },
+  },
+  {
     slug: "solemnity-feast-memorial-difference",
     title: "What Is the Difference Between a Solemnity, Feast, and Memorial?",
     description:
