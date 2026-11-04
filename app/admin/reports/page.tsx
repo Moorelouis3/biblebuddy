@@ -151,11 +151,11 @@ export default function AdminReportsPage() {
 
             <div className="mt-3 flex flex-wrap gap-3 text-xs font-black">
               {report.content_link ? (
-                <Link href={report.content_link} className="rounded-full bg-slate-900 px-3 py-1.5 text-white">
+                <Link href={report.content_link} className="rounded-full bg-slate-900 px-3 py-1.5 text-white" style={{ color: "#ffffff" }}>
                   Open content
                 </Link>
               ) : null}
-              <Link href={`/profile/${report.reported.user_id}`} className="rounded-full bg-gray-100 px-3 py-1.5 text-gray-700">
+              <Link href={`/profile/${report.reported.user_id}`} className="rounded-full bg-gray-100 px-3 py-1.5 text-gray-700" style={{ color: "#374151" }}>
                 Reported profile
               </Link>
               {report.content_id ? (

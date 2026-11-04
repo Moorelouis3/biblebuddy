@@ -50,7 +50,7 @@ export default function StudyCta({
 
       <Link
         href={`/study/${slug}`}
-        className="mt-5 inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
+        className="mt-5 inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700" style={{ color: "#ffffff" }}
       >
         {ctaLabel || "Start studying — free"}
       </Link>

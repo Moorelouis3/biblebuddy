@@ -68,7 +68,7 @@ export default async function BlogPage({
               {currentPage > 1 ? (
                 <Link
                   href={currentPage === 2 ? "/blog" : `/blog?page=${currentPage - 1}`}
-                  className="rounded-full border border-[#d8e3ec] bg-white px-5 py-2.5 text-slate-700 transition hover:border-[#0056fd] hover:text-[#0056fd]"
+                  className="rounded-full border border-[#d8e3ec] bg-white px-5 py-2.5 text-slate-700 transition hover:border-[#0056fd] hover:text-[#0056fd]" style={{ color: "#334155" }}
                 >
                   ← Newer
                 </Link>
@@ -83,7 +83,7 @@ export default async function BlogPage({
               {currentPage < totalPages ? (
                 <Link
                   href={`/blog?page=${currentPage + 1}`}
-                  className="rounded-full border border-[#d8e3ec] bg-white px-5 py-2.5 text-slate-700 transition hover:border-[#0056fd] hover:text-[#0056fd]"
+                  className="rounded-full border border-[#d8e3ec] bg-white px-5 py-2.5 text-slate-700 transition hover:border-[#0056fd] hover:text-[#0056fd]" style={{ color: "#334155" }}
                 >
                   Older →
                 </Link>

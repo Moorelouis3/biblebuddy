@@ -340,7 +340,7 @@ export default function AccountRequiredModal({
                       not is worse than one that does not promise. */}
                   <a
                     href="/login"
-                    className="rounded-xl bg-amber-900 px-4 py-2 text-xs font-black text-white"
+                    className="rounded-xl bg-amber-900 px-4 py-2 text-xs font-black text-white" style={{ color: "#ffffff" }}
                   >
                     Sign in to that account
                   </a>

@@ -937,7 +937,7 @@ Be accurate to Scripture.`;
 
             <Link
               href={bibleNotesHref}
-              className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+              className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50" style={{ color: "#1f2937" }}
             >
               <span>📝</span>
               <span>Notes</span>
@@ -946,7 +946,7 @@ Be accurate to Scripture.`;
             {hasTrivia ? (
               <Link
                 href={`/bible-trivia/${triviaRouteSlug}/${chapter}`}
-                className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+                className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50" style={{ color: "#1f2937" }}
               >
                 <span>🧠</span>
                 <span>Trivia</span>
@@ -956,7 +956,7 @@ Be accurate to Scripture.`;
             {hasScrambled ? (
               <Link
                 href={`/bible-study-games/scrambled/${normalizedGameBookKey}/${chapter}`}
-                className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+                className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50" style={{ color: "#1f2937" }}
               >
                 <span>🔀</span>
                 <span>Scrambled</span>
@@ -966,7 +966,7 @@ Be accurate to Scripture.`;
             {!isInline ? (
               <Link
                 href={biblePageHref}
-                className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50"
+                className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-gray-50 px-3 py-2 text-xs font-black text-gray-800 transition hover:border-blue-200 hover:bg-blue-50" style={{ color: "#1f2937" }}
               >
                 <span>📖</span>
                 <span>Full Reader</span>

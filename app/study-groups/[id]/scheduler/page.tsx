@@ -2097,7 +2097,7 @@ RULES:
             <h1 className="mt-1 text-xl font-bold text-gray-900">{group.cover_emoji ? `${group.cover_emoji} ` : ""}{group.name}</h1>
           </div>
           <div className="flex items-center gap-2">
-            <Link href={`/study-groups/${groupId}/analytics`} className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-50">
+            <Link href={`/study-groups/${groupId}/analytics`} className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-600 hover:bg-gray-50" style={{ color: "#4b5563" }}>
               Analytics
             </Link>
             <Link href={`/study-groups/${groupId}/chat`} className="rounded-full bg-[#4a9b6f] px-4 py-2 text-sm font-semibold text-white hover:opacity-90">

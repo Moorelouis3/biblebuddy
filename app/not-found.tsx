@@ -46,7 +46,7 @@ export default function NotFound() {
             <li key={post.slug}>
               <Link
                 href={post.canonicalPath}
-                className="block rounded-2xl border border-[#dce8ff] bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:border-[#0056fd]"
+                className="block rounded-2xl border border-[#dce8ff] bg-white px-4 py-3 text-sm font-black text-slate-950 transition hover:border-[#0056fd]" style={{ color: "#020617" }}
               >
                 {post.title}
                 <span className="ml-2 text-xs font-bold text-[#6d7789]">{post.readTime}</span>

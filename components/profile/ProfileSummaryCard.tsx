@@ -214,7 +214,7 @@ export default function ProfileSummaryCard({
                   // back here. See app/profile/[userId]/page.tsx.
                   <Link
                     href={`/profile/${userId}?details=1`}
-                    className="profile-skin-button inline-flex min-h-[36px] items-center justify-center rounded-lg border border-gray-300 px-4 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+                    className="profile-skin-button inline-flex min-h-[36px] items-center justify-center rounded-lg border border-gray-300 px-4 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50" style={{ color: "#374151" }}
                   >
                     Edit Profile
                   </Link>

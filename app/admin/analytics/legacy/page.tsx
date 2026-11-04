@@ -5409,7 +5409,7 @@ function TrafficSourcesAnalyticsSection({
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              className="truncate rounded-xl bg-white px-3 py-2 text-blue-700 ring-1 ring-blue-100"
+              className="truncate rounded-xl bg-white px-3 py-2 text-blue-700 ring-1 ring-blue-100" style={{ color: "#1d4ed8" }}
             >
               {link.label}: {link.href}
             </a>

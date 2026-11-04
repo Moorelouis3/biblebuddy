@@ -5673,7 +5673,7 @@ export default function GroupChatPage() {
                         </div>
                         <Link
                           href={`/profile/${member.user_id}`}
-                          className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition flex-shrink-0"
+                          className="text-xs px-3 py-1.5 rounded-full border border-gray-200 text-gray-600 font-medium hover:bg-gray-50 transition flex-shrink-0" style={{ color: "#4b5563" }}
                         >
                           View Profile
                         </Link>

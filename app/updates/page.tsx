@@ -348,10 +348,10 @@ export default function UpdatesPage() {
             That is the heart of the new BibleBuddy. You do not need to be perfect. You do not need to move fast. You just need a clear place to start and a reason to come back tomorrow.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a href="/dashboard" className="rounded-full bg-white px-6 py-3 text-sm font-black text-gray-950 transition hover:bg-[#eaf5ff]">
+            <a href="/dashboard" className="rounded-full bg-white px-6 py-3 text-sm font-black text-gray-950 transition hover:bg-[#eaf5ff]" style={{ color: "#030712" }}>
               Go to Dashboard
             </a>
-            <a href="/bible-studies" className="rounded-full border border-white/20 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10">
+            <a href="/bible-studies" className="rounded-full border border-white/20 px-6 py-3 text-sm font-black text-white transition hover:bg-white/10" style={{ color: "#ffffff" }}>
               Browse Bible Studies
             </a>
           </div>

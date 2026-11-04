@@ -330,13 +330,13 @@ const meta: any = user.user_metadata || {};
           <div className="space-y-3">
             <Link
               href="/bible-trivia/moses"
-              className="block w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+              className="block w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition" style={{ color: "#ffffff" }}
             >
               Play Again
             </Link>
             <Link
               href="/bible-trivia"
-              className="block w-full bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition"
+              className="block w-full bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-300 transition" style={{ color: "#374151" }}
             >
               Back to Decks
             </Link>

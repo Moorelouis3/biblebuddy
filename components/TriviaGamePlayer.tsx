@@ -471,13 +471,13 @@ export default function TriviaGamePlayer({
             <div className="mt-8 space-y-3">
               <Link
                 href={`/bible-trivia/${bookSlug}`}
-                className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200"
+                className="block rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-800 transition hover:bg-gray-200" style={{ color: "#1f2937" }}
               >
                 Back to chapters
               </Link>
               <Link
                 href={`/bible-trivia/${bookSlug}/${chapter.chapter}`}
-                className="block rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 transition hover:bg-gray-50"
+                className="block rounded-xl border border-gray-200 bg-white px-4 py-3 font-semibold text-gray-700 transition hover:bg-gray-50" style={{ color: "#374151" }}
               >
                 Play trivia again
               </Link>

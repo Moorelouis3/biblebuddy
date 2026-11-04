@@ -991,7 +991,7 @@ export default function PublicProfilePage() {
             <p className="text-4xl mb-4">🔍</p>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Profile not found</h1>
             <p className="text-gray-500">This user doesn't exist or their profile isn't available.</p>
-            <Link href="/dashboard" className="inline-block mt-6 px-5 py-2.5 bg-gray-900 text-white rounded-xl text-sm font-medium hover:bg-gray-700 transition">
+            <Link href="/dashboard" className="inline-block mt-6 px-5 py-2.5 bg-gray-900 text-white rounded-xl text-sm font-medium hover:bg-gray-700 transition" style={{ color: "#ffffff" }}>
               Back to Dashboard
             </Link>
           </div>
@@ -1094,7 +1094,7 @@ export default function PublicProfilePage() {
                     {stats?.member_badge === "buddy_partner" && (
                       <Link
                         href="/ambassador"
-                        className="profile-skin-button inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold bg-teal-50 border border-teal-200 text-teal-700 hover:bg-teal-100 transition"
+                        className="profile-skin-button inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold bg-teal-50 border border-teal-200 text-teal-700 hover:bg-teal-100 transition" style={{ color: "#0f766e" }}
                       >
                         ðŸ¤ Partner Dashboard
                       </Link>

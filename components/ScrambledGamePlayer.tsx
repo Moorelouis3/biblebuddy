@@ -648,7 +648,7 @@ export default function ScrambledGamePlayer({
             </Link>
             <Link
               href={`/bible-study-games/scrambled/${bookSlug}`}
-              className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+              className="rounded-2xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50" style={{ color: "#374151" }}
             >
               Back to Chapters
             </Link>
