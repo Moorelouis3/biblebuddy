@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "are-all-sins-equal",
+    title: "Are All Sins Equal to God?",
+    description:
+      "Are all sins equal to God? A clear Bible based answer: every sin separates you from Him equally, but Scripture does grade consequence and judgment.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/are-all-sins-equal",
+    publishedAt: "2026-11-04",
+    readTime: "17 min read",
+    image: "/are-all-sins-equal-banner.png",
+    groupPost: {
+      title: "Are All Sins Equal to God? 📖",
+      content:
+        "Somebody told you all sin is the same to God.\nIt's not that simple.\n\n📌 Every sin separates you from God the same way.\n\n📖 Jesus told Pilate someone else had the greater sin.\n📖 James says one broken law makes you guilty of all.\n📖 Jesus named one sin He called unpardonable.\n\nNew article on:\n🟢 why **all sin** separates you from God equally\n🟢 why Jesus still spoke of a **greater sin**\n🟢 what the **unpardonable sin** really means\n\nHave you ever ranked your sin against someone else's? 🙏",
+    },
+  },
+  {
     slug: "what-is-gaudete-sunday",
     title: "What Is Gaudete Sunday? Why Is One Advent Candle Pink?",
     description:
