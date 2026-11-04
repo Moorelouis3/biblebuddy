@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState, type ReactNode } from "react";
 import type { DashboardData, DashboardWindow } from "@/lib/adminDashboard";
+import AndroidBetaTracker from "./AndroidBetaTracker";
 
 /**
  * Owner analytics (rebuilt 2026-09-21 from Louis's desktop + mobile mockups).
@@ -1226,6 +1227,11 @@ export default function AnalyticsDashboardView({
                       installed. The real tester count is in Play Console under
                       Closed testing.
                     </p>
+
+                    {/* Which is why the number below is typed in by hand. Its own
+                        component because it loads and writes its own data - the
+                        main dashboard query should not wait on it. */}
+                    <AndroidBetaTracker />
                   </div>
                 ) : null}
 
