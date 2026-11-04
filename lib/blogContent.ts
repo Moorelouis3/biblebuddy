@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-9-explained",
+    title: "Deuteronomy 9 Explained: Not For Your Righteousness",
+    description:
+      "Deuteronomy 9 explained verse by verse: the giants in the land, not for thy righteousness, the golden calf retold, and the prayer that spared Israel at Horeb.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-9-explained",
+    publishedAt: "2026-11-04",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-9-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 9 Explained 📖",
+      content:
+        "Walled cities. Giants in the land.\nMoses opens by taking away the one excuse Israel would reach for.\n\n📌 Not for thy righteousness. That is the reason God gives for the land, twice in one chapter.\n\n📖 Israel built a golden calf while Moses was still on the mountain.\n📖 Moses fasted forty days, twice, pleading for a people who did not deserve it.\n📖 God was angry enough with Aaron to destroy him too.\n\nNew article on:\n🟢 what really happened at **Horeb**\n🟢 why Moses calls Israel **stiffnecked**\n🟢 the prayer that **saved** the whole nation\n\nHave you ever quietly credited your own righteousness for something God actually gave you? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-feast-of-the-annunciation",
     title: "What Is the Feast of the Annunciation? The Day God Said It First",
     description:
