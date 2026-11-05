@@ -47,8 +47,21 @@ type ShelfBook = {
   /** null when the reader has never opened it. */
   currentDay: number | null;
   totalDays: number;
+  /**
+   * Days actually finished, which is NOT currentDay - 1 for everybody.
+   * Somebody can be on day 9 with eight finished, or skip ahead and be on day
+   * 9 with three. "Days remaining" and the percentage are both counted from
+   * this, so the card never claims a day the reader has not done.
+   */
+  completedDays: number;
   percent: number;
   isComplete: boolean;
+  /**
+   * The newest `completed_at` on any of this study's days - so it is the last
+   * time they READ, not the last time they opened the book, and the card says
+   * "Last read" rather than "Last opened" because that is what the number is.
+   * On a finished study the same stamp is the day they finished it.
+   */
   lastActivityAt: string | null;
   isCommunityToday: boolean;
   /**
@@ -77,6 +90,70 @@ type ShelfBook = {
 function countdownLabel(book: ShelfBook, now: number): string | null {
   if (!book.availableFrom) return book.startsLabel;
   return availability({ available_from: book.availableFrom } as LibraryStudy, false, new Date(now)).label;
+}
+
+/**
+ * Days left, counted from days finished rather than from the day they are on.
+ *
+ * Never negative and never more than the study is long: somebody who has
+ * finished more days than the catalogue says it has - which happens when a
+ * study is shortened after people start it - should see 0, not a minus
+ * number.
+ */
+function daysRemaining(book: ShelfBook): number {
+  return Math.max(0, Math.min(book.totalDays, book.totalDays - book.completedDays));
+}
+
+/** 0-100, whatever the stored percentage says, so a bar can never overrun. */
+function safePercent(book: ShelfBook): number {
+  if (!Number.isFinite(book.percent)) return 0;
+  return Math.max(0, Math.min(100, Math.round(book.percent)));
+}
+
+/**
+ * "today", "yesterday", "3 days ago" - or null when there is no stamp to
+ * work from, in which case the card shows nothing rather than a guess.
+ *
+ * Compared by calendar day in the reader's own timezone, so something read at
+ * 11pm last night reads as "yesterday" rather than "today" to anyone who
+ * opens the app after midnight.
+ */
+function relativeDayLabel(stamp: string | null, now: number): string | null {
+  if (!stamp) return null;
+  const then = new Date(stamp);
+  if (Number.isNaN(then.getTime())) return null;
+  const startOfDay = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
+  const days = Math.round((startOfDay(new Date(now)) - startOfDay(then)) / 86_400_000);
+  if (days <= 0) return "today";
+  if (days === 1) return "yesterday";
+  if (days < 30) return `${days} days ago`;
+  return null;
+}
+
+/** "Nov 7, 2026" in the reader's own locale, or null. */
+function formatDate(stamp: string | null): string | null {
+  if (!stamp) return null;
+  const date = new Date(stamp);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+}
+
+/**
+ * The countdown broken into its three boxes, or null once the date has
+ * passed - which is what stops an expired countdown sitting on the card: the
+ * clock ticking above re-runs this, it returns null, and the card falls
+ * through to its ordinary state on its own.
+ */
+function countdownParts(book: ShelfBook, now: number): { days: string; hours: string; minutes: string } | null {
+  if (!book.availableFrom) return null;
+  const left = new Date(book.availableFrom).getTime() - now;
+  if (!Number.isFinite(left) || left <= 0) return null;
+  const pad = (n: number) => String(Math.max(0, n)).padStart(2, "0");
+  return {
+    days: pad(Math.floor(left / 86_400_000)),
+    hours: pad(Math.floor((left % 86_400_000) / 3_600_000)),
+    minutes: pad(Math.floor((left % 3_600_000) / 60_000)),
+  };
 }
 
 /**
@@ -189,6 +266,7 @@ export default function YourBookshelf({
             : `/plan?view=bible_studies&study=${encodeURIComponent(s.id)}`,
           currentDay: started ? p.nextDay : null,
           totalDays: s.total_days,
+          completedDays: p.completedDays,
           percent: p.percent,
           isComplete: p.isComplete,
           lastActivityAt: p.lastActivityAt,
@@ -208,6 +286,7 @@ export default function YourBookshelf({
         href: BIBLE_YEAR_PLAN_HREF,
         currentDay: planDay,
         totalDays: PLAN_TOTAL_DAYS,
+        completedDays: planCompletedDays,
         percent: Math.round((planCompletedDays / PLAN_TOTAL_DAYS) * 100),
         isComplete: planCompletedDays >= PLAN_TOTAL_DAYS,
         lastActivityAt: null,
@@ -272,7 +351,56 @@ export default function YourBookshelf({
     };
   }, [userId, planDay, planCompletedDays, event, communityDay]);
 
+  /**
+   * "2 studies in progress · 1 completed · 1 upcoming", from the shelf itself.
+   *
+   * Upcoming is decided by the same countdown the cards use, so a study that
+   * opens while the page is sitting there moves out of "upcoming" and into
+   * the ordinary count on the next tick, with nothing to refresh.
+   */
+  const shelfSummary = useMemo(() => {
+    const upcoming = books.filter((b) => countdownParts(b, now)).length;
+    const completed = books.filter((b) => b.isComplete).length;
+    const inProgress = books.filter(
+      (b) => !b.isComplete && b.currentDay !== null && !countdownParts(b, now),
+    ).length;
+    const parts: string[] = [];
+    if (inProgress) parts.push(`${inProgress} ${inProgress === 1 ? "study" : "studies"} in progress`);
+    if (completed) parts.push(`${completed} completed`);
+    if (upcoming) parts.push(`${upcoming} upcoming`);
+    return parts.join(" · ");
+  }, [books, now]);
 
+  /**
+   * The one book that wears "Currently Reading": the started, unfinished
+   * study they read most recently.
+   *
+   * `books` is already ordered with the started ones first, newest activity
+   * first, so this is the first of those that has a real timestamp behind it.
+   * Somebody who has never read anything gets no badge rather than an
+   * invented one, and Bible in One Year carries no stamp at all, so it is
+   * never badged on a technicality.
+   */
+  const currentlyReadingKey = useMemo(() => {
+    const read = books.find((b) => !b.isComplete && b.currentDay !== null && b.lastActivityAt);
+    return read?.key ?? null;
+  }, [books]);
+
+  /**
+   * Flipped on one frame after the books land, which is what makes the
+   * progress bars grow from nothing instead of appearing at length.
+   *
+   * A frame rather than a timeout: the bar has to be painted at 0% once
+   * before the width changes, or the browser has nothing to animate from.
+   * The animation itself is motion-safe, so this does nothing visible for a
+   * reader who has asked for less movement.
+   */
+  const [barsIn, setBarsIn] = useState(false);
+  useEffect(() => {
+    if (loading || !books.length) return;
+    const id = window.requestAnimationFrame(() => setBarsIn(true));
+    return () => window.cancelAnimationFrame(id);
+  }, [loading, books.length]);
 
   if (loading) {
     return (
@@ -329,6 +457,17 @@ export default function YourBookshelf({
                     the books you have open, rather than one instruction. */}
                 Your Bookshelf
               </h2>
+              {/* Counted from the shelf that is actually on screen, so the
+                  line can never disagree with the cards under it. Each part
+                  is dropped when it is zero rather than printed as "0
+                  completed", and the whole line goes when there is nothing to
+                  count - an empty shelf should not announce its emptiness
+                  three times. */}
+              {shelfSummary ? (
+                <p className="mt-0.5 truncate text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)] sm:text-[13px]">
+                  {shelfSummary}
+                </p>
+              ) : null}
             </div>
             <Link
               href="/library"
@@ -341,8 +480,11 @@ export default function YourBookshelf({
           {/* The covers are the point, so they are large. The row swipes on a
               phone with the next one peeking; on a desktop three or four sit
               side by side. */}
-          <div className="-mx-4 mt-5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:-mx-5 sm:px-5 [&::-webkit-scrollbar]:hidden">
-            <ul className="flex w-max snap-x snap-mandatory items-stretch gap-3 sm:gap-4">
+          {/* Swipe on a phone, grid on a desktop. The grid is auto-fit
+              rather than five columns: the shelf is however many books the
+              reader has, and five is what today's catalogue happens to be. */}
+          <div className="-mx-4 mt-5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:-mx-5 sm:px-5 lg:mx-0 lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden">
+            <ul className="flex w-max snap-x snap-mandatory items-stretch gap-3 sm:gap-4 lg:grid lg:w-full lg:grid-cols-[repeat(auto-fit,minmax(170px,1fr))]">
               {books.map((book, index) => {
                 const primaryLabel = book.isComplete
                   ? "Read Again →"
@@ -358,10 +500,20 @@ export default function YourBookshelf({
                 // covers keep the size and portrait proportions they had - the
                 // frame is added around them rather than taken out of them.
                 const tint = cardTint(index);
+                const countdown = countdownParts(book, now);
+                /* The old gate, kept exactly: a study can be "not out yet"
+                   with a label and no release timestamp, and that still has
+                   to lock the cover and the button. countdown is only for
+                   the boxes, which need a real date to count to. */
+                const notOutYet = Boolean(countdownLabel(book, now));
+                const percent = safePercent(book);
+                const releaseDate = formatDate(book.availableFrom);
+                const finishedOn = book.isComplete ? formatDate(book.lastActivityAt) : null;
+                const lastRead = relativeDayLabel(book.lastActivityAt, now);
                 return (
                   <li
                     key={book.key}
-                    className="flex w-[148px] shrink-0 snap-start flex-col rounded-2xl border p-2 shadow-sm sm:w-[174px]"
+                    className="flex w-[160px] shrink-0 snap-start flex-col rounded-2xl border p-2 shadow-sm transition motion-safe:duration-200 hover:-translate-y-0.5 hover:shadow-md sm:w-[184px] lg:w-auto"
                     style={{ backgroundColor: tint.bg, borderColor: tint.border }}
                   >
                     {/* Not out yet means not open yet (Louis, 2026-10-18:
@@ -372,7 +524,7 @@ export default function YourBookshelf({
                         becomes a button again on its own. */}
                     <button
                       type="button"
-                      disabled={Boolean(countdownLabel(book, now))}
+                      disabled={notOutYet}
                       onClick={() => router.push(book.href)}
                       className="group relative block w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] disabled:cursor-default"
                     >
@@ -384,12 +536,30 @@ export default function YourBookshelf({
                           column - so the rule already held in the data and had
                           nothing saying so on the screen. This is what says
                           it, on the one card that leads the shelf. */}
-                      {book.isCommunityToday ? (
-                        <span className="absolute left-2 top-2 z-10 rounded-md bg-[var(--bb-accent,#2f7fe8)] px-2 py-1 text-[9px] font-black uppercase tracking-wide text-white shadow">
+                      {/* One badge, not four stacked on a 148px cover. In
+                          order: a study that has not opened yet, a finished
+                          one, the one they are actually reading, the group's
+                          study, and last the one they chose. The first four
+                          say something about the book; "Your study" is the
+                          weakest claim of the five and so it goes last. */}
+                      {notOutYet ? (
+                        <span className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-[#6d3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
+                          <span aria-hidden>🗓️</span> Upcoming Study
+                        </span>
+                      ) : book.isComplete ? (
+                        <span className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-[#1f8f54] px-2 py-1 text-[9px] font-black text-white shadow-md">
+                          <span aria-hidden>✔</span> Study Completed
+                        </span>
+                      ) : book.key === currentlyReadingKey ? (
+                        <span className="absolute left-1.5 top-1.5 z-10 inline-flex items-center gap-1 rounded-full bg-[#5b3fd4] px-2 py-1 text-[9px] font-black text-white shadow-md">
+                          <span aria-hidden>📖</span> Currently Reading
+                        </span>
+                      ) : book.isCommunityToday ? (
+                        <span className="absolute left-1.5 top-1.5 z-10 rounded-full bg-[var(--bb-accent,#2f7fe8)] px-2 py-1 text-[9px] font-black uppercase tracking-wide text-white shadow-md">
                           Group study
                         </span>
                       ) : book.key === chosenKey ? (
-                        <span className="absolute left-2 top-2 z-10 rounded-md bg-[#2b2150] px-2 py-1 text-[9px] font-black uppercase tracking-wide text-white shadow">
+                        <span className="absolute left-1.5 top-1.5 z-10 rounded-full bg-[#2b2150] px-2 py-1 text-[9px] font-black uppercase tracking-wide text-white shadow-md">
                           Your study
                         </span>
                       ) : null}
@@ -413,7 +583,13 @@ export default function YourBookshelf({
                     {/* Two lines, always: a one-line title used to pull its
                         progress bar and button up out of line with the book
                         beside it. */}
-                    <p className="mt-2 line-clamp-2 h-[2.2em] text-xs font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[13px]">
+                    {/* min-height rather than a fixed 2.2em: the fixed one
+                        kept the rows level and sliced the descenders off a
+                        two-line title ("The Beginning of Everything" lost the
+                        bottom of its g and y). This still reserves two lines
+                        so the bars below stay in line, without cutting the
+                        words. */}
+                    <p className="mt-2 line-clamp-2 min-h-[2.5em] text-xs font-black leading-tight text-[var(--bb-text-primary,#111827)] sm:text-[13px]">
                       {book.title}
                     </p>
 
@@ -421,27 +597,112 @@ export default function YourBookshelf({
                       {/* Recomputed against the ticking clock below, so the
                           countdown counts rather than showing whatever it
                           said when the shelf loaded. */}
-                      {countdownLabel(book, now) ? (
-                        <p className="text-[11px] font-black text-[#a57d2c]">{countdownLabel(book, now)}</p>
+                      {notOutYet ? (
+                        /* Three boxes rather than a sentence, so the number
+                           that is about to change is the thing the eye
+                           lands on. The minute ticker above redraws them;
+                           when the date passes, countdownParts returns null
+                           and the card becomes an ordinary one with no
+                           refresh and nothing to clean up. */
+                        <>
+                          {/* Boxes need a real release timestamp to count to.
+                              A study that is only marked "not out yet", with
+                              no date behind it, keeps the plain label it has
+                              always had rather than three boxes of zeroes. */}
+                          {countdown ? (
+                          <>
+                          <div className="flex gap-1" role="timer" aria-live="off">
+                            {[
+                              [countdown.days, "Days"],
+                              [countdown.hours, "Hours"],
+                              [countdown.minutes, "Minutes"],
+                            ].map(([value, label]) => (
+                              <span
+                                key={label}
+                                className="flex-1 rounded-lg bg-white/70 px-1 py-1 text-center"
+                              >
+                                <span className="block text-[13px] font-black leading-none text-[#4b2fae]">
+                                  {value}
+                                </span>
+                                <span className="block text-[8px] font-bold uppercase tracking-wide text-[#7a6aa8]">
+                                  {label}
+                                </span>
+                              </span>
+                            ))}
+                          </div>
+                          <p className="sr-only">
+                            Releases in {countdown.days} days, {countdown.hours} hours and{" "}
+                            {countdown.minutes} minutes
+                          </p>
+                          </>
+                          ) : (
+                            <p className="text-[11px] font-black text-[#a57d2c]">
+                              {countdownLabel(book, now)}
+                            </p>
+                          )}
+                          {releaseDate ? (
+                            <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                              <span aria-hidden>📅</span> Releases {releaseDate}
+                            </p>
+                          ) : null}
+                        </>
                       ) : book.isComplete ? (
-                        <p className="flex items-center gap-1 text-[11px] font-bold text-[#2f8f5b]">
-                          <span aria-hidden>✅</span> Completed
-                        </p>
+                        <>
+                          <p className="flex items-center gap-1 text-[11px] font-bold text-[#2f8f5b]">
+                            <span aria-hidden>✅</span> Completed
+                          </p>
+                          {/* The stamp is the newest finished day, which on a
+                              study they have finished IS the day they finished
+                              it. No stamp means no date rather than a made-up
+                              one. */}
+                          {finishedOn ? (
+                            <p className="mt-1 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                              <span aria-hidden>📅</span> Completed {finishedOn}
+                            </p>
+                          ) : null}
+                        </>
                       ) : book.currentDay !== null ? (
                         <>
-                          <p className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
-                            Day {book.currentDay} of {book.totalDays}
-                          </p>
-                          <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--bb-surface-soft,#eef2f7)]">
+                          <div className="flex items-baseline justify-between gap-1">
+                            <p className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                              Day {book.currentDay} of {book.totalDays}
+                            </p>
+                            <span className="shrink-0 rounded-full bg-white/70 px-1.5 py-0.5 text-[10px] font-black text-[var(--bb-accent,#2f7fe8)]">
+                              {percent}%
+                            </span>
+                          </div>
+                          {/* Grows from nothing to where it should be once,
+                              on mount. motion-safe only, so a reader who has
+                              asked their phone to stop animating gets the bar
+                              already at its length. */}
+                          <span className="mt-1.5 block h-2 overflow-hidden rounded-full bg-white/70">
                             <span
-                              className="block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)]"
-                              style={{ width: `${book.percent}%` }}
+                              className="block h-full rounded-full bg-[var(--bb-accent,#2f7fe8)] motion-safe:transition-[width] motion-safe:duration-700 motion-safe:ease-out"
+                              style={{ width: `${barsIn ? percent : 0}%` }}
+                              role="progressbar"
+                              aria-valuenow={percent}
+                              aria-valuemin={0}
+                              aria-valuemax={100}
+                              aria-label={`${book.title}: ${percent}% complete`}
                             />
                           </span>
+                          <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                            <span aria-hidden>📅</span> {daysRemaining(book)} days remaining
+                          </p>
                         </>
                       ) : (
                         <p className="text-[11px] font-bold text-[var(--bb-text-muted,#6b7280)]">Start this study</p>
                       )}
+
+                      {/* Last READ, not last opened: the only stamp we keep is
+                          the newest finished day. Hidden when there is none,
+                          and on a finished study, where the date above already
+                          says it. */}
+                      {lastRead && !book.isComplete ? (
+                        <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#9aa3b2)]">
+                          <span aria-hidden>🕒</span> Last read {lastRead}
+                        </p>
+                      ) : null}
                     </div>
 
                     {/* A study that is announced but not open gets "Sign up"
@@ -449,21 +710,42 @@ export default function YourBookshelf({
                         already printed above the button, so the button is free
                         to do the one useful thing. Everything without an event
                         behind it keeps the old disabled tile. */}
+                    {/* One button, four looks, same behaviour as before:
+                        purple to sign up for a dated study, green outline to
+                        read a finished one again, solid blue for the book
+                        they are furthest into, soft blue for the rest. A
+                        study with a date and no event behind it keeps the old
+                        disabled tile - there is genuinely nothing to press
+                        yet. */}
                     <button
                       type="button"
-                      disabled={Boolean(countdownLabel(book, now)) && !book.signUpHref}
+                      disabled={notOutYet && !book.signUpHref}
                       onClick={() => router.push(book.signUpHref || book.href)}
-                      className={`mt-2.5 w-full rounded-full px-2 py-2 text-center text-xs font-black transition sm:text-[13px] ${
+                      className={`mt-2.5 flex w-full items-center justify-center gap-1 rounded-full px-2 py-2 text-center text-xs font-black transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 active:scale-[0.98] sm:text-[13px] ${
                         book.signUpHref
-                          ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] hover:opacity-95"
-                          : countdownLabel(book, now)
+                          ? "bg-gradient-to-r from-[#7b4ae2] to-[#5b3fd4] text-white shadow-sm ring-[#5b3fd4] hover:brightness-105"
+                          : notOutYet
                             ? "cursor-default bg-[#f3ece0] text-[#a57d2c]"
-                            : isLead
-                              ? "bg-[var(--bb-button,var(--bb-accent,#2f7fe8))] text-[var(--bb-button-text,#ffffff)] hover:opacity-95"
-                              : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] hover:bg-[#dceeff]"
+                            : book.isComplete
+                              ? "border-2 border-[#1f8f54] bg-transparent text-[#1f8f54] ring-[#1f8f54] hover:bg-[#1f8f54]/10"
+                              : isLead
+                                ? "bg-gradient-to-r from-[var(--bb-accent,#2f7fe8)] to-[#1f5fd0] text-[var(--bb-button-text,#ffffff)] shadow-sm ring-[var(--bb-accent,#2f7fe8)] hover:brightness-105"
+                                : "bg-[var(--bb-accent-soft,#eaf5ff)] text-[var(--bb-accent,#2f7fe8)] ring-[var(--bb-accent,#2f7fe8)] hover:bg-[#dceeff]"
                       }`}
                     >
-                      {book.signUpHref ? "Sign up →" : countdownLabel(book, now) ? "Coming soon" : primaryLabel}
+                      {book.signUpHref ? (
+                        <>
+                          <span aria-hidden>🔔</span> Sign up →
+                        </>
+                      ) : notOutYet ? (
+                        "Coming soon"
+                      ) : book.isComplete ? (
+                        <>
+                          <span aria-hidden>↻</span> Read Again →
+                        </>
+                      ) : (
+                        primaryLabel
+                      )}
                     </button>
                   </li>
                 );
