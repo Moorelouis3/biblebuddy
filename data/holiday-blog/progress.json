@@ -102,9 +102,10 @@
       ]
     },
     "2026-11-05": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "what-is-the-presentation-of-jesus"
+        "what-is-the-presentation-of-jesus",
+        "what-is-the-feast-of-the-holy-innocents"
       ]
     }
   },
@@ -411,10 +412,11 @@
     },
     "what-is-the-feast-of-the-holy-innocents": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-05T05:16:53.279Z"
+      "status": "committed",
+      "startedAt": "2026-11-05T05:16:53.279Z",
+      "committedAt": "2026-11-05T05:28:47.253Z"
     }
   },
   "nextTopic": "what-is-a-patron-saint",
-  "updatedAt": "2026-11-05T05:16:53.279Z"
+  "updatedAt": "2026-11-05T05:28:47.269Z"
 }

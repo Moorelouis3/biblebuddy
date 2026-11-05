@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-feast-of-the-holy-innocents",
+    title: "What Is the Feast of the Holy Innocents? The Biblical Story Explained",
+    description:
+      "What is the Feast of the Holy Innocents? The biblical story of Herod's massacre in Bethlehem, what Jeremiah's prophecy means, and whether it is historical.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-the-feast-of-the-holy-innocents",
+    publishedAt: "2026-11-05",
+    readTime: "16 min read",
+    image: "/blog-banners/what-is-the-feast-of-the-holy-innocents.jpg",
+    groupPost: {
+      title: "What Is the Feast of the Holy Innocents? The Biblical Story Explained 📖",
+      content:
+        "Three days after Christmas, the church calendar stops celebrating a birth and starts mourning a massacre.\nMost people never notice.\n\n📌 Herod ordered the death of Bethlehem's young boys after the wise men tricked him, and Christians have kept the day since the fifth century.\n\n📖 Matthew reaches back to Jeremiah's prophecy of Rachel weeping for her children.\n📖 No outside historian confirms the massacre, and scholars genuinely disagree on why.\n📖 The Church still calls these children martyrs, even though they never knew Christ's name.\n\nNew article on:\n🟢 the real **historicity debate** scholars are still having\n🟢 why the Church calls them **martyrs** though they were too young to choose it\n🟢 how December 28 became Mexico and Spain's day of **pranks**\n\nIs there a grief you have been carrying this season that you have not brought to God plainly yet? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-15-explained",
     title: "Deuteronomy 15 Explained: Debt Release, Open Hands, Free Servants",
     description:
