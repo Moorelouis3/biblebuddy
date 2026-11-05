@@ -408,8 +408,13 @@
       "status": "committed",
       "startedAt": "2026-11-05T01:17:14.122Z",
       "committedAt": "2026-11-05T01:27:34.482Z"
+    },
+    "what-is-the-feast-of-the-holy-innocents": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-05T05:16:53.279Z"
     }
   },
-  "nextTopic": "what-is-the-feast-of-the-holy-innocents",
-  "updatedAt": "2026-11-05T05:16:33.324Z"
+  "nextTopic": "what-is-a-patron-saint",
+  "updatedAt": "2026-11-05T05:16:53.279Z"
 }
