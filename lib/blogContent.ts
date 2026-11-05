@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-14-explained",
+    title: "Deuteronomy 14 Explained: Holy People, Clean Food, Costly Giving",
+    description:
+      "Deuteronomy 14 explained verse by verse: the ban on pagan mourning rites, clean and unclean animals, and the tithe that cared for the Levite, the stranger, and the widow.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-14-explained",
+    publishedAt: "2026-11-05",
+    readTime: "12 min read",
+    image: "/blog-banners/deuteronomy-14-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 14 Explained 📖",
+      content:
+        "A funeral. A dinner table. A harvest barn. None of them sound like worship.\n\n📌 Deuteronomy 14 takes the loyalty test of the last chapter and points it at ordinary life.\n\n📖 The food laws rest on one stated reason: Israel belonged to God, nothing else.\n📖 An unclean animal still fed the stranger, never just thrown away.\n📖 Every third year, the tithe stayed home to feed the Levite, the stranger, the orphan, and the widow.\n\nNew article on:\n🟢 why God cared about **how Israel grieved**\n🟢 the real rule behind the **clean and unclean animals**\n🟢 the tithe that was built around **the forgotten**\n\nDoes your everyday life, the ordinary stuff, actually show who you belong to? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-presentation-of-jesus",
     title: "What Is the Presentation of Jesus in the Temple? The Meaning Explained",
     description:
