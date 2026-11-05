@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-18-explained",
+    title: "Deuteronomy 18 Explained: No Land for Levites, a Prophet Like Moses",
+    description:
+      "Deuteronomy 18 explained verse by verse: why the Levites had no land inheritance, the occult practices Israel had to avoid, and the Prophet like Moses.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-18-explained",
+    publishedAt: "2026-11-05",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-18-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 18 Explained 📖",
+      content:
+        "No farmland. No herd to inherit. A whole tribe told God Himself is their portion.\n\n📌 Deuteronomy 18 promises a Prophet like Moses centuries before He ever arrives.\n\n📖 The Levites lived off firstfruits and offerings, never a tribal territory.\n📖 Israel was told to leave divination and familiar spirits alone completely.\n📖 Peter later names Jesus as the very Prophet this chapter promised.\n\nNew article on:\n🟢 why the **Levites got no land** of their own\n🟢 what **divination and familiar spirits** actually meant\n🟢 the **test** Israel could use to spot a false prophet\n\nWhere have you reached for a shortcut instead of waiting on God? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-17-explained",
     title: "Deuteronomy 17 Explained: Honest Courts and a King With Limits",
     description:
