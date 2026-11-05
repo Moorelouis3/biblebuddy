@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-17-explained",
+    title: "Deuteronomy 17 Explained: Honest Courts and a King With Limits",
+    description:
+      "Deuteronomy 17 explained verse by verse: the two witness rule, a central court whose ruling was final, and the three limits placed on any future king.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-17-explained",
+    publishedAt: "2026-11-05",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-17-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 17 Explained 📖",
+      content:
+        "Two witnesses, not one. A court with the final word. A king told no before he even exists.\n\n📌 Deuteronomy 17 writes the limits on a throne centuries before Israel asks for one.\n\n📖 No capital case stood on a single accuser's word alone.\n📖 A central court's ruling was final, no second opinion elsewhere.\n📖 Israel's future king could not multiply horses, wives, or wealth.\n\nNew article on:\n🟢 why **two or three witnesses** were required for a serious charge\n🟢 the three warnings aimed at a king who did not exist yet\n🟢 why the king had to **copy his own law by hand**\n\nWhich of those three royal limits do you think mattered most? 🙏",
+    },
+  },
+  {
     slug: "what-is-a-patron-saint",
     title: "What Is a Patron Saint? How Saints Are Chosen and Why",
     description:
