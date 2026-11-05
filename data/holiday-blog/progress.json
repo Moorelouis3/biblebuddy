@@ -406,17 +406,19 @@
     },
     "what-is-the-presentation-of-jesus": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-05T01:17:14.122Z",
-      "committedAt": "2026-11-05T01:27:34.482Z"
+      "committedAt": "2026-11-05T01:27:34.482Z",
+      "publishedAt": "2026-11-05T09:17:13.666Z"
     },
     "what-is-the-feast-of-the-holy-innocents": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-05T05:16:53.279Z",
-      "committedAt": "2026-11-05T05:28:47.253Z"
+      "committedAt": "2026-11-05T05:28:47.253Z",
+      "publishedAt": "2026-11-05T09:17:13.899Z"
     }
   },
   "nextTopic": "what-is-a-patron-saint",
-  "updatedAt": "2026-11-05T05:28:47.269Z"
+  "updatedAt": "2026-11-05T09:17:13.900Z"
 }
