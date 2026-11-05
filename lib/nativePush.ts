@@ -339,40 +339,81 @@ let registrationInFlight: Promise<boolean> | null = null;
 export type StageReport = (stage: string) => void;
 
 /**
- * Android push is OFF until Firebase exists (Louis, 2026-11-05).
+ * Android push, and the crash it caused (Louis, 2026-11-05).
  *
- * Android notifications go through Firebase Cloud Messaging, and there is no
- * Firebase project for Bible Buddy at all - so there is no
- * google-services.json, and the Codemagic build says so out loud and carries
- * on: "google-services.json not found, google-services plugin not applied.
- * Push Notifications won't work."
+ * Android notifications go through Firebase Cloud Messaging. Until build 5
+ * there was no Firebase project for Bible Buddy at all, so no
+ * google-services.json reached the build and the push plugin shipped with
+ * nothing behind it - the Codemagic log said so every time and the build
+ * carried on: "google-services.json not found, google-services plugin not
+ * applied. Push Notifications won't work."
  *
- * What that leaves in the app is the push plugin with nothing behind it.
  * `FirebaseMessaging.getInstance()` on a process with no configured
  * FirebaseApp throws IllegalStateException, and that is a NATIVE throw on the
- * main thread - it does not come back to JavaScript as a rejected promise, it
- * takes the app down. Which is what the testers are seeing: "Bible Buddy
- * closed because this app has a bug", on a phone that had reached the
- * dashboard seconds earlier.
+ * main thread - it never comes back to JavaScript as a rejected promise, it
+ * takes the app down. That was the testers' "Bible Buddy closed because this
+ * app has a bug", on a phone that had reached the dashboard seconds before.
  *
- * So the register call never happens on Android while this is false. Nothing
- * is lost that worked: Android push has never delivered a single token - 43
- * iPhones are registered and no Android device ever has been.
- *
- * FLIP THIS TO TRUE when a Firebase project exists and google-services.json
- * is in the Android build. Nothing else here needs to change; iOS is
- * untouched either way, because APNs needs none of it.
+ * iOS was never affected: APNs needs none of this.
  */
-const ANDROID_PUSH_READY = false;
+/**
+ * Build 5 (1.05) is the first Android build with google-services.json in it,
+ * and it reached the closed track on 2026-11-05.
+ *
+ * The gate is the BUILD NUMBER rather than a flag somebody has to remember to
+ * flip, because the two things could never be made to happen at the same
+ * moment: the website updates instantly for everyone, and a phone updates
+ * when Play gets round to it. A phone still on 1.04 has no Firebase in it, so
+ * it keeps the old behaviour and stays alive; the same phone starts
+ * registering by itself the moment Play updates it. Nothing has to be timed,
+ * and nobody has to be told to update.
+ */
+const ANDROID_FIREBASE_FIRST_BUILD = 5;
+
+/** The native build number, or null off-app and when the plugin cannot answer. */
+async function nativeBuildNumber(): Promise<number | null> {
+  try {
+    const { App } = await import("@capacitor/app");
+    const info = await withTimeout(App.getInfo(), 4_000);
+    const build = Number(info?.build);
+    return Number.isFinite(build) ? build : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Whether asking THIS build for a push token is safe.
+ *
+ * A build number we cannot read is a no on Android. Being wrong this way
+ * costs a phone its notifications; being wrong the other way kills the app on
+ * open, which is the bug this whole gate exists for.
+ */
+async function androidPushIsSafe(): Promise<boolean> {
+  const build = await nativeBuildNumber();
+  return build !== null && build >= ANDROID_FIREBASE_FIRST_BUILD;
+}
 
 export function registerForNativePush(
   onOpenUrl?: (url: string) => void,
   onStage?: StageReport,
 ): Promise<boolean> {
-  if (!ANDROID_PUSH_READY && nativePlatform() === "android") {
-    onStage?.("android push is off until Firebase is set up");
-    return Promise.resolve(false);
+  if (nativePlatform() === "android") {
+    return androidPushIsSafe().then((safe) => {
+      if (!safe) {
+        onStage?.("this android build has no firebase - not asking for a token");
+        return false;
+      }
+      return startRegistration(onOpenUrl, onStage);
+    });
   }
+  return startRegistration(onOpenUrl, onStage);
+}
+
+function startRegistration(
+  onOpenUrl?: (url: string) => void,
+  onStage?: StageReport,
+): Promise<boolean> {
   if (registrationInFlight) return registrationInFlight;
   registrationInFlight = runRegistration(onOpenUrl, onStage).finally(() => {
     registrationInFlight = null;
