@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-15-explained",
+    title: "Deuteronomy 15 Explained: Debt Release, Open Hands, Free Servants",
+    description:
+      "Deuteronomy 15 explained verse by verse: the seven year debt release, the command to lend generously, the freed Hebrew servant, and the firstborn animal given to God.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-15-explained",
+    publishedAt: "2026-11-05",
+    readTime: "12 min read",
+    image: "/blog-banners/deuteronomy-15-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 15 Explained 📖",
+      content:
+        "A debt wiped clean. A hand forced open. A servant sent off with a flock of his own.\n\n📌 Generosity in this chapter runs on a schedule, not a mood.\n\n📖 Every debt between Israelites got cancelled every seven years.\n📖 A freed servant left loaded with flock, grain, and wine.\n📖 A firstborn animal belonged to God before it ever worked a field.\n\nNew article on:\n🟢 why the **debt release** had a fixed due date\n🟢 the one thought Moses warns against before it forms\n🟢 what it meant to **pierce a servant's ear**\n\nIs there a debt or grudge you are still quietly holding onto? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-14-explained",
     title: "Deuteronomy 14 Explained: Holy People, Clean Food, Costly Giving",
     description:
