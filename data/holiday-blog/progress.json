@@ -100,6 +100,12 @@
         "solemnity-feast-memorial-difference",
         "what-is-gaudete-sunday"
       ]
+    },
+    "2026-11-05": {
+      "committed": 1,
+      "slugs": [
+        "what-is-the-presentation-of-jesus"
+      ]
     }
   },
   "articles": {
@@ -399,10 +405,11 @@
     },
     "what-is-the-presentation-of-jesus": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-05T01:17:14.122Z"
+      "status": "committed",
+      "startedAt": "2026-11-05T01:17:14.122Z",
+      "committedAt": "2026-11-05T01:27:34.482Z"
     }
   },
   "nextTopic": "what-is-the-feast-of-the-holy-innocents",
-  "updatedAt": "2026-11-05T01:17:14.123Z"
+  "updatedAt": "2026-11-05T01:27:34.496Z"
 }

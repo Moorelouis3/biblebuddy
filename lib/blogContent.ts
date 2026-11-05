@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-presentation-of-jesus",
+    title: "What Is the Presentation of Jesus in the Temple? The Meaning Explained",
+    description:
+      "What is the Presentation of Jesus in the temple? The Law it fulfilled, what Simeon and Anna said, and why Catholics and Protestants read it differently.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-the-presentation-of-jesus",
+    publishedAt: "2026-11-05",
+    readTime: "14 min read",
+    image: "/blog-banners/what-is-the-presentation-of-jesus.jpg",
+    groupPost: {
+      title: "What Is the Presentation of Jesus in the Temple? The Meaning Explained 📖",
+      content:
+        "Luke spends twenty verses on a baby being carried into a building.\nThat is more space than he gives most of Jesus's miracles.\n\n📌 Two Mosaic laws were fulfilled on the same trip, and an old man and an old widow were the only ones who recognized what it meant.\n\n📖 Simeon called the infant Jesus a light to the Gentiles, then warned Mary a sword would pierce her soul.\n📖 Anna was eighty four, widowed for most of her life, still at the temple every day when the moment came.\n📖 Paul later explained exactly what this scene was doing: God's Son made under the law, to redeem those under it.\n\nNew article on:\n🟢 the two different **Mosaic laws** fulfilled in one temple visit\n🟢 what **Simeon's prophecy** to Mary actually meant\n🟢 why Catholics and Protestants read Mary's own part **differently**\n\nWho in your life has been quietly watching and waiting on God the way Simeon and Anna were? 🙏",
+    },
+  },
+  {
     slug: "are-all-sins-equal",
     title: "Are All Sins Equal to God?",
     description:
