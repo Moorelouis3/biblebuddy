@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-16-explained",
+    title: "Deuteronomy 16 Explained: Three Feasts and Honest Judges",
+    description:
+      "Deuteronomy 16 explained verse by verse: the three pilgrim feasts of Passover, Weeks, and Tabernacles, and the judges Israel had to appoint without bribes.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-16-explained",
+    publishedAt: "2026-11-05",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-16-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 16 Explained 📖",
+      content:
+        "Three feasts every year. One place to bring it.\nNobody shows up with empty hands.\n\n📌 Passover, Weeks, and Tabernacles all point back to the God who freed Israel.\n\n📖 Passover remembered the night Israel left Egypt by night.\n📖 The Feast of Weeks came fifty days after harvest began.\n📖 Judges could be appointed, but never bought with a gift.\n\nNew article on:\n🟢 why Israel kept **three pilgrim feasts** every single year\n🟢 what it meant that judges could take no **bribe**\n🟢 why a grove of trees could not stand by God's altar\n\nWhich of these three feasts would you have loved to keep? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-feast-of-the-holy-innocents",
     title: "What Is the Feast of the Holy Innocents? The Biblical Story Explained",
     description:
