@@ -102,10 +102,11 @@
       ]
     },
     "2026-11-05": {
-      "committed": 2,
+      "committed": 3,
       "slugs": [
         "what-is-the-presentation-of-jesus",
-        "what-is-the-feast-of-the-holy-innocents"
+        "what-is-the-feast-of-the-holy-innocents",
+        "what-is-a-patron-saint"
       ]
     }
   },
@@ -420,10 +421,11 @@
     },
     "what-is-a-patron-saint": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-05T09:17:30.395Z"
+      "status": "committed",
+      "startedAt": "2026-11-05T09:17:30.395Z",
+      "committedAt": "2026-11-05T09:26:51.269Z"
     }
   },
   "nextTopic": "what-is-an-advent-calendar",
-  "updatedAt": "2026-11-05T09:17:30.395Z"
+  "updatedAt": "2026-11-05T09:26:51.296Z"
 }

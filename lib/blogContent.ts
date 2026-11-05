@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-a-patron-saint",
+    title: "What Is a Patron Saint? How Saints Are Chosen and Why",
+    description:
+      "What is a patron saint? How Rome officially ratifies some patronages, how most grew from popular devotion, and where Catholics and Protestants differ.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-a-patron-saint",
+    publishedAt: "2026-11-05",
+    readTime: "14 min read",
+    image: "/blog-banners/what-is-a-patron-saint.jpg",
+    groupPost: {
+      title: "What Is a Patron Saint? How Saints Are Chosen and Why 📖",
+      content:
+        "Someone jokes you must be the patron saint of lost car keys.\nAlmost nobody who says that could tell you how it actually works.\n\n📌 Some patronages are formally ratified in Rome. Most simply grew from centuries of ordinary devotion.\n\n📖 Pope Urban VIII first moved to regulate patron saints back in 1630.\n📖 An official patron must hold the rank of a canonized saint.\n📖 Saint Anthony became patron of lost items through one famous story, not a decree.\n\nNew article on:\n🟢 the real **Vatican rule** behind an official patron saint\n🟢 why most patronages were never **decreed** by Rome at all\n🟢 where **Catholics and Protestants** read the same Bible differently here\n\nIs there a faithful life from Scripture or history you have quietly let shape your own? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-16-explained",
     title: "Deuteronomy 16 Explained: Three Feasts and Honest Judges",
     description:
