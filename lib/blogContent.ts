@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-an-advent-calendar",
+    title: "What Is an Advent Calendar? The Christian Meaning Behind the Doors",
+    description:
+      "What is an Advent calendar? The real history, from a German candle tradition to Gerhard Lang's 1908 calendar, and how Christians keep it today.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-an-advent-calendar",
+    publishedAt: "2026-11-05",
+    readTime: "13 min read",
+    image: "/blog-banners/what-is-an-advent-calendar.jpg",
+    groupPost: {
+      title: "What Is an Advent Calendar? The Christian Meaning Behind the Doors 📖",
+      content:
+        "Every December you opened one tiny door for one chocolate.\nNobody ever explained why there were exactly twenty four.\n\n📌 The candy is new. The waiting it tracks goes back over a thousand years before any calendar existed.\n\n📖 German Protestants were already lighting a candle a day for Advent in the 1830s.\n📖 Gerhard Lang printed the first known door calendar in 1908, inspired by his own mother's cardboard and sweets.\n📖 Catholics and Protestants both keep the calendar today, even while they keep the season itself differently.\n\nNew article on:\n🟢 the real **1839 candle wreath** behind the whole tradition\n🟢 how **Gerhard Lang** turned a childhood memory into a worldwide habit\n🟢 the **Jesse Tree**, a Scripture filled alternative to the candy version\n\nWhat are you still waiting on God to keep His promise about? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-18-explained",
     title: "Deuteronomy 18 Explained: No Land for Levites, a Prophet Like Moses",
     description:

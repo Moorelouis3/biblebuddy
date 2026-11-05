@@ -102,11 +102,12 @@
       ]
     },
     "2026-11-05": {
-      "committed": 3,
+      "committed": 4,
       "slugs": [
         "what-is-the-presentation-of-jesus",
         "what-is-the-feast-of-the-holy-innocents",
-        "what-is-a-patron-saint"
+        "what-is-a-patron-saint",
+        "what-is-an-advent-calendar"
       ]
     }
   },
@@ -427,10 +428,11 @@
     },
     "what-is-an-advent-calendar": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-05T15:24:38.728Z"
+      "status": "committed",
+      "startedAt": "2026-11-05T15:24:38.728Z",
+      "committedAt": "2026-11-05T15:29:59.791Z"
     }
   },
   "nextTopic": "how-is-epiphany-celebrated-around-the-world",
-  "updatedAt": "2026-11-05T15:24:38.728Z"
+  "updatedAt": "2026-11-05T15:29:59.808Z"
 }
