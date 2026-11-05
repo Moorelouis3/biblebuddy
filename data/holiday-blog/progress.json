@@ -417,8 +417,13 @@
       "startedAt": "2026-11-05T05:16:53.279Z",
       "committedAt": "2026-11-05T05:28:47.253Z",
       "publishedAt": "2026-11-05T09:17:13.899Z"
+    },
+    "what-is-a-patron-saint": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-05T09:17:30.395Z"
     }
   },
-  "nextTopic": "what-is-a-patron-saint",
-  "updatedAt": "2026-11-05T09:17:13.900Z"
+  "nextTopic": "what-is-an-advent-calendar",
+  "updatedAt": "2026-11-05T09:17:30.395Z"
 }
