@@ -1,5 +1,11 @@
 import { createHash } from "crypto";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import {
+  assertOpenAiSpendAllowed,
+  OpenAiBudgetExceeded,
+  OpenAiFeatureNotAllowed,
+  recordOpenAiSpend,
+} from "@/lib/openAiBudget";
 
 /**
  * A daily ceiling on NEW text-to-speech audio (Louis, 2026-11-02).
@@ -21,10 +27,20 @@ import type { SupabaseClient } from "@supabase/supabase-js";
  * as every other event Louis already reads.
  */
 
-/** Worst case per day at ~$0.14 a chapter: about $8. */
-export const TTS_GLOBAL_DAILY_CAP = 60;
+/**
+ * Twelve a day at ~$0.14 is about $1.70, and the month's budget in
+ * lib/openAiBudget.ts stops it long before thirty such days.
+ *
+ * It was 60, chosen when the only question was "can a stranger with a loop
+ * bankrupt us" - $8 a day is a fine answer to that and a terrible one to
+ * "make $10 last a month" (2026-11-05). This is the daily shape of the
+ * spending; the dollar ceiling is the real limit, and it is enforced below.
+ * Observed real use is about three chapters a day across everybody, so twelve
+ * still leaves four times the headroom.
+ */
+export const TTS_GLOBAL_DAILY_CAP = 12;
 /** One client. Observed real use is 3/day across everybody. */
-export const TTS_CLIENT_DAILY_CAP = 10;
+export const TTS_CLIENT_DAILY_CAP = 4;
 
 export const TTS_GENERATED_EVENT = "tts_audio_generated";
 export const TTS_BLOCKED_EVENT = "tts_audio_blocked";
@@ -126,7 +142,33 @@ export async function assertTtsGenerationAllowed(
   if (globalCount !== null && globalCount >= TTS_GLOBAL_DAILY_CAP) await deny("global_daily_cap");
   if (clientCount !== null && clientCount >= TTS_CLIENT_DAILY_CAP) await deny("client_daily_cap");
 
+  // The month's dollars, on top of the day's counts. This is also where a
+  // kind that is not Bible audio gets refused by name rather than by an
+  // environment variable somebody has to remember - see lib/openAiBudget.ts.
+  try {
+    await assertOpenAiSpendAllowed(admin, featureForKind(kind), { kind, client: clientKey });
+  } catch (error) {
+    if (error instanceof OpenAiBudgetExceeded) await deny("monthly_budget");
+    if (error instanceof OpenAiFeatureNotAllowed) await deny("feature_not_allowed");
+    throw error;
+  }
+
   return clientKey;
+}
+
+/**
+ * Which billable feature a TTS kind belongs to.
+ *
+ * "bible-chapter" and "study-notes" (Genesis 1) are Scripture read aloud,
+ * which is the approved feature. "devotional-overview" is not Scripture, it
+ * is a devotional summary, and it is outside the two features Louis approved
+ * on 2026-11-05 - so it maps to a name the budget gate does not recognise and
+ * is refused. The route and its cache are untouched: every overview already
+ * generated still plays, and putting it back is one line here.
+ */
+function featureForKind(kind: string): string {
+  if (kind === "bible-chapter" || kind === "study-notes") return "bible_text_to_speech";
+  return `tts_${kind.replace(/[^a-z0-9]+/gi, "_")}`;
 }
 
 /** Called once the audio exists, so tomorrow's count is right. */
@@ -146,6 +188,14 @@ export async function recordTtsGeneration(
       metadata: { kind, client: ttsClientKey(request), path },
     })
     .then(() => null, () => null);
+
+  // The same generation, in dollars, so the month's budget knows about it.
+  // Only the approved feature reaches this line: anything else was refused
+  // before the audio was made.
+  const feature = featureForKind(kind);
+  if (feature === "bible_text_to_speech") {
+    await recordOpenAiSpend(admin, feature, { kind, path });
+  }
 }
 
 /** The guard a TTS lib calls around its generate step. */

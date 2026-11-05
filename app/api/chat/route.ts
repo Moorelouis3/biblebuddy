@@ -2,8 +2,24 @@
 import OpenAI from "openai";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { createClient } from "@supabase/supabase-js";
 import { checkLouisRateLimit, louisLimitMessage } from "@/lib/server/louisRateLimit";
 import { buildBuddyVoiceSystemPrompt, getBuddyAvatar } from "@/lib/buddyAvatars";
+import {
+  assertOpenAiSpendAllowed,
+  OpenAiBudgetExceeded,
+  recordOpenAiSpend,
+} from "@/lib/openAiBudget";
+
+/** Service-role client for the spend ledger only. Null when unconfigured. */
+function openAiBudgetAdmin() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  return createClient(url, key, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+}
 
 if (!process.env.OPENAI_API_KEY) {
   console.error("⚠️ OPENAI_API_KEY is not set in environment variables!");
@@ -1052,6 +1068,41 @@ END OF GROW MODE INSTRUCTIONS
     console.log("Sending to OpenAI with", messagesToSend.length, "messages");
 
     let completion;
+    /**
+     * The month's budget, checked right before the only line in this file
+     * that costs money (Louis, 2026-11-05).
+     *
+     * The per-person ceiling above is about fairness - 75 messages a day each
+     * - and says nothing about dollars. This is the dollars. A reply is about
+     * a fifth of a cent, so in practice Lil Louis will never be what empties
+     * the account; it is here because "which features can spend?" should have
+     * one answer in one place, and because a quiet loop somewhere should not
+     * be able to spend the audio budget on chat.
+     *
+     * Budget unreadable means carry on: see lib/openAiBudget.ts.
+     */
+    const budgetAdmin = openAiBudgetAdmin();
+    if (budgetAdmin) {
+      try {
+        await assertOpenAiSpendAllowed(budgetAdmin, "little_louis_reply", {
+          buddy: selectedBuddyName,
+        });
+      } catch (budgetError) {
+        if (budgetError instanceof OpenAiBudgetExceeded) {
+          console.warn("[CHAT] Monthly OpenAI budget reached - not calling OpenAI.");
+          return new Response(
+            JSON.stringify({
+              reply:
+                "I've hit my limit for this month, so I can't answer right now. Louis has been told. Please try again soon.",
+              limited: true,
+            }),
+            { status: 200, headers: { "Content-Type": "application/json" } },
+          );
+        }
+        throw budgetError;
+      }
+    }
+
     try {
       completion = await openai.chat.completions.create({
         model: "gpt-4o-mini",
@@ -1059,6 +1110,7 @@ END OF GROW MODE INSTRUCTIONS
       temperature: 0.6,
       max_tokens: 2000,
     });
+      if (budgetAdmin) void recordOpenAiSpend(budgetAdmin, "little_louis_reply");
     } catch (openaiError: any) {
       console.error("OpenAI API error:", openaiError);
       console.error("OpenAI error details:", {

@@ -56,7 +56,8 @@
     "comments:verify": "tsx scripts/verify-comment-replies-no-ai.ts",
     "verify:deletion-grace": "tsx scripts/verify-deletion-grace-period.ts",
     "verify:app-links": "tsx scripts/verify-app-download-links.ts",
-    "verify:bible-year-overview": "tsx scripts/verify-bible-year-overview.ts"
+    "verify:bible-year-overview": "tsx scripts/verify-bible-year-overview.ts",
+    "verify:openai-budget": "tsx scripts/verify-openai-budget.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",
