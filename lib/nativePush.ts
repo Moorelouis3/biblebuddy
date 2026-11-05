@@ -338,10 +338,41 @@ let registrationInFlight: Promise<boolean> | null = null;
  */
 export type StageReport = (stage: string) => void;
 
+/**
+ * Android push is OFF until Firebase exists (Louis, 2026-11-05).
+ *
+ * Android notifications go through Firebase Cloud Messaging, and there is no
+ * Firebase project for Bible Buddy at all - so there is no
+ * google-services.json, and the Codemagic build says so out loud and carries
+ * on: "google-services.json not found, google-services plugin not applied.
+ * Push Notifications won't work."
+ *
+ * What that leaves in the app is the push plugin with nothing behind it.
+ * `FirebaseMessaging.getInstance()` on a process with no configured
+ * FirebaseApp throws IllegalStateException, and that is a NATIVE throw on the
+ * main thread - it does not come back to JavaScript as a rejected promise, it
+ * takes the app down. Which is what the testers are seeing: "Bible Buddy
+ * closed because this app has a bug", on a phone that had reached the
+ * dashboard seconds earlier.
+ *
+ * So the register call never happens on Android while this is false. Nothing
+ * is lost that worked: Android push has never delivered a single token - 43
+ * iPhones are registered and no Android device ever has been.
+ *
+ * FLIP THIS TO TRUE when a Firebase project exists and google-services.json
+ * is in the Android build. Nothing else here needs to change; iOS is
+ * untouched either way, because APNs needs none of it.
+ */
+const ANDROID_PUSH_READY = false;
+
 export function registerForNativePush(
   onOpenUrl?: (url: string) => void,
   onStage?: StageReport,
 ): Promise<boolean> {
+  if (!ANDROID_PUSH_READY && nativePlatform() === "android") {
+    onStage?.("android push is off until Firebase is set up");
+    return Promise.resolve(false);
+  }
   if (registrationInFlight) return registrationInFlight;
   registrationInFlight = runRegistration(onOpenUrl, onStage).finally(() => {
     registrationInFlight = null;
