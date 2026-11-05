@@ -365,9 +365,27 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   const pickedCur = newCur.filter(pickedAPath);
   const pickedPrev = newPrev.filter(pickedAPath);
 
+  /**
+   * Sessions that belong to a person looking at a page.
+   *
+   * landing_page_events is not only the landing page any more: it is also
+   * where the text-to-speech guard writes its allowed/blocked rows and where
+   * the OpenAI budget ledger writes its spend, because both wanted a counter
+   * without a migration. Those rows carry a session_id - a hashed IP for TTS,
+   * the feature's own name for the ledger - so every blocked scraper was
+   * arriving in this set as a visitor, and the two ledger names as two more.
+   *
+   * Small today (one session since 4 November) and growing, so it is excluded
+   * by source rather than left to be noticed later as drift.
+   */
+  const NON_VISITOR_SOURCES = new Set(["tts", "openai"]);
   const sessionsIn = (r: Range) => {
     const s = new Set<string>();
-    for (const e of events) if (e.session_id && within(e.created_at, r)) s.add(e.session_id);
+    for (const e of events) {
+      if (!e.session_id || !within(e.created_at, r)) continue;
+      if (e.source && NON_VISITOR_SOURCES.has(e.source)) continue;
+      s.add(e.session_id);
+    }
     for (const v of blogViews) if (v.session_id && within(v.created_at, r)) s.add(v.session_id);
     return s;
   };
