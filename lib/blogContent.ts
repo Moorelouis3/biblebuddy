@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-21-explained",
+    title: "Deuteronomy 21 Explained: Bloodguilt, Inheritance, and the Curse on a Tree",
+    description:
+      "Deuteronomy 21 explained verse by verse: the unsolved murder ritual, the captive wife law, the firstborn double portion, and the curse of hanging on a tree.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-21-explained",
+    publishedAt: "2026-11-06",
+    readTime: "16 min read",
+    image: "/blog-banners/deuteronomy-21-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 21 Explained 📖",
+      content:
+        "A body in a field. No weapon. No witness. No name for who did it.\n\n📌 Deuteronomy 21 answers four hard situations where the normal rules of justice run out.\n\n📖 A whole town had to answer for a murder nobody there committed.\n📖 A firstborn kept his share no matter which wife his father loved more.\n📖 One line here is quoted by Paul to explain the cross.\n\nNew article on:\n🟢 why the elders **washed their hands** over a dead heifer\n🟢 what the law actually protected a **captive woman** from\n🟢 how **Deuteronomy 21:23** became Galatians 3:13\n\nIs there something unresolved you have been treating as already settled? 🙏",
+    },
+  },
+  {
     slug: "what-is-watch-night",
     title: "What Is Watch Night? Christian New Year's Eve Worship Explained",
     description:
