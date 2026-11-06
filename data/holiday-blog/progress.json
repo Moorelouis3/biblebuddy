@@ -445,8 +445,13 @@
       "status": "committed",
       "startedAt": "2026-11-06T01:17:05.962Z",
       "committedAt": "2026-11-06T01:29:13.426Z"
+    },
+    "what-is-watch-night": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-06T05:17:19.322Z"
     }
   },
-  "nextTopic": "what-is-watch-night",
-  "updatedAt": "2026-11-06T05:16:56.124Z"
+  "nextTopic": "how-does-the-church-make-a-saint",
+  "updatedAt": "2026-11-06T05:17:19.322Z"
 }
