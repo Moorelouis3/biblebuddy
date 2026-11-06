@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-23-explained",
+    title: "Deuteronomy 23 Explained: Who Belongs, Clean Camps, and Keeping Your Word",
+    description:
+      "Deuteronomy 23 explained verse by verse: who could enter Israel's assembly, a clean war camp, shelter for a runaway, lending without usury, and keeping a vow.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-23-explained",
+    publishedAt: "2026-11-06",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-23-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 23 Explained 📖",
+      content:
+        "Who belongs in the assembly. Who does not. And why one grudge gets dropped while another does not.\n\n📌 Deuteronomy 23 weighs belonging, cleanness, and a promise you cannot just let expire.\n\n📖 Egypt enslaved Israel for centuries, and Israel is still told not to hold it against them.\n📖 God is described walking through the middle of the war camp itself.\n📖 A promise spoken out loud became a debt the moment it left your mouth.\n\nNew article on:\n🟢 why a **paddle** mattered more than you would think\n🟢 how **Ruth the Moabite** fits a law that seems to ban her\n🟢 what you could **eat** from a field but never **harvest**\n\nIs there a grudge you have been holding longer than the reason for it still stands? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-22-explained",
     title: "Deuteronomy 22 Explained: Lost Property, Forbidden Mixtures, and a Marriage on Trial",
     description:
