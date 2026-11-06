@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "how-is-epiphany-celebrated-around-the-world",
+    title: "How Do Christians Celebrate Epiphany Around the World?",
+    description:
+      "How is Epiphany celebrated around the world? Six real customs, from Spain's Three Kings parade to Ethiopia's Timkat water blessing, explained.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/how-is-epiphany-celebrated-around-the-world",
+    publishedAt: "2026-11-06",
+    readTime: "16 min read",
+    image: "/blog-banners/how-is-epiphany-celebrated-around-the-world.jpg",
+    groupPost: {
+      title: "How Do Christians Celebrate Epiphany Around the World? 📖",
+      content:
+        "One family leaves a shoe by the door.\nAnother cuts into a cake looking for a hidden charm.\n\n📌 The same feast looks totally different from one country to the next.\n\n📖 Spain and Latin America hand out gifts through a kings' parade.\n📖 Germany sends children dressed as the Magi door to door for charity.\n📖 Russia and Ethiopia both center the day on blessing real water.\n\nNew article on:\n🟢 the **Rosca de Reyes** cake and the hidden figurine inside it\n🟢 why German **star singers** chalk a blessing above your door\n🟢 the **frozen river tradition** that marks Epiphany in Russia\n\nWhich custom here would actually teach your family something true about Christ? 🙏",
+    },
+  },
+  {
     slug: "what-is-an-advent-calendar",
     title: "What Is an Advent Calendar? The Christian Meaning Behind the Doors",
     description:

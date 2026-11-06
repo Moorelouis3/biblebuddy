@@ -109,6 +109,12 @@
         "what-is-a-patron-saint",
         "what-is-an-advent-calendar"
       ]
+    },
+    "2026-11-06": {
+      "committed": 1,
+      "slugs": [
+        "how-is-epiphany-celebrated-around-the-world"
+      ]
     }
   },
   "articles": {
@@ -436,10 +442,11 @@
     },
     "how-is-epiphany-celebrated-around-the-world": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-06T01:17:05.962Z"
+      "status": "committed",
+      "startedAt": "2026-11-06T01:17:05.962Z",
+      "committedAt": "2026-11-06T01:29:13.426Z"
     }
   },
   "nextTopic": "what-is-watch-night",
-  "updatedAt": "2026-11-06T01:17:05.962Z"
+  "updatedAt": "2026-11-06T01:29:13.447Z"
 }
