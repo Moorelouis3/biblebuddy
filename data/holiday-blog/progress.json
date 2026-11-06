@@ -454,8 +454,13 @@
       "startedAt": "2026-11-06T05:17:19.322Z",
       "committedAt": "2026-11-06T05:27:55.905Z",
       "publishedAt": "2026-11-06T09:16:28.063Z"
+    },
+    "how-does-the-church-make-a-saint": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-06T09:16:38.190Z"
     }
   },
-  "nextTopic": "how-does-the-church-make-a-saint",
-  "updatedAt": "2026-11-06T09:16:28.063Z"
+  "nextTopic": "why-is-advent-purple",
+  "updatedAt": "2026-11-06T09:16:38.190Z"
 }
