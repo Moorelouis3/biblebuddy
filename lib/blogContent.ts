@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-22-explained",
+    title: "Deuteronomy 22 Explained: Lost Property, Forbidden Mixtures, and a Marriage on Trial",
+    description:
+      "Deuteronomy 22 explained verse by verse: lost property, forbidden mixtures, the virginity dispute law, and the hardest verses yet on assault and consent.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-22-explained",
+    publishedAt: "2026-11-06",
+    readTime: "18 min read",
+    image: "/blog-banners/deuteronomy-22-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 22 Explained 📖",
+      content:
+        "Your neighbor's ox wanders off. Nobody else is watching.\n\n📌 Deuteronomy 22 protects whatever cannot protect itself, an animal, a nest, a reputation.\n\n📖 A new bride's whole future could ride on a single bloodstained cloth.\n📖 The same crime got two different verdicts depending on where it happened.\n📖 Centuries later, Jesus faced a crowd ready to enforce one of these exact verses.\n\nNew article on:\n🟢 why a **roof battlement** was not optional\n🟢 what changed the verdict between a **city** and a **field**\n🟢 how **John 8** connects straight back to this chapter\n\nHave you ever looked away from something you knew was not yours to ignore? 🙏",
+    },
+  },
+  {
     slug: "how-does-the-church-make-a-saint",
     title: "How Does the Church Make a Saint? Canonization Explained",
     description:
