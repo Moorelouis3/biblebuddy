@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-19-explained",
+    title: "Deuteronomy 19 Explained: Cities of Refuge, Witnesses, and Life for Life",
+    description:
+      "Deuteronomy 19 explained verse by verse: the cities of refuge for an accidental killer, the boundary stone warning, the two or three witness rule, and the penalty for a false witness.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-19-explained",
+    publishedAt: "2026-11-06",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-19-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 19 Explained 📖",
+      content:
+        "An axe head slips. A man is dead. No one meant for it to happen.\n\n📌 Deuteronomy 19 builds a justice system that protects the innocent without ever protecting the guilty.\n\n📖 Cities of refuge sheltered an accidental killer, never a man who lay in wait.\n📖 One witness was never enough to convict anyone of anything.\n📖 A false witness faced the exact penalty he tried to hand someone else.\n\nNew article on:\n🟢 why Israel needed **cities of refuge**\n🟢 the **two or three witness** rule behind Matthew 18\n🟢 what **eye for eye** actually limits, not licenses\n\nHave you ever passed along an accusation you never actually verified? 🙏",
+    },
+  },
+  {
     slug: "how-is-epiphany-celebrated-around-the-world",
     title: "How Do Christians Celebrate Epiphany Around the World?",
     description:
