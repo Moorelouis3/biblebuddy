@@ -461,8 +461,13 @@
       "status": "committed",
       "startedAt": "2026-11-06T09:16:38.190Z",
       "committedAt": "2026-11-06T09:31:18.860Z"
+    },
+    "why-is-advent-purple": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-06T15:19:43.850Z"
     }
   },
-  "nextTopic": "why-is-advent-purple",
-  "updatedAt": "2026-11-06T15:19:21.195Z"
+  "nextTopic": "what-is-the-feast-of-the-circumcision",
+  "updatedAt": "2026-11-06T15:19:43.851Z"
 }
