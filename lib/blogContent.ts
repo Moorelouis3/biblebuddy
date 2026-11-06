@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "how-to-know-gods-will",
+    title: "How Do You Know God's Will for Your Life?",
+    description:
+      "How do you know God's will for your life? What Scripture already reveals about it, why you cannot miss it, and a framework for the decisions it does not name.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/how-to-know-gods-will",
+    publishedAt: "2026-11-06",
+    readTime: "23 min read",
+    image: "/how-to-know-gods-will-banner.png",
+    groupPost: {
+      title: "How Do You Know God's Will for Your Life? 📖",
+      content:
+        "You keep praying about the decision and the sky stays quiet.\nMaybe you are afraid of picking wrong.\n\n📌 Most of God's will is already written down.\n\n📖 Paul names God's will plainly, not vaguely.\n📖 The Bible never promises one hidden soulmate.\n📖 Your steps are still directed as you walk.\n\nNew article on:\n🟢 why you are **not going to miss it**\n🟢 a framework for decisions **Scripture never names**\n🟢 why God cares most about **who you become**\n\nWhat decision are you stuck on right now? 🙏",
+    },
+  },
+  {
     slug: "why-is-advent-purple",
     title: "Why Is Advent Purple? The Meaning of the Liturgical Colors",
     description:

@@ -13262,3 +13262,7 @@ Queue remaining: 11
 Not live yet: the Jude/Obadiah/2 John/3 John text fix (commit ee945f1) is
 on main waiting for the next scheduled deploy (`npm run pending` has the
 exact time).
+
+## 2026-11-06T22:15:17Z (blog writer run)
+Article: How Do You Know God's Will for Your Life? | Words: ~4500 | Category: Christian Foundations | Status: pass
+Queue remaining: 9
