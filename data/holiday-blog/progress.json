@@ -433,8 +433,13 @@
       "startedAt": "2026-11-05T15:24:38.728Z",
       "committedAt": "2026-11-05T15:29:59.791Z",
       "publishedAt": "2026-11-06T01:16:55.850Z"
+    },
+    "how-is-epiphany-celebrated-around-the-world": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-06T01:17:05.962Z"
     }
   },
-  "nextTopic": "how-is-epiphany-celebrated-around-the-world",
-  "updatedAt": "2026-11-06T01:16:55.850Z"
+  "nextTopic": "what-is-watch-night",
+  "updatedAt": "2026-11-06T01:17:05.962Z"
 }
