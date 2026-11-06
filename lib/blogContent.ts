@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-watch-night",
+    title: "What Is Watch Night? Christian New Year's Eve Worship Explained",
+    description:
+      "What is Watch Night? The Christian New Year's Eve service, from Wesley's covenant renewal to Freedom's Eve and the Emancipation Proclamation.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-watch-night",
+    publishedAt: "2026-11-06",
+    readTime: "13 min read",
+    image: "/blog-banners/what-is-watch-night.jpg",
+    groupPost: {
+      title: "What Is Watch Night? Christian New Year's Eve Worship Explained 📖",
+      content:
+        "Most parties count down the last ten seconds and go home.\nOne Christian service asks you to stay awake with God through the whole night instead.\n\n📌 Watch Night began as a Methodist covenant renewal service, decades before it ever touched December 31, 1862.\n\n📖 John Wesley held his first covenant renewal Watch Night back in 1755.\n📖 On Freedom's Eve, enslaved and free African Americans waited together for the Emancipation Proclamation.\n📖 Jesus asked His own disciples for one watching hour, and they could not manage it.\n\nNew article on:\n🟢 the real **1733 Moravian roots** behind the service\n🟢 why **Freedom's Eve** carries a second, sacred meaning for Black churches\n🟢 what a **Watch Night service** actually looks like tonight\n\nWill you hand next year to God before its first minute is even gone? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-20-explained",
     title: "Deuteronomy 20 Explained: War, Mercy, and the Law That Spares Trees",
     description:

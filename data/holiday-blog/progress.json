@@ -111,9 +111,10 @@
       ]
     },
     "2026-11-06": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "how-is-epiphany-celebrated-around-the-world"
+        "how-is-epiphany-celebrated-around-the-world",
+        "what-is-watch-night"
       ]
     }
   },
@@ -448,10 +449,11 @@
     },
     "what-is-watch-night": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-06T05:17:19.322Z"
+      "status": "committed",
+      "startedAt": "2026-11-06T05:17:19.322Z",
+      "committedAt": "2026-11-06T05:27:55.905Z"
     }
   },
   "nextTopic": "how-does-the-church-make-a-saint",
-  "updatedAt": "2026-11-06T05:17:19.322Z"
+  "updatedAt": "2026-11-06T05:27:55.920Z"
 }
