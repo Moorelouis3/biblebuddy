@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "how-does-the-church-make-a-saint",
+    title: "How Does the Church Make a Saint? Canonization Explained",
+    description:
+      "How does the Catholic Church make a saint? The real steps, from Servant of God to Venerable, Blessed, and Saint, and the miracles each one requires.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/how-does-the-church-make-a-saint",
+    publishedAt: "2026-11-06",
+    readTime: "16 min read",
+    image: "/blog-banners/how-does-the-church-make-a-saint.jpg",
+    groupPost: {
+      title: "How Does the Church Make a Saint? Canonization Explained 📖",
+      content:
+        "A bishop opens a file. Decades later, a Pope reads a name out loud in Rome.\nMost causes never make it that far.\n\n📌 Canonization is an actual legal process inside the Church, not a vote and not a vibe.\n\n📖 A panel of seven Vatican doctors has to rule out every natural explanation before a miracle counts.\n📖 Two Popes have personally waived the normal five year wait, for Mother Teresa and for John Paul II.\n📖 Most Protestants never adopted the practice at all, for a reason worth hearing honestly.\n\nNew article on:\n🟢 what **Servant of God**, Venerable, Blessed, and Saint each actually require\n🟢 who the **Consulta Medica** is and what stops a miracle claim cold\n🟢 the one word that explains the whole Protestant objection to this process\n\nWhat would it take for people to say that kind of thing about the life you are living right now? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-21-explained",
     title: "Deuteronomy 21 Explained: Bloodguilt, Inheritance, and the Curse on a Tree",
     description:

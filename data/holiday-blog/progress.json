@@ -111,10 +111,11 @@
       ]
     },
     "2026-11-06": {
-      "committed": 2,
+      "committed": 3,
       "slugs": [
         "how-is-epiphany-celebrated-around-the-world",
-        "what-is-watch-night"
+        "what-is-watch-night",
+        "how-does-the-church-make-a-saint"
       ]
     }
   },
@@ -457,10 +458,11 @@
     },
     "how-does-the-church-make-a-saint": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-06T09:16:38.190Z"
+      "status": "committed",
+      "startedAt": "2026-11-06T09:16:38.190Z",
+      "committedAt": "2026-11-06T09:31:18.860Z"
     }
   },
   "nextTopic": "why-is-advent-purple",
-  "updatedAt": "2026-11-06T09:16:38.190Z"
+  "updatedAt": "2026-11-06T09:31:18.870Z"
 }
