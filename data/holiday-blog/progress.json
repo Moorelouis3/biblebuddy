@@ -422,17 +422,19 @@
     },
     "what-is-a-patron-saint": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-05T09:17:30.395Z",
-      "committedAt": "2026-11-05T09:26:51.269Z"
+      "committedAt": "2026-11-05T09:26:51.269Z",
+      "publishedAt": "2026-11-06T01:16:55.709Z"
     },
     "what-is-an-advent-calendar": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-05T15:24:38.728Z",
-      "committedAt": "2026-11-05T15:29:59.791Z"
+      "committedAt": "2026-11-05T15:29:59.791Z",
+      "publishedAt": "2026-11-06T01:16:55.850Z"
     }
   },
   "nextTopic": "how-is-epiphany-celebrated-around-the-world",
-  "updatedAt": "2026-11-05T15:29:59.808Z"
+  "updatedAt": "2026-11-06T01:16:55.850Z"
 }
