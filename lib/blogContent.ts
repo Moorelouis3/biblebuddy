@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-20-explained",
+    title: "Deuteronomy 20 Explained: War, Mercy, and the Law That Spares Trees",
+    description:
+      "Deuteronomy 20 explained verse by verse: who was excused from battle, the offer of peace to distant cities, the command against the nations in the land, and the law protecting fruit trees in a siege.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-20-explained",
+    publishedAt: "2026-11-06",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-20-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 20 Explained 📖",
+      content:
+        "Horses. Chariots. An army bigger than yours across the field.\n\n📌 Deuteronomy 20 sets hard limits on war before Israel has fought a single battle in Canaan.\n\n📖 A priest, not a general, tells the troops not to fear.\n📖 A distant city got offered peace before a single arrow flew.\n📖 Even in a siege, a fruit tree could not be cut down for no reason.\n\nNew article on:\n🟢 why **four kinds of men** got sent home before the fighting started\n🟢 what made the nations already in the land different from a **distant city**\n🟢 the one line that calls a fruit tree **man's life**\n\nWhat is the thing in front of you right now that looks like horses and chariots? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-19-explained",
     title: "Deuteronomy 19 Explained: Cities of Refuge, Witnesses, and Life for Life",
     description:

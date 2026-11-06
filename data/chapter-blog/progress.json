@@ -4,7 +4,7 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-11-06T04:34:17.074Z",
+  "updatedAt": "2026-11-06T04:42:12.412Z",
   "nextChapter": "Deuteronomy 21",
   "chapters": {
     "genesis-1-explained": {
@@ -1422,8 +1422,9 @@
     },
     "deuteronomy-20-explained": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-06T04:33:59.472Z"
+      "status": "committed",
+      "startedAt": "2026-11-06T04:33:59.472Z",
+      "committedAt": "2026-11-06T04:42:12.411Z"
     }
   },
   "priorityBooks": [
