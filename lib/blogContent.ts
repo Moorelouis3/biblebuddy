@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "why-is-advent-purple",
+    title: "Why Is Advent Purple? The Meaning of the Liturgical Colors",
+    description:
+      "Why is Advent purple? The real history of the liturgical colors, from a dye worth more than gold to the purple robe put on Jesus and why some churches use blue.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/why-is-advent-purple",
+    publishedAt: "2026-11-06",
+    readTime: "11 min read",
+    image: "/blog-banners/why-is-advent-purple.jpg",
+    groupPost: {
+      title: "Why Is Advent Purple? The Meaning of the Liturgical Colors 📖",
+      content:
+        "The sanctuary changes color on the first Sunday of Advent and almost nobody explains why.\n\n📌 Purple meant king long before it ever meant church season, and that is exactly why Rome used it to mock Jesus as one.\n\n📖 Tyrian purple dye once cost up to three times the price of gold.\n📖 Roman soldiers clothed Jesus in purple on purpose before His crucifixion.\n📖 Some Anglican and Lutheran churches use blue instead, for a reason worth hearing honestly.\n\nNew article on:\n🟢 why a **Pope who died in 1216** still shapes the colors on your altar today\n🟢 the real, disputed story behind **Sarum blue**\n🟢 what **one pink Sunday** in the middle of Advent is actually for\n\nWhat are you actually preparing for this Advent, underneath all the shopping? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-23-explained",
     title: "Deuteronomy 23 Explained: Who Belongs, Clean Camps, and Keeping Your Word",
     description:
