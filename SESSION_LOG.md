@@ -13235,3 +13235,30 @@ pushed untagged, no deploy needed.
 ## 2026-11-04T22:14:35Z (blog writer run)
 Article: Are All Sins Equal to God? | Words: ~3333 | Category: Christian Foundations | Status: pass
 Queue remaining: 11
+
+## 2026-11-06 (Bug Fixer run)
+5 open reports, oldest first:
+- Two old reports (a one-time generic "something went wrong" from Sept 24,
+  and a Safari crash from Oct 26) had already been looked at closely in a
+  past run with nothing new since - left as is, no action needed.
+- An Android crash log turned out to be the app correctly noticing someone
+  had notifications switched off on their phone, not an actual error.
+  Closed not_a_bug.
+- Lisa Miller's "app has a bug, won't load" while trying to become an
+  Android tester matched a known gotcha: you have to join the testers
+  group before the download link will work, or Google blocks the install
+  and it looks exactly like a broken app. Closed not_a_bug with that
+  explained to her directly.
+- Real bug: Maleeka reported Jude only showing verse 1 instead of the
+  whole book. Found the cause - Jude, Obadiah, 2 John and 3 John (all
+  one-chapter books) were saved with only their first verse because the
+  original import script asked for "chapter 1" in a way that, for a
+  one-chapter book, those sources read as "verse 1" instead. Philemon (the
+  fifth one-chapter book) already had its full text. Re-pulled the full
+  text for the other four from the same Bible source already used
+  everywhere else and replaced the four files. tsc clean. Fixed, commit
+  ee945f1, pushed to main without [deploy] - will go out in the next
+  scheduled deploy, not immediately.
+Not live yet: the Jude/Obadiah/2 John/3 John text fix (commit ee945f1) is
+on main waiting for the next scheduled deploy (`npm run pending` has the
+exact time).
