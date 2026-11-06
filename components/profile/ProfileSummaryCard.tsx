@@ -178,7 +178,9 @@ export default function ProfileSummaryCard({
 
           <div className="min-w-0 flex-1">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div className="min-w-0">
+              {/* flex-1 so the action row below the meta line has the card's
+                  width to lay out in once Edit Profile is not taking a column. */}
+              <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <h1 className="profile-skin-primary text-2xl font-bold leading-tight text-gray-900">
                     {displayName}
@@ -205,23 +207,30 @@ export default function ProfileSummaryCard({
                     {buddyCount} {buddyCount === 1 ? "buddy" : "buddies"}
                   </span>
                 </div>
+
+                {/*
+                  Somebody else's actions sit in their own row directly under
+                  the joined date and buddy count (Louis, 2026-11-06), rather
+                  than squeezed into the top-right corner beside the name. One
+                  row, full width on a phone: Message, the buddy control, and
+                  the three-dot menu at the end.
+                */}
+                {!isSelf && actions ? <div className="mt-3 max-w-md">{actions}</div> : null}
               </div>
 
-              <div className="flex flex-shrink-0 flex-col items-stretch gap-2 sm:items-end">
-                {isSelf ? (
-                  // The edit form and the deeper sections live on the profile
-                  // page; ?details=1 is what stops that page bouncing straight
-                  // back here. See app/profile/[userId]/page.tsx.
+              {isSelf ? (
+                <div className="flex flex-shrink-0 flex-col items-stretch gap-2 sm:items-end">
+                  {/* The edit form and the deeper sections live on the profile
+                      page; ?details=1 is what stops that page bouncing straight
+                      back here. See app/profile/[userId]/page.tsx. */}
                   <Link
                     href={`/profile/${userId}?details=1`}
                     className="profile-skin-button inline-flex min-h-[36px] items-center justify-center rounded-lg border border-gray-300 px-4 py-1.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50" style={{ color: "#374151" }}
                   >
                     Edit Profile
                   </Link>
-                ) : (
-                  actions ?? null
-                )}
-              </div>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

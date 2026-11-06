@@ -47,6 +47,10 @@ type Props = {
   reportLabel?: string;
   /** Small dots for dense lists (comments/replies). */
   size?: "sm" | "md";
+  /** Dot direction. Horizontal everywhere by default; the member profile's action row uses vertical. */
+  orientation?: "horizontal" | "vertical";
+  /** Override the block/unblock wording in the menu, e.g. "Buddy" instead of the member's name. */
+  blockLabel?: string;
   className?: string;
   /** Which side the dropdown opens toward. */
   align?: "left" | "right";
@@ -108,6 +112,8 @@ export default function ReportBlockMenu({
   allowBlock = true,
   reportLabel,
   size = "md",
+  orientation = "horizontal",
+  blockLabel,
   className = "",
   align = "right",
   onBlocked,
@@ -260,9 +266,19 @@ export default function ReportBlockMenu({
         aria-expanded={menuOpen}
       >
         <svg className={dotSize} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <circle cx="5" cy="12" r="1.8" />
-          <circle cx="12" cy="12" r="1.8" />
-          <circle cx="19" cy="12" r="1.8" />
+          {orientation === "vertical" ? (
+            <>
+              <circle cx="12" cy="5" r="1.8" />
+              <circle cx="12" cy="12" r="1.8" />
+              <circle cx="12" cy="19" r="1.8" />
+            </>
+          ) : (
+            <>
+              <circle cx="5" cy="12" r="1.8" />
+              <circle cx="12" cy="12" r="1.8" />
+              <circle cx="19" cy="12" r="1.8" />
+            </>
+          )}
         </svg>
       </button>
 
@@ -290,7 +306,7 @@ export default function ReportBlockMenu({
                 className="flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-[var(--bb-text-primary,#111827)] transition hover:bg-[var(--bb-surface-soft,#f3f4f6)] disabled:opacity-50"
               >
                 <span aria-hidden="true">↩</span>
-                {busy ? "Unblocking..." : `Unblock ${name}`}
+                {busy ? "Unblocking..." : `Unblock ${blockLabel || name}`}
               </button>
             ) : (
               <button
@@ -304,7 +320,7 @@ export default function ReportBlockMenu({
                 className="flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-red-600 transition hover:bg-red-50"
               >
                 <span aria-hidden="true">⛔</span>
-                Block {name}
+                Block {blockLabel || name}
               </button>
             ))}
         </div>

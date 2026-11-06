@@ -24,6 +24,7 @@ import FeedPollBlock from "../../components/feed/FeedPollBlock";
 import { pollIdFromPost } from "../../lib/weeklyFeedPosts";
 import TopBuddiesCard from "../../components/feed/TopBuddiesCard";
 import ProfileSummaryCard from "../../components/profile/ProfileSummaryCard";
+import MessageBuddyButton from "../../components/profile/MessageBuddyButton";
 import { COMMUNITY_GROUP_ID } from "../../lib/communityMilestones";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -3538,7 +3539,10 @@ export default function BbFeedPage() {
               isSelf={false}
               actions={
                 viewingUserId !== userId ? (
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    {/* Message first, then the buddy control, then the menu at
+                        the far end of the same row (Louis, 2026-11-06). */}
+                    <MessageBuddyButton targetUserId={viewingUserId} />
                     <AddBuddyButton
                       targetUserId={viewingUserId}
                       targetName={wallName || "Bible Buddy Member"}
@@ -3546,6 +3550,7 @@ export default function BbFeedPage() {
                       myName={myProfile?.display_name || myProfile?.username || "A Bible Buddy"}
                       state={buddyStates[viewingUserId] ?? "none"}
                       onRequested={handleBuddyRequested}
+                      variant="profile"
                     />
                     {/* Report and Block on the profile itself, not only on
                         posts (App Store Guideline 1.2, and Louis asked for it
@@ -3561,7 +3566,10 @@ export default function BbFeedPage() {
                       targetName={wallName || "Bible Buddy Member"}
                       contentType="profile"
                       currentUserId={userId}
-                      reportLabel="Report profile"
+                      reportLabel="Report Buddy"
+                      blockLabel="Buddy"
+                      orientation="vertical"
+                      className="flex-shrink-0"
                       onBlocked={() => router.push("/bb-feed")}
                     />
                   </div>

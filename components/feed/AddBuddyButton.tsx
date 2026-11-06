@@ -32,6 +32,7 @@ export default function AddBuddyButton({
   myName,
   state,
   onRequested,
+  variant = "pill",
 }: {
   targetUserId: string;
   targetName: string;
@@ -40,6 +41,12 @@ export default function AddBuddyButton({
   state: BuddyState;
   /** So the feed remembers, and every other post by the same person updates too. */
   onRequested: (targetUserId: string) => void;
+  /**
+   * "pill" is the small control on a post card. "profile" is the member
+   * profile's action row (2026-11-06): a full button beside Message, which
+   * also has to say something in the states the pill stays silent in.
+   */
+  variant?: "pill" | "profile";
 }) {
   const [busy, setBusy] = useState(false);
   /**
@@ -106,17 +113,44 @@ export default function AddBuddyButton({
         )
       : null;
 
-  // Your own post, or somebody you already have. Nothing to offer.
-  if (!targetUserId || targetUserId === myId || state === "buddies")
-    return confirmation;
+  const isProfile = variant === "profile";
+  // The profile row's buttons share the row evenly; a post card's sit tight
+  // against the author line. Same radii and type scale as the row's Message.
+  const profileButton =
+    "profile-skin-inner inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-gray-200 bg-gray-100 px-4 py-1.5 text-sm font-medium transition hover:bg-gray-200 disabled:opacity-60";
+
+  if (!targetUserId || targetUserId === myId) return confirmation;
+
+  if (state === "buddies") {
+    // The pill says nothing once you are buddies - on a post there is nothing
+    // to do. The profile row still needs to show where you stand.
+    if (!isProfile) return confirmation;
+    return (
+      <>
+        {confirmation}
+        <span className={profileButton} style={{ color: "#4b5563" }}>
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M20 6 9 17l-5-5" />
+          </svg>
+          Buddies
+        </span>
+      </>
+    );
+  }
 
   if (state === "pending_sent") {
     return (
       <>
         {confirmation}
-        <span className="flex-shrink-0 text-xs font-bold text-gray-400">
-          Requested
-        </span>
+        {isProfile ? (
+          <span className={profileButton} style={{ color: "#6b7280" }}>
+            Requested
+          </span>
+        ) : (
+          <span className="flex-shrink-0 text-xs font-bold text-gray-400">
+            Requested
+          </span>
+        )}
       </>
     );
   }
@@ -125,9 +159,18 @@ export default function AddBuddyButton({
     return (
       <>
         {confirmation}
+        {/*
+          ?details=1 matters: /profile/<id> forwards straight back to the feed
+          without it, so a plain link here would bounce the reader in a circle
+          instead of reaching the accept/decline buttons.
+        */}
         <Link
-          href={`/profile/${targetUserId}`}
-          className="flex-shrink-0 rounded-full border border-[#cfe4d8] px-3 py-1 text-xs font-black transition hover:bg-[#f2faf6]"
+          href={`/profile/${targetUserId}?details=1`}
+          className={
+            isProfile
+              ? `${profileButton} border-[#cfe4d8] bg-[#f2faf6] hover:bg-[#e8f5ee]`
+              : "flex-shrink-0 rounded-full border border-[#cfe4d8] px-3 py-1 text-xs font-black transition hover:bg-[#f2faf6]"
+          }
           style={{ color: "#2f8f5b" }}
         >
           Accept
@@ -171,25 +214,37 @@ export default function AddBuddyButton({
           setBusy(false);
         }}
         aria-label={`Add ${targetName} as a buddy`}
-        className="flex flex-shrink-0 items-center gap-1 rounded-full border border-[#dbe7f4] px-3 py-1 text-xs font-black transition hover:bg-[#f2f7fd] disabled:opacity-50"
+        className={
+          isProfile
+            ? profileButton
+            : "flex flex-shrink-0 items-center gap-1 rounded-full border border-[#dbe7f4] px-3 py-1 text-xs font-black transition hover:bg-[#f2f7fd] disabled:opacity-50"
+        }
         // Inline, because globals.css carries unlayered colour rules that
         // outrank a utility class - see components/home/BibleLockBanner.
-        style={{ color: "#2f7fe8" }}
+        style={{ color: isProfile ? "#374151" : "#2f7fe8" }}
       >
-        <svg
-          className="h-3.5 w-3.5"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={2.2}
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 5v14M5 12h14"
-          />
-        </svg>
-        Add
+        {isProfile ? (
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 19v-1a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v1" />
+            <circle cx="8.5" cy="7" r="4" />
+            <path d="M19 8v6M22 11h-6" />
+          </svg>
+        ) : (
+          <svg
+            className="h-3.5 w-3.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.2}
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 5v14M5 12h14"
+            />
+          </svg>
+        )}
+        {isProfile ? "Add Buddy" : "Add"}
       </button>
     </>
   );
