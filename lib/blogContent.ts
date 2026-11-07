@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-27-explained",
+    title: "Deuteronomy 27 Explained: Stones, an Altar, and Twelve Curses",
+    description:
+      "Deuteronomy 27 explained verse by verse: stones on Mount Ebal, an altar no tool touched, two mountains, and twelve curses Israel answered with Amen.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-27-explained",
+    publishedAt: "2026-11-07",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-27-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 27 Explained 📖",
+      content:
+        "Two mountains. One list of curses.\nAnswered with the same word twelve times.\n\n📌 Deuteronomy 27 targets the sins no court could ever catch.\n\n📖 The stones get covered in **plaster** and written on.\n📖 The altar uses stones no **iron tool** ever touched.\n📖 Reuben stood on the cursing mountain, not Levi.\n\nNew article on:\n🟢 what the twelve **curses** actually target\n🟢 why the **blessings** never get written down\n🟢 how Paul uses this chapter in **Galatians**\n\nWhat do you do differently when nobody is watching? 🙏",
+    },
+  },
+  {
     slug: "what-is-a-feast-day",
     title: "What Is a Saint's Feast Day? Why the Date Is Usually a Death Day",
     description:
