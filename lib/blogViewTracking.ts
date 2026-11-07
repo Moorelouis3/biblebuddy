@@ -1,16 +1,35 @@
 import { supabase } from "./supabaseClient";
 import { logActionToMasterActions } from "./actionRecorder";
 
+let inMemoryBlogSessionId: string | null = null;
+
+// Some in-app browsers (Pinterest's, for example) block localStorage entirely
+// and throw a SecurityError just from touching window.localStorage, so every
+// access here is guarded and falls back to an id held only for this page load.
 export function getBlogSessionId() {
   if (typeof window === "undefined") return "server";
   const key = "bb:blog-session-id";
-  const existing = window.localStorage.getItem(key);
-  if (existing) return existing;
+
+  try {
+    const existing = window.localStorage.getItem(key);
+    if (existing) return existing;
+  } catch {
+    // Storage blocked: fall through to the in-memory id below.
+  }
+
+  if (inMemoryBlogSessionId) return inMemoryBlogSessionId;
+
   const next =
     typeof window.crypto?.randomUUID === "function"
       ? window.crypto.randomUUID()
       : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
-  window.localStorage.setItem(key, next);
+
+  try {
+    window.localStorage.setItem(key, next);
+  } catch {
+    inMemoryBlogSessionId = next;
+  }
+
   return next;
 }
 
