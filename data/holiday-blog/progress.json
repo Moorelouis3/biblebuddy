@@ -459,17 +459,19 @@
     },
     "how-does-the-church-make-a-saint": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-06T09:16:38.190Z",
-      "committedAt": "2026-11-06T09:31:18.860Z"
+      "committedAt": "2026-11-06T09:31:18.860Z",
+      "publishedAt": "2026-11-07T01:16:55.007Z"
     },
     "why-is-advent-purple": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-06T15:19:43.850Z",
-      "committedAt": "2026-11-06T15:31:32.019Z"
+      "committedAt": "2026-11-06T15:31:32.019Z",
+      "publishedAt": "2026-11-07T01:16:55.175Z"
     }
   },
   "nextTopic": "what-is-the-feast-of-the-circumcision",
-  "updatedAt": "2026-11-06T15:31:32.034Z"
+  "updatedAt": "2026-11-07T01:16:55.175Z"
 }
