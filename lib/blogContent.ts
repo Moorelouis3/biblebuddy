@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-feast-of-the-circumcision",
+    title: "What Is the Feast of the Circumcision of Christ? January 1 Explained",
+    description:
+      "What is the Feast of the Circumcision of Christ? The Gospel event on January 1, why Rome renamed it, and who still keeps the old name.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-the-feast-of-the-circumcision",
+    publishedAt: "2026-11-07",
+    readTime: "11 min read",
+    image: "/blog-banners/what-is-the-feast-of-the-circumcision.jpg",
+    groupPost: {
+      title: "What Is the Feast of the Circumcision of Christ? January 1 Explained 📖",
+      content:
+        "Open an old prayer book to January 1 and there is no party.\nJust a baby being circumcised, eight days after His birth.\n\n📌 Rome renamed the day twice last century. The old title never actually went away.\n\n📖 Jesus was circumcised under the same law given to Abraham two thousand years earlier.\n📖 An angel named Him before He was ever conceived.\n📖 Orthodox, Anglican, and Lutheran calendars still call the day exactly what it was.\n\nNew article on:\n🟢 why **Pope Paul VI** renamed the day in 1969\n🟢 what the **Orthodox Church** still calls January 1 today\n🟢 how **Colossians 2:11** answers why none of this applies to your body anymore\n\nDoes your own heart carry the kind of circumcision Romans 2:29 is actually describing? 🙏",
+    },
+  },
+  {
     slug: "how-to-know-gods-will",
     title: "How Do You Know God's Will for Your Life?",
     description:

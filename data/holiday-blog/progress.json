@@ -118,6 +118,12 @@
         "how-does-the-church-make-a-saint",
         "why-is-advent-purple"
       ]
+    },
+    "2026-11-07": {
+      "committed": 1,
+      "slugs": [
+        "what-is-the-feast-of-the-circumcision"
+      ]
     }
   },
   "articles": {
@@ -473,10 +479,11 @@
     },
     "what-is-the-feast-of-the-circumcision": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-07T01:17:04.499Z"
+      "status": "committed",
+      "startedAt": "2026-11-07T01:17:04.499Z",
+      "committedAt": "2026-11-07T01:27:13.936Z"
     }
   },
   "nextTopic": "meaning-of-the-twelve-days-of-christmas",
-  "updatedAt": "2026-11-07T01:17:04.500Z"
+  "updatedAt": "2026-11-07T01:27:13.948Z"
 }
