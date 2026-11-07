@@ -470,8 +470,13 @@
       "startedAt": "2026-11-06T15:19:43.850Z",
       "committedAt": "2026-11-06T15:31:32.019Z",
       "publishedAt": "2026-11-07T01:16:55.175Z"
+    },
+    "what-is-the-feast-of-the-circumcision": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-07T01:17:04.499Z"
     }
   },
-  "nextTopic": "what-is-the-feast-of-the-circumcision",
-  "updatedAt": "2026-11-07T01:16:55.175Z"
+  "nextTopic": "meaning-of-the-twelve-days-of-christmas",
+  "updatedAt": "2026-11-07T01:17:04.500Z"
 }
