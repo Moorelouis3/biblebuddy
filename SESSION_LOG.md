@@ -13266,3 +13266,26 @@ exact time).
 ## 2026-11-06T22:15:17Z (blog writer run)
 Article: How Do You Know God's Will for Your Life? | Words: ~4500 | Category: Christian Foundations | Status: pass
 Queue remaining: 9
+
+## 2026-11-07 (Bug Fixer run)
+4 open reports, oldest first:
+- Two old reports (a one-time generic "something went wrong" from Sept 24,
+  and a Safari crash from Oct 26) already had a diagnosis from a past run
+  with nothing new since - left as is, no action needed.
+- Real bug: people reading the blog through Pinterest's in-app browser
+  (and similar privacy-locked browsers) hit a crash because the blog's
+  view-counting code touched browser storage that browser blocks, with no
+  fallback. Fixed it to fall back quietly instead of crashing. tsc clean,
+  commit 347909f, pushed to main without [deploy]. This one touched a
+  "whole app crash" area, so the tracker auto-escalated it to Louis's
+  approval queue instead of marking it fixed outright - it is sitting at
+  /admin/bugs waiting on him, not live yet.
+- Mike reported losing his chat progress after being logged out on iPhone
+  web. Checked the chat-saving code - conversations save to his account on
+  our server on every message, not just his phone, so logging back into
+  the same account should bring it all back. No error details or steps
+  were attached to narrow it down further, so left it open with that
+  explained in a reply for him rather than guessing or asking him
+  something the system should already handle.
+Not live yet: the Pinterest/blog crash fix (commit 347909f) is on main but
+needs Louis's approval at /admin/bugs before it can go out in a deploy.
