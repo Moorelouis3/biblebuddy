@@ -120,9 +120,10 @@
       ]
     },
     "2026-11-07": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "what-is-the-feast-of-the-circumcision"
+        "what-is-the-feast-of-the-circumcision",
+        "meaning-of-the-twelve-days-of-christmas"
       ]
     }
   },
@@ -485,10 +486,11 @@
     },
     "meaning-of-the-twelve-days-of-christmas": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-07T05:17:19.189Z"
+      "status": "committed",
+      "startedAt": "2026-11-07T05:17:19.189Z",
+      "committedAt": "2026-11-07T05:29:02.277Z"
     }
   },
   "nextTopic": "what-is-a-feast-day",
-  "updatedAt": "2026-11-07T05:17:19.189Z"
+  "updatedAt": "2026-11-07T05:29:02.300Z"
 }

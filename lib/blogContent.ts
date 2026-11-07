@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "meaning-of-the-twelve-days-of-christmas",
+    title: "What Is the Meaning of the Twelve Days of Christmas?",
+    description:
+      "What is the meaning of the Twelve Days of Christmas? The real history of the carol, the famous catechism legend, and why historians reject it.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/meaning-of-the-twelve-days-of-christmas",
+    publishedAt: "2026-11-07",
+    readTime: "14 min read",
+    image: "/blog-banners/meaning-of-the-twelve-days-of-christmas.jpg",
+    groupPost: {
+      title: "What Is the Meaning of the Twelve Days of Christmas? 📖",
+      content:
+        "You sing it every December and still do not know what half the gifts mean.\nSomeone online always says it is a secret Catholic code.\n\n📌 The real history is stranger than the legend, and the legend does not hold up.\n\n📖 The song was first printed in 1780, as a party game.\n📖 The catechism theory was not even proposed until 1979.\n📖 One line it depends on did not exist until after Catholic persecution had ended.\n\nNew article on:\n🟢 why **Snopes** and a Catholic priest both reject the catechism legend\n🟢 the real reason **1829** matters to this whole theory\n🟢 what the twelve days actually celebrate on the church calendar\n\nDo you know the difference between a story that feels true and one that actually is? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-25-explained",
     title: "Deuteronomy 25 Explained: An Ox, a Widow's Duty, and Honest Weights",
     description:
