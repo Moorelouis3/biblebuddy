@@ -491,8 +491,13 @@
       "startedAt": "2026-11-07T05:17:19.189Z",
       "committedAt": "2026-11-07T05:29:02.277Z",
       "publishedAt": "2026-11-07T09:16:36.768Z"
+    },
+    "what-is-a-feast-day": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-07T09:16:45.700Z"
     }
   },
-  "nextTopic": "what-is-a-feast-day",
-  "updatedAt": "2026-11-07T09:16:36.768Z"
+  "nextTopic": "who-was-saint-barbara",
+  "updatedAt": "2026-11-07T09:16:45.700Z"
 }
