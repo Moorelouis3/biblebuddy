@@ -120,11 +120,12 @@
       ]
     },
     "2026-11-07": {
-      "committed": 3,
+      "committed": 4,
       "slugs": [
         "what-is-the-feast-of-the-circumcision",
         "meaning-of-the-twelve-days-of-christmas",
-        "what-is-a-feast-day"
+        "what-is-a-feast-day",
+        "who-was-saint-barbara"
       ]
     }
   },
@@ -501,10 +502,11 @@
     },
     "who-was-saint-barbara": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-07T15:16:55.843Z"
+      "status": "committed",
+      "startedAt": "2026-11-07T15:16:55.843Z",
+      "committedAt": "2026-11-07T15:26:56.148Z"
     }
   },
   "nextTopic": "where-do-christmas-carols-come-from",
-  "updatedAt": "2026-11-07T15:16:55.843Z"
+  "updatedAt": "2026-11-07T15:26:56.163Z"
 }

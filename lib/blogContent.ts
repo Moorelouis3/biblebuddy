@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-was-saint-barbara",
+    title: "Who Was Saint Barbara? The Feast Day and the Cherry Branch Tradition",
+    description:
+      "Who was Saint Barbara? The legend of the tower, her father's lightning death, and the German Barbarazweig cherry branch custom explained.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/who-was-saint-barbara",
+    publishedAt: "2026-11-07",
+    readTime: "11 min read",
+    image: "/blog-banners/who-was-saint-barbara.jpg",
+    groupPost: {
+      title: "Who Was Saint Barbara? The Feast Day and the Cherry Branch Tradition 📖",
+      content:
+        "A father built a tower to keep his daughter away from the world.\nIt did not work the way he planned.\n\n📌 Saint Barbara was shut away by her own father, and found God anyway, looking out a window he never thought to guard.\n\n📖 She cuts a third window into a wall, as a secret sign of the Trinity.\n📖 Her own father carries out her execution himself.\n📖 A German family still waits every December to see if a cut cherry branch will bloom by Christmas.\n\nNew article on:\n🟢 why a **Barbarazweig** branch sits in water every December 4\n🟢 why the church pulled her feast from its universal calendar in **1969**\n🟢 how a lightning legend made her patron of **miners and artillerymen**\n\nHas anyone ever decided, out of love, how much of the world you were allowed to see? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-28-explained",
     title: "Deuteronomy 28 Explained: Fourteen Verses of Blessing, Fifty Four of Curse",
     description:
