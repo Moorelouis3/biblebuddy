@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-25-explained",
+    title: "Deuteronomy 25 Explained: An Ox, a Widow's Duty, and Honest Weights",
+    description:
+      "Deuteronomy 25 explained verse by verse: the forty stripes limit, the ox not muzzled, a widow's duty, honest weights, and remembering Amalek.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-25-explained",
+    publishedAt: "2026-11-07",
+    readTime: "15 min read",
+    image: "/blog-banners/deuteronomy-25-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 25 Explained 📖",
+      content:
+        "A beating with a number attached before it starts.\nAn ox eating while it still works.\n\n📌 Deuteronomy 25 keeps setting a limit on power, wherever it shows up.\n\n📖 Paul quotes the ox verse twice to argue ministers deserve pay.\n📖 A widow could publicly shame a brother who ignored his duty.\n📖 Honest weights get the same word used for divorce's worst outcome.\n\nNew article on:\n🟢 why **Paul** calls this law proof ministers deserve pay\n🟢 what Deuteronomy 25:11 and 12 really commands about a hand\n🟢 why Israel had to remember what **Amalek** did forever\n\nWhere in your own life could your weights not be matching up? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-24-explained",
     title: "Deuteronomy 24 Explained: Divorce, Pledges, and a Harvest for the Poor",
     description:
