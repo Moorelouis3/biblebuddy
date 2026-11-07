@@ -120,10 +120,11 @@
       ]
     },
     "2026-11-07": {
-      "committed": 2,
+      "committed": 3,
       "slugs": [
         "what-is-the-feast-of-the-circumcision",
-        "meaning-of-the-twelve-days-of-christmas"
+        "meaning-of-the-twelve-days-of-christmas",
+        "what-is-a-feast-day"
       ]
     }
   },
@@ -494,10 +495,11 @@
     },
     "what-is-a-feast-day": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-07T09:16:45.700Z"
+      "status": "committed",
+      "startedAt": "2026-11-07T09:16:45.700Z",
+      "committedAt": "2026-11-07T09:28:51.865Z"
     }
   },
   "nextTopic": "who-was-saint-barbara",
-  "updatedAt": "2026-11-07T09:16:45.700Z"
+  "updatedAt": "2026-11-07T09:28:51.892Z"
 }

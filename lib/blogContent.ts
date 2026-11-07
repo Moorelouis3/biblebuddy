@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-a-feast-day",
+    title: "What Is a Saint's Feast Day? Why the Date Is Usually a Death Day",
+    description:
+      "What is a saint's feast day? Why most feast days mark the date of death, the three birthday exceptions, and what happens when the real date was never recorded.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-a-feast-day",
+    publishedAt: "2026-11-07",
+    readTime: "11 min read",
+    image: "/blog-banners/what-is-a-feast-day.jpg",
+    groupPost: {
+      title: "What Is a Saint's Feast Day? Why the Date Is Usually a Death Day 📖",
+      content:
+        "A date sits next to almost every saint's name on the calendar.\nIt is almost never their birthday.\n\n📌 The church has called a saint's death their birthday into heaven for almost two thousand years.\n\n📖 The custom traces back to a grave in Smyrna in the year 155.\n📖 Only three people on the whole calendar get an earthly birthday instead.\n📖 When nobody wrote down the real date, the church still had to pick one.\n\nNew article on:\n🟢 why **Psalm 116:15** calls a believer's death precious\n🟢 the three exceptions: **Jesus, Mary, and John the Baptist**\n🟢 why **Thomas Aquinas's** feast is not kept on the day he actually died\n\nWhat do you think your own life will actually be the birthday of? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-26-explained",
     title: "Deuteronomy 26 Explained: Firstfruits, a Tithe, and a Sealed Covenant",
     description:
