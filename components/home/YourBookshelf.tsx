@@ -39,6 +39,20 @@ import {
 
 const PLAN_TOTAL_DAYS = 365;
 
+/**
+ * One row, and only one (Louis, 2026-11-07: "i only want one row of the book
+ * shelf and we dont need all the devotionals just enough to fill the row... as
+ * we add more they all dont need be on the bookshelf").
+ *
+ * Five is what fills the desktop row, so the shelf takes the first five of an
+ * order that already puts the right ones in front: what you are reading, newest
+ * first, then the study you set as yours, then today's community study, then
+ * the one opening next. Everything past that is a catalogue, and the catalogue
+ * is the Library link in this header - the shelf grows a sixth card the day a
+ * sixth column fits, not the day a sixth study ships.
+ */
+const SHELF_MAX_BOOKS = 5;
+
 type ShelfBook = {
   key: string;
   title: string;
@@ -351,6 +365,9 @@ export default function YourBookshelf({
     };
   }, [userId, planDay, planCompletedDays, event, communityDay]);
 
+  /** The row itself: the first SHELF_MAX_BOOKS of the order built above. */
+  const visibleBooks = useMemo(() => books.slice(0, SHELF_MAX_BOOKS), [books]);
+
   /**
    * "2 studies in progress · 1 completed · 1 upcoming", from the shelf itself.
    *
@@ -359,9 +376,9 @@ export default function YourBookshelf({
    * the ordinary count on the next tick, with nothing to refresh.
    */
   const shelfSummary = useMemo(() => {
-    const upcoming = books.filter((b) => countdownParts(b, now)).length;
-    const completed = books.filter((b) => b.isComplete).length;
-    const inProgress = books.filter(
+    const upcoming = visibleBooks.filter((b) => countdownParts(b, now)).length;
+    const completed = visibleBooks.filter((b) => b.isComplete).length;
+    const inProgress = visibleBooks.filter(
       (b) => !b.isComplete && b.currentDay !== null && !countdownParts(b, now),
     ).length;
     const parts: string[] = [];
@@ -369,7 +386,7 @@ export default function YourBookshelf({
     if (completed) parts.push(`${completed} completed`);
     if (upcoming) parts.push(`${upcoming} upcoming`);
     return parts.join(" · ");
-  }, [books, now]);
+  }, [visibleBooks, now]);
 
   /**
    * The one book that wears "Currently Reading": the started, unfinished
@@ -382,9 +399,9 @@ export default function YourBookshelf({
    * never badged on a technicality.
    */
   const currentlyReadingKey = useMemo(() => {
-    const read = books.find((b) => !b.isComplete && b.currentDay !== null && b.lastActivityAt);
+    const read = visibleBooks.find((b) => !b.isComplete && b.currentDay !== null && b.lastActivityAt);
     return read?.key ?? null;
-  }, [books]);
+  }, [visibleBooks]);
 
   /**
    * Flipped on one frame after the books land, which is what makes the
@@ -480,12 +497,14 @@ export default function YourBookshelf({
           {/* The covers are the point, so they are large. The row swipes on a
               phone with the next one peeking; on a desktop three or four sit
               side by side. */}
-          {/* Swipe on a phone, grid on a desktop. The grid is auto-fit
-              rather than five columns: the shelf is however many books the
-              reader has, and five is what today's catalogue happens to be. */}
+          {/* Swipe on a phone, one grid row on a desktop. Five fixed columns,
+              not auto-fit: auto-fit wrapped the sixth book onto a second row
+              the moment the catalogue outgrew the first, which is the whole
+              thing Louis asked to stop (2026-11-07). The list is capped at
+              SHELF_MAX_BOOKS to match, so the row can never wrap. */}
           <div className="-mx-4 mt-5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:-mx-5 sm:px-5 lg:mx-0 lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden">
-            <ul className="flex w-max snap-x snap-mandatory items-stretch gap-3 sm:gap-4 lg:grid lg:w-full lg:grid-cols-[repeat(auto-fit,minmax(170px,1fr))]">
-              {books.map((book, index) => {
+            <ul className="flex w-max snap-x snap-mandatory items-stretch gap-3 sm:gap-4 lg:grid lg:w-full lg:grid-cols-5">
+              {visibleBooks.map((book, index) => {
                 const primaryLabel = book.isComplete
                   ? "Read Again →"
                   : book.currentDay !== null
