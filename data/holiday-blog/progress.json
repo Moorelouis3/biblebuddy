@@ -482,8 +482,13 @@
       "status": "committed",
       "startedAt": "2026-11-07T01:17:04.499Z",
       "committedAt": "2026-11-07T01:27:13.936Z"
+    },
+    "meaning-of-the-twelve-days-of-christmas": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-07T05:17:19.189Z"
     }
   },
-  "nextTopic": "meaning-of-the-twelve-days-of-christmas",
-  "updatedAt": "2026-11-07T05:16:27.430Z"
+  "nextTopic": "what-is-a-feast-day",
+  "updatedAt": "2026-11-07T05:17:19.189Z"
 }
