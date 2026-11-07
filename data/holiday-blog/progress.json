@@ -498,8 +498,13 @@
       "status": "committed",
       "startedAt": "2026-11-07T09:16:45.700Z",
       "committedAt": "2026-11-07T09:28:51.865Z"
+    },
+    "who-was-saint-barbara": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-07T15:16:55.843Z"
     }
   },
-  "nextTopic": "who-was-saint-barbara",
-  "updatedAt": "2026-11-07T15:16:26.483Z"
+  "nextTopic": "where-do-christmas-carols-come-from",
+  "updatedAt": "2026-11-07T15:16:55.843Z"
 }
