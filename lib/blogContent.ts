@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-26-explained",
+    title: "Deuteronomy 26 Explained: Firstfruits, a Tithe, and a Sealed Covenant",
+    description:
+      "Deuteronomy 26 explained verse by verse: the firstfruits basket, Israel's ancient confession, the third year tithe, and the covenant sealed in verses 16 to 19.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-26-explained",
+    publishedAt: "2026-11-07",
+    readTime: "11 min read",
+    image: "/blog-banners/deuteronomy-26-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 26 Explained 📖",
+      content:
+        "A basket of fruit. A script you have to say out loud over it.\nNo silent gratitude allowed.\n\n📌 Deuteronomy 26 will not let an offering happen without words attached.\n\n📖 The confession in verses 5 to 9 is read at Passover Seders today.\n📖 Jacob is called **a Syrian** because of his years with Laban.\n📖 Israel and God each formally **avouch** the other in verses 17 and 18.\n\nNew article on:\n🟢 why **peculiar people** does not mean strange or odd\n🟢 what the giver had to say he did **not** do with a tithe\n🟢 how this chapter seals everything since Deuteronomy 12\n\nWhat is one specific thing God has done that you have never actually said out loud? 🙏",
+    },
+  },
+  {
     slug: "meaning-of-the-twelve-days-of-christmas",
     title: "What Is the Meaning of the Twelve Days of Christmas?",
     description:
