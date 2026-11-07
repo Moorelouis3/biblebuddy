@@ -106,3 +106,4 @@
 2026-11-06T08:03:37Z | 16 commits | Deuteronomy 19-21 chapter notes, 2 Christian Holidays articles (Epiphany, Watch Night), fixed Jude/Obadiah/2John/3John single-chapter verse bug, Bookshelf polish, dashboard bot-traffic fix
 2026-11-06T13:00:00Z | 11 commits | Deuteronomy 22-23 Explained chapter library entries, two Christian Holidays articles (How Does the Church Make a Saint?, Why Is Advent Purple?), and a member profile action-row UI tweak
 2026-11-07T08:02:25Z | 17 commits | Deuteronomy 24-26 Explained chapter library entries, a Christian Holidays article (Twelve Days of Christmas), a bug fix for blog pages crashing when localStorage is blocked, and a blog article (How Do You Know God's Will for Your Life?)
+2026-11-07T16:02:28Z | 13 commits | Christian Holidays article (Who Was Saint Barbara?), Deuteronomy 27-28 Explained chapter library entries, and Bookshelf single-row fix
