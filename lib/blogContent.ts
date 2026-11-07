@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-24-explained",
+    title: "Deuteronomy 24 Explained: Divorce, Pledges, and a Harvest for the Poor",
+    description:
+      "Deuteronomy 24 explained verse by verse: the bill of divorce, millstone and kidnapping laws, fair wages, individual responsibility, and gleaning laws for the poor.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-24-explained",
+    publishedAt: "2026-11-07",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-24-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 24 Explained 📖",
+      content:
+        "A bill of divorce. A borrowed coat. A row of grain nobody can pick up.\n\n📌 Deuteronomy 24 keeps limiting whoever holds the power in each situation.\n\n📖 A lender could not walk into a debtor's house to take his pledge.\n📖 A millstone could not be taken in pledge, because that takes a man's life.\n📖 The exact law behind Ruth gleaning in Boaz's field shows up here first.\n\nNew article on:\n🟢 why **Jesus** called this divorce law a concession, not a design\n🟢 what a **kidnapper** faced under this chapter\n🟢 why a **pledge** had to come back by sundown\n\nWhere in your own life could you use a limit like the ones Moses writes here? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-feast-of-the-circumcision",
     title: "What Is the Feast of the Circumcision of Christ? January 1 Explained",
     description:
