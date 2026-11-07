@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-28-explained",
+    title: "Deuteronomy 28 Explained: Fourteen Verses of Blessing, Fifty Four of Curse",
+    description:
+      "Deuteronomy 28 explained verse by verse: the blessings for obedience, the far longer list of curses, the siege horror it predicted, and how it connects to Galatians 3:13.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-28-explained",
+    publishedAt: "2026-11-07",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-28-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 28 Explained 📖",
+      content:
+        "Blessing gets fourteen verses.\nCurse gets fifty four.\n\n📌 Same categories of life, run in opposite directions.\n\n📖 The blessing says lend, not borrow. The curse hands that to a stranger.\n📖 Verses 53 to 57 describe a siege horror that actually happened, twice.\n📖 Verse 36 names a king before Israel ever asked for one.\n\nNew article on:\n🟢 why the **curses** outnumber the blessings four to one\n🟢 the real reason Moses gives in **verse 47**\n🟢 how **Galatians 3:13** answers this whole chapter\n\nAre you serving God with gladness, or only out of duty? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-27-explained",
     title: "Deuteronomy 27 Explained: Stones, an Altar, and Twelve Curses",
     description:
