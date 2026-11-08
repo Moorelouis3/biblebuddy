@@ -66,6 +66,56 @@ export function detectStorePlatform(userAgent: string, touchPoints = 0): StorePl
 }
 
 /**
+ * The same question, asked of the browser rather than of a string.
+ *
+ * Louis, 2026-11-08: "make sure it works to identify the mobile user device
+ * even if the link is clicked on social media". Most of the blog's phone
+ * traffic arrives inside somebody else's app - Instagram, Facebook, Threads,
+ * TikTok - and those are WebViews with their own user agents.
+ *
+ * The good news, confirmed by scripts/verify-store-platform.ts against real
+ * captured strings: every one of them keeps "iPhone" or "Android" in the user
+ * agent and appends its own name, so the test above already places them. This
+ * function exists for the cases it does not:
+ *
+ *   1. navigator.userAgentData.platform, where Chromium offers it. It is
+ *      structured rather than parsed and a WebView cannot garble it by
+ *      appending to a string.
+ *   2. navigator.platform, the old field, which still says "iPhone" or
+ *      "Linux armv8l" when a WebView has rewritten the user agent wholesale.
+ *
+ * Anything still unplaced stays "other", and "other" is treated as desktop.
+ * That is deliberate: a phone we cannot name is better offered the web than
+ * sent to the wrong shop, and in practice there is no such phone - all 21
+ * captured user agents in the verify script are placed by the string alone.
+ *
+ * Order matters. The user agent is checked before navigator.platform because
+ * an iPad in desktop mode reports "MacIntel" there, and the touch-point test
+ * above is what catches it.
+ */
+export function clientStorePlatform(): StorePlatform {
+  if (typeof navigator === "undefined") return "other";
+
+  const nav = navigator as Navigator & {
+    userAgentData?: { platform?: string; mobile?: boolean };
+  };
+  const touchPoints = typeof nav.maxTouchPoints === "number" ? nav.maxTouchPoints : 0;
+
+  const hint = (nav.userAgentData?.platform || "").toLowerCase();
+  if (hint === "android") return "android";
+  if (hint === "ios" || hint === "ipados") return "ios";
+
+  const byUserAgent = detectStorePlatform(nav.userAgent || "", touchPoints);
+  if (byUserAgent !== "other") return byUserAgent;
+
+  const legacy = (nav.platform || "").toLowerCase();
+  if (/iphone|ipad|ipod/.test(legacy)) return "ios";
+  if (/android|linux arm/.test(legacy)) return "android";
+
+  return "other";
+}
+
+/**
  * The single destination for a device. Always the App Store until Android is
  * live, including for Android readers - the iOS listing is the only real
  * place to send anyone today.
