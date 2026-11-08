@@ -755,7 +755,11 @@ async function runRegistration(
       permission = decided;
     }
     if (permission.receive !== "granted") {
-      void reportPushFailure(`permission is "${permission.receive}"`);
+      // A no is a no (see ensureNativeNotifications above) - the reader
+      // declining the prompt is an expected outcome, not a failure to report.
+      if (permission.receive !== "denied") {
+        void reportPushFailure(`permission is "${permission.receive}"`);
+      }
       return false;
     }
 
