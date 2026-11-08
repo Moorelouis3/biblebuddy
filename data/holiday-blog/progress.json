@@ -129,9 +129,10 @@
       ]
     },
     "2026-11-08": {
-      "committed": 1,
+      "committed": 2,
       "slugs": [
-        "where-do-christmas-carols-come-from"
+        "where-do-christmas-carols-come-from",
+        "what-is-ordinary-time"
       ]
     }
   },
@@ -522,10 +523,11 @@
     },
     "what-is-ordinary-time": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-08T05:17:31.573Z"
+      "status": "committed",
+      "startedAt": "2026-11-08T05:17:31.573Z",
+      "committedAt": "2026-11-08T05:27:47.868Z"
     }
   },
   "nextTopic": "what-is-a-nativity-scene",
-  "updatedAt": "2026-11-08T05:17:31.573Z"
+  "updatedAt": "2026-11-08T05:27:47.883Z"
 }

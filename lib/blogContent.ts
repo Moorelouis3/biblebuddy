@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-ordinary-time",
+    title: "What Is Ordinary Time? The Longest Season of the Church Year",
+    description:
+      "What is Ordinary Time in the Catholic Church? When it starts and ends, why it is called ordinary, and how long it actually lasts.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-ordinary-time",
+    publishedAt: "2026-11-08",
+    readTime: "13 min read",
+    image: "/blog-banners/what-is-ordinary-time.jpg",
+    groupPost: {
+      title: "What Is Ordinary Time? The Longest Season of the Church Year 📖",
+      content:
+        "Advent gets candles. Lent gets ashes.\nThis season gets more than half the calendar and a name nobody can explain.\n\n📌 Ordinary Time is not a gap between the real seasons. It is the longest one on the whole church calendar, thirty three or thirty four weeks.\n\n📖 The word ordinary comes from ordinal, numbered, not plain.\n📖 It opens with Christ's baptism and closes with Christ as King.\n📖 Before 1969 these same weeks had two completely different names.\n\nNew article on:\n🟢 what **ordinary** actually means on a church calendar\n🟢 why the season runs thirty three weeks some years, **thirty four** others\n🟢 what the church called these weeks **before 1969**\n\nWhat would change if you took an ordinary Tuesday as seriously as a feast day? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-30-explained",
     title: "Deuteronomy 30 Explained: Choose Life, Not Far Off",
     description:
