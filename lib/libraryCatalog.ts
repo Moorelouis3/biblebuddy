@@ -103,6 +103,33 @@ export const LIBRARY_CATEGORIES: Array<{ value: string; label: string }> = [
   { value: "wisdom", label: "Wisdom" },
 ];
 
+/**
+ * "Could not reach the database" and "there is nothing here" are not the
+ * same answer, and this file used to give them the same answer.
+ *
+ * supabase-js does not throw when a request fails - it RETURNS `{ data: null,
+ * error }`. So the two readers below turned a dead connection into an empty
+ * array and a missing row, and the screens above them dutifully rendered
+ * "Nothing in this category yet" and "That study is not on the shelf." Both
+ * sentences were lies: the studies are there, the request never arrived.
+ *
+ * Caught on 2026-11-08 while testing the retry notice. With Supabase blocked
+ * in the browser, a study page said it was not on the shelf instead of
+ * offering Try Again - because nothing threw, so nothing could be caught.
+ *
+ * So these two throw now. The line is deliberate and narrow: throw when the
+ * screen has NOTHING to show without this read, degrade quietly when the read
+ * is a detail. fetchProgressByStudy still returns {} on failure, because a
+ * shelf with no progress bars is still a usable shelf, and failing a whole
+ * screen over a missing percentage would be the worse bug.
+ */
+export class LibraryLoadError extends Error {
+  constructor(what: string, cause: string) {
+    super(`Could not load ${what}: ${cause}`);
+    this.name = "LibraryLoadError";
+  }
+}
+
 /** Published studies, in shelf order. Unpublished rows never leave the database. */
 export async function fetchLibraryStudies(): Promise<LibraryStudy[]> {
   const { data, error } = await supabase
@@ -114,7 +141,7 @@ export async function fetchLibraryStudies(): Promise<LibraryStudy[]> {
 
   if (error) {
     console.error("[LIBRARY] Could not load studies:", error.message);
-    return [];
+    throw new LibraryLoadError("the studies", error.message);
   }
   return (data as LibraryStudy[]) || [];
 }
@@ -128,8 +155,10 @@ export async function fetchStudyById(id: string): Promise<LibraryStudy | null> {
 
   if (error) {
     console.error("[LIBRARY] Could not load study:", error.message);
-    return null;
+    throw new LibraryLoadError("this study", error.message);
   }
+  // Still null for a study that genuinely is not there - that is a real
+  // answer, and "not on the shelf" is the honest thing to say about it.
   return (data as LibraryStudy) || null;
 }
 

@@ -236,6 +236,15 @@ export default function BibleChapterPage() {
   );
   const [loading, setLoading] = useState(!genesisOneIsBundled);
   const [error, setError] = useState<string | null>(null);
+  /**
+   * Bumped by Try Again on the error screen; it is in the chapter loader's
+   * deps, so the chapter is fetched again without a full page reload.
+   *
+   * The error screen already existed and already named a timeout, but all it
+   * offered was "Please refresh and try again" - which on the phone app means
+   * force-closing, since there is no address bar to reload from.
+   */
+  const [chapterReloadKey, setChapterReloadKey] = useState(0);
   const chapterRequestRef = useRef(0);
   const [isSaving, setIsSaving] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -1108,7 +1117,14 @@ RULES:
     return () => {
       cancelled = true;
     };
-  }, [book, chapter, translation]);
+  }, [book, chapter, translation, chapterReloadKey]);
+
+  /** Try Again: back to the skeleton, then fetch the chapter once more. */
+  function retryChapterLoad() {
+    setError(null);
+    setLoading(true);
+    setChapterReloadKey((k) => k + 1);
+  }
 
   // Get user ID and load completion progress (same as database pages)
   useEffect(() => {
@@ -2353,6 +2369,18 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         <div className="max-w-4xl mx-auto">
           <div className="text-center py-20">
             <p className="text-red-600">Error: {error}</p>
+            {/* A button, not an instruction to refresh: in the phone app there
+                is no address bar to refresh from. */}
+            <div className="mt-4">
+              <button
+                type="button"
+                onClick={retryChapterLoad}
+                className="inline-flex min-h-[40px] items-center justify-center rounded-xl bg-[var(--bb-accent,#2f7fe8)] px-5 text-sm font-black text-white shadow-sm transition active:scale-[0.98]"
+                style={{ color: "#ffffff" }}
+              >
+                Try Again
+              </button>
+            </div>
             <Link
               href={backLink}
               className="text-blue-600 hover:underline mt-4 inline-block"

@@ -25,6 +25,7 @@ import { pollIdFromPost } from "../../lib/weeklyFeedPosts";
 import TopBuddiesCard from "../../components/feed/TopBuddiesCard";
 import ProfileSummaryCard from "../../components/profile/ProfileSummaryCard";
 import MessageBuddyButton from "../../components/profile/MessageBuddyButton";
+import LoadFailedNotice from "../../components/LoadFailedNotice";
 import { COMMUNITY_GROUP_ID } from "../../lib/communityMilestones";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
@@ -2370,6 +2371,19 @@ export default function BbFeedPage() {
    */
   const [tab, setTab] = useState<Tab>("community");
   const [loading, setLoading] = useState(true);
+  /**
+   * Who you are could not be read, so the feed cannot open. Say so.
+   *
+   * init() below had no catch: a throw skipped its setLoading(false) and the
+   * page sat on "Loading feed..." indefinitely. Since the auth-lock fix that
+   * read aborts after 30 seconds instead of hanging, so it ends up here.
+   * Note it does NOT send you to /login - a failed read is not a signed-out
+   * reader, and bouncing a signed-in person to the login screen over a
+   * timeout would be the worse bug.
+   */
+  const [feedLoadFailed, setFeedLoadFailed] = useState(false);
+  /** Bumped by Try Again; it is in init's effect deps, so init runs again. */
+  const [feedReloadKey, setFeedReloadKey] = useState(0);
   const [showFeedOnboarding, setShowFeedOnboarding] = useState(false);
 
   // Notification deep-link params
@@ -2537,8 +2551,19 @@ export default function BbFeedPage() {
       }
       setLoading(false);
     }
-    init();
-  }, []);
+    init().catch((error: unknown) => {
+      console.warn("[FEED] Could not open the feed:", error);
+      setFeedLoadFailed(true);
+      setLoading(false);
+    });
+  }, [feedReloadKey]);
+
+  /** Try Again: back to the loading line, then run init once more. */
+  function retryFeedLoad() {
+    setFeedLoadFailed(false);
+    setLoading(true);
+    setFeedReloadKey((k) => k + 1);
+  }
 
   // ── Fetch helpers ──────────────────────────────────────────────────────────
   /**
@@ -3647,7 +3672,9 @@ export default function BbFeedPage() {
         )}
 
         {/* Content */}
-        {loading ? (
+        {feedLoadFailed ? (
+          <LoadFailedNotice className="my-10" message="Couldn't load the feed." onRetry={retryFeedLoad} />
+        ) : loading ? (
           <div className="text-sm text-gray-400 text-center py-16">Loading feed...</div>
         ) : viewingUserId ? (
           renderWall()

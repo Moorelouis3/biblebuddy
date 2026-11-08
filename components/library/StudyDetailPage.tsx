@@ -23,6 +23,7 @@ import {
   ReadersCard,
   guideFeatures,
 } from "./studyGuideShared";
+import LoadFailedNotice from "../LoadFailedNotice";
 
 /**
  * The second screen of the Library: one study guide.
@@ -47,6 +48,17 @@ export default function StudyDetailPage({ studyId }: { studyId: string }) {
   const [study, setStudy] = useState<LibraryStudy | null>(null);
   const [progress, setProgress] = useState<StudyProgress | null>(null);
   const [loading, setLoading] = useState(true);
+  /**
+   * The study could not be read, which is not the same as it not existing.
+   *
+   * Without this the two states were one: a throw in the effect below skipped
+   * setLoading(false), so the skeleton pulsed forever rather than falling
+   * through to "That study is not on the shelf." - and that sentence would
+   * have been a lie anyway, since the study is there and the read failed.
+   */
+  const [failed, setFailed] = useState(false);
+  /** Bumped by Try Again; it is in the effect's deps, so the load re-runs. */
+  const [reloadKey, setReloadKey] = useState(0);
 
   const isBibleYear = isBibleYearStudyId(studyId);
 
@@ -84,11 +96,31 @@ export default function StudyDetailPage({ studyId }: { studyId: string }) {
         if (!cancelled) setProgress(withTotals(all[row.id], row.total_days));
       }
       if (!cancelled) setLoading(false);
-    })();
+    })().catch((error: unknown) => {
+      if (cancelled) return;
+      console.warn("[STUDY_DETAIL] Could not load the study:", error);
+      setFailed(true);
+      setLoading(false);
+    });
     return () => {
       cancelled = true;
     };
-  }, [studyId, isBibleYear]);
+  }, [studyId, isBibleYear, reloadKey]);
+
+  /** Try Again: back to the skeleton, then run the load once more. */
+  function retryLoad() {
+    setFailed(false);
+    setLoading(true);
+    setReloadKey((k) => k + 1);
+  }
+
+  if (failed) {
+    return (
+      <div className="mx-auto w-full max-w-3xl px-4 py-6">
+        <LoadFailedNotice message="Couldn't load this study." onRetry={retryLoad} />
+      </div>
+    );
+  }
 
   if (loading) {
     return (

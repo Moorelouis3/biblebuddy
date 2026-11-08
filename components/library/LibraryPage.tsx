@@ -16,6 +16,7 @@ import {
   type LibraryStudy,
   type StudyProgress,
 } from "../../lib/libraryCatalog";
+import LoadFailedNotice from "../LoadFailedNotice";
 
 /**
  * The Library bookshelf - what the Plans tab used to be.
@@ -37,7 +38,17 @@ export default function LibraryPage() {
   const [category, setCategory] = useState("all");
   const [bibleYear, setBibleYear] = useState<{ planDay: number | null; highestReadDay: number } | null>(null);
   const [loading, setLoading] = useState(true);
+  /**
+   * Nothing came back, or the read threw. Either way: say so, offer the button.
+   *
+   * This used to be set only when the studies array came back empty, and the
+   * message told the reader to pull down to refresh. Since the auth-lock fix
+   * a read can also abort after 30 seconds, and the catch below is what keeps
+   * that from leaving the four grey covers pulsing forever.
+   */
   const [failed, setFailed] = useState(false);
+  /** Bumped by Try Again; it is in the effect's deps, so the load re-runs. */
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -56,11 +67,23 @@ export default function LibraryPage() {
       const position = await fetchBibleYearPosition(userId ?? null);
       if (!cancelled) setBibleYear({ planDay: position.planDay, highestReadDay: position.highestReadDay });
       if (!cancelled) setLoading(false);
-    })();
+    })().catch((error: unknown) => {
+      if (cancelled) return;
+      console.warn("[LIBRARY] Could not load the shelf:", error);
+      setFailed(true);
+      setLoading(false);
+    });
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [reloadKey]);
+
+  /** Try Again: back to the skeleton, then run the load once more. */
+  function retryLoad() {
+    setFailed(false);
+    setLoading(true);
+    setReloadKey((k) => k + 1);
+  }
 
   /** Only offer a filter if something published actually carries that category. */
   const visibleCategories = useMemo(() => {
@@ -181,9 +204,7 @@ export default function LibraryPage() {
             ))}
           </div>
         ) : failed ? (
-          <p className="mt-4 rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-6 text-center text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
-            We could not load the studies just now. Pull down to refresh, or try again in a moment.
-          </p>
+          <LoadFailedNotice className="mt-4" message="Couldn't load the studies." onRetry={retryLoad} />
         ) : filtered.length === 0 ? (
           <p className="mt-4 rounded-2xl bg-[var(--bb-surface-soft,#f8fbff)] px-4 py-6 text-center text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
             Nothing in this category yet. Try All Studies.

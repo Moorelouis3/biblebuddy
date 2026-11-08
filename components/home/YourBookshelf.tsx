@@ -8,6 +8,7 @@ import { cardTint } from "../../lib/cardTints";
 import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
 import { COMMUNITY_EVENTS, getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
 import { BIBLE_YEAR_PLAN_HREF } from "../../lib/bibleYearProgress";
+import LoadFailedNotice from "../LoadFailedNotice";
 import {
   BIBLE_YEAR_SHELF_COVER,
   BIBLE_YEAR_SHELF_TITLE,
@@ -199,6 +200,17 @@ export default function YourBookshelf({
   /** The study this reader set as their plan; the shelf leads with it and marks it. */
   const [chosenKey, setChosenKey] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  /**
+   * The shelf could not be read, so say so instead of animating forever.
+   *
+   * The load below is a bare async effect: before this, a throw anywhere in
+   * it skipped setLoading(false) and the three grey covers pulsed until the
+   * tab was closed. Since the auth-lock fix a request CAN throw - it aborts
+   * after 30 seconds rather than hanging - so this path is now reachable.
+   */
+  const [failed, setFailed] = useState(false);
+  /** Bumped by Try Again; it is in the effect's deps, so the load re-runs. */
+  const [reloadKey, setReloadKey] = useState(0);
 
   /**
    * A clock, so a countdown counts.
@@ -359,11 +371,27 @@ export default function YourBookshelf({
       setChosenKey(chosenStudyId);
 
       setLoading(false);
-    })();
+    })().catch((error: unknown) => {
+      // A bare async effect swallowed nothing before this: there was no catch,
+      // so a throw simply skipped setLoading(false) above and left the
+      // skeleton pulsing. Catching on the promise keeps the body's
+      // indentation and reads the same.
+      if (cancelled) return;
+      console.warn("[BOOKSHELF] Could not load the shelf:", error);
+      setFailed(true);
+      setLoading(false);
+    });
     return () => {
       cancelled = true;
     };
-  }, [userId, planDay, planCompletedDays, event, communityDay]);
+  }, [userId, planDay, planCompletedDays, event, communityDay, reloadKey]);
+
+  /** Try Again: back to the skeleton, then run the load once more. */
+  function retryLoad() {
+    setFailed(false);
+    setLoading(true);
+    setReloadKey((k) => k + 1);
+  }
 
   /** The row itself: the first SHELF_MAX_BOOKS of the order built above. */
   const visibleBooks = useMemo(() => books.slice(0, SHELF_MAX_BOOKS), [books]);
@@ -418,6 +446,16 @@ export default function YourBookshelf({
     const id = window.requestAnimationFrame(() => setBarsIn(true));
     return () => window.cancelAnimationFrame(id);
   }, [loading, books.length]);
+
+  if (failed) {
+    // No aria-labelledby here: the heading that owns that id is not rendered
+    // in this branch, and LoadFailedNotice announces itself as an alert.
+    return (
+      <section>
+        <LoadFailedNotice message="Couldn't load your bookshelf." onRetry={retryLoad} />
+      </section>
+    );
+  }
 
   if (loading) {
     return (

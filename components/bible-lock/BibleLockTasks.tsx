@@ -159,7 +159,15 @@ export default function BibleLockTasks() {
           ready: true,
         },
       ]);
-    })();
+    })().catch((error: unknown) => {
+      // fetchLibraryStudies throws on a database error now (see
+      // lib/libraryCatalog), and this card has no loading state to get stuck
+      // in - it simply shows the tasks it managed to build. So it keeps the
+      // behaviour it has always had, quietly, rather than becoming an
+      // unhandled rejection.
+      if (cancelled) return;
+      console.warn("[BIBLE_LOCK] Could not build the task list:", error);
+    });
 
     return () => {
       cancelled = true;
