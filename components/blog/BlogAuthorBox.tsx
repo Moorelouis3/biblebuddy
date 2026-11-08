@@ -61,6 +61,10 @@ type EndCardContent = {
   promoName: string;
   headline: string;
   subhead: string;
+  // The subhead when the card is offering a store button instead. Without
+  // this, a desktop reader is told to get the app on their phone above a
+  // button that signs them up on the web.
+  storeSubhead?: string;
   body: ReactNode;
   features: Array<{ title: string; text: string; bubble: string; icon: keyof typeof ICONS }>;
   /**
@@ -81,6 +85,9 @@ type EndCardContent = {
   memberLabel: string;
   // Small print under the button. Null for the variants that have none.
   footnote: string | null;
+  // Small print for the store version of the ask, where "no credit card"
+  // should be about the download rather than about making an account.
+  storeFootnote?: string;
   // Whether a signed-in reader is counted as an impression. The app card does
   // not count them even now that it has something to offer them, so that the
   // end-card click rate stays a logged-out number and comparable with its own
@@ -106,7 +113,8 @@ type EndCardContent = {
 const APP_CARD: EndCardContent = {
   promoName: "end-card",
   headline: "Enjoyed this blog post?",
-  subhead: "Get the free Bible Buddy app on your phone.",
+  subhead: "You'll love what's waiting for you inside Bible Buddy.",
+  storeSubhead: "Get the free Bible Buddy app on your phone.",
   body: (
     <>
       <strong className="font-bold text-[#26324d]">Bible</strong> Buddy is a{" "}
@@ -124,7 +132,9 @@ const APP_CARD: EndCardContent = {
   visitorLabel: "Start Using Bible Buddy for Free",
   memberPath: "/dashboard",
   memberLabel: "Open Bible Buddy",
-  footnote: "Free to download. No ads. No credit card.",
+  footnote: "Create your free account. No credit card. Completely free.",
+  // Shown instead when the card is offering a store button.
+  storeFootnote: "Free to download. No ads. No credit card.",
   trackMembers: false,
 };
 
@@ -213,12 +223,14 @@ const nativeOnServer = () => false;
 const nativeInBrowser = () => isNativeApp();
 
 /**
- * The two store buttons, or the one that belongs to this reader's phone.
+ * The one store button that belongs to this reader's phone.
  *
- * An iPhone sees the App Store, an Android phone sees Google Play, and anyone
- * we cannot place - desktop, a tablet in desktop mode, the server's first
- * paint - sees both and chooses. That last case is most of the blog's traffic,
- * so "both" is the default rather than the edge case.
+ * An iPhone sees the App Store and an Android phone sees Google Play. Nobody
+ * is ever shown both, and a reader we cannot place sees neither - desktop
+ * readers get the web signup button instead, which is the thing they can
+ * actually act on (Louis, 2026-11-08: "Desktop means they go to the desktop,
+ * to the website to sign up"). That is decided by the caller, which renders
+ * this only when `platform` is a phone.
  *
  * During the closed beta the Play button goes to our own /android explainer,
  * never to Play itself: someone sent straight to the test link without having
@@ -231,24 +243,25 @@ const nativeInBrowser = () => isNativeApp();
  * wrong here, where the button says Google Play.
  */
 function StoreButtons({
+  platform,
   onStoreClick,
 }: {
+  platform: "ios" | "android";
   onStoreClick: (store: "apple" | "google") => void;
 }) {
-  const platform = useSyncExternalStore(subscribeToNothing, platformInBrowser, platformOnServer);
   const androidHref = androidDestination();
-  const showApple = platform === "ios" || platform === "other";
-  const showGoogle = platform === "android" || platform === "other";
+  const showApple = platform === "ios";
+  const showGoogle = platform === "android";
 
   // Inline colour because the site's global unlayered `a { color: inherit }`
   // outranks every Tailwind text utility on an anchor. See
   // docs/link-colour-root-fix.md - do not swap these for a text-* class.
   const white = { color: "#ffffff", WebkitTextFillColor: "#ffffff" } as const;
   const button =
-    "flex min-h-[56px] flex-1 items-center justify-center gap-2.5 rounded-full bg-gradient-to-b from-[#1d2b4d] to-[#0b1633] px-4 text-left shadow-[0_10px_24px_rgba(11,22,51,0.3)] transition hover:-translate-y-0.5 hover:brightness-110";
+    "flex min-h-[56px] w-full items-center justify-center gap-2.5 rounded-full bg-gradient-to-b from-[#1d2b4d] to-[#0b1633] px-4 text-left shadow-[0_10px_24px_rgba(11,22,51,0.3)] transition hover:-translate-y-0.5 hover:brightness-110";
 
   return (
-    <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row">
+    <div className="mt-6 sm:mt-7">
       {showApple ? (
         <a
           href={APP_STORES.apple}
@@ -342,9 +355,24 @@ export default function BlogAuthorBox({
 
   const isMember = Boolean(userId);
   const inNativeApp = useSyncExternalStore(subscribeToNothing, nativeInBrowser, nativeOnServer);
-  // Inside the store app there is nothing left to install, so the install card
-  // falls back to its in-app destination for that reader.
-  const showStores = content.cta === "stores" && !inNativeApp;
+  const platform = useSyncExternalStore(subscribeToNothing, platformInBrowser, platformOnServer);
+
+  /**
+   * Who gets a store button: phones, and only phones.
+   *
+   * A desktop reader cannot install anything, so asking them to is a dead end
+   * - they get the web signup button that was here before, which is the thing
+   * they can act on (Louis, 2026-11-08: "Desktop means they go to the desktop,
+   * to the website to sign up"). Same for anyone inside the store app already,
+   * and for the server's first paint, which cannot know the device.
+   *
+   * The consequence worth knowing: the card is server-rendered as the signup
+   * button for everybody and swaps to a store button on a phone once hydrated.
+   * It sits at the very bottom of a post, so hydration is long finished before
+   * a reader scrolls to it.
+   */
+  const storePlatform = platform === "ios" || platform === "android" ? platform : null;
+  const showStores = content.cta === "stores" && !inNativeApp && storePlatform !== null;
   const href = isMember
     ? content.memberPath
     : `${content.visitorPath}?src=blog&promo=${promoName}&post=${encodeURIComponent(postSlug)}`;
@@ -426,7 +454,7 @@ export default function BlogAuthorBox({
         {content.headline}
       </h2>
       <p className={`${heading.className} mt-1.5 text-[17px] font-extrabold leading-snug text-[#26324d] sm:text-[20px]`}>
-        {content.subhead}
+        {showStores ? content.storeSubhead ?? content.subhead : content.subhead}
       </p>
       <p className="mt-3 text-[15px] leading-[1.6] text-[#3b4660] sm:text-[16px]">{content.body}</p>
 
@@ -452,8 +480,8 @@ export default function BlogAuthorBox({
         ))}
       </ul>
 
-      {showStores ? (
-        <StoreButtons onStoreClick={trackStoreClick} />
+      {showStores && storePlatform ? (
+        <StoreButtons platform={storePlatform} onStoreClick={trackStoreClick} />
       ) : (
         <Link
           href={href}
@@ -474,13 +502,17 @@ export default function BlogAuthorBox({
         </Link>
       )}
 
-      {/* The small print belongs to the ask above it, so the store version
-          gets its own line: a visitor being sent to a store needs to know it
-          is free before they tap, and a member does not need "no credit card"
-          said to them again. */}
-      {content.footnote && (showStores || !isMember) ? (
-        <p className="mt-2.5 text-center text-[12px] leading-snug text-[#3b4660] sm:text-[13px]">{content.footnote}</p>
-      ) : null}
+      {/* The small print belongs to the ask above it: a reader being sent to a
+          store needs to know the download is free, a reader being sent to
+          /signup needs to know the account is. A member needs neither said to
+          them again, unless they are being asked to install. */}
+      {(() => {
+        const note = showStores ? content.storeFootnote ?? content.footnote : content.footnote;
+        if (!note || (isMember && !showStores)) return null;
+        return (
+          <p className="mt-2.5 text-center text-[12px] leading-snug text-[#3b4660] sm:text-[13px]">{note}</p>
+        );
+      })()}
 
       {/* Nobody is turned away for not wanting an app. The web version is the
           same product and was this card's only ask until today. */}
