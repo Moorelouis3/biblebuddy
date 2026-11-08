@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-31-explained",
+    title: "Deuteronomy 31 Explained: Be Strong and of a Good Courage",
+    description:
+      "Deuteronomy 31 explained verse by verse: Moses's last charge to Joshua, the law written as a witness, and the song commanded before his death.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-31-explained",
+    publishedAt: "2026-11-08",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-31-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 31 Explained 📖",
+      content:
+        "Moses is a hundred and twenty years old.\nHe just found out he is not crossing the river.\n\n📌 He hands Joshua the exact promise Israel just received.\n\n📖 \"Be strong and of a good courage\" repeats three times.\n📖 God commands a song nobody could lose or shelve.\n📖 Moses's own law book gets rediscovered centuries later in 2 Kings 22.\n\nNew article on:\n🟢 why God tells Moses the ending **before it happens**\n🟢 what the **book beside the ark** was really for\n🟢 how this chapter sets up **Joshua 1**\n\nAre you better at keeping truth safe, or keeping it known? 🙏",
+    },
+  },
+  {
     slug: "what-is-ordinary-time",
     title: "What Is Ordinary Time? The Longest Season of the Church Year",
     description:
