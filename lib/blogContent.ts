@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-32-explained",
+    title: "Deuteronomy 32 Explained: The Song of Moses and the Rock",
+    description:
+      "Deuteronomy 32 explained verse by verse: the Song of Moses, God called the Rock, the warning that turns to mercy, and Moses's final climb up Nebo.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-32-explained",
+    publishedAt: "2026-11-08",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-32-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 32 Explained 📖",
+      content:
+        "Moses already preached for thirty chapters.\nNow he sings the same message instead.\n\n📌 God is called \"the Rock\" nine times in this one song.\n\n📖 Israel drifted once they got comfortable, not while they were hungry.\n📖 Paul quotes this exact chapter twice, in Romans 10 and 12.\n📖 Revelation pictures this very song being sung again at the end.\n\nNew article on:\n🟢 why Jeshurun **waxed fat and kicked**\n🟢 who **vengeance** actually belongs to\n🟢 why Moses **climbs Mount Nebo** to close the song\n\nHas comfort ever quietly become your rock instead of God? 🙏",
+    },
+  },
+  {
     slug: "what-is-a-nativity-scene",
     title: "What Is a Nativity Scene? The History Behind the Christmas Crib",
     description:
