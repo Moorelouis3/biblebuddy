@@ -528,8 +528,13 @@
       "startedAt": "2026-11-08T05:17:31.573Z",
       "committedAt": "2026-11-08T05:27:47.868Z",
       "publishedAt": "2026-11-08T09:17:58.155Z"
+    },
+    "what-is-a-nativity-scene": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-08T09:18:08.801Z"
     }
   },
-  "nextTopic": "what-is-a-nativity-scene",
-  "updatedAt": "2026-11-08T09:17:58.156Z"
+  "nextTopic": "who-was-king-herod",
+  "updatedAt": "2026-11-08T09:18:08.801Z"
 }
