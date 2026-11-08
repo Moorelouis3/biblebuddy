@@ -1,173 +1,196 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { createServerClient } from "@supabase/ssr";
-import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 
-function hasSupabaseAuthCookie(req: NextRequest) {
-  return req.cookies
-    .getAll()
-    .some((cookie) => cookie.name.startsWith("sb-") && cookie.name.includes("auth-token") && Boolean(cookie.value));
+/**
+ * The app is an app. One gate, in front of everything.
+ *
+ * Louis, 2026-11-08: "the only thing open is the blog and the like data pages,
+ * about, security crap... landing page of course but everything else in the app
+ * is a fucking app!!!! locked ... can you go to fucking duolingo and get to
+ * their day 5 training without logging in?"
+ *
+ * So this is an allowlist, not a blocklist. A path is public only if it is named
+ * below; everything else needs an account. That direction matters more than the
+ * list does - it means a page somebody adds next month is locked the day it is
+ * added instead of quietly becoming the next thing that was open for months.
+ *
+ * What this replaced: a blocklist of eight prefixes - /dashboard,
+ * /reading-plan(s), /notes, /ai, /grow, /profile, /bible-trivia. Everything
+ * nobody thought to name was open, which is how the entire Bible (1,189
+ * chapters), /reading, the word games, every reference page and every study note
+ * ended up readable by anybody with the URL.
+ *
+ * It also no longer calls supabase.auth.getUser(). That was a network round trip
+ * to Supabase on every single protected page view, and it was pointless twice
+ * over: the paid branch it fed has been dead since core study went free
+ * (CORE_STUDY_IS_FREE), and when the call failed the code fell through to
+ * checking the cookie anyway. A request-per-page-view to the database is the
+ * exact shape of the thing that took the database down in October.
+ *
+ * Why a cookie test is enough: the only thing being decided here is whether
+ * somebody gets to see a page at all. Every piece of data behind these pages is
+ * fetched by the browser with a real token and sits behind row level security,
+ * so a forged cookie buys an empty page. lib/supabaseClient.ts has stored the
+ * session in cookies since 2025-12-10 (createBrowserClient), the same store the
+ * client reads, so "has a cookie" and "is signed in" are one question here.
+ */
+
+/** Exact paths anybody may open. */
+const PUBLIC_EXACT = new Set([
+  // The landing page.
+  "/",
+  // The way in.
+  "/login",
+  "/signup",
+  "/reset-password",
+  // Legal and support. Apple and Google both check these, logged out.
+  "/privacy",
+  "/terms",
+  "/community-guidelines",
+  "/contact",
+  "/faq",
+  "/unsubscribe",
+  // Account deletion has to be reachable without the app to satisfy the stores.
+  // The page itself still does nothing until somebody signs in.
+  "/delete-account",
+  // Pages whose whole job is to sell the app to a stranger.
+  "/features",
+  "/how-it-works",
+  "/android",
+  "/app",
+  "/updates",
+  "/ambassador",
+  // The Screen Time feature's explainer. /bible-lock/tasks is the feature
+  // itself and is not public.
+  "/bible-lock",
+  // In the sitemap as a door into the app.
+  "/bible-in-one-year",
+]);
+
+/** Everything under these is public. */
+const PUBLIC_PREFIXES = [
+  // The one thing that belongs on Google.
+  "/blog",
+  // Readable deep links from posts, email and social: /study/<slug> only
+  // resolves a name to a devotional id and redirects to its landing page.
+  "/study",
+  // Community event sign-up pages. They are doors, and they already gate every
+  // action behind an account of their own.
+  "/events",
+  "/books",
+];
+
+/**
+ * A study's own page is a landing page - cover, description, what it is, and a
+ * sign-up. It is in the sitemap and it is where /study/<slug>, the blog promos
+ * and the emails land somebody who has never heard of Bible Buddy.
+ *
+ * So /devotionals/<id> is public and /devotionals/<id>/day/<n> - the content -
+ * is not. /devotionals on its own is the in-app list and is not public either.
+ * app/bible-studies/[id] re-exports the same page, so it gets the same rule.
+ */
+const LANDING_PARENTS = new Set(["devotionals", "bible-studies"]);
+
+/**
+ * Not pages at all: Next's own assets, the API, and anything with a file
+ * extension (sitemap.xml, robots.txt, feed.xml, the manifest, every image).
+ */
+const SKIP_PREFIXES = ['/_next/', '/api/'];
+
+function isNotAPage(pathname: string): boolean {
+  if (SKIP_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return true;
+  const lastSegment = pathname.slice(pathname.lastIndexOf('/') + 1);
+  return lastSegment.includes('.');
 }
 
-export async function proxy(req: NextRequest) {
-  const url = req.nextUrl.clone();
-  const pathname = req.nextUrl.pathname;
+function isPublicPath(pathname: string): boolean {
+  const path =
+    pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
 
-  const FREE_TRIVIA_BOOK_SLUGS = new Set([
-    "genesis",
-    "exodus",
-    "leviticus",
-    "numbers",
-  ]);
-  const TRIVIA_PEOPLE_SLUGS = new Set(["god", "jesus", "moses", "abraham"]);
+  if (PUBLIC_EXACT.has(path)) return true;
 
-  const protectedPaths = [
-    "/dashboard",
-    "/reading-plan",
-    "/reading-plans",
-    "/notes",
-    "/ai",
-    "/grow",
-    "/profile",
-    "/bible-trivia",
-  ];
-
-  const isProtected = protectedPaths.some((path) => pathname.startsWith(path));
-
-  if (!isProtected) {
-    return NextResponse.next();
+  for (const prefix of PUBLIC_PREFIXES) {
+    if (path === prefix || path.startsWith(`${prefix}/`)) return true;
   }
 
+  const segments = path.split("/").filter(Boolean);
+  if (segments.length === 2 && LANDING_PARENTS.has(segments[0])) return true;
+
+  return false;
+}
+
+/**
+ * Does this request carry a Supabase session cookie?
+ *
+ * @supabase/ssr splits a token too big for one cookie into `...auth-token.0`,
+ * `...auth-token.1`, so this matches a prefix rather than an exact name. The
+ * code verifier cookie is written during an OAuth round trip and is not a
+ * session, so it does not count.
+ */
+function hasSessionCookie(req: NextRequest): boolean {
+  return req.cookies.getAll().some(
+    ({ name, value }) =>
+      name.startsWith("sb-") &&
+      name.includes("auth-token") &&
+      !name.includes("code-verifier") &&
+      Boolean(value)
+  );
+}
+
+/**
+ * A sign-in that is still landing.
+ *
+ * Supabase finishes some flows in the browser - the magic link and recovery
+ * links put their tokens in the URL, and the PKCE exchange happens after the
+ * page loads - so for one navigation there can be a signed-in person with no
+ * cookie yet. Bouncing them to /signup at that exact moment would break the
+ * link they just clicked. Carried over from the proxy this replaced, where it
+ * was there for the same reason.
+ */
+function isLandingFromAuth(req: NextRequest): boolean {
+  const url = req.url;
+  if (url.includes("access_token") || url.includes("refresh_token") || url.includes("code=")) {
+    return true;
+  }
   const referer = req.headers.get("referer") || "";
-  const fromAuth =
-    pathname.startsWith("/auth") ||
-    pathname.startsWith("/reset-password") ||
-    req.url.includes("access_token") ||
-    req.url.includes("refresh_token") ||
+  return (
     referer.includes("/login") ||
     referer.includes("/signup") ||
-    referer.includes("/reset-password");
-
-  if (fromAuth) {
-    return NextResponse.next();
-  }
-
-  let response = NextResponse.next({
-    request: {
-      headers: req.headers,
-    },
-  });
-
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return req.cookies.get(name)?.value;
-        },
-        set(name: string, value: string, options: any) {
-          req.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-          response = NextResponse.next({
-            request: {
-              headers: req.headers,
-            },
-          });
-          response.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-        },
-        remove(name: string, options: any) {
-          req.cookies.set({
-            name,
-            value: "",
-            ...options,
-          });
-          response = NextResponse.next({
-            request: {
-              headers: req.headers,
-            },
-          });
-          response.cookies.set({
-            name,
-            value: "",
-            ...options,
-          });
-        },
-      },
-    }
+    referer.includes("/reset-password")
   );
+}
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+export function proxy(req: NextRequest) {
+  const { pathname, search } = req.nextUrl;
 
-  if (!user) {
-    if (hasSupabaseAuthCookie(req)) {
-      return response;
-    }
+  if (isNotAPage(pathname) || isPublicPath(pathname)) return NextResponse.next();
 
-    url.pathname = "/";
-    return NextResponse.redirect(url);
+  // Locked either way: nothing inside the app is for an index, signed in or
+  // not. A header rather than per-page metadata, so a new page cannot forget.
+  const headers = { "X-Robots-Tag": "noindex, nofollow" };
+
+  if (hasSessionCookie(req) || isLandingFromAuth(req)) {
+    return NextResponse.next({ headers });
   }
 
-  const triviaPrefix = "/bible-trivia/";
-  const triviaSlug = pathname.startsWith(triviaPrefix)
-    ? pathname.slice(triviaPrefix.length).split("/")[0]
-    : "";
-  const isTriviaDeck = Boolean(triviaSlug) && triviaSlug !== "books" && triviaSlug !== "people";
-  const isTriviaPeopleDeck = TRIVIA_PEOPLE_SLUGS.has(triviaSlug);
-  const isFreeTriviaDeck =
-    (isTriviaPeopleDeck && (triviaSlug === "god" || triviaSlug === "jesus")) ||
-    (!isTriviaPeopleDeck && FREE_TRIVIA_BOOK_SLUGS.has(triviaSlug));
-
-  const isBibleBuddyPlan = pathname.startsWith("/reading-plans/bible-buddy");
-
-  // Core Bible study is free. This edge paywall used to bounce non-paying users
-  // away from trivia decks outside Genesis/Exodus/Leviticus/Numbers and from the
-  // Bible Buddy reading plan, which would silently undo the client-side changes.
-  const needsPaidCheck =
-    !CORE_STUDY_IS_FREE && (isBibleBuddyPlan || (isTriviaDeck && !isFreeTriviaDeck));
-
-  if (needsPaidCheck) {
-    const { data: profileStats } = await supabase
-      .from("profile_stats")
-      .select("is_paid")
-      .eq("user_id", user.id)
-      .maybeSingle();
-
-    const isPaid = !!profileStats?.is_paid;
-
-    if (!isPaid) {
-      if (isBibleBuddyPlan) {
-        url.pathname = "/reading-plans";
-      } else if (isTriviaPeopleDeck) {
-        url.pathname = "/bible-trivia/people";
-      } else {
-        url.pathname = "/bible-trivia/books";
-      }
-      return NextResponse.redirect(url);
-    }
-  }
-
-  return response;
+  const url = req.nextUrl.clone();
+  url.pathname = "/signup";
+  url.search = "";
+  // /signup and /login both already validate and honour ?next=, so somebody who
+  // signs up lands on the page they were trying to open.
+  url.searchParams.set("next", `${pathname}${search}`);
+  return NextResponse.redirect(url, { headers });
 }
 
 export const config = {
-  matcher: [
-    "/dashboard/:path*",
-    "/reading-plan/:path*",
-    "/reading-plans/:path*",
-    "/notes/:path*",
-    "/ai/:path*",
-    "/grow/:path*",
-    "/profile/:path*",
-    "/bible-trivia/:path*",
-  ],
+  // '/:path*' and not the usual negative-lookahead one-liner. A custom regex
+  // group in a Next matcher is compiled by path-to-regexp, where '/' is a
+  // segment delimiter a group cannot cross: '/((?!api|_next).*)' matched '/'
+  // and '/blog' and never matched '/bible/john/3', so the gate ran on exactly
+  // the paths that did not need it. Verified by the absence of a 'proxy.ts: Xms'
+  // line on every nested path in the dev server log.
+  //
+  // So this matches everything and SKIP_PREFIXES above does the excluding,
+  // where it is plain code that can be read and tested.
+  matcher: ['/:path*'],
 };
