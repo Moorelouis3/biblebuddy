@@ -535,8 +535,13 @@
       "status": "committed",
       "startedAt": "2026-11-08T09:18:08.801Z",
       "committedAt": "2026-11-08T09:28:49.668Z"
+    },
+    "who-was-king-herod": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-08T15:16:57.220Z"
     }
   },
-  "nextTopic": "who-was-king-herod",
-  "updatedAt": "2026-11-08T15:16:37.180Z"
+  "nextTopic": "what-is-boxing-day",
+  "updatedAt": "2026-11-08T15:16:57.220Z"
 }
