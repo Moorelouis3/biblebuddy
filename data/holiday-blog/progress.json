@@ -507,8 +507,13 @@
       "startedAt": "2026-11-07T15:16:55.843Z",
       "committedAt": "2026-11-07T15:26:56.148Z",
       "publishedAt": "2026-11-08T01:16:46.317Z"
+    },
+    "where-do-christmas-carols-come-from": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-08T01:16:56.577Z"
     }
   },
-  "nextTopic": "where-do-christmas-carols-come-from",
-  "updatedAt": "2026-11-08T01:16:46.317Z"
+  "nextTopic": "what-is-ordinary-time",
+  "updatedAt": "2026-11-08T01:16:56.577Z"
 }
