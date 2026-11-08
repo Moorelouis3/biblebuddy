@@ -13289,3 +13289,31 @@ Queue remaining: 9
   something the system should already handle.
 Not live yet: the Pinterest/blog crash fix (commit 347909f) is on main but
 needs Louis's approval at /admin/bugs before it can go out in a deploy.
+
+## 2026-11-08 (Bug Fixer run)
+6 open reports, processed 5 oldest-first (one left for next run):
+- One old generic "something went wrong" report (Sept 24) already had a
+  diagnosis from a past run with nothing new since - left as is.
+- Real bug: the app was filing a crash report every single time an iPhone
+  user tapped "Don't Allow" on the notification permission pop-up.
+  Declining is a normal choice, not a failure, so it should never have
+  logged one. Fixed the notification code to only report genuinely
+  unexpected permission problems. tsc clean, commit 1dfb6f8, pushed to
+  main without [deploy]. This touched a "permissions" area, so the
+  tracker auto-escalated it to Louis's approval queue instead of marking
+  it fixed outright - sitting at /admin/bugs waiting on him.
+- Closed three reports that needed no code change: a one-off six-second
+  timeout reading an iPhone's notification permission (the app's own
+  diagnostics working as intended, not a defect); and two "failed to load
+  a page script" crashes that both turned out to be Facebook's
+  link-preview robot hitting pages right after a deploy swapped out an
+  old script file - not real visitors, harmless and self-clearing. Folded
+  the second into the first as a duplicate.
+- Closed a Safari crash (removeChild/NotFoundError) reported twice by one
+  person on the Bible-in-a-Year page as not a bug - reviewed that page's
+  code end to end, found nothing wrong on our side; matches the known
+  pattern of a browser extension (Grammarly, a translator, an ad blocker)
+  changing the page while it updates. Replied explaining that.
+Not live yet: the notification-permission fix (commit 1dfb6f8) is on main
+but needs Louis's approval at /admin/bugs before it can go out in a
+deploy.
