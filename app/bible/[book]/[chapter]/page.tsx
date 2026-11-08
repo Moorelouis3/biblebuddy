@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import dynamic from "next/dynamic";
 import { hasInsightCards } from "../../../../lib/insightCards";
 import { hasStudyNotes } from "../../../../lib/chaptersWithNotes.generated";
+import RequireAccount from "../../../../components/RequireAccount";
 
 /**
  * Chapter route.
@@ -47,8 +48,17 @@ export default function ChapterPage() {
   const book = decodeURIComponent(String(params.book || "")).trim().toLowerCase();
   const chapter = Number(params.chapter);
 
-  if (hasInsightCards(book, chapter) || hasStudyNotes(book, chapter)) {
-    return <ChapterInsightReader book={book} chapter={chapter} />;
-  }
-  return <FullChapterReader />;
+  // Members only, since 2026-11-08. The reader is the app, not a free Bible
+  // website - see components/RequireAccount. The gate wraps the readers rather
+  // than sitting inside them so there is one place it can be reasoned about,
+  // and so neither reader can be rendered by a future caller without it.
+  return (
+    <RequireAccount>
+      {hasInsightCards(book, chapter) || hasStudyNotes(book, chapter) ? (
+        <ChapterInsightReader book={book} chapter={chapter} />
+      ) : (
+        <FullChapterReader />
+      )}
+    </RequireAccount>
+  );
 }

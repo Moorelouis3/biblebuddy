@@ -7,6 +7,7 @@ import { ACTION_TYPE } from "../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../lib/navigationActionTracker";
 import { isBookComplete, getCurrentBook, getCompletedChapters, getTotalCompletedChapters } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
+import RequireAccount from "../../components/RequireAccount";
 
 // All 66 books of the Bible - standard Bible order (Genesis → Revelation)
 const BOOKS = [
@@ -83,7 +84,7 @@ const BOOKS = [
 // overview + 28 chapters
 const MATTHEW_TOTAL_ITEMS = 28 + 1;
 
-export default function ReadingPage() {
+function ReadingPageInner() {
   const [currentActiveBook, setCurrentActiveBook] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
   const [userName, setUserName] = useState<string>("buddy");
@@ -378,5 +379,16 @@ export default function ReadingPage() {
         </div>
       )}
     </div>
+  );
+}
+
+// Members only, since 2026-11-08. Another way into the reader, so it locks
+// with it - a wall around the chapters with their index left open is not a
+// wall. See components/RequireAccount.
+export default function ReadingPage() {
+  return (
+    <RequireAccount>
+      <ReadingPageInner />
+    </RequireAccount>
   );
 }

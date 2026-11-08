@@ -7,6 +7,7 @@ import { ACTION_TYPE } from "../../../../lib/actionTypes";
 import { trackNavigationActionOnce } from "../../../../lib/navigationActionTracker";
 import { getCompletedChapters, getBookTotalChapters } from "../../../../lib/readingProgress";
 import { supabase } from "../../../../lib/supabaseClient";
+import RequireAccount from "../../../../components/RequireAccount";
 
 // Book descriptions (short subtitle under the title)
 export const BOOK_DESCRIPTIONS: Record<string, string> = {
@@ -249,7 +250,7 @@ export const BOOK_CHAPTER_TOPICS: Record<string, string[]> = {
   ],
 };
 
-export default function BookPage() {
+function BookPageInner() {
   const params = useParams();
   const bookParam = decodeURIComponent(String(params.book));
   const bookKey = bookParam.toLowerCase();
@@ -488,5 +489,16 @@ export default function BookPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Members only, since 2026-11-08. Another way into the reader, so it locks
+// with it - a wall around the chapters with their index left open is not a
+// wall. See components/RequireAccount.
+export default function BookPage() {
+  return (
+    <RequireAccount>
+      <BookPageInner />
+    </RequireAccount>
   );
 }

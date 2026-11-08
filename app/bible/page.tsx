@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LouisAvatar } from "../../components/LouisAvatar";
 import { isBookComplete } from "../../lib/readingProgress";
 import { supabase } from "../../lib/supabaseClient";
+import RequireAccount from "../../components/RequireAccount";
 
 // All 66 books of the Bible - standard Bible order (Genesis → Revelation)
 const BOOKS_BIBLE_ORDER = [
@@ -78,7 +79,7 @@ const BOOKS_BIBLE_ORDER = [
   "Revelation",
 ];
 
-export default function BiblePage() {
+function BiblePageInner() {
   const [bookStates, setBookStates] = useState<Record<string, { complete: boolean }>>({});
 
   // Get user ID and load book completion states
@@ -168,5 +169,16 @@ export default function BiblePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Members only, since 2026-11-08: the book list is the way into the reader,
+// so locking the chapters and leaving their index open would be a door with
+// no wall around it. See components/RequireAccount.
+export default function BiblePage() {
+  return (
+    <RequireAccount>
+      <BiblePageInner />
+    </RequireAccount>
   );
 }
