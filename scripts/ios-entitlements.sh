@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Give the generated iOS app the Sign in with Apple entitlement.
 #
-# Three entitlements now.
+# Four entitlements now, two of them behind flags.
 #
 # Sign in with Apple: App Review Guideline 4.8 makes it mandatory because Bible
 # Buddy offers Google.
@@ -13,6 +13,15 @@
 # but none of that matters without this: iOS refuses to present the sign-in
 # sheet if the running app does not carry the entitlement, and the error it
 # gives says nothing about why.
+#
+# Associated Domains: what makes an https://www.mybiblebuddy.net link open
+# this app instead of Chrome (Louis, 2026-11-08: "the emails open the web
+# version of the app in chrome on my iphone"). It pairs with the file served
+# at /.well-known/apple-app-site-association - neither half does anything
+# alone. OFF by default, for the same hard reason Family Controls is: an app
+# that asks for an entitlement its provisioning profile does not carry cannot
+# be signed, and the build dies in seconds. Apple must be told first. See
+# docs/DEEP_LINKS.md.
 #
 # ios/ is regenerated on every build, so like the Info.plist keys and the app
 # icon this has to be written each time rather than committed.
@@ -60,6 +69,35 @@ else
   echo "Family Controls entitlement: off (set BIBLE_LOCK_ENTITLEMENT=on to include it)"
 fi
 
+# Associated Domains is written only when ASSOCIATED_DOMAINS=on.
+#
+# Same trap as Family Controls, and worth stating plainly because it is not
+# obvious: this is not cautious defaulting, it is the difference between a
+# build and no build. Builds 16, 17 and 18 (2026-10-17) each died in thirteen
+# seconds asking for an entitlement the profile lacked:
+#
+#   error: Provisioning profile "Bible Buddy App Store" doesn't include the
+#   com.apple.developer.associated-domains entitlement
+#
+# is the message this would produce. Before turning it on, Louis must tick
+# Associated Domains on App ID net.mybiblebuddy.app at developer.apple.com and
+# regenerate the provisioning profile - unlike Family Controls there is no
+# application to make and no waiting, it is a checkbox.
+#
+# www only. mybiblebuddy.net 307s to www.mybiblebuddy.net, and iOS follows no
+# redirect either when it matches a link or when it fetches the association
+# file, so the apex can never open the app and listing it would just fail.
+ASSOCIATED_DOMAINS=""
+if [ "${ASSOCIATED_DOMAINS_ENTITLEMENT:-off}" = "on" ]; then
+  ASSOCIATED_DOMAINS=$(printf '	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:www.mybiblebuddy.net</string>
+	</array>')
+  echo "Associated Domains entitlement: ON (applinks:www.mybiblebuddy.net)"
+else
+  echo "Associated Domains entitlement: off (set ASSOCIATED_DOMAINS_ENTITLEMENT=on to include it)"
+fi
+
 cat > "$ENTITLEMENTS" <<PLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -72,6 +110,7 @@ cat > "$ENTITLEMENTS" <<PLIST
 		<string>Default</string>
 	</array>
 ${FAMILY_CONTROLS}
+${ASSOCIATED_DOMAINS}
 </dict>
 </plist>
 PLIST

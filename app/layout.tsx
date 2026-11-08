@@ -8,6 +8,7 @@ import { SmokeDeleteEffect } from "@/components/SmokeDeleteEffect";
 import TrafficSourceCapture from "@/components/TrafficSourceCapture";
 import AdSenseScript from "@/components/AdSenseScript";
 import NativeExternalLinks from "@/components/NativeExternalLinks";
+import NativeDeepLinks from "@/components/NativeDeepLinks";
 import StaleBuildReloader from "@/components/StaleBuildReloader";
 import NativePlatformClass from "@/components/NativePlatformClass";
 import { PostSuccessEffect } from "@/components/PostSuccessEffect";
@@ -231,6 +232,7 @@ export default function RootLayout({
             yesterday's build forever. This notices and reloads. */}
         <StaleBuildReloader />
         <NativeExternalLinks />
+        <NativeDeepLinks />
         <SmokeDeleteEffect />
         <PostSuccessEffect />
         <AppToast />

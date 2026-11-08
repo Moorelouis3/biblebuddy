@@ -94,8 +94,20 @@ const LANDING_PARENTS = new Set(["devotionals", "bible-studies"]);
 /**
  * Not pages at all: Next's own assets, the API, and anything with a file
  * extension (sitemap.xml, robots.txt, feed.xml, the manifest, every image).
+ *
+ * /.well-known is here for the deep-link files that let an https link open
+ * the app instead of Chrome. Apple's and Google's fetchers are never signed
+ * in, so without this the gate below sends them to /signup and the whole
+ * feature fails silently - the apps simply never claim the domain, with no
+ * error anywhere to say why.
+ *
+ * Note that the extension test two lines down would have let
+ * /.well-known/assetlinks.json through on its own, but NOT
+ * /.well-known/apple-app-site-association, which Apple requires to have no
+ * extension at all. Naming the prefix covers both and does not depend on a
+ * filename keeping its dot.
  */
-const SKIP_PREFIXES = ['/_next/', '/api/'];
+const SKIP_PREFIXES = ['/_next/', '/api/', '/.well-known/'];
 
 function isNotAPage(pathname: string): boolean {
   if (SKIP_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return true;

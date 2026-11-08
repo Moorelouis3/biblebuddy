@@ -432,6 +432,15 @@ workflows:
       - name: Sync web assets and plugins
         script: npx cap sync android
 
+      - name: Let mybiblebuddy.net links open the app
+        # Adds the App Links intent-filter to the generated manifest, so a link
+        # in an email opens the app instead of Chrome. Off unless
+        # ANDROID_APP_LINKS=on is set on the workflow: below Android 12 an
+        # unverified filter only produces a "Chrome or Bible Buddy?" chooser,
+        # so it waits for the fingerprint to be published. See
+        # docs/DEEP_LINKS.md.
+        script: node scripts/android-deep-links.mjs
+
       - name: Install the Firebase config
         # Android notifications go through Firebase Cloud Messaging, and the
         # Gradle file only applies the google-services plugin when this file
@@ -552,6 +561,15 @@ workflows:
 
       - name: Sync web assets and plugins
         script: npx cap sync android
+
+      - name: Let mybiblebuddy.net links open the app
+        # Adds the App Links intent-filter to the generated manifest, so a link
+        # in an email opens the app instead of Chrome. Off unless
+        # ANDROID_APP_LINKS=on is set on the workflow: below Android 12 an
+        # unverified filter only produces a "Chrome or Bible Buddy?" chooser,
+        # so it waits for the fingerprint to be published. See
+        # docs/DEEP_LINKS.md.
+        script: node scripts/android-deep-links.mjs
 
       - name: Install the Firebase config
         # Android notifications go through Firebase Cloud Messaging, and the

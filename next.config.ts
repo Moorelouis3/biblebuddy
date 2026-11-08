@@ -141,6 +141,28 @@ const nextConfig: NextConfig = {
         source: "/r/:code",
         destination: "https://life-buddy-production.up.railway.app/r/:code",
       },
+
+      /**
+       * The two files that make an https link open the app instead of Chrome.
+       *
+       * Apple and Google both insist on a fixed path under /.well-known, and
+       * neither can be served from public/: Apple requires
+       * Content-Type: application/json and an extensionless file in public/
+       * goes out as octet-stream, while Next ignores dot-folders inside app/
+       * so app/.well-known/ would never be routed at all.
+       *
+       * A rewrite rather than a redirect, deliberately. Apple's and Google's
+       * fetchers do not follow redirects for these, so the real path has to
+       * answer. See app/api/well-known/ and docs/DEEP_LINKS.md.
+       */
+      {
+        source: "/.well-known/apple-app-site-association",
+        destination: "/api/well-known/apple-app-site-association",
+      },
+      {
+        source: "/.well-known/assetlinks.json",
+        destination: "/api/well-known/assetlinks",
+      },
     ];
   },
   async headers() {

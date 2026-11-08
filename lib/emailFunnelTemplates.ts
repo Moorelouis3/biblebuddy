@@ -1,5 +1,13 @@
 // Email templates for the 7-day funnel
 // Each template is an object with subject and body
+//
+// Every link here is www.mybiblebuddy.net, never the bare domain.
+//
+// The apex 307s to www, so in a browser the two are the same page - but iOS
+// follows no redirect when it decides whether a link belongs to the Bible
+// Buddy app, so an apex link can only ever open Chrome. That is the thing
+// Louis asked about on 2026-11-08: "the emails open the web version of the
+// app in chrome on my iphone". See docs/DEEP_LINKS.md.
 
 export const EMAIL_TEMPLATES = {
   day1_welcome: {
@@ -12,9 +20,9 @@ I built Bible Buddy to help people not only read the Bible but understand it. My
 
 Here's something I want to be upfront about: Bible Buddy is still in beta, which means we're not on the App Store yet. But don't worry — you can still use Bible Buddy as a native app by saving it to your phone's home screen in just two clicks.
 
-**For iPhone users:** Open Safari → Go to [mybiblebuddy.net](https://mybiblebuddy.net?utm_source=email&utm_campaign=day1) → Log in with your password or Google account → Tap Share → Add to Home Screen
+**For iPhone users:** Open Safari → Go to [mybiblebuddy.net](https://www.mybiblebuddy.net?utm_source=email&utm_campaign=day1) → Log in with your password or Google account → Tap Share → Add to Home Screen
 
-**For Android users:** Open Chrome → Go to [mybiblebuddy.net](https://mybiblebuddy.net?utm_source=email&utm_campaign=day1) → Log in with your password or Google account → Tap menu → Add to Home Screen
+**For Android users:** Open Chrome → Go to [mybiblebuddy.net](https://www.mybiblebuddy.net?utm_source=email&utm_campaign=day1) → Log in with your password or Google account → Tap menu → Add to Home Screen
 
 Once you install the app, it'll be much easier to connect with God's word. Don't skip it.
 
@@ -43,7 +51,7 @@ That's what reading God's word does.
 
 Bible Buddy is designed to make that transformation accessible — not as a one-hour commitment, but as 20 minutes a day, woven into your actual life.
 
-[Open the app today](https://mybiblebuddy.net?utm_source=email&utm_campaign=day2) and start that process.
+[Open the app today](https://www.mybiblebuddy.net?utm_source=email&utm_campaign=day2) and start that process.
 
 —Louis`,
   },
@@ -68,7 +76,7 @@ That's why I added audio access to every Bible chapter.
 
 You're not doing this alone. You're listening to Scripture explained, questioned, and discussed — all in 20 minutes.
 
-[Open the app](https://mybiblebuddy.net?utm_source=email&utm_campaign=day3) and try the audio. Pick Genesis 1 or any chapter. See how it feels.
+[Open the app](https://www.mybiblebuddy.net?utm_source=email&utm_campaign=day3) and try the audio. Pick Genesis 1 or any chapter. See how it feels.
 
 —Louis`,
   },
@@ -91,7 +99,7 @@ This is a one-time payment through the app. You own it forever. No subscriptions
 
 Ready to unlock everything?
 
-[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_50)
+[UPGRADE](https://www.mybiblebuddy.net/upgrade?tier=lifetime_50)
 
 —Louis`,
   },
@@ -125,7 +133,7 @@ No subscriptions. No monthly charges. Just one price and you're set.
 
 Want to dive deeper?
 
-[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_50)
+[UPGRADE](https://www.mybiblebuddy.net/upgrade?tier=lifetime_50)
 
 —Louis`,
   },
@@ -142,7 +150,7 @@ Here's the truth: it's not.
 
 Open the app right now. It takes 20 seconds. You'll see exactly what I mean.
 
-[Open Bible Buddy](https://mybiblebuddy.net)
+[Open Bible Buddy](https://www.mybiblebuddy.net)
 
 Once you see it, I think you'll get why I built this.
 
@@ -163,7 +171,7 @@ Every single chapter in the Bible has study notes built into Bible Buddy. Verse-
 
 You don't have to guess. You don't have to spend hours researching. The explanation is right there.
 
-[Open the app](https://mybiblebuddy.net?utm_source=email&utm_campaign=day5) and check it out. Look at Genesis 1 or any chapter you're reading. Tap on the study notes section. See what I mean.
+[Open the app](https://www.mybiblebuddy.net?utm_source=email&utm_campaign=day5) and check it out. Look at Genesis 1 or any chapter you're reading. Tap on the study notes section. See what I mean.
 
 —Louis`,
   },
@@ -182,7 +190,7 @@ In Bible Buddy, we have the Bible Buddy Study Group at the bottom of your menu.
 
 You can join other Bible Buddies, ask questions, share insights, hold each other accountable. Scripture was meant to be discussed, not just read alone.
 
-[Open the app](https://mybiblebuddy.net?utm_source=email&utm_campaign=day6) and tap the group icon at the bottom. That's it.
+[Open the app](https://www.mybiblebuddy.net?utm_source=email&utm_campaign=day6) and tap the group icon at the bottom. That's it.
 
 —Louis`,
   },
@@ -203,7 +211,7 @@ I wanted a better system.
 
 That system is Bible Buddy.
 
-Now, all you need is your want to understand God's word. [Press play](https://mybiblebuddy.net?utm_source=email&utm_campaign=day7). You get the notes. You get everything.
+Now, all you need is your want to understand God's word. [Press play](https://www.mybiblebuddy.net?utm_source=email&utm_campaign=day7). You get the notes. You get everything.
 
 If you're using Bible Buddy, you're already experiencing that.
 
@@ -230,7 +238,7 @@ You've earned this by showing up and proving you're committed.
 
 Ready to unlock everything?
 
-[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_50)
+[UPGRADE](https://www.mybiblebuddy.net/upgrade?tier=lifetime_50)
 
 You won't regret it.
 
@@ -266,7 +274,7 @@ No subscriptions. No surprises. Just full access to everything: study notes, qui
 
 If you're ready to go deeper with Scripture, Pro is the move.
 
-[UPGRADE](https://mybiblebuddy.net/upgrade?tier=lifetime_50)
+[UPGRADE](https://www.mybiblebuddy.net/upgrade?tier=lifetime_50)
 
 Let me know.
 
@@ -289,7 +297,7 @@ One week in, and I still believe you could benefit from it.
 
 Open the app one more time. Spend 15 minutes. Try the first chapter. See how it feels.
 
-[Open Bible Buddy](https://mybiblebuddy.net)
+[Open Bible Buddy](https://www.mybiblebuddy.net)
 
 If it doesn't click, that's okay. But I have a feeling it will.
 
