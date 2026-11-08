@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "where-do-christmas-carols-come-from",
+    title: "Where Do Christmas Carols Come From? The Bible Behind the Songs",
+    description:
+      "Where do Christmas carols come from? The Bible's own songs, Luther's hymns, England's carol ban, and the true stories behind four favorites.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/where-do-christmas-carols-come-from",
+    publishedAt: "2026-11-08",
+    readTime: "16 min read",
+    image: "/blog-banners/where-do-christmas-carols-come-from.jpg",
+    groupPost: {
+      title: "Where Do Christmas Carols Come From? The Bible Behind the Songs 📖",
+      content:
+        "You hum them before you even decide to.\nTurns out the first one was sung by Mary.\n\n📌 Christmas carols did not start with a composer. The Bible already had people bursting into song the night Christ arrived.\n\n📖 England banned Christmas carols by law for thirteen years.\n📖 \"Silent Night\" was written the same year it was first performed, in 1818.\n📖 \"O Holy Night\" became an abolitionist anthem in its English translation.\n\nNew article on:\n🟢 what **Mary's song** in Luke 1 has to do with every carol since\n🟢 why England banned Christmas singing by **law** for thirteen years\n🟢 the real stories behind **Silent Night** and **O Holy Night**\n\nWhich carol gets you every single year, no matter how many times you have heard it? 🙏",
+    },
+  },
+  {
     slug: "who-was-saint-barbara",
     title: "Who Was Saint Barbara? The Feast Day and the Cherry Branch Tradition",
     description:

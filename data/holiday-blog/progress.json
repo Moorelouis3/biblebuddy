@@ -127,6 +127,12 @@
         "what-is-a-feast-day",
         "who-was-saint-barbara"
       ]
+    },
+    "2026-11-08": {
+      "committed": 1,
+      "slugs": [
+        "where-do-christmas-carols-come-from"
+      ]
     }
   },
   "articles": {
@@ -510,10 +516,11 @@
     },
     "where-do-christmas-carols-come-from": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-08T01:16:56.577Z"
+      "status": "committed",
+      "startedAt": "2026-11-08T01:16:56.577Z",
+      "committedAt": "2026-11-08T01:29:56.903Z"
     }
   },
   "nextTopic": "what-is-ordinary-time",
-  "updatedAt": "2026-11-08T01:16:56.577Z"
+  "updatedAt": "2026-11-08T01:29:56.915Z"
 }
