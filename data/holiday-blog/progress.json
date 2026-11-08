@@ -519,8 +519,13 @@
       "status": "committed",
       "startedAt": "2026-11-08T01:16:56.577Z",
       "committedAt": "2026-11-08T01:29:56.903Z"
+    },
+    "what-is-ordinary-time": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-08T05:17:31.573Z"
     }
   },
-  "nextTopic": "what-is-ordinary-time",
-  "updatedAt": "2026-11-08T05:17:09.564Z"
+  "nextTopic": "what-is-a-nativity-scene",
+  "updatedAt": "2026-11-08T05:17:31.573Z"
 }
