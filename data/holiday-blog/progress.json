@@ -129,10 +129,11 @@
       ]
     },
     "2026-11-08": {
-      "committed": 2,
+      "committed": 3,
       "slugs": [
         "where-do-christmas-carols-come-from",
-        "what-is-ordinary-time"
+        "what-is-ordinary-time",
+        "what-is-a-nativity-scene"
       ]
     }
   },
@@ -531,10 +532,11 @@
     },
     "what-is-a-nativity-scene": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-08T09:18:08.801Z"
+      "status": "committed",
+      "startedAt": "2026-11-08T09:18:08.801Z",
+      "committedAt": "2026-11-08T09:28:49.668Z"
     }
   },
   "nextTopic": "who-was-king-herod",
-  "updatedAt": "2026-11-08T09:18:08.801Z"
+  "updatedAt": "2026-11-08T09:28:49.684Z"
 }

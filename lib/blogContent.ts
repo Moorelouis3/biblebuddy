@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-a-nativity-scene",
+    title: "What Is a Nativity Scene? The History Behind the Christmas Crib",
+    description:
+      "What is a nativity scene? The true story of Francis of Assisi at Greccio in 1223, and what the Bible actually says about the shepherds and wise men.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-a-nativity-scene",
+    publishedAt: "2026-11-08",
+    readTime: "12 min read",
+    image: "/blog-banners/what-is-a-nativity-scene.jpg",
+    groupPost: {
+      title: "What Is a Nativity Scene? The History Behind the Christmas Crib 📖",
+      content:
+        "A little stable shows up every December.\nMost people never ask where it actually came from.\n\n📌 A priest named Francis of Assisi staged the first one live, with real hay, in 1223.\n\n📖 The shepherds and wise men never actually met like that in the Bible.\n📖 Naples turned the whole scene into an art form by the 1700s.\n📖 The Pope wrote an entire letter defending the tradition in 2019.\n\nNew article on:\n🟢 the **real history** behind the nativity set on your shelf\n🟢 what **each figure** is actually meant to teach you\n🟢 what **Luke and Matthew** each actually say happened\n\nWhen you look at your own nativity scene this year, what will you actually stop and see? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-31-explained",
     title: "Deuteronomy 31 Explained: Be Strong and of a Good Courage",
     description:
