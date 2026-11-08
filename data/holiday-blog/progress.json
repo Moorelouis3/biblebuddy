@@ -496,17 +496,19 @@
     },
     "what-is-a-feast-day": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-07T09:16:45.700Z",
-      "committedAt": "2026-11-07T09:28:51.865Z"
+      "committedAt": "2026-11-07T09:28:51.865Z",
+      "publishedAt": "2026-11-08T01:16:46.163Z"
     },
     "who-was-saint-barbara": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-07T15:16:55.843Z",
-      "committedAt": "2026-11-07T15:26:56.148Z"
+      "committedAt": "2026-11-07T15:26:56.148Z",
+      "publishedAt": "2026-11-08T01:16:46.317Z"
     }
   },
   "nextTopic": "where-do-christmas-carols-come-from",
-  "updatedAt": "2026-11-07T15:26:56.163Z"
+  "updatedAt": "2026-11-08T01:16:46.317Z"
 }
