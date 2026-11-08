@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-was-king-herod",
+    title: "Who Was King Herod? The Ruler Behind the Christmas Story",
+    description:
+      "Who was King Herod? The Roman-backed ruler behind the Christmas story: how he got his throne, the family he executed, and why a newborn king frightened him.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/who-was-king-herod",
+    publishedAt: "2026-11-08",
+    readTime: "16 min read",
+    image: "/blog-banners/who-was-king-herod.jpg",
+    groupPost: {
+      title: "Who Was King Herod? The Ruler Behind the Christmas Story 📖",
+      content:
+        "The Christmas story needs a villain, and Herod gets the part.\nMost people have no idea how real his cruelty actually was.\n\n📌 He executed his own wife, two of his sons, and her whole family, years before he ever heard about a baby in Bethlehem.\n\n📖 Rome handed him the crown. His own people never fully accepted it.\n📖 He rebuilt the Jerusalem Temple on a scale that still shapes the city today.\n📖 Even where he is actually buried is still argued over by historians.\n\nNew article on:\n🟢 how Herod **actually** got his throne\n🟢 the **family he killed** to keep it\n🟢 what really happened the night the wise men showed up\n\nWhat would it look like to trust God with the thing you are protecting the hardest right now? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-33-explained",
     title: "Deuteronomy 33 Explained: The Blessing of Moses Before His Death",
     description:
