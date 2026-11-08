@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-29-explained",
+    title: "Deuteronomy 29 Explained: The Covenant That Reaches the Unborn",
+    description:
+      "Deuteronomy 29 explained verse by verse: the Moab covenant, the heart that could not perceive, gall and wormwood, and the secret things of verse 29.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-29-explained",
+    publishedAt: "2026-11-08",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-29-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 29 Explained 📖",
+      content:
+        "Moses lists who stands in this covenant.\nThen he says it reaches further still.\n\n📌 This covenant was made with people not even born yet.\n\n📖 The woodcutter and the water carrier get named by name.\n📖 Verse 4 says seeing miracles never guaranteed perceiving them.\n📖 Verse 19 pictures a man lying to his own heart about peace.\n\nNew article on:\n🟢 why Moses compares Israel's future to **Sodom and Gomorrah**\n🟢 what **gall and wormwood** actually pictures\n🟢 what **verse 29** is really answering\n\nAre you spending more attention on secret things than on what is already revealed? 🙏",
+    },
+  },
+  {
     slug: "where-do-christmas-carols-come-from",
     title: "Where Do Christmas Carols Come From? The Bible Behind the Songs",
     description:
