@@ -130,7 +130,11 @@ function isProverbsChapterPost(slug: string): boolean {
 // never asked once. 250 puts it after the intro and the opening section -
 // still not above the intro, which Louis was clear about, but visible.
 const FIRST_PROMO_AFTER = 250;
-const WORDS_PER_PROMO = 1000;
+// Louis, 2026-11-08: "i feel like we should double the amount of times the
+// blog ads show in a blog post.. its not there enough". Halved from 1,000.
+// Measured before changing it: a typical ~3,700 word post carried three
+// banners plus the end card. At 500 it carries six.
+const WORDS_PER_PROMO = 500;
 
 /**
  * How many banners a Proverbs post carries, and where they go.
@@ -143,16 +147,23 @@ const WORDS_PER_PROMO = 1000;
  * words, a 3,000 to 3,900 word chapter post gets two inside the article plus
  * the closing one, which is three.
  */
-const WORDS_PER_INVITATION = 1200;
+// Halved with WORDS_PER_PROMO on 2026-11-08, same reason: Louis wants the
+// ask twice as often. A 4,100 word chapter post goes from two banners inside
+// the article to four, plus the closing card.
+const WORDS_PER_INVITATION = 600;
 const MIN_INVITATIONS = 2;
-const MAX_INVITATIONS = 5;
+// Raised from 5 with the spacing, so the cap does not quietly undo the change
+// on the longest posts - at one per 600 words a 4,800 word post wants eight.
+const MAX_INVITATIONS = 8;
 // Where the first one aims for: far enough in that the post has started, early
 // enough that someone who gives up halfway has still been asked once.
 const FIRST_INVITATION_AFTER = 500;
 // A break this close to the end would read as part of the closing banner.
 const CLOSING_CLEARANCE = 800;
-// Two banners closer together than this crowd each other.
-const MIN_INVITATION_GAP = 500;
+// Two banners closer together than this crowd each other. Down from 500 with
+// the rest: at one per 600 words a 500 floor would start refusing placements
+// and hand back fewer banners than asked for.
+const MIN_INVITATION_GAP = 400;
 
 /**
  * Where an invitation is allowed to go, and whether one goes there.
@@ -246,6 +257,47 @@ function planInvitations(offsets: number[], totalWords: number): Set<number> {
   return chosen;
 }
 
+/**
+ * The budget every non-Proverbs post uses: place a banner at the first legal
+ * break once enough words have gone by.
+ *
+ * Greedy, where the Proverbs posts survey and plan. The plan exists to hit
+ * even spacing on a post whose breaks are far apart, which is worth two walks
+ * on a 2,000-word verse-by-verse card; an ordinary post's breaks are close
+ * enough together that taking the next one is the same answer for less
+ * machinery.
+ *
+ * What matters is that it is handed to toSectionCards rather than wrapped
+ * around its output. Until 2026-11-08 the generic path wove banners between
+ * finished cards only, and an ordinary post has about five of those - so
+ * lowering the word budget bought nothing, because there was nowhere left to
+ * put a banner. Going through toSectionCards opens the other legal break,
+ * in front of an H3 inside a card, which is where the room actually is: one
+ * card on exodus-14-explained is 1,439 words and six subheadings.
+ */
+function createGreedyBudget(
+  startWords: number,
+  firstAfter: number,
+  spacing: number,
+  render: (slotIndex: number) => ReactNode,
+): InvitationBudget {
+  let sinceLast = startWords;
+  let placed = 0;
+  return {
+    spend(node: ReactNode) {
+      sinceLast += countWords(node);
+    },
+    take() {
+      if (sinceLast < (placed === 0 ? firstAfter : spacing)) return null;
+      sinceLast = 0;
+      placed += 1;
+      // Slots count from 1 and pick the artwork, so no two banners in a post
+      // show the same picture while the pool is big enough.
+      return render(placed);
+    },
+  };
+}
+
 // Second pass: insert a banner at each break the plan picked. Words no longer
 // matter here, because the plan is already fixed and both passes walk the
 // article in the same order.
@@ -288,70 +340,6 @@ function weaveSectionBody(body: ReactNode[], budget?: InvitationBudget): ReactNo
     out.push(node);
     budget.spend(node);
   });
-  return out;
-}
-
-// Weave PromoSlots into the article body: one after roughly every 1,000
-// words, plus one right before the FAQ section. Never inserts after the
-// final content block (so nothing stacks against the end CTA), and stops
-// entirely once the FAQ starts.
-function withPromoSlots(
-  children: ReactNode,
-  postSlug: string,
-  introWords = 0,
-): ReactNode[] {
-  // 2026-11-03: there is one promo on the blog again. Bible in One Year Study
-  // Notes used to carry their own artwork for that day (Louis, 2026-09-19)
-  // and the Proverbs chapters their own 31-day study invitation; Louis asked
-  // for both to be swapped for the four download banners, so every post now
-  // shows the same thing. The Proverbs posts still place theirs on their own
-  // tighter word budget, which can reach inside a long section card - see
-  // createInvitationPlacer.
-  const promo = (key: string, slotIndex: number) => (
-    <PromoSlot key={key} postSlug={postSlug} slotIndex={slotIndex} />
-  );
-  const nodes = Children.toArray(children);
-  const out: ReactNode[] = [];
-  // The intro counts as words already read, and the first promo comes at
-  // FIRST_PROMO_AFTER rather than a full thousand (Louis, 2026-10-11).
-  //
-  // It used to start from zero and wait for 1,000 words of section cards. By
-  // then a typical chapter post is four fifths over, and because a promo is
-  // never placed after the final node, most posts ended up with exactly one -
-  // right at the bottom, under the article and two nav blocks, where nobody
-  // reaches it. The Proverbs posts had already been given this treatment; the
-  // other few hundred had not.
-  let wordsSincePromo = introWords;
-  let slotIndex = 0;
-  let faqReached = false;
-
-  nodes.forEach((node, i) => {
-    const isFaqSection = !faqReached && /frequently asked questions/i.test(textContent(node));
-
-    if (isFaqSection) {
-      const previous = out[out.length - 1];
-      const previousIsPromo = isValidElement(previous) && previous.type === PromoSlot;
-      if (!previousIsPromo) {
-        out.push(promo("promo-before-faq", slotIndex++));
-      }
-      faqReached = true;
-      out.push(node);
-      return;
-    }
-
-    out.push(node);
-    if (faqReached) return;
-
-    wordsSincePromo += countWords(node);
-    const isLastNode = i === nodes.length - 1;
-    // First one early, the rest spaced out. Same shape as the Proverbs posts.
-    const threshold = slotIndex === 0 ? FIRST_PROMO_AFTER : WORDS_PER_PROMO;
-    if (wordsSincePromo >= threshold && !isLastNode) {
-      out.push(promo(`promo-${i}`, slotIndex++));
-      wordsSincePromo = 0;
-    }
-  });
-
   return out;
 }
 
@@ -535,8 +523,8 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
   const faqPairs = extractFaqPairs(anchoredChildren);
 
   const isProverbsStudyPost = isProverbsChapterPost(article.slug);
-  const studyInvitation = (slotIndex: number) => (
-    <PromoSlot key={`proverbs-study-${slotIndex}`} postSlug={article.slug} slotIndex={slotIndex} />
+  const promoBanner = (slotIndex: number) => (
+    <PromoSlot key={`promo-${slotIndex}`} postSlug={article.slug} slotIndex={slotIndex} />
   );
   // Two passes over the same walk: survey the legal breaks, pick the ones that
   // get a banner, then build the body for real. The intro counts as words
@@ -545,11 +533,9 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
   const breakSurvey = isProverbsStudyPost ? createBreakSurvey(introWords) : undefined;
   if (breakSurvey) toSectionCards(anchoredChildren, breakSurvey);
   const invitationBudget = breakSurvey
-    ? createInvitationPlacer(planInvitations(breakSurvey.offsets, totalWords), studyInvitation)
-    : undefined;
-  const body = isProverbsStudyPost
-    ? toSectionCards(anchoredChildren, invitationBudget)
-    : withPromoSlots(toSectionCards(anchoredChildren), article.slug, introWords);
+    ? createInvitationPlacer(planInvitations(breakSurvey.offsets, totalWords), promoBanner)
+    : createGreedyBudget(introWords, FIRST_PROMO_AFTER, WORDS_PER_PROMO, promoBanner);
+  const body = toSectionCards(anchoredChildren, invitationBudget);
 
   return (
     <>
