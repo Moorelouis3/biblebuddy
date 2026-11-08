@@ -517,17 +517,19 @@
     },
     "where-do-christmas-carols-come-from": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-08T01:16:56.577Z",
-      "committedAt": "2026-11-08T01:29:56.903Z"
+      "committedAt": "2026-11-08T01:29:56.903Z",
+      "publishedAt": "2026-11-08T09:17:58.007Z"
     },
     "what-is-ordinary-time": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-08T05:17:31.573Z",
-      "committedAt": "2026-11-08T05:27:47.868Z"
+      "committedAt": "2026-11-08T05:27:47.868Z",
+      "publishedAt": "2026-11-08T09:17:58.155Z"
     }
   },
   "nextTopic": "what-is-a-nativity-scene",
-  "updatedAt": "2026-11-08T05:27:47.883Z"
+  "updatedAt": "2026-11-08T09:17:58.156Z"
 }
