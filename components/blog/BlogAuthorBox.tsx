@@ -3,9 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Caveat, Nunito } from "next/font/google";
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { trackBlogPromoEvent } from "@/lib/blogViewTracking";
 import { useSupabaseUser } from "@/lib/useSupabaseUser";
+import { APP_STORES, detectStorePlatform, type StorePlatform } from "@/lib/appDownload";
+import { BETA_OPEN, androidDestination } from "@/lib/androidBeta";
+import { isNativeApp } from "@/lib/nativeApp";
+import { recordAppStoreTap, recordPlayStoreTap } from "@/lib/appStoreAsk";
 
 const heading = Nunito({ subsets: ["latin"], weight: ["700", "800", "900"], display: "swap" });
 const script = Caveat({ subsets: ["latin"], weight: ["500", "600"], display: "swap" });
@@ -59,7 +63,17 @@ type EndCardContent = {
   subhead: string;
   body: ReactNode;
   features: Array<{ title: string; text: string; bubble: string; icon: keyof typeof ICONS }>;
+  /**
+   * What the card asks for.
+   *
+   * "stores" is the device-aware App Store / Google Play pair; "link" is a
+   * single destination inside Bible Buddy, which is what the Proverbs card
+   * still wants (it is selling a specific study, not the install).
+   */
+  cta: "stores" | "link";
   // Where a logged-out reader goes, before the tracking params are added.
+  // Also the fallback destination for a "stores" card inside the native app,
+  // where there is obviously nothing left to install.
   visitorPath: string;
   visitorLabel: string;
   // Where a reader who already has an account goes.
@@ -67,16 +81,32 @@ type EndCardContent = {
   memberLabel: string;
   // Small print under the button. Null for the variants that have none.
   footnote: string | null;
-  // Whether a signed-in reader is counted as an impression. The app card has
-  // nothing left to sell a member; the study card does, because a member who
-  // has not started the study has not seen it.
+  // Whether a signed-in reader is counted as an impression. The app card does
+  // not count them even now that it has something to offer them, so that the
+  // end-card click rate stays a logged-out number and comparable with its own
+  // history; the study card does, because a member who has not started the
+  // study has not seen it.
   trackMembers: boolean;
 };
 
+/**
+ * The general card. Since 2026-11-08 it asks for the install rather than a
+ * free account.
+ *
+ * Louis: "the end of post card no longer works because i wanna focus on
+ * downloading the apps... iphone or android... can we change it to downloading
+ * on your phone the bible buddy app and it opens app store or play store
+ * depending on the persons device?"
+ *
+ * It had been pointing at /signup since 2026-09-17, which is also what the
+ * in-article banners did until 2026-11-03. Those swapped to the install when
+ * iOS 1.0 went live and this card did not, so the post was asking for two
+ * different things in two places.
+ */
 const APP_CARD: EndCardContent = {
   promoName: "end-card",
   headline: "Enjoyed this blog post?",
-  subhead: "You'll love what's waiting for you inside Bible Buddy.",
+  subhead: "Get the free Bible Buddy app on your phone.",
   body: (
     <>
       <strong className="font-bold text-[#26324d]">Bible</strong> Buddy is a{" "}
@@ -89,11 +119,12 @@ const APP_CARD: EndCardContent = {
     { title: "Trivia Games", text: "Make learning fun", bubble: "#ece8fb", icon: "game" },
     { title: "A Supportive Community", text: "Study together", bubble: "#fdf1d8", icon: "people" },
   ],
+  cta: "stores",
   visitorPath: "/signup",
   visitorLabel: "Start Using Bible Buddy for Free",
   memberPath: "/dashboard",
   memberLabel: "Open Bible Buddy",
-  footnote: "Create your free account. No credit card. Completely free.",
+  footnote: "Free to download. No ads. No credit card.",
   trackMembers: false,
 };
 
@@ -125,6 +156,7 @@ const PROVERBS_CARD: EndCardContent = {
     { title: "Trivia and Reflection", text: "Make it stick", bubble: "#ece8fb", icon: "game" },
     { title: "All 31 Days Unlocked", text: "Go at your own pace", bubble: "#fdf1d8", icon: "unlocked" },
   ],
+  cta: "link",
   visitorPath: "/devotionals/wisdom-of-proverbs",
   visitorLabel: "Join the Free Proverbs Study",
   memberPath: "/devotionals/wisdom-of-proverbs",
@@ -132,6 +164,134 @@ const PROVERBS_CARD: EndCardContent = {
   footnote: "Free. Every day open from the start. Nothing expires.",
   trackMembers: true,
 };
+
+/** Apple's mark, as on the standard black download badge. */
+function AppleGlyph() {
+  return (
+    <svg viewBox="0 0 384 512" aria-hidden="true" className="h-7 w-7 shrink-0 fill-current">
+      <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
+    </svg>
+  );
+}
+
+/** Google Play's triangle. Same path as the landing page's buttons. */
+function PlayGlyph() {
+  return (
+    <svg viewBox="0 0 512 512" aria-hidden="true" className="h-7 w-7 shrink-0 fill-current">
+      <path d="M47 32C34 39 26 52 26 70v372c0 18 8 31 21 38l208-224L47 32zm294 165L89 23l-3-2 236 254 19-78zM439 233l-60-33-24 97 84-45c13-7 20-17 20-29s-7-22-20-29l-20 39zM86 489l3-2 252-174-19-78-236 254z" />
+    </svg>
+  );
+}
+
+function StoreArrow() {
+  return (
+    <svg
+      className="h-4 w-4 shrink-0"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+// The device cannot change under a reader, so there is nothing to subscribe
+// to - but reading navigator during render would differ between the server
+// and the browser. useSyncExternalStore gives "other" on the server and the
+// real answer once hydrated, without the extra render a useEffect would cost.
+// Same pattern, and the same reasoning, as components/blog/PromoSlot.
+const subscribeToNothing = () => () => {};
+const platformOnServer = (): StorePlatform => "other";
+const platformInBrowser = (): StorePlatform =>
+  detectStorePlatform(navigator.userAgent, navigator.maxTouchPoints);
+const nativeOnServer = () => false;
+const nativeInBrowser = () => isNativeApp();
+
+/**
+ * The two store buttons, or the one that belongs to this reader's phone.
+ *
+ * An iPhone sees the App Store, an Android phone sees Google Play, and anyone
+ * we cannot place - desktop, a tablet in desktop mode, the server's first
+ * paint - sees both and chooses. That last case is most of the blog's traffic,
+ * so "both" is the default rather than the edge case.
+ *
+ * During the closed beta the Play button goes to our own /android explainer,
+ * never to Play itself: someone sent straight to the test link without having
+ * joined the tester group is told they are not a tester, which reads like a
+ * broken app. See lib/androidBeta. That also means it is an internal link and
+ * must not open in a new tab.
+ *
+ * Why not lib/appDownload's storeHref: that routes Android readers to the App
+ * Store, which is right for a banner whose artwork only mentions iPhone and
+ * wrong here, where the button says Google Play.
+ */
+function StoreButtons({
+  onStoreClick,
+}: {
+  onStoreClick: (store: "apple" | "google") => void;
+}) {
+  const platform = useSyncExternalStore(subscribeToNothing, platformInBrowser, platformOnServer);
+  const androidHref = androidDestination();
+  const showApple = platform === "ios" || platform === "other";
+  const showGoogle = platform === "android" || platform === "other";
+
+  // Inline colour because the site's global unlayered `a { color: inherit }`
+  // outranks every Tailwind text utility on an anchor. See
+  // docs/link-colour-root-fix.md - do not swap these for a text-* class.
+  const white = { color: "#ffffff", WebkitTextFillColor: "#ffffff" } as const;
+  const button =
+    "flex min-h-[56px] flex-1 items-center justify-center gap-2.5 rounded-full bg-gradient-to-b from-[#1d2b4d] to-[#0b1633] px-4 text-left shadow-[0_10px_24px_rgba(11,22,51,0.3)] transition hover:-translate-y-0.5 hover:brightness-110";
+
+  return (
+    <div className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row">
+      {showApple ? (
+        <a
+          href={APP_STORES.apple}
+          target="_blank"
+          rel="nofollow noopener"
+          style={white}
+          onClick={() => {
+            recordAppStoreTap();
+            onStoreClick("apple");
+          }}
+          className={button}
+        >
+          <AppleGlyph />
+          <span className="leading-none">
+            <span className="block text-[0.68rem] font-semibold tracking-[0.01em]">Download on the</span>
+            <span className={`${heading.className} mt-1 block text-[1.15rem] font-black leading-none`}>App Store</span>
+          </span>
+          <StoreArrow />
+        </a>
+      ) : null}
+
+      {showGoogle ? (
+        <a
+          href={androidHref}
+          {...(BETA_OPEN ? {} : { target: "_blank", rel: "nofollow noopener" })}
+          style={white}
+          onClick={() => {
+            recordPlayStoreTap();
+            onStoreClick("google");
+          }}
+          className={button}
+        >
+          <PlayGlyph />
+          <span className="leading-none">
+            <span className="block text-[0.68rem] font-semibold tracking-[0.01em]">Get it on</span>
+            <span className={`${heading.className} mt-1 block text-[1.15rem] font-black leading-none`}>Google Play</span>
+          </span>
+          <StoreArrow />
+        </a>
+      ) : null}
+    </div>
+  );
+}
 
 function HeartMark({ className }: { className?: string }) {
   return (
@@ -181,9 +341,49 @@ export default function BlogAuthorBox({
   }, [authLoading, userId, postSlug, promoName, trackMembers]);
 
   const isMember = Boolean(userId);
+  const inNativeApp = useSyncExternalStore(subscribeToNothing, nativeInBrowser, nativeOnServer);
+  // Inside the store app there is nothing left to install, so the install card
+  // falls back to its in-app destination for that reader.
+  const showStores = content.cta === "stores" && !inNativeApp;
   const href = isMember
     ? content.memberPath
     : `${content.visitorPath}?src=blog&promo=${promoName}&post=${encodeURIComponent(postSlug)}`;
+
+  /**
+   * One promo click, whichever store was tapped.
+   *
+   * Deliberately recorded under `end-card` rather than `end-card-apple` /
+   * `end-card-google`: the admin dashboard groups blog_promo_events by exact
+   * promo name, so splitting the clicks off would leave an `end-card` row with
+   * impressions and no clicks next to two rows with clicks and no impressions,
+   * and three wrong click rates. Which store was tapped goes to
+   * /api/landing-analytics instead, the same `clicked_app_store` event the
+   * landing page and /android already send, where the store is a real field.
+   */
+  const trackStoreClick = (store: "apple" | "google") => {
+    if (!isMember || trackMembers) {
+      trackBlogPromoEvent({ eventType: "click", promo: promoName, postSlug, slotIndex: SLOT_INDEX });
+    }
+    try {
+      void fetch("/api/landing-analytics", {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event_name: "clicked_app_store",
+          session_id: window.localStorage.getItem("bb:landing-session-id") || "unknown",
+          page_path: window.location.pathname,
+          metadata: {
+            clickedFrom: "blog_end_card",
+            store: store === "apple" ? "ios" : "android",
+            post: postSlug,
+          },
+        }),
+      });
+    } catch {
+      // Measurement never breaks the thing being measured.
+    }
+  };
 
   return (
     <section
@@ -252,25 +452,58 @@ export default function BlogAuthorBox({
         ))}
       </ul>
 
-      <Link
-        href={href}
-        rel={isMember ? undefined : "nofollow"}
-        // Inline because the site's global `a { color: inherit }` outranks utilities.
-        style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
-        onClick={() => {
-          if (!isMember || trackMembers) {
-            trackBlogPromoEvent({ eventType: "click", promo: promoName, postSlug, slotIndex: SLOT_INDEX });
-          }
-        }}
-        className={`${heading.className} mt-6 flex min-h-[52px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-b from-[#2a8cff] to-[#1672f3] px-3 text-center text-[14.5px] min-[400px]:text-[16px] sm:px-5 font-extrabold text-white shadow-[0_10px_24px_rgba(22,114,243,0.28)] transition hover:-translate-y-0.5 hover:brightness-105 sm:mt-7 sm:min-h-[56px] sm:text-[19px]`}
-      >
-        {isMember ? content.memberLabel : content.visitorLabel}
-        <svg className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M5 12h14M13 6l6 6-6 6" />
-        </svg>
-      </Link>
-      {content.footnote && !isMember ? (
+      {showStores ? (
+        <StoreButtons onStoreClick={trackStoreClick} />
+      ) : (
+        <Link
+          href={href}
+          rel={isMember ? undefined : "nofollow"}
+          // Inline because the site's global `a { color: inherit }` outranks utilities.
+          style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+          onClick={() => {
+            if (!isMember || trackMembers) {
+              trackBlogPromoEvent({ eventType: "click", promo: promoName, postSlug, slotIndex: SLOT_INDEX });
+            }
+          }}
+          className={`${heading.className} mt-6 flex min-h-[52px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-b from-[#2a8cff] to-[#1672f3] px-3 text-center text-[14.5px] min-[400px]:text-[16px] sm:px-5 font-extrabold text-white shadow-[0_10px_24px_rgba(22,114,243,0.28)] transition hover:-translate-y-0.5 hover:brightness-105 sm:mt-7 sm:min-h-[56px] sm:text-[19px]`}
+        >
+          {isMember ? content.memberLabel : content.visitorLabel}
+          <svg className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </Link>
+      )}
+
+      {/* The small print belongs to the ask above it, so the store version
+          gets its own line: a visitor being sent to a store needs to know it
+          is free before they tap, and a member does not need "no credit card"
+          said to them again. */}
+      {content.footnote && (showStores || !isMember) ? (
         <p className="mt-2.5 text-center text-[12px] leading-snug text-[#3b4660] sm:text-[13px]">{content.footnote}</p>
+      ) : null}
+
+      {/* Nobody is turned away for not wanting an app. The web version is the
+          same product and was this card's only ask until today. */}
+      {showStores ? (
+        <p className="mt-3 text-center text-[12.5px] leading-snug text-[#3b4660] sm:text-[13px]">
+          {isMember ? (
+            <Link href="/dashboard" style={{ color: "#1f5fd6" }} className="font-bold underline">
+              Or open Bible Buddy on the web
+            </Link>
+          ) : (
+            <Link
+              href={href}
+              rel="nofollow"
+              style={{ color: "#1f5fd6" }}
+              className="font-bold underline"
+              onClick={() => {
+                trackBlogPromoEvent({ eventType: "click", promo: promoName, postSlug, slotIndex: SLOT_INDEX });
+              }}
+            >
+              Or use the free web version instead
+            </Link>
+          )}
+        </p>
       ) : null}
 
       <div className="mt-4 flex items-center gap-3 sm:mt-5" aria-hidden="true">
