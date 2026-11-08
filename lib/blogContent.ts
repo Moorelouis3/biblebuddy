@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-30-explained",
+    title: "Deuteronomy 30 Explained: Choose Life, Not Far Off",
+    description:
+      "Deuteronomy 30 explained verse by verse: the circumcised heart, the word not far off that Paul quotes in Romans 10, and the command to choose life.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-30-explained",
+    publishedAt: "2026-11-08",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-30-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 30 Explained 📖",
+      content:
+        "Moses just finished describing exile and ruin.\nThen he promises it is not the end.\n\n📌 God will circumcise Israel's heart Himself, not ask them to.\n\n📖 Paul quotes this chapter's \"not far off\" line in Romans 10.\n📖 Jeremiah and Ezekiel echo this same promise centuries later.\n📖 \"Choose life\" is the last line of a legal case, not a slogan.\n\nNew article on:\n🟢 who really **circumcises the heart**, Israel or God\n🟢 why Paul reuses this chapter for a very different point\n🟢 what Moses means calling **heaven and earth** to witness\n\nWhat would it look like for you to actually choose life today? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-29-explained",
     title: "Deuteronomy 29 Explained: The Covenant That Reaches the Unborn",
     description:
