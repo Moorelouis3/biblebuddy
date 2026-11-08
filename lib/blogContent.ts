@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-33-explained",
+    title: "Deuteronomy 33 Explained: The Blessing of Moses Before His Death",
+    description:
+      "Deuteronomy 33 explained verse by verse: Moses's final blessing on each tribe, the missing blessing for Simeon, and the everlasting arms underneath.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-33-explained",
+    publishedAt: "2026-11-08",
+    readTime: "13 min read",
+    image: "/blog-banners/deuteronomy-33-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 33 Explained 📖",
+      content:
+        "Moses already sang the whole nation one song.\nNow he blesses each tribe one by one before he dies.\n\n📌 One tribe gets five verses. One tribe gets six words. One tribe gets none at all.\n\n📖 Levi, cursed back in Genesis 49, becomes the most honored tribe here.\n📖 Reuben's whole blessing is just a prayer to survive.\n📖 Simeon is never mentioned, and the reason traces back to Numbers 25.\n\nNew article on:\n🟢 why **Simeon** disappears from this blessing\n🟢 how a **curse in Genesis** became an assignment in Deuteronomy\n🟢 what **\"underneath are the everlasting arms\"** actually means\n\nWhich tribe's blessing sounds the most like your life right now? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-32-explained",
     title: "Deuteronomy 32 Explained: The Song of Moses and the Rock",
     description:
