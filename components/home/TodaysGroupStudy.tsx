@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
+import { useSupabaseUser } from "../../lib/useSupabaseUser";
 import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
 import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
 
@@ -16,11 +17,22 @@ import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/commu
  * only ever be next to the bookshelf.
  *
  * It shows the group's reading for today, who has answered the discussion
- * question, and opens the post those answers are on - so the card and the
- * feed's pinned thread are the same conversation rather than two that have to
- * be kept in step.
+ * question, and opens today's day of the study itself.
+ *
+ * THE BUTTON USED TO OPEN THE FEED (Louis, 2026-11-08: "join the discussion
+ * button is totally wrong. It's sending people to the feed ... the main thing
+ * should be leading to the day of the actual study guide plan, not some feed
+ * with the second thing. It should go to the actual, the beginning of
+ * everything, day one study guide page, so people can actually do it there.
+ * And if they haven't started it yet, then they have to start it.")
+ *
+ * So it opens the study day. The discussion is not lost by doing that: the
+ * day page carries the same thread the feed post does (GroupPostThread, via
+ * lib/eventDiscussion), so the reader lands on the reading, the notes, the
+ * question AND the answers instead of on the answers alone.
  */
 export default function TodaysGroupStudy() {
+  const { userId } = useSupabaseUser();
   const event = useMemo(() => getActiveCommunityEvent(), []);
   const eventState = useMemo(() => (event ? getCommunityEventState(event) : null), [event]);
   const communityDay = eventState?.phase === "live" ? eventState.communityDay : null;
@@ -36,6 +48,16 @@ export default function TodaysGroupStudy() {
     count: number;
     people: Array<{ user_id: string; display_name: string | null; username: string | null; profile_image_url: string | null }>;
   } | null>(null);
+
+  /**
+   * Where this reader is in the study, so the button says the true thing.
+   *
+   * "Start" when they have never opened a day of it, "Continue" once they
+   * have, "Review" when today is already done. One small read of their own
+   * rows; it is allowed to fail, and the button falls back to "Start", which
+   * is the right word for somebody we know nothing about.
+   */
+  const [studyState, setStudyState] = useState<"start" | "continue" | "review">("start");
 
   // The group's reading for today.
   useEffect(() => {
@@ -63,6 +85,32 @@ export default function TodaysGroupStudy() {
       cancelled = true;
     };
   }, [event, communityDay]);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!userId || !event || !communityDay) {
+      setStudyState("start");
+      return;
+    }
+    void (async () => {
+      const { data } = await supabase
+        .from("devotional_progress")
+        .select("day_number, is_completed")
+        .eq("user_id", userId)
+        .eq("devotional_id", event.devotionalId);
+      if (cancelled) return;
+      const rows = data || [];
+      if (rows.length === 0) {
+        setStudyState("start");
+        return;
+      }
+      const today = rows.find((row) => Number(row.day_number) === communityDay);
+      setStudyState(today?.is_completed ? "review" : "continue");
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [userId, event, communityDay]);
 
   /**
    * Today's pinned post and the people who have answered it.
@@ -162,9 +210,10 @@ export default function TodaysGroupStudy() {
                     post, like we had in the group."
 
                     They match by being the same thread: these are the people
-                    who commented on today's pinned post, and the button opens
-                    that post. There is no second discussion to keep in step,
-                    because there is no second discussion. */}
+                    who commented on today's pinned post, and the day page the
+                    button opens shows that same thread. There is no second
+                    discussion to keep in step, because there is no second
+                    discussion. */}
                 {discussion && discussion.people.length > 0 ? (
                   <div className="mt-2.5 flex items-center gap-2">
                     <span className="flex -space-x-2">
@@ -201,7 +250,22 @@ export default function TodaysGroupStudy() {
                 ) : null}
               </div>
               <Link
-                href={discussion?.postId ? `/bb-feed?post=${discussion.postId}` : "/bb-feed"}
+                /* The study itself, not the feed.
+                   This is the URL the bookshelf uses to open a study
+                   (components/home/YourBookshelf.tsx): the Devotionals tab
+                   with this study open, its day list showing, today's day
+                   marked CURRENT, and "Set as my reading plan" there for
+                   somebody who has not started it.
+                   NOT the two routes that look more direct:
+                   /devotionals/<id>/day/<n> only serves the chapter-journey
+                   studies and bounces everything else, The Beginning of
+                   Everything included; /bible-studies/<id> and /devotionals/<id>
+                   both redirect here anyway, so linking straight here saves a
+                   hop. Adding ?day=N&from=louis-daily-task to open the day
+                   itself does not work yet - three separate places strip the
+                   day on the way in - so this lands on the study and the
+                   reader taps today's day. */
+                href={`/plan?view=bible_studies&study=${encodeURIComponent(event?.devotionalId ?? "")}`}
                 /* Dark ink rather than the accent blue (Louis's mock-up,
                    2026-10-17). #2b2150 is not a new colour: it is the same
                    deep purple this card's own heading uses, and the one From
@@ -218,7 +282,11 @@ export default function TodaysGroupStudy() {
                    dark text. On this button that was black on near-black. */
                 style={{ color: "#ffffff" }}
               >
-                Join Discussion →
+                {studyState === "review"
+                  ? `Review Day ${communityDay} →`
+                  : studyState === "continue"
+                    ? `Continue Day ${communityDay} →`
+                    : `Start Day ${communityDay} →`}
               </Link>
             </div>
           </div>

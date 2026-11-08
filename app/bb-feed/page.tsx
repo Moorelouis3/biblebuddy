@@ -27,6 +27,7 @@ import ProfileSummaryCard from "../../components/profile/ProfileSummaryCard";
 import MessageBuddyButton from "../../components/profile/MessageBuddyButton";
 import LoadFailedNotice from "../../components/LoadFailedNotice";
 import { COMMUNITY_GROUP_ID } from "../../lib/communityMilestones";
+import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -2294,14 +2295,41 @@ const PINNED_MAX = 3;
  * 2026-10-19: "the poll and the prayer request should both be under the top
  * pinned account, both pinned").
  *
- * The daily study post used to be pinned here too and no longer is (Louis,
- * 2026-10-25: "the daily proverbs post can stop, it's there for no reason").
- * It still appears in the feed like any other post; it simply stopped
- * occupying a pin, which is meant for the one poll and the one prayer thread
- * that have to last the week.
+ * The daily study post is the FIRST pin, above both (Louis, 2026-11-08: "the
+ * feed has a post of daily thing there, which is also wrong. It should be at
+ * the top pinned. Every day is a new day. So day one should be pinned at the
+ * top. Then tomorrow should be day two pinned at the top.")
+ *
+ * This reverses 2026-10-25 ("the daily proverbs post can stop, it's there for
+ * no reason"), when Proverbs was running and the post was a repeat of what
+ * the study page already said. Today the post IS the group's discussion
+ * thread, so it is the thing a reader opening the tab should land on.
+ *
+ * Today's day specifically, not the newest post that happens to say "Day".
+ * The community day is worked out from the event calendar, the same source
+ * the dashboard card uses, so the two cannot drift. If that day's post is
+ * missing - a cron that has not run yet this morning - the newest day post
+ * holds the pin rather than leaving a gap.
  */
 function selectPinnedPosts<T extends FeedPost>(posts: T[]): T[] {
   const official = posts.filter((post) => post.user_id === BIBLE_BUDDY_USER_ID);
+
+  const headline = (post: FeedPost) => String(post.content).split("\n", 1)[0] ?? "";
+  /** "The Beginning of Everything · Day 7: ..." and "Day 7: ..." both count. */
+  const dayNumberOf = (post: FeedPost) => {
+    const match = /(?:^|·\s)Day (\d+):\s/.exec(headline(post));
+    return match ? Number(match[1]) : null;
+  };
+
+  const event = getActiveCommunityEvent();
+  const eventState = event ? getCommunityEventState(event) : null;
+  const communityDay = eventState?.phase === "live" ? eventState.communityDay : null;
+
+  const dailyPosts = official.filter((post) => dayNumberOf(post) !== null);
+  const daily =
+    (communityDay !== null
+      ? dailyPosts.find((post) => dayNumberOf(post) === communityDay)
+      : null) || dailyPosts[0];
 
   const poll = official.find((post) => pollIdFromPost(post.link_url));
   /**
@@ -2319,7 +2347,9 @@ function selectPinnedPosts<T extends FeedPost>(posts: T[]): T[] {
   );
 
   const pinned: T[] = [];
-  for (const candidate of [poll, prayer]) {
+  // Daily first: it is the one that changes every morning, and it is what the
+  // dashboard card sends people here for.
+  for (const candidate of [daily, poll, prayer]) {
     if (!candidate || pinned.length >= PINNED_MAX) continue;
     if (pinned.some((post) => post.id === candidate.id)) continue;
     pinned.push(candidate);
