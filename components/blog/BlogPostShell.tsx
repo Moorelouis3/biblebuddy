@@ -4,6 +4,7 @@ import { Children, cloneElement, isValidElement, type ReactElement, type ReactNo
 import BlogPostingSchema from "@/components/BlogPostingSchema";
 import RelatedPosts from "./RelatedPosts";
 import BlogAuthorBox from "./BlogAuthorBox";
+import BlogAppPrompt from "./BlogAppPrompt";
 import ChapterNav from "./ChapterNav";
 import BibleYearNotesNav from "./BibleYearNotesNav";
 import BlogPostBreaker from "@/components/blog/BlogPostBreaker";
@@ -660,6 +661,10 @@ export default function BlogPostShell({ slug, title, intro, children }: BlogPost
 
       <BlogPostBottom articleSlug={engagementKey} postSlug={article.slug} />
     </div>
+    {/* Outside the article column: it is a fixed bar, so it is not laid out
+        here, and nesting it inside a transformed ancestor would pin it to
+        that box instead of the viewport. */}
+    <BlogAppPrompt postSlug={article.slug} />
     </>
   );
 }
