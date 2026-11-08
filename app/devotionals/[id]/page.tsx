@@ -428,6 +428,26 @@ function getDevotionalReadingGameConfig(day: DevotionalDay) {
 type DevotionalDetailPageProps = {
   devotionalIdOverride?: string;
   embedded?: boolean;
+  /**
+   * Open this day of the study on arrival, instead of the day list.
+   *
+   * A prop rather than ?day=N, because embedded there is no URL left to read:
+   * the dashboard's clearBibleYearViews() deletes `day` from the address bar
+   * before this component has mounted, and so does openPlansPage() right
+   * after it. Three separate places strip that param on the way in, which is
+   * why every deep link to a day - Today's Group Study, the dashboard journey
+   * tasks, Louis's daily tasks - landed on the study overview instead.
+   *
+   * The caller captures the number before the stripping happens and hands it
+   * over, so the param only has to survive long enough to be read once.
+   */
+  initialDayNumber?: number | null;
+  /**
+   * Called once initialDayNumber has been acted on, so the caller can forget
+   * it. Without this the deep link would still be sitting there if the reader
+   * left the study and came back, and would re-open the day under them.
+   */
+  onInitialDayHandled?: () => void;
   onBack?: () => void;
   onChapterSelect?: (payload: {
     devotionalId: string;
@@ -438,7 +458,7 @@ type DevotionalDetailPageProps = {
   }) => void;
 };
 
-export default function DevotionalDetailPage({ devotionalIdOverride, embedded = false, onBack, onChapterSelect }: DevotionalDetailPageProps = {}) {
+export default function DevotionalDetailPage({ devotionalIdOverride, embedded = false, initialDayNumber = null, onInitialDayHandled, onBack, onChapterSelect }: DevotionalDetailPageProps = {}) {
   const params = useParams();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -492,6 +512,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     planTitle: string;
   } | null>(null);
   const handledLouisDayRef = useRef<string | null>(null);
+  /** Day a deep link opened that still needs scrolling to. See below. */
+  const pendingScrollDayRef = useRef<number | null>(null);
   const freeWisdomGateMarkedRef = useRef<Set<number>>(new Set());
   const hydratedExpandedDayKeyRef = useRef<string | null>(null);
   const [featureTours, setFeatureTours] = useState<FeatureToursState>({ ...DEFAULT_FEATURE_TOURS });
@@ -1286,22 +1308,28 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       return;
     }
 
+    // Bookkeeping, not a gate. This used to be awaited, which put a round
+    // trip to Supabase in front of the day opening - on a slow connection the
+    // tap did nothing at all for several seconds, and a failed getUser() threw
+    // before the day was ever reached.
     if (userId && devotional) {
-      const { data: authData } = await supabase.auth.getUser();
-      const meta: any = authData.user?.user_metadata || {};
-      const username =
-        meta.firstName ||
-        meta.first_name ||
-        (authData.user?.email ? authData.user.email.split("@")[0] : null) ||
-        null;
+      void (async () => {
+        const { data: authData } = await supabase.auth.getUser();
+        const meta: any = authData.user?.user_metadata || {};
+        const username =
+          meta.firstName ||
+          meta.first_name ||
+          (authData.user?.email ? authData.user.email.split("@")[0] : null) ||
+          null;
 
-      void trackNavigationActionOnce({
-        userId,
-        username,
-        actionType: ACTION_TYPE.devotional_day_opened,
-        actionLabel: `${devotional.title} - Day ${day.day_number}`,
-        dedupeKey: `devotional-day-opened:${devotionalId}:${day.day_number}`,
-      }).catch((error) => console.error("[NAV] Failed to track devotional day click:", error));
+        await trackNavigationActionOnce({
+          userId,
+          username,
+          actionType: ACTION_TYPE.devotional_day_opened,
+          actionLabel: `${devotional.title} - Day ${day.day_number}`,
+          dedupeKey: `devotional-day-opened:${devotionalId}:${day.day_number}`,
+        });
+      })().catch((error) => console.error("[NAV] Failed to track devotional day click:", error));
     }
 
     // Every plan is open to everyone. Skips the claim-one-plan / upgrade-wall
@@ -1398,7 +1426,12 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       return;
     }
 
-    await consumeCreditAction(ACTION_TYPE.devotional_day_viewed, { userId: activeUserId });
+    // Same again: nothing reads what this returns, and setShowCreditBlocked
+    // below runs either way - so awaiting it only ever delayed the day behind
+    // a POST, and threw the day away entirely if the POST failed.
+    void consumeCreditAction(ACTION_TYPE.devotional_day_viewed, { userId: activeUserId }).catch((error) =>
+      console.error("[CREDIT] Could not record devotional day view:", error),
+    );
     setShowCreditBlocked(false);
     await openDay();
   };
@@ -1406,7 +1439,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   useEffect(() => {
     if (!devotional || days.length === 0) return;
 
-    const requestedDay = Number.parseInt(searchParams.get("day") || "", 10);
+    const urlDay = Number.parseInt(searchParams.get("day") || "", 10);
     const fromLouis = searchParams.get("from");
     const shouldHandleLouisDay =
       fromLouis === "louis-daily" ||
@@ -1414,7 +1447,14 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       fromLouis === "louis-daily-task" ||
       fromLouis === "louis-daily-task-reflection";
 
-    if (!requestedDay || Number.isNaN(requestedDay) || !shouldHandleLouisDay) {
+    // The prop wins over the URL: embedded, the URL has already been stripped
+    // by the time this runs. `from=louis-*` stays required for the URL route,
+    // so an existing link keeps behaving exactly as it did; the prop does not
+    // need it, because isDayUnlocked below is the real gate either way. A
+    // hand-typed &day=20 opens nothing the reader has not earned.
+    const requestedDay = initialDayNumber || (shouldHandleLouisDay ? urlDay : 0);
+
+    if (!requestedDay || Number.isNaN(requestedDay)) {
       return;
     }
 
@@ -1426,19 +1466,89 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
     const day = days.find((entry) => entry.day_number === requestedDay);
     if (!day) {
       handledLouisDayRef.current = requestKey;
-      router.replace(`/plans/${devotionalId}`);
+      onInitialDayHandled?.();
+      // Embedded there is nowhere to send them: this IS the Devotionals tab,
+      // and /plans/<id> redirects straight back here. Showing the day list is
+      // the right answer for a day that does not exist.
+      if (!embedded) router.replace(`/plans/${devotionalId}`);
       return;
     }
 
     handledLouisDayRef.current = requestKey;
 
     void (async () => {
+      if (initialDayNumber) {
+        // Do exactly what tapping that day in the list does - open it in
+        // place and scroll to it - rather than handleDayClick's legacy modal.
+        // A reader who arrives on a link and a reader who taps the row should
+        // be looking at the same thing; the modal is a second, older way of
+        // reading a day that nothing else in the app can reach any more.
+        if (!isDayUnlocked(day.day_number)) return;
+        if (shouldBlockFreeWisdomDay(day.day_number)) {
+          openFreeWisdomDayGate();
+          return;
+        }
+        setExpandedWisdomTask(null);
+        setExpandedDayNumber(day.day_number);
+        // Scrolled by the effect below, once the row actually exists.
+        pendingScrollDayRef.current = day.day_number;
+        onInitialDayHandled?.();
+        return;
+      }
       await handleDayClick(day);
-      if (!isChapterJourneyStudyTitle(devotional.title) || embedded) {
+      onInitialDayHandled?.();
+      // NEVER navigate while embedded. This replace was tidying the deep-link
+      // params out of the URL, but inside the dashboard /plans/<id> is a real
+      // navigation out of the tab - it opened the day and then immediately
+      // threw it away, which is exactly what made deep-linking a day look
+      // impossible. The dashboard has already cleaned its own URL by now.
+      if (embedded) return;
+      if (!isChapterJourneyStudyTitle(devotional.title)) {
         router.replace(`/plans/${devotionalId}`);
       }
     })();
-  }, [days, devotional, devotionalId, embedded, router, searchParams]);
+  }, [days, devotional, devotionalId, embedded, initialDayNumber, router, searchParams]);
+
+  /**
+   * Scroll to the day a link opened, once there is something to scroll to.
+   *
+   * Arriving is not the same as tapping. A tap happens on a settled page, so
+   * the one-frame scroll the row uses is enough. On arrival the study is
+   * still loading inside a dashboard that is itself still mounting, and every
+   * fixed delay I tried fired into an empty page - the reader landed at the
+   * top of the study wondering what the link had done. So: wait for the row
+   * to exist, then scroll, and scroll once more a beat later for whatever
+   * finished loading above it in the meantime.
+   */
+  useEffect(() => {
+    const target = pendingScrollDayRef.current;
+    if (target === null || expandedDayNumber !== target || typeof window === "undefined") return;
+
+    let attempts = 0;
+    let cancelled = false;
+    const scrollToRow = () => {
+      if (cancelled) return;
+      const row = document.getElementById(`devotional-day-${target}`);
+      if (!row) {
+        // ~6s of patience, which a cold load needs and a warm one never uses.
+        if (attempts++ < 40) window.setTimeout(scrollToRow, 150);
+        else pendingScrollDayRef.current = null;
+        return;
+      }
+      pendingScrollDayRef.current = null;
+      row.scrollIntoView({ block: "start", behavior: "auto" });
+      window.setTimeout(() => {
+        if (!cancelled) {
+          document.getElementById(`devotional-day-${target}`)?.scrollIntoView({ block: "start", behavior: "auto" });
+        }
+      }, 500);
+    };
+    scrollToRow();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [expandedDayNumber]);
 
   useEffect(() => {
     if (!selectedDay || !featureToursLoaded) return;
@@ -1936,10 +2046,17 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
   // A devotional opens inside the app, on the Devotionals tab, with the top bar
   // and the bottom menu around it - never as a freestanding page. Reached as a
   // route, hand off to the tab and let it open this study.
+  // Carries ?day=N across the hand-off. Dropping it here was the first of the
+  // three places a deep-linked day died: every /devotionals/<id>?day=N link -
+  // Louis's daily tasks, the dashboard journey tasks, a shared day link -
+  // arrived at the tab with nothing but the study id, so the tab could only
+  // ever show the day list. The tab honours `day` now.
   useEffect(() => {
     if (embedded || !devotionalId) return;
-    router.replace(`/dashboard?view=bible_studies&study=${encodeURIComponent(devotionalId)}`);
-  }, [embedded, devotionalId, router]);
+    const requestedDay = Number.parseInt(searchParams.get("day") || "", 10);
+    const daySuffix = requestedDay > 0 ? `&day=${requestedDay}` : "";
+    router.replace(`/dashboard?view=bible_studies&study=${encodeURIComponent(devotionalId)}${daySuffix}`);
+  }, [embedded, devotionalId, router, searchParams]);
 
   // On its way to the tab - render nothing rather than flash a standalone page.
   if (!embedded) return null;

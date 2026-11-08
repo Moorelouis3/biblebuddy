@@ -261,11 +261,16 @@ export default function TodaysGroupStudy() {
                    studies and bounces everything else, The Beginning of
                    Everything included; /bible-studies/<id> and /devotionals/<id>
                    both redirect here anyway, so linking straight here saves a
-                   hop. Adding ?day=N&from=louis-daily-task to open the day
-                   itself does not work yet - three separate places strip the
-                   day on the way in - so this lands on the study and the
-                   reader taps today's day. */
-                href={`/plan?view=bible_studies&study=${encodeURIComponent(event?.devotionalId ?? "")}`}
+                   hop.
+
+                   &day=N opens today's day itself, not the day list. The
+                   dashboard deletes that param from the URL on the way in -
+                   in three separate places - so it reads it once from its own
+                   snapshot and hands it to the study as a prop. Nothing here
+                   depends on the param surviving. */
+                href={`/plan?view=bible_studies&study=${encodeURIComponent(event?.devotionalId ?? "")}${
+                  communityDay ? `&day=${communityDay}` : ""
+                }`}
                 /* Dark ink rather than the accent blue (Louis's mock-up,
                    2026-10-17). #2b2150 is not a new colour: it is the same
                    deep purple this card's own heading uses, and the one From

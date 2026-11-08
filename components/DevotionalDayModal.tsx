@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { createClient } from "@supabase/supabase-js";
 import ReactMarkdown from "react-markdown";
 import { enrichPlainText } from "../lib/bibleHighlighting";
@@ -185,6 +186,27 @@ export default function DevotionalDayModal({
   onIntroComplete,
   onDayComplete,
 }: DevotionalDayModalProps) {
+  /**
+   * This modal is rendered into <body>, not where it sits in the tree.
+   *
+   * Inside the dashboard the study page lives in the swipeable pager, and the
+   * pager track carries a `transform` to move between tabs. A transform makes
+   * its subtree the containing block for `position: fixed`, so this overlay's
+   * `fixed inset-0` stopped meaning the viewport and started meaning the
+   * track - which is five screens wide. The modal opened perfectly, 2,500px
+   * to the left of the window, every time. Nobody could open a day of a
+   * devotional from inside the app, and it looked like the day simply did not
+   * open.
+   *
+   * Mounted in state because document.body does not exist during the server
+   * render; one tick with nothing on screen is invisible next to the load
+   * this page already does.
+   */
+  const [portalReady, setPortalReady] = useState(false);
+  useEffect(() => {
+    setPortalReady(true);
+  }, []);
+
   // User + progress state for “Mark as finished” buttons
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
@@ -841,9 +863,9 @@ Be accurate to Scripture.`;
     onClose();
   };
 
-  return (
-    <div 
-      className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto" 
+  const overlay = (
+    <div
+      className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-3 py-4 overflow-y-auto"
     >
       <div 
         className="relative w-full max-w-2xl max-h-[90vh] rounded-3xl bg-white border border-gray-200 shadow-2xl overflow-hidden flex flex-col" 
@@ -1426,6 +1448,9 @@ Be accurate to Scripture.`;
       )}
     </div>
   );
+
+  if (!portalReady) return null;
+  return createPortal(overlay, document.body);
 }
 
 import { triggerPoints } from "./PointsPop";

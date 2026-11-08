@@ -2347,6 +2347,26 @@ export default function DashboardJourneyExperience({
     nextDay: CurrentStudyChapter | null;
   } | null>(null);
   const [embeddedBibleStudyId, setEmbeddedBibleStudyId] = useState<string | null>(null);
+  /**
+   * The day of the embedded study to open on arrival, from ?day=<n>.
+   *
+   * Held in state rather than read from the URL where it is needed, because
+   * by then it is gone: the param is deleted on the way in and the embedded
+   * study page mounts after that.
+   *
+   * It carries the study id it arrived with, and is only honoured while that
+   * is still the open study. Twelve different places set the open study, and
+   * a bare day number would have survived all of them - pick a different
+   * study off the shelf and you would have been dropped into day 4 of it.
+   */
+  const [embeddedBibleStudyDeepLink, setEmbeddedBibleStudyDeepLink] = useState<{
+    studyId: string;
+    day: number;
+  } | null>(null);
+  const embeddedBibleStudyDay =
+    embeddedBibleStudyDeepLink && embeddedBibleStudyDeepLink.studyId === embeddedBibleStudyId
+      ? embeddedBibleStudyDeepLink.day
+      : null;
   const [buddiesDashboard, setBuddiesDashboard] = useState<BuddiesDashboardPayload | null>(null);
   const [buddiesDashboardLoading, setBuddiesDashboardLoading] = useState(false);
   const [buddiesDashboardError, setBuddiesDashboardError] = useState<string | null>(null);
@@ -5253,6 +5273,19 @@ export default function DashboardJourneyExperience({
       // one lands in the app rather than on a freestanding detail page.
       const studyId = params.get("study");
       if (studyId) setEmbeddedBibleStudyId(studyId);
+      // ?day=<n> opens that day of it, rather than its day list. `params` is
+      // the snapshot taken at the top of this effect, which is the only
+      // reason this works: openPlansPage() above has already deleted `day`
+      // from the real URL, and clearBibleYearViews() inside it deleted it
+      // first. Reading window.location here would find nothing.
+      const studyDay = Number.parseInt(params.get("day") || "", 10);
+      // Only ever SET here, never clear. This effect runs again whenever the
+      // profile or the user id resolves, and by then `params` is a fresh read
+      // of a URL the first run has already stripped - so an else-branch here
+      // deleted the day a second or two after capturing it, before the study
+      // had finished loading its days. That was the whole bug.
+      // onInitialDayHandled below is what clears it, once it has been used.
+      if (studyId && studyDay > 0) setEmbeddedBibleStudyDeepLink({ studyId, day: studyDay });
     } else if (view === "devotional") {
       setBibleYearDashboardActive(false);
       setBibleYearSeriesActive(false);
@@ -6235,8 +6268,11 @@ export default function DashboardJourneyExperience({
           <BibleStudyDetailPage
             devotionalIdOverride={embeddedBibleStudyId}
             embedded
+            initialDayNumber={embeddedBibleStudyDay}
+            onInitialDayHandled={() => setEmbeddedBibleStudyDeepLink(null)}
             onBack={() => {
               setEmbeddedBibleStudyId(null);
+              setEmbeddedBibleStudyDeepLink(null);
               if (freeStudyModeActive) setEmbeddedBibleBookSearchOpen(true);
             }}
             onChapterSelect={(payload) => {
