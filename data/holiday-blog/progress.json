@@ -540,29 +540,33 @@
     },
     "what-is-a-nativity-scene": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-08T09:18:08.801Z",
-      "committedAt": "2026-11-08T09:28:49.668Z"
+      "committedAt": "2026-11-08T09:28:49.668Z",
+      "publishedAt": "2026-11-09T09:16:59.830Z"
     },
     "who-was-king-herod": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-08T15:16:57.220Z",
-      "committedAt": "2026-11-08T15:27:18.228Z"
+      "committedAt": "2026-11-08T15:27:18.228Z",
+      "publishedAt": "2026-11-09T09:17:00.109Z"
     },
     "what-is-boxing-day": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-09T01:18:41.591Z",
-      "committedAt": "2026-11-09T01:28:18.313Z"
+      "committedAt": "2026-11-09T01:28:18.313Z",
+      "publishedAt": "2026-11-09T09:17:00.528Z"
     },
     "what-is-the-octave-of-christmas": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-09T05:18:42.945Z",
-      "committedAt": "2026-11-09T05:30:03.720Z"
+      "committedAt": "2026-11-09T05:30:03.720Z",
+      "publishedAt": "2026-11-09T09:17:00.787Z"
     }
   },
   "nextTopic": "All 56 articles complete",
-  "updatedAt": "2026-11-09T05:30:03.733Z"
+  "updatedAt": "2026-11-09T09:17:00.787Z"
 }
