@@ -767,6 +767,8 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
   const [submitting, setSubmitting] = useState(false);
   const [replyingTo, setReplyingTo] = useState<string | null>(null); // parent comment id
   const [replyText, setReplyText] = useState("");
+  // Shown under whichever box was being used when a comment would not save.
+  const [commentError, setCommentError] = useState<string | null>(null);
   const [editingCommentId, setEditingCommentId] = useState<string | null>(null);
   const [editingCommentText, setEditingCommentText] = useState("");
   const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
@@ -877,24 +879,34 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
       return;
     }
     setSubmitting(true);
+    setCommentError(null);
     const { data, error } = await supabase
       .from("feed_post_comments")
       .insert({ post_id: postId, user_id: myId, parent_comment_id: parentId, content: content.trim() })
       .select("id, post_id, user_id, parent_comment_id, content, created_at")
       .single();
 
-    if (!error && data) {
-      const newC: FeedComment = {
-        ...data,
-        display_name: myProfile?.display_name ?? null,
-        username: myProfile?.username ?? null,
-        profile_image_url: myProfile?.profile_image_url ?? null,
-      };
-      setComments((prev) => [...prev, newC]);
-      onCountChange(1);
-      void logActionToMasterActions(myId, parentId ? "feed_post_replied" : "feed_post_commented", `post:${postId}`);
-
+    // supabase-js does not throw when the connection drops - it comes back
+    // with { data: null, error }. This used to run on past the success check
+    // and clear the box anyway, so what someone had written disappeared with
+    // nothing on screen to say why. Keep their words and tell them.
+    if (error || !data) {
+      console.error("[FEED] Comment could not be saved:", error?.message);
+      setCommentError("That didn't send. Check your connection and try again — your comment is still here.");
+      setSubmitting(false);
+      return;
     }
+
+    const newC: FeedComment = {
+      ...data,
+      display_name: myProfile?.display_name ?? null,
+      username: myProfile?.username ?? null,
+      profile_image_url: myProfile?.profile_image_url ?? null,
+    };
+    setComments((prev) => [...prev, newC]);
+    onCountChange(1);
+    void logActionToMasterActions(myId, parentId ? "feed_post_replied" : "feed_post_commented", `post:${postId}`);
+
     setNewComment("");
     setReplyText("");
     setReplyingTo(null);
@@ -1089,6 +1101,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
     setReplyText,
     submitComment,
     submitting,
+    commentError,
     currentUserIsAdmin,
     handleAutoReply,
     autoReplyLoadingId,
@@ -1145,6 +1158,11 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
           Post
         </button>
       </div>
+      {commentError && !replyingTo && (
+        <p role="alert" className="mt-2 ml-10 text-xs text-red-600">
+          {commentError}
+        </p>
+      )}
     </div>
   );
 }
@@ -1168,6 +1186,7 @@ type CommentRowContext = {
   setReplyText: (value: string) => void;
   submitComment: (content: string, parentId: string | null) => void | Promise<void>;
   submitting: boolean;
+  commentError: string | null;
   currentUserIsAdmin: boolean;
   handleAutoReply: (comment: FeedComment) => void | Promise<void>;
   autoReplyLoadingId: string | null;
@@ -1367,6 +1386,11 @@ function CommentRow({
               Reply
             </button>
           </div>
+        )}
+        {ctx.replyingTo === comment.id && ctx.commentError && (
+          <p role="alert" className="mt-1 text-xs text-red-600">
+            {ctx.commentError}
+          </p>
         )}
         {/* The replies under this comment. Answering any of them posts here too,
             so a thread stays one level deep and reads top to bottom. */}

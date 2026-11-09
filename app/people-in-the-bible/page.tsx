@@ -18,7 +18,6 @@ import { requestLouisNotes } from "../../lib/requestLouisNotes";
 import { triggerPoints } from "../../components/PointsPop";
 import CreditLimitModal from "../../components/CreditLimitModal";
 import CreditEducationModal from "../../components/CreditEducationModal";
-import { CORE_STUDY_IS_FREE } from "../../lib/accessPolicy";
 // Utility to get/set session flag for education modal
 const EDUCATION_MODAL_SESSION_KEY = "bbCreditEducationModalShown";
 
@@ -528,29 +527,18 @@ ${person} is someone you meet in Scripture, and Louis is still getting the full 
       fetchProfile();
     }, []);
 
-    // Listen for credit changes (simulate: poll every 2s for demo, or update after credit use)
-    useEffect(() => {
-      if (!profile || profile.is_paid || profile.ignore_credit_phase1) return;
-      const interval = setInterval(async () => {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (!user) return;
-        const { data, error } = await supabase
-          .from("profile_stats")
-          .select("is_paid, daily_credits, ignore_credit_phase1")
-          .eq("user_id", user.id)
-          .maybeSingle();
-        if (!error && data && data.is_paid !== true && data.ignore_credit_phase1 !== true) {
-          const prev = prevCreditsRef.current;
-          const curr = typeof data.daily_credits === "number" ? data.daily_credits : null;
-          // Only trigger if prev was 5, now 4, and ignore_credit_phase1 is false
-          if (!CORE_STUDY_IS_FREE && prev === 5 && curr === 4) {
-            setShowEducationModal(true);
-          }
-          prevCreditsRef.current = curr;
-        }
-      }, 2000);
-      return () => clearInterval(interval);
-    }, [profile]);
+    // There used to be a setInterval here that asked profile_stats for this
+    // person's credit count every 2 seconds, for as long as the page was open,
+    // whether or not the tab was in front. It existed to catch the moment
+    // someone's credits went from 5 to 4 and open the education modal - and it
+    // was guarded on !CORE_STUDY_IS_FREE, which has been true since the app
+    // went free, so the modal it was watching for could never open. All it did
+    // was make requests. An 8-second poll of the same shape in AppShell caused
+    // three database outages in October 2026; this one was four times faster.
+    //
+    // The modal and its state are left in place: if paid gating ever comes
+    // back, it should be opened at the point the credit is spent, not found
+    // afterwards by polling.
     // Modal close handler
     const handleCloseEducationModal = () => setShowEducationModal(false);
     // When user sets ignore, update profile state

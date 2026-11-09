@@ -61,7 +61,8 @@
     "verify:store-platform": "tsx scripts/verify-store-platform.ts",
     "verify:auth-lock": "tsx scripts/verify-supabase-auth-lock.ts",
     "verify:load-retry": "tsx scripts/verify-load-retry.ts",
-    "verify:anon-access": "tsx scripts/verify-anon-access.ts"
+    "verify:anon-access": "tsx scripts/verify-anon-access.ts",
+    "verify:comment-not-lost": "tsx scripts/verify-comment-not-lost.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",
