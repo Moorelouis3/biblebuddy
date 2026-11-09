@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "deuteronomy-34-explained",
+    title: "Deuteronomy 34 Explained: The Death of Moses on Mount Nebo",
+    description:
+      "Deuteronomy 34 explained verse by verse: Moses's death on Mount Nebo, his hidden grave, Joshua's succession, and the Prophet still to come.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/deuteronomy-34-explained",
+    publishedAt: "2026-11-09",
+    readTime: "14 min read",
+    image: "/blog-banners/deuteronomy-34-explained.jpg",
+    groupPost: {
+      title: "Deuteronomy 34 Explained 📖",
+      content:
+        "Moses climbs one last mountain.\nHe never comes back down it.\n\n📌 No one has ever found where Moses was buried.\n\n📖 He was a hundred and twenty, and his eyesight never faded.\n📖 Israel mourned him the same thirty days they mourned Aaron.\n📖 The Torah ends by saying no prophet ever matched him, yet.\n\nNew article on:\n🟢 why **God showed him the land** but still said no\n🟢 who **really buried him**, and why the grave stayed hidden\n🟢 the **Prophet** Moses himself already promised was coming\n\nHas God ever answered your prayer smaller than you asked? 🙏",
+    },
+  },
+  {
     slug: "what-is-boxing-day",
     title: "What Is Boxing Day? St. Stephen's Day and Its Christian Roots",
     description:
