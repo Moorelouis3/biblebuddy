@@ -12,8 +12,21 @@ import { suppress } from "@/lib/email/sesSender";
  * hard-bounces or reports us as spam goes straight onto the suppression list
  * that lib/email/sesSender.ts checks before each send.
  *
- * Soft bounces (a full mailbox, a server having a bad day) are recorded but
- * not suppressed - that address is usually fine next week.
+ * Every bounce suppresses, soft ones included (Louis, 2026-11-09: "stop
+ * eamiling them after 2 strikes actually 1 strike if its biunced thatex dont
+ * want emails move on").
+ *
+ * This used to suppress only Permanent bounces, and the arithmetic of leaving
+ * soft ones alone was ugly: 1,762 bounces in 90 days came from 308 addresses,
+ * 1,454 of them to an address that had already bounced, and only 80 of those
+ * 308 were ever suppressed. The same couple of hundred dead inboxes were
+ * mailed every campaign and bounced every time, which carried the bounce rate
+ * from 2.68% over 30 days to 3.29% in a single day, against a 5% AWS cut-off.
+ *
+ * A Transient bounce is not a server having a bad day either. SES has already
+ * retried for hours by the time it publishes one - DeliveryDelay is the event
+ * it sends while it is still trying, and that one is deliberately not handled
+ * here.
  *
  * Auth: SNS cannot send a custom header, so the secret rides in the URL
  * (?token=SES_WEBHOOK_TOKEN) and the topic ARN is checked as well.
@@ -148,14 +161,15 @@ export async function POST(request: NextRequest) {
   if (kind) await recordEvent(kind, event);
 
   if (kind === "Bounce" && event.bounce) {
-    const permanent = event.bounce.bounceType === "Permanent";
     for (const recipient of event.bounce.bouncedRecipients || []) {
       if (!recipient.emailAddress) continue;
-      if (!permanent) {
-        console.log(`[SES WEBHOOK] soft bounce, kept: ${recipient.emailAddress}`);
-        continue;
-      }
-      await suppress(recipient.emailAddress, "bounce", recipient.diagnosticCode || event.bounce.bounceSubType);
+      // The bounce type is recorded rather than used to decide, so a Transient
+      // suppression can still be told apart from a Permanent one later, and
+      // undone, without guessing which was which.
+      const detail = [event.bounce.bounceType, event.bounce.bounceSubType, recipient.diagnosticCode]
+        .filter(Boolean)
+        .join(" / ");
+      await suppress(recipient.emailAddress, "bounce", detail || undefined);
       suppressed.push(recipient.emailAddress);
     }
   }
