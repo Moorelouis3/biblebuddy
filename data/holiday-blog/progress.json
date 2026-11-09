@@ -136,6 +136,12 @@
         "what-is-a-nativity-scene",
         "who-was-king-herod"
       ]
+    },
+    "2026-11-09": {
+      "committed": 1,
+      "slugs": [
+        "what-is-boxing-day"
+      ]
     }
   },
   "articles": {
@@ -545,10 +551,11 @@
     },
     "what-is-boxing-day": {
       "attempts": 1,
-      "status": "generating",
-      "startedAt": "2026-11-09T01:18:41.591Z"
+      "status": "committed",
+      "startedAt": "2026-11-09T01:18:41.591Z",
+      "committedAt": "2026-11-09T01:28:18.313Z"
     }
   },
   "nextTopic": "what-is-the-octave-of-christmas",
-  "updatedAt": "2026-11-09T01:18:41.591Z"
+  "updatedAt": "2026-11-09T01:28:18.326Z"
 }

@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-boxing-day",
+    title: "What Is Boxing Day? St. Stephen's Day and Its Christian Roots",
+    description:
+      "What is Boxing Day? The real history behind the Christmas box tradition and its tie to the Feast of Saint Stephen, the first Christian martyr.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-boxing-day",
+    publishedAt: "2026-11-09",
+    readTime: "12 min read",
+    image: "/blog-banners/what-is-boxing-day.jpg",
+    groupPost: {
+      title: "What Is Boxing Day? St. Stephen's Day and Its Christian Roots 📖",
+      content:
+        "Boxing Day sounds like a sport.\nIt actually started as a day for giving.\n\n📌 Servants, tradesmen, and the poor all got a box on this exact date.\n\n📖 The name is first recorded in writing in 1743.\n📖 Churches opened their alms boxes for the poor on this same day.\n📖 Good King Wenceslas was written specifically for December 26.\n\nNew article on:\n🟢 where the **Christmas box** tradition actually came from\n🟢 why the day is also the **Feast of Saint Stephen**\n🟢 how a **tip for servants** became a bank holiday\n\nWho served you this year without much thanks? 🙏",
+    },
+  },
+  {
     slug: "who-was-king-herod",
     title: "Who Was King Herod? The Ruler Behind the Christmas Story",
     description:
