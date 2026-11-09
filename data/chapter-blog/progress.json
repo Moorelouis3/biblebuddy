@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-11-09T06:43:58.889Z",
-  "nextChapter": "Joshua 3",
+  "updatedAt": "2026-11-09T10:33:55.288Z",
+  "nextChapter": "Joshua 4",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -1507,33 +1507,43 @@
     },
     "deuteronomy-32-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-08T10:35:18.578Z",
-      "committedAt": "2026-11-08T10:48:02.384Z"
+      "committedAt": "2026-11-08T10:48:02.384Z",
+      "publishedAt": "2026-11-09T10:33:54.607Z"
     },
     "deuteronomy-33-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-08T13:34:19.917Z",
-      "committedAt": "2026-11-08T13:42:52.653Z"
+      "committedAt": "2026-11-08T13:42:52.653Z",
+      "publishedAt": "2026-11-09T10:33:54.751Z"
     },
     "deuteronomy-34-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-09T02:34:23.057Z",
-      "committedAt": "2026-11-09T02:47:51.803Z"
+      "committedAt": "2026-11-09T02:47:51.803Z",
+      "publishedAt": "2026-11-09T10:33:54.900Z"
     },
     "joshua-1-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-09T04:34:08.604Z",
-      "committedAt": "2026-11-09T04:44:45.155Z"
+      "committedAt": "2026-11-09T04:44:45.155Z",
+      "publishedAt": "2026-11-09T10:33:55.053Z"
     },
     "joshua-2-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-09T06:34:44.373Z",
-      "committedAt": "2026-11-09T06:43:58.888Z"
+      "committedAt": "2026-11-09T06:43:58.888Z",
+      "publishedAt": "2026-11-09T10:33:55.288Z"
+    },
+    "joshua-3-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-09T10:33:37.130Z"
     }
   },
   "priorityBooks": [
