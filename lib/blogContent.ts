@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-4-explained",
+    title: "Joshua 4 Explained: Twelve Stones From the Jordan",
+    description:
+      "Joshua 4 explained verse by verse: the twelve stones from the Jordan, the two memorials, the armed tribes keeping an old promise, and why it all mattered.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-4-explained",
+    publishedAt: "2026-11-09",
+    readTime: "12 min read",
+    image: "/blog-banners/joshua-4-explained.jpg",
+    groupPost: {
+      title: "Joshua 4 Explained 📖",
+      content:
+        "The river is still standing open.\nIsrael stops to build something before it closes.\n\n📌 Twelve stones, one for each tribe, pulled from the riverbed itself.\n\n📖 The stones were built for a question a child had not asked yet.\n📖 There were actually two separate stone memorials, not one.\n📖 Forty thousand armed men crossed first, keeping a promise made to Moses years earlier.\n\nNew article on:\n🟢 why God cared so much about **what children would ask later**\n🟢 the **two monuments** most readers never notice\n🟢 how **an old promise** finally got kept\n\nDo you have something God did that you have never actually told anyone? 🙏",
+    },
+  },
+  {
     slug: "joshua-3-explained",
     title: "Joshua 3 Explained: Crossing the Jordan on Dry Ground",
     description:
