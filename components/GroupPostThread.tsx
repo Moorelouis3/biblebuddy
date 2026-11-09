@@ -45,6 +45,15 @@ type Props = {
 
 const REPLY_FIELDS = "id, user_id, display_name, content, created_at, parent_post_id";
 
+/**
+ * How many levels of nested reply the thread will follow.
+ *
+ * One query per level, so this is also the cap on how many round trips the
+ * screen makes before it can draw. The deepest real thread is nowhere near
+ * this; the number exists so that no thread can ever be deep enough to matter.
+ */
+const MAX_REPLY_DEPTH = 20;
+
 function timeAgo(value: string) {
   const diff = Date.now() - new Date(value).getTime();
   const minutes = Math.floor(diff / 60000);
@@ -133,7 +142,21 @@ export default function GroupPostThread({
     }
     let allRows = (topLevel || []) as Omit<ThreadReply, "profile_image_url">[];
     let parentIds = allRows.map((row) => row.id);
-    while (parentIds.length > 0) {
+    // Two bounds on the walk, because it had none.
+    //
+    // It issues one query per level of nesting and stops only when a level
+    // comes back empty, so the number of round trips before this screen can
+    // draw is set by how deeply people happened to reply. And a row whose
+    // parent chain loops - which nothing in the schema prevents - would have
+    // kept it going until the tab was closed.
+    //
+    // Depth is capped, and no id is followed twice. Both are far beyond any
+    // real thread today; they are here so the page cannot be made slow, or
+    // endless, by data.
+    const seenIds = new Set<string>(parentIds);
+    let depth = 0;
+    while (parentIds.length > 0 && depth < MAX_REPLY_DEPTH) {
+      depth += 1;
       const { data, error: walkError } = await supabase
         .from("group_posts")
         .select(REPLY_FIELDS)
@@ -147,10 +170,16 @@ export default function GroupPostThread({
         setLoading(false);
         return [] as Omit<ThreadReply, "profile_image_url">[];
       }
-      const newRows = (data || []) as Omit<ThreadReply, "profile_image_url">[];
+      const newRows = ((data || []) as Omit<ThreadReply, "profile_image_url">[]).filter(
+        (row) => !seenIds.has(row.id),
+      );
       if (newRows.length === 0) break;
+      newRows.forEach((row) => seenIds.add(row.id));
       allRows = [...allRows, ...newRows];
       parentIds = newRows.map((row) => row.id);
+    }
+    if (depth >= MAX_REPLY_DEPTH) {
+      console.warn(`[GROUP_THREAD] Stopped walking replies at ${MAX_REPLY_DEPTH} levels.`);
     }
 
     const userIds = [...new Set(allRows.map((row) => row.user_id))];
