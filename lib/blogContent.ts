@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-3-explained",
+    title: "Joshua 3 Explained: Crossing the Jordan on Dry Ground",
+    description:
+      "Joshua 3 explained verse by verse: the ark leads the way, the priests stand in a flooded river, and Israel crosses the Jordan on dry ground.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-3-explained",
+    publishedAt: "2026-11-09",
+    readTime: "12 min read",
+    image: "/blog-banners/joshua-3-explained.jpg",
+    groupPost: {
+      title: "Joshua 3 Explained 📖",
+      content:
+        "Israel reaches the Jordan River.\nIt is flooded. Nobody has a boat.\n\n📌 The priests have to stand in the water before anything changes.\n\n📖 The ark goes first, carried by priests alone.\n📖 The people stay two thousand cubits back from it.\n📖 The water stops the moment their feet touch it.\n\nNew article on:\n🟢 why God picked the **hardest possible moment** to cross\n🟢 what the **two thousand cubit distance** was really about\n🟢 how this crossing differs from the **Red Sea** generation\n\nDid you know the Jordan was at full flood when Israel crossed, not low water? 🙏",
+    },
+  },
+  {
     slug: "joshua-2-explained",
     title: "Joshua 2 Explained: Rahab, the Spies, and the Scarlet Cord",
     description:
