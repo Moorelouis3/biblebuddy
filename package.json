@@ -67,7 +67,8 @@
     "verify:comment-not-lost": "tsx scripts/verify-comment-not-lost.ts",
     "verify:progress-not-empty": "tsx scripts/verify-progress-not-empty.ts",
     "verify:supabase-failure-reporter": "tsx scripts/verify-supabase-failure-reporter.ts",
-    "verify:p2-stability": "tsx scripts/verify-p2-stability.ts"
+    "verify:p2-stability": "tsx scripts/verify-p2-stability.ts",
+    "verify:p3-cleanup": "tsx scripts/verify-p3-cleanup.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",
