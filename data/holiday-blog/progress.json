@@ -542,8 +542,13 @@
       "status": "committed",
       "startedAt": "2026-11-08T15:16:57.220Z",
       "committedAt": "2026-11-08T15:27:18.228Z"
+    },
+    "what-is-boxing-day": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-09T01:18:41.591Z"
     }
   },
-  "nextTopic": "what-is-boxing-day",
-  "updatedAt": "2026-11-09T01:18:10.421Z"
+  "nextTopic": "what-is-the-octave-of-christmas",
+  "updatedAt": "2026-11-09T01:18:41.591Z"
 }
