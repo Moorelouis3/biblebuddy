@@ -13365,3 +13365,30 @@ Still open: the rest of the roadmap. P1-5 (the vanishing comment) and P1-6 (the
 are blocked on his call about what a reader should see when progress cannot be
 loaded.
 Next: P1-5 and P1-6 if Louis wants them.
+
+## 2026-11-09 (night, addendum 2)
+Time spent: ~2h more.
+Done: P1-5 and P1-6 (a comment that fails to send now stays in the box and says
+so; the 2-second profile_stats poll on /people-in-the-bible is gone). Then
+P1-1 to P1-4: failed reads throw ProgressLoadError instead of answering with
+the same value as "you have nothing", and all 23 call sites got an explicit
+decision - screens whose point is your progress show "Couldn't load. Try
+Again", screens where it is a detail catch it with a comment saying why. Then
+P1-7, the failure instrument: every Supabase request that comes back 5xx or
+not at all now leaves a bug_reports row, from inside the client's own fetch
+wrapper, bounded to one post per fingerprint and ten per page load with
+nothing sent while offline. That commit also fixes 3.7 - the crash reporter
+was sending window.location.search, which put live password-reset tokens into
+bug_reports.
+Verified live after the 16:02 deploy: with bible_year_day_progress blocked in
+the browser, the Bible in One Year study page shows "Couldn't load this study.
+Try Again" instead of claiming zero progress, and Try Again recovers it fully.
+Three new verify suites (comment-not-lost, progress-not-empty,
+supabase-failure-reporter); all ten offline suites and tsc pass.
+Not live yet: `npm run pending` shows 1 commit waiting - the failure
+instrument - next build Tue 09:05 Berlin. Everything else from today went out
+at 16:02.
+Still open: P2 and P3 in the roadmap, device testing (§6, ten-item list, needs
+a phone), and the two Supabase dashboard screenshots that would close whether
+the October poll fix held in production.
+Next: P2 items, or the device checklist if Louis has a phone free.
