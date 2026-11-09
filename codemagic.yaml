@@ -40,6 +40,15 @@ workflows:
         # does not upload. Either both carry the entitlement or neither
         # compiles the APIs; a split between them is a trap.
         BIBLE_LOCK_ENTITLEMENT: "on"
+        # The Associated Domains entitlement. Ticked on the App ID
+        # net.mybiblebuddy.app on 2026-11-09; without it the signed app never
+        # claims www.mybiblebuddy.net, and an https link goes on opening the
+        # browser however correct the .well-known file is.
+        #
+        # scripts/ios-entitlements.sh defaults this to off, so BOTH iOS
+        # workflows have to set it - a split between them is the same trap
+        # the Family Controls note above describes.
+        ASSOCIATED_DOMAINS_ENTITLEMENT: "on"
 
     # Manual only. There is no triggering block on purpose.
     #
@@ -182,6 +191,15 @@ workflows:
         # so this stays off until Apple issues a profile that has it. See
         # docs/bible-lock-entitlement-evidence.md.
         BIBLE_LOCK_ENTITLEMENT: "on"
+        # The Associated Domains entitlement. Ticked on the App ID
+        # net.mybiblebuddy.app on 2026-11-09; without it the signed app never
+        # claims www.mybiblebuddy.net, and an https link goes on opening the
+        # browser however correct the .well-known file is.
+        #
+        # scripts/ios-entitlements.sh defaults this to off, so BOTH iOS
+        # workflows have to set it - a split between them is the same trap
+        # the Family Controls note above describes.
+        ASSOCIATED_DOMAINS_ENTITLEMENT: "on"
         # The version people see is "<this>.<build>" - 1.09 is version 1,
         # build 9 (Louis, 2026-10-17: "so I know it's version 1 build 9").
         # Bump it to 2 when version 2 ships and the numbers read 2.14, 2.15.
@@ -416,6 +434,15 @@ workflows:
       # "Install the Firebase config" step below for why it is not in the repo.
       groups:
         - firebase
+      vars:
+        # Turns on the "Let mybiblebuddy.net links open the app" step below.
+        # On since 2026-11-09, when the app signing key fingerprint went into
+        # ANDROID_APP_LINK_SHA256 on Vercel and /.well-known/assetlinks.json
+        # started answering with it. Android verifies the filter against that
+        # file, so this must not be switched on before the file is live: below
+        # Android 12 an unverified filter shows a "Chrome or Bible Buddy?"
+        # chooser instead of just opening the app. See docs/DEEP_LINKS.md.
+        ANDROID_APP_LINKS: "on"
 
     scripts:
       - name: Install dependencies
@@ -551,6 +578,14 @@ workflows:
         # build 9, matching the iPhone build's convention so the two stores
         # do not drift into different numbering.
         APP_MAJOR_VERSION: "1"
+        # Turns on the "Let mybiblebuddy.net links open the app" step below.
+        # On since 2026-11-09, when the app signing key fingerprint went into
+        # ANDROID_APP_LINK_SHA256 on Vercel and /.well-known/assetlinks.json
+        # started answering with it. Android verifies the filter against that
+        # file, so this must not be switched on before the file is live: below
+        # Android 12 an unverified filter shows a "Chrome or Bible Buddy?"
+        # chooser instead of just opening the app. See docs/DEEP_LINKS.md.
+        ANDROID_APP_LINKS: "on"
 
     scripts:
       - name: Install dependencies
