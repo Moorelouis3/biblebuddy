@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "forgiving-someone-who-isnt-sorry",
+    title: "How Do You Forgive Someone Who Isn't Sorry?",
+    description:
+      "How do you forgive someone who isn't sorry? See what the Bible actually says: forgiveness is commanded, but reconciliation and trust are not automatic.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/forgiving-someone-who-isnt-sorry",
+    publishedAt: "2026-11-09",
+    readTime: "23 min read",
+    image: "/forgiving-someone-who-isnt-sorry-banner.png",
+    groupPost: {
+      title: "How Do You Forgive Someone Who Isn't Sorry? 📖",
+      content:
+        "They are not sorry.\nAnd they are never going to say it.\n\n📌 Forgiveness was never designed to wait on their sorry.\n\n📖 Jesus forgave people while they mocked Him.\n📖 Joseph named the evil and forgave anyway.\n📖 Vengeance was never yours to carry.\n\nNew article on:\n🟢 the difference between **forgiveness** and **trust**\n🟢 why you can forgive and still **set a boundary**\n🟢 what to do with the anger while you **wait**\n\nHave you ever had to forgive someone who never said sorry? 🙏",
+    },
+  },
+  {
     slug: "joshua-4-explained",
     title: "Joshua 4 Explained: Twelve Stones From the Jordan",
     description:

@@ -13439,3 +13439,10 @@ screenshots are still outstanding. The admin moderation and group analytics
 routes still build /study-groups/<id>/chat links that go nowhere; they already
 did before today.
 Next: whatever Louis wants - the roadmap is otherwise done.
+
+## 2026-11-09T22:19:05Z (blog writer run)
+Article: How Do You Forgive Someone Who Isn't Sorry? | Words: ~4700 | Category: Christian Foundations | Status: pass
+Queue remaining: 8
+Not live yet: this commit carries no [deploy] tag per the 2026-10-10 deploy
+cadence change, so it ships at the next scheduled deploy (08:05 Berlin), not
+immediately.
