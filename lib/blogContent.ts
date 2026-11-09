@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-2-explained",
+    title: "Joshua 2 Explained: Rahab, the Spies, and the Scarlet Cord",
+    description:
+      "Joshua 2 explained verse by verse: the two spies in Jericho, Rahab's confession of faith, her oath for her family, and the meaning of the scarlet cord.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-2-explained",
+    publishedAt: "2026-11-09",
+    readTime: "15 min read",
+    image: "/blog-banners/joshua-2-explained.jpg",
+    groupPost: {
+      title: "Joshua 2 Explained 📖",
+      content:
+        "Two spies sneak into Jericho.\nA Canaanite woman is the one who saves them.\n\n📌 Rahab tells them the LORD is God over heaven and earth, before Israel wins a single battle.\n\n📖 She hides them, then lies to the king to protect them.\n📖 She asks the spies to swear by the LORD himself.\n📖 A scarlet cord marks the one house that will be spared.\n\nNew article on:\n🟢 what Rahab's **confession of faith** actually says\n🟢 the hard question of her **lie to the king**\n🟢 how she ends up in **Jesus' own family line**\n\nDid you know Rahab is named in Hebrews 11 right alongside Abraham and Moses? 🙏",
+    },
+  },
+  {
     slug: "what-is-the-octave-of-christmas",
     title: "What Is the Octave of Christmas? The Eight Days Explained",
     description:
