@@ -7,6 +7,18 @@ import { useRouter, useSearchParams } from "next/navigation";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
 import { supabase } from "@/lib/supabaseClient";
+import { UNREACHABLE_MESSAGE, authErrorMessage, isUnreachableAuthError } from "@/lib/authErrorMessage";
+
+/**
+ * A reset link that the server never answered about is not an expired link.
+ * Telling somebody who is already locked out that their only way back in has
+ * expired, because their train went into a tunnel, is the worst version of
+ * this screen being wrong.
+ */
+const linkProblemMessage = (err: { message?: string; name?: string; status?: number }) =>
+  isUnreachableAuthError(err)
+    ? UNREACHABLE_MESSAGE
+    : "This reset link is invalid or expired. Please request a new one.";
 
 export const dynamic = "force-dynamic";
 
@@ -111,7 +123,7 @@ function ResetPasswordForm() {
       if (code) {
         const { error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
         if (exchangeError) {
-          setError("This reset link is invalid or expired. Please request a new one.");
+          setError(linkProblemMessage(exchangeError));
           setIsValidToken(false);
           return;
         }
@@ -124,7 +136,7 @@ function ResetPasswordForm() {
       if (accessToken && refreshToken && type === "recovery") {
         const { error: sessionError } = await supabase.auth.setSession({ access_token: accessToken, refresh_token: refreshToken });
         if (sessionError) {
-          setError("This reset link is invalid or expired. Please request a new one.");
+          setError(linkProblemMessage(sessionError));
           setIsValidToken(false);
           return;
         }
@@ -137,7 +149,7 @@ function ResetPasswordForm() {
       if (tokenHash && typeQuery === "recovery") {
         const { error: verifyError } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type: "recovery" });
         if (verifyError) {
-          setError("This reset link is invalid or expired. Please request a new one.");
+          setError(linkProblemMessage(verifyError));
           setIsValidToken(false);
           return;
         }
@@ -152,7 +164,7 @@ function ResetPasswordForm() {
       if (accessTokenQuery && refreshTokenQuery && typeQuery === "recovery") {
         const { error: sessionError } = await supabase.auth.setSession({ access_token: accessTokenQuery, refresh_token: refreshTokenQuery });
         if (sessionError) {
-          setError("This reset link is invalid or expired. Please request a new one.");
+          setError(linkProblemMessage(sessionError));
           setIsValidToken(false);
           return;
         }
@@ -172,7 +184,17 @@ function ResetPasswordForm() {
       setIsValidToken(false);
     };
 
-    void checkToken();
+    // isValidToken starts as null and the screen shows a spinner until it is
+    // something else. Every branch above sets it - but only on the paths that
+    // were thought of. Anything that throws at all (a storage read behind
+    // getSession, a browser that blocks it) left it null and the spinner ran
+    // for the life of the tab, on the one screen a person reaches when they
+    // are already locked out.
+    void checkToken().catch((err: unknown) => {
+      console.error("[RESET_PASSWORD] Could not check the reset link:", err);
+      setError(authErrorMessage(err as { message?: string; name?: string }));
+      setIsValidToken(false);
+    });
   }, [searchParams]);
 
   async function handleRequestReset(e: FormEvent) {
@@ -193,7 +215,7 @@ function ResetPasswordForm() {
     setLoading(false);
 
     if (resetError) {
-      setError(resetError.message);
+      setError(authErrorMessage(resetError));
       return;
     }
 
@@ -232,7 +254,11 @@ function ResetPasswordForm() {
     setLoading(false);
 
     if (updateError) {
-      setError(updateError.message || "Failed to reset password. The link may have expired.");
+      setError(
+        isUnreachableAuthError(updateError)
+          ? UNREACHABLE_MESSAGE
+          : updateError.message || "Failed to reset password. The link may have expired.",
+      );
     } else {
       setSuccess(true);
       setTimeout(() => router.push("/login"), 2000);

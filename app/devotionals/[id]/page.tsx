@@ -113,6 +113,19 @@ import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "../../../lib/triviaCatalog";
 import { getTriviaChapter } from "../../../lib/triviaGameData";
 import { getScrambledChapter } from "../../../lib/scrambledGameData";
 import { getCompletedChaptersByBooks, markChapterDone } from "../../../lib/readingProgress";
+
+/**
+ * How many rows the "who else is studying this" queries may read.
+ *
+ * These three asked for every matching row with no limit, against tables with
+ * 202,834 and 63,081 rows in them. PostgREST caps every response at 1,000 and
+ * returns HTTP 206 with a content-range header, which supabase-js reports as
+ * no error at all - so the cut was already happening, invisibly, and the
+ * avatar row was already a subset. This makes it a decision instead: the most
+ * recent rows, deliberately bounded, for a social-proof row that was never
+ * meant to be a census.
+ */
+const STARTER_ROW_LIMIT = 1000;
 import {
   BIBLE_READING_BACKGROUND_TRACKS,
   BIBLE_READING_BACKGROUND_VOLUME,
@@ -640,7 +653,8 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           supabase
             .from("devotional_progress")
             .select("user_id, day_number, is_completed")
-            .eq("devotional_id", devotionalId),
+            .eq("devotional_id", devotionalId)
+            .limit(STARTER_ROW_LIMIT),
           supabase
             .from("master_actions")
             .select("user_id, action_label")
@@ -651,11 +665,14 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               ACTION_TYPE.devotional_day_completed,
               ACTION_TYPE.devotional_bible_reading_opened,
             ])
-            .ilike("action_label", `${devotionalData.title}%`),
+            .ilike("action_label", `${devotionalData.title}%`)
+            .order("created_at", { ascending: false })
+            .limit(STARTER_ROW_LIMIT),
           supabase
             .from("profile_stats")
             .select("user_id")
-            .or(`free_devotional_id.eq.${devotionalId},louis_primary_devotional_id.eq.${devotionalId}`),
+            .or(`free_devotional_id.eq.${devotionalId},louis_primary_devotional_id.eq.${devotionalId}`)
+            .limit(STARTER_ROW_LIMIT),
         ]);
 
         if (starterProgressRes.error) {

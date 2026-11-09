@@ -13,6 +13,7 @@ import {
 } from "@/lib/bibleStudyGameCatalog";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { supabase } from "@/lib/supabaseClient";
+import LoadFailedNotice from "@/components/LoadFailedNotice";
 import { CHAPTER_BASED_TRIVIA_BOOK_CONFIG } from "@/lib/triviaCatalog";
 
 const CHAPTER_BASED_TOTALS: Record<string, number> = Object.fromEntries(
@@ -26,6 +27,11 @@ const BOOK_TOTALS: Record<string, number> = Object.fromEntries(
 export default function BooksOfTheBiblePage() {
   const [progress, setProgress] = useState<Record<string, number>>(BOOK_TOTALS);
   const [loading, setLoading] = useState(true);
+  // The progress read failed. Without this the page rendered every book at its
+  // FULL question count - "100 left" to somebody who had answered 90 - with no
+  // skeleton, no message and nothing in the console.
+  const [failed, setFailed] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [isPaid, setIsPaid] = useState<boolean | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
@@ -50,6 +56,7 @@ export default function BooksOfTheBiblePage() {
 
   useEffect(() => {
     async function fetchProgress() {
+      setFailed(false);
       const {
         data: { user },
       } = await supabase.auth.getUser();
@@ -91,6 +98,7 @@ export default function BooksOfTheBiblePage() {
 
       if (progressError || completionError) {
         console.error("Error fetching trivia progress:", progressError || completionError);
+        setFailed(true);
         setLoading(false);
         return;
       }
@@ -149,8 +157,8 @@ export default function BooksOfTheBiblePage() {
       setLoading(false);
     }
 
-    fetchProgress();
-  }, []);
+    void fetchProgress();
+  }, [reloadKey]);
 
   useEffect(() => {
     if (!userId) return;
@@ -162,6 +170,23 @@ export default function BooksOfTheBiblePage() {
       dedupeKey: "trivia-books-page-viewed",
     }).catch((error) => console.error("[NAV] Failed to track trivia books page view:", error));
   }, [userId, username]);
+
+  if (failed) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8 px-4">
+        <div className="mx-auto max-w-4xl">
+          <LoadFailedNotice
+            message="Couldn't load your trivia progress."
+            onRetry={() => {
+              setFailed(false);
+              setLoading(true);
+              setReloadKey((k) => k + 1);
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">

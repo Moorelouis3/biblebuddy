@@ -52,13 +52,31 @@ export default function ScrambledUpgradeGate({
         return;
       }
 
-      const { data: profileStats } = await supabase
+      const { data: profileStats, error } = await supabase
         .from("profile_stats")
         .select("is_paid")
         .eq("user_id", user.id)
         .maybeSingle();
 
       if (!isMounted) return;
+
+      // Fail open, deliberately. supabase-js returns { data: null, error } on a
+      // dropped connection, so this read used to resolve to "not paid" and put
+      // an upgrade wall in front of somebody who had already paid. Locking a
+      // paying reader out of a game because their connection blinked is the
+      // worse way to be wrong; letting one free pack through is not.
+      //
+      // Unreachable while CORE_STUDY_IS_FREE is true - isFreePack returns
+      // above - which is exactly why it is written down rather than guarded
+      // with a retry screen nobody would ever see.
+      if (error) {
+        console.warn("[SCRAMBLED] Could not check access, allowing play:", error.message);
+        setIsPaid(true);
+        setShowUpgradeModal(false);
+        setLoading(false);
+        return;
+      }
+
       const paid = profileStats?.is_paid === true;
       setIsPaid(paid);
       setShowUpgradeModal(!paid);

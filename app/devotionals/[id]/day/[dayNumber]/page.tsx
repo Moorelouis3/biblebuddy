@@ -18,6 +18,7 @@ import { enrichPlainText } from "@/lib/bibleHighlighting";
 import { getProverbsChapterNotesFallback, withNotesTimeout } from "@/lib/proverbsChapterNotesFallback";
 import { fetchBibleChapterNotes } from "@/lib/chapterNotesOffline";
 import { supabase } from "@/lib/supabaseClient";
+import LoadFailedNotice from "@/components/LoadFailedNotice";
 import { getTriviaBook, getTriviaChapter } from "@/lib/triviaGameData";
 import { triggerPoints } from "@/components/PointsPop";
 import { TASK_XP } from "@/lib/progressionRewards";
@@ -315,6 +316,9 @@ export default function ProverbsStudyDayPage() {
   // Community event day (Wisdom of Proverbs): this day's Bible Buddy group post, if published.
   const [eventDayPost, setEventDayPost] = useState<EventDayPost | null>(null);
   const [loading, setLoading] = useState(true);
+  // "This day is not there" and "we could not ask" produced the same screen.
+  // Only one of them is worth a Try Again button, and it is the common one.
+  const [failed, setFailed] = useState(false);
   const [openTask, setOpenTask] = useState<number | null>(null);
   /**
    * ?task=discussion opens that task and scrolls to it (2026-10-25).
@@ -431,6 +435,7 @@ export default function ProverbsStudyDayPage() {
 
   async function loadAll() {
     setLoading(true);
+    setFailed(false);
     const { data: auth } = await supabase.auth.getUser();
     const uid = auth.user?.id ?? null;
     setUserId(uid);
@@ -444,6 +449,16 @@ export default function ProverbsStudyDayPage() {
         .eq("day_number", dayNumber)
         .maybeSingle(),
     ]);
+
+    if (devotionalRes.error || dayRes.error) {
+      console.error(
+        "[DEVOTIONAL_DAY] Could not load the study:",
+        (devotionalRes.error || dayRes.error)?.message,
+      );
+      setFailed(true);
+      setLoading(false);
+      return;
+    }
 
     const devotionalRow = devotionalRes.data as Devotional | null;
     const dayRow = dayRes.data as DevotionalDay | null;
@@ -961,6 +976,14 @@ export default function ProverbsStudyDayPage() {
 
   if (loading) {
     return <div className="min-h-screen bg-gray-50 px-4 py-10 text-center text-sm text-gray-500">Loading Bible study...</div>;
+  }
+
+  if (failed) {
+    return (
+      <div className="mx-auto min-h-screen w-full max-w-2xl bg-gray-50 px-4 py-10">
+        <LoadFailedNotice message="Couldn't load this day." onRetry={() => void loadAll()} />
+      </div>
+    );
   }
 
   if (!devotional || !day) {

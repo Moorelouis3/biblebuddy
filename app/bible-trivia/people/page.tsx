@@ -9,6 +9,7 @@ import { ACTION_TYPE } from "@/lib/actionTypes";
 import { BIBLE_GAME_ITEMS_PER_PAGE, BIBLE_GAME_PEOPLE, FREE_TRIVIA_PERSON_KEYS } from "@/lib/bibleStudyGameCatalog";
 import { trackNavigationActionOnce } from "@/lib/navigationActionTracker";
 import { supabase } from "@/lib/supabaseClient";
+import LoadFailedNotice from "@/components/LoadFailedNotice";
 
 const PERSON_TOTALS: Record<string, number> = {
   god: 100,
@@ -20,6 +21,10 @@ const PERSON_TOTALS: Record<string, number> = {
 export default function PeopleOfTheBiblePage() {
   const [progress, setProgress] = useState<Record<string, number>>(PERSON_TOTALS);
   const [loading, setLoading] = useState(true);
+  // See the sibling page: a failed read used to render every person at their
+  // full question count, silently.
+  const [failed, setFailed] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
   const [isPaid, setIsPaid] = useState<boolean | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [page, setPage] = useState(0);
@@ -33,6 +38,7 @@ export default function PeopleOfTheBiblePage() {
 
   useEffect(() => {
     async function fetchProgress() {
+      setFailed(false);
       const {
         data: { user },
       } = await supabase.auth.getUser();
@@ -71,6 +77,7 @@ export default function PeopleOfTheBiblePage() {
 
       if (error) {
         console.error("Error fetching trivia progress:", error);
+        setFailed(true);
         setLoading(false);
         return;
       }
@@ -90,8 +97,8 @@ export default function PeopleOfTheBiblePage() {
       setLoading(false);
     }
 
-    fetchProgress();
-  }, []);
+    void fetchProgress();
+  }, [reloadKey]);
 
   useEffect(() => {
     if (!userId) return;
@@ -103,6 +110,23 @@ export default function PeopleOfTheBiblePage() {
       dedupeKey: "trivia-people-page-viewed",
     }).catch((error) => console.error("[NAV] Failed to track trivia people page view:", error));
   }, [userId, username]);
+
+  if (failed) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8 px-4">
+        <div className="mx-auto max-w-4xl">
+          <LoadFailedNotice
+            message="Couldn't load your trivia progress."
+            onRetry={() => {
+              setFailed(false);
+              setLoading(true);
+              setReloadKey((k) => k + 1);
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">

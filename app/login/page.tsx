@@ -9,6 +9,7 @@ import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import PublicHomeButton from "@/components/PublicHomeButton";
 import BrandHomeLink from "@/components/BrandHomeLink";
 import { supabase } from "../../lib/supabaseClient";
+import { authErrorMessage } from "../../lib/authErrorMessage";
 import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending } from "../../lib/termsAcceptance";
 import { hasCachedSupabaseSession } from "../../lib/authBoot";
@@ -96,7 +97,7 @@ export default function LoginPage() {
 
     if (error) {
       setLoading(false);
-      setError(error.message);
+      setError(authErrorMessage(error));
       return;
     }
 
@@ -177,7 +178,7 @@ export default function LoginPage() {
 
     if (error) {
       setLoading(false);
-      setError(error.message);
+      setError(authErrorMessage(error));
     }
   }
 

@@ -15,6 +15,7 @@ import { checkContent } from "@/lib/contentFilter";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import LoadFailedNotice from "@/components/LoadFailedNotice";
 import { useAccountGate } from "@/components/AccountRequiredModal";
 import ReportBlockMenu from "@/components/ReportBlockMenu";
 import { useBlockedUserIds } from "@/lib/userBlocks";
@@ -100,8 +101,13 @@ export default function GroupPostThread({
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editingText, setEditingText] = useState("");
   const [savingEditId, setSavingEditId] = useState<string | null>(null);
+  // The replies could not be read. Reproduced live on 9 November: two blocked
+  // requests, no skeleton, no message, nothing in the console - just "No
+  // replies yet. Start the conversation." on a thread with replies in it.
+  const [failed, setFailed] = useState(false);
 
   const loadThread = useCallback(async () => {
+    setFailed(false);
     const { data: parent } = await supabase
       .from("group_posts")
       .select("category")
@@ -110,20 +116,37 @@ export default function GroupPostThread({
     setCategory((parent as { category?: string } | null)?.category ?? null);
 
     // Direct replies, then every reply under them (same walk as the group feed).
-    const { data: topLevel } = await supabase
+    const { data: topLevel, error: topLevelError } = await supabase
       .from("group_posts")
       .select(REPLY_FIELDS)
       .eq("group_id", groupId)
       .eq("parent_post_id", postId)
       .order("created_at", { ascending: true });
+    // This is the read the thread is made of. Without it there is no honest
+    // screen to draw, and "No replies yet" is a statement about the post that
+    // we have no basis for.
+    if (topLevelError) {
+      console.error("[GROUP_THREAD] Could not load replies:", topLevelError.message);
+      setFailed(true);
+      setLoading(false);
+      return [] as Omit<ThreadReply, "profile_image_url">[];
+    }
     let allRows = (topLevel || []) as Omit<ThreadReply, "profile_image_url">[];
     let parentIds = allRows.map((row) => row.id);
     while (parentIds.length > 0) {
-      const { data } = await supabase
+      const { data, error: walkError } = await supabase
         .from("group_posts")
         .select(REPLY_FIELDS)
         .in("parent_post_id", parentIds)
         .order("created_at", { ascending: true });
+      // A failed step here is not "the thread ends": it would cut every reply
+      // below this depth off the screen without saying so.
+      if (walkError) {
+        console.error("[GROUP_THREAD] Could not walk the replies:", walkError.message);
+        setFailed(true);
+        setLoading(false);
+        return [] as Omit<ThreadReply, "profile_image_url">[];
+      }
       const newRows = (data || []) as Omit<ThreadReply, "profile_image_url">[];
       if (newRows.length === 0) break;
       allRows = [...allRows, ...newRows];
@@ -545,6 +568,14 @@ export default function GroupPostThread({
       <div className="mt-2">
         {loading ? (
           <p className="py-3 text-center text-xs text-[var(--bb-text-muted,#9ca3af)]">Loading discussion...</p>
+        ) : failed ? (
+          <LoadFailedNotice
+            message="Couldn't load the replies."
+            onRetry={() => {
+              setLoading(true);
+              void loadThread();
+            }}
+          />
         ) : topLevel.length === 0 ? (
           <p className="py-3 text-center text-xs text-[var(--bb-text-muted,#9ca3af)]">No replies yet. Start the conversation.</p>
         ) : (

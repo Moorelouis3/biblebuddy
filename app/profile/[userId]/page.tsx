@@ -775,12 +775,18 @@ export default function PublicProfilePage() {
   }
 
   async function buildActionLog(uid: string, actorNameOverride?: string) {
+    const ACTION_LOG_LIMIT = 500;
     const actions: Array<{ date: string; text: string; sortKey: number; actionType: string; url?: string }> = [];
+    // Bounded on purpose. This read had no limit, so it was already being
+    // cut at PostgREST's 1,000-row cap without saying so - and for the most
+    // active readers that cut was arbitrary. An activity log wants the most
+    // recent entries anyway, so ask for those.
     const { data: masterActions, error } = await supabase
       .from("master_actions")
       .select("action_type, action_label, created_at")
       .eq("user_id", uid)
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: false })
+      .limit(ACTION_LOG_LIMIT);
 
     if (error || !masterActions) { setActionLog([]); return; }
 

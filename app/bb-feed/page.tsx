@@ -359,17 +359,32 @@ function PostComposer({ userId, userProfile, onPosted }: {
     let linkUrl: string | null = null;
 
     // Upload photo to Supabase Storage
+    //
+    // This try is load-bearing, and it is the only one in the file that is.
+    // Storage is the one part of supabase-js that really throws: a network
+    // TypeError is not a StorageError, so StorageFileApi rethrows it instead
+    // of returning { error }. The `if (uploadErr)` below never ran on a
+    // dropped connection - the throw went straight past it, out of this
+    // handler, and nothing ever called setSubmitting(false). The Post button
+    // stayed down for the life of the page with the photo still attached.
     if (tab === "photo" && photoFile) {
-      const ext = photoFile.name.split(".").pop() ?? "jpg";
-      const path = `${userId}/${Date.now()}.${ext}`;
-      const { error: uploadErr } = await supabase.storage.from("post-media").upload(path, photoFile, { upsert: false });
-      if (uploadErr) {
-        setUploadError("Photo upload failed. Please try again.");
+      try {
+        const ext = photoFile.name.split(".").pop() ?? "jpg";
+        const path = `${userId}/${Date.now()}.${ext}`;
+        const { error: uploadErr } = await supabase.storage.from("post-media").upload(path, photoFile, { upsert: false });
+        if (uploadErr) {
+          setUploadError("Photo upload failed. Please try again.");
+          setSubmitting(false);
+          return;
+        }
+        const { data: pub } = supabase.storage.from("post-media").getPublicUrl(path);
+        mediaUrl = pub.publicUrl;
+      } catch (err) {
+        console.error("[FEED] Photo upload threw:", err);
+        setUploadError("Photo upload failed. Check your connection and try again.");
         setSubmitting(false);
         return;
       }
-      const { data: pub } = supabase.storage.from("post-media").getPublicUrl(path);
-      mediaUrl = pub.publicUrl;
     }
 
     // Upload video to Bunny Stream via TUS

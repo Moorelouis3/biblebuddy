@@ -11,6 +11,7 @@ import { getCaptchaToken } from "@/lib/captcha";
 import AppLoadingScreen from "@/components/AppLoadingScreen";
 import LegalPageThemeReset from "@/components/LegalPageThemeReset";
 import { supabase } from "@/lib/supabaseClient";
+import { authErrorMessage } from "@/lib/authErrorMessage";
 import { ACTION_TYPE } from "@/lib/actionTypes";
 import { hasCachedSupabaseSession } from "@/lib/authBoot";
 import { applyAppThemeToDocument, cacheAppThemeForUser } from "@/lib/appThemes";
@@ -958,7 +959,7 @@ export default function LandingPage() {
     });
 
     if (signupError) {
-      setError(signupError.message);
+      setError(authErrorMessage(signupError));
       setSubmitting(false);
       return;
     }
@@ -1128,7 +1129,7 @@ export default function LandingPage() {
     });
     if (oauthError) {
       setSubmitting(false);
-      setError(oauthError.message);
+      setError(authErrorMessage(oauthError));
     }
   }
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { LouisAvatar } from "@/components/LouisAvatar";
 import { supabase } from "@/lib/supabaseClient";
+import LoadFailedNotice from "@/components/LoadFailedNotice";
 import type { TriviaBookPack } from "@/lib/triviaGameData";
 
 type TriviaBookClientProps = {
@@ -16,12 +17,16 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
   const [playedCounts, setPlayedCounts] = useState<Record<string, number>>({});
   const [completedChapters, setCompletedChapters] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
+  // A failed read used to leave every chapter looking unplayed.
+  const [failed, setFailed] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
   const [chapterPage, setChapterPage] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
 
     async function loadProgress() {
+      setFailed(false);
       const {
         data: { user },
       } = await supabase.auth.getUser();
@@ -50,6 +55,7 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
 
       if (answerError || completionError) {
         console.error("Error fetching trivia chapter progress:", answerError || completionError);
+        setFailed(true);
         setLoading(false);
         return;
       }
@@ -133,7 +139,7 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
     return () => {
       cancelled = true;
     };
-  }, [book]);
+  }, [book, reloadKey]);
 
   const completionPercent = useMemo(() => {
     if (!book.chapters.length) {
@@ -147,6 +153,23 @@ export default function TriviaBookClient({ book }: TriviaBookClientProps) {
   const visibleChapters = book.chapters.slice(chapterStartIndex, chapterStartIndex + CHAPTERS_PER_PAGE);
   const hasPrevChapterPage = chapterPage > 0;
   const hasNextChapterPage = chapterStartIndex + CHAPTERS_PER_PAGE < book.chapters.length;
+
+  if (failed) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8 px-4">
+        <div className="mx-auto max-w-4xl">
+          <LoadFailedNotice
+            message="Couldn't load your progress in this book."
+            onRetry={() => {
+              setFailed(false);
+              setLoading(true);
+              setReloadKey((k) => k + 1);
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
