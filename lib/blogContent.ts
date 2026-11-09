@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "what-is-the-octave-of-christmas",
+    title: "What Is the Octave of Christmas? The Eight Days Explained",
+    description:
+      "What is the Octave of Christmas? The eight days from December 25 to January 1, what each one celebrates, and why only two feasts still keep one.",
+    category: "Christian Holidays",
+    categorySlug: "christian-holidays",
+    canonicalPath: "/blog/what-is-the-octave-of-christmas",
+    publishedAt: "2026-11-09",
+    readTime: "14 min read",
+    image: "/blog-banners/what-is-the-octave-of-christmas.jpg",
+    groupPost: {
+      title: "What Is the Octave of Christmas? The Eight Days Explained 📖",
+      content:
+        "Christmas does not end on December 25.\nThe church keeps going for seven more days.\n\n📌 Christmas and Easter are the only feasts with a full eight day octave.\n\n📖 The custom began with building dedications, not holy days at all.\n📖 Jesus received his name on day eight, not day one.\n📖 January 1 was the Feast of the Circumcision for centuries first.\n\nNew article on:\n🟢 what **each of the eight days** actually celebrates\n🟢 why January 1 became the **Solemnity of Mary**\n🟢 what the **number eight** means in Scripture\n\nHad you ever heard of the Octave of Christmas before today? 🙏",
+    },
+  },
+  {
     slug: "joshua-1-explained",
     title: "Joshua 1 Explained: Be Strong and of a Good Courage",
     description:
