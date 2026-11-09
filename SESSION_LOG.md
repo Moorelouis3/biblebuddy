@@ -13392,3 +13392,26 @@ Still open: P2 and P3 in the roadmap, device testing (§6, ten-item list, needs
 a phone), and the two Supabase dashboard screenshots that would close whether
 the October poll fix held in production.
 Next: P2 items, or the device checklist if Louis has a phone free.
+
+## 2026-11-09 (night, addendum 3)
+Time spent: ~1h more.
+Done: all five P2 items. Six screens that rendered an ordinary empty state
+after a failed read now say "Couldn't load" with a Try Again - the two trivia
+lists, the book trivia page, the group thread (the one reproduced live on the
+9th), and the devotional day page. ScrambledUpgradeGate deliberately got no
+retry screen: its paid check is unreachable while the app is free, so what it
+needed was to stop reading a failed request as "not paid" and walling off
+someone who had already paid; it fails open now. Fixed the photo composer lock
+(storage genuinely throws, so the Post button stayed down for the life of the
+page). Fixed the reset-password spinner, and stopped it telling people their
+reset link had expired when their connection had dropped. The four auth doors
+no longer show "TypeError: Failed to fetch" - lib/authErrorMessage.ts maps a
+dropped connection to plain words and passes Supabase's own good messages
+through. Bounded the two unbounded master_actions reads, which PostgREST was
+already cutting at 1,000 rows without saying so.
+Not live yet: `npm run pending` shows 3 commits waiting, next build Tue 09:05
+Berlin. Everything up to the P1 work went out at 16:02.
+Still open: P3 cleanup (delete the closed study-group pages, decide on a
+native offline cache), device testing (§6, ten-item list, needs a phone), and
+the two Supabase dashboard screenshots.
+Next: P3, or the device checklist.
