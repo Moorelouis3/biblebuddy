@@ -13342,3 +13342,26 @@ Still open: everything in the report. It is investigation-only until Louis
 approves. The P0 item is a Supabase policy change and needs his explicit
 sign-off, as does the wording readers should see when progress cannot be loaded.
 Next: whatever Louis authorises from the approval checklist, P0 first.
+
+## 2026-11-09 (night, addendum)
+Time spent: ~1h after the report.
+Done: Louis approved P0-1 and it is closed. Six relations were handing their
+rows to anyone with the publishable key; inspecting the catalogue first turned
+up more than the report had - three tables had row level security switched off
+entirely (one of them empty, so a read scan had called it closed while it was
+readable and writable), and study_group_members was an auto-updatable view, so
+all 7,333 group memberships could have been deleted anonymously, bypassing the
+four correct policies on the table beneath. Applied in the SQL editor, recorded
+in scripts/close-anon-access-2026-11-09.sql, verified from both sides: nothing
+personal is readable without signing in, and the service-role cron and admin
+paths still return their full counts. Added `npm run verify:anon-access` as the
+guard. The verification report is now in docs/ with an Appendix A describing all
+of it, which was not safe to write in a public repo until the hole was shut.
+Not live yet: nothing from this needs a deploy - the fix took effect the moment
+the SQL ran, and no app code changed. `npm run pending` shows 7 commits waiting,
+next build Mon 17:05 Berlin.
+Still open: the rest of the roadmap. P1-5 (the vanishing comment) and P1-6 (the
+2-second poll) are the next ones and need no decision from Louis; P1-1 to P1-4
+are blocked on his call about what a reader should see when progress cannot be
+loaded.
+Next: P1-5 and P1-6 if Louis wants them.
