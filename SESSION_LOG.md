@@ -13317,3 +13317,28 @@ needs Louis's approval at /admin/bugs before it can go out in a deploy.
 Not live yet: the notification-permission fix (commit 1dfb6f8) is on main
 but needs Louis's approval at /admin/bugs before it can go out in a
 deploy.
+
+## 2026-11-09 (night)
+Time spent: ~3h
+Done: Verified the 8 Nov stability audit finding by finding, then went wider
+(auth, reading progress, community, database, mobile, tests, monitoring,
+performance). No code changed, nothing deployed. Two headlines. First, one
+P0 security item that is deliberately not described in this repo or this log,
+because the repo is public and it is not fixed yet - it is written up in a
+private note handed to Louis, and it is the first thing on the approval list.
+Second, half the old audit is misdiagnosed: supabase-js returns
+{data:null,error} instead of throwing, so buttons do not hang and skeletons do
+not pulse forever - screens instead render as if the reader has nothing (a
+Bible-in-One-Year reader on day 280 is shown on Day 1). The audit's proposed
+global error listener would have caught almost none of it; the right instrument
+is the Supabase client's own fetch wrapper. Also found a live 2-second database
+poll on /people-in-the-bible driving a feature that is switched off, and
+measured the 1,000-row API cap against the 39 tables that are now bigger than
+that. tsc, eslint and all six offline verify:* suites pass.
+Not live yet: nothing from this session - no commits made. `npm run pending`
+shows 4 commits waiting (deep links, Joshua 3, two verify-live), next build
+Mon 17:05 Berlin.
+Still open: everything in the report. It is investigation-only until Louis
+approves. The P0 item is a Supabase policy change and needs his explicit
+sign-off, as does the wording readers should see when progress cannot be loaded.
+Next: whatever Louis authorises from the approval checklist, P0 first.
