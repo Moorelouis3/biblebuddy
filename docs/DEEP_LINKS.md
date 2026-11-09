@@ -3,9 +3,12 @@
 Louis, 2026-11-08: *"the emails open the web version of the app in chrome on my
 iphone, can we make it open the app on ios or android instead of the website?"*
 
-Yes. The code for it is written and committed. It is switched **off**, because
-three of the switches are not mine to flip. This page is what you need to do,
-in order, and what to expect.
+Yes. Done, 2026-11-09. All three switches are flipped: the Associated Domains
+box at Apple, the Play signing fingerprint on Vercel, and SES click tracking,
+which is now off. This page is what was done and what each piece costs.
+
+The website half is live at the next scheduled deploy. The app halves need a
+new store build - there is nothing to install today.
 
 ---
 
@@ -26,8 +29,8 @@ half. The app half needs a new build.
 
 ## Where this stands
 
-Two of the three things are done (2026-11-09). One decision is left, and it is
-yours: see **Email click tracking** below.
+All three are done (2026-11-09). Each section below says what was changed and,
+where it cost something, what.
 
 ### 1. Apple — done
 
@@ -68,42 +71,52 @@ read it back to check it.
 The file starts serving the fingerprint at the next scheduled deploy, so any
 Android build from now on is building against a file that is live or about to be.
 
-### 3. Email click tracking — a decision, not a task
+### 3. Email click tracking — turned off, 2026-11-09
 
+Louis: "just do what ever is needed so email links open the app". So it is off.
 
-**This is the one that decides whether any of it works for emails.**
-
-Amazon SES is currently rewriting every link in every email you send. A link you
-wrote as `https://www.mybiblebuddy.net/library` leaves as something like
+SES was rewriting every link in every email. A link written as
+`https://www.mybiblebuddy.net/library` left as
 `https://xxxx.awstrack.me/L0/https:%2F%2Fwww.mybiblebuddy.net%2Flibrary/1/...`
-so that SES can count the click.
+so SES could count the click. The phone matches the domain the reader actually
+taps, and that domain was Amazon's, so the tap opened Chrome — and the redirect
+afterwards does not hand it back to the app. iOS deliberately does not follow
+redirects into apps.
 
-The phone matches the domain **the reader actually taps**. That domain is
-`awstrack.me`, which is Amazon's, not ours — so the tap opens Chrome, and the
-redirect that follows does *not* hand it back to the app. iOS deliberately does
-not follow redirects into apps.
+A custom tracking subdomain (`click.mybiblebuddy.net`) does not rescue this: it
+points at Amazon's servers, so our proof file cannot be published on it. There
+was no third option.
 
-Verified today: the configuration set `biblebuddy-main` has an event destination
-with `CLICK` among its event types.
+**What changed.** The event destination `bounces-and-complaints` on
+configuration set `biblebuddy-main` went from
+`BOUNCE,CLICK,COMPLAINT,DELIVERY,OPEN` to `BOUNCE,COMPLAINT,DELIVERY,OPEN`.
+Dropping `CLICK` is what stops the rewriting — in SES, link rewriting happens
+only while something is subscribed to click events. Bounces, complaints and
+deliveries are untouched, which matters: those are what keep the sending
+reputation readable.
 
-A custom tracking subdomain (`click.mybiblebuddy.net`) does **not** rescue this.
-It points at Amazon's servers, so we cannot publish our proof file on it.
+**Proved, not assumed.** A test email sent after the change arrived in Gmail
+with its anchor reading `https://www.mybiblebuddy.net/dashboard` — the real
+domain, unrewritten.
 
-So it is one of these two, and it is your call:
+**What it costs.** Click numbers stop arriving, everywhere they were used:
 
-| | What you get | What you give up |
-|---|---|---|
-| **Turn SES click tracking off** | Every email link opens the app | No click numbers in SES at all |
-| **Mark chosen links `ses:no-track`** | Those links open the app, the rest stay tracked | Click numbers on exactly the links that matter most |
+- `app/api/webhooks/ses/route.ts` no longer records `click` rows in `ses_events`
+- the email effectiveness panels in `lib/productHealth.ts` and
+  `lib/productHealthTabs.ts` lose their only input
+- `ses_campaign_stats` keeps counting opens; its click column stops moving
 
-Worth weighing against the note already on record that SES opens are all bots
-and clicks are the only email signal you trust. I have not picked one — say
-which and I will do it.
+Nothing errors. The numbers simply stop, and rows already recorded stay.
 
-**Everything else already works without this.** Links in the app, in push
-notifications, on social, in a text message, or pasted anywhere at all will open
-the app as soon as steps 1 and 2 are done. It is only email links that SES
-intercepts.
+Set against that: opens on this account are all bots
+(MEMORY: email-opens-are-all-bots), so clicks were the one email signal worth
+trusting — and this trades it for the links actually working. If it ever needs
+to come back, add `CLICK` to that event destination's matching event types and
+the rewriting resumes on the next send.
+
+**Everything else already worked without this.** Links in the app, in push
+notifications, on social, in a text message, or pasted anywhere at all open the
+app. It was only email that SES intercepted.
 
 ---
 
