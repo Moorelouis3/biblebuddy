@@ -271,7 +271,12 @@ export default function BugTrackerPage() {
             <div className="flex flex-wrap items-center gap-2 text-xs font-black">
               <span className={`rounded-full px-2.5 py-1 ${status.className}`}>{status.label}</span>
               <span className="text-gray-500">
-                {bug.source === "crash" ? "💥 Crash" : "🛟 Report"} · {bug.area || "App"} · {when(bug.created_at)}
+                {bug.source === "crash"
+                  ? "💥 Crash"
+                  : bug.source === "supabase"
+                    ? "📡 Request failure"
+                    : "🛟 Report"}{" "}
+                · {bug.area || "App"} · {when(bug.created_at)}
               </span>
               {bug.occurrences > 1 ? (
                 <span className="rounded-full bg-red-50 px-2 py-0.5 text-red-700">happened {bug.occurrences} times</span>

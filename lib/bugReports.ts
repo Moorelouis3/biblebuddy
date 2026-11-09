@@ -73,7 +73,10 @@ export const FINISHED_BUG_STATUSES: BugStatus[] = [
 export const ATTENTION_BUG_STATUSES: BugStatus[] = ["awaiting_approval", "needs_louis"];
 
 export type NewBugReport = {
-  source: "problem_card" | "crash" | "dm";
+  // "supabase" is a request that failed in somebody's browser, reported by
+  // lib/supabaseFailureReporter.ts. There is no check constraint on the
+  // column, so this is a code-side union only.
+  source: "problem_card" | "crash" | "dm" | "supabase";
   message: string;
   category?: string | null;
   area?: string | null;

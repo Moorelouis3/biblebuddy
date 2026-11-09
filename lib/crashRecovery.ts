@@ -56,7 +56,10 @@ export async function reportCrash(error: Error & { digest?: string }, boundary: 
         message: error?.message,
         stack: error?.stack,
         digest: error?.digest,
-        page: window.location.pathname + window.location.search,
+        // pathname only. The query string carried whatever was in the address
+        // bar straight into bug_reports - and /reset-password has a live
+        // password-reset token in it. The path alone identifies the screen.
+        page: window.location.pathname,
         boundary,
         autoReloaded,
       }),
