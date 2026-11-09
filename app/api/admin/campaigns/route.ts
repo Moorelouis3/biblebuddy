@@ -188,8 +188,50 @@ export async function GET(request: NextRequest) {
     .from("email_suppressions")
     .select("email", { count: "exact", head: true });
 
+  /**
+   * Arrivals per campaign, which is where the click column used to get its
+   * numbers. SES click tracking was turned off on 2026-11-09 so that email
+   * links could open the app (docs/DEEP_LINKS.md), so clicks stop at that
+   * date and arrivals start. Both are shown: the old rows are still real.
+   *
+   * Counted DISTINCT by reader, matching the way ses_campaign_stats counts
+   * unique recipients rather than raw opens - a reload is not a second
+   * person. Paged, because PostgREST caps every response at 1000 rows and a
+   * silent cap here would quietly under-report every campaign.
+   */
+  const arrivalsByCampaign: Record<string, number> = {};
+  let arrivalsTruncated = false;
+  {
+    const seen = new Map<string, Set<string>>();
+    const MAX = 20000;
+    for (let from = 0; from < MAX; from += 1000) {
+      const { data, error: arrivalError } = await db
+        .from("email_arrivals")
+        .select("campaign_id, session_id, user_id, occurred_at")
+        .order("occurred_at", { ascending: true })
+        .range(from, from + 999);
+      // A missing table on an environment where the migration has not run is
+      // not an error worth failing the whole page over.
+      if (arrivalError) break;
+      const batch = data || [];
+      for (const row of batch) {
+        const key = row.campaign_id || "(untagged)";
+        if (!seen.has(key)) seen.set(key, new Set());
+        seen.get(key)!.add(row.user_id || row.session_id || `${row.occurred_at}`);
+      }
+      if (batch.length < 1000) break;
+      if (from + 1000 >= MAX) arrivalsTruncated = true;
+    }
+    for (const [key, people] of seen) arrivalsByCampaign[key] = people.size;
+  }
+
   return NextResponse.json({
-    campaigns: (stats || []).map((row) => ({ ...row, ...(metaById.get(row.campaign_id) || {}) })),
+    campaigns: (stats || []).map((row) => ({
+      ...row,
+      ...(metaById.get(row.campaign_id) || {}),
+      arrivals: arrivalsByCampaign[row.campaign_id] ?? 0,
+    })),
+    arrivalsTruncated,
     engagement: engagement ?? null,
     engagementError: engagementError?.message ?? null,
     audience: engagement?.subscribers_total ?? 0,

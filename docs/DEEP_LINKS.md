@@ -176,3 +176,57 @@ force it.
 - Reinstalling the app is the usual fix — both systems check on install.
 - iOS will not use a file it fetched over a redirect. `www` only, always.
 - Android failing verification is almost always the wrong fingerprint (step 2).
+
+---
+
+## How clicks are counted now
+
+Turning click tracking off cost the click number. This is what replaced it, and
+it measures a different thing on purpose: **SES counted the leaving, we count
+the arriving.**
+
+Every email link already carries `?utm_source=email&utm_campaign=<id>`. When one
+of those lands on the site, `components/EmailArrivalRecorder.tsx` posts one
+request to `app/api/email/arrival/route.ts`, which writes a row to
+`email_arrivals`. One request per arrival, no polling and no retry — an
+eight-second poll took the database down three times in October and a statistic
+is never worth another one.
+
+Arriving is the better of the two numbers:
+
+- **Scanners disappear.** A mail scanner fetches a link without running
+  JavaScript, so it never reaches the recorder. SES counted those as clicks,
+  which is why `lib/productHealth.ts` carries a `SCANNER_UA` regex to strip them
+  out after the fact. That filter stays on clicks and is deliberately not
+  applied to arrivals.
+- **The app counts.** The iPhone and Android apps load these same pages, so an
+  arrival inside the app is counted exactly like one in a browser. SES could
+  never see those at all.
+- **Nothing identifying travels in the link.** A signed-in arrival is matched to
+  a person from the Supabase session server-side. No address, no hash of one, no
+  per-recipient token goes into a URL.
+
+What it cannot see: somebody who taps and never loads the page, and who a
+logged-out reader is. Both accepted.
+
+**Where it shows up.** "Arrived from email" in the email panel
+(`lib/productHealthTabs.ts`), an `arrivals` column per campaign from
+`app/api/admin/campaigns/route.ts`, and "Email → study" in
+`lib/productHealth.ts`, which now prefers arrivals and falls back to clicks for
+any window before 2026-11-09. Every historical click row is still read and still
+shown — arrivals sit beside them rather than replacing them.
+
+Counted **distinct by reader**, the same way `ses_campaign_stats` counts unique
+recipients rather than raw opens, so a reload is not a second person.
+
+`npm run verify:email-arrivals` pins all of the above offline.
+
+### One thing to know about the funnel emails
+
+Several funnel links point at the bare domain — `https://www.mybiblebuddy.net?utm_source=email&utm_campaign=day1`.
+`/` is on the Apple exclusion list on purpose (it is the marketing landing page,
+which exists to sell the app to a stranger), so **those particular links still
+open the browser**, by design. They are counted as arrivals all the same. If the
+day-1 to day-6 emails should open the app instead, their links need to point at
+a real page inside it, such as `/dashboard`.
+

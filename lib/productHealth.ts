@@ -411,6 +411,51 @@ async function emailEvents(admin: SupabaseClient, from: Date, to: Date) {
   );
 }
 
+/**
+ * Arrivals from email links, which replaced the SES click number on
+ * 2026-11-09. SES counted the leaving by rewriting every href through
+ * awstrack.me, and that rewriting is what stopped email links opening the
+ * app, so it was turned off; this counts the arriving instead. The two sit
+ * side by side rather than one replacing the other - every historical click
+ * row is still read and still shown. See docs/DEEP_LINKS.md.
+ *
+ * No SCANNER_UA filter here, deliberately. A mail scanner fetches a link
+ * without running JavaScript, so it never reaches the recorder that writes
+ * these rows. The regex exists because SES counted those fetches as clicks;
+ * copying it over would be cargo cult.
+ */
+type EmailArrivalRow = {
+  occurred_at: string;
+  campaign_id: string | null;
+  page_path: string;
+  user_id: string | null;
+  session_id: string | null;
+  is_native: boolean | null;
+};
+
+async function emailArrivals(admin: SupabaseClient, from: Date, to: Date) {
+  return pageRows<EmailArrivalRow>(
+    admin,
+    "email_arrivals",
+    "occurred_at, campaign_id, page_path, user_id, session_id, is_native",
+    (q) => q.gte("occurred_at", iso(from)).lt("occurred_at", iso(to)),
+    "occurred_at",
+  );
+}
+
+/**
+ * How many distinct people arrived, not how many rows were written. A reload
+ * or a second tap is the same person, so this counts distinct session - the
+ * same choice ses_campaign_stats makes in counting unique recipients rather
+ * than raw opens.
+ */
+function distinctArrivals(rows: EmailArrivalRow[]): number {
+  const seen = new Set<string>();
+  for (const r of rows) seen.add(r.user_id || r.session_id || `${r.occurred_at}|${r.page_path}`);
+  return seen.size;
+}
+
+
 /* ------------------------------------------------------------------ */
 /* Overview                                                            */
 /* ------------------------------------------------------------------ */
@@ -547,6 +592,62 @@ async function dayNRetention(admin: SupabaseClient, n: number, asOf: Date, now: 
 async function emailToStudy(admin: SupabaseClient, current: Range, previous: Range): Promise<Metric> {
   const events = await emailEvents(admin, current.start, current.end);
   if (events.error) return unavailable("Email → study", "percent", `email_events: ${events.error}`);
+
+  /**
+   * Arrivals first, because since 2026-11-09 they are the only live signal:
+   * SES click tracking is off, so any window after that date has no clicks in
+   * it at all. Windows before it have clicks and no arrivals and read exactly
+   * as they always did, which is why this is a branch and not a replacement.
+   *
+   * It is also the better join. A click knew only an address, which had to be
+   * matched back to a person through email_engagement; a signed-in arrival
+   * already carries the user_id, so a whole lookup - and everyone that lookup
+   * failed to match - disappears.
+   */
+  const arrivals = await emailArrivals(admin, current.start, current.end);
+  if (!arrivals.error && arrivals.rows.length) {
+    const reach = distinctArrivals(arrivals.rows);
+    const identified = arrivals.rows.filter((a) => a.user_id);
+    const ids = [...new Set(identified.map((a) => a.user_id as string))];
+    if (!ids.length) {
+      return {
+        label: "Email → study",
+        value: 0,
+        denominator: reach,
+        unit: "percent",
+        evidence: "live",
+        note: `${reach} arrivals from email, none of them signed in, so none can be followed into a study.`,
+      };
+    }
+
+    const acts = await studyActionsForUsers(admin, ids);
+    if (acts.error) return unavailable("Email → study", "percent", acts.error);
+
+    const firstArrival = new Map<string, number>();
+    for (const a of identified) {
+      const uid = a.user_id as string;
+      const t = new Date(a.occurred_at).getTime();
+      if (!firstArrival.has(uid) || t < firstArrival.get(uid)!) firstArrival.set(uid, t);
+    }
+
+    const studied = new Set<string>();
+    for (const act of acts.rows) {
+      if (!act.user_id) continue;
+      const at = firstArrival.get(act.user_id);
+      if (at == null) continue;
+      const dt = new Date(act.created_at).getTime() - at;
+      if (dt >= 0 && dt <= EMAIL_ATTRIBUTION_HOURS * 3_600_000) studied.add(act.user_id);
+    }
+
+    return rate(
+      "Email → study",
+      studied.size,
+      ids.length,
+      null,
+      `Of ${ids.length} signed-in arrivals from email, ${studied.size} studied within ${EMAIL_ATTRIBUTION_HOURS}h. ${reach} arrived in all, counting readers who were not signed in. Attribution, not proof the email caused it.`,
+    );
+  }
+
 
   const clicks = events.rows.filter((e) => e.event_type === "click" && !SCANNER_UA.test(e.user_agent || ""));
   if (!clicks.length) {
@@ -871,4 +972,4 @@ export async function computeProductHealth(
 
 export { dashboardRanges, berlinDay };
 export type { DashboardWindow, Range };
-export { countOf, pageRows, rate, pct, iso, studyActionsForUsers, signups, emailEvents, SCANNER_UA, OWNER_USER_ID, DAY_MS, metric };
+export { countOf, pageRows, rate, pct, iso, studyActionsForUsers, signups, emailEvents, emailArrivals, distinctArrivals, SCANNER_UA, OWNER_USER_ID, DAY_MS, metric };

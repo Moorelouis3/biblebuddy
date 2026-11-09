@@ -9,6 +9,7 @@ import TrafficSourceCapture from "@/components/TrafficSourceCapture";
 import AdSenseScript from "@/components/AdSenseScript";
 import NativeExternalLinks from "@/components/NativeExternalLinks";
 import NativeDeepLinks from "@/components/NativeDeepLinks";
+import EmailArrivalRecorder from "@/components/EmailArrivalRecorder";
 import StaleBuildReloader from "@/components/StaleBuildReloader";
 import NativePlatformClass from "@/components/NativePlatformClass";
 import { PostSuccessEffect } from "@/components/PostSuccessEffect";
@@ -233,6 +234,7 @@ export default function RootLayout({
         <StaleBuildReloader />
         <NativeExternalLinks />
         <NativeDeepLinks />
+        <EmailArrivalRecorder />
         <SmokeDeleteEffect />
         <PostSuccessEffect />
         <AppToast />

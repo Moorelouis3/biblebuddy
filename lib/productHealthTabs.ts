@@ -9,6 +9,8 @@ import {
   signupCohortBefore,
   countSignups,
   emailEvents,
+  emailArrivals,
+  distinctArrivals,
   SCANNER_UA,
   OWNER_USER_ID,
   DAY_MS,
@@ -68,6 +70,7 @@ async function acquisition(admin: SupabaseClient, current: Range, previous: Rang
 
   /* Email delivery health and the funnel beneath it. */
   const events = await emailEvents(admin, current.start, current.end);
+  const arrivals = await emailArrivals(admin, current.start, current.end);
   const emailMetrics: Metric[] = [];
   if (events.error) {
     emailMetrics.push(unavailable("Email delivery", "count", events.error));
@@ -89,6 +92,30 @@ async function acquisition(admin: SupabaseClient, current: Range, previous: Rang
         note: "Shown for completeness only. Every open on record is a proxy or scanner fetch, so this number cannot be read as people reading.",
       },
     );
+    /**
+     * Arrivals from email, which replaced clicks on 2026-11-09. SES counted a
+     * click by rewriting every link through awstrack.me, which is exactly what
+     * stopped email links opening the app, so it was turned off. This counts
+     * the arriving instead of the leaving - and counts it in the iPhone and
+     * Android apps too, which SES never could.
+     *
+     * No scanner filter: a mail scanner fetches a link without running
+     * JavaScript, so it never reaches the recorder. Clicks keep theirs.
+     */
+    if (arrivals.error) {
+      emailMetrics.push(unavailable("Arrived from email", "count", arrivals.error));
+    } else {
+      const inApp = arrivals.rows.filter((a) => a.is_native).length;
+      emailMetrics.push({
+        label: "Arrived from email",
+        value: distinctArrivals(arrivals.rows),
+        unit: "count",
+        evidence: arrivals.rows.length ? "live" : "insufficient",
+        note: arrivals.rows.length
+          ? `Distinct readers who landed on the site from an email link, ${inApp} of them inside the app. Counts arrivals, not taps: somebody who taps and never loads the page is not here.`
+          : "Nothing yet in this window. Only arrivals after 2026-11-09 are recorded, and only from links carrying utm_source=email.",
+      });
+    }
   }
 
   return {
