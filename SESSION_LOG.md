@@ -13415,3 +13415,27 @@ Still open: P3 cleanup (delete the closed study-group pages, decide on a
 native offline cache), device testing (§6, ten-item list, needs a phone), and
 the two Supabase dashboard screenshots.
 Next: P3, or the device checklist.
+
+## 2026-11-09 (night, addendum 4)
+Time spent: ~45m more.
+Done: P3-3 (eslint now ignores .claude/worktrees, so a bare lint stops walking
+other sessions' checkouts) and P3-4 (the group thread's reply walk is capped at
+20 levels and never follows an id twice, so a looping parent chain cannot spin
+it). Then P3-1 as its own commit: deleted /study-groups and everything under
+it, 17,559 lines, plus GroupPostEditor, the three GroupWeekly* cards and
+GroupsOnboardingModal. Those pages have redirected to the feed since the group
+closed, so none of it was reachable. Lint across app/components/lib/scripts
+drops from 1441 problems to 1281 and from 650 errors to 601 - none fixed, they
+left. GroupPostThread and TodaysGroupStudy deliberately stayed: they belong to
+the group by name only, and the devotional day page and the dashboard both use
+them for community-event discussions. verify:p3-cleanup asserts that, so a
+future tidy-up cannot take them by association.
+Not live yet: `npm run pending` shows 6 commits waiting, next build Tue 09:05
+Berlin.
+Still open: P3-2 (should the store apps get an offline cache) is a product
+decision Louis has not made - it was never mine to build. Device testing (§6,
+the ten-item list) still needs a phone, and the two Supabase dashboard
+screenshots are still outstanding. The admin moderation and group analytics
+routes still build /study-groups/<id>/chat links that go nowhere; they already
+did before today.
+Next: whatever Louis wants - the roadmap is otherwise done.
