@@ -687,7 +687,17 @@ export async function getDailyRecommendation(userId: string, suppressLevel1 = fa
         // fetchBibleYearPosition already knows: planDay is the next day to
         // open, and it counts from the furthest day finished rather than the
         // first one skipped, so a missed day never drags the number backwards.
-        const bibleYearPosition = isBibleBuddy ? null : await fetchBibleYearPosition(userId);
+        // A detail on one card, not the card itself: without it this still
+        // says "Continue Reading Plan" and links to the plan, which is what it
+        // did before the day number existed. fetchBibleYearPosition throws on
+        // a failed read now, so catch it here rather than lose every
+        // recommendation to one missing number.
+        const bibleYearPosition = isBibleBuddy
+          ? null
+          : await fetchBibleYearPosition(userId).catch((error: unknown) => {
+              console.warn("[RECOMMENDATION] Could not read the Bible-year day:", error);
+              return null;
+            });
         const bibleYearDay = bibleYearPosition && !bibleYearPosition.planFinished ? bibleYearPosition.planDay : null;
         const dayLabel = bibleYearDay ? `Day ${bibleYearDay}` : null;
 

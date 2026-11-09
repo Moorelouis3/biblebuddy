@@ -4,6 +4,28 @@
 
 import { supabase } from "./supabaseClient";
 import { ACTION_TYPE } from "./actionTypes";
+import { ProgressLoadError } from "./progressLoadError";
+
+/**
+ * A note on what these functions do when a read fails.
+ *
+ * They used to answer with the same value they use for "nothing here": `[]`
+ * for completed chapters, `0` for the total, `false` for "is this book
+ * finished", `"Genesis"` for "which book are you on". supabase-js does not
+ * throw when a request fails - it RETURNS { data: null, error } - so a dropped
+ * connection became a confident, wrong statement about somebody's own reading
+ * history. Every chapter showed unread. The streak showed zero.
+ *
+ * Nothing was ever deleted; the rows were always there and came back on the
+ * next successful read. But a reader cannot tell those two apart, and being
+ * told you have read nothing when you have read for 200 days is its own kind
+ * of damage.
+ *
+ * So the reads throw ProgressLoadError now, and the screens decide: the ones
+ * whose whole point is your progress show "Couldn't load. Try Again"; the ones
+ * where it is a detail catch it and carry on, deliberately and with a comment
+ * saying so. The rule comes from lib/libraryCatalog.ts.
+ */
 
 const chapterCompletionInFlight = new Set<string>();
 
@@ -18,25 +40,20 @@ export { getBookTotalChapters };
  * Get completed chapters for a book for a specific user from database
  */
 export async function getCompletedChapters(userId: string, book: string): Promise<number[]> {
-  try {
-    const bookKey = book.toLowerCase().trim();
-    const { data, error } = await supabase
-      .from("completed_chapters")
-      .select("chapter")
-      .eq("user_id", userId)
-      .eq("book", bookKey)
-      .order("chapter", { ascending: true });
+  const bookKey = book.toLowerCase().trim();
+  const { data, error } = await supabase
+    .from("completed_chapters")
+    .select("chapter")
+    .eq("user_id", userId)
+    .eq("book", bookKey)
+    .order("chapter", { ascending: true });
 
-    if (error) {
-      console.error(`[READING_PROGRESS] Error fetching completed chapters for ${bookKey}:`, error);
-      return [];
-    }
-
-    return (data || []).map((row) => row.chapter).sort((a, b) => a - b);
-  } catch (err) {
-    console.error(`[READING_PROGRESS] Error in getCompletedChapters:`, err);
-    return [];
+  if (error) {
+    console.error(`[READING_PROGRESS] Error fetching completed chapters for ${bookKey}:`, error);
+    throw new ProgressLoadError(`your progress in ${book}`, error.message);
   }
+
+  return (data || []).map((row) => row.chapter).sort((a, b) => a - b);
 }
 
 /**
@@ -46,51 +63,47 @@ export async function getCompletedChaptersByBooks(
   userId: string,
   books: string[],
 ): Promise<Record<string, number[]>> {
-  try {
-    const normalizedBooks = Array.from(
-      new Set(
-        books
-          .map((book) => book.toLowerCase().trim())
-          .filter(Boolean),
-      ),
-    );
+  const normalizedBooks = Array.from(
+    new Set(
+      books
+        .map((book) => book.toLowerCase().trim())
+        .filter(Boolean),
+    ),
+  );
 
-    if (!normalizedBooks.length) return {};
+  // No books asked about is a real question with a real answer.
+  if (!normalizedBooks.length) return {};
 
-    const { data, error } = await supabase
-      .from("completed_chapters")
-      .select("book, chapter")
-      .eq("user_id", userId)
-      .in("book", normalizedBooks)
-      .order("chapter", { ascending: true });
+  const { data, error } = await supabase
+    .from("completed_chapters")
+    .select("book, chapter")
+    .eq("user_id", userId)
+    .in("book", normalizedBooks)
+    .order("chapter", { ascending: true });
 
-    if (error) {
-      console.error("[READING_PROGRESS] Error fetching completed chapters by books:", error);
-      return {};
-    }
-
-    const grouped: Record<string, number[]> = {};
-    normalizedBooks.forEach((book) => {
-      grouped[book] = [];
-    });
-
-    (data || []).forEach((row) => {
-      const book = String(row.book || "").toLowerCase().trim();
-      const chapter = Number(row.chapter);
-      if (!book || !Number.isFinite(chapter)) return;
-      if (!grouped[book]) grouped[book] = [];
-      grouped[book].push(chapter);
-    });
-
-    Object.keys(grouped).forEach((book) => {
-      grouped[book] = grouped[book].sort((a, b) => a - b);
-    });
-
-    return grouped;
-  } catch (err) {
-    console.error("[READING_PROGRESS] Error in getCompletedChaptersByBooks:", err);
-    return {};
+  if (error) {
+    console.error("[READING_PROGRESS] Error fetching completed chapters by books:", error);
+    throw new ProgressLoadError("your reading progress", error.message);
   }
+
+  const grouped: Record<string, number[]> = {};
+  normalizedBooks.forEach((book) => {
+    grouped[book] = [];
+  });
+
+  (data || []).forEach((row) => {
+    const book = String(row.book || "").toLowerCase().trim();
+    const chapter = Number(row.chapter);
+    if (!book || !Number.isFinite(chapter)) return;
+    if (!grouped[book]) grouped[book] = [];
+    grouped[book].push(chapter);
+  });
+
+  Object.keys(grouped).forEach((book) => {
+    grouped[book] = grouped[book].sort((a, b) => a - b);
+  });
+
+  return grouped;
 }
 
 /**
@@ -98,58 +111,47 @@ export async function getCompletedChaptersByBooks(
  * This is the shared function used by both dashboard and Bible Study Stats
  */
 export async function getTotalCompletedChapters(userId: string, books: string[]): Promise<number> {
-  try {
-    let totalCount = 0;
-    for (const book of books) {
-      const completed = await getCompletedChapters(userId, book);
-      totalCount += completed.length;
-    }
-    return totalCount;
-  } catch (err) {
-    console.error(`[READING_PROGRESS] Error in getTotalCompletedChapters:`, err);
-    return 0;
+  // A partial total is worse than no total: it would quietly under-report
+  // somebody's reading. Let the failure through.
+  let totalCount = 0;
+  for (const book of books) {
+    const completed = await getCompletedChapters(userId, book);
+    totalCount += completed.length;
   }
+  return totalCount;
 }
 
 /**
  * Check if a book is complete for a specific user
  */
 export async function isBookComplete(userId: string, bookName: string): Promise<boolean> {
-  try {
-    const bookKey = bookName.toLowerCase().trim();
-    const totalChapters = getBookTotalChapters(bookName);
-    const completedChapters = await getCompletedChapters(userId, bookKey);
-    return completedChapters.length >= totalChapters;
-  } catch (err) {
-    console.error(`[READING_PROGRESS] Error in isBookComplete:`, err);
-    return false;
-  }
+  const bookKey = bookName.toLowerCase().trim();
+  const totalChapters = getBookTotalChapters(bookName);
+  const completedChapters = await getCompletedChapters(userId, bookKey);
+  return completedChapters.length >= totalChapters;
 }
 
 /**
  * Check if a chapter is completed for a specific user
  */
 export async function isChapterCompleted(userId: string, book: string, chapter: number): Promise<boolean> {
-  try {
-    const bookKey = book.toLowerCase().trim();
-    const { data, error } = await supabase
-      .from("completed_chapters")
-      .select("id")
-      .eq("user_id", userId)
-      .eq("book", bookKey)
-      .eq("chapter", chapter)
-      .maybeSingle();
+  const bookKey = book.toLowerCase().trim();
+  const { data, error } = await supabase
+    .from("completed_chapters")
+    .select("id")
+    .eq("user_id", userId)
+    .eq("book", bookKey)
+    .eq("chapter", chapter)
+    .maybeSingle();
 
-    if (error && error.code !== 'PGRST116') {
-      console.error(`[READING_PROGRESS] Error checking chapter completion:`, error);
-      return false;
-    }
-
-    return !!data;
-  } catch (err) {
-    console.error(`[READING_PROGRESS] Error in isChapterCompleted:`, err);
-    return false;
+  // PGRST116 is "no row matched", which is a real answer: not completed.
+  // Anything else means we did not find out.
+  if (error && error.code !== 'PGRST116') {
+    console.error(`[READING_PROGRESS] Error checking chapter completion:`, error);
+    throw new ProgressLoadError(`whether you finished ${book} ${chapter}`, error.message);
   }
+
+  return !!data;
 }
 
 /**
@@ -157,24 +159,19 @@ export async function isChapterCompleted(userId: string, book: string, chapter: 
  * Returns the smallest chapter number that is not completed, or totalChapters + 1 if all are completed
  */
 export async function getBookCurrentStep(userId: string, book: string, totalChapters: number): Promise<number> {
-  try {
-    const bookKey = book.toLowerCase().trim();
-    const completedChapters = await getCompletedChapters(userId, bookKey);
-    const completedSet = new Set(completedChapters);
+  const bookKey = book.toLowerCase().trim();
+  const completedChapters = await getCompletedChapters(userId, bookKey);
+  const completedSet = new Set(completedChapters);
 
-    // Find the first chapter (1 to totalChapters) that is not completed
-    for (let ch = 1; ch <= totalChapters; ch++) {
-      if (!completedSet.has(ch)) {
-        return ch;
-      }
+  // Find the first chapter (1 to totalChapters) that is not completed
+  for (let ch = 1; ch <= totalChapters; ch++) {
+    if (!completedSet.has(ch)) {
+      return ch;
     }
-
-    // All chapters completed
-    return totalChapters + 1;
-  } catch (err) {
-    console.error(`[READING_PROGRESS] Error in getBookCurrentStep:`, err);
-    return 1; // Default to chapter 1
   }
+
+  // All chapters completed
+  return totalChapters + 1;
 }
 
 /**
@@ -182,25 +179,22 @@ export async function getBookCurrentStep(userId: string, book: string, totalChap
  * Returns the first unlocked book that is not yet complete
  */
 export async function getCurrentBook(userId: string, books: string[]): Promise<string | null> {
-  try {
-    for (const book of books) {
-      // Check if book is unlocked
-      const isUnlocked = await isBookUnlocked(userId, book);
-      if (!isUnlocked) continue;
+  // This used to answer "Genesis" when the read failed, which told a reader
+  // halfway through Kings that they were at the very start.
+  for (const book of books) {
+    // Check if book is unlocked
+    const isUnlocked = await isBookUnlocked(userId, book);
+    if (!isUnlocked) continue;
 
-      // Check if book is complete
-      const isComplete = await isBookComplete(userId, book);
-      if (!isComplete) {
-        return book; // This is the current active book
-      }
+    // Check if book is complete
+    const isComplete = await isBookComplete(userId, book);
+    if (!isComplete) {
+      return book; // This is the current active book
     }
-
-    // All unlocked books are complete
-    return null;
-  } catch (err) {
-    console.error(`[READING_PROGRESS] Error in getCurrentBook:`, err);
-    return "Genesis"; // Default to Genesis (first book in biblical order)
   }
+
+  // All unlocked books are complete
+  return null;
 }
 
 // Bible book order - standard biblical order (Genesis → Revelation)
@@ -264,23 +258,18 @@ export async function isBookUnlocked(userId: string, book: string, userEmail?: s
  * Check if a chapter is unlocked for a specific user
  */
 export async function isChapterUnlocked(userId: string, book: string, chapter: number, userEmail?: string | null): Promise<boolean> {
-  try {
-    // Admin bypass: admin can access all chapters
-    if (userEmail && isAdminUser(userEmail)) {
-      return true;
-    }
-
-    const bookKey = book.toLowerCase().trim();
-    const completedChapters = await getCompletedChapters(userId, bookKey);
-    
-    if (chapter === 1) return true; // First chapter is always unlocked
-    
-    // Chapter is unlocked if previous chapter is completed
-    return completedChapters.includes(chapter - 1);
-  } catch (err) {
-    console.error(`[READING_PROGRESS] Error in isChapterUnlocked:`, err);
-    return false;
+  // Admin bypass: admin can access all chapters
+  if (userEmail && isAdminUser(userEmail)) {
+    return true;
   }
+
+  if (chapter === 1) return true; // First chapter is always unlocked
+
+  const bookKey = book.toLowerCase().trim();
+  const completedChapters = await getCompletedChapters(userId, bookKey);
+
+  // Chapter is unlocked if previous chapter is completed
+  return completedChapters.includes(chapter - 1);
 }
 
 /**

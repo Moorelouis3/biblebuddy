@@ -97,6 +97,10 @@ function ReadingPageInner() {
     chaptersCompleted: number;
     bibleCompletionPercent: number;
   } | null>(null);
+  // The stats read failed. Without this the modal sat on "Loading stats..."
+  // for as long as it was open, which is the grey-boxes-forever bug again.
+  const [statsFailed, setStatsFailed] = useState(false);
+  const [statsReloadKey, setStatsReloadKey] = useState(0);
 
   // Apply alphabetical sort if toggle is ON
   const booksToDisplay = alphabeticalOrder
@@ -159,6 +163,10 @@ function ReadingPageInner() {
         const states = Object.fromEntries(completionEntries) as Record<string, { complete: boolean }>;
         setBookStates(states);
       } catch (err) {
+        // A detail on a list of 66 books that all still open: without it no
+        // book carries a "finished" tick. Deliberately quiet, but no longer
+        // silently claiming Genesis is where this reader is - getCurrentBook
+        // used to answer that on failure.
         console.error("Error loading book states:", err);
       }
     }
@@ -194,12 +202,15 @@ function ReadingPageInner() {
           bibleCompletionPercent: Math.round(bibleCompletionPercent * 10) / 10, // Round to 1 decimal
         });
       } catch (err) {
+        // The modal has nothing to show without these numbers, and it used to
+        // sit on "Loading stats..." for as long as it was open. Say so.
         console.error("Error loading stats:", err);
+        setStatsFailed(true);
       }
     }
 
-    loadStats();
-  }, [showStatsModal, userId]);
+    void loadStats();
+  }, [showStatsModal, userId, statsReloadKey]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4 relative">
@@ -359,6 +370,21 @@ function ReadingPageInner() {
                     {stats.bibleCompletionPercent.toFixed(1)}%
                   </p>
                 </div>
+              </div>
+            ) : statsFailed ? (
+              <div className="text-center py-8">
+                <p className="text-gray-600">Couldn&apos;t load your stats.</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setStatsFailed(false);
+                    setStatsReloadKey((k) => k + 1);
+                  }}
+                  className="mt-3 inline-flex min-h-[40px] items-center justify-center rounded-xl bg-blue-600 px-5 text-sm font-black text-white"
+                  style={{ color: "#ffffff" }}
+                >
+                  Try Again
+                </button>
               </div>
             ) : (
               <div className="text-center py-8">

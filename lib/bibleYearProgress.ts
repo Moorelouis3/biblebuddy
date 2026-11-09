@@ -1,5 +1,6 @@
 import { supabase } from "./supabaseClient";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "./bibleInOneYearPlan";
+import { ProgressLoadError } from "./progressLoadError";
 
 export const BIBLE_YEAR_TOTAL_DAYS = 365;
 
@@ -63,7 +64,19 @@ export const EMPTY_POSITION: BibleYearPosition = {
   completedDayNumbers: [],
 };
 
-/** The same position, fetched for a user. Returns the empty position when signed out. */
+/**
+ * The same position, fetched for a user. Returns the empty position when
+ * signed out - that is a real answer about a real situation.
+ *
+ * It used to return the empty position when the READ FAILED too, which is a
+ * different thing entirely and the single most upsetting bug in the app:
+ * someone 280 days into Bible in One Year, opening the plan on a bad
+ * connection, was shown Day 1 with nothing read. Nothing was lost, but there
+ * was no way for them to know that from the screen.
+ *
+ * So a failed read throws now, and the screens above say they could not load
+ * rather than inventing a position.
+ */
 export async function fetchBibleYearPosition(userId: string | null): Promise<BibleYearPosition> {
   if (!userId) return EMPTY_POSITION;
   const { data, error } = await supabase
@@ -73,7 +86,7 @@ export async function fetchBibleYearPosition(userId: string | null): Promise<Bib
 
   if (error) {
     console.error("[BIBLE YEAR] Could not load progress:", error.message);
-    return EMPTY_POSITION;
+    throw new ProgressLoadError("your Bible in One Year progress", error.message);
   }
   return calculateBibleYearPosition(data as any);
 }

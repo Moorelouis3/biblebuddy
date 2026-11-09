@@ -2335,6 +2335,9 @@ export default function DashboardJourneyExperience({
   const [dashboardBibleSelectedBook, setDashboardBibleSelectedBook] = useState<string | null>(null);
   const [dashboardBibleSelectedChapter, setDashboardBibleSelectedChapter] = useState<number | null>(null);
   const [dashboardBibleCompletedChapters, setDashboardBibleCompletedChapters] = useState<number[]>([]);
+  // Could not read this person's chapter progress. "3/50 complete" is a claim
+  // about them; with this set we do not make it. The chapters still open.
+  const [dashboardBibleProgressFailed, setDashboardBibleProgressFailed] = useState(false);
   const [dashboardBibleReaderHeight, setDashboardBibleReaderHeight] = useState(2200);
   const [dashboardBibleCompletedByBook, setDashboardBibleCompletedByBook] = useState<Record<string, number[]>>({});
   const [completedBibleChapterKeys, setCompletedBibleChapterKeys] = useState<string[]>([]);
@@ -4400,8 +4403,9 @@ export default function DashboardJourneyExperience({
         const chapters = await getCompletedChapters(userId, embeddedBibleSelectedBook);
         if (!cancelled) setEmbeddedBibleCompletedChapters(chapters);
       } catch (error) {
+        // Keep whatever we last knew rather than replacing it with "nothing
+        // read". getCompletedChapters throws on a failed read now.
         console.error("[DASHBOARD_BIBLE] Could not load completed chapters:", error);
-        if (!cancelled) setEmbeddedBibleCompletedChapters([]);
       }
     }
 
@@ -4422,12 +4426,14 @@ export default function DashboardJourneyExperience({
       try {
         const chapters = await getCompletedChapters(userId, bookName);
         setDashboardBibleCompletedChapters(chapters);
+        setDashboardBibleProgressFailed(false);
         setDashboardBibleCompletedByBook((previous) => ({
           ...previous,
           [bookName]: chapters,
         }));
       } catch (error) {
         console.error("[DASHBOARD_BIBLE_READER] Could not refresh chapter progress:", error);
+        setDashboardBibleProgressFailed(true);
       }
     },
     [userId],
@@ -4444,10 +4450,16 @@ export default function DashboardJourneyExperience({
 
       try {
         const chapters = await getCompletedChapters(userId, dashboardBibleSelectedBook);
-        if (!cancelled) setDashboardBibleCompletedChapters(chapters);
+        if (!cancelled) {
+          setDashboardBibleCompletedChapters(chapters);
+          setDashboardBibleProgressFailed(false);
+        }
       } catch (error) {
+        // Do NOT clear the list here. Emptying it told the reader every
+        // chapter was unread; keeping whatever we last knew and saying the
+        // count could not be loaded is the honest version.
         console.error("[DASHBOARD_BIBLE_READER] Could not load completed chapters:", error);
-        if (!cancelled) setDashboardBibleCompletedChapters([]);
+        if (!cancelled) setDashboardBibleProgressFailed(true);
       }
     }
 
@@ -4478,8 +4490,9 @@ export default function DashboardJourneyExperience({
           setDashboardBibleCompletedByBook(Object.fromEntries(entries));
         }
       } catch (error) {
+        // Same rule: an empty map here puts a 0 beside all 66 books.
         console.error("[DASHBOARD_BIBLE_READER] Could not load book progress:", error);
-        if (!cancelled) setDashboardBibleCompletedByBook({});
+        if (!cancelled) setDashboardBibleProgressFailed(true);
       }
     }
 
@@ -6379,7 +6392,9 @@ export default function DashboardJourneyExperience({
                   Back to books
                 </button>
                 <p className="text-xs font-bold text-[var(--bb-text-muted,#6b7280)]">
-                  {dashboardBibleCompletedChapters.length}/{selectedChapterCount} complete
+                  {dashboardBibleProgressFailed
+                    ? "Couldn't load your progress"
+                    : `${dashboardBibleCompletedChapters.length}/${selectedChapterCount} complete`}
                 </p>
               </div>
               <div className="grid grid-cols-5 gap-2 sm:grid-cols-7">

@@ -1,5 +1,27 @@
 import { supabase } from "./supabaseClient";
 
+/**
+ * "Your highlights could not be loaded" and "you have not highlighted anything
+ * in this chapter" are not the same sentence, and this file used to say the
+ * second one for both. supabase-js returns { data: null, error } instead of
+ * throwing, so a dropped connection came back as an empty list and a chapter
+ * someone had marked up read as clean.
+ *
+ * Nothing was ever lost - the rows stayed in the database and came back on
+ * the next successful load - but it looked exactly like loss, which for
+ * somebody's own study notes is close enough to be the same bug.
+ *
+ * Reads throw now. Writes answer { ok } so the screen can put a colour back
+ * where it was rather than leaving a highlight on a verse the database never
+ * accepted.
+ */
+export class HighlightLoadError extends Error {
+  constructor(what: string, cause: string) {
+    super(`Could not load ${what}: ${cause}`);
+    this.name = "HighlightLoadError";
+  }
+}
+
 function normalizeHighlightBook(book: string) {
   return book.toLowerCase().trim().replace(/\s+/g, " ");
 }
@@ -25,8 +47,8 @@ export async function fetchHighlights(book: string, chapter: number) {
     .eq("user_id", user.id)
     .eq("book", bookKey)
     .eq("chapter", chapter);
-  if (error) return [];
-  return data as Array<{ verse: number; color: string }>;
+  if (error) throw new HighlightLoadError("your highlights", error.message);
+  return (data || []) as Array<{ verse: number; color: string }>;
 }
 
 export async function fetchHighlightRanges(book: string, chapter: number) {
@@ -41,17 +63,27 @@ export async function fetchHighlightRanges(book: string, chapter: number) {
     .eq("chapter", chapter)
     .order("verse", { ascending: true })
     .order("start_offset", { ascending: true });
-  if (error) return [];
-  return data as VerseHighlightRange[];
+  if (error) throw new HighlightLoadError("your verse notes", error.message);
+  return (data || []) as VerseHighlightRange[];
 }
 
-export async function upsertHighlight(book: string, chapter: number, verse: number, color: string) {
+export async function upsertHighlight(
+  book: string,
+  chapter: number,
+  verse: number,
+  color: string,
+): Promise<{ ok: boolean }> {
   const user = (await supabase.auth.getUser()).data.user;
-  if (!user) return;
+  if (!user) return { ok: false };
   const bookKey = normalizeHighlightBook(book);
-  await supabase
+  const { error } = await supabase
     .from("highlights")
     .upsert({ user_id: user.id, book: bookKey, chapter, verse, color }, { onConflict: "user_id,book,chapter,verse" });
+  if (error) {
+    console.error("[HIGHLIGHTS] Could not save highlight:", error.message);
+    return { ok: false };
+  }
+  return { ok: true };
 }
 
 export async function upsertHighlightRange(
@@ -90,17 +122,26 @@ export async function upsertHighlightRange(
   return data as VerseHighlightRange;
 }
 
-export async function deleteHighlight(book: string, chapter: number, verse: number) {
+export async function deleteHighlight(
+  book: string,
+  chapter: number,
+  verse: number,
+): Promise<{ ok: boolean }> {
   const user = (await supabase.auth.getUser()).data.user;
-  if (!user) return;
+  if (!user) return { ok: false };
   const bookKey = normalizeHighlightBook(book);
-  await supabase
+  const { error } = await supabase
     .from("highlights")
     .delete()
     .eq("user_id", user.id)
     .eq("book", bookKey)
     .eq("chapter", chapter)
     .eq("verse", verse);
+  if (error) {
+    console.error("[HIGHLIGHTS] Could not remove highlight:", error.message);
+    return { ok: false };
+  }
+  return { ok: true };
 }
 
 export async function deleteHighlightRange(rangeId: string) {

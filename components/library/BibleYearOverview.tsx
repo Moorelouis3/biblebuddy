@@ -20,6 +20,7 @@ import {
   bibleYearShelfStudy,
 } from "../../lib/libraryCatalog";
 import { Disclosure, ReadersCard, StudyProgressHeader } from "./studyGuideShared";
+import LoadFailedNotice from "../LoadFailedNotice";
 
 /**
  * Bible in One Year's study overview - the screen Wisdom of Proverbs has, for
@@ -54,6 +55,11 @@ export default function BibleYearOverview() {
   const [position, setPosition] = useState<BibleYearPosition>(EMPTY_POSITION);
   const [signedIn, setSignedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+  // Could not read this person's progress. Emphatically NOT the same as
+  // "nothing read yet": showing Day 1 to somebody on day 280 is the bug this
+  // state exists to prevent.
+  const [failed, setFailed] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
 
   // Which range is open. Exactly one at a time, so at most 30 rows are ever
   // mounted - requirement for 365 days: no heavy render of every row.
@@ -75,11 +81,27 @@ export default function BibleYearOverview() {
       // Open the range the reader is actually in, not Days 1-30.
       setOpenRange(rangeIndexFor(p.planDay ?? 1));
       setLoading(false);
-    })();
+    })().catch((error: unknown) => {
+      // fetchBibleYearPosition throws on a failed read now. Before it did,
+      // this landed on the empty position and the screen opened on Day 1 with
+      // an empty progress bar - telling somebody 280 days in that they had
+      // read nothing. Say we could not load it instead.
+      if (cancelled) return;
+      console.warn("[BIBLE YEAR] Could not load the plan:", error);
+      setFailed(true);
+      setLoading(false);
+    });
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [reloadKey]);
+
+  /** Try Again: back to the skeleton, then run the load once more. */
+  function retryLoad() {
+    setFailed(false);
+    setLoading(true);
+    setReloadKey((k) => k + 1);
+  }
 
   const completed = useMemo(() => new Set(position.completedDayNumbers), [position.completedDayNumbers]);
   const currentDay = position.planDay ?? 1;
@@ -103,6 +125,14 @@ export default function BibleYearOverview() {
         ?.scrollIntoView({ behavior: "smooth", block: "center" });
     });
   };
+
+  if (failed) {
+    return (
+      <div className="mx-auto w-full max-w-3xl px-4 py-6">
+        <LoadFailedNotice message="Couldn't load your progress." onRetry={retryLoad} />
+      </div>
+    );
+  }
 
   if (loading) {
     return (

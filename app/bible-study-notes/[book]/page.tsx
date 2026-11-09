@@ -68,7 +68,13 @@ export default function BookBibleStudyNotesPage() {
       const completed = await getCompletedChapters(userId, bookKey);
       setCompletedChapters(completed);
     }
-    loadCompletedChapters();
+    // The notes are what this page is for; the ticks beside each chapter are
+    // a detail on top. getCompletedChapters throws on a failed read now, so
+    // catch it here deliberately and leave the ticks off rather than failing
+    // a page that is perfectly readable without them.
+    void loadCompletedChapters().catch((err: unknown) => {
+      console.warn("[STUDY_NOTES] Could not load which chapters are done:", err);
+    });
   }, [userId, bookKey]);
 
   useEffect(() => {

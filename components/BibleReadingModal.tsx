@@ -231,6 +231,9 @@ export default function BibleReadingModal({ book, chapter, onClose, onMarkComple
         const alreadyCompleted = await isChapterCompleted(user.id, book, chapter);
         setChapterCompleted(alreadyCompleted);
       } catch (err) {
+        // isChapterCompleted throws on a failed read now. The tick on the
+        // button is a detail, and marking a chapter done twice is an upsert,
+        // so staying unticked is the harmless way to be wrong here.
         console.error("[BIBLE_READING_MODAL] Error loading user:", err);
       }
     }

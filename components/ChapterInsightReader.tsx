@@ -179,7 +179,12 @@ export default function ChapterInsightReader({
       const id = data?.user?.id || null;
       setUserId(id);
       if (id) setCompleted(await isChapterCompleted(id, BOOK, CHAPTER));
-    })();
+    })().catch((err: unknown) => {
+      // isChapterCompleted throws on a failed read now. This only drives the
+      // tick on the Mark Complete button, and marking a chapter done twice is
+      // an upsert, so leaving it unticked costs nothing. Caught on purpose.
+      console.warn("[CHAPTER_INSIGHT] Could not check whether this chapter is done:", err);
+    });
   }, [BOOK, CHAPTER]);
 
   // The games are only needed once their tab is opened.

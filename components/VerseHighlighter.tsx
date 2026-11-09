@@ -1322,6 +1322,13 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [noteViewer, setNoteViewer] = useState<HighlightNoteViewerState | null>(null);
   const [noteSaving, setNoteSaving] = useState(false);
   const [loading, setLoading] = useState(false);
+  // Your highlights could not be loaded. Separate from "you have none here",
+  // which is why the chapter still renders underneath - the words are the
+  // point, the colours are the detail.
+  const [highlightsUnavailable, setHighlightsUnavailable] = useState(false);
+  // A highlight the database would not take. Shown, then cleared on the next
+  // successful one.
+  const [highlightError, setHighlightError] = useState<string | null>(null);
   const [user, setUser] = useState<any>(null);
   const [creditBlocked, setCreditBlocked] = useState(false);
   const [openStudyReference, setOpenStudyReference] = useState<string | null>(null);
@@ -1364,6 +1371,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   useEffect(() => {
     if (!user) return;
     setLoading(true);
+    setHighlightsUnavailable(false);
     Promise.all([fetchHighlights(book, chapter), fetchHighlightRanges(book, chapter)])
       .then(([data, ranges]) => {
         const map: Record<number, string> = {};
@@ -1371,9 +1379,14 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
         setHighlightMap(map);
         setRangeMap(groupRangesByVerse(ranges));
       })
-      .catch(() => {
+      .catch((err) => {
+        // These reads throw now, so this is a real failure rather than a
+        // chapter with nothing marked up. The verses still render; we just
+        // say the colours are missing instead of implying there are none.
+        console.error("[HIGHLIGHTS] Could not load this chapter's highlights:", err?.message ?? err);
         setHighlightMap({});
         setRangeMap({});
+        setHighlightsUnavailable(true);
       })
       .finally(() => setLoading(false));
   }, [user, book, chapter]);
@@ -1480,12 +1493,19 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       }
 
       if (hasWholeVerseHighlight) {
+        const previousColor = highlightMap[verse];
         setHighlightMap((current) => {
           const next = { ...current };
           delete next[verse];
           return next;
         });
-        void deleteHighlight(book, chapter, verse);
+        void deleteHighlight(book, chapter, verse).then((removed) => {
+          if (removed.ok) return;
+          // Put it back rather than leave the verse looking un-highlighted
+          // when the row is still there.
+          setHighlightMap((current) => ({ ...current, [verse]: previousColor }));
+          setHighlightError("That highlight could not be removed. Check your connection and try again.");
+        });
       }
 
       return;
@@ -1702,10 +1722,27 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
 
     setPicker(null);
     const prev = highlightMap[verse] || null;
+    // The colour goes on straight away so the tap feels instant, and comes
+    // back off if the database would not take it. Leaving it on screen was
+    // the bug: it looked saved until the next reload said otherwise.
+    const restorePrevious = () =>
+      setHighlightMap((m) => {
+        const n = { ...m };
+        if (prev) n[verse] = prev;
+        else delete n[verse];
+        return n;
+      });
+
     // --- REMOVE highlight ---
     if (color === prev) {
       setHighlightMap((m) => { const n = { ...m }; delete n[verse]; return n; });
-      await deleteHighlight(book, chapter, verse);
+      const removed = await deleteHighlight(book, chapter, verse);
+      if (!removed.ok) {
+        restorePrevious();
+        setHighlightError("That highlight could not be removed. Check your connection and try again.");
+        return;
+      }
+      setHighlightError(null);
     } else if (color) {
       // --- ADD highlight ---
       const creditResult = await spendCredit(ACTION_TYPE.verse_highlighted, { userId: user.id });
@@ -1714,7 +1751,13 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
         return;
       }
       setHighlightMap((m) => ({ ...m, [verse]: color }));
-      await upsertHighlight(book, chapter, verse, color);
+      const saved = await upsertHighlight(book, chapter, verse, color);
+      if (!saved.ok) {
+        restorePrevious();
+        setHighlightError("That highlight did not save. Check your connection and try again.");
+        return;
+      }
+      setHighlightError(null);
     }
   };
 
@@ -2207,6 +2250,18 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
       {needsAggregatedStudySections ? (
         <BibleStudySectionsLoader book={book} chapter={chapter} onLoaded={setBackgroundStudySections} />
       ) : null}
+      {/* The chapter is readable either way; these only ever say that the
+          colours on top of it are not what they should be. */}
+      {highlightsUnavailable && (
+        <p role="alert" className="mb-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-800">
+          Couldn&apos;t load your highlights for this chapter. They&apos;re still saved — reopen the chapter to try again.
+        </p>
+      )}
+      {highlightError && (
+        <p role="alert" className="mb-3 rounded-xl bg-red-50 px-3 py-2 text-xs text-red-700">
+          {highlightError}
+        </p>
+      )}
       <style>{`
         .bible-selectable-text {
           -webkit-touch-callout: none;

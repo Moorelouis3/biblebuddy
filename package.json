@@ -49,6 +49,7 @@
     "signups": "node scripts/signup-report.mjs",
     "campaign": "node scripts/campaign.mjs",
     "backfill-subscribers": "node scripts/backfill-subscribers.mjs",
+    "verify:bounce-suppression": "tsx scripts/verify-bounce-suppression.ts",
     "verify:product-health": "tsx scripts/verify-product-health.ts",
     "check:content-filter": "tsx scripts/check-content-filter.ts",
     "comments:seed": "tsx scripts/seed-comment-replies.ts",
@@ -62,7 +63,8 @@
     "verify:auth-lock": "tsx scripts/verify-supabase-auth-lock.ts",
     "verify:load-retry": "tsx scripts/verify-load-retry.ts",
     "verify:anon-access": "tsx scripts/verify-anon-access.ts",
-    "verify:comment-not-lost": "tsx scripts/verify-comment-not-lost.ts"
+    "verify:comment-not-lost": "tsx scripts/verify-comment-not-lost.ts",
+    "verify:progress-not-empty": "tsx scripts/verify-progress-not-empty.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",

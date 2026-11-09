@@ -15,6 +15,13 @@ const CACHE_MS = 60_000;
 
 type BlockRow = { blocker_user_id: string; blocked_user_id: string };
 
+export class BlocksLoadError extends Error {
+  constructor(cause: string) {
+    super(`Could not load blocks: ${cause}`);
+    this.name = "BlocksLoadError";
+  }
+}
+
 let cache: { userId: string; rows: BlockRow[]; at: number } | null = null;
 let inflight: { userId: string; promise: Promise<BlockRow[]> } | null = null;
 
@@ -25,18 +32,39 @@ async function fetchRows(userId: string): Promise<BlockRow[]> {
     .or(`blocker_user_id.eq.${userId},blocked_user_id.eq.${userId}`);
   if (error) {
     console.warn("[BLOCKS] Could not load blocks:", error.message);
-    return [];
+    throw new BlocksLoadError(error.message);
   }
   return (data || []) as BlockRow[];
 }
 
+/**
+ * This used to answer a failed read with `[]` and then CACHE it for a minute.
+ * supabase-js returns { data: null, error } rather than throwing, so a dropped
+ * connection read as "nobody is blocked" - and because the empty answer went
+ * into the cache, somebody a reader had deliberately blocked stayed visible
+ * for the next 60 seconds, long after the connection came back.
+ *
+ * Two rules now. Keep the last list we actually got, so a failure cannot
+ * un-hide anyone we already know about. And never write a failure into the
+ * cache, so the very next call retries instead of settling into being wrong.
+ *
+ * With nothing cached yet there is no honest answer but the empty set: the
+ * alternative is hiding the whole feed from someone whose connection blinked.
+ * That one is uncached, so it is corrected the moment a read succeeds.
+ */
 async function loadRows(userId: string, force = false): Promise<BlockRow[]> {
   if (!force && cache && cache.userId === userId && Date.now() - cache.at < CACHE_MS) return cache.rows;
   if (!force && inflight && inflight.userId === userId) return inflight.promise;
-  const promise = fetchRows(userId).then((rows) => {
-    cache = { userId, rows, at: Date.now() };
-    return rows;
-  });
+  const promise = fetchRows(userId).then(
+    (rows) => {
+      cache = { userId, rows, at: Date.now() };
+      return rows;
+    },
+    (err) => {
+      console.warn("[BLOCKS] Keeping the last known block list:", err?.message ?? err);
+      return cache && cache.userId === userId ? cache.rows : [];
+    },
+  );
   inflight = { userId, promise };
   try {
     return await promise;

@@ -1289,7 +1289,12 @@ RULES:
         setIsCompleted(completed);
       }
     }
-    checkCompleted();
+    // The chapter reads fine either way; this only decides whether the button
+    // says "Mark Complete" or shows as done, and completing twice is an
+    // upsert. isChapterCompleted throws now, so catch it here.
+    void checkCompleted().catch((err: unknown) => {
+      console.warn("[CHAPTER_READER] Could not check whether this chapter is done:", err);
+    });
   }, [book, chapter, userId]);
 
   // Extract Big Idea summary from notes text

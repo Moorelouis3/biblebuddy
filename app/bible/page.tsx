@@ -99,6 +99,8 @@ function BiblePageInner() {
         const states = Object.fromEntries(completionEntries) as Record<string, { complete: boolean }>;
         setBookStates(states);
       } catch (err) {
+        // isBookComplete throws on a failed read now. Every book on this list
+        // still opens; without this only the "finished" ticks are missing.
         console.error("Error loading book states:", err);
       }
     }

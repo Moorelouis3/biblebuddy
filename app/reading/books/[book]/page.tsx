@@ -264,6 +264,9 @@ function BookPageInner() {
   const totalChapters = getBookTotalChapters(bookDisplayName);
 
   const [completedChapters, setCompletedChapters] = useState<number[]>([]);
+  // Could not read this person's progress. Without it, "0 / 50 chapters
+  // finished" is not a fact about them, so the bar says so instead.
+  const [progressFailed, setProgressFailed] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
 
@@ -309,8 +312,13 @@ function BookPageInner() {
       try {
         const completed = await getCompletedChapters(userId, bookKey);
         setCompletedChapters(completed);
+        setProgressFailed(false);
       } catch (err) {
+        // This used to swallow a failure and leave the list empty, so the bar
+        // read "0 / N chapters finished" to somebody who had finished most of
+        // them. The chapters below still open; only the count is unknown.
         console.error("Error loading progress:", err);
+        setProgressFailed(true);
       }
     }
 
@@ -423,15 +431,18 @@ function BookPageInner() {
             <div className="flex justify-between text-xs text-gray-600 mb-1">
               <span>Progress in {bookDisplayName}</span>
               <span>
-                {progressPercent.toFixed(0)}% ({finishedChapters} /{" "}
-                {totalChapters} chapters finished)
+                {progressFailed
+                  ? "Couldn't load your progress"
+                  : `${progressPercent.toFixed(0)}% (${finishedChapters} / ${totalChapters} chapters finished)`}
               </span>
             </div>
             <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
-              <div
-                className="h-full bg-blue-500 rounded-full transition-all"
-                style={{ width: `${progressPercent}%` }}
-              />
+              {!progressFailed && (
+                <div
+                  className="h-full bg-blue-500 rounded-full transition-all"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              )}
             </div>
           </div>
 

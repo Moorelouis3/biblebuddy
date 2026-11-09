@@ -934,7 +934,12 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
       setCompletedReaderChapterKeys(nextKeys);
     }
 
-    void loadCompletedReaderChapters();
+    // getCompletedChaptersByBooks throws on a failed read now. These keys only
+    // tick the chapters already read beside each day; every day still opens.
+    // Caught on purpose rather than failing a whole study.
+    void loadCompletedReaderChapters().catch((err: unknown) => {
+      console.warn("[DEVOTIONAL] Could not load which chapters are already read:", err);
+    });
 
     return () => {
       active = false;

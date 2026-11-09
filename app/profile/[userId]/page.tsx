@@ -419,10 +419,18 @@ export default function PublicProfilePage() {
       if (!chaptersError && completedChapters) {
         const uniqueBooks = new Set(completedChapters.map((c) => c.book));
         let completedBooksCount = 0;
-        for (const book of uniqueBooks) {
-          if (await isBookComplete(profileUserId, book)) completedBooksCount++;
+        try {
+          for (const book of uniqueBooks) {
+            if (await isBookComplete(profileUserId, book)) completedBooksCount++;
+          }
+          setBooksCompleted(completedBooksCount);
+        } catch (booksErr) {
+          // isBookComplete throws on a failed read now. Scoped here on
+          // purpose: letting it reach the outer catch would skip everything
+          // below, including the posts, and lose a whole profile over one
+          // count. The books figure simply stays as it was.
+          console.warn("[PUBLIC_PROFILE] Could not count completed books:", booksErr);
         }
-        setBooksCompleted(completedBooksCount);
         const completionPercent = completedChapters.length > 0
           ? Math.round((completedChapters.length / 1189) * 100 * 10) / 10
           : 0;
