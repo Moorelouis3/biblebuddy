@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-1-explained",
+    title: "Joshua 1 Explained: Be Strong and of a Good Courage",
+    description:
+      "Joshua 1 explained verse by verse: God's charge to Joshua after Moses's death, the fourfold call to courage, and Israel's vow of full obedience.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-1-explained",
+    publishedAt: "2026-11-09",
+    readTime: "14 min read",
+    image: "/blog-banners/joshua-1-explained.jpg",
+    groupPost: {
+      title: "Joshua 1 Explained 📖",
+      content:
+        "Moses is dead.\nGod speaks to the new leader anyway, the very same day.\n\n📌 God tells Joshua to be strong and courageous, four times in one chapter.\n\n📖 Joshua's very first order is simply to pack food for three days.\n📖 Two and a half tribes still owed a promise made years earlier to Moses.\n📖 The whole nation vows to obey Joshua before he takes a single step.\n\nNew article on:\n🟢 why God repeats the **same boundary line** He gave Moses\n🟢 what the **book of the law** has to do with Joshua's success\n🟢 how two tribes get **held to an old promise**\n\nHave you ever had to step into something someone else built? 🙏",
+    },
+  },
+  {
     slug: "deuteronomy-34-explained",
     title: "Deuteronomy 34 Explained: The Death of Moses on Mount Nebo",
     description:
