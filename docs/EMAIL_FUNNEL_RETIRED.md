@@ -134,6 +134,14 @@ only an id left over from importing the content. Those campaigns send through
 | `systeme-5302997` | Moses thought he was the wrong person | 5,208 | 8,162 |
 | `systeme-5302999` | Is feeling anxious a sin? | 5,171 | 7,965 |
 
+**They stay paused. Decided by Louis, 2026-11-10: "Leave them off."** Do not
+arm them, individually or in a sweep, and do not treat "paused" here as an
+oversight to tidy up. They are the Sunday half of the calendar; the list gets
+the Friday email and nothing else. Un-pausing all 22 would put a second email
+a week in front of ~5,000 people from 15 Nov 2026 to 11 Apr 2027, including
+"Merry Christmas from Louis" on 20 Dec. If they are ever wanted back, that is
+Louis's call to make out loud, not a cleanup.
+
 The other 25 are Louis's forward content calendar — one armed for 18 Apr 2027,
 the rest paused with dates from 15 Nov 2026 to 11 Apr 2027. They are the
 "16 scheduled, 23 paused" on the Email tab. Deleting them would delete the
