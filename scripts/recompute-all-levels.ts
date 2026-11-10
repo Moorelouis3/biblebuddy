@@ -111,7 +111,7 @@ function groupByUser<T extends { user_id: string | null }>(rows: T[]) {
   return map;
 }
 
-async function main() {
+async function main(): Promise<number> {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) throw new Error("Missing Supabase env");
@@ -170,6 +170,8 @@ async function main() {
   const missingProfileRows = [...actionsByUser.keys()].filter((id) => !profileByUser.has(id)).length;
   console.log(`users to score: ${allUserIds.size} (with actions but no profile_stats row: ${missingProfileRows})`);
 
+  type PendingWrite = { user_id: string; current_level: number; level_celebrated: number };
+  const pending: PendingWrite[] = [];
   let levelsRaised = 0;
   let levelsUnchanged = 0;
   let sealed = 0;
@@ -212,21 +214,64 @@ async function main() {
 
     if (DRY || (!needsLevelWrite && !needsSeal)) continue;
 
-    const payload: Record<string, unknown> = { user_id: userId };
-    if (needsLevelWrite) payload.current_level = flooredLevel;
-    if (needsSeal) payload.level_celebrated = flooredLevel;
+    /**
+     * Queued and written in batches, not one request per user.
+     *
+     * The first live run on 2026-11-10 issued one upsert per user - 7,198
+     * sequential requests - and 4,409 of them died with "TypeError: fetch
+     * failed" partway through, leaving the backfill half applied. Batching
+     * turns that into ~15 requests.
+     *
+     * The payload is UNIFORM on purpose: every row carries both columns, even
+     * when only one of them changed. PostgREST builds one INSERT per batch from
+     * the union of the keys it sees, so a batch where some rows omit
+     * current_level would write NULL into current_level for those rows. Writing
+     * the value we just computed is always correct, so there is no reason to
+     * vary the shape.
+     */
+    pending.push({ user_id: userId, current_level: flooredLevel, level_celebrated: flooredLevel });
+  }
 
-    const { error } = await supabase.from("profile_stats").upsert(payload, { onConflict: "user_id" });
-    if (error) {
-      console.error(`  ${userId}: ${error.message}`);
-      failures += 1;
+  // Write in batches, with one retry per batch. A batch that still fails after
+  // the retry is counted and named rather than swallowed.
+  let written = 0;
+  if (!DRY && pending.length > 0) {
+    const BATCH = 500;
+    console.log("");
+    console.log(`Writing ${pending.length} rows in batches of ${BATCH}...`);
+    for (let i = 0; i < pending.length; i += BATCH) {
+      const slice = pending.slice(i, i + BATCH);
+      let lastError: string | null = null;
+      for (let attempt = 1; attempt <= 2; attempt += 1) {
+        const { error } = await supabase.from("profile_stats").upsert(slice, { onConflict: "user_id" });
+        if (!error) {
+          lastError = null;
+          break;
+        }
+        lastError = error.message;
+        if (attempt === 1) await new Promise((resolve) => setTimeout(resolve, 1500));
+      }
+      if (lastError) {
+        failures += slice.length;
+        console.error(`  batch ${i}-${i + slice.length - 1} failed: ${lastError}`);
+      } else {
+        written += slice.length;
+        process.stdout.write(`  ${written}/${pending.length}\r`);
+      }
     }
+    console.log("");
   }
 
   console.log("");
   console.log(`${DRY ? "[dry] would raise" : "raised"} ${levelsRaised} levels, ${levelsUnchanged} already at level.`);
   console.log(`${DRY ? "[dry] would seal" : "sealed"} level_celebrated on ${sealed} rows (no retroactive popups).`);
-  if (failures) console.log(`FAILURES: ${failures} rows could not be written.`);
+  if (!DRY) console.log(`rows actually written: ${written} of ${pending.length}`);
+  if (failures) {
+    console.log("");
+    console.log(`FAILURES: ${failures} rows could not be written.`);
+    console.log("The distribution below is what was COMPUTED, not what is in the database.");
+    console.log("Re-run this script - it is idempotent and will only write what is still missing.");
+  }
 
   console.log("");
   console.log("Level distribution (before -> after):");
@@ -251,9 +296,17 @@ async function main() {
   for (const row of wouldHaveDropped) {
     console.log(`  L${row.stored} would have become L${row.derived} without the floor`);
   }
+
+  return failures > 0 ? 1 : 0;
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+main()
+  .then((exitCode) => {
+    // Exiting 0 after 4,409 failed writes is how the first live run looked like
+    // a success. A partial backfill is a failure.
+    if (exitCode) process.exit(exitCode);
+  })
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
