@@ -100,18 +100,18 @@ filler: "Covenant Keeper", "Holy Flame", "Bible Buddy Legend" …) are deleted.
 | 14 | **Devoted** | Deep commitment to time in the Word. | Devotion deepens over time. Keep giving God your attention. |
 | 15 | **Servant** | Living out what is learned through action. | What you are learning is showing up in how you live. Keep going. |
 | 16 | **Builder** | Helping strengthen others through knowledge and example. | You are building something steady. Your example matters. |
-| 17 | **Teacher** | Able to explain and share understanding clearly. | Clarity helps others grow too. Keep sharing what you have learned. |
+| 17 | **Mentor** | Able to explain and share understanding clearly. | Clarity helps others grow too. Keep sharing what you have learned. |
 | 18 | **Shepherd** | Guiding and supporting others in their journey. | Leadership grows out of faithfulness. Keep caring well for others. |
 | 19 | **Watchman** | Spiritually alert, mature, and grounded in truth. | Stay watchful and grounded. Maturity is built through steady faithfulness. |
 | 20 | **Ambassador** | Representing the Word with consistency, wisdom, and leadership. | You have built something lasting. Keep representing the Word well. |
 
-**One naming note worth a decision.** Level 17 is called **Teacher** and
-`member_badge = 'teacher'` is Louis's own badge (👨‍🏫 Teacher), set by
-`SET_LOUIS_TEACHER_BADGE.sql`. A member reaching Level 17 would show "Teacher"
-as a level name beside, but visually separate from, the Teacher badge. Nobody is
-at Level 17 today and nobody is close, so it is not urgent — but it is a
-collision, and renaming the level (not the badge) is the easy fix if Louis wants
-one.
+**Level 17 was renamed from Teacher to Mentor** (Louis, 2026-11-10). The legacy
+name collided with `member_badge = 'teacher'`, Louis's own badge (👨‍🏫 Teacher,
+set by `SET_LOUIS_TEACHER_BADGE.sql`), so a member reaching Level 17 would have
+shown "Teacher" beside but separate from the real Teacher badge. The **level**
+was renamed, not the badge. This is the one change to the legacy names; the other
+19 are untouched. Nobody is at Level 17 or close to it, so no live user sees a
+name change.
 
 ### The five ring tiers
 
@@ -153,7 +153,7 @@ relative luminance), not estimated.**
 | 14 | Devoted | `#0B4336` | 11.23 | `#C9F2E4` | 14.17 | 4px double |
 | 15 | **Servant** | `#C08A08` | 3.05 | `#E0A82E` | 8.03 | 2px solid — **new tier** |
 | 16 | Builder | `#AA6A0A` | 4.40 | `#EEBE55` | 9.93 | 3px solid |
-| 17 | Teacher | `#8E4A07` | 6.70 | `#F3CE7D` | 11.41 | 3px + hairline |
+| 17 | Mentor | `#8E4A07` | 6.70 | `#F3CE7D` | 11.41 | 3px + hairline |
 | 18 | Shepherd | `#73350A` | 9.36 | `#F7DEA6` | 13.06 | 3px + hairline + notch |
 | 19 | Watchman | `#55250B` | 12.68 | `#FAEBC9` | 14.57 | 4px double |
 | 20 | **Ambassador** | `#4C1D95` | 10.95 | `#C4B5FD` | 9.31 | **4px double + full gold inner hairline** |
@@ -204,7 +204,7 @@ live script would have missed those 562 entirely.
 | 14 | Devoted | 9,000 | **3** | 1 | +2 |
 | 15 | Servant | 11,500 | **5** | 1 | +4 |
 | 16 | Builder | 14,500 | **3** | 2 | +1 |
-| 17 | Teacher | 18,000 | **0** | 0 | 0 |
+| 17 | Mentor | 18,000 | **0** | 0 | 0 |
 | 18 | Shepherd | 22,000 | **3** | 1 | +2 |
 | 19 | Watchman | 26,000 | **0** | 0 | 0 |
 | 20 | Ambassador | 30,000 | **1** | 0 | +1 |
@@ -291,7 +291,11 @@ decorative: **each one is the level where the ring changes colour family.**
 | Headline | "A new tier" | "A new tier" | "A new tier" | "**The top of the ladder**" |
 | Milestone line | "You've read your first month." | "Four months in the Word." | "A year of daily study." | "A Bible's worth of study." |
 | Posted to the feed | yes | yes | yes | yes |
-| Unlock named | Streak flames | Level name shown everywhere | Comment flair | Certificate |
+
+**No reward is named in the popup** (Louis, 2026-11-10). The milestone
+celebrates the level itself and nothing else until there is something real to
+promise. A popup that names an unlock we have not committed to is worse than one
+that names none.
 
 The four extras on a milestone popup:
 
@@ -401,27 +405,28 @@ cron.** For scale: the three October outages came from an 8-second interval in
 
 ---
 
-## What is confirmed, and what still needs a decision
+## Decisions — all settled
 
-**Confirmed by Louis and now locked in:** 20 levels not 50; Level 2 at 50 XP;
-the four defects get fixed; Founder Buddy stays separate and renders before the
-level chip; the milestone opt-out ships with the announcement; nobody loses XP
-or a level.
+**Settled 2026-11-10. Nothing on this list is open any more.**
 
-**Still open — four questions, down from eleven:**
+| Decision | Louis's call |
+|---|---|
+| 20 levels, not 50 | **Yes** |
+| Level 2 at 50 XP | **Yes** |
+| The four defects (D1–D4) get fixed | **Yes** |
+| Founder Buddy stays separate, renders before the level chip | **Yes** |
+| Milestone opt-out ships with the announcement | **Yes** |
+| Nobody loses XP or a level | **Yes** — verified three ways in §3 |
+| **Level 17 name** | **Renamed Teacher → Mentor**, so it cannot collide with the personal Teacher badge |
+| **Level 20 threshold** | **Stays at 30,000 XP.** Louis: *"I'm fine with already being Level 20. I earned those points, and I don't want to move the goalposts."* |
+| **Milestone rewards** | **Not promised yet.** The four milestone celebrations still happen; they name no specific unlock until Louis decides what is on offer. The "Unlock named" row has been removed from §4's milestone table and the §2.8 reward list in the proposal is now a menu to choose from, not a plan |
+| **Rings vs chips** | **Chips** in comments, messages and crowded rows; **full rings** on profiles, dashboards and larger displays |
 
-1. **Level 17 is named "Teacher", which collides with Louis's own Teacher
-   badge** (§2). Nobody is near Level 17. Rename the level, or leave it?
-2. **Level 20 is reached by one person — Louis — on day one.** Is that right, or
-   should the summit sit above everyone so it is still ahead of him?
-3. **Which unlocks to name in the four milestone popups** (§4, last row of the
-   table). Streak flames, premium skins, themes and buddy avatars are all built
-   and dormant; the background photos behind the themes are parked until after
-   the stores, which may rule those out for now.
-4. **Rings in the dense rows** — messages and feed comments — or chips only
-   there, and rings on dashboard, profiles and study comments? The recommendation
-   is chips only in dense rows: a ring at 24px beside a badge and a streak flame
-   is clutter.
+**The popup design is a separate decision and is still being reviewed** —
+see `docs/LEVELS_POPUP_GOLDEN_BADGE_2026-11-10.md`. §4 above describes the
+*behaviour* (when it fires, idempotency, reduced motion, read cost), all of
+which stands. The *visual* is being replaced with the Golden Badge direction, so
+treat §4's layout description as superseded by that document.
 
 ---
 
