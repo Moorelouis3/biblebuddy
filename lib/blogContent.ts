@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-7-explained",
+    title: "Joshua 7 Explained: Achan's Hidden Sin and the Defeat at Ai",
+    description:
+      "Joshua 7 explained verse by verse: Achan's hidden sin, the defeat at Ai, the lots that expose him, his confession, and judgment in the valley of Achor.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-7-explained",
+    publishedAt: "2026-11-10",
+    readTime: "15 min read",
+    image: "/blog-banners/joshua-7-explained.jpg",
+    groupPost: {
+      title: "Joshua 7 Explained 📖",
+      content:
+        "Jericho fell without a fight.\nThen a tiny city beats Israel back.\n\n📌 One man's hidden sin cost the whole army a battle.\n\n📖 Achan buried stolen silver and gold under his own tent.\n📖 God used lots to narrow the search to one man.\n📖 The valley got its name from what happened there.\n\nNew article on:\n🟢 why **hidden sin** cost thirty six lives\n🟢 how the **lots** narrowed from tribe to one man\n🟢 what Achan's **confession** reveals about every temptation\n\nHave you ever kept something hidden, hoping nobody would find it? 🙏",
+    },
+  },
+  {
     slug: "joshua-6-explained",
     title: "Joshua 6 Explained: Six Silent Days and the Fall of Jericho",
     description:
