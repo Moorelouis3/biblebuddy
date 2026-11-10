@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-5-explained",
+    title: "Joshua 5 Explained: A New Circumcision Before the First Battle",
+    description:
+      "Joshua 5 explained verse by verse: the second circumcision at Gilgal, the first Passover kept in Canaan, the manna ending, and the captain of the LORD's host.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-5-explained",
+    publishedAt: "2026-11-10",
+    readTime: "14 min read",
+    image: "/blog-banners/joshua-5-explained.jpg",
+    groupPost: {
+      title: "Joshua 5 Explained 📖",
+      content:
+        "Jericho is in sight.\nGod's first order is not about swords.\n\n📌 Every fighting man is told to get circumcised, right then.\n\n📖 The whole generation born in the wilderness had never been circumcised.\n📖 The manna stopped the same week they kept Passover in Canaan.\n📖 Joshua meets an armed stranger who will not pick a side.\n\nNew article on:\n🟢 why God made Israel **vulnerable** right before battle\n🟢 why the **manna ended** the exact day it did\n🟢 who the **captain of the LORD's host** really was\n\nHave you ever had to get ready in a way that felt like weakness first? 🙏",
+    },
+  },
+  {
     slug: "forgiving-someone-who-isnt-sorry",
     title: "How Do You Forgive Someone Who Isn't Sorry?",
     description:
