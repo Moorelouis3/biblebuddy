@@ -1,5 +1,19 @@
 # Bible Buddy — 20-Level System: inventory and proposal
 
+> **Two sections of this document are superseded by
+> `docs/LEVELS_REVIEW_2026-11-10.md`, written the same day after Louis approved
+> the 20-level direction. Read that one first for:**
+>
+> - **§2.1's "users there today" column** — it was interpolated between measured
+>   thresholds. The review has the real dry-run histogram over 7,195 users.
+> - **§2.4's ring tiers** — they changed colour family at levels 5, 9, 13 and
+>   17. Louis asked for milestone celebrations at **5, 10, 15 and 20**, so the
+>   tiers were re-banded to **4/5/5/5/1** and the whole palette recomputed. The
+>   review's table is the current one; §2.4's is history.
+>
+> Everything else here stands, and this remains the authoritative inventory of
+> what already exists (Part 1) and the reasoning behind the design (Part 2).
+
 **10 November 2026. Nothing in the app was changed to produce this. No
 migration was run, no production row was written.** Every number below was read
 from the live database read-only, or computed in memory from rows read
