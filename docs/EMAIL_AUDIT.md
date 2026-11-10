@@ -127,13 +127,42 @@ automations.
    reschedule, send. Reached by an explicit button inside an expanded row, never
    by clicking the row itself. It is the newer page and it holds real sending
    controls; deleting it would lose function Louis uses.
-4. ~~**`/admin/email-analytics` (31 July) is retired**~~ — **wrong, and checked
-   before acting on it.** `/api/cron/email-funnel-send-all` is still scheduled
-   in `vercel.json`, and `email_funnel_sends` holds 30,764 rows. The day 1–8
-   welcome funnel is a **live system of its own**, running off its own table
-   and its own cron, and none of it appears in the campaigns list. That page is
-   the only screen reporting on it, so redirecting it would have blinded Louis
-   to something still sending. It stays, and the Email tab now links to it.
+4. ~~**`/admin/email-analytics` (31 July) is retired**~~ — **it stays, but not
+   for the reason first given.** I wrote that the day 1–8 funnel was "a live
+   system of its own". Louis asked whether people really get daily emails in
+   their first week, and the database says no. Checked 2026-11-10:
+
+   | Day | Sends ever | Last one |
+   |---|---|---|
+   | 1 | 5,043 | 20 Oct 2026 |
+   | 2 | 3,765 | 9 Sep 2026 |
+   | 3 | 3,763 | 9 Sep 2026 |
+   | 4 | 3,760 | 9 Sep 2026 |
+   | 5 | 3,758 | 9 Sep 2026 |
+   | 6 | 3,742 | 9 Sep 2026 |
+   | 7 | 3,760 | 9 Sep 2026 |
+   | 8 | 3,173 | 9 Sep 2026 |
+
+   **Nothing at all since 21 October.** Days 2–8 were switched off on
+   2026-09-09 — they were written for the subscription model ("ready to
+   commit?"), which is not the business any more. Day 1 kept going through
+   Systeme until our own SES welcome took over on 2026-10-20.
+
+   The cron is still scheduled hourly, and it still runs, but it asks whether
+   `email_campaigns.welcome` is `sending` first — it is — so `daysToProcess`
+   is an empty array and it sends nothing. That is deliberate: it means there
+   is never a moment with two welcomes going out and never a moment with none.
+
+   So the page reports **history**, not a live sender, and that is why it
+   stays: 30,764 recorded sends and this is the only screen that can read
+   them. The Email tab links to it as history.
+
+   **What a new signup actually gets in week one:** the welcome email, from
+   our own server, once. Plus the twice-weekly studies broadcast if one goes
+   out that week (it goes to the whole list, not to new people specially).
+   `study-nudge` can reach them later, but only if they start a devotional and
+   then go quiet for four to fourteen days, and only once per person ever.
+   Nothing daily.
 5. **`/admin/email-broadcasts` is left alone.** It writes emails, it does not
    report on them, and nothing in the complaint is about it.
 

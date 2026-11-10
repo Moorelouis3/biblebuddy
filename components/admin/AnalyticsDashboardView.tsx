@@ -1209,16 +1209,20 @@ export default function AnalyticsDashboardView({
                       orphaned - and so nobody builds a third one because they
                       could not find them.
 
-                      The welcome funnel really is separate: days 1-8 run off
-                      email_funnel_sends and the email-funnel-send-all cron,
-                      not off campaigns, so none of it appears in the list
-                      above. It is live. See docs/EMAIL_AUDIT.md. */}
+                      The welcome funnel is separate, and it is HISTORY, not a
+                      live sender. Days 2-8 stopped on 2026-09-09 (written for
+                      the subscription model); day 1 moved to our own SES
+                      welcome and the Systeme path stood down on 2026-10-20.
+                      The cron still runs hourly and sends nothing. 30,764
+                      sends are recorded and this is the only screen that can
+                      read them, which is why the page stays. Checked against
+                      the database 2026-11-10. See docs/EMAIL_AUDIT.md. */}
                   <div className="mt-4 flex flex-wrap gap-2 border-t border-[#eef2f7] pt-3">
                     <Link
                       href="/admin/email-analytics"
                       className="rounded-lg bg-[#f1f5f9] px-3 py-1.5 text-[11px] font-black text-[#475569] transition hover:bg-[#e2e8f0]"
                     >
-                      Welcome funnel, days 1–8 →
+                      Welcome funnel history, days 1–8 →
                     </Link>
                     <Link
                       href="/admin/email-broadcasts"
