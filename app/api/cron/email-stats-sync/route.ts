@@ -3,15 +3,12 @@ import { createClient } from "@supabase/supabase-js";
 
 // Keeps email_campaign_stats fresh (2026-09-11). Runs every 6 hours.
 //
-// Systeme DOES list newsletters, at /api/mailing/newsletters - the earlier
-// note here said otherwise because it probed /newsletters and friends, which
-// all 404. That list carries no send date, recipients, opens or clicks, so
-// opens still come from their dashboard and are filled in by hand. CLICKS we can measure better than
-// they can: a click on a Systeme link lands on our site carrying their
-// ?sc= tracking parameter, and taps from mail apps arrive with a Gmail /
-// Outlook / Yahoo referrer. Counting those arrivals after a send gives a
-// real "people who came back because of this email" number, which is the
-// one that actually matters.
+// Two jobs: copy real delivery, open and click numbers out of SES into
+// email_campaign_stats, and credit each send with the people who came back
+// to the site in the week after it. Arrivals are spotted by a utm_source
+// email tag or a Gmail / Outlook / Yahoo referrer. The ?sc= check below is
+// Systeme's old click parameter, kept only so historical sends keep the
+// visit numbers they already have - see docs/EMAIL_FUNNEL_RETIRED.md.
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -39,55 +36,18 @@ export async function GET(request: NextRequest) {
   if (!url || !key) return NextResponse.json({ error: "Server not configured." }, { status: 500 });
   const supabase = createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
 
-  // Discover newsletters we have never recorded (2026-10-02). Louis sent four
-  // and none appeared on the analytics page, because nothing ever created a
-  // row - the cron only refreshed rows that already existed. The old note here
-  // said Systeme has no newsletter endpoint; it does, the path is just
-  // /api/mailing/newsletters rather than /api/newsletters. It still does NOT
-  // return send date, recipients, opens or clicks, so a discovered send is
-  // stamped with the time we first saw it and its opens stay 0 until Louis
-  // fills them in. An email showing up with no opens beats it not showing up.
-  const discovered: string[] = [];
-  const systemeKey = process.env.SYSTEME_API_KEY;
-  if (systemeKey) {
-    try {
-      const res = await fetch("https://api.systeme.io/api/mailing/newsletters", {
-        headers: { "X-API-Key": systemeKey },
-        cache: "no-store",
-      });
-      if (res.ok) {
-        const payload = (await res.json()) as { items?: Array<{ id: number; content?: { subject?: string }; state?: { isSent?: boolean } }> };
-        const sent = (payload.items || []).filter((item) => item?.state?.isSent && item?.content?.subject);
-        const { data: known } = await supabase.from("email_campaign_stats").select("id, name");
-        const knownIds = new Set((known || []).map((row) => String(row.id)));
-        const knownNames = new Set((known || []).map((row) => String(row.name).trim().toLowerCase()));
-        for (const item of sent) {
-          const id = `systeme-${item.id}`;
-          const subject = String(item.content?.subject || "").trim();
-          if (knownIds.has(id) || knownNames.has(subject.toLowerCase())) continue;
-          const { error: insertError } = await supabase.from("email_campaign_stats").insert({
-            id,
-            name: subject,
-            kind: "newsletter",
-            systeme_id: String(item.id),
-            sent_at: new Date().toISOString(),
-            recipients: 0,
-            opens: 0,
-            clicks: 0,
-            site_visits: 0,
-            checked_at: new Date().toISOString(),
-          });
-          if (insertError) console.error("[EMAIL_SYNC] could not add", subject, insertError.message);
-          else discovered.push(subject);
-        }
-      } else {
-        console.error("[EMAIL_SYNC] newsletter list failed:", res.status);
-      }
-    } catch (error) {
-      console.error("[EMAIL_SYNC] newsletter discovery failed:", error instanceof Error ? error.message : error);
-    }
-  }
-
+  // Systeme.io newsletter discovery lived here until 2026-11-10. Louis:
+  // "we dont use sysmte.io anymore... we only use AWS". It polled
+  // /api/mailing/newsletters every six hours and inserted a systeme-<id>
+  // row for anything it found, with opens 0 because that endpoint never
+  // returned them. Nothing new will ever appear there, so the poll is gone.
+  //
+  // The 13 systeme-* rows already in email_campaign_stats stay - they are
+  // the record of those sends. So do the 27 systeme-* rows in
+  // email_campaigns: that prefix is only an id left from the import, and
+  // those campaigns send through OUR SES (systeme-5302997 went to 5,208
+  // people with 8,162 SES events against it). See
+  // docs/EMAIL_FUNNEL_RETIRED.md.
   /**
    * Campaigns we send ourselves, through SES (2026-10-11).
    *
@@ -163,7 +123,7 @@ export async function GET(request: NextRequest) {
       .limit(40);
     if (error) throw new Error(error.message);
     if (!campaigns?.length) {
-      return NextResponse.json({ ok: true, updated: 0, discovered, sesSynced, note: "No campaigns recorded yet." });
+      return NextResponse.json({ ok: true, updated: 0, sesSynced, note: "No campaigns recorded yet." });
     }
 
     // Paged in created_at order inside each campaign's own window. The old
@@ -214,7 +174,7 @@ export async function GET(request: NextRequest) {
       updated.push({ name: campaign.name, siteVisits: people.size });
     }
 
-    return NextResponse.json({ ok: true, updated: updated.length, campaigns: updated, discovered, sesSynced });
+    return NextResponse.json({ ok: true, updated: updated.length, campaigns: updated, sesSynced });
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Sync failed." },

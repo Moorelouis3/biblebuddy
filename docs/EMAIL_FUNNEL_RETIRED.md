@@ -98,13 +98,57 @@ git show f47b3553:lib/emailFunnelTemplates.ts
 - **`CREATE_EMAIL_FUNNEL_TABLES.sql`** — the schema for the two tables above,
   which still hold data.
 
-## Still live, and worth a decision one day
+## Systeme.io is gone too (same day)
 
-`/api/systeme-sync`, called from `app/signup/page.tsx` on every signup. It adds
-the new address to Systeme.io as a contact and upserts `email_funnel_state`.
+Louis, 2026-11-10: *"we dont use sysmte.io anymore,... so its notimportant we
+only use AWS"*
 
-It adds **no tag**, so it triggers no Systeme automation and sends nothing. But
-it is why the Systeme contact ceiling filled up, and it means every Bible Buddy
-signup is sitting on a list whose scheduler we do not control. Left alone here
-because it is live code doing what it was built to do, and whether we still
-want that list is Louis's call, not a cleanup decision.
+So the rest of the Systeme plumbing went with the funnel. Everything that
+still talked to `api.systeme.io` is deleted:
+
+- **`/api/systeme-sync`** — fired on **every signup** from
+  `app/signup/page.tsx`, adding the address to the Systeme contact list and
+  upserting `email_funnel_state`. It added no tag, so it triggered no Systeme
+  automation and sent nothing, but it is why the 4,900-contact ceiling filled
+  and it meant every Bible Buddy signup sat on a list whose scheduler we do
+  not control. The call in the signup page is gone with it.
+- **`/api/webhooks/systeme`** — the inbound webhook that wrote
+  `email_funnel_events`. Nothing will post to it again.
+- **`scripts/import-systeme-contacts.ts`** — the one-off contact import.
+- **The newsletter poll inside `/api/cron/email-stats-sync`** — it hit
+  `/api/mailing/newsletters` every six hours and created a `systeme-<id>` row
+  for anything new. The rest of that cron is real work and stays: it is what
+  copies SES delivery, open and click numbers into `email_campaign_stats`.
+
+`SYSTEME_API_KEY` is now read by nothing. It can be deleted from the Vercel
+environment whenever convenient; leaving it there does nothing.
+
+### What is NOT Systeme, despite the name
+
+**Do not delete the 27 `systeme-*` rows in `email_campaigns`.** That prefix is
+only an id left over from importing the content. Those campaigns send through
+**our own SES**, and two of them already have:
+
+| Campaign | Subject | Our SES sends | SES events |
+|---|---|---|---|
+| `systeme-5302997` | Moses thought he was the wrong person | 5,208 | 8,162 |
+| `systeme-5302999` | Is feeling anxious a sin? | 5,171 | 7,965 |
+
+The other 25 are Louis's forward content calendar — one armed for 18 Apr 2027,
+the rest paused with dates from 15 Nov 2026 to 11 Apr 2027. They are the
+"16 scheduled, 23 paused" on the Email tab. Deleting them would delete the
+calendar.
+
+The 13 `systeme-*` rows in `email_campaign_stats` are genuinely Systeme-era
+history and also stay — they are the 11 unmatched subjects the Email tab
+contributes from the legacy table, plus two that match campaigns.
+
+### What this leaves
+
+One sender: **AWS SES**. One place to read it: **`/admin/analytics` → Email**.
+No code anywhere now calls Systeme.io.
+
+`email_funnel_state` has no writer any more, which is correct — it was only
+ever written to drive the funnel. It is still read by
+`/api/admin/email-analytics` for the history, and still cleared by
+`lib/accountDeletion.ts` when an account is deleted, which matters.
