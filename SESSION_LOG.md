@@ -13446,3 +13446,33 @@ Queue remaining: 8
 Not live yet: this commit carries no [deploy] tag per the 2026-10-10 deploy
 cadence change, so it ships at the next scheduled deploy (08:05 Berlin), not
 immediately.
+
+## 2026-11-10 (morning)
+Marching orders: finish talking through P3-2, the last open item on the
+stability roadmap.
+Done: P3-2 turned out to be mis-stated, by me. AppShell has TWO service-worker
+effects; §3.8 read the one guarded by isNativeApp() and missed the one added
+2026-10-11 (93db859ea) that registers for everyone, app included. So offline
+reading already works in the Play app. iOS almost certainly has no cache, but
+for a different reason - WKWebView disables service workers unless the hosts
+are under WKAppBoundDomains in Info.plist and limitsNavigationsToAppBoundDomains
+is true, and capacitor.config.ts sets that to false on purpose. That is Apple's
+rule read, not a phone tested.
+Fixed the one real bug in it: native/www/offline.html promised iOS readers
+"Anything you've saved for offline reading is still available" while the same
+build hid SaveForOfflineButton for want of a worker (86dcb9e2, both copies).
+Corrected §3.8 in the report (5ab33c4b) and added the fix plus the open iOS
+question to NEXT_BUILD.md (d6401a2b).
+Recommended NOT turning app-bound domains on yet: it caps you at 10 domains,
+restricts what the native layer may do to the WebView, and Capacitor's bridge
+is injected JS - so it either works or takes the app down. Its own branch,
+device tested, after 1.1 clears review. Louis has not decided.
+Not live yet: `npm run pending` shows 22 commits waiting, last deploy 09 Nov
+16:02, next Tue 17:05 Berlin. The offline.html fix is compiled into the app
+bundle, so it needs an app BUILD, not a web deploy - it is on NEXT_BUILD.md
+under both platforms.
+Still open: whether iOS gets app-bound domains. Device testing (§6) and the two
+Supabase dashboard screenshots are still outstanding - neither is mine to do.
+Worth a phone check: that offline reading in the Play app actually works; we
+believe it on the strength of a commit message.
+Next: Louis's call on the iOS cache question.
