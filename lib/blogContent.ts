@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-8-explained",
+    title: "Joshua 8 Explained: The Ambush at Ai and the Altar on Ebal",
+    description:
+      "Joshua 8 explained verse by verse: the ambush at Ai, the fake retreat, the burning of the city, and the altar and law reading on Mount Ebal.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-8-explained",
+    publishedAt: "2026-11-10",
+    readTime: "15 min read",
+    image: "/blog-banners/joshua-8-explained.jpg",
+    groupPost: {
+      title: "Joshua 8 Explained 📖",
+      content:
+        "Same city that beat them once.\nCompletely different outcome this time.\n\n📌 A fake retreat pulls Ai's whole army away from its own gate.\n\n📖 A spear signals the hidden ambush to rise and strike.\n📖 Twelve thousand fell, the city burned to the ground.\n📖 Right after the win, Joshua stops to read the whole law.\n\nNew article on:\n🟢 why the chapter gives **two different ambush numbers**\n🟢 how a fake **retreat** became the whole battle plan\n🟢 why Joshua stopped to read **every word** of the law\n\nHave you ever gotten a second shot at something that beat you before? 🙏",
+    },
+  },
+  {
     slug: "joshua-7-explained",
     title: "Joshua 7 Explained: Achan's Hidden Sin and the Defeat at Ai",
     description:
