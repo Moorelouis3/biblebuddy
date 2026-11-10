@@ -102,3 +102,15 @@ This is not optional politeness -- Louis wants to be able to see, for
 every command given to any buddy, whether it was accepted, by when it
 will be done, and how progress gets proven along the way.
 
+## The build list (mandatory)
+The phone apps are a shell around the live website, so almost everything goes
+live the moment the site deploys. A few things do not: entitlements, link
+handling, permissions, plugins, the icon. Those only reach people when a new
+app build is made and submitted.
+
+`NEXT_BUILD.md` in this repo root is the running list of those. When Louis says
+"my build list" or "the new build list", that file is what he means.
+
+**Add to it the moment you write something that needs a build** - not when the
+build happens. And never report such a thing as done or live: it is not live
+for anyone with the app until a build ships. Say which build it is waiting for.
