@@ -559,3 +559,182 @@ real browser before the component is written:
 
 Neither blocks approval of the layout, and both are a few minutes in a
 `tmp/`-only page.
+
+---
+
+## 9. Final checks before implementation
+
+**Design approved by Louis on 2026-11-10. The layout is settled and is not
+revisited here.** This section is the six checks he asked for before any code is
+written. Nothing has been implemented.
+
+### 9.1 All 17 themes — two faults found in the design, both fixed
+
+Computed, not eyeballed: WCAG 2.x relative luminance for every element of the
+popup against every one of the 17 themes in `lib/appThemes.ts`.
+
+**What the design itself got wrong — 8 findings across 2 faults, both now fixed:**
+
+| Fault | Where it failed | Fix | Verified |
+|---|---|---|---|
+| **The crest band was invisible.** `accentSoft` against `card` is only **1.13:1** on Light, and under 1.20:1 on 7 themes (Light, Blue, Gold, Green, Gray, Mint, Butter). The drawn curve is filled with `card`, so it vanished with the band | 7 of 17 | A **1px `--bb-card-border` hairline** along the band's lower curve. `cardBorder` against `card` is **1.30:1 at worst**, on all 17 | **Pass, 17/17** |
+| **The shield edge dissolved into the band on Dark.** The dark-gold `#8A6410` outline is only **2.46:1** against Dark's `accentSoft` (`#123348`) | 1 of 17 | A **double gold stroke** — dark `#8A6410` inside, light `#E9C566` outside. On Dark the light gold is 7.94:1. Best-of-two is **4.17:1 at worst**, on Purple | **Pass, 17/17** |
+
+The double stroke is not a compromise — a bevelled metal edge has a light and a
+dark side, so it reads better than the single outline did.
+
+**What passes on all 17 untouched:**
+
+| Element | Worst ratio | Needs |
+|---|---:|---:|
+| Level name — `textPrimary` on `card` | **12.35** | 4.5 |
+| Personal line — `textSecondary` on `card` | **6.12** | 4.5 |
+| Level number — white on the tier's deep core | **10.35** | 4.5 |
+| LEVEL UP ribbon text — `#3B2A05` on gold | **7.50** | 4.5 |
+
+**What fails but is not this popup's to fix** — these are the themes' own token
+values, rendered identically by every screen in the app. Recorded as
+`docs/DESIGN_BACKLOG.md` item 2 and deliberately left alone:
+
+- `buttonText` on `button` below 4.5 on **12 of 17** themes (worst 3.02, Gold)
+- `progressFill` on `progressTrack` below 3.0 on **12 of 17** (worst 1.97, Orange)
+- `accent` as text on `card` below 4.5 on **12 of 17** (worst 3.02, Gold)
+- `textMuted` on `card` below 4.5 on **8 of 17** (worst 3.39, Mint)
+
+The popup uses these tokens exactly as the dashboard, the verse card and the
+bottom nav already do. **It inherits the problem; it does not cause it, and it
+must not fix it locally** — a popup with better button contrast than the rest of
+the app is a worse outcome than one that matches.
+
+**Black and the six pastels specifically**, which were the open question: all
+seven render correctly after the two fixes. Black's `accentSoft` (`#E6E6E4`) is
+1.25:1 against white — faint, and the hairline is what makes the band read. The
+gold is hot on Black's near-monochrome palette, which is the point of it.
+
+### 9.2 Levels 2, 10 and 20 in the approved layout
+
+Shown in the conversation. The differences, all within the one template:
+
+| | Level 2 | Level 10 | Level 20 |
+|---|---|---|---|
+| Tier pill | none | TIER III · OLIVE | TOP LEVEL |
+| Sparks in the crest band | none | 8 | 12 |
+| Laurels | open pair | open pair | **closed wreath** |
+| Crown | — | — | **yes** |
+| Shield core / ring | `#334155` / `#64748B` | `#0B4336` / `#19A67A` | `#4C1D95` / `#A78BFA` |
+| Ribbon | LEVEL UP | LEVEL UP | **TOP OF THE LADDER** |
+| Progress | bar + "86 to Listener" | bar + "886 to Faithful" | **"30,000 XP", no bar** |
+| Button | Keep going | Keep going | **Amen** |
+| Confetti | 500ms, 1 origin | 1,100ms, 2 origins | 1,400ms, 3 origins |
+
+**One exception to record:** the Crown tier holds only Level 20, so its deepest
+step and its own level colour are the same value (`#4C1D95`). The ring therefore
+uses `#A78BFA` so it separates from the core. It is the only tier-of-one and the
+only hand-set ring in the table.
+
+### 9.3 Responsive — checked at the narrowest screen still in use
+
+`ModalShell` applies a `px-6` scrim, so **the card is screen width minus 48px**.
+
+| Screen | Card | Devices |
+|---|---:|---|
+| 320px | 272px | iPhone SE 1st gen, Galaxy Fold closed |
+| 360px | 312px | most mid-range Android |
+| 375px | 327px | iPhone SE 2/3, iPhone 13 mini |
+| 390px | 342px | iPhone 14/15/16 |
+
+**Levels 2, 10 and 20 were all drawn at 272px** — the worst case — and nothing
+clips. The two XP labels stay on one row, the full-width button is intact, and
+Level 20's longer "TOP OF THE LADDER" ribbon (the tightest element) clears its
+corners. Everything above 272px has more air, not a different layout.
+
+**Vertical:** the card is roughly 400–470px tall depending on level. The
+shortest viewport in that device list is the SE 1st gen at 568px, so it fits
+without scrolling. `ModalShell` also takes a `scrollable` prop — which
+`DevotionalDayCompletionModal` already uses — so an unusually long encouragement
+line or a large system font size scrolls rather than clipping. **That prop
+should be passed.**
+
+Two mobile details worth stating because they are easy to miss: the button is
+11px padding on a 13px font, which is a **~44px touch target**, and the layout
+uses no viewport units, so iOS Safari's collapsing address bar cannot resize it
+mid-animation.
+
+### 9.4 Confetti — confirmed, every level
+
+| Levels | Duration | Origins |
+|---|---:|---|
+| 2, 3, 4 | 500ms | 1 |
+| 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19 | 800ms | 2 |
+| **5, 10, 15** | 1,100ms | 2, tier-coloured |
+| **20** | 1,400ms | 3, gold |
+
+**All 20 levels fire confetti.** The escalation is duration and density. §5
+records the pacing data behind this: median 47 days from Level 19 to Level 20,
+15 days from 14 to 15, and 115 days to reach Level 15 at all.
+
+Gated on `prefersReducedMotion()` — when the OS asks for stillness there is no
+burst at any level, and the card appears in its final state.
+
+### 9.5 Reuse — confirmed, nothing rebuilt that exists
+
+| Component | Reused as-is | Note |
+|---|---|---|
+| `components/ModalShell.tsx` | **Yes** | `createPortal` to `document.body`, backdrop fade, 260ms panel swoop in and out, scroll lock, backdrop-click close. Pass `scrollable` |
+| `modal-panel-in-kf` / `modal-backdrop-in-kf` | **Yes** | `app/globals.css:4114-4135`. No new entrance animation |
+| `canvas-confetti` | **Yes** | Already a dependency at `^1.9.4` |
+| The confetti burst loop | **Yes** | Lifted from `DevotionalDayCompletionModal.tsx:72-133` into `lib/celebration.ts` unchanged — the `MutationObserver` canvas styling, the fade-and-remove teardown, the `clearInterval`/`disconnect` cleanup |
+| `prefersReducedMotion()` | **Yes** | Lifted from the same file, `:51-58` |
+| Global reduced-motion rule | **Yes** | `app/globals.css:4080` and `:4281` already neutralise every CSS animation |
+| `LEVEL_DEFINITIONS` | **Yes** | Name, identity and encouragement for all 20. The template's only data source |
+| `/api/points/summary` + the `localStorage` snapshot | **Yes** | The popup is a child of `LevelProgressCard` and adds **no new fetch** |
+| Fixed confetti table, not `Math.random()` in render | **Yes** | The idiom from `BuddyCelebrationModal.tsx:14-34`, for the CSS sparkles |
+| Drawn-SVG decoration instead of an asset | **Yes** | The idiom from `DevotionalDayCompletionModal.tsx:155-168` |
+
+**Accessibility, reused and added:** `ModalShell` supplies the portal and scroll
+lock. The component adds `role="dialog"`, `aria-modal="true"`, `aria-labelledby`
+on the level-name heading, focus moved in on open and returned to the trigger on
+close, and `Escape` to dismiss. The shield is `aria-hidden` because the heading
+already says "Level 10 — Steady"; the tier banner is real text, so nothing is
+announced by colour alone.
+
+**Newly written: one component and one route.**
+`components/LevelUpCelebration.tsx` and `app/api/points/celebrated/route.ts`.
+Everything else is existing code.
+
+### 9.6 Migration safety — confirmed on all three counts
+
+| Guarantee | Mechanism | Evidence |
+|---|---|---|
+| **Nobody loses XP** | XP is never stored as a balance — it is re-derived from `master_actions` on every read. Re-cutting thresholds touches no XP value, and the three weight fixes only ever add (`trivia_chapter_completed` 0 to 15, `scrambled_chapter_completed` 0 to 10) | **Measured: 0 users lose XP** |
+| **Nobody loses a level** | `getLevelInfoWithLevelFloor` treats the stored level as a floor; `scripts/recompute-all-levels.ts` writes only when the new level is higher | **Measured: 0 level falls.** Without the floor exactly **5** users would drop one level (L2 to L1 x1, L3 to L2 x2, L5 to L4 x1, L7 to L6 x1). The floor catches all five |
+| **No retroactive popups** | The backfill sets `level_celebrated = current_level` for every row in the same run | **1,153 users level up on day one and none of them is shown a popup.** 178 of them cross a milestone, so without this statement 178 people get the grandest popup in the app for something they did not just do |
+
+That third one is one `update` statement, it is not optional, and it belongs in
+the same script as the recompute so the two cannot be run apart.
+
+### 9.7 Are we ready to implement?
+
+**Yes, for everything in this document.** The design is approved, both contrast
+faults are fixed and verified across 17 themes, the narrowest-phone case is
+drawn and clear, and every reusable part is identified by file and line.
+
+**Two things I would not call verified, and would check in a real browser as the
+first step of the build rather than before it:**
+
+1. **The two fixes are computed, not rendered on a device.** The ratios are
+   arithmetic and the sweep above is a faithful reproduction, but a 1px hairline
+   at 3x device pixel ratio is exactly the sort of thing that renders at 0.33px
+   and disappears. `vector-effect="non-scaling-stroke"` is in the preview for
+   that reason; it wants a real phone.
+2. **The confetti canvas inside a portalled modal.** The burst styles its canvas
+   `position: fixed` at `z-index: 99999`, and the popup sits in a portal at a
+   lower z-index. That works in `DevotionalDayCompletionModal` today, so it
+   should here — but "should" is not "did", and it is a five-minute check.
+
+Neither changes the design. Both are first-hour-of-the-build checks.
+
+**Out of scope and recorded elsewhere:** the dashboard's hardcoded pastel stat
+cards and the twelve themes below AA on shared tokens are both in
+`docs/DESIGN_BACKLOG.md`, at Louis's instruction, and must not be touched by the
+levels work.
