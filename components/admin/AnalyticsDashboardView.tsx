@@ -549,133 +549,209 @@ function EmailDetail({ row }: { row: DashboardData["emailList"][number] }) {
   );
 }
 
+type EmailRowData = DashboardData["emailList"][number];
+
+const rowKey = (r: EmailRowData) => r.campaignId || `${r.subject}-${r.when}`;
+
+const dateLabel = (iso: string | null) =>
+  iso ? new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "—";
+
+/** The date and what KIND of date it is, never mixed silently. */
+const whenNote = (r: EmailRowData) =>
+  r.automated
+    ? "running"
+    : r.whenKind === "scheduled"
+      ? "due"
+      : r.whenKind === "sent"
+        ? "sent"
+        : r.whenKind === "started"
+          ? "started"
+          : "";
+
+/* Column headings on wide screens only. On a phone the row reads as a card
+   and headings over four tiny numbers help nobody. */
+function EmailHeadings() {
+  return (
+    <div className="hidden items-center gap-3 border-b border-[#e2e8f0] pb-1.5 text-[10px] font-black uppercase tracking-wide text-[#94a3b8] lg:flex">
+      <span className="min-w-0 flex-1">Email</span>
+      <span className="w-20 shrink-0">Status</span>
+      <span className="w-20 shrink-0 text-right">Date</span>
+      <span className="w-20 shrink-0 text-right">Recipients</span>
+      <span className="w-16 shrink-0 text-right">Opens</span>
+      <span className="w-16 shrink-0 text-right">Clicks</span>
+    </div>
+  );
+}
+
+function EmailRow({ r, isOpen, onToggle }: { r: EmailRowData; isOpen: boolean; onToggle: () => void }) {
+  const id = rowKey(r);
+  return (
+    <div className="border-b border-[#eef2f7] last:border-b-0">
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        onClick={onToggle}
+        className={`-mx-2 flex w-[calc(100%+1rem)] items-center gap-3 rounded-lg px-2 py-2.5 text-left text-sm transition hover:bg-[#f8fafc] ${
+          isOpen ? "bg-[#f8fafc]" : ""
+        }`}
+      >
+        <span className="min-w-0 flex-1">
+          <span className="block truncate font-bold text-[#0f172a]">{r.subject}</span>
+          <span className="mt-0.5 flex items-center gap-1.5 lg:hidden">
+            <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-black ${STATE_TONE[r.state] ?? STATE_TONE.draft}`}>
+              {r.state}
+            </span>
+            <span className="text-[10px] font-semibold text-[#94a3b8]">
+              {dateLabel(r.when)} {whenNote(r)} · {(r.recipients ?? 0).toLocaleString()} sent
+            </span>
+          </span>
+        </span>
+
+        {r.automated ? (
+          <span className="hidden shrink-0 rounded-full bg-[#eef2ff] px-2 py-0.5 text-[10px] font-black text-[#4338ca] lg:inline">
+            Automated
+          </span>
+        ) : null}
+
+        <span className={`hidden w-20 shrink-0 rounded-full px-2 py-0.5 text-center text-[11px] font-black lg:inline ${STATE_TONE[r.state] ?? STATE_TONE.draft}`}>
+          {r.state}
+        </span>
+        <span className="hidden w-20 shrink-0 text-right text-[11px] font-bold text-[#64748b] lg:inline">
+          {dateLabel(r.when)}
+          <span className="ml-1 font-semibold text-[#94a3b8]">{whenNote(r)}</span>
+        </span>
+        <span className="hidden w-20 shrink-0 text-right text-[11px] font-semibold text-[#475569] lg:inline">
+          {r.recipients == null ? "—" : r.recipients.toLocaleString()}
+        </span>
+        <span className="hidden w-16 shrink-0 text-right text-[11px] font-semibold text-[#475569] lg:inline">
+          {r.opens == null ? "—" : r.opens.toLocaleString()}
+        </span>
+        {/* A dash, not a zero. Clicks stopped being counted on 9 Nov and
+            printing 0 would read as "nobody clicked". */}
+        <span className="hidden w-16 shrink-0 text-right text-[11px] font-semibold text-[#475569] lg:inline">
+          {r.clicks == null ? "—" : r.clicks.toLocaleString()}
+        </span>
+      </button>
+
+      {/* Keyed by the row, so opening a different email mounts a fresh one
+          rather than showing the last one's numbers while the new request is
+          still in the air. */}
+      {isOpen ? (
+        <div className="pb-3">
+          <EmailDetail key={id} row={r} />
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+/**
+ * Louis, 2026-11-10: "i dont wanna see them in the damn email analytics page
+ * its just sent emails at the top!!! and sending under or in a drop down
+ * menu!!!"
+ *
+ * So the page IS the sent emails. Everything that has not gone out - the
+ * scheduled ones, the paused ones, the automations - sits behind one closed
+ * button underneath. It is still one list off one source; what changed is
+ * that the thing he opens this page to read is the thing he sees first,
+ * instead of being outnumbered two to one by emails that have not happened.
+ */
 function EmailList({ emails }: { emails?: DashboardData["emailList"] }) {
-  const [filter, setFilter] = useState("all");
   // One open at a time, which is what keeps the page short enough to scan.
   const [openId, setOpenId] = useState<string | null>(null);
+  const [showRest, setShowRest] = useState(false);
+  const [restFilter, setRestFilter] = useState("all");
 
   if (!emails || !emails.length) {
     return <p className="text-sm font-semibold text-[#94a3b8]">No emails yet.</p>;
   }
 
+  const sent = emails.filter((e) => e.state === "sent");
+  const rest = emails.filter((e) => e.state !== "sent");
+
+  const restFilters = FILTERS.filter((f) => f.key !== "sent");
   const counts = new Map<string, number>();
-  for (const f of FILTERS) counts.set(f.key, emails.filter((e) => f.match(e.state)).length);
+  for (const f of restFilters) counts.set(f.key, rest.filter((e) => f.match(e.state)).length);
+  const chips = restFilters.filter((f) => ALWAYS_SHOWN.has(f.key) || (counts.get(f.key) ?? 0) > 0);
+  const active = restFilters.find((f) => f.key === restFilter) ?? restFilters[0];
+  const restRows = rest.filter((e) => active.match(e.state));
 
-  const chips = FILTERS.filter((f) => ALWAYS_SHOWN.has(f.key) || (counts.get(f.key) ?? 0) > 0);
-  const active = FILTERS.find((f) => f.key === filter) ?? FILTERS[0];
-  const rows = emails.filter((e) => active.match(e.state));
+  // "16 scheduled, 22 paused, 5 automated" - says what is behind the button
+  // before it is opened, so it is not a mystery drawer.
+  const summary = (
+    [
+      [counts.get("scheduled") ?? 0, "scheduled"],
+      [rest.filter((e) => e.automated).length, "automated"],
+      [counts.get("paused") ?? 0, "paused"],
+      [counts.get("missed") ?? 0, "missed"],
+      [counts.get("draft") ?? 0, "draft"],
+    ] as Array<[number, string]>
+  )
+    .filter(([n]) => n > 0)
+    .map(([n, label]) => `${n} ${label}`)
+    .join(", ");
 
-  const dateLabel = (iso: string | null) =>
-    iso ? new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "—";
-
-  /** The date and what KIND of date it is, never mixed silently. */
-  const whenNote = (r: DashboardData["emailList"][number]) =>
-    r.automated
-      ? "running"
-      : r.whenKind === "scheduled"
-        ? "due"
-        : r.whenKind === "sent"
-          ? "sent"
-          : r.whenKind === "started"
-            ? "started"
-            : "";
+  const toggle = (id: string) => setOpenId((cur) => (cur === id ? null : id));
 
   return (
     <div className="mt-1">
-      <div className="mb-3 flex flex-wrap gap-1.5">
-        {chips.map((f) => (
+      <EmailHeadings />
+
+      {sent.length === 0 ? (
+        <p className="py-4 text-sm font-semibold text-[#94a3b8]">Nothing sent yet.</p>
+      ) : (
+        sent.map((r) => (
+          <EmailRow key={rowKey(r)} r={r} isOpen={openId === rowKey(r)} onToggle={() => toggle(rowKey(r))} />
+        ))
+      )}
+
+      {rest.length > 0 ? (
+        <div className="mt-3 border-t border-[#e2e8f0] pt-3">
           <button
-            key={f.key}
             type="button"
-            onClick={() => setFilter(f.key)}
-            className={`rounded-full px-3 py-1 text-[11px] font-black transition ${
-              filter === f.key
-                ? "bg-[#0f172a] text-white"
-                : "bg-[#f1f5f9] text-[#475569] hover:bg-[#e2e8f0]"
-            }`}
+            aria-expanded={showRest}
+            onClick={() => setShowRest((v) => !v)}
+            className="flex w-full items-center justify-between rounded-lg bg-[#f8fafc] px-3 py-2 text-left transition hover:bg-[#f1f5f9]"
           >
-            {f.label} {counts.get(f.key) ?? 0}
+            <span className="text-[12px] font-black text-[#475569]">
+              Not sent yet
+              <span className="ml-2 font-semibold text-[#94a3b8]">{summary}</span>
+            </span>
+            <span className="text-[11px] font-black text-[#94a3b8]">{showRest ? "Hide ▴" : "Show ▾"}</span>
           </button>
-        ))}
-      </div>
 
-      {/* Column headings on wide screens only. On a phone the row reads as a
-          card and headings over four tiny numbers help nobody. */}
-      <div className="hidden items-center gap-3 border-b border-[#e2e8f0] pb-1.5 text-[10px] font-black uppercase tracking-wide text-[#94a3b8] lg:flex">
-        <span className="min-w-0 flex-1">Email</span>
-        <span className="w-20 shrink-0">Status</span>
-        <span className="w-20 shrink-0 text-right">Date</span>
-        <span className="w-20 shrink-0 text-right">Recipients</span>
-        <span className="w-16 shrink-0 text-right">Opens</span>
-        <span className="w-16 shrink-0 text-right">Clicks</span>
-      </div>
-
-      {rows.length === 0 ? (
-        <p className="py-4 text-sm font-semibold text-[#94a3b8]">Nothing with that status.</p>
-      ) : null}
-
-      {rows.map((r) => {
-        const id = r.campaignId || `${r.subject}-${r.when}`;
-        const isOpen = openId === id;
-        return (
-          <div key={id} className="border-b border-[#eef2f7] last:border-b-0">
-            <button
-              type="button"
-              aria-expanded={isOpen}
-              onClick={() => setOpenId(isOpen ? null : id)}
-              className={`-mx-2 flex w-[calc(100%+1rem)] items-center gap-3 rounded-lg px-2 py-2.5 text-left text-sm transition hover:bg-[#f8fafc] ${
-                isOpen ? "bg-[#f8fafc]" : ""
-              }`}
-            >
-              <span className="min-w-0 flex-1">
-                <span className="block truncate font-bold text-[#0f172a]">{r.subject}</span>
-                <span className="mt-0.5 flex items-center gap-1.5 lg:hidden">
-                  <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-black ${STATE_TONE[r.state] ?? STATE_TONE.draft}`}>
-                    {r.state}
-                  </span>
-                  <span className="text-[10px] font-semibold text-[#94a3b8]">
-                    {dateLabel(r.when)} {whenNote(r)} · {(r.recipients ?? 0).toLocaleString()} sent
-                  </span>
-                </span>
-              </span>
-
-              {r.automated ? (
-                <span className="hidden shrink-0 rounded-full bg-[#eef2ff] px-2 py-0.5 text-[10px] font-black text-[#4338ca] lg:inline">
-                  Automated
-                </span>
-              ) : null}
-
-              <span className={`hidden w-20 shrink-0 rounded-full px-2 py-0.5 text-center text-[11px] font-black lg:inline ${STATE_TONE[r.state] ?? STATE_TONE.draft}`}>
-                {r.state}
-              </span>
-              <span className="hidden w-20 shrink-0 text-right text-[11px] font-bold text-[#64748b] lg:inline">
-                {dateLabel(r.when)}
-                <span className="ml-1 font-semibold text-[#94a3b8]">{whenNote(r)}</span>
-              </span>
-              <span className="hidden w-20 shrink-0 text-right text-[11px] font-semibold text-[#475569] lg:inline">
-                {r.recipients == null ? "—" : r.recipients.toLocaleString()}
-              </span>
-              <span className="hidden w-16 shrink-0 text-right text-[11px] font-semibold text-[#475569] lg:inline">
-                {r.opens == null ? "—" : r.opens.toLocaleString()}
-              </span>
-              {/* A dash, not a zero. Clicks stopped being counted on 9 Nov and
-                  printing 0 would read as "nobody clicked". */}
-              <span className="hidden w-16 shrink-0 text-right text-[11px] font-semibold text-[#475569] lg:inline">
-                {r.clicks == null ? "—" : r.clicks.toLocaleString()}
-              </span>
-            </button>
-
-            {/* Keyed by the row, so opening a different email mounts a fresh
-                one rather than showing the last one's numbers while the new
-                request is still in the air. */}
-            {isOpen ? (
-              <div className="pb-3">
-                <EmailDetail key={id} row={r} />
+          {showRest ? (
+            <div className="mt-3">
+              <div className="mb-3 flex flex-wrap gap-1.5">
+                {chips.map((f) => (
+                  <button
+                    key={f.key}
+                    type="button"
+                    onClick={() => setRestFilter(f.key)}
+                    className={`rounded-full px-3 py-1 text-[11px] font-black transition ${
+                      restFilter === f.key
+                        ? "bg-[#0f172a] text-white"
+                        : "bg-[#f1f5f9] text-[#475569] hover:bg-[#e2e8f0]"
+                    }`}
+                  >
+                    {f.label} {counts.get(f.key) ?? 0}
+                  </button>
+                ))}
               </div>
-            ) : null}
-          </div>
-        );
-      })}
+
+              <EmailHeadings />
+
+              {restRows.length === 0 ? (
+                <p className="py-4 text-sm font-semibold text-[#94a3b8]">Nothing with that status.</p>
+              ) : (
+                restRows.map((r) => (
+                  <EmailRow key={rowKey(r)} r={r} isOpen={openId === rowKey(r)} onToggle={() => toggle(rowKey(r))} />
+                ))
+              )}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }
