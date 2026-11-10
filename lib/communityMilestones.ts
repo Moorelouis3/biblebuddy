@@ -225,6 +225,11 @@ export async function postMilestoneToWall(
      * A failed read is treated as enabled - the pre-existing behaviour - because
      * silently muting somebody's milestones on a dropped connection is the worse
      * failure.
+     *
+     * Safe before the migration too: if the column does not exist yet the
+     * select errors, `prefs` is null, and the check below is false - so the
+     * pre-existing behaviour (everybody enabled) holds rather than the poster
+     * breaking or silencing everyone.
      */
     const { data: prefs } = await admin
       .from("profile_stats")

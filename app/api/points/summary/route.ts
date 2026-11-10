@@ -74,6 +74,60 @@ async function fetchAllForUser<T>(
   return rows;
 }
 
+type ProfileSummaryRow = {
+  current_level: number | null;
+  current_streak: number | null;
+  level_celebrated: number | null;
+  display_name: string | null;
+};
+
+/**
+ * Read the profile, with or without the celebration column.
+ *
+ * profile_stats.level_celebrated arrives in
+ * supabase/migrations/ADD_LEVEL_CELEBRATED_AND_MILESTONE_OPT_OUT.sql, and code
+ * and migrations do not land at the same instant - this route shipped to
+ * production on 2026-11-10 a few minutes before the migration was run, and
+ * because the column was in the SELECT list, PostgREST failed the whole query
+ * and the endpoint returned 500 for every user. The level card stops updating
+ * for everybody when that happens.
+ *
+ * So the column is optional here: ask for it, and if it is not there yet, fall
+ * back to the four columns that have always existed. A missing column means
+ * level_celebrated is null, which means leveledUp is false - no popups until
+ * the migration lands and the backfill seals the mark, which is exactly the
+ * behaviour we want in that window anyway.
+ *
+ * An endpoint this central should not be able to 500 over a cache column.
+ */
+async function fetchProfile(
+  supabase: AdminClient,
+  userId: string,
+): Promise<{ data: ProfileSummaryRow | null; error: { message: string } | null }> {
+  const withColumn = await supabase
+    .from("profile_stats")
+    .select("current_level, current_streak, level_celebrated, display_name")
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  if (!withColumn.error) {
+    return { data: (withColumn.data as ProfileSummaryRow) ?? null, error: null };
+  }
+  if (!/level_celebrated/.test(withColumn.error.message)) {
+    return { data: null, error: withColumn.error };
+  }
+
+  const fallback = await supabase
+    .from("profile_stats")
+    .select("current_level, current_streak, display_name")
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  if (fallback.error) return { data: null, error: fallback.error };
+  const row = fallback.data as Omit<ProfileSummaryRow, "level_celebrated"> | null;
+  return { data: row ? { ...row, level_celebrated: null } : null, error: null };
+}
+
 export async function GET(request: NextRequest) {
   const supabase = createAdminClient();
   if (!supabase) {
@@ -98,11 +152,7 @@ export async function GET(request: NextRequest) {
         userId,
       ),
       fetchAllForUser<{ created_at: string | null }>(supabase, "group_post_likes", "created_at", userId),
-      supabase
-        .from("profile_stats")
-        .select("current_level, current_streak, level_celebrated, display_name")
-        .eq("user_id", userId)
-        .maybeSingle(),
+      fetchProfile(supabase, userId),
     ]);
 
     // supabase-js resolves with {data: null, error} on a dropped connection
@@ -110,12 +160,7 @@ export async function GET(request: NextRequest) {
     // read must not be treated as "this user has no level".
     if (profileRes.error) throw new Error(profileRes.error.message);
 
-    const profile = profileRes.data as {
-      current_level: number | null;
-      current_streak: number | null;
-      level_celebrated: number | null;
-      display_name: string | null;
-    } | null;
+    const profile = profileRes.data;
     const storedLevel = profile?.current_level ?? null;
 
     const computed = computePointsFromActivity({

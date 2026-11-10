@@ -512,6 +512,29 @@ check("the acknowledgement is a monotonic high-water mark", () => {
   assert.ok(src.includes("MAX_LEVEL"), "the ack route does not bound the level it accepts");
 });
 
+check("the summary route survives the column not existing yet", () => {
+  // Shipped on 2026-11-10 without this and the endpoint returned 500 for every
+  // user for as long as the code was live before the migration ran, because
+  // PostgREST fails the whole SELECT on one unknown column. Code and migrations
+  // do not land at the same instant, so the column has to be optional.
+  const src = read("app/api/points/summary/route.ts");
+  assert.ok(src.includes("fetchProfile"), "the profile read is not isolated behind a helper");
+  assert.ok(
+    /if \(!\/level_celebrated\/\.test\(withColumn\.error\.message\)\)/.test(src),
+    "the summary route does not fall back when level_celebrated is missing",
+  );
+  assert.ok(
+    src.includes('.select("current_level, current_streak, display_name")'),
+    "there is no fallback select without the optional column",
+  );
+  // The opt-out read must degrade to "enabled" rather than throwing.
+  const milestones = read("lib/communityMilestones.ts");
+  assert.ok(
+    /const \{ data: prefs \} = await admin/.test(milestones),
+    "the opt-out read destructures error, so a missing column would throw",
+  );
+});
+
 check("the migration adds both columns, nullable and without defaults", () => {
   const sql = read("supabase/migrations/ADD_LEVEL_CELEBRATED_AND_MILESTONE_OPT_OUT.sql");
   assert.ok(/ADD COLUMN IF NOT EXISTS level_celebrated integer/.test(sql));
