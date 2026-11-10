@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-9-explained",
+    title: "Joshua 9 Explained: The Gibeonites' Trick and the Unbreakable Oath",
+    description:
+      "Joshua 9 explained verse by verse: Gibeon's disguise, Israel's oath made without asking God, the three day discovery, and the curse that spared their lives.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-9-explained",
+    publishedAt: "2026-11-10",
+    readTime: "12 min read",
+    image: "/blog-banners/joshua-9-explained.jpg",
+    groupPost: {
+      title: "Joshua 9 Explained 📖",
+      content:
+        "No army marches on Israel this time.\nA costume does the work instead.\n\n📌 Gibeon lies its way into a treaty Israel can never take back.\n\n📖 Old bread, torn sacks, worn sandals, built on purpose.\n📖 Israel checked the evidence but never asked God.\n📖 The truth came out in three days. The oath still held.\n\nNew article on:\n🟢 why Israel never **asked counsel** of the LORD first\n🟢 why a **lie** could still produce a binding oath\n🟢 how **judgment and mercy** showed up in the same verse\n\nHave you ever made a promise you wished you had checked into first? 🙏",
+    },
+  },
+  {
     slug: "joshua-8-explained",
     title: "Joshua 8 Explained: The Ambush at Ai and the Altar on Ebal",
     description:
