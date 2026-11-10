@@ -33,7 +33,29 @@
 <main>
   <p class="mark">BIBLE BUDDY</p>
   <h1>You're offline</h1>
-  <p>Bible Buddy needs a connection for this page. Anything you've saved for offline reading is still available.</p>
+  <!--
+    This used to end with "Anything you've saved for offline reading is still
+    available." It was removed on 2026-11-10 because on iOS it is not true.
+
+    Service workers are off by default in WKWebView: they need the hosts listed
+    under WKAppBoundDomains in Info.plist AND
+    limitsNavigationsToAppBoundDomains set to true. capacitor.config.ts sets it
+    to false on purpose, and the plist key is not there - so
+    public/service-worker.js never runs in the iOS app, nothing is ever cached,
+    and SaveForOfflineButton hides itself (no worker, no button). The sentence
+    sent an iOS reader looking for downloads the same build had never offered
+    them. Android is fine: the worker has registered there since 93db859ea.
+
+    Nor can this page tell the difference at runtime. It is served by
+    Capacitor's errorPath from the local shell origin, not from
+    www.mybiblebuddy.net, so getRegistration() here cannot see the site's
+    worker on either platform.
+
+    What replaced it is something the script below actually delivers: the
+    button reloads whatever you were on, and the "online" listener does it for
+    you the moment the connection returns.
+  -->
+  <p>Bible Buddy needs a connection for this page. It picks up where you left off as soon as you're back online.</p>
   <button id="retry" type="button">Try again</button>
 <script>
   // Retrying used to jump to the marketing homepage, which lost your place
