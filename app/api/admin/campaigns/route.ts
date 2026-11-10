@@ -83,7 +83,87 @@ export async function GET(request: NextRequest) {
       .split("{{UNSUBSCRIBE}}")
       .join("https://www.mybiblebuddy.net/api/email/unsubscribe?preview=1");
     const previewText = (one.notes || "").split("preview:")[1]?.trim() || null;
-    return NextResponse.json({ campaign: { ...one, html: previewHtml, previewText } });
+
+    /**
+     * Everything the inline expander on the analytics Email tab needs, in one
+     * request (2026-11-10). Louis: "when I click an email from the current
+     * analytics dashboard, it opens an older email page instead of displaying
+     * the information in the current interface." It now opens in place, and
+     * this is what fills it.
+     *
+     * Read from the same source of truth as the list - ses_campaign_stats -
+     * so the expanded numbers can never disagree with the row above them.
+     * That disagreement is exactly what the audit found: two tables, two open
+     * counts for one email. See docs/EMAIL_AUDIT.md.
+     */
+    const { data: stats } = await db
+      .from("ses_campaign_stats")
+      .select("sent, failed, opens, clicks, bounces, complaints, open_rate, click_rate, started_at, completed_at")
+      .eq("campaign_id", wanted)
+      .maybeSingle();
+
+    /**
+     * Which links people clicked. Only exists for campaigns sent while SES
+     * click tracking was on - it was turned off on 2026-11-09 so that email
+     * links could open the app. Null, not an empty list, for anything after
+     * that: "nobody clicked" and "we no longer record clicks" are different
+     * facts and the screen must not show the second as the first.
+     */
+    const CLICKS_OFF_FROM = "2026-11-09";
+    const sentAt = (stats?.completed_at || stats?.started_at || "").slice(0, 10);
+    let links: Array<{ url: string; clicks: number }> | null = null;
+    if (sentAt && sentAt < CLICKS_OFF_FROM) {
+      const byUrl = new Map<string, number>();
+      for (let from = 0; from < 5000; from += 1000) {
+        const { data: clickRows, error: clickError } = await db
+          .from("email_events")
+          .select("link_url")
+          .eq("campaign_id", wanted)
+          .eq("event_type", "click")
+          .range(from, from + 999);
+        if (clickError) break;
+        const batch = clickRows || [];
+        for (const row of batch) {
+          const url = (row as { link_url: string | null }).link_url;
+          if (url) byUrl.set(url, (byUrl.get(url) || 0) + 1);
+        }
+        if (batch.length < 1000) break;
+      }
+      links = [...byUrl.entries()]
+        .map(([url, clicks]) => ({ url, clicks }))
+        .sort((a, b) => b.clicks - a.clicks)
+        .slice(0, 12);
+    }
+
+    /** Readers who landed on the site from this email. Distinct, as elsewhere. */
+    const people = new Set<string>();
+    let arrivals: number | null = null;
+    {
+      const { data: arrivalRows, error: arrivalError } = await db
+        .from("email_arrivals")
+        .select("session_id, user_id")
+        .eq("campaign_id", wanted)
+        .limit(1000);
+      if (!arrivalError) {
+        for (const a of arrivalRows || []) {
+          const row = a as { session_id: string | null; user_id: string | null };
+          people.add(row.user_id || row.session_id || "anon");
+        }
+        arrivals = people.size;
+      }
+    }
+
+    return NextResponse.json({
+      campaign: {
+        ...one,
+        html: previewHtml,
+        previewText,
+        from: process.env.SES_FROM_ADDRESS || null,
+        stats: stats ?? null,
+        links,
+        arrivals,
+      },
+    });
   }
 
   // ?recipients=<campaignId> answers "who would get this, right now".

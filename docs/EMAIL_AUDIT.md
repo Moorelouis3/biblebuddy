@@ -127,9 +127,39 @@ automations.
    reschedule, send. Reached by an explicit button inside an expanded row, never
    by clicking the row itself. It is the newer page and it holds real sending
    controls; deleting it would lose function Louis uses.
-4. **`/admin/email-analytics` (31 July) is retired** — redirected into the Email
-   tab once the funnel numbers it shows have a home there.
+4. ~~**`/admin/email-analytics` (31 July) is retired**~~ — **wrong, and checked
+   before acting on it.** `/api/cron/email-funnel-send-all` is still scheduled
+   in `vercel.json`, and `email_funnel_sends` holds 30,764 rows. The day 1–8
+   welcome funnel is a **live system of its own**, running off its own table
+   and its own cron, and none of it appears in the campaigns list. That page is
+   the only screen reporting on it, so redirecting it would have blinded Louis
+   to something still sending. It stays, and the Email tab now links to it.
 5. **`/admin/email-broadcasts` is left alone.** It writes emails, it does not
    report on them, and nothing in the complaint is about it.
 
-Nothing in this document has been implemented. Phases 2–6 follow.
+---
+
+## What was actually done (2026-11-10)
+
+- One chronological list on the Email tab, built from `ses_campaign_stats`.
+  **69 emails** where the old panel showed a 24-row table.
+- The Systeme table now contributes only its 11 unmatched subjects. The
+  thirteen duplicates are gone.
+- A row opens **in place**. The detail comes from
+  `/api/admin/campaigns?campaignId=`, extended to return the sender, the live
+  stats, per-link clicks and arrivals in one request.
+- The preview renders the real saved HTML in a `sandbox=""` iframe — no
+  scripts, no forms, no navigation.
+- The menu's **Email** entry now opens the Email tab, not `/admin/campaigns`.
+  Editing and sending are one click further in, from inside an expanded row.
+- Clicks after 2026-11-09 read as **"not counted"**, never as a zero.
+- `npm run verify:email-list` checks all of this against the live database.
+
+**Still separate, on purpose:** the welcome funnel (its own system, see above),
+the broadcast composer (writing, not reporting), and the product-health email
+panel (deliverability, not campaigns).
+
+**Not verified:** the screen itself. The admin pages are behind Louis's
+account and signing in as him is not something an agent should do, so the list,
+the filters and the expander have been proven at the data layer and in a
+production build, but nobody has looked at them yet.

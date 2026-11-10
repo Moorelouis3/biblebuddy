@@ -274,93 +274,408 @@ function SectionSummary({ icon, title, line }: { icon: string; title: string; li
 }
 
 /**
- * Every email in one table: what is queued, what went out, how it did.
+ * EVERY EMAIL IN ONE LIST, OPENING IN PLACE (rewritten 2026-11-10).
  *
- * Deliberately read-plus-one-click. Opening a row goes to
- * /admin/campaigns?open=<id>, which already holds the full email, the
- * preview and the subject and schedule editor. A second editor here would be
- * a second place for the two to disagree.
+ * Louis: "when I click an email from the current analytics dashboard, it
+ * opens an older email page instead of displaying the information in the
+ * current interface. This is exactly the problem I want to stop."
  *
- * A sent row has no campaign id when its subject no longer matches a
- * campaign row - renamed, or sent from somewhere else - so it still shows
- * its numbers but is not clickable, rather than linking somewhere wrong.
+ * It used to be two sections - COMING UP and ALREADY SENT - and a row was a
+ * link to /admin/campaigns?open=<id>, which threw you out of the page you
+ * were reading. Now it is one chronological list with filters, and a row
+ * opens underneath itself.
+ *
+ * The detail comes from /api/admin/campaigns?campaignId=<id>, the endpoint
+ * that already served the campaigns page: same body, same numbers, same
+ * source of truth, so the expanded view can never disagree with the row above
+ * it. That disagreement is what the audit found - two tables, two open counts
+ * for one email. See docs/EMAIL_AUDIT.md.
+ *
+ * Editing and sending stay on /admin/campaigns, reached by a button inside an
+ * expanded row. A deliberate split: this screen reads, that one acts, and
+ * there is exactly one of each.
  */
-function EmailScheduleTable({
-  schedule,
-}: {
-  schedule?: DashboardData["emailSchedule"];
-}) {
-  if (!schedule || (!schedule.upcoming.length && !schedule.sent.length)) {
-    return <p className="text-sm font-semibold text-[#94a3b8]">No campaigns yet.</p>;
+
+const STATE_TONE: Record<string, string> = {
+  sent: "bg-[#e7f7ee] text-[#1f6b45]",
+  sending: "bg-[#dcfce7] text-[#15803d]",
+  armed: "bg-[#eaf1ff] text-[#2f4fa8]",
+  missed: "bg-[#fee2e2] text-[#b91c1c]",
+  scheduled: "bg-[#fff0e3] text-[#9a5a00]",
+  paused: "bg-[#f1f5f9] text-[#64748b]",
+  draft: "bg-[#f1f5f9] text-[#64748b]",
+};
+
+/**
+ * The filter chips. Deliberately five, matching the states Louis actually
+ * has: anything else (missed, draft) earns a chip only when a row is in it,
+ * rather than standing there permanently saying zero.
+ */
+const FILTERS: Array<{ key: string; label: string; match: (state: string) => boolean }> = [
+  { key: "all", label: "All", match: () => true },
+  { key: "scheduled", label: "Scheduled", match: (s) => s === "scheduled" || s === "armed" },
+  { key: "sending", label: "Sending", match: (s) => s === "sending" },
+  { key: "sent", label: "Sent", match: (s) => s === "sent" },
+  { key: "paused", label: "Paused", match: (s) => s === "paused" },
+  { key: "missed", label: "Missed", match: (s) => s === "missed" },
+  { key: "draft", label: "Draft", match: (s) => s === "draft" },
+];
+
+/** Always offered; the rest appear only when something is in them. */
+const ALWAYS_SHOWN = new Set(["all", "scheduled", "sending", "sent", "paused"]);
+
+type CampaignDetail = {
+  campaign_id: string;
+  subject: string | null;
+  html: string | null;
+  status: string | null;
+  scheduled_for: string | null;
+  kind: string | null;
+  target_groups: string[] | null;
+  previewText: string | null;
+  from: string | null;
+  stats: {
+    sent: number | null;
+    failed: number | null;
+    opens: number | null;
+    clicks: number | null;
+    bounces: number | null;
+    complaints: number | null;
+    open_rate: number | null;
+    click_rate: number | null;
+    started_at: string | null;
+    completed_at: string | null;
+  } | null;
+  links: Array<{ url: string; clicks: number }> | null;
+  arrivals: number | null;
+};
+
+function Stat({ label, value, note }: { label: string; value: string; note?: string }) {
+  return (
+    <div className="rounded-xl bg-white px-3 py-2">
+      <p className="text-[10px] font-black uppercase tracking-wide text-[#94a3b8]">{label}</p>
+      <p className="text-base font-black text-[#0f172a]">{value}</p>
+      {note ? <p className="text-[10px] font-semibold text-[#94a3b8]">{note}</p> : null}
+    </div>
+  );
+}
+
+/**
+ * The expanded half of a row. One fetch, and it says plainly when a number is
+ * not available rather than printing a zero that looks like a measurement.
+ */
+function EmailDetail({ row }: { row: DashboardData["emailList"][number] }) {
+  const [detail, setDetail] = useState<CampaignDetail | null>(null);
+  // Seeded from the row rather than reset inside the effect. Opening a
+  // different email remounts this component (it is keyed by the row), so
+  // there is no stale state to clear, and setting state synchronously in an
+  // effect body is a cascading render React rightly complains about. The
+  // retry button below does the resetting, which is an event, not an effect.
+  const [loading, setLoading] = useState(Boolean(row.campaignId));
+  const [failed, setFailed] = useState(false);
+  const [reloadKey, setReloadKey] = useState(0);
+
+  useEffect(() => {
+    if (!row.campaignId) return;
+    let cancelled = false;
+
+    void (async () => {
+      const response = await fetch(`/api/admin/campaigns?campaignId=${encodeURIComponent(row.campaignId as string)}`, {
+        cache: "no-store",
+      });
+      if (cancelled) return;
+      if (!response.ok) throw new Error(`campaign ${response.status}`);
+      const body = (await response.json()) as { campaign?: CampaignDetail };
+      if (cancelled) return;
+      setDetail(body.campaign ?? null);
+      setLoading(false);
+    })().catch(() => {
+      // supabase-js and fetch both fail quietly in their own ways, so this
+      // says so on screen instead of leaving a skeleton turning forever.
+      if (cancelled) return;
+      setFailed(true);
+      setLoading(false);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [row.campaignId, reloadKey]);
+
+  if (!row.campaignId) {
+    return (
+      <div className="rounded-xl bg-[#f8fafc] px-3 py-4 text-sm font-semibold text-[#64748b]">
+        This one was sent through Systeme, before Bible Buddy sent its own email. The numbers above are
+        everything kept for it — there is no saved copy of the email itself to show.
+      </div>
+    );
   }
 
-  const when = (iso: string | null) =>
+  if (loading) {
+    return <div className="h-24 animate-pulse rounded-xl bg-[#f1f5f9]" />;
+  }
+
+  if (failed || !detail) {
+    return (
+      <div role="alert" className="rounded-xl bg-[#f8fafc] px-3 py-4 text-center">
+        <p className="text-sm font-semibold text-[#64748b]">Couldn&rsquo;t load this email.</p>
+        <button
+          type="button"
+          onClick={() => {
+            setFailed(false);
+            setLoading(true);
+            setReloadKey((k) => k + 1);
+          }}
+          className="mt-2 inline-flex min-h-[36px] items-center justify-center rounded-lg bg-[#0056fd] px-4 text-sm font-black shadow-sm transition active:scale-[0.98]"
+          style={{ color: "#ffffff" }}
+        >
+          Try Again
+        </button>
+      </div>
+    );
+  }
+
+  const s = detail.stats;
+  const num = (v: number | null | undefined) => (v == null ? "—" : v.toLocaleString());
+  const rateOf = (part: number | null | undefined, whole: number | null | undefined) =>
+    part == null || !whole ? "—" : `${Math.round((part / whole) * 1000) / 10}%`;
+
+  const when = (iso: string | null | undefined) =>
+    iso
+      ? new Date(iso).toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "2-digit",
+        })
+      : "—";
+
+  return (
+    <div className="grid gap-3 rounded-xl bg-[#f8fafc] p-3">
+      <div className="grid gap-1">
+        <p className="text-sm font-black leading-snug text-[#0f172a]">{detail.subject || row.subject}</p>
+        <p className="text-[11px] font-semibold text-[#64748b]">
+          {detail.from ? `From ${detail.from}` : "Sender not recorded"}
+          {detail.previewText ? ` · “${detail.previewText}”` : ""}
+        </p>
+        <p className="text-[11px] font-semibold text-[#94a3b8]">
+          {row.automated
+            ? `Automation · running${s?.started_at ? ` since ${when(s.started_at)}` : ""} · ${
+                detail.target_groups?.length ? detail.target_groups.join(", ") : "everyone due"
+              }`
+            : row.state === "sent"
+              ? `Sent ${when(s?.completed_at || row.when)}`
+              : row.state === "paused"
+                ? `Paused${detail.scheduled_for ? ` · was due ${when(detail.scheduled_for)}` : ""}`
+                : row.state === "missed"
+                  ? `Its date passed on ${when(detail.scheduled_for)} and nothing went out`
+                  : `Due ${when(detail.scheduled_for)} · ${
+                      detail.target_groups?.length ? detail.target_groups.join(", ") : "everyone"
+                    }`}
+        </p>
+      </div>
+
+      {row.state === "sent" || row.automated || (s?.sent ?? 0) > 0 ? (
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <Stat label="Recipients" value={num(s?.sent ?? row.recipients)} />
+          <Stat label="Opens" value={num(s?.opens ?? row.opens)} note={rateOf(s?.opens, s?.sent) + " — scanners included"} />
+          <Stat
+            label="Clicks"
+            value={row.clicks == null ? "not counted" : num(row.clicks)}
+            note={row.clicks == null ? "SES stopped counting on 9 Nov" : rateOf(row.clicks, s?.sent)}
+          />
+          <Stat
+            label="Arrived on site"
+            value={row.arrivals == null ? "—" : num(row.arrivals)}
+            note={row.arrivals == null ? "only from 9 Nov onward" : "distinct readers"}
+          />
+        </div>
+      ) : null}
+
+      {(s?.bounces ?? 0) > 0 || (s?.failed ?? 0) > 0 || (s?.complaints ?? 0) > 0 ? (
+        <p className="text-[11px] font-semibold text-[#b91c1c]">
+          {num(s?.bounces)} bounced · {num(s?.failed)} failed · {num(s?.complaints)} marked it spam
+        </p>
+      ) : null}
+
+      {detail.links === null ? (
+        <p className="text-[11px] font-semibold text-[#94a3b8]">
+          Per-link clicks are not recorded for this one. SES click tracking was turned off on 9 November so
+          that email links open the app instead of Chrome.
+        </p>
+      ) : detail.links.length ? (
+        <div className="grid gap-1">
+          <p className="text-[10px] font-black uppercase tracking-wide text-[#94a3b8]">Links people clicked</p>
+          {detail.links.map((l) => (
+            <div key={l.url} className="flex items-center gap-2 text-[11px]">
+              <span className="min-w-0 flex-1 truncate font-semibold text-[#475569]">{l.url}</span>
+              <span className="shrink-0 font-black text-[#0f172a]">{l.clicks}</span>
+            </div>
+          ))}
+        </div>
+      ) : null}
+
+      {detail.html ? (
+        <div className="grid gap-1">
+          <p className="text-[10px] font-black uppercase tracking-wide text-[#94a3b8]">
+            The email itself, as it was sent
+          </p>
+          <iframe
+            title={`Preview of ${detail.subject || row.subject}`}
+            // The saved body, rendered as HTML rather than flattened to text.
+            // sandbox with no permissions: no scripts, no forms, no top-level
+            // navigation, so a preview can never do anything but look like an
+            // email. An admin screen rendering stored HTML is exactly where
+            // that matters.
+            sandbox=""
+            className="h-[360px] w-full rounded-lg border border-[#e2e8f0] bg-white"
+            srcDoc={`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;color:#1f2937;margin:0;padding:16px;max-width:600px}img{max-width:100%;height:auto}a{color:#0056fd}</style></head><body>${detail.html}</body></html>`}
+          />
+        </div>
+      ) : (
+        <p className="text-[11px] font-semibold text-[#94a3b8]">No saved copy of this email to preview.</p>
+      )}
+
+      <div>
+        <Link
+          href={`/admin/campaigns?open=${encodeURIComponent(detail.campaign_id)}`}
+          className="inline-flex min-h-[36px] items-center justify-center rounded-lg border border-[#cbd5e1] bg-white px-4 text-xs font-black text-[#0f172a] transition hover:bg-[#f1f5f9]"
+        >
+          Edit, schedule or send →
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function EmailList({ emails }: { emails?: DashboardData["emailList"] }) {
+  const [filter, setFilter] = useState("all");
+  // One open at a time, which is what keeps the page short enough to scan.
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  if (!emails || !emails.length) {
+    return <p className="text-sm font-semibold text-[#94a3b8]">No emails yet.</p>;
+  }
+
+  const counts = new Map<string, number>();
+  for (const f of FILTERS) counts.set(f.key, emails.filter((e) => f.match(e.state)).length);
+
+  const chips = FILTERS.filter((f) => ALWAYS_SHOWN.has(f.key) || (counts.get(f.key) ?? 0) > 0);
+  const active = FILTERS.find((f) => f.key === filter) ?? FILTERS[0];
+  const rows = emails.filter((e) => active.match(e.state));
+
+  const dateLabel = (iso: string | null) =>
     iso ? new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "—";
 
-  const STATE_TONE: Record<string, string> = {
-    sent: "bg-[#e7f7ee] text-[#1f6b45]",
-    sending: "bg-[#dcfce7] text-[#15803d]",
-    armed: "bg-[#eaf1ff] text-[#2f4fa8]",
-    missed: "bg-[#fee2e2] text-[#b91c1c]",
-    scheduled: "bg-[#fff0e3] text-[#9a5a00]",
-    paused: "bg-[#f1f5f9] text-[#64748b]",
-    draft: "bg-[#f1f5f9] text-[#64748b]",
-  };
-
-  const Row = ({ r }: { r: DashboardData["emailSchedule"]["sent"][number] }) => {
-    const inner = (
-      <>
-        <span className="min-w-0 flex-1 truncate font-bold text-[#0f172a]">{r.subject}</span>
-        <span className={`shrink-0 rounded-full px-2 py-0.5 text-[11px] font-black ${STATE_TONE[r.state] ?? STATE_TONE.draft}`}>
-          {r.state}
-        </span>
-        <span className="w-14 shrink-0 text-right text-[11px] font-bold text-[#64748b]">{when(r.when)}</span>
-        <span className="w-28 shrink-0 text-right text-[11px] font-semibold text-[#94a3b8]">
-          {r.state === "sent"
-            ? `${(r.recipients ?? 0).toLocaleString()} · ${r.clicks ?? 0} clicks`
-            : r.state === "sending"
-              ? `${(r.sentSoFar ?? 0).toLocaleString()} sent so far`
-              : r.state === "missed"
-                ? "never sent"
-                : "not sent yet"}
-        </span>
-      </>
-    );
-
-    const className =
-      "flex items-center gap-3 border-b border-[#eef2f7] py-2.5 text-sm last:border-b-0";
-
-    return r.campaignId ? (
-      <a
-        href={`/admin/campaigns?open=${encodeURIComponent(r.campaignId)}`}
-        className={`${className} -mx-2 rounded-lg px-2 transition hover:bg-[#f8fafc]`}
-      >
-        {inner}
-      </a>
-    ) : (
-      <div className={className}>{inner}</div>
-    );
-  };
+  /** The date and what KIND of date it is, never mixed silently. */
+  const whenNote = (r: DashboardData["emailList"][number]) =>
+    r.automated
+      ? "running"
+      : r.whenKind === "scheduled"
+        ? "due"
+        : r.whenKind === "sent"
+          ? "sent"
+          : r.whenKind === "started"
+            ? "started"
+            : "";
 
   return (
     <div className="mt-1">
-      {schedule.upcoming.length ? (
-        <>
-          <p className="mb-1 text-[11px] font-black uppercase tracking-wide text-[#94a3b8]">Coming up</p>
-          {schedule.upcoming.map((r) => (
-            <Row key={`u-${r.campaignId ?? r.subject}`} r={r} />
-          ))}
-        </>
+      <div className="mb-3 flex flex-wrap gap-1.5">
+        {chips.map((f) => (
+          <button
+            key={f.key}
+            type="button"
+            onClick={() => setFilter(f.key)}
+            className={`rounded-full px-3 py-1 text-[11px] font-black transition ${
+              filter === f.key
+                ? "bg-[#0f172a] text-white"
+                : "bg-[#f1f5f9] text-[#475569] hover:bg-[#e2e8f0]"
+            }`}
+          >
+            {f.label} {counts.get(f.key) ?? 0}
+          </button>
+        ))}
+      </div>
+
+      {/* Column headings on wide screens only. On a phone the row reads as a
+          card and headings over four tiny numbers help nobody. */}
+      <div className="hidden items-center gap-3 border-b border-[#e2e8f0] pb-1.5 text-[10px] font-black uppercase tracking-wide text-[#94a3b8] lg:flex">
+        <span className="min-w-0 flex-1">Email</span>
+        <span className="w-20 shrink-0">Status</span>
+        <span className="w-20 shrink-0 text-right">Date</span>
+        <span className="w-20 shrink-0 text-right">Recipients</span>
+        <span className="w-16 shrink-0 text-right">Opens</span>
+        <span className="w-16 shrink-0 text-right">Clicks</span>
+      </div>
+
+      {rows.length === 0 ? (
+        <p className="py-4 text-sm font-semibold text-[#94a3b8]">Nothing with that status.</p>
       ) : null}
 
-      {schedule.sent.length ? (
-        <>
-          <p className="mb-1 mt-4 text-[11px] font-black uppercase tracking-wide text-[#94a3b8]">Already sent</p>
-          {schedule.sent.map((r) => (
-            <Row key={`s-${r.subject}-${r.when}`} r={r} />
-          ))}
-        </>
-      ) : null}
+      {rows.map((r) => {
+        const id = r.campaignId || `${r.subject}-${r.when}`;
+        const isOpen = openId === id;
+        return (
+          <div key={id} className="border-b border-[#eef2f7] last:border-b-0">
+            <button
+              type="button"
+              aria-expanded={isOpen}
+              onClick={() => setOpenId(isOpen ? null : id)}
+              className={`-mx-2 flex w-[calc(100%+1rem)] items-center gap-3 rounded-lg px-2 py-2.5 text-left text-sm transition hover:bg-[#f8fafc] ${
+                isOpen ? "bg-[#f8fafc]" : ""
+              }`}
+            >
+              <span className="min-w-0 flex-1">
+                <span className="block truncate font-bold text-[#0f172a]">{r.subject}</span>
+                <span className="mt-0.5 flex items-center gap-1.5 lg:hidden">
+                  <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-black ${STATE_TONE[r.state] ?? STATE_TONE.draft}`}>
+                    {r.state}
+                  </span>
+                  <span className="text-[10px] font-semibold text-[#94a3b8]">
+                    {dateLabel(r.when)} {whenNote(r)} · {(r.recipients ?? 0).toLocaleString()} sent
+                  </span>
+                </span>
+              </span>
+
+              {r.automated ? (
+                <span className="hidden shrink-0 rounded-full bg-[#eef2ff] px-2 py-0.5 text-[10px] font-black text-[#4338ca] lg:inline">
+                  Automated
+                </span>
+              ) : null}
+
+              <span className={`hidden w-20 shrink-0 rounded-full px-2 py-0.5 text-center text-[11px] font-black lg:inline ${STATE_TONE[r.state] ?? STATE_TONE.draft}`}>
+                {r.state}
+              </span>
+              <span className="hidden w-20 shrink-0 text-right text-[11px] font-bold text-[#64748b] lg:inline">
+                {dateLabel(r.when)}
+                <span className="ml-1 font-semibold text-[#94a3b8]">{whenNote(r)}</span>
+              </span>
+              <span className="hidden w-20 shrink-0 text-right text-[11px] font-semibold text-[#475569] lg:inline">
+                {r.recipients == null ? "—" : r.recipients.toLocaleString()}
+              </span>
+              <span className="hidden w-16 shrink-0 text-right text-[11px] font-semibold text-[#475569] lg:inline">
+                {r.opens == null ? "—" : r.opens.toLocaleString()}
+              </span>
+              {/* A dash, not a zero. Clicks stopped being counted on 9 Nov and
+                  printing 0 would read as "nobody clicked". */}
+              <span className="hidden w-16 shrink-0 text-right text-[11px] font-semibold text-[#475569] lg:inline">
+                {r.clicks == null ? "—" : r.clicks.toLocaleString()}
+              </span>
+            </button>
+
+            {/* Keyed by the row, so opening a different email mounts a fresh
+                one rather than showing the last one's numbers while the new
+                request is still in the air. */}
+            {isOpen ? (
+              <div className="pb-3">
+                <EmailDetail key={id} row={r} />
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -870,25 +1185,54 @@ export default function AnalyticsDashboardView({
 
             {tab === "email" ? (
               <div className="grid gap-5">
-                {/* Every email, scheduled and sent, in rows you can open
-                    (Louis, 2026-10-25). The point is set-and-forget: write
-                    them now, see them queued here, click one to read or edit
-                    it. Editing lives on /admin/campaigns, which already has
-                    the preview and the editor - this links into it rather
-                    than growing a second one that can disagree. */}
+                {/* One chronological list of every email, opening in
+                    place (Louis, 2026-11-10). It used to be two
+                    sections and a link that threw you out to
+                    /admin/campaigns. Editing still lives there, behind
+                    a button inside an expanded row. */}
                 <Section
                   summary={
                     <SectionSummary
                       icon="🗓"
-                      title="Scheduled & sent"
-                      line={`${d.emailSchedule?.upcoming.length ?? 0} queued · ${d.emailSchedule?.sent.length ?? 0} sent`}
+                      title="All email"
+                      line={`${d.emailList?.length ?? 0} emails · ${d.emailList?.filter((e) => e.state === "sent").length ?? 0} sent`}
                     />
                   }
                 >
                   <div className="hidden lg:block">
-                    <CardTitle icon="🗓">Scheduled &amp; sent</CardTitle>
+                    <CardTitle icon="🗓">All email</CardTitle>
                   </div>
-                  <EmailScheduleTable schedule={d.emailSchedule} />
+                  <EmailList emails={d.emailList} />
+
+                  {/* The two email screens that are genuinely a different
+                      job, linked from here so they are reachable rather than
+                      orphaned - and so nobody builds a third one because they
+                      could not find them.
+
+                      The welcome funnel really is separate: days 1-8 run off
+                      email_funnel_sends and the email-funnel-send-all cron,
+                      not off campaigns, so none of it appears in the list
+                      above. It is live. See docs/EMAIL_AUDIT.md. */}
+                  <div className="mt-4 flex flex-wrap gap-2 border-t border-[#eef2f7] pt-3">
+                    <Link
+                      href="/admin/email-analytics"
+                      className="rounded-lg bg-[#f1f5f9] px-3 py-1.5 text-[11px] font-black text-[#475569] transition hover:bg-[#e2e8f0]"
+                    >
+                      Welcome funnel, days 1–8 →
+                    </Link>
+                    <Link
+                      href="/admin/email-broadcasts"
+                      className="rounded-lg bg-[#f1f5f9] px-3 py-1.5 text-[11px] font-black text-[#475569] transition hover:bg-[#e2e8f0]"
+                    >
+                      Write the studies email →
+                    </Link>
+                    <Link
+                      href="/admin/campaigns"
+                      className="rounded-lg bg-[#f1f5f9] px-3 py-1.5 text-[11px] font-black text-[#475569] transition hover:bg-[#e2e8f0]"
+                    >
+                      Schedule &amp; send →
+                    </Link>
+                  </div>
                 </Section>
 
                 <Section

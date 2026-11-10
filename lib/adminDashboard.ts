@@ -1134,150 +1134,256 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   };
 
   /**
-   * Every email, sent and not yet sent, in one list (Louis, 2026-10-25:
-   * "I should see future and past emails and their stats in rows").
+   * EVERY EMAIL IN ONE LIST (rewritten 2026-11-10).
    *
-   * Two sources, because they answer different halves and do not share a
-   * key: email_campaign_stats records what WENT OUT (and has no campaign_id,
-   * only the subject as `name`), while email_campaigns holds what EXISTS and
-   * what is armed. Past rows are matched back to a campaign by subject where
-   * one matches, which is what lets a row open its own editor; a row that
-   * cannot be matched still shows its numbers.
+   * Louis: "I want ONE authoritative email management and analytics system,
+   * not three different implementations competing with each other."
    *
-   * Cron-driven series - the Tuesday newsletter and the twelve Friday
-   * lessons - have no scheduled_for by design, since the cron decides who is
-   * due rather than a column. They are listed as armed rather than given a
-   * false date.
+   * ONE SOURCE OF TRUTH: ses_campaign_stats, a live view over what we
+   * actually sent, keyed by campaign_id, holding every campaign.
+   *
+   * What this replaced, and why it had to: the panel used to build its sent
+   * rows from email_campaign_stats - 24 rows, keyed by SUBJECT, refreshed by
+   * a six-hourly cron, left over from Systeme - while /admin/campaigns read
+   * ses_campaign_stats. Thirteen of those 24 are the SAME emails as
+   * campaigns. Their sent and click counts agree exactly; their opens do not.
+   * "Moses thought he was the wrong person" read 994 opens here and 2,324 on
+   * the campaigns page, and "60 days through Higher Hope" appeared twice.
+   * Two pages, two numbers, one email.
+   *
+   * So the Systeme table now contributes ONLY subjects that have no campaign
+   * of their own - the genuine Systeme-only history - and every row carries
+   * the source it came from. Nothing is dropped and nothing is counted twice.
+   *
+   * See docs/EMAIL_AUDIT.md.
    */
-  const [scheduleCampaignsRes, scheduleStatsRes] = await Promise.all([
-    admin
-      .from("email_campaigns")
-      .select("campaign_id, subject, status, kind, scheduled_for, created_at")
-      .order("created_at", { ascending: false })
-      .limit(60),
-    admin
-      .from("email_campaign_stats")
-      .select("name, sent_at, recipients, opens, clicks, site_visits")
-      .not("sent_at", "is", null)
-      .order("sent_at", { ascending: false })
-      .limit(40),
-  ]);
-
-  type ScheduleRow = {
+  type EmailRow = {
     campaignId: string | null;
     subject: string;
     kind: string | null;
     /** sent | sending | armed | scheduled | paused | missed | draft */
     state: string;
-    /** Rows actually delivered so far, read live from email_campaign_sends. */
-    sentSoFar: number | null;
+    /**
+     * A recurring trigger rather than a one-time send. 22 rows read
+     * "sending" at the time of writing and not one of them was a send in
+     * flight: that is how an automation is stored - armed, no date, send to
+     * whoever is due, forever.
+     */
+    automated: boolean;
+    /** What the date in `when` IS, so the two are never mixed silently. */
+    whenKind: "sent" | "scheduled" | "started" | null;
     when: string | null;
     recipients: number | null;
     opens: number | null;
     clicks: number | null;
-    visits: number | null;
+    /**
+     * Readers who landed on the site from this email. Replaced SES clicks on
+     * 2026-11-09, when click tracking was turned off so email links could
+     * open the app. Null for anything that predates it.
+     */
+    arrivals: number | null;
+    bounces: number | null;
+    /** "ses" is our own sending. "systeme" is history from the old tool. */
+    source: "ses" | "systeme";
   };
 
-  const campaignRows = (scheduleCampaignsRes.data || []) as Array<{
-    campaign_id: string; subject: string | null; status: string | null; kind: string | null; scheduled_for: string | null;
-  }>;
-  const bySubject = new Map(campaignRows.filter((c) => c.subject).map((c) => [c.subject as string, c]));
+  const [sesStatsRes, campaignMetaRes, legacyStatsRes] = await Promise.all([
+    admin
+      .from("ses_campaign_stats")
+      .select("campaign_id, subject, status, scheduled_for, started_at, completed_at, sent, failed, opens, clicks, bounces"),
+    admin.from("email_campaigns").select("campaign_id, kind, created_at"),
+    admin
+      .from("email_campaign_stats")
+      .select("name, sent_at, recipients, opens, clicks")
+      .not("sent_at", "is", null)
+      .order("sent_at", { ascending: false })
+      .limit(40),
+  ]);
 
-  const sentRows: ScheduleRow[] = ((scheduleStatsRes.data || []) as Array<{
-    name: string | null; sent_at: string; recipients: number | null; opens: number | null; clicks: number | null; site_visits: number | null;
-  }>).map((s) => ({
-    campaignId: (s.name && bySubject.get(s.name)?.campaign_id) || null,
-    subject: s.name || "(no subject)",
-    kind: (s.name && bySubject.get(s.name)?.kind) || null,
-    state: "sent",
-    sentSoFar: s.recipients ?? null,
-    when: s.sent_at,
-    recipients: s.recipients,
-    opens: s.opens,
-    clicks: s.clicks,
-    visits: s.site_visits,
-  }));
-
-  const sentSubjects = new Set(sentRows.map((r) => r.subject));
-  const pending = campaignRows.filter((c) => c.status !== "done" && !sentSubjects.has(c.subject || ""));
+  type SesStatRow = {
+    campaign_id: string; subject: string | null; status: string | null;
+    scheduled_for: string | null; started_at: string | null; completed_at: string | null;
+    sent: number | null; failed: number | null; opens: number | null; clicks: number | null; bounces: number | null;
+  };
+  const sesRows = (sesStatsRes.data || []) as SesStatRow[];
+  const kindById = new Map(
+    ((campaignMetaRes.data || []) as Array<{ campaign_id: string; kind: string | null; created_at: string | null }>)
+      .map((c) => [c.campaign_id, c]),
+  );
 
   /**
-   * HOW MANY HAVE ACTUALLY GONE OUT, READ LIVE (2026-10-28).
-   *
-   * This panel used to decide everything from email_campaign_stats, which is
-   * keyed by SUBJECT and only filled by /api/cron/email-stats-sync every six
-   * hours. So a campaign posting to five thousand people right now showed
-   * "scheduled / not sent yet" for up to six hours after it started, which is
-   * exactly what Louis caught on the day the Genesis campaign went out.
-   *
-   * email_campaign_sends is the truth and it is written as each address is
-   * claimed, so it is current to the second. One head count per campaign,
-   * all in parallel, capped so this cannot turn into sixty round trips.
+   * Arrivals per campaign, counted DISTINCT by reader the way the campaigns
+   * page counts them, so a reload is not a second person.
    */
-  const COUNTED = 30;
-  const counts = new Map<string, number>();
+  const arrivalRows = await fetchAll<{ campaign_id: string | null; session_id: string | null; user_id: string | null }>(
+    admin,
+    "email_arrivals",
+    "campaign_id, session_id, user_id, occurred_at",
+    (q) => q,
+    "occurred_at",
+  );
+  const arrivalsByCampaign = new Map<string, Set<string>>();
+  for (const a of arrivalRows) {
+    const key = a.campaign_id || "";
+    if (!key) continue;
+    if (!arrivalsByCampaign.has(key)) arrivalsByCampaign.set(key, new Set());
+    arrivalsByCampaign.get(key)!.add(a.user_id || a.session_id || "anon");
+  }
+
+  const nowIso = new Date().toISOString();
+
+  /**
+   * An automation, not a one-time campaign: armed with no date on it. The
+   * cron decides who is due rather than a column, so giving it a single send
+   * date would be inventing one.
+   */
+  const isAutomation = (c: SesStatRow) =>
+    c.status === "sending" && !c.scheduled_for && !c.completed_at;
+
+  /**
+   * HOW MANY HAVE ACTUALLY GONE OUT, READ LIVE (kept from 2026-10-28).
+   *
+   * email_campaign_sends is written as each address is claimed, so it is
+   * current to the second. Without it a campaign posting to five thousand
+   * people right now showed "not sent yet" until the stats cron caught up -
+   * exactly what Louis caught on the day the Genesis campaign went out. One
+   * head count per unfinished campaign, in parallel, capped so this cannot
+   * become sixty round trips.
+   */
+  const unfinished = sesRows.filter((c) => c.status !== "done");
+  const liveCounts = new Map<string, number>();
   await Promise.all(
-    pending.slice(0, COUNTED).map(async (c) => {
+    unfinished.slice(0, 30).map(async (c) => {
       const { count } = await admin
         .from("email_campaign_sends")
         .select("*", { count: "exact", head: true })
         .eq("campaign_id", c.campaign_id)
         .eq("status", "sent");
-      counts.set(c.campaign_id, count ?? 0);
+      liveCounts.set(c.campaign_id, count ?? 0);
     }),
   );
 
-  const nowIso = new Date().toISOString();
-
   /**
    * The status column and the date BOTH matter. This used to read
-   * `c.scheduled_for ? "scheduled" : ...`, so any row with a date said
-   * "scheduled" no matter what its status was - a paused campaign and a
-   * campaign mid-send looked identical, and both looked like they were
-   * waiting their turn.
+   * `scheduled_for ? "scheduled" : ...`, so any row with a date said
+   * "scheduled" whatever its status was - a paused campaign and a campaign
+   * mid-send looked identical, and both looked like they were waiting their
+   * turn.
    */
-  const stateOf = (c: (typeof pending)[number]): string => {
-    const delivered = counts.get(c.campaign_id) ?? 0;
+  const stateOf = (c: SesStatRow): string => {
+    if (c.status === "done" || c.completed_at) return "sent";
+    const delivered = liveCounts.get(c.campaign_id) ?? 0;
     const due = !c.scheduled_for || c.scheduled_for <= nowIso;
     if (c.status === "sending") {
+      if (isAutomation(c)) return "sending";
       if (delivered > 0) return "sending";
       return due ? "armed" : "scheduled";
     }
-    // Not armed. A date that has already passed with nothing sent did not
-    // happen, and calling that "scheduled" is how the 25 October email sat at
-    // the top of COMING UP three days after its date.
+    // A date that has already passed with nothing sent did not happen, and
+    // calling that "scheduled" is how the 25 October email sat at the top of
+    // the list three days after its date.
     if (c.status === "paused") return due && delivered === 0 ? "missed" : "paused";
     return c.status || "draft";
   };
 
-  const upcomingRows: ScheduleRow[] = pending.map((c) => ({
-    campaignId: c.campaign_id,
-    subject: c.subject || c.campaign_id,
-    kind: c.kind,
-    state: stateOf(c),
-    sentSoFar: counts.get(c.campaign_id) ?? null,
-    when: c.scheduled_for,
-    recipients: null,
-    opens: null,
-    clicks: null,
-    visits: null,
-  }));
+  /** "(per-person) you finished a devotional" reads as an internal label. */
+  const cleanSubject = (s: string | null, id: string) =>
+    (s || id).replace(/^\(per-person\)\s*/i, "").trim() || id;
 
-  // What is happening now, then what is coming, then what never went. Sorting
-  // purely by date put a missed October email above today's live send.
-  // One chronological list, which is how Louis reads this panel. The only
-  // rows that break date order are the one posting RIGHT NOW, which belongs
-  // at the top, and the ones whose date passed without them going, which
-  // belong at the bottom instead of above everything still to come.
-  const RANK: Record<string, number> = { sending: 0, armed: 1, scheduled: 1, paused: 1, draft: 1, missed: 2 };
-  const emailSchedule = {
-    upcoming: upcomingRows.sort((a, b) => {
-      const byState = (RANK[a.state] ?? 3) - (RANK[b.state] ?? 3);
-      if (byState !== 0) return byState;
-      return (a.when || "9999").localeCompare(b.when || "9999");
-    }),
-    sent: sentRows,
+  /**
+   * SES stopped counting clicks on 2026-11-09, when click tracking was turned
+   * off so that email links could open the app rather than awstrack.me. A
+   * one-time send after that date therefore has no click number - and zero is
+   * the wrong thing to print, because "nobody clicked" and "clicks are no
+   * longer counted" are different facts. Null means the second, and the
+   * screen says so. Arrivals are what replaced it.
+   *
+   * An automation that is still running keeps its number: the clicks it
+   * gathered before the cutoff really happened, they just stopped growing.
+   */
+  const CLICKS_OFF_FROM = "2026-11-09";
+  const clicksFor = (c: SesStatRow, automated: boolean) => {
+    if (automated) return c.clicks ?? null;
+    const sentOn = (c.completed_at || "").slice(0, 10);
+    if (sentOn && sentOn >= CLICKS_OFF_FROM) return null;
+    return c.clicks ?? null;
   };
+
+  const sesEmailRows: EmailRow[] = sesRows.map((c) => {
+    const state = stateOf(c);
+    const automated = isAutomation(c);
+    const when = c.completed_at || (automated ? c.started_at : c.scheduled_for || c.started_at);
+    /**
+     * What the date MEANS, never left blank while a date is shown.
+     *
+     * The last branch is the one the verify script caught: the App Store
+     * launch email was started, then paused, so it has a started_at, no
+     * completed_at and no scheduled_for. It was showing a date with nothing
+     * saying whether that date was a plan or a fact.
+     */
+    const whenKind: EmailRow["whenKind"] = c.completed_at
+      ? "sent"
+      : automated
+        ? c.started_at
+          ? "started"
+          : null
+        : c.scheduled_for
+          ? "scheduled"
+          : c.started_at
+            ? "started"
+            : null;
+    const delivered = state === "sent" ? c.sent ?? null : liveCounts.get(c.campaign_id) ?? c.sent ?? null;
+    return {
+      campaignId: c.campaign_id,
+      subject: cleanSubject(c.subject, c.campaign_id),
+      kind: kindById.get(c.campaign_id)?.kind ?? null,
+      state,
+      automated,
+      whenKind,
+      when,
+      recipients: delivered,
+      opens: c.opens ?? null,
+      clicks: clicksFor(c, automated),
+      arrivals: arrivalsByCampaign.get(c.campaign_id)?.size ?? null,
+      bounces: c.bounces ?? null,
+      source: "ses" as const,
+    };
+  });
+
+  /**
+   * Systeme-only history. A subject that also exists as a campaign is NOT
+   * added - that is the thirteen-way double count the audit found.
+   */
+  const sesSubjects = new Set(sesRows.map((c) => (c.subject || "").trim()).filter(Boolean));
+  const legacyEmailRows: EmailRow[] = ((legacyStatsRes.data || []) as Array<{
+    name: string | null; sent_at: string; recipients: number | null; opens: number | null; clicks: number | null;
+  }>)
+    .filter((s) => s.name && !sesSubjects.has(s.name.trim()))
+    .map((s) => ({
+      campaignId: null,
+      subject: s.name || "(no subject)",
+      kind: null,
+      state: "sent",
+      automated: false,
+      whenKind: "sent" as const,
+      when: s.sent_at,
+      recipients: s.recipients ?? null,
+      opens: s.opens ?? null,
+      clicks: s.clicks ?? null,
+      arrivals: null,
+      bounces: null,
+      source: "systeme" as const,
+    }));
+
+  /**
+   * One chronological list, most recent relevant activity first: a sent email
+   * by when it went, a scheduled one by when it is due, an automation by when
+   * it started. A row with no date at all sorts to the bottom rather than
+   * pretending to be the newest thing here.
+   */
+  const emailList: EmailRow[] = [...sesEmailRows, ...legacyEmailRows].sort((a, b) =>
+    (b.when || "").localeCompare(a.when || ""),
+  );
 
   return {
     window,
@@ -1342,7 +1448,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     },
     popularActivities,
     email,
-    emailSchedule,
+    emailList,
     emails,
     community,
     studyGuides,

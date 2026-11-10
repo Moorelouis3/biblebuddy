@@ -114,3 +114,27 @@ app build is made and submitted.
 **Add to it the moment you write something that needs a build** - not when the
 build happens. And never report such a thing as done or live: it is not live
 for anyone with the app until a build ships. Say which build it is waiting for.
+
+## Search before you build (mandatory)
+Before creating a new page, feature, dashboard or management system, search
+the repository for an existing implementation of the same thing. This applies
+everywhere in Bible Buddy, not just to email.
+
+If one already exists:
+
+- Extend or refactor it. Do not duplicate it.
+- Work out which implementation is authoritative and write that down.
+- Find out what still depends on the older ones before touching them.
+- Retire an obsolete one only after proving nothing active uses it.
+- Never leave two competing versions live without saying why in a comment.
+- Never silently send someone from the current screen back to an older one.
+
+**Why this is a rule.** Louis, 2026-11-10: "when I click an email from the
+current analytics dashboard, it opens an older email page instead of
+displaying the information in the current interface. This is exactly the
+problem I want to stop." Email had been rebuilt three times. Six screens
+touched it, two of them were separate doors in the menu, and the two most
+used read different tables - so the same send showed 994 opens on one screen
+and 2,324 on the other. Nothing was broken in a way that shows up as an
+error. It just quietly disagreed with itself. `docs/EMAIL_AUDIT.md` is what
+that costs to untangle afterwards.

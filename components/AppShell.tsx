@@ -3699,14 +3699,23 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                               onSelect={closeProfileMenu}
                             />
                             {/* Louis, 2026-10-10: the broadcast screen existed
-                                but there was no way into it from the app. */}
+                                but there was no way into it from the app.
+
+                                2026-11-10: this pointed at /admin/campaigns,
+                                so the menu had two doors into email - this one
+                                and the Email tab under Analytics - and they
+                                showed different numbers for the same send.
+                                It now opens the one authoritative list.
+                                Editing and sending still live on
+                                /admin/campaigns, one click further in. */}
                             <ProfileMenuRow
-                              href="/admin/campaigns"
+                              href="/admin/analytics?tab=email"
                               icon="📧"
                               label="Email"
                               active={
                                 pathname?.startsWith("/admin/campaigns") ||
-                                pathname?.startsWith("/admin/email-broadcasts")
+                                pathname?.startsWith("/admin/email-broadcasts") ||
+                                pathname?.startsWith("/admin/email-analytics")
                               }
                               onSelect={closeProfileMenu}
                             />
