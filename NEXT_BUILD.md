@@ -70,11 +70,37 @@ cannot deliver this - it waits for a build like everything else here.
 a phone tested. To settle it, attach Safari Web Inspector to the app's WebView
 and look for `[SW] registration failed` from `AppShell.tsx:1674`.
 
-**Separate, bigger question, not done:** whether iOS should turn app-bound
-domains on and get the offline cache Android already has. Capped at 10 domains,
-no wildcards, and it restricts what the native layer may do to the WebView -
-Capacitor's bridge is injected JS, so it either works or takes the app down.
-Its own branch, device-tested, never in the same build as a submission.
+**Decided: no. We are not turning app-bound domains on.** Louis handed the
+call to me on 2026-11-10 and this is it, so that it does not get re-argued.
+
+The reason is not the cache, it is the second thing that flag does.
+`limitsNavigationsToAppBoundDomains: true` also limits the WebView to the
+declared domains - and `capacitor.config.ts:80` sets it to `false` on purpose,
+with a comment saying why: the app opens outside links through the Browser
+plugin. Outside links are something the app does constantly; an offline cache
+is something nobody has reported wanting. That is the wrong trade, and the
+simulator build would not catch it, because nothing in CI clicks an external
+link.
+
+If it is ever reconsidered, none of the groundwork needs redoing:
+
+- The Info.plist side has a home already - `scripts/ios-info-plist.sh`, run by
+  the "Write the Info.plist keys Apple requires" step. `ios/` is regenerated
+  by `npx cap add ios` every build, which is why keys are written there and
+  not committed. Add `WKAppBoundDomains` as an array of
+  `www.mybiblebuddy.net` and `mybiblebuddy.net`. Max 10 entries, no wildcards.
+- Flip `limitsNavigationsToAppBoundDomains` to `true` in `capacitor.config.ts`.
+- `scripts/ios-simulator-run.sh` already launches the app and photographs it,
+  so a dead bridge shows up as a white screen in the build artifacts without
+  anyone holding a phone. What it will NOT tell you: whether external links
+  still work, and whether the worker actually registered - its log predicate is
+  `process == 'App'`, and WebView console output comes from the WebContent
+  process.
+- So the test is manual and it is three things, in this order: the app opens,
+  an external link still opens in the in-app browser, and
+  `[SW] registration failed` is absent from Safari Web Inspector.
+
+Own branch, never the same build as a submission.
 
 ---
 
