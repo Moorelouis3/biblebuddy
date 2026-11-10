@@ -269,11 +269,14 @@ reporting is added — see §8.
 > available" while the same build hid `SaveForOfflineButton` for want of a
 > worker.
 >
-> So P3-2 is not "should the store apps get a cache". It is "should iOS turn
-> app-bound domains on to use the cache it already has" — capped at 10 domains,
-> no wildcards, and restricting what the native layer may do to the WebView,
-> which Capacitor's injected-JS bridge depends on. Its own branch, device
-> tested, not in the same build as a submission.
+> So P3-2 was not "should the store apps get a cache". It was "should iOS turn
+> app-bound domains on to use the cache it already has" — and the answer,
+> decided 2026-11-10, is **no**. The flag also limits the WebView to the
+> declared domains, which `capacitor.config.ts:80` turns off on purpose so
+> outside links can go through the Browser plugin: constant behaviour traded
+> for a cache nobody has reported wanting. The full reasoning and the
+> groundwork, should it ever be reopened, are in `NEXT_BUILD.md` under the iOS
+> entry. **P3-2 is closed, and with it the roadmap.**
 
 
 `components/AppShell.tsx:1619-1623` registers the service worker and then:
