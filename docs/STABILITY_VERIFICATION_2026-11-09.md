@@ -244,6 +244,38 @@ reporting is added — see §8.
 
 ### 3.8 — The store apps have no offline cache at all — MEDIUM
 
+> **Wrong, corrected 2026-11-10.** This section is the one finding in the
+> document that did not hold up. It read the first of *two* service-worker
+> effects in `AppShell.tsx` and missed the second.
+>
+> The effect quoted below handles reload-on-new-worker only. A second effect
+> (`AppShell.tsx:1670`, "Register the service worker for everyone, logged in
+> or not, web or app", added 2026-10-11 in `93db859ea`) registers with **no
+> native guard** — only a localhost skip. So the worker *is* registered in both
+> store apps, and offline reading has worked in the Play app since October.
+>
+> It almost certainly does nothing on **iOS**, but for a different reason than
+> this section gives: service workers are disabled in WKWebView unless the
+> hosts are listed under `WKAppBoundDomains` in `Info.plist` **and**
+> `limitsNavigationsToAppBoundDomains` is `true`. `capacitor.config.ts:80`
+> sets it to `false` on purpose and the plist key does not exist. That is
+> Apple's rule read, not a device tested — Apple has never documented it
+> properly and Code Level Support has said the opposite. Attaching Safari Web
+> Inspector to the app's WebView and watching for `[SW] registration failed`
+> from `AppShell.tsx:1674` would settle it.
+>
+> What was true and has been fixed (`86dcb9e2`): `native/www/offline.html`
+> told an iOS reader "Anything you've saved for offline reading is still
+> available" while the same build hid `SaveForOfflineButton` for want of a
+> worker.
+>
+> So P3-2 is not "should the store apps get a cache". It is "should iOS turn
+> app-bound domains on to use the cache it already has" — capped at 10 domains,
+> no wildcards, and restricting what the native layer may do to the WebView,
+> which Capacitor's injected-JS bridge depends on. Its own branch, device
+> tested, not in the same build as a submission.
+
+
 `components/AppShell.tsx:1619-1623` registers the service worker and then:
 
 ```
@@ -635,7 +667,9 @@ document. *Half a day, mostly checking nothing live imports them.
 `components/GroupWeeklyTriviaCard.tsx` goes with them.*
 
 **P3-2 · Give the native app a cache** (§3.8) — a product decision, not a bug
-fix. Worth its own conversation.
+fix. Worth its own conversation. **Re-scoped 2026-11-10: see the correction at
+§3.8. Android already has the cache; the question is iOS and app-bound
+domains.**
 
 **P3-3 · `.claude/worktrees` in `.eslintignore`** — *5 minutes.*
 
