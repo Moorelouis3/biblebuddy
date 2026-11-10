@@ -171,6 +171,28 @@ is not a design:
    Level 10, 9 at Level 15, 13 at Level 20. Counting the rays is how the tiers
    escalate without new artwork.
 
+### The popup is dark, so it takes the dark-theme tier hexes
+
+Caught while building the animated preview, and it matters for implementation.
+The review doc's §2 ring table gives **two** hexes per level — a light-theme one
+for the white card and a dark-theme one for the `#0F1C2B` card. **The Golden
+Badge card is navy, so the shield's core stroke must use the dark-theme
+column**, not the light one. Level 10's light hex `#19A67A` on navy is nearly
+invisible; its dark hex `#2DB88A` reads correctly.
+
+So the popup's tier colours are: Stone `#AEB9C7`, Water `#60A5FA`, Olive
+`#2DB88A`, Lamp `#E0A82E`, Crown `#C4B5FD` — the dark column. The light column
+is still what the *ring* uses on profiles and dashboards, which are light cards.
+`TIER_STYLE` therefore needs both values per tier, with the popup reading `.dark`
+and the ring reading by theme.
+
+**One error in the first static preview, for the record:** it drew Level 2 with
+the Water blue `#4E93EC`. Level 2 is **Tier I Stone**, not Water — Water starts
+at Level 5. The animated preview has it right (`#AEB9C7`). Worth flagging
+because it is exactly the mistake the `TIER_STYLE` lookup exists to make
+impossible: the tier must be derived from the level, never hand-assigned
+per card.
+
 **Mobile is the constraint that decides this.** At 390px the card is ~342px
 wide, the shield ~96px. Every number in the preview was set at that width. SVG
 paths scale to it exactly; a raster asset would be resampled.
