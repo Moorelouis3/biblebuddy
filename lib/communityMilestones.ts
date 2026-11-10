@@ -212,6 +212,29 @@ export async function postMilestoneToWall(
   if (!content) return { posted: false, reason: "nothing worth saying" };
 
   try {
+    /**
+     * The opt-out, added 2026-11-10 with the level-up announcement.
+     *
+     * This feature had been posting on people's behalf since October with no
+     * way to turn it off, which was defensible for "finished Day 3" and is not
+     * for "reached Level 10" - a level is about the person rather than about a
+     * chapter. So the switch covers all of it.
+     *
+     * NULL and TRUE both mean enabled, hence `IS NOT FALSE` and no backfill:
+     * existing behaviour is unchanged and only an explicit FALSE suppresses.
+     * A failed read is treated as enabled - the pre-existing behaviour - because
+     * silently muting somebody's milestones on a dropped connection is the worse
+     * failure.
+     */
+    const { data: prefs } = await admin
+      .from("profile_stats")
+      .select("milestone_posts_enabled")
+      .eq("user_id", userId)
+      .maybeSingle();
+    if ((prefs as { milestone_posts_enabled: boolean | null } | null)?.milestone_posts_enabled === false) {
+      return { posted: false, reason: "opted out" };
+    }
+
     // Said once. People re-read chapters and redo studies, which is the point
     // of the app, and the wall should not say so twice.
     const { data: mine } = await admin

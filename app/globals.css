@@ -5185,3 +5185,42 @@ body.bb-modal-scroll-locked {
 @media (prefers-reduced-motion: reduce) {
   .bb-study-card-next-up:hover { transform: none; }
 }
+
+/* ── Level-up celebration (components/LevelUpCelebration.tsx) ───────────────
+   Two small animations, both additive: the shield scales in with a slight
+   overshoot, and the ribbon gets one slow shine pass. ModalShell already
+   supplies the card's entrance (modal-panel-in), so there is nothing here for
+   the card itself.
+
+   The global prefers-reduced-motion rule near the top of this file already
+   neutralises both, and LevelUpCelebration also drops the classes entirely
+   when reduced motion is set - belt and braces, because this is the one
+   surface in the app that exists to move. */
+@keyframes bbLevelUpShieldIn {
+  0%   { opacity: 0; transform: scale(0.55); }
+  60%  { transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes bbLevelUpRibbonShine {
+  0%        { transform: translateX(-120%); }
+  55%, 100% { transform: translateX(220%); }
+}
+
+.bb-levelup-shield {
+  animation: bbLevelUpShieldIn 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: 50% 55%;
+}
+
+.bb-levelup-ribbon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  animation: bbLevelUpRibbonShine 2200ms ease-in-out 700ms infinite;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bb-levelup-shield { animation: none; opacity: 1; transform: none; }
+  .bb-levelup-ribbon::after { animation: none; display: none; }
+}

@@ -1,12 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
+import LevelUpCelebration from "./LevelUpCelebration";
 
 // The home-screen face of the points relaunch (2026-09-05): a compact
 // purple stat card (same family as the streak and Bible % cards beside it)
 // showing the level and points to the next one, plus the level-up
 // celebration modal when /api/points/summary reports a new level.
+//
+// The celebration itself moved out to components/LevelUpCelebration.tsx on
+// 2026-11-10 (the approved Golden Badge design). This component keeps the one
+// job it always had - fetch the summary once per mount and paint the stat card
+// - and renders the celebration as a child when the API says one is owed. No
+// extra request: the popup rides this same response.
 
 type PointsSummary = {
   totalPoints: number;
@@ -19,6 +26,8 @@ type PointsSummary = {
   nextLevelName: string | null;
   nextLevel: number | null;
   previousLevel: number | null;
+  displayName: string | null;
+  levelCelebrated: number | null;
   leveledUp: boolean;
 };
 
@@ -27,6 +36,33 @@ const LEVEL_SNAPSHOT_PREFIX = "bb:level-summary:v1";
 export default function LevelProgressCard() {
   const [summary, setSummary] = useState<PointsSummary | null>(null);
   const [celebrating, setCelebrating] = useState(false);
+
+  /**
+   * Dismiss, then tell the server it has been shown.
+   *
+   * The modal closes immediately and the acknowledgement is fire-and-forget: if
+   * the POST fails the level simply stays owed and the popup appears again next
+   * time, which is the right way round for this to fail. The write itself is a
+   * monotonic high-water mark, so a retry cannot double-fire it.
+   */
+  const dismissCelebration = useCallback(async () => {
+    setCelebrating(false);
+    const level = summary?.level;
+    if (!level) return;
+    try {
+      const sessionData = await supabase.auth.getSession();
+      const accessToken = sessionData.data.session?.access_token;
+      if (!accessToken) return;
+      await fetch("/api/points/celebrated", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ level }),
+      });
+      setSummary((prev) => (prev ? { ...prev, levelCelebrated: level, leveledUp: false } : prev));
+    } catch (error) {
+      console.error("[LEVEL] Could not record celebration:", error);
+    }
+  }, [summary?.level]);
 
   useEffect(() => {
     let cancelled = false;
@@ -105,32 +141,15 @@ export default function LevelProgressCard() {
       </div>
 
       {celebrating ? (
-        <div
-          className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 px-6"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Level up"
-        >
-          <div className="w-full max-w-sm rounded-[28px] bg-white p-6 text-center shadow-2xl">
-            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#6d5bd0] text-2xl font-black text-white shadow-lg">
-              L{summary.level}
-            </div>
-            <p className="mt-4 text-xs font-black uppercase tracking-widest text-[#6d5bd0]">Level up!</p>
-            <h2 className="mt-1 text-2xl font-black text-gray-950">{summary.levelName}</h2>
-            <p className="mt-2 text-sm font-semibold text-gray-600">{summary.identityText}</p>
-            <p className="mt-3 rounded-2xl bg-[#f5f2ff] px-4 py-3 text-sm font-bold text-gray-800">
-              {summary.encouragementText}
-            </p>
-            <button
-              type="button"
-              onClick={() => setCelebrating(false)}
-              className="mt-5 w-full rounded-2xl bg-gray-950 px-5 py-3 text-sm font-black transition hover:opacity-90"
-              style={{ color: "#ffffff" }}
-            >
-              Keep going
-            </button>
-          </div>
-        </div>
+        <LevelUpCelebration
+          level={summary.level}
+          totalPoints={summary.totalPoints}
+          pointsToNextLevel={summary.pointsToNextLevel}
+          nextLevelName={summary.nextLevelName}
+          progressPercent={summary.progressPercent}
+          displayName={summary.displayName}
+          onDismiss={() => void dismissCelebration()}
+        />
       ) : null}
     </>
   );

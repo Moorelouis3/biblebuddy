@@ -11,6 +11,8 @@
  */
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
+import UserBadge from "./UserBadge";
+import LevelBadge from "./LevelBadge";
 import { checkContent } from "@/lib/contentFilter";
 import { createPortal } from "react-dom";
 import Link from "next/link";
@@ -30,6 +32,9 @@ type ThreadReply = {
   created_at: string;
   parent_post_id: string | null;
   profile_image_url: string | null;
+  member_badge: string | null;
+  is_paid: boolean | null;
+  current_level: number | null;
 };
 
 type Props = {
@@ -92,10 +97,20 @@ export default function GroupPostThread({
   const { ensureFullAccount, accountGateModal } = useAccountGate("join the discussion");
   const blockedUserIds = useBlockedUserIds();
   const [userId, setUserId] = useState<string | null>(null);
-  const [me, setMe] = useState<{ display_name: string; profile_image_url: string | null; can_moderate: boolean }>({
+  const [me, setMe] = useState<{
+    display_name: string;
+    profile_image_url: string | null;
+    can_moderate: boolean;
+    member_badge: string | null;
+    is_paid: boolean | null;
+    current_level: number | null;
+  }>({
     display_name: "Buddy",
     profile_image_url: null,
     can_moderate: false,
+    member_badge: null,
+    is_paid: null,
+    current_level: null,
   });
   const [category, setCategory] = useState<string | null>(null);
   const [replies, setReplies] = useState<ThreadReply[]>([]);
@@ -185,10 +200,15 @@ export default function GroupPostThread({
     const userIds = [...new Set(allRows.map((row) => row.user_id))];
     const imageMap = new Map<string, string | null>();
     const nameMap = new Map<string, string>();
+    // Badge and level ride the profile_stats read that already runs for the
+    // avatar and the name - three more columns, no extra query.
+    const badgeMap = new Map<string, string | null>();
+    const paidMap = new Map<string, boolean | null>();
+    const levelMap = new Map<string, number | null>();
     if (userIds.length > 0) {
       const { data: profiles } = await supabase
         .from("profile_stats")
-        .select("user_id, display_name, username, profile_image_url")
+        .select("user_id, display_name, username, profile_image_url, member_badge, is_paid, current_level")
         .in("user_id", userIds);
       (
         (profiles || []) as Array<{
@@ -196,9 +216,15 @@ export default function GroupPostThread({
           display_name: string | null;
           username: string | null;
           profile_image_url: string | null;
+          member_badge: string | null;
+          is_paid: boolean | null;
+          current_level: number | null;
         }>
       ).forEach((profile) => {
         imageMap.set(profile.user_id, profile.profile_image_url ?? null);
+        badgeMap.set(profile.user_id, profile.member_badge ?? null);
+        paidMap.set(profile.user_id, profile.is_paid ?? null);
+        levelMap.set(profile.user_id, profile.current_level ?? null);
         const name = profile.display_name || profile.username;
         if (name) nameMap.set(profile.user_id, name);
       });
@@ -209,6 +235,9 @@ export default function GroupPostThread({
         ...row,
         display_name: row.display_name || nameMap.get(row.user_id) || "Buddy",
         profile_image_url: imageMap.get(row.user_id) ?? null,
+        member_badge: badgeMap.get(row.user_id) ?? null,
+        is_paid: paidMap.get(row.user_id) ?? null,
+        current_level: levelMap.get(row.user_id) ?? null,
       })),
     );
     setLoading(false);
@@ -227,7 +256,7 @@ export default function GroupPostThread({
         const [{ data: profile }, { data: membership }] = await Promise.all([
           supabase
             .from("profile_stats")
-            .select("display_name, username, profile_image_url, member_badge")
+            .select("display_name, username, profile_image_url, member_badge, is_paid, current_level")
             .eq("user_id", uid)
             .maybeSingle(),
           supabase
@@ -247,6 +276,9 @@ export default function GroupPostThread({
           profile_image_url: profile?.profile_image_url ?? null,
           can_moderate:
             profile?.member_badge === "moderator" || membership?.role === "leader" || membership?.role === "moderator",
+          member_badge: profile?.member_badge ?? null,
+          is_paid: profile?.is_paid ?? null,
+          current_level: profile?.current_level ?? null,
         });
       }
 
@@ -354,6 +386,9 @@ export default function GroupPostThread({
         id: inserted?.id ?? crypto.randomUUID(),
         user_id: uid,
         display_name: displayName,
+        member_badge: me.member_badge,
+        is_paid: me.is_paid,
+        current_level: me.current_level,
         content: text,
         created_at: inserted?.created_at ?? new Date().toISOString(),
         parent_post_id: parentId ?? postId,
@@ -454,6 +489,11 @@ export default function GroupPostThread({
               <Link href={`/profile/${reply.user_id}`} className="text-sm font-bold text-[var(--bb-text-primary,#111827)] hover:underline">
                 {name}
               </Link>
+              {/* Identity first, then the earned level - Founder Buddy is never
+                  outranked by a level number. Chips rather than rings: a
+                  threaded reply is a dense row. */}
+              <UserBadge customBadge={reply.member_badge} isPaid={reply.is_paid} />
+              <LevelBadge currentLevel={reply.current_level} />
               <span className="text-[11px] text-[var(--bb-text-muted,#9ca3af)]">{timeAgo(reply.created_at)}</span>
             </div>
             {editingId === reply.id ? (

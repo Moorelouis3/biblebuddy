@@ -7,7 +7,18 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 1000;
-const MAX_ACTION_ROWS = 30000;
+
+/**
+ * Hard ceiling on rows read for one user, as a runaway guard only.
+ *
+ * This used to be 30,000, which one real account exceeded - 33,120 actions - so
+ * its score was computed from the oldest 30,000 and the rest were dropped
+ * silently (defect D3, docs/LEVELS_PROPOSAL_2026-11-10.md §1.7). Raised well
+ * clear of the largest account. Cost is not a concern at this size: actions per
+ * user are p50 = 4, p90 = 22, p99 = 315, so 23 users of 7,195 read more than
+ * one page at all.
+ */
+const MAX_ACTION_ROWS = 120000;
 
 function createAdminClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -16,7 +27,9 @@ function createAdminClient() {
   return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
 }
 
-async function fetchUserActions(supabase: NonNullable<ReturnType<typeof createAdminClient>>, userId: string) {
+type AdminClient = NonNullable<ReturnType<typeof createAdminClient>>;
+
+async function fetchUserActions(supabase: AdminClient, userId: string) {
   const rows: PointsActionRow[] = [];
   for (let from = 0; from < MAX_ACTION_ROWS; from += PAGE_SIZE) {
     const { data, error } = await supabase
@@ -27,6 +40,35 @@ async function fetchUserActions(supabase: NonNullable<ReturnType<typeof createAd
       .range(from, from + PAGE_SIZE - 1);
     if (error) throw new Error(error.message);
     rows.push(...((data as PointsActionRow[]) || []));
+    if (!data || data.length < PAGE_SIZE) break;
+  }
+  return rows;
+}
+
+/**
+ * Page a user's rows out of a table.
+ *
+ * These two reads used to pass .limit(5000), which PostgREST silently caps at
+ * 1,000 - so the limit was a lie. It affects nobody today (2,114 group_posts
+ * and 3,007 group_post_likes in total, across all users), but a cap that lies
+ * is a cap that will bite later.
+ */
+async function fetchAllForUser<T>(
+  supabase: AdminClient,
+  table: string,
+  columns: string,
+  userId: string,
+  maxRows = 20000,
+): Promise<T[]> {
+  const rows: T[] = [];
+  for (let from = 0; from < maxRows; from += PAGE_SIZE) {
+    const { data, error } = await supabase
+      .from(table)
+      .select(columns)
+      .eq("user_id", userId)
+      .range(from, from + PAGE_SIZE - 1);
+    if (error) throw new Error(error.message);
+    rows.push(...((data as T[]) || []));
     if (!data || data.length < PAGE_SIZE) break;
   }
   return rows;
@@ -47,34 +89,51 @@ export async function GET(request: NextRequest) {
   if (userError || !userId) return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
 
   try {
-    const [actions, postsRes, likesRes, profileRes] = await Promise.all([
+    const [actions, groupRows, likeRows, profileRes] = await Promise.all([
       fetchUserActions(supabase, userId),
-      supabase.from("group_posts").select("parent_post_id, created_at").eq("user_id", userId).limit(5000),
-      supabase.from("group_post_likes").select("created_at").eq("user_id", userId).limit(5000),
-      supabase.from("profile_stats").select("current_level, current_streak").eq("user_id", userId).maybeSingle(),
+      fetchAllForUser<{ parent_post_id: string | null; created_at: string | null }>(
+        supabase,
+        "group_posts",
+        "parent_post_id, created_at",
+        userId,
+      ),
+      fetchAllForUser<{ created_at: string | null }>(supabase, "group_post_likes", "created_at", userId),
+      supabase
+        .from("profile_stats")
+        .select("current_level, current_streak, level_celebrated, display_name")
+        .eq("user_id", userId)
+        .maybeSingle(),
     ]);
 
-    const groupRows = (postsRes.data as Array<{ parent_post_id: string | null; created_at: string | null }> | null) || [];
-    const profile = profileRes.data as { current_level: number | null; current_streak: number | null } | null;
+    // supabase-js resolves with {data: null, error} on a dropped connection
+    // rather than throwing, so the profile read is checked explicitly. A failed
+    // read must not be treated as "this user has no level".
+    if (profileRes.error) throw new Error(profileRes.error.message);
+
+    const profile = profileRes.data as {
+      current_level: number | null;
+      current_streak: number | null;
+      level_celebrated: number | null;
+      display_name: string | null;
+    } | null;
     const storedLevel = profile?.current_level ?? null;
 
     const computed = computePointsFromActivity({
       actions,
       groupRootPosts: groupRows.filter((row) => !row.parent_post_id),
       groupComments: groupRows.filter((row) => Boolean(row.parent_post_id)),
-      groupLikesGiven: (likesRes.data as Array<{ created_at: string | null }> | null) || [],
+      groupLikesGiven: likeRows,
       likesReceived: [],
       streakBonusPoints: streakBonusPointsFor(profile?.current_streak),
     });
 
     // Levels never go down: the stored level acts as a floor.
     const levelInfo = getLevelInfoWithLevelFloor(computed.totalPoints, storedLevel);
-    const leveledUp = typeof storedLevel === "number" && storedLevel >= 1 && levelInfo.level > storedLevel;
     const firstLevelAssignment = storedLevel === null || storedLevel < 1;
 
     // Cache the level for the group feed badges and leaderboards. total_points
     // is written only if the column exists (best-effort optional cache).
-    if (leveledUp || firstLevelAssignment) {
+    if (levelInfo.level > (storedLevel ?? 0) || firstLevelAssignment) {
       const { error: levelWriteError } = await supabase
         .from("profile_stats")
         .upsert({ user_id: userId, current_level: levelInfo.level }, { onConflict: "user_id" });
@@ -90,6 +149,31 @@ export async function GET(request: NextRequest) {
         }
       });
 
+    /**
+     * Whether a celebration is owed, which is a question about durable state
+     * and not about what happened in this request.
+     *
+     * This used to be `levelInfo.level > storedLevel`, computed in the same
+     * request that banked the new level - so if the modal never rendered (the
+     * user navigated away, the tab was backgrounded, the app was killed, the
+     * fetch resolved after unmount) the level was already saved and the
+     * celebration was lost for good, with nothing recording that it was owed
+     * (defect D1).
+     *
+     * profile_stats.level_celebrated is the high-water mark of what the user
+     * has actually been shown. The level is owed until the client acknowledges
+     * it via POST /api/points/celebrated, so it survives reloads, devices, app
+     * restarts and server retries. Two tabs will both show it and the second
+     * acknowledgement is a no-op - showing good news twice is a far better
+     * failure than never showing it (defect D2).
+     *
+     * Existing users are not greeted retroactively: the backfill sets
+     * level_celebrated = current_level for every row, so the first celebration
+     * anybody sees is for the first level earned after this ships.
+     */
+    const celebrated = profile?.level_celebrated ?? null;
+    const leveledUp = typeof celebrated === "number" ? levelInfo.level > celebrated : false;
+
     return NextResponse.json({
       totalPoints: levelInfo.totalPoints,
       studyPoints: computed.studyPoints,
@@ -104,6 +188,8 @@ export async function GET(request: NextRequest) {
       nextLevelName: levelInfo.nextLevel?.levelName ?? null,
       nextLevel: levelInfo.nextLevel?.level ?? null,
       previousLevel: storedLevel,
+      displayName: profile?.display_name ?? null,
+      levelCelebrated: celebrated,
       leveledUp,
     });
   } catch (error) {

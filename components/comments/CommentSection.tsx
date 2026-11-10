@@ -10,6 +10,8 @@ import { ModalShell } from "@/components/ModalShell";
 import TextareaMentionInput from "@/components/TextareaMentionInput";
 import MentionText from "@/components/MentionText";
 import ReportBlockMenu from "@/components/ReportBlockMenu";
+import UserBadge from "@/components/UserBadge";
+import LevelBadge from "@/components/LevelBadge";
 import { useBlockedUserIds } from "@/lib/userBlocks";
 import { requestAutoReplyDraft } from "@/lib/requestAutoReplyDraft";
 import {
@@ -787,6 +789,14 @@ export default function CommentSection({
                       <Link href={`/profile/${c.user_id}`} className="text-xs font-semibold text-[var(--bb-text-primary,#1f2937)] hover:underline">
                         {c.user_name}
                       </Link>
+                      {/* Identity first, then the earned level. Founder Buddy
+                          must never be replaced or outranked by a level number
+                          (Louis, 2026-11-10), so UserBadge always precedes
+                          LevelBadge. Both values were already being fetched
+                          here and discarded, so this adds no query. A chip and
+                          not a ring: this row is dense. */}
+                      <UserBadge customBadge={c.member_badge} isPaid={c.is_paid} />
+                      <LevelBadge currentLevel={c.current_level} />
                       <span className="text-xs text-gray-400">{timeAgo(c.created_at)}</span>
                     </div>
                     {editingCommentId === c.id ? (

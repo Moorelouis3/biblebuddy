@@ -40,6 +40,11 @@ const UNIQUE_PER_LABEL = new Set<string>([
   "bible_in_one_year_trivia_completed",
   "bible_in_one_year_reflection_completed",
   "bible_topic_lesson_completed",
+  // Added 2026-11-10 with their weights in lib/levelSystem.ts. Both are
+  // completion facts about a chapter, so they score once per chapter and never
+  // again - redoing Genesis 3's trivia is still one chapter of trivia done.
+  "trivia_chapter_completed",
+  "scrambled_chapter_completed",
   "person_learned",
   "place_discovered",
   "keyword_mastered",
