@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-6-explained",
+    title: "Joshua 6 Explained: Six Silent Days and the Fall of Jericho",
+    description:
+      "Joshua 6 explained verse by verse: the six silent days around Jericho, the seventh day's shout, the devoted things, Rahab's rescue, and the curse on the ruins.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-6-explained",
+    publishedAt: "2026-11-10",
+    readTime: "13 min read",
+    image: "/blog-banners/joshua-6-explained.jpg",
+    groupPost: {
+      title: "Joshua 6 Explained 📖",
+      content:
+        "The walls are still standing.\nGod hands Joshua a plan no general would choose.\n\n📌 Six silent days. One shout. The wall falls flat.\n\n📖 Marching around a city for a week, with real silence.\n📖 Gold and silver set apart, never kept for themselves.\n📖 Rahab's promise, kept exactly as sworn.\n\nNew article on:\n🟢 why God chose a plan that made no **military sense**\n🟢 what **devoted things** meant for Israel's own soldiers\n🟢 the **curse** Joshua spoke that came true centuries later\n\nHave you ever marched with zero proof it was working? 🙏",
+    },
+  },
+  {
     slug: "joshua-5-explained",
     title: "Joshua 5 Explained: A New Circumcision Before the First Battle",
     description:
