@@ -38,9 +38,10 @@ the welcome email and the imported Systeme campaigns.
 anywhere in this repo.** I looked: the only sequence tables that ever existed
 (`email_sequence_steps`, `email_sequence_sends`) were created and dropped on
 2026-10-10 in `supabase/migrations/20261010_email_events_and_scheduling.sql`,
-described there as "a misread of what was wanted". The live 8-step drip in
-`lib/emailFunnelTemplates.ts` is the day 1-8 signup funnel, which is a
-different thing.
+described there as "a misread of what was wanted". The 8-step drip that used
+to live in `lib/emailFunnelTemplates.ts` was the day 1-8 signup funnel, a
+different thing — and it is gone: retired 2026-11-10, see
+`docs/EMAIL_FUNNEL_RETIRED.md`. So there is no welcome sequence to wait for.
 
 So I am carrying forward only what you said in this prompt: every subscriber
 starts at lesson 1 and progresses in order. What I still need:

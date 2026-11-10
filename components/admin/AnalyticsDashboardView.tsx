@@ -1212,11 +1212,11 @@ export default function AnalyticsDashboardView({
                       The welcome funnel is separate, and it is HISTORY, not a
                       live sender. Days 2-8 stopped on 2026-09-09 (written for
                       the subscription model); day 1 moved to our own SES
-                      welcome and the Systeme path stood down on 2026-10-20.
-                      The cron still runs hourly and sends nothing. 30,764
-                      sends are recorded and this is the only screen that can
-                      read them, which is why the page stays. Checked against
-                      the database 2026-11-10. See docs/EMAIL_AUDIT.md. */}
+                      welcome on 2026-10-20 and nothing has sent since. The
+                      senders and both crons were deleted on 2026-11-10 -
+                      docs/EMAIL_FUNNEL_RETIRED.md. The 30,764 recorded sends
+                      stay, and this is the only screen that can read them,
+                      which is why the page stays. */}
                   <div className="mt-4 flex flex-wrap gap-2 border-t border-[#eef2f7] pt-3">
                     <Link
                       href="/admin/email-analytics"

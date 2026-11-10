@@ -157,6 +157,13 @@ automations.
    stays: 30,764 recorded sends and this is the only screen that can read
    them. The Email tab links to it as history.
 
+   **Cleaned up the same day** (Louis: "Clean it up"). The senders, both
+   crons and 1,081 lines of how-to docs for a system that no longer exists
+   are gone; the two tables, the page and its live endpoint stay. One of the
+   two crons was not harmless — it could still have mailed 500 people the
+   subscription-era welcome. Full account, and where the copy lives in git:
+   **`docs/EMAIL_FUNNEL_RETIRED.md`**.
+
    **What a new signup actually gets in week one:** the welcome email, from
    our own server, once. Plus the twice-weekly studies broadcast if one goes
    out that week (it goes to the whole list, not to new people specially).

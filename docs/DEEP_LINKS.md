@@ -131,7 +131,7 @@ app. It was only email that SES intercepted.
 | iOS entitlement | `scripts/ios-entitlements.sh` | On — in the next iOS build |
 | Android intent-filter | `scripts/android-deep-links.mjs` | On — in the next Android build |
 | Opening the right page in the app | `components/NativeDeepLinks.tsx` | Live |
-| Email links on `www` | `lib/emailFunnelTemplates.ts` | Done |
+| Email links on `www` | was `lib/emailFunnelTemplates.ts` | Moot — funnel retired 2026-11-10, see `docs/EMAIL_FUNNEL_RETIRED.md` |
 
 ### Why the email links moved to `www`
 
