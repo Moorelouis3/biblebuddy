@@ -997,3 +997,17 @@ read it himself before wide promotion.
 
 ## Deploy cadence: other agents are self-tagging commits with [deploy], bypassing this routine's twice-daily schedule
 Today's run (2026-11-02, Deploy Agent, 16:44 UTC fire) found 4 commits already carrying a literal `[deploy]` tag between 17:15 and 17:45 Berlin time today, none of them touching `DEPLOY_LOG.md`: `2ad3ac9` ("Comment replies: newest first, no per-run caps [deploy]"), `fd370f9` ("Comment replies: everywhere comments are, and a 3 hour wait [deploy]"), `377745a` ("Deploy: comment replies across all three surfaces [deploy]", an empty commit), and `2a870d1` ("Comment replies: drop the group feed, social feed only [deploy]"). Since Vercel builds on any commit whose message contains `[deploy]` regardless of which agent added it, each of these would have fired its own Vercel build the moment it was pushed — four ad-hoc builds in about 30 minutes, on top of this routine's own scheduled build. This is exactly the pattern CLAUDE.md's "Deploy cadence" section says drove the bill to EUR60/should-be-EUR25: step 3 work (a feature, "comment replies") tagging itself `[deploy]` instead of waiting for the next scheduled deploy. Whatever agent/session is writing the comment-replies commits needs to stop adding `[deploy]` itself and leave that tag to the Deploy Agent's twice-daily run, unless it's genuinely a step-1 (broken for more than one person) or step-2 (timed) case — and if so, the commit message should say which step and why, per the cadence doc. This run's own publish (25 commits, `8c27697`) proceeded normally and is unaffected; flagging this so the extra builds already incurred today get looked at and the underlying agent's tagging behavior gets fixed.
+
+## Christian Holidays series complete: all 60 articles written and published
+`node scripts/holiday-blog-queue.mjs status` confirms all 60 Christian Holidays
+topics are `published` (0 remaining), across all six tracks (anchor, reformation,
+christmas, explainer, advent, epiphany). The 60th article ("What Is the Octave of
+Christmas? The Eight Days Explained") was committed 2026-11-09 05:30 UTC and is
+live. This run's `claim` printed `{"done": true, "reason": "All 60 articles are
+written."}`, as did the two runs before it (2026-11-09 09:17 and 15:21 UTC) --
+this is the third consecutive run to see `done`, and no prior run left a durable
+record of it, so recording it here now. Per the routine's own doc, a `done` run
+writes nothing and stops; there is no more work for this scheduled task to do
+until Louis gives the series a new mandate (more topics, a quality pass, or
+pausing/disabling the `15 1,5,9,15 * * *` trigger so it stops firing on an empty
+queue).
