@@ -24,6 +24,13 @@ component on that pattern, in pure SVG + CSS, with no image assets.** One
 template, 20 levels, a full celebration at every one of them, and four
 stronger milestone variants on top.
 
+> **Read §8 first.** The design in §4 and §5 was originally drawn on a fixed
+> navy card. Louis rejected that on 2026-11-10 — *"it looks like a separate game
+> screen rather than something that belongs inside our app"* — and he was right:
+> it used none of the app's 17 theme tokens. **§8 is the design-system audit and
+> the revision, and it is the current design.** §4's SVG-not-images reasoning and
+> §5's escalation table still hold; the colours and the scale in them do not.
+
 ---
 
 ## 1. What the existing popup actually looks like
@@ -171,27 +178,36 @@ is not a design:
    Level 10, 9 at Level 15, 13 at Level 20. Counting the rays is how the tiers
    escalate without new artwork.
 
-### The popup is dark, so it takes the dark-theme tier hexes
+### The shield's colours, now that the card is themed
 
-Caught while building the animated preview, and it matters for implementation.
-The review doc's §2 ring table gives **two** hexes per level — a light-theme one
-for the white card and a dark-theme one for the `#0F1C2B` card. **The Golden
-Badge card is navy, so the shield's core stroke must use the dark-theme
-column**, not the light one. Level 10's light hex `#19A67A` on navy is nearly
-invisible; its dark hex `#2DB88A` reads correctly.
+Earlier drafts of this document put the popup on a fixed navy card and
+worked out which of the two tier hexes to use against it. **That whole question
+disappeared when the card became themed** (see §8). The card is now
+`--bb-card`, which is white on 16 themes and `#0F1C2B` on Dark, so no single
+tier hex can be chosen against it.
 
-So the popup's tier colours are: Stone `#AEB9C7`, Water `#60A5FA`, Olive
-`#2DB88A`, Lamp `#E0A82E`, Crown `#C4B5FD` — the dark column. The light column
-is still what the *ring* uses on profiles and dashboards, which are light cards.
-`TIER_STYLE` therefore needs both values per tier, with the popup reading `.dark`
-and the ring reading by theme.
+**The resolution: the shield carries its own contrast and never depends on the
+card.** Two fixed values, both inside the shield:
+
+- **The core is the tier's deepest step** — Stone `#334155`, Water `#15317A`,
+  Olive `#0B4336`, Lamp `#55250B`, Crown `#4C1D95`. All five are 10:1 or better
+  against white, so **the level number sits in plain white and is legible on
+  every theme**, with no per-theme variant.
+- **The core's ring is the level's own light-column hex** — `#4E93EC` at Level
+  5, `#2F7FE8` at Level 6, and so on. It sits on the deep core, not on the card,
+  so the card's colour is irrelevant to it. This is what distinguishes the five
+  levels inside a tier.
+
+So `TIER_STYLE` needs **one** value set, not two columns, and the popup is
+theme-proof by construction. The light/dark ring columns in the review doc §2
+remain what the *profile ring* uses, because that sits directly on a themed
+card.
 
 **One error in the first static preview, for the record:** it drew Level 2 with
 the Water blue `#4E93EC`. Level 2 is **Tier I Stone**, not Water — Water starts
-at Level 5. The animated preview has it right (`#AEB9C7`). Worth flagging
-because it is exactly the mistake the `TIER_STYLE` lookup exists to make
-impossible: the tier must be derived from the level, never hand-assigned
-per card.
+at Level 5. Worth keeping on the record because it is exactly the mistake the
+`TIER_STYLE` lookup exists to make impossible: the tier must be derived from the
+level, never hand-assigned per card.
 
 **Mobile is the constraint that decides this.** At 390px the card is ~342px
 wide, the shield ~96px. Every number in the preview was set at that width. SVG
@@ -268,7 +284,8 @@ is possible for a very fast beginner, and that is fine: they earned both.
 
 | | Every other level | Level 5 | Level 10 | Level 15 | Level 20 |
 |---|---|---|---|---|---|
-| Card | navy `#0B1527` | same | same | same | deeper `#0A0F23` |
+| Card | `--bb-card` (themed) | same | same | same | same |
+| Crest band | `--bb-accent-soft` | same | same | same | same |
 | Shield | gold, 2 paths | same | same | slightly larger | largest |
 | Laurels | open pair | open pair | open pair | fuller pair | **closed wreath** |
 | Crown above shield | — | — | — | — | **yes** |
@@ -406,3 +423,139 @@ geometry at 390px phone width.
 **Not done:** no component changed, nothing implemented, no screenshot taken of
 a live level-up (which would have required writing a production row), no
 migration run.
+
+---
+
+## 8. Revision: making it native to Bible Buddy
+
+**Louis, 2026-11-10, on seeing the Level 5 preview: *"It looks like a separate
+game screen rather than something that belongs inside our app."*** He is right.
+The navy-and-gold card was designed as an object in its own right and never
+checked against the app it opens over. Bible Buddy has a 17-token theme system
+and a settled celebration language, and the first design used neither. This
+section records the audit he asked for and what changed because of it.
+
+### 8.1 The theme system — the thing the first design ignored
+
+`lib/appThemes.ts` defines **17 themes** (Light, Dark, Blue, Gold, Purple, Red,
+Green, Pink, Orange, Gray, Black, and six pastels), each supplying the **same 17
+tokens**:
+
+```
+background  surface  surfaceSoft  card  cardBorder
+textPrimary  textSecondary  textMuted
+accent  accentSoft  button  buttonText
+navBackground  navActive  navInactive
+progressTrack  progressFill
+```
+
+They reach components as CSS variables with fallbacks —
+`var(--bb-card, #ffffff)`, `var(--bb-accent, #2f7fe8)` — which is the pattern
+every surface in the app already follows.
+
+| Token | Light | Dark |
+|---|---|---|
+| `background` | `#F7FAFC` | `#07111F` |
+| `card` | `#FFFFFF` | `#0F1C2B` |
+| `cardBorder` | `#D8E3EC` | `#23344A` |
+| `surfaceSoft` | `#EEF4F8` | `#132234` |
+| `textPrimary` | `#101827` | `#F8FAFC` |
+| `textSecondary` | `#334155` | `#CBD5E1` |
+| `textMuted` | `#64748B` | `#94A3B8` |
+| `accent` | `#0056FD` | `#5DD6FF` |
+| `accentSoft` | `#EAF2FF` | `#123348` |
+| `button` / `buttonText` | `#0056FD` / `#FFFFFF` | `#5DD6FF` / `#06101D` |
+| `progressTrack` / `progressFill` | `#D8E3EC` / `#0056FD` | `#26364B` / `#5DD6FF` |
+
+**A fixed navy card is wrong on all 17.** On Dark it is nearly the card colour
+and the modal stops reading as a layer; on the six pastels it is a hole in the
+page. A themed card is right on all 17 for free.
+
+### 8.2 The dashboard it opens over
+
+`components/HomeScreen.tsx` — the popup's own parent, since
+`LevelProgressCard` is mounted at line 362.
+
+- Container: `mx-auto w-full max-w-[960px] flex-col gap-6 px-4 pb-2 pt-5`
+- Greeting: `text-2xl font-black sm:text-3xl` in `--bb-text-primary`, with a
+  `text-sm font-semibold` line in `--bb-text-muted`
+- Three stat cards in `grid-cols-3 gap-2`: peach streak (`#fff3e6` /
+  `#f4dcc8`), mint Bible-percent (`#eefaf3` / `#cde9dc`), **lavender level card
+  (`#f5f2ff` / `#ddd6f3`)** — all `rounded-2xl border shadow-sm`
+- Then `VerseOfTheDayCard` (`rounded-2xl border border-[var(--bb-card-border)]
+  bg-[var(--bb-surface-soft)] p-4`), `YourBookshelf`, and the Quick Reads
+  carousel of `cardTint()` cards
+- `BottomNav` floats as a `rounded-full` pill in `--bb-card`
+
+**So the popup opens over a light, airy, pastel page of rounded cards.** A dark
+game panel landing on that is the jolt Louis saw.
+
+**One honest finding worth recording:** the three dashboard stat cards use
+**hardcoded pastel hex, not theme tokens**, so they stay peach/mint/lavender on
+the Dark theme. The dark-theme frame in the preview shows that faithfully rather
+than tidying it up. It is pre-existing, out of scope here, and the kind of thing
+worth a separate look later.
+
+### 8.3 The celebration language that already exists
+
+`components/DevotionalDayCompletionModal.tsx` is the house style for "you did
+something", and the redesign follows it deliberately:
+
+| Existing convention | Where | Carried into the redesign |
+|---|---|---|
+| A **light tinted card**, not a dark panel | `PEACH = cardTint(0)` | The crest band uses `--bb-accent-soft`; the body is `--bb-card` |
+| `rounded-[32px]` + `shadow-2xl` + hairline ring | `:148` | `rounded-[30px]`, same shadow family, `--bb-card-border` hairline |
+| A small **uppercase pill** states the achievement | `:181` "Day complete" | The tier pill, `--bb-accent` on `--bb-card` |
+| **Drawn SVG decoration**, never an asset | `:155-168`, the hills | The curved divider under the crest band — the same hills idea, one path |
+| `font-black` headline, `text-[15px]` body | `:187-195` | `font-black` level name, `font-semibold` personal line |
+| One full-width primary button, `rounded-2xl` | `:208` | `--bb-button` / `--bb-buttonText` |
+| `ModalShell` for portal + swoop + scroll lock | `:141` | Unchanged |
+| `canvas-confetti` + `prefersReducedMotion()` | `:51`, `:72-133` | Unchanged |
+
+`components/BuddyCelebrationModal.tsx` is the second precedent and supplies one
+useful detail: its 20 confetti pieces are a **fixed table, not `Math.random()`
+in render**, with a comment saying so. Worth copying for the CSS sparkles.
+
+### 8.4 What changed
+
+| | First design | Redesigned |
+|---|---|---|
+| Card | fixed navy `#0B1527` | `--bb-card` — correct on all 17 themes |
+| Text | three hand-picked blues | `--bb-text-primary` / `-secondary` / `-muted` |
+| Button | fixed gold | `--bb-button` / `--bb-buttonText` |
+| Progress bar | fixed gold on navy | `--bb-progress-fill` on `--bb-progress-track` |
+| Tier pill | navy-on-navy custom | `--bb-accent` on `--bb-accent-soft` |
+| Scale | full-bleed, rays to the edges | centred `max-w-sm` card, like every other modal |
+| Light rays | 5–13 across the whole screen | contained in the crest band; gold sparkles only |
+| Shield | gold on navy | **unchanged gold**, on an `--bb-accent-soft` band |
+| Tier colour | needed a light and a dark variant | one value: deep core + level-coloured ring (§4) |
+
+**What was deliberately kept:** the golden shield and laurels, the LEVEL UP
+ribbon, the level number and name, the encouragement text, XP and next-level
+progress, confetti at every level with bigger bursts at 5/10/15/20, and no
+sound.
+
+**Why the gold stays fixed while everything else is themed.** Gold is the only
+element that should not follow the theme: it is what marks the moment as an
+achievement rather than a notice, and a shield recoloured to match a pastel
+theme stops looking earned. It is also the one place in the app where a fixed
+colour is defensible, because it sits on `--bb-accent-soft` and inside its own
+dark core, so it never has to contrast with the card. Everything the user chose
+— surface, text, button, progress — follows their theme. One fixed ornament, 15
+themed values.
+
+### 8.5 Still to check before building
+
+Two things the previews cannot settle, both cheap and both worth doing with a
+real browser before the component is written:
+
+1. **The six pastel themes.** `accentSoft` on Rose, Lavender, Mint, Sky, Peach
+   and Butter is a pale tint of a pale colour, and the crest band may end up
+   invisible against `--bb-card`. The fix if so is a hairline under the band
+   rather than new colours. Light and Dark are shown above; the pastels are
+   asserted, not verified.
+2. **The Black theme.** It is the most extreme surface in the set and the gold
+   will read very hot on it. Worth looking at directly.
+
+Neither blocks approval of the layout, and both are a few minutes in a
+`tmp/`-only page.
