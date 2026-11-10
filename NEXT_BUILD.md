@@ -55,16 +55,41 @@ This is the one most likely to break a build.
 ### 3. The offline screen stops promising downloads iOS cannot have
 **Ready. Nothing more to do but build.** Commit `86dcb9e2`.
 
-The shell's own offline screen ended with "Anything you've saved for offline
-reading is still available." On iOS nothing ever was: service workers are
-disabled in WKWebView unless the hosts are listed under `WKAppBoundDomains`
-in `Info.plist` and `limitsNavigationsToAppBoundDomains` is true, and
-`capacitor.config.ts` sets that to false deliberately. So nothing is cached,
-`SaveForOfflineButton` hides itself, and the screen pointed at a feature the
-same build never offered. The sentence is gone.
+**What an offline screen is.** Bible Buddy's app is a window onto the live
+website, so it needs a connection for almost everything. When someone opens it
+on the Underground, or in a tunnel, or with one bar, the page cannot load. Left
+alone, the phone shows its own browser error - a grey screen reading something
+like "cannot connect to server", with our web address printed on it. It looks
+like the app is broken, and it looks like a website, which is the one thing
+Apple does not want an app to look like.
 
-`native/www/offline.html` is compiled into the bundle, so the live site
-cannot deliver this - it waits for a build like everything else here.
+So we ship our own page for that moment instead: the Bible Buddy mark, "You're
+offline", a line of explanation and a Try again button. That page is the
+offline screen. It is the only screen in the whole app that lives inside the
+app rather than on the website, because it has to work when the website cannot
+be reached. That is also why it needs a build to change.
+
+**What was wrong with it.** It ended with "Anything you've saved for offline
+reading is still available." On iPhone that was not true, and had never been
+true. Saving a reading for offline needs a piece of browser machinery that
+Apple switches off inside apps unless we ask for it in a specific way, and we
+deliberately do not ask - see the decision below. So on iPhone nothing is ever
+saved, the Save for offline button correctly hides itself, and the offline
+screen was the only thing in the app still pointing at the feature. Somebody
+with no signal read that we had their reading, went looking, and found no
+button and no reading.
+
+It now says it picks up where you left off as soon as you are back online,
+which is what the page actually does - the button reloads the page you were on,
+and it retries by itself the moment the signal returns.
+
+**The technical version**, for whoever maintains this: service workers are
+disabled in WKWebView unless the hosts are listed under `WKAppBoundDomains` in
+`Info.plist` and `limitsNavigationsToAppBoundDomains` is true;
+`capacitor.config.ts` sets that to false on purpose. The page is
+`native/www/offline.html` (and its byte-identical twin `index.html`), served
+by Capacitor's `errorPath`, compiled into the bundle - which is why the live
+site cannot deliver this fix.
 
 **Not verified on a device.** That iOS has no worker is Apple's rule read, not
 a phone tested. To settle it, attach Safari Web Inspector to the app's WebView
@@ -127,11 +152,14 @@ than assuming:
 ### 3. The same offline-screen wording fix
 **Ready**, and cosmetic here. Commit `86dcb9e2`.
 
-Android does have a working service worker (registered for everyone since
-`93db859ea`), so offline reading genuinely works in the Play app - and this
-screen is mostly unreachable there, because an active worker serves the site's
-own `/offline.html` before Capacitor's error page is reached. The file is
-shared between both platforms, so the change rides along.
+Same page as iOS entry 3 above - read that one for what an offline screen is.
+The file is shared between both platforms, so this change rides along.
+
+It matters less on Android, for a good reason: Android **does** let the app
+save pages for offline reading, and has since October. So on Android the
+sentence we removed was broadly true, and the screen itself rarely appears -
+Android can usually serve the last version of the page it saw instead of an
+error page at all.
 
 **Worth confirming on a phone:** that offline reading in the Play app actually
 works. We believe it on the strength of a commit message.
