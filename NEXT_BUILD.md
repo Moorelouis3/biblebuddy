@@ -52,6 +52,30 @@ and reads as Assigned. An app asking for an entitlement its profile lacks
 cannot be signed at all. Evidence in `docs/bible-lock-entitlement-evidence.md`.
 This is the one most likely to break a build.
 
+### 3. The offline screen stops promising downloads iOS cannot have
+**Ready. Nothing more to do but build.** Commit `86dcb9e2`.
+
+The shell's own offline screen ended with "Anything you've saved for offline
+reading is still available." On iOS nothing ever was: service workers are
+disabled in WKWebView unless the hosts are listed under `WKAppBoundDomains`
+in `Info.plist` and `limitsNavigationsToAppBoundDomains` is true, and
+`capacitor.config.ts` sets that to false deliberately. So nothing is cached,
+`SaveForOfflineButton` hides itself, and the screen pointed at a feature the
+same build never offered. The sentence is gone.
+
+`native/www/offline.html` is compiled into the bundle, so the live site
+cannot deliver this - it waits for a build like everything else here.
+
+**Not verified on a device.** That iOS has no worker is Apple's rule read, not
+a phone tested. To settle it, attach Safari Web Inspector to the app's WebView
+and look for `[SW] registration failed` from `AppShell.tsx:1674`.
+
+**Separate, bigger question, not done:** whether iOS should turn app-bound
+domains on and get the offline cache Android already has. Capped at 10 domains,
+no wildcards, and it restricts what the native layer may do to the WebView -
+Capacitor's bridge is injected JS, so it either works or takes the app down.
+Its own branch, device-tested, never in the same build as a submission.
+
 ---
 
 ## Waiting for the next Android build
@@ -73,6 +97,18 @@ than assuming:
 - Staying logged in when the app is closed (commit `29361759`)
 - The Firebase config being installed by the build (commit `b4a5cc6d`)
 - The advertising ID permission being stripped (commit `a77ed974`)
+
+### 3. The same offline-screen wording fix
+**Ready**, and cosmetic here. Commit `86dcb9e2`.
+
+Android does have a working service worker (registered for everyone since
+`93db859ea`), so offline reading genuinely works in the Play app - and this
+screen is mostly unreachable there, because an active worker serves the site's
+own `/offline.html` before Capacitor's error page is reached. The file is
+shared between both platforms, so the change rides along.
+
+**Worth confirming on a phone:** that offline reading in the Play app actually
+works. We believe it on the strength of a commit message.
 
 ---
 
