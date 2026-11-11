@@ -53,10 +53,6 @@
       "schedule": "0 5,17 * * *"
     },
     {
-      "path": "/api/cron/weekly-newsletter",
-      "schedule": "0 8 * * 2"
-    },
-    {
       "path": "/api/cron/email-campaign-send",
       "schedule": "*/10 * * * *"
     },
