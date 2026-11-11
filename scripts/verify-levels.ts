@@ -499,10 +499,41 @@ check("a level-up is owed from level_celebrated, not from this request", () => {
     /const leveledUp = typeof celebrated === "number" \? levelInfo\.level > celebrated : false;/.test(src),
     "leveledUp is not derived from level_celebrated",
   );
-  // Only the ack route may WRITE the mark. Reading it and typing it are fine,
-  // so this looks for it inside an upsert/update payload rather than anywhere.
-  const writes = src.match(/(?:upsert|update)\(\s*\{[^}]*level_celebrated/);
-  assert.equal(writes, null, "the summary route writes level_celebrated - only the ack route may");
+  // The summary route may write level_celebrated in exactly one place: seeding
+  // a user who has none (see the seed check above). It must never ADVANCE an
+  // existing mark - that is the ack route's job, and advancing it here would
+  // swallow the celebration it is supposed to owe.
+  const writes = src.match(/(?:upsert|update)\(\s*\{[^}]*level_celebrated/g) || [];
+  assert.equal(writes.length, 1, `expected exactly one level_celebrated write in the summary route, found ${writes.length}`);
+  const writeAt = src.search(/(?:upsert|update)\(\s*\{[^}]*level_celebrated/);
+  const seedAt = src.indexOf("if (celebrated === null)");
+  assert.ok(seedAt >= 0 && writeAt > seedAt, "the level_celebrated write is not inside the null-seed branch");
+  // And it must be guarded, not unconditional.
+  const between = src.slice(seedAt, writeAt);
+  assert.ok(!/\n\s*\}/.test(between.replace(/\{[^{}]*\}/g, "")), "the seed branch appears to close before the write");
+});
+
+check("a user with no mark gets one seeded, or the feature never fires for them", () => {
+  // null means "never celebrated" and leveledUp is false for null, which is
+  // what stopped the backfill greeting 1,153 existing users. But nothing else
+  // writes the column - the ack route only runs after a popup was shown - so a
+  // user created after the backfill would sit at null for ever and never see a
+  // single celebration. Found on 2026-11-11 with 14 such rows already in
+  // production.
+  const src = read("app/api/points/summary/route.ts");
+  assert.ok(
+    /if \(celebrated === null\)/.test(src),
+    "the summary route does not seed level_celebrated for a user who has none",
+  );
+  assert.ok(
+    /level_celebrated: levelInfo\.level/.test(src),
+    "the seed does not write the level the user already has",
+  );
+  // The seed must not also announce. leveledUp is computed before it and stays
+  // false for null, so a seeded user sees nothing this time round.
+  const seedAt = src.indexOf("if (celebrated === null)");
+  const leveledUpAt = src.indexOf("const leveledUp =");
+  assert.ok(leveledUpAt < seedAt, "leveledUp is computed after the seed, so a new user would be greeted");
 });
 
 check("the acknowledgement is a monotonic high-water mark", () => {

@@ -219,6 +219,33 @@ export async function GET(request: NextRequest) {
     const celebrated = profile?.level_celebrated ?? null;
     const leveledUp = typeof celebrated === "number" ? levelInfo.level > celebrated : false;
 
+    /**
+     * Seed the mark the first time we ever see this user, or the feature never
+     * fires for them.
+     *
+     * null means "never celebrated", and leveledUp above is deliberately false
+     * for null - that is what stopped the 2026-11-10 backfill greeting 1,153
+     * existing users with a popup for a level they were silently given. The
+     * backfill sealed every row that existed at the time.
+     *
+     * But nothing else writes this column. POST /api/points/celebrated only
+     * runs after a popup has been shown, so a user created AFTER the backfill
+     * would sit at null for ever: they would reach Level 2, 3, 10, and
+     * leveledUp would stay false every time. The celebration would never fire
+     * for anybody who joins from now on.
+     *
+     * So the first time a user is seen with no mark, it is set to the level
+     * they already have and no popup is shown. That is the same baseline the
+     * backfill established, applied one user at a time, and the next level they
+     * actually earn is the first one they see.
+     */
+    if (celebrated === null) {
+      const { error: seedError } = await supabase
+        .from("profile_stats")
+        .upsert({ user_id: userId, level_celebrated: levelInfo.level }, { onConflict: "user_id" });
+      if (seedError) console.error("[POINTS] Could not seed level_celebrated:", seedError.message);
+    }
+
     return NextResponse.json({
       totalPoints: levelInfo.totalPoints,
       studyPoints: computed.studyPoints,
