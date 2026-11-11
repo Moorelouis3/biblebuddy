@@ -43,12 +43,16 @@ export const IMAGE_PENDING = "__IMAGE_PENDING__";
  * which is where Bible Buddy's email images already live, and both were
  * checked with an unauthenticated request before being wired in.
  *
- * Day 2 is a PNG because it is a flat UI screenshot; Day 3 is a JPEG because
+ * Day 2 is the approved ANIMATED GIF, 600x600 and 26 frames, uploaded byte
+ * for byte as Louis supplied it - 798,888 bytes, nothing re-encoded, because
+ * re-encoding an approved asset to save a few KB is not a trade worth making.
+ * Outlook on Windows shows only the first frame, which was checked and is not
+ * blank. Day 3 is a JPEG because
  * it is six photographic covers, and as a PNG it was 864KB against 157KB.
  * Both are 600px wide, the standard email content width.
  */
 export const WELCOME_DAY2_IMAGE =
-  "https://dntaonyrfdzedukvwcwk.supabase.co/storage/v1/object/public/post-media/email/welcome-day2-study-notes.png";
+  "https://dntaonyrfdzedukvwcwk.supabase.co/storage/v1/object/public/post-media/email/welcome-day2-study-notes.gif";
 export const WELCOME_DAY3_IMAGE =
   "https://dntaonyrfdzedukvwcwk.supabase.co/storage/v1/object/public/post-media/email/welcome-day3-study-guides.jpg";
 
