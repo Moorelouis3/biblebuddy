@@ -34,6 +34,24 @@ export const WEBSITE_URL = "https://www.mybiblebuddy.net";
 /** Marks a slot that still needs a publicly hosted asset. */
 export const IMAGE_PENDING = "__IMAGE_PENDING__";
 
+/**
+ * Where the two welcome images live, hosted 11 Nov 2026.
+ *
+ * Louis sent both as .webp. Neither could be used as supplied: Outlook cannot
+ * render webp at all, and a Google Drive viewer link is an HTML page rather
+ * than an image. So both were re-encoded and uploaded to post-media/email/,
+ * which is where Bible Buddy's email images already live, and both were
+ * checked with an unauthenticated request before being wired in.
+ *
+ * Day 2 is a PNG because it is a flat UI screenshot; Day 3 is a JPEG because
+ * it is six photographic covers, and as a PNG it was 864KB against 157KB.
+ * Both are 600px wide, the standard email content width.
+ */
+export const WELCOME_DAY2_IMAGE =
+  "https://dntaonyrfdzedukvwcwk.supabase.co/storage/v1/object/public/post-media/email/welcome-day2-study-notes.png";
+export const WELCOME_DAY3_IMAGE =
+  "https://dntaonyrfdzedukvwcwk.supabase.co/storage/v1/object/public/post-media/email/welcome-day3-study-guides.jpg";
+
 export type WelcomeStep = {
   /** 1-5. Also the order they send in. */
   step: number;
@@ -150,7 +168,7 @@ No complicated setup. No ten different apps. Just you and God's Word.
 
 👇🏾 TAKE A LOOK!
 
-${IMAGE_PENDING}
+![Bible Buddy study notes: open the Bible, pick a book, pick a chapter, tap a verse](${WELCOME_DAY2_IMAGE})
 
 [OPEN BIBLE BUDDY](${APP_STORE_URL})
 
@@ -214,7 +232,7 @@ It's a Bible study group that fits YOUR schedule.
 
 📚 FIND YOUR NEXT BIBLE STUDY!
 
-${IMAGE_PENDING}
+![Six free Bible Buddy study guides](${WELCOME_DAY3_IMAGE})
 
 [EXPLORE THE STUDY GUIDES IN BIBLE BUDDY](${APP_STORE_URL})
 
@@ -395,22 +413,14 @@ export const WELCOME_SEQUENCE: WelcomeStep[] = [
     campaignId: "welcome-2",
     subject: "What do you do when you don't understand God's Word? 📖",
     body: DAY_2,
-    pendingAsset: {
-      what: "The approved 600x600 study-notes demo GIF, animation preserved",
-      source: "https://drive.google.com/file/d/1hCgI_YPAUUP1HURvQ2DxApJQCkxmLeNM/view",
-      placeAfter: "👇🏾 TAKE A LOOK!",
-    },
+    pendingAsset: null,
   },
   {
     step: 3,
     campaignId: "welcome-3",
     subject: "Sometimes a Plan Makes It Easier 📖",
     body: DAY_3,
-    pendingAsset: {
-      what: "bible_buddy_study_guides_email_day3.png, six study-guide covers",
-      source: "https://drive.google.com/file/d/1bqTpCV3IZ1os1deU166OsYiL-pDjVWyU/view",
-      placeAfter: "📚 FIND YOUR NEXT BIBLE STUDY!",
-    },
+    pendingAsset: null,
   },
   {
     step: 4,

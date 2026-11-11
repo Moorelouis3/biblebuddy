@@ -28,6 +28,8 @@ function escapeHtml(value: string): string {
 }
 
 const LINK = /^\[([^\]]+)\]\(([^)]+)\)$/;
+/** ![alt](url) on its own line — a full-width image. Checked before LINK. */
+const IMAGE = /^!\[([^\]]*)\]\(([^)]+)\)$/;
 /** A heading: mostly capitals, no lowercase run, and short. */
 function isHeading(line: string): boolean {
   if (line.length > 90) return false;
@@ -80,6 +82,19 @@ export function renderWelcomeHtml(step: WelcomeStep): string {
           `<p style="margin:0;font-size:14px;font-weight:bold;color:#c0392b;">IMAGE NOT YET HOSTED &mdash; THIS EMAIL CANNOT BE SENT</p>` +
           (pending ? `<p style="margin:8px 0 0;font-size:13px;color:#c0392b;">${escapeHtml(pending.what)}</p>` : "") +
           `</td></tr></table>`,
+      );
+      continue;
+    }
+
+    const img = line.match(IMAGE);
+    if (img) {
+      flushBullets();
+      // width + max-width + height:auto is what makes an email image behave in
+      // Outlook as well as on a phone. alt text carries the meaning when images
+      // are blocked, which is the default in a lot of clients.
+      parts.push(
+        `<img src="${img[2]}" alt="${escapeHtml(img[1])}" width="600" ` +
+          `style="display:block;width:100%;max-width:600px;height:auto;border:0;margin:22px 0;" />`,
       );
       continue;
     }
@@ -158,6 +173,8 @@ export function renderWelcomeText(step: WelcomeStep): string {
       const cta = line.trim().match(LINK);
       if (cta) return `${cta[1]}: ${cta[2]}`;
       if (line.trim() === IMAGE_PENDING) return "[IMAGE NOT YET HOSTED]";
+      const img = line.trim().match(IMAGE);
+      if (img) return img[1] ? `[${img[1]}]` : "";
       return line.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1: $2").replace(/\*\*([^*]+)\*\*/g, "$1");
     })
     .join("\n");
