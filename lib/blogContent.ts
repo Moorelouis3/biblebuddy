@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-14-explained",
+    title: "Joshua 14 Explained: Caleb's Faith at 85 Years Old",
+    description:
+      "Joshua 14 explained verse by verse: the land divided by lot, Caleb's 45 year old promise from Moses, and why an 85 year old man asked for the mountain full of giants.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-14-explained",
+    publishedAt: "2026-11-11",
+    readTime: "12 min read",
+    image: "/blog-banners/joshua-14-explained.jpg",
+    groupPost: {
+      title: "Joshua 14 Explained 📖",
+      content:
+        "One man in this chapter does not wait his turn.\nHe is 85 years old.\n\n📌 He calls in a promise that is 45 years old.\n\n📖 Caleb asks for the mountain full of giants, on purpose.\n📖 Joshua grants it to him before a single tribe gets a border.\n📖 Hebron becomes his because he wholly followed the LORD.\n\nNew article on:\n🟢 the **promise** Caleb waited 45 years to collect\n🟢 why he asked for the **hardest** ground on the map\n🟢 what it means to **wholly follow** the LORD\n\nWhat promise have you been carrying longer than feels reasonable? 🙏",
+    },
+  },
+  {
     slug: "joshua-13-explained",
     title: "Joshua 13 Explained: Still Very Much Land to Possess",
     description:
