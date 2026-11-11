@@ -49,11 +49,20 @@ comment on column public.email_subscribers.welcome_completed_at is
 -- The guard is `where welcome_completed_at is null`, so re-running this is
 -- harmless and it can never overwrite a real completion.
 
+-- The subscribed_at condition is load-bearing and was missing on the first
+-- run. Rule 1 is "already on the mailing list at the cutoff", and rule 2 is
+-- "signing up on November 11, 2026 or later begins the five-day welcome
+-- funnel" - so the cutoff is a boundary, not just a timestamp to stamp on
+-- everybody. Without it, the 10 people who signed up during 11 November were
+-- anchored to Bucket 2 and would never have received the welcome sequence.
+-- They were moved back into Bucket 1 the same day.
+
 update public.email_subscribers
 set
   welcome_completed_at = timestamptz '2026-11-11 00:00:00+01',  -- Europe/Berlin
   welcome_step = 5
-where welcome_completed_at is null;
+where welcome_completed_at is null
+  and subscribed_at < timestamptz '2026-11-11 00:00:00+01';
 
 
 -- 3. Keep Bucket 1 out of broadcasts ------------------------------------------
