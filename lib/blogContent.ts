@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-12-explained",
+    title: "Joshua 12 Explained: The List of Every King Israel Defeated",
+    description:
+      "Joshua 12 explained verse by verse: the 33 kings Moses and Joshua defeated, the ones you already met, and the ones the story never mentioned again.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-12-explained",
+    publishedAt: "2026-11-11",
+    readTime: "11 min read",
+    image: "/blog-banners/joshua-12-explained.jpg",
+    groupPost: {
+      title: "Joshua 12 Explained 📖",
+      content:
+        "No battle in this chapter.\nJust a list of every king who fell.\n\n📌 Thirty three kings, named one by one.\n\n📖 Only 15 of them ever got their own battle story.\n📖 Sixteen kings never appear anywhere else in Joshua.\n📖 One famous city is missing from the list on purpose.\n\nNew article on:\n🟢 the **two kings** Moses defeated before Joshua ever led a battle\n🟢 why **16 kings** never get a single verse of their own\n🟢 why **Gibeon's king** is missing from the count\n\nHave you ever reached the end of a season and finally counted what God actually did? 🙏",
+    },
+  },
+  {
     slug: "joshua-11-explained",
     title: "Joshua 11 Explained: The Last Battle and the Land's Rest From War",
     description:
