@@ -213,36 +213,42 @@ check("every welcome link is one we approved", () => {
   }
 });
 
-check("every welcome email has a CTA, and we know which ones can be counted", () => {
+check("every step offers both doors, so every step can be counted", () => {
   /**
-   * NOT asserting that all five are measurable, because four of them are not,
-   * and that is a content fact rather than a bug in the tagging.
+   * Until 2026-11-11 steps 2-5 carried exactly one CTA, the App Store. Apple
+   * reports nothing back to a sender, so there was no link of ours in those
+   * bodies to tag: four of the five emails were unmeasurable however good the
+   * instrumentation was. It also left an Android reader of those four with
+   * nowhere to go at all, which was the larger half of it.
    *
-   * Steps 2-5 carry exactly one CTA, the App Store, and Apple reports nothing
-   * back to a sender. Tagging cannot help them: there is no link of ours in
-   * the body to tag. Only step 1 also offers mybiblebuddy.net.
-   *
-   * That also leaves an Android reader of steps 2-5 with nowhere to go, which
-   * is the larger half of the problem. Adding the website line from step 1 -
-   * copy Louis has already approved - would fix both at once, but it edits
-   * approved bodies, so it is his call. Until then this check records the
-   * state out loud instead of passing quietly.
+   * Louis approved putting step 1's existing website line on the other four,
+   * so now all five offer the App Store AND mybiblebuddy.net. This asserts
+   * both doors on every step: losing the web line would quietly take an
+   * email's clicks off the dashboard and shut Android readers out again, and
+   * neither failure shows up as an error anywhere.
    */
-  const blind: number[] = [];
   for (const step of WELCOME_SEQUENCE) {
     const html = tagHtmlLinks(renderWelcomeHtml(step), step.campaignId);
-    const ctas = (html.match(/<a href="/g) || []).length;
-    assert.ok(ctas >= 2, `step ${step.step} has no CTA at all (only the unsubscribe link)`);
-    if (!html.includes(`utm_campaign=${step.campaignId}`)) blind.push(step.step);
-  }
-  assert.ok(
-    !blind.includes(1),
-    "step 1 has lost its mybiblebuddy.net link, so no welcome email is measurable at all",
-  );
-  if (blind.length) {
-    console.log(
-      `      note: steps ${blind.join(", ")} are App-Store-only, so clicks on them` +
-        " cannot be counted by anyone, and Android readers have no door.",
+    const urls = [...html.matchAll(/<a href="([^"]+)"/g)]
+      .map((m) => m[1])
+      .filter((u) => u !== "{{UNSUBSCRIBE}}");
+    assert.ok(
+      urls.some((u) => u.startsWith(APP_STORE_URL)),
+      `step ${step.step} has no App Store link`,
+    );
+    assert.ok(
+      urls.some((u) => u.startsWith("https://www.mybiblebuddy.net")),
+      `step ${step.step} has no website link - Android readers have no door and its clicks cannot be counted`,
+    );
+    assert.ok(
+      html.includes(`utm_campaign=${step.campaignId}`),
+      `step ${step.step} has no measurable link`,
+    );
+    // The text body matters as much: plenty of clients render it instead.
+    const text = tagTextLinks(renderWelcomeText(step), step.campaignId);
+    assert.ok(
+      /mybiblebuddy\.net[^\s]*utm_source=email/.test(text),
+      `step ${step.step} text body has no countable website link`,
     );
   }
 });

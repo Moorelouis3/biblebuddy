@@ -175,6 +175,7 @@ No complicated setup. No ten different apps. Just you and God's Word.
 ![Bible Buddy study notes: open the Bible, pick a book, pick a chapter, tap a verse](${WELCOME_DAY2_IMAGE})
 
 [OPEN BIBLE BUDDY](${APP_STORE_URL})
+🤖 [Open Bible Buddy on the web](${WEBSITE_URL})
 
 I hope these notes help you understand Scripture the same way they've helped me.
 
@@ -239,6 +240,7 @@ It's a Bible study group that fits YOUR schedule.
 ![Six free Bible Buddy study guides](${WELCOME_DAY3_IMAGE})
 
 [EXPLORE THE STUDY GUIDES IN BIBLE BUDDY](${APP_STORE_URL})
+🤖 [Open Bible Buddy on the web](${WEBSITE_URL})
 
 I hope you find a study that helps you grow closer to God and understand His Word a little better each day.
 
@@ -313,6 +315,7 @@ THE GOAL IS TO UNDERSTAND WHAT YOU'RE READING!
 🎮 READY TO GIVE IT A TRY?
 
 [TRY BIBLE TRIVIA IN BIBLE BUDDY](${APP_STORE_URL})
+🤖 [Open Bible Buddy on the web](${WEBSITE_URL})
 
 And tomorrow, I'm going to show you how you can take what you're learning and discuss it with other believers inside Bible Buddy.
 
@@ -393,6 +396,7 @@ And that's the kind of community I want us to build together.
 A place where we can learn from each other, encourage each other, and grow closer to Jesus.
 
 💬 [JOIN THE BIBLE BUDDY COMMUNITY](${APP_STORE_URL})
+🤖 [Open Bible Buddy on the web](${WEBSITE_URL})
 
 Come introduce yourself, share something you're learning from Scripture, or join a conversation!
 

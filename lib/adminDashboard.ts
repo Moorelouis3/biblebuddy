@@ -1415,11 +1415,16 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
    * sender now stamps utm_source=email on our own links so an arrival
    * attributes to a campaign (lib/email/linkTagging.ts).
    *
-   * That makes step 1 countable. It does NOT make steps 2-5 countable: their
-   * only CTA is the App Store, and Apple reports nothing back to a sender, so
-   * there is no link of ours in those bodies to stamp. Hence `measurable` per
-   * step rather than one note under the table - a 0 arrivals on step 1 means
-   * nobody clicked, and a 0 on step 2 means nobody could have known.
+   * All five steps are countable since 2026-11-11, when the website line from
+   * step 1 went onto the other four. Before that their only CTA was the App
+   * Store, and Apple reports nothing back to a sender, so there was no link of
+   * ours in those bodies to stamp.
+   *
+   * `measurable` is kept per step rather than assumed, because the difference
+   * it draws is the one that matters here: 0 visits on a step that offers a
+   * link of ours means nobody clicked, and 0 on a step that does not means
+   * nobody could have known. If anyone ever removes a web CTA again, the
+   * column says "n/a" instead of quietly reading as apathy.
    */
   const statsById = new Map(sesRows.map((r) => [r.campaign_id, r]));
 

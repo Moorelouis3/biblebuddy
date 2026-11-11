@@ -771,13 +771,12 @@ function WelcomeFunnel({ funnel }: { funnel?: DashboardData["welcomeFunnel"] }) 
         {funnel.steps.some((s) => !s.measurable) ? (
           <p className="text-[11px] font-semibold text-[#b45309]">
             <span className="font-black">
-              Day {funnel.steps.filter((s) => !s.measurable).map((s) => s.step).join(", ")} cannot be
-              measured, and that is content, not instrumentation.
+              Day {funnel.steps.filter((s) => !s.measurable).map((s) => s.step).join(", ")} shows n/a
+              because it has no link of ours to count.
             </span>{" "}
-            Their only CTA is the App Store, which reports nothing back to us, so there is no link of
-            ours to count — and an Android reader has nowhere to go. Day 1 already carries{" "}
-            <code>mybiblebuddy.net</code> alongside the App Store; adding that same approved line to
-            the others fixes both at once.
+            Its only CTA is the App Store, which reports nothing back to us — so an Android reader
+            has nowhere to go either. Pair it with <code>mybiblebuddy.net</code>, the way every other
+            day does, and both are fixed.
           </p>
         ) : null}
         <p className="text-[11px] font-semibold text-[#64748b]">
