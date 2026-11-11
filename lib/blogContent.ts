@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-11-explained",
+    title: "Joshua 11 Explained: The Last Battle and the Land's Rest From War",
+    description:
+      "Joshua 11 explained verse by verse: the northern coalition at Merom, the horses and chariots, the burning of Hazor, and the land's rest from war.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-11-explained",
+    publishedAt: "2026-11-11",
+    readTime: "14 min read",
+    image: "/blog-banners/joshua-11-explained.jpg",
+    groupPost: {
+      title: "Joshua 11 Explained 📖",
+      content:
+        "One more king thinks he can still win.\nSo he brings horses and chariots.\n\n📌 God tells Joshua what to do with them before the battle starts.\n\n📖 Hazor is burned. Most conquered cities are not.\n📖 The LORD hardened these kings' hearts to fight.\n📖 The chapter ends with the land resting from war.\n\nNew article on:\n🟢 why Israel disabled the **horses and chariots**\n🟢 why **Hazor** was burned and other cities were not\n🟢 what **resting from war** actually meant\n\nHave you ever faced one more fight right when you thought it was over? 🙏",
+    },
+  },
+  {
     slug: "joshua-10-explained",
     title: "Joshua 10 Explained: The Day the Sun Stood Still",
     description:
