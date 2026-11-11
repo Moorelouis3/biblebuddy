@@ -11089,7 +11089,7 @@
     ],
     "bg": "06.mp4",
     "preview": "t-f5a2b021-7971-4e3e-b070-2347f592d3ff.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-c56cd57b-2cf3-4bb3-aed3-62c815f8778d",
@@ -11105,7 +11105,7 @@
     ],
     "bg": "07.mp4",
     "preview": "t-c56cd57b-2cf3-4bb3-aed3-62c815f8778d.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-468e72ee-b8a4-456a-8c49-f429acb28ca6",
@@ -11124,7 +11124,7 @@
     ],
     "bg": "08.mp4",
     "preview": "t-468e72ee-b8a4-456a-8c49-f429acb28ca6.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-23a1989d-e906-43e0-80c1-9c18bddf7fd8",
@@ -11145,7 +11145,7 @@
     ],
     "bg": "09.mp4",
     "preview": "t-23a1989d-e906-43e0-80c1-9c18bddf7fd8.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-b82593ea-d478-43b0-a70d-98a12250580f",
@@ -11165,7 +11165,7 @@
     ],
     "bg": "10.mp4",
     "preview": "t-b82593ea-d478-43b0-a70d-98a12250580f.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-fcf0de20-e5b3-4027-9b2e-dbca10096a53",
@@ -11187,7 +11187,7 @@
     ],
     "bg": "11.mp4",
     "preview": "t-fcf0de20-e5b3-4027-9b2e-dbca10096a53.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-763eff85-5478-468e-a04f-89b3f76ce003",
@@ -11205,7 +11205,7 @@
     ],
     "bg": "12.mp4",
     "preview": "t-763eff85-5478-468e-a04f-89b3f76ce003.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-fcfa2f6a-1930-461c-a655-aec8dcdd4d3e",
@@ -11224,7 +11224,7 @@
     ],
     "bg": "13.mp4",
     "preview": "t-fcfa2f6a-1930-461c-a655-aec8dcdd4d3e.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-0cffe538-a8c2-400b-a527-3c98b39b4952",
@@ -11240,7 +11240,7 @@
     ],
     "bg": "14.mp4",
     "preview": "t-0cffe538-a8c2-400b-a527-3c98b39b4952.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-95212083-045c-4b07-87d4-f33ca3b35024",
@@ -11261,7 +11261,7 @@
     ],
     "bg": "s01.mp4",
     "preview": "t-95212083-045c-4b07-87d4-f33ca3b35024.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-68fe2602-aa5c-4ee4-9eb1-3bc4c8b037d8",
@@ -11277,7 +11277,7 @@
     ],
     "bg": "s02.mp4",
     "preview": "t-68fe2602-aa5c-4ee4-9eb1-3bc4c8b037d8.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-5c695dd8-09ae-4950-a630-d1e6db518462",
@@ -11293,7 +11293,7 @@
     ],
     "bg": "s03.mp4",
     "preview": "t-5c695dd8-09ae-4950-a630-d1e6db518462.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-f76bd423-c5e6-4ae7-b576-c5d1e2f9e17a",
@@ -11310,7 +11310,7 @@
     ],
     "bg": "s04.mp4",
     "preview": "t-f76bd423-c5e6-4ae7-b576-c5d1e2f9e17a.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-47b0c984-e1dc-4ecb-a51b-737839d75072",
@@ -11328,7 +11328,7 @@
     ],
     "bg": "s06.mp4",
     "preview": "t-47b0c984-e1dc-4ecb-a51b-737839d75072.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-bba44e32-dcc4-4c1d-89e7-cc3477b100b8",
@@ -11346,7 +11346,7 @@
     ],
     "bg": "s07.mp4",
     "preview": "t-bba44e32-dcc4-4c1d-89e7-cc3477b100b8.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-c8ec9429-55a4-4400-9b5a-b92201a77bc2",
@@ -11363,7 +11363,7 @@
     ],
     "bg": "s08.mp4",
     "preview": "t-c8ec9429-55a4-4400-9b5a-b92201a77bc2.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-ed56dbdc-e0ec-491e-bc0d-916df552a233",
@@ -11382,7 +11382,7 @@
     ],
     "bg": "s09.mp4",
     "preview": "t-ed56dbdc-e0ec-491e-bc0d-916df552a233.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-776adf69-bfee-4f67-8e3e-7a35d6c306bb",
@@ -11398,7 +11398,7 @@
     ],
     "bg": "s10.mp4",
     "preview": "t-776adf69-bfee-4f67-8e3e-7a35d6c306bb.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-259f11bd-4477-4653-9f25-05091ab1f07f",
@@ -11415,7 +11415,7 @@
     ],
     "bg": "s11.mp4",
     "preview": "t-259f11bd-4477-4653-9f25-05091ab1f07f.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-164bce44-0b38-4ec4-b6f4-46bcce9a8153",
@@ -11435,7 +11435,7 @@
     ],
     "bg": "s12.mp4",
     "preview": "t-164bce44-0b38-4ec4-b6f4-46bcce9a8153.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-56ecde78-158d-41c5-a978-fd1d6639f266",
@@ -11452,7 +11452,7 @@
     ],
     "bg": "s13.mp4",
     "preview": "t-56ecde78-158d-41c5-a978-fd1d6639f266.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-a9e3e10d-4cee-401b-9ca8-47ff90e8a935",
@@ -11468,7 +11468,7 @@
     ],
     "bg": "s14.mp4",
     "preview": "t-a9e3e10d-4cee-401b-9ca8-47ff90e8a935.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-746fd813-b1b4-4431-8ffc-7387bacd8bc8",
@@ -11486,7 +11486,7 @@
     ],
     "bg": "s15.mp4",
     "preview": "t-746fd813-b1b4-4431-8ffc-7387bacd8bc8.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-ca98cf28-6b35-4953-a6a0-2db1441da7ca",
@@ -11504,7 +11504,7 @@
     ],
     "bg": "s16.mp4",
     "preview": "t-ca98cf28-6b35-4953-a6a0-2db1441da7ca.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-4e311c00-1e6b-452b-b4de-ac8876a3e171",
@@ -11522,7 +11522,7 @@
     ],
     "bg": "01.mp4",
     "preview": "t-4e311c00-1e6b-452b-b4de-ac8876a3e171.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-7ca7d074-9397-422f-aeec-f65c17959b74",
@@ -11538,7 +11538,7 @@
     ],
     "bg": "02.mp4",
     "preview": "t-7ca7d074-9397-422f-aeec-f65c17959b74.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-4126ba0a-c1b8-4019-b726-3d9fe9aa9d78",
@@ -11553,7 +11553,7 @@
     ],
     "bg": "03.mp4",
     "preview": "t-4126ba0a-c1b8-4019-b726-3d9fe9aa9d78.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-7210ac8a-da61-45eb-958a-174afa78a711",
@@ -11570,7 +11570,7 @@
     ],
     "bg": "04.mp4",
     "preview": "t-7210ac8a-da61-45eb-958a-174afa78a711.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-e526dcc1-c014-4516-b2e3-03f92aa7bae7",
@@ -11585,7 +11585,7 @@
     ],
     "bg": "05.mp4",
     "preview": "t-e526dcc1-c014-4516-b2e3-03f92aa7bae7.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-26aba0f5-25a1-4f55-afc5-902aed38cd7e",
@@ -11602,7 +11602,7 @@
     ],
     "bg": "06.mp4",
     "preview": "t-26aba0f5-25a1-4f55-afc5-902aed38cd7e.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-8d9c811a-441d-4702-9e02-90bad1fd6405",
@@ -11618,7 +11618,7 @@
     ],
     "bg": "07.mp4",
     "preview": "t-8d9c811a-441d-4702-9e02-90bad1fd6405.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-2f870c5f-26fc-4549-b72f-35945556ebb0",
@@ -11639,7 +11639,7 @@
     ],
     "bg": "08.mp4",
     "preview": "t-2f870c5f-26fc-4549-b72f-35945556ebb0.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-adc0abb2-59d8-4817-a986-1a28d405cb12",
@@ -11658,7 +11658,7 @@
     ],
     "bg": "09.mp4",
     "preview": "t-adc0abb2-59d8-4817-a986-1a28d405cb12.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-e366f036-9dac-428d-be6f-49af73c2d093",
@@ -11675,7 +11675,7 @@
     ],
     "bg": "10.mp4",
     "preview": "t-e366f036-9dac-428d-be6f-49af73c2d093.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-9d94ce43-7409-415b-91ba-fcd22c76384d",
@@ -11692,7 +11692,7 @@
     ],
     "bg": "11.mp4",
     "preview": "t-9d94ce43-7409-415b-91ba-fcd22c76384d.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-7bfd6159-93ff-49e4-a106-9f375c918bc3",
@@ -11707,7 +11707,7 @@
     ],
     "bg": "12.mp4",
     "preview": "t-7bfd6159-93ff-49e4-a106-9f375c918bc3.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-a008416d-a9cf-4f74-985a-d73ee2471ea6",
@@ -11724,7 +11724,7 @@
     ],
     "bg": "13.mp4",
     "preview": "t-a008416d-a9cf-4f74-985a-d73ee2471ea6.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-f96359ea-b700-4f9c-a9a2-01b1ef63b777",
@@ -11739,7 +11739,7 @@
     ],
     "bg": "14.mp4",
     "preview": "t-f96359ea-b700-4f9c-a9a2-01b1ef63b777.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-78fa1c14-6217-4dc9-9cca-50d242131762",
@@ -11759,7 +11759,7 @@
     ],
     "bg": "s01.mp4",
     "preview": "t-78fa1c14-6217-4dc9-9cca-50d242131762.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-423c1c3a-bf7b-4297-a524-b7a78f9470bc",
@@ -11775,7 +11775,7 @@
     ],
     "bg": "s02.mp4",
     "preview": "t-423c1c3a-bf7b-4297-a524-b7a78f9470bc.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-b1255e10-9051-4185-a24f-6139a8e04c2e",
@@ -11796,7 +11796,7 @@
     ],
     "bg": "s03.mp4",
     "preview": "t-b1255e10-9051-4185-a24f-6139a8e04c2e.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-553f7ccf-c97a-4651-a8d0-6aee542139a2",
@@ -11814,7 +11814,7 @@
     ],
     "bg": "s04.mp4",
     "preview": "t-553f7ccf-c97a-4651-a8d0-6aee542139a2.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-52b808ce-92d4-43e6-97ec-bc921193a01e",
@@ -11852,7 +11852,7 @@
     ],
     "bg": "s07.mp4",
     "preview": "t-ad02f0fa-996a-4b81-97ce-35ae34a9eebe.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-2c17c6f3-7ed3-425e-8f00-b2e4f46a8d15",
@@ -11869,7 +11869,7 @@
     ],
     "bg": "s08.mp4",
     "preview": "t-2c17c6f3-7ed3-425e-8f00-b2e4f46a8d15.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-beb7e800-950d-4767-93b5-cd682d20427c",
@@ -11887,7 +11887,7 @@
     ],
     "bg": "s09.mp4",
     "preview": "t-beb7e800-950d-4767-93b5-cd682d20427c.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-99a9f0bd-302d-4296-87fc-da2222c0ab55",
@@ -11905,7 +11905,7 @@
     ],
     "bg": "s10.mp4",
     "preview": "t-99a9f0bd-302d-4296-87fc-da2222c0ab55.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-ed74b36b-18ab-471e-8d94-3678c0fc8bf1",
@@ -11923,7 +11923,7 @@
     ],
     "bg": "s11.mp4",
     "preview": "t-ed74b36b-18ab-471e-8d94-3678c0fc8bf1.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-07b60dc6-354a-43d5-a75e-cdb413a85032",
@@ -11945,7 +11945,7 @@
     ],
     "bg": "s12.mp4",
     "preview": "t-07b60dc6-354a-43d5-a75e-cdb413a85032.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-b96a4dbc-c8f2-4a6f-9b6b-764bc42a83c4",
@@ -11961,7 +11961,7 @@
     ],
     "bg": "s13.mp4",
     "preview": "t-b96a4dbc-c8f2-4a6f-9b6b-764bc42a83c4.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-3d6da35d-c09b-4e48-ab45-090fd21c3104",
@@ -11977,7 +11977,7 @@
     ],
     "bg": "s14.mp4",
     "preview": "t-3d6da35d-c09b-4e48-ab45-090fd21c3104.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-823bcdd2-4c59-494c-8757-46db0dc444e6",
@@ -11992,7 +11992,7 @@
     ],
     "bg": "s15.mp4",
     "preview": "t-823bcdd2-4c59-494c-8757-46db0dc444e6.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-a0cbc60f-c5a3-478d-8165-c5377808b8bd",
@@ -12009,7 +12009,7 @@
     ],
     "bg": "s16.mp4",
     "preview": "t-a0cbc60f-c5a3-478d-8165-c5377808b8bd.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-84697ba5-eb0a-4696-a353-0758f630f470",
@@ -12028,7 +12028,7 @@
     ],
     "bg": "01.mp4",
     "preview": "t-84697ba5-eb0a-4696-a353-0758f630f470.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-f95b943f-358b-4622-ad6e-c7d6fd5e744d",
@@ -12044,7 +12044,7 @@
     ],
     "bg": "02.mp4",
     "preview": "t-f95b943f-358b-4622-ad6e-c7d6fd5e744d.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-41742931-e320-4906-83cc-fd318ba538af",
@@ -12061,7 +12061,7 @@
     ],
     "bg": "03.mp4",
     "preview": "t-41742931-e320-4906-83cc-fd318ba538af.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-630743b0-579c-428e-812d-91ab5b24fb47",
@@ -12076,7 +12076,7 @@
     ],
     "bg": "04.mp4",
     "preview": "t-630743b0-579c-428e-812d-91ab5b24fb47.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-64e8c59f-ca50-4666-9fb4-50645495d8c5",
@@ -12094,7 +12094,7 @@
     ],
     "bg": "05.mp4",
     "preview": "t-64e8c59f-ca50-4666-9fb4-50645495d8c5.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-b62cc6f3-b1f2-4ae7-8ed0-c350524ed619",
@@ -12137,7 +12137,7 @@
     ],
     "bg": "07.mp4",
     "preview": "t-2ba8e1b8-f643-49c9-a40e-359b89e59d57.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-70096bef-b1a6-4da1-8d9a-60198e17cfed",
@@ -12154,7 +12154,7 @@
     ],
     "bg": "08.mp4",
     "preview": "t-70096bef-b1a6-4da1-8d9a-60198e17cfed.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-a45879ff-dfeb-4e00-979e-4d63df010723",
@@ -12171,7 +12171,7 @@
     ],
     "bg": "09.mp4",
     "preview": "t-a45879ff-dfeb-4e00-979e-4d63df010723.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-7cffacc7-a870-4d35-b262-cd40401a60b5",
@@ -12190,7 +12190,7 @@
     ],
     "bg": "10.mp4",
     "preview": "t-7cffacc7-a870-4d35-b262-cd40401a60b5.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-ba261602-8915-46a5-86c9-8222929c78b3",
@@ -12206,7 +12206,7 @@
     ],
     "bg": "11.mp4",
     "preview": "t-ba261602-8915-46a5-86c9-8222929c78b3.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-624bfa4b-e901-44b0-b920-3b84755d5170",
@@ -12222,7 +12222,7 @@
     ],
     "bg": "12.mp4",
     "preview": "t-624bfa4b-e901-44b0-b920-3b84755d5170.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-893a515c-0dd7-41ef-86d2-8b6a424d8565",
@@ -12237,7 +12237,7 @@
     ],
     "bg": "13.mp4",
     "preview": "t-893a515c-0dd7-41ef-86d2-8b6a424d8565.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-9128a583-1889-4d3a-920d-7590bdc82e62",
@@ -12252,7 +12252,7 @@
     ],
     "bg": "14.mp4",
     "preview": "t-9128a583-1889-4d3a-920d-7590bdc82e62.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-1ddc0d14-0335-4acc-96c9-451d9d307b88",
@@ -12269,7 +12269,7 @@
     ],
     "bg": "s01.mp4",
     "preview": "t-1ddc0d14-0335-4acc-96c9-451d9d307b88.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-ae003f85-30f4-49ef-9f77-e12436f8896e",
@@ -12286,7 +12286,7 @@
     ],
     "bg": "s02.mp4",
     "preview": "t-ae003f85-30f4-49ef-9f77-e12436f8896e.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-70f36104-d5b9-4e13-86de-d9622142573a",
@@ -12301,7 +12301,7 @@
     ],
     "bg": "s03.mp4",
     "preview": "t-70f36104-d5b9-4e13-86de-d9622142573a.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-e09005e6-e287-4621-bfda-d1591e63b62a",
@@ -12317,7 +12317,7 @@
     ],
     "bg": "s04.mp4",
     "preview": "t-e09005e6-e287-4621-bfda-d1591e63b62a.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-20cc9394-9346-4806-9788-dd2615a48d55",
@@ -12335,7 +12335,7 @@
     ],
     "bg": "s06.mp4",
     "preview": "t-20cc9394-9346-4806-9788-dd2615a48d55.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-7da19794-e56e-49cb-b17d-0af2465f4b39",
@@ -12352,7 +12352,7 @@
     ],
     "bg": "s07.mp4",
     "preview": "t-7da19794-e56e-49cb-b17d-0af2465f4b39.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-444bec06-682e-4bd5-be1b-3694b13e1bc2",
@@ -12367,7 +12367,7 @@
     ],
     "bg": "s08.mp4",
     "preview": "t-444bec06-682e-4bd5-be1b-3694b13e1bc2.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-00962df1-f427-4af8-8aa0-919c1d20b6c8",
@@ -12383,7 +12383,7 @@
     ],
     "bg": "s09.mp4",
     "preview": "t-00962df1-f427-4af8-8aa0-919c1d20b6c8.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-9ed9509e-08b4-49a6-ae47-01ad0028fd76",
@@ -12401,7 +12401,7 @@
     ],
     "bg": "s10.mp4",
     "preview": "t-9ed9509e-08b4-49a6-ae47-01ad0028fd76.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-7e0dc922-a819-4aeb-9e2d-4e00dfd522c3",
@@ -12419,7 +12419,7 @@
     ],
     "bg": "s11.mp4",
     "preview": "t-7e0dc922-a819-4aeb-9e2d-4e00dfd522c3.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-fd165447-f871-4169-a7aa-1057a9bb3576",
@@ -12436,7 +12436,7 @@
     ],
     "bg": "s12.mp4",
     "preview": "t-fd165447-f871-4169-a7aa-1057a9bb3576.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-d7faab8e-e8f2-40a1-8a94-534efcb2789b",
@@ -12453,7 +12453,7 @@
     ],
     "bg": "s13.mp4",
     "preview": "t-d7faab8e-e8f2-40a1-8a94-534efcb2789b.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-55968478-327d-4e37-9aa3-a31876552d9a",
@@ -12469,7 +12469,7 @@
     ],
     "bg": "s14.mp4",
     "preview": "t-55968478-327d-4e37-9aa3-a31876552d9a.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-098c9d83-f5f3-4c5b-9d37-ecb022bc721d",
@@ -12485,7 +12485,7 @@
     ],
     "bg": "s15.mp4",
     "preview": "t-098c9d83-f5f3-4c5b-9d37-ecb022bc721d.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-3692ab85-db23-4890-981b-9f31c3055dd6",
@@ -12529,7 +12529,7 @@
     ],
     "bg": "01.mp4",
     "preview": "t-a841ceb2-1033-4287-9e81-0035fe42c115.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-cf08e330-758a-48d8-91a9-4fb3f0fc78d9",
@@ -12545,7 +12545,7 @@
     ],
     "bg": "02.mp4",
     "preview": "t-cf08e330-758a-48d8-91a9-4fb3f0fc78d9.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-e3d526ab-8dd7-4848-870d-e068d51fba66",
@@ -12562,7 +12562,7 @@
     ],
     "bg": "03.mp4",
     "preview": "t-e3d526ab-8dd7-4848-870d-e068d51fba66.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-34173908-7659-4d56-afa5-b5bf9d5f28a8",
@@ -12585,7 +12585,7 @@
     ],
     "bg": "04.mp4",
     "preview": "t-34173908-7659-4d56-afa5-b5bf9d5f28a8.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-e586474f-fb28-4253-96c5-9a4f0c431e46",
@@ -12603,7 +12603,7 @@
     ],
     "bg": "05.mp4",
     "preview": "t-e586474f-fb28-4253-96c5-9a4f0c431e46.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-87967cde-de72-4087-902d-eb32742a7910",
@@ -12621,7 +12621,7 @@
     ],
     "bg": "06.mp4",
     "preview": "t-87967cde-de72-4087-902d-eb32742a7910.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-a50ee0d1-fe5c-418c-a406-806299eb046e",
@@ -12662,7 +12662,7 @@
     ],
     "bg": "08.mp4",
     "preview": "t-eba76522-a599-417e-b713-dacccc815bd3.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-ac007fbc-7985-40df-abb1-d9c6c45fd61f",
@@ -12681,7 +12681,7 @@
     ],
     "bg": "09.mp4",
     "preview": "t-ac007fbc-7985-40df-abb1-d9c6c45fd61f.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-1b9c6c1a-0424-4ed8-a5e4-6b04afcdbf26",
@@ -12696,7 +12696,7 @@
     ],
     "bg": "10.mp4",
     "preview": "t-1b9c6c1a-0424-4ed8-a5e4-6b04afcdbf26.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-ec76697a-b534-41cb-93e1-21369119685a",
@@ -12713,6 +12713,3223 @@
     ],
     "bg": "11.mp4",
     "preview": "t-ec76697a-b534-41cb-93e1-21369119685a.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-874caf89-baef-4a7e-ae9f-9af456423a44",
+    "sourceId": "874caf89-baef-4a7e-ae9f-9af456423a44",
+    "score": 146,
+    "posted": "2026-09-24",
+    "sourceText": "Moses had excuses.\n\nGideon had doubts.\nPeter made mistakes.\nDavid had failures.\nGod still used them.\nStop thinking God only uses perfect people.",
+    "title": "God Uses Imperfect People",
+    "lines": [
+      "Moses had excuses.",
+      "",
+      "Gideon had doubts.",
+      "",
+      "Peter made mistakes.",
+      "",
+      "David had failures.",
+      "",
+      "God still used them.",
+      "",
+      "Stop thinking God only uses perfect people."
+    ],
+    "bg": "12.mp4",
+    "preview": "t-874caf89-baef-4a7e-ae9f-9af456423a44.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-8b41d030-286b-474d-8572-798a77f47be1",
+    "sourceId": "8b41d030-286b-474d-8572-798a77f47be1",
+    "score": 146,
+    "posted": "2026-09-08",
+    "sourceText": "So let me get this straight…\n\nY’all got 1,000 questions for the Bible, but believe a website telling you your daily horoscope? 😂\n\nMake it make sense 🤷🏾‍♂️",
+    "title": "Bible vs Horoscope",
+    "lines": [
+      "SO LET ME GET THIS STRAIGHT…",
+      "Y’all got 1,000 questions for the Bible,",
+      "but believe a website telling you your daily horoscope?",
+      "😂",
+      "Make it make sense 🤷🏾‍♂️"
+    ],
+    "bg": "13.mp4",
+    "preview": "t-8b41d030-286b-474d-8572-798a77f47be1.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-35083fe3-613e-4907-8b76-25b407305731",
+    "sourceId": "35083fe3-613e-4907-8b76-25b407305731",
+    "score": 146,
+    "posted": "2026-09-23",
+    "sourceText": "God knows what you’re worried about.\n\nPrayer isn’t informing Him.\nPrayer is inviting Him into it.",
+    "title": "The Purpose of Prayer",
+    "lines": [
+      "GOD KNOWS WHAT YOU’RE WORRIED ABOUT.",
+      "",
+      "Prayer isn’t informing Him.",
+      "Prayer is inviting Him into it."
+    ],
+    "bg": "14.mp4",
+    "preview": "t-35083fe3-613e-4907-8b76-25b407305731.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-f194d340-0721-4c2e-9cc5-387663a6433b",
+    "sourceId": "f194d340-0721-4c2e-9cc5-387663a6433b",
+    "score": 145,
+    "posted": "2026-07-19",
+    "sourceText": "Just because you can't see God working doesn't mean He isn't.\n\nKeep praying.\n\nKeep trusting.\n\nKeep waiting.",
+    "title": "Trusting God's Plan",
+    "lines": [
+      "JUST BECAUSE YOU CAN'T SEE GOD WORKING",
+      "DOESN'T MEAN HE ISN'T.",
+      "",
+      "KEEP PRAYING.",
+      "KEEP TRUSTING.",
+      "KEEP WAITING."
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-f194d340-0721-4c2e-9cc5-387663a6433b.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-078795c4-5b50-47da-a38e-c39959543e5a",
+    "sourceId": "078795c4-5b50-47da-a38e-c39959543e5a",
+    "score": 145,
+    "posted": "2026-07-04",
+    "sourceText": "Stop venting to people who can’t fix it. Take it to God…",
+    "title": "Take It To God",
+    "lines": [
+      "STOP VENTING TO PEOPLE",
+      "WHO CAN'T FIX IT.",
+      "Take it to God…"
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-078795c4-5b50-47da-a38e-c39959543e5a.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-5e02270e-efdc-48ac-a037-4a15214181d6",
+    "sourceId": "5e02270e-efdc-48ac-a037-4a15214181d6",
+    "score": 144,
+    "posted": "2026-09-22",
+    "sourceText": "😂 Sometimes I’m reading the Bible and I swear the irony makes me laugh.\n\nI’m in Genesis 11 reading about the Tower of Babel.\n\nAnd I noticed something I never really paid attention to before.\n\nGod had already told Noah and his sons:\n\n“Be fruitful, and multiply, and replenish the earth.”\n\nIn other words:\n\nSpread out.\n\nMultiply.\n\nFill the earth.\n\nThen Noah’s descendants get to the land of Shinar and basically say:\n\n“Nah, we good here. 😉”\n\nThey decide to build themselves a city and a tower.",
+    "title": "Irony in Genesis",
+    "lines": [
+      "😂 Sometimes I’m reading the Bible and I swear the irony makes me laugh.",
+      "I’m in Genesis 11 reading about the Tower of Babel.",
+      "And I noticed something I never really paid attention to before.",
+      "God had already told Noah and his sons:",
+      "“Be fruitful, and multiply, and replenish the earth.”",
+      "In other words: Spread out. Multiply. Fill the earth.",
+      "Then Noah’s descendants get to the land of Shinar and basically say:",
+      "“Nah, we good here.”"
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-5e02270e-efdc-48ac-a037-4a15214181d6.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6402baf3-f719-4589-b23e-d862cf853419",
+    "sourceId": "6402baf3-f719-4589-b23e-d862cf853419",
+    "score": 144,
+    "posted": "2026-07-20",
+    "sourceText": "It’s crazy how many misunderstandings about God come from people who have never actually taken the time to know Him.",
+    "title": "Misunderstanding God",
+    "lines": [
+      "It’s crazy how many misunderstandings",
+      "about God come from people",
+      "who have never actually taken",
+      "the time to know Him."
+    ],
+    "bg": "s04.mp4",
+    "preview": "t-6402baf3-f719-4589-b23e-d862cf853419.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-12802591-de42-4990-8375-dbbc014504c8",
+    "sourceId": "12802591-de42-4990-8375-dbbc014504c8",
+    "score": 144,
+    "posted": "2026-07-16",
+    "sourceText": "Giving up addiction to focus on God is top level obedience…",
+    "title": "Obedience to God",
+    "lines": [
+      "GIVING UP ADDICTION",
+      "to focus on God",
+      "is top level obedience…"
+    ],
+    "bg": "s06.mp4",
+    "preview": "t-12802591-de42-4990-8375-dbbc014504c8.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-c16a0940-f50b-4c02-bf70-4b21b56638f7",
+    "sourceId": "c16a0940-f50b-4c02-bf70-4b21b56638f7",
+    "score": 144,
+    "posted": "2026-06-15",
+    "sourceText": "The bible is supposed to be our daily bread not cake for special occasions…",
+    "title": "Daily Bread Not Cake",
+    "lines": [
+      "THE BIBLE IS SUPPOSED TO BE",
+      "OUR DAILY BREAD",
+      "NOT CAKE FOR SPECIAL OCCASIONS…"
+    ],
+    "bg": "s07.mp4",
+    "preview": "t-c16a0940-f50b-4c02-bf70-4b21b56638f7.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-78897bac-6abc-4e5d-8b99-53c8d6a3fe76",
+    "sourceId": "78897bac-6abc-4e5d-8b99-53c8d6a3fe76",
+    "score": 144,
+    "posted": "2026-09-15",
+    "sourceText": "I will pick reading the Bible over a self help book any day…",
+    "title": "Bible Over Self Help",
+    "lines": [
+      "I will pick reading",
+      "the Bible over",
+      "a self help book",
+      "any day…"
+    ],
+    "bg": "s08.mp4",
+    "preview": "t-78897bac-6abc-4e5d-8b99-53c8d6a3fe76.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-bd39758f-c515-4d19-86d4-2b8e7998ac4d",
+    "sourceId": "bd39758f-c515-4d19-86d4-2b8e7998ac4d",
+    "score": 144,
+    "posted": "2026-06-04",
+    "sourceText": "One reason so many people walk away from faith…\n\nis because they put their faith in Christians instead of Christ.\n\nPeople fail.\n\nJesus doesn’t.",
+    "title": "Faith vs. Christians",
+    "lines": [
+      "ONE REASON SO MANY PEOPLE WALK AWAY FROM FAITH…",
+      "is because they put their faith in Christians instead of Christ.",
+      "People fail.",
+      "Jesus doesn’t."
+    ],
+    "bg": "s09.mp4",
+    "preview": "t-bd39758f-c515-4d19-86d4-2b8e7998ac4d.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-71e7e5f0-cbe1-44a0-a2fd-1db852514c97",
+    "sourceId": "71e7e5f0-cbe1-44a0-a2fd-1db852514c97",
+    "score": 143,
+    "posted": "2026-07-15",
+    "sourceText": "7 Signs God Is Answering You\n\n🕊️ You suddenly have peace\n🚪 Unexpected doors open\n🚫 Wrong doors keep closing\n📖 Scripture feels personal\n👥 God sends the right people\n⏳ Waiting is strengthening you\n🙌 Looking back... you realize He already answered",
+    "title": "Signs Of Divine Response",
+    "lines": [
+      "You suddenly have peace",
+      "Unexpected doors open",
+      "Wrong doors keep closing",
+      "Scripture feels personal",
+      "God sends the right people",
+      "Waiting is strengthening you",
+      "Looking back... you realize He already answered"
+    ],
+    "bg": "s10.mp4",
+    "preview": "t-71e7e5f0-cbe1-44a0-a2fd-1db852514c97.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-6e8d59e5-7daa-4682-9450-a5912bb8066f",
+    "sourceId": "6e8d59e5-7daa-4682-9450-a5912bb8066f",
+    "score": 143,
+    "posted": "2026-09-15",
+    "sourceText": "Waking up this morning was grace.\nBefore I complain about anything today…\nthank You, God.",
+    "title": "Morning Gratitude",
+    "lines": [
+      "WAKING UP THIS MORNING WAS GRACE.",
+      "Before I complain about anything today…",
+      "thank You, God."
+    ],
+    "bg": "s11.mp4",
+    "preview": "t-6e8d59e5-7daa-4682-9450-a5912bb8066f.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-1c5ef302-02ee-491e-a469-ff1504974520",
+    "sourceId": "1c5ef302-02ee-491e-a469-ff1504974520",
+    "score": 143,
+    "posted": "2026-09-09",
+    "sourceText": "10/10. I recommend getting closer to God. 🤍",
+    "title": "Get Closer To God",
+    "lines": [
+      "10/10.",
+      "I recommend getting closer to God."
+    ],
+    "bg": "s12.mp4",
+    "preview": "t-1c5ef302-02ee-491e-a469-ff1504974520.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-55d14a81-720f-4fe8-ba8c-efe2235f9b42",
+    "sourceId": "55d14a81-720f-4fe8-ba8c-efe2235f9b42",
+    "score": 142,
+    "posted": "2026-09-27",
+    "sourceText": "If God keeps closing the door…\nstop trying to break it down.",
+    "title": "Trusting God's Plan",
+    "lines": [
+      "IF GOD KEEPS CLOSING THE DOOR…",
+      "stop trying to break it down."
+    ],
+    "bg": "s13.mp4",
+    "preview": "t-55d14a81-720f-4fe8-ba8c-efe2235f9b42.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-166a91a6-9442-443a-b78d-7625a6c5ea37",
+    "sourceId": "166a91a6-9442-443a-b78d-7625a6c5ea37",
+    "score": 142,
+    "posted": "2026-09-09",
+    "sourceText": "Christians:\n\nDoes forgiving someone mean you have to let them back into your life?",
+    "title": "Forgiveness Questions",
+    "lines": [
+      "DOES FORGIVING SOMEONE",
+      "MEAN YOU HAVE TO LET THEM",
+      "BACK INTO YOUR LIFE?"
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-166a91a6-9442-443a-b78d-7625a6c5ea37.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-14479da7-9ffb-422c-85ee-180e65d8cb19",
+    "sourceId": "14479da7-9ffb-422c-85ee-180e65d8cb19",
+    "score": 142,
+    "posted": "2026-09-13",
+    "sourceText": "Nobody had to force Jesus on me.\nI met Him for myself.\nAnd He changed my life.",
+    "title": "Personal Encounter",
+    "lines": [
+      "NOBODY HAD TO FORCE JESUS ON ME.",
+      "I MET HIM FOR MYSELF.",
+      "AND HE CHANGED MY LIFE."
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-14479da7-9ffb-422c-85ee-180e65d8cb19.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-43cc31f3-08dc-4495-ad3e-eea790ac03e6",
+    "sourceId": "43cc31f3-08dc-4495-ad3e-eea790ac03e6",
+    "score": 142,
+    "posted": "2026-10-18",
+    "sourceText": "Reading the Bible scratches the surface.\\nStudying the Scriptures digs until you find treasure.",
+    "title": "Surface vs. Depth",
+    "lines": [
+      "READING THE BIBLE SCRATCHES THE SURFACE.",
+      "STUDYING THE SCRIPTURES DIGS UNTIL YOU FIND TREASURE."
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-43cc31f3-08dc-4495-ad3e-eea790ac03e6.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-47ab5755-5ff9-4ac9-a996-bd8ed40456b4",
+    "sourceId": "47ab5755-5ff9-4ac9-a996-bd8ed40456b4",
+    "score": 141,
+    "posted": "2026-09-26",
+    "sourceText": "Going to church every Sunday doesn't automatically mean you're following Jesus.\nAttendance isn't the same thing as surrender.",
+    "title": "Attendance vs. Surrender",
+    "lines": [
+      "GOING TO CHURCH EVERY SUNDAY",
+      "DOESN'T AUTOMATICALLY MEAN",
+      "YOU'RE FOLLOWING JESUS.",
+      "ATTENDANCE ISN'T THE SAME THING",
+      "AS SURRENDER."
+    ],
+    "bg": "01.mp4",
+    "preview": "t-47ab5755-5ff9-4ac9-a996-bd8ed40456b4.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-4c8c0496-d72a-41ee-82f3-9a21f7df61fb",
+    "sourceId": "4c8c0496-d72a-41ee-82f3-9a21f7df61fb",
+    "score": 140,
+    "posted": "2026-10-12",
+    "sourceText": "Solomon wrote Proverbs and still fell to the very sins he described.\nKnowing sin does not mean you are safe from it.",
+    "title": "Wisdom and Sin",
+    "lines": [
+      "Solomon wrote Proverbs",
+      "and still fell to the very sins he described.",
+      "",
+      "Knowing sin does not mean",
+      "you are safe from it."
+    ],
+    "bg": "02.mp4",
+    "preview": "t-4c8c0496-d72a-41ee-82f3-9a21f7df61fb.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-46246f30-c28c-4754-9e36-1c024833caa0",
+    "sourceId": "46246f30-c28c-4754-9e36-1c024833caa0",
+    "score": 140,
+    "posted": "2026-10-15",
+    "sourceText": "Whatever you're facing,\n\nGod sees it.\n\nWhatever you're carrying,\n\nGod knows.\n\nWhatever you're praying for,\n\nGod hears.\n\nWhatever you need,\n\nGod is still faithful.",
+    "title": "God's Faithfulness",
+    "lines": [
+      "Whatever you're facing,",
+      "God sees it.",
+      "",
+      "Whatever you're carrying,",
+      "God knows.",
+      "",
+      "Whatever you're praying for,",
+      "God hears.",
+      "",
+      "Whatever you need,",
+      "God is still faithful."
+    ],
+    "bg": "03.mp4",
+    "preview": "t-46246f30-c28c-4754-9e36-1c024833caa0.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-99a2ff1a-db0e-453e-8f57-eebeb81e9921",
+    "sourceId": "99a2ff1a-db0e-453e-8f57-eebeb81e9921",
+    "score": 140,
+    "posted": "2026-09-23",
+    "sourceText": "Before you go to sleep tonight:\n\nThank God for one thing.\nGive Him one worry.\nAsk Him for one thing.\nThen rest.",
+    "title": "Nighttime Reflection",
+    "lines": [
+      "Before you go to sleep tonight:",
+      "Thank God for one thing.",
+      "Give Him one worry.",
+      "Ask Him for one thing.",
+      "Then rest."
+    ],
+    "bg": "04.mp4",
+    "preview": "t-99a2ff1a-db0e-453e-8f57-eebeb81e9921.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-6ad39397-fae2-4d0d-8a42-dd19ef2ec32a",
+    "sourceId": "6ad39397-fae2-4d0d-8a42-dd19ef2ec32a",
+    "score": 140,
+    "posted": "2026-10-17",
+    "sourceText": "The Bible app I built just hit 7k users 🙌🏾",
+    "title": "Milestone Achieved",
+    "lines": [
+      "The Bible app I built",
+      "just hit 7k users"
+    ],
+    "bg": "05.mp4",
+    "preview": "t-6ad39397-fae2-4d0d-8a42-dd19ef2ec32a.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-947b8524-2908-458d-911a-17d7ff7931ab",
+    "sourceId": "947b8524-2908-458d-911a-17d7ff7931ab",
+    "score": 140,
+    "posted": "2026-10-19",
+    "sourceText": "Just because you can't see movement doesn't mean God isn't moving.\nKeep praying.\nKeep trusting.\nDon't quit because it's taking longer than you expected.",
+    "title": "Trust In The Process",
+    "lines": [
+      "JUST BECAUSE YOU CAN'T SEE MOVEMENT",
+      "DOESN'T MEAN GOD ISN'T MOVING.",
+      "",
+      "KEEP PRAYING.",
+      "KEEP TRUSTING.",
+      "DON'T QUIT BECAUSE IT'S TAKING LONGER THAN YOU EXPECTED."
+    ],
+    "bg": "06.mp4",
+    "preview": "t-947b8524-2908-458d-911a-17d7ff7931ab.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-f79731a4-e1a7-4fac-a33f-e823542ca4ad",
+    "sourceId": "f79731a4-e1a7-4fac-a33f-e823542ca4ad",
+    "score": 139,
+    "posted": "2026-08-19",
+    "sourceText": "Sometimes the most honest prayer is,\n\n“This is hard.\n\nI’m tired. Please help.”",
+    "title": "Honest Prayer",
+    "lines": [
+      "SOMETIMES THE MOST HONEST PRAYER IS,",
+      "“THIS IS HARD.",
+      "I’M TIRED. PLEASE HELP.”"
+    ],
+    "bg": "07.mp4",
+    "preview": "t-f79731a4-e1a7-4fac-a33f-e823542ca4ad.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-d5e3f11e-b21b-48ee-a8ca-a347b6ff79f4",
+    "sourceId": "d5e3f11e-b21b-48ee-a8ca-a347b6ff79f4",
+    "score": 139,
+    "posted": "2026-09-14",
+    "sourceText": "You cannot believe in the Holy Spirit and zodiac signs at the same time.\nYou need to discern what is biblical.\nThey call it aura.\nWe call it anointing.",
+    "title": "Discernment Matters",
+    "lines": [
+      "You cannot believe in the Holy Spirit",
+      "and zodiac signs at the same time.",
+      "You need to discern what is biblical.",
+      "They call it aura.",
+      "We call it anointing."
+    ],
+    "bg": "08.mp4",
+    "preview": "t-d5e3f11e-b21b-48ee-a8ca-a347b6ff79f4.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-83b45b62-8905-428f-bdd7-ca7280b559be",
+    "sourceId": "83b45b62-8905-428f-bdd7-ca7280b559be",
+    "score": 139,
+    "posted": "2026-10-14",
+    "sourceText": "Sometimes obedience looks like walking away from someone you desperately wanted to keep.\nThat's a different kind of strength.",
+    "title": "The Strength of Obedience",
+    "lines": [
+      "Sometimes obedience looks like",
+      "walking away from someone",
+      "you desperately wanted to keep.",
+      "That's a different kind of strength."
+    ],
+    "bg": "09.mp4",
+    "preview": "t-83b45b62-8905-428f-bdd7-ca7280b559be.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-94437ee2-fdf4-427a-90ee-d0b7e26c544a",
+    "sourceId": "94437ee2-fdf4-427a-90ee-d0b7e26c544a",
+    "score": 138,
+    "posted": "2026-09-14",
+    "sourceText": "You can't expect to be spiritually strong if Sunday is the only day you spend with God.",
+    "title": "Spiritual Strength",
+    "lines": [
+      "You can't expect to be spiritually strong",
+      "if Sunday is the only day",
+      "you spend with God."
+    ],
+    "bg": "10.mp4",
+    "preview": "t-94437ee2-fdf4-427a-90ee-d0b7e26c544a.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-a50d3184-1fe2-4dff-be6e-b762537a136f",
+    "sourceId": "a50d3184-1fe2-4dff-be6e-b762537a136f",
+    "score": 138,
+    "posted": "2026-10-17",
+    "sourceText": "Being a Christian doesn't change what you deal with,\nIT CHANGES HOW YOU DEAL WITH IT!!!",
+    "title": "Faith in Action",
+    "lines": [
+      "Being a Christian doesn't change what you deal with,",
+      "IT CHANGES HOW YOU DEAL WITH IT!!!"
+    ],
+    "bg": "11.mp4",
+    "preview": "t-a50d3184-1fe2-4dff-be6e-b762537a136f.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-a4d76bf4-003f-424d-aae7-1514ea683b90",
+    "sourceId": "a4d76bf4-003f-424d-aae7-1514ea683b90",
+    "score": 137,
+    "posted": "2026-07-16",
+    "sourceText": "Some of the prayers you’re asking God to answer…\n\nHe already answered in Scripture.",
+    "title": "Answered Prayers",
+    "lines": [
+      "SOME OF THE PRAYERS",
+      "YOU’RE ASKING GOD TO ANSWER…",
+      "HE ALREADY ANSWERED",
+      "IN SCRIPTURE."
+    ],
+    "bg": "12.mp4",
+    "preview": "t-a4d76bf4-003f-424d-aae7-1514ea683b90.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-df501e50-3c69-4abb-a660-e34d1891fb04",
+    "sourceId": "df501e50-3c69-4abb-a660-e34d1891fb04",
+    "score": 137,
+    "posted": "2026-07-20",
+    "sourceText": "Anybody else notice how much quieter your mind gets when you spend time in God's Word every day?",
+    "title": "Quieting The Mind",
+    "lines": [
+      "Anybody else notice",
+      "how much quieter your mind gets",
+      "when you spend time",
+      "in God's Word every day?"
+    ],
+    "bg": "13.mp4",
+    "preview": "t-df501e50-3c69-4abb-a660-e34d1891fb04.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-e700b449-2429-4b22-b36c-a551b8aa40d6",
+    "sourceId": "e700b449-2429-4b22-b36c-a551b8aa40d6",
+    "score": 136,
+    "posted": "2026-10-12",
+    "sourceText": "I don’t read the Bible because I have to, I need to consume it. \n\nI honestly miss it if I skip a day.",
+    "title": "Daily Bible Consumption",
+    "lines": [
+      "I don’t read the Bible because I have to,",
+      "I need to consume it.",
+      "I honestly miss it if I skip a day."
+    ],
+    "bg": "14.mp4",
+    "preview": "t-e700b449-2429-4b22-b36c-a551b8aa40d6.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-fe378f2c-03be-4294-b102-0ce2450ef3bd",
+    "sourceId": "fe378f2c-03be-4294-b102-0ce2450ef3bd",
+    "score": 136,
+    "posted": "2026-09-02",
+    "sourceText": "Don't become so obsessed with what you're praying for next that you forget to thank God for what you're living in now.",
+    "title": "Gratitude Reminder",
+    "lines": [
+      "Don't become so obsessed",
+      "with what you're praying for next",
+      "that you forget to thank God",
+      "for what you're living in now."
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-fe378f2c-03be-4294-b102-0ce2450ef3bd.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-20043b38-9069-4396-8361-da03a7afae35",
+    "sourceId": "20043b38-9069-4396-8361-da03a7afae35",
+    "score": 136,
+    "posted": "2026-09-03",
+    "sourceText": "The closer I get to Jesus, the less impressive everything else becomes.",
+    "title": "Impressive Comparison",
+    "lines": [
+      "The closer I get to Jesus,",
+      "the less impressive everything else becomes."
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-20043b38-9069-4396-8361-da03a7afae35.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-22cc8d7b-d48c-4069-a08c-feeedc023edb",
+    "sourceId": "22cc8d7b-d48c-4069-a08c-feeedc023edb",
+    "score": 135,
+    "posted": "2026-06-22",
+    "sourceText": "People call faith a gamble. But I'd argue the bigger gamble is living as though God doesn't exist.",
+    "title": "Faith vs. Gamble",
+    "lines": [
+      "People call faith a gamble.",
+      "But I'd argue the bigger gamble",
+      "is living as though God doesn't exist."
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-22cc8d7b-d48c-4069-a08c-feeedc023edb.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-8f274bfa-f21f-4462-83cf-80e75952dad9",
+    "sourceId": "8f274bfa-f21f-4462-83cf-80e75952dad9",
+    "score": 135,
+    "posted": "2026-07-13",
+    "sourceText": "Just because you can't see God working doesn't mean He isn't.\n\nKeep praying.\n\nKeep trusting.\n\nKeep waiting.",
+    "title": "Trust In God",
+    "lines": [
+      "JUST BECAUSE YOU CAN'T SEE GOD WORKING",
+      "DOESN'T MEAN HE ISN'T.",
+      "",
+      "KEEP PRAYING.",
+      "KEEP TRUSTING.",
+      "KEEP WAITING."
+    ],
+    "bg": "s04.mp4",
+    "preview": "t-8f274bfa-f21f-4462-83cf-80e75952dad9.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-fceb25ee-22e2-4f7c-a194-15007d409e81",
+    "sourceId": "fceb25ee-22e2-4f7c-a194-15007d409e81",
+    "score": 135,
+    "posted": "2026-09-05",
+    "sourceText": "God,\nI'm done trying to control it.\nI give it to You.\nTake over.",
+    "title": "Surrendering Control",
+    "lines": [
+      "GOD,",
+      "I'M DONE TRYING TO CONTROL IT.",
+      "I GIVE IT TO YOU.",
+      "TAKE OVER."
+    ],
+    "bg": "s06.mp4",
+    "preview": "t-fceb25ee-22e2-4f7c-a194-15007d409e81.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-b7c3b330-2fea-4290-8e5c-e3ca17b6d5d5",
+    "sourceId": "b7c3b330-2fea-4290-8e5c-e3ca17b6d5d5",
+    "score": 135,
+    "posted": "2026-10-19",
+    "sourceText": "The Bible is wild…\n\nTake David for example.\n\nThis man got another man’s wife pregnant…\n\nwhile he was supposed to be out leading his army.\n\nThen instead of admitting what he did…\n\nhe had her husband sent to the front lines so he’d be killed.\n\nThen David married the woman.\n\nAnd the whole time…\n\nhe already had multiple wives and concubines back home.\n\nI’m never putting this Book down.",
+    "title": "David's Wild Story",
+    "lines": [
+      "The Bible is wild…",
+      "Take David for example.",
+      "This man got another man’s wife pregnant…",
+      "while he was supposed to be out leading his army.",
+      "Then instead of admitting what he did…",
+      "he had her husband sent to the front lines so he’d be killed.",
+      "Then David married the woman."
+    ],
+    "bg": "s07.mp4",
+    "preview": "t-b7c3b330-2fea-4290-8e5c-e3ca17b6d5d5.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-abf2b233-887c-478c-8eca-96b6a966f3c5",
+    "sourceId": "abf2b233-887c-478c-8eca-96b6a966f3c5",
+    "score": 134,
+    "posted": "2026-09-24",
+    "sourceText": "God,\nI'm done trying to control it.\nI give it to You.\nTake over.",
+    "title": "Surrendering Control",
+    "lines": [
+      "GOD,",
+      "I'M DONE TRYING TO CONTROL IT.",
+      "I GIVE IT TO YOU.",
+      "TAKE OVER."
+    ],
+    "bg": "s08.mp4",
+    "preview": "t-abf2b233-887c-478c-8eca-96b6a966f3c5.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-7897d5b3-ddfc-498d-a89a-b414dd25f730",
+    "sourceId": "7897d5b3-ddfc-498d-a89a-b414dd25f730",
+    "score": 134,
+    "posted": "2026-07-25",
+    "sourceText": "If this found you,\nit’s not by accident.\nGod’s reminding you,\nHe still has plans for your life.",
+    "title": "Divine Reminder",
+    "lines": [
+      "IF THIS FOUND YOU,",
+      "it’s not by accident.",
+      "God’s reminding you,",
+      "He still has plans for your life."
+    ],
+    "bg": "s09.mp4",
+    "preview": "t-7897d5b3-ddfc-498d-a89a-b414dd25f730.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-be02a68e-e736-419e-9434-e163e4222533",
+    "sourceId": "be02a68e-e736-419e-9434-e163e4222533",
+    "score": 134,
+    "posted": "2026-07-21",
+    "sourceText": "Do I have any Bible study teachers on my feed?",
+    "title": "Bible Study Teachers",
+    "lines": [
+      "DO I HAVE ANY",
+      "BIBLE STUDY TEACHERS",
+      "ON MY FEED?"
+    ],
+    "bg": "s10.mp4",
+    "preview": "t-be02a68e-e736-419e-9434-e163e4222533.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-8698aaef-6415-4c95-9cfc-b867688b076b",
+    "sourceId": "8698aaef-6415-4c95-9cfc-b867688b076b",
+    "score": 134,
+    "posted": "2026-10-13",
+    "sourceText": "God,\nsearch every part of my heart.\nAnything that doesn't belong there, remove it.\nMake me more like You.",
+    "title": "Heart Transformation",
+    "lines": [
+      "God,",
+      "search every part of my heart.",
+      "Anything that doesn't belong there, remove it.",
+      "Make me more like You."
+    ],
+    "bg": "s11.mp4",
+    "preview": "t-8698aaef-6415-4c95-9cfc-b867688b076b.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-be7ec626-dc4c-4649-8a43-9c775b0cd03b",
+    "sourceId": "be7ec626-dc4c-4649-8a43-9c775b0cd03b",
+    "score": 133,
+    "posted": "2026-09-14",
+    "sourceText": "Bible open.\nCoffee hot.\nPerfect morning. ☕️📖",
+    "title": "Perfect Morning",
+    "lines": [
+      "Bible open.",
+      "Coffee hot.",
+      "Perfect morning."
+    ],
+    "bg": "s12.mp4",
+    "preview": "t-be7ec626-dc4c-4649-8a43-9c775b0cd03b.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-dab0ebf9-793a-4df7-b7b3-863b8ee2d6bf",
+    "sourceId": "dab0ebf9-793a-4df7-b7b3-863b8ee2d6bf",
+    "score": 133,
+    "posted": "2026-06-07",
+    "sourceText": "3 SIGNS GOD IS SAYING WAIT… NOT NO\n\n1. You feel peace, but no movement yet\n2. Things keep getting delayed, not denied\n3. You’re being prepared, not pushed forward\n\nWaiting isn’t rejection.\n\nIt’s preparation.",
+    "title": "Signs To Wait",
+    "lines": [
+      "3 SIGNS GOD IS SAYING WAIT… NOT NO",
+      "1. You feel peace, but no movement yet",
+      "2. Things keep getting delayed, not denied",
+      "3. You’re being prepared, not pushed forward",
+      "Waiting isn’t rejection.",
+      "It’s preparation."
+    ],
+    "bg": "s13.mp4",
+    "preview": "t-dab0ebf9-793a-4df7-b7b3-863b8ee2d6bf.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-6792fdf9-8e21-408e-bc76-21ad0fab3fb4",
+    "sourceId": "6792fdf9-8e21-408e-bc76-21ad0fab3fb4",
+    "score": 132,
+    "posted": "2026-09-05",
+    "sourceText": "Dear God,\ntoday I woke up.\nI am healthy.\nI am alive.\nThank You.",
+    "title": "Gratitude Prayer",
+    "lines": [
+      "DEAR GOD,",
+      "today I woke up.",
+      "I am healthy.",
+      "I am alive.",
+      "Thank You."
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-6792fdf9-8e21-408e-bc76-21ad0fab3fb4.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-0d4e1ec3-9a83-46fc-b765-a9f1dc8469aa",
+    "sourceId": "0d4e1ec3-9a83-46fc-b765-a9f1dc8469aa",
+    "score": 132,
+    "posted": "2026-10-12",
+    "sourceText": "God can use the season you wish never happened.",
+    "title": "Divine Purpose",
+    "lines": [
+      "God can use the season",
+      "you wish never happened."
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-0d4e1ec3-9a83-46fc-b765-a9f1dc8469aa.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-fde2bcb7-5368-4210-b8eb-b1f5ec150d26",
+    "sourceId": "fde2bcb7-5368-4210-b8eb-b1f5ec150d26",
+    "score": 132,
+    "posted": "2026-09-24",
+    "sourceText": "You prayed.\n\nYou did what you could.\nGo to sleep.\nGod will still be God in the morning.",
+    "title": "Trusting God Overnight",
+    "lines": [
+      "You prayed.",
+      "",
+      "You did what you could.",
+      "",
+      "Go to sleep.",
+      "",
+      "God will still be God in the morning."
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-fde2bcb7-5368-4210-b8eb-b1f5ec150d26.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-96cd76a4-6e43-4305-a235-82a9ca90b553",
+    "sourceId": "96cd76a4-6e43-4305-a235-82a9ca90b553",
+    "score": 132,
+    "posted": "2026-10-13",
+    "sourceText": "God,\n\nDon't let anything become more important to me than You.\n\nNot money.\n\nNot success.\n\nNot relationships.\n\nJust You.",
+    "title": "Priorities In Life",
+    "lines": [
+      "GOD,",
+      "Don't let anything become more important to me than You.",
+      "Not money.",
+      "Not success.",
+      "Not relationships.",
+      "Just You."
+    ],
+    "bg": "01.mp4",
+    "preview": "t-96cd76a4-6e43-4305-a235-82a9ca90b553.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-7c9da5f2-c24d-4156-a23c-6c76e44fd416",
+    "sourceId": "7c9da5f2-c24d-4156-a23c-6c76e44fd416",
+    "score": 132,
+    "posted": "2026-09-05",
+    "sourceText": "Going to church every Sunday doesn't automatically mean you're following Jesus.\nAttendance isn't the same thing as surrender.",
+    "title": "Attendance vs. Surrender",
+    "lines": [
+      "GOING TO CHURCH EVERY SUNDAY",
+      "DOESN'T AUTOMATICALLY MEAN",
+      "YOU'RE FOLLOWING JESUS.",
+      "ATTENDANCE ISN'T THE SAME THING",
+      "AS SURRENDER."
+    ],
+    "bg": "02.mp4",
+    "preview": "t-7c9da5f2-c24d-4156-a23c-6c76e44fd416.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-89d5ca19-e0e1-4982-a127-79c5bdeb65e2",
+    "sourceId": "89d5ca19-e0e1-4982-a127-79c5bdeb65e2",
+    "score": 130,
+    "posted": "2026-10-18",
+    "sourceText": "7 Things to Pray About Every Morning\n\n🧠 Your thoughts.\n❤️ Your heart.\n🗣️ Your words.\n👣 Your decisions.\n👥 The people you’ll meet.\n🙏 The things worrying you.\n🙌 The opportunities God gives you.\n\nBefore asking God to change your day, ask Him to guide you through it.",
+    "title": "Morning Prayer Focus",
+    "lines": [
+      "Your thoughts.",
+      "Your heart.",
+      "Your words.",
+      "Your decisions.",
+      "The people you’ll meet.",
+      "The things worrying you.",
+      "The opportunities God gives you.",
+      "",
+      "Before asking God to change your day,",
+      "ask Him to guide you through it."
+    ],
+    "bg": "03.mp4",
+    "preview": "t-89d5ca19-e0e1-4982-a127-79c5bdeb65e2.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-2b9896a1-dd63-4092-b771-fc8b48617b7e",
+    "sourceId": "2b9896a1-dd63-4092-b771-fc8b48617b7e",
+    "score": 129,
+    "posted": "2026-09-23",
+    "sourceText": "God has changed me into a different person. I don't even recognize myself.",
+    "title": "Transformation Testimony",
+    "lines": [
+      "GOD HAS CHANGED ME",
+      "INTO A DIFFERENT PERSON.",
+      "I DON'T EVEN RECOGNIZE MYSELF."
+    ],
+    "bg": "04.mp4",
+    "preview": "t-2b9896a1-dd63-4092-b771-fc8b48617b7e.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-09090aa4-c3c0-4fa1-b869-0c762f742f47",
+    "sourceId": "09090aa4-c3c0-4fa1-b869-0c762f742f47",
+    "score": 129,
+    "posted": "2026-07-06",
+    "sourceText": "Instead of trying to be\nperfect\n\nStart following the One\nwho is",
+    "title": "Follow The One",
+    "lines": [
+      "Instead of trying to be",
+      "perfect",
+      "Start following the One",
+      "who is"
+    ],
+    "bg": "05.mp4",
+    "preview": "t-09090aa4-c3c0-4fa1-b869-0c762f742f47.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-73da1aa8-89c2-4d6c-9648-2039f6101018",
+    "sourceId": "73da1aa8-89c2-4d6c-9648-2039f6101018",
+    "score": 129,
+    "posted": "2026-09-14",
+    "sourceText": "Don't ask me for advice if you're not ready to hear about Jesus. Because somehow, some way, He's always gonna come up. I'm telling you, He's the answer.",
+    "title": "Jesus Is The Answer",
+    "lines": [
+      "DON'T ASK ME FOR ADVICE",
+      "IF YOU'RE NOT READY",
+      "TO HEAR ABOUT JESUS.",
+      "BECAUSE SOMEHOW, SOME WAY,",
+      "HE'S ALWAYS GONNA COME UP.",
+      "I'M TELLING YOU,",
+      "HE'S THE ANSWER."
+    ],
+    "bg": "06.mp4",
+    "preview": "t-73da1aa8-89c2-4d6c-9648-2039f6101018.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-a6bc3af4-a650-492b-8aba-c8c274b738ca",
+    "sourceId": "a6bc3af4-a650-492b-8aba-c8c274b738ca",
+    "score": 129,
+    "posted": "2026-09-17",
+    "sourceText": "7 Things Jesus Said That Hit Different When Life Gets Hard\n\n🕊️ “Do not worry about tomorrow.”\n❤️ “Come to me... and I will give you rest.”\n🙏 “Ask and it will be given to you.”\n🚪 “Knock and the door will be opened.”\n👣 “Follow me.”\n🌎 “I have overcome the world.”\n🤝 “I am with you always.”\n\nHard seasons make familiar Scripture feel brand new.",
+    "title": "Jesus' Words In Hard Times",
+    "lines": [
+      "“Do not worry about tomorrow.”",
+      "“Come to me... and I will give you rest.”",
+      "“Ask and it will be given to you.”",
+      "“Knock and the door will be opened.”",
+      "“Follow me.”",
+      "“I have overcome the world.”",
+      "“I am with you always.”",
+      "Hard seasons make familiar Scripture feel brand new."
+    ],
+    "bg": "07.mp4",
+    "preview": "t-a6bc3af4-a650-492b-8aba-c8c274b738ca.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-097dbff6-549e-4af7-962e-df46295c5a1f",
+    "sourceId": "097dbff6-549e-4af7-962e-df46295c5a1f",
+    "score": 128,
+    "posted": "2026-07-14",
+    "sourceText": "9 Signs You're Closer To God Than You Think\n\n🙏 You pray first\n📖 You crave Scripture\n💔 Sin bothers you\n🕊️ You have more peace\n❤️ You forgive quicker\n🙌 You trust God's timing\n🌱 You're slowly changing\n🔥 Trials grow your faith\n👀 You notice God's hand",
+    "title": "Signs Of Spiritual Growth",
+    "lines": [
+      "You pray first",
+      "You crave Scripture",
+      "Sin bothers you",
+      "You have more peace",
+      "You forgive quicker",
+      "You trust God's timing",
+      "You're slowly changing",
+      "Trials grow your faith",
+      "You notice God's hand"
+    ],
+    "bg": "08.mp4",
+    "preview": "t-097dbff6-549e-4af7-962e-df46295c5a1f.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-57051c83-f27a-418b-8dbf-760f63736144",
+    "sourceId": "57051c83-f27a-418b-8dbf-760f63736144",
+    "score": 128,
+    "posted": "2026-07-14",
+    "sourceText": "Never underestimate what God can do through one honest prayer.\n\nI’ve seen prayers change people, situations, and entire lives.",
+    "title": "Power Of Prayer",
+    "lines": [
+      "Never underestimate",
+      "what God can do",
+      "through one honest prayer.",
+      "I've seen prayers",
+      "change people,",
+      "situations,",
+      "and entire lives."
+    ],
+    "bg": "09.mp4",
+    "preview": "t-57051c83-f27a-418b-8dbf-760f63736144.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-868efe18-c87c-4e34-a51c-61d0ffc94025",
+    "sourceId": "868efe18-c87c-4e34-a51c-61d0ffc94025",
+    "score": 128,
+    "posted": "2026-07-06",
+    "sourceText": "If you're going to accept\nthe parts of the Bible that\ntalk about God's love, then\nyou must also accept the\nparts that talk about sin.",
+    "title": "God's Love And Sin",
+    "lines": [
+      "If you're going to accept",
+      "the parts of the Bible that",
+      "talk about God's love, then",
+      "you must also accept the",
+      "parts that talk about sin."
+    ],
+    "bg": "10.mp4",
+    "preview": "t-868efe18-c87c-4e34-a51c-61d0ffc94025.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-51037bf5-c6c2-4450-83a6-4ac80fd9baef",
+    "sourceId": "51037bf5-c6c2-4450-83a6-4ac80fd9baef",
+    "score": 128,
+    "posted": "2026-07-16",
+    "sourceText": "I heard this today and couldn't stop thinking about it:\n\n\"If God has you waiting...\n\nserve while you wait.\"\n\nThat completely changed my perspective.",
+    "title": "Serve While You Wait",
+    "lines": [
+      "I heard this today and couldn't stop thinking about it:",
+      "\"If God has you waiting...",
+      "serve while you wait.\"",
+      "That completely changed my perspective."
+    ],
+    "bg": "11.mp4",
+    "preview": "t-51037bf5-c6c2-4450-83a6-4ac80fd9baef.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-6196af8a-ce20-40c9-a004-732760c6ffd7",
+    "sourceId": "6196af8a-ce20-40c9-a004-732760c6ffd7",
+    "score": 128,
+    "posted": "2026-10-13",
+    "sourceText": "Genesis 1:2 says,\n\n“Darkness was upon the face of the deep.”\n\nWhat does that actually mean?\n\n🧵",
+    "title": "Understanding Genesis 1:2",
+    "lines": [
+      "DARKNESS WAS UPON THE FACE OF THE DEEP.",
+      "What does that actually mean?"
+    ],
+    "bg": "12.mp4",
+    "preview": "t-6196af8a-ce20-40c9-a004-732760c6ffd7.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-98ae00b4-e6a9-47a3-9667-5d6d1341df99",
+    "sourceId": "98ae00b4-e6a9-47a3-9667-5d6d1341df99",
+    "score": 128,
+    "posted": "2026-10-22",
+    "sourceText": "Because of Jesus,\nI am loved.\n\nRomans 5:8",
+    "title": "Loved Because of Jesus",
+    "lines": [
+      "Because of Jesus,",
+      "I am loved."
+    ],
+    "bg": "13.mp4",
+    "preview": "t-98ae00b4-e6a9-47a3-9667-5d6d1341df99.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-2756245d-0aed-4660-97a0-4840714b5374",
+    "sourceId": "2756245d-0aed-4660-97a0-4840714b5374",
+    "score": 127,
+    "posted": "2026-10-14",
+    "sourceText": "Pray instead of worrying.\nPray instead of stressing.\nPray instead of panicking.\nPray instead of overthinking.\nPray instead of assuming.\nPray instead of controlling.\nPray instead of wondering.\nIn every situation, pray.",
+    "title": "Power of Prayer",
+    "lines": [
+      "Pray instead of worrying.",
+      "Pray instead of stressing.",
+      "Pray instead of panicking.",
+      "Pray instead of overthinking.",
+      "Pray instead of assuming.",
+      "Pray instead of controlling.",
+      "Pray instead of wondering.",
+      "In every situation, pray."
+    ],
+    "bg": "14.mp4",
+    "preview": "t-2756245d-0aed-4660-97a0-4840714b5374.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-a67638e0-f4e9-45ac-a031-714029ef7337",
+    "sourceId": "a67638e0-f4e9-45ac-a031-714029ef7337",
+    "score": 127,
+    "posted": "2026-10-13",
+    "sourceText": "Don’t lay anything on top of my Bible! 😑 😤 😠",
+    "title": "Respect The Bible",
+    "lines": [
+      "DON’T LAY ANYTHING",
+      "ON TOP OF MY BIBLE!",
+      "😑",
+      "😤",
+      "😠"
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-a67638e0-f4e9-45ac-a031-714029ef7337.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-d8149a5d-54e1-4062-aec4-e09d3d2a57c7",
+    "sourceId": "d8149a5d-54e1-4062-aec4-e09d3d2a57c7",
+    "score": 127,
+    "posted": "2026-09-24",
+    "sourceText": "The Bible is literally a dictionary, financial guidebook, health and wellness book, relationship and marriage book, action book, drama book wrapped all into one",
+    "title": "The Bible's Purpose",
+    "lines": [
+      "The Bible is literally a dictionary,",
+      "financial guidebook,",
+      "health and wellness book,",
+      "relationship and marriage book,",
+      "action book,",
+      "drama book wrapped all into one"
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-d8149a5d-54e1-4062-aec4-e09d3d2a57c7.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-466c8b79-819b-43ae-bb53-a5472de1ff5b",
+    "sourceId": "466c8b79-819b-43ae-bb53-a5472de1ff5b",
+    "score": 126,
+    "posted": "2026-10-16",
+    "sourceText": "Don’t let one unanswered prayer convince you that God stopped listening.",
+    "title": "Unanswered Prayers",
+    "lines": [
+      "Don’t let one unanswered prayer",
+      "convince you that God stopped listening."
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-466c8b79-819b-43ae-bb53-a5472de1ff5b.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-391e3bdc-db7d-4bf9-9d27-7ce7d91f97f3",
+    "sourceId": "391e3bdc-db7d-4bf9-9d27-7ce7d91f97f3",
+    "score": 126,
+    "posted": "2026-10-13",
+    "sourceText": "The same God who was with you when everything fell apart is still with you while you put it back together.",
+    "title": "God's Presence",
+    "lines": [
+      "The same God who was with you",
+      "when everything fell apart",
+      "is still with you",
+      "while you put it back together."
+    ],
+    "bg": "s04.mp4",
+    "preview": "t-391e3bdc-db7d-4bf9-9d27-7ce7d91f97f3.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-c259c932-a1b8-4c02-94a1-e4ccdacc3bc5",
+    "sourceId": "c259c932-a1b8-4c02-94a1-e4ccdacc3bc5",
+    "score": 125,
+    "posted": "2026-08-19",
+    "sourceText": "Reading your Bible is a mandatory daily habit for a peaceful life...",
+    "title": "Daily Bible Reading",
+    "lines": [
+      "Reading your Bible",
+      "is a mandatory daily habit",
+      "for a peaceful life..."
+    ],
+    "bg": "s06.mp4",
+    "preview": "t-c259c932-a1b8-4c02-94a1-e4ccdacc3bc5.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-31c16216-5139-4c2a-aa21-b50adf1497d7",
+    "sourceId": "31c16216-5139-4c2a-aa21-b50adf1497d7",
+    "score": 125,
+    "posted": "2026-08-23",
+    "sourceText": "9 Signs the Bible Is Changing You\n\n🙏 You pray before reacting\n\n❤️ You forgive people faster\n\n🕊️ Protecting your peace matters more\n\n🚫 Sin no longer feels normal\n\n👀 You recognize temptation earlier\n\n📖 You crave Scripture more\n\n💬 Your words become gentler\n\n🌱 Your character begins changing\n\n✝️ Becoming like Jesus matters more than fitting in",
+    "title": "Bible Changes You",
+    "lines": [
+      "You pray before reacting",
+      "You forgive people faster",
+      "Protecting your peace matters more",
+      "Sin no longer feels normal",
+      "You recognize temptation earlier",
+      "You crave Scripture more",
+      "Your words become gentler",
+      "Your character begins changing",
+      "Becoming like Jesus matters more than fitting in"
+    ],
+    "bg": "s07.mp4",
+    "preview": "t-31c16216-5139-4c2a-aa21-b50adf1497d7.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-11e2884f-323e-42e5-92fa-87dd0755af19",
+    "sourceId": "11e2884f-323e-42e5-92fa-87dd0755af19",
+    "score": 125,
+    "posted": "2026-10-20",
+    "sourceText": "7 Signs God Is Healing You ❤️\n\nHealing doesn’t always feel good at first.\n\nSometimes God has to reveal what’s broken before He can restore it. 🧵",
+    "title": "Signs Of Healing",
+    "lines": [
+      "HEALING DOESN’T ALWAYS FEEL GOOD AT FIRST.",
+      "Sometimes God has to reveal what’s broken",
+      "before He can restore it."
+    ],
+    "bg": "s08.mp4",
+    "preview": "t-11e2884f-323e-42e5-92fa-87dd0755af19.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-8a919063-7c3b-4428-ae4f-2e6df946ccf8",
+    "sourceId": "8a919063-7c3b-4428-ae4f-2e6df946ccf8",
+    "score": 124,
+    "posted": "2026-06-30",
+    "sourceText": "8 LIES I BELIEVED ABOUT READING THE BIBLE\n\n…that kept me from actually understanding God’s Word.\n\nI wish someone had told me these sooner.\n\n#5 changed everything.",
+    "title": "Lies About Reading",
+    "lines": [
+      "8 LIES I BELIEVED ABOUT READING THE BIBLE",
+      "...that kept me from actually understanding God’s Word.",
+      "I wish someone had told me these sooner.",
+      "#5 changed everything."
+    ],
+    "bg": "s09.mp4",
+    "preview": "t-8a919063-7c3b-4428-ae4f-2e6df946ccf8.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-9a94db3e-4067-4192-84d2-45e633fb7423",
+    "sourceId": "9a94db3e-4067-4192-84d2-45e633fb7423",
+    "score": 124,
+    "posted": "2026-10-18",
+    "sourceText": "Lately I’ve been seeing a lot of people talk about wanting a Proverbs 31 woman…\n\nOr becoming a Proverbs 31 woman.\n\nIt made me want to go back and really study Proverbs 31 again.\n\nNot just read it…\n\nBut slow down and ask,\n\n“What is the Bible actually describing here?”\n\nAfter going back through the chapter, here’s what stood out to me.\n\nI don’t think Proverbs 31 is giving women an impossible standard of perfection.",
+    "title": "Proverbs 31 Insights",
+    "lines": [
+      "Lately I’ve been seeing a lot of people talk about wanting a Proverbs 31 woman…",
+      "Or becoming a Proverbs 31 woman.",
+      "It made me want to go back and really study Proverbs 31 again.",
+      "Not just read it…",
+      "But slow down and ask,",
+      "“What is the Bible actually describing here?”",
+      "I don’t think Proverbs 31 is giving women an impossible standard of perfection."
+    ],
+    "bg": "s10.mp4",
+    "preview": "t-9a94db3e-4067-4192-84d2-45e633fb7423.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-09fc1f5e-cba2-4745-a981-040b73b75ad3",
+    "sourceId": "09fc1f5e-cba2-4745-a981-040b73b75ad3",
+    "score": 124,
+    "posted": "2026-09-22",
+    "sourceText": "Christians:\n\nDoes prayer actually change what God was going to do?",
+    "title": "The Power of Prayer",
+    "lines": [
+      "CHRISTIANS:",
+      "Does prayer actually change",
+      "what God was going to do?"
+    ],
+    "bg": "s11.mp4",
+    "preview": "t-09fc1f5e-cba2-4745-a981-040b73b75ad3.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-781c19d4-4df0-414c-a030-3424bbc61c38",
+    "sourceId": "781c19d4-4df0-414c-a030-3424bbc61c38",
+    "score": 124,
+    "posted": "2026-10-17",
+    "sourceText": "You cannot win a spiritual battle with closed Bibles...",
+    "title": "Open Your Bible",
+    "lines": [
+      "YOU CANNOT WIN A SPIRITUAL BATTLE",
+      "WITH CLOSED BIBLES..."
+    ],
+    "bg": "s12.mp4",
+    "preview": "t-781c19d4-4df0-414c-a030-3424bbc61c38.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-13c803c3-cc2d-44a8-a2b3-47d34f03d5b0",
+    "sourceId": "13c803c3-cc2d-44a8-a2b3-47d34f03d5b0",
+    "score": 124,
+    "posted": "2026-10-18",
+    "sourceText": "You prayed about it.\nNow stop checking every five minutes to see if God answered.\n\nTrust Him.",
+    "title": "Trusting God",
+    "lines": [
+      "You prayed about it.",
+      "Now stop checking every five minutes",
+      "to see if God answered.",
+      "Trust Him."
+    ],
+    "bg": "s13.mp4",
+    "preview": "t-13c803c3-cc2d-44a8-a2b3-47d34f03d5b0.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-5e6f28d5-3c9c-4107-9baf-391b4f66a1b6",
+    "sourceId": "5e6f28d5-3c9c-4107-9baf-391b4f66a1b6",
+    "score": 124,
+    "posted": "2026-10-23",
+    "sourceText": "7 Habits That Will Bring You Closer to God\n\n🌅 Start your morning with Him.\n📖 Read a little Scripture every day.\n🙏 Talk to God throughout the day.\n📝 Write down what you’re learning.\n🙌 Thank Him intentionally.\n🤝 Practice what Jesus taught.\n🌙 End the day in prayer.\n\nYou don’t build a relationship with God in one huge moment. You build it by returning to Him every day.",
+    "title": "Closer To God",
+    "lines": [
+      "START YOUR MORNING WITH HIM.",
+      "READ A LITTLE SCRIPTURE EVERY DAY.",
+      "TALK TO GOD THROUGHOUT THE DAY.",
+      "WRITE DOWN WHAT YOU’RE LEARNING.",
+      "THANK HIM INTENTIONALLY.",
+      "PRACTICE WHAT JESUS TAUGHT.",
+      "END THE DAY IN PRAYER.",
+      "",
+      "YOU DON’T BUILD A RELATIONSHIP WITH GOD IN ONE HUGE MOMENT.",
+      "YOU BUILD IT BY RETURNING TO HIM EVERY DAY."
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-5e6f28d5-3c9c-4107-9baf-391b4f66a1b6.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-a6916872-e2db-4cdc-9556-6fbe30b22c3f",
+    "sourceId": "a6916872-e2db-4cdc-9556-6fbe30b22c3f",
+    "score": 124,
+    "posted": "2026-10-19",
+    "sourceText": "Sometimes God removes you from places you wanted to stay...\n\nbecause He could see the poison you couldn't.",
+    "title": "Divine Removal",
+    "lines": [
+      "Sometimes God removes you",
+      "from places you wanted to stay...",
+      "because He could see",
+      "the poison you couldn't."
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-a6916872-e2db-4cdc-9556-6fbe30b22c3f.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-57c14f81-06bf-4bf2-be4f-c8911398c899",
+    "sourceId": "57c14f81-06bf-4bf2-be4f-c8911398c899",
+    "score": 124,
+    "posted": "2026-09-24",
+    "sourceText": "A relationship with Jesus is more valuable than anything this world has to offer.",
+    "title": "Valuable Relationship",
+    "lines": [
+      "A RELATIONSHIP WITH JESUS",
+      "is more valuable than anything",
+      "this world has to offer."
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-57c14f81-06bf-4bf2-be4f-c8911398c899.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-1fee955a-1ff5-4bf2-8de4-51ee9b89d7dd",
+    "sourceId": "1fee955a-1ff5-4bf2-8de4-51ee9b89d7dd",
+    "score": 123,
+    "posted": "2026-10-16",
+    "sourceText": "It’s hard to hear God’s voice when you’ve already decided what you want Him to say.",
+    "title": "Hearing God's Voice",
+    "lines": [
+      "It’s hard to hear",
+      "God’s voice when you’ve",
+      "already decided what you want",
+      "Him to say."
+    ],
+    "bg": "01.mp4",
+    "preview": "t-1fee955a-1ff5-4bf2-8de4-51ee9b89d7dd.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-122659ed-008c-4d68-b231-0ded2261cfb7",
+    "sourceId": "122659ed-008c-4d68-b231-0ded2261cfb7",
+    "score": 122,
+    "posted": "2026-09-11",
+    "sourceText": "Spend time with God.\nRead His Word.\nPray more.",
+    "title": "Spending Time With God",
+    "lines": [
+      "Spend time with God.",
+      "Read His Word.",
+      "Pray more."
+    ],
+    "bg": "02.mp4",
+    "preview": "t-122659ed-008c-4d68-b231-0ded2261cfb7.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-822617a3-13db-439d-a7b6-158aeb32b4ce",
+    "sourceId": "822617a3-13db-439d-a7b6-158aeb32b4ce",
+    "score": 122,
+    "posted": "2026-06-30",
+    "sourceText": "When you think of Bible study as a date with God, you start looking forward to it…",
+    "title": "Bible Study Date",
+    "lines": [
+      "When you think of Bible study",
+      "as a date with God,",
+      "you start looking forward to it…"
+    ],
+    "bg": "03.mp4",
+    "preview": "t-822617a3-13db-439d-a7b6-158aeb32b4ce.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-58cf1e54-8ab1-4040-8745-90fdd776191c",
+    "sourceId": "58cf1e54-8ab1-4040-8745-90fdd776191c",
+    "score": 122,
+    "posted": "2026-10-11",
+    "sourceText": "God doesn’t need perfect prayers.\n\nHe wants honest ones.",
+    "title": "Honest Prayers",
+    "lines": [
+      "GOD DOESN’T NEED PERFECT PRAYERS.",
+      "He wants honest ones."
+    ],
+    "bg": "04.mp4",
+    "preview": "t-58cf1e54-8ab1-4040-8745-90fdd776191c.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-9512e2b1-def6-4673-b72b-ba13ca316d85",
+    "sourceId": "9512e2b1-def6-4673-b72b-ba13ca316d85",
+    "score": 122,
+    "posted": "2026-08-21",
+    "sourceText": "9 Signs the Bible Is Changing You\n\n🙏 You pray before reacting\n\n❤️ You forgive people faster\n\n🕊️ Protecting your peace matters more\n\n🚫 Sin no longer feels normal\n\n👀 You recognize temptation earlier\n\n📖 You crave Scripture more\n\n💬 Your words become gentler\n\n🌱 Your character begins changing\n\n✝️ Becoming like Jesus matters more than fitting in",
+    "title": "Signs of Change",
+    "lines": [
+      "You pray before reacting",
+      "You forgive people faster",
+      "Protecting your peace matters more",
+      "Sin no longer feels normal",
+      "You recognize temptation earlier",
+      "You crave Scripture more",
+      "Your words become gentler",
+      "Your character begins changing",
+      "Becoming like Jesus matters more than fitting in"
+    ],
+    "bg": "05.mp4",
+    "preview": "t-9512e2b1-def6-4673-b72b-ba13ca316d85.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-2023f48c-a1d2-424d-a243-d594e19567cd",
+    "sourceId": "2023f48c-a1d2-424d-a243-d594e19567cd",
+    "score": 121,
+    "posted": "2026-09-11",
+    "sourceText": "Nothing this world can give me is worth more than my relationship with Jesus.",
+    "title": "Value of Faith",
+    "lines": [
+      "NOTHING THIS WORLD CAN GIVE ME",
+      "IS WORTH MORE THAN",
+      "MY RELATIONSHIP WITH JESUS."
+    ],
+    "bg": "06.mp4",
+    "preview": "t-2023f48c-a1d2-424d-a243-d594e19567cd.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-9f805386-8605-4a5f-b238-95bb0ff9f40b",
+    "sourceId": "9f805386-8605-4a5f-b238-95bb0ff9f40b",
+    "score": 121,
+    "posted": "2026-10-12",
+    "sourceText": "Having to let go of someone you love to obey God is another level of strength.",
+    "title": "Strength in Letting Go",
+    "lines": [
+      "Having to let go",
+      "of someone you love",
+      "to obey God",
+      "is another level",
+      "of strength."
+    ],
+    "bg": "07.mp4",
+    "preview": "t-9f805386-8605-4a5f-b238-95bb0ff9f40b.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-0b469601-fa72-4b1e-81b6-f02a2b41e80b",
+    "sourceId": "0b469601-fa72-4b1e-81b6-f02a2b41e80b",
+    "score": 121,
+    "posted": "2026-09-23",
+    "sourceText": "Esther couldn’t see everything God was doing.\n\nNeither can you.\nThat doesn’t mean nothing is happening.",
+    "title": "Trusting God's Plan",
+    "lines": [
+      "ESTHER COULDN’T SEE EVERYTHING GOD WAS DOING.",
+      "",
+      "NEITHER CAN YOU.",
+      "",
+      "THAT DOESN’T MEAN NOTHING IS HAPPENING."
+    ],
+    "bg": "08.mp4",
+    "preview": "t-0b469601-fa72-4b1e-81b6-f02a2b41e80b.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-ed0b67e0-e547-4b90-8008-75df8fca5b81",
+    "sourceId": "ed0b67e0-e547-4b90-8008-75df8fca5b81",
+    "score": 121,
+    "posted": "2026-10-13",
+    "sourceText": "The more time I stay away from my Bible, the louder the world becomes.",
+    "title": "The World Grows Louder",
+    "lines": [
+      "The more time I stay away from my Bible,",
+      "the louder the world becomes."
+    ],
+    "bg": "09.mp4",
+    "preview": "t-ed0b67e0-e547-4b90-8008-75df8fca5b81.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-3c6314e4-7a8f-47ed-a38e-cd1dfdab32ac",
+    "sourceId": "3c6314e4-7a8f-47ed-a38e-cd1dfdab32ac",
+    "score": 121,
+    "posted": "2026-08-22",
+    "sourceText": "Grace is receiving what you did not deserve.\n\nMercy is being spared from what you did deserve.",
+    "title": "Grace And Mercy",
+    "lines": [
+      "GRACE IS RECEIVING",
+      "WHAT YOU DID NOT DESERVE.",
+      "",
+      "MERCY IS BEING SPARED",
+      "FROM WHAT YOU DID DESERVE."
+    ],
+    "bg": "10.mp4",
+    "preview": "t-3c6314e4-7a8f-47ed-a38e-cd1dfdab32ac.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-1eca6f54-85a1-4090-baaa-afc2202381c8",
+    "sourceId": "1eca6f54-85a1-4090-baaa-afc2202381c8",
+    "score": 121,
+    "posted": "2026-09-21",
+    "sourceText": "Christians ✝️\n\nIf someone never apologizes for what they did to you...\n\ndoes God still expect you to forgive them?",
+    "title": "Forgiveness Dilemma",
+    "lines": [
+      "IF SOMEONE NEVER APOLOGIZES",
+      "FOR WHAT THEY DID TO YOU...",
+      "DOES GOD STILL EXPECT YOU",
+      "TO FORGIVE THEM?"
+    ],
+    "bg": "11.mp4",
+    "preview": "t-1eca6f54-85a1-4090-baaa-afc2202381c8.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-67da9c46-62e0-4f9b-acb9-26b16996b835",
+    "sourceId": "67da9c46-62e0-4f9b-acb9-26b16996b835",
+    "score": 120,
+    "posted": "2026-09-27",
+    "sourceText": "Today’s Prayer:\n\nDear God, I’m sorry for the times I’m so overwhelmed and worried about my future that I forget You are faithful and You always keep Your promises. I trust You. In Jesus’ name, Amen.",
+    "title": "Prayer of Trust",
+    "lines": [
+      "Dear God,",
+      "I’m sorry for the times",
+      "I’m so overwhelmed and worried",
+      "about my future",
+      "that I forget You are faithful",
+      "and You always keep Your promises.",
+      "I trust You."
+    ],
+    "bg": "12.mp4",
+    "preview": "t-67da9c46-62e0-4f9b-acb9-26b16996b835.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-7cf60676-6ad8-4bbb-b872-ccc76d7a6492",
+    "sourceId": "7cf60676-6ad8-4bbb-b872-ccc76d7a6492",
+    "score": 120,
+    "posted": "2026-09-10",
+    "sourceText": "Christian isn't just something you call yourself.\nIt's something you live.",
+    "title": "Living Your Faith",
+    "lines": [
+      "CHRISTIAN ISN'T JUST SOMETHING YOU CALL YOURSELF.",
+      "IT'S SOMETHING YOU LIVE."
+    ],
+    "bg": "13.mp4",
+    "preview": "t-7cf60676-6ad8-4bbb-b872-ccc76d7a6492.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-e478f69e-6a5b-488b-83a3-bcbb269e59e1",
+    "sourceId": "e478f69e-6a5b-488b-83a3-bcbb269e59e1",
+    "score": 119,
+    "posted": "2026-10-13",
+    "sourceText": "God, make me uncomfortable with anything that is pulling me farther away from You.",
+    "title": "Prayer for Growth",
+    "lines": [
+      "God, make me uncomfortable",
+      "with anything that is pulling",
+      "me farther away from You."
+    ],
+    "bg": "14.mp4",
+    "preview": "t-e478f69e-6a5b-488b-83a3-bcbb269e59e1.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-b3f70c23-592d-4cee-9589-c458643030dd",
+    "sourceId": "b3f70c23-592d-4cee-9589-c458643030dd",
+    "score": 119,
+    "posted": "2026-09-04",
+    "sourceText": "Judas walked beside Jesus.\nHe heard Him teach.\nSaw the miracles.\nServed in the ministry.\nAnd still wasn't transformed.\nBeing around Jesus isn't the same as surrendering to Jesus.",
+    "title": "The Cost of Proximity",
+    "lines": [
+      "JUDAS WALKED BESIDE JESUS.",
+      "He heard Him teach.",
+      "Saw the miracles.",
+      "Served in the ministry.",
+      "And still wasn't transformed.",
+      "Being around Jesus isn't the same as surrendering to Jesus."
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-b3f70c23-592d-4cee-9589-c458643030dd.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-0267d964-3ea5-4deb-ad57-7b32d332b13c",
+    "sourceId": "0267d964-3ea5-4deb-ad57-7b32d332b13c",
+    "score": 119,
+    "posted": "2026-10-17",
+    "sourceText": "Proverbs 24:17 says not to rejoice when your enemy falls.\nEven when you really don’t like them.",
+    "title": "Wisdom on Enemies",
+    "lines": [
+      "Proverbs 24:17 says",
+      "not to rejoice",
+      "when your enemy falls.",
+      "Even when you really",
+      "don’t like them."
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-0267d964-3ea5-4deb-ad57-7b32d332b13c.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-bb8681e7-6eab-4666-8000-09fe98b242e4",
+    "sourceId": "bb8681e7-6eab-4666-8000-09fe98b242e4",
+    "score": 119,
+    "posted": "2026-08-27",
+    "sourceText": "The longer I stay away from prayer, the more my fears creep back in.",
+    "title": "The Power of Prayer",
+    "lines": [
+      "The longer I stay away from prayer,",
+      "the more my fears creep back in."
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-bb8681e7-6eab-4666-8000-09fe98b242e4.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-c8fbe6ef-2100-41f9-8812-281a108ca820",
+    "sourceId": "c8fbe6ef-2100-41f9-8812-281a108ca820",
+    "score": 119,
+    "posted": "2026-09-26",
+    "sourceText": "Think about how many times you thought it was over…\nand somehow God made a way.\nDon't forget those moments.",
+    "title": "Moments of Hope",
+    "lines": [
+      "THINK ABOUT HOW MANY TIMES YOU THOUGHT IT WAS OVER…",
+      "AND SOMEHOW GOD MADE A WAY.",
+      "DON'T FORGET THOSE MOMENTS."
+    ],
+    "bg": "s04.mp4",
+    "preview": "t-c8fbe6ef-2100-41f9-8812-281a108ca820.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-85633935-a32f-45e6-95f3-5d351d4d1bc9",
+    "sourceId": "85633935-a32f-45e6-95f3-5d351d4d1bc9",
+    "score": 118,
+    "posted": "2026-08-18",
+    "sourceText": "The Bible isn’t outdated. Sin just got more accepted.",
+    "title": "Timeless Truths",
+    "lines": [
+      "The Bible isn’t outdated.",
+      "Sin just got more accepted."
+    ],
+    "bg": "s06.mp4",
+    "preview": "t-85633935-a32f-45e6-95f3-5d351d4d1bc9.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-f977d126-f147-4b32-b9dc-9b7af3e2c743",
+    "sourceId": "f977d126-f147-4b32-b9dc-9b7af3e2c743",
+    "score": 118,
+    "posted": "2026-10-17",
+    "sourceText": "5 Signs You’re Actually Getting Closer to God\n\n📖 You want His Word more.\n🙏 Prayer feels more natural.\n❤️ Sin bothers you differently.\n🕊️ You want God’s peace more than people’s approval.\n🌱 You’re becoming more honest with God.\n\nGetting closer to God doesn’t mean becoming perfect. It means you stop being comfortable staying the same.",
+    "title": "Signs of Spiritual Growth",
+    "lines": [
+      "YOU'RE ACTUALLY GETTING CLOSER TO GOD",
+      "You want His Word more.",
+      "Prayer feels more natural.",
+      "Sin bothers you differently.",
+      "You want God’s peace more than people’s approval.",
+      "You’re becoming more honest with God.",
+      "Getting closer to God doesn’t mean becoming perfect."
+    ],
+    "bg": "s07.mp4",
+    "preview": "t-f977d126-f147-4b32-b9dc-9b7af3e2c743.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-a15f7fcd-71c7-455c-8add-9906945e7f3a",
+    "sourceId": "a15f7fcd-71c7-455c-8add-9906945e7f3a",
+    "score": 118,
+    "posted": "2026-07-09",
+    "sourceText": "Your Bible isn't just something to read.\n\nIt's something your soul misses when you stay away from it.",
+    "title": "Soul Connection",
+    "lines": [
+      "YOUR BIBLE ISN'T JUST SOMETHING TO READ.",
+      "It's something your soul misses",
+      "when you stay away from it."
+    ],
+    "bg": "s08.mp4",
+    "preview": "t-a15f7fcd-71c7-455c-8add-9906945e7f3a.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-cfed3ec7-9e87-451d-ae50-2669dad2701b",
+    "sourceId": "cfed3ec7-9e87-451d-ae50-2669dad2701b",
+    "score": 118,
+    "posted": "2026-09-08",
+    "sourceText": "I've been thinking about Solomon lately, and there's something about his story that's honestly kind of scary.\nSolomon didn't fall because he didn't know better.\nHe literally wrote some of the warnings.\n😮\nThis is the man who spends Proverbs warning about temptation...\nwarning about women who can pull you away...\nwarning about guarding your heart...\nwarning about wisdom...\nAnd then you get to the story of Solomon's own life.",
+    "title": "The Scary Truth",
+    "lines": [
+      "I'VE BEEN THINKING ABOUT SOLOMON LATELY,",
+      "and there's something about his story that's honestly kind of scary.",
+      "Solomon didn't fall because he didn't know better.",
+      "He literally wrote some of the warnings.",
+      "This is the man who spends Proverbs warning about temptation...",
+      "warning about women who can pull you away...",
+      "warning about guarding your heart...",
+      "warning about wisdom...",
+      "And then you get to the story of Solomon's own life."
+    ],
+    "bg": "s09.mp4",
+    "preview": "t-cfed3ec7-9e87-451d-ae50-2669dad2701b.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2497c3f7-99dc-4882-9206-e8f5c52df344",
+    "sourceId": "2497c3f7-99dc-4882-9206-e8f5c52df344",
+    "score": 117,
+    "posted": "2026-09-05",
+    "sourceText": "It's hard to get in shape spiritually if you only work out on Sundays.",
+    "title": "Spiritual Fitness",
+    "lines": [
+      "It's hard to get in shape",
+      "spiritually",
+      "if you only work out",
+      "on Sundays."
+    ],
+    "bg": "s10.mp4",
+    "preview": "t-2497c3f7-99dc-4882-9206-e8f5c52df344.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-7b77fbd4-0347-4bcf-bf2e-8acc25a90ff5",
+    "sourceId": "7b77fbd4-0347-4bcf-bf2e-8acc25a90ff5",
+    "score": 117,
+    "posted": "2026-07-04",
+    "sourceText": "6 signs you trust your feelings more than God\n\n1. You only obey when it feels easy\n2. Your emotions control your decisions\n3. You avoid conviction\n4. You seek comfort over growth\n5. You constantly need reassurance\n6. You ignore Scripture when it challenges you\n\nFaith requires trust beyond emotion.",
+    "title": "Trust vs. Feelings",
+    "lines": [
+      "6 SIGNS YOU TRUST YOUR FEELINGS MORE THAN GOD",
+      "1. You only obey when it feels easy",
+      "2. Your emotions control your decisions",
+      "3. You avoid conviction",
+      "4. You seek comfort over growth",
+      "5. You constantly need reassurance",
+      "6. You ignore Scripture when it challenges you",
+      "Faith requires trust beyond emotion."
+    ],
+    "bg": "s11.mp4",
+    "preview": "t-7b77fbd4-0347-4bcf-bf2e-8acc25a90ff5.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-d39b6a88-1804-4a42-a1b2-fff75af1be14",
+    "sourceId": "d39b6a88-1804-4a42-a1b2-fff75af1be14",
+    "score": 117,
+    "posted": "2026-09-10",
+    "sourceText": "Get a physical Bible.\nHighlight it. Write in it. Make that thing yours.",
+    "title": "Get A Physical Bible",
+    "lines": [
+      "Get a physical Bible.",
+      "Highlight it.",
+      "Write in it.",
+      "Make that thing yours."
+    ],
+    "bg": "s12.mp4",
+    "preview": "t-d39b6a88-1804-4a42-a1b2-fff75af1be14.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-2b4ffbe1-9635-4dba-a835-482f45ed186a",
+    "sourceId": "2b4ffbe1-9635-4dba-a835-482f45ed186a",
+    "score": 116,
+    "posted": "2026-09-06",
+    "sourceText": "The Bible isn't just for quoting, you have to live by it…",
+    "title": "Live By The Bible",
+    "lines": [
+      "The Bible isn't just for quoting,",
+      "you have to live by it…"
+    ],
+    "bg": "s13.mp4",
+    "preview": "t-2b4ffbe1-9635-4dba-a835-482f45ed186a.jpg",
+    "status": "approved"
+  },
+  {
+    "id": "t-be3a2c4f-b909-46d4-9d29-a9e3842fd638",
+    "sourceId": "be3a2c4f-b909-46d4-9d29-a9e3842fd638",
+    "score": 116,
+    "posted": "2026-09-07",
+    "sourceText": "if you truly read your Bible, very little about the world shocks you. human nature hasn't changed as much as we think it has.",
+    "title": "Understanding Human Nature",
+    "lines": [
+      "IF YOU TRULY READ YOUR BIBLE,",
+      "VERY LITTLE ABOUT THE WORLD SHOCKS YOU.",
+      "HUMAN NATURE HASN'T CHANGED",
+      "AS MUCH AS WE THINK IT HAS."
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-be3a2c4f-b909-46d4-9d29-a9e3842fd638.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-449debae-4214-4a23-9ad5-ea3dd6f73213",
+    "sourceId": "449debae-4214-4a23-9ad5-ea3dd6f73213",
+    "score": 115,
+    "posted": "2026-07-18",
+    "sourceText": "Normalize asking God for strategy, not just miracles.",
+    "title": "Ask For Strategy",
+    "lines": [
+      "NORMALIZE ASKING GOD",
+      "FOR STRATEGY,",
+      "NOT JUST MIRACLES."
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-449debae-4214-4a23-9ad5-ea3dd6f73213.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2bc9f3b1-64c9-4c5f-a373-5aa74d399d5e",
+    "sourceId": "2bc9f3b1-64c9-4c5f-a373-5aa74d399d5e",
+    "score": 115,
+    "posted": "2026-09-12",
+    "sourceText": "Knowing Scripture isn't the same as living Scripture.\nThe Bible wasn't given to us just to quote.\nIt was given to change how we live.",
+    "title": "Living Scripture",
+    "lines": [
+      "KNOWING SCRIPTURE",
+      "ISN'T THE SAME",
+      "AS LIVING SCRIPTURE.",
+      "The Bible wasn't given",
+      "to us just to quote.",
+      "It was given to change",
+      "how we live."
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-2bc9f3b1-64c9-4c5f-a373-5aa74d399d5e.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-e8834f48-702a-4aa0-a2f6-39f916b70f42",
+    "sourceId": "e8834f48-702a-4aa0-a2f6-39f916b70f42",
+    "score": 115,
+    "posted": "2026-10-14",
+    "sourceText": "2 Timothy 2:13\nWhen you are weak in faith, God remains faithful to you.",
+    "title": "God's Faithfulness",
+    "lines": [
+      "When you are weak in faith,",
+      "God remains faithful to you."
+    ],
+    "bg": "01.mp4",
+    "preview": "t-e8834f48-702a-4aa0-a2f6-39f916b70f42.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-0deab2ae-6f45-49ec-9450-3ca149cb8790",
+    "sourceId": "0deab2ae-6f45-49ec-9450-3ca149cb8790",
+    "score": 114,
+    "posted": "2026-09-24",
+    "sourceText": "If God is with me, I already know I'm not walking alone.",
+    "title": "Walking With God",
+    "lines": [
+      "IF GOD IS WITH ME,",
+      "I ALREADY KNOW",
+      "I'M NOT WALKING ALONE."
+    ],
+    "bg": "02.mp4",
+    "preview": "t-0deab2ae-6f45-49ec-9450-3ca149cb8790.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-3b857cc2-402d-4d85-8eed-fcde1180a879",
+    "sourceId": "3b857cc2-402d-4d85-8eed-fcde1180a879",
+    "score": 114,
+    "posted": "2026-08-18",
+    "sourceText": "7 Signs the Holy Spirit Is Transforming You\n\n💔 You feel convicted when you sin\n\n🙏 Prayer is becoming more natural\n\n📖 You understand Scripture differently\n\n🚫 Old habits no longer feel comfortable\n\n❤️ You forgive people faster\n\n🕊️ You choose peace over revenge\n\n✝️ Your life is slowly beginning to look more like Jesus\n\nTransformation does not always happen in one dramatic moment.\n\nSometimes it is recognizing that the things you once loved no longer control you.",
+    "title": "Signs of Transformation",
+    "lines": [
+      "YOU FEEL CONVICTED WHEN YOU SIN",
+      "Prayer is becoming more natural",
+      "You understand Scripture differently",
+      "Old habits no longer feel comfortable",
+      "You forgive people faster",
+      "You choose peace over revenge",
+      "Your life is slowly beginning to look more like Jesus",
+      "Transformation does not always happen in one dramatic moment.",
+      "Sometimes it is recognizing that the things you once loved no longer control you."
+    ],
+    "bg": "03.mp4",
+    "preview": "t-3b857cc2-402d-4d85-8eed-fcde1180a879.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-5c6fdea8-805e-4bac-8119-83ec4f137f8f",
+    "sourceId": "5c6fdea8-805e-4bac-8119-83ec4f137f8f",
+    "score": 114,
+    "posted": "2026-07-17",
+    "sourceText": "Any other Christians on here building a business at night and on the weekends?\n\nWhat is it?",
+    "title": "Building a Business",
+    "lines": [
+      "Any other Christians on here",
+      "building a business at night",
+      "and on the weekends?",
+      "What is it?"
+    ],
+    "bg": "04.mp4",
+    "preview": "t-5c6fdea8-805e-4bac-8119-83ec4f137f8f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-16c65c03-b8aa-4777-8398-a604459795bc",
+    "sourceId": "16c65c03-b8aa-4777-8398-a604459795bc",
+    "score": 113,
+    "posted": "2026-09-09",
+    "sourceText": "So I’m still studying Genesis.\nAnd I noticed something interesting about the Tower of Babel that I never really connected before.\nBecause everybody remembers the tower.\n🏗️ They built this massive city and tower.\n☁️ They wanted it to reach toward heaven.\n🌍 God confused their language and scattered them.\nBut there’s one sentence that I never really paid much attention to.\nWhile they're explaining WHY they want to build Babel, they say:\n“Let us make us a name…” — Genesis 11:4",
+    "title": "The Tower of Babel",
+    "lines": [
+      "SO I’M STILL STUDYING GENESIS.",
+      "",
+      "I noticed something interesting about the Tower of Babel",
+      "that I never really connected before.",
+      "",
+      "Because everybody remembers the tower.",
+      "They built this massive city and tower.",
+      "They wanted it to reach toward heaven.",
+      "",
+      "God confused their language and scattered them.",
+      "",
+      "But there’s one sentence that I never really paid much attention to.",
+      "While they're explaining WHY they want to build Babel, they say:",
+      "“Let us make us a name…” — Genesis 11:4"
+    ],
+    "bg": "05.mp4",
+    "preview": "t-16c65c03-b8aa-4777-8398-a604459795bc.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-f8568973-26a0-4478-930d-c1cfef2252ae",
+    "sourceId": "f8568973-26a0-4478-930d-c1cfef2252ae",
+    "score": 113,
+    "posted": "2026-10-12",
+    "sourceText": "7 Habits That Will Bring You Closer to God\n\n🌅 Start your morning with Him.\n📖 Read a little Scripture every day.\n🙏 Talk to God throughout the day.\n📝 Write down what you’re learning.\n🙌 Thank Him intentionally.\n🤝 Practice what Jesus taught.\n🌙 End the day in prayer.\n\nYou don’t build a relationship with God in one huge moment. You build it by returning to Him every day.",
+    "title": "Closer To God",
+    "lines": [
+      "START YOUR MORNING WITH HIM.",
+      "READ A LITTLE SCRIPTURE EVERY DAY.",
+      "TALK TO GOD THROUGHOUT THE DAY.",
+      "WRITE DOWN WHAT YOU’RE LEARNING.",
+      "THANK HIM INTENTIONALLY.",
+      "PRACTICE WHAT JESUS TAUGHT.",
+      "END THE DAY IN PRAYER.",
+      "",
+      "YOU DON’T BUILD A RELATIONSHIP WITH GOD IN ONE HUGE MOMENT.",
+      "YOU BUILD IT BY RETURNING TO HIM EVERY DAY."
+    ],
+    "bg": "06.mp4",
+    "preview": "t-f8568973-26a0-4478-930d-c1cfef2252ae.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-ce2b9f68-4aa5-4346-afd8-ac7c10c18c42",
+    "sourceId": "ce2b9f68-4aa5-4346-afd8-ac7c10c18c42",
+    "score": 113,
+    "posted": "2026-10-22",
+    "sourceText": "I may feel like I'm barely holding on...\n\nbut I'm holding on to Jesus.\n\nThat's enough.",
+    "title": "Holding On",
+    "lines": [
+      "I MAY FEEL LIKE I'M BARELY HOLDING ON...",
+      "but I'm holding on to Jesus.",
+      "That's enough."
+    ],
+    "bg": "07.mp4",
+    "preview": "t-ce2b9f68-4aa5-4346-afd8-ac7c10c18c42.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-59d0ba3a-742e-4bab-b650-8e6ab84772b5",
+    "sourceId": "59d0ba3a-742e-4bab-b650-8e6ab84772b5",
+    "score": 113,
+    "posted": "2026-10-15",
+    "sourceText": "You can be at your lowest point and feel like nothing can change, and then all of a sudden, the very next moment, God gives you the very thing you’ve been praying about.",
+    "title": "Unexpected Blessings",
+    "lines": [
+      "You can be at your lowest point",
+      "and feel like nothing can change,",
+      "and then all of a sudden,",
+      "the very next moment,",
+      "God gives you the very thing",
+      "you’ve been praying about."
+    ],
+    "bg": "08.mp4",
+    "preview": "t-59d0ba3a-742e-4bab-b650-8e6ab84772b5.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2a571445-8c19-469c-a282-fd2d38a0fb16",
+    "sourceId": "2a571445-8c19-469c-a282-fd2d38a0fb16",
+    "score": 113,
+    "posted": "2026-09-27",
+    "sourceText": "Normalize seeking God for strategy, not just miracles.",
+    "title": "Seeking God for Strategy",
+    "lines": [
+      "Normalize seeking God",
+      "for strategy,",
+      "not just miracles."
+    ],
+    "bg": "09.mp4",
+    "preview": "t-2a571445-8c19-469c-a282-fd2d38a0fb16.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-f2da559d-4e70-46e0-a860-b05342f7ac98",
+    "sourceId": "f2da559d-4e70-46e0-a860-b05342f7ac98",
+    "score": 113,
+    "posted": "2026-09-05",
+    "sourceText": "You don't have to convince everybody.\nTell them about Jesus.\nLet the Holy Spirit do what you can't.",
+    "title": "Let The Spirit Work",
+    "lines": [
+      "YOU DON'T HAVE TO CONVINCE EVERYBODY.",
+      "Tell them about Jesus.",
+      "Let the Holy Spirit do what you can't."
+    ],
+    "bg": "10.mp4",
+    "preview": "t-f2da559d-4e70-46e0-a860-b05342f7ac98.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-877b2bdc-7b15-4e4b-b139-ce8ce13fa368",
+    "sourceId": "877b2bdc-7b15-4e4b-b139-ce8ce13fa368",
+    "score": 113,
+    "posted": "2026-10-15",
+    "sourceText": "Faith gets real when you don't know how it's going to work out…\nbut you still trust God anyway.",
+    "title": "Real Faith",
+    "lines": [
+      "Faith gets real",
+      "when you don't know",
+      "how it's going to work out…",
+      "but you still trust God anyway."
+    ],
+    "bg": "11.mp4",
+    "preview": "t-877b2bdc-7b15-4e4b-b139-ce8ce13fa368.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-da788077-da11-41f9-b09a-12e24669eee2",
+    "sourceId": "da788077-da11-41f9-b09a-12e24669eee2",
+    "score": 112,
+    "posted": "2026-09-12",
+    "sourceText": "Before you run to your phone.\nBefore you call your friends.\nBefore you trust your feelings.\nRun to God.",
+    "title": "Run To God",
+    "lines": [
+      "BEFORE YOU RUN TO YOUR PHONE.",
+      "BEFORE YOU CALL YOUR FRIENDS.",
+      "BEFORE YOU TRUST YOUR FEELINGS.",
+      "RUN TO GOD."
+    ],
+    "bg": "12.mp4",
+    "preview": "t-da788077-da11-41f9-b09a-12e24669eee2.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-fc99426f-b063-4325-8eed-6cb2722ab326",
+    "sourceId": "fc99426f-b063-4325-8eed-6cb2722ab326",
+    "score": 112,
+    "posted": "2026-08-22",
+    "sourceText": "🤔 Genuine question for my fellow believers.\n\nWhen was the last time you prayed without asking God for anything?\n\nNo requests. No list. No emergency.\n\nJust talking to Him because He's God and you love Him.\n\nI checked myself on this last week and honestly… it had been a while.",
+    "title": "Prayer Reflection",
+    "lines": [
+      "GENUINE QUESTION FOR MY FELLOW BELIEVERS.",
+      "",
+      "When was the last time you prayed without asking God for anything?",
+      "No requests. No list. No emergency.",
+      "Just talking to Him because He's God and you love Him.",
+      "I checked myself on this last week and honestly… it had been a while."
+    ],
+    "bg": "13.mp4",
+    "preview": "t-fc99426f-b063-4325-8eed-6cb2722ab326.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-dca2210a-511b-4373-a3d9-c42f2a570c4d",
+    "sourceId": "dca2210a-511b-4373-a3d9-c42f2a570c4d",
+    "score": 112,
+    "posted": "2026-10-18",
+    "sourceText": "Sometimes I look at who I used to be and barely recognize that person.\nGod really changes people.",
+    "title": "Transformation Reflection",
+    "lines": [
+      "Sometimes I look at who I used to be",
+      "and barely recognize that person.",
+      "God really changes people."
+    ],
+    "bg": "14.mp4",
+    "preview": "t-dca2210a-511b-4373-a3d9-c42f2a570c4d.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-527a7808-381f-49f5-8aca-96341e57e2d4",
+    "sourceId": "527a7808-381f-49f5-8aca-96341e57e2d4",
+    "score": 112,
+    "posted": "2026-09-26",
+    "sourceText": "5 Signs You’re Becoming More Sensitive to the Holy Spirit\n\n❤️ Conviction comes faster.\n🙏 You pray before reacting.\n📖 Scripture comes to mind in everyday situations.\n🗣️ You notice when your words don’t reflect Christ.\n👣 You respond to correction instead of immediately defending yourself.\n\nGrowth is when you start noticing things the old you would’ve walked right past.",
+    "title": "Signs of Sensitivity",
+    "lines": [
+      "CONVICTION COMES FASTER.",
+      "YOU PRAY BEFORE REACTING.",
+      "SCRIPTURE COMES TO MIND IN EVERYDAY SITUATIONS.",
+      "YOU NOTICE WHEN YOUR WORDS DON’T REFLECT CHRIST.",
+      "YOU RESPOND TO CORRECTION INSTEAD OF IMMEDIATELY DEFENDING YOURSELF.",
+      "Growth is when you start noticing things the old you would’ve walked right past."
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-527a7808-381f-49f5-8aca-96341e57e2d4.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-5a16fa2c-157a-40e3-a314-7fe85f9d3d5f",
+    "sourceId": "5a16fa2c-157a-40e3-a314-7fe85f9d3d5f",
+    "score": 111,
+    "posted": "2026-09-25",
+    "sourceText": "7 Signs the Holy Spirit Is Working in Your Life\n\n❤️ Your desires are changing.\n🙏 You’re drawn toward prayer.\n📖 Scripture is becoming clearer.\n🗣️ You’re convicted about things you once ignored.\n🤝 You’re learning to love difficult people.\n🌱 Spiritual fruit is growing.\n👣 You want to obey God, not just know about Him.\n\nGod’s work in you doesn’t always arrive with fireworks.",
+    "title": "Signs of the Spirit",
+    "lines": [
+      "YOUR DESIRES ARE CHANGING.",
+      "YOU’RE DRAWN TOWARD PRAYER.",
+      "SCRIPTURE IS BECOMING CLEARER.",
+      "YOU’RE CONVICTED ABOUT THINGS YOU ONCE IGNORED.",
+      "YOU’RE LEARNING TO LOVE DIFFICULT PEOPLE.",
+      "SPIRITUAL FRUIT IS GROWING.",
+      "YOU WANT TO OBEY GOD, NOT JUST KNOW ABOUT HIM.",
+      "God’s work in you doesn’t always arrive with fireworks."
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-5a16fa2c-157a-40e3-a314-7fe85f9d3d5f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-de036598-58e5-4ee6-9307-378f9b0a7345",
+    "sourceId": "de036598-58e5-4ee6-9307-378f9b0a7345",
+    "score": 110,
+    "posted": "2026-08-20",
+    "sourceText": "Ignoring the Holy Spirit will eventually cost you more than obedience ever would.",
+    "title": "Cost of Disobedience",
+    "lines": [
+      "Ignoring the Holy Spirit",
+      "will eventually cost you",
+      "more than obedience",
+      "ever would."
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-de036598-58e5-4ee6-9307-378f9b0a7345.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-4adc4cc9-4fe5-4e96-9833-fb8ca56446c3",
+    "sourceId": "4adc4cc9-4fe5-4e96-9833-fb8ca56446c3",
+    "score": 110,
+    "posted": "2026-10-21",
+    "sourceText": "7 Signs God Is Removing Something for a Reason\n\n🚪 Doors keep closing no matter how hard you push.\n🕊️ You no longer have peace about it.\n🙏 Your prayers about it begin to change.\n❤️ Your heart is slowly letting go.\n👀 God starts showing you things you ignored before.\n🌱 You’re growing beyond what once fit you.\n➡️ A different direction keeps opening up.\n\nNot everything you lose was meant to follow you into your next season.",
+    "title": "Signs of Change",
+    "lines": [
+      "DOORS KEEP CLOSING",
+      "no matter how hard you push.",
+      "",
+      "YOU NO LONGER HAVE PEACE",
+      "about it.",
+      "",
+      "YOUR PRAYERS ABOUT IT",
+      "begin to change.",
+      "",
+      "YOUR HEART IS SLOWLY LETTING GO.",
+      "",
+      "GOD STARTS SHOWING YOU THINGS",
+      "you ignored before.",
+      "",
+      "YOU’RE GROWING BEYOND",
+      "what once fit you.",
+      "",
+      "A DIFFERENT DIRECTION",
+      "keeps opening up.",
+      "",
+      "Not everything you lose",
+      "was meant to follow you into your next season."
+    ],
+    "bg": "s04.mp4",
+    "preview": "t-4adc4cc9-4fe5-4e96-9833-fb8ca56446c3.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-e691cbf7-8751-4cc0-b329-f2fd579d56da",
+    "sourceId": "e691cbf7-8751-4cc0-b329-f2fd579d56da",
+    "score": 110,
+    "posted": "2026-10-14",
+    "sourceText": "Sometimes God’s answer is removing your appetite for the thing you kept begging Him for.",
+    "title": "God's Answers",
+    "lines": [
+      "Sometimes God’s answer",
+      "is removing your appetite",
+      "for the thing you kept",
+      "begging Him for."
+    ],
+    "bg": "s06.mp4",
+    "preview": "t-e691cbf7-8751-4cc0-b329-f2fd579d56da.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-1ca0ccc2-1cb2-4769-b518-4b0b9fba54b3",
+    "sourceId": "1ca0ccc2-1cb2-4769-b518-4b0b9fba54b3",
+    "score": 110,
+    "posted": "2026-09-26",
+    "sourceText": "Jesus isn't one part of my life.\nHe's the reason behind all of it.\nMy decisions.\nMy direction.\nMy purpose.",
+    "title": "Jesus Is Everything",
+    "lines": [
+      "JESUS ISN'T ONE PART OF MY LIFE.",
+      "HE'S THE REASON BEHIND ALL OF IT.",
+      "MY DECISIONS.",
+      "MY DIRECTION.",
+      "MY PURPOSE."
+    ],
+    "bg": "s07.mp4",
+    "preview": "t-1ca0ccc2-1cb2-4769-b518-4b0b9fba54b3.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-9501ce44-8944-4761-972a-6c072869f2a0",
+    "sourceId": "9501ce44-8944-4761-972a-6c072869f2a0",
+    "score": 110,
+    "posted": "2026-09-01",
+    "sourceText": "If Christians damaged your faith, your faith may have been built around Christians instead of Christ.",
+    "title": "Faith vs. Christians",
+    "lines": [
+      "If Christians damaged your faith,",
+      "your faith may have been built",
+      "around Christians instead of Christ."
+    ],
+    "bg": "s08.mp4",
+    "preview": "t-9501ce44-8944-4761-972a-6c072869f2a0.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-b96269aa-56cd-45c4-a965-f7d0b88f3902",
+    "sourceId": "b96269aa-56cd-45c4-a965-f7d0b88f3902",
+    "score": 109,
+    "posted": "2026-09-24",
+    "sourceText": "Peter started sinking.\n\nJesus didn’t stand there saying, “I told you so.”\nHe reached for him.\nRemember that when you mess up.",
+    "title": "Grace in Failure",
+    "lines": [
+      "Peter started sinking.",
+      "Jesus didn’t stand there saying,",
+      "“I told you so.”",
+      "He reached for him.",
+      "Remember that when you mess up."
+    ],
+    "bg": "s09.mp4",
+    "preview": "t-b96269aa-56cd-45c4-a965-f7d0b88f3902.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-77950fd5-d3c3-460e-a093-24665997c3bc",
+    "sourceId": "77950fd5-d3c3-460e-a093-24665997c3bc",
+    "score": 109,
+    "posted": "2026-08-23",
+    "sourceText": "Ignoring the Holy Spirit will eventually cost you more than obedience ever would.",
+    "title": "Cost of Disobedience",
+    "lines": [
+      "IGNORING THE HOLY SPIRIT",
+      "will eventually cost you",
+      "more than obedience",
+      "ever would."
+    ],
+    "bg": "s10.mp4",
+    "preview": "t-77950fd5-d3c3-460e-a093-24665997c3bc.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-9f59fd42-ef4e-43a1-b318-346be8ba8c73",
+    "sourceId": "9f59fd42-ef4e-43a1-b318-346be8ba8c73",
+    "score": 109,
+    "posted": "2026-09-14",
+    "sourceText": "Reading Scripture shows you the words.\nStudying Scripture helps you uncover the treasure inside them.",
+    "title": "Scripture Insights",
+    "lines": [
+      "Reading Scripture shows you the words.",
+      "",
+      "Studying Scripture helps you uncover the treasure inside them."
+    ],
+    "bg": "s11.mp4",
+    "preview": "t-9f59fd42-ef4e-43a1-b318-346be8ba8c73.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-57cbfc55-79b8-4cc9-b645-8f1699370d1d",
+    "sourceId": "57cbfc55-79b8-4cc9-b645-8f1699370d1d",
+    "score": 109,
+    "posted": "2026-07-26",
+    "sourceText": "Just because you can't see God moving doesn't mean He isn't.\nKeep praying.\nKeep trusting.\nKeep waiting.",
+    "title": "Trusting God's Timing",
+    "lines": [
+      "JUST BECAUSE YOU CAN'T SEE GOD MOVING",
+      "DOESN'T MEAN HE ISN'T.",
+      "",
+      "KEEP PRAYING.",
+      "KEEP TRUSTING.",
+      "KEEP WAITING."
+    ],
+    "bg": "s12.mp4",
+    "preview": "t-57cbfc55-79b8-4cc9-b645-8f1699370d1d.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-21f6d0d4-eaa6-4c9d-b2b2-96cc2528ba11",
+    "sourceId": "21f6d0d4-eaa6-4c9d-b2b2-96cc2528ba11",
+    "score": 109,
+    "posted": "2026-10-12",
+    "sourceText": "When I was younger, I didn’t understand why people cried when they prayed.\n\nNow I do…\n\nBecause when life really hits you, you don’t have answers anymore… you just fall to your knees and give it all to God, because He’s the only one who can actually heal it.",
+    "title": "Understanding Prayer",
+    "lines": [
+      "When I was younger,",
+      "I didn’t understand why people cried when they prayed.",
+      "Now I do…",
+      "Because when life really hits you,",
+      "you don’t have answers anymore…",
+      "you just fall to your knees and give it all to God,",
+      "because He’s the only one who can actually heal it."
+    ],
+    "bg": "s13.mp4",
+    "preview": "t-21f6d0d4-eaa6-4c9d-b2b2-96cc2528ba11.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-dc9b9493-ac4b-475e-ac3b-ad49a23a4741",
+    "sourceId": "dc9b9493-ac4b-475e-ac3b-ad49a23a4741",
+    "score": 108,
+    "posted": "2026-06-21",
+    "sourceText": "5 warning signs you’re drifting away from God\n\n1. Prayer feels optional now \n2. Conviction doesn’t hit like it used to \n3. You spend more time feeding the flesh than the spirit \n4. Sin feels easier to justify \n5. You only seek God when life gets hard \n\nNobody drifts toward God accidentally.\n\nIt takes intention.",
+    "title": "Warning Signs",
+    "lines": [
+      "5 WARNING SIGNS YOU’RE DRIFTING AWAY FROM GOD",
+      "1. Prayer feels optional now",
+      "2. Conviction doesn’t hit like it used to",
+      "3. You spend more time feeding the flesh than the spirit",
+      "4. Sin feels easier to justify",
+      "5. You only seek God when life gets hard",
+      "Nobody drifts toward God accidentally.",
+      "It takes intention."
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-dc9b9493-ac4b-475e-ac3b-ad49a23a4741.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6335f2ed-c3fb-4f61-886c-964e94493643",
+    "sourceId": "6335f2ed-c3fb-4f61-886c-964e94493643",
+    "score": 108,
+    "posted": "2026-07-04",
+    "sourceText": "Quick Bible Challenge 📖\n\nGod changed the names of several people in the Bible.\n\nCan you name one?\n\n👇 Put your answer in the comments.",
+    "title": "Bible Name Changes",
+    "lines": [
+      "God changed the names",
+      "of several people",
+      "in the Bible.",
+      "Can you name one?"
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-6335f2ed-c3fb-4f61-886c-964e94493643.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-bd08c931-e1be-4d66-98d9-f58025a658a1",
+    "sourceId": "bd08c931-e1be-4d66-98d9-f58025a658a1",
+    "score": 108,
+    "posted": "2026-08-17",
+    "sourceText": "Ignoring the Holy Spirit will eventually cost you more than obedience ever would.",
+    "title": "Cost of Disobedience",
+    "lines": [
+      "Ignoring the Holy Spirit",
+      "will eventually cost you",
+      "more than obedience",
+      "ever would."
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-bd08c931-e1be-4d66-98d9-f58025a658a1.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2577105c-ce27-496c-8cfd-fe231909d2cf",
+    "sourceId": "2577105c-ce27-496c-8cfd-fe231909d2cf",
+    "score": 108,
+    "posted": "2026-09-23",
+    "sourceText": "LIFE HACK: The more you trust God, the less you panic about things.",
+    "title": "Trust and Peace",
+    "lines": [
+      "LIFE HACK:",
+      "The more you trust God,",
+      "the less you panic about things."
+    ],
+    "bg": "01.mp4",
+    "preview": "t-2577105c-ce27-496c-8cfd-fe231909d2cf.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-491a0afd-29bc-49e5-82d9-061f39b8a795",
+    "sourceId": "491a0afd-29bc-49e5-82d9-061f39b8a795",
+    "score": 107,
+    "posted": "2026-10-13",
+    "sourceText": "Ok I’m sold on Claude…. Just canceled my Chat GPT subscription…",
+    "title": "Switching to Claude",
+    "lines": [
+      "OK I’M SOLD ON CLAUDE…",
+      "JUST CANCELED MY CHAT GPT SUBSCRIPTION…"
+    ],
+    "bg": "02.mp4",
+    "preview": "t-491a0afd-29bc-49e5-82d9-061f39b8a795.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-6a65af8a-e5b4-4386-9147-05f6c41532b6",
+    "sourceId": "6a65af8a-e5b4-4386-9147-05f6c41532b6",
+    "score": 107,
+    "posted": "2026-09-27",
+    "sourceText": "Before asking everybody what they think…\nask God.",
+    "title": "Ask God First",
+    "lines": [
+      "Before asking everybody what they think…",
+      "ask God."
+    ],
+    "bg": "03.mp4",
+    "preview": "t-6a65af8a-e5b4-4386-9147-05f6c41532b6.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-711f49df-faaa-4a87-8f3b-bce297c01243",
+    "sourceId": "711f49df-faaa-4a87-8f3b-bce297c01243",
+    "score": 107,
+    "posted": "2026-06-30",
+    "sourceText": "Stop asking God to speak when your Bible’s been closed all week.",
+    "title": "Open Your Bible",
+    "lines": [
+      "Stop asking God to speak",
+      "when your Bible’s been closed",
+      "all week."
+    ],
+    "bg": "04.mp4",
+    "preview": "t-711f49df-faaa-4a87-8f3b-bce297c01243.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-e7c2a098-7862-4636-ba88-ef73a263f5e0",
+    "sourceId": "e7c2a098-7862-4636-ba88-ef73a263f5e0",
+    "score": 107,
+    "posted": "2026-10-13",
+    "sourceText": "Reading Scripture shows you the words.\nStudying Scripture helps you uncover the treasure inside them.",
+    "title": "Words vs. Treasure",
+    "lines": [
+      "Reading Scripture shows you the words.",
+      "Studying Scripture helps you uncover the treasure inside them."
+    ],
+    "bg": "05.mp4",
+    "preview": "t-e7c2a098-7862-4636-ba88-ef73a263f5e0.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-e25b8121-c7c4-40fc-8b75-8b1f7d4459d2",
+    "sourceId": "e25b8121-c7c4-40fc-8b75-8b1f7d4459d2",
+    "score": 107,
+    "posted": "2026-10-17",
+    "sourceText": "Hold on.\nYou may not understand what God is doing yet.\nDon't let fear convince you that He doesn't know what He's doing.",
+    "title": "Trusting God's Plan",
+    "lines": [
+      "HOLD ON.",
+      "You may not understand what God is doing yet.",
+      "Don't let fear convince you that He doesn't know what He's doing."
+    ],
+    "bg": "06.mp4",
+    "preview": "t-e25b8121-c7c4-40fc-8b75-8b1f7d4459d2.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-80663012-4e58-4c64-8a27-63e2b48c99ea",
+    "sourceId": "80663012-4e58-4c64-8a27-63e2b48c99ea",
+    "score": 106,
+    "posted": "2026-10-17",
+    "sourceText": "Unpopular Bible Verse:\n\n“A person’s own folly leads to their ruin, yet their heart rages against the Lord.”\n\nProverbs 19:3",
+    "title": "Unpopular Bible Verse",
+    "lines": [
+      "A PERSON’S OWN FOLLY",
+      "LEADS TO THEIR RUIN,",
+      "YET THEIR HEART RAGES",
+      "AGAINST THE LORD."
+    ],
+    "bg": "07.mp4",
+    "preview": "t-80663012-4e58-4c64-8a27-63e2b48c99ea.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-de00e1f7-148d-43cb-9883-4fc3f444eb33",
+    "sourceId": "de00e1f7-148d-43cb-9883-4fc3f444eb33",
+    "score": 106,
+    "posted": "2026-07-23",
+    "sourceText": "Anybody else be excited to read their Bible 😂",
+    "title": "Excitement For Scripture",
+    "lines": [
+      "ANYBODY ELSE BE EXCITED",
+      "TO READ THEIR BIBLE?",
+      "😂"
+    ],
+    "bg": "08.mp4",
+    "preview": "t-de00e1f7-148d-43cb-9883-4fc3f444eb33.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-3b9ac567-4db7-48be-98fe-34ddbb2e309d",
+    "sourceId": "3b9ac567-4db7-48be-98fe-34ddbb2e309d",
+    "score": 106,
+    "posted": "2026-07-14",
+    "sourceText": "Genesis 1:3 to 5 records the very first day of creation.\n\nAt first glance, it seems like God simply created light.\n\nBut these three verses reveal so much more.\n\nLet's break them down together. 🧵",
+    "title": "First Day of Creation",
+    "lines": [
+      "GENESIS 1:3 TO 5",
+      "records the very first day of creation.",
+      "At first glance, it seems like God simply created light.",
+      "But these three verses reveal so much more.",
+      "Let's break them down together."
+    ],
+    "bg": "09.mp4",
+    "preview": "t-3b9ac567-4db7-48be-98fe-34ddbb2e309d.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-45c4dfdb-38be-4622-9fc8-696b54ae55ca",
+    "sourceId": "45c4dfdb-38be-4622-9fc8-696b54ae55ca",
+    "score": 106,
+    "posted": "2026-08-24",
+    "sourceText": "I’m convinced that going to the gym and reading the Bible can fix almost everything wrong with your life.\n\nThe gym teaches you discipline.\n\nThe Bible teaches you wisdom.\n\nThe gym helps you control your body.\n\nThe Bible helps you control your mind.\n\nOne makes you physically stronger. The other makes you spiritually stronger.\n\nDo both consistently, and you will barely recognize the person you used to be.",
+    "title": "Gym And Bible",
+    "lines": [
+      "I’m convinced that going to the gym and reading the Bible can fix almost everything wrong with your life.",
+      "",
+      "The gym teaches you discipline.",
+      "The Bible teaches you wisdom.",
+      "",
+      "The gym helps you control your body.",
+      "The Bible helps you control your mind.",
+      "",
+      "One makes you physically stronger.",
+      "The other makes you spiritually stronger.",
+      "",
+      "Do both consistently, and you will barely recognize the person you used to be."
+    ],
+    "bg": "10.mp4",
+    "preview": "t-45c4dfdb-38be-4622-9fc8-696b54ae55ca.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-2210ebb8-7f96-4b6d-87e3-1b5e9c8c508f",
+    "sourceId": "2210ebb8-7f96-4b6d-87e3-1b5e9c8c508f",
+    "score": 105,
+    "posted": "2026-09-10",
+    "sourceText": "Pray before it.\nPray during it.\nPray through it.",
+    "title": "The Power of Prayer",
+    "lines": [
+      "Pray before it.",
+      "Pray during it.",
+      "Pray through it."
+    ],
+    "bg": "11.mp4",
+    "preview": "t-2210ebb8-7f96-4b6d-87e3-1b5e9c8c508f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-17ebc45b-1fe9-4d2d-87d1-ff9b169539e5",
+    "sourceId": "17ebc45b-1fe9-4d2d-87d1-ff9b169539e5",
+    "score": 105,
+    "posted": "2026-10-11",
+    "sourceText": "Somebody disagreeing with you isn’t automatically somebody disrespecting you.\nCan you receive correction without turning it into a fight?",
+    "title": "Disagreement vs. Disrespect",
+    "lines": [
+      "Somebody disagreeing with you",
+      "isn’t automatically somebody",
+      "disrespecting you.",
+      "Can you receive correction",
+      "without turning it into a fight?"
+    ],
+    "bg": "12.mp4",
+    "preview": "t-17ebc45b-1fe9-4d2d-87d1-ff9b169539e5.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-67b49dcc-eabd-4c4f-8b9b-fb7c4fd62f27",
+    "sourceId": "67b49dcc-eabd-4c4f-8b9b-fb7c4fd62f27",
+    "score": 105,
+    "posted": "2026-08-19",
+    "sourceText": "7 Prayers You Can Pray When You Don't Have The Words\n\n🗣️ \"God, help me.\"\n😔 \"Lord, I'm tired.\"\n🙏 \"Jesus, I need You.\"\n😭 \"Father, I don't understand.\"\n🤍 \"God, I trust You anyway.\"\n🕊️ \"Lord, give me peace.\"\n✝️ \"Jesus, thank You.\"\n\nYou don't need fancy words. You just need an honest heart.",
+    "title": "Simple Honest Prayers",
+    "lines": [
+      "\"God, help me.\"",
+      "\"Lord, I'm tired.\"",
+      "\"Jesus, I need You.\"",
+      "\"Father, I don't understand.\"",
+      "\"God, I trust You anyway.\"",
+      "\"Lord, give me peace.\"",
+      "\"Jesus, thank You.\"",
+      "You don't need fancy words.",
+      "You just need an honest heart."
+    ],
+    "bg": "13.mp4",
+    "preview": "t-67b49dcc-eabd-4c4f-8b9b-fb7c4fd62f27.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-4e0766da-41c8-48c0-9289-c9cc59caf03f",
+    "sourceId": "4e0766da-41c8-48c0-9289-c9cc59caf03f",
+    "score": 105,
+    "posted": "2026-06-05",
+    "sourceText": "Unpopular Bible Verse:\n\n“A person’s own folly leads to their ruin, yet their heart rages against the Lord.”\n\nProverbs 19:3",
+    "title": "Unpopular Bible Verse",
+    "lines": [
+      "A PERSON’S OWN FOLLY",
+      "LEADS TO THEIR RUIN,",
+      "YET THEIR HEART RAGES",
+      "AGAINST THE LORD."
+    ],
+    "bg": "14.mp4",
+    "preview": "t-4e0766da-41c8-48c0-9289-c9cc59caf03f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-38616fef-ee12-4868-ade1-2598a159f93f",
+    "sourceId": "38616fef-ee12-4868-ade1-2598a159f93f",
+    "score": 104,
+    "posted": "2026-09-04",
+    "sourceText": "You can love them.\nPray for them.\nEncourage them.\nTell them the truth.\nBut stop trying to do God's job.\nYou cannot change someone's heart.",
+    "title": "Let God Work",
+    "lines": [
+      "You can love them.",
+      "Pray for them.",
+      "Encourage them.",
+      "Tell them the truth.",
+      "But stop trying to do God's job.",
+      "You cannot change someone's heart."
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-38616fef-ee12-4868-ade1-2598a159f93f.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-b5ae21d7-ae18-435f-bd31-b52e96eeca03",
+    "sourceId": "b5ae21d7-ae18-435f-bd31-b52e96eeca03",
+    "score": 104,
+    "posted": "2026-06-28",
+    "sourceText": "Instead of trying to find yourself. \n\nOpen up the Bible & find God. \n\nThen you’ll truly know who you are. \n\nYour identity is found in God.",
+    "title": "Find Your Identity",
+    "lines": [
+      "Instead of trying to find yourself.",
+      "",
+      "Open up the Bible & find God.",
+      "",
+      "Then you’ll truly know who you are.",
+      "",
+      "Your identity is found in God."
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-b5ae21d7-ae18-435f-bd31-b52e96eeca03.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-f3ac4a75-eb03-4bee-971c-32076b12803e",
+    "sourceId": "f3ac4a75-eb03-4bee-971c-32076b12803e",
+    "score": 104,
+    "posted": "2026-09-25",
+    "sourceText": "non-believers don’t read the Bible, but they observe you, so be a reflection of Christ everywhere you go.",
+    "title": "Be A Reflection",
+    "lines": [
+      "NON-BELIEVERS DON’T READ THE BIBLE,",
+      "BUT THEY OBSERVE YOU,",
+      "SO BE A REFLECTION OF CHRIST",
+      "EVERYWHERE YOU GO."
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-f3ac4a75-eb03-4bee-971c-32076b12803e.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-dc0c1c41-53b5-403e-a2fb-f183c2ac951a",
+    "sourceId": "dc0c1c41-53b5-403e-a2fb-f183c2ac951a",
+    "score": 104,
+    "posted": "2026-06-25",
+    "sourceText": "Bro…\n\nI really thought capitalizing the G in “God” was one of those rules God gave Moses or something. 😂\n\nCome to find out, it’s not a biblical command at all.\n\nIt’s an English writing convention that Christians have adopted out of respect.\n\nI’m still gonna capitalize it.\n\nTo me, it’s like not putting stuff on top of your Bible or not laying your Bible on the floor.\n\nThe Bible doesn’t command it.\n\nIt’s just a simple way I choose to show respect to Big God.",
+    "title": "Respecting God",
+    "lines": [
+      "Bro…",
+      "I really thought capitalizing the G in 'God' was one of those rules God gave Moses or something. 😂",
+      "Come to find out, it’s not a biblical command at all.",
+      "It’s an English writing convention that Christians have adopted out of respect.",
+      "I’m still gonna capitalize it.",
+      "To me, it’s like not putting stuff on top of your Bible or not laying your Bible on the floor.",
+      "The Bible doesn’t command it.",
+      "It’s just a simple way I choose to show respect to Big God."
+    ],
+    "bg": "s04.mp4",
+    "preview": "t-dc0c1c41-53b5-403e-a2fb-f183c2ac951a.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-85a6abe0-f230-4c7a-9d84-e6f6632046e3",
+    "sourceId": "85a6abe0-f230-4c7a-9d84-e6f6632046e3",
+    "score": 103,
+    "posted": "2026-09-12",
+    "sourceText": "Some of the greatest peace you'll ever experience comes when you finally stop trying to control everything and give it to God.",
+    "title": "Finding Peace",
+    "lines": [
+      "Some of the greatest peace",
+      "you'll ever experience",
+      "comes when you finally stop",
+      "trying to control everything",
+      "and give it to God."
+    ],
+    "bg": "s06.mp4",
+    "preview": "t-85a6abe0-f230-4c7a-9d84-e6f6632046e3.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-87055c8b-9621-440a-92f5-8dbf79b10834",
+    "sourceId": "87055c8b-9621-440a-92f5-8dbf79b10834",
+    "score": 103,
+    "posted": "2026-07-16",
+    "sourceText": "Be grateful.\n\nYou're living in blessings that used to be prayer requests. 🙏🏽",
+    "title": "Gratitude Reminder",
+    "lines": [
+      "BE GRATEFUL.",
+      "You're living in blessings",
+      "that used to be prayer requests."
+    ],
+    "bg": "s07.mp4",
+    "preview": "t-87055c8b-9621-440a-92f5-8dbf79b10834.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-b4a56e23-c4f5-44a8-8b8c-1f9bf35d9bc9",
+    "sourceId": "b4a56e23-c4f5-44a8-8b8c-1f9bf35d9bc9",
+    "score": 102,
+    "posted": "2026-09-09",
+    "sourceText": "You can pray in a pew or pajamas, in traffic, in tears, or in total silence.\nGod doesn't need a location,\nHe just needs an invitation.",
+    "title": "The Power of Prayer",
+    "lines": [
+      "You can pray in a pew or pajamas,",
+      "in traffic, in tears,",
+      "or in total silence.",
+      "God doesn't need a location,",
+      "He just needs an invitation."
+    ],
+    "bg": "s08.mp4",
+    "preview": "t-b4a56e23-c4f5-44a8-8b8c-1f9bf35d9bc9.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-229365d4-88c0-4bc2-89da-40a86aab580c",
+    "sourceId": "229365d4-88c0-4bc2-89da-40a86aab580c",
+    "score": 102,
+    "posted": "2026-07-13",
+    "sourceText": "I'm not who I want to be yet.\n\nBut thank God I'm not who I used to be.\n\nThat's what walking with Jesus does.",
+    "title": "Transformation Journey",
+    "lines": [
+      "I'M NOT WHO I WANT TO BE YET.",
+      "",
+      "But thank God I'm not who I used to be.",
+      "",
+      "That's what walking with Jesus does."
+    ],
+    "bg": "s09.mp4",
+    "preview": "t-229365d4-88c0-4bc2-89da-40a86aab580c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-8d7ae46c-76c8-443b-bd5b-0b26b9b4ce71",
+    "sourceId": "8d7ae46c-76c8-443b-bd5b-0b26b9b4ce71",
+    "score": 102,
+    "posted": "2026-08-30",
+    "sourceText": "Ever thought of the Bible as your all-in-one guidebook? It's literally a dictionary, financial guidebook, health and wellness book, relationship and marriage book, action book, drama book wrapped all into one...",
+    "title": "Bible As Guidebook",
+    "lines": [
+      "Ever thought of the Bible as your all-in-one guidebook?",
+      "It's literally a dictionary,",
+      "financial guidebook,",
+      "health and wellness book,",
+      "relationship and marriage book,",
+      "action book, drama book wrapped all into one..."
+    ],
+    "bg": "s10.mp4",
+    "preview": "t-8d7ae46c-76c8-443b-bd5b-0b26b9b4ce71.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-e217df1d-7730-4833-bb3d-bc0231e0ae1a",
+    "sourceId": "e217df1d-7730-4833-bb3d-bc0231e0ae1a",
+    "score": 102,
+    "posted": "2026-09-07",
+    "sourceText": "Sometimes prayer is just laying there saying:\n\"God, none of this makes sense to me right now…\nbut I still trust You.\"",
+    "title": "Trusting Through Confusion",
+    "lines": [
+      "Sometimes prayer is just laying there saying:",
+      "\"God, none of this makes sense to me right now…",
+      "but I still trust You."
+    ],
+    "bg": "s11.mp4",
+    "preview": "t-e217df1d-7730-4833-bb3d-bc0231e0ae1a.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-d1e6eee2-ca52-4672-8c7d-9aa175d61399",
+    "sourceId": "d1e6eee2-ca52-4672-8c7d-9aa175d61399",
+    "score": 102,
+    "posted": "2026-10-15",
+    "sourceText": "God, I don’t need to know everything You’re doing.\n\nJust help me trust You while You do it.",
+    "title": "Trusting God",
+    "lines": [
+      "GOD, I DON’T NEED TO KNOW EVERYTHING YOU’RE DOING.",
+      "Just help me trust You while You do it."
+    ],
+    "bg": "s12.mp4",
+    "preview": "t-d1e6eee2-ca52-4672-8c7d-9aa175d61399.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-93230d87-5054-4f1f-940c-fdc081daa8df",
+    "sourceId": "93230d87-5054-4f1f-940c-fdc081daa8df",
+    "score": 101,
+    "posted": "2026-09-26",
+    "sourceText": "it’s not our job to convince people.\nit’s not our job to convict people.\nit’s not our job to save people.\nit’s not our job to convert people.\nit’s our job to love and tell people.\n\nthe convincing, convicting, converting, and saving is work of the Holy Spirit.",
+    "title": "Our Job Is Love",
+    "lines": [
+      "it’s not our job to convince people.",
+      "",
+      "it’s not our job to convict people.",
+      "",
+      "it’s not our job to save people.",
+      "",
+      "it’s not our job to convert people.",
+      "",
+      "it’s our job to love and tell people.",
+      "",
+      "the convincing, convicting, converting, and saving is work of the Holy Spirit."
+    ],
+    "bg": "s13.mp4",
+    "preview": "t-93230d87-5054-4f1f-940c-fdc081daa8df.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-8a62c68e-52df-4acf-80d8-c6eb8f1bb48c",
+    "sourceId": "8a62c68e-52df-4acf-80d8-c6eb8f1bb48c",
+    "score": 101,
+    "posted": "2026-10-19",
+    "sourceText": "The truth sounds like hate to those who hate the Truth…\n\nJesus is the Truth 🙌",
+    "title": "The Truth Hurts",
+    "lines": [
+      "The truth sounds like hate",
+      "to those who hate the Truth…",
+      "Jesus is the Truth"
+    ],
+    "bg": "s14.mp4",
+    "preview": "t-8a62c68e-52df-4acf-80d8-c6eb8f1bb48c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-eba95daf-9823-444e-b449-dcafd0f35502",
+    "sourceId": "eba95daf-9823-444e-b449-dcafd0f35502",
+    "score": 101,
+    "posted": "2026-10-17",
+    "sourceText": "7 Things Christians Say That Aren’t Actually Bible Verses\n\n📖 “God helps those who help themselves.”\n📖 “God won’t give you more than you can handle.”\n📖 “Everything happens for a reason.”\n📖 “Follow your heart.”\n📖 “God wants you to be happy.”\n📖 “Money is the root of all evil.”\n📖 “Cleanliness is next to godliness.”\n\nSomething sounding biblical doesn’t make it Scripture.",
+    "title": "Common Misconceptions",
+    "lines": [
+      "7 Things Christians Say",
+      "THAT AREN’T ACTUALLY BIBLE VERSES",
+      "“God helps those who help themselves.”",
+      "“God won’t give you more than you can handle.”",
+      "“Everything happens for a reason.”",
+      "“Follow your heart.”",
+      "“God wants you to be happy.”",
+      "“Money is the root of all evil.”",
+      "“Cleanliness is next to godliness.”",
+      "Something sounding biblical doesn’t make it Scripture."
+    ],
+    "bg": "s15.mp4",
+    "preview": "t-eba95daf-9823-444e-b449-dcafd0f35502.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-a3e2176c-064d-434f-8815-3eb6668d38fb",
+    "sourceId": "a3e2176c-064d-434f-8815-3eb6668d38fb",
+    "score": 100,
+    "posted": "2026-10-14",
+    "sourceText": "Proverbs 6 lists things God hates.\nA lying tongue is in there.\nSo is stirring up conflict between people.",
+    "title": "Things God Hates",
+    "lines": [
+      "Proverbs 6 lists things God hates.",
+      "A lying tongue is in there.",
+      "So is stirring up conflict between people."
+    ],
+    "bg": "s16.mp4",
+    "preview": "t-a3e2176c-064d-434f-8815-3eb6668d38fb.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-fc45cdea-2929-428e-ac4b-c620b47c3af3",
+    "sourceId": "fc45cdea-2929-428e-ac4b-c620b47c3af3",
+    "score": 100,
+    "posted": "2026-09-06",
+    "sourceText": "The enemy doesn't need you to stop calling yourself Christian.\nJust stay:\nBusy enough not to pray.\nGifted enough not to develop discipline.\nInformed enough to know Scripture but never live it.",
+    "title": "The Enemy's Strategy",
+    "lines": [
+      "The enemy doesn't need you to stop calling yourself Christian.",
+      "Just stay:",
+      "Busy enough not to pray.",
+      "Gifted enough not to develop discipline.",
+      "Informed enough to know Scripture but never live it."
+    ],
+    "bg": "01.mp4",
+    "preview": "t-fc45cdea-2929-428e-ac4b-c620b47c3af3.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-5dbc9da3-acf1-4cf1-b76e-131d3c29eee1",
+    "sourceId": "5dbc9da3-acf1-4cf1-b76e-131d3c29eee1",
+    "score": 100,
+    "posted": "2026-09-08",
+    "sourceText": "Satan knows Jesus is real too.\nBelieving Jesus exists isn't the same thing as surrendering your life to Him.\nThat hit me.",
+    "title": "Surrendering to Jesus",
+    "lines": [
+      "SATAN KNOWS JESUS IS REAL TOO.",
+      "Believing Jesus exists isn't the same thing",
+      "as surrendering your life to Him.",
+      "That hit me."
+    ],
+    "bg": "02.mp4",
+    "preview": "t-5dbc9da3-acf1-4cf1-b76e-131d3c29eee1.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-afee6e08-35a4-4da6-8aea-fda5dd6eb94e",
+    "sourceId": "afee6e08-35a4-4da6-8aea-fda5dd6eb94e",
+    "score": 100,
+    "posted": "2026-09-20",
+    "sourceText": "Reading your Bible before the world gets loud hits different.",
+    "title": "Quiet Time Reflection",
+    "lines": [
+      "Reading your Bible",
+      "before the world gets loud",
+      "hits different."
+    ],
+    "bg": "03.mp4",
+    "preview": "t-afee6e08-35a4-4da6-8aea-fda5dd6eb94e.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-09f856b0-2aba-4043-9e54-c10cd3eff26b",
+    "sourceId": "09f856b0-2aba-4043-9e54-c10cd3eff26b",
+    "score": 99,
+    "posted": "2026-07-16",
+    "sourceText": "Christian to Christian…\n\nNEVER underestimate what GOD can do between your prayer and your next sunrise.",
+    "title": "God's Power",
+    "lines": [
+      "NEVER underestimate",
+      "what GOD can do",
+      "between your prayer",
+      "and your next sunrise."
+    ],
+    "bg": "04.mp4",
+    "preview": "t-09f856b0-2aba-4043-9e54-c10cd3eff26b.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-42abf1db-68ad-4650-83fd-44945c67d021",
+    "sourceId": "42abf1db-68ad-4650-83fd-44945c67d021",
+    "score": 99,
+    "posted": "2026-09-25",
+    "sourceText": "Anybody else notice how your whole week feels heavier after just a couple of mornings of skipping time in the Word?",
+    "title": "Heavier Weeks",
+    "lines": [
+      "ANYBODY ELSE NOTICE",
+      "how your whole week",
+      "feels heavier",
+      "after just a couple of mornings",
+      "of skipping time in the Word?"
+    ],
+    "bg": "05.mp4",
+    "preview": "t-42abf1db-68ad-4650-83fd-44945c67d021.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-14bfada6-956f-43c3-80ae-504c3859c8d9",
+    "sourceId": "14bfada6-956f-43c3-80ae-504c3859c8d9",
+    "score": 99,
+    "posted": "2026-09-21",
+    "sourceText": "Christians ✝️\n\nDo you believe Christians are required to give 10% of their income to the church?",
+    "title": "Tithing Debate",
+    "lines": [
+      "Do you believe",
+      "Christians are required",
+      "to give 10%",
+      "of their income",
+      "to the church?"
+    ],
+    "bg": "06.mp4",
+    "preview": "t-14bfada6-956f-43c3-80ae-504c3859c8d9.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-7acc68b4-b4c0-4242-aa9a-3395866a21f2",
+    "sourceId": "7acc68b4-b4c0-4242-aa9a-3395866a21f2",
+    "score": 99,
+    "posted": "2026-09-21",
+    "sourceText": "Before blaming the world for rejecting Christianity…\nwe should probably ask ourselves whether we're actually reflecting Christ.",
+    "title": "Reflecting Christ",
+    "lines": [
+      "Before blaming the world",
+      "for rejecting Christianity…",
+      "we should probably ask ourselves",
+      "whether we're actually reflecting Christ."
+    ],
+    "bg": "07.mp4",
+    "preview": "t-7acc68b4-b4c0-4242-aa9a-3395866a21f2.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-9f01b87f-625a-40b8-b070-660f576bdef3",
+    "sourceId": "9f01b87f-625a-40b8-b070-660f576bdef3",
+    "score": 99,
+    "posted": "2026-09-03",
+    "sourceText": "If God says wait, you can't force it.\nWhen God says go, nobody can stop it.",
+    "title": "Divine Timing",
+    "lines": [
+      "If God says wait, you can't force it.",
+      "When God says go, nobody can stop it."
+    ],
+    "bg": "08.mp4",
+    "preview": "t-9f01b87f-625a-40b8-b070-660f576bdef3.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-37450dfe-c7ee-47e9-af7a-f4208bfa2657",
+    "sourceId": "37450dfe-c7ee-47e9-af7a-f4208bfa2657",
+    "score": 98,
+    "posted": "2026-09-09",
+    "sourceText": "Somebody is praying for things you woke up with today.\nDon't let familiarity make you forget how blessed you are.",
+    "title": "Count Your Blessings",
+    "lines": [
+      "SOMEBODY IS PRAYING",
+      "FOR THINGS YOU WOKE UP WITH TODAY.",
+      "Don't let familiarity",
+      "make you forget",
+      "how blessed you are."
+    ],
+    "bg": "09.mp4",
+    "preview": "t-37450dfe-c7ee-47e9-af7a-f4208bfa2657.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-83134ac0-4f97-4520-bd20-41d1e6500d09",
+    "sourceId": "83134ac0-4f97-4520-bd20-41d1e6500d09",
+    "score": 98,
+    "posted": "2026-10-13",
+    "sourceText": "The Bible isn’t supposed to just give you something to post.\n\nIt’s supposed to give you something to live.",
+    "title": "Live The Bible",
+    "lines": [
+      "The Bible isn’t supposed to just give you something to post.",
+      "",
+      "It’s supposed to give you something to live."
+    ],
+    "bg": "10.mp4",
+    "preview": "t-83134ac0-4f97-4520-bd20-41d1e6500d09.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-cafe0bee-602f-47e6-a2cd-4345df22c490",
+    "sourceId": "cafe0bee-602f-47e6-a2cd-4345df22c490",
+    "score": 98,
+    "posted": "2026-07-07",
+    "sourceText": "7 signs you’re outgrowing your old life\n\n1. Sin doesn’t feel comfortable anymore \n2. You crave peace more than attention \n3. Certain friendships feel draining now \n4. You think long term instead of temporary \n5. Conviction hits quicker than before \n6. You care more about purpose than pleasure \n7. You’re becoming more intentional with your time \n\nGod changes your desires before He changes your situation.",
+    "title": "Signs of Growth",
+    "lines": [
+      "1. Sin doesn’t feel comfortable anymore",
+      "2. You crave peace more than attention",
+      "3. Certain friendships feel draining now",
+      "4. You think long term instead of temporary",
+      "5. Conviction hits quicker than before",
+      "6. You care more about purpose than pleasure",
+      "7. You’re becoming more intentional with your time",
+      "God changes your desires before He changes your situation."
+    ],
+    "bg": "11.mp4",
+    "preview": "t-cafe0bee-602f-47e6-a2cd-4345df22c490.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-ddaf84da-d902-4996-8f6f-cab12bf6873c",
+    "sourceId": "ddaf84da-d902-4996-8f6f-cab12bf6873c",
+    "score": 98,
+    "posted": "2026-09-11",
+    "sourceText": "God is bigger than your past.\nGod is bigger than your pain.\nGod is bigger than your anger.\nGod is bigger than your fears.\nGod is bigger than your scars.\nGod is bigger than your insecurities.\nGod is bigger than your doubt.\nGod is bigger than your sins.\nWhatever it is, God is bigger.",
+    "title": "God Is Bigger",
+    "lines": [
+      "GOD IS BIGGER THAN YOUR PAST.",
+      "God is bigger than your pain.",
+      "God is bigger than your anger.",
+      "God is bigger than your fears.",
+      "God is bigger than your scars.",
+      "God is bigger than your insecurities.",
+      "God is bigger than your doubt.",
+      "God is bigger than your sins.",
+      "Whatever it is, God is bigger."
+    ],
+    "bg": "12.mp4",
+    "preview": "t-ddaf84da-d902-4996-8f6f-cab12bf6873c.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-37a12fdb-2a6e-4306-a3a6-b33ed6908aa0",
+    "sourceId": "37a12fdb-2a6e-4306-a3a6-b33ed6908aa0",
+    "score": 98,
+    "posted": "2026-09-06",
+    "sourceText": "Jesus is my King.\nMy Lord.\nMy Savior.\nMy Teacher.\nMy Healer.\nMy Shepherd.\nMy Deliverer.\nJesus is my everything.",
+    "title": "Jesus Is My Everything",
+    "lines": [
+      "JESUS IS MY KING.",
+      "MY LORD.",
+      "MY SAVIOR.",
+      "MY TEACHER.",
+      "MY HEALER.",
+      "MY SHEPHERD.",
+      "MY DELIVERER.",
+      "JESUS IS MY EVERYTHING."
+    ],
+    "bg": "13.mp4",
+    "preview": "t-37a12fdb-2a6e-4306-a3a6-b33ed6908aa0.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-03cb3b35-c1d7-4564-acf5-ca35321f5511",
+    "sourceId": "03cb3b35-c1d7-4564-acf5-ca35321f5511",
+    "score": 98,
+    "posted": "2026-10-15",
+    "sourceText": "7 Signs the Bible Is Changing You\n\n🧠 Your thoughts are becoming different\n\n🗣️ You are more careful with your words\n\n💔 You recognize sin faster\n\n❤️ You are learning to forgive\n\n🙏 You pray before making decisions\n\n🕊️ You choose peace over arguments\n\n✝️ You want your life to reflect Jesus\n\nThe Bible was never meant to give us information alone.\n\nGod’s Word should transform how we think, speak, choose, and live.",
+    "title": "Signs of Transformation",
+    "lines": [
+      "YOUR LIFE IS CHANGING",
+      "",
+      "Your thoughts are becoming different",
+      "You are more careful with your words",
+      "You recognize sin faster",
+      "You are learning to forgive",
+      "You pray before making decisions",
+      "You choose peace over arguments",
+      "You want your life to reflect Jesus",
+      "",
+      "The Bible was never meant to give us information alone.",
+      "God’s Word should transform how we think, speak, choose, and live."
+    ],
+    "bg": "14.mp4",
+    "preview": "t-03cb3b35-c1d7-4564-acf5-ca35321f5511.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-f351a0d8-10fe-420f-86df-90f1722906bf",
+    "sourceId": "f351a0d8-10fe-420f-86df-90f1722906bf",
+    "score": 97,
+    "posted": "2026-09-06",
+    "sourceText": "Anybody else notice how everything starts feeling louder when you haven't opened your Bible in a few days?",
+    "title": "The Volume of Silence",
+    "lines": [
+      "ANYBODY ELSE NOTICE",
+      "HOW EVERYTHING STARTS FEELING LOUDER",
+      "WHEN YOU HAVEN'T OPENED YOUR BIBLE",
+      "IN A FEW DAYS?"
+    ],
+    "bg": "s01.mp4",
+    "preview": "t-f351a0d8-10fe-420f-86df-90f1722906bf.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-f8384cb1-b629-4684-b8a3-8450588d8841",
+    "sourceId": "f8384cb1-b629-4684-b8a3-8450588d8841",
+    "score": 97,
+    "posted": "2026-10-20",
+    "sourceText": "God, if I’m running ahead of You, slow me down.\n\nIf I’m afraid to move, push me forward.",
+    "title": "A Prayer For Guidance",
+    "lines": [
+      "God, if I’m running ahead of You,",
+      "slow me down.",
+      "",
+      "If I’m afraid to move,",
+      "push me forward."
+    ],
+    "bg": "s02.mp4",
+    "preview": "t-f8384cb1-b629-4684-b8a3-8450588d8841.jpg",
+    "status": "pending"
+  },
+  {
+    "id": "t-844ebde2-bc83-4965-b78e-c8ca4c2b04d7",
+    "sourceId": "844ebde2-bc83-4965-b78e-c8ca4c2b04d7",
+    "score": 96,
+    "posted": "2026-10-15",
+    "sourceText": "God, protect me from becoming so busy building my life that I stop building my relationship with You.",
+    "title": "A Prayer for Balance",
+    "lines": [
+      "God, protect me",
+      "from becoming so busy",
+      "building my life",
+      "that I stop building",
+      "my relationship with You."
+    ],
+    "bg": "s03.mp4",
+    "preview": "t-844ebde2-bc83-4965-b78e-c8ca4c2b04d7.jpg",
     "status": "pending"
   }
 ]

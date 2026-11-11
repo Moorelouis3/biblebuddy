@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { insertGroupPostWithRetry } from "@/lib/groupPostInsert";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -11,10 +10,8 @@ export const maxDuration = 30;
 // Louis, 2026-11-11: "can we also add bible insigths to be posted as me on the
 // feed in bible buddy also?"
 //
-// The nightly blog-group-post cron already does exactly this for articles, so
-// this follows it rather than inventing anything: same group lookup, same
-// author resolution, same insertGroupPostWithRetry, same skipInsertNotifications
-// (insert-time notification fanout reliably statement-times-out on that table).
+// One row in feed_posts, owned by Louis. The study group it used to post to no
+// longer exists - see the note above the insert.
 //
 // What it deliberately does NOT have is its own dedupe memory. Content Buddy's
 // publication table is keyed on (item_id, destination), so an insight reaches
@@ -66,19 +63,6 @@ function escapeHtml(value: string) {
 // Posts written in the app are stored as HTML paragraphs, with an empty <p></p>
 // for a blank line. The insight arrives as plain text with newlines, which the
 // opened-post view would otherwise collapse into one block.
-function textToHtml(content: string) {
-  const trimmed = content.trim();
-  if (/^\s*<(p|div|h[1-6]|ul|ol|blockquote)[\s>]/i.test(trimmed)) return trimmed;
-  return trimmed
-    .split("\n")
-    .map((line) => line.trim())
-    .map((line) => {
-      if (!line) return "<p></p>";
-      const bolded = escapeHtml(line).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
-      return `<p>${bolded}</p>`;
-    })
-    .join("");
-}
 
 export async function POST(request: NextRequest) {
   if (!isAuthorized(request)) {
@@ -108,22 +92,6 @@ export async function POST(request: NextRequest) {
     auth: { autoRefreshToken: false, persistSession: false },
   });
 
-  const { data: groups, error: groupError } = await supabaseAdmin
-    .from("study_groups")
-    .select("id, name, created_at")
-    .in("name", ["Bible Buddy Study Group", "Hope Nation"])
-    .order("created_at", { ascending: false });
-  if (groupError) {
-    return NextResponse.json({ error: groupError.message }, { status: 500 });
-  }
-  const targetGroup =
-    groups?.find((row) => row.name === "Bible Buddy Study Group") ??
-    groups?.find((row) => row.name === "Hope Nation") ??
-    null;
-  if (!targetGroup) {
-    return NextResponse.json({ error: "Official study group not found." }, { status: 404 });
-  }
-
   const louisUserId = await resolveLouisUserId(supabaseAdmin);
   const { data: profile } = await supabaseAdmin
     .from("profile_stats")
@@ -132,33 +100,54 @@ export async function POST(request: NextRequest) {
     .maybeSingle();
   const displayName = profile?.display_name || profile?.username || "Louis Moore";
 
+  // The feed, as Louis, and nothing else.
+  //
+  // Louis, 2026-11-11: "not the study group!!! we dont have a study group
+  // anymore its just the FEED!!!!!"
+  //
+  // This used to write a group_posts row and let insertGroupPostWithRetry
+  // mirror it into the feed. That mirror is deliberately authored by the Bible
+  // Buddy brand account - the right call in October, when every automatic post
+  // carried Louis's face and the wall read as one man talking to himself. But
+  // the study group is gone, the feed is the destination rather than a copy of
+  // one, and he wants his own insights under his own name.
+  //
+  // So: one row, in feed_posts, owned by him. No group row, because there is
+  // no group to own it.
+  //
+  // The feed has no title column, so the title becomes the first line of the
+  // body - the same shape feedBodyFromGroupPost produced for the mirror.
+  const feedBody = `${title}\n\n${content}`.trim();
+
   if (payload.dryRun) {
     return NextResponse.json({
       ok: true,
       dryRun: true,
-      groupId: targetGroup.id,
-      groupName: targetGroup.name,
+      destination: "feed",
       author: displayName,
+      authorUserId: louisUserId,
       title,
-      contentHtmlPreview: textToHtml(content).slice(0, 400),
+      bodyPreview: feedBody.slice(0, 400),
     });
   }
 
   try {
-    const postId = await insertGroupPostWithRetry(
-      supabaseAdmin,
-      {
-        group_id: targetGroup.id,
-        user_id: louisUserId,
-        display_name: displayName,
-        title,
-        category: "general",
-        content: textToHtml(content),
-        link_url: payload.linkUrl ?? null,
-      },
-      { skipInsertNotifications: true },
-    );
-    return NextResponse.json({ ok: true, postId, groupId: targetGroup.id, author: displayName });
+    const postId = crypto.randomUUID();
+    const { error } = await supabaseAdmin.from("feed_posts").insert({
+      id: postId,
+      user_id: louisUserId,
+      post_type: "thought",
+      content: feedBody,
+      media_url: null,
+      link_url: payload.linkUrl ?? null,
+      visibility: "community",
+      reaction_counts: {},
+      comment_count: 0,
+    });
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+    return NextResponse.json({ ok: true, postId, destination: "feed", author: displayName });
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "unknown" },
