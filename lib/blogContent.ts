@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-13-explained",
+    title: "Joshua 13 Explained: Still Very Much Land to Possess",
+    description:
+      "Joshua 13 explained verse by verse: God's charge to an aging Joshua, the land still unconquered, Reuben and Gad's territory, and why Levi got no land at all.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-13-explained",
+    publishedAt: "2026-11-11",
+    readTime: "13 min read",
+    image: "/blog-banners/joshua-13-explained.jpg",
+    groupPost: {
+      title: "Joshua 13 Explained 📖",
+      content:
+        "Joshua is old now.\nGod's first word to him is not comfort.\n\n📌 There is still very much land to possess.\n\n📖 God says divide it by lot before it is even cleared.\n📖 Two peoples were never driven out, and the text says so.\n📖 One tribe gets no land at all, only the LORD Himself.\n\nNew article on:\n🟢 why God reminds an **old leader** the work isn't done\n🟢 why Israel **never drove out** two named peoples\n🟢 why the **Levites** received no territory\n\nHave you ever been handed an unfinished job you thought was already done? 🙏",
+    },
+  },
+  {
     slug: "joshua-12-explained",
     title: "Joshua 12 Explained: The List of Every King Israel Defeated",
     description:
