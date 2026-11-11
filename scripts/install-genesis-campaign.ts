@@ -28,6 +28,24 @@ import { renderFridayLessonHtml, renderFridayLessonText } from "../lib/email/fri
 
 config({ path: ".env.local", quiet: true });
 
+/**
+ * RETIRED 2026-11-11. DO NOT RUN.
+ *
+ * Louis: "these six emails, besides the five welcome emails, are the only
+ * emails we're sending ... If it's not one of these six emails or the five
+ * ones, get rid of it."
+ *
+ * The four Genesis study emails had already gone out and their rows are kept
+ * as receipts, but this script would rewrite and re-date them. The four
+ * unsent siblings were deleted. Running this is the one way the decision gets
+ * undone by accident, so it refuses. If the campaign is ever wanted again,
+ * delete this block deliberately — do not route around it.
+ */
+if (!process.argv.includes("--yes-i-mean-it")) {
+  console.error("\n  RETIRED on 2026-11-11 on Louis's instruction. See the note above.\n");
+  process.exit(1);
+}
+
 const args = process.argv.slice(2);
 const has = (flag: string) => args.includes(flag);
 const value = (flag: string) => {
