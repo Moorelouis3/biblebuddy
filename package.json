@@ -71,7 +71,8 @@
     "verify:p2-stability": "tsx scripts/verify-p2-stability.ts",
     "verify:p3-cleanup": "tsx scripts/verify-p3-cleanup.ts",
     "verify:levels": "tsx scripts/verify-levels.ts",
-    "verify:welcome": "tsx scripts/verify-welcome-funnel.ts"
+    "verify:welcome": "tsx scripts/verify-welcome-funnel.ts",
+    "verify:email-links": "tsx scripts/verify-email-links.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",

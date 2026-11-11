@@ -235,6 +235,7 @@ export async function GET(request: NextRequest) {
         // unsubscribed cannot be reached by the funnel.
         unsubscribeUrl: unsubscribeUrl(person.email),
         tags: { campaign: step.campaignId },
+        campaignId: step.campaignId,
       });
       if (result.sent) {
         status = "sent";

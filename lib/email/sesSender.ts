@@ -1,4 +1,5 @@
 import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
+import { tagHtmlLinks, tagTextLinks } from "./linkTagging";
 import { createClient } from "@supabase/supabase-js";
 
 /**
@@ -100,6 +101,13 @@ export async function sendEmail(options: {
   unsubscribeUrl?: string;
   transactional?: boolean;
   tags?: Record<string, string>;
+  /**
+   * The campaign this send belongs to, used as utm_campaign so an arrival
+   * can be attributed. Separate from `tags` on purpose: an SES tag value is
+   * sanitised and capped at 60 characters, and a utm_campaign that no longer
+   * matches email_campaigns.campaign_id would not join to anything.
+   */
+  campaignId?: string;
 }): Promise<SendResult> {
   if (!sesSendingEnabled()) return { sent: false, reason: "disabled" };
 
@@ -127,8 +135,11 @@ export async function sendEmail(options: {
   // for that recipients own link here, so one placeholder serves every send.
   const withUnsub = (value: string) =>
     options.unsubscribeUrl ? value.split("{{UNSUBSCRIBE}}").join(options.unsubscribeUrl) : value;
-  const htmlBody = withUnsub(options.html);
-  const textBody = withUnsub(options.text);
+  // Tagged BEFORE the unsubscribe swap, which is what keeps the unsubscribe
+  // link out of the arrival numbers: at this point it is still a placeholder.
+  const campaignId = (options.campaignId || options.tags?.campaign || "").trim();
+  const htmlBody = withUnsub(tagHtmlLinks(options.html, campaignId));
+  const textBody = withUnsub(tagTextLinks(options.text, campaignId));
 
   try {
     const result = await sesClient().send(

@@ -269,6 +269,8 @@ export async function sendCampaign(options: {
         text: personalise(text, renderProgressSectionText(progress)),
         unsubscribeUrl: unsubscribeUrl(subscriber.email),
         tags: { campaign: campaignId.replace(/[^a-zA-Z0-9_-]/g, "-").slice(0, 60) },
+        // The real id, untruncated, so utm_campaign joins to email_campaigns.
+        campaignId,
       });
       if (sendResult.sent) {
         status = "sent";

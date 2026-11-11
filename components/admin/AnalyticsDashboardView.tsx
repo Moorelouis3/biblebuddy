@@ -656,6 +656,145 @@ function EmailRow({ r, isOpen, onToggle }: { r: EmailRowData; isOpen: boolean; o
  * that the thing he opens this page to read is the thing he sees first,
  * instead of being outnumbered two to one by emails that have not happened.
  */
+/**
+ * The five-day welcome funnel, read as a funnel.
+ *
+ * Louis, 2026-11-11: "track the 5 emails at the top. And then under that ...
+ * the weekly emails, the new ones that we're doing for each devotional."
+ *
+ * This asks a different question from the list below it. A campaign asks "how
+ * did that send do"; a funnel asks "where do people stop", which is why the
+ * waiting column is here and not there.
+ *
+ * It states plainly that clicks are not measurable rather than printing a 0
+ * that reads as "nobody clicked". Every welcome CTA currently points at the App
+ * Store, which reports nothing back to us, and SES click tracking has been off
+ * since 9 November because rewriting links broke them opening the app.
+ */
+function WelcomeFunnel({ funnel }: { funnel?: DashboardData["welcomeFunnel"] }) {
+  if (!funnel) return null;
+
+  if (!funnel.available) {
+    return (
+      <div className="mb-4 rounded-xl border border-[#fde68a] bg-[#fffbeb] px-3 py-2.5">
+        <p className="text-[11px] font-black text-[#92400e]">
+          Welcome funnel columns are not on this database yet — run
+          supabase/migrations/20261111_email_buckets.sql
+        </p>
+      </div>
+    );
+  }
+
+  const armedCount = funnel.steps.filter((s) => s.armed).length;
+  const totalSent = funnel.steps.reduce((n, s) => n + s.sent, 0);
+
+  return (
+    <div className="mb-5">
+      <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+        <p className="text-[12px] font-black text-[#0f172a]">Welcome funnel · 5 emails</p>
+        <p className="text-[11px] font-bold text-[#64748b]">
+          {armedCount === 0
+            ? "nothing armed — nobody receives these yet"
+            : `${armedCount} of 5 armed · ${fmt(totalSent)} sent · ${fmt(funnel.bucket1)} in the funnel`}
+        </p>
+      </div>
+
+      <div className="overflow-hidden rounded-xl border border-[#e2e8f0]">
+        <table className="w-full text-left">
+          <thead>
+            <tr className="bg-[#f8fafc] text-[10px] font-black uppercase tracking-wide text-[#64748b]">
+              <th className="px-3 py-2">Day</th>
+              <th className="px-2 py-2">Status</th>
+              <th className="px-2 py-2 text-right">Sent</th>
+              <th className="px-2 py-2 text-right">Opens</th>
+              <th className="px-2 py-2 text-right">Visits</th>
+              <th className="px-2 py-2 text-right">Bounced</th>
+              <th className="px-2 py-2 text-right">Waiting</th>
+            </tr>
+          </thead>
+          <tbody>
+            {funnel.steps.map((s) => (
+              <tr key={s.campaignId} className="border-t border-[#f1f5f9] text-[12px]">
+                <td className="px-3 py-2">
+                  <span className="font-black text-[#0f172a]">Day {s.step}</span>
+                  <span className="ml-2 text-[11px] font-semibold text-[#64748b]">
+                    {s.subject ?? "not installed"}
+                  </span>
+                </td>
+                <td className="px-2 py-2">
+                  <span
+                    className={`rounded-md px-1.5 py-0.5 text-[10px] font-black ${
+                      s.armed ? "bg-[#dcfce7] text-[#166534]" : "bg-[#f1f5f9] text-[#64748b]"
+                    }`}
+                  >
+                    {s.armed ? "armed" : "paused"}
+                  </span>
+                </td>
+                <td className="px-2 py-2 text-right font-black text-[#0f172a]">{fmt(s.sent)}</td>
+                <td className="px-2 py-2 text-right text-[#334155]">
+                  {s.sent === 0 ? "—" : `${fmt(s.opens)}`}
+                  {s.openRate !== null && s.sent > 0 ? (
+                    <span className="ml-1 text-[10px] font-semibold text-[#94a3b8]">{s.openRate}%</span>
+                  ) : null}
+                </td>
+                {/*
+                  Visits, not clicks, and "n/a" rather than 0 where a click
+                  could not have been counted by anyone. A 0 here would read as
+                  "nobody was interested" when it means "this email has no link
+                  of ours in it" - the App Store is its only CTA and Apple
+                  reports nothing back.
+                */}
+                <td className="px-2 py-2 text-right text-[#334155]">
+                  {!s.measurable ? (
+                    <span className="text-[10px] font-black text-[#b45309]" title="App Store only — no link we can count">
+                      n/a
+                    </span>
+                  ) : s.sent === 0 ? (
+                    "—"
+                  ) : (
+                    fmt(s.arrivals)
+                  )}
+                </td>
+                <td className="px-2 py-2 text-right text-[#334155]">{s.sent === 0 ? "—" : fmt(s.bounces)}</td>
+                <td className="px-2 py-2 text-right text-[#334155]">{s.waiting ? fmt(s.waiting) : "—"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="mt-2 space-y-1">
+        <p className="text-[11px] font-semibold text-[#64748b]">
+          <span className="font-black text-[#0f172a]">Opens include scanners.</span> Every open on
+          record is a proxy fetch as often as a person, so treat the rate as a ceiling.
+        </p>
+        {funnel.steps.some((s) => !s.measurable) ? (
+          <p className="text-[11px] font-semibold text-[#b45309]">
+            <span className="font-black">
+              Day {funnel.steps.filter((s) => !s.measurable).map((s) => s.step).join(", ")} cannot be
+              measured, and that is content, not instrumentation.
+            </span>{" "}
+            Their only CTA is the App Store, which reports nothing back to us, so there is no link of
+            ours to count — and an Android reader has nowhere to go. Day 1 already carries{" "}
+            <code>mybiblebuddy.net</code> alongside the App Store; adding that same approved line to
+            the others fixes both at once.
+          </p>
+        ) : null}
+        <p className="text-[11px] font-semibold text-[#64748b]">
+          <span className="font-black text-[#0f172a]">Visits are the honest signal.</span> SES click
+          tracking is off on purpose since 9 Nov — it rewrote links through awstrack.me and they
+          stopped opening the app. A visit is counted when a reader lands on the site from the email.
+        </p>
+        <p className="text-[11px] font-semibold text-[#64748b]">
+          {fmt(funnel.bucket2)} subscribers are in the broadcast audience ·{" "}
+          {fmt(funnel.bucket1)} are in the funnel · the single welcome this replaced sent{" "}
+          {fmt(funnel.retiredWelcomeSends)}.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function EmailList({ emails }: { emails?: DashboardData["emailList"] }) {
   // One open at a time, which is what keeps the page short enough to scan.
   const [openId, setOpenId] = useState<string | null>(null);
@@ -1278,6 +1417,13 @@ export default function AnalyticsDashboardView({
                   <div className="hidden lg:block">
                     <CardTitle icon="🗓">All email</CardTitle>
                   </div>
+
+                  {/* The welcome funnel first, because it is the thing that
+                      runs continuously and it reads as a funnel rather than as
+                      five separate sends. The campaign list underneath is the
+                      other question: how did one broadcast do. */}
+                  <WelcomeFunnel funnel={d.welcomeFunnel} />
+
                   <EmailList emails={d.emailList} />
 
                   {/* The two email screens that are genuinely a different
@@ -1285,20 +1431,23 @@ export default function AnalyticsDashboardView({
                       orphaned - and so nobody builds a third one because they
                       could not find them.
 
-                      The welcome funnel is separate, and it is HISTORY, not a
-                      live sender. Days 2-8 stopped on 2026-09-09 (written for
-                      the subscription model); day 1 moved to our own SES
-                      welcome on 2026-10-20 and nothing has sent since. The
-                      senders and both crons were deleted on 2026-11-10 -
-                      docs/EMAIL_FUNNEL_RETIRED.md. The 30,764 recorded sends
-                      stay, and this is the only screen that can read them,
-                      which is why the page stays. */}
+                      The OLD day 1-8 funnel is history: days 2-8 stopped on
+                      2026-09-09 and its senders were deleted on 2026-11-10
+                      (docs/EMAIL_FUNNEL_RETIRED.md). Its 30,764 recorded sends
+                      stay, and /admin/email-analytics is the only screen that
+                      can read them, which is why that page stays.
+
+                      That is NOT the funnel in the table above. A new
+                      five-email welcome went live on 2026-11-11 and is a live
+                      sender - welcome-1..welcome-5, walked one step a day by
+                      /api/cron/welcome-email. Do not read the link below as
+                      describing it. */}
                   <div className="mt-4 flex flex-wrap gap-2 border-t border-[#eef2f7] pt-3">
                     <Link
                       href="/admin/email-analytics"
                       className="rounded-lg bg-[#f1f5f9] px-3 py-1.5 text-[11px] font-black text-[#475569] transition hover:bg-[#e2e8f0]"
                     >
-                      Welcome funnel history, days 1–8 →
+                      Old day 1–8 funnel (history) →
                     </Link>
                     <Link
                       href="/admin/email-broadcasts"

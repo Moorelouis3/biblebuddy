@@ -5,6 +5,7 @@ import { isQualifyingAction, isMeaningfulAction } from "@/lib/activityDefinition
 import { TOTAL_BIBLE_CHAPTERS } from "@/lib/bibleBookChapters";
 import chapterProgress from "@/data/chapter-blog/progress.json";
 import { FEATURED_STUDY_ORDER, AVAILABLE_STUDY_TITLES, UPCOMING_STUDIES } from "@/lib/studyLibrary";
+import { WELCOME_SEQUENCE } from "@/lib/email/welcomeSequence";
 
 /**
  * The owner analytics dashboard (2026-09-21), built from Louis's mockup.
@@ -1381,9 +1382,142 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
    * it started. A row with no date at all sorts to the bottom rather than
    * pretending to be the newest thing here.
    */
-  const emailList: EmailRow[] = [...sesEmailRows, ...legacyEmailRows].sort((a, b) =>
-    (b.when || "").localeCompare(a.when || ""),
+  /** The funnel's five steps, named once: the list below excludes them. */
+  const WELCOME_STEP_IDS = ["welcome-1", "welcome-2", "welcome-3", "welcome-4", "welcome-5"];
+
+  const emailList: EmailRow[] = [...sesEmailRows, ...legacyEmailRows]
+    /**
+     * The five welcome steps are NOT in this list, because the funnel table
+     * above owns them. Leaving them in showed each one twice on the same
+     * screen, counted two different ways - the funnel reads a step as "how
+     * many people are at it", the list reads a campaign as "one send, on a
+     * date" - and two numbers for one email on one page is the exact failure
+     * mode in CLAUDE.md's "Search before you build". One place to read a
+     * thing, and for a welcome step that place is the funnel.
+     */
+    .filter((row) => !(row.campaignId && WELCOME_STEP_IDS.includes(row.campaignId)))
+    .sort((a, b) => (b.when || "").localeCompare(a.when || ""));
+
+  /**
+   * The five-day welcome funnel, read as a funnel rather than as five
+   * unrelated campaigns (Louis, 2026-11-11: "track the 5 emails at the top").
+   *
+   * It is a different question from the campaign list below it. A campaign
+   * asks "how did that send do"; the funnel asks "where do people fall out",
+   * which only makes sense step by step and needs the subscriber table as well
+   * as the send stats.
+   *
+   * ON CLICKS, honestly, because this is where a zero lies.
+   *
+   * SES click tracking has been off since 2026-11-09: it rewrites links
+   * through awstrack.me, and a link on that domain is not mybiblebuddy.net,
+   * so iOS stopped opening the app. email_arrivals replaced it, and the
+   * sender now stamps utm_source=email on our own links so an arrival
+   * attributes to a campaign (lib/email/linkTagging.ts).
+   *
+   * That makes step 1 countable. It does NOT make steps 2-5 countable: their
+   * only CTA is the App Store, and Apple reports nothing back to a sender, so
+   * there is no link of ours in those bodies to stamp. Hence `measurable` per
+   * step rather than one note under the table - a 0 arrivals on step 1 means
+   * nobody clicked, and a 0 on step 2 means nobody could have known.
+   */
+  const statsById = new Map(sesRows.map((r) => [r.campaign_id, r]));
+
+  /**
+   * COUNTED, NOT FETCHED, and that is not a micro-optimisation.
+   *
+   * The first version of this read every subscriber row and tallied them in
+   * JavaScript. PostgREST caps every response at 1,000 rows whatever the key,
+   * so with 5,584 subscribers it reported the broadcast audience as 990 - a
+   * number that looks entirely plausible on a dashboard and is simply wrong.
+   * Seven head counts cost less than one truncated page and cannot be
+   * silently capped.
+   */
+  const stepBuckets = [null, 1, 2, 3, 4] as const; // who is waiting for step 1..5
+  const [bucket2Res, bucket1Res, retiredWelcomeRes, ...waitingRes] = await Promise.all([
+    admin
+      .from("email_subscribers")
+      .select("email", { count: "exact", head: true })
+      .not("welcome_completed_at", "is", null),
+    admin
+      .from("email_subscribers")
+      .select("email", { count: "exact", head: true })
+      .is("welcome_completed_at", null),
+    admin
+      .from("email_campaign_sends")
+      .select("campaign_id", { count: "exact", head: true })
+      .eq("campaign_id", "welcome"),
+    ...stepBuckets.map((step) => {
+      const q = admin
+        .from("email_subscribers")
+        .select("email", { count: "exact", head: true })
+        .is("welcome_completed_at", null);
+      return step === null ? q.is("welcome_step", null) : q.eq("welcome_step", step);
+    }),
+  ]);
+
+  // A missing column means the migration has not run on this environment.
+  const funnelAvailable = !bucket1Res.error && !bucket2Res.error;
+  const bucket1 = bucket1Res.count ?? 0;
+  const bucket2 = bucket2Res.count ?? 0;
+  const sittingAtStep = new Map<number, number>(
+    waitingRes.map((res, index) => [index, res.count ?? 0]),
   );
+
+  const welcomeSteps = WELCOME_STEP_IDS.map((id, index) => {
+    const stat = statsById.get(id);
+    const meta = kindById.get(id);
+    const sent = stat?.sent ?? 0;
+    const opens = stat?.opens ?? 0;
+    return {
+      step: index + 1,
+      campaignId: id,
+      subject: stat?.subject ?? null,
+      // 'sending' here means armed, not mid-send: the funnel has no end date.
+      armed: (stat?.status ?? null) === "sending",
+      installed: Boolean(stat || meta),
+      sent,
+      opens,
+      bounces: stat?.bounces ?? 0,
+      // Scanners inflate this. Labelled as such wherever it is shown.
+      openRate: sent > 0 ? Math.round((opens / sent) * 1000) / 10 : null,
+      // How many people are currently waiting to receive THIS step.
+      waiting: sittingAtStep.get(index) ?? 0,
+      /**
+       * Readers who landed on the site from this step. Only meaningful where
+       * `measurable` is true.
+       */
+      arrivals: arrivalsByCampaign.get(id)?.size ?? 0,
+      /**
+       * Whether a click on this step can be counted BY ANYONE.
+       *
+       * Read off the body that will actually be sent, not assumed. A step
+       * whose only CTA is the App Store is unmeasurable however good the
+       * instrumentation is: Apple reports nothing back to a sender. Four of
+       * the five are like that, so a single blanket note under the table
+       * would be wrong about step 1 or wrong about the rest.
+       */
+      measurable: /mybiblebuddy\.net/.test(WELCOME_SEQUENCE[index]?.body ?? ""),
+    };
+  });
+
+  const welcomeFunnel = {
+    available: funnelAvailable,
+    steps: welcomeSteps,
+    bucket1,
+    bucket2,
+    /** Reached the end of the funnel since it went live, not the anchored list. */
+    completed: welcomeSteps[4]?.sent ?? 0,
+    /** Sends by the single welcome email this funnel replaced. */
+    retiredWelcomeSends: retiredWelcomeRes.count ?? 0,
+    /**
+     * True once at least one step carries a link of ours, which the sender
+     * now stamps with utm_source=email so an arrival attributes to it.
+     * Per-step `measurable` is the honest answer; this only decides whether
+     * the table shows an arrivals column at all.
+     */
+    clicksMeasurable: welcomeSteps.some((s) => s.measurable),
+  };
 
   return {
     window,
@@ -1449,6 +1583,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     popularActivities,
     email,
     emailList,
+    welcomeFunnel,
     emails,
     community,
     studyGuides,
