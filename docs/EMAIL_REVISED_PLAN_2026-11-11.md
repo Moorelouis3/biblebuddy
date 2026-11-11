@@ -337,3 +337,55 @@ campaign calendar. Say the word if you want them off too.
    08:00 UTC, so pausing today's rows does not prevent **Tuesday 17 November**.
    Stopping it needs the cron entry removed from `vercel.json` — a code change,
    instantly restorable. That decision is still open.
+
+---
+
+## 8. DONE on 11 Nov: the funnel is built and the buckets exist
+
+### Migration run and verified
+
+`supabase/migrations/20261111_email_buckets.sql` applied to production.
+
+| | |
+|---|---|
+| Bucket 2 (existing list, anchored to the cutoff) | **5,584** |
+| Bucket 1 (in the funnel) | **0** |
+| Broadcast audience after the change | **unchanged** — same 1,000-row page as before |
+| Transactional reach | **unchanged** — still everyone, which is how the funnel reaches Bucket 1 |
+
+The anchoring is written down, not derived. Every subscriber who existed at
+2026-11-11 00:00 Berlin now carries `welcome_completed_at` set to that moment,
+so no later recomputation can pull them into the welcome sequence — which is
+exactly the failure that hit `profile_stats.created_at` the day before.
+
+### Built
+
+| Piece | State |
+|---|---|
+| Five approved bodies, verbatim | `lib/email/welcomeSequence.ts` |
+| House-style renderer | `lib/email/welcomeRender.ts` |
+| `welcome-1`…`welcome-5` rows | installed, **all paused** |
+| Day 2 animated GIF, 26 frames | hosted, fetch-verified |
+| Day 3 study-guides image | hosted, fetch-verified |
+| Step-walking cron | `app/api/cron/welcome-email/route.ts` |
+| Bucket columns + exclusion | migrated |
+| 24 offline checks | `npm run verify:welcome` |
+
+### Current state of every sender
+
+- **marketing armed: 0**
+- **welcome steps armed: 0 of 5**
+- transactional app triggers running: 4 (`study-nudge`, `streak-at-risk`,
+  `finished-devotional`, `community-start`)
+
+Nothing reaches an inbox until a step is armed.
+
+### The one live consequence
+
+A subscriber who signs up now gets `welcome_completed_at = null`, so they are
+correctly **excluded from broadcasts** — and because no welcome step is armed,
+they receive **nothing at all**. The cron reports them as `notArmed` and they
+queue at step 1 rather than losing it.
+
+**Arming `welcome-1` is what closes that gap**, and it is one field. Arming is
+deliberately not something any script here does.
