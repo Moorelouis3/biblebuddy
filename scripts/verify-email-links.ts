@@ -14,7 +14,8 @@
 import { readFileSync } from "fs";
 import { strict as assert } from "assert";
 import { tagEmailUrl, tagHtmlLinks, tagTextLinks } from "../lib/email/linkTagging";
-import { WELCOME_SEQUENCE, APP_STORE_URL } from "../lib/email/welcomeSequence";
+import { WELCOME_SEQUENCE, APP_STORE_URL, ANDROID_URL } from "../lib/email/welcomeSequence";
+import { BETA_OPEN, PLAY_LISTING_URL } from "../lib/androidBeta";
 import { renderWelcomeHtml, renderWelcomeText } from "../lib/email/welcomeRender";
 
 const read = (p: string) => readFileSync(p, "utf8");
@@ -213,6 +214,40 @@ check("every welcome link is one we approved", () => {
   }
 });
 
+check("the Android link is the explainer, never Play itself, while the beta runs", () => {
+  /**
+   * Bible Buddy is in a Google closed test, so the Play listing is invisible
+   * to anyone who has not first joined the tester group. Someone sent straight
+   * there is told they are not a tester, which reads like a broken app.
+   * /android is the page that explains the two steps, and it is what every
+   * Play button on the site points at.
+   */
+  assert.equal(ANDROID_URL, "https://www.mybiblebuddy.net/android");
+  for (const step of WELCOME_SEQUENCE) {
+    assert.ok(
+      !/play\.google\.com/.test(step.body),
+      `step ${step.step} links straight to Play, which is invisible during the closed test`,
+    );
+  }
+  /**
+   * THE TRAP THIS EXISTS FOR. /android is built to be retired the day the beta
+   * ends (app/android/page.tsx is noindex and says so) and it does not
+   * redirect. A page can be retired; an email cannot - a welcome sent months
+   * later still carries whatever link is baked into it. So the moment
+   * BETA_OPEN goes false, this fails until the bodies point at the real
+   * listing and the five rows are reinstalled.
+   */
+  if (!BETA_OPEN) {
+    for (const step of WELCOME_SEQUENCE) {
+      assert.ok(
+        step.body.includes(PLAY_LISTING_URL),
+        `the Android beta is over and /android is retired, but step ${step.step} still links to it. ` +
+          `Point ANDROID_URL at ${PLAY_LISTING_URL} and re-run scripts/install-welcome-sequence.ts.`,
+      );
+    }
+  }
+});
+
 check("every step offers both doors, so every step can be counted", () => {
   /**
    * Until 2026-11-11 steps 2-5 carried exactly one CTA, the App Store. Apple
@@ -237,8 +272,8 @@ check("every step offers both doors, so every step can be counted", () => {
       `step ${step.step} has no App Store link`,
     );
     assert.ok(
-      urls.some((u) => u.startsWith("https://www.mybiblebuddy.net")),
-      `step ${step.step} has no website link - Android readers have no door and its clicks cannot be counted`,
+      urls.some((u) => u.startsWith(ANDROID_URL)),
+      `step ${step.step} has no Android link - Android readers have no door and its clicks cannot be counted`,
     );
     assert.ok(
       html.includes(`utm_campaign=${step.campaignId}`),

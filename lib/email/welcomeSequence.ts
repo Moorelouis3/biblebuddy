@@ -31,6 +31,30 @@
 export const APP_STORE_URL = "https://apps.apple.com/app/id6822155944";
 export const WEBSITE_URL = "https://www.mybiblebuddy.net";
 
+/**
+ * The Android door, the same one the landing page and the blog prompts use.
+ *
+ * NOT play.google.com. Bible Buddy is in a Google closed test until twelve
+ * testers have kept it installed for fourteen unbroken days, so the Play
+ * listing is invisible to everyone who has not first joined the tester group.
+ * Someone sent straight to the store is told they are not a tester, which
+ * reads like a broken app rather than a missing step - which is exactly why
+ * /android exists and why every Play button on the site points at it.
+ *
+ * lib/androidBeta.ts owns that decision (`androidDestination()`, `BETA_OPEN`).
+ * It is not imported here because it pulls in the Capacitor native helpers,
+ * which these bodies are rendered without.
+ *
+ * WHEN THE BETA ENDS, THIS HAS TO CHANGE. /android is explicitly built to be
+ * retired that day - app/android/page.tsx is noindex "it will be retired the
+ * day the beta ends" - and it does not redirect anywhere. An email is
+ * permanent in a way a page is not: a welcome sent six months from now would
+ * still carry this link. So npm run verify:email-links fails the moment
+ * BETA_OPEN goes false while these bodies still point here, and the fix is to
+ * swap this for PLAY_LISTING_URL and reinstall the five rows.
+ */
+export const ANDROID_URL = `${WEBSITE_URL}/android`;
+
 /** Marks a slot that still needs a publicly hosted asset. */
 export const IMAGE_PENDING = "__IMAGE_PENDING__";
 
@@ -89,7 +113,7 @@ And I hope it does the same thing for you!
 If you haven't already, you can download Bible Buddy here:
 
 🍎 [Download on the App Store](${APP_STORE_URL})
-🤖 [Open Bible Buddy on the web](${WEBSITE_URL})
+🤖 [Get it on Google Play](${ANDROID_URL})
 
 📖 HERE'S HOW BIBLE BUDDY CAN HELP YOU!
 
@@ -175,7 +199,7 @@ No complicated setup. No ten different apps. Just you and God's Word.
 ![Bible Buddy study notes: open the Bible, pick a book, pick a chapter, tap a verse](${WELCOME_DAY2_IMAGE})
 
 [OPEN BIBLE BUDDY](${APP_STORE_URL})
-🤖 [Open Bible Buddy on the web](${WEBSITE_URL})
+🤖 [Get it on Google Play](${ANDROID_URL})
 
 I hope these notes help you understand Scripture the same way they've helped me.
 
@@ -240,7 +264,7 @@ It's a Bible study group that fits YOUR schedule.
 ![Six free Bible Buddy study guides](${WELCOME_DAY3_IMAGE})
 
 [EXPLORE THE STUDY GUIDES IN BIBLE BUDDY](${APP_STORE_URL})
-🤖 [Open Bible Buddy on the web](${WEBSITE_URL})
+🤖 [Get it on Google Play](${ANDROID_URL})
 
 I hope you find a study that helps you grow closer to God and understand His Word a little better each day.
 
@@ -315,7 +339,7 @@ THE GOAL IS TO UNDERSTAND WHAT YOU'RE READING!
 🎮 READY TO GIVE IT A TRY?
 
 [TRY BIBLE TRIVIA IN BIBLE BUDDY](${APP_STORE_URL})
-🤖 [Open Bible Buddy on the web](${WEBSITE_URL})
+🤖 [Get it on Google Play](${ANDROID_URL})
 
 And tomorrow, I'm going to show you how you can take what you're learning and discuss it with other believers inside Bible Buddy.
 
@@ -396,7 +420,7 @@ And that's the kind of community I want us to build together.
 A place where we can learn from each other, encourage each other, and grow closer to Jesus.
 
 💬 [JOIN THE BIBLE BUDDY COMMUNITY](${APP_STORE_URL})
-🤖 [Open Bible Buddy on the web](${WEBSITE_URL})
+🤖 [Get it on Google Play](${ANDROID_URL})
 
 Come introduce yourself, share something you're learning from Scripture, or join a conversation!
 
