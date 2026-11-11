@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-11-11T04:42:21.299Z",
-  "nextChapter": "Joshua 12",
+  "updatedAt": "2026-11-11T06:34:21.936Z",
+  "nextChapter": "Joshua 13",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -1600,6 +1600,11 @@
       "status": "committed",
       "startedAt": "2026-11-11T04:34:23.887Z",
       "committedAt": "2026-11-11T04:42:21.298Z"
+    },
+    "joshua-12-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-11T06:33:44.590Z"
     }
   },
   "priorityBooks": [
