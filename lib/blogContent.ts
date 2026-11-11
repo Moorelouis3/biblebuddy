@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-10-explained",
+    title: "Joshua 10 Explained: The Day the Sun Stood Still",
+    description:
+      "Joshua 10 explained verse by verse: the five kings who attacked Gibeon, the hailstones, the day the sun stood still, and the southern campaign that followed.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-10-explained",
+    publishedAt: "2026-11-11",
+    readTime: "14 min read",
+    image: "/blog-banners/joshua-10-explained.jpg",
+    groupPost: {
+      title: "Joshua 10 Explained 📖",
+      content:
+        "Five kings attack a city for making peace.\nIsrael marches all night to defend it.\n\n📌 God fights with hailstones and a day that would not end.\n\n📖 More enemies died from hail than from the sword.\n📖 The sun did not go down for about a whole day.\n📖 Five kings end up hiding in a cave at Makkedah.\n\nNew article on:\n🟢 why Israel defended a city that **tricked** them\n🟢 what really happened when the **sun stood still**\n🟢 why God got the **credit**, not Israel's army\n\nHave you ever kept a promise that cost more than you expected? 🙏",
+    },
+  },
+  {
     slug: "joshua-9-explained",
     title: "Joshua 9 Explained: The Gibeonites' Trick and the Unbreakable Oath",
     description:
