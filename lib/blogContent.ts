@@ -110,6 +110,18 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "jacob-deceived-isaac-then-laban-deceived-jacob",
+    title: "Jacob Deceived Isaac — Then Laban Deceived Jacob",
+    description: "Jacob deceived his father by taking the older brother's place, then Laban deceived Jacob by invoking the older sister's priority. God's promise and charact",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/jacob-deceived-isaac-then-laban-deceived-jacob",
+    publishedAt: "2026-11-11",
+    readTime: "3 min read",
+    image: "/BibleBuddyBlogBanner.png",
+    excludeFromGroupShare: true,
+  },
+  {
     slug: "joshua-14-explained",
     title: "Joshua 14 Explained: Caleb's Faith at 85 Years Old",
     description:
