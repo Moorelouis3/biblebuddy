@@ -13476,3 +13476,8 @@ Supabase dashboard screenshots are still outstanding - neither is mine to do.
 Worth a phone check: that offline reading in the Play app actually works; we
 believe it on the strength of a commit message.
 Next: Louis's call on the iOS cache question.
+
+## 2026-11-11T22:17:04Z (blog writer run)
+Article: What Does the Bible Say About Divorce and Remarriage? | Words: ~4,552 | Category: Christian Foundations | Status: pass
+Queue remaining: 7
+Not live yet: committed without [deploy] per the 2026-10-10 cadence change. Next scheduled deploy is Thu 09:05 Berlin; the post goes live then along with everything else waiting on main.

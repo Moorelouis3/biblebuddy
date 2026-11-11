@@ -1011,3 +1011,20 @@ writes nothing and stops; there is no more work for this scheduled task to do
 until Louis gives the series a new mandate (more topics, a quality pass, or
 pausing/disabling the `15 1,5,9,15 * * *` trigger so it stops firing on an empty
 queue).
+
+## New blog post touches contested doctrine: divorce and remarriage
+"What Does the Bible Say About Divorce and Remarriage?" (/blog/divorce-and-remarriage)
+covers a topic the topics-queue angle itself flagged as doctrinally sensitive,
+and asked specifically that Louis read it before it publishes. It walks through
+Matthew 19 and Mark 10 (Jesus's teaching on marriage's permanence and the
+fornication exception), 1 Corinthians 7 (Paul on an unbelieving spouse who
+deserts), and Malachi 2 (God hating "putting away," not divorced people). It then
+names honestly, without picking a side, that sincere Bible believing Christians
+hold at least three different views on remarriage after divorce: never while a
+former spouse lives, permitted only for the two named exceptions (unfaithfulness,
+abandonment by an unbeliever), or a broader grace reading that extends the same
+principle to situations like abuse. It tells readers who are in danger to get
+safe first and treats seeing a counselor as wisdom, not weak faith. Flagging per
+the format spec's doctrinal-sensitivity rule so Louis can read it himself before
+wide promotion. Not live yet: committed without [deploy]; goes live at the next
+scheduled deploy (Thu 09:05 Berlin).

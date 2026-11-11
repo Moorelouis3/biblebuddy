@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "divorce-and-remarriage",
+    title: "What Does the Bible Say About Divorce and Remarriage?",
+    description:
+      "What does the Bible say about divorce and remarriage? Matthew 19, 1 Corinthians 7, and Malachi 2, explained honestly, with no condemnation for the reader.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/divorce-and-remarriage",
+    publishedAt: "2026-11-11",
+    readTime: "23 min read",
+    image: "/divorce-and-remarriage-banner.png",
+    groupPost: {
+      title: "What Does the Bible Say About Divorce and Remarriage? 📖",
+      content:
+        "Divorce does not feel like a topic to you.\nIt feels like your life.\n\n📌 The Bible never talks about it the way some churches do.\n\n📖 Jesus points back to one flesh, before any law existed.\n📖 Moses gave a protection, not a command.\n📖 Malachi says God hates putting away, not divorced people.\n\nNew article on:\n🟢 what Jesus actually said to the **Pharisees**\n🟢 Paul's instructions when a spouse **walks away**\n🟢 the range of views sincere **Christians** hold today\n\nHas church ever made you feel like damaged goods over this? 🙏",
+    },
+  },
+  {
     slug: "joshua-14-explained",
     title: "Joshua 14 Explained: Caleb's Faith at 85 Years Old",
     description:
