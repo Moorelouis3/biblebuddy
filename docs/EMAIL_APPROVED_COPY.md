@@ -1,11 +1,20 @@
 # Approved email copy — the store of record
 
-**Nothing in this file is armed, scheduled or sent.** It is the place approved
-email bodies live so they survive a session ending. Arming is a separate,
-explicit act against `email_campaigns` (`status='sending'` plus a
-`scheduled_for`). The calendar is in `docs/EMAIL_REVISED_PLAN_2026-11-11.md`
-and who is eligible to receive any of it is in
-`docs/EMAIL_BUCKETS_AUDIT_2026-11-11.md`.
+This is the place approved email bodies live so they survive a session ending.
+The calendar is in `docs/EMAIL_REVISED_PLAN_2026-11-11.md` and who is eligible
+to receive any of it is in `docs/EMAIL_BUCKETS_AUDIT_2026-11-11.md`.
+
+**Sending status, 11 November 2026.** Louis armed the six November emails
+(15, 18, 21, 24, 27, 30 Nov) that evening. They are `status='sending'` with a
+`scheduled_for`, go out at 13:00 UTC on their dates to roughly 5,050 eligible
+subscribers each, and are installed by
+`scripts/install-part2-november.ts` from `lib/email/partTwoNovemberContent.ts`.
+**Changing the words in this file no longer changes what gets sent** — the row
+in `email_campaigns` holds rendered HTML. Re-run the install script after any
+wording change, or the two drift apart.
+
+The 12 November email and the 3 December email are **not** armed and have no
+rows at all.
 
 **Why this file exists.** Until 11 November 2026 the approved Part 2 bodies
 existed only in a chat prompt. A prompt is not storage: when the session ends
