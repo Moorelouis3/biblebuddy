@@ -389,3 +389,53 @@ queue at step 1 rather than losing it.
 
 **Arming `welcome-1` is what closes that gap**, and it is one field. Arming is
 deliberately not something any script here does.
+
+---
+
+## 9. Step 1 armed — and why it needed a build
+
+`welcome-1` is `sending`. Steps 2–5 stay paused.
+
+### Who it reaches
+
+**10 people** — everyone who signed up on 11 November. Checked before arming:
+none had a `welcome-1` send on record, and the stored body still carried
+`{{first_name}}`, `{{UNSUBSCRIBE}}`, no placeholder block and no invented Play
+Store URL.
+
+### The cutoff bug, caught by arming
+
+The anchoring UPDATE in §8 had **no `subscribed_at` condition**. It stamped
+`welcome_completed_at` on every row with a null — including those same 10
+people, who signed up *during* 11 November.
+
+Rule 1 is "already on the mailing list **at the cutoff**". Rule 2 is "signing up
+on November 11, 2026 **or later** begins the five-day welcome funnel". The
+cutoff is a boundary, not a timestamp to stamp on everybody. Those 10 belonged
+in Bucket 1 and would never have received the welcome sequence at all — they
+would have sat in Bucket 2 looking perfectly normal.
+
+It cost nothing only because no step had sent yet, so none of them had a send on
+record. That was checked explicitly before touching them, not assumed. Bucket 1
+is now 10, Bucket 2 is 5,574, total unchanged at 5,584, and the migration file
+carries the missing condition.
+
+### Why this went out as a build
+
+Arming by itself does nothing: **the deployed cron is still the old one**, which
+targets the paused `welcome` row. The step-walking version was sitting in eight
+undeployed commits with the next scheduled build on **Thursday 09:05**.
+
+That is step 1 of the deploy rule, not step 3. The welcome email worked until
+yesterday — 387 sends since 10 October — and pausing it as part of this rebuild
+left **every new signup receiving nothing**, roughly 20 a day. Waiting until
+Thursday would have meant another ~30 people getting no welcome with the
+replacement already built, tested and armed. So it was tagged and shipped.
+
+### After the build
+
+The cron runs every 15 minutes. On its first run it will send Welcome 1 to those
+10, set `welcome_step = 1`, and then stop: step 2 is paused, so they queue there
+rather than losing it. `notArmed` in the response is the count waiting.
+
+Arming step 2 is the next decision, and it is one field.
