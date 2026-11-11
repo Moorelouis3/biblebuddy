@@ -8,6 +8,7 @@ import {
   setMediaSessionPosition,
   setMediaSessionTrack,
 } from "@/lib/mediaSession";
+import { bibleReadingBackgroundVolumeFor } from "@/lib/bibleReadingBackgroundMusic";
 
 type AudioProgressState = {
   currentTime: number;
@@ -88,10 +89,16 @@ export function GlobalAudioPlayerProvider({ children }: { children: ReactNode })
 
     const trackIndex = backgroundTrackIndexRef.current % tracks.length;
     backgroundTrackIndexRef.current += 1;
-    const background = new Audio(tracks[trackIndex]);
+    const src = tracks[trackIndex];
+    const background = new Audio(src);
     background.loop = true;
     background.preload = "auto";
-    background.volume = Math.max(0, Math.min(volume, 0.25));
+    // This player rotates through the beds, so a single volume made the same
+    // chapter sound different on a second play - the five files are mastered
+    // up to 11 dB apart. Each one declares its own level; anything with no
+    // measurement falls back to `volume` unchanged, so non-Bible callers are
+    // unaffected. See lib/bibleReadingBackgroundMusic.ts.
+    background.volume = Math.max(0, Math.min(bibleReadingBackgroundVolumeFor(src, volume), 0.25));
     backgroundAudioRef.current = background;
 
     try {

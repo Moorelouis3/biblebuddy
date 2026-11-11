@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cleanTextForTts } from "@/lib/ttsSpeechText";
+import { bibleReadingBackgroundVolumeFor } from "@/lib/bibleReadingBackgroundMusic";
 import { useGlobalAudioPlayer } from "./GlobalAudioPlayer";
 
 type BrowserTtsButtonProps = {
@@ -207,10 +208,14 @@ export default function BrowserTtsButton({
     const tracks = (backgroundMusicSrcs || []).filter(Boolean);
     if (!tracks.length) return;
 
-    const background = new Audio(tracks[0]);
+    const src = tracks[0];
+    const background = new Audio(src);
     background.loop = true;
     background.preload = "auto";
-    background.volume = Math.max(0, Math.min(backgroundMusicVolume ?? 0.1, 0.25));
+    // Per track, not one flat number: the five beds are mastered up to 11 dB
+    // apart, so a single volume made the same chapter sound different
+    // depending on which file played. See lib/bibleReadingBackgroundMusic.ts.
+    background.volume = Math.max(0, Math.min(bibleReadingBackgroundVolumeFor(src, backgroundMusicVolume), 0.25));
     speechBackgroundAudioRef.current = background;
 
     try {

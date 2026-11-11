@@ -73,7 +73,8 @@
     "verify:levels": "tsx scripts/verify-levels.ts",
     "verify:welcome": "tsx scripts/verify-welcome-funnel.ts",
     "verify:email-links": "tsx scripts/verify-email-links.ts",
-    "verify:part2": "tsx scripts/verify-part2-november.ts"
+    "verify:part2": "tsx scripts/verify-part2-november.ts",
+    "verify:audio-mix": "tsx scripts/verify-bible-audio-mix.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",
