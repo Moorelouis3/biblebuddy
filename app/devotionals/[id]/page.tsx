@@ -2148,11 +2148,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           <div className="text-gray-500">Plan not found.</div>
           {embedded ? (
             <button type="button" onClick={onBack} className="text-blue-600 hover:underline mt-4 inline-block">
-              Back to Reading Plans
+              Back to Library
             </button>
           ) : (
-          <Link href="/plans" className="text-blue-600 hover:underline mt-4 inline-block">
-            ← Back to Reading Plans
+          <Link href="/library" className="text-blue-600 hover:underline mt-4 inline-block">
+            ← Back to Library
           </Link>
           )}
         </div>
@@ -2173,11 +2173,11 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         {/* HEADER */}
         {embedded ? (
           <button type="button" onClick={onBack} className="mb-4 inline-flex rounded-full bg-blue-50 px-4 py-2 text-sm font-black text-blue-700 transition hover:bg-blue-100">
-            Back to Reading Plans
+            Back to Library
           </button>
         ) : (
-        <Link href="/plans" className="text-blue-600 hover:underline mb-4 inline-block">
-          ← Back to Reading Plans
+        <Link href="/library" className="text-blue-600 hover:underline mb-4 inline-block">
+          ← Back to Library
         </Link>
         )}
 
