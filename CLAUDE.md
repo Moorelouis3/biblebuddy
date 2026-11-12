@@ -32,6 +32,35 @@ Exception that is still true: a Level 2 upgrade
 (`docs/LEVEL2_UPGRADE_AGENT.md`) is a deliberate content release and
 deploys immediately.
 
+## Version history and how growth is reported (mandatory)
+Official decision, Louis, 2026-11-12:
+
+- **Bible Buddy Beta**: every account created up to and including
+  30 September 2026.
+- **Bible Buddy Version 1.0**: every account created from 1 October 2026 on.
+  This is the performance baseline.
+
+Never call the current product Version 2, Round Two or the second app.
+
+When reporting growth, activation or retention:
+
+- Judge them on Version 1.0 signup cohorts, by month, and compare October,
+  November and later months with one another. Only fill a figure in once its
+  whole window has passed, so no month is compared with one that had more time.
+- Never lead with the 7,000+ lifetime account total or a lifetime retention
+  percentage. Beta numbers stay available, reported separately and labelled
+  Beta.
+- A Beta account that comes back counts in current active users. It is never
+  a new Version 1.0 signup. Cohort is fixed by the account creation date.
+- 1 October is the official boundary, not the date things changed. Keep the
+  real dates: signup wall 6-8 Oct 2026, new welcome email 10 Oct 2026, iOS App
+  Store 1 Nov 2026, five-email welcome 11 Nov 2026.
+- These are reporting labels only. Never alter, archive or delete an account
+  to fit them.
+
+Definitions and the baseline figures are in
+`docs/BIBLE_BUDDY_BETA_VS_VERSION_1_RETENTION_AUDIT_2026-11-12.md`.
+
 ## Session Log (for Life Buddy reporting)
 This project reports to "Life Buddy" (`C:\Users\Moore\Desktop\second-brain`),
 which compiles Louis's daily morning and night reports across all his

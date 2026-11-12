@@ -13481,3 +13481,59 @@ Next: Louis's call on the iOS cache question.
 Article: What Does the Bible Say About Divorce and Remarriage? | Words: ~4,552 | Category: Christian Foundations | Status: pass
 Queue remaining: 7
 Not live yet: committed without [deploy] per the 2026-10-10 cadence change. Next scheduled deploy is Thu 09:05 Berlin; the post goes live then along with everything else waiting on main.
+
+## 2026-11-12 (growth audit)
+Marching orders: Louis asked for an evidence-only audit of where Bible Buddy
+users come from, to decide how much time social media deserves. No
+experiments, no changes.
+Time spent: ~1.5 hours.
+Done: `docs/GROWTH_AUDIT_2026-11-12.md` - the Bible Buddy half (acquisition,
+conversion, retention, SEO, revenue). Read-only against the database, Stripe,
+App Store Connect and Search Console. Headline: retention is the bottleneck,
+not acquisition (7,217 accounts, 146 ever studied 7+ days; ~50 regulars).
+App Store is already 60% of November signups; Threads is 6,600 visits for 3
+regulars; Google sent ~50 clicks to blog posts in three months.
+Not live yet: nothing from this session - the report is a doc, uncommitted.
+Still open: Content Buddy's half (reach, formats, Facebook monetization,
+Stories). Section 8 of the report lists what this half could not see.
+Next: Louis's decision once both halves are side by side.
+
+## 2026-11-12 (Beta vs Version 1.0 retention audit)
+Marching orders: Louis asked for the pre/post 1 October comparison, so the
+lifetime "7,217 accounts, 146 studied 7 days" figure stops standing in for
+today's product. Read-only.
+Time spent: ~2 hours.
+Done: `docs/BIBLE_BUDDY_BETA_VS_VERSION_1_RETENTION_AUDIT_2026-11-12.md`. Email
+accounts, equal time after signup: first study action in 7 days 14.5% -> 24.6%,
+studied again in days 1-7 4.1% -> 9.9%, Day 7 return 0.7% -> 3.7%. Nothing
+past week one is measurable yet (94 V2 email accounts are 30 days old).
+Found along the way: 1,064 V1 email accounts never signed in once; the new
+welcome went live 10 Oct not 1 Oct; no welcome email was sent at signup before
+31 Jul; bounced-welcome signups return as often as delivered ones; in-app
+signups reopen in week one at 63% vs 22% on web (27 accounts).
+Not live yet: nothing from this session - two docs, uncommitted.
+Still open: the 30-day rows need re-running in mid-December when November
+signups are old enough.
+Next: Louis's read of the report.
+
+## 2026-11-12 (reader: note cards that would not open)
+Marching orders: Louis reported study note cards showing only a title and a
+first line, with the full note arriving up to two minutes later or not at all.
+Time spent: ~1.5 hours.
+Done: found and fixed the cause. On the 13 chapters with a hand-built phrase
+map (Genesis 1, Proverbs 7-18) the reader never fetched the notes on arrival.
+With Study Mode on, every card was a title and a preview and none could be
+opened - measured on production, Proverbs 9: 0 of 33 tappable. Notes only
+loaded when an underlined phrase in the verse was tapped, and then from
+/api/study-notes (7.2s cold, relative url, no deadline). Now: notes come from
+the static CDN file on arrival for every chapter, every fetch is absolute with
+a deadline, an unloaded card says "Loading the full note" or that it failed,
+and the chapters either side are fetched ahead. Verified locally at phone
+width: 33 of 33 tappable, full note on screen in 0.1-0.3s, no API calls.
+`npm run verify:reader-notes` guards it (11 checks).
+Not live yet: tagged [deploy] under step 1 (cards nobody could open), so it
+builds on push rather than waiting for Thu 17:05.
+Still open: not tested on a real iPhone or inside the iOS app. Separately,
+the console shows `article_comment_likes` missing from the schema cache
+(comment likes fail to load) - pre-existing, not touched.
+Next: Louis to open Proverbs 9 with Study Mode on once the build is live.
