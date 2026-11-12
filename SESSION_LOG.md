@@ -13537,3 +13537,10 @@ Still open: not tested on a real iPhone or inside the iOS app. Separately,
 the console shows `article_comment_likes` missing from the schema cache
 (comment likes fail to load) - pre-existing, not touched.
 Next: Louis to open Proverbs 9 with Study Mode on once the build is live.
+
+## 2026-11-12 (night, comment likes)
+Time spent: ~20 min
+Done: Study comment likes never saved - the `article_comment_likes` table had never been created in production (the SQL file was written but not run), and the like API answered "liked" with a made-up count, so nobody saw an error. Created the table with signed-in-only rules; checked on the live site with the test account: like saved, read back, removed. Removed the fake-success fallback and the duplicate SQL file in the repo root.
+Not live yet: the fallback removal in app/api/comments/like/route.ts (cleanup only; likes already work without it).
+Still open: nothing.
+Next: -
