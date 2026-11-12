@@ -54,6 +54,7 @@
     "verify:email-list": "tsx scripts/verify-email-list.ts",
     "verify:product-health": "tsx scripts/verify-product-health.ts",
     "verify:reader-notes": "tsx scripts/verify-reader-notes-load.ts",
+    "verify:trivia": "tsx scripts/verify-trivia.ts",
     "check:content-filter": "tsx scripts/check-content-filter.ts",
     "comments:seed": "tsx scripts/seed-comment-replies.ts",
     "comments:backtest": "tsx scripts/backtest-comment-replies.ts",

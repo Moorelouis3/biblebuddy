@@ -13550,3 +13550,9 @@ Done: Genesis 15 notes fixed and extended (60 -> 70 cards, every underline opens
 Not live yet: Genesis 15 notes, six-book shelf, comment-likes cleanup - next scheduled build.
 Still open: apply the trivia fixes (patch files in the session scratchpad under trivia/), fix the reference-stripping code in lib/triviaGameData.ts, 400 topic-quiz questions, Genesis 9/16/17 have the same swallowed-heading fault.
 Next: apply and verify the trivia fixes.
+
+## 2026-11-12 (night, trivia fixes applied)
+Done: Trivia audit applied. 6,345 questions reviewed against the KJV, 1,364 corrected (1,094 chapter, 270 topic). Reference stripper fixed (it was eating ordinary words). npm run verify:trivia added, 16 checks pass. Played Genesis 15 trivia locally: loads, scores. Record and the 116 notes for Louis in docs/TRIVIA_AUDIT_2026-11-12.md.
+Not live yet: all of it - next scheduled build.
+Still open: answer-position bias (85% are option B), KJV name spellings, verse text shown after answering comes from another translation; Genesis 9/16/17 swallowed-heading cards.
+Next: Louis reads the judgment list.
