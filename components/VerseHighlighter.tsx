@@ -7,6 +7,7 @@ import { createPortal } from "react-dom";
 // downloading a 33 MB chunk it never reads from.
 const BibleStudySectionsLoader = dynamic(() => import("./BibleStudySectionsLoader"), { ssr: false });
 import { ColorPicker } from "./ColorPicker";
+import { useMemoryVerse } from "../lib/useMemoryVerse";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import { loadChapterStudySections } from "../lib/chapterStaticData";
 import {
@@ -74,6 +75,14 @@ interface VerseHighlighterProps {
   onStudyModeChange?: (on: boolean) => void;
   /** Hide the built-in Study Mode header because the reader renders its own. */
   hideStudyModeHeader?: boolean;
+  /**
+   * Which translation `verses` is in ("KJV", "ASV", "WEB").
+   *
+   * Only the readers that know for certain pass it. When it is there, the menu
+   * a verse number opens offers "Add to Bible Memory"; when it is not, that
+   * row is left out rather than save a verse under a translation it may not be.
+   */
+  translation?: string;
 }
 
 function getNearestScrollContainer(element: HTMLElement | null) {
@@ -1341,6 +1350,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   studyModeOn: studyModeOnProp,
   onStudyModeChange,
   hideStudyModeHeader = false,
+  translation,
 }) => {
   const [highlightMap, setHighlightMap] = useState<Record<number, string>>({});
   const [rangeMap, setRangeMap] = useState<Record<number, VerseHighlightRange[]>>({});
@@ -1359,6 +1369,18 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   const [highlightError, setHighlightError] = useState<string | null>(null);
   const [user, setUser] = useState<any>(null);
   const [creditBlocked, setCreditBlocked] = useState(false);
+
+  // Bible Memory (2026-11-12): the verse whose number was just tapped, ready
+  // to be saved in the translation on screen. Null while no verse menu is
+  // open, or when the reader has not said which translation this is.
+  const memoryVerseNumber = picker?.mode === "verse" ? picker.verse : null;
+  const memoryVerseInput = useMemo(() => {
+    if (!translation || plainTextMode || memoryVerseNumber === null) return null;
+    const text = verses.find((entry) => entry.number === memoryVerseNumber)?.text;
+    if (!text) return null;
+    return { book, chapter, verse: memoryVerseNumber, translation, text };
+  }, [translation, plainTextMode, memoryVerseNumber, verses, book, chapter]);
+  const memoryVerse = useMemoryVerse(user?.id, memoryVerseInput);
   const [openStudyReference, setOpenStudyReference] = useState<string | null>(null);
   const [openStudyCategories, setOpenStudyCategories] = useState<Record<string, string | null>>({});
   const [openStudyItems, setOpenStudyItems] = useState<Record<string, string | null>>({});
@@ -2501,6 +2523,11 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
           setRangeColorPickerOpen(false);
           setPicker(null);
         }}
+        memory={
+          memoryVerseInput
+            ? { saved: memoryVerse.saved, busy: memoryVerse.busy, failed: memoryVerse.failed, onToggle: () => void memoryVerse.toggle() }
+            : null
+        }
       />
       <HighlightActionMenu
         anchor={picker?.mode === "range" && !rangeColorPickerOpen ? picker.anchor : null}

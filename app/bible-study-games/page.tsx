@@ -44,6 +44,22 @@ export default function BibleStudyGamesPage() {
           </span>
         </span>
       </Link>
+
+      {/* Bible Memory, 2026-11-12. The third game: save a verse, practise it. */}
+      <Link
+        href="/bible-study-games/memory"
+        className="flex items-center gap-4 rounded-2xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+      >
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#fef3c7] text-2xl" aria-hidden="true">
+          🧠
+        </span>
+        <span className="min-w-0">
+          <span className="block text-lg font-black text-[var(--bb-text-primary,#111827)]">Bible Memory</span>
+          <span className="mt-0.5 block text-sm font-semibold text-[var(--bb-text-secondary,#4b5563)]">
+            Save a verse and learn it by heart, a few minutes at a time.
+          </span>
+        </span>
+      </Link>
     </div>
   );
 }

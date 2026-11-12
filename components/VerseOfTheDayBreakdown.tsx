@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useAccountGate } from "./AccountRequiredModal";
 import { useDailyVerseBookmark, type DailyVerseSource } from "../lib/useDailyVerseBookmark";
+import { useMemoryVerse } from "../lib/useMemoryVerse";
 import ShareToFeed from "./feed/ShareToFeed";
 import {
   getVotdBackground,
@@ -246,6 +247,16 @@ export default function VerseOfTheDayBreakdown({
 }) {
   const background = getVotdBackground(entry);
   const { bookmarked, toggle: toggleBookmark } = useDailyVerseBookmark(userId, entry, source);
+  // Bible Memory (2026-11-12). The Daily Verse already carries its own text
+  // and translation, so it is saved exactly as it is shown here.
+  const memory = useMemoryVerse(userId, {
+    book: entry.book,
+    chapter: entry.chapter,
+    verse: entry.verse_start,
+    verseEnd: entry.verse_end,
+    translation: entry.translation,
+    text: entry.verse_text,
+  });
   const [shareState, setShareState] = useState<"idle" | "copied" | "error">("idle");
   const completedRef = useRef(false);
   const endMarkerRef = useRef<HTMLDivElement | null>(null);
@@ -427,6 +438,21 @@ export default function VerseOfTheDayBreakdown({
           >
             {bookmarked ? "🔖 Bookmarked" : "🔖 Bookmark"}
           </button>
+          {userId ? (
+            <button
+              type="button"
+              onClick={() => void memory.toggle()}
+              disabled={memory.busy}
+              aria-pressed={memory.saved}
+              className={`rounded-full border px-4 py-2.5 text-sm font-black transition ${
+                memory.saved
+                  ? "border-[var(--bb-accent,#2563eb)] bg-[var(--bb-accent-soft,#eaf2ff)] text-[var(--bb-accent,#2563eb)]"
+                  : "border-[var(--bb-card-border,#dbe7f4)] text-[var(--bb-text-secondary,#374151)] hover:brightness-95"
+              }`}
+            >
+              {memory.failed ? "Did not save. Try again" : memory.saved ? "✓ In Bible Memory" : "🧠 Add to Bible Memory"}
+            </button>
+          ) : null}
           <button
             type="button"
             onClick={() => void handleShare()}

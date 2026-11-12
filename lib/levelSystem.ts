@@ -63,6 +63,9 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   scrambled_word_answered: 5,
   // Same gap as above: 608 finished scrambled chapters paid nothing.
   scrambled_chapter_completed: 10,
+  // A finished Bible Memory practice session (2026-11-12). Repeatable, so it is
+  // capped at two a day in lib/pointsEngine.ts rather than scored once.
+  bible_memory_session_completed: 10,
   feed_post_thought: 5,
   feed_post_prayer: 5,
   feed_post_prayer_request: 5,

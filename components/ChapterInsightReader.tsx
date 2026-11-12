@@ -500,6 +500,7 @@ export default function ChapterInsightReader({
                 book={BOOK}
                 chapter={CHAPTER}
                 verses={verses}
+                translation={translation.toUpperCase()}
                 insightPhrases={insightPhrases}
                 studySections={studySections ?? undefined}
                 studySectionsLoading={studySectionsLoading}

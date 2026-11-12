@@ -15,6 +15,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import VerseOfTheDayModal from "./VerseOfTheDayModal";
 import { useDailyVerseBookmark } from "../lib/useDailyVerseBookmark";
+import { useMemoryVerse } from "../lib/useMemoryVerse";
 import { getVerseOfTheDay } from "../lib/verseOfTheDay";
 import {
   fetchVotdEngagement,
@@ -37,6 +38,19 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
   const [shareCopied, setShareCopied] = useState(false);
   const impressionSent = useRef(false);
   const { bookmarked, toggle: toggleBookmark } = useDailyVerseBookmark(userId, entry, "today");
+  const memory = useMemoryVerse(
+    userId,
+    entry
+      ? {
+          book: entry.book,
+          chapter: entry.chapter,
+          verse: entry.verse_start,
+          verseEnd: entry.verse_end,
+          translation: entry.translation,
+          text: entry.verse_text,
+        }
+      : null,
+  );
 
   const legacyVerse = useMemo(() => getVerseOfTheDay(), []);
 
@@ -177,6 +191,24 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
               Read the Breakdown <span className="text-[var(--bb-accent,#2f7fe8)]">→</span>
             </button>
             <div className="flex items-center gap-1.5">
+              {userId ? (
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    void memory.toggle();
+                  }}
+                  disabled={memory.busy}
+                  aria-pressed={memory.saved}
+                  aria-label={memory.saved ? "Remove from Bible Memory" : "Add to Bible Memory"}
+                  title={memory.saved ? "In Bible Memory" : "Add to Bible Memory"}
+                  className={`flex h-9 items-center gap-1 rounded-full border border-[rgba(15,23,42,0.12)] px-3 text-[11px] font-black text-[#1f2937] backdrop-blur-sm transition hover:bg-white active:scale-95 ${
+                    memory.saved ? "bg-white/90" : "bg-white/65"
+                  }`}
+                >
+                  {memory.saved ? "✓ Memory" : "🧠 Memorize"}
+                </button>
+              ) : null}
               {userId ? (
                 <button
                   type="button"

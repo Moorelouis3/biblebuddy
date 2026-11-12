@@ -13560,3 +13560,35 @@ Next: Louis reads the judgment list.
 ## 2026-11-12 (night, trivia answer positions)
 Done: Louis chose to spread correct answers. Option B was correct on 85% of chapter questions; now A 23%, B 26%, C 25%, D 26%. 4,337 questions had the correct option moved, answer text unchanged on all 5,945 (checked). verify:trivia 17 checks pass; Genesis 15 played locally and scored correctly.
 Not live yet: waits for the next scheduled build.
+
+## 2026-11-12 (bookstore + Lulu subscription, inspection only)
+Today: Louis asked for a bookstore and a $29.99/month printed-devotional subscription through Lulu. Inspection and proposal first, nothing built.
+Done: Read the repo, the Lulu account and Lulu's API docs; pulled real print and shipping costs. Lulu account is empty (no projects, API key, billing address, card or print jobs). Stripe checkout and webhook exist but are dormant and digital-only; no orders, address or portal code. Lulu covers are a different size from the KDP wraps, so every cover needs redrawing. No code changed.
+Not live yet: nothing from this session.
+Still open: Louis's decisions (which six books, hardcover or paperback, countries, prices, month order); Lulu billing address and card; Proverbs and Tempting print files are missing; Obedience of Abraham has no print book.
+Next: build in Stripe test mode and Lulu sandbox once the decisions are in.
+
+## 2026-11-12 (bookstore + Lulu subscription, shelved)
+Done: Louis decided not to build the store or the subscription now. Priority is getting people to use the app and stay; monetisation comes later. Nothing was built, no Lulu key or card added. This replaces the "Next" line in the entry above.
+Not live yet: nothing from this session.
+Still open: nothing for the store. Findings (Lulu costs, missing print files, cover size differences) are in the entry above if it is picked up again.
+Next: activation and retention work.
+
+## 2026-11-12 (night, Bible Memory built, not shipped)
+Done: Bible Memory written as the third game under Games (/bible-study-games/memory): saved verses, a book/chapter/verse picker, five-question practice across fill in the blank, word order and match the reference, per-verse progress and labels. "Add to Bible Memory" added to the Daily Verse card and popup and to the reader's verse-number menu. One new action, bible_memory_session_completed, worth 10 points and capped at two a day. npm run verify:memory, 14 checks pass; lint and types clean.
+Not live yet: all of it, and it is NOT committed. It must not ship before supabase/migrations/20261112_memory_verses.sql has been run, or the screen shows "your verses did not load".
+Still open: run the migration (it was typed into the Supabase SQL editor but not executed - needs Louis's go-ahead); nothing has been played in a browser yet because the table does not exist and the local preview was not signed in.
+Next: run the migration, play a full session signed in, then commit untagged for the next scheduled build.
+
+## 2026-11-12 (night, Bible Memory migration run)
+Done: Louis approved it; supabase/migrations/20261112_memory_verses.sql ran on production. memory_verses exists with 4 policies, the public key is refused, and a test row proved insert, duplicate block (23505), level check and delete, then was removed. bible_memory_session_completed is now an allowed action.
+Not live yet: the Bible Memory code, still uncommitted.
+Still open: play a full session signed in on localhost (stopped at the login screen), then commit untagged.
+Next: Louis signs in on the local preview, I test and commit.
+
+## 2026-11-12 (night, Bible Memory tested and committed)
+Time spent: about 3 hours across the store inspection and Bible Memory.
+Done: Played Bible Memory signed in on localhost: picker (John 3, Psalms with 150 chapters), duplicate blocked, a full five-question session with right and wrong answers, undo and take-back, results screen, labels updated, progress and the session action read back from the database. "Add to Bible Memory" checked in the reader (add, remove, add again) and on the Daily Verse card. The five test verses were removed from Louis's account; one real session action (3/5) stays in his log. Committed untagged.
+Not live yet: Bible Memory - next scheduled build. The table is already live.
+Still open: the Daily Verse popup button was not clicked (same hook as the card); verse ranges from the reader, ASV/WEB in the picker and an add button on the bookmarks page are later work. Trivia chapter points can be re-earned by replaying with a different score (found, not changed).
+Next: Louis tries it after the build; community feed auto comments is the remaining weekend project.

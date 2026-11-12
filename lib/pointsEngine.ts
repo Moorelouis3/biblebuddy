@@ -57,6 +57,8 @@ const DAILY_CAPS: Partial<Record<string, number>> = {
   user_login: 1,
   trivia_question_correct: 10,
   scrambled_word_answered: 10,
+  // Two sessions a day score; practising more is welcome and pays nothing.
+  bible_memory_session_completed: 2,
   verse_highlighted: 10,
   note_created: 5,
   note_started: 5,

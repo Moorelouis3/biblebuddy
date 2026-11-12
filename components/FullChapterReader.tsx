@@ -2429,6 +2429,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                           book={book}
                           chapter={chapter}
                           plainTextMode={plainTextMode}
+                          translation={translation.toUpperCase()}
                           verses={section.verses.map((v) => ({
                             number: v.num,
                             text: v.text,
@@ -3325,6 +3326,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                           book={book}
                           chapter={chapter}
                           plainTextMode={plainTextMode}
+                          translation={translation.toUpperCase()}
                           verses={section.verses.map((v) => ({
                             number: v.num,
                             text: v.text,
