@@ -6,8 +6,8 @@ import dynamic from "next/dynamic";
 import { VerseHighlighter } from "./VerseHighlighter";
 import BrowserTtsButton from "./BrowserTtsButton";
 import { getBundledChapter } from "../lib/bundledChapterText";
-import { deriveInsightCards, loadInsightCards, type InsightCardPhrase } from "../lib/insightCards";
-import { fetchStaticJson, kjvStaticUrl, studyNotesStaticUrl } from "../lib/chapterStaticData";
+import { deriveInsightCards, hasInsightCards, loadInsightCards, type InsightCardPhrase } from "../lib/insightCards";
+import { fetchStaticJson, kjvStaticUrl, loadChapterStudySections, prefetchChapterData } from "../lib/chapterStaticData";
 import type { BibleReaderStudySection } from "../lib/bibleReaderStudyNotes";
 import { getBibleChapterTtsSrc } from "../lib/bibleChapterTts";
 import { BIBLE_READING_BACKGROUND_VOLUME, getBibleReadingBackgroundTracks } from "../lib/bibleReadingBackgroundMusic";
@@ -133,42 +133,64 @@ export default function ChapterInsightReader({
   // Otherwise the map is derived from the chapter's own notes and its KJV text,
   // so every chapter that has notes gets the Genesis 1 treatment. Derivation
   // waits for the KJV verses because the underlines are cut from them.
+  //
+  // The notes are fetched on arrival for EVERY chapter, in parallel with the
+  // phrase map, never one after the other and never on the first tap.
+  //
+  // Until 2026-11-12 a chapter with a hand-built map (Genesis 1, Proverbs
+  // 7-18) returned here before asking for its notes, on the reasoning that a
+  // card only needs them once opened. So the first tap went to
+  // /api/study-notes, a server function that loads every note in the Bible to
+  // answer for one chapter: 7.2s cold, measured, against 0.5s for the static
+  // file. The card sat there showing its title and preview, which reads as a
+  // complete, very short note. The static file is a few tens of kB off the
+  // CDN; fetching it up front costs nothing a reader can feel.
   const [studySections, setStudySections] = useState<BibleReaderStudySection[] | null>(initialSections ?? null);
+  const [studySectionsLoading, setStudySectionsLoading] = useState(!initialSections);
   useEffect(() => {
     let cancelled = false;
-    void (async () => {
-      const phrases = await loadInsightCards(book, chapter);
-      if (cancelled) return;
-      if (phrases.length) {
-        setInsightPhrases(phrases);
-        return;
-      }
-      if (studySections) return;
-      // Static file first (CDN, no server function), live API as the fallback.
-      const cached = await fetchStaticJson<{ sections?: BibleReaderStudySection[] }>(studyNotesStaticUrl(book, chapter));
-      if (cancelled) return;
-      if (Array.isArray(cached?.sections)) {
-        setStudySections(cached.sections);
-        return;
-      }
-      try {
-        const response = await fetch(`/api/study-notes?book=${encodeURIComponent(book)}&chapter=${chapter}`);
-        const data = (await response.json()) as { sections?: BibleReaderStudySection[] };
-        if (!cancelled) setStudySections(Array.isArray(data.sections) ? data.sections : []);
-      } catch (error) {
-        console.warn("[INSIGHT_CARDS] Could not load study sections:", error);
-        if (!cancelled) setStudySections([]);
-      }
-    })();
+
+    void loadInsightCards(book, chapter).then((phrases) => {
+      if (!cancelled && phrases.length) setInsightPhrases(phrases);
+    });
+
+    if (!initialSections) {
+      setStudySectionsLoading(true);
+      void loadChapterStudySections(book, chapter).then((sections) => {
+        if (cancelled) return;
+        // null means it did not arrive, which is not the same as "no notes".
+        // Leave the sections unset so the highlighter can show that on the
+        // card and try again when it is tapped.
+        if (sections) setStudySections(sections);
+        else console.warn("[INSIGHT_CARDS] Could not load study sections for", book, chapter);
+        setStudySectionsLoading(false);
+      });
+    }
+
     return () => {
       cancelled = true;
     };
   }, [book, chapter]);
 
+  // Have the chapters either side in hand before Next or Previous is tapped.
+  // Waits a moment so it never competes with this chapter's own first paint.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const total = getBookTotalChapters(BOOK);
+    const timeoutId = window.setTimeout(() => {
+      if (chapter < total) prefetchChapterData(book, chapter + 1);
+      if (chapter > 1) prefetchChapterData(book, chapter - 1);
+    }, 1200);
+    return () => window.clearTimeout(timeoutId);
+  }, [BOOK, book, chapter]);
+
   const derivedPhrases = useMemo(() => {
+    // A chapter with a hand-built map uses it. Deriving one as well would put
+    // one set of underlines on screen and then swap it for the other.
+    if (hasInsightCards(book, chapter)) return null;
     if (!studySections?.length || translation !== "kjv" || !verses.length) return null;
     return deriveInsightCards(studySections, verses);
-  }, [studySections, translation, verses]);
+  }, [book, chapter, studySections, translation, verses]);
   useEffect(() => {
     if (derivedPhrases) setInsightPhrases((current) => (current.length ? current : derivedPhrases));
   }, [derivedPhrases]);
@@ -480,6 +502,7 @@ export default function ChapterInsightReader({
                 verses={verses}
                 insightPhrases={insightPhrases}
                 studySections={studySections ?? undefined}
+                studySectionsLoading={studySectionsLoading}
                 studyModeOn={studyModeOn}
                 onStudyModeChange={setStudyModeOn}
                 hideStudyModeHeader

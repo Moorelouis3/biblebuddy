@@ -55,7 +55,9 @@ export default function ChapterPage() {
   return (
     <RequireAccount>
       {hasInsightCards(book, chapter) || hasStudyNotes(book, chapter) ? (
-        <ChapterInsightReader book={book} chapter={chapter} />
+        // Keyed so a move to another chapter always starts from clean state:
+        // one chapter's notes and phrase map must never linger into the next.
+        <ChapterInsightReader key={`${book}:${chapter}`} book={book} chapter={chapter} />
       ) : (
         <FullChapterReader />
       )}

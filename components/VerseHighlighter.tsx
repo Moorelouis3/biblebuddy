@@ -8,6 +8,7 @@ import { createPortal } from "react-dom";
 const BibleStudySectionsLoader = dynamic(() => import("./BibleStudySectionsLoader"), { ssr: false });
 import { ColorPicker } from "./ColorPicker";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
+import { loadChapterStudySections } from "../lib/chapterStaticData";
 import {
   deleteHighlight,
   deleteHighlightRange,
@@ -55,6 +56,12 @@ interface VerseHighlighterProps {
   studySectionPlacement?: "end" | "start";
   hideStudySections?: boolean;
   studySections?: BibleReaderStudySection[];
+  /**
+   * The reader is still fetching `studySections`. While this is true the
+   * highlighter does not start a fetch of its own, and an open card whose
+   * body has not arrived says so instead of looking finished.
+   */
+  studySectionsLoading?: boolean;
   onStudyNotesCreditBlocked?: () => void;
   /**
    * The chapter's Insight Card phrases. Supplied by the reader, so this
@@ -474,6 +481,7 @@ function GenesisOneInsightCard({
   icon,
   paragraphs,
   loadingNote = false,
+  failedNote = false,
   isOpen,
   onToggle,
   onClose,
@@ -483,6 +491,7 @@ function GenesisOneInsightCard({
   icon: string;
   paragraphs: string[];
   loadingNote?: boolean;
+  failedNote?: boolean;
   isOpen: boolean;
   onToggle: () => void;
   onClose?: () => void;
@@ -514,7 +523,7 @@ function GenesisOneInsightCard({
   // A phrase whose note has not been written yet still earns its underline and
   // its preview, but it does not pretend to open onto anything.
   // Openable while the notes are still on their way, so a tap never feels dead.
-  const hasNote = paragraphs.length > 0 || loadingNote;
+  const hasNote = paragraphs.length > 0 || loadingNote || failedNote;
 
   const head = (
     <>
@@ -578,12 +587,30 @@ function GenesisOneInsightCard({
               <ChapterNotesMarkdown compactMobile>{paragraphs.join("\n\n")}</ChapterNotesMarkdown>
             </div>
           ) : (
-            <div className="animate-pulse space-y-2 pt-1" aria-live="polite">
-              <span className="sr-only">Loading this Insight Card</span>
-              <div className="h-3 w-11/12 rounded bg-black/10" />
-              <div className="h-3 w-9/12 rounded bg-black/10" />
-              <div className="h-3 w-10/12 rounded bg-black/10" />
+failedNote ? (
+            // The title and preview above are NOT the whole note. Say so, and
+            // let the reader fetch it again (closing and reopening retries),
+            // rather than leaving a card that looks finished.
+            <div className="rounded-lg bg-white/70 px-3 py-2.5 text-[0.82rem] font-semibold leading-5 text-slate-700" role="status">
+              The rest of this note did not load. Check your connection, then close this card and open it again.
             </div>
+          ) : (
+            <div className="space-y-2 pt-1" aria-live="polite" role="status">
+              <p className="flex items-center gap-2 text-[0.8rem] font-bold text-slate-600">
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-slate-400 border-t-transparent"
+                />
+                Loading the full note…
+              </p>
+              <div className="animate-pulse space-y-2">
+                <div className="h-3 w-11/12 rounded bg-black/15" />
+                <div className="h-3 w-9/12 rounded bg-black/15" />
+                <div className="h-3 w-10/12 rounded bg-black/15" />
+                <div className="h-3 w-7/12 rounded bg-black/15" />
+              </div>
+            </div>
+          )
           )}
         </div>
       ) : null}
@@ -1308,6 +1335,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   studySectionPlacement = "end",
   hideStudySections = false,
   studySections,
+  studySectionsLoading = false,
   onStudyNotesCreditBlocked,
   insightPhrases = EMPTY_INSIGHT_PHRASES,
   studyModeOn: studyModeOnProp,
@@ -1350,6 +1378,9 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   };
   const [insightNotesLoading, setInsightNotesLoading] = useState(false);
   const insightNotesLoadingRef = useRef(false);
+  // The notes were asked for and did not arrive. Kept apart from "loading"
+  // and from "this phrase has no note": a card in this state offers a retry.
+  const [insightNotesFailed, setInsightNotesFailed] = useState(false);
   const [openInsightCard, setOpenInsightCard] = useState<string | null>(null);
   // How far down the chapter the Insight Cards have been mounted so far.
   const [insightCardCeiling, setInsightCardCeiling] = useState(6);
@@ -1411,7 +1442,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
   }, [hideStudySections, plainTextMode, user]);
 
   useEffect(() => {
-    if (studySections || plainTextMode || hideStudySections) {
+    if (studySections || studySectionsLoading || plainTextMode || hideStudySections) {
       setBackgroundStudySections([]);
       return;
     }
@@ -1434,7 +1465,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     setNeedsAggregatedStudySections(true);
 
     return () => setNeedsAggregatedStudySections(false);
-  }, [book, chapter, hideStudySections, plainTextMode, studySections, insightPhrases]);
+  }, [book, chapter, hideStudySections, plainTextMode, studySections, studySectionsLoading, insightPhrases]);
 
 
   /**
@@ -1861,26 +1892,30 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     return true;
   }
 
-  /** Fetch the notes the first time an Insight Card is opened. */
+  /**
+   * Make sure the notes are here when an Insight Card is opened.
+   *
+   * Normally they already are: the reader fetches them on arrival. This is the
+   * safety net for when that fetch failed or has not been made, and it goes to
+   * the static file first for the same reason the reader does. It always
+   * settles, inside a deadline, into "loaded" or "failed" - never into a card
+   * that silently stays at its title and preview.
+   */
   async function ensureInsightNotesLoaded() {
-    if (resolvedStudySections.length || insightNotesLoadingRef.current) return;
+    if (resolvedStudySections.length || studySectionsLoading || insightNotesLoadingRef.current) return;
     insightNotesLoadingRef.current = true;
+    setInsightNotesFailed(false);
     setInsightNotesLoading(true);
 
-    try {
-      // Fetched as data, so the whole-Bible notes never enter the bundle.
-      const response = await fetch(
-        `/api/study-notes?book=${encodeURIComponent(book)}&chapter=${chapter}`,
-      );
-      if (!response.ok) throw new Error(`study notes responded ${response.status}`);
-      const data = (await response.json()) as { sections?: BibleReaderStudySection[] };
-      setBackgroundStudySections(data.sections || []);
-    } catch (error) {
-      console.warn("[BIBLE_READER_NOTES] Could not load study sections:", error);
-      insightNotesLoadingRef.current = false;
-    } finally {
-      setInsightNotesLoading(false);
+    const sections = await loadChapterStudySections(book, chapter);
+    if (sections) {
+      setBackgroundStudySections(sections);
+    } else {
+      console.warn("[BIBLE_READER_NOTES] Could not load study sections for", book, chapter);
+      setInsightNotesFailed(true);
     }
+    insightNotesLoadingRef.current = false;
+    setInsightNotesLoading(false);
   }
 
   async function handleToggleInsightCard(phrase: InsightCardPhrase, phraseKey: string) {
@@ -2230,7 +2265,12 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
               // the notes having loaded.
               icon={phrase.icon || resolved?.icon || getNestedStudyItemIcon("key-phrases", getInsightCardTitle(phrase))}
               paragraphs={resolved?.paragraphs || []}
-              loadingNote={insightNotesLoading && !resolved}
+              loadingNote={(insightNotesLoading || studySectionsLoading) && !resolved}
+              // No notes at all and nothing on its way: either the reader's
+              // fetch or this component's own came back empty-handed. The card
+              // stays tappable so opening it tries again. With the notes in
+              // hand, a phrase that has no entry simply has no note.
+              failedNote={!resolvedStudySections.length && !insightNotesLoading && !studySectionsLoading}
               isOpen={openInsightCard === phraseKey}
               onToggle={() => {
                 void handleToggleInsightCard(phrase, phraseKey);
