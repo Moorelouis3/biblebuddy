@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Server not configured." }, { status: 500 });
   }
 
-  let payload: { title?: string; content?: string; linkUrl?: string; dryRun?: boolean };
+  let payload: { title?: string; content?: string; linkUrl?: string; mediaUrl?: string | null; dryRun?: boolean };
   try {
     payload = await request.json();
   } catch {
@@ -127,6 +127,7 @@ export async function POST(request: NextRequest) {
       author: displayName,
       authorUserId: louisUserId,
       title,
+      mediaUrl: payload.mediaUrl ?? null,
       bodyPreview: feedBody.slice(0, 400),
     });
   }
@@ -138,7 +139,10 @@ export async function POST(request: NextRequest) {
       user_id: louisUserId,
       post_type: "thought",
       content: feedBody,
-      media_url: null,
+      // The day's banner. Louis sent nineteen for November, one per date, and
+      // a feed post is the one place they were being dropped while Threads,
+      // Facebook, Skool and Substack all carried theirs.
+      media_url: payload.mediaUrl ?? null,
       link_url: payload.linkUrl ?? null,
       visibility: "community",
       reaction_counts: {},
