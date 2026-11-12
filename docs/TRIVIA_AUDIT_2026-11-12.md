@@ -132,10 +132,11 @@ put back.
 
 ### Decisions that cover many questions
 
-- **Answer position.** 85% of correct answers in the chapter bank are option
-  B (5,076 of 5,945). Anyone who notices can score without reading. Spreading
-  them evenly is mechanical, but it makes trivia harder for those players,
-  so it was not done.
+- **Answer position (decided: spread, 12 Nov).** 85% of correct answers in the
+  chapter bank were option B (5,081 of 5,945). Louis chose to spread them. The
+  correct option was moved on 4,337 questions; A, B, C and D are now each
+  correct on 23% to 26%. Wrong options keep their order. 125 sets in ascending
+  numeric order were left as they are.
 - **Modern names against King James spellings.** Questions say Bezalel,
   Zechariah, Elizabeth, Hagar, Melchizedek, Timothy, Oholah, "living
   creatures", "bowls", "lampstands", where the text on screen says Bezaleel,

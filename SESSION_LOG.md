@@ -13556,3 +13556,7 @@ Done: Trivia audit applied. 6,345 questions reviewed against the KJV, 1,364 corr
 Not live yet: all of it - next scheduled build.
 Still open: answer-position bias (85% are option B), KJV name spellings, verse text shown after answering comes from another translation; Genesis 9/16/17 swallowed-heading cards.
 Next: Louis reads the judgment list.
+
+## 2026-11-12 (night, trivia answer positions)
+Done: Louis chose to spread correct answers. Option B was correct on 85% of chapter questions; now A 23%, B 26%, C 25%, D 26%. 4,337 questions had the correct option moved, answer text unchanged on all 5,945 (checked). verify:trivia 17 checks pass; Genesis 15 played locally and scored correctly.
+Not live yet: waits for the next scheduled build.

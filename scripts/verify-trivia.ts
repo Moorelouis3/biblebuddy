@@ -77,6 +77,16 @@ check("no option is All of the above or Both A and B", () => {
   assert.equal(bad.length, 0, show(bad.map((q) => q.id)));
 });
 
+check("the right answer is not parked on one letter", () => {
+  // Until 2026-11-12 option B was correct on 5,076 of 5,945 questions, so a
+  // player could score by always tapping the second answer. Positions are now
+  // spread; sets in ascending numeric order were left in order.
+  for (const letter of ["A", "B", "C", "D"]) {
+    const share = all.filter((q) => q.correct === letter).length / all.length;
+    assert.ok(share > 0.18 && share < 0.32, `${letter} is correct on ${(share * 100).toFixed(1)}% of questions`);
+  }
+});
+
 console.log("\nWhat the player reads is a whole sentence");
 
 check("the reference stripper leaves ordinary words alone", () => {
