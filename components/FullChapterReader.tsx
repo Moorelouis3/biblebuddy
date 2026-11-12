@@ -153,7 +153,7 @@ const BIBLE_BOOKS_IN_ORDER = [
   "1 John", "2 John", "3 John", "Jude", "Revelation",
 ];
 
-// Ã¢â€â‚¬Ã¢â€â‚¬ Louis loading skeleton for database word overlays Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
+// ── Louis loading skeleton for database word overlays ────────────────────────
 function LouisLoadingCard({ name }: { name: string }) {
   return (
     <div className="flex flex-col items-center py-10 gap-5">
@@ -167,7 +167,7 @@ function LouisLoadingCard({ name }: { name: string }) {
         <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-4/5" />
         <div className="h-3.5 bg-gray-100 rounded-full animate-pulse w-2/3" />
       </div>
-      <p className="text-sm text-gray-400 italic animate-pulse">{name} is loadingÃ¢â‚¬Â¦</p>
+      <p className="text-sm text-gray-400 italic animate-pulse">{name} is loading…</p>
     </div>
   );
 }
@@ -402,10 +402,10 @@ export default function BibleChapterPage() {
 
   function stripPopupIntro(markdown: string): string {
     return markdown
-      .replace(/^Hey friend,\s*Little Louis here\s*[Ã¢â‚¬â€-]\s*/i, "")
+      .replace(/^Hey friend,\s*Little Louis here\s*[—-]\s*/i, "")
       .replace(/^Hey friend,\s*Little Louis here\s*/i, "")
       .replace(/^Hey friend,\s*/i, "")
-      .replace(/^Little Louis here\s*[Ã¢â‚¬â€-]\s*/i, "")
+      .replace(/^Little Louis here\s*[—-]\s*/i, "")
       .replace(/^Little Louis here\s*/i, "")
       .replace(/^Hey, quick one about [^.]+\.\s*/i, "")
       .replace(/^Hey, here's the quick meaning of [^.]+\.\s*/i, "")
@@ -415,21 +415,21 @@ export default function BibleChapterPage() {
   // Normalize markdown functions (reused from People/Places/Keywords pages)
   function normalizePersonMarkdown(markdown: string): string {
     return stripPopupIntro(markdown)
-      .replace(/^\s*[-Ã¢â‚¬Â¢*]\s+/gm, "")
+      .replace(/^\s*[-•*]\s+/gm, "")
       .replace(/\n{3,}/g, "\n\n")
       .trim();
   }
 
   function normalizePlaceMarkdown(markdown: string): string {
     return stripPopupIntro(markdown)
-      .replace(/^\s*[-Ã¢â‚¬Â¢*]\s+/gm, "")
+      .replace(/^\s*[-•*]\s+/gm, "")
       .replace(/\n{3,}/g, "\n\n")
       .trim();
   }
 
   function normalizeKeywordMarkdown(markdown: string): string {
     return markdown
-      .replace(/^\s*[-Ã¢â‚¬Â¢*]\s+/gm, "")
+      .replace(/^\s*[-•*]\s+/gm, "")
       .replace(/\n{3,}/g, "\n\n")
       .trim();
   }
@@ -670,45 +670,45 @@ Follow this EXACT markdown template and rules.
 
 TEMPLATE:
 
-# Ã°Å¸Â§Â­ What This Place Is
+# 🧭 What This Place Is
 
 (two short paragraphs)
 
 
 
 
-# Ã°Å¸â€”ÂºÃ¯Â¸Â Where It Appears in the Story
+# 🗺️ Where It Appears in the Story
 
 (two to three short paragraphs)
 
 
 
 
-# Ã°Å¸â€â€˜ Key Moments Connected to This Place
+# 🔑 Key Moments Connected to This Place
 
-Ã°Å¸â€Â¥ sentence  
+🔥 sentence  
 
-Ã°Å¸â€Â¥ sentence  
+🔥 sentence  
 
-Ã°Å¸â€Â¥ sentence  
+🔥 sentence  
 
-Ã°Å¸â€Â¥ sentence  
-
-
-
-
-# Ã°Å¸â€œâ€“ Where You Find It in Scripture
-
-Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
-
-Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
-
-Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
+🔥 sentence  
 
 
 
 
-# Ã°Å¸Å’Â± Why This Place Matters
+# 📖 Where You Find It in Scripture
+
+📖 Book Chapter–Chapter  
+
+📖 Book Chapter–Chapter  
+
+📖 Book Chapter–Chapter  
+
+
+
+
+# 🌱 Why This Place Matters
 
 (two to three short paragraphs)
 
@@ -723,7 +723,7 @@ RULES:
 - No meta commentary
 - No deep theology
 - Cinematic but simple
-- Total length about 200Ã¢â‚¬â€œ300 words
+- Total length about 200–300 words
 - Do NOT include the place name as a header`;
         
         const generated = await requestLouisNotes(prompt);
@@ -814,45 +814,45 @@ Follow this EXACT markdown template and rules.
 
 TEMPLATE:
 
-# Ã°Å¸â€œâ€“ What This Keyword Means
+# 📖 What This Keyword Means
 
 (two short paragraphs)
 
 
 
 
-# Ã°Å¸â€Â Where It Appears in Scripture
+# 🔍 Where It Appears in Scripture
 
 (two to three short paragraphs)
 
 
 
 
-# Ã°Å¸â€â€˜ Key Verses Using This Keyword
+# 🔑 Key Verses Using This Keyword
 
-Ã°Å¸â€Â¥ sentence  
+🔥 sentence  
 
-Ã°Å¸â€Â¥ sentence  
+🔥 sentence  
 
-Ã°Å¸â€Â¥ sentence  
+🔥 sentence  
 
-Ã°Å¸â€Â¥ sentence  
-
-
-
-
-# Ã°Å¸â€œÅ¡ Where You Find It in the Bible
-
-Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
-
-Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
-
-Ã°Å¸â€œâ€“ Book ChapterÃ¢â‚¬â€œChapter  
+🔥 sentence  
 
 
 
 
-# Ã°Å¸Å’Â± Why This Keyword Matters
+# 📚 Where You Find It in the Bible
+
+📖 Book Chapter–Chapter  
+
+📖 Book Chapter–Chapter  
+
+📖 Book Chapter–Chapter  
+
+
+
+
+# 🌱 Why This Keyword Matters
 
 (two to three short paragraphs)
 
@@ -867,7 +867,7 @@ RULES:
 - No meta commentary
 - No deep theology
 - Cinematic but simple
-- Total length about 200Ã¢â‚¬â€œ300 words
+- Total length about 200–300 words
 - Do NOT include the keyword name as a header`;
         
         setKeywordNotes(await getKeywordPopupNotes(selectedKeyword!.name));
@@ -1303,14 +1303,14 @@ RULES:
       return "";
     }
 
-    // Find the "Ã°Å¸Â§Â  **Big Idea of the Chapter**" section
-    // Match variations: "Ã°Å¸Â§Â  **Big Idea of the Chapter**" or "Ã°Å¸Â§Â  Big Idea of the Chapter"
-    // Extract text until the next emoji header (Ã°Å¸Å½Â¬, Ã°Å¸â€œÅ’, Ã°Å¸â€â€”, Ã°Å¸â„¢Å’, Ã°Å¸ÂÂ)
+    // Find the "🧠 **Big Idea of the Chapter**" section
+    // Match variations: "🧠 **Big Idea of the Chapter**" or "🧠 Big Idea of the Chapter"
+    // Extract text until the next emoji header (🎬, 📌, 🔗, 🙌, 🏁)
     const patterns = [
-      /Ã°Å¸Â§Â \s*\*\*Big Idea of the Chapter\*\*\s*\n([\s\S]*?)(?=\n#\s*Ã°Å¸Å½Â¬|\n#\s*Ã°Å¸â€œÅ’|\n#\s*Ã°Å¸â€â€”|\n#\s*Ã°Å¸â„¢Å’|\n#\s*Ã°Å¸ÂÂ|Ã°Å¸Å½Â¬|Ã°Å¸â€œÅ’|Ã°Å¸â€â€”|Ã°Å¸â„¢Å’|Ã°Å¸ÂÂ|$)/i,
-      /Ã°Å¸Â§Â \s*Big Idea of the Chapter\s*\n([\s\S]*?)(?=\n#\s*Ã°Å¸Å½Â¬|\n#\s*Ã°Å¸â€œÅ’|\n#\s*Ã°Å¸â€â€”|\n#\s*Ã°Å¸â„¢Å’|\n#\s*Ã°Å¸ÂÂ|Ã°Å¸Å½Â¬|Ã°Å¸â€œÅ’|Ã°Å¸â€â€”|Ã°Å¸â„¢Å’|Ã°Å¸ÂÂ|$)/i,
-      /\*\*Ã°Å¸Â§Â \s*Big Idea of the Chapter\*\*\s*\n([\s\S]*?)(?=\n#\s*Ã°Å¸Å½Â¬|\n#\s*Ã°Å¸â€œÅ’|\n#\s*Ã°Å¸â€â€”|\n#\s*Ã°Å¸â„¢Å’|\n#\s*Ã°Å¸ÂÂ|Ã°Å¸Å½Â¬|Ã°Å¸â€œÅ’|Ã°Å¸â€â€”|Ã°Å¸â„¢Å’|Ã°Å¸ÂÂ|$)/i,
-      /Big Idea of the Chapter\s*\n([\s\S]*?)(?=\n#\s*Ã°Å¸Å½Â¬|\n#\s*Ã°Å¸â€œÅ’|\n#\s*Ã°Å¸â€â€”|\n#\s*Ã°Å¸â„¢Å’|\n#\s*Ã°Å¸ÂÂ|Ã°Å¸Å½Â¬|Ã°Å¸â€œÅ’|Ã°Å¸â€â€”|Ã°Å¸â„¢Å’|Ã°Å¸ÂÂ|$)/i,
+      /🧠\s*\*\*Big Idea of the Chapter\*\*\s*\n([\s\S]*?)(?=\n#\s*🎬|\n#\s*📌|\n#\s*🔗|\n#\s*🙌|\n#\s*🏁|🎬|📌|🔗|🙌|🏁|$)/i,
+      /🧠\s*Big Idea of the Chapter\s*\n([\s\S]*?)(?=\n#\s*🎬|\n#\s*📌|\n#\s*🔗|\n#\s*🙌|\n#\s*🏁|🎬|📌|🔗|🙌|🏁|$)/i,
+      /\*\*🧠\s*Big Idea of the Chapter\*\*\s*\n([\s\S]*?)(?=\n#\s*🎬|\n#\s*📌|\n#\s*🔗|\n#\s*🙌|\n#\s*🏁|🎬|📌|🔗|🙌|🏁|$)/i,
+      /Big Idea of the Chapter\s*\n([\s\S]*?)(?=\n#\s*🎬|\n#\s*📌|\n#\s*🔗|\n#\s*🙌|\n#\s*🏁|🎬|📌|🔗|🙌|🏁|$)/i,
     ];
 
     let summary = "";
@@ -1359,7 +1359,7 @@ RULES:
       .replace(/`(.*?)`/g, "$1") // Remove code
       .replace(/^\s*[-*+]\s+/gm, "") // Remove list markers
       .replace(/^\s*\d+\.\s+/gm, "") // Remove numbered list markers
-      .replace(/Ã°Å¸Â§Â /g, "") // Remove emoji if present
+      .replace(/🧠/g, "") // Remove emoji if present
       .replace(/Big Idea of the Chapter/gi, "") // Remove header text if present
       .trim();
 
@@ -1391,8 +1391,8 @@ RULES:
       .split(/\s+(while|as|and then|leading to|which leads to)\s+/i)[0]
       .split(/\s*,\s*/)[0]
       .trim()
-      .replace(/^[,;:\-Ã¢â‚¬â€œÃ¢â‚¬â€\s]+/, "")
-      .replace(/[,;:\-Ã¢â‚¬â€œÃ¢â‚¬â€\s]+$/, "");
+      .replace(/^[,;:\-–—\s]+/, "")
+      .replace(/[,;:\-–—\s]+$/, "");
 
     if (!topic) {
       return fallback;
@@ -1481,29 +1481,29 @@ RULES:
 You are Little Louis. Generate beginner friendly notes for ${bookDisplayName} chapter ${chapterNum} using this exact template and rules.
 
 TEMPLATE
-# Ã°Å¸Â§Â  Big Idea of the Chapter
+# 🧠 Big Idea of the Chapter
 One short paragraph explaining the heart of the chapter in simple English.
 
-# Ã°Å¸Å½Â¬ What's HappeningÃ¢â‚¬Â¦
+# 🎬 What's Happening…
 Include three or four cinematic story movements. Each movement follows:
 [Emoji] **Story Moment Title** (ALWAYS bold the story moment title with **)
 A short paragraph of three to four sentences explaining what happens and why it matters. Smooth, simple, friendly language. Do not use hyphens. Do not break the story into too many pieces. Keep it beginner friendly and emotional.
-IMPORTANT: Every subsection title under "What's Happening" MUST be wrapped in **bold** markdown. Example: Ã°Å¸Å’Â³ **Family Tree of Jesus** (not just Ã°Å¸Å’Â³ Family Tree of Jesus).
+IMPORTANT: Every subsection title under "What's Happening" MUST be wrapped in **bold** markdown. Example: 🌳 **Family Tree of Jesus** (not just 🌳 Family Tree of Jesus).
 
-# Ã°Å¸â€œÅ’ Key Themes
+# 📌 Key Themes
 List two or three themes. Each theme is one short sentence.
 
-# Ã°Å¸â€â€” Connections to the Bigger Story
+# 🔗 Connections to the Bigger Story
 List one or two simple connections to prophecy, covenant, or Jesus mission. Extremely beginner friendly.
 
-# Ã°Å¸â„¢Å’ Simple Life Application
+# 🙌 Simple Life Application
 A short paragraph of three to four sentences explaining what this chapter shows about God, about Jesus, and about what the reader is invited to believe or do.
 
-# Ã°Å¸ÂÂ One Sentence Summary
+# 🏁 One Sentence Summary
 A final strong sentence that captures the message.
 
 RULES
-DO NOT include a top-level header like "${bookDisplayName} Chapter ${chapterNum} Notes" or any chapter title at the beginning. Start directly with "# Ã°Å¸Â§Â  Big Idea of the Chapter".
+DO NOT include a top-level header like "${bookDisplayName} Chapter ${chapterNum} Notes" or any chapter title at the beginning. Start directly with "# 🧠 Big Idea of the Chapter".
 Keep emojis in the headers. Use proper markdown formatting:
 - "Big Idea of the Chapter" should be formatted as # (h1)
 - "What's Happening" should be formatted as # (h1)
@@ -1805,12 +1805,12 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       dispatchLouisMoment({
         openMode: "badge",
         message: [
-          `youÃ¢â‚¬â„¢re reading ${bookDisplayName} ${chapter} now`,
+          `you’re reading ${bookDisplayName} ${chapter} now`,
           chapterSummary || "This chapter moves the story forward and shows you something important about God, people, and what happens next.",
           "read this chapter slowly and pay attention to what stands out",
-          "you can tap any person, place, or word you donÃ¢â‚¬â„¢t understand to get more context",
-          "if you have any questions while you read, IÃ¢â‚¬â„¢m here to help",
-          "when youÃ¢â‚¬â„¢re done, mark the chapter as complete so we can reflect on it",
+          "you can tap any person, place, or word you don’t understand to get more context",
+          "if you have any questions while you read, I’m here to help",
+          "when you’re done, mark the chapter as complete so we can reflect on it",
         ].join("\n\n"),
       });
       void markBibleFeatureSeen("bible_chapter_main");
@@ -1841,7 +1841,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
       `Hey, you are about to read ${bookDisplayName} ${chapter}.`,
       `Good choice. You are about to read ${bookDisplayName} ${chapter}.`,
       `Alright, you are stepping into ${bookDisplayName} ${chapter} now.`,
-      `LetÃ¢â‚¬â„¢s get into ${bookDisplayName} ${chapter}.`,
+      `Let’s get into ${bookDisplayName} ${chapter}.`,
       `You are opening ${bookDisplayName} ${chapter} now.`,
     ]);
 
@@ -1985,17 +1985,17 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
     const notesLine =
       "I'd start with the study notes. If you're on the free plan, opening a section will use 1 credit from your day.";
     const triviaLine = triviaDone
-      ? "Ã°Å¸Å½Â¯ Trivia for this chapter is already done."
-      : "Ã°Å¸Å½Â¯ After that, try the trivia for this chapter and see what actually stuck.";
+      ? "🎯 Trivia for this chapter is already done."
+      : "🎯 After that, try the trivia for this chapter and see what actually stuck.";
     const scrambledLine = scrambledDone
-      ? "Ã°Å¸â€â‚¬ Scrambled for this chapter is already done too."
-      : "Ã°Å¸â€â‚¬ Then hit Scrambled if you want to lock the key words in better.";
+      ? "🔀 Scrambled for this chapter is already done too."
+      : "🔀 Then hit Scrambled if you want to lock the key words in better.";
 
     dispatchLouisMoment({
       message:
         type === "completed"
-          ? `Nice work. You just completed ${chapterLabel}.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}\n\nÃ°Å¸â€™Â­ And before you leave, drop a reflection so this chapter does not just pass by you.`
-          : `You already finished ${chapterLabel}.\n\nHereÃ¢â‚¬â„¢s the checklist IÃ¢â‚¬â„¢d point you back to.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}`,
+          ? `Nice work. You just completed ${chapterLabel}.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}\n\n💭 And before you leave, drop a reflection so this chapter does not just pass by you.`
+          : `You already finished ${chapterLabel}.\n\nHere’s the checklist I’d point you back to.\n\n${notesLine}\n\n${triviaLine}\n\n${scrambledLine}`,
       replies: [
         {
           id: `chapter-notes-${book}-${chapter}`,
@@ -3669,7 +3669,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                             setIsAnimatingKeyword(true);
                             setTimeout(() => {
                               setSelectedKeyword(null); setKeywordNotes(null); setIsAnimatingKeyword(false);
-                              setLearnedToast(`${kwDisplayName} has been learned! Ã°Å¸â„¢Å’`);
+                              setLearnedToast(`${kwDisplayName} has been learned! 🙌`);
                               setTimeout(() => setLearnedToast(null), 3500);
                             }, 250);
 
@@ -3706,7 +3706,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                           }`}
                           style={isAnimatingKeyword ? { transform: "scale(0.92)", opacity: 0.7 } : undefined}
                         >
-                          {isCompleted ? `Ã¢Å“â€œ ${selectedKeyword?.name ?? ""} learned` : `Mark ${selectedKeyword?.name ?? ""} as Learned`}
+                          {isCompleted ? `✓ ${selectedKeyword?.name ?? ""} learned` : `Mark ${selectedKeyword?.name ?? ""} as Learned`}
                         </button>
                       );
                     })()}
@@ -3751,7 +3751,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         }}
       />
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Louis "learned" toast Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Louis "learned" toast ──────────────────────────────────────────── */}
       {learnedToast && (
         <div
           className="fixed bottom-24 left-1/2 z-50 flex items-center gap-3 bg-white border border-green-200 rounded-2xl shadow-2xl px-4 py-3"
@@ -3762,7 +3762,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
         </div>
       )}
 
-      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Books modal Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */}
+      {/* ── Books modal ───────────────────────────────────────────────────── */}
       {showBooksModal && (
         <div className="fixed inset-0 z-[60] bg-black/70 flex items-start justify-center overflow-y-auto p-4 py-8">
           <div className="relative w-full max-w-2xl rounded-3xl bg-white shadow-2xl p-6">
@@ -3770,7 +3770,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
               type="button"
               onClick={() => { setShowBooksModal(false); setBooksModalSelectedBook(null); }}
               className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200"
-            >Ã¢Å“â€¢</button>
+            >✕</button>
 
             {!booksModalSelectedBook ? (
               <>
@@ -3795,7 +3795,7 @@ No numbers in section headers. No hyphens anywhere in the text. No images. No Gr
                     type="button"
                     onClick={() => setBooksModalSelectedBook(null)}
                     className="text-sm font-semibold text-blue-600 hover:underline"
-                  >Ã¢â€ Â Books</button>
+                  >← Books</button>
                   <h2 className="text-xl font-bold text-gray-900">{booksModalSelectedBook}</h2>
                 </div>
                 <div className="grid grid-cols-7 gap-2">
@@ -3908,11 +3908,11 @@ function CongratsModalWithConfetti({
   // Calculate random message using props (instant, no async delay)
   const randomMessage = useMemo(() => {
     if (!levelInfo) {
-      return "Great job Ã¢â‚¬â€ your consistency is paying off!";
+      return "Great job — your consistency is paying off!";
     }
     const topLevel = LEVEL_DEFINITIONS[LEVEL_DEFINITIONS.length - 1]?.level ?? 20;
     if (levelInfo.level >= topLevel) {
-      return "Great job Ã¢â‚¬â€ your consistency is paying off!";
+      return "Great job — your consistency is paying off!";
     }
     const template = motivationalMessages[Math.floor(Math.random() * motivationalMessages.length)];
     return template.replace("{chapterLabel}", `${bookDisplayName} ${chapter}`);
@@ -4154,7 +4154,7 @@ function CongratsModalWithConfetti({
             onClick={closeModal}
             className="absolute right-4 top-3 text-sm text-gray-500 hover:text-gray-800"
           >
-            Ã¢Å“â€¢
+            ✕
           </button>
 
           {/* Inner light blue column */}
@@ -4360,13 +4360,13 @@ function LevelUpOverlay({
           className="absolute -top-4 -right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white text-xl font-bold transition"
           aria-label="Close"
         >
-          Ã¢ÂÅ’
+          ❌
         </button>
 
         {/* Level Up Content */}
         <div className="animate-in zoom-in duration-700">
           <h2 className="text-6xl md:text-7xl font-extrabold mb-4 animate-in zoom-in duration-1000">
-            Level {level} Unlocked! Ã°Å¸Å½â€°
+            Level {level} Unlocked! 🎉
           </h2>
           {levelDefinition ? (
             <p className="text-2xl md:text-3xl font-semibold text-white">

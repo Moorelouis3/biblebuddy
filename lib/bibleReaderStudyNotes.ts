@@ -1508,7 +1508,7 @@ function isPhraseCardFillerLine(line: string) {
 }
 
 function formatBibleYearPhraseCard(rawHeading: string, rawBody: string, reference?: string) {
-  const heading = repairMojibake(rawHeading).trim().replace(/^\?{2,3}\s+/, "ðŸ“Œ ");
+  const heading = repairMojibake(rawHeading).trim().replace(/^\?{2,3}\s+/, "📌 ");
   const phrase = stripPhraseIcon(heading);
   const lines = repairMojibake(rawBody)
     .replace(/\r/g, "")
@@ -1642,7 +1642,7 @@ function makePersonalPhraseSectionForBook(section: PersonalPhraseSectionInput, b
     categories: [
       {
         id: "key-phrases",
-        icon: "ðŸ’¬",
+        icon: "💬",
         title: "Key Phrases",
         content: section.phrases.map(([heading, body]) =>
           preserveExactPhraseBodies
@@ -13257,7 +13257,7 @@ const APPROVED_GENESIS_SEVEN_SECTION_META: ApprovedGenesisSevenSectionMeta[] = [
   {
     reference: "Genesis 7:1-10",
     title: "Entering The Ark",
-    icon: "ðŸš¢",
+    icon: "🚢",
     summary: "God shifts Noah from building to entering the ark, gathering his household and the animals before judgment begins.",
     startVerse: 1,
     endVerse: 10,
@@ -13265,7 +13265,7 @@ const APPROVED_GENESIS_SEVEN_SECTION_META: ApprovedGenesisSevenSectionMeta[] = [
   {
     reference: "Genesis 7:11-17",
     title: "The Flood Begins",
-    icon: "ðŸš¢",
+    icon: "🚢",
     summary: "The flood starts at a real moment in Noah's life, the waters break from above and below, and God shuts him in.",
     startVerse: 11,
     endVerse: 17,
@@ -13370,7 +13370,7 @@ function applyApprovedGenesisSevenReaderSections() {
       categories: [
         {
           id: "key-phrases",
-          icon: "ðŸ’¬",
+          icon: "💬",
           title: "Key Phrases",
           content: phraseBlocks,
         },

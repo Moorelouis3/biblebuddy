@@ -139,10 +139,10 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         <Link href="/upgrade">
           <div className="bb-card relative cursor-pointer rounded-2xl border px-4 py-3 shadow-sm transition hover:scale-[1.01] hover:shadow-md">
             <span className="bb-accent absolute right-4 top-1/2 -translate-y-1/2 text-base" aria-hidden="true">
-              â†‘
+              ↑
             </span>
             <div className="flex items-center gap-3 pr-7">
-              <div className="text-xl leading-none">ðŸ‘‘</div>
+              <div className="text-xl leading-none">👑</div>
               <div className="min-w-0">
                 <p className="bb-text-primary text-sm font-semibold">Go Deeper With Pro</p>
                 <p className="bb-text-secondary text-xs leading-relaxed">
@@ -167,14 +167,14 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           data-dashboard-tour="bible"
           className={`bb-card cursor-pointer rounded-xl border p-5 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md ${getSpotlightClasses("bible")}`}
         >
-          <h2 className="bb-text-primary text-xl font-semibold">ðŸ“– The Bible</h2>
+          <h2 className="bb-text-primary text-xl font-semibold">📖 The Bible</h2>
           <p className="bb-text-secondary mt-1">Read the complete Bible here</p>
         </div>
       </Link>
 
       <Link href="/bible-studies" onClick={(event) => handleCardClick(event, "bible_studies", "/bible-studies")}>
         <div className="bb-card cursor-pointer rounded-xl border p-5 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md">
-          <h2 className="bb-text-primary text-xl font-semibold">Ã°Å¸Å’â€¦ Bible Studies</h2>
+          <h2 className="bb-text-primary text-xl font-semibold">🌅 Bible Studies</h2>
           <p className="bb-text-secondary mt-1">Guided chapter studies with reading, notes, trivia, and reflection</p>
         </div>
       </Link>
@@ -184,7 +184,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           data-dashboard-tour="group"
           className={`bb-card cursor-pointer rounded-xl border p-5 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md ${getSpotlightClasses("group")}`}
         >
-          <h2 className="bb-text-primary text-xl font-semibold">ðŸ‘¥ Bible Study Group</h2>
+          <h2 className="bb-text-primary text-xl font-semibold">👥 Bible Study Group</h2>
           <p className="bb-text-secondary mt-1">Study the Bible with us</p>
         </div>
       </Link> : null}
@@ -194,7 +194,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           data-dashboard-tour="tools"
           className={`bb-card cursor-pointer rounded-xl border p-5 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md ${getSpotlightClasses("tools")}`}
         >
-          <h2 className="bb-text-primary text-xl font-semibold">ðŸ›  Bible Study Tools</h2>
+          <h2 className="bb-text-primary text-xl font-semibold">🛠 Bible Study Tools</h2>
           <p className="bb-text-secondary mt-1">A collection of Bible study tools</p>
         </div>
       </Link>
@@ -204,7 +204,7 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
           data-dashboard-tour="games"
           className={`bb-card cursor-pointer rounded-xl border p-5 shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md ${getSpotlightClasses("games")}`}
         >
-          <h2 className="bb-text-primary text-xl font-semibold">ðŸŽ® Bible Study Games</h2>
+          <h2 className="bb-text-primary text-xl font-semibold">🎮 Bible Study Games</h2>
           <p className="bb-text-secondary mt-1">Play our Bible-based games</p>
         </div>
       </Link>
@@ -216,9 +216,9 @@ const DashboardCards: React.FC<DashboardCardsProps> = ({
         className={`bb-card relative w-full cursor-pointer rounded-xl border p-5 text-left shadow-sm transition duration-300 hover:scale-[1.01] hover:shadow-md ${getSpotlightClasses("invite")}`}
       >
         <span className="bb-text-muted absolute right-4 top-4 text-base" aria-hidden="true">
-          â†—
+          ↗
         </span>
-        <h2 className="bb-text-primary text-xl font-semibold">â†— Share Bible Buddy</h2>
+        <h2 className="bb-text-primary text-xl font-semibold">↗ Share Bible Buddy</h2>
         <p className="bb-text-secondary mt-1">Share by text, WhatsApp, or copy link.</p>
       </button>
     </div>
