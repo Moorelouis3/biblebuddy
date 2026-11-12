@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-18-explained",
+    title: "Joshua 18 Explained: Shiloh, Slackness, and Benjamin's Lot",
+    description:
+      "Joshua 18 explained verse by verse: the tabernacle settles at Shiloh, Joshua rebukes seven idle tribes, the land is surveyed and cast by lot, and Benjamin's border and cities are set.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-18-explained",
+    publishedAt: "2026-11-12",
+    readTime: "15 min read",
+    image: "/blog-banners/joshua-18-explained.jpg",
+    groupPost: {
+      title: "Joshua 18 Explained 📖",
+      content:
+        "Seven tribes still had no land.\nNot because none was left.\n\n📌 Nobody had gone to measure it yet.\n\n📖 The tabernacle finally settles at Shiloh.\n📖 Joshua rebukes Israel for sitting still.\n📖 Benjamin gets squeezed between two big brothers.\n\nNew article on:\n🟢 why the land was **given** before it was claimed\n🟢 why a **survey** and a **lot** both mattered\n🟢 Jerusalem showing up under a different tribe\n\nWhat has already been given to you that you still have not gone to walk? 🙏",
+    },
+  },
+  {
     slug: "joshua-17-explained",
     title: "Joshua 17 Explained: Zelophehad's Daughters Claim Their Land",
     description:
