@@ -1,4 +1,5 @@
 import { supabase } from "./supabaseClient";
+import { releaseAtFrom } from "./studyLibrary";
 
 /**
  * The Library catalog. Everything here comes from the `devotionals` table -
@@ -237,21 +238,18 @@ export function withTotals(progress: StudyProgress | undefined, totalDays: numbe
  * state; the date only speaks to people who have not started.
  */
 /**
- * What time of day a study opens.
+ * What time of day a study opens: 11:00, and why, in lib/studyLibrary.ts.
  *
- * available_from is a date column - it drops any time you write to it - so
- * the hour lives here. 11:00 is when Higher Hope was set to land (Louis,
- * 2026-10-18), and a study that opens at a stated hour rather than at
- * midnight is the one people can actually be waiting for.
+ * It lives there rather than here because the admin Study Guides tab needs the
+ * same answer and cannot import this file - everything above it reaches for
+ * ./supabaseClient, which is the browser client. Re-exported so the four
+ * screens that already read RELEASE_HOUR from the catalog keep working.
  */
-export const RELEASE_HOUR = 11;
+export { RELEASE_HOUR } from "./studyLibrary";
 
 /** The exact moment a study opens, or null if it is already out. */
 export function releaseAt(study: LibraryStudy): Date | null {
-  if (!study.available_from) return null;
-  const start = new Date(`${study.available_from}T00:00:00`);
-  start.setHours(RELEASE_HOUR, 0, 0, 0);
-  return start;
+  return releaseAtFrom(study.available_from);
 }
 
 /**

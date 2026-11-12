@@ -1,64 +1,63 @@
 /**
- * What is on the study shelf (Louis, 2026-10-23).
+ * When a study opens. Nothing here decides WHICH studies are on the shelf.
  *
- * These lists lived inside app/devotionals/page.tsx, which was fine while the
- * Plans page was the only thing that needed them. The admin Study Guides tab
- * needs the same answer, and a second copy would drift: the devotionals table
- * holds 25 rows, only four of which are in the library, and an admin page with
- * its own list would quietly report on studies nobody can see. One list, two
- * readers.
+ * It used to. This file held FEATURED_STUDY_ORDER, AVAILABLE_STUDY_TITLES and
+ * UPCOMING_STUDIES - three hand-kept lists of titles - because "in the
+ * library" was once an editorial decision with nowhere to live on the row.
+ * ADD_LIBRARY_CATALOG_COLUMNS.sql gave it one. The Library has read
+ * `devotionals` since 2026-10-16 (is_published, sort_order, available_from,
+ * cover_image: see lib/libraryCatalog.ts), so the lists stopped being the
+ * answer and became a second opinion.
  *
- * It is a hand-kept list rather than a query because "in the library" is an
- * editorial decision, not a property of the row. is_published is true for
- * studies that were retired from the shelf long ago.
+ * They were removed on 2026-11-12, when Louis put The Obedience of Abraham
+ * back on the shelf for 1 December. That was one row edit - is_published,
+ * available_from, sort_order - and the shelf showed it immediately, greyed,
+ * with a countdown. The admin Study Guides tab did not, because it was still
+ * reading the list here, which nobody had thought to edit. Same shape as the
+ * cover bug and the layout bug before it: nothing errors, two screens just
+ * quietly disagree about what exists. docs/STUDY_LAYOUT_LISTS.md is the
+ * history.
+ *
+ * So: the database says what is on the shelf and when it opens. This file
+ * only answers "has that moment arrived yet", for the one caller that cannot
+ * import the browser catalog.
  */
 
 /**
- * Every study on the shelf, in the order the Plans page shows them.
+ * What time of day a study opens.
  *
- * Typed readonly string[] rather than `as const`: callers pass a title that
- * came out of the database, which is a plain string, and a literal union would
- * reject it.
+ * available_from is a date column - it drops any time you write to it - so the
+ * hour lives in code. 11:00 is when Higher Hope was set to land (Louis,
+ * 2026-10-18), and a study that opens at a stated hour rather than at midnight
+ * is the one people can actually be waiting for.
  */
-export const FEATURED_STUDY_ORDER: readonly string[] = [
-  "The Wisdom of Proverbs",
-  "The Tempting of Jesus",
-  "21 Women of the Bible",
-  "Higher Hope",
-  "The Beginning of Everything",
-];
+export const RELEASE_HOUR = 11;
+
+/** The exact moment a study opens, or null if it has no date and is simply out. */
+export function releaseAtFrom(availableFrom: string | null | undefined): Date | null {
+  if (!availableFrom) return null;
+  const start = new Date(`${availableFrom}T00:00:00`);
+  if (Number.isNaN(start.getTime())) return null;
+  start.setHours(RELEASE_HOUR, 0, 0, 0);
+  return start;
+}
+
+/** True once readers who have never started it can open the study. */
+export function isOpenNow(availableFrom: string | null | undefined, now = new Date()): boolean {
+  const start = releaseAtFrom(availableFrom);
+  return !start || start <= now;
+}
 
 /**
- * The studies a reader can open today. Anything else on the shelf is a grey
- * "Coming Soon" card. This was the single title "The Wisdom of Proverbs" until
- * 21 Women of the Bible went live (2026-10-18) and came up greyed out.
- */
-export const AVAILABLE_STUDY_TITLES: ReadonlySet<string> = new Set([
-  "The Wisdom of Proverbs",
-  "21 Women of the Bible",
-  // Moved out of UPCOMING_STUDIES on 2026-10-24, once all 60 days existed in
-  // devotional_days. The devotionals row still carries available_from
-  // 2026-10-25, which is what actually gates the reader, so this does not open
-  // it early - it just stops the card being a grey "Coming Soon" on the day it
-  // does open.
-  "Higher Hope",
-]);
-
-/**
- * Studies that are announced but not open yet.
+ * "Starts 1 December" for a study that has not opened yet, else null.
  *
- * A study belongs here rather than in AVAILABLE_STUDY_TITLES until its days
- * are actually written - Higher Hope sat here from 2026-10-23 because it is 60
- * days long and had 0 of them in the database, so opening it would have shown
- * an empty study. Move a title across once its days exist.
+ * Day and month only, in the same words the shelf used when these labels were
+ * typed by hand. The year is deliberately absent: a release more than a year
+ * out is not a thing that happens, and "Starts 1 December 2026" reads like a
+ * contract.
  */
-export const UPCOMING_STUDIES: ReadonlyMap<string, { startLabel: string; path: string }> = new Map([
-  ["The Tempting of Jesus", { startLabel: "Starts 1 November", path: "/devotionals/tempting-of-jesus" }],
-  // All 21 days are already in devotional_days; the devotionals row's
-  // available_from of 2026-11-08 is what actually gates the reader, and this
-  // entry is what makes the card say so instead of looking broken.
-  ["The Beginning of Everything", { startLabel: "Starts 8 November", path: "/devotionals/beginning-of-everything" }],
-]);
-
-export const isInLibrary = (title: string | null | undefined): boolean =>
-  !!title && FEATURED_STUDY_ORDER.includes(title);
+export function startLabelFrom(availableFrom: string | null | undefined, now = new Date()): string | null {
+  const start = releaseAtFrom(availableFrom);
+  if (!start || start <= now) return null;
+  return `Starts ${start.getDate()} ${start.toLocaleString("en-GB", { month: "long" })}`;
+}

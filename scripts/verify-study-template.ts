@@ -77,7 +77,27 @@ check(oldShelf.includes('redirect("/library")'), `${OLD_SHELF}: should redirect 
 check(!oldShelf.includes('"use client"'), `${OLD_SHELF}: the old client shelf is back`);
 check(oldShelf.length < 4000, `${OLD_SHELF}: should be a redirect, but it is ${oldShelf.length} characters`);
 
-// 5. The shelf can be embedded, which is what lets Back come back to it.
+// 5. What is ON the shelf is the row, not a list of titles. The Library has
+// read `devotionals` since October; the admin Study Guides tab kept its own
+// list until 2026-11-12, when publishing The Obedience of Abraham for
+// 1 December put a study on the shelf that the admin tab could not see.
+const STUDY_LIBRARY = path.join("lib", "studyLibrary.ts");
+const ADMIN = path.join("lib", "adminDashboard.ts");
+const studyLibrary = read(STUDY_LIBRARY);
+for (const gone of ["FEATURED_STUDY_ORDER", "AVAILABLE_STUDY_TITLES", "UPCOMING_STUDIES"]) {
+  check(!studyLibrary.includes(`export const ${gone}`), `${STUDY_LIBRARY}: the hand-kept list ${gone} is back`);
+}
+const admin = read(ADMIN);
+check(
+  !/FEATURED_STUDY_ORDER|AVAILABLE_STUDY_TITLES|UPCOMING_STUDIES/.test(admin),
+  `${ADMIN}: the study guides tab is reading a title list again`,
+);
+check(
+  admin.includes('q.eq("is_published", true)'),
+  `${ADMIN}: the study guides tab should select published rows, like the shelf does`,
+);
+
+// 6. The shelf can be embedded, which is what lets Back come back to it.
 const library = read(LIBRARY);
 check(library.includes("embedded"), `${LIBRARY}: should accept an embedded prop`);
 check(library.includes("onStudySelect"), `${LIBRARY}: should accept onStudySelect`);

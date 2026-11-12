@@ -4,7 +4,7 @@ import { BLOG_ARTICLES } from "@/lib/blogContent";
 import { isQualifyingAction, isMeaningfulAction } from "@/lib/activityDefinitions";
 import { TOTAL_BIBLE_CHAPTERS } from "@/lib/bibleBookChapters";
 import chapterProgress from "@/data/chapter-blog/progress.json";
-import { FEATURED_STUDY_ORDER, AVAILABLE_STUDY_TITLES, UPCOMING_STUDIES } from "@/lib/studyLibrary";
+import { isOpenNow, startLabelFrom } from "@/lib/studyLibrary";
 import { WELCOME_SEQUENCE } from "@/lib/email/welcomeSequence";
 
 /**
@@ -783,10 +783,13 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
 
   // ----- study guides -----
   //
-  // Every study on the shelf, not just Proverbs, and read from the same list
-  // the Plans page renders from (lib/studyLibrary) so the two cannot disagree.
-  // The devotionals table holds 25 rows; 4 are in the library and the rest were
-  // retired, so a query by is_published would report on studies nobody can see.
+  // Every study on the shelf, not just Proverbs, read the same way the shelf
+  // itself reads it: is_published on the row, in sort_order. This used to be a
+  // hand-kept list of titles in lib/studyLibrary, with a comment saying the two
+  // could not disagree - and on 2026-11-12 they did, the moment The Obedience
+  // of Abraham was published to the shelf for 1 December and this tab carried
+  // on reporting on five studies. One source now: lib/libraryCatalog.ts runs
+  // the same filter for readers.
   //
   // Two different completions are kept apart on purpose:
   //   daysWritten  how much of the study EXISTS (content progress)
@@ -794,11 +797,15 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   // Higher Hope is the case that makes this matter: 60 days promised, 0
   // written, 0 participants. One number alone would read as a healthy study
   // nobody has started, or an empty one.
-  const guideRows = await fetchAll<{ id: string; title: string; total_days: number | null; cover_image: string | null }>(
-    admin,
-    "devotionals",
-    "id, title, total_days, cover_image",
-    (q) => q.in("title", FEATURED_STUDY_ORDER as string[]),
+  const guideRows = await fetchAll<{
+    id: string;
+    title: string;
+    total_days: number | null;
+    cover_image: string | null;
+    available_from: string | null;
+    sort_order: number | null;
+  }>(admin, "devotionals", "id, title, total_days, cover_image, available_from, sort_order", (q) =>
+    q.eq("is_published", true),
   );
   const guideIds = guideRows.map((g) => g.id);
   // Not filtered to is_completed: starting a day and finishing it are
@@ -860,10 +867,15 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
         id: guide.id,
         title: guide.title,
         coverImage: guide.cover_image,
+        sortOrder: guide.sort_order,
         totalDays,
         daysWritten,
-        isOpen: AVAILABLE_STUDY_TITLES.has(guide.title),
-        startLabel: UPCOMING_STUDIES.get(guide.title)?.startLabel ?? null,
+        // Both off available_from, so a study that has quietly opened stops
+        // being advertised as upcoming without anyone editing anything. The
+        // old list still said "Starts 1 November" for The Tempting of Jesus
+        // eleven days after it opened.
+        isOpen: isOpenNow(guide.available_from),
+        startLabel: startLabelFrom(guide.available_from),
         /** Opened at least one day. */
         started: started.size,
         /** Finished at least one day. Always <= started. */
@@ -878,7 +890,10 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
         dayReach,
       };
     })
-    .sort((a, b) => FEATURED_STUDY_ORDER.indexOf(a.title) - FEATURED_STUDY_ORDER.indexOf(b.title));
+    // Shelf order: sort_order, then title, exactly as fetchLibraryStudies
+    // orders it. A row with no sort_order goes last rather than first, so a
+    // study published without one never jumps the queue in the report.
+    .sort((a, b) => (a.sortOrder ?? Number.MAX_SAFE_INTEGER) - (b.sortOrder ?? Number.MAX_SAFE_INTEGER) || a.title.localeCompare(b.title));
 
   // ----- printed books (Wisdom of Proverbs) -----
   // From the landing-analytics events the books page, the event-page banner

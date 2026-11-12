@@ -1555,8 +1555,8 @@ export default function AnalyticsDashboardView({
                 <Card>
                   <CardTitle icon="📖">Every study on the shelf</CardTitle>
                   <p className="text-[11px] font-semibold text-[#94a3b8]">
-                    The {d.studyGuides.length} studies the Plans page lists, read from the same list it renders from.
-                    Retired studies are not shown: none has had any activity in 30 days.
+                    The {d.studyGuides.length} studies in the Library, read from the same rows it renders from -
+                    published, in shelf order. Retired studies are not shown: none has had any activity in 30 days.
                   </p>
                   <div className="mt-4 space-y-4">
                     {d.studyGuides.map((g) => {

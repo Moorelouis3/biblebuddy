@@ -23,8 +23,10 @@ import { redirect } from "next/navigation";
  * app/study/[slug]/page.tsx sends an unknown study slug, where
  * lib/studyMode.ts points, and it is in bookmarks and older links. Study deep
  * links under /devotionals/<id> are untouched and still resolve - only the
- * index moved. The lists that used to live in this file are in
- * lib/studyLibrary.ts, and the shelf itself is components/library/LibraryPage.tsx.
+ * index moved. The shelf is components/library/LibraryPage.tsx, and what is on
+ * it is the `devotionals` row (is_published, sort_order, available_from), read
+ * by lib/libraryCatalog.ts. The title lists this file used to keep are gone -
+ * see lib/studyLibrary.ts for why.
  */
 export default function DevotionalsIndexPage() {
   redirect("/library");
