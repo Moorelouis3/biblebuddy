@@ -49,10 +49,13 @@ const PLAN_TOTAL_DAYS = 365;
  * order that already puts the right ones in front: what you are reading, newest
  * first, then the study you set as yours, then today's community study, then
  * the one opening next. Everything past that is a catalogue, and the catalogue
- * is the Library link in this header - the shelf grows a sixth card the day a
- * sixth column fits, not the day a sixth study ships.
+ * is the Library link in this header.
+ *
+ * Six since 2026-11-12, when Louis asked for The Obedience of Abraham on the
+ * dashboard as the sixth guide, greyed out with its countdown. Still one row:
+ * the grid below has exactly this many columns, so change both or neither.
  */
-const SHELF_MAX_BOOKS = 5;
+const SHELF_MAX_BOOKS = 6;
 
 type ShelfBook = {
   key: string;
@@ -393,8 +396,22 @@ export default function YourBookshelf({
     setReloadKey((k) => k + 1);
   }
 
-  /** The row itself: the first SHELF_MAX_BOOKS of the order built above. */
-  const visibleBooks = useMemo(() => books.slice(0, SHELF_MAX_BOOKS), [books]);
+  /**
+   * The row itself: the first SHELF_MAX_BOOKS of the order built above.
+   *
+   * With one exception. A study that has not opened yet is on the shelf to be
+   * seen coming, and the order above puts unstarted books last - so for
+   * anyone with enough books in progress, the upcoming one was exactly the
+   * card the cut removed. It takes the last seat instead of losing it.
+   */
+  const visibleBooks = useMemo(() => {
+    const row = books.slice(0, SHELF_MAX_BOOKS);
+    const isUpcoming = (book: ShelfBook) => Boolean(countdownLabel(book, Date.now()));
+    if (row.some(isUpcoming)) return row;
+    const upcoming = books.slice(SHELF_MAX_BOOKS).find(isUpcoming);
+    if (!upcoming) return row;
+    return [...row.slice(0, SHELF_MAX_BOOKS - 1), upcoming];
+  }, [books]);
 
   /**
    * "2 studies in progress · 1 completed · 1 upcoming", from the shelf itself.
@@ -535,13 +552,13 @@ export default function YourBookshelf({
           {/* The covers are the point, so they are large. The row swipes on a
               phone with the next one peeking; on a desktop three or four sit
               side by side. */}
-          {/* Swipe on a phone, one grid row on a desktop. Five fixed columns,
+          {/* Swipe on a phone, one grid row on a desktop. Six fixed columns,
               not auto-fit: auto-fit wrapped the sixth book onto a second row
               the moment the catalogue outgrew the first, which is the whole
               thing Louis asked to stop (2026-11-07). The list is capped at
               SHELF_MAX_BOOKS to match, so the row can never wrap. */}
           <div className="-mx-4 mt-5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:-mx-5 sm:px-5 lg:mx-0 lg:overflow-visible lg:px-0 [&::-webkit-scrollbar]:hidden">
-            <ul className="flex w-max snap-x snap-mandatory items-stretch gap-3 sm:gap-4 lg:grid lg:w-full lg:grid-cols-5">
+            <ul className="flex w-max snap-x snap-mandatory items-stretch gap-3 sm:gap-4 lg:grid lg:w-full lg:grid-cols-6">
               {visibleBooks.map((book, index) => {
                 const primaryLabel = book.isComplete
                   ? "Read Again →"
@@ -627,7 +644,9 @@ export default function YourBookshelf({
                             src={book.cover}
                             alt={book.title}
                             loading="lazy"
-                            className="aspect-[2/3] w-full object-cover"
+                            // Greyed until it opens, the same two classes the
+                            // Library puts on a study that is not out yet.
+                            className={`aspect-[2/3] w-full object-cover ${notOutYet ? "opacity-70 grayscale" : ""}`}
                           />
                         ) : (
                           <div className="flex aspect-[2/3] w-full items-center justify-center bg-[var(--bb-surface-soft,#eef2f7)] px-2 text-center text-[11px] font-black text-[var(--bb-text-muted,#6b7280)]">
