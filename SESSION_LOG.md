@@ -13544,3 +13544,9 @@ Done: Study comment likes never saved - the `article_comment_likes` table had ne
 Not live yet: the fallback removal in app/api/comments/like/route.ts (cleanup only; likes already work without it).
 Still open: nothing.
 Next: -
+
+## 2026-11-12 (night, Genesis 15 notes + trivia audit)
+Done: Genesis 15 notes fixed and extended (60 -> 70 cards, every underline opens its note). Bookshelf shows six books with The Obedience of Abraham greyed out. Trivia audit: all 5,945 chapter questions reviewed against the KJV, 1,080 fixes proposed, NOT applied yet (usage limit hit).
+Not live yet: Genesis 15 notes, six-book shelf, comment-likes cleanup - next scheduled build.
+Still open: apply the trivia fixes (patch files in the session scratchpad under trivia/), fix the reference-stripping code in lib/triviaGameData.ts, 400 topic-quiz questions, Genesis 9/16/17 have the same swallowed-heading fault.
+Next: apply and verify the trivia fixes.
