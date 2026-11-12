@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-16-explained",
+    title: "Joshua 16 Explained: Ephraim's Border and Gezer's Canaanites",
+    description:
+      "Joshua 16 explained verse by verse: the shared lot for Joseph's sons, Ephraim's border traced, cities inside Manasseh's land, and the Canaanites of Gezer put under tribute.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-16-explained",
+    publishedAt: "2026-11-12",
+    readTime: "12 min read",
+    image: "/blog-banners/joshua-16-explained.jpg",
+    groupPost: {
+      title: "Joshua 16 Explained 📖",
+      content:
+        "Joshua was dividing out land in this chapter.\nOne tribe in it was his own.\n\n📌 He was an Ephraimite, by birth, the whole time.\n\n📖 Ephraim's cities sat inside Manasseh's own land.\n📖 A king of Gezer fell in battle years earlier.\n📖 His city still outlasted this entire generation.\n\nNew article on:\n🟢 why **Ephraim** got the detailed border, not Manasseh\n🟢 the overlap between two **brothers'** territory\n🟢 what happened to **Gezer** centuries later\n\nWhat ground were you given that you are still waiting to fully take? 🙏",
+    },
+  },
+  {
     slug: "joshua-15-explained",
     title: "Joshua 15 Explained: Caleb Takes the Giants' Mountain",
     description:
