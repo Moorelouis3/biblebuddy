@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-17-explained",
+    title: "Joshua 17 Explained: Zelophehad's Daughters Claim Their Land",
+    description:
+      "Joshua 17 explained verse by verse: Zelophehad's five daughters claim their inheritance, Manasseh's land on both sides of the Jordan, and Joshua's answer to a tribe's complaint.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-17-explained",
+    publishedAt: "2026-11-12",
+    readTime: "15 min read",
+    image: "/blog-banners/joshua-17-explained.jpg",
+    groupPost: {
+      title: "Joshua 17 Explained 📖",
+      content:
+        "Five sisters show up holding an old promise.\nA whole tribe shows up with a complaint.\n\n📌 Only one of them actually had to ask twice.\n\n📖 Zelophehad's daughters finally collect on Numbers 27.\n📖 Manasseh gets land on both sides of the Jordan.\n📖 Joshua answers a complaint with a forest to clear.\n\nNew article on:\n🟢 the **daughters** who held leaders to an old ruling\n🟢 why **iron chariots** were a real fear, not an excuse\n🟢 Joshua's answer to a tribe that wanted more\n\nWhat ground are you still asking for instead of clearing? 🙏",
+    },
+  },
+  {
     slug: "joshua-16-explained",
     title: "Joshua 16 Explained: Ephraim's Border and Gezer's Canaanites",
     description:
