@@ -74,7 +74,8 @@
     "verify:welcome": "tsx scripts/verify-welcome-funnel.ts",
     "verify:email-links": "tsx scripts/verify-email-links.ts",
     "verify:part2": "tsx scripts/verify-part2-november.ts",
-    "verify:audio-mix": "tsx scripts/verify-bible-audio-mix.ts"
+    "verify:audio-mix": "tsx scripts/verify-bible-audio-mix.ts",
+    "verify:beginning": "tsx scripts/verify-beginning-formatting.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",
@@ -132,6 +133,7 @@
     "eslint-config-next": "16.0.5",
     "pdf-lib": "^1.17.1",
     "pdf-to-img": "^7.0.0",
+    "pdfjs-dist": "6.2.108",
     "pdfkit": "^0.20.2",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",

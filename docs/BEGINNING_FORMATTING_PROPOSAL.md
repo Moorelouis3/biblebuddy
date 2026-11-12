@@ -1,7 +1,22 @@
 # The Beginning of Everything: why it reads as a wall of text
 
-Investigation written 2026-11-12, for approval before anything changes.
-Nothing has been implemented. No row has been touched.
+Investigation written 2026-11-12. **Louis approved option (a) the same day and
+it is applied: all 21 rows are live.** The rest of this file is the
+investigation as it was put to him, kept because it is the record of what the
+problem was and why the fix is safe.
+
+**What was done.** `scripts/build-beginning-formatting.ts` rebuilt the 21 days
+from the print interior and proved, letters and digits only, that no word
+changed. `scripts/apply-beginning-book-days.ts` backed the rows up to
+`data/beginning-devotional-days-backup-2026-11-12.json` and wrote
+`devotional_text` on all 21. `npm run verify:beginning` guards it.
+Checked live afterwards on the guide page, all 21 days: 1-2 headings each,
+3-14 Scripture quote cards, 45-66 paragraphs, bold and italic rendering, no
+letter-spaced runs left, no raw markdown leaking as text, no horizontal
+overflow, and the widest unbreakable word on any day still fits a 375px phone
+column. Other studies untouched.
+
+The renderer decision below, option (b), was **not** done and is still open.
 
 ## The short version
 
