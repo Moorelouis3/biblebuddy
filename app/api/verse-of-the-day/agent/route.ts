@@ -79,6 +79,32 @@ function referenceKey(reference: string) {
     .trim();
 }
 
+/**
+ * The reader's 66 book names, from BIBLE_ORDER in lib/bibleBookChapters.ts.
+ *
+ * `book` is not only passed to bible-api. VerseOfTheDayBreakdown builds
+ * /bible/<book>/<chapter> out of it, and that route resolves against this
+ * list. bible-api happily accepts "psalm", the reader does not - so a verse
+ * saved that way fetched correct Scripture and shipped a dead chapter link.
+ * It happened twice before anyone noticed (2026-11-12). Checked here and in
+ * scripts/verse-of-the-day-queue.mjs, which are the only two doors in.
+ */
+const READER_BOOKS = new Set([
+  "genesis", "exodus", "leviticus", "numbers", "deuteronomy",
+  "joshua", "judges", "ruth", "1 samuel", "2 samuel", "1 kings", "2 kings",
+  "1 chronicles", "2 chronicles", "ezra", "nehemiah", "esther",
+  "job", "psalms", "proverbs", "ecclesiastes", "song of solomon",
+  "isaiah", "jeremiah", "lamentations", "ezekiel", "daniel",
+  "hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk",
+  "zephaniah", "haggai", "zechariah", "malachi",
+  "matthew", "mark", "luke", "john", "acts",
+  "romans", "1 corinthians", "2 corinthians", "galatians", "ephesians",
+  "philippians", "colossians", "1 thessalonians", "2 thessalonians",
+  "1 timothy", "2 timothy", "titus", "philemon",
+  "hebrews", "james", "1 peter", "2 peter", "1 john", "2 john", "3 john", "jude",
+  "revelation",
+]);
+
 type QueueRow = { scheduled_date: string; status: string; reference: string | null };
 
 async function loadQueue(admin: ReturnType<typeof adminClient>) {
@@ -154,6 +180,14 @@ export async function POST(request: NextRequest) {
     const rows = await loadQueue(admin);
     const state = queueState(rows);
 
+    const book = String(entry.book).trim().toLowerCase();
+    if (!READER_BOOKS.has(book)) {
+      return NextResponse.json(
+        { error: `book "${entry.book}" is not one the Bible reader can open - use the plural "psalms", lowercase, as in "1 john" or "song of solomon"` },
+        { status: 400 },
+      );
+    }
+
     const reference = String(entry.reference);
     if (rows.some((r) => r.reference && referenceKey(r.reference) === referenceKey(reference))) {
       return NextResponse.json({ error: `${reference} has already been used - pick another verse` }, { status: 409 });
@@ -176,7 +210,7 @@ export async function POST(request: NextRequest) {
 
     const row = {
       reference,
-      book: String(entry.book),
+      book,
       chapter: Number(entry.chapter),
       verse_start: Number(entry.verse_start),
       verse_end: entry.verse_end ? Number(entry.verse_end) : null,

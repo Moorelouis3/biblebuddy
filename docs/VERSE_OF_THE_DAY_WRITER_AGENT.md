@@ -2,6 +2,27 @@
 
 Scheduled agent that keeps the Verse of the Day queue full.
 
+**FILLED TO TARGET 2026-11-12.** Louis asked for the library to be expanded so
+it runs a full year without constant topping up. The queue was at 186 days;
+179 entries were written in one pass, taking it to **365 approved days, the
+last covered day 2027-11-11**. `writeMore` is now `false`, so the routine
+fires, reads the queue, finds nothing to do and stops. That is the designed
+behaviour, not a failure — it starts writing again by itself as the app spends
+a day at a time and the runway drops back below 365. Nothing needs restarting.
+
+The "write exactly 2 per run" rule below still governs the routine. The bulk
+fill was a one-off instruction from Louis, and it stopped exactly at the
+target rather than writing past it.
+
+**`book` must be a name the Bible reader can open.** It is not only passed to
+bible-api. `VerseOfTheDayBreakdown` builds `/bible/<book>/<chapter>` out of it.
+bible-api accepts `psalm`; the reader does not, so such an entry fetches
+correct Scripture and ships a dead chapter link. Two entries were already like
+that when this was found. Both doors now reject an unroutable book name:
+`scripts/verse-of-the-day-queue.mjs` and
+`app/api/verse-of-the-day/agent/route.ts`. Use the plural `psalms`, lowercase,
+as in `1 john` and `song of solomon`.
+
 REVISED 2026-10-02 — Louis asked for a full year of buffer, so the target
 runway went from 90 to 365 days (`TARGET_RUNWAY_DAYS` in
 `app/api/verse-of-the-day/agent/route.ts` and

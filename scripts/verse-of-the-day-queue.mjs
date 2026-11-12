@@ -63,6 +63,32 @@ export function addDays(isoDate, days) {
   return new Date(Date.UTC(y, m - 1, d + days)).toISOString().slice(0, 10);
 }
 
+/**
+ * The reader's 66 book names, from BIBLE_BOOKS in lib/bibleBookChapters.ts.
+ *
+ * `book` is not only passed to bible-api. VerseOfTheDayBreakdown builds
+ * /bible/<book>/<chapter> out of it, and that route resolves against this
+ * list. bible-api accepts "psalm", the reader does not - so a verse saved
+ * that way fetched correct Scripture and shipped a dead chapter link. Two
+ * entries were already like that when this was added (2026-11-12). The same
+ * check lives in app/api/verse-of-the-day/agent/route.ts; change both together.
+ */
+export const READER_BOOKS = new Set([
+  "genesis", "exodus", "leviticus", "numbers", "deuteronomy",
+  "joshua", "judges", "ruth", "1 samuel", "2 samuel", "1 kings", "2 kings",
+  "1 chronicles", "2 chronicles", "ezra", "nehemiah", "esther",
+  "job", "psalms", "proverbs", "ecclesiastes", "song of solomon",
+  "isaiah", "jeremiah", "lamentations", "ezekiel", "daniel",
+  "hosea", "joel", "amos", "obadiah", "jonah", "micah", "nahum", "habakkuk",
+  "zephaniah", "haggai", "zechariah", "malachi",
+  "matthew", "mark", "luke", "john", "acts",
+  "romans", "1 corinthians", "2 corinthians", "galatians", "ephesians",
+  "philippians", "colossians", "1 thessalonians", "2 thessalonians",
+  "1 timothy", "2 timothy", "titus", "philemon",
+  "hebrews", "james", "1 peter", "2 peter", "1 john", "2 john", "3 john", "jude",
+  "revelation",
+]);
+
 /** Normalised for duplicate checks: "Psalm 23:1" and "psalms 23:1" are one verse. */
 export function referenceKey(reference) {
   return String(reference)
@@ -151,6 +177,12 @@ function selfTest() {
     psalmsAndPsalmMatch: referenceKey("Psalms 23:1") === referenceKey("Psalm 23:1"),
     caseInsensitive: referenceKey("JOHN 3:16") === referenceKey("john 3:16"),
     differentVersesDiffer: referenceKey("John 3:16") !== referenceKey("John 3:17"),
+    // The reader cannot open "psalm". Two saved entries pointed at a dead
+    // chapter link before this check existed.
+    readerRejectsSingularPsalm: !READER_BOOKS.has("psalm"),
+    readerAcceptsPsalms: READER_BOOKS.has("psalms"),
+    readerAcceptsNumberedBooks: READER_BOOKS.has("1 john") && READER_BOOKS.has("song of solomon"),
+    readerHasWholeBible: READER_BOOKS.size === 66,
   };
   return { ok: Object.values(checks).every(Boolean), checks };
 }
@@ -204,6 +236,13 @@ async function main() {
       const missing = REQUIRED_FIELDS.filter((f) => entry[f] === undefined || entry[f] === null || entry[f] === "");
       if (missing.length) throw new Error(`entry is missing: ${missing.join(", ")}`);
 
+      const book = String(entry.book).trim().toLowerCase();
+      if (!READER_BOOKS.has(book)) {
+        throw new Error(
+          `book "${entry.book}" is not one the Bible reader can open - use the plural "psalms", lowercase, as in "1 john" or "song of solomon"`,
+        );
+      }
+
       const taken = new Set(entries.map((e) => referenceKey(e.reference)));
       if (taken.has(referenceKey(entry.reference))) {
         throw new Error(`${entry.reference} has already been used - pick another verse`);
@@ -214,9 +253,10 @@ async function main() {
         throw new Error(`${scheduled} already has an approved verse`);
       }
 
-      const verseText = await fetchKjv(entry.book, entry.chapter, entry.verse_start, entry.verse_end);
+      const verseText = await fetchKjv(book, entry.chapter, entry.verse_start, entry.verse_end);
       const row = {
         ...entry,
+        book,
         scheduled_date: scheduled,
         translation: "KJV",
         verse_text: verseText,
