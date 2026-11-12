@@ -1,5 +1,24 @@
 # Why a new study comes out looking wrong
 
+> **Fixed on 2026-11-12.** The layout lists are gone. Every study now gets the
+> Proverbs template, on both the study page and the day modal, and the old
+> shelf at `/devotionals` is a redirect to `/library`. `npm run verify:study-template`
+> fails if either list comes back. The rest of this file is the history —
+> the counts below are what it was, not what it is.
+>
+> Louis made the call the lists were waiting on: *"the wisdom of Proverbs is
+> the template for any study guide... We need to make sure that everyone, the
+> template is set up the way wisdom of Proverbs is set up."* At that moment 3
+> studies had it and 23 did not — the 16 "chapter journey" and the 7 fallback
+> listed below, plus The Beginning of Everything, which launched on 1 November
+> into the fallback bucket after this file was written. That is the cost of a
+> hand-kept list, one more time.
+>
+> Still keyed off title lists, and still able to bite: `getCoverImage`,
+> `getDashboardStudyCover`, `getStudyScriptureRange`,
+> `getChapterJourneyProgressLabel`, and `devotionals.category` on the row.
+
+
 Written 2026-10-25, after Higher Hope launched the same morning wearing the
 wrong layout and no cover, and Louis had to be the one who noticed: *"this
 higher hope layout doesn't have the cover on there and make sure it follows the

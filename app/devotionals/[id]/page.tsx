@@ -262,13 +262,39 @@ function isHigherHopeTitle(title: string | null | undefined) {
  * Proverbs-specific, and the free-plan gate that used to hang off this flag
  * is dead code now that CORE_STUDY_IS_FREE is on.
  *
- * Seven other studies are still falling through this list the same way. See
- * docs/STUDY_LAYOUT_LISTS.md - they are left alone here because flipping them
- * changes the progress maths under readers who are mid-study, which is
- * Louis's call and not a side effect of fixing Higher Hope.
+ * EVERY STUDY GETS IT NOW (Louis, 2026-11-12). This was a hand-kept list of
+ * titles, and on 12 November it had three names on it while 23 studies went
+ * without: 16 on the six-task chapter-journey layout and 7 on the fallback
+ * nobody ever chose - Complete/Current/Left tiles, units called "sections",
+ * and no Reading, Trivia or Discussion slot at all. Louis found it himself,
+ * again: "the wisdom of Proverbs is the template for any study guide... look
+ * at how testing of Jesus or the beginning of everything is set up. It's not
+ * set up correctly... We need to make sure that everyone, the template is set
+ * up the way wisdom of Proverbs is set up."
+ *
+ * So the list is gone and the answer is yes. A study is no longer sorted by
+ * its name, which means a new one cannot come out wrong by being forgotten -
+ * which is the whole fault docs/STUDY_LAYOUT_LISTS.md was written about, and
+ * it had already cost two launches and one reader (Vickie James, 2026-10-25:
+ * "I read & answered the question but it did not give me credit & it won't
+ * let me open the next one"). Outside this flag a day's four-task progress is
+ * never loaded, so answering the reflection left nothing the day list could
+ * see and the next day never unlocked. That was true of all 23.
+ *
+ * Nothing new runs here. Every study now takes the exact path Proverbs has
+ * taken since September; the four tasks are the day's overview, its Bible
+ * reading, that chapter's trivia and that chapter's reflection, all keyed off
+ * the day's own book and chapter, so they work for Matthew 4 as they do for
+ * Proverbs 1.
+ *
+ * What it changes for people already reading: progress is counted over four
+ * tasks a day instead of six, or instead of whole "sections", so a percentage
+ * part-way through one of the other 23 studies moves once. 1,352 progress
+ * rows are on those studies. Nobody loses a day - the rows are untouched, it
+ * is the denominator that changes.
  */
-function isModernStudyPlanTitle(title: string | null | undefined) {
-  return isWisdomOfProverbsTitle(title) || isWomenOfTheBibleTitle(title) || isHigherHopeTitle(title);
+function isModernStudyPlanTitle(_title?: string | null | undefined) {
+  return true;
 }
 
 function getStudyPlanTaskTotal(title: string | null | undefined) {

@@ -25,7 +25,15 @@ import StreakFlameBadge from "./StreakFlameBadge";
 import LevelBadge from "./LevelBadge";
 import UserBadge from "./UserBadge";
 import CommentSection from "./comments/CommentSection";
-import BibleStudiesLibraryPage from "../app/devotionals/page";
+/**
+ * The Library tab's shelf. This was app/devotionals/page.tsx - the shelf the
+ * Library replaced on 2026-10-16 - so the tab, and backing out of any study,
+ * landed on a screen headed "Plans" with a DEVOTIONALS / ARTICLES strip that
+ * no other way into the app could reach. Louis, 2026-11-12: "it sends you back
+ * to the old library page... get rid of the old library page." Same component
+ * as /library now, so there is one shelf.
+ */
+import BibleStudiesLibraryPage from "./library/LibraryPage";
 import BibleStudyDetailPage from "../app/devotionals/[id]/page";
 import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";

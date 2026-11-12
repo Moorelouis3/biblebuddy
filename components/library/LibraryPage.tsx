@@ -31,7 +31,28 @@ import LoadFailedNotice from "../LoadFailedNotice";
  * devotional_progress. A study nobody has started shows no progress rather
  * than a decorative empty bar.
  */
-export default function LibraryPage() {
+type LibraryPageProps = {
+  /**
+   * Rendered inside the app's Library tab rather than as its own page.
+   *
+   * It is the same bookshelf either way. Before 2026-11-12 the tab rendered
+   * the OLD shelf instead - app/devotionals/page.tsx, headed "Plans", with the
+   * DEVOTIONALS / ARTICLES strip - so backing out of a study landed you on a
+   * screen that had been replaced in October and that the Library tab itself
+   * never showed. Louis found it on The Tempting of Jesus: "it sends you back
+   * to the old library page that has the three different the devotionals...
+   * get rid of the old library page."
+   */
+  embedded?: boolean;
+  /**
+   * Required with `embedded`: the tab swaps the study in beneath itself
+   * instead of navigating, so the dashboard keeps its shell and Back still
+   * comes back here.
+   */
+  onStudySelect?: (studyId: string) => void;
+};
+
+export default function LibraryPage({ embedded = false, onStudySelect }: LibraryPageProps = {}) {
   const router = useRouter();
   const [studies, setStudies] = useState<LibraryStudy[]>([]);
   const [progress, setProgress] = useState<Record<string, StudyProgress>>({});
@@ -108,17 +129,39 @@ export default function LibraryPage() {
       .sort((a, b) => (b.p.lastActivityAt || "").localeCompare(a.p.lastActivityAt || ""));
   }, [studies, progress]);
 
-  const openStudy = (id: string) => router.push(`/library/${id}`);
+  /** A shelf tile: the study's own guide page. */
+  const openStudy = (id: string) => {
+    // The Bible in One Year shelf tile is not a devotional row, so it has no
+    // study to swap in - it keeps its own page in both modes.
+    if (embedded && onStudySelect && id !== BIBLE_YEAR_SHELF_ID) {
+      onStudySelect(id);
+      return;
+    }
+    router.push(`/library/${id}`);
+  };
+
+  /** Continue Studying: straight to the day list, never to an intro. */
+  const openStudyDays = (id: string) => {
+    if (embedded && onStudySelect) {
+      onStudySelect(id);
+      return;
+    }
+    router.push(`/devotionals/${id}`);
+  };
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-4 py-5 md:py-8">
+    <div className={`mx-auto w-full max-w-3xl ${embedded ? "px-0 pb-5" : "px-4 py-5 md:py-8"}`}>
       <h1 className="text-3xl font-black text-[var(--bb-text-primary,#111827)] md:text-4xl">Library</h1>
       <p className="mt-1 text-sm font-semibold text-[var(--bb-text-secondary,#5f6368)]">
         Bible Studies to help you grow your faith.
       </p>
 
       {/* Filters scroll sideways rather than wrapping, so a narrow phone keeps one row. */}
-      <div className="-mx-4 mt-4 overflow-x-auto px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div
+        className={`mt-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden ${
+          embedded ? "" : "-mx-4 px-4"
+        }`}
+      >
         <div className="flex w-max gap-2">
           {visibleCategories.map((c) => (
             <button
@@ -150,7 +193,7 @@ export default function LibraryPage() {
                 // the next one. Same reason as the dashboard shelf: jumping
                 // straight to the next day left no way back to the days
                 // before it. Never back through an intro or a signup step.
-                onClick={() => router.push(`/devotionals/${study.id}`)}
+                onClick={() => openStudyDays(study.id)}
                 className="flex w-full items-center gap-4 rounded-3xl border border-[var(--bb-card-border,#dbe7f4)] bg-[var(--bb-card,#ffffff)] p-3 text-left shadow-sm transition hover:border-[var(--bb-accent,#2f7fe8)]"
               >
                 {study.cover_image ? (

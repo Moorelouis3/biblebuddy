@@ -252,16 +252,19 @@ export default function DevotionalDayModal({
     (devotionalTitle || "").toLowerCase().includes("wisdom of proverbs") ||
     (devotionalId || "").toLowerCase().includes("wisdom-of-proverbs") ||
     (day.bible_reading_book || "").toLowerCase().trim() === "proverbs";
-  const isTestingOfJoseph =
-    (devotionalTitle || "").toLowerCase().includes("testing of joseph") ||
-    (devotionalId || "").toLowerCase().includes("testing-of-joseph");
-  const isObedienceOfAbraham =
-    (devotionalTitle || "").toLowerCase().includes("obedience of abraham") ||
-    (devotionalId || "").toLowerCase().includes("obedience-of-abraham");
-  const isRiseOfEsther =
-    (devotionalTitle || "").toLowerCase().includes("rise of esther") ||
-    (devotionalId || "").toLowerCase().includes("rise-of-esther");
-  const useSeriesLikeProverbsLayout = isWisdomOfProverbs || isTestingOfJoseph || isObedienceOfAbraham || isRiseOfEsther;
+  /**
+   * Every study opens a day the way Proverbs does: Step 1 The Big Picture,
+   * Step 2 Today's Reading, Step 3 Today's Trivia, Step 4 Discussion.
+   *
+   * This was its own hand-kept list - Proverbs, Testing of Joseph, Obedience
+   * of Abraham, Rise of Esther - and a DIFFERENT one from the list on
+   * app/devotionals/[id]/page.tsx, so a study could have the four slots on one
+   * screen and not the other. Louis, 2026-11-12: "the wisdom of Proverbs is
+   * the template for any study guide." Both lists are gone; see that file for
+   * the whole story. Keep them in step: there is no study this should be false
+   * for, so do not reintroduce a condition here.
+   */
+  const useSeriesLikeProverbsLayout = true;
   const chapterLabel = `${day.bible_reading_book} ${day.bible_reading_chapter}`;
   const bookKey = normalizeBookKey(day.bible_reading_book || "");
   const triviaBook = useMemo(() => getTriviaBook(bookKey), [bookKey]);
