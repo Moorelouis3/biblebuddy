@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-15-explained",
+    title: "Joshua 15 Explained: Caleb Takes the Giants' Mountain",
+    description:
+      "Joshua 15 explained verse by verse: Judah's border, Caleb driving out three Anakim giants, Achsah's bold request for water, and the Jebusites still in Jerusalem",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-15-explained",
+    publishedAt: "2026-11-12",
+    readTime: "13 min read",
+    image: "/blog-banners/joshua-15-explained.jpg",
+    groupPost: {
+      title: "Joshua 15 Explained 📖",
+      content:
+        "An 85 year old man asked for the hardest mountain.\nThis chapter is where he actually takes it.\n\n📌 Caleb drives out giants by name, and his daughter asks boldly too.\n\n📖 Three named giants fall to one old man.\n📖 Achsah asks her father for springs of water, and gets more.\n📖 The chapter ends admitting one city Judah never took.\n\nNew article on:\n🟢 the **giants** Caleb personally drove out\n🟢 **Achsah's** bold request for water\n🟢 the city still **unconquered** at the chapter's end\n\nWhat unfinished thing are you still calling complete? 🙏",
+    },
+  },
+  {
     slug: "divorce-and-remarriage",
     title: "What Does the Bible Say About Divorce and Remarriage?",
     description:
