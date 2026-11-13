@@ -13726,3 +13726,22 @@ Not live yet: nothing is shown to anyone automatically. /tips exists after the
 next build but is not linked. No database change was run.
 Still open: Louis to decide limits, wording, whether store asks join the
 limit, and the database change. Coordinator itself is not built.
+
+## 2026-11-13 (night, badges pay XP and unlock one at a time)
+Time spent: about 2 hours
+Done: Louis decided badges pay XP and pop up one at a time, never 28 at
+once. Built on the levels-and-badges branch: each badge pays XP once from the
+award table (392 XP across all 28); at most one badge unlocks every two
+hours and the rest wait as "done, unlocks soon"; the news is a quiet toast on
+the dashboard, never on top of a level-up, once per device. Tested with a
+test account: First Light unlocked alone (+10 XP), no repeat on reload, the
+next badge held back, then unlocked alone after the wait. verify:badges 33
+checks, verify:levels 56, type-check clean.
+Not live yet: all of it. Branch levels-and-badges (2ac4afed), not on main,
+by Louis's instruction not to deploy. Main has 3 other commits waiting for
+Sat 10:05 Berlin.
+Still open: Louis to say when it goes to main. Effect on existing accounts
+when it does: 45 badge holders gain 53 XP on average and one person moves
+from Level 2 to 3. The "done, unlocks soon" wording on /levels was not seen
+on screen locally (stale dev server), only its data and code.
+Next: put the branch on main when Louis says so.
