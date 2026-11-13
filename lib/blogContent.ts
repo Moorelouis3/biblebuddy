@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-23-explained",
+    title: "Joshua 23 Explained: The Warning Joshua Gave Before He Died",
+    description:
+      "Joshua 23 explained verse by verse: Joshua's farewell warning to Israel's leaders, why marrying into the remaining nations was so dangerous, and how blessing and curse share one source.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-23-explained",
+    publishedAt: "2026-11-13",
+    readTime: "13 min read",
+    image: "/blog-banners/joshua-23-explained.jpg",
+    groupPost: {
+      title: "Joshua 23 Explained 📖",
+      content:
+        "Joshua is old now.\nHe gathers the leaders one more time.\n\n📌 The real danger was never another army.\n\n📖 He points back at victories they all watched.\n📖 One quiet marriage worried him more than any war.\n📖 Blessing and curse come from the same reliable God.\n\nNew article on:\n🟢 why **intermarriage** was the one named danger\n🟢 what **the way of all the earth** means\n🟢 why Joshua's warning and his promise use the same proof\n\nWhat small compromise have you let get close lately? 🙏",
+    },
+  },
+  {
     slug: "joshua-22-explained",
     title: "Joshua 22 Explained: The Altar That Almost Started a Civil War",
     description:
