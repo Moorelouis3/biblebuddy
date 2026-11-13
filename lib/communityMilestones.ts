@@ -70,6 +70,29 @@ export const MILESTONE_MARKER = "milestone";
  * in despite never having fired: finishing a book of the Bible is the one that
  * deserves saying out loud, and it costs nothing to carry.
  */
+/**
+ * Names this app wrote to a profile when it had nothing real to use.
+ *
+ * Kept in step with components/DisplayNamePromptGate.tsx, which asks the
+ * member for a real one. "Bible Buddy" is absent on purpose: that is the
+ * official account's chosen name, and it posts to the wall legitimately.
+ */
+const PLACEHOLDER_NAMES = new Set([
+  "bible buddy user",
+  "user",
+  "new user",
+  "guest",
+  "guest user",
+  "anonymous",
+]);
+
+export function isPlaceholderName(name: string | null | undefined): boolean {
+  const trimmed = (name || "").trim();
+  if (!trimmed) return true;
+  if (/^user[\s_-]*[0-9a-f]{2,}$/i.test(trimmed)) return true;
+  return PLACEHOLDER_NAMES.has(trimmed.toLowerCase());
+}
+
 export const COMMUNITY_MILESTONES = new Set<ActionType>([
   "book_completed",
   "devotional_day_completed",
@@ -204,7 +227,10 @@ export async function postMilestoneToWall(
   admin: MinimalClient,
   input: { userId: string; displayName: string | null; actionType: ActionType; actionLabel?: string | null },
 ): Promise<{ posted: boolean; reason?: string }> {
-  const { userId, displayName, actionType, actionLabel } = input;
+  // displayName stays on the input type for callers, but is deliberately not
+  // read: the name now comes from profile_stats below, where the placeholder
+  // check can see the same value the feed will render.
+  const { userId, actionType, actionLabel } = input;
   if (!COMMUNITY_MILESTONES.has(actionType)) return { posted: false, reason: "not a milestone" };
   if (!userId) return { posted: false, reason: "no user" };
 
@@ -231,13 +257,36 @@ export async function postMilestoneToWall(
      * pre-existing behaviour (everybody enabled) holds rather than the poster
      * breaking or silencing everyone.
      */
-    const { data: prefs } = await admin
+    const { data: prefs, error: prefsError } = await admin
       .from("profile_stats")
-      .select("milestone_posts_enabled")
+      .select("milestone_posts_enabled, display_name, username")
       .eq("user_id", userId)
       .maybeSingle();
     if ((prefs as { milestone_posts_enabled: boolean | null } | null)?.milestone_posts_enabled === false) {
       return { posted: false, reason: "opted out" };
+    }
+
+    /**
+     * No placeholder goes on the wall under somebody's activity.
+     *
+     * This is the other half of DisplayNamePromptGate (Louis, 2026-11-13).
+     * The post carries only user_id and the name is joined from this table at
+     * read time, so publishing now would put "Bible Buddy User" on the wall
+     * and leave it there until the profile changed. Holding it back costs one
+     * announcement; the completion itself was recorded long before this runs,
+     * and the next milestone posts normally once they have answered the
+     * prompt.
+     *
+     * A failed read is NOT treated as a missing name - supabase-js returns an
+     * error rather than throwing, and silently muting everyone's milestones on
+     * a dropped connection is the worse failure. Same reasoning as the opt-out
+     * above.
+     */
+    if (!prefsError && prefs) {
+      const named = (prefs as { display_name?: string | null; username?: string | null });
+      if (isPlaceholderName(named.display_name || named.username)) {
+        return { posted: false, reason: "needs a real name first" };
+      }
     }
 
     // Said once. People re-read chapters and redo studies, which is the point

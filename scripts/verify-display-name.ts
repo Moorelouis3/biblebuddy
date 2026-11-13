@@ -82,6 +82,52 @@ check(
   /PLACEHOLDER_NAMES\.has\(lower\)/.test(gate),
   `${PROMPT_GATE}: isPlaceholderDisplayName does not consult PLACEHOLDER_NAMES`,
 );
+
+// 2b. Louis's decisions, 2026-11-13. Each one is a choice someone could undo
+// by accident later, so each one is asserted.
+//
+// Both names required.
+check(/validateNamePart\(firstName, "first"\)/.test(gate), `${PROMPT_GATE}: the first name is no longer validated`);
+check(/validateNamePart\(lastName, "last"\)/.test(gate), `${PROMPT_GATE}: the last name is no longer required`);
+check(/autoComplete="given-name"/.test(gate) && /autoComplete="family-name"/.test(gate),
+  `${PROMPT_GATE}: both name fields should be present and autofillable`);
+// A name is not US-shaped. These must keep passing.
+check(/\\p\{L\}/u.test(gate), `${PROMPT_GATE}: name validation should accept letters in any script`);
+// Asked when activity publishes, not on a launch date. The old gate turned
+// away 1,829 accounts that could never be asked.
+check(!/FEATURE_LAUNCH_AT/.test(gate), `${PROMPT_GATE}: the launch-date gate is back, which excludes existing members`);
+check(
+  /COMMUNITY_MILESTONES\.has\(actionType/.test(gate),
+  `${PROMPT_GATE}: the prompt should only open for actions that publish to the community`,
+);
+// A photo is never required.
+check(!/photoFile\s*===?\s*null\s*\)\s*\{[^}]*setError/.test(gate), `${PROMPT_GATE}: a profile photo must stay optional`);
+check(/initialsOf\(/.test(gate), `${PROMPT_GATE}: the initials fallback preview is gone`);
+// The migration may not have run; saving must still work.
+check(/isMissingNameColumn\(/.test(gate), `${PROMPT_GATE}: saving should fall back when first_name/last_name do not exist`);
+
+// 3. The wall itself refuses a placeholder, so nothing publishes under one
+// even if the prompt has not been answered yet.
+const MILESTONES = path.join("lib", "communityMilestones.ts");
+const milestones = read(MILESTONES);
+check(/export function isPlaceholderName\(/.test(milestones), `${MILESTONES}: isPlaceholderName is gone`);
+check(
+  /isPlaceholderName\(named\.display_name \|\| named\.username\)/.test(milestones),
+  `${MILESTONES}: milestone posts are no longer checked for a placeholder name`,
+);
+check(
+  /needs a real name first/.test(milestones),
+  `${MILESTONES}: the placeholder refusal reason is gone`,
+);
+// A dropped read must not silence everyone's milestones.
+check(
+  /if \(!prefsError && prefs\)/.test(milestones),
+  `${MILESTONES}: a failed profile read should not be treated as a missing name`,
+);
+check(
+  !/"bible buddy",/.test(milestones),
+  `${MILESTONES}: "bible buddy" is the official account's real name, not a placeholder`,
+);
 // The Set has to be declared before the function that reads it.
 const setAt = gate.indexOf("const PLACEHOLDER_NAMES");
 const fnAt = gate.indexOf("function isPlaceholderDisplayName");
