@@ -1028,3 +1028,14 @@ safe first and treats seeing a counselor as wisdom, not weak faith. Flagging per
 the format spec's doctrinal-sensitivity rule so Louis can read it himself before
 wide promotion. Not live yet: committed without [deploy]; goes live at the next
 scheduled deploy (Thu 09:05 Berlin).
+
+## Chapter Blog Writer doc still says "PAUSED," but the queue has been running since 2026-09-20
+`docs/CHAPTER_BLOG_WRITER_AGENT.md` opens with a notice that the routine is
+paused as of 2026-09-18. But `data/chapter-blog/progress.json` records Louis
+unpausing it on 2026-09-20 ("chapter articles match what people actually
+search and pin, so this is the production priority again"), and the queue has
+been live and advancing ever since — dozens of chapters committed, now
+through Joshua 19. This run trusted the live queue state over the stale doc
+banner, per the doc's own "one rule about state" section. Worth a one-line
+fix to the doc header so a future run or a human reader does not get the
+wrong signal from it.
