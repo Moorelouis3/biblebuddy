@@ -13713,3 +13713,16 @@ Next: next Bug Fixer run clears more of the backlog, now that the real cause is 
 Done: Dashboard level card now links to a new /levels page (level, XP, progress, all 20 levels, how XP is earned, badges). Restored the 29 achievement badges from git history (they lived in app/dashboard/page.tsx until 0cb3c0d09, 2026-05-26) into lib/achievementBadges.ts, with GET /api/badges/summary awarding from real activity into the existing user_badge_popups_seen table (unique per user and badge; 219 old rows honoured). No XP rule, threshold or stored level changed; badges pay no XP. verify:badges 19 checks, verify:levels 56 checks, type-check clean. Tested locally with the test account: card opens the page, numbers agree, badges celebrated once, back works.
 Not live yet: ALL of it, on purpose. Louis said do not deploy. It is on branch levels-and-badges (commit ee266258, pushed), not on main, and was taken out of the working folder so no other session can sweep it into a deploy. To ship: merge that branch into main.
 Still open (Louis to decide): should badges pay XP again (they paid 10-20 each); should a new badge also pop on the dashboard, not only on /levels. No bulk backfill was run: a reader gets their badges recorded the first time they open the page.
+
+## 2026-11-13 (evening, one popup system - proposal and preview)
+Done: Audited every popup in the app (docs/POPUP_SYSTEM_PROPOSAL.md). No
+coordinator exists; popups race each other and up to four can follow one
+another in a visit; none of the old Louis feature tours can open. Built the
+preview only: one catalog of seven tutorials (lib/popups/catalog.ts), the
+selection rules as a tested function (lib/popups/decide.ts, npm run
+verify:popups, 23 checks), one shared popup shell in the approved design, and
+an unlinked /tips page that opens each tutorial by hand.
+Not live yet: nothing is shown to anyone automatically. /tips exists after the
+next build but is not linked. No database change was run.
+Still open: Louis to decide limits, wording, whether store asks join the
+limit, and the database change. Coordinator itself is not built.

@@ -3888,9 +3888,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         />
       ) : null}
 
-      {/* Bible Lock announcement (2026-11-13). Switched off inside the
-          component until Louis approves the preview; when on, only an
-          iPhone that can run the lock and has not set it up sees it. */}
+      {/* Bible Lock announcement (2026-11-13). On since Louis approved the
+          preview that day (ENABLED in the component). Only an iPhone
+          that can run the lock and has not set it up sees it. */}
       {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
         <BibleLockPopup
           userId={userId}
