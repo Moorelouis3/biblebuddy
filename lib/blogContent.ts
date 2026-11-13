@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-21-explained",
+    title: "Joshua 21 Explained: The Levites Get Cities Instead of Land",
+    description:
+      "Joshua 21 explained verse by verse: the Levites receive forty eight cities instead of a territory, Hebron goes to the priests, and the land division closes.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-21-explained",
+    publishedAt: "2026-11-13",
+    readTime: "13 min read",
+    image: "/blog-banners/joshua-21-explained.jpg",
+    groupPost: {
+      title: "Joshua 21 Explained 📖",
+      content:
+        "One tribe never got its own land.\nInstead it got forty eight addresses.\n\n📌 Scattered was the plan, not a punishment.\n\n📖 The Levites collected on a promise from Moses.\n📖 Caleb kept Hebron's fields, priests got the city.\n📖 The whole land promise closes out kept in full.\n\nNew article on:\n🟢 why the **Levites** got cities, not territory\n🟢 how **Hebron** served two owners at once\n🟢 what **rest on every side** actually meant\n\nWhat promise are you still waiting on God to keep? 🙏",
+    },
+  },
+  {
     slug: "joshua-20-explained",
     title: "Joshua 20 Explained: Six Cities, One Refuge From Revenge",
     description:
