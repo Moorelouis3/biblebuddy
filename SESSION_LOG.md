@@ -13702,3 +13702,9 @@ where the lock can run and is not set up yet.
 Not live yet: waits for the next scheduled build (step 3, no early deploy).
 Still open: unconfirmed whether App Store 1.0 carries the lock plugin; if not,
 nobody sees the popup until 1.1. Check bible_lock_popup_impression after the build.
+
+## 2026-11-13 (afternoon, Bug Fixer run)
+Done: Found the real cause behind a cluster of "request failed" reports on the Plan and Dashboard pages (profile_stats, master_actions, completed_chapters, bible_chapters) - they weren't broken requests, they were the page-watcher mistaking "someone left the page before it finished loading" for a real freeze, because both looked identical to it. Fixed the watcher so it can tell them apart: a genuine 30-second freeze is still reported, leaving the page early no longer is. Committed and pushed untagged. Marked 4 of the affected reports fixed; a 5th (on the sign-in check) is waiting on Louis's approval at /admin/bugs because it touches auth - the auto-escalation rule caught it correctly, the fix itself has nothing to do with passwords or accounts. Stayed within the 5-bugs-per-run limit; left the rest of the open queue (more of the same cluster, plus the already-known Plan-page Android pattern and some one-off browser network blips) for the next run.
+Not live yet: the fix - next scheduled build, and the one auth-area report needs Louis's OK first too.
+Still open: the rest of today's open queue (not touched this run, under the 5-bug cap); the September one-liner with nothing to go on.
+Next: next Bug Fixer run clears more of the backlog, now that the real cause is known.
