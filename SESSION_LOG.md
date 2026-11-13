@@ -13694,3 +13694,11 @@ approves the preview and the switch is flipped.
 Still open: Louis to approve wording and look. Unknown whether the App Store
 1.0 build carries the lock plugin - the popup checks the device, so it is safe
 either way, but if 1.0 lacks it nobody will see it until 1.1.
+
+## 2026-11-13 (afternoon, Bible Lock popup switched on)
+Done: Louis approved the preview; `ENABLED` is now true in
+`components/BibleLockPopup.tsx`. Shows once per person, only in the iPhone app
+where the lock can run and is not set up yet.
+Not live yet: waits for the next scheduled build (step 3, no early deploy).
+Still open: unconfirmed whether App Store 1.0 carries the lock plugin; if not,
+nobody sees the popup until 1.1. Check bible_lock_popup_impression after the build.

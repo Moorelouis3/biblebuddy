@@ -4,8 +4,8 @@
  * One-time "Bible first. Apps after." popup announcing Bible Lock
  * (Louis, 2026-11-13).
  *
- * NOT SWITCHED ON. `ENABLED` below is false, so nobody is shown this until
- * Louis has approved the preview. Turning it on is that one line.
+ * Switched on 2026-11-13, after Louis approved the preview. `ENABLED` below
+ * is the one line that turns it off again.
  *
  * Not a new system. Same mechanism as NewGamesPopup and the study popups:
  * "shown" is saved to the account in user_popups_seen under the popup id the
@@ -41,8 +41,8 @@ import { bibleLockStatus } from "../lib/bibleLock";
 import { supabase } from "../lib/supabaseClient";
 import { Sparkle } from "./NewGamesPopup";
 
-/** Off until Louis approves the preview. The preview link works regardless. */
-const ENABLED = false;
+/** Louis approved the preview on 2026-11-13. Set to false to stop showing it. */
+const ENABLED = true;
 
 const POPUP_ID = "bible_lock_2026_11";
 const DESTINATION = "/bible-lock";
