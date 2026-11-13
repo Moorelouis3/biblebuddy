@@ -13651,3 +13651,9 @@ Done: Louis did not like the first "2 New Game Modes" popup and sent a mockup ("
 Not live yet: the redesign - waiting for Louis's yes. The old popup is what is live.
 Still open: apply the patch and commit when Louis approves. People who already saw the first popup will not see the redesign (same popup id) unless Louis wants it shown again.
 Next: Louis's decision on the redesign.
+
+## 2026-11-13 (popup redesign committed)
+Done: Louis approved the redesigned "Make Scripture stick." popup. Applied the saved patch to components/NewGamesPopup.tsx, linted, committed untagged. The popup id is unchanged, so people who already saw the first version are not shown this one.
+Not live yet: the redesigned popup - next scheduled build.
+Still open: Louis has not said whether the redesign should be shown again to people who saw the first popup (that needs a new popup id); the sheep is my SVG, not the mockup's artwork.
+Next: community feed auto comments.
