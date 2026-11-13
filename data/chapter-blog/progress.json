@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-11-13T06:45:49.141Z",
-  "nextChapter": "Joshua 22",
+  "updatedAt": "2026-11-13T10:34:22.480Z",
+  "nextChapter": "Joshua 23",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -1647,27 +1647,36 @@
     },
     "joshua-18-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-12T10:34:06.092Z",
-      "committedAt": "2026-11-12T10:41:51.322Z"
+      "committedAt": "2026-11-12T10:41:51.322Z",
+      "publishedAt": "2026-11-13T10:34:21.941Z"
     },
     "joshua-19-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-13T02:34:05.730Z",
-      "committedAt": "2026-11-13T02:42:20.229Z"
+      "committedAt": "2026-11-13T02:42:20.229Z",
+      "publishedAt": "2026-11-13T10:34:22.141Z"
     },
     "joshua-20-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-13T04:35:13.558Z",
-      "committedAt": "2026-11-13T04:43:27.310Z"
+      "committedAt": "2026-11-13T04:43:27.310Z",
+      "publishedAt": "2026-11-13T10:34:22.310Z"
     },
     "joshua-21-explained": {
       "attempts": 1,
-      "status": "committed",
+      "status": "published",
       "startedAt": "2026-11-13T06:33:35.539Z",
-      "committedAt": "2026-11-13T06:45:49.141Z"
+      "committedAt": "2026-11-13T06:45:49.141Z",
+      "publishedAt": "2026-11-13T10:34:22.480Z"
+    },
+    "joshua-22-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-13T10:34:00.303Z"
     }
   },
   "priorityBooks": [
