@@ -23,6 +23,25 @@ import { MEANINGFUL_ACTION_EVENT } from "../lib/actionRecorder";
 // user gets unexpectedly trapped by a new mandatory flow.
 const FEATURE_LAUNCH_AT = new Date("2026-09-21T00:00:00.000Z").getTime();
 
+/**
+ * Names this app has written to a profile when it had nothing real to use.
+ * Lowercase; compared against the trimmed, lowercased display name.
+ */
+const PLACEHOLDER_NAMES = new Set([
+  "bible buddy user",
+  "user",
+  "new user",
+  "guest",
+  "guest user",
+  "anonymous",
+]);
+// Deliberately NOT "bible buddy". bible-buddy@mybiblebuddy.net is a real
+// account - it posts the Verse of the Day, the weekly poll and the pinned
+// study - and that is its chosen name. Listing it here would have the app
+// nagging its own brand account to rename itself. An account with no name at
+// all is caught by the empty check above; the feed only *renders* the words
+// "Bible Buddy" for those, it never stores them.
+
 function isPlaceholderDisplayName(name: string | null | undefined, email: string | null | undefined): boolean {
   const trimmed = (name || "").trim();
   if (!trimmed) return true;
@@ -33,7 +52,14 @@ function isPlaceholderDisplayName(name: string | null | undefined, email: string
   // Defensive: catch "User 28" / "User 189DE35E" style fallbacks even
   // though this codebase doesn't currently persist them to profile_stats.
   if (/^user[\s_-]*[0-9a-f]{2,}$/i.test(trimmed)) return true;
-  if (lower === "user" || lower === "new user") return true;
+  // "Bible Buddy User" was missing here, and it was the single most common
+  // placeholder in the database: 325 profiles carried it, 165 of them created
+  // after this prompt shipped. Those accounts looked like they had already
+  // answered, so they were never asked, and the community feed showed the
+  // placeholder next to their study activity (Louis, 2026-11-13). The writer
+  // that stamped it is fixed in components/AppShell.tsx; this is the half
+  // that gets the existing ones asked.
+  if (PLACEHOLDER_NAMES.has(lower)) return true;
   return false;
 }
 

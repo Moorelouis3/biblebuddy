@@ -84,7 +84,8 @@
     "verify:part2": "tsx scripts/verify-part2-november.ts",
     "verify:audio-mix": "tsx scripts/verify-bible-audio-mix.ts",
     "verify:beginning": "tsx scripts/verify-beginning-formatting.ts",
-    "verify:study-template": "tsx scripts/verify-study-template.ts"
+    "verify:study-template": "tsx scripts/verify-study-template.ts",
+    "verify:display-name": "tsx scripts/verify-display-name.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sesv2": "^3.1146.0",
