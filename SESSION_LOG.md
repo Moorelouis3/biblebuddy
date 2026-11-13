@@ -13613,3 +13613,9 @@ Done: Louis approved the migration and it ran on production: word_search_progres
 Not live yet: Bible Word Search - next scheduled build. The table is already live.
 Still open: Louis to try dragging in the real iPhone app after the build (edge drags vs the iOS back-swipe); Louis to read the 66 word lists in lib/wordSearchData.ts; "Open in the Bible" opens the chapter, not the verse.
 Next: community feed auto comments, the remaining weekend project.
+
+## 2026-11-13 (two-new-games popup)
+Done: Louis asked for a popup telling everyone about Bible Memory and Bible Word Search. Built components/NewGamesPopup.tsx on the existing one-time popup system (user_popups_seen, popup id new_games_2026_11), mounted in AppShell after the study popups: every signed-in person sees "2 New Game Modes" once, each game is a button into it, and it never shows on the Games pages or over another modal. Three tracking events added to the landing-analytics allowlist. Tested signed in on localhost: it appeared on the dashboard after the page settled, the Word Search button opened the game, it did not come back on reload, and impression and click were recorded. Removed the test "seen" mark and the two test events so Louis still gets it. Committed untagged. No new table.
+Not live yet: the popup, with both games - next scheduled build.
+Still open: found in passing, not changed - the beginning_popup_* events are not in the landing-analytics allowlist, so The Beginning of Everything popup's impressions and clicks have been rejected and never recorded.
+Next: community feed auto comments.

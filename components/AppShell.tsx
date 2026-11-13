@@ -51,6 +51,7 @@ import {
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import BottomNav from "./BottomNav";
 import BeginningOfEverythingPopup from "./BeginningOfEverythingPopup";
+import NewGamesPopup from "./NewGamesPopup";
 import WisdomBookPopup from "./WisdomBookPopup";
 import ProverbsLaunchPopup from "./ProverbsLaunchPopup";
 import CommunityEventDayPopup from "./CommunityEventDayPopup";
@@ -3863,6 +3864,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           readers. Off until the hardcover Amazon link is set. */}
       {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
         <WisdomBookPopup
+          userId={userId}
+          pathname={pathname}
+          blocked={Boolean(
+            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
+          )}
+        />
+      ) : null}
+
+      {/* One-time "2 New Game Modes" announcement for Bible Memory and Bible
+          Word Search (2026-11-13). Everyone signed in, once. It sits after the
+          study popups on purpose: they are mounted first and each waits for no
+          other modal to be open, so a study invitation takes the visit and
+          this takes a later one. */}
+      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
+        <NewGamesPopup
           userId={userId}
           pathname={pathname}
           blocked={Boolean(

@@ -25,6 +25,10 @@ const ALLOWED_EVENTS = new Set([
   "wisdom_book_popup_impression",
   "wisdom_book_popup_dismissed",
   "wisdom_book_popup_clicked",
+  // One-time "2 New Game Modes" popup (2026-11-13). Metadata: {promotion_id, game}.
+  "new_games_popup_impression",
+  "new_games_popup_dismissed",
+  "new_games_popup_clicked",
   // One-time "It starts today" popup for members who have not started (Oct 1+).
   "proverbs_launch_popup_impression",
   "proverbs_launch_popup_dismissed",
