@@ -13625,3 +13625,8 @@ Done: Louis could not see the new games at 09:30. Two causes. (1) The Deploy rou
 Not live yet: 28 commits including Bible Memory, Bible Word Search and the popup - the 10:00 build today, if the routine is not rate-limited again.
 Still open: if 10:05 passes with no "Deploy: publish" commit, the routine was limited again and the build needs publishing by hand.
 Next: check the 10:00 build landed.
+
+## 2026-11-13 (Abraham sign-up page)
+Done: Sign-up page for The Obedience of Abraham at /events/obedience-of-abraham, 1-15 December, 15 days, Genesis 11-25. One config entry in lib/communityEvents.ts plus square banner art cropped from the cover. Reuses the October slug, so the 3 people who joined then are enrolled again. Shelf card now shows Sign up. Checked locally: page logged out and signed in, join saves and reads back (test row removed).
+Not live yet: waits for the next scheduled build.
+Still open: cover art says "A 28-day study of Genesis 9-25" but the study is 15 days on Genesis 11-25; no daily feed posts written for Abraham; start-day email not armed; no public landing page or share image like Beginning has.
