@@ -14520,7 +14520,7 @@
     ],
     "bg": "s14.mp4",
     "preview": "t-be3a2c4f-b909-46d4-9d29-a9e3842fd638.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-449debae-4214-4a23-9ad5-ea3dd6f73213",
@@ -14536,7 +14536,7 @@
     ],
     "bg": "s15.mp4",
     "preview": "t-449debae-4214-4a23-9ad5-ea3dd6f73213.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-2bc9f3b1-64c9-4c5f-a373-5aa74d399d5e",
@@ -14556,7 +14556,7 @@
     ],
     "bg": "s16.mp4",
     "preview": "t-2bc9f3b1-64c9-4c5f-a373-5aa74d399d5e.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-e8834f48-702a-4aa0-a2f6-39f916b70f42",
@@ -14571,7 +14571,7 @@
     ],
     "bg": "01.mp4",
     "preview": "t-e8834f48-702a-4aa0-a2f6-39f916b70f42.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-0deab2ae-6f45-49ec-9450-3ca149cb8790",
@@ -14587,7 +14587,7 @@
     ],
     "bg": "02.mp4",
     "preview": "t-0deab2ae-6f45-49ec-9450-3ca149cb8790.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-3b857cc2-402d-4d85-8eed-fcde1180a879",
@@ -14626,7 +14626,7 @@
     ],
     "bg": "04.mp4",
     "preview": "t-5c6fdea8-805e-4bac-8119-83ec4f137f8f.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-16c65c03-b8aa-4777-8398-a604459795bc",
@@ -14676,7 +14676,7 @@
     ],
     "bg": "06.mp4",
     "preview": "t-f8568973-26a0-4478-930d-c1cfef2252ae.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-ce2b9f68-4aa5-4346-afd8-ac7c10c18c42",
@@ -14692,7 +14692,7 @@
     ],
     "bg": "07.mp4",
     "preview": "t-ce2b9f68-4aa5-4346-afd8-ac7c10c18c42.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-59d0ba3a-742e-4bab-b650-8e6ab84772b5",
@@ -14711,7 +14711,7 @@
     ],
     "bg": "08.mp4",
     "preview": "t-59d0ba3a-742e-4bab-b650-8e6ab84772b5.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-2a571445-8c19-469c-a282-fd2d38a0fb16",
@@ -14727,7 +14727,7 @@
     ],
     "bg": "09.mp4",
     "preview": "t-2a571445-8c19-469c-a282-fd2d38a0fb16.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-f2da559d-4e70-46e0-a860-b05342f7ac98",
@@ -14743,7 +14743,7 @@
     ],
     "bg": "10.mp4",
     "preview": "t-f2da559d-4e70-46e0-a860-b05342f7ac98.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-877b2bdc-7b15-4e4b-b139-ce8ce13fa368",
@@ -14760,7 +14760,7 @@
     ],
     "bg": "11.mp4",
     "preview": "t-877b2bdc-7b15-4e4b-b139-ce8ce13fa368.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-da788077-da11-41f9-b09a-12e24669eee2",
@@ -14777,7 +14777,7 @@
     ],
     "bg": "12.mp4",
     "preview": "t-da788077-da11-41f9-b09a-12e24669eee2.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-fc99426f-b063-4325-8eed-6cb2722ab326",
@@ -14796,7 +14796,7 @@
     ],
     "bg": "13.mp4",
     "preview": "t-fc99426f-b063-4325-8eed-6cb2722ab326.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-dca2210a-511b-4373-a3d9-c42f2a570c4d",
@@ -14812,7 +14812,7 @@
     ],
     "bg": "14.mp4",
     "preview": "t-dca2210a-511b-4373-a3d9-c42f2a570c4d.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-527a7808-381f-49f5-8aca-96341e57e2d4",
@@ -14852,7 +14852,7 @@
     ],
     "bg": "s02.mp4",
     "preview": "t-5a16fa2c-157a-40e3-a314-7fe85f9d3d5f.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-de036598-58e5-4ee6-9307-378f9b0a7345",
@@ -14869,7 +14869,7 @@
     ],
     "bg": "s03.mp4",
     "preview": "t-de036598-58e5-4ee6-9307-378f9b0a7345.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-4adc4cc9-4fe5-4e96-9833-fb8ca56446c3",
@@ -14921,7 +14921,7 @@
     ],
     "bg": "s06.mp4",
     "preview": "t-e691cbf7-8751-4cc0-b329-f2fd579d56da.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-1ca0ccc2-1cb2-4769-b518-4b0b9fba54b3",
@@ -14939,7 +14939,7 @@
     ],
     "bg": "s07.mp4",
     "preview": "t-1ca0ccc2-1cb2-4769-b518-4b0b9fba54b3.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-9501ce44-8944-4761-972a-6c072869f2a0",
@@ -14955,7 +14955,7 @@
     ],
     "bg": "s08.mp4",
     "preview": "t-9501ce44-8944-4761-972a-6c072869f2a0.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-b96269aa-56cd-45c4-a965-f7d0b88f3902",
@@ -14973,7 +14973,7 @@
     ],
     "bg": "s09.mp4",
     "preview": "t-b96269aa-56cd-45c4-a965-f7d0b88f3902.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-77950fd5-d3c3-460e-a093-24665997c3bc",
@@ -15006,7 +15006,7 @@
     ],
     "bg": "s11.mp4",
     "preview": "t-9f59fd42-ef4e-43a1-b318-346be8ba8c73.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-57cbfc55-79b8-4cc9-b645-8f1699370d1d",
@@ -15025,7 +15025,7 @@
     ],
     "bg": "s12.mp4",
     "preview": "t-57cbfc55-79b8-4cc9-b645-8f1699370d1d.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-21f6d0d4-eaa6-4c9d-b2b2-96cc2528ba11",
@@ -15045,7 +15045,7 @@
     ],
     "bg": "s13.mp4",
     "preview": "t-21f6d0d4-eaa6-4c9d-b2b2-96cc2528ba11.jpg",
-    "status": "pending"
+    "status": "approved"
   },
   {
     "id": "t-dc9b9493-ac4b-475e-ac3b-ad49a23a4741",

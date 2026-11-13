@@ -24,13 +24,14 @@
  *     device, right section, account old enough, the person does not already
  *     use the feature, and their own history with this popup allows it.
  *  5. Of what is left, timed things beat tutorials, tutorials beat
- *     announcements, and within a kind the higher priority wins.
+ *     announcements, announcements beat asks (get the app), and within a
+ *     kind the higher priority wins.
  *
  * If nothing is left, nothing is shown. That is the common case and it is
  * the intended one.
  */
 
-import { inSection, type PopupDefinition } from "./catalog";
+import { inSection, type PopupDefinition, type PopupDevice } from "./catalog";
 
 export const VISIT_IDLE_MINUTES = 30;
 export const HOURS_BETWEEN_POPUPS = 20;
@@ -68,6 +69,8 @@ export type DecideInput = {
   catalog: PopupDefinition[];
   settings: Record<string, PopupSettings>;
   history: Record<string, PopupHistory>;
+  /** The kinds of device this is. Empty on a laptop or inside the app. */
+  devices: ReadonlySet<PopupDevice>;
   /** Action types this person has ever recorded. */
   usedActions: ReadonlySet<string>;
   accountCreatedAt: string;
@@ -102,6 +105,8 @@ export function whyNot(popup: PopupDefinition, input: DecideInput): string | nul
   const expiresAt = settings.expiresAt ?? popup.expiresAt;
   if (expiresAt && Date.parse(expiresAt) <= input.now.getTime()) return "expired";
 
+  if (popup.device && !input.devices.has(popup.device)) return "not on this device";
+
   const here = inSection(popup, input.pathname);
   if (popup.kind === "tutorial" && !here) return "not in its section";
   if (popup.kind === "announcement" && here) return "already in that section";
@@ -135,7 +140,7 @@ export function globalBlock(input: DecideInput): string | null {
   return null;
 }
 
-const KIND_RANK: Record<PopupDefinition["kind"], number> = { tutorial: 2, announcement: 1 };
+const KIND_RANK: Record<PopupDefinition["kind"], number> = { tutorial: 2, announcement: 1, ask: 0 };
 
 export function decide(input: DecideInput): Decision {
   const verdicts: Verdict[] = input.catalog.map((popup) => {

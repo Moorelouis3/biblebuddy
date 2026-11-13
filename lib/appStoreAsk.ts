@@ -78,6 +78,16 @@ function write(state: AppStoreAskState, taps = read().taps, key = KEY) {
 }
 
 /** True when any surface may ask right now. */
+/**
+ * What this phone remembers about one of the two asks, for the popup
+ * coordinator to copy onto the account the first time it runs here
+ * (components/popups/PopupCoordinator.tsx). Read only.
+ */
+export function readStoreAsk(store: "ios" | "android"): { state: AppStoreAskState; at: number } {
+  const { state, at } = read(store === "ios" ? KEY : PLAY_KEY);
+  return { state, at };
+}
+
 export function canAskForAppStore(): boolean {
   const { state, at } = read();
   if (state === "never") return false;

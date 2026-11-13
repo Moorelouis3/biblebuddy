@@ -10,7 +10,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { ACTION_TYPE } from "../lib/actionTypes";
-import { POPUP_CATALOG } from "../lib/popups/catalog";
+import { POPUP_CATALOG, TIPS_CATALOG } from "../lib/popups/catalog";
 import {
   decide,
   HOURS_BETWEEN_POPUPS,
@@ -34,6 +34,7 @@ const base = (over: Partial<DecideInput> = {}): DecideInput => ({
   catalog: POPUP_CATALOG,
   settings: allOn,
   history: {},
+  devices: new Set(),
   usedActions: new Set<string>(),
   accountCreatedAt: daysAgo(30),
   busy: null,
@@ -231,6 +232,63 @@ check("outcome writes are actually sent (a bare `void supabase...` never is)", (
   const code = coordinator.replace(/\/\*[\s\S]*?\*\//g, "");
   assert.ok(!/void supabase\s*\.from/.test(code));
   assert.ok((code.match(/send\(/g) || []).length >= 4);
+});
+
+console.log("Store asks");
+
+const iphone = new Set(["ios_web"] as const);
+const everythingUsed = new Set(POPUP_CATALOG.flatMap((popup) => popup.usedWhen));
+
+check("the App Store ask only exists on an iPhone browser", () => {
+  assert.equal(decide(base({ usedActions: everythingUsed })).chosen, null);
+  assert.equal(decide(base({ usedActions: everythingUsed, devices: iphone })).chosen?.id, "ask_app_store");
+  assert.equal(decide(base({ usedActions: everythingUsed, devices: new Set(["android_web"] as const) })).chosen?.id, "ask_android_beta");
+});
+
+check("an ask waits behind a tutorial and behind an announcement", () => {
+  assert.equal(decide(base({ devices: iphone, pathname: "/bible-trivia" })).chosen?.id, "tutorial_trivia");
+  assert.equal(decide(base({ devices: iphone })).chosen?.kind, "announcement");
+});
+
+check("the App Store ask is under the same limits as everything else", () => {
+  const on = { usedActions: everythingUsed, devices: iphone };
+  assert.equal(decide(base({ ...on, shownThisVisit: true })).chosen, null);
+  assert.equal(decide(base({ ...on, lastAutomaticAt: hoursAgo(3) })).chosen, null);
+  assert.equal(decide(base({ ...on, lastAutomaticAt: hoursAgo(30), automaticInLast7Days: 3 })).chosen, null);
+});
+
+check("'don't show this again' and a tap both end the ask", () => {
+  const on = { usedActions: everythingUsed, devices: iphone };
+  assert.equal(decide(base({ ...on, history: { ask_app_store: seen({ neverAgain: true }) } })).chosen, null);
+  assert.equal(decide(base({ ...on, history: { ask_app_store: seen({ ctaClickedAt: daysAgo(2) }) } })).chosen, null);
+});
+
+check("only asks offer 'don't show this again', and Tips lists none of them", () => {
+  for (const popup of POPUP_CATALOG) assert.equal(Boolean(popup.offerNeverAgain), popup.kind === "ask", popup.id);
+  assert.ok(TIPS_CATALOG.length > 0 && TIPS_CATALOG.every((popup) => popup.kind !== "ask"));
+});
+
+check("the old store popups stand down when the coordinator is on", () => {
+  for (const file of ["components/AppStorePopup.tsx", "components/AndroidBetaPopup.tsx"]) {
+    const source = readFileSync(file, "utf8");
+    const guard = source.indexOf("if (coordinatorActive()) return;");
+    assert.ok(guard > 0 && guard < source.indexOf("setOpen(true)"), file);
+  }
+});
+
+check("the ask's facts match the app: store id, tester numbers", () => {
+  const review = readFileSync("lib/appReviewPrompt.ts", "utf8");
+  const beta = readFileSync("lib/androidBeta.ts", "utf8");
+  const appStore = POPUP_CATALOG.find((popup) => popup.id === "ask_app_store");
+  const android = POPUP_CATALOG.find((popup) => popup.id === "ask_android_beta");
+  const storeId = appStore?.cta.href.split("/id")[1] ?? "missing";
+  assert.ok(review.includes('"' + storeId + '"'), "App Store id");
+  assert.ok(beta.includes("TESTERS_NEEDED = 12") && android?.steps[0].title.includes("12"));
+  assert.ok(beta.includes("TESTER_DAYS = 14") && android?.steps[0].detail.includes("14 days"));
+});
+
+check("the switch is off", () => {
+  assert.ok(readFileSync("lib/popups/switch.ts", "utf8").includes("export const COORDINATOR_ENABLED = false;"));
 });
 
 console.log(`\n${passed} checks passed.`);

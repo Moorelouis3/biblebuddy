@@ -6,6 +6,7 @@ import { BETA_OPEN, TESTERS_NEEDED, TESTER_DAYS } from "../lib/androidBeta";
 import { canAskForPlayStore, recordPlayStoreTap, silencePlayStoreAsk, snoozePlayStoreAsk } from "../lib/appStoreAsk";
 import { isAndroid, isStandalone } from "../lib/installEnvironment";
 import { isNativeApp } from "../lib/nativeApp";
+import { coordinatorActive } from "../lib/popups/switch";
 
 /**
  * "You're on Android - help us launch."
@@ -89,6 +90,9 @@ export default function AndroidBetaPopup({ enabled }: { enabled: boolean }) {
 
   useEffect(() => {
     if (!enabled) return;
+    // The popup coordinator shows this ask instead when it is on, under the
+    // one-per-visit limit. Both asking would be exactly the stacking it ends.
+    if (coordinatorActive()) return;
     // The beta is over; there is nothing to recruit for.
     if (!BETA_OPEN) return;
     // Already in the real app, or on anything that is not Android.

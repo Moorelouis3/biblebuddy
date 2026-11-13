@@ -30,9 +30,27 @@ export type PopupKind =
   /** Teaches a feature. Shown only in the section where it can be used. */
   | "tutorial"
   /** Tells people about something new or something they have not found. */
-  | "announcement";
+  | "announcement"
+  /** Asks for something (get the app). Lowest rank: it waits for the others. */
+  | "ask";
 
-export type PopupPreview = "reader" | "feed" | "memory" | "word_search" | "study_day" | "trivia" | "verse_of_the_day";
+/** Where a popup can physically work. Absent = everywhere. */
+export type PopupDevice =
+  /** An iPhone or iPad in a browser: not the app, not a home-screen shortcut. */
+  | "ios_web"
+  /** An Android phone in a browser, same exclusions. */
+  | "android_web";
+
+export type PopupPreview =
+  | "reader"
+  | "feed"
+  | "memory"
+  | "word_search"
+  | "study_day"
+  | "trivia"
+  | "verse_of_the_day"
+  | "app_store"
+  | "android_beta";
 
 export type PopupStep = { title: string; detail: string };
 
@@ -59,7 +77,11 @@ export type PopupDefinition = {
   preview: PopupPreview;
   steps: PopupStep[];
   /** Button when the person is somewhere else: goes to the feature. */
-  cta: { label: string; href: string };
+  cta: { label: string; href: string; /** Leaves the site (the App Store). */ external?: boolean };
+  /** Only shown on this kind of device. */
+  device?: PopupDevice;
+  /** Offer "Don't show this again". For asks, never for tutorials. */
+  offerNeverAgain?: boolean;
   /** Button when the person is already in the section: just closes. */
   ctaInSection: string;
   footnote: string;
@@ -257,7 +279,68 @@ export const POPUP_CATALOG: PopupDefinition[] = [
     minAccountAgeDays: 3,
     expiresAt: null,
   },
+  // The two store asks. Until 13 Nov 2026 these were AppStorePopup and
+  // AndroidBetaPopup, which checked nothing, sat above every other popup and
+  // reopened on every page load. The words are theirs; the limits are now
+  // everybody's. They stand down when the coordinator is on (lib/popups/switch).
+  {
+    id: "ask_app_store",
+    version: 1,
+    kind: "ask",
+    priority: 20,
+    sections: [],
+    pill: "For your iPhone",
+    headline: "Bible Buddy is on the App Store.",
+    headlineAccent: "App Store.",
+    description: "You're on an iPhone, so get the real app. It opens straight to today's reading.",
+    cardTitle: "Bible Buddy",
+    cardLine: "The app, on your home screen.",
+    cardIcon: "📱",
+    preview: "app_store",
+    steps: [
+      { title: "It's free", detail: "Nothing to pay, now or later." },
+      { title: "Your streak and progress come with you", detail: "Sign in and everything is there." },
+    ],
+    cta: { label: "Download on the App Store", href: "https://apps.apple.com/app/id6822155944", external: true },
+    ctaInSection: "Download on the App Store",
+    footnote: "100% FREE",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    expiresAt: null,
+    device: "ios_web",
+    offerNeverAgain: true,
+  },
+  {
+    id: "ask_android_beta",
+    version: 1,
+    kind: "ask",
+    priority: 20,
+    sections: [],
+    pill: "For your Android",
+    headline: "Bible Buddy is coming to Android.",
+    headlineAccent: "to Android.",
+    description: "It is built and approved, but Google will not list it publicly until enough people have tested it.",
+    cardTitle: "Help us launch",
+    cardLine: "You're on Android. Would you be one of them?",
+    cardIcon: "🤖",
+    preview: "android_beta",
+    steps: [
+      { title: "12 testers are needed", detail: "Each one installs the app and keeps it for 14 days." },
+      { title: "The next page shows you how", detail: "Step by step, from joining the test to installing." },
+    ],
+    cta: { label: "Yes, show me how", href: "/android" },
+    ctaInSection: "Yes, show me how",
+    footnote: "100% FREE",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    expiresAt: null,
+    device: "android_web",
+    offerNeverAgain: true,
+  },
 ];
+
+/** What /tips lists: things worth reopening by hand. An ask is not one. */
+export const TIPS_CATALOG = POPUP_CATALOG.filter((popup) => popup.kind !== "ask");
 
 export function findPopup(id: string): PopupDefinition | null {
   return POPUP_CATALOG.find((popup) => popup.id === id) ?? null;

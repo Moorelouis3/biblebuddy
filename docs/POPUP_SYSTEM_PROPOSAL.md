@@ -187,8 +187,11 @@ These three are tested by `npm run verify:popups` (23 checks).
   AppShell. Gathers what `decide` needs, waits for the quiet moment, claims
   the display, opens the shell, records the outcome. *Built 13 Nov, switched
   off (`COORDINATOR_ENABLED = false`). Not yet run against real accounts.*
-- Move New games, Bible Lock, the study popups, the weekly nudges and the two
-  store asks into the catalog, and remove their own triggers. *Not done.*
+- The App Store and Android asks are in the catalog (`ask_app_store`,
+  `ask_android_beta`) and the old popups stand down whenever the coordinator
+  is on (`lib/popups/switch.ts`). *Built and tested locally 13 Nov; off.*
+- Move New games, Bible Lock, the study popups and the weekly nudges into the
+  catalog, and remove their own triggers. *Not done.*
 - Delete what is dead: the Proverbs launch popup, the unmounted Proverbs join
   popup, the monthly update modal, the unused popup queue. *Not done.*
 

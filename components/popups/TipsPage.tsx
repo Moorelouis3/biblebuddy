@@ -17,7 +17,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { findPopup, POPUP_CATALOG, type PopupDefinition } from "@/lib/popups/catalog";
+import { findPopup, TIPS_CATALOG, type PopupDefinition } from "@/lib/popups/catalog";
 import FeaturePopup from "./FeaturePopup";
 
 export default function TipsPage() {
@@ -49,7 +49,7 @@ export default function TipsPage() {
       </p>
 
       <ul className="mt-5 flex flex-col gap-3">
-        {POPUP_CATALOG.map((popup) => (
+        {TIPS_CATALOG.map((popup) => (
           <li key={popup.id}>
             <button
               type="button"

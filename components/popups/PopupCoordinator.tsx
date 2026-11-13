@@ -4,7 +4,7 @@
  * The one place that decides whether a tutorial or announcement opens
  * (Louis, 2026-11-13). See docs/POPUP_SYSTEM_PROPOSAL.md.
  *
- * SWITCHED OFF. `COORDINATOR_ENABLED` is false, so this component does
+ * SWITCHED OFF. `COORDINATOR_ENABLED` (lib/popups/switch.ts) is false, so this component does
  * nothing at all - no queries, no timers. And when it is turned on, a popup
  * still only shows if it has a row in popup_settings with enabled = true, and
  * there are none. Two switches, both off.
@@ -34,7 +34,20 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { inSection, POPUP_CATALOG, type PopupDefinition } from "../../lib/popups/catalog";
+import { BETA_OPEN } from "../../lib/androidBeta";
+import {
+  readStoreAsk,
+  recordAppStoreTap,
+  recordPlayStoreTap,
+  silenceAppStoreAsk,
+  silencePlayStoreAsk,
+  snoozeAppStoreAsk,
+  snoozePlayStoreAsk,
+} from "../../lib/appStoreAsk";
+import { isAndroid, isIOS, isStandalone } from "../../lib/installEnvironment";
+import { isNativeApp } from "../../lib/nativeApp";
+import { inSection, POPUP_CATALOG, type PopupDefinition, type PopupDevice } from "../../lib/popups/catalog";
+import { coordinatorActive, testDevice } from "../../lib/popups/switch";
 import {
   decide,
   nextEligibleAfterClose,
@@ -45,24 +58,6 @@ import {
 } from "../../lib/popups/decide";
 import { supabase } from "../../lib/supabaseClient";
 import FeaturePopup, { type FeaturePopupCloseMethod } from "./FeaturePopup";
-
-/** Master switch. Off until Louis says go. */
-export const COORDINATOR_ENABLED = false;
-
-/**
- * For testing on a developer's own machine while the switch above is off:
- * on localhost only, with localStorage `bb:popup-coordinator-test` = "1".
- * It can never be true on the live site, whatever is in storage.
- */
-function testOverride(): boolean {
-  try {
-    const host = window.location.hostname;
-    const local = host === "localhost" || host === "127.0.0.1";
-    return local && window.localStorage.getItem("bb:popup-coordinator-test") === "1";
-  } catch {
-    return false;
-  }
-}
 
 /** How long the page must be still and clear before a popup may open. */
 const QUIET_MS = 2500;
@@ -156,6 +151,30 @@ function busyReason(pathname: string | null, blocked: boolean): string | null {
   return null;
 }
 
+/** Which device-only popups could work here. Empty in the app and on a laptop. */
+function devicesHere(): Set<PopupDevice> {
+  const devices = new Set<PopupDevice>();
+  const pretend = testDevice();
+  if (pretend) return devices.add(pretend);
+  // Already in the real app, or opened from a home-screen shortcut: they have
+  // what the ask is offering, or have made their choice.
+  if (isNativeApp() || isStandalone()) return devices;
+  if (isIOS()) devices.add("ios_web");
+  if (isAndroid() && BETA_OPEN) devices.add("android_web");
+  return devices;
+}
+
+/**
+ * The two store asks used to keep their answers on the phone only, in a key
+ * the install banners and the blog prompt also read (lib/appStoreAsk.ts). So
+ * that those other places keep agreeing with what was answered here, the same
+ * key is still written.
+ */
+const STORE_ASK: Record<string, { store: "ios" | "android"; snooze: () => void; silence: () => void; tap: () => void }> = {
+  ask_app_store: { store: "ios", snooze: snoozeAppStoreAsk, silence: silenceAppStoreAsk, tap: recordAppStoreTap },
+  ask_android_beta: { store: "android", snooze: snoozePlayStoreAsk, silence: silencePlayStoreAsk, tap: recordPlayStoreTap },
+};
+
 type Loaded = Pick<DecideInput, "settings" | "history" | "usedActions" | "accountCreatedAt" | "lastAutomaticAt" | "automaticInLast7Days">;
 
 const HISTORY_COLUMNS =
@@ -218,6 +237,50 @@ async function load(userId: string): Promise<Loaded | null> {
     }
   }
 
+  // What this phone already answered about a store ask, copied to the account
+  // once. Only where the account has nothing: an existing row is never touched.
+  for (const popup of live) {
+    const ask = STORE_ASK[popup.id];
+    if (!ask || history[popup.id]) continue;
+    const remembered = readStoreAsk(ask.store);
+    if (remembered.state === "pending") continue;
+    const at = new Date(remembered.at || Date.now());
+    const past: PopupHistory = {
+      version: popup.version,
+      displayCount: 1,
+      lastShownAt: at.toISOString(),
+      dismissedAt: remembered.state === "later" ? at.toISOString() : null,
+      ctaClickedAt: remembered.state === "tapped" ? at.toISOString() : null,
+      completedAt: null,
+      neverAgain: remembered.state === "never",
+      nextEligibleAt: remembered.state === "later" ? nextEligibleAfterClose(at) : null,
+    };
+    history[popup.id] = past;
+    send(
+      supabase.from("user_popups_seen").upsert(
+        {
+          user_id: userId,
+          popup_id: popup.id,
+          has_seen: true,
+          seen_at: at.toISOString(),
+          updated_at: new Date().toISOString(),
+          content_version: popup.version,
+          first_shown_at: at.toISOString(),
+          last_shown_at: at.toISOString(),
+          display_count: 1,
+          dismissed_at: past.dismissedAt,
+          dismiss_type: past.dismissedAt ? "later" : null,
+          cta_clicked_at: past.ctaClickedAt,
+          never_again: past.neverAgain,
+          next_eligible_at: past.nextEligibleAt,
+          // Not a coordinator display, so it does not count toward the limit.
+          automatic: false,
+        },
+        { onConflict: "user_id,popup_id", ignoreDuplicates: true },
+      ),
+    );
+  }
+
   // "Already uses the feature". Once true it is true for good, so it is kept
   // on the phone and only the still-unknown actions are asked about.
   let known: string[] = [];
@@ -267,6 +330,8 @@ export default function PopupCoordinator({
   const [open, setOpen] = useState<{ popup: PopupDefinition; inSection: boolean } | null>(null);
   const pathRef = useRef(pathname);
   const blockedRef = useRef(blocked);
+  /** Kept ready so a tap that leaves the site has nothing left to wait for. */
+  const tokenRef = useRef<string | null>(null);
 
   useEffect(() => {
     pathRef.current = pathname;
@@ -274,7 +339,7 @@ export default function PopupCoordinator({
   }, [pathname, blocked]);
 
   useEffect(() => {
-    if (!COORDINATOR_ENABLED && !testOverride()) return;
+    if (!coordinatorActive()) return;
 
     let cancelled = false;
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -290,6 +355,7 @@ export default function PopupCoordinator({
 
       let clearSince = 0;
       let lastPath = pathRef.current;
+      const devices = devicesHere();
 
       const tick = async () => {
         if (cancelled) return;
@@ -312,6 +378,7 @@ export default function PopupCoordinator({
           now,
           pathname: path,
           catalog: POPUP_CATALOG,
+          devices,
           busy,
           shownThisVisit: visit.shown,
         });
@@ -337,6 +404,8 @@ export default function PopupCoordinator({
         // Another tab may have shown one while we were asking.
         if (readVisit(userId, new Date()).shown) return;
 
+        tokenRef.current = (await supabase.auth.getSession()).data.session?.access_token ?? null;
+        if (cancelled) return;
         writeVisit(userId, { lastActiveAt: new Date().toISOString(), shown: true });
         setOpen({ popup, inSection: inSection(popup, pathRef.current) });
         track("popup_shown", userId, popup.id, { version: popup.version, page: pathRef.current });
@@ -361,12 +430,15 @@ export default function PopupCoordinator({
           .update({
             dismissed_at: now.toISOString(),
             dismiss_type: method,
-            next_eligible_at: nextEligibleAfterClose(now),
+            never_again: method === "never",
+            next_eligible_at: method === "never" ? null : nextEligibleAfterClose(now),
             updated_at: now.toISOString(),
           })
           .eq("user_id", userId)
           .eq("popup_id", open.popup.id),
         );
+      const ask = STORE_ASK[open.popup.id];
+      if (ask) (method === "never" ? ask.silence : ask.snooze)();
       track("popup_dismissed", userId, open.popup.id, { method });
       setOpen(null);
     },
@@ -376,8 +448,33 @@ export default function PopupCoordinator({
   const act = useCallback(() => {
     if (!open) return;
     const now = new Date().toISOString();
-    send(supabase.from("user_popups_seen").update({ cta_clicked_at: now, updated_at: now }).eq("user_id", userId).eq("popup_id", open.popup.id));
+    const patch = { cta_clicked_at: now, updated_at: now };
+    STORE_ASK[open.popup.id]?.tap();
     track("popup_cta_clicked", userId, open.popup.id, { in_section: open.inSection });
+
+    if (open.popup.cta.external) {
+      // The link itself does the navigating (it is a real <a>). The page is
+      // about to be left, so the write has to be one the browser finishes on
+      // its own: an ordinary request would be dropped with the page.
+      const token = tokenRef.current;
+      const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+      if (token && url && key) {
+        const where = `user_id=eq.${encodeURIComponent(userId)}&popup_id=eq.${encodeURIComponent(open.popup.id)}`;
+        try {
+          void fetch(`${url}/rest/v1/user_popups_seen?${where}`, {
+            method: "PATCH",
+            keepalive: true,
+            headers: { "Content-Type": "application/json", apikey: key, Authorization: `Bearer ${token}`, Prefer: "return=minimal" },
+            body: JSON.stringify(patch),
+          }).catch(() => {});
+        } catch {}
+      }
+      setOpen(null);
+      return;
+    }
+
+    send(supabase.from("user_popups_seen").update(patch).eq("user_id", userId).eq("popup_id", open.popup.id));
     const href = open.inSection ? null : open.popup.cta.href;
     setOpen(null);
     if (href) {

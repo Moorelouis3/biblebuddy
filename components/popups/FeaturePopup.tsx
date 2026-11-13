@@ -29,7 +29,7 @@ import { lockDocumentScroll } from "../../hooks/useDocumentScrollLock";
 import type { PopupDefinition, PopupPreview } from "../../lib/popups/catalog";
 import { Sparkle } from "../NewGamesPopup";
 
-export type FeaturePopupCloseMethod = "close_button" | "escape" | "backdrop" | "later";
+export type FeaturePopupCloseMethod = "close_button" | "escape" | "backdrop" | "later" | "never";
 
 const ENTRANCE_CSS = `
 @media (prefers-reduced-motion: no-preference) {
@@ -61,6 +61,9 @@ const TONES: Record<"lavender" | "blue", { card: string; border: string; icon: s
   },
 };
 
+const MAIN_BUTTON =
+  "flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-black text-white outline-none transition active:scale-[0.98] focus-visible:ring-4";
+
 const TONE_BY_PREVIEW: Record<PopupPreview, keyof typeof TONES> = {
   reader: "lavender",
   study_day: "lavender",
@@ -69,6 +72,8 @@ const TONE_BY_PREVIEW: Record<PopupPreview, keyof typeof TONES> = {
   word_search: "blue",
   trivia: "blue",
   feed: "blue",
+  app_store: "blue",
+  android_beta: "blue",
 };
 
 export default function FeaturePopup({
@@ -231,15 +236,30 @@ export default function FeaturePopup({
         </div>
 
         <div className="shrink-0 border-t border-[#efe9fb] bg-white px-4 pb-2 pt-3 sm:px-5">
-          <button
-            type="button"
-            onClick={onCta}
-            className="flex min-h-[52px] w-full items-center justify-center gap-2 rounded-full px-5 text-[17px] font-black text-white outline-none transition active:scale-[0.98] focus-visible:ring-4"
-            style={{ background: tone.button, boxShadow: tone.shadow, ["--tw-ring-color" as string]: tone.ring }}
-          >
-            {inSection ? popup.ctaInSection : popup.cta.label}
-            {inSection ? null : <span aria-hidden="true">→</span>}
-          </button>
+          {popup.cta.external ? (
+            /* A real link, not a button that navigates: leaving for the App
+               Store has to be the person's own tap or the phone may not
+               hand it over to the store. */
+            <a
+              href={popup.cta.href}
+              onClick={onCta}
+              className={MAIN_BUTTON}
+              style={{ background: tone.button, boxShadow: tone.shadow, color: "#ffffff", ["--tw-ring-color" as string]: tone.ring }}
+            >
+              {popup.cta.label}
+              <span aria-hidden="true">→</span>
+            </a>
+          ) : (
+            <button
+              type="button"
+              onClick={onCta}
+              className={MAIN_BUTTON}
+              style={{ background: tone.button, boxShadow: tone.shadow, ["--tw-ring-color" as string]: tone.ring }}
+            >
+              {inSection ? popup.ctaInSection : popup.cta.label}
+              {inSection ? null : <span aria-hidden="true">→</span>}
+            </button>
+          )}
           <p className="mt-3 flex items-center justify-center gap-3 text-[13px] font-bold text-[#3b3f58]">
             <span className="h-px w-8 bg-[#cdbff0]" aria-hidden="true" />
             <span className="text-center">{popup.footnote}</span>
@@ -252,6 +272,15 @@ export default function FeaturePopup({
           >
             Maybe later
           </button>
+          {popup.offerNeverAgain ? (
+            <button
+              type="button"
+              onClick={() => onClose("never")}
+              className="mx-auto -mt-1 block min-h-[44px] rounded-xl px-6 text-[13px] font-semibold text-[#9aa0b4] outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
+            >
+              Don&apos;t show this again
+            </button>
+          ) : null}
         </div>
       </div>
     </div>,
@@ -376,6 +405,27 @@ function Preview({ kind }: { kind: PopupPreview }) {
             <span className={`${chip} bg-[#eef7ff] text-[#1d4ed8]`}>❤️ Like</span>
             <span className={`${chip} bg-[#f4f5fa] text-[#5b6079]`}>💬 Comment</span>
           </div>
+        </div>
+      );
+    case "app_store":
+    case "android_beta":
+      return (
+        <div className="flex items-center gap-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/icons/icon-192.png"
+            alt=""
+            width={56}
+            height={56}
+            className="h-14 w-14 shrink-0 rounded-[16px] shadow-[0_6px_18px_rgba(14,26,58,0.28)]"
+          />
+          <div className="min-w-0 flex-1">
+            <p className="text-[15px] font-black leading-tight text-[#14122b]">Bible Buddy</p>
+            <p className="text-[12px] font-semibold leading-snug text-[#5b6079]">
+              {kind === "app_store" ? "Bible Study Help · App Store" : "Closed test on Google Play"}
+            </p>
+          </div>
+          <span className={`${chip} shrink-0 bg-[#eef7ff] font-black text-[#1d4ed8]`}>{kind === "app_store" ? "Free" : "Testers wanted"}</span>
         </div>
       );
     case "verse_of_the_day":

@@ -6,6 +6,7 @@ import { APP_STORE_ID } from "../lib/appReviewPrompt";
 import { canAskForAppStore, recordAppStoreTap, silenceAppStoreAsk, snoozeAppStoreAsk } from "../lib/appStoreAsk";
 import { isIOS, isStandalone } from "../lib/installEnvironment";
 import { isNativeApp } from "../lib/nativeApp";
+import { coordinatorActive } from "../lib/popups/switch";
 
 /**
  * "You're on an iPhone - get the real app."
@@ -99,6 +100,9 @@ export default function AppStorePopup({ enabled }: { enabled: boolean }) {
 
   useEffect(() => {
     if (!enabled) return;
+    // The popup coordinator shows this ask instead when it is on, under the
+    // one-per-visit limit. Both asking would be exactly the stacking it ends.
+    if (coordinatorActive()) return;
     if (!APP_STORE_ID) return;
     // Already in the real app, or on anything that is not an iPhone/iPad.
     if (isNativeApp() || !isIOS()) return;

@@ -13792,7 +13792,27 @@ place) should stop counting. There is no Scrabble game and no "required
 number" setting in the app; the brief assumed both.
 Next: Louis reviews the branch; then main.
 
+<<<<<<< Updated upstream
 ## 2026-11-13T22:12:08Z (blog writer run)
 Article: Can a Christian Date a Non-Christian? | Words: ~3,200 | Category: Christian Foundations | Status: pass
 Queue remaining: 6
 Not live yet: committed without [deploy] per the 2026-10-10 cadence change. Next scheduled deploy is Sat 10:00 Berlin; the post goes live then along with everything else waiting on main.
+=======
+## 2026-11-13 (late, store asks moved under the popup coordinator)
+Done: The App Store ask and the Android beta ask are now entries in the popup
+catalog, drawn by the shared shell with "Don't show this again", ranked below
+tutorials and announcements and held to the same limits. The old
+AppStorePopup and AndroidBetaPopup stand down whenever the coordinator is on,
+so they cannot both ask. A phone's old answer (never / not now / tapped) is
+copied to the account once, never overwriting. Tested locally on Louis's
+account as a pretend iPhone browser: ask opened once, "Don't show this again"
+saved to account and phone, an old "never" on the phone was copied over and
+kept it quiet, the download tap was saved even though the page is being left.
+Test rows removed, popup_settings empty again.
+Not live yet: coordinator still off, so the old store popups behave exactly as
+before. Next build Sat 14 Nov 10:05 Berlin carries this as inert code.
+Still open: when the coordinator goes on, the App tab's App Store popup
+numbers stop (they read master_actions; the coordinator deliberately writes
+popup events elsewhere) and need pointing at the new events. Not tested on a
+real iPhone or Android phone. Other popups not yet moved.
+>>>>>>> Stashed changes
