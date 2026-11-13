@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-22-explained",
+    title: "Joshua 22 Explained: The Altar That Almost Started a Civil War",
+    description:
+      "Joshua 22 explained verse by verse: the eastern tribes build a memorial altar, Israel nearly goes to war over it, and Phinehas stops the fight before it starts.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-22-explained",
+    publishedAt: "2026-11-13",
+    readTime: "14 min read",
+    image: "/blog-banners/joshua-22-explained.jpg",
+    groupPost: {
+      title: "Joshua 22 Explained 📖",
+      content:
+        "Two tribes go home with a blessing.\nIsrael arms for war before anyone asks why.\n\n📌 The altar was never for sacrifice. It was a witness.\n\n📖 Reuben and Gad feared being cut off by the Jordan.\n📖 Phinehas brought Peor and Achan as a warning, not proof.\n📖 One honest answer stopped a war that was already gathering.\n\nNew article on:\n🟢 why the eastern tribes built an altar nobody explained\n🟢 what **Phinehas** actually suspected\n🟢 why the altar got named **Ed**, meaning witness\n\nWhen was the last time you assumed the worst before asking first? 🙏",
+    },
+  },
+  {
     slug: "joshua-21-explained",
     title: "Joshua 21 Explained: The Levites Get Cities Instead of Land",
     description:
