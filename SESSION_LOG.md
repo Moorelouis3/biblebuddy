@@ -13791,3 +13791,8 @@ decide whether things that count on opening (chapter notes, keyword, person,
 place) should stop counting. There is no Scrabble game and no "required
 number" setting in the app; the brief assumed both.
 Next: Louis reviews the branch; then main.
+
+## 2026-11-13T22:12:08Z (blog writer run)
+Article: Can a Christian Date a Non-Christian? | Words: ~3,200 | Category: Christian Foundations | Status: pass
+Queue remaining: 6
+Not live yet: committed without [deploy] per the 2026-10-10 cadence change. Next scheduled deploy is Sat 10:00 Berlin; the post goes live then along with everything else waiting on main.

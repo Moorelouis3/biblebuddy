@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "can-a-christian-date-a-non-christian",
+    title: "Can a Christian Date a Non-Christian?",
+    description:
+      "Can a Christian date a non-Christian? What 2 Corinthians 6:14 and 1 Corinthians 7 say, plus honest steps if you are already in this relationship.",
+    category: "Christian Foundations",
+    categorySlug: "christian-foundations",
+    canonicalPath: "/blog/can-a-christian-date-a-non-christian",
+    publishedAt: "2026-11-13",
+    readTime: "16 min read",
+    image: "/can-a-christian-date-a-non-christian-banner.png",
+    groupPost: {
+      title: "Can a Christian Date a Non-Christian? 📖",
+      content:
+        "You met someone good.\nThen you remembered what you believe.\n\n📌 The Bible never says date now and sort out faith later.\n\n📖 Unequally yoked is a farming word, not a shame word.\n📖 Ruth believed first, then found a husband who matched.\n📖 Already married to a non believer? Stay and love well.\n\nNew article on:\n🟢 what **unequally yoked** actually means for dating\n🟢 why **Ruth** is the better model than people think\n🟢 what to do if you are already in this relationship\n\nWhat would you tell a friend asking you this? 🙏",
+    },
+  },
+  {
     slug: "joshua-23-explained",
     title: "Joshua 23 Explained: The Warning Joshua Gave Before He Died",
     description:
