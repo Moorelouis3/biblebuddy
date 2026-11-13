@@ -13752,3 +13752,24 @@ untagged (step 3: a new feature, it waits).
 Not live yet: goes out with the Sat 10:05 Berlin build.
 Still open: after that build, check /levels and one badge unlock on the live
 site; "done, unlocks soon" wording was never seen on screen locally.
+
+## 2026-11-13 (night)
+Time spent: a full day, 12-13 Nov.
+Done: Bible Memory and Bible Word Search built and live. New-games popup
+redesigned. Features tab added to admin analytics. Auto Comment rebuilt
+(prepared lines + one model draft) and switched on in Vercel. Bible Lock
+announcement popup built, approved and switched on. Popup system: audit and
+proposal (docs/POPUP_SYSTEM_PROPOSAL.md), seven tutorials approved by Louis,
+limits approved (one per visit, 20 hours apart, three a week, store asks to
+come under the same limit). Coordinator built and mounted but switched off.
+Database change run in production: user_popups_seen gained columns (all 4,892
+rows kept), popup_settings created (empty = everything off), claim_popup
+function added. Build list corrected: Bible Lock is shipped.
+Not live yet: popup coordinator, /tips page and the seven tutorials are on
+main as inert code; next build Sat 14 Nov 10:05 Berlin. Nothing automatic
+changes for users with that build.
+Still open: coordinator has not been exercised against real accounts. Existing
+popups (games, lock, study, weekly, App Store/Android asks) still run on their
+own triggers and are not yet limited. Admin page for the switches not built.
+Next: test the coordinator on a test account, then move the existing popups
+under it one at a time, starting with the App Store and Android asks.

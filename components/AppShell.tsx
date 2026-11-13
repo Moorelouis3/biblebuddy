@@ -53,6 +53,7 @@ import BottomNav from "./BottomNav";
 import BeginningOfEverythingPopup from "./BeginningOfEverythingPopup";
 import BibleLockPopup from "./BibleLockPopup";
 import NewGamesPopup from "./NewGamesPopup";
+import PopupCoordinator from "./popups/PopupCoordinator";
 import WisdomBookPopup from "./WisdomBookPopup";
 import ProverbsLaunchPopup from "./ProverbsLaunchPopup";
 import CommunityEventDayPopup from "./CommunityEventDayPopup";
@@ -207,16 +208,41 @@ function getCurrentSignupAttribution() {
   return readPendingSignupAttribution() || getSignupAttributionFromBrowser();
 }
 
+/**
+ * A name we are willing to save on a profile.
+ *
+ * This function used to be called with `username || "Bible Buddy User"`, and
+ * it writes display_name AND username, so an OAuth signup that reached here
+ * before the username had loaded was stamped with that placeholder for good.
+ * 325 profiles ended up carrying it, and it is what the community feed shows
+ * next to their activity (Louis, 2026-11-13). The placeholder is worse than
+ * no name at all: the feed already falls back to "Bible Buddy" on an empty
+ * name, and DisplayNamePromptGate asks an unnamed account for a real one -
+ * but it cannot ask someone who looks like they already answered.
+ *
+ * So: save a real name or save nothing.
+ */
+function usableName(candidate: string | null | undefined): string | null {
+  const trimmed = (candidate || "").trim();
+  if (!trimmed) return null;
+  // "Bible Buddy" is absent on purpose: it is the real name of
+  // bible-buddy@mybiblebuddy.net, the account that posts the Verse of the Day.
+  if (/^(bible buddy user|user|new user|guest|anonymous)$/i.test(trimmed)) return null;
+  return trimmed;
+}
+
 async function saveSignupAttributionForUser(
   currentUserId: string,
-  displayName: string,
+  displayName: string | null,
   attribution: SignupAttribution = getCurrentSignupAttribution(),
 ) {
   const nowIso = new Date().toISOString();
+  const realName = usableName(displayName);
   const basePayload = {
     user_id: currentUserId,
-    display_name: displayName,
-    username: displayName,
+    // Omitted entirely when we have no real name, so the upsert leaves the
+    // column alone rather than writing a placeholder over it.
+    ...(realName ? { display_name: realName, username: realName } : {}),
     app_theme: "light",
     traffic_source: attribution.source,
     // Same fix as app/signup/page.tsx (2026-10-23), and it has to be in both:
@@ -1149,7 +1175,26 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           console.error("[ACCOUNT_SETUP] Error creating profile_stats row:", upsertError);
         }
 
-        void saveSignupAttributionForUser(currentUserId, username || "Bible Buddy User", signupAttribution);
+        // The name the provider gave us, if any - Apple and Google both send
+        // one, and reusing it means the account never has to be asked. Null
+        // when there is nothing real to save; see usableName.
+        void (async () => {
+          let providerName: string | null = usableName(username);
+          if (!providerName) {
+            const { data: authData } = await supabase.auth.getUser();
+            const meta = (authData?.user?.user_metadata || {}) as Record<string, unknown>;
+            providerName =
+              usableName(meta.full_name as string) ||
+              usableName(meta.name as string) ||
+              usableName(
+                meta.firstName && meta.lastName ? `${meta.firstName} ${meta.lastName}` : null,
+              ) ||
+              usableName(
+                meta.given_name && meta.family_name ? `${meta.given_name} ${meta.family_name}` : null,
+              );
+          }
+          await saveSignupAttributionForUser(currentUserId, providerName, signupAttribution);
+        })();
         return;
       }
 
@@ -1387,10 +1432,25 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     const signupAttribution = getCurrentSignupAttribution();
     const landingSessionId = signupAttribution.landingSessionId || window.localStorage.getItem("bb:landing-session-id") || "";
     const landingSource = signupAttribution.source;
-    const displayName = username || "Bible Buddy User";
 
     void (async () => {
       try {
+        // Was `username || "Bible Buddy User"`. It is written to
+        // master_actions.username, and bibleEntityProgress copies that onto
+        // profile_stats.username the first time the account does anything -
+        // which is the second way the placeholder reached the feed. A real
+        // name from the provider, or nothing.
+        let displayName: string | null = usableName(username);
+        if (!displayName) {
+          const { data: authData } = await supabase.auth.getUser();
+          const meta = (authData?.user?.user_metadata || {}) as Record<string, unknown>;
+          displayName =
+            usableName(meta.full_name as string) ||
+            usableName(meta.name as string) ||
+            usableName(meta.firstName && meta.lastName ? `${meta.firstName} ${meta.lastName}` : null) ||
+            usableName(meta.given_name && meta.family_name ? `${meta.given_name} ${meta.family_name}` : null);
+        }
+
         const { data: existingSignup, error: signupLookupError } = await supabase
           .from("master_actions")
           .select("id")
@@ -3893,6 +3953,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           that can run the lock and has not set it up sees it. */}
       {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
         <BibleLockPopup
+          userId={userId}
+          pathname={pathname}
+          blocked={Boolean(
+            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
+          )}
+        />
+      ) : null}
+
+      {/* The popup coordinator (2026-11-13): one tutorial or announcement
+          per visit, chosen by lib/popups/decide.ts. Switched off inside the
+          component (COORDINATOR_ENABLED), and every popup is off in
+          popup_settings as well. See docs/POPUP_SYSTEM_PROPOSAL.md. */}
+      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
+        <PopupCoordinator
           userId={userId}
           pathname={pathname}
           blocked={Boolean(

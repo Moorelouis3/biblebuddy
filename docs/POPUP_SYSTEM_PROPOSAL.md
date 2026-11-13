@@ -185,13 +185,16 @@ These three are tested by `npm run verify:popups` (23 checks).
 - `/tips`: open any tutorial by hand. *Built, not linked from anywhere.*
 - `components/popups/PopupCoordinator.tsx`: one component mounted once in
   AppShell. Gathers what `decide` needs, waits for the quiet moment, claims
-  the display, opens the shell, records the outcome. *Not built.*
+  the display, opens the shell, records the outcome. *Built 13 Nov, switched
+  off (`COORDINATOR_ENABLED = false`). Not yet run against real accounts.*
 - Move New games, Bible Lock, the study popups, the weekly nudges and the two
   store asks into the catalog, and remove their own triggers. *Not done.*
 - Delete what is dead: the Proverbs launch popup, the unmounted Proverbs join
   popup, the monthly update modal, the unused popup queue. *Not done.*
 
-**Database** (not run; needs Louis's go-ahead)
+**Database** (run on 13 Nov 2026 with Louis's go-ahead:
+`supabase/migrations/20261113_popup_coordinator.sql`. 4,892 existing rows
+kept, `popup_settings` is empty so every popup is off)
 
 1. Add columns to the existing `user_popups_seen` rather than a new table, so
    every existing row keeps its meaning:
@@ -206,9 +209,9 @@ These three are tested by `npm run verify:popups` (23 checks).
    then records the display. This is what stops two tabs, or a phone and a
    laptop, from both showing one: the database decides, not the browser.
 
-A view is recorded when the popup is on screen with the tab visible, not when
-it is picked. The claim reserves it; the display is confirmed a moment later.
-An unconfirmed claim expires and counts for nothing.
+A view is recorded at the moment the popup opens, not when it is picked: the
+coordinator only asks the database once the page has been still, clear and
+visible for a few seconds, and opens the popup the instant it is told yes.
 
 **Signed-out visitors.** The app is behind an account, so the coordinator
 only runs signed in. The one signed-out prompt (the blog's app bar) keeps its

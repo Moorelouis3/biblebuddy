@@ -32,6 +32,10 @@ const ALLOWED_EVENTS = new Set([
   "bible_lock_popup_impression",
   "bible_lock_popup_dismissed",
   "bible_lock_popup_clicked",
+  "popup_shown",
+  "popup_dismissed",
+  "popup_cta_clicked",
+  "popup_feature_adopted",
   // New-feature usage (2026-11-13), sent by lib/featureEvents.ts and read by
   // lib/newFeaturesReport.ts for the Features tab on /admin/analytics.
   "bible_memory_opened",

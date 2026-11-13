@@ -8,10 +8,14 @@
  */
 
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { POPUP_CATALOG } from "../lib/popups/catalog";
 import {
   decide,
+  HOURS_BETWEEN_POPUPS,
+  MAX_AUTOMATIC_DISPLAYS,
+  MAX_POPUPS_PER_WEEK,
   nextEligibleAfterClose,
   sameVisit,
   type DecideInput,
@@ -190,6 +194,37 @@ check("a visit ends after 30 quiet minutes, not on refresh", () => {
   assert.equal(sameVisit(new Date(NOW.getTime() - 5 * 60_000).toISOString(), NOW), true);
   assert.equal(sameVisit(new Date(NOW.getTime() - 31 * 60_000).toISOString(), NOW), false);
   assert.equal(sameVisit(null, NOW), false);
+});
+
+console.log("Coordinator");
+
+const coordinator = readFileSync("components/popups/PopupCoordinator.tsx", "utf8");
+const migration = readFileSync("supabase/migrations/20261113_popup_coordinator.sql", "utf8");
+const analytics = readFileSync("app/api/landing-analytics/route.ts", "utf8");
+
+check("the coordinator asks the database before it opens anything", () => {
+  const asks = coordinator.indexOf('rpc("claim_popup"');
+  assert.ok(asks > 0 && asks < coordinator.indexOf("setOpen({ popup"));
+});
+
+check("a popup never writes study activity", () => {
+  assert.ok(!/from("master_actions")s*.(insert|upsert|update)/.test(coordinator));
+  const start = analytics.indexOf("const MASTER_ACTION_BY_EVENT");
+  const mapped = analytics.slice(start, analytics.indexOf("};", start));
+  for (const event of ["popup_shown", "popup_dismissed", "popup_cta_clicked", "popup_feature_adopted"]) {
+    assert.ok(analytics.includes('"' + event + '"'), event + " is allowed");
+    assert.ok(!mapped.includes(event), event + " is not study activity");
+  }
+});
+
+check("the database holds the same limits as the rules", () => {
+  assert.ok(migration.includes("interval '20 hours'") && HOURS_BETWEEN_POPUPS === 20);
+  assert.ok(migration.includes(">= 3 then") && MAX_POPUPS_PER_WEEK === 3);
+  assert.ok(migration.includes("display_count >= 2") && MAX_AUTOMATIC_DISPLAYS === 2);
+});
+
+check("the migration only adds: nothing a person has seen is removed", () => {
+  assert.ok(!/(delete from|truncate|drop table|drop column)/i.test(migration));
 });
 
 console.log(`\n${passed} checks passed.`);
