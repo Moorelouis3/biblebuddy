@@ -45,12 +45,10 @@ deliberately excluded from opening the app. Those specific emails will keep
 opening the browser even after this ships. Pointing them at `/dashboard`
 instead is a one-line change per email.
 
-### 2. Bible Lock (Screen Time) — blocked, not ready
-`BIBLE_LOCK_ENTITLEMENT` is on, but Apple's provisioning profile has not been
-issuing the Family Controls entitlement even though it is ticked on the App ID
-and reads as Assigned. An app asking for an entitlement its profile lacks
-cannot be signed at all. Evidence in `docs/bible-lock-entitlement-evidence.md`.
-This is the one most likely to break a build.
+### 2. Bible Lock (Screen Time) — shipped, nothing waiting
+In the live App Store build (Louis, 2026-11-13). The entitlement problem was
+solved on 2026-10-17; see `docs/bible-lock-entitlement-evidence.md`. This
+entry said "blocked, not ready" until 13 Nov, which was out of date.
 
 ### 3. The offline screen stops promising downloads iOS cannot have
 **Ready. Nothing more to do but build.** Commit `86dcb9e2`.
