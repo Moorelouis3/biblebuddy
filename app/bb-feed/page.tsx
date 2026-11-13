@@ -16,6 +16,7 @@ import { BLOCKS_CHANGED_EVENT, getBlockedUserIds } from "../../lib/userBlocks";
 import { ModalShell } from "../../components/ModalShell";
 import { logActionToMasterActions } from "../../lib/actionRecorder";
 import { requestAutoReplyDraft } from "../../lib/requestAutoReplyDraft";
+import { requestAutoCommentDraft } from "../../lib/requestAutoCommentDraft";
 import { readStudyActivity } from "../../lib/communityMilestones";
 import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
 import { FEED_OPEN_POST_EVENT } from "../../components/AppShell";
@@ -789,6 +790,7 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
   const [savingCommentId, setSavingCommentId] = useState<string | null>(null);
   const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
   const [autoCommentLoading, setAutoCommentLoading] = useState(false);
+  const [autoCommentTurn, setAutoCommentTurn] = useState(0);
   const currentUserBadge = myProfile?.member_badge ?? null;
 
   useEffect(() => {
@@ -1079,16 +1081,25 @@ function CommentSection({ postId, postUserId, postTitle, postContent, myId, myPr
     if (autoCommentLoading || postUserId === myId) return;
     setAutoCommentLoading(true);
 
+    // Only the post id goes to the server (2026-11-13). It reads the post
+    // itself and decides: a prepared line for routine activity, one model
+    // draft for something a person wrote. This used to send
+    // `verse_text || content` through the comment-reply prompt, which dropped
+    // the person's own words on a verse post and called them "Bible Buddy".
+    //
+    // The result only ever lands in the comment box. Posting is still the
+    // Post button, pressed by a person.
     try {
-      const draft = await requestAutoReplyDraft({
-        originalPostTitle: postTitle || null,
-        originalPostContent: postContent || null,
-        targetCommentContent: postContent || postTitle || "",
-        targetDisplayName: "Bible Buddy",
-      });
-      setNewComment(draft);
+      const draft = await requestAutoCommentDraft(postId, autoCommentTurn);
+      if (draft.route === "none" || !draft.reply) {
+        triggerToast(draft.message || "There is nothing to draft a comment for on this post.");
+      } else {
+        setNewComment(draft.reply);
+        // Pressing again asks for the next prepared line instead of the same one.
+        setAutoCommentTurn((turn) => turn + 1);
+      }
     } catch (error) {
-      triggerToast(error instanceof Error ? error.message : "Could not generate a comment draft.");
+      triggerToast(error instanceof Error ? error.message : "Could not write a comment draft.");
     }
 
     setAutoCommentLoading(false);

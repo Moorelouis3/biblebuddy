@@ -34,8 +34,17 @@ import type { SupabaseClient } from "@supabase/supabase-js";
  * limits.
  */
 
-/** The only two features allowed to spend. Anything else is refused by name. */
-export const BILLABLE_FEATURES = ["little_louis_reply", "bible_text_to_speech"] as const;
+/**
+ * The only features allowed to spend. Anything else is refused by name.
+ *
+ * feed_auto_comment_draft joined on 2026-11-13, at Louis's request, after the
+ * numbers were measured rather than feared: one drafted comment is about
+ * $0.00007 on gpt-4o-mini, the feed produces about 26 posts a month that need
+ * one, and the route that makes them (app/api/feed/auto-comment) has its own
+ * cap of 50 a day on top of this monthly gate. It drafts into a box the owner
+ * edits and posts himself; nothing here publishes anything.
+ */
+export const BILLABLE_FEATURES = ["little_louis_reply", "bible_text_to_speech", "feed_auto_comment_draft"] as const;
 export type BillableFeature = (typeof BILLABLE_FEATURES)[number];
 
 /** $10 a month, Louis's figure. */
@@ -62,6 +71,9 @@ export const OPENAI_BLOCKED_EVENT = "openai_spend_blocked";
 export const ESTIMATED_COST_USD: Record<BillableFeature, number> = {
   little_louis_reply: 0.002,
   bible_text_to_speech: 0.14,
+  // About 280 tokens in and 50 out on gpt-4o-mini is $0.00007. Rounded up
+  // nearly threefold, for the same reason as the chat figure above.
+  feed_auto_comment_draft: 0.0002,
 };
 
 export class OpenAiBudgetExceeded extends Error {

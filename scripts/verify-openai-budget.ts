@@ -74,6 +74,8 @@ async function main() {
   // --- which features may spend at all -------------------------------------
   check("little_louis_reply is billable", isBillableFeature("little_louis_reply"));
   check("bible_text_to_speech is billable", isBillableFeature("bible_text_to_speech"));
+  // Added 2026-11-13: the feed's Auto Comment drafts, about $0.00007 each and capped at 50 a day.
+  check("feed_auto_comment_draft is billable", isBillableFeature("feed_auto_comment_draft"));
   for (const rejected of [
     "moderator_engagement",
     "auto_reply",
