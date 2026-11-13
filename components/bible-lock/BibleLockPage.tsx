@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import BibleLockSettings from "@/components/BibleLockSettings";
-import { bibleLockAvailable, UNLOCKING_ACTIONS_SUMMARY } from "@/lib/bibleLock";
+import { bibleLockAvailable } from "@/lib/bibleLock";
+import { BIBLE_LOCK_CHOICES, UNLOCKING_ACTIONS_SUMMARY } from "@/lib/bibleLockActivities";
 
 /**
  * The Bible lock, explained (Louis, 2026-10-17: "I don't see it as an option
@@ -23,7 +24,7 @@ const STEPS = [
   ["Open Settings, or this page, in the Bible Buddy app on your iPhone", "The lock uses Apple's Screen Time, which only exists inside the app."],
   ["Allow it with Face ID", "iPhone asks once. Nothing is locked yet."],
   ["Pick the apps", "Apple's own picker. Choose the ones that usually get you first."],
-  ["Lock them", "They stay shielded until you have done today's reading."],
+  ["Lock them", "They stay shielded until you finish one Bible activity today: a chapter, a study, or a game round."],
 ];
 
 export default function BibleLockPage() {
@@ -54,7 +55,7 @@ export default function BibleLockPage() {
         </span>
         <h1 className="mt-3 text-3xl font-black leading-tight text-[var(--bb-text-primary,#111827)]">Bible Lock</h1>
         <p className="mt-2 text-[15px] font-semibold text-[var(--bb-text-secondary,#5f6368)]">
-          Lock the apps that get your attention first, until you have read today.
+          Lock the apps that get your attention first, until you have spent time in the Bible today.
         </p>
       </header>
 
@@ -62,12 +63,30 @@ export default function BibleLockPage() {
         <h2 className="text-lg font-black text-[var(--bb-text-primary,#111827)]">What it does</h2>
         <p className="mt-2 text-[15px] leading-relaxed text-[var(--bb-text-secondary,#2c3e55)]">
           You pick the apps that usually win — the feed, the videos, the game. Bible Buddy shields them.
-          They open again the moment you have done today&rsquo;s reading. Not opened the Bible: done the
-          reading. Nothing here is unlocked by tapping around for a second.
+          They open again the moment you finish one Bible activity today, and stay open until midnight.
+          Finish, not open: nothing here is unlocked by tapping around for a second. A game round counts
+          at any score.
         </p>
         <p className="mt-4 rounded-2xl bg-[var(--bb-surface-soft,#f3f8ff)] px-4 py-3 text-sm font-semibold text-[var(--bb-text-secondary,#2c3e55)]">
           <span className="block font-black text-[var(--bb-text-primary,#111827)]">What unlocks them</span>
-          {UNLOCKING_ACTIONS_SUMMARY}
+          Any one of these is enough. You do not have to do them all.
+        </p>
+        <ul className="mt-3 space-y-2.5">
+          {BIBLE_LOCK_CHOICES.map((choice) => (
+            <li key={choice.title} className="flex gap-3 text-[15px] leading-relaxed text-[var(--bb-text-secondary,#2c3e55)]">
+              <span className="w-12 shrink-0 font-black text-[var(--bb-text-primary,#111827)]">{choice.title}</span>
+              <span>{choice.detail}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-3 text-sm leading-relaxed text-[var(--bb-text-muted,#6b7280)]">{UNLOCKING_ACTIONS_SUMMARY}</p>
+        <p className="mt-3">
+          <Link
+            href="/bible-lock/tasks"
+            className="text-sm font-black text-[var(--bb-accent,#2f7fe8)] underline-offset-2 hover:underline"
+          >
+            See the ways to unlock →
+          </Link>
         </p>
       </section>
 

@@ -90,8 +90,8 @@ export default function BibleLockSettings() {
     <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
       <h2 className="text-xl font-semibold mb-2">Bible lock</h2>
       <p className="text-sm text-gray-600">
-        Lock the apps that usually get your attention first, until you have done
-        today&apos;s reading. Bible Buddy never sees which apps you choose, and you can
+        Lock the apps that usually get your attention first, until you have finished
+        one Bible activity today. Bible Buddy never sees which apps you choose, and you can
         unlock them at any time.
       </p>
 
@@ -132,7 +132,7 @@ export default function BibleLockSettings() {
               {status.chosen === 0
                 ? "No apps chosen yet."
                 : `${status.chosen} ${status.chosen === 1 ? "app" : "apps"} chosen.`}
-              {status.locked ? " Locked until today's reading is done." : ""}
+              {status.locked ? " Locked until you finish one Bible activity today." : ""}
             </p>
 
             <div className="flex flex-wrap gap-3">
@@ -191,14 +191,14 @@ export default function BibleLockSettings() {
             {status.chosen > 0 ? (
               <p className="rounded-xl bg-[#f5f2ff] px-3 py-2 text-xs font-bold text-[#4a3d7a]">
                 {status.locked
-                  ? `Finish today's reading and your apps come back until midnight — ${timeUntilMidnight} from now.`
+                  ? `Finish a chapter, a study or a game round and your apps come back until midnight — ${timeUntilMidnight} from now.`
                   : `Your apps lock again in ${timeUntilMidnight} — at midnight.`}
               </p>
             ) : null}
 
             <p className="text-xs text-gray-500">
-              The lock clears itself the moment you finish today&apos;s reading.{" "}
-              {UNLOCKING_ACTIONS_SUMMARY} Any one of them is enough.
+              The lock clears itself the moment you finish one of these. Any one is enough.{" "}
+              {UNLOCKING_ACTIONS_SUMMARY}
             </p>
           </>
         )}

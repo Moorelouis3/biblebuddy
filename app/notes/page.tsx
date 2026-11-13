@@ -7,6 +7,7 @@ import Image from "next/image";
 import { supabase } from "../../lib/supabaseClient";
 import NewNoteModal from "../../components/NewNoteModal";
 import { ACTION_TYPE } from "../../lib/actionTypes";
+import { bibleLockActivityCompleted } from "../../lib/bibleLockActivities";
 import CreditLimitModal from "../../components/CreditLimitModal";
 
 type Note = {
@@ -347,6 +348,7 @@ export default function NotesPage() {
 
         // Insert into master_actions (note_created has no action_label)
         console.log("[MASTER_ACTIONS] inserting:", { action_type: ACTION_TYPE.note_created, action_label: null });
+        bibleLockActivityCompleted(ACTION_TYPE.note_created);
         const { error: actionError } = await supabase
           .from("master_actions")
           .insert({

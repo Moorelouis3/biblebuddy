@@ -57,6 +57,7 @@
     "verify:reader-notes": "tsx scripts/verify-reader-notes-load.ts",
     "verify:trivia": "tsx scripts/verify-trivia.ts",
     "verify:badges": "tsx scripts/verify-badges.ts",
+    "verify:bible-lock": "tsx scripts/verify-bible-lock.ts",
     "verify:memory": "tsx scripts/verify-memory.ts",
     "verify:word-search": "tsx scripts/verify-word-search.ts",
     "verify:new-features": "tsx scripts/verify-new-features-report.ts",

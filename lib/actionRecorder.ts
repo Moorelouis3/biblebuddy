@@ -13,6 +13,7 @@ import type { ActionType } from "./actionTypes";
 import { syncCurrentStreakToProfileStats } from "./profileStats";
 import { getBibleBuddyLocalDayKey } from "./louisDailyFlow";
 import { liftBibleLockFor, UNLOCKING_ACTIONS } from "./bibleLock";
+import { bibleLockActivityCompleted } from "./bibleLockActivities";
 
 /** Fired on any "did something" (not just viewed/opened) action. */
 export const MEANINGFUL_ACTION_EVENT = "bb:meaningful-action";
@@ -74,6 +75,12 @@ export async function logActionToMasterActions(
     eventMetadata?: Record<string, unknown> | null;
   }
 ): Promise<void> {
+  // Give the phone back first if this is something that counts (the list is
+  // lib/bibleLockActivities.ts). Here, because this is the function most
+  // completions pass through, and before the write, because a failed write
+  // must not leave someone who finished a round locked out.
+  bibleLockActivityCompleted(actionType);
+
   try {
     // Get username if not provided
     let finalUsername = username;

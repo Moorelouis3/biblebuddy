@@ -14,6 +14,7 @@ import { eventSlugForDevotional, getEventDayRepliers, getEventDiscussedDayNumber
 import DevotionalDayCompletionModal from "@/components/DevotionalDayCompletionModal";
 import TriviaGamePlayer from "@/components/TriviaGamePlayer";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import { bibleLockActivityCompleted } from "@/lib/bibleLockActivities";
 import { enrichPlainText } from "@/lib/bibleHighlighting";
 import { getProverbsChapterNotesFallback, withNotesTimeout } from "@/lib/proverbsChapterNotesFallback";
 import { fetchBibleChapterNotes } from "@/lib/chapterNotesOffline";
@@ -835,6 +836,7 @@ export default function ProverbsStudyDayPage() {
     );
 
     if (!wasAlreadyCompleted) {
+      bibleLockActivityCompleted(ACTION_TYPE.devotional_day_completed);
       const { error } = await supabase.from("master_actions").insert({
         user_id: userId,
         action_type: ACTION_TYPE.devotional_day_completed,
@@ -936,6 +938,7 @@ export default function ProverbsStudyDayPage() {
 
     if (existing) return;
 
+    bibleLockActivityCompleted(ACTION_TYPE.devotional_reflection_saved);
     const { error } = await supabase.from("master_actions").insert({
       user_id: userId,
       action_type: ACTION_TYPE.devotional_reflection_saved,

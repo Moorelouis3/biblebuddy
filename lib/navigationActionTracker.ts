@@ -1,5 +1,6 @@
 import { logActionToMasterActions } from "./actionRecorder";
 import type { ActionType } from "./actionTypes";
+import { bibleLockActivityCompleted } from "./bibleLockActivities";
 
 const inFlight = new Set<string>();
 
@@ -27,6 +28,12 @@ export async function trackNavigationActionOnce({
   if (typeof window === "undefined" || !userId) {
     return false;
   }
+
+  // Before the once-a-day check below, not after it. That check stops the
+  // same round being RECORDED twice in a day; it must not stop it counting
+  // for Bible Lock. Somebody who plays a chapter's trivia in the morning,
+  // locks their apps at lunch and plays it again has finished a round.
+  bibleLockActivityCompleted(actionType);
 
   const storageKey = buildStorageKey(userId, dedupeKey);
   const storage = (() => {

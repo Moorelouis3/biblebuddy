@@ -92,7 +92,7 @@ const HIGHLIGHTS = [
   },
   {
     title: "One Bible Buddy task unlocks them",
-    detail: "A chapter, a devotional day, a trivia round, a note and more.",
+    detail: "Read a chapter, finish part of a study guide, or play a round of Trivia, Scrambled, Memory or Word Search.",
   },
   {
     title: "Back on at midnight",
@@ -410,7 +410,7 @@ export default function BibleLockPopup({
                   </span>
                   <p className="min-w-0 basis-full text-[13px] font-bold leading-snug text-[#14122b] sm:basis-0 sm:flex-1 sm:pl-1">
                     3 apps chosen.
-                    <span className="font-semibold text-[#5b6079] sm:block"> Locked until today&apos;s reading is done.</span>
+                    <span className="font-semibold text-[#5b6079] sm:block"> Locked until one Bible activity is done.</span>
                   </p>
                 </div>
                 <div className="mt-2.5 flex items-center gap-2 rounded-xl bg-[#e8fbf3] px-3 py-2">
@@ -418,7 +418,7 @@ export default function BibleLockPopup({
                     ✓
                   </span>
                   <p className="min-w-0 text-[13px] font-bold leading-snug text-[#0f5d45]">
-                    Finish a chapter and they come back until midnight.
+                    Finish a chapter, a study or a game round and they come back until midnight.
                   </p>
                 </div>
               </div>

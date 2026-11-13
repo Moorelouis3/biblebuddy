@@ -43,11 +43,24 @@ type Task = {
   ready: boolean;
 };
 
+/**
+ * The other three games. Each one counts when a round is finished, at any
+ * score: every word of a Scrambled chapter, five Bible Memory questions, every
+ * word of a Word Search puzzle. They open the game's own picker, because none
+ * of them has a "next" the way a plan or a study does.
+ */
+const GAME_TASKS: Task[] = [
+  { key: "scrambled", icon: "🔤", title: "Scrambled", detail: "Unscramble the words of one chapter", href: "/bible-study-games/scrambled", ready: true },
+  { key: "memory", icon: "🧠", title: "Bible Memory", detail: "One practice round of your saved verses", href: "/bible-study-games/memory", ready: true },
+  { key: "word-search", icon: "🔎", title: "Bible Word Search", detail: "Find every word in one puzzle", href: "/bible-study-games/word-search", ready: true },
+];
+
 const LOADING: Task[] = [
   { key: "trivia", icon: "🎯", title: "Bible Trivia", detail: "Finding your next game…", href: "/bible-trivia", ready: true },
-  { key: "devotional", icon: "📖", title: "Continue Devotional", detail: "Finding your place…", href: "/plan?view=bible_studies", ready: true },
+  { key: "devotional", icon: "📖", title: "Continue Study Guide", detail: "Finding your place…", href: "/plan?view=bible_studies", ready: true },
   { key: "reading", icon: "📅", title: "Continue Bible Reading", detail: "Finding your place…", href: "/reading", ready: true },
   { key: "notes", icon: "✍🏾", title: "Write Bible Notes", detail: "Write what today's passage gave you", href: "/notes/grow", ready: true },
+  ...GAME_TASKS,
 ];
 
 export default function BibleLockTasks() {
@@ -121,17 +134,17 @@ export default function BibleLockTasks() {
           key: "trivia",
           icon: "🎯",
           title: "Bible Trivia",
-          detail: triviaBook ? `Questions on ${triviaBook.title}` : "Pick a book and play a round",
+          detail: triviaBook ? `One round on ${triviaBook.title}` : "Pick a book and finish a round",
           href: triviaBook?.triviaHref ?? "/bible-trivia",
           ready: true,
         },
         {
           key: "devotional",
           icon: "📖",
-          title: "Continue Devotional",
+          title: "Continue Study Guide",
           detail: devotional
-            ? `${devotional.study.title} · Day ${devotional.progress.nextDay}`
-            : "No devotional started yet",
+            ? `${devotional.study.title} · Day ${devotional.progress.nextDay} · any one part`
+            : "No study guide started yet",
           href: devotional
             ? `/devotionals/${devotional.study.id}/day/${devotional.progress.nextDay}`
             : "/plan?view=bible_studies",
@@ -158,6 +171,7 @@ export default function BibleLockTasks() {
           href: "/notes/grow",
           ready: true,
         },
+        ...GAME_TASKS,
       ]);
     })().catch((error: unknown) => {
       // fetchLibraryStudies throws on a database error now (see

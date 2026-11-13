@@ -39,6 +39,7 @@ import type { ChecklistData, TaskState } from "./LouisDailyTasksModal";
 import type { DailyRecommendation } from "../lib/dailyRecommendation";
 import { supabase } from "../lib/supabaseClient";
 import { ACTION_TYPE, type ActionType } from "../lib/actionTypes";
+import { bibleLockActivityCompleted } from "../lib/bibleLockActivities";
 import { consumeCreditAction, isCreditActionCanceled } from "../lib/creditClient";
 import { CORE_STUDY_IS_FREE } from "@/lib/accessPolicy";
 import { normalizeStudyMode, studyUnitLabel, usesUnifiedStudyShell, type StudyMode } from "@/lib/studyMode";
@@ -10637,6 +10638,14 @@ Before we understand redemption, we need to understand what God made humanity fo
       await markBibleYearDayCoveredChaptersRead(day);
     }
     if (newlyCompletedCards.length > 0) {
+      // Bible Lock: the lesson and the trivia are finished here and now. Not
+      // "reflection" - this function also runs on load to sync a discussion
+      // post made on an earlier day, and that is not something done today.
+      // A new post tells Bible Lock itself, where it is posted.
+      for (const card of newlyCompletedCards) {
+        const finished = card === "reflection" ? undefined : BIBLE_YEAR_CARD_ACTION_TYPE[card];
+        if (finished) bibleLockActivityCompleted(finished);
+      }
       await Promise.all(newlyCompletedCards.map((card) => ensureBibleYearCardActionLogged(day, card, true, completionOccurredAt)));
       if (dayWillBeFullyComplete && !dayWasFullyComplete) {
         await ensureBibleYearDayCompletedActionLogged(day, completionOccurredAt);
@@ -11761,6 +11770,7 @@ Before we understand redemption, we need to understand what God made humanity fo
             submitButtonText="Send"
             variant="plain"
             onPosted={() => {
+              bibleLockActivityCompleted(ACTION_TYPE.bible_in_one_year_reflection_completed);
               markBibleYearReflectionPosted(day);
               markBibleYearDayCardComplete(day, "reflection");
               void logBibleYearDiscussionParticipation(day);

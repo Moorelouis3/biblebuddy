@@ -19,6 +19,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import { bibleLockActivityCompleted } from "@/lib/bibleLockActivities";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { fetchStaticJson, kjvStaticUrl } from "@/lib/chapterStaticData";
 import { supabase } from "@/lib/supabaseClient";
@@ -124,6 +125,9 @@ export default function WordSearchGame({ book }: { book: WordSearchBook }) {
         completions: finished ? progress.completions + 1 : progress.completions,
       });
       if (finished) {
+        // Every finished puzzle counts for Bible Lock, replays included. The
+        // action below is only logged the first time, for points.
+        bibleLockActivityCompleted(ACTION_TYPE.word_search_book_completed);
         setJustFinished(true);
         window.setTimeout(() => finishRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 120);
       }

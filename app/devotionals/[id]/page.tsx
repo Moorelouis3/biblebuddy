@@ -107,6 +107,7 @@ import BibleReadingModal from "../../../components/BibleReadingModal";
 import TriviaGamePlayer from "../../../components/TriviaGamePlayer";
 import BrowserTtsButton from "../../../components/BrowserTtsButton";
 import { ACTION_TYPE } from "../../../lib/actionTypes";
+import { bibleLockActivityCompleted } from "../../../lib/bibleLockActivities";
 import { consumeCreditAction } from "../../../lib/creditClient";
 import { CORE_STUDY_IS_FREE } from "../../../lib/accessPolicy";
 import { ensureGuestSession, recordNewUser } from "../../../lib/guestSession";
@@ -1773,6 +1774,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
               username: actionUsername 
             });
             
+            bibleLockActivityCompleted(ACTION_TYPE.devotional_day_completed);
             const { error: actionError, data: actionData } = await supabase
               .from("master_actions")
               .insert({
@@ -1962,6 +1964,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
           (authUser?.email ? authUser.email.split("@")[0] : null) ||
           "User";
 
+        bibleLockActivityCompleted(ACTION_TYPE.devotional_day_completed);
         await supabase.from("master_actions").insert({
           user_id: userId,
           username: actionUsername ?? null,

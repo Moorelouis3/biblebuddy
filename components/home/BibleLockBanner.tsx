@@ -186,12 +186,12 @@ export default function BibleLockBanner() {
               <>
                 <span className="sm:hidden">Spend time with God to unlock them.</span>
                 <span className="hidden sm:inline">
-                  Spend time with God to unlock them &mdash; a chapter, a devotional day, trivia, a note.
+                  Spend time with God to unlock them &mdash; a chapter, a study guide, a game round.
                 </span>
               </>
             ) : (
               <>
-                <span className="sm:hidden">Block apps until you read.</span>
+                <span className="sm:hidden">Block apps until Bible time.</span>
                 <span className="hidden sm:inline">Block distracting apps until you study the Bible.</span>
               </>
             )}

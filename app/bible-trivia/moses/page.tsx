@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import { ACTION_TYPE } from "@/lib/actionTypes";
+import { bibleLockActivityCompleted } from "@/lib/bibleLockActivities";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { triggerPoints } from "@/components/PointsPop";
 
@@ -286,6 +287,9 @@ const meta: any = user.user_metadata || {};
       setSelectedAnswer(null);
       setIsFlipped(false);
     } else {
+      // The last question is answered: a finished round, at any score. These
+      // pages record each answer but no round, so Bible Lock is told here.
+      bibleLockActivityCompleted(ACTION_TYPE.trivia_chapter_completed);
       setShowResults(true);
     }
   };

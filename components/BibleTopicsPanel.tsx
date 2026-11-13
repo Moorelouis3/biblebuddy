@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { ACTION_TYPE } from "../lib/actionTypes";
+import { bibleLockActivityCompleted } from "../lib/bibleLockActivities";
 import { BIBLE_TOPICS } from "../lib/bibleTopics";
 import { trackDeepStudyInterestOnce } from "../lib/deepStudyInterestTracking";
 import { supabase } from "../lib/supabaseClient";
@@ -166,6 +167,7 @@ export default function BibleTopicsPanel({ userId }: BibleTopicsPanelProps) {
 
         const alreadyRewarded = !existingError && Boolean(existing?.length);
         if (!alreadyRewarded) {
+          bibleLockActivityCompleted(ACTION_TYPE.bible_topic_lesson_completed);
           const { error: actionError } = await supabase.from("master_actions").insert({
             user_id: userId,
             action_type: ACTION_TYPE.bible_topic_lesson_completed,

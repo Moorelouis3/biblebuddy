@@ -10,6 +10,7 @@ import CommentSection from "./comments/CommentSection";
 import type { TaskState } from "./LouisDailyTasksModal";
 import { triggerPoints } from "./PointsPop";
 import { ACTION_TYPE } from "../lib/actionTypes";
+import { bibleLockActivityCompleted } from "../lib/bibleLockActivities";
 import { consumeCreditAction } from "../lib/creditClient";
 import { supabase } from "../lib/supabaseClient";
 import { markChapterDone } from "../lib/readingProgress";
@@ -1041,6 +1042,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
       const { data } = await supabase.auth.getUser();
       const meta: any = data.user?.user_metadata || {};
       const username = meta.firstName || meta.first_name || (data.user?.email ? data.user.email.split("@")[0] : null) || "User";
+      bibleLockActivityCompleted(ACTION_TYPE.devotional_day_completed);
       const { error } = await supabase.from("master_actions").insert({
         user_id: userId,
         username,
@@ -1071,6 +1073,7 @@ export default function DashboardDailyTaskCallout({ task, userId, onClose, onPro
     const meta: any = data.user?.user_metadata || {};
     const username = meta.firstName || meta.first_name || (data.user?.email ? data.user.email.split("@")[0] : null) || "User";
 
+    bibleLockActivityCompleted(ACTION_TYPE.devotional_reflection_saved);
     const { error } = await supabase.from("master_actions").insert({
       user_id: userId,
       username,
