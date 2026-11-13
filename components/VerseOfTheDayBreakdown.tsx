@@ -256,6 +256,7 @@ export default function VerseOfTheDayBreakdown({
     verseEnd: entry.verse_end,
     translation: entry.translation,
     text: entry.verse_text,
+    source: "daily_verse_popup",
   });
   const [shareState, setShareState] = useState<"idle" | "copied" | "error">("idle");
   const completedRef = useRef(false);

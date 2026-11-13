@@ -11,6 +11,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { trackFeatureEvent } from "@/lib/featureEvents";
 import { OLD_TESTAMENT_COUNT, WORD_SEARCH_BOOKS, type WordSearchBook } from "@/lib/wordSearchData";
 import { listWordSearchProgress, type WordSearchProgress } from "@/lib/wordSearchProgress";
 
@@ -25,6 +26,9 @@ export default function WordSearchBooks() {
     const { data } = await supabase.auth.getUser();
     const id = data.user?.id ?? null;
     if (!id) return { rows: [] as WordSearchProgress[], ok: true };
+    // One "opened" per visit to the list, so people who look and leave are
+    // counted and not mistaken for people who never found the game.
+    trackFeatureEvent("word_search_opened", id);
     try {
       return { rows: await listWordSearchProgress(id), ok: true };
     } catch {

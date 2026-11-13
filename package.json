@@ -57,6 +57,7 @@
     "verify:trivia": "tsx scripts/verify-trivia.ts",
     "verify:memory": "tsx scripts/verify-memory.ts",
     "verify:word-search": "tsx scripts/verify-word-search.ts",
+    "verify:new-features": "tsx scripts/verify-new-features-report.ts",
     "check:content-filter": "tsx scripts/check-content-filter.ts",
     "comments:seed": "tsx scripts/seed-comment-replies.ts",
     "comments:backtest": "tsx scripts/backtest-comment-replies.ts",

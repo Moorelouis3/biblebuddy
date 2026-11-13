@@ -27,6 +27,7 @@ export const TABS = [
   { key: "guides", label: "Study Guides" },
   { key: "books", label: "Books" },
   { key: "app", label: "App" },
+  { key: "features", label: "Features" },
 ] as const;
 
 export type AnalyticsTab = (typeof TABS)[number]["key"];
@@ -1927,6 +1928,139 @@ export default function AnalyticsDashboardView({
                 </div>
               </Section>
             ) : null}
+              </>
+            ) : null}
+
+            {/* Features (2026-11-13): is the newest thing being found, tried
+                and returned to. One block per recently launched feature, all
+                asking the same questions in the same order. The numbers come
+                from lib/newFeaturesReport.ts. */}
+            {tab === "features" ? (
+              <>
+                {d.newFeatures ? (
+                  <>
+                    <p className="px-1 text-sm font-semibold text-[#64748b]">
+                      Every figure is people, not taps. &ldquo;Since launch&rdquo; is all time; the second column follows the
+                      period chosen above.
+                    </p>
+                    {d.newFeatures.features.map((feature) => {
+                      const top = feature.steps[0]?.allTime || 0;
+                      const widest = Math.max(1, ...feature.steps.map((s) => s.allTime));
+                      return (
+                        <Section
+                          key={feature.key}
+                          summary={
+                            <SectionSummary
+                              icon={feature.icon}
+                              title={feature.title}
+                              line={feature.steps
+                                .slice(0, 2)
+                                .map((s) => `${fmt(s.allTime)} ${s.label.toLowerCase()}`)
+                                .join(" · ")}
+                            />
+                          }
+                        >
+                          <div className="hidden lg:block">
+                            <CardTitle
+                              icon={feature.icon}
+                              right={
+                                <Link href={feature.href} className="text-xs font-bold text-[#2563eb]">
+                                  Open it →
+                                </Link>
+                              }
+                            >
+                              {feature.title}
+                            </CardTitle>
+                          </div>
+                          <p className="mb-3 text-xs font-semibold text-[#64748b]">Live since {feature.launched}</p>
+
+                          <div className="overflow-x-auto">
+                            <table className="w-full min-w-[420px] border-separate border-spacing-y-1.5 text-sm">
+                              <thead>
+                                <tr className="text-left text-xs font-bold text-[#64748b]">
+                                  <th className="pb-1 font-bold">Step</th>
+                                  <th className="w-[38%] pb-1 font-bold" aria-hidden="true" />
+                                  <th className="pb-1 text-right font-bold">Since launch</th>
+                                  <th className="pb-1 text-right font-bold">This period</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {feature.steps.map((s, index) => (
+                                  <tr key={s.label} title={s.hint}>
+                                    <td className="pr-3 align-middle">
+                                      <p className="font-black text-[#0b1633]">{s.label}</p>
+                                      <p className="text-[11px] font-semibold leading-snug text-[#8a94a6]">{s.hint}</p>
+                                    </td>
+                                    <td className="align-middle">
+                                      <Bar value={s.allTime} max={widest} color={index === 0 ? "#94a3b8" : "#2563eb"} />
+                                    </td>
+                                    <td className="whitespace-nowrap pl-3 text-right align-middle">
+                                      <span className="text-lg font-black">{fmt(s.allTime)}</span>
+                                      {/* A later step can be bigger than the first: a verse
+                                          can be saved from the Daily Verse without ever
+                                          opening the Bible Memory screen. A percentage
+                                          over 100 would only confuse, so it is left off. */}
+                                      {index > 0 && top > 0 && s.allTime <= top ? (
+                                        <span className="ml-1.5 text-xs font-bold text-[#64748b]">{pct((s.allTime / top) * 100)}</span>
+                                      ) : null}
+                                    </td>
+                                    <td className="whitespace-nowrap pl-3 text-right align-middle text-lg font-black">{fmt(s.period)}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                          {top > 0 ? (
+                            <p className="mt-1 text-[11px] font-semibold text-[#8a94a6]">
+                              Percentages are of the first step ({fmt(top)} people).
+                            </p>
+                          ) : (
+                            <p className="mt-1 text-[11px] font-semibold text-[#8a94a6]">
+                              Nobody has been counted at the first step yet, so no percentages are shown.
+                            </p>
+                          )}
+
+                          {feature.breakdowns.some((b) => b.rows.length) ? (
+                            <div className="mt-4 grid gap-5 sm:grid-cols-2">
+                              {feature.breakdowns
+                                .filter((b) => b.rows.length)
+                                .map((b) => (
+                                  <div key={b.title}>
+                                    <p className="mb-2 text-sm font-black">{b.title}</p>
+                                    <div className="space-y-2">
+                                      {b.rows.map((row) => (
+                                        <div key={row.label} className="grid grid-cols-[150px_1fr_auto] items-center gap-2 text-xs font-bold">
+                                          <span className="truncate" title={row.label}>
+                                            {row.label}
+                                          </span>
+                                          <Bar value={row.value} max={Math.max(1, ...b.rows.map((r) => r.value))} color="#7c3aed" />
+                                          <span className="whitespace-nowrap text-right">
+                                            {fmt(row.value)}
+                                            {/* "1 time", "1 verse", "1 person" - not "1 times". */}
+                                            {b.unit
+                                              ? ` ${row.value === 1 ? (b.unit === "people" ? "person" : b.unit.replace(/s$/, "")) : b.unit}`
+                                              : ""}
+                                          </span>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ))}
+                            </div>
+                          ) : null}
+                        </Section>
+                      );
+                    })}
+                  </>
+                ) : (
+                  <Card>
+                    <p className="text-sm font-bold text-[#0b1633]">The feature numbers did not load.</p>
+                    <p className="mt-1 text-sm text-[#64748b]">
+                      The rest of the dashboard is unaffected. Press Refresh to try again; if this stays, the snapshot was
+                      saved before this tab existed.
+                    </p>
+                  </Card>
+                )}
               </>
             ) : null}
           </div>

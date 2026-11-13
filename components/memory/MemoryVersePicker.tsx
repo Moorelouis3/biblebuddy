@@ -74,6 +74,7 @@ export default function MemoryVersePicker({ userId, saved, onAdded, onClose }: P
       verse: verse.number,
       translation: "KJV",
       text: verse.text,
+      source: "picker",
     });
     setSavingVerse(null);
     if (result.status === "error") {

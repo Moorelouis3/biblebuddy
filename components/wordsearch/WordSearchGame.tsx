@@ -312,7 +312,7 @@ function WordDetails({
 
   const memory = useMemoryVerse(
     userId,
-    verseText ? { book: book.book, chapter: word.chapter, verse: word.verse, translation: "KJV", text: verseText } : null,
+    verseText ? { book: book.book, chapter: word.chapter, verse: word.verse, translation: "KJV", text: verseText, source: "word_search" } : null,
   );
 
   if (typeof document === "undefined") return null;

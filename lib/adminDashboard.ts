@@ -6,6 +6,7 @@ import { TOTAL_BIBLE_CHAPTERS } from "@/lib/bibleBookChapters";
 import chapterProgress from "@/data/chapter-blog/progress.json";
 import { isOpenNow, startLabelFrom } from "@/lib/studyLibrary";
 import { WELCOME_SEQUENCE } from "@/lib/email/welcomeSequence";
+import { computeNewFeatures, type NewFeaturesReport } from "@/lib/newFeaturesReport";
 
 /**
  * The owner analytics dashboard (2026-09-21), built from Louis's mockup.
@@ -895,6 +896,15 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     // study published without one never jumps the queue in the report.
     .sort((a, b) => (a.sortOrder ?? Number.MAX_SAFE_INTEGER) - (b.sortOrder ?? Number.MAX_SAFE_INTEGER) || a.title.localeCompare(b.title));
 
+  // ----- recently launched features (the Features tab) -----
+  // Its own module and its own queries, and deliberately unable to take the
+  // dashboard down with it: if a table is missing or a query fails, the tab
+  // says so and every other number on the page still loads.
+  const newFeatures: NewFeaturesReport | null = await computeNewFeatures(admin, current).catch((error) => {
+    console.error("[DASHBOARD] new features report failed:", error);
+    return null;
+  });
+
   // ----- printed books (Wisdom of Proverbs) -----
   // From the landing-analytics events the books page, the event-page banner
   // and the book popup send (lib/wisdomOfProverbsProducts.ts). "People" =
@@ -1610,6 +1620,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     books,
     appStore,
     content,
+    newFeatures,
   };
 }
 

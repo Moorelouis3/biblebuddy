@@ -48,6 +48,7 @@ export default function VerseOfTheDayCard({ userId }: { userId: string | null | 
           verseEnd: entry.verse_end,
           translation: entry.translation,
           text: entry.verse_text,
+          source: "daily_verse_card",
         }
       : null,
   );

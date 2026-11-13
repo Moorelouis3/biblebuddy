@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { listMemoryVerses, onMemoryVersesChange, removeMemoryVerse } from "@/lib/bibleMemory";
+import { trackFeatureEvent } from "@/lib/featureEvents";
 import { cleanVerseText, formatReference, memoryLabel, type MemoryLabel, type MemoryVerse } from "@/lib/bibleMemoryGames";
 import MemoryPractice from "./MemoryPractice";
 import MemoryVersePicker from "./MemoryVersePicker";
@@ -59,6 +60,9 @@ export default function BibleMemoryHome() {
         setState("signed-out");
         return;
       }
+      // One "opened" per visit, whether or not anything gets saved: this is
+      // what separates "looked and left" from "never found it".
+      trackFeatureEvent("bible_memory_opened", id);
       void load(id);
     });
     return () => {

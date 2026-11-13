@@ -29,6 +29,11 @@ const ALLOWED_EVENTS = new Set([
   "new_games_popup_impression",
   "new_games_popup_dismissed",
   "new_games_popup_clicked",
+  // New-feature usage (2026-11-13), sent by lib/featureEvents.ts and read by
+  // lib/newFeaturesReport.ts for the Features tab on /admin/analytics.
+  "bible_memory_opened",
+  "bible_memory_verse_saved",
+  "word_search_opened",
   // One-time "It starts today" popup for members who have not started (Oct 1+).
   "proverbs_launch_popup_impression",
   "proverbs_launch_popup_dismissed",

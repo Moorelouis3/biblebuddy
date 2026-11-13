@@ -14,6 +14,7 @@
 
 import { supabase } from "./supabaseClient";
 import { canonicalBookName, cleanVerseText, type MemoryVerse } from "./bibleMemoryGames";
+import { trackFeatureEvent, type MemorySaveSource } from "./featureEvents";
 
 const COLUMNS =
   "id, book, chapter, verse, verse_end, translation, verse_text, level, correct_count, mistake_count, last_practised_at, created_at";
@@ -30,9 +31,11 @@ export type MemoryVerseInput = {
   verseEnd?: number | null;
   translation?: string | null;
   text: string;
+  /** Which button saved it. Only used for the usage report, never stored on the verse. */
+  source?: MemorySaveSource | null;
 };
 
-export type MemoryVerseKey = Omit<MemoryVerseInput, "text">;
+export type MemoryVerseKey = Omit<MemoryVerseInput, "text" | "source">;
 
 function normaliseKey(input: MemoryVerseKey) {
   const verse = Number(input.verse);
@@ -110,6 +113,13 @@ export async function addMemoryVerse(userId: string, input: MemoryVerseInput): P
     return { status: "error", id: null };
   }
   announce();
+  // Counted only when a verse was really added, so a second tap on a saved
+  // verse does not inflate the numbers.
+  trackFeatureEvent("bible_memory_verse_saved", userId, {
+    source: input.source || "unknown",
+    book: key.book,
+    translation: key.translation,
+  });
   return { status: "added", id: (data?.id as string | undefined) ?? null };
 }
 

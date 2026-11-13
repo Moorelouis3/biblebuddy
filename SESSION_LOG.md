@@ -13657,3 +13657,9 @@ Done: Louis approved the redesigned "Make Scripture stick." popup. Applied the s
 Not live yet: the redesigned popup - next scheduled build.
 Still open: Louis has not said whether the redesign should be shown again to people who saw the first popup (that needs a new popup id); the sheep is my SVG, not the mockup's artwork.
 Next: community feed auto comments.
+
+## 2026-11-13 (Features tab on the admin analytics page)
+Done: Louis asked how to tell whether the popup and the new games are being used. Added a Features tab to the existing /admin/analytics page (not a new dashboard): for the popup, Bible Memory and Word Search it shows people at each step - saw it, tried it, did the real thing, came back another day - since launch and for the selected period. The counting is in lib/newFeaturesReport.ts, called from computeDashboard and unable to take the dashboard down if it fails. Three new events fill the gaps: bible_memory_opened, word_search_opened, and bible_memory_verse_saved with which button it came from (lib/featureEvents.ts). npm run verify:new-features, 7 checks. Opened the tab locally with live data: 23 saw the popup, 8 tapped a game (5 Memory, 3 Word Search); 6 people saved 14 verses; 3 opened a puzzle, 2 finished a book. Committed untagged.
+Not live yet: the Features tab and the three new events - next scheduled build. After it, press Refresh once on the admin page: the saved snapshot predates the tab.
+Still open: "Opened it" reads 0 until the new events ship; no audit yet of which older features have a view on the dashboard; beginning_popup_* events are still not in the analytics allowlist.
+Next: look at the numbers after a few days; community feed auto comments.

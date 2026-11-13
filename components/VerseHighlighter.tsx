@@ -1378,7 +1378,7 @@ export const VerseHighlighter: React.FC<VerseHighlighterProps> = ({
     if (!translation || plainTextMode || memoryVerseNumber === null) return null;
     const text = verses.find((entry) => entry.number === memoryVerseNumber)?.text;
     if (!text) return null;
-    return { book, chapter, verse: memoryVerseNumber, translation, text };
+    return { book, chapter, verse: memoryVerseNumber, translation, text, source: "reader" as const };
   }, [translation, plainTextMode, memoryVerseNumber, verses, book, chapter]);
   const memoryVerse = useMemoryVerse(user?.id, memoryVerseInput);
   const [openStudyReference, setOpenStudyReference] = useState<string | null>(null);

@@ -28,6 +28,7 @@ export function useMemoryVerse(userId: string | null | undefined, verse: MemoryV
   const verseEnd = verse?.verseEnd ?? null;
   const translation = verse?.translation ?? null;
   const text = verse?.text ?? "";
+  const source = verse?.source ?? null;
 
   useEffect(() => {
     setSavedId(null);
@@ -62,14 +63,14 @@ export function useMemoryVerse(userId: string | null | undefined, verse: MemoryV
           setFailed(true);
         }
       } else {
-        const result = await addMemoryVerse(userId, { book, chapter, verse: verseNumber, verseEnd, translation, text });
+        const result = await addMemoryVerse(userId, { book, chapter, verse: verseNumber, verseEnd, translation, text, source });
         if (result.status === "error") setFailed(true);
         else setSavedId(result.id ?? "saved");
       }
     } finally {
       setBusy(false);
     }
-  }, [userId, book, chapter, verseNumber, verseEnd, translation, text, savedId, busy]);
+  }, [userId, book, chapter, verseNumber, verseEnd, translation, text, source, savedId, busy]);
 
   return { saved: Boolean(savedId), busy, failed, toggle };
 }
