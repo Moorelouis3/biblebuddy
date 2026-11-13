@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-19-explained",
+    title: "Joshua 19 Explained: Six Tribes and the Last Lot of All",
+    description:
+      "Joshua 19 explained verse by verse: Simeon's land inside Judah, Dan's too-small lot answered by conquest, and Joshua finally receiving his own city last of all.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-19-explained",
+    publishedAt: "2026-11-13",
+    readTime: "15 min read",
+    image: "/blog-banners/joshua-19-explained.jpg",
+    groupPost: {
+      title: "Joshua 19 Explained 📖",
+      content:
+        "Six tribes get their land in one chapter.\nOne gets a lot inside someone else's.\n\n📌 The man dividing it all asked for his own land last.\n\n📖 Simeon's cities sit inside Judah's own territory.\n📖 Dan's land was too small, so Dan took more.\n📖 Joshua finally asks for one city, after everyone else.\n\nNew article on:\n🟢 why **Simeon** never got a separate territory\n🟢 how **Dan** solved a lot too small to live in\n🟢 the one **city** Joshua asked for last\n\nWho do you serve before you ask for your own share? 🙏",
+    },
+  },
+  {
     slug: "joshua-18-explained",
     title: "Joshua 18 Explained: Shiloh, Slackness, and Benjamin's Lot",
     description:
