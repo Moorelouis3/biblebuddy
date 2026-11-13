@@ -13675,3 +13675,9 @@ Done: Louis approved the hybrid. New route app/api/feed/auto-comment drafts a fi
 Not live yet: the code - next scheduled build. It ships OFF: production has AUTO_REPLY_DRAFTS unset, so the button still says it is turned off until that is set to "on" in Vercel.
 Still open: the AI branch was not exercised through the button (no personal post was on screen); its parts were tested separately. Turning the switch on also re-enables the older Auto Reply draft button for comments. MAX_MILESTONE_POSTS_PER_DAY is still not applied.
 Next: Louis decides when to switch it on.
+
+## 2026-11-13 (Auto Comment switched on)
+Done: Louis said yes to switching it on. Added AUTO_REPLY_DRAFTS=on to the Vercel project for Production at about 16:30 Berlin, before tonight's build, so the build picks up the code and the setting together. Did not press Redeploy. Dismissed Vercel's optional 2FA prompt with "Remind Me in 1 Day"; 2FA itself was not changed.
+Not live yet: Auto Comment - tonight's 18:00 Berlin build. Until then the button still says it is turned off.
+Still open: confirm after the build that the button drafts on the live site (an unauthenticated POST to /api/feed/auto-comment should answer 401, not 503). The same switch also turns the older Auto Reply draft button for comments back on.
+Next: check it after 18:05.
