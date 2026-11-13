@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { getLevelInfoWithLevelFloor } from "@/lib/levelSystem";
 import { computePointsFromActivity, streakBonusPointsFor, type PointsActionRow } from "@/lib/pointsEngine";
+import { resolveBadges } from "@/lib/badgeAwards";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -163,14 +164,50 @@ export async function GET(request: NextRequest) {
     const profile = profileRes.data;
     const storedLevel = profile?.current_level ?? null;
 
-    const computed = computePointsFromActivity({
+    const groupRootPosts = groupRows.filter((row) => !row.parent_post_id);
+    const groupComments = groupRows.filter((row) => Boolean(row.parent_post_id));
+    const compute = (badgeBonusPoints: number) =>
+      computePointsFromActivity({
+        actions,
+        groupRootPosts,
+        groupComments,
+        groupLikesGiven: likeRows,
+        likesReceived: [],
+        streakBonusPoints: streakBonusPointsFor(profile?.current_streak),
+        badgeBonusPoints,
+      });
+
+    /**
+     * Achievement badges (2026-11-13): their XP, and the one place one unlocks.
+     *
+     * A badge pays its XP once it is recorded for the user, and at most one
+     * new badge is recorded per request, at most once every two hours
+     * (lib/achievementBadges.ts, BADGE_UNLOCK_GAP_MS). It rides this request
+     * because the dashboard already makes it and it already has every row the
+     * badges are counted from: a second endpoint would read all of a user's
+     * actions twice per dashboard load.
+     *
+     * ?unlock=0 reads without unlocking. Nothing sends it today; it is there
+     * so a page that only wants the numbers can ask for only the numbers.
+     *
+     * If the badge table cannot be read the whole request fails rather than
+     * carrying on without badge XP, which would report a lower total and, for
+     * somebody near a boundary, a lower level than they were shown a minute
+     * ago. The level floor would hide that on the level, not on the XP.
+     */
+    const badgeResolution = await resolveBadges({
+      supabase,
+      userId,
       actions,
-      groupRootPosts: groupRows.filter((row) => !row.parent_post_id),
-      groupComments: groupRows.filter((row) => Boolean(row.parent_post_id)),
-      groupLikesGiven: likeRows,
-      likesReceived: [],
-      streakBonusPoints: streakBonusPointsFor(profile?.current_streak),
+      groupCommentCount: groupComments.length,
+      groupLikeCount: likeRows.length,
+      currentStreak: Number(profile?.current_streak) || 0,
+      allowUnlock: new URL(request.url).searchParams.get("unlock") !== "0",
+      totalWith: (badgeBonusPoints) => compute(badgeBonusPoints).totalPoints,
     });
+    const computed = compute(badgeResolution.badgeBonusPoints);
+    // Not only a badge unlocked by this request: see BADGE_ANNOUNCE_WINDOW_MS.
+    const badgeUnlocked = badgeResolution.announce;
 
     // Levels never go down: the stored level acts as a floor.
     const levelInfo = getLevelInfoWithLevelFloor(computed.totalPoints, storedLevel);
@@ -263,6 +300,19 @@ export async function GET(request: NextRequest) {
       displayName: profile?.display_name ?? null,
       levelCelebrated: celebrated,
       leveledUp,
+      badgeBonusPoints: badgeResolution.badgeBonusPoints,
+      // The badge to announce: unlocked now, or in the last ten minutes. The
+      // app shows each one once per device, so repeating it here is harmless.
+      badgeUnlocked: badgeUnlocked
+        ? {
+            id: badgeUnlocked.id,
+            title: badgeUnlocked.title,
+            emoji: badgeUnlocked.emoji,
+            tone: badgeUnlocked.tone,
+            description: badgeUnlocked.description,
+            xp: badgeUnlocked.xp,
+          }
+        : null,
     });
   } catch (error) {
     console.error("[POINTS] Failed to compute points summary:", error);

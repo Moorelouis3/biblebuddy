@@ -1,8 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
 import { supabase } from "../lib/supabaseClient";
 import LevelUpCelebration from "./LevelUpCelebration";
+import BadgeUnlockedToast, { type UnlockedBadge } from "./levels/BadgeUnlockedToast";
+import { claimBadgeAnnouncement, endBadgeAnnouncement } from "../lib/badgeAnnouncements";
 
 // The home-screen face of the points relaunch (2026-09-05): a compact
 // purple stat card (same family as the streak and Bible % cards beside it)
@@ -29,6 +32,8 @@ type PointsSummary = {
   displayName: string | null;
   levelCelebrated: number | null;
   leveledUp: boolean;
+  /** Set on the one response that unlocked a badge. Never cached. */
+  badgeUnlocked?: UnlockedBadge | null;
 };
 
 const LEVEL_SNAPSHOT_PREFIX = "bb:level-summary:v1";
@@ -36,6 +41,13 @@ const LEVEL_SNAPSHOT_PREFIX = "bb:level-summary:v1";
 export default function LevelProgressCard() {
   const [summary, setSummary] = useState<PointsSummary | null>(null);
   const [celebrating, setCelebrating] = useState(false);
+  const [unlockedBadge, setUnlockedBadge] = useState<UnlockedBadge | null>(null);
+  const dismissBadge = useCallback(() => {
+    setUnlockedBadge((shown) => {
+      if (shown) endBadgeAnnouncement(shown.id);
+      return null;
+    });
+  }, []);
 
   /**
    * Dismiss, then tell the server it has been shown.
@@ -82,7 +94,7 @@ export default function LevelProgressCard() {
           if (raw) {
             const cached = JSON.parse(raw) as PointsSummary;
             if (cached && typeof cached.level === "number" && !cancelled) {
-              setSummary({ ...cached, leveledUp: false });
+              setSummary({ ...cached, leveledUp: false, badgeUnlocked: null });
             }
           }
         } catch {
@@ -97,8 +109,11 @@ export default function LevelProgressCard() {
         if (cancelled) return;
         setSummary(payload);
         if (payload.leveledUp) setCelebrating(true);
+        if (payload.badgeUnlocked && claimBadgeAnnouncement(sessionUserId, payload.badgeUnlocked.id)) {
+          setUnlockedBadge(payload.badgeUnlocked);
+        }
         try {
-          window.localStorage.setItem(snapshotKey, JSON.stringify({ ...payload, leveledUp: false }));
+          window.localStorage.setItem(snapshotKey, JSON.stringify({ ...payload, leveledUp: false, badgeUnlocked: null }));
         } catch {
           // Storage full or blocked - fine, next load just waits again.
         }
@@ -117,9 +132,17 @@ export default function LevelProgressCard() {
   return (
     <>
       {/* Purple, same family as the Study Group card below. Compact enough
-          that all three stat cards share one row on a phone. */}
-      <div
-        className="flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#ddd6f3] px-2.5 py-2.5 shadow-sm sm:gap-2.5 sm:px-4 sm:py-3"
+          that all three stat cards share one row on a phone.
+
+          It is a link to /levels (2026-11-13). Until then it was a plain div:
+          it looked like the two cards beside it, which do things, and did
+          nothing when tapped. A real <a> rather than an onClick so it works
+          with touch, mouse, keyboard, middle-click and a screen reader with
+          no extra code, and so the browser's back button brings you here. */}
+      <Link
+        href="/levels"
+        aria-label={`Level ${summary.level}, ${summary.levelName}. ${summary.nextLevelName ? `${summary.pointsToNextLevel.toLocaleString()} XP to the next level` : "Top level"}. Open your levels and badges.`}
+        className="flex min-w-0 items-center gap-1.5 rounded-2xl border border-[#ddd6f3] px-2.5 py-2.5 shadow-sm outline-none transition focus-visible:ring-2 focus-visible:ring-[#6d5bd0] focus-visible:ring-offset-2 motion-safe:hover:-translate-y-0.5 motion-safe:active:scale-[0.98] sm:gap-2.5 sm:px-4 sm:py-3"
         style={{
           backgroundColor: "#f5f2ff",
           backgroundImage: "url(/home-cards/bg-group.jpg)",
@@ -138,7 +161,7 @@ export default function LevelProgressCard() {
             {summary.nextLevelName ? `${summary.pointsToNextLevel.toLocaleString()} to next` : "Top level!"}
           </p>
         </div>
-      </div>
+      </Link>
 
       {celebrating ? (
         <LevelUpCelebration
@@ -151,6 +174,10 @@ export default function LevelProgressCard() {
           onDismiss={() => void dismissCelebration()}
         />
       ) : null}
+
+      {/* One badge, quietly, and only once the level-up (if this same request
+          also raised the level) has been closed: never two things at once. */}
+      {unlockedBadge && !celebrating ? <BadgeUnlockedToast badge={unlockedBadge} onDismiss={dismissBadge} /> : null}
     </>
   );
 }
