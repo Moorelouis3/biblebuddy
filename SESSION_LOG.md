@@ -13681,3 +13681,16 @@ Done: Louis said yes to switching it on. Added AUTO_REPLY_DRAFTS=on to the Verce
 Not live yet: Auto Comment - tonight's 18:00 Berlin build. Until then the button still says it is turned off.
 Still open: confirm after the build that the button drafts on the live site (an unauthenticated POST to /api/feed/auto-comment should answer 401, not 503). The same switch also turns the older Auto Reply draft button for comments back on.
 Next: check it after 18:05.
+
+## 2026-11-13 (afternoon, Bible Lock announcement popup - preview only)
+Done: Built the Bible Lock announcement popup (`components/BibleLockPopup.tsx`)
+on the same shell as the games popup. Headline "Bible first. Apps after.",
+one feature card, three highlights, main button "Set up Bible Lock" to
+/bible-lock. It is switched off (`ENABLED = false`); nobody sees it. Preview:
+any app page with ?bb_preview=bible_lock. When switched on it only shows on an
+iPhone app that can run the lock and has not set it up.
+Not live yet: the code is on main but inert. Nothing for users until Louis
+approves the preview and the switch is flipped.
+Still open: Louis to approve wording and look. Unknown whether the App Store
+1.0 build carries the lock plugin - the popup checks the device, so it is safe
+either way, but if 1.0 lacks it nobody will see it until 1.1.

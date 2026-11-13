@@ -51,6 +51,7 @@ import {
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import BottomNav from "./BottomNav";
 import BeginningOfEverythingPopup from "./BeginningOfEverythingPopup";
+import BibleLockPopup from "./BibleLockPopup";
 import NewGamesPopup from "./NewGamesPopup";
 import WisdomBookPopup from "./WisdomBookPopup";
 import ProverbsLaunchPopup from "./ProverbsLaunchPopup";
@@ -3879,6 +3880,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           this takes a later one. */}
       {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
         <NewGamesPopup
+          userId={userId}
+          pathname={pathname}
+          blocked={Boolean(
+            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
+          )}
+        />
+      ) : null}
+
+      {/* Bible Lock announcement (2026-11-13). Switched off inside the
+          component until Louis approves the preview; when on, only an
+          iPhone that can run the lock and has not set it up sees it. */}
+      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
+        <BibleLockPopup
           userId={userId}
           pathname={pathname}
           blocked={Boolean(

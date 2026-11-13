@@ -513,7 +513,7 @@ export default function NewGamesPopup({
 // ───────────────────────── artwork ─────────────────────────
 
 /** Three short rays: the little "new!" mark beside the pill and the grid. */
-function Sparkle({ color, className }: { color: string; className?: string }) {
+export function Sparkle({ color, className }: { color: string; className?: string }) {
   return (
     <svg viewBox="0 0 20 20" className={className} aria-hidden="true">
       <path d="M3 13l4-2M6 5l3 4M13 3l-1 5" fill="none" stroke={color} strokeWidth="2.4" strokeLinecap="round" />
