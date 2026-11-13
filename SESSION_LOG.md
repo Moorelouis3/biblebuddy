@@ -13745,3 +13745,10 @@ when it does: 45 badge holders gain 53 XP on average and one person moves
 from Level 2 to 3. The "done, unlocks soon" wording on /levels was not seen
 on screen locally (stale dev server), only its data and code.
 Next: put the branch on main when Louis says so.
+
+## 2026-11-13 (night, levels and badges on main)
+Done: Louis said to put the levels page and badges on main. Commit 0a7fc0a4,
+untagged (step 3: a new feature, it waits).
+Not live yet: goes out with the Sat 10:05 Berlin build.
+Still open: after that build, check /levels and one badge unlock on the live
+site; "done, unlocks soon" wording was never seen on screen locally.
