@@ -227,4 +227,10 @@ check("the migration only adds: nothing a person has seen is removed", () => {
   assert.ok(!/(delete from|truncate|drop table|drop column)/i.test(migration));
 });
 
+check("outcome writes are actually sent (a bare `void supabase...` never is)", () => {
+  const code = coordinator.replace(//*[sS]*?*//g, "");
+  assert.ok(!/void supabases*.from/.test(code));
+  assert.ok((code.match(/send(/g) || []).length >= 4);
+});
+
 console.log(`\n${passed} checks passed.`);

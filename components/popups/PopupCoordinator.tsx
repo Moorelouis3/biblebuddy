@@ -49,6 +49,21 @@ import FeaturePopup, { type FeaturePopupCloseMethod } from "./FeaturePopup";
 /** Master switch. Off until Louis says go. */
 export const COORDINATOR_ENABLED = false;
 
+/**
+ * For testing on a developer's own machine while the switch above is off:
+ * on localhost only, with localStorage `bb:popup-coordinator-test` = "1".
+ * It can never be true on the live site, whatever is in storage.
+ */
+function testOverride(): boolean {
+  try {
+    const host = window.location.hostname;
+    const local = host === "localhost" || host === "127.0.0.1";
+    return local && window.localStorage.getItem("bb:popup-coordinator-test") === "1";
+  } catch {
+    return false;
+  }
+}
+
 /** How long the page must be still and clear before a popup may open. */
 const QUIET_MS = 2500;
 const TICK_MS = 1000;
@@ -59,6 +74,21 @@ const AFTER_CTA_MS = 15_000;
 const NEVER_ON = ["/start", "/events", "/login", "/signup", "/reset-password", "/admin", "/moderator-admin", "/onboarding", "/tips"];
 /** In the middle of a study day or a puzzle. */
 const MID_TASK = [/^\/devotionals\/[^/]+\/day\//, /^\/bible-study-games\/word-search\/[^/]+/, /^\/reading-plans\/[^/]+\/day/];
+
+/**
+ * Send a write and do not wait for it.
+ *
+ * A supabase query is lazy - nothing is sent until it is awaited or .then()
+ * is called - so `void supabase.from(...).update(...)` silently does nothing.
+ * The first test of this component (2026-11-13) closed a popup, saw no
+ * dismissal in the database, and was shown the same popup again.
+ */
+function send(query: PromiseLike<unknown>) {
+  void Promise.resolve(query).then(
+    () => {},
+    () => {},
+  );
+}
 
 const visitKey = (userId: string) => `bb:popup-visit:${userId}`;
 const usedKey = (userId: string) => `bb:popup-used:${userId}`;
@@ -216,7 +246,7 @@ async function load(userId: string): Promise<Loaded | null> {
     if (!popup.usedWhen.some((action) => usedActions.has(action))) continue;
     const now = new Date().toISOString();
     past.completedAt = now;
-    void supabase.from("user_popups_seen").update({ completed_at: now, updated_at: now }).eq("user_id", userId).eq("popup_id", popup.id);
+    send(supabase.from("user_popups_seen").update({ completed_at: now, updated_at: now }).eq("user_id", userId).eq("popup_id", popup.id));
     track("popup_feature_adopted", userId, popup.id);
   }
 
@@ -244,7 +274,7 @@ export default function PopupCoordinator({
   }, [pathname, blocked]);
 
   useEffect(() => {
-    if (!COORDINATOR_ENABLED) return;
+    if (!COORDINATOR_ENABLED && !testOverride()) return;
 
     let cancelled = false;
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -325,16 +355,18 @@ export default function PopupCoordinator({
     (method: FeaturePopupCloseMethod) => {
       if (!open) return;
       const now = new Date();
-      void supabase
-        .from("user_popups_seen")
-        .update({
-          dismissed_at: now.toISOString(),
-          dismiss_type: method,
-          next_eligible_at: nextEligibleAfterClose(now),
-          updated_at: now.toISOString(),
-        })
-        .eq("user_id", userId)
-        .eq("popup_id", open.popup.id);
+      send(
+          supabase
+            .from("user_popups_seen")
+          .update({
+            dismissed_at: now.toISOString(),
+            dismiss_type: method,
+            next_eligible_at: nextEligibleAfterClose(now),
+            updated_at: now.toISOString(),
+          })
+          .eq("user_id", userId)
+          .eq("popup_id", open.popup.id),
+        );
       track("popup_dismissed", userId, open.popup.id, { method });
       setOpen(null);
     },
@@ -344,7 +376,7 @@ export default function PopupCoordinator({
   const act = useCallback(() => {
     if (!open) return;
     const now = new Date().toISOString();
-    void supabase.from("user_popups_seen").update({ cta_clicked_at: now, updated_at: now }).eq("user_id", userId).eq("popup_id", open.popup.id);
+    send(supabase.from("user_popups_seen").update({ cta_clicked_at: now, updated_at: now }).eq("user_id", userId).eq("popup_id", open.popup.id));
     track("popup_cta_clicked", userId, open.popup.id, { in_section: open.inSection });
     const href = open.inSection ? null : open.popup.cta.href;
     setOpen(null);
