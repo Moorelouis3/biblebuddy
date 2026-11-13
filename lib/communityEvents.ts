@@ -224,6 +224,26 @@ export function getCommunityEventState(event: CommunityEvent, now = new Date()):
 }
 
 /**
+ * The /events sign-up page for a study that has been announced and has not
+ * begun, or null.
+ *
+ * This is the one place that decides where a tap on a not-yet-open community
+ * study goes (Louis, 2026-11-13: from the library or the dashboard, Abraham
+ * "goes to the sign up event page until December 1st. Then it goes into the
+ * regular page that every other one has"). It turns itself off on the start
+ * date, in Berlin time, with nothing to remember to remove.
+ *
+ * Deliberately looks at every community event rather than asking
+ * getActiveCommunityEvent: while one study is running, the one somebody can
+ * actually sign up for is the next one, and they are not the same study.
+ */
+export function upcomingEventHref(devotionalId: string, now = new Date()): string | null {
+  const event = COMMUNITY_EVENTS.find((e) => e.devotionalId === devotionalId);
+  if (!event) return null;
+  return getCommunityEventState(event, now).phase === "countdown" ? `/events/${event.slug}` : null;
+}
+
+/**
  * Which days may be opened. During the live window only days up to the
  * community day unlock - never future ones - and everything already unlocked
  * stays open so people can catch up. Outside the window, all days are open

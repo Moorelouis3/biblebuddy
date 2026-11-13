@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { cardTint } from "../../lib/cardTints";
 import { BIBLE_STUDY_GROUP_ID } from "../../lib/bibleStudiesCatalog";
-import { COMMUNITY_EVENTS, getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
+import { getActiveCommunityEvent, getCommunityEventState, upcomingEventHref } from "../../lib/communityEvents";
 import { BIBLE_YEAR_PLAN_HREF } from "../../lib/bibleYearProgress";
 import LoadFailedNotice from "../LoadFailedNotice";
 import {
@@ -174,20 +174,6 @@ function countdownParts(book: ShelfBook, now: number): { days: string; hours: st
   };
 }
 
-/**
- * The /events page for a study that has been announced and has not begun, or
- * null.
- *
- * Deliberately looks at every community event rather than asking
- * getActiveCommunityEvent: through October the active event is Proverbs, which
- * is running, while the one somebody can actually sign up for is the next one.
- * Both belong on the shelf and they are not the same study.
- */
-function upcomingEventHref(devotionalId: string): string | null {
-  const event = COMMUNITY_EVENTS.find((e) => e.devotionalId === devotionalId);
-  if (!event) return null;
-  return getCommunityEventState(event).phase === "countdown" ? `/events/${event.slug}` : null;
-}
 
 export default function YourBookshelf({
   userId,
@@ -300,7 +286,9 @@ export default function YourBookshelf({
           isComplete: p.isComplete,
           lastActivityAt: p.lastActivityAt,
           isCommunityToday: Boolean(event && s.id === event.devotionalId && communityDay),
-          signUpHref: started ? null : upcomingEventHref(s.id),
+          // Not gated on `started`: until the study opens, every tap on it
+          // goes to its sign-up page, whoever is tapping.
+          signUpHref: upcomingEventHref(s.id),
           startsLabel: availability(s, started).label,
           availableFrom: started ? null : s.available_from,
         };
@@ -598,8 +586,11 @@ export default function YourBookshelf({
                         becomes a button again on its own. */}
                     <button
                       type="button"
-                      disabled={notOutYet}
-                      onClick={() => router.push(book.href)}
+                      // A dated study with a sign-up page behind it is not a
+                      // placeholder any more: the cover goes where the button
+                      // below goes (Louis, 2026-11-13).
+                      disabled={notOutYet && !book.signUpHref}
+                      onClick={() => router.push(book.signUpHref || book.href)}
                       className="group relative block w-full text-left outline-none focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] disabled:cursor-default"
                     >
                       {/* One main study at a time (Louis, 2026-10-18:

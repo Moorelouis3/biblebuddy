@@ -17,6 +17,7 @@ import {
   type StudyProgress,
 } from "../../lib/libraryCatalog";
 import LoadFailedNotice from "../LoadFailedNotice";
+import { upcomingEventHref } from "../../lib/communityEvents";
 
 /**
  * The Library bookshelf - what the Plans tab used to be.
@@ -131,6 +132,14 @@ export default function LibraryPage({ embedded = false, onStudySelect }: Library
 
   /** A shelf tile: the study's own guide page. */
   const openStudy = (id: string) => {
+    // A community study that has not opened yet goes to its sign-up page, in
+    // both modes, until its start date. After that this is null and the tile
+    // opens the study like every other one.
+    const signUp = upcomingEventHref(id);
+    if (signUp) {
+      router.push(signUp);
+      return;
+    }
     // The Bible in One Year shelf tile is not a devotional row, so it has no
     // study to swap in - it keeps its own page in both modes.
     if (embedded && onStudySelect && id !== BIBLE_YEAR_SHELF_ID) {
@@ -142,6 +151,11 @@ export default function LibraryPage({ embedded = false, onStudySelect }: Library
 
   /** Continue Studying: straight to the day list, never to an intro. */
   const openStudyDays = (id: string) => {
+    const signUp = upcomingEventHref(id);
+    if (signUp) {
+      router.push(signUp);
+      return;
+    }
     if (embedded && onStudySelect) {
       onStudySelect(id);
       return;
