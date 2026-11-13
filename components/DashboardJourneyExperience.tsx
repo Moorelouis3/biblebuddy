@@ -943,7 +943,7 @@ function getDashboardStudyCover(title: string | null | undefined) {
   if (title === "The Creation of the World") return "/Day1cover.png";
   if (title === "The Fall of Man") return "/thefallofman.png";
   if (title === "The Flood of Noah") return "/Floodofnoah.png";
-  if (title === "The Obedience of Abraham") return "/TheobedienceofAbraham.png";
+  if (title === "The Obedience of Abraham") return "/obedienceofabraham28day.png";
   if (title === "The Promise Through Isaac") return "/ThePromiseThroughIsaac.png";
   if (title === "The Wrestling of Jacob") return "/TheWrestlingofJacob.png";
   if (title === "The Rise of Esther") return "/theriseofester.png";
@@ -1016,7 +1016,7 @@ function getBibleJourneyHandoff(title: string | null | undefined) {
     return {
       nextTitle: "The Obedience of Abraham",
       subtitle: "Genesis 9-25",
-      cover: "/TheobedienceofAbraham.png",
+      cover: "/obedienceofabraham28day.png",
       description:
         "Next, Genesis 9-25 follows the world after the flood, Abraham's call, waiting, covenant promises, family tension, testing, and the beginning of the covenant family.",
     };

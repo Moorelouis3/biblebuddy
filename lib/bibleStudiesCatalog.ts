@@ -51,7 +51,7 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
     title: "The Obedience of Abraham",
     subtitle: "Genesis 9-25",
     totalWeeks: 30,
-    image: "/TheobedienceofAbraham.png",
+    image: "/obedienceofabraham28day.png",
     description:
       "A 30-day Bible study through Genesis 9-25 with reading, notes, trivia, and reflection centered on obedience: the world after the flood, Abraham's call, waiting, covenant, testing, and legacy.",
   },

@@ -317,6 +317,42 @@ function renderBlocks(blocks, { prayer = false } = {}) {
   return out;
 }
 
+// ---------------------------------------------------------------- the Proverbs shape
+
+const OVERLAY_PATH = path.join(OUT_DIR, "format-overlay.json");
+const overlayLoaded = fs.existsSync(OVERLAY_PATH) && !process.argv.includes("--no-overlay");
+/** { "<day>": { subheads: [{ before: <block number>, title }], emojis: { "<bullet id>": "<emoji>" } } } */
+const overlay = overlayLoaded ? JSON.parse(fs.readFileSync(OVERLAY_PATH, "utf8")) : {};
+const DUMP_DIR = process.argv.includes("--dump") ? process.argv[process.argv.indexOf("--dump") + 1] : null;
+const dumps = [];
+
+/** About the length of a Proverbs paragraph: one sentence, or two or three short ones. */
+const SHORT_BLOCK = 120;
+
+/**
+ * Break one paragraph at sentence ends into Proverbs-length blocks.
+ *
+ * Only ever at the space between two sentences, so no word moves or changes.
+ * A piece is never left with an unclosed ** or *, which would print the
+ * asterisks: it is joined to the next piece instead.
+ */
+function shortBlocks(paragraph) {
+  const sentences = paragraph.split(/(?<=[.?!][”"’')\]*]*)\s+(?=[*“"‘'(\[]*[A-Z0-9])/);
+  const blocks = [];
+  let current = "";
+  const balanced = (text) => (text.match(/\*/g) || []).length % 2 === 0 && (text.match(/“/g) || []).length === (text.match(/”/g) || []).length;
+  for (const sentence of sentences) {
+    if (!current) current = sentence;
+    else if (!balanced(current) || current.length + 1 + sentence.length <= SHORT_BLOCK) current = `${current} ${sentence}`;
+    else {
+      blocks.push(current);
+      current = sentence;
+    }
+  }
+  if (current) blocks.push(current);
+  return blocks;
+}
+
 // ---------------------------------------------------------------- days
 
 const LABELS = [
@@ -518,24 +554,124 @@ for (const day of days) {
     } else actionParts.push(markdownOf(spans));
   }
 
-  const noticeItems = renderBlocks(joinAcrossPages(sectionBlocks.notice.filter((b) => b.bullet)));
+  const noticeItems = renderBlocks(joinAcrossPages(sectionBlocks.notice.filter((b) => b.bullet)))
+    .flatMap((list) => list.split("\n"))
+    .map((item) => item.replace(/^\* /, ""));
   const noticeAfter = renderBlocks(joinAcrossPages(sectionBlocks.notice.filter((b) => !b.bullet)));
 
+  // ---- the Proverbs shape
+  //
+  // The Wisdom of Proverbs is the template every study is read in, and its
+  // days are built a particular way: an opening in short paragraphs, one main
+  // heading with a Scripture card under it, five to seven sub-sections, lists
+  // whose items each carry an emoji, then What To Watch For, and the day's
+  // action and prayer. The book is set as a book: one heading a day and
+  // paragraphs three times as long. So, without touching a word:
+  //
+  //   - paragraphs are broken at sentence ends into the short blocks Proverbs
+  //     uses (SHORT_BLOCK below);
+  //   - What To Watch For moves after the teaching, where Proverbs has it;
+  //   - the pull quote sits under the main heading;
+  //   - sub-headings and list emoji come from data/abraham-book-days/
+  //     format-overlay.json. A sub-heading there must be a phrase that already
+  //     appears in the section it heads, so it says nothing the book does not.
+  const teachingRaw = render("teaching");
+  const mainHeading = teachingRaw[0]?.startsWith("# ") ? teachingRaw[0] : null;
+  if (!mainHeading) throw new Error(`Day ${day.day}: the teaching does not open with its heading`);
+  if (teachingRaw.slice(1).some((part) => part.startsWith("# "))) throw new Error(`Day ${day.day}: more than one teaching heading`);
+
+  // Teaching as numbered units: a paragraph, a quote card, or one list item.
+  const units = [];
+  for (const part of teachingRaw.slice(1)) {
+    if (part.startsWith("* ")) for (const item of part.split("\n")) units.push({ kind: "item", text: item.replace(/^\* /, "") });
+    else if (part.startsWith("> ")) units.push({ kind: "quote", text: part });
+    else units.push({ kind: "para", text: part });
+  }
+
+  const overlayDay = overlay[String(day.day)] || { subheads: [], emojis: {} };
+  const bulletIds = [];
+  noticeItems.forEach((text, i) => bulletIds.push({ id: `N${i + 1}`, text }));
+  units.forEach((unit, i) => {
+    if (unit.kind === "item") bulletIds.push({ id: `T${i + 1}`, text: unit.text });
+  });
+  const emojiFor = (id) => {
+    const emoji = overlayDay.emojis?.[id];
+    if (overlayLoaded && !emoji) throw new Error(`Day ${day.day}: no emoji in the overlay for list item ${id}`);
+    return emoji ? `${emoji} ` : "";
+  };
+
+  const subheadAt = new Map();
+  for (const sub of overlayDay.subheads || []) {
+    const at = Number(sub.before);
+    const unit = units[at - 1];
+    if (!unit) throw new Error(`Day ${day.day}: sub-heading "${sub.title}" points at block ${sub.before}, which does not exist`);
+    if (unit.kind === "item") throw new Error(`Day ${day.day}: sub-heading "${sub.title}" would split a list`);
+    if (at === 1) throw new Error(`Day ${day.day}: sub-heading "${sub.title}" sits directly under the main heading`);
+    if (/:$/.test(units[at - 2].text)) throw new Error(`Day ${day.day}: sub-heading "${sub.title}" separates a lead-in from what it introduces`);
+    if (subheadAt.has(at)) throw new Error(`Day ${day.day}: two sub-headings before block ${at}`);
+    if (sub.title.split(/\s+/).length > 7 || /[.:;!]$/.test(sub.title)) throw new Error(`Day ${day.day}: sub-heading "${sub.title}" is not a short title`);
+    subheadAt.set(at, sub.title);
+  }
+  // Each sub-heading must be words the section under it already uses.
+  const starts = [...subheadAt.keys()].sort((a, b) => a - b);
+  starts.forEach((at, i) => {
+    const end = starts[i + 1] ?? units.length + 1;
+    const sectionText = skeleton(units.slice(at - 1, end - 1).map((u) => u.text).join(" "));
+    const titleKey = skeleton(subheadAt.get(at));
+    if (!sectionText.includes(titleKey)) {
+      throw new Error(`Day ${day.day}: sub-heading "${subheadAt.get(at)}" is not a phrase from its own section (blocks ${at}-${end - 1})`);
+    }
+  });
+
+  const teachingParts = [];
+  let list = [];
+  const flushList = () => {
+    if (list.length) teachingParts.push(list.join("\n"));
+    list = [];
+  };
+  units.forEach((unit, i) => {
+    if (subheadAt.has(i + 1)) {
+      flushList();
+      teachingParts.push(`## ${subheadAt.get(i + 1)}`);
+    }
+    if (unit.kind === "item") list.push(`* ${emojiFor(`T${i + 1}`)}${unit.text}`);
+    else {
+      flushList();
+      if (unit.kind === "quote") teachingParts.push(unit.text);
+      else teachingParts.push(...shortBlocks(unit.text));
+    }
+  });
+  flushList();
+
+  dumps.push({
+    day: day.day,
+    title,
+    reading: readingPlain,
+    heading: mainHeading.slice(2),
+    units: units.map((unit, i) => ({ n: i + 1, kind: unit.kind, text: unit.text })),
+    bullets: bulletIds,
+  });
+
+  const short = (parts) => parts.flatMap((part) => (/^(\* |> |\d+\. |#)/.test(part) ? [part] : shortBlocks(part)));
+  const pullQuoteText = pullQuote.length ? `> ${pullQuote.join(" ")}${pullRef ? ` (${pullRef})` : ""}` : null;
+  // The pull quote repeats a verse the teaching quotes in full. Under the
+  // main heading it does what the card under a Proverbs heading does.
   const body = [
-    ...render("opening"),
+    ...short(render("opening")),
+    mainHeading,
+    ...(pullQuoteText ? [pullQuoteText] : []),
+    ...teachingParts,
     `## What To Watch For In ${chapterLabel}`,
-    ...render("before"),
-    ...(noticeItems.length ? ["**As you read, notice:**", ...noticeItems] : []),
+    ...short(render("before")),
+    ...(noticeItems.length ? ["**As you read, notice:**", noticeItems.map((item, i) => `* ${emojiFor(`N${i + 1}`)}${item}`).join("\n")] : []),
     ...noticeAfter,
-    ...(pullQuote.length ? [`> ${pullQuote.join(" ")}${pullRef ? ` (${pullRef})` : ""}`] : []),
-    ...render("teaching"),
     "## Reflection Questions",
     questions.map((q, i) => `${i + 1}. **${q.question}**${q.prompt.length ? ` ${q.prompt.join(" ")}` : ""}`).join("\n"),
     "## Today's One Thing",
     ...(actionTitle ? [`**${actionTitle}**`] : []),
-    ...actionParts,
+    ...short(actionParts),
     "## Today's Prayer",
-    ...render("prayer", { prayer: true }),
+    ...short(render("prayer", { prayer: true })),
   ].join("\n\n");
 
   // ---- the safeguard: same letters and digits, in the same order
@@ -546,6 +682,7 @@ for (const day of days) {
     ...questions.map((_, i) => `${i + 1}`),
     "Today's One Thing",
     "Today's Prayer",
+    ...[...subheadAt.values()],
   ];
   let produced = skeleton(body);
   for (const label of added) {
@@ -585,12 +722,30 @@ for (const day of days) {
   );
 }
 
+if (DUMP_DIR) {
+  fs.mkdirSync(DUMP_DIR, { recursive: true });
+  for (const dump of dumps) {
+    const lines = [
+      `DAY ${dump.day}: ${dump.title} (${dump.reading})`,
+      `MAIN HEADING: ${dump.heading}`,
+      "",
+      "TEACHING BLOCKS",
+      ...dump.units.map((u) => `[${u.n}] ${u.kind === "quote" ? "QUOTE CARD: " : u.kind === "item" ? `LIST ITEM (id T${u.n}): ` : ""}${u.text.replace(/^> /, "")}`),
+      "",
+      "LIST ITEMS THAT NEED AN EMOJI",
+      ...dump.bullets.map((b) => `${b.id}: ${b.text}`),
+      "",
+    ];
+    fs.writeFileSync(path.join(DUMP_DIR, `day-${String(dump.day).padStart(2, "0")}.txt`), lines.join("\n"));
+  }
+  console.log(`Dumped ${dumps.length} days to ${DUMP_DIR}`);
+}
 console.log(report.join("\n"));
 if (unknown.size) {
   console.error(`\n${unknown.size} lines in a style this script does not know:\n  ${[...unknown].slice(0, 20).join("\n  ")}`);
   process.exit(1);
 }
-console.log(`\n${files.length} days read. Every day's wording matches the book.`);
+console.log(`\n${files.length} days read. Every day's wording matches the book.` + (overlayLoaded ? " Sub-headings and list emoji applied from the overlay." : " No overlay: no sub-headings or list emoji."));
 if (WRITE) {
   fs.mkdirSync(OUT_DIR, { recursive: true });
   for (const { day, file } of files) fs.writeFileSync(path.join(OUT_DIR, `day-${String(day).padStart(2, "0")}.md`), file);
