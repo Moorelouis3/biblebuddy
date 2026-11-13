@@ -13592,3 +13592,9 @@ Done: Played Bible Memory signed in on localhost: picker (John 3, Psalms with 15
 Not live yet: Bible Memory - next scheduled build. The table is already live.
 Still open: the Daily Verse popup button was not clicked (same hook as the card); verse ranges from the reader, ASV/WEB in the picker and an add button on the bookmarks page are later work. Trivia chapter points can be re-earned by replaying with a different score (found, not changed).
 Next: Louis tries it after the build; community feed auto comments is the remaining weekend project.
+
+## 2026-11-13 (morning, Bug Fixer run)
+Done: Worked through the bug queue (25 open). Found that several "signup failed" crash reports were all one cause - people tapping a Bible Buddy link inside the Facebook/Instagram app, whose built-in browser silently blocks sign up (including Google/Apple sign in). Added a banner on the sign up page telling people in that browser to switch to Safari/Chrome first, committed and pushed untagged. It's waiting on Louis's approval at /admin/bugs because it touches the sign up page (the auto-escalation rule caught it, correctly - it's a safe, UI-only change). Closed out 15 other reports as one-off phone network blips (not real bugs) or duplicates of each other. Left one cluster (recurring timeouts loading the Plan page on Android browsers, 3 different days) open with a diagnosis for next run rather than guessing a fix.
+Not live yet: the sign up banner - needs Louis's approval first (not just the next deploy), then the next scheduled build.
+Still open: the Plan-page Android timeout pattern (new, diagnosed, not fixed); one old generic report from September with nothing to go on.
+Next: check back on the Plan-page timeout pattern if it keeps recurring; next Bug Fixer run picks up anything new.
