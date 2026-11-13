@@ -144,6 +144,9 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
     // Square crop of the cover between its subtitle and its byline, so no
     // lettering comes with it. Same approach as the other two.
     bannerArt: "/events/obedience-of-abraham-banner-art.webp",
+    // The approved evergreen banner (Louis, 2026-11-13): title and subtitle
+    // are in the artwork, no dates. 2000x667, shown whole at its own ratio.
+    heroBanner: "/events/obedience-of-abraham-hero.webp",
     bookUrl: null,
     printBooksPath: null,
     dateRangeLabel: "December 1–30",
