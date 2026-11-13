@@ -128,6 +128,14 @@ export function computePointsFromActivity(options: {
   groupLikesGiven: PointsSocialRow[];
   likesReceived: PointsSocialRow[];
   streakBonusPoints?: number;
+  /**
+   * XP from achievement badges the user has unlocked: badgeXpFor(...) in
+   * lib/achievementBadges.ts over their rows in user_badge_popups_seen. It is
+   * passed in rather than read here so this stays a pure function. Every
+   * caller that totals a user's points has to pass it, or that caller will
+   * report a lower total than the dashboard does.
+   */
+  badgeBonusPoints?: number;
 }): ComputedPoints {
   const seenUnique = new Set<string>();
   const dailyCounts = new Map<string, number>();
@@ -168,6 +176,7 @@ export function computePointsFromActivity(options: {
     groupLikeGivenCount,
     likesReceivedCount,
     streakBonusPoints: options.streakBonusPoints ?? 0,
+    manualBonusPoints: options.badgeBonusPoints ?? 0,
   });
 
   return {

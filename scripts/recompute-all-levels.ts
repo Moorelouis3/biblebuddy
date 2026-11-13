@@ -30,6 +30,7 @@ import { existsSync } from "fs";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { getLevelInfoWithLevelFloor, MAX_LEVEL } from "../lib/levelSystem";
 import { computePointsFromActivity, streakBonusPointsFor, type PointsActionRow } from "../lib/pointsEngine";
+import { badgeXpFor } from "../lib/achievementBadges";
 
 for (const path of [".env.local", ".env"]) {
   if (existsSync(path)) config({ path, override: false, quiet: true });
@@ -120,7 +121,7 @@ async function main(): Promise<number> {
   console.log(`${DRY ? "[DRY RUN - nothing will be written]" : "[LIVE - this writes to profile_stats]"}`);
   console.log("Loading activity tables...");
 
-  const [actions, groupPosts, groupLikes, profiles] = await Promise.all([
+  const [actions, groupPosts, groupLikes, profiles, badgeRows] = await Promise.all([
     fetchAll<PointsActionRow & { user_id: string | null }>((from, to) =>
       supabase
         .from("master_actions")
@@ -135,6 +136,11 @@ async function main(): Promise<number> {
       supabase.from("group_post_likes").select("user_id, created_at").range(from, to),
     ),
     fetchProfiles(supabase),
+    // Unlocked achievement badges pay XP (2026-11-13). Without this the
+    // recompute would total every badge holder lower than the app does.
+    fetchAll<{ user_id: string | null; badge_id: string }>((from, to) =>
+      supabase.from("user_badge_popups_seen").select("user_id, badge_id").range(from, to),
+    ),
   ]);
 
   console.log(
@@ -155,6 +161,7 @@ async function main(): Promise<number> {
   const actionsByUser = groupByUser(actions);
   const postsByUser = groupByUser(groupPosts);
   const likesByUser = groupByUser(groupLikes);
+  const badgesByUser = groupByUser(badgeRows);
 
   const profileByUser = new Map<string, ProfileRow>();
   for (const profile of profiles) profileByUser.set(profile.user_id, profile);
@@ -192,6 +199,7 @@ async function main(): Promise<number> {
       groupLikesGiven: likesByUser.get(userId) || [],
       likesReceived: [],
       streakBonusPoints: streakBonusPointsFor(profile?.current_streak),
+      badgeBonusPoints: badgeXpFor((badgesByUser.get(userId) || []).map((row) => row.badge_id)),
     });
 
     const flooredLevel = getLevelInfoWithLevelFloor(computed.totalPoints, storedLevel).level;
