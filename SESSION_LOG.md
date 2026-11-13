@@ -13773,3 +13773,21 @@ popups (games, lock, study, weekly, App Store/Android asks) still run on their
 own triggers and are not yet limited. Admin page for the switches not built.
 Next: test the coordinator on a test account, then move the existing popups
 under it one at a time, starting with the App Store and Android asks.
+
+## 2026-11-13 (night, Bible Lock: more ways to unlock)
+Time spent: about 1.5 hours
+Done: Audited Bible Lock. It already counted 19 completion events, not only
+chapters, but only a finished chapter gave the apps back at once; the rest
+waited until the app was reopened. On branch bible-lock-activities: one
+shared list (lib/bibleLockActivities.ts) and one call every completion
+handler makes; Bible Memory rounds, Word Search puzzles and the four People
+trivia pages now count; replayed rounds count; lock screens, settings, popup
+and the ways-out page name read / study / play. verify:bible-lock 21 checks,
+type-check clean, pages checked at phone width in the browser.
+Not live yet: all of it, on branch bible-lock-activities, not on main (Louis
+said not to deploy). No new app build needed: it is all website code.
+Still open: not tested on an iPhone with apps actually shielded. Louis to
+decide whether things that count on opening (chapter notes, keyword, person,
+place) should stop counting. There is no Scrabble game and no "required
+number" setting in the app; the brief assumed both.
+Next: Louis reviews the branch; then main.
