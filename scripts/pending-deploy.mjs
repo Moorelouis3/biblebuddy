@@ -17,17 +17,29 @@ import { execFileSync } from "node:child_process";
 
 const git = (...args) => execFileSync("git", args, { encoding: "utf8" }).trim();
 
-/** The two daily deploy times, as Berlin wall-clock hours (cron 0 8,16 UTC). */
-const DEPLOY_HOURS_UTC = [8, 16];
+/**
+ * The two daily deploy times, as Berlin wall-clock hours.
+ *
+ * The Deploy routine's schedule is `CRON_TZ=Europe/Berlin 0 10,18 * * *`, so
+ * the hours are fixed in Berlin time and move in UTC when the clocks change.
+ * This used to be a pair of UTC hours (8 and 16), which was right in summer
+ * and an hour early from the end of October: on 2026-11-13 it said 09:05 when
+ * the build was due at 10:00. Asking for the Berlin hour directly cannot
+ * drift that way.
+ */
+const DEPLOY_HOURS_BERLIN = [10, 18];
+
+const berlinHour = (date) =>
+  Number(new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Berlin", hour: "2-digit", hour12: false }).format(date)) % 24;
 
 function nextDeploy(now = new Date()) {
-  for (let addDays = 0; addDays < 2; addDays += 1) {
-    for (const hour of DEPLOY_HOURS_UTC) {
-      const at = new Date(
-        Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + addDays, hour, 5, 0),
-      );
-      if (at > now) return at;
-    }
+  // Walk forward hour by hour (in UTC, which has no gaps) and stop at the
+  // first one that is 10:00 or 18:00 on a Berlin clock. Five minutes are
+  // added because the routine needs a few to pull, tag and push.
+  const top = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours());
+  for (let hours = 0; hours <= 48; hours += 1) {
+    const at = new Date(top + hours * 3_600_000 + 5 * 60_000);
+    if (at > now && DEPLOY_HOURS_BERLIN.includes(berlinHour(at))) return at;
   }
   return null;
 }

@@ -13619,3 +13619,9 @@ Done: Louis asked for a popup telling everyone about Bible Memory and Bible Word
 Not live yet: the popup, with both games - next scheduled build.
 Still open: found in passing, not changed - the beginning_popup_* events are not in the landing-analytics allowlist, so The Beginning of Everything popup's impressions and clicks have been rejected and never recorded.
 Next: community feed auto comments.
+
+## 2026-11-13 (why nothing was live at 09:30)
+Done: Louis could not see the new games at 09:30. Two causes. (1) The Deploy routine runs at 10:00 and 18:00 Berlin; scripts/pending-deploy.mjs still used the summer UTC hours and said 09:05, and I repeated it. Fixed: the script now asks for the Berlin hour, so it cannot drift at a clock change. (2) Yesterday's 18:00 run never deployed: the routine's log shows it was rejected by the 5-hour usage limit one second in, so nothing has gone out since 12 Nov 10:03. Nothing was force-deployed.
+Not live yet: 28 commits including Bible Memory, Bible Word Search and the popup - the 10:00 build today, if the routine is not rate-limited again.
+Still open: if 10:05 passes with no "Deploy: publish" commit, the routine was limited again and the build needs publishing by hand.
+Next: check the 10:00 build landed.
