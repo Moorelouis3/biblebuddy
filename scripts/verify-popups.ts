@@ -208,7 +208,7 @@ check("the coordinator asks the database before it opens anything", () => {
 });
 
 check("a popup never writes study activity", () => {
-  assert.ok(!/from("master_actions")s*.(insert|upsert|update)/.test(coordinator));
+  assert.ok(!/from\("master_actions"\)\s*\.(insert|upsert|update)/.test(coordinator));
   const start = analytics.indexOf("const MASTER_ACTION_BY_EVENT");
   const mapped = analytics.slice(start, analytics.indexOf("};", start));
   for (const event of ["popup_shown", "popup_dismissed", "popup_cta_clicked", "popup_feature_adopted"]) {
@@ -228,9 +228,9 @@ check("the migration only adds: nothing a person has seen is removed", () => {
 });
 
 check("outcome writes are actually sent (a bare `void supabase...` never is)", () => {
-  const code = coordinator.replace(//*[sS]*?*//g, "");
-  assert.ok(!/void supabases*.from/.test(code));
-  assert.ok((code.match(/send(/g) || []).length >= 4);
+  const code = coordinator.replace(/\/\*[\s\S]*?\*\//g, "");
+  assert.ok(!/void supabase\s*\.from/.test(code));
+  assert.ok((code.match(/send\(/g) || []).length >= 4);
 });
 
 console.log(`\n${passed} checks passed.`);
