@@ -34,6 +34,16 @@ function instrumentedFetch(input: RequestInfo | URL, init?: RequestInit): Promis
       return response;
     },
     (error: unknown) => {
+      // A plain AbortError here is the browser cancelling the request on its
+      // own - the reader navigated away or closed the tab before it finished.
+      // That is not a bug, it is nearly every page load that gets abandoned
+      // early, and reporting it drowned real failures in noise (see
+      // docs/BUG_FIXER_AGENT.md, 2026-11-13). Our own 30s hang detector in
+      // lib/supabaseAuthLock.ts uses a different name, TimeoutError, precisely
+      // so a genuine hang still gets reported here.
+      if (error instanceof Error && error.name === "AbortError") {
+        throw error;
+      }
       const reason = error instanceof Error ? `${error.name}: ${error.message}` : "fetch failed";
       reportSupabaseFailure({ url, method, status: 0, reason });
       throw error;

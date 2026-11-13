@@ -131,7 +131,15 @@ export function fetchWithTimeout(
   timeoutMs: number = SUPABASE_REQUEST_TIMEOUT_MS,
 ): Promise<Response> {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  // A distinct name for *our* deadline firing, so it can never be mistaken for
+  // the browser cancelling the request on its own (page navigated away, tab
+  // closed) - that one keeps the default "AbortError: signal is aborted
+  // without reason" and is not a hang. See lib/supabaseClient.ts, which only
+  // reports the latter as a bug because of this difference.
+  const timer = setTimeout(
+    () => controller.abort(new DOMException("Bible Buddy request timed out", "TimeoutError")),
+    timeoutMs,
+  );
 
   const callerSignal = init?.signal;
   if (callerSignal) {
