@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-20-explained",
+    title: "Joshua 20 Explained: Six Cities, One Refuge From Revenge",
+    description:
+      "Joshua 20 explained verse by verse: the six cities of refuge, who qualified for safety, and what their release depended on.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-20-explained",
+    publishedAt: "2026-11-13",
+    readTime: "13 min read",
+    image: "/blog-banners/joshua-20-explained.jpg",
+    groupPost: {
+      title: "Joshua 20 Explained 📖",
+      content:
+        "Six cities. One job.\nKeep an accident from becoming a second death.\n\n📌 The slayer had to ask, then wait on someone else's death.\n\n📖 Three cities sat on each side of the Jordan.\n📖 A real murderer got no safety there.\n📖 Even a stranger got the same refuge.\n\nNew article on:\n🟢 what counted as killing someone **unawares**\n🟢 why freedom waited on the **high priest's** death\n🟢 how **Hebron** carried three different stories\n\nWhat guilt are you still carrying that needs somewhere safe to land? 🙏",
+    },
+  },
+  {
     slug: "joshua-19-explained",
     title: "Joshua 19 Explained: Six Tribes and the Last Lot of All",
     description:
