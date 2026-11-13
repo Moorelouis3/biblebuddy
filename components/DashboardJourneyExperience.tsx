@@ -974,7 +974,7 @@ function getDashboardStudySummary(title: string | null | undefined, totalDays: n
   if (title === "The Creation of the World") return "Study Genesis 1-2 through creation, Eden, image of God, purpose, rest, and relationship.";
   if (title === "The Fall of Man") return "Study Genesis 3-4 through temptation, shame, Cain and Abel, violence, exile, and hope.";
   if (title === "The Flood of Noah") return "Study Genesis 5-10 through death, corruption, judgment, Noah's obedience, covenant, and the nations.";
-  if (title === "The Obedience of Abraham") return "Walk Genesis 11-25 through Abraham's call, waiting, covenant, testing, and legacy.";
+  if (title === "The Obedience of Abraham") return "Walk Genesis 9-25 over 30 days: the world after the flood, Abraham's call, the waiting, the covenant, the testing, and his legacy.";
   if (title === "The Promise Through Isaac") return "Study Genesis 26-27 through Isaac, wells, favoritism, Jacob, Esau, deception, and blessing.";
   if (title === "The Wrestling of Jacob") return "Study Genesis 28-36 through Bethel, Rachel, Leah, Laban, wrestling, Esau, renewal, and Edom.";
   if (title === "The Rise of Esther") return "Follow Esther 1-10 through palace pressure, hidden identity, courage, providence, and reversal.";
@@ -1015,10 +1015,10 @@ function getBibleJourneyHandoff(title: string | null | undefined) {
   if (title === "The Flood of Noah") {
     return {
       nextTitle: "The Obedience of Abraham",
-      subtitle: "Genesis 11-25",
+      subtitle: "Genesis 9-25",
       cover: "/TheobedienceofAbraham.png",
       description:
-        "Next, Genesis 11-25 follows Abraham's call, waiting, covenant promises, family tension, testing, and the beginning of the covenant family.",
+        "Next, Genesis 9-25 follows the world after the flood, Abraham's call, waiting, covenant promises, family tension, testing, and the beginning of the covenant family.",
     };
   }
 

@@ -49,11 +49,11 @@ export const BIBLE_STUDY_SERIES_CATALOG: BibleStudySeriesCatalogItem[] = [
   {
     key: "obedience_of_abraham",
     title: "The Obedience of Abraham",
-    subtitle: "Genesis 11-25",
-    totalWeeks: 15,
+    subtitle: "Genesis 9-25",
+    totalWeeks: 30,
     image: "/TheobedienceofAbraham.png",
     description:
-      "A chapter-by-chapter Bible study through Genesis 11-25 with intro, reading, notes, trivia, and reflection centered on Abraham's call, waiting, covenant, testing, and legacy.",
+      "A 30-day Bible study through Genesis 9-25 with reading, notes, trivia, and reflection centered on obedience: the world after the flood, Abraham's call, waiting, covenant, testing, and legacy.",
   },
   {
     key: "promise_through_isaac",

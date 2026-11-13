@@ -120,39 +120,45 @@ export const COMMUNITY_EVENTS: CommunityEvent[] = [
      * it then and their rows were left in place, so reusing the slug is what
      * puts them back in a study with a page.
      *
-     * It is 15 days now, one chapter a day, Genesis 11 to 25, and all 15 are
-     * seeded. Dates and length come from the row: total_days 15,
-     * available_from 2026-12-01. The Beginning of Everything ends on 28
-     * November, so from the 29th this is the "next up" study on the banner
-     * and the home card, which is the intent.
+     * It is the book: 30 days on Genesis 9 to 25. This entry first went in
+     * the same morning as "15 days, Genesis 11 to 25", read off the study
+     * that was in the database, which was an old edition. Louis: "its not 15
+     * days ... u used an old bible study which is old and not up to date".
+     * The 30 days were put in from the print interior that afternoon
+     * (scripts/apply-abraham-book-days.ts) and this entry corrected to match.
+     * Length and dates come from the row: total_days 30, available_from
+     * 2026-12-01. The Beginning of Everything ends on 28 November, so from
+     * the 29th this is the "next up" study on the banner and the home card,
+     * which is the intent.
      *
      * No entry in DAILY_POSTS_BY_EVENT (lib/communityEventDailyPost.ts) yet,
-     * so the daily feed post skips this study until its 15 posts are written.
+     * so the daily feed post skips this study until its 30 posts are written.
      * The start-day email sends nothing until its campaign row is armed.
      */
     slug: "obedience-of-abraham",
     title: "The Obedience of Abraham",
-    subtitle: "A 15-Day Bible Buddy Community Devotional",
+    subtitle: "A 30-Day Bible Buddy Community Devotional",
     devotionalId: "2c7641c1-0280-4847-b36e-e89004a58534",
     startDate: "2026-12-01",
-    totalDays: 15,
+    totalDays: 30,
     // Square crop of the cover between its subtitle and its byline, so no
     // lettering comes with it. Same approach as the other two.
     bannerArt: "/events/obedience-of-abraham-banner-art.webp",
     bookUrl: null,
     printBooksPath: null,
-    dateRangeLabel: "December 1–15",
-    countdownSub: "A 15-day devotional · Starting December 1",
-    liveSub: "Day {day} of Genesis 11-25",
-    evergreenSub: "Follow Abraham from the call to the promise, one chapter at a time.",
+    dateRangeLabel: "December 1–30",
+    countdownSub: "A 30-day devotional · Starting December 1",
+    liveSub: "Day {day} of Genesis 9-25",
+    evergreenSub: "Follow Abraham from the call to the promise, one day at a time.",
     intro:
-      "Walk through Abraham's life with Bible Buddies around the world, one chapter of Genesis a day - the call he answered, the years he waited, the covenant God made under the stars, the mistakes he made on the way, the son who came at last, and the mountain where the Lord provided. A new day opens every day from the 1st to the 15th of December. Join whenever you like and study each day when it suits you, then meet the community in the daily discussion.",
+      "This is not a character study about Abraham. It is a study about obedience. Walk through Genesis 9 to 25 with Bible Buddies around the world - the world starting over after the flood, the call Abram answered, the years he waited, the covenant God made under the stars, the mistakes he made on the way, the son who came at last, and the mountain where the Lord provided. A new day opens every day from the 1st to the 30th of December. Join whenever you like and study each day when it suits you, then meet the community in the daily discussion.",
     howItWorks: [
-      "A new devotional unlocks each day. Read or listen, read that day's chapter of Genesis, take the trivia, and answer the daily discussion question—whenever you have time.",
-      "We read the same chapter each day, from Genesis 11 to Genesis 25, and meet in the discussion afterward.",
+      // Thirty days over seventeen chapters, so this study paces by passage.
+      "A new devotional unlocks each day. Read or listen, read that day's passage in Genesis, take the trivia, and answer the daily discussion question—whenever you have time.",
+      "We read the same passage each day, from Genesis 9 to Genesis 25, and meet in the discussion afterward.",
     ],
     joinedLine: "walk through Abraham's story together",
-    evergreenLine: "All 15 days are open. Go at your own pace, one chapter at a time.",
+    evergreenLine: "All 30 days are open. Go at your own pace, one day at a time.",
   },
 ];
 

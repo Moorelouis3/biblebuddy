@@ -52,7 +52,9 @@ function getPreviewDescription(title: string, fallback: string): string {
     "The Heart of David":
       "David's story moves from hidden fields to public battles, from worship to warfare, from caves to kingship, and from failure to repentance. He is brave, gifted, loved, hunted, crowned, broken, and restored across a life that never feels flat or simple. This Bible study follows the rise and fall of David with all the emotion that makes his life unforgettable. It shows why his heart mattered, where it drifted, and how it kept getting pulled back toward God. If you want a story full of courage, weakness, worship, and return, David's life carries all of it.",
     "The Obedience of Abraham":
-      "Abraham's story starts before the call, in a family already moving toward an unfinished road. This Bible study now follows Genesis 11-25 one full chapter at a time, so the intro, Bible reading, notes, trivia, and reflection all stay centered on the same passage. You will walk through the call to leave, the altars, the waiting, the covenant, the failures, Isaac's birth, the mountain of testing, Sarah's grief, and Abraham's final legacy. Abraham is not a flawless man, but he keeps moving when God speaks. His story is about trusting before you understand, waiting when the promise feels delayed, and placing even your deepest gifts back into God's hands.",
+      // From the book's own welcome page (30 days, Genesis 9-25). The text
+      // here until 2026-11-13 described the old 15-day, chapter-a-day study.
+      "This is not a character study about Abraham. This is a study about obedience.\n\nOver 30 days we walk through Genesis 9-25, from the world starting over after the flood, to the moment God called Abram to leave everything he knew, to some of the most difficult decisions he would ever have to make.\n\nYou will see incredible moments of faith, and obedience that does not always make sense from a human perspective. You will also see mistakes, doubts, impatience, and decisions that have consequences. Because Abraham was not perfect.\n\nObedience is not always easy. Faith does not mean you have all the answers. What matters is how we respond to God, and what happens when we choose His direction instead of our own.",
     "The Transforming of Paul":
       "Paul's story begins with violence, certainty, and religious zeal aimed in the wrong direction. Then Jesus meets him, blinds him, remakes him, and sends him into a life of preaching, suffering, prison, endurance, and deep spiritual fire. This Bible study follows the whole arc, from Saul the persecutor to Paul the apostle who finished his race still holding to Christ. You will walk through the road to Damascus, the missionary journeys, the beatings, the prison songs, the shipwrecks, and the final steady faith that marked his end. It is a story about how radically Jesus can change a life and keep changing it through every next season.",
     "The Courage of Daniel":
@@ -333,7 +335,7 @@ function getStudyScriptureRange(title: string | null | undefined) {
     "The Creation of the World": "Genesis 1 & 2",
     "The Fall of Man": "Genesis 3 & 4",
     "The Flood of Noah": "Genesis 5-10",
-    "The Obedience of Abraham": "Genesis 11-25",
+    "The Obedience of Abraham": "Genesis 9-25",
     "The Promise Through Isaac": "Genesis 26 & 27",
     "The Wrestling of Jacob": "Genesis 28-36",
     "The Testing of Joseph": "Genesis 37-50",
