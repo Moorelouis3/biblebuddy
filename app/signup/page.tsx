@@ -12,6 +12,7 @@ import { authErrorMessage } from "../../lib/authErrorMessage";
 import SignInWithAppleButton from "@/components/SignInWithAppleButton";
 import { markTermsAcceptancePending, recordTermsAcceptance } from "../../lib/termsAcceptance";
 import { signupSurface } from "@/lib/appDownload";
+import { isInAppBrowser } from "@/lib/installEnvironment";
 import { signInWithProviderNatively } from "../../lib/nativeAuth";
 import { ACTION_TYPE } from "../../lib/actionTypes";
 import { reportCloserSignup } from "../../lib/closerSignup";
@@ -155,6 +156,11 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [inAppBrowser, setInAppBrowser] = useState(false);
+
+  useEffect(() => {
+    setInAppBrowser(isInAppBrowser());
+  }, []);
 
   useEffect(() => {
     if (referrerUserId) {
@@ -408,6 +414,14 @@ export default function SignupPage() {
           <p className="mb-7 text-center text-sm font-semibold leading-6 text-[#526075]">
             Create your account and go straight to today&apos;s lesson.
           </p>
+
+          {inAppBrowser && (
+            <p className="mb-5 rounded-[14px] border border-[#F3C969] bg-[#FFF8E6] px-4 py-3 text-center text-[13px] font-semibold leading-5 text-[#7A5B00]">
+              This sign up page was opened inside another app and sign up may not work here.
+              Tap the ••• or share icon above and choose &quot;Open in Browser&quot; (Safari or
+              Chrome), then try again.
+            </p>
+          )}
 
           <div className="grid gap-2">
             <button
