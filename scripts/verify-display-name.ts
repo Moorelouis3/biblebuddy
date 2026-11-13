@@ -43,7 +43,11 @@ const read = (file: string) => {
 // 1. Nothing writes the placeholder onto a profile any more.
 const appShell = read(APP_SHELL);
 check(
-  !/saveSignupAttributionForUser\([^)]*"Bible Buddy User"/s.test(appShell),
+  // No dotAll `s` flag: this project's TS target predates es2018 and tsc
+  // rejects it (TS1501). It was never needed - [^)] already matches newlines,
+  // and it is what keeps this inside the call's own parentheses instead of
+  // running on to the next mention of the placeholder in a comment.
+  !/saveSignupAttributionForUser\([^)]*"Bible Buddy User"/.test(appShell),
   `${APP_SHELL}: the placeholder is being passed to saveSignupAttributionForUser again`,
 );
 check(
