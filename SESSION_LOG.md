@@ -13598,3 +13598,18 @@ Done: Worked through the bug queue (25 open). Found that several "signup failed"
 Not live yet: the sign up banner - needs Louis's approval first (not just the next deploy), then the next scheduled build.
 Still open: the Plan-page Android timeout pattern (new, diagnosed, not fixed); one old generic report from September with nothing to go on.
 Next: check back on the Plan-page timeout pattern if it keeps recurring; next Bug Fixer run picks up anything new.
+
+## 2026-11-13 (morning, Bible Word Search)
+Marching orders: no PLAN.md; Louis asked for Bible Word Search as a fourth game, phone first.
+Today: build it - 66 books, one puzzle each, saved progress, word details with Scripture.
+Done: Built, not shipped. lib/wordSearchGame.ts (seeded 12x12 generator, validation, snap-to-line selection), lib/wordSearchData.ts (66 lists, 760 words, each with a one-line explanation and a verse), book list and puzzle screens under /bible-study-games/word-search, a Games card, one XP action scored once per book. npm run verify:word-search, 10 checks: every word is in its cited King James verse, 2,640 grids valid with no fallback. Played signed out at 375px and 320px in the local preview: wobbly drag, tap first and last letter, keyboard, cancelled touch, wrong and repeated selections, completion, word details with the verse, Play again, the 66-book list.
+Not live yet: all of it, and it is NOT committed. It must not ship before supabase/migrations/20261113_word_search_progress.sql has been run, or a signed-in reader sees "your puzzle did not load".
+Still open: run the migration (needs Louis's go-ahead), then test saving and resume signed in, then commit untagged. The real iPhone app can only be checked by Louis after a build. Louis should read the 66 word lists; the explanations were read against their verses by me but not by a second person.
+Next: migration, signed-in test, commit.
+
+## 2026-11-13 (Bible Word Search migrated, tested signed in, committed)
+Time spent: about 3 hours.
+Done: Louis approved the migration and it ran on production: word_search_progress exists with 3 policies, the public key is refused, and both game actions are allowed in master_actions. Played Ruth signed in on localhost: found 3 words, reloaded to the same grid with 3 found, finished it, reopened to the completed state, opened a word's details and added its verse to Bible Memory, then Play again gave a new grid at 0 found while the book stayed Completed (1 of 66) in the list. Read the row back from the database, then removed the test progress row, its completion action and the test memory verse. Committed untagged.
+Not live yet: Bible Word Search - next scheduled build. The table is already live.
+Still open: Louis to try dragging in the real iPhone app after the build (edge drags vs the iOS back-swipe); Louis to read the 66 word lists in lib/wordSearchData.ts; "Open in the Bible" opens the chapter, not the verse.
+Next: community feed auto comments, the remaining weekend project.

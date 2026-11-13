@@ -66,6 +66,10 @@ export const ACTION_POINT_WEIGHTS: Partial<Record<ActionType, number>> = {
   // A finished Bible Memory practice session (2026-11-12). Repeatable, so it is
   // capped at two a day in lib/pointsEngine.ts rather than scored once.
   bible_memory_session_completed: 10,
+  // A finished Bible Word Search book (2026-11-13), the same as a trivia
+  // chapter. Scored once per book via UNIQUE_PER_LABEL in lib/pointsEngine.ts,
+  // so replaying a puzzle pays nothing.
+  word_search_book_completed: 15,
   feed_post_thought: 5,
   feed_post_prayer: 5,
   feed_post_prayer_request: 5,

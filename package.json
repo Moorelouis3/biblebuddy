@@ -56,6 +56,7 @@
     "verify:reader-notes": "tsx scripts/verify-reader-notes-load.ts",
     "verify:trivia": "tsx scripts/verify-trivia.ts",
     "verify:memory": "tsx scripts/verify-memory.ts",
+    "verify:word-search": "tsx scripts/verify-word-search.ts",
     "check:content-filter": "tsx scripts/check-content-filter.ts",
     "comments:seed": "tsx scripts/seed-comment-replies.ts",
     "comments:backtest": "tsx scripts/backtest-comment-replies.ts",
