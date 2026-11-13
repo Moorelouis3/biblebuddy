@@ -13708,3 +13708,8 @@ Done: Found the real cause behind a cluster of "request failed" reports on the P
 Not live yet: the fix - next scheduled build, and the one auth-area report needs Louis's OK first too.
 Still open: the rest of today's open queue (not touched this run, under the 5-bug cap); the September one-liner with nothing to go on.
 Next: next Bug Fixer run clears more of the backlog, now that the real cause is known.
+
+## 2026-11-13 (levels page and badges, NOT deployed)
+Done: Dashboard level card now links to a new /levels page (level, XP, progress, all 20 levels, how XP is earned, badges). Restored the 29 achievement badges from git history (they lived in app/dashboard/page.tsx until 0cb3c0d09, 2026-05-26) into lib/achievementBadges.ts, with GET /api/badges/summary awarding from real activity into the existing user_badge_popups_seen table (unique per user and badge; 219 old rows honoured). No XP rule, threshold or stored level changed; badges pay no XP. verify:badges 19 checks, verify:levels 56 checks, type-check clean. Tested locally with the test account: card opens the page, numbers agree, badges celebrated once, back works.
+Not live yet: ALL of it, on purpose. Louis said do not deploy. It is on branch levels-and-badges (commit ee266258, pushed), not on main, and was taken out of the working folder so no other session can sweep it into a deploy. To ship: merge that branch into main.
+Still open (Louis to decide): should badges pay XP again (they paid 10-20 each); should a new badge also pop on the dashboard, not only on /levels. No bulk backfill was run: a reader gets their badges recorded the first time they open the page.
