@@ -13630,3 +13630,8 @@ Next: check the 10:00 build landed.
 Done: Sign-up page for The Obedience of Abraham at /events/obedience-of-abraham, 1-15 December, 15 days, Genesis 11-25. One config entry in lib/communityEvents.ts plus square banner art cropped from the cover. Reuses the October slug, so the 3 people who joined then are enrolled again. Shelf card now shows Sign up. Checked locally: page logged out and signed in, join saves and reads back (test row removed).
 Not live yet: waits for the next scheduled build.
 Still open: cover art says "A 28-day study of Genesis 9-25" but the study is 15 days on Genesis 11-25; no daily feed posts written for Abraham; start-day email not armed; no public landing page or share image like Beginning has.
+
+## 2026-11-13 (Abraham share page)
+Done: Public share page at /devotionals/obedience-of-abraham with its own social preview image, built on a new config-driven component (components/library/StudyShareLandingPage.tsx) so the next study is a config, not a fourth hand-written copy. Uses the book cover (Louis asked for the cover, not text-free art). "Save my place" goes to the event sign-up until 1 December, then to the study.
+Not live yet: waits for the next scheduled build.
+Still open: the cover reads "28-day study of Genesis 9-25" beside page text saying 15 days, Genesis 11-25. Share page was viewed locally with the text-free art; the swap to the cover was not re-viewed in the browser.

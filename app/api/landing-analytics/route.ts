@@ -46,6 +46,11 @@ const ALLOWED_EVENTS = new Set([
   "beginning_page_view",
   "beginning_start_click",
   "beginning_book_click",
+  // Every study landing page built on components/library/
+  // StudyShareLandingPage.tsx (2026-11-13, first: The Obedience of Abraham).
+  // The study is in the metadata, so the next page needs no new entry here.
+  "study_landing_page_view",
+  "study_landing_start_click",
   // The companion book banner on the Genesis signup page (2026-10-28).
   // Metadata: {study, placement}.
   "genesis_book_amazon_click",
