@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-2-explained",
+    title: "Judges 2 Explained: The Generation That Knew Not the LORD",
+    description:
+      "Judges 2 explained verse by verse: the rebuke at Bochim, the generation that knew not the LORD, the cycle of sin and deliverance, and why God left the nations.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-2-explained",
+    publishedAt: "2026-11-14",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-2-explained.jpg",
+    groupPost: {
+      title: "Judges 2 Explained 📖",
+      content:
+        "A whole generation grows up and never sees what their parents saw.\n\n📌 Knowing the stories is not the same as knowing the LORD.\n\n📖 An angel rebukes Israel at a place renamed Bochim, weepers.\n📖 God raises up a judge every time, no clean confession required.\n📖 Each relapse goes further than the one before it.\n\nNew article on:\n🟢 why **Joshua's death** gets told a second time\n🟢 what it means that God **left the nations** on purpose\n🟢 the four stage cycle that runs the whole book of Judges\n\nWhat is one thing God has actually done in your own life that you could tell someone today? 🙏",
+    },
+  },
+  {
     slug: "judges-1-explained",
     title: "Judges 1 Explained: Adonibezek, Achsah, and Israel's Unfinished Conquest",
     description:
