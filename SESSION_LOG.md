@@ -13853,3 +13853,27 @@ Done: Louis: "I want it to say Download on Play Store, not talk about the 2
 steps". Android popup now reads "Download on the Play Store" with no mention
 of steps; it still opens /android, where the two steps are.
 Not live yet: untagged; next build Sat 14 Nov 18:05 Berlin.
+
+## 2026-11-14 (study guides standardized to the Proverbs format)
+Time spent: about 2.5 hours
+Done: Audited all 26 studies, every day (462). Root cause was the stored
+text, not the renderer: The Beginning of Everything and 21 Women came from
+print interiors as walls of text. Reformatted all 42 of their days to the
+Proverbs standard (short paragraphs, 243 new section headings, quote cards,
+emoji lists), wording unchanged and checked letter by letter; also repaired 63
+reflection questions cut in two, 21 doubled headings and lists dropped below
+their lead-in on 7 days. Proverbs, Tempting, Higher Hope and Abraham already
+passed and were left alone. Added npm run check:study-guides and
+docs/STUDY_GUIDE_FORMAT.md. Backup: data/study-guide-days-backup-2026-11-14.json.
+Not live yet: the reformatted days ARE live (database rows). The check, the
+doc and the seed files are on main, untagged, for the next scheduled build;
+none of them changes what a reader sees.
+Still open: Bible in One Year was audited but NOT changed. It has four cards
+(Audio Lesson, Study Notes, Trivia, Discussion) where a study guide has The
+Big Picture, Today's Reading, Today's Trivia, Discussion, and a day counts
+as done on the Audio Lesson alone. Louis to decide the mapping and the
+completion rule before it is rebuilt. The dashboard study and Bible in One
+Year screens draw blank on the local dev copy, so only the study day page
+was checked on a phone-size screen. Five unpublished Disciples of Jesus days
+have no headings.
+Next: Bible in One Year four-part day, once Louis picks the mapping.
