@@ -36,6 +36,10 @@ const ALLOWED_EVENTS = new Set([
   "popup_dismissed",
   "popup_cta_clicked",
   "popup_feature_adopted",
+  // A study sign-up popup (lib/popups/catalog.ts, `event`). A tap is
+  // popup_cta_clicked; this is the registration actually being saved.
+  "popup_registration_completed",
+  "popup_registration_failed",
   // New-feature usage (2026-11-13), sent by lib/featureEvents.ts and read by
   // lib/newFeaturesReport.ts for the Features tab on /admin/analytics.
   "bible_memory_opened",

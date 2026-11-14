@@ -278,3 +278,27 @@ than a second dashboard.
 4. Whether the App Store and Android asks come under the same limit. I
    recommend yes: they are the most intrusive popups we have.
 5. Go-ahead for the database change.
+
+## 9. Study sign-ups (added 2026-11-14)
+
+A sign-up for a community study that has not started is an ordinary catalog
+entry with one extra field, `event` (`PopupEventSignup` in
+`lib/popups/catalog.ts`). First one: `signup_obedience_of_abraham`.
+
+- **Same rules.** Kind `announcement`. One per visit, 20 hours, three a week,
+  never mid-task, close = two weeks then once more. It goes first among what
+  is eligible only because it has an end date, which is rule 5 for everything.
+- **Who never sees it.** Members of that study (`community_event_members`,
+  read once per page load; a failed read counts as "member").
+- **The button registers.** `joinCommunityEvent()`, the same call the study's
+  page makes, so nothing is written twice. An account still missing a name or
+  photo is sent to `/events/<slug>?join=1&src=popup`, where the account step
+  opens by itself.
+- **It ends itself.** `expiresAt` is the event's start (Berlin midnight) from
+  `lib/communityEvents.ts`. `popup_settings.expires_at` moves it, and
+  `enabled = false` stops it, without a build.
+- **Numbers.** `popup_shown`, `popup_dismissed`, `popup_cta_clicked` (a tap),
+  `popup_registration_completed` (a saved sign-up). Admin analytics, Users
+  tab, Community card.
+- **The next study** is a new catalog entry and a `popup_settings` row. No new
+  component.

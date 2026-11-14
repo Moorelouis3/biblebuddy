@@ -25,6 +25,7 @@
  */
 
 import type { ActionType } from "../actionTypes";
+import { communityEventStartsAt, getCommunityEvent } from "../communityEvents";
 
 export type PopupKind =
   /** Teaches a feature. Shown only in the section where it can be used. */
@@ -50,7 +51,31 @@ export type PopupPreview =
   | "trivia"
   | "verse_of_the_day"
   | "app_store"
-  | "android_beta";
+  | "android_beta"
+  /** A study sign-up: the study's own artwork instead of a drawn preview. */
+  | "event_signup";
+
+/**
+ * Makes a popup a sign-up for a community study (lib/communityEvents.ts).
+ *
+ * The button registers the person there and then, with the same
+ * joinCommunityEvent() the study's own page uses, instead of going somewhere.
+ * Members of the study never see it. Everything else - who is eligible, the
+ * one-per-visit and weekly limits, what closing it does - is the ordinary
+ * rules in decide.ts; this adds no rules of its own.
+ */
+export type PopupEventSignup = {
+  /** CommunityEvent.slug. */
+  slug: string;
+  /** Approved artwork, shown whole across the top. */
+  art: string;
+  /** The two lines under the title. */
+  facts: [string, string];
+  /** Emoji included, one per line. */
+  bullets: string[];
+  doneTitle: string;
+  doneLine: string;
+};
 
 export type PopupStep = { title: string; detail: string };
 
@@ -94,7 +119,11 @@ export type PopupDefinition = {
   minAccountAgeDays: number;
   /** ISO date. After this the popup is never chosen. null = no end. */
   expiresAt: string | null;
+  /** Set on a study sign-up. See PopupEventSignup. */
+  event?: PopupEventSignup;
 };
+
+const ABRAHAM = getCommunityEvent("obedience-of-abraham");
 
 export const POPUP_CATALOG: PopupDefinition[] = [
   {
@@ -279,6 +308,49 @@ export const POPUP_CATALOG: PopupDefinition[] = [
     minAccountAgeDays: 3,
     expiresAt: null,
   },
+  // Sign-up for the next live study (Louis, 2026-11-14). It ends by itself
+  // when the study starts: expiresAt is the event's own start, read from
+  // lib/communityEvents.ts, so moving the date there moves this with it.
+  // popup_settings.expires_at overrides it without a build. Because it has an
+  // end date, the ordinary rule in decide.ts puts it ahead of things that can
+  // wait - that is the whole of its "priority"; it has no special treatment.
+  {
+    id: "signup_obedience_of_abraham",
+    version: 1,
+    kind: "announcement",
+    priority: 100,
+    // Somebody on the study's own page has found it.
+    sections: ["/events"],
+    pill: "Coming next · Live Bible study",
+    headline: "The Obedience of Abraham",
+    headlineAccent: "Abraham",
+    description: "Join us as we study the life of Abraham and discover what it means to trust and obey God.",
+    cardTitle: "30-Day Bible Study",
+    cardLine: "Starts December 1st",
+    cardIcon: "📖",
+    preview: "event_signup",
+    steps: [],
+    cta: { label: "Sign Me Up", href: "/events/obedience-of-abraham" },
+    ctaInSection: "Sign Me Up",
+    footnote: "",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    expiresAt: ABRAHAM ? communityEventStartsAt(ABRAHAM) : "2026-11-30T23:00:00.000Z",
+    event: {
+      slug: "obedience-of-abraham",
+      art: ABRAHAM?.heroBanner || "/events/obedience-of-abraham-hero.webp",
+      facts: ["30-Day Bible Study", "Starts December 1st"],
+      bullets: [
+        "📖 Daily Bible study",
+        "🙏 Guided devotionals",
+        "🤔 Reflection questions",
+        "💬 Study together as a community",
+        "❤️ 100% FREE!",
+      ],
+      doneTitle: "You're signed up!",
+      doneLine: "The Obedience of Abraham starts December 1st. Day 1 opens that morning.",
+    },
+  },
   // The two store asks. Until 13 Nov 2026 these were AppStorePopup and
   // AndroidBetaPopup, which checked nothing, sat above every other popup and
   // reopened on every page load. The words are theirs; the limits are now
@@ -335,8 +407,8 @@ export const POPUP_CATALOG: PopupDefinition[] = [
   },
 ];
 
-/** What /tips lists: things worth reopening by hand. An ask is not one. */
-export const TIPS_CATALOG = POPUP_CATALOG.filter((popup) => popup.kind !== "ask");
+/** What /tips lists: things worth reopening by hand. An ask is not one, nor is a sign-up with a date. */
+export const TIPS_CATALOG = POPUP_CATALOG.filter((popup) => popup.kind !== "ask" && !popup.event);
 
 export function findPopup(id: string): PopupDefinition | null {
   return POPUP_CATALOG.find((popup) => popup.id === id) ?? null;

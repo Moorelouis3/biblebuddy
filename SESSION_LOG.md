@@ -13939,3 +13939,10 @@ Done: Phone screens can no longer be dragged sideways. Root cause: html and body
 Not live yet: this commit, next scheduled build.
 Still open: not tested on a real iPhone or Android phone, only phone-size emulation. Pinch zoom is still off app-wide (it already was); left alone.
 Next: check on a real phone after the build.
+
+## 2026-11-14 (night, Abraham sign-up popup)
+Time spent: ~1.5 hours
+Done: The Obedience of Abraham sign-up is a campaign in the popup coordinator (signup_obedience_of_abraham), not a new popup. Normal rules; members never see it; Sign Me Up registers with the study page's own join and shows "You're signed up!"; accounts missing a photo finish on the study page with the account step already open; ends by itself at 1 Dec 00:00 Berlin. popup_settings row is enabled (expires 2026-11-30T23:00Z). Admin analytics Community card shows total signed up, saw it, closed, tapped, registered, conversion. verify:popups 56 checks. Tested on the test account in the browser at phone size: shown, hand-off, direct sign-up, member skipped (feed popup took the slot), Maybe Later. Test data removed.
+Not live yet: this commit, next scheduled build. The switch is already on, so it starts showing with that build.
+Still open: not tested on a real iPhone; admin card not viewed on screen (query tested). The older Beginning of Everything invitation still runs on its own trigger until 29 Nov.
+Next: watch the first day's numbers on the Community card.

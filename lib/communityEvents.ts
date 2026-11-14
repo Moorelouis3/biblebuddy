@@ -224,6 +224,22 @@ export function getCommunityEventState(event: CommunityEvent, now = new Date()):
 }
 
 /**
+ * The instant an event's first day begins: midnight in Berlin on startDate,
+ * as an ISO string. What a pre-launch promotion uses as its end, so it stops
+ * by itself the moment the study opens (lib/popups/catalog.ts).
+ */
+export function communityEventStartsAt(event: CommunityEvent): string {
+  const [y, m, d] = event.startDate.split("-").map(Number);
+  // Berlin is UTC+1 or UTC+2, so its midnight is 23:00 or 22:00 UTC the day before.
+  for (const hour of [22, 23]) {
+    const candidate = new Date(Date.UTC(y, m - 1, d - 1, hour));
+    const berlin = berlinToday(candidate);
+    if (berlin.y === y && berlin.m === m && berlin.d === d) return candidate.toISOString();
+  }
+  return new Date(Date.UTC(y, m - 1, d)).toISOString();
+}
+
+/**
  * The /events sign-up page for a study that has been announced and has not
  * begun, or null.
  *

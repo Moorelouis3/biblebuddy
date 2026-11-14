@@ -26,7 +26,7 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { lockDocumentScroll } from "../../hooks/useDocumentScrollLock";
-import type { PopupDefinition, PopupPreview } from "../../lib/popups/catalog";
+import type { PopupDefinition, PopupEventSignup, PopupPreview } from "../../lib/popups/catalog";
 import { Sparkle } from "../NewGamesPopup";
 
 export type FeaturePopupCloseMethod =
@@ -119,19 +119,29 @@ const TONE_BY_PREVIEW: Record<PopupPreview, keyof typeof TONES> = {
   feed: "blue",
   app_store: "brand",
   android_beta: "brand",
+  event_signup: "brand",
 };
+
+/** Where a study sign-up has got to. Only a popup with `event` uses it. */
+export type FeaturePopupSignup = "idle" | "working" | "done";
 
 export default function FeaturePopup({
   popup,
   inSection,
   onClose,
   onCta,
+  signup = "idle",
+  onDone,
 }: {
   popup: PopupDefinition;
   /** The person is already where the feature lives: the button just closes. */
   inSection: boolean;
   onClose: (method: FeaturePopupCloseMethod) => void;
   onCta: () => void;
+  /** A study sign-up only: the button registers, then the popup says so. */
+  signup?: FeaturePopupSignup;
+  /** A study sign-up only: the button after it is done ("See the study page"). */
+  onDone?: () => void;
 }) {
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const titleId = `feature-popup-title-${popup.id}`;
@@ -231,6 +241,10 @@ export default function FeaturePopup({
         </button>
 
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+          {popup.event ? (
+            <EventSignupBody popup={popup} event={popup.event} tone={tone} titleId={titleId} done={signup === "done"} />
+          ) : (
+          <>
           <div
             className="px-5 pb-3.5 pt-5 sm:px-6"
             style={{ background: tone.wash }}
@@ -337,10 +351,27 @@ export default function FeaturePopup({
               </ol>
             ) : null}
           </div>
+          </>
+          )}
         </div>
 
         <div className="shrink-0 border-t border-[#efe9fb] bg-white px-4 pb-2 pt-3 sm:px-5">
-          {popup.cta.external ? (
+          {popup.event ? (
+            <button
+              type="button"
+              onClick={signup === "done" ? onDone : onCta}
+              disabled={signup === "working"}
+              className={`${MAIN_BUTTON} disabled:opacity-70`}
+              style={{
+                background: tone.button,
+                boxShadow: tone.shadow,
+                ["--tw-ring-color" as string]: tone.ring,
+              }}
+            >
+              {signup === "done" ? "See the study page" : signup === "working" ? "Signing you up…" : popup.cta.label}
+              {signup === "done" ? <span aria-hidden="true">→</span> : null}
+            </button>
+          ) : popup.cta.external ? (
             /* A real link, not a button that navigates: leaving for the App
                Store has to be the person's own tap or the phone may not
                hand it over to the store. */
@@ -394,7 +425,7 @@ export default function FeaturePopup({
               onClick={() => onClose("later")}
               className="min-h-[44px] rounded-xl px-4 text-[15px] font-bold text-[#7b8094] outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
             >
-              Maybe later
+              {signup === "done" ? "Close" : popup.event ? "Maybe Later" : "Maybe later"}
             </button>
             {popup.offerNeverAgain ? (
               <>
@@ -415,6 +446,87 @@ export default function FeaturePopup({
       </div>
     </div>,
     document.body,
+  );
+}
+
+// ───────────────────────── a study sign-up ─────────────────────────
+
+/**
+ * The middle of a study sign-up (a catalog entry with `event`): the study's
+ * approved banner whole across the top, then the words. Same shell, close
+ * button, focus trap and footer as every other popup.
+ */
+function EventSignupBody({
+  popup,
+  event,
+  tone,
+  titleId,
+  done,
+}: {
+  popup: PopupDefinition;
+  event: PopupEventSignup;
+  tone: (typeof TONES)[keyof typeof TONES];
+  titleId: string;
+  done: boolean;
+}) {
+  return (
+    <>
+      {/* The title is in the artwork too, so the picture is decoration to a
+          screen reader: the heading below says it. Width and height are the
+          file's own, so the card does not jump when it loads. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={event.art} alt="" width={2000} height={667} className="block h-auto w-full" />
+      <div className="px-5 pb-4 pt-4 text-center sm:px-6" style={{ background: tone.wash }}>
+        {done ? (
+          <div role="status">
+            <p className="text-[34px] leading-none" aria-hidden="true">
+              🎉
+            </p>
+            <h2 id={titleId} className="mt-2 text-[26px] font-black leading-[1.1] tracking-tight text-[#14122b]">
+              {event.doneTitle}
+            </h2>
+            <p id={`${titleId}-sub`} className="mt-2.5 text-[16px] font-semibold leading-snug text-[#4b5068]">
+              {event.doneLine}
+            </p>
+          </div>
+        ) : (
+          <>
+            <p
+              className="inline-block rounded-full px-3.5 py-1.5 text-[11px] font-black uppercase tracking-[0.12em]"
+              style={{ background: tone.pillBg, color: tone.pillText }}
+            >
+              {popup.pill}
+            </p>
+            <h2
+              id={titleId}
+              className="mt-3 text-[26px] font-black uppercase leading-[1.1] tracking-tight text-[#14122b] sm:text-[30px]"
+            >
+              {popup.headline}
+            </h2>
+            <p className="mt-2 text-[13px] font-black uppercase leading-relaxed tracking-[0.14em]" style={{ color: tone.accent }}>
+              {event.facts[0]}
+              <br />
+              {event.facts[1]}
+            </p>
+            <p id={`${titleId}-sub`} className="mt-3 text-[16px] font-semibold leading-snug text-[#4b5068]">
+              {popup.description}
+            </p>
+          </>
+        )}
+      </div>
+      {done ? null : (
+        <ul
+          className="mx-4 mb-4 flex flex-col gap-2 rounded-[22px] border px-4 py-3.5 sm:mx-5"
+          style={{ background: tone.card, borderColor: tone.border }}
+        >
+          {event.bullets.map((bullet) => (
+            <li key={bullet} className="text-[15px] font-bold leading-snug text-[#14122b]">
+              {bullet}
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 }
 
@@ -585,6 +697,9 @@ function Preview({ kind }: { kind: PopupPreview }) {
           </div>
         </div>
       );
+    // A study sign-up shows the study's own artwork (EventSignupBody).
+    case "event_signup":
+      return null;
     case "app_store":
     case "android_beta":
       return (

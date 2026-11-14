@@ -34,6 +34,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { checkFullAccount } from "../../lib/accountGate";
 import { BETA_OPEN } from "../../lib/androidBeta";
 import {
   readStoreAsk,
@@ -44,6 +45,7 @@ import {
   snoozeAppStoreAsk,
   snoozePlayStoreAsk,
 } from "../../lib/appStoreAsk";
+import { joinCommunityEvent } from "../../lib/communityEventJoin";
 import { isAndroid, isIOS, isStandalone } from "../../lib/installEnvironment";
 import { isNativeApp } from "../../lib/nativeApp";
 import { inSection, POPUP_CATALOG, type PopupDefinition, type PopupDevice } from "../../lib/popups/catalog";
@@ -57,7 +59,7 @@ import {
   type PopupSettings,
 } from "../../lib/popups/decide";
 import { supabase } from "../../lib/supabaseClient";
-import FeaturePopup, { type FeaturePopupCloseMethod } from "./FeaturePopup";
+import FeaturePopup, { type FeaturePopupCloseMethod, type FeaturePopupSignup } from "./FeaturePopup";
 
 /** How long the page must be still and clear before a popup may open. */
 const QUIET_MS = 2500;
@@ -175,7 +177,10 @@ const STORE_ASK: Record<string, { store: "ios" | "android"; snooze: () => void; 
   ask_android_beta: { store: "android", snooze: snoozePlayStoreAsk, silence: silencePlayStoreAsk, tap: recordPlayStoreTap },
 };
 
-type Loaded = Pick<DecideInput, "settings" | "history" | "usedActions" | "accountCreatedAt" | "lastAutomaticAt" | "automaticInLast7Days">;
+type Loaded = Pick<
+  DecideInput,
+  "settings" | "history" | "usedActions" | "joinedEvents" | "accountCreatedAt" | "lastAutomaticAt" | "automaticInLast7Days"
+>;
 
 const HISTORY_COLUMNS =
   "popup_id, content_version, display_count, last_shown_at, dismissed_at, cta_clicked_at, completed_at, never_again, next_eligible_at, automatic";
@@ -301,6 +306,17 @@ async function load(userId: string): Promise<Loaded | null> {
     window.localStorage.setItem(usedKey(userId), JSON.stringify(Array.from(usedActions)));
   } catch {}
 
+  // Study sign-ups: which of those studies this person is already in. One
+  // small read, and only while such a popup is switched on.
+  const eventSlugs = live.flatMap((popup) => (popup.event ? [popup.event.slug] : []));
+  const joinedEvents = new Set<string>();
+  if (eventSlugs.length) {
+    const { data, error } = await supabase.from("community_event_members").select("event_slug").eq("user_id", userId).in("event_slug", eventSlugs);
+    // Unsure counts as signed up: never ask a member to join their own study.
+    if (error) eventSlugs.forEach((slug) => joinedEvents.add(slug));
+    else for (const row of data || []) joinedEvents.add(row.event_slug as string);
+  }
+
   // Seen recently and now using the feature: that is the popup having worked.
   const recently = Date.now() - 7 * 86_400_000;
   for (const popup of live) {
@@ -313,7 +329,7 @@ async function load(userId: string): Promise<Loaded | null> {
     track("popup_feature_adopted", userId, popup.id);
   }
 
-  return { settings, history, usedActions, accountCreatedAt, lastAutomaticAt, automaticInLast7Days };
+  return { settings, history, usedActions, joinedEvents, accountCreatedAt, lastAutomaticAt, automaticInLast7Days };
 }
 
 export default function PopupCoordinator({
@@ -328,6 +344,8 @@ export default function PopupCoordinator({
 }) {
   const router = useRouter();
   const [open, setOpen] = useState<{ popup: PopupDefinition; inSection: boolean } | null>(null);
+  /** A study sign-up only: idle until the button, then working, then done. */
+  const [signup, setSignup] = useState<FeaturePopupSignup>("idle");
   const pathRef = useRef(pathname);
   const blockedRef = useRef(blocked);
   /** Kept ready so a tap that leaves the site has nothing left to wait for. */
@@ -423,6 +441,14 @@ export default function PopupCoordinator({
   const close = useCallback(
     (method: FeaturePopupCloseMethod) => {
       if (!open) return;
+      // Signed up, then closed: that is not a dismissal, and it is already
+      // written down as done.
+      if (signup === "done") {
+        setOpen(null);
+        return;
+      }
+      // Mid sign-up: let it finish rather than record a "no" beside a "yes".
+      if (signup === "working") return;
       const now = new Date();
       send(
           supabase
@@ -442,15 +468,59 @@ export default function PopupCoordinator({
       track("popup_dismissed", userId, open.popup.id, { method });
       setOpen(null);
     },
-    [open, userId],
+    [open, signup, userId],
   );
 
   const act = useCallback(() => {
     if (!open) return;
+    if (open.popup.event && signup !== "idle") return;
     const now = new Date().toISOString();
     const patch = { cta_clicked_at: now, updated_at: now };
     STORE_ASK[open.popup.id]?.tap();
     track("popup_cta_clicked", userId, open.popup.id, { in_section: open.inSection });
+
+    // A study sign-up: the button registers the person, here, with the same
+    // joinCommunityEvent() the study's page uses (it writes nothing twice).
+    // The tap and the registration are separate events on purpose: a tap that
+    // did not end in a saved row must not be counted as a sign-up.
+    if (open.popup.event) {
+      const popupId = open.popup.id;
+      const slug = open.popup.event.slug;
+      setSignup("working");
+      send(supabase.from("user_popups_seen").update(patch).eq("user_id", userId).eq("popup_id", popupId));
+      const finishOnPage = (query: string) => {
+        try {
+          window.sessionStorage.setItem(CTA_KEY, String(Date.now()));
+        } catch {}
+        setOpen(null);
+        setSignup("idle");
+        router.push(`/events/${slug}?${query}`);
+      };
+      void (async () => {
+        // Joining a study needs a name, an email and a photo, and the study's
+        // page is where that step lives. Somebody missing one is taken there
+        // with the sign-up already under way, so the intent is not lost.
+        const account = await checkFullAccount();
+        if (!account.ok) {
+          finishOnPage("join=1&src=popup");
+          return;
+        }
+        const result = await joinCommunityEvent(userId, slug, { source: "popup" });
+        if (!result.ok) {
+          track("popup_registration_failed", userId, popupId, { event: slug, error: result.error });
+          finishOnPage("src=popup");
+          return;
+        }
+        const done = new Date().toISOString();
+        send(supabase.from("user_popups_seen").update({ completed_at: done, updated_at: done }).eq("user_id", userId).eq("popup_id", popupId));
+        if (!result.alreadyJoined) {
+          track("popup_registration_completed", userId, popupId, { event: slug });
+          track("community_event_joined", userId, popupId, { event: slug, via: "popup" });
+        }
+        setSignup("done");
+      })();
+      return;
+    }
 
     if (open.popup.cta.external) {
       // The link itself does the navigating (it is a real <a>). The page is
@@ -483,8 +553,29 @@ export default function PopupCoordinator({
       } catch {}
       router.push(href);
     }
-  }, [open, router, userId]);
+  }, [open, router, signup, userId]);
+
+  /** "See the study page", after a sign-up. */
+  const seeStudy = useCallback(() => {
+    const slug = open?.popup.event?.slug;
+    setOpen(null);
+    if (!slug) return;
+    try {
+      window.sessionStorage.setItem(CTA_KEY, String(Date.now()));
+    } catch {}
+    router.push(`/events/${slug}`);
+  }, [open, router]);
 
   if (!open) return null;
-  return <FeaturePopup key={open.popup.id} popup={open.popup} inSection={open.inSection} onClose={close} onCta={act} />;
+  return (
+    <FeaturePopup
+      key={open.popup.id}
+      popup={open.popup}
+      inSection={open.inSection}
+      onClose={close}
+      onCta={act}
+      signup={signup}
+      onDone={seeStudy}
+    />
+  );
 }

@@ -10,6 +10,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { ACTION_TYPE } from "../lib/actionTypes";
+import { COMMUNITY_EVENTS, communityEventStartsAt, getCommunityEvent, getCommunityEventState } from "../lib/communityEvents";
 import { POPUP_CATALOG, TIPS_CATALOG } from "../lib/popups/catalog";
 import {
   decide,
@@ -36,6 +37,10 @@ const base = (over: Partial<DecideInput> = {}): DecideInput => ({
   history: {},
   devices: new Set(),
   usedActions: new Set<string>(),
+  // Already in the study that is recruiting, so the checks written before the
+  // sign-up popup existed still describe what they always did. The sign-up's
+  // own checks are at the end and hand in an empty set.
+  joinedEvents: new Set(["obedience-of-abraham"]),
   accountCreatedAt: daysAgo(30),
   busy: null,
   shownThisVisit: false,
@@ -308,6 +313,149 @@ check("the admin App tab counts the coordinator's store-popup taps", () => {
   assert.ok(dashboard.includes('popupTapsIn("ask_app_store", r)') && dashboard.includes('popupTapsIn("ask_android_beta", r)'));
   // and the old action types are still read, so earlier weeks keep their numbers
   assert.ok(dashboard.includes('"appstore_popup_clicked"') && dashboard.includes('"android_beta_popup_clicked"'));
+});
+
+console.log("Study sign-up (The Obedience of Abraham)");
+
+const SIGNUP_ID = "signup_obedience_of_abraham";
+const signupPopup = POPUP_CATALOG.find((popup) => popup.id === SIGNUP_ID)!;
+const notMember = (over: Partial<DecideInput> = {}) => base({ joinedEvents: new Set<string>(), ...over });
+
+check("the sign-up is in the one list, as an ordinary announcement", () => {
+  assert.ok(signupPopup && signupPopup.event);
+  assert.equal(signupPopup.kind, "announcement");
+  assert.equal(signupPopup.offerNeverAgain, undefined);
+  assert.ok(!TIPS_CATALOG.some((popup) => popup.event), "a dated sign-up is not a tip");
+});
+
+check("the event record is what the popup says: 1 December 2026, 30 days", () => {
+  const event = getCommunityEvent(signupPopup.event!.slug);
+  assert.ok(event);
+  assert.equal(event!.startDate, "2026-12-01");
+  assert.equal(event!.totalDays, 30);
+  assert.equal(signupPopup.cta.href, "/events/" + event!.slug);
+  // The artwork is the approved banner on the event, and the file exists.
+  assert.equal(signupPopup.event!.art, event!.heroBanner);
+  assert.ok(readFileSync("public" + signupPopup.event!.art).length > 10_000);
+});
+
+check("the words are the approved ones", () => {
+  assert.equal(signupPopup.pill.toUpperCase(), "COMING NEXT · LIVE BIBLE STUDY");
+  assert.equal(signupPopup.headline.toUpperCase(), "THE OBEDIENCE OF ABRAHAM");
+  assert.deepEqual(signupPopup.event!.facts.map((line) => line.toUpperCase()), ["30-DAY BIBLE STUDY", "STARTS DECEMBER 1ST"]);
+  assert.equal(signupPopup.description, "Join us as we study the life of Abraham and discover what it means to trust and obey God.");
+  assert.deepEqual(signupPopup.event!.bullets, [
+    "📖 Daily Bible study",
+    "🙏 Guided devotionals",
+    "🤔 Reflection questions",
+    "💬 Study together as a community",
+    "❤️ 100% FREE!",
+  ]);
+  assert.equal(signupPopup.cta.label, "Sign Me Up");
+  const shell = readFileSync("components/popups/FeaturePopup.tsx", "utf8");
+  assert.ok(shell.includes('"Maybe Later"'));
+});
+
+check("somebody not signed up is asked, on the dashboard", () => {
+  assert.equal(decide(notMember()).chosen?.id, SIGNUP_ID);
+});
+
+check("somebody already signed up is never asked", () => {
+  const result = decide(base());
+  assert.notEqual(result.chosen?.id, SIGNUP_ID);
+  assert.equal(result.verdicts.find((verdict) => verdict.id === SIGNUP_ID)?.reason, "already signed up");
+});
+
+check("it takes its turn: same visit, 20-hour and weekly limits as every popup", () => {
+  assert.equal(decide(notMember({ shownThisVisit: true })).chosen, null);
+  assert.equal(decide(notMember({ lastAutomaticAt: hoursAgo(HOURS_BETWEEN_POPUPS - 1) })).chosen, null);
+  assert.equal(decide(notMember({ automaticInLast7Days: MAX_POPUPS_PER_WEEK })).chosen, null);
+});
+
+check("it never interrupts: busy means nothing", () => {
+  assert.equal(decide(notMember({ busy: "in the middle of a task" })).chosen, null);
+});
+
+check("with other popups eligible, the one with a date goes first, and the others get later visits", () => {
+  const first = decide(notMember({ pathname: "/bible-trivia" }));
+  assert.equal(first.chosen?.id, SIGNUP_ID);
+  assert.equal(first.verdicts.find((verdict) => verdict.id === "tutorial_trivia")?.eligible, true);
+  // Next visit, a day later, sign-up closed: the tutorial has its turn.
+  const next = decide(notMember({ pathname: "/bible-trivia", history: { [SIGNUP_ID]: seen({ dismissedAt: daysAgo(1), nextEligibleAt: nextEligibleAfterClose(new Date(daysAgo(1))) }) } }));
+  assert.equal(next.chosen?.id, "tutorial_trivia");
+});
+
+check("Maybe Later: two weeks, one more time, then never", () => {
+  const closed = seen({ dismissedAt: daysAgo(1), nextEligibleAt: nextEligibleAfterClose(new Date(daysAgo(1))) });
+  assert.notEqual(decide(notMember({ history: { [SIGNUP_ID]: closed } })).chosen?.id, SIGNUP_ID);
+  assert.notEqual(decide(notMember({ history: { [SIGNUP_ID]: seen({ displayCount: MAX_AUTOMATIC_DISPLAYS }) } })).chosen?.id, SIGNUP_ID);
+});
+
+check("tapping Sign Me Up, or finishing the sign-up, ends it", () => {
+  assert.notEqual(decide(notMember({ history: { [SIGNUP_ID]: seen({ ctaClickedAt: daysAgo(1) }) } })).chosen?.id, SIGNUP_ID);
+  assert.notEqual(decide(notMember({ history: { [SIGNUP_ID]: seen({ completedAt: daysAgo(1) }) } })).chosen?.id, SIGNUP_ID);
+});
+
+check("it is not shown on the study's own page", () => {
+  assert.notEqual(decide(notMember({ pathname: "/events/obedience-of-abraham" })).chosen?.id, SIGNUP_ID);
+});
+
+check("it stops by itself when the study starts, in Berlin time", () => {
+  const event = getCommunityEvent("obedience-of-abraham")!;
+  assert.equal(signupPopup.expiresAt, communityEventStartsAt(event));
+  assert.equal(signupPopup.expiresAt, "2026-11-30T23:00:00.000Z");
+  const before = new Date("2026-11-30T22:59:00Z");
+  const after = new Date("2026-11-30T23:00:00Z");
+  assert.equal(getCommunityEventState(event, before).phase, "countdown");
+  assert.equal(getCommunityEventState(event, after).phase, "live");
+  assert.equal(decide(notMember({ now: before })).chosen?.id, SIGNUP_ID);
+  assert.notEqual(decide(notMember({ now: after })).chosen?.id, SIGNUP_ID);
+  assert.equal(decide(notMember({ now: after })).verdicts.find((verdict) => verdict.id === SIGNUP_ID)?.reason, "expired");
+  // Every event's start is a Berlin midnight, summer or winter.
+  for (const each of COMMUNITY_EVENTS) assert.equal(getCommunityEventState(each, new Date(communityEventStartsAt(each))).phase, "live", each.slug);
+});
+
+check("the end date can be moved without a build", () => {
+  const settings = { ...allOn, [SIGNUP_ID]: { enabled: true, expiresAt: daysAgo(1) } };
+  assert.notEqual(decide(notMember({ settings })).chosen?.id, SIGNUP_ID);
+  assert.notEqual(decide(notMember({ settings: { ...allOn, [SIGNUP_ID]: { enabled: false } } })).chosen?.id, SIGNUP_ID);
+});
+
+check("the button registers with the page's own join, and a tap is not a registration", () => {
+  assert.ok(coordinator.includes("joinCommunityEvent(userId, slug, { source: \"popup\" })"));
+  const tap = coordinator.indexOf('track("popup_cta_clicked"');
+  const registered = coordinator.indexOf('track("popup_registration_completed"');
+  assert.ok(tap > 0 && registered > tap);
+  // Only a newly saved row counts: an existing member is not a new registration.
+  assert.ok(coordinator.includes("if (!result.alreadyJoined) {"));
+  const join = readFileSync("lib/communityEventJoin.ts", "utf8");
+  assert.ok(join.includes('onConflict: "event_slug,user_id", ignoreDuplicates: true'));
+  const allowed = readFileSync("app/api/landing-analytics/route.ts", "utf8");
+  assert.ok(allowed.includes('"popup_registration_completed"'));
+});
+
+check("members are looked up before anything is shown, and unsure means quiet", () => {
+  assert.ok(coordinator.includes('.from("community_event_members").select("event_slug")'));
+  assert.ok(coordinator.includes("if (error) eventSlugs.forEach((slug) => joinedEvents.add(slug));"));
+});
+
+check("an unfinished account finishes on the study's page with the sign-up under way", () => {
+  assert.ok(coordinator.includes('finishOnPage("join=1&src=popup")'));
+  const page = readFileSync("app/events/[slug]/page.tsx", "utf8");
+  assert.ok(page.includes('.get("join") !== "1"') && page.includes("autoJoinRef.current = true"));
+});
+
+check("no second popup system: no new component, no email, no push", () => {
+  for (const sent of ["sendEmail", "push_subscriptions", "sendPush", "/api/email"]) assert.ok(!coordinator.includes(sent), sent);
+  const shell = readFileSync("components/AppShell.tsx", "utf8");
+  assert.ok(!/Abraham\w*Popup/.test(shell));
+});
+
+check("the admin analytics page reports sign-ups, taps and registrations apart", () => {
+  const dashboard = readFileSync("lib/adminDashboard.ts", "utf8");
+  assert.ok(dashboard.includes("studySignups") && dashboard.includes('"popup_registration_completed"'));
+  const view = readFileSync("components/admin/AnalyticsDashboardView.tsx", "utf8");
+  assert.ok(view.includes("Tapped Sign Me Up") && view.includes("Registered from it") && view.includes("Conversion"));
 });
 
 console.log(`\n${passed} checks passed.`);

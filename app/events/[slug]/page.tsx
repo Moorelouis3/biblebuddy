@@ -18,7 +18,7 @@ export const dynamic = "force-dynamic";
 import Link from "next/link";
 import { useAccountGate } from "../../../components/AccountRequiredModal";
 import { useParams, useRouter } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { useSupabaseUser } from "../../../lib/useSupabaseUser";
 import { useBlockedUserIds } from "../../../lib/userBlocks";
@@ -76,6 +76,8 @@ export default function CommunityEventPage() {
   const { userId, loading: authLoading } = useSupabaseUser();
 
   const [joined, setJoined] = useState(false);
+  /** True once we know whether this person is already a member. */
+  const [membershipChecked, setMembershipChecked] = useState(false);
   const { ensureFullAccount, accountGateModal } = useAccountGate("join the study");
   const [joining, setJoining] = useState(false);
   const [reminders, setReminders] = useState(false);
@@ -212,9 +214,24 @@ export default function CommunityEventPage() {
         }
       } catch {
         /* each section degrades on its own */
+      } finally {
+        setMembershipChecked(true);
       }
     })();
   }, [event, userId]);
+
+  // ?join=1: the sign-up popup sends people here when their account still
+  // needs a name or a photo (components/popups/PopupCoordinator.tsx). They
+  // already said yes, so the join starts by itself and the account step opens
+  // straight away, instead of asking them to find the button again. Once.
+  const autoJoinRef = useRef(false);
+  useEffect(() => {
+    if (autoJoinRef.current || !event || authLoading || !userId || !membershipChecked || joined) return;
+    if (new URLSearchParams(window.location.search).get("join") !== "1") return;
+    autoJoinRef.current = true;
+    void join();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [event, authLoading, userId, membershipChecked, joined]);
 
   if (!event) {
     return (
@@ -260,7 +277,9 @@ export default function CommunityEventPage() {
       } else if (result.ok) {
         setJoined(true);
         setTotalMembers((count) => (count === null ? 1 : count + 1));
-        track("community_event_joined", { event: event.slug });
+        // `via` tells a sign-up that began in the popup from one made here.
+        const via = new URLSearchParams(window.location.search).get("src") === "popup" ? "popup" : "event_page";
+        track("community_event_joined", { event: event.slug, via });
         if (reminders) track("community_event_reminder_optin", { event: event.slug });
 
         // Joining IS starting (Louis, 2026-10-25). In October 252 people

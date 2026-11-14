@@ -22,7 +22,8 @@
  *     in seven days, however many visits there are.
  *  4. Each popup is then checked on its own: switched on, not expired, right
  *     device, right section, account old enough, the person does not already
- *     use the feature, and their own history with this popup allows it.
+ *     use the feature (or, for a study sign-up, is not already signed up),
+ *     and their own history with this popup allows it.
  *  5. Of what is left, timed things beat tutorials, tutorials beat
  *     announcements, announcements beat asks (get the app), and within a
  *     kind the higher priority wins.
@@ -73,6 +74,8 @@ export type DecideInput = {
   devices: ReadonlySet<PopupDevice>;
   /** Action types this person has ever recorded. */
   usedActions: ReadonlySet<string>;
+  /** Community studies this person is already signed up for, by slug. */
+  joinedEvents?: ReadonlySet<string>;
   accountCreatedAt: string;
   /** Why now is a bad moment, or null. "typing", "a mandatory dialog"... */
   busy: string | null;
@@ -115,6 +118,7 @@ export function whyNot(popup: PopupDefinition, input: DecideInput): string | nul
   if (ageDays < popup.minAccountAgeDays) return `account is under ${popup.minAccountAgeDays} days old`;
 
   if (popup.usedWhen.some((action) => input.usedActions.has(action))) return "already uses the feature";
+  if (popup.event && input.joinedEvents?.has(popup.event.slug)) return "already signed up";
 
   const past = input.history[popup.id];
   if (!past) return null;

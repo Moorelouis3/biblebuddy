@@ -7,6 +7,8 @@ import chapterProgress from "@/data/chapter-blog/progress.json";
 import { isOpenNow, startLabelFrom } from "@/lib/studyLibrary";
 import { WELCOME_SEQUENCE } from "@/lib/email/welcomeSequence";
 import { computeNewFeatures, type NewFeaturesReport } from "@/lib/newFeaturesReport";
+import { POPUP_CATALOG } from "@/lib/popups/catalog";
+import { getCommunityEvent } from "@/lib/communityEvents";
 
 /**
  * The owner analytics dashboard (2026-09-21), built from Louis's mockup.
@@ -1012,6 +1014,60 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       (t) => within(t.created_at, r) && (t.metadata as { promotion_id?: string } | null)?.promotion_id === popupId,
     ).length;
 
+  // ----- study sign-up popups -----
+  //
+  // One row per sign-up popup in lib/popups/catalog.ts (an entry with
+  // `event`). Counted over the whole campaign, not the selected window: a
+  // sign-up drive is a few weeks long and "how is it doing" means all of it.
+  //
+  // A tap and a registration are different events and are kept apart:
+  //   taps         popup_cta_clicked                  pressed Sign Me Up
+  //   registered   popup_registration_completed       the row was saved, in the popup
+  //              + community_event_joined, via=popup  ...or finished on the study's page
+  //                                                   (account needed a name or photo first)
+  // Louis's own account is left out, as everywhere on this page.
+  type SignupEventRow = { user_id: string | null; session_id: string | null; event_name: string; metadata: Record<string, unknown> | null; created_at: string };
+  const signupPopups = POPUP_CATALOG.filter((popup) => popup.event);
+  const signupEventRows = signupPopups.length
+    ? await fetchAll<SignupEventRow>(admin, "landing_page_events", "user_id, session_id, event_name, metadata, created_at", (q) =>
+        q
+          .in("event_name", ["popup_shown", "popup_dismissed", "popup_cta_clicked", "popup_registration_completed", "community_event_joined"])
+          .gte("created_at", "2026-11-14T00:00:00Z")
+          // neq alone would also drop rows with no user, which is every
+          // sign-up finished on the study's page.
+          .or(`user_id.is.null,user_id.neq.${OWNER_USER_ID}`),
+      )
+    : [];
+  const studySignups = await Promise.all(
+    signupPopups.map(async (popup) => {
+      const slug = popup.event!.slug;
+      const event = getCommunityEvent(slug);
+      const mine = signupEventRows.filter((row) => (row.metadata as { promotion_id?: string } | null)?.promotion_id === popup.id);
+      const people = (name: string) => new Set(mine.filter((row) => row.event_name === name).map((row) => row.user_id || row.session_id || row.created_at)).size;
+      const finishedOnPage = signupEventRows.filter((row) => {
+        const meta = (row.metadata || {}) as { event?: string; via?: string; promotion_id?: string };
+        return row.event_name === "community_event_joined" && meta.event === slug && meta.via === "popup" && !meta.promotion_id;
+      }).length;
+      const members = await admin.from("community_event_members").select("user_id", { count: "exact", head: true }).eq("event_slug", slug);
+      const shown = people("popup_shown");
+      const registered = people("popup_registration_completed") + finishedOnPage;
+      return {
+        popupId: popup.id,
+        slug,
+        title: event?.title || popup.headline,
+        startDate: event?.startDate || null,
+        endsAt: popup.expiresAt,
+        totalSignedUp: members.count ?? 0,
+        shown,
+        dismissed: people("popup_dismissed"),
+        taps: people("popup_cta_clicked"),
+        registered,
+        // Of the people who saw it, how many ended up registered through it.
+        conversion: rateOrNull(registered, shown),
+      };
+    }),
+  );
+
   const PLACEMENT_LABEL: Record<string, string> = {
     hero: "Landing page - top",
     buddies: "Landing page - meet your buddy",
@@ -1641,6 +1697,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     welcomeFunnel,
     emails,
     community,
+    studySignups,
     studyGuides,
     books,
     appStore,

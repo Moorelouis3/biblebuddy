@@ -1663,6 +1663,33 @@ export default function AnalyticsDashboardView({
                       </div>
                     ))}
                   </div>
+                  {/* Sign-up popups for studies that have not started (the
+                      popup coordinator). Whole campaign, not the window. */}
+                  {(d.studySignups || []).map((s) => (
+                    <div key={s.popupId} className="mt-4 border-t border-[#e2e8f0] pt-3">
+                      <p className="text-xs font-black text-[#334155]">
+                        {s.title} · sign-up popup{s.startDate ? ` · starts ${s.startDate}` : ""}
+                      </p>
+                      <div className="mt-2 grid grid-cols-3 gap-2 text-center sm:grid-cols-6">
+                        {[
+                          ["Signed up, total", fmt(s.totalSignedUp)],
+                          ["Saw the popup", fmt(s.shown)],
+                          ["Closed it", fmt(s.dismissed)],
+                          ["Tapped Sign Me Up", fmt(s.taps)],
+                          ["Registered from it", fmt(s.registered)],
+                          ["Conversion", pctOrNA(s.conversion)],
+                        ].map(([label, value]) => (
+                          <div key={label}>
+                            <p className="text-[11px] font-bold leading-tight text-[#64748b]">{label}</p>
+                            <p className="mt-1 text-lg font-black">{value}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-2 text-[11px] font-semibold text-[#64748b]">
+                        People, counted since the popup went on. Conversion is registered ÷ saw it. A tap that did not end in a saved sign-up is not a registration.
+                      </p>
+                    </div>
+                  ))}
                 </Section>
               </div>
               </div>
