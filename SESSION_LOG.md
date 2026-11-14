@@ -13877,3 +13877,15 @@ Year screens draw blank on the local dev copy, so only the study day page
 was checked on a phone-size screen. Five unpublished Disciples of Jesus days
 have no headings.
 Next: Bible in One Year four-part day, once Louis picks the mapping.
+
+## 2026-11-14 (afternoon, popup test reset)
+Done: Louis's phone test showed nothing. Cause: he had tapped "Not now" on
+the old App Store popup at 12:28 UTC; the phone remembered it, the
+coordinator copied it to his account and correctly snoozed the new popup to
+28 Nov. Added "Start the test over" to the test-mode panel on /tips: clears
+that device's store-ask memory and this account's answers to catalog popups
+(rows kept).
+Not live yet: committed untagged; next build Sat 14 Nov 18:05 Berlin unless
+Louis asks for it sooner.
+Still open: Louis to confirm the blue popup on his iPhone. Coordinator still
+off for everyone else.

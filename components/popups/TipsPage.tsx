@@ -17,8 +17,9 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { findPopup, TIPS_CATALOG, type PopupDefinition } from "@/lib/popups/catalog";
+import { findPopup, POPUP_CATALOG, TIPS_CATALOG, type PopupDefinition } from "@/lib/popups/catalog";
 import { setTestMode, testModeOn } from "@/lib/popups/switch";
+import { supabase } from "@/lib/supabaseClient";
 import FeaturePopup from "./FeaturePopup";
 
 // /tips?popup_test=on and =off (lib/popups/switch.ts). Done as the file loads,
@@ -33,11 +34,59 @@ if (typeof window !== "undefined") {
   }
 }
 
+/**
+ * Start the test again from nothing, on this device and for this account.
+ *
+ * Needed because the rules work: Louis tapped "Not now" on the old App Store
+ * popup, the phone remembered it, and the new popup then correctly waited two
+ * weeks - so there was nothing for him to look at (2026-11-14).
+ *
+ * It forgets what this phone remembers about the two store asks and the
+ * current visit, and clears this account's answers to the popups in the
+ * catalog. The rows are kept, not deleted. Only reachable from the test-mode
+ * panel.
+ */
+async function resetPopupTest(): Promise<boolean> {
+  try {
+    for (const key of Object.keys(window.localStorage)) {
+      if (key === "bb:appstore-ask" || key === "bb:playstore-ask" || key.startsWith("bb:popup-visit:") || key.startsWith("bb:popup-used:")) {
+        window.localStorage.removeItem(key);
+      }
+    }
+    window.sessionStorage.removeItem("bb:popup-cta-at");
+  } catch {
+    // Storage blocked: nothing was remembered there anyway.
+  }
+  const { data } = await supabase.auth.getSession();
+  const userId = data.session?.user.id;
+  if (!userId) return false;
+  const { error } = await supabase
+    .from("user_popups_seen")
+    .update({
+      display_count: 0,
+      dismissed_at: null,
+      dismiss_type: null,
+      cta_clicked_at: null,
+      completed_at: null,
+      never_again: false,
+      next_eligible_at: null,
+      automatic: false,
+      updated_at: new Date().toISOString(),
+    })
+    .eq("user_id", userId)
+    .in(
+      "popup_id",
+      POPUP_CATALOG.map((popup) => popup.id),
+    );
+  return !error;
+}
+
 export default function TipsPage() {
   const router = useRouter();
   const [open, setOpen] = useState<PopupDefinition | null>(null);
   /** Popup test mode in this browser: null until read. */
   const [testing, setTesting] = useState<boolean | null>(null);
+  const [resetState, setResetState] = useState<"idle" | "working" | "done" | "failed">("idle");
 
   // ?open=<id>. Read after the page has settled, as the popups do.
   useEffect(() => {
@@ -78,6 +127,21 @@ export default function TipsPage() {
           >
             Turn test mode off
           </button>
+          <button
+            type="button"
+            disabled={resetState === "working"}
+            onClick={() => {
+              setResetState("working");
+              void resetPopupTest().then((ok) => setResetState(ok ? "done" : "failed"));
+            }}
+            className="ml-2 mt-2.5 min-h-[44px] rounded-full bg-[#0056fd] px-5 text-[14px] font-black text-white shadow-sm outline-none focus-visible:ring-4 focus-visible:ring-[#93c5fd] disabled:opacity-60"
+          >
+            {resetState === "working" ? "Resetting..." : "Start the test over"}
+          </button>
+          {resetState === "done" ? (
+            <p className="mt-2 text-[13px] font-bold text-[#0f5d45]">Done. Go to your dashboard and wait a few seconds.</p>
+          ) : null}
+          {resetState === "failed" ? <p className="mt-2 text-[13px] font-bold text-[#b42318]">That did not work. Tell Claude.</p> : null}
         </div>
       ) : null}
 
