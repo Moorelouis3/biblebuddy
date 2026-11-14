@@ -44,7 +44,7 @@ const ENTRANCE_CSS = `
 
 /** Lavender for things you study with, blue for things you play or join. */
 const TONES: Record<
-  "lavender" | "blue",
+  "lavender" | "blue" | "brand",
   {
     card: string;
     border: string;
@@ -52,6 +52,14 @@ const TONES: Record<
     button: string;
     ring: string;
     shadow: string;
+    /** The wash behind the headline. */
+    wash: string;
+    pillBg: string;
+    pillText: string;
+    /** Sparkle and the underline. */
+    accent: string;
+    /** Hairlines in the footer. */
+    line: string;
   }
 > = {
   lavender: {
@@ -61,6 +69,11 @@ const TONES: Record<
     button: "linear-gradient(180deg, #8b45f0 0%, #6d28d9 100%)",
     ring: "#c4b5fd",
     shadow: "0 8px 18px rgba(109,40,217,0.35)",
+    wash: "linear-gradient(180deg, #e9defd 0%, #f3ecff 48%, #ffffff 100%)",
+    pillBg: "#dfcffb",
+    pillText: "#5b21b6",
+    accent: "#7c3aed",
+    line: "#cdbff0",
   },
   blue: {
     card: "linear-gradient(135deg, #eef7ff 0%, #d9ecff 100%)",
@@ -69,6 +82,27 @@ const TONES: Record<
     button: "linear-gradient(180deg, #2f6bf0 0%, #1d4ed8 100%)",
     ring: "#93c5fd",
     shadow: "0 8px 18px rgba(29,78,216,0.35)",
+    wash: "linear-gradient(180deg, #e9defd 0%, #f3ecff 48%, #ffffff 100%)",
+    pillBg: "#dfcffb",
+    pillText: "#5b21b6",
+    accent: "#7c3aed",
+    line: "#cdbff0",
+  },
+  // Bible Buddy's own blue, the colour of the logo (--bb-logo-blue #0056FD).
+  // Louis, 2026-11-14: "blue like the logo is my main color, not purple".
+  // Used for the two store asks, head to foot.
+  brand: {
+    card: "linear-gradient(135deg, #eef4ff 0%, #d6e6ff 100%)",
+    border: "#b9d2ff",
+    icon: "#cfe0ff",
+    button: "linear-gradient(180deg, #2f74ff 0%, #0056fd 100%)",
+    ring: "#93c5fd",
+    shadow: "0 8px 18px rgba(0,86,253,0.35)",
+    wash: "linear-gradient(180deg, #dbe8ff 0%, #edf3ff 48%, #ffffff 100%)",
+    pillBg: "#cfe0ff",
+    pillText: "#0041c2",
+    accent: "#0056fd",
+    line: "#b9d2ff",
   },
 };
 
@@ -83,8 +117,8 @@ const TONE_BY_PREVIEW: Record<PopupPreview, keyof typeof TONES> = {
   word_search: "blue",
   trivia: "blue",
   feed: "blue",
-  app_store: "lavender",
-  android_beta: "lavender",
+  app_store: "brand",
+  android_beta: "brand",
 };
 
 export default function FeaturePopup({
@@ -199,17 +233,17 @@ export default function FeaturePopup({
         <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
           <div
             className="px-5 pb-3.5 pt-5 sm:px-6"
-            style={{
-              background:
-                "linear-gradient(180deg, #e9defd 0%, #f3ecff 48%, #ffffff 100%)",
-            }}
+            style={{ background: tone.wash }}
           >
             <div className="flex items-center gap-1.5 pr-14">
               <Sparkle
-                color="#7c3aed"
+                color={tone.accent}
                 className="h-5 w-5 shrink-0 -rotate-12"
               />
-              <p className="whitespace-nowrap rounded-full bg-[#dfcffb] px-3.5 py-1.5 text-[11px] font-black uppercase tracking-[0.12em] text-[#5b21b6]">
+              <p
+                className="whitespace-nowrap rounded-full px-3.5 py-1.5 text-[11px] font-black uppercase tracking-[0.12em]"
+                style={{ background: tone.pillBg, color: tone.pillText }}
+              >
                 {popup.pill}
               </p>
             </div>
@@ -229,7 +263,7 @@ export default function FeaturePopup({
                   <path
                     d="M2 6 Q 50 1 98 6"
                     fill="none"
-                    stroke="#7c3aed"
+                    stroke={tone.accent}
                     strokeWidth="3"
                     strokeLinecap="round"
                   />
@@ -341,9 +375,9 @@ export default function FeaturePopup({
           )}
           {popup.footnote ? (
             <p className="mt-3 flex items-center justify-center gap-3 text-[13px] font-bold text-[#3b3f58]">
-              <span className="h-px w-8 bg-[#cdbff0]" aria-hidden="true" />
+              <span className="h-px w-8" style={{ background: tone.line }} aria-hidden="true" />
               <span className="text-center">{popup.footnote}</span>
-              <span className="h-px w-8 bg-[#cdbff0]" aria-hidden="true" />
+              <span className="h-px w-8" style={{ background: tone.line }} aria-hidden="true" />
             </p>
           ) : null}
           <div className="mt-1 flex items-center justify-center gap-1">
@@ -356,7 +390,7 @@ export default function FeaturePopup({
             </button>
             {popup.offerNeverAgain ? (
               <>
-                <span className="text-[#cdbff0]" aria-hidden="true">
+                <span style={{ color: tone.line }} aria-hidden="true">
                   •
                 </span>
                 <button
@@ -555,7 +589,7 @@ function Preview({ kind }: { kind: PopupPreview }) {
                 alt=""
                 width={56}
                 height={56}
-                className="h-14 w-14 shrink-0 rounded-[16px] shadow-[0_6px_16px_rgba(91,33,182,0.28)]"
+                className="h-14 w-14 shrink-0 rounded-[16px] shadow-[0_6px_16px_rgba(0,86,253,0.28)]"
               />
               <div className="min-w-0">
                 <p className="text-[19px] font-black leading-tight text-[#14122b]">
@@ -564,22 +598,22 @@ function Preview({ kind }: { kind: PopupPreview }) {
                 <p className="text-[13px] font-semibold leading-snug text-[#4b5068]">
                   {kind === "app_store"
                     ? "On the App Store"
-                    : "Closed test on Google Play"}
+                    : "Early access on Google Play"}
                 </p>
               </div>
             </div>
             <div className="mt-3 flex flex-wrap gap-1.5">
               <span
-                className={`${chip} bg-[#7c3aed] font-black text-white shadow-[0_2px_0_#5b21b6]`}
+                className={`${chip} bg-[#0056fd] font-black text-white shadow-[0_2px_0_#0041c2]`}
               >
-                {kind === "app_store" ? "Free" : "Testers wanted"}
+                Free
               </span>
               <span
-                className={`${chip} bg-white font-bold text-[#5b21b6] shadow-[0_2px_8px_rgba(60,40,120,0.12)]`}
+                className={`${chip} bg-white font-bold text-[#0041c2] shadow-[0_2px_8px_rgba(0,60,160,0.14)]`}
               >
                 {kind === "app_store"
                   ? "Your streak comes too"
-                  : "12 people · 14 days"}
+                  : "2 quick steps"}
               </span>
             </div>
           </div>
@@ -621,8 +655,8 @@ function PhoneScene({ className }: { className?: string }) {
     <svg viewBox="0 0 84 112" className={className} aria-hidden="true">
       <defs>
         <linearGradient id="bb-phone-screen" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#f3ecff" />
-          <stop offset="1" stopColor="#d9ecff" />
+          <stop offset="0" stopColor="#edf3ff" />
+          <stop offset="1" stopColor="#cfe0ff" />
         </linearGradient>
         <clipPath id="bb-phone-icon">
           <rect x="29" y="44" width="26" height="26" rx="7" />
@@ -630,7 +664,7 @@ function PhoneScene({ className }: { className?: string }) {
       </defs>
       {/* sparkles */}
       <g fill="none" strokeLinecap="round" strokeWidth="2.4">
-        <path d="M6 22l5 3M12 12l3 5M21 8l-1 6" stroke="#7c3aed" />
+        <path d="M6 22l5 3M12 12l3 5M21 8l-1 6" stroke="#0056fd" />
         <path d="M78 84l-5-2M74 94l-4-4" stroke="#14b8a6" />
       </g>
       {/* phone */}
@@ -646,10 +680,10 @@ function PhoneScene({ className }: { className?: string }) {
       <rect x="34" y="12" width="16" height="4" rx="2" fill="#14122b" />
       {/* other apps: shapes and colours only */}
       <g>
-        <rect x="25" y="24" width="12" height="12" rx="3.5" fill="#c4b5fd" />
+        <rect x="25" y="24" width="12" height="12" rx="3.5" fill="#a9c6ff" />
         <rect x="41" y="24" width="12" height="12" rx="3.5" fill="#bfdcf8" />
         <rect x="25" y="78" width="12" height="12" rx="3.5" fill="#bfdcf8" />
-        <rect x="41" y="78" width="12" height="12" rx="3.5" fill="#c4b5fd" />
+        <rect x="41" y="78" width="12" height="12" rx="3.5" fill="#a9c6ff" />
       </g>
       {/* Bible Buddy, front and centre */}
       <rect

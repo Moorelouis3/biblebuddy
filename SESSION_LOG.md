@@ -13837,3 +13837,13 @@ match the games popup: purple button, one lavender card with the app icon and
 a drawn phone, short headline "Get the Bible Buddy app.", fits a phone
 without scrolling.
 Not live yet: committed untagged; waiting for Louis to approve the look.
+
+## 2026-11-14 (afternoon, store popups in logo blue + Android version)
+Done: Louis approved the new App Store popup's layout and asked for blue like
+the logo instead of purple, and the same popup for Android going to the
+two-step page. Both store popups now use the logo blue (#0056FD) head to
+foot. Android: "Get Bible Buddy on Android.", button "Show me the 2 steps"
+to /android.
+Not live yet: committed untagged, waiting for the next build or Louis's word.
+Still open: coordinator is still off for everyone; only test-mode devices see
+the new popups. Android popup not seen on a real Android phone.

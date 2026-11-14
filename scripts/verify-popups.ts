@@ -283,8 +283,11 @@ check("the ask's facts match the app: store id, tester numbers", () => {
   const android = POPUP_CATALOG.find((popup) => popup.id === "ask_android_beta");
   const storeId = appStore?.cta.href.split("/id")[1] ?? "missing";
   assert.ok(review.includes('"' + storeId + '"'), "App Store id");
-  assert.ok(beta.includes("TESTERS_NEEDED = 12") && android?.description.includes("12 people"));
-  assert.ok(beta.includes("TESTER_DAYS = 14") && android?.description.includes("14 days"));
+  // The Android ask sends people to the two-step page and nowhere else.
+  assert.equal(android?.cta.href, "/android");
+  const page = readFileSync("components/AndroidBetaPage.tsx", "utf8");
+  assert.ok(page.includes("Step 1") && page.includes("Step 2") && !page.includes("Step 3"));
+  assert.ok(beta.includes("BETA_OPEN = true"));
 });
 
 check("the switch is off", () => {
