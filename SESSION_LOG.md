@@ -13827,3 +13827,13 @@ Not live yet: test mode needs the next build, Sat 14 Nov 18:05 Berlin.
 Still open: Louis to test on his iPhone (app and Safari). Coordinator stays
 off for everyone until he says so. App tab numbers for the App Store ask
 still need pointing at the new events before a full switch-on.
+
+## 2026-11-14 (afternoon, App Store popup redesign after Louis's phone test)
+Done: Louis tested on his iPhone and saw the OLD basic App Store popup (dark
+button): it opened on the /tips page before test mode was set. Fixed: test
+mode is set as the page loads, and both old store popups check again at the
+moment they would open. The new App Store / Android asks were redesigned to
+match the games popup: purple button, one lavender card with the app icon and
+a drawn phone, short headline "Get the Bible Buddy app.", fits a phone
+without scrolling.
+Not live yet: committed untagged; waiting for Louis to approve the look.

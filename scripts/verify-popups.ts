@@ -283,8 +283,8 @@ check("the ask's facts match the app: store id, tester numbers", () => {
   const android = POPUP_CATALOG.find((popup) => popup.id === "ask_android_beta");
   const storeId = appStore?.cta.href.split("/id")[1] ?? "missing";
   assert.ok(review.includes('"' + storeId + '"'), "App Store id");
-  assert.ok(beta.includes("TESTERS_NEEDED = 12") && android?.steps[0].title.includes("12"));
-  assert.ok(beta.includes("TESTER_DAYS = 14") && android?.steps[0].detail.includes("14 days"));
+  assert.ok(beta.includes("TESTERS_NEEDED = 12") && android?.description.includes("12 people"));
+  assert.ok(beta.includes("TESTER_DAYS = 14") && android?.description.includes("14 days"));
 });
 
 check("the switch is off", () => {

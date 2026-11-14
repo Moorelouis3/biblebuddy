@@ -114,6 +114,9 @@ export default function AppStorePopup({ enabled }: { enabled: boolean }) {
     if (!canAskForAppStore()) return;
 
     const timer = window.setTimeout(() => {
+      // Asked again here, not only above: test mode can be switched on by the
+      // page a moment after it loads, which is after the first check.
+      if (coordinatorActive()) return;
       setOpen(true);
       void log("appstore_popup_shown", "App Store popup shown");
       // Prepared now so the tap has nothing left to await.

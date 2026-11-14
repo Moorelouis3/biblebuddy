@@ -105,6 +105,9 @@ export default function AndroidBetaPopup({ enabled }: { enabled: boolean }) {
     if (!canAskForPlayStore()) return;
 
     const timer = window.setTimeout(() => {
+      // Asked again here, not only above: test mode can be switched on by the
+      // page a moment after it loads, which is after the first check.
+      if (coordinatorActive()) return;
       setOpen(true);
       void log("android_beta_popup_shown", "Android beta popup shown");
       // Prepared now so the tap has nothing left to await.

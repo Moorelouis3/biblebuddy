@@ -21,6 +21,18 @@ import { findPopup, TIPS_CATALOG, type PopupDefinition } from "@/lib/popups/cata
 import { setTestMode, testModeOn } from "@/lib/popups/switch";
 import FeaturePopup from "./FeaturePopup";
 
+// /tips?popup_test=on and =off (lib/popups/switch.ts). Done as the file loads,
+// not in an effect, so it is already decided before any popup on the page
+// asks whether the coordinator is in charge.
+if (typeof window !== "undefined") {
+  try {
+    const wanted = new URLSearchParams(window.location.search).get("popup_test");
+    if (wanted === "on" || wanted === "off") setTestMode(wanted === "on");
+  } catch {
+    // Unreadable address: leave test mode as it was.
+  }
+}
+
 export default function TipsPage() {
   const router = useRouter();
   const [open, setOpen] = useState<PopupDefinition | null>(null);
@@ -31,10 +43,7 @@ export default function TipsPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       const search = new URLSearchParams(window.location.search);
-      // /tips?popup_test=on and =off: see lib/popups/switch.ts.
-      const test = search.get("popup_test");
-      if (test === "on" || test === "off") setTesting(setTestMode(test === "on"));
-      else setTesting(testModeOn());
+      setTesting(testModeOn());
       const wanted = findPopup(search.get("open") || "");
       if (wanted) setOpen(wanted);
     }, 300);
