@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "joshua-24-explained",
+    title: "Joshua 24 Explained: Choose You This Day Whom Ye Will Serve",
+    description:
+      "Joshua 24 explained verse by verse: God's history lesson at Shechem, Joshua's challenge to choose, the covenant and witness stone, and the three burials that close the book.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/joshua-24-explained",
+    publishedAt: "2026-11-14",
+    readTime: "17 min read",
+    image: "/blog-banners/joshua-24-explained.jpg",
+    groupPost: {
+      title: "Joshua 24 Explained 📖",
+      content:
+        "Joshua calls the whole nation together.\nGod tells their own story back to them first.\n\n📌 Choose you this day whom ye will serve.\n\n📖 God names Himself as the one who acted, not Israel.\n📖 Joshua pushes back twice after they already said yes.\n📖 The book ends with three burials, not one celebration.\n\nNew article on:\n🟢 why God speaks the history lesson Himself\n🟢 what **the witness stone** under the oak was for\n🟢 why Joshua argued against his own people's yes\n\nWhat would your own honest answer to Joshua 24:15 be? 🙏",
+    },
+  },
+  {
     slug: "can-a-christian-date-a-non-christian",
     title: "Can a Christian Date a Non-Christian?",
     description:
