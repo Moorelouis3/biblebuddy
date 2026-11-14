@@ -13909,3 +13909,14 @@ popup_settings row.
 Next: point the App tab at the new popup events; move the remaining popups
 under the coordinator; watch popup_shown / popup_dismissed / popup_cta_clicked
 after the build.
+
+## 2026-11-14 (afternoon, App tab counts the new popup taps)
+Done: The admin App tab counted store-popup taps from master_actions only.
+It now also counts the coordinator's taps (popup_cta_clicked in
+landing_page_events, by popup id) for the iPhone popup row and the Android
+funnel's popup taps. Old action types are still read, so earlier weeks keep
+their numbers. Louis's own taps are excluded, as before.
+Not live yet: untagged; goes out with tonight's 18:05 Berlin build, the same
+build that switches the coordinator on, so there is no gap.
+Still open: the App tab shows taps, never views; popup views/closes are only
+in landing_page_events (popup_shown, popup_dismissed) with no admin screen yet.

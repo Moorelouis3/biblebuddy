@@ -302,4 +302,12 @@ check("test mode can only tighten: the pretend-device switch stays localhost-onl
   assert.ok(pretend.includes("!onLocalhost()"));
 });
 
+check("the admin App tab counts the coordinator's store-popup taps", () => {
+  const dashboard = readFileSync("lib/adminDashboard.ts", "utf8");
+  assert.ok(dashboard.includes('.eq("event_name", "popup_cta_clicked")'));
+  assert.ok(dashboard.includes('popupTapsIn("ask_app_store", r)') && dashboard.includes('popupTapsIn("ask_android_beta", r)'));
+  // and the old action types are still read, so earlier weeks keep their numbers
+  assert.ok(dashboard.includes('"appstore_popup_clicked"') && dashboard.includes('"android_beta_popup_clicked"'));
+});
+
 console.log(`\n${passed} checks passed.`);

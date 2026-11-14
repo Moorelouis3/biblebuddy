@@ -992,14 +992,34 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       .lt("created_at", current.end.toISOString()),
   );
 
+  // The third rail, since 14 Nov 2026. The two store popups are now shown by
+  // the popup coordinator (components/popups/PopupCoordinator.tsx), which
+  // deliberately does not write master_actions - seeing or tapping a popup is
+  // not study activity. Its taps are popup_cta_clicked in landing_page_events,
+  // with the popup's id in metadata.promotion_id. Without this the "popup on
+  // sign-in" rows would have gone to zero the day the coordinator went on.
+  // The old action types above are still read, so earlier weeks keep their
+  // numbers and a week that spans the change adds up.
+  const popupTapRows = await fetchAll<TapRow>(admin, "landing_page_events", "user_id, session_id, metadata, created_at", (q) =>
+    q
+      .eq("event_name", "popup_cta_clicked")
+      .gte("created_at", previous.start.toISOString())
+      .lt("created_at", current.end.toISOString())
+      .neq("user_id", OWNER_USER_ID),
+  );
+  const popupTapsIn = (popupId: string, r: Range) =>
+    popupTapRows.filter(
+      (t) => within(t.created_at, r) && (t.metadata as { promotion_id?: string } | null)?.promotion_id === popupId,
+    ).length;
+
   const PLACEMENT_LABEL: Record<string, string> = {
     hero: "Landing page - top",
     buddies: "Landing page - meet your buddy",
     bottom_cta: "Landing page - bottom",
     home_banner: "In-app banner",
-    login_popup: "iPhone popup on sign-in",
+    login_popup: "iPhone popup in the browser",
     completion_popup: "After finishing a reading",
-    android_popup: "Android popup on sign-in",
+    android_popup: "Android popup in the browser",
     android_page_view: "Android beta page opened",
     android_page_step1: "Android beta - joined group",
     android_page_step2: "Android beta - went to Play",
@@ -1029,6 +1049,11 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       byPlacement.set(key, (byPlacement.get(key) || 0) + 1);
       total += 1;
     }
+    const coordinatorTaps = popupTapsIn("ask_app_store", r);
+    if (coordinatorTaps) {
+      byPlacement.set("login_popup", (byPlacement.get("login_popup") || 0) + coordinatorTaps);
+      total += coordinatorTaps;
+    }
     return { total, byPlacement };
   };
 
@@ -1054,9 +1079,9 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
           within(t.created_at, r) &&
           String((t.metadata as { clickedFrom?: string } | null)?.clickedFrom || "") === placement,
       ).length;
-    const popupTaps = appActionRows.filter(
-      (a) => a.action_type === "android_beta_popup_clicked" && within(a.created_at, r),
-    ).length;
+    const popupTaps =
+      appActionRows.filter((a) => a.action_type === "android_beta_popup_clicked" && within(a.created_at, r)).length +
+      popupTapsIn("ask_android_beta", r);
     const landingTaps = appTapRows.filter(
       (t) =>
         within(t.created_at, r) &&
