@@ -26,27 +26,32 @@ When Nathan confronts David, listen for the four words that end every excuse.
 
 ## As You Read, Notice
 
-Where the kings are supposed to be, and where David is
-
-What Uriah does that shames the king who summoned him
-
-Whose action displeased the LORD, in God’s own words
-
-What Nathan says to David in 2 Samuel 12:7
+* 👑 Where the kings are supposed to be, and where David is
+* 🛡️ What Uriah does that shames the king who summoned him
+* ⚖️ Whose action displeased the LORD, in God’s own words
+* 🗣️ What Nathan says to David in 2 Samuel 12:7
 
 And think about this question: **do I measure blame by who did wrong, or by who has less power?**
 
-“And Nathan said to David, Thou art the man.” (2 Samuel 12:7)
+> “And Nathan said to David, Thou art the man.” (2 Samuel 12:7)
 
 ## From the Roof
 
-The story opens with a detail that is really an indictment. It was spring, *the time when kings go forth to battle*. David sent his army out under Joab to fight the Ammonites. And then one clause: *but David tarried still at Jerusalem*. Everyone who was supposed to be at war was at war. Except the king. The trouble starts with a man in the wrong place, idle on a rooftop while other men risk their lives for him.
+The story opens with a detail that is really an indictment. It was spring, *the time when kings go forth to battle*. David sent his army out under Joab to fight the Ammonites. And then one clause: *but David tarried still at Jerusalem*.
 
-From that roof, which looked down over the houses below, he saw a woman bathing, and she was beautiful. He asked who she was, and his servants told him everything he needed to know to stop: she had a father, Eliam, and a husband, Uriah the Hittite, one of David's own elite soldiers, away at the war David should have been leading.
+Everyone who was supposed to be at war was at war. Except the king. The trouble starts with a man in the wrong place, idle on a rooftop while other men risk their lives for him.
 
-*“And David sent messengers, and took her; and she came in unto him, and he lay with her... and she returned unto her house.” (2 Samuel 11:4)*
+From that roof, which looked down over the houses below, he saw a woman bathing, and she was beautiful.
 
-Read the verbs, because they carry the moral weight. **David sent. David took.** This was not a romance. It was a summons from the most powerful man in the nation to a subject who had no power to refuse him, in a world where a king's word was nearly law and defying it could cost a life. Scripture records no consent from Bathsheba, and we should not invent one. It records a king who sent, and a king who took. Every move that set this in motion was his.
+He asked who she was, and his servants told him everything he needed to know to stop: she had a father, Eliam, and a husband, Uriah the Hittite, one of David's own elite soldiers, away at the war David should have been leading.
+
+> “And David sent messengers, and took her; and she came in unto him, and he lay with her... and she returned unto her house.” (2 Samuel 11:4)
+
+Read the verbs, because they carry the moral weight. **David sent. David took.**
+
+This was not a romance. It was a summons from the most powerful man in the nation to a subject who had no power to refuse him, in a world where a king's word was nearly law and defying it could cost a life.
+
+Scripture records no consent from Bathsheba, and we should not invent one. It records a king who sent, and a king who took. Every move that set this in motion was his.
 
 Then she sent David four words of her own: *I am with child*. And the powerful man's first instinct was not confession. It was cover up.
 
@@ -54,43 +59,79 @@ Then she sent David four words of her own: *I am with child*. And the powerful m
 
 David called Uriah home from the front, hoping the loyal soldier would spend a night with his wife and blur the timing of the child. But Uriah would not go home while his comrades slept in open fields. He slept at the palace door instead, and explained why.
 
-*“The ark, and Israel, and Judah, abide in tents... shall I then go into mine house, to eat and to drink, and to lie with my wife?... I will not do this thing.” (2 Samuel 11:11)*
+> “The ark, and Israel, and Judah, abide in tents... shall I then go into mine house, to eat and to drink, and to lie with my wife?... I will not do this thing.” (2 Samuel 11:11)
 
-Sit with the irony. A soldier not even at the battle shows more honor than the king who summoned him. David tried again, got Uriah drunk, and still the man would not go home. So David chose the unthinkable. He wrote a letter ordering Uriah placed at the front of the hottest fighting and then abandoned there to die, and he sent the order sealed in Uriah's own hand. Uriah carried his own death warrant and never knew. Joab obeyed, Uriah fell, and other good men fell beside him to hide one murder inside a battle report.
+Sit with the irony. A soldier not even at the battle shows more honor than the king who summoned him.
 
-Word reached Bathsheba the way it reaches every war widow. Someone told her the man she married was not coming home, and she mourned him, a real husband, really grieved. When the mourning was over, David sent and brought her to the palace, and she became his wife and bore a son. And then Scripture steps in and settles the question of blame for all time.
+David tried again, got Uriah drunk, and still the man would not go home. So David chose the unthinkable. He wrote a letter ordering Uriah placed at the front of the hottest fighting and then abandoned there to die, and he sent the order sealed in Uriah's own hand.
 
-*“But the thing that David had done displeased the LORD.” (2 Samuel 11:27)*
+Uriah carried his own death warrant and never knew. Joab obeyed, Uriah fell, and other good men fell beside him to hide one murder inside a battle report.
 
-Not the thing Bathsheba had done. **The thing David had done.** God's own verdict names the guilty party, and it is the king, every clause of it. He took her, he tried to hide it, he ordered the murder, and God's displeasure lands on him. Remember that the next time you hear her blamed.
+## God Names the Guilty One
+
+Word reached Bathsheba the way it reaches every war widow. Someone told her the man she married was not coming home, and she mourned him, a real husband, really grieved.
+
+When the mourning was over, David sent and brought her to the palace, and she became his wife and bore a son. And then Scripture steps in and settles the question of blame for all time.
+
+> “But the thing that David had done displeased the LORD.” (2 Samuel 11:27)
+
+Not the thing Bathsheba had done. **The thing David had done.**
+
+God's own verdict names the guilty party, and it is the king, every clause of it. He took her, he tried to hide it, he ordered the murder, and God's displeasure lands on him. Remember that the next time you hear her blamed.
 
 ## Thou Art the Man
 
-God did not let it stay buried. He sent the prophet Nathan, who did not accuse the king directly. He told a story first: a rich man with vast flocks who, when a traveler came, spared his own herds and stole a poor man's one beloved little ewe lamb to feed his guest. David burned with anger and declared the rich man deserved to die. Then Nathan sprang the trap.
+God did not let it stay buried. He sent the prophet Nathan, who did not accuse the king directly. He told a story first: a rich man with vast flocks who, when a traveler came, spared his own herds and stole a poor man's one beloved little ewe lamb to feed his guest.
 
-*“And Nathan said to David, Thou art the man. Thus saith the LORD God of Israel, I anointed thee king over Israel, and I delivered thee out of the hand of Saul.” (2 Samuel 12:7)*
+David burned with anger and declared the rich man deserved to die. Then Nathan sprang the trap.
 
-Four words that cut through every excuse a king could make. Not Bathsheba. Not the circumstances. **Thou art the man.** And notice Nathan's courage, which is its own quiet lesson. He walked into the throne room of a man who had just proven he would murder a loyal soldier to protect himself, and told him the truth to his face. Speaking truth to power always costs something, and Nathan paid it anyway.
+> “And Nathan said to David, Thou art the man. Thus saith the LORD God of Israel, I anointed thee king over Israel, and I delivered thee out of the hand of Saul.” (2 Samuel 12:7)
 
-David broke. He wrote Psalm 51 out of the wreckage, the deepest prayer of repentance in Scripture. But sin's consequences still rolled forward. Nathan said the child of that union would not live. David fasted and lay on the ground for seven days begging God, and on the seventh day the baby died. And here the book makes you stop: whatever anyone decides about the adults, the infant did nothing. A child died inside the fallout of choices he had no part in, and Bathsheba, who had no part in the sin that started it, buried a son. Her grief was real, and nothing in the text pretends she earned it.
+Four words that cut through every excuse a king could make. Not Bathsheba. Not the circumstances. **Thou art the man.**
+
+And notice Nathan's courage, which is its own quiet lesson. He walked into the throne room of a man who had just proven he would murder a loyal soldier to protect himself, and told him the truth to his face. Speaking truth to power always costs something, and Nathan paid it anyway.
+
+## The Cost That Rolled Forward
+
+David broke. He wrote Psalm 51 out of the wreckage, the deepest prayer of repentance in Scripture. But sin's consequences still rolled forward.
+
+Nathan said the child of that union would not live. David fasted and lay on the ground for seven days begging God, and on the seventh day the baby died.
+
+And here the book makes you stop: whatever anyone decides about the adults, the infant did nothing. A child died inside the fallout of choices he had no part in, and Bathsheba, who had no part in the sin that started it, buried a son. Her grief was real, and nothing in the text pretends she earned it.
 
 ## The Queen Mother’s Throne
 
 Then comes a verse that tells you God did not walk away from this broken family.
 
-*“And David comforted Bathsheba his wife... and she bare a son, and he called his name Solomon: and the LORD loved him.” (2 Samuel 12:24)*
+> “And David comforted Bathsheba his wife... and she bare a son, and he called his name Solomon: and the LORD loved him.” (2 Samuel 12:24)
 
-**The LORD loved him.** Sit in that. God judged the sin honestly and then set His love on the very child born after it, out of the same marriage. Nathan even brought a second name for the boy, Jedidiah, *beloved of the LORD*. Grace showed up in the exact place the sin had done its damage. God is not done with a family just because its story started in the dark.
+**The LORD loved him.** Sit in that. God judged the sin honestly and then set His love on the very child born after it, out of the same marriage.
 
-And watch what time does to Bathsheba. The silent woman of chapter eleven, summoned and spoken about and acted upon, becomes a different figure entirely. Years later David is old and dying, and his son Adonijah tries to seize the throne that David had sworn to Solomon. This time Bathsheba is not summoned. She walks in.
+Nathan even brought a second name for the boy, Jedidiah, *beloved of the LORD*. Grace showed up in the exact place the sin had done its damage. God is not done with a family just because its story started in the dark.
 
-*“My lord, thou swarest by the LORD thy God unto thine handmaid, saying, Assuredly Solomon thy son shall reign after me, and he shall sit upon my throne.” (1 Kings 1:17)*
+## From Silence to Speaking Up
 
-The woman who once had no say in what happened to her body now stands before the king and secures the succession of a nation with the truth. Nathan, the same prophet who once confronted David over her husband, comes in behind her to confirm it. David acts, Solomon is crowned, and Bathsheba takes her place as the queen mother of Israel, an honored seat in Solomon's court.
+And watch what time does to Bathsheba. The silent woman of chapter eleven, summoned and spoken about and acted upon, becomes a different figure entirely.
 
-And there is a final detail you should not miss. When Matthew opens the New Testament with the family record of Jesus, he writes: *David the king begat Solomon of her that had been the wife of Urias*. He could have used her name. Instead he keeps Uriah in the sentence, a quiet refusal to let the murdered man be forgotten, even inside the Messiah's own line. Grace ran straight through this story of abuse and grief, and it carried the memory of the wronged with it.
+Years later David is old and dying, and his son Adonijah tries to seize the throne that David had sworn to Solomon. This time Bathsheba is not summoned. She walks in.
 
-Here is where her day lands on you. God does not measure guilt by who has less power. When Scripture itself keeps saying David and not her, we should learn to read every story like it, and to notice who actually holds the power in the room. And if someone with power over you cost you something you can never get back, hear this plainly: the blame was never yours to carry, and a painful beginning is not the whole story. The woman the king once summoned became the queen mother who named a king.
+> “My lord, thou swarest by the LORD thy God unto thine handmaid, saying, Assuredly Solomon thy son shall reign after me, and he shall sit upon my throne.” (1 Kings 1:17)
+
+The woman who once had no say in what happened to her body now stands before the king and secures the succession of a nation with the truth. Nathan, the same prophet who once confronted David over her husband, comes in behind her to confirm it.
+
+David acts, Solomon is crowned, and Bathsheba takes her place as the queen mother of Israel, an honored seat in Solomon's court.
+
+## Matthew Remembers Uriah
+
+And there is a final detail you should not miss. When Matthew opens the New Testament with the family record of Jesus, he writes: *David the king begat Solomon of her that had been the wife of Urias*.
+
+He could have used her name. Instead he keeps Uriah in the sentence, a quiet refusal to let the murdered man be forgotten, even inside the Messiah's own line. Grace ran straight through this story of abuse and grief, and it carried the memory of the wronged with it.
+
+## What This Means for You
+
+Here is where her day lands on you. God does not measure guilt by who has less power. When Scripture itself keeps saying David and not her, we should learn to read every story like it, and to notice who actually holds the power in the room.
+
+And if someone with power over you cost you something you can never get back, hear this plainly: the blame was never yours to carry, and a painful beginning is not the whole story. The woman the king once summoned became the queen mother who named a king.
 
 Tomorrow, power with no fear of God sits on a throne of its own, and this time the one wielding it is the queen herself. Her name is Jezebel. But today is not finished yet. Take the reflection questions first, then today's action, and end your day in prayer.
 
@@ -98,21 +139,15 @@ Tomorrow, power with no fear of God sits on a throne of its own, and this time t
 
 Take a few minutes and answer these honestly.
 
-**Whose blame have I been carrying that was never mine?**
+1. **Whose blame have I been carrying that was never mine?** Scripture says plainly: the thing that David had done. Not Bathsheba. What did someone with power over me do, that I have quietly been blaming myself for?
 
-1. Scripture says plainly: the thing that David had done. Not Bathsheba. What did someone with power over me do, that I have quietly been blaming myself for?
+2. **Do I read stories the way God tells them?** God named the powerful man, not the powerless woman. The culture has often done the reverse. Where am I quick to blame the person with less power, because it is easier than confronting the one with more?
 
-**Do I read stories the way God tells them?**
-
-2. God named the powerful man, not the powerless woman. The culture has often done the reverse. Where am I quick to blame the person with less power, because it is easier than confronting the one with more?
-
-**Where do I need to be a Nathan?**
-
-3. He told the truth to the most dangerous man in the kingdom, and it cost him to do it. What true thing am I not saying because the person who needs to hear it has power over me?
+3. **Where do I need to be a Nathan?** He told the truth to the most dangerous man in the kingdom, and it cost him to do it. What true thing am I not saying because the person who needs to hear it has power over me?
 
 ## Today's Action
 
-## Set Down the Blame
+**Set Down the Blame**
 
 Bathsheba carried blame that Scripture put squarely on someone else. If you are carrying someone else’s, set it down tonight.
 

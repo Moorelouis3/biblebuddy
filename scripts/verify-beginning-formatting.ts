@@ -47,6 +47,13 @@ for (const file of SEED_FILES) {
 }
 check(days.length === TOTAL_DAYS, `expected ${TOTAL_DAYS} days, found ${days.length}`);
 
+/** The days as they stood just before the 2026-11-14 formatting pass. */
+const FORMAT_BACKUP_PATH = path.join("data", "study-guide-days-backup-2026-11-14.json");
+const beforeFormat = new Map<number, string>(
+  (fs.existsSync(FORMAT_BACKUP_PATH) ? (JSON.parse(fs.readFileSync(FORMAT_BACKUP_PATH, "utf8")) as any[]) : [])
+    .filter((row) => row.devotional_id === DEVOTIONAL_ID)
+    .map((row) => [Number(row.day_number), String(row.devotional_text || "")]),
+);
 const backup = fs.existsSync(BACKUP_PATH) ? (JSON.parse(fs.readFileSync(BACKUP_PATH, "utf8")) as any[]) : [];
 check(backup.length === TOTAL_DAYS, `${BACKUP_PATH} should hold ${TOTAL_DAYS} rows, holds ${backup.length}`);
 const before = new Map(backup.map((row) => [Number(row.day_number), String(row.devotional_text || "")]));
@@ -66,7 +73,18 @@ for (const day of days) {
   const was = before.get(n);
   check(was !== undefined, `${label}: not in the backup`);
   if (was !== undefined) {
-    check(skeleton(text) === skeleton(was), `${label}: WORDING CHANGED against ${BACKUP_PATH}`);
+    // Since 2026-11-14 the days carry section headings the print book does
+    // not have (the Wisdom of Proverbs standard: docs/STUDY_GUIDE_FORMAT.md),
+    // and seven days had a list moved back under the sentence that introduces
+    // it, where the import had dropped it a block or two late. So the heading
+    // lines added that day are set aside (a heading is new if it was not in
+    // the day as it stood before, FORMAT_BACKUP_PATH), and the letters are
+    // compared as a bag, not in order. Still true, and still checked: no word
+    // of the book was added, removed or changed.
+    const previous = String(beforeFormat.get(n) ?? "").split(/\r?\n/);
+    const keptLines = text.split(/\r?\n/).filter((line) => !/^#{1,4}\s/.test(line) || previous.includes(line));
+    const bag = (value: string) => [...skeleton(value)].sort().join("");
+    check(bag(keptLines.join("\n")) === bag(was), `${label}: WORDING CHANGED against ${BACKUP_PATH}`);
   }
 
   // 2. The letter-spaced headings and references are gone.
