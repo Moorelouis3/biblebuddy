@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-3-explained",
+    title: "Judges 3 Explained: Othniel, Ehud, and the Left-Handed Assassin",
+    description:
+      "Judges 3 explained verse by verse: the nations left to test Israel, Othniel's quick rescue, and Ehud's assassination of Eglon with a hidden dagger.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-3-explained",
+    publishedAt: "2026-11-14",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-3-explained.jpg",
+    groupPost: {
+      title: "Judges 3 Explained 📖",
+      content:
+        "A king so fat a dagger disappears inside him.\nA judge whose whole story fits in four verses.\n\n📌 The cry comes before the rescue, every single time.\n\n📖 Othniel delivers Israel from Mesopotamia in just three verses.\n📖 Ehud hides a dagger on the side no guard checks.\n📖 Shamgar gets one verse and an ox goad.\n\nNew article on:\n🟢 why **Ehud's** lefthandedness was the whole plan\n🟢 what **146 years** of this chapter actually add up to\n🟢 why Shamgar barely counts as a judge at all\n\nWhat have you stopped crying out to God about because it has gripped you too long? 🙏",
+    },
+  },
+  {
     slug: "judges-2-explained",
     title: "Judges 2 Explained: The Generation That Knew Not the LORD",
     description:
