@@ -375,9 +375,17 @@ export default function FeaturePopup({
           )}
           {popup.footnote ? (
             <p className="mt-3 flex items-center justify-center gap-3 text-[13px] font-bold text-[#3b3f58]">
-              <span className="h-px w-8" style={{ background: tone.line }} aria-hidden="true" />
+              <span
+                className="h-px w-8"
+                style={{ background: tone.line }}
+                aria-hidden="true"
+              />
               <span className="text-center">{popup.footnote}</span>
-              <span className="h-px w-8" style={{ background: tone.line }} aria-hidden="true" />
+              <span
+                className="h-px w-8"
+                style={{ background: tone.line }}
+                aria-hidden="true"
+              />
             </p>
           ) : null}
           <div className="mt-1 flex items-center justify-center gap-1">
@@ -598,7 +606,7 @@ function Preview({ kind }: { kind: PopupPreview }) {
                 <p className="text-[13px] font-semibold leading-snug text-[#4b5068]">
                   {kind === "app_store"
                     ? "On the App Store"
-                    : "Early access on Google Play"}
+                    : "On the Play Store"}
                 </p>
               </div>
             </div>
@@ -613,7 +621,7 @@ function Preview({ kind }: { kind: PopupPreview }) {
               >
                 {kind === "app_store"
                   ? "Your streak comes too"
-                  : "2 quick steps"}
+                  : "Your streak comes too"}
               </span>
             </div>
           </div>

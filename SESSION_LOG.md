@@ -13847,3 +13847,9 @@ to /android.
 Not live yet: committed untagged, waiting for the next build or Louis's word.
 Still open: coordinator is still off for everyone; only test-mode devices see
 the new popups. Android popup not seen on a real Android phone.
+
+## 2026-11-14 (afternoon, Android popup wording)
+Done: Louis: "I want it to say Download on Play Store, not talk about the 2
+steps". Android popup now reads "Download on the Play Store" with no mention
+of steps; it still opens /android, where the two steps are.
+Not live yet: untagged; next build Sat 14 Nov 18:05 Berlin.
