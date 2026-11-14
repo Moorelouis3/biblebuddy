@@ -3962,9 +3962,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       ) : null}
 
       {/* The popup coordinator (2026-11-13): one tutorial or announcement
-          per visit, chosen by lib/popups/decide.ts. Switched off inside the
-          component (COORDINATOR_ENABLED), and every popup is off in
-          popup_settings as well. See docs/POPUP_SYSTEM_PROPOSAL.md. */}
+          per visit, chosen by lib/popups/decide.ts. On since 14 Nov 2026
+          (COORDINATOR_ENABLED in lib/popups/switch.ts); each popup also
+          needs its row in popup_settings. See docs/POPUP_SYSTEM_PROPOSAL.md. */}
       {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
         <PopupCoordinator
           userId={userId}

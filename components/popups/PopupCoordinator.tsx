@@ -4,10 +4,10 @@
  * The one place that decides whether a tutorial or announcement opens
  * (Louis, 2026-11-13). See docs/POPUP_SYSTEM_PROPOSAL.md.
  *
- * SWITCHED OFF. `COORDINATOR_ENABLED` (lib/popups/switch.ts) is false, so this component does
- * nothing at all - no queries, no timers. And when it is turned on, a popup
- * still only shows if it has a row in popup_settings with enabled = true, and
- * there are none. Two switches, both off.
+ * ON for everyone since 14 November 2026 (`COORDINATOR_ENABLED` in
+ * lib/popups/switch.ts). A popup still only shows if it has a row in
+ * popup_settings with enabled = true, so any one of them can be turned off
+ * there without a build.
  *
  * What it does when on, once per page load:
  *

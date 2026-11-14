@@ -13889,3 +13889,23 @@ Not live yet: committed untagged; next build Sat 14 Nov 18:05 Berlin unless
 Louis asks for it sooner.
 Still open: Louis to confirm the blue popup on his iPhone. Coordinator still
 off for everyone else.
+
+## 2026-11-14 (afternoon, popup coordinator switched ON)
+Done: Louis confirmed the blue App Store popup on his own iPhone in test mode
+(his "Not now" was cleared by editing his one row, his idea, no build) and
+said to switch the popup system on for everyone. COORDINATOR_ENABLED is now
+true. All nine catalog popups are enabled in popup_settings: seven tutorials,
+the App Store ask and the Android ask. Rule: one per visit, 20 hours apart,
+three a week.
+Not live yet: takes effect with the next scheduled build (step 3, no early
+deploy).
+Still open: the admin App tab stops counting App Store popup views once this
+is live (it reads master_actions; the coordinator records popup events in
+landing_page_events). New games, Bible Lock, the study popups and the weekly
+nudges still run on their own triggers and can still follow one another.
+Android popup never seen on a real Android phone. No admin page for the
+switches yet; a popup is turned off by setting enabled = false on its
+popup_settings row.
+Next: point the App tab at the new popup events; move the remaining popups
+under the coordinator; watch popup_shown / popup_dismissed / popup_cta_clicked
+after the build.

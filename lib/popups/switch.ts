@@ -9,8 +9,13 @@
  *
  * Turning it on is not enough on its own: a popup also needs a row in
  * popup_settings with enabled = true.
+ *
+ * ON since 14 November 2026. Louis tested the App Store popup on his own
+ * iPhone in test mode that day and said to switch it on for everyone. To
+ * turn the whole thing off again, set this back to false: the old store
+ * popups take over by themselves.
  */
-export const COORDINATOR_ENABLED = false;
+export const COORDINATOR_ENABLED = true;
 
 export const TEST_MODE_KEY = "bb:popup-coordinator-test";
 

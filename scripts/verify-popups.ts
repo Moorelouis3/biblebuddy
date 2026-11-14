@@ -290,8 +290,10 @@ check("the ask's facts match the app: store id, tester numbers", () => {
   assert.ok(beta.includes("BETA_OPEN = true"));
 });
 
-check("the switch is off", () => {
-  assert.ok(readFileSync("lib/popups/switch.ts", "utf8").includes("export const COORDINATOR_ENABLED = false;"));
+check("there is exactly one master switch, and the coordinator reads it", () => {
+  const source = readFileSync("lib/popups/switch.ts", "utf8");
+  assert.equal((source.match(/export const COORDINATOR_ENABLED = (true|false);/g) || []).length, 1);
+  assert.ok(coordinator.includes("if (!coordinatorActive()) return;"));
 });
 
 check("test mode can only tighten: the pretend-device switch stays localhost-only", () => {
