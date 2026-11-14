@@ -54,7 +54,7 @@ export default function BlogTopNav() {
   if (isNative) return null;
 
   return (
-    <header className="mx-auto flex w-full max-w-[860px] items-center justify-between gap-3 px-5 py-4 sm:px-8">
+    <header className="mx-auto flex w-full max-w-[860px] items-center justify-between gap-2 px-4 py-4 sm:gap-3 sm:px-8">
       <Link href={signedIn ? "/dashboard" : "/"} className="flex shrink-0 items-center gap-2 text-[#07162f]">
         <Image
           src="/TherealiconforBB.png"
@@ -63,30 +63,33 @@ export default function BlogTopNav() {
           height={28}
           className="h-6 w-6 rounded-md object-cover sm:h-7 sm:w-7"
         />
-        <span className="whitespace-nowrap text-base font-black tracking-tight sm:text-lg">Bible Buddy</span>
+        {/* The wordmark gives way first on the narrowest phones (320px). */}
+        <span className="whitespace-nowrap text-base font-black tracking-tight max-[359px]:hidden sm:text-lg">Bible Buddy</span>
       </Link>
-      <nav className="flex items-center gap-3 whitespace-nowrap text-[13px] font-black text-[#07162f] sm:gap-7 sm:text-sm">
+      <nav className="flex items-center gap-2.5 whitespace-nowrap text-[12px] font-black text-[#07162f] min-[400px]:gap-3 min-[400px]:text-[13px] sm:gap-7 sm:text-sm">
         {signedIn ? (
           <>
-            <Link href="/blog" className="transition hover:text-[#0056fd]">Blog</Link>
+            <Link href="/blog" className="transition hover:text-[#0056fd] max-[399px]:hidden">Blog</Link>
             <Link href="/bible/genesis/1" className="hidden transition hover:text-[#0056fd] sm:inline">Bible</Link>
             <Link href="/plans" className="transition hover:text-[#0056fd]">Plans</Link>
             <Link
               href="/dashboard"
-              className="rounded-full bg-[#0056fd] px-3.5 py-1.5 text-white transition hover:bg-[#0049d8]"
+              className="rounded-full bg-[#0056fd] px-3 py-1.5 text-white transition hover:bg-[#0049d8] min-[400px]:px-3.5"
             >
-              My&nbsp;Dashboard
+              <span className="max-[399px]:hidden">My&nbsp;</span>Dashboard
             </Link>
           </>
         ) : (
           <>
-            <a href="/#about" className="transition hover:text-[#0056fd]">About</a>
-            <Link href="/blog" className="transition hover:text-[#0056fd]">Blog</Link>
+            {/* Four links do not fit beside the logo under 400px. This one goes:
+                the page is still a tap away from the logo. */}
+            <a href="/#about" className="transition hover:text-[#0056fd] max-[399px]:hidden">About</a>
+            <Link href="/blog" className="transition hover:text-[#0056fd] max-[399px]:hidden">Blog</Link>
             {/* /start 404s since guests were turned off on 2026-10-06 - see
                 components/blog/PromoSlot.tsx. Signup is the door now. */}
             <Link
               href="/signup?src=blog&promo=nav"
-              className="rounded-full bg-[#0056fd] px-3.5 py-1.5 text-white transition hover:bg-[#0049d8]"
+              className="rounded-full bg-[#0056fd] px-3 py-1.5 text-white transition hover:bg-[#0049d8] min-[400px]:px-3.5"
             >
               Start&nbsp;Studying
             </Link>

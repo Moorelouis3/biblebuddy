@@ -4290,12 +4290,25 @@ html[data-bb-app-hidden="true"] *::after {
 }
 
 @media (max-width: 1023px) {
-  html,
-  body {
+  html {
     overflow-x: hidden !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
+  }
+
+  /* See "Viewport containment" near the end of this file. */
+  body:not(.bb-modal-scroll-locked) {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    touch-action: pan-y;
+  }
+
+  @supports (overflow: clip) {
+    body:not(.bb-modal-scroll-locked) {
+      overflow-x: clip !important;
+      overflow-y: visible !important;
+    }
   }
 
   html[data-bb-skin]:not([data-bb-skin="none"]) body {
@@ -5138,9 +5151,65 @@ body:not(.bb-modal-scroll-locked) {
   min-height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior-x: none;
   overscroll-behavior-y: auto;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
+}
+
+/* ===========================================================================
+   Viewport containment (2026-11-14)
+
+   The page could be dragged sideways on a phone, showing blank background
+   beside it. Two causes, both here:
+
+   1. html AND body both had overflow-x: hidden / overflow-y: auto. Once html
+      has an overflow of its own, body's no longer hands off to the viewport:
+      body becomes a second scroll container, the full height of the page.
+      `hidden` only hides the scrollbar - the box can still be scrolled, and
+      iOS lets a finger do it. So anything one pixel wider than the screen
+      (the blog's top nav was 28px wider) made the whole page pannable.
+
+      `clip` cannot be scrolled by anything, and with overflow-y visible body
+      is not a scroll container at all. The page has ONE scroller again: the
+      viewport. Position: sticky now sticks to the viewport as written.
+      Browsers without `clip` (Safari before 16) keep the old rule.
+
+   2. Nothing stopped the rubber band. In the app and the installed PWA there
+      is no pull-to-refresh to protect, so vertical overscroll is off there.
+      In a browser tab it stays on: pull-to-refresh is the browser's, and the
+      html background already matches the page so nothing white shows.
+
+   Intentional sideways scrollers (carousels, rails, tables) are their own
+   overflow-x: auto boxes and are untouched. Fix a too-wide element where it
+   is; this is the net under it, not a licence to overflow.
+   =========================================================================== */
+@supports (overflow: clip) {
+  body:not(.bb-modal-scroll-locked) {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+}
+
+html.bb-native,
+html.bb-native body {
+  overscroll-behavior: none;
+}
+
+@media (display-mode: standalone) {
+  html,
+  body {
+    overscroll-behavior: none;
+  }
+}
+
+/* 100vh on a phone is the screen with the address bar HIDDEN, so a
+   min-h-screen page was taller than what is visible and scrolled into empty
+   space. dvh is the visible height; it follows rotation and the address bar. */
+@supports (height: 100dvh) {
+  .min-h-screen {
+    min-height: 100dvh;
+  }
 }
 
 html.bb-modal-scroll-locked,

@@ -13932,3 +13932,10 @@ done on the Audio Lesson alone: nobody's progress moved.
 Not live yet: commit on main, untagged, for the next scheduled build.
 Still open: the home shelf card was checked in code, not tapped on screen.
 The older day list inside the dashboard still exists at its own address.
+
+## 2026-11-14 (night, viewport)
+Time spent: ~1 hour
+Done: Phone screens can no longer be dragged sideways. Root cause: html and body were both scroll containers, so anything wider than the screen (the blog top nav was 28px over at 375px) made the whole page pannable. Body now clips instead (app/globals.css, "Viewport containment"), rubber-band is off in the app and installed PWA, min-h-screen uses the visible height, and the blog nav fits down to 320px. Checked at 320/360/375 and landscape on blog, article, landing, signup, login, dashboard, feed, Bible reader, study guide, games.
+Not live yet: this commit, next scheduled build.
+Still open: not tested on a real iPhone or Android phone, only phone-size emulation. Pinch zoom is still off app-wide (it already was); left alone.
+Next: check on a real phone after the build.
