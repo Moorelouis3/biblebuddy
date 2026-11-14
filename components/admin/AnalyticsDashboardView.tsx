@@ -1964,6 +1964,69 @@ export default function AnalyticsDashboardView({
                 from lib/newFeaturesReport.ts. */}
             {tab === "features" ? (
               <>
+                {/* The popup coordinator (components/popups). One row per
+                    popup in its list. The Abraham sign-up also has its own
+                    line on the Community card; both read the same events. */}
+                {d.popupSystem ? (
+                  <Section
+                    summary={
+                      <SectionSummary
+                        icon="💬"
+                        title="Popups"
+                        line={`${fmt(d.popupSystem.sawAny)} saw one · ${fmt(d.popupSystem.tappedAny)} tapped the button`}
+                      />
+                    }
+                  >
+                    <div className="hidden lg:block">
+                      <CardTitle icon="💬">Popups</CardTitle>
+                    </div>
+                    <p className="mb-3 text-xs font-semibold text-[#64748b]">
+                      People, not taps, since {d.popupSystem.since} when the new popup system went on. Not tied to the period above.
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
+                      {[
+                        ["Saw a popup", fmt(d.popupSystem.sawAny)],
+                        ["Closed one", fmt(d.popupSystem.closedAny)],
+                        ["Tapped the button", fmt(d.popupSystem.tappedAny)],
+                        ["Tapped ÷ saw", pctOrNA(d.popupSystem.tapRate)],
+                      ].map(([label, value]) => (
+                        <div key={label} className="rounded-xl bg-[#f8fafc] px-2 py-3">
+                          <p className="text-[11px] font-bold leading-tight text-[#64748b]">{label}</p>
+                          <p className="mt-1 text-lg font-black">{value}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-4 overflow-x-auto">
+                      <table className="w-full min-w-[520px] text-sm">
+                        <thead>
+                          <tr className="text-left text-[11px] font-bold uppercase tracking-wide text-[#94a3b8]">
+                            <th className="pb-2">Popup</th>
+                            <th className="pb-2 text-right">Saw it</th>
+                            <th className="pb-2 text-right">Closed</th>
+                            <th className="pb-2 text-right">Tapped</th>
+                            <th className="pb-2 text-right">Tap rate</th>
+                            <th className="pb-2 text-right">Signed up</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {d.popupSystem.rows.map((row) => (
+                            <tr key={row.id} className="border-t border-[#eef2f7]">
+                              <td className="py-2 pr-3">
+                                <span className="block font-bold text-[#0f172a]">{row.title}</span>
+                                <span className="block text-[11px] font-semibold text-[#94a3b8]">{row.kind}</span>
+                              </td>
+                              <td className="py-2 text-right font-bold">{fmt(row.shown)}</td>
+                              <td className="py-2 text-right">{fmt(row.dismissed)}</td>
+                              <td className="py-2 text-right">{fmt(row.taps)}</td>
+                              <td className="py-2 text-right">{pctOrNA(row.tapRate)}</td>
+                              <td className="py-2 text-right">{row.registered === null ? "–" : fmt(row.registered)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </Section>
+                ) : null}
                 {d.newFeatures ? (
                   <>
                     <p className="px-1 text-sm font-semibold text-[#64748b]">

@@ -1028,16 +1028,17 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   // Louis's own account is left out, as everywhere on this page.
   type SignupEventRow = { user_id: string | null; session_id: string | null; event_name: string; metadata: Record<string, unknown> | null; created_at: string };
   const signupPopups = POPUP_CATALOG.filter((popup) => popup.event);
-  const signupEventRows = signupPopups.length
-    ? await fetchAll<SignupEventRow>(admin, "landing_page_events", "user_id, session_id, event_name, metadata, created_at", (q) =>
-        q
-          .in("event_name", ["popup_shown", "popup_dismissed", "popup_cta_clicked", "popup_registration_completed", "community_event_joined"])
-          .gte("created_at", "2026-11-14T00:00:00Z")
-          // neq alone would also drop rows with no user, which is every
-          // sign-up finished on the study's page.
-          .or(`user_id.is.null,user_id.neq.${OWNER_USER_ID}`),
-      )
-    : [];
+  // Read once for the sign-up rows below and for the whole-system table after
+  // them. 13 Nov 2026 is the day the coordinator was switched on.
+  const POPUP_SYSTEM_SINCE = "2026-11-13";
+  const signupEventRows = await fetchAll<SignupEventRow>(admin, "landing_page_events", "user_id, session_id, event_name, metadata, created_at", (q) =>
+    q
+      .in("event_name", ["popup_shown", "popup_dismissed", "popup_cta_clicked", "popup_registration_completed", "community_event_joined"])
+      .gte("created_at", `${POPUP_SYSTEM_SINCE}T00:00:00Z`)
+      // neq alone would also drop rows with no user, which is every
+      // sign-up finished on the study's page.
+      .or(`user_id.is.null,user_id.neq.${OWNER_USER_ID}`),
+  );
   const studySignups = await Promise.all(
     signupPopups.map(async (popup) => {
       const slug = popup.event!.slug;
@@ -1067,6 +1068,42 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       };
     }),
   );
+
+  // ----- the popup system as a whole -----
+  //
+  // One row per popup in lib/popups/catalog.ts, the single list the
+  // coordinator shows from. People, not events: somebody shown a popup twice
+  // is one person. Whole life of the system, not the selected window - it is
+  // days old and a popup is seen at most twice by anybody.
+  const popupPerson = (row: SignupEventRow) => row.user_id || row.session_id || row.created_at;
+  const popupIdOf = (row: SignupEventRow) => (row.metadata as { promotion_id?: string } | null)?.promotion_id || "";
+  const catalogIds = new Set(POPUP_CATALOG.map((popup) => popup.id));
+  const systemRows = signupEventRows.filter((row) => catalogIds.has(popupIdOf(row)));
+  const peopleWho = (name: string, popupId?: string) =>
+    new Set(systemRows.filter((row) => row.event_name === name && (!popupId || popupIdOf(row) === popupId)).map(popupPerson)).size;
+  const popupSystem = {
+    since: POPUP_SYSTEM_SINCE,
+    sawAny: peopleWho("popup_shown"),
+    closedAny: peopleWho("popup_dismissed"),
+    tappedAny: peopleWho("popup_cta_clicked"),
+    tapRate: rateOrNull(peopleWho("popup_cta_clicked"), peopleWho("popup_shown")),
+    rows: POPUP_CATALOG.map((popup) => {
+      const shown = peopleWho("popup_shown", popup.id);
+      const taps = peopleWho("popup_cta_clicked", popup.id);
+      const signup = studySignups.find((s) => s.popupId === popup.id);
+      return {
+        id: popup.id,
+        title: signup?.title || popup.cardTitle || popup.headline,
+        kind: popup.event ? "Study sign-up" : popup.kind === "tutorial" ? "How-to" : popup.kind === "ask" ? "App store ask" : "Announcement",
+        shown,
+        dismissed: peopleWho("popup_dismissed", popup.id),
+        taps,
+        tapRate: rateOrNull(taps, shown),
+        // Only a sign-up has something to register for.
+        registered: signup ? signup.registered : null,
+      };
+    }).sort((a, b) => b.shown - a.shown),
+  };
 
   const PLACEMENT_LABEL: Record<string, string> = {
     hero: "Landing page - top",
@@ -1698,6 +1735,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     emails,
     community,
     studySignups,
+    popupSystem,
     studyGuides,
     books,
     appStore,
