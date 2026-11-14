@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-1-explained",
+    title: "Judges 1 Explained: Adonibezek, Achsah, and Israel's Unfinished Conquest",
+    description:
+      "Judges 1 explained verse by verse: Adonibezek's mirror punishment, Achsah's bold request, Judah's iron chariot problem, and the seven tribes that left Canaanites in the land.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-1-explained",
+    publishedAt: "2026-11-14",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-1-explained.jpg",
+    groupPost: {
+      title: "Judges 1 Explained 📖",
+      content:
+        "Joshua is gone.\nIsrael asks God who should go first.\n\n📌 Strength did not become obedience for every tribe.\n\n📖 Adonibezek gets back what he once did to seventy kings.\n📖 Achsah asks her father for springs of water, and gets them.\n📖 Seven tribes admit they never fully drove the Canaanites out.\n\nNew article on:\n🟢 why **Judah** could not beat chariots of iron\n🟢 what **Achsah's** request says about her\n🟢 why **Dan** gets pushed backward, not forward\n\nWhat is the one thing on your own list you have been taxing instead of finishing? 🙏",
+    },
+  },
+  {
     slug: "joshua-24-explained",
     title: "Joshua 24 Explained: Choose You This Day Whom Ye Will Serve",
     description:
