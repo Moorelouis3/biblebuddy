@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-4-explained",
+    title: "Judges 4 Explained: Deborah, Barak, and the Tent Peg That Ended a War",
+    description:
+      "Judges 4 explained verse by verse: Deborah's summons to Barak, the battle at the river Kishon, and how Jael ends Sisera's twenty year oppression.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-4-explained",
+    publishedAt: "2026-11-14",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-4-explained.jpg",
+    groupPost: {
+      title: "Judges 4 Explained 📖",
+      content:
+        "Nine hundred iron chariots on one side.\nA woman with a hammer on the other.\n\n📌 Safety by treaty is not safety by God.\n\n📖 Deborah judges Israel before any battle starts.\n📖 Barak will not march without her beside him.\n📖 Jael ends the war with a tent peg, not a sword.\n\nNew article on:\n🟢 why **Barak** set a condition before going to war\n🟢 how **Jael's** hospitality became the whole plan\n🟢 what Deborah's prophecy about \"a woman\" actually meant\n\nHave you ever trusted an arrangement to keep you safe instead of trusting God? 🙏",
+    },
+  },
+  {
     slug: "judges-3-explained",
     title: "Judges 3 Explained: Othniel, Ehud, and the Left-Handed Assassin",
     description:
