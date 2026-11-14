@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "../../lib/supabaseClient";
 import { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } from "../../lib/bibleInOneYearPlan";
 import {
+  BIBLE_YEAR_DAY_PARTS,
   BIBLE_YEAR_RANGES,
   BIBLE_YEAR_TOTAL_DAYS,
   EMPTY_POSITION,
@@ -337,6 +338,9 @@ export default function BibleYearOverview() {
                         const isDone = completed.has(day.dayNumber);
                         const isCurrent = day.dayNumber === currentDay && !isDone;
                         const isHighlit = highlightDay === day.dayNumber;
+                        // The same marker a study guide's day list carries.
+                        const partsTotal = BIBLE_YEAR_DAY_PARTS.length;
+                        const partsDone = Math.min(partsTotal, position.partsDoneByDay[day.dayNumber] ?? 0);
 
                         return (
                           <li key={day.dayNumber} id={`bible-year-day-${day.dayNumber}`}>
@@ -368,6 +372,25 @@ export default function BibleYearOverview() {
                                 </span>
                                 <span className="mt-0.5 block truncate text-sm font-semibold text-[var(--bb-text-muted,#6b7280)]">
                                   {day.reference}
+                                </span>
+                                <span className="mt-1 flex items-center gap-2">
+                                  <span className="flex items-center gap-1" aria-hidden="true">
+                                    {BIBLE_YEAR_DAY_PARTS.map((part, partIndex) => (
+                                      <span
+                                        key={part}
+                                        className={`h-2 w-2 rounded-full ${
+                                          partIndex < partsDone ? "bg-emerald-500" : "bg-[#d5dfea]"
+                                        }`}
+                                      />
+                                    ))}
+                                  </span>
+                                  <span
+                                    className={`whitespace-nowrap text-xs font-black ${
+                                      partsDone >= partsTotal ? "text-emerald-700" : "text-[var(--bb-text-secondary,#5f6368)]"
+                                    }`}
+                                  >
+                                    {partsDone}/{partsTotal} completed
+                                  </span>
                                 </span>
                               </span>
                               <span

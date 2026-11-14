@@ -13920,3 +13920,15 @@ Not live yet: untagged; goes out with tonight's 18:05 Berlin build, the same
 build that switches the coordinator on, so there is no gap.
 Still open: the App tab shows taps, never views; popup views/closes are only
 in landing_page_events (popup_shown, popup_dismissed) with no admin screen yet.
+
+## 2026-11-14 (Bible in One Year: same day list as Proverbs)
+Done: Louis chose to keep Study Notes, so a Bible in One Year day keeps its
+four parts (Audio Lesson, Study Notes, Trivia, Discussion). The plan already
+had the Proverbs-style overview and day list, but only from the Library; the
+home shelf opened an older list. Both now open the same one
+(/library/bible-in-one-year/progress), and every day on it shows "n/4
+completed" with four dots, as a study guide's days do. A day still counts as
+done on the Audio Lesson alone: nobody's progress moved.
+Not live yet: commit on main, untagged, for the next scheduled build.
+Still open: the home shelf card was checked in code, not tapped on screen.
+The older day list inside the dashboard still exists at its own address.

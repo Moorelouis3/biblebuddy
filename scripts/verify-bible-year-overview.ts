@@ -161,5 +161,28 @@ check("more rows than days still cannot exceed 100%", bibleYearPercent(400) === 
 // the way he expects it to.
 check("24 of 31 days is 77%", Math.round((24 / 31) * 100) === 77, `${Math.round((24 / 31) * 100)}%`);
 
+// The four parts of a day, counted for the map (2026-11-14). The count is
+// detail only: a day is still done when its Audio Lesson is, so adding this
+// could not move anybody's finished days.
+{
+  const parts = require("../lib/bibleYearProgress") as typeof import("../lib/bibleYearProgress");
+  check("a day has four parts, Study Notes among them", parts.BIBLE_YEAR_DAY_PARTS.join(" | ") === "Audio Lesson | Study Notes | Trivia | Discussion", parts.BIBLE_YEAR_DAY_PARTS.join(" | "));
+  const position = parts.calculateBibleYearPosition([
+    { day_number: 1, reading_completed: true, study_notes_completed: true, trivia_completed: true, reflection_completed: true },
+    { day_number: 2, reading_completed: true, study_notes_completed: null, trivia_completed: false, reflection_completed: null },
+    { day_number: 3, reading_completed: false, study_notes_completed: true, trivia_completed: true, reflection_completed: null },
+    { day_number: 4, reading_completed: null },
+  ]);
+  check("a full day counts 4 of 4", position.partsDoneByDay[1] === 4, String(position.partsDoneByDay[1]));
+  check("a day with only the lesson counts 1 of 4, and is still done", position.partsDoneByDay[2] === 1 && position.completedDayNumbers.includes(2));
+  check("notes and trivia without the lesson count 2 of 4, and the day is not done", position.partsDoneByDay[3] === 2 && !position.completedDayNumbers.includes(3));
+  check("an untouched day is not on the map's count", position.partsDoneByDay[4] === undefined);
+  check("finished days are counted exactly as before", position.completedDays === 2 && position.planDay === 3, `${position.completedDays} done, next ${position.planDay}`);
+  check("the old shape of row (no part columns) still works", parts.calculateBibleYearPosition([{ day_number: 9, reading_completed: true }]).partsDoneByDay[9] === 1);
+  check("the shelf and the Library open the same day list", parts.BIBLE_YEAR_PLAN_HREF === "/library/bible-in-one-year/progress", parts.BIBLE_YEAR_PLAN_HREF);
+  const overview = fs.readFileSync(path.join("components", "library", "BibleYearOverview.tsx"), "utf8");
+  check("each day on the map shows n/4 completed", overview.includes("{partsDone}/{partsTotal} completed"));
+}
+
 console.log(`\n${failures === 0 ? "ALL PASS" : `${failures} FAILED`}\n`);
 process.exit(failures === 0 ? 0 : 1);

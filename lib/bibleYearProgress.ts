@@ -31,10 +31,36 @@ export type BibleYearPosition = {
   completedDays: number;
   /** Every finished day, for the progress map's per-day state. */
   completedDayNumbers: number[];
+  /**
+   * How many of a day's four parts are done (BIBLE_YEAR_DAY_PARTS), for every
+   * day with at least one. The progress map shows it as "2/4 completed", the
+   * way a study guide's day list does. A day absent from here has none.
+   */
+  partsDoneByDay: Record<number, number>;
+};
+
+/**
+ * The four parts of a Bible in One Year day, in the order the day shows them.
+ * Same shape as a study guide day's four (The Big Picture, Today's Reading,
+ * Today's Trivia, Discussion), with this plan's own first two: Louis kept
+ * Study Notes on 2026-11-14 rather than swap it for a reading.
+ *
+ * A day still counts as DONE when its Audio Lesson is finished. That rule is
+ * older than this list and is not changed by it: the count is extra detail on
+ * the map, not a new bar to clear, so nobody's finished days moved.
+ */
+export const BIBLE_YEAR_DAY_PARTS = ["Audio Lesson", "Study Notes", "Trivia", "Discussion"] as const;
+
+type BibleYearProgressInput = {
+  day_number: number | string;
+  reading_completed: boolean | null;
+  study_notes_completed?: boolean | null;
+  trivia_completed?: boolean | null;
+  reflection_completed?: boolean | null;
 };
 
 export function calculateBibleYearPosition(
-  rows: Array<{ day_number: number | string; reading_completed: boolean | null }> | null | undefined,
+  rows: BibleYearProgressInput[] | null | undefined,
 ): BibleYearPosition {
   if (!Array.isArray(rows)) return EMPTY_POSITION;
 
@@ -52,7 +78,22 @@ export function calculateBibleYearPosition(
     highestReadDay: highestRead,
     completedDays: readDays.size,
     completedDayNumbers: [...readDays].sort((a, b) => a - b),
+    partsDoneByDay: countBibleYearParts(rows),
   };
+}
+
+function countBibleYearParts(rows: BibleYearProgressInput[]): Record<number, number> {
+  const byDay: Record<number, number> = {};
+  for (const row of rows) {
+    const day = Number(row.day_number);
+    if (!Number.isInteger(day)) continue;
+    const done = [row.reading_completed, row.study_notes_completed, row.trivia_completed, row.reflection_completed].filter(
+      (value) => value === true,
+    ).length;
+    // Two rows for one day should not happen; if they do, the fuller one wins.
+    if (done > 0) byDay[day] = Math.max(byDay[day] ?? 0, done);
+  }
+  return byDay;
 }
 
 /** Signed out, or nothing read yet. */
@@ -62,6 +103,7 @@ export const EMPTY_POSITION: BibleYearPosition = {
   highestReadDay: 0,
   completedDays: 0,
   completedDayNumbers: [],
+  partsDoneByDay: {},
 };
 
 /**
@@ -81,7 +123,7 @@ export async function fetchBibleYearPosition(userId: string | null): Promise<Bib
   if (!userId) return EMPTY_POSITION;
   const { data, error } = await supabase
     .from("bible_year_day_progress")
-    .select("day_number, reading_completed")
+    .select("day_number, reading_completed, study_notes_completed, trivia_completed, reflection_completed")
     .eq("user_id", userId);
 
   if (error) {
@@ -101,7 +143,15 @@ export async function fetchBibleYearPosition(userId: string | null): Promise<Bib
  * lands on whatever study was last open. Worth fixing on its own; until then
  * the cover uses the address that actually holds.
  */
-export const BIBLE_YEAR_PLAN_HREF = "/plan?view=bible-year-series&solo=1";
+/**
+ * Since 2026-11-14 this is the plan's overview - the Wisdom of Proverbs
+ * template, with the progress map of all 365 days (components/library/
+ * BibleYearOverview.tsx). It used to be the older list inside the dashboard,
+ * `/plan?view=bible-year-series&solo=1`, which meant the home shelf and the
+ * Library opened two different day lists for the same plan. The older list is
+ * still reachable by its own address; nothing links to it from here any more.
+ */
+export const BIBLE_YEAR_PLAN_HREF = "/library/bible-in-one-year/progress";
 
 export function bibleYearHref() {
   return BIBLE_YEAR_PLAN_HREF;
