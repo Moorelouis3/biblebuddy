@@ -13816,3 +13816,14 @@ numbers stop (they read master_actions; the coordinator deliberately writes
 popup events elsewhere) and need pointing at the new events. Not tested on a
 real iPhone or Android phone. Other popups not yet moved.
 >>>>>>> Stashed changes
+
+## 2026-11-14 (midday, popup test mode for Louis's phone)
+Done: Added popup test mode. Opening /tips?popup_test=on on a device puts
+only that browser under the new coordinator (one popup per visit);
+/tips?popup_test=off or the button on /tips turns it off. All nine catalog
+popups were switched on in popup_settings, which affects nobody outside test
+mode because the coordinator itself is still off.
+Not live yet: test mode needs the next build, Sat 14 Nov 18:05 Berlin.
+Still open: Louis to test on his iPhone (app and Safari). Coordinator stays
+off for everyone until he says so. App tab numbers for the App Store ask
+still need pointing at the new events before a full switch-on.

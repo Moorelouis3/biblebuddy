@@ -12,19 +12,47 @@
  */
 export const COORDINATOR_ENABLED = false;
 
+export const TEST_MODE_KEY = "bb:popup-coordinator-test";
+
+const onLocalhost = () => {
+  const host = window.location.hostname;
+  return host === "localhost" || host === "127.0.0.1";
+};
+
 /**
- * For testing on a developer's own machine while the switch above is off:
- * on localhost only, with localStorage `bb:popup-coordinator-test` = "1".
- * It can never be true on the live site, whatever is in storage.
+ * Test mode: try the coordinator on one phone or browser while the switch
+ * above is off for everybody else (Louis, 2026-11-14: "let's test it on
+ * mine").
+ *
+ * It is a flag in that browser's own storage, turned on by opening
+ * /tips?popup_test=on and off with /tips?popup_test=off. It is per device:
+ * the iPhone app, Safari and a laptop each have their own.
+ *
+ * It is not a secret and does not need to be. All it does is put that one
+ * browser under the stricter rules - fewer popups, never more - and a popup
+ * still needs its row in popup_settings.
  */
 function testOverride(): boolean {
   try {
-    const host = window.location.hostname;
-    const local = host === "localhost" || host === "127.0.0.1";
-    return local && window.localStorage.getItem("bb:popup-coordinator-test") === "1";
+    return window.localStorage.getItem(TEST_MODE_KEY) === "1";
   } catch {
     return false;
   }
+}
+
+/** Turn test mode on or off in this browser. Returns what it now is. */
+export function setTestMode(on: boolean): boolean {
+  try {
+    if (on) window.localStorage.setItem(TEST_MODE_KEY, "1");
+    else window.localStorage.removeItem(TEST_MODE_KEY);
+  } catch {
+    // Storage blocked: test mode cannot be kept, so it is off.
+  }
+  return testOverride();
+}
+
+export function testModeOn(): boolean {
+  return testOverride();
 }
 
 /** Is the coordinator the one in charge on this page? Browser only. */
@@ -33,13 +61,13 @@ export function coordinatorActive(): boolean {
 }
 
 /**
- * Testing only, same localhost-only rule as above: pretend to be an iPhone or
- * Android browser so the store asks can be tried on a laptop.
+ * Testing on a developer's own machine only (localhost): pretend to be an
+ * iPhone or Android browser so the store asks can be tried on a laptop.
  * localStorage `bb:popup-device-test` = "ios_web" or "android_web".
  */
 export function testDevice(): "ios_web" | "android_web" | null {
-  if (!testOverride()) return null;
   try {
+    if (!onLocalhost() || !testOverride()) return null;
     const value = window.localStorage.getItem("bb:popup-device-test");
     return value === "ios_web" || value === "android_web" ? value : null;
   } catch {

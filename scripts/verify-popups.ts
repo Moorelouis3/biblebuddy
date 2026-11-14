@@ -291,4 +291,10 @@ check("the switch is off", () => {
   assert.ok(readFileSync("lib/popups/switch.ts", "utf8").includes("export const COORDINATOR_ENABLED = false;"));
 });
 
+check("test mode can only tighten: the pretend-device switch stays localhost-only", () => {
+  const source = readFileSync("lib/popups/switch.ts", "utf8");
+  const pretend = source.slice(source.indexOf("export function testDevice"));
+  assert.ok(pretend.includes("!onLocalhost()"));
+});
+
 console.log(`\n${passed} checks passed.`);

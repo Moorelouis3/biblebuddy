@@ -18,16 +18,24 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { findPopup, TIPS_CATALOG, type PopupDefinition } from "@/lib/popups/catalog";
+import { setTestMode, testModeOn } from "@/lib/popups/switch";
 import FeaturePopup from "./FeaturePopup";
 
 export default function TipsPage() {
   const router = useRouter();
   const [open, setOpen] = useState<PopupDefinition | null>(null);
+  /** Popup test mode in this browser: null until read. */
+  const [testing, setTesting] = useState<boolean | null>(null);
 
   // ?open=<id>. Read after the page has settled, as the popups do.
   useEffect(() => {
     const timer = setTimeout(() => {
-      const wanted = findPopup(new URLSearchParams(window.location.search).get("open") || "");
+      const search = new URLSearchParams(window.location.search);
+      // /tips?popup_test=on and =off: see lib/popups/switch.ts.
+      const test = search.get("popup_test");
+      if (test === "on" || test === "off") setTesting(setTestMode(test === "on"));
+      else setTesting(testModeOn());
+      const wanted = findPopup(search.get("open") || "");
       if (wanted) setOpen(wanted);
     }, 300);
     return () => clearTimeout(timer);
@@ -47,6 +55,22 @@ export default function TipsPage() {
       <p className="mt-1.5 text-[15px] font-semibold text-[var(--bb-text-muted,#5b6079)]">
         Short guides to the main parts of the app. Tap one to open it.
       </p>
+
+      {testing ? (
+        <div className="mt-4 rounded-2xl border border-[#bfdcf8] bg-[#eef7ff] p-3.5">
+          <p className="text-[14px] font-black text-[#14122b]">Popup test mode is ON for this device</p>
+          <p className="mt-0.5 text-[13px] font-semibold leading-snug text-[#4b5068]">
+            Only this phone or browser follows the new one-popup-per-visit rule. Nobody else is affected.
+          </p>
+          <button
+            type="button"
+            onClick={() => setTesting(setTestMode(false))}
+            className="mt-2.5 min-h-[44px] rounded-full bg-white px-5 text-[14px] font-black text-[#1d4ed8] shadow-sm outline-none focus-visible:ring-4 focus-visible:ring-[#93c5fd]"
+          >
+            Turn test mode off
+          </button>
+        </div>
+      ) : null}
 
       <ul className="mt-5 flex flex-col gap-3">
         {TIPS_CATALOG.map((popup) => (
