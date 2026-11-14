@@ -13946,3 +13946,10 @@ Done: The Obedience of Abraham sign-up is a campaign in the popup coordinator (s
 Not live yet: this commit, next scheduled build. The switch is already on, so it starts showing with that build.
 Still open: not tested on a real iPhone; admin card not viewed on screen (query tested). The older Beginning of Everything invitation still runs on its own trigger until 29 Nov.
 Next: watch the first day's numbers on the Community card.
+
+## 2026-11-14 (night, Abraham popup artwork)
+Time spent: ~30 min
+Done: The Abraham sign-up popup now uses Louis's artwork in the Beginning of Everything look (finished image on desktop, picture + real text on phone, dark "You're signed up!" card). Same coordinator entry, rules and sign-up; only the drawing changed. Phone picture is a crop of the same image. verify:popups 57 checks. Tested in the browser on the test account: desktop, phone, real sign-up; test data removed.
+Not live yet: this commit, next scheduled build.
+Still open: the desktop image does not say "starts December 1st" (the phone version does). Not tested on a real iPhone.
+Next: watch the first day's numbers on the Community card.

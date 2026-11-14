@@ -75,6 +75,34 @@ export type PopupEventSignup = {
   bullets: string[];
   doneTitle: string;
   doneLine: string;
+  /**
+   * Designed artwork, the look of the Beginning of Everything popup (Louis,
+   * 2026-11-14). When it is there the sign-up is drawn with it instead of
+   * the plain card: on a wide screen the finished image with a real button
+   * over its drawn one, on a phone the picture as a header and real text.
+   * Only the look changes; who sees it and what the button does do not.
+   */
+  poster?: PopupPoster;
+};
+
+export type PopupPoster = {
+  /** 1200 x 809, words and button drawn in. */
+  desktop: string;
+  /** Picture only, no words. */
+  mobile: string;
+  /** Everything the desktop image says, for a screen reader. */
+  alt: string;
+  /** Where the drawn button is on the desktop image, in percent. */
+  button: { left: number; top: number; width: number; height: number };
+  /** The title on a phone: white line, then gold line. */
+  title: [string, string];
+  /** The gold opening words, then the rest of the sentence. */
+  lead: [string, string];
+  features: { icon: string; title: string; text: string }[];
+  verse: string;
+  verseRef: string;
+  /** The words on the gold button. */
+  ctaLabel: string;
 };
 
 export type PopupStep = { title: string; detail: string };
@@ -349,6 +377,28 @@ export const POPUP_CATALOG: PopupDefinition[] = [
       ],
       doneTitle: "You're signed up!",
       doneLine: "The Obedience of Abraham starts December 1st. Day 1 opens that morning.",
+      // Louis's artwork, 2026-11-14. The desktop image does not say when the
+      // study starts, so the phone's first point and the alt text do.
+      poster: {
+        desktop: "/events/abraham-popup-desktop.webp",
+        mobile: "/events/abraham-popup-mobile.webp",
+        alt: "The Obedience of Abraham: a free 30-day community study starting December 1st. Follow the journey of Abraham, a study on faith, obedience and what it means to trust God, even when the path is unclear. Study together with Bible Buddies around the world, with daily discussion. Sign up for the free study.",
+        button: { left: 3.3, top: 86, width: 93.5, height: 8 },
+        title: ["The Obedience", "of Abraham"],
+        lead: [
+          "Follow the journey of Abraham.",
+          "A 30-day study on faith, obedience and what it means to trust God, even when the path is unclear.",
+        ],
+        features: [
+          { icon: "📅", title: "30 Days", text: "Starts December 1st" },
+          { icon: "👥", title: "Study Together", text: "With Bible Buddies around the world" },
+          { icon: "💬", title: "Daily Discussion", text: "Share insights, ask questions" },
+          { icon: "📈", title: "Grow in Faith", text: "Learn to trust and obey God more completely" },
+        ],
+        verse: "By faith Abraham obeyed when he was called to go out to a place he would later receive as his inheritance.",
+        verseRef: "Hebrews 11:8",
+        ctaLabel: "Sign up for the free study",
+      },
     },
   },
   // The two store asks. Until 13 Nov 2026 these were AppStorePopup and

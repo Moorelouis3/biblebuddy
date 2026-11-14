@@ -302,3 +302,8 @@ entry with one extra field, `event` (`PopupEventSignup` in
   tab, Community card.
 - **The next study** is a new catalog entry and a `popup_settings` row. No new
   component.
+- **Designed artwork** (2026-11-14). An entry whose `event` has a `poster` is
+  drawn in the look of the Beginning of Everything popup: the finished image
+  on a wide screen, picture plus real text on a phone. `PosterSignup` in
+  FeaturePopup.tsx only draws; rules, sign-up and numbers are unchanged. An
+  entry without a `poster` keeps the plain card.

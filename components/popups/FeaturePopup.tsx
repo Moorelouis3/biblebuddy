@@ -23,7 +23,7 @@
  * does not move, and the safe areas are respected.
  */
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import { lockDocumentScroll } from "../../hooks/useDocumentScrollLock";
 import type { PopupDefinition, PopupEventSignup, PopupPreview } from "../../lib/popups/catalog";
@@ -199,6 +199,25 @@ export default function FeaturePopup({
       cameFrom?.focus?.({ preventScroll: true });
     };
   }, [onClose]);
+
+  // A study sign-up with designed artwork: same dialog, same keys, same
+  // buttons calling the same handlers - only drawn differently.
+  if (popup.event?.poster) {
+    return createPortal(
+      <PosterSignup
+        popup={popup}
+        event={popup.event}
+        poster={popup.event.poster}
+        titleId={titleId}
+        dialogRef={dialogRef}
+        signup={signup}
+        onClose={onClose}
+        onCta={onCta}
+        onDone={onDone}
+      />,
+      document.body,
+    );
+  }
 
   return createPortal(
     <div
@@ -527,6 +546,203 @@ function EventSignupBody({
         </ul>
       )}
     </>
+  );
+}
+
+// ───────────────────────── a study sign-up with designed artwork ─────────────────────────
+
+const GOLD_BUTTON =
+  "flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-b from-[#f5dfa0] to-[#ddb862] whitespace-nowrap px-3 py-4 text-[15px] font-black uppercase text-[#1c1307] max-[359px]:text-[13px] shadow-lg outline-none transition active:scale-[0.99] disabled:opacity-80 focus-visible:ring-4 focus-visible:ring-white";
+
+/**
+ * The look of the Beginning of Everything popup, for a catalog entry whose
+ * `event` has a `poster`.
+ *
+ *   wide screen   the finished image, a real button laid over its drawn one
+ *                 and a real ✕ (never an invisible hotspot over empty sky)
+ *   phone         the picture as a header, the words as real text so nothing
+ *                 is shrunk to unreadable, the button pinned at the bottom
+ *   signed up     the dark card at every size, saying so
+ *
+ * It draws and nothing else: the buttons call the handlers FeaturePopup was
+ * given, so eligibility, limits, snoozing and the sign-up itself are exactly
+ * the plain card's.
+ */
+function PosterSignup({
+  popup,
+  event,
+  poster,
+  titleId,
+  dialogRef,
+  signup,
+  onClose,
+  onCta,
+  onDone,
+}: {
+  popup: PopupDefinition;
+  event: PopupEventSignup;
+  poster: NonNullable<PopupEventSignup["poster"]>;
+  titleId: string;
+  dialogRef: RefObject<HTMLDivElement | null>;
+  signup: FeaturePopupSignup;
+  onClose: (method: FeaturePopupCloseMethod) => void;
+  onCta: () => void;
+  onDone?: () => void;
+}) {
+  const done = signup === "done";
+  const working = signup === "working";
+  const spot = poster.button;
+
+  return (
+    <div
+      className="fixed inset-0 flex items-center justify-center bg-black/65 backdrop-blur-[3px]"
+      style={{
+        zIndex: 9995,
+        paddingTop: "max(12px, env(safe-area-inset-top))",
+        paddingBottom: "max(12px, env(safe-area-inset-bottom))",
+        paddingLeft: "max(12px, env(safe-area-inset-left))",
+        paddingRight: "max(12px, env(safe-area-inset-right))",
+      }}
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) onClose("backdrop");
+      }}
+    >
+      <style>{ENTRANCE_CSS}</style>
+      <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        aria-describedby={`${titleId}-sub`}
+        className="bb-feature-popup-card relative flex max-h-full w-full flex-col"
+        style={{ maxWidth: done ? 460 : "min(880px, calc((100dvh - 48px) * 1.483))" }}
+      >
+        <h2 id={titleId} className="sr-only">
+          {done ? event.doneTitle : popup.headline}
+        </h2>
+        <p id={`${titleId}-sub`} className="sr-only">
+          {done ? event.doneLine : poster.alt}
+        </p>
+
+        {/* Wide screen: the artwork itself. */}
+        {done ? null : (
+          <div className="relative hidden overflow-hidden rounded-[28px] shadow-2xl sm:block">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={poster.desktop}
+              alt={poster.alt}
+              width={1200}
+              height={809}
+              className="block h-auto w-full select-none"
+              draggable={false}
+            />
+            <button
+              type="button"
+              onClick={() => onClose("close_button")}
+              aria-label="Close"
+              className="absolute right-[1.6%] top-[2%] grid h-[7.5%] w-[5%] place-items-center rounded-full bg-black/45 text-[1.6vw] font-bold leading-none text-white/90 outline-none backdrop-blur-sm transition hover:bg-black/70 hover:text-white focus-visible:ring-2 focus-visible:ring-white lg:text-[20px]"
+            >
+              ✕
+            </button>
+            <button
+              type="button"
+              onClick={onCta}
+              disabled={working}
+              aria-label={poster.ctaLabel}
+              className={`absolute rounded-[14px] outline-none transition focus-visible:ring-4 focus-visible:ring-white ${
+                working
+                  ? "bg-[#ecd48f] text-[1.7vw] font-black uppercase tracking-wide text-[#1c1307] lg:text-[15px]"
+                  : "hover:bg-white/15 active:bg-black/10"
+              }`}
+              style={{ left: `${spot.left}%`, top: `${spot.top}%`, width: `${spot.width}%`, height: `${spot.height}%` }}
+            >
+              {working ? "Signing you up…" : null}
+            </button>
+          </div>
+        )}
+
+        {/* Phone, and the "you're signed up" card at every size. */}
+        <div
+          className={`flex max-h-[calc(100dvh-24px)] min-h-0 flex-col overflow-hidden rounded-[24px] bg-[#0c0b12] text-white shadow-2xl ${
+            done ? "" : "sm:hidden"
+          }`}
+        >
+          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+            <div className={`relative ${done ? "h-[26dvh] min-h-[150px]" : "h-[34dvh] min-h-[180px]"}`}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={poster.mobile}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover object-top"
+                draggable={false}
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-[#0c0b12]" />
+              <button
+                type="button"
+                onClick={() => onClose("close_button")}
+                aria-label="Close"
+                className="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full bg-black/55 text-xl font-bold text-white outline-none backdrop-blur-sm focus-visible:ring-2 focus-visible:ring-white"
+              >
+                ✕
+              </button>
+            </div>
+            {done ? (
+              <div role="status" className="-mt-4 px-5 pb-5 text-center">
+                <p className="relative text-[34px] leading-none" aria-hidden="true">
+                  🎉
+                </p>
+                <p className="mt-2 text-[28px] font-black leading-[1.05] text-[#ecc86f]">{event.doneTitle}</p>
+                <p className="mt-3 text-[15px] font-medium leading-snug text-white/85">{event.doneLine}</p>
+              </div>
+            ) : (
+              <div className="-mt-6 px-5 pb-4">
+                <p className="relative text-[30px] font-black leading-[1.05]" aria-hidden="true">
+                  {poster.title[0]}
+                  <br />
+                  <span className="text-[#ecc86f]">{poster.title[1]}</span>
+                </p>
+                <p className="mt-3 text-[15px] font-medium leading-snug text-white/85">
+                  <span className="font-black text-[#ecc86f]">{poster.lead[0]}</span> {poster.lead[1]}
+                </p>
+                <ul className="mt-4 space-y-3">
+                  {poster.features.map((feature) => (
+                    <li key={feature.title} className="flex items-start gap-3">
+                      <span
+                        className="grid h-10 w-10 shrink-0 place-items-center rounded-full border-2 border-[#ecc86f] text-lg"
+                        aria-hidden="true"
+                      >
+                        {feature.icon}
+                      </span>
+                      <span>
+                        <span className="block text-[15px] font-black">{feature.title}</span>
+                        <span className="block text-[13px] text-white/75">{feature.text}</span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <blockquote className="mt-4 rounded-2xl border border-[#ecc86f]/40 bg-white/5 px-4 py-3 text-center">
+                  <p className="font-serif text-[16px] italic leading-snug">&ldquo;{poster.verse}&rdquo;</p>
+                  <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#ecc86f]">— {poster.verseRef}</p>
+                </blockquote>
+              </div>
+            )}
+          </div>
+          <div className="shrink-0 border-t border-white/10 bg-[#0c0b12] px-4 pb-2 pt-3">
+            <button type="button" onClick={done ? onDone : onCta} disabled={working} className={GOLD_BUTTON}>
+              {done ? "See the study page" : working ? "Signing you up…" : poster.ctaLabel}
+              {working ? null : <span aria-hidden="true">→</span>}
+            </button>
+            <button
+              type="button"
+              onClick={() => onClose("later")}
+              className="mx-auto mt-1 block min-h-[44px] rounded-xl px-4 text-[15px] font-bold text-white/60 outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              {done ? "Close" : "Maybe Later"}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -458,4 +458,20 @@ check("the admin analytics page reports sign-ups, taps and registrations apart",
   assert.ok(view.includes("Tapped Sign Me Up") && view.includes("Registered from it") && view.includes("Conversion"));
 });
 
+check("the designed artwork is only a look: files exist, same handlers, a visible way out", () => {
+  const poster = signupPopup.event!.poster!;
+  assert.ok(poster, "Abraham is drawn with Louis's artwork");
+  assert.ok(readFileSync("public" + poster.desktop).length > 50_000);
+  assert.ok(readFileSync("public" + poster.mobile).length > 50_000);
+  assert.equal(poster.ctaLabel.toUpperCase(), "SIGN UP FOR THE FREE STUDY");
+  // The desktop image does not say when it starts; the phone and the alt text do.
+  assert.ok(poster.alt.includes("December 1st"));
+  assert.ok(poster.features.some((feature) => feature.text.includes("December 1st")));
+  const shell = readFileSync("components/popups/FeaturePopup.tsx", "utf8");
+  const drawn = shell.slice(shell.indexOf("function PosterSignup("), shell.indexOf("small pictures of the real thing"));
+  assert.ok(drawn.includes("onClick={onCta}") && drawn.includes('onClose("later")') && drawn.includes('onClose("close_button")'));
+  // It registers nothing itself.
+  assert.ok(!drawn.includes("joinCommunityEvent") && !drawn.includes("supabase"));
+});
+
 console.log(`\n${passed} checks passed.`);
