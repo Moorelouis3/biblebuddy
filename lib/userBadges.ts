@@ -75,8 +75,30 @@ export function resolveUserBadge(input: {
   proExpiresAt?: string | null;
   /** When the account was made. Only needed for the New Buddy label. */
   joinedAt?: string | null;
+  /** 1-10 while this person is in this week's top ten, otherwise nothing. */
+  topTenRank?: number | null;
 }): ResolvedUserBadge | null {
   const customBadge = normalizeCustomMemberBadge(input.customBadge);
+
+  // In this week's top ten: Top Buddy, ahead of ANY other label, for as long
+  // as they are there (Louis, 2026-11-15: "it takes precedence over any other
+  // label they have as long as they are in top 10; if they leave top 10 then
+  // it goes to their default label if they have one"). Nothing is stored, so
+  // dropping out needs nothing undone: the checks below simply decide again.
+  // The rank comes from components/feed/useTopTenRank.ts, which reads the
+  // same board the Top Buddies card shows.
+  if (input.topTenRank && input.topTenRank >= 1 && input.topTenRank <= 10) {
+    return {
+      key: "top_buddy",
+      label: "Top Buddy",
+      emoji: "🔥",
+      className: "bg-orange-100 text-orange-700",
+      title: `Top Buddy · #${input.topTenRank} this week`,
+      description:
+        "One of the ten most active Bible Buddies this week. The board is at the top of the feed and changes as people study, so this label moves with it.",
+      louisMood: "stareyes",
+    };
+  }
 
   if (customBadge === "buddy_partner") {
     return {

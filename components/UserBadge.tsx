@@ -11,6 +11,7 @@ export default function UserBadge({
   groupRole,
   proExpiresAt,
   joinedAt,
+  topTenRank,
   className = "",
   skinId: _skinId,
 }: {
@@ -20,10 +21,12 @@ export default function UserBadge({
   proExpiresAt?: string | null;
   /** When the account was made: shows New Buddy for the first two weeks. */
   joinedAt?: string | null;
+  /** 1-10 while in this week's top ten: shows Top Buddy ahead of any other label. */
+  topTenRank?: number | null;
   className?: string;
   skinId?: string | null;
 }) {
-  const badge = resolveUserBadge({ customBadge, isPaid, groupRole, proExpiresAt, joinedAt });
+  const badge = resolveUserBadge({ customBadge, isPaid, groupRole, proExpiresAt, joinedAt, topTenRank });
   const [open, setOpen] = useState(false);
   void _skinId;
 

@@ -5,10 +5,10 @@
  * and tags need to be shown on the feed also... like my teacher one and level").
  *
  * In order: the streak flame (a streak of 30 days or more, the same flame the
- * profile shows), the tag, the level, and Top 10 for anybody in this week's
- * top ten. The flame, tag and level are the components the profile and the
- * study comments already use - nothing new is drawn here, this only finds
- * out what to hand them. Top 10 is components/feed/TopTenBadge.tsx.
+ * profile shows), the tag, and the level. They are the components the profile
+ * and the study comments already use - nothing new is drawn here, this only
+ * finds out what to hand them. Somebody in this week's top ten shows Top
+ * Buddy as their tag instead of their usual one (useTopTenRank).
  *
  * The feed loads its authors in half a dozen different queries (posts, wall
  * posts, comments, new comments, the composer...), none of which ask for the
@@ -25,7 +25,7 @@ import { useEffect, useState } from "react";
 import LevelBadge from "../LevelBadge";
 import StreakFlameBadge from "../StreakFlameBadge";
 import UserBadge from "../UserBadge";
-import TopTenBadge from "./TopTenBadge";
+import { useTopTenRank } from "./useTopTenRank";
 import { supabase } from "../../lib/supabaseClient";
 
 type Badges = {
@@ -93,16 +93,14 @@ export default function AuthorBadges({ userId, className = "" }: { userId: strin
     return ask(userId, setBadges);
   }, [userId]);
 
+  const topTenRank = useTopTenRank(userId);
+
+  if (!badges) return null;
   return (
     <span className={`inline-flex flex-wrap items-center gap-1 align-middle ${className}`.trim()}>
-      {badges ? (
-        <>
-          <StreakFlameBadge currentStreak={badges.current_streak ?? 0} flameId={badges.selected_streak_flame ?? undefined} />
-          <UserBadge customBadge={badges.member_badge} isPaid={badges.is_paid} joinedAt={badges.created_at} />
-          <LevelBadge currentLevel={badges.current_level} />
-        </>
-      ) : null}
-      <TopTenBadge userId={userId} />
+      <StreakFlameBadge currentStreak={badges.current_streak ?? 0} flameId={badges.selected_streak_flame ?? undefined} />
+      <UserBadge customBadge={badges.member_badge} isPaid={badges.is_paid} joinedAt={badges.created_at} topTenRank={topTenRank} />
+      <LevelBadge currentLevel={badges.current_level} />
     </span>
   );
 }

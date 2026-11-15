@@ -6,7 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import UserBadge from "@/components/UserBadge";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import AdminBadgeEditor from "./AdminBadgeEditor";
-import TopTenBadge from "@/components/feed/TopTenBadge";
+import { useTopTenRank } from "@/components/feed/useTopTenRank";
 
 /**
  * Who this is, and how they are doing - above their posts.
@@ -92,6 +92,8 @@ export default function ProfileSummaryCard({
   actions?: React.ReactNode;
 }) {
   const [summary, setSummary] = useState<Summary | null>(null);
+  // In this week's top ten: their label reads Top Buddy while they are there.
+  const topTenRank = useTopTenRank(userId);
   const [chapters, setChapters] = useState(0);
   const [buddyCount, setBuddyCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -196,8 +198,8 @@ export default function ProfileSummaryCard({
                     isPaid={summary?.is_paid ?? undefined}
                     proExpiresAt={summary?.pro_expires_at ?? undefined}
                     joinedAt={summary?.created_at ?? undefined}
+                    topTenRank={topTenRank}
                   />
-                  <TopTenBadge userId={userId} />
                 </div>
 
                 {summary?.bio ? (

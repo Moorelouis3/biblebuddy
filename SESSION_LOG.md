@@ -14042,3 +14042,8 @@ Still open: Louis to decide on a label for new people. `npm run verify:levels` f
 Done: Automatic "New Buddy" label for an account's first 14 days, on the feed and the profile card. Never stored; worked out from the account's creation date and gone on day 15. After that, no label (Louis's call was between a plain Buddy label and none; none was recommended and built). Any hand-given label or Founder wins over it.
 Not live yet: this commit, next scheduled build.
 Still open: study comments and messages do not show New Buddy (they do not pass the join date).
+
+## 2026-11-15 (morning, Top Buddy label)
+Done: Anyone in this week's top ten shows the Top Buddy label ahead of any other label while they are there, and goes back to their own label (or none) when they drop out. Read from the existing Top Buddies board, nothing stored. Replaces the separate "Top 10" badge added earlier today.
+Not live yet: this commit, next scheduled build.
+Still open: applies on the feed and profile card; study comments and messages still show the stored label only.
