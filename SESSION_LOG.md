@@ -14089,3 +14089,23 @@ studies.
 Done: Audit of Bible Buddy as a regular user (local preview on the test account, all main screens; live site public pages timed; three read-only code reviews: speed, the seven study guides, the blog). Nothing is broken: every main screen renders, all 7 guides open with all their days (31/21/21/60/21/30 + Bible in One Year), 6 of 7 have a working Amazon button, blog is 408 posts with 0 broken links or images. Two speed fixes shipped: the Levels page paints from a saved copy instead of a skeleton, and the popup system no longer asks the database ~11 "has this person used feature X" questions on every page load (now once every 6 hours).
 Not live yet: this commit, next scheduled build.
 Still open (reported to Louis, not done): points/summary re-scores a person's whole history on every call; the same profile row is read ~6 times per load; study day page waits on 8 "who finished" queries; profile_stats.app_theme_selected_at does not exist so one request fails on every page; Abraham has no book link and its cover file says 28-day; /study/<slug> does not know 4 of the 7 guides; /bible-study-guides is a "coming soon" dead page; blog banners send Android readers to the App Store.
+
+## 2026-11-15 (study discussion only on the study day)
+Done: Louis: "i only want the discussions in the day it belongs on the study,
+you can stop posting the daily discussion post in the feed, its a bad design."
+The daily study job still creates the day's post, because that post IS the
+discussion thread on the study day (GroupPostThread) and is what the members'
+notification points at - but it is no longer copied into the feed
+(skipFeedMirror in lib/groupPostInsert.ts). The copy had its own separate
+comments, so one question was being answered in two places. The feed no
+longer pins a daily study post. Today's Group Study now counts answers from
+the study day's own thread, not the feed copy. The bookshelf's "View
+Discussion" opens today's day of the study, not the feed. Also today: the
+upcoming study's cover is grey and its start date red and bold.
+Not live yet: untagged; next scheduled build (npm run pending). The daily job
+runs at 01:00 UTC, so the first day posted without a feed copy is the first
+one after that build.
+Still open: older daily study posts already in the feed are still there, with
+their own comments; nothing was deleted. "View Discussion" opens today's day,
+where discussion is one of the day's parts; it does not scroll to it. Not
+seen in a browser after these changes, and the daily job was not run.

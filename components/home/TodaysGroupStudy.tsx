@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { getEventDayPost } from "../../lib/communityEventDays";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 import { useSupabaseUser } from "../../lib/useSupabaseUser";
-import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
 import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
 
 /**
@@ -113,30 +113,26 @@ export default function TodaysGroupStudy() {
   }, [userId, event, communityDay]);
 
   /**
-   * Today's pinned post and the people who have answered it.
+   * Who has answered today's question - on the study day itself.
    *
-   * Found the way the feed pins it - the Bible Buddy account, a "Day 18: ..."
-   * headline, most recent first - so this card and that pin cannot disagree.
+   * These used to be the people who commented on the copy of the day's post
+   * in the feed, which was a different thread from the one on the study day:
+   * somebody could answer in the study and not be counted here. The feed
+   * copy is gone (Louis, 2026-11-15: "i only want discussions in the day of
+   * the study guide"), so this reads the one thread there is - the replies
+   * under that day's post, the same ones GroupPostThread shows on the day.
    */
   useEffect(() => {
     let cancelled = false;
+    if (!event || !communityDay) return;
     void (async () => {
-      const { data: pinned } = await supabase
-        .from("feed_posts")
-        .select("id, content")
-        .eq("user_id", BIBLE_BUDDY_USER_ID)
-        .order("created_at", { ascending: false })
-        .limit(12);
-
-      const todaysPost = (pinned || []).find((post) =>
-        /(?:^|·\s)Day \d+:\s/.test(String(post.content).split("\n", 1)[0] ?? ""),
-      );
-      if (cancelled || !todaysPost) return;
+      const dayPost = await getEventDayPost(supabase, event.slug, communityDay).catch(() => null);
+      if (cancelled || !dayPost) return;
 
       const { data: answers } = await supabase
-        .from("feed_post_comments")
+        .from("group_posts")
         .select("user_id")
-        .eq("post_id", todaysPost.id)
+        .eq("parent_post_id", dayPost.group_post_id)
         .order("created_at", { ascending: false })
         .limit(200);
 
@@ -149,13 +145,13 @@ export default function TodaysGroupStudy() {
         : { data: [] };
 
       if (!cancelled) {
-        setDiscussion({ postId: todaysPost.id, count: answerers.length, people: faces || [] });
+        setDiscussion({ postId: dayPost.group_post_id, count: answerers.length, people: faces || [] });
       }
     })();
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [event, communityDay]);
 
   if (!todayStrip) return null;
 

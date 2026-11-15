@@ -25,6 +25,19 @@ export async function insertGroupPostWithRetry(
   },
   options: {
     skipInsertNotifications?: boolean;
+    /**
+     * Do not copy this post into the feed.
+     *
+     * For a post that is a thread for somewhere else. The one case today is
+     * a community study's day post: it exists so that day of the study has a
+     * discussion under it, and that is the only place it should be answered
+     * (Louis, 2026-11-15: "i only want discussions in the day of the study
+     * guide ... you can stop posting the daily discussion post in the feed,
+     * its a bad design"). Copied into the feed it became a second thread with
+     * its own separate answers, so the same question was being answered in
+     * two places that could not see each other.
+     */
+    skipFeedMirror?: boolean;
   } = {},
 ) {
   const postId = payload.id || crypto.randomUUID();
@@ -113,6 +126,8 @@ export async function insertGroupPostWithRetry(
    * Best effort on purpose. A missing mirror costs one post in the feed; a
    * throw here would fail the cron that was publishing it.
    */
+  if (options.skipFeedMirror) return insertedPostId;
+
   try {
     await supabaseAdmin.from("feed_posts").insert({
       // Posted by Bible Buddy, not by Louis.

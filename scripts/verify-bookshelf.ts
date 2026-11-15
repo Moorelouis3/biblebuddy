@@ -208,4 +208,29 @@ check("long after the last study there is neither a live nor an upcoming one", (
   assert.equal(getUpcomingCommunityEvent(farFuture), null);
 });
 
+console.log("Discussion lives on the study day");
+
+check("the daily study post is the day's thread and is not copied into the feed", () => {
+  const insert = readFileSync("lib/groupPostInsert.ts", "utf8");
+  assert.ok(insert.indexOf("if (options.skipFeedMirror) return insertedPostId;") < insert.indexOf('.from("feed_posts").insert('));
+  assert.ok(readFileSync("lib/communityEventDailyPost.ts", "utf8").includes("skipFeedMirror: true"));
+});
+
+check("the feed does not pin a daily study post", () => {
+  const feed = readFileSync("app/bb-feed/page.tsx", "utf8");
+  assert.ok(feed.includes("for (const candidate of [poll, prayer]) {"));
+});
+
+check("View Discussion on the shelf opens today's day of the study, never the feed", () => {
+  const shelf = readFileSync("components/home/YourBookshelf.tsx", "utf8");
+  assert.ok(shelf.includes('{ label: "View Discussion", href: dayHref(communityDay), kind: "view_discussion" }'));
+  assert.ok(!shelf.includes("/bb-feed") && !shelf.includes("eventDayDiscussionPath"));
+});
+
+check("Today's Group Study counts answers from the study day's thread", () => {
+  const card = readFileSync("components/home/TodaysGroupStudy.tsx", "utf8");
+  assert.ok(card.includes('.eq("parent_post_id", dayPost.group_post_id)'));
+  assert.ok(!card.includes("feed_post_comments") && !card.includes('.from("feed_posts")'));
+});
+
 console.log(`\n${passed} checks passed.`);

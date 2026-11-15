@@ -29,7 +29,6 @@ import ProfileSummaryCard from "../../components/profile/ProfileSummaryCard";
 import MessageBuddyButton from "../../components/profile/MessageBuddyButton";
 import LoadFailedNotice from "../../components/LoadFailedNotice";
 import { COMMUNITY_GROUP_ID } from "../../lib/communityMilestones";
-import { getActiveCommunityEvent, getCommunityEventState } from "../../lib/communityEvents";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -2379,17 +2378,15 @@ function selectPinnedPosts<T extends FeedPost>(posts: T[]): T[] {
     return match ? Number(match[1]) : null;
   };
 
-  const event = getActiveCommunityEvent();
-  const eventState = event ? getCommunityEventState(event) : null;
-  const communityDay = eventState?.phase === "live" ? eventState.communityDay : null;
-
-  const dailyPosts = official.filter((post) => dayNumberOf(post) !== null);
-  const daily =
-    (communityDay !== null
-      ? dailyPosts.find((post) => dayNumberOf(post) === communityDay)
-      : null) || dailyPosts[0];
-
-  const poll = official.find((post) => pollIdFromPost(post.link_url));
+  /**
+   * No daily study pin any more (Louis, 2026-11-15). The study's day post is
+   * no longer copied into the feed - each day is discussed on that day of the
+   * study, and nowhere else - so there is no new one to pin, and leaving the
+   * rule in would have pinned the last old copy for ever. The old copies are
+   * still in the feed's history; dayNumberOf is what keeps them out of the
+   * other two pins below.
+   */
+  const poll = official.find((post) => pollIdFromPost(post.link_url) && dayNumberOf(post) === null);
   /**
    * The weekly thread itself - "Drop your prayer request for the week" - and
    * not merely a post that mentions praying.
@@ -2405,9 +2402,7 @@ function selectPinnedPosts<T extends FeedPost>(posts: T[]): T[] {
   );
 
   const pinned: T[] = [];
-  // Daily first: it is the one that changes every morning, and it is what the
-  // dashboard card sends people here for.
-  for (const candidate of [daily, poll, prayer]) {
+  for (const candidate of [poll, prayer]) {
     if (!candidate || pinned.length >= PINNED_MAX) continue;
     if (pinned.some((post) => post.id === candidate.id)) continue;
     pinned.push(candidate);

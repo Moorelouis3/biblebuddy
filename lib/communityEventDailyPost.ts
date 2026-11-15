@@ -326,7 +326,10 @@ async function publishDayPost(
       },
       // Same as the other automated posts: skip insert-time fanout. The event
       // members are notified below instead.
-      { skipInsertNotifications: true },
+      // And not into the feed: this post is the discussion thread for that
+      // day of the study, and the study day is where it is answered. See
+      // skipFeedMirror in lib/groupPostInsert.ts.
+      { skipInsertNotifications: true, skipFeedMirror: true },
     );
   } catch (error) {
     if (!args.mappingAlreadyExists) {

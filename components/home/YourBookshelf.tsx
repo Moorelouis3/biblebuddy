@@ -11,7 +11,6 @@ import {
   getLiveCommunityEvent,
   getUpcomingCommunityEvent,
 } from "../../lib/communityEvents";
-import { eventDayDiscussionPath } from "../../lib/communityEventDays";
 import { BIBLE_YEAR_PLAN_HREF } from "../../lib/bibleYearProgress";
 import { BIBLE_YEAR_KEY, SHELF_SEATS, selectShelf, type ShelfCandidate, type ShelfRole } from "../../lib/bookshelf/selectShelf";
 import { trackWisdomBookEvent } from "../../lib/wisdomOfProverbsProducts";
@@ -297,7 +296,10 @@ export default function YourBookshelf({
           const action: LiveAction = !participating
             ? { label: "Join Study", href: `/events/${liveEvent.slug}?join=1&src=bookshelf`, kind: "join" }
             : p.isComplete || p.nextDay > communityDay
-              ? { label: "View Discussion", href: eventDayDiscussionPath("", ""), kind: "view_discussion" }
+              ? // Today's day of the study, where that day's discussion is.
+                // Never the feed (Louis, 2026-11-15: "i only want the
+                // discussions in the day it belongs on the study").
+                { label: "View Discussion", href: dayHref(communityDay), kind: "view_discussion" }
               : p.nextDay < communityDay
                 ? { label: "Catch Up", href: dayHref(p.nextDay), kind: "catch_up" }
                 : { label: "Study Today", href: dayHref(communityDay), kind: "study_today" };
