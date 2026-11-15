@@ -21,8 +21,13 @@ import { trackWisdomBookEvent } from "../lib/wisdomOfProverbsProducts";
  *   - the celebration: open Bible, DAY COMPLETE, "You finished Day N!", the
  *     study's name;
  *   - the study's printed book, with its real cover and a button to Amazon -
- *     ONLY when that study has an Amazon address. No address, no card: never
- *     a "coming soon", never a dead button;
+ *     ONLY when that study has an Amazon address. Never a "coming soon",
+ *     never a dead button;
+ *   - for a study whose book is not on Amazon yet, the same cover with how
+ *     far the reader has got ("Day 3 of 30") and nothing to tap (Louis,
+ *     2026-11-15, for The Obedience of Abraham while Amazon reviewed it:
+ *     "Show cover now"). The moment the study has an address this turns into
+ *     the book card by itself;
  *   - what next: Start Day N+1, or - only if the screen says that day
  *     cannot be opened yet - a line saying so, or a whole-study celebration
  *     on the last day.
@@ -403,6 +408,34 @@ export default function DevotionalDayCompletionModal({
                     <span className="whitespace-nowrap">Buy on Amazon</span>
                     <span aria-hidden="true">↗</span>
                   </a>
+                </div>
+              </section>
+            ) : isCelebration && cover ? (
+              /* No book to buy yet: the cover and the reader's own progress.
+                 Nothing here is a button, and nothing promises a date. */
+              <section
+                aria-label="Your progress in this study"
+                className="relative mt-5 flex items-center gap-4 rounded-[26px] border border-[#eadffb] bg-white/80 p-3.5 text-left shadow-[0_8px_22px_rgba(91,60,180,0.14)] sm:p-4"
+              >
+                <BookCover src={cover} title={title} />
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-[18px] font-black leading-tight text-[#14122b] sm:text-[20px]">
+                    {finishedStudy ? "Every day finished" : length ? `Day ${day} of ${length}` : `Day ${day} done`}
+                  </h2>
+                  <p className="mt-1.5 text-[13.5px] font-semibold leading-snug text-[#4b5068]">
+                    {finishedStudy ? "You walked the whole study." : "One day at a time. You're building something."}
+                  </p>
+                  {length ? (
+                    <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-[#ede4ff]" aria-hidden="true">
+                      <div
+                        className="h-full rounded-full"
+                        style={{
+                          width: `${Math.min(100, Math.max(4, Math.round((Math.min(day, length) / length) * 100)))}%`,
+                          background: "linear-gradient(90deg, #8b45f0 0%, #6d28d9 100%)",
+                        }}
+                      />
+                    </div>
+                  ) : null}
                 </div>
               </section>
             ) : null}

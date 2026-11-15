@@ -14123,3 +14123,7 @@ Still open: not published. Needs Louis's yes for (1) the "my AI answers are accu
 Done: Louis confirmed the AI answers and said publish. The Obedience of Abraham paperback ($19.99) and hardcover ($29.99) are submitted; both show "In review" on the KDP bookshelf. The app's Abraham cover (public/obedienceofabraham28day.png, used in five places and the database) is now the front of the new print cover, so it reads "30-day" - same path, so no database change.
 Not live yet: the new cover image, next scheduled build.
 Still open: the book link and popups. Amazon gives the ASIN when the book goes Live (up to 72h). Then run `node --env-file=.env.local scripts/link-printed-edition.mjs "The Obedience of Abraham" <paperback ASIN>` - a database change, live at once; the Library button, the strip on each day and the after-a-day popup all read it.
+
+## 2026-11-15 (morning, cover in the day-complete popup)
+Done: The day-complete popup now shows a study's cover with the reader's progress ("Day 3 of 30" and a bar) when that study has no Amazon link yet - Louis's call for The Obedience of Abraham while Amazon reviews the book. No button and no "coming soon". When the link is added it becomes the normal "Get the book" card by itself.
+Not live yet: this commit, next scheduled build.
