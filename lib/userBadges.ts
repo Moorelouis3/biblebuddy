@@ -10,6 +10,18 @@ export type ResolvedUserBadge = {
   louisMood: "wave" | "stareyes" | "think" | "pray" | "sheesh" | "bible";
 };
 
+/**
+ * There is no Pro label any more (Louis, 2026-11-15: "remove pro label and
+ * those people to the founder level"). The app has been free since August
+ * 2026, so "Pro" described something that no longer exists. Everybody who
+ * showed it - the people who paid, and the two given it by hand - shows
+ * Founder Buddy instead: they are the ones who backed Bible Buddy early.
+ *
+ * Nothing in anybody's account was changed to do this. `pro_buddy`,
+ * `pro_trial` and `is_paid` are still stored exactly as they were, and are
+ * still read by the reports that count them; only what the label says is
+ * decided here.
+ */
 export const CUSTOM_MEMBER_BADGE_OPTIONS: Array<{
   value: "" | CustomMemberBadge;
   label: string;
@@ -20,8 +32,6 @@ export const CUSTOM_MEMBER_BADGE_OPTIONS: Array<{
   { value: "top_buddy", label: "Top Buddy" },
   { value: "founder_buddy", label: "Founder Buddy" },
   { value: "buddy_partner", label: "Buddy Partner" },
-  { value: "pro_buddy", label: "Pro Buddy" },
-  { value: "pro_trial", label: "Pro Trial" },
 ];
 
 export function normalizeCustomMemberBadge(value: string | null | undefined): CustomMemberBadge | null {
@@ -44,6 +54,9 @@ export function isProTrialActive(expiresAt?: string | null): boolean {
   return new Date(expiresAt).getTime() > Date.now();
 }
 
+const FOUNDER_DESCRIPTION =
+  "This member has been with Bible Buddy from the early days and helped it grow. Founder Buddies are the people who backed Bible Buddy before it was free for everyone.";
+
 export function resolveUserBadge(input: {
   customBadge?: string | null;
   isPaid?: boolean | null;
@@ -51,18 +64,6 @@ export function resolveUserBadge(input: {
   proExpiresAt?: string | null;
 }): ResolvedUserBadge | null {
   const customBadge = normalizeCustomMemberBadge(input.customBadge);
-
-  if (customBadge === "pro_trial" && (!input.proExpiresAt || isProTrialActive(input.proExpiresAt))) {
-    return {
-      key: "pro_trial",
-      label: "Pro Trial",
-      emoji: "ðŸ™",
-      className: "bg-violet-100 text-violet-700",
-      title: "Pro Trial",
-      description: "This buddy has a 30-day Bible Buddy Pro trial. They get the Pro badge while their trial is active.",
-      louisMood: "pray",
-    };
-  }
 
   if (customBadge === "buddy_partner") {
     return {
@@ -112,27 +113,15 @@ export function resolveUserBadge(input: {
     };
   }
 
-  if (customBadge === "founder_buddy") {
+  if (customBadge === "founder_buddy" || customBadge === "pro_buddy" || customBadge === "pro_trial") {
     return {
       key: "founder_buddy",
       label: "Founder Buddy",
       emoji: "⭐",
       className: "bg-amber-100 text-amber-700",
       title: "Founder Buddy",
-      description: "This member has been with Bible Buddy from the beginning and has been instrumental in the growth and direction of Bible Buddy.",
+      description: FOUNDER_DESCRIPTION,
       louisMood: "bible",
-    };
-  }
-
-  if (customBadge === "pro_buddy") {
-    return {
-      key: "pro_buddy",
-      label: "Pro Buddy",
-      emoji: "🙏",
-      className: "bg-violet-100 text-violet-700",
-      title: "Pro Buddy",
-      description: "This buddy has full Bible Buddy premium access unlocked. Pro Buddy members support the app and get access to the deeper study experience.",
-      louisMood: "pray",
     };
   }
 
@@ -160,15 +149,16 @@ export function resolveUserBadge(input: {
     };
   }
 
+  // Paid when Bible Buddy was a paid app: a founder.
   if (input.isPaid) {
     return {
-      key: "pro_buddy",
-      label: "Pro Buddy",
-      emoji: "🙏",
-      className: "bg-violet-100 text-violet-700",
-      title: "Pro Buddy",
-      description: "This buddy is a paid Bible Buddy supporter. Pro Buddy members help support the app and unlock deeper Bible study features at the same time.",
-      louisMood: "pray",
+      key: "founder_buddy",
+      label: "Founder Buddy",
+      emoji: "⭐",
+      className: "bg-amber-100 text-amber-700",
+      title: "Founder Buddy",
+      description: FOUNDER_DESCRIPTION,
+      louisMood: "bible",
     };
   }
 

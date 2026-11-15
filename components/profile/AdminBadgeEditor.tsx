@@ -24,6 +24,12 @@ import { CUSTOM_MEMBER_BADGE_OPTIONS, normalizeCustomMemberBadge } from "@/lib/u
 
 const ADMIN_EMAIL = "moorelouis3@gmail.com";
 
+/** A stored Pro label shows as Founder Buddy now, so that is what the picker starts on. */
+const pickerValue = (stored: string | null) => {
+  const badge = normalizeCustomMemberBadge(stored);
+  return badge === "pro_buddy" || badge === "pro_trial" ? "founder_buddy" : badge || "";
+};
+
 export default function AdminBadgeEditor({
   userId,
   currentBadge,
@@ -34,7 +40,7 @@ export default function AdminBadgeEditor({
   onSaved: (saved: { memberBadge: string | null; isPaid?: boolean; proExpiresAt?: string | null }) => void;
 }) {
   const [isAdmin, setIsAdmin] = useState(false);
-  const [draft, setDraft] = useState(normalizeCustomMemberBadge(currentBadge) || "");
+  const [draft, setDraft] = useState(pickerValue(currentBadge));
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -50,7 +56,7 @@ export default function AdminBadgeEditor({
 
   // The profile's own label arrives after the card has drawn.
   useEffect(() => {
-    setDraft(normalizeCustomMemberBadge(currentBadge) || "");
+    setDraft(pickerValue(currentBadge));
   }, [currentBadge]);
 
   if (!isAdmin) return null;

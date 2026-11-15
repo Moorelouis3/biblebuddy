@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import UserBadge from "@/components/UserBadge";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
 import AdminBadgeEditor from "./AdminBadgeEditor";
+import TopTenBadge from "@/components/feed/TopTenBadge";
 
 /**
  * Who this is, and how they are doing - above their posts.
@@ -195,6 +196,7 @@ export default function ProfileSummaryCard({
                     isPaid={summary?.is_paid ?? undefined}
                     proExpiresAt={summary?.pro_expires_at ?? undefined}
                   />
+                  <TopTenBadge userId={userId} />
                 </div>
 
                 {summary?.bio ? (

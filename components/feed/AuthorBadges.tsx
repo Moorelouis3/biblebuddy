@@ -4,9 +4,11 @@
  * The tag and level beside a name on the feed (Louis, 2026-11-15: "the levels
  * and tags need to be shown on the feed also... like my teacher one and level").
  *
- * The same two badges, in the same order, that study comments already show
- * (components/comments/CommentSection.tsx): UserBadge first, then LevelBadge.
- * Nothing new is drawn here - this only finds out what to hand them.
+ * In order: the streak flame (a streak of 30 days or more, the same flame the
+ * profile shows), the tag, the level, and Top 10 for anybody in this week's
+ * top ten. The flame, tag and level are the components the profile and the
+ * study comments already use - nothing new is drawn here, this only finds
+ * out what to hand them. Top 10 is components/feed/TopTenBadge.tsx.
  *
  * The feed loads its authors in half a dozen different queries (posts, wall
  * posts, comments, new comments, the composer...), none of which ask for the
@@ -21,10 +23,19 @@
 
 import { useEffect, useState } from "react";
 import LevelBadge from "../LevelBadge";
+import StreakFlameBadge from "../StreakFlameBadge";
 import UserBadge from "../UserBadge";
+import TopTenBadge from "./TopTenBadge";
 import { supabase } from "../../lib/supabaseClient";
 
-type Badges = { member_badge: string | null; is_paid: boolean | null; current_level: number | null };
+type Badges = {
+  member_badge: string | null;
+  is_paid: boolean | null;
+  current_level: number | null;
+  current_streak: number | null;
+  selected_streak_flame: string | null;
+};
+const NONE: Badges = { member_badge: null, is_paid: null, current_level: null, current_streak: null, selected_streak_flame: null };
 
 const known = new Map<string, Badges>();
 const waiting = new Map<string, Set<(badges: Badges | null) => void>>();
@@ -39,15 +50,17 @@ async function flush() {
     const batch = ids.slice(i, i + 100);
     const { data, error } = await supabase
       .from("profile_stats")
-      .select("user_id, member_badge, is_paid, current_level")
+      .select("user_id, member_badge, is_paid, current_level, current_streak, selected_streak_flame")
       .in("user_id", batch);
     if (!error) {
-      for (const id of batch) known.set(id, { member_badge: null, is_paid: null, current_level: null });
+      for (const id of batch) known.set(id, NONE);
       for (const row of data || []) {
         known.set(row.user_id as string, {
           member_badge: (row.member_badge as string | null) ?? null,
           is_paid: (row.is_paid as boolean | null) ?? null,
           current_level: (row.current_level as number | null) ?? null,
+          current_streak: (row.current_streak as number | null) ?? null,
+          selected_streak_flame: (row.selected_streak_flame as string | null) ?? null,
         });
       }
     }
@@ -78,11 +91,16 @@ export default function AuthorBadges({ userId, className = "" }: { userId: strin
     return ask(userId, setBadges);
   }, [userId]);
 
-  if (!badges) return null;
   return (
     <span className={`inline-flex flex-wrap items-center gap-1 align-middle ${className}`.trim()}>
-      <UserBadge customBadge={badges.member_badge} isPaid={badges.is_paid} />
-      <LevelBadge currentLevel={badges.current_level} />
+      {badges ? (
+        <>
+          <StreakFlameBadge currentStreak={badges.current_streak ?? 0} flameId={badges.selected_streak_flame ?? undefined} />
+          <UserBadge customBadge={badges.member_badge} isPaid={badges.is_paid} />
+          <LevelBadge currentLevel={badges.current_level} />
+        </>
+      ) : null}
+      <TopTenBadge userId={userId} />
     </span>
   );
 }

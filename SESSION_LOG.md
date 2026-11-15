@@ -14032,3 +14032,8 @@ Still open: not tested inside the iPhone app or on a real phone, and not by
 actually finishing a real day - only through a temporary local preview page,
 now deleted. Apple allows links to buy physical goods outside the app
 (guideline 3.1.3(e)); the app already carried such a link.
+
+## 2026-11-15 (morning, labels)
+Done: No more Pro label - anyone who paid, or had Pro Buddy/Pro Trial by hand, shows Founder Buddy (display only; no account row changed). Feed names now also show the streak flame (30+ days) and a Top 10 badge read from the existing weekly Top Buddies board. Label picker no longer offers the two Pro options.
+Not live yet: this commit, next scheduled build.
+Still open: Louis to decide on a label for new people. `npm run verify:levels` fails on a communityMilestones check that is not from this work.

@@ -1243,7 +1243,7 @@ export default function PublicProfilePage() {
                     <div className="flex-1">
                       <p className="text-sm font-semibold text-gray-900">Buddy Badge</p>
                       <p className="mt-1 text-xs text-gray-500">
-                        Paid buddies get Pro Buddy automatically. You can also assign Pro Buddy manually to grant full premium access.
+                        Anyone who paid when Bible Buddy was a paid app shows Founder Buddy automatically.
                       </p>
                       <select
                         value={badgeDraft}
