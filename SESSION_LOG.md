@@ -14051,3 +14051,36 @@ Still open: applies on the feed and profile card; study comments and messages st
 ## 2026-11-15 (morning, owner level and label)
 Done: Louis's level set to 20 in his own profile_stats row (was 16; the stored level is a floor, so it stays). Teacher is never replaced by Top Buddy - the board already leaves the owner out, and the label rule now does too.
 Not live yet: the label rule, next scheduled build. The level is a data change and is live now.
+
+## 2026-11-15 (smart bookshelf, group study moved, two more games)
+Done: From Louis's Notion task "Smart Bookshelf & Dashboard Improvements".
+The dashboard shelf now chooses and orders its six books per person
+(lib/bookshelf/selectShelf.ts, a plain tested function): 1 the next
+community study (countdown, Sign Up, or "You're Signed Up!"), 2 the study
+the group is doing now (group's day, progress bar, number studying, and Join
+Study / Study Today / Catch Up / View Discussion), 3 what the person read
+most recently, 4-6 their other studies, then finished ones, then
+recommendations. Recommendations are a scoring table from existing data
+(same kind of study, Bible books read lately, short studies finished, the
+study they chose); no AI, no randomness. Nothing names a study: both
+community seats come from lib/communityEvents.ts (new getLiveCommunityEvent
+and getUpcomingCommunityEvent). Today's Group Study moved to directly under
+the shelf (moved, not copied). Bible Word Search and Bible Memory cards added
+under Trivia and Scrambled. Tracking: bookshelf_shown (one event for the
+row), bookshelf_card_clicked, home_word_search_click/_impression,
+home_memory_click/_impression. No database change.
+npm run verify:bookshelf added (18 checks, every case in the brief).
+Checked on Louis's real account locally at desktop width: Abraham first and
+signed up, Beginning of Everything live with 136 studying and Catch Up,
+Proverbs currently reading. Phone: card 168px, row swipes, upcoming card
+first, no sideways page scroll - measured, no clean phone screenshot.
+Not live yet: untagged; waits for the next scheduled build (npm run pending).
+Still open: only Louis's account was seen in a browser; new user, not signed
+up, today's reading done and "no community study" are covered by the rules
+tests, not by a real account. Not seen in the iPhone app. Signed-out people
+cannot reach the dashboard at all, so "guest" does not apply. "View
+Discussion" opens the feed, where study discussion lives. There are seven
+studies and six seats, so recommendations mostly decide order today and
+matter more as the Library grows. Bible in One Year's "last read" comes from
+its newest finished-day action; an account without one sorts it after dated
+studies.

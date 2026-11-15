@@ -280,6 +280,8 @@ export default function HomeScreen() {
       impressionsSent.current = true;
       trackHomeEvent("home_trivia_impression", {});
       trackHomeEvent("home_scrambled_impression", {});
+      trackHomeEvent("home_word_search_impression", {});
+      trackHomeEvent("home_memory_impression", {});
       trackHomeEvent("home_group_impression", { postsToday: group.postsToday });
       observer.disconnect();
     });
@@ -368,8 +370,7 @@ export default function HomeScreen() {
           front for a few hours, and this puts it back - one short thing to
           read before the shelf of long ones.
 
-          The bookshelf renders Today's Group Study above its own covers, so
-          the group study is still the first thing under the verse. */}
+          Today's Group Study sits directly under the shelf (below). */}
       <VerseOfTheDayCard userId={userId} />
 
       <YourBookshelf
@@ -377,6 +378,14 @@ export default function HomeScreen() {
         planDay={stats.planDay}
         planCompletedDays={completedDays}
       />
+
+      {/* Today's Group Study, directly under the bookshelf (Louis,
+          2026-11-15). The shelf introduces the study the group is doing; this
+          is the same study's reading and discussion for today. It was at the
+          bottom above the games from 2026-10-18 until then. There is one of
+          it: it was moved here, not copied. It draws nothing when no study is
+          live. */}
+      <TodaysGroupStudy />
 
       {/* Your Notes sat here for part of 2026-10-25 and was pulled the same
           day. Louis: the dashboard is prime real estate and the card made it
@@ -445,11 +454,6 @@ export default function HomeScreen() {
           of 31" card with its Join the Study button. Taken off the dashboard
           on 2026-10-18 (Louis: "we don't need it anymore"); the study itself
           is still on the Plans tab and at /devotionals/wisdom-of-proverbs. */}
-
-      {/* Today’s Group Study, down here above the games (Louis,
-          2026-10-18: "I want the group post to be at the bottom above the
-          trivia card"). */}
-      <TodaysGroupStudy />
 
       {/* 7. Test Your Knowledge - the approved Option 2 colorful pair.
           Decorative art is CSS/emoji, never baked text. No "daily challenge"
@@ -527,6 +531,81 @@ export default function HomeScreen() {
               <span className="mt-2.5 block">
                 <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
                   Play →
+                </span>
+              </span>
+            </span>
+          </Link>
+
+          {/* Bible Word Search and Bible Memory (Louis, 2026-11-15), under
+              the first two so the four read as a 2 x 2. Same card, same
+              spacing, same button. Neither game has artwork of its own, so
+              the picture is drawn here from the game itself - a letter grid
+              with a found word, a verse with one word to fill in - as the
+              Scrambled tiles are. No numbers are claimed that the card does
+              not load. */}
+          <Link
+            href="/bible-study-games/word-search"
+            onClick={() => trackHomeEvent("home_word_search_click", {})}
+            aria-label="Bible Word Search - find hidden Bible words"
+            className="relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#cfe0fb] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
+            style={{ background: "linear-gradient(135deg, #eef5ff 0%, #dbe9ff 100%)" }}
+          >
+            <span className="grid w-20 shrink-0 gap-y-0.5 rounded-xl bg-white p-1.5 shadow-sm" aria-hidden="true">
+              {["FAITH", "GRACE", "TRUST"].map((row, rowIndex) => (
+                <span key={row} className={`grid grid-cols-5 rounded ${rowIndex === 1 ? "bg-[#5eead4]" : ""}`}>
+                  {row.split("").map((letter, index) => (
+                    <span
+                      key={index}
+                      className={`grid h-[13px] place-items-center text-[10px] leading-none text-[#14213d] ${
+                        rowIndex === 1 ? "font-black" : "font-bold"
+                      }`}
+                    >
+                      {letter}
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </span>
+            <span className="relative z-10 min-w-0 flex-1">
+              <span className="block text-lg font-black text-[#14213d]">Bible Word Search</span>
+              <span className="mt-0.5 block text-xs font-semibold text-[#3f5d8a]">
+                Find hidden Bible words and strengthen your biblical vocabulary
+              </span>
+              <span className="mt-2 inline-block rounded-full bg-[#d3e3ff] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#1d4ed8]">
+                📖 ALL 66 BOOKS
+              </span>
+              <span className="mt-2.5 block">
+                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
+                  Play Now →
+                </span>
+              </span>
+            </span>
+          </Link>
+
+          <Link
+            href="/bible-study-games/memory"
+            onClick={() => trackHomeEvent("home_memory_click", {})}
+            aria-label="Bible Memory - practice remembering Scripture"
+            className="relative flex min-h-[132px] items-center gap-4 overflow-hidden rounded-2xl border border-[#dccdf8] p-4 shadow-sm outline-none transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:ring-[var(--bb-accent,#2f7fe8)] active:scale-[0.99] sm:p-5"
+            style={{ background: "linear-gradient(135deg, #f6efff 0%, #eadcff 100%)" }}
+          >
+            <span className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-white text-center shadow-sm" aria-hidden="true">
+              <span>
+                <span className="block text-[9px] font-bold leading-tight text-[#14213d]">The LORD is my</span>
+                <span className="mt-1 inline-block rounded-full bg-[#7c3aed] px-2 py-0.5 text-[9px] font-black text-white">shepherd</span>
+              </span>
+            </span>
+            <span className="relative z-10 min-w-0 flex-1">
+              <span className="block text-lg font-black text-[#2b1a52]">Bible Memory</span>
+              <span className="mt-0.5 block text-xs font-semibold text-[#5d4a8a]">
+                Practice remembering Scripture and strengthen your knowledge of God&apos;s Word
+              </span>
+              <span className="mt-2 inline-block rounded-full bg-[#e2d4fb] px-2.5 py-1 text-[10px] font-black tracking-wide text-[#5b21b6]">
+                🧠 LEARN IT BY HEART
+              </span>
+              <span className="mt-2.5 block">
+                <span className="inline-flex min-h-[36px] items-center rounded-lg bg-[#111827] px-4 py-1.5 text-xs font-black uppercase tracking-wide text-white">
+                  Play Now →
                 </span>
               </span>
             </span>

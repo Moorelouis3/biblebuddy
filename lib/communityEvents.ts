@@ -190,6 +190,28 @@ export function getActiveCommunityEvent(now = new Date()) {
   return finished[0] || null;
 }
 
+/**
+ * The study the group is doing right now, or null.
+ *
+ * Separate from getActiveCommunityEvent on purpose: that one always answers
+ * with something (the live study, else the next, else the last), which is
+ * right for a banner and wrong for the dashboard shelf, where "live" and
+ * "next" are two different seats and either can be empty
+ * (lib/bookshelf/selectShelf.ts).
+ */
+export function getLiveCommunityEvent(now = new Date()): CommunityEvent | null {
+  return COMMUNITY_EVENTS.find((event) => getCommunityEventState(event, now).phase === "live") || null;
+}
+
+/** The next study that has not started, soonest first, or null. */
+export function getUpcomingCommunityEvent(now = new Date()): CommunityEvent | null {
+  return (
+    COMMUNITY_EVENTS.filter((event) => getCommunityEventState(event, now).phase === "countdown").sort((left, right) =>
+      left.startDate.localeCompare(right.startDate),
+    )[0] || null
+  );
+}
+
 /** Today's calendar date in Europe/Berlin, as {y, m, d}. */
 function berlinToday(now = new Date()) {
   const parts = new Intl.DateTimeFormat("en-CA", {

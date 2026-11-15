@@ -148,6 +148,15 @@ const ALLOWED_EVENTS = new Set([
   "home_see_all_click",
   "home_trivia_click",
   "home_scrambled_click",
+  // The two games added to the dashboard on 15 Nov 2026.
+  "home_word_search_click",
+  "home_memory_click",
+  "home_word_search_impression",
+  "home_memory_impression",
+  // The dashboard bookshelf (components/home/YourBookshelf.tsx): one event
+  // for the row as shown, one per tap on a card.
+  "bookshelf_shown",
+  "bookshelf_card_clicked",
   "home_group_click",
   "home_trivia_impression",
   "home_scrambled_impression",
