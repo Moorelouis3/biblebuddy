@@ -105,6 +105,10 @@
       "schedule": "45 8,16 * * *"
     },
     {
+      "path": "/api/cron/dm-faq-replies",
+      "schedule": "7,22,37,52 * * * *"
+    },
+    {
       "path": "/api/cron/analytics-snapshots?group=today",
       "schedule": "*/15 * * * *"
     },

@@ -44,7 +44,17 @@ import type { SupabaseClient } from "@supabase/supabase-js";
  * cap of 50 a day on top of this monthly gate. It drafts into a box the owner
  * edits and posts himself; nothing here publishes anything.
  */
-export const BILLABLE_FEATURES = ["little_louis_reply", "bible_text_to_speech", "feed_auto_comment_draft"] as const;
+export const BILLABLE_FEATURES = [
+  "little_louis_reply",
+  "bible_text_to_speech",
+  "feed_auto_comment_draft",
+  // Joined 2026-11-15 at Louis's request ("can we set up something where you
+  // can use AI ... cheap ... where it answers my DMs"). It only CLASSIFIES a
+  // DM into one of the FAQ entries in lib/faq.ts or none; the words sent are
+  // always the approved FAQ text, never the model's. About 2 DMs a day reach
+  // it, and app/api/cron/dm-faq-replies caps it at 40 a day besides.
+  "dm_faq_classify",
+] as const;
 export type BillableFeature = (typeof BILLABLE_FEATURES)[number];
 
 /** $10 a month, Louis's figure. */
@@ -74,6 +84,9 @@ export const ESTIMATED_COST_USD: Record<BillableFeature, number> = {
   // About 280 tokens in and 50 out on gpt-4o-mini is $0.00007. Rounded up
   // nearly threefold, for the same reason as the chat figure above.
   feed_auto_comment_draft: 0.0002,
+  // About 900 tokens in (the FAQ list plus the message) and 20 out on
+  // gpt-4o-mini is $0.00015. Rounded up.
+  dm_faq_classify: 0.0003,
 };
 
 export class OpenAiBudgetExceeded extends Error {

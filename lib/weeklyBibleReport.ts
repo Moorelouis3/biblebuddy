@@ -232,6 +232,13 @@ export async function sendDirectMessage(
   userId: string,
   message: string,
   action?: WeeklyReportAction | null,
+  /**
+   * automated: the message was sent by a system as Louis, not typed by him.
+   * It keeps the thread out of his Primary inbox tab (components/AppShell.tsx),
+   * the same way the Bug Fixer's replies are kept out. Used by the FAQ DM
+   * replier (app/api/cron/dm-faq-replies).
+   */
+  options?: { automated?: boolean },
 ): Promise<boolean> {
   try {
     const [uid1, uid2] = louisId < userId ? [louisId, userId] : [userId, louisId];
@@ -266,6 +273,7 @@ export async function sendDirectMessage(
       content: message,
       created_at: now,
     };
+    if (options?.automated) insertPayload.is_automated = true;
 
     if (action?.label && action?.href) {
       insertPayload.action_label = action.label;
