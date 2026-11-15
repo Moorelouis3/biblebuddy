@@ -605,10 +605,11 @@ export default function YourBookshelf({
                           src={book.cover}
                           alt={book.title}
                           loading={index < 2 ? "eager" : "lazy"}
-                          // Greyed only when there is nothing to do with it yet.
-                          // The upcoming community study is in full colour: it
-                          // is the card we most want looked at.
-                          className={`aspect-[2/3] w-full object-cover ${comingSoon ? "opacity-70 grayscale" : ""}`}
+                          // Grey until it opens (Louis, 2026-11-15: "the next
+                          // coming devotional cover should be gray"). The glow,
+                          // the countdown and the purple button are what draw
+                          // the eye; the grey cover says "not yet".
+                          className={`aspect-[2/3] w-full object-cover ${comingSoon || isUpcoming ? "opacity-70 grayscale" : ""}`}
                         />
                       ) : (
                         <div className="flex aspect-[2/3] w-full items-center justify-center bg-[var(--bb-surface-soft,#eef2f7)] px-2 text-center text-[11px] font-black text-[var(--bb-text-muted,#6b7280)]">
@@ -648,7 +649,7 @@ export default function YourBookshelf({
                           <p className="text-[11px] font-black text-[#4b2fae]">Starting now</p>
                         )}
                         {releaseDate ? (
-                          <p className="mt-1.5 flex items-center gap-1 text-[10px] font-bold text-[var(--bb-text-muted,#6b7280)]">
+                          <p className="mt-1.5 flex items-center gap-1 text-[11px] font-black text-[#c81e1e]">
                             <span aria-hidden>📅</span> Starts {releaseDate}
                           </p>
                         ) : null}
