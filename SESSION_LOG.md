@@ -13996,3 +13996,9 @@ next scheduled build (run `npm run pending`). Higher Hope is already live.
 Still open: The Obedience of Abraham has no book on KDP; the interior PDF is
 in Downloads but there is no print cover. Whether to offer the book when a
 day is finished is Louis's decision. No admin screen shows book taps yet.
+
+## 2026-11-15 (Bug Fixer run)
+Done: Worked the 5 oldest open bug reports. Fixed one: the blog comment box was showing raw technical error text ("TypeError: Failed to fetch") when comments failed to load after a dropped connection - now shows a plain "Couldn't load comments. Please try again." That fix is pushed but waiting on Louis's approval at /admin/bugs (the auto-escalation rule caught it; it's a one-line wording change with no real risk). Closed two one-off iPhone push-notification crash reports as not reproducible (single occurrence each, native code, no second case to guess from). Closed a seven-week-old generic "something went wrong" report with nothing to trace and no real reporter to ask. Closed one "failed to load today's discussion" report as working as designed - the code already falls back to the older comment thread when that check fails, so nobody was blocked.
+Not live yet: the comment-error-message fix - needs Louis's approval first, then the next scheduled build.
+Still open: 20 more reports in the queue (mostly single-occurrence network blips across /login and /plan), left for the next run under the 5-bug cap.
+Next: next Bug Fixer run clears more of the backlog.
