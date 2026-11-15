@@ -23,6 +23,9 @@ import ReportBlockMenu from "@/components/ReportBlockMenu";
 import { useBlockedUserIds } from "@/lib/userBlocks";
 import { logActionToMasterActions } from "@/lib/actionRecorder";
 import { eventDayDiscussionPath } from "@/lib/communityEventDays";
+import { requestAutoReplyDraft } from "@/lib/requestAutoReplyDraft";
+import { isAdminUser } from "@/lib/readingProgress";
+import { normalizeCustomMemberBadge } from "@/lib/userBadges";
 
 type ThreadReply = {
   id: string;
@@ -129,15 +132,23 @@ export default function GroupPostThread({
   // requests, no skeleton, no message, nothing in the console - just "No
   // replies yet. Start the conversation." on a thread with replies in it.
   const [failed, setFailed] = useState(false);
+  // Auto Reply (Louis, 2026-11-15): the same draft button CommentSection and
+  // the feed already give the owner and moderators. The study discussion is
+  // where members answer every day, and it was the one place without it.
+  // It only fills the reply box; posting is still the Reply button.
+  const [canAutoReply, setCanAutoReply] = useState(false);
+  const [postContent, setPostContent] = useState("");
+  const [autoReplyLoadingId, setAutoReplyLoadingId] = useState<string | null>(null);
 
   const loadThread = useCallback(async () => {
     setFailed(false);
     const { data: parent } = await supabase
       .from("group_posts")
-      .select("category")
+      .select("category, content")
       .eq("id", postId)
       .maybeSingle();
     setCategory((parent as { category?: string } | null)?.category ?? null);
+    setPostContent(String((parent as { content?: string } | null)?.content ?? ""));
 
     // Direct replies, then every reply under them (same walk as the group feed).
     const { data: topLevel, error: topLevelError } = await supabase
@@ -268,6 +279,10 @@ export default function GroupPostThread({
             .maybeSingle(),
         ]);
         if (cancelled) return;
+        setCanAutoReply(
+          isAdminUser((auth.user?.email || "").toLowerCase()) ||
+            normalizeCustomMemberBadge(profile?.member_badge) === "moderator",
+        );
         const metaName =
           (auth.user?.user_metadata?.firstName as string | undefined) ||
           (auth.user?.user_metadata?.first_name as string | undefined);
@@ -406,6 +421,26 @@ export default function GroupPostThread({
     onPosted?.();
   }
 
+  async function autoReply(reply: ThreadReply) {
+    if (autoReplyLoadingId) return;
+    setAutoReplyLoadingId(reply.id);
+    setError(null);
+    setReplyingTo(reply.id);
+    setReplyText("");
+    try {
+      const draft = await requestAutoReplyDraft({
+        originalPostTitle: "Today's study discussion",
+        originalPostContent: postContent || "A daily Bible study discussion question.",
+        targetCommentContent: reply.content,
+        targetDisplayName: reply.display_name,
+      });
+      setReplyText(draft);
+    } catch (draftError) {
+      setError(draftError instanceof Error ? draftError.message : "Could not write a reply draft.");
+    }
+    setAutoReplyLoadingId(null);
+  }
+
   async function deleteReply(reply: ThreadReply) {
     if (deletingId) return;
     setDeletingId(reply.id);
@@ -540,6 +575,16 @@ export default function GroupPostThread({
               >
                 Reply
               </button>
+              {canAutoReply && reply.user_id !== userId && (
+                <button
+                  type="button"
+                  onClick={() => void autoReply(reply)}
+                  disabled={autoReplyLoadingId === reply.id}
+                  className="text-[11px] font-semibold text-[var(--bb-text-muted,#9ca3af)] transition hover:text-[var(--bb-accent,#2f7fe8)] disabled:opacity-50"
+                >
+                  {autoReplyLoadingId === reply.id ? "Writing..." : "Auto Reply"}
+                </button>
+              )}
               {canEdit && editingId !== reply.id && (
                 <button
                   type="button"

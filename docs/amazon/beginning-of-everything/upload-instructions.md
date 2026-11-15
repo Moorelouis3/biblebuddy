@@ -121,7 +121,7 @@ so that URL sells the hardcover too.
 
    That one write lights up three surfaces that are already built and waiting:
    the buy section on /devotionals/beginning-of-everything, the PaperbackStrip on
-   every day page, and GenesisBookBanner on the signup page. No deploy needed -
+   every day page, and StudyBookBanner on the signup page. No deploy needed -
    they all read the column at runtime.
 3. **A+ content.**
 

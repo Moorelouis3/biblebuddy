@@ -23,7 +23,7 @@ import { supabase } from "../../../lib/supabaseClient";
 import { useSupabaseUser } from "../../../lib/useSupabaseUser";
 import { useBlockedUserIds } from "../../../lib/userBlocks";
 import ProverbsBooksPromo from "../../../components/ProverbsBooksPromo";
-import GenesisBookBanner from "../../../components/community-event/GenesisBookBanner";
+import StudyBookBanner from "../../../components/community-event/StudyBookBanner";
 import { WISDOM_BOOKS_ON_SALE } from "../../../lib/wisdomOfProverbsProducts";
 import { joinCommunityEvent } from "../../../lib/communityEventJoin";
 import { ensureGuestSession } from "../../../lib/guestSession";
@@ -423,6 +423,12 @@ export default function CommunityEventPage() {
         {event.intro}
       </p>
 
+      {/* The printed book, near the top in every phase (Louis, 2026-11-15:
+          on the signup page before the study starts, and still at the top
+          once it is live). Everyone sees it, signed up or not. It renders
+          nothing until the study's paperback is Live on Amazon. */}
+      <StudyBookBanner eventSlug={event.slug} />
+
       {/* Live mode: today's community day, study and discussion. */}
       {state?.phase === "live" ? (
         <EventTodayCard event={event} day={state.communityDay} completedToday={joined && completedDays.has(state.communityDay)} />
@@ -443,12 +449,6 @@ export default function CommunityEventPage() {
           </p>
         </div>
       ) : null}
-
-      {/* The companion book. Deliberately NOT gated on `joined`: somebody
-          still deciding should see the book too, which is the one difference
-          from the Proverbs promo above. It renders nothing until the study's
-          paperback_url is set, so it cannot show a dead button. */}
-      {event.slug === "beginning-of-everything" ? <GenesisBookBanner /> : null}
 
       {/* The tracker only appears once the study is running (Oct 1). Before
           then there is nothing to track, so members just see the welcome card.

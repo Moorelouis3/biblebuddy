@@ -13,7 +13,8 @@ export async function requestAutoReplyDraft(params: {
     throw new Error("Could not verify your session.");
   }
 
-  const response = await fetch("/api/auto-reply", {
+  // Absolute URL: inside the iOS app a relative fetch can hang forever.
+  const response = await fetch(`${window.location.origin}/api/auto-reply`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
