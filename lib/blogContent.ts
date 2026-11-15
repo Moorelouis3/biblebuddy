@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-5-explained",
+    title: "Judges 5 Explained: The Song of Deborah After the Battle",
+    description:
+      "Judges 5 explained verse by verse: the Song of Deborah and Barak, the tribes who answered the call and the ones who stayed home, and Jael's blessing.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-5-explained",
+    publishedAt: "2026-11-15",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-5-explained.jpg",
+    groupPost: {
+      title: "Judges 5 Explained 📖",
+      content:
+        "The battle in Judges 4 is already over.\nJudges 5 sings about it anyway.\n\n📌 A victory song that blesses one woman and curses one town.\n\n📖 Deborah and Barak sing right after the battle ends.\n📖 Some tribes get named and praised for showing up.\n📖 One town gets the only curse like it in this whole song.\n\nNew article on:\n🟢 why the **stars** get credit for fighting Sisera\n🟢 which tribes the song **blames** for staying home\n🟢 why **Jael** gets blessed and Meroz gets cursed\n\nHave you ever been praised or blamed for simply showing up? 🙏",
+    },
+  },
+  {
     slug: "judges-4-explained",
     title: "Judges 4 Explained: Deborah, Barak, and the Tent Peg That Ended a War",
     description:
