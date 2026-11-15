@@ -128,7 +128,7 @@ export default function SettingsPage({ embedded = false }: { embedded?: boolean 
 
         const profileRequest = await supabase
           .from("profile_stats")
-          .select("display_name, username, app_theme, app_theme_selected_at, selected_streak_flame, selected_buddy_avatar")
+          .select("display_name, username, app_theme, selected_streak_flame, selected_buddy_avatar")
           .eq("user_id", currentUser.id)
           .maybeSingle();
 

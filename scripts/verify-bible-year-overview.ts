@@ -42,6 +42,8 @@ const { GENESIS_BIBLE_IN_ONE_YEAR_SERIES } =
   require("../lib/bibleInOneYearPlan") as typeof import("../lib/bibleInOneYearPlan");
 const { BIBLE_YEAR_TOTAL_CHAPTERS, bibleYearShelfStudy } =
   require("../lib/libraryCatalog") as typeof import("../lib/libraryCatalog");
+const { BIBLE_YEAR_PAPERBACK_URL } =
+  require("../lib/bibleYearBook") as typeof import("../lib/bibleYearBook");
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 let failures = 0;
@@ -80,7 +82,15 @@ const study = bibleYearShelfStudy();
 check("subtitle says it is a 365-day study", study.subtitle === "A 365-Day Bible Buddy Study", String(study.subtitle));
 check("day count is 365", study.total_days === 365);
 check("it is published, so the shelf shows it", study.is_published);
-check("no Amazon URL is invented", study.paperback_url === null, String(study.paperback_url));
+// The book went Live and was linked on 2026-11-15, so this is no longer null.
+// What must hold now is that the shelf carries the one address kept in
+// lib/bibleYearBook.ts, not a second copy of its own (audit, 2026-11-15).
+check(
+  "the book link is the one in lib/bibleYearBook, and it is an Amazon address",
+  study.paperback_url === BIBLE_YEAR_PAPERBACK_URL &&
+    /^https:\/\/www\.amazon\.com\/dp\/[A-Z0-9]{10}$/.test(study.paperback_url ?? ""),
+  String(study.paperback_url),
+);
 check("it has a cover", Boolean(study.cover_image), String(study.cover_image));
 
 // ------------------------------------------------------------- the grouping --

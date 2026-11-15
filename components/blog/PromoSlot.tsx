@@ -6,11 +6,12 @@ import { trackBlogPromoEvent } from "@/lib/blogViewTracking";
 import { useSupabaseUser } from "@/lib/useSupabaseUser";
 import {
   APP_STORES,
-  detectStorePlatform,
+  clientStorePlatform,
   showsBothStores,
   storeHref,
   type StorePlatform,
 } from "@/lib/appDownload";
+import { BETA_OPEN, androidDestination } from "@/lib/androidBeta";
 import { pickPromoBanner } from "@/lib/blogPromoBanners";
 
 /**
@@ -24,7 +25,8 @@ import { pickPromoBanner } from "@/lib/blogPromoBanners";
  *
  * The artwork and the rotation live in lib/blogPromoBanners.ts; every
  * destination, including the Android URL when there is one, lives in
- * lib/appDownload.ts. Nothing about either is decided in this file.
+ * lib/appDownload.ts, and the Android beta's in lib/androidBeta.ts. Nothing
+ * about either is decided in this file.
  */
 
 // The device never changes under a reader, so there is nothing to subscribe
@@ -35,8 +37,9 @@ import { pickPromoBanner } from "@/lib/blogPromoBanners";
 // page for an answer that cannot change.
 const subscribeToNothing = () => () => {};
 const platformOnServer = (): StorePlatform => "other";
-const platformInBrowser = (): StorePlatform =>
-  detectStorePlatform(navigator.userAgent, navigator.maxTouchPoints);
+// The same helper BlogAppPrompt uses, so the banner and the bottom bar can
+// never place one reader on two different devices (audit, 2026-11-15).
+const platformInBrowser = (): StorePlatform => clientStorePlatform();
 
 type PromoSlotProps = {
   postSlug: string;
@@ -51,12 +54,17 @@ export default function PromoSlot({ postSlug, slotIndex = 0 }: PromoSlotProps) {
   const promoName = banner.name;
 
   // "other" on the server and on the first paint, which resolves to the App
-  // Store - the same answer every device gets today, so there is nothing to
-  // mismatch and no flash. Once Android is live this is what sends a phone
-  // to its own store.
+  // Store - the answer iPhone and desktop get, so only an Android phone
+  // changes after hydration, and only its link, not anything visible.
   const platform = useSyncExternalStore(subscribeToNothing, platformInBrowser, platformOnServer);
 
-  const href = storeHref(platform);
+  // Audit, 2026-11-15: Android readers were sent to the iPhone App Store,
+  // because APP_STORES.google is null until the Play listing is public. They
+  // go where BlogAppPrompt already sends them: /android during the beta,
+  // which is our own page and so stays in this tab. See lib/androidBeta.
+  const toAndroid = platform === "android";
+  const href = toAndroid ? androidDestination() : storeHref(platform);
+  const external = !(toAndroid && BETA_OPEN);
   const bothStores = showsBothStores(platform);
 
   const containerRef = useRef<HTMLAnchorElement | null>(null);
@@ -108,12 +116,11 @@ export default function PromoSlot({ postSlug, slotIndex = 0 }: PromoSlotProps) {
     <div className="my-8">
       {/* The whole banner is the link. A plain <a>, not next/link: this leaves
           the site now, and it opens in a new tab so the reader keeps their
-          place in the article. */}
+          place in the article. The one exception is /android, above. */}
       <a
         ref={containerRef}
         href={href}
-        target="_blank"
-        rel="nofollow noopener"
+        {...(external ? { target: "_blank", rel: "nofollow noopener" } : { rel: "nofollow" })}
         onClick={() => trackClick("banner")}
         aria-label={banner.alt}
         className="block overflow-hidden rounded-[24px] shadow-[0_18px_48px_rgba(15,23,42,0.10)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_60px_rgba(0,86,253,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0056fd] focus-visible:ring-offset-2"

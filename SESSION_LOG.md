@@ -14109,3 +14109,8 @@ Still open: older daily study posts already in the feed are still there, with
 their own comments; nothing was deleted. "View Discussion" opens today's day,
 where discussion is one of the day's parts; it does not scroll to it. Not
 seen in a browser after these changes, and the daily job was not run.
+
+## 2026-11-15 (morning, audit fixes)
+Done: Level and badge routes read a person's history pages at once instead of one after another (Louis's 10,884 rows: 3.1s -> 0.5s, identical rows; shared lib/server/userActionRows.ts). Study day page shows the day first and fills the "who finished" card in afterwards. Library reads run in pairs. The theme read no longer asks for a column that does not exist (one failed request per page load, for everyone). /study/<slug> knows Higher Hope, Beginning, Abraham and Bible in One Year. /bible-study-guides redirects to the Library. Blog banners send Android readers to /android. Three study landing pages added to the sitemap. verify-bible-year-overview expects the real book link.
+Not live yet: this commit, next scheduled build.
+Still open: the level is still re-scored from full history on each call (now fast, but a stored running total would be the lasting fix); the same profile row is still read several times per load; feed keeps nothing between visits. Abraham has no book link and its cover says 28-day (both need Louis: a listing and artwork). Finishing a study day, sign-up, and real phones were not tested.

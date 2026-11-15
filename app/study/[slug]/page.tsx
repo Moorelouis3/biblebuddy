@@ -39,6 +39,20 @@ const STUDY_SLUGS: Record<string, string> = {
   "calling-of-moses": "The Calling of Moses%",
   "transforming-of-paul": "The Transforming of Paul%",
   "wisdom-of-proverbs": "The Wisdom of Proverbs%",
+
+  // Audit, 2026-11-15: these three are live studies with no slug here, so
+  // their /study links fell through to /devotionals and the signup wall.
+  "higher-hope": "%Higher Hope%",
+  "beginning-of-everything": "%Beginning of Everything%",
+  "obedience-of-abraham": "%Obedience of Abraham%",
+};
+
+/**
+ * slug → a fixed public page, for a study that has no devotionals row to look
+ * up. Bible in One Year is a plan, not a devotional (audit, 2026-11-15).
+ */
+const STUDY_PAGES: Record<string, string> = {
+  "bible-in-one-year": "/bible-in-one-year",
 };
 
 export default async function StudyDeepLinkPage({
@@ -52,6 +66,9 @@ export default async function StudyDeepLinkPage({
   // Note: "wisdom-of-proverbs" never reaches here. It is redirected to
   // /devotionals/wisdom-of-proverbs by next.config.ts, before rendering, because
   // a redirect() at this point streams as a meta refresh that crawlers ignore.
+  const page = STUDY_PAGES[normalized];
+  if (page) redirect(page);
+
   const pattern = STUDY_SLUGS[normalized];
 
   // Unknown slug — send them to the full list rather than a dead end.

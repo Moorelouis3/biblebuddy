@@ -723,21 +723,15 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   }
 
   async function loadSavedTheme(currentUserId: string, email?: string | null) {
-    let { data, error } = await supabase
+    // Only app_theme. This used to ask for app_theme_selected_at as well - a
+    // column that does not exist in the database and whose value this never
+    // read - so the request failed with a 400 and was sent a second time
+    // without it, on every page load, for every person (audit, 2026-11-15).
+    const { data, error } = await supabase
       .from("profile_stats")
-      .select("app_theme, app_theme_selected_at")
+      .select("app_theme")
       .eq("user_id", currentUserId)
       .maybeSingle();
-
-    if (error && /app_theme_selected_at/i.test(error.message || "")) {
-      const fallback = await supabase
-        .from("profile_stats")
-        .select("app_theme")
-        .eq("user_id", currentUserId)
-        .maybeSingle();
-      data = fallback.data as typeof data;
-      error = fallback.error;
-    }
 
     if (error) {
       console.warn("[THEME] Could not load saved profile theme; using local theme.", error.message);

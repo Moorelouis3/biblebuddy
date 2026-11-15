@@ -48,10 +48,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // the sitemap listed only the homepage and the blog; the other two were
     // simply never added after it, so Google has never been told they exist
     // (noticed 2026-10-25). Every one of these is a real door into the app
-    // for somebody who has never heard of it.
+    // for somebody who has never heard of it. The same thing happened again
+    // with Tempting, Beginning and Abraham, added by the audit of 2026-11-15.
     ...[
       "/devotionals/wisdom-of-proverbs",
+      "/devotionals/tempting-of-jesus",
       "/devotionals/higher-hope",
+      "/devotionals/beginning-of-everything",
+      "/devotionals/obedience-of-abraham",
       "/bible-in-one-year",
     ].map((path) => ({
       url: `${SITE_URL}${path}`,

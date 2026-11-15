@@ -348,6 +348,20 @@ export default function ProverbsStudyDayPage() {
   const [finishers, setFinishers] = useState<Finisher[]>([]);
   const [breakdown, setBreakdown] = useState<Breakdown>({ intro: [], reading: [], notes: [], trivia: [], reflection: [] });
   const [showBreakdown, setShowBreakdown] = useState(false);
+  /**
+   * The "who has studied this" list is still on its way (audit 2026-11-15).
+   *
+   * The whole day used to wait for it - eight reads of up to 1,000 rows and a
+   * profiles read - before the reader saw the title of the day they had
+   * opened. It is social information, so the day now shows first and the list
+   * fills in. While this is true the card keeps its place but prints no
+   * numbers: "0 buddies" would be a wrong answer, not a pending one.
+   */
+  const [finishersPending, setFinishersPending] = useState(false);
+  // Only the newest finishers request may write. The first load now runs
+  // alongside the page, so a task finished early can start a second one
+  // before the first answers, and the older answer must not land on top.
+  const finishersRequestRef = useRef(0);
   const [taskEstimates, setTaskEstimates] = useState<ChapterTaskTimeEstimates>(DEFAULT_TASK_ESTIMATES);
   const [showNotes, setShowNotes] = useState(false);
   const [notesText, setNotesText] = useState("");
@@ -436,6 +450,10 @@ export default function ProverbsStudyDayPage() {
   async function loadAll() {
     setLoading(true);
     setFailed(false);
+    // A finishers read still in flight belongs to the day being left; now
+    // that it no longer holds the page it could answer after this one opens.
+    finishersRequestRef.current += 1;
+    setFinishersPending(false);
     const { data: auth } = await supabase.auth.getUser();
     const uid = auth.user?.id ?? null;
     setUserId(uid);
@@ -516,8 +534,16 @@ export default function ProverbsStudyDayPage() {
     setTriviaDone(actions.some((row) => row.action_type === ACTION_TYPE.trivia_chapter_completed && String(row.action_label || "").toLowerCase().startsWith(label.toLowerCase())));
     setReflectionDone(Boolean(commentsRes.data?.length) || eventDiscussedDays.has(dayNumber));
 
-    await loadFinishers(dayRow, devotionalRow, dayPost);
+    // The day is ready here. The reader was waiting on a list they had not
+    // asked for (audit 2026-11-15), so the finishers load carries on behind
+    // the page and the card fills in when it answers.
+    setFinishersPending(true);
     setLoading(false);
+    void loadFinishers(dayRow, devotionalRow, dayPost).catch((error: unknown) => {
+      // Left pending on purpose: a read that never answered is not "nobody
+      // has studied this", so the card stays without numbers.
+      console.error("[PROVERBS_FINISHERS] Could not load the finishers list:", error);
+    });
   }
 
   async function loadFinishers(
@@ -530,6 +556,7 @@ export default function ProverbsStudyDayPage() {
     const reflectionSlug = chapterSlug(dayRow.bible_reading_book, dayRow.bible_reading_chapter);
     const devotionalActionPrefix = devotionalRow?.title ? `${devotionalRow.title} - Day ${dayNumber}` : null;
     const normalizedBook = dayRow.bible_reading_book.toLowerCase().trim();
+    const requestId = ++finishersRequestRef.current;
 
     const [
       introRes,
@@ -713,8 +740,10 @@ export default function ProverbsStudyDayPage() {
 
     const allUserIds = Array.from(new Set([...introIds, ...readingIds, ...noteIds, ...triviaIds, ...reflectionIds].filter(Boolean)));
     if (allUserIds.length === 0) {
+      if (requestId !== finishersRequestRef.current) return;
       setFinishers([]);
       setBreakdown({ intro: [], reading: [], notes: [], trivia: [], reflection: [] });
+      setFinishersPending(false);
       return;
     }
 
@@ -744,6 +773,8 @@ export default function ProverbsStudyDayPage() {
       .filter((id) => introIds.has(id) && readingIds.has(id) && noteIds.has(id) && triviaIds.has(id) && reflectionIds.has(id))
       .map((id) => resolve(id));
 
+    if (requestId !== finishersRequestRef.current) return;
+    setFinishersPending(false);
     setFinishers(fullFinishers);
     setBreakdown({
       intro: make(introIds, introDates),
@@ -1034,15 +1065,24 @@ export default function ProverbsStudyDayPage() {
               day was actually busy. Full finishers still get their credit on
               the line below and in the breakdown. */}
           <p className="text-sm font-bold text-gray-950">Studied {chapterLabel}</p>
+          {/* While the list is on its way the three lines below keep their
+              height and say nothing, so the tasks under the card do not jump
+              a full card's worth when the numbers arrive. */}
           <p className="mt-2 text-lg font-black text-gray-950">
-            {studiedBuddies.length} {studiedBuddies.length === 1 ? "buddy has" : "buddies have"} studied {chapterLabel}
+            {finishersPending
+              ? " "
+              : `${studiedBuddies.length} ${studiedBuddies.length === 1 ? "buddy has" : "buddies have"} studied ${chapterLabel}`}
           </p>
           <p className="mt-1 text-sm text-gray-600">
-            {finishers.length > 0
-              ? `${finishers.length} of them finished every task: intro, reading, notes, trivia and reflection.`
-              : "Finish the intro, reading, notes, trivia and reflection to be the first to complete every task."}
+            {finishersPending
+              ? " "
+              : finishers.length > 0
+                ? `${finishers.length} of them finished every task: intro, reading, notes, trivia and reflection.`
+                : "Finish the intro, reading, notes, trivia and reflection to be the first to complete every task."}
           </p>
-          {studiedBuddies.length === 0 ? (
+          {finishersPending ? (
+            <div className="mt-4 h-10" aria-hidden="true" />
+          ) : studiedBuddies.length === 0 ? (
             <p className="mt-5 text-sm leading-6 text-gray-600">
               Nobody has started this chapter yet. Be the first.
             </p>
@@ -1071,7 +1111,7 @@ export default function ProverbsStudyDayPage() {
             <button type="button" onClick={() => setShowBreakdown((value) => !value)} className="text-sm font-black text-gray-950">
               {showBreakdown ? "Hide section breakdown" : "Show section breakdown"} +
             </button>
-            {showBreakdown ? (
+            {showBreakdown && !finishersPending ? (
               <div className="mt-4 grid gap-3">
                 {breakdownSections.map(([label, users, completionLabel]) => (
                   <div key={label} className="rounded-xl border border-gray-200 bg-gray-50 px-3 py-3">

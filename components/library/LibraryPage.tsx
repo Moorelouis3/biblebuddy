@@ -75,18 +75,31 @@ export default function LibraryPage({ embedded = false, onStudySelect }: Library
   useEffect(() => {
     let cancelled = false;
     void (async () => {
+      // Four reads used to queue behind one another although only the last
+      // two need anything from an earlier one (the user id), so the shelf
+      // waited four round trips for what takes two (audit 2026-11-15).
+      // Each pair is started together and then awaited in the old order, not
+      // through Promise.all, so a read that throws still fails at the same
+      // point it always did: studies that loaded stay on screen, and progress
+      // that loaded is kept, when a later read is the one that fails.
+      // The empty catch only stops a second failure being reported as
+      // unhandled; the await below still throws into the catch at the bottom.
+      const userRequest = supabase.auth.getUser();
+      userRequest.catch(() => {});
       const rows = await fetchLibraryStudies();
       if (cancelled) return;
       setStudies(rows);
       setFailed(rows.length === 0);
 
-      const { data } = await supabase.auth.getUser();
+      const { data } = await userRequest;
       const userId = data.user?.id;
+      const positionRequest = fetchBibleYearPosition(userId ?? null);
+      positionRequest.catch(() => {});
       if (userId) {
         const p = await fetchProgressByStudy(userId);
         if (!cancelled) setProgress(p);
       }
-      const position = await fetchBibleYearPosition(userId ?? null);
+      const position = await positionRequest;
       if (!cancelled) setBibleYear({ planDay: position.planDay, highestReadDay: position.highestReadDay });
       if (!cancelled) setLoading(false);
     })().catch((error: unknown) => {

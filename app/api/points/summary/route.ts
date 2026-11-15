@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { getLevelInfoWithLevelFloor } from "@/lib/levelSystem";
 import { computePointsFromActivity, streakBonusPointsFor, type PointsActionRow } from "@/lib/pointsEngine";
 import { resolveBadges } from "@/lib/badgeAwards";
+import { fetchUserActionRows } from "@/lib/server/userActionRows";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -19,7 +20,6 @@ const PAGE_SIZE = 1000;
  * user are p50 = 4, p90 = 22, p99 = 315, so 23 users of 7,195 read more than
  * one page at all.
  */
-const MAX_ACTION_ROWS = 120000;
 
 function createAdminClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -29,22 +29,6 @@ function createAdminClient() {
 }
 
 type AdminClient = NonNullable<ReturnType<typeof createAdminClient>>;
-
-async function fetchUserActions(supabase: AdminClient, userId: string) {
-  const rows: PointsActionRow[] = [];
-  for (let from = 0; from < MAX_ACTION_ROWS; from += PAGE_SIZE) {
-    const { data, error } = await supabase
-      .from("master_actions")
-      .select("action_type, action_label, created_at")
-      .eq("user_id", userId)
-      .order("created_at", { ascending: true })
-      .range(from, from + PAGE_SIZE - 1);
-    if (error) throw new Error(error.message);
-    rows.push(...((data as PointsActionRow[]) || []));
-    if (!data || data.length < PAGE_SIZE) break;
-  }
-  return rows;
-}
 
 /**
  * Page a user's rows out of a table.
@@ -145,7 +129,8 @@ export async function GET(request: NextRequest) {
 
   try {
     const [actions, groupRows, likeRows, profileRes] = await Promise.all([
-      fetchUserActions(supabase, userId),
+      // All pages at once, not one after another: lib/server/userActionRows.ts.
+      fetchUserActionRows(supabase, userId),
       fetchAllForUser<{ parent_post_id: string | null; created_at: string | null }>(
         supabase,
         "group_posts",

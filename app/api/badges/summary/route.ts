@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { resolveBadges } from "@/lib/badgeAwards";
+import { fetchUserActionRows } from "@/lib/server/userActionRows";
 import { computePointsFromActivity, streakBonusPointsFor, type PointsActionRow } from "@/lib/pointsEngine";
 
 export const runtime = "nodejs";
@@ -55,7 +56,8 @@ export async function GET(request: NextRequest) {
 
   try {
     const [actions, groupRows, likeRows, profileRes] = await Promise.all([
-      fetchAllForUser<PointsActionRow>(supabase, "master_actions", "action_type, action_label, created_at", userId, "created_at"),
+      // All pages at once, not one after another: lib/server/userActionRows.ts.
+      fetchUserActionRows(supabase, userId),
       fetchAllForUser<{ parent_post_id: string | null; created_at: string | null }>(supabase, "group_posts", "parent_post_id, created_at", userId),
       fetchAllForUser<{ created_at: string | null }>(supabase, "group_post_likes", "created_at", userId),
       supabase.from("profile_stats").select("current_streak").eq("user_id", userId).maybeSingle(),
