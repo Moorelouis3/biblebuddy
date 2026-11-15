@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-7-explained",
+    title: "Judges 7 Explained: Gideon's Three Hundred and the Midianite Rout",
+    description:
+      "Judges 7 explained verse by verse: Gideon's army cut to three hundred, the dream of the barley cake, and the trumpets that routed Midian's camp.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-7-explained",
+    publishedAt: "2026-11-15",
+    readTime: "15 min read",
+    image: "/blog-banners/judges-7-explained.jpg",
+    groupPost: {
+      title: "Judges 7 Explained 📖",
+      content:
+        "Thirty two thousand men answer the call.\nGod sends all but three hundred home.\n\n📌 Fewer men only makes it more obviously God who wins.\n\n📖 Gideon cuts his own army down twice before the battle.\n📖 A dream about a barley cake predicts the whole outcome.\n📖 Three hundred men win with trumpets and broken jars, not swords.\n\nNew article on:\n🟢 why the **water test** really separated Gideon's men\n🟢 what the **dream of the barley cake** actually meant\n🟢 how **three hundred** men routed a camp they never touched\n\nHave you ever had far less than you thought the moment required? 🙏",
+    },
+  },
+  {
     slug: "judges-6-explained",
     title: "Judges 6 Explained: Gideon, the Altar of Baal, and the Fleece",
     description:
