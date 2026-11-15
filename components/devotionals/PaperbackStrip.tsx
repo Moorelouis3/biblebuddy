@@ -21,9 +21,26 @@
  * shape stays a strip, because where it sits was a separate decision and it
  * still holds: above somebody who is here to read.
  */
+import { trackWisdomBookEvent } from "@/lib/wisdomOfProverbsProducts";
+
 const AMAZON_GOLD_EDGE = "#c39037";
 
-export default function PaperbackStrip({ href, title }: { href: string | null | undefined; title?: string }) {
+/**
+ * `placement` says which screen the tap came from. Until 15 November 2026
+ * this strip recorded nothing: it sat on every day of every study, and
+ * nobody could say whether it had ever been tapped. It now sends the same
+ * event as the Library's button (study_guide_amazon_clicked), so one number
+ * answers "how many people went to Amazon for a study's book".
+ */
+export default function PaperbackStrip({
+  href,
+  title,
+  placement = "study_strip",
+}: {
+  href: string | null | undefined;
+  title?: string;
+  placement?: string;
+}) {
   if (!href) return null;
 
   return (
@@ -31,6 +48,7 @@ export default function PaperbackStrip({ href, title }: { href: string | null | 
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => void trackWisdomBookEvent("study_guide_amazon_clicked", { guide: title || "", placement })}
       className="mb-4 flex items-center gap-3 rounded-2xl border bg-[#fffaf1] px-4 py-3 transition hover:brightness-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c99a45] focus-visible:ring-offset-2"
       style={{ borderColor: AMAZON_GOLD_EDGE }}
     >

@@ -21,6 +21,11 @@ const ALLOWED_EVENTS = new Set([
   "wisdom_hardcover_amazon_clicked",
   "wisdom_paperback_amazon_clicked",
   "wisdom_journal_amazon_clicked",
+  // A tap on any study's "buy the book" link: the Library button and, since
+  // 15 Nov 2026, the strip on every study day. It was being sent by the
+  // Library button from the start and refused here as an unknown event, so
+  // none were ever saved.
+  "study_guide_amazon_clicked",
   // One-time "New Book Live!" popup for Proverbs members / devotional readers.
   "wisdom_book_popup_impression",
   "wisdom_book_popup_dismissed",

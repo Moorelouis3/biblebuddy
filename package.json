@@ -52,6 +52,7 @@
     "verify:bounce-suppression": "tsx scripts/verify-bounce-suppression.ts",
     "verify:email-arrivals": "tsx scripts/verify-email-arrivals.ts",
     "verify:email-list": "tsx scripts/verify-email-list.ts",
+    "verify:book-links": "tsx scripts/verify-book-links.ts",
     "verify:popups": "tsx scripts/verify-popups.ts",
     "verify:product-health": "tsx scripts/verify-product-health.ts",
     "verify:reader-notes": "tsx scripts/verify-reader-notes-load.ts",

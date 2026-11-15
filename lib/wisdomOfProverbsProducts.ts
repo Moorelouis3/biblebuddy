@@ -136,7 +136,10 @@ export async function trackWisdomBookEvent(eventName: string, metadata: Record<s
     } catch {
       sessionId = "";
     }
-    void fetch("/api/landing-analytics", {
+    // Absolute, and allowed to outlive the page: inside the iPhone app a
+    // relative fetch never completes, and a tap on a book link is usually
+    // the last thing that happens before the page is left.
+    void fetch(`${window.location.origin}/api/landing-analytics`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

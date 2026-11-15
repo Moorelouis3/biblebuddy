@@ -13981,3 +13981,18 @@ page views, 9 visits to Amazon. The strip on every study day
 (PaperbackStrip) and the library button are not tracked. About 490 people
 active in 30 days, 64 finished a study day.
 Still open: Louis to decide what to do; nothing was edited or published.
+
+## 2026-11-15 (book links fixed, taps now counted)
+Done: Bible in One Year's printed book is linked in the app for the first
+time (lib/bibleYearBook.ts, paperback B0HP72CBJ2), on its Library page and
+its landing page. Higher Hope's link now goes to the $19.99 paperback
+(B0HP7RZC8J) like the other studies - a database change, live at once. Taps
+on any study's book link are now recorded as study_guide_amazon_clicked with
+the screen they came from: the strip on every study day recorded nothing
+before, and the Library button's tap had been refused by the analytics route
+since it was written. npm run verify:book-links added.
+Not live yet: the Bible in One Year link and the tap counting wait for the
+next scheduled build (run `npm run pending`). Higher Hope is already live.
+Still open: The Obedience of Abraham has no book on KDP; the interior PDF is
+in Downloads but there is no print cover. Whether to offer the book when a
+day is finished is Louis's decision. No admin screen shows book taps yet.

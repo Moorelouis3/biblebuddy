@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useSupabaseUser } from "@/lib/useSupabaseUser";
 import { getLandingSessionId, markShareLandingClick } from "@/lib/shareLandingReferral";
 import PaperbackStrip from "@/components/devotionals/PaperbackStrip";
+import { BIBLE_YEAR_PAPERBACK_URL } from "@/lib/bibleYearBook";
 
 /**
  * The shareable entry page for Bible in One Year (2026-10-25).
@@ -46,7 +47,7 @@ const PLAN_PATH = "/reading-plans/bible-in-one-year";
  * books use: https://www.amazon.com/dp/<ASIN>
  * See docs/amazon/bible-in-one-year/upload-instructions.md.
  */
-const PAPERBACK_URL: string | null = null;
+const PAPERBACK_URL = BIBLE_YEAR_PAPERBACK_URL;
 
 function track(eventName: string, userId: string | null, extra: Record<string, unknown> = {}) {
   try {
@@ -325,10 +326,9 @@ export default function BibleInOneYearLandingPage() {
           </Section>
         </div>
 
-        {/* Renders nothing until PAPERBACK_URL is set - the book is still in
-            Amazon's review queue. */}
+        {/* The printed edition. The address is lib/bibleYearBook.ts. */}
         <div className="mt-10">
-          <PaperbackStrip href={PAPERBACK_URL} title="Bible in One Year" />
+          <PaperbackStrip href={PAPERBACK_URL} title="Bible in One Year" placement="bible_year_landing" />
         </div>
 
         <div className="mt-10 rounded-3xl bg-[#10213a] px-6 py-10 text-center sm:px-10">

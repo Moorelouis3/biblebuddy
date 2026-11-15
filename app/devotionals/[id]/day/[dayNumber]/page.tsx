@@ -1025,7 +1025,7 @@ export default function ProverbsStudyDayPage() {
           <p className="mt-1 text-sm text-gray-500">{devotional.title}</p>
         </div>
 
-        <PaperbackStrip href={devotional.paperback_url} title={devotional.title} />
+        <PaperbackStrip href={devotional.paperback_url} title={devotional.title} placement="study_day" />
 
         <div className="mb-6 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
           {/* Headline is everyone studying this chapter, not only the people

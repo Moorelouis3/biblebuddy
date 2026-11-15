@@ -2576,7 +2576,7 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
                   {isUnlocked && isExpanded && (
                     <div className="border-t border-[var(--bb-card-border,#dbe7f4)] bg-white px-4 py-4">
                       {/* Buy the paperback, at the top of every day (Louis, 2026-10-17). */}
-                      <PaperbackStrip href={devotional?.paperback_url} title={devotional?.title} />
+                      <PaperbackStrip href={devotional?.paperback_url} title={devotional?.title} placement="study_page" />
                       {isModernStudyPlan ? (
                         <div className="space-y-3">
                           <details

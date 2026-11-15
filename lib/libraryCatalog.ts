@@ -1,4 +1,5 @@
 import { supabase } from "./supabaseClient";
+import { BIBLE_YEAR_PAPERBACK_URL } from "./bibleYearBook";
 import { releaseAtFrom } from "./studyLibrary";
 
 /**
@@ -65,10 +66,8 @@ export const BIBLE_YEAR_SHELF_SUBTITLE = "A 365-Day Journey Through God's Word";
  * catalog would have if it existed, built in memory so the shared components
  * can read a plan the same way they read a devotional.
  *
- * `paperback_url` stays null until Amazon issues the ASIN - both formats went
- * to KDP on 2026-10-24 and a guessed URL is a dead link on a live page. The
- * same note sits on PAPERBACK_URL in components/bibleinoneyear/
- * BibleInOneYearLandingPage.tsx; set both when the Live email arrives.
+ * `paperback_url` comes from lib/bibleYearBook.ts, the one place the book's
+ * Amazon address is kept (linked 2026-11-15; it had been Live for weeks).
  */
 export const BIBLE_YEAR_TOTAL_CHAPTERS = 1189;
 
@@ -86,7 +85,7 @@ export function bibleYearShelfStudy(): LibraryStudy {
     cover_image: BIBLE_YEAR_SHELF_COVER,
     is_published: true,
     available_from: null,
-    paperback_url: null,
+    paperback_url: BIBLE_YEAR_PAPERBACK_URL,
     sort_order: null,
   };
 }
