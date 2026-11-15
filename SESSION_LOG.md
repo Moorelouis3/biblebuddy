@@ -13960,3 +13960,24 @@ Done: Retired the daily "Day N is ready" study popup (component and its API rout
 Not live yet: these commits, next scheduled build.
 Still open: admin Popups tab not viewed on screen (needs Louis's login). Older popups (Beginning invitation, weekly feed, new games, Bible Lock) still run outside the one-per-visit limit.
 Next: watch Abraham sign-ups after the build.
+
+## 2026-11-15 (morning, every popup in the one system)
+Done: Every popup now runs from the popup coordinator. Weekly prayer and poll (restyled to the shared card), New Games, Bible Lock and the Beginning invitation are catalog entries; their own components/timers are removed. Proverbs launch and book popups deleted (ended / never on). popup_settings rows switched on for the five. verify:popups 68 checks. Tested on the test account at phone size: the system chose and showed weekly prayer (button lands on the week's prayer post), then the real weekly poll; New Games, Bible Lock and Beginning views opened by hand. Test data removed.
+Not live yet: these commits, next scheduled build.
+Still open: no real vote was cast in the test (it would count in the live poll). Bible Lock can only be truly tested in the iPhone app. Prayer and poll now share the 3-a-week limit with everything else, so fewer people will see them each week than before.
+Next: watch the Popups tab after the build.
+
+## 2026-11-15 (book audit, nothing changed)
+Done: Louis asked whether every study has its book and why none sell.
+Checked the database, the code, his KDP bookshelf and KDP reports (read only).
+Five of six live studies link to Amazon. The Obedience of Abraham has no
+link and is not on KDP at all; its interior PDF is in Downloads
+(Abraham_Interior_KDP.pdf, 13 Nov), no cover wrap found. Bible in One Year
+is Live on Amazon (paperback B0HP72CBJ2, hardcover B0HP6YYG6V) but the app
+still has paperback_url null for it. Higher Hope's link goes to the $29.99
+hardcover; the others go to the $19.99 paperback. KDP shows 0 orders in
+November. Last 60 days, Proverbs book only: 161 popup views, 63 taps, 71 book
+page views, 9 visits to Amazon. The strip on every study day
+(PaperbackStrip) and the library button are not tracked. About 490 people
+active in 30 days, 64 finished a study day.
+Still open: Louis to decide what to do; nothing was edited or published.
