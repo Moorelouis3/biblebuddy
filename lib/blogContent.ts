@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-8-explained",
+    title: "Judges 8 Explained: Gideon Says No to a Crown and Yes to an Idol",
+    description:
+      "Judges 8 explained verse by verse: Succoth and Penuel punished, Zebah and Zalmunna executed, Gideon's refusal of a crown, and the ephod that snared him.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-8-explained",
+    publishedAt: "2026-11-15",
+    readTime: "13 min read",
+    image: "/blog-banners/judges-8-explained.jpg",
+    groupPost: {
+      title: "Judges 8 Explained 📖",
+      content:
+        "Gideon just won the most lopsided battle in the book.\nThen he almost loses himself.\n\n📌 Refusing a crown does not undo building its replacement.\n\n📖 Two Israelite towns refuse Gideon bread, and pay for it.\n📖 Gideon executes two captured kings with his own hand.\n📖 He turns down a throne, then melts gold into an idol.\n\nNew article on:\n🟢 why Gideon punished **Succoth and Penuel** so differently\n🟢 why he named his own son **Abimelech**\n🟢 how the **ephod** became a snare to his whole house\n\nHave you ever won a battle, then lost ground somewhere quieter? 🙏",
+    },
+  },
+  {
     slug: "judges-7-explained",
     title: "Judges 7 Explained: Gideon's Three Hundred and the Midianite Rout",
     description:
