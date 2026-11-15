@@ -69,6 +69,29 @@ const PUBLIC_EXACT = new Set([
 
 /** Everything under these is public. */
 const PUBLIC_PREFIXES = [
+  /**
+   * Tracked links. This is the most important door in the whole operation and
+   * it was shut for a week.
+   *
+   * /r/<code> is not a page of ours at all: next.config rewrites it to Content
+   * Buddy, which counts the click and forwards the person to the landing page.
+   * Every link in every comment reply, Instagram DM and promotional post is
+   * one of these.
+   *
+   * When this gate became an allowlist (ca9c6fd5, 8 November 2026) /r was
+   * overlooked, so from that day every tracked link 307'd to /signup before
+   * the rewrite could run. Two things followed, and both looked like different
+   * problems:
+   *
+   *   - a stranger who clicked a link in a comment met a signup form cold,
+   *     instead of the landing page that explains what the app is;
+   *   - the click was never counted either, because the counter sits on the
+   *     far side of the rewrite and was never reached. "0 clicks" was not
+   *     nobody clicking - it was nobody arriving.
+   *
+   * Nothing of ours is served under /r, so opening it exposes no content.
+   */
+  "/r",
   // The one thing that belongs on Google.
   "/blog",
   // Readable deep links from posts, email and social: /study/<slug> only
