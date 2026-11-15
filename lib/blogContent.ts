@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-6-explained",
+    title: "Judges 6 Explained: Gideon, the Altar of Baal, and the Fleece",
+    description:
+      "Judges 6 explained verse by verse: Gideon's call, the altar of Baal torn down, the name Jerubbaal, and the sign of the fleece that confirmed God's word.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-6-explained",
+    publishedAt: "2026-11-15",
+    readTime: "16 min read",
+    image: "/blog-banners/judges-6-explained.jpg",
+    groupPost: {
+      title: "Judges 6 Explained 📖",
+      content:
+        "A man hides wheat from raiders, scared and unsure.\nAn angel calls him a mighty man of valour anyway.\n\n📌 The call came first. The courage came later.\n\n📖 Israel hides in caves for seven years under Midian.\n📖 Gideon asks for proof, and God gives it, twice.\n📖 He tears down his own father's altar of Baal.\n\nNew article on:\n🟢 what **Jehovahshalom** actually means\n🟢 why Gideon is also called **Jerubbaal**\n🟢 what the **fleece test** really shows about faith\n\nHave you ever felt far less ready than what God was asking of you? 🙏",
+    },
+  },
+  {
     slug: "judges-5-explained",
     title: "Judges 5 Explained: The Song of Deborah After the Battle",
     description:
