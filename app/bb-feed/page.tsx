@@ -21,6 +21,7 @@ import { readStudyActivity } from "../../lib/communityMilestones";
 import { BIBLE_BUDDY_USER_ID } from "../../lib/bibleBuddyAccount";
 import { FEED_OPEN_POST_EVENT } from "../../components/AppShell";
 import AddBuddyButton, { type BuddyState } from "../../components/feed/AddBuddyButton";
+import AuthorBadges from "../../components/feed/AuthorBadges";
 import FeedPollBlock from "../../components/feed/FeedPollBlock";
 import { pollIdFromPost } from "../../lib/weeklyFeedPosts";
 import TopBuddiesCard from "../../components/feed/TopBuddiesCard";
@@ -1262,9 +1263,12 @@ function CommentRow({
       </Link>
       <div className="flex-1 min-w-0">
         <div className={`rounded-xl px-3 py-2 ${isHighlightComment ? "border border-[var(--bb-accent,#4a9b6f)] bg-[var(--bb-accent-soft,#ecfdf3)]" : "bg-[var(--bb-surface-soft,#f9fafb)]"}`}>
-          <Link href={`/bb-feed?user=${comment.user_id}`} className="text-sm font-bold text-[var(--bb-text-primary,#1f2937)] hover:underline">
-            {name}
-          </Link>
+          <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+            <Link href={`/bb-feed?user=${comment.user_id}`} className="text-sm font-bold text-[var(--bb-text-primary,#1f2937)] hover:underline">
+              {name}
+            </Link>
+            <AuthorBadges userId={comment.user_id} />
+          </div>
           {ctx.editingCommentId === comment.id ? (
             <div className="mt-2 space-y-2">
               <textarea
@@ -1879,9 +1883,13 @@ function PostCard({ post, myId, myProfile, currentUserIsAdmin, myReactions, onRe
           <Avatar userId={post.user_id} displayName={displayName} imageUrl={post.profile_image_url} size={11} />
         </Link>
         <div className="flex-1 min-w-0">
-          <Link href={`/bb-feed?user=${post.user_id}`} className="block truncate text-[15px] font-bold leading-tight text-gray-900 hover:underline">
-            {displayName}
-          </Link>
+          {/* Name, then tag, then level - the order study comments use. */}
+          <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1">
+            <Link href={`/bb-feed?user=${post.user_id}`} className="min-w-0 truncate text-[15px] font-bold leading-tight text-gray-900 hover:underline">
+              {displayName}
+            </Link>
+            <AuthorBadges userId={post.user_id} />
+          </div>
           <p className="mt-0.5 text-xs text-gray-400">{timeAgo(post.created_at)}</p>
           {/* The "Study Activity" label moved into the milestone card below,
               where it sits beside the cover. Repeating it under the timestamp
