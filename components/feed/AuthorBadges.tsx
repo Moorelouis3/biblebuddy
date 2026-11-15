@@ -34,8 +34,9 @@ type Badges = {
   current_level: number | null;
   current_streak: number | null;
   selected_streak_flame: string | null;
+  created_at: string | null;
 };
-const NONE: Badges = { member_badge: null, is_paid: null, current_level: null, current_streak: null, selected_streak_flame: null };
+const NONE: Badges = { member_badge: null, is_paid: null, current_level: null, current_streak: null, selected_streak_flame: null, created_at: null };
 
 const known = new Map<string, Badges>();
 const waiting = new Map<string, Set<(badges: Badges | null) => void>>();
@@ -50,7 +51,7 @@ async function flush() {
     const batch = ids.slice(i, i + 100);
     const { data, error } = await supabase
       .from("profile_stats")
-      .select("user_id, member_badge, is_paid, current_level, current_streak, selected_streak_flame")
+      .select("user_id, member_badge, is_paid, current_level, current_streak, selected_streak_flame, created_at")
       .in("user_id", batch);
     if (!error) {
       for (const id of batch) known.set(id, NONE);
@@ -61,6 +62,7 @@ async function flush() {
           current_level: (row.current_level as number | null) ?? null,
           current_streak: (row.current_streak as number | null) ?? null,
           selected_streak_flame: (row.selected_streak_flame as string | null) ?? null,
+          created_at: (row.created_at as string | null) ?? null,
         });
       }
     }
@@ -96,7 +98,7 @@ export default function AuthorBadges({ userId, className = "" }: { userId: strin
       {badges ? (
         <>
           <StreakFlameBadge currentStreak={badges.current_streak ?? 0} flameId={badges.selected_streak_flame ?? undefined} />
-          <UserBadge customBadge={badges.member_badge} isPaid={badges.is_paid} />
+          <UserBadge customBadge={badges.member_badge} isPaid={badges.is_paid} joinedAt={badges.created_at} />
           <LevelBadge currentLevel={badges.current_level} />
         </>
       ) : null}

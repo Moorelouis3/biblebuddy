@@ -195,6 +195,7 @@ export default function ProfileSummaryCard({
                     customBadge={summary?.member_badge ?? undefined}
                     isPaid={summary?.is_paid ?? undefined}
                     proExpiresAt={summary?.pro_expires_at ?? undefined}
+                    joinedAt={summary?.created_at ?? undefined}
                   />
                   <TopTenBadge userId={userId} />
                 </div>

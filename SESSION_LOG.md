@@ -14037,3 +14037,8 @@ now deleted. Apple allows links to buy physical goods outside the app
 Done: No more Pro label - anyone who paid, or had Pro Buddy/Pro Trial by hand, shows Founder Buddy (display only; no account row changed). Feed names now also show the streak flame (30+ days) and a Top 10 badge read from the existing weekly Top Buddies board. Label picker no longer offers the two Pro options.
 Not live yet: this commit, next scheduled build.
 Still open: Louis to decide on a label for new people. `npm run verify:levels` fails on a communityMilestones check that is not from this work.
+
+## 2026-11-15 (morning, New Buddy label)
+Done: Automatic "New Buddy" label for an account's first 14 days, on the feed and the profile card. Never stored; worked out from the account's creation date and gone on day 15. After that, no label (Louis's call was between a plain Buddy label and none; none was recommended and built). Any hand-given label or Founder wins over it.
+Not live yet: this commit, next scheduled build.
+Still open: study comments and messages do not show New Buddy (they do not pass the join date).

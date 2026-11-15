@@ -10,6 +10,7 @@ export default function UserBadge({
   isPaid,
   groupRole,
   proExpiresAt,
+  joinedAt,
   className = "",
   skinId: _skinId,
 }: {
@@ -17,10 +18,12 @@ export default function UserBadge({
   isPaid?: boolean | null;
   groupRole?: string | null;
   proExpiresAt?: string | null;
+  /** When the account was made: shows New Buddy for the first two weeks. */
+  joinedAt?: string | null;
   className?: string;
   skinId?: string | null;
 }) {
-  const badge = resolveUserBadge({ customBadge, isPaid, groupRole, proExpiresAt });
+  const badge = resolveUserBadge({ customBadge, isPaid, groupRole, proExpiresAt, joinedAt });
   const [open, setOpen] = useState(false);
   void _skinId;
 

@@ -1,7 +1,7 @@
 export type CustomMemberBadge = "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "buddy_partner" | "pro_trial" | "pro_buddy";
 
 export type ResolvedUserBadge = {
-  key: "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "pro_buddy" | "buddy_partner" | "pro_trial";
+  key: "teacher" | "moderator" | "top_buddy" | "founder_buddy" | "pro_buddy" | "buddy_partner" | "pro_trial" | "new_buddy";
   label: string;
   emoji: string;
   className: string;
@@ -54,6 +54,17 @@ export function isProTrialActive(expiresAt?: string | null): boolean {
   return new Date(expiresAt).getTime() > Date.now();
 }
 
+/** How long the automatic New Buddy label lasts. */
+export const NEW_BUDDY_DAYS = 14;
+
+export function isNewBuddy(joinedAt?: string | null, now = Date.now()): boolean {
+  if (!joinedAt) return false;
+  const joined = Date.parse(joinedAt);
+  if (Number.isNaN(joined)) return false;
+  const age = now - joined;
+  return age >= 0 && age < NEW_BUDDY_DAYS * 24 * 3_600_000;
+}
+
 const FOUNDER_DESCRIPTION =
   "This member has been with Bible Buddy from the early days and helped it grow. Founder Buddies are the people who backed Bible Buddy before it was free for everyone.";
 
@@ -62,6 +73,8 @@ export function resolveUserBadge(input: {
   isPaid?: boolean | null;
   groupRole?: string | null;
   proExpiresAt?: string | null;
+  /** When the account was made. Only needed for the New Buddy label. */
+  joinedAt?: string | null;
 }): ResolvedUserBadge | null {
   const customBadge = normalizeCustomMemberBadge(input.customBadge);
 
@@ -146,6 +159,26 @@ export function resolveUserBadge(input: {
       title: "Moderator",
       description: "This buddy helps keep Bible Buddy healthy, welcoming, and on track. Moderators are trusted to guide the community and support the flow of the group.",
       louisMood: "think",
+    };
+  }
+
+  // New Buddy (Louis, 2026-11-15): automatic for somebody's first two weeks,
+  // so the regulars can see who to welcome. It is never stored and nobody
+  // hands it out: it is worked out from the day the account was made, and it
+  // is gone on day 15 without anything having to remove it. After that there
+  // is deliberately no label at all - a "Buddy" label on seven thousand
+  // people would say nothing and make the real ones mean less; the level chip
+  // beside the name already shows how far somebody has come. Any label above
+  // wins over it. A surface that does not pass joinedAt simply never shows it.
+  if (!input.isPaid && isNewBuddy(input.joinedAt)) {
+    return {
+      key: "new_buddy",
+      label: "New Buddy",
+      emoji: "🌱",
+      className: "bg-emerald-100 text-emerald-700",
+      title: "New Buddy",
+      description: `This buddy joined Bible Buddy in the last ${NEW_BUDDY_DAYS} days. Say hello and make them feel welcome.`,
+      louisMood: "wave",
     };
   }
 
