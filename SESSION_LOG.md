@@ -14003,3 +14003,8 @@ Next: next Bug Fixer run clears more of the backlog.
 Done: The feed now shows each person's tag (Teacher, Moderator...) and level next to their name, on posts and on comments, using the same two badges study comments already use. One batched read for all the names on screen.
 Not live yet: this commit, next scheduled build.
 Still open: checked on desktop width in the preview; not on a real phone.
+
+## 2026-11-15 (morning, label editor back)
+Done: Louis can change a person's label from their profile again. The control had been stranded on the old profile page, which forwards to the feed since 25 Oct; it is now on the profile card people actually land on (components/profile/AdminBadgeEditor.tsx), Louis only, same /api/admin/member-badge route.
+Not live yet: this commit, next scheduled build.
+Still open: checked that a non-admin does not see it; saving a label needs Louis's own login to test.

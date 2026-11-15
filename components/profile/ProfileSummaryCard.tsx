@@ -5,6 +5,7 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import UserBadge from "@/components/UserBadge";
 import StreakFlameBadge from "@/components/StreakFlameBadge";
+import AdminBadgeEditor from "./AdminBadgeEditor";
 
 /**
  * Who this is, and how they are doing - above their posts.
@@ -234,6 +235,25 @@ export default function ProfileSummaryCard({
             </div>
           </div>
         </div>
+
+        {/* Louis only: change this person's label. It draws nothing for
+            anybody else. See AdminBadgeEditor for why it is here. */}
+        <AdminBadgeEditor
+          userId={userId}
+          currentBadge={summary?.member_badge ?? null}
+          onSaved={(saved) =>
+            setSummary((prev) =>
+              prev
+                ? {
+                    ...prev,
+                    member_badge: saved.memberBadge,
+                    is_paid: saved.isPaid === true ? true : prev.is_paid,
+                    pro_expires_at: saved.proExpiresAt ?? prev.pro_expires_at,
+                  }
+                : prev,
+            )
+          }
+        />
 
         {/* The same four pastel cards as the profile page, scrollable on a
             phone rather than squeezed into a four column grid. */}
