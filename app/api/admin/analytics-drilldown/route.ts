@@ -310,6 +310,25 @@ function actionDetail(row: MasterActionRow) {
   return label || type.replaceAll("_", " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
+/**
+ * The same rules lib/adminDashboard.ts uses, so a signup is labelled with the
+ * channel it actually came from rather than with whatever the signup action
+ * happened to carry. "closer-ig" is an Instagram comment reply; a Threads
+ * link lands tagged; Facebook arrives with fbclid.
+ */
+function channelFromText(text: string): string | null {
+  const x = (text || "").toLowerCase();
+  if (!x.trim()) return null;
+  if (x.includes("threads")) return "Threads";
+  if (/facebook|fbclid|fb|fb./.test(x)) return "Facebook";
+  if (/instagram|igshid|ig|closer-ig/.test(x)) return "Instagram";
+  if (/pinterest|pin.it/.test(x)) return "Pinterest";
+  if (/youtube|youtu.be/.test(x)) return "YouTube";
+  if (/utm_source=email|[?&]sc=|mail.google|outlook.|mail.yahoo|email|newsletter|systeme/.test(x)) return "Email";
+  if (/google|bing|duckduckgo|yahoo|gclid/.test(x)) return "Google";
+  return null;
+}
+
 function signupSource(row: MasterActionRow | undefined) {
   const metadata = row?.event_metadata || {};
   const source = metadata.source || metadata.utm_source || metadata.signupSource || metadata.referrer;
@@ -376,6 +395,8 @@ export async function GET(request: Request) {
     customBadge: string | null;
     proExpiresAt: string | null;
     membershipStatus: string | null;
+    /** Where this person came from, as recorded at signup. */
+    attribution: string;
   }>();
   const currentDays = new Map<string, number>();
 
@@ -384,7 +405,7 @@ export async function GET(request: Request) {
     const [{ data: profileRows }, { data: progressRows }] = await Promise.all([
       admin
         .from("profile_stats")
-        .select("user_id, display_name, username, current_streak, total_actions, is_paid, member_badge, pro_expires_at, membership_status")
+        .select("user_id, display_name, username, current_streak, total_actions, is_paid, member_badge, pro_expires_at, membership_status, signup_source, signup_utm_source, signup_first_touch_source, signup_referrer_url, signup_source_detail")
         .in("user_id", batch),
       admin.from("bible_year_day_progress").select("user_id, day_number, reading_completed").in("user_id", batch),
     ]);
@@ -398,6 +419,13 @@ export async function GET(request: Request) {
         paid: profile.is_paid === true,
         customBadge: typeof profile.member_badge === "string" ? profile.member_badge : null,
         proExpiresAt: typeof profile.pro_expires_at === "string" ? profile.pro_expires_at : null,
+        attribution: [
+          profile.signup_source,
+          profile.signup_utm_source,
+          profile.signup_first_touch_source,
+          profile.signup_referrer_url,
+          profile.signup_source_detail,
+        ].filter((value) => typeof value === "string" && value.trim()).join(" "),
         membershipStatus: typeof profile.membership_status === "string" ? profile.membership_status : null,
       });
     }
@@ -523,7 +551,17 @@ export async function GET(request: Request) {
       signups.push({
         userId: user.id,
         userLabel: profile?.name || user.email?.split("@")[0] || `User ${user.id.slice(0, 8)}`,
-        source: signupSource(signupActions.get(user.id)),
+        /**
+         * The profile's own attribution first.
+         *
+         * signupSource() reads the signup ACTION's metadata and falls back to
+         * its label, which is why 363 of 374 signups in a month read
+         * "Direct / unknown" and the rest read "Signed up for Bible Buddy" -
+         * a label, not a source. The channel is on the profile, written when
+         * the visitor first landed, and it is the thing Content Buddy needs in
+         * order to say whether its comment replies produce users.
+         */
+        source: channelFromText(profile?.attribution || "") || signupSource(signupActions.get(user.id)),
         currentDay: currentDays.get(user.id) || 1,
         accountType: profile?.paid ? "Pro" : user.is_anonymous ? "Guest" : "Free",
         createdAt,
