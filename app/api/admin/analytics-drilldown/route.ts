@@ -405,7 +405,7 @@ export async function GET(request: Request) {
     const [{ data: profileRows }, { data: progressRows }] = await Promise.all([
       admin
         .from("profile_stats")
-        .select("user_id, display_name, username, current_streak, total_actions, is_paid, member_badge, pro_expires_at, membership_status, signup_source, signup_utm_source, signup_first_touch_source, signup_referrer_url, signup_source_detail")
+        .select("user_id, display_name, username, current_streak, total_actions, is_paid, member_badge, pro_expires_at, membership_status, traffic_source, signup_source, signup_utm_source, signup_first_touch_source, signup_referrer_url, signup_source_detail")
         .in("user_id", batch),
       admin.from("bible_year_day_progress").select("user_id, day_number, reading_completed").in("user_id", batch),
     ]);
