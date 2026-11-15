@@ -13953,3 +13953,10 @@ Done: The Abraham sign-up popup now uses Louis's artwork in the Beginning of Eve
 Not live yet: this commit, next scheduled build.
 Still open: the desktop image does not say "starts December 1st" (the phone version does). Not tested on a real iPhone.
 Next: watch the first day's numbers on the Community card.
+
+## 2026-11-15 (morning, popups)
+Marching orders: make the popup system visible and let the Abraham sign-up reach everyone.
+Done: Retired the daily "Day N is ready" study popup (component and its API route deleted) so study members get the other popups. Admin analytics has a Popups tab: every popup, new system and older ones, one collapsed row each with saw / clicked / click rate / skipped / blocked / signed up. Found that the Beginning of Everything invitation's click and close events were never accepted by the tracker (486 people saw it, nothing else recorded); added them to the allowlist.
+Not live yet: these commits, next scheduled build.
+Still open: admin Popups tab not viewed on screen (needs Louis's login). Older popups (Beginning invitation, weekly feed, new games, Bible Lock) still run outside the one-per-visit limit.
+Next: watch Abraham sign-ups after the build.

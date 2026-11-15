@@ -1095,6 +1095,120 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
         )
         .map(popupPerson),
     ).size;
+  // The popups that are still outside the coordinator (each is its own
+  // component in components/, mounted by AppShell) plus the ones that have
+  // ended, so the Popups tab is every popup there is and not just the new
+  // system. They have no promotion_id; each has its own event names.
+  const OLDER_POPUPS: {
+    id: string;
+    title: string;
+    kind: string;
+    status: string;
+    about: string;
+    shown: string;
+    clicked: string[];
+    skipped: string;
+    signedUp?: string;
+    /** Count "saw it" from user_popups_seen instead: its events were not kept. */
+    seenPopupId?: string;
+  }[] = [
+    {
+      id: "beginning_of_everything_2026",
+      title: "The Beginning of Everything invitation",
+      kind: "Study sign-up (older popup)",
+      status: "On until 29 Nov",
+      about:
+        "Once per person who is not in the study. Its own trigger, outside the one-per-visit limit. Saw it is counted from accounts and is right; its clicks, closes and sign-ups were not being recorded until 15 Nov, so those start from then.",
+      seenPopupId: "beginning_of_everything_2026",
+      shown: "beginning_popup_impression",
+      clicked: ["beginning_popup_join_clicked"],
+      skipped: "beginning_popup_dismissed",
+      signedUp: "beginning_popup_join_success",
+    },
+    {
+      id: "community_event_day",
+      title: "Day N is ready (daily study popup)",
+      kind: "Daily reminder (older popup)",
+      status: "Retired 15 Nov",
+      about: "Members of the live study got it once a day. Retired so they see the other popups.",
+      shown: "community_event_day_popup_impression",
+      clicked: ["community_event_day_popup_clicked"],
+      skipped: "community_event_day_popup_dismissed",
+    },
+    {
+      id: "weekly_feed",
+      title: "Weekly prayer request / poll",
+      kind: "Feed nudge (older popup)",
+      status: "On",
+      about: "Once a week per person: a prayer request on a Sunday week, the poll on a Wednesday week.",
+      shown: "weekly_popup_impression",
+      clicked: ["weekly_popup_prayer_clicked", "weekly_popup_poll_voted"],
+      skipped: "weekly_popup_dismissed",
+    },
+    {
+      id: "new_games_2026_11",
+      title: "2 New Game Modes",
+      kind: "Announcement (older popup)",
+      status: "On",
+      about: "Once per signed-in person. Bible Memory and Bible Word Search.",
+      shown: "new_games_popup_impression",
+      clicked: ["new_games_popup_clicked"],
+      skipped: "new_games_popup_dismissed",
+    },
+    {
+      id: "bible_lock_2026_11",
+      title: "Bible Lock",
+      kind: "Announcement (older popup)",
+      status: "On, iPhone app only",
+      about: "Once, on an iPhone that can run the lock and has not set it up.",
+      shown: "bible_lock_popup_impression",
+      clicked: ["bible_lock_popup_clicked"],
+      skipped: "bible_lock_popup_dismissed",
+    },
+    {
+      id: "wisdom_proverbs_launch_2026",
+      title: "The Wisdom of Proverbs has started",
+      kind: "Study launch (older popup)",
+      status: "Ended",
+      about: "Once, to members who had not started when the study opened on 1 October.",
+      shown: "proverbs_launch_popup_impression",
+      clicked: ["proverbs_launch_popup_clicked"],
+      skipped: "proverbs_launch_popup_dismissed",
+    },
+    {
+      id: "wisdom_proverbs_book_2026",
+      title: "Wisdom of Proverbs book",
+      kind: "Announcement (older popup)",
+      status: "Off",
+      about: "Stays off until its link is set.",
+      shown: "wisdom_book_popup_impression",
+      clicked: ["wisdom_book_popup_clicked"],
+      skipped: "wisdom_book_popup_dismissed",
+    },
+  ];
+  const OLDER_SINCE = "2026-10-01";
+  const olderNames = OLDER_POPUPS.flatMap((p) => [p.shown, ...p.clicked, p.skipped, ...(p.signedUp ? [p.signedUp] : [])]);
+  const olderRows = await fetchAll<{ user_id: string | null; session_id: string | null; event_name: string; created_at: string }>(
+    admin,
+    "landing_page_events",
+    "user_id, session_id, event_name, created_at",
+    (q) => q.in("event_name", olderNames).gte("created_at", `${OLDER_SINCE}T00:00:00Z`).or(`user_id.is.null,user_id.neq.${OWNER_USER_ID}`),
+  );
+  const olderPeople = (names: string[]) =>
+    new Set(olderRows.filter((row) => names.includes(row.event_name)).map((row) => row.user_id || row.session_id || row.created_at)).size;
+  const seenOnAccounts: Record<string, number> = {};
+  for (const p of OLDER_POPUPS) {
+    if (!p.seenPopupId) continue;
+    const { count } = await admin
+      .from("user_popups_seen")
+      .select("user_id", { count: "exact", head: true })
+      .eq("popup_id", p.seenPopupId)
+      .neq("user_id", OWNER_USER_ID);
+    seenOnAccounts[p.id] = count ?? 0;
+  }
+  const popupSwitchRows = await admin.from("popup_settings").select("popup_id, enabled");
+  const switchedOn = new Set((popupSwitchRows.data || []).filter((row) => row.enabled).map((row) => row.popup_id as string));
+
   const popupSystem = {
     since: POPUP_SYSTEM_SINCE,
     sawAny: peopleWho("popup_shown"),
@@ -1118,8 +1232,38 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
         tapRate: rateOrNull(taps, shown),
         // Only a sign-up has something to register for.
         registered: signup ? signup.registered : null,
+        status: !switchedOn.has(popup.id)
+          ? "Off"
+          : popup.expiresAt && Date.parse(popup.expiresAt) <= Date.now()
+            ? "Ended"
+            : popup.expiresAt
+              ? `On until ${new Date(popup.expiresAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", timeZone: "Europe/Berlin" })}`
+              : "On",
+        about: popup.description,
+        system: "new" as const,
+        since: POPUP_SYSTEM_SINCE,
       };
     }).sort((a, b) => b.shown - a.shown),
+    older: OLDER_POPUPS.map((p) => {
+      const shown = p.seenPopupId ? seenOnAccounts[p.id] ?? 0 : olderPeople([p.shown]);
+      const taps = olderPeople(p.clicked);
+      return {
+        id: p.id,
+        title: p.title,
+        kind: p.kind,
+        shown,
+        skipped: olderPeople([p.skipped]),
+        blocked: null as number | null,
+        taps,
+        // No clicks on record is "not measured", not 0%.
+        tapRate: p.seenPopupId && !taps ? null : rateOrNull(taps, shown),
+        registered: p.signedUp ? olderPeople([p.signedUp]) : (null as number | null),
+        status: p.status,
+        about: p.about,
+        system: "older" as const,
+        since: OLDER_SINCE,
+      };
+    }),
   };
 
   const PLACEMENT_LABEL: Record<string, string> = {

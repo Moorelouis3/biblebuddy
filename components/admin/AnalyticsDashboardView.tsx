@@ -28,6 +28,7 @@ export const TABS = [
   { key: "books", label: "Books" },
   { key: "app", label: "App" },
   { key: "features", label: "Features" },
+  { key: "popups", label: "Popups" },
 ] as const;
 
 export type AnalyticsTab = (typeof TABS)[number]["key"];
@@ -1958,32 +1959,20 @@ export default function AnalyticsDashboardView({
               </>
             ) : null}
 
-            {/* Features (2026-11-13): is the newest thing being found, tried
-                and returned to. One block per recently launched feature, all
-                asking the same questions in the same order. The numbers come
-                from lib/newFeaturesReport.ts. */}
-            {tab === "features" ? (
-              <>
-                {/* The popup coordinator (components/popups). One row per
-                    popup in its list. The Abraham sign-up also has its own
-                    line on the Community card; both read the same events. */}
-                {d.popupSystem ? (
-                  <Section
-                    summary={
-                      <SectionSummary
-                        icon="💬"
-                        title="Popups"
-                        line={`${fmt(d.popupSystem.sawAny)} saw one · ${fmt(d.popupSystem.tappedAny)} tapped the button`}
-                      />
-                    }
-                  >
-                    <div className="hidden lg:block">
-                      <CardTitle icon="💬">Popups</CardTitle>
-                    </div>
+            {/* Popups (2026-11-15, Louis: "it should be called pop-ups, and it
+                should have every pop-up there"). Every popup Bible Buddy has,
+                one collapsed row each: the ones the popup coordinator shows
+                (lib/popups/catalog.ts) and the older ones that still run by
+                themselves. Tap a row for its numbers. Built in
+                lib/adminDashboard.ts (popupSystem). */}
+            {tab === "popups" ? (
+              d.popupSystem ? (
+                <>
+                  <div className="rounded-2xl border border-[#e3e9f2] bg-white p-4 shadow-[0_4px_18px_rgba(15,23,42,0.04)] sm:p-5">
+                    <CardTitle icon="💬">The popup system</CardTitle>
                     <p className="mb-3 text-xs font-semibold text-[#64748b]">
-                      People, not taps, since {d.popupSystem.since} when the new popup system went on. Not tied to the period above.
-                      Skipped is Maybe later or the ✕ (it can come back once). Blocked is &ldquo;Don&apos;t show again&rdquo;, which only
-                      some popups offer.
+                      People, not taps, since {d.popupSystem.since} when the new system went on. One popup per visit, 20 hours apart,
+                      three a week. Not tied to the period chosen above.
                     </p>
                     <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-5">
                       {[
@@ -1999,39 +1988,74 @@ export default function AnalyticsDashboardView({
                         </div>
                       ))}
                     </div>
-                    <div className="mt-4 overflow-x-auto">
-                      <table className="w-full min-w-[600px] text-sm">
-                        <thead>
-                          <tr className="text-left text-[11px] font-bold uppercase tracking-wide text-[#94a3b8]">
-                            <th className="pb-2">Popup</th>
-                            <th className="pb-2 text-right">Saw it</th>
-                            <th className="pb-2 text-right">Clicked</th>
-                            <th className="pb-2 text-right">Click rate</th>
-                            <th className="pb-2 text-right">Skipped</th>
-                            <th className="pb-2 text-right">Blocked</th>
-                            <th className="pb-2 text-right">Signed up</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {d.popupSystem.rows.map((row) => (
-                            <tr key={row.id} className="border-t border-[#eef2f7]">
-                              <td className="py-2 pr-3">
-                                <span className="block font-bold text-[#0f172a]">{row.title}</span>
-                                <span className="block text-[11px] font-semibold text-[#94a3b8]">{row.kind}</span>
-                              </td>
-                              <td className="py-2 text-right font-bold">{fmt(row.shown)}</td>
-                              <td className="py-2 text-right">{fmt(row.taps)}</td>
-                              <td className="py-2 text-right">{pctOrNA(row.tapRate)}</td>
-                              <td className="py-2 text-right">{fmt(row.skipped)}</td>
-                              <td className="py-2 text-right">{row.blocked === null ? "–" : fmt(row.blocked)}</td>
-                              <td className="py-2 text-right">{row.registered === null ? "–" : fmt(row.registered)}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                  </div>
+                  {[
+                    { heading: `New popup system · ${d.popupSystem.rows.length} popups`, list: d.popupSystem.rows },
+                    { heading: `Older popups, outside the system · ${(d.popupSystem.older || []).length}`, list: d.popupSystem.older || [] },
+                  ].map((group) => (
+                    <div key={group.heading}>
+                      <p className="mb-2 px-1 text-[11px] font-black uppercase tracking-wide text-[#64748b]">{group.heading}</p>
+                      <div className="overflow-hidden rounded-2xl border border-[#e3e9f2] bg-white shadow-[0_4px_18px_rgba(15,23,42,0.04)]">
+                        {group.list.map((row) => (
+                          <details key={row.id} className="group border-t border-[#eef2f7] first:border-t-0">
+                            <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
+                              <span className="min-w-0 flex-1">
+                                <span className="block truncate text-sm font-black text-[#0f172a]">{row.title}</span>
+                                <span className="block truncate text-[11px] font-semibold text-[#94a3b8]">{row.kind}</span>
+                              </span>
+                              <span
+                                className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-black ${
+                                  row.status.startsWith("On") ? "bg-[#e8fbf3] text-[#0f5d45]" : "bg-[#f1f5f9] text-[#64748b]"
+                                }`}
+                              >
+                                {row.status}
+                              </span>
+                              <span className="hidden shrink-0 text-right text-xs font-bold text-[#334155] sm:block">
+                                {fmt(row.shown)} saw · {fmt(row.taps)} clicked
+                              </span>
+                              <span className="shrink-0 text-[#94a3b8] transition group-open:rotate-180" aria-hidden="true">
+                                ▾
+                              </span>
+                            </summary>
+                            <div className="border-t border-[#eef2f7] bg-[#fbfcfe] px-4 py-4">
+                              <p className="text-sm font-semibold text-[#475569]">{row.about}</p>
+                              <div className="mt-3 grid grid-cols-3 gap-2 text-center sm:grid-cols-6">
+                                {[
+                                  ["Saw it", fmt(row.shown)],
+                                  ["Clicked", fmt(row.taps)],
+                                  ["Click rate", pctOrNA(row.tapRate)],
+                                  ["Skipped", fmt(row.skipped)],
+                                  ["Blocked", row.blocked === null ? "–" : fmt(row.blocked)],
+                                  ["Signed up", row.registered === null ? "–" : fmt(row.registered)],
+                                ].map(([label, value]) => (
+                                  <div key={label} className="rounded-xl bg-white px-2 py-3 shadow-[0_1px_4px_rgba(15,23,42,0.06)]">
+                                    <p className="text-[11px] font-bold leading-tight text-[#64748b]">{label}</p>
+                                    <p className="mt-1 text-lg font-black">{value}</p>
+                                  </div>
+                                ))}
+                              </div>
+                              <p className="mt-3 text-[11px] font-semibold text-[#94a3b8]">
+                                People, counted since {row.since}. Skipped is Maybe later or the ✕. Blocked is &ldquo;Don&apos;t show
+                                again&rdquo;, which only some popups offer. Signed up only applies to a study sign-up.
+                              </p>
+                            </div>
+                          </details>
+                        ))}
+                      </div>
                     </div>
-                  </Section>
-                ) : null}
+                  ))}
+                </>
+              ) : (
+                <p className="px-1 text-sm font-semibold text-[#64748b]">No popup numbers yet.</p>
+              )
+            ) : null}
+
+            {/* Features (2026-11-13): is the newest thing being found, tried
+                and returned to. One block per recently launched feature, all
+                asking the same questions in the same order. The numbers come
+                from lib/newFeaturesReport.ts. */}
+            {tab === "features" ? (
+              <>
                 {d.newFeatures ? (
                   <>
                     <p className="px-1 text-sm font-semibold text-[#64748b]">

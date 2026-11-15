@@ -56,7 +56,6 @@ import NewGamesPopup from "./NewGamesPopup";
 import PopupCoordinator from "./popups/PopupCoordinator";
 import WisdomBookPopup from "./WisdomBookPopup";
 import ProverbsLaunchPopup from "./ProverbsLaunchPopup";
-import CommunityEventDayPopup from "./CommunityEventDayPopup";
 import WeeklyFeedPopup from "./WeeklyFeedPopup";
 import ReportProblemCard from "./ReportProblemCard";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
@@ -3897,17 +3896,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         />
       ) : null}
 
-      {/* Daily "Day N is ready" nudge for members of the live study, so people
-          who never open the group still know today is open. */}
-      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
-        <CommunityEventDayPopup
-          userId={userId}
-          pathname={pathname}
-          blocked={Boolean(
-            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
-          )}
-        />
-      ) : null}
+      {/* The daily "Day N is ready" popup for members of the live study was
+          retired on 2026-11-15 (Louis): a member got it every day for the
+          whole study and so never saw anything else - not the next study's
+          sign-up, not a tutorial. The dashboard's Today card still says the
+          day is open. Its component and /api/popups/community-event-day are
+          deleted; git has them. */}
 
       {/* One-time "The Wisdom of Proverbs has started" popup for members who
           have not started yet (from Oct 1). Checked before the book popup. */}

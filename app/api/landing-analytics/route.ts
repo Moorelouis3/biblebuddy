@@ -105,6 +105,15 @@ const ALLOWED_EVENTS = new Set([
   "wisdom_proverbs_popup_join_clicked",
   "wisdom_proverbs_popup_join_success",
   "wisdom_proverbs_popup_join_failed",
+  // The Beginning of Everything invitation (2026-10-25). Its popup has sent
+  // these since the day it launched, but they were never on this list, so
+  // every one was refused: no clicks or closes were ever recorded for it.
+  // Found on 2026-11-15 building the admin Popups tab. Same metadata.
+  "beginning_popup_impression",
+  "beginning_popup_dismissed",
+  "beginning_popup_join_clicked",
+  "beginning_popup_join_success",
+  "beginning_popup_join_failed",
   // The shareable Proverbs landing page (2026-10-16). It is the one Proverbs
   // surface that reported nothing, so its first ten days of visitors could not
   // be told apart from bounces. Metadata: {event_slug, placement, signed_in}.
