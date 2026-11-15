@@ -128,9 +128,27 @@ export function captureFirstTouch() {
   // "blog" and record the blog as the origin, which is the bug being fixed.
   const source = normalizeSignupSource(utmSource, externalReferrer, null);
 
-  // Nothing to learn from: no campaign tag and no external referrer. Stay
-  // silent so a genuine first touch can still be captured on a later visit.
-  if (source === "Other" && !utmSource && !externalReferrer) return;
+  /**
+   * An `r=` code is itself a source.
+   *
+   * It is minted by a Closer comment reply and appears nowhere else, so a
+   * visitor carrying one arrived from a comment on Threads, Facebook or
+   * Instagram even when the campaign tag has been stripped and the in-app
+   * browser sends no referrer. Recording "Closer" is less precise than naming
+   * the platform, but it is true, and the code itself identifies the exact
+   * comment once Content Buddy resolves it.
+   */
+  const closerCode = clean(params.get("r"));
+
+  // Nothing to learn from: no campaign tag, no external referrer, no tracked
+  // code. Stay silent so a genuine first touch can still be captured on a
+  // later visit.
+  if (source === "Other" && !utmSource && !externalReferrer && !closerCode) return;
+
+  if (source === "Other" && closerCode) {
+    safeSet(window.localStorage, FIRST_TOUCH_SOURCE_KEY, "Closer");
+    return;
+  }
 
   safeSet(window.localStorage, FIRST_TOUCH_SOURCE_KEY, source);
   if (externalReferrer) safeSet(window.localStorage, FIRST_TOUCH_REFERRER_KEY, externalReferrer);
@@ -166,7 +184,25 @@ export function getSignupAttributionFromBrowser(): SignupAttribution {
   );
   const referrerUrl = storedReferrer || clean(document.referrer);
   const pagePath = `${window.location.pathname}${window.location.search}`;
-  const source = normalizeSignupSource(utmSource || landingSource, referrerUrl, pagePath);
+  const storedFirstTouch = clean(safeGet(window.localStorage, FIRST_TOUCH_SOURCE_KEY));
+  /**
+   * Fall back to the first touch when the last touch tells us nothing.
+   *
+   * captureFirstTouch() exists precisely to survive the journey - it records
+   * the channel on arrival, because by signup time the tag is off the URL and
+   * document.referrer is our own site. It was being stored faithfully and then
+   * never consulted here: `source` was computed from the signup page's own URL
+   * and referrer only, so someone who arrived from an Instagram comment reply
+   * and signed up ten minutes later was written down as "Other".
+   *
+   * Only used when the last touch is genuinely unknown. A visitor who arrives
+   * on a tagged link still gets that tag, and the Pinterest -> blog -> signup
+   * case still records "Blog" as signup_source with Pinterest kept separately
+   * in signup_first_touch_source, which is the distinction those two columns
+   * exist to make.
+   */
+  const lastTouch = normalizeSignupSource(utmSource || landingSource, referrerUrl, pagePath);
+  const source = lastTouch === "Other" && storedFirstTouch ? storedFirstTouch : lastTouch;
   // Blog promo clicks arrive as /signup?src=blog&promo=<banner>&post=<slug>.
   // Fold promo + post into the stored detail so the blog analytics page can
   // report signups per post and per banner.

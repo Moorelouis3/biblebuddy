@@ -319,6 +319,9 @@ function actionDetail(row: MasterActionRow) {
 function channelFromText(text: string): string | null {
   const x = (text || "").toLowerCase();
   if (!x.trim()) return null;
+  // A Closer comment reply, when the tag was stripped and only the r= code
+  // survived. Less precise than the platform, but true.
+  if (/closer/.test(x) && !/closer-/.test(x)) return "Closer (comment reply)";
   if (x.includes("threads")) return "Threads";
   if (/facebook|fbclid|fb|fb./.test(x)) return "Facebook";
   if (/instagram|igshid|ig|closer-ig/.test(x)) return "Instagram";
