@@ -87,7 +87,12 @@ export function resolveUserBadge(input: {
   // dropping out needs nothing undone: the checks below simply decide again.
   // The rank comes from components/feed/useTopTenRank.ts, which reads the
   // same board the Top Buddies card shows.
-  if (input.topTenRank && input.topTenRank >= 1 && input.topTenRank <= 10) {
+  //
+  // The one exception is Teacher: the owner is not a contestant (Louis, the
+  // same day: "no im the owner! i dont wanna be in the top 10"). The board
+  // already leaves him out (founderUserId in the top-buddies route); this is
+  // the second lock, so that label can never be replaced even if that changes.
+  if (customBadge !== "teacher" && input.topTenRank && input.topTenRank >= 1 && input.topTenRank <= 10) {
     return {
       key: "top_buddy",
       label: "Top Buddy",

@@ -14047,3 +14047,7 @@ Still open: study comments and messages do not show New Buddy (they do not pass 
 Done: Anyone in this week's top ten shows the Top Buddy label ahead of any other label while they are there, and goes back to their own label (or none) when they drop out. Read from the existing Top Buddies board, nothing stored. Replaces the separate "Top 10" badge added earlier today.
 Not live yet: this commit, next scheduled build.
 Still open: applies on the feed and profile card; study comments and messages still show the stored label only.
+
+## 2026-11-15 (morning, owner level and label)
+Done: Louis's level set to 20 in his own profile_stats row (was 16; the stored level is a floor, so it stays). Teacher is never replaced by Top Buddy - the board already leaves the owner out, and the label rule now does too.
+Not live yet: the label rule, next scheduled build. The level is a data change and is live now.
