@@ -14008,3 +14008,27 @@ Still open: checked on desktop width in the preview; not on a real phone.
 Done: Louis can change a person's label from their profile again. The control had been stranded on the old profile page, which forwards to the feed since 25 Oct; it is now on the profile card people actually land on (components/profile/AdminBadgeEditor.tsx), Louis only, same /api/admin/member-badge route.
 Not live yet: this commit, next scheduled build.
 Still open: checked that a non-admin does not see it; saving a label needs Louis's own login to test.
+
+## 2026-11-15 (one day-complete popup for every study, with the book)
+Done: Rebuilt the day-complete popup to Louis's lavender mockup as ONE
+template (components/DevotionalDayCompletionModal.tsx). It reads the study's
+own row for title, cover, length and Amazon address, so a new study needs no
+new popup. Shows the celebration, the study's real cover with "Get the book /
+Buy on Amazon" only when the study has an Amazon address, then Start Day N+1
+and Back to bookshelf. Last day shows "You finished the whole study!". Bible
+in One Year now uses the same popup instead of its own dark card. Tested
+locally: all five studies with books (right cover, right link), The Obedience
+of Abraham (no book, card hidden), last day, a locked next day, Bible in One
+Year, desktop and phone width. Caught before shipping: the app does not lock
+the next day for group studies, so the popup no longer invents an "opens
+tomorrow" message; a screen passes one only when its own rule says so.
+Analytics: day_complete_popup_shown / _book_shown / _next_clicked /
+_bookshelf_clicked / _closed plus study_guide_amazon_clicked (placement
+day_complete). Admin > Analytics > Popups has one "Completed day popup"
+section for all studies together: Today, Last 7 days, Since it went on.
+npm run verify:day-complete added (8 checks).
+Not live yet: untagged, waits for the next scheduled build (npm run pending).
+Still open: not tested inside the iPhone app or on a real phone, and not by
+actually finishing a real day - only through a temporary local preview page,
+now deleted. Apple allows links to buy physical goods outside the app
+(guideline 3.1.3(e)); the app already carried such a link.

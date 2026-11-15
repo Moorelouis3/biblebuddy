@@ -26,6 +26,12 @@ const ALLOWED_EVENTS = new Set([
   // Library button from the start and refused here as an unknown event, so
   // none were ever saved.
   "study_guide_amazon_clicked",
+  // The day-complete popup (components/DevotionalDayCompletionModal.tsx).
+  "day_complete_popup_shown",
+  "day_complete_book_shown",
+  "day_complete_next_clicked",
+  "day_complete_bookshelf_clicked",
+  "day_complete_closed",
   // One-time "New Book Live!" popup for Proverbs members / devotional readers.
   "wisdom_book_popup_impression",
   "wisdom_book_popup_dismissed",

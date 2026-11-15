@@ -1968,6 +1968,54 @@ export default function AnalyticsDashboardView({
             {tab === "popups" ? (
               d.popupSystem ? (
                 <>
+                  {/* The completed day popup: ONE section for every study
+                      (Louis, 2026-11-15). Numbers are lib/adminDashboard.ts
+                      (dayCompletePopup). */}
+                  {d.dayCompletePopup ? (
+                    <div className="rounded-2xl border border-[#e3e9f2] bg-white p-4 shadow-[0_4px_18px_rgba(15,23,42,0.04)] sm:p-5">
+                      <CardTitle icon="✅">Completed day popup</CardTitle>
+                      <p className="mb-3 text-xs font-semibold text-[#64748b]">
+                        The one popup everybody sees when they finish a study day, every study added together. Counted in times it was
+                        shown, since {d.dayCompletePopup.since}. Not tied to the period chosen above.
+                      </p>
+                      <div className="overflow-x-auto">
+                        <table className="w-full min-w-[560px] text-left text-sm">
+                          <thead>
+                            <tr className="text-[11px] font-black uppercase tracking-wide text-[#64748b]">
+                              <th className="py-2 pr-3"> </th>
+                              <th className="px-2 py-2 text-right">Shown</th>
+                              <th className="px-2 py-2 text-right">People</th>
+                              <th className="px-2 py-2 text-right">Next day</th>
+                              <th className="px-2 py-2 text-right">Bookshelf</th>
+                              <th className="px-2 py-2 text-right">Closed it</th>
+                              <th className="px-2 py-2 text-right">Amazon</th>
+                              <th className="px-2 py-2 text-right">Did nothing</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {d.dayCompletePopup.rows.map((row) => (
+                              <tr key={row.label} className="border-t border-[#e2e8f0]">
+                                <td className="py-2.5 pr-3 font-black">{row.label}</td>
+                                <td className="px-2 py-2.5 text-right font-black">{fmt(row.shown)}</td>
+                                <td className="px-2 py-2.5 text-right font-semibold text-[#475569]">{fmt(row.people)}</td>
+                                <td className="px-2 py-2.5 text-right font-semibold">{fmt(row.nextDay)}</td>
+                                <td className="px-2 py-2.5 text-right font-semibold">{fmt(row.bookshelf)}</td>
+                                <td className="px-2 py-2.5 text-right font-semibold">{fmt(row.closed)}</td>
+                                <td className="px-2 py-2.5 text-right font-black text-[#6d28d9]">{fmt(row.amazon)}</td>
+                                <td className="px-2 py-2.5 text-right font-semibold text-[#94a3b8]">{fmt(row.didNothing)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      <p className="mt-3 text-xs font-semibold leading-relaxed text-[#64748b]">
+                        Amazon is a tap on Buy on Amazon, not a sale. It opens in a new tab, so the same person can also start the next
+                        day. Did nothing means the popup was shown and nothing was pressed. The book was on{" "}
+                        {fmt(d.dayCompletePopup.rows[2]?.bookShown ?? 0)} of the popups so far; a study with no book on Amazon shows the
+                        popup without it.
+                      </p>
+                    </div>
+                  ) : null}
                   <div className="rounded-2xl border border-[#e3e9f2] bg-white p-4 shadow-[0_4px_18px_rgba(15,23,42,0.04)] sm:p-5">
                     <CardTitle icon="💬">The popup system</CardTitle>
                     <p className="mb-3 text-xs font-semibold text-[#64748b]">

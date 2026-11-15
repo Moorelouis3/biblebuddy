@@ -1069,6 +1069,79 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     }),
   );
 
+  // ----- the completed day popup -----
+  //
+  // One popup, one section (Louis, 2026-11-15: "it's just one completed day
+  // pop-up template for all of them. So I don't need 7 different devotionals
+  // ... today, 22 people finished a day and saw the pop-up, and this many
+  // people did this, this many people did that").
+  //
+  // It is components/DevotionalDayCompletionModal.tsx, shown every time
+  // somebody finishes a study day, whichever study. Every study is added
+  // together here on purpose; the study and the day are on each event if a
+  // breakdown is ever wanted.
+  //
+  // Counted in TIMES, not people, because one person finishes many days and
+  // each finish is its own popup with its own answer. "People" is alongside
+  // so a quiet day is not mistaken for a busy one. A person can do two
+  // things with one popup (open Amazon, which is a new tab, then start the
+  // next day), so the answers can add up to more than the times shown.
+  // "Did nothing" is what is left: the popup was shown and no answer was
+  // recorded - the app was closed, or the page was left another way.
+  const DAY_POPUP_SINCE = "2026-11-15";
+  type DayPopupRow = { user_id: string | null; session_id: string | null; event_name: string; metadata: Record<string, unknown> | null; created_at: string };
+  const dayPopupRows = await fetchAll<DayPopupRow>(admin, "landing_page_events", "user_id, session_id, event_name, metadata, created_at", (q) =>
+    q
+      .in("event_name", [
+        "day_complete_popup_shown",
+        "day_complete_next_clicked",
+        "day_complete_bookshelf_clicked",
+        "day_complete_closed",
+        "day_complete_book_shown",
+        "study_guide_amazon_clicked",
+      ])
+      .gte("created_at", `${DAY_POPUP_SINCE}T00:00:00Z`)
+      .or(`user_id.is.null,user_id.neq.${OWNER_USER_ID}`),
+  );
+  // Midnight in Berlin, where Louis is, so "today" is his today.
+  const dayPopupTodayStart = (() => {
+    const now = new Date();
+    const parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Berlin", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }).formatToParts(now);
+    const num = (type: string) => Number(parts.find((p) => p.type === type)?.value || 0);
+    return now.getTime() - ((num("hour") % 24) * 3600 + num("minute") * 60 + num("second")) * 1000;
+  })();
+  const dayPopupIn = (label: string, fromMs: number) => {
+    const rows = dayPopupRows.filter((row) => Date.parse(row.created_at) >= fromMs);
+    const times = (name: string) => rows.filter((row) => row.event_name === name).length;
+    const shown = times("day_complete_popup_shown");
+    const amazon = rows.filter(
+      (row) => row.event_name === "study_guide_amazon_clicked" && (row.metadata as { placement?: string } | null)?.placement === "day_complete",
+    ).length;
+    const nextDay = times("day_complete_next_clicked");
+    const bookshelf = times("day_complete_bookshelf_clicked");
+    const closed = times("day_complete_closed");
+    return {
+      label,
+      shown,
+      people: new Set(rows.filter((row) => row.event_name === "day_complete_popup_shown").map((row) => row.user_id || row.session_id || row.created_at)).size,
+      nextDay,
+      bookshelf,
+      closed,
+      amazon,
+      // How many of those popups had the book on them at all.
+      bookShown: times("day_complete_book_shown"),
+      didNothing: Math.max(0, shown - nextDay - bookshelf - closed),
+    };
+  };
+  const dayCompletePopup = {
+    since: DAY_POPUP_SINCE,
+    rows: [
+      dayPopupIn("Today", dayPopupTodayStart),
+      dayPopupIn("Last 7 days", Date.now() - 7 * 86_400_000),
+      dayPopupIn("Since it went on", Date.parse(`${DAY_POPUP_SINCE}T00:00:00Z`)),
+    ],
+  };
+
   // ----- the popup system as a whole -----
   //
   // One row per popup in lib/popups/catalog.ts, the single list the
@@ -1906,6 +1979,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     community,
     studySignups,
     popupSystem,
+    dayCompletePopup,
     studyGuides,
     books,
     appStore,

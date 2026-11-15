@@ -2938,6 +2938,13 @@ export default function DevotionalDetailPage({ devotionalIdOverride, embedded = 
         <DevotionalDayCompletionModal
           dayNumber={celebrationDay}
           devotionalTitle={devotional.title}
+          devotionalId={devotionalId}
+          totalDays={devotional.total_days}
+          nextDayAvailability={
+            celebrationDay < Math.max(1, Number(devotional.total_days || 1)) && !isDayUnlocked(celebrationDay + 1)
+              ? `Day ${celebrationDay + 1} is not open yet.`
+              : null
+          }
           onClose={() => setCelebrationDay(null)}
           primaryButtonText={
             celebrationDay < Math.max(1, Number(devotional.total_days || 1))

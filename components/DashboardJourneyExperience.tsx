@@ -9,6 +9,8 @@ import { LouisAvatar } from "./LouisAvatar";
 import { ModalShell } from "./ModalShell";
 import BibleReadingModal from "./BibleReadingModal";
 import DevotionalDayCompletionModal from "./DevotionalDayCompletionModal";
+import { BIBLE_YEAR_PAPERBACK_URL } from "../lib/bibleYearBook";
+import { BIBLE_YEAR_SHELF_COVER } from "../lib/libraryCatalog";
 import DashboardDailyTaskCallout, { DatabaseTermTakeover, type BibleDatabaseTerm } from "./DashboardDailyTaskCallout";
 import ChapterNotesMarkdown from "./ChapterNotesMarkdown";
 import BibleYearDeepStudySectionCards from "./BibleYearDeepStudySectionCards";
@@ -11782,39 +11784,27 @@ Before we understand redemption, we need to understand what God made humanity fo
     const nextDay = GENESIS_BIBLE_IN_ONE_YEAR_SERIES.find((seriesDay) => seriesDay.dayNumber === day.dayNumber + 1);
     const chapterReference = formatBibleYearMediaReference(day);
 
+    // The same day-complete popup every study uses (Louis, 2026-11-15), in
+    // place of a dark card that only this plan had. Bible in One Year has no
+    // row in `devotionals`, so its cover and its book are handed in here.
+    // What the buttons do is unchanged: the main one saves and moves on, the
+    // other closes, and a tap outside still does nothing.
+    void chapterReference;
     return (
-      <ModalShell isOpen={true} onClose={() => setBibleYearCompletionModalDay(null)} backdropColor="bg-black/70" closeOnBackdrop={false}>
-        <div className="mx-4 w-full max-w-lg overflow-hidden rounded-[28px] border border-[#26364a] bg-[#101a27] p-2 text-[#f8fafc] shadow-2xl">
-          <div className="rounded-[22px] bg-[linear-gradient(145deg,#132033,#0b1421)] px-5 py-6 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#9CC9E6]">Bible in One Year</p>
-            <h2 className="mt-2 text-2xl font-black leading-tight text-white">
-              Congratulations, you finished Day {day.dayNumber}
-            </h2>
-            <p className="mx-auto mt-3 max-w-md text-sm font-semibold leading-6 text-[#c7d0dd]">
-              Including {chapterReference}. {nextDay ? `Are you ready to continue to Day ${nextDay.dayNumber}?` : "You finished the available journey days."}
-            </p>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <button
-                type="button"
-                onClick={() => handleBibleYearCompletionModalContinue(day)}
-                disabled={continuingBibleYearDay === day.dayNumber}
-                className="rounded-[14px] bg-[#7BAFD4] px-5 py-3.5 text-sm font-black text-white shadow-[0_12px_24px_rgba(123,175,212,0.18)] transition hover:brightness-105 disabled:cursor-wait disabled:opacity-70"
-              >
-                {continuingBibleYearDay === day.dayNumber ? "Saving..." : nextDay ? "Yes, let's go" : "Back to Plan"}
-              </button>
-              {nextDay ? (
-                <button
-                  type="button"
-                  onClick={() => setBibleYearCompletionModalDay(null)}
-                  className="rounded-[14px] border border-[#26364a] bg-[#101c2b] px-5 py-3.5 text-sm font-black text-[#f8fafc] transition hover:bg-[#16263a]"
-                >
-                  No, not right now
-                </button>
-              ) : null}
-            </div>
-          </div>
-        </div>
-      </ModalShell>
+      <DevotionalDayCompletionModal
+        dayNumber={day.dayNumber}
+        devotionalTitle="Bible in One Year"
+        book={{ coverImage: BIBLE_YEAR_SHELF_COVER, url: BIBLE_YEAR_PAPERBACK_URL }}
+        studyComplete={!nextDay}
+        onClose={() => setBibleYearCompletionModalDay(null)}
+        primaryButtonText={
+          continuingBibleYearDay === day.dayNumber ? "Saving..." : nextDay ? `Start Day ${nextDay.dayNumber}` : "Back to Plan"
+        }
+        primaryDisabled={continuingBibleYearDay === day.dayNumber}
+        onPrimary={() => handleBibleYearCompletionModalContinue(day)}
+        secondaryButtonText="Not right now"
+        closeOnBackdrop={false}
+      />
     );
   }
 
@@ -18751,6 +18741,8 @@ Before we understand redemption, we need to understand what God made humanity fo
         <DevotionalDayCompletionModal
           dayNumber={journeyCelebration.dayNumber}
           devotionalTitle={journeyCelebration.devotionalTitle}
+          devotionalId={currentDevotionalId || null}
+          studyComplete={!journeyCelebration.nextDay}
           onClose={() => setJourneyCelebration(null)}
           primaryButtonText={
             journeyCelebration.nextDay

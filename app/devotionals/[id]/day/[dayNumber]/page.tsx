@@ -1263,6 +1263,8 @@ export default function ProverbsStudyDayPage() {
         <DevotionalDayCompletionModal
           dayNumber={dayNumber}
           devotionalTitle={devotional.title}
+          devotionalId={devotionalId}
+          totalDays={devotional.total_days}
           onClose={() => setShowCompletionModal(false)}
           /**
            * The labels now name where the button actually goes
