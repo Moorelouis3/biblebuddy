@@ -1,79 +1,27 @@
 "use client";
 
 /**
- * One-time "Bible first. Apps after." popup announcing Bible Lock
- * (Louis, 2026-11-13).
+ * "Bible first. Apps after." - the Bible Lock announcement (Louis, 2026-11-13).
  *
- * Switched on 2026-11-13, after Louis approved the preview. `ENABLED` below
- * is the one line that turns it off again.
- *
- * Not a new system. Same mechanism as NewGamesPopup and the study popups:
- * "shown" is saved to the account in user_popups_seen under the popup id the
- * moment it appears, localStorage is only a fast skip, it waits for a settled
- * page with no other modal, and it never stacks. The shell, the pill, the
- * close button, the card and the buttons are NewGamesPopup's, restyled for
- * one feature instead of two.
- *
- * Who sees it once it is on: only somebody who can actually use the lock and
- * has not set it up. That is decided by the device, through bibleLockStatus():
- * `supported` is true only inside the Bible Buddy app on an iPhone (iOS 16+)
- * whose build carries the plugin - never on the website, never on Android.
- * Announcing it anywhere else would promise a button that does nothing.
- * Somebody who has already chosen apps is not told about a feature they use.
+ * A VIEW since 2026-11-15. It only draws. The popup coordinator
+ * (components/popups/PopupCoordinator.tsx) decides who sees it and records
+ * what happened; its entry in lib/popups/catalog.ts is `bible_lock_2026_11`,
+ * the id it always had. Who can see it is unchanged and is checked there:
+ * only inside the Bible Buddy app on an iPhone whose build carries the lock,
+ * and only somebody who has not set it up (bibleLockStatus()). Announcing it
+ * anywhere else would promise a button that does nothing.
  *
  * Every line of copy is something the feature does today - see
  * lib/bibleLock.ts, BibleLockSettings and BibleLockPage. If the lock changes,
  * change the words here with it.
  *
- * Tracking goes through /api/landing-analytics with user_id:
- * bible_lock_popup_impression / _dismissed / _clicked.
- *
- * To look at it on any device without touching anyone's "seen" state, open an
- * app page with ?bb_preview=bible_lock. That shows it once for that page
- * load, skips the device check, records nothing and tracks nothing.
+ * To look at it on any device: /tips?open=bible_lock_2026_11.
  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { useRouter } from "next/navigation";
 import { lockDocumentScroll } from "../hooks/useDocumentScrollLock";
-import { bibleLockStatus } from "../lib/bibleLock";
-import { supabase } from "../lib/supabaseClient";
 import { Sparkle } from "./NewGamesPopup";
-
-/** Louis approved the preview on 2026-11-13. Set to false to stop showing it. */
-const ENABLED = true;
-
-const POPUP_ID = "bible_lock_2026_11";
-const DESTINATION = "/bible-lock";
-const SHOW_DELAY_MS = 1500;
-const EXCLUDED_PREFIXES = [
-  "/start",
-  "/events",
-  "/login",
-  "/signup",
-  "/reset-password",
-  "/admin",
-  "/moderator-admin",
-  "/onboarding",
-  "/bible-lock",
-  "/settings",
-];
-
-const PREVIEW_PARAM = "bb_preview";
-const PREVIEW_VALUE = "bible_lock";
-
-/** See NewGamesPopup: the dashboard strips its query string before we mount. */
-const SEARCH_AT_LOAD = typeof window === "undefined" ? "" : window.location.search;
-
-function previewRequested() {
-  try {
-    const wanted = (search: string) => new URLSearchParams(search).get(PREVIEW_PARAM) === PREVIEW_VALUE;
-    return wanted(SEARCH_AT_LOAD) || wanted(window.location.search);
-  } catch {
-    return false;
-  }
-}
 
 const ENTRANCE_CSS = `
 @media (prefers-reduced-motion: no-preference) {
@@ -100,168 +48,26 @@ const HIGHLIGHTS = [
   },
 ] as const;
 
-const localKey = (userId: string) => `bb-popup-done:${POPUP_ID}:${userId}`;
-
-function track(eventName: string, userId: string, extra: Record<string, unknown> = {}) {
-  try {
-    // Absolute URL: inside the iOS app a relative fetch can hang forever.
-    void fetch(`${window.location.origin}/api/landing-analytics`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        event_name: eventName,
-        user_id: userId,
-        source: "popup",
-        page_path: window.location.pathname,
-        referrer: document.referrer || null,
-        metadata: { promotion_id: POPUP_ID, source: "popup", ...extra },
-      }),
-      keepalive: true,
-    }).catch(() => {});
-  } catch {
-    // Analytics never blocks the popup.
-  }
-}
-
-function isExcluded(pathname: string | null) {
-  return !pathname || EXCLUDED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
-}
-
-/** Another modal is up (they all lock body scroll or announce a dialog). */
-function otherModalOpen() {
-  return document.body.style.overflow === "hidden" || Boolean(document.querySelector('[aria-modal="true"]'));
-}
+export type BibleLockCloseMethod = "close_button" | "escape" | "backdrop" | "later";
 
 export default function BibleLockPopup({
-  userId,
-  pathname,
-  blocked,
+  onClose,
+  onCta,
 }: {
-  userId: string;
-  pathname: string | null;
-  /** AppShell's own modals (install ask, celebrations...) are open. */
-  blocked: boolean;
+  onClose: (method: BibleLockCloseMethod) => void;
+  /** "Set it up": the coordinator records the tap and opens /bible-lock. */
+  onCta: () => void;
 }) {
-  const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const pathRef = useRef(pathname);
-  const blockedRef = useRef(blocked);
   const dialogRef = useRef<HTMLDivElement | null>(null);
-  const restoreFocusRef = useRef<HTMLElement | null>(null);
-  const previewRef = useRef(false);
-
-  useEffect(() => {
-    pathRef.current = pathname;
-    blockedRef.current = blocked;
-  }, [pathname, blocked]);
-
-  // Eligibility runs once per signed-in user per page load.
-  useEffect(() => {
-    // Preview: show it for this page load only. No "seen" write, no tracking.
-    if (previewRequested()) {
-      const previewTimer = setTimeout(() => {
-        previewRef.current = true;
-        restoreFocusRef.current = document.activeElement as HTMLElement | null;
-        setOpen(true);
-      }, 600);
-      return () => clearTimeout(previewTimer);
-    }
-
-    if (!ENABLED) return;
-
-    try {
-      if (window.localStorage.getItem(localKey(userId))) return;
-    } catch {
-      // Storage blocked - the account check below still decides.
-    }
-
-    let cancelled = false;
-    let timer: ReturnType<typeof setTimeout> | null = null;
-
-    void (async () => {
-      try {
-        // The device decides first, and it costs no network: only a phone
-        // that can run the lock, and has not set it up, hears about it.
-        const status = await bibleLockStatus();
-        if (cancelled || !status.supported || status.chosen > 0 || status.locked) return;
-
-        const { data: seen, error: seenError } = await supabase
-          .from("user_popups_seen")
-          .select("id")
-          .eq("user_id", userId)
-          .eq("popup_id", POPUP_ID)
-          .maybeSingle();
-        // If the seen-state can't be read, don't risk showing it twice.
-        if (seenError || seen) {
-          if (seen) {
-            try {
-              window.localStorage.setItem(localKey(userId), "seen");
-            } catch {}
-          }
-          return;
-        }
-      } catch {
-        return;
-      }
-
-      let clearSince = 0;
-      const attempt = async () => {
-        if (cancelled) return;
-        const clear = !isExcluded(pathRef.current) && !blockedRef.current && !otherModalOpen() && !document.hidden;
-        if (!clear) clearSince = 0;
-        else if (!clearSince) clearSince = Date.now();
-        if (!clear || Date.now() - clearSince < SHOW_DELAY_MS) {
-          timer = setTimeout(attempt, 1000);
-          return;
-        }
-        // Record the impression on the account BEFORE showing, so a failed
-        // write never leads to a repeat later.
-        const now = new Date().toISOString();
-        const { error: writeError } = await supabase.from("user_popups_seen").upsert(
-          { user_id: userId, popup_id: POPUP_ID, has_seen: true, seen_at: now, updated_at: now },
-          { onConflict: "user_id,popup_id", ignoreDuplicates: true },
-        );
-        if (writeError || cancelled) return;
-        try {
-          window.localStorage.setItem(localKey(userId), "seen");
-        } catch {}
-        restoreFocusRef.current = document.activeElement as HTMLElement | null;
-        setOpen(true);
-        track("bible_lock_popup_impression", userId, { page: pathRef.current });
-      };
-      timer = setTimeout(attempt, 500);
-    })();
-
-    return () => {
-      cancelled = true;
-      if (timer) clearTimeout(timer);
-    };
-  }, [userId]);
-
-  const close = useCallback(
-    (method: "close_button" | "escape" | "backdrop" | "later") => {
-      setOpen(false);
-      if (!previewRef.current) track("bible_lock_popup_dismissed", userId, { method });
-      restoreFocusRef.current?.focus?.();
-    },
-    [userId],
-  );
-
-  const setUp = useCallback(() => {
-    if (!previewRef.current) track("bible_lock_popup_clicked", userId);
-    setOpen(false);
-    router.push(DESTINATION);
-  }, [router, userId]);
+  const close = onClose;
+  const setUp = onCta;
 
   // Background scroll lock, shared with every other modal.
-  useEffect(() => {
-    if (!open) return;
-    return lockDocumentScroll('[aria-labelledby="bible-lock-popup-title"]');
-  }, [open]);
+  useEffect(() => lockDocumentScroll('[aria-labelledby="bible-lock-popup-title"]'), []);
 
   // Escape and focus trap.
   useEffect(() => {
-    if (!open) return;
+    const cameFrom = document.activeElement as HTMLElement | null;
     const focusables = () =>
       Array.from(dialogRef.current?.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]") || []).filter(
         (el) => el.offsetParent !== null,
@@ -292,10 +98,9 @@ export default function BibleLockPopup({
     return () => {
       window.clearTimeout(focusTimer);
       document.removeEventListener("keydown", onKey);
+      cameFrom?.focus?.({ preventScroll: true });
     };
-  }, [open, close]);
-
-  if (!open) return null;
+  }, [close]);
 
   return createPortal(
     <div

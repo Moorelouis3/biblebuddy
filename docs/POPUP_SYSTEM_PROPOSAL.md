@@ -307,3 +307,22 @@ entry with one extra field, `event` (`PopupEventSignup` in
   on a wide screen, picture plus real text on a phone. `PosterSignup` in
   FeaturePopup.tsx only draws; rules, sign-up and numbers are unchanged. An
   entry without a `poster` keeps the plain card.
+
+## 10. Every popup is in the system (2026-11-15)
+
+Louis: "every pop up needs to be under here and work from this system".
+
+- The weekly prayer request and poll, the two new games, Bible Lock and the
+  Beginning of Everything invitation are catalog entries. Their own
+  components and timers are gone. The daily "Day N is ready" popup is retired;
+  the Proverbs launch and book popups (ended / never on) are deleted.
+- `weekly`: the version is the week's number (`liveCatalog`), so "a new
+  version" is what brings it back each week. The coordinator asks
+  `/api/popups/weekly-feed` for the week's post and poll before showing.
+- `custom`: New Games and Bible Lock keep their approved designs as views
+  (`components/NewGamesPopup.tsx`, `BibleLockPopup.tsx`). They only draw.
+- `seenBeforeIsFinal`: a row from when a popup ran on its own means "seen".
+- Prayer and poll are the shared card now, not the old blue-header box.
+- AppShell mounts one popup component: the coordinator. A new popup is a new
+  entry in `lib/popups/catalog.ts` plus a `popup_settings` row.
+- Admin analytics, Popups tab: every entry, one collapsed row each.

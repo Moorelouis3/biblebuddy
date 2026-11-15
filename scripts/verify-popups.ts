@@ -11,7 +11,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { ACTION_TYPE } from "../lib/actionTypes";
 import { COMMUNITY_EVENTS, communityEventStartsAt, getCommunityEvent, getCommunityEventState } from "../lib/communityEvents";
-import { POPUP_CATALOG, TIPS_CATALOG } from "../lib/popups/catalog";
+import { existsSync } from "node:fs";
+import { liveCatalog, POPUP_CATALOG, TIPS_CATALOG } from "../lib/popups/catalog";
 import {
   decide,
   HOURS_BETWEEN_POPUPS,
@@ -27,7 +28,13 @@ const NOW = new Date("2026-11-20T09:00:00Z");
 const daysAgo = (days: number) => new Date(NOW.getTime() - days * 86_400_000).toISOString();
 const hoursAgo = (hours: number) => new Date(NOW.getTime() - hours * 3_600_000).toISOString();
 
-const allOn = Object.fromEntries(POPUP_CATALOG.map((popup) => [popup.id, { enabled: true }]));
+// The five that were their own components until 2026-11-15. The checks
+// written before they joined the list still describe what they always did,
+// so those run with these five switched off; their own checks are at the end
+// and switch everything on.
+const MOVED_IN = ["beginning_of_everything_2026", "bible_lock_2026_11", "new_games_2026_11", "weekly_prayer", "weekly_poll"];
+const everythingOn = Object.fromEntries(POPUP_CATALOG.map((popup) => [popup.id, { enabled: true }]));
+const allOn = Object.fromEntries(POPUP_CATALOG.filter((popup) => !MOVED_IN.includes(popup.id)).map((popup) => [popup.id, { enabled: true }]));
 
 const base = (over: Partial<DecideInput> = {}): DecideInput => ({
   now: NOW,
@@ -210,7 +217,7 @@ const analytics = readFileSync("app/api/landing-analytics/route.ts", "utf8");
 
 check("the coordinator asks the database before it opens anything", () => {
   const asks = coordinator.indexOf('rpc("claim_popup"');
-  assert.ok(asks > 0 && asks < coordinator.indexOf("setOpen({ popup"));
+  assert.ok(asks > 0 && asks < coordinator.search(/setOpen\(\{\s*popup,/));
 });
 
 check("a popup never writes study activity", () => {
@@ -472,6 +479,117 @@ check("the designed artwork is only a look: files exist, same handlers, a visibl
   assert.ok(drawn.includes("onClick={onCta}") && drawn.includes('onClose("later")') && drawn.includes('onClose("close_button")'));
   // It registers nothing itself.
   assert.ok(!drawn.includes("joinCommunityEvent") && !drawn.includes("supabase"));
+});
+
+console.log("Every popup is in the one system (2026-11-15)");
+
+const everything = (over: Partial<DecideInput> = {}) =>
+  base({ settings: everythingOn, joinedEvents: new Set(["obedience-of-abraham", "beginning-of-everything"]), ...over });
+const used = new Set(["feed_post_thought", "understand_verse_of_the_day"]);
+
+check("the five that had their own timers are entries in the list", () => {
+  for (const id of MOVED_IN) assert.ok(POPUP_CATALOG.some((popup) => popup.id === id), id);
+});
+
+check("their own components and triggers are gone", () => {
+  for (const file of [
+    "components/BeginningOfEverythingPopup.tsx",
+    "components/WeeklyFeedPopup.tsx",
+    "components/CommunityEventDayPopup.tsx",
+    "components/ProverbsLaunchPopup.tsx",
+    "components/WisdomBookPopup.tsx",
+    "app/api/popups/community-event-day/route.ts",
+  ]) {
+    assert.ok(!existsSync(file), file);
+  }
+  const shell = readFileSync("components/AppShell.tsx", "utf8");
+  for (const name of ["NewGamesPopup", "BibleLockPopup", "WeeklyFeedPopup", "BeginningOfEverythingPopup", "CommunityEventDayPopup"]) {
+    assert.ok(!shell.includes(`<${name}`), `AppShell still mounts ${name}`);
+  }
+  // The two that kept their approved look only draw now.
+  for (const file of ["components/NewGamesPopup.tsx", "components/BibleLockPopup.tsx"]) {
+    const view = readFileSync(file, "utf8");
+    for (const own of ["supabase", "setTimeout(attempt", "user_popups_seen", "/api/landing-analytics"]) assert.ok(!view.includes(own), `${file}: ${own}`);
+  }
+});
+
+check("the coordinator draws all of them, and nothing else decides", () => {
+  assert.ok(coordinator.includes('open.popup.custom === "new_games"') && coordinator.includes('open.popup.custom === "bible_lock"'));
+  assert.ok(coordinator.includes("liveCatalog(new Date())"));
+  assert.ok(coordinator.includes("loadWeekly(popup.weekly)"));
+  const route = readFileSync("app/api/popups/weekly-feed/route.ts", "utf8");
+  assert.ok(!route.includes("seenError"), "the weekly route no longer decides who has been asked");
+});
+
+check("the same one-per-visit, 20-hour and weekly limits hold for them", () => {
+  assert.equal(decide(everything({ shownThisVisit: true })).chosen, null);
+  assert.equal(decide(everything({ lastAutomaticAt: hoursAgo(5) })).chosen, null);
+  assert.equal(decide(everything({ automaticInLast7Days: MAX_POPUPS_PER_WEEK })).chosen, null);
+  assert.equal(decide(everything({ busy: "typing" })).chosen, null);
+});
+
+check("new games: everyone once, not on the games pages", () => {
+  assert.equal(decide(everything({ usedActions: used })).chosen?.id, "new_games_2026_11");
+  assert.notEqual(decide(everything({ usedActions: used, pathname: "/bible-study-games" })).chosen?.id, "new_games_2026_11");
+});
+
+check("somebody who saw one of them before it moved in is not shown it again", () => {
+  assert.ok(coordinator.includes("popup.seenBeforeIsFinal"));
+  for (const id of ["beginning_of_everything_2026", "bible_lock_2026_11", "new_games_2026_11"]) {
+    assert.equal(POPUP_CATALOG.find((popup) => popup.id === id)?.seenBeforeIsFinal, true, id);
+  }
+  // What the coordinator turns such a row into.
+  const before = { new_games_2026_11: seen({ displayCount: MAX_AUTOMATIC_DISPLAYS }) };
+  assert.notEqual(decide(everything({ usedActions: used, history: before })).chosen?.id, "new_games_2026_11");
+});
+
+check("Bible Lock: only a phone that can run it and has not set it up", () => {
+  const lock = (over: Partial<DecideInput> = {}) => everything({ usedActions: used, history: { new_games_2026_11: seen({ ctaClickedAt: daysAgo(1) }) }, ...over });
+  assert.notEqual(decide(lock()).chosen?.id, "bible_lock_2026_11");
+  assert.equal(decide(lock({ devices: new Set(["bible_lock_ready"]) })).chosen?.id, "bible_lock_2026_11");
+  assert.ok(coordinator.includes("status.supported && status.chosen === 0 && !status.locked"));
+});
+
+check("the Beginning invitation: not for members, after Abraham, ends with the live study", () => {
+  const invite = POPUP_CATALOG.find((popup) => popup.id === "beginning_of_everything_2026")!;
+  assert.equal(invite.expiresAt, "2026-11-28T23:00:00.000Z");
+  assert.ok(readFileSync("public" + invite.event!.poster!.desktop).length > 50_000);
+  const neither = everything({ joinedEvents: new Set<string>() });
+  assert.equal(decide(neither).chosen?.id, "signup_obedience_of_abraham");
+  assert.equal(decide(everything({ joinedEvents: new Set(["obedience-of-abraham"]) })).chosen?.id, "beginning_of_everything_2026");
+  assert.notEqual(decide(everything({ joinedEvents: new Set(["obedience-of-abraham"]), now: new Date("2026-11-29T00:00:00Z") })).chosen?.id, "beginning_of_everything_2026");
+  // Joining a study that is open is starting it.
+  assert.ok(coordinator.includes("router.push(eventDayStudyPath(study.devotionalId, 1))"));
+});
+
+check("prayer and poll come round once a week, in the shared card", () => {
+  const thisWeek = liveCatalog(NOW);
+  const nextWeek = liveCatalog(new Date(NOW.getTime() + 7 * 86_400_000));
+  for (const id of ["weekly_prayer", "weekly_poll"]) {
+    const now = thisWeek.find((popup) => popup.id === id)!;
+    const later = nextWeek.find((popup) => popup.id === id)!;
+    assert.equal(later.version, now.version + 1, id);
+    assert.equal(now.custom, undefined, `${id} is drawn by the shared card`);
+    // Answered or closed this week: not again this week, but again next week.
+    const quiet = { usedActions: used, history: { new_games_2026_11: seen({ ctaClickedAt: daysAgo(1) }), weekly_prayer: seen({ version: thisWeek.find((p) => p.id === "weekly_prayer")!.version, ctaClickedAt: hoursAgo(30) }), weekly_poll: seen({ version: thisWeek.find((p) => p.id === "weekly_poll")!.version, dismissedAt: hoursAgo(30), nextEligibleAt: nextEligibleAfterClose(new Date(hoursAgo(30))) }) } };
+    assert.equal(decide(everything({ ...quiet, catalog: thisWeek })).chosen, null);
+    assert.ok(["weekly_prayer", "weekly_poll"].includes(decide(everything({ ...quiet, catalog: nextWeek, now: new Date(NOW.getTime() + 7 * 86_400_000) })).chosen?.id || ""));
+  }
+  // They wait their turn behind everything that is not weekly.
+  assert.equal(decide(everything({ usedActions: used, catalog: thisWeek })).chosen?.id, "new_games_2026_11");
+  assert.notEqual(decide(everything({ usedActions: used, catalog: thisWeek, pathname: "/bb-feed" })).chosen?.weekly, "prayer");
+});
+
+check("the poll is answered in the popup, and an answer is not a dismissal", () => {
+  const shell = readFileSync("components/popups/FeaturePopup.tsx", "utf8");
+  assert.ok(shell.includes("function PollOptions(") && shell.includes("poll && !poll.voted ? null"));
+  assert.ok(coordinator.includes("/weekly-poll/vote") && coordinator.includes("if (voted) {"));
+});
+
+check("the Features report still gets the new-games events it reads", () => {
+  assert.ok(coordinator.includes('shown: "new_games_popup_impression"') && coordinator.includes("track(also.clicked"));
+  const report = readFileSync("lib/newFeaturesReport.ts", "utf8");
+  assert.ok(report.includes('"new_games_popup_impression"'));
 });
 
 console.log(`\n${passed} checks passed.`);

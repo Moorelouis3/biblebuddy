@@ -120,6 +120,26 @@ const TONE_BY_PREVIEW: Record<PopupPreview, keyof typeof TONES> = {
   app_store: "brand",
   android_beta: "brand",
   event_signup: "brand",
+  prayer: "brand",
+  poll: "brand",
+};
+
+/**
+ * The week's poll, answered inside the popup (a catalog entry with
+ * `weekly: "poll"`). The question, the options and the counts come from
+ * /api/popups/weekly-feed; the coordinator sends the vote.
+ */
+export type FeaturePopupPoll = {
+  question: string;
+  subjectTitle: string;
+  intro: string | null;
+  options: { key: string; text: string }[];
+  counts: Record<string, number>;
+  totalVotes: number;
+  /** The option this person chose, once the vote is saved. */
+  voted: string | null;
+  /** The option being sent right now. */
+  voting: string | null;
 };
 
 /** Where a study sign-up has got to. Only a popup with `event` uses it. */
@@ -132,6 +152,8 @@ export default function FeaturePopup({
   onCta,
   signup = "idle",
   onDone,
+  poll,
+  onVote,
 }: {
   popup: PopupDefinition;
   /** The person is already where the feature lives: the button just closes. */
@@ -142,6 +164,9 @@ export default function FeaturePopup({
   signup?: FeaturePopupSignup;
   /** A study sign-up only: the button after it is done ("See the study page"). */
   onDone?: () => void;
+  /** The weekly poll only. */
+  poll?: FeaturePopupPoll;
+  onVote?: (optionKey: string) => void;
 }) {
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const titleId = `feature-popup-title-${popup.id}`;
@@ -284,8 +309,8 @@ export default function FeaturePopup({
               id={titleId}
               className="mt-3 pr-10 text-[28px] font-black leading-[1.1] tracking-tight text-[#14122b] sm:text-[32px]"
             >
-              {headlineStart}
-              <span className="relative inline-block whitespace-nowrap">
+              {poll ? poll.question : headlineStart}
+              <span className={poll ? "hidden" : "relative inline-block whitespace-nowrap"}>
                 {popup.headlineAccent}
                 <svg
                   viewBox="0 0 100 10"
@@ -307,11 +332,14 @@ export default function FeaturePopup({
               id={`${titleId}-sub`}
               className="mt-2.5 text-[16px] font-semibold leading-snug text-[#4b5068]"
             >
-              {popup.description}
+              {poll ? poll.intro || poll.subjectTitle || popup.description : popup.description}
             </p>
           </div>
 
           <div className="px-4 pb-3.5 sm:px-5">
+            {poll ? (
+              <PollOptions poll={poll} onVote={onVote} tone={tone} />
+            ) : (
             <section
               className="relative overflow-hidden rounded-[26px] border p-4 shadow-[0_6px_18px_rgba(91,80,220,0.12)]"
               style={{ background: tone.card, borderColor: tone.border }}
@@ -348,6 +376,7 @@ export default function FeaturePopup({
                 </>
               )}
             </section>
+            )}
 
             {popup.steps.length ? (
               <ol className="mt-3.5 flex flex-col gap-2.5 px-1">
@@ -390,7 +419,7 @@ export default function FeaturePopup({
               {signup === "done" ? "See the study page" : signup === "working" ? "Signing you up…" : popup.cta.label}
               {signup === "done" ? <span aria-hidden="true">→</span> : null}
             </button>
-          ) : popup.cta.external ? (
+          ) : poll && !poll.voted ? null : popup.cta.external ? (
             /* A real link, not a button that navigates: leaving for the App
                Store has to be the person's own tap or the phone may not
                hand it over to the store. */
@@ -419,8 +448,8 @@ export default function FeaturePopup({
                 ["--tw-ring-color" as string]: tone.ring,
               }}
             >
-              {inSection ? popup.ctaInSection : popup.cta.label}
-              {inSection ? null : <span aria-hidden="true">→</span>}
+              {inSection && !poll ? popup.ctaInSection : popup.cta.label}
+              {inSection && !poll ? null : <span aria-hidden="true">→</span>}
             </button>
           )}
           {popup.footnote ? (
@@ -444,7 +473,7 @@ export default function FeaturePopup({
               onClick={() => onClose("later")}
               className="min-h-[44px] rounded-xl px-4 text-[15px] font-bold text-[#7b8094] outline-none focus-visible:ring-2 focus-visible:ring-[#7c3aed]"
             >
-              {signup === "done" ? "Close" : popup.event ? "Maybe Later" : "Maybe later"}
+              {signup === "done" || poll?.voted ? "Close" : popup.event ? "Maybe Later" : "Maybe later"}
             </button>
             {popup.offerNeverAgain ? (
               <>
@@ -465,6 +494,66 @@ export default function FeaturePopup({
       </div>
     </div>,
     document.body,
+  );
+}
+
+// ───────────────────────── the weekly poll ─────────────────────────
+
+/**
+ * The options, as buttons. One tap answers; after that each shows its share
+ * and the main button underneath opens the week's post.
+ */
+function PollOptions({
+  poll,
+  onVote,
+  tone,
+}: {
+  poll: FeaturePopupPoll;
+  onVote?: (optionKey: string) => void;
+  tone: (typeof TONES)[keyof typeof TONES];
+}) {
+  const total = poll.totalVotes + (poll.voted ? 1 : 0);
+  return (
+    <section
+      className="rounded-[26px] border p-3 shadow-[0_6px_18px_rgba(91,80,220,0.12)]"
+      style={{ background: tone.card, borderColor: tone.border }}
+      aria-label="Answers"
+    >
+      <div className="flex flex-col gap-2">
+        {poll.options.map((option) => {
+          const chosen = poll.voted === option.key;
+          const count = (poll.counts[option.key] || 0) + (chosen ? 1 : 0);
+          const share = total > 0 ? Math.round((count / total) * 100) : 0;
+          return (
+            <button
+              key={option.key}
+              type="button"
+              disabled={Boolean(poll.voted) || Boolean(poll.voting)}
+              onClick={() => onVote?.(option.key)}
+              aria-pressed={chosen}
+              className="relative min-h-[48px] w-full overflow-hidden rounded-2xl border-2 bg-white px-4 py-2.5 text-left text-[15px] font-bold text-[#14122b] outline-none transition enabled:active:scale-[0.99] focus-visible:ring-2"
+              style={{
+                borderColor: chosen ? tone.accent : "#ffffff",
+                boxShadow: "0 4px 14px rgba(60,60,160,0.12)",
+                ["--tw-ring-color" as string]: tone.ring,
+              }}
+            >
+              {poll.voted ? (
+                <span aria-hidden="true" className="absolute inset-y-0 left-0" style={{ width: `${share}%`, background: tone.icon }} />
+              ) : null}
+              <span className="relative flex items-center justify-between gap-3">
+                <span>{poll.voting === option.key ? `${option.text}…` : option.text}</span>
+                {poll.voted ? (
+                  <span className="shrink-0 text-[14px] font-black" style={{ color: tone.pillText }}>
+                    {share}%
+                  </span>
+                ) : null}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
   );
 }
 
@@ -913,9 +1002,30 @@ function Preview({ kind }: { kind: PopupPreview }) {
           </div>
         </div>
       );
-    // A study sign-up shows the study's own artwork (EventSignupBody).
+    // A study sign-up shows the study's own artwork (EventSignupBody), and
+    // the poll shows its own options (PollOptions).
     case "event_signup":
+    case "poll":
       return null;
+    case "prayer":
+      return (
+        <div>
+          <div className="flex items-center gap-2">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#cfe0ff] text-[14px]">🙏</span>
+            <div className="min-w-0">
+              <p className="text-[13px] font-black leading-tight text-[#14122b]">This week&apos;s prayer post</p>
+              <p className="text-[11px] font-semibold text-[#8a8fa3]">Pinned on the feed</p>
+            </div>
+          </div>
+          <p className="mt-2 rounded-xl bg-[#f4f7ff] px-3 py-2 text-[13px] font-semibold leading-snug text-[#4b5068]">
+            Please pray for me this week.
+          </p>
+          <div className="mt-2.5 flex flex-wrap gap-2">
+            <span className={`${chip} bg-[#0056fd] font-black text-white shadow-[0_2px_0_#0041c2]`}>🙏 Praying</span>
+            <span className={`${chip} bg-[#f4f5fa] text-[#5b6079]`}>💬 Comment</span>
+          </div>
+        </div>
+      );
     case "app_store":
     case "android_beta":
       return (

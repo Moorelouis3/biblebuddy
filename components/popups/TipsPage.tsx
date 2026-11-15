@@ -20,6 +20,8 @@ import { useRouter } from "next/navigation";
 import { findPopup, POPUP_CATALOG, TIPS_CATALOG, type PopupDefinition } from "@/lib/popups/catalog";
 import { setTestMode, testModeOn } from "@/lib/popups/switch";
 import { supabase } from "@/lib/supabaseClient";
+import BibleLockPopup from "../BibleLockPopup";
+import NewGamesPopup from "../NewGamesPopup";
 import FeaturePopup from "./FeaturePopup";
 
 // /tips?popup_test=on and =off (lib/popups/switch.ts). Done as the file loads,
@@ -84,6 +86,8 @@ async function resetPopupTest(): Promise<boolean> {
 export default function TipsPage() {
   const router = useRouter();
   const [open, setOpen] = useState<PopupDefinition | null>(null);
+  /** The example poll, when the weekly poll is opened by hand. */
+  const [sampleVote, setSampleVote] = useState<string | null>(null);
   /** Popup test mode in this browser: null until read. */
   const [testing, setTesting] = useState<boolean | null>(null);
   const [resetState, setResetState] = useState<"idle" | "working" | "done" | "failed">("idle");
@@ -168,7 +172,46 @@ export default function TipsPage() {
         ))}
       </ul>
 
-      {open ? <FeaturePopup key={open.id} popup={open} inSection={false} onClose={close} onCta={go} /> : null}
+      {/* Opened by hand (?open=<id>): drawn exactly as the coordinator draws
+          it, recording nothing. */}
+      {open?.custom === "new_games" ? (
+        <NewGamesPopup
+          onClose={close}
+          onPick={(_game, href) => {
+            setOpen(null);
+            router.push(href);
+          }}
+        />
+      ) : open?.custom === "bible_lock" ? (
+        <BibleLockPopup onClose={close} onCta={go} />
+      ) : open ? (
+        <FeaturePopup
+          key={open.id}
+          popup={open}
+          inSection={false}
+          onClose={close}
+          onCta={go}
+          poll={
+            open.weekly === "poll"
+              ? {
+                  question: "How often do you read the Bible?",
+                  subjectTitle: "Example question",
+                  intro: "This is how the week's poll looks. The real question changes every Wednesday.",
+                  options: [
+                    { key: "a", text: "Every day" },
+                    { key: "b", text: "A few times a week" },
+                    { key: "c", text: "When I remember" },
+                  ],
+                  counts: { a: 12, b: 20, c: 8 },
+                  totalVotes: 40,
+                  voted: sampleVote,
+                  voting: null,
+                }
+              : undefined
+          }
+          onVote={setSampleVote}
+        />
+      ) : null}
     </main>
   );
 }

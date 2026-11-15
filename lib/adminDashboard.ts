@@ -1095,10 +1095,11 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
         )
         .map(popupPerson),
     ).size;
-  // The popups that are still outside the coordinator (each is its own
-  // component in components/, mounted by AppShell) plus the ones that have
-  // ended, so the Popups tab is every popup there is and not just the new
-  // system. They have no promotion_id; each has its own event names.
+  // What each popup did BEFORE it moved into the coordinator on 15 Nov 2026,
+  // when it was its own component under its own event names (no
+  // promotion_id), plus the ones that were retired. Nothing here is running
+  // outside the system any more: every live popup is a catalog row above, and
+  // these rows are its earlier history so the numbers are not lost.
   const OLDER_POPUPS: {
     id: string;
     title: string;
@@ -1115,10 +1116,10 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     {
       id: "beginning_of_everything_2026",
       title: "The Beginning of Everything invitation",
-      kind: "Study sign-up (older popup)",
-      status: "On until 29 Nov",
+      kind: "Study sign-up, before the move",
+      status: "Moved into the system 15 Nov",
       about:
-        "Once per person who is not in the study. Its own trigger, outside the one-per-visit limit. Saw it is counted from accounts and is right; its clicks, closes and sign-ups were not being recorded until 15 Nov, so those start from then.",
+        "Once per person who is not in the study, on its own trigger. Saw it is counted from accounts and is right; its clicks, closes and sign-ups were never recorded. From 15 Nov it is in the list above and all of it is counted.",
       seenPopupId: "beginning_of_everything_2026",
       shown: "beginning_popup_impression",
       clicked: ["beginning_popup_join_clicked"],
@@ -1128,7 +1129,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     {
       id: "community_event_day",
       title: "Day N is ready (daily study popup)",
-      kind: "Daily reminder (older popup)",
+      kind: "Daily reminder",
       status: "Retired 15 Nov",
       about: "Members of the live study got it once a day. Retired so they see the other popups.",
       shown: "community_event_day_popup_impression",
@@ -1138,9 +1139,9 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     {
       id: "weekly_feed",
       title: "Weekly prayer request / poll",
-      kind: "Feed nudge (older popup)",
-      status: "On",
-      about: "Once a week per person: a prayer request on a Sunday week, the poll on a Wednesday week.",
+      kind: "Feed nudge, before the move",
+      status: "Moved into the system 15 Nov",
+      about: "Once a week per person: a prayer request on a Sunday week, the poll on a Wednesday week. Now two rows in the list above.",
       shown: "weekly_popup_impression",
       clicked: ["weekly_popup_prayer_clicked", "weekly_popup_poll_voted"],
       skipped: "weekly_popup_dismissed",
@@ -1148,8 +1149,8 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     {
       id: "new_games_2026_11",
       title: "2 New Game Modes",
-      kind: "Announcement (older popup)",
-      status: "On",
+      kind: "Announcement, before the move",
+      status: "Moved into the system 15 Nov",
       about: "Once per signed-in person. Bible Memory and Bible Word Search.",
       shown: "new_games_popup_impression",
       clicked: ["new_games_popup_clicked"],
@@ -1158,8 +1159,8 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     {
       id: "bible_lock_2026_11",
       title: "Bible Lock",
-      kind: "Announcement (older popup)",
-      status: "On, iPhone app only",
+      kind: "Announcement, before the move",
+      status: "Moved into the system 15 Nov",
       about: "Once, on an iPhone that can run the lock and has not set it up.",
       shown: "bible_lock_popup_impression",
       clicked: ["bible_lock_popup_clicked"],
@@ -1168,7 +1169,7 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     {
       id: "wisdom_proverbs_launch_2026",
       title: "The Wisdom of Proverbs has started",
-      kind: "Study launch (older popup)",
+      kind: "Study launch",
       status: "Ended",
       about: "Once, to members who had not started when the study opened on 1 October.",
       shown: "proverbs_launch_popup_impression",
@@ -1178,9 +1179,9 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
     {
       id: "wisdom_proverbs_book_2026",
       title: "Wisdom of Proverbs book",
-      kind: "Announcement (older popup)",
-      status: "Off",
-      about: "Stays off until its link is set.",
+      kind: "Announcement",
+      status: "Removed 15 Nov",
+      about: "Was switched off and had never been turned on for anyone since.",
       shown: "wisdom_book_popup_impression",
       clicked: ["wisdom_book_popup_clicked"],
       skipped: "wisdom_book_popup_dismissed",
@@ -1223,7 +1224,15 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
       return {
         id: popup.id,
         title: signup?.title || popup.cardTitle || popup.headline,
-        kind: popup.event ? "Study sign-up" : popup.kind === "tutorial" ? "How-to" : popup.kind === "ask" ? "App store ask" : "Announcement",
+        kind: popup.event
+          ? "Study sign-up"
+          : popup.weekly
+            ? "Every week"
+            : popup.kind === "tutorial"
+              ? "How-to"
+              : popup.kind === "ask"
+                ? "App store ask"
+                : "Announcement",
         shown,
         skipped: closedHow(false, popup.id),
         // Only the popups that offer "Don't show again" can be blocked.

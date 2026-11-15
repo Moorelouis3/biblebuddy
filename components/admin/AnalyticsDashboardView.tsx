@@ -1990,8 +1990,8 @@ export default function AnalyticsDashboardView({
                     </div>
                   </div>
                   {[
-                    { heading: `New popup system · ${d.popupSystem.rows.length} popups`, list: d.popupSystem.rows },
-                    { heading: `Older popups, outside the system · ${(d.popupSystem.older || []).length}`, list: d.popupSystem.older || [] },
+                    { heading: `The popup system · every popup · ${d.popupSystem.rows.length}`, list: d.popupSystem.rows },
+                    { heading: `Earlier numbers, from before they moved in, and retired popups · ${(d.popupSystem.older || []).length}`, list: d.popupSystem.older || [] },
                   ].map((group) => (
                     <div key={group.heading}>
                       <p className="mb-2 px-1 text-[11px] font-black uppercase tracking-wide text-[#64748b]">{group.heading}</p>

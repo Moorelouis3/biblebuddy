@@ -23,10 +23,18 @@
  *     two tabs or two devices cannot both be told yes.
  *  5. Opens the shared shell, and writes down how it ended.
  *
- * It only handles popups in lib/popups/catalog.ts. The older popups
- * (NewGamesPopup, BibleLockPopup, the study popups, the store asks) still run
- * on their own triggers until each is moved into the catalog; they are not
- * yet limited by this.
+ * Every popup is in lib/popups/catalog.ts and comes through here, since
+ * 2026-11-15: the weekly prayer request and poll, the two new games, Bible
+ * Lock and the Beginning of Everything invitation were each their own
+ * component with their own timer until then. Three kinds need a little more
+ * than the shared card, and all three are handled here and nowhere else:
+ *
+ *   weekly      asks /api/popups/weekly-feed for the week's post (and the
+ *               poll's question) before showing; the poll is answered in the
+ *               popup
+ *   custom      drawn by its own approved design (NewGamesPopup,
+ *               BibleLockPopup), which only draws
+ *   event       registers the person for the study
  *
  * Nothing here writes to master_actions. Seeing or closing a popup is not
  * study activity and must never look like it.
@@ -45,13 +53,17 @@ import {
   snoozeAppStoreAsk,
   snoozePlayStoreAsk,
 } from "../../lib/appStoreAsk";
+import { bibleLockStatus } from "../../lib/bibleLock";
+import { eventDayStudyPath } from "../../lib/communityEventDays";
 import { joinCommunityEvent } from "../../lib/communityEventJoin";
+import { getCommunityEvent, isCommunityEventDayUnlocked } from "../../lib/communityEvents";
 import { isAndroid, isIOS, isStandalone } from "../../lib/installEnvironment";
 import { isNativeApp } from "../../lib/nativeApp";
-import { inSection, POPUP_CATALOG, type PopupDefinition, type PopupDevice } from "../../lib/popups/catalog";
+import { inSection, liveCatalog, type PopupDefinition, type PopupDevice } from "../../lib/popups/catalog";
 import { coordinatorActive, testDevice } from "../../lib/popups/switch";
 import {
   decide,
+  MAX_AUTOMATIC_DISPLAYS,
   nextEligibleAfterClose,
   sameVisit,
   type DecideInput,
@@ -59,7 +71,53 @@ import {
   type PopupSettings,
 } from "../../lib/popups/decide";
 import { supabase } from "../../lib/supabaseClient";
-import FeaturePopup, { type FeaturePopupCloseMethod, type FeaturePopupSignup } from "./FeaturePopup";
+import BibleLockPopup from "../BibleLockPopup";
+import NewGamesPopup from "../NewGamesPopup";
+import FeaturePopup, { type FeaturePopupCloseMethod, type FeaturePopupPoll, type FeaturePopupSignup } from "./FeaturePopup";
+
+/**
+ * The Features tab of admin analytics (lib/newFeaturesReport.ts) follows the
+ * two new games from "saw the popup" to "played", and reads these older event
+ * names to do it. They are sent alongside the system's own so that report
+ * keeps its history unbroken.
+ */
+const ALSO_TRACK_AS: Record<string, { shown: string; clicked: string; dismissed: string }> = {
+  new_games_2026_11: { shown: "new_games_popup_impression", clicked: "new_games_popup_clicked", dismissed: "new_games_popup_dismissed" },
+};
+
+/** What /api/popups/weekly-feed says about this week's prayer post or poll. */
+type WeeklyPayload = {
+  eligible?: boolean;
+  threadPostId?: string | null;
+  pollPostId?: string | null;
+  poll?: {
+    id: string;
+    groupId: string;
+    pollKey: string;
+    subjectTitle: string;
+    question: string;
+    intro: string | null;
+    options: { key: string; text: string }[];
+    counts: Record<string, number>;
+    totalVotes: number;
+  };
+};
+
+async function loadWeekly(kind: "prayer" | "poll"): Promise<WeeklyPayload | null> {
+  try {
+    const token = (await supabase.auth.getSession()).data.session?.access_token;
+    if (!token) return null;
+    // Absolute URL: inside the iOS app a relative fetch can hang forever.
+    const res = await fetch(`${window.location.origin}/api/popups/weekly-feed?kind=${kind}`, {
+      headers: { Authorization: `Bearer ${token}` },
+      cache: "no-store",
+    });
+    const payload = (await res.json()) as WeeklyPayload;
+    return payload.eligible ? payload : null;
+  } catch {
+    return null;
+  }
+}
 
 /** How long the page must be still and clear before a popup may open. */
 const QUIET_MS = 2500;
@@ -199,7 +257,7 @@ type HistoryRow = {
 };
 
 /** Everything decide() needs that lives in the database. Null = show nothing. */
-async function load(userId: string): Promise<Loaded | null> {
+async function load(userId: string, catalog: PopupDefinition[]): Promise<Loaded | null> {
   const { data: settingRows, error: settingsError } = await supabase
     .from("popup_settings")
     .select("popup_id, enabled, priority, expires_at")
@@ -211,7 +269,7 @@ async function load(userId: string): Promise<Loaded | null> {
   for (const row of settingRows) {
     settings[row.popup_id] = { enabled: true, priority: row.priority ?? undefined, expiresAt: row.expires_at };
   }
-  const live = POPUP_CATALOG.filter((popup) => settings[popup.id]);
+  const live = catalog.filter((popup) => settings[popup.id]);
   if (!live.length) return null;
 
   const [{ data: sessionData }, { data: rows, error: historyError }] = await Promise.all([
@@ -240,6 +298,14 @@ async function load(userId: string): Promise<Loaded | null> {
       if (!lastAutomaticAt || row.last_shown_at > lastAutomaticAt) lastAutomaticAt = row.last_shown_at;
       if (Date.parse(row.last_shown_at) > weekAgo) automaticInLast7Days += 1;
     }
+  }
+
+  // A popup that ran on its own before it was in the list, once per person:
+  // a row from then means "seen", and they are not shown it again.
+  for (const popup of live) {
+    if (!popup.seenBeforeIsFinal || !history[popup.id]) continue;
+    const row = ((rows || []) as HistoryRow[]).find((each) => each.popup_id === popup.id);
+    if (row && !row.automatic) history[popup.id].displayCount = Math.max(history[popup.id].displayCount, MAX_AUTOMATIC_DISPLAYS);
   }
 
   // What this phone already answered about a store ask, copied to the account
@@ -343,7 +409,16 @@ export default function PopupCoordinator({
   blocked: boolean;
 }) {
   const router = useRouter();
-  const [open, setOpen] = useState<{ popup: PopupDefinition; inSection: boolean } | null>(null);
+  const [open, setOpen] = useState<{
+    popup: PopupDefinition;
+    inSection: boolean;
+    /** A weekly popup: the week's own post, instead of the list's address. */
+    href?: string;
+    poll?: NonNullable<WeeklyPayload["poll"]>;
+  } | null>(null);
+  /** The weekly poll: which answer was given, and which is being sent. */
+  const [voted, setVoted] = useState<string | null>(null);
+  const [voting, setVoting] = useState<string | null>(null);
   /** A study sign-up only: idle until the button, then working, then done. */
   const [signup, setSignup] = useState<FeaturePopupSignup>("idle");
   const pathRef = useRef(pathname);
@@ -363,9 +438,10 @@ export default function PopupCoordinator({
     let timer: ReturnType<typeof setTimeout> | null = null;
 
     void (async () => {
+      const catalog = liveCatalog(new Date());
       let loaded: Loaded | null = null;
       try {
-        loaded = await load(userId);
+        loaded = await load(userId, catalog);
       } catch {
         loaded = null;
       }
@@ -374,6 +450,18 @@ export default function PopupCoordinator({
       let clearSince = 0;
       let lastPath = pathRef.current;
       const devices = devicesHere();
+      // Bible Lock: only a phone that can run it and has not set it up. The
+      // phone is asked, once, and only while that popup is switched on.
+      if (catalog.some((popup) => popup.device === "bible_lock_ready" && loaded?.settings[popup.id])) {
+        try {
+          const status = await bibleLockStatus();
+          if (status.supported && status.chosen === 0 && !status.locked) devices.add("bible_lock_ready");
+        } catch {}
+        if (cancelled) return;
+      }
+      // A weekly popup with nothing to ask this week (no poll yet, or already
+      // answered on the feed) steps aside for the rest of this page load.
+      const nothingToAsk = new Set<string>();
 
       const tick = async () => {
         if (cancelled) return;
@@ -395,7 +483,7 @@ export default function PopupCoordinator({
           ...loaded,
           now,
           pathname: path,
-          catalog: POPUP_CATALOG,
+          catalog: catalog.filter((popup) => !nothingToAsk.has(popup.id)),
           devices,
           busy,
           shownThisVisit: visit.shown,
@@ -415,8 +503,21 @@ export default function PopupCoordinator({
           return;
         }
 
-        // Ask the database. It is the only thing that can say yes.
         const popup = decision.chosen;
+        // A weekly popup needs this week's post before it can be shown.
+        let weekly: WeeklyPayload | null = null;
+        if (popup.weekly) {
+          weekly = await loadWeekly(popup.weekly);
+          if (cancelled) return;
+          if (!weekly || (popup.weekly === "poll" && !weekly.poll)) {
+            nothingToAsk.add(popup.id);
+            clearSince = 0;
+            timer = setTimeout(tick, TICK_MS);
+            return;
+          }
+        }
+
+        // Ask the database. It is the only thing that can say yes.
         const { data: granted, error } = await supabase.rpc("claim_popup", { p_popup_id: popup.id, p_version: popup.version });
         if (cancelled || error || granted !== true) return;
         // Another tab may have shown one while we were asking.
@@ -425,8 +526,16 @@ export default function PopupCoordinator({
         tokenRef.current = (await supabase.auth.getSession()).data.session?.access_token ?? null;
         if (cancelled) return;
         writeVisit(userId, { lastActiveAt: new Date().toISOString(), shown: true });
-        setOpen({ popup, inSection: inSection(popup, pathRef.current) });
+        const post = popup.weekly === "poll" ? weekly?.pollPostId : weekly?.threadPostId;
+        setOpen({
+          popup,
+          inSection: inSection(popup, pathRef.current),
+          href: popup.weekly ? (post ? `/bb-feed?post=${post}` : "/bb-feed") : undefined,
+          poll: weekly?.poll,
+        });
         track("popup_shown", userId, popup.id, { version: popup.version, page: pathRef.current });
+        const also = ALSO_TRACK_AS[popup.id];
+        if (also) track(also.shown, userId, popup.id, { page: pathRef.current });
       };
 
       timer = setTimeout(tick, TICK_MS);
@@ -449,6 +558,11 @@ export default function PopupCoordinator({
       }
       // Mid sign-up: let it finish rather than record a "no" beside a "yes".
       if (signup === "working") return;
+      // Answered the poll, then closed: an answer is not a dismissal.
+      if (voted) {
+        setOpen(null);
+        return;
+      }
       const now = new Date();
       send(
           supabase
@@ -466,9 +580,42 @@ export default function PopupCoordinator({
       const ask = STORE_ASK[open.popup.id];
       if (ask) (method === "never" ? ask.silence : ask.snooze)();
       track("popup_dismissed", userId, open.popup.id, { method });
+      const also = ALSO_TRACK_AS[open.popup.id];
+      if (also) track(also.dismissed, userId, open.popup.id, { method });
       setOpen(null);
     },
-    [open, signup, userId],
+    [open, signup, userId, voted],
+  );
+
+  /** The weekly poll, answered in the popup. The vote is the click. */
+  const vote = useCallback(
+    (optionKey: string) => {
+      const poll = open?.poll;
+      if (!open || !poll || voting || voted) return;
+      const popupId = open.popup.id;
+      setVoting(optionKey);
+      void (async () => {
+        try {
+          const token = (await supabase.auth.getSession()).data.session?.access_token;
+          if (!token) return;
+          const res = await fetch(`${window.location.origin}/api/groups/${poll.groupId}/weekly-poll/vote`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+            body: JSON.stringify({ pollId: poll.id, optionKey }),
+          });
+          // Leave the options up: a failed vote is better than a lie.
+          if (!res.ok) return;
+          setVoted(optionKey);
+          const now = new Date().toISOString();
+          send(supabase.from("user_popups_seen").update({ cta_clicked_at: now, updated_at: now }).eq("user_id", userId).eq("popup_id", popupId));
+          track("popup_cta_clicked", userId, popupId, { option: optionKey, poll: poll.pollKey });
+        } catch {
+        } finally {
+          setVoting(null);
+        }
+      })();
+    },
+    [open, userId, voted, voting],
   );
 
   const act = useCallback(() => {
@@ -517,6 +664,20 @@ export default function PopupCoordinator({
           track("popup_registration_completed", userId, popupId, { event: slug });
           track("community_event_joined", userId, popupId, { event: slug, via: "popup" });
         }
+        // Joining IS starting (Louis, 2026-10-25): when the study is already
+        // open they go straight into day 1, as from the study's own page. Only
+        // before it opens is there nothing to show but "you're signed up".
+        const study = getCommunityEvent(slug);
+        if (study && isCommunityEventDayUnlocked(study, 1)) {
+          track("community_event_day_started", userId, popupId, { event: slug, day: 1, source: "join" });
+          try {
+            window.sessionStorage.setItem(CTA_KEY, String(Date.now()));
+          } catch {}
+          setOpen(null);
+          setSignup("idle");
+          router.push(eventDayStudyPath(study.devotionalId, 1));
+          return;
+        }
         setSignup("done");
       })();
       return;
@@ -545,7 +706,7 @@ export default function PopupCoordinator({
     }
 
     send(supabase.from("user_popups_seen").update(patch).eq("user_id", userId).eq("popup_id", open.popup.id));
-    const href = open.inSection ? null : open.popup.cta.href;
+    const href = open.inSection ? null : open.href ?? open.popup.cta.href;
     setOpen(null);
     if (href) {
       try {
@@ -554,6 +715,24 @@ export default function PopupCoordinator({
       router.push(href);
     }
   }, [open, router, signup, userId]);
+
+  /** The two-games popup has two buttons; each is a click, and says which. */
+  const pick = useCallback(
+    (game: string, href: string) => {
+      if (!open) return;
+      const now = new Date().toISOString();
+      send(supabase.from("user_popups_seen").update({ cta_clicked_at: now, updated_at: now }).eq("user_id", userId).eq("popup_id", open.popup.id));
+      track("popup_cta_clicked", userId, open.popup.id, { game });
+      const also = ALSO_TRACK_AS[open.popup.id];
+      if (also) track(also.clicked, userId, open.popup.id, { game });
+      setOpen(null);
+      try {
+        window.sessionStorage.setItem(CTA_KEY, String(Date.now()));
+      } catch {}
+      router.push(href);
+    },
+    [open, router, userId],
+  );
 
   /** "See the study page", after a sign-up. */
   const seeStudy = useCallback(() => {
@@ -567,6 +746,9 @@ export default function PopupCoordinator({
   }, [open, router]);
 
   if (!open) return null;
+  if (open.popup.custom === "new_games") return <NewGamesPopup key={open.popup.id} onClose={close} onPick={pick} />;
+  if (open.popup.custom === "bible_lock") return <BibleLockPopup key={open.popup.id} onClose={close} onCta={act} />;
+  const poll: FeaturePopupPoll | undefined = open.poll ? { ...open.poll, voted, voting } : undefined;
   return (
     <FeaturePopup
       key={open.popup.id}
@@ -576,6 +758,8 @@ export default function PopupCoordinator({
       onCta={act}
       signup={signup}
       onDone={seeStudy}
+      poll={poll}
+      onVote={vote}
     />
   );
 }

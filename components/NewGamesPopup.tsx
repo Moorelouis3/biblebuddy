@@ -1,86 +1,31 @@
 "use client";
 
 /**
- * One-time "Make Scripture stick." popup for the two new games, Bible Memory
- * and Bible Word Search (Louis, 2026-11-13).
+ * "Make Scripture stick." - the two new games, Bible Memory and Bible Word
+ * Search (Louis, 2026-11-13).
  *
- * Not a new system. It is the same mechanism as the study popups
- * (BeginningOfEverythingPopup, WisdomBookPopup): "shown" is saved to the
- * account in user_popups_seen under the popup id below the moment it appears,
- * so each person sees it once, on whichever device they open first;
- * localStorage is only a fast skip. It waits for a quiet moment - a real page,
- * no other popup, tab visible - and never stacks on another modal.
+ * A VIEW since 2026-11-15. It only draws. The popup coordinator
+ * (components/popups/PopupCoordinator.tsx) decides who sees it and when, under
+ * the same one-per-visit rules as every other popup, and records what
+ * happened; its entry in lib/popups/catalog.ts is `new_games_2026_11` - the
+ * same id it always had, so people who saw it before are not shown it again.
+ * Until that day it was its own component with its own timer.
  *
- * Who sees it: every signed-in person, once. It does not appear on the Games
- * pages themselves: somebody already there has found them.
+ * The look is Louis's mockup: a lavender Bible Memory card with a small
+ * fill-in-the-blank preview and a sheep on a hill, and a light-blue Word
+ * Search card with a letter grid. Everything in it is real text and real
+ * buttons; the sheep, staff, hill and sparkles are inline SVG.
  *
- * Tracking goes through /api/landing-analytics with user_id:
- * new_games_popup_impression / _dismissed / _clicked (metadata.game says
- * which of the two was chosen).
- *
- * The look is Louis's mockup, the same day: a lavender Bible Memory card with
- * a small fill-in-the-blank preview and a sheep on a hill, and a light-blue
- * Word Search card with a letter grid. Everything in it is real text and real
- * buttons. The sheep, staff, hill and sparkles are inline SVG drawn for this
- * popup, so nothing is a flattened picture and nothing extra is downloaded.
- * Who sees it, how often, and how a dismissal is remembered did not change
- * with the redesign, and neither did the popup id: people who saw the first
- * version are not shown it again.
- *
- * To look at it without touching anyone's "seen" state, open any app page
- * with ?bb_preview=new_games. That shows it once for that page load, records
- * nothing and tracks nothing.
- *
- * The next announcement of this kind is a new POPUP_ID and new copy, not
- * another component.
+ * To look at it: /tips?open=new_games_2026_11.
  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { useRouter } from "next/navigation";
 import { lockDocumentScroll } from "../hooks/useDocumentScrollLock";
-import { supabase } from "../lib/supabaseClient";
-
-const POPUP_ID = "new_games_2026_11";
-const SHOW_DELAY_MS = 1500;
-const EXCLUDED_PREFIXES = [
-  "/start",
-  "/events",
-  "/login",
-  "/signup",
-  "/reset-password",
-  "/admin",
-  "/moderator-admin",
-  "/onboarding",
-  "/bible-study-games",
-  "/bible-trivia",
-];
 
 const MEMORY = { key: "bible_memory", href: "/bible-study-games/memory" } as const;
 const WORD_SEARCH = { key: "word_search", href: "/bible-study-games/word-search" } as const;
 type Game = typeof MEMORY | typeof WORD_SEARCH;
-
-const PREVIEW_PARAM = "bb_preview";
-const PREVIEW_VALUE = "new_games";
-
-/**
- * The address as it was when this file first loaded in the browser.
- *
- * The dashboard tidies its own query string before AppShell knows who is
- * signed in, which is before this popup mounts - so by the time the effect
- * runs, ?bb_preview=new_games has already been removed from the address bar.
- * Reading it once at load is the only moment it is reliably still there.
- */
-const SEARCH_AT_LOAD = typeof window === "undefined" ? "" : window.location.search;
-
-function previewRequested() {
-  try {
-    const wanted = (search: string) => new URLSearchParams(search).get(PREVIEW_PARAM) === PREVIEW_VALUE;
-    return wanted(SEARCH_AT_LOAD) || wanted(window.location.search);
-  } catch {
-    return false;
-  }
-}
 
 // The little letter grid on the Word Search card. GRACE is the found word.
 const GRID_ROWS = ["PSALM", "FAITH", "GRACE", "TRUST", "JOYLO"];
@@ -96,166 +41,26 @@ const ENTRANCE_CSS = `
 }
 `;
 
-const localKey = (userId: string) => `bb-popup-done:${POPUP_ID}:${userId}`;
-
-function track(eventName: string, userId: string, extra: Record<string, unknown> = {}) {
-  try {
-    // Absolute URL: inside the iOS app a relative fetch can hang forever.
-    void fetch(`${window.location.origin}/api/landing-analytics`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        event_name: eventName,
-        user_id: userId,
-        source: "popup",
-        page_path: window.location.pathname,
-        referrer: document.referrer || null,
-        metadata: { promotion_id: POPUP_ID, source: "popup", ...extra },
-      }),
-      keepalive: true,
-    }).catch(() => {});
-  } catch {
-    // Analytics never blocks the popup.
-  }
-}
-
-function isExcluded(pathname: string | null) {
-  return !pathname || EXCLUDED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
-}
-
-/** Another modal is up (they all lock body scroll or announce a dialog). */
-function otherModalOpen() {
-  return document.body.style.overflow === "hidden" || Boolean(document.querySelector('[aria-modal="true"]'));
-}
+export type NewGamesCloseMethod = "close_button" | "escape" | "backdrop" | "later";
 
 export default function NewGamesPopup({
-  userId,
-  pathname,
-  blocked,
+  onClose,
+  onPick,
 }: {
-  userId: string;
-  pathname: string | null;
-  /** AppShell's own modals (install ask, celebrations...) are open. */
-  blocked: boolean;
+  onClose: (method: NewGamesCloseMethod) => void;
+  /** One of the two games was chosen. */
+  onPick: (game: Game["key"], href: string) => void;
 }) {
-  const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const pathRef = useRef(pathname);
-  const blockedRef = useRef(blocked);
   const dialogRef = useRef<HTMLDivElement | null>(null);
-  const restoreFocusRef = useRef<HTMLElement | null>(null);
-  const previewRef = useRef(false);
-
-  useEffect(() => {
-    pathRef.current = pathname;
-    blockedRef.current = blocked;
-  }, [pathname, blocked]);
-
-  // Eligibility runs once per signed-in user per page load.
-  useEffect(() => {
-    // Preview: show it for this page load only. No "seen" write, no tracking.
-    if (previewRequested()) {
-      const previewTimer = setTimeout(() => {
-        previewRef.current = true;
-        restoreFocusRef.current = document.activeElement as HTMLElement | null;
-        setOpen(true);
-      }, 600);
-      return () => clearTimeout(previewTimer);
-    }
-
-    try {
-      if (window.localStorage.getItem(localKey(userId))) return;
-    } catch {
-      // Storage blocked - the account check below still decides.
-    }
-
-    let cancelled = false;
-    let timer: ReturnType<typeof setTimeout> | null = null;
-
-    void (async () => {
-      try {
-        const { data: seen, error: seenError } = await supabase
-          .from("user_popups_seen")
-          .select("id")
-          .eq("user_id", userId)
-          .eq("popup_id", POPUP_ID)
-          .maybeSingle();
-        // If the seen-state can't be read, don't risk showing it twice.
-        if (seenError || seen) {
-          if (seen) {
-            try {
-              window.localStorage.setItem(localKey(userId), "seen");
-            } catch {}
-          }
-          return;
-        }
-      } catch {
-        return;
-      }
-
-      // Let the app land first, then wait for a clear moment. A cheap local
-      // check, no network, repeated until the page is settled.
-      let clearSince = 0;
-      const attempt = async () => {
-        if (cancelled) return;
-        const clear = !isExcluded(pathRef.current) && !blockedRef.current && !otherModalOpen() && !document.hidden;
-        if (!clear) clearSince = 0;
-        else if (!clearSince) clearSince = Date.now();
-        if (!clear || Date.now() - clearSince < SHOW_DELAY_MS) {
-          timer = setTimeout(attempt, 1000);
-          return;
-        }
-        // Record the impression on the account BEFORE showing, so a failed
-        // write never leads to a repeat later.
-        const now = new Date().toISOString();
-        const { error: writeError } = await supabase.from("user_popups_seen").upsert(
-          { user_id: userId, popup_id: POPUP_ID, has_seen: true, seen_at: now, updated_at: now },
-          { onConflict: "user_id,popup_id", ignoreDuplicates: true },
-        );
-        if (writeError || cancelled) return;
-        try {
-          window.localStorage.setItem(localKey(userId), "seen");
-        } catch {}
-        restoreFocusRef.current = document.activeElement as HTMLElement | null;
-        setOpen(true);
-        track("new_games_popup_impression", userId, { page: pathRef.current });
-      };
-      timer = setTimeout(attempt, 500);
-    })();
-
-    return () => {
-      cancelled = true;
-      if (timer) clearTimeout(timer);
-    };
-  }, [userId]);
-
-  const close = useCallback(
-    (method: "close_button" | "escape" | "backdrop" | "later") => {
-      setOpen(false);
-      if (!previewRef.current) track("new_games_popup_dismissed", userId, { method });
-      restoreFocusRef.current?.focus?.();
-    },
-    [userId],
-  );
-
-  const openGame = useCallback(
-    (game: Game) => {
-      if (!previewRef.current) track("new_games_popup_clicked", userId, { game: game.key });
-      setOpen(false);
-      router.push(game.href);
-    },
-    [router, userId],
-  );
+  const close = onClose;
+  const openGame = (game: Game) => onPick(game.key, game.href);
 
   // Background scroll lock, shared with every other modal.
-  useEffect(() => {
-    if (!open) return;
-    return lockDocumentScroll('[aria-labelledby="new-games-popup-title"]');
-  }, [open]);
+  useEffect(() => lockDocumentScroll('[aria-labelledby="new-games-popup-title"]'), []);
 
   // Escape and focus trap.
   useEffect(() => {
-    if (!open) return;
+    const cameFrom = document.activeElement as HTMLElement | null;
     const focusables = () =>
       Array.from(dialogRef.current?.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]") || []).filter(
         (el) => el.offsetParent !== null,
@@ -287,10 +92,9 @@ export default function NewGamesPopup({
     return () => {
       window.clearTimeout(focusTimer);
       document.removeEventListener("keydown", onKey);
+      cameFrom?.focus?.({ preventScroll: true });
     };
-  }, [open, close]);
-
-  if (!open) return null;
+  }, [close]);
 
   return createPortal(
     <div

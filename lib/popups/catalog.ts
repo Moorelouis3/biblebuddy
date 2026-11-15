@@ -1,12 +1,13 @@
 /**
- * The one list of educational popups (Louis, 2026-11-13).
+ * The one list of popups (Louis, 2026-11-13).
  *
- * PROPOSAL / PREVIEW. Nothing here is shown to anybody automatically yet.
- * The only thing that reads this file today is the /tips page, where a
- * signed-in person can open a tutorial by hand, and scripts/verify-popups.ts.
- * The existing popups (NewGamesPopup, BibleLockPopup, the study popups, the
- * store asks) still run on their own triggers and are untouched. See
- * docs/POPUP_SYSTEM_PROPOSAL.md for the plan to bring them under this list.
+ * EVERY popup Bible Buddy shows on its own is an entry here, since
+ * 2026-11-15 (Louis: "every pop up needs to be under here and work from this
+ * system"). The popup coordinator shows at most one of them per visit. The
+ * weekly prayer request and poll, the two new games, Bible Lock and the
+ * Beginning of Everything invitation each used to be a component with its
+ * own timer; they are entries now. A new popup is a new entry, never a new
+ * component with its own trigger.
  *
  * Why a list. Every popup so far has been its own component with its own
  * timer, and what a person saw was decided by which network call came back
@@ -26,6 +27,7 @@
 
 import type { ActionType } from "../actionTypes";
 import { communityEventStartsAt, getCommunityEvent } from "../communityEvents";
+import { getPrayerWeekKey } from "../weeklyFeedPopups";
 
 export type PopupKind =
   /** Teaches a feature. Shown only in the section where it can be used. */
@@ -40,7 +42,12 @@ export type PopupDevice =
   /** An iPhone or iPad in a browser: not the app, not a home-screen shortcut. */
   | "ios_web"
   /** An Android phone in a browser, same exclusions. */
-  | "android_web";
+  | "android_web"
+  /**
+   * Inside the Bible Buddy app on an iPhone that can run Bible Lock and has
+   * not set it up (bibleLockStatus()). Asked of the phone, costs no network.
+   */
+  | "bible_lock_ready";
 
 export type PopupPreview =
   | "reader"
@@ -52,6 +59,9 @@ export type PopupPreview =
   | "verse_of_the_day"
   | "app_store"
   | "android_beta"
+  | "prayer"
+  /** The week's poll: the options themselves, answered in the popup. */
+  | "poll"
   /** A study sign-up: the study's own artwork instead of a drawn preview. */
   | "event_signup";
 
@@ -149,9 +159,36 @@ export type PopupDefinition = {
   expiresAt: string | null;
   /** Set on a study sign-up. See PopupEventSignup. */
   event?: PopupEventSignup;
+  /**
+   * Comes round every week. Its version is the week's number (liveCatalog),
+   * and a new version is what the rules already treat as "something new":
+   * closed or answered this week, it is offered again next week. The
+   * coordinator asks /api/popups/weekly-feed for the week's post (and the
+   * poll's question) before showing it.
+   */
+  weekly?: "prayer" | "poll";
+  /**
+   * Drawn by its own approved design instead of the shared card. Only the
+   * drawing: who sees it and what is recorded are the coordinator's.
+   */
+  custom?: "new_games" | "bible_lock";
+  /**
+   * This popup ran on its own before it was an entry here, under this same
+   * id, and was shown once per person. Anybody with a row from then has seen
+   * it and is not shown it again.
+   */
+  seenBeforeIsFinal?: boolean;
 };
 
 const ABRAHAM = getCommunityEvent("obedience-of-abraham");
+const BEGINNING = getCommunityEvent("beginning-of-everything");
+
+const WEEK_MS = 7 * 24 * 3_600_000;
+
+/** When a live study's last day has passed and it turns evergreen. */
+function communityEventEndsAt(startsAt: string, totalDays: number): string {
+  return new Date(Date.parse(startsAt) + totalDays * 24 * 3_600_000).toISOString();
+}
 
 export const POPUP_CATALOG: PopupDefinition[] = [
   {
@@ -401,6 +438,164 @@ export const POPUP_CATALOG: PopupDefinition[] = [
       },
     },
   },
+  // The Beginning of Everything invitation (2026-10-25). Its own component
+  // until 2026-11-15; same id, so the 486 people it was already shown to are
+  // not asked again. It stops when the live study's last day has passed.
+  // Lower than Abraham: somebody new is offered the next study first.
+  {
+    id: "beginning_of_everything_2026",
+    version: 1,
+    kind: "announcement",
+    priority: 90,
+    sections: ["/events"],
+    pill: "Live now · Community study",
+    headline: "The Beginning of Everything",
+    headlineAccent: "Everything",
+    description: "Start at the start. A 21-day study of Genesis 1-8, explained one day at a time.",
+    cardTitle: "21-Day Bible Study",
+    cardLine: "Genesis 1-8, one day at a time",
+    cardIcon: "🌍",
+    preview: "event_signup",
+    steps: [],
+    cta: { label: "Start the free study", href: "/events/beginning-of-everything" },
+    ctaInSection: "Start the free study",
+    footnote: "",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    expiresAt: BEGINNING ? communityEventEndsAt(communityEventStartsAt(BEGINNING), BEGINNING.totalDays) : "2026-11-28T23:00:00.000Z",
+    seenBeforeIsFinal: true,
+    event: {
+      slug: "beginning-of-everything",
+      art: BEGINNING?.heroBanner || "/events/beginning-of-everything-hero.webp",
+      facts: ["21-Day Bible Study", "Genesis 1-8"],
+      bullets: ["📖 One reading each day", "👥 Study together", "💬 Daily discussion", "❤️ 100% FREE!"],
+      doneTitle: "You're in!",
+      doneLine: "The Beginning of Everything is open. Start with Day 1.",
+      poster: {
+        desktop: "/events/beginning-popup-desktop.webp",
+        mobile: "/events/beginning-popup-mobile.webp",
+        alt: "The Beginning of Everything: a free 21-day study of Genesis 1-8. One reading each day, study together with Bible Buddies around the world, daily discussion. Start the free study.",
+        button: { left: 2.9, top: 89.3, width: 94.4, height: 8.7 },
+        title: ["The Beginning", "of Everything"],
+        lead: [
+          "Start at the start.",
+          "A 21-day study of Genesis 1-8 - creation, the fall, Cain and Abel, Noah and the flood - explained one day at a time.",
+        ],
+        features: [
+          { icon: "📅", title: "21 Days", text: "One reading each day" },
+          { icon: "👥", title: "Study Together", text: "With Bible Buddies around the world" },
+          { icon: "💬", title: "Daily Discussion", text: "Share insights, ask questions" },
+          { icon: "📈", title: "Understand It", text: "Not just read it" },
+        ],
+        verse: "In the beginning God created the heaven and the earth.",
+        verseRef: "Genesis 1:1",
+        ctaLabel: "Start the free study",
+      },
+    },
+  },
+  // Bible Lock (2026-11-13). Its own component until 2026-11-15. Only a phone
+  // that can run the lock and has not set it up (device below).
+  {
+    id: "bible_lock_2026_11",
+    version: 1,
+    kind: "announcement",
+    priority: 70,
+    sections: ["/bible-lock", "/settings"],
+    pill: "New in Bible Buddy",
+    headline: "Bible first. Apps after.",
+    headlineAccent: "Apps after.",
+    description: "Lock the apps you choose until today's Bible Buddy task is done.",
+    cardTitle: "Bible Lock",
+    cardLine: "You choose the apps. One task unlocks them.",
+    cardIcon: "🔒",
+    preview: "reader",
+    steps: [],
+    cta: { label: "Set it up", href: "/bible-lock" },
+    ctaInSection: "Got it",
+    footnote: "",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    expiresAt: null,
+    device: "bible_lock_ready",
+    custom: "bible_lock",
+    seenBeforeIsFinal: true,
+  },
+  // The two new games (2026-11-13). Its own component until 2026-11-15.
+  {
+    id: "new_games_2026_11",
+    version: 1,
+    kind: "announcement",
+    priority: 60,
+    sections: ["/bible-study-games", "/bible-trivia"],
+    pill: "New in Bible Buddy",
+    headline: "Make Scripture stick.",
+    headlineAccent: "stick.",
+    description: "Two new games. More ways to grow.",
+    cardTitle: "2 New Game Modes",
+    cardLine: "Bible Memory and Bible Word Search.",
+    cardIcon: "🎮",
+    preview: "memory",
+    steps: [],
+    cta: { label: "Open Games", href: "/bible-study-games" },
+    ctaInSection: "Got it",
+    footnote: "",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    expiresAt: null,
+    custom: "new_games",
+    seenBeforeIsFinal: true,
+  },
+  // The weekly prayer request and the weekly poll (2026-10-18). One component
+  // of their own (WeeklyFeedPopup) until 2026-11-15, in a different look;
+  // they are the shared card now. Below the tutorials and the dated things on
+  // purpose: they come round every week, so they can wait their turn.
+  {
+    id: "weekly_prayer",
+    version: 1,
+    kind: "announcement",
+    priority: 25,
+    sections: ["/bb-feed"],
+    pill: "This week",
+    headline: "What can we pray for this week?",
+    headlineAccent: "this week?",
+    description: "Add it under this week's prayer post and the Bible Buddy community prays with you.",
+    cardTitle: "Prayer requests",
+    cardLine: "Be as specific as you need, or just say please pray for me.",
+    cardIcon: "🙏",
+    preview: "prayer",
+    steps: [],
+    cta: { label: "Add your prayer request", href: "/bb-feed" },
+    ctaInSection: "Got it",
+    footnote: "100% FREE • On the feed",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    expiresAt: null,
+    weekly: "prayer",
+  },
+  {
+    id: "weekly_poll",
+    version: 1,
+    kind: "announcement",
+    priority: 24,
+    sections: ["/bb-feed"],
+    pill: "This week's poll",
+    // The week's own question replaces these when it is shown.
+    headline: "This week's question.",
+    headlineAccent: "question.",
+    description: "One tap to answer, then see what everyone else said.",
+    cardTitle: "Weekly poll",
+    cardLine: "A new question every Wednesday.",
+    cardIcon: "📊",
+    preview: "poll",
+    steps: [],
+    cta: { label: "See what everyone said", href: "/bb-feed" },
+    ctaInSection: "Got it",
+    footnote: "",
+    usedWhen: [],
+    minAccountAgeDays: 0,
+    expiresAt: null,
+    weekly: "poll",
+  },
   // The two store asks. Until 13 Nov 2026 these were AppStorePopup and
   // AndroidBetaPopup, which checked nothing, sat above every other popup and
   // reopened on every page load. The words are theirs; the limits are now
@@ -458,7 +653,32 @@ export const POPUP_CATALOG: PopupDefinition[] = [
 ];
 
 /** What /tips lists: things worth reopening by hand. An ask is not one, nor is a sign-up with a date. */
-export const TIPS_CATALOG = POPUP_CATALOG.filter((popup) => popup.kind !== "ask" && !popup.event);
+export const TIPS_CATALOG = POPUP_CATALOG.filter((popup) => popup.kind !== "ask" && !popup.event && !popup.weekly && !popup.custom);
+
+/**
+ * The list as it stands this week: a weekly popup's version is its week's
+ * number, so it is "new" once a week and never twice in one. Prayer weeks run
+ * Sunday to Sunday, poll weeks Wednesday to Wednesday - the weeks their posts
+ * already run on (lib/weeklyFeedPopups.ts, lib/groupWeeklyPoll.ts).
+ */
+/**
+ * The Wednesday on or before this date, UTC: getPollWeekStart() in
+ * lib/groupWeeklyPoll.ts, repeated here because that file brings the whole
+ * 52-question bank with it and this list is loaded on every page.
+ */
+function pollWeekStart(date: Date): number {
+  const utc = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+  utc.setUTCDate(utc.getUTCDate() - ((utc.getUTCDay() + 4) % 7));
+  return utc.getTime();
+}
+
+export function liveCatalog(now: Date): PopupDefinition[] {
+  return POPUP_CATALOG.map((popup) => {
+    if (!popup.weekly) return popup;
+    const start = popup.weekly === "poll" ? pollWeekStart(now) : Date.parse(`${getPrayerWeekKey(now)}T00:00:00Z`);
+    return { ...popup, version: Math.floor(start / WEEK_MS) };
+  });
+}
 
 export function findPopup(id: string): PopupDefinition | null {
   return POPUP_CATALOG.find((popup) => popup.id === id) ?? null;

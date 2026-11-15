@@ -58,13 +58,12 @@ export async function GET(request: Request) {
   const admin = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
 
   const dayId = weeklyPopupDayId();
-  const { data: seen, error: seenError } = await admin
-    .from("user_popups_seen")
-    .select("popup_id")
-    .eq("user_id", userId)
-    .in("popup_id", [popupId, dayId]);
-  // If the seen-state cannot be read, say no rather than risk asking twice.
-  if (seenError || seen?.length) return NextResponse.json({ eligible: false });
+  // Since 2026-11-15 this no longer decides whether the person has already
+  // been asked this week. The popup coordinator does (lib/popups/decide.ts and
+  // claim_popup): these two are entries in its list like every other popup,
+  // and it calls here only for what to show - the week's post, and the poll.
+  // "eligible: false" now means only "nothing to ask" (no poll this week, or
+  // they already voted on the feed).
 
   if (kind === "prayer") {
     // People comment under the prayer thread that is already posted - one

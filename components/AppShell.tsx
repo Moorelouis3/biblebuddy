@@ -50,13 +50,7 @@ import {
 } from "../lib/notificationTargets";
 import BibleStudyBreadcrumb from "./BibleStudyBreadcrumb";
 import BottomNav from "./BottomNav";
-import BeginningOfEverythingPopup from "./BeginningOfEverythingPopup";
-import BibleLockPopup from "./BibleLockPopup";
-import NewGamesPopup from "./NewGamesPopup";
 import PopupCoordinator from "./popups/PopupCoordinator";
-import WisdomBookPopup from "./WisdomBookPopup";
-import ProverbsLaunchPopup from "./ProverbsLaunchPopup";
-import WeeklyFeedPopup from "./WeeklyFeedPopup";
 import ReportProblemCard from "./ReportProblemCard";
 import { APP_NAV_ITEMS, buildBreadcrumbs, isNavItemActive } from "../lib/appNavigation";
 import {
@@ -3880,85 +3874,19 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           profiles, embeds - which are not the app. */}
       {showBottomNav ? <BottomNav /> : null}
 
-      {/* One-time promo for the study that is next, which from 2026-10-25 is
-          The Beginning of Everything - Proverbs finishes on the 31st and
-          nobody joining now would catch it. One popup at a time: two at once
-          is how a free app starts to feel like an advert. It decides
-          eligibility itself (not a member, never shown) and waits for a quiet
-          moment. */}
-      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
-        <BeginningOfEverythingPopup
-          userId={userId}
-          pathname={pathname}
-          blocked={Boolean(
-            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
-          )}
-        />
-      ) : null}
+      {/* THE popup system (2026-11-13). Every popup Bible Buddy shows on its
+          own comes from here: one per visit, chosen by lib/popups/decide.ts
+          from the one list in lib/popups/catalog.ts. Each also needs its row
+          in popup_settings. See docs/POPUP_SYSTEM_PROPOSAL.md.
 
-      {/* The daily "Day N is ready" popup for members of the live study was
-          retired on 2026-11-15 (Louis): a member got it every day for the
-          whole study and so never saw anything else - not the next study's
-          sign-up, not a tutorial. The dashboard's Today card still says the
-          day is open. Its component and /api/popups/community-event-day are
-          deleted; git has them. */}
-
-      {/* One-time "The Wisdom of Proverbs has started" popup for members who
-          have not started yet (from Oct 1). Checked before the book popup. */}
-      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
-        <ProverbsLaunchPopup
-          userId={userId}
-          pathname={pathname}
-          blocked={Boolean(
-            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
-          )}
-        />
-      ) : null}
-
-      {/* One-time "New Book Live!" popup for Proverbs members and devotional
-          readers. Off until the hardcover Amazon link is set. */}
-      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
-        <WisdomBookPopup
-          userId={userId}
-          pathname={pathname}
-          blocked={Boolean(
-            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
-          )}
-        />
-      ) : null}
-
-      {/* One-time "2 New Game Modes" announcement for Bible Memory and Bible
-          Word Search (2026-11-13). Everyone signed in, once. It sits after the
-          study popups on purpose: they are mounted first and each waits for no
-          other modal to be open, so a study invitation takes the visit and
-          this takes a later one. */}
-      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
-        <NewGamesPopup
-          userId={userId}
-          pathname={pathname}
-          blocked={Boolean(
-            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
-          )}
-        />
-      ) : null}
-
-      {/* Bible Lock announcement (2026-11-13). On since Louis approved the
-          preview that day (ENABLED in the component). Only an iPhone
-          that can run the lock and has not set it up sees it. */}
-      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
-        <BibleLockPopup
-          userId={userId}
-          pathname={pathname}
-          blocked={Boolean(
-            completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
-          )}
-        />
-      ) : null}
-
-      {/* The popup coordinator (2026-11-13): one tutorial or announcement
-          per visit, chosen by lib/popups/decide.ts. On since 14 Nov 2026
-          (COORDINATOR_ENABLED in lib/popups/switch.ts); each popup also
-          needs its row in popup_settings. See docs/POPUP_SYSTEM_PROPOSAL.md. */}
+          Until 2026-11-15 six more components were mounted beside it, each
+          with its own timer: the Beginning of Everything invitation, the
+          daily "Day N is ready", the Proverbs launch, the book popup, the two
+          new games, Bible Lock, and the weekly prayer request and poll.
+          Louis: "every pop up needs to be under here and work from this
+          system". The ones still wanted are entries in the list; the daily
+          one and the two that had ended are gone (git has them). Do not mount
+          a popup with its own trigger here again - add an entry to the list. */}
       {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
         <PopupCoordinator
           userId={userId}
@@ -3967,30 +3895,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
           )}
         />
-      ) : null}
-
-      {/* The two weekly nudges to the feed: a prayer request on a Sunday
-          week, this week's poll on a Wednesday week. Each one is once a week
-          per person, and whichever popup gets there first takes the visit. */}
-      {isLoggedIn && userId && userId !== "landing-preview-user" && !isBarePage ? (
-        <>
-          <WeeklyFeedPopup
-            kind="prayer"
-            userId={userId}
-            pathname={pathname}
-            blocked={Boolean(
-              completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
-            )}
-          />
-          <WeeklyFeedPopup
-            kind="poll"
-            userId={userId}
-            pathname={pathname}
-            blocked={Boolean(
-              completionPushDay || completionInstallDay || showBuddyCelebration || openConversationId || isDashboardStoreOpen,
-            )}
-          />
-        </>
       ) : null}
 
       {/* BUDDY CELEBRATION MODAL */}
