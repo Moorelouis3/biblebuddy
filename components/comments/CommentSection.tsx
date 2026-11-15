@@ -205,7 +205,7 @@ export default function CommentSection({
       .order("created_at", { ascending: true });
     setLoading(false);
     if (error) {
-      setError(error.message);
+      setError("Couldn't load comments. Please try again.");
       return;
     }
 
