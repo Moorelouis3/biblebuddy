@@ -1081,10 +1081,25 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
   const systemRows = signupEventRows.filter((row) => catalogIds.has(popupIdOf(row)));
   const peopleWho = (name: string, popupId?: string) =>
     new Set(systemRows.filter((row) => row.event_name === name && (!popupId || popupIdOf(row) === popupId)).map(popupPerson)).size;
+  // A close is one of two things. "Don't show again" (method "never") is
+  // somebody blocking that popup for good; everything else - Maybe later, the
+  // ✕, Escape, a tap outside - is skipping it, and it may come back once.
+  const closedHow = (blocked: boolean, popupId?: string) =>
+    new Set(
+      systemRows
+        .filter(
+          (row) =>
+            row.event_name === "popup_dismissed" &&
+            (!popupId || popupIdOf(row) === popupId) &&
+            ((row.metadata as { method?: string } | null)?.method === "never") === blocked,
+        )
+        .map(popupPerson),
+    ).size;
   const popupSystem = {
     since: POPUP_SYSTEM_SINCE,
     sawAny: peopleWho("popup_shown"),
-    closedAny: peopleWho("popup_dismissed"),
+    skippedAny: closedHow(false),
+    blockedAny: closedHow(true),
     tappedAny: peopleWho("popup_cta_clicked"),
     tapRate: rateOrNull(peopleWho("popup_cta_clicked"), peopleWho("popup_shown")),
     rows: POPUP_CATALOG.map((popup) => {
@@ -1096,7 +1111,9 @@ export async function computeDashboard(admin: SupabaseClient, window: DashboardW
         title: signup?.title || popup.cardTitle || popup.headline,
         kind: popup.event ? "Study sign-up" : popup.kind === "tutorial" ? "How-to" : popup.kind === "ask" ? "App store ask" : "Announcement",
         shown,
-        dismissed: peopleWho("popup_dismissed", popup.id),
+        skipped: closedHow(false, popup.id),
+        // Only the popups that offer "Don't show again" can be blocked.
+        blocked: popup.offerNeverAgain ? closedHow(true, popup.id) : null,
         taps,
         tapRate: rateOrNull(taps, shown),
         // Only a sign-up has something to register for.

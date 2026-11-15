@@ -1982,13 +1982,16 @@ export default function AnalyticsDashboardView({
                     </div>
                     <p className="mb-3 text-xs font-semibold text-[#64748b]">
                       People, not taps, since {d.popupSystem.since} when the new popup system went on. Not tied to the period above.
+                      Skipped is Maybe later or the ✕ (it can come back once). Blocked is &ldquo;Don&apos;t show again&rdquo;, which only
+                      some popups offer.
                     </p>
-                    <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-4">
+                    <div className="grid grid-cols-2 gap-2 text-center sm:grid-cols-5">
                       {[
                         ["Saw a popup", fmt(d.popupSystem.sawAny)],
-                        ["Closed one", fmt(d.popupSystem.closedAny)],
-                        ["Tapped the button", fmt(d.popupSystem.tappedAny)],
-                        ["Tapped ÷ saw", pctOrNA(d.popupSystem.tapRate)],
+                        ["Clicked", fmt(d.popupSystem.tappedAny)],
+                        ["Skipped", fmt(d.popupSystem.skippedAny)],
+                        ["Blocked", fmt(d.popupSystem.blockedAny)],
+                        ["Clicked ÷ saw", pctOrNA(d.popupSystem.tapRate)],
                       ].map(([label, value]) => (
                         <div key={label} className="rounded-xl bg-[#f8fafc] px-2 py-3">
                           <p className="text-[11px] font-bold leading-tight text-[#64748b]">{label}</p>
@@ -1997,14 +2000,15 @@ export default function AnalyticsDashboardView({
                       ))}
                     </div>
                     <div className="mt-4 overflow-x-auto">
-                      <table className="w-full min-w-[520px] text-sm">
+                      <table className="w-full min-w-[600px] text-sm">
                         <thead>
                           <tr className="text-left text-[11px] font-bold uppercase tracking-wide text-[#94a3b8]">
                             <th className="pb-2">Popup</th>
                             <th className="pb-2 text-right">Saw it</th>
-                            <th className="pb-2 text-right">Closed</th>
-                            <th className="pb-2 text-right">Tapped</th>
-                            <th className="pb-2 text-right">Tap rate</th>
+                            <th className="pb-2 text-right">Clicked</th>
+                            <th className="pb-2 text-right">Click rate</th>
+                            <th className="pb-2 text-right">Skipped</th>
+                            <th className="pb-2 text-right">Blocked</th>
                             <th className="pb-2 text-right">Signed up</th>
                           </tr>
                         </thead>
@@ -2016,9 +2020,10 @@ export default function AnalyticsDashboardView({
                                 <span className="block text-[11px] font-semibold text-[#94a3b8]">{row.kind}</span>
                               </td>
                               <td className="py-2 text-right font-bold">{fmt(row.shown)}</td>
-                              <td className="py-2 text-right">{fmt(row.dismissed)}</td>
                               <td className="py-2 text-right">{fmt(row.taps)}</td>
                               <td className="py-2 text-right">{pctOrNA(row.tapRate)}</td>
+                              <td className="py-2 text-right">{fmt(row.skipped)}</td>
+                              <td className="py-2 text-right">{row.blocked === null ? "–" : fmt(row.blocked)}</td>
                               <td className="py-2 text-right">{row.registered === null ? "–" : fmt(row.registered)}</td>
                             </tr>
                           ))}
