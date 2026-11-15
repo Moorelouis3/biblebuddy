@@ -177,10 +177,36 @@ export default function LevelsPage() {
     // so the list is read whether or not the points read worked.
     void (async () => {
       let unlockedId: string | null = null;
+      // Show what this device saw last time at once, and let the fresh numbers
+      // replace it quietly (Louis, 2026-11-15: "once a person get a level,
+      // it's saved there... it takes forever for the levels page to load").
+      // The two reads below re-score the person's whole history and take
+      // seconds; a level does not change between visits, so there is no reason
+      // to stare at a skeleton while they run. The level snapshot is the one
+      // the dashboard's level card already keeps (LevelProgressCard); the
+      // badge one is kept here.
+      const userId = await sessionUserId();
+      const levelKey = userId ? `bb:level-summary:v1:${userId}` : null;
+      const badgeKey = userId ? `bb:badge-summary:v1:${userId}` : null;
+      if (!cancelled && levelKey && badgeKey) {
+        try {
+          const savedLevel = JSON.parse(window.localStorage.getItem(levelKey) || "null") as PointsSummary | null;
+          if (savedLevel && typeof savedLevel.level === "number") {
+            setSummary((current) => current ?? { ...savedLevel, leveledUp: false, badgeUnlocked: null });
+          }
+          const savedBadges = JSON.parse(window.localStorage.getItem(badgeKey) || "null") as BadgeSummary | null;
+          if (savedBadges && Array.isArray(savedBadges.badges)) setBadges((current) => current ?? savedBadges);
+        } catch {
+          // A broken snapshot just means waiting for the reads, as before.
+        }
+      }
       try {
         const payload = await authedFetch<PointsSummary>("/api/points/summary");
         if (cancelled) return;
         setSummary(payload);
+        try {
+          if (levelKey) window.localStorage.setItem(levelKey, JSON.stringify({ ...payload, leveledUp: false, badgeUnlocked: null }));
+        } catch {}
         if (payload.badgeUnlocked) {
           // Marked "New!" in the grid either way; announced only if this
           // device has not already announced it (the dashboard may have).
@@ -189,12 +215,16 @@ export default function LevelsPage() {
           if (!cancelled && userId && claimBadgeAnnouncement(userId, payload.badgeUnlocked.id)) setUnlocked(payload.badgeUnlocked);
         }
       } catch {
-        if (!cancelled) setSummaryFailed(true);
+        // With a saved copy on screen, a failed refresh is not an error state.
+        if (!cancelled) setSummary((current) => { if (!current) setSummaryFailed(true); return current; });
       }
       try {
         const payload = await authedFetch<BadgeSummary>("/api/badges/summary");
         if (cancelled) return;
         setBadges({ ...payload, badges: payload.badges.map((badge) => (badge.id === unlockedId ? { ...badge, isNew: true } : badge)) });
+        try {
+          if (badgeKey) window.localStorage.setItem(badgeKey, JSON.stringify(payload));
+        } catch {}
       } catch {
         if (!cancelled) setBadgesFailed(true);
       }

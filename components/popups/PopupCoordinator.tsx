@@ -147,6 +147,9 @@ function send(query: PromiseLike<unknown>) {
 
 const visitKey = (userId: string) => `bb:popup-visit:${userId}`;
 const usedKey = (userId: string) => `bb:popup-used:${userId}`;
+const usedAskedKey = (userId: string) => `bb:popup-used-asked:${userId}`;
+/** How long "has not used this feature yet" is trusted before asking again. */
+const USED_RECHECK_MS = 6 * 3_600_000;
 const CTA_KEY = "bb:popup-cta-at";
 
 type Visit = { lastActiveAt: string; shown: boolean };
@@ -360,17 +363,36 @@ async function load(userId: string, catalog: PopupDefinition[]): Promise<Loaded 
   } catch {}
   const usedActions = new Set<string>(known);
   const unknown = Array.from(new Set(live.flatMap((popup) => popup.usedWhen))).filter((action) => !usedActions.has(action));
-  await Promise.all(
-    unknown.map(async (action) => {
-      const { data, error } = await supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", action).limit(1);
-      // Unsure counts as "uses it": better to stay quiet than teach someone
-      // something they do every day.
-      if (error || data?.length) usedActions.add(action);
-    }),
-  );
+  // Asked at most once every few hours, not on every page (audit, 2026-11-15).
+  // This was one request per still-unknown action on EVERY page load - eleven
+  // of them for somebody new, on the dashboard, the reader, everywhere - to
+  // answer a question whose answer barely changes. Between asks the unknown
+  // ones stay "not used yet", which at worst offers a how-to to somebody who
+  // started using the feature in the last few hours.
+  let askedRecently = false;
   try {
-    window.localStorage.setItem(usedKey(userId), JSON.stringify(Array.from(usedActions)));
+    const askedAt = Number(window.localStorage.getItem(usedAskedKey(userId)) || 0);
+    askedRecently = askedAt > 0 && Date.now() - askedAt < USED_RECHECK_MS;
   } catch {}
+  if (!askedRecently && unknown.length) {
+    // Only what was answered is remembered: a failed read still counts as
+    // "uses it" for this page (better quiet than wrong) but is asked again.
+    const answered: string[] = [];
+    await Promise.all(
+      unknown.map(async (action) => {
+        const { data, error } = await supabase.from("master_actions").select("id").eq("user_id", userId).eq("action_type", action).limit(1);
+        if (error) usedActions.add(action);
+        else if (data?.length) {
+          usedActions.add(action);
+          answered.push(action);
+        }
+      }),
+    );
+    try {
+      window.localStorage.setItem(usedKey(userId), JSON.stringify([...known, ...answered]));
+      window.localStorage.setItem(usedAskedKey(userId), String(Date.now()));
+    } catch {}
+  }
 
   // Study sign-ups: which of those studies this person is already in. One
   // small read, and only while such a popup is switched on.

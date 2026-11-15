@@ -14084,3 +14084,8 @@ studies and six seats, so recommendations mostly decide order today and
 matter more as the Library grows. Bible in One Year's "last read" comes from
 its newest finished-day action; an account without one sorts it after dated
 studies.
+
+## 2026-11-15 (morning, full audit)
+Done: Audit of Bible Buddy as a regular user (local preview on the test account, all main screens; live site public pages timed; three read-only code reviews: speed, the seven study guides, the blog). Nothing is broken: every main screen renders, all 7 guides open with all their days (31/21/21/60/21/30 + Bible in One Year), 6 of 7 have a working Amazon button, blog is 408 posts with 0 broken links or images. Two speed fixes shipped: the Levels page paints from a saved copy instead of a skeleton, and the popup system no longer asks the database ~11 "has this person used feature X" questions on every page load (now once every 6 hours).
+Not live yet: this commit, next scheduled build.
+Still open (reported to Louis, not done): points/summary re-scores a person's whole history on every call; the same profile row is read ~6 times per load; study day page waits on 8 "who finished" queries; profile_stats.app_theme_selected_at does not exist so one request fails on every page; Abraham has no book link and its cover file says 28-day; /study/<slug> does not know 4 of the 7 guides; /bible-study-guides is a "coming soon" dead page; blog banners send Android readers to the App Store.
