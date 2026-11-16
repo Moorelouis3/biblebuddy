@@ -3,7 +3,7 @@
 
 import { createBrowserClient } from "@supabase/ssr";
 import { boundedAuthLock, fetchWithTimeout } from "./supabaseAuthLock";
-import { reportSupabaseFailure } from "./supabaseFailureReporter";
+import { isPageUnloading, reportSupabaseFailure } from "./supabaseFailureReporter";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -42,6 +42,14 @@ function instrumentedFetch(input: RequestInfo | URL, init?: RequestInit): Promis
       // lib/supabaseAuthLock.ts uses a different name, TimeoutError, precisely
       // so a genuine hang still gets reported here.
       if (error instanceof Error && error.name === "AbortError") {
+        throw error;
+      }
+      // Same case, different name: WebKit can reject a request cut short by
+      // page navigation with a plain "TypeError: Load failed" instead of
+      // AbortError (see lib/supabaseFailureReporter.ts). The login page's
+      // hard `window.location.href` redirect right after a fire-and-forget
+      // app_logins insert is exactly this, on iOS Safari.
+      if (isPageUnloading()) {
         throw error;
       }
       const reason = error instanceof Error ? `${error.name}: ${error.message}` : "fetch failed";

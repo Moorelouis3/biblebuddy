@@ -165,6 +165,30 @@ function isOnline(): boolean {
   }
 }
 
+let pageUnloading = false;
+
+try {
+  if (typeof window !== "undefined") {
+    // lib/supabaseClient.ts already drops a plain AbortError, because a
+    // request cancelled by navigation is not a bug. WebKit does not always
+    // name it that way: a fetch cut short by `window.location.href` on iOS
+    // Safari can reject with a generic `TypeError: Load failed` instead,
+    // which the AbortError check misses. `pagehide` fires reliably right as
+    // the page is torn down, before those rejections land, so anything
+    // landing after it is the same case the AbortError check already covers.
+    window.addEventListener("pagehide", () => {
+      pageUnloading = true;
+    });
+  }
+} catch {
+  // Monitoring must never make the thing it monitors worse.
+}
+
+/** Has this page started unloading (navigating away, closing)? */
+export function isPageUnloading(): boolean {
+  return pageUnloading;
+}
+
 /**
  * Fire and forget. Never awaited, never throws, never the reason a page breaks.
  *
