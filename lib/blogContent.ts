@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-11-explained",
+    title: "Judges 11 Explained: Jephthah's Outcast Rise and His Costly Vow",
+    description:
+      "Judges 11 explained verse by verse: Jephthah's rejection, his rise as judge, his case against Ammon, his vow, and the daughter who paid for it.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-11-explained",
+    publishedAt: "2026-11-16",
+    readTime: "15 min read",
+    image: "/blog-banners/judges-11-explained.jpg",
+    groupPost: {
+      title: "Judges 11 Explained 📖",
+      content:
+        "His own brothers threw him out.\nThen they needed him to save them.\n\n📌 God's help can arrive before you ever ask for it.\n\n📖 Jephthah argues history with a king before one battle happens.\n📖 The Spirit of the LORD comes on him before his vow does.\n📖 His own daughter is the first to meet him coming home.\n\nNew article on:\n🟢 why he still made a **vow** nobody required\n🟢 what really happened to his **daughter**\n🟢 why Hebrews still calls him a man of **faith**\n\nHave you ever kept a promise long after it stopped making sense to? 🙏",
+    },
+  },
+  {
     slug: "judges-10-explained",
     title: "Judges 10 Explained: Tola, Jair, and God's Hardest Answer",
     description:
