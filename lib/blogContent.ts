@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-10-explained",
+    title: "Judges 10 Explained: Tola, Jair, and God's Hardest Answer",
+    description:
+      "Judges 10 explained verse by verse: Tola, Jair, Israel's worst idolatry yet, and the moment God said He would deliver them no more.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-10-explained",
+    publishedAt: "2026-11-16",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-10-explained.jpg",
+    groupPost: {
+      title: "Judges 10 Explained 📖",
+      content:
+        "Israel cries out to God for help.\nThis time He says no.\n\n📌 A real repentance costs something before the rescue ever starts.\n\n📖 Two quiet judges lead for forty five years with no battle.\n📖 Israel serves seven nations' gods at once.\n📖 God refuses to deliver them, then grieves over their misery anyway.\n\nNew article on:\n🟢 why God said **I will deliver you no more**\n🟢 what it means that **His soul was grieved**\n🟢 the mystery of **Havothjair** and the other Jair\n\nHave you ever wondered if God was done answering the same prayer? 🙏",
+    },
+  },
+  {
     slug: "judges-9-explained",
     title: "Judges 9 Explained: Abimelech and Jotham's Fable of the Trees",
     description:
