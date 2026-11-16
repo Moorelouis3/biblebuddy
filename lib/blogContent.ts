@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-13-explained",
+    title: "Judges 13 Explained: The Angel Who Would Not Give His Name",
+    description:
+      "Judges 13 explained verse by verse: the forty year Philistine oppression, the angel's visits to Manoah's wife, and Samson's birth.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-13-explained",
+    publishedAt: "2026-11-16",
+    readTime: "15 min read",
+    image: "/blog-banners/judges-13-explained.jpg",
+    groupPost: {
+      title: "Judges 13 Explained 📖",
+      content:
+        "Israel never cried out to God this time.\nGod moved anyway.\n\n📌 Grace can arrive before anyone asks for it.\n\n📖 An angel visits a woman the text never names.\n📖 Her husband asks for his name. He refuses.\n📖 Samson is born, and the Spirit only begins to move him.\n\nNew article on:\n🟢 why this is the longest **oppression** in Judges\n🟢 what a **Nazarite** vow actually required\n🟢 why the wife understood before her husband did\n\nHave you ever noticed God moving before you asked Him to? 🙏",
+    },
+  },
+  {
     slug: "judges-12-explained",
     title: "Judges 12 Explained: Shibboleth and Three Quiet Judges",
     description:
