@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-12-explained",
+    title: "Judges 12 Explained: Shibboleth and Three Quiet Judges",
+    description:
+      "Judges 12 explained verse by verse: Ephraim's civil war with Jephthah, the Shibboleth test, his death, and the three judges after him.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-12-explained",
+    publishedAt: "2026-11-16",
+    readTime: "15 min read",
+    image: "/blog-banners/judges-12-explained.jpg",
+    groupPost: {
+      title: "Judges 12 Explained 📖",
+      content:
+        "One mispronounced word decided who lived.\nNot a weapon. A single sound.\n\n📌 Belonging can be tested on the smallest details.\n\n📖 Ephraim brings Jephthah the same complaint Gideon once faced.\n📖 This time it ends in civil war, not peace.\n📖 Three judges lead 25 quiet years with zero battles.\n\nNew article on:\n🟢 what the word **shibboleth** actually means\n🟢 why Jephthah's own **grave** isn't even named\n🟢 the 3 judges history barely **remembers**\n\nHave you ever had a small detail decide whether you belonged? 🙏",
+    },
+  },
+  {
     slug: "judges-11-explained",
     title: "Judges 11 Explained: Jephthah's Outcast Rise and His Costly Vow",
     description:
