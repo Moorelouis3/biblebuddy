@@ -14135,3 +14135,11 @@ Done: Found one real cause behind 8 of the open reports - the post-login redirec
 Not live yet: commit 8585182 (and 13 others already on main); next scheduled build Mon 10:05 Berlin (`npm run pending`).
 Still open: 20 more open bug reports untouched this run (all "Request failure"/one crash, all automated telemetry with no reporter except one crash from Ariana Guzman - a stale JS chunk load error, not yet looked at). 3 reports sitting in `awaiting_approval` need Louis's yes/no at /admin/bugs before they can close out.
 Next: next scheduled run picks up where this left off, starting with the dashboard-page cluster (same shape of bug, different page) and Ariana Guzman's chunk-load crash.
+
+## 2026-11-16 (afternoon, Bug Fixer run)
+Marching orders: work through open bug reports per docs/BUG_FIXER_AGENT.md.
+Today: fetched the open queue (25 open, nothing stale in needs_louis/awaiting_approval to clear first), worked the oldest 5.
+Done: No new code this run - four of the five were more copies of this morning's already-fixed login-redirect cause (notifications, master_actions, a profile_stats save, and a notes check, all on /login), so each was closed `fixed` citing this morning's commit 8585182 rather than refixing the same thing. All four auto-escalated to `awaiting_approval` the same way this morning's three did (the page is `/login`, which the tracker reads as touching auth) - that's now 7 reports waiting on Louis's yes/no at /admin/bugs, all the same one-line cause. The fifth was Ariana Guzman's stale-page crash from two days ago - checked it and the app's own self-healing reload already fired and fixed it on her screen (confirmed in the crash record), so closed `not_a_bug` with a short reply for her.
+Not live yet: nothing new - still just commit 8585182 from this morning, waiting on the next scheduled build.
+Still open: 19 more reports in the queue, left for the next run under the 5-bug cap. 7 reports now sitting in `awaiting_approval` need Louis's yes/no at /admin/bugs before any of them can close out and reply to go out.
+Next: next scheduled run keeps clearing the backlog; worth checking first whether Louis has approved the 7 waiting login-redirect reports, since those replies only send once he has.
