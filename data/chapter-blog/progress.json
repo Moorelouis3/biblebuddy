@@ -4,8 +4,8 @@
   "startedAt": "2026-09-17",
   "paused": false,
   "pausedReason": "Unpaused 2026-09-20 by Louis: chapter articles match what people actually search and pin, so this is the production priority again. Next: Genesis 14.",
-  "updatedAt": "2026-11-16T10:33:58.524Z",
-  "nextChapter": "Judges 12",
+  "updatedAt": "2026-11-16T10:34:07.746Z",
+  "nextChapter": "Judges 13",
   "chapters": {
     "genesis-1-explained": {
       "status": "published",
@@ -1770,6 +1770,11 @@
       "startedAt": "2026-11-16T06:33:35.780Z",
       "committedAt": "2026-11-16T06:44:58.769Z",
       "publishedAt": "2026-11-16T10:33:58.524Z"
+    },
+    "judges-12-explained": {
+      "attempts": 1,
+      "status": "generating",
+      "startedAt": "2026-11-16T10:34:07.745Z"
     }
   },
   "priorityBooks": [
