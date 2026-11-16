@@ -14127,3 +14127,11 @@ Still open: the book link and popups. Amazon gives the ASIN when the book goes L
 ## 2026-11-15 (morning, cover in the day-complete popup)
 Done: The day-complete popup now shows a study's cover with the reader's progress ("Day 3 of 30" and a bar) when that study has no Amazon link yet - Louis's call for The Obedience of Abraham while Amazon reviews the book. No button and no "coming soon". When the link is added it becomes the normal "Get the book" card by itself.
 Not live yet: this commit, next scheduled build.
+
+## 2026-11-16 (morning, Bug Fixer run)
+Marching orders: work through open bug reports per docs/BUG_FIXER_AGENT.md.
+Today: fetched the open bug queue (25 open, no backlog stale on needs_louis/awaiting_approval), worked the oldest 5.
+Done: Found one real cause behind 8 of the open reports - the post-login redirect (`window.location.href`) fires before the page's background setup requests (profile_stats, app_logins, completed_chapters, etc) finish, and iOS Safari reports those as "TypeError: Load failed" instead of AbortError, so the existing AbortError noise filter missed them. Fixed in lib/supabaseClient.ts + lib/supabaseFailureReporter.ts (commit 8585182, tsc clean, verify:supabase-failure-reporter 22/22 passed). Posted `fixed` on 3 of those reports (c1fcf410, 076131ba, 3bf9be2d) - the tracker auto-escalated all three to `awaiting_approval` because the page is `/login` (keyword match, not an actual auth change) - Louis needs to approve at /admin/bugs. Closed 2 stale reports as `not_a_bug` (ee21a801: a Pinterest bot's own cancelled request; 17a11836: a normal page-navigation cancellation from before the existing AbortError filter shipped). No reporters on any of the 5, so no replies were needed.
+Not live yet: commit 8585182 (and 13 others already on main); next scheduled build Mon 10:05 Berlin (`npm run pending`).
+Still open: 20 more open bug reports untouched this run (all "Request failure"/one crash, all automated telemetry with no reporter except one crash from Ariana Guzman - a stale JS chunk load error, not yet looked at). 3 reports sitting in `awaiting_approval` need Louis's yes/no at /admin/bugs before they can close out.
+Next: next scheduled run picks up where this left off, starting with the dashboard-page cluster (same shape of bug, different page) and Ariana Guzman's chunk-load crash.
