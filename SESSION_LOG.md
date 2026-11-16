@@ -14143,3 +14143,7 @@ Done: No new code this run - four of the five were more copies of this morning's
 Not live yet: nothing new - still just commit 8585182 from this morning, waiting on the next scheduled build.
 Still open: 19 more reports in the queue, left for the next run under the 5-bug cap. 7 reports now sitting in `awaiting_approval` need Louis's yes/no at /admin/bugs before any of them can close out and reply to go out.
 Next: next scheduled run keeps clearing the backlog; worth checking first whether Louis has approved the 7 waiting login-redirect reports, since those replies only send once he has.
+
+## 2026-11-16T22:14:07Z (blog writer run)
+Article: Who Actually Wrote the Bible? | Words: ~4,521 | Category: Bible Insights | Status: pass
+Queue remaining: 38

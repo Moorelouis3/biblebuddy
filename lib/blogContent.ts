@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "who-wrote-the-bible",
+    title: "Who Actually Wrote the Bible?",
+    description:
+      "Who actually wrote the Bible? Meet the 40 writers across 1,500 years, from kings and shepherds to fishermen and a doctor, and what inspired really means.",
+    category: "Bible Insights",
+    categorySlug: "bible-insights",
+    canonicalPath: "/blog/who-wrote-the-bible",
+    publishedAt: "2026-11-16",
+    readTime: "23 min read",
+    image: "/who-wrote-the-bible-banner.png",
+    groupPost: {
+      title: "Who Actually Wrote the Bible? 📖",
+      content:
+        "Someone just told you the Bible was just written by men.\nHere's the real story behind that.\n\n📌 About 40 people wrote it, across 1,500 years, and still agree.\n\n📖 Kings and shepherds held the pen.\n📖 Fishermen, a doctor, and a tax collector too.\n📖 God worked through each one's own voice.\n\nNew article on:\n🟢 what **inspired by God** actually means\n🟢 how the **books were recognized** as Scripture\n🟢 why **forty writers agreeing** is strong evidence\n\nWhat's your go to answer when someone doubts the Bible? 🙏",
+    },
+  },
+  {
     slug: "judges-13-explained",
     title: "Judges 13 Explained: The Angel Who Would Not Give His Name",
     description:
