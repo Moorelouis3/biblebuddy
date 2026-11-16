@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-9-explained",
+    title: "Judges 9 Explained: Abimelech and Jotham's Fable of the Trees",
+    description:
+      "Judges 9 explained verse by verse: Abimelech murders his seventy brothers, Jotham's fable of the trees, the evil spirit, and the millstone that ends him.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-9-explained",
+    publishedAt: "2026-11-16",
+    readTime: "17 min read",
+    image: "/blog-banners/judges-9-explained.jpg",
+    groupPost: {
+      title: "Judges 9 Explained 📖",
+      content:
+        "Seventy brothers. One stone. One brother who hid.\nThe killer gets crowned king a few verses later.\n\n📌 The useful trees all say no to the crown. Only the worthless one says yes.\n\n📖 Abimelech murders his way to Shechem's throne.\n📖 Jotham warns the town with a fable, then runs for his life.\n📖 A woman ends it all with a piece of a millstone.\n\nNew article on:\n🟢 what **Jotham's fable of the trees** actually means\n🟢 whether God really **sent an evil spirit** in verse 23\n🟢 why a dying man's last words were about his **reputation**\n\nHave you ever watched someone take by force what was never offered to them? 🙏",
+    },
+  },
+  {
     slug: "judges-8-explained",
     title: "Judges 8 Explained: Gideon Says No to a Crown and Yes to an Idol",
     description:
