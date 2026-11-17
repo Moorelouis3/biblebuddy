@@ -6,46 +6,52 @@ import { BIBLE_BUDDY_USER_ID } from "@/lib/bibleBuddyAccount";
 import { sendDirectMessage } from "@/lib/weeklyBibleReport";
 import { OpenAiBudgetExceeded, assertOpenAiSpendAllowed, recordOpenAiSpend } from "@/lib/openAiBudget";
 import {
-  DM_FAQ_MIN_CONFIDENCE,
-  DM_FAQ_MODEL,
-  buildDmReply,
-  classifierSystemPrompt,
-  parseClassification,
+  DM_REPLY_MODEL,
+  buildFaqReply,
+  buildWrittenReply,
+  dmSystemPrompt,
+  dmUserPrompt,
+  parseDmDecision,
   prefilterDm,
 } from "@/lib/dmFaq/answer";
 
 /**
- * Answers common DMs to Louis with the FAQ (Louis, 2026-11-15).
+ * Answers Louis's DMs automatically (Louis, 2026-11-15, widened 2026-11-17:
+ * "i told you i wanted my dms to be automatically answered").
  *
- * Every 15 minutes. For each conversation where somebody has written to Louis
- * and is still waiting, it asks one question of gpt-4o-mini - which FAQ entry
- * is this, if any - and, when the answer is confident, sends that entry's
- * approved text as Louis with a button to the full answer. lib/dmFaq/answer.ts
- * explains why the model only ever picks and never writes.
+ * Every 15 minutes. For each person who has written to Louis and is still
+ * waiting, one gpt-4o-mini call decides (lib/dmFaq/answer.ts):
+ *   faq    send the approved FAQ answer word for word, with a button;
+ *   reply  send a short reply the model writes in Louis's voice;
+ *   leave  send nothing - Louis answers it himself.
+ * Every automatic message says it is automatic.
  *
- * WHAT IT LEAVES ALONE, so Louis's inbox is never answered over his head:
+ * WHAT IT LEAVES ALONE:
  *   - a thread where Louis is already talking with the person by hand (he
- *     answered something of theirs in the last 3 days);
- *   - a message Louis has already answered by hand, or one newer than 10
- *     minutes (he may be typing) or older than 12 hours (too late to help);
- *   - problem reports, greetings, thanks, and long personal messages
+ *     answered something of theirs in the last 3 days), or where he has
+ *     written since the message;
+ *   - messages newer than 10 minutes (he may be typing) or older than 12
+ *     hours (too late to feel like a reply);
+ *   - problem reports, crisis words, two-word messages, plain thanks
  *     (prefilterDm, before any model call);
  *   - the Bible Buddy brand account and deleted accounts;
- *   - any conversation that got an automatic answer in the last 24 hours, and
- *     the same answer to the same person ever again - a second identical
- *     reply is what would read as a bot.
+ *   - any thread that got an automatic message in the last 24 hours, and the
+ *     same FAQ answer to the same person ever again.
  *
- * It does NOT mark the person's message read. Louis still sees it; the thread
- * just shows that it has been answered. Its replies are flagged is_automated,
- * which keeps these threads out of his Primary tab until he writes himself.
+ * Whether Louis has OPENED the message does not matter. The first version
+ * only looked at unread messages, so anything he glanced at in the app was
+ * skipped for good.
+ *
+ * It never marks anything read. Its messages are flagged is_automated, which
+ * keeps these threads out of Louis's Primary tab until he writes himself.
  *
  * SWITCH: DM_FAQ_REPLIES. "off" stops it; "shadow" decides and logs but sends
- * nothing; anything else, including unset, runs. ?dryRun=1 does the same as
- * shadow for one run.
+ * nothing; anything else, including unset, runs. ?dryRun=1 is shadow for one
+ * run.
  *
- * Every decision is one landing_page_events row, event "dm_faq_decision",
- * with the message id, the outcome and the FAQ id - never the message text.
- * That row is also what stops a message being looked at twice.
+ * Every decision is a landing_page_events row, event "dm_faq_decision", with
+ * the message ids, the outcome and the reason - never the message text. That
+ * row is also what stops a message being looked at twice.
  */
 
 export const runtime = "nodejs";
@@ -91,42 +97,43 @@ export async function GET(request: NextRequest) {
   const newest = new Date(now - MIN_AGE_MINUTES * 60_000).toISOString();
   const oldest = new Date(now - MAX_AGE_HOURS * 3_600_000).toISOString();
 
-  // Recent messages from anyone but Louis, then keep the ones in his threads.
+  // Recent messages from anyone but Louis, read or not; then keep his threads.
   const { data: recent, error: recentError } = await admin
     .from("messages")
     .select("id, conversation_id, sender_id, content, created_at, is_automated")
     .neq("sender_id", louisId)
-    .is("read_at", null)
     .gte("created_at", oldest)
     .lte("created_at", newest)
-    .order("created_at", { ascending: false })
-    .limit(300);
+    .order("created_at", { ascending: true })
+    .limit(500);
   if (recentError) return NextResponse.json({ error: recentError.message }, { status: 500 });
   const candidates = ((recent || []) as Array<Incoming & { is_automated: boolean | null }>).filter((m) => m.is_automated !== true);
   if (candidates.length === 0) return NextResponse.json({ mode: run, looked_at: 0 });
 
   const conversationIds = [...new Set(candidates.map((m) => m.conversation_id))];
-  const { data: conversations } = await admin
-    .from("conversations")
-    .select("id, user_id_1, user_id_2")
-    .in("id", conversationIds);
   const louisThreads = new Map<string, string>();
-  for (const c of (conversations || []) as Array<{ id: string; user_id_1: string | null; user_id_2: string | null }>) {
-    if (!c.user_id_1 || !c.user_id_2) continue; // a deleted account
-    if (c.user_id_1 !== louisId && c.user_id_2 !== louisId) continue;
-    const other: string = c.user_id_1 === louisId ? c.user_id_2 : c.user_id_1;
-    if (other === louisId || other === BIBLE_BUDDY_USER_ID) continue;
-    louisThreads.set(c.id, other);
+  for (let i = 0; i < conversationIds.length; i += 100) {
+    const { data: conversations } = await admin
+      .from("conversations")
+      .select("id, user_id_1, user_id_2")
+      .in("id", conversationIds.slice(i, i + 100));
+    for (const c of (conversations || []) as Array<{ id: string; user_id_1: string | null; user_id_2: string | null }>) {
+      if (!c.user_id_1 || !c.user_id_2) continue; // a deleted account
+      if (c.user_id_1 !== louisId && c.user_id_2 !== louisId) continue;
+      const other: string = c.user_id_1 === louisId ? c.user_id_2 : c.user_id_1;
+      if (other === louisId || other === BIBLE_BUDDY_USER_ID) continue;
+      louisThreads.set(c.id, other);
+    }
   }
 
   // What has already been decided, and what was already sent.
   const since7d = new Date(now - 7 * 86_400_000).toISOString();
   const { data: decisions } = await admin
     .from("landing_page_events")
-    .select("user_id, created_at, metadata")
+    .select("created_at, metadata")
     .eq("event_name", DECISION_EVENT)
     .gte("created_at", since7d)
-    .limit(2000);
+    .limit(3000);
   const decided = new Set<string>();
   const sentToday = new Set<string>(); // conversation ids
   let modelCallsToday = 0;
@@ -134,51 +141,61 @@ export async function GET(request: NextRequest) {
   for (const row of (decisions || []) as Array<{ created_at: string; metadata: Record<string, unknown> | null }>) {
     const meta = row.metadata || {};
     if (typeof meta.message_id === "string") decided.add(meta.message_id);
+    if (Array.isArray(meta.message_ids)) for (const id of meta.message_ids) if (typeof id === "string") decided.add(id);
     if (Date.parse(row.created_at) >= dayAgo) {
       if (meta.model_called === true) modelCallsToday += 1;
-      if (meta.outcome === "sent" && typeof meta.conversation_id === "string") sentToday.add(meta.conversation_id);
+      if (String(meta.outcome || "").startsWith("sent") && typeof meta.conversation_id === "string") {
+        sentToday.add(meta.conversation_id);
+      }
     }
   }
 
-  // One message per thread: the latest one still waiting.
-  const latestPerThread = new Map<string, Incoming>();
+  // Everything each person sent that is still waiting, oldest first.
+  const waiting = new Map<string, Incoming[]>();
   for (const m of candidates) {
-    if (!louisThreads.has(m.conversation_id)) continue;
-    if (!latestPerThread.has(m.conversation_id)) latestPerThread.set(m.conversation_id, m);
+    if (!louisThreads.has(m.conversation_id) || decided.has(m.id)) continue;
+    const list = waiting.get(m.conversation_id) || [];
+    list.push(m);
+    waiting.set(m.conversation_id, list);
   }
 
   const openAiKey = process.env.OPENAI_API_KEY;
   const openai = openAiKey ? new OpenAI({ apiKey: openAiKey }) : null;
-  const systemPrompt = classifierSystemPrompt();
+  const systemPrompt = dmSystemPrompt();
   const results: Array<Record<string, unknown>> = [];
   let modelCallsThisRun = 0;
 
-  for (const [conversationId, message] of latestPerThread) {
-    if (decided.has(message.id)) continue;
+  for (const [conversationId, messages] of waiting) {
+    const latest = messages[messages.length - 1];
     const otherId = louisThreads.get(conversationId)!;
-    const base = { message_id: message.id, conversation_id: conversationId };
+    const base = { message_id: latest.id, message_ids: messages.map((m) => m.id), conversation_id: conversationId };
+    const skip = async (reason: string) => {
+      await logDecision(admin, otherId, { ...base, outcome: "skip", reason });
+      results.push({ conversation_id: conversationId, outcome: "skip", reason });
+    };
 
-    // Louis has written since this message: he is handling it.
+    // Louis has written since the first waiting message: he is handling it.
     const { data: later } = await admin
       .from("messages")
-      .select("id")
+      .select("id, is_automated")
       .eq("conversation_id", conversationId)
       .eq("sender_id", louisId)
-      .gt("created_at", message.created_at)
-      .limit(1);
-    if ((later || []).length > 0) {
-      await logDecision(admin, otherId, { ...base, outcome: "skip", reason: "louis_replied" });
+      .gt("created_at", messages[0].created_at)
+      .limit(5);
+    if (((later || []) as Array<{ is_automated: boolean | null }>).some((row) => row.is_automated !== true)) {
+      await skip("louis_replied");
       continue;
     }
-    // Louis is already in a conversation with this person: he wrote by hand
-    // in the last 3 days, answering something they had written him. An FAQ
-    // answer dropped into that ("I did what you said but it still won't open
-    // day 2") would talk over him. Found in the trial on real DMs, 15 Nov.
+
+    // Louis is already in a conversation with this person by hand: he answered
+    // something of theirs in the last 3 days. An automatic reply dropped into
+    // that ("I did what you said but it still won't open day 2") would talk
+    // over him. Found in the trial on real DMs, 15 Nov.
     const { data: thread } = await admin
       .from("messages")
       .select("sender_id, created_at, is_automated")
       .eq("conversation_id", conversationId)
-      .lt("created_at", message.created_at)
+      .lt("created_at", messages[0].created_at)
       .order("created_at", { ascending: false })
       .limit(30);
     const rows = (thread || []) as Array<{ sender_id: string; created_at: string; is_automated: boolean | null }>;
@@ -186,97 +203,104 @@ export async function GET(request: NextRequest) {
       (row) => row.sender_id === louisId && row.is_automated !== true && Date.parse(row.created_at) >= now - 3 * 86_400_000,
     );
     if (louisByHand && rows.some((row) => row.sender_id !== louisId && row.created_at < louisByHand.created_at)) {
-      await logDecision(admin, otherId, { ...base, outcome: "skip", reason: "in_conversation_with_louis" });
+      await skip("in_conversation_with_louis");
       continue;
     }
     if (sentToday.has(conversationId)) {
-      await logDecision(admin, otherId, { ...base, outcome: "skip", reason: "answered_in_last_24h" });
+      await skip("answered_in_last_24h");
       continue;
     }
 
-    const filtered = prefilterDm(message.content || "");
+    const filtered = prefilterDm(messages.map((m) => m.content || "").join("\n"));
     if (!filtered.ok) {
-      await logDecision(admin, otherId, { ...base, outcome: "skip", reason: filtered.reason });
-      results.push({ ...base, outcome: "skip", reason: filtered.reason });
+      await skip(filtered.reason);
       continue;
     }
 
     if (!openai) break;
     if (modelCallsThisRun >= MAX_MODEL_CALLS_PER_RUN || modelCallsToday >= MAX_MODEL_CALLS_PER_DAY) break;
     try {
-      await assertOpenAiSpendAllowed(admin, "dm_faq_classify", { message_id: message.id });
+      await assertOpenAiSpendAllowed(admin, "dm_auto_reply", { message_id: latest.id });
     } catch (error) {
-      if (error instanceof OpenAiBudgetExceeded) break;
+      console.error("[DM_REPLY] spending not allowed", error instanceof OpenAiBudgetExceeded ? "budget reached" : error);
       break;
     }
 
+    const { data: profile } = await admin
+      .from("profile_stats")
+      .select("display_name, username")
+      .eq("user_id", otherId)
+      .maybeSingle();
+    const name = String((profile as { display_name?: string; username?: string } | null)?.display_name || "").trim();
+    const firstName = name ? name.split(/\s+/)[0] : null;
+
     modelCallsThisRun += 1;
     modelCallsToday += 1;
-    let faqId: string | null = null;
-    let confidence = 0;
+    let decision;
     try {
       const completion = await openai.chat.completions.create({
-        model: DM_FAQ_MODEL,
-        temperature: 0,
-        max_tokens: 40,
+        model: DM_REPLY_MODEL,
+        temperature: 0.5,
+        max_tokens: 450,
         response_format: { type: "json_object" },
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: filtered.text },
+          { role: "user", content: dmUserPrompt(firstName, filtered.text) },
         ],
       });
-      void recordOpenAiSpend(admin, "dm_faq_classify", {
-        message_id: message.id,
+      void recordOpenAiSpend(admin, "dm_auto_reply", {
+        message_id: latest.id,
         input_tokens: completion.usage?.prompt_tokens ?? null,
         output_tokens: completion.usage?.completion_tokens ?? null,
       });
-      ({ faqId, confidence } = parseClassification(completion.choices[0]?.message?.content || ""));
+      decision = parseDmDecision(completion.choices[0]?.message?.content || "");
     } catch (error) {
-      console.error("[DM_FAQ] classify failed", error);
+      console.error("[DM_REPLY] model call failed", error);
       await logDecision(admin, otherId, { ...base, outcome: "error", model_called: true });
       continue;
     }
 
-    if (!faqId || confidence < DM_FAQ_MIN_CONFIDENCE) {
-      await logDecision(admin, otherId, { ...base, outcome: "none", faq_id: faqId, confidence, model_called: true });
-      results.push({ ...base, outcome: "none", faq_id: faqId, confidence });
+    if (decision.kind === "leave") {
+      await logDecision(admin, otherId, { ...base, outcome: "leave", reason: decision.reason, model_called: true });
+      results.push({ conversation_id: conversationId, outcome: "leave", reason: decision.reason });
       continue;
     }
 
-    // The same answer to the same person, ever, would read as a bot.
-    const { data: before } = await admin
-      .from("landing_page_events")
-      .select("id, metadata")
-      .eq("event_name", DECISION_EVENT)
-      .eq("user_id", otherId)
-      .limit(200);
-    const alreadySentThis = ((before || []) as Array<{ metadata: Record<string, unknown> | null }>).some(
-      (row) => row.metadata?.outcome === "sent" && row.metadata?.faq_id === faqId,
-    );
-    if (alreadySentThis) {
-      await logDecision(admin, otherId, { ...base, outcome: "skip", reason: "same_answer_sent_before", faq_id: faqId, confidence, model_called: true });
+    let reply = decision.kind === "faq" ? buildFaqReply(decision.faqId) : buildWrittenReply(decision.text);
+    const faqId = decision.kind === "faq" ? decision.faqId : null;
+
+    if (faqId) {
+      // The same FAQ answer to the same person twice would read as a bot.
+      const { data: before } = await admin
+        .from("landing_page_events")
+        .select("metadata")
+        .eq("event_name", DECISION_EVENT)
+        .eq("user_id", otherId)
+        .limit(300);
+      const repeated = ((before || []) as Array<{ metadata: Record<string, unknown> | null }>).some(
+        (row) => String(row.metadata?.outcome || "").startsWith("sent") && row.metadata?.faq_id === faqId,
+      );
+      if (repeated) reply = null;
+    }
+    if (!reply) {
+      await logDecision(admin, otherId, { ...base, outcome: "skip", reason: "same_faq_sent_before", faq_id: faqId, model_called: true });
       continue;
     }
 
-    const reply = buildDmReply(faqId);
-    if (!reply) continue;
-
+    const outcome = faqId ? "sent_faq" : "sent_reply";
     if (run === "shadow") {
-      await logDecision(admin, otherId, { ...base, outcome: "would_send", faq_id: faqId, confidence, model_called: true });
-      results.push({ ...base, outcome: "would_send", faq_id: faqId, confidence });
+      await logDecision(admin, otherId, { ...base, outcome: `would_${outcome}`, faq_id: faqId, model_called: true });
+      results.push({ conversation_id: conversationId, outcome: `would_${outcome}`, faq_id: faqId, text: reply.text });
       continue;
     }
 
     // Claimed before sending, so an overlapping run cannot send it twice.
-    await logDecision(admin, otherId, { ...base, outcome: "sent", faq_id: faqId, confidence, model_called: true });
+    await logDecision(admin, otherId, { ...base, outcome, faq_id: faqId, model_called: true });
     const ok = await sendDirectMessage(admin, louisId, "Louis", otherId, reply.text, reply.action, { automated: true });
-    if (!ok) {
-      await logDecision(admin, otherId, { ...base, outcome: "send_failed", faq_id: faqId });
-    } else {
-      sentToday.add(conversationId);
-    }
-    results.push({ ...base, outcome: ok ? "sent" : "send_failed", faq_id: faqId, confidence });
+    if (ok) sentToday.add(conversationId);
+    else await logDecision(admin, otherId, { ...base, outcome: "send_failed", faq_id: faqId });
+    results.push({ conversation_id: conversationId, outcome: ok ? outcome : "send_failed", faq_id: faqId });
   }
 
-  return NextResponse.json({ mode: run, threads: latestPerThread.size, model_calls: modelCallsThisRun, results });
+  return NextResponse.json({ mode: run, threads: waiting.size, model_calls: modelCallsThisRun, results });
 }

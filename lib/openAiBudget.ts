@@ -49,11 +49,12 @@ export const BILLABLE_FEATURES = [
   "bible_text_to_speech",
   "feed_auto_comment_draft",
   // Joined 2026-11-15 at Louis's request ("can we set up something where you
-  // can use AI ... cheap ... where it answers my DMs"). It only CLASSIFIES a
-  // DM into one of the FAQ entries in lib/faq.ts or none; the words sent are
-  // always the approved FAQ text, never the model's. About 2 DMs a day reach
-  // it, and app/api/cron/dm-faq-replies caps it at 40 a day besides.
-  "dm_faq_classify",
+  // can use AI ... where it answers my DMs"), widened 2026-11-17 ("i told you
+  // i wanted my dms to be automatically answered"). One call per DM decides:
+  // an approved FAQ answer, a short reply in Louis's voice, or leave it for
+  // him. About 2 DMs a day reach it; app/api/cron/dm-faq-replies caps it at
+  // 40 a day besides.
+  "dm_auto_reply",
 ] as const;
 export type BillableFeature = (typeof BILLABLE_FEATURES)[number];
 
@@ -84,9 +85,9 @@ export const ESTIMATED_COST_USD: Record<BillableFeature, number> = {
   // About 280 tokens in and 50 out on gpt-4o-mini is $0.00007. Rounded up
   // nearly threefold, for the same reason as the chat figure above.
   feed_auto_comment_draft: 0.0002,
-  // About 900 tokens in (the FAQ list plus the message) and 20 out on
-  // gpt-4o-mini is $0.00015. Rounded up.
-  dm_faq_classify: 0.0003,
+  // About 1,600 tokens in (facts, FAQ list, the message) and 250 out on
+  // gpt-4o-mini is $0.0004. Rounded up.
+  dm_auto_reply: 0.001,
 };
 
 export class OpenAiBudgetExceeded extends Error {
