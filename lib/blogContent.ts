@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-18-explained",
+    title: "Judges 18 Explained: A Tribe Steals a Priest and a God",
+    description:
+      "Judges 18 explained verse by verse: Dan's search for land, a borrowed priest's convenient word, and the raid that stole Micah's idols and burned Laish.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-18-explained",
+    publishedAt: "2026-11-17",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-18-explained.jpg",
+    groupPost: {
+      title: "Judges 18 Explained 📖",
+      content:
+        "Five spies find a priest for hire.\nSix hundred soldiers come back for his gods.\n\n📌 Nobody asks if it's right. Only if it works.\n\n📖 A hired priest gives Dan a convenient yes.\n📖 They steal Micah's idols without a fight.\n📖 A peaceful city is burned to make room for them.\n\nNew article on:\n🟢 why the tribe of **Dan** still needed land\n🟢 what it meant to **ask counsel** of a borrowed priest\n🟢 how a stolen idol became generations of worship\n\nHave you ever trusted an answer because it was easy, not because you actually sought God? 🙏",
+    },
+  },
+  {
     slug: "judges-17-explained",
     title: "Judges 17 Explained: Micah's Idols and a Priest for Hire",
     description:
