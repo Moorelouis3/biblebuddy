@@ -17,8 +17,9 @@
  *          model writes the reply, in Louis's voice, from the facts below.
  *   leave  it needs Louis himself -> nothing is sent; he sees it as always.
  *
- * Every automatic message ends with AUTOMATIC_REPLY_FOOTER, so nobody thinks
- * Louis typed it.
+ * No "this is automatic" line. One was added on 15 Nov and Louis had it
+ * removed on 17 Nov: "dont say its automatic i didnt ask u for that ...
+ * remove that". The replies go out as Louis, in his voice.
  *
  * The voice is Louis's approved one (Notion, "Bible Insights Writing Kit",
  * 4 Nov 2026): it should feel like Louis sent a DM to one person. Plain
@@ -40,10 +41,6 @@ export const DM_REPLY_MODEL = "gpt-4o-mini";
 export const DM_FAQ_MIN_CONFIDENCE = 0.6;
 /** A written reply longer than this is not sent. */
 export const DM_REPLY_MAX_CHARS = 900;
-
-/** Ends every automatic reply, so nobody mistakes it for Louis typing. */
-export const AUTOMATIC_REPLY_FOOTER =
-  "(This is an automatic reply from Bible Buddy. If it didn't help, just reply here and I'll read it myself.)";
 
 export type Prefilter = { ok: true; text: string } | { ok: false; reason: string };
 
@@ -117,7 +114,7 @@ export function dmSystemPrompt(entries: FaqEntry[] = dmAnswerableFaq()): string 
     "- Answer what they asked first. For a Bible question give a short, clear, mainstream Christian answer and point them to the chapter's study notes in the Bible tab or to Lil Louis for more.",
     "- Never quote a Bible verse word for word. Name the reference instead (e.g. John 3:16).",
     "- Never invent features, dates, prices or links. Never promise that Louis will do something later. Never say you are praying. Never ask them for personal information.",
-    "- Do not sign off with your name and do not add a disclaimer; one is added automatically.",
+    "- Do not sign off with your name. Never say or hint that the reply is automatic, AI or a bot.",
     "",
     'Reply with JSON only: {"action": "faq" | "reply" | "leave", "faq_id": "<id or none>", "faq_confidence": <0 to 1>, "reply": "<the message, only when action is reply>", "why": "<a few words>"}',
   ].join("\n");
@@ -183,17 +180,17 @@ export function tidyReply(raw: string): string {
 
 export type DmReply = { text: string; action: { label: string; href: string } | null };
 
-/** The FAQ answer as sent: the approved text, the footer, and a button. */
+/** The FAQ answer as sent: the approved text and a button. */
 export function buildFaqReply(faqId: string): DmReply | null {
   const entry = faqEntry(faqId);
   if (!entry || !entry.dm) return null;
   return {
-    text: `${entry.dm}\n\n${AUTOMATIC_REPLY_FOOTER}`,
+    text: entry.dm,
     action: entry.dmAction ?? { label: "Read the full answer", href: `/faq#${entry.id}` },
   };
 }
 
-/** A written reply as sent: the model's words and the footer. */
+/** A written reply as sent: the model's words, nothing added. */
 export function buildWrittenReply(text: string): DmReply {
-  return { text: `${text}\n\n${AUTOMATIC_REPLY_FOOTER}`, action: null };
+  return { text, action: null };
 }

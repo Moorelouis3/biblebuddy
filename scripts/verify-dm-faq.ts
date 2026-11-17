@@ -7,7 +7,6 @@
 import { readFileSync } from "node:fs";
 import { FAQ, dmAnswerableFaq } from "../lib/faq";
 import {
-  AUTOMATIC_REPLY_FOOTER,
   DM_REPLY_MAX_CHARS,
   buildFaqReply,
   buildWrittenReply,
@@ -69,10 +68,11 @@ check("tidy: strips a sign-off", tidyReply("Glad you're here!\n\n- Louis") === "
 // ---- what is sent ----
 for (const entry of dmAnswerableFaq()) {
   const built = buildFaqReply(entry.id);
-  check(`faq reply ${entry.id}: approved text + footer + button`, Boolean(built && built.text.startsWith(entry.dm!) && built.text.endsWith(AUTOMATIC_REPLY_FOOTER) && built.action));
+  check(`faq reply ${entry.id}: exactly the approved text + a button`, Boolean(built && built.text === entry.dm && built.action));
 }
 check("no faq reply for a page-only entry", buildFaqReply("streak") === null);
-check("written reply carries the footer", buildWrittenReply("Hi!").text.endsWith(AUTOMATIC_REPLY_FOOTER));
+check("written reply is sent as written, nothing added", buildWrittenReply("Hi!").text === "Hi!");
+check("prompt tells the model never to say it is automatic", /Never say or hint that the reply is automatic/.test(dmSystemPrompt()));
 
 const prompt = dmSystemPrompt();
 check("prompt lists every answerable id", dmAnswerableFaq().every((e) => prompt.includes(`- ${e.id}:`)));

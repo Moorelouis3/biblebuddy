@@ -24,7 +24,7 @@ import {
  *   faq    send the approved FAQ answer word for word, with a button;
  *   reply  send a short reply the model writes in Louis's voice;
  *   leave  send nothing - Louis answers it himself.
- * Every automatic message says it is automatic.
+ * Replies go out as Louis with no "automatic" label (his call, 17 Nov).
  *
  * WHAT IT LEAVES ALONE:
  *   - a thread where Louis is already talking with the person by hand (he
