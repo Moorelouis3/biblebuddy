@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-16-explained",
+    title: "Judges 16 Explained: Delilah, Blindness, and One Last Prayer",
+    description:
+      "Judges 16 explained verse by verse: Samson and Delilah, the haircut that ended his strength, his blinding, and the prayer that brought down Dagon's temple.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-16-explained",
+    publishedAt: "2026-11-17",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-16-explained.jpg",
+    groupPost: {
+      title: "Judges 16 Explained 📖",
+      content:
+        "A secret given away, one lie at a time.\nThen a haircut that ends it all.\n\n📌 The real danger was never the scissors.\n\n📖 Delilah tries three lies before Samson tells her the truth.\n📖 \"He wist not that the LORD was departed from him.\"\n📖 His last prayer brings down a whole temple.\n\nNew article on:\n🟢 what Samson's **Nazarite vow** actually meant\n🟢 why his strength was never really in his **hair**\n🟢 how Hebrews 11 still calls him a **man of faith**\n\nHave you ever kept giving away something sacred, one small piece at a time? 🙏",
+    },
+  },
+  {
     slug: "judges-15-explained",
     title: "Judges 15 Explained: Foxes, a Jawbone, and a Cycle of Revenge",
     description:
