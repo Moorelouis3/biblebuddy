@@ -125,3 +125,4 @@
 2026-11-16T09:02:53Z | 16 commits | Judges 9-11 Explained chapter library entries, Auto Reply in study discussions with hardcover/paperback on study signup pages, FAQ page with automatic FAQ answers to common DMs, Study book Amazon strip, tracked links let through the signup gate (retried build), and a login-redirect bug-fixer false-positive fix
 2026-11-16T17:03:10Z | 7 commits | Judges 12-13 Explained chapter library entries and a Bug Fixer session log
 2026-11-17T09:02:46Z | 10 commits | Judges 14-16 Explained chapter library entries and a blog article on who wrote the Bible
+2026-11-17T17:03:25Z | 6 commits | Judges 17-18 Explained chapter library entries
