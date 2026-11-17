@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-15-explained",
+    title: "Judges 15 Explained: Foxes, a Jawbone, and a Cycle of Revenge",
+    description:
+      "Judges 15 explained verse by verse: Samson's burning foxes, his wife's death, Judah handing him over, and the jawbone that killed a thousand men.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-15-explained",
+    publishedAt: "2026-11-17",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-15-explained.jpg",
+    groupPost: {
+      title: "Judges 15 Explained 📖",
+      content:
+        "A broken marriage. Three hundred foxes on fire.\nOne chapter, and the whole countryside is burning.\n\n📌 Revenge rarely stays the size of the wrong that started it.\n\n📖 Samson burns the Philistines' harvest with firebrand foxes.\n📖 His own tribe binds him and hands him to the enemy.\n📖 A jawbone becomes his only weapon.\n\nNew article on:\n🟢 why **three thousand men of Judah** turned on their own deliverer\n🟢 what **\"hip and thigh\"** actually means\n🟢 why the spring **En-hakkore** is named for a prayer, not a victory\n\nHave you ever watched a small hurt grow bigger than the wrong that started it? 🙏",
+    },
+  },
+  {
     slug: "judges-14-explained",
     title: "Judges 14 Explained: Samson's Riddle, His Bride, and a Secret",
     description:
