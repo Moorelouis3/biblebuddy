@@ -110,6 +110,23 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
 
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
+    slug: "judges-14-explained",
+    title: "Judges 14 Explained: Samson's Riddle, His Bride, and a Secret",
+    description:
+      "Judges 14 explained verse by verse: Samson's Philistine wife, the lion, the honey, the riddle wager, and his wife's forced betrayal.",
+    category: "Verse Breakdowns",
+    categorySlug: "verse-breakdowns",
+    canonicalPath: "/blog/judges-14-explained",
+    publishedAt: "2026-11-17",
+    readTime: "14 min read",
+    image: "/blog-banners/judges-14-explained.jpg",
+    groupPost: {
+      title: "Judges 14 Explained 📖",
+      content:
+        "A lion. A secret. A wedding nobody blessed.\nOne chapter, and Samson is already hiding things from his own parents.\n\n📌 Small compromises rarely look dangerous at the time.\n\n📖 Samson marries outside Israel, against his parents' objection.\n📖 He kills a lion barehanded, then eats honey out of its corpse.\n📖 A riddle wager turns into a wedding he never finishes.\n\nNew article on:\n🟢 why the honey may have broken Samson's own **Nazarite vow**\n🟢 what **\"plowed with my heifer\"** actually means\n🟢 why his bride was given away before the week even ended\n\nHave you ever kept a small compromise quiet, telling yourself it was no big deal? 🙏",
+    },
+  },
+  {
     slug: "who-wrote-the-bible",
     title: "Who Actually Wrote the Bible?",
     description:
